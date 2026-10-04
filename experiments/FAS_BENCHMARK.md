@@ -152,3 +152,6 @@ estimates for dense references), and inference work up to the decision at N.
   and score per-item step durations against clean per-step distributions (likelihood ratio). If even the oracle is near
   chance at N <= 256, define the discriminating range as 384–768 and report the native arm there. If the oracle is high,
   the gap between it and identity-free controls is the home-field headroom for race models.
+  Feasibility note: log lines carry no item id, and `env.active_process` at log time yields ~51 processes per clean run
+  (item sub-processes), not 30 items. The oracle needs item identity propagated through the component calls, in an
+  instrumented copy outside the vendored tree. The instrumented logger leaves event ids unchanged (checked on one seed).
