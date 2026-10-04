@@ -2616,3 +2616,17 @@ bytes; SHA256/URL/vendor/source provenance in diagnostics/aws_primate_data_
 Owned six-session r1 queues are now data-ready; require a fresh guarded
 reservation-aware admission after MG slot1 finishes, preserving runningreplay
 andteacher. Source hash drift must still reject ratherthan silently update.
+
+AWS preparation184500Z: official primate six-session r1 manifest prepared at
+queue/aws_primate_admission_20261004T184500Z/manifest.json; same originalowner
+queues/settings, fiveuntouchedsessions first, exposedDEVsession last. All6raw
+SHA256s and driver/helpers/kernels/vendor bound; resultoutputs absent. NOT
+launched while3guarded slots are occupied. Priorcontracts10passed retained;
+requiresactual reservation-aware continuation afterMGslot1 completes.6h/session
+is a conservative unmeasured ceiling, not ETA;2GBRSS/6GBVMS/8GiBfloor/1thread.
+No new protocol is selected using MGofficialTEST. Verified dependency presence:
+h5py/scipy/numpy/torch, without numerical model execution for preparation.
+Read-only automated MGsummary publisher nowmonitoring in tmuxaws_neurobench_
+summary; n10source-bound aggregate pusheda75e00d. Newreportappendix showspartial
+10/30 andpendingprimatewithoutclaimingwin. CurrentMGsecondbatch/replay/teacher
+healthy,~28GiBavailable, frozenperjob sourcebindings remainunchanged.
