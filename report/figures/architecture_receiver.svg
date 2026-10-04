@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-label="1. Receiver unit: selection, message, private state and time">
+<defs><marker id="arrow-ccb69015" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="820" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">1. Receiver unit: selection, message, private state and time</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Logical dependencies of the current native program; one race chooses among U such receivers.</text>
+<g class=""><rect x="35" y="140" width="215" height="115" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="167" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Incoming event</text>
+<text x="49" y="193" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">content x: P numbers</text>
+<text x="49" y="216" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">arrival t; source address</text>
+</g>
+<g class=""><rect x="35" y="310" width="215" height="145" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="337" font-family="Arial, sans-serif" font-size="16.403508771929825" fill="#147d69" font-weight="700">Private stored state</text>
+<text x="49" y="363" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">memory m; last write t_prev</text>
+<text x="49" y="386" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">seen flag; learned key</text>
+<text x="49" y="409" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">decay/rotation parameters</text>
+</g>
+<g class=""><rect x="305" y="135" width="270" height="130" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="319" y="162" font-family="Arial, sans-serif" font-size="16.329284750337383" fill="#2259a7" font-weight="700">Key / compatibility branch</text>
+<text x="319" y="188" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">query from layer content</text>
+<text x="319" y="211" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">key + key_read(stored m)</text>
+<text x="319" y="234" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">score: dot product + bias</text>
+</g>
+<g class=""><rect x="640" y="135" width="240" height="130" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="654" y="162" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Head race</text>
+<text x="654" y="188" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">rate = exp(clamped score)</text>
+<text x="654" y="211" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">first time + winner identity</text>
+<text x="654" y="234" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">all U keys are scored</text>
+</g>
+<g class=""><rect x="930" y="135" width="235" height="130" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="944" y="162" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Outgoing time</text>
+<text x="944" y="188" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">bounded delay(first time)</text>
+<text x="944" y="211" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">t_out = t + delay</text>
+<text x="944" y="234" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time changes later content</text>
+</g>
+<g class=""><rect x="305" y="330" width="270" height="160" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="319" y="357" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Value / state proposal</text>
+<text x="319" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">forget and write gates from x</text>
+<text x="319" y="406" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">rotate + damp m over age</text>
+<text x="319" y="429" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">add write × Input(x)</text>
+<text x="319" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">gated residual value v</text>
+</g>
+<g class=""><rect x="640" y="330" width="240" height="160" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="654" y="357" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Hard selected commit</text>
+<text x="654" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">winner: store proposed m</text>
+<text x="654" y="406" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">store incoming t; set seen</text>
+<text x="654" y="429" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">losers retain old state</text>
+<text x="654" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">deliver one value per head</text>
+</g>
+<g class=""><rect x="930" y="330" width="235" height="160" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="944" y="357" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Outgoing content</text>
+<text x="944" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">selected P-vector v</text>
+<text x="944" y="406" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">other heads align to join</text>
+<text x="944" y="429" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">next layer + future context</text>
+</g>
+<g class="learning"><rect x="305" y="565" width="575" height="110" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="319" y="592" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Training credit: three distinct consequences</text>
+<text x="319" y="618" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">delivered-value alternatives; common computational time</text>
+<text x="319" y="641" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">future memory/write utility needs additional credit</text>
+</g>
+<polyline class="" points="250,185 305,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="250,350 278,350 278,240 305,240" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="250,225 275,225 275,355 305,355" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="250,395 305,395" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="575,185 640,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="880,185 930,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="760,265 760,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="575,410 640,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="880,410 930,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="680,490 680,525 140,525 140,455" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<text x="34" y="553" font-family="Arial, sans-serif" font-size="15" fill="#147d69" font-weight="700">Only selected state is committed</text>
+<polyline class="learning" points="1045,490 1045,620 880,620" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="learning" points="450,565 450,490" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="learning" points="735,565 900,565 900,285 755,285 755,265" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
+<text x="34" y="722" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Blue: event computation    Green: persistent state    Orange dashed: learning-only signals</text>
+<text x="34" y="754" font-family="Arial, sans-serif" font-size="16" fill="#25354b" font-weight="400">Standard training evaluates U proposals; cached winner-only inference evaluates one selected proposal.</text>
+<text x="34" y="784" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Trained FP32 sparse parity/cost pending. Stored-key read precedes input-conditioned age evolution.</text>
+</svg>

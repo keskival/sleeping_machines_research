@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img" aria-label="2. A native layer, stacked model and source-local recurrence">
+<defs><marker id="arrow-9762d771" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="1020" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">2. A native layer, stacked model and source-local recurrence</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Illustration: H=2 heads, U=3 receivers/head. Only one receiver wins in each head.</text>
+<g class=""><rect x="34" y="130" width="245" height="135" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="48" y="157" font-family="Arial, sans-serif" font-size="14.642375168690961" fill="#2259a7" font-weight="700">Input and previous context</text>
+<text x="48" y="183" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">observed content/time</text>
+<text x="48" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">wait for same-source readiness</text>
+<text x="48" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">gate aligned previous context</text>
+</g>
+<g class=""><rect x="325" y="130" width="330" height="135" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="339" y="157" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Channel mix + head queries</text>
+<text x="339" y="183" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">mix the H×P incoming vector</text>
+<text x="339" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">each query sees mixed channels</text>
+<text x="339" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">split content into P per head</text>
+</g>
+<polyline class="" points="279,195 325,195" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<g class=""><rect x="125" y="330" width="400" height="215" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="139" y="357" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Head 1: private receiver pool</text>
+<text x="139" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">U keys scored; U candidate clocks</text>
+<text x="139" y="406" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 0: private memory</text>
+<text x="139" y="429" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 1: private memory [winner]</text>
+<text x="139" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 2: private memory</text>
+<text x="139" y="475" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected value + arrival</text>
+</g>
+<polyline class="" points="490,265 490,298 325,298 325,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="325,545 325,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<g class=""><rect x="690" y="330" width="400" height="215" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="704" y="357" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Head 2: private receiver pool</text>
+<text x="704" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">U keys scored; U candidate clocks</text>
+<text x="704" y="406" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 0: private memory</text>
+<text x="704" y="429" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 1: private memory [winner]</text>
+<text x="704" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 2: private memory</text>
+<text x="704" y="475" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected value + arrival</text>
+</g>
+<polyline class="" points="490,265 490,298 890,298 890,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="890,545 890,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<g class=""><rect x="325" y="605" width="415" height="125" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="339" y="632" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Temporal join: latest head arrival</text>
+<text x="339" y="658" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">transport earlier values by their elapsed age</text>
+<text x="339" y="681" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">concatenate aligned head vectors</text>
+<text x="339" y="704" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">next layer receives content AND time</text>
+</g>
+<g class=""><rect x="835" y="605" width="330" height="125" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="849" y="632" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Depth D: repeat this layer</text>
+<text x="849" y="658" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">new private receiver pool at each depth</text>
+<text x="849" y="681" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected continuation per head</text>
+<text x="849" y="704" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">credit and state paths span the stack</text>
+</g>
+<polyline class="" points="740,668 835,668" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<g class=""><rect x="835" y="805" width="330" height="125" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="849" y="832" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Task readout / final context</text>
+<text x="849" y="858" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">language logits or regression values</text>
+<text x="849" y="881" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">save final head vectors and times</text>
+<text x="849" y="904" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">reuse only for the same source</text>
+</g>
+<polyline class="" points="1000,730 1000,805" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="835,869 58,869 58,285 100,285 100,265" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<g class=""><rect x="125" y="785" width="565" height="115" rx="12" fill="white" stroke="#5a6779" stroke-width="2"/>
+<text x="139" y="812" font-family="Arial, sans-serif" font-size="17" fill="#5a6779" font-weight="700">Execution boundary</text>
+<text x="139" y="838" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Episode lanes: independent state, batched together</text>
+<text x="139" y="861" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one-source task recipes reset or carry state as declared</text>
+<text x="139" y="884" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">local head joins do not imply a physical asynchronous chip</text>
+</g>
+<text x="34" y="960" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Available: D×H×U memories   |   Scored: D×H×U keys   |   Selected: D×H writes/input</text>
+<text x="34" y="990" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Map sharing can preserve private state. Cross-source grounding needs an explicit shared information path.</text>
+</svg>

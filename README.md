@@ -2,6 +2,25 @@
 
 **Deep learning that computes with time.**
 
+[Model-family definition and design rationale](report/model_family_design.md) ·
+[Interactive visual atlas](report/architecture_atlas.html) ·
+[Detailed architecture review](report/architecture_review.md)
+
+The review uses the same computational-capacity, representational-capacity and
+trainability axes from events and primitives through units, modules, interactions,
+layers, stacks, memory compositions and complete systems. It separates implemented
+family members, theoretical inclusions, completed evidence and open integration.
+Choose state programs, reception, routing and learning budgets per layer: selective
+where sufficient, exact/dense interaction where required. The event semantics need
+no global synchronous update tick; local timers, joins and causal order remain.
+Current clocked emulators do not establish clockless hardware energy savings.
+The same trainable units/state support online and test-time learning as family
+capabilities, with causal objectives and streamed or batched updates. Full
+asynchronous sparse training and measured TTT gains remain to be demonstrated.
+Another ambition is learned adaptation of the graph itself: choose operators,
+reception and allocated structure from data within the family, beyond the
+already dynamic event routes. Full structural-learning validation remains open.
+
 **Our ambition: a universal, general-purpose learning architecture that combines
 content, time and selective computation.** One substrate should learn from
 language, dense synchronous observations and sparse asynchronous streams,

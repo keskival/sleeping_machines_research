@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1240" role="img" aria-label="Sleeping Machines: one family, many compatible design choices">
+<defs><marker id="arrow-130cd56d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="1240" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Sleeping Machines: one family, many compatible design choices</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Define a causal content/time/state interface; choose compatible operators at each level.</text>
+<g class=""><rect x="35" y="115" width="1130" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="142" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Common contract: observed event → local state program → timed communication → causal query</text>
+<text x="49" y="168" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Content, computational time, routes and stored evidence affect one another.</text>
+<text x="49" y="191" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">No required network-wide periodic tick. Local timers, joins and causal ordering still matter.</text>
+<text x="49" y="214" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Synchronous barriers and full participation are allowed endpoints, chosen where useful.</text>
+</g>
+<text x="35" y="270" font-family="Arial, sans-serif" font-size="19" fill="#147d69" font-weight="700">Unit: what can persist and transform?</text>
+<g class=""><rect x="35" y="290" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="317" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Vectors / modes / gated programs</text>
+</g>
+<g class=""><rect x="420" y="290" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="434" y="317" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Counts / protected facts / history</text>
+</g>
+<g class=""><rect x="805" y="290" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="819" y="317" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Delays / clock responses / keys</text>
+</g>
+<polyline class="" points="600,355 600,411" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-130cd56d)"/>
+<text x="35" y="423" font-family="Arial, sans-serif" font-size="19" fill="#147d69" font-weight="700">Module: which evidence participates?</text>
+<g class=""><rect x="35" y="443" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="470" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">One winner / several deliveries</text>
+</g>
+<g class=""><rect x="420" y="443" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="434" y="470" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Window / silence / exact pooling</text>
+</g>
+<g class=""><rect x="805" y="443" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="819" y="470" font-family="Arial, sans-serif" font-size="16.641604010025063" fill="#147d69" font-weight="700">Observed / learned / indexed access</text>
+</g>
+<polyline class="" points="600,508 600,564" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-130cd56d)"/>
+<text x="35" y="576" font-family="Arial, sans-serif" font-size="19" fill="#147d69" font-weight="700">Layer: how do units interact?</text>
+<g class=""><rect x="35" y="596" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="623" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Private heads / shared receivers</text>
+</g>
+<g class=""><rect x="420" y="596" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="434" y="623" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Timed join / learned channel mix</text>
+</g>
+<g class=""><rect x="805" y="596" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="819" y="623" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Lean stage / dense local island</text>
+</g>
+<polyline class="" points="600,661 600,717" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-130cd56d)"/>
+<text x="35" y="729" font-family="Arial, sans-serif" font-size="19" fill="#147d69" font-weight="700">Composition: which capabilities meet?</text>
+<g class=""><rect x="35" y="749" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="776" font-family="Arial, sans-serif" font-size="16.641604010025063" fill="#147d69" font-weight="700">Depth / recurrence / optional paths</text>
+</g>
+<g class=""><rect x="420" y="749" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="434" y="776" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">State + statistics + retrieval</text>
+</g>
+<g class=""><rect x="805" y="749" width="360" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="819" y="776" font-family="Arial, sans-serif" font-size="16.179337231968812" fill="#147d69" font-weight="700">Dense and sparse modalities together</text>
+</g>
+<g class=""><rect x="35" y="893" width="550" height="112" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="49" y="920" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Review each choice on three axes</text>
+<text x="49" y="946" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Computation: access, work, traffic and latency</text>
+<text x="49" y="969" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Representation: retained distinctions and useful functions</text>
+<text x="49" y="992" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Trainability: credit, support, exposure and horizon</text>
+</g>
+<g class=""><rect x="615" y="893" width="550" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="629" y="920" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Selectively expand the limiting region</text>
+<text x="629" y="946" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Match/include rich reference operators when necessary.</text>
+<text x="629" y="969" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Keep efficient stages where their quality is sufficient.</text>
+<text x="629" y="992" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Exact containment needs operators and numerical contracts.</text>
+</g>
+<text x="35" y="1045" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Theory and evidence guide choices; the inventory records implementations rather than defining the family.</text>
+<g class=""><rect x="35" y="1090" width="1130" height="105" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="49" y="1117" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Further ambition: the model learns some of these design choices from data</text>
+<text x="49" y="1143" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Learned programs, fan-in, optional stages and state allocation can morph regions within the family.</text>
+<text x="49" y="1166" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Dynamic routes exist; broader structural learning needs utility, state migration and full cost contracts.</text>
+</g>
+<text x="35" y="1220" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Static design is a fixed-policy case. Matching a reference function, learning it and beating its cost are separate.</text>
+</svg>

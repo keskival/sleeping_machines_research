@@ -4,6 +4,57 @@ A general-purpose architecture that computes with time
 
 Tero Keski-Valkama and Karoliina Salminen · Research report · 3 October 2026
 
+## Systematic whole-family architecture review — 4 October 2026
+
+[Read the family definition and design rationale](report/model_family_design.md),
+[open the interactive atlas](report/architecture_atlas.html), and
+[follow the detailed review](report/architecture_review.md).
+Computational capacity/work, representational capacity and trainability are
+reviewed at every level: events, primitives, units, modules, interactions,
+layers, stacks, memory compositions and systems. The native receiver diagrams
+illustrate one branch; the inventory includes timing logic, statistics,
+carriers/modal encoders, native stacks, historical/protected memory, count and
+statistic-valued hybrids, Transformer bridges, reception and credit/execution
+variants. Theory152 states inclusion conditions and bound corrections.
+
+![Generative family design space](report/figures/architecture_design_space.svg)
+
+The family shares primitives but has several different implemented constructions.
+No completed model is claimed to combine every mechanism or subsume every
+incumbent's quality and efficiency. The atlas separates candidate scoring,
+proposal work, selected commits and private state. Native numerical, serving,
+future-write, reception and multimodal gaps remain explicitly marked.
+The [implementation inventory](report/model_family_inventory.md) is supporting
+navigation rather than the family definition.
+
+**Capability and cost are adjustable per layer.** A model can combine lean
+selected state programs with richer local maps, multi-message reception,
+exact attention or dense islands where needed. Matching an incumbent function
+requires its actual operators, information and numerical contract; matching
+trained quality additionally requires effective learning. Expand at the stage
+that loses a necessary distinction or useful credit, and charge the complete
+composition. An attention identity alone is not a full Transformer equivalence.
+
+**No global synchronous update clock is required by the event semantics.**
+Arrivals, local races, joins and deadlines determine work. Dense regular inputs
+and sparse irregular events can inform the same shared persistent world state
+through explicit paths. This single-model multimodal composition is aspirational;
+current emulators and optimizer steps remain clocked/coordinated, and physical
+clockless energy savings are unmeasured.
+
+**Learning remains in the same model structure.** The stateful local maps,
+timing controls and routing parameters can continue learning online and at test
+time from available causal outcomes or self-supervision. Updates may be
+streamed or batched; state/count adaptation, gradient-based TTT and fully
+asynchronous learning are distinct. Current batching is implemented; an
+end-to-end TTT advantage and asynchronous on-chip trainer remain open.
+
+**The design space can also become a learning space.** The further ambition is
+data-driven operator, reception, optional-depth and state-allocation choices
+inside the model family. Learned event routes already adapt the active graph;
+general structural morphing adds state-migration and longer-term task/resource
+credit requirements. It is an explicit research direction, not a new result.
+
 ## Our ambition: a universal learning substrate
 
 **One architecture for content, time and selective computation.** The ambition is a broadly capable learner that combines language, dense synchronous observations and sparse asynchronous streams, including their joint arrival into shared persistent state. Statistical memory, deep learned representations and Transformer-capable retrieval belong to the same family. Time performs computation; hard routes learn from unrealized alternatives; small messages mix incoming content with private memory; keys and values remain distinct. Useful stored capacity can exceed the work recruited for an observation.

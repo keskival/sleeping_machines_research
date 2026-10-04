@@ -1,5 +1,50 @@
 # Local host: current research continuation
 
+## Whole-family design review and visual documentation — 4 October 2026
+
+Documentation only; no new training, numerical model invocation, host waiter,
+queue admission or architectural substitution. Primary entry:
+../report/model_family_design.md defines the generative family, causal
+content/time/state interface, choices at every level, three common review axes,
+conditional incumbent containment and a per-layer lean-to-rich design policy.
+It explains mixed dense/sparse and synchronous/asynchronous arrivals in one
+shared-state model, and no required global periodic update tick. Local timers,
+joins/causality remain; current emulators/optimizer remain clocked/coordinated.
+Full joint multimodal learning and measured clockless hardware are pending.
+
+Seven SVGs and self-contained report/architecture_atlas.html visualize design
+space, shared-world aspiration, online/batched learning, branches, native unit/layer/stack
+and alternative execution structures. Detailed review/inventory cover all
+semantic branches; AST index navigates110source/driver records. Theory152
+adds scoped bounds, exact/expected attention distinctions, missing future-write
+credit, nested-expansion contracts and corrected historical Littlestone scope.
+Counts/SSMs/gated recurrence/attention/MoE inclusions state required operators,
+information and work rather than promising trained parity from expressivity.
+Five review passes recorded in ../report/architecture_review_checks.md,
+including synchronous snapshot/barrier and dense full-support endpoints;
+function, execution and learning inclusions remain separate contracts.
+The manifesto→tests→family progression is explicit. Added native TTT/online
+learning capability and automatic design/learned structural adaptation ambition,
+with TTT/Titans and NAS/Net2Net/OFA/ProxylessNAS attribution. Dynamic routes are
+implemented; general morphing and fully asynchronous sparse learning are open.
+
+Standard-library/Node validation record:
+results/diagnostics/architecture_review_stdlib_20261004T094000Z.json.
+Seven SVG XML/canvas bounds, local links/unique HTML IDs, seven-tab/dimension/mode
+controls,14scalar witnesses and110source hashes pass; all53frozen clock sources
+unchanged. No local browser pixel renderer available. README/REPORT Markdown
+updated; the existing owner-rendered PDF and every prior result are preserved.
+
+Prioritized integrated models/queues remain the official six-session primate
+and tau17 MG owner admission at
+queue/aws_neurobench_admission_20261004T064000Z/manifest.json,
+curie_language_batched_v6_20261003T111500Z and existing AWS replay ownership.
+Clock precision contracts→gated pilot retain their frozen065700Z manifest
+after owners. Remaining gaps: complete future-write utility/useful horizon,
+candidate coverage, integrated window/silence scheduling, completed-weight
+sparse FP32 serving parity, repeated comparable-quality benchmarks, shared
+multimodal grounding and measured energy. No departure proposed or job launched.
+
 ## Clock precision control and public confirmation — 4 October2026
 
 Latest completed MG owner p16/D2/pool2 tau18 same-weight modes: sampled25.3096,

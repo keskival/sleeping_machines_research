@@ -1,0 +1,2457 @@
+{
+  "scope": "AST source navigation; no runtime import, efficacy or compatibility claim",
+  "modules": [
+    {
+      "path": "sleeping_machines/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": "",
+      "classes": [],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/addressed_event_heads.py",
+      "sha256": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "summary": "Native addressed content/time events with persistent independent race heads.",
+      "classes": [
+        {
+          "name": "AddressedEventState",
+          "bases": [],
+          "methods": [
+            "detach",
+            "storage"
+          ]
+        },
+        {
+          "name": "AddressedEventHeads",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "race",
+            "consume_event"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/affine_packets.py",
+      "sha256": "a85022c5b2035dfbf3cb00108039273ad3e32135aa89eb938054bef20d5fbe68",
+      "summary": "Affine state and weighted state-pooling summaries in linear event work.",
+      "classes": [],
+      "functions": [
+        "compose",
+        "prefix",
+        "pooled_state_scan"
+      ]
+    },
+    {
+      "path": "sleeping_machines/batched_addressed_fit.py",
+      "sha256": "db22bc8594c40e86955dd4be79121240586c105feb2eaae12e28d5e08092e246",
+      "summary": "Vectorize independent dense-packet clips without changing native route credit.",
+      "classes": [
+        {
+          "name": "BatchedTemporalRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "forward"
+      ]
+    },
+    {
+      "path": "sleeping_machines/batched_episodes.py",
+      "sha256": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+      "summary": "Episode-batched native core with gradients: many independent episodes as lanes of one pass (THEORY \u00a7405).",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "linear_route_credit",
+        "linear_write_credit",
+        "batched_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/batched_evolution_offset_fit.py",
+      "sha256": "e42cf155d4dc19a67fea4e01cb2ea5041fe74841f2f86f4d85ffa2577b1522aa",
+      "summary": "Frozen native batched kernel with reception-phase offset only (theory90).",
+      "classes": [],
+      "functions": [
+        "forward"
+      ]
+    },
+    {
+      "path": "sleeping_machines/bounded_score_sensitivity.py",
+      "sha256": "58f16f55906967025d839d030d48107c77e88385b16a37a2e716e608c714366f",
+      "summary": "Bounded monotone score bridge; alpha0 exactly retains the old hard clamp.",
+      "classes": [],
+      "functions": [
+        "bounded_score_bridge",
+        "smooth_slope"
+      ]
+    },
+    {
+      "path": "sleeping_machines/bridge_addressed_events.py",
+      "sha256": "f0145418baf6e8f5fcf0c9baad2831d49195fadf7212ce7ec51b9d3454a5480f",
+      "summary": "Bounded-score native reference; ordinary sparse inference and actual state.",
+      "classes": [
+        {
+          "name": "BridgeAddressedEvents",
+          "bases": [
+            "fast_class(AddressedEventHeads)"
+          ],
+          "methods": [
+            "__init__",
+            "race",
+            "consume_event"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/bridge_batched_episodes.py",
+      "sha256": "b78c648022d4c9fb282e87f12a675a614fb57ab402adc8ce7115b952667fe958",
+      "summary": "Bounded-score sibling of batched_episodes; same physical races and full writes.",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "batched_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_contexts.py",
+      "sha256": "f8a0058b71f66a237f76a8474baaec3727bb06e4b070653bffdf9bf1c68c96af",
+      "summary": "Contexts for predicting x[t], measurable from x[:t] only.",
+      "classes": [],
+      "functions": [
+        "word_codes_before"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_language_shadow.py",
+      "sha256": "986899a7da3a5ccddeaa0750190bedf78dfcdef19db388322fb407dd623809ee",
+      "summary": "All-token native shadow lanes with detached persistent entering state (note108).",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "batched_chunks"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_language_shadow_cached_prefix.py",
+      "sha256": "3d5e74742073c8d8c31e0c5747190332742b851be63c90cbe9372b56da9cfa5e",
+      "summary": "Unchanged native races with detached causal token-boundary snapshots (118).",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "batched_chunks"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_language_shadow_compact_suffix.py",
+      "sha256": "72d1bd6a052512a9d8ae9378aee355999ca2377e539fbd53acc5a8b83cee9c4d",
+      "summary": "Unadmitted CPU-only compact suffix prototype; no active driver imports this.",
+      "classes": [],
+      "functions": [
+        "compact_suffix_returns"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_language_shadow_rng.py",
+      "sha256": "b8c3c2607aafa7d464de143ac65822d3751f4a510518f61fb3ba236c76302b31",
+      "summary": "All-token native shadow lanes with detached persistent entering state (note108).",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "batched_chunks"
+      ]
+    },
+    {
+      "path": "sleeping_machines/causal_language_shadow_winner_reuse.py",
+      "sha256": "fa0b2abc6753630f74bc27c4a6357e11de4059a2ec716e347cb1f2275c70cf07",
+      "summary": "Native causal shadow kernel with factual winner recording (note115).",
+      "classes": [
+        {
+          "name": "LaneRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "batched_chunks"
+      ]
+    },
+    {
+      "path": "sleeping_machines/checkpointed_addressed_replay.py",
+      "sha256": "03a62bd98c650f2199bd06f7562b397bde0c376f599a58e49cf7821b5b218934",
+      "summary": "AWS prefix-checkpoint replay kernel. Arithmetic mirrors the frozen batched core; snapshots are detached no-grad shadow inputs, never factual producer-credit truncation.",
+      "classes": [
+        {
+          "name": "BatchedTemporalRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "forward"
+      ]
+    },
+    {
+      "path": "sleeping_machines/clock_feature_event_heads.py",
+      "sha256": "1ab46c6d1c4dfd550a48b06eb8a4e83d065e634a2e8bf2492ec112380a41fae7",
+      "summary": "Native sparse events with fast delay-computed features per independent head.",
+      "classes": [
+        {
+          "name": "ClockFeatureState",
+          "bases": [
+            "AddressedEventState"
+          ],
+          "methods": [
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "ClockFeatureEventHeads",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "clock_features_at",
+            "temporal_reception",
+            "consume_event"
+          ]
+        },
+        {
+          "name": "ClockFeatureLanguageModel",
+          "bases": [
+            "ClockFeatureEventHeads"
+          ],
+          "methods": [
+            "__init__"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/clock_feature_races.py",
+      "sha256": "514c1bf396539d7e1bfc71fa6827adcb4ac1ca36e80e80a607d77b9e29233c4f",
+      "summary": "Shared matches drive a content race and independent clock-only policies.",
+      "classes": [
+        {
+          "name": "ContentAndClockRaces",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/clock_noise_episodes.py",
+      "sha256": "ea54f7e625a834cff490eadc87a64cef0cb64013cd769a5fb5efc02a9072c0af",
+      "summary": "Isolated native clock-noise prototype; existing kernels/defaults untouched.",
+      "classes": [
+        {
+          "name": "ClockRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "reshape_first",
+        "clock_batched_logits",
+        "clock_layer_step",
+        "clock_compiled_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/clock_noise_law.py",
+      "sha256": "9cc2a1fa4ea45b24fe55876a5b0eeaa5924583a4a002412e648076fdde743ec5",
+      "summary": "Mean-normalized clock-noise control for a hard exponential race (stdlib).",
+      "classes": [],
+      "functions": [
+        "check_temperature",
+        "log_normalizer",
+        "clock_from_unit_noise",
+        "race",
+        "moments",
+        "factorized_clock_credit"
+      ]
+    },
+    {
+      "path": "sleeping_machines/clock_preserving_temperature.py",
+      "sha256": "a92cad3bd49747fe7e55bf17b4536de03ac048b3c0ac3d68d000100998f11f26",
+      "summary": "Frozen categorical calibration preserving the exponential first-time law.",
+      "classes": [
+        {
+          "name": "ClockPreservingTemperatureHeads",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "consume_event",
+            "race"
+          ]
+        }
+      ],
+      "functions": [
+        "calibrated_from_raw"
+      ]
+    },
+    {
+      "path": "sleeping_machines/compact_context_predictor.py",
+      "sha256": "030cac14da24bf02d2cd418c376ee704685721b1ca703ff992ec7ed2d619019f",
+      "summary": "Portable dense 33-anchor readout of an unchanged native query context.",
+      "classes": [
+        {
+          "name": "Predictor",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "predict"
+          ]
+        }
+      ],
+      "functions": [
+        "basis",
+        "probabilities",
+        "save",
+        "load"
+      ]
+    },
+    {
+      "path": "sleeping_machines/compact_tied_inference.py",
+      "sha256": "c97d41b1e3c6619f9d15a8b10e79b8b4f629428dcc298b01b26fa6f2b6f36d8e",
+      "summary": "Prepared CPU inference for tied maps and private temporal state.",
+      "classes": [
+        {
+          "name": "CompactTiedSparseWorker",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_fingerprint",
+            "evaluate",
+            "accounting"
+          ]
+        }
+      ],
+      "functions": [
+        "sharing_signature",
+        "_runtime",
+        "_pack",
+        "_compact_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/compiled_episodes.py",
+      "sha256": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "summary": "Compiled episode-batched native core: batched_episodes' arithmetic with each layer step fused (THEORY \u00a7412).",
+      "classes": [],
+      "functions": [
+        "_rotate",
+        "_transport",
+        "layer_step",
+        "compiled_step",
+        "compiled_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/conditional_branch_content_credit.py",
+      "sha256": "42f60df6a5fb68e7cc4dcbd00a9495e8c114eee5af9f75df7760ca9955e39e3e",
+      "summary": "Single-site branch-content averaging with correctly scaled route credit.",
+      "classes": [],
+      "functions": [
+        "conditional_branch_objective"
+      ]
+    },
+    {
+      "path": "sleeping_machines/context_addressed_memory.py",
+      "sha256": "8b2f031fd0aa501db41247768cbd09c4a18c7f22b419e5a5257531cf736c82dd",
+      "summary": "Context-addressed persistent memory for the native temporal core (THEORY \u00a7390 addendum).",
+      "classes": [
+        {
+          "name": "ContextMemoryState",
+          "bases": [
+            "NativeLanguageState"
+          ],
+          "methods": [
+            "__init__",
+            "detach",
+            "storage",
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "_ContentWithMemory",
+          "bases": [
+            "nn.Linear"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "ContextAddressedNativeModel",
+          "bases": [
+            "NativeStreamLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "address",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/count_carrying_language.py",
+      "sha256": "745809a8ce6800c7807ea23cc9846cb2f3575db682bb651dde6d9dcb02c1f95a",
+      "summary": "Count-carrying receivers over the native addressed temporal core (THEORY \u00a7\u00a7376-380).",
+      "classes": [
+        {
+          "name": "CountCarryingNativeModel",
+          "bases": [
+            "NativeStreamLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "register_stream",
+            "use_stream",
+            "escape_parameters",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": [
+        "context_codes",
+        "fit_tables",
+        "fit_stream_counts",
+        "eval_stream_counts",
+        "compose"
+      ]
+    },
+    {
+      "path": "sleeping_machines/count_composed_stream.py",
+      "sha256": "8d62fb72d8e8dc77ac15542cdb07acd95433f933fe01e39478e2c9c0bbf6f409",
+      "summary": "Generic count-receiver composition over any stream model (labelled diagnostics; THEORY \u00a7\u00a7386-387).",
+      "classes": [
+        {
+          "name": "PositionedState",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "detach",
+            "__getattr__"
+          ]
+        },
+        {
+          "name": "CountComposedModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "register_stream",
+            "new_state",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/count_continuation.py",
+      "sha256": "48fb3c5c7e6f03e62d6398e427c98900e2ee49a65697565d0404b083465fd0e6",
+      "summary": "Kneser-Ney continuation statistics for the lower cascade orders (THEORY \u00a7393 result).",
+      "classes": [],
+      "functions": [
+        "_triples",
+        "fit_stream_continuation_counts",
+        "eval_stream_continuation_counts"
+      ]
+    },
+    {
+      "path": "sleeping_machines/count_escape_gate.py",
+      "sha256": "49be8e7d3cdc5e06744db727cf63f20ab0aaec08a5bbcaf7d05f8d65448d6a50",
+      "summary": "Count-conditioned base and state-dependent escape for count receivers (THEORY \u00a7379 caveat, \u00a7387.3, \u00a7389).",
+      "classes": [
+        {
+          "name": "CountMessage",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "EscapeGate",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "GatedCountCarryingNativeModel",
+          "bases": [
+            "CountCarryingNativeModel"
+          ],
+          "methods": [
+            "__init__",
+            "forward_chunk"
+          ]
+        },
+        {
+          "name": "GatedCountComposedModel",
+          "bases": [
+            "CountComposedModel"
+          ],
+          "methods": [
+            "__init__",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": [
+        "gate_features",
+        "_compose"
+      ]
+    },
+    {
+      "path": "sleeping_machines/decay_timing_reference.py",
+      "sha256": "d490f4effd73e60918d5ef5097f8ee7fb59e13ab9b95a3c35298e718821e2ab3",
+      "summary": "Generator-informed two-trace diagnostic; no learned routes or supremacy claim.",
+      "classes": [
+        {
+          "name": "DecayTimingReference",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "consume"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/depth_growth.py",
+      "sha256": "6f16d1fcd12d59d0922c08dc1e8bf76371b65025ab39282418b75e5d01d7207c",
+      "summary": "Grow an event encoder by identity residual blocks with live output teachers.",
+      "classes": [],
+      "functions": [
+        "grow_event_encoder"
+      ]
+    },
+    {
+      "path": "sleeping_machines/dilated_delay_taps.py",
+      "sha256": "4a5c52a0f951bf319ce3f3dbbd1ff90ea3c62483c9ad436253bcbbedd51ccab4",
+      "summary": "Learned dilated delay taps for the native temporal core (THEORY \u00a7391).",
+      "classes": [
+        {
+          "name": "TappedNativeState",
+          "bases": [
+            "NativeLanguageState"
+          ],
+          "methods": [
+            "__init__",
+            "detach",
+            "storage",
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "TappedMix",
+          "bases": [
+            "nn.Linear"
+          ],
+          "methods": [
+            "__init__",
+            "delay",
+            "forward"
+          ]
+        },
+        {
+          "name": "TappedNativeStreamLanguageModel",
+          "bases": [
+            "NativeStreamLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "forward_chunk",
+            "tap_delays"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/energy.py",
+      "sha256": "1346a497d9c5f28e8c996dd8d7584641c3bd7c0c07e408753669662dbe2cd596",
+      "summary": "Energy estimates from measured operation counts.",
+      "classes": [
+        {
+          "name": "Profile",
+          "bases": [],
+          "methods": []
+        }
+      ],
+      "functions": [
+        "energy_joules",
+        "break_even_synop_pj",
+        "profiles_table"
+      ]
+    },
+    {
+      "path": "sleeping_machines/episodic_race_language.py",
+      "sha256": "80181b8c4bda71bcca7299a33974cf808e6c9e64e35a9a7c24691de31b0d465a",
+      "summary": "Per-position KV race retrieval inside the sparse temporal backbone.",
+      "classes": [
+        {
+          "name": "EpisodicState",
+          "bases": [
+            "SparseLanguageState"
+          ],
+          "methods": [
+            "detach"
+          ]
+        },
+        {
+          "name": "EpisodicRaceLanguageModel",
+          "bases": [
+            "SparseRaceLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "candidates",
+            "consume"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/event_history_control.py",
+      "sha256": "37333ba488a906d540580dd3cb21cb6f5bd0b9fcd11ebe5310fa7febc3e731d8",
+      "summary": "Diagnostic learned decoder over causal three-mark history; no race mechanisms.",
+      "classes": [
+        {
+          "name": "EventHistoryControl",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "predict_population"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/event_memory.py",
+      "sha256": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+      "summary": "Segmented affine event memory: reference and linear-work implementations.",
+      "classes": [],
+      "functions": [
+        "segmented_memory",
+        "affine_prefix",
+        "linear_memory"
+      ]
+    },
+    {
+      "path": "sleeping_machines/event_query.py",
+      "sha256": "43dccd3a40a82f980e74eb8a5e58d05a2bd8a6dc1f2dc37b626b9c219a951ee5",
+      "summary": "Explicit observed-prefix queries. Targets never enter the event batch.",
+      "classes": [
+        {
+          "name": "ObservedPrefix",
+          "bases": [],
+          "methods": [
+            "validate"
+          ]
+        }
+      ],
+      "functions": [
+        "pack_queries"
+      ]
+    },
+    {
+      "path": "sleeping_machines/event_state.py",
+      "sha256": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+      "summary": "Learned signed event-state blocks with nonlinear payloads and winning clocks.",
+      "classes": [
+        {
+          "name": "EventStateBlock",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "emit",
+            "forward"
+          ]
+        },
+        {
+          "name": "EventStateEncoder",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "CoalescedEventStateEncoder",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        }
+      ],
+      "functions": [
+        "signed_state_scan"
+      ]
+    },
+    {
+      "path": "sleeping_machines/evidence_memory.py",
+      "sha256": "f4548b16d6f9ec03db5543c579221ec368074894766b4368a66e1a479ed1497a",
+      "summary": "Local sufficient statistics and hard pointer races shared by task adapters.",
+      "classes": [
+        {
+          "name": "ConditionalEvidence",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "scores",
+            "observe",
+            "work"
+          ]
+        },
+        {
+          "name": "RelativeRouteMemory",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "read",
+            "observe"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/evolution_offset_heads.py",
+      "sha256": "c0ec0c4f3ef4dbe300c10fe993b5d4dde04158eebf92aa45b8cdc527e48228f4",
+      "summary": "Reception phase calibration while retaining physical temporal evolution.",
+      "classes": [
+        {
+          "name": "EvolutionOffsetHeads",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "evolution_phase",
+            "transport"
+          ]
+        }
+      ],
+      "functions": [
+        "parameter_block"
+      ]
+    },
+    {
+      "path": "sleeping_machines/exact_pi_race.py",
+      "sha256": "8a35a05eeef3303cf18364860e2f3f8210565d77313eb136a24d8c4dfe1f95a9",
+      "summary": "Exact-pi linearized race credit (THEORY \u00a7400).",
+      "classes": [
+        {
+          "name": "ExactPiRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "exact_pi_race",
+        "use_exact_pi_credit"
+      ]
+    },
+    {
+      "path": "sleeping_machines/factorized_race.py",
+      "sha256": "5bbfdf41ea63770a2394dde6e39fbe4b94b79dbab95c863f6413480ae3aa5568",
+      "summary": "Factorized race credit: categorical choice and common first-time clock (THEORY note 92 remedy 2; \u00a7402 correction).",
+      "classes": [
+        {
+          "name": "FactorizedRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "delay_of",
+        "factorized_race",
+        "force_at_first_time"
+      ]
+    },
+    {
+      "path": "sleeping_machines/fast_native_core.py",
+      "sha256": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "summary": "Batched training path for the native temporal core: same arithmetic, fewer operations (THEORY \u00a7393 scale).",
+      "classes": [
+        {
+          "name": "FastNativeCoreMixin",
+          "bases": [],
+          "methods": [
+            "_stacked",
+            "forward_chunk",
+            "consume_event"
+          ]
+        },
+        {
+          "name": "FastNativeStreamLanguageModel",
+          "bases": [
+            "FastNativeCoreMixin",
+            "NativeStreamLanguageModel"
+          ],
+          "methods": []
+        }
+      ],
+      "functions": [
+        "fast_class"
+      ]
+    },
+    {
+      "path": "sleeping_machines/folded_polynomial_readout.py",
+      "sha256": "831d086f878c443513d2df23e53e2f2575b64bbd25450d71bf4e898e9b80949a",
+      "summary": "Frozen polynomial decoder with fit-only normalization folded into weights.",
+      "classes": [
+        {
+          "name": "FoldedPolynomialReadout",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        }
+      ],
+      "functions": [
+        "polynomial_features"
+      ]
+    },
+    {
+      "path": "sleeping_machines/fused_context_reader.py",
+      "sha256": "f6b227da48edeebc3be6356e19435e0abbe22d37c161dbf651f55e58f60c1cae",
+      "summary": "Inference-only compilation of a late-projected addressed reader.",
+      "classes": [
+        {
+          "name": "FusedContextReader",
+          "bases": [
+            "LateProjectedContextModel"
+          ],
+          "methods": [
+            "train",
+            "read_value",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": [
+        "compile_reader"
+      ]
+    },
+    {
+      "path": "sleeping_machines/head_conditioned_depth.py",
+      "sha256": "b750016d14703ffc738abde223ceefa57002a0a7d1f2aeb7bf7bc9b19283967d",
+      "summary": "Identity depth growth in the metric of the existing class observer.",
+      "classes": [],
+      "functions": [
+        "grow_head_conditioned"
+      ]
+    },
+    {
+      "path": "sleeping_machines/historical_write_credit.py",
+      "sha256": "a93a6bc4ab5333deada8e764718ed22393e4a4bd851d9880dc4c4006ee4643b9",
+      "summary": "Fixed-feature delayed write adjoints; these are declared local surrogates.",
+      "classes": [
+        {
+          "name": "PackedFeatureBank",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "__len__",
+            "__getitem__",
+            "append",
+            "storage"
+          ]
+        },
+        {
+          "name": "HistoricalKeyMatch",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        },
+        {
+          "name": "HistoricalValueCredit",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/historical_write_race_language.py",
+      "sha256": "1493b7bbbac57bb3cdc10c5d9e90c177229e860098112b7d2e543269cefadcc2",
+      "summary": "Parallel sparse race heads with compact historical write eligibility.",
+      "classes": [
+        {
+          "name": "HistoricalWriteState",
+          "bases": [
+            "ParallelHeadState"
+          ],
+          "methods": [
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "HistoricalWriteRaceLanguageModel",
+          "bases": [
+            "ParallelHeadRaceLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "consume"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/indexed_episodic_race_language.py",
+      "sha256": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+      "summary": "Per-position KV race retrieval inside the sparse temporal backbone.",
+      "classes": [
+        {
+          "name": "IndexedEpisodicState",
+          "bases": [
+            "SparseLanguageState"
+          ],
+          "methods": [
+            "detach"
+          ]
+        },
+        {
+          "name": "IndexedEpisodicRaceLanguageModel",
+          "bases": [
+            "SparseRaceLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "bucket",
+            "candidates",
+            "consume"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/joint_outcome_race_query.py",
+      "sha256": "574ecfa06ee7c8576383f38ecf0c6e506da5cd4177e8756fa0a9aeb59a4fabf3",
+      "summary": "Protected causal outcomes, two learned key races and a bilinear query.",
+      "classes": [
+        {
+          "name": "OutcomeRaceState",
+          "bases": [
+            "NativeLanguageState"
+          ],
+          "methods": [
+            "__init__",
+            "storage"
+          ]
+        },
+        {
+          "name": "JointOutcomeRaceQuery",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "pair_logits",
+            "query_loss",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/joint_race_credit.py",
+      "sha256": "9de9a9f3bf5f750f3c023257d290f7d682cc1c71136bd49a11f4dbb51619302d",
+      "summary": "Detached LOCAL joint winner/time credit reference; no model installs this.",
+      "classes": [],
+      "functions": [
+        "_inputs",
+        "enumerated_credit",
+        "sampled_credit"
+      ]
+    },
+    {
+      "path": "sleeping_machines/language_memory.py",
+      "sha256": "20cc1f3b2549c1997264d75410b37afe70148f46b587fc985c6210ed2e1b0300",
+      "summary": "Token-unit initialization ablations for the existing event-language blocks.",
+      "classes": [],
+      "functions": [
+        "initialize_language_memory"
+      ]
+    },
+    {
+      "path": "sleeping_machines/late_projected_context_memory.py",
+      "sha256": "7dc4a9c2b9117cb5208bfde31df6c535fbd0214ac2479471a984a128f472089b",
+      "summary": "Defer linear value projection until addressed-memory retrieval.",
+      "classes": [
+        {
+          "name": "LateProjectedMemoryState",
+          "bases": [
+            "ContextMemoryState"
+          ],
+          "methods": []
+        },
+        {
+          "name": "LateProjectedContextModel",
+          "bases": [
+            "ContextAddressedNativeModel"
+          ],
+          "methods": [
+            "new_state",
+            "read_value",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/native_bounded_score_diagnostic.py",
+      "sha256": "c088fad3407358c0d3cdfef1a7a35967fabc10d263d0713eb188c87b1397506f",
+      "summary": "Native bounded emitter prototype with exact zero bridge and paid raw taps.",
+      "classes": [
+        {
+          "name": "NativeBoundedScoreDiagnostic",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "consume_event",
+            "race",
+            "clear_trace"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/native_stream_language.py",
+      "sha256": "e344b6f3d421800d08c15cbbd8c67a4b7fd04d7d281669514c2d7690f2a1cfd9",
+      "summary": "Token content adapter for the native addressed temporal core; no KV bank.",
+      "classes": [
+        {
+          "name": "NativeLanguageState",
+          "bases": [
+            "AddressedEventState"
+          ],
+          "methods": [
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "NativeStreamLanguageModel",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/native_window_diagnostic.py",
+      "sha256": "a2cd073c943db88b12ebe6617687646beef3e4a6c3503fa638749c4ecf9469ca",
+      "summary": "Frozen one-site native reception intervention; no training credit installed.",
+      "classes": [
+        {
+          "name": "NativeWindowDiagnostic",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "consume_event"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/nuisance_readout.py",
+      "sha256": "430380c4fd8417c516b0c1bf15fe061d1ebbb685e8a915c841329567dfd86bcb",
+      "summary": "Fitting-only paired-view geometry for an affine event-query classifier.",
+      "classes": [],
+      "functions": [
+        "paired_view_metric",
+        "paired_logit_risk"
+      ]
+    },
+    {
+      "path": "sleeping_machines/numpy_addressed_inference.py",
+      "sha256": "d2018f3f9a7e7a8e62d02fc404ac4782df5880c06b9f7b365ead429cfdc96ad2",
+      "summary": "Inference-only numeric port of the one-source addressed native temporal core.",
+      "classes": [
+        {
+          "name": "NumpyAddressedInference",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "new_state",
+            "transport",
+            "align",
+            "consume",
+            "predict"
+          ]
+        }
+      ],
+      "functions": [
+        "sigmoid",
+        "softplus",
+        "norm",
+        "linear",
+        "rotate",
+        "pack"
+      ]
+    },
+    {
+      "path": "sleeping_machines/objectives.py",
+      "sha256": "5ab73ee498e29220230cbd768816d8aaef27606bb41309587f472b5a2897d9f7",
+      "summary": "Query-time objectives on common natural scores; no hidden time grid.",
+      "classes": [],
+      "functions": [
+        "categorical_nll",
+        "hazard_nll"
+      ]
+    },
+    {
+      "path": "sleeping_machines/observer_conditioned_depth.py",
+      "sha256": "867a528ff432319122ba3d8b9422740f911c66de620f3072277597c30721a65d",
+      "summary": "Identity growth with normalized features and directional output units.",
+      "classes": [
+        {
+          "name": "ObserverUnits",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "ObserverStateBlock",
+          "bases": [
+            "EventStateBlock"
+          ],
+          "methods": [
+            "__init__",
+            "emit"
+          ]
+        }
+      ],
+      "functions": [
+        "grow_observer_conditioned",
+        "materialize_observer_maps"
+      ]
+    },
+    {
+      "path": "sleeping_machines/operation_audit.py",
+      "sha256": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+      "summary": "Executed ATen arithmetic by stage, including backward and Adam.",
+      "classes": [
+        {
+          "name": "OperationAudit",
+          "bases": [
+            "TorchDispatchMode"
+          ],
+          "methods": [
+            "__init__",
+            "__torch_dispatch__",
+            "formula",
+            "result"
+          ]
+        }
+      ],
+      "functions": [
+        "tensors",
+        "floating_size"
+      ]
+    },
+    {
+      "path": "sleeping_machines/packed_episodic_race_language.py",
+      "sha256": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+      "summary": "Lossless storage for the content-indexed sparse temporal language model.",
+      "classes": [
+        {
+          "name": "PackedKVBank",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "__len__",
+            "__getitem__",
+            "append",
+            "seal",
+            "storage"
+          ]
+        },
+        {
+          "name": "PackedBucketMap",
+          "bases": [
+            "dict"
+          ],
+          "methods": [
+            "setdefault"
+          ]
+        },
+        {
+          "name": "PackedEpisodicState",
+          "bases": [
+            "IndexedEpisodicState"
+          ],
+          "methods": [
+            "detach",
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "PackedEpisodicRaceLanguageModel",
+          "bases": [
+            "IndexedEpisodicRaceLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/paired_route_credit.py",
+      "sha256": "fbfb624dea064af50b979e6c7f1862993bbc85a01c1864d20bf98ef0f2d62cd8",
+      "summary": "Finite paired choice credit; actual outcome loss differences, bounded proposal.",
+      "classes": [],
+      "functions": [
+        "alternative_probabilities",
+        "paired_choice_credit",
+        "sample_alternative"
+      ]
+    },
+    {
+      "path": "sleeping_machines/parallel_head_race_language.py",
+      "sha256": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+      "summary": "Parallel content-bearing race heads with timestamped separate channels.",
+      "classes": [
+        {
+          "name": "ParallelHeadState",
+          "bases": [
+            "PackedEpisodicState"
+          ],
+          "methods": [
+            "detach"
+          ]
+        },
+        {
+          "name": "ParallelHeadRaceLanguageModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "transport",
+            "align",
+            "race",
+            "consume",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/parallel_stream_language.py",
+      "sha256": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "summary": "Causal parallel fitting and precise clocks for the persistent language model.",
+      "classes": [
+        {
+          "name": "ParallelEventLanguageModel",
+          "bases": [
+            "StreamingEventLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "advance",
+            "consume",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": [
+        "precise_rotate"
+      ]
+    },
+    {
+      "path": "sleeping_machines/phase_memory.py",
+      "sha256": "e16161aa13f63b34ee13edf5d8bf9d0bb47cf6183c0bf18ee796927350cd4c7f",
+      "summary": "A learned periodic event state and a hard race of class clocks.",
+      "classes": [
+        {
+          "name": "PhaseMemory",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward",
+            "serial",
+            "teach"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/polynomial_query_readout.py",
+      "sha256": "096248b2df160292aa94470877d750985536eb4aabe5c0e31b3d21400e28dfeb",
+      "summary": "Small query-local affine/quadratic residual over a frozen event encoder.",
+      "classes": [
+        {
+          "name": "PolynomialQueryReadout",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "fit_statistics",
+            "design",
+            "forward"
+          ]
+        }
+      ],
+      "functions": [
+        "query_features",
+        "integrated_query_logit"
+      ]
+    },
+    {
+      "path": "sleeping_machines/prefix_tokenizer.py",
+      "sha256": "8f58e4643e1112781b2f0ea696bd1d134aa017e818dbd7c9225dfc043d08a712",
+      "summary": "Train-only, complete prefix dictionaries for causal language experiments.",
+      "classes": [
+        {
+          "name": "CompletePrefixTokenizer",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "fit",
+            "encode",
+            "decode",
+            "log_mass"
+          ]
+        },
+        {
+          "name": "ByteTimedTokenModel",
+          "bases": [
+            "StreamingEventLanguageModel"
+          ],
+          "methods": [
+            "observe_token"
+          ]
+        },
+        {
+          "name": "PrefixLanguageState",
+          "bases": [],
+          "methods": [
+            "detach"
+          ]
+        }
+      ],
+      "functions": [
+        "new_prefix_state",
+        "observe_character"
+      ]
+    },
+    {
+      "path": "sleeping_machines/prepacked_sparse_inference.py",
+      "sha256": "c06fc7ff0f122133ffade2780612e123d2ff59eced4a6fbe4c615f7553221aac",
+      "summary": "A fixed-weight CPU worker for the existing winner-only evaluator.",
+      "classes": [
+        {
+          "name": "_PreparedView",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_stacked",
+            "__getattr__"
+          ]
+        },
+        {
+          "name": "PrepackedSparseWorker",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_fingerprint",
+            "evaluate",
+            "accounting"
+          ]
+        }
+      ],
+      "functions": [
+        "_runtime",
+        "_tensor_signature",
+        "_model_signature"
+      ]
+    },
+    {
+      "path": "sleeping_machines/quadratic_native_readout.py",
+      "sha256": "895d0c9823f19f22a32094765bd05bd4286bb8f97f8cede1017c7356160be760",
+      "summary": "Zero-nested standard degree-2 readout of the current native vector.",
+      "classes": [
+        {
+          "name": "QuadraticNativeReadout",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/query_feature_inference.py",
+      "sha256": "06c0ec31105716c912b71bbd78eaf1ab6509e54195fbd331710e78d677988cea",
+      "summary": "Demand-only final-query features from the frozen native numeric port.",
+      "classes": [
+        {
+          "name": "QueryFeatureInference",
+          "bases": [
+            "NumpyAddressedInference"
+          ],
+          "methods": [
+            "__init__",
+            "align",
+            "predict_query"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/query_only_native_readout.py",
+      "sha256": "836aa2d61f18ccb49d5065c42ccbdbf33d215c2a12dab0c0857bc7c5d4eb6e8d",
+      "summary": "Inference-only query admission for the unchanged native affine classifier.",
+      "classes": [
+        {
+          "name": "QueryOnlyLinear",
+          "bases": [
+            "nn.Linear"
+          ],
+          "methods": [
+            "forward"
+          ]
+        }
+      ],
+      "functions": [
+        "install",
+        "predict"
+      ]
+    },
+    {
+      "path": "sleeping_machines/race_language.py",
+      "sha256": "70081a66f23f5d2db9dd6351645a91a9534562f98e8b414a64071ec60650760a",
+      "summary": "Causal, indexed race retrieval alongside the unchanged language carrier.",
+      "classes": [
+        {
+          "name": "WinnerRace",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        },
+        {
+          "name": "RaceStreamState",
+          "bases": [],
+          "methods": [
+            "deliveries",
+            "detach"
+          ]
+        },
+        {
+          "name": "RaceLanguageModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/race_transformer.py",
+      "sha256": "95e25857037bd948987fb95719fe51649488f950589375c202f9f29e96cfcd17",
+      "summary": "Run a trained causal Transformer as an asynchronous race-attention event stream (THEORY \u00a7397).",
+      "classes": [
+        {
+          "name": "RaceTransformerState",
+          "bases": [],
+          "methods": [
+            "__init__"
+          ]
+        },
+        {
+          "name": "RaceTransformer",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "deliver",
+            "consume",
+            "forward_stream"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/race_window.py",
+      "sha256": "394bc405c68c29ffbf54d4a7394ed6f0d8c568fa6e0633fcc8c6c8e0718c1de1",
+      "summary": "Exact conditional arrival law for a fixed deadline after an exponential race.",
+      "classes": [],
+      "functions": [
+        "bounded_delay",
+        "residual_cutoff",
+        "residual_probability",
+        "conditional_residual"
+      ]
+    },
+    {
+      "path": "sleeping_machines/readout_absorption.py",
+      "sha256": "4758466d95e233bdcd83aa409c0fb8e8bcea4b261142ff120175ae00ecfc9fde",
+      "summary": "Fold a parallel logit component into an existing affine event readout.",
+      "classes": [],
+      "functions": [
+        "project_component",
+        "optimize_head",
+        "absorption_certificate"
+      ]
+    },
+    {
+      "path": "sleeping_machines/readout_calibration.py",
+      "sha256": "037621374c3600e8613241814ec5e857545fcd41794019cac82a3ff1986653dc",
+      "summary": "Fit-only readout conditioning, including support of static metadata.",
+      "classes": [],
+      "functions": [
+        "condition_readout"
+      ]
+    },
+    {
+      "path": "sleeping_machines/relative_race_window.py",
+      "sha256": "c9f8ce8d0c5c3e727c6643982bb2a382edf5cb42c7511935c5d303c8812210d2",
+      "summary": "Race-scaled reception support; physical transport remains a separate operator.",
+      "classes": [],
+      "functions": [
+        "relative_deadline",
+        "expected_relative_receivers",
+        "maximum_added_physical_delay"
+      ]
+    },
+    {
+      "path": "sleeping_machines/repeated_arrival_race_language.py",
+      "sha256": "4e1748430d8a141ce0d90fb7a21f9e95fd34f8822f9544b8d25b6a8643fee8d8",
+      "summary": "Independent sparse heads with shared-match repeated temporal arrivals.",
+      "classes": [
+        {
+          "name": "RepeatedArrivalState",
+          "bases": [
+            "ParallelHeadState"
+          ],
+          "methods": []
+        },
+        {
+          "name": "RepeatedArrivalRaceLanguageModel",
+          "bases": [
+            "ParallelHeadRaceLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "consume"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/repeated_temporal_race.py",
+      "sha256": "103800bba528704cf54c7cf13fb08228f48d7da8b963136664405f0da3725422",
+      "summary": "Shared-rate Poisson arrivals and a conserved local counterfactual teacher.",
+      "classes": [
+        {
+          "name": "PoissonTemporalRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        }
+      ],
+      "functions": [
+        "poisson_clocks",
+        "temporal_arrivals"
+      ]
+    },
+    {
+      "path": "sleeping_machines/replay_priority_sampling.py",
+      "sha256": "c5680a08ce6504e4922d42719e18d61f97cdaec6a65700abc3cb1d419b552e97",
+      "summary": "Bounded exact inclusion probabilities for sequential weighted replay sampling.",
+      "classes": [],
+      "functions": [
+        "orders",
+        "inclusion",
+        "parameter_variance",
+        "sample"
+      ]
+    },
+    {
+      "path": "sleeping_machines/rotating_memory.py",
+      "sha256": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+      "summary": "Addressed signed temporal memory, with the real mean as its zero-phase case.",
+      "classes": [],
+      "functions": [
+        "rotate_pairs",
+        "rotating_memory"
+      ]
+    },
+    {
+      "path": "sleeping_machines/rule_seed_event_heads.py",
+      "sha256": "a8fbe3c0e7573af6e00c3d8e02e5b2cca8dd6439efee1fe6d231b48a83352817",
+      "summary": "Independent rule/embedding sharing diagnostic; inherited event dynamics intact.",
+      "classes": [
+        {
+          "name": "RuleSeedEventHeads",
+          "bases": [
+            "SplitEventHeads"
+          ],
+          "methods": [
+            "__init__"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/selective_stream_language.py",
+      "sha256": "0b78ff0fe2d4d81ad3ca97475414c6b5bc7afec791cafd673839664a29347207",
+      "summary": "Input-known write/forget gates on the precise event-language state.",
+      "classes": [
+        {
+          "name": "SelectiveEventLanguageModel",
+          "bases": [
+            "ParallelEventLanguageModel"
+          ],
+          "methods": [
+            "__init__",
+            "controls",
+            "advance",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/serial_residual.py",
+      "sha256": "bd2f4f8ad29203154c1c0429a980418b59a267ec5b5270cfb5b672ed583d9f6b",
+      "summary": "Serial event-depth extension with an explicitly owned correction query.",
+      "classes": [
+        {
+          "name": "SerialResidualEncoder",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "train",
+            "forward"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/shadow_lanes.py",
+      "sha256": "a26482f6c6f1038a35f9b6f914b0a16b9fa941195093fc9455a29e95e0d0407c",
+      "summary": "Shadow lanes: every counterfactual replay of an episode in one lane-batched, gradient-free pass (THEORY \u00a7404.2).",
+      "classes": [],
+      "functions": [
+        "shadow_losses"
+      ]
+    },
+    {
+      "path": "sleeping_machines/shared_event.py",
+      "sha256": "4bf0c696b6f9c8c55bb9930a091c6a33e0b1207150ab8030c2050387b782a314",
+      "summary": "Shared event backbone: addressed temporal state, hard races and local loser credit.",
+      "classes": [
+        {
+          "name": "RaceLayer",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "forward"
+          ]
+        },
+        {
+          "name": "SharedEventModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "freeze_keys_from_values",
+            "forward"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/silence_burst.py",
+      "sha256": "1abd182444eb4381e979ad985568682992c6bf769e904a7e38cf1152cf98dac1",
+      "summary": "Causal event-only silence-timeout accumulation, a scoped reference primitive.",
+      "classes": [],
+      "functions": [
+        "silence_bursts",
+        "finite_timeout_risk"
+      ]
+    },
+    {
+      "path": "sleeping_machines/sim.py",
+      "sha256": "c68910dd05316d099dae95adc03d298b71f3768cfbcb75579006804c0300a3f2",
+      "summary": "Discrete-event engine for the Sleeping Machines experiments.",
+      "classes": [
+        {
+          "name": "Event",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "__lt__"
+          ]
+        },
+        {
+          "name": "Engine",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "on",
+            "schedule",
+            "cancel",
+            "count",
+            "run"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/sparse_inference.py",
+      "sha256": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+      "summary": "Winner-only native inference with cached key reads (THEORY \u00a7414).",
+      "classes": [
+        {
+          "name": "SparseStepper",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_transport",
+            "step"
+          ]
+        }
+      ],
+      "functions": [
+        "sparse_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/sparse_race_language.py",
+      "sha256": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+      "summary": "Integrated sparse temporal language network, without a dense carrier.",
+      "classes": [
+        {
+          "name": "TemporalRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        },
+        {
+          "name": "TemporalUnit",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "propose"
+          ]
+        },
+        {
+          "name": "SparseLanguageState",
+          "bases": [],
+          "methods": [
+            "detach"
+          ]
+        },
+        {
+          "name": "SparseRaceLanguageModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "capacity_units",
+            "new_state",
+            "consume",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/sparse_training.py",
+      "sha256": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "summary": "Winner-plus-sampled-alternative training for the batched native core (THEORY \u00a7416).",
+      "classes": [],
+      "functions": [
+        "_rotate",
+        "_transport",
+        "_unit",
+        "sparse_layer_step",
+        "compiled_sparse_step",
+        "sparse_train_logits"
+      ]
+    },
+    {
+      "path": "sleeping_machines/split_event_heads.py",
+      "sha256": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+      "summary": "Experimental protected/temporal state with private or shared addressed rules.",
+      "classes": [
+        {
+          "name": "SplitTemporalUnit",
+          "bases": [
+            "TemporalUnit"
+          ],
+          "methods": [
+            "__init__",
+            "propose"
+          ]
+        },
+        {
+          "name": "SharedSourcePools",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "__getitem__"
+          ]
+        },
+        {
+          "name": "CommonSourceSeed",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "weight"
+          ]
+        },
+        {
+          "name": "SplitEventHeads",
+          "bases": [
+            "AddressedEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "transport"
+          ]
+        }
+      ],
+      "functions": [
+        "split_evolve"
+      ]
+    },
+    {
+      "path": "sleeping_machines/state_write_credit.py",
+      "sha256": "061f4cd62bb539fb31a8bfdf222e43624cff98b045a1045756a533cc4a9c93b6",
+      "summary": "Hard temporal races with addressed memory/arrival boundary credit.",
+      "classes": [
+        {
+          "name": "StateWriteRoute",
+          "bases": [
+            "torch.autograd.Function"
+          ],
+          "methods": [
+            "forward",
+            "backward"
+          ]
+        },
+        {
+          "name": "StateCreditState",
+          "bases": [
+            "AddressedEventState"
+          ],
+          "methods": [
+            "detach",
+            "clear_source",
+            "storage"
+          ]
+        },
+        {
+          "name": "StateCreditEventHeads",
+          "bases": [
+            "SplitEventHeads"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "consume_event"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/statistic_race_credit.py",
+      "sha256": "3ae3b1368ac9efd778ac03d9a36b15121b38d5a894bb18fe37c50950674f2093",
+      "summary": "Statistic-valued LOCAL delivery and one-next-event write credit contracts.",
+      "classes": [],
+      "functions": [
+        "predictive",
+        "delivery_credit",
+        "expected_write_gain"
+      ]
+    },
+    {
+      "path": "sleeping_machines/statistic_race_memory.py",
+      "sha256": "2cb23fe82397cee721ba934fc7b15004a20f7868cac97b0715885aa59e338293",
+      "summary": "Statistic-valued race memory over learned keys (THEORY \u00a7\u00a7382-383, \u00a7392).",
+      "classes": [
+        {
+          "name": "StatisticRaceState",
+          "bases": [
+            "NativeLanguageState"
+          ],
+          "methods": [
+            "__init__",
+            "detach",
+            "storage",
+            "packed_storage"
+          ]
+        },
+        {
+          "name": "StatisticRaceNativeModel",
+          "bases": [
+            "GatedCountCarryingNativeModel"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "race_distribution",
+            "pooled",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/statistic_race_sampled.py",
+      "sha256": "14666815c41b2cbfa48d633101ca53022d0bf8b97954383506a3012a386df37b",
+      "summary": "Sampled race writes for statistic-valued race memory (THEORY \u00a7392 collapse repair).",
+      "classes": [
+        {
+          "name": "SampledStatisticRaceNativeModel",
+          "bases": [
+            "StatisticRaceNativeModel"
+          ],
+          "methods": [
+            "__init__",
+            "race_winner",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/statistic_race_top.py",
+      "sha256": "8b28866999fa67d5cbc58e145ee9a9b0c411322e2f7f4f1d972f1d07a4088a3b",
+      "summary": "Top-placed statistic-valued race memory (THEORY \u00a7392 placement correction).",
+      "classes": [
+        {
+          "name": "TopStatisticRaceNativeModel",
+          "bases": [
+            "SampledStatisticRaceNativeModel"
+          ],
+          "methods": [
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/stream_language.py",
+      "sha256": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+      "summary": "Persistent language stream using the shared signed event-state primitive.",
+      "classes": [
+        {
+          "name": "LanguageStreamState",
+          "bases": [],
+          "methods": [
+            "detach"
+          ]
+        },
+        {
+          "name": "StreamingEventLanguageModel",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "new_state",
+            "_enqueue",
+            "advance",
+            "consume",
+            "forward_chunk"
+          ]
+        }
+      ],
+      "functions": []
+    },
+    {
+      "path": "sleeping_machines/temporal_modes.py",
+      "sha256": "9ae0c5581b487d22f44a4b6e82e2213778318741f9dbcce8fc7d8f1fbd8c8598",
+      "summary": "Stable signed temporal modes for addressed winning event updates.",
+      "classes": [
+        {
+          "name": "WinningTemporalModes",
+          "bases": [
+            "nn.Module"
+          ],
+          "methods": [
+            "__init__",
+            "rates",
+            "event"
+          ]
+        }
+      ],
+      "functions": [
+        "mode_flow"
+      ]
+    },
+    {
+      "path": "sleeping_machines/temporal_window.py",
+      "sha256": "7823078972b4ad672553e084cb5e86895ba7da44064542ab648bbd1d9e6ed4c2",
+      "summary": "Compact C1 temporal integration using event-driven exponential moments.",
+      "classes": [],
+      "functions": [
+        "temporal_window"
+      ]
+    },
+    {
+      "path": "sleeping_machines/threshold_spike_train.py",
+      "sha256": "e5c8e02f058ba4d5f45415442d37a93d045f08644514068a2178f9d890e6813b",
+      "summary": "Exact event-driven leaky threshold trains for piecewise constant currents.",
+      "classes": [],
+      "functions": [
+        "threshold_spike_train"
+      ]
+    },
+    {
+      "path": "experiments/e30_minsky.py",
+      "sha256": "9639e22c3779dda199dc9c3533774b6fb78f0bd2e76f7677d07d97cc5419c8db",
+      "summary": "E30: a two-counter (Minsky) machine wired from the temporal operator basis (THEORY \u00a759).",
+      "classes": [
+        {
+          "name": "Net",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "at",
+            "run"
+          ]
+        },
+        {
+          "name": "Node",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "fire",
+            "to"
+          ]
+        },
+        {
+          "name": "Delay",
+          "bases": [
+            "Node"
+          ],
+          "methods": [
+            "__init__",
+            "recv"
+          ]
+        },
+        {
+          "name": "Or",
+          "bases": [
+            "Node"
+          ],
+          "methods": [
+            "recv"
+          ]
+        },
+        {
+          "name": "And",
+          "bases": [
+            "Node"
+          ],
+          "methods": [
+            "__init__",
+            "recv"
+          ]
+        },
+        {
+          "name": "Veto",
+          "bases": [
+            "Node"
+          ],
+          "methods": [
+            "__init__",
+            "recv"
+          ]
+        },
+        {
+          "name": "Probe",
+          "bases": [
+            "Node"
+          ],
+          "methods": [
+            "__init__",
+            "recv"
+          ]
+        }
+      ],
+      "functions": [
+        "build",
+        "run_program",
+        "reference",
+        "main"
+      ]
+    },
+    {
+      "path": "experiments/e53_depth3.py",
+      "sha256": "2285c6a3ff49d04b1154b4de5347f4cb0849a26f909d76eb509e427de6a5c96c",
+      "summary": "E53: order among three parts needs depth 3; the expanded candidate basis is paid for by activity, not size (THEORY \u00a784).",
+      "classes": [
+        {
+          "name": "Net",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "units",
+            "forward",
+            "_mul",
+            "_near_miss",
+            "teach"
+          ]
+        }
+      ],
+      "functions": [
+        "make_task",
+        "occ",
+        "holds",
+        "plant_seq",
+        "sample",
+        "main"
+      ]
+    },
+    {
+      "path": "experiments/e54_chains.py",
+      "sha256": "d65885620edd3bcb77922eab111174605791801296fcfe299764eb565fb3a3b6",
+      "summary": "E54: deeper order by chain composites with synapses grown on activity (THEORY \u00a785), verified against dense weights.",
+      "classes": [
+        {
+          "name": "Syn",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "grow",
+            "w",
+            "mul"
+          ]
+        },
+        {
+          "name": "Net",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_idx",
+            "_grow",
+            "_dense_base",
+            "units",
+            "forward",
+            "refresh_useful",
+            "teach"
+          ]
+        }
+      ],
+      "functions": [
+        "make_task",
+        "holds",
+        "plant_seq",
+        "horizon",
+        "sample",
+        "main"
+      ]
+    },
+    {
+      "path": "experiments/e61_race_attention.py",
+      "sha256": "15d253d3c2c6ed0f4f0c16fbe7426794259c923d117f7e3245d9cfb64ef069a8",
+      "summary": "E61: is attention trainable by local credit? Associative recall with a learned query-key map (THEORY \u00a796, \u00a797).",
+      "classes": [
+        {
+          "name": "RaceAttention",
+          "bases": [],
+          "methods": [
+            "__init__",
+            "forward",
+            "teach"
+          ]
+        }
+      ],
+      "functions": [
+        "make_perm",
+        "sample",
+        "run_event",
+        "run_tf",
+        "main"
+      ]
+    },
+    {
+      "path": "experiments/e120_shared_tasks.py",
+      "sha256": "40049870698d79fff8afbfb5446a91fd3b4596c9ac973938ceefac2dcf24be26",
+      "summary": "Bounded data adapters for the shared event model, with explicit prefix queries.",
+      "classes": [
+        {
+          "name": "Example",
+          "bases": [],
+          "methods": []
+        },
+        {
+          "name": "Task",
+          "bases": [],
+          "methods": []
+        }
+      ],
+      "functions": [
+        "prefix",
+        "text_slice",
+        "language",
+        "recall",
+        "temporal",
+        "modular",
+        "mnist",
+        "market"
+      ]
+    },
+    {
+      "path": "experiments/e173_causal_language.py",
+      "sha256": "7aafdf28eae453de123944d46cbb3adf380ce46715ab4e72313151f1f3156b35",
+      "summary": "Corrected, bounded-memory native language rerun with explicit expert arms.",
+      "classes": [
+        {
+          "name": "CausalWordOrder",
+          "bases": [],
+          "methods": [
+            "__init__"
+          ]
+        }
+      ],
+      "functions": [
+        "bounded_copy",
+        "batches",
+        "probe",
+        "main"
+      ]
+    },
+    {
+      "path": "experiments/e174_aligned_language_baselines.py",
+      "sha256": "161f44200ce6cba7d13d35ded9585d4e7130f1cb4c91ad381621004a45c27df8",
+      "summary": "Rescore saved E64 controls on exactly E173's target positions, including tail.",
+      "classes": [],
+      "functions": [
+        "score",
+        "main"
+      ]
+    }
+  ]
+}

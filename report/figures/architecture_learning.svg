@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" role="img" aria-label="One structure: stateful prediction, online learning and batching">
+<defs><marker id="arrow-8f37b5dc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="970" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">One structure: stateful prediction, online learning and batching</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">TTT and online updates use the same trainable units, memories, clocks and routes; define the causal objective.</text>
+<g class=""><rect x="35" y="130" width="290" height="120" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="157" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Observed input event</text>
+<text x="49" y="183" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">source + content + time</text>
+<text x="49" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">available self-supervised evidence</text>
+<text x="49" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">independent stream or batch lane</text>
+</g>
+<g class=""><rect x="395" y="130" width="370" height="155" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="409" y="157" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Same stateful model</text>
+<text x="409" y="183" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">private state + shared/local maps</text>
+<text x="409" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">selected temporal programs</text>
+<text x="409" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">keys, values, routes and clocks</text>
+<text x="409" y="252" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">predictions and persistent writes</text>
+</g>
+<g class=""><rect x="840" y="130" width="325" height="155" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="854" y="157" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Prediction / action</text>
+<text x="854" y="183" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">causal query and output</text>
+<text x="854" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">record score before label update</text>
+<text x="854" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">continue inference / retain state</text>
+<text x="854" y="252" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">later observed outcome</text>
+</g>
+<polyline class="" points="325,192 395,192" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8f37b5dc)"/>
+<polyline class="" points="765,192 840,192" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8f37b5dc)"/>
+<g class="learning"><rect x="840" y="365" width="325" height="120" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="854" y="392" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Loss / learning event</text>
+<text x="854" y="418" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">observed target or self-supervision</text>
+<text x="854" y="441" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">no unavailable future label</text>
+<text x="854" y="464" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">declared online or inner objective</text>
+</g>
+<g class="learning"><rect x="395" y="365" width="370" height="155" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="409" y="392" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Credit on the model structure</text>
+<text x="409" y="418" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">actual content / state / time paths</text>
+<text x="409" y="441" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">route alternatives and eligibility</text>
+<text x="409" y="464" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">bounded extra proposals or replay</text>
+<text x="409" y="487" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">future-write utility still incomplete</text>
+</g>
+<g class="learning"><rect x="35" y="365" width="290" height="155" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="49" y="392" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Parameter update</text>
+<text x="49" y="418" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">local ownership or shared rules</text>
+<text x="49" y="441" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">declared optimizer / learning rate</text>
+<text x="49" y="464" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">retain needed versions / credit</text>
+<text x="49" y="487" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">affect subsequent computation</text>
+</g>
+<polyline class="learning" points="1000,285 1000,365" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-8f37b5dc)"/>
+<polyline class="learning" points="840,425 765,425" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-8f37b5dc)"/>
+<polyline class="learning" points="395,425 325,425" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-8f37b5dc)"/>
+<polyline class="learning" points="180,365 180,310 500,310 500,285" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-8f37b5dc)"/>
+<g class=""><rect x="35" y="595" width="550" height="170" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="49" y="622" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Streamed / local update policy</text>
+<text x="49" y="648" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Credit may arrive later than the prediction event.</text>
+<text x="49" y="671" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Select eligible units and useful alternative support.</text>
+<text x="49" y="694" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Shared keys/maps and stale versions need coordination.</text>
+<text x="49" y="717" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Sparse forward activity is not total training sparsity.</text>
+<text x="49" y="740" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Fully asynchronous physical training is pending.</text>
+</g>
+<g class=""><rect x="615" y="595" width="550" height="170" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="629" y="622" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Batching / compiled execution</text>
+<text x="629" y="648" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Independent lanes retain independent state.</text>
+<text x="629" y="671" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Group compatible operations into dense kernels.</text>
+<text x="629" y="694" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Masks / resets / event order preserve lane semantics.</text>
+<text x="629" y="717" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Batch and sequential updates can differ numerically.</text>
+<text x="629" y="740" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Current clip / Adam steps remain coordinated.</text>
+</g>
+<text x="35" y="825" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">State adaptation ≠ parameter learning. TTT is a supported family capability, not a measured project TTT win.</text>
+<text x="35" y="860" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Charge selected inference + candidate discovery + alternative credit + optimizer + retained state + traffic.</text>
+<text x="35" y="895" font-family="Arial, sans-serif" font-size="16" fill="#2259a7" font-weight="700">Learning may be online, batched or mixed without replacing the model by a separate dense predictor.</text>
+<text x="35" y="934" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Reference loop: native integrated units. This figure specifies admissible learning policies, not an on-chip implementation.</text>
+</svg>

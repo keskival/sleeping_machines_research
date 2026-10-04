@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="3. Execution structures: representative model families">
+<defs><marker id="arrow-dbb00dcb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="850" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">3. Execution structures: representative model families</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Structural comparison, not a quality or energy ranking. Mature implementations remain required controls.</text>
+<text x="34" y="112" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Dense softmax attention</text>
+<g class=""><rect x="34" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="48" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">query + cached keys/values</text>
+</g>
+<polyline class="" points="300,157 320,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="320" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="154" font-family="Arial, sans-serif" font-size="16.701754385964914" fill="#2259a7" font-weight="700">all valid key comparisons</text>
+</g>
+<polyline class="" points="586,157 606,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="606" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="620" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">weighted value aggregation</text>
+</g>
+<polyline class="" points="872,157 892,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="892" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="906" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">FFN + residual; next layer</text>
+</g>
+<text x="34" y="214" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Every valid value can contribute. FlashAttention improves IO, not the mathematical attention function.</text>
+<text x="34" y="257" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Recurrent / selective SSM</text>
+<g class=""><rect x="34" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="48" y="299" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">input + carried state</text>
+</g>
+<polyline class="" points="300,302 320,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="320" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="299" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">input-conditioned gates/flow</text>
+</g>
+<polyline class="" points="586,302 606,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="606" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="620" y="299" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">update configured state</text>
+</g>
+<polyline class="" points="872,302 892,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="892" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="906" y="299" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">readout; carry to next input</text>
+</g>
+<text x="34" y="359" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Recurrence compresses history. State update structure and parallel scan implementation matter.</text>
+<text x="34" y="402" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Sparse expert layer / MoE</text>
+<g class=""><rect x="34" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="48" y="444" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">input representation</text>
+</g>
+<polyline class="" points="300,447 320,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="320" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="444" font-family="Arial, sans-serif" font-size="16.701754385964914" fill="#2259a7" font-weight="700">router + candidate scores</text>
+</g>
+<polyline class="" points="586,447 606,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="606" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="620" y="444" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">selected expert computations</text>
+</g>
+<polyline class="" points="872,447 892,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="892" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="906" y="444" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">combine; residual/next layer</text>
+</g>
+<text x="34" y="504" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Capacity can exceed selected experts. Router, communication, learning and balance remain paid.</text>
+<text x="34" y="547" font-family="Arial, sans-serif" font-size="18" fill="#147d69" font-weight="700">Native temporal receiver stack</text>
+<g class=""><rect x="34" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="48" y="589" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#147d69" font-weight="700">content/time + private state</text>
+</g>
+<polyline class="" points="300,592 320,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="320" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="334" y="589" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#147d69" font-weight="700">key race: identity AND clock</text>
+</g>
+<polyline class="" points="586,592 606,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="606" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="620" y="589" font-family="Arial, sans-serif" font-size="15.464587394411957" fill="#147d69" font-weight="700">selected state/value update</text>
+</g>
+<polyline class="" points="872,592 892,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="892" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="906" y="589" font-family="Arial, sans-serif" font-size="15.464587394411957" fill="#147d69" font-weight="700">timed head join; next layer</text>
+</g>
+<text x="34" y="649" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Time transforms content; writes change future selection. Standard training also computes losing values.</text>
+<text x="34" y="692" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Addressed count / backoff memory</text>
+<g class=""><rect x="34" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="48" y="734" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">context address + symbol</text>
+</g>
+<polyline class="" points="300,737 320,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="320" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="734" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">lookup statistics + escape</text>
+</g>
+<polyline class="" points="586,737 606,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="606" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="620" y="734" font-family="Arial, sans-serif" font-size="13.469156762874931" fill="#2259a7" font-weight="700">predict before observing target</text>
+</g>
+<polyline class="" points="872,737 892,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<g class=""><rect x="892" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="906" y="734" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">increment addressed counts</text>
+</g>
+<text x="34" y="794" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Counts store evidence directly. Learned pooling is an extension, not an inherent property of counting.</text>
+</svg>
