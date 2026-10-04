@@ -106,6 +106,8 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--segment', type=int, default=0, help='truncated credit: segments of this many events with the '
+                   'state carried (detached) across segments (sleeping_machines/carried_episodes.py); 0: whole runs')
     a = p.parse_args()
     out = ROOT / 'experiments/results/fas' / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -126,7 +128,10 @@ def main():
         inductor_config.compile_threads = 1; dynamo_config.cache_size_limit = 64
         fn = compiled_logits
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
-    per_epoch = math.ceil(len(train) / a.lanes); total = a.epochs * per_epoch
+    per_epoch = math.ceil(len(train) / a.lanes) * (math.ceil(len(train[0][0]) / a.segment) if a.segment else 1)
+    total = a.epochs * per_epoch
+    if a.segment and len({len(r[0]) for r in train}) != 1:
+        raise ValueError('--segment needs equal-length training runs: set --train-max-events <= the shortest run')
     if a.max_windows:
         total = min(total, a.max_windows)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(opt, total)
@@ -141,20 +146,58 @@ def main():
                 break
             idx = order[b:b + a.lanes]; rows, y, g, mask = batch(train, idx)
             box = {}
+            if a.segment:                   # truncated credit: consecutive segments, state carried (detached)
+                from sleeping_machines.carried_episodes import carried_logits, detach
+                from sleeping_machines.compiled_episodes import layer_step
+                stamps = torch.tensor(np.stack([train[j][1] for j in idx]), dtype=torch.float64)
+                marks = torch.from_numpy(np.stack([EYE[train[j][0]] for j in idx]))
+                state = None
+                for s in range(0, stamps.shape[1], a.segment):
+                    if w >= total:
+                        break
+                    sl = slice(s, s + a.segment)
 
-            def step(logits_fn):
-                model.train(); opt.zero_grad(set_to_none=True)
-                per = nll(logits_fn(model, rows, 100000 + w, all_logits=True, route_credit=rc), y, g, mask)
-                loss = per.sum() / mask.sum()
-                loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
-                box['loss'] = float(loss)
-            if w < a.trace_windows:
-                rec = capture(lambda: step(batched_logits)); ledger = merge([ledger, rec]) if ledger else rec
-                traced_events += sum(len(r['events']) for r in rows)
+                    def seg_step(step_fn):
+                        nonlocal state
+                        model.train(); opt.zero_grad(set_to_none=True)
+                        z, st = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
+                                               step=step_fn, route_credit=rc)
+                        per = nll(z, y[:, sl], g[:, sl], mask[:, sl]); m = mask[:, sl].sum()
+                        loss = per.sum() / m
+                        loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
+                        state = detach(st); box['loss'] = float(loss.detach()); box['n'] = int(m)
+                    if w < a.trace_windows:     # work trace: the batched formulation (same per-event operators), fresh state
+                        seg_rows = [dict(events=[(float(stamps[r, k]), marks[r, k].numpy()) for k in range(sl.start, min(sl.stop, stamps.shape[1]))])
+                                    for r in range(stamps.shape[0])]
+
+                        def traced():
+                            model.train(); opt.zero_grad(set_to_none=True)
+                            per = nll(batched_logits(model, seg_rows, 100000 + w, all_logits=True, route_credit=rc),
+                                      y[:, sl], g[:, sl], mask[:, sl]); m = mask[:, sl].sum()
+                            loss = per.sum() / m
+                            loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
+                            box['loss'] = float(loss.detach()); box['n'] = int(m)
+                        rec = capture(traced); ledger = merge([ledger, rec]) if ledger else rec
+                        traced_events += stamps.shape[0] * (min(s + a.segment, stamps.shape[1]) - s)
+                    else:
+                        seg_step(None if a.compiled else layer_step)
+                    schedule.step(); w += 1
+                    events_seen += stamps.shape[0] * (min(s + a.segment, stamps.shape[1]) - s)
+                    loss_sum += box['loss'] * box['n']; n_sum += box['n']
             else:
-                step(fn)
-            schedule.step(); w += 1
-            events_seen += sum(len(r['events']) for r in rows); loss_sum += box['loss'] * int(mask.sum()); n_sum += int(mask.sum())
+                def step(logits_fn):
+                    model.train(); opt.zero_grad(set_to_none=True)
+                    per = nll(logits_fn(model, rows, 100000 + w, all_logits=True, route_credit=rc), y, g, mask)
+                    loss = per.sum() / mask.sum()
+                    loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
+                    box['loss'] = float(loss)
+                if w < a.trace_windows:
+                    rec = capture(lambda: step(batched_logits)); ledger = merge([ledger, rec]) if ledger else rec
+                    traced_events += sum(len(r['events']) for r in rows)
+                else:
+                    step(fn)
+                schedule.step(); w += 1
+                events_seen += sum(len(r['events']) for r in rows); loss_sum += box['loss'] * int(mask.sum()); n_sum += int(mask.sum())
             if w % 25 == 0:
                 print(json.dumps(dict(window=w, of=total, train_nll=box['loss'],
                                       events_per_s=events_seen / (time.perf_counter() - started))), flush=True)
