@@ -1,0 +1,2 @@
+# FAS v1 reference (s5t), clean-only training, validation-clean NLL selection; see AWS_FAS_REFERENCES.md
+aws_fas_v1_s5t_d128L2_20261004T224000Z experiments/aws_benchmark.py --run-tag aws_fas_v1_s5t_d128L2_20261004T224000Z --script experiments/fas/dense.py -- --data fas_v1_20261004 --tag aws_fas_v1_s5t_d128L2_e3_s0_20261004T224000Z --model s5t --d 128 --layers 2 --epochs 3 --lanes 16

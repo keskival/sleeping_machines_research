@@ -1,0 +1,2 @@
+# FAS v1 data on AWS: same seeds as curie (manifest experiments/results/fas/fas_v1_20261004_manifest.json); see AWS_FAS_REFERENCES.md
+aws_fas_v1_data_20261004T224000Z experiments/aws_benchmark.py --run-tag aws_fas_v1_data_20261004T224000Z --stdout-only --script experiments/fas/generate.py -- --name fas_v1_20261004 --train 10000 --val 1000 --test 2000
