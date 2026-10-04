@@ -45,10 +45,18 @@ def load(split, bin_ms, group, max_time=1.4):
     return X, labels.astype(np.int64), speakers
 
 
-def rows_of(X, idx, noise=0., rng=None):
+def rows_of(X, idx, noise=0., rng=None, shift=0):
     rows = []
     for i in idx:
         x = X[i]
+        if shift and rng is not None:              # frequency-ordered channels: random shift (pitch-like augmentation)
+            k = int(rng.integers(-shift, shift + 1))
+            if k:
+                x = np.roll(x, k, axis=1)
+                if k > 0:
+                    x[:, :k] = 0
+                else:
+                    x[:, k:] = 0
         if noise and rng is not None:
             x = x + rng.normal(0, noise, x.shape).astype(np.float32)
         rows.append(dict(events=[(float(t), x[t]) for t in range(len(x))]))
@@ -82,6 +90,8 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--weight-decay', type=float, default=0.)
     p.add_argument('--input-noise', type=float, default=0.); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--compiled', action='store_true')
+    p.add_argument('--channel-shift', type=int, default=0, help='training augmentation: random channel-group shift in +-k')
+    p.add_argument('--label-smoothing', type=float, default=0.)
     p.add_argument('--official-test', action='store_true', help='score the official test file with the selected weights')
     a = p.parse_args()
     out = ROOT / 'experiments/results/shd_native' / f'{a.tag}.json'
@@ -110,10 +120,10 @@ def main():
     for epoch in range(1, a.epochs + 1):
         order = rng.permutation(fit_idx); t0 = time.perf_counter(); loss_sum = 0.
         for b in range(0, len(order), a.lanes):
-            chunk = order[b:b + a.lanes]; rows = rows_of(X, chunk, a.input_noise, rng)
+            chunk = order[b:b + a.lanes]; rows = rows_of(X, chunk, a.input_noise, rng, a.channel_shift)
             model.train(); opt.zero_grad(set_to_none=True)
             logits = mean_logits(logits_fn(model, rows, 100000 + step, all_logits=True, route_credit=rc), rows)
-            loss = F.cross_entropy(logits, torch.tensor(y[chunk]))
+            loss = F.cross_entropy(logits, torch.tensor(y[chunk]), label_smoothing=a.label_smoothing)
             loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step(); schedule.step()
             loss_sum += float(loss.detach()) * len(chunk); step += 1
         acc, nll = evaluate(model, X, y, val_idx, 64)
