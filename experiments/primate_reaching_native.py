@@ -101,14 +101,18 @@ def run_session(a, name):
     fit_s = time.perf_counter() - started
     model.eval()
 
-    def stream(indices):
+    def stream(indices, K=None):
+        K = a.route_samples if K is None else K
         # K independent race-noise streams (separate steppers: one stepper shares each race's draw across its lanes);
         # predictions averaged
-        steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(a.route_samples)]; preds = []
+        steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(K)]; preds = []
         for t, i in enumerate(indices):
             x = torch.tensor(spikes[i])[None]
             preds.append(torch.stack([st.step(torch.tensor([float(t)]), x)[0] for st in steppers]).mean(0).numpy())
         return np.array(preds) * sd + mu
+    single = None
+    if a.route_samples > 1:                       # also the single-stream score, for the record
+        single = dict(val_r2=r2(stream(val, 1), labels[val]) if len(val) else None, test_r2=r2(stream(test, 1), labels[test]))
     val_pred, test_pred = (stream(val) if len(val) else None), stream(test)
     val_r2 = r2(val_pred, labels[val]) if len(val) else None
     test_r2 = r2(test_pred, labels[test])
@@ -125,7 +129,7 @@ def run_session(a, name):
         smoothing = dict(alpha=best, val_r2=scores[best], grid={str(k): v for k, v in scores.items()},
                          test_r2=r2(leaky(test_pred, best), labels[test]))
     return dict(session=name, test_r2=test_r2 if smoothing is None else smoothing['test_r2'], unsmoothed_test_r2=test_r2,
-                val_r2=val_r2, readout_smoothing=smoothing, fit_bins=len(train), val_bins=len(val), test_bins=len(test),
+                val_r2=val_r2, readout_smoothing=smoothing, route_samples=a.route_samples, single_stream=single, fit_bins=len(train), val_bins=len(val), test_bins=len(test),
                 channels=int(spikes.shape[1]), final_train_mse=float(np.mean(losses[-50:])), fit_s=fit_s,
                 parameters=sum(p.numel() for p in model.parameters()))
 
