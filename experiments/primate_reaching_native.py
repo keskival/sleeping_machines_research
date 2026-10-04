@@ -106,9 +106,23 @@ def run_session(a, name):
         for t, i in enumerate(indices):
             preds.append(stepper.step(torch.tensor([float(t)]), torch.tensor(spikes[i])[None])[0].numpy())
         return np.array(preds) * sd + mu
-    val_r2 = r2(stream(val), labels[val]) if len(val) else None
-    test_r2 = r2(stream(test), labels[test])
-    return dict(session=name, test_r2=test_r2, val_r2=val_r2, fit_bins=len(train), val_bins=len(val), test_bins=len(test),
+    val_pred, test_pred = (stream(val) if len(val) else None), stream(test)
+    val_r2 = r2(val_pred, labels[val]) if len(val) else None
+    test_r2 = r2(test_pred, labels[test])
+    smoothing = None
+    if a.smoothing and len(val):          # causal leaky readout y_t = a y_{t-1} + (1-a) p_t, a chosen on validation only
+        def leaky(pred, alpha):
+            out = np.empty_like(pred); acc = pred[0]
+            for t in range(len(pred)):
+                acc = alpha * acc + (1 - alpha) * pred[t]; out[t] = acc
+            return out
+        grid = [0., .3, .5, .6, .7, .75, .8, .85, .9, .93, .95]
+        scores = {alpha: r2(leaky(val_pred, alpha), labels[val]) for alpha in grid}
+        best = max(scores, key=scores.get)
+        smoothing = dict(alpha=best, val_r2=scores[best], grid={str(k): v for k, v in scores.items()},
+                         test_r2=r2(leaky(test_pred, best), labels[test]))
+    return dict(session=name, test_r2=test_r2 if smoothing is None else smoothing['test_r2'], unsmoothed_test_r2=test_r2,
+                val_r2=val_r2, readout_smoothing=smoothing, fit_bins=len(train), val_bins=len(val), test_bins=len(test),
                 channels=int(spikes.shape[1]), final_train_mse=float(np.mean(losses[-50:])), fit_s=fit_s,
                 parameters=sum(p.numel() for p in model.parameters()))
 
@@ -125,6 +139,7 @@ def main():
     p.add_argument('--warmup', type=int, default=25); p.add_argument('--val-fraction', type=float, default=.1333)
     p.add_argument('--route-credit', choices=('none', 'linear'), default='linear')
     p.add_argument('--compiled', action='store_true'); p.add_argument('--seed', type=int, default=1)
+    p.add_argument('--smoothing', action='store_true', help='causal leaky-integrator readout; constant chosen on validation')
     a = p.parse_args()
     out = ROOT / 'experiments/results/neurobench_primate' / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
