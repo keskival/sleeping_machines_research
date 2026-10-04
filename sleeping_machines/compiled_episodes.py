@@ -105,7 +105,7 @@ def compiled_step():
     return _COMPILED['step']
 
 
-def compiled_logits(model, rows, seed, all_logits=False, step=None, route_credit=None, feedback=None):
+def compiled_logits(model, rows, seed, all_logits=False, step=None, route_credit=None, feedback=None, deterministic=False):
     """Drop-in for batched_logits(model, rows, seed, all_logits=...) without forces/record.  step: the layer function
     (default compiled; pass layer_step for the eager reference of this formulation).  feedback: optional
     (start, fn); from event index start on, the content is fn(previous content, previous logits) instead of the row's
@@ -156,6 +156,8 @@ def compiled_logits(model, rows, seed, all_logits=False, step=None, route_credit
             for depth in range(D):
                 Lp = layers[depth]
                 noise = torch.stack([torch.empty(U, dtype=torch.float64).exponential_() for _ in range(H)])
+                if deterministic:              # every clock noise 1: the highest score wins (labelled variant)
+                    noise = torch.ones_like(noise)
                 mix = model.channel_mix[depth]
                 x, arrival, mem[depth], arr[depth], seen[depth], values, arrivals = step(
                     x, arrival, mem[depth], arr[depth], seen[depth], active, noise, mix.weight, mix.bias, Lp['query'],

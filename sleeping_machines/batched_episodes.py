@@ -63,7 +63,7 @@ def linear_write_credit(scores, old, new, active):
     return (pi - pi.detach())[..., None] * (new - old).detach() * active[:, None, None].to(new.dtype)
 
 
-def batched_logits(model, rows, seed, forces=None, record=None, all_logits=False, route_credit=None):
+def batched_logits(model, rows, seed, forces=None, record=None, all_logits=False, route_credit=None, deterministic=False):
     """rows: episodes (dict with 'events'); forces: per-lane (race, alt) or None; record: list receiving each race's
     (n, U) scores in race order.  Returns (n, classes) final logits, or (n, T, classes) logits after every event when
     all_logits (positions beyond an episode's length are zero).  route_credit='linear' adds the linearized value
@@ -135,6 +135,8 @@ def batched_logits(model, rows, seed, forces=None, record=None, all_logits=False
                 new_mem, new_arr, new_seen = mem[:, depth], arr[:, depth], seen[:, depth]
                 for head in range(H):
                     noise = torch.empty(U, dtype=torch.float64).exponential_()     # shared across lanes
+                    if deterministic:          # every clock noise 1: the highest score wins (labelled variant)
+                        noise = torch.ones_like(noise)
                     alt = torch.where(force_race == race, force_alt, torch.full_like(force_alt, -1))
                     if record is not None:
                         record.append(scores[:, head])

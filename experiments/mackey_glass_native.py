@@ -94,6 +94,8 @@ def fit_and_forecast(a, z, seed):
         if closed and a.delta:
             kw = dict(feedback=(a.closed_loop, lambda prev, logits: torch.cat([prev[:, :1] + logits[:, :1].to(prev.dtype),
                                                                              prev[:, :-1]], -1)))
+        if a.train_argmax:
+            kw['deterministic'] = True
         out = logits_fn(model, rows, 1000 + step, all_logits=True, route_credit=rc, **kw)[..., 0]
         loss = F.mse_loss(out[:, a.warmup:], y[:, a.warmup:])
         loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step(); schedule.step()
@@ -132,6 +134,7 @@ def main():
                    'previous prediction as the newest tap (gradients through it); 0 = teacher forcing only (needs --compiled)')
     p.add_argument('--delta', action='store_true', help='predict the increment z[t+1] - z[t]')
     p.add_argument('--argmax', action='store_true', help='deterministic routing at inference (highest score wins)')
+    p.add_argument('--train-argmax', action='store_true', help='deterministic routing in training as well')
     p.add_argument('--closed-from', type=float, default=.5, help='fraction of training after which closed-loop windows start')
     a = p.parse_args()
     if a.closed_loop and not a.compiled:
