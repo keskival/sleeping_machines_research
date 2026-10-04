@@ -2,7 +2,8 @@
 
 **Priority update (user, 4 October 21:00 UTC): tuned dense references (P0-6, [TUNED_BASELINES.md](TUNED_BASELINES.md)).**
 Slot order: 90M rev. 4 p64 (P0-1) → the ten `queue/aws_tuned_ref_10M_*_20261004T210000Z.txt` → six-session primate (P0-3)
-→ p96 rev. 4 → four `aws_tuned_ref_90M_*` → `aws_language_10M_r1_p64d4_4pass_linear_s7_20261004T210000Z`. One job per queue,
+→ p96 rev. 4 → four `aws_tuned_ref_90M_*` → `aws_language_10M_r1_p64d4_4pass_linear_s7_20261004T210000Z` → `aws_language_10M_p64d4_pool8_sampled_4pass_s6_20261004T233500Z`
+(P1-2/P2: quality beside the flat-traffic capacity cost model; 10M RSS for pool 8 is unmeasured, so start at the 10M caps and watch). One job per queue,
 via run_safe.sh. Select tuned arms by validation, never by test. Wall time is not evidence (simulated hardware).
 
 **Priority (user, 4 October 19:30): 90M matched-compute runs** `queue/aws_language_90M_r4_p64d4_4pass_linear_20261004T193000Z.txt`

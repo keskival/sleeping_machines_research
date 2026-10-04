@@ -2996,6 +2996,24 @@ Seed SD measures variation across training seeds on the same TEST examples, not 
 
 Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting presentations, not unique examples. Completed pilots, screens and final refits together account for 7,162.53GF estimated fitting work. Failed/contract/evaluation/compilation/preprocessing work is additional. Estimates extrapolate one eager optimizer window per epoch; variable padding prevents exact whole-fit accounting. Sources: experiments/results/public_benchmarks/*.json.
 
+## Hardware cost model: bytes moved per character
+
+Per-character steady-state inference reads/writes, priced with Horowitz 45 nm anchors (int8, batch 1). Native rows use the exact cached-key winner-only execution (§414); its p96 count agrees with the recorded 1.3 MF/position trace. The 1.888-bpc native model moves 5.8× fewer bytes than the Transformer-256×4 it beats (1.908) and 1.9× fewer than LSTM-512 (1.799, better quality). From pool 2 to pool 32, parameters grow 10.5× and bytes per character 5%: capacity beyond activity at the traffic level (pool-32 quality not measured).
+
+| Model | Params | Weights read/char | State read/char | Bytes/char | µJ/char SRAM | µJ/char DRAM |
+| --- | --- | --- | --- | --- | --- | --- |
+| native p96/d4/H2/U2 | 0.94M | 642K (68%) | 2.3K | 646K | 1.00 | 104 |
+| native p64/d4/H2/U2 | 0.42M | 289K (68%) | 1.5K | 291K | 0.45 | 47 |
+| native p64/d4/H2/U4 | 0.69M | 289K (42%) | 2.6K | 292K | 0.45 | 47 |
+| native p64/d4/H2/U8 | 1.22M | 289K (24%) | 4.6K | 295K | 0.46 | 47 |
+| native p64/d4/H2/U32 | 4.43M | 289K (7%) | 16.9K | 307K | 0.48 | 49 |
+| LSTM-256 | 0.34M | 338K (100%) | 0.5K | 339K | 0.53 | 54 |
+| LSTM-512 | 1.20M | 1199K (100%) | 1.0K | 1201K | 1.86 | 193 |
+| Transformer-256x2 (ctx 256) | 1.66M | 1659K (100%) | 262.1K | 1922K | 2.98 | 308 |
+| Transformer-256x4 (ctx 256) | 3.24M | 3238K (100%) | 524.3K | 3765K | 5.83 | 603 |
+
+Per-character steady-state inference traffic and priced energy under stated 45 nm conventions; int8 values; batch 1; not a chip measurement. Native rows use winner-only execution with cached key reads (§414, contract tests/test_sparse_inference.py). Source: experiments/results/diagnostics/hardware_cost_model_20261004.json; experiments/hardware_cost_model.py; investment/HARDWARE_THESIS.md. Not a chip, cache or joule measurement.
+
 ## Appendix. Native language at 10M: the integrated core, segment-batched
 
 | Model (10M) | Params | Steps | Test bpc T128/T256 | Whole fit TF est. | Fit MF/char | Infer MF/pos. emulator | Infer MF/pos. winner-only |
