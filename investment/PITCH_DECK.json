@@ -878,7 +878,7 @@
       "kind": "table",
       "section": "Appendix / platform opportunities",
       "title": "One substrate can support new communication and learning patterns.",
-      "subtitle": "Application hypotheses with first proofs; no project codec, embodied-transfer or AGI result.",
+      "subtitle": "Application hypotheses with first proofs; no codec, embodied-transfer or AGI result yet. The first row needs no special hardware.",
       "sources": [
         "R3"
       ],
@@ -892,9 +892,14 @@
         460,
         456
       ],
-      "rowh": 82,
+      "rowh": 72,
       "size": 14,
       "rows": [
+        [
+          "Event-log anomaly detection (existing hardware)",
+          "Built-in biases: computational time, first-arrival races, separate state per concurrent process.",
+          "FAS interlaced-event benchmark: earlier fault detection than LSTM, Transformer, SSM and point-process models."
+        ],
         [
           "Irregular inputs",
           "Addressed events retain time and update persistent programs. Dense regions remain available.",

@@ -42,8 +42,35 @@ integrated construction and its eventual quality/resource behavior.
 | Adaptive communications/codecs | Fewer transmitted bits and less recomputation for reconstruction or a declared task | A real independently decodable wire format and a superior quality/rate/work/latency curve |
 | Embodied generalist learning | Share useful representations across sensing, acting, language and reasoning | Joint learning and separately measured transfer in both directions, including held-out tasks |
 | Compute/hardware IP | Co-design local state, scheduling and communication for target platforms | Precision, scheduling, memory/interconnect and physical energy economics demonstrated |
+| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS early fault detection against LSTM, Transformer, SSM and point-process references; NeuroBench; SHD. Then one design-partner dataset |
 
 One successful deployment can provide value before the full platform exists.
+
+**Inductive biases are a value driver without special hardware (user direction, 4 October 2026).** The architecture
+builds in assumptions that dense sequence models must learn from data:
+- Time is computational: memory decays and rotates with the real time between events.
+- The next event is the first arrival among competing processes, which is a race.
+- Concurrent processes keep separate addressed state, with no shared dense vector.
+- Learning credits the alternatives that were not taken.
+
+Where data have this structure, these biases can turn into accuracy, earlier detection and data efficiency on existing
+hardware, before any compute-cost argument or chip. Data of this kind include:
+- industrial and IoT event logs (predictive maintenance, fault detection);
+- IT-operations and security logs;
+- transaction and order-flow streams;
+- irregularly sampled clinical data;
+- neural recordings for brain-computer interfaces;
+- event sensors.
+
+This is the shortest commercial path: a vertical model on a customer's own logs, priced on detection value. It shares
+the core with the other rows, so it is correlated with them and not additive. It lowers execution risk by giving an
+earlier revenue route that does not depend on scale or silicon.
+
+Evidence stage, 4 October:
+- The FAS benchmark (experiments/FAS_BENCHMARK.md) is built. Classical baselines are near chance for early detection
+  (AUROC 0.50–0.56 up to 256 process events).
+- The first native arm is queued. Dense, SSM and point-process references follow on AWS.
+- The value is to be claimed only from completed comparisons.
 Reusable mechanisms and tooling could then lower the cost of entering adjacent
 workloads. Value capture could include model/runtime licensing, deployment
 software, communication SDKs, accelerator IP and later hardware. These are
