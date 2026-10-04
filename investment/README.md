@@ -21,7 +21,7 @@ part of IP diligence.
 - [Complete same-unit benchmark ledger](pitch_deck_benchmarks.csv)
 - [Valuation sensitivity calculations](pitch_deck_financial_sensitivity.csv)
 - [Detailed research status report](../report/sleeping_machines_status.pdf)
-- [Private diligence bundle: both PDFs, notes, family specification, diagrams, report and completed parents](sleeping_machines_private_diligence_20261004T113200Z.zip)
+- [Private diligence bundle: both PDFs, notes, family specification, diagrams, report and completed parents](sleeping_machines_private_diligence_20261004T114800Z.zip)
 
 The 4 October revision leads with the whole model family and its landscape.
 Slides 3/4 explain its common temporal/state interface, relationships to existing
@@ -29,8 +29,11 @@ families, heterogeneous regions and same-structure learning. The language
 fits then illustrate one branch. The report adds a visual family chapter with
 the three review axes at every level, compatibility and preservation rules,
 and complete illustrative member specifications. Architecture/editorial
-coverage is updated; the deck's benchmark/financial ledger remains frozen at
-3 October. No pending result or hypothetical member is presented as evidence.
+coverage is updated; the deck's numerical benchmark/financial ledger remains frozen at
+3 October. The protocol appendix separately notes the report's completed
+90M result and its restricted single-seed scope; the old pending-status wording
+is corrected. Adaptive computation keeps scored queries/fallbacks and full work
+explicit. No pending result or hypothetical member is presented as evidence.
 
 The older investment memo and one-page pitch retain the earlier $10M discussion
 position for historical continuity. Use the new full deck for the current

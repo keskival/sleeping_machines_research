@@ -2,6 +2,13 @@
 
 ## Family-level revision — 4 October 2026
 
+A follow-up review makes the adaptive query/fallback and full-work contract
+explicit. The protocol appendix now distinguishes the frozen 10M ledger from
+the completed 90M report result (1.857306 BPC, restricted 1M test, one seed);
+it no longer calls that result pending. Financial assumptions and the main
+comparison ledger are unchanged.
+
+
 The current deck has 18 main slides and 16 optional diligence slides. It adds a
 landscape diagram before the mechanism and benchmark slides, positioning the
 family relative to recurrence/SSMs, attention/Transformers, sparse experts,
@@ -15,7 +22,7 @@ activity and useful credit to unrealized alternatives. Heterogeneous dense and
 sparse regions, local/barrier schedules, same-structure online learning and
 broader structural adaptation have explicit conditions and status. Exact
 function containment, trained quality and economic advantage remain distinct.
-The report provides an 11-page visual family chapter and canonical twelve-field
+The report provides a 12-page visual family chapter and canonical twelve-field
 specification with three complete illustrative members. None is represented
 as new empirical evidence.
 

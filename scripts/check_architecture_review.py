@@ -377,7 +377,43 @@ console.log('dimensions, modes, invalid-input clearing, ten keyboard tabs, credi
                 outcomes.append(sum(r*l for r,l in zip(perturbed,losses))/sum(perturbed))
             near((outcomes[1]-outcomes[0])/2e-5,analytic[i])
         witness_cases+=1
+    # Fixed-query evaluation: conditional completion loss cannot replace full
+    # workload loss. Include the explicitly declared fallback for every miss.
+    observed_losses=[0.,1.];completed=[True,False];fallback=1.
+    coverage=sum(completed)/len(completed)
+    conditional=sum(l for l,c in zip(observed_losses,completed) if c)/sum(completed)
+    workload=sum(l if c else fallback for l,c in zip(observed_losses,completed))/len(completed)
+    near(coverage,.5);near(conditional,0.);near(workload,.5)
+    assert conditional<workload
+    witness_cases+=1
+    # Exact finite route credit for complete query utility, including work.
+    # Work1 versus work.2; the preferred route flips at beta=.125.
+    for beta in (0.,.125,.2):
+        returns=[.4+beta*1.,workload+beta*.2]
+        if beta==0.: assert returns[0]<returns[1]
+        elif beta==.125: near(*returns)
+        else: assert returns[1]<returns[0]
+        scores=[.3,-.2];rates=[math.exp(s) for s in scores]
+        probabilities=[r/sum(rates) for r in rates]
+        utility=sum(p*q for p,q in zip(probabilities,returns))
+        gradient=[p*(q-utility) for p,q in zip(probabilities,returns)]
+        near(sum(gradient),0.)
+        for i in range(2):
+            values=[]
+            for sign in (-1,1):
+                perturbed=[math.exp(s+sign*1e-5*(j==i)) for j,s in enumerate(scores)]
+                values.append(sum(r*q for r,q in zip(perturbed,returns))/sum(perturbed))
+            near((values[1]-values[0])/2e-5,gradient[i])
+        witness_cases+=1
     records['independent_scalar_witness_cases'] = witness_cases
+    # Editorial protocol status must reflect the separately source-bound 90M
+    # completion, even though the deck's 10M numerical ledger stays frozen.
+    pitch=json.loads((ROOT/'investment/PITCH_DECK.json').read_text())
+    protocol=next(s for s in pitch['slides'] if s.get('section')=='Appendix B / protocol')
+    larger=next(s for s in snapshots if s['fitting_presentations']>80_000_000)
+    assert f"{larger['test_bpc']:.6f} BPC" in protocol['notes']
+    assert 'test[95M:96M]' in protocol['notes'] and 'completed' in protocol['notes']
+    records['investor_protocol_completed_90m_binding']=larger['result_path']
     artifacts = docs+[ROOT/'scripts/build_architecture_atlas.py',ROOT/'scripts/check_architecture_review.py',
         ROOT/'report/architecture_evidence.json',ROOT/'report/architecture_atlas.html',
         ROOT/'report/architecture_source_inventory.json',ROOT/'README.md',ROOT/'REPORT.md',

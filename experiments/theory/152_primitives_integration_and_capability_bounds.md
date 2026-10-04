@@ -688,3 +688,57 @@ structural action requires, retain a successful parent, and evaluate future
 task/resource consequences after its state/version migration. This is a
 family-level design rule and derived condition, not a completed general
 structural learner or a new benchmark result.
+
+## 19. Adaptive execution needs a fixed query and utility contract
+
+Let D fix the distribution of admitted observations, queries and outcomes.
+For every query, the member must produce its declared readout or fallback,
+or the run violates the protocol. Whether a branch emits before a modeled or
+physical deadline is part of its consequence, not permission to discard the
+query. Internal silence can itself be useful evidence while the system still
+answers. A different task can permit abstention, but then coverage and risk
+are explicit comparison quantities.
+
+For C=1 when an answer completes and per-query loss ell, reporting only
+completed answers measures E[ell | C=1], not E[ell]. For example, equally
+frequent easy/hard queries with respective losses zero/one have mean loss .5.
+Answering only the easy half reports zero at coverage .5. With fallback loss
+one for the hard half, ordinary workload loss remains .5. Neither the reduced
+conditional loss nor fewer executed branches proves a same-task advantage.
+This is a preventive semantic example, not a correction to saved language
+scores. An invalid/nonconforming run has no ordinary aggregate score unless
+the protocol declares a fallback or failure penalty.
+
+At a fixed entering state, consider a finite route/action distribution
+pi_i=softmax(s)_i. Let Q_i be the complete conditional expected loss after
+action i, including future state, query/fallback consequences and the declared
+resource penalty beta*c_i. Hold those returns fixed for the local choice
+derivative. Then
+
+    J = sum_i pi_i Q_i
+    partial J / partial s_i = pi_i (Q_i - J).
+
+If Q_i also depends smoothly on parameters, its derivative contributes
+sum_i pi_i * grad Q_i. Changed future event histories require the appropriate
+estimator or exact finite replay; they are not supplied by differentiating
+only the selected immediate value. Costs belong to the same realized work
+boundary. A latency or hard-budget constraint can require distributional
+information beyond mean work; beta is a declared scalarization, not a proof
+that a particular service constraint is met.
+
+As a checked example, action A always answers with expected loss .4 and work 1.
+Action B has loss zero on half the queries, falls back with loss 1 on the rest,
+and uses work .2 on average including the declared fallback. Its full loss is
+.5. At beta=0, A is preferable; at beta=.2, Q_A=.6 and Q_B=.54, so B is
+preferable under this specified quality/work tradeoff. The crossover is
+beta=.125. Using B's completed-only loss zero would incorrectly favor it even
+at beta=0. Timing and stopping are thus trainable resource choices when their
+actual query consequences receive credit; no universal beta guarantees a win.
+
+Increasing alternative support does not correct a wrong utility definition.
+Conversely, correct utility without support/exposure cannot teach an unavailable
+alternative. This separates three repairs: specify the right system return,
+provide affordable useful alternatives, and deliver their credit through the
+real parameter/state/update paths. The current local teacher establishes
+useful message-choice credit; complete future-write/deadline/resource credit
+remains a distinct integration target.

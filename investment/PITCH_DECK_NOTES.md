@@ -65,7 +65,7 @@ This construction combines familiar vector operations with temporal computation 
 
 10M-character text8 training budget; held-out prediction error. Lower bits per character is better.
 
-T256 test values come from completed held-out evaluations; training scores and pending 90M results are excluded. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is 0.0081 bpc, with 2.89 times fitting work; it establishes a promising quality direction, not an iso-quality resource win.
+T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is 0.0081 bpc, with 2.89 times fitting work; it establishes a promising quality direction, not an iso-quality resource win.
 
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
@@ -292,7 +292,7 @@ These names are editorial labels for the frozen completed configurations, not ne
 
 Maintain the original records and disclose what a result actually measures.
 
-The native score pays overlap-window warmup, evaluating roughly twice as many input positions as scored targets at T256. LSTM recurrent evaluation is a different protocol. Native T256 coverage is 999,936 targets, while original saved controls have a slightly different tail. The raw difference is small but must be disclosed. The 90M owner campaign is active; checkpoints count presented targets, including repeated random segments, and do not establish a final 90M held-out result. No pending cells are filled with expectations. No additional Transformer or LSTM training is launched here; the user reserved it for AWS.
+The native score pays overlap-window warmup, evaluating roughly twice as many input positions as scored targets at T256. LSTM recurrent evaluation is a different protocol. Native T256 coverage is 999,936 targets, while original saved controls have a slightly different tail. The raw difference is small but must be disclosed. The frozen numerical ledger above covers 10M training. Separately, the current source-bound report records a completed 90M D4/P64/U2 value-credit evaluation: 1.857306 BPC on test[95M:96M], T256, 999,936 targets, one seed. Estimated whole fitting work is 241.219 TFLOPs, or 2.680 MFLOPs per fitting target presentation over 89,997,312 presentations. It changes data and width and is not the full official 5M test or a matched resource win. Checkpoints alone are not held-out results. Adaptive clock/stopping comparisons must preserve the declared query denominator and fallback, and charge attempted work; modeled time is not measured latency. No pending cells are filled with expectations. No additional Transformer or LSTM training is launched here; the user reserved it for AWS.
 
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 

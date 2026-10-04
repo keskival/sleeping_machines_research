@@ -68,6 +68,11 @@ atoms to complete systems. The illustrative members are specifications, not
 new benchmark results. Forward preservation, learning consistency and resource
 improvement are separate contracts.
 
+Adaptive routes, clocks and stopping still owe predictions at the protocol's
+declared queries. Unfinished work needs a stated snapshot/fallback or an
+invalid-run outcome; targets cannot silently disappear from the denominator.
+The family chapter separates this system utility from immediate value credit.
+
 '''
 
 
@@ -133,6 +138,17 @@ def sections():
         dict(title='Composition and adaptive growth have separate contracts',figure='composition',
              before=['Local capability reaches the system only through compatible information, state, time, query, credit and resource interfaces. Serial, parallel, recurrent and hybrid compositions expose different evidence and dependencies.'],
              after=['Forward preservation checks future state and emissions, including pending deadlines. Learning preservation additionally checks credit and parameter/optimizer migration. Resource refinement checks actual work, storage, traffic and latency. Equal current predictions do not establish any of these stronger claims. Intended learned deviations remain permitted.']),
+        dict(title='Adaptive computation keeps the task and query contract fixed',
+             before=['Learned routes, delays, reception and stopping change internal execution. Ordinary quality comparisons still score the same declared targets. If a branch is unfinished, specify the accessible snapshot and fallback or mark the run invalid. Internal silence need not mean the system declines to answer.'],
+             table=(['Choice','Query / learning obligation','Full resource boundary'],[
+                 ['Slow route / deadline','Name the clock; use the declared snapshot/fallback; retain the target','Attempted work, pending state and permitted waiting'],
+                 ['Stopping / optional depth','Score the actual stopped readout for every declared target','Discovery, rejected proposals and executed continuations'],
+                 ['Silence reception','Explain how queries read a pending or empty receiver','Timers, cancellation, retained state and readout'],
+                 ['Online / structural update','Predict before that outcome; preserve feedback and version rules','Credit, replay, migration and optimizer'],
+                 ['Random execution','Declare repeats; pair quality and cost from the same realization','Distributions/tails when budgets or deadlines matter']]),
+             table_widths=[105,208,194.276],
+             after=['A simple warning: answering only the easy half can report zero conditional loss at 50% coverage, while full-workload loss with a unit fallback penalty remains 0.5. Selective prediction needs its own coverage/risk protocol. This is a semantic example, not a discovered error in saved language scores.',
+                    'For finite choices, route credit is pi_i times (Q_i minus mean Q), where Q_i is the full conditional task/resource return. Immediate value utility omits unmodeled future writes, deadlines and work. More alternatives do not correct a wrong utility definition. Modeled time is not measured hardware latency.']),
         dict(title='Evidence supports the family; integration sets the agenda',evidence=True,
              before=['Completed native results support content-bearing temporal computation, useful route credit and capacity beyond selected writes. The rows below share T256 and the same restricted 1M test region; each is single-seed. The 90M row changes data and width.'],
              after=['Value choice credit improves the matched 10M D4/P32/U2 result by 0.134895 BPC for about 0.30% extra estimated fitting work. U2→U4 adds useful capacity with the same eight writes, but increases fitting work and untied parameters. These support scoped mechanisms; they are not modern frontier or public full-test wins.',

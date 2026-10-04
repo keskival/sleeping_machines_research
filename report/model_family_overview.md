@@ -95,6 +95,12 @@ one shared world state through explicit information paths. Input density,
 computation density, arrival cadence and physical clocking are independent.
 Current clocked emulators do not establish clockless hardware energy gains.
 
+Adaptive computation still owes a prediction at every declared query. Routes,
+delays and stopping can change the internal work, while the comparison fixes
+the observation boundary, scored targets and treatment of unfinished work.
+Quality and resource use must refer to that same workload; selective prediction
+requires its own stated coverage/risk protocol.
+
 ## A short reading path
 
 Read this overview → the formal core → the complete examples → the design

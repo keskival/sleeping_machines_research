@@ -1,5 +1,38 @@
 # Local host: current research continuation
 
+## Adaptive-family query/credit contract and corrected investor status — 4 October 2026
+
+Documentation-only continuation. Formal specification §6 and theory152 §19
+fix the scored-query obligation for learned clocks/routes/stopping: declare
+snapshot/fallback or invalid run, separate conditional completion risk from
+full-workload quality, and charge attempted work, credit and migration. Timing
+is a modeled coordinate unless hardware latency is measured. A finite-choice
+return must include future query/state/resource consequences; a wider pool
+cannot repair wrong utility. This is a preventive family contract, not a
+correction of saved language scores or a core architecture substitution.
+
+Report: 12 family pages plus all 215 retained evidence pages, identical text;
+227 total. Investor: 18 main / 34 total slides. Protocol appendix now records
+the report's completed 90M 1.857306 BPC result with restricted 1M/single-seed
+scope instead of calling it pending. The frozen 10M numerical/financial
+ledger is unchanged; its 1,220-update count is labelled accordingly.
+Publication records: ../report/publication_model_family_query_contract_20261004T114530Z.json
+and ../investment/publication_pitch_deck_query_contract_final_20261004T114700Z.json.
+Review: results/diagnostics/architecture_review_stdlib_20261004T114800Z.json;
+29 scalar witnesses, current publication/source and 90M status bindings,
+plus existing 53 frozen sources, 110 source inventory and atlas/evidence checks.
+Current private pack: sleeping_machines_private_diligence_20261004T114800Z.zip.
+Prior PDFs/records/pack preserved; no distribution. Report peak 92,256 KiB,
+deck about 39 MiB under established bounds. New report page and slide reviewed.
+
+Research priority unchanged: official integrated primate/MG owner admission
+queue/aws_neurobench_admission_20261004T064000Z/manifest.json,
+curie_language_batched_v6_20261003T111500Z and current AWS replay owners;
+frozen clock065700Z contracts→pilot follow owners. Missing future-write utility,
+useful horizon/discovery, integrated reception/silence, trained sparse parity,
+native TTT/structural/shared-world integration and measured energy remain open.
+No training, ML runtime or physical-host admission attempted in this workspace.
+
 ## Canonical family specification, visual report and investor summary — 4 October 2026
 
 The family remains the overarching object, not one native benchmark. Read

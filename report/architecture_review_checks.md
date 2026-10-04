@@ -295,3 +295,40 @@ All215retained pages have identical extracted text; six original cover/chart
 pages also have pixel-identical renderings at the checked resolution. The
 bounded independent pixel check peaked at60,904KiB. Source/publication bindings
 and the new private pack are refreshed after that optimization.
+
+
+## Pass 13: adaptive execution, query coverage and system credit
+
+The canonical specification now makes every declared query an obligation,
+including slow routes, early stopping, silence and online/structural changes.
+A fallback or invalid-run outcome must be explicit; conditional completion
+accuracy is separate from ordinary full-workload quality. Deadlines identify
+modeled or physical time, and attempted work/credit/migration are charged.
+This closes a semantic gap in the broad adaptive family; it is not evidence
+of missing targets or a revised score in the saved native evaluations.
+
+Theory 152 §19 derives exact finite-choice gradients for complete conditional
+task/resource returns and illustrates the crossover between a more accurate
+expensive action and a cheaper fallback policy. Four scalar checks cover the
+coverage denominator and three resource-penalty settings. The existing local
+value teacher remains useful evidence with its narrower immediate scope.
+Increasing counterfactual support cannot fix an incorrectly defined return.
+
+The report now has a 12-page family chapter and 215 retained evidence pages
+with identical extracted text (227 total). The new query-contract page and
+investor protocol slide were visually reviewed. The 18-main/34-total deck
+corrects stale pending-90M wording: its numerical ledger remains the frozen
+10M comparison, while the protocol notes separately bind the completed
+1.857306 BPC result on the restricted 1M test. The 1,220-update count is
+explicitly labelled as the 10M ledger. No financial assumptions changed.
+
+Current records:
+`report/publication_model_family_query_contract_20261004T114530Z.json`,
+`investment/publication_pitch_deck_query_contract_final_20261004T114700Z.json`,
+and `experiments/results/diagnostics/architecture_review_stdlib_20261004T114800Z.json`.
+The latter checks 29 scalar witnesses, current PDF/source hashes and the
+investor 90M status against its bound result, in addition to the existing
+atlas, examples, language/online evidence and frozen-source contracts.
+Bounded rendering peaked at 92,256 KiB for the report and about 39 MiB for
+the deck. This work changes documentation and publication only: no training,
+model/ML import, benchmark admission, architectural substitution or outreach.

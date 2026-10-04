@@ -44,6 +44,11 @@ atoms to complete systems. The illustrative members are specifications, not
 new benchmark results. Forward preservation, learning consistency and resource
 improvement are separate contracts.
 
+Adaptive routes, clocks and stopping still owe predictions at the protocol's
+declared queries. Unfinished work needs a stated snapshot/fallback or an
+invalid-run outcome; targets cannot silently disappear from the denominator.
+The family chapter separates this system utility from immediate value credit.
+
 ## Our ambition: a universal learning substrate
 
 **One architecture for content, time and selective computation.** The ambition is a broadly capable learner that combines language, dense synchronous observations and sparse asynchronous streams, including their joint arrival into shared persistent state. Statistical memory, deep learned representations and Transformer-capable retrieval belong to the same family. Time performs computation; hard routes learn from unrealized alternatives; small messages mix incoming content with private memory; keys and values remain distinct. Useful stored capacity can exceed the work recruited for an observation.

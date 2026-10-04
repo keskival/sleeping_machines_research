@@ -145,3 +145,34 @@ integration**. A derivation supplies its stated conditions, not a fitted score.
 An implemented path can still lack trained parity or economic evidence.
 The [complete examples](model_family_members.md) use this same specification;
 the [evidence map](architecture_evidence.md) locates actual project results.
+
+## 6. An adaptive member still owes a prediction at each declared query
+
+The evaluation protocol fixes the admitted observations and scored queries
+independently of learned routes, clocks and structural actions. A member can
+choose how much work to perform, but cannot silently choose which targets enter
+an ordinary accuracy or log-loss denominator. If selective prediction is the
+task, declare its coverage/risk objective and compare at the same coverage.
+This is a family-level comparison contract, not a finding that the saved native
+language evaluations omitted difficult targets.
+
+| Adaptive choice | Prediction / learning obligation | Resource obligation |
+| --- | --- | --- |
+| Slow route or unfinished branch | State the accessible query snapshot and fallback, or declare the run invalid; never silently drop the target | Charge attempted work, pending state and any permitted wait |
+| Learned stopping or optional depth | Score every declared target with the actual stopped readout | Charge discovery and executed continuations, including rejected proposals |
+| Silence timeout or no emitted message | Distinguish an internal absence from an absent system prediction; specify how the query reads it | Charge timers, retained state, cancellation and readout |
+| Online learning or changing structure | Score before consuming that outcome; preserve the declared reset, feedback and version rules | Charge credit, replay, migration and optimizer work |
+| Stochastic routes | Declare the seed/repeat or expectation protocol; keep outcomes and costs from the same realization | Report resource distribution/tails when deadlines or budgets matter |
+
+A modeled readiness coordinate is not elapsed hardware time. A deadline must
+identify which clock it constrains; hardware latency requires measurement on
+the stated realization. Reducing a modeled delay does not by itself establish
+faster wall time. Work and quality should refer to the same admitted workload,
+with whole-fit and per-target denominators shown together.
+
+For cost-sensitive route learning, an alternative's utility includes the
+declared query consequences, fallback/lateness policy and complete incremental
+work. A local value teacher can improve the current delivered content without
+estimating this system utility. Widening the counterfactual pool only helps
+when its estimator teaches the relevant consequences. See the
+[comparison and credit derivation](../experiments/theory/152_primitives_integration_and_capability_bounds.md#19-adaptive-execution-needs-a-fixed-query-and-utility-contract).
