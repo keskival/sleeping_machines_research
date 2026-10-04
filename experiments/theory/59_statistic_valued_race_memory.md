@@ -1641,3 +1641,21 @@ proportion to exp(score). Deterministic races are the zero-temperature limit, wi
 linearized local expectation is defined for any realized winner) and sparse writes. Training with deterministic races
 removes the train/test mismatch of argmax inference. Round 4 tests that; the pool-1 control stays a labelled diagnostic.
 A learned per-race temperature (scores scaled before the race) would let each task choose; it is untested.
+
+## 418. A deterministic member for precision tasks: exact expected reception with hard writes
+
+Motivation: the family analysis (report/model_family_design.md, "precise continuous prediction is noisy → controlled
+clocks or multiple samples/aggregation") and the MG evidence (§417): sampled winners plus clock noise inject output noise,
+argmax inference reduces it but leaves routing discontinuities, and the no-selection control was best. The family permits
+richer reception where the task needs it. sleeping_machines/expected_reception.py implements a member whose receiver
+heads deliver the exact race expectation sum_u pi_u v_u (exact-aggregation reception), use the race's mean common clock
+1/Z, and keep **hard selective persistent writes** (argmax unit commits its proposal and timestamp). Retained: temporal
+memories (damped rotating modes), transport, keys/values, sparse writes, the learned clock law (now its mean). Removed:
+sampling noise in values and clocks. Credit: exact soft-attention gradients through pi for the delivered value; the write
+address receives no utility credit beyond that. Cost: dense value delivery at inference (all proposals computed and
+pooled), the same scored keys and one write per head.
+
+Contracts (tests/test_expected_reception.py): the incremental stepper equals the compiled outer loop exactly (seed
+independent); pool 1 equals the deterministic winner race; compiled equals eager with every gradient. Prediction for MG
+(tau 18/19 development): at least as good as the pool-1 control (16.4) and better than the sampled member's argmax / mix8
+inference (18.5 / 17.2), with pool 4 no longer harmful because pooling replaces fragmentation by interpolation.
