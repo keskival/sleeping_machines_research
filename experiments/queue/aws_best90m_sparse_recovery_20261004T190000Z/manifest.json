@@ -1,0 +1,417 @@
+{
+  "status": "prepared_unrun",
+  "host": "ip-172-31-47-132",
+  "tag": "aws_best90m_sparse_recovery_20261004T190000Z",
+  "historical_revision": "fdc886cb7f85f8e2e4b5df9af4bbdac442c84484",
+  "original_manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/manifest.json",
+  "original_manifest_sha256": "5cc2eb99ac443bab74c6fb98f108e9a3d74e3097f2be8378a7918129598c64c1",
+  "parent": "experiments/results/language_batched/aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z.json",
+  "parent_sha256": "5c0d37f6ce5b97aad1a950952414dfad707f03c40bb959a59da5604ec53112ee",
+  "checkpoint": "experiments/results/language_batched/checkpoints/aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z_final.pt",
+  "checkpoint_sha256": "403d24404bb8c93686548e6ed62d1f4d2af77f0c4c88c4293e7c0c87aae7e895",
+  "dataset": "data/text8/text8",
+  "dataset_sha256": "6e890197040d37d85beb962ae1f041ff1d9a9ca8d20c7d99c85027eebf51dca7",
+  "archive": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/historical_sources.zip",
+  "archive_sha256": "3362e31ef6aeb57cc044b0261417f7b0c61e33bc55638f82d50a4f57f267106d",
+  "archived_sha256": {
+    "experiments/archive/frozen_sources/0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+    "experiments/archive/frozen_sources/354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6",
+    "experiments/aws_coarse_native.py": "7ccd7fafe81eaf4138492184eafdd565bfd433a77adaa4d5756d5bcf33f7f23b",
+    "experiments/cached_inference_contracts.py": "4dd88a28d26a785781d41a5c3591cf3b23cd9502a587c1b75d63fce3ab090097",
+    "experiments/check_sparse_rescore_protocol.py": "635d932ae1f09232601416a2cc884e306e4d497e6e5bbe9f83d24be129bff0a7",
+    "experiments/dvs_batched_benchmark.py": "16e30945607fc514ae1854def295c2cc588963b3cf43580aeefd00632b7cf031",
+    "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+    "experiments/dvs_batched_le_benchmark.py": "1128844698a98014d9b6cf00291a9560295965e5983f434ce56ac40e461df15f",
+    "experiments/dvs_batched_reg_benchmark.py": "06e3534281caea0d37a2faf2de7911df904d29513334c665757bb676ffdb0e16",
+    "experiments/dvs_clock_calibrated_benchmark.py": "25fddc4beadd4052d74a458bf1b11707131049af01a996cfaf1a4cf3723ee89e",
+    "experiments/dvs_local_expectation_benchmark.py": "69dac4a86eb6afc8629f30a0b3594abbf6fce58ea50338f4aa5fa6108086d65a",
+    "experiments/dvs_native_benchmark.py": "7d96e2ab4653bd036c565db7ef8ac33153e6afd8ebb34f3bc1ed3c6254b8d8a3",
+    "experiments/dvs_tied_pool_benchmark.py": "c84f9846351f817b2b5dab73c3755d6eeaef57907d179a2bafe2c30f62c6a2ae",
+    "experiments/e120_shared_tasks.py": "40049870698d79fff8afbfb5446a91fd3b4596c9ac973938ceefac2dcf24be26",
+    "experiments/e14_depth.py": "1bdbd1eb771f78224c32bf36f3f7a02be965cc315efb99eb2718cabcfbdf4e72",
+    "experiments/e17_market.py": "0426e9bef3f4baa6be717cd58ab17cdd66106c57c1810ac153885f5ccd23e756",
+    "experiments/e27_veto.py": "7a1920a0cfe4c672e66dd12538f4d77ab1e877db127ffc67d071921cf81bdf78",
+    "experiments/e28_routing.py": "2994303e959379583b4d5b8d2ecb816de7a54f00c22bcb3abac51e6e13c02e66",
+    "experiments/e35_free.py": "9fe1be79bef5b202327300e21a37c7ff9e8ed8b7e68af6ed9db43a25bc9acebd",
+    "experiments/e42_when.py": "86c407e3b3e7855bf8bc3af82965d932087b8fe267c4f743a6c8b9e24658243e",
+    "experiments/e61_race_attention.py": "15d253d3c2c6ed0f4f0c16fbe7426794259c923d117f7e3245d9cfb64ef069a8",
+    "experiments/e6_hidden.py": "ef5a4d51af4573af8e4afe38fc74915a2d8a9880133f71e4f31921eae4feca33",
+    "experiments/integrated_language_protocol.py": "bfe4fb180d735f9f0c624d6ba732abec608663e98a66e08863f587ebf22eb19c",
+    "experiments/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+    "experiments/parallel_event_language.py": "5962f8acf22c8a8fcbc58e6cf4b0ddb3347ae635b53d27675ddffee734406fc3",
+    "experiments/parallel_head_accumulated_language.py": "8c88254ee1b2d2a19d90190679054f57f0aa9e68d6350afac18e2112a08e3c5f",
+    "experiments/parallel_head_gradient_accumulation.py": "cad04a5287e0cbce04a01180594eff4e0e613784d988e9f63aa8b8ee8673f815",
+    "experiments/parallel_head_race_language_screen.py": "c596df906c1741f66de487fee8894e95315d74d26b90a9e6628915de1dac2d16",
+    "experiments/prepacked_sparse_contracts.py": "25cf53ce17bed2e3b2c0cc92a189719e9f8cec2e6ad241582a0e17ab9c7525e9",
+    "experiments/public_benchmarks/frozen_language_v2.py": "3c94c464f256e81a5443ba45eacce4d5cce867b615fb362adc43e4e463bd3521",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_contracts.sources.json": "ae8ffb9dc471f1edcd2ba8ca9d0d9e223ba42b40f8b5e96eb1094cba9e0c36c0",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_contracts.txt": "6dfda96f885481f063992b08f72b0af69ff342b5a78c7a6a1c5bf4b7de78e826",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T128.sources.json": "6cdea94584044ba9fce31a989d6a60a914297021187b850503f5bb1c2c679a05",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T128.txt": "7a2395ce0005be36805cd3bee00908b13348887f29024e6181f864677d9e417f",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T256.sources.json": "d0d8bdbab8f05f87737116883047e7494d3cfa522449e8a5fc0db7d0f3ec115b",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T256.txt": "02e47d007fa6b52b3a6a5b15beec78a2cd1c5e75953083d38b3eecafa281b5b9",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T128.sources.json": "2fed3b18ef56e25055756eb1d86c84f00ea625b0452c03d8eaccb516c27f4942",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T128.txt": "c67dee1c90c965072fa1d28726136b8828fc1d21a0665241d0bfe056792fba9f",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T256.sources.json": "97a8499128b71467196012abc43048169d892e3056fff3ab0be98c9e7cbcb472",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T256.txt": "732b028831891e034c4402c991251526fbcafcfc15109084177ae621912e22e0",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T128.sources.json": "408e7cbefdd860cdf4ac1a74abf4caa398ff200136a0398391725b2bbfab1dc0",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T128.txt": "97c468dc113a9295373d9a25099bdbce746acb3993ef850f396df02b2b296fda",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T256.sources.json": "2a8f27f4b599edb013ed465d86bb9d6ccc35e0a207e0e127ff734f15f81f6814",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T256.txt": "77ab76afda473f7a4de2515e20d42976ccff8cd6ad27dc4e6a4c4d34078ecc7c",
+    "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/manifest.json": "5cc2eb99ac443bab74c6fb98f108e9a3d74e3097f2be8378a7918129598c64c1",
+    "experiments/race_language_contracts.py": "80bba2683f45b116f3b9ce798e80e4d8a3148f0e138d7aec9bf467d41fb17a5f",
+    "experiments/race_language_screen.py": "3308aca20b4cf64f70550a03ae7763361e823800ba22f449d127210c65141cec",
+    "experiments/results/language_batched/aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z.json": "5c0d37f6ce5b97aad1a950952414dfad707f03c40bb959a59da5604ec53112ee",
+    "experiments/sparse_inference_accounting.py": "b85a59636bdbb23252cc520ff3e2d1e55a5f5d42d76c76eb3bfc8dbecdd4a211",
+    "experiments/sparse_language_contracts.py": "b64ea885625907efa85e1faf1443b696f92869c5c6f679a89afaeeb71236e417",
+    "experiments/sparse_rescore_protocol.py": "ab53bde136a25b66eb68121f384a1a180f4232b36bc21db085fa25aad6165910",
+    "experiments/trained_sparse_rescore.py": "a0009fbe07acaf679c1fac782884c2dc8974dfbee98d7d6d354b7036f255b308",
+    "scripts/prepare_trained_sparse_validation.py": "892b1e8acd8b7072f254d8cba88f4f31ea9c4a53271845f8523ab1aff437a29d",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/batched_addressed_fit.py": "db22bc8594c40e86955dd4be79121240586c105feb2eaae12e28d5e08092e246",
+    "sleeping_machines/batched_episodes.py": "0d9a0309f614cb6f081ee24027a45f5961626d4db1da8fa455e612e4c65396b2",
+    "sleeping_machines/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_query.py": "43dccd3a40a82f980e74eb8a5e58d05a2bd8a6dc1f2dc37b626b9c219a951ee5",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/evidence_memory.py": "f4548b16d6f9ec03db5543c579221ec368074894766b4368a66e1a479ed1497a",
+    "sleeping_machines/factorized_race.py": "5bbfdf41ea63770a2394dde6e39fbe4b94b79dbab95c863f6413480ae3aa5568",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/language_memory.py": "20cc1f3b2549c1997264d75410b37afe70148f46b587fc985c6210ed2e1b0300",
+    "sleeping_machines/native_stream_language.py": "e344b6f3d421800d08c15cbbd8c67a4b7fd04d7d281669514c2d7690f2a1cfd9",
+    "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/prepacked_sparse_inference.py": "c06fc7ff0f122133ffade2780612e123d2ff59eced4a6fbe4c615f7553221aac",
+    "sleeping_machines/race_language.py": "70081a66f23f5d2db9dd6351645a91a9534562f98e8b414a64071ec60650760a",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/selective_stream_language.py": "0b78ff0fe2d4d81ad3ca97475414c6b5bc7afec791cafd673839664a29347207",
+    "sleeping_machines/sim.py": "c68910dd05316d099dae95adc03d298b71f3768cfbcb75579006804c0300a3f2",
+    "sleeping_machines/sparse_inference.py": "e4005b9a3c66f06dd36ecfb18bc8be9b8455ab8046165e9af0d4b976e60e8708",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708"
+  },
+  "frozen_source_pins": {
+    "sleeping_machines/batched_episodes.py": "0d9a0309f614cb6f081ee24027a45f5961626d4db1da8fa455e612e4c65396b2",
+    "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "experiments/archive/frozen_sources/354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6",
+    "experiments/archive/frozen_sources/0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+    "experiments/public_benchmarks/frozen_language_v2.py": "3c94c464f256e81a5443ba45eacce4d5cce867b615fb362adc43e4e463bd3521",
+    "sleeping_machines/prepacked_sparse_inference.py": "c06fc7ff0f122133ffade2780612e123d2ff59eced4a6fbe4c615f7553221aac",
+    "sleeping_machines/sparse_inference.py": "e4005b9a3c66f06dd36ecfb18bc8be9b8455ab8046165e9af0d4b976e60e8708",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "experiments/prepacked_sparse_contracts.py": "25cf53ce17bed2e3b2c0cc92a189719e9f8cec2e6ad241582a0e17ab9c7525e9",
+    "experiments/cached_inference_contracts.py": "4dd88a28d26a785781d41a5c3591cf3b23cd9502a587c1b75d63fce3ab090097",
+    "experiments/sparse_inference_accounting.py": "b85a59636bdbb23252cc520ff3e2d1e55a5f5d42d76c76eb3bfc8dbecdd4a211",
+    "experiments/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+    "experiments/e120_shared_tasks.py": "40049870698d79fff8afbfb5446a91fd3b4596c9ac973938ceefac2dcf24be26",
+    "experiments/sparse_rescore_protocol.py": "ab53bde136a25b66eb68121f384a1a180f4232b36bc21db085fa25aad6165910",
+    "experiments/trained_sparse_rescore.py": "a0009fbe07acaf679c1fac782884c2dc8974dfbee98d7d6d354b7036f255b308"
+  },
+  "source_files": 63,
+  "jobs": [
+    {
+      "stage": "contracts",
+      "original": {
+        "stage": "contracts",
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_contracts.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_contracts.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_contracts.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 420
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_contracts.txt",
+      "queue_sha256": "1c034c2bee556ddc4173989d43524f37bc9a9d3fca0daccb9678632f3e574476",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_contracts.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 420
+      },
+      "required_stages": []
+    },
+    {
+      "stage": "prefix_dev_T128",
+      "original": {
+        "stage": "prefix",
+        "split": "dev",
+        "segment": 128,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T128.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T128.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T128.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 600
+        },
+        "execution_plan": {
+          "windows": 126,
+          "backend_calls": 2,
+          "scored_targets": 8128,
+          "evaluated_positions_per_backend": 16128,
+          "warm_context_positions_per_backend": 8000,
+          "paired_evaluated_positions": 32256,
+          "first_target": 1,
+          "last_target": 8128,
+          "omitted_target_positions": 63
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_prefix_dev_T128.txt",
+      "queue_sha256": "2e40b7688ee6f62841a1242262a1ae6c2da081bfcaa96b31d5fcf534c34f8ec7",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_prefix_dev_T128.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 600
+      },
+      "required_stages": [
+        "contracts"
+      ]
+    },
+    {
+      "stage": "prefix_dev_T256",
+      "original": {
+        "stage": "prefix",
+        "split": "dev",
+        "segment": 256,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T256.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T256.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_8192_T256.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 600
+        },
+        "execution_plan": {
+          "windows": 62,
+          "backend_calls": 2,
+          "scored_targets": 8064,
+          "evaluated_positions_per_backend": 15872,
+          "warm_context_positions_per_backend": 7808,
+          "paired_evaluated_positions": 31744,
+          "first_target": 1,
+          "last_target": 8064,
+          "omitted_target_positions": 127
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_prefix_dev_T256.txt",
+      "queue_sha256": "34a57a1bb48bfa320f4c5e5cf4de668a23ae6271c0edd4c6695f2e28b5741e75",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_prefix_dev_T256.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 600
+      },
+      "required_stages": [
+        "contracts"
+      ]
+    },
+    {
+      "stage": "full_dev_T128",
+      "original": {
+        "stage": "full",
+        "split": "dev",
+        "segment": 128,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T128.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T128.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T128.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 21600
+        },
+        "execution_plan": {
+          "windows": 15623,
+          "backend_calls": 245,
+          "scored_targets": 999936,
+          "evaluated_positions_per_backend": 1999744,
+          "warm_context_positions_per_backend": 999808,
+          "paired_evaluated_positions": 3999488,
+          "first_target": 1,
+          "last_target": 999936,
+          "omitted_target_positions": 63
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_full_dev_T128.txt",
+      "queue_sha256": "803255e1888e67ece76a188689c75b8b4dcd5f612e38fdb06f36b61c3e4d8455",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_full_dev_T128.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 21600
+      },
+      "required_stages": [
+        "contracts",
+        "prefix_dev_T128"
+      ]
+    },
+    {
+      "stage": "full_dev_T256",
+      "original": {
+        "stage": "full",
+        "split": "dev",
+        "segment": 256,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T256.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T256.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_dev_1000000_T256.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 21600
+        },
+        "execution_plan": {
+          "windows": 7811,
+          "backend_calls": 245,
+          "scored_targets": 999936,
+          "evaluated_positions_per_backend": 1999616,
+          "warm_context_positions_per_backend": 999680,
+          "paired_evaluated_positions": 3999232,
+          "first_target": 1,
+          "last_target": 999936,
+          "omitted_target_positions": 63
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_full_dev_T256.txt",
+      "queue_sha256": "4dbd9e596db1fbdaeb701854fb5938cbdbefc586492e49310d57c97bde4386da",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_full_dev_T256.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 21600
+      },
+      "required_stages": [
+        "contracts",
+        "prefix_dev_T256"
+      ]
+    },
+    {
+      "stage": "full_test_T128",
+      "original": {
+        "stage": "full",
+        "split": "test",
+        "segment": 128,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T128.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T128.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T128.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 21600
+        },
+        "execution_plan": {
+          "windows": 15623,
+          "backend_calls": 245,
+          "scored_targets": 999936,
+          "evaluated_positions_per_backend": 1999744,
+          "warm_context_positions_per_backend": 999808,
+          "paired_evaluated_positions": 3999488,
+          "first_target": 1,
+          "last_target": 999936,
+          "omitted_target_positions": 63
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_full_test_T128.txt",
+      "queue_sha256": "186b589a70ef975aab15746a54a25e77415f679de79ee632e16eab148f6fe466",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_full_test_T128.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 21600
+      },
+      "required_stages": [
+        "contracts",
+        "prefix_dev_T128"
+      ]
+    },
+    {
+      "stage": "full_test_T256",
+      "original": {
+        "stage": "full",
+        "split": "test",
+        "segment": 256,
+        "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T256.txt",
+        "manifest": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z_original/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T256.sources.json",
+        "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_original_test_1000000_T256.json",
+        "guards": {
+          "threads": 1,
+          "address_space_kib": 3000000,
+          "rss_kib": 1250000,
+          "min_available_mib": 8192,
+          "timeout_s": 21600
+        },
+        "execution_plan": {
+          "windows": 7811,
+          "backend_calls": 245,
+          "scored_targets": 999936,
+          "evaluated_positions_per_backend": 1999616,
+          "warm_context_positions_per_backend": 999680,
+          "paired_evaluated_positions": 3999232,
+          "first_target": 1,
+          "last_target": 999936,
+          "omitted_target_positions": 63
+        }
+      },
+      "queue": "experiments/queue/aws_best90m_sparse_recovery_20261004T190000Z/aws_best90m_sparse_recovery_20261004T190000Z_full_test_T256.txt",
+      "queue_sha256": "9ee6b79e1852793c5a86b499e02c57c309bb6b9953c27705b24618acfc2c2586",
+      "output": "experiments/results/diagnostics/aws_best90m_sparse_recovery_20261004T190000Z_full_test_T256.json",
+      "guards": {
+        "threads": 1,
+        "address_space_kib": 3000000,
+        "rss_kib": 1250000,
+        "min_available_mib": 8192,
+        "timeout_s": 21600
+      },
+      "required_stages": [
+        "contracts",
+        "prefix_dev_T256"
+      ]
+    }
+  ],
+  "launcher_sha256": "99302b2f7288ef6ddafba52c57ea39887b4095e8f4f6f807175573038775a922",
+  "current_source_drift": [
+    "sleeping_machines/batched_episodes.py",
+    "sleeping_machines/sparse_inference.py",
+    "experiments/language_batched_benchmark.py"
+  ],
+  "scope": "Best available completed 90M checkpoint, original source aliases retained. Canonical execution is the historical exact producer/validator tree; additional producer metadata sources are byte-bound to the completed result. Seven stages remain unrun; no source, weights or score modified.",
+  "template_manifest_sha256": "4569cbf9b0e119a2edfdf189667b6fbec82d8ff587fef7b477b22cc66696e4e9",
+  "additional_pinned_sources": {
+    "experiments/archive/frozen_sources/354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6",
+    "experiments/archive/frozen_sources/0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+    "experiments/public_benchmarks/frozen_language_v2.py": "3c94c464f256e81a5443ba45eacce4d5cce867b615fb362adc43e4e463bd3521"
+  },
+  "preparation_source_sha256": "7bc044929b963bd58f2dd7ceb6ae3ab8811a524e7637da90492bfeb8971e0a4e",
+  "saved_test_bpc_T256": 1.8573062690673727
+}

@@ -1,0 +1,4 @@
+# PREPARED UNRUN; AWS physical reservation, original owners first.
+# Use run_safe only, with the declared guards. No training or optimizer.
+# MEM_CAP_KB=3000000 MEM_CAP_RSS_KB=1250000 MIN_AVAIL_MB=8192 JOB_TIMEOUT_S=21600
+aws_trained_sparse_recovery_v2_20261004T185500Z_full_test_T128 experiments/sparse_validation_recovery.py run --manifest experiments/queue/aws_trained_sparse_recovery_v2_20261004T185500Z/manifest.json --stage full_test_T128

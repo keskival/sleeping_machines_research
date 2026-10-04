@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "scope": "Stdlib provenance/import/guard contracts; no numerical evidence",
+  "recovery_manifest": "experiments/queue/aws_trained_sparse_recovery_v2_20261004T185500Z/manifest.json",
+  "recovery_manifest_sha256": "4569cbf9b0e119a2edfdf189667b6fbec82d8ff587fef7b477b22cc66696e4e9",
+  "historical_revision": "fdc886cb7f85f8e2e4b5df9af4bbdac442c84484",
+  "archived_dependency_sources": 59,
+  "restored_frozen_source_pins": 15,
+  "guarded_one_job_queues": 7,
+  "old_source_drift": [
+    "experiments/language_batched_benchmark.py",
+    "sleeping_machines/batched_episodes.py",
+    "sleeping_machines/compiled_episodes.py",
+    "sleeping_machines/sparse_inference.py"
+  ],
+  "actual_trained_preflight_reaches_blocked_native_import": true,
+  "invalid_guard_cases": 9,
+  "physical_host_refusal": true,
+  "corrupt_materialization_refused": true,
+  "unpublished_or_changed_predecessors_rejected": 7,
+  "original_queues_and_live_sources_unchanged": true,
+  "inherited_window_enumerations": 100,
+  "inherited_invalid_contract_rejections": 18,
+  "inherited_all_seven_queue_source_checks": true,
+  "native_forward_calls": 0,
+  "backward_calls": 0,
+  "optimizer_updates": 0,
+  "source_sha256": {
+    "experiments/sparse_validation_recovery.py": "99302b2f7288ef6ddafba52c57ea39887b4095e8f4f6f807175573038775a922",
+    "experiments/check_sparse_validation_recovery.py": "5ebd087acbc37d41d4175cf80b584b35ff9cc5c7c9a76dad7fa2f9b84575d08a"
+  }
+}

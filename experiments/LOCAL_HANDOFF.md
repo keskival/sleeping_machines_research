@@ -1,5 +1,42 @@
 # Local host: current research continuation
 
+## Trained sparse deployment: exact-source blocker repaired — 4 October 2026
+
+User requested execution of the investor value plan. Found actual completed
+pool4 and leading p64 90M checkpoints available, but all original192500Z sparse
+queues reject changed batched/language/sparse sources (compiled producer also
+drifted). Current SparseStepper no longer exposes the return-frame state that
+the historical observer expects. Do not loosen hashes or mix those versions.
+
+Implemented sparse_validation_recovery.py: isolated historical import closure,
+actual-weight copy, unchanged native tolerances/windows and fresh outputs.
+Prepared59-source/15-pin pool4 recovery v2; first184500Z adapter is superseded
+with original adapter/checker bytes archived. prepare_best_sparse_recovery.py
+reuses the original protocol for the leading p64/D4/H2/U2 completed checkpoint,
+1.857306269 T256 BPC, restricted1M TEST, one seed. Its existing producer aliases
+are retained and verified against canonical historical numerical source bytes.
+Best bundle63sources/17pins; source-only ZIP includes no weights/data.
+
+NEXT SPARSE ADMISSION (after existing owners/public benchmark priorities):
+queue/aws_best90m_sparse_recovery_20261004T190000Z/manifest.json, contracts first,
+then DEV8192 prefixes T128/T256, then original full DEV/restricted TEST.
+Secondary pool4: queue/aws_trained_sparse_recovery_v2_20261004T185500Z/manifest.json.
+Both are PREPARED UNRUN. No coordinator/waiter or native job started here.
+New theory153 and best queue README give exact guarded admission. Wrapper
+requires physicalAWS hostname/inherited run_safe reservation, one thread,
+VMS3000000KiB/RSS1250000KiB/available8192MiB and declared timeouts. Later stages
+require passed published/hash-matching predecessors as well as inner contracts.
+
+Completed stdlib records: results/diagnostics/aws_trained_sparse_recovery_v2_stdlib_20261004T185500Z.json
+and aws_best90m_sparse_recovery_stdlib_20261004T190000Z.json. Both reach the actual
+trained preflight's blocked NumPy import with restored provenance;9 guard and
+7 predecessor rejections,100 window/18 invalid-contract checks, all7 inner
+queue source bindings, physical refusal and corruption checks pass. ZERO
+ML imports, forward/backward/optimizer, scoring, profiling or energy work.
+Current code/pins, original weights/results/queues and active AWS owners kept.
+Native quality parity, useful delayed-write/depth credit, integrated silence/
+reception, horizon and measured service/energy advantage remain pending.
+
 ## AGI opportunity deck and investor proof plan — 4 October 2026
 
 User requested an AGI slide and autonomous work to strengthen valuation and
