@@ -75,3 +75,10 @@ p32/d2 pool 2 test .738 (val .737); tied pool 8 .720 (val .715); tied pool 4 + w
 tinyRSNN .746, bigRSNN .772 on this session. Validation and test rank these arms differently (the validation split is the
 last 13% of the fitting bins, one contiguous block), so validation is a noisy selector; the protocol still selects by
 validation only. Round 3 (causal spike traces) and the remaining tied pool-4 arm follow.
+
+**Mackey-Glass official tau 17, first 10/30 repeats (AWS, 18:45 UTC; queue aws_mg_tau17_r1_from0):** pre-declared
+primary mix8 mean sMAPE **13.598** (reporting-only argmax 19.05, sampled 18.37); per-repeat 6.2–25.2. Leaderboard: LSTM
+13.37 (footprint 4.90e5 B), ESN 14.79 (2.81e5 B). Ours: 14,393 parameters, 57,572 B in float32. Partial; the claim waits for
+all 30 repeats. Rough inference estimate: mix8 runs 8 winner-only streams (about 8.5K multiply-adds per stream per step
+at p16/d2/pool 2, i.e. about 68K; LSTM 6.03e4 effective MACs), so the deterministic expected-reception member (one stream,
+about 1.5× one winner-only stream) is the resource-efficient candidate if its tau 18/19 development holds up.
