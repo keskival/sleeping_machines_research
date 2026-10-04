@@ -584,3 +584,107 @@ budget or tighter graph structure is necessary. Alternatively a finite DAG,
 explicit event/depth cap or another proved terminating schedule supplies the
 contract. Current finite-segment native stacks already have explicit bounded
 loops; this note imposes no source change or new numerical admission.
+
+## 18. State sufficiency and three preservation contracts
+
+The [composition guide](../../report/model_family_composition.md) treats the
+family envelope, individual member and integrated research target separately.
+The envelope permits different compatible local programs; an individual
+member has only its chosen operators, accessible evidence and learning rules.
+An event wrapper for a known program gives no automatic advantage. Exact
+containment is a transition/observation construction with stated work.
+
+### Operational sufficiency at a boundary
+
+Let a history h determine complete operational state S(h), including relevant
+memory, time metadata, pending work, and versions. Suppose a compressed state
+A(S) is the sole information available to all subsequent computation. If
+A(S(h1))=A(S(h2)), deterministic continuation from the same future events and
+queries cannot distinguish h1 from h2. Therefore, if an admissible future
+query must distinguish them, this compression cannot exactly implement that
+task. For stochastic programs, equality of the compressed state with the same
+future input and random law gives the same conditional output distribution;
+hidden history cannot be recovered by extra random samples. A future input
+may itself reveal the missing fact, but that is additional evidence.
+
+This simple obstruction includes counts losing order, payloads losing timing,
+and a currently silent receiver losing its pending deadline. It is not a
+claim that every task requires full history: a sufficient statistic can be
+much smaller. Storage, timestamp/address bits and queued evidence all enter
+the actual boundary state, rather than only the advertised vector width.
+
+### Forward continuation preservation
+
+For fixed parameters, define an admitted macrostep T(S,e)=(S_next,trace),
+including a finite internal event execution and boundary observations. Queries
+and timers are admissible actions too. Let E embed reachable parent states
+into child states. A sufficient emulation condition for every admitted step is
+
+    T_child(E(S),e) = (E(S_next), trace)
+        whenever T_parent(S,e) = (S_next, trace).
+
+Both programs use the same observation cutoff, time units, boundary addresses,
+tie/stop semantics and query snapshot. Hidden steps may differ. For stochastic
+programs, a coupling that makes this equality hold almost surely is sufficient;
+it must preserve each program's specified random law. Trace timing here is
+modeled time, not a requirement of identical physical execution time.
+
+Induction over any finite admitted sequence proves equal boundary traces and
+embedded future state. Resuming from a nonempty pending queue is included.
+Termination/admission must also hold in the child; an equivalent output after
+an infinite hidden loop is not an executable emulation. These sufficient
+conditions are stronger than comparing one readout on a saved state.
+
+Example: at q=2 the scalar popcorn receiver has m=2, deadline2.6. Mapping
+(m,deadline) to (m,0,deadline) with an isolated new coordinate commutes with
+parent additions, resets and timer firings. Mapping to (m,0,no_deadline) can
+preserve the current “not emitted” query but loses the subsequent emission.
+Changing race rates or completion joins can similarly violate preservation
+even with zero new values. A wider state is safe only under its actual update
+and scheduling contract.
+
+### Learning transition preservation
+
+Extend the state to include parameters, optimizer variables, retained credit,
+random/update ownership and producing versions. If a learning embedding M
+commutes with each specified observation/credit/update operation and preserves
+its observations, the same induction preserves the declared learning
+trajectory. Forward emulation alone does not supply this condition.
+
+For theta>0, y=theta*x and y=phi^2*x with phi=sqrt(theta) represent the same
+function at every mapped parameter. The derivative pulls back correctly:
+dy/dphi times dphi/dtheta = 2*phi*x/(2*sqrt(theta)) = x. But for x=1, target0,
+loss y^2/2, theta=phi=1 and SGD eta=.1, parent theta_next=.9 while child
+phi_next=.8 gives y_next=.64. The same Euclidean step size does not commute
+with this coordinate change. A matching update needs a specified transformed
+optimizer, not merely copied forward weights. Detached eligibility or changed
+counterfactual returns can likewise break learning with equal forward outputs.
+
+Even parent-preserving growth need not immediately offer a useful tangent:
+y=y_parent+u*v*x at u=v=0 has both new first derivatives zero, despite its
+expanded finite-change function class. y=y_parent+w*x at w=0 has derivative x.
+Whether the loss supplies a useful nonzero cotangent is an additional
+condition. Nested function classes and non-shrinking old Jacobian span do not
+guarantee newly available directions are exposed to first-order optimization.
+
+### Resource refinement and practical selection
+
+A resource refinement adds a declared work, storage, traffic or latency bound
+to a functional/learning contract. Forward trace preservation says nothing
+about that bound: the child can execute costly ignored work. For a realized
+finite trace, component work plus adapters/discovery/joins/communication is
+additive across invoked branches; ideal independent parallel latency follows
+the critical path, with actual hardware contention charged separately.
+Counterfactual replay and optimizer work belong to learning cost. Approximate
+refinements must instead state their error, task protocol and resource scope.
+Shared/cached executed work is counted once, with storage, refresh and validity
+costs; views of the same computation are not independent additional work.
+An advantage additionally requires improving the declared resource/quality
+comparison, rather than merely meeting some budget.
+
+These three contracts separate safe semantic substitution, consistent learning
+and economic improvement. Automatic design should choose which contract a
+structural action requires, retain a successful parent, and evaluate future
+task/resource consequences after its state/version migration. This is a
+family-level design rule and derived condition, not a completed general
+structural learner or a new benchmark result.

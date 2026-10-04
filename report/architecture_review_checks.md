@@ -176,3 +176,48 @@ degree. External and initially pending seeds are included. An additional
 bounded-tree scalar witness checks that stated contract. The earlier102000Z
 grooming record remains an intermediate snapshot; the103000Z record includes
 the refined condition and17scalar witnesses.
+
+## Pass 8: keep the whole family visible through composition
+
+The overview and definition now distinguish the family envelope, concrete
+member specifications and the integrated temporal/selective research target.
+The new composition guide treats a unit as a product of evidence, flow, write,
+selection, reception, output and learning choices. This permits combinations
+inside a unit and heterogeneous regions inside a system, rather than a fixed
+list of species or a uniform benchmark recipe.
+
+The guide tracks all three review axes through each boundary from atoms to
+systems. It covers serial, parallel, persistent, statistical/retrieval,
+dense/synchronous and adaptive compositions, with their sufficient conditions
+and costs. A ninth SVG keeps the family scales and hierarchy visible together.
+The positive whole-model design rationale remains explicit: persistent
+selective evidence, rich interaction where needed, computational time and
+statistical/neural evidence can cooperate in one causal model. Implemented
+branches illustrate the envelope; their union is not a completed model.
+
+## Pass 9: future continuation, learning and resource preservation
+
+Theory152§18 derives state sufficiency and sufficient transition/trace
+conditions for parent-preserving growth or replacement. Pending clocks and
+deadlines belong to operational state. Equal current predictions can hide
+different future emissions. Functional reparameterization can change an SGD
+trajectory; a parent-preserving extra product branch can have zero initial
+first-order credit. Forward, learning and resource preservation therefore have
+separate contracts. Intentional learned deviations remain permitted; exact
+parent preservation is required only when that equivalence is claimed.
+
+The accounting pass distinguishes summed invoked work, ideal critical-path
+latency, actual contention and learning overhead. Shared/cached executions are
+charged once along with validity/refresh costs. No isolated count of active
+messages is converted into a hardware benefit.
+
+Final standard-library/Node record:
+`experiments/results/diagnostics/architecture_review_stdlib_20261004T104200Z.json`.
+Nine SVGs and keyboard tabs, 16 causal reception cases, 21 scalar witnesses,
+four completed result bindings, 13 scoped claims, 110 source hashes and all
+53 frozen clock sources pass. New witnesses cover count/order sufficiency,
+isolated state growth and a lost deadline, reparameterized SGD, and dormant
+versus live growth directions. These are finite algebra/semantic checks, not
+trained-model proofs or new benchmarks. The record binds current documentation
+including the overview, guide, report entry, theory index and local handoff.
+Previous validation records and the existing rendered PDF remain intact.

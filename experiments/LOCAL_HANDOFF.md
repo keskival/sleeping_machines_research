@@ -1,5 +1,39 @@
 # Local host: current research continuation
 
+## Family composition and preservation review — 4 October 2026
+
+Documentation and bounded stdlib/Node checks only; no ML import, numerical
+model, training, profiler, host waiter or admission. Read the family as envelope
+→ specified member → integrated temporal/selective research target. The short
+overview and primary definition retain the overarching family; new
+../report/model_family_composition.md explains orthogonal local choices and
+capability transfer through units/modules/layers/stacks/compositions/systems.
+Added ninth SVG/atlas tab with these scales and preservation contracts.
+
+Theory152§18 adds operational-state sufficiency and sufficient forward
+transition/trace preservation for growth/replacement. Current-output equality
+can miss future pending emissions; mapped forward functions can have different
+SGD trajectories; zero residual growth can be initially dormant. Separate
+forward, learning and resource contracts are needed. Deliberate learned
+function changes remain admissible. Full work includes adapters, joins,
+discovery, credit and optimizer; shared executions are charged once with cache
+validity/refresh work. No new architecture substitution or benchmark claim.
+
+Review passes8/9: nine SVGs/tabs, 16 causal reception cases, 21 scalar witnesses,
+four result bindings, 13 scoped claims, 110 source hashes and unchanged
+53-source clock admission. Final artifact-bound record:
+results/diagnostics/architecture_review_stdlib_20261004T104200Z.json.
+No pixel rendering claim; the owner-rendered PDF, results, source kernels,
+queue manifests and all earlier evidence remain intact.
+
+Priority unchanged: integrated official primate/MG owner admission
+queue/aws_neurobench_admission_20261004T064000Z/manifest.json,
+curie_language_batched_v6_20261003T111500Z and current AWS replay owners;
+frozen clock065700Z contracts→pilot follow owners. Missing future-write
+utility, useful credit/access horizon, integrated reception/silence, trained
+sparse parity, multimodal/TTT/structural learning and energy remain open.
+No physical host reservation is accessible from this documentation workspace.
+
 ## Family grooming: semantics, navigation and provenance — 4 October 2026
 
 Documentation/stdlib work only; no model, trainer, profiler, waiter or new

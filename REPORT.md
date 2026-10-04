@@ -10,6 +10,10 @@ Tero Keski-Valkama and Karoliina Salminen · Research report · 3 October 2026
 [read the family definition and design rationale](report/model_family_design.md),
 [open the interactive atlas](report/architecture_atlas.html), and
 [follow the detailed review](report/architecture_review.md).
+The [composition guide](report/model_family_composition.md) keeps the family
+envelope, individual members and integrated target distinct. It explains how
+local choices transfer through the hierarchy and what forward, learning and
+resource contracts growth or replacement must preserve.
 The [claim/evidence map](report/architecture_evidence.md) binds scoped statements
 to their derivations, source contracts and completed result files. The
 [worked reception example](report/model_family_example.md) and atlas explorer

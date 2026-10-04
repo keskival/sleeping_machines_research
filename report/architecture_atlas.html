@@ -3,8 +3,8 @@
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f1f5fa;color:#182b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:28px}h1{font-size:32px;margin:8px 0}p{max-width:1040px}a{color:#2259a7}.controls,.card{background:white;border:1px solid #d4dfeb;border-radius:14px;padding:18px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center}select,input,button{font:inherit}button{padding:9px 15px;border-radius:8px;border:1px solid #2259a7;background:white;color:#2259a7;cursor:pointer}button[aria-selected=true]{background:#2259a7;color:white}.tabs{display:flex;gap:10px;flex-wrap:wrap}.panel svg{display:block;width:100%;height:auto;border:1px solid #d4dfeb;border-radius:12px}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:12px;border-bottom:1px solid #d4dfeb;vertical-align:top}thead{background:#eaf0f9}.matrix{overflow:auto}th{min-width:150px}td{min-width:225px}.muted{color:#53657d}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#ecf6f3;padding:12px;min-width:175px;border-radius:10px}.stat strong{display:block;font-size:26px;color:#147d69}.no-credit .learning{display:none}label{display:inline-flex;align-items:center;gap:7px}.scope{border-left:4px solid #ad5b16;padding:12px 18px;background:#fff7ed}input[type=number]{width:65px}footer{margin:25px 0;color:#53657d}[hidden]{display:none!important}
 </style><main><h1>What the model computes, stores and learns</h1>
 <p>Sleeping Machines is a family of stateful event-processing networks. Content, time, routing and persistent evidence jointly determine computation. Choose compatible operators per unit, module and layer; expand a limiting region while retaining economical computation elsewhere.</p>
-<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
-<div class="tabs" role="tablist" aria-label="Architecture diagrams"><button id="tab-0" role="tab" aria-selected="true" aria-controls="panel-0" tabindex="0" data-panel="0">Design space</button><button id="tab-1" role="tab" aria-selected="false" aria-controls="panel-1" tabindex="-1" data-panel="1">Reception example</button><button id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1" data-panel="2">One shared world</button><button id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1" data-panel="3">Online / batched learning</button><button id="tab-4" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" data-panel="4">Implemented branches</button><button id="tab-5" role="tab" aria-selected="false" aria-controls="panel-5" tabindex="-1" data-panel="5">Native receiver example</button><button id="tab-6" role="tab" aria-selected="false" aria-controls="panel-6" tabindex="-1" data-panel="6">Native layer and stack</button><button id="tab-7" role="tab" aria-selected="false" aria-controls="panel-7" tabindex="-1" data-panel="7">Compare families</button></div>
+<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="model_family_composition.md">How capabilities compose</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
+<div class="tabs" role="tablist" aria-label="Architecture diagrams"><button id="tab-0" role="tab" aria-selected="true" aria-controls="panel-0" tabindex="0" data-panel="0">Design space</button><button id="tab-1" role="tab" aria-selected="false" aria-controls="panel-1" tabindex="-1" data-panel="1">Reception example</button><button id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1" data-panel="2">Composition contracts</button><button id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1" data-panel="3">One shared world</button><button id="tab-4" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" data-panel="4">Online / batched learning</button><button id="tab-5" role="tab" aria-selected="false" aria-controls="panel-5" tabindex="-1" data-panel="5">Implemented branches</button><button id="tab-6" role="tab" aria-selected="false" aria-controls="panel-6" tabindex="-1" data-panel="6">Native receiver example</button><button id="tab-7" role="tab" aria-selected="false" aria-controls="panel-7" tabindex="-1" data-panel="7">Native layer and stack</button><button id="tab-8" role="tab" aria-selected="false" aria-controls="panel-8" tabindex="-1" data-panel="8">Compare families</button></div>
 <div class="controls"><label><input id="credit" type="checkbox" checked>Show learning signals</label><span class="muted">Orange credit arrows do not change hard forward values.</span></div>
 <section id="panel-0" class="panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1240" role="img" aria-label="Sleeping Machines: one family, many compatible design choices">
 <defs><marker id="arrow-130cd56d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
@@ -150,7 +150,64 @@
 <text x="35" y="712" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Full support within the declared observed prefix.</text>
 <text x="35" y="776" font-family="Arial, sans-serif" font-size="16" fill="#ad5b16" font-weight="700">At q=2, popcorn has pending state 2 and deadline 2.6. A query/EOF does not silently emit early.</text>
 <text x="35" y="815" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">A later layer can transform content by elapsed time; learning must credit membership and future-state effects.</text>
-</svg></section><section id="panel-2" class="panel" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1030" role="img" aria-label="One-model aspiration: mixed arrivals, shared state, local computation">
+</svg></section><section id="panel-2" class="panel" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1030" role="img" aria-label="The whole family: local choices become system capabilities through contracts">
+<defs><marker id="arrow-8bb1f248" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="1030" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">The whole family: local choices become system capabilities through contracts</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">One causal content/time/address/state interface; different compatible programs and mixtures in each region.</text>
+<g class=""><rect x="35" y="115" width="1130" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="142" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Keep three scales in view</text>
+<text x="49" y="168" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Family envelope: admissible choices → member: specified operators/contracts → target: integrated temporal selection</text>
+<text x="49" y="191" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Common review axes: computational power + total work; represented distinctions; useful learning.</text>
+<text x="49" y="214" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Implemented branches illustrate choices. Their union is not a completed trained system.</text>
+</g>
+<g class=""><rect x="35" y="275" width="330" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="302" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Atoms → units</text>
+</g>
+<g class=""><rect x="410" y="275" width="755" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="424" y="302" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Design choices + composition contract</text>
+<text x="424" y="328" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Choose evidence + flow + writes + reception + output + credit.</text>
+<text x="424" y="351" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Preserve content, timing, state and the relevant event history.</text>
+</g>
+<polyline class="" points="365,330 410,330" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8bb1f248)"/>
+<polyline class="" points="200,385 200,440" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8bb1f248)"/>
+<g class=""><rect x="35" y="440" width="330" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="467" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Modules → layers → stacks</text>
+</g>
+<g class=""><rect x="410" y="440" width="755" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="424" y="467" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Design choices + composition contract</text>
+<text x="424" y="493" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Compose access, deliveries, mixing, joins, depth and recurrence.</text>
+<text x="424" y="516" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Preserve required information paths and usable credit through boundaries.</text>
+</g>
+<polyline class="" points="365,495 410,495" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8bb1f248)"/>
+<polyline class="" points="200,550 200,605" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8bb1f248)"/>
+<g class=""><rect x="35" y="605" width="330" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="632" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Compositions → complete system</text>
+</g>
+<g class=""><rect x="410" y="605" width="755" height="110" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="424" y="632" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Design choices + composition contract</text>
+<text x="424" y="658" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Combine statistics, retrieval, rich islands, online learning and serving.</text>
+<text x="424" y="681" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Specify shared state, causal queries, versions, termination and full work.</text>
+</g>
+<polyline class="" points="365,660 410,660" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-8bb1f248)"/>
+<text x="35" y="800" font-family="Arial, sans-serif" font-size="19" fill="#ad5b16" font-weight="700">Adaptive replacement or growth needs a declared preservation contract:</text>
+<g class=""><rect x="35" y="835" width="360" height="110" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="49" y="862" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Forward continuation</text>
+<text x="49" y="888" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Future outputs / emissions / state</text>
+<text x="49" y="911" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Keep clocks and pending deadlines.</text>
+</g>
+<g class=""><rect x="420" y="835" width="360" height="110" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="434" y="862" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Learning transition</text>
+<text x="434" y="888" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Credit + parameter / optimizer state</text>
+<text x="434" y="911" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Equal outputs can learn differently.</text>
+</g>
+<g class=""><rect x="805" y="835" width="360" height="110" rx="12" fill="white" stroke="#ad5b16" stroke-width="2"/>
+<text x="819" y="862" font-family="Arial, sans-serif" font-size="17" fill="#ad5b16" font-weight="700">Resource refinement</text>
+<text x="819" y="888" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Work / memory / traffic / latency</text>
+<text x="819" y="911" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Ignored branches may still cost work.</text>
+</g>
+<text x="35" y="985" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Expand the limiting region; retain economical regions. Test the integrated consequence rather than counting features.</text>
+</svg></section><section id="panel-3" class="panel" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1030" role="img" aria-label="One-model aspiration: mixed arrivals, shared state, local computation">
 <defs><marker id="arrow-0b016961" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1030" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">One-model aspiration: mixed arrivals, shared state, local computation</text>
@@ -218,7 +275,7 @@
 <polyline class="" points="890,762 890,790 600,790 600,820" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-0b016961)"/>
 <text x="35" y="962" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Full joint multimodal training is pending. Current emulators and optimizer use clocked/coordinated execution.</text>
 <text x="35" y="994" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Clock independence is architectural; measured physical clockless energy and fully local online learning are open.</text>
-</svg></section><section id="panel-3" class="panel" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" role="img" aria-label="One structure: stateful prediction, online learning and batching">
+</svg></section><section id="panel-4" class="panel" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" role="img" aria-label="One structure: stateful prediction, online learning and batching">
 <defs><marker id="arrow-8f37b5dc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="970" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">One structure: stateful prediction, online learning and batching</text>
@@ -289,7 +346,7 @@
 <text x="35" y="860" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Charge selected inference + candidate discovery + alternative credit + optimizer + retained state + traffic.</text>
 <text x="35" y="895" font-family="Arial, sans-serif" font-size="16" fill="#2259a7" font-weight="700">Learning may be online, batched or mixed without replacing the model by a separate dense predictor.</text>
 <text x="35" y="934" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Reference loop: native integrated units. This figure specifies admissible learning policies, not an on-chip implementation.</text>
-</svg></section><section id="panel-4" class="panel" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1160" role="img" aria-label="Implemented branches: shared toolbox, distinct constructions">
+</svg></section><section id="panel-5" class="panel" role="tabpanel" aria-labelledby="tab-5" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1160" role="img" aria-label="Implemented branches: shared toolbox, distinct constructions">
 <defs><marker id="arrow-acacc1da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1160" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Implemented branches: shared toolbox, distinct constructions</text>
@@ -378,7 +435,7 @@
 <polyline class="" points="985,815 985,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <text x="35" y="1100" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Review every level on: computational capacity/work | representational capacity | trainability.</text>
 <text x="35" y="1132" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Known primitives are attributed. The research contribution is their construction and tested consequences.</text>
-</svg></section><section id="panel-5" class="panel" role="tabpanel" aria-labelledby="tab-5" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-label="Native receiver: selection, message, private state and time">
+</svg></section><section id="panel-6" class="panel" role="tabpanel" aria-labelledby="tab-6" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-label="Native receiver: selection, message, private state and time">
 <defs><marker id="arrow-a1734465" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="820" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Native receiver: selection, message, private state and time</text>
@@ -454,7 +511,7 @@
 <text x="34" y="722" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Blue: event computation    Green: persistent state    Orange dashed: learning-only signals</text>
 <text x="34" y="754" font-family="Arial, sans-serif" font-size="16" fill="#25354b" font-weight="400">Standard training evaluates U proposals; cached winner-only inference evaluates one selected proposal.</text>
 <text x="34" y="784" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Trained FP32 sparse parity/cost pending. Stored-key read precedes input-conditioned age evolution.</text>
-</svg></section><section id="panel-6" class="panel" role="tabpanel" aria-labelledby="tab-6" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img" aria-label="A native layer, stacked model and source-local recurrence">
+</svg></section><section id="panel-7" class="panel" role="tabpanel" aria-labelledby="tab-7" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img" aria-label="A native layer, stacked model and source-local recurrence">
 <defs><marker id="arrow-552de2f4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1020" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">A native layer, stacked model and source-local recurrence</text>
@@ -521,7 +578,7 @@
 </g>
 <text x="34" y="960" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Available: D×H×U memories   |   Scored: D×H×U keys   |   Selected: D×H writes/input</text>
 <text x="34" y="990" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Map sharing can preserve private state. Cross-source grounding needs an explicit shared information path.</text>
-</svg></section><section id="panel-7" class="panel" role="tabpanel" aria-labelledby="tab-7" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Execution structures: representative model families">
+</svg></section><section id="panel-8" class="panel" role="tabpanel" aria-labelledby="tab-8" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Execution structures: representative model families">
 <defs><marker id="arrow-b4bae8b7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="850" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Execution structures: representative model families</text>

@@ -53,6 +53,15 @@ one gradient approximation or one physical implementation. Nor is it merely
 an unconstrained list of algorithms placed beside one another. The causal
 content/time/state interface and its composed consequences supply coherence.
 
+Keep three scales in view: the **family envelope** supplies the design choices;
+a **member specification** fixes compatible operators and contracts; the
+**integrated research target** combines the distinctive temporal/selective
+mechanisms and tests their quality/resource benefit. Inclusion in the envelope
+does not give a restricted member every other member's capability. The
+[composition guide](model_family_composition.md) explains how unit choices
+transfer through layers, stacks and systems, and what adaptive replacement
+must preserve. Implemented branches are examples of this generative definition.
+
 ## The common computation contract
 
 A concrete member is specified by a graph of admissible programs, an operator

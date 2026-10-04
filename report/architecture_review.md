@@ -13,6 +13,7 @@ motivation; it does not merge separate successes into one completed system.
 
 [Start with the short overview](model_family_overview.md) ·
 [Family definition and design rationale](model_family_design.md) ·
+[Composition and preservation](model_family_composition.md) ·
 [Interactive architecture atlas](architecture_atlas.html) ·
 [Claims and evidence](architecture_evidence.md) ·
 [Whole-family inventory](model_family_inventory.md) ·

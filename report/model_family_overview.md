@@ -23,6 +23,13 @@ requiring one uniform layer recipe. A particular member specifies its actual
 operators and contracts. The breadth is an architectural design space; the
 integrated temporal/selective target is the direction we want to make efficient.
 
+The envelope, an individual member and the integrated target are distinct.
+The same interface permits different local programs and mixtures per region;
+each member's actual support and operators determine its capabilities. The
+[composition guide](model_family_composition.md) explains how those local
+choices carry through to the whole system. Properties must survive interfaces;
+collecting capable units alone does not establish a capable composition.
+
 | Level | Computational power and work | Representation | Trainability |
 | --- | --- | --- | --- |
 | Atoms | Delay, first/latest arrival, flow, gates and statistics | Values, order, intervals, phase and repeated evidence | Continuous sensitivities and event-boundary utility |
@@ -82,6 +89,7 @@ Current clocked emulators do not establish clockless hardware energy gains.
 | Purpose | Document |
 | --- | --- |
 | Choose a member and understand the design rationale | [Family definition and choices](model_family_design.md) |
+| Understand how local choices become system capabilities | [Composition and preservation guide](model_family_composition.md) |
 | Explore how different reception policies compute | [Interactive atlas](architecture_atlas.html) and [worked example](model_family_example.md) |
 | Inspect native units, layers and wider integrations | [Detailed architectural review](architecture_review.md) |
 | Check precisely what a claim rests on | [Evidence and capability map](architecture_evidence.md) |

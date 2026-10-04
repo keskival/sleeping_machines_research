@@ -40,7 +40,7 @@ def near(a, b):
 def verify():
     records = {}
     svgs = sorted((ROOT/'report/figures').glob('architecture_*.svg'))
-    assert len(svgs) == 8
+    assert len(svgs) == 9
     for path in svgs:
         tree = ET.fromstring(path.read_text())
         _, _, width, height = map(float, tree.attrib['viewBox'].split())
@@ -66,7 +66,7 @@ def verify():
     records['html_unique_ids_and_local_links'] = len(page.ids)
     tabs = [a for _,a in page.elements if a.get('role') == 'tab']
     panels = [a for _,a in page.elements if a.get('role') == 'tabpanel']
-    assert len(tabs) == len(panels) == 8
+    assert len(tabs) == len(panels) == 9
     for i,(tab,panel) in enumerate(zip(tabs,panels)):
         assert tab['aria-controls'] == panel['id']
         assert panel['aria-labelledby'] == tab['id']
@@ -78,7 +78,7 @@ def verify():
     docs = [ROOT/'report'/n for n in (
         'model_family_design.md', 'architecture_review.md', 'model_family_inventory.md',
         'architecture_review_checks.md', 'architecture_source_inventory.md',
-        'model_family_overview.md','model_family_example.md','architecture_evidence.md')]
+        'model_family_overview.md','model_family_example.md','model_family_composition.md','architecture_evidence.md')]
     docs += [ROOT/'experiments/theory/152_primitives_integration_and_capability_bounds.md']
     links = 0
     for path in docs:
@@ -138,8 +138,8 @@ const limits={depth:[1,64,1],heads:[1,16,1],pool:[1,1024,1],width:[2,2048,2],'rx
 const ids=['credit','memories','scores','writes','proposals','state','mode-note','rx-arrivals','rx-members','rx-state','rx-emission','rx-note',...Object.keys(values)];
 const elements=Object.fromEntries(ids.map(id=>[id,{value:String(values[id]??''),checked:true,textContent:'',handlers:{},addEventListener(k,f){this.handlers[k]=f},checkValidity(){const v=Number(this.value),limit=limits[id];if(!limit)return true;const [min,max,step]=limit;return this.value!==''&&Number.isFinite(v)&&v>=min&&v<=max&&Math.abs((v-min)/step-Math.round((v-min)/step))<1e-8}}]));
 let focused=null;
-const buttons=Array.from({length:8},(_,i)=>({dataset:{panel:String(i)},handlers:{},attrs:{},addEventListener(k,f){this.handlers[k]=f},setAttribute(k,v){this.attrs[k]=v},focus(){focused=i}}));
-const panels=Array.from({length:8},()=>({hidden:false}));
+const buttons=Array.from({length:9},(_,i)=>({dataset:{panel:String(i)},handlers:{},attrs:{},addEventListener(k,f){this.handlers[k]=f},setAttribute(k,v){this.attrs[k]=v},focus(){focused=i}}));
+const panels=Array.from({length:9},()=>({hidden:false}));
 let noCredit=false;
 const document={getElementById:id=>elements[id],querySelectorAll:q=>q==='[data-panel]'?buttons:panels,body:{classList:{toggle(k,v){assert.equal(k,'no-credit');noCredit=v}}}};
 const context={document,Number,String,Math};
@@ -154,9 +154,9 @@ set('width',31);assert.match(elements['mode-note'].textContent,/even/);assert.eq
 set('width','');assert.match(elements['mode-note'].textContent,/bounds/);
 set('width',32);set('depth',0);assert.match(elements['mode-note'].textContent,/bounds/);
 set('depth',4);set('width',3.5);assert.match(elements['mode-note'].textContent,/bounds/);
-for(let i=0;i<8;i++){buttons[i].handlers.click();panels.forEach((p,j)=>assert.equal(p.hidden,j!==i));buttons.forEach((b,j)=>{assert.equal(b.attrs['aria-selected'],String(i===j));assert.equal(b.attrs.tabindex,i===j?'0':'-1')})}
+for(let i=0;i<9;i++){buttons[i].handlers.click();panels.forEach((p,j)=>assert.equal(p.hidden,j!==i));buttons.forEach((b,j)=>{assert.equal(b.attrs['aria-selected'],String(i===j));assert.equal(b.attrs.tabindex,i===j?'0':'-1')})}
 function key(index,name,expected){let prevented=false;buttons[index].handlers.keydown({key:name,preventDefault(){prevented=true}});assert.equal(prevented,true);assert.equal(focused,expected);assert.equal(panels[expected].hidden,false)}
-key(7,'ArrowRight',0);key(0,'ArrowLeft',7);key(3,'Home',0);key(3,'End',7);
+key(8,'ArrowRight',0);key(0,'ArrowLeft',8);key(3,'Home',0);key(3,'End',8);
 elements.credit.checked=false;elements.credit.handlers.change();assert.equal(noCredit,true);
 elements.credit.checked=true;elements.credit.handlers.change();assert.equal(noCredit,false);
 function reception(policy,H,cTime,q,members,state,emission){const r=context.traceReception(policy,H,cTime,q);assert.equal(r.accepted.map(e=>e.name).join(','),members);assert.equal(r.state,state);if(emission===null)assert.equal(r.emission,null);else assert.ok(Math.abs(r.emission-emission)<1e-12);return r}
@@ -179,7 +179,7 @@ assert.equal(elements['rx-members'].textContent,'A, B, C');assert.equal(elements
 set('rx-cutoff',2);assert.match(elements['rx-note'].textContent,/Pending/);assert.equal(elements['rx-emission'].textContent,'Not emitted');
 set('rx-gap','');assert.match(elements['rx-note'].textContent,/bounds/);assert.equal(elements['rx-state'].textContent,'—');
 set('rx-gap',1);set('rx-time',.35);assert.match(elements['rx-note'].textContent,/bounds/);
-console.log('dimensions, modes, invalid-input clearing, eight keyboard tabs, credit visibility and sixteen causal reception cases pass');
+console.log('dimensions, modes, invalid-input clearing, nine keyboard tabs, credit visibility and sixteen causal reception cases pass');
 '''
     with tempfile.TemporaryDirectory(prefix='architecture-review-') as temp:
         js_path = Path(temp)/'controls.js'
@@ -286,10 +286,53 @@ console.log('dimensions, modes, invalid-input clearing, eight keyboard tabs, cre
         limit = c*len(seeds)*sum(b**k for k in range(math.floor(horizon/delta)+1))
         assert c*blocks <= limit
     witness_cases += 1
+    # Boundary sufficiency: counts cannot answer a last-symbol query.
+    histories = ((0,1),(1,0))
+    assert sum(histories[0]) == sum(histories[1])
+    assert histories[0][-1] != histories[1][-1]
+    witness_cases += 1
+    # Isolated width growth preserves sums and a pending timeout; losing the
+    # timeout preserves a silent query but changes the future boundary trace.
+    parent, child = 2., (2.,0.)
+    deadline = 2.6
+    for x in (-3.,4.,0.,7.):
+        parent += x
+        child = (child[0]+x,0.*child[1])
+        assert child == (parent,0.)
+    def timed_observation(value, due, query):
+        return (due,value) if due is not None and due<=query else None
+    assert timed_observation(parent,deadline,2.) is None
+    assert timed_observation(child[0],None,2.) is None
+    assert timed_observation(parent,deadline,3.) == timed_observation(child[0],deadline,3.)
+    assert timed_observation(child[0],None,3.) is None
+    witness_cases += 1
+    # Equal functions under coordinate migration can have unequal SGD paths.
+    for theta in (.25,1.,4.):
+        phi = math.sqrt(theta)
+        near(phi*phi,theta)
+        near(2*phi/(2*math.sqrt(theta)),1.)
+    theta,phi,eta = 1.,1.,.1
+    parent_next = theta-eta*theta
+    child_next = (phi-eta*2*phi**3)**2
+    near(parent_next,.9)
+    near(child_next,.64)
+    assert abs(parent_next-child_next)>.2
+    witness_cases += 1
+    # Function-preserving growth may leave new directions locally dormant.
+    x,epsilon = 3.,1e-5
+    first_u = ((epsilon*0.*x)-(-epsilon*0.*x))/(2*epsilon)
+    first_v = ((0.*epsilon*x)-(0.*-epsilon*x))/(2*epsilon)
+    first_w = ((epsilon*x)-(-epsilon*x))/(2*epsilon)
+    near(first_u,0.)
+    near(first_v,0.)
+    near(first_w,x)
+    assert 1.*1.*x != 0.  # Finite-change expressivity despite zero tangent.
+    witness_cases += 1
     records['independent_scalar_witness_cases'] = witness_cases
     artifacts = docs+[ROOT/'scripts/build_architecture_atlas.py',ROOT/'scripts/check_architecture_review.py',
         ROOT/'report/architecture_evidence.json',ROOT/'report/architecture_atlas.html',
-        ROOT/'report/architecture_source_inventory.json']+svgs
+        ROOT/'report/architecture_source_inventory.json',ROOT/'README.md',ROOT/'REPORT.md',
+        ROOT/'experiments/THEORY.md',ROOT/'experiments/LOCAL_HANDOFF.md']+svgs
     records['documentation_artifact_sha256'] = {
         str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest()
         for path in artifacts}

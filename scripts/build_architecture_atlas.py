@@ -195,6 +195,33 @@ def reception_example():
     return d.finish()
 
 
+def composition():
+    d = Diagram('The whole family: local choices become system capabilities through contracts', 1030)
+    d.label(34,76,'One causal content/time/address/state interface; different compatible programs and mixtures in each region.',15,GRAY)
+    d.box(35,115,1130,112,'Keep three scales in view',[
+        'Family envelope: admissible choices → member: specified operators/contracts → target: integrated temporal selection',
+        'Common review axes: computational power + total work; represented distinctions; useful learning.',
+        'Implemented branches illustrate choices. Their union is not a completed trained system.'])
+    rows = [
+        ('Atoms → units', 'Choose evidence + flow + writes + reception + output + credit.', 'Preserve content, timing, state and the relevant event history.'),
+        ('Modules → layers → stacks', 'Compose access, deliveries, mixing, joins, depth and recurrence.', 'Preserve required information paths and usable credit through boundaries.'),
+        ('Compositions → complete system', 'Combine statistics, retrieval, rich islands, online learning and serving.', 'Specify shared state, causal queries, versions, termination and full work.')]
+    for i,(title,choices,contract) in enumerate(rows):
+        y=275+165*i
+        d.box(35,y,330,110,title,(),GREEN)
+        d.box(410,y,755,110,'Design choices + composition contract',[choices,contract],GREEN)
+        d.arrow([(365,y+55),(410,y+55)],GREEN)
+        if i<2: d.arrow([(200,y+110),(200,y+165)],GREEN)
+    d.label(35,800,'Adaptive replacement or growth needs a declared preservation contract:',19,ORANGE,True)
+    for i,(title,lines) in enumerate((
+        ('Forward continuation',['Future outputs / emissions / state', 'Keep clocks and pending deadlines.']),
+        ('Learning transition',['Credit + parameter / optimizer state', 'Equal outputs can learn differently.']),
+        ('Resource refinement',['Work / memory / traffic / latency', 'Ignored branches may still cost work.']))):
+        d.box(35+385*i,835,360,110,title,lines,ORANGE)
+    d.label(35,985,'Expand the limiting region; retain economical regions. Test the integrated consequence rather than counting features.',15,GRAY)
+    return d.finish()
+
+
 def shared_world():
     d = Diagram('One-model aspiration: mixed arrivals, shared state, local computation', 1030)
     d.label(34,76,'Input density, computation density, arrival cadence and hardware clocking are independent axes.',16,GRAY)
@@ -408,7 +435,7 @@ LEVELS = [
 
 
 def html_page(figures):
-    names = ('Design space','Reception example','One shared world','Online / batched learning',
+    names = ('Design space','Reception example','Composition contracts','One shared world','Online / batched learning',
              'Implemented branches','Native receiver example','Native layer and stack','Compare families')
     tabs = ''.join(f'<button id="tab-{i}" role="tab" aria-selected="{str(i==0).lower()}" aria-controls="panel-{i}" tabindex="{0 if i==0 else -1}" data-panel="{i}">{name}</button>' for i,name in enumerate(names))
     rows = ''.join(f'<tr><th>{escape(level)}</th><td>{escape(comp)}</td><td>{escape(rep)}</td><td>{escape(train)}</td></tr>' for level,comp,rep,train in LEVELS)
@@ -418,7 +445,7 @@ def html_page(figures):
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f1f5fa;color:#182b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:28px}h1{font-size:32px;margin:8px 0}p{max-width:1040px}a{color:#2259a7}.controls,.card{background:white;border:1px solid #d4dfeb;border-radius:14px;padding:18px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center}select,input,button{font:inherit}button{padding:9px 15px;border-radius:8px;border:1px solid #2259a7;background:white;color:#2259a7;cursor:pointer}button[aria-selected=true]{background:#2259a7;color:white}.tabs{display:flex;gap:10px;flex-wrap:wrap}.panel svg{display:block;width:100%;height:auto;border:1px solid #d4dfeb;border-radius:12px}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:12px;border-bottom:1px solid #d4dfeb;vertical-align:top}thead{background:#eaf0f9}.matrix{overflow:auto}th{min-width:150px}td{min-width:225px}.muted{color:#53657d}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#ecf6f3;padding:12px;min-width:175px;border-radius:10px}.stat strong{display:block;font-size:26px;color:#147d69}.no-credit .learning{display:none}label{display:inline-flex;align-items:center;gap:7px}.scope{border-left:4px solid #ad5b16;padding:12px 18px;background:#fff7ed}input[type=number]{width:65px}footer{margin:25px 0;color:#53657d}[hidden]{display:none!important}
 </style><main><h1>What the model computes, stores and learns</h1>
 <p>Sleeping Machines is a family of stateful event-processing networks. Content, time, routing and persistent evidence jointly determine computation. Choose compatible operators per unit, module and layer; expand a limiting region while retaining economical computation elsewhere.</p>
-<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
+<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="model_family_composition.md">How capabilities compose</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
 <div class="tabs" role="tablist" aria-label="Architecture diagrams">''' + tabs + '''</div>
 <div class="controls"><label><input id="credit" type="checkbox" checked>Show learning signals</label><span class="muted">Orange credit arrows do not change hard forward values.</span></div>
 ''' + panels + '''
@@ -443,8 +470,8 @@ function reception(){const ids=['rx-gap','rx-time','rx-cutoff'];if(ids.some(id=>
 
 
 def main():
-    figures = [design_space(), reception_example(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
-    for name, svg in zip(('design_space', 'reception', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
+    figures = [design_space(), reception_example(), composition(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
+    for name, svg in zip(('design_space', 'reception', 'composition', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
         path = ROOT/'report/figures'/f'architecture_{name}.svg'
         path.write_text(svg+'\n')
     (ROOT/'report/architecture_atlas.html').write_text(html_page(figures)+'\n')
@@ -471,7 +498,7 @@ def main():
         names=[c['name'] for c in m['classes']] or m['functions']
         lines.append(f"| [{m['path']}](../{m['path']}) | {', '.join(names) or 'Package'} | {m['summary'].replace('|','/')} |")
     (ROOT/'report/architecture_source_inventory.md').write_text('\n'.join(lines)+'\n')
-    print(f'Built eight SVG diagrams, reception explorer, evidence map and {len(modules)}-module AST inventory; no numerical imports.')
+    print(f'Built nine SVG diagrams, reception explorer, evidence map and {len(modules)}-module AST inventory; no numerical imports.')
 
 
 if __name__ == '__main__':
