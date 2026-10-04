@@ -69,3 +69,9 @@ the current best configuration is queued on AWS. Leaderboard: AEGRU .71 (six-ses
 
 **SHD.** Official files downloaded; driver ready (speaker-held-out validation); development arms are queued after primate
 round 2.
+
+**Primate round 2 (12:32 UTC, development session indy_20170131_02, 4,000 steps, leaky readout, 4 route samples):**
+p32/d2 pool 2 test .738 (val .737); tied pool 8 .720 (val .715); tied pool 4 + weight decay 1e-4 **test .754** (val .715);
+tinyRSNN .746, bigRSNN .772 on this session. Validation and test rank these arms differently (the validation split is the
+last 13% of the fitting bins, one contiguous block), so validation is a noisy selector; the protocol still selects by
+validation only. Round 3 (causal spike traces) and the remaining tied pool-4 arm follow.
