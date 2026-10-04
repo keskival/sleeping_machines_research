@@ -1,5 +1,13 @@
 # Local host: current research continuation
 
+## Hardware cost model and key-scoring floor — 4 October 2026, 23:15 UTC
+
+This container has no text8 and no local trainer; training stays with the curie runner and AWS. Done here: P0-6 tuned
+dense references queued for AWS (TUNED_BASELINES.md); investment/HARDWARE_THESIS.md plus deck slides 10/26; P2 cost
+model (hardware_cost_model.py). Finding: 5.2× fewer bytes/char than the Transformer we beat, but 76% of weights are read per
+character because every slot's P×P key_read is scored. Proposal theory/154 (cheap/cached/hierarchical keys), not run.
+Implement it as a new module only: pinned queue sources must not change.
+
 ## Trained sparse deployment: exact-source blocker repaired — 4 October 2026
 
 User requested execution of the investor value plan. Found actual completed

@@ -44,6 +44,13 @@ anything) until P0-1 and P0-3 are running. Resume them afterwards.
 | P1-3 | SHD official test (speaker-held-out selection first) | report accuracy against the cited 96.4% best |
 | P1-4 | Update-matched 10M row against Transformer-256×4 (96 lanes) | 6-pass with 4,883 updates still < 1.908 |
 
+## P2 progress
+
+- **Hardware cost model v1 done (4 Oct):** `experiments/hardware_cost_model.py` → `results/diagnostics/hardware_cost_model_20261004.json`.
+  Efficiency point: native p96 (1.888) moves 5.2× fewer bytes/char than Transformer-256×4 (1.908) and 1.7× fewer than LSTM-512
+  (1.799, better quality). Today 76% of native weights are read per character (key scoring); theory 154 proposes cheap keys.
+  Next: implement theory 154 option 1/2 as a NEW module (pinned sources untouched), contract, then a 10M pool-8 comparison.
+
 ## P2 — after the P0/P1 numbers exist
 
 Hardware cost model for the target asynchronous ASIC (event, message-rate, memory-locality/traffic and FLOP counts on one fixed trained model, vs the tuned dense reference; see investment/HARDWARE_THESIS.md;

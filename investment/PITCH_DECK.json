@@ -406,8 +406,8 @@
         },
         {
           "label": "02 / MEMORY-LOCAL ACCELERATORS",
-          "metric": "Data stays put",
-          "body": "Each event touches a few addressed state slots, not every weight. On AI chips data movement costs far more energy than arithmetic, so sparse, local access is the main lever."
+          "metric": "5× fewer bytes",
+          "body": "Modeled per character: our 1.888-bpc model moves 5.2× fewer bytes than the Transformer it beats, with 1.5K state values instead of a 524K KV cache. Data movement dominates chip energy."
         },
         {
           "label": "03 / CLOCKLESS SILICON",
@@ -833,8 +833,8 @@
       "rows": [
         [
           "Energy",
-          "Few local memory accesses per event instead of streaming all weights; no clock tree; idle units draw only leakage.",
-          "Cost model of a trained network vs GPU and clock-gated SRAM accelerator."
+          "Cost model: 5.2× fewer bytes/char than the Transformer we beat; no KV cache; no clock tree; idle units leak only.",
+          "Cheap key scoring (today 76% of weights read per char); chip-level measurement."
         ],
         [
           "Latency",
