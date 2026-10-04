@@ -279,7 +279,7 @@ Frozen versus online evaluation scores 8,191 targets with predict-before-update,
 
 ## 26. One substrate can support new communication and learning patterns.
 
-Application hypotheses with first proofs; no project codec, embodied-transfer or AGI result.
+Application hypotheses with first proofs; no codec, embodied-transfer or AGI result yet. The first row needs no special hardware.
 
 The register in report/model_family_opportunities.md records six opportunities, mechanisms, evidence status, primary precedents and proof conditions. Dense arithmetic does not inherently require regularized input; variable-rate codecs and joint VLA models already exist. Our opportunity is coherent temporal/selective integration. Quantized message streams need a real wire/decoder contract; metadata/timing/reset and all endpoint work count. Joint motor/cognitive training needs shared information/credit and measured transfer; it does not prove AGI. Proposed application breadth supports platform optionality, not summed TAM or independent success chances. Existing integrated research queues retain priority.
 

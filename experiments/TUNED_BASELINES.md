@@ -87,8 +87,9 @@ requires aligned validation/test contexts. A first finished arm cannot become th
 
 | Arm | Budget | Est. training | Best valid | Test | vs native in budget |
 |---|---|---|---|---|---|
-| `aws_tuned_ref_10M_A_lstm384_p6_lr0.003_s0_20261004T210000Z` | A | 254 TF | 1.778 | **1.840** | native p96/d4 6-pass 1.888 at 352 TF: **loss** for native (stateful LSTM context; aligned rescore pending) |
+| `aws_tuned_ref_10M_A_lstm384_p6_lr0.003_s0_20261004T210000Z` | A | 254 TF | 1.778 | **1.840** | native p96/d4 6-pass 1.888 at 352 TF: **loss** for native (context resolved: streamed 1.8255 = windows 1.8255, curie 23003f5d) |
 | `aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z` | A | 324 TF | **1.769** (leading) | **1.826** | **loss** for native by .062; nearly the saved 6-pass LSTM-512 (1.799) at 75% of its compute |
+| `aws_tuned_ref_10M_A_tf192L4_p2.5_lr0.002_s0_20261004T210000Z` | A | 328 TF | 1.982 | **2.027** | native better by .139, but native used 352 TF (107%): not a formal matched-compute win; still improving at its last step |
 
 The validation curve was still improving at the final step (1.785 → 1.778 over the last 1,500 steps), so this budget is
 not saturated for the LSTM. Group selection waits for all six A arms (HEADLINE_PROTOCOL_AUDIT.md). Whatever is selected
@@ -100,3 +101,8 @@ Native p96 winner-only is 1.3 MFLOPs. At roughly equal inference compute, LSTM-3
 characters, tuned LSTMs currently dominate the native model in quality at similar inference cost. The native model's
 remaining measured advantages are bytes per character (no KV cache; capacity added for +5% traffic) and the Transformer
 comparisons, pending the tuned Transformer arms.
+
+**Context and mechanism (5 Oct 01:40, curie 23003f5d / 1b4fa655):** scoring context is irrelevant here (streamed = windowed
+for both LSTM and native). The LSTM's 0.06–0.07 bpc lead is already present at 2–4 characters of history and stays
+constant after that. It is local character modelling, not longer memory. Deterministic routing (1.8884) equals sampled routing
+(1.8889), so race noise is not the lever. The native gap is in short-range modelling capacity.

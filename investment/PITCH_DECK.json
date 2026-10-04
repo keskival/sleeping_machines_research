@@ -205,7 +205,7 @@
         160,
         456
       ],
-      "rowh": 43,
+      "rowh": 38,
       "size": 14,
       "rows": [
         [
@@ -233,10 +233,16 @@
           "Behind by 0.09 at 81% of its training compute"
         ],
         [
-          "vs best tuned LSTM so far (2 of 6 tuned runs)",
+          "vs best tuned LSTM so far (2 tuned runs)",
           "1.826 bpc",
           "1.888 bpc",
           "Behind by 0.06; it used 92% of our compute"
+        ],
+        [
+          "vs tuned Transformer so far (1 of 3 tuned runs)",
+          "2.027 bpc",
+          "1.888 bpc",
+          "Better by 0.14 (we used 7% more compute)"
         ],
         [
           "vs LSTM-512 / Transformer (90M chars): queued",

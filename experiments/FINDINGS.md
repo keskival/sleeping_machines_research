@@ -34,7 +34,14 @@ Interpretation:
   - width (p128 4-pass, P0-2);
   - dropout and validation-selected checkpoints, as the tuned LSTM uses;
   - deterministic or averaged routing at evaluation;
-  - richer per-event mixing.
+  - richer per-event mixing;
+  - **delay taps for language (hypothesis, 5 Oct 01:50, Docker review host):** the lead appears at 2–4 characters of history.
+    In the native model, recent characters reach the current event only via race-selected memory writes (2 slots/head) and
+    the previous winner's value, both lossy for exact recent identity. The LSTM gets a dense state update every step. The
+    in-architecture remedy is to re-deliver the last k characters as delayed event arrivals (time as computation; the MG
+    member already uses 8 taps; sleeping_machines/dilated_delay_taps.py). This retains races, sparse writes and credit, and adds k
+    small content arrivals per event to inference. The language driver has no tap option yet. Test: 10M p64/d4 4-pass, taps
+    k=3 vs none, bpc at history 2–4 and overall, plus inference MF/pos. A dense local carrier would be a labelled control, not the fix.
 
 ## P0-6 partial: two tuned LSTMs at budget A beat the native 1.888 — 4 October (AWS, 2 of 6 arms)
 
