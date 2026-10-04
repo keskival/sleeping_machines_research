@@ -1,5 +1,16 @@
 # Findings log
 
+## Mackey-Glass exact-expected-reception member (§418): ties race on tau 18, not robust on tau 19 — 4 October
+
+Development only (three official-protocol repeats per arm, tau 18/19; mean sMAPE %, lower is better). Expected-reception
+member, p16/d2 with increments, 1,500 steps: tau 18 pool 2 23.1, **pool 4 17.08** (repeats 17.2/19.0/15.1); tau 19 pool 2
+23.48 (16.9/28.3/25.2), pool 4 30.43 (26.9/34.0/30.4). Race member on tau 18 (curie_mg5): mix8 17.2, argmax 18.5,
+sampled 25.3. So pool 4 ties the race member's 8-stream average on tau 18 at about 28K traced MACs/step versus 93K, but
+pool 4 is the worst arm on tau 19. No race tau 19 reference exists yet; `curie_mg6_t19_p16_20261004T210500Z` (race,
+mix8/argmax/sampled) is queued to decide whether tau 19 is just harder. With three repeats and per-repeat spreads of
+4–11 points, no arm is ranked; the official tau 17 primary stays the race member (AWS r1, mix8 14.37 at 20/30), and no
+expected-member tau 17 run is pre-declared until the race tau 19 reference completes.
+
 ## Matched-compute comparisons at 10M: native wins 6 of 8 budget comparisons — 4 October
 
 From completed single-seed result files (report: native language appendix, "Matched-compute comparisons"). For each saved

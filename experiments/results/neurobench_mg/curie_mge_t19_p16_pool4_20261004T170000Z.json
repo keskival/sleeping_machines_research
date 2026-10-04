@@ -1,0 +1,63 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "curie_mge_t19_p16_pool4_20261004T170000Z",
+    "tau": 19,
+    "repeats": 3,
+    "first_repeat": 0,
+    "payload": 16,
+    "depth": 2,
+    "heads": 2,
+    "pool": 4,
+    "tie_pools": false,
+    "taps": 8,
+    "segment": 64,
+    "lanes": 32,
+    "steps": 1500,
+    "lr": 0.003,
+    "weight_decay": 0.0,
+    "clip": 1.0,
+    "warmup": 8,
+    "delta": true,
+    "compiled": true,
+    "seed": 0
+  },
+  "parameters": 23249,
+  "footprint_bytes_float32": 92996,
+  "repeats": [
+    {
+      "repeat": 0,
+      "smape": 26.852905701080726,
+      "final_train_mse": 4.368671507108957e-05,
+      "wall_s": 395.9131532430183
+    },
+    {
+      "repeat": 1,
+      "smape": 34.031932483901926,
+      "final_train_mse": 3.1344069157057675e-05,
+      "wall_s": 393.26561488601146
+    },
+    {
+      "repeat": 2,
+      "smape": 30.409103703889834,
+      "final_train_mse": 3.389746216271305e-05,
+      "wall_s": 390.52433303100406
+    }
+  ],
+  "mean_smape": 30.4313139629575,
+  "member": "exact expected reception, mean clock, hard argmax writes (deterministic)",
+  "protocol": "NeuroBench Mackey-Glass (neurobench 2.3.0 slices, split and SMAPE via mackey_glass_native)",
+  "source_sha256": {
+    "experiments/mg_expected.py": "c343d61a6a8848d4af8e1640dfd1e55ee31c57c9a9ab653bc86cf83b54a1ddde",
+    "experiments/mackey_glass_native.py": "06cea672c090bf6a42f810be404e74a8bead618bb007108532f9eb89c44dabb4",
+    "sleeping_machines/expected_reception.py": "889d6a01ab005f6b86d3e682a8b0b188322c1f0795bb5becd4f5419d250fb94d",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "data_sha256": "1de21d6bf519d0286b618b3563a60f00e220e641815b491d1d524eacd6f67afd",
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 1179.7064275130106
+}
