@@ -151,6 +151,8 @@ Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). 128 fi
 
 **Learned native language at 10M, one pass (THEORY §413).** Alternative-value credit (forward values unchanged) improves the integrated native core from **2.507 to 2.370** test bpc at the same size. More width reaches **2.163** (T256 2.162) versus **2.171** for LSTM-256 and **2.427** for Transformer. Winner-only trace: **1.32** versus 0.68 MFLOPs/position; fitting 5.87 versus 2.03 MFLOPs/character. Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. Multi-pass and 90M rows have their own references: 10M six passes 1.888 vs the 4-pass Transformer-256x4 1.908 (1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and Transformer 1.604 at 16-33x our estimated fitting work. The native appendix retains every arm and failed write credit.
 
+**Public benchmarks (NeuroBench), in progress.** Mackey-Glass official tau 17: our 14,393-parameter race member scores **14.37** sMAPE after 20/30 repeats (LSTM 13.37, ESN 14.79 on the leaderboard; our float32 footprint 57.6 KB versus 490/281 KB). Primate reaching development session: best test R² **0.754** (tinyRSNN .746, bigRSNN .772 on that session; leaderboard six-session best .71, run pending). Partial and development results only; no leaderboard claim yet. See the public-benchmark appendix.
+
 **Native data scaling.** The same 54,907-parameter construction improves from **3.765 to 3.557 bpc** when fitting data grows from2K to8K characters, using **15.12 whole-fit GFLOPs**. Both use four passes and the same 8,191 development targets; this is one-seed completed data-scaling evidence.
 
 This banknote comparison concerns one task. Strong synthetic order/retrieval evidence on the preceding page remains valid under its own protocols. Appendix B retains the full cross-domain comparisons and resource ledgers.
@@ -3032,6 +3034,74 @@ Integrated native core only: temporal races (factorized law), sparse addressed w
 The E64 rows are the matched one-pass controls (1,220 steps of 32 x 256, cosine). Work: ours traced unit/special operations (fitting extrapolated from traced windows). Inference is traced twice: the batched emulator, which computes every proposal, and the exact winner-only evaluator (THEORY §414), whose small random float64 fixtures match emulator logits within 1e-10. Direct winner/state/cache contracts on the actual trained float32 weights are prepared and pending (note 143); the saved test scores use the compiled training evaluator. For fixed weights, cached stored-memory key reads need refreshing only on a slot's write: arithmetic scales as U.P plus winner maps per race. The present implementation also stacks every unit's matrices at each call, an O(U.P²) parameter-copy/allocation cost outside these FLOP counts. Cache storage, traffic and wall time must be measured before claiming total-resource scaling. Every key is scored and counted. Control columns repeat their single shape estimate. The conventions differ, so work comparisons are estimates.
 
 Reading: update calibration took p16/d8 from 2.899 to 2.719. Width beat depth (p32/d4 2.507), and depth then helped at width 64 (p32/d8 2.456). Without route credit the fast path trains the race address only through first-time clock credit (THEORY §413), and more units then cost quality: pool 4 is worse than pool 2 (2.498 vs 2.456), and the no-selection pool-1 control beats pool 2 at depth 4 (2.439 vs 2.507). With the linearized local-expectation route credit (forward values unchanged, about 0.3% more counted fitting work) the same p32/d4 pool-2 model scores 2.370: .137 better than without it, .069 better than the control, and .057 better than the one-pass Transformer; at the matched T256 window it scores 2.371 versus 2.427, a .0554 bpc advantage, with about 1/15 of its parameters and estimated fitting work. It remains .199 behind the one-pass LSTM. With credit, pool 4 at the same 8 selected writes per character scores 2.343 (T256 2.345): more stored units now improve quality instead of costing it. Width is the strongest lever: p64/d4 with credit scores 2.184 (T256 2.183), .012 behind the one-pass LSTM, with exact winner-only inference of 0.60 MFLOPs per position against the LSTM estimate of 0.68 and more estimated fitting work (2.68 vs 2.03 MFLOPs per character). A write-address credit on stored coordinates diverged; the corrected variant trained stably at pool 2 without improving on value credit (2.384 vs 2.370) and diverged at pool 4, so write-address credit is withdrawn. Single seeds; pending arms are not filled.
+
+## Appendix. Public benchmarks: NeuroBench and SHD (status from completed result files)
+
+Targets and rules: experiments/SOTA_TARGETS.md. Official protocols are fixed before they run and use the vendored official neurobench 2.3.0 loaders/metrics (slices proven identical by contract tests). Development results select settings on other series (Mackey-Glass tau 18/19) or on validation splits (primate).
+
+### NeuroBench chaotic function prediction (Mackey-Glass tau 17, sMAPE, lower is better)
+
+| Model | sMAPE | Footprint (bytes) | Inference ops / step |
+| --- | --- | --- | --- |
+| Ours: race member, mix8 (primary, partial: 20/30 repeats) | 14.37 | 57,572 (float32) | 93,264 (traced) |
+| Ours: same weights, argmax (reporting only) | 17.27 | 57,572 | 11,658 (traced) |
+| Ours: same weights, sampled (reporting only) | 16.27 | 57,572 | 11,658 (traced) |
+| LSTM (NeuroBench) | 13.37 | 490,000 | 60,300 (effective MACs) |
+| ESN (NeuroBench) | 14.79 | 281,000 | 4,370 (effective MACs) |
+
+Official protocol: 30 start offsets, 750 teacher-forced training points, 750 autonomous predictions; per-repeat mix8 range 6.2–25.2. Our model has 14,393 parameters; the primary inference mode (averaging 8 race-noise streams) was fixed on tau 18 development before tau 17 was scored. Our operation counts come from the operator tracer (multiply-adds); NeuroBench counts hooked layer MACs; the conventions differ.
+
+### Mackey-Glass development (tau 18/19, three official-protocol repeats per arm)
+
+| Arm | Member | Mean sMAPE by inference mode | Repeats |
+| --- | --- | --- | --- |
+| tau 18, p16/d2/pool2, closed-loop | race | sampled 24.5 | 3 |
+| tau 18, p16/d2/pool2 | race | sampled 22.5 | 3 |
+| tau 18, p32/d2/pool2, closed-loop | race | sampled 26.3 | 3 |
+| tau 18, p16/d2/pool2, increments | race | sampled 25.3 | 3 |
+| tau 18, p16/d2/pool2, increments | race | argmax 18.5 | 3 |
+| tau 18, p16/d2/pool1, increments | race | sampled 16.4 | 3 |
+| tau 18, p32/d2/pool2, increments, 3000 steps | race | argmax 19.1 | 3 |
+| tau 18, p16/d2/pool2, increments, det. training | race | argmax 18.4 | 3 |
+| tau 18, p16/d2/pool1, increments, 3000 steps | race | sampled 16.8 | 3 |
+| tau 18, p32/d2/pool2, increments, det. training, 3000 steps | race | argmax 20.9 | 3 |
+| tau 18, p16/d2/pool2, increments | race | mix8 17.2, argmax 18.5, sampled 25.3 | 3 |
+| tau 18, p16/d2/pool2, increments, 3000 steps | race | mix8 21.0, argmax 18.4, sampled 15.1 | 3 |
+| tau 18, p16/d2/pool4, increments | race | mix8 23.0, argmax 18.3, sampled 19.8 | 3 |
+| tau 18, p16/d2/pool2, 1000 steps | race | sampled 23.0 | 3 |
+
+Findings (THEORY §§417–418): sampled races inject output noise; deterministic or averaged inference helps; closed-loop training did not; the exact-expected-reception member (deterministic delivery, hard writes) is under development. Three repeats cannot rank close arms (per-repeat spread is large).
+
+### NeuroBench primate reaching (development session indy_20170131_02, R², higher is better)
+
+| Arm | Test R² | Validation R² | Params |
+| --- | --- | --- | --- |
+| p32/d2/pool4 tied, 4000 steps, leaky readout, 4 route samples | 0.729 | 0.709 | 44,826 |
+| p32/d2/pool4 tied, wd 0.0001, 4000 steps, leaky readout, 4 route samples | 0.754 | 0.715 | 44,826 |
+| p32/d2/pool8 tied, 4000 steps, leaky readout, 4 route samples | 0.720 | 0.715 | 45,866 |
+| p32/d2/pool2, 4000 steps, leaky readout, 4 route samples | 0.738 | 0.737 | 61,082 |
+| p32/d2/pool4 tied, wd 0.0001, 4000 steps, leaky readout, 4 route samples, traces | 0.710 | 0.749 (4 blocks) | 57,114 |
+| p32/d2/pool2, 4000 steps, leaky readout, 4 route samples, traces | 0.724 | 0.750 (4 blocks) | 73,370 |
+| p32/d2/pool2, 2000 steps | 0.725 | 0.710 | 61,082 |
+| p32/d2/pool4 tied, 2000 steps | 0.741 | 0.711 | 44,826 |
+| p64/d2/pool2, 2000 steps | 0.714 | 0.704 | 228,634 |
+| bigRSNN (published, this session) | 0.772 | — | — |
+| tinyRSNN (published, this session) | 0.746 | — | — |
+
+Leaderboard (mean of six official sessions): the six-session protocol run with a configuration fixed on validation is prepared on AWS; no leaderboard cell is filled from one development session.
+
+| Leaderboard entry | Six-session R² | Footprint (bytes) |
+| --- | --- | --- |
+| AEGRU | 0.710 | 45,500 |
+| GRU-t1 | 0.707 | 352,904 |
+| bigSNN (bigRSNN) | 0.698 | 4,833,360 |
+| tinyRSNN | 0.660 | 27,144 |
+
+Validation and test rank the development arms differently; the protocol selects by validation only. Test on the development session was observed during development; the six-session report will also give the mean of the five untouched sessions.
+
+### SHD and other public benchmarks
+
+SHD (official files, speaker-held-out validation) development runs are queued. The completed public time-series campaign (ECG200, JapaneseVowels, PenDigits) is negative and reported in its own appendix.
 
 ## Appendix B. AWS coarse temporal screens: two seeds pass
 

@@ -154,6 +154,7 @@ def results():
     appendix=runpy.run_path(str(ROOT/'report/current_dvs_appendix.py'))
     tasks['current_dvs_appendix']=appendix['load'](read)
     tasks['native_language_batched']=runpy.run_path(str(ROOT/'report/native_language_batched_appendix.py'))['load'](read)
+    tasks['public_benchmarks']=runpy.run_path(str(ROOT/'report/public_benchmarks_appendix.py'))['load'](read)
     tasks['current_language_status']=runpy.run_path(str(ROOT/'report/current_language_status.py'))['load'](tasks['native_language_batched'])
     tasks['reception_evidence']=runpy.run_path(str(ROOT/'report/reception_evidence.py'))['load'](read)
     historical=runpy.run_path(str(ROOT/'report/depth_sampling_evidence.py'))['history_read']
@@ -1817,6 +1818,15 @@ def blocks(M, tasks, ev):
                 '(1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and '
                 'Transformer 1.604 at 16-33x our estimated fitting work. '
                 'The native appendix retains every arm and failed write credit.'))
+        pb=tasks.get('public_benchmarks')
+        if pb and pb['mg']['n']:
+            mgp=pb['mg']; prd=max(pb['primate'],key=lambda r:r['test']) if pb['primate'] else None
+            pages[-1].insert(-1,('p',f'<b>Public benchmarks (NeuroBench), in progress.</b> Mackey-Glass official tau 17: our '
+                f'14,393-parameter race member scores <b>{mgp["modes"]["mix8"]:.2f}</b> sMAPE after {mgp["n"]}/30 repeats '
+                '(LSTM 13.37, ESN 14.79 on the leaderboard; our float32 footprint 57.6 KB versus 490/281 KB). '
+                + (f'Primate reaching development session: best test R² <b>{prd["test"]:.3f}</b> (tinyRSNN .746, bigRSNN .772 on '
+                   'that session; leaderboard six-session best .71, run pending). ' if prd else '')
+                + 'Partial and development results only; no leaderboard claim yet. See the public-benchmark appendix.'))
         native8=[r for r in tasks.get('native_language',[]) if r['args']['fit']==8192
                  and r['args']['seed']==6 and (r['args']['heads'],r['args']['payload'],r['args']['depth'])==(2,16,8)]
         if native8:
@@ -5390,6 +5400,7 @@ def blocks(M, tasks, ev):
     pages.extend(runpy.run_path(str(ROOT/'report/aws_90m_language_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/aws_public_benchmark_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/native_language_batched_appendix.py'))['pages'](tasks['native_language_batched']))
+    pages.extend(runpy.run_path(str(ROOT/'report/public_benchmarks_appendix.py'))['pages'](tasks['public_benchmarks']))
     pages.extend(runpy.run_path(str(ROOT/'report/current_dvs_appendix.py'))['pages'](tasks['current_dvs_appendix']))
     pages.extend(runpy.run_path(str(ROOT/'report/reception_evidence.py'))['pages'](tasks['reception_evidence']))
     pages.extend(runpy.run_path(str(ROOT/'report/route_calibration_state_scope.py'))['pages'](tasks['route_calibration_evidence']))
