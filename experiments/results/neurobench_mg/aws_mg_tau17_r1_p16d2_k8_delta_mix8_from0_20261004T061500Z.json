@@ -1,0 +1,165 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "aws_mg_tau17_r1_p16d2_k8_delta_mix8_from0_20261004T061500Z",
+    "tau": 17,
+    "repeats": 10,
+    "first_repeat": 0,
+    "payload": 16,
+    "depth": 2,
+    "heads": 2,
+    "pool": 2,
+    "tie_pools": false,
+    "taps": 8,
+    "segment": 64,
+    "lanes": 32,
+    "steps": 1500,
+    "lr": 0.003,
+    "clip": 1.0,
+    "warmup": 8,
+    "route_credit": "linear",
+    "compiled": true,
+    "seed": 0,
+    "closed_loop": 0,
+    "delta": true,
+    "argmax": false,
+    "train_argmax": false,
+    "eval_modes": "mix8,argmax,sampled",
+    "closed_from": 0.5
+  },
+  "parameters": 14393,
+  "footprint_bytes_float32": 57572,
+  "repeats": [
+    {
+      "repeat": 0,
+      "smape": 16.528480496939782,
+      "smape_by_mode": {
+        "mix8": 16.528480496939782,
+        "argmax": 23.428750641465253,
+        "sampled": 26.25388259555614
+      },
+      "final_train_mse": 4.9742014198272955e-05,
+      "wall_s": 252.82370375999017
+    },
+    {
+      "repeat": 1,
+      "smape": 25.215097081928455,
+      "smape_by_mode": {
+        "mix8": 25.215097081928455,
+        "argmax": 22.27546937693523,
+        "sampled": 20.98202271099278
+      },
+      "final_train_mse": 4.616479654941941e-05,
+      "wall_s": 247.90464086597785
+    },
+    {
+      "repeat": 2,
+      "smape": 22.545733792428674,
+      "smape_by_mode": {
+        "mix8": 22.545733792428674,
+        "argmax": 20.90599755568688,
+        "sampled": 14.900219271672022
+      },
+      "final_train_mse": 3.253965751355281e-05,
+      "wall_s": 249.00660916301422
+    },
+    {
+      "repeat": 3,
+      "smape": 9.856040345872094,
+      "smape_by_mode": {
+        "mix8": 9.856040345872094,
+        "argmax": 27.02405694754996,
+        "sampled": 10.755365877499033
+      },
+      "final_train_mse": 3.218638757971348e-05,
+      "wall_s": 248.4717948680045
+    },
+    {
+      "repeat": 4,
+      "smape": 9.863886315226724,
+      "smape_by_mode": {
+        "mix8": 9.863886315226724,
+        "argmax": 11.648436299414751,
+        "sampled": 16.466976201204712
+      },
+      "final_train_mse": 2.1264619590510847e-05,
+      "wall_s": 247.61976477102144
+    },
+    {
+      "repeat": 5,
+      "smape": 6.154743762024557,
+      "smape_by_mode": {
+        "mix8": 6.154743762024557,
+        "argmax": 26.138306271494233,
+        "sampled": 19.77134912801066
+      },
+      "final_train_mse": 2.988134174302104e-05,
+      "wall_s": 247.56757405400276
+    },
+    {
+      "repeat": 6,
+      "smape": 12.678844383145968,
+      "smape_by_mode": {
+        "mix8": 12.678844383145968,
+        "argmax": 6.014130272723924,
+        "sampled": 8.048173707829012
+      },
+      "final_train_mse": 2.76150432000577e-05,
+      "wall_s": 248.46278956497554
+    },
+    {
+      "repeat": 7,
+      "smape": 7.247688189138903,
+      "smape_by_mode": {
+        "mix8": 7.247688189138903,
+        "argmax": 17.250731189430947,
+        "sampled": 24.806798509713516
+      },
+      "final_train_mse": 3.3041121332644253e-05,
+      "wall_s": 247.8220771549968
+    },
+    {
+      "repeat": 8,
+      "smape": 10.02349869402064,
+      "smape_by_mode": {
+        "mix8": 10.02349869402064,
+        "argmax": 12.314540239074802,
+        "sampled": 15.493955942629931
+      },
+      "final_train_mse": 3.9238192948687355e-05,
+      "wall_s": 247.54788033704972
+    },
+    {
+      "repeat": 9,
+      "smape": 15.866943763443828,
+      "smape_by_mode": {
+        "mix8": 15.866943763443828,
+        "argmax": 23.527978578628744,
+        "sampled": 26.262565359450324
+      },
+      "final_train_mse": 3.2781184199848215e-05,
+      "wall_s": 247.3472030420089
+    }
+  ],
+  "mean_smape": 13.598095682416963,
+  "primary_mode": "mix8",
+  "mean_smape_by_mode": {
+    "mix8": 13.598095682416963,
+    "argmax": 19.05283973724047,
+    "sampled": 18.374130930455813
+  },
+  "protocol": "NeuroBench Mackey-Glass (neurobench 2.3.0 slices, split and SMAPE); autonomous 750-step forecast",
+  "source_sha256": {
+    "experiments/mackey_glass_native.py": "06cea672c090bf6a42f810be404e74a8bead618bb007108532f9eb89c44dabb4",
+    "sleeping_machines/sparse_inference.py": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "data_sha256": "5a38b38eca91667c120a3fbbe1a27859ef6071c521a03753ef1cace39d3ce745",
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 2484.5823401070083
+}
