@@ -70,6 +70,12 @@ the current best configuration is queued on AWS. Leaderboard: AEGRU .71 (six-ses
 **SHD.** Official files downloaded; driver ready (speaker-held-out validation); development arms are queued after primate
 round 2.
 
+**Selection correction (4 Oct, 23:45 UTC):** the report and scoreboard previously quoted the best *test* arm (.754, val
+.715) as the development result. Selected by validation, as the protocol requires, the development result is .724 (round 3
+traces arm, val4 .750): below tinyRSNN .746 and bigRSNN .772 on this session. indy_20170131_02 is also one of the six
+official sessions, so the leaderboard claim must state both the six-session mean and the mean of the five untouched sessions.
+Validation (val4) and test rank arms differently. A one-session dev split cannot reliably select among arms within ~.03 R².
+
 **Primate round 2 (12:32 UTC, development session indy_20170131_02, 4,000 steps, leaky readout, 4 route samples):**
 p32/d2 pool 2 test .738 (val .737); tied pool 8 .720 (val .715); tied pool 4 + weight decay 1e-4 **test .754** (val .715);
 tinyRSNN .746, bigRSNN .772 on this session. Validation and test rank these arms differently (the validation split is the

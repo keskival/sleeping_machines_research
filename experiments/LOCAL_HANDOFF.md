@@ -1,5 +1,10 @@
 # Local host: current research continuation
 
+## Primate selection correction — 4 October 2026, 23:45 UTC
+
+Scoreboard/report now pick the primate development arm by validation (.724, val4 .750), not the best test (.754). Below
+tinyRSNN .746 on the dev session. The fixed six-session AWS run is unchanged; report the six-session and five-untouched means.
+
 ## P0 comparison protection and aligned-reference admission — 4 October 2026
 
 Read PRODUCT_ORDERS.md first (latest AWS order: P0-1, P0-6 10M, P0-3; confirming

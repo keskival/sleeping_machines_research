@@ -1827,12 +1827,13 @@ def blocks(M, tasks, ev):
                 'The native appendix retains every arm and failed write credit.'))
         pb=tasks.get('public_benchmarks')
         if pb and pb['mg']['n']:
-            mgp=pb['mg']; prd=max(pb['primate'],key=lambda r:r['test']) if pb['primate'] else None
+            mgp=pb['mg']; prd=max(pb['primate'],key=lambda r:r['val']) if pb['primate'] else None
             pages[-1].insert(-1,('p',f'<b>Public benchmarks (NeuroBench), in progress.</b> Mackey-Glass official tau 17: our '
                 f'14,393-parameter race member scores <b>{mgp["modes"]["mix8"]:.2f}</b> sMAPE after {mgp["n"]}/30 repeats '
                 '(LSTM 13.37, ESN 14.79 on the leaderboard; our float32 footprint 57.6 KB versus 490/281 KB). '
-                + (f'Primate reaching development session: best test R² <b>{prd["test"]:.3f}</b> (tinyRSNN .746, bigRSNN .772 on '
-                   'that session; leaderboard six-session best .71, run pending). ' if prd else '')
+                + (f'Primate reaching development session: validation-selected arm test R² <b>{prd["test"]:.3f}</b> (tinyRSNN .746, bigRSNN .772 on '
+                   'that session, so below both there; leaderboard six-session best .71, run pending; earlier text quoted the best '
+                   'test arm, .754, which was a test-selected figure). ' if prd else '')
                 + 'Partial and development results only; no leaderboard claim yet. See the public-benchmark appendix.'))
         native8=[r for r in tasks.get('native_language',[]) if r['args']['fit']==8192
                  and r['args']['seed']==6 and (r['args']['heads'],r['args']['payload'],r['args']['depth'])==(2,16,8)]

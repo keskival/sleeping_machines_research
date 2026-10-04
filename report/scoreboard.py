@@ -68,9 +68,10 @@ def page(native, public):
         verdict = ('WIN' if q < 13.37 else 'Loss vs LSTM') if mg.get('protocol_claim_eligible', False) else f"Pending ({mg['n']}/30 repeats)"
         rows.append(['NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79)', '13.37', f"{q:.2f} (57.6 KB vs 490 KB)", verdict])
     if public['primate']:
-        b = max(public['primate'], key=lambda r: r['test'])
+        b = max(public['primate'], key=lambda r: r['val'])          # validation-selected, never by test
         rows.append(['NeuroBench primate reaching (R²; leaderboard 0.71 six-session)', '0.710',
-                     f"{b['test']:.3f} (one development session; tinyRSNN .746 there)", 'Pending (six-session run)'])
+                     f"{b['test']:.3f} (validation-selected arm, development session indy_20170131_02, also one of the six "
+                     f"official sessions; tinyRSNN .746 there)", 'Pending (six-session run; also report the five untouched sessions)'])
     rows.append(['SHD (accuracy; best published 96.4%)', '96.4%', 'development queued', 'Pending'])
     wins = sum(r[3] == 'WIN' for r in rows)
     return [('h1', 'Scoreboard — wins, losses and open targets'),
