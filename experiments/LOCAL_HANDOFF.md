@@ -1,5 +1,45 @@
 # Local host: current research continuation
 
+## Family opportunities and valuation rationale — 4 October 2026
+
+User requested documentation of irregular inputs, asynchronous variable-rate
+codecs and memory meta-learning, then valuation rationale and embodied/AGI
+assessment. Canonical register: ../report/model_family_opportunities.md. Six
+entries add task-oriented communication, embodied/cognitive transfer and
+persistent inference. Each has fit/status/primary precedents/first proof.
+Dense arithmetic need not require regularized input; existing codecs, event
+models and VLAs are controls. Wire/side-information/timing cost and causal
+queries are explicit. Shared fast state / slow learned rules map meta-learning
+to memory/write/reception scheduling. Joint embodiment/cognition is plausible;
+each transfer direction and broad generalism require evidence. No AGI claim.
+
+Canonical finance rationale: ../investment/VALUATION_RATIONALE.md. Current
+investment memo, one-page pitch and deck use €3M at €50M pre-money, with €100M
+stretch. Ambition, potential assets and execution are separate support axes:
+core mechanism gains, restricted 90M learning, source-bound contracts, relevant
+founder record, and staged complementary team/runtime/evaluation hiring.
+No independent appraisal, summed TAM, customer interest, exclusive IP or
+application victory is inferred. Preserve Karoliina Salminen research credit.
+Prior $10M memos are archived; frozen numerical/financial ledgers unchanged.
+
+Report: 13 family + 215 retained pages (228 total), identical retained text.
+Deck: 18 main + 17 diligence slides (35 total). New codec SVG, report page,
+opportunity and financing slides reviewed. Guarded report peak 92,468 KiB;
+deck 39,044 KiB. Publications model_family_opportunities_20261004T172000Z and
+pitch_deck_opportunities_20261004T172000Z. Review record:
+results/diagnostics/architecture_review_stdlib_20261004T172000Z.json;
+11 SVGs, 10 atlas tabs, 29 research scalar witnesses, two valuation equity
+cases plus existing source/evidence contracts. Private pack:
+sleeping_machines_private_diligence_20261004T172000Z.zip. No distribution.
+
+Research priority unchanged: owned integrated AWS/curie comparisons and clock
+contracts/pilots retain admission priority. Newer deterministic reception and
+replay-owner changes are preserved. Core gaps remain future-write utility,
+useful horizon/discovery, integrated reception/silence, trained sparse parity,
+native TTT/structural/shared-world/embodied integration and physical energy.
+This is documentation/publication work only; no model changes, ML imports,
+training, runtime/profiling, host admission or robot/hardware action.
+
 ## Adaptive-family query/credit contract and corrected investor status — 4 October 2026
 
 Documentation-only continuation. Formal specification §6 and theory152 §19

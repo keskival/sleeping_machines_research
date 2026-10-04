@@ -2,6 +2,19 @@
 
 ## Family-level revision — 4 October 2026
 
+The ambition/potential/execution rationale is now canonical in
+[VALUATION_RATIONALE.md](VALUATION_RATIONALE.md). The investment case and
+one-page pitch use the same €3M raise, €50M opening proposal and €100M stretch
+scenario; prior $10M drafts are archived. The terms notes explain mechanism
+and larger-data evidence, relevant founder experience, staged team execution,
+correlated application risks and the absence of an independently established
+price. The full deck adds an opportunity slide, with native irregular input,
+asynchronous codecs, memory meta-learning and embodied/cognitive transfer
+specified as hypotheses. Existing codec/event/VLA prior art and discriminating
+proof conditions remain visible in the companion register. No application or
+AGI demonstration, customer interest or financial ledger change is implied.
+
+
 A follow-up review makes the adaptive query/fallback and full-work contract
 explicit. The protocol appendix now distinguishes the frozen 10M ledger from
 the completed 90M report result (1.857306 BPC, restricted 1M test, one seed);
@@ -9,7 +22,7 @@ it no longer calls that result pending. Financial assumptions and the main
 comparison ledger are unchanged.
 
 
-The current deck has 18 main slides and 16 optional diligence slides. It adds a
+The current deck has 18 main slides and 17 optional diligence slides. It adds a
 landscape diagram before the mechanism and benchmark slides, positioning the
 family relative to recurrence/SSMs, attention/Transformers, sparse experts,
 statistics/retrieval, adaptive memory/TTT and event systems. A second slide
@@ -22,7 +35,7 @@ activity and useful credit to unrealized alternatives. Heterogeneous dense and
 sparse regions, local/barrier schedules, same-structure online learning and
 broader structural adaptation have explicit conditions and status. Exact
 function containment, trained quality and economic advantage remain distinct.
-The report provides a 12-page visual family chapter and canonical twelve-field
+The report provides a 13-page visual family chapter and canonical twelve-field
 specification with three complete illustrative members. None is represented
 as new empirical evidence.
 

@@ -7,7 +7,8 @@
 [Definition and design rationale](report/model_family_design.md) ·
 [Formal core](report/model_family_specification.md) ·
 [How capabilities compose](report/model_family_composition.md) ·
-[Claims and evidence](report/architecture_evidence.md)
+[Claims and evidence](report/architecture_evidence.md) ·
+[Application opportunities](report/model_family_opportunities.md)
 
 The review uses the same computational-capacity, representational-capacity and
 trainability axes from events and primitives through units, modules, interactions,

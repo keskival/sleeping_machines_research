@@ -73,6 +73,11 @@ declared queries. Unfinished work needs a stated snapshot/fallback or an
 invalid-run outcome; targets cannot silently disappear from the denominator.
 The family chapter separates this system utility from immediate value credit.
 
+The [opportunity register](report/model_family_opportunities.md) covers direct
+irregular inputs, adaptive asynchronous codecs, task-oriented communication,
+learned memory policies and embodied/cognitive transfer. These are opportunities
+with stated precedents and first proof conditions, not new benchmark claims.
+
 '''
 
 
@@ -149,6 +154,12 @@ def sections():
              table_widths=[105,208,194.276],
              after=['A simple warning: answering only the easy half can report zero conditional loss at 50% coverage, while full-workload loss with a unit fallback penalty remains 0.5. Selective prediction needs its own coverage/risk protocol. This is a semantic example, not a discovered error in saved language scores.',
                     'For finite choices, route credit is pi_i times (Q_i minus mean Q), where Q_i is the full conditional task/resource return. Immediate value utility omits unmodeled future writes, deadlines and work. More alternatives do not correct a wrong utility definition. Modeled time is not measured hardware latency.']),
+        dict(title='A shared substrate opens input, communication and embodied opportunities',
+             figure_path='report/figures/model_family_codec.svg',
+             before=['The opportunity register describes six application/mechanism directions with precedents, status and first proof conditions. The diagram illustrates a proposed event-native codec: learned memory and send/wait policies serve fixed reconstruction or task queries.'],
+             after=['Irregular inputs can preserve time and recruit local programs. Quantized asynchronous outputs could allocate communication where useful. Count actual content, address, timing, framing and reset bits, plus both endpoints\' work; variable message count is not itself a bitrate result.',
+                    'Meta-learning offers fast-state/slow-rule mechanisms for retention, retrieval, writing and scheduling. Shared sensor/action/language paths could let embodied experience teach cognitive representations and reasoning guide action. Measure each transfer direction on held-out tasks with matched data/work and disconnected-path controls.',
+                    'Existing variable-rate codecs, irregular-stream models and vision-language-action systems are relevant precedents. Our opportunity is their useful temporal/selective integration. No project codec, dexterity-transfer, AGI, customer or hardware-energy result follows from this chapter. Existing integrated queues retain priority.']),
         dict(title='Evidence supports the family; integration sets the agenda',evidence=True,
              before=['Completed native results support content-bearing temporal computation, useful route credit and capacity beyond selected writes. The rows below share T256 and the same restricted 1M test region; each is single-seed. The 90M row changes data and width.'],
              after=['Value choice credit improves the matched 10M D4/P32/U2 result by 0.134895 BPC for about 0.30% extra estimated fitting work. U2→U4 adds useful capacity with the same eight writes, but increases fitting work and untied parameters. These support scoped mechanisms; they are not modern frontier or public full-test wins.',
@@ -185,8 +196,9 @@ def build_chapter(output):
             p.drawOn(c,margin,height-y-h);y+=h+12
         paragraph(section['title'],17,True,'#2259a7')
         for text in section['before']: paragraph(text)
-        if section.get('figure'):
-            svg=ROOT/'report/figures'/('architecture_'+section['figure']+'.svg')
+        if section.get('figure') or section.get('figure_path'):
+            svg=(ROOT/section['figure_path'] if section.get('figure_path') else
+                 ROOT/'report/figures'/('architecture_'+section['figure']+'.svg'))
             with pymupdf.open(stream=svg.read_bytes(),filetype='svg') as source:
                 svg_pdf=source.convert_to_pdf()
             with pymupdf.open(stream=svg_pdf,filetype='pdf') as drawing:
@@ -290,6 +302,7 @@ def publish(tag):
     if available()<8192*1024: raise ValueError('Less than 8 GiB available')
     paths=[Path(__file__).resolve(),ROOT/'REPORT.md',ROOT/'report/architecture_evidence.json']
     paths+=sorted((ROOT/'report').glob('model_family_*.md'))+sorted((ROOT/'report/figures').glob('architecture_*.svg'))
+    paths+=[ROOT/'report/figures/model_family_codec.svg',ROOT/'scripts/build_opportunity_diagram.py']
     hashes={str(p.relative_to(ROOT)):sha(p) for p in paths};previous=sha(OUTPUT)
     stage.mkdir(parents=True);shutil.copy2(OUTPUT,stage/'previous.pdf')
     start=time.monotonic();peak=0

@@ -31,12 +31,16 @@ def package(tag):
     data = json.loads((ROOT / 'investment/pitch_deck_evidence_20261003.json').read_text())
     paths = set(data['completed_evidence_sha256'])
     paths.update(['investment/README.md', 'investment/PITCH_DECK.json', 'investment/PITCH_DECK_NOTES.md',
+                  'investment/VALUATION_RATIONALE.md','investment/INVESTMENT_CASE.md','investment/PITCH.md',
+                  'investment/archive/valuation_20261004T171500Z_previous_INVESTMENT_CASE.md',
+                  'investment/archive/valuation_20261004T171500Z_previous_PITCH.md',
                   'investment/pitch_deck_evidence_20261003.json', 'investment/pitch_deck_benchmarks.csv',
                   'investment/pitch_deck_financial_sensitivity.csv', 'investment/sleeping_machines_pitch_deck.pdf',
                   'investment/sleeping_machines_pitch_deck_main.pdf', 'investment/INVESTOR_READING_REVIEW.md',
                   'report/sleeping_machines_status.pdf', 'scripts/build_pitch_deck.py',
                   'scripts/package_pitch_diligence.py','report/family_report.py',
-                  'scripts/build_architecture_atlas.py','report/architecture_evidence.md',
+                  'scripts/build_architecture_atlas.py','scripts/build_opportunity_diagram.py',
+                  'report/figures/model_family_codec.svg','report/architecture_evidence.md',
                   'report/architecture_evidence.json','report/architecture_atlas.html',
                   'report/architecture_review.md','report/architecture_review_checks.md',
                   'experiments/theory/152_primitives_integration_and_capability_bounds.md'])

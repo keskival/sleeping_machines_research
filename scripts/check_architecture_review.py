@@ -3,6 +3,7 @@
 These checks are not model, training, browser-rendering or benchmark tests.
 """
 import argparse
+from decimal import Decimal
 from datetime import datetime, timezone
 import hashlib
 from html.parser import HTMLParser
@@ -41,6 +42,7 @@ def verify():
     records = {}
     svgs = sorted((ROOT/'report/figures').glob('architecture_*.svg'))
     assert len(svgs) == 10
+    svgs += [ROOT/'report/figures/model_family_codec.svg']
     for path in svgs:
         tree = ET.fromstring(path.read_text())
         _, _, width, height = map(float, tree.attrib['viewBox'].split())
@@ -79,8 +81,9 @@ def verify():
         'model_family_design.md', 'architecture_review.md', 'model_family_inventory.md',
         'architecture_review_checks.md', 'architecture_source_inventory.md',
         'model_family_overview.md','model_family_example.md','model_family_composition.md',
-        'model_family_specification.md','model_family_members.md','architecture_evidence.md')]
+        'model_family_specification.md','model_family_members.md','model_family_opportunities.md','architecture_evidence.md')]
     docs += [ROOT/'experiments/theory/152_primitives_integration_and_capability_bounds.md']
+    docs += [ROOT/'investment/VALUATION_RATIONALE.md',ROOT/'investment/INVESTMENT_CASE.md',ROOT/'investment/PITCH.md']
     links = 0
     for path in docs:
         for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
@@ -414,7 +417,21 @@ console.log('dimensions, modes, invalid-input clearing, ten keyboard tabs, credi
     assert f"{larger['test_bpc']:.6f} BPC" in protocol['notes']
     assert 'test[95M:96M]' in protocol['notes'] and 'completed' in protocol['notes']
     records['investor_protocol_completed_90m_binding']=larger['result_path']
-    artifacts = docs+[ROOT/'scripts/build_architecture_atlas.py',ROOT/'scripts/check_architecture_review.py',
+    # Independent equity arithmetic, tied to the frozen €3M budget rather than
+    # inferred from application breadth or a benchmark score.
+    funding=json.loads((ROOT/'investment/pitch_deck_evidence_20261003.json').read_text())
+    raised=Decimal(sum(funding['budget_eur'].values()))/Decimal(1_000_000)
+    rationale=(ROOT/'investment/VALUATION_RATIONALE.md').read_text()
+    prices=re.findall(r'^\| €(\d+)M \| €(\d+)M \| ([\d.]+)% \|',rationale,re.M)
+    assert len(prices)==2
+    for premoney,postmoney,ownership in prices:
+        pre,post=Decimal(premoney),Decimal(postmoney)
+        assert post==pre+raised
+        actual=Decimal(100)*raised/post
+        assert Decimal(ownership)==actual.quantize(Decimal('.0001'))
+    near(float(raised/Decimal(prices[0][1])),funding['financial_assumptions']['initial_investor_ownership'])
+    records['valuation_equity_cases_and_frozen_raise_budget']=len(prices)
+    artifacts = docs+[ROOT/'scripts/build_architecture_atlas.py',ROOT/'scripts/build_opportunity_diagram.py',ROOT/'scripts/check_architecture_review.py',
         ROOT/'report/architecture_evidence.json',ROOT/'report/architecture_atlas.html',
         ROOT/'report/architecture_source_inventory.json',ROOT/'README.md',ROOT/'REPORT.md',
         ROOT/'experiments/THEORY.md',ROOT/'experiments/LOCAL_HANDOFF.md',

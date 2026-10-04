@@ -49,6 +49,11 @@ declared queries. Unfinished work needs a stated snapshot/fallback or an
 invalid-run outcome; targets cannot silently disappear from the denominator.
 The family chapter separates this system utility from immediate value credit.
 
+The [opportunity register](report/model_family_opportunities.md) covers direct
+irregular inputs, adaptive asynchronous codecs, task-oriented communication,
+learned memory policies and embodied/cognitive transfer. These are opportunities
+with stated precedents and first proof conditions, not new benchmark claims.
+
 ## Our ambition: a universal learning substrate
 
 **One architecture for content, time and selective computation.** The ambition is a broadly capable learner that combines language, dense synchronous observations and sparse asynchronous streams, including their joint arrival into shared persistent state. Statistical memory, deep learned representations and Transformer-capable retrieval belong to the same family. Time performs computation; hard routes learn from unrealized alternatives; small messages mix incoming content with private memory; keys and values remain distinct. Useful stored capacity can exceed the work recruited for an observation.

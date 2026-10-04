@@ -4,13 +4,13 @@
 Proposed raise: €3M. Bullish negotiating case: €50M priced pre-money; €100M stretch scenario.
 
 
-This supersedes the pricing proposal in the older $10M discussion memo; it does not add new benchmark evidence.
+The current valuation rationale is VALUATION_RATIONALE.md; the former $10M memo is preserved in the archive. The €50M proposal prices the platform ambition and execution case, not benchmark scores or a sum of application markets.
 
 
 All financial outcomes, budgets and milestone timelines are assumptions. No customer interest has been reported. Repository is private by founder instruction on 3 October 2026. This deck is a private review artifact; distribution and any future publication require a considered disclosure decision.
 
 
-Research cut-off: completed records available on 3 October 2026. No pending training scores enter the deck.
+Numerical benchmark/financial ledger: frozen 3 October 2026. The protocol notes separately scope the report's completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.
 
 
 Reading guide: slides 1–18 form the investor pitch; the remaining slides are optional technical and financial diligence.
@@ -47,7 +47,7 @@ This is the whole-family position, not a claim that every implemented member con
 
 One family can mix selective temporal programs with rich interaction and causal memory.
 
-The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts.
+The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts. Learned memory/scheduling can be viewed as fast-state adaptation governed by slow trained rules, drawing on memory-augmented meta-learning and TTT. The opportunity register defines native irregular ingestion, asynchronous codecs and joint embodied/cognitive paths with explicit first proofs. The prior-art boundary and full work/bit accounting are stated in the report.
 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
@@ -92,7 +92,7 @@ This is a product hypothesis chosen to make the research investable and testable
 
 One research program, with staged routes to deployment.
 
-The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here.
+The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here. Adjacent software opportunities include asynchronous codecs, irregular-stream SDKs and task-oriented communications. These are prospective uses of the common interface, not measured products. Joint sensor/action/language learning could support embodied transfer; each transfer direction requires evidence. No AGI probability is used to price the round.
 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
@@ -172,7 +172,15 @@ The proposed allocation totals exactly €3M: team €1.35M, compute/replication
 
 Proposed priced round; terms remain subject to company formation and investor diligence.
 
-€3M at €50M priced pre-money yields €53M post-money and 5.6604% initial ownership before option-pool changes, fees, preferences and subsequent financing. This is a proposed negotiating price, not an independent appraisal, market-clearing estimate or investor offer. The main pitch explains the use of capital and proof points; it does not use arbitrary success odds to establish price. The appendix preserves transparent sensitivity arithmetic for investor discussion. A small ownership stake at a premium research-stage price may narrow the compatible investor pool; the round structure and lead investor fit are open commercial questions.
+€3M at €50M priced pre-money yields €53M post-money and 5.6604% initial ownership before option-pool changes, fees, preferences and subsequent financing. This is a proposed negotiating price, not an independent appraisal, market-clearing estimate or investor offer. The main pitch explains the use of capital and proof points; it does not use arbitrary success odds to establish price. The appendix preserves transparent sensitivity arithmetic for investor discussion. A small ownership stake at a premium research-stage price may narrow the compatible investor pool; the round structure and lead investor fit are open commercial questions. The current VALUATION_RATIONALE.md explains ambition, potential assets and execution separately: coherent family design; value-credit and capacity mechanism evidence; completed restricted 90M learning; source-bound contracts and relevant founder experience. Further applications remain correlated hypotheses. A premium can fund transformative research before revenue, but breadth does not establish a market-clearing valuation. €100M remains a stretch scenario. Retain research co-author credit and resolve ownership; the financing plan adds complementary learning, runtime and evaluation capacity.
+
+- [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
+
+- [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
+
+- [F1: Tero Keski-Valkama — public professional timeline](https://www.xing.com/profile/Tero_KeskiValkama) — Self-reported historical roles: Cybercom, HERE, Alloy.ai, Kaiko.ai. Dates and current commitment require founder confirmation.
+
+- [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
 
 
 ## 18. Build the model. Prove the economics. Open the hardware path.
@@ -224,7 +232,16 @@ Frozen versus online evaluation scores 8,191 targets with predict-before-update,
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 23. The contribution is the complete construction.
+## 23. One substrate can support new communication and learning patterns.
+
+Application hypotheses with first proofs; no project codec, embodied-transfer or AGI result.
+
+The register in report/model_family_opportunities.md records six opportunities, mechanisms, evidence status, primary precedents and proof conditions. Dense arithmetic does not inherently require regularized input; variable-rate codecs and joint VLA models already exist. Our opportunity is coherent temporal/selective integration. Quantized message streams need a real wire/decoder contract; metadata/timing/reset and all endpoint work count. Joint motor/cognitive training needs shared information/credit and measured transfer; it does not prove AGI. Proposed application breadth supports platform optionality, not summed TAM or independent success chances. Existing integrated research queues retain priority.
+
+- [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
+
+
+## 24. The contribution is the complete construction.
 
 Established alternatives already address parts of this problem; they remain essential controls.
 
@@ -237,7 +254,7 @@ The pitch does not assert sole invention of sparse activation, gating, normaliza
 - [T3: Gu and Dao — Mamba](https://arxiv.org/abs/2312.00752) — Selective recurrent state-space sequence models are relevant competitive controls. No matched modern SSM result is claimed.
 
 
-## 24. AMD’s Silo AI deal supports the strategic logic.
+## 25. AMD’s Silo AI deal supports the strategic logic.
 
 Announced approximately $665M all-cash acquisition in 2024; a mature-company precedent.
 
@@ -250,7 +267,7 @@ AMD’s announcement connects the acquisition to end-to-end AI solutions, engine
 - [S3: Liquid AI — $250M Series A announcement, 13 December 2024](https://www.liquid.ai/blog/we-raised-250m-to-scale-capable-and-efficient-general-purpose-ai) — Financing announcement and AMD collaboration on efficient models; funding amount is not a disclosed company valuation.
 
 
-## 25. The constraints reach from power grids to robot batteries.
+## 26. The constraints reach from power grids to robot batteries.
 
 Economic context for efficient intelligence; these figures are not our revenue market.
 
@@ -263,14 +280,14 @@ IEA projects all datacenter electricity, not only AI demand; GSMA subscribers ar
 - [M3: IFR — World Robotics 2026 release, 24 September 2026](https://ifr.org/ifr-press-releases/news/five-million-robots-now-operate-in-factories-globally) — 5 million operating industrial robots in 2025 and more than 600,000 annual installations; no adoption by this project.
 
 
-## 26. Successful platform adoption can support very large outcomes.
+## 27. Successful platform adoption can support very large outcomes.
 
 Conditional commercial arithmetic illustrates the scale required; no forecast or market multiple claim.
 
 The €10B/€50B equity scenarios use deliberately stated revenue multiples rather than observed comparables. They require economics, durable margins and value capture that are wholly unproven. Multiplying revenue by a selected multiple is not an enterprise/equity reconciliation: the examples assume negligible net debt at exit. The scenarios overlap and are alternatives, not additive. Infrastructure relevance can justify funding risky research, but cannot itself prove a current valuation. Smaller niche success, delayed commercialization, licensing-only outcomes, further dilution and total failure remain possible.
 
 
-## 27. The completed comparisons, using consistent resource units.
+## 28. The completed comparisons, using consistent resource units.
 
 Frozen 10M-character, one-pass evidence. Model definitions are on the next slide.
 
@@ -279,7 +296,7 @@ All fitting columns include estimated complete step arithmetic rather than forwa
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 28. Plain-language labels map to reproducible model records.
+## 29. Plain-language labels map to reproducible model records.
 
 Message width counts scalars; available memory counts local state slots.
 
@@ -288,7 +305,7 @@ These names are editorial labels for the frozen completed configurations, not ne
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 29. The comparison boundaries are part of the evidence.
+## 30. The comparison boundaries are part of the evidence.
 
 Maintain the original records and disclose what a result actually measures.
 
@@ -299,7 +316,7 @@ The native score pays overlap-window warmup, evaluating roughly twice as many in
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 30. Keep the failures beside the positive mechanism results.
+## 31. Keep the failures beside the positive mechanism results.
 
 A disciplined research program should revise interpretations when evidence changes.
 
@@ -310,28 +327,28 @@ D8 uncredited pool 2 scores 2.4565 and pool 4 2.4981 at T256. The D4 credited po
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 31. Reverse-underwriting shows the assumptions behind a price.
+## 32. Reverse-underwriting shows the assumptions behind a price.
 
 This arithmetic is a sensitivity tool; the research does not estimate platform-success probabilities.
 
 The illustrative model discounts the retained fraction of a successful future equity outcome to today and assigns zero failure value. It is not a complete corporate DCF, does not model all cash flows, and assumes the retained cohort benefits from an exit equity value after future financing. €10B exit × 30% retention / 1.15^10 is the conditional present value; €50M requires 6.7426% and €100M requires 13.4852%. These are neither forecasts nor inferred from small benchmarks. A €3M priced round at €50M pre-money gives 5.6604% initial investor ownership before option-pool changes, fees, preferences or future rounds; at €100M it gives 2.9126%. An investor must independently accept technology scalability, commercial value capture, rights and execution to support a premium price.
 
 
-## 32. The price depends on dilution, exit scale and time.
+## 33. The price depends on dilution, exit scale and time.
 
 Required platform-success odds at 10 years and 15% discount; zero failure value.
 
 This table is generated from the frozen financial model, not entered by hand. At a €3B outcome and 10% retained equity, the required probabilities are much higher than at a €30B exit with 50% retention. A lower discount rate increases the present value, while delays and dilution reduce it. In the €3M/€50M round, an investor retains 1.6981% at exit if 30% of its initial stake survives, giving €169.81M or 56.60× gross MOIC in the assumed €10B success outcome. That conditional upside is not expected return; failure is zero and cash-flow timing/preferences are omitted.
 
 
-## 33. A private evidence pack and primary external context.
+## 34. A private evidence pack and primary external context.
 
 Source labels in slide footers are clickable; companion files must travel with the PDF.
 
 Raw research evidence is private, per founder instruction. Original completed result SHA256 hashes are in pitch_deck_evidence_20261003.json. The status PDF contains detailed theory and historical evidence; do not treat invalid-protocol archives or old rendered report scores as active claims. Market sources were accessed on 3 October 2026. These external sector denominators support relevance, not customer intent or a venture revenue forecast.
 
 
-## 34. Public precedents establish relevance, not endorsement.
+## 35. Public precedents establish relevance, not endorsement.
 
 Historical roles are self-reported; inventorship is checked against the primary published document.
 

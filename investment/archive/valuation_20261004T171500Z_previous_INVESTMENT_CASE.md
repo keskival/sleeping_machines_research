@@ -2,14 +2,8 @@
 
 **A learning architecture and computing substrate for intelligence everywhere.**
 
-Prepared 3 October; revised 4 October 2026. Investment thesis and proposed commercial strategy;
+Prepared 3 October 2026. Investment thesis and proposed commercial strategy;
 completed research evidence is identified separately from product ambitions.
-
-Current terms: **€3M raise at €50M priced pre-money**, with €100M as a separate
-stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
-and [application opportunity register](../report/model_family_opportunities.md).
-The [previous memo](archive/valuation_20261004T171500Z_previous_INVESTMENT_CASE.md)
-retains the earlier $10M discussion for historical review.
 
 ## The proposition
 
@@ -132,27 +126,6 @@ quarantined and are excluded from this investment case.
 Completed parents and exact values are indexed by the accompanying evidence
 manifest. [Research status](../report/sleeping_machines_status.pdf)
 
-The numerical table above remains the frozen 3 October 10M comparison.
-Separately, the [current evidence map](../report/architecture_evidence.md) records
-completed 90M learning at 1.857306 BPC on test[95M:96M], T256, one seed. It
-changes width/data; no full official-test or matched-scale win follows.
-
-## Expanded platform opportunities
-
-The [opportunity register](../report/model_family_opportunities.md) specifies
-irregular-stream ingestion, asynchronous neural codecs, task-oriented
-communication, learned memory/update policies and joint embodied cognition.
-These can exploit one event/state/learning interface across local and remote
-regions. Variable-rate coding, irregular-input models and joint VLA learning
-already have precedents. The proposed value is their economical temporal and
-selective integration, with first proof conditions and current gaps explicit.
-
-Joint motor/reasoning learning could teach shared physical abstractions and
-planning skills. Motor-to-cognitive and reverse transfer need separate,
-controlled held-out tests. AGI remains a broader aspiration with no project
-demonstration. Novel architectural choices are a starting point for generalism,
-not a guarantee of transfer or universal economic superiority.
-
 ## Markets: one foundation, distinct products
 
 **Datacenters and frontier-model developers.** Start with a reproducible
@@ -270,39 +243,31 @@ semantics; it cannot demonstrate the energy of a fabricated clockless ASIC.
 
 ## A basis for today's valuation
 
-The current opening proposal is **€3M at €50M priced pre-money**; **€100M**
-is a stretch scenario. This prices the potential of a model/learning/runtime
-and computing-substrate platform, supported by research execution and a staged
-program. It is an aggressive negotiating thesis, not an independent appraisal,
-a market-clearing estimate or a value calculated from benchmark scores.
+A reasonable opening fundraising position remains **approximately US$10M
+pre-money**, with **US$5-15M** as a discussion range, conditional on a credible
+founding team, usable rights, a coherent milestone budget and investor demand.
+This is a negotiated pre-seed position based on technical progress and platform
+optionality, not an appraisal of the repository or a value inferred from the
+full market. Unknown team, corporate, customer and ownership facts materially
+affect whether that position is attainable.
 
-The rationale now treats asynchronous ingestion/output, learned memory policies
-and embodied/cognitive integration as concrete expansion options. The common
-structure could permit end-to-end learning across their information and credit
-paths. These are specified opportunities, with prior art and discriminating
-tests; they do not supply completed codec, motor-transfer or AGI evidence.
+For context, Carta's 2025 data reports median post-money SAFE caps around $10M
+for $250K-$1M rounds and $15M for $1M-$2.5M rounds. Its Q2 2026 report describes
+continued concentration in early AI financing. SAFE caps and priced pre-money
+valuations are different quantities; neither dataset prices this company.
+[Carta 2025 review](https://carta.com/sg/en/data/state-of-pre-seed-2025/), [Carta Q2 2026](https://carta.com/data/state-of-pre-seed-q2-2026/)
 
-Execution supports taking the ambition seriously: implemented integrated
-models, completed mechanism comparisons, larger-data learning, retained
-failures and protocol corrections, and reviewable source/resource contracts.
-Tero's relevant public engineering/research/invention history adds an execution
-case, subject to references and commitment. Scaling a company, building a
-team and establishing usable rights are separate obligations. Research
-co-authorship remains credited; sole-founder status does not settle ownership.
+At $10M priced pre-money, a $1.5M investment implies $11.5M post-money and about
+13.0% new-investor ownership; $2M implies $12M and 16.7%, before option-pool or
+other financing effects. A $1.5-2M raise is an illustrative planning envelope,
+not a costed financing requirement. Build an actual staffing, compute, partner
+integration and runway budget before setting the amount.
 
-At €50M pre-money, €3M produces €53M post-money and 5.6604% initial investor
-ownership; the €100M case produces €103M and 2.9126%, before other dilution.
-The planned €3M/18-month program adds learning/runtime/evaluation capacity and
-stages compute and hardware feasibility against explicit gates. Software and
-one useful workload can create value before the full platform is complete.
-
-The [valuation rationale](VALUATION_RATIONALE.md) documents positive assets,
-execution evidence, financing precedents, equity arithmetic and remaining
-proofs. Comparable seed funding announcements establish category investability;
-unreported pre-money prices cannot be inferred from round amounts. Several
-applications share risks and must not be summed into a TAM or independent
-success probabilities. The vision supports exceptional upside; investor demand,
-rights, execution and reproducible benefits determine attainable terms.
+A higher price should follow stronger evidence: independently replicated
+modern quality/resource advantage, a paying deployment or credible design win,
+useful adaptation under drift, and validated hardware economics. The broad
+vision explains how large the company could become; these milestones explain
+why investors should pay more as the company progresses.
 
 ## What the next investment should buy
 

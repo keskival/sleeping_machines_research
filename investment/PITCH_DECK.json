@@ -223,7 +223,7 @@
         }
       ],
       "banner": "No required global periodic tick. Joint integration, measured TTT gains, morphing and hardware energy remain milestones.",
-      "notes": "The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts."
+      "notes": "The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts. Learned memory/scheduling can be viewed as fast-state adaptation governed by slow trained rules, drawing on memory-augmented meta-learning and TTT. The opportunity register defines native irregular ingestion, asynchronous codecs and joint embodied/cognitive paths with explicit first proofs. The prior-art boundary and full work/bit accounting are stated in the report."
     },
     {
       "kind": "architecture",
@@ -333,7 +333,7 @@
       "sources": [
         "R3"
       ],
-      "notes": "The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here.",
+      "notes": "The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here. Adjacent software opportunities include asynchronous codecs, irregular-stream SDKs and task-oriented communications. These are prospective uses of the common interface, not measured products. Joint sensor/action/language learning could support embodied transfer; each transfer direction requires evidence. No AGI probability is used to price the round.",
       "cards": [
         {
           "label": "01 / MODELS + RUNTIME",
@@ -563,9 +563,14 @@
       "section": "Financing proposal",
       "title": "Raise €3M to establish a commercially valuable platform.",
       "subtitle": "Proposed priced round; terms remain subject to company formation and investor diligence.",
-      "notes": "€3M at €50M priced pre-money yields €53M post-money and {new_investor_pct:.4f}% initial ownership before option-pool changes, fees, preferences and subsequent financing. This is a proposed negotiating price, not an independent appraisal, market-clearing estimate or investor offer. The main pitch explains the use of capital and proof points; it does not use arbitrary success odds to establish price. The appendix preserves transparent sensitivity arithmetic for investor discussion. A small ownership stake at a premium research-stage price may narrow the compatible investor pool; the round structure and lead investor fit are open commercial questions.",
-      "sources": [],
-      "detail": "The proposal reflects three potential assets: a model family, a sparse runtime and a hardware substrate. This round funds the evidence needed to turn them into a scalable business.",
+      "notes": "€3M at €50M priced pre-money yields €53M post-money and {new_investor_pct:.4f}% initial ownership before option-pool changes, fees, preferences and subsequent financing. This is a proposed negotiating price, not an independent appraisal, market-clearing estimate or investor offer. The main pitch explains the use of capital and proof points; it does not use arbitrary success odds to establish price. The appendix preserves transparent sensitivity arithmetic for investor discussion. A small ownership stake at a premium research-stage price may narrow the compatible investor pool; the round structure and lead investor fit are open commercial questions. The current VALUATION_RATIONALE.md explains ambition, potential assets and execution separately: coherent family design; value-credit and capacity mechanism evidence; completed restricted 90M learning; source-bound contracts and relevant founder experience. Further applications remain correlated hypotheses. A premium can fund transformative research before revenue, but breadth does not establish a market-clearing valuation. €100M remains a stretch scenario. Retain research co-author credit and resolve ownership; the financing plan adds complementary learning, runtime and evaluation capacity.",
+      "sources": [
+        "R1",
+        "R3",
+        "F1",
+        "F2"
+      ],
+      "detail": "The proposal prices a model/learning family, sparse runtime and future compute substrate. Adaptive communication and embodied learning widen the opportunity; €3M scales the team and decisive proof points.",
       "banner": "Valuation sensitivities and conditional exit scenarios are in the appendix."
     },
     {
@@ -646,6 +651,50 @@
       ],
       "notes": "Frozen versus online evaluation scores 8,191 targets with predict-before-update, 16-character delayed-feedback blocks, lr 1e-4, fresh Adam, clipping and full-backbone gradients. Both arms retain persistent local state. BPC improves by {online_gain:.6f}; total processing-operation estimates increase from 210,902,697 to 2,264,163,359, a {online_work_ratio:.4f}× ratio. This supports trainability under adaptation, not inexpensive lifelong learning. Retention, drift, long-horizon memory and local asynchronous learning need new evidence. Loihi 2 already provides an on-chip learning precedent.",
       "banner": "Online-learning upside: persistent adaptive systems. Current result: one costed pilot."
+    },
+    {
+      "kind": "table",
+      "section": "Appendix / platform opportunities",
+      "title": "One substrate can support new communication and learning patterns.",
+      "subtitle": "Application hypotheses with first proofs; no project codec, embodied-transfer or AGI result.",
+      "sources": [
+        "R3"
+      ],
+      "headers": [
+        "Opportunity",
+        "Architectural fit",
+        "First discriminating proof"
+      ],
+      "widths": [
+        260,
+        460,
+        456
+      ],
+      "rowh": 82,
+      "size": 14,
+      "rows": [
+        [
+          "Irregular inputs",
+          "Addressed events retain time and update persistent programs. Dense regions remain available.",
+          "Same causal data/queries; compare timestamp-aware controls and burst/idle resource use."
+        ],
+        [
+          "Asynchronous codecs",
+          "Learn what, where and when to send; decoder retains predictive state.",
+          "Actual bytes versus distortion/task quality, sender/receiver work and causal latency."
+        ],
+        [
+          "Memory meta-learning",
+          "Slow rules learn fast writes, retention, retrieval and scheduling from later utility.",
+          "Held-out delayed-use tasks; complete useful-return credit against immediate utility."
+        ],
+        [
+          "Embodied cognition",
+          "Shared sensing/action/language paths can exchange learned physical abstractions.",
+          "Motor-to-cognitive and reverse transfer measured separately; matched data/work and isolated-path controls."
+        ]
+      ],
+      "notes": "The register in report/model_family_opportunities.md records six opportunities, mechanisms, evidence status, primary precedents and proof conditions. Dense arithmetic does not inherently require regularized input; variable-rate codecs and joint VLA models already exist. Our opportunity is coherent temporal/selective integration. Quantized message streams need a real wire/decoder contract; metadata/timing/reset and all endpoint work count. Joint motor/cognitive training needs shared information/credit and measured transfer; it does not prove AGI. Proposed application breadth supports platform optionality, not summed TAM or independent success chances. Existing integrated research queues retain priority."
     },
     {
       "kind": "table",
@@ -1035,6 +1084,6 @@
       ]
     }
   ],
-  "editorial_revision": "Family landscape and generative design space; benchmark ledger remains frozen at 3 October 2026",
+  "editorial_revision": "2026-10-04 family opportunities and ambition/potential/execution valuation rationale",
   "main_slide_count": 18
 }

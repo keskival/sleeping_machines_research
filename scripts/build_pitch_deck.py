@@ -132,9 +132,9 @@ def write_notes():
     metrics = verify()['metrics']
     notes = ['# Sleeping Machines — full pitch deck and diligence notes',
              '\nProposed raise: €3M. Bullish negotiating case: €50M priced pre-money; €100M stretch scenario.',
-             '\nThis supersedes the pricing proposal in the older $10M discussion memo; it does not add new benchmark evidence.',
+             '\nThe current valuation rationale is VALUATION_RATIONALE.md; the former $10M memo is preserved in the archive. The €50M proposal prices the platform ambition and execution case, not benchmark scores or a sum of application markets.',
              '\nAll financial outcomes, budgets and milestone timelines are assumptions. No customer interest has been reported. Repository is private by founder instruction on 3 October 2026. This deck is a private review artifact; distribution and any future publication require a considered disclosure decision.',
-            '\nResearch cut-off: completed records available on 3 October 2026. No pending training scores enter the deck.',
+            '\nNumerical benchmark/financial ledger: frozen 3 October 2026. The protocol notes separately scope the report\'s completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.',
             f"\nReading guide: slides 1–{content.get('main_slide_count', len(content['slides']))} form the investor pitch; the remaining slides are optional technical and financial diligence."]
     for i, slide in enumerate(content['slides'], 1):
         notes.extend([f"\n## {i}. {slide['title'].format_map(metrics)}", slide.get('subtitle', '').format_map(metrics),
@@ -482,7 +482,8 @@ def publish(tag):
             INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
             ROOT/'report/sleeping_machines_status.pdf',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',
-            ROOT/'report/model_family_composition.md']
+            ROOT/'report/model_family_composition.md',ROOT/'report/model_family_opportunities.md',
+            INV/'VALUATION_RATIONALE.md',INV/'INVESTMENT_CASE.md',INV/'PITCH.md']
     hashes={str(x.relative_to(ROOT)):sha(x) for x in inputs}
     previous=sha(OUTPUT) if OUTPUT.exists() else None
     previous_main=sha(MAIN_OUTPUT) if MAIN_OUTPUT.exists() else None

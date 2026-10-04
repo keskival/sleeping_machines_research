@@ -332,3 +332,43 @@ atlas, examples, language/online evidence and frozen-source contracts.
 Bounded rendering peaked at 92,256 KiB for the report and about 39 MiB for
 the deck. This work changes documentation and publication only: no training,
 model/ML import, benchmark admission, architectural substitution or outreach.
+
+
+## Pass 14: opportunity scope and ambition/potential/execution valuation case
+
+The linked opportunity register covers six directions: irregular ingestion,
+asynchronous neural codecs, task-oriented communication, learned memory
+policies, embodied/cognitive transfer and persistent inference/substrates.
+Each states architectural fit, evidence stage, primary precedents and first
+proof. Dense arithmetic need not imply dense synchronous input; existing
+codecs, irregular models and VLA systems are relevant controls. Wire bits,
+side information, timing resources, both endpoints and training work are
+explicit. Motor-to-cognitive and reverse transfer need separate tests; shared
+architecture and computational universality do not establish AGI.
+
+The valuation rationale connects platform ambition, potential economic assets
+and execution evidence. The current memo/pitch/deck agree on €3M at €50M
+pre-money and a €100M stretch scenario. Earlier $10M drafts are archived.
+Equity calculations are checked against the frozen €3M budget; funding-round
+announcements are not treated as disclosed pre-money comparables. Customer
+interest, exclusive rights, application victories and success probabilities
+are not inferred. Financial and numerical benchmark ledgers remain unchanged.
+
+A new native SVG shows the proposed sender/state/wire/receiver/query/credit
+boundary. The report has 13 family pages plus all 215 retained evidence pages
+with identical extracted text (228 total). The deck has 18 main and 17 appendix
+slides (35 total). The report page, opportunity slide and revised financing
+slide were visually reviewed. Bounded rendering peaked at 92,468 KiB for the
+report and 39,044 KiB for the deck. An independent report preview used 56,808
+KiB; no model or ML runtime ran.
+
+Current publications:
+`report/publication_model_family_opportunities_20261004T172000Z.json` and
+`investment/publication_pitch_deck_opportunities_20261004T172000Z.json`.
+Current review:
+`experiments/results/diagnostics/architecture_review_stdlib_20261004T172000Z.json`.
+Checks include eleven SVGs, ten atlas tabs, 29 research scalar witnesses, two
+valuation equity cases, document links, current source/artifact publications,
+existing result/protocol bindings and all 53 frozen clock sources. A fresh
+private diligence pack contains the register/rationale, current and archived
+memos, diagram/builder and verified sources; no external distribution.

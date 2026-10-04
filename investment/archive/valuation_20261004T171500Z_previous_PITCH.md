@@ -33,25 +33,12 @@ processors. Repeatable datacenter deployments or OEM design wins can support
 large businesses; successful frontier-scale models and cross-domain adoption
 could make this a foundational platform.
 
-The current proposal is a **€3M raise at €50M priced pre-money**, with **€100M**
-as a stretch scenario. The case combines platform ambition, mechanisms with
-scoped empirical support, relevant founder experience and a staged execution
-plan. It does not price the company by adding application markets or claiming
-AGI. The €3M/18-month program buys team, quality replication, runtime proof and
-hardware feasibility; attainable terms depend on investor conviction and diligence.
+Proposed pre-seed positioning: approximately US$10M priced pre-money,
+conditional on team, rights, budget and investor diligence. Capital should buy
+the next decisive model, runtime and commercial proof points. A larger valuation
+must be earned through reproducible advantage and adoption.
 
-The expanded opportunity includes native irregular ingestion, adaptive
-asynchronous codecs, task-oriented communications and learned memory policies.
-Shared sensing/action/language paths could let embodied experience inform
-cognition. These are testable opportunities, not completed application wins.
-Existing learned codecs, irregular-stream models and VLA systems are relevant
-precedents and controls.
-
-Prepared 3 October; revised 4 October 2026. Read the
-[current valuation rationale](VALUATION_RATIONALE.md),
-[full investment case](INVESTMENT_CASE.md),
-[opportunity register](../report/model_family_opportunities.md) and
-[current research evidence](../report/architecture_evidence.md).
-The [original pitch](archive/valuation_20261004T171500Z_previous_PITCH.md)
-preserves earlier pricing. This remains a fundraising thesis; scalable generalism,
-commercial advantage and clockless hardware economics require their own proofs.
+Prepared 3 October 2026. [Full investment case](INVESTMENT_CASE.md) and
+[evidence manifest](evidence_20261003.json). This is a fundraising thesis;
+commercial success, clockless chip energy savings and frontier supremacy remain
+to be demonstrated.

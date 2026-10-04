@@ -116,6 +116,7 @@ want implementation detail; use the evidence map when assessing a claim.
 | Explore how different reception policies compute | [Interactive atlas](architecture_atlas.html) and [worked example](model_family_example.md) |
 | Inspect native units, layers and wider integrations | [Detailed architectural review](architecture_review.md) |
 | Check precisely what a claim rests on | [Evidence and capability map](architecture_evidence.md) |
+| Follow application opportunities and their first proof conditions | [Opportunity register](model_family_opportunities.md) |
 | Inspect conditions and bounds | [Theory 152](../experiments/theory/152_primitives_integration_and_capability_bounds.md) |
 | Find implementation branches and source records | [Family inventory](model_family_inventory.md) and [source navigation](architecture_source_inventory.md) |
 
