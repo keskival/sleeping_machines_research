@@ -34,6 +34,8 @@ curie_shd_dev_p64d4_pool4tied_reg_20261004T030000Z experiments/shd_native.py --c
 # label smoothing .1, 40 epochs.
 curie_shd_aug_p32d4_20261004T110500Z experiments/shd_native.py --compiled --epochs 40 --lanes 32 --depth 4 --channel-shift 3 --label-smoothing 0.1 --tag curie_shd_aug_p32d4_cs3_ls01_20261004T110500Z --payload 32 --pool 2
 curie_shd_aug_p64d4_20261004T110500Z experiments/shd_native.py --compiled --epochs 40 --lanes 32 --depth 4 --channel-shift 3 --label-smoothing 0.1 --tag curie_shd_aug_p64d4_cs3_ls01_20261004T110500Z --payload 64 --pool 2
+# 17:25 UTC SHD with the exact-expected-reception member (§418).
+curie_shd_exp_p32d4_20261004T172500Z experiments/shd_native.py --compiled --epochs 40 --lanes 32 --depth 4 --channel-shift 3 --label-smoothing 0.1 --reception expected --tag curie_shd_exp_p32d4_cs3_ls01_20261004T172500Z --payload 32 --pool 2
 # 22:20 UTC: sampled route credit ablation (§416; winner + one sampled alternative, unbiased for the linear credit,
 # fewer fitting FLOPs at pool > 2), then the §415 update-matched and second-seed checks of the 6-pass p96 row (1.8886).
 curie_language_v6_10M_p32d4_pool4_sampled_20261003T111500Z experiments/language_batched_benchmark.py --tag curie_language_batched_10M_p32d4_pool4_sampled_l64_lr004_cmp_s6_20261003T111500Z --pool 4 --route-credit sampled --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --passes 1 --eval-every 400 --cosine --eval-segment 256 --compiled --depth 4 --payload 32
