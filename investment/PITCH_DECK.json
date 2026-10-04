@@ -142,6 +142,36 @@
       "short": "Hardware thesis",
       "url": "HARDWARE_THESIS.md",
       "scope": "Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement."
+    },
+    "P1": {
+      "label": "Nazeer et al., Language Modeling on a SpiNNaker 2 Neuromorphic Chip (2023)",
+      "short": "EGRU / SpiNNaker2",
+      "url": "https://arxiv.org/abs/2312.09084",
+      "scope": "Event-based GRU on a neuromorphic chip; authors: first neuromorphic language model to match LSTMs."
+    },
+    "P2": {
+      "label": "Zhu et al., SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (TMLR 2024)",
+      "short": "SpikeGPT",
+      "url": "https://arxiv.org/abs/2302.13939",
+      "scope": "216M-parameter spiking language model; authors: competitive with non-spiking models; fewer operations projected on neuromorphic hardware."
+    },
+    "P3": {
+      "label": "Abreu et al., Neuromorphic Principles for Efficient Large Language Models on Intel Loihi 2 (2025)",
+      "short": "Loihi 2 LLM",
+      "url": "https://arxiv.org/abs/2503.18002",
+      "scope": "370M MatMul-free model quantized for Loihi 2; no accuracy loss versus its unquantized version."
+    },
+    "P4": {
+      "label": "Richter et al., Event-Driven Language Models with Sparse Neural Activity for Neuromorphic Hardware (2026)",
+      "short": "Sparse SSM LM",
+      "url": "https://arxiv.org/abs/2608.30439",
+      "scope": "Thresholded activations in quantized linear-attention models; comparable to dense models with up to 4x fewer effective operations."
+    },
+    "P5": {
+      "label": "Zhao et al., Large Language Models with At Most One Spike per Neuron (2026)",
+      "short": "Timing-coded LLM",
+      "url": "https://arxiv.org/abs/2609.05151",
+      "scope": "Time-to-first-spike coding on GPT-2/BERT, up to 1.5B parameters; authors report a clear perplexity gap on language modeling."
     }
   },
   "slides": [
@@ -219,6 +249,63 @@
       "banner_y": 548,
       "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; tuned versions at our budgets are running. Scoreboard: evidence pack R1.",
       "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats)."
+    },
+    {
+      "kind": "table",
+      "section": "Why this is unusual",
+      "title": "Event-driven models have aimed for parity on language. Ours wins on compute.",
+      "subtitle": "Published event-driven and spiking language models, as reported by their authors, beside our completed result.",
+      "sources": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "R1"
+      ],
+      "headers": [
+        "Model",
+        "How it computes",
+        "Reported language result"
+      ],
+      "widths": [
+        330,
+        440,
+        406
+      ],
+      "rowh": 56,
+      "size": 14,
+      "rows": [
+        [
+          "EGRU on SpiNNaker2 (2023)",
+          "Clocked recurrent net; units fire events above a threshold",
+          "Matches LSTMs"
+        ],
+        [
+          "SpikeGPT, 216M (2023)",
+          "Clocked binary spikes in a recurrent Transformer variant",
+          "“Competitive” with non-spiking models"
+        ],
+        [
+          "Loihi 2 LLM, 370M (2025); sparse SSM (2026)",
+          "Conventional models made sparse/quantized; the chip supplies asynchrony",
+          "No accuracy loss / comparable to dense"
+        ],
+        [
+          "Timing-coded LLM, 1.5B (2026)",
+          "Spike times carry values; closest to our races",
+          "“Clear gap” in language perplexity"
+        ],
+        [
+          "Sleeping Machines (ours)",
+          "Learned arrival times choose which memories update; unchosen paths learn too",
+          "Beats two Transformer baselines with 40% of training, 18% of inference compute"
+        ]
+      ],
+      "banner": "To our knowledge, the first event-timed model to beat Transformer baselines on language with less compute.",
+      "banner_y": 532,
+      "caveat": "Different datasets and scales; not a ranking. Ours: text8, 10M characters, small models, single runs, our baselines; LSTM-512 still ahead.",
+      "notes": "Literature check (web search, 4 October 2026), not a systematic review. Prior event-driven/spiking language models report parity or a gap against conventional models; we found none reporting a Transformer win at lower counted compute. Our claim is scoped: text8, 10M training characters, models under 1M parameters, single seeds, baselines trained by the project (tuned baselines at our budgets are running); LSTM-512 (1.799 bpc) remains ahead at 10M and both references remain ahead at 90M. Prior-work compute figures use different conventions and hardware and are not compared numerically."
     },
     {
       "kind": "cards",
@@ -709,7 +796,7 @@
       "subtitle": "€3M proposed raise · €50M proposed pre-money · Private investor discussion.",
       "sources": [],
       "notes": "Requested financing is €3M. The financing purpose is an aggressive but gated increase in experiment throughput and engineering capacity. The key next investor asset is replicated quality plus a measured service-level advantage; a clockless-chip thesis adds upside after mapping is credible. This private deck includes an appendix for diligence rather than presenting pending work as completed. Contact details, company identity, jurisdiction, cap table and legal terms should be supplied by the founder before distribution. No outbound messages or public release were made.",
-      "hero": "A new architecture is becoming trainable.\nThis round tests whether its advantage scales.",
+      "hero": "Already beating Transformer baselines on compute.\nThis round tests whether the advantage scales.",
       "items": [
         "Replicated language quality and learning mechanisms.",
         "A deployable runtime with measured system economics.",
@@ -1273,8 +1360,21 @@
         "S6",
         "F2"
       ]
+    },
+    {
+      "kind": "sources",
+      "section": "Appendix G / prior event-driven language models",
+      "title": "Prior event-driven language models.",
+      "subtitle": "Summaries of each paper's own claims; datasets, scales and compute conventions differ from ours.",
+      "source_list": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ]
     }
   ],
   "editorial_revision": "2026-10-04 AGI opportunity and investor proof execution plan",
-  "main_slide_count": 20
+  "main_slide_count": 21
 }
