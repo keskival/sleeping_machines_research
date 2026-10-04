@@ -1,0 +1,2 @@
+# P1-1 second seed of the 10M p64/d4 4-pass win (curie v8 s6: 1.955 bpc, 107.2 TF). Identical settings, --seed 7.
+aws_language_10M_r1_p64d4_4pass_linear_s7_20261004T210000Z experiments/language_batched_benchmark.py --tag aws_language_batched_10M_p64d4_pool2_linear_4pass_l64_lr004_cmp_s7_20261004T210000Z --payload 64 --pool 2 --passes 4 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --eval-every 1600 --cosine --eval-segment 256 --compiled --depth 4 --route-credit linear --checkpoint-every 400 --seed 7

@@ -100,6 +100,11 @@ def main():
                     help="explicitly opt in to CUDA; CPU remains the safe default")
     ap.add_argument("--gpu_memory_fraction", type=float, default=0.5,
                     help="maximum fraction of total CUDA memory PyTorch may allocate")
+    # Tuned-baseline options (2026-10-04). Defaults reproduce the original runs exactly.
+    ap.add_argument("--lr", type=float, default=None, help="Adam learning rate (default: 2e-3 LSTM, 1e-3 Transformer)")
+    ap.add_argument("--warmup", type=int, default=0, help="linear warmup steps before the cosine decay")
+    ap.add_argument("--weight_decay", type=float, default=0.0, help="if > 0: AdamW decoupled weight decay")
+    ap.add_argument("--seed", type=int, default=0, help="torch/numpy seed")
     a = ap.parse_args()
     if not 0 < a.gpu_memory_fraction <= 1:
         ap.error("--gpu_memory_fraction must be in (0, 1]")
@@ -108,17 +113,26 @@ def main():
     device = torch.device(a.device)
     if device.type == "cuda":
         torch.cuda.set_per_process_memory_fraction(a.gpu_memory_fraction, device=device)
-        torch.cuda.manual_seed_all(0)
-    os.makedirs(OUT, exist_ok=True); t0 = time.time(); torch.manual_seed(0); rng = np.random.default_rng(0)
+        torch.cuda.manual_seed_all(a.seed)
+    os.makedirs(OUT, exist_ok=True); t0 = time.time(); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     x = S1.load(); train = torch.tensor(x[:a.D]); test = torch.tensor(x[95_000_000:95_000_000 + a.test])
     net = LSTMLM(a.size, a.dropout) if a.model == "lstm" else TfLM(a.size, a.layers, a.ctx, a.dropout)
     net.to(device)
     valid = torch.tensor(x[90_000_000:90_000_000 + a.valid]) if a.valid else None
     best = (float("inf"), None, -1); vcurve = []
-    opt = torch.optim.Adam(net.parameters(), lr=2e-3 if a.model == "lstm" else 1e-3)
+    lr = a.lr if a.lr is not None else (2e-3 if a.model == "lstm" else 1e-3)
+    if a.weight_decay > 0:
+        opt = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=a.weight_decay)
+    else:
+        opt = torch.optim.Adam(net.parameters(), lr=lr)
     B, T = a.batch_size, a.ctx
     steps = int(a.passes * a.D / (B * T))
-    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, max(steps, 1))
+    if a.warmup > 0:
+        w = min(a.warmup, max(steps - 1, 1))
+        sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda k: (k + 1) / w if k < w else
+                                                  0.5 * (1 + math.cos(math.pi * (k - w) / max(steps - w, 1))))
+    else:
+        sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, max(steps, 1))
     train_t0 = time.time()
     for step in range(steps):
         idx = rng.integers(0, a.D - T - 1, B)
@@ -156,7 +170,10 @@ def main():
     layer_tag = f"_L{a.layers}" if a.model == "tf" else ""
     batch_tag = f"_b{a.batch_size}" if a.batch_size != 32 else ""
     device_tag = "_cuda" if device.type == "cuda" else ""
-    name = f"{a.model}_D{a.D}_s{a.size}{layer_tag}_p{a.passes:g}{batch_tag}" + (f"_dr{a.dropout:g}_v" if a.valid else "") + device_tag
+    tune_tag = ((f"_lr{a.lr:g}" if a.lr is not None else "") + (f"_wu{a.warmup}" if a.warmup else "")
+                + (f"_wd{a.weight_decay:g}" if a.weight_decay > 0 else "") + (f"_seed{a.seed}" if a.seed else ""))
+    name = (f"{a.model}_D{a.D}_s{a.size}{layer_tag}_p{a.passes:g}{batch_tag}" + (f"_dr{a.dropout:g}_v" if a.valid else "")
+            + device_tag + tune_tag)
     with open(os.path.join(OUT, name + ".json"), "w") as f:
         json.dump(res, f)
     state_cpu = {k: v.detach().cpu() for k, v in net.state_dict().items()}

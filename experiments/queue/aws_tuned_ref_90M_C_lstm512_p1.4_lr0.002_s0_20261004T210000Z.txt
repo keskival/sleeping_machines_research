@@ -1,0 +1,2 @@
+# Tuned dense reference at a 90M native budget (C: <= 0.96 PF shape estimate); see TUNED_BASELINES.md
+aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z experiments/aws_benchmark.py --run-tag aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z --script experiments/e64_lm_baselines.py -- --model lstm --D 90000000 --size 512 --passes 1.4 --dropout 0.1 --valid 200000 --lr 0.002 --warmup 500
