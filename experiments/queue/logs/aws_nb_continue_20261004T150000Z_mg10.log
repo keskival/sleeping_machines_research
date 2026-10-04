@@ -1,0 +1,14 @@
+/workspace/experiments/mackey_glass_native.py:102: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  losses.append(float(loss))
+{"repeat": 10, "smape": 12.303916246424166, "smape_by_mode": {"mix8": 12.303916246424166, "argmax": 10.007595225852247, "sampled": 14.635098438531527}, "final_train_mse": 4.5509833944379353e-05, "wall_s": 249.52873397199437}
+{"repeat": 11, "smape": 17.514935445409616, "smape_by_mode": {"mix8": 17.514935445409616, "argmax": 21.738092928155886, "sampled": 10.758617285315909}, "final_train_mse": 3.958859306294471e-05, "wall_s": 246.34204242099077}
+{"repeat": 12, "smape": 21.231307977163063, "smape_by_mode": {"mix8": 21.231307977163063, "argmax": 23.54747733660981, "sampled": 17.777934301255378}, "final_train_mse": 3.704542978084646e-05, "wall_s": 246.77680360199884}
+{"repeat": 13, "smape": 8.542830413306111, "smape_by_mode": {"mix8": 8.542830413306111, "argmax": 10.011689411999143, "sampled": 10.222438632990265}, "final_train_mse": 3.8638901241938586e-05, "wall_s": 246.92353784799343}
+{"repeat": 14, "smape": 14.414068958836829, "smape_by_mode": {"mix8": 14.414068958836829, "argmax": 12.047836502944904, "sampled": 17.637588844347587}, "final_train_mse": 3.887186940119136e-05, "wall_s": 247.4085151850013}
+{"repeat": 15, "smape": 11.642995979165104, "smape_by_mode": {"mix8": 11.642995979165104, "argmax": 24.571795735431557, "sampled": 13.552124751011107}, "final_train_mse": 4.375075859570643e-05, "wall_s": 246.49099022499286}
+{"repeat": 16, "smape": 10.73079835129018, "smape_by_mode": {"mix8": 10.73079835129018, "argmax": 8.868482012517786, "sampled": 17.620134514537288}, "final_train_mse": 3.9933139851200396e-05, "wall_s": 247.9805924660177}
+{"repeat": 17, "smape": 18.770357383342198, "smape_by_mode": {"mix8": 18.770357383342198, "argmax": 10.851666374167193, "sampled": 14.393646611437028}, "final_train_mse": 4.61495958006708e-05, "wall_s": 247.24627429799875}
+{"repeat": 18, "smape": 18.165801868191064, "smape_by_mode": {"mix8": 18.165801868191064, "argmax": 11.554108084206328, "sampled": 9.870596318525465}, "final_train_mse": 5.455328991956776e-05, "wall_s": 250.11997782904655}
+{"repeat": 19, "smape": 18.140593681911394, "smape_by_mode": {"mix8": 18.140593681911394, "argmax": 21.668182603890227, "sampled": 15.207173917057254}, "final_train_mse": 2.965639068861492e-05, "wall_s": 249.07738968799822}
+{"mean_smape": 15.145760630503972, "parameters": 14393}
