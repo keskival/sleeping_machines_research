@@ -107,6 +107,23 @@ def load(read):
     return dict(native=native, controls=controls, native90=native90, controls90=controls90)
 
 
+def matched(data):
+    native = [r for r in data['native'] if 'route credit' in r['label']]
+    rows = []
+    for c in data['controls']:
+        for kind, key in (('training', 'whole'), ('inference', 'infer')):
+            budget = c[key]
+            ok = [r for r in native if (r[key if kind == 'training' else 'sparse'] or float('inf')) <= budget]
+            if not ok:
+                rows.append([f"{c['label']} ({kind})", f"{c['test']:.3f}", 'none within budget', '—', '—']); continue
+            best = min(ok, key=lambda r: r['test256'] if r['test256'] is not None else r['test'])
+            q = best['test256'] if best['test256'] is not None else best['test']
+            rows.append([f"{c['label']} ({kind}, {budget / (1e12 if kind == 'training' else 1e6):.1f} "
+                         f"{'TF' if kind == 'training' else 'MF/pos'})", f"{c['test']:.3f}", best['label'], f"{q:.3f}",
+                         'native better' if q < c['test'] else 'reference better'])
+    return rows
+
+
 def pages(data):
     columns = ['Model (10M)', 'Params', 'Steps', 'Test bpc T128/T256', 'Whole fit TF est.',
                'Fit MF/char', 'Infer MF/pos. emulator', 'Infer MF/pos. winner-only']
@@ -129,6 +146,13 @@ def pages(data):
     return [[('h1', 'Appendix. Native language at 10M: the integrated core, segment-batched'),
              ('table', (columns, rows, widths)),
              ('figure', ('native_language_frontier', 172)),
+             ('h2', 'Matched-compute comparisons at 10M (the native row uses no more than the reference\'s compute)'),
+             ('table', (['Reference (budget)', 'Reference bpc', 'Best native within budget', 'Native bpc', 'Outcome'],
+                        matched(data), [52, 22, 62, 20, 20])),
+             ('small', 'Training budget: whole-fit FLOPs estimate; inference budget: per-position FLOPs (native exact winner-only '
+                       'trace, controls shape estimate). Conventions differ (traced vs estimated); single seeds; the native '
+                       'multi-pass rows use more optimizer updates than one-pass references. A native row qualifies for a budget '
+                       'only if its estimate does not exceed the reference\'s.'),
              *([('table', (['Model (90M)', 'Params', 'Updates', 'Test bpc T128/T256', 'Whole fit TF est.', 'Fit MF/char'],
                            [[f"Ours {r['label']} (AWS, one pass)", f"{r['parameters']:,}", f"{r['updates']:,}",
                              f"{r['test']:.3f} / {r['test256']:.3f}", f"{r['whole'] / 1e12:.1f}", f"{r['fit'] / 1e6:.2f}"]

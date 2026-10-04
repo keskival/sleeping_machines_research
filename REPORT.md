@@ -2998,6 +2998,21 @@ Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting p
 
 ![native language frontier](report/figures/native_language_frontier.png)
 
+### Matched-compute comparisons at 10M (the native row uses no more than the reference's compute)
+
+| Reference (budget) | Reference bpc | Best native within budget | Native bpc | Outcome |
+| --- | --- | --- | --- | --- |
+| LSTM-256 (training, 20.3 TF) | 2.171 | p32/d8, skip2 + route credit | 2.326 | reference better |
+| LSTM-256 (inference, 0.7 MF/pos) | 2.171 | p64/d4 + route credit, 4 passes | 1.955 | native better |
+| Transformer-256x2 (training, 111.3 TF) | 2.427 | p64/d4 + route credit, 4 passes | 1.955 | native better |
+| Transformer-256x2 (inference, 3.7 MF/pos) | 2.427 | p96/d4 + route credit, 6 passes | 1.888 | native better |
+| Transformer-256x4, 4 passes (training, 888.8 TF) | 1.908 | p96/d4 + route credit, 6 passes | 1.888 | native better |
+| Transformer-256x4, 4 passes (inference, 7.4 MF/pos) | 1.908 | p96/d4 + route credit, 6 passes | 1.888 | native better |
+| LSTM-512, 6 passes (training, 432.6 TF) | 1.799 | p96/d4 + route credit, 6 passes | 1.888 | reference better |
+| LSTM-512, 6 passes (inference, 2.4 MF/pos) | 1.799 | p96/d4 + route credit, 6 passes | 1.888 | reference better |
+
+Training budget: whole-fit FLOPs estimate; inference budget: per-position FLOPs (native exact winner-only trace, controls shape estimate). Conventions differ (traced vs estimated); single seeds; the native multi-pass rows use more optimizer updates than one-pass references. A native row qualifies for a budget only if its estimate does not exceed the reference's.
+
 | Model (90M) | Params | Updates | Test bpc T128/T256 | Whole fit TF est. | Fit MF/char |
 | --- | --- | --- | --- | --- | --- |
 | Ours p32/d4/pool2 + route credit (AWS, one pass) | 108,875 | 10,986 | 2.045 / 2.045 | 65.2 | 0.72 |

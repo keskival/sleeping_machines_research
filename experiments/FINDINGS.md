@@ -1,5 +1,25 @@
 # Findings log
 
+## Matched-compute comparisons at 10M: native wins 6 of 8 budget comparisons — 4 October
+
+From completed single-seed result files (report: native language appendix, "Matched-compute comparisons"). For each saved
+E64 reference and each budget (whole-fit training FLOPs estimate; per-position inference FLOPs), the best native
+route-credit row whose own estimate does not exceed the reference's:
+
+| Reference (bpc) | Training budget: best native within it | Inference budget: best native within it |
+|---|---|---|
+| Transformer-256×2, 1 pass (2.427) | p64/d4, 4 passes, 107 vs 111 TF: **1.955** | p96/d4, 6 passes, 1.32 vs 3.71 MF: **1.888** |
+| Transformer-256×4, 4 passes (1.908) | p96/d4, 6 passes, 352 vs 889 TF: **1.888** | the same row, 1.32 vs 7.41 MF: **1.888** |
+| LSTM-256, 1 pass (2.171) | p32/d8, 14 vs 20 TF: 2.326 (reference better) | p64/d4, 4 passes, 0.60 vs 0.68 MF: **1.955** |
+| LSTM-512, 6 passes (1.799) | p96/d4, 6 passes, 352 vs 433 TF: 1.888 (reference better) | the same row, 1.32 vs 2.40 MF: 1.888 (reference better) |
+
+Qualified wins against both Transformers at matched or lower training and inference compute, and against LSTM-256 at
+matched inference compute (with more training compute). LSTM-512 remains ahead at its budget. Caveats: work conventions
+differ (native traced, controls shape-estimated); native multi-pass rows use more optimizer updates than the one-pass
+references (6-pass vs Transformer-256×4: 1.5×); single seeds; the references are the saved E64 controls, not tuned
+state of the art. Next: beat LSTM-512 within 433 TF (sampled route credit for capacity at constant cost; p128/d4 four
+passes, about 417 TF), and 90M multi-pass runs on AWS against LSTM-512 (1.661) and Transformer (1.604).
+
 ## First 90M native language row (AWS): 1.997 test bpc at 108 TFLOPs — 3 October
 
 AWS completed queue aws_language_90M_r2_p32d4_pool4_linear_20261003T110000Z (AWS_NATIVE_LANGUAGE_90M.md revision 2):
