@@ -11,8 +11,10 @@ defined family and design rationale → integrated validation/scaling. This
 review organizes tested parts and possible compositions around that original
 motivation; it does not merge separate successes into one completed system.
 
-[Start with the family definition and design rationale](model_family_design.md) ·
+[Start with the short overview](model_family_overview.md) ·
+[Family definition and design rationale](model_family_design.md) ·
 [Interactive architecture atlas](architecture_atlas.html) ·
+[Claims and evidence](architecture_evidence.md) ·
 [Whole-family inventory](model_family_inventory.md) ·
 [Detailed bounds and review corrections](../experiments/theory/152_primitives_integration_and_capability_bounds.md)
 
@@ -37,6 +39,11 @@ CPU/GPU and optimizer execution is clocked/coordinated. Dense/sparse inputs,
 computation density, arrival synchrony and hardware clocking are independent.
 Their single-model integration requires an explicit shared information path,
 not just shared parameters; joint multimodal training remains open.
+
+The [worked reception example](model_family_example.md) shows the same inputs
+under winner, fixed-window, silence-timeout and all-at-query policies. It makes
+membership, integrated content, emission time and pending state concrete.
+The scalar demonstration is not a trained native reception benchmark.
 
 The receiver and stack diagrams below illustrate one important native branch.
 The family map and inventory cover the timing-logic, statistical, carrier,
@@ -74,7 +81,7 @@ The [family inventory](model_family_inventory.md) applies these axes to every
 architectural branch, records mechanism coverage and explains each design
 choice's benefit and price. It also distinguishes learned parameter knowledge,
 persistent facts and explicit statistics. The [source map](architecture_source_inventory.md)
-navigates all110reviewed module/driver records without importing any model.
+navigates all 110 reviewed module/driver records without importing any model.
 
 ## Unit level: several different component types
 

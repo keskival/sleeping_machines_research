@@ -545,3 +545,42 @@ costs; they do not prove temporal state migration or future-write credit here.
 The additional family ambition is economical automatic design within the
 causal temporal/stateful interface. Static searched architecture, conditional
 event policy and online structural reallocation must be separately evaluated.
+
+## 17. Operational composition and finite event execution
+
+A member must specify its admissible graph/operator library, state ownership,
+routing/reception, schedule, query/objective, learning/version policy and
+resource limits. The observed-information boundary, modeled event-time
+coordinate and measured physical runtime are separate semantic roles; they
+need not be separate tensors. Finishing computation after a query cutoff does
+not authorize access to later observations. Interface compatibility is about
+information, state, time, credit and resources, not just matching vector shape.
+
+For state S=S_A×S_B, fixed parameters and local operations
+T_A(a,b)=(f_A(a),b), T_B(a,b)=(a,f_B(b)), T_A T_B=T_B T_A. The same holds for
+their emitted event multiset when emissions depend only on the local input/
+state and random draws are keyed independently of processing order. Observable
+query equivalence additionally needs the same accessible snapshot: a query
+between updates can distinguish their order. Shared reads/writes, global
+parameter changes, shared RNG streams and finite-precision reductions need
+explicit dependency/order/aggregation contracts. This identifies legitimate
+asynchronous freedom without claiming arbitrary reorderings are equivalent.
+
+Positive delays alone do not preclude infinitely many internally generated
+events in finite modeled time: delay_n=2^(-n) has a finite sum. One sufficient
+finite-horizon contract is N external/initial pending seed events in the
+observation interval, zero-delay work grouped into terminating blocks of at
+most c local events, and each block emitting at most b continuation seeds.
+Every internally generated continuation must arrive at least delta_min>0
+after its parent block's triggering time. Crucially, b is the effective fan-out
+of the block, not raw connection degree inside a zero-delay graph. Descendants
+have chain depth at most floor(H/delta_min) in an interval of length H, giving
+at most
+
+    c*N*sum_{k=0}^{floor(H/delta_min)} b^k
+
+local events. This can still be exponentially expensive; a practical execution
+budget or tighter graph structure is necessary. Alternatively a finite DAG,
+explicit event/depth cap or another proved terminating schedule supplies the
+contract. Current finite-segment native stacks already have explicit bounded
+loops; this note imposes no source change or new numerical admission.

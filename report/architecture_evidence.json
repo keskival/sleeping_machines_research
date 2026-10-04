@@ -1,0 +1,345 @@
+{
+  "scope": "Curated capability map and immutable saved-result bindings; no new benchmark",
+  "metric": "BPC at T256",
+  "work_convention": "Saved arithmetic plus unit-counted special functions, estimated from eager full-step traces",
+  "snapshots": [
+    {
+      "id": "timing_only",
+      "label": "D4 / P32 / U2, timing-only credit",
+      "result_path": "experiments/results/language_batched/curie_language_batched_10M_p32d4_l64_lr004_cmp_s6_20261003T054000Z.json",
+      "result_sha256": "65bf062a4d1dba72648e981fefe6e42ad0d78b5ac80ace1fcb797715e10bfa39",
+      "model": {
+        "depth": 4,
+        "heads": 2,
+        "pool": 2,
+        "payload": 32,
+        "seed": 6
+      },
+      "parameters": 108875,
+      "fitting_presentations": 9994240,
+      "test_bpc": 2.506385807790338,
+      "test_targets": 999936,
+      "available_receivers": 16,
+      "selected_writes_per_position": 8,
+      "estimated_whole_fit_tflops": 7.22075366856,
+      "estimated_fit_mflops_per_presentation": 0.7224915219726562,
+      "protocol": {
+        "fit": [
+          0,
+          10000000
+        ],
+        "dev": [
+          90000000,
+          91000000
+        ],
+        "test": [
+          95000000,
+          96000000
+        ],
+        "segment": 128,
+        "lanes": 64,
+        "state": "reset per segment",
+        "credit": "whole segment (exact BPTT within it)",
+        "race": "factorized law; shared per-step noise across lanes; per-window seed",
+        "evaluation": "E64 windows of S, stride S/2, second half scored after the first window",
+        "selection": "final weights (no development selection)",
+        "schedule": "cosine annealing over all windows",
+        "kernels": "compiled layer steps (torch.compile/inductor, contract-tested against the batched path)"
+      },
+      "work_scope": "first windows fully traced, extrapolated per character; evaluation separate",
+      "execution_sources": {
+        "experiments/language_batched_benchmark.py": "a59e5fdd44e059cda7d380bcf4295d1698960d1d5f9b30c6a7d2981f6c23f70b",
+        "sleeping_machines/batched_episodes.py": "83265f63633a666e6bc788c80b4ebbde3ede468b15d38c2f60438427c75a3bc4",
+        "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+        "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+        "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+        "sleeping_machines/compiled_episodes.py": "0823966cdd7d2983aec0bfb138a84db2f976f67a4985443d0bb3393c0a8e5c23"
+      }
+    },
+    {
+      "id": "value_credit",
+      "label": "D4 / P32 / U2, value choice credit",
+      "result_path": "experiments/results/language_batched/curie_language_batched_10M_p32d4_pool2_linear_l64_lr004_cmp_s6_20261003T070000Z.json",
+      "result_sha256": "2ebb23d00897521c18ce8e569ecd78dc09db6f063aa5cb4666ab451f3abbda23",
+      "model": {
+        "depth": 4,
+        "heads": 2,
+        "pool": 2,
+        "payload": 32,
+        "seed": 6
+      },
+      "parameters": 108875,
+      "fitting_presentations": 9994240,
+      "test_bpc": 2.371490662751688,
+      "test_targets": 999936,
+      "available_receivers": 16,
+      "selected_writes_per_position": 8,
+      "estimated_whole_fit_tflops": 7.24266104264,
+      "estimated_fit_mflops_per_presentation": 0.7246835219726563,
+      "protocol": {
+        "fit": [
+          0,
+          10000000
+        ],
+        "dev": [
+          90000000,
+          91000000
+        ],
+        "test": [
+          95000000,
+          96000000
+        ],
+        "segment": 128,
+        "lanes": 64,
+        "state": "reset per segment",
+        "credit": "whole segment (exact BPTT within it)",
+        "race": "factorized law; shared per-step noise across lanes; per-window seed",
+        "evaluation": "E64 windows of S, stride S/2, second half scored after the first window",
+        "selection": "final weights (no development selection)",
+        "schedule": "cosine annealing over all windows",
+        "route_credit": "factorized race plus linearized local-expectation score credit pi_i g.(v_i - v_bar)",
+        "kernels": "compiled layer steps (torch.compile/inductor, contract-tested against the batched path)"
+      },
+      "work_scope": "first windows fully traced, extrapolated per character; evaluation separate",
+      "execution_sources": {
+        "experiments/language_batched_benchmark.py": "5e6494d156ce2c53a5a353de1666f378c8c3833a7f486b196965d63d83b39e69",
+        "sleeping_machines/batched_episodes.py": "ed8e035e8431323c0307bc9b34c68262267a83c9e6e536a3e299fe106a68b1b0",
+        "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+        "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+        "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+        "sleeping_machines/compiled_episodes.py": "bc7c61c4ddff56e1fe96d8084bffd949459651a9bf617cbd602ce6f230c2cb67"
+      }
+    },
+    {
+      "id": "larger_pool",
+      "label": "D4 / P32 / U4, value choice credit",
+      "result_path": "experiments/results/language_batched/curie_language_batched_10M_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T101000Z.json",
+      "result_sha256": "34a19f4ef35575152f0d9f0eecc585767cf09f62489958b7fc3d9ddc87467816",
+      "model": {
+        "depth": 4,
+        "heads": 2,
+        "pool": 4,
+        "payload": 32,
+        "seed": 6
+      },
+      "parameters": 177019,
+      "fitting_presentations": 9994240,
+      "test_bpc": 2.345157092663773,
+      "test_targets": 999936,
+      "available_receivers": 32,
+      "selected_writes_per_position": 8,
+      "estimated_whole_fit_tflops": 11.9497887604,
+      "estimated_fit_mflops_per_presentation": 1.1956675805664063,
+      "protocol": {
+        "fit": [
+          0,
+          10000000
+        ],
+        "dev": [
+          90000000,
+          91000000
+        ],
+        "test": [
+          95000000,
+          96000000
+        ],
+        "segment": 128,
+        "lanes": 64,
+        "state": "reset per segment",
+        "credit": "whole segment (exact BPTT within it)",
+        "race": "factorized law; shared per-step noise across lanes; per-window seed",
+        "evaluation": "E64 windows of S, stride S/2, second half scored after the first window",
+        "selection": "final weights (no development selection)",
+        "schedule": "cosine annealing over all windows",
+        "route_credit": "factorized race plus linearized local-expectation score credit pi_i g.(v_i - v_bar)",
+        "kernels": "compiled layer steps (torch.compile/inductor, contract-tested against the batched path)"
+      },
+      "work_scope": "first windows fully traced, extrapolated per character; evaluation separate",
+      "execution_sources": {
+        "experiments/language_batched_benchmark.py": "4c4e99649368f39971eebc9905c35124899794f38bdc9cd710b7f2f55f252800",
+        "sleeping_machines/batched_episodes.py": "0d9a0309f614cb6f081ee24027a45f5961626d4db1da8fa455e612e4c65396b2",
+        "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+        "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+        "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+        "sleeping_machines/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6"
+      }
+    },
+    {
+      "id": "native_90m",
+      "label": "D4 / P64 / U2, 90M data",
+      "result_path": "experiments/results/language_batched/aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z.json",
+      "result_sha256": "5c0d37f6ce5b97aad1a950952414dfad707f03c40bb959a59da5604ec53112ee",
+      "model": {
+        "depth": 4,
+        "heads": 2,
+        "pool": 2,
+        "payload": 64,
+        "seed": 6
+      },
+      "parameters": 422475,
+      "fitting_presentations": 89997312,
+      "test_bpc": 1.8573062690673727,
+      "test_targets": 999936,
+      "available_receivers": 16,
+      "selected_writes_per_position": 8,
+      "estimated_whole_fit_tflops": 241.21889735796,
+      "estimated_fit_mflops_per_presentation": 2.6802900219726564,
+      "protocol": {
+        "fit": [
+          0,
+          90000000
+        ],
+        "dev": [
+          90000000,
+          91000000
+        ],
+        "test": [
+          95000000,
+          96000000
+        ],
+        "segment": 128,
+        "lanes": 64,
+        "state": "reset per segment",
+        "credit": "whole segment (exact BPTT within it)",
+        "race": "factorized law; shared per-step noise across lanes; per-window seed",
+        "evaluation": "E64 windows of S, stride S/2, second half scored after the first window",
+        "selection": "final weights (no development selection)",
+        "schedule": "cosine annealing over all windows",
+        "route_credit": "factorized race plus linearized local-expectation score credit pi_i g.(v_i - v_bar)",
+        "kernels": "compiled layer steps (torch.compile/inductor, contract-tested against the batched path)"
+      },
+      "work_scope": "first windows fully traced, extrapolated per character; evaluation separate",
+      "execution_sources": {
+        "sleeping_machines/batched_episodes.py": "0d9a0309f614cb6f081ee24027a45f5961626d4db1da8fa455e612e4c65396b2",
+        "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+        "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+        "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+        "experiments/archive/frozen_sources/354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6/compiled_episodes.py": "354799087befa7716234e1003e11e666ef0d51fe93f91f3d32c37442683f7ff6",
+        "experiments/archive/frozen_sources/0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d/language_batched_benchmark.py": "0f523f8d9e8b225dbe498767d1d3bce83a8334d279175dd0d8c24f20f798cf8d",
+        "experiments/public_benchmarks/frozen_language_v2.py": "3c94c464f256e81a5443ba45eacce4d5cce867b615fb362adc43e4e463bd3521"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Time computes",
+      "status": "Derived and scoped implementations",
+      "scope": "Delay/order, analytic transport and reception change the function; physical energy is separate.",
+      "sources": [
+        "report/model_family_example.md",
+        "sleeping_machines/rotating_memory.py",
+        "experiments/theory/152_primitives_integration_and_capability_bounds.md"
+      ]
+    },
+    {
+      "claim": "Race identity and clock",
+      "status": "Exact conditional derivation",
+      "scope": "At fixed entering state exponential race identity is softmax and independent of first time; later trajectories need not stay independent.",
+      "sources": [
+        "experiments/theory/151_normalized_clock_noise_and_precision_credit.md",
+        "sleeping_machines/clock_noise_law.py"
+      ]
+    },
+    {
+      "claim": "Value-informed choice credit",
+      "status": "Completed single-seed language comparison",
+      "scope": "2.506386\u21922.371491 BPC at T256 for the saved D4/P32/U2 recipe; local message utility is not complete future-write utility.",
+      "sources": [
+        "experiments/results/language_batched/curie_language_batched_10M_p32d4_l64_lr004_cmp_s6_20261003T054000Z.json",
+        "experiments/results/language_batched/curie_language_batched_10M_p32d4_pool2_linear_l64_lr004_cmp_s6_20261003T070000Z.json"
+      ]
+    },
+    {
+      "claim": "Capacity beyond selected activity",
+      "status": "Completed single-seed language comparison",
+      "scope": "U2\u2192U4: 2.371491\u21922.345157 BPC, 16\u219232 available receivers and eight writes/position; fitting cost and untied parameters rise.",
+      "sources": [
+        "experiments/results/language_batched/curie_language_batched_10M_p32d4_pool2_linear_l64_lr004_cmp_s6_20261003T070000Z.json",
+        "experiments/results/language_batched/curie_language_batched_10M_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T101000Z.json"
+      ]
+    },
+    {
+      "claim": "Native scale learning",
+      "status": "Completed restricted text8 evaluation",
+      "scope": "90M-trained D4/P64/U2 reaches 1.857306 BPC on test[95M:96M], T256; this is not the full official five-million-character test.",
+      "sources": [
+        "experiments/results/language_batched/aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z.json"
+      ]
+    },
+    {
+      "claim": "Exact attention endpoint",
+      "status": "Conditional mathematical construction",
+      "scope": "Delay-coded value/count aggregation is exact over delivered support with its operators/precision; current native winner-only default is a different function.",
+      "sources": [
+        "experiments/theory/08_vector_memory_and_deep_stacks.md",
+        "experiments/theory/152_primitives_integration_and_capability_bounds.md"
+      ]
+    },
+    {
+      "claim": "Sparse serving",
+      "status": "Implemented references; completed-weight FP32 parity pending",
+      "scope": "Cached selected proposals still score all keys and pay cache/matrix/traffic work; small reference contracts do not establish trained serving quality/energy.",
+      "sources": [
+        "sleeping_machines/sparse_inference.py",
+        "sleeping_machines/prepacked_sparse_inference.py",
+        "experiments/theory/148_compact_tied_maps_and_private_state.md"
+      ]
+    },
+    {
+      "claim": "Richer reception / silence",
+      "status": "Reference primitives; integrated learning pending",
+      "scope": "Windows and silence timeouts define distinct causal programs; membership and future-state utility need explicit credit.",
+      "sources": [
+        "sleeping_machines/temporal_window.py",
+        "sleeping_machines/silence_burst.py",
+        "sleeping_machines/race_window.py",
+        "report/model_family_example.md"
+      ]
+    },
+    {
+      "claim": "Dense / synchronous endpoints",
+      "status": "Conditional family containment",
+      "scope": "Full support plus correct aggregation; shared snapshots plus barriers. Function, execution and learning contracts are separate.",
+      "sources": [
+        "report/model_family_design.md",
+        "experiments/theory/152_primitives_integration_and_capability_bounds.md"
+      ]
+    },
+    {
+      "claim": "Clock independence",
+      "status": "Architectural schedule capability; physical benefit unmeasured",
+      "scope": "No mandatory global periodic tick; local timers/joins and precision remain. Clocked CPU/GPU execution is not measured clockless hardware.",
+      "sources": [
+        "report/model_family_design.md",
+        "report/figures/architecture_shared_world.svg"
+      ]
+    },
+    {
+      "claim": "Online learning / TTT",
+      "status": "Family capability; no completed TTT advantage",
+      "scope": "The same trainable units can adapt to causal outcomes; state adaptation, parameter updates, asynchronous consistency and batching are distinct.",
+      "sources": [
+        "report/model_family_design.md",
+        "report/figures/architecture_learning.svg"
+      ]
+    },
+    {
+      "claim": "Automatic design",
+      "status": "Dynamic routes implemented; broader structural adaptation aspirational",
+      "scope": "Operator/allocation changes need task/resource utility and state migration; NAS precedents are attributed.",
+      "sources": [
+        "report/model_family_design.md",
+        "experiments/theory/152_primitives_integration_and_capability_bounds.md"
+      ]
+    },
+    {
+      "claim": "One shared multimodal model",
+      "status": "Integration ambition",
+      "scope": "Explicit cross-source information paths are required; successes on separate tasks do not establish joint grounding.",
+      "sources": [
+        "report/model_family_design.md",
+        "report/figures/architecture_shared_world.svg"
+      ]
+    }
+  ]
+}

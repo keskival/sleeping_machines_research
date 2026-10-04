@@ -1,7 +1,8 @@
 # Sleeping Machines as a model family
 
 4 October 2026. A definition, design space and selection rationale.
-[Visual atlas](architecture_atlas.html) · [Detailed review](architecture_review.md) ·
+[Short overview](model_family_overview.md) · [Visual atlas](architecture_atlas.html) ·
+[Evidence map](architecture_evidence.md) · [Detailed review](architecture_review.md) ·
 [Bounds](../experiments/theory/152_primitives_integration_and_capability_bounds.md)
 
 ## From the manifesto to a defined design space
@@ -47,12 +48,19 @@ demonstrate the complete target's advantage.
 
 This is a generative description: choose the local state program, communication
 and reception policy, then compose modules through their event interfaces.
-The family is not defined by payload32, eight layers, two heads, one dataset,
+The family is not defined by a 32-number payload, eight layers, two heads, one dataset,
 one gradient approximation or one physical implementation. Nor is it merely
 an unconstrained list of algorithms placed beside one another. The causal
 content/time/state interface and its composed consequences supply coherence.
 
 ## The common computation contract
+
+A concrete member is specified by a graph of admissible programs, an operator
+library, persistent state ownership, routing/reception rules, a causal schedule,
+query/objective rules, a learning/update policy and resource limits. Learned
+parameters and optional architectural-policy state instantiate that specification.
+The same interface admits many members; the actual operator/support constraints
+define which functions a particular member can reproduce.
 
 At an addressed unit, local state has a represented value m and timing metadata.
 For an incoming event e=(a,t,x), the unit can perform:
@@ -75,6 +83,46 @@ meet; elapsed time transforms a represented vector; a race changes the selected
 program; a timeout turns absence into an event. This supplies conditional
 temporal programs. A software emulator can implement that semantics while
 remaining clocked and serial; physical asynchrony is a separate implementation.
+
+Three meanings of time should not be conflated:
+
+| Coordinate | Meaning | Contract |
+| --- | --- | --- |
+| Observation time / order | When externally observed evidence is available | Defines admissible information; token position and sensor seconds need an adapter |
+| Modeled event/computation time | The coordinate used for local flow, learned delays, races, joins and deadlines | Can be related to observation time; units, precision and causal update rules must agree |
+| Measured execution time | CPU/GPU/chip time needed to execute the predictor and learner | A serving/resource measurement; software speed is not automatically the modeled delay |
+
+These need not be three separate tensors in every implementation. They are
+three semantic roles. A delayed model computation may finish after its declared
+observation cutoff without being allowed to consume later evidence silently.
+The [worked reception example](model_family_example.md) demonstrates local
+deadline and query distinctions without running a learned model.
+
+## Composition contracts: what must survive the interfaces?
+
+| Contract | Required specification | Failure it prevents |
+| --- | --- | --- |
+| Information and type | Payload/state schema, source/address meaning, projection and precision | A later module receives an erased or incompatible distinction |
+| State and ownership | What persists, who reads/writes it, reset and overwrite rules | Shared weights mistaken for shared facts; accidental resets or conflicting writes |
+| Time and schedule | Causal dependencies, equal-time priority, transport, local deadlines and joins | Equal timestamps mistaken for synchronous snapshots; silence flushed prematurely |
+| Query and supervision | Observation cutoff, accessible state, completion rule and labels | Future evidence leaking into prediction or targets changing the input adapter |
+| Credit and versions | What factual/alternative consequences are taught, horizon, caches and producing weights | Retained facts mistaken for writer credit; old cotangents or cached keys presented as current |
+| Resources and termination | Candidate support, active work, queues, precision and finite execution limits | Dormant capacity mistaken for free learning; an event loop exceeding its budget |
+
+Independent local updates can execute in either order when their read/write
+sets and emitted-event dependencies do not interfere, parameters are fixed and
+random draws have an order-independent assignment. Shared writes, global
+updates, reductions, joins or retiming require a declared order/aggregation
+contract. Asynchrony permits partial ordering; it does not make every reordering
+equivalent.
+
+Finite input alone does not guarantee a finite event execution: a recurrent
+graph can generate infinitely many events, even within bounded modeled time
+if positive delays shrink fast enough. A member needs a finite work/depth cap,
+a terminating schedule or an appropriate no-accumulation condition. Dense
+synchronous and sparse asynchronous regions both fit these contracts. They
+are not reasons to abandon temporal computation; they make its implementation
+and claimed containment precise.
 
 ## Design choices at every level
 
@@ -100,6 +148,28 @@ A useful clock coordinate can become uncontrollable if content/key sensitivities
 are clipped. A short credit horizon can leave a retained fact's original writer
 untrained. The best design is a compatible combination rather than independent
 maximization of every row.
+
+## Terminology used throughout the documentation
+
+| Term | Meaning here |
+| --- | --- |
+| Program / unit | A local transformation with declared evidence state, time behavior, reception and emission rules |
+| Module / layer | A composition of programs exposing a content/time/state interface; a layer is a declared stage, not necessarily one global synchronous sweep |
+| Stack / system | Serial composition; or the complete model with adapters, memory, schedule, objective, learner and runtime |
+| Key / value | Features used to recruit a program/evidence item; and the content delivered after that choice. A selected write may retain different state from the delivered value |
+| Available / discovered / selected | Programs or facts that exist; candidates actually inspected; and those recruited for computation, delivery or commit |
+| Counterfactual credit | Teaching an unrealized choice from a specified alternative utility. A local message teacher, complete future return and structural-action return have different scope |
+| Persistent state / learned parameters | Facts and context updated by events; reusable rules changed by a learning policy. Some inner learners deliberately store fast parameters in state |
+| Sparse | Specify the object: connections, candidate support, active programs, deliveries, writes, gradients or optimizer work. Sparsity of one does not imply sparsity of all |
+| Asynchronous | A causal partially ordered update schedule without mandatory global periodic barriers; equal-time priority and shared-state consistency still belong to the member |
+| Adaptive graph | Event-dependent active paths within a containing graph, or broader learned structural changes; distinguish those two meanings |
+| Native | The project's integrated temporal receiver construction, or adaptation within its own trainable structure; not a statement about custom physical hardware |
+| Capacity / retention / access / credit horizon | What could be stored; how long evidence survives; what a query can retrieve; and how far learning reaches to its original producer |
+| Subsumption / matching / advantage | A stated function/state or execution/learning containment; measured performance parity; or a better declared quality/resource trade-off |
+
+These definitions keep the family-level freedoms separate from any single
+experimental member. The [evidence map](architecture_evidence.md) gives each
+principal claim's actual support and boundary.
 
 ## Inclusion: synchronous and dense constructions are allowed endpoints
 

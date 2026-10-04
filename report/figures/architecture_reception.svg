@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Reception is an operator: same arrivals, different computations">
+<defs><marker id="arrow-cd7e6a38" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="850" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Reception is an operator: same arrivals, different computations</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Worked scalar example; H=1, query cutoff q=5, arrival-before-timer ties, no damping or trained parameters.</text>
+<g class=""><rect x="35" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message A</text>
+<text x="49" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 0.0; content 1</text>
+</g>
+<g class=""><rect x="320" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message B</text>
+<text x="334" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 0.8; content −2</text>
+</g>
+<g class=""><rect x="605" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="619" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message C</text>
+<text x="619" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 1.6; content 3</text>
+</g>
+<g class=""><rect x="890" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="904" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message D</text>
+<text x="904" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 4.0; content 4</text>
+</g>
+<g class=""><rect x="35" y="265" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="292" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">First arrival</text>
+</g>
+<g class=""><rect x="485" y="265" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="292" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A</text>
+</g>
+<g class=""><rect x="800" y="265" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="292" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 1 at time 0.0</text>
+</g>
+<polyline class="" points="445,297 485,297" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,297 800,297" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="358" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">One delivery selects the continuation.</text>
+<g class=""><rect x="35" y="383" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="410" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Fixed window from first arrival</text>
+</g>
+<g class=""><rect x="485" y="383" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="410" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B</text>
+</g>
+<g class=""><rect x="800" y="383" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="410" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit −1 at time 1.0</text>
+</g>
+<polyline class="" points="445,415 485,415" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,415 800,415" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="476" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">More evidence meets before a fixed local deadline.</text>
+<g class=""><rect x="35" y="501" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="528" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Silence timeout / popcorn</text>
+</g>
+<g class=""><rect x="485" y="501" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="528" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B + C</text>
+</g>
+<g class=""><rect x="800" y="501" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="528" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 2 at time 2.6</text>
+</g>
+<polyline class="" points="445,533 485,533" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,533 800,533" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="594" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Every admitted arrival renews the local deadline.</text>
+<g class=""><rect x="35" y="619" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="646" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">All observed arrivals at query</text>
+</g>
+<g class=""><rect x="485" y="619" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="646" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B + C + D</text>
+</g>
+<g class=""><rect x="800" y="619" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="646" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 6 at time 5.0</text>
+</g>
+<polyline class="" points="445,651 485,651" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,651 800,651" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="712" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Full support within the declared observed prefix.</text>
+<text x="35" y="776" font-family="Arial, sans-serif" font-size="16" fill="#ad5b16" font-weight="700">At q=2, popcorn has pending state 2 and deadline 2.6. A query/EOF does not silently emit early.</text>
+<text x="35" y="815" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">A later layer can transform content by elapsed time; learning must credit membership and future-state effects.</text>
+</svg>

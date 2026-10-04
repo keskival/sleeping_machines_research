@@ -1,5 +1,52 @@
 # Local host: current research continuation
 
+## Family grooming: semantics, navigation and provenance — 4 October 2026
+
+Documentation/stdlib work only; no model, trainer, profiler, waiter or new
+admission. Primary short entry ../report/model_family_overview.md points to
+definition, worked semantics, implementations, claim/evidence map and bounds.
+The whole-family definition now specifies operator/graph, state, schedule,
+query, learner/version and resource contracts, terminology and three time
+roles: observed information, modeled event computation and physical runtime.
+Theory152§17 adds conditional update commutation and finite-event bounds;
+positive shrinking delays alone do not ensure finite work within a horizon.
+
+Added eighth SVG and causal reception explorer in architecture_atlas.html:
+winner/window/popcorn/all-at-query, first-group content/emission/pending state,
+arrival-before-timer ties and no EOF flush. This is an illustrative fixed scalar
+program, not trained native window/TTT integration or performance evidence.
+Keyboard tabs and invalid-input clearing improved. No hardware/pixel rendering
+claim; no local browser renderer is available.
+
+Generated architecture_evidence.md/.json labels 13 scoped claims and binds four
+completed language results by result/protocol/execution-source hashes. The
+declared matched 10M D4/P32/U2 value-credit gain is .134895 BPC for .30% extra
+estimated fitting work; U2→U4 adds .026334 BPC improvement at 1.650× work, with
+eight selected writes unchanged. The 90M P64 result is scale evidence under its
+restricted 1M test, not an isolated intervention/full text8 win. Both whole-fit
+TFLOPs and per-presentation MFLOPs use the same conventions across rows. Old
+“exact BPTT” wording is qualified as factual graph scope, not full write utility.
+All previous scores, negative findings, frozen sources and PDF remain intact.
+
+Checks: eight SVGs, ARIA/tab bindings and keyboard navigation, 16 causal reception
+cases, 17 scalar witnesses, 13 scoped-source claims, four completed result
+bindings, 110 source hashes and 53 unchanged frozen clock sources. Documentation
+artifacts also receive SHA256 bindings in the new diagnostics record
+results/diagnostics/architecture_review_stdlib_20261004T103000Z.json.
+The earlier102000Z intermediate snapshot is preserved. The final finite-event
+bound uses effective block continuation fan-out after terminating zero-delay
+work, rather than raw graph degree, and counts initial pending seeds.
+Review history retains first-stage passes and adds passes6/7 for this iteration.
+
+Priority unchanged: integrated official primate/MG confirmation manifest
+queue/aws_neurobench_admission_20261004T064000Z/manifest.json,
+curie_language_batched_v6_20261003T111500Z and current AWS replay owners.
+Frozen clock065700Z contracts→pilot follow owners. The curie coordination note
+below is preserved. Full future-write utility, useful horizon/discovery,
+integrated reception/silence, trained sparse parity, multimodal/TTT/structural
+adaptation and measured energy remain open. No new architecture substitution,
+queue launch or physical reservation attempted.
+
 ## curie coordination note, 4 October 09:55 UTC
 
 Read: AWS 90M complete (best p64/d4 + credit test 1.857, one pass); public UCR/UEA negatives (ECG200 72.3%, JapaneseVowels

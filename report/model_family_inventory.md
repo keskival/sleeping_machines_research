@@ -3,6 +3,7 @@
 4 October 2026. Supporting implementation navigation for the
 [generative family definition](model_family_design.md), not the definition itself
 or one benchmark recipe.
+[Short overview](model_family_overview.md) · [Evidence map](architecture_evidence.md) ·
 [Visual atlas](architecture_atlas.html) · [Review](architecture_review.md) ·
 [Bounds](../experiments/theory/152_primitives_integration_and_capability_bounds.md)
 

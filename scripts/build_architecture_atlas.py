@@ -7,6 +7,107 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BLUE, GREEN, ORANGE, GRAY = '#2259a7', '#147d69', '#ad5b16', '#5a6779'
+RESULT_CASES = (
+    ('timing_only', 'D4 / P32 / U2, timing-only credit', 'curie_language_batched_10M_p32d4_l64_lr004_cmp_s6_20261003T054000Z.json'),
+    ('value_credit', 'D4 / P32 / U2, value choice credit', 'curie_language_batched_10M_p32d4_pool2_linear_l64_lr004_cmp_s6_20261003T070000Z.json'),
+    ('larger_pool', 'D4 / P32 / U4, value choice credit', 'curie_language_batched_10M_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T101000Z.json'),
+    ('native_90m', 'D4 / P64 / U2, 90M data', 'aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z.json'),
+)
+
+
+def evidence_map():
+    """Bind a small claim map to completed saved JSON; never import a model."""
+    snapshots = []
+    for key, label, filename in RESULT_CASES:
+        path = ROOT/'experiments/results/language_batched'/filename
+        result = json.loads(path.read_text())
+        assert result['status'] == 'completed', path
+        assert result['eval_segment'] == 256, path
+        a, work, protocol = result['args'], result['work'], result['protocol']
+        assert protocol['test'] == [95000000,96000000], path
+        presentations = result['fitting_chars']
+        near_total = work['fit_unit_special_flops_per_char_estimate']*presentations
+        assert abs(work['whole_fit_unit_special_flops_estimate']-near_total) <= max(1.,near_total*1e-12)
+        snapshots.append(dict(id=key,label=label,result_path=str(path.relative_to(ROOT)),
+            result_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+            model={k:a[k] for k in ('depth','heads','pool','payload','seed')},
+            parameters=result['parameters'],fitting_presentations=presentations,
+            test_bpc=result['test_bpc_eval_segment'],test_targets=result['test_targets_eval_segment'],
+            available_receivers=a['depth']*a['heads']*a['pool'],
+            selected_writes_per_position=a['depth']*a['heads'],
+            estimated_whole_fit_tflops=work['whole_fit_unit_special_flops_estimate']/1e12,
+            estimated_fit_mflops_per_presentation=work['fit_unit_special_flops_per_char_estimate']/1e6,
+            protocol=protocol,work_scope=work['scope'],execution_sources=result['source_sha256']))
+    credit_gain = snapshots[0]['test_bpc']-snapshots[1]['test_bpc']
+    credit_work_percent = 100*(snapshots[1]['estimated_whole_fit_tflops']/snapshots[0]['estimated_whole_fit_tflops']-1)
+    pool_gain = snapshots[1]['test_bpc']-snapshots[2]['test_bpc']
+    pool_work_ratio = snapshots[2]['estimated_whole_fit_tflops']/snapshots[1]['estimated_whole_fit_tflops']
+    claims = [
+        ('Time computes', 'Derived and scoped implementations',
+         'Delay/order, analytic transport and reception change the function; physical energy is separate.',
+         ['report/model_family_example.md','sleeping_machines/rotating_memory.py','experiments/theory/152_primitives_integration_and_capability_bounds.md']),
+        ('Race identity and clock', 'Exact conditional derivation',
+         'At fixed entering state exponential race identity is softmax and independent of first time; later trajectories need not stay independent.',
+         ['experiments/theory/151_normalized_clock_noise_and_precision_credit.md','sleeping_machines/clock_noise_law.py']),
+        ('Value-informed choice credit', 'Completed single-seed language comparison',
+         f"{snapshots[0]['test_bpc']:.6f}→{snapshots[1]['test_bpc']:.6f} BPC at T256 for the saved D4/P32/U2 recipe; local message utility is not complete future-write utility.",
+         [snapshots[0]['result_path'],snapshots[1]['result_path']]),
+        ('Capacity beyond selected activity', 'Completed single-seed language comparison',
+         f"U2→U4: {snapshots[1]['test_bpc']:.6f}→{snapshots[2]['test_bpc']:.6f} BPC, 16→32 available receivers and eight writes/position; fitting cost and untied parameters rise.",
+         [snapshots[1]['result_path'],snapshots[2]['result_path']]),
+        ('Native scale learning', 'Completed restricted text8 evaluation',
+         f"90M-trained D4/P64/U2 reaches {snapshots[3]['test_bpc']:.6f} BPC on test[95M:96M], T256; this is not the full official five-million-character test.",
+         [snapshots[3]['result_path']]),
+        ('Exact attention endpoint', 'Conditional mathematical construction',
+         'Delay-coded value/count aggregation is exact over delivered support with its operators/precision; current native winner-only default is a different function.',
+         ['experiments/theory/08_vector_memory_and_deep_stacks.md','experiments/theory/152_primitives_integration_and_capability_bounds.md']),
+        ('Sparse serving', 'Implemented references; completed-weight FP32 parity pending',
+         'Cached selected proposals still score all keys and pay cache/matrix/traffic work; small reference contracts do not establish trained serving quality/energy.',
+         ['sleeping_machines/sparse_inference.py','sleeping_machines/prepacked_sparse_inference.py','experiments/theory/148_compact_tied_maps_and_private_state.md']),
+        ('Richer reception / silence', 'Reference primitives; integrated learning pending',
+         'Windows and silence timeouts define distinct causal programs; membership and future-state utility need explicit credit.',
+         ['sleeping_machines/temporal_window.py','sleeping_machines/silence_burst.py','sleeping_machines/race_window.py','report/model_family_example.md']),
+        ('Dense / synchronous endpoints', 'Conditional family containment',
+         'Full support plus correct aggregation; shared snapshots plus barriers. Function, execution and learning contracts are separate.',
+         ['report/model_family_design.md','experiments/theory/152_primitives_integration_and_capability_bounds.md']),
+        ('Clock independence', 'Architectural schedule capability; physical benefit unmeasured',
+         'No mandatory global periodic tick; local timers/joins and precision remain. Clocked CPU/GPU execution is not measured clockless hardware.',
+         ['report/model_family_design.md','report/figures/architecture_shared_world.svg']),
+        ('Online learning / TTT', 'Family capability; no completed TTT advantage',
+         'The same trainable units can adapt to causal outcomes; state adaptation, parameter updates, asynchronous consistency and batching are distinct.',
+         ['report/model_family_design.md','report/figures/architecture_learning.svg']),
+        ('Automatic design', 'Dynamic routes implemented; broader structural adaptation aspirational',
+         'Operator/allocation changes need task/resource utility and state migration; NAS precedents are attributed.',
+         ['report/model_family_design.md','experiments/theory/152_primitives_integration_and_capability_bounds.md']),
+        ('One shared multimodal model', 'Integration ambition',
+         'Explicit cross-source information paths are required; successes on separate tasks do not establish joint grounding.',
+         ['report/model_family_design.md','report/figures/architecture_shared_world.svg']),
+    ]
+    claim_records = [dict(claim=c,status=s,scope=b,sources=p) for c,s,b,p in claims]
+    record = dict(scope='Curated capability map and immutable saved-result bindings; no new benchmark',
+                  metric='BPC at T256',work_convention='Saved arithmetic plus unit-counted special functions, estimated from eager full-step traces',
+                  snapshots=snapshots,claims=claim_records)
+    (ROOT/'report/architecture_evidence.json').write_text(json.dumps(record,indent=2)+'\n')
+    lines = ['# Architecture claims and their evidence','',
+        'Supporting evidence for the [family definition](model_family_design.md), not its definition or a claim that every branch is integrated.',
+        'The [machine-readable bindings](architecture_evidence.json) retain result hashes, actual execution-source hashes, protocols and work conventions. No new model was run.','',
+        '## Capability and scope','',
+        '| Claim | Evidence level | Precise scope | Basis |','| --- | --- | --- | --- |']
+    for claim in claim_records:
+        sources = ' · '.join(f'[{Path(p).name}](../{p})' for p in claim['sources'])
+        lines.append(f"| {claim['claim']} | {claim['status']} | {claim['scope']} | {sources} |")
+    lines += ['', '## Completed native language anchors','',
+        'All rows use BPC at a 256-character evaluation window, the same test[95M:96M] region and 999,936 scored targets. D is depth, P per-head width, U receivers per head and H the head count; all have H=2. Results are single-seed. Fit presentations count actual training targets, not distinct corpus bytes.','',
+        '| Saved member | Fit presentations (M) | BPC, lower better | Parameters | Available receivers | Writes / position | Estimated whole fit (TFLOPs) | Estimated fit / presentation (MFLOPs) |',
+        '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
+    for s in snapshots:
+        lines.append(f"| [{s['label']}](../{s['result_path']}) | {s['fitting_presentations']/1e6:.6f} | {s['test_bpc']:.6f} | {s['parameters']:,} | {s['available_receivers']} | {s['selected_writes_per_position']} | {s['estimated_whole_fit_tflops']:.6f} | {s['estimated_fit_mflops_per_presentation']:.6f} |")
+    lines += ['',
+        f'The first three rows share the declared 10M/one-pass recipe. Value credit lowers BPC by {credit_gain:.6f} for about {credit_work_percent:.2f}% extra estimated fitting work. The larger pool then lowers BPC by {pool_gain:.6f} while increasing fitting work by {pool_work_ratio:.3f}×; it also has more untied parameters. The 90M row changes data and width and is scale evidence, not an isolated pool/credit comparison.','',
+        'Work uses the saved tracer convention: arithmetic plus unit-counted special functions, eager full fitting steps extrapolated across presentations. Evaluation, compilation/setup, wall time, memory traffic and energy are separate. These numbers are not hardware joules or guaranteed end-to-end savings. Dense controls and inference comparisons retain their existing protocol/accounting in [REPORT.md](../REPORT.md); this table makes no cross-protocol supremacy claim.','',
+        'Some saved metadata calls segment credit “exact BPTT within it”. That describes differentiation through the retained factual continuous graph; it does not certify an exact expected gradient over all discrete persistent-write alternatives. The route teacher scope is stated above. Historical execution-source hashes are retained as historical bindings, not assertions that current kernels have the same hashes.','',
+        'Target-dependent E63/E79 archives are excluded. Derived containment, implemented references, completed scoped comparisons and aspirations are different evidence levels.']
+    (ROOT/'report/architecture_evidence.md').write_text('\n'.join(lines)+'\n')
 
 
 class Diagram:
@@ -68,6 +169,29 @@ def design_space():
         'Learned programs, fan-in, optional stages and state allocation can morph regions within the family.',
         'Dynamic routes exist; broader structural learning needs utility, state migration and full cost contracts.'],ORANGE)
     d.label(35,1220,'Static design is a fixed-policy case. Matching a reference function, learning it and beating its cost are separate.',16,GRAY)
+    return d.finish()
+
+
+def reception_example():
+    d = Diagram('Reception is an operator: same arrivals, different computations', 850)
+    d.label(34,76,'Worked scalar example; H=1, query cutoff q=5, arrival-before-timer ties, no damping or trained parameters.',15,GRAY)
+    for i,(name,time,value) in enumerate((('A','0.0','1'),('B','0.8','−2'),('C','1.6','3'),('D','4.0','4'))):
+        d.box(35+285*i,120,260,95,f'Message {name}',[f'time {time}; content {value}'])
+    rows = [
+        ('First arrival', 'Accept A', 'emit 1 at time 0.0', 'One delivery selects the continuation.'),
+        ('Fixed window from first arrival', 'Accept A + B', 'emit −1 at time 1.0', 'More evidence meets before a fixed local deadline.'),
+        ('Silence timeout / popcorn', 'Accept A + B + C', 'emit 2 at time 2.6', 'Every admitted arrival renews the local deadline.'),
+        ('All observed arrivals at query', 'Accept A + B + C + D', 'emit 6 at time 5.0', 'Full support within the declared observed prefix.')]
+    for i,(title,members,out,reason) in enumerate(rows):
+        y=265+i*118
+        d.box(35,y,410,65,title,(),GREEN)
+        d.box(485,y,275,65,members,(),GREEN)
+        d.box(800,y,365,65,out)
+        d.arrow([(445,y+32),(485,y+32)],GREEN)
+        d.arrow([(760,y+32),(800,y+32)])
+        d.label(35,y+93,reason,15,GRAY)
+    d.label(35,776,'At q=2, popcorn has pending state 2 and deadline 2.6. A query/EOF does not silently emit early.',16,ORANGE,True)
+    d.label(35,815,'A later layer can transform content by elapsed time; learning must credit membership and future-state effects.',15,GRAY)
     return d.finish()
 
 
@@ -163,7 +287,7 @@ def learning():
 
 
 def receiver():
-    d = Diagram('1. Receiver unit: selection, message, private state and time', 820)
+    d = Diagram('Native receiver: selection, message, private state and time', 820)
     d.label(34, 76, 'Logical dependencies of the current native program; one race chooses among U such receivers.', 16, GRAY)
     d.box(35, 140, 215, 115, 'Incoming event', ['content x: P numbers', 'arrival t; source address'])
     d.box(35, 310, 215, 145, 'Private stored state', ['memory m; last write t_prev', 'seen flag; learned key', 'decay/rotation parameters'], GREEN)
@@ -195,7 +319,7 @@ def receiver():
 
 
 def stack():
-    d = Diagram('2. A native layer, stacked model and source-local recurrence', 1020)
+    d = Diagram('A native layer, stacked model and source-local recurrence', 1020)
     d.label(34, 76, 'Illustration: H=2 heads, U=3 receivers/head. Only one receiver wins in each head.', 16, GRAY)
     d.box(34, 130, 245, 135, 'Input and previous context', ['observed content/time', 'wait for same-source readiness', 'gate aligned previous context'])
     d.box(325, 130, 330, 135, 'Channel mix + head queries', ['mix the H×P incoming vector', 'each query sees mixed channels', 'split content into P per head'])
@@ -217,7 +341,7 @@ def stack():
 
 
 def comparisons():
-    d = Diagram('3. Execution structures: representative model families', 850)
+    d = Diagram('Execution structures: representative model families', 850)
     d.label(34, 76, 'Structural comparison, not a quality or energy ranking. Mature implementations remain required controls.', 16, GRAY)
     rows = [
         ('Dense softmax attention', 'query + cached keys/values', 'all valid key comparisons', 'weighted value aggregation', 'FFN + residual; next layer', 'Every valid value can contribute. FlashAttention improves IO, not the mathematical attention function.'),
@@ -237,7 +361,7 @@ def comparisons():
 
 
 def family():
-    d = Diagram('0. The whole family: shared toolbox, distinct constructions', 1160)
+    d = Diagram('Implemented branches: shared toolbox, distinct constructions', 1160)
     d.label(34,76,'Compositions reuse primitives; no single completed model combines and validates every branch below.',16,GRAY)
     d.box(35,115,1130,105,'Observed events: address + arrival time + content',['Tokens, sensor marks, counts and query/action requests need declared causal adapters.',
               'Input precision and packetization set the available information before any layer learns.'])
@@ -284,36 +408,47 @@ LEVELS = [
 
 
 def html_page(figures):
+    names = ('Design space','Reception example','One shared world','Online / batched learning',
+             'Implemented branches','Native receiver example','Native layer and stack','Compare families')
+    tabs = ''.join(f'<button id="tab-{i}" role="tab" aria-selected="{str(i==0).lower()}" aria-controls="panel-{i}" tabindex="{0 if i==0 else -1}" data-panel="{i}">{name}</button>' for i,name in enumerate(names))
     rows = ''.join(f'<tr><th>{escape(level)}</th><td>{escape(comp)}</td><td>{escape(rep)}</td><td>{escape(train)}</td></tr>' for level,comp,rep,train in LEVELS)
-    panels = ''.join(f'<section id="panel-{i}" class="panel" {"hidden" if i else ""}>{svg}</section>' for i,svg in enumerate(figures))
+    panels = ''.join(f'<section id="panel-{i}" class="panel" role="tabpanel" aria-labelledby="tab-{i}" tabindex="0" {"hidden" if i else ""}>{svg}</section>' for i,svg in enumerate(figures))
     return '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sleeping Machines: architecture atlas</title><style>
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f1f5fa;color:#182b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:28px}h1{font-size:32px;margin:8px 0}p{max-width:1040px}a{color:#2259a7}.controls,.card{background:white;border:1px solid #d4dfeb;border-radius:14px;padding:18px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center}select,input,button{font:inherit}button{padding:9px 15px;border-radius:8px;border:1px solid #2259a7;background:white;color:#2259a7;cursor:pointer}button[aria-selected=true]{background:#2259a7;color:white}.tabs{display:flex;gap:10px;flex-wrap:wrap}.panel svg{display:block;width:100%;height:auto;border:1px solid #d4dfeb;border-radius:12px}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:12px;border-bottom:1px solid #d4dfeb;vertical-align:top}thead{background:#eaf0f9}.matrix{overflow:auto}th{min-width:150px}td{min-width:225px}.muted{color:#53657d}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#ecf6f3;padding:12px;min-width:175px;border-radius:10px}.stat strong{display:block;font-size:26px;color:#147d69}.no-credit .learning{display:none}label{display:inline-flex;align-items:center;gap:7px}.scope{border-left:4px solid #ad5b16;padding:12px 18px;background:#fff7ed}input[type=number]{width:65px}footer{margin:25px 0;color:#53657d}[hidden]{display:none!important}
 </style><main><h1>What the model computes, stores and learns</h1>
 <p>Sleeping Machines is a family of stateful event-processing networks. Content, time, routing and persistent evidence jointly determine computation. Choose compatible operators per unit, module and layer; expand a limiting region while retaining economical computation elsewhere.</p>
-<p><a href="model_family_design.md">Family definition and design rationale</a> · <a href="architecture_review.md">Detailed systematic review</a> · <a href="../experiments/theory/152_primitives_integration_and_capability_bounds.md">Derivations and limits</a></p>
-<div class="tabs" role="tablist" aria-label="Architecture diagrams"><button role="tab" aria-selected="true" aria-controls="panel-0" data-panel="0">Design space</button><button role="tab" aria-selected="false" aria-controls="panel-1" data-panel="1">One shared world</button><button role="tab" aria-selected="false" aria-controls="panel-2" data-panel="2">Online / batched learning</button><button role="tab" aria-selected="false" aria-controls="panel-3" data-panel="3">Implemented branches</button><button role="tab" aria-selected="false" aria-controls="panel-4" data-panel="4">Native receiver example</button><button role="tab" aria-selected="false" aria-controls="panel-5" data-panel="5">Native layer and stack</button><button role="tab" aria-selected="false" aria-controls="panel-6" data-panel="6">Compare families</button></div>
+<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
+<div class="tabs" role="tablist" aria-label="Architecture diagrams">''' + tabs + '''</div>
 <div class="controls"><label><input id="credit" type="checkbox" checked>Show learning signals</label><span class="muted">Orange credit arrows do not change hard forward values.</span></div>
 ''' + panels + '''
-<div class="card"><h2>Capacity, candidate work and selected activity</h2><p>One source, one input. Change the dimensions to see structural counts. These are not measured FLOPs, memory bytes or speedups.</p><div class="controls"><label>Layers D <input id="depth" type="number" min="1" max="64" value="4"></label><label>Heads H <input id="heads" type="number" min="1" max="16" value="2"></label><label>Pool U <input id="pool" type="number" min="1" max="1024" value="4"></label><label>Width P <input id="width" type="number" min="2" max="2048" step="2" value="32"></label><label>Proposal program <select id="mode"><option value="dense">Standard training: all candidates</option><option value="sampled">Sampled credit: winner + one alternative</option><option value="inference">Cached winner-only inference</option></select></label></div><div class="stats"><div class="stat"><strong id="memories"></strong>Available memories</div><div class="stat"><strong id="scores"></strong>Keys scored</div><div class="stat"><strong id="writes"></strong>Selected commits</div><div class="stat"><strong id="proposals"></strong>Proposals evaluated</div><div class="stat"><strong id="state"></strong>Memory vector scalars</div></div><p id="mode-note" class="scope" aria-live="polite"></p><p class="muted">Selected work is one part of total cost. All-key reads, matrix setup, queries/channel mixing, optimizer, masks, candidate search, rollout/replay, traffic and energy require their own accounting.</p></div>
+<div class="card"><h2>Try a reception program</h2><p>Same four messages, different first-group computations. The scalar state sums accepted content. This is a causal semantic demonstration with fixed parameters, not an integrated trained layer. Read the <a href="model_family_example.md">worked example</a>.</p><div class="controls"><label>Policy <select id="rx-policy"><option value="winner">First arrival</option><option value="window">Window from first arrival</option><option value="popcorn" selected>Silence timeout / popcorn</option><option value="all">All arrivals at query</option></select></label><label>Interval H <input id="rx-gap" type="number" min="0.1" max="5" step="0.1" value="1"></label><label>C arrival <input id="rx-time" type="number" min="0" max="6" step="0.1" value="1.6"></label><label>Query cutoff q <input id="rx-cutoff" type="number" min="0" max="8" step="0.1" value="5"></label></div><p id="rx-arrivals"></p><div class="stats"><div class="stat"><strong id="rx-members"></strong>First group accepted</div><div class="stat"><strong id="rx-state"></strong>Integrated content</div><div class="stat"><strong id="rx-emission"></strong>Emission time</div></div><p id="rx-note" class="scope" aria-live="polite"></p><p class="muted">Arrival-before-timer ties. Only the first group is shown; later inputs may start another group. Querying does not flush an unfinished silence timeout. H affects window/popcorn; first-arrival and all-at-query use their own stopping rule.</p></div>
+<div class="card"><h2>Native-stack example: capacity and activity</h2><p>One source, one input in the winner-per-head native branch. Change dimensions to see structural counts; other reception programs need their own accounting. These are not measured FLOPs, memory bytes or speedups.</p><div class="controls"><label>Layers D <input id="depth" type="number" min="1" max="64" value="4"></label><label>Heads H <input id="heads" type="number" min="1" max="16" value="2"></label><label>Pool U <input id="pool" type="number" min="1" max="1024" value="4"></label><label>Width P <input id="width" type="number" min="2" max="2048" step="2" value="32"></label><label>Proposal program <select id="mode"><option value="dense">Standard training: all candidates</option><option value="sampled">Sampled credit: winner + one alternative</option><option value="inference">Cached winner-only inference</option></select></label></div><div class="stats"><div class="stat"><strong id="memories"></strong>Available memories</div><div class="stat"><strong id="scores"></strong>Keys scored</div><div class="stat"><strong id="writes"></strong>Selected commits</div><div class="stat"><strong id="proposals"></strong>Proposals evaluated</div><div class="stat"><strong id="state"></strong>Memory vector scalars</div></div><p id="mode-note" class="scope" aria-live="polite"></p><p class="muted">Selected work is one part of total cost. All-key reads, matrix setup, queries/channel mixing, optimizer, masks, candidate search, rollout/replay, traffic and energy require their own accounting.</p></div>
 <div class="card"><h2>The same review axes at every level</h2><div class="matrix"><table><thead><tr><th>Level</th><th>Computational capacity / work</th><th>Representational capacity</th><th>Trainability</th></tr></thead><tbody>''' + rows + '''</tbody></table></div><p><a href="model_family_inventory.md">Every family branch and its mechanism coverage</a> · <a href="architecture_source_inventory.md">Complete source-module navigation</a></p></div>
 <p class="scope">Evidence boundary: completed model scores are not a universal capability proof. Learned reception windows/popcorn, complete future-write credit, shared multimodal grounding and physical clockless energy remain incomplete. Cached trained FP32 parity is pending. No model runs in this page.</p>
 <footer>Private local documentation · 4 October 2026 · Self-contained vector diagrams and JavaScript; no external assets, requests or publication.</footer></main>
 <script>
 const get=id=>document.getElementById(id);
-document.querySelectorAll('[data-panel]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-panel]').forEach(b=>b.setAttribute('aria-selected',String(b===button)));document.querySelectorAll('.panel').forEach((p,i)=>p.hidden=String(i)!==button.dataset.panel)}));
+const tabs=Array.from(document.querySelectorAll('[data-panel]'));
+function selectTab(button){tabs.forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.setAttribute('tabindex',b===button?'0':'-1')});document.querySelectorAll('.panel').forEach((p,i)=>p.hidden=String(i)!==button.dataset.panel)}
+tabs.forEach((button,i)=>{button.addEventListener('click',()=>selectTab(button));button.addEventListener('keydown',e=>{const next=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:e.key==='Home'?0:e.key==='End'?tabs.length-1:null;if(next!==null){e.preventDefault();selectTab(tabs[next]);tabs[next].focus()}})});
 get('credit').addEventListener('change',()=>document.body.classList.toggle('no-credit',!get('credit').checked));
-function update(){const ids=['depth','heads','pool','width'];if(ids.some(id=>!get(id).checkValidity()||get(id).value===''||!Number.isInteger(Number(get(id).value)))){get('mode-note').textContent='Use dimensions within the stated positive bounds.';return}const [D,H,U,P]=ids.map(id=>Number(get(id).value));if(P%2){get('mode-note').textContent='The implemented paired rotation modes require an even per-head width.';return}const selected=D*H,mode=get('mode').value;get('memories').textContent=selected*U;get('scores').textContent=selected*U;get('writes').textContent=selected;get('proposals').textContent=selected*(mode==='dense'?U:mode==='sampled'?Math.min(U,2):1);get('state').textContent=selected*U*P;get('mode-note').textContent=mode==='dense'?'Main integrated training path: losing proposals are computed for local value credit; only winning memories are committed.':mode==='sampled'?'Implemented alternative training path: unbiased for the local linear teacher at fixed cotangent, not generally for complete future-route risk. Extra variance and all-key/optimizer work remain.':'Optimized cached inference path: selected proposals after scoring all keys. Completed-weight FP32 winner/state/cache/quality parity and practical serving measurements remain pending.';}
+function invalidDimensions(note){['memories','scores','writes','proposals','state'].forEach(id=>get(id).textContent='—');get('mode-note').textContent=note}
+function update(){const ids=['depth','heads','pool','width'];if(ids.some(id=>get(id).value===''||!Number.isInteger(Number(get(id).value)))){invalidDimensions('Use dimensions within the stated positive bounds.');return}const [D,H,U,P]=ids.map(id=>Number(get(id).value));if(P%2){invalidDimensions('The implemented paired rotation modes require an even per-head width.');return}if(ids.some(id=>!get(id).checkValidity())){invalidDimensions('Use dimensions within the stated positive bounds.');return}const selected=D*H,mode=get('mode').value;get('memories').textContent=selected*U;get('scores').textContent=selected*U;get('writes').textContent=selected;get('proposals').textContent=selected*(mode==='dense'?U:mode==='sampled'?Math.min(U,2):1);get('state').textContent=selected*U*P;get('mode-note').textContent=mode==='dense'?'Main integrated training path: losing proposals are computed for local value credit; only winning memories are committed.':mode==='sampled'?'Implemented alternative training path: unbiased for the local linear teacher at fixed cotangent, not generally for complete future-route risk. Extra variance and all-key/optimizer work remain.':'Optimized cached inference path: selected proposals after scoring all keys. Completed-weight FP32 winner/state/cache/quality parity and practical serving measurements remain pending.';}
 ['depth','heads','pool','width','mode'].forEach(id=>get(id).addEventListener('input',update));update();
+function traceReception(policy,H,cTime,q){const events=[{name:'A',time:0,value:1},{name:'B',time:.8,value:-2},{name:'C',time:cTime,value:3},{name:'D',time:4,value:4}].sort((a,b)=>a.time-b.time||a.name.localeCompare(b.name));const visible=events.filter(e=>e.time<=q);let accepted=[],deadline=null;if(visible.length){if(policy==='winner'){accepted=[visible[0]];deadline=visible[0].time}else if(policy==='all'){accepted=visible;deadline=q}else{deadline=visible[0].time+H;for(const e of visible){if(e.time>deadline)break;accepted.push(e);if(policy==='popcorn')deadline=e.time+H}}}const emitted=deadline!==null&&deadline<=q;return {events,accepted,state:accepted.reduce((sum,e)=>sum+e.value,0),deadline,emitted,emission:emitted?deadline:null}}
+function reception(){const ids=['rx-gap','rx-time','rx-cutoff'];if(ids.some(id=>get(id).value===''||!get(id).checkValidity()||!Number.isFinite(Number(get(id).value)))){['rx-members','rx-state','rx-emission'].forEach(id=>get(id).textContent='—');get('rx-arrivals').textContent='';get('rx-note').textContent='Use finite timing values within the stated bounds.';return}const [H,cTime,q]=ids.map(id=>Number(get(id).value));const r=traceReception(get('rx-policy').value,H,cTime,q);get('rx-arrivals').textContent=r.events.map(e=>e.name+' @ '+e.time.toFixed(1)+' = '+e.value+(e.time>q?' (after query)':'')).join(' · ');get('rx-members').textContent=r.accepted.map(e=>e.name).join(', ')||'None';get('rx-state').textContent=r.state;get('rx-emission').textContent=r.emission===null?'Not emitted':r.emission.toFixed(2);get('rx-note').textContent=r.emitted?'First group emitted. Its content and emission time can both change the next layer.':r.deadline===null?'No event observed: no active reception.':'Pending at query: deadline '+r.deadline.toFixed(2)+'. Its accumulated state is not an emitted message.'}
+['rx-policy','rx-gap','rx-time','rx-cutoff'].forEach(id=>get(id).addEventListener('input',reception));reception();
 </script></html>'''
 
 
 def main():
-    figures = [design_space(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
-    for name, svg in zip(('design_space', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
+    figures = [design_space(), reception_example(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
+    for name, svg in zip(('design_space', 'reception', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
         path = ROOT/'report/figures'/f'architecture_{name}.svg'
         path.write_text(svg+'\n')
     (ROOT/'report/architecture_atlas.html').write_text(html_page(figures)+'\n')
+    evidence_map()
     modules = []
     foundation_names = ('e30_minsky.py','e53_depth3.py','e54_chains.py','e61_race_attention.py',
                         'e120_shared_tasks.py','e173_causal_language.py','e174_aligned_language_baselines.py')
@@ -336,7 +471,7 @@ def main():
         names=[c['name'] for c in m['classes']] or m['functions']
         lines.append(f"| [{m['path']}](../{m['path']}) | {', '.join(names) or 'Package'} | {m['summary'].replace('|','/')} |")
     (ROOT/'report/architecture_source_inventory.md').write_text('\n'.join(lines)+'\n')
-    print(f'Built seven SVG diagrams, interactive atlas and {len(modules)}-module AST inventory; no numerical imports.')
+    print(f'Built eight SVG diagrams, reception explorer, evidence map and {len(modules)}-module AST inventory; no numerical imports.')
 
 
 if __name__ == '__main__':

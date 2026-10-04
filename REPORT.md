@@ -6,9 +6,14 @@ Tero Keski-Valkama and Karoliina Salminen · Research report · 3 October 2026
 
 ## Systematic whole-family architecture review — 4 October 2026
 
-[Read the family definition and design rationale](report/model_family_design.md),
+[Start with the short overview](report/model_family_overview.md),
+[read the family definition and design rationale](report/model_family_design.md),
 [open the interactive atlas](report/architecture_atlas.html), and
 [follow the detailed review](report/architecture_review.md).
+The [claim/evidence map](report/architecture_evidence.md) binds scoped statements
+to their derivations, source contracts and completed result files. The
+[worked reception example](report/model_family_example.md) and atlas explorer
+show how content, timing, membership and pending state interact.
 Computational capacity/work, representational capacity and trainability are
 reviewed at every level: events, primitives, units, modules, interactions,
 layers, stacks, memory compositions and systems. The native receiver diagrams

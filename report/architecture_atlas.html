@@ -3,10 +3,10 @@
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f1f5fa;color:#182b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:28px}h1{font-size:32px;margin:8px 0}p{max-width:1040px}a{color:#2259a7}.controls,.card{background:white;border:1px solid #d4dfeb;border-radius:14px;padding:18px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:20px;align-items:center}select,input,button{font:inherit}button{padding:9px 15px;border-radius:8px;border:1px solid #2259a7;background:white;color:#2259a7;cursor:pointer}button[aria-selected=true]{background:#2259a7;color:white}.tabs{display:flex;gap:10px;flex-wrap:wrap}.panel svg{display:block;width:100%;height:auto;border:1px solid #d4dfeb;border-radius:12px}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:12px;border-bottom:1px solid #d4dfeb;vertical-align:top}thead{background:#eaf0f9}.matrix{overflow:auto}th{min-width:150px}td{min-width:225px}.muted{color:#53657d}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#ecf6f3;padding:12px;min-width:175px;border-radius:10px}.stat strong{display:block;font-size:26px;color:#147d69}.no-credit .learning{display:none}label{display:inline-flex;align-items:center;gap:7px}.scope{border-left:4px solid #ad5b16;padding:12px 18px;background:#fff7ed}input[type=number]{width:65px}footer{margin:25px 0;color:#53657d}[hidden]{display:none!important}
 </style><main><h1>What the model computes, stores and learns</h1>
 <p>Sleeping Machines is a family of stateful event-processing networks. Content, time, routing and persistent evidence jointly determine computation. Choose compatible operators per unit, module and layer; expand a limiting region while retaining economical computation elsewhere.</p>
-<p><a href="model_family_design.md">Family definition and design rationale</a> · <a href="architecture_review.md">Detailed systematic review</a> · <a href="../experiments/theory/152_primitives_integration_and_capability_bounds.md">Derivations and limits</a></p>
-<div class="tabs" role="tablist" aria-label="Architecture diagrams"><button role="tab" aria-selected="true" aria-controls="panel-0" data-panel="0">Design space</button><button role="tab" aria-selected="false" aria-controls="panel-1" data-panel="1">One shared world</button><button role="tab" aria-selected="false" aria-controls="panel-2" data-panel="2">Online / batched learning</button><button role="tab" aria-selected="false" aria-controls="panel-3" data-panel="3">Implemented branches</button><button role="tab" aria-selected="false" aria-controls="panel-4" data-panel="4">Native receiver example</button><button role="tab" aria-selected="false" aria-controls="panel-5" data-panel="5">Native layer and stack</button><button role="tab" aria-selected="false" aria-controls="panel-6" data-panel="6">Compare families</button></div>
+<p><a href="model_family_overview.md">Start with the overview</a> · <a href="model_family_design.md">Family definition and choices</a> · <a href="architecture_evidence.md">Claim / evidence map</a> · <a href="architecture_review.md">Detailed review</a></p>
+<div class="tabs" role="tablist" aria-label="Architecture diagrams"><button id="tab-0" role="tab" aria-selected="true" aria-controls="panel-0" tabindex="0" data-panel="0">Design space</button><button id="tab-1" role="tab" aria-selected="false" aria-controls="panel-1" tabindex="-1" data-panel="1">Reception example</button><button id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1" data-panel="2">One shared world</button><button id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1" data-panel="3">Online / batched learning</button><button id="tab-4" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1" data-panel="4">Implemented branches</button><button id="tab-5" role="tab" aria-selected="false" aria-controls="panel-5" tabindex="-1" data-panel="5">Native receiver example</button><button id="tab-6" role="tab" aria-selected="false" aria-controls="panel-6" tabindex="-1" data-panel="6">Native layer and stack</button><button id="tab-7" role="tab" aria-selected="false" aria-controls="panel-7" tabindex="-1" data-panel="7">Compare families</button></div>
 <div class="controls"><label><input id="credit" type="checkbox" checked>Show learning signals</label><span class="muted">Orange credit arrows do not change hard forward values.</span></div>
-<section id="panel-0" class="panel" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1240" role="img" aria-label="Sleeping Machines: one family, many compatible design choices">
+<section id="panel-0" class="panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1240" role="img" aria-label="Sleeping Machines: one family, many compatible design choices">
 <defs><marker id="arrow-130cd56d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1240" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Sleeping Machines: one family, many compatible design choices</text>
@@ -79,7 +79,78 @@
 <text x="49" y="1166" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Dynamic routes exist; broader structural learning needs utility, state migration and full cost contracts.</text>
 </g>
 <text x="35" y="1220" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Static design is a fixed-policy case. Matching a reference function, learning it and beating its cost are separate.</text>
-</svg></section><section id="panel-1" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1030" role="img" aria-label="One-model aspiration: mixed arrivals, shared state, local computation">
+</svg></section><section id="panel-1" class="panel" role="tabpanel" aria-labelledby="tab-1" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Reception is an operator: same arrivals, different computations">
+<defs><marker id="arrow-cd7e6a38" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+<rect width="1200" height="850" fill="#fafcff"/>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Reception is an operator: same arrivals, different computations</text>
+<text x="34" y="76" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Worked scalar example; H=1, query cutoff q=5, arrival-before-timer ties, no damping or trained parameters.</text>
+<g class=""><rect x="35" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="49" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message A</text>
+<text x="49" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 0.0; content 1</text>
+</g>
+<g class=""><rect x="320" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="334" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message B</text>
+<text x="334" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 0.8; content −2</text>
+</g>
+<g class=""><rect x="605" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="619" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message C</text>
+<text x="619" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 1.6; content 3</text>
+</g>
+<g class=""><rect x="890" y="120" width="260" height="95" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="904" y="147" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Message D</text>
+<text x="904" y="173" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">time 4.0; content 4</text>
+</g>
+<g class=""><rect x="35" y="265" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="292" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">First arrival</text>
+</g>
+<g class=""><rect x="485" y="265" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="292" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A</text>
+</g>
+<g class=""><rect x="800" y="265" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="292" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 1 at time 0.0</text>
+</g>
+<polyline class="" points="445,297 485,297" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,297 800,297" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="358" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">One delivery selects the continuation.</text>
+<g class=""><rect x="35" y="383" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="410" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Fixed window from first arrival</text>
+</g>
+<g class=""><rect x="485" y="383" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="410" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B</text>
+</g>
+<g class=""><rect x="800" y="383" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="410" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit −1 at time 1.0</text>
+</g>
+<polyline class="" points="445,415 485,415" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,415 800,415" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="476" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">More evidence meets before a fixed local deadline.</text>
+<g class=""><rect x="35" y="501" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="528" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Silence timeout / popcorn</text>
+</g>
+<g class=""><rect x="485" y="501" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="528" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B + C</text>
+</g>
+<g class=""><rect x="800" y="501" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="528" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 2 at time 2.6</text>
+</g>
+<polyline class="" points="445,533 485,533" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,533 800,533" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="594" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Every admitted arrival renews the local deadline.</text>
+<g class=""><rect x="35" y="619" width="410" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="49" y="646" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">All observed arrivals at query</text>
+</g>
+<g class=""><rect x="485" y="619" width="275" height="65" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
+<text x="499" y="646" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Accept A + B + C + D</text>
+</g>
+<g class=""><rect x="800" y="619" width="365" height="65" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
+<text x="814" y="646" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">emit 6 at time 5.0</text>
+</g>
+<polyline class="" points="445,651 485,651" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<polyline class="" points="760,651 800,651" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-cd7e6a38)"/>
+<text x="35" y="712" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Full support within the declared observed prefix.</text>
+<text x="35" y="776" font-family="Arial, sans-serif" font-size="16" fill="#ad5b16" font-weight="700">At q=2, popcorn has pending state 2 and deadline 2.6. A query/EOF does not silently emit early.</text>
+<text x="35" y="815" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">A later layer can transform content by elapsed time; learning must credit membership and future-state effects.</text>
+</svg></section><section id="panel-2" class="panel" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1030" role="img" aria-label="One-model aspiration: mixed arrivals, shared state, local computation">
 <defs><marker id="arrow-0b016961" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1030" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">One-model aspiration: mixed arrivals, shared state, local computation</text>
@@ -147,7 +218,7 @@
 <polyline class="" points="890,762 890,790 600,790 600,820" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-0b016961)"/>
 <text x="35" y="962" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Full joint multimodal training is pending. Current emulators and optimizer use clocked/coordinated execution.</text>
 <text x="35" y="994" font-family="Arial, sans-serif" font-size="15" fill="#5a6779" font-weight="400">Clock independence is architectural; measured physical clockless energy and fully local online learning are open.</text>
-</svg></section><section id="panel-2" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" role="img" aria-label="One structure: stateful prediction, online learning and batching">
+</svg></section><section id="panel-3" class="panel" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 970" role="img" aria-label="One structure: stateful prediction, online learning and batching">
 <defs><marker id="arrow-8f37b5dc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="970" fill="#fafcff"/>
 <text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">One structure: stateful prediction, online learning and batching</text>
@@ -218,10 +289,10 @@
 <text x="35" y="860" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Charge selected inference + candidate discovery + alternative credit + optimizer + retained state + traffic.</text>
 <text x="35" y="895" font-family="Arial, sans-serif" font-size="16" fill="#2259a7" font-weight="700">Learning may be online, batched or mixed without replacing the model by a separate dense predictor.</text>
 <text x="35" y="934" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Reference loop: native integrated units. This figure specifies admissible learning policies, not an on-chip implementation.</text>
-</svg></section><section id="panel-3" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1160" role="img" aria-label="0. The whole family: shared toolbox, distinct constructions">
-<defs><marker id="arrow-3447e4a8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+</svg></section><section id="panel-4" class="panel" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1160" role="img" aria-label="Implemented branches: shared toolbox, distinct constructions">
+<defs><marker id="arrow-acacc1da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1160" fill="#fafcff"/>
-<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">0. The whole family: shared toolbox, distinct constructions</text>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Implemented branches: shared toolbox, distinct constructions</text>
 <text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Compositions reuse primitives; no single completed model combines and validates every branch below.</text>
 <g class=""><rect x="35" y="115" width="1130" height="105" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="49" y="142" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Observed events: address + arrival time + content</text>
@@ -233,31 +304,31 @@
 <text x="49" y="333" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">delay; first-of / latest-of</text>
 <text x="49" y="356" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">coincidence; hold; veto</text>
 </g>
-<polyline class="" points="600,220 600,248 144,248 144,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="600,220 600,248 144,248 144,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <g class=""><rect x="263" y="280" width="218" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="277" y="307" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Temporal state</text>
 <text x="277" y="333" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">exponential flow / rotation</text>
 <text x="277" y="356" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">gated writes; affine scans</text>
 </g>
-<polyline class="" points="600,220 600,248 372,248 372,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="600,220 600,248 372,248 372,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <g class=""><rect x="491" y="280" width="218" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="505" y="307" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Choice and credit</text>
 <text x="505" y="333" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">key race; clock + identity</text>
 <text x="505" y="356" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">alternative utilities</text>
 </g>
-<polyline class="" points="600,220 600,248 600,248 600,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="600,220 600,248 600,248 600,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <g class=""><rect x="719" y="280" width="218" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="733" y="307" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Evidence memory</text>
 <text x="733" y="333" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">counts; escape; copy</text>
 <text x="733" y="356" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">historical keys / values</text>
 </g>
-<polyline class="" points="600,220 600,248 828,248 828,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="600,220 600,248 828,248 828,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <g class=""><rect x="947" y="280" width="218" height="112" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="961" y="307" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Reception / readout</text>
 <text x="961" y="333" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">window; silence deadline</text>
 <text x="961" y="356" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">affine / joint query</text>
 </g>
-<polyline class="" points="600,220 600,248 1056,248 1056,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="600,220 600,248 1056,248 1056,280" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <text x="35" y="435" font-family="Arial, sans-serif" font-size="19" fill="#147d69" font-weight="700">Implemented family branches (different learning and validation scopes)</text>
 <g class=""><rect x="35" y="470" width="360" height="150" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="49" y="497" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Timing logic + statistics</text>
@@ -302,15 +373,15 @@
 <text x="49" y="974" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Inference, counterfactual learning, optimizer, scheduling, storage and communication have separate costs.</text>
 <text x="49" y="997" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Shared rules with private facts can scale useful state; actual cross-source grounding needs an information path.</text>
 </g>
-<polyline class="" points="215,815 215,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
-<polyline class="" points="600,815 600,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
-<polyline class="" points="985,815 985,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-3447e4a8)"/>
+<polyline class="" points="215,815 215,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
+<polyline class="" points="600,815 600,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
+<polyline class="" points="985,815 985,850 600,850 600,875" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-acacc1da)"/>
 <text x="35" y="1100" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Review every level on: computational capacity/work | representational capacity | trainability.</text>
 <text x="35" y="1132" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Known primitives are attributed. The research contribution is their construction and tested consequences.</text>
-</svg></section><section id="panel-4" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-label="1. Receiver unit: selection, message, private state and time">
-<defs><marker id="arrow-ccb69015" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+</svg></section><section id="panel-5" class="panel" role="tabpanel" aria-labelledby="tab-5" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-label="Native receiver: selection, message, private state and time">
+<defs><marker id="arrow-a1734465" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="820" fill="#fafcff"/>
-<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">1. Receiver unit: selection, message, private state and time</text>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Native receiver: selection, message, private state and time</text>
 <text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Logical dependencies of the current native program; one race chooses among U such receivers.</text>
 <g class=""><rect x="35" y="140" width="215" height="115" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="49" y="167" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Incoming event</text>
@@ -366,27 +437,27 @@
 <text x="319" y="618" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">delivered-value alternatives; common computational time</text>
 <text x="319" y="641" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">future memory/write utility needs additional credit</text>
 </g>
-<polyline class="" points="250,185 305,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="250,350 278,350 278,240 305,240" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="250,225 275,225 275,355 305,355" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="250,395 305,395" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="575,185 640,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="880,185 930,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="760,265 760,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="575,410 640,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="880,410 930,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="" points="680,490 680,525 140,525 140,455" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="" points="250,185 305,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="250,350 278,350 278,240 305,240" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="250,225 275,225 275,355 305,355" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="250,395 305,395" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="575,185 640,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="880,185 930,185" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="760,265 760,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="575,410 640,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="880,410 930,410" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
+<polyline class="" points="680,490 680,525 140,525 140,455" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-a1734465)"/>
 <text x="34" y="553" font-family="Arial, sans-serif" font-size="15" fill="#147d69" font-weight="700">Only selected state is committed</text>
-<polyline class="learning" points="1045,490 1045,620 880,620" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="learning" points="450,565 450,490" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
-<polyline class="learning" points="735,565 900,565 900,285 755,285 755,265" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-ccb69015)"/>
+<polyline class="learning" points="1045,490 1045,620 880,620" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-a1734465)"/>
+<polyline class="learning" points="450,565 450,490" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-a1734465)"/>
+<polyline class="learning" points="735,565 900,565 900,285 755,285 755,265" fill="none" stroke="#ad5b16" stroke-width="2.3" stroke-dasharray="6" marker-end="url(#arrow-a1734465)"/>
 <text x="34" y="722" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Blue: event computation    Green: persistent state    Orange dashed: learning-only signals</text>
 <text x="34" y="754" font-family="Arial, sans-serif" font-size="16" fill="#25354b" font-weight="400">Standard training evaluates U proposals; cached winner-only inference evaluates one selected proposal.</text>
 <text x="34" y="784" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Trained FP32 sparse parity/cost pending. Stored-key read precedes input-conditioned age evolution.</text>
-</svg></section><section id="panel-5" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img" aria-label="2. A native layer, stacked model and source-local recurrence">
-<defs><marker id="arrow-9762d771" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+</svg></section><section id="panel-6" class="panel" role="tabpanel" aria-labelledby="tab-6" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img" aria-label="A native layer, stacked model and source-local recurrence">
+<defs><marker id="arrow-552de2f4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="1020" fill="#fafcff"/>
-<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">2. A native layer, stacked model and source-local recurrence</text>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">A native layer, stacked model and source-local recurrence</text>
 <text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Illustration: H=2 heads, U=3 receivers/head. Only one receiver wins in each head.</text>
 <g class=""><rect x="34" y="130" width="245" height="135" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="48" y="157" font-family="Arial, sans-serif" font-size="14.642375168690961" fill="#2259a7" font-weight="700">Input and previous context</text>
@@ -400,7 +471,7 @@
 <text x="339" y="206" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">each query sees mixed channels</text>
 <text x="339" y="229" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">split content into P per head</text>
 </g>
-<polyline class="" points="279,195 325,195" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="279,195 325,195" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
 <g class=""><rect x="125" y="330" width="400" height="215" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="139" y="357" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Head 1: private receiver pool</text>
 <text x="139" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">U keys scored; U candidate clocks</text>
@@ -409,8 +480,8 @@
 <text x="139" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 2: private memory</text>
 <text x="139" y="475" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected value + arrival</text>
 </g>
-<polyline class="" points="490,265 490,298 325,298 325,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
-<polyline class="" points="325,545 325,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="490,265 490,298 325,298 325,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
+<polyline class="" points="325,545 325,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
 <g class=""><rect x="690" y="330" width="400" height="215" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="704" y="357" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Head 2: private receiver pool</text>
 <text x="704" y="383" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">U keys scored; U candidate clocks</text>
@@ -419,8 +490,8 @@
 <text x="704" y="452" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">receiver 2: private memory</text>
 <text x="704" y="475" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected value + arrival</text>
 </g>
-<polyline class="" points="490,265 490,298 890,298 890,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
-<polyline class="" points="890,545 890,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="490,265 490,298 890,298 890,330" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
+<polyline class="" points="890,545 890,581 530,581 530,605" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
 <g class=""><rect x="325" y="605" width="415" height="125" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="339" y="632" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Temporal join: latest head arrival</text>
 <text x="339" y="658" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">transport earlier values by their elapsed age</text>
@@ -433,15 +504,15 @@
 <text x="849" y="681" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">one selected continuation per head</text>
 <text x="849" y="704" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">credit and state paths span the stack</text>
 </g>
-<polyline class="" points="740,668 835,668" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="740,668 835,668" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
 <g class=""><rect x="835" y="805" width="330" height="125" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="849" y="832" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">Task readout / final context</text>
 <text x="849" y="858" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">language logits or regression values</text>
 <text x="849" y="881" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">save final head vectors and times</text>
 <text x="849" y="904" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">reuse only for the same source</text>
 </g>
-<polyline class="" points="1000,730 1000,805" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
-<polyline class="" points="835,869 58,869 58,285 100,285 100,265" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-9762d771)"/>
+<polyline class="" points="1000,730 1000,805" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
+<polyline class="" points="835,869 58,869 58,285 100,285 100,265" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-552de2f4)"/>
 <g class=""><rect x="125" y="785" width="565" height="115" rx="12" fill="white" stroke="#5a6779" stroke-width="2"/>
 <text x="139" y="812" font-family="Arial, sans-serif" font-size="17" fill="#5a6779" font-weight="700">Execution boundary</text>
 <text x="139" y="838" font-family="Arial, sans-serif" font-size="15" fill="#25354b" font-weight="400">Episode lanes: independent state, batched together</text>
@@ -450,24 +521,24 @@
 </g>
 <text x="34" y="960" font-family="Arial, sans-serif" font-size="17" fill="#147d69" font-weight="700">Available: D×H×U memories   |   Scored: D×H×U keys   |   Selected: D×H writes/input</text>
 <text x="34" y="990" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Map sharing can preserve private state. Cross-source grounding needs an explicit shared information path.</text>
-</svg></section><section id="panel-6" class="panel" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="3. Execution structures: representative model families">
-<defs><marker id="arrow-dbb00dcb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
+</svg></section><section id="panel-7" class="panel" role="tabpanel" aria-labelledby="tab-7" tabindex="0" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Execution structures: representative model families">
+<defs><marker id="arrow-b4bae8b7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker></defs>
 <rect width="1200" height="850" fill="#fafcff"/>
-<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">3. Execution structures: representative model families</text>
+<text x="34" y="44" font-family="Arial, sans-serif" font-size="26" fill="#162235" font-weight="700">Execution structures: representative model families</text>
 <text x="34" y="76" font-family="Arial, sans-serif" font-size="16" fill="#5a6779" font-weight="400">Structural comparison, not a quality or energy ranking. Mature implementations remain required controls.</text>
 <text x="34" y="112" font-family="Arial, sans-serif" font-size="18" fill="#2259a7" font-weight="700">Dense softmax attention</text>
 <g class=""><rect x="34" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="48" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">query + cached keys/values</text>
 </g>
-<polyline class="" points="300,157 320,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="300,157 320,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="320" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="334" y="154" font-family="Arial, sans-serif" font-size="16.701754385964914" fill="#2259a7" font-weight="700">all valid key comparisons</text>
 </g>
-<polyline class="" points="586,157 606,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="586,157 606,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="606" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="620" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">weighted value aggregation</text>
 </g>
-<polyline class="" points="872,157 892,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="872,157 892,157" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="892" y="127" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="906" y="154" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">FFN + residual; next layer</text>
 </g>
@@ -476,15 +547,15 @@
 <g class=""><rect x="34" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="48" y="299" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">input + carried state</text>
 </g>
-<polyline class="" points="300,302 320,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="300,302 320,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="320" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="334" y="299" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">input-conditioned gates/flow</text>
 </g>
-<polyline class="" points="586,302 606,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="586,302 606,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="606" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="620" y="299" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">update configured state</text>
 </g>
-<polyline class="" points="872,302 892,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="872,302 892,302" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="892" y="272" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="906" y="299" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">readout; carry to next input</text>
 </g>
@@ -493,15 +564,15 @@
 <g class=""><rect x="34" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="48" y="444" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">input representation</text>
 </g>
-<polyline class="" points="300,447 320,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="300,447 320,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="320" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="334" y="444" font-family="Arial, sans-serif" font-size="16.701754385964914" fill="#2259a7" font-weight="700">router + candidate scores</text>
 </g>
-<polyline class="" points="586,447 606,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="586,447 606,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="606" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="620" y="444" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">selected expert computations</text>
 </g>
-<polyline class="" points="872,447 892,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="872,447 892,447" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="892" y="417" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="906" y="444" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#2259a7" font-weight="700">combine; residual/next layer</text>
 </g>
@@ -510,15 +581,15 @@
 <g class=""><rect x="34" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="48" y="589" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#147d69" font-weight="700">content/time + private state</text>
 </g>
-<polyline class="" points="300,592 320,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="300,592 320,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="320" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="334" y="589" font-family="Arial, sans-serif" font-size="14.912280701754387" fill="#147d69" font-weight="700">key race: identity AND clock</text>
 </g>
-<polyline class="" points="586,592 606,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="586,592 606,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="606" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="620" y="589" font-family="Arial, sans-serif" font-size="15.464587394411957" fill="#147d69" font-weight="700">selected state/value update</text>
 </g>
-<polyline class="" points="872,592 892,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="872,592 892,592" fill="none" stroke="#147d69" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="892" y="562" width="266" height="60" rx="12" fill="white" stroke="#147d69" stroke-width="2"/>
 <text x="906" y="589" font-family="Arial, sans-serif" font-size="15.464587394411957" fill="#147d69" font-weight="700">timed head join; next layer</text>
 </g>
@@ -527,28 +598,35 @@
 <g class=""><rect x="34" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="48" y="734" font-family="Arial, sans-serif" font-size="17" fill="#2259a7" font-weight="700">context address + symbol</text>
 </g>
-<polyline class="" points="300,737 320,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="300,737 320,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="320" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="334" y="734" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">lookup statistics + escape</text>
 </g>
-<polyline class="" points="586,737 606,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="586,737 606,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="606" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="620" y="734" font-family="Arial, sans-serif" font-size="13.469156762874931" fill="#2259a7" font-weight="700">predict before observing target</text>
 </g>
-<polyline class="" points="872,737 892,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-dbb00dcb)"/>
+<polyline class="" points="872,737 892,737" fill="none" stroke="#2259a7" stroke-width="2.3" stroke-dasharray="0" marker-end="url(#arrow-b4bae8b7)"/>
 <g class=""><rect x="892" y="707" width="266" height="60" rx="12" fill="white" stroke="#2259a7" stroke-width="2"/>
 <text x="906" y="734" font-family="Arial, sans-serif" font-size="16.059379217273953" fill="#2259a7" font-weight="700">increment addressed counts</text>
 </g>
 <text x="34" y="794" font-family="Arial, sans-serif" font-size="14" fill="#5a6779" font-weight="400">Counts store evidence directly. Learned pooling is an extension, not an inherent property of counting.</text>
 </svg></section>
-<div class="card"><h2>Capacity, candidate work and selected activity</h2><p>One source, one input. Change the dimensions to see structural counts. These are not measured FLOPs, memory bytes or speedups.</p><div class="controls"><label>Layers D <input id="depth" type="number" min="1" max="64" value="4"></label><label>Heads H <input id="heads" type="number" min="1" max="16" value="2"></label><label>Pool U <input id="pool" type="number" min="1" max="1024" value="4"></label><label>Width P <input id="width" type="number" min="2" max="2048" step="2" value="32"></label><label>Proposal program <select id="mode"><option value="dense">Standard training: all candidates</option><option value="sampled">Sampled credit: winner + one alternative</option><option value="inference">Cached winner-only inference</option></select></label></div><div class="stats"><div class="stat"><strong id="memories"></strong>Available memories</div><div class="stat"><strong id="scores"></strong>Keys scored</div><div class="stat"><strong id="writes"></strong>Selected commits</div><div class="stat"><strong id="proposals"></strong>Proposals evaluated</div><div class="stat"><strong id="state"></strong>Memory vector scalars</div></div><p id="mode-note" class="scope" aria-live="polite"></p><p class="muted">Selected work is one part of total cost. All-key reads, matrix setup, queries/channel mixing, optimizer, masks, candidate search, rollout/replay, traffic and energy require their own accounting.</p></div>
+<div class="card"><h2>Try a reception program</h2><p>Same four messages, different first-group computations. The scalar state sums accepted content. This is a causal semantic demonstration with fixed parameters, not an integrated trained layer. Read the <a href="model_family_example.md">worked example</a>.</p><div class="controls"><label>Policy <select id="rx-policy"><option value="winner">First arrival</option><option value="window">Window from first arrival</option><option value="popcorn" selected>Silence timeout / popcorn</option><option value="all">All arrivals at query</option></select></label><label>Interval H <input id="rx-gap" type="number" min="0.1" max="5" step="0.1" value="1"></label><label>C arrival <input id="rx-time" type="number" min="0" max="6" step="0.1" value="1.6"></label><label>Query cutoff q <input id="rx-cutoff" type="number" min="0" max="8" step="0.1" value="5"></label></div><p id="rx-arrivals"></p><div class="stats"><div class="stat"><strong id="rx-members"></strong>First group accepted</div><div class="stat"><strong id="rx-state"></strong>Integrated content</div><div class="stat"><strong id="rx-emission"></strong>Emission time</div></div><p id="rx-note" class="scope" aria-live="polite"></p><p class="muted">Arrival-before-timer ties. Only the first group is shown; later inputs may start another group. Querying does not flush an unfinished silence timeout. H affects window/popcorn; first-arrival and all-at-query use their own stopping rule.</p></div>
+<div class="card"><h2>Native-stack example: capacity and activity</h2><p>One source, one input in the winner-per-head native branch. Change dimensions to see structural counts; other reception programs need their own accounting. These are not measured FLOPs, memory bytes or speedups.</p><div class="controls"><label>Layers D <input id="depth" type="number" min="1" max="64" value="4"></label><label>Heads H <input id="heads" type="number" min="1" max="16" value="2"></label><label>Pool U <input id="pool" type="number" min="1" max="1024" value="4"></label><label>Width P <input id="width" type="number" min="2" max="2048" step="2" value="32"></label><label>Proposal program <select id="mode"><option value="dense">Standard training: all candidates</option><option value="sampled">Sampled credit: winner + one alternative</option><option value="inference">Cached winner-only inference</option></select></label></div><div class="stats"><div class="stat"><strong id="memories"></strong>Available memories</div><div class="stat"><strong id="scores"></strong>Keys scored</div><div class="stat"><strong id="writes"></strong>Selected commits</div><div class="stat"><strong id="proposals"></strong>Proposals evaluated</div><div class="stat"><strong id="state"></strong>Memory vector scalars</div></div><p id="mode-note" class="scope" aria-live="polite"></p><p class="muted">Selected work is one part of total cost. All-key reads, matrix setup, queries/channel mixing, optimizer, masks, candidate search, rollout/replay, traffic and energy require their own accounting.</p></div>
 <div class="card"><h2>The same review axes at every level</h2><div class="matrix"><table><thead><tr><th>Level</th><th>Computational capacity / work</th><th>Representational capacity</th><th>Trainability</th></tr></thead><tbody><tr><th>Event / observation</th><td>Content, timestamp, observed address; finite numerical precision.</td><td>What the adapter preserves: identity, order, elapsed time and content.</td><td>Adapter information loss cannot be repaired by downstream credit.</td></tr><tr><th>Temporal algebra</th><td>Min/first-of, sums of delays, exponential flow, coincidence and deadlines.</td><td>Functions of interval, order, phase and selected evidence.</td><td>Smooth-history derivatives and event-boundary credit have distinct contracts.</td></tr><tr><th>Receiver unit</th><td>Score/read, conditional flow/write, gated residual; small local maps.</td><td>Private vector state plus keys, timescales and temporal response.</td><td>Factual content/time derivatives; optional routes need utility credit.</td></tr><tr><th>Race head / module</th><td>U candidate scores; one selected state program, or paid multi-reception.</td><td>Addressed selection, associative access, local timing and alternative programs.</td><td>Common clock, choice, delivered content and future write are separate consequences.</td></tr><tr><th>Layer / interaction</th><td>H heads, cross-channel query/mix, latest-arrival join and transport.</td><td>Cross-head features and interactions between content and arrival order.</td><td>Join/transport couples gradients; full sequence influence matters.</td></tr><tr><th>Deep stack</th><td>D serial selected transformations with persistent state at each depth.</td><td>Hierarchical temporal features; conditional composition of stateful programs.</td><td>Identity conditioning, deep Jacobians, support and future credit horizon.</td></tr><tr><th>Memory composition</th><td>Add causal counts, outcome bank or historical KV retrieval.</td><td>Repeated evidence, long-lived facts, learned pooling and nonlocal binding.</td><td>Learned writes/retrieval must receive utility; exact count increments need no fitting.</td></tr><tr><th>Learning / serving system</th><td>Candidate discovery + proposals + replay + optimizer + communication.</td><td>Useful capacity depends on precision, storage, access and predictive use.</td><td>Validated recipes, checkpoints, repeated quality/work and hardware measurements.</td></tr></tbody></table></div><p><a href="model_family_inventory.md">Every family branch and its mechanism coverage</a> · <a href="architecture_source_inventory.md">Complete source-module navigation</a></p></div>
 <p class="scope">Evidence boundary: completed model scores are not a universal capability proof. Learned reception windows/popcorn, complete future-write credit, shared multimodal grounding and physical clockless energy remain incomplete. Cached trained FP32 parity is pending. No model runs in this page.</p>
 <footer>Private local documentation · 4 October 2026 · Self-contained vector diagrams and JavaScript; no external assets, requests or publication.</footer></main>
 <script>
 const get=id=>document.getElementById(id);
-document.querySelectorAll('[data-panel]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-panel]').forEach(b=>b.setAttribute('aria-selected',String(b===button)));document.querySelectorAll('.panel').forEach((p,i)=>p.hidden=String(i)!==button.dataset.panel)}));
+const tabs=Array.from(document.querySelectorAll('[data-panel]'));
+function selectTab(button){tabs.forEach(b=>{b.setAttribute('aria-selected',String(b===button));b.setAttribute('tabindex',b===button?'0':'-1')});document.querySelectorAll('.panel').forEach((p,i)=>p.hidden=String(i)!==button.dataset.panel)}
+tabs.forEach((button,i)=>{button.addEventListener('click',()=>selectTab(button));button.addEventListener('keydown',e=>{const next=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:e.key==='Home'?0:e.key==='End'?tabs.length-1:null;if(next!==null){e.preventDefault();selectTab(tabs[next]);tabs[next].focus()}})});
 get('credit').addEventListener('change',()=>document.body.classList.toggle('no-credit',!get('credit').checked));
-function update(){const ids=['depth','heads','pool','width'];if(ids.some(id=>!get(id).checkValidity()||get(id).value===''||!Number.isInteger(Number(get(id).value)))){get('mode-note').textContent='Use dimensions within the stated positive bounds.';return}const [D,H,U,P]=ids.map(id=>Number(get(id).value));if(P%2){get('mode-note').textContent='The implemented paired rotation modes require an even per-head width.';return}const selected=D*H,mode=get('mode').value;get('memories').textContent=selected*U;get('scores').textContent=selected*U;get('writes').textContent=selected;get('proposals').textContent=selected*(mode==='dense'?U:mode==='sampled'?Math.min(U,2):1);get('state').textContent=selected*U*P;get('mode-note').textContent=mode==='dense'?'Main integrated training path: losing proposals are computed for local value credit; only winning memories are committed.':mode==='sampled'?'Implemented alternative training path: unbiased for the local linear teacher at fixed cotangent, not generally for complete future-route risk. Extra variance and all-key/optimizer work remain.':'Optimized cached inference path: selected proposals after scoring all keys. Completed-weight FP32 winner/state/cache/quality parity and practical serving measurements remain pending.';}
+function invalidDimensions(note){['memories','scores','writes','proposals','state'].forEach(id=>get(id).textContent='—');get('mode-note').textContent=note}
+function update(){const ids=['depth','heads','pool','width'];if(ids.some(id=>get(id).value===''||!Number.isInteger(Number(get(id).value)))){invalidDimensions('Use dimensions within the stated positive bounds.');return}const [D,H,U,P]=ids.map(id=>Number(get(id).value));if(P%2){invalidDimensions('The implemented paired rotation modes require an even per-head width.');return}if(ids.some(id=>!get(id).checkValidity())){invalidDimensions('Use dimensions within the stated positive bounds.');return}const selected=D*H,mode=get('mode').value;get('memories').textContent=selected*U;get('scores').textContent=selected*U;get('writes').textContent=selected;get('proposals').textContent=selected*(mode==='dense'?U:mode==='sampled'?Math.min(U,2):1);get('state').textContent=selected*U*P;get('mode-note').textContent=mode==='dense'?'Main integrated training path: losing proposals are computed for local value credit; only winning memories are committed.':mode==='sampled'?'Implemented alternative training path: unbiased for the local linear teacher at fixed cotangent, not generally for complete future-route risk. Extra variance and all-key/optimizer work remain.':'Optimized cached inference path: selected proposals after scoring all keys. Completed-weight FP32 winner/state/cache/quality parity and practical serving measurements remain pending.';}
 ['depth','heads','pool','width','mode'].forEach(id=>get(id).addEventListener('input',update));update();
+function traceReception(policy,H,cTime,q){const events=[{name:'A',time:0,value:1},{name:'B',time:.8,value:-2},{name:'C',time:cTime,value:3},{name:'D',time:4,value:4}].sort((a,b)=>a.time-b.time||a.name.localeCompare(b.name));const visible=events.filter(e=>e.time<=q);let accepted=[],deadline=null;if(visible.length){if(policy==='winner'){accepted=[visible[0]];deadline=visible[0].time}else if(policy==='all'){accepted=visible;deadline=q}else{deadline=visible[0].time+H;for(const e of visible){if(e.time>deadline)break;accepted.push(e);if(policy==='popcorn')deadline=e.time+H}}}const emitted=deadline!==null&&deadline<=q;return {events,accepted,state:accepted.reduce((sum,e)=>sum+e.value,0),deadline,emitted,emission:emitted?deadline:null}}
+function reception(){const ids=['rx-gap','rx-time','rx-cutoff'];if(ids.some(id=>get(id).value===''||!get(id).checkValidity()||!Number.isFinite(Number(get(id).value)))){['rx-members','rx-state','rx-emission'].forEach(id=>get(id).textContent='—');get('rx-arrivals').textContent='';get('rx-note').textContent='Use finite timing values within the stated bounds.';return}const [H,cTime,q]=ids.map(id=>Number(get(id).value));const r=traceReception(get('rx-policy').value,H,cTime,q);get('rx-arrivals').textContent=r.events.map(e=>e.name+' @ '+e.time.toFixed(1)+' = '+e.value+(e.time>q?' (after query)':'')).join(' · ');get('rx-members').textContent=r.accepted.map(e=>e.name).join(', ')||'None';get('rx-state').textContent=r.state;get('rx-emission').textContent=r.emission===null?'Not emitted':r.emission.toFixed(2);get('rx-note').textContent=r.emitted?'First group emitted. Its content and emission time can both change the next layer.':r.deadline===null?'No event observed: no active reception.':'Pending at query: deadline '+r.deadline.toFixed(2)+'. Its accumulated state is not an emitted message.'}
+['rx-policy','rx-gap','rx-time','rx-cutoff'].forEach(id=>get(id).addEventListener('input',reception));reception();
 </script></html>

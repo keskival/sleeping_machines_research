@@ -1,4 +1,4 @@
-# Five review passes — 4 October 2026
+# Architecture review history and checks — 4 October 2026
 
 Scope: the whole implemented/theoretical model family, not one benchmark.
 Documentation changes only; no model runtime, new training or queue admission.
@@ -34,7 +34,7 @@ composition and the complete learning system. The plain-language review is
 separate from the detailed bounds and source-level inventory. Class names are
 navigation aids, not unexplained accuracy labels or proof of capability.
 
-Seven standalone SVG diagrams and one local interactive HTML atlas share colors:
+The first stage added seven standalone SVG diagrams and one local interactive HTML atlas sharing colors:
 blue computation, green persistent state, orange learning/whole-system concerns.
 Controls expose available memories, scored keys, selected writes, evaluated
 proposals and state scalars. These are structural counts, not advertised FLOPs
@@ -58,13 +58,13 @@ Reproduce the low-impact checks with
 `python3 scripts/check_architecture_review.py` after rebuilding with
 `python3 scripts/build_architecture_atlas.py`. The verifier uses Python's
 standard library and Node built-ins, imports no model, and launches no queue.
-The saved record at
+The first-stage record at
 `experiments/results/diagnostics/architecture_review_stdlib_20261004T094000Z.json`
-contains the final results: seven SVGs, local Markdown links, 110 source hashes,
+contains that stage's results: seven SVGs, local Markdown links, 110 source hashes,
 53 unchanged frozen sources, JavaScript control contracts and 14 scalar witness
 cases. These witnesses check selected identities, not full learning theorems.
 The earlier `20261004T092600Z` record is retained as an intermediate six-diagram
-snapshot; the `20261004T094000Z` record validates the final seven-diagram revision.
+snapshot; the `20261004T094000Z` record validates the first-stage seven-diagram revision.
 
 ## Pass 3: family definition, position and inclusion endpoints
 
@@ -127,3 +127,52 @@ no historical aspiration is silently converted into a measured property.
 Broad finite-execution containment states sufficient primitives, information,
 storage, precision and scheduling; it supports reach without promising equal
 learning or cost. Every added aspiration is located in the same design space.
+
+## Pass 6: a shorter entry and operational definition
+
+Added an overview that leads with the family definition, common axes, included
+synchronous/dense endpoints and design/learning ambitions. Its reading map
+separates definition, worked semantics, implementations, evidence, bounds and
+source navigation. The detailed definition now states graph/operator, state,
+schedule, query, learner/version and resource contracts. A glossary resolves
+key/value, active/discovered/available, several sparsity meanings, native,
+capacity/retention/access/horizon and different containment claims.
+
+Observation time, modeled event time and measured runtime are distinct semantic
+roles. Composition must preserve information and ownership as well as shape.
+Independent operations can commute under stated conditions, while queries,
+shared updates and random draw order can break equivalence. Finite recurrent
+execution needs a bound/termination contract; positive delays alone need not
+prevent infinite event accumulation. Theory152§17 records the scope.
+
+## Pass 7: concrete semantics, provenance and interaction
+
+Added an eighth SVG and reception explorer: first arrival, fixed window,
+silence timeout and all-at-query compute different first-group content/time.
+The example declares query cutoff, arrival-before-timer ties, pending state and
+no EOF flush. Sixteen independent expected cases check causality, deadline
+ties, delayed C membership and increased reception that remains pending.
+No gradients, fitted quality or integrated native scheduler are claimed.
+
+The generated claim/evidence map labels 13 claims and binds four completed native
+language results, preserving result and actual execution-source hashes. It
+checks declared matched settings and consistent whole-fit/per-presentation
+units. Saved “exact BPTT” metadata is qualified beside its original scope;
+continuous factual derivatives are not complete discrete future-write credit.
+Quarantined target-dependent scores remain excluded. Numerical descriptions
+are derived from the saved result fields, rather than transcribed constants.
+
+Tab/panel accessibility references and keyboard navigation now pass. Invalid
+dimensions/times clear stale results. Source hashes, result bindings, links,
+SVG bounds, controls and 16 scalar witnesses pass with no numerical model import.
+Current record:
+`experiments/results/diagnostics/architecture_review_stdlib_20261004T103000Z.json`.
+It also binds the reviewed documentation artifacts by SHA256. Browser pixel
+rendering remains unperformed; the earlier validation records are preserved.
+
+The final mathematical pass tightened the finite-event bound: b is effective
+continuation fan-out after grouping terminating zero-delay work, not raw graph
+degree. External and initially pending seeds are included. An additional
+bounded-tree scalar witness checks that stated contract. The earlier102000Z
+grooming record remains an intermediate snapshot; the103000Z record includes
+the refined condition and17scalar witnesses.

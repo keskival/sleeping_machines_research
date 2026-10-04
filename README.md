@@ -2,9 +2,10 @@
 
 **Deep learning that computes with time.**
 
-[Model-family definition and design rationale](report/model_family_design.md) ·
+[Model family at a glance](report/model_family_overview.md) ·
 [Interactive visual atlas](report/architecture_atlas.html) ·
-[Detailed architecture review](report/architecture_review.md)
+[Definition and design rationale](report/model_family_design.md) ·
+[Claims and evidence](report/architecture_evidence.md)
 
 The review uses the same computational-capacity, representational-capacity and
 trainability axes from events and primitives through units, modules, interactions,
