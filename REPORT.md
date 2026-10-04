@@ -2922,6 +2922,8 @@ Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting p
 
 The [saved-prediction selection audit](report/appendices/public_selection_audit_20261004.md) reproduces every final score and verifies immutable lineage. ECG200's selected large-model DEV NLL gain over the small model is0.00667 with paired standard error0.05888 at11.35× screening work. These adaptively selected DEV comparisons are descriptive; they motivate prospective multi-seed, compute-aware selection and TRAIN-only refit controls, without changing historical choices or claiming that a smaller model would win TEST.
 
+The [clock-precision and public-confirmation update](report/appendices/clock_precision_admission_20261004.md) retains completed same-weight Mackey–Glass tau18 results: sampled25.31, greedy18.46 and eight-stream averaging17.16sMAPE. They use different inference work and do not establish an official tau17 win. A route-preserving, mean-unbounded-clock-normalized control is implemented separately; its native numerical and bounded integration stages remain pending. Existing six-session primate and30-repeat tau17 owner queues retain priority.
+
 ## Appendix. Native language at 10M: the integrated core, segment-batched
 
 | Model (10M) | Params | Steps | Test bpc T128/T256 | Whole fit TF est. | Fit MF/char | Infer MF/pos. emulator | Infer MF/pos. winner-only |

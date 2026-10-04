@@ -1,0 +1,40 @@
+{
+  "status": "stdlib_checked_native_unrun",
+  "manifest": "experiments/queue/native_clock_noise_20261004T065700Z/manifest.json",
+  "manifest_sha256": "2d052b7a4b6b004e187273eb76b433a178f38b74fb91ea66e73d35f2f032ebd7",
+  "frozen_source_count": 53,
+  "stdlib_tests_passed": 13,
+  "test_command": "python3 -m unittest discover -s tests -p test_clock_noise_law_stdlib.py -q",
+  "native_contracts": "prepared_unrun",
+  "integrated_pilot": "prepared_unrun",
+  "model_execution_in_workspace": false,
+  "existing_official_queues": "preserved; no launch or reallocation",
+  "completed_owner_evidence": [
+    {
+      "path": "experiments/results/neurobench_mg/curie_mg5_t18_p16_20261004T052000Z.json",
+      "sha256": "a043b638d3f8364be94b6f3ddbda6feae9b3142ffb2821f86bc72f8fb593be5a",
+      "status": "completed",
+      "tau": 18,
+      "repeats": 3,
+      "mean_smape_by_mode": {
+        "mix8": 17.163841512308657,
+        "argmax": 18.461232561298676,
+        "sampled": 25.30956326438903
+      },
+      "scope": "development; mix8 adds streams; not official tau17 or iso-work"
+    },
+    {
+      "path": "experiments/results/neurobench_mg/curie_mg5_t18_p16_pool4_20261004T052000Z.json",
+      "sha256": "e71fc603b23eeb41e4ae9e117c949259900e47b8ee3028930cc01a9b45d893ac",
+      "status": "completed",
+      "tau": 18,
+      "repeats": 3,
+      "mean_smape_by_mode": {
+        "mix8": 23.043397712234306,
+        "argmax": 18.334337023628724,
+        "sampled": 19.75677090621657
+      },
+      "scope": "development; mix8 adds streams; not official tau17 or iso-work"
+    }
+  ]
+}

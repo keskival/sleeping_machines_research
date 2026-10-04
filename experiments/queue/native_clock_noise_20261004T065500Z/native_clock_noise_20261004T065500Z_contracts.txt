@@ -1,0 +1,3 @@
+# UNRUN: physical owner after prioritized queues; one job, one CPU thread.
+# MEM_CAP_KB=6000000 MEM_CAP_RSS_KB=2000000 MIN_AVAIL_MB=8192 JOB_TIMEOUT_S=900
+native_clock_noise_20261004T065500Z_contracts experiments/clock_noise_admission.py --manifest experiments/queue/native_clock_noise_20261004T065500Z/manifest.json --manifest-sha256 e300cde6b873c95cede1937bcbc827359b214550a2ffd6b567caf076d68e1626 --stage contracts

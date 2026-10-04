@@ -2533,3 +2533,35 @@ import these modules and their running programs continue; public_v2 will refuse
 future admission at its frozen() gate. Preserve this warning and perform a
 source-correct continuation before claiming subsequent arms run. No active
 manifest was edited. The new official waiter cannot bypass this reservation.
+
+Root clock-precision continuation, 4 October2026: completed owner MG tau18
+p16/D2/pool2 same-weight modes are sampled25.309563, argmax18.461233 and
+mix8=17.163842 sMAPE over3DEV repeats. Mix8 uses8streams; pool4 mix8=23.043398
+is retained as negative. These are not officialtau17 or iso-work wins. Latest
+private replay/teacher commits archive intermediate checkpoints only, not new
+completed final language scores. Existing official six-session primate queues
+and30-repeat MG protocol/admission064000Z retain priority and remain pending.
+
+Theory151 extends AWS route/clock factorization with a normalized noise family:
+same winner conditional on fixed entering scores/noises, unbounded mean time1/Z
+and controllable variance. Native bounded arrival means and future trajectories
+need not agree. Clock scores remain learned through -T*pi credit; neither
+useful future-write credit nor exact full expected-risk gradients are claimed.
+New isolated scalar/custom-native/independent-layer implementation leaves core
+sources/defaults unchanged.13stdlib algebra/guard/FP32 rollout checks passed.
+Actual Torch/compiled/every-gradient/Adam contracts and integrated quality are
+UNRUN. Report appendix records this distinction; existing rendered PDF retained.
+
+Current prepared queue: native_clock_noise_20261004T065700Z/manifest.json,
+SHA2d052b7a4b6b004e187273eb76b433a178f38b74fb91ea66e73d35f2f032ebd7,
+53frozen sources, two separate one-job queues for contracts then prerequisite-
+gated tau19DEV repeat4 pilots: nu1/.5/0 serial,32updates x8lanes x64positions.
+Older065500Z draft is preserved/superseded after pinning Inductor threads and
+rejects changed driver hashes. Tau19 bytes are absent locally. Both stages:
+1CPU/compile thread, RSS2000000KiB/VMS6000000KiB/8192MiB available/900s guard.
+Recheck physical capacity/reservation and measured contract RSS before fitting.
+No trainer, numerical runtime, profiler, scheduler or waiter launched here;
+Docker lock is not physical admission. Prioritized integrated model remains
+tied p32/D2/pool4 primate confirmation and owner NeuroBench MG mix8; useful
+deep/write credit, long horizons, repeated quality/resource and measured energy
+remain gaps. New clock-noise arm is an isolated diagnostic, not a substitution.

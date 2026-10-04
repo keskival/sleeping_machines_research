@@ -1,5 +1,43 @@
 # Local host: current research continuation
 
+## Clock precision control and public confirmation — 4 October2026
+
+Latest completed MG owner p16/D2/pool2 tau18 same-weight modes: sampled25.3096,
+argmax18.4612, mix8=17.1638sMAPE over3DEV repeats; larger pool4 mix8=23.0434 is
+negative. No tau17 win. Concurrent AWS300b444e already records route/clock
+factorization and0cedb0c7 prepares official admission. Preserve both. Primary
+official owner manifest: queue/aws_neurobench_admission_20261004T064000Z/manifest.json
+(six-session primate r1 queues assigned separately in AWS_NEUROBENCH.md).
+Curie continuation: curie_language_batched_v6_20261003T111500Z; existing replay
+coordinator still owns the physical AWS reservation. No duplicate trainer.
+
+New theory151 extends the factorization with T_nu=(ZT)^nu/[Gamma(1+nu)Z]: same
+conditional winner, mean unbounded time1/Z, controlled CV1→.5227→0 atnu1/.5/0.
+Clock derivatives remain−T_nu*pi, so content/state still controls time. Bounded
+native arrival mean and complete future trajectories need not remain equal.
+clock_noise_law.py and isolated clock_noise_episodes.py implement the scalar,
+custom native and independent layer/compile programs without changing core
+kernels/defaults. Full future-write utility and deep horizon gaps remain.
+
+13 stdlib tests pass, including fixed-W finite differences, Gamma normalization,
+learned clock dependence, immutable/prerequisite/container rejection, checkpoint
+preservation and realized FP32 autonomous-delta rounding/alignment. No Torch,
+NumPy, HDF5, model, profiler or training ran here. Numerical contracts are UNRUN.
+New current frozen manifest: queue/native_clock_noise_20261004T065700Z/manifest.json,
+SHA2d052b7a4b6b004e187273eb76b433a178f38b74fb91ea66e73d35f2f032ebd7,
+53source hashes. Two unique one-job queues: native contracts then prerequisite-
+gated tau19DEV repeat4 tiny32-update×8-lane×64-position fits, nu1/.5/0 serial.
+Exact official data hash required; tau19 bytes absent locally. All fitting
+proposal work is charged; first eager full step extrapolated, evaluation/setup/
+compile/memory/energy separate. Checkpoints retain source/data/config/RNG.
+
+Guard caps per stage: one thread including Inductor,6MKiB VMS/2MKiB RSS,
+8192MiB available/900s; physical run_safe reservation required, Docker rejected.
+Current queue source/command/unused-output checks pass.065500Z draft is preserved
+unrun/superseded after compile-thread pin; it rejects changed driver hashes.
+Existing public owners have priority; no waiter/coordinator started here.
+Report source links new appendix; existing PDF remains unchanged.
+
 ## Completed public selection audit — 4 October 2026
 
 Reconciled latest AWS owner progress7f6226e0: all four90M language fits and nine
