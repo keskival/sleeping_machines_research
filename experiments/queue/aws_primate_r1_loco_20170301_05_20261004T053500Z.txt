@@ -1,0 +1,2 @@
+# AWS NeuroBench primate reaching, protocol run r1 (experiments/AWS_NEUROBENCH.md). One session per job; seed 1.
+aws_primate_r1_loco_20170301_05_20261004T053500Z experiments/primate_reaching_native.py --tag aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_loco_20170301_05_20261004T053500Z --sessions loco_20170301_05 --compiled --lanes 32 --segment 250 --steps 4000 --payload 32 --depth 2 --pool 4 --tie-pools --smoothing --route-samples 4
