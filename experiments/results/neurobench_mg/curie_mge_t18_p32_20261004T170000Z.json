@@ -1,0 +1,63 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "curie_mge_t18_p32_20261004T170000Z",
+    "tau": 18,
+    "repeats": 3,
+    "first_repeat": 0,
+    "payload": 32,
+    "depth": 2,
+    "heads": 2,
+    "pool": 2,
+    "tie_pools": false,
+    "taps": 8,
+    "segment": 64,
+    "lanes": 32,
+    "steps": 1500,
+    "lr": 0.003,
+    "weight_decay": 0.0,
+    "clip": 1.0,
+    "warmup": 8,
+    "delta": true,
+    "compiled": true,
+    "seed": 0
+  },
+  "parameters": 55385,
+  "footprint_bytes_float32": 221540,
+  "repeats": [
+    {
+      "repeat": 0,
+      "smape": 18.10599898206372,
+      "final_train_mse": 1.1278266902081668e-05,
+      "wall_s": 448.7059031359968
+    },
+    {
+      "repeat": 1,
+      "smape": 29.562477742350552,
+      "final_train_mse": 8.932611081036157e-06,
+      "wall_s": 406.54154836799717
+    },
+    {
+      "repeat": 2,
+      "smape": 11.82988174857084,
+      "final_train_mse": 7.910593149063061e-06,
+      "wall_s": 406.69712523699855
+    }
+  ],
+  "mean_smape": 19.832786157661705,
+  "member": "exact expected reception, mean clock, hard argmax writes (deterministic)",
+  "protocol": "NeuroBench Mackey-Glass (neurobench 2.3.0 slices, split and SMAPE via mackey_glass_native)",
+  "source_sha256": {
+    "experiments/mg_expected.py": "c343d61a6a8848d4af8e1640dfd1e55ee31c57c9a9ab653bc86cf83b54a1ddde",
+    "experiments/mackey_glass_native.py": "06cea672c090bf6a42f810be404e74a8bead618bb007108532f9eb89c44dabb4",
+    "sleeping_machines/expected_reception.py": "889d6a01ab005f6b86d3e682a8b0b188322c1f0795bb5becd4f5419d250fb94d",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "data_sha256": "f43853cdd3e862c30b0836e07a57a438a6f415d8f0afa91ab850f9a6d84d298b",
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 1261.9481415209884
+}

@@ -21,6 +21,8 @@ pool 4 is the worst arm on tau 19. No race tau 19 reference exists yet; `curie_m
 mix8/argmax/sampled) is queued to decide whether tau 19 is just harder. With three repeats and per-repeat spreads of
 4–11 points, no arm is ranked; the official tau 17 primary stays the race member (AWS r1, mix8 14.37 at 20/30), and no
 expected-member tau 17 run is pre-declared until the race tau 19 reference completes.
+Later arms (tau 18, pool 2): payload 32 19.83 (18.1/29.6/11.8); weight decay 1e-3 21.42 (20.6/17.6/26.0); neither
+beats pool 4 (17.08).
 
 ## Matched-compute comparisons at 10M: native wins 6 of 8 budget comparisons — 4 October
 
