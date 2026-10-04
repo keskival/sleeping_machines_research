@@ -5406,6 +5406,20 @@ def blocks(M, tasks, ev):
     pages[opening_index:opening_index]=architectural_pages
     score=runpy.run_path(str(ROOT/'report/scoreboard.py'))['page'](tasks['native_language_batched'],tasks['public_benchmarks'])
     pages.insert(1, score)      # first page after the cover (PRODUCT_ORDERS.md P0-5)
+    readme=ROOT/'README.md'; text=readme.read_text()
+    start,end='<!-- scoreboard:start -->','<!-- scoreboard:end -->'
+    table=[b for kind,b in score if kind=='table'][0]
+    block=(start+'\n## Scoreboard (generated from result files; definitions in experiments/WIN_CRITERIA.md)\n\n'
+           +'| '+' | '.join(table[0])+' |\n|'+'---|'*len(table[0])+'\n'
+           +''.join('| '+' | '.join(r)+' |\n' for r in table[1])
+           +'\nSingle seeds unless stated; same data and test sets; native compute traced, references shape-estimated or as '
+           +'published. Full report: REPORT.md; orders: experiments/PRODUCT_ORDERS.md.\n'+end)
+    if start in text:
+        text=text[:text.index(start)]+block+text[text.index(end)+len(end):]
+    else:
+        marker='**Deep learning that computes with time.**\n'
+        text=text.replace(marker,marker+'\n'+block+'\n',1)
+    readme.write_text(text)
     pages.extend(runpy.run_path(str(ROOT/'report/aws_90m_language_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/aws_public_benchmark_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/native_language_batched_appendix.py'))['pages'](tasks['native_language_batched']))
