@@ -101,13 +101,17 @@ This is a product hypothesis chosen to make the research investable and testable
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 10. Software establishes the advantage. Hardware can amplify it.
+## 10. Software proves the advantage. Hardware multiplies it.
 
 One research program, with staged routes to deployment.
 
-The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here. Adjacent software opportunities include asynchronous codecs, irregular-stream SDKs and task-oriented communications. These are prospective uses of the common interface, not measured products. Joint sensor/action/language learning could support embodied transfer; each transfer direction requires evidence. No AGI probability is used to price the round.
+Hardware is a multiplier on the software result, applied to different parts of the energy budget. Largest lever: memory locality and sparse activity (DRAM read ~640 pJ vs ~3.7 pJ float multiply at 45 nm, Horowitz 2014); dense low-batch inference streams all weights per token, our model reads a few local state slots per event. Clock removal adds: no clock-tree power, average-case latency, near-threshold voltage tolerance, leakage-only idle capacity, and thermal headroom for memory-on-logic stacking and modular chiplets. Training locally is plausible (route credit and delay/gate updates are local) but the current trainer uses non-local backprop and clipping; a local learning rule is a milestone. Event-driven, memory-local chips exist (Loihi 2 and others); the field lacks a competitive trainable model, which is our licensing opening. No Sleeping Machines chip or joule measurement exists; baselines for hardware claims are competent clock-gated, SRAM-heavy synchronous designs as well as GPUs. Details: HARDWARE_THESIS.md.
 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
+
+- [H1: M. Horowitz — Computing's energy problem (and what we can do about it), ISSCC 2014](https://doi.org/10.1109/ISSCC.2014.6757323) — 45 nm per-operation energies: 32-bit DRAM read ~640 pJ, small SRAM read ~5 pJ, 32-bit float multiply ~3.7 pJ. Context for data-movement cost, not a Sleeping Machines measurement.
+
+- [H3: Private hardware thesis (4 October 2026)](HARDWARE_THESIS.md) — Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement.
 
 
 ## 11. A useful alternative could strengthen a hardware ecosystem.
@@ -267,7 +271,20 @@ The pitch does not assert sole invention of sparse activation, gating, normaliza
 - [T3: Gu and Dao — Mamba](https://arxiv.org/abs/2312.00752) — Selective recurrent state-space sequence models are relevant competitive controls. No matched modern SSM result is claimed.
 
 
-## 26. AMD’s Silo AI deal supports the strategic logic.
+## 26. What clockless, memory-local silicon can buy.
+
+Physical mechanisms, their basis and what must be measured. No chip exists yet.
+
+Mechanisms with physical bases, not measurements. Dense models can also use SRAM-heavy or near-memory chips, and MoE partially decouples capacity from activity; our edge is the model's sparse, local access pattern, which must hold at competitive quality (P0-6 tuned baselines). Race logic (ISCA 2014) is prior art for first-arrival computation. Full analysis: HARDWARE_THESIS.md.
+
+- [H1: M. Horowitz — Computing's energy problem (and what we can do about it), ISSCC 2014](https://doi.org/10.1109/ISSCC.2014.6757323) — 45 nm per-operation energies: 32-bit DRAM read ~640 pJ, small SRAM read ~5 pJ, 32-bit float multiply ~3.7 pJ. Context for data-movement cost, not a Sleeping Machines measurement.
+
+- [H2: A. Madhavan, T. Sherwood, D. Strukov — Race logic, ISCA 2014](https://doi.org/10.1109/ISCA.2014.6853226) — Prior art for delay-coded, first-arrival computation in hardware. We build on this primitive; it is not our invention.
+
+- [H3: Private hardware thesis (4 October 2026)](HARDWARE_THESIS.md) — Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement.
+
+
+## 27. AMD’s Silo AI deal supports the strategic logic.
 
 Announced approximately $665M all-cash acquisition in 2024; a mature-company precedent.
 
@@ -280,7 +297,7 @@ AMD’s announcement connects the acquisition to end-to-end AI solutions, engine
 - [S3: Liquid AI — $250M Series A announcement, 13 December 2024](https://www.liquid.ai/blog/we-raised-250m-to-scale-capable-and-efficient-general-purpose-ai) — Financing announcement and AMD collaboration on efficient models; funding amount is not a disclosed company valuation.
 
 
-## 27. The constraints reach from power grids to robot batteries.
+## 28. The constraints reach from power grids to robot batteries.
 
 Economic context for efficient intelligence; these figures are not our revenue market.
 
@@ -293,14 +310,14 @@ IEA projects all datacenter electricity, not only AI demand; GSMA subscribers ar
 - [M3: IFR — World Robotics 2026 release, 24 September 2026](https://ifr.org/ifr-press-releases/news/five-million-robots-now-operate-in-factories-globally) — 5 million operating industrial robots in 2025 and more than 600,000 annual installations; no adoption by this project.
 
 
-## 28. Successful platform adoption can support very large outcomes.
+## 29. Successful platform adoption can support very large outcomes.
 
 Conditional commercial arithmetic illustrates the scale required; no forecast or market multiple claim.
 
 The €10B/€50B equity scenarios use deliberately stated revenue multiples rather than observed comparables. They require economics, durable margins and value capture that are wholly unproven. Multiplying revenue by a selected multiple is not an enterprise/equity reconciliation: the examples assume negligible net debt at exit. The scenarios overlap and are alternatives, not additive. Infrastructure relevance can justify funding risky research, but cannot itself prove a current valuation. Smaller niche success, delayed commercialization, licensing-only outcomes, further dilution and total failure remain possible.
 
 
-## 29. The completed comparisons, using consistent resource units.
+## 30. The completed comparisons, using consistent resource units.
 
 Frozen 10M-character, one-pass evidence. Model definitions are on the next slide.
 
@@ -309,7 +326,7 @@ All fitting columns include estimated complete step arithmetic rather than forwa
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 30. Plain-language labels map to reproducible model records.
+## 31. Plain-language labels map to reproducible model records.
 
 Message width counts scalars; available memory counts local state slots.
 
@@ -318,7 +335,7 @@ These names are editorial labels for the frozen completed configurations, not ne
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 31. The comparison boundaries are part of the evidence.
+## 32. The comparison boundaries are part of the evidence.
 
 Maintain the original records and disclose what a result actually measures.
 
@@ -329,7 +346,7 @@ The native score pays overlap-window warmup, evaluating roughly twice as many in
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 32. Keep the failures beside the positive mechanism results.
+## 33. Keep the failures beside the positive mechanism results.
 
 A disciplined research program should revise interpretations when evidence changes.
 
@@ -340,28 +357,28 @@ D8 uncredited pool 2 scores 2.4565 and pool 4 2.4981 at T256. The D4 credited po
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 33. Reverse-underwriting shows the assumptions behind a price.
+## 34. Reverse-underwriting shows the assumptions behind a price.
 
 This arithmetic is a sensitivity tool; the research does not estimate platform-success probabilities.
 
 The illustrative model discounts the retained fraction of a successful future equity outcome to today and assigns zero failure value. It is not a complete corporate DCF, does not model all cash flows, and assumes the retained cohort benefits from an exit equity value after future financing. €10B exit × 30% retention / 1.15^10 is the conditional present value; €50M requires 6.7426% and €100M requires 13.4852%. These are neither forecasts nor inferred from small benchmarks. A €3M priced round at €50M pre-money gives 5.6604% initial investor ownership before option-pool changes, fees, preferences or future rounds; at €100M it gives 2.9126%. An investor must independently accept technology scalability, commercial value capture, rights and execution to support a premium price.
 
 
-## 34. The price depends on dilution, exit scale and time.
+## 35. The price depends on dilution, exit scale and time.
 
 Required platform-success odds at 10 years and 15% discount; zero failure value.
 
 This table is generated from the frozen financial model, not entered by hand. At a €3B outcome and 10% retained equity, the required probabilities are much higher than at a €30B exit with 50% retention. A lower discount rate increases the present value, while delays and dilution reduce it. In the €3M/€50M round, an investor retains 1.6981% at exit if 30% of its initial stake survives, giving €169.81M or 56.60× gross MOIC in the assumed €10B success outcome. That conditional upside is not expected return; failure is zero and cash-flow timing/preferences are omitted.
 
 
-## 35. A private evidence pack and primary external context.
+## 36. A private evidence pack and primary external context.
 
 Source labels in slide footers are clickable; companion files must travel with the PDF.
 
 Raw research evidence is private, per founder instruction. Original completed result SHA256 hashes are in pitch_deck_evidence_20261003.json. The status PDF contains detailed theory and historical evidence; do not treat invalid-protocol archives or old rendered report scores as active claims. Market sources were accessed on 3 October 2026. These external sector denominators support relevance, not customer intent or a venture revenue forecast.
 
 
-## 36. Public precedents establish relevance, not endorsement.
+## 37. Public precedents establish relevance, not endorsement.
 
 Historical roles are self-reported; inventorship is checked against the primary published document.
 

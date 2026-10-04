@@ -46,7 +46,7 @@ anything) until P0-1 and P0-3 are running. Resume them afterwards.
 
 ## P2 — after the P0/P1 numbers exist
 
-Hardware cost model for the target asynchronous ASIC (event, memory-traffic and FLOP counts on one fixed trained model;
+Hardware cost model for the target asynchronous ASIC (event, message-rate, memory-locality/traffic and FLOP counts on one fixed trained model, vs the tuned dense reference; see investment/HARDWARE_THESIS.md;
 CPU wall-clock is not evidence since the hardware is simulated); multi-modal or TTT demonstrations;
 larger-than-90M scale.
 

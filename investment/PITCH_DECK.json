@@ -124,6 +124,24 @@
       "url": "https://arxiv.org/abs/2307.15818",
       "scope": "Joint vision/language/action learning transfers web knowledge to robotic control. Neither an AGI demonstration nor evidence for our resource advantage.",
       "accessed_date": "2026-10-04"
+    },
+    "H1": {
+      "label": "M. Horowitz — Computing's energy problem (and what we can do about it), ISSCC 2014",
+      "short": "Horowitz 2014",
+      "url": "https://doi.org/10.1109/ISSCC.2014.6757323",
+      "scope": "45 nm per-operation energies: 32-bit DRAM read ~640 pJ, small SRAM read ~5 pJ, 32-bit float multiply ~3.7 pJ. Context for data-movement cost, not a Sleeping Machines measurement."
+    },
+    "H2": {
+      "label": "A. Madhavan, T. Sherwood, D. Strukov — Race logic, ISCA 2014",
+      "short": "Race logic",
+      "url": "https://doi.org/10.1109/ISCA.2014.6853226",
+      "scope": "Prior art for delay-coded, first-arrival computation in hardware. We build on this primitive; it is not our invention."
+    },
+    "H3": {
+      "label": "Private hardware thesis (4 October 2026)",
+      "short": "Hardware thesis",
+      "url": "HARDWARE_THESIS.md",
+      "scope": "Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement."
     }
   },
   "slides": [
@@ -372,12 +390,14 @@
     {
       "kind": "cards",
       "section": "Platform expansion",
-      "title": "Software establishes the advantage. Hardware can amplify it.",
+      "title": "Software proves the advantage. Hardware multiplies it.",
       "subtitle": "One research program, with staged routes to deployment.",
       "sources": [
-        "R3"
+        "R3",
+        "H1",
+        "H3"
       ],
-      "notes": "The first commercial workload is a selection hypothesis rather than a confirmed customer request. A staged software route lowers dependency on new silicon and permits independent benchmarking. A clockless implementation could benefit from less global synchronization and local state, but clock precision, signal fanout, memory, interconnect and fabrication overhead may dominate. Hardware economic claims require measurements. Costs for an ASIC tapeout are not estimated or funded here. Adjacent software opportunities include asynchronous codecs, irregular-stream SDKs and task-oriented communications. These are prospective uses of the common interface, not measured products. Joint sensor/action/language learning could support embodied transfer; each transfer direction requires evidence. No AGI probability is used to price the round.",
+      "notes": "Hardware is a multiplier on the software result, applied to different parts of the energy budget. Largest lever: memory locality and sparse activity (DRAM read ~640 pJ vs ~3.7 pJ float multiply at 45 nm, Horowitz 2014); dense low-batch inference streams all weights per token, our model reads a few local state slots per event. Clock removal adds: no clock-tree power, average-case latency, near-threshold voltage tolerance, leakage-only idle capacity, and thermal headroom for memory-on-logic stacking and modular chiplets. Training locally is plausible (route credit and delay/gate updates are local) but the current trainer uses non-local backprop and clipping; a local learning rule is a milestone. Event-driven, memory-local chips exist (Loihi 2 and others); the field lacks a competitive trainable model, which is our licensing opening. No Sleeping Machines chip or joule measurement exists; baselines for hardware claims are competent clock-gated, SRAM-heavy synchronous designs as well as GPUs. Details: HARDWARE_THESIS.md.",
       "cards": [
         {
           "label": "01 / MODELS + RUNTIME",
@@ -385,17 +405,17 @@
           "body": "Validate the language workload on existing hardware. License a model/runtime with auditable deployment economics."
         },
         {
-          "label": "02 / ACCELERATOR INTEGRATION",
-          "metric": "Co-design",
-          "body": "Optimize supported hardware, compilers and memory access. Pursue joint evaluations and platform-specific licensing."
+          "label": "02 / MEMORY-LOCAL ACCELERATORS",
+          "metric": "Data stays put",
+          "body": "Each event touches a few addressed state slots, not every weight. On AI chips data movement costs far more energy than arithmetic, so sparse, local access is the main lever."
         },
         {
-          "label": "03 / EVENT-DRIVEN SILICON",
-          "metric": "Clockless path",
-          "body": "Translate learned timing and local state into hardware feasibility work. Expand to mobile, robotics and persistent agents."
+          "label": "03 / CLOCKLESS SILICON",
+          "metric": "Work ∝ information",
+          "body": "No global clock: idle capacity draws only leakage, latency is average-case, and low average power permits denser 3D memory-on-logic packing. Also the missing model for the neuromorphic chip class."
         }
       ],
-      "banner": "The €3M round funds scale, execution and feasibility; later silicon investment follows measured proof."
+      "banner": "The €3M round funds scale and a hardware cost model of the trained network; silicon follows measured proof."
     },
     {
       "kind": "cards",
@@ -786,6 +806,68 @@
         ]
       ],
       "banner": "Sparsity, recurrence and on-chip learning alone are not the novelty claim."
+    },
+    {
+      "kind": "table",
+      "section": "Appendix / hardware advantages",
+      "title": "What clockless, memory-local silicon can buy.",
+      "subtitle": "Physical mechanisms, their basis and what must be measured. No chip exists yet.",
+      "sources": [
+        "H1",
+        "H2",
+        "H3"
+      ],
+      "notes": "Mechanisms with physical bases, not measurements. Dense models can also use SRAM-heavy or near-memory chips, and MoE partially decouples capacity from activity; our edge is the model's sparse, local access pattern, which must hold at competitive quality (P0-6 tuned baselines). Race logic (ISCA 2014) is prior art for first-arrival computation. Full analysis: HARDWARE_THESIS.md.",
+      "headers": [
+        "Benefit",
+        "Mechanism",
+        "Proof still needed"
+      ],
+      "widths": [
+        220,
+        560,
+        396
+      ],
+      "rowh": 50,
+      "size": 13,
+      "rows": [
+        [
+          "Energy",
+          "Few local memory accesses per event instead of streaming all weights; no clock tree; idle units draw only leakage.",
+          "Cost model of a trained network vs GPU and clock-gated SRAM accelerator."
+        ],
+        [
+          "Latency",
+          "Average-case completion; events propagate when ready; races resolve at first arrival.",
+          "Event-trace latency on FPGA semantics prototype."
+        ],
+        [
+          "Cooling & density",
+          "Low average power relieves the power-density limit: memory-on-logic 3D stacking, chiplets without a global timing domain.",
+          "Activity and peak-burst profiles on real streams."
+        ],
+        [
+          "Communication",
+          "Small messages sent only when events occur, not full vectors every clock: wire energy and wiring area track event rate.",
+          "Measured message rates and header overhead."
+        ],
+        [
+          "Local memory",
+          "Addressed persistent state maps to banks beside compute; non-volatile memory makes dormant capacity near-free.",
+          "Locality and reuse-distance profile of trained models."
+        ],
+        [
+          "On-chip learning",
+          "Route credit and delay/gate updates are local quantities.",
+          "Event-local learning rule matching current trainer quality."
+        ],
+        [
+          "Also",
+          "Near-threshold voltage, native event sensors, low EMI, defect tolerance.",
+          "Hardware partner evaluation."
+        ]
+      ],
+      "banner": "The neuromorphic hardware class exists; it lacks a competitive trainable model. That is the opening."
     },
     {
       "kind": "cards",

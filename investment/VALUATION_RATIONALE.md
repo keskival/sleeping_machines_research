@@ -138,6 +138,10 @@ a premium before revenue; investor demand and terms determine attainability.
 
 The highest-value next evidence is a repeated useful-quality/full-cost advantage,
 trained sparse deployment, effective delayed memory learning and a capable team
-with usable rights. Embodied transfer and asynchronous codecs add potentially
-large expansion options, each earned through its own measured first proof.
+with usable rights. Hardware is a real option on top of the software base case: sparse, memory-local,
+clockless execution attacks the data-movement and power-density limits of current AI
+chips, and supplies the competitive model the neuromorphic chip class lacks
+([HARDWARE_THESIS.md](HARDWARE_THESIS.md)). Its value rises with tuned-baseline
+quality and a hardware cost model of a trained network. Embodied transfer and
+asynchronous codecs add potentially large expansion options, each earned through its own measured first proof.
 Keep the bold platform vision and explicit execution milestones together.
