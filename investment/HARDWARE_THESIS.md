@@ -40,6 +40,11 @@ chip measurement.
 - **Capacity beyond activity holds at the hardware traffic level:** from pool 2 to pool 32, parameters grow 10.5× and bytes
   per character grow 5%. At pool 32, 93% of the weights stay untouched on a given character. Those weights can sit in
   dense, low-leakage memory and draw no data-movement energy. Quality at pool 32 still has to be shown.
+- **Against tuned baselines (5 Oct, `hardware_cost_model_20261005_tuned_refs.json`):** the best tuned Transformer (TF128×4,
+  1.996 bpc) moves 1.10M bytes/char. The native model is better *and* moves 1.7× fewer bytes. Tuned LSTM-384 (1.840 bpc,
+  better than native) moves 0.70M bytes/char, only 8% more than native's 0.65M. Against tuned LSTMs there is no current
+  traffic advantage at this scale. The structural one (flat traffic as capacity grows; no KV cache at longer contexts)
+  still needs a quality point.
 - The remaining traffic floor is the shared dense mixing between heads, not key scoring
   ([theory 154](../experiments/theory/154_key_scoring_traffic_floor.md)).
 

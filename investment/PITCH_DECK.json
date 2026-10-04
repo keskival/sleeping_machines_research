@@ -570,8 +570,8 @@
         },
         {
           "label": "02 / MEMORY-LOCAL ACCELERATORS",
-          "metric": "5.8× less data moved",
-          "body": "Modeled per character: our 1.888-bpc model moves 5.8× fewer memory bytes than the Transformer it beats. 10× more memory adds only 5% traffic. Moving data dominates chip energy."
+          "metric": "1.7–5.8× less data",
+          "body": "Modeled per character: 1.7× fewer memory bytes than the best tuned Transformer and 5.8× fewer than the saved one, both beaten. 10× more memory adds 5% traffic. Tuned LSTMs: parity."
         },
         {
           "label": "03 / CLOCKLESS SILICON",
@@ -1002,7 +1002,7 @@
       "rows": [
         [
           "Energy",
-          "Cost model: 5.8× fewer bytes/char than the Transformer we beat; 10× capacity for +5% traffic; no clock tree.",
+          "Cost model: 1.7–5.8× fewer bytes/char than the Transformers we beat; tuned LSTMs at parity; no clock tree.",
           "Quality at large pools; chip-level measurement."
         ],
         [

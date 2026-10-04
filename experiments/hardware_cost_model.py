@@ -88,11 +88,12 @@ def price(row, bytes_per_value=1):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'results', 'diagnostics',
-                                                  'hardware_cost_model_20261004.json'))
+                                                  'hardware_cost_model_20261005_tuned_refs.json'))
     a = ap.parse_args()
     rows = [native_counts(96, 4, 2, 2), native_counts(64, 4, 2, 2), native_counts(64, 4, 2, 4),
             native_counts(64, 4, 2, 8), native_counts(64, 4, 2, 32),
-            lstm_counts(256), lstm_counts(512), transformer_counts(256, 2, 256), transformer_counts(256, 4, 256)]
+            lstm_counts(256), lstm_counts(384), lstm_counts(512), transformer_counts(128, 4, 256), transformer_counts(256, 2, 256),
+            transformer_counts(256, 4, 256)]
     for r in rows:
         r.update(price(r))
     # contract: the native p96/d4/U2 count must equal the completed result's recorded parameter count.
