@@ -2879,10 +2879,12 @@ The project theory index contains formal assumptions and proofs. Research findin
 | --- | --- | --- | --- | --- |
 | p32/D4/pool2 | 108875 | 2.045356 | 65,219.6 | 0.724684 |
 | p32/D4/pool4 | 177019 | 1.998416 | 107,606.9 | 1.195668 |
+| p32/D8/skip2 | 210043 | 1.983227 | 127,430.3 | 1.415934 |
+| p64/D4/pool2 | 422475 | 1.857306 | 241,218.9 | 2.680290 |
 | LSTM (6 passes) | 1199323 | 1.661015 | 3,893,396.0 | 7.210099 |
 | Transformer (4 passes) | 3238427 | 1.604369 | 8,000,253.3 | 22.223084 |
 
-Both native fits use FIT[0,90M), 89,997,312 presentations, 10,986 Adam windows, 64 lanes of128-character reset segments, cosine lr0.004, seed6. DEV[90M,91M) and test[95M,96M), 999,936 targets each; T256 is an additional scorer of the same final weights. Random segments with replacement constitute a pass-equivalent budget, not full unique coverage.
+All four native fits use FIT[0,90M), 89,997,312 presentations, 10,986 Adam windows, 64 lanes of128-character reset segments, cosine lr0.004, seed6. DEV[90M,91M) and test[95M,96M), 999,936 targets each; T256 is an additional scorer of the same final weights. Random segments with replacement constitute a pass-equivalent budget, not full unique coverage.
 
 Pool4 improves its matched-window10M score2.345157 to1.998416, a0.346742BPC scaling gain. At90M its0.046941BPC gain over pool2 costs1.649917x estimated fitting work. This is useful capacity with unchanged selected activity, not unchanged total work or an iso-FLOP gain.
 
@@ -2898,9 +2900,25 @@ Pool4 fitting work is107,606.868GF, or1.195668MF/presentation. Saved LSTM and Tr
 
 Inference work for these trained90M weights remains pending. A prior same-shape winner-only arithmetic trace is a separate diagnostic: trained winner/state/cache/RNG contracts and complete scoring work are required before assigning it to this quality result. Candidate scoring, cache creation and optimizer work cannot be inferred away from selected-write counts.
 
-The active90M depth8 fit and queued width64 fit test remaining scale choices. Original streaming private full replay and teacher fits continue separately: they preserve chronological state and a different counterfactual estimator. No pending score is predicted. Full causal replay, useful distant-state credit, replication and comparable-quality resources remain open.
+The completed depth8 fit reaches1.983227 test BPC at127,430.287GF; width64 reaches1.857306 at241,218.897GF. Width64 is the strongest of these four native fits, but remains behind the saved dense controls. Original streaming private full replay and teacher fits continue separately: they preserve chronological state and a different counterfactual estimator. No pending score is predicted. Full causal replay, useful distant-state credit, replication and comparable-quality resources remain open.
 
 Sources: experiments/results/language_batched/aws_language_batched_90M_r2_*.json (completed full fits only), and saved aws_20260929 LSTM/Transformer90M results. The temporal-race, persistent private-state and key/value architectural case is retained.
+
+## Completed public archive benchmark campaign
+
+**No public benchmark win is established by this campaign.** Three fixed TRAIN-only development screens per dataset selected minimum DEV negative log likelihood. Selected configurations were refitted on full official TRAIN at the selected epoch budget, then scored once on official TEST for each seed6/7/8. All nine refits completed; negative results and their checkpoints remain preserved.
+
+| Dataset | Test % | Seed SD | Fit GF/run | Fit MF/series |
+| --- | --- | --- | --- | --- |
+| ECG200 | 72.33 | 1.53 | 149.12 | 114.704 |
+| JapaneseVowels | 93.96 | 2.73 | 173.15 | 29.150 |
+| PenDigits | 95.96 | 0.82 | 257.73 | 0.955 |
+
+ECG200 and JapaneseVowels selected payload32/depth4/pool4 with two heads, at13 and22 epochs respectively; PenDigits selected payload16/depth2/pool2 at36 epochs. These models use temporal races, separate keys/values, sparse addressed private-state writes and linear local message route credit. Full counterfactual suffix replay is absent. Inputs use ordinal synchronous steps; PenDigits coordinates are spatial resampling, not physical event times.
+
+Seed SD measures variation across training seeds on the same TEST examples, not a generalization confidence interval. Matched nearest-neighbor controls were DEV-only and do not supply matched TEST or resource comparisons. Published protocol variants require verification before frontier comparisons. Inference work and energy remain unmeasured; these fitting estimates establish no resource advantage.
+
+Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting presentations, not unique examples. Completed pilots, screens and final refits together account for 7,162.53GF estimated fitting work. Failed/contract/evaluation/compilation/preprocessing work is additional. Estimates extrapolate one eager optimizer window per epoch; variable padding prevents exact whole-fit accounting. Sources: experiments/results/public_benchmarks/*.json.
 
 ## Appendix. Native language at 10M: the integrated core, segment-batched
 
@@ -2932,6 +2950,8 @@ Sources: experiments/results/language_batched/aws_language_batched_90M_r2_*.json
 | --- | --- | --- | --- | --- | --- |
 | Ours p32/d4/pool2 + route credit (AWS, one pass) | 108,875 | 10,986 | 2.045 / 2.045 | 65.2 | 0.72 |
 | Ours p32/d4/pool4 + route credit (AWS, one pass) | 177,019 | 10,986 | 1.997 / 1.998 | 107.6 | 1.20 |
+| Ours p32/d8/pool2 + route credit (AWS, one pass) | 210,043 | 10,986 | 1.984 / 1.983 | 127.4 | 1.42 |
+| Ours p64/d4/pool2 + route credit (AWS, one pass) | 422,475 | 10,986 | 1.858 / 1.857 | 241.2 | 2.68 |
 | E64 LSTM-512, 6 passes (AWS) | 1,199,323 | 65,917 | — / 1.661 | 3893 | 7.21 |
 | E64 Transformer-256x4, 4 passes (AWS) | 3,238,427 | 43,945 | — / 1.604 | 8000 | 22.22 |
 

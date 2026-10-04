@@ -2458,3 +2458,27 @@ versusmatched1NNDEV.800. TRAIN80cases/DEV20, noTESTaccess, exploratory
 DEVleadnotpublishedbenchmarkwin. Nextp32D4U2ECGscreenRUNNING. Latestreadonly
 inventory001100Z retainsallcontrols/pilots/completedscreenandnoautomaticclaim.
 All3guardedslots+partialpublishershealthy; source/queuehashesremainbound.
+
+AWS 4 October completed campaign update: all nine public final refits are
+saved/pushed. TEST mean across seeds6/7/8: ECG20072.3333%, JapaneseVowels93.96396%,
+PenDigits95.95960%; seed SD1.5275/2.7341/.8168 percentage points on the same test
+examples, not independent confidence intervals. No public win established.
+ECG selected p32D4pool4/13epochs by DEV NLL, NOT first p16D2/25epoch screen;
+Japanese p32D4pool4/22epochs; Pen p16D2pool2/36epochs. Preserve all negatives.
+Read-only immutable inventory and refit audit under diagnostics030000Z.
+Do not tune on these TEST outcomes. Follow-up needs TRAIN-only independent
+split replications and same-epoch versus same-update full-refit controls;
+DEV/TEST difference alone does not diagnose an implementation bug.
+
+All four assigned90M fits completed: depth8/skip2 TEST(T256)1.9832265;
+width64/D4/pool2 TEST1.8573063 (strongest native among these four), estimated
+127430.287/241218.897GF fitting work. Saved dense controls still better quality.
+Report source now includes all four and a public negative-results appendix.
+Two healthy depth8 streaming jobs continue under source-frozen public v2
+coordinator: slot2 private full replay, slot3 original teacher exact recovery.
+Slot1 finished; normal host reservation remains held. Do not bypass it to
+admit another job. Further public priority should complement owner NeuroBench
+MG/primate DEV rounds, preserve running credit fits and require a clean
+reservation-aware continuation. Prioritized integrated mechanism gaps remain
+full replay on public tasks, useful deep causal credit, physical asynchronous
+public evaluation, matched resource/quality frontier and independent replication.

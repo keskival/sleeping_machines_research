@@ -3,7 +3,9 @@ import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 NATIVE=[('p32/D4/pool2','aws_language_batched_90M_r2_p32d4_linear_l64_lr004_cmp_s6_20261003T103000Z'),
-        ('p32/D4/pool4','aws_language_batched_90M_r2_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T110000Z')]
+        ('p32/D4/pool4','aws_language_batched_90M_r2_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T110000Z'),
+        ('p32/D8/skip2','aws_language_batched_90M_r2_p32d8_skip2_linear_l64_lr004_cmp_s6_20261003T103000Z'),
+        ('p64/D4/pool2','aws_language_batched_90M_r2_p64d4_linear_l64_lr004_cmp_s6_20261003T103000Z')]
 
 
 def pages():
@@ -30,7 +32,7 @@ def pages():
          'eight selected addressed writes per character. Pool4 doubles scored keys from16 to32; '
          'available receiver capacity increases. These are single-seed results, not replicated advantage.'),
         ('table',(['Model','Params','Test BPC','Fit GFLOPs','Fit MF/target'],rows,[49,23,25,37,35])),
-        ('p','Both native fits use FIT[0,90M), 89,997,312 presentations, 10,986 Adam windows, '
+        ('p','All four native fits use FIT[0,90M), 89,997,312 presentations, 10,986 Adam windows, '
          '64 lanes of128-character reset segments, cosine lr0.004, seed6. DEV[90M,91M) and '
          'test[95M,96M), 999,936 targets each; T256 is an additional scorer of the same final weights. '
          'Random segments with replacement constitute a pass-equivalent budget, not full unique coverage.'),
@@ -55,7 +57,7 @@ def pages():
           'arithmetic trace is a separate diagnostic: trained winner/state/cache/RNG contracts and complete '
           'scoring work are required before assigning it to this quality result. Candidate scoring, cache creation '
           'and optimizer work cannot be inferred away from selected-write counts.'),
-         ('p','The active90M depth8 fit and queued width64 fit test remaining scale choices. Original streaming '
+         ('p','The completed depth8 fit reaches1.983227 test BPC at127,430.287GF; width64 reaches1.857306 at241,218.897GF. Width64 is the strongest of these four native fits, but remains behind the saved dense controls. Original streaming '
           'private full replay and teacher fits continue separately: they preserve chronological state and a different '
           'counterfactual estimator. No pending score is predicted. Full causal replay, useful distant-state credit, '
           'replication and comparable-quality resources remain open.'),

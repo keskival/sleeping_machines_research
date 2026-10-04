@@ -1,0 +1,133 @@
+{
+  "status": "read_only_completed_result_audit",
+  "rows": [
+    {
+      "dataset": "ECG200",
+      "selection": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z.json",
+      "selection_sha256": "e6ffe667ff744a90298e3f73e9c79109455406f250a8c9e20895507cbd00fe11",
+      "screen": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p32d4u4_20261004T000100Z.json",
+      "screen_sha256": "760d549befbb68478c2b166e0f2943b19866f2aad63f2341c73f40f4c400a675",
+      "selected_epoch": 13,
+      "development_accuracy": 0.9,
+      "development_targets": 20,
+      "selected_args": {
+        "tag": "aws_public_ECG200_screen_p32d4u4_20261004T000100Z",
+        "dataset": "ECG200",
+        "stage": "screen",
+        "epochs": 40,
+        "payload": 32,
+        "depth": 4,
+        "pool": 4,
+        "heads": 2,
+        "batch": 32,
+        "lr": 0.003,
+        "seed": 6,
+        "selection": null,
+        "resume": false
+      },
+      "finals": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s6.json",
+          "sha256": "81a5b3ad3029e3f317b99d617f05bc63cb5ce10419ba391e2c7fa84abd18c4a3",
+          "test_accuracy": 0.74
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s7.json",
+          "sha256": "e193df522c69ab64fd2b25cc1dec61b9626532848b73808fc8e142fb386266d3",
+          "test_accuracy": 0.72
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s8.json",
+          "sha256": "cec57872317f230e6305b395f32cd3d0a5630cd469e4a6b688ed027fa74f9527",
+          "test_accuracy": 0.71
+        }
+      ]
+    },
+    {
+      "dataset": "JapaneseVowels",
+      "selection": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z.json",
+      "selection_sha256": "ed90f3c824006531ebea1dff821a5057b2b6f0d05d648fab39ab3cd7f6e73a80",
+      "screen": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p32d4u4_20261004T000100Z.json",
+      "screen_sha256": "61e29a6164580cb7f332c0e0a1393aa66e21e5a628247e5578065fccd68a0304",
+      "selected_epoch": 22,
+      "development_accuracy": 0.9629629629629629,
+      "development_targets": 54,
+      "selected_args": {
+        "tag": "aws_public_JapaneseVowels_screen_p32d4u4_20261004T000100Z",
+        "dataset": "JapaneseVowels",
+        "stage": "screen",
+        "epochs": 40,
+        "payload": 32,
+        "depth": 4,
+        "pool": 4,
+        "heads": 2,
+        "batch": 32,
+        "lr": 0.003,
+        "seed": 6,
+        "selection": null,
+        "resume": false
+      },
+      "finals": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s6.json",
+          "sha256": "9899aed23c349a52ecef77b41b1d93c29e6cc7a0a5b21dee0989d58f9efa9870",
+          "test_accuracy": 0.9540540540540541
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s7.json",
+          "sha256": "4f1a7f1ff987b0baf284037bbedd21486d7dc5051e568602e69e746d5acdcab3",
+          "test_accuracy": 0.9081081081081082
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s8.json",
+          "sha256": "8156fd2402747a6c9712699a251fe05b419c599102391b57f298959ab9b968ca",
+          "test_accuracy": 0.9567567567567568
+        }
+      ]
+    },
+    {
+      "dataset": "PenDigits",
+      "selection": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z.json",
+      "selection_sha256": "e25431e399351ee76b00ba66efc9df9ac99ab907fa69fd904fe84abfc780d20a",
+      "screen": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p16d2u2_20261004T000100Z.json",
+      "screen_sha256": "2d676a6c518915624a526a917d8859a940fdc49281dc107d0f8e5759468d0f42",
+      "selected_epoch": 36,
+      "development_accuracy": 0.9913333333333333,
+      "development_targets": 1500,
+      "selected_args": {
+        "tag": "aws_public_PenDigits_screen_p16d2u2_20261004T000100Z",
+        "dataset": "PenDigits",
+        "stage": "screen",
+        "epochs": 40,
+        "payload": 16,
+        "depth": 2,
+        "pool": 2,
+        "heads": 2,
+        "batch": 32,
+        "lr": 0.003,
+        "seed": 6,
+        "selection": null,
+        "resume": false
+      },
+      "finals": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s6.json",
+          "sha256": "327da8acea00bd644801f9719e60bbcffd10c685ec1316a4369d70ad29437ac0",
+          "test_accuracy": 0.9654088050314465
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s7.json",
+          "sha256": "1928356f37bb405bf3d40427998fc1431e1cccb392301d8b66d868a47da0c821",
+          "test_accuracy": 0.9502572898799314
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s8.json",
+          "sha256": "a0eb3789b16b0a4e8af00bfa83fc0c525dffe9dbfcce760a6f4fa6429e7cec73",
+          "test_accuracy": 0.9631217838765008
+        }
+      ]
+    }
+  ],
+  "interpretation": "No public win established. Selected ECG model is p32D4pool4, not the first p16D2 screen. DEV to TEST differences do not isolate a refit bug or causal mechanism.",
+  "next_protocol": "Use independent TRAIN-only split replications and same-epoch versus same-update refit controls; freeze before any future official TEST scoring. Do not select architectures using these TEST results."
+}
