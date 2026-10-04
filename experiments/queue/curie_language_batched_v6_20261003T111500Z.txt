@@ -4,9 +4,11 @@
 # improves over T=128 and test bpc falls; if not, the horizon is not the binding constraint at 10M one pass.
 curie_language_v6_contracts_20261003T111500Z -m pytest -q tests/test_compiled_episodes.py tests/test_language_batched.py
 # 00:35 UTC primate reaching round 2 (SOTA_TARGETS target 2; indy_20170131_02 p32/d2 test R2 .725 vs bigRSNN .772 / tinyRSNN
-# .746 there): causal leaky readout chosen on validation, 4,000 steps (loss still falling at 2,000).
+# .746 there): causal leaky readout chosen on validation, 4,000 steps (loss still falling at 2,000). 02:20: dev p64 .714
+# (overfits), pool-4 tied .741: tied capacity instead of width, plus a weight-decay variant.
 curie_pr2_p32d2_sm_4k_20261004T003500Z experiments/primate_reaching_native.py --sessions indy_20170131_02 --compiled --lanes 32 --segment 250 --smoothing --steps 4000 --tag curie_pr2_indy0131_p32d2_sm_4k_20261004T003500Z --payload 32 --depth 2 --pool 2
-curie_pr2_p64d2_sm_4k_20261004T003500Z experiments/primate_reaching_native.py --sessions indy_20170131_02 --compiled --lanes 32 --segment 250 --smoothing --steps 4000 --tag curie_pr2_indy0131_p64d2_sm_4k_20261004T003500Z --payload 64 --depth 2 --pool 2
+curie_pr2_p32d2_pool8tied_sm_4k_20261004T003500Z experiments/primate_reaching_native.py --sessions indy_20170131_02 --compiled --lanes 32 --segment 250 --smoothing --steps 4000 --tag curie_pr2_indy0131_p32d2_pool8tied_sm_4k_20261004T003500Z --payload 32 --depth 2 --pool 8 --tie-pools
+curie_pr2_p32d2_pool4tied_sm_4k_wd_20261004T003500Z experiments/primate_reaching_native.py --sessions indy_20170131_02 --compiled --lanes 32 --segment 250 --smoothing --steps 4000 --tag curie_pr2_indy0131_p32d2_pool4tied_sm_4k_wd1e-4_20261004T003500Z --payload 32 --depth 2 --pool 4 --tie-pools --weight-decay 1e-4
 curie_pr2_p32d2_pool4tied_sm_4k_20261004T003500Z experiments/primate_reaching_native.py --sessions indy_20170131_02 --compiled --lanes 32 --segment 250 --smoothing --steps 4000 --tag curie_pr2_indy0131_p32d2_pool4tied_sm_4k_20261004T003500Z --payload 32 --depth 2 --pool 4 --tie-pools
 # 22:20 UTC: sampled route credit ablation (§416; winner + one sampled alternative, unbiased for the linear credit,
 # fewer fitting FLOPs at pool > 2), then the §415 update-matched and second-seed checks of the 6-pass p96 row (1.8886).
