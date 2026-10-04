@@ -1624,3 +1624,20 @@ Contracts (tests/test_sparse_training.py): without credit, logits and every para
 units instead of U, and scoring is U·P. Prediction (THEORY note 92 and the credit-variance findings: Monte-Carlo noise was
 not the binding constraint): sampled credit at pool 4/8 matches the linear credit within about .01 bpc, at roughly 1/2 (pool 4)
 to 1/4 (pool 8) of the unit work. v6 tests p32/d4 pool 4 (linear: 2.343) and pool 8 (sampled and linear).
+
+## 417. Sampled races inject prediction noise; precision regression needs deterministic races
+
+NeuroBench Mackey-Glass development (τ = 18, three official-protocol repeats; experiments/mackey_glass_native.py). The
+error of an autonomous chaotic forecast grows by about e^10 over the 10 Lyapunov times scored, so one-step precision
+decides the score. With increment targets the native core fits the training points to MSE about 4e-5 (standardized). Yet
+the same trained weights forecast at sMAPE 25.3 with sampled races and 18.5 with deterministic races (every clock noise 1,
+so the highest score wins). The no-selection pool-1 control scores 16.4. Exposure-bias training (closed-loop windows)
+did not help (24.5 / 26.3 versus 22.5 / 23.0 teacher-forced). The sampled race is a source of output noise of order the
+one-step error: harmless for language, where mixing route samples gained only about .02 bpc, and decisive for chaotic
+regression.
+
+Consequence for the architecture: the race temperature is a function of the task. Exponential clocks sample in
+proportion to exp(score). Deterministic races are the zero-temperature limit, with the same scores, keys, credit (the
+linearized local expectation is defined for any realized winner) and sparse writes. Training with deterministic races
+removes the train/test mismatch of argmax inference. Round 4 tests that; the pool-1 control stays a labelled diagnostic.
+A learned per-race temperature (scores scaled before the race) would let each task choose; it is untested.
