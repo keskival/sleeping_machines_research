@@ -1,0 +1,3 @@
+# Fairness arm for P0-6 (TUNED_BASELINES.md): native p96/d4 pool 2 linear credit 6-pass (lr .004: 1.888, 352 TF) at lr 0.003.
+# Same budget, data, protocol; selection among native lr arms by DEV bpc. Curie (native training is not reserved for AWS).
+curie_language_native_lr0.003_10M_p96d4_6pass_20261005T000500Z experiments/language_batched_benchmark.py --tag curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr0.003_cmp_s6_20261005T000500Z --payload 96 --pool 2 --depth 4 --passes 6 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.003 --eval-every 1600 --cosine --eval-segment 256 --compiled --route-credit linear --checkpoint-every 400

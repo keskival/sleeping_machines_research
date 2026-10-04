@@ -182,13 +182,13 @@
       "subtitle": "AI that learns what to compute, when to compute it, and what to remember.",
       "sources": [],
       "notes": "Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.",
-      "hero": "A new trainable architecture that already beats Transformer baselines at a fraction of the compute.",
+      "hero": "A new trainable architecture that already beats small Transformer baselines at a fraction of the compute.",
       "funding_line": "Raising €3M to scale research and engineering\nResearch-stage deep tech · 4 October 2026"
     },
     {
       "kind": "table",
       "section": "The evidence",
-      "title": "Beats Transformer baselines at a fraction of the compute.",
+      "title": "Beats the saved Transformer baselines at a fraction of the compute.",
       "subtitle": "Wikipedia text (text8); same data and test set for all. Error: bits/char (bpc) or sMAPE %; lower is better.",
       "sources": [
         "R1"
@@ -205,7 +205,7 @@
         160,
         456
       ],
-      "rowh": 47,
+      "rowh": 43,
       "size": 14,
       "rows": [
         [
@@ -233,6 +233,12 @@
           "Behind by 0.09 at 81% of its training compute"
         ],
         [
+          "vs tuned LSTM-384, 6 passes (10M chars)",
+          "1.840 bpc",
+          "1.888 bpc",
+          "Behind by 0.05; it used 72% of our compute"
+        ],
+        [
           "vs LSTM-512 / Transformer (90M chars): queued",
           "1.661 / 1.604 bpc",
           "1.857 bpc",
@@ -245,10 +251,10 @@
           "Behind by 1.0 point, with an 8.5× smaller model"
         ]
       ],
-      "banner": "Wins against both Transformer baselines at a fraction of their compute. LSTM-512 and the 90M scale are the next proofs.",
+      "banner": "Wins vs both saved Transformers; a tuned small LSTM still leads. That gap is the next proof.",
       "banner_y": 548,
       "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; tuned versions at our budgets are running. Scoreboard: evidence pack R1.",
-      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats)."
+      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued."
     },
     {
       "kind": "table",

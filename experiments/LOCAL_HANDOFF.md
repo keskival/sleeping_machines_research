@@ -1,5 +1,12 @@
 # Local host: current research continuation
 
+## First tuned dense arm: a loss for native at budget A — 5 October 2026, 00:05 UTC
+
+AWS P0-6 arm LSTM-384 lr .003 6 passes: test 1.840 (valid 1.778, still improving) at 254 TF vs native p96/d4 1.888 at 352 TF.
+Deck slide 2 and TUNED_BASELINES updated plainly. Fairness: native lr was never tuned; curie queues
+curie_language_native_lr{0.003,0.006}_10M_p96d4_6pass_20261005T000500Z (admit after P0-2). Interpretation: the earlier
+budget-A "win" was against an under-tuned Transformer; the tuned-LSTM gap (.048) is the real current distance.
+
 ## Primate selection correction — 4 October 2026, 23:45 UTC
 
 Scoreboard/report now pick the primate development arm by validation (.724, val4 .750), not the best test (.754). Below

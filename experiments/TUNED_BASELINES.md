@@ -82,3 +82,14 @@ The first source-bound, inference-only LSTM-512/10M rescore is [prepared, unrun]
 It does not consume a training slot here or displace the active P0 owners. [Protocol audit](HEADLINE_PROTOCOL_AUDIT.md).
 The scoreboard now waits for all six A / four B arms with completed provenance and checked actual budgets, then
 requires aligned validation/test contexts. A first finished arm cannot become the headline tuned reference.
+
+## Completed arms
+
+| Arm | Budget | Est. training | Best valid | Test | vs native in budget |
+|---|---|---|---|---|---|
+| `aws_tuned_ref_10M_A_lstm384_p6_lr0.003_s0_20261004T210000Z` | A | 254 TF | 1.778 | **1.840** | native p96/d4 6-pass 1.888 at 352 TF: **loss** for native (stateful LSTM context; aligned rescore pending) |
+
+The validation curve was still improving at the final step (1.785 → 1.778 over the last 1,500 steps), so this budget is
+not saturated for the LSTM. Group selection waits for all six A arms (HEADLINE_PROTOCOL_AUDIT.md). Whatever is selected
+can only be at least this strong on validation. Fairness: native configurations were not learning-rate tuned. Matching
+native lr arms are queued (`curie_language_native_lr_*_20261005T000500Z`).

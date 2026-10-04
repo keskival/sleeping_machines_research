@@ -23,11 +23,11 @@ AI that learns what to compute, when to compute it, and what to remember.
 Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.
 
 
-## 2. Beats Transformer baselines at a fraction of the compute.
+## 2. Beats the saved Transformer baselines at a fraction of the compute.
 
-Completed text8 language comparisons, same data and held-out test set (T256). Lower bits per character is better. Single seeds.
+Wikipedia text (text8); same data and test set for all. Error: bits/char (bpc) or sMAPE %; lower is better.
 
-Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats).
+Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. "Passes" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued.
 
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
@@ -45,7 +45,7 @@ This is the problem definition and investment hypothesis. It is not a claim that
 
 ## 4. One model family across today's architectural landscape.
 
-Stateful temporal programs connect representation, memory, timing and learning.
+Our approach combines strengths of today's main model types.
 
 This is the whole-family position, not a claim that every implemented member contains every incumbent. The envelope intersects recurrent/SSM, attention, sparse expert, statistical/retrieval, adaptive-memory and temporal systems. Supported dense reference blocks and synchronous barriers are permitted endpoints. The proposed differentiation is a common stateful temporal/selection/credit construction and its eventual quality/resource behavior. Known primitives have prior art; wrapping a reference predictor establishes no advantage. Computational universality is not a strictly larger class than all finite computable predictors. The technical report states operator, state, precision and schedule conditions. Current language fits illustrate one branch; joint TTT, multimodal integration, general morphing and clockless hardware economics are separate milestones.
 
@@ -85,16 +85,16 @@ This construction combines familiar vector operations with temporal computation 
 
 ## 8. The language experiments establish three useful facts.
 
-10M-character text8 training budget; held-out prediction error. Lower bits per character is better.
+Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.
 
 T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is 0.0081 bpc, with 2.89 times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.
 
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 9. A language-model foothold for a new architecture.
+## 9. Single pass: error versus training compute.
 
-Held-out prediction error versus estimated training arithmetic; 10M characters, one pass.
+Each model sees the 10M training characters once. Lower and further left is better. Slide 2 adds multi-pass runs.
 
 p32 / D4 credited: 2.371491 bpc, 7.243 estimated whole-fit TFLOPs, 108,875 parameters. Saved Transformer-256×2: 2.426909, 111.262 TFLOPs, 1,658,907 parameters. This gives 15.36× lower fitting arithmetic and 15.24× fewer parameters for this saved control, with 0.0554 lower bpc. The strong one-pass LSTM is 2.170597 at 20.306 TFLOPs. Best native p96 is 2.162463 at 58.648 TFLOPs. Tuned dense references at our exact budgets (validation-selected) and the 90M matched-compute runs are running.
 
@@ -238,7 +238,7 @@ Pool 2 → 4 changes memory scalars from 512 to 1,024 and parameters from 108,87
 
 ## 23. The sparse path is implemented; system proof is next.
 
-Estimated arithmetic per evaluated input position. Green bars show the implemented winner-only path.
+Inference arithmetic per predicted character. Green bars: our implemented sparse runtime, which computes only the selected paths.
 
 Small random float64 fixtures match full-emulator logits within roughly 1e-10. Actual trained float32 winner/state/cache parity and a full held-out rescore are prepared and pending. The prepared CPU worker retains prepacked matrices per fixed model version, but native admission remains unrun. Candidate key scans, copying, residency, setup, gather traffic, cache invalidation and quality must all be included in serving comparisons. The deck deliberately does not attach the trained quality to an unverified production backend or convert FLOPs to joules.
 
