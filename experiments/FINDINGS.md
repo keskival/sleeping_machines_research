@@ -28,6 +28,8 @@ Interpretation:
   regularization or routing noise), not in carrying long history.
 - Protocol asymmetry items 1 and 2 (PROTOCOL_ASYMMETRY_AUDIT.md) are measured and do not explain the 10M gap on this
   data.
+- Deterministic routing (highest score wins) streams at 1.8884 vs sampled 1.8889, so routing noise is not the lever for
+  this model either.
 - Next levers:
   - width (p128 4-pass, P0-2);
   - dropout and validation-selected checkpoints, as the tuned LSTM uses;
