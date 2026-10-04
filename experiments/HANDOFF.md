@@ -2641,3 +2641,24 @@ Read-only automated MGsummary publisher nowmonitoring in tmuxaws_neurobench_
 summary; n10source-bound aggregate pusheda75e00d. Newreportappendix showspartial
 10/30 andpendingprimatewithoutclaimingwin. CurrentMGsecondbatch/replay/teacher
 healthy,~28GiBavailable, frozenperjob sourcebindings remainunchanged.
+
+AWS product priorities001500Z RUNNING: afterpull/rebase1ead108 readAGENTS,
+PRODUCT_ORDERS/WIN_CRITERIA/TUNED_BASELINES/HEADLINE_PROTOCOL_AUDIT. Newmanifest
+queue/aws_product_priority_20261005T001500Z/manifest.json, tmuxaws_product_priority,
+scripts/run_aws_product_priority.py. Slot1 P0-1native90M p64D4fourpasses; slots2/3
+P0-6ten10Mtunedcontrols (firstLSTM3846pass/LSTM5124.5pass). Slot1then6session
+primateP0-3, thenp96fourpass.18stages bound;1thread/VMS24GB/RSS4GB native/dense,
+2GBprimate/8GiBfloor. Allnumericaljobs run_safe with inheritednormalreservation.
+Actualbudgets/alignedvalidation andtestcontext stillrequirecompleted audits;
+no tunedwinner selected fromfirstresult. CPUwall remainsoperationalonly.
+
+Priorcohort hadneeds_review onunusedexpected_reception.py source drift before
+thirdMGbatchadmission; completed20/30mix8mean14.37192816 preserved, NOTfullwin.
+Depth8diagnostics suspendedperexplicitP0productorder with exactfinalcheckpoints:
+private replay4022272targets andteacher5562368. Artifactsproduct_pause001500Z
+and transition pushed dffcf57; unknown discarded<=4095targets/stream retained.
+Oldverifiedprocessesclosed beforeordinaryreservationtransfer. MGthirdbatch,
+sparsehistoricalrecovery, alignedLSTMrescore, additional90Mcontrols/seed7/pool8
+remainassignedpending, not silentlydropped. Source-boundproduct90Mcheckpoint
+publisher prepared toarchive10Mpresentationmilestones. Currentmodelsource
+coverage includesallkernels; futurechanges mustrejectadmission, notoverride.
