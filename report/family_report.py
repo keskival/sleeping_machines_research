@@ -242,7 +242,8 @@ def build_chapter(output):
                 doc[index].show_pdf_page(pymupdf.Rect(rect),svg_doc,0)
         doc.set_toc([[1,s['title'],i+1] for i,s in enumerate(sections())])
         doc.save(output,garbage=3,deflate=True)
-    assert 'numpy' not in sys.modules and 'torch' not in sys.modules
+    if __name__=='__main__':      # standalone refresh contract; the normal builder (make_pdf) necessarily imports numpy
+        assert 'numpy' not in sys.modules and 'torch' not in sys.modules
 
 
 def integrate(source, destination, chapter):

@@ -1801,7 +1801,7 @@ def blocks(M, tasks, ev):
              'on the preceding page remains valid under its own protocols. Appendix B retains the full cross-domain comparisons and resource ledgers.')])
         nlb={r['label']:r for r in tasks.get('native_language_batched',{}).get('native',[])}
         ctl={r['label']:r for r in tasks.get('native_language_batched',{}).get('controls',[])}
-        credited=[r for k,r in nlb.items() if 'route credit' in k and r.get('sparse')]
+        credited=[r for k,r in nlb.items() if 'route credit' in k and r.get('sparse') and r['updates']==1220]   # one pass
         best=min(credited,key=lambda r:r['test']) if credited else None
         if best and 'p32/d4' in nlb and 'p32/d4 + route credit' in nlb and 'LSTM-256' in ctl:
             pages[-1].insert(-1,('p','<b>Learned native language at 10M, one pass (THEORY §413).</b> Alternative-value credit '
@@ -1813,6 +1813,9 @@ def blocks(M, tasks, ev):
                 f'<b>{best["sparse"]/1e6:.2f}</b> versus {ctl["LSTM-256"]["infer"]/1e6:.2f} MFLOPs/position; '
                 f'fitting {best["fit"]/1e6:.2f} versus {ctl["LSTM-256"]["fit"]/1e6:.2f} MFLOPs/character. '
                 'Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. '
+                'Multi-pass and 90M rows have their own references: 10M six passes 1.888 vs the 4-pass Transformer-256x4 1.908 '
+                '(1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and '
+                'Transformer 1.604 at 16-33x our estimated fitting work. '
                 'The native appendix retains every arm and failed write credit.'))
         native8=[r for r in tasks.get('native_language',[]) if r['args']['fit']==8192
                  and r['args']['seed']==6 and (r['args']['heads'],r['args']['payload'],r['args']['depth'])==(2,16,8)]

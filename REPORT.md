@@ -73,7 +73,7 @@ Race selection has the exact softmax winner probabilities, but one winning value
 
 ## Current language evidence — 3 October 2026
 
-**The integrated native learner now reaches 1.888 bpc at the controls’ T256 test window.** The saved one-pass LSTM scores 2.171 and Transformer 2.427. These are completed single-seed comparisons; replication and large-data advantage remain open.
+**The integrated native learner now reaches 2.162 bpc at the controls’ T256 test window.** The saved one-pass LSTM scores 2.171 and Transformer 2.427 (one pass, 1,220 updates each). Multi-pass and 90M comparisons use their own matched references (native appendix): at 10M, six passes reach 1.888 versus the 4-pass Transformer-256x4 1.908 (with 1.5x its updates) and the 6-pass LSTM-512 1.799; at 90M, one native pass reaches 1.857 versus multi-pass LSTM-512 1.661 and Transformer 1.604. These are completed single-seed comparisons; replication and large-data advantage remain open.
 
 ![current native language status](report/figures/current_native_language_status.png)
 
@@ -85,7 +85,7 @@ Blue: native temporal races, sparse addressed persistent writes and learned mess
 - At eight selected writes per position, doubling p32 slots improves 2.371→2.345 bpc. Fitting work rises 1.65×; unchanged selected activity is not unchanged total cost.
 - The credited depth-8 model reaches 2.326 versus 2.456 without that credit. The gain survives a deeper stack; width, initialization and capacity still need controlled comparisons.
 
-The best native model is 0.282 bpc ahead of the LSTM, using 352.08 versus 20.31 estimated fitting TFLOPs. This is substantial progress, not comparable-quality superiority in total resources.
+The best native model is 0.008 bpc ahead of the LSTM, using 58.65 versus 20.31 estimated fitting TFLOPs. This is substantial progress, not comparable-quality superiority in total resources.
 
 ## Learning diagnosis and the next decisive checks
 
@@ -109,7 +109,7 @@ Saved matched checkpoints: 1,003,520 targets / 3,920 Adam updates; latest interv
 
 ### Prioritize discriminating evidence
 
-- Complete current multi-pass/width and queued tied-pool/seed comparisons. AWS90M pool4 has started after 15 contracts and its throughput pilot; completed90M quality is pending.
+- Complete the queued tied-pool/seed and update-matched multi-pass comparisons. All four AWS 90M one-pass fits are complete (best p64/D4 1.857 test bpc; multi-pass references 1.661 / 1.604 at 16-33x the estimated fitting work).
 - Prepared, unrun trained-FIT factorial checks separate message effects, private commit effects and their interaction at fixed first time/future noise.
 - Calibrate optional write credit against unexplained value utility; check shared scales, feedback and actual updates before another fit.
 - Datacenter serving: a prepared worker reuses one packed matrix stack. Standard-library lifecycle checks pass; trained parity, measured runtime and quality rescore remain pending. Snapshot/setup/residency costs are charged.
@@ -149,7 +149,7 @@ Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). 128 fi
 
 **Work between two learned language models.** Ours native2K uses **3.78 whole-fit GFLOPs** versus **22.75 GFLOPs** for the saved KV2K construction: **6.02× less counted work**, at 3.765 versus 3.733 development bpc (0.032 worse). Both use four passes and 8,191 scored development targets; width, capacity and memory construction differ. Complete CPU fitting traces include counterfactual learning and Adam. This compares two learned models with each other. Near-optimal count references for this small-data regime are shown in Appendix B as calibration (Theory §§393–394).
 
-**Learned native language at 10M, one pass (THEORY §413).** Alternative-value credit (forward values unchanged) improves the integrated native core from **2.507 to 2.370** test bpc at the same size. More width reaches **1.889** (T256 1.888) versus **2.171** for LSTM-256 and **2.427** for Transformer. Winner-only trace: **1.32** versus 0.68 MFLOPs/position; fitting 5.87 versus 2.03 MFLOPs/character. Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. The native appendix retains every arm and failed write credit.
+**Learned native language at 10M, one pass (THEORY §413).** Alternative-value credit (forward values unchanged) improves the integrated native core from **2.507 to 2.370** test bpc at the same size. More width reaches **2.163** (T256 2.162) versus **2.171** for LSTM-256 and **2.427** for Transformer. Winner-only trace: **1.32** versus 0.68 MFLOPs/position; fitting 5.87 versus 2.03 MFLOPs/character. Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. Multi-pass and 90M rows have their own references: 10M six passes 1.888 vs the 4-pass Transformer-256x4 1.908 (1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and Transformer 1.604 at 16-33x our estimated fitting work. The native appendix retains every arm and failed write credit.
 
 **Native data scaling.** The same 54,907-parameter construction improves from **3.765 to 3.557 bpc** when fitting data grows from2K to8K characters, using **15.12 whole-fit GFLOPs**. Both use four passes and the same 8,191 development targets; this is one-seed completed data-scaling evidence.
 
@@ -2969,10 +2969,6 @@ ECG200 and JapaneseVowels selected payload32/depth4/pool4 with two heads, at13 a
 Seed SD measures variation across training seeds on the same TEST examples, not a generalization confidence interval. Matched nearest-neighbor controls were DEV-only and do not supply matched TEST or resource comparisons. Published protocol variants require verification before frontier comparisons. Inference work and energy remain unmeasured; these fitting estimates establish no resource advantage.
 
 Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting presentations, not unique examples. Completed pilots, screens and final refits together account for 7,162.53GF estimated fitting work. Failed/contract/evaluation/compilation/preprocessing work is additional. Estimates extrapolate one eager optimizer window per epoch; variable padding prevents exact whole-fit accounting. Sources: experiments/results/public_benchmarks/*.json.
-
-The [saved-prediction selection audit](report/appendices/public_selection_audit_20261004.md) reproduces every final score and verifies immutable lineage. ECG200's selected large-model DEV NLL gain over the small model is0.00667 with paired standard error0.05888 at11.35× screening work. These adaptively selected DEV comparisons are descriptive; they motivate prospective multi-seed, compute-aware selection and TRAIN-only refit controls, without changing historical choices or claiming that a smaller model would win TEST.
-
-The [clock-precision and public-confirmation update](report/appendices/clock_precision_admission_20261004.md) retains completed same-weight Mackey–Glass tau18 results: sampled25.31, greedy18.46 and eight-stream averaging17.16sMAPE. They use different inference work and do not establish an official tau17 win. A route-preserving, mean-unbounded-clock-normalized control is implemented separately; its native numerical and bounded integration stages remain pending. Existing six-session primate and30-repeat tau17 owner queues retain priority.
 
 ## Appendix. Native language at 10M: the integrated core, segment-batched
 

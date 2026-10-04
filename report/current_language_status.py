@@ -28,7 +28,8 @@ def load(native):
     by_label = {r['label']: r for r in native['native']}
     selected = [dict(row=by_label[name], name=label, ours=True) for name, label in SELECT]
     selected += [dict(row=r, name=r['label'], ours=False) for r in native['controls']]
-    best = min((r for r in native['native'] if 'route credit' in r['label'] and r['test256'] is not None),
+    best = min((r for r in native['native'] if 'route credit' in r['label'] and r['test256'] is not None
+                and r['updates'] == 1220),                     # one-pass rows only: the matched one-pass controls
                key=lambda r: r['test256'])
     if not any(entry['row']['label'] == best['label'] for entry in selected):
         selected.insert(len(SELECT), dict(row=best, name=best['label'], ours=True))
@@ -132,7 +133,10 @@ def pages(data):
     return [[
         ('h1', 'Current language evidence — 3 October 2026'),
         ('p', f"<b>The integrated native learner now reaches {best['test256']:.3f} bpc at the controls’ T256 test window.</b> "
-              f"The saved one-pass LSTM scores {lstm['test']:.3f} and Transformer {tf['test']:.3f}. "
+              f"The saved one-pass LSTM scores {lstm['test']:.3f} and Transformer {tf['test']:.3f} (one pass, 1,220 updates each). "
+              'Multi-pass and 90M comparisons use their own matched references (native appendix): at 10M, six passes reach '
+              '1.888 versus the 4-pass Transformer-256x4 1.908 (with 1.5x its updates) and the 6-pass LSTM-512 1.799; at 90M, '
+              'one native pass reaches 1.857 versus multi-pass LSTM-512 1.661 and Transformer 1.604. '
               'These are completed single-seed comparisons; replication and large-data advantage remain open.'),
         ('figure', ('current_native_language_status', 174)),
         ('small', 'Blue: native temporal races, sparse addressed persistent writes and learned messages; light blue: timing-only route credit. '
@@ -173,8 +177,8 @@ def pages(data):
                   'These are training predictions, not completed heldout scores or useful-depth/iso-FLOP proof.'),
         ('h2', 'Prioritize discriminating evidence'),
         ('bullets', [
-            'Complete current multi-pass/width and queued tied-pool/seed comparisons. AWS90M pool4 has started after '
-            '15 contracts and its throughput pilot; completed90M quality is pending.',
+            'Complete the queued tied-pool/seed and update-matched multi-pass comparisons. All four AWS 90M one-pass fits are '
+            'complete (best p64/D4 1.857 test bpc; multi-pass references 1.661 / 1.604 at 16-33x the estimated fitting work).',
             'Prepared, unrun trained-FIT factorial checks separate message effects, private commit effects and their interaction at fixed first time/future noise.',
             'Calibrate optional write credit against unexplained value utility; check shared scales, feedback and actual updates before another fit.',
             'Datacenter serving: a prepared worker reuses one packed matrix stack. Standard-library lifecycle checks pass; '
