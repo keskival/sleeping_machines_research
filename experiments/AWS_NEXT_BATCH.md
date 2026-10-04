@@ -1,5 +1,13 @@
 # Current AWS work
 
+**P0-4 Mackey-Glass third batch unblocked (check 4 Oct, 23:55 UTC, Docker review host):** all 175 pinned sources in
+`queue/aws_neurobench_admission_20261004T064000Z/manifest.json` match current main (sha256 recomputed). An actual import trace of
+`experiments/mackey_glass_native.py` loads 14 sleeping_machines modules and **not** `expected_reception.py`, the file
+behind the earlier needs_review. Admit `aws_mg_tau17_r1_from20` (repeats 20–29, unchanged pre-declared config) into the
+next free slot after the P0-1/P0-6/P0-3 order. Re-verify the pins at admission. If they still fail, record which file and
+whether the driver imports it. Arithmetic: 20/30 mean is 14.372; beating LSTM 13.37 needs a 10-repeat mean below about 11.37
+(the first 10 averaged 13.60), so report the completed 30-repeat result plainly either way.
+
 **Priority update (user, 4 October 21:00 UTC): tuned dense references (P0-6, [TUNED_BASELINES.md](TUNED_BASELINES.md)).**
 Slot order: 90M rev. 4 p64 (P0-1) → the ten `queue/aws_tuned_ref_10M_*_20261004T210000Z.txt` → six-session primate (P0-3)
 → p96 rev. 4 → four `aws_tuned_ref_90M_*` → `aws_language_10M_r1_p64d4_4pass_linear_s7_20261004T210000Z` → `aws_language_10M_p64d4_pool8_sampled_4pass_s6_20261004T233500Z`
