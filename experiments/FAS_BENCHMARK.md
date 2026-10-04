@@ -119,3 +119,21 @@ estimates for dense references), and inference work up to the decision at N.
   covers the whole run. The discriminating range is N <= 512, where early detection is the open problem.
 - 4 Oct 22:20 UTC: first native arm queued on curie (`curie_fas_native_p32d4_20261004T222000Z`: p32/d4, linear route
   credit, 2 epochs, clean-only training). Dense, SSM and point-process references: next, as AWS jobs.
+- 5 Oct 01:00 UTC (Docker review host): **stronger one-sided timing controls do not help** (`experiments/fas/strong_baselines.py`,
+  `experiments/results/fas/fas_v1_strong_classical_test_20261005T010000Z.json`). Locally regenerated subset
+  `fas_v1_20261004_subset`: test splits are byte-identical to the official manifest (sha256), the fit uses the same first 2,000
+  clean runs, and gap_z reproduces exactly. Hypothesis: faults only add delay, so a directional, distribution-free gap score
+  should beat squared gap_z. Result: AUROC (all faults).
+
+| Control | N=128 | N=256 | N=512 | N=1024 |
+|---|---:|---:|---:|---:|
+| gap_z (repro) | 0.530 | 0.559 | 0.727 | 0.998 |
+| gap_quantile (signed, per-bigram empirical CDF) | 0.523 | 0.525 | 0.508 | 0.608 |
+| gap_cusum (one-sided CUSUM of quantiles) | 0.514 | 0.521 | 0.562 | 0.783 |
+| gap_robust_z (signed median/MAD) | 0.540 | 0.549 | 0.557 | 0.748 |
+
+  Falsified: directional gap shift is not the main early signal. gap_z's power at N >= 512 comes from its squared and
+  unseen-bigram terms. Faults mainly change which events become adjacent: a delayed step reorders the interleaving of
+  concurrent items, a first-arrival (race) effect. This is consistent with the benchmark's purpose and is not evidence for any model.
+  Implication for references: an order-and-timing model of adjacency (e.g. timed n-gram likelihood over the interleaving,
+  or the point-process references) is the relevant strong control. All controls remain near chance at N <= 256.
