@@ -40,7 +40,7 @@ def near(a, b):
 def verify():
     records = {}
     svgs = sorted((ROOT/'report/figures').glob('architecture_*.svg'))
-    assert len(svgs) == 9
+    assert len(svgs) == 10
     for path in svgs:
         tree = ET.fromstring(path.read_text())
         _, _, width, height = map(float, tree.attrib['viewBox'].split())
@@ -66,7 +66,7 @@ def verify():
     records['html_unique_ids_and_local_links'] = len(page.ids)
     tabs = [a for _,a in page.elements if a.get('role') == 'tab']
     panels = [a for _,a in page.elements if a.get('role') == 'tabpanel']
-    assert len(tabs) == len(panels) == 9
+    assert len(tabs) == len(panels) == 10
     for i,(tab,panel) in enumerate(zip(tabs,panels)):
         assert tab['aria-controls'] == panel['id']
         assert panel['aria-labelledby'] == tab['id']
@@ -78,7 +78,8 @@ def verify():
     docs = [ROOT/'report'/n for n in (
         'model_family_design.md', 'architecture_review.md', 'model_family_inventory.md',
         'architecture_review_checks.md', 'architecture_source_inventory.md',
-        'model_family_overview.md','model_family_example.md','model_family_composition.md','architecture_evidence.md')]
+        'model_family_overview.md','model_family_example.md','model_family_composition.md',
+        'model_family_specification.md','model_family_members.md','architecture_evidence.md')]
     docs += [ROOT/'experiments/theory/152_primitives_integration_and_capability_bounds.md']
     links = 0
     for path in docs:
@@ -89,6 +90,11 @@ def verify():
             assert (path.parent/target).exists(), (path, target)
             links += 1
     records['markdown_local_links'] = links
+    fields=list('EOGSIPTQLUBX')
+    for name,repeats in (('model_family_specification.md',1),('model_family_members.md',3)):
+        declared=re.findall(r'^\| ([A-Z])(?=[: ])',(ROOT/'report'/name).read_text(),re.M)
+        assert declared==fields*repeats,(name,declared)
+    records['complete_twelve_field_member_specifications']=3
     inventory = json.loads((ROOT/'report/architecture_source_inventory.json').read_text())
     for item in inventory['modules']:
         assert hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest() == item['sha256']
@@ -120,6 +126,18 @@ def verify():
         assert claim['status'] and claim['scope'] and claim['sources']
         assert all((ROOT/p).exists() and 'invalid_protocol' not in p for p in claim['sources'])
     records['completed_result_bindings'] = len(snapshots)
+    online=evidence['online_pilot']
+    result=json.loads((ROOT/online['result_path']).read_text())
+    assert hashlib.sha256((ROOT/online['result_path']).read_bytes()).hexdigest()==online['result_sha256']
+    assert result['status']=='completed' and online['protocol']==result['protocol']
+    assert online['execution_sources']==result['source_sha256'] and online['architecture']==result['architecture']
+    assert result['protocol']['predict_before_update'] and result['protocol']['scored_targets']==8191
+    assert result['protocol']['official_test_read'] is False
+    arms={r['arm']:r for r in result['rows']}
+    near(online['frozen_bpc'],arms['frozen']['bpc']);near(online['online_bpc'],arms['online']['bpc'])
+    assert online['updates']==arms['online']['updates']==512
+    near(online['total_processing_work_ratio'],result['work']['online']['unit_special_flops']/result['work']['frozen']['unit_special_flops'])
+    records['completed_causal_online_pilot_binding']=1
     records['claims_with_existing_scoped_sources'] = len(evidence['claims'])
     manifest = ROOT/'experiments/queue/native_clock_noise_20261004T065700Z/manifest.json'
     frozen = json.loads(manifest.read_text())['source_sha256']
@@ -138,8 +156,8 @@ const limits={depth:[1,64,1],heads:[1,16,1],pool:[1,1024,1],width:[2,2048,2],'rx
 const ids=['credit','memories','scores','writes','proposals','state','mode-note','rx-arrivals','rx-members','rx-state','rx-emission','rx-note',...Object.keys(values)];
 const elements=Object.fromEntries(ids.map(id=>[id,{value:String(values[id]??''),checked:true,textContent:'',handlers:{},addEventListener(k,f){this.handlers[k]=f},checkValidity(){const v=Number(this.value),limit=limits[id];if(!limit)return true;const [min,max,step]=limit;return this.value!==''&&Number.isFinite(v)&&v>=min&&v<=max&&Math.abs((v-min)/step-Math.round((v-min)/step))<1e-8}}]));
 let focused=null;
-const buttons=Array.from({length:9},(_,i)=>({dataset:{panel:String(i)},handlers:{},attrs:{},addEventListener(k,f){this.handlers[k]=f},setAttribute(k,v){this.attrs[k]=v},focus(){focused=i}}));
-const panels=Array.from({length:9},()=>({hidden:false}));
+const buttons=Array.from({length:10},(_,i)=>({dataset:{panel:String(i)},handlers:{},attrs:{},addEventListener(k,f){this.handlers[k]=f},setAttribute(k,v){this.attrs[k]=v},focus(){focused=i}}));
+const panels=Array.from({length:10},()=>({hidden:false}));
 let noCredit=false;
 const document={getElementById:id=>elements[id],querySelectorAll:q=>q==='[data-panel]'?buttons:panels,body:{classList:{toggle(k,v){assert.equal(k,'no-credit');noCredit=v}}}};
 const context={document,Number,String,Math};
@@ -154,9 +172,9 @@ set('width',31);assert.match(elements['mode-note'].textContent,/even/);assert.eq
 set('width','');assert.match(elements['mode-note'].textContent,/bounds/);
 set('width',32);set('depth',0);assert.match(elements['mode-note'].textContent,/bounds/);
 set('depth',4);set('width',3.5);assert.match(elements['mode-note'].textContent,/bounds/);
-for(let i=0;i<9;i++){buttons[i].handlers.click();panels.forEach((p,j)=>assert.equal(p.hidden,j!==i));buttons.forEach((b,j)=>{assert.equal(b.attrs['aria-selected'],String(i===j));assert.equal(b.attrs.tabindex,i===j?'0':'-1')})}
+for(let i=0;i<10;i++){buttons[i].handlers.click();panels.forEach((p,j)=>assert.equal(p.hidden,j!==i));buttons.forEach((b,j)=>{assert.equal(b.attrs['aria-selected'],String(i===j));assert.equal(b.attrs.tabindex,i===j?'0':'-1')})}
 function key(index,name,expected){let prevented=false;buttons[index].handlers.keydown({key:name,preventDefault(){prevented=true}});assert.equal(prevented,true);assert.equal(focused,expected);assert.equal(panels[expected].hidden,false)}
-key(8,'ArrowRight',0);key(0,'ArrowLeft',8);key(3,'Home',0);key(3,'End',8);
+key(9,'ArrowRight',0);key(0,'ArrowLeft',9);key(3,'Home',0);key(3,'End',9);
 elements.credit.checked=false;elements.credit.handlers.change();assert.equal(noCredit,true);
 elements.credit.checked=true;elements.credit.handlers.change();assert.equal(noCredit,false);
 function reception(policy,H,cTime,q,members,state,emission){const r=context.traceReception(policy,H,cTime,q);assert.equal(r.accepted.map(e=>e.name).join(','),members);assert.equal(r.state,state);if(emission===null)assert.equal(r.emission,null);else assert.ok(Math.abs(r.emission-emission)<1e-12);return r}
@@ -179,7 +197,7 @@ assert.equal(elements['rx-members'].textContent,'A, B, C');assert.equal(elements
 set('rx-cutoff',2);assert.match(elements['rx-note'].textContent,/Pending/);assert.equal(elements['rx-emission'].textContent,'Not emitted');
 set('rx-gap','');assert.match(elements['rx-note'].textContent,/bounds/);assert.equal(elements['rx-state'].textContent,'—');
 set('rx-gap',1);set('rx-time',.35);assert.match(elements['rx-note'].textContent,/bounds/);
-console.log('dimensions, modes, invalid-input clearing, nine keyboard tabs, credit visibility and sixteen causal reception cases pass');
+console.log('dimensions, modes, invalid-input clearing, ten keyboard tabs, credit visibility and sixteen causal reception cases pass');
 '''
     with tempfile.TemporaryDirectory(prefix='architecture-review-') as temp:
         js_path = Path(temp)/'controls.js'
@@ -328,11 +346,59 @@ console.log('dimensions, modes, invalid-input clearing, nine keyboard tabs, cred
     near(first_w,x)
     assert 1.*1.*x != 0.  # Finite-change expressivity despite zero tangent.
     witness_cases += 1
+    # Complete C example: score/update the observed transition before the next
+    # forecast. Known expectations independently identify the causal prefix.
+    counts=[[0,0],[0,0]];previous=None;predictions=[]
+    for symbol in (0,1,0):
+        if previous is not None: counts[previous][symbol]+=1
+        predictions.append((counts[symbol][1]+1)/(sum(counts[symbol])+2))
+        previous=symbol
+    for actual,expected in zip(predictions,(.5,.5,2/3)): near(actual,expected)
+    assert counts==[[0,1],[1,0]]
+    witness_cases+=1
+    # H at q=2.5 with arrivals0,1,2 and payloads(1,0),(0,1),(-1,0):
+    # H=.5 closes three bursts and keeps the last two; H=1.5 stays pending.
+    # Evaluate the declared initial query maps by an independent closed form.
+    d=math.exp(-.1);p=1/(1+math.exp(-3*d))
+    short_prediction=math.tanh(2-(1-p)*d)-math.tanh(1+p*math.exp(-.2))
+    pending_prediction=math.tanh(2)-math.tanh(1)
+    assert abs(short_prediction-pending_prediction)>.1
+    losses=[.5*(short_prediction-.5)**2,.5*(pending_prediction-.5)**2]
+    for scores in ((0.,0.),(2.,-1.),(-3.,1.)):
+        rates=[math.exp(s) for s in scores];pi=[r/sum(rates) for r in rates]
+        risk=sum(p*l for p,l in zip(pi,losses))
+        analytic=[p*(l-risk) for p,l in zip(pi,losses)]
+        near(sum(analytic),0.)
+        assert any(abs(g)>1e-5 for g in analytic)
+        for i in range(2):
+            outcomes=[]
+            for sign in (-1,1):
+                perturbed=[math.exp(s+sign*1e-5*(j==i)) for j,s in enumerate(scores)]
+                outcomes.append(sum(r*l for r,l in zip(perturbed,losses))/sum(perturbed))
+            near((outcomes[1]-outcomes[0])/2e-5,analytic[i])
+        witness_cases+=1
     records['independent_scalar_witness_cases'] = witness_cases
     artifacts = docs+[ROOT/'scripts/build_architecture_atlas.py',ROOT/'scripts/check_architecture_review.py',
         ROOT/'report/architecture_evidence.json',ROOT/'report/architecture_atlas.html',
         ROOT/'report/architecture_source_inventory.json',ROOT/'README.md',ROOT/'REPORT.md',
-        ROOT/'experiments/THEORY.md',ROOT/'experiments/LOCAL_HANDOFF.md']+svgs
+        ROOT/'experiments/THEORY.md',ROOT/'experiments/LOCAL_HANDOFF.md',
+        ROOT/'report/family_report.py',ROOT/'report/readable_report.py',ROOT/'report/sleeping_machines_status.pdf',
+        ROOT/'scripts/build_pitch_deck.py',ROOT/'scripts/package_pitch_diligence.py',
+        ROOT/'investment/README.md',ROOT/'investment/INVESTOR_READING_REVIEW.md',
+        ROOT/'investment/PITCH_DECK.json',ROOT/'investment/PITCH_DECK_NOTES.md',
+        ROOT/'investment/sleeping_machines_pitch_deck.pdf',ROOT/'investment/sleeping_machines_pitch_deck_main.pdf']+svgs
+    report_sha=hashlib.sha256((ROOT/'report/sleeping_machines_status.pdf').read_bytes()).hexdigest()
+    deck_sha=hashlib.sha256((ROOT/'investment/sleeping_machines_pitch_deck.pdf').read_bytes()).hexdigest()
+    for directory,pattern,expected in (('report','publication_model_family_*.json',report_sha),
+                                       ('investment','publication_pitch_deck_*.json',deck_sha)):
+        publications=[p for p in (ROOT/directory).glob(pattern) if json.loads(p.read_text()).get('output_sha256')==expected]
+        assert len(publications)==1,(directory,publications)
+        publication=json.loads(publications[0].read_text())
+        assert publication['status']=='completed'
+        for path,digest in publication['source_sha256'].items():
+            assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,('publication source',path)
+        artifacts.append(publications[0])
+    records['current_pdf_publications_and_source_bindings']=2
     records['documentation_artifact_sha256'] = {
         str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest()
         for path in artifacts}

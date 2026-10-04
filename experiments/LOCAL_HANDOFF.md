@@ -1,5 +1,59 @@
 # Local host: current research continuation
 
+## Canonical family specification, visual report and investor summary — 4 October 2026
+
+The family remains the overarching object, not one native benchmark. Read
+../report/model_family_overview.md → model_family_specification.md →
+model_family_members.md → design/composition guides. The canonical twelve-field
+core states library-relative membership, composition grammar, compatibility,
+causal state/time/query/update contracts and termination. Three complete
+illustrative members contrast statistics, selective temporal learning and a
+mixed reception/dense-query/finite-option TTT design. They are specifications,
+not new trained models, architectural substitutions or queued experiments.
+
+The tenth SVG/atlas tab places the family among recurrence/SSMs, attention,
+sparse experts, counts/retrieval, TTT and event systems. The report PDF now
+has an11-page vector family chapter (all three axes at every level, choices,
+landscape, units/layers, integration/learning and preservation) plus all215
+prior report pages, whose extracted text is unchanged. Report Markdown and
+the normal builder retain the same front matter/chapter. Standalone
+report/family_report.py refreshes it without NumPy, plotting or model imports.
+
+Investor PDFs now have18main/34total slides, with family landscape and design
+space before benchmarks. Financial and completed benchmark ledgers stay
+frozen; speaker notes and new private diligence pack carry the same definition.
+No outreach/distribution. Previous PDFs/publication records/pack are preserved.
+
+Evidence consistency: the earlier causal full-neural online pilot is positive
+family evidence (3.190859→3.095738 BPC,8,191 DEV targets,10.736× total processing
+work), not current native TTT, drift retention or an economic win. It receives
+its own result/protocol/historical-source binding beside the four T256 native
+language anchors. The overly broad earlier “no TTT win” wording is qualified.
+
+Checks: ten SVGs/tabs,16reception cases, three complete twelve-field members,
+25scalar witnesses, four native results + one causal online binding,13claims,
+110source hashes and53unchanged frozen clock sources. Final artifact record:
+results/diagnostics/architecture_review_stdlib_20261004T113300Z.json.
+Publication records ../report/publication_model_family_release_20261004T113000Z.json
+and ../investment/publication_pitch_deck_family_release_20261004T113100Z.json;
+private pack sleeping_machines_private_diligence_20261004T113200Z.zip.
+Bounded render uses nice19/one thread,300,000KiB RSS watchdog,1,000,000KiB
+address cap,120s wall limit and8GiB MemAvailable floor; report peak~136MiB,
+deck peak~39MiB. PDF bounds, pagination, preserved pages and representative
+rendered diagrams reviewed. Contiguous-page copy/object deduplication brings
+the226-page report to5,069,175bytes; six original cover/chart pages render
+pixel-identically at checked resolution (60,904KiB verification peak). All215
+retained pages have identical text. Earlier merge PDFs/review records/pack
+remain historical artifacts. No HTML-browser claim or training/ML runtime.
+
+Priority unchanged: official integrated primate/MG owner admission
+queue/aws_neurobench_admission_20261004T064000Z/manifest.json,
+curie_language_batched_v6_20261003T111500Z and current AWS replay owners;
+frozen clock065700Z contracts→pilot follow owners. Full future-write utility,
+useful horizon/discovery, integrated reception/silence, trained sparse parity,
+native TTT/structural/shared-world integration and measured energy remain gaps.
+No physical host admission/reservation attempted. Coordination notes preserved.
+
 ## Family composition and preservation review — 4 October 2026
 
 Documentation and bounded stdlib/Node checks only; no ML import, numerical

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-03",
+  "date": "2026-10-04",
   "classification": "Private review draft; no external distribution by this work",
   "source_accessed_date": "2026-10-03",
   "sources": {
@@ -19,7 +19,7 @@
       "label": "Architecture, numerical contracts and report",
       "short": "Theory / contracts",
       "url": "../report/sleeping_machines_status.pdf",
-      "scope": "Private technical report. Temporal races, counterfactual credit and native sparse inference; trained-weight sparse parity remains pending."
+      "scope": "Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open."
     },
     "M1": {
       "label": "IEA — Key Questions on Energy and AI, executive summary",
@@ -120,8 +120,8 @@
       "subtitle": "AI that learns what to compute, when to compute it, and what to remember.",
       "sources": [],
       "notes": "Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.",
-      "hero": "More useful capacity.\nLess active computation.\nA path from models to silicon.",
-      "funding_line": "Raising €3M to scale research and engineering\nPrivate investor presentation · October 2026"
+      "hero": "A trainable model family and computing substrate built around time, local memory and selective work.",
+      "funding_line": "Raising €3M to scale research and engineering\nResearch-stage deep tech · 4 October 2026"
     },
     {
       "kind": "cards",
@@ -151,6 +151,79 @@
         }
       ],
       "banner": "We are developing a model family and execution substrate around this separation."
+    },
+    {
+      "kind": "family_landscape",
+      "section": "The model family",
+      "title": "One model family across today's architectural landscape.",
+      "subtitle": "Stateful temporal programs connect representation, memory, timing and learning.",
+      "sources": [
+        "R3"
+      ],
+      "top": [
+        {
+          "label": "Recurrent / SSM models",
+          "body": "Persistent state and selective dynamics.\nAdd addressed temporal programs."
+        },
+        {
+          "label": "Attention / Transformers",
+          "body": "Content-addressed aggregation.\nInclude rich local interaction."
+        },
+        {
+          "label": "Sparse experts / MoE",
+          "body": "Capacity beyond selected expert work.\nAdd private facts and timing."
+        }
+      ],
+      "bottom": [
+        {
+          "label": "Statistics / retrieval",
+          "body": "Counts and direct historical evidence.\nCombine with learned abstractions."
+        },
+        {
+          "label": "Adaptive memory / TTT",
+          "body": "Learning in the deployed model.\nUse local, causal update policies."
+        },
+        {
+          "label": "Event / temporal systems",
+          "body": "Local arrivals, timers and causal order.\nAdd vector messages and route credit."
+        }
+      ],
+      "core": "One content / time / address / state interface; compatible choices from units to complete systems.\nIntegrated target: computational time, selective state, small messages, separate keys/values and unrealized credit.",
+      "caveat": "Containment needs actual operators and contracts. Learned parity, lower total cost and physical energy require evidence.",
+      "notes": "This is the whole-family position, not a claim that every implemented member contains every incumbent. The envelope intersects recurrent/SSM, attention, sparse expert, statistical/retrieval, adaptive-memory and temporal systems. Supported dense reference blocks and synchronous barriers are permitted endpoints. The proposed differentiation is a common stateful temporal/selection/credit construction and its eventual quality/resource behavior. Known primitives have prior art; wrapping a reference predictor establishes no advantage. Computational universality is not a strictly larger class than all finite computable predictors. The technical report states operator, state, precision and schedule conditions. Current language fits illustrate one branch; joint TTT, multimodal integration, general morphing and clockless hardware economics are separate milestones."
+    },
+    {
+      "kind": "architecture",
+      "section": "Family design and integration",
+      "title": "Choose the right computation in each region.",
+      "subtitle": "One family can mix selective temporal programs with rich interaction and causal memory.",
+      "sources": [
+        "R3"
+      ],
+      "steps": [
+        {
+          "label": "01 / UNITS",
+          "metric": "Local programs",
+          "body": "Choose state, flow, writes, small messages, keys and reception. Time can perform computation."
+        },
+        {
+          "label": "02 / LAYERS",
+          "metric": "Adaptive work",
+          "body": "Select one or many messages. Add dense interaction where needed; preserve lean regions elsewhere."
+        },
+        {
+          "label": "03 / COMPOSITIONS",
+          "metric": "Shared evidence",
+          "body": "Link learned vectors, counts and historical memory. Explicit paths let dense and sparse inputs inform one query."
+        },
+        {
+          "label": "04 / SYSTEMS",
+          "metric": "Same learner",
+          "body": "Support streamed or batched updates and native TTT. Broader structural design is a further learning ambition."
+        }
+      ],
+      "banner": "No required global periodic tick. Joint integration, measured TTT gains, morphing and hardware energy remain milestones.",
+      "notes": "The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts."
     },
     {
       "kind": "architecture",
@@ -957,6 +1030,6 @@
       ]
     }
   ],
-  "editorial_revision": "Investor-readability review, 3 October 2026",
-  "main_slide_count": 16
+  "editorial_revision": "Family landscape and generative design space; benchmark ledger remains frozen at 3 October 2026",
+  "main_slide_count": 18
 }

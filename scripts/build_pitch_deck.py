@@ -122,7 +122,14 @@ def prepare():
     for name, values in [('pitch_deck_benchmarks.csv', ledger), ('pitch_deck_financial_sensitivity.csv', sensitivity)]:
         with (INV / name).open('w', newline='') as handle:
             writer = csv.DictWriter(handle, fieldnames=list(values[0]), lineterminator='\n'); writer.writeheader(); writer.writerows(values)
+    write_notes()
+    print(json.dumps(dict(metrics=metrics, models=len(ledger), slides=len(json.loads(CONTENT.read_text())['slides']))))
+
+
+def write_notes():
+    """Editorial refresh only; leave the completed metric ledger untouched."""
     content = json.loads(CONTENT.read_text())
+    metrics = verify()['metrics']
     notes = ['# Sleeping Machines — full pitch deck and diligence notes',
              '\nProposed raise: €3M. Bullish negotiating case: €50M priced pre-money; €100M stretch scenario.',
              '\nThis supersedes the pricing proposal in the older $10M discussion memo; it does not add new benchmark evidence.',
@@ -139,7 +146,6 @@ def prepare():
                   'The editable slide narrative is PITCH_DECK.json. The frozen parent hashes, exact derived metrics and assumptions are in pitch_deck_evidence_20261003.json. CSV exports use identical column units for every model. Run the preparation only when deliberately updating the evidence cut-off; use a fresh publication tag to render. This build imports no numerical model runtime.',
                   '\nOpen diligence: company/jurisdiction, cap table and option pool; founder availability; contribution and IP chain of title (including credited co-author Karoliina Salminen); employer invention assignments; intended software/model licenses; budget quotes; three-seed modern controls; trained sparse-backend parity; measured system energy/traffic; design-partner willingness to pay. No contacts have been made by this work.'])
     (INV / 'PITCH_DECK_NOTES.md').write_text('\n\n'.join(notes) + '\n')
-    print(json.dumps(dict(metrics=metrics, models=len(ledger), slides=len(content['slides']))))
 
 
 def available():
@@ -263,6 +269,19 @@ def render(stage):
             cards=s['cards']
             for i,a in enumerate(cards): card_text(52+i*400,200,376,330,a['label'],a['body'],a['metric'],[cyan,green,amber][i])
             banner(s['banner'])
+
+        elif kind=='family_landscape':
+            for row,items in enumerate((s['top'],s['bottom'])):
+                yy=190 if row==0 else 505
+                for i,a in enumerate(items):
+                    xx=52+i*400;rect(xx,yy,376,116)
+                    p(a['label'],xx+18,yy+15,340,17,cyan if row==0 else green,True,maxh=25)
+                    p(a['body'],xx+18,yy+48,340,16,text,maxh=59)
+                    line(xx+188,yy+116 if row==0 else yy,xx+188,335 if row==0 else 472,cyan,1.5)
+            rect(52,335,1176,137,'#103237',stroke=green)
+            p('SLEEPING MACHINES / STATEFUL TEMPORAL PROGRAMS',72,351,1136,22,green,True,maxh=32)
+            p(s['core'],72,396,1136,18,text,maxh=64)
+            p(s['caveat'],52,641,1176,13,muted,maxh=25)
 
         elif kind=='architecture':
             for i,a in enumerate(s['steps']):
@@ -429,7 +448,7 @@ def render(stage):
         else: raise ValueError('Unknown slide kind: '+kind)
 
         line(52,674,1228,674,'#2A3D52',.8)
-        p('SLEEPING MACHINES  /  PRIVATE REVIEW  /  03 OCT 2026',52,685,460,10,muted)
+        p('SLEEPING MACHINES  /  PRIVATE REVIEW  /  '+content.get('date','2026-10-03'),52,685,460,10,muted)
         xx=480
         for source in s.get('sources',[]):
             src=content['sources'][source]; label=source+' '+src['short']
@@ -460,7 +479,10 @@ def publish(tag):
     if available()<8192*1024: raise ValueError('Less than 8GiB available')
     verify()
     inputs=[CONTENT,EVIDENCE,Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
-            INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv']
+            INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
+            ROOT/'report/sleeping_machines_status.pdf',ROOT/'report/model_family_specification.md',
+            ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',
+            ROOT/'report/model_family_composition.md']
     hashes={str(x.relative_to(ROOT)):sha(x) for x in inputs}
     previous=sha(OUTPUT) if OUTPUT.exists() else None
     previous_main=sha(MAIN_OUTPUT) if MAIN_OUTPUT.exists() else None
@@ -511,7 +533,7 @@ def publish(tag):
         main_doc=pymupdf.open()
         main_doc.insert_pdf(doc,from_page=0,to_page=main_count-1)
         main_doc.set_toc([entry for entry in doc.get_toc() if entry[2]<=main_count])
-        main_doc.set_metadata(dict(doc.metadata,title='Sleeping Machines | investor pitch | 16-slide main presentation'))
+        main_doc.set_metadata(dict(doc.metadata,title=f'Sleeping Machines | investor pitch | {main_count}-slide main presentation'))
         main_doc.save(stage/MAIN_OUTPUT.name,garbage=3,deflate=True)
         main_doc.close()
     verify()
@@ -541,8 +563,9 @@ def publish(tag):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     mode=parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument('--prepare',action='store_true'); mode.add_argument('--tag'); mode.add_argument('--render-stage')
+    mode.add_argument('--prepare',action='store_true'); mode.add_argument('--notes',action='store_true'); mode.add_argument('--tag'); mode.add_argument('--render-stage')
     args=parser.parse_args()
     if args.prepare: prepare()
+    elif args.notes: write_notes()
     elif args.render_stage: render(Path(args.render_stage))
     else: publish(args.tag)

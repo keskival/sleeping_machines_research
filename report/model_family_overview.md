@@ -13,7 +13,13 @@ credit to alternatives that did not execute. Useful stored capacity should
 grow beyond expensive selected work. A larger state bank still costs discovery,
 storage and learning; we measure those separately.
 
-![The design space](figures/architecture_design_space.svg)
+The enduring aim is a **trainable computing substrate with useful capacity
+beyond expensive activity**. The architecture is the organization of temporal
+programs, evidence and credit; individual benchmark recipes instantiate it.
+Progress means better useful prediction and learning per total resource, while
+retaining the integrated mechanisms that motivate this family.
+
+![The model-family landscape](figures/architecture_landscape.svg)
 
 ## What makes it a family?
 
@@ -73,6 +79,11 @@ gradient-based parameter adaptation are distinct. Independent streams can also
 be batched. Alternative credit, optimizer work, historical versions and shared
 parameter coordination belong in the learning budget.
 
+An earlier causal neural pilot improved prediction through online adaptation
+at substantially higher processing work; the evidence map preserves its scope.
+Integrated native TTT, drift retention and fully asynchronous training remain
+separate demonstrations.
+
 The further ambition is **automatic design within the family**: data can teach
 operator, reception, optional-depth and state-allocation choices. Learned
 event routes already adapt execution inside a fixed pool/stack. Broader graph
@@ -84,11 +95,17 @@ one shared world state through explicit information paths. Input density,
 computation density, arrival cadence and physical clocking are independent.
 Current clocked emulators do not establish clockless hardware energy gains.
 
-## What to read next
+## A short reading path
+
+Read this overview → the formal core → the complete examples → the design
+and composition guides. Use the architectural review and inventory when you
+want implementation detail; use the evidence map when assessing a claim.
 
 | Purpose | Document |
 | --- | --- |
-| Choose a member and understand the design rationale | [Family definition and choices](model_family_design.md) |
+| Identify the defining fields and compatible constructions | [Compact formal core](model_family_specification.md) |
+| See contrasting complete members under one specification | [Three complete examples](model_family_members.md) |
+| Choose a member and understand the design rationale | [Design choices and family positioning](model_family_design.md) |
 | Understand how local choices become system capabilities | [Composition and preservation guide](model_family_composition.md) |
 | Explore how different reception policies compute | [Interactive atlas](architecture_atlas.html) and [worked example](model_family_example.md) |
 | Inspect native units, layers and wider integrations | [Detailed architectural review](architecture_review.md) |

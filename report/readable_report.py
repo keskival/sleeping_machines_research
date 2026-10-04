@@ -5437,7 +5437,12 @@ def build(M):
     if not archive.exists():
         archive.parent.mkdir(exist_ok=True)
         archive.write_text((ROOT/"REPORT.md").read_text())
-    (ROOT/"REPORT.md").write_text(markdown(pages))
+    from family_report import markdown_frontmatter, build_chapter, integrate
+    report_markdown=markdown(pages)
+    boundary=report_markdown.find('\n## ')
+    if boundary<0: raise ValueError('Report has no section boundary')
+    report_markdown=report_markdown[:boundary+1]+markdown_frontmatter()+report_markdown[boundary+1:]
+    (ROOT/"REPORT.md").write_text(report_markdown)
     st = M["styles"]()
     st["body"].fontSize = 9.7; st["body"].leading = 14.1; st["body"].spaceAfter = 7
     st["bullet"].fontSize = 9.5; st["bullet"].leading = 13.4; st["bullet"].spaceAfter = 7
@@ -5474,6 +5479,12 @@ def build(M):
                             bottomMargin=16*mm,title="Sleeping Machines — accomplishments and the shared model",
                             author="Sleeping Machines project")
     doc.build(flow,onFirstPage=M["footer"],onLaterPages=M["footer"])
+    chapter=pdf.with_suffix('.family.pdf')
+    combined=pdf.with_suffix('.family-building.pdf')
+    build_chapter(chapter)
+    integrate(temporary,combined,chapter)
+    combined.replace(temporary)
+    chapter.unlink()
     # Publish only a complete PDF at the project's single canonical path.
     temporary.replace(pdf)
     print("wrote",pdf,"and REPORT.md")

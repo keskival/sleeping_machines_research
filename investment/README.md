@@ -1,7 +1,7 @@
 # Private investment materials
 
-Start with the **[16-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
-The **[full 32-slide deck](sleeping_machines_pitch_deck.pdf)** adds 16 optional
+Start with the **[18-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
+The **[full 34-slide deck](sleeping_machines_pitch_deck.pdf)** adds 16 optional
 technical and financial diligence slides. The current discussion draft proposes
 a **€3M raise**, with **€50M priced pre-money as the bullish negotiating
 case** and €100M as a separate appendix stretch scenario. Neither price is an independent
@@ -21,7 +21,16 @@ part of IP diligence.
 - [Complete same-unit benchmark ledger](pitch_deck_benchmarks.csv)
 - [Valuation sensitivity calculations](pitch_deck_financial_sensitivity.csv)
 - [Detailed research status report](../report/sleeping_machines_status.pdf)
-- [Private diligence bundle: both PDFs, notes, CSVs, report and completed parents](sleeping_machines_private_diligence_20261003T182500Z.zip)
+- [Private diligence bundle: both PDFs, notes, family specification, diagrams, report and completed parents](sleeping_machines_private_diligence_20261004T113200Z.zip)
+
+The 4 October revision leads with the whole model family and its landscape.
+Slides 3/4 explain its common temporal/state interface, relationships to existing
+families, heterogeneous regions and same-structure learning. The language
+fits then illustrate one branch. The report adds a visual family chapter with
+the three review axes at every level, compatibility and preservation rules,
+and complete illustrative member specifications. Architecture/editorial
+coverage is updated; the deck's benchmark/financial ledger remains frozen at
+3 October. No pending result or hypothetical member is presented as evidence.
 
 The older investment memo and one-page pitch retain the earlier $10M discussion
 position for historical continuity. Use the new full deck for the current
@@ -34,7 +43,7 @@ direct pre-seed valuation comparables. Sole-founder status does not establish
 sole research authorship or exclusive IP ownership: preserve Karoliina Salminen's
 existing research credit and resolve contributions and employer assignments.
 
-The investor-reading revision uses the same frozen research evidence. Internal
+The investor-reading revisions use the same frozen research evidence. Internal
 configurations are translated into readable labels and defined in the appendix.
 It introduces a specific product hypothesis, annual per-customer economics,
 three commercial proof gates and a budget tied to those gates. Conditional exit
@@ -46,6 +55,7 @@ To deliberately refresh the frozen evidence and render with bounded resources:
 
 ```bash
 python3 scripts/build_pitch_deck.py --prepare
+.venv-docker/bin/python scripts/build_pitch_deck.py --notes
 .venv-docker/bin/python scripts/build_pitch_deck.py --tag UNIQUE_PUBLICATION_TAG
 ```
 
@@ -56,3 +66,10 @@ and an 8 GiB available-memory floor. It imports no Torch or NumPy and executes n
 model runtime. Source/evidence/output hashes guard concurrent publication; prior
 deck versions and immutable publication records are retained. PDF page bounds,
 pagination and source links are checked; inspect the preview visually as well.
+
+For an editorial-only change, use `--notes` and a fresh rendering tag; skip
+`--prepare` so the research/financial ledger remains untouched. The family
+chapter can be refreshed independently with bounded vector rendering:
+`.venv-docker/bin/python report/family_report.py --tag UNIQUE_REPORT_TAG`.
+It preserves every other report page and archives the prior PDF. Future full
+report rebuilds include the same chapter and Markdown entry automatically.

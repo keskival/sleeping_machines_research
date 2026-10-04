@@ -221,3 +221,77 @@ versus live growth directions. These are finite algebra/semantic checks, not
 trained-model proofs or new benchmarks. The record binds current documentation
 including the overview, guide, report entry, theory index and local handoff.
 Previous validation records and the existing rendered PDF remain intact.
+
+## Pass 10: one canonical core and explicit compatibility
+
+The formal core now supplies twelve fields for evidence, operators, composition,
+state, interfaces, participation, schedule, query, objective, learner, bounds
+and execution/evidence. Its library-relative definition and conditional
+construction grammar avoid granting every restricted member all envelope
+capabilities. A compatibility table states the requirements for different
+widths/clocks, joins/writers, shared information, rich islands, hard reception,
+online credit, sparse training, coalescing and structural migration.
+
+The overview gives one reading path; design/composition guides explain choices
+and their consequences; review/inventory illustrate implementations. Repeated
+core descriptions point to the specification. The whole-family target remains
+temporal computation, learned small messages, selective state, key/value roles
+and useful unrealized credit, evaluated on all three axes through every level.
+
+## Pass 11: complete contrasting members and evidence consistency
+
+C, R and H each declare all twelve fields: a causal statistic endpoint, a
+selective temporal learner and a mixed reception/dense-query/finite-option TTT
+composition. Initial state/maps, event order, stopping, queries, learning and
+bounds are explicit. They are illustrative specifications, not implemented
+benchmarks or new queue proposals. H charges its retained learning prefix as
+well as its two-record forward bank. R names its local estimator and missing
+future-write utility. Field-completeness checks do not prove conformance.
+
+The evidence review corrected overly broad “no TTT win” wording by preserving
+the earlier causal neural online pilot: 3.190859→3.095738 BPC on 8,191 development
+targets, for 10.736× total processing work. A fifth, separate result binding
+retains its protocol/historical sources; it is not mixed into the four T256
+native language rows. Native-backbone integration, drift retention, economic
+advantage and asynchronous hardware remain open.
+
+## Pass 12: report and investor view preserve the same family
+
+Added the model-family landscape as the tenth SVG/atlas tab. The report's
+11-page vector chapter leads with the family and its relationships, then
+reviews all three axes at every level, design options, actual unit/layer
+examples, mixed worlds, learning, formal core and preservation. The original
+215 report pages retain identical extracted text and original page content.
+Earlier PDFs are archived.
+
+The deck now has 18 main slides plus 16 diligence slides. Two new main slides place
+the family landscape and heterogeneous design before mechanisms/benchmarks.
+Definitions/capabilities/results/aspirations are distinct; the financial and
+benchmark ledgers remain unchanged. Speaker notes and the private pack include
+the same core and evidence. No external distribution or outreach occurred.
+
+Bounded ReportLab/PyMuPDF rendering uses one thread, nice19, 300,000 KiB RSS
+watchdog, 1,000,000 KiB address-space cap, 120-second timeout and 8 GiB available
+floor. The report avoids the NumPy/plotting rebuild. The normal report builder
+now includes the chapter and Markdown entry on later authorized rebuilds.
+Rendered report pages and new deck slides were visually reviewed; page bounds,
+pagination, current source bindings and preserved evidence are checked.
+No HTML browser rendering is claimed.
+
+Current documentation record:
+`experiments/results/diagnostics/architecture_review_stdlib_20261004T113300Z.json`.
+Ten SVGs/tabs, 16 causal reception cases, three complete twelve-field members,
+25 scalar witnesses, four native result bindings plus one causal online binding,
+13 scoped claims, 110 source hashes and 53 unchanged frozen clock sources pass.
+New algebra checks cover the causal count prefix and complete finite-timeout
+query outcomes/option derivatives. These are scalar semantics, not model fits.
+Publication records:
+`report/publication_model_family_release_20261004T113000Z.json` and
+`investment/publication_pitch_deck_family_release_20261004T113100Z.json`.
+The112200Z and112500Z snapshots are intermediate reviews. Final resource review
+copies retained contiguous page ranges and deduplicates PDF objects:226pages
+occupy5,069,175bytes, down from15,114,402bytes in the intermediate merge.
+All215retained pages have identical extracted text; six original cover/chart
+pages also have pixel-identical renderings at the checked resolution. The
+bounded independent pixel check peaked at60,904KiB. Source/publication bindings
+and the new private pack are refreshed after that optimization.

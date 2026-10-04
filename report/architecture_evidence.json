@@ -220,6 +220,64 @@
       }
     }
   ],
+  "online_pilot": {
+    "result_path": "experiments/results/online_language/local_integrated_online_backbone_D8192_20260930T200000Z.json",
+    "result_sha256": "30442c4e8ffbaf08b16afb53f7813cebe17e8a63896618bdef03dc022beb68c8",
+    "protocol": {
+      "stream": [
+        90065536,
+        90073728
+      ],
+      "scored_targets": 8191,
+      "official_test_read": false,
+      "adaptation": "all integrated neural parameters",
+      "predict_before_update": true,
+      "feedback_delay_characters": 16,
+      "persistent_event_memory_in_both_arms": true,
+      "cold_context": true,
+      "replay": false,
+      "passes": 1,
+      "learning_rate": "fixed before this stream; no stream-based selection",
+      "optimizer": "fresh Adam, clipping at 1; inherited optimizer moments not reused",
+      "paired_race_noise": "same block seed in both arms; contexts diverge after adaptation",
+      "inherited_fitting": [
+        0,
+        32768
+      ],
+      "inherited_development": [
+        90000000,
+        90008192
+      ]
+    },
+    "execution_sources": {
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+      "experiments/sparse_language_contracts.py": "b64ea885625907efa85e1faf1443b696f92869c5c6f679a89afaeeb71236e417",
+      "experiments/sparse_language_screen.py": "4dba08de30387da355f478ea2effc80f2c401e62164abf47c9c01c44a338f879",
+      "sleeping_machines/race_language.py": "70081a66f23f5d2db9dd6351645a91a9534562f98e8b414a64071ec60650760a",
+      "experiments/race_language_screen.py": "3308aca20b4cf64f70550a03ae7763361e823800ba22f449d127210c65141cec",
+      "experiments/race_language_contracts.py": "80bba2683f45b116f3b9ce798e80e4d8a3148f0e138d7aec9bf467d41fb17a5f",
+      "sleeping_machines/selective_stream_language.py": "0b78ff0fe2d4d81ad3ca97475414c6b5bc7afec791cafd673839664a29347207",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+      "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+      "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+      "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+      "sleeping_machines/language_memory.py": "20cc1f3b2549c1997264d75410b37afe70148f46b587fc985c6210ed2e1b0300",
+      "experiments/parallel_event_language.py": "5962f8acf22c8a8fcbc58e6cf4b0ddb3347ae635b53d27675ddffee734406fc3",
+      "experiments/e120_shared_tasks.py": "40049870698d79fff8afbfb5446a91fd3b4596c9ac973938ceefac2dcf24be26",
+      "experiments/integrated_language_protocol.py": "bfe4fb180d735f9f0c624d6ba732abec608663e98a66e08863f587ebf22eb19c",
+      "experiments/integrated_online_language.py": "82c7dc9d51591f75452ff6ad8b2c7865002797e85af6d5453b561b8733ab106d"
+    },
+    "architecture": {
+      "payload": 16,
+      "depth": 6,
+      "pool": 2
+    },
+    "frozen_bpc": 3.190858556266436,
+    "online_bpc": 3.0957382214033093,
+    "updates": 512,
+    "total_processing_work_ratio": 10.735582764975263
+  },
   "claims": [
     {
       "claim": "Time computes",
@@ -316,11 +374,12 @@
     },
     {
       "claim": "Online learning / TTT",
-      "status": "Family capability; no completed TTT advantage",
-      "scope": "The same trainable units can adapt to causal outcomes; state adaptation, parameter updates, asynchronous consistency and batching are distinct.",
+      "status": "Completed scoped causal family pilot; native integration open",
+      "scope": "Earlier neural family branch: 3.190859\u21923.095738 BPC on 8,191 new development targets, 10.736\u00d7 total processing work. One checkpoint/window/rate; full native TTT and asynchronous hardware gains remain open.",
       "sources": [
         "report/model_family_design.md",
-        "report/figures/architecture_learning.svg"
+        "report/figures/architecture_learning.svg",
+        "experiments/results/online_language/local_integrated_online_backbone_D8192_20260930T200000Z.json"
       ]
     },
     {

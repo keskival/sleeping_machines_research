@@ -42,6 +42,14 @@ def evidence_map():
     credit_work_percent = 100*(snapshots[1]['estimated_whole_fit_tflops']/snapshots[0]['estimated_whole_fit_tflops']-1)
     pool_gain = snapshots[1]['test_bpc']-snapshots[2]['test_bpc']
     pool_work_ratio = snapshots[2]['estimated_whole_fit_tflops']/snapshots[1]['estimated_whole_fit_tflops']
+    online_path=ROOT/'experiments/results/online_language/local_integrated_online_backbone_D8192_20260930T200000Z.json'
+    online=json.loads(online_path.read_text())
+    assert online['status']=='completed' and online['protocol']['predict_before_update']
+    arms={r['arm']:r for r in online['rows']}
+    online_binding=dict(result_path=str(online_path.relative_to(ROOT)),result_sha256=hashlib.sha256(online_path.read_bytes()).hexdigest(),
+        protocol=online['protocol'],execution_sources=online['source_sha256'],architecture=online['architecture'],
+        frozen_bpc=arms['frozen']['bpc'],online_bpc=arms['online']['bpc'],updates=arms['online']['updates'],
+        total_processing_work_ratio=online['work']['online']['unit_special_flops']/online['work']['frozen']['unit_special_flops'])
     claims = [
         ('Time computes', 'Derived and scoped implementations',
          'Delay/order, analytic transport and reception change the function; physical energy is separate.',
@@ -73,9 +81,9 @@ def evidence_map():
         ('Clock independence', 'Architectural schedule capability; physical benefit unmeasured',
          'No mandatory global periodic tick; local timers/joins and precision remain. Clocked CPU/GPU execution is not measured clockless hardware.',
          ['report/model_family_design.md','report/figures/architecture_shared_world.svg']),
-        ('Online learning / TTT', 'Family capability; no completed TTT advantage',
-         'The same trainable units can adapt to causal outcomes; state adaptation, parameter updates, asynchronous consistency and batching are distinct.',
-         ['report/model_family_design.md','report/figures/architecture_learning.svg']),
+        ('Online learning / TTT', 'Completed scoped causal family pilot; native integration open',
+         f"Earlier neural family branch: {online_binding['frozen_bpc']:.6f}→{online_binding['online_bpc']:.6f} BPC on 8,191 new development targets, {online_binding['total_processing_work_ratio']:.3f}× total processing work. One checkpoint/window/rate; full native TTT and asynchronous hardware gains remain open.",
+         ['report/model_family_design.md','report/figures/architecture_learning.svg',online_binding['result_path']]),
         ('Automatic design', 'Dynamic routes implemented; broader structural adaptation aspirational',
          'Operator/allocation changes need task/resource utility and state migration; NAS precedents are attributed.',
          ['report/model_family_design.md','experiments/theory/152_primitives_integration_and_capability_bounds.md']),
@@ -86,7 +94,7 @@ def evidence_map():
     claim_records = [dict(claim=c,status=s,scope=b,sources=p) for c,s,b,p in claims]
     record = dict(scope='Curated capability map and immutable saved-result bindings; no new benchmark',
                   metric='BPC at T256',work_convention='Saved arithmetic plus unit-counted special functions, estimated from eager full-step traces',
-                  snapshots=snapshots,claims=claim_records)
+                  snapshots=snapshots,online_pilot=online_binding,claims=claim_records)
     (ROOT/'report/architecture_evidence.json').write_text(json.dumps(record,indent=2)+'\n')
     lines = ['# Architecture claims and their evidence','',
         'Supporting evidence for the [family definition](model_family_design.md), not its definition or a claim that every branch is integrated.',
@@ -106,6 +114,8 @@ def evidence_map():
         f'The first three rows share the declared 10M/one-pass recipe. Value credit lowers BPC by {credit_gain:.6f} for about {credit_work_percent:.2f}% extra estimated fitting work. The larger pool then lowers BPC by {pool_gain:.6f} while increasing fitting work by {pool_work_ratio:.3f}×; it also has more untied parameters. The 90M row changes data and width and is scale evidence, not an isolated pool/credit comparison.','',
         'Work uses the saved tracer convention: arithmetic plus unit-counted special functions, eager full fitting steps extrapolated across presentations. Evaluation, compilation/setup, wall time, memory traffic and energy are separate. These numbers are not hardware joules or guaranteed end-to-end savings. Dense controls and inference comparisons retain their existing protocol/accounting in [REPORT.md](../REPORT.md); this table makes no cross-protocol supremacy claim.','',
         'Some saved metadata calls segment credit “exact BPTT within it”. That describes differentiation through the retained factual continuous graph; it does not certify an exact expected gradient over all discrete persistent-write alternatives. The route teacher scope is stated above. Historical execution-source hashes are retained as historical bindings, not assertions that current kernels have the same hashes.','',
+        '## Causal online adaptation in an earlier family branch','',
+        f"The [completed pilot](../{online_binding['result_path']}) improved BPC {online_binding['frozen_bpc']:.6f}→{online_binding['online_bpc']:.6f} over 8,191 development targets with {online_binding['updates']} block-delayed full-neural updates, for {online_binding['total_processing_work_ratio']:.3f}× total processing work. Both arms retained persistent state; predictions preceded label updates. It used one checkpoint/window/rate and a fresh Adam optimizer. This is positive online-adaptation evidence for that earlier branch, not current native-backbone TTT, retention-under-drift, official test or a resource win. Its result/protocol/historical-source binding is separate from the four T256 language rows.",'',
         'Target-dependent E63/E79 archives are excluded. Derived containment, implemented references, completed scoped comparisons and aspirations are different evidence levels.']
     (ROOT/'report/architecture_evidence.md').write_text('\n'.join(lines)+'\n')
 
@@ -169,6 +179,35 @@ def design_space():
         'Learned programs, fan-in, optional stages and state allocation can morph regions within the family.',
         'Dynamic routes exist; broader structural learning needs utility, state migration and full cost contracts.'],ORANGE)
     d.label(35,1220,'Static design is a fixed-policy case. Matching a reference function, learning it and beating its cost are separate.',16,GRAY)
+    return d.finish()
+
+
+def landscape():
+    d = Diagram('Sleeping Machines in the landscape of model families', 1010)
+    d.label(34,76,'A stateful temporal-program envelope; intersections and conditional constructions, not automatic superiority.',15,GRAY)
+    top = [('Recurrence / SSMs',['State evolution and selective retention','Add addressed programs and timed interaction']),
+           ('Attention / Transformers',['Content-addressed value aggregation','Include rich local blocks where needed']),
+           ('Sparse experts / MoE',['Available capacity beyond selected work','Add private facts, clocks and write utility'])]
+    bottom = [('Statistics / retrieval',['Counts and direct historical evidence','Combine with learned shared abstractions']),
+              ('Adaptive memory / TTT',['Learning inside the deployed model','Choose local programs and causal updates']),
+              ('Event / temporal systems',['Local arrivals, timers and causal order','Combine vectors, races and alternative credit'])]
+    for i,(title,lines) in enumerate(top):
+        d.box(35+i*385,125,360,120,title,lines)
+        d.arrow([(215+i*385,245),(215+i*385,295),(600,295),(600,340)])
+    d.box(35,340,1130,175,'SLEEPING MACHINES: networks of stateful temporal programs',[
+        'One causal content / time / address / state interface; choose compatible operators at every level.',
+        'Atoms → units → modules → layers → stacks → memory compositions → learning and serving systems.',
+        'Selective or full-support regions; local event schedules or synchronous barriers; statistical or learned state.',
+        'Same structure can support online learning, batching and data-driven design; each needs its own contract.'],GREEN)
+    for i,(title,lines) in enumerate(bottom):
+        d.box(35+i*385,615,360,120,title,lines)
+        d.arrow([(215+i*385,615),(215+i*385,565),(600,565),(600,515)])
+    d.box(35,785,1130,135,'Distinctive integrated target and economic thesis',[
+        'Computational time + small learned messages + hard selective state + separate keys/values + unrealized credit.',
+        'Retain useful capacity beyond costly activity; expand rich interaction only where the task requires it.',
+        'Exact containment needs actual operators, information and schedule. Useful training and lower cost are separate.'],ORANGE)
+    d.label(35,960,'No required global periodic tick. Current emulators are clocked; hardware energy, general TTT and morphing remain open.',15,GRAY)
+    d.label(35,988,'Known primitives are credited; the proposed contribution is their coherent integration and measured consequences.',15,GRAY)
     return d.finish()
 
 
@@ -306,7 +345,7 @@ def learning():
         'Masks / resets / event order preserve lane semantics.',
         'Batch and sequential updates can differ numerically.',
         'Current clip / Adam steps remain coordinated.'])
-    d.label(35,825,'State adaptation ≠ parameter learning. TTT is a supported family capability, not a measured project TTT win.',16,GRAY)
+    d.label(35,825,'State adaptation ≠ parameter learning. A causal online pilot exists; complete native TTT advantage remains open.',16,GRAY)
     d.label(35,860,'Charge selected inference + candidate discovery + alternative credit + optimizer + retained state + traffic.',16,GRAY)
     d.label(35,895,'Learning may be online, batched or mixed without replacing the model by a separate dense predictor.',16,BLUE,True)
     d.label(35,934,'Reference loop: native integrated units. This figure specifies admissible learning policies, not an on-chip implementation.',14,GRAY)
@@ -435,7 +474,7 @@ LEVELS = [
 
 
 def html_page(figures):
-    names = ('Design space','Reception example','Composition contracts','One shared world','Online / batched learning',
+    names = ('Design space','Model-family landscape','Reception example','Composition contracts','One shared world','Online / batched learning',
              'Implemented branches','Native receiver example','Native layer and stack','Compare families')
     tabs = ''.join(f'<button id="tab-{i}" role="tab" aria-selected="{str(i==0).lower()}" aria-controls="panel-{i}" tabindex="{0 if i==0 else -1}" data-panel="{i}">{name}</button>' for i,name in enumerate(names))
     rows = ''.join(f'<tr><th>{escape(level)}</th><td>{escape(comp)}</td><td>{escape(rep)}</td><td>{escape(train)}</td></tr>' for level,comp,rep,train in LEVELS)
@@ -470,8 +509,8 @@ function reception(){const ids=['rx-gap','rx-time','rx-cutoff'];if(ids.some(id=>
 
 
 def main():
-    figures = [design_space(), reception_example(), composition(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
-    for name, svg in zip(('design_space', 'reception', 'composition', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
+    figures = [design_space(), landscape(), reception_example(), composition(), shared_world(), learning(), family(), receiver(), stack(), comparisons()]
+    for name, svg in zip(('design_space', 'landscape', 'reception', 'composition', 'shared_world', 'learning', 'family', 'receiver', 'stack', 'comparisons'), figures):
         path = ROOT/'report/figures'/f'architecture_{name}.svg'
         path.write_text(svg+'\n')
     (ROOT/'report/architecture_atlas.html').write_text(html_page(figures)+'\n')
@@ -498,7 +537,7 @@ def main():
         names=[c['name'] for c in m['classes']] or m['functions']
         lines.append(f"| [{m['path']}](../{m['path']}) | {', '.join(names) or 'Package'} | {m['summary'].replace('|','/')} |")
     (ROOT/'report/architecture_source_inventory.md').write_text('\n'.join(lines)+'\n')
-    print(f'Built nine SVG diagrams, reception explorer, evidence map and {len(modules)}-module AST inventory; no numerical imports.')
+    print(f'Built ten SVG diagrams, reception explorer, evidence map and {len(modules)}-module AST inventory; no numerical imports.')
 
 
 if __name__ == '__main__':

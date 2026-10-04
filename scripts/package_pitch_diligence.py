@@ -35,7 +35,31 @@ def package(tag):
                   'investment/pitch_deck_financial_sensitivity.csv', 'investment/sleeping_machines_pitch_deck.pdf',
                   'investment/sleeping_machines_pitch_deck_main.pdf', 'investment/INVESTOR_READING_REVIEW.md',
                   'report/sleeping_machines_status.pdf', 'scripts/build_pitch_deck.py',
-                  'scripts/package_pitch_diligence.py'])
+                  'scripts/package_pitch_diligence.py','report/family_report.py',
+                  'scripts/build_architecture_atlas.py','report/architecture_evidence.md',
+                  'report/architecture_evidence.json','report/architecture_atlas.html',
+                  'report/architecture_review.md','report/architecture_review_checks.md',
+                  'experiments/theory/152_primitives_integration_and_capability_bounds.md'])
+    paths.update(str(p.relative_to(ROOT)) for p in (ROOT/'report').glob('model_family_*.md'))
+    paths.update(str(p.relative_to(ROOT)) for p in (ROOT/'report/figures').glob('architecture_*.svg'))
+    family_evidence=json.loads((ROOT/'report/architecture_evidence.json').read_text())
+    for item in family_evidence['snapshots']+[family_evidence['online_pilot']]:
+        if sha(ROOT/item['result_path'])!=item['result_sha256']: raise ValueError('Changed family evidence result')
+        paths.add(item['result_path'])
+    review_paths=sorted((ROOT/'experiments/results/diagnostics').glob('architecture_review_stdlib_*.json'))
+    current_reviews=[]
+    for path in review_paths:
+        review=json.loads(path.read_text())
+        bindings=review.get('checks',{}).get('documentation_artifact_sha256',{})
+        if bindings and all((ROOT/name).exists() and sha(ROOT/name)==digest for name,digest in bindings.items()):
+            current_reviews.append(path)
+    if len(current_reviews)!=1: raise ValueError('One current artifact-bound family review required')
+    paths.add(str(current_reviews[0].relative_to(ROOT)))
+    report_sha=sha(ROOT/'report/sleeping_machines_status.pdf')
+    reports=[p for p in (ROOT/'report').glob('publication_model_family_*.json')
+             if json.loads(p.read_text()).get('output_sha256')==report_sha]
+    if len(reports)!=1: raise ValueError('One matching completed family-report publication required')
+    paths.add(str(reports[0].relative_to(ROOT)))
     deck_sha = sha(ROOT / 'investment/sleeping_machines_pitch_deck.pdf')
     publications = []
     for path in (ROOT / 'investment').glob('publication_pitch_deck_*.json'):

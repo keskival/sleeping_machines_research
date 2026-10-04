@@ -1,6 +1,7 @@
 # How capabilities compose across the model family
 
 [Overview](model_family_overview.md) · [Definition](model_family_design.md) ·
+[Formal core](model_family_specification.md) · [Complete examples](model_family_members.md) ·
 [Visual atlas](architecture_atlas.html) · [Evidence](architecture_evidence.md)
 
 This is the composition guide for the whole family. A unit, layer or memory
@@ -27,13 +28,12 @@ program as an event handler establishes no new expressivity, trainability or
 efficiency result. A useful inclusion states the operators, causal state
 transition and costs that actually reproduce it.
 
-The family has common invariants: observed evidence has a causal boundary;
-state has an owner and persistence rule; each emission/commit has a defined
-event history; queries have a cutoff and completion rule; the learner declares
-its credit and parameter versions; execution has a resource/termination
-contract. Time-dependent computation and selective work are configurable
-mechanisms within that contract. Disabling them can form an incumbent endpoint
-or diagnostic without demonstrating the integrated target.
+The [formal core](model_family_specification.md) supplies the common causal,
+ownership, event-history, query, credit/version and finite-execution obligations.
+This guide explains how those obligations carry through composition.
+Time-dependent computation and selective work are configurable mechanisms;
+disabling them can form an incumbent endpoint or diagnostic without
+demonstrating the integrated target.
 
 ## A unit is a product of choices, not a fixed species
 

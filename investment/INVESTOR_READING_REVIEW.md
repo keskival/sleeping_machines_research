@@ -1,5 +1,30 @@
 # Investor-reading review — 3 October 2026
 
+## Family-level revision — 4 October 2026
+
+The current deck has 18 main slides and 16 optional diligence slides. It adds a
+landscape diagram before the mechanism and benchmark slides, positioning the
+family relative to recurrence/SSMs, attention/Transformers, sparse experts,
+statistics/retrieval, adaptive memory/TTT and event systems. A second slide
+shows units→layers→compositions→systems as choices under the same interface.
+The title and notes identify a model family and computing substrate, not one
+character-language experiment.
+
+The common thesis is computational time, persistent private evidence, selective
+activity and useful credit to unrealized alternatives. Heterogeneous dense and
+sparse regions, local/barrier schedules, same-structure online learning and
+broader structural adaptation have explicit conditions and status. Exact
+function containment, trained quality and economic advantage remain distinct.
+The report provides an 11-page visual family chapter and canonical twelve-field
+specification with three complete illustrative members. None is represented
+as new empirical evidence.
+
+Financial assumptions and the completed benchmark ledger are unchanged.
+Previous PDFs and publication records remain preserved. The earlier review
+below describes the 16-slide main presentation that this revision extends.
+
+## Earlier investor-reading revision
+
 The first deck documented the research well but made an investor do too much
 translation. It had 22 main slides, used internal configuration names in key
 charts, described several markets before choosing a first product, and gave

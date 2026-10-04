@@ -12,6 +12,7 @@ review organizes tested parts and possible compositions around that original
 motivation; it does not merge separate successes into one completed system.
 
 [Start with the short overview](model_family_overview.md) ·
+[Formal core](model_family_specification.md) · [Complete members](model_family_members.md) ·
 [Family definition and design rationale](model_family_design.md) ·
 [Composition and preservation](model_family_composition.md) ·
 [Interactive architecture atlas](architecture_atlas.html) ·
@@ -62,8 +63,8 @@ retains facts; counterfactual learning teaches choices that did not execute.
 Counts, learned vectors and historical records are different ways to retain
 evidence within this toolbox. Their best combination depends on the task.
 
-For a first read, use the design rationale, the unit-type table and the integration
-examples below. The native unit/stack expands one implemented construction.
+For a first read, use the overview, formal core and complete member examples,
+then the design rationale. Here the native unit/stack expands one implemented construction.
 The inventory contains every branch and design choice; the theory note gives
 the mathematical bounds and assumptions. The atlas illustrates both family
 structure and the difference between available capacity and selected work.
@@ -84,7 +85,11 @@ choice's benefit and price. It also distinguishes learned parameter knowledge,
 persistent facts and explicit statistics. The [source map](architecture_source_inventory.md)
 navigates all 110 reviewed module/driver records without importing any model.
 
-## Unit level: several different component types
+## Unit level: illustrative programs inside the design space
+
+The following rows describe implemented examples. The formal family combines
+orthogonal choices of state, temporal flow, write, key, reception, output and
+learning; these rows are not a fixed taxonomy of allowed units.
 
 | Unit type in the family | State and computation | Representation | Learning boundary |
 | --- | --- | --- | --- |

@@ -5,6 +5,7 @@
 [Model family at a glance](report/model_family_overview.md) ·
 [Interactive visual atlas](report/architecture_atlas.html) ·
 [Definition and design rationale](report/model_family_design.md) ·
+[Formal core](report/model_family_specification.md) ·
 [How capabilities compose](report/model_family_composition.md) ·
 [Claims and evidence](report/architecture_evidence.md)
 

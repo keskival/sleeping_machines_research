@@ -2,6 +2,7 @@
 
 4 October 2026. A definition, design space and selection rationale.
 [Short overview](model_family_overview.md) · [Visual atlas](architecture_atlas.html) ·
+[Formal core](model_family_specification.md) · [Complete examples](model_family_members.md) ·
 [Evidence map](architecture_evidence.md) · [Detailed review](architecture_review.md) ·
 [Bounds](../experiments/theory/152_primitives_integration_and_capability_bounds.md)
 
@@ -64,12 +65,13 @@ must preserve. Implemented branches are examples of this generative definition.
 
 ## The common computation contract
 
-A concrete member is specified by a graph of admissible programs, an operator
-library, persistent state ownership, routing/reception rules, a causal schedule,
-query/objective rules, a learning/update policy and resource limits. Learned
-parameters and optional architectural-policy state instantiate that specification.
-The same interface admits many members; the actual operator/support constraints
-define which functions a particular member can reproduce.
+The [formal core](model_family_specification.md) is the canonical membership
+and compatibility specification: twelve fields define evidence, operators,
+composition, state, interfaces, participation, schedule, queries, objectives,
+learner, bounds and execution/evidence. It includes a conditional construction
+grammar. The [complete examples](model_family_members.md) instantiate every
+field for contrasting members. This guide explains the design choices and
+their rationale rather than introducing another competing specification.
 
 At an addressed unit, local state has a represented value m and timing metadata.
 For an incoming event e=(a,t,x), the unit can perform:
@@ -244,6 +246,8 @@ exposure, horizon and conditional-depth limits; it does not collapse these
 questions into a single parameter count or universality assertion.
 
 ## Where this sits among model families
+
+![Position among model families](figures/architecture_landscape.svg)
 
 The closest high-level category is a **hybrid dynamical event-processing network
 with configurable stateful conditional computation**. Its shared interface is
@@ -563,8 +567,13 @@ The opportunities are continual personalization, changing-environment
 adaptation and learning near the state owner without retraining the whole
 substrate. They require suitable causal objectives, stable useful updates and
 measured end-to-end quality/cost. The current review establishes structural
-support and existing state/statistical/batched mechanisms, **not a completed
-TTT advantage or fully asynchronous on-chip trainer**.
+support and existing state/statistical/batched mechanisms. An earlier neural
+family branch also has a [completed causal online pilot](../experiments/results/online_language/local_integrated_online_backbone_D8192_20260930T200000Z.json):
+3.190859→3.095738 BPC on8,191 development targets, for10.736× total processing
+work. It uses one checkpoint/window/rate, paired block noise, persistent state
+in both arms and block-delayed predict-before-update feedback. Preserve that
+positive scoped evidence; **integrated native TTT, drift retention, an economic
+adaptation advantage and fully asynchronous on-chip training remain open**.
 
 TTT itself has precedents: [test-time self-supervised adaptation](https://arxiv.org/abs/1909.13231)
 updates a deployed predictor; [TTT layers](https://arxiv.org/abs/2407.04620)
