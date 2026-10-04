@@ -1,0 +1,57 @@
+{
+  "status": "partial_protocol",
+  "completed_repeats": 20,
+  "required_repeats": 30,
+  "primary_mode": "mix8",
+  "mean_smape_by_mode": {
+    "mix8": 14.371928156460468,
+    "argmax": 17.26976617940899,
+    "sampled": 16.270833145978347
+  },
+  "primary_repeat_stddev": 5.3107288664395185,
+  "protocol_claim_eligible": false,
+  "parents": [
+    {
+      "path": "experiments/results/neurobench_mg/aws_mg_tau17_r1_p16d2_k8_delta_mix8_from0_20261004T061500Z.json",
+      "sha256": "88514cebdc5280717d52e5b1b3bce64b368e7746b15874c8eecf735116285847"
+    },
+    {
+      "path": "experiments/results/neurobench_mg/aws_mg_tau17_r1_p16d2_k8_delta_mix8_from10_20261004T061500Z.json",
+      "sha256": "5f89fefece2aa01d6c155d35f9d44c4d8b9389dd7d9bd3c3bcf562a39fee21ee"
+    }
+  ],
+  "settings": {
+    "tau": 17,
+    "repeats": 10,
+    "payload": 16,
+    "depth": 2,
+    "heads": 2,
+    "pool": 2,
+    "tie_pools": false,
+    "taps": 8,
+    "segment": 64,
+    "lanes": 32,
+    "steps": 1500,
+    "lr": 0.003,
+    "clip": 1.0,
+    "warmup": 8,
+    "route_credit": "linear",
+    "compiled": true,
+    "seed": 0,
+    "closed_loop": 0,
+    "delta": true,
+    "argmax": false,
+    "train_argmax": false,
+    "eval_modes": "mix8,argmax,sampled",
+    "closed_from": 0.5
+  },
+  "source_sha256": {
+    "experiments/mackey_glass_native.py": "06cea672c090bf6a42f810be404e74a8bead618bb007108532f9eb89c44dabb4",
+    "sleeping_machines/sparse_inference.py": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "data_sha256": "5a38b38eca91667c120a3fbbe1a27859ef6071c521a03753ef1cace39d3ce745",
+  "scope": "Fixed primary mix8. Alternative modes descriptive only. Partial batches cannot be compared to the full leaderboard. Repeats use overlapping windows of one series; their dispersion is not an independent-sample confidence interval. No measured serving/resource win.",
+  "collector_sha256": "f149d3b28062fe21d3cccf6b4571200efc37fc30fd207ca1cfed7c296c70b313"
+}
