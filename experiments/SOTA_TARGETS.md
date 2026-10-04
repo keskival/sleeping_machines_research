@@ -50,3 +50,22 @@ PhysioNet 2012 (AUROC about 0.87–0.90; tabular-irregular, credentialing and ma
 2. Primate reaching: official loader and splits; spike events as native events; R² per session; footprint and traced
    effective operations, plus the NeuroBench hook-based counts where they apply.
 3. For each completed target: FINDINGS, report appendix, and a reproducible one-command script.
+
+## Status, 4 October 07:00 UTC
+
+**Mackey-Glass (development on tau 18, three repeats per arm).** The teacher-forced fit is precise (increment targets:
+training MSE about 4e-5 standardized), and the autonomous 750-step forecast decides the score. Findings: sampled races
+inject output noise (the same weights: sampled 25.3, argmax 18.5; THEORY §417). Closed-loop training did not help (24.5 /
+26.3). Larger or longer fits were not better. The no-selection pool-1 control scores 16.4–16.8. Mixtures over 8 race-noise
+streams scored 17.2 at the default fit, but the per-repeat spread is about 10.5–28.6 and the ranking of inference modes changes
+between arms, so three repeats cannot select among them. The tau 17 official 30-repeat run is fixed in advance (p16/d2,
+increment targets, 1,500 steps, primary mode mix8; argmax and sampled recorded) and queued on AWS
+(AWS_NEUROBENCH.md). Leaderboard: LSTM 13.37, ESN 14.79.
+
+**Primate reaching (development session indy_20170131_02, validation selection).** p32/d2 .725 test (val .710), p64/d2
+.714 (overfits), p32/d2 pool 4 tied .741 (val .711); on this session bigRSNN scores .772 and tinyRSNN .746. Round 2 (leaky
+readout, 4 route samples, 4,000 steps, tied pool 4/8, weight decay) is running on curie. The six-session protocol run with
+the current best configuration is queued on AWS. Leaderboard: AEGRU .71 (six-session mean).
+
+**SHD.** Official files downloaded; driver ready (speaker-held-out validation); development arms are queued after primate
+round 2.
