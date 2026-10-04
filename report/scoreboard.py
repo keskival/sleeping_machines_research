@@ -17,6 +17,25 @@ def page(native, public):
             used = best[key] if axis == 'training' else best['sparse']
             rows.append([f"10M vs {c['label']} at ≤ its {axis} compute ({c[key] / scale:.1f} {unit})", f"{c['test']:.3f}",
                          f"{q:.3f} ({best['label']}; {used / scale:.1f} {unit})", 'WIN' if q < c['test'] else 'Loss'])
+    # P0-6 tuned dense references at the native budgets (TUNED_BASELINES.md): validation-selected arm per budget
+    import glob, json, os
+    root = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'experiments/results/aws_20260929')
+    for budget, cap, label in (('A', 352.1e12, '≤ 352 TF'), ('B', 107.2e12, '≤ 107 TF')):
+        arms = []
+        for f in glob.glob(os.path.join(root, f'aws_tuned_ref_10M_{budget}_*', '*_D10000000_*.json')):
+            r = json.load(open(f))
+            if r.get('best_valid_bpc') is not None and r['training_flops_estimate']['total_training_flops'] <= cap:
+                arms.append(r)
+        within = [r for r in nat if r['whole'] <= cap]
+        if not arms or not within:
+            rows.append([f"10M vs tuned dense at {label} (P0-6)", 'pending', 'queued on AWS', 'Pending']); continue
+        ref = min(arms, key=lambda r: r['best_valid_bpc'])          # selected by validation, never by test
+        best = min(within, key=lambda r: r['test256'] if r['test256'] is not None else r['test'])
+        q = best['test256'] if best['test256'] is not None else best['test']
+        a = ref['args']; name = f"{a['model']}{a['size']}" + (f"x{a['layers']}" if a['model'] == 'tf' else '') + f" {a['passes']:g}p lr{a.get('lr')}"
+        rows.append([f"10M vs tuned dense at {label} (P0-6; {len(arms)} arms, validation-selected)",
+                     f"{ref['test_bpc']:.3f} ({name})", f"{q:.3f} ({best['label']}; {best['whole'] / 1e12:.0f} TF)",
+                     'WIN' if q < ref['test_bpc'] else 'Loss'])
     # 90M
     if native.get('native90'):
         b = min(native['native90'], key=lambda r: r['test256'])
