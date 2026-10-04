@@ -137,3 +137,18 @@ estimates for dense references), and inference work up to the decision at N.
   concurrent items, a first-arrival (race) effect. This is consistent with the benchmark's purpose and is not evidence for any model.
   Implication for references: an order-and-timing model of adjacency (e.g. timed n-gram likelihood over the interleaving,
   or the point-process references) is the relevant strong control. All controls remain near chance at N <= 256.
+- 5 Oct 01:20 UTC: **order-and-timing control** (`experiments/fas/timed_ngram.py`,
+  `experiments/results/fas/fas_v1_timed_ngram_test_20261005T011500Z.json`). AUROC (all faults):
+
+| Control | N=128 | N=256 | N=512 | N=1024 |
+|---|---:|---:|---:|---:|
+| timed_ngram (process-event trigram + per-bigram gap density) | 0.526 | 0.550 | 0.722 | 0.991 |
+| order3 (process-event trigram only) | 0.526 | 0.550 | 0.720 | 0.992 |
+
+  Order alone carries the classical signal: order3 ≈ gap_z ≈ timed_ngram. Timing adds nothing measurable on top.
+  **Open question before claiming an early win:** whether N <= 256 is information-limited for every model. Five diverse
+  controls sit at 0.51–0.55 there, and fault effects grow as e^(t/5): about 10% of one step's duration by the ~7th use.
+  **Backlog (cheap, no training):** an identity-aware oracle bound. Regenerate the test seeds with item identity kept from the simulator,
+  and score per-item step durations against clean per-step distributions (likelihood ratio). If even the oracle is near
+  chance at N <= 256, define the discriminating range as 384–768 and report the native arm there. If the oracle is high,
+  the gap between it and identity-free controls is the home-field headroom for race models.
