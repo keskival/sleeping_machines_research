@@ -317,8 +317,8 @@ def render(stage):
                 xx,_=point(tick,2.1); line(xx,y0,xx,y0+ph,'#213349'); p(str(tick),xx-13,y0+ph+10,50,13,muted)
             for tick in [2.1,2.2,2.3,2.4,2.5]:
                 _,yy=point(0,tick); line(x0,yy,x0+pw,yy,'#213349'); p(f'{tick:.1f}',60,yy-10,50,13,muted)
-            p('Prediction error (bits per character) ↓',115,174,650,15,muted)
-            p('Training arithmetic (trillion estimated ops) ↓',247,570,650,15,muted)
+            p('Prediction error, bits per character (lower is better)',115,174,650,15,muted)
+            p('Training compute, trillion operations (lower is better)',230,570,650,15,muted)
             positions=[('p32/d4 + route credit',128,250,cyan,'Small model'),
                 ('p32/d4/pool4 + route credit',290,315,green,'More memory'),
                 ('p32/d8, skip2 + route credit',340,395,cyan,'Deeper model'),
@@ -329,8 +329,8 @@ def render(stage):
                 c.setFillColor(HexColor(color)); c.circle(xx,H-yy,6,fill=1,stroke=0)
                 line(xx,yy,lx+8,ly+44 if yy>ly+18 else ly-7,color,.8)
                 p(short,lx,ly,300,14,color,True); p(f"{r['test_bpc_T256']:.3f} bits/char · {r['whole_fit_TFLOPs_est']:.2f}T ops",lx,ly+20,300,12,muted)
-            card_text(870,205,358,190,'QUALITY CHECK','Near recurrent baseline ({lstm_bpc:.3f}); {best_lstm_fit_ratio:.2f}× training work.','{best_bpc:.3f}',green)
-            card_text(870,409,358,190,'TRAINING ARITHMETIC','Small model versus saved Transformer control; better prediction error.','{transformer_fit_ratio:.1f}× less',cyan)
+            card_text(870,205,358,190,'BEST SINGLE PASS','Edges LSTM-256 ({lstm_bpc:.3f}), with {best_lstm_fit_ratio:.1f}× its training compute.','{best_bpc:.3f} bpc',green)
+            card_text(870,409,358,190,'TRAINING COMPUTE','Small model vs 2-layer Transformer: less compute and lower error.','{transformer_fit_ratio:.1f}× less',cyan)
             p(s['caveat'],52,620,1176,13,muted,maxh=35)
 
         elif kind=='credit':
@@ -353,14 +353,14 @@ def render(stage):
 
         elif kind=='inference':
             series=[('Small, more memory','p32/d4/pool4 + route credit'),('Medium model','p64/d4 + route credit'),('Recurrent baseline','LSTM-256')]
-            p('Estimated MFLOPs per evaluated input position',52,184,820,17,muted)
+            p('Inference compute per character, million operations (lower is better)',52,184,820,17,muted)
             for i,(short,label) in enumerate(series):
                 y=237+i*106; r=native[label]; p(short,52,y+10,260,18,text,True)
                 for j,(field,color) in enumerate([('inference_emulator_MFLOPs_per_evaluated_position_est',cyan),('inference_winner_MFLOPs_per_evaluated_position_est',green)]):
                     v=r[field]; yy=y+j*31
                     rect(330,yy,v/.95*495,21,color,radius=3); p(f'{v:.3f}',335+v/.95*495,yy-1,90,15,color,True)
-            p('Cyan: emulator / control forward     Green: winner-only / same control',52,584,1176,15,muted)
-            card_text(932,231,296,309,'STATUS','All keys remain scored. Actual trained FP32 parity and held-out rescore are pending. Traffic, setup, latency and joules must be measured.',None,amber)
+            p('Cyan: full computation (all paths)     Green: sparse runtime, only the selected paths (the baseline has no sparse mode)',52,584,1176,15,muted)
+            card_text(932,231,296,309,'STATUS','Every memory address is still scored. Checking that the sparse runtime reproduces the trained model exactly is pending, as are measured traffic, latency and energy.',None,amber)
             p(s['caveat'],52,621,1176,13,muted,maxh=35)
 
         elif kind=='online':
@@ -437,7 +437,7 @@ def render(stage):
                     f"{r['whole_fit_TFLOPs_est']:.2f}",f"{r['fitting_MFLOPs_per_training_position_est']:.3f}",
                     f"{r['inference_emulator_MFLOPs_per_evaluated_position_est']:.3f}",
                     f"{r['inference_winner_MFLOPs_per_evaluated_position_est']:.3f}"])
-            table(['Model','Test bpc','Params K','Fit total TF','Fit MF/pos','Emul MF/pos','Winner MF/pos'],rows,
+            table(['Model','Error, bpc ↓','Parameters (K)','Training, TFLOPs ↓','Train MFLOPs/char ↓','Full run MFLOPs/char ↓','Sparse run MFLOPs/char ↓'],rows,
                   y=200,widths=[315,100,120,150,150,170,171],rowh=41,size=13)
             p(s['caveat'],52,626,1176,13,muted,maxh=35)
 
@@ -448,7 +448,7 @@ def render(stage):
                     return f'{value:.1%} (infeasible)' if value>1 else f'{value:.2%}'
                 rows.append([f"€{r['exit_equity_eur']/1e9:.0f}B",f"{r['retention']:.0%}",
                              probability(r['required_probability_50']),probability(r['required_probability_100'])])
-            table(['Exit equity','Stake retention','Required p: €50M','Required p: €100M'],rows,
+            table(['Exit equity value','Investor stake kept after dilution','Success odds needed at €50M','Success odds needed at €100M'],rows,
                   y=188,widths=[294]*4,rowh=39,size=14)
             p(s['caveat'],52,601,1176,14,muted,maxh=58)
 

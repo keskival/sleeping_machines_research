@@ -159,66 +159,66 @@
       "kind": "table",
       "section": "The evidence",
       "title": "Beats Transformer baselines at a fraction of the compute.",
-      "subtitle": "Completed text8 language comparisons, same data and held-out test set (T256). Lower bits per character is better. Single seeds.",
+      "subtitle": "Wikipedia text (text8); same data and test set for all. Error: bits/char (bpc) or sMAPE %; lower is better.",
       "sources": [
         "R1"
       ],
       "headers": [
         "Comparison",
-        "Reference",
-        "Ours",
-        "Compute we used"
+        "Their error",
+        "Our error",
+        "Result and compute we used"
       ],
       "widths": [
-        430,
-        190,
+        400,
         160,
-        396
+        160,
+        456
       ],
-      "rowh": 49,
-      "size": 15,
+      "rowh": 47,
+      "size": 14,
       "rows": [
         [
-          "vs Transformer-256×4, 4 passes (10M)",
-          "1.908",
-          "1.888",
-          "0.40× its training · 0.18× its inference"
+          "vs Transformer, 4 layers, 4 passes (10M chars)",
+          "1.908 bpc",
+          "1.888 bpc",
+          "Better · 40% of its training, 18% of its inference compute"
         ],
         [
-          "vs Transformer-256×2, 1 pass (10M)",
-          "2.427",
-          "1.955",
-          "0.96× its training · 0.16× its inference"
+          "vs Transformer, 2 layers, 1 pass (10M chars)",
+          "2.427 bpc",
+          "1.955 bpc",
+          "Better · 96% of its training, 16% of its inference compute"
         ],
         [
-          "vs LSTM-256 at matched inference (10M)",
-          "2.171",
-          "1.955",
-          "0.88× its inference (more training)"
+          "vs LSTM-256 (10M chars)",
+          "2.171 bpc",
+          "1.955 bpc",
+          "Better at 88% of its inference compute (more training)"
         ],
         [
-          "vs LSTM-512, 6 passes (10M): next target",
-          "1.799",
-          "1.888",
-          "0.81× its training · run at ≤ its budget queued"
+          "vs LSTM-512, 6 passes (10M chars): queued rerun",
+          "1.799 bpc",
+          "1.888 bpc",
+          "Behind by 0.09 at 81% of its training compute"
         ],
         [
-          "90M: LSTM-512 / Transformer (multi-pass)",
-          "1.661 / 1.604",
-          "1.857",
-          "≤1/16 of their training; matched runs queued"
+          "vs LSTM-512 / Transformer (90M chars): queued",
+          "1.661 / 1.604 bpc",
+          "1.857 bpc",
+          "Behind, at under 1/16 of their training compute"
         ],
         [
-          "NeuroBench Mackey-Glass (20/30 repeats, sMAPE)",
-          "13.37 (LSTM)",
-          "14.37",
-          "57.6 KB model vs 490 KB"
+          "NeuroBench chaotic forecast (20/30 runs)",
+          "13.37% (LSTM)",
+          "14.37%",
+          "Behind by 1.0 point, with an 8.5× smaller model"
         ]
       ],
-      "banner": "Matched-compute wins against both Transformer baselines; LSTM-512 and 90M parity are the next proofs.",
-      "banner_y": 562,
-      "caveat": "Native compute traced; references shape-estimated (saved E64 controls). Tuned dense baselines at our exact budgets are running for review. Scoreboard: README.md.",
-      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats)."
+      "banner": "Wins against both Transformer baselines at a fraction of their compute. LSTM-512 and the 90M scale are the next proofs.",
+      "banner_y": 548,
+      "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; tuned versions at our budgets are running. Scoreboard: evidence pack R1.",
+      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats)."
     },
     {
       "kind": "cards",
@@ -253,40 +253,40 @@
       "kind": "family_landscape",
       "section": "The model family",
       "title": "One model family across today's architectural landscape.",
-      "subtitle": "Stateful temporal programs connect representation, memory, timing and learning.",
+      "subtitle": "Our approach combines strengths of today's main model types.",
       "sources": [
         "R3"
       ],
       "top": [
         {
-          "label": "Recurrent / SSM models",
-          "body": "Persistent state and selective dynamics.\nAdd addressed temporal programs."
+          "label": "Recurrent networks",
+          "body": "Carry a running memory forward.\nWe add addressed memory and timing."
         },
         {
-          "label": "Attention / Transformers",
-          "body": "Content-addressed aggregation.\nInclude rich local interaction."
+          "label": "Transformers",
+          "body": "Every input attends to every other.\nWe keep that where it pays off."
         },
         {
-          "label": "Sparse experts / MoE",
-          "body": "Capacity beyond selected expert work.\nAdd private facts and timing."
+          "label": "Mixture of experts",
+          "body": "Activate part of a large model.\nWe add private memory and timing."
         }
       ],
       "bottom": [
         {
           "label": "Statistics / retrieval",
-          "body": "Counts and direct historical evidence.\nCombine with learned abstractions."
+          "body": "Counts and lookups of past data.\nCombined with learned features."
         },
         {
-          "label": "Adaptive memory / TTT",
-          "body": "Learning in the deployed model.\nUse local, causal update policies."
+          "label": "Adaptive memory",
+          "body": "Models that adapt while in use.\nWith local, causal updates."
         },
         {
-          "label": "Event / temporal systems",
-          "body": "Local arrivals, timers and causal order.\nAdd vector messages and route credit."
+          "label": "Event-driven systems",
+          "body": "Event-driven, neuromorphic systems.\nWe add trainable messages."
         }
       ],
-      "core": "One content / time / address / state interface; compatible choices from units to complete systems.\nIntegrated target: computational time, selective state, small messages, separate keys/values and unrealized credit.",
-      "caveat": "Containment needs actual operators and contracts. Learned parity, lower total cost and physical energy require evidence.",
+      "core": "One interface for content, timing, memory address and state, from single units to complete systems.\nTarget: computation through timing, sparse memory updates, small messages, and learning from unchosen paths.",
+      "caveat": "These are design relationships, not benchmark claims. Each combination must still be built and measured.",
       "notes": "This is the whole-family position, not a claim that every implemented member contains every incumbent. The envelope intersects recurrent/SSM, attention, sparse expert, statistical/retrieval, adaptive-memory and temporal systems. Supported dense reference blocks and synchronous barriers are permitted endpoints. The proposed differentiation is a common stateful temporal/selection/credit construction and its eventual quality/resource behavior. Known primitives have prior art; wrapping a reference predictor establishes no advantage. Computational universality is not a strictly larger class than all finite computable predictors. The technical report states operator, state, precision and schedule conditions. Current language fits illustrate one branch; joint TTT, multimodal integration, general morphing and clockless hardware economics are separate milestones."
     },
     {
@@ -301,25 +301,25 @@
         {
           "label": "01 / UNITS",
           "metric": "Local programs",
-          "body": "Choose state, flow, writes, small messages, keys and reception. Time can perform computation."
+          "body": "Each unit chooses what to remember, what message to send and when. Timing itself performs computation."
         },
         {
           "label": "02 / LAYERS",
           "metric": "Adaptive work",
-          "body": "Select one or many messages. Add dense interaction where needed; preserve lean regions elsewhere."
+          "body": "A layer can activate one message or many: dense where needed, lean elsewhere."
         },
         {
           "label": "03 / COMPOSITIONS",
           "metric": "Shared evidence",
-          "body": "Link learned vectors, counts and historical memory. Explicit paths let dense and sparse inputs inform one query."
+          "body": "Learned features, counts and stored history can all inform the same prediction."
         },
         {
           "label": "04 / SYSTEMS",
           "metric": "Same learner",
-          "body": "Support streamed or batched updates and native TTT. Broader structural design is a further learning ambition."
+          "body": "The same learning rule works in batches or on a live stream, including learning after deployment."
         }
       ],
-      "banner": "No required global periodic tick. Joint integration, measured TTT gains, morphing and hardware energy remain milestones.",
+      "banner": "No global clock is required. Combined models, learning-after-deployment gains and chip energy are still milestones.",
       "notes": "The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts. Learned memory/scheduling can be viewed as fast-state adaptation governed by slow trained rules, drawing on memory-augmented meta-learning and TTT. The opportunity register defines native irregular ingestion, asynchronous codecs and joint embodied/cognitive paths with explicit first proofs. The prior-art boundary and full work/bit accounting are stated in the report."
     },
     {
@@ -383,46 +383,46 @@
           "body": "Use errors to improve message content and timing, including paths that were not selected."
         }
       ],
-      "banner": "Implemented language core: hard selection and persistent local state in a synchronous emulator."
+      "banner": "Implemented and trained today in ordinary software (CPU); no special hardware needed to run it."
     },
     {
       "kind": "cards",
       "section": "Early proof",
       "title": "The language experiments establish three useful facts.",
-      "subtitle": "10M-character text8 training budget; held-out prediction error. Lower bits per character is better.",
+      "subtitle": "Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.",
       "sources": [
         "R1"
       ],
       "notes": "T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is {best_lstm_gain:.4f} bpc, with {best_lstm_fit_ratio:.2f} times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.",
       "cards": [
         {
-          "label": "IT CAN LEARN REAL TEXT",
-          "metric": "{best_bpc:.3f} bits/char",
-          "body": "Best model reaches the saved recurrent baseline’s quality ({lstm_bpc:.3f}). It uses {best_lstm_fit_ratio:.2f}× estimated training work."
+          "label": "IT LEARNS REAL TEXT",
+          "metric": "1.888 bits/char",
+          "body": "Better than the 4-layer Transformer baseline (1.908) with 40% of its training compute. The larger LSTM (1.799) is still ahead."
         },
         {
-          "label": "ALTERNATIVE CREDIT HELPS",
+          "label": "TRAINING UNCHOSEN PATHS HELPS",
           "metric": "−{credit_gain:.3f} bits/char",
-          "body": "In the same small model, learning from unchosen paths improves prediction error; estimated training work rises 0.30%."
+          "body": "Giving learning signal to the paths the model did not take cuts the error of the same small model, for 0.3% more training compute."
         },
         {
-          "label": "CAPACITY AND SELECTED WORK",
+          "label": "MORE MEMORY, SAME RUNNING WORK",
           "metric": "16 → 32 slots",
-          "body": "More available memory improves prediction while retaining eight selected writes per input. Key scoring and learning costs also grow."
+          "body": "Doubling memory slots lowers the error while each input still updates only 8 slots. Training cost rises; running cost barely changes."
         }
       ],
-      "banner": "Exploratory single-seed results. The next proof is replicated quality plus a measured system-cost advantage."
+      "banner": "Single runs on one dataset. The next proof is repeated runs plus a measured cost advantage."
     },
     {
       "kind": "scatter",
       "section": "Language evaluation",
-      "title": "A language-model foothold for a new architecture.",
-      "subtitle": "Held-out prediction error versus estimated training arithmetic; 10M characters, one pass.",
+      "title": "Single pass: error versus training compute.",
+      "subtitle": "Each model sees the 10M training characters once. Lower and further left is better. Slide 2 adds multi-pass runs.",
       "sources": [
         "R1"
       ],
       "notes": "p32 / D4 credited: {credit_bpc:.6f} bpc, 7.243 estimated whole-fit TFLOPs, 108,875 parameters. Saved Transformer-256×2: {transformer_bpc:.6f}, 111.262 TFLOPs, 1,658,907 parameters. This gives {transformer_fit_ratio:.2f}× lower fitting arithmetic and {transformer_parameter_ratio:.2f}× fewer parameters for this saved control, with {transformer_credit_gain:.4f} lower bpc. The strong one-pass LSTM is {lstm_bpc:.6f} at 20.306 TFLOPs. Best native p96 is {best_bpc:.6f} at 58.648 TFLOPs. Tuned dense references at our exact budgets (validation-selected) and the 90M matched-compute runs are running.",
-      "caveat": "Saved one-pass controls; same test region and window length. Training order and work conventions differ. One seed. Arithmetic estimates are not service cost."
+      "caveat": "Baselines trained by us on the same data and test set. Compute is estimated arithmetic (trillion operations), not measured energy or cost. Single runs."
     },
     {
       "kind": "cards",
@@ -471,13 +471,13 @@
         },
         {
           "label": "02 / MEMORY-LOCAL ACCELERATORS",
-          "metric": "5.8× fewer bytes",
-          "body": "Modeled per character: our 1.888-bpc model moves 5.8× fewer bytes than the Transformer it beats. 10× more capacity adds only 5% traffic. Data movement dominates chip energy."
+          "metric": "5.8× less data moved",
+          "body": "Modeled per character: our 1.888-bpc model moves 5.8× fewer memory bytes than the Transformer it beats. 10× more memory adds only 5% traffic. Moving data dominates chip energy."
         },
         {
           "label": "03 / CLOCKLESS SILICON",
-          "metric": "Work ∝ information",
-          "body": "No global clock: idle capacity draws only leakage, latency is average-case, and low average power permits denser 3D memory-on-logic packing. Also the missing model for the neuromorphic chip class."
+          "metric": "Work only on events",
+          "body": "No global clock: idle parts draw almost no power, answers arrive as soon as they are ready, and cool chips allow dense 3D stacking. Also the missing model for neuromorphic chips."
         }
       ],
       "banner": "The €3M round funds scale and a hardware cost model of the trained network; silicon follows measured proof."
@@ -629,12 +629,12 @@
         {
           "label": "01 / QUALITY AT SCALE",
           "metric": "Replicate",
-          "body": "At least three seeds, fixed causal tests and tuned controls. Compare quality and complete work; keep failures beside the best result."
+          "body": "At least three runs per result, fixed held-out tests and tuned baselines. Compare quality and total compute; publish failures too."
         },
         {
           "label": "02 / COMPLETE ECONOMICS",
           "metric": "Measure",
-          "body": "Pass trained sparse parity. Measure total serving cost, tail latency, memory and energy at useful quality on one fixed workload."
+          "body": "Show the fast sparse runtime gives the trained model’s answers. Measure serving cost, latency, memory and energy on one workload."
         },
         {
           "label": "03 / ADOPTION",
@@ -657,7 +657,7 @@
         {
           "label": "MONTHS 0–3",
           "metric": "Team + proofs",
-          "body": "Hire the initial team. Establish company/IP rights. Complete trained sparse execution checks and larger-data, multi-seed evaluation."
+          "body": "Hire the initial team. Establish company/IP rights. Verify the fast sparse runtime on trained models; repeat results on larger data."
         },
         {
           "label": "MONTHS 3–6",
@@ -699,7 +699,7 @@
         "F1",
         "F2"
       ],
-      "detail": "The proposal prices a model/learning family, sparse runtime and future compute substrate that already beats Transformer baselines at a fraction of the compute. Step-up path: a confirmed 90M matched-compute win and a NeuroBench first place support the €100M scenario.",
+      "detail": "The proposal prices a model/learning family, sparse runtime and future chip architecture that already beats Transformer baselines at a fraction of the compute. A confirmed 90M-character win and a NeuroBench first place would justify a higher next price (the €100M scenario in the appendix).",
       "banner": "Valuation sensitivities and conditional exit scenarios are in the appendix."
     },
     {
@@ -761,13 +761,13 @@
       "kind": "inference",
       "section": "Appendix / sparse execution",
       "title": "The sparse path is implemented; system proof is next.",
-      "subtitle": "Estimated arithmetic per evaluated input position. Green bars show the implemented winner-only path.",
+      "subtitle": "Inference arithmetic per predicted character. Green bars: our implemented sparse runtime, which computes only the selected paths.",
       "sources": [
         "R1",
         "R3"
       ],
       "notes": "Small random float64 fixtures match full-emulator logits within roughly 1e-10. Actual trained float32 winner/state/cache parity and a full held-out rescore are prepared and pending. The prepared CPU worker retains prepacked matrices per fixed model version, but native admission remains unrun. Candidate key scans, copying, residency, setup, gather traffic, cache invalidation and quality must all be included in serving comparisons. The deck deliberately does not attach the trained quality to an unverified production backend or convert FLOPs to joules.",
-      "caveat": "These are backend/shape estimates. Native evaluation pays overlapping-window warmup (~2 positions/target); LSTM recurrent evaluation differs. Not a service-cost win."
+      "caveat": "Arithmetic estimates, not measured service cost. Our evaluation also pays about two extra positions of warm-up per predicted character; the LSTM evaluates differently."
     },
     {
       "kind": "online",
@@ -1057,7 +1057,7 @@
         "LSTM-256": "Recurrent baseline (LSTM)",
         "Transformer-256x2": "Small Transformer control"
       },
-      "caveat": "Fit MF/pos = per training position. Inference MF/pos = per evaluated input position. Native quality uses training evaluator; winner-only trained parity/rescore pending. Native overlap warmup adds work per scored target. Full 15-row CSV retains older models."
+      "caveat": "↓ = lower is better. bpc = bits per character of prediction error. TFLOPs/MFLOPs = trillion/million arithmetic operations (estimates). Train = per training character; run = per predicted character. Full run computes every path; sparse run only the selected ones (exact-match check on trained models pending). Full 15-row CSV retains older models."
     },
     {
       "kind": "table",
@@ -1152,7 +1152,7 @@
       "rows": [
         [
           "Data / evaluation",
-          "Frozen table: 10M fit. Report: completed 90M fit, 1.8573 BPC on test[95M:96M], T256.",
+          "Frozen table: 10M training characters. Report: completed 90M run, 1.8573 bpc on test characters 95M–96M, 256-character windows.",
           "Align modern controls, target coverage and fit work; full official 5M test remains open."
         ],
         [
