@@ -1,0 +1,5 @@
+# Delay-tap hypothesis (FINDINGS.md 5 Oct): each character event carries the last 3 characters (language_taps_benchmark.py; the
+# base driver's pinned bytes are unchanged). Comparison: curie v8 p64/d4 pool 2 linear 4-pass, 1.955 bpc, 107.2 TF; identical otherwise.
+# Report overall test bpc, the history curve at 2-4 chars (reference_context_curve.py), whole-fit and winner-only inference work.
+# Admit after P0-2 and the native lr arms. Promotion gate: >= .02 bpc better at <= 10% more fitting work.
+curie_language_taps3_10M_p64d4_4pass_20261005T020000Z experiments/language_taps_benchmark.py --taps 3 --tag curie_language_batched_10M_p64d4_pool2_linear_4pass_taps3_l64_lr004_cmp_s6_20261005T020000Z --payload 64 --pool 2 --passes 4 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --eval-every 1600 --cosine --eval-segment 256 --compiled --depth 4 --route-credit linear --checkpoint-every 400
