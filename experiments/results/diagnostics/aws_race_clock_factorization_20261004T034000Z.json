@@ -1,0 +1,102 @@
+{
+  "status": "algebra_contracts_passed",
+  "clocks": [
+    {
+      "rates": [
+        1.0
+      ],
+      "winner_probabilities": [
+        1.0
+      ],
+      "sampled_min_mean": 1.0,
+      "sampled_min_variance": 1.0,
+      "all_noise_one_delay": 1.0,
+      "delay_ratio": 1.0
+    },
+    {
+      "rates": [
+        1.0,
+        1.0
+      ],
+      "winner_probabilities": [
+        0.5,
+        0.5
+      ],
+      "sampled_min_mean": 0.5,
+      "sampled_min_variance": 0.25,
+      "all_noise_one_delay": 1.0,
+      "delay_ratio": 2.0
+    },
+    {
+      "rates": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "winner_probabilities": [
+        0.14285714285714285,
+        0.2857142857142857,
+        0.5714285714285714
+      ],
+      "sampled_min_mean": 0.14285714285714285,
+      "sampled_min_variance": 0.02040816326530612,
+      "all_noise_one_delay": 0.25,
+      "delay_ratio": 1.75
+    },
+    {
+      "rates": [
+        0.01,
+        0.02,
+        10.0
+      ],
+      "winner_probabilities": [
+        0.0009970089730807579,
+        0.0019940179461615157,
+        0.9970089730807578
+      ],
+      "sampled_min_mean": 0.09970089730807578,
+      "sampled_min_variance": 0.009940268924035474,
+      "all_noise_one_delay": 0.1,
+      "delay_ratio": 1.003
+    }
+  ],
+  "output_risk_witnesses": [
+    {
+      "target": 1.0,
+      "sampled_squared_risk": 3.0,
+      "mean_prediction_squared_risk": 0.0,
+      "greedy_squared_risk": 1.0
+    },
+    {
+      "target": 2.0,
+      "sampled_squared_risk": 4.0,
+      "mean_prediction_squared_risk": 1.0,
+      "greedy_squared_risk": 0.0
+    },
+    {
+      "target": -2.0,
+      "sampled_squared_risk": 12.0,
+      "mean_prediction_squared_risk": 9.0,
+      "greedy_squared_risk": 16.0
+    }
+  ],
+  "linearized_noise_amplification": [
+    {
+      "gain": 0.5,
+      "horizon": 20,
+      "variance_per_unit_increment_noise": 1.3333333333321207
+    },
+    {
+      "gain": 1.0,
+      "horizon": 20,
+      "variance_per_unit_increment_noise": 20.0
+    },
+    {
+      "gain": 1.1,
+      "horizon": 20,
+      "variance_per_unit_increment_noise": 210.75835984845742
+    }
+  ],
+  "scope": "Constructed algebra only; no native model, measured sMAPE, runtime or quality claim.",
+  "source_sha256": "7aee94bfcddd4c04b0e44a0189f8fce755f44e56a3cc2007cae9e3a5add5e76f"
+}

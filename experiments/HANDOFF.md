@@ -2505,3 +2505,15 @@ queue/coordinator or numerical runtime was launched in this Docker workspace.
 Exact small archive bytes were restored/hash-verified for stdlib analysis only.
 Useful future-write credit, horizon, silence-aware event learning, trained
 inference and physical energy remain gaps; no architectural substitution.
+
+AWS precision-theory follow-up: owner MG deterministic-training round4 retained.
+New theory/aws_20261004_route_clock_precision.md isolates an unresolved confound:
+all-noise-one races alter both winner and delay; 1/max(rate) is between1andU
+ times the sampled mean1/sum(rate). Exact exponential winner/time independence
+suggests a five-arm fixed-DEV-weight TRAIN-only diagnostic before attribution.
+Constructed stdlib survival/density/risk/amplification contracts passed; artifact
+aws_race_clock_factorization_20261004T034000Z. No model runtime, new training,
+officialtau17 scoring, core modification or quality/resource claim. Hard argmax
+with linear categorical surrogate is not automatically an unbiased derivative
+of deterministic risk. Preserve owner sampled/deterministic evidence beside this
+scope refinement. Active replay/teacher source/queue bindings remain intact.
