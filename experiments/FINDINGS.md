@@ -1,5 +1,16 @@
 # Findings log
 
+## P0-6 partial: two tuned LSTMs at budget A beat the native 1.888 — 4 October (AWS, 2 of 6 arms)
+
+Tuned dense references at the native p96/d4 6-pass budget (A, <= 352 TF; native test 1.888 bpc): LSTM-512, 4.5 passes,
+lr .002 — test **1.825** (validation 1.769, 1.20M params); LSTM-384, 6 passes, lr .003 — test **1.840** (validation 1.778).
+Both are below 1.888, so tuning makes the LSTM loss at this budget larger, not smaller (saved LSTM-512 6-pass: 1.799 at
+433 TF). The four Transformer arms of budget A (tf128L4/tf192L4/tf256L4) and all four budget-B arms are still pending;
+the scoreboard selects one arm per budget by validation only when the group is complete, and the LSTM rows also wait for
+the aligned T256-window rescoring (`aws_lstm512_native_windows`), because the saved LSTMs carry state across the test
+interval. Interpretation: the Transformer matched-compute wins are the claims at risk from tuning; the LSTM gap
+(~0.06–0.09 bpc at this budget) is the target for P0-2 (p128/d4 4-pass) and the 90M runs.
+
 ## Mackey-Glass exact-expected-reception member (§418): ties race on tau 18, not robust on tau 19 — 4 October
 
 Development only (three official-protocol repeats per arm, tau 18/19; mean sMAPE %, lower is better). Expected-reception
