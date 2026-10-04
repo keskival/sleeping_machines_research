@@ -117,7 +117,11 @@ def run_session(a, name):
         rows = [dict(events=[(float(t), spikes[i].astype(np.float32)) for t, i in enumerate(r)]) for r in idx]
         y = torch.tensor(target[idx])
         model.train(); opt.zero_grad(set_to_none=True)
-        out = logits_fn(model, rows, 1000 + step, all_logits=True, route_credit=rc)
+        if a.reception == 'expected':          # deterministic exact expected delivery, hard argmax writes (§418)
+            from sleeping_machines.expected_reception import expected_logits
+            out = expected_logits(model, rows, 0, all_logits=True, compiled=a.compiled)
+        else:
+            out = logits_fn(model, rows, 1000 + step, all_logits=True, route_credit=rc)
         loss = F.mse_loss(out[:, a.warmup:], y[:, a.warmup:])
         loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step(); schedule.step()
         losses.append(float(loss))
@@ -130,7 +134,12 @@ def run_session(a, name):
         K = a.route_samples if K is None else K
         # K independent race-noise streams (separate steppers: one stepper shares each race's draw across its lanes);
         # predictions averaged
-        steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(K)]; preds = []
+        if a.reception == 'expected':          # deterministic: one stream
+            from sleeping_machines.expected_reception import ExpectedStepper
+            steppers = [ExpectedStepper(model, 1)]
+        else:
+            steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(K)]
+        preds = []
         for t, i in enumerate(indices):
             x = torch.tensor(spikes[i].astype(np.float32))[None]
             preds.append(torch.stack([st.step(torch.tensor([float(t)]), x)[0] for st in steppers]).mean(0).numpy())
@@ -175,6 +184,8 @@ def main():
                    '(inference work scales with it)')
     p.add_argument('--val-blocks', type=int, default=1, help='validation drawn from the end of this many equal parts of the '
                    'fitting bins (1: one block at the end)')
+    p.add_argument('--reception', choices=('race', 'expected'), default='race',
+                   help='expected: exact expected delivery, mean clock, hard argmax writes (deterministic member)')
     p.add_argument('--traces', default='', help='comma list of per-bin decays for causal exponential spike traces added to '
                    'the content (e.g. .75,.95)')
     p.add_argument('--smoothing', action='store_true', help='causal leaky-integrator readout; constant chosen on validation')
