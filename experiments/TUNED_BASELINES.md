@@ -88,8 +88,15 @@ requires aligned validation/test contexts. A first finished arm cannot become th
 | Arm | Budget | Est. training | Best valid | Test | vs native in budget |
 |---|---|---|---|---|---|
 | `aws_tuned_ref_10M_A_lstm384_p6_lr0.003_s0_20261004T210000Z` | A | 254 TF | 1.778 | **1.840** | native p96/d4 6-pass 1.888 at 352 TF: **loss** for native (stateful LSTM context; aligned rescore pending) |
+| `aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z` | A | 324 TF | **1.769** (leading) | **1.826** | **loss** for native by .062; nearly the saved 6-pass LSTM-512 (1.799) at 75% of its compute |
 
 The validation curve was still improving at the final step (1.785 → 1.778 over the last 1,500 steps), so this budget is
 not saturated for the LSTM. Group selection waits for all six A arms (HEADLINE_PROTOCOL_AUDIT.md). Whatever is selected
 can only be at least this strong on validation. Fairness: native configurations were not learning-rate tuned. Matching
 native lr arms are queued (`curie_language_native_lr_*_20261005T000500Z`).
+
+**Inference view (5 Oct, two arms):** per-character inference is about 2 × params: LSTM-384 ≈ 1.4 MFLOPs, LSTM-512 ≈ 2.4.
+Native p96 winner-only is 1.3 MFLOPs. At roughly equal inference compute, LSTM-384 is .048 bpc better. On 10M
+characters, tuned LSTMs currently dominate the native model in quality at similar inference cost. The native model's
+remaining measured advantages are bytes per character (no KV cache; capacity added for +5% traffic) and the Transformer
+comparisons, pending the tuned Transformer arms.

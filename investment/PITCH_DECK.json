@@ -233,10 +233,10 @@
           "Behind by 0.09 at 81% of its training compute"
         ],
         [
-          "vs tuned LSTM-384, 6 passes (10M chars)",
-          "1.840 bpc",
+          "vs best tuned LSTM so far (2 of 6 tuned runs)",
+          "1.826 bpc",
           "1.888 bpc",
-          "Behind by 0.05; it used 72% of our compute"
+          "Behind by 0.06; it used 92% of our compute"
         ],
         [
           "vs LSTM-512 / Transformer (90M chars): queued",
@@ -254,12 +254,12 @@
       "banner": "Wins vs both saved Transformers; a tuned small LSTM still leads. That gap is the next proof.",
       "banner_y": 548,
       "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; tuned versions at our budgets are running. Scoreboard: evidence pack R1.",
-      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued."
+      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued. Update 5 Oct 00:40: second tuned arm LSTM-512 4.5 passes, 324 TF, test 1.826 (validation 1.769, leading the group); native 1.888 at 352 TF."
     },
     {
       "kind": "table",
       "section": "Why this is unusual",
-      "title": "Event-driven models have aimed for parity on language. Ours wins on compute.",
+      "title": "Event-driven models aimed for parity. Ours beats small Transformers on compute.",
       "subtitle": "Published event-driven and spiking language models, as reported by their authors, beside our completed result.",
       "sources": [
         "P1",
@@ -305,13 +305,13 @@
         [
           "Sleeping Machines (ours)",
           "Learned arrival times choose which memories update; unchosen paths learn too",
-          "Beats two Transformer baselines with 40% of training, 18% of inference compute"
+          "Beats two small Transformers at 40% of training compute; tuned LSTMs lead by 0.06"
         ]
       ],
-      "banner": "To our knowledge, the first event-timed model to beat Transformer baselines on language with less compute.",
+      "banner": "To our knowledge, the first event-timed model to beat Transformer baselines on language with less compute, so far at small scale.",
       "banner_y": 532,
       "caveat": "Different datasets and scales; not a ranking. Ours: text8, 10M characters, small models, single runs, our baselines; LSTM-512 still ahead.",
-      "notes": "Literature check (web search, 4 October 2026), not a systematic review. Prior event-driven/spiking language models report parity or a gap against conventional models; we found none reporting a Transformer win at lower counted compute. Our claim is scoped: text8, 10M training characters, models under 1M parameters, single seeds, baselines trained by the project (tuned baselines at our budgets are running); LSTM-512 (1.799 bpc) remains ahead at 10M and both references remain ahead at 90M. Prior-work compute figures use different conventions and hardware and are not compared numerically."
+      "notes": "Literature check (web search, 4 October 2026), not a systematic review. Prior event-driven/spiking language models report parity or a gap against conventional models; we found none reporting a Transformer win at lower counted compute. Our claim is scoped: text8, 10M training characters, models under 1M parameters, single seeds, baselines trained by the project (tuned baselines at our budgets are running); LSTM-512 (1.799 bpc) remains ahead at 10M and both references remain ahead at 90M. Prior-work compute figures use different conventions and hardware and are not compared numerically. Scope (5 Oct): our comparison is at ~1M parameters and 10M characters against baselines we trained; the prior systems were evaluated at 100M-1.5B parameters. Tuned LSTMs currently beat our model (1.826 vs 1.888 bpc)."
     },
     {
       "kind": "cards",
