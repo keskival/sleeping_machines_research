@@ -1,7 +1,8 @@
 # Current AWS work
 
 **NeuroBench primate reaching protocol run (4 October 05:35 UTC):** six one-session queues
-`queue/aws_primate_r1_*_20261004T053500Z.txt`; see [AWS_NEUROBENCH.md](AWS_NEUROBENCH.md). Admit as slots free up.
+`queue/aws_primate_r1_*_20261004T053500Z.txt`; see [AWS_NEUROBENCH.md](AWS_NEUROBENCH.md). Admit as slots free up. Also three Mackey-Glass
+tau 17 queues `queue/aws_mg_tau17_r1_from{0,10,20}_20261004T061500Z.txt` (same doc).
 
 **Queued by the user's request (3 October): native language at 90M characters, revision 2 (10:30 UTC, with route
 credit).** Protocol and admission: [AWS_NATIVE_LANGUAGE_90M.md](AWS_NATIVE_LANGUAGE_90M.md). Contracts and pilots
