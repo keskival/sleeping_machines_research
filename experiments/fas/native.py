@@ -101,6 +101,8 @@ def main():
     p.add_argument('--route-credit', default='linear'); p.add_argument('--compiled', action='store_true')
     p.add_argument('--epochs', type=int, default=3); p.add_argument('--lanes', type=int, default=8)
     p.add_argument('--fit-runs', type=int, default=10000); p.add_argument('--max-events', type=int, default=1100)
+    p.add_argument('--train-max-events', type=int, default=0, help='train on the first K process events of each run '
+                   '(0: --max-events); scoring always uses --max-events')
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
@@ -111,7 +113,7 @@ def main():
         raise ValueError('Unique unused tag required')
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed); started = time.perf_counter()
     d = ROOT / 'experiments/data/fas' / a.data
-    train, _ = load(d / 'train_clean.npz', a.max_events); train = train[:a.fit_runs]
+    train, _ = load(d / 'train_clean.npz', a.train_max_events or a.max_events); train = train[:a.fit_runs]
     val_c, _ = load(d / 'val_clean.npz', a.max_events); val_f, val_k = load(d / 'val_faulty.npz', a.max_events)
     val_c, val_f, val_k = val_c[:a.eval_runs], val_f[:a.eval_runs], val_k[:a.eval_runs]
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=a.payload, depth=a.depth,
