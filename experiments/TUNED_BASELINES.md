@@ -112,3 +112,6 @@ constant after that. It is local character modelling, not longer memory. Determi
 essentially equal training compute (347 vs 352 TF). Tuning narrowed the gap to the saved 4-pass TF256x4 (1.908 at 889 TF)
 only partly at this budget: on 10M characters the shape-estimated Transformer pays heavily for T256 attention at small width.
 If the two TF256x4 arms do not beat 1.888, the Transformer win survives tuning. The LSTM loss also stands.
+Checked objection, "T256 attention handicaps the small Transformers": with the shape estimator, a ctx-128 TF256x4 costs 206 TF per
+10M-character pass versus 222 TF at ctx 256 (7% less). The projection/FFN term dominates at these widths, so a shorter
+training context would buy under 0.1 extra pass. No additional arm queued.
