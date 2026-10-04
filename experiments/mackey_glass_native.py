@@ -101,21 +101,44 @@ def fit_and_forecast(a, z, seed):
         loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step(); schedule.step()
         losses.append(float(loss))
     model.eval()
-    stepper = SparseStepper(model, 1, 777, deterministic=a.argmax)
+    forecasts = {mode: forecast(model, z, a, mode) for mode in modes_of(a)}
+    return forecasts, losses, sum(p.numel() for p in model.parameters())
+
+
+def modes_of(a):
+    if a.eval_modes:
+        return a.eval_modes.split(',')
+    return ['argmax' if a.argmax else 'sampled']
+
+
+def forecast(model, z, a, mode):
+    """autonomous forecast; mode 'sampled' (race noise), 'argmax' (deterministic races) or 'mixK' (predictions averaged
+    over K independent race-noise streams, each fed the averaged history)."""
+    if mode == 'sampled':
+        steppers = [SparseStepper(model, 1, 777)]
+    elif mode == 'argmax':
+        steppers = [SparseStepper(model, 1, 777, deterministic=True)]
+    elif mode.startswith('mix'):
+        steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(int(mode[3:]))]
+    else:
+        raise ValueError(mode)
+
+    def step(i, content):
+        return float(torch.stack([st.step(torch.tensor([float(i)]), content) for st in steppers]).mean())
     with torch.no_grad():
         for i in range(TRAIN):                            # teacher-forced warm pass over the training inputs
-            pred = stepper.step(torch.tensor([float(i)]), torch.tensor(taps_of(z, i, a.taps))[None])
+            pred = step(i, torch.tensor(taps_of(z, i, a.taps))[None])
         if a.delta:
             pred = pred + float(z[TRAIN - 1])
         history = list(z[:TRAIN])
         preds = []
         for i in range(TRAIN, TRAIN + TEST):              # autonomous: the newest input is the previous prediction
-            history.append(float(pred[0, 0]))
-            pred = stepper.step(torch.tensor([float(i)]), torch.tensor(taps_of(np.array(history), i, a.taps))[None])
+            history.append(pred)
+            pred = step(i, torch.tensor(taps_of(np.array(history), i, a.taps))[None])
             if a.delta:
                 pred = pred + history[-1]
-            preds.append(float(pred[0, 0]))
-    return np.array(preds), losses, sum(p.numel() for p in model.parameters())
+            preds.append(pred)
+    return np.array(preds)
 
 
 def main():
@@ -135,6 +158,8 @@ def main():
     p.add_argument('--delta', action='store_true', help='predict the increment z[t+1] - z[t]')
     p.add_argument('--argmax', action='store_true', help='deterministic routing at inference (highest score wins)')
     p.add_argument('--train-argmax', action='store_true', help='deterministic routing in training as well')
+    p.add_argument('--eval-modes', default='', help='comma list of inference modes from the same weights (sampled, argmax, '
+                   'mixK); the first is the primary score')
     p.add_argument('--closed-from', type=float, default=.5, help='fraction of training after which closed-loop windows start')
     a = p.parse_args()
     if a.closed_loop and not a.compiled:
@@ -150,13 +175,14 @@ def main():
         mu, sd = raw[:TRAIN + 1].mean(), raw[:TRAIN + 1].std()
         z = ((raw - mu) / sd).astype(np.float32)
         t = time.perf_counter()
-        preds, losses, params = fit_and_forecast(a, z, a.seed * 1000 + r)
-        forecast = preds * sd + mu
-        score = smape(forecast, raw[TRAIN + 1:TRAIN + TEST + 1])
-        rows.append(dict(repeat=r, smape=score, final_train_mse=float(np.mean(losses[-20:])), wall_s=time.perf_counter() - t))
+        forecasts, losses, params = fit_and_forecast(a, z, a.seed * 1000 + r)
+        scores = {mode: smape(f * sd + mu, raw[TRAIN + 1:TRAIN + TEST + 1]) for mode, f in forecasts.items()}
+        rows.append(dict(repeat=r, smape=scores[modes_of(a)[0]], smape_by_mode=scores,
+                         final_train_mse=float(np.mean(losses[-20:])), wall_s=time.perf_counter() - t))
         print(json.dumps(rows[-1]), flush=True)
     result = dict(status='completed', args=vars(a), parameters=params, footprint_bytes_float32=params * 4,
-                  repeats=rows, mean_smape=float(np.mean([r['smape'] for r in rows])),
+                  repeats=rows, mean_smape=float(np.mean([r['smape'] for r in rows])), primary_mode=modes_of(a)[0],
+                  mean_smape_by_mode={m: float(np.mean([r['smape_by_mode'][m] for r in rows])) for m in modes_of(a)},
                   protocol='NeuroBench Mackey-Glass (neurobench 2.3.0 slices, split and SMAPE); autonomous 750-step forecast',
                   source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in
                                  ('experiments/mackey_glass_native.py', 'sleeping_machines/sparse_inference.py',
