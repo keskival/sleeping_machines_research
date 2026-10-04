@@ -1,5 +1,37 @@
 # Local host: current research continuation
 
+## Completed public selection audit — 4 October 2026
+
+Reconciled latest AWS owner progress7f6226e0: all four90M language fits and nine
+public archive final refits completed. Native p64/D4/pool2 T2561.857306bpc is
+positive scale evidence, not full public text8 or resource supremacy. Curie
+primate round2/K4 and SHD owner queues remain prioritized; do not duplicate them.
+Curie owner continuation is queue/curie_language_batched_v6_20261003T111500Z.txt;
+AWS owner is queue/aws_public_campaign_20261004T000200Z/manifest.json. These
+names identify existing reservations, not instructions to relaunch their jobs.
+
+New evidence_audit.py reconstructs all nine final TEST accuracies/NLLs using
+hash-verified official labels and saved probabilities; validates prediction IDs,
+three-seed completion, selected DEV minima, exact candidate/parent/data hashes,
+same screen/refit program/config and consistent work denominators. Result:
+diagnostics/public_campaign_evidence_20261004T025800Z.json. Means72.33/93.96/95.96%
+for ECG200/JapaneseVowels/PenDigits, same TEST populations. No win or new fit.
+ECG selected large/small paired DEV gain.006670, SE.058877 at11.354x whole-screen
+work; Japanese.072779, SE.072276 at11.116x. Adaptive comparisons are descriptive.
+Prospective selection_policy.py requires >=3 prescribed DEV-only seeds/candidate
+and prefers lower measured-estimated cost within a frozen empirical tolerance;
+no historical selection changed. Theory150 and report appendix retain negative
+outcomes and specify TRAIN-only split/refit controls and full-session primate
+confirmation, checkpoints and K-dependent serving cost.
+
+17 stdlib contracts pass. Exact public archive bytes restored from committed
+download provenance for read-only audit; no Torch/NumPy/HDF5/model runtime,
+training, profiler, queue or coordinator was launched. Physical curie lock/jobs
+remain inaccessible; AWS normal reservation remains owner-held despite slot1
+completion. Main report source links the new appendix; existing owner-rendered
+PDF was preserved. Full write replay/useful horizon/real-event silence and
+trained serving/energy gaps remain. No architectural substitution.
+
 ## Public benchmark campaign and native speech admission — 3 October
 
 User requested systematic benchmark selection and autonomous work towards real

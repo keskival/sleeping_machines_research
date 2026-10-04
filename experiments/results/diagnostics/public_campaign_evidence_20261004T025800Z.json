@@ -1,0 +1,1434 @@
+{
+  "status": "completed_evidence_audit",
+  "data_manifest_sha256": "d57fee8e92d76d9d49c8c1a3c91a443b6af34a78110c72a78b763e7c711682dc",
+  "datasets": [
+    {
+      "dataset": "ECG200",
+      "selection_sha256": "e6ffe667ff744a90298e3f73e9c79109455406f250a8c9e20895507cbd00fe11",
+      "development": {
+        "selected": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p32d4u4_20261004T000100Z.json",
+        "dev_targets": 20,
+        "screens": [
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p16d2u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 25,
+            "dev_accuracy": 0.9,
+            "dev_nll": 0.291996169090271,
+            "train_mean_batch_nll_at_selected_epoch": 0.2546563148498535,
+            "dev_wilson95_conditional": [
+              0.6989663547715128,
+              0.9721335187862319
+            ],
+            "parameters": 14234,
+            "presentations": 3200,
+            "whole_fit_gflops_estimate": 32.3292267,
+            "per_presented_target_mflops_estimate": 10.10288334375,
+            "capacity": {
+              "receivers": 8,
+              "scored_keys_per_event": 8,
+              "selected_writes_per_event": 4
+            },
+            "wall_s": 413.2452803789638,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p32d4u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 26,
+            "dev_accuracy": 0.9,
+            "dev_nll": 0.29647986888885497,
+            "train_mean_batch_nll_at_selected_epoch": 0.30761516590913135,
+            "dev_wilson95_conditional": [
+              0.6989663547715128,
+              0.9721335187862319
+            ],
+            "parameters": 105650,
+            "presentations": 3200,
+            "whole_fit_gflops_estimate": 220.4834941,
+            "per_presented_target_mflops_estimate": 68.90109190625,
+            "capacity": {
+              "receivers": 16,
+              "scored_keys_per_event": 16,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 900.8423217259697,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p32d4u4_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 13,
+            "dev_accuracy": 0.9,
+            "dev_nll": 0.2853263854980469,
+            "train_mean_batch_nll_at_selected_epoch": 0.3880920211474101,
+            "dev_wilson95_conditional": [
+              0.6989663547715128,
+              0.9721335187862319
+            ],
+            "parameters": 173794,
+            "presentations": 3200,
+            "whole_fit_gflops_estimate": 367.0533981,
+            "per_presented_target_mflops_estimate": 114.70418690625,
+            "capacity": {
+              "receivers": 32,
+              "scored_keys_per_event": 32,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 922.0464085959829,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          }
+        ],
+        "paired_dev": [
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p16d2u2_20261004T000100Z.json",
+            "left_minus_right": -0.006669782692412068,
+            "paired_standard_error": 0.05887671077299169,
+            "descriptive_normal95": [
+              -0.1220660153356572,
+              0.10872644995083305
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 11.353608965227739
+          },
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_ECG200_screen_p32d4u2_20261004T000100Z.json",
+            "left_minus_right": -0.011153506881260796,
+            "paired_standard_error": 0.026521340440438725,
+            "descriptive_normal95": [
+              -0.06313437896624635,
+              0.040827365203724764
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 1.6647658800868033
+          }
+        ]
+      },
+      "final_seeds": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s6.json",
+          "sha256": "81a5b3ad3029e3f317b99d617f05bc63cb5ce10419ba391e2c7fa84abd18c4a3",
+          "seed": 6,
+          "accuracy": 0.74,
+          "nll": 0.6309146237373352,
+          "correct": 74,
+          "test_wilson95_conditional": [
+            0.6462901055081282,
+            0.8159530153525186
+          ],
+          "confusion": [
+            [
+              21,
+              15
+            ],
+            [
+              11,
+              53
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.49787189811468124,
+          "parameters": 173794,
+          "presentations": 1300,
+          "whole_fit_gflops_estimate": 149.115442978125,
+          "per_presented_target_mflops_estimate": 114.70418690625,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 321.0110293360194,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s7.json",
+          "sha256": "e193df522c69ab64fd2b25cc1dec61b9626532848b73808fc8e142fb386266d3",
+          "seed": 7,
+          "accuracy": 0.72,
+          "nll": 0.6207125329971314,
+          "correct": 72,
+          "test_wilson95_conditional": [
+            0.6251197129007884,
+            0.7986031478881379
+          ],
+          "confusion": [
+            [
+              10,
+              26
+            ],
+            [
+              2,
+              62
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.5066900178790092,
+          "parameters": 173794,
+          "presentations": 1300,
+          "whole_fit_gflops_estimate": 149.115442978125,
+          "per_presented_target_mflops_estimate": 114.70418690625,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 255.49864703399362,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_ECG200_selection_20261004T000100Z_final_s8.json",
+          "sha256": "cec57872317f230e6305b395f32cd3d0a5630cd469e4a6b688ed027fa74f9527",
+          "seed": 8,
+          "accuracy": 0.71,
+          "nll": 0.6494878387451172,
+          "correct": 71,
+          "test_wilson95_conditional": [
+            0.6146110882442888,
+            0.7898516425087772
+          ],
+          "confusion": [
+            [
+              17,
+              19
+            ],
+            [
+              10,
+              54
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.44664590805768967,
+          "parameters": 173794,
+          "presentations": 1300,
+          "whole_fit_gflops_estimate": 149.115442978125,
+          "per_presented_target_mflops_estimate": 114.70418690625,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 256.14866251597414,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        }
+      ],
+      "test_targets": 100,
+      "mean_test_accuracy": 0.7233333333333333,
+      "test_accuracy_seed_stddev": 0.01527525231651948,
+      "test_accuracy_seed_range": [
+        0.71,
+        0.74
+      ],
+      "dev_minus_mean_test_accuracy": 0.17666666666666675,
+      "test_class_counts": {
+        "1": 64,
+        "0": 36
+      },
+      "seed_pairs": [
+        {
+          "seeds": [
+            6,
+            7
+          ],
+          "prediction_disagreement": 0.22,
+          "left_only_correct": 12,
+          "right_only_correct": 10,
+          "both_wrong": 16
+        },
+        {
+          "seeds": [
+            6,
+            8
+          ],
+          "prediction_disagreement": 0.07,
+          "left_only_correct": 5,
+          "right_only_correct": 2,
+          "both_wrong": 24
+        },
+        {
+          "seeds": [
+            7,
+            8
+          ],
+          "prediction_disagreement": 0.15,
+          "left_only_correct": 8,
+          "right_only_correct": 7,
+          "both_wrong": 21
+        }
+      ],
+      "all_seeds_wrong": 16,
+      "total_screen_fit_gflops_estimate": 619.8661189,
+      "total_final_fit_gflops_estimate": 447.34632893437504
+    },
+    {
+      "dataset": "JapaneseVowels",
+      "selection_sha256": "ed90f3c824006531ebea1dff821a5057b2b6f0d05d648fab39ab3cd7f6e73a80",
+      "development": {
+        "selected": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p32d4u4_20261004T000100Z.json",
+        "dev_targets": 54,
+        "screens": [
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p16d2u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 19,
+            "dev_accuracy": 0.9629629629629629,
+            "dev_nll": 0.15585210146727385,
+            "train_mean_batch_nll_at_selected_epoch": 0.007442102667742542,
+            "dev_wilson95_conditional": [
+              0.8746482308272452,
+              0.9897836320515545
+            ],
+            "parameters": 14817,
+            "presentations": 8640,
+            "whole_fit_gflops_estimate": 23.026963176,
+            "per_presented_target_mflops_estimate": 2.665157775,
+            "capacity": {
+              "receivers": 8,
+              "scored_keys_per_event": 8,
+              "selected_writes_per_event": 4
+            },
+            "wall_s": 116.171452132985,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p32d4u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 15,
+            "dev_accuracy": 0.9629629629629629,
+            "dev_nll": 0.13154389019365664,
+            "train_mean_batch_nll_at_selected_epoch": 0.07780887066785779,
+            "dev_wilson95_conditional": [
+              0.8746482308272452,
+              0.9897836320515545
+            ],
+            "parameters": 106809,
+            "presentations": 8640,
+            "whole_fit_gflops_estimate": 154.248253236,
+            "per_presented_target_mflops_estimate": 17.852807087499997,
+            "capacity": {
+              "receivers": 16,
+              "scored_keys_per_event": 16,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 273.15370242402423,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p32d4u4_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 22,
+            "dev_accuracy": 0.9629629629629629,
+            "dev_nll": 0.0830735409701312,
+            "train_mean_batch_nll_at_selected_epoch": 0.14037418897662843,
+            "dev_wilson95_conditional": [
+              0.8746482308272452,
+              0.9897836320515545
+            ],
+            "parameters": 174953,
+            "presentations": 8640,
+            "whole_fit_gflops_estimate": 255.957426036,
+            "per_presented_target_mflops_estimate": 29.624702087499998,
+            "capacity": {
+              "receivers": 32,
+              "scored_keys_per_event": 32,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 290.70794249296887,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          }
+        ],
+        "paired_dev": [
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p16d2u2_20261004T000100Z.json",
+            "left_minus_right": -0.07277857526157473,
+            "paired_standard_error": 0.0722759297765487,
+            "descriptive_normal95": [
+              -0.21443679457275627,
+              0.0688796440496068
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 11.115552844709166
+          },
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_screen_p32d4u2_20261004T000100Z.json",
+            "left_minus_right": -0.04847035859206199,
+            "paired_standard_error": 0.0761581025988726,
+            "descriptive_normal95": [
+              -0.19773749681675856,
+              0.1007967796326346
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 1.6593862210185606
+          }
+        ]
+      },
+      "final_seeds": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s6.json",
+          "sha256": "9899aed23c349a52ecef77b41b1d93c29e6cc7a0a5b21dee0989d58f9efa9870",
+          "seed": 6,
+          "accuracy": 0.9540540540540541,
+          "nll": 0.13422773262938936,
+          "correct": 353,
+          "test_wilson95_conditional": [
+            0.9276581883234863,
+            0.9711185312515246
+          ],
+          "confusion": [
+            [
+              30,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              32,
+              1,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              87,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              42,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              29,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              24,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              39,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              49,
+              0
+            ],
+            [
+              3,
+              0,
+              3,
+              0,
+              1,
+              0,
+              0,
+              1,
+              21
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.08990124778615104,
+          "parameters": 174953,
+          "presentations": 5940,
+          "whole_fit_gflops_estimate": 173.14922802375,
+          "per_presented_target_mflops_estimate": 29.1497016875,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 178.79767016496044,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s7.json",
+          "sha256": "4f1a7f1ff987b0baf284037bbedd21486d7dc5051e568602e69e746d5acdcab3",
+          "seed": 7,
+          "accuracy": 0.9081081081081082,
+          "nll": 0.40801674863575277,
+          "correct": 336,
+          "test_wilson95_conditional": [
+            0.8743330404197932,
+            0.9334960349125084
+          ],
+          "confusion": [
+            [
+              30,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              33,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              63,
+              0,
+              0,
+              1,
+              4,
+              0,
+              18
+            ],
+            [
+              0,
+              1,
+              0,
+              42,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              28,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              24,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              40,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              47,
+              3
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              29
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.06944817846589205,
+          "parameters": 174953,
+          "presentations": 5940,
+          "whole_fit_gflops_estimate": 170.26360059375,
+          "per_presented_target_mflops_estimate": 28.663905823863637,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 128.08381903800182,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_JapaneseVowels_selection_20261004T000100Z_final_s8.json",
+          "sha256": "8156fd2402747a6c9712699a251fe05b419c599102391b57f298959ab9b968ca",
+          "seed": 8,
+          "accuracy": 0.9567567567567568,
+          "nll": 0.16333067340625299,
+          "correct": 354,
+          "test_wilson95_conditional": [
+            0.9309170084177301,
+            0.9732095725833227
+          ],
+          "confusion": [
+            [
+              28,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              35,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              85,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              43,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              29,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              24,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              39,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              47,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              0,
+              3,
+              0,
+              0,
+              0,
+              24
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.058419512998726636,
+          "parameters": 174953,
+          "presentations": 5940,
+          "whole_fit_gflops_estimate": 176.03485545375,
+          "per_presented_target_mflops_estimate": 29.635497551136364,
+          "capacity": {
+            "receivers": 32,
+            "scored_keys_per_event": 32,
+            "selected_writes_per_event": 8
+          },
+          "wall_s": 131.18882856704295,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        }
+      ],
+      "test_targets": 370,
+      "mean_test_accuracy": 0.9396396396396397,
+      "test_accuracy_seed_stddev": 0.027340524154042353,
+      "test_accuracy_seed_range": [
+        0.9081081081081082,
+        0.9567567567567568
+      ],
+      "dev_minus_mean_test_accuracy": 0.02332332332332321,
+      "test_class_counts": {
+        "0": 31,
+        "1": 35,
+        "2": 88,
+        "3": 44,
+        "4": 29,
+        "5": 24,
+        "6": 40,
+        "7": 50,
+        "8": 29
+      },
+      "seed_pairs": [
+        {
+          "seeds": [
+            6,
+            7
+          ],
+          "prediction_disagreement": 0.11351351351351352,
+          "left_only_correct": 28,
+          "right_only_correct": 11,
+          "both_wrong": 6
+        },
+        {
+          "seeds": [
+            6,
+            8
+          ],
+          "prediction_disagreement": 0.062162162162162166,
+          "left_only_correct": 10,
+          "right_only_correct": 11,
+          "both_wrong": 6
+        },
+        {
+          "seeds": [
+            7,
+            8
+          ],
+          "prediction_disagreement": 0.11621621621621622,
+          "left_only_correct": 12,
+          "right_only_correct": 30,
+          "both_wrong": 4
+        }
+      ],
+      "all_seeds_wrong": 1,
+      "total_screen_fit_gflops_estimate": 433.232642448,
+      "total_final_fit_gflops_estimate": 519.44768407125
+    },
+    {
+      "dataset": "PenDigits",
+      "selection_sha256": "e25431e399351ee76b00ba66efc9df9ac99ab907fa69fd904fe84abfc780d20a",
+      "development": {
+        "selected": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p16d2u2_20261004T000100Z.json",
+        "dev_targets": 1500,
+        "screens": [
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p16d2u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 36,
+            "dev_accuracy": 0.9913333333333333,
+            "dev_nll": 0.052560642806250446,
+            "train_mean_batch_nll_at_selected_epoch": 0.03362060315579912,
+            "dev_wilson95_conditional": [
+              0.9852283335257945,
+              0.9949281792198403
+            ],
+            "parameters": 14530,
+            "presentations": 239760,
+            "whole_fit_gflops_estimate": 229.0501830375,
+            "per_presented_target_mflops_estimate": 0.95533109375,
+            "capacity": {
+              "receivers": 8,
+              "scored_keys_per_event": 8,
+              "selected_writes_per_event": 4
+            },
+            "wall_s": 214.2787727540126,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p32d4u2_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 17,
+            "dev_accuracy": 0.9793333333333333,
+            "dev_nll": 0.08007016469972829,
+            "train_mean_batch_nll_at_selected_epoch": 0.11153727704608017,
+            "dev_wilson95_conditional": [
+              0.9708150932498304,
+              0.985402725833089
+            ],
+            "parameters": 106234,
+            "presentations": 239760,
+            "whole_fit_gflops_estimate": 1547.9748731025,
+            "per_presented_target_mflops_estimate": 6.45635165625,
+            "capacity": {
+              "receivers": 16,
+              "scored_keys_per_event": 16,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 427.44073145696893,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          },
+          {
+            "path": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p32d4u4_20261004T000100Z.json",
+            "seed": 6,
+            "best_epoch": 28,
+            "dev_accuracy": 0.9773333333333334,
+            "dev_nll": 0.079982959382236,
+            "train_mean_batch_nll_at_selected_epoch": 0.11848221101644547,
+            "dev_wilson95_conditional": [
+              0.9684933393768472,
+              0.983734697428953
+            ],
+            "parameters": 174378,
+            "presentations": 239760,
+            "whole_fit_gflops_estimate": 2571.0535703025,
+            "per_presented_target_mflops_estimate": 10.72344665625,
+            "capacity": {
+              "receivers": 32,
+              "scored_keys_per_event": 32,
+              "selected_writes_per_event": 8
+            },
+            "wall_s": 524.2676730499952,
+            "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+            "inference_work": null,
+            "measured_energy": null
+          }
+        ],
+        "paired_dev": [
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p32d4u2_20261004T000100Z.json",
+            "left_minus_right": -0.027509522060855336,
+            "paired_standard_error": 0.015305675269676407,
+            "descriptive_normal95": [
+              -0.05750809434848647,
+              0.0024890502267758026
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 0.14796763630822404
+          },
+          {
+            "alternative": "experiments/results/public_benchmarks/aws_public_PenDigits_screen_p32d4u4_20261004T000100Z.json",
+            "left_minus_right": -0.027422316867479608,
+            "paired_standard_error": 0.012484434119084049,
+            "descriptive_normal95": [
+              -0.05189135810824738,
+              -0.002953275626711837
+            ],
+            "scope": "Same DEV examples, selected epochs. Ignores adaptive selection and training-seed uncertainty; not a calibrated post-selection confidence interval.",
+            "selected_over_alternative_fit_work": 0.08908806322948411
+          }
+        ]
+      },
+      "final_seeds": [
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s6.json",
+          "sha256": "327da8acea00bd644801f9719e60bbcffd10c685ec1316a4369d70ad29437ac0",
+          "seed": 6,
+          "accuracy": 0.9654088050314465,
+          "nll": 0.1968880264300708,
+          "correct": 3377,
+          "test_wilson95_conditional": [
+            0.9588242168250208,
+            0.9709723026029359
+          ],
+          "confusion": [
+            [
+              355,
+              0,
+              2,
+              0,
+              0,
+              0,
+              5,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              363,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              6,
+              355,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              331,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              352,
+              8,
+              0,
+              0,
+              0,
+              3
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              317,
+              0,
+              0,
+              0,
+              17
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              332,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              42,
+              1,
+              2,
+              0,
+              0,
+              6,
+              308,
+              1,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              335,
+              0
+            ],
+            [
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              329
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.03036307857557326,
+          "parameters": 14530,
+          "presentations": 269784,
+          "whole_fit_gflops_estimate": 257.73304379625,
+          "per_presented_target_mflops_estimate": 0.95533109375,
+          "capacity": {
+            "receivers": 8,
+            "scored_keys_per_event": 8,
+            "selected_writes_per_event": 4
+          },
+          "wall_s": 266.9963169149705,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s7.json",
+          "sha256": "1928356f37bb405bf3d40427998fc1431e1cccb392301d8b66d868a47da0c821",
+          "seed": 7,
+          "accuracy": 0.9502572898799314,
+          "nll": 0.2999701284848179,
+          "correct": 3324,
+          "test_wilson95_conditional": [
+            0.9425455722543615,
+            0.9569811587646998
+          ],
+          "confusion": [
+            [
+              351,
+              0,
+              0,
+              0,
+              0,
+              0,
+              10,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              336,
+              16,
+              9,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              341,
+              14,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              333,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              356,
+              4,
+              3,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              3,
+              0,
+              308,
+              0,
+              0,
+              6,
+              17
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              336,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              0,
+              27,
+              0,
+              0,
+              9,
+              304,
+              1,
+              19
+            ],
+            [
+              3,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              331,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              1,
+              328
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.03369627659040874,
+          "parameters": 14530,
+          "presentations": 269784,
+          "whole_fit_gflops_estimate": 257.73304379625,
+          "per_presented_target_mflops_estimate": 0.95533109375,
+          "capacity": {
+            "receivers": 8,
+            "scored_keys_per_event": 8,
+            "selected_writes_per_event": 4
+          },
+          "wall_s": 219.21102176897693,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        },
+        {
+          "path": "experiments/results/public_benchmarks/aws_public_PenDigits_selection_20261004T000100Z_final_s8.json",
+          "sha256": "a0eb3789b16b0a4e8af00bfa83fc0c525dffe9dbfcce760a6f4fa6429e7cec73",
+          "seed": 8,
+          "accuracy": 0.9631217838765008,
+          "nll": 0.26665260337268254,
+          "correct": 3369,
+          "test_wilson95_conditional": [
+            0.956351083432878,
+            0.968876411329585
+          ],
+          "confusion": [
+            [
+              351,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              12,
+              0
+            ],
+            [
+              0,
+              337,
+              22,
+              0,
+              1,
+              0,
+              0,
+              3,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              362,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              325,
+              0,
+              1,
+              0,
+              4,
+              0,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              341,
+              12,
+              0,
+              0,
+              0,
+              11
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              322,
+              0,
+              0,
+              0,
+              13
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              2,
+              326,
+              0,
+              7,
+              0
+            ],
+            [
+              0,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              340,
+              0,
+              21
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              335,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              330
+            ]
+          ],
+          "train_mean_batch_nll_last_epoch": 0.02713922315073084,
+          "parameters": 14530,
+          "presentations": 269784,
+          "whole_fit_gflops_estimate": 257.73304379625,
+          "per_presented_target_mflops_estimate": 0.95533109375,
+          "capacity": {
+            "receivers": 8,
+            "scored_keys_per_event": 8,
+            "selected_writes_per_event": 4
+          },
+          "wall_s": 219.53099527902668,
+          "scope": "One full eager optimizer window per epoch extrapolated per target. Variable/padded lengths vary; shape-mean estimate, not exact whole fit. DEV/test/packing/compilation/traffic/energy separate.",
+          "inference_work": null,
+          "measured_energy": null
+        }
+      ],
+      "test_targets": 3498,
+      "mean_test_accuracy": 0.9595959595959596,
+      "test_accuracy_seed_stddev": 0.008167966729216566,
+      "test_accuracy_seed_range": [
+        0.9502572898799314,
+        0.9654088050314465
+      ],
+      "dev_minus_mean_test_accuracy": 0.03173737373737373,
+      "test_class_counts": {
+        "8": 336,
+        "9": 336,
+        "1": 364,
+        "4": 364,
+        "7": 364,
+        "0": 363,
+        "2": 364,
+        "5": 335,
+        "3": 336,
+        "6": 336
+      },
+      "seed_pairs": [
+        {
+          "seeds": [
+            6,
+            7
+          ],
+          "prediction_disagreement": 0.0494568324757004,
+          "left_only_correct": 93,
+          "right_only_correct": 40,
+          "both_wrong": 81
+        },
+        {
+          "seeds": [
+            6,
+            8
+          ],
+          "prediction_disagreement": 0.0440251572327044,
+          "left_only_correct": 70,
+          "right_only_correct": 62,
+          "both_wrong": 59
+        },
+        {
+          "seeds": [
+            7,
+            8
+          ],
+          "prediction_disagreement": 0.05088622069754145,
+          "left_only_correct": 54,
+          "right_only_correct": 99,
+          "both_wrong": 75
+        }
+      ],
+      "all_seeds_wrong": 47,
+      "total_screen_fit_gflops_estimate": 4348.0786264425,
+      "total_final_fit_gflops_estimate": 773.19913138875
+    }
+  ],
+  "source_sha256": {
+    "experiments/public_benchmarks/evidence_audit.py": "4428f11114c616dfb176a81d686cff00099ef1d4db52cd158a1717930267b5f2",
+    "experiments/public_benchmarks/data.py": "9fccae1f26acaa16582629cc16899eef86753741b8bcc62a0de91ef1062b85ae"
+  },
+  "claims": [],
+  "scope": "Read-only saved predictions, labels and lineage; no numerical model execution. Three seeds reuse each official TEST set. Wilson intervals condition on one fitted predictor and assume independent examples; serial or subject dependence and selection bias are not covered. DEV paired intervals ignore adaptive selection. No baseline parity, inference/energy or SOTA certificate. Campaign costs include screens and finals only; pilots, contracts and failed attempts remain separate."
+}

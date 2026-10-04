@@ -2920,6 +2920,8 @@ Seed SD measures variation across training seeds on the same TEST examples, not 
 
 Fit GF/run is mean whole-fit work per final seed; MF/series divides by fitting presentations, not unique examples. Completed pilots, screens and final refits together account for 7,162.53GF estimated fitting work. Failed/contract/evaluation/compilation/preprocessing work is additional. Estimates extrapolate one eager optimizer window per epoch; variable padding prevents exact whole-fit accounting. Sources: experiments/results/public_benchmarks/*.json.
 
+The [saved-prediction selection audit](report/appendices/public_selection_audit_20261004.md) reproduces every final score and verifies immutable lineage. ECG200's selected large-model DEV NLL gain over the small model is0.00667 with paired standard error0.05888 at11.35× screening work. These adaptively selected DEV comparisons are descriptive; they motivate prospective multi-seed, compute-aware selection and TRAIN-only refit controls, without changing historical choices or claiming that a smaller model would win TEST.
+
 ## Appendix. Native language at 10M: the integrated core, segment-batched
 
 | Model (10M) | Params | Steps | Test bpc T128/T256 | Whole fit TF est. | Fit MF/char | Infer MF/pos. emulator | Infer MF/pos. winner-only |

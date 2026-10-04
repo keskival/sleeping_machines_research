@@ -2482,3 +2482,26 @@ MG/primate DEV rounds, preserve running credit fits and require a clean
 reservation-aware continuation. Prioritized integrated mechanism gaps remain
 full replay on public tasks, useful deep causal credit, physical asynchronous
 public evaluation, matched resource/quality frontier and independent replication.
+
+4 October root continuation: completed read-only probability/label audit now
+reproduces all nine final TEST accuracies and NLLs, checking exact prediction IDs,
+three prescribed seeds, frozen candidate/parent/data hashes, DEV-selected epoch
+minima, identical screen/refit programs/configs and consistent fitting-work
+denominators. Artifact diagnostics/public_campaign_evidence_20261004T025800Z.json
+complements the AWS030000Z inventory/refit audit; all historical choices remain.
+ECG selected large/small DEV NLL gain.006670 with paired SE.058877 at11.354x
+screen work; Japanese.072779/SE.072276 at11.116x. Adaptive DEV statistics are
+descriptive, not post-selection confidence. No claim that smaller refits win.
+New prospective public_benchmarks/selection_policy.py requires>=3 prescribed
+DEV-only seeds per candidate, rejects changed dataset/program/config and prefers
+lower fitting cost within a frozen empirical tolerance.17 stdlib tests pass.
+Theory150 and report/appendices/public_selection_audit_20261004.md retain all
+negative scores, costs and exact scope. REPORT.md links the appendix; the AWS
+owner's latest rendered PDF is preserved. Prioritized integrated model remains
+tied native p32/D2 primate round2/K4 in curie_language_batched_v6_20261003T111500Z
+owner queue, with pending six-session/seed/checkpoint/serving-cost confirmation;
+the AWS public_v2 manifest owns remaining streaming replay fits. No new trainer,
+queue/coordinator or numerical runtime was launched in this Docker workspace.
+Exact small archive bytes were restored/hash-verified for stdlib analysis only.
+Useful future-write credit, horizon, silence-aware event learning, trained
+inference and physical energy remain gaps; no architectural substitution.
