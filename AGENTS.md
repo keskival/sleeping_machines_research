@@ -43,6 +43,12 @@
   depth theory and compute-allocation reasoning. Integrate new findings with
   their evidence and scope instead of replacing these principles ad hoc.
 
+# Defining and reporting wins
+
+- `experiments/WIN_CRITERIA.md` defines matched-compute (training, inference, total), pure-accuracy, leaderboard and
+  Pareto wins, efficiency points and evidence levels. Developing agents aim for these explicitly; reporting agents state
+  a win plainly as a win with its evidence level and one scope statement, and state losses just as plainly.
+
 # Research direction and architectural continuity
 
 - The objective is a trainable, scalable substrate that computes through time

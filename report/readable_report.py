@@ -1805,6 +1805,13 @@ def blocks(M, tasks, ev):
         credited=[r for k,r in nlb.items() if 'route credit' in k and r.get('sparse') and r['updates']==1220]   # one pass
         best=min(credited,key=lambda r:r['test']) if credited else None
         if best and 'p32/d4' in nlb and 'p32/d4 + route credit' in nlb and 'LSTM-256' in ctl:
+            pages[-1].insert(-1,('p','<b>Matched-compute wins at 10M (single seed; experiments/WIN_CRITERIA.md).</b> The native '
+                'model beats the 4-pass Transformer-256x4 at 0.40x its training compute and 0.18x its inference compute (1.888 vs '
+                '1.908 bpc, with 1.5x its updates), the one-pass Transformer-256x2 at matched training compute (1.955 vs 2.427 '
+                'at 107 vs 111 TFLOPs) and LSTM-256 at matched inference compute (1.955 vs 2.171). LSTM-512 (1.799, 6 passes) '
+                'remains ahead at its budget; the next runs target it at <=433 TFLOPs. Native work is traced, reference work '
+                'shape-estimated. At 90M one native pass reaches 1.857 at 1/16 of the 6-pass LSTM-512 compute (1.661): an '
+                'efficiency point, settled by queued multi-pass runs.'))
             pages[-1].insert(-1,('p','<b>Learned native language at 10M, one pass (THEORY §413).</b> Alternative-value credit '
                 '(forward values unchanged) improves the integrated '
                 f'native core from <b>{nlb["p32/d4"]["test"]:.3f} to {nlb["p32/d4 + route credit"]["test"]:.3f}</b> '

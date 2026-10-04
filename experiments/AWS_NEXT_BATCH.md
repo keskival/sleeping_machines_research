@@ -1,5 +1,8 @@
 # Current AWS work
 
+**Priority (user, 4 October 19:30): 90M matched-compute runs** `queue/aws_language_90M_r4_p64d4_4pass_linear_20261004T193000Z.txt`
+then `..._r4_p96d4_4pass_...` (AWS_NATIVE_LANGUAGE_90M.md, revision 4), as soon as slots free.
+
 **NeuroBench primate reaching protocol run (4 October 05:35 UTC):** six one-session queues
 `queue/aws_primate_r1_*_20261004T053500Z.txt`; see [AWS_NEUROBENCH.md](AWS_NEUROBENCH.md). Admit as slots free up. Also three Mackey-Glass
 tau 17 queues `queue/aws_mg_tau17_r1_from{0,10,20}_20261004T061500Z.txt` (same doc).

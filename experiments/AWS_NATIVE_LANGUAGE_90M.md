@@ -99,3 +99,17 @@ character unchanged; about 2.1 MFLOPs fitting per character, about 190 TFLOPs, e
 about 0.17 MFLOPs per position). Admit it after the running revision-2 arms, before the 10M multi-pass section. RSS is
 larger than at pool 4 (curie pool 4 at p64: 2.3 GB), so set the cap from its pilot.
 
+## Revision 4 (19:30 UTC 4 October): matched-compute runs against the 90M references (experiments/WIN_CRITERIA.md)
+
+Projection from the four completed one-pass rows (65→241 TFLOPs: 2.045→1.857, about .33 bpc per decade): reaching
+LSTM-512 (1.661) needs about 1–3 PFLOPs and the Transformer (1.604) about 1.5–5 PFLOPs, against their 3.9 / 8.0 PFLOPs.
+
+| Queue | Arm | Estimated fitting work | Inference / position |
+|---|---|---:|---:|
+| `queue/aws_language_90M_r4_p64d4_4pass_linear_20261004T193000Z.txt` | p64/d4 pool 2, route credit, 4 passes (43,945 updates) | ~0.96 PF | 0.60 MF |
+| `queue/aws_language_90M_r4_p96d4_4pass_linear_20261004T193000Z.txt` | p96/d4 pool 2, route credit, 4 passes | ~2.1 PF | 1.32 MF |
+
+A test bpc at or below 1.661 is a matched-compute win over LSTM-512 on training and inference; at or below 1.604, over the
+Transformer as well. Admit p64 first (cheaper); both are checkpointed every 500 windows. On one CPU thread these take
+roughly 16 h and 30 h. Admit them as soon as a slot is free, ahead of the 10M multi-pass section.
+

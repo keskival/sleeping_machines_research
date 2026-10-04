@@ -154,7 +154,9 @@ def pages(data):
         ]),
         ('p', f"The best native model is {abs(gap):.3f} bpc {relative_quality} the LSTM, "
               f"using {best['whole']/1e12:.2f} versus {lstm['whole']/1e12:.2f} estimated fitting TFLOPs. "
-              'This is substantial progress, not comparable-quality superiority in total resources.')
+              'Per experiments/WIN_CRITERIA.md this one-pass row is a quality win over LSTM-256 at higher training compute; '
+              'the matched-compute wins (both Transformers at training and inference budgets, LSTM-256 at inference budget) '
+              'are tabulated in the native appendix.')
     ], [
         ('h1', 'Learning diagnosis and the next decisive checks'),
         ('h2', 'Keep the successful value credit; withdraw failed write credit'),
