@@ -68,8 +68,26 @@ def make_model(a, channels):
     return model
 
 
+def with_traces(spikes, decays):
+    """causal features: the bin's spikes and exponential traces tr_t = d tr_{t-1} + (1 - d) s_t along the recording's time
+    axis, one per decay d (float16 storage)."""
+    if not decays:
+        return spikes
+    T, C = spikes.shape
+    out = np.empty((T, C * (1 + len(decays))), np.float16)
+    out[:, :C] = spikes
+    for j, d in enumerate(decays):
+        tr = np.zeros(C, np.float32)
+        col = out[:, C * (1 + j):C * (2 + j)]
+        for t in range(T):
+            tr = d * tr + (1 - d) * spikes[t]
+            col[t] = tr
+    return out
+
+
 def run_session(a, name):
     spikes, labels, fit, test = load_session(name)
+    spikes = with_traces(spikes, [float(d) for d in a.traces.split(',')] if a.traces else [])
     n_val = int(round(len(fit) * a.val_fraction))
     train, val = fit[:len(fit) - n_val], fit[len(fit) - n_val:]
     mu, sd = labels[train].mean(0), labels[train].std(0)
@@ -89,7 +107,7 @@ def run_session(a, name):
     for step in range(a.steps):
         starts = rng.integers(0, len(train) - S, B)
         idx = np.stack([train[s:s + S] for s in starts])                       # (B, S) bin indices
-        rows = [dict(events=[(float(t), spikes[i]) for t, i in enumerate(r)]) for r in idx]
+        rows = [dict(events=[(float(t), spikes[i].astype(np.float32)) for t, i in enumerate(r)]) for r in idx]
         y = torch.tensor(target[idx])
         model.train(); opt.zero_grad(set_to_none=True)
         out = logits_fn(model, rows, 1000 + step, all_logits=True, route_credit=rc)
@@ -107,7 +125,7 @@ def run_session(a, name):
         # predictions averaged
         steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(K)]; preds = []
         for t, i in enumerate(indices):
-            x = torch.tensor(spikes[i])[None]
+            x = torch.tensor(spikes[i].astype(np.float32))[None]
             preds.append(torch.stack([st.step(torch.tensor([float(t)]), x)[0] for st in steppers]).mean(0).numpy())
         return np.array(preds) * sd + mu
     single = None
@@ -148,6 +166,8 @@ def main():
     p.add_argument('--compiled', action='store_true'); p.add_argument('--seed', type=int, default=1)
     p.add_argument('--route-samples', type=int, default=1, help='average predictions over this many race-noise streams '
                    '(inference work scales with it)')
+    p.add_argument('--traces', default='', help='comma list of per-bin decays for causal exponential spike traces added to '
+                   'the content (e.g. .75,.95)')
     p.add_argument('--smoothing', action='store_true', help='causal leaky-integrator readout; constant chosen on validation')
     a = p.parse_args()
     out = ROOT / 'experiments/results/neurobench_primate' / f'{a.tag}.json'
