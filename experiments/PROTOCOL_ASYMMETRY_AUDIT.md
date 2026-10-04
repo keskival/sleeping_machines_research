@@ -14,3 +14,11 @@ Each item names the evidence, the direction of the bias and the fix. Results lan
 
 The headline matched-compute wins against the Transformers are unaffected by item 1 (both windowed). Items 1–4 can only
 move native quality up relative to the LSTM rows; item 2 is the structural one and the largest expected gain.
+
+## Measured, 4 October 22:35 UTC
+
+- **Item 1 does not matter on this data.** Streaming equals windowed scoring for both the tuned LSTM-512
+  (1.8255 / 1.8255) and native p96 (1.8889 / 1.8885).
+- **Item 2 is unlikely to matter on this data.** Both models stop improving after 16–32 characters of history.
+- The 0.06–0.07 bpc gap is present from 2–4 characters of history (FINDINGS, 4 October). The levers are local
+  modelling and items 3–4.

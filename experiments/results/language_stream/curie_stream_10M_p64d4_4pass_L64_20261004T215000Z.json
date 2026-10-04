@@ -1,0 +1,113 @@
+{
+ "status": "completed",
+ "args": {
+  "result": "experiments/results/language_batched/curie_language_batched_10M_p64d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261003T150000Z.json",
+  "tag": "curie_stream_10M_p64d4_4pass_L64_20261004T215000Z",
+  "lanes": 64,
+  "seed": 314159,
+  "test": 0,
+  "windows": 0,
+  "window_lanes": 512,
+  "deterministic": false,
+  "context_curve": 1024,
+  "limit": 0
+ },
+ "parent": "experiments/results/language_batched/curie_language_batched_10M_p64d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261003T150000Z.json",
+ "parent_sha256": "ade7907aed44ce4625b92c3476512ae5e66acd8fc67d9963789591594a08cac5",
+ "weights": "experiments/results/language_batched/checkpoints/curie_language_batched_10M_p64d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261003T150000Z_final.pt",
+ "weights_sha256": "37a4abd95050dcf86bbf160201a8a378eb1376a7ed2257e66979710fc7a3f40f",
+ "parent_test_bpc_T256": 1.9547012943119024,
+ "protocol": {
+  "test": [
+   95000000,
+   96000000
+  ],
+  "lanes": 64,
+  "evaluator": "SparseStepper winner-only (exact replay of the training evaluator)",
+  "routing": "sampled races, seed 314159",
+  "state": "carried across the whole lane; reset only at the L lane starts",
+  "evaluated_positions_per_target": 1.0
+ },
+ "stream_bpc": 1.9550407538383612,
+ "stream_targets": 999999,
+ "by_context": {
+  "0-128": {
+   "bpc": 1.9890584778040648,
+   "targets": 8192
+  },
+  "128-256": {
+   "bpc": 1.990800448693335,
+   "targets": 8192
+  },
+  "256-1024": {
+   "bpc": 1.9642782293570538,
+   "targets": 49152
+  },
+  "1024-4096": {
+   "bpc": 1.980372534211104,
+   "targets": 196608
+  },
+  "4096-16384": {
+   "bpc": 1.9469008243302628,
+   "targets": 737855
+  }
+ },
+ "stream_wall_s": 257.3092666869925,
+ "hardware": {
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "threads": 1
+ },
+ "context_curve": {
+  "C": 1024,
+  "by_history": {
+   "0-1": {
+    "bpc": 3.5123186983517933,
+    "targets": 976
+   },
+   "1-2": {
+    "bpc": 3.097911738783759,
+    "targets": 976
+   },
+   "2-4": {
+    "bpc": 2.496259948090866,
+    "targets": 1952
+   },
+   "4-8": {
+    "bpc": 2.126220497637324,
+    "targets": 3904
+   },
+   "8-16": {
+    "bpc": 1.9674339909935876,
+    "targets": 7808
+   },
+   "16-32": {
+    "bpc": 1.96977537971876,
+    "targets": 15616
+   },
+   "32-64": {
+    "bpc": 1.9675852398671638,
+    "targets": 31232
+   },
+   "64-128": {
+    "bpc": 1.9658245308269158,
+    "targets": 62464
+   },
+   "128-256": {
+    "bpc": 1.9460666662738642,
+    "targets": 124928
+   },
+   "256-512": {
+    "bpc": 1.9566548719188726,
+    "targets": 249856
+   },
+   "512-1024": {
+    "bpc": 1.9545977921896203,
+    "targets": 499712
+   }
+  },
+  "wall_s": 178.045530769974
+ },
+ "wall_s": 435.36011700800736
+}

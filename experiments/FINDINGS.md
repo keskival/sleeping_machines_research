@@ -1,5 +1,39 @@
 # Findings log
 
+## The 10M LSTM lead is local modelling, not context: history curves and streaming — 4 October
+
+Evaluation only, same test interval text8[95M:96M]
+(`experiments/results/language_stream/`; `language_stream_rescore.py`, `reference_context_curve.py`).
+
+**Streaming changes nothing:**
+
+| Model | Streamed, state carried | E64 T256 windows, state reset |
+|---|---:|---:|
+| Tuned LSTM-512 (4.5 passes) | 1.8255 | 1.8255 |
+| Native p96/d4 6-pass, same exact winner-only evaluator | 1.8889 | 1.8885 |
+| Native p64/d4 4-pass | 1.955 | 1.9547 |
+
+**History curves** (fresh windows of 1,024; bpc by characters of history):
+
+| Model | 1–2 | 2–4 | 4–8 | 8–16 | 16–32 | 32–64 | 64–128 | 128–256 | 256–1024 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| LSTM | 3.041 | 2.354 | 1.993 | 1.855 | 1.842 | 1.829 | 1.839 | 1.822 | ~1.825 |
+| Native p96 | 3.040 | 2.425 | 2.049 | 1.923 | 1.908 | 1.896 | 1.900 | 1.882 | ~1.889 |
+
+- Both models plateau after 16–32 characters of history.
+- The 0.06–0.07 bpc gap appears at 2–4 characters and stays constant.
+
+Interpretation:
+- The gap lies in how much each event extracts from the last few characters (per-step capacity, mixing,
+  regularization or routing noise), not in carrying long history.
+- Protocol asymmetry items 1 and 2 (PROTOCOL_ASYMMETRY_AUDIT.md) are measured and do not explain the 10M gap on this
+  data.
+- Next levers:
+  - width (p128 4-pass, P0-2);
+  - dropout and validation-selected checkpoints, as the tuned LSTM uses;
+  - deterministic or averaged routing at evaluation;
+  - richer per-event mixing.
+
 ## P0-6 partial: two tuned LSTMs at budget A beat the native 1.888 — 4 October (AWS, 2 of 6 arms)
 
 Tuned dense references at the native p96/d4 6-pass budget (A, <= 352 TF; native test 1.888 bpc): LSTM-512, 4.5 passes,

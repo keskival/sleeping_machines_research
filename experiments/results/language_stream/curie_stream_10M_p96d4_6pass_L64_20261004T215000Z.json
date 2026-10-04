@@ -1,0 +1,120 @@
+{
+ "status": "completed",
+ "args": {
+  "result": "experiments/results/language_batched/curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr004_cmp_s6_20261003T111500Z.json",
+  "tag": "curie_stream_10M_p96d4_6pass_L64_20261004T215000Z",
+  "lanes": 64,
+  "seed": 314159,
+  "test": 0,
+  "windows": 256,
+  "window_lanes": 512,
+  "deterministic": false,
+  "context_curve": 1024,
+  "limit": 0
+ },
+ "parent": "experiments/results/language_batched/curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr004_cmp_s6_20261003T111500Z.json",
+ "parent_sha256": "d2552e2f4ab711b78cc5e7d2c3e497e517c5dc47723109d9690cfdcbaefde158",
+ "weights": "experiments/results/language_batched/checkpoints/curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr004_cmp_s6_20261003T111500Z_final.pt",
+ "weights_sha256": "f9a6362d120040837a74d5e82b274679c869ef2c17516a771f236d98c84c3ca3",
+ "parent_test_bpc_T256": 1.8884762883429713,
+ "protocol": {
+  "test": [
+   95000000,
+   96000000
+  ],
+  "lanes": 64,
+  "evaluator": "SparseStepper winner-only (exact replay of the training evaluator)",
+  "routing": "sampled races, seed 314159",
+  "state": "carried across the whole lane; reset only at the L lane starts",
+  "evaluated_positions_per_target": 1.0
+ },
+ "stream_bpc": 1.8889239773677335,
+ "stream_targets": 999999,
+ "by_context": {
+  "0-128": {
+   "bpc": 1.9287625215947628,
+   "targets": 8192
+  },
+  "128-256": {
+   "bpc": 1.9448117455467582,
+   "targets": 8192
+  },
+  "256-1024": {
+   "bpc": 1.8950817155030866,
+   "targets": 49152
+  },
+  "1024-4096": {
+   "bpc": 1.9150465736553695,
+   "targets": 196608
+  },
+  "4096-16384": {
+   "bpc": 1.8804903874252938,
+   "targets": 737855
+  }
+ },
+ "stream_wall_s": 426.2678162950033,
+ "hardware": {
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "threads": 1
+ },
+ "window": {
+  "T": 256,
+  "bpc": 1.888476513569356,
+  "targets": 999936,
+  "evaluated_positions_per_target": 1.9997439836149513,
+  "wall_s": 717.2975002900057
+ },
+ "context_curve": {
+  "C": 1024,
+  "by_history": {
+   "0-1": {
+    "bpc": 3.4682025432912305,
+    "targets": 976
+   },
+   "1-2": {
+    "bpc": 3.0404736384241,
+    "targets": 976
+   },
+   "2-4": {
+    "bpc": 2.425081324853788,
+    "targets": 1952
+   },
+   "4-8": {
+    "bpc": 2.0492748957637597,
+    "targets": 3904
+   },
+   "8-16": {
+    "bpc": 1.9227073595489914,
+    "targets": 7808
+   },
+   "16-32": {
+    "bpc": 1.9081586535431274,
+    "targets": 15616
+   },
+   "32-64": {
+    "bpc": 1.8958159351672283,
+    "targets": 31232
+   },
+   "64-128": {
+    "bpc": 1.899905988508313,
+    "targets": 62464
+   },
+   "128-256": {
+    "bpc": 1.8820601523537799,
+    "targets": 124928
+   },
+   "256-512": {
+    "bpc": 1.8913227957260659,
+    "targets": 249856
+   },
+   "512-1024": {
+    "bpc": 1.8872585891218934,
+    "targets": 499712
+   }
+  },
+  "wall_s": 355.6180947289977
+ },
+ "wall_s": 1499.1834170380025
+}

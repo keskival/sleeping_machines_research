@@ -1,0 +1,96 @@
+{
+ "status": "completed",
+ "args": {
+  "checkpoint": "experiments/results/aws_20260929/aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z/lstm_D10000000_s512_p4.5_dr0.1_v_lr0.002_wu200.pt",
+  "tag": "curie_refcurve_10M_tuned_lstm512_p4.5_lr0.002_20261004T220000Z",
+  "test": 1000000,
+  "context_curve": 1024,
+  "window": 256,
+  "batch": 256
+ },
+ "checkpoint": "experiments/results/aws_20260929/aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z/lstm_D10000000_s512_p4.5_dr0.1_v_lr0.002_wu200.pt",
+ "checkpoint_sha256": "83d7ef8af2a7eb86cb26ec607a3a4f9564f374721876b49a68bcfaf6915749f8",
+ "reference_args": {
+  "model": "lstm",
+  "D": 10000000,
+  "passes": 4.5,
+  "size": 512,
+  "layers": 2,
+  "ctx": 256,
+  "test": 1000000,
+  "dropout": 0.1,
+  "batch_size": 32,
+  "valid": 200000,
+  "device": "cpu",
+  "gpu_memory_fraction": 0.5,
+  "lr": 0.002,
+  "warmup": 200,
+  "weight_decay": 0.0,
+  "seed": 0
+ },
+ "stream_bpc": 1.8254978179294585,
+ "stream_targets": 999999,
+ "window": {
+  "T": 256,
+  "bpc": 1.8255415952059164,
+  "targets": 999936,
+  "state": "reset per window"
+ },
+ "context_curve": {
+  "C": 1024,
+  "by_history": {
+   "0-1": {
+    "bpc": 3.4917631930992252,
+    "targets": 976
+   },
+   "1-2": {
+    "bpc": 3.041191476290343,
+    "targets": 976
+   },
+   "2-4": {
+    "bpc": 2.3543266702870853,
+    "targets": 1952
+   },
+   "4-8": {
+    "bpc": 1.9929873435223688,
+    "targets": 3904
+   },
+   "8-16": {
+    "bpc": 1.8552428151740403,
+    "targets": 7808
+   },
+   "16-32": {
+    "bpc": 1.8418717130285795,
+    "targets": 15616
+   },
+   "32-64": {
+    "bpc": 1.8287538446363856,
+    "targets": 31232
+   },
+   "64-128": {
+    "bpc": 1.838759046597559,
+    "targets": 62464
+   },
+   "128-256": {
+    "bpc": 1.8219673127913085,
+    "targets": 124928
+   },
+   "256-512": {
+    "bpc": 1.8270296377481008,
+    "targets": 249856
+   },
+   "512-1024": {
+    "bpc": 1.8241946607461719,
+    "targets": 499712
+   }
+  }
+ },
+ "wall_s": 235.4842953220068,
+ "hardware": {
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "threads": 1
+ },
+ "scope": "Evaluation of saved weights only; no training. Bins and test interval match language_stream_rescore."
+}
