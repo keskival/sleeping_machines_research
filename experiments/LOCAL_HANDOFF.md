@@ -1,5 +1,32 @@
 # Local host: current research continuation
 
+## AGI opportunity deck and investor proof plan — 4 October 2026
+
+User requested an AGI slide and autonomous work to strengthen valuation and
+investor perception. Main deck now 19 slides / full deck 36 (17 diligence).
+New slide 5 diagrams sensing/action ↔ shared persistent world state/learned
+rules ↔ language/reasoning. It is an aspirational family composition, with
+bidirectional held-out transfer, retention and matched data/work as first
+proof. PaLM-E/RT-2 precedents are attributed; no exclusive joint-learning or
+AGI claim. New slide and proof-gate slide visually reviewed; bounded render
+peak 39,308 KiB. Report PDF remains the existing 228 pages unchanged.
+
+../investment/INVESTOR_PROOF_PLAN.md gives current evidence, next investor
+artifacts, existing owner/admission paths and staged gates. Focus: replicated
+integrated quality, trained sparse execution/economics, delayed memory-credit
+fidelity, then an event workload and company/team/IP readiness. Small simulated
+bidirectional transfer is a future protocol outline, not a queued experiment.
+New source-bound plan travels with the deck/publication and private bundle.
+€3M/€50M proposal, €100M stretch and frozen numerical/financial ledgers stay
+unchanged. Investor acceptance and physical benchmarks are external outcomes.
+
+Deck publication: ../investment/publication_pitch_deck_agi_proof_final_20261004T174800Z.json.
+Artifact review: results/diagnostics/architecture_review_stdlib_20261004T175000Z.json.
+Private pack: sleeping_machines_private_diligence_20261004T175000Z.zip.
+No external distribution, outreach, training, ML imports, model runtime or
+physical-host admission. Existing AWS/curie owner priorities and all frozen
+source pins remain intact; use the prior sections for research-owner state.
+
 ## Family opportunities and valuation rationale — 4 October 2026
 
 User requested documentation of irregular inputs, asynchronous variable-rate

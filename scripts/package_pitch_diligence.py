@@ -31,7 +31,7 @@ def package(tag):
     data = json.loads((ROOT / 'investment/pitch_deck_evidence_20261003.json').read_text())
     paths = set(data['completed_evidence_sha256'])
     paths.update(['investment/README.md', 'investment/PITCH_DECK.json', 'investment/PITCH_DECK_NOTES.md',
-                  'investment/VALUATION_RATIONALE.md','investment/INVESTMENT_CASE.md','investment/PITCH.md',
+                  'investment/VALUATION_RATIONALE.md','investment/INVESTOR_PROOF_PLAN.md','investment/INVESTMENT_CASE.md','investment/PITCH.md',
                   'investment/archive/valuation_20261004T171500Z_previous_INVESTMENT_CASE.md',
                   'investment/archive/valuation_20261004T171500Z_previous_PITCH.md',
                   'investment/pitch_deck_evidence_20261003.json', 'investment/pitch_deck_benchmarks.csv',

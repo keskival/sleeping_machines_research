@@ -372,3 +372,29 @@ valuation equity cases, document links, current source/artifact publications,
 existing result/protocol bindings and all 53 frozen clock sources. A fresh
 private diligence pack contains the register/rationale, current and archived
 memos, diagram/builder and verified sources; no external distribution.
+
+## Pass 15: AGI opportunity and investor execution priorities
+
+The investor main pitch now has 19 slides; its 17 diligence slides make 36
+total. New slide 5 diagrams sensing/action and language/reasoning exchanging
+information through shared persistent state and learned rules. It explicitly
+labels the AGI ambition and names bidirectional held-out transfer, retention
+and matched data/work as the first proof. PaLM-E/RT-2 are primary precedents;
+joint learning is not claimed as exclusive to our family. The diagram is a
+proposed composition, not a deployed robotics system or AGI demonstration.
+
+The source-bound investor proof plan records present evidence, priority
+artifacts, existing owner queues/admission paths and promotion criteria.
+Replication, trained sparse execution and delayed-write utility precede wider
+expansion. Its small simulated transfer outline is not an admitted job.
+Financial and benchmark ledgers, source pins and the 228-page report remain
+unchanged. New slide and revised gate page were visually inspected; PDF
+bounds, source links and pagination pass under the renderer's existing guard
+(39,308 KiB peak RSS). No model runtime, training or external disclosure ran.
+
+Deck publication:
+`investment/publication_pitch_deck_agi_proof_final_20261004T174800Z.json`.
+Review:
+`experiments/results/diagnostics/architecture_review_stdlib_20261004T175000Z.json`.
+The fresh private bundle includes the investor proof plan and updated deck;
+prior PDFs, publication records and bundles remain preserved.

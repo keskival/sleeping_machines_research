@@ -83,7 +83,7 @@ def verify():
         'model_family_overview.md','model_family_example.md','model_family_composition.md',
         'model_family_specification.md','model_family_members.md','model_family_opportunities.md','architecture_evidence.md')]
     docs += [ROOT/'experiments/theory/152_primitives_integration_and_capability_bounds.md']
-    docs += [ROOT/'investment/VALUATION_RATIONALE.md',ROOT/'investment/INVESTMENT_CASE.md',ROOT/'investment/PITCH.md']
+    docs += [ROOT/'investment/VALUATION_RATIONALE.md',ROOT/'investment/INVESTOR_PROOF_PLAN.md',ROOT/'investment/INVESTMENT_CASE.md',ROOT/'investment/PITCH.md']
     links = 0
     for path in docs:
         for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
@@ -417,6 +417,23 @@ console.log('dimensions, modes, invalid-input clearing, ten keyboard tabs, credi
     assert f"{larger['test_bpc']:.6f} BPC" in protocol['notes']
     assert 'test[95M:96M]' in protocol['notes'] and 'completed' in protocol['notes']
     records['investor_protocol_completed_90m_binding']=larger['result_path']
+    # Bind the execution plan's evidence table to the already validated result
+    # snapshots; editorial changes must not invent quality or cost improvements.
+    proof_plan=(ROOT/'investment/INVESTOR_PROOF_PLAN.md').read_text()
+    anchors={s['id']:s for s in snapshots}
+    for snapshot in snapshots:
+        assert f"{snapshot['test_bpc']:.6f}" in proof_plan
+    base,credited,pool=(anchors[k] for k in ('timing_only','value_credit','larger_pool'))
+    overhead=100*(credited['estimated_whole_fit_tflops']/base['estimated_whole_fit_tflops']-1)
+    pool_ratio=pool['estimated_whole_fit_tflops']/credited['estimated_whole_fit_tflops']
+    assert f'{overhead:.2f}%' in proof_plan and f'{pool_ratio:.3f}×' in proof_plan
+    assert (credited['available_receivers'],pool['available_receivers'])==(16,32)
+    assert credited['selected_writes_per_position']==pool['selected_writes_per_position']==8
+    pilot=evidence['online_pilot']
+    for value in (pilot['frozen_bpc'],pilot['online_bpc']):
+        assert f'{value:.6f}' in proof_plan
+    assert f"{pilot['total_processing_work_ratio']:.3f}×" in proof_plan
+    records['investor_proof_plan_completed_quality_and_work_bindings']=5
     # Independent equity arithmetic, tied to the frozen €3M budget rather than
     # inferred from application breadth or a benchmark score.
     funding=json.loads((ROOT/'investment/pitch_deck_evidence_20261003.json').read_text())

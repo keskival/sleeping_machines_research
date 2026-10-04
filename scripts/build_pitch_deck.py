@@ -294,6 +294,22 @@ def render(stage):
             p('Counterfactual credit: learn from selected and unrealized routes',194,506,890,20,amber,True)
             banner(s['banner'])
 
+        elif kind=='agi_opportunity':
+            for x,w,a,accent in ((52,300,s['body'],cyan),(425,430,s['shared'],green),(928,300,s['mind'],violet)):
+                card_text(x,205,w,243,a['label'],a['body'],a.get('metric'),accent)
+            # Separate input/output arrows express exchange through shared state,
+            # rather than a one-way controller-to-language pipeline.
+            for left,right in ((352,425),(855,928)):
+                line(left+8,288,right-8,288,cyan,2)
+                line(right-15,282,right-8,288,cyan,2)
+                line(right-15,294,right-8,288,cyan,2)
+                line(right-8,337,left+8,337,amber,2)
+                line(left+15,331,left+8,337,amber,2)
+                line(left+15,343,left+8,337,amber,2)
+            p(s['transfer'],52,477,1176,22,text,True,maxh=61)
+            p(s['opportunity'],52,544,1176,17,muted,maxh=36)
+            banner(s['banner'],594)
+
         elif kind=='scatter':
             x0,y0,pw,ph=115,205,695,325
             def point(x,y): return x0+x/120*pw, y0+(2.55-y)/.45*ph
@@ -483,7 +499,7 @@ def publish(tag):
             ROOT/'report/sleeping_machines_status.pdf',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',
             ROOT/'report/model_family_composition.md',ROOT/'report/model_family_opportunities.md',
-            INV/'VALUATION_RATIONALE.md',INV/'INVESTMENT_CASE.md',INV/'PITCH.md']
+            INV/'VALUATION_RATIONALE.md',INV/'INVESTOR_PROOF_PLAN.md',INV/'INVESTMENT_CASE.md',INV/'PITCH.md']
     hashes={str(x.relative_to(ROOT)):sha(x) for x in inputs}
     previous=sha(OUTPUT) if OUTPUT.exists() else None
     previous_main=sha(MAIN_OUTPUT) if MAIN_OUTPUT.exists() else None

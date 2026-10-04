@@ -110,6 +110,20 @@
       "short": "Selective SSM",
       "url": "https://arxiv.org/abs/2312.00752",
       "scope": "Selective recurrent state-space sequence models are relevant competitive controls. No matched modern SSM result is claimed."
+    },
+    "T4": {
+      "label": "Driess et al. — PaLM-E: An Embodied Multimodal Language Model",
+      "short": "PaLM-E",
+      "url": "https://arxiv.org/abs/2303.03378",
+      "scope": "Joint embodied, vision and language training with positive transfer; a precedent, not evidence for this substrate or motor-to-general-cognition transfer.",
+      "accessed_date": "2026-10-04"
+    },
+    "T5": {
+      "label": "Brohan et al. — RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+      "short": "RT-2",
+      "url": "https://arxiv.org/abs/2307.15818",
+      "scope": "Joint vision/language/action learning transfers web knowledge to robotic control. Neither an AGI demonstration nor evidence for our resource advantage.",
+      "accessed_date": "2026-10-04"
     }
   },
   "slides": [
@@ -224,6 +238,36 @@
       ],
       "banner": "No required global periodic tick. Joint integration, measured TTT gains, morphing and hardware energy remain milestones.",
       "notes": "The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts. Learned memory/scheduling can be viewed as fast-state adaptation governed by slow trained rules, drawing on memory-augmented meta-learning and TTT. The opportunity register defines native irregular ingestion, asynchronous codecs and joint embodied/cognitive paths with explicit first proofs. The prior-art boundary and full work/bit accounting are stated in the report."
+    },
+    {
+      "kind": "agi_opportunity",
+      "section": "AGI opportunity / research ambition",
+      "title": "A substrate for intelligence that learns across mind and body.",
+      "subtitle": "The ambition: connect sensing, action, language and reasoning in one trainable model, across their natural timescales.",
+      "body": {
+        "label": "SENSING + ACTION",
+        "metric": "Perceive + act",
+        "body": "Vision, touch and action events. Local state preserves experience; control keeps its deadlines."
+      },
+      "shared": {
+        "label": "ONE SHARED LEARNING SUBSTRATE",
+        "metric": "Shared world",
+        "body": "Persistent memory and learned rules connect fast control to slower deliberation. Dense and sparse regions can cooperate."
+      },
+      "mind": {
+        "label": "LANGUAGE + REASONING",
+        "metric": "Think + plan",
+        "body": "Language, planning and reasoning can query the same experience and guide the next action."
+      },
+      "transfer": "Hypothesis: physical experience teaches reusable abstractions; reasoning improves action. Online learning keeps both adapting.",
+      "opportunity": "Upside: persistent generalist agents, from datacenter software to embodied intelligence on mobile robots.",
+      "banner": "First proof: held-out transfer in both directions, with retained skills and matched data/work. AGI is an ambition, not a demonstrated capability.",
+      "sources": [
+        "R3",
+        "T4",
+        "T5"
+      ],
+      "notes": "AGI here means the long-term ambition of broadly transferable learning and competence across domains, not a claim that a shared graph or computational universality guarantees intelligence. The visual is a proposed family composition, not an implemented robotics system. Common content/time/address/state interfaces can connect asynchronous sensory and motor events with language and deliberation; local dense regions, joins and batching remain available. No global periodic tick is required by the family, but causal ordering, timers and task/actuator deadlines remain. Fast persistent state and slower learned rules offer a path to online adaptation and memory-policy learning; fully native sparse asynchronous learning is still a research target. The opportunity is to test whether embodied experience teaches transferable causal, geometric and planning abstractions and whether cognitive learning improves action, using shared representations and credit. Both directions require separate held-out, matched-data/work comparisons with joint dense/VLA, isolated-module and stopped-credit controls, including retention, replay and system resources. Existing PaLM-E and RT-2 demonstrate related joint-learning or web-to-control precedents; we do not claim that conventional models cannot integrate these domains. Neither precedent establishes our proposed motor-to-cognitive transfer or our cost advantage. Shared parameters do not establish AGI, and no project embodied-transfer/robot-control experiment has completed. Platform upside is conditional and correlated with the same unresolved learning and execution risks; it is not an extra independent valuation or an assigned probability. See INVESTOR_PROOF_PLAN.md for staged work and the smallest simulated transfer protocol; no queue or new compute is reserved by this slide."
     },
     {
       "kind": "architecture",
@@ -491,7 +535,7 @@
       "section": "What the round must prove",
       "title": "Three gates determine whether this becomes a business.",
       "subtitle": "Each gate has a falsifiable result and a consequence for further spending.",
-      "notes": "The principal investor risks are scalable prediction quality, economical execution and commercial adoption. Technical gaps include the trained float32 sparse-backend contract, longer memory/credit horizons, stable adaptation and hardware timing/precision. Corporate rights, team hiring and founder availability remain diligence items. The program preserves its architectural thesis while allowing a narrower viable product. No probability of success is assigned to these gates, and the €50M proposal is not inferred from benchmark scores.",
+      "notes": "The principal investor risks are scalable prediction quality, economical execution and commercial adoption. Technical gaps include the trained float32 sparse-backend contract, longer memory/credit horizons, stable adaptation and hardware timing/precision. Corporate rights, team hiring and founder availability remain diligence items. The program preserves its architectural thesis while allowing a narrower viable product. No probability of success is assigned to these gates, and the €50M proposal is not inferred from benchmark scores. Execution priorities and owner admission paths are in INVESTOR_PROOF_PLAN.md. Its first priorities are replicated integrated quality, trained sparse execution and delayed memory-credit fidelity. The proposed ≥20% complete serving-cost improvement is a future commercial gate to lock before measurement, not an observed benefit. The AGI expansion proof is downstream of these technical gates.",
       "sources": [
         "R1",
         "R3"
@@ -500,12 +544,12 @@
         {
           "label": "01 / QUALITY AT SCALE",
           "metric": "Replicate",
-          "body": "Repeat across seeds and larger data with tuned controls. Small text8 results establish a foothold, not frontier capability."
+          "body": "At least three seeds, fixed causal tests and tuned controls. Compare quality and complete work; keep failures beside the best result."
         },
         {
           "label": "02 / COMPLETE ECONOMICS",
           "metric": "Measure",
-          "body": "Validate trained sparse execution, then charge traffic, latency, residency and energy. Arithmetic estimates alone do not establish savings."
+          "body": "Pass trained sparse parity. Measure total serving cost, tail latency, memory and energy at useful quality on one fixed workload."
         },
         {
           "label": "03 / ADOPTION",
@@ -523,7 +567,7 @@
       "sources": [
         "R3"
       ],
-      "notes": "The timing is a planning assumption measured from funding. Three seeds and tuned modern controls are validation targets, not present assets. The ≥20% complete-cost gate is a proposed commercial screen and should be adapted to actual service requirements before experiments. Model quality and resource accounting must stay jointly comparable. Current owner queues retain priority; no new training or unguarded compute is launched to prepare this deck. Continued funding depends on completed results, measurable economics and a credible next workload rather than predictions entered as benchmark evidence.",
+      "notes": "The timing is a planning assumption measured from funding. Three seeds and tuned modern controls are validation targets, not present assets. The ≥20% complete-cost gate is a proposed commercial screen and should be adapted to actual service requirements before experiments. Model quality and resource accounting must stay jointly comparable. Current owner queues retain priority; no new training or unguarded compute is launched to prepare this deck. Continued funding depends on completed results, measurable economics and a credible next workload rather than predictions entered as benchmark evidence. The immediate autonomous work sequence and current evidence gaps are documented in INVESTOR_PROOF_PLAN.md; timeline estimates do not substitute for gates or physical-host admission.",
       "stages": [
         {
           "label": "MONTHS 0–3",
@@ -1084,6 +1128,6 @@
       ]
     }
   ],
-  "editorial_revision": "2026-10-04 family opportunities and ambition/potential/execution valuation rationale",
-  "main_slide_count": 18
+  "editorial_revision": "2026-10-04 AGI opportunity and investor proof execution plan",
+  "main_slide_count": 19
 }

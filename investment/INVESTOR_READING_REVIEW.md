@@ -1,5 +1,27 @@
 # Investor-reading review — 3 October 2026
 
+## AGI opportunity and investor proof priorities — 4 October 2026
+
+The main pitch now has 19 slides, followed by 17 optional diligence slides.
+Slide 5 gives the long-term generalist-learning ambition its own diagram:
+asynchronous sensing/action and language/reasoning exchange information through
+shared persistent world state and learned rules. The first discriminating
+proof is held-out transfer in each direction, with retention and matched
+data/work controls. The diagram is an aspirational family composition; no
+embodied-transfer or AGI demonstration is implied. PaLM-E and RT-2 primary
+references attribute existing joint-learning precedents. Source access on
+4 October is recorded per new reference; the old source cut-off is retained.
+
+[The proof plan](INVESTOR_PROOF_PLAN.md) connects investor questions to current
+evidence, the next decision-changing artifact and existing owner/admission
+paths. Its focus is reproducibility, trained sparse economics, delayed
+memory-credit fidelity and execution readiness. A small future simulated
+bidirectional-transfer protocol is outlined without reserving compute. The
+main proof-gate slide now specifies at least three seeds and trained parity
+before measured serving cost. Financial/benchmark ledgers and the report PDF
+are unchanged. Rendering peaked at 39,308 KiB; the new slide and revised gates
+were visually inspected. No outreach, training or model runtime was performed.
+
 ## Family-level revision — 4 October 2026
 
 The ambition/potential/execution rationale is now canonical in
@@ -22,7 +44,7 @@ it no longer calls that result pending. Financial assumptions and the main
 comparison ledger are unchanged.
 
 
-The current deck has 18 main slides and 17 optional diligence slides. It adds a
+The earlier family-level revision had 18 main slides and 17 optional diligence slides. It added a
 landscape diagram before the mechanism and benchmark slides, positioning the
 family relative to recurrence/SSMs, attention/Transformers, sparse experts,
 statistics/retrieval, adaptive memory/TTT and event systems. A second slide
