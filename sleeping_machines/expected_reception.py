@@ -47,7 +47,7 @@ def expected_layer(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, qu
     proposals = x_u + gain * y * torch.sigmoid(gate)
     s64 = scores.to(torch.float64)
     pi = torch.softmax(s64, -1)                                               # (n, H, U)
-    first = torch.exp(-torch.logsumexp(s64, -1))                              # mean first time 1/Z
+    first = 1 / s64.exp().sum(-1)                                             # mean first time 1/Z (scores clamped to +-12)
     delay = .001 + .010 * first / (1 + first)
     values = (pi.to(proposals.dtype)[..., None] * proposals).sum(2)           # exact expected delivery
     winner = scores.argmax(-1)                                                # hard selective write

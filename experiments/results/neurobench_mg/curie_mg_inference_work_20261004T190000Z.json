@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "payload": 16,
+      "depth": 2,
+      "heads": 2,
+      "pool": 2,
+      "parameters": 14393,
+      "winner_stream_flops": 23316,
+      "winner_stream_special": 527,
+      "winner_stream_macs": 11658.0,
+      "mix8_macs": 93264.0,
+      "expected_flops": 34236,
+      "expected_special": 779,
+      "expected_macs": 17118.0
+    },
+    {
+      "payload": 16,
+      "depth": 2,
+      "heads": 2,
+      "pool": 4,
+      "parameters": 23249,
+      "winner_stream_flops": 23588,
+      "winner_stream_special": 535,
+      "winner_stream_macs": 11794.0,
+      "mix8_macs": 94352.0,
+      "expected_flops": 56196,
+      "expected_special": 1283,
+      "expected_macs": 28098.0
+    },
+    {
+      "payload": 32,
+      "depth": 2,
+      "heads": 2,
+      "pool": 2,
+      "parameters": 55385,
+      "winner_stream_flops": 83396,
+      "winner_stream_special": 1023,
+      "winner_stream_macs": 41698.0,
+      "mix8_macs": 333584.0,
+      "expected_flops": 121548,
+      "expected_special": 1499,
+      "expected_macs": 60774.0
+    }
+  ],
+  "scope": "Per-step inference work of NeuroBench Mackey-Glass native members (operator tracer; shapes only, untrained weights).\n\nCounts one autonomous step (after a short warm-up) of the winner-only stepper (sampled / argmax: one stream; mixK: K\nstreams) and of the exact-expected-reception stepper, in the unit/special convention of race_language_screen.capture.\nMultiply-accumulates are reported as arithmetic FLOPs / 2 for comparison with NeuroBench's effective-MAC column (which\ncounts hooked layer MACs; conventions differ and are labelled)."
+}
