@@ -1,0 +1,95 @@
+{
+  "status": "checkpointed_public_priority_transition",
+  "predecessor": "experiments/queue/aws_public_campaign_20261004T000200Z/manifest.json",
+  "successor": "experiments/queue/aws_benchmark_continuation_20261004T150000Z/manifest.json",
+  "processes": [
+    {
+      "pid": 1568931,
+      "parent": 1568930,
+      "start_ticks": "38506943",
+      "command": ".venv-docker/bin/python scripts/run_aws_public_campaign_v2.py --manifest experiments/queue/aws_public_campaign_20261004T000200Z/manifest.json "
+    },
+    {
+      "pid": 1568938,
+      "parent": 1568931,
+      "start_ticks": "38506948",
+      "command": "bash experiments/queue/run_safe.sh experiments/queue/aws_public_campaign_20261004T000200Z/aws_pub_v2_20261004T000200Z_aws_public_recover_20261004T000100Z_aws_language_winner_matrix_20261003T014100Z_private_replay_10m_s7.txt "
+    },
+    {
+      "pid": 1568953,
+      "parent": 1568938,
+      "start_ticks": "38506949",
+      "command": "tee -a experiments/queue/aws_public_campaign_20261004T000200Z/runner_aws_pub_v2_20261004T000200Z_aws_public_recover_20261004T000100Z_aws_language_winner_matrix_20261003T014100Z_private_replay_10m_s7.out "
+    },
+    {
+      "pid": 1568977,
+      "parent": 1568938,
+      "start_ticks": "38506950",
+      "command": "timeout --signal=TERM --kill-after=10s 2592000s /workspace/.venv-docker/bin/python experiments/aws_depth8_language_winner_credit.py --tag aws_language_winner_matrix_20261003T014100Z_private_replay_10m_s7 --receiver-sharing private --credit-mode replay --fit 10000000 --dev 1000000 --initial-dev 1025 --epochs 1 --depth 8 --heads 2 --payload 16 --pool 2 --chunk 16 --update-targets 256 --warmup-targets 4096 --lr .002 --seed 7 --resume "
+    },
+    {
+      "pid": 1568991,
+      "parent": 1568977,
+      "start_ticks": "38506951",
+      "command": "/workspace/.venv-docker/bin/python experiments/aws_depth8_language_winner_credit.py --tag aws_language_winner_matrix_20261003T014100Z_private_replay_10m_s7 --receiver-sharing private --credit-mode replay --fit 10000000 --dev 1000000 --initial-dev 1025 --epochs 1 --depth 8 --heads 2 --payload 16 --pool 2 --chunk 16 --update-targets 256 --warmup-targets 4096 --lr .002 --seed 7 --resume "
+    },
+    {
+      "pid": 1624165,
+      "parent": 1568931,
+      "start_ticks": "39150578",
+      "command": "bash experiments/queue/run_safe.sh experiments/queue/aws_public_campaign_20261004T000200Z/aws_pub_v2_20261004T000200Z_aws_public_recover_20261004T000100Z_aws_depth8_language_20261002T234100Z_private_pilot_s7.txt "
+    },
+    {
+      "pid": 1624170,
+      "parent": 1624165,
+      "start_ticks": "39150579",
+      "command": "tee -a experiments/queue/aws_public_campaign_20261004T000200Z/runner_aws_pub_v2_20261004T000200Z_aws_public_recover_20261004T000100Z_aws_depth8_language_20261002T234100Z_private_pilot_s7.out "
+    },
+    {
+      "pid": 1624177,
+      "parent": 1624165,
+      "start_ticks": "39150580",
+      "command": "timeout --signal=TERM --kill-after=10s 604800s /workspace/.venv-docker/bin/python experiments/aws_depth8_language.py --tag aws_depth8_language_20261002T234100Z_private_pilot_s7 --receiver-sharing private --fit 10000000 --dev 1000000 --epochs 1 --depth 8 --heads 2 --payload 16 --pool 2 --chunk 16 --update-targets 256 --warmup-targets 4096 --lr .002 --seed 7 --resume "
+    },
+    {
+      "pid": 1624183,
+      "parent": 1624177,
+      "start_ticks": "39150580",
+      "command": "/workspace/.venv-docker/bin/python experiments/aws_depth8_language.py --tag aws_depth8_language_20261002T234100Z_private_pilot_s7 --receiver-sharing private --fit 10000000 --dev 1000000 --epochs 1 --depth 8 --heads 2 --payload 16 --pool 2 --chunk 16 --update-targets 256 --warmup-targets 4096 --lr .002 --seed 7 --resume "
+    },
+    {
+      "pid": 1972390,
+      "parent": 1624165,
+      "start_ticks": "45409609",
+      "command": "sleep 2 "
+    },
+    {
+      "pid": 1972415,
+      "parent": 1568938,
+      "start_ticks": "45409754",
+      "command": "sleep 2 "
+    }
+  ],
+  "scope": "Verified descendants stopped before transferring normal reservation; final atomic checkpoints copied after stop; unknown discarded targets<=4095 each. No fourth job or lock bypass.",
+  "preparation_error": "Initial stdlib /proc stat parser rejected a process name containing whitespace before any trainer termination; corrected to parse fields after final closing parenthesis.",
+  "final_checkpoints": [
+    {
+      "slot": "2",
+      "path": "experiments/results/aws_depth8_language_credit/aws_language_winner_matrix_20261003T014100Z_private_replay_10m_s7.progress.benchmark_final_20261004T150000Z.pt",
+      "sha256": "2ef8c8a2a33e2add08b7b1f142976a8dca739e72f4c8476948e0ab271898e5a5",
+      "targets": 3788800,
+      "updates": 14800,
+      "discarded_targets_upper_bound": 4095,
+      "scope": "Unknown work since copied atomic checkpoint; replayed on recovery and not claimed free."
+    },
+    {
+      "slot": "3",
+      "path": "experiments/results/aws_depth8_language/aws_depth8_language_20261002T234100Z_private_pilot_s7.progress.benchmark_final_20261004T150000Z.pt",
+      "sha256": "2c7b2712488df3c99f218bf8efc2823c0e46d9a832fb251ae62a59eb920e5923",
+      "targets": 5230592,
+      "updates": 20432,
+      "discarded_targets_upper_bound": 4095,
+      "scope": "Unknown work since copied atomic checkpoint; replayed on recovery and not claimed free."
+    }
+  ]
+}
