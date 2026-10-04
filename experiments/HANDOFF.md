@@ -2599,3 +2599,20 @@ loaded byfetch; partials preserved,77GBdiskavailable. Fetchlog alongside new
 coordinator. Sourcepublic_benchmarks/fetch_primate.py; verifiedbyteartifact willbe
 results/diagnostics/aws_primate_data_20261004T150000Z.json. RawMATfiles remainlocal.
 New benchmark queues still require physicalguarded admission and actual data.
+
+AWS18:45 official MG r1: first10repeats COMPLETED/pushed37299e6, fixedmix8 mean
+13.59809568sMAPE; reporting-only argmax19.05283974/sample18.37413093. This is
+PARTIAL10/30 and no full-leaderboard win. Secondbatch10..19 running; all frozen
+source bindings pass. Stdlib collect_neurobench_mg.py validates exactdisjoint
+repeat IDs, same settings/source/data and fixedprimarymix8; full30-only claim
+eligibility. Newpublisher creates immutable10/20/30 snapshots and a source-bound
+report appendix on completion. Overlapping repeat windows are not independent
+confidence samples. Inference FLOPs/traffic/energy and per-repeat trained weights
+are absent from current driver, so no trained serving/resource claim.
+
+All6official primateMATfiles downloaded and matchvendorMD5s, total4,322,947,569
+bytes; SHA256/URL/vendor/source provenance in diagnostics/aws_primate_data_
+20261004T150000Z.json. Byteverification only, no arrayparse or scoring.
+Owned six-session r1 queues are now data-ready; require a fresh guarded
+reservation-aware admission after MG slot1 finishes, preserving runningreplay
+andteacher. Source hash drift must still reject ratherthan silently update.
