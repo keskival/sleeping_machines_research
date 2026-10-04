@@ -2517,3 +2517,19 @@ officialtau17 scoring, core modification or quality/resource claim. Hard argmax
 with linear categorical surrogate is not automatically an unbiased derivative
 of deterministic risk. Preserve owner sampled/deterministic evidence beside this
 scope refinement. Active replay/teacher source/queue bindings remain intact.
+
+AWS official NeuroBench admission064000Z: owner assigned MGtau17 mix8 protocol
+is now prepared in queue/aws_neurobench_admission_20261004T064000Z/manifest.json.
+It waits for the NORMAL host reservation, then runs source-bound guarded
+contracts and the unchanged three owner one-job queues covering repeats0..29,
+serially. No current replay/teacher fit is interrupted and no fourth job is
+admitted. RSS2GB/VMS6GB/available8192MB/fit timeout21600s,1thread; timeout is a
+conservative admission ceiling, not a measured ETA. Every completed batch is
+committed/pushed; primary mix8 fixed, other modes reporting-only. Dependency
+changes reject before numerical admission; no automatic protocol update.
+Latest upstream deterministic changes drifted public_v2 frozen batched_episodes
+and compiled_episodes hashes. Current streaming driver source families do not
+import these modules and their running programs continue; public_v2 will refuse
+future admission at its frozen() gate. Preserve this warning and perform a
+source-correct continuation before claiming subsequent arms run. No active
+manifest was edited. The new official waiter cannot bypass this reservation.
