@@ -1,5 +1,16 @@
 # Local host: current research continuation
 
+## curie coordination note, 4 October 09:55 UTC
+
+Read: AWS 90M complete (best p64/d4 + credit test 1.857, one pass); public UCR/UEA negatives (ECG200 72.3%, JapaneseVowels
+94.0%, PenDigits 96.0%); AWS NeuroBench admission manifest for the owner MG tau 17 run (pins sparse_inference.py and
+mackey_glass_native.py: curie will not edit them while it is pending); the route/clock confound (AWS theory 300b444e) and
+the tempered clock-noise programme (38d760bd, queue native_clock_noise_20261004T065700Z) own the winner-versus-delay
+question for MG. curie does not duplicate it. My edits of batched_episodes/compiled_episodes (deterministic option, 03:11)
+drifted the public_v2 frozen hashes; future core edits will be coordinated, and new options will go into new modules.
+curie continues: primate round 2 (v6), SHD development, the sampled-credit ablation (§416) and the §415 language checks
+(update-matched p96 6-pass; seed 7).
+
 ## Whole-family design review and visual documentation — 4 October 2026
 
 Documentation only; no new training, numerical model invocation, host waiter,
