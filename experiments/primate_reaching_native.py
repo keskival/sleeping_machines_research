@@ -102,9 +102,12 @@ def run_session(a, name):
     model.eval()
 
     def stream(indices):
-        stepper = SparseStepper(model, 1, 777); preds = []
+        # K independent race-noise streams (separate steppers: one stepper shares each race's draw across its lanes);
+        # predictions averaged
+        steppers = [SparseStepper(model, 1, 777 + 1009 * k) for k in range(a.route_samples)]; preds = []
         for t, i in enumerate(indices):
-            preds.append(stepper.step(torch.tensor([float(t)]), torch.tensor(spikes[i])[None])[0].numpy())
+            x = torch.tensor(spikes[i])[None]
+            preds.append(torch.stack([st.step(torch.tensor([float(t)]), x)[0] for st in steppers]).mean(0).numpy())
         return np.array(preds) * sd + mu
     val_pred, test_pred = (stream(val) if len(val) else None), stream(test)
     val_r2 = r2(val_pred, labels[val]) if len(val) else None
@@ -139,6 +142,8 @@ def main():
     p.add_argument('--warmup', type=int, default=25); p.add_argument('--val-fraction', type=float, default=.1333)
     p.add_argument('--route-credit', choices=('none', 'linear'), default='linear')
     p.add_argument('--compiled', action='store_true'); p.add_argument('--seed', type=int, default=1)
+    p.add_argument('--route-samples', type=int, default=1, help='average predictions over this many race-noise streams '
+                   '(inference work scales with it)')
     p.add_argument('--smoothing', action='store_true', help='causal leaky-integrator readout; constant chosen on validation')
     a = p.parse_args()
     out = ROOT / 'experiments/results/neurobench_primate' / f'{a.tag}.json'
