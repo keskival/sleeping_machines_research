@@ -2565,3 +2565,37 @@ Docker lock is not physical admission. Prioritized integrated model remains
 tied p32/D2/pool4 primate confirmation and owner NeuroBench MG mix8; useful
 deep/write credit, long horizons, repeated quality/resource and measured energy
 remain gaps. New clock-noise arm is an isolated diagnostic, not a substitution.
+
+AWS family-to-benchmark continuation150000Z is now RUNNING under normal inherited
+host reservation: scripts/run_aws_benchmark_continuation.py, tmux
+aws_benchmark_continuation. Per-job source bindings avoid unrelated kernel
+drift; no historical model source or active manifest overwritten. Slot1 guarded
+NeuroBench plus expected-reception contracts PASSED10tests/57.63s, pushedd97986a,
+then unchanged tau17 r1 mix8 first10official repeats STARTED. Slots2/3 resumed
+source-exact private depth8 replay/teacher from3788800/5230592targets,14800/20432
+updates. Final stopped checkpoints and transition are pusheda7b9fd9; unknown
+extra discarded targets<=4095each remain charged as recovery overhead. Initial
+/proc parser rejected whitespace in a process name BEFOREtrainertermination;
+fixed parser and error preserved in transition artifact. All priorlifecycles,
+earlysnapshotcopies and frozen official configs preserved. No fourth trainer.
+Progress publisher aws_language_progress_benchmark monitors new manifest;
+coordinator lookup includes new script. Official MG batches publish as completed.
+Earlier064000Z waiter superseded WITHOUTnumericalexecution; oldpublicv2 closed.
+
+User-requested whole-family review: FAMILY_BENCHMARK_STRATEGY.md maps the formal
+core/design/composition/theory151–152/§418 to public targets, specific failures,
+retained mechanisms, confirmation and complete costs. Expected reception is
+exact conditional CURRENTvalue pooling, with mean UNBOUNDEDclock and hardargmax
+writes; complete recurrent behavior remains piecewise/discontinuous at changed
+write addresses, not the full sampled-trajectory expectation. Retain owner
+predictions as hypotheses, not a theorem guaranteeing pool1quality. Priority:
+six-session primate confirmation, officialMG30repeats, ownerexpectedreception/
+SHDDEV, trainedsparse serving and actualfuture-write/depthcredit. Do not alter
+confirmedr1 onTEST. Existing227-page report/PDF and architecture reviews kept.
+
+Official primate data fetch now running tmuxaws_primate_data, stdlib streaming
+AST-extracted vendorURL/MD5s, SHA256manifest afterall6. No arrays/models/scoring
+loaded byfetch; partials preserved,77GBdiskavailable. Fetchlog alongside new
+coordinator. Sourcepublic_benchmarks/fetch_primate.py; verifiedbyteartifact willbe
+results/diagnostics/aws_primate_data_20261004T150000Z.json. RawMATfiles remainlocal.
+New benchmark queues still require physicalguarded admission and actual data.
