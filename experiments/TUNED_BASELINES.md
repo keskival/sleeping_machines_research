@@ -90,6 +90,7 @@ requires aligned validation/test contexts. A first finished arm cannot become th
 | `aws_tuned_ref_10M_A_lstm384_p6_lr0.003_s0_20261004T210000Z` | A | 254 TF | 1.778 | **1.840** | native p96/d4 6-pass 1.888 at 352 TF: **loss** for native (context resolved: streamed 1.8255 = windows 1.8255, curie 23003f5d) |
 | `aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z` | A | 324 TF | **1.769** (leading) | **1.826** | **loss** for native by .062; nearly the saved 6-pass LSTM-512 (1.799) at 75% of its compute |
 | `aws_tuned_ref_10M_A_tf192L4_p2.5_lr0.002_s0_20261004T210000Z` | A | 328 TF | 1.982 | **2.027** | native better by .139, but native used 352 TF (107%): not a formal matched-compute win; still improving at its last step |
+| `aws_tuned_ref_10M_A_tf128L4_p5.4_lr0.003_s0_20261004T210000Z` | A | 347 TF | 1.950 (best TF so far) | **1.996** | native better by .108; native used 352 TF (101%) |
 
 The validation curve was still improving at the final step (1.785 → 1.778 over the last 1,500 steps), so this budget is
 not saturated for the LSTM. Group selection waits for all six A arms (HEADLINE_PROTOCOL_AUDIT.md). Whatever is selected
@@ -106,3 +107,8 @@ comparisons, pending the tuned Transformer arms.
 for both LSTM and native). The LSTM's 0.06–0.07 bpc lead is already present at 2–4 characters of history and stays
 constant after that. It is local character modelling, not longer memory. Deterministic routing (1.8884) equals sampled routing
 (1.8889), so race noise is not the lever. The native gap is in short-range modelling capacity.
+
+**Transformer arms, 2 of 4 (5 Oct 02:30):** the best tuned Transformer so far (tf128x4, 5.4 passes) scores 1.996 against native 1.888 at
+essentially equal training compute (347 vs 352 TF). Tuning narrowed the gap to the saved 4-pass TF256x4 (1.908 at 889 TF)
+only partly at this budget: on 10M characters the shape-estimated Transformer pays heavily for T256 attention at small width.
+If the two TF256x4 arms do not beat 1.888, the Transformer win survives tuning. The LSTM loss also stands.
