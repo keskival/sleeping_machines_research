@@ -8,6 +8,10 @@ curie_language_v6_contracts_20261003T111500Z -m pytest -q tests/test_compiled_ep
 curie_mg4_t18_p16_det_20261004T032000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --tag curie_mg4_t18_p16_det_20261004T032000Z --payload 16 --steps 1500 --argmax --train-argmax
 curie_mg4_t18_p32_det_3k_20261004T032000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --tag curie_mg4_t18_p32_det_3k_20261004T032000Z --payload 32 --steps 3000 --argmax --train-argmax
 curie_mg4_t18_p16_pool1_3k_20261004T032000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --tag curie_mg4_t18_p16_pool1_3k_20261004T032000Z --payload 16 --steps 3000 --pool 1
+# 05:20 UTC MG round 5: mixtures of route samples (smooth expectation over routes) vs argmax vs sampled, same weights.
+curie_mg5_t18_p16_20261004T052000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --eval-modes mix8,argmax,sampled --tag curie_mg5_t18_p16_20261004T052000Z --payload 16 --steps 1500
+curie_mg5_t18_p16_pool4_20261004T052000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --eval-modes mix8,argmax,sampled --tag curie_mg5_t18_p16_pool4_20261004T052000Z --payload 16 --steps 1500 --pool 4
+curie_mg5_t18_p16_3k_lr001_20261004T052000Z experiments/mackey_glass_native.py --repeats 3 --lanes 32 --segment 64 --compiled --tau 18 --taps 8 --depth 2 --delta --eval-modes mix8,argmax,sampled --tag curie_mg5_t18_p16_3k_lr001_20261004T052000Z --payload 16 --steps 3000 --lr 0.001
 # 00:35 UTC primate reaching round 2 (SOTA_TARGETS target 2; indy_20170131_02 p32/d2 test R2 .725 vs bigRSNN .772 / tinyRSNN
 # .746 there): causal leaky readout chosen on validation, 4,000 steps (loss still falling at 2,000). 02:20: dev p64 .714
 # (overfits), pool-4 tied .741: tied capacity instead of width, plus a weight-decay variant.
