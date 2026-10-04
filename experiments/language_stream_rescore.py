@@ -91,6 +91,30 @@ def windows(model, text, S, seed, lanes, limit=0):
     return bits / n, n, len(starts) * S / max(n, 1)
 
 
+CURVE = [0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+
+
+@torch.no_grad()
+def context_curve(model, text, C, seed, lanes, deterministic=False, limit=0):
+    """bpc as a function of available history: disjoint windows of C from a fresh state, every target scored, binned by
+    its position in the window (= characters of history).  Separates local modelling from the use of long history."""
+    starts = list(range(0, len(text) - C - 1, C))
+    if limit:
+        starts = starts[:limit]
+    edges = [e for e in CURVE if e < C] + [C]
+    bits = np.zeros(len(edges) - 1); count = np.zeros(len(edges) - 1, dtype=np.int64)
+    which = np.searchsorted(edges, np.arange(C), side='right') - 1
+    for b in range(0, len(starts), lanes):
+        chunk = np.array(starts[b:b + lanes]); n = len(chunk)
+        stepper = SparseStepper(model, n, seed + b, deterministic=deterministic)
+        for k in range(C):
+            logits = stepper.step(torch.full((n,), float(k), dtype=torch.float64), torch.from_numpy(EYE[text[chunk + k]]))
+            ce = F.cross_entropy(logits, torch.from_numpy(text[chunk + k + 1].astype(np.int64)), reduction='none')
+            bits[which[k]] += float(ce.sum()) / math.log(2); count[which[k]] += n
+    return {f'{edges[j]}-{edges[j + 1]}': dict(bpc=float(bits[j] / count[j]), targets=int(count[j]))
+            for j in range(len(bits)) if count[j]}
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--result', required=True, help='completed language_batched_benchmark result JSON')
@@ -99,6 +123,7 @@ def main():
     p.add_argument('--windows', type=int, default=0, help='also score the window protocol (T) with the same stepper')
     p.add_argument('--window-lanes', type=int, default=256)
     p.add_argument('--deterministic', action='store_true', help='highest score wins (labelled variant)')
+    p.add_argument('--context-curve', type=int, default=0, help='also: bpc by history length in fresh windows of C')
     p.add_argument('--limit', type=int, default=0, help='smoke: steps per lane / windows (0: all)')
     a = p.parse_args()
     out = OUT / f'{a.tag}.json'
@@ -133,10 +158,14 @@ def main():
         w_bpc, w_n, per = windows(model, text, a.windows, a.seed, a.window_lanes, a.limit)
         result['window'] = dict(T=a.windows, bpc=w_bpc, targets=w_n, evaluated_positions_per_target=per,
                                 wall_s=time.perf_counter() - started - t_stream)
+    if a.context_curve:
+        t0 = time.perf_counter()
+        result['context_curve'] = dict(C=a.context_curve, by_history=context_curve(
+            model, text, a.context_curve, a.seed, a.window_lanes, a.deterministic, a.limit), wall_s=time.perf_counter() - t0)
     result['wall_s'] = time.perf_counter() - started
     OUT.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=1) + '\n')
-    print(json.dumps({k: v for k, v in result.items() if k in ('stream_bpc', 'by_context', 'window', 'parent_test_bpc_T256',
+    print(json.dumps({k: v for k, v in result.items() if k in ('stream_bpc', 'by_context', 'window', 'context_curve', 'parent_test_bpc_T256',
                                                                  'wall_s')}, indent=1))
 
 
