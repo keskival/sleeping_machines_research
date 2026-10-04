@@ -26,7 +26,7 @@ Every deliverable below has a pass/fail number. Report it as a win or a loss in 
 | P0-2 | **10M win against LSTM-512 at matched compute** | curie: p128/d4 4 passes (v6 top after the MG arms); fallback p96/d4 pool 4 with sampled credit, 6 passes | test bpc < 1.799 at ≤ 433 TF | queued |
 | P0-3 | **NeuroBench primate leaderboard** | AWS: `queue/aws_primate_admission_20261004T184500Z/manifest.json` (six-session r1) | six-session mean R² > 0.71 (AEGRU) | prepared |
 | P0-4 | **NeuroBench Mackey-Glass leaderboard** | AWS r1 (repeats 20–29 running); curie expected-reception development → a pre-declared tau 17 run | 30-repeat sMAPE < 13.37 (LSTM), with a smaller footprint | 20/30: 14.37 |
-| P0-5 | **Scoreboard** | curie: report front page + README, generated from result files on every rebuild | every comparison listed as win / loss / efficiency point per WIN_CRITERIA | building |
+| P0-5 | **Scoreboard** | report/scoreboard.py: REPORT.md / PDF page 2, generated from result files on every rebuild | every comparison listed as win / loss / efficiency point per WIN_CRITERIA | **done** (5 wins of 13) |
 
 **AWS slot allocation order:** P0-1 and P0-3 take slots as soon as any slot frees. The long depth-8 streaming
 replay/teacher fits are research diagnostics: checkpoint them at their next milestone and suspend them (do not delete
