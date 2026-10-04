@@ -91,6 +91,7 @@ requires aligned validation/test contexts. A first finished arm cannot become th
 | `aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z` | A | 324 TF | **1.769** (leading) | **1.826** | **loss** for native by .062; nearly the saved 6-pass LSTM-512 (1.799) at 75% of its compute |
 | `aws_tuned_ref_10M_A_tf192L4_p2.5_lr0.002_s0_20261004T210000Z` | A | 328 TF | 1.982 | **2.027** | native better by .139, but native used 352 TF (107%): not a formal matched-compute win; still improving at its last step |
 | `aws_tuned_ref_10M_A_tf128L4_p5.4_lr0.003_s0_20261004T210000Z` | A | 347 TF | 1.950 (best TF so far) | **1.996** | native better by .108; native used 352 TF (101%) |
+| `aws_tuned_ref_10M_A_tf256L4_p1.5_lr0.002_s0_20261004T210000Z` | A | 333 TF | 2.011 | **2.053** | native better by .165; native used 106% |
 
 The validation curve was still improving at the final step (1.785 → 1.778 over the last 1,500 steps), so this budget is
 not saturated for the LSTM. Group selection waits for all six A arms (HEADLINE_PROTOCOL_AUDIT.md). Whatever is selected
