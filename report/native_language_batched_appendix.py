@@ -3,6 +3,8 @@
 Only completed result files enter; every row states its parameters, updates, protocol and work in the same units.
 """
 import json
+import hashlib
+import math
 from pathlib import Path
 import runpy
 
@@ -46,6 +48,37 @@ CONTROLS = [('e64/lstm_D10000000_s256_p1.json', 'LSTM-256'), ('e64/tf_D10000000_
             ('e64/lstm_D10000000_s512_p6_dr0.1_v.json', 'LSTM-512, 6 passes')]
 
 
+def comparison_eligible(r, fit):
+    a = r['args']; p = r.get('protocol', {})
+    return (r.get('status') == 'completed' and not a.get('max_windows') and a['fit'] == fit
+            and p.get('fit') == [0, fit] and p.get('test') == [95_000_000, 96_000_000]
+            and r.get('eval_segment') == 256 and r.get('test_targets_eval_segment') == 999936
+            and isinstance(r.get('test_bpc_eval_segment'), (int, float))
+            and math.isfinite(r['test_bpc_eval_segment']))
+
+
+def reference_score(path, original):
+    """An admitted identical-window rescore may supersede the comparison score only."""
+    parent = RES/path
+    matches = []
+    for p in sorted((RES/'reference_window_rescore').glob('*.json')):
+        r = json.loads(p.read_text())
+        if r.get('status') != 'completed' or r.get('parent') != str(parent.relative_to(ROOT)):
+            continue
+        manifest = ROOT/r['manifest']; m = json.loads(manifest.read_text())
+        if (hashlib.sha256(parent.read_bytes()).hexdigest() != r['parent_sha256']
+                or hashlib.sha256(manifest.read_bytes()).hexdigest() != r['manifest_sha256']
+                or m['parent_sha256'] != r['parent_sha256'] or m['checkpoint_sha256'] != r['checkpoint_sha256']
+                or m['result'] != str(p.relative_to(ROOT)) or r['test'] != [95_000_000, 96_000_000]
+                or r['eval_segment'] != 256 or r['test_targets'] != 999936 or r['optimizer_updates'] != 0
+                or r['state'] != 'reset per T256 window' or not math.isfinite(r['test_bpc'])):
+            raise ValueError('Invalid identical-window reference rescore: '+str(p))
+        matches.append((r['test_bpc'], str(p.relative_to(ROOT))))
+    if len(matches) > 1:
+        raise ValueError('Multiple reference rescores require an explicit publication decision')
+    return matches[0] if matches else (original, None)
+
+
 def load(read):
     inference = {(r['payload'], r['depth'], r['pool']): r['unit_special_flops_per_evaluated_position']
                  for path in [INFERENCE, *INFERENCE_MORE] for r in read(path)['rows']}
@@ -56,8 +89,10 @@ def load(read):
         if not (RES / path).exists():
             continue
         r = read(path); a = r['args']; w = r['work']
-        updates = int(a['passes'] * (a['fit'] - 1) // (a['segment'] * a['lanes']))
+        updates = r['windows']
         native.append(dict(label=label, parameters=r['parameters'], updates=updates, dev=r.get('dev_bpc'),
+                           comparison_eligible=comparison_eligible(r, 10_000_000), path=str((RES/path).relative_to(ROOT)),
+                           passes=a['passes'], seed=a['seed'],
                            test=r['test_bpc'], test256=r.get('test_bpc_eval_segment'),
                            whole=w['whole_fit_unit_special_flops_estimate'], fit=w['fit_unit_special_flops_per_char_estimate'],
                            infer=inference.get((a['payload'], a['depth'], a['pool'])), dev_window=a['dev'],
@@ -71,16 +106,19 @@ def load(read):
     controls = []
     for path, label in CONTROLS:
         r = json.loads((RES / path).read_text()); w = estimate(r['args'], r['params'], r['steps'])
-        controls.append(dict(label=label, parameters=r['params'], updates=r['steps'], test=r['test_bpc'],
+        test, rescore = reference_score(path, r['test_bpc'])
+        controls.append(dict(label=label, parameters=r['params'], updates=r['steps'], test=test,
+                             original_test=r['test_bpc'], rescore=rescore, path=str((RES/path).relative_to(ROOT)),
                              whole=w['total_training_flops'], fit=w['total_training_flops'] / w['training_token_positions'],
                              infer=w['forward_flops'] / w['training_token_positions']))
     native90 = []
-    for path in sorted((RES / 'language_batched').glob('aws_language_batched_90M_r*_s6_*.json')):
+    for path in sorted((RES / 'language_batched').glob('aws_language_batched_90M_r*_s*_*.json')):
         r = json.loads(path.read_text()); a = r['args']
         if r.get('status') != 'completed' or a.get('max_windows'):
             continue
         w = r['work']
         native90.append(dict(label=f"p{a['payload']}/d{a['depth']}/pool{a['pool']}" + (' + route credit' if a.get('route_credit', 'none') != 'none' else ''),
+                             comparison_eligible=comparison_eligible(r, 90_000_000), seed=a['seed'],
                              parameters=r['parameters'], updates=r['windows'], passes=a['passes'], test=r['test_bpc'],
                              test256=r.get('test_bpc_eval_segment'), whole=w['whole_fit_unit_special_flops_estimate'],
                              fit=w['fit_unit_special_flops_per_char_estimate'], path=str(path.relative_to(ROOT))))
@@ -98,8 +136,10 @@ def load(read):
                 row = json.loads(rp.read_text())
                 if isinstance(row.get('test_bpc'), float) and 'params' in row and 'steps' in row:
                     w = estimate(row['args'], row['params'], row['steps'])
+                    test, rescore = reference_score(str(rp.relative_to(RES)), row['test_bpc'])
                     controls90.append(dict(label=f"{label}, {row['args']['passes']:g} passes", parameters=row['params'],
-                                           updates=row['steps'], test=row['test_bpc'], whole=w['total_training_flops'],
+                                           updates=row['steps'], test=test, original_test=row['test_bpc'], rescore=rescore,
+                                           path=str(rp.relative_to(ROOT)), whole=w['total_training_flops'],
                                            fit=w['total_training_flops'] / w['training_token_positions']))
                     break
             if controls90 and controls90[-1]['label'].startswith(label):
@@ -108,16 +148,16 @@ def load(read):
 
 
 def matched(data):
+    choose = runpy.run_path(str(ROOT/'report/scoreboard.py'))['best_within']
     native = [r for r in data['native'] if 'route credit' in r['label']]
     rows = []
     for c in data['controls']:
         for kind, key in (('training', 'whole'), ('inference', 'infer')):
             budget = c[key]
-            ok = [r for r in native if (r[key if kind == 'training' else 'sparse'] or float('inf')) <= budget]
-            if not ok:
+            best = choose(native, budget, key if kind == 'training' else 'sparse')
+            if best is None:
                 rows.append([f"{c['label']} ({kind})", f"{c['test']:.3f}", 'none within budget', '—', '—']); continue
-            best = min(ok, key=lambda r: r['test256'] if r['test256'] is not None else r['test'])
-            q = best['test256'] if best['test256'] is not None else best['test']
+            q = best['test256']
             rows.append([f"{c['label']} ({kind}, {budget / (1e12 if kind == 'training' else 1e6):.1f} "
                          f"{'TF' if kind == 'training' else 'MF/pos'})", f"{c['test']:.3f}", best['label'], f"{q:.3f}",
                          'native better' if q < c['test'] else 'reference better'])
@@ -152,15 +192,18 @@ def pages(data):
              ('small', 'Training budget: whole-fit FLOPs estimate; inference budget: per-position FLOPs (native exact winner-only '
                        'trace, controls shape estimate). Conventions differ (traced vs estimated); single seeds; the native '
                        'multi-pass rows use more optimizer updates than one-pass references. A native row qualifies for a budget '
-                       'only if its estimate does not exceed the reference\'s.'),
+                       'only if its estimate does not exceed the reference\'s. Native/Transformer: reset T256 windows, '
+                       '999,936 targets. Saved LSTM: continuous state, 999,999 targets; same test interval, different context. '
+                       'Identical-context LSTM rescoring is pending.'),
              *([('table', (['Model (90M)', 'Params', 'Updates', 'Test bpc T128/T256', 'Whole fit TF est.', 'Fit MF/char'],
-                           [[f"Ours {r['label']} (AWS, one pass)", f"{r['parameters']:,}", f"{r['updates']:,}",
+                           [[f"Ours {r['label']} (AWS, {r['passes']:g} passes, seed {r['seed']})", f"{r['parameters']:,}", f"{r['updates']:,}",
                              f"{r['test']:.3f} / {r['test256']:.3f}", f"{r['whole'] / 1e12:.1f}", f"{r['fit'] / 1e6:.2f}"]
                             for r in data.get('native90', [])] +
                            [[f"E64 {r['label']} (AWS)", f"{r['parameters']:,}", f"{r['updates']:,}", f"— / {r['test']:.3f}",
                              f"{r['whole'] / 1e12:.0f}", f"{r['fit'] / 1e6:.2f}"] for r in data.get('controls90', [])],
                            [52, 20, 20, 30, 26, 22])),
-                ('small', '90M rows: text8[0:90M], same test interval and E64 windows. The native rows are one pass of the '
+                ('small', '90M rows: text8[0:90M], same test interval. Native and Transformer use reset T256 windows; LSTM '
+                          'uses continuous state. The native rows state their actual pass counts for the '
                           'segment-batched protocol on AWS (compiled, 64 x 128 windows, lr .004 cosine); the references '
                           'are multi-pass with larger models and are listed for scale, not as matched comparisons.')]
                if data.get('native90') else []),

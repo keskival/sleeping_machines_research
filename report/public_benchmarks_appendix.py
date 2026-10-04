@@ -6,9 +6,8 @@ Published reference values are cited from the NeuroBench leaderboard and the fmi
 """
 import glob
 import json
+import runpy
 from pathlib import Path
-
-import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / 'experiments/results'
@@ -19,20 +18,19 @@ PRIMATE_DEV_SESSION = {'bigRSNN': .772, 'tinyRSNN': .746}          # indy_201701
 
 
 def load(read=None):
-    official = []
-    for f in sorted(glob.glob(str(RES / 'neurobench_mg/aws_mg_tau17_r1_*.json'))):
-        r = json.loads(Path(f).read_text())
-        if r.get('status') == 'completed':
-            official += r['repeats']
-    modes = list(official[0]['smape_by_mode']) if official else []
-    mg = dict(n=len(official), modes={m: float(np.mean([x['smape_by_mode'][m] for x in official])) for m in modes},
+    aggregate = runpy.run_path(str(ROOT/'experiments/public_benchmarks/collect_neurobench_mg.py'))['collect']()
+    official = [row for p in aggregate['parents'] for row in json.loads((ROOT/p['path']).read_text())['repeats']]
+    mg = dict(n=aggregate['completed_repeats'], modes=aggregate['mean_smape_by_mode'],
+              protocol_claim_eligible=aggregate['protocol_claim_eligible'], parents=aggregate['parents'],
               spread=(min(x['smape_by_mode']['mix8'] for x in official), max(x['smape_by_mode']['mix8'] for x in official))
               if official else None)
     work = json.loads((RES / 'neurobench_mg/curie_mg_inference_work_20261004T190000Z.json').read_text())['rows']
     mg['work'] = {(w['payload'], w['pool']): w for w in work}
     dev = []
     for f in sorted(glob.glob(str(RES / 'neurobench_mg/curie_mg*_t1[89]_*.json'))):
-        r = json.loads(Path(f).read_text()); a = r['args']
+        r = json.loads(Path(f).read_text())
+        if r.get('status') != 'completed': continue
+        a = r['args']
         by_mode = r.get('mean_smape_by_mode') or {('argmax' if a.get('argmax') else 'sampled'): r['mean_smape']}
         member = r.get('member', 'race (sampled routing)')
         label = (f"tau {a['tau']}, p{a['payload']}/d{a['depth']}/pool{a['pool']}" + (', increments' if a.get('delta') else '')
@@ -42,7 +40,9 @@ def load(read=None):
                         modes=by_mode, repeats=len(r['repeats'])))
     primate = []
     for f in sorted(glob.glob(str(RES / 'neurobench_primate/curie_pr*.json'))):
-        r = json.loads(Path(f).read_text()); a = r['args']; s = r['sessions'][0]
+        r = json.loads(Path(f).read_text())
+        if r.get('status') != 'completed': continue
+        a = r['args']; s = r['sessions'][0]
         label = (f"p{a['payload']}/d{a['depth']}/pool{a['pool']}" + (' tied' if a.get('tie_pools') else '')
                  + (f", wd {a['weight_decay']:g}" if a.get('weight_decay') else '') + f", {a['steps']} steps"
                  + (', leaky readout' if a.get('smoothing') else '') + (f", {a['route_samples']} route samples"

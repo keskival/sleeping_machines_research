@@ -1,5 +1,58 @@
 # Local host: current research continuation
 
+## P0 comparison protection and aligned-reference admission — 4 October 2026
+
+Read PRODUCT_ORDERS.md first (latest AWS order: P0-1, P0-6 10M, P0-3; confirming
+seeds follow). Serving measurements deferred. This Docker review session made
+no ML imports, forward/backward/optimizer calls, profiling or physical admissions.
+
+Found concrete report/protocol gaps: 90M scoreboard did not enforce budgets;
+all 90M rows were labelled one pass; official MG reporting bypassed the canonical
+collector; family integration put the scoreboard on physical PDF page15. Fixed
+budget/T256/finite/target eligibility, actual pass/update labels, MG collector
+admission and future family placement. Current PDF is235 pages, corrected
+scoreboard on page2;234 other pages have identical extracted text. New source-
+bound publication: ../report/publication_headline_protocol_final_20261004T214800Z.json.
+First preview/publication214000Z and all previous report evidence preserved.
+Render ~90MiB RSS under300MB/1GB-AS/8GiB-floor/120s guard. Family integration
+regression retains page2 and all222 non-family pages verbatim.
+
+Current five wins against saved references remain recorded. Four Transformer
+comparisons have identical native T256 geometry. Saved LSTMs carry state over
+999999 targets; native/TF reset T256 windows over999936 targets on the same
+interval. E174 used continuous LSTM and its own complete-tail count-mixture
+protocol; it does not align native windows. This context correction is explicit
+in the scoreboard, README, report source and TUNED_BASELINES. Older assertions
+remain historical evidence beside the correction; no saved score was deleted.
+
+Prepared one inference-only, source-bound LSTM512/10M rescore:
+queue/aws_lstm512_native_windows_20261004T213000Z/manifest.json. Actual unchanged
+saved parent/weights/test bytes, historical-equivalent E64 model class ASTs,
+physicalAWS reservation and exact one-thread guards required before Torch.
+T256 resets,999936 targets, zero updates. PREPARED UNRUN, no waiter/scheduler.
+RSS1250000KiB / VMS3000000KiB / available8192MiB / timeout1800s (ceiling, not ETA).
+Admit after current P0 owners through its README/run_safe command, never fourth
+job. LSTM256/90M checkpoints absent here, not silently replaced. A completed
+matching rescore can feed the report while retaining the original raw score.
+
+P0-6 static audit: all14 existing queues fit budgets (A/B actual native work;
+C/D projected, recheck when completed); five LSTM arms need aligned validation
+AND test contexts. Do not select the mixed-architecture group by test or from
+its first finished arm. New report/tuned_reference_admission.py checks exact
+queued arguments/completed provenance/counts/work/source consistency and waits
+for all6A/4B. Complete groups still require LSTM validation/test alignment;
+TEST-only rescoring does not repair DEV selection. Existing model/driver/queue
+pins unchanged, including concurrent owner hardware-model/P0-6 additions.
+
+Completed stdlib checks: headline_comparisons_stdlib_20261004T214500Z (12 groups),
+tuned_reference_budgets_stdlib_20261004T213500Z (14 queues), and
+ tuned_reference_admission_stdlib_20261004T214500Z (5 groups with partial/complete
+and8 malformed-arm cases). See HEADLINE_PROTOCOL_AUDIT.md. No new quality win.
+The prioritized integrated model remains AWS p64/D4/H2/U2 linear-credit four-
+pass90M, then p96; current owner curie p128/D4 four-pass remains P0-2. Useful
+future-write utility, depth/horizon, integrated reception/silence, trained sparse
+parity and physical energy remain mechanism/resource gaps. No core substitution.
+
 ## Hardware cost model and key-scoring floor — 4 October 2026, 23:15 UTC
 
 This container has no text8 and no local trainer; training stays with the curie runner and AWS. Done here: P0-6 tuned

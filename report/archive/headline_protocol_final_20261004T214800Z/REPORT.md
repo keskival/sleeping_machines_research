@@ -18,10 +18,10 @@ Tero Keski-Valkama and Karoliina Salminen · Research report · 3 October 2026
 | 10M vs Transformer-256x4, 4 passes at ≤ its inference compute (7.4 MF/pos) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
 | 10M vs LSTM-512, 6 passes at ≤ its training compute (432.6 TF) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | Loss |
 | 10M vs LSTM-512, 6 passes at ≤ its inference compute (2.4 MF/pos) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | Loss |
-| 10M vs tuned dense at ≤ 352 TF (P0-6) | pending | 0/6 arms complete | Pending |
-| 10M vs tuned dense at ≤ 107 TF (P0-6) | pending | 0/4 arms complete | Pending |
-| 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point; run queued |
-| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point; run queued |
+| 10M vs tuned dense at ≤ 352 TF (P0-6) | pending | queued on AWS | Pending |
+| 10M vs tuned dense at ≤ 107 TF (P0-6) | pending | queued on AWS | Pending |
+| 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point (matched-compute run queued) |
+| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point (matched-compute run queued) |
 | NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.37 (57.6 KB vs 490 KB) | Pending (20/30 repeats) |
 | NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.754 (one development session; tinyRSNN .746 there) | Pending (six-session run) |
 | SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |

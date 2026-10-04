@@ -140,7 +140,8 @@ def pages(data):
               'These are completed single-seed comparisons; replication and large-data advantage remain open.'),
         ('figure', ('current_native_language_status', 174)),
         ('small', 'Blue: native temporal races, sparse addressed persistent writes and learned messages; light blue: timing-only route credit. '
-                  'Gray: saved dense controls. Same text8 test[95M:96M], T256 evaluation, nominal one-pass 10M fitting budget, 1,220 updates. '
+                  'Gray: saved dense controls. Same text8 test[95M:96M]; native/Transformer reset T256 windows, LSTM carries state. '
+                  'Nominal one-pass 10M fitting budget, 1,220 updates. '
                   'Native training samples random segments; order differs from the controls. Work is traced/extrapolated for native and '
                   'shape-estimated for controls. Both panels use the same denominator for every model. Full resource table is in the native appendix.'),
         ('h2', 'The gains are about learned routing and useful capacity'),

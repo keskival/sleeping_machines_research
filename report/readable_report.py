@@ -5412,7 +5412,8 @@ def blocks(M, tasks, ev):
     block=(start+'\n## Scoreboard (generated from result files; definitions in experiments/WIN_CRITERIA.md)\n\n'
            +'| '+' | '.join(table[0])+' |\n|'+'---|'*len(table[0])+'\n'
            +''.join('| '+' | '.join(r)+' |\n' for r in table[1])
-           +'\nSingle seeds unless stated; same data and test sets; native compute traced, references shape-estimated or as '
+           +'\nSingle seeds unless stated; same test interval; native/Transformer reset T256 windows, saved LSTM carries state. '
+           +'Identical-context LSTM rescoring is pending. Native compute traced, references shape-estimated or as '
            +'published. Full report: REPORT.md; orders: experiments/PRODUCT_ORDERS.md.\n'+end)
     if start in text:
         text=text[:text.index(start)]+block+text[text.index(end)+len(end):]
@@ -5478,6 +5479,8 @@ def build(M):
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## ')
+    if report_markdown[boundary:].startswith('\n## Scoreboard — wins, losses and open targets'):
+        boundary=report_markdown.find('\n## ',boundary+1)
     if boundary<0: raise ValueError('Report has no section boundary')
     report_markdown=report_markdown[:boundary+1]+markdown_frontmatter()+report_markdown[boundary+1:]
     (ROOT/"REPORT.md").write_text(report_markdown)

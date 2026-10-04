@@ -1,5 +1,21 @@
 """Scoreboard (experiments/PRODUCT_ORDERS.md P0-5): every headline comparison as a win, loss, efficiency point or pending,
 per experiments/WIN_CRITERIA.md, generated from completed result files on every report build."""
+import math
+
+
+def eligible(row):
+    """Never replace a T256 comparison with a training-window or pending score."""
+    q = row.get('test256')
+    return (row.get('comparison_eligible', True) and isinstance(q, (int, float))
+            and math.isfinite(q))
+
+
+def best_within(rows, budget, key):
+    if not isinstance(budget, (int, float)) or not math.isfinite(budget) or budget <= 0:
+        raise ValueError('Finite positive reference budget required')
+    candidates = [r for r in rows if eligible(r) and isinstance(r.get(key), (int, float))
+                  and math.isfinite(r[key]) and 0 < r[key] <= budget]
+    return min(candidates, key=lambda r: r['test256']) if candidates else None
 
 
 def page(native, public):
@@ -8,47 +24,48 @@ def page(native, public):
     nat = [r for r in native['native'] if 'route credit' in r['label']]
     for c in native['controls']:
         for axis, key, unit, scale in (('training', 'whole', 'TF', 1e12), ('inference', 'infer', 'MF/pos', 1e6)):
-            within = [r for r in nat if (r[key] if axis == 'training' else (r.get('sparse') or float('inf'))) <= c[key]]
-            if not within:
+            best = best_within(nat, c[key], key if axis == 'training' else 'sparse')
+            if best is None:
                 rows.append([f"10M vs {c['label']} at ≤ its {axis} compute", f"{c['test']:.3f}", 'no native row within budget',
-                             'Loss']); continue
-            best = min(within, key=lambda r: r['test256'] if r['test256'] is not None else r['test'])
-            q = best['test256'] if best['test256'] is not None else best['test']
+                             'Pending']); continue
+            q = best['test256']
             used = best[key] if axis == 'training' else best['sparse']
             rows.append([f"10M vs {c['label']} at ≤ its {axis} compute ({c[key] / scale:.1f} {unit})", f"{c['test']:.3f}",
                          f"{q:.3f} ({best['label']}; {used / scale:.1f} {unit})", 'WIN' if q < c['test'] else 'Loss'])
     # P0-6 tuned dense references at the native budgets (TUNED_BASELINES.md): validation-selected arm per budget
-    import glob, json, os
-    root = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'experiments/results/aws_20260929')
-    for budget, cap, label in (('A', 352.1e12, '≤ 352 TF'), ('B', 107.2e12, '≤ 107 TF')):
-        arms = []
-        for f in glob.glob(os.path.join(root, f'aws_tuned_ref_10M_{budget}_*', '*_D10000000_*.json')):
-            r = json.load(open(f))
-            if r.get('best_valid_bpc') is not None and r['training_flops_estimate']['total_training_flops'] <= cap:
-                arms.append(r)
-        within = [r for r in nat if r['whole'] <= cap]
-        if not arms or not within:
-            rows.append([f"10M vs tuned dense at {label} (P0-6)", 'pending', 'queued on AWS', 'Pending']); continue
-        ref = min(arms, key=lambda r: r['best_valid_bpc'])          # selected by validation, never by test
-        best = min(within, key=lambda r: r['test256'] if r['test256'] is not None else r['test'])
-        q = best['test256'] if best['test256'] is not None else best['test']
+    from pathlib import Path
+    import runpy
+    admit=runpy.run_path(str(Path(__file__).with_name('tuned_reference_admission.py')))['load_group']
+    for budget, member in (('A','p96/d4 + route credit, 6 passes'),('B','p64/d4 + route credit, 4 passes')):
+        best=next((r for r in nat if r['label']==member and eligible(r)),None)
+        if best is None:
+            rows.append([f'10M vs tuned dense budget {budget} (P0-6)','pending','native anchor missing','Pending']);continue
+        cap=best['whole'];label=f'≤ {cap/1e12:.0f} TF';group=admit(budget,cap)
+        if group['status']!='completed':
+            detail=(f"{group['completed']}/{group['required']} arms complete" if group['status']=='pending'
+                    else 'align LSTM validation/test contexts')
+            rows.append([f"10M vs tuned dense at {label} (P0-6)",'pending',detail,'Pending']);continue
+        ref=group['selected'];q=best['test256']
         a = ref['args']; name = f"{a['model']}{a['size']}" + (f"x{a['layers']}" if a['model'] == 'tf' else '') + f" {a['passes']:g}p lr{a.get('lr')}"
-        rows.append([f"10M vs tuned dense at {label} (P0-6; {len(arms)} arms, validation-selected)",
+        rows.append([f"10M vs tuned dense at {label} (P0-6; {group['required']} arms, validation-selected)",
                      f"{ref['test_bpc']:.3f} ({name})", f"{q:.3f} ({best['label']}; {best['whole'] / 1e12:.0f} TF)",
                      'WIN' if q < ref['test_bpc'] else 'Loss'])
     # 90M
     if native.get('native90'):
-        b = min(native['native90'], key=lambda r: r['test256'])
         for c in native['controls90']:
+            b = best_within(native['native90'], c['whole'], 'whole')
+            if b is None:
+                rows.append([f"90M vs {c['label']}", f"{c['test']:.3f}", 'no native T256 row within budget', 'Pending'])
+                continue
             ratio = c['whole'] / b['whole']
             rows.append([f"90M vs {c['label']}", f"{c['test']:.3f}",
                          f"{b['test256']:.3f} ({b['label']}; {ratio:.0f}× less training compute)",
-                         'WIN' if b['test256'] < c['test'] else 'Efficiency point (matched-compute run queued)'])
+                         'WIN' if b['test256'] < c['test'] else 'Efficiency point; run queued'])
     # NeuroBench
     mg = public['mg']
     if mg['n']:
         q = mg['modes']['mix8']
-        verdict = ('WIN' if q < 13.37 else 'Loss vs LSTM') if mg['n'] == 30 else f"Pending ({mg['n']}/30 repeats)"
+        verdict = ('WIN' if q < 13.37 else 'Loss vs LSTM') if mg.get('protocol_claim_eligible', False) else f"Pending ({mg['n']}/30 repeats)"
         rows.append(['NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79)', '13.37', f"{q:.2f} (57.6 KB vs 490 KB)", verdict])
     if public['primate']:
         b = max(public['primate'], key=lambda r: r['test'])
@@ -57,10 +74,12 @@ def page(native, public):
     rows.append(['SHD (accuracy; best published 96.4%)', '96.4%', 'development queued', 'Pending'])
     wins = sum(r[3] == 'WIN' for r in rows)
     return [('h1', 'Scoreboard — wins, losses and open targets'),
-            ('p', f"<b>{wins} wins</b> in {len(rows)} headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: "
-                  'experiments/PRODUCT_ORDERS.md. Same data and test sets; T256 language evaluation; single seeds unless stated.'),
+            ('p', f"<b>{wins} wins against saved references</b> in {len(rows)} headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: "
+                  'experiments/PRODUCT_ORDERS.md. Single seeds unless stated; tuned references and confirming seeds are pending.'),
             ('table', (['Comparison', 'Reference', 'Ours', 'Verdict'], rows, [66, 20, 64, 28])),
             ('small', 'Native compute is traced (fitting extrapolated from traced windows; inference from the exact winner-only '
                       'trace); references use the saved shape estimates or the leaderboard\'s published counts. Multi-pass native '
                       'rows may use more optimizer updates than one-pass references. A native row qualifies for a budget only if '
-                      'its own estimate does not exceed the reference\'s.')]
+                      'its own estimate does not exceed the reference\'s. Native and Transformer score the same 999,936 targets '
+                      'with reset T256 windows; saved LSTMs carry state across 999,999 targets of the same test interval. '
+                      'LSTM rows are saved-reference quality/work wins or losses; identical-context rescoring is pending.')]

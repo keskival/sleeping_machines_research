@@ -13,8 +13,12 @@ report it plainly (WIN_CRITERIA.md).
 
 - Script: `experiments/e64_lm_baselines.py`, run via `aws_benchmark.py` (isolated output per run tag). New options
   `--lr`, `--warmup` (linear warmup then cosine), `--weight_decay`, `--seed`; defaults reproduce the saved runs exactly.
-- Same data: text8[0:D], validation text8[90M:90.2M] (best checkpoint by validation), test text8[95M:96M], T256 windows
-  with T/2 context: the same evaluation as the saved references and the native `--eval-segment 256` rows.
+- Same data: text8[0:D], validation text8[90M:90.2M] (best checkpoint by validation), test text8[95M:96M]. Transformers
+  use reset T256 windows with T/2 context, matching native `--eval-segment 256`. **Protocol correction:** E64 LSTMs
+  retain state across the stream and score 999,999 test positions; native/Transformer score 999,936. The original
+  statement that all rows had the same windows was incorrect. Keep existing scores and queues unchanged; rescore
+  saved LSTM weights on the native windows before claiming identical context/targets. For selecting among tuned
+  arms with different context policies, align validation scoring too, and never select by test.
 - Dropout 0.1, warmup 200 steps (10M) / 500 steps (90M), batch 32 × 256.
 - **Budget rule:** each run's `training_flops_estimate.total_training_flops` (shape_based_v1, the convention used for every
   saved reference) must be ≤ the native row's traced fitting compute. This was checked when queueing.
@@ -68,3 +72,13 @@ reference, but it is no longer the headline claim. Say so beside it.
 Wall time is not an evidence axis: the target asynchronous hardware does not exist yet, and all native runs are
 simulated on CPU. Compare counted work (fitting FLOPs, inference FLOPs/position, and where available state/memory
 traffic) under the stated conventions. Do not report CPU wall-clock as an efficiency result for either side.
+
+## Independent queue audit (4 October, review workspace)
+
+All 14 queued arms fit their declared budgets under the saved shape estimate; A/B use completed native budgets,
+C/D use projected four-pass native work and must be rechecked at completion. Five arms use continuous-state LSTM
+scoring and need the context correction above. [Audit record](results/diagnostics/tuned_reference_budgets_stdlib_20261004T213500Z.json).
+The first source-bound, inference-only LSTM-512/10M rescore is [prepared, unrun](queue/aws_lstm512_native_windows_20261004T213000Z/README.md).
+It does not consume a training slot here or displace the active P0 owners. [Protocol audit](HEADLINE_PROTOCOL_AUDIT.md).
+The scoreboard now waits for all six A / four B arms with completed provenance and checked actual budgets, then
+requires aligned validation/test contexts. A first finished arm cannot become the headline tuned reference.

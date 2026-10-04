@@ -1,0 +1,43 @@
+{
+  "status": "prepared_not_launched",
+  "host": "ip-172-31-47-132",
+  "tag": "aws_lstm512_native_windows_20261004T213000Z",
+  "parent": "experiments/results/e64/lstm_D10000000_s512_p6_dr0.1_v.json",
+  "parent_sha256": "4b9ad878521654817ba47e60754283380a9ce690d0726a7384b13793dc6b0688",
+  "checkpoint": "experiments/results/e64/lstm_D10000000_s512_p6_dr0.1_v.pt",
+  "checkpoint_sha256": "c5c17d840ac2a48e63ea11a0debe5ab539c646d6ae90d871fd614aa572bd0712",
+  "result": "experiments/results/reference_window_rescore/aws_lstm512_native_windows_20261004T213000Z.json",
+  "sources": {
+    "experiments/reference_window_rescore.py": "7a2855e7cff8a36b3636706a9f35b72c8f5d30574a39642a2b070450e4f0c1fa",
+    "experiments/sparse_validation_recovery.py": "99302b2f7288ef6ddafba52c57ea39887b4095e8f4f6f807175573038775a922",
+    "experiments/e64_lm_baselines.py": "5cdbe33462fb6d9f987600c62fc479187392fb1a89361fc37d2af488d905c53b",
+    "experiments/lm_training_flops.py": "d0a5220ba03d8f3dd9c7071d299521babe1ec3be9234a0266ad990356ddc0427",
+    "experiments/queue/run_safe.sh": "7b63af673d1c9b606334a408eaaa712da8f335d30e333d196dc9e795af73b32c"
+  },
+  "data_sha256": "42396911932cac506c9e5586d0399745f3ac51867abe52fa2abc929dfe79d0f0",
+  "test": [
+    95000000,
+    96000000
+  ],
+  "args": {
+    "model": "lstm",
+    "D": 10000000,
+    "passes": 6.0,
+    "size": 512,
+    "layers": 2,
+    "ctx": 256,
+    "test": 1000000,
+    "dropout": 0.1,
+    "valid": 200000
+  },
+  "targets": 999936,
+  "guards": {
+    "address_space_kib": 3000000,
+    "rss_kib": 1250000,
+    "min_available_mib": 8192,
+    "timeout_s": 1800
+  },
+  "scope": "Same saved weights and training work; reset T256 windows, exactly native target positions. Original continuous-state/tail scores are retained. No training or test-driven selection.",
+  "queue": "experiments/queue/aws_lstm512_native_windows_20261004T213000Z/job.txt",
+  "queue_sha256": "e48e5064d95c8af3525792209804035c205fd5b1e4bea5f44a0c5e0489a00750"
+}
