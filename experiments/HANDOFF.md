@@ -2662,3 +2662,16 @@ sparsehistoricalrecovery, alignedLSTMrescore, additional90Mcontrols/seed7/pool8
 remainassignedpending, not silentlydropped. Source-boundproduct90Mcheckpoint
 publisher prepared toarchive10Mpresentationmilestones. Currentmodelsource
 coverage includesallkernels; futurechanges mustrejectadmission, notoverride.
+
+Priority post-admission source audit: native job's broad binding included unused
+expected_reception.py, which anotherownerchanged, and omitted the driver's
+reported dvs_batched_large_benchmark.py dependency. Actual native program files
+remainpinned in NEW native_provenance_recovery.json alongside unchanged active
+manifest; exact milestonepublisher nowchecks that explicit source certificate.
+Current model program/settings unchanged; dense arms' sourcebindings unaffected.
+Originalcoordinatorwillrejectnativepostflight atitsbroad freeze, so completed
+native result requires certificate-checked publication and a fresh continuation
+for nextnativeadmission. Do not silently modifyactive manifest or treatunrelated
+source driftasnewmodeltraining. This admissionmetadata issue remains recorded;
+no completednativequality or tunedwin is asserted. Preserve allnativecheckpoints
+and healthy currentdensefits; correctpostflightbeforedeclaringP0stagecomplete.

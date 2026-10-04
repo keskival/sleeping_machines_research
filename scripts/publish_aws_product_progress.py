@@ -17,6 +17,8 @@ def main():
     state=dict(status='monitoring',published=[])
     def save():
         tmp=status.with_suffix('.tmp');tmp.write_text(json.dumps(state,indent=2)+'\n');tmp.replace(status)
+    certificate=json.loads((manifest.parent/'native_provenance_recovery.json').read_text())
+    assert certificate['manifest_sha256']==hashlib.sha256(manifest.read_bytes()).hexdigest()
     seen={};save()
     while True:
         lifecycle=json.loads((manifest.parent/'worker_recovery.status.json').read_text())
@@ -37,11 +39,11 @@ def main():
             archive=directory/f"{job['tag']}_milestone{milestone:02d}.pt"
             metadata=archive.with_suffix('.json')
             if archive.exists():continue
-            for name,digest in job['source_sha256'].items():
+            for name,digest in certificate['source_sha256'].items():
                 assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
             temporary=archive.with_suffix('.tmp');torch.save(saved,temporary);temporary.replace(archive)
             record=dict(status='checkpoint',args=saved['args'],presented_targets=saved['seen'],
-                optimizer_windows=saved['window'],source_sha256=job['source_sha256'],
+                optimizer_windows=saved['window'],source_sha256=certificate['source_sha256'],
                 publisher_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 checkpoint=str(archive.relative_to(ROOT)),checkpoint_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),
                 cumulative_wall_s=saved['wall_s'],captured_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
