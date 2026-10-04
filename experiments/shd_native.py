@@ -27,6 +27,7 @@ from sleeping_machines.batched_episodes import batched_logits  # noqa: E402
 from sleeping_machines.fast_native_core import fast_class  # noqa: E402
 
 DATA = ROOT / 'data/shd'
+RECEPTION = ['race']
 
 
 def load(split, bin_ms, group, max_time=1.4):
@@ -73,7 +74,11 @@ def evaluate(model, X, y, idx, lanes):
     with torch.no_grad():
         for b in range(0, len(idx), lanes):
             chunk = idx[b:b + lanes]; rows = rows_of(X, chunk)
-            logits = mean_logits(batched_logits(model, rows, 314159, all_logits=True), rows)
+            fn = batched_logits
+            if RECEPTION[0] == 'expected':
+                from sleeping_machines.expected_reception import expected_logits
+                fn = lambda m, r, seed, all_logits=False: expected_logits(m, r, 0, all_logits=all_logits, compiled=False)
+            logits = mean_logits(fn(model, rows, 314159, all_logits=True), rows)
             target = torch.tensor(y[chunk])
             correct += int((logits.argmax(-1) == target).sum()); nll += float(F.cross_entropy(logits, target, reduction='sum'))
     return correct / len(idx), nll / len(idx)
@@ -92,6 +97,7 @@ def main():
     p.add_argument('--seed', type=int, default=6); p.add_argument('--compiled', action='store_true')
     p.add_argument('--channel-shift', type=int, default=0, help='training augmentation: random channel-group shift in +-k')
     p.add_argument('--label-smoothing', type=float, default=0.)
+    p.add_argument('--reception', choices=('race', 'expected'), default='race')
     p.add_argument('--official-test', action='store_true', help='score the official test file with the selected weights')
     a = p.parse_args()
     out = ROOT / 'experiments/results/shd_native' / f'{a.tag}.json'
@@ -99,6 +105,7 @@ def main():
     if Path(a.tag).name != a.tag or out.exists():
         raise ValueError('Unique unused tag required')
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed); started = time.perf_counter()
+    RECEPTION[0] = a.reception
     X, y, spk = load('train', a.bin_ms, a.channel_group)
     held = np.isin(spk, [int(s) for s in a.val_speakers.split(',')])
     fit_idx, val_idx = np.where(~held)[0], np.where(held)[0]
@@ -122,7 +129,12 @@ def main():
         for b in range(0, len(order), a.lanes):
             chunk = order[b:b + a.lanes]; rows = rows_of(X, chunk, a.input_noise, rng, a.channel_shift)
             model.train(); opt.zero_grad(set_to_none=True)
-            logits = mean_logits(logits_fn(model, rows, 100000 + step, all_logits=True, route_credit=rc), rows)
+            if a.reception == 'expected':      # deterministic exact expected delivery, hard argmax writes (§418)
+                from sleeping_machines.expected_reception import expected_logits
+                z = expected_logits(model, rows, 0, all_logits=True, compiled=a.compiled)
+            else:
+                z = logits_fn(model, rows, 100000 + step, all_logits=True, route_credit=rc)
+            logits = mean_logits(z, rows)
             loss = F.cross_entropy(logits, torch.tensor(y[chunk]), label_smoothing=a.label_smoothing)
             loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step(); schedule.step()
             loss_sum += float(loss.detach()) * len(chunk); step += 1
