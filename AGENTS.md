@@ -43,6 +43,11 @@
   depth theory and compute-allocation reasoning. Integrate new findings with
   their evidence and scope instead of replacing these principles ad hoc.
 
+# Current product orders (read first)
+
+- `experiments/PRODUCT_ORDERS.md` lists the P0/P1 deliverables, hosts, queues and pass criteria that increase the
+  project's value. Work them in priority order before any other experiment; it also says what to stop or defer.
+
 # Defining and reporting wins
 
 - `experiments/WIN_CRITERIA.md` defines matched-compute (training, inference, total), pure-accuracy, leaderboard and

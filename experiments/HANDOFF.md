@@ -3,6 +3,11 @@
 Current local state: [LOCAL_HANDOFF.md](LOCAL_HANDOFF.md). Future local progress
 updates belong there; keep this shared history and AWS notes intact.
 
+**PRODUCT ORDERS (4 October 19:20 UTC, user-directed): read [PRODUCT_ORDERS.md](PRODUCT_ORDERS.md) first.** AWS: give
+P0-1 (90M matched-compute runs, rev. 4) and P0-3 (six-session primate r1) the next free slots; checkpoint and suspend the
+depth-8 streaming replay/teacher fits at their next milestone until those run. Report every P0/P1 outcome as a win/loss
+line per WIN_CRITERIA.md.
+
 **AWS, queued 3 October at the user's request (revision 2, 10:30 UTC):** 90M native language arms with route
 credit, compiled and checkpointed. Protocol and admission are in [AWS_NATIVE_LANGUAGE_90M.md](AWS_NATIVE_LANGUAGE_90M.md)
 (also first in AWS_NEXT_BATCH.md). Admit `*_20261003T103000Z` queues into free guarded slots after the current fits,
