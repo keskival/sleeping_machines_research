@@ -88,8 +88,15 @@ def with_traces(spikes, decays):
 def run_session(a, name):
     spikes, labels, fit, test = load_session(name)
     spikes = with_traces(spikes, [float(d) for d in a.traces.split(',')] if a.traces else [])
-    n_val = int(round(len(fit) * a.val_fraction))
-    train, val = fit[:len(fit) - n_val], fit[len(fit) - n_val:]
+    if a.val_blocks <= 1:
+        n_val = int(round(len(fit) * a.val_fraction))
+        train, val = fit[:len(fit) - n_val], fit[len(fit) - n_val:]
+    else:                     # validation = the last val_fraction of each of val_blocks equal parts of the fitting bins
+        parts = np.array_split(fit, a.val_blocks); train, val = [], []
+        for part in parts:
+            n_val = int(round(len(part) * a.val_fraction))
+            train.append(part[:len(part) - n_val]); val.append(part[len(part) - n_val:])
+        train, val = np.concatenate(train), np.concatenate(val)
     mu, sd = labels[train].mean(0), labels[train].std(0)
     target = ((labels - mu) / sd).astype(np.float32)
     torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed + 1)
@@ -166,6 +173,8 @@ def main():
     p.add_argument('--compiled', action='store_true'); p.add_argument('--seed', type=int, default=1)
     p.add_argument('--route-samples', type=int, default=1, help='average predictions over this many race-noise streams '
                    '(inference work scales with it)')
+    p.add_argument('--val-blocks', type=int, default=1, help='validation drawn from the end of this many equal parts of the '
+                   'fitting bins (1: one block at the end)')
     p.add_argument('--traces', default='', help='comma list of per-bin decays for causal exponential spike traces added to '
                    'the content (e.g. .75,.95)')
     p.add_argument('--smoothing', action='store_true', help='causal leaky-integrator readout; constant chosen on validation')
