@@ -406,8 +406,8 @@
         },
         {
           "label": "02 / MEMORY-LOCAL ACCELERATORS",
-          "metric": "5× fewer bytes",
-          "body": "Modeled per character: our 1.888-bpc model moves 5.2× fewer bytes than the Transformer it beats, with 1.5K state values instead of a 524K KV cache. Data movement dominates chip energy."
+          "metric": "5.8× fewer bytes",
+          "body": "Modeled per character: our 1.888-bpc model moves 5.8× fewer bytes than the Transformer it beats. 10× more capacity adds only 5% traffic. Data movement dominates chip energy."
         },
         {
           "label": "03 / CLOCKLESS SILICON",
@@ -833,8 +833,8 @@
       "rows": [
         [
           "Energy",
-          "Cost model: 5.2× fewer bytes/char than the Transformer we beat; no KV cache; no clock tree; idle units leak only.",
-          "Cheap key scoring (today 76% of weights read per char); chip-level measurement."
+          "Cost model: 5.8× fewer bytes/char than the Transformer we beat; 10× capacity for +5% traffic; no clock tree.",
+          "Quality at large pools; chip-level measurement."
         ],
         [
           "Latency",

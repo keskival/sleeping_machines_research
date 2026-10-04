@@ -47,9 +47,10 @@ anything) until P0-1 and P0-3 are running. Resume them afterwards.
 ## P2 progress
 
 - **Hardware cost model v1 done (4 Oct):** `experiments/hardware_cost_model.py` → `results/diagnostics/hardware_cost_model_20261004.json`.
-  Efficiency point: native p96 (1.888) moves 5.2× fewer bytes/char than Transformer-256×4 (1.908) and 1.7× fewer than LSTM-512
-  (1.799, better quality). Today 76% of native weights are read per character (key scoring); theory 154 proposes cheap keys.
-  Next: implement theory 154 option 1/2 as a NEW module (pinned sources untouched), contract, then a 10M pool-8 comparison.
+  Efficiency point: native p96 (1.888) moves 5.8× fewer bytes/char than Transformer-256×4 (1.908) and 1.9× fewer than LSTM-512
+  (1.799, better quality), with cached-key winner-only execution (§414). Pool 2→32: 10.5× params for +5% bytes/char.
+  (v1 of the model mis-charged key scoring; corrected same day, theory 154.) Next: a quality point at large pool (pool 8
+  90M exists in rev. 3) so the flat-traffic capacity claim has a quality number beside it.
 
 ## P2 — after the P0/P1 numbers exist
 

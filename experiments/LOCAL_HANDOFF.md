@@ -4,9 +4,8 @@
 
 This container has no text8 and no local trainer; training stays with the curie runner and AWS. Done here: P0-6 tuned
 dense references queued for AWS (TUNED_BASELINES.md); investment/HARDWARE_THESIS.md plus deck slides 10/26; P2 cost
-model (hardware_cost_model.py). Finding: 5.2× fewer bytes/char than the Transformer we beat, but 76% of weights are read per
-character because every slot's P×P key_read is scored. Proposal theory/154 (cheap/cached/hierarchical keys), not run.
-Implement it as a new module only: pinned queue sources must not change.
+model (hardware_cost_model.py). Finding (corrected): with §414 cached-key winner-only execution, p96 moves 5.8× fewer bytes/char than
+the Transformer it beats; pool 2→32 is 10.5× params for +5% traffic. v1's 76% figure was a mis-charge (theory 154 revised).
 
 ## Trained sparse deployment: exact-source blocker repaired — 4 October 2026
 

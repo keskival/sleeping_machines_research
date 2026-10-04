@@ -12,10 +12,8 @@ event-driven silicon can exploit together:
 
 1. **Work tracks information, not wall time.** Only units that receive an event do anything. Idle capacity costs storage
    leakage, not compute.
-2. **Small, constant state and fewer bytes moved per step.** There is no growing KV cache, and each step writes only
-   the winning slot per head. *Measured by the cost model below:* today's trained models still read most of their
-   weights per character, because every slot's key is scored. Making key scoring cheap is the design step that unlocks
-   true sparse locality.
+2. **Small, constant state and few bytes moved per step.** There is no growing KV cache. Each step reads the winning
+   slot per head plus cached keys. Per-character traffic stays nearly flat as capacity grows (cost model below).
 3. **Time is itself a computational resource.** Delays and arrival order carry values (race attention), so part of the
    computation can be done by signal propagation instead of arithmetic.
 
@@ -25,28 +23,31 @@ in modern AI chips **moving data costs far more energy than arithmetic**.
 ## Cost model of the trained models (P2, 4 October 2026)
 
 `experiments/hardware_cost_model.py` produces `experiments/results/diagnostics/hardware_cost_model_20261004.json`. It
-counts the weights and state each model reads and writes per character at steady state (native: winner-only
-execution; int8; batch 1). It prices them with Horowitz 45 nm anchors. This is a cost model, not a chip measurement.
+counts the weights and state each model reads and writes per character at steady state. The native rows use the
+existing winner-only execution with cached key reads (§414). The model is int8 and batch 1, priced with Horowitz 45 nm
+anchors. Its p96 count (1.28 MFLOPs/char) agrees with the recorded winner-only trace (1.3). This is a cost model, not a
+chip measurement.
 
-| Model (test bpc, 10M) | Params | Weights read / char | State read / char | Bytes / char | pJ / char, weights in local SRAM | pJ / char, weights in DRAM |
+| Model (test bpc, 10M) | Params | Weights read / char | State read / char | Bytes / char | pJ / char, local SRAM | pJ / char, DRAM |
 |---|---|---|---|---|---|---|
-| Native p96/d4/U2 (1.888) | 0.94M | 0.72M (76%) | 1.5K | 0.72M | 1.11M | 115M |
+| Native p96/d4/U2 (1.888) | 0.94M | 0.64M (68%) | 2.3K | 0.65M | 1.00M | 104M |
 | LSTM-512, 6 passes (1.799) | 1.20M | 1.20M (100%) | 1.0K | 1.20M | 1.86M | 193M |
 | Transformer-256×4, 4 passes (1.908) | 3.24M | 3.24M (100%) | 524K (KV) | 3.76M | 5.83M | 603M |
+| Native p64/d4/U32 (capacity probe, quality not measured) | 4.43M | 0.29M (7%) | 17K | 0.31M | 0.48M | 49M |
 
-- Against the Transformer it beats, the native model moves **5.2× fewer bytes and needs ~5.2× less modeled energy per
-  character**, under both memory placements. Against LSTM-512, which is still better in quality, it is 1.7× cheaper.
-- **Correction to the sparse-locality story:** the current model reads 76% of its weights per character. Each slot's
-  score uses a P×P `key_read` matrix on every step. Only the winner's input/output/gate are skippable, and with pool 2
-  that saves little. Larger pools lower the fraction (pool 8: 43%; pool 32: 30%), but key scoring keeps a floor near 25%.
-  Cheap keys or sublinear candidate discovery ([theory 154](../experiments/theory/154_key_scoring_traffic_floor.md)) are needed before
-  "capacity beyond activity" becomes "memory beyond traffic".
+- Against the Transformer it beats, the native model moves **5.8× fewer bytes per character** and has ~5.8× lower
+  modeled energy. Against LSTM-512, which is still better in quality, it moves 1.9× fewer.
+- **Capacity beyond activity holds at the hardware traffic level:** from pool 2 to pool 32, parameters grow 10.5× and bytes
+  per character grow 5%. At pool 32, 93% of the weights stay untouched on a given character. Those weights can sit in
+  dense, low-leakage memory and draw no data-movement energy. Quality at pool 32 still has to be shown.
+- The remaining traffic floor is the shared dense mixing between heads, not key scoring
+  ([theory 154](../experiments/theory/154_key_scoring_traffic_floor.md)).
 
 ## Question by question
 
 | Question | Answer | Why (physics / architecture) | Main caveat |
 |---|---|---|---|
-| **Less energy?** | **Yes, likely the largest benefit, mostly from locality and sparsity rather than clock removal alone.** | At 45 nm, a 32-bit DRAM read costs ~640 pJ, a small-SRAM read ~5 pJ and a 32-bit float multiply ~3.7 pJ (Horowitz, ISSCC 2014). Dense low-batch inference is dominated by streaming weights from DRAM/HBM. Our current 1.888-bpc model moves ~5.2× fewer bytes per character than the Transformer it beats (cost model below), largely because it keeps 1.5K state values instead of a 524K-value KV cache. Clock-tree power, a significant share of dynamic power in synchronous chips even after gating, disappears. Idle units draw only leakage. | The saving must be measured against a competent clock-gated, SRAM-heavy synchronous design, not only against a GPU. Handshake/timing overhead, routing and leakage of large on-chip memories are real costs. |
+| **Less energy?** | **Yes, likely the largest benefit, mostly from locality and sparsity rather than clock removal alone.** | At 45 nm, a 32-bit DRAM read costs ~640 pJ, a small-SRAM read ~5 pJ and a 32-bit float multiply ~3.7 pJ (Horowitz, ISSCC 2014). Dense low-batch inference is dominated by streaming weights from DRAM/HBM. Our current 1.888-bpc model moves ~5.8× fewer bytes per character than the Transformer it beats (cost model below). Its traffic stays nearly flat as capacity grows 10×. Clock-tree power, a significant share of dynamic power in synchronous chips even after gating, disappears. Idle units draw only leakage. | The saving must be measured against a competent clock-gated, SRAM-heavy synchronous design, not only against a GPU. Handshake/timing overhead, routing and leakage of large on-chip memories are real costs. |
 | **Faster chips?** | **Lower latency for sparse, streaming, low-batch work, yes. Higher dense-matmul throughput, no.** | Asynchronous logic completes at average-case rather than worst-case delay: no clock margin for the slowest path, and no waiting for the next tick. Events propagate as soon as they are ready, which is ideal for real-time streams and single-user inference. Race computation resolves when the first signal arrives. | GPUs remain excellent for large-batch dense throughput. Our claim is latency and energy per useful result, not raw FLOP/s. |
 | **Less cooling?** | **Yes, as a consequence of lower average power.** | Heat ≈ power. Event-driven activity means average power scales with event rate. A mostly-dormant model runs cool. No clock means no always-on switching floor. | Bursty inputs can create local hot spots. Peak (not average) power sets the thermal design for some workloads. |
 | **Packed more densely?** | **Yes, potentially the most strategic benefit.** | Today's chips are limited by power density ("dark silicon"), and 3D stacking of logic on memory is limited by heat. Low average activity makes it thermally feasible to stack compute directly on dense memory and to build very large dies or wafer-scale systems. No global clock means no chip-wide timing closure or clock distribution, so modules (chiplets) compose without a shared timing domain. | Interconnect, yield, and memory density per mm² still bound capacity. Stacked or non-volatile memory technologies carry their own cost and endurance limits. |

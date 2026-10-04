@@ -1,49 +1,32 @@
-# 154 — Key-scoring traffic floor and cheap keys (proposal, 4 October 2026)
+# 154 — Per-character traffic of the trained native models; the remaining floor (4 October 2026)
 
-**Status: proposal; nothing run.** It feeds P2 (hardware cost model) and P1-2 (cost flat in pool size).
+**Revision note (same day):** the first version of this note claimed a key-scoring traffic floor (76% of weights read
+per character). That was an accounting error in hardware cost model v1: it charged every slot's P×P `key_read` on
+every step. The existing winner-only evaluator (`sleeping_machines/sparse_inference.py`, §414; contract
+`tests/test_sparse_inference.py`) caches `key + key_read · m` per slot. This is exact because scores read the stored
+memory, which changes only when that slot wins. The corrected model's p96 count, 642K MACs ≈ 1.28 MFLOPs per character,
+agrees with the recorded 1.3 MF/position winner-only trace. The erroneous proposal (low-rank/cached keys) is withdrawn:
+cached keys already exist.
 
-## Concrete failure
+## Corrected result (results/diagnostics/hardware_cost_model_20261004.json, int8, batch 1)
 
-The P2 cost model (`experiments/hardware_cost_model.py`, `results/diagnostics/hardware_cost_model_20261004.json`)
-counts per-character reads in winner-only inference of the trained AddressedEventHeads models. Every slot's score is
-`q · (key + key_read @ m)` with a dense P×P `key_read` per slot. The score therefore reads H·U·P² weights and all
-D·H·U·P stored values on every step. Only the winner's `input`, `output`, `gate`, `control`, `rate` and `frequency` are skippable.
-The weight-read fraction is 76% at pool 2, 43% at pool 8 and 30% at pool 32, with an asymptote near 25%. Available
-capacity grows with U, but so does per-step traffic: dormant slots are not traffic-free. This is the
-"dormant state is not proof of zero key-scoring cost" caveat (AGENTS.md), now quantified.
+| Model | Params | Weights read / char | Fraction | Bytes / char |
+|---|---|---|---|---|
+| native p64/d4/H2/U2 | 0.42M | 289K | 68% | 291K |
+| native p64/d4/H2/U8 | 1.22M | 289K | 24% | 295K |
+| native p64/d4/H2/U32 | 4.43M | 289K | 7% | 307K |
+| native p96/d4/H2/U2 (1.888 bpc) | 0.94M | 642K | 68% | 646K |
+| LSTM-512 (1.799) | 1.20M | 1.20M | 100% | 1.20M |
+| Transformer-256×4 (1.908) | 3.24M | 3.24M | 100% | 3.76M (incl. 524K KV) |
 
-## Theoretical reason for a change
+Capacity beyond activity holds at the traffic level: 10.5× more parameters (U2 → U32) for 5% more bytes per character.
+Quality at U32 is not established (pool 4/8 fits exist at 10M/90M; U32 does not).
 
-The score needs a content-dependent key for each slot, but not a full-rank transform of the slot's memory. Options that
-retain race attention (the race over scores is unchanged) and keep keys separate from values:
+## Remaining floor and a possible direction (proposal; not run)
 
-1. **Low-rank key read:** `key_read = A_u B` with a shared `B` (r×P) and per-slot `A_u` (P×r). Compute `B m_u` once per
-   write and cache the r-dimensional summary `s_u` with the slot. Scoring reads only `q`, `key_u`, `A_u` and `s_u`
-   (O(U·P·r)), and the cache is refreshed only for the written winner. With r ≪ P, the P² term disappears from the
-   per-step path.
-2. **Write-time key caching:** store `k_u = key_u + key_read_u m_u` at write time. Decay and rotation between writes are
-   analytic per channel (rate/frequency), so the read-time key is an elementwise transform of the cached key when
-   key_read commutes with them. Otherwise use option 1. Per-step scoring then reads U·P cached values, not U·P² weights.
-3. **Sublinear candidate discovery:** a coarse first race over slot groups selects a group, then a fine race runs within it
-   (hierarchical race). Scoring traffic becomes O(√U) per head. Credit to unrealized groups uses the existing
-   counterfactual route credit at both levels.
-
-## Retained and removed
-
-Retained: temporal races and race attention, sparse addressed writes, separate keys/values, persistent decaying
-state, counterfactual route credit, silence-aware supervision. Removed: the full-rank, memory-dependent key transform
-applied to every slot every step (options 1 and 2) or the flat race (option 3).
-
-## Implications
-
-Inference: per-step weight traffic approaches shared + (cached keys) + winner-only. At pool 32 that is roughly a 3× reduction
-over today's 30% figure. Learning: option 2 changes the gradient path through the key (cached at write time; needs a
-contract that the gradient equals the uncached form when key_read commutes with decay). Option 3 adds a second-level
-route credit (cost charged).
-
-## Required comparison before any long run
-
-10M, p64/d4, pool 8, 4 passes, seed 6: baseline AddressedEventHeads versus option 1 (r = 16) and option 2.
-Report test bpc at T256, whole-fit FLOPs, winner-only inference FLOPs, and the cost model's weights-read fraction
-and bytes per character in one table. Promotion gate: within .02 bpc of baseline with ≥ 2× lower bytes per character. A
-numerical contract (scores and gradients equal for option 2 where exact) precedes the fit.
+Per-character traffic is now dominated by the shared dense maps: `channel_mix` (D·(HP)²), `queries` (D·H·P·HP) and
+`source_gate` ((HP)²). At p64/H2 they are about 2/3 of the 289K. These are dense mixing between heads. Reducing them
+would use the same addressed principle one level up: route each event to a subset of heads, or to sparse/low-rank
+channel mixing. This changes information paths, so per AGENTS.md it needs a stated failure (none yet: this is a
+resource floor, not a quality failure), contracts and an integrated 10M comparison before any long run. Priority stays
+below P0/P1.

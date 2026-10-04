@@ -3,8 +3,10 @@
 Counts, for one inference step (one character) at steady state, which parameters and which state values are READ and
 WRITTEN, with the native model in winner-only execution (its forward pass in sleeping_machines/batched_episodes.py):
 
-  every step, every slot:   key, clock_bias, key_read (P x P) and the slot's stored memory (scores need them)
-  every step, winner only:  raw_rate, frequency, control, input, output, gate (the losing slots' updates are discarded)
+  every step, every slot:   clock_bias and the slot's CACHED key read (key + key_read . m, refreshed only when written,
+                            sleeping_machines/sparse_inference.py, THEORY §414)
+  every step, winner only:  key_read and key (cache refresh), raw_rate, frequency, control, input, output, gate, and the
+                            winner's stored memory (read-modify-write)
   every step, shared:       embedding/content, source_gate, channel_mix, queries, transport, head
 
 Dense references read all weights every step; the LSTM also reads/writes h and c, and the Transformer reads its KV cache
@@ -25,8 +27,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 PJ_PER_BYTE = {'sram_local_8KB': 1.25, 'sram_shared_1MB': 12.5, 'dram': 640 / 4}
 PJ_PER_MAC_INT8 = 0.2 + 0.1   # 8-bit multiply + 32-bit accumulate (Horowitz 2014)
-SLOT_ALWAYS = ('key', 'clock_bias', 'key_read')
-SLOT_WINNER = ('raw_rate', 'frequency', 'control', 'input', 'output', 'gate', 'gain')
+SLOT_ALWAYS = ('clock_bias',)
+SLOT_WINNER = ('key', 'key_read', 'raw_rate', 'frequency', 'control', 'input', 'output', 'gate', 'gain')
 
 
 def native_counts(payload, depth, heads, pool):
@@ -49,10 +51,10 @@ def native_counts(payload, depth, heads, pool):
             shared += n
     # gain is shared by a layer's units (units[0].gain); count it as read once per layer.
     read = shared + slot_always + slot_winner_all / pool
-    state_values = depth * heads * pool * payload
-    state_read = state_values                                   # every slot's memory is scored
-    state_write = depth * heads * payload                       # one winner slot per head
-    macs = read                                                 # each read weight used once per step (matvec)
+    state_values = 2 * depth * heads * pool * payload           # stored memories + cached key reads
+    state_read = depth * heads * (pool * payload + payload)     # every cached key read + the winner's memory
+    state_write = 2 * depth * heads * payload                   # winner's memory and its refreshed key read
+    macs = read + depth * heads * pool * payload                # winner matvecs + U score dot products per head
     return dict(model=f'native p{payload}/d{depth}/H{heads}/U{pool}', parameters=total, weights_read=round(read),
                 weights_read_fraction=read / total, state_read=state_read, state_write=state_write,
                 macs_estimate=round(macs), resident_state=state_values)
@@ -97,7 +99,7 @@ def main():
     assert rows[0]['parameters'] == 940875, rows[0]['parameters']
     res = dict(status='completed_cost_model', scope='Per-character steady-state inference traffic and priced energy '
                'under stated 45 nm conventions; int8 values; batch 1; not a chip measurement. Native rows use '
-               'winner-only execution; key scoring reads every slot.', pj_per_byte=PJ_PER_BYTE,
+               'winner-only execution with cached key reads (§414, contract tests/test_sparse_inference.py).', pj_per_byte=PJ_PER_BYTE,
                pj_per_mac_int8=PJ_PER_MAC_INT8, rows=rows)
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, 'w') as f:
