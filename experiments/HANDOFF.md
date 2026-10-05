@@ -1,5 +1,17 @@
 # Session handoff — 2026-09-30
 
+**Learning recipe diagnosis recorded (no fit admitted):** read-only source-bound
+64Kcurves show all four finals worse than selected; fixed1024-target TRAIN
+probe improves. P24bothseeds select first-pass boundary. All four logged
+preclip gradients exceed1, not a claim about every update. Receipt/proof in
+TOKEN_LEARNING_RECIPE_DIAGNOSTIC_20261005.md. Keep256Kunchanged. If P24
+again deteriorates >0.05NLL at final while TRAINprobe improves, one same-data/
+seed/exposure lower constant LR0.001 vs saved0.003 is the bounded next test,
+before further scaling; retain mechanisms and independently audit its fullcost.
+Changed recipes stay separate from fixed-recipe scaling. Work PID12140 live
+at latest observation; preserved pinned sources and all serial waiters.
+
+
 **Reference head arithmetic bound recorded:** source-pinned stdlib derivation
 finds width768/padded50304 output classes and three explicit training matrix
 contractions. Head-only231.800832MFLOPs/fit target,77.266944MFLOPs/eval target;
