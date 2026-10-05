@@ -45,6 +45,12 @@ as a new result beside the original; never edit the AWS JSON. `reference_window_
 validation interval mode or use language_stream_rescore. Expected outcome, not a substitute for the run: selection
 unchanged (LSTM-512 val 1.769 vs best TF 1.950; test context effect 0.0000), so budget A = loss to tuned LSTM-512
 1.826, and the Transformer sub-comparison = native win (1.888 vs TF128x4 1.996 at 101% compute).
+**Taken by curie (5 Oct 01:15 UTC):**
+- Queue: `queue/curie_lstm_val_window_rescore_20261005T011500Z.txt`, covering all four arms with
+  `reference_context_curve.py --offset 90000000 --test 200000 --context-curve 0`.
+- The scorer is the E64 window convention (first window whole, then second halves), checked against `e64_lm_baselines.score`.
+- It runs first after P0-2 finishes (around 04:00 UTC), before taps3 and the native lr arms.
+- Results land in `experiments/results/language_stream/curie_lstm_valwin_*`. The AWS JSONs are untouched.
 
 ## P1 — confirm and widen the wins
 
