@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**Prioritized integrated followups admitted:** tmux
+`curie_unified_followup_20261005_v1` waits the entire admitted FAS retry/seed8
+sequence, then9504MiB physical headroom. New typed P8D2 one-job queue runs
+64-update mixed-type witness with numerical integration contracts,600s/800MBRSS;
+then existing fixed P32/256K language one-job queue runs3600s/800MBRSS. Both
+run_safe locks/watchdogs preserve8GiB. An unrelated typed failure is logged
+and does not cancel the fixed language comparison; renewed headroom required.
+Sources for existing frozen FAS unchanged. Typed core retains races/state/
+keys-values/depth/actual alternative-write terminal-risk credit; fixed full
+predicate bank is not learned thresholds/discovery or sparse predicate reading.
+Compilation passed, all numerical execution pending. Followup waiter may need
+revalidation after source edits; do not report pending quality as a result.
+
+
 **Unified platform narrative, user-directed:** README/VISION/report cover and
 pitch now connect heterogeneous experience → meaningful interfaces → shared
 temporal memory/programs → reusable skills → adaptive execution. Learning,

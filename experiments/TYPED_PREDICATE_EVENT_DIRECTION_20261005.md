@@ -64,3 +64,29 @@ scaling curve from test results. The next transfer experiment connects typed
 comparisons and sequential reasoning through shared trained core parameters,
 compares separate-core controls and checks donor retention under matched total
 work. This is an explicit research sequence, not a completed result.
+
+## Integrated stage-one implementation (numerical execution pending)
+
+`typed_temporal_model.py` converts fixed comparisons into event IDs by their
+computational race winner, then uses the same PackedTokenCore and sparse
+counterfactual event kernel as the language member. Receiver selection is
+learned; persistent memory, transport delays/rotation, depth, separate keys and
+values and small messages are retained. Each independent row resets state.
+Canonical full predicate presentation is an explicit static-row policy.
+
+One outcome-independent event/depth/head site is sampled per batch. A nonwinner
+is proposed with positive support and its actual write replayed with common
+future race noise to the terminal classification loss. Conditional utility
+credit trains route probabilities; it does not provide alternative-value
+derivatives. All predicates are compared, all receiver keys are scored and
+replay learning is extra work. Thresholds and predicate discovery remain fixed
+in this first integration; no sparse predicate-reading claim is made.
+
+The bounded pilot tests category relabeling, column presentation, missingness,
+independent rows, deterministic learning/inference parity, finite key credit
+and a real alternative-write risk change, then fits a synthetic mixed-type
+interaction. Queue `curie_typed_temporal_p8d2_smoke_20261005_v1.txt`: 64 updates,
+64 FIT/256 DEV rows, one seed, 600s,800MBRSS,8GiB physical memory reserve. It
+waits behind the admitted FAS sequence. Static compilation passed; numerical
+contracts and learning result are pending. No tabular win or transfer result
+is inferred. The fixed P32/256K language cell follows independently.
