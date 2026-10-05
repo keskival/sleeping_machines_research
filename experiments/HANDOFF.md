@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**FASseed7smoke passed/fullfit live:** frozen originaldriver two-window run
+exited0; finite TRAIN/DEV/TESTlosses, selectedweights/hash and per-run scores
+(8clean/8faulty ×6prefixes) with matched label/seed dimensions verified.
+Smoke artifactreceipt recorded; no smokeAUROCclaim. Historicaldata bytes
+match. Runner observed peakgroupRSS1403336KiB, MemAvailable9459MiB; within
+1.8GBcap/8GiBfloor. Fullseed7started21:51:45UTCunderrun_safe, then seed8smoke/
+fit. Language lowerLRwaiter follows FAS; do not preempt or parallelize.
+
+
 **FASdata exact regeneration completed:** allfiveTRAIN/VAL/TESTnpz hashes,
 runs/eventcounts and generatorargs match historical FASv1manifest exactly.
 Read-only streamingSHAreceipt curie_fas_v1_replication_data_identity_20261005_v1.json;

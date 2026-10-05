@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "result_sha256": "dad0508b7576118f2d2de93dc6ebca82e8f23e446d02f0c9ad295deff08f5326",
+  "weights_sha256": "3eeeae8ff70eeab8803705e79304aaa9daaa66e4c80b9c2a97d662d2e6881761",
+  "scores_sha256": "2eda953d8ff5c7fad8caf6fb0ce41a9e3ca997ab88141b2d3cce078c5e1b9964",
+  "score_shapes": {
+    "test_clean": [
+      8,
+      6
+    ],
+    "test_faulty": [
+      8,
+      6
+    ],
+    "prefixes": [
+      6
+    ],
+    "fault_kind": [
+      8
+    ],
+    "test_clean_seed": [
+      8
+    ],
+    "test_faulty_seed": [
+      8
+    ]
+  },
+  "losses_finite": true,
+  "historical_data_bytes_identical": true,
+  "scope": "Two-window engineering smoke with 8+8 already-open FASv1 test samples. Finite loss and artifact identity/shape validation; no research AUROC claim or numerical unchanged-trajectory proof."
+}
