@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1",
+      "seed": 6,
+      "credit_window": 16,
+      "minimum_tail_width": 0,
+      "unit_gain_scale": 1.0,
+      "train_tokens": 65536,
+      "fit_targets": 131056,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 64,
+        "dev_nll": 8.090418677236519,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.best_step00000064.pt"
+      },
+      "promotion": {
+        "selected_step": 64,
+        "selected_dev_nll": 8.090418677236519,
+        "initial_dev_nll": 8.162279794730392,
+        "contextual_learning_gain": 0.07186111749387258,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 8.09041690826416,
+      "train_mean_nll": 8.257147789001465,
+      "context_gain": 0.1667308807373047,
+      "erasure_nll": {
+        "intact": 8.090418439752915,
+        "memory": 8.093311709983675,
+        "message": 8.080904966242173,
+        "both": 8.078961252698711
+      },
+      "history_gains": {
+        "memory": 0.002894801719515172,
+        "message": -0.009511942021987352,
+        "both": -0.011455655565448808
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "bbc9d50de70b92c72f8e3b6d3f40f2a3610ae4e69afb435cf20a1d0b04ceae54",
+      "train_feature_observations": 65528
+    }
+  ],
+  "source_sha256": "9249644035a8d3f7a4d6135d69db3fd778666c6d0ffc746619429cba6c58dfb5",
+  "scope": "Frozen development interventions on initial-inclusive selected checkpoints, exact causal model features and train-only constant-feature mean. State erased before each subsequent token; same route RNG and token partition parity. Out-of-distribution erasure, not retrained ablation. Mean-feature control not an optimally refitted unigram. No fitting, public validation or full hard-alternative credit measurement."
+}

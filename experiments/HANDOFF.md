@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**64K independent repeat admitted:** P32utility completed: context0.166731,
+addressederasure+0.002895,message−0.009512,both−0.011456NLL. Three widths
+quality/context gates/source checks complete; receipt chooses P24selected
+8.033310714 over P168.099439913/P328.090418677. Guarded P24seed7runs through
+curie_data_growth_64k_repeat_20261005_v1; postrepeat waits for utility/fullwork,
+256Kwaits for those verified results. All three utility records now rendered.
+P24seed6has both history components useful under frozen interventions; neither
+P16norP32message erasure hurts prediction. Preserve that scope and all losses.
+
+
 **Reserved256Kcontinuation prepared:** waiting tmux
 curie_data_growth_256k_20261005_v1 watches postrepeat handle, then stdlib
 token_256k_admission.py requires completed independent learning/utility and

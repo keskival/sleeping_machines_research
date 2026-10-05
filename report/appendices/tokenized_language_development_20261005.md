@@ -32,10 +32,9 @@ The 8K and 64K fits score the same development population and both use two passe
 | --- | --- | --- | --- | --- |
 | 16 | 0.208993 | 0.006892 | -0.024694 | -0.028288 |
 | 24 | 0.252343 | 0.007313 | 0.022623 | 0.014234 |
+| 32 | 0.166731 | 0.002895 | -0.009512 | -0.011456 |
 
 Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.
-
-Selected-checkpoint utility pending for payload 32; no utility value is predicted.
 
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 
