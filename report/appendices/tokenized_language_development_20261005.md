@@ -25,7 +25,7 @@ Full-width decoder tails lose at seed6 and are effectively tied at seed7. Retain
 
 | Native member | Fit targets | Whole fit GFLOPs | Fit MFLOPs/target | Eval MFLOPs/target |
 | --- | --- | --- | --- | --- |
-| Credit16seed6 | 16368 | pending | pending | pending |
+| Credit16seed6 | 16368 | 13.534669 | 0.826898 | 0.272633 |
 | Credit64seed6 | 16368 | pending | pending | pending |
 
 Actual whole-fit traces must reproduce each control trajectory. Arithmetic includes factual computation, all-key discovery, suffix replay, exact target readout, backward, clipping, optimizer and in-step diagnostics; initialization/frequency counting,evaluation and serialization excluded. Special functions separate; random-sampling work unquantified. Evaluation includes scorer reductions. Pending cells contain no predicted work or quality. Equal updates/data here are not an iso-FLOP claim. Selected Transformer-reference quality and resource protocol remains the larger benchmark target.

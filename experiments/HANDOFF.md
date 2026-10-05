@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**64K follow-up prepared:** guarded utility queue
+curie_data_growth_tokens_64k_utility_20261005_v1.txt waits on the live host lock
+in tmux curie_data_growth_64k_utility_20261005_v1 (600s diagnostic timeout,
+1.2GB RSS/5GB VMS/8GiB reserve). It measures selected context and memory after
+the fit; do not launch another job while it owns the lock. Two unlaunched width
+queues p24/p32 at the same 64K/two-pass protocol are prepared, requiring completed
+p16 learning gain >=0.02 and utility review before admission. Report module
+report/token_data_growth.py admits only completed result/selection evidence;
+regenerate the tokenized appendix after completion. The appendix now contains
+the completed8K credit16 work row (13.534671 whole-fit GFLOPs, 0.826898 MF/target,
+0.272633 evaluation MF/target); credit64 actual work remains pending.
+
+
 **8K actual work completed / 64K admitted — 5 October:** credit16 seed6 full
 16368-target replay has zero trajectory error and complete arithmetic coverage:
 0.826898 MFLOPs/fitting target, 0.272633 MFLOPs/evaluation target. Boundaries
