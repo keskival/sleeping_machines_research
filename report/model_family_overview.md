@@ -1,5 +1,11 @@
 # Sleeping Machines: the family at a glance
 
+**The ambition:** the next general-purpose substrate for machine intelligence. One trainable architecture,
+learning rule and execution model spans frontier language and reasoning, multimodal world models, embodied
+intelligence and robotics, event-native analytics, continual and on-device learning, adaptive communication,
+self-designing models, and datacenter, edge and clockless event-driven hardware. The [README](../README.md#the-ambition)
+maps each front to its first anchors and next proof.
+
 Sleeping Machines studies **networks of stateful temporal programs**. A message
 carries content, an arrival time and an address. A receiver consults local
 evidence, transforms it, chooses what to retain or communicate, and may emit

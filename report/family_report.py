@@ -32,28 +32,25 @@ def markdown_frontmatter():
 
 **Sleeping Machines is a family of causal networks of stateful temporal
 programs.** Content, computational time, addresses and persistent evidence
-jointly determine computation. The shared interface supports different local
-programs and heterogeneous compositions; today's fitted native model is one
-member. The integrated target combines computational delays/races, hard
-selective state updates, small learned messages, separate keys/values and
-useful credit to unrealized alternatives, with capacity beyond costly activity.
+jointly determine computation. One interface supports different local programs
+and heterogeneous compositions; the fitted native model is one member. The
+integrated target combines computational delays and races, hard selective state
+updates, small learned messages, separate keys and values, and credit to
+unrealized alternatives, with capacity beyond costly activity.
 
 ![Position among model families](report/figures/architecture_landscape.svg)
 
-The family intersects recurrence/SSMs, attention/Transformers, sparse experts,
-statistical and historical memory, TTT and event/temporal systems. Exact
-containment needs their actual operators, information, state and schedule.
-The contribution sought is their coherent temporal/selective integration and
-its quality/learning/resource behavior, not a claim that familiar primitives
-are new or that one member already matches every incumbent.
+The family spans recurrence and SSMs, attention and Transformers, sparse
+experts, statistical and historical memory, test-time training and event-driven
+temporal systems. Its contribution is their coherent temporal and selective
+integration, and the quality, learning and resource behavior that follows.
 
-Selective and dense regions can coexist. Synchronous barriers are permitted
-local schedules; the general semantics require no global periodic update tick.
-Rich interaction can be added where a task requires it, while other regions
-remain economical. Online learning and batching use the same structure.
-Native gradient TTT, general structural adaptation, shared-world multimodal
-learning and clockless hardware are capabilities/ambitions with their own
-integration and measurement requirements.
+Selective and dense regions coexist in one model. Synchronous barriers are
+local schedules; the general semantics need no global periodic update tick.
+Rich interaction goes where a task requires it, and other regions stay
+economical. Online learning and batching use the same structure, and so do the
+next targets: native test-time training, structural adaptation, shared-world
+multimodal learning and clockless hardware.
 
 **Read in order:** [overview](report/model_family_overview.md) →
 [formal core](report/model_family_specification.md) →
@@ -62,21 +59,14 @@ integration and measurement requirements.
 [composition rules](report/model_family_composition.md).
 The [visual atlas](report/architecture_atlas.html),
 [implementation review](report/architecture_review.md) and
-[claim/evidence map](report/architecture_evidence.md) supply detail and scope.
-Computational power/work, representation and trainability are reviewed from
-atoms to complete systems. The illustrative members are specifications, not
-new benchmark results. Forward preservation, learning consistency and resource
-improvement are separate contracts.
-
-Adaptive routes, clocks and stopping still owe predictions at the protocol's
-declared queries. Unfinished work needs a stated snapshot/fallback or an
-invalid-run outcome; targets cannot silently disappear from the denominator.
-The family chapter separates this system utility from immediate value credit.
+[claim/evidence map](report/architecture_evidence.md) supply detail.
+Computational power and work, representation and trainability are reviewed from
+atoms to complete systems.
 
 The [opportunity register](report/model_family_opportunities.md) covers direct
 irregular inputs, adaptive asynchronous codecs, task-oriented communication,
-learned memory policies and embodied/cognitive transfer. These are opportunities
-with stated precedents and first proof conditions, not new benchmark claims.
+learned memory policies and embodied/cognitive transfer, each with its
+precedents and first proof condition.
 
 '''
 
@@ -98,12 +88,12 @@ def sections():
     return [
         dict(title='The model family and the landscape',figure='landscape',
              before=['Sleeping Machines is a family of causal networks of stateful temporal programs. Content, computational time, addresses and persistent evidence jointly determine computation. A common interface supports different programs and mixtures at every level.'],
-             after=['The envelope supplies choices; a member fixes compatible operators and contracts; the integrated target tests temporal/selective quality and resource behavior. Conditional inclusion is distinct from learned parity or lower cost.']),
+             after=['The envelope supplies choices; a member fixes compatible operators and contracts; the integrated target is measured on temporal/selective quality and resource behavior.']),
         dict(title='A generative design space, from atoms to systems',figure='design_space',
              before=['Choose evidence, flow, writes, keys, reception, output and credit; then compose modules, interactions, layers, stacks and complete learning systems. Uniform width, fan-in and scheduling are optional design choices.'],
              after=['Review computational power and total work, represented distinctions, and useful learning at each level. Expand the earliest limiting region: downstream richness cannot recover erased evidence.']),
         dict(title='The same three axes at every level',
-             before=['Computational power and required work, represented distinctions, and useful learning are separate properties. Each must survive the interfaces that compose a model. More expressivity alone does not establish easier optimization or generalization.'],
+             before=['Computational power and required work, represented distinctions, and useful learning are separate properties, and each must survive the interfaces that compose a model.'],
              table=(['Level','Power / work','Representation','Trainability'],[
                  ['Atoms','Flow, delays, gates, races, sums and their ordering','Content, order, interval, phase and repeated evidence','Continuous sensitivity plus event-boundary utility'],
                  ['Units','State transformation, write, emission and readout','Retained facts, temporal modes and message bandwidth','Content/time/state credit; conditioning and exposure'],
@@ -115,7 +105,7 @@ def sections():
              table_widths=[77,143,143,144.276],
              after=['Diagnose lost information, unsupported computation and missing credit separately. Then test their coupled consequence in an integrated member, preserving the successful parent and the full resource boundary.']),
         dict(title='Relationships to established model families',
-             before=['The envelope intersects existing categories and permits conditional reference constructions. Its proposed contribution is an economical integration of time, state, selection and learning; existing systems can also be extended or hybridized.'],
+             before=['The envelope intersects existing categories and contains reference constructions for them. Its contribution is an economical integration of time, state, selection and learning; existing systems can also be extended or hybridized.'],
              table=(['Family','What can be included','Additional design freedom','Condition / price'],[
                  ['Recurrence / SSM','Supported state transitions and filters','Addressed private programs and timed nonlinear interaction','Actual operators, retained state and stable learning'],
                  ['Attention / Transformer','Supported attention and full reference blocks','Persistent evidence, races and variable delivery fan-in','Full aggregation, FFN/residual/norm/positions; all required work'],

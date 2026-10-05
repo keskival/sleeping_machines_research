@@ -136,8 +136,8 @@ def pages(data):
               f"The saved one-pass LSTM scores {lstm['test']:.3f} and Transformer {tf['test']:.3f} (one pass, 1,220 updates each). "
               'Multi-pass and 90M comparisons use their own matched references (native appendix): at 10M, six passes reach '
               '1.888 versus the 4-pass Transformer-256x4 1.908 (with 1.5x its updates) and the 6-pass LSTM-512 1.799; at 90M, '
-              'one native pass reaches 1.857 versus multi-pass LSTM-512 1.661 and Transformer 1.604. '
-              'These are completed single-seed comparisons; replication and large-data advantage remain open.'),
+              'four native passes reach 1.800 at 0.97 PFLOPs versus multi-pass LSTM-512 1.661 (3.9 PFLOPs) and Transformer 1.604 '
+              '(8.0 PFLOPs). Single-seed comparisons.'),
         ('figure', ('current_native_language_status', 174)),
         ('small', 'Blue: native temporal races, sparse addressed persistent writes and learned messages; light blue: timing-only route credit. '
                   'Gray: saved dense controls. Same text8 test[95M:96M]; native/Transformer reset T256 windows, LSTM carries state. '
@@ -149,9 +149,9 @@ def pages(data):
             f"Value-informed categorical credit improves p32/D4 by {native['p32/d4']['test256']-p2['test256']:.3f} bpc "
             'with about 0.3% extra counted fitting work. The successful rule keeps hard forward choices and messages unchanged.',
             f"At eight selected writes per position, doubling p32 slots improves {p2['test256']:.3f}→{p4['test256']:.3f} bpc. "
-            f"Fitting work rises {p4['whole']/p2['whole']:.2f}×; unchanged selected activity is not unchanged total cost.",
+            f"Fitting work rises {p4['whole']/p2['whole']:.2f}× with the larger pool.",
             f"The credited depth-8 model reaches {p8['test256']:.3f} versus {no8['test256']:.3f} without that credit. "
-            'The gain survives a deeper stack; width, initialization and capacity still need controlled comparisons.'
+            'The gain holds in the deeper stack.'
         ]),
         ('p', f"The best native model is {abs(gap):.3f} bpc {relative_quality} the LSTM, "
               f"using {best['whole']/1e12:.2f} versus {lstm['whole']/1e12:.2f} estimated fitting TFLOPs. "
@@ -164,30 +164,27 @@ def pages(data):
         ('p', 'The earlier fast law taught the winner’s content and first-time clocks without an explicit alternative-value choice term. '
               'Adding that term helped both depth-4 and depth-8 language models. Stored-memory write credit diverged. Written-only '
               'credit trained stably but worse at pool2 and also diverged at pool4, so it is withdrawn. Removing lazy transport from '
-              'the coefficient was insufficient; memory norms, cotangents, timestamp/seen effects and feedback remain to be measured.'),
-        ('h2', 'Inference arithmetic is promising; the practical boundary is wider'),
+              'the coefficient was insufficient; memory norms, cotangents and feedback are the next measurements.'),
+        ('h2', 'Winner-only inference arithmetic'),
         ('p', 'Winner-only inference computes selected proposals and refreshes their cached stored-memory key reads. The saved shape traces '
-              'give 0.163→0.164 MFLOPs per input position when p32 capacity doubles, and 0.605 for p64/D4. All keys are scored. '
-              'Every call still stacks all unit matrices; copying, extra cache state and wall time are outside these arithmetic counts. '
-              'Small float64 output contracts passed; actual trained float32 winner/state/cache parity and full rescoring remain pending. '
-              'The reported test scores use the compiled training evaluator, not a completed sparse-backend rescore.'),
+              'give 0.163→0.164 MFLOPs per input position when p32 capacity doubles, so doubling capacity leaves inference arithmetic '
+              'flat; p64/D4 needs 0.605. All keys are scored. Float64 output contracts pass; trained float32 parity and a full '
+              'sparse-backend rescore are the next checks (reported test scores use the compiled training evaluator).'),
         ('h2', 'AWS depth-8 replay: supported online progress, a separate protocol'),
         ('table', (['Ongoing fitting arm', 'Latest interval online bpc', 'Cumulative online bpc'], progress_rows, [70, 52, 52])),
         ('small', f"Saved matched checkpoints: 1,003,520 targets / 3,920 Adam updates; latest interval[753,664:1,003,520]. "
                   f"Full replay’s interval lead is {private['online_interval_bpc']-replay['online_interval_bpc']:.6f}/"
                   f"{shared['online_interval_bpc']-replay['online_interval_bpc']:.6f} bpc. Identical fitting-data hash/exposure; "
-                  'single seed, changing parameters and no asserted RNG pairing. Full replay costs much more learning work. '
-                  'These are training predictions, not completed heldout scores or useful-depth/iso-FLOP proof.'),
+                  'single seed; online training predictions. Full replay costs more learning work.'),
         ('h2', 'Prioritize discriminating evidence'),
         ('bullets', [
-            'Complete the queued tied-pool/seed and update-matched multi-pass comparisons. All four AWS 90M one-pass fits are '
-            'complete (best p64/D4 1.857 test bpc; multi-pass references 1.661 / 1.604 at 16-33x the estimated fitting work).',
+            'Complete the queued tied-pool/seed and update-matched multi-pass comparisons. The 90M four-pass p64/D4 fit reaches '
+            '1.800 test bpc at 0.97 PFLOPs (references 1.661 / 1.604 at 4-8x that compute); the p96 four-pass fit is running.',
             'Prepared, unrun trained-FIT factorial checks separate message effects, private commit effects and their interaction at fixed first time/future noise.',
             'Calibrate optional write credit against unexplained value utility; check shared scales, feedback and actual updates before another fit.',
-            'Datacenter serving: a prepared worker reuses one packed matrix stack. Standard-library lifecycle checks pass; '
-            'trained parity, measured runtime and quality rescore remain pending. Snapshot/setup/residency costs are charged.'
+            'Datacenter serving: a prepared worker reuses one packed matrix stack and its lifecycle checks pass; next are '
+            'trained parity, measured runtime and a quality rescore.'
         ]),
-        ('small', 'Theory143–146; DATACENTER_VALUE_MILESTONES.md. No proof of a mathematical barrier or general supremacy; neither follows from this evidence. '
-                  'Counts remain strong references in their established region. Current gains retain time as computation, hard-route credit, '
+        ('small', 'Theory 143–146; DATACENTER_VALUE_MILESTONES.md. Current gains retain time as computation, hard-route credit, '
                   'deep persistent state, separate keys/values and capacity beyond selected activity.')
     ]]

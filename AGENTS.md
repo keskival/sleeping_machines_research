@@ -63,6 +63,10 @@
 - Keep a qualification only where it changes how a reader interprets the number: measured vs modelled (hardware
   energy), completed vs pending, untouched official test sets, protocol errors.
 - Replace "remains open / not yet demonstrated / does not establish" boilerplate with the concrete next test.
+- Lead every front-door document (README, report cover, overview, investor materials) with the full ambition: a
+  general-purpose substrate spanning language and reasoning, multimodal world models, embodiment, event-native
+  analytics, continual learning, communication, self-design and hardware. A single benchmark or domain is evidence
+  for one front, never the definition of the project.
 
 # Research direction and architectural continuity
 

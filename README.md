@@ -2,16 +2,41 @@
 
 **Deep learning that computes with time.**
 
-Sleeping Machines is a model family in which every message carries **content, an arrival time and an address**.
-Receivers hold persistent memories that decay and rotate with the real time elapsed between events. Candidate routes
-**race through learned delays**; the winner updates state and sends the next message, and the routes that did not win
-still receive **counterfactual credit**. Arrival order decides which memories meet and which computation happens, so
-delays do computation rather than merely label it.
+## The ambition
 
-The same interface expresses dense synchronous layers and sparse asynchronous event processing. One model can take in
-token streams, sampled sensor data and irregular interleaved event logs into a shared persistent state, and choose per
-region whether to compute densely or selectively. The long-term target is a trainable, globally clockless substrate
-for both inference and learning.
+Sleeping Machines aims to be **the next general-purpose substrate for machine intelligence**: one trainable
+architecture, learning rule and execution model spanning frontier language and reasoning, multimodal perception,
+embodied action, continual learning and event-native analytics, running economically everywhere from datacenters to
+phones, robots and sensors, and ultimately on globally clockless, event-driven hardware. General intelligence is the
+overarching aspiration.
+
+Today's deep learning computes in lockstep: every layer of a dense model runs at every step, whether or not anything
+changed, and its memory is a buffer it must rescan. Brains and physical systems compute differently, through timing,
+sparse events, persistent local state and competition. Sleeping Machines turns that into a trainable engineering
+discipline. Every message carries **content, an arrival time and an address**. Receivers hold persistent memories that
+decay and rotate with the real time elapsed between events. Candidate routes **race through learned delays**; the
+winner updates state and sends the next message, and the routes that did not win still receive **counterfactual
+credit**. Arrival order decides which memories meet and which computation happens, so delays do computation rather than
+merely label it. Dense synchronous layers are included as a special case: one model can compute densely where a task
+needs it and selectively everywhere else.
+
+### One substrate, many fronts
+
+| Front | What the substrate brings | First anchors → next proof |
+|---|---|---|
+| **Frontier language and reasoning** | A Transformer-capable function class: delay-coded aggregation reproduces softmax attention exactly; winner-only races skip value aggregation; persistent memory beyond a context window; learning at test time | At 10M characters the native model beats Transformers at 0.40× their training and 0.18× their inference compute → race attention inside a competent Transformer, scaled on GPU against equal-compute Transformers |
+| **Multimodal world models** | Language, vision, audio, touch, sensor and event streams update one persistent world state at their own cadences; dense and event-driven regions coexist | Common event interface and primitives implemented across language, speech, vision events, markets and synthetic tasks → joint training with measured cross-domain transfer |
+| **Embodied intelligence and robotics** | Timed actions, irregular sensing, instruction-conditioned control; motor experience and reasoning shaping shared representations | [Robotics protocol](experiments/AWS_EARLY_INDICATION_MATRIX.md) on recorded force/pose streams → joint manipulation and reasoning with transfer in both directions |
+| **Event-native analytics** | Interleaved, timestamped streams from many concurrent processes: industrial and IoT maintenance, IT operations, security, transactions and order flow, clinical data, neural recordings for brain–computer interfaces, event cameras, speech | Early fault detection ahead of every generic control on FAS; 79.7% held-out spiking-speech accuracy → [pre-registered FAS v2](experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md), real logs, a design partner |
+| **Continual and on-device learning** | Delays, routes and content adapt at the point of use; slow learned rules govern fast memory writes, retention and scheduling | Online adaptation improves 3.191 → 3.096 bpc on a new stream → native test-time training and drift retention |
+| **Communication** | Learned messages become variable-rate asynchronous codecs; distributed agents send only the evidence a remote predictor needs | [Codec and task-communication designs](report/model_family_opportunities.md) → bits-versus-quality curves on real streams |
+| **Datacenter and edge serving** | Capacity beyond activity: more stored skill and context per unit of selected work, memory traffic and energy | Modelled 5.8× fewer bytes per character than Transformer-256×4 at better quality → trained sparse runtime with measured traffic and energy |
+| **Computing substrates** | Globally clockless, memory-local event hardware; idle capacity at leakage power; learning on the chip itself | [Hardware thesis](investment/HARDWARE_THESIS.md) and cost model → FPGA and neuromorphic-silicon calibration, then an ASIC |
+| **Self-designing models** | Data chooses operators, reception, depth and allocated structure; graphs grow and prune with their state | Learned event routes already adapt execution → structural growth with state migration |
+
+The fronts share one core. Every improvement to temporal computation, route credit or persistent memory advances all of
+them, and the platform's value spans models, learning rules, runtime software, communication and hardware IP. Each
+front is also a market and a research program in its own right.
 
 [Model family at a glance](report/model_family_overview.md) ·
 [Interactive visual atlas](report/architecture_atlas.html) ·
@@ -21,7 +46,7 @@ for both inference and learning.
 [Claims and evidence](report/architecture_evidence.md) ·
 [Application opportunities](report/model_family_opportunities.md)
 
-## The bets
+## The core mechanisms
 
 | Bet | Why it matters | Where it stands | Decisive next test |
 |---|---|---|---|

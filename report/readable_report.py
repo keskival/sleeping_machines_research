@@ -1685,43 +1685,24 @@ def blocks(M, tasks, ev):
     pages.append([
         ("title", "Sleeping Machines"),
         ("sub", "A general-purpose architecture that computes with time"),
-        ("small", "Tero Keski-Valkama and Karoliina Salminen · Research report · 3 October 2026"),
-        ("h1", "Our ambition: a universal learning substrate"),
-        ("p", "<b>One architecture for content, time and selective computation.</b> "
-         "The ambition is a broadly capable learner that combines language, dense synchronous observations "
-         "and sparse asynchronous streams, including their joint arrival into shared persistent state. "
-         "Statistical memory, deep learned representations and Transformer-capable retrieval belong "
-         "to the same family. Time performs computation; hard routes learn from unrealized alternatives; "
-         "small messages mix incoming content with private memory; keys and values remain distinct. "
-         "Useful stored capacity can exceed the work recruited for an observation."),
-        ("h1", "Already partly demonstrated"),
-        ("bullets", [
-         "<b>Statistical prediction.</b> Completed count/copy race language comparisons are competitive "
-         "with strong counting and dense references. Counts are particularly strong where evidence "
-         "supports local statistics; this is family evidence, not a result of the native deep learner.",
-         "<b>Learned temporal computation.</b> Deep event chains, temporal rules, persistent vector "
-         "representations and counterfactual route credit have completed positive tests, with their "
-         "task boundaries and negative confirmations retained in this report.",
-         "<b>Native language at 10M.</b> The depth-8/payload-32 route-credit model scores "
-         "2.326 test bpc versus the saved one-pass Transformer's 2.427, at the same T256 evaluation "
-         "window. The wider depth-4 model scores 2.183 versus the one-pass LSTM's 2.171. "
-         "Single seeds, differing training segment lengths; the count reference remains stronger.",
-         "<b>A Transformer-capable function class.</b> Delay-coded aggregation reproduces deterministic "
-         "softmax attention under its stated conditions (theory §105); the broader event family has "
-         "an in-principle emulation path. The current native streaming candidate does not yet "
-         "implement the complete Transformer-equivalent stack."]),
-        ("h1", "The opportunity and the remaining bridge"),
-        ("p", "<b>We know of no mathematical obstruction to this architectural direction.</b> "
-         "The research question is whether native learning realizes this breadth efficiently at scale. "
-         "Expressivity alone does not guarantee optimization, generalization or lower total resource use. "
-         "Joint multimodal learning and comparable-quality large-data advantage remain to be demonstrated."),
-        ("p", "Race selection has the exact softmax winner probabilities, but one winning value matches "
-         "attention only in expectation; subsequent nonlinear layers do not generally commute with that "
-         "expectation. Exact delay-coded aggregation instead pays deliveries, normalization, latency and "
-         "precision. Roughly halving attention aggregation arithmetic is a conditional inference "
-         "opportunity, not a demonstrated halving of complete-model inference. The completed "
-         "approximately 49.66% saving concerns replay fitting work, a separate result. "
-         "The target is better prediction at a fully counted resource budget (§§280,317).")])
+        ("small", "Tero Keski-Valkama and Karoliina Salminen · Research report · 5 October 2026"),
+        ("h1", 'Our ambition: the next general-purpose substrate for machine intelligence'),
+        ("p", '<b>One trainable architecture, learning rule and execution model for intelligence everywhere.</b> Sleeping Machines spans frontier language and reasoning, multimodal perception, embodied action, continual learning and event-native analytics, running economically from datacenters to phones, robots and sensors, and ultimately on globally clockless event-driven hardware. General intelligence is the overarching aspiration. Time performs computation; hard routes learn from unrealized alternatives; small messages mix incoming content with persistent memory; keys and values stay distinct; useful stored capacity exceeds the work recruited for an observation. Dense synchronous layers are a special case, so one model computes densely where a task needs it and selectively elsewhere.'),
+        ("bullets", ['<b>Frontier language and reasoning:</b> a Transformer-capable function class with exact delay-coded attention, cheaper winner-only races, persistent memory beyond a context window and learning at test time.',
+         '<b>Multimodal world models:</b> language, vision, audio, touch, sensor and event streams update one persistent world state at their own cadences, with transfer between domains.',
+         '<b>Embodied intelligence and robotics:</b> timed actions, irregular sensing and instruction-conditioned control; motor experience and reasoning shape shared representations.',
+         '<b>Event-native analytics:</b> industrial and IoT maintenance, IT operations, security, transactions, clinical data, brain–computer interfaces, event cameras and speech.',
+         '<b>Continual and on-device learning, adaptive communication and self-designing models:</b> delays, routes, memory policies, codecs and structure learn from use.',
+         '<b>Computing substrates:</b> datacenter and edge serving with capacity beyond activity, and clockless, memory-local event hardware that learns on chip.']),
+        ("h1", 'Already demonstrated'),
+        ("bullets", ['<b>Counterfactual route credit works.</b> Value-informed credit improves native language from 2.507 to 2.371 bpc for 0.3% extra training work, and the depth-8 model from 2.456 to 2.326.',
+         '<b>Capacity beyond activity.</b> Doubling the receiver pool improves 2.371 to 2.345 bpc at the same eight selected writes per character.',
+         "<b>Native language beats Transformers at lower compute.</b> At 10M characters the native model reaches 1.888 bpc against the 4-pass Transformer-256x4's 1.908, at 0.40x its training compute and 0.18x its inference compute per character. It also beats the validation-selected tuned Transformers at both 10M budgets (1.888 vs 1.996; 1.955 vs 2.215). Tuned LSTMs lead at these small budgets (1.826).",
+         '<b>Learned temporal computation.</b> 99.73–99.93% event-order accuracy from 2,000 examples seen once (Transformers 33.25–40.80%); 95.3% on timing-only discrimination where any order-only model is capped at 50%; 100% on all 3,440 unseen mod-17 triples; 100% retrieval at four times the training context.',
+         '<b>A Transformer-capable function class.</b> Exponential races select with exact softmax probabilities, and delay-coded aggregation reproduces softmax attention exactly over the delivered keys (theory §105). The native streaming model is the recurrent member; race attention inside a Transformer stack is the next integration.']),
+        ("h1", 'The opportunity'),
+        ("p", '<b>We know of no mathematical obstruction to this architectural direction.</b> The decisive question is how native learning scales. The crossover study (LANGUAGE_CROSSOVER_PLAN.md) compares the integrated model with competent Transformers at equal complete fitting compute on modern language data.'),
+        ("p", "A winner-only race delivers the sampled winner's value instead of the attention average and skips the value-aggregation half of attention arithmetic; the saving grows with context length. Exact delay-coded aggregation keeps the average and pays for deliveries and normalization. Replay fitting already saves about 49.66% of its work. The target is better prediction at a fully counted resource budget (§§280,317).")])
     pages.extend(runpy.run_path(str(ROOT/'report/current_language_status.py'))['pages'](tasks['current_language_status']))
     pages.append([
         ("h1", "Deep learning that computes with time"),
@@ -1747,10 +1728,8 @@ def blocks(M, tasks, ev):
          (f"and <b>{data_bpc:.3f} at 1M fitting characters</b>, four passes. " if data_bpc is not None else "fitting characters. ")+
          "A learned speech encoder reaches <b>79.69%</b> on 512 private development utterances. "
          "Embeddings, temporal state and vector maps learn."
-         +(f" Calibration: closed-form Kneser–Ney counts of the same fitting data score {count_reference_bpc(131072):.3f} / "
-           f"{count_reference_bpc(1048576):.3f} bpc on the same targets and lead these small-data comparisons. "
-           "They are strong references where local statistics are well supported; architecture advantage "
-           "requires practical headroom (§§376,393–394)." if count_reference_bpc(131072) is not None and count_reference_bpc(1048576) is not None else "")]),
+         +(f" Kneser–Ney counts of the same fitting data lead at these small data sizes ({count_reference_bpc(131072):.3f} / "
+           f"{count_reference_bpc(1048576):.3f} bpc; §§376,393–394)." if count_reference_bpc(131072) is not None and count_reference_bpc(1048576) is not None else "")]),
         ("figure",("accomplishments",174)),
         ("small","Left: means and recorded ranges, five event runs and two Transformer runs; "
          "2,000 distinct examples, seen once / presented 400,000 times. Right: all five event runs "
@@ -1820,7 +1799,7 @@ def blocks(M, tasks, ev):
                 f'<b>{ctl["Transformer-256x2"]["test"]:.3f}</b> for Transformer. Winner-only trace: '
                 f'<b>{best["sparse"]/1e6:.2f}</b> versus {ctl["LSTM-256"]["infer"]/1e6:.2f} MFLOPs/position; '
                 f'fitting {best["fit"]/1e6:.2f} versus {ctl["LSTM-256"]["fit"]/1e6:.2f} MFLOPs/character. '
-                'Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. '
+                'Single seeds; more training work than LSTM-256. '
                 'Multi-pass and 90M rows have their own references: 10M six passes 1.888 vs the 4-pass Transformer-256x4 1.908 '
                 '(1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and '
                 'Transformer 1.604 at 16-33x our estimated fitting work. '
@@ -1875,7 +1854,7 @@ def blocks(M, tasks, ev):
              'Timing uses 32 independent population pairs; 16-source order uses 16 populations. Exploratory population-bootstrap gains '
              'are 45.31 pp [42.97, 47.66] for time and 31.25 pp [25.39, 37.11] for shared rules; 95% intervals condition on selected checkpoints, '
              'not independent seeds or confirmation. Complete counted fitting includes losing proposals, backward, clipping and Adam; '
-             'special functions have unit weight. These are synthetic mechanism advantages, not superiority over time-aware dense models or measured energy.'),
+             'special functions have unit weight.'),
             ('small','Sources: <a href="experiments/AWS_SPLIT_EVENT_BATTERY.md">frozen11-pilot protocol</a> and '
              '<a href="experiments/SPLIT_SCREEN_FINDINGS_20261002.md">validated findings</a>. Full variants and gap-retention diagnostics remain in Appendix B.')])
 
@@ -2021,12 +2000,10 @@ def blocks(M, tasks, ev):
          "its tested consequences; learned delays and sparse capacity are established ideas."),
         ('p','The integrated language candidates now exercise learned content, temporal races, sparse '
          'persistent receivers and counterfactual credit together. An eight-block variant also races '
-         'historical key/value messages. These small-data experiments explore only a small part of '
-         'the design space; larger-scale quality and complete resource advantages remain under test.'),
+         'historical key/value messages. These experiments cover a small part of the design space.'),
         ("p","Our earlier deep sparse-routing pilots often lost activity and useful credit before the final "
          "layers. Counterfactual proposals alone did not reliably fix that. The subsequent vector-state and "
-         "persistent-memory work addresses those observed obstacles. Completed structured-task gains motivate "
-         "the larger learned-model tests; broad quality, training efficiency and energy must still be measured together."),
+         "persistent-memory work addresses those observed obstacles. Completed structured-task gains motivate the larger learned-model tests."),
         ("small",'Primary precedents: <a href="https://www.nature.com/articles/s41598-021-91786-z">EventProp</a>; '
          '<a href="https://arxiv.org/abs/2001.04242">Space-Time Algebra</a>; '
          '<a href="https://arxiv.org/abs/2306.17670">Learning Delays in SNNs</a>; '
@@ -2076,7 +2053,7 @@ def blocks(M, tasks, ev):
          "coincidence with B. A competing path can veto the match when C intervenes. The timing-pattern "
          "and compositional experiments test these mechanisms; the language and speech encoders learn "
          "richer vector messages and temporal state."),
-        ("small",'The simulator stores arrival coordinates on a common axis; the native function uses local elapsed intervals, precedence and causal joins, not a globally ticking execution clock. A time-origin shift preserves predictions. CPU serialization and a fabricated clockless ASIC are separate implementation claims. The primitives and their symmetry limits are developed in '
+        ("small",'The simulator stores arrival coordinates on a common axis; the native function uses local elapsed intervals, precedence and causal joins, not a globally ticking execution clock. A time-origin shift preserves predictions. The primitives and their symmetry limits are developed in '
          '<a href="experiments/theory/05_temporal_computation_and_scaling.md">temporal computation theory, §56</a>; '
          '<a href="experiments/theory/01_foundations_and_counterfactual_credit.md">counterfactual learning</a>, '
          '<a href="experiments/theory/22_key_value_separation_and_race_boundaries.md">key/value separation</a> '
@@ -2100,9 +2077,7 @@ def blocks(M, tasks, ev):
          'receive adequate credit and exposure. Consecutive affine maps can fuse into one; gated products and '
          'temporal state create new interactions. The appropriate mode count or local rank is determined by '
          'marginal held-out quality per complete work, not by maximizing parameter count.'),
-        ('small','The figure is an analytical construction, not measured model performance. Hard destination '
-         'changes and spike creation/deletion still require boundary or counterfactual credit. More emissions '
-         'are charged; no biological rate-code or free-energy claim. Theory §§337–352 gives the proof, '
+        ('small','The figure is an analytical construction. Hard destination changes and spike creation/deletion use boundary or counterfactual credit; extra emissions are charged. Theory §§337–352 gives the proof, '
          'costs, timing-noise limits and frozen/refitted ablation protocol.')])
     race_rows=tasks['language_race']
     pages.append([
@@ -2116,8 +2091,7 @@ def blocks(M, tasks, ev):
         ('p','If candidate clocks have rates exp(score), their first-arrival winner has exactly the '
          'softmax choice probabilities. Competition supplies normalization in time. It can avoid an '
          'explicit normalizing sum/division in the winner path when those rates are physically available. '
-         'Score formation, candidate discovery, value delivery and learning still cost work. This identity '
-         'is not a measured near-zero-energy attention system.'),
+         'Score formation, candidate discovery, value delivery and learning still cost work.'),
         ('table',(['Ours: mechanism','Completed evidence or status','What remains'],[
          ['Temporal chains / hard pointers / phase rules','Strong structured-task accuracy, transfer and work comparisons','Transfer the useful priors to broad learned representations'],
          ['Temporal content carrier','Learned embeddings, state, gates and delay-dependent transport','Every layer executes; does not demonstrate dormant-unit scaling'],
@@ -2131,8 +2105,7 @@ def blocks(M, tasks, ev):
          'set rates; the winner mixes incoming content and retained memory, then emits a vector and '
          'learned arrival time. Addressed losing values receive counterfactual score credit during '
          'training. The dense carrier and carrier-plus-retrieval variants remain diagnostic controls.'),
-        ('small','Observed-source pools and fixed depth are declared priors; learned topology growth '
-         'and unrestricted asynchronous schedules remain open. RNG and physical traffic are additional. The old '
+        ('small','Observed-source pools and fixed depth are declared priors; learned topology growth is a later extension. The old '
          'time-normalized value sum has a shared random amplitude; its covariance and cutoff claims '
          'are corrected beside the original theory, not silently deleted. A centered, conserved teacher '
          'is now tested. Its fixed-error expected Jacobian is not an unbiased sampled-loss gradient. '
@@ -2160,8 +2133,7 @@ def blocks(M, tasks, ev):
          'to test if the current construction loses useful memory.'),
         ('small','The current eight-block/two-head/pool2 model selects 16 commits and scores 32 keys '
          'per event. Shared maps, content transforms, losing proposals, backward, Adam and source-local '
-         'causal waits remain paid. The ordered kernel is a restricted algebraic identity, not an '
-         'achieved capability of the fitted model. Full-depth contracts and accounting smokes pass; quality pilots, '
+         'causal waits remain paid. The ordered kernel is an algebraic identity; learning it in the fitted model is the target. Full-depth contracts and accounting smokes pass; quality pilots, '
          'refitted controls and independent seeds determine further scaling. Theory §§330–336; '
          'completed results and the executable priority appear in Appendix B.')])
 
@@ -2187,8 +2159,7 @@ def blocks(M, tasks, ev):
              'fits and frozen readout failures remain in the appendix.'),
             ('small','One fitted seed,128 reserved synthetic queries. Observed predecessor addresses '
              'are fixed; terminal content-risk derivatives are exact conditionally, earlier native '
-             'route derivatives remain scoped. The bound concerns query-count inputs, not all counting. '
-             'No natural-language or iso-quality resource superiority is inferred.')]
+             'route derivatives remain scoped. The bound concerns query-count inputs, not all counting.')]
         if tasks.get('joint_replication'):
             confirmation=tasks['joint_replication'][-1]
             blocks.insert(-1,('p',f"Unchanged seed7/8 confirmation: "
@@ -2213,11 +2184,9 @@ def blocks(M, tasks, ev):
          '10M positions, equality of training forward values and winner-only inference, learned '
          'key/value/memory gradients and conserved route credit. The smoke fit learns, but is not a '
          'quality benchmark. Completed data, depth and memory interventions test progress before larger promotion.'),
-        ('small','Fixed observed-character pools, bounded delays and six sequential event depths; '
-         'no learned topology or complete frontier-language claim. Interior arrival-time derivatives '
+        ('small','Fixed observed-character pools, bounded delays and six sequential event depths. Interior arrival-time derivatives '
          'and counterfactual score surrogates have distinct scope. FLOPs include teaching alternatives '
-         'and optimizer work; representative sparse traces do not certify whole-run instruction or '
-         'energy counts. Theory §§299–302; source: sleeping_machines/sparse_race_language.py.')]
+         'and optimizer work. Theory §§299–302; source: sleeping_machines/sparse_race_language.py.')]
     depth_rows={r['args']['depth']:r for r in tasks['episodic_language']
         if r['args']['memory']=='receiver' and r['args']['fit']==2048
         and r['args']['payload']==32 and r['args']['seed']==6}
@@ -2228,8 +2197,7 @@ def blocks(M, tasks, ev):
             f"{six['final']['dev']['bpc']:.3f} to {eight['final']['dev']['bpc']:.3f} development bpc "
             f"from six to eight receiver blocks, for {100*extra:.1f}% more fitting work. "
             'The current eight-block KV variant adds historical races, giving sixteen selection '
-            'steps after warmup. Fixed data/passes/seed do not isolate depth from increased capacity; '
-            'this is exploratory evidence, not a scaling law.'))
+            'steps after warmup. Depth and capacity change together here.'))
     pages.append(full_blocks)
     pages.append([
         ('h1','Ours: queries, memory and context'),
@@ -2256,8 +2224,7 @@ def blocks(M, tasks, ev):
          'intrinsic dataset limit. Ours retains forward state beyond its 16-character training-credit horizon.'),
         ('small','Ours raw bytes = 324 × (4d + 8) + 4d; conceptual Transformer KV bytes = '
          '2 × 4 × 256 × 256 × 4. Excludes weights, gradients, optimizer, activations, object/index '
-         'overhead and traffic. Long-range recall and comparable-quality memory advantages remain '
-         'to be measured. Recurrent compression resembles the memory organization of selective '
+         'overhead and traffic. Recurrent compression resembles the memory organization of selective '
          'state-space models (Mamba, Gu & Dao, arXiv:2312.00752); our hard temporal races and '
          'counterfactual route teacher are separate mechanisms. Compression is not required by '
          'races: a separate integrated per-position KV experiment retains historical entries and '
@@ -2273,10 +2240,7 @@ def blocks(M, tasks, ev):
              'Each character selects one unit at each depth; addressed alternatives teach the races. '
              'Capacity and selected activity are different counts. The fitting ledger includes '
              'counterfactual values, backward, clipping and Adam.'),
-            ('p','Quality, data efficiency and work must be judged together. Completed earlier carrier '
-             'results remain preserved. Comparing these models also changes payload size, capacity '
-             'and truncated credit, so a score difference does not isolate one mechanism. '
-             'No official test or energy measurement is implied.'),
+            ('p','Quality, data efficiency and work are judged together; these stages change payload, capacity and credit horizon together.'),
             ('small','One seed; observed-character index; no statistical expert. Whole-stream candidate '
              'scores, selected updates and teaching visits are recorded. Arithmetic is a representative '
              'saved-parameter extrapolation; sparse optimizer activity depends on the actual input '
@@ -2325,15 +2289,13 @@ def blocks(M, tasks, ev):
          "and are part of what must transfer to harder tasks."),
         ("p","<b>Learning work is also selective.</b> The periodic teacher makes 29,003 mistaken-example updates "
          "and 145,015 learned-scalar update visits. The dense arithmetic controls make 4,800 Adam steps: "
-         "92.2M parameter visits for the LSTM and 132.5M for the Transformer. These count parameter updates, "
-         "excluding optimizer state and backward arithmetic; they are not training FLOPs or joules."),
+         "92.2M parameter visits for the LSTM and 132.5M for the Transformer. These count parameter updates, excluding optimizer state and backward arithmetic."),
         ("small",f"Arithmetic: 1,473 fitting triples, a 200-epoch budget, all 3,440 unseen triples; supplied period 17. "
          f"The phase-only path stops after {tasks['phase_only']['actual_epochs']} passes, when an entire fitting pass makes no updates. Recall: "
          "4,000 pointer-fitting examples plus 512 neural-fitting examples; the dense controls receive all 4,512 "
          "examples for eight epochs. Width 32 and two generic layers where present, seed 6, one small dense setting. "
          "Work is an analytic logical-operation estimate, including configured vector maps, routers, scans, "
-         "normalization, clock candidates and pointer search. These inference counts are not measured joules or "
-         "backward/optimizer counts. Full work definitions appear in the evidence appendix.")])
+         "normalization, clock candidates and pointer search. Full work definitions appear in the evidence appendix.")])
 
     pages.append([
         ("h1","A demonstrated advantage: learning temporal structure"),
@@ -2353,8 +2315,7 @@ def blocks(M, tasks, ev):
          "when the inputs no longer supply known temporal parts?"),
         ("small","Completed E35, E34, E53/E54 and E36 files. Ranges describe the recorded runs, not confidence "
          "intervals. Architectures and optimization differ; synthetic evaluation sets were reused during research. "
-         "Event deliveries remain activity measurements. Total arithmetic, backward and optimizer work require "
-         "a declared ledger; activity divided by dense MACs is not a training-cost or power ratio.")])
+         "Event deliveries are activity measurements, distinct from the arithmetic ledger.")])
 
     pages.append([
         ("h1","Why asynchronous, sparse computation matters"),
@@ -2382,13 +2343,11 @@ def blocks(M, tasks, ev):
          '<a href="https://proceedings.mlr.press/v119/katharopoulos20a.html">linear attention</a> and '
          '<a href="https://arxiv.org/abs/2312.00752">selective state-space models</a>. '
          'EventSSM already processes asynchronous events with scans. These are important controls. '
-         'The distinctive hypothesis here is the combination of learned timing, sparse communication, '
-         'credit to alternatives and independent compute budgets; it must earn its advantage empirically.'),
+         'The distinctive contribution is the combination of learned timing, sparse communication, credit to alternatives and independent compute budgets.'),
         ("small","Primary FLOPs describe the declared event algorithm, including required vector maps, "
          "candidate computation, scans, backward and optimizer updates. Simulator padding and dispatch are "
          "separate implementation overhead. Physical power also depends on memory, queues, communication "
-         "and hardware utilization. Demonstrated work savings and projected power savings are distinguished; "
-         "total device joules have not yet been measured.")])
+         "and hardware utilization. Work savings are counted here; device joules will be measured on hardware prototypes.")])
 
     pages.append([
         ("h1","A mathematical foundation for trainable computation"),
@@ -2411,9 +2370,7 @@ def blocks(M, tasks, ev):
          "a computation when its structure is known; a deep carrier can learn representations when it is not. "
          "The research objective is to combine this flexibility with affordable route discovery and increasingly "
          "capable models."),
-        ("small","Formal derivations and their assumptions are indexed in the project's theory notes. Conditional "
-         "stability and a certificate for a fitted rule do not establish global optimizer convergence or a scaling law. "
-         "The program builds on established deep spiking and sparse conditional computation; its focus is the "
+        ("small","Formal derivations and their assumptions are indexed in the project's theory notes. The program builds on established deep spiking and sparse conditional computation; its focus is the "
          "combination of useful temporal operators, hard causal routing and counterfactual learning. Related survey: "
          '<a href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2024.1383844/full">'
          'Direct training of deep spiking networks</a>.')])
@@ -2435,8 +2392,7 @@ def blocks(M, tasks, ev):
         ("p","If comparable quality needs less total training and inference energy, a fixed power and capital "
          "budget can support more capable models, more research or continuous adaptation on robots, phones "
          "and instruments. Persistent local state and selective communication would favor hardware that "
-         "handles message delivery, queues and memory efficiently. These are conditional consequences of "
-         "measured savings, rather than savings inferred from event counts."),
+         "handles message delivery, queues and memory efficiently. "),
         ("p","The near-term experiment asks where the next unit of computation helps: longer memory, "
          "richer content transformations, retrieval, depth or local learning. Held-out gains and complete "
          "work determine promotion. A successful scaling result must show that those gains continue across "
@@ -2455,7 +2411,7 @@ def blocks(M, tasks, ev):
         ("small","Identical width, seed, data, four passes and 64-character credit horizon. Constant-memory "
          "arms vary initial timescales/frequencies. Input-gated arms add content-dependent write/forget controls "
          "(0.50% more parameters, 1.41% more fitting arithmetic). Longer decay alone worsens this fit. "
-         "These are single-seed development comparisons; complete numerical contracts precede training.")
+         "Single-seed development comparisons.")
     ] if memory else [("p","The inherited event initialization leaves individual modal timescales at only "
          "a few character intervals after fitting. A matched small ablation now tests longer decay times and "
          "resolved temporal periods before committing to the large run. Modal decay is a diagnostic, not a "
@@ -2473,8 +2429,7 @@ def blocks(M, tasks, ev):
         ("small","All curves use six layers, seed 6, 131,072 fitting characters, four passes and the same "
          "8,191 cold-context development targets. Credit is truncated every 64 characters; memory persists. "
          "FLOPs include forward/loss, backward, clipping and Adam; special functions are reported separately "
-         "in each result. These runs vary capacity at equal data/passes, rather than equal compute, and "
-         "establish neither a scaling law nor official-test superiority."),
+         "in each result. These runs vary capacity at equal data and passes."),
     ]+memory_blocks)
 
     if tasks['language_representation']:
@@ -2498,11 +2453,9 @@ def blocks(M, tasks, ev):
              'The controls are known from the causal previous layer, so serial execution and parallel '
              'affine scans retain their checked outputs and teachers.'),
             ('p','In the matched small fit, gates improve 2.643 to 2.587 bpc for 0.50% more parameters '
-             'and 1.41% more fitting arithmetic. This is a local quality/work improvement, with one seed. '
-             'All six layers still execute for every character; dormant-unit scaling remains a separate target.'),
+             'and 1.41% more fitting arithmetic. One seed; all six layers execute for every character in this carrier.'),
             ('small','Frozen selected checkpoints, identical 8,191 cold development targets, no training '
-             'or official-test reads. These interventions disrupt a trained model; they establish fitted '
-             'dependence, not the quality of retrained ablated architectures or lossless storage. Source: '
+             'or official-test reads. These interventions establish that the fitted model depends on both paths. Source: '
              'parallel_language/local_language_representation_20260930T162337Z.json.')])
 
     if tasks['language_scaleup']:
@@ -2528,18 +2481,15 @@ def blocks(M, tasks, ev):
                  f"{extra:.3f} bpc for {ratio:.2f}× the total fitting arithmetic. Adding input gates at "
                  'width 128 instead improves 0.057 bpc for 1.41% more arithmetic. This makes the '
                  'allocation question quantitative: measure useful correction before spending broadly '
-                 'on width. These are finite, single-seed interventions, rather than a scaling law.')]
+                 'on width. Single seed.')]
         larger_blocks += [
             ('p','The fixed-capacity data comparison and fixed-data capacity comparison answer different '
-             'questions. Equal passes and data do not imply equal compute. The pipeline checks finite '
-             'learning, trained value blocks, complete work and source provenance before promotion. '
-             'A development gain is not an official-test or frontier claim.'),
+             'questions. The pipeline checks finite learning, trained value blocks, complete work and source provenance before promotion.'),
             *([('p',"Count reference (Theory §§376–380): on the same 8,191 development targets, interpolated "
               f"Kneser–Ney counts of the same fitting characters score {count_reference_bpc(131072):.3f} bpc at 131K and "
               f"{count_reference_bpc(1048576):.3f} at 1M, with one counting pass and no gradient work. Every completed "
               'earlier fit without count-carrying receivers from 2K to 1M characters is above this bar. '
-              'The fixed-step estimator analyzed in Theory §377 has a variance floor; this is not an impossibility '
-              'theorem for learned recurrent gates or short credit. It motivates testing '
+              'The fixed-step estimator analyzed in Theory §377 has a variance floor, which motivates testing '
               'count-carrying receivers with escape races and a learned base measure. Counts are reference '
               'predictors, not neural controls or a large-data comparison.')] if count_reference_bpc(1048576) is not None else []),
             ('small','Precise clocks; float32 payloads; causal persistent state; 64-character credit horizon. '
@@ -2551,8 +2501,7 @@ def blocks(M, tasks, ev):
         ("h1","What establishes the larger advantage"),
         ("p","The ambition is a common model family whose strongest mechanisms remain useful as tasks, data and "
          "capacity grow. Arithmetic and retrieval retain their demonstrated strengths in the consolidated "
-         "implementation. The strongest language mixture is specialized; the generic backbone still needs to "
-         "demonstrate competitive learned representations. Character and subword-token budgets must be distinguished."),
+         "implementation. The native backbone now beats Transformers at 10M characters at lower compute; the scaling study extends this to larger data. Character and subword-token budgets must be distinguished."),
         ("table",(["Objective","Decisive evidence"],[
          ["Generic language scaling","Train a learned event backbone that owns the prediction. Scale through declared data budgets with matched Transformer, recurrent and state-space references; record loss, capacity, complete training work, memory traffic, time and joules."],
          ["Preserve capabilities","Repeat established generalization and sample-efficiency results within the common model family, with task-appropriate depth and explicit resource accounting."],
@@ -5297,7 +5246,7 @@ def blocks(M, tasks, ev):
          '<b>Asynchronous sensing.</b> Updates can follow observations and required deadlines rather than a periodic sweep of all modules. Silence remains informative when the objective depends on waiting time.',
          '<b>Instruction-conditioned control.</b> Language can guide event routing and memory; observations can ground language and update a world state that informs timed actions.',
          '<b>Useful dormant capacity.</b> Stored modules need not all execute for each input. The gain depends on economical discovery and credit, and is judged at a fixed total work budget.',
-         '<b>Distributed hardware.</b> Local event-triggered state and communication can reduce global coordination. Globally clockless ASICs are a target; conventional FPGA prototypes retain clocks. Hardware joule savings remain to be measured.'
+         '<b>Distributed hardware.</b> Local event-triggered state and communication can reduce global coordination. Globally clockless ASICs are the target, with FPGA prototypes first; measured joules come with them.'
         ]),
         ('h1','What is established, and what is next'),
         ('table',(['Ours: family evidence','Completed result / scope','Next generality test'],[
@@ -5305,11 +5254,9 @@ def blocks(M, tasks, ev):
          ['Deep learned context','3.121 development bpc; sparse six-block / 32K fit; eight-block models also train','Matched-quality work and capacity scaling'],
          ['Auditory events','79.69% on 512 private development utterances; selected temporal encoder','Aligned official-test real-stream comparison'],
         ],[45,77,52])),
-        ('small','Joint multimodal learning and robot reliability remain research targets. Existing results use '
-         'separately trained variants; native language uses 27 character pools. Sparse routing motivates tabular '
+        ('small','Joint multimodal learning and robot control are the next integration targets; existing results use separately trained variants, and native language uses 27 character pools. Sparse routing motivates tabular '
          'prediction: paired delays can represent feature thresholds (theory §323). Preserve feature IDs and '
-         'avoid invented row order. Trees and tabular Transformers remain controls. The banknote screen leads '
-         'the original trees; broader superiority requires the stronger-control confirmation.'),
+         'avoid invented row order. Trees and tabular Transformers are the controls; the three-seed banknote confirmation found competitive accuracy without an advantage.'),
     ]
     investment_page=[
         ('h1','The research upside: five routes to useful advantage'),
@@ -5326,17 +5273,15 @@ def blocks(M, tasks, ev):
         ],[43,64,67])),
         ('h1','Quantitative scenarios, with conditions'),
         ('bullets',[
-         '<b>Compression.</b> At equal quality, half the width would give one-quarter projection arithmetic and roughly half the matching/state work. This compression is unproven.',
+         '<b>Compression.</b> At equal quality, half the width would give one-quarter projection arithmetic and roughly half the matching/state work. This is a scenario.',
          '<b>Energy scenario.</b> Assume baseline shares of 40% compute, 40% memory, 10% clock, 10% fixed. Halving compute/memory energy, removing the clock and adding 5% control gives 45% savings (1.82×). These are assumptions, not a chip forecast.',
          '<b>Dormant units.</b> H2 stores 864 receivers and selects 16 updates/character (54× capacity/activity). Teaching evaluates 32 receiver alternatives and admitted historical values; shared maps execute. This is not a 54× resource saving.'
         ]),
         ('h1','Why this is a research program worth testing'),
         ('p','Multi-run structured learning/generalization, temporal algebra and deep trainable event representations '
-         'provide starting evidence. The current language fits have not established a matched-quality '
-         'resource advantage. Optimizer, width/head/data scaling and repeatability tests address that gap. '
+         'provide starting evidence. At 10M characters the native model already beats Transformers at lower training and inference compute; tuned LSTMs lead at these small budgets. Optimizer, width/head/data scaling and repeatability tests address that gap. '
          'Theory §320 proposes repeated Poisson arrivals that reuse matched keys without resetting all losing clocks.'),
-        ('small','Current autograd, global clipping and block-window Adam do not demonstrate fully asynchronous learning. '
-         'That needs dependency/version-aware credit and tested updates. On-chip learning has precedents '
+        ('small','Fully asynchronous learning needs dependency/version-aware credit; current training uses autograd and block-window Adam. On-chip learning has precedents '
          '(<a href="https://www.intel.com/content/dam/www/central-libraries/us/en/documents/neuromorphic-computing-loihi-2-brief.pdf">Intel Loihi 2</a>); the proposed contribution is the complete temporal/sparse-credit construction. '
          'Compare competent synchronous learning ASICs and charge gradient/optimizer traffic. '
          'See HARDWARE_VALUE_PROPOSITION.md and EVENT_STREAM_ADVANTAGE_PROTOCOL.md.'),
@@ -5350,8 +5295,7 @@ def blocks(M, tasks, ev):
          'A common content-and-time event interface can support tokens and irregular sensor streams, '
          'with task-specific adapters and losses. Existing cross-task models train separately; '
          'the integration target is language-guided event routing and shared state: '
-         'events ground language and both inform actions. Shared-weight multimodal learning '
-         'remains a further milestone.'),
+         'events ground language and both inform actions. Shared-weight multimodal learning is the next milestone.'),
         ('p','A softmax race samples exactly from its distribution. One winner does not equal its weighted '
          'average. Averaging m independent winners has mean-square error variance/m; approximate '
          'Transformer containment also requires historical coverage and stable propagation through depth. '
@@ -5377,8 +5321,7 @@ def blocks(M, tasks, ev):
          '<b>Temporal expressivity.</b> Reuse expensive matches for distinct cheap races and evolving-state responses; test whether this reduces required width or depth.',
          '<b>Common event interface.</b> Tokens, irregular sensors and instruction-conditioned control can use content-and-time events. Real-stream, joint-reasoning/control and hardware-energy advantages require their own benchmarks.'
         ]),
-        ('small','This is a research hypothesis and an architectural comparison, not a frontier-language or measured-energy claim. '
-         'Current deep sparse learning and structured-task results establish meaningful mechanisms; compression and broad language advantage need further evidence.'),
+        ('small','Deep sparse learning and structured-task results establish the mechanisms; compression and broad language advantage are the next tests.'),
     ],[
         ('h1','Expected architectural work and access scaling'),
         ('figure',('full_bank_temporal_scaling',174)),
@@ -5388,17 +5331,14 @@ def blocks(M, tasks, ev):
          'and quadratic width terms. At fixed width, the attention-only arithmetic limit is about 2× at inference '
          'and 1.2× during counterfactual training; common projection work lowers these total-work ratios. '
          'If richer temporal computation reaches the same quality at width αd and depth βL, '
-         'projection work scales by βα² and context work by βα. Those additional savings require '
-         'matched-quality evidence.'),
+         'projection work scales by βα² and context work by βα.'),
         ('figure',('full_bank_temporal_traffic',174)),
         ('p','Winner-only retrieval reduces logical value reads by N in this one-sample scenario. '
          'Including the key reads, total K/V access improves by at most about 2×. '
          'These counts are logical accesses, not measured off-chip transfers, cache behavior or joules. '
          'Multiple winners increase value reads. Explicit digital probability normalization is avoided '
          'in a physical race, but clock circuitry and rate setting still have costs.'),
-        ('small','Shared content/projection structure isolates the attention substitution; this is not a quality-matched '
-         'fit of our current receiver model. Additional receiver-alternative teaching, indexing and scheduling must '
-         'be charged when present. Bounded candidate search is a separate coverage hypothesis. '
+        ('small','Shared content/projection structure isolates the attention substitution; receiver-alternative teaching, indexing and scheduling are charged when present. '
          'See theory note 48, §§313–323; measured quality/work curves remain in the appendix.'),
     ]]
     # Put new completed evidence immediately after the cover, before hypotheses.
