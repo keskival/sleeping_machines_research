@@ -1,3 +1,16 @@
+## Appendix. Tokenized256K: bounded learning-rate comparison
+
+P24seed6, same data/source/initialization, 524272fitting targets over two passes,1024updates,four-checkpoint cadence and2040development targets. Only constant learning rate changes; all core mechanisms retained. Public validation untouched. This tuning comparison is separate from the fixed-recipe scaling packet.
+
+| LR | Selected NLL | Selected step | Final NLL | Final − selected | Fit targets |
+| --- | --- | --- | --- | --- | --- |
+| 0.003 | 7.741714 | 512 | 7.867910 | 0.126195 | 524272 |
+| 0.001 | 7.740815 | 512 | 7.801747 | 0.060933 | 524272 |
+
+Lower rate improves selected NLL0.000900 and final NLL0.066162. Both select step512, the first-pass boundary; late deterioration falls0.126195→0.060933. The bounded comparison reduces late deterioration without materially changing selected quality in this seed. Retain the fixed0.003recipe for the crossed scaling comparisons; no expanded rate grid or second-pass cure is inferred.
+
+Both fits charge all524272fitting targets. Actual complete256Kwork is pending for each trajectory; no cost is borrowed from64Kor from the other rate. Ordinary measured throughput384.66/495.85targets/s reflects separate host executions and is not a causal speed effect of learning rate.
+
 ## Appendix. Measured language quality, capacity and compute
 
 Sleeping Machines pursues a general-purpose substrate spanning language/reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. Completed integrated language measurements show quality improving with data and a useful intermediate capacity choice.

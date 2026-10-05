@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**LowerLRcompleted / timing running:** selected7.740814568/final7.801747281,
+both firstpassstep512. Versus0.003selectedgain0.000899850/finalgain0.066162349,
+late deterioration0.126195→0.060933. Same524272targets/data/source/recipeexceptLR.
+Separate report recipepage validated; fixed0.003scaling packet retained,
+stoprategrid. Full256Kcostpendingboth; throughput495.848vs384.661depends host
+execution, not causalLRspeedgain. TimingPID44189live atlatestobservation;
+FASretrywaits it and11000MiBheadroom. Revalidate source/runtime handles.
+
+
 **FASseed7watchdog stop /language repair live:** original fullseed7terminated
 22:08:26UTCbecausehostMemAvailable8176MiB <8192floor. Lastlog600/2512windows;
 no completedresult. JobRSSstable1229960KiBbeforestop; physicalhostpressure

@@ -1,5 +1,6 @@
 """Completed tokenized development evidence; no pending scores enter tables."""
 import json
+import runpy
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,7 +41,7 @@ def pages():
         learning.append([str(row['seed']), str(row['credit_window']),
             f'{initial:.6f}', f'{selected:.6f}', f'{initial-selected:.6f}',
             f"{row['gain_over_training_mean']:.6f}"])
-    return growth_pages() + [stage_page(), strength_page(), [('h1', 'Appendix. Tokenized language: confirmed small-fit learning'),
+    return runpy.run_path(str(ROOT/'report/token_recipe_comparison.py'))['pages']() + growth_pages() + [stage_page(), strength_page(), [('h1', 'Appendix. Tokenized language: confirmed small-fit learning'),
         ('p', 'Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. These diagnostics select constructions within that family.'),
         ('p', 'Both integrated members beat initialization in both seeds. GPT-2 FineWeb:2,048 admitted training tokens,8,160 training targets over four passes and16updates,1,016 scored development targets. Optimizer batch64 per lane; credit16/64 share data, updates and evaluation cadence. Natural-log NLL, lower is better; initialization is eligible for selection. Public validation is reserved.'),
         ('table', (['Seed','Credit','Initial dev','Selected dev','Gain','Context gain'], learning, [40,50,95,95,95,100])),
