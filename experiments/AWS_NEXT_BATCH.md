@@ -1,5 +1,15 @@
 # Current AWS work
 
+**User-directed tokenized CPU continuation —5 October18:10 UTC:** immutable
+addendum `queue/aws_model_improvement_repair_20261005T161000Z/addenda/aws_integrated_tokens_20261005T181000Z.json`
+adds five sequential one-job stages to slot3: pinned FineWeb/GPT-2 data setup,
+actual integrated-driver resume contract, matched8K local/future-credit fits,
+then a64K future-credit fit only if its small development loss beats the local
+control. Uses existing bounded scheduler and8192MiB reserve; no active queue
+modified. Source/data bindings and per-job guards are in the packet. These are
+native development fits, not public Transformer benchmark scores. Packet is
+prepared locally; AWS receipt/admission must be observed before claiming it runs.
+
 **Slot check (5 Oct 09:55 UTC):** MG repeats 20–29 finished ~08:15 (P0-4 complete), so slot 3 should be free. If it is idle,
 admit `aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z` now, then `aws_tuned_ref_90M_C_tf192L4_p0.8_*`. They are
 not in the product-priority manifest. They decide the tuned verdict for the completed P0-1 (1.800 at 0.97 PF). Slot 1 runs p96

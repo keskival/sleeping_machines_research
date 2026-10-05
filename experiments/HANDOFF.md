@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**AWS queue direction —5 October18:10 UTC:** user authorizes larger diagnostics
+on AWS. Added immutable token packet to the existing repair manifest's addenda,
+slot3, preserving live job ordering. Data setup -> actual integrated resume ->
+matched8K local and future-credit arms -> gated64K continuation. Full packet:
+`queue/aws_model_improvement_repair_20261005T161000Z/addenda/aws_integrated_tokens_20261005T181000Z.json`.
+No new dense training. Packet and source pins are prepared; remote scheduler
+receipt/live admission is not yet observed. Resource caps derive from completed
+~339MiB resume and~385MiB small pilots, with larger reservations for the64K fit.
+
 **Integrated estimator contract —5 October18:07 UTC:** v2 integrated contracts
 completed exit0, **4 passed in1.58s**. The actual driver estimator now enforces
 detached replay utility/sampling probabilities and its mixture-law expectation
