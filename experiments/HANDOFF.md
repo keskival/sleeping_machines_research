@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**FASseed7watchdog stop /language repair live:** original fullseed7terminated
+22:08:26UTCbecausehostMemAvailable8176MiB <8192floor. Lastlog600/2512windows;
+no completedresult. JobRSSstable1229960KiBbeforestop; physicalhostpressure
+(not ownRSScap) is observed condition. Logs/failure receipt preserved. Never
+call this a modelqualityloss or restart successfuloldqueue. Nonresumabledriver
+requires same-recipe newtag curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2.
+Retrytmux waits already-live lowerLR/timing then11000MiBMemAvailable admission
+headroom (8GiB+jobcap+margin), bounded2hwait; normalRSSwatchdog/floor retained.
+Then originallyunrunseed8smoke/fit. If insufficientheadroom, defer and report.
+LowerLRfit now activePID39969 at observation,~480MiBRSS, unchangedP24CPU
+524272-target recipe; phase timing waits it. Revalidate all handles.
+
+
 **Low-overhead language timing implementation prepared:** token_stage_timing.py
 replays exact completed64K/P24control, times factual/alternative core/readout,
 backward/optimizer plus remaining zero_grad→step interval. Sourcechecks,
