@@ -212,3 +212,14 @@ estimates for dense references), and inference work up to the decision at N.
   detectable for the oracle (N=256: 0.845), wear the least (0.672–0.700). Implication for native design: routing each event
   to a per-item slot (the item boundary is inferable from the 31-step order) is the mechanism to test. Pool size and
   addressing are the levers, not width. The oracle is a bound, not a competitor: it uses identity the benchmark hides.
+- 5 Oct 07:37 UTC: **recruitment sweep R0** (pool 8 untied, 1 epoch;
+  `curie_fas_v1_recruit_R0_pool8_untied_e1_20261005T033000Z.json`).
+  - Test AUROC, primary rule: .541 at N = 128, .578 at 256, .721 at 512. The timing-only and windowed rules are lower.
+  - **Occupancy:** almost every slot is written in every run (8/8 in three layers, ~5/8 in one) and no slot is dead.
+    *The §419 dormancy picture does not hold for FAS at pool 8*: the slots are used.
+  - **Learned memory half-lives** (base rate): median ~7 s in every layer. An item's events are 5–76 s apart and it
+    takes ~720 s through the line.
+  - Revised interpretation: the bottleneck is memory horizon plus per-item binding, not unused slots. Forgetting
+    substitutes for routing (§419); a 7-second memory cannot carry an item across its own steps.
+  - Added arm **R8**: tied pool 8 with timescales initialized log-spaced from 1 to 1,000 s (`--tau-max 1000`). It runs
+    first after the sweep, and its learned half-lives are reported to test whether long horizons survive training.

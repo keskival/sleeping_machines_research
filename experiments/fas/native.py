@@ -159,6 +159,9 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--tau-max', type=float, default=0., help='initialize unit memory time constants log-spaced from 1 to '
+                   'this many seconds (default 0: unit default 1-100 s); R0 learned median half-lives ~7 s while one item '
+                   'spends ~720 s on the line')
     p.add_argument('--findable-init', action='store_true', help='§419 init: key_read = 0 (free and occupied slots start on '
                    'equal key-only footing) and orthogonal per-head keys of norm --key-norm')
     p.add_argument('--key-norm', type=float, default=1.)
@@ -181,6 +184,14 @@ def main():
     val_c, val_f, val_k = val_c[:a.eval_runs], val_f[:a.eval_runs], val_k[:a.eval_runs]
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=a.payload, depth=a.depth,
                                             heads=a.heads, pool=a.pool)
+    if a.tau_max:
+        with torch.no_grad():
+            for layer in model.units:
+                for head in layer:
+                    for pool in head:
+                        for unit in pool:
+                            tau = torch.logspace(0, math.log10(a.tau_max), unit.raw_rate.numel(), dtype=unit.raw_rate.dtype)
+                            unit.raw_rate.copy_(torch.expm1(1 / tau).log())
     if a.findable_init:
         with torch.no_grad():
             for layer in model.units:

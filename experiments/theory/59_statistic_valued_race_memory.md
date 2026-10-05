@@ -1868,3 +1868,11 @@ compress and grok as well?
   base driver is pinned).
 - **Readout:** test bpc against 1.955, plus the 2–4-character history-curve bin.
 - **Placement:** after the current curie chain, or in a free AWS slot.
+
+
+**§419 measured correction (5 October, FAS R0).** At pool 8 on FAS, slots are not dormant: nearly all are written in
+every run, with no dead slots. Proposition 1's dormancy is therefore not the binding failure on this task. The binding
+symptom is horizon: median learned base half-lives are ~7 s, against item steps of 5–76 s. That matches the companion
+prediction (forgetting substitutes for routing). Slot use does not establish that one slot holds one item. The next
+measurements are long-horizon initialization (R8) and a per-item binding diagnostic: whether a slot's writes come from
+one item, using the oracle's item identities.
