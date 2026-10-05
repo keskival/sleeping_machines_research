@@ -16,6 +16,7 @@ part of IP diligence.
 
 - [Current valuation rationale: ambition, potential and execution](VALUATION_RATIONALE.md)
 - [Investor proof plan: priorities, gates and existing execution paths](INVESTOR_PROOF_PLAN.md)
+- [IP protection: ownership, patent review and selective filing deliverables](IP_PROTECTION_PLAN.md)
 - [Updated investment case](INVESTMENT_CASE.md) and [one-page pitch](PITCH.md)
 - [Application opportunities and first proof conditions](../report/model_family_opportunities.md)
 - [Editable slide narrative and source registry](PITCH_DECK.json)

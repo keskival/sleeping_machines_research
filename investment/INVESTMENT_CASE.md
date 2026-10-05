@@ -255,6 +255,13 @@ still need a documented inventory. No exclusive rights or freedom-to-operate
 opinion is asserted here. Public research can support credibility and adoption
 while the company develops commercial execution capabilities.
 
+Funding should convert this proposed moat into documented company assets:
+ownership and disclosure review, patent counsel's assessment, selective priority
+filings and trade-secret practice. These sit within the existing €200,000
+legal/IP/operations allocation, subject to quotes and staged filing decisions.
+The founder's earlier patents belong to his former employer and contribute
+experience, not venture-owned rights. See the [IP protection plan](IP_PROTECTION_PLAN.md).
+
 There are financing precedents for both parts of the thesis: Liquid AI
 announced a $250M Series A for efficient general-purpose models in December
 2024; Innatera reported a EUR15M Series A for neuromorphic edge technology in
@@ -323,6 +330,10 @@ rights, execution and reproducible benefits determine attainable terms.
 5. **A hardware execution contract.** Export validated traces; establish event
    ordering, precision, timing, local state and backpressure. Measure clock,
    communication, memory and learning overhead before an ASIC commitment.
+6. **Company-owned IP protection.** Document contributions and assignments,
+   review prior disclosures and prior art, and file selectively for qualifying
+   technical inventions. Stage prosecution and international protection by
+   commercial relevance; retain confidential implementation know-how.
 
 The main failure conditions are explicit: gains disappear against competent
 controls; discovery/learning/traffic consume the savings; depth or adaptation

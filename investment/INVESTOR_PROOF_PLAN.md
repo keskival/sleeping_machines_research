@@ -114,6 +114,11 @@ or mutate frozen experiments to accelerate presentation work.
 4. **Execution readiness:** founder verifies rights, commitment, proposed hires
    and spending assumptions. Private-repository status does not undo earlier
    public disclosure or establish patentability. Legal conclusions need counsel.
+   Deliver an ownership/disclosure inventory, counsel review and selective
+   priority filings for qualifying technical inventions, with trade-secret and
+   prosecution plans. Use the existing €200,000 legal/IP/operations envelope,
+   subject to quotes; follow the [IP protection plan](IP_PROTECTION_PLAN.md).
+   The founder's earlier employer-owned patents are excluded from company assets.
 
 If a gate fails, preserve the result, identify whether the failure is quality,
 credit, execution or protocol, and run the smallest discriminating follow-up.

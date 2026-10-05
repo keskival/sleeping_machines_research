@@ -1,5 +1,19 @@
 # Local host: current research continuation
 
+## IP protection funding case — 5 October 2026
+
+Founder confirms earlier patents are owned by his former employer; exclude them
+from venture assets and valuation. Added investment/IP_PROTECTION_PLAN.md and
+made ownership/disclosure review, counsel assessment, selective priority filings,
+staged prosecution and trade-secret protection explicit funding deliverables.
+They share the existing €200k legal/IP/operations envelope; €3M/€50M proposal,
+research evidence and financial ledger are unchanged. No filing, counsel outreach
+or external distribution occurred. Both deck PDFs/notes refreshed editorially:
+investment/publication_ip_protection_20261005T_review.json, 40 full/21 main slides,
+39,292KiB peak render RSS under established one-thread/300MB/1GB-AS/8GiB/120s
+guards. Reviewed slides16/19 visually; prior PDFs preserved. P0 experiment
+priorities and owners are unchanged; no ML runtime or training launched here.
+
 ## First tuned dense arm: a loss for native at budget A — 5 October 2026, 00:05 UTC
 
 AWS P0-6 arm LSTM-384 lr .003 6 passes: test 1.840 (valid 1.778, still improving) at 254 TF vs native p96/d4 1.888 at 352 TF.

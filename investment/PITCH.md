@@ -38,7 +38,8 @@ as a stretch scenario. The case combines platform ambition, mechanisms with
 scoped empirical support, relevant founder experience and a staged execution
 plan. It does not price the company by adding application markets or claiming
 AGI. The €3M/18-month program buys team, quality replication, runtime proof and
-hardware feasibility; attainable terms depend on investor conviction and diligence.
+hardware feasibility and company-owned IP protection, including patent review
+and selective filings; attainable terms depend on investor conviction and diligence.
 
 The expanded opportunity includes native irregular ingestion, adaptive
 asynchronous codecs, task-oriented communications and learned memory policies.

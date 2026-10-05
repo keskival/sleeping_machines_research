@@ -116,7 +116,9 @@ Tero Keski-Valkama is the sole founder. His public
 software-architecture experience, subject to reference/availability diligence.
 The published [EP4148389A2 application](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf)
 names him as inventor and HERE Global B.V. as applicant; it is evidence of
-invention experience, not a granted venture-owned asset. Sole-founder status
+invention experience. The founder confirmed on 5 October 2026 that his earlier
+patents belong to his former employer; they are excluded from this venture's
+assets and valuation. Sole-founder status
 does not imply sole research authorship: preserve Karoliina Salminen's credit
 and resolve contributions, employment assignments and licensing.
 
@@ -126,6 +128,16 @@ The proposed €3M buys an 18-month increase in research and engineering capacit
 costs are planning assumptions. Hire complementary learning, runtime and
 evaluation skills; stage spending by proof gates. Aggressive scope requires
 concentrated tests and a team, rather than launching every application at once.
+
+**IP protection is an explicit use of capital.** Within the existing €0.20M
+legal/IP/operations envelope, fund an ownership/disclosure inventory, counsel-led
+prior-art and patentability review, selective priority filings, and staged
+prosecution alongside trade-secret protection. Obtain quotes before allocating
+the shared envelope; no filing count or granted portfolio is assumed. The
+[IP protection plan](IP_PROTECTION_PLAN.md) defines deliverables and disclosure
+constraints. Company-owned rights over commercially relevant technical inventions
+can strengthen defensibility and value capture; spending or filing alone does
+not justify a mechanical increase in valuation.
 
 ## 4. What financing precedents establish
 
