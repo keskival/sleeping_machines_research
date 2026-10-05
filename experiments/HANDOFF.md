@@ -1,5 +1,17 @@
 # Session handoff — 2026-09-30
 
+**Reserved256Kcontinuation prepared:** waiting tmux
+curie_data_growth_256k_20261005_v1 watches postrepeat handle, then stdlib
+token_256k_admission.py requires completed independent learning/utility and
+complete whole-fit/inference work, exact parity/control/source identity.
+Missing prerequisites were checked to reject admission. Exactly one selected
+width then runs its unique256Kqueue;16/24/32queues prepared, no grid admitted.
+262144TRAINtokens/two passes524272targets/1024updates/evalevery256 preserve
+four checkpoint cadence and2040devtargets.2400s/1.2GBRSS/5GBVMS/8GiBfloor
+follow measured64K326-400s times4exposure. See TOKEN_DATA_GROWTH_256K_20261005.md.
+Review completed256Kquality/context before adjacent widths or1M.
+
+
 **64K P32 completed:** selectedstep64NLL8.090418677 vs initial8.162279795,
 131056targets,4,225,420parameters,343.932targets/s,546508KiBpeakRSS.
 It loses to P24selected8.033310714 by0.057108NLL. All three width records
