@@ -1,5 +1,21 @@
 # Session handoff — 2026-09-30
 
+**Promotion/admission audit —5 October:** `token_promotion_gate.py` now assesses
+completed trajectories including initialization, using the same0.02NLL
+practical small-fit gain convention as the paired seed7allocation study.
+All four completed2Kfits select initialization; none is promoted for scaling.
+The saved audit preserves the stronger trained-member comparison separately.
+The old64K exploratory wrapper compares trained candidate/control losses only;
+that does not substitute for this initial-inclusive scaling gate. Apply the
+gate before a scaling-law packet or benchmark-size selection, while retaining
+existing bounded diagnostics and evidence.
+Scheduler `run_aws_product_priority.py` loads addenda only when a slot's
+existing pending list drains. Prepared token packets therefore require the
+AWS owner's next safe admission boundary; healthy current jobs and frozen
+coordinator sources must remain intact. No token AWS result or live handle is
+visible in this checkout. Shared origin/main includes aca50f1c, confirming
+GitHub delivery of the horizon packet; remote execution remains unobserved.
+
 **Credit horizon and delivery update —5 October18:53 UTC:** authoritative shared
 `origin/main` reflog records successful push of8fc2190b at18:41:50 UTC by another
 session. Prepared token packets are delivered to GitHub; AWS admission remains
