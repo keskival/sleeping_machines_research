@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**Three-front user priority recorded:** PRODUCT_ORDERS now retains boundedFAS/
+tabular spend alongside primary integrated language objective. ExistingFAS
+seed7/8waiter preserved. Next newtabular task: integrated typed-comparison/race
+contracts/smallfit on genuinelymixed types, before longerbudget; not numeric
+widthsweep. Saved3seedbanknotecontrol comparison is trees better0.028715NLL/
+2.135percentagepoints meanaccuracy, pairedNLLintervalcrosseszero. Preserve
+this evidence; no newwin claim. LanguagePID27234live, firstDEVstep2567.835497
+is interim only; first-passboundary and completed curve/utility awaited.
+
+
 **P24complete work verified /256Krunning:** exact replay DEVcurve parity0,
 256updates/131056fit targets,2040eval targets; arithmetic formula coverage
 complete and unsupported floating ops empty. Fullfit192.211764864GF,

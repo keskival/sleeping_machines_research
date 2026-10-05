@@ -1,5 +1,21 @@
 # Product orders — what we are after (issued 4 October 2026, 19:20 UTC)
 
+**Latest user direction — retain three evidence fronts (5 October):** continue
+proactively on the strongest integrated language path, while allocating bounded
+compute to improving FAS and tabular headline results. More FAS seeds and
+benchmarks explicitly requested: native frozen-recipe seeds7/8 are scheduled
+behind the already-admitted language sequence; existing neural benchmark
+queues remain AWS-owned. Preserve active jobs. After these admitted tasks,
+the first new tabular task is a small integrated typed-comparison/race contract
+and fit, not another numeric-only capacity sweep. Read
+TYPED_PREDICATE_EVENT_DIRECTION_20261005.md; establish type semantics,
+hard-route learning and resource accounting before longer fitting. Existing
+banknote confirmation trails trees on average and must remain visible; do not
+promote the mixed-type proposal as an achieved win. Public language validation
+and reserved larger scaling point remain protected. No fixed percentage of
+compute is inferred; admit bounded tests from measured costs and current jobs.
+
+
 **Latest user direction — implementation serves the objective:** we own and change the implementation. Current driver/backend choices are engineering work to resolve, never reasons to constrain tokenization, persistent memory, routing, learning or the research ambition. Build the capabilities the selected economical experiment requires. See OPEN_LANGUAGE_REFERENCE_PLAN.md and LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md.
 
 **Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
