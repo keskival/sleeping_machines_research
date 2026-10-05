@@ -18,6 +18,25 @@ Investors buy three things, in this order:
 Everything else (diagnostics, theory notes, new primitives) is valuable only insofar as it produces or protects these.
 Every deliverable below has a pass/fail number. Report it as a win or a loss in one line.
 
+## URGENT AWS slot order (5 Oct 07:05 UTC, product owner)
+
+`queue/aws_product_priority_20261005T001500Z/manifest.json` lists only the ten finished tuned-reference arms in slots 2
+and 3, so **two of the three AWS slots appear idle since about 01:30 UTC**. Meanwhile, the leaderboard deliverables are
+waiting:
+- P0-3: the six primate sessions are queued in slot 1 behind the 90M job.
+- P0-4: Mackey-Glass repeats 20–29 have no result; still 20/30.
+
+Fill the free slots now, in this order (each through run_safe.sh, with the usual caps and at least 8 GiB MemAvailable):
+1. **Slot 2: P0-3 primate six-session r1.** Move the six `aws_primate_r1_*_20261004T053500Z` jobs out of slot 1.
+2. **Slot 3: P0-4 Mackey-Glass third batch** (repeats 20–29; pins verified 4 Oct 23:55).
+3. Then, in the first free slot:
+   - the FAS data job and the five FAS references (AWS_FAS_REFERENCES.md);
+   - the weight-decay smoke and arms;
+   - the X1 capacity-curve arms (AWS_CAPACITY_PROGRAM.md).
+4. Slot 1 continues P0-1 (90M r4 p64, then p96).
+
+The leaderboard items are the cheapest route to a public result. Idle slots are the largest current waste.
+
 ## P0 — do these first (all hosts)
 
 | # | Deliverable | Host / queue | Pass criterion | Status |
