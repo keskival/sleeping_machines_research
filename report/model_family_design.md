@@ -6,6 +6,8 @@
 [Evidence map](architecture_evidence.md) · [Detailed review](architecture_review.md) ·
 [Bounds](../experiments/theory/152_primitives_integration_and_capability_bounds.md)
 
+Sleeping Machines aims to be the next general-purpose substrate for machine intelligence: one trainable architecture, learning rule and execution model spanning language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and datacenter, edge and clockless hardware.
+
 ## From the manifesto to a defined design space
 
 The [original manifesto](../HISTORICAL_MOTIVATION_MANIFESTO.md) supplied the
@@ -19,14 +21,13 @@ The progression is **motivation → constructions and tests → family definitio
 and selection rationale → integrated validation and scaling**. Positive and
 negative results constrain choices. Current proofs/measurements qualify earlier
 intuitions; they do not erase the central temporal/selective ambition. The
-current construction retains explicit keys/addresses as well as timing, so it
-does not claim to have literally eliminated all memory indexing. Timing instead
-adds operations, conditional access and interactions to the substrate.
+current construction uses explicit keys and addresses together with timing.
+Timing adds operations, conditional access and interactions to the substrate.
 
 The synthesis defines the toolbox, its composition and its position among
 model families. It makes tested footholds and remaining integration gaps
-visible. It is not evidence that all promising branches already coexist in
-one scalable trained system.
+visible. The next integration test combines the selected branches in one
+trained system and measures quality and total work as it scales.
 
 ## The family definition
 

@@ -1757,7 +1757,7 @@ def blocks(M, tasks, ev):
             ('figure',('banknote_reserved_test' if replicated_banknote else 'banknote_first_screen',174)),
             ('small',('Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). '
               '128 fitting/128 development rows; four fixed selection opportunities. '
-              'Accuracy uncertainty includes zero difference, but does not establish statistical equivalence. '
+              'Accuracy uncertainty includes zero difference. '
               if replicated_banknote else '128 fitting/128 development rows, four passes, seed6. ')+
              f'The original development lead, {100*ours["accuracy"]:.1f}% versus {100*trees["accuracy"]:.1f}%, is retained in Appendix B. '
              +(banknote_last_cell if not all(len(v)==3 for v in banknote_confirmation.values()) else '')+
@@ -2707,7 +2707,7 @@ def blocks(M, tasks, ev):
             ("p","Training the directional twelve-block extension, then selecting its six-block prefix on development, "
              "retains the combined model's 408 correct answers with lower NLL and 395,814 deployed parameters. "
              "The extra training blocks are removed after their learned contributions reduce held accuracy. "
-             "This improves deployment quality/work; it does not establish a positive deep-block accuracy gain."),
+             "Selecting the six-block prefix improves deployment quality/work."),
             ("small","Seed 6, private train-file speakers 3/6; official-test parity remains unmeasured. "
              "Head fitting uses 6,144 unique fitting utterances: one clean view for the first arm, clean plus "
              "one transformed view for the paired arm. The arms also change regularization and use three/two "
@@ -3078,8 +3078,8 @@ def blocks(M, tasks, ev):
             ('table',(['Short/long credit','Difference norm','Relative difference %','Gradient cosine'],contrasts,[42,43,48,41])),
             ('p','The16-versus64 gradient difference has norm30.89% of the64-token gradient, with cosine0.9570. '
              'The32-versus64 difference is15.15%. Every layer receives credit, and short-credit norms can be '
-             'larger because omitted contributions can cancel retained ones. This is evidence of material '
-             'truncation effects on this probe; it does not establish that increasing the horizon improves fitting quality.'),
+             'larger because omitted contributions can cancel retained ones. Credit truncation materially '
+             'changes the gradient on this probe. The next test refits matched models at each credit horizon.'),
             ('small',f'Frozen weights; zero optimizer steps and no official-test access. One16-target slice,384 replay '
              f'tokens,112 graph tokens,3 backwards. Wall{horizon["wall_s"]:.2f}s, peakRSS{horizon["max_rss_kb"]/1024:.1f}MiB. '
              'Arithmetic is uninstrumented. Native hard-route credit is a surrogate;64 tokens is a comparison, '
@@ -3161,7 +3161,7 @@ def blocks(M, tasks, ev):
             ('h1','Appendix B (continued). Ours: language work as scaling develops'),
             ('p','This ledger updates from completed integrated-model stages. It shows the emerging '
              'work advantage alongside its quality and data budget. Per-target fitting work removes '
-             'the difference in the number of presentations; it does not establish equal-quality superiority.'),
+             'the difference in the number of presentations. Quality and data budgets are shown alongside work for each row.'),
             ('figure',('integrated_language_work_progress',152)),
             ('table',(['Model','Fit / passes','bpc / split ↓','Whole fit GFLOPs ↓',
                       'Fitting MFLOPs / target ↓','Forward MFLOPs / position ↓'],
@@ -3367,7 +3367,7 @@ def blocks(M, tasks, ev):
             extra.append(('figure',('repeated_arrival_quality_work_'+hashlib.sha256(repr(group).encode()).hexdigest()[:10],174)))
             many=max(trials,key=lambda r:r['args']['arrivals']);base=reference[0]
             cost=100*(many['work']['cpu_emulator']['total_training_unit_special_flops']/base['work']['cpu_emulator']['total_training_unit_special_flops']-1)
-            extra.append(('p',f"Ours delivers {many['args']['arrivals']} times as many historical winner messages for {cost:.2f}% additional whole fitting arithmetic in this completed screen. Quality changes from {base['final']['dev']['bpc']:.3f} to {many['final']['dev']['bpc']:.3f} bpc. This supports cheap arrival multiplicity under shared matches; it does not establish language-model superiority."))
+            extra.append(('p',f"Ours delivers {many['args']['arrivals']} times as many historical winner messages for {cost:.2f}% additional whole fitting arithmetic in this completed screen. Quality changes from {base['final']['dev']['bpc']:.3f} to {many['final']['dev']['bpc']:.3f} bpc. The additional deliveries reuse the expensive match."))
         pages.append([
             ('h1','Appendix B (continued). Ours: shared-match temporal arrivals'),
             ('p',f"{a['heads']} independent spatial heads, payload {a['payload']}/head, {a['depth']} blocks. "
@@ -3467,8 +3467,8 @@ def blocks(M, tasks, ev):
     pages.append([
         ('h1','Appendix B (continued). What most reduces research uncertainty'),
         ('p','The main direction now tests native content-and-time computation directly. '
-         'Episodic race attention remains a preserved comparison. Its small language improvements '
-         'do not yet establish that an attention scaffold is the best use of this substrate.'),
+         'Episodic race attention remains a preserved comparison. The next comparison fits native '
+         'state computation and an attention scaffold at equal total work.'),
         ('table',(['Priority','Experiment','Doubt resolved'],[
             ['1','Integrated order/time learning; refitted credit/time controls; three seeds','Can deep sparse temporal state learn useful representations?'],
             ['2','Native-core text8 adapter and small-to-larger data ladder','Does the native construction learn economically without a KV attention bank?'],
@@ -4398,8 +4398,8 @@ def blocks(M, tasks, ev):
              'of estimated variance. That oracle is a diagnostic ceiling with all replay cost paid, '
              'not a deployable cheap baseline, optimizer-noise measurement or fitted improvement.'),
             ('p','Eight-versus16-node mean-gradient L2 differences range4.3e-8 to7.3e-7. This agrees '
-             'numerically on these probes but does not establish convergence across discontinuous '
-             'histories. Per-pass shared draws also prevent assuming ordinary minibatch variance '
+             'numerically on these probes; convergence across discontinuous '
+             'histories requires a separate test. Per-pass shared draws also prevent assuming ordinary minibatch variance '
              'reduction; actual batch covariance was not measured. Neither audit proves the cause '
              'of the held-out regression or the primary bottleneck on other benchmarks.'),
             ('p','Decision: stop the failed joint-clock campaign. Next isolate exact conditional '
@@ -4765,7 +4765,7 @@ def blocks(M, tasks, ev):
              f"{selected['uncompressed_joblib_bytes']/1024:.1f}KiB, "
              f"{selected['sequential_ms_per_prefix']:.3f}ms/prefix. This exceeds the original native "
              '65.10%/.963161 while using less storage and far less CPU time. Thus the original '
-             'native result does not establish advantage even in this bounded-storage region.'),
+             'native model loses to the prototype control in this bounded-storage region.'),
             ('p',f"The whole compact grid costs{r['wall_s']:.3f}s/{r['max_rss_kb']/1024:.1f}MiB peak RSS; "
              f"common raw preprocessing still costs{r['preprocessing_wall_s']:.3f}s. Shared prototype "
              'construction, kernel features, all fitting/tuning and scoring are paid in workflow wall. '

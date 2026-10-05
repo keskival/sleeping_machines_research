@@ -167,7 +167,7 @@ Left: means and recorded ranges, five event runs and two Transformer runs; 2,000
 
 ![banknote reserved test](report/figures/banknote_reserved_test.png)
 
-Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). 128 fitting/128 development rows; four fixed selection opportunities. Accuracy uncertainty includes zero difference, but does not establish statistical equivalence. The original development lead, 95.3% versus 93.0%, is retained in Appendix B. CatBoost seed8 was stopped without a score; full confirmation is incomplete. Tree FLOPs are unavailable and CPU fits are faster; no resource advantage over trees is established.
+Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). 128 fitting/128 development rows; four fixed selection opportunities. Accuracy uncertainty includes zero difference. The original development lead, 95.3% versus 93.0%, is retained in Appendix B. CatBoost seed8 was stopped without a score; full confirmation is incomplete. Tree FLOPs are unavailable and CPU fits are faster; no resource advantage over trees is established.
 
 **Statistical memory where counting is strong (10M characters).** On the same999,999 test targets, ours count/copy race mixture scores **1.727bpc** versus **1.799** for LSTM and **1.908** for Transformer; closed-form counts alone (untuned mkn, order 7) score **1.788**. Here counting statistics are near-optimal and the dense controls sit at their level; learned models overtake them only with far more data and parameters (Theory §§381, 394). Our statistical memory therefore adds a useful information path on top of near-optimal counts. It is not the learned native model. Capacity and fitting budgets differ. Appendix B charges floating mixing work and reports integer table work separately.
 
@@ -695,7 +695,7 @@ A six-block temporal encoder retains nearly all the combined model's development
 
 Fitting the head on clean and transformed speech improves held accuracy by 32 answers with the temporal features frozen. Its covariance penalty suppresses class-visible nuisance variation. The right panel compares the heads on the same features; the left shows all subsequent unrestricted encoder passes. The selected trained prefix reaches 518/657 (78.84%) versus 510/657 (77.63%) for the combined model on the reused disjoint audit. Audit labels do not choose the checkpoint.
 
-Training the directional twelve-block extension, then selecting its six-block prefix on development, retains the combined model's 408 correct answers with lower NLL and 395,814 deployed parameters. The extra training blocks are removed after their learned contributions reduce held accuracy. This improves deployment quality/work; it does not establish a positive deep-block accuracy gain.
+Training the directional twelve-block extension, then selecting its six-block prefix on development, retains the combined model's 408 correct answers with lower NLL and 395,814 deployed parameters. The extra training blocks are removed after their learned contributions reduce held accuracy. Selecting the six-block prefix improves deployment quality/work.
 
 Seed 6, private train-file speakers 3/6; official-test parity remains unmeasured. Head fitting uses 6,144 unique fitting utterances: one clean view for the first arm, clean plus one transformed view for the paired arm. The arms also change regularization and use three/two encoder passes respectively, so total budgets are not matched. All continuation epochs are plotted; selection uses development accuracy, then NLL. Extra teacher/cache/head work and inherited fitting must be charged. Modal/vector maps are locally dense; no empty ticks or event-pair attention are added. The selected prefix additionally inherits the full twelve-block fitting pass; pruning does not erase that training cost. Prefix/full choice is post-hoc private-development selection. Formulae and numerical checks: THEORY §§237–264. One CPU forward evaluation takes 11.90 s for the selected prefix versus 23.71 s for the combined model. Packing/query included, loading excluded; one timing observation, not joules.
 
@@ -1206,7 +1206,7 @@ Completed frozen native8K/H2/d16/depth8 diagnostic. All three arms retain the sa
 | 16 versus 64 | 2.0581 | 30.89 | 0.9570 |
 | 32 versus 64 | 1.0092 | 15.15 | 0.9890 |
 
-The16-versus64 gradient difference has norm30.89% of the64-token gradient, with cosine0.9570. The32-versus64 difference is15.15%. Every layer receives credit, and short-credit norms can be larger because omitted contributions can cancel retained ones. This is evidence of material truncation effects on this probe; it does not establish that increasing the horizon improves fitting quality.
+The16-versus64 gradient difference has norm30.89% of the64-token gradient, with cosine0.9570. The32-versus64 difference is15.15%. Every layer receives credit, and short-credit norms can be larger because omitted contributions can cancel retained ones. Credit truncation materially changes the gradient on this probe. The next test refits matched models at each credit horizon.
 
 Frozen weights; zero optimizer steps and no official-test access. One16-target slice,384 replay tokens,112 graph tokens,3 backwards. Wall11.08s, peakRSS518.0MiB. Arithmetic is uninstrumented. Native hard-route credit is a surrogate;64 tokens is a comparison, not an all-history unbiased reference. Relative difference divides the norm of the gradient difference by the longer-credit gradient norm, not a percentage of predictive quality or retained features.
 
@@ -1275,7 +1275,7 @@ Native forward/loss/backward/clipping/Adam are traced. Seed6 reuse retains its o
 
 ## Appendix B (continued). Ours: language work as scaling develops
 
-This ledger updates from completed integrated-model stages. It shows the emerging work advantage alongside its quality and data budget. Per-target fitting work removes the difference in the number of presentations; it does not establish equal-quality superiority.
+This ledger updates from completed integrated-model stages. It shows the emerging work advantage alongside its quality and data budget. Per-target fitting work removes the difference in the number of presentations. Quality and data budgets are shown alongside work for each row.
 
 ![integrated language work progress](report/figures/integrated_language_work_progress.png)
 
@@ -1538,7 +1538,7 @@ Learning rates and warmup differ across configurations, so this is not an isolat
 
 ![repeated arrival quality work 1df4adaf89](report/figures/repeated_arrival_quality_work_1df4adaf89.png)
 
-Ours delivers 4 times as many historical winner messages for 4.57% additional whole fitting arithmetic in this completed screen. Quality changes from 3.779 to 3.771 bpc. This supports cheap arrival multiplicity under shared matches; it does not establish language-model superiority.
+Ours delivers 4 times as many historical winner messages for 4.57% additional whole fitting arithmetic in this completed screen. Quality changes from 3.779 to 3.771 bpc. The additional deliveries reuse the expensive match.
 
 | Ours: arrivals / head | Dev bpc ↓ | Whole fit GFLOPs ↓ | Fit MFLOPs / target ↓ | Inference MFLOPs / char ↓ |
 | --- | --- | --- | --- | --- |
@@ -1599,7 +1599,7 @@ Matched 16-credit records are shown when completed under identical settings. Add
 
 ## Appendix B (continued). What most reduces research uncertainty
 
-The main direction now tests native content-and-time computation directly. Episodic race attention remains a preserved comparison. Its small language improvements do not yet establish that an attention scaffold is the best use of this substrate.
+The main direction now tests native content-and-time computation directly. Episodic race attention remains a preserved comparison. The next comparison fits native state computation and an attention scaffold at equal total work.
 
 | Priority | Experiment | Doubt resolved |
 | --- | --- | --- |
@@ -2411,7 +2411,7 @@ Decompose the conditional-winner joint score into choice credit pi_i(F_i-R) and 
 
 The current intermediate decoder baseline differs substantially from actual suffix risk. Across these limited probes the common-clock RMS is900–1,300 times the choice RMS; an oracle baseline computed with all quadrature replays removes more than99.9999% of estimated variance. That oracle is a diagnostic ceiling with all replay cost paid, not a deployable cheap baseline, optimizer-noise measurement or fitted improvement.
 
-Eight-versus16-node mean-gradient L2 differences range4.3e-8 to7.3e-7. This agrees numerically on these probes but does not establish convergence across discontinuous histories. Per-pass shared draws also prevent assuming ordinary minibatch variance reduction; actual batch covariance was not measured. Neither audit proves the cause of the held-out regression or the primary bottleneck on other benchmarks.
+Eight-versus16-node mean-gradient L2 differences range4.3e-8 to7.3e-7. This agrees numerically on these probes; convergence across discontinuous histories requires a separate test. Per-pass shared draws also prevent assuming ordinary minibatch variance reduction; actual batch covariance was not measured. Neither audit proves the cause of the held-out regression or the primary bottleneck on other benchmarks.
 
 Decision: stop the failed joint-clock campaign. Next isolate exact conditional actual-write choice credit while retaining the native pathwise clock derivative and all temporal/sparse mechanisms. This retains a known approximation for downstream timing jumps; numerical contracts and one small smoke precede any matched fit. A later independent-noise/control-variate comparison needs fresh matched local controls and full recovery/work accounting. No automatic wider capacity or pass extension.
 
@@ -2657,7 +2657,7 @@ Completed curie_dvs_clock_p16d2pool8 and p16d4pool2 results172500Z; theory59§§
 
 Native uncompressed saved-model budget103.9KiB. The fixed72-cell grid uses random8/16/24/32 Nyström landmarks or1/2/3/4 learned prototypes per class, three gamma scales and three logistic C values. Prototypes, landmarks and normalization use fitting data only; each model includes its transform in the same uncompressed joblib serialization. Every cell remains in the completed JSON.
 
-Selected in-budget control class_prototype_m33_g1_C10: 66.67%/0.9030NLL, 95.2KiB, 0.230ms/prefix. This exceeds the original native 65.10%/.963161 while using less storage and far less CPU time. Thus the original native result does not establish advantage even in this bounded-storage region.
+Selected in-budget control class_prototype_m33_g1_C10: 66.67%/0.9030NLL, 95.2KiB, 0.230ms/prefix. This exceeds the original native 65.10%/.963161 while using less storage and far less CPU time. Thus the original native model loses to the prototype control in this bounded-storage region.
 
 The whole compact grid costs10.043s/183.9MiB peak RSS; common raw preprocessing still costs123.976s. Shared prototype construction, kernel features, all fitting/tuning and scoring are paid in workflow wall. Solver FLOPs are unknown, not zero. The table summarizes each family/size by its minimum development NLL, with all gamma/C settings and probabilities retained.
 

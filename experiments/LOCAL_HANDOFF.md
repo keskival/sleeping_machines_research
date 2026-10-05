@@ -3683,3 +3683,27 @@ New owner90M pool8 and10M six-pass tied/baseline queues follow their existing
 admission; curie p96six-pass/tied/seeds/horizons retain ownership. Native compact
 parity, actual tied quality, end-to-end serving benefit and replication remain
 pending. No numerical admission or queue reallocation was executed here.
+
+## Editorial completion — 5 October 2026
+
+Continued the ambition/de-hedging edits from 7b53b835, fb044b5e and e22931d8.
+Experiment README, family design/opportunity guides, the HTML log and investor
+deck cover now lead with the full general-purpose substrate ambition. The HTML
+page explicitly identifies its 23 September historical stage and links current
+results. Report appendix prose states mechanism findings and losses directly;
+redundant disclaimers become concrete comparisons or next tests. Protocol,
+single-seed, unequal-quality/data and modelled-versus-measured qualifications
+remain where they change interpretation. No architecture, result file, benchmark
+number, queue or training priority changed.
+
+Rebuilt REPORT.md, its 237-page PDF, deck notes and both deck PDFs. Report numbers
+and all table rows match the previous version; deck evidence slides are unchanged.
+The scoreboard remains PDF page 2; report text fits page bounds. Deck cover was
+visually checked. Prior deck PDFs are archived by the bounded publishing script;
+its publication record is investment/publication_ambition_editorial_complete_20261005.json.
+
+Integrated model/queue priorities remain governed by PRODUCT_ORDERS.md and the
+shared HANDOFF.md: native content/time language with sparse addressed state and
+counterfactual route credit, AWS scaling/tuned comparisons and confirming seeds.
+Joint multimodal training, delayed writer credit, trained sparse serving and
+measured hardware work remain the concrete next proofs. No departure proposed.

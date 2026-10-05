@@ -5,23 +5,23 @@
 [Family overview](model_family_overview.md) · [Formal core](model_family_specification.md) ·
 [Design space](model_family_design.md) · [Evidence](architecture_evidence.md)
 
-The vision is a reusable learning and thinking substrate whose input, internal
-computation, memory, learning and output can all be event-driven. Different
-regions can also use dense operations or synchronous barriers. This register
-keeps application opportunities distinct from mechanism evidence, trained
-capabilities and commercial validation. It records plausible advantages without
-claiming exclusive access to a field or a completed product.
+Sleeping Machines aims to be the next general-purpose substrate for machine intelligence: one trainable architecture, learning rule and execution model spanning language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and datacenter, edge and clockless hardware.
+
+Input, internal computation, memory, learning and output can all be event-driven.
+Different regions can also use dense operations or synchronous barriers. Each
+opportunity below identifies its mechanism, current evidence and first decisive
+test.
 
 ## Opportunity map
 
 | ID / opportunity | Why this family fits | Current status | First discriminating proof |
 | --- | --- | --- | --- |
-| O1 / Irregular and variable-rate inputs | Addressed observations update persistent programs at their own times; silence and timing remain usable | Native event/state mechanisms exist; general mixed-source deployment remains open | Same causal observations and queries versus timestamp-aware controls; quality, work, latency and burst capacity |
+| O1 / Irregular and variable-rate inputs | Addressed observations update persistent programs at their own times; silence and timing remain usable | Native event/state mechanisms implemented; next: joint mixed-source training | Same causal observations and queries versus timestamp-aware controls; quality, work, latency and burst capacity |
 | O2 / Adaptive asynchronous neural codecs | Learned messages can become quantized communications; send/wait and local state can allocate rate over time and space | Proposed application; no completed codec or rate-distortion result | Causal independently decodable stream; actual bytes versus reconstruction error, work and latency |
-| O3 / Task-oriented distributed communication | Send the evidence a remote predictor needs, using persistent receiver context | Proposed composition; separate-task results do not establish it | Same downstream task quality using fewer transmitted bits after metadata and decoder work |
+| O3 / Task-oriented distributed communication | Send the evidence a remote predictor needs, using persistent receiver context | Proposed composition; next: train sender and receiver jointly | Same downstream task quality using fewer transmitted bits after metadata and decoder work |
 | O4 / Learning memory and scheduling policies | Slow learned rules govern fast writes, retention, retrieval, timing and optional computation | Relevant meta-learning precedents; local choice-credit and an earlier online pilot provide scoped project evidence | Delayed-use tasks with randomized facts and held-out task variations; compare future-return credit with immediate utility |
-| O5 / Joint embodied and cognitive learning | Language, vision, touch, proprioception and actions can share state, parameters and learning paths despite different cadences | Integration ambition; no project dexterity, motor-to-cognitive transfer or AGI demonstration | Joint manipulation/reasoning model improves held-out cognitive tasks from motor training, with data/compute-matched ablations |
-| O6 / Persistent inference and computing substrates | Available state/program capacity can exceed selected activity; local work and communication may suit datacenter and edge deployments | Language/mechanism evidence; trained sparse parity and system economics remain open | Repeated comparable-quality inference with complete traffic, residency, throughput, latency and energy accounting |
+| O5 / Joint embodied and cognitive learning | Language, vision, touch, proprioception and actions can share state, parameters and learning paths despite different cadences | Integration design; next: joint manipulation/reasoning training and transfer tests | Joint manipulation/reasoning model improves held-out cognitive tasks from motor training, with data/compute-matched ablations |
+| O6 / Persistent inference and computing substrates | Available state/program capacity can exceed selected activity; local work and communication may suit datacenter and edge deployments | Language and mechanism results; next: trained sparse parity and complete serving-cost measurement | Repeated comparable-quality inference with complete traffic, residency, throughput, latency and energy accounting |
 
 Input cadence, message count, encoded bit rate, selected computation and physical
 clocking are separate axes. None automatically scales with another. A single

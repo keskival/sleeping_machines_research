@@ -1,5 +1,7 @@
 # Experiments and evidence
 
+Sleeping Machines aims to be the next general-purpose substrate for machine intelligence: one trainable architecture, learning rule and execution model spanning language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and datacenter, edge and clockless hardware. Each benchmark tests one front of this program.
+
 Start with the [project report](../REPORT.md) for the current results and their
 scope. This directory preserves the experiment implementations and the evidence
 behind the report, including exploratory runs and failed approaches.
@@ -9,8 +11,9 @@ The current combined-mechanism experiments are the
 content, sparse receiver updates, temporal query/key races and counterfactual
 route credit. The eight-block parallel-head candidate retains historical token KV
 entries, transfers per-head winning values and mixes evolving timestamped
-channels through independent projections. Read [HANDOFF.md](HANDOFF.md) for live
-queue state; a committed plan alone does not establish that a remote job is running.
+channels through independent projections. Read [PRODUCT_ORDERS.md](PRODUCT_ORDERS.md) for current priorities and
+[HANDOFF.md](HANDOFF.md) for live queue state. Verify remote execution from the
+host logs and scheduler status.
 
 ## Research documents
 

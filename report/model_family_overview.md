@@ -55,8 +55,8 @@ by the general semantics. Local timers, joins and causal order remain necessary.
 
 The closest category is **hybrid dynamical event-processing with configurable
 stateful conditional computation**. It intersects recurrence, SSMs, attention,
-MoE, statistics, retrieval and event/spiking systems. Its useful contribution
-must come from the integrated construction and its quality/resource behavior.
+MoE, statistics, retrieval and event/spiking systems. Its contribution is the integrated construction, tested through prediction
+quality, learning and total resource use.
 
 ## Match rich functions where needed, remain economical elsewhere
 

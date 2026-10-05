@@ -18,9 +18,9 @@ Reading guide: slides 1–21 form the investor pitch; the remaining slides are o
 
 ## 1. Sleeping Machines
 
-AI that learns what to compute, when to compute it, and what to remember.
+The next general-purpose substrate for machine intelligence.
 
-Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.
+Sleeping Machines aims to be the next general-purpose substrate for machine intelligence: one trainable architecture, learning rule and execution model spanning language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and datacenter, edge and clockless hardware. Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.
 
 
 ## 2. Beats the saved Transformer baselines at a fraction of the compute.
