@@ -1,0 +1,2 @@
+# Smoke for the new weight-decay wrapper (AWS_CAPACITY_PROGRAM.md): 3 windows, no evaluation; run before the wd arms.
+aws_language_wd_smoke_20261005T040000Z experiments/language_wd_benchmark.py --weight-decay 0.01 --tag aws_language_wd_smoke_maxw3_20261005T040000Z --payload 64 --passes 4 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --cosine --eval-segment 256 --compiled --seed 6 --depth 4 --pool 2 --route-credit linear --max-windows 3
