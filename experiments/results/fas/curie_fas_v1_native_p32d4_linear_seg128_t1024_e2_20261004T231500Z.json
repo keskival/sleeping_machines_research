@@ -1,0 +1,158 @@
+{
+  "status": "completed",
+  "args": {
+    "data": "fas_v1_20261004",
+    "tag": "curie_fas_v1_native_p32d4_linear_seg128_t1024_e2_20261004T231500Z",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 2,
+    "route_credit": "linear",
+    "compiled": true,
+    "epochs": 2,
+    "lanes": 64,
+    "fit_runs": 10000,
+    "max_events": 1100,
+    "train_max_events": 1024,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 1000,
+    "trace_windows": 1,
+    "max_windows": 0,
+    "segment": 128
+  },
+  "parameters": 111456,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll": 2.0142784971622105,
+      "val_clean_nll": 0.9737466396138365,
+      "val_auroc": {
+        "32": {
+          "all": 0.501398,
+          "wear_and_tear": 0.5019039665970773,
+          "retry_delay": 0.5009328214971209
+        },
+        "64": {
+          "all": 0.516928,
+          "wear_and_tear": 0.5108851774530272,
+          "retry_delay": 0.5224836852207294
+        },
+        "128": {
+          "all": 0.556565,
+          "wear_and_tear": 0.5649206680584551,
+          "retry_delay": 0.5488829174664107
+        },
+        "256": {
+          "all": 0.615815,
+          "wear_and_tear": 0.6219290187891441,
+          "retry_delay": 0.610193857965451
+        },
+        "512": {
+          "all": 0.746674,
+          "wear_and_tear": 0.6936576200417537,
+          "retry_delay": 0.7954165067178502
+        },
+        "1024": {
+          "all": 0.997476,
+          "wear_and_tear": 0.9988204592901879,
+          "retry_delay": 0.9962399232245681
+        }
+      },
+      "epoch_s": 1424.4317359309935
+    },
+    {
+      "epoch": 2,
+      "train_nll": 0.585892565643717,
+      "val_clean_nll": 0.20458527455289474,
+      "val_auroc": {
+        "32": {
+          "all": 0.501298,
+          "wear_and_tear": 0.5020396659707724,
+          "retry_delay": 0.500616122840691
+        },
+        "64": {
+          "all": 0.52376,
+          "wear_and_tear": 0.5174446764091858,
+          "retry_delay": 0.5295662188099808
+        },
+        "128": {
+          "all": 0.561383,
+          "wear_and_tear": 0.5708956158663883,
+          "retry_delay": 0.5526372360844529
+        },
+        "256": {
+          "all": 0.624014,
+          "wear_and_tear": 0.6285720250521921,
+          "retry_delay": 0.6198234165067179
+        },
+        "512": {
+          "all": 0.75176,
+          "wear_and_tear": 0.7007348643006263,
+          "retry_delay": 0.7986717850287908
+        },
+        "1024": {
+          "all": 0.994553,
+          "wear_and_tear": 0.997812108559499,
+          "retry_delay": 0.9915566218809981
+        }
+      },
+      "epoch_s": 1330.7905904179788
+    }
+  ],
+  "selected_epoch": 2,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": 0.20927286208248397,
+  "test_auroc": {
+    "32": {
+      "all": 0.5211695,
+      "wear_and_tear": 0.5169990356798457,
+      "retry_delay": 0.5256604361370717
+    },
+    "64": {
+      "all": 0.52572925,
+      "wear_and_tear": 0.524960462873674,
+      "retry_delay": 0.5265571131879543
+    },
+    "128": {
+      "all": 0.56212925,
+      "wear_and_tear": 0.5742256509161041,
+      "retry_delay": 0.5491033229491173
+    },
+    "256": {
+      "all": 0.59979425,
+      "wear_and_tear": 0.603208775313404,
+      "retry_delay": 0.5961173416407062
+    },
+    "512": {
+      "all": 0.74218525,
+      "wear_and_tear": 0.6995086788813886,
+      "retry_delay": 0.788141225337487
+    },
+    "1024": {
+      "all": 0.994004,
+      "wear_and_tear": 0.9965877531340405,
+      "retry_delay": 0.9912217030114227
+    }
+  },
+  "work": {
+    "fit_unit_special_flops_per_event_estimate": 737978.248046875,
+    "whole_fit_unit_special_flops_estimate": 15113794520000.0,
+    "fitting_events": 20480000,
+    "scope": "first window traced (eager), extrapolated per event"
+  },
+  "data_manifest_sha256": "7f1e4da56ad97c6a1209dd8243b74e9fc3f0a3bd68e899b472a9ef95d836adf2",
+  "source_sha256": {
+    "experiments/fas/native.py": "49084e5d2526087ea80f61e5a6db0f8bcfa1a6ad6d359444f49e96685d0b9d3a",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 2924.564983262011
+}

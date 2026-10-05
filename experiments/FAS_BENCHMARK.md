@@ -155,3 +155,24 @@ estimates for dense references), and inference work up to the decision at N.
   Feasibility note: log lines carry no item id, and `env.active_process` at log time yields ~51 processes per clean run
   (item sub-processes), not 30 items. The oracle needs item identity propagated through the component calls, in an
   instrumented copy outside the vendored tree. The instrumented logger leaves event ids unchanged (checked on one seed).
+- 5 Oct 00:01 UTC: **first native result**
+  (`experiments/results/fas/curie_fas_v1_native_p32d4_linear_seg128_t1024_e2_20261004T231500Z.json`).
+  - Model: p32/d4 with linear route credit, 111,456 parameters.
+  - Training: carried-state segments of 128 events over the first 1,024 events of all 10K clean runs, 2 epochs,
+    7,500 events/s.
+  - Selection: epoch 2, by validation-clean NLL.
+
+  Test AUROC, all faults, by prefix N:
+
+  | Model | N=32 | N=64 | N=128 | N=256 | N=512 | N=1024 |
+  |---|---:|---:|---:|---:|---:|---:|
+  | Native p32/d4 | 0.521 | 0.526 | 0.562 | **0.600** | **0.742** | 0.994 |
+  | Best classical at that N | 0.523 (ngram3) | 0.532 (elapsed) | 0.566 (elapsed) | 0.559 (gap_z) | 0.727 (gap_z) | 0.998 (gap_z) |
+
+  - Native is ahead at N = 256 (+0.041) and N = 512 (+0.015), and tied with the best classical baseline below that.
+  - Single seed; dense, SSM and point-process references are pending on AWS.
+  - Next:
+    - save the weights;
+    - fixed score decompositions (event-type NLL, timing NLL, windowed maximum), declared before test;
+    - an estimate of the early-detection ceiling. Early on, wear faults add 0.7% delay against 1% timing noise, so
+      small N may carry little signal for any model.
