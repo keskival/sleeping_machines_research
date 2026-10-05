@@ -133,7 +133,9 @@ def main():
     p_.add_argument('--tie-pools', action='store_true'); p_.add_argument('--route-credit', default='linear')
     p_.add_argument('--seed', type=int, default=0); p_.add_argument('--data-seed', type=int, default=0)
     p_.add_argument('--eval-every', type=int, default=250); p_.add_argument('--holo-every', type=int, default=2500)
-    p_.add_argument('--holo-pairs', type=int, default=32); p_.add_argument('--compiled', action='store_true')
+    p_.add_argument('--holo-pairs', type=int, default=32)
+    p_.add_argument('--post-steps', type=int, default=2000, help='stop this many steps after held-out accuracy first reaches .99 '
+                    '(0: run all --steps); keeps the post-generalization compression phase'); p_.add_argument('--compiled', action='store_true')
     a = p_.parse_args()
     out = OUT / f'{a.tag}.json'
     if Path(a.tag).name != a.tag or out.exists():
@@ -150,14 +152,14 @@ def main():
                             lr=a.lr, betas=(.9, .98))
     eager = not a.compiled
     rc = None if a.route_credit == 'none' else a.route_credit
-    curve, holo = [], []; cross = {.5: None, .9: None}
+    curve, holo = [], []; cross = {.5: None, .9: None, .99: None}
     for step in range(1, a.steps + 1):
         sel = rng.integers(0, len(ta), a.batch)
         s, m, y = events(ta[sel], tb[sel], a.p)
         model.train(); opt.zero_grad(set_to_none=True)
         loss = F.cross_entropy(forward(model, s, m, 100000 + step, rc, False, eager), y)
         loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.); opt.step()
-        if step % a.eval_every == 0 or step == a.steps:
+        if step % a.eval_every == 0 or step == a.steps or (a.post_steps and cross.get(.99) is not None and step >= cross[.99] + a.post_steps):
             tr, te = accuracy(model, ta, tb, a.p, eager), accuracy(model, va, vb, a.p, eager)
             with torch.no_grad():
                 npriv = float(torch.sqrt(sum((q ** 2).sum() for q in private))); nsh = float(torch.sqrt(sum((q ** 2).sum() for q in shared)))
@@ -167,9 +169,12 @@ def main():
                 if cross[thr] is None and te >= thr:
                     cross[thr] = step
             print(json.dumps(curve[-1]), flush=True)
-        if step % a.holo_every == 0 or step == a.steps:
+        done = a.post_steps and cross.get(.99) is not None and step >= cross[.99] + a.post_steps
+        if step % a.holo_every == 0 or step == a.steps or done:
             holo.append(dict(step=step, **holography(model, ta, tb, a.p, a.holo_pairs, 7, eager)))
             print(json.dumps(holo[-1]), flush=True)
+        if done:
+            break
     result = dict(status='completed', args=vars(a), parameters=sum(q.numel() for q in model.parameters()),
                   private_parameters=sum(q.numel() for q in private), shared_parameters=sum(q.numel() for q in shared),
                   train_pairs=len(ta), heldout_pairs=len(va), curve=curve, holography=holo,
