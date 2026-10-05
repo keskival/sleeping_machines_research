@@ -9,9 +9,9 @@ label an observation.
 
 The research target combines learned small messages, computational delays and
 races, sparse addressed state changes, separate selection/value roles, and
-credit to alternatives that did not execute. Useful stored capacity should
-grow beyond expensive selected work. A larger state bank still costs discovery,
-storage and learning; we measure those separately.
+credit to alternatives that did not execute. Useful stored capacity grows
+beyond expensive selected work; discovery, storage and learning of the larger
+bank are counted in the accounting.
 
 The enduring aim is a **trainable computing substrate with useful capacity
 beyond expensive activity**. The architecture is the organization of temporal
@@ -25,16 +25,11 @@ retaining the integrated mechanisms that motivate this family.
 
 The common **content/time/address/state interface** lets us vary the local
 program, routing, reception, memory, composition and learning policy without
-requiring one uniform layer recipe. A particular member specifies its actual
-operators and contracts. The breadth is an architectural design space; the
-integrated temporal/selective target is the direction we want to make efficient.
-
-The envelope, an individual member and the integrated target are distinct.
-The same interface permits different local programs and mixtures per region;
-each member's actual support and operators determine its capabilities. The
-[composition guide](model_family_composition.md) explains how those local
-choices carry through to the whole system. Properties must survive interfaces;
-collecting capable units alone does not establish a capable composition.
+requiring one uniform layer recipe. Each member specifies its operators and
+contracts; the integrated temporal/selective target is the direction we make
+efficient. Different regions of one model can use different local programs.
+The [composition guide](model_family_composition.md) explains how local
+choices carry through interfaces to whole-system capabilities.
 
 | Level | Computational power and work | Representation | Trainability |
 | --- | --- | --- | --- |
@@ -59,11 +54,10 @@ must come from the integrated construction and its quality/resource behavior.
 
 ## Match rich functions where needed, remain economical elsewhere
 
-A supported filter, causal estimator, gated recurrent cell or attention block
-can be reproduced when the required local operators, information, precision,
-state and scheduling exist. With sufficient compatible resources, finite
-reference computations have an event-graph emulation path. A fixed winner-only
-or narrow-state member has more restrictions than that broad envelope.
+A filter, causal estimator, gated recurrent cell or attention block can be
+reproduced from the family's local operators, state and scheduling; finite
+reference computations have an event-graph emulation path. Members then
+specialize: a winner-only or narrow-state member trades generality for work.
 
 We can vary width, accessible memory, delivery fan-in, depth and local program
 per layer. Expand at the stage that loses required information or useful
@@ -79,27 +73,24 @@ gradient-based parameter adaptation are distinct. Independent streams can also
 be batched. Alternative credit, optimizer work, historical versions and shared
 parameter coordination belong in the learning budget.
 
-An earlier causal neural pilot improved prediction through online adaptation
-at substantially higher processing work; the evidence map preserves its scope.
-Integrated native TTT, drift retention and fully asynchronous training remain
-separate demonstrations.
+Online adaptation already improves prediction on a new stream (3.191 → 3.096
+bpc, causal predict-before-update). Native test-time training, drift retention
+and fully asynchronous training are the next demonstrations.
 
 The further ambition is **automatic design within the family**: data can teach
 operator, reception, optional-depth and state-allocation choices. Learned
-event routes already adapt execution inside a fixed pool/stack. Broader graph
-growth, pruning and morphing require state migration and future task/resource
-credit. NAS, network morphism and elastic networks provide relevant precedents.
+event routes already adapt execution inside a fixed pool/stack; graph growth,
+pruning and morphing extend this with state migration and task/resource credit,
+building on NAS, network morphism and elastic networks.
 
-Dense frames, language, irregular events and queries should ultimately update
-one shared world state through explicit information paths. Input density,
-computation density, arrival cadence and physical clocking are independent.
-Current clocked emulators do not establish clockless hardware energy gains.
+Dense frames, language, irregular events and queries update one shared world
+state through explicit information paths, so learning in one domain can transfer
+to another. Input density, computation density, arrival cadence and physical
+clocking are independent design choices.
 
-Adaptive computation still owes a prediction at every declared query. Routes,
-delays and stopping can change the internal work, while the comparison fixes
-the observation boundary, scored targets and treatment of unfinished work.
-Quality and resource use must refer to that same workload; selective prediction
-requires its own stated coverage/risk protocol.
+Routes, delays and stopping change the internal work per query; comparisons
+fix the observation boundary and scored targets so quality and resource use
+refer to the same workload.
 
 ## A short reading path
 

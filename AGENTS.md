@@ -54,6 +54,16 @@
   Pareto wins, efficiency points and evidence levels. Developing agents aim for these explicitly; reporting agents state
   a win plainly as a win with its evidence level and one scope statement, and state losses just as plainly.
 
+# Writing style: no reflexive hedging (user direction, 5 October 2026)
+
+- State results and mechanisms directly, with their numbers. Give scope once per table or section (seeds, data,
+  compute convention), not as a caveat attached to every sentence.
+- Do not follow a positive result with an unrelated negative or a pointer to limitations that do not bear on that
+  claim. Report losses in their own lines, as plainly as wins.
+- Keep a qualification only where it changes how a reader interprets the number: measured vs modelled (hardware
+  energy), completed vs pending, untouched official test sets, protocol errors.
+- Replace "remains open / not yet demonstrated / does not establish" boilerplate with the concrete next test.
+
 # Research direction and architectural continuity
 
 - The objective is a trainable, scalable substrate that computes through time

@@ -2,6 +2,65 @@
 
 **Deep learning that computes with time.**
 
+Sleeping Machines is a model family in which every message carries **content, an arrival time and an address**.
+Receivers hold persistent memories that decay and rotate with the real time elapsed between events. Candidate routes
+**race through learned delays**; the winner updates state and sends the next message, and the routes that did not win
+still receive **counterfactual credit**. Arrival order decides which memories meet and which computation happens, so
+delays do computation rather than merely label it.
+
+The same interface expresses dense synchronous layers and sparse asynchronous event processing. One model can take in
+token streams, sampled sensor data and irregular interleaved event logs into a shared persistent state, and choose per
+region whether to compute densely or selectively. The long-term target is a trainable, globally clockless substrate
+for both inference and learning.
+
+[Model family at a glance](report/model_family_overview.md) ·
+[Interactive visual atlas](report/architecture_atlas.html) ·
+[Definition and design rationale](report/model_family_design.md) ·
+[Formal core](report/model_family_specification.md) ·
+[How capabilities compose](report/model_family_composition.md) ·
+[Claims and evidence](report/architecture_evidence.md) ·
+[Application opportunities](report/model_family_opportunities.md)
+
+## The bets
+
+| Bet | Why it matters | Where it stands | Decisive next test |
+|---|---|---|---|
+| **Time performs computation** | Learned delays, races and phase rotation select and combine information. An exponential race picks route *i* with probability softmax(score)<sub>*i*</sub> exactly, and delay-coded aggregation reproduces softmax attention exactly over the delivered keys ([note 08](experiments/theory/08_vector_memory_and_deep_stacks.md), [note 151](experiments/theory/151_normalized_clock_noise_and_precision_credit.md)). Winner-only races deliver the sampled winner's value instead of the weighted average, skipping the value-aggregation half of attention arithmetic; the saving grows with context length. | Proven identities; integrated temporal models learn order, timing and rules (results below). | Race attention inside a competent Transformer, on GPU, at equal FLOPs across a scaling curve ([crossover plan](experiments/LANGUAGE_CROSSOVER_PLAN.md)). |
+| **Hard routes learn through counterfactual credit** | Discrete sparse routing is a long-standing training problem. Crediting unrealized alternatives trains it directly and deepens useful computation without dense inference. | Value-informed route credit: **2.507 → 2.371 bpc for 0.3% extra training work** (text8 10M). | Credit at larger pools and depth; sampled credit with flat cost in pool size. |
+| **Capacity beyond activity** | Stored skills and context can grow while the work per input stays bounded. | Pool 2 → 4: **2.371 → 2.345 bpc at the same eight writes per character.** | Large-pool capacity curve with sampled credit ([capacity program](experiments/AWS_CAPACITY_PROGRAM.md)). |
+| **One substrate for synchronous and asynchronous data** | Language, sampled signals and timestamped events can share one persistent world state, with transfer between the domains. | Shared interface and primitives implemented; each domain trained so far as a separate model. | Joint training on event logs plus text or sensor data, measuring transfer in both directions against single-domain models. |
+| **Event-native inductive biases** | Interleaved, timestamped streams from many concurrent processes (industrial and IoT logs, IT operations, security, transactions) match the architecture: elapsed time changes memory, the next event is a first arrival, concurrent processes keep separate addressed state. | FAS v1: native beats all six generic identity-free controls at early detection (AUROC **0.600 vs 0.559** at 256 events, 3.2σ). A structure-aware de-interleaver solves v1 exactly. | Pre-registered FAS v2 with ambiguous identity ([protocol](experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md)), then a real-data track. |
+| **Clockless hardware and on-substrate learning** | Local memory access, no clock tree and idle capacity at leakage power; data movement dominates AI-chip energy. Delays, routes and local maps can learn in place. | Hardware cost model: the p96 native model moves **5.8× fewer bytes per character** than Transformer-256×4 at better quality (modelled). Online learning: **3.191 → 3.096 bpc** on a new stream. | Calibrate the cost model on FPGA or existing neuromorphic silicon ([hardware thesis](investment/HARDWARE_THESIS.md)). |
+
+## Strongest results
+
+Single training seed unless noted. Native compute is traced; reference compute is shape-estimated. Hardware figures are
+modelled, not measured on silicon.
+
+**Language (text8, characters; lower bits per character is better).**
+- **Beats Transformer-256×4 (4 passes, 1.908 bpc) with 1.888 bpc at 0.40× its training compute and 0.18× its
+  inference compute per character** (352 vs 889 TFLOPs; 1.32 vs 7.41 MFLOPs per character).
+- **Beats the validation-selected tuned Transformers at both 10M budgets:** 1.888 vs 1.996 and 1.955 vs 2.215, at
+  101–104% of their training compute. Strict at-or-under-budget runs are queued.
+- **Scales with data:** the first 90M-character fit reaches **1.800 bpc** with 422K parameters at 0.97 PFLOPs.
+- Tuned LSTMs lead at these small budgets (1.826 vs 1.888 at 10M). LSTMs are the small-data diagnostic; the
+  strategic contest is against Transformers at scale.
+
+**Mechanisms in integrated models.**
+- **Temporal order learning:** 99.73–99.93% across five runs after one pass over 2,000 examples; Transformer controls
+  reach 33.25–40.80% after repeated fitting.
+- **Timing as information:** 95.3% on paired timing against an exact 50% ceiling for any order-only model.
+- **Shared rules, private memories:** 75.4% vs 44.1% order accuracy at 16 occupied sources, with **11.1× fewer
+  parameters** and 6.6% less fitting work.
+- **Joint addressed outcome races:** 0.102 bits / 96.1% on a distant relation vs 0.750 bits / 78.1% for the matched
+  local model, for 2.56% extra fitting work ([note 68](experiments/theory/68_joint_addressed_outcome_races.md)).
+- **Rule generalization:** 100% on all 3,440 unseen mod-17 triples with 69 learned phase scalars.
+- **Length generalization:** 100% retrieval at four times the training context.
+- **Speech (SHD):** 79.7% on 512 held-out development utterances from reserved speakers; official test untouched.
+
+Full evidence, protocols and every completed comparison, wins and losses alike: [REPORT.md](REPORT.md) and
+[the PDF](report/sleeping_machines_status.pdf). Earlier README text: [archive](report/archive/README_20261005T150000Z_previous.md).
+
 <!-- scoreboard:start -->
 ## Scoreboard (generated from result files; definitions in experiments/WIN_CRITERIA.md)
 
@@ -28,429 +87,28 @@
 Single seeds unless stated; same test interval; native/Transformer reset T256 windows, saved LSTM carries state. Identical-context LSTM rescoring is pending. Native compute traced, references shape-estimated or as published. Full report: REPORT.md; orders: experiments/PRODUCT_ORDERS.md.
 <!-- scoreboard:end -->
 
-[Model family at a glance](report/model_family_overview.md) ·
-[Interactive visual atlas](report/architecture_atlas.html) ·
-[Definition and design rationale](report/model_family_design.md) ·
-[Formal core](report/model_family_specification.md) ·
-[How capabilities compose](report/model_family_composition.md) ·
-[Claims and evidence](report/architecture_evidence.md) ·
-[Application opportunities](report/model_family_opportunities.md)
-
-The review uses the same computational-capacity, representational-capacity and
-trainability axes from events and primitives through units, modules, interactions,
-layers, stacks, memory compositions and complete systems. It separates implemented
-family members, theoretical inclusions, completed evidence and open integration.
-Choose state programs, reception, routing and learning budgets per layer: selective
-where sufficient, exact/dense interaction where required. The event semantics need
-no global synchronous update tick; local timers, joins and causal order remain.
-Current clocked emulators do not establish clockless hardware energy savings.
-The same trainable units/state support online and test-time learning as family
-capabilities, with causal objectives and streamed or batched updates. Full
-asynchronous sparse training and measured TTT gains remain to be demonstrated.
-Another ambition is learned adaptation of the graph itself: choose operators,
-reception and allocated structure from data within the family, beyond the
-already dynamic event routes. Full structural-learning validation remains open.
-
-**Our ambition: a universal, general-purpose learning architecture that combines
-content, time and selective computation.** One substrate should learn from
-language, dense synchronous observations and sparse asynchronous streams,
-including their joint arrival into a shared persistent world state. Small-data
-statistical memory, deep learned representations and Transformer-capable
-retrieval are complementary parts of this ambition.
-
-This ambition is already partly supported: completed statistical-memory language
-comparisons compete with strong counting and dense references; temporal rules,
-deep event representations and counterfactual routes learn; and delay-coded
-aggregation has an exact deterministic softmax identity under its stated
-conditions. The broader family has an in-principle path to Transformer
-expressivity while offering additional choices of memory, timing and activity.
-The current native streaming model tests persistent event state; it does not yet
-implement that complete Transformer-equivalent path.
-
-**We know of no mathematical obstruction to this direction.** Efficient native
-learning at scale and the resulting quality/resource frontier remain open
-research questions. A sampled race matches the attention mean, not an entire
-nonlinear Transformer exactly. Roughly half the attention aggregation work is a
-conditional inference opportunity, not a demonstrated halving of complete-model
-inference. The completed approximately 49.66% reduction concerns replay fitting
-work. Joint multimodal learning and end-to-end comparable-quality advantage are
-still to be demonstrated. See the [architectural argument](experiments/theory/07_transformer_attention_and_training.md),
-[exact delay-coded attention](experiments/theory/08_vector_memory_and_deep_stacks.md)
-and [complete resource conditions](experiments/theory/43_compute_allocation_and_frontier_scaling.md).
-
-**Completed native language evidence at 10M characters.** With route credit,
-the depth-8/payload-32 model scores **2.326 test BPC**, versus **2.427** for the
-saved one-pass Transformer, both evaluated with 256-character windows. The
-wider depth-4/payload-64 model scores **2.183**, close to the one-pass LSTM's
-**2.171**. At depth 4/payload 32, increasing the pool from two to four improves
-matched-window BPC from **2.371 to 2.345**, while selected writes remain eight
-per character; available capacity and scored keys increase. These are completed
-single-seed, separately trained native models, with 128-character training
-segments versus the controls' 256. They establish scoped quality gains over
-that Transformer control, not frontier supremacy or superiority over every
-reference: the saved count reference remains stronger at this data budget.
-See the [completed comparisons and resource accounting](REPORT.md)
-and [current 90M protocol](experiments/AWS_NATIVE_LANGUAGE_90M.md).
-
-**First completed native 90M language fit.** The payload-32/depth-4/pool-4
-model reaches **1.997 test BPC** (1.998 with 256-character evaluation windows),
-using 177,019 parameters and one pass-equivalent budget. This improves its
-10M result by about 0.347 BPC. The saved larger multipass LSTM and Transformer
-remain ahead at 1.661 and 1.604; comparable-quality advantage is still open.
-[Completed run and work accounting](experiments/results/language_batched/aws_language_batched_90M_r2_p32d4_pool4_linear_l64_lr004_cmp_s6_20261003T110000Z.json).
-
-Sleeping Machines explores models in which an event carries content and an
-arrival time. Nodes mix incoming vectors with persistent memory, gate their
-updates, transform messages and compete
-through learned delays. The winning message determines what happens next;
-unrealized alternatives can teach the network to make better choices.
-
-**Delays do computation.** Changing a delay changes arrival order, which memories
-interact and which route wins. Sleeping units and sparse activity are part of the
-resource model; temporal computation is the central architectural idea.
-
-The goal is a broadly useful model family with competitive predictive quality and
-substantially less physical work in both training and inference. This repository
-contains the implementations, mathematical analysis, reproducible experiments and
-completed results used to pursue that goal.
-
-The prioritized integrated candidate now tests our native strengths directly:
-**eight event blocks, independent parallel receiver heads, learned temporal
-races, incoming content mixed with evolving memory, and losing-route credit**.
-Observed stream addresses select persistent receiver pools. Other streams can
-progress independently; silence does not trigger periodic state scans. A token
-content adapter tests the same core on language, with learned maps shared across
-symbols. This branch has no per-position KV attention bank; it tests useful
-persistent representations rather than full-cache equivalence.
-
-The [research value plan](experiments/RESEARCH_VALUE_PLAN.md) prioritizes order
-and elapsed-time learning, native language quality, occupied-capacity scaling,
-then real irregular streams and matched AWS controls. Full-depth numerical,
-optimizer-recovery and small accounting checks have passed. Completed pilot
-quality and resource evidence will determine scaling, with refitted controls
-and independent seeds. The [native derivation](experiments/theory/50_native_addressed_event_learning.md)
-separates state capacity, parameter exposure and complete optimizer work.
-
-The completed [native mechanism screen](experiments/SPLIT_SCREEN_FINDINGS_20261002.md)
-now gives two positive indications: **95.3% on paired timing versus an exact50%
-order-only ceiling**, and **75.4% versus44.1% order accuracy at16 occupied
-sources** when learned processing is shared while memories remain private.
-The latter uses **11.1× fewer parameters and6.6% less counted fitting work**.
-Both retain the full eight-block sparse temporal construction. These are
-single-seed synthetic development results; independent confirmation and strong
-time-aware controls are required for broader superiority claims.
-The [next AWS battery](experiments/AWS_NEXT_BATCH.md) fixes those replication
-tests before new holdout scores are read. The
-[theory update](experiments/theory/61_reusable_rules_and_private_predictive_state.md)
-separates shared learning, private information and task-sensitive time.
-
-The completed full-core reception comparison tested **content-dependent temporal reception**:
-each head reuses its key/query matches for several fast clock policies. Learned
-projections match incoming content/state against latched rotating clock vectors,
-then compose the gated components into the next message. At the matched2K
-language budget, two/four-clock variants miss the declared quality gate; larger
-reception fits are deferred. Native language improves **3.765→3.557 bpc** from2K
-to8K fitting characters at fixed54,907 parameters and four passes. The
-[derivation and contracts](experiments/theory/51_temporal_windows_and_spike_trains.md)
-also construct learnable integration windows and information-bearing spike
-trains; those primitives are not yet a fitted full language model.
-[Useful capacity and mixing](experiments/theory/52_useful_capacity_and_local_mixing.md)
-explains task-aligned interaction rank, learning exposure and marginal work.
-
-**Arrival times are simulator coordinates, not a global execution tick.**
-The native function uses elapsed intervals, local precedence and causal joins;
-shifting the time origin preserves predictions within numerical precision.
-The CPU input API serializes observed events on a common axis. A globally
-clockless ASIC remains a hardware implementation target, with local time-scale,
-coordination and energy costs to measure.
-
-Earlier receiver and episodic race-attention models remain documented in the
-[integrated language guide](experiments/INTEGRATED_LANGUAGE.md), with their
-stronger results preserved. The H2 KV model improves from **3.733 to 3.490 bpc**
-when fitting data grows from 2K to 8K characters, but has a substantial train/dev
-gap. Compact historical write credit improves its matched 2K score to **3.722**
-for additional work and 50% more K/V tensor storage; both tested strengths miss
-the .02 bpc promotion gate. This is learning, but does not establish a scaling
-curve to frontier supremacy. [The write-credit derivation](experiments/theory/49_historical_write_eligibility.md)
-and original comparisons remain part of the evidence.
-
-The new [AWS fast matrix](experiments/AWS_RUN_FAST_MATRIX.md) contains **17 small
-pilot comparisons** across temporal signals, character language and tabular
-classification/regression, with contracts and accounting smokes first. It tests
-our integrated strengths before spending days on larger fits. The
-[robotics protocol](experiments/AWS_EARLY_INDICATION_MATRIX.md) prioritizes
-supervised processing of recorded, unsynchronized force/pose streams; robotics
-adapters are still pending. The [research gym](experiments/GYM_FARM.md) and
-[staged equipment shopping list](experiments/RESEARCH_FARM_SHOPPING_LIST.md)
-define the path to reproducible parallel work across independent hosts.
-
-New completed AWS evidence includes **3.106 development bpc** for the older
-six-block sparse model on 32K fitting characters, and **1.661 / 1.604 test bpc**
-for the 90M-character LSTM / Transformer controls. These data/model/scoring
-budgets differ. The current local native 2K model uses **6.02× less counted
-whole-fit work** than the saved KV construction at **0.032 bpc worse** development
-quality; it is a near-quality resource tradeoff, not established language supremacy.
-The report retains those distinctions and the negative depth/residual findings.
-
-The [first cross-domain screen](experiments/FIRST_SCREEN_FINDINGS_20261001.md)
-showed 95.3% versus 93.0% banknote development accuracy for ours and boosted trees.
-The [reserved-test confirmation](experiments/AWS_BANKNOTE_CONFIRMATION.md)
-now gives **91.8% versus 94.0% mean accuracy across three seeds**: competitive
-accuracy, **no confirmed advantage**. Logistic regression reaches 94.7% and
-substantially better log loss (0.091 versus ours 0.235). Accuracy intervals
-include zero difference but do not establish equivalence. CatBoost seed8
-was stopped without a score; the full four-family confirmation is incomplete. Wine favors trees; extra reception has not earned its cost.
-The [admitted next AWS battery](experiments/AWS_SPLIT_EVENT_BATTERY.md) tests
-protected memory, shared rules/private state and identifiable elapsed time.
-The [advantage battery](experiments/ADVANTAGE_BATTERY.md) defines promotion,
-recognized-domain comparisons and [chronological learning](experiments/NONSTATIONARY_PROTOCOL.md).
-The [generator-to-receiver analysis](experiments/theory/56_generator_to_receiver_requirements.md)
-derives necessary information paths rather than relying only on ablation.
-
-Our hypothesis is **more capability per unit of active work**. Temporal races
-can approximate attention while avoiding selected arithmetic and value
-aggregation; evolving state and useful dormant modules may reduce the width,
-depth or fitting needed for comparable quality. Full-bank key/query scoring
-still costs work. One winner is not a deterministic attention average, and
-compression and frontier language superiority remain experimental questions.
-The report puts the [full-bank work scaling](report/figures/full_bank_temporal_scaling.png)
-and [logical access comparison](report/figures/full_bank_temporal_traffic.png)
-near the front. Both models retain the same context/depth order in this matched
-attention substitution; further gains depend on learned temporal computation
-and economical recruitment of dormant capacity. Irregular event streams are a
-natural input interface, with event-camera benchmarks still to come.
-
-The same event interface can carry language tokens or asynchronous sensor
-observations. Reusable temporal primitives and training machinery are a practical
-advantage; input adapters and objectives remain task-specific. Existing cross-task
-results use separately trained models, so shared-weight multimodal learning is a
-further milestone. The [event-stream advantage protocol](experiments/EVENT_STREAM_ADVANTAGE_PROTOCOL.md)
-tests real-stream quality, silence, temporal information and dormant-capacity
-scaling against controls that also accept timestamps. Instruction-conditioned
-robotic control is a further application: language goals, persistent world state,
-irregular observations and timed actions. Joint expressive reasoning and reliable
-control need their own benchmarks; they do not follow from the current task wins.
-The stronger integration target is instruction-conditioned event routing and
-shared persistent state: language guides perception, events ground language, and
-both inform actions. This joint model is a next milestone, not an existing result.
-
-Distributed event-triggered hardware is another target: local state and
-communication can reduce global coordination and avoid periodic work during
-silence. FPGA prototypes can validate sparse execution; asynchronous ASICs can
-test physical delay/race computation. Clock removal alone saves its measured
-energy fraction, with control overhead deducted. The larger opportunity combines
-that with sparse activity and reduced traffic. See the [hardware hypothesis and
-measurement plan](experiments/HARDWARE_VALUE_PROPOSITION.md); hardware joules
-are not yet measured for Sleeping Machines. Replicating Transformer-quality
-training and inference at lower whole-system energy on clockless hardware would
-already be a useful milestone; richer temporal state, dormant capacity and
-cross-modal integration provide further directions.
-
-The report's opening pages set out five routes to useful advantage: a
-Transformer-relevant clockless workload, smaller models through richer temporal
-computation, economical growth of dormant capacity, integrated language/event
-reasoning and control, and native on-substrate learning. Each has an explicit
-next test. Illustrative compression
-and energy scenarios show the possible payoff without presenting assumptions as
-completed results.
-
-**Learning can be native to the substrate too.** A suitably equipped event ASIC
-could learn delays, routes and local content/state parameters during use, through
-local traces and error/reward messages. This could reduce external training data
-movement and enable continual adaptation. Our CPU full-backbone online result
-improves 3.191 to 3.096 development bpc with predict-before-update semantics;
-clockless on-chip learning remains a hardware milestone. Current training uses
-autograd and block-delayed Adam, whose dependencies must be mapped or explicitly
-replaced and tested. On-chip learning has neuromorphic precedents; our target is
-its combination with deep expressive temporal computation and sparse credit.
-
-Sparse conditional routing also motivates a [tabular-data hypothesis](experiments/TABULAR_RESEARCH_PROTOCOL.md):
-learn feature-dependent paths and useful optional modules while preserving feature
-identity. Static rows need no invented event ordering. Boosted trees and modern
-tabular Transformers are essential controls. The banknote screen gives an
-exploratory quality lead over the original boosted-tree control; stronger-control
-three-seed confirmation is underway. Broad tabular superiority is not established.
-
-### The differentiators at a glance
-
-- **Time performs computation:** learned delays, races and phase transformations. Earlier events change the state and routes encountered by later ones; elapsed time changes the stored state. This supplies a native ordering bias for sequence-sensitive signals.
-- **Hard routes can learn:** winners execute; unrealized alternatives receive credit.
-- **Deep, persistent representations:** vector messages, local memory and reusable temporal primitives.
-- **Capacity beyond activity:** the scaling goal is useful dormant capacity with selective work and competitive quality.
-
-**Start with the [project report](REPORT.md) or [PDF](report/sleeping_machines_status.pdf).**
-The next language comparisons follow the [frontier compute protocol](experiments/FRONTIER_COMPUTE_PROTOCOL.md)
-and [compute-allocation theory](experiments/theory/43_compute_allocation_and_frontier_scaling.md).
-The original ideas are preserved in the
-[historical motivation manifesto](HISTORICAL_MOTIVATION_MANIFESTO.md).
-
-## Demonstrated capabilities
-
-| Capability | Completed evidence | Scope |
-| --- | --- | --- |
-| Ours: integrated sparse temporal language | **3.121 development bpc**, 324 available units / six selected receiver updates per character | 32K fit, four passes, 8,191 cold development targets, payload 16; no dense carrier or statistical experts; [completed record](experiments/results/parallel_language/local_full_sparse_language_D32768_p2_20260930T175400Z.json) |
-| Ours: integrated depth comparison | **3.633 → 3.542 development bpc**, six → eight receiver blocks | Same 2K fit/development, payload 32, four passes, seed 6; extra depth also increases capacity/work; [eight-block record](experiments/results/episodic_language/local_episodic_pair_receiver_D2048_d32_s6_depth8_20260930T210000Z.json) |
-| Ours: online neural learning | **3.191 frozen → 3.096 adapting bpc** on a new stream | Inherited integrated checkpoint; score before each 16-character block update, 8K development stream, all-neural-parameter adaptation; [completed record](experiments/results/online_language/local_integrated_online_backbone_D8192_20260930T200000Z.json) |
-| Ours: earlier temporal carrier | **2.210 development bpc** | Width 128 / 1M fit / four passes; every carrier layer executes. Retained diagnostic, distinct from sparse receiver and KV models |
-| Ours: learned language context | **3.395 validation bits/character** with eight layers versus **3.464** with one; lower is better | Small language/depth development screen |
-| Ours: temporal order learning | **99.73–99.93%** across five runs after one pass over 2,000 examples | Depth-three event chains; Transformer controls reach 33.25–40.80% after repeated fitting on those examples; declared structured task |
-| Ours: rule generalization | **100% on all 3,440 unseen mod-17 triples**, with 69 learned phase scalars | Periodic primitive in the common model; supplied period 17; certified across all 4,913 possible triples |
-| Ours: longer-context retrieval | **100% at four times the training context** | Common two-layer carrier plus learned relative pointer; controlled synthetic task |
-| Ours: temporal composition | Native shared-motif models reach approximately **99.65%** | Task-specific native model; event activity and dense MACs are different work measures |
-
-A matched width-128 pilot adds content-dependent memory write/forget gates and
-improves **2.643 to 2.587 development bpc**, with 0.50% more parameters and
-1.41% more fitting arithmetic. The input vector already enters persistent state
-and a gated residual output; it is not replaced by a constant node vector.
-Frozen interventions confirm that both input content and earlier messages affect
-predictions. These are one-seed development results from the earlier carrier.
-Its [historical staged campaign](experiments/queue/local_language_nextscale_20260930T163234Z.json)
-is preserved. The current priority is the [parallel-head campaign](experiments/queue/local_parallel_heads_overnight_20260930T231500Z.json),
-with independent heads, packed historical storage and measured optimizer
-comparisons before larger-data promotion.
-
-The completed language references remain available for the full learned-event
-benchmark; lower test bits/character is better:
-
-| Model | Fitting characters | Bits/character / split | Whole fitting GFLOPs |
-| --- | --- | --- | --- |
-| Ours: integrated sparse temporal, payload 16 / six blocks | 32K, four passes | **3.121 / development** | 31.053 |
-| [LSTM, width 512](experiments/results/e174/aligned_lstm_10m_20260930.json) | 10M, six passes | **1.799 / test** | 432,593 |
-| [Transformer, width 256, four layers](experiments/results/e174/aligned_tf_10m_20260930.json) | 10M, four passes | **1.908 / test** | 888,775 |
-| [AWS LSTM, width 512](experiments/results/aws_20260929/aws_e64_lstm_D90M_baseline_20260929/lstm_D90000000_s512_p6_dr0.1_v.json) | 90M, six passes | **1.661 / test** | 3,893,396 |
-
-These are different data budgets, capacities and scoring splits; this inventory
-does not establish matched-quality or iso-FLOP superiority. Every cost uses the
-same whole-fitting denominator, including backward, clipping and Adam, with
-unit-weight special functions. The report plots [quality versus total fitting work](report/figures/language_quality_vs_work.png)
-and [quality versus inference work per character](report/figures/language_quality_vs_inference.png),
-with all completed variants in the appendix ledger. The inference plot distinguishes
-the Transformer window scorer from a hypothetical KV-cache scenario; neither
-measures joules. Arithmetic-only counts are preserved.
-The [AWS integrated 10M definition](experiments/AWS_INTEGRATED_10M.md)
-is committed; a completed integrated official test is still pending.
-
-The separate statistical count/copy baseline reaches 1.727 text8 test
-bits/character after 10M-character count fitting. It does not use the learned
-Sleeping Machines event backbone and is not evidence of that backbone's
-language quality or compute advantage. Its comparison is retained separately
-in the report's language appendix.
-
-[Accuracy versus computation](report/figures/consolidated_work_frontiers.png)
-shows the consolidated arithmetic and retrieval comparisons. The report contains
-protocols, reference models, training budgets and the definitions behind each
-work estimate. Counted operations and logical memory visits are not measured
-energy.
-
-### The next integrated result
-
-The current candidate combines sparse receivers, independent parallel temporal
-heads and historical KV retrieval in **eight event blocks**. Completed
-single-head 8K controls reach 3.311 bpc for receivers and 3.357 for content-indexed
-KV; adding this KV did not improve quality. The new two-head 2K fit reaches
-3.786 bpc on a larger 8K development stream. Completed accumulated-update pilots
-reach 3.733 bpc with U64/lr.002 and 3.779 with U128/lr.004. The selected U128
-schedule uses **27.9% less whole fitting work** than the original U16 fit,
-within the declared 0.05 bpc tolerance of the best pilot. Learning rates/warmup
-also differ; this is a one-seed schedule result, not dense-model superiority.
-Numerical contracts pass for independent projections, causal timing, evolving
-channels, all-head gradients, partial gradient windows and exact recovery.
-Completed 8K fits reach H2 3.485 and H4 3.543 bpc, with 79.953 and 193.751
-whole-fit GFLOPs. They miss the declared promotion gate relative to the earlier
-3.357 indexed control, so longer fitting paused for diagnosis. More heads also
-increase width and change source/channel dynamics.
-
-A prepared follow-up retrieves two or four temporal arrivals per head from
-**one shared set of key/query matches**. Only the winning emitter renews its
-clock; arriving messages evolve until their local read. It retains independent
-spatial heads and aggregates the declared counterfactual teacher in O(Cd + md).
-Numerical, full guarded optimizer/recovery contracts and smoke fits pass. The
-completed two-arrival pilot reaches 3.820 bpc versus nested one-arrival 3.779;
-four arrivals complete at3.771 bpc. Four winner deliveries cost **4.57% extra
-whole fitting work** with shared matches, but the .008 bpc gain misses the
-.02 promotion gate; longer repeated-arrival fitting is deferred. The report preserves these negative results beside the earlier wins.
-
-The next [guarded credit/data ladder](experiments/queue/local_language_credit_campaign_20261001T074000Z.json)
-starts with a frozen-checkpoint audit. Forward memory survives the current
-16-character boundary, but earlier key/value producers lose later training
-credit. A matched 64-character credit trial preserves the inference architecture
-and sparse temporal mechanisms. It also retests the strongest completed
-U64/lr.002 schedule at 8K before choosing any 32K/131K promotion. Longer credit,
-more data and better quality are measured separately rather than assumed.
-See [current state](experiments/HANDOFF.md), [the guide](experiments/INTEGRATED_LANGUAGE.md)
-and [the theory](experiments/theory/48_parallel_heads_and_work_scaling.md).
-
-We have explored only a small part of the architecture's design space. The next
-evidence must show which combinations improve held-out quality for their complete
-training and inference costs. The following earlier results remain useful
-mechanism evidence and controls.
-
-The common implementation currently
-covers multiple independently trained tasks; sharing an implementation does not
-by itself establish general representation learning.
-
-A bounded **language/depth screen** now reaches **3.395 validation
-bits/character with eight layers**, versus **3.464 with one layer**. It uses
-8,192 training characters, four passes and 1,024 validation predictions; all
-layers' value, route and memory-time parameters update. Shuffling preceding
-characters while preserving the last character, count and timestamps increases
-the deeper model's loss to 3.805. This is evidence of trainability and context
-sensitivity, with higher computation cost for the deeper model. It is a small
-development result, not a large-corpus result or a scaling claim.
-[Results and work audit](experiments/results/e133/generic_language_audit_20260929.json).
-
-The selected six-block temporal encoder reaches **79.69% on 512 held-out SHD
-utterances**, and **78.84% on a reused disjoint 657-utterance audit**, from
-reserved training-file speakers. It inherits a twelve-block fitting pass and
-development-based prefix selection. This demonstrates learning and some
-speaker transfer. The
-published official-test protocols are different, and our official SHD test set
-remains untouched.
-
-The next scaling milestone is a learned language model whose event backbone owns
-the prediction: increasing data budgets, matched Transformer/RNN/state-space
-references, and explicit measurement of quality, parameters, training work,
-memory traffic, time and energy. A large reduction in joules at useful predictive
-quality would be a significant result even before an advantage in raw loss.
-See the [language scaling protocol](experiments/LANGUAGE_SCALING_PROTOCOL.md).
-
 ## Architecture and learning
 
-The [integrated language models](experiments/INTEGRATED_LANGUAGE.md) are the
-current combined-mechanism experiments. At each depth a learned query races
-state-dependent keys; one receiver updates and sends a gated content-bearing
-message with an arrival time. Unselected receivers retain their state without
-empty-tick evaluation. The KV variant adds indexed historical key/value races.
-Content, keys, clocks, gates and retention all learn. Training evaluates admitted
-losing alternatives for a conserved local route teacher and charges those reads.
-Fixed receiver pools and a bounded causal schedule remain declared constraints;
-arbitrary topology and unrestricted asynchronous overlap are not demonstrated.
+The current integrated native core ([AddressedEventHeads](sleeping_machines/addressed_event_heads.py)) stacks event blocks
+(depth 4–8 in current runs) of independent parallel race heads. At each depth a learned query races state-dependent keys of a
+receiver pool selected by the observed stream address; the winning receiver mixes the incoming message with its
+persistent rotating memory, updates it, and sends a gated content-bearing message with an arrival time. Unselected
+receivers keep their state with no empty-tick evaluation. Content, keys, clocks, gates and retention all learn;
+losing alternatives are evaluated in training to give the route its counterfactual teacher, and that work is charged.
 
-The [shared model](experiments/SHARED_MODEL.md) combines configurable mechanisms:
+The [shared model](experiments/SHARED_MODEL.md) provides the configurable mechanisms:
 
-- **Sparse event carriers:** vector messages pass through a configurable depth
-  without evaluating a hidden grid of empty time steps.
-- **Local temporal memory:** causal numerator/mass states retain and combine
-  observations with linear scan work.
-- **Hard races and learned delays:** a winning route emits its own payload and
-  time. Losers remain distinct training alternatives.
-- **Separate keys and values:** an optional key stream computes input-dependent
-  routing and clocks while value learning preserves that schedule.
-- **Structured memories:** optional conditional evidence, relative pointers and
-  periodic transformations supply useful computations when appropriate.
-- **Task-appropriate supervision:** categorical decisions or next-event type and
-  waiting-time likelihoods, including the information in silence.
+- **Sparse event carriers:** vector messages pass through depth without a hidden grid of empty time steps.
+- **Local temporal memory:** causal state that retains and combines observations with linear scan work.
+- **Hard races and learned delays:** the winning route emits its own payload and time; losers remain training
+  alternatives.
+- **Separate keys and values:** a key stream computes routing and clocks while value learning keeps that schedule.
+- **Structured memories:** conditional evidence, relative pointers and periodic transformations where useful.
+- **Silence-aware supervision:** next-event type and waiting-time likelihoods, including the information in silence.
 
-Tasks have separate fitted weights and may use different depth or primitives.
-Small vector maps and output readouts use dense arithmetic. The earlier cross-task CPU
-reference sorts arrivals and replays contexts. A separate generic streaming
-path retains modal state and delayed messages across chunks; its eight-layer
-contract checks prefix causality and all-layer credit without prefix replay.
-The integrated language models retain state across chunks without prefix replay.
-Episodic variants score bounded indexed candidates; the native branch uses
-addressed receiver pools and no per-position KV bank. Competitive larger-data
-prediction and useful candidate coverage remain research objectives. All discovery, teaching
-and optimizer work belongs in the resource accounting.
+Arrival times are elapsed intervals and local precedence, not a global tick: shifting the time origin leaves
+predictions unchanged. The CPU reference serializes events on a common axis; a clockless ASIC executes the same
+semantics natively. All candidate discovery, teaching and optimizer work is counted in the resource accounting.
 
 ## Read the theory and evidence
 
@@ -471,8 +129,8 @@ and optimizer work belongs in the resource accounting.
 
 Source lives in [sleeping_machines/](sleeping_machines/); experiment drivers,
 executed queue commands and result records live in [experiments/](experiments/).
-The implementation is a research reference, with explicit contracts and source
-hashes rather than a claim of a production event processor.
+The implementation is a research reference with explicit numerical contracts and
+source hashes.
 
 ## Repository layout
 
