@@ -476,3 +476,28 @@ measures the residual. Forget-gate variation enters at second order.
 - R8: corr .29, sign agreement .64; shares .16 / .70 / .79.
 - Both are consistent with §430: the omitted write term and the truncated horizon carry most of the true credit, and
   more so with longer memories.
+
+**§430 refinement (5 Oct 14:30 UTC): two read paths, two coordinates.** The layer reads slot memory in two places:
+- **Proposals** read the *transported* memory m′_j = A_j(t − τ_j) m_j + w_j. For this path, Lemma 430.1 applies: the
+  difference "written versus not" at later reads is A(s − t) w_j.
+- **Race scores** read the *stored* memory through `key_read · m_j`, with no transport. For this path the stored
+  coordinate is what matters: a write changes it by m′_j − m_j = (A_j − I) m_j + w_j. Lazy decay *is* a real change
+  for score reads (a refresh re-stamps the key; note 142).
+
+**Corrected Proposition 430.2.** With G^score_j = ∂L/∂(stored m_j through later score reads) and Γ^value_j(t) the
+transported value-path gradient:
+
+    F_u − F_W ≈ g·(v_u − v_W) + [Γ^value_u·w_u + G^score_u·(m′_u − m_u)] − [same for W].
+
+Restated, Theorem 430.3:
+- **linear_rw** applied the stored-coordinate difference to *both* paths. That is correct for scores, wrong for values:
+  decay was counted as a value change.
+- **linear_rwn** applied the written content in stored coordinates to both paths. That is wrong for both: values were
+  transported from the wrong stamp, and scores missed the re-stamping.
+
+**Corrected Corollary 430.4.** Use two zero-valued shadow channels per slot:
+- σ^v, transported continuously like memory, accumulating (π − π̄)·w at each race;
+- σ^s, in stored coordinates, accumulating (π − π̄)·(m′ − m), and transported by A when the slot is really written.
+
+Proposals read m′ + transport(σ^v), and scores read m + σ^s. The forward is unchanged (both channels are exactly zero).
+Backpropagation delivers the full first-order choice credit to the scores.

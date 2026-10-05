@@ -53,6 +53,9 @@ def main():
     p.add_argument('--events', type=int, default=320); p.add_argument('--races', type=int, default=6)
     p.add_argument('--segment', type=int, default=128); p.add_argument('--seed', type=int, default=5)
     p.add_argument('--chunk', type=int, default=64)
+    p.add_argument('--estimator', choices=('implemented', 'compare'), default='implemented',
+                   help='compare: also score value-only and transported write credit (sleeping_machines/transported_credit.py; '
+                        'THEORY §430) on the same races; c_hat is then from the carried path with the same noise')
     a = p.parse_args()
     out = OUT / f'{a.tag}.json'
     if out.exists():
@@ -74,6 +77,18 @@ def main():
             b.retain_grad(); bases.append(b)
     per.sum().backward()
     T = y.shape[1]
+    extra = {}
+    if a.estimator == 'compare':                # same runs, same noise realization, carried-path estimators (§430)
+        from sleeping_machines.transported_credit import transported_logits
+        st = torch.tensor(np.stack([r[1] for r in runs]), dtype=torch.float64)
+        mk = torch.from_numpy(np.stack([np.eye(V, dtype=np.float32)[r[0]] for r in runs]))
+        for name, wc in (('value_only', False), ('transported', True)):
+            z, _, rec = transported_logits(model, st, mk, seed=seed, write_credit=wc)
+            for _, _, s in rec:
+                s.retain_grad()
+            nll(z, y, g, mask).sum().backward()
+            extra[name] = {(k, d): s.grad.detach().double().numpy() for k, d, s in rec}
+            model.zero_grad()
     entries = []
     for i in range(len(runs)):
         ks = rng.integers(32, T - 64, a.races)
@@ -97,22 +112,28 @@ def main():
             R = float((pi * F).sum())
             c = pi * (F - R)
             dev = {n: v - float((pi * v).sum()) for n, v in parts.items()}
+            more = {f'c_hat_{n}': v[(int(k), int(d))][i, h].tolist() for n, v in extra.items()}
             entries.append(dict(run=i, event=int(k), layer=int(d), head=int(h), pi=pi.tolist(), F_minus_R=(F - R).tolist(),
-                                c=c.tolist(), c_hat=c_hat.tolist(),
+                                c=c.tolist(), c_hat=c_hat.tolist(), **more,
                                 abs_share={n: float(np.abs(v).sum() / max(np.abs(F - R).sum(), 1e-12)) for n, v in dev.items()}))
     c_all = np.concatenate([e['c'] for e in entries]); h_all = np.concatenate([e['c_hat'] for e in entries])
     keep = np.abs(c_all) > 1e-9
     corr = float(np.corrcoef(c_all[keep], h_all[keep])[0, 1]) if keep.sum() > 2 else float('nan')
     sign = float((np.sign(c_all[keep]) == np.sign(h_all[keep])).mean()) if keep.any() else float('nan')
     shares = {n: float(np.mean([e['abs_share'][n] for e in entries])) for n in ('next', 'window', 'beyond')}
+    by_estimator = {}
+    for name in ['c_hat'] + [f'c_hat_{n}' for n in extra]:
+        hh = np.concatenate([e[name] for e in entries])
+        by_estimator[name] = dict(corr=float(np.corrcoef(c_all[keep], hh[keep])[0, 1]) if keep.sum() > 2 else float('nan'),
+                                  sign_agreement=float((np.sign(c_all[keep]) == np.sign(hh[keep])).mean()) if keep.any() else float('nan'))
     result = dict(status='completed', args=vars(a), source_result=str(res_path.relative_to(ROOT)), model_args=args,
                   races=len(entries), pairs=int(keep.sum()), corr_chat_c=corr, sign_agreement=sign,
-                  mean_abs_share_of_F_minus_R=shares, entries=entries,
+                  mean_abs_share_of_F_minus_R=shares, by_estimator=by_estimator, entries=entries,
                   scope='validation-clean runs, first --events process events, forced shadow lanes with shared noise; '
                         'c_hat = training score gradient (timing + linear value credit) of the summed run NLL')
     OUT.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=1) + '\n')
-    print(json.dumps({k: result[k] for k in ('races', 'pairs', 'corr_chat_c', 'sign_agreement', 'mean_abs_share_of_F_minus_R')}))
+    print(json.dumps({k: result[k] for k in ('races', 'pairs', 'corr_chat_c', 'sign_agreement', 'mean_abs_share_of_F_minus_R', 'by_estimator')}))
 
 
 if __name__ == '__main__':
