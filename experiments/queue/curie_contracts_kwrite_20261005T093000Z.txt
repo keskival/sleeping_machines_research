@@ -1,0 +1,2 @@
+# Torch contracts incl. k-winner writes (write_k=1 equals layer_step; k=2 writes twice the slots) before AWS k-write arms run.
+curie_contracts_kwrite_20261005T093000Z -m pytest -q tests/test_carried_episodes.py

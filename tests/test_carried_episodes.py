@@ -72,3 +72,23 @@ def test_stale_bias_neutral_at_zero_and_fills_slots_when_large():
         _, st, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True, stale_bias=30.))
     torch.testing.assert_close(a, b, rtol=0, atol=0)
     assert sum(int(s.sum()) for s in st['seen']) == sum(s.numel() for s in st['seen'])
+
+
+def test_write_k_one_equals_layer_step_and_k_two_writes_more():
+    from sleeping_machines.compiled_episodes import layer_step as ls
+    from sleeping_machines.recruit_layer import recruit_layer
+    model = _model(); stamps, marks = _data()
+
+    def k_step(k, deliver=False):
+        def step(*args):
+            return recruit_layer(*args, write_k=k, deliver_k=deliver)[:7]
+        return step
+    with torch.no_grad():
+        a, _ = carried_logits(model, stamps[:, :4], marks[:, :4], step=ls, deterministic=True)
+        b, _ = carried_logits(model, stamps[:, :4], marks[:, :4], step=k_step(1), deterministic=True)
+        _, s1 = carried_logits(model, stamps[:, :1], marks[:, :1], step=k_step(1), deterministic=True)
+        _, s2 = carried_logits(model, stamps[:, :1], marks[:, :1], step=k_step(2), deterministic=True)
+        c, _ = carried_logits(model, stamps[:, :4], marks[:, :4], step=k_step(2, True), deterministic=True)
+    torch.testing.assert_close(a, b, rtol=0, atol=0)
+    assert sum(int(s.sum()) for s in s2['seen']) == 2 * sum(int(s.sum()) for s in s1['seen'])
+    assert torch.isfinite(c).all()

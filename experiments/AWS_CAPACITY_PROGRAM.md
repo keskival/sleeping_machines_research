@@ -20,3 +20,19 @@ least 8 GiB MemAvailable.
   first, since the wrapper is new.
 - The estimates are not measurements. Set the RSS caps from a short smoke; pool 32 holds 16× the slot state.
 - Compute is reported as for every native language row: traced fitting work and winner-only inference.
+
+## k-winner writes (added 5 Oct 09:30 UTC; FINDINGS write-bandwidth hypothesis)
+
+Run after the weight-decay arms, in this order:
+
+| Queue | Test |
+|---|---|
+| `aws_kwrite_smoke_20261005T093000Z` | wrapper smoke (3 windows) |
+| `aws_language_10M_pool2_k2_20261005T093000Z` | pool 2, both slots write: only the writes change against 1.955 |
+| `aws_language_10M_pool4_k2_20261005T093000Z` | pool 4, the 2 earliest write (sparse half) |
+| `aws_language_10M_pool4_k1_20261005T093000Z` | its pool-4 k = 1 control |
+
+- **Read-out:** test bpc and the 2–4-character history-curve bin.
+- **Promotion gate:** at least .02 better than the matched k = 1 arm.
+- **Compute:** pool-4 arms cost about 2× pool 2 (linear credit computes every proposal), so they are diagnostics, not
+  budget-B comparisons.

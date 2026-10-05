@@ -1,5 +1,6 @@
 """Recruitment knobs for the race layer (THEORY §419): a fixed score bonus for never-written slots, a training-time
-score temperature, and the race probabilities exposed for an exposure (load-balance) penalty.
+score temperature, and the race probabilities exposed for an exposure (load-balance) penalty.  Also k-winner writes
+(write_k: the k earliest arrivals per head all write; deliver_k: deliver the mean of their proposals, §428).
 
 recruit_layer has compiled_episodes.layer_step's arguments plus free_bias and temperature, and returns layer_step's
 seven outputs plus pi (n, H, U).  With free_bias = 0 and temperature = 1 it equals layer_step exactly
@@ -16,7 +17,8 @@ from .compiled_episodes import _rotate, _transport
 
 def recruit_layer(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, query, key, key_read, clock_bias, control_w,
                   control_b, rate, frequency, input_w, output_w, gate_w, gate_b, gain, transport_rate, transport_frequency,
-                  linear_credit=False, write_credit=False, written_only=False, free_bias=0., temperature=1., stale_bias=0.):
+                  linear_credit=False, write_credit=False, written_only=False, free_bias=0., temperature=1., stale_bias=0.,
+                  write_k=1, deliver_k=False):
     n = x.shape[0]
     H, U, P = m.shape[1], m.shape[2], m.shape[3]
     total = H * P
@@ -54,8 +56,15 @@ def recruit_layer(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, que
     lse = torch.logsumexp(s64, -1)
     first_s = first - first * (lse - lse.detach())
     delay = .001 + .010 * first_s / (1 + first_s)
-    onehot = F.one_hot(winner, U).to(torch.bool) & active[:, None, None]
-    values = torch.gather(proposals, 2, winner[:, :, None, None].expand(n, H, 1, P)).squeeze(2)
+    if write_k > 1:                                # k earliest arrivals all write (write bandwidth; FINDINGS 5 Oct)
+        kth = times.topk(write_k, -1, largest=False).indices                    # (n, H, k), first = winner
+        onehot = F.one_hot(kth, U).sum(-2).to(torch.bool) & active[:, None, None]
+    else:
+        onehot = F.one_hot(winner, U).to(torch.bool) & active[:, None, None]
+    if write_k > 1 and deliver_k:                  # deliver the mean of the k earliest proposals (k-winner SDM, §428)
+        values = torch.gather(proposals, 2, kth[..., None].expand(n, H, write_k, P)).mean(2)
+    else:
+        values = torch.gather(proposals, 2, winner[:, :, None, None].expand(n, H, 1, P)).squeeze(2)
     pi = torch.softmax(s64, -1).to(proposals.dtype)
     if linear_credit:
         values = values + ((pi - pi.detach())[..., None] * proposals.detach()).sum(-2)

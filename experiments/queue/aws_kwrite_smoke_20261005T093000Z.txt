@@ -1,0 +1,2 @@
+# Smoke for the k-winner write wrapper (3 windows). AWS_CAPACITY_PROGRAM.md.
+aws_kwrite_smoke_20261005T093000Z experiments/language_kwrite_benchmark.py --write-k 2 --tag aws_kwrite_smoke_maxw3_20261005T093000Z --payload 64 --passes 4 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --cosine --eval-segment 256 --compiled --seed 6 --depth 4 --route-credit linear --pool 4 --max-windows 3
