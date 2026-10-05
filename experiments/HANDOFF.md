@@ -1,5 +1,16 @@
 # Session handoff — 2026-09-30
 
+**Scaling data input implemented:** token_scaling_dataset.py validates completed
+64K/256K/1Mtwo-pass cells, equal checkpoint-count cadence, initial-inclusive
+selection and source/data/optimizer/history family. Actual arithmetic attaches
+only to the exact audited fit/seed; no seed6cost borrowing. Immutable snapshot
+curie_token_scaling_measurements_20261005_v1.json has four64Krows, missing
+crossed cells and curve_fitted=false. Width/current-token interface and decoder
+are a coupled axis; available receivers/scored keys/selected writes retained
+separately. Reproduce snapshots with unique outputs as completed stages arrive.
+Full-work PID12140 remains live at latest check; no source changes to replay.
+
+
 **Message factor diagnostic prepared:** source inspection confirms full-message
 erasure also switches normalization and read-clock policy through has_ctx/
 ctx_arr. Existing scores retained with this precise intervention scope.

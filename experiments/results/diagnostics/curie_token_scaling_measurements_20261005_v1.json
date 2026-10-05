@@ -1,0 +1,153 @@
+{
+  "status": "completed_measurement_collection",
+  "rows": [
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1",
+      "seed": 6,
+      "payload": 16,
+      "admitted_train_tokens": 65536,
+      "fitting_targets": 131056,
+      "passes": 2,
+      "initial_nll": 8.162279794730392,
+      "selected_nll": 8.099439912683824,
+      "final_nll": 8.231404143688726,
+      "selected_step": 128,
+      "parameters": 2115464,
+      "core_and_input_parameters": 1631184,
+      "readout_parameters": 484280,
+      "tail_widths": [
+        16,
+        8,
+        4
+      ],
+      "available_receivers": 16,
+      "addressed_memory_scalars_per_lane": 256,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16,
+      "measured_targets_per_second": 409.7987092498286,
+      "rss_kib": 448368,
+      "complete_work": null
+    },
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1",
+      "seed": 6,
+      "payload": 24,
+      "admitted_train_tokens": 65536,
+      "fitting_targets": 131056,
+      "passes": 2,
+      "initial_nll": 8.162279794730392,
+      "selected_nll": 8.033310714422488,
+      "final_nll": 8.183002905752145,
+      "selected_step": 128,
+      "parameters": 3164842,
+      "core_and_input_parameters": 2462880,
+      "readout_parameters": 701962,
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "available_receivers": 16,
+      "addressed_memory_scalars_per_lane": 384,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16,
+      "measured_targets_per_second": 374.86867304809255,
+      "rss_kib": 496232,
+      "complete_work": null
+    },
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1",
+      "seed": 7,
+      "payload": 24,
+      "admitted_train_tokens": 65536,
+      "fitting_targets": 131056,
+      "passes": 2,
+      "initial_nll": 8.162279794730392,
+      "selected_nll": 8.07899134018842,
+      "final_nll": 8.307177016314338,
+      "selected_step": 128,
+      "parameters": 3164842,
+      "core_and_input_parameters": 2462880,
+      "readout_parameters": 701962,
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "available_receivers": 16,
+      "addressed_memory_scalars_per_lane": 384,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16,
+      "measured_targets_per_second": 375.1884299830873,
+      "rss_kib": 496128,
+      "complete_work": null
+    },
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1",
+      "seed": 6,
+      "payload": 32,
+      "admitted_train_tokens": 65536,
+      "fitting_targets": 131056,
+      "passes": 2,
+      "initial_nll": 8.162279794730392,
+      "selected_nll": 8.090418677236519,
+      "final_nll": 8.352937107460171,
+      "selected_step": 64,
+      "parameters": 4225420,
+      "core_and_input_parameters": 3305328,
+      "readout_parameters": 920092,
+      "tail_widths": [
+        32,
+        16,
+        8
+      ],
+      "available_receivers": 16,
+      "addressed_memory_scalars_per_lane": 512,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16,
+      "measured_targets_per_second": 343.93214061528494,
+      "rss_kib": 546508,
+      "complete_work": null
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.json": "6087c2835024422985cbd79c7400f74b6abdfd9936bc8f7e8ebaefde2c96bda2",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.selection.json": "124bbc298b007b61e302e94e1506c05182a0d4a46263452e295a2eb307e62660",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.selection.json": "4b94ff67d5179b5a9a3ba005aa8f827b0a1e1d11ad0f6b36bf216d6e2dfcc6e2",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.json": "b33b750f6d3d6c35a79dadd7d2baafb2e921460cd6c23abf939d64db845b8dfa",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.selection.json": "f203221d0605ee7e81e37dd5bea18c43c310280ce8a22ecd44a07970689d3ab2",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.json": "efbbbdeb781c6924310747d2013fc47ede9ae7843a8bc130a204e311a558a02e",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.selection.json": "465efc391634e476c081548f24d22282c2c729296ed8da560a8f7e366b64e8f9"
+  },
+  "missing_primary_cells": [
+    [
+      262144,
+      16
+    ],
+    [
+      262144,
+      24
+    ],
+    [
+      262144,
+      32
+    ],
+    [
+      1048576,
+      16
+    ],
+    [
+      1048576,
+      24
+    ],
+    [
+      1048576,
+      32
+    ]
+  ],
+  "crossed_quality_packet_complete": false,
+  "curve_fitted": false,
+  "producer_source_sha256": "ea5845d65e316ecc1efaa7176b0bbc4e7bd6a4969ae77644747abf6926771192",
+  "scope": "Completed development measurements only; no inferred law. Width changes core/input and decoder jointly; fixed selected write count is not fixed FLOPs. All two-pass work remains charged even when selected checkpoint is earlier. Cost axis uses only actual complete arithmetic audits; no projections or seed6 costs assigned to seed7. 4M remains reserved for extrapolation."
+}

@@ -118,3 +118,17 @@ rough surface; if coefficients are poorly identified, plot the supported
 simpler slopes and uncertainty instead. The4Mpoint remains an extrapolation
 test. Report the modelled estimate as an estimate, and retain every valid raw
 point, including losses. This visualization is an explicit deliverable.
+
+## Checked measurement input
+
+token_scaling_dataset.py is a stdlib-only collector for the64K/256K/1M
+width16/24/32family and independent seeds. It validates equal two-pass exposure,
+four-checkpoint cadence, initial-inclusive selection and shared source/data/
+optimizer/history identity. It records actual complete work only for the fit
+whose control matches the audit; a seed6cost is never assigned to seed7.
+The first immutable snapshot curie_token_scaling_measurements_20261005_v1.json
+contains four completed64Krows and explicitly reports an incomplete crossed
+packet/no fitted curve. Input JSON hashes bind each point to its provenance.
+Regenerate a uniquely named snapshot after completed stages for plotting/fitting.
+This is measured-data preparation, not a sufficient-data or identifiability
+claim. Missing costs and pending data points remain absent.
