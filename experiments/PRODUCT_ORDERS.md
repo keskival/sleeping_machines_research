@@ -110,3 +110,10 @@ home-field benchmark. Each FAS arm needs its smoke to pass.
 - Arms are screened at 1 epoch, compared within the sweep, and reported with occupancy.
 - The other host's 2-epoch untied pool 8 and pool 32 queues are kept but not chained: R0 covers untied pool 8. Untied
   pool 32 is predicted to suffer the untrained-loser bias (§419 Proposition 3); run it later if R2 wins.
+
+**AWS additions (5 Oct 04:00 UTC; AWS_CAPACITY_PROGRAM.md):** after the current P0 owners:
+1. Two native weight-decay arms (§421; p64 4-pass, the budget-B comparison against tuned LSTM-384 1.915).
+2. Three large-pool language capacity-curve arms (note 155 X1: tied/untied pool 32 and tied pool 8, sampled credit).
+3. The FAS references, already queued (AWS_FAS_REFERENCES.md).
+
+The FAS recruitment sweep and the grokking testbed run on curie.

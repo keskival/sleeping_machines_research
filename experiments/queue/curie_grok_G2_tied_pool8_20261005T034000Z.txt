@@ -1,0 +1,2 @@
+# Grokking testbed arm G2_tied_pool8 (THEORY §§426-428 pre-declared G1-G4; mod 97, train fraction .4, AdamW, 20K steps).
+curie_grok_G2_tied_pool8_20261005T034000Z experiments/grok/modadd_native.py --steps 20000 --depth 2 --seed 0 --heads 4 --payload 32 --pool 8 --tie-pools --tag curie_grok_G2_tied_pool8_20261005T034000Z
