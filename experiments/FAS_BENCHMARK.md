@@ -176,3 +176,13 @@ estimates for dense references), and inference work up to the decision at N.
     - fixed score decompositions (event-type NLL, timing NLL, windowed maximum), declared before test;
     - an estimate of the early-detection ceiling. Early on, wear faults add 0.7% delay against 1% timing noise, so
       small N may carry little signal for any model.
+- 5 Oct 00:15 UTC: **scoring rules declared before any further test scoring** (`native.RULES`, shared by
+  dense.py):
+  - `total`: mean NLL over the prefix; the primary rule.
+  - `type`: event-type NLL only.
+  - `gap`: timing NLL only.
+  - `gap_window32_max`: the maximum over 32-event windows (or the whole prefix if shorter) of the mean timing NLL.
+
+  All four are reported for every model; the primary rule stays `total`. The native driver now saves its selected
+  weights. The scoring functions pass numpy checks. A full torch smoke run waits for memory headroom (P0-2 is running
+  with about 0.9 GB above the floor).

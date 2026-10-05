@@ -52,45 +52,70 @@ def batch(runs, idx):
     return rows, y, g, mask
 
 
-def nll(z, y, g, mask):
-    """per-position NLL (type + log-gap Gaussian); z: (n, T, 48)."""
+def nll(z, y, g, mask, parts=False):
+    """per-position NLL (type + log-gap Gaussian); z: (n, T, 48).  parts: return (type, gap) separately."""
     ce = F.cross_entropy(z[..., :V].reshape(-1, V), y.reshape(-1), reduction='none').view(y.shape)
     mu = z[..., V].double(); sigma = F.softplus(z[..., V + 1]).double() + 1e-3
     gauss = .5 * ((g - mu) / sigma) ** 2 + sigma.log() + .5 * math.log(2 * math.pi)
+    if parts:
+        return ce.double() * mask, gauss * mask
     return (ce.double() + gauss) * mask
 
 
+RULES = ('total', 'type', 'gap', 'gap_window32_max')   # declared 5 Oct 00:10 UTC before any further test scoring;
+WINDOW = 32                                           # 'total' (mean NLL over the prefix) stays the primary rule
+
+
+def prefix_scores(per_type, per_gap, lengths):
+    """rule -> (n_runs, len(PREFIXES)) scores for prefixes of N events (predictions 1..N-1); NaN if the run is shorter."""
+    out = {r: np.full((len(lengths), len(PREFIXES)), np.nan) for r in RULES}
+    ct, cg = np.cumsum(per_type, 1), np.cumsum(per_gap, 1)
+    for r, n_ev in enumerate(lengths):
+        for k, N in enumerate(PREFIXES):
+            if N > n_ev:
+                continue
+            m = N - 1
+            out['type'][r, k] = ct[r, m - 1] / m; out['gap'][r, k] = cg[r, m - 1] / m
+            out['total'][r, k] = out['type'][r, k] + out['gap'][r, k]
+            wl = min(WINDOW, m); c = np.concatenate([[0.], cg[r, :m]])
+            out['gap_window32_max'][r, k] = ((c[wl:] - c[:-wl]) / wl).max()
+    return out
+
+
 def scores(model, runs, lanes, fn):
-    """mean NLL over the first N-1 predictions (prefix of N events) for every N in PREFIXES; NaN if shorter."""
-    out = np.full((len(runs), len(PREFIXES)), np.nan); total = 0.; count = 0
+    """per-rule prefix scores for every run, and the mean per-event NLL."""
+    parts = []; total = 0.; count = 0
     model.eval()
     with torch.no_grad():
         for b in range(0, len(runs), lanes):
             idx = list(range(b, min(b + lanes, len(runs))))
             rows, y, g, mask = batch(runs, idx)
-            per = nll(fn(model, rows, 314159, all_logits=True), y, g, mask).numpy()
-            total += per.sum(); count += int(mask.sum())
-            csum = np.cumsum(per, 1)
-            for r, j in enumerate(idx):
-                n_ev = len(runs[j][0])
-                for k, N in enumerate(PREFIXES):
-                    if N <= n_ev:
-                        out[j, k] = csum[r, N - 2] / (N - 1)
-    return out, total / max(count, 1)
+            pt, pg = nll(fn(model, rows, 314159, all_logits=True), y, g, mask, parts=True)
+            pt, pg = pt.numpy(), pg.numpy(); total += pt.sum() + pg.sum(); count += int(mask.sum())
+            parts.append(prefix_scores(pt, pg, [len(runs[j][0]) for j in idx]))
+    return {r: np.concatenate([q[r] for q in parts]) for r in RULES}, total / max(count, 1)
 
 
 def aurocs(sc_clean, sc_faulty, kinds):
+    """sc_*: rule -> scores (or one array, treated as the primary rule).  Returns the primary rule's table, with the
+    other rules under 'rules'."""
+    if not isinstance(sc_clean, dict):
+        sc_clean, sc_faulty = {'total': sc_clean}, {'total': sc_faulty}
     res = {}
-    for k, N in enumerate(PREFIXES):
-        a, b = sc_clean[:, k], sc_faulty[:, k]
-        a, keep = a[~np.isnan(a)], ~np.isnan(b)
-        if len(a) == 0 or keep.sum() == 0:
-            continue
-        row = dict(all=auroc(a, b[keep]))
-        for f, name in ((1, 'wear_and_tear'), (2, 'retry_delay')):
-            row[name] = auroc(a, b[keep & (kinds == f)]) if (keep & (kinds == f)).any() else None
-        res[N] = row
-    return res
+    for rule in sc_clean:
+        tab = {}
+        for k, N in enumerate(PREFIXES):
+            a, b = sc_clean[rule][:, k], sc_faulty[rule][:, k]
+            a, keep = a[~np.isnan(a)], ~np.isnan(b)
+            if len(a) == 0 or keep.sum() == 0:
+                continue
+            row = dict(all=auroc(a, b[keep]))
+            for f, name in ((1, 'wear_and_tear'), (2, 'retry_delay')):
+                row[name] = auroc(a, b[keep & (kinds == f)]) if (keep & (kinds == f)).any() else None
+            tab[N] = row
+        res[rule] = tab
+    out = dict(res['total']); out['rules'] = {r: v for r, v in res.items() if r != 'total'}
+    return out
 
 
 def main():
@@ -210,6 +235,8 @@ def main():
         if w >= total:
             break
     model.load_state_dict(best[2])
+    weights = ROOT / 'experiments/results/fas/checkpoints' / f'{a.tag}_selected.pt'
+    weights.parent.mkdir(exist_ok=True); torch.save(model.state_dict(), weights)
     test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
     if a.max_windows:                   # smoke: a bounded test subset, labelled by status
         test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
@@ -217,7 +244,7 @@ def main():
     work = (ledger['arithmetic_flops'] + ledger['special_function_evaluations']) / traced_events if traced_events else None
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()), curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
-                  test_clean_nll=test_nll, test_auroc=aurocs(sc_c, sc_f, test_k),
+                  test_clean_nll=test_nll, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
                   work=dict(fit_unit_special_flops_per_event_estimate=work,
                             whole_fit_unit_special_flops_estimate=work * events_seen if work else None,
                             fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'),

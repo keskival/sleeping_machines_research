@@ -33,7 +33,7 @@ from torch.nn import functional as F
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'experiments/fas'))
 from baselines import PREFIXES  # noqa: E402
-from native import LOG_EPS, V, aurocs, load, nll  # noqa: E402
+from native import LOG_EPS, V, aurocs, load, nll, prefix_scores, RULES  # noqa: E402
 
 OUT = ROOT / 'experiments/results/fas'      # redirected by experiments/aws_benchmark.py
 
@@ -178,18 +178,15 @@ def flops_per_event(model, kind, d, layers, T):
 
 @torch.no_grad()
 def scores(model, runs, lanes):
-    out = np.full((len(runs), len(PREFIXES)), np.nan); total = 0.; count = 0
+    parts = []; total = 0.; count = 0
     model.eval()
     for b in range(0, len(runs), lanes):
         idx = list(range(b, min(b + lanes, len(runs))))
         x, lg, tabs, dt, y, g, mask = tensors(runs, idx)
-        per = nll(model(x, lg, tabs, dt), y, g, mask).numpy(); total += per.sum(); count += int(mask.sum())
-        csum = np.cumsum(per, 1)
-        for r, j in enumerate(idx):
-            for k, N in enumerate(PREFIXES):
-                if N <= len(runs[j][0]):
-                    out[j, k] = csum[r, N - 2] / (N - 1)
-    return out, total / max(count, 1)
+        pt, pg = nll(model(x, lg, tabs, dt), y, g, mask, parts=True)
+        pt, pg = pt.numpy(), pg.numpy(); total += pt.sum() + pg.sum(); count += int(mask.sum())
+        parts.append(prefix_scores(pt, pg, [len(runs[j][0]) for j in idx]))
+    return {r: np.concatenate([q[r] for q in parts]) for r in RULES}, total / max(count, 1)
 
 
 def main():
