@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**64K P24 completed / P32 admitted:** P24selectedstep128NLL8.033310714 vs
+P16step128NLL8.099439913,0.066129quality gain at same data/passes/cadence.
+Initial8.162279795,131056targets,3,164,842parameters,374.869targets/s,
+496232KiBpeakRSS. Utility completed/context0.252343,addressederasure+0.007313,
+message+0.022623,both+0.014234NLL; every intervention now hurts prediction.
+All source/RNG/partition checks pass. Single seed/frozen interventions.
+P32third predeclared width now running in tmux curie_data_growth_64k_p32_20261005_v1
+through unique run_safe queue,1200s/1.2GBRSS/5GBVMS/8GiBfloor. Its utility waits
+on ordinary host lock in tmux curie_data_growth_64k_p32_utility_20261005_v1.
+Next: review completedP32/utility, confirm selectedwidthseed7, complete whole-fit
+work for selectedmember before256K. Report now has common quality/resource/work
+columns for completed64Kcells, with unaudited FLOPs pending and no8Kprojection.
+
+
 **64K P16 utility completed / P24 admitted:** source/RNG/partition parity pass.
 Context gain0.208993NLL, addressed-memory erasure costs0.006892;message erasure
 improves0.024694,combined0.028288. Frozen interventions do not imply a useful

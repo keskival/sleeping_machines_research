@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def pages():
     folder = ROOT / 'experiments/results/token_language'
-    rows, resources, utilities, completed = [], [], [], []
+    rows, resources, utilities, work, completed = [], [], [], [], []
     frozen = None
     for width in (16, 24, 32):
         tag = f'curie_data_growth_tokens_64k_b64_c16_p{width}_s6_20261005_v1'
@@ -37,6 +37,21 @@ def pages():
                           str(result['core_parameters']), str(result['readout_parameters']),
                           f"{result['train_tokens_per_second']:.2f}", str(result['max_rss_kb'])])
         completed.append(width)
+        work_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_64k_p{width}_work_20261005_v1.json'
+        if work_path.exists():
+            audit = json.loads(work_path.read_text())
+            if audit['status'] != 'completed' or audit['fitting_targets'] != result['presentations_total']:
+                raise ValueError('Incomplete 64K work audit')
+            if Path(audit['control']).name != path.name or audit['curve_parity_max_error'] >= 2e-6:
+                raise ValueError('64K work control or trajectory mismatch')
+            if not all(audit[k]['formula_coverage_complete'] for k in ('fitting', 'inference')):
+                raise ValueError('Unknown 64K arithmetic')
+            work.append([str(width), str(audit['fitting_targets']),
+                         f"{audit['fitting']['arithmetic_flops']/1e9:.6f}",
+                         f"{audit['fitting_arithmetic_flops_per_target']/1e6:.6f}",
+                         f"{audit['inference_arithmetic_flops_per_target']/1e6:.6f}"])
+        else:
+            work.append([str(width), str(result['presentations_total']), 'pending', 'pending', 'pending'])
         suffix = '' if width == 16 else f'_p{width}'
         utility_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_64k{suffix}_utility_20261005_v1.json'
         if utility_path.exists():
@@ -55,8 +70,10 @@ def pages():
         ('p', 'Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.'),
         ('p', 'Seed6, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two passes/131,056 fitting targets, 256 updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with evaluation every64 updates. Public validation untouched.'),
         ('table', (['Payload', 'Initial NLL', 'Selected NLL', 'Gain', 'Selected step'], rows, [60, 115, 115, 110, 105])),
-        ('table', (['Payload', 'All parameters', 'Core parameters', 'Readout parameters', 'Targets/s', 'RSS KiB'], resources, [45, 110, 105, 120, 85, 80])),
-        ('p', 'All parameters include the token interface and readout. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.'),
+        ('table', (['Payload', 'All parameters', 'Core + input parameters', 'Readout parameters', 'Targets/s', 'RSS KiB'], resources, [45, 110, 105, 120, 85, 80])),
+        ('table', (['Payload', 'Fit targets', 'Whole-fit GFLOPs', 'Fit MFLOPs/target', 'Eval MFLOPs/target'], work, [45, 90, 125, 125, 125])),
+        ('p', 'Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.'),
+        ('p', 'All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.'),
         ('p', 'The 8K and 64K fits score the same development population and both use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]
     if utilities:
         page += [

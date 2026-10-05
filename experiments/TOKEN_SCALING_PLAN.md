@@ -99,3 +99,22 @@ The current 2K/8K pilots differ in passes and evaluation populations and do not
 identify a scaling exponent. The admitted 64K test holds the 8K development
 population and two-pass protocol; width/data crossed cells follow its learning
 gate. No empirical exponent or below-Transformer law is claimed yet.
+
+## Report visualization — user request, 5 October
+
+When sufficient crossed data/capacity evidence supports the first estimation,
+visualize the measured cells and fitted laws prominently in the report. Use
+standalone reproducible plots suitable for export, with source/result provenance.
+Show held-out NLL against complete fitting FLOPs; capacity/data panels distinguish
+available parameters/state from selected activity and scored/learning work.
+Mark measured points, exploratory fitted curves, uncertainty and the reserved
+larger-point prediction versus its observed result. Keep special-function and
+compute-boundary conventions explicit. Display raw measured points before any
+fit is identifiable; do not manufacture a scaling curve from one data budget
+or fill pending points with predictions presented as measurements.
+
+The planned crossed64K/256K/1Mpacket and central seed repeat provide the first
+rough surface; if coefficients are poorly identified, plot the supported
+simpler slopes and uncertainty instead. The4Mpoint remains an extrapolation
+test. Report the modelled estimate as an estimate, and retain every valid raw
+point, including losses. This visualization is an explicit deliverable.

@@ -7,18 +7,28 @@ Seed6, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two pas
 | Payload | Initial NLL | Selected NLL | Gain | Selected step |
 | --- | --- | --- | --- | --- |
 | 16 | 8.162280 | 8.099440 | 0.062840 | 128 |
+| 24 | 8.162280 | 8.033311 | 0.128969 | 128 |
 
-| Payload | All parameters | Core parameters | Readout parameters | Targets/s | RSS KiB |
+| Payload | All parameters | Core + input parameters | Readout parameters | Targets/s | RSS KiB |
 | --- | --- | --- | --- | --- | --- |
 | 16 | 2115464 | 1631184 | 484280 | 409.80 | 448368 |
+| 24 | 3164842 | 2462880 | 701962 | 374.87 | 496232 |
 
-All parameters include the token interface and readout. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.
+| Payload | Fit targets | Whole-fit GFLOPs | Fit MFLOPs/target | Eval MFLOPs/target |
+| --- | --- | --- | --- | --- |
+| 16 | 131056 | pending | pending | pending |
+| 24 | 131056 | pending | pending | pending |
+
+Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.
+
+All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.
 
 The 8K and 64K fits score the same development population and both use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.
 
 | Payload | Context gain | Memory erase delta | Message erase delta | Both erase delta |
 | --- | --- | --- | --- | --- |
 | 16 | 0.208993 | 0.006892 | -0.024694 | -0.028288 |
+| 24 | 0.252343 | 0.007313 | 0.022623 | 0.014234 |
 
 Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.
 
