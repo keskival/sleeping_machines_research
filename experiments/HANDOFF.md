@@ -1,5 +1,23 @@
 # Session handoff — 2026-09-30
 
+**Credit horizon and delivery update —5 October18:53 UTC:** authoritative shared
+`origin/main` reflog records successful push of8fc2190b at18:41:50 UTC by another
+session. Prepared token packets are delivered to GitHub; AWS admission remains
+unobserved. Its paired seed7sharing/local-future packet27ccb5da is preserved on
+slot1; our seed6continuations stay slot3, no overlapping source changed.
+Frozen trained2K replay audit at four event sites finds81.7–97.1%of absolute
+loss perturbation after the16-position credit boundary; this is training-loss
+consequence coverage, not a gradient or generalization fraction.
+`horizon_token_language.py` separates optimizer batch from credit boundaries.
+Numeric partition and gradient-cut contracts passed; actual multi-window
+resume passed exactly. Next paired8K queue fixes batch64/32updates and varies
+credit16/64 only, keeping16,368targets/evaluation cadence identical. Immutable
+`aws_horizon_tokens_20261005T185300Z` addendum follows existing slot3comparisons.
+Read TOKEN_FIXED_BATCH_HORIZON theory note. No horizon quality predicted.
+Current prioritized family member remains sparse temporal persistent events
+with actual counterfactual write credit; window/decoder/parameter sharing are
+selected by these comparisons, not assumed from the prototypes.
+
 **Parameterized member/decoder freedom —5 October18:40 UTC:**
 new recipes use `token_language.py`/`token_language_engine.py`, with corrected
 initial selection, completed local/first-site/uniform-site credit choices,
