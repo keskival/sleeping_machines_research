@@ -1,5 +1,29 @@
 # Findings log
 
+## P0-1 first arm: 90M native p64/d4 4-pass 1.800 bpc at 0.97 PF — efficiency point, not a win — 5 October
+
+Run `aws_language_batched_90M_r4_p64d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z` (AWS, checkpointed):
+- Test bpc 1.8001 (T256) / 1.8009 (T128); fitting work 0.965 PF (traced, extrapolated).
+
+| Model | Training compute | Test bpc |
+|---|---:|---:|
+| Native 1-pass (earlier) | 241 TF | 1.857 |
+| **Native 4-pass** | **0.965 PF** | **1.800** |
+| LSTM-512, 6 passes (saved) | ~3.9 PF | 1.661 |
+| Transformer-256×4, 4 passes (saved) | ~8.0 PF | 1.604 |
+
+- **Efficiency point** (WIN_CRITERIA): 1/4 and 1/8 of the references' compute at 0.139 and 0.196 bpc worse, with no
+  reference at our compute.
+- **Slope:** 4× the compute bought 0.057 bpc. Extrapolating log-linearly, matching the LSTM would need on the order of
+  25 PF, far above its 3.9 PF. A matched-compute win at 90M is therefore not on the current trajectory.
+- The queued p96 4-pass (~2.1 PF) is not expected to change the verdict.
+
+Interpretation:
+- Consistent with the 10M diagnosis: the deficit is per-event modelling efficiency (local, 2–4 characters of
+  history), not budget.
+- Scaling compute with the current core does not close it. The levers are the per-event ones: write bandwidth
+  (k-winner writes), weight decay and regularization, and learning-rate tuning.
+
 ## NeuroBench Mackey-Glass official result: 14.84 sMAPE over 30 repeats (loss to LSTM 13.37; ESN 14.79) — 5 October
 
 Official τ = 17 protocol: 30 start offsets, configuration fixed in advance (p16/d2, increment targets, 1,500 steps;
