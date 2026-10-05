@@ -76,6 +76,12 @@ unchanged (LSTM-512 val 1.769 vs best TF 1.950; test context effect 0.0000), so 
 discriminating and native (pool 2, .600/.742) recovers 39%/59% of it. Curie queues: pool2 seed 7 (replication), pool 8,
 pool 32 (per-item slots for 30 interleaved items), `curie_fas_native_p32d4_*_20261005T063500Z`.
 
+**Recommendation after P0-1 (5 Oct 08:45, review host):** 90M native 4-pass 1.800 at 0.97 PF is an efficiency point. The
+compute slope (.057 bpc per 4×) predicts that p96 4-pass (~2.1 PF) will not reach 1.661. Proposed slot-1 order: the two 90M
+budget-C tuned references first (they give the tuned verdict for the completed P0-1 run), then the weight-decay arms
+and the X1 capacity arms (per-event levers), then p96 as the trajectory check. The product owner decides; nothing is
+cancelled.
+
 ## P1 — confirm and widen the wins
 
 | # | Deliverable | Pass criterion |
