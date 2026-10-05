@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**Typed comparator interface implemented, diagnostic-only:** numericthreshold,
+categoricalmembership, Boolean and explicitmissing/unknown events; selected
+comparisons readonlyselectedfields. Comparison margins become competing
+computational delays; tiny-margin exp-rounding tie repaired, equalityfalse.
+Eight stdlib semanticcontracts pass in milliseconds, no model/fit execution.
+No learnedselector/thresholdcredit/integrated memory or qualityclaim yet;
+nextstep integrated learning per TYPED_PREDICATE_EVENT_DIRECTION_20261005.md.
+All activeFAS/language sources untouched; fullFASseed7stilllive at observation.
+
+
 **FASseed7smoke passed/fullfit live:** frozen originaldriver two-window run
 exited0; finite TRAIN/DEV/TESTlosses, selectedweights/hash and per-run scores
 (8clean/8faulty ×6prefixes) with matched label/seed dimensions verified.

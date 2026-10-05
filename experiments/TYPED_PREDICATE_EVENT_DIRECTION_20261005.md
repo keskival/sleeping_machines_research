@@ -21,3 +21,21 @@ Numerical contracts: category-ID permutation invariance, missing versus observed
 Compare the integrated typed extension with the existing numeric event adapter, a type-aware dense neural control and strong tree/boosting controls under identical FIT/DEV/test rows, tuning opportunity and resource boundaries. Use genuinely mixed-type data; banknote and wine numeric columns alone do not test categorical semantics. Report quality, complete fitting work, inference work, available predicates/state and selected comparisons/updates separately. Tree superiority is an empirical comparison, not guaranteed by a weighted-sum argument.
 
 The concrete failure addressed is premature unrestricted mixing of heterogeneous raw fields and the lack of a typed predicate interface. The proposed inductive bias favors featurewise discontinuities and conditional interactions while retaining the event substrate. Thresholding may lose useful continuous information; typed residual delivery is the explicit comparison for that tradeoff. No existing benchmark/source is substituted and no long run is admitted by this note.
+
+## Implemented interface foundation
+
+`typed_predicate_interface.py` now supplies named numeric thresholds, nominal
+set membership and Boolean comparisons, explicit missing/unknown channels,
+and selected predicate evaluation without reading unselected fields. It maps
+comparison margins into two computational delays; a representable strict
+ordering repairs exponent rounding near zero, with equality selecting false.
+This is a fixed interface, not a learned selector or integrated model. Caller
+selection/discovery work is explicitly outside its own comparison count.
+
+Eight stdlib semantic contracts pass, including unit transformations, category
+relabeling, missing versus zero, unknown values, type rejection, selected-path
+field access and race ordering (including a tiny positive margin). These take
+no model fit or numerical training resources. Next implement learned predicate
+selection and actual counterfactual suffix credit in the integrated event
+model, then run the small fit described above before allocating a benchmark.
+No current FAS/language source or job is changed.
