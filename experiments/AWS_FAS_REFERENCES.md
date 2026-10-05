@@ -40,3 +40,20 @@ Work is a shape estimate per event (the `work` field).
 - The FAS appendix compares, at each prefix N, AUROC overall and per fault type, training work and inference work per
   event, for native and references together (same units per column).
 - Classical test baselines: `experiments/results/fas/fas_v1_classical_test_20261004T221500Z.json`.
+
+## Renewed user order — 5 October 2026, 21:07 UTC
+
+The user explicitly requests more seeds and the benchmarks. Native FAS v1
+seeds7/8 are scheduled on curie after already-admitted language jobs. Execute
+the five existing reference families on AWS after their bounded two-window
+smokes and source/data checks; preserve current running jobs and the bounded
+slot scheduler. No completed neural-reference result is visible in the shared
+repository at this observation. The curie workspace has no authenticated AWS
+execution connection; this is an execution order for the physical AWS owner,
+not a claim that remote jobs were started.
+
+Use anonymous logs for every fitted input. Hidden-identity-trained FIFO and
+timing diagnostics are oracle-assisted and excluded from fair-reference
+selection. Retain arithmetic versus special-function conventions and report
+quality/work together; current native work is first-window extrapolated, so
+no complete-work matched-compute claim follows automatically.

@@ -1,5 +1,27 @@
 # Session handoff — 2026-09-30
 
+**User orders more FAS seeds and benchmarks (5 Oct21:07UTC):** persistent tmux
+curie_fas_v1_replication_20261005_v1 waits admitted language work/256K/message/
+utility handles, then guarded missing-data generation, two-window smokes and
+native seeds7/8. Exact original seed6driver recovered at835967ec; frozen copy
+SHA matches recorded driver; three recorded dependency hashes match. Additional
+current dependency hashes pinned. Wrapper captures returned per-run test scores
+without changing fitting/scoring RNG. Historical unrecorded dependencies not
+independently proven. Data absent locally: regenerate recorded args/seeds,
+verify every split count/event/hash; record whether historical npz bytes match.
+Manifest wallclock hash is allowed to differ; no silent byte-identity claim.
+Each job unique/run_safe one-at-a-time, RSS1.8GB/VMS6GB/8GiBreserve, smoke600s,
+full5400s (historical seed6wall2925s). Syntax passed; numerical smoke pending.
+Original seed6has aggregate scores only; paired three-seed bootstrap awaits
+matching seed6per-run scores, not invented from aggregate AUROC.
+Existing five AWSneural reference queues retained in AWS_FAS_REFERENCES.md;
+no completed results visible and no authenticated remote execution capability
+in this workspace. User requests their execution; physical AWSowner should
+admit source/memory smokes then references in available bounded slots. Do not
+run new dense controls on curie. FASv1repeats are not sealedv2confirmation;
+oracle-assisted methods remain excluded from fair-reference wins.
+
+
 **Learning recipe diagnosis recorded (no fit admitted):** read-only source-bound
 64Kcurves show all four finals worse than selected; fixed1024-target TRAIN
 probe improves. P24bothseeds select first-pass boundary. All four logged

@@ -1,0 +1,28 @@
+{
+  "status": "prepared_waiting_language_sequence",
+  "user_directed": true,
+  "seeds": [
+    7,
+    8
+  ],
+  "control": "experiments/results/fas/curie_fas_v1_native_p32d4_linear_seg128_t1024_e2_20261004T231500Z.json",
+  "queues": [
+    "experiments/queue/curie_fas_v1_frozen_p32d4_s7_smoke_20261005_v1.txt",
+    "experiments/queue/curie_fas_v1_frozen_p32d4_s7_20261005_v1.txt",
+    "experiments/queue/curie_fas_v1_frozen_p32d4_s8_smoke_20261005_v1.txt",
+    "experiments/queue/curie_fas_v1_frozen_p32d4_s8_20261005_v1.txt"
+  ],
+  "execution_source_sha256": {
+    "experiments/fas/native_v1_seed6_frozen_20261005.py": "49084e5d2526087ea80f61e5a6db0f8bcfa1a6ad6d359444f49e96685d0b9d3a",
+    "experiments/fas/native_v1_replication.py": "56a58e727734e6f24b2a7664d7dfcb46b9e3535e82210e9f962504d8c956b4cb",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/carried_episodes.py": "b56bee18bc4fd22d6b2440438fb52c141644c2eba0440c2c1ea6ac67483895ca",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+    "experiments/fas/generate.py": "63adec5a7ab6b670fab614c62aa66b76c25f27d67f7005e7a48713c3805834ff"
+  },
+  "scope": "Replicate original FASv1 headline configuration; no configuration tuning. Smoke test accesses bounded already-open v1 test subsets, not sealed v2. Work remains first-window extrapolated, not full arithmetic trace. Neural reference queues reserved for AWS."
+}
