@@ -1,3 +1,33 @@
+## Appendix. Language strengths: measured decisions and complete work
+
+The target data region deliberately favors strong Transformer references over LSTMs; tiny native fits diagnose learning before that larger comparison. The native construction chooses temporal computation, persistent memory lifetime and sparse addressed activity independently of Transformer topology or fixed windows. Matched-history and longer-native-history comparisons are labelled separately; causal inputs and scored targets stay explicit. Capacity beyond activity earns promotion through better held-out prediction with discovery and learning fully charged.
+
+Controlled learning-rate test: seed6, GPT-2 FineWeb2K, P16/D2/H2/U4, batch64/credit64, uniform K4 actual alternative-write utility,16updates and1,016development targets. Initial weights eligible. Lower learning rate loses selected quality by0.046604NLL; retain .003. Its better final loss does not replace the better selected incumbent. These are development comparisons.
+
+| Recipe | Selected NLL | Final NLL | Fit targets | Targets/s | RSS KiB |
+| --- | --- | --- | --- | --- | --- |
+| Retained lr .003 | 8.819470 | 9.111889 | 8160 | 404.6 | 451728 |
+| Alternative lr .001 | 8.866074 | 8.866074 | 8160 | 423.2 | 451308 |
+
+Decoder exposure uses train-only frequency rank and eight contiguous lanes. At2K every target reaches the head: identical default/full-width development curves do not test learned tail rank. The existing8Kcomparison reaches the first tail. Branch counts below are targets per data pass; head cutoff2,000, tail boundaries10,000/30,000/50,257.
+
+| Train tokens | Distinct | Head | Tail1 | Tail2 | Tail3 |
+| --- | --- | --- | --- | --- | --- |
+| 2048 | 796 | 2040 | 0 | 0 | 0 |
+| 8192 | 2696 | 7489 | 695 | 0 | 0 |
+| 32768 | 6778 | 26915 | 5845 | 0 | 0 |
+| 65536 | 10914 | 51272 | 13343 | 913 | 0 |
+| 262144 | 23144 | 196953 | 47809 | 17374 | 0 |
+
+Actual native work: multiply-add=2FLOPs; arithmetic excludes separately counted special functions and unquantified random sampling. Whole fitting includes factual core, all-key scoring, alternative discovery, suffix replay, exact readout, backward, clipping, optimizer and in-step diagnostics. Initialization/frequency counts, evaluation and serialization are outside that fitting column. Selected evaluation includes scorer reductions, with no gradient/optimizer. Audit instrumentation wall time is not ordinary throughput. Public Transformer work remains in its separate audited protocol; no matched-compute win is inferred here.
+
+| Boundary | Targets | Total GFLOPs | MFLOPs/target | Coverage |
+| --- | --- | --- | --- | --- |
+| Whole fit | 8160 | 6.183337 | 0.757762 | complete |
+| Selected evaluation | 1016 | 0.296939 | 0.292263 | complete |
+
+Next: existing AWS8Kpaired seeds/horizons, trained memory utility, informative decoder comparison, then measured width/data and fixed-activity pool scaling. Public validation remains reserved. See experiments/TOKEN_STRENGTH_EXECUTION_20261005.md for the ordered strength tests.
+
 ## Appendix. Tokenized language: confirmed small-fit learning
 
 Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. These diagnostics select constructions within that family.

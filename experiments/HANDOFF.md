@@ -1,5 +1,31 @@
 # Session handoff — 2026-09-30
 
+**Strength-led tokenized continuation —5 October:** user requests continued language
+supremacy work and native strengths without imposing Transformer topology/windows.
+Read TOKEN_STRENGTH_EXECUTION_20261005.md. Retain temporal races, sparse addressed
+persistent state, separate keys/values and actual future-write credit. Native-history
+and matched-history comparisons are separate declared tests; capacity growth must
+improve quality with complete discovery/learning charged. No architectural departure.
+Train-only decoder exposure audit:2K796distinct tokens, zero tail targets;8K695tail
+training targets. Identical completed2Kdefault/full-width curves therefore do not
+reject learned tail rank. Existing AWS8Kcomparison remains informative for tail1.
+Single controlled lr.001 alternative loses selected dev8.866074 to retained.003
+8.819470, seed6credit64,8,160targets/16updates; preserve both. No lr grid admitted.
+Actual whole-fit audit completed:6.183336524GFLOPs/8,160targets,0.757761829MFLOPs
+per target,70,834,372special-function evaluations, complete formula coverage and
+exact loss-curve parity. Selected inference ledger also completed. Random sampling
+work remains unquantified; initialization/evaluation excluded from fit arithmetic.
+Primary region intentionally has Transformer references leading LSTMs; tiny fits
+are diagnostics. Whole-fit/inference ledgers use uniquely named one-job run_safe queues,
+RSS1.2GB/0.7GB,8GiBfloor,300s/120s limits; inspect completed diagnostic artifacts.
+Prioritized member:packedP16/D2/H2/U4, balanced GPT-2 input, frequency adaptive output,
+carried state, batch64credit16/64 and uniformK4 actual-write utility. Next integrated
+queue remains aws_fixed_batch_tokens_20261005T191244Z, seeds6/7 paired8Khorizons.
+Remaining gaps:useful addressed memory, large-bank quality/discovery, optional
+schedules, broader scaling and public endpoint. Other sessions' untracked state-credit
+and tail32artifacts preserved. Report source/appendix includes new completed decisions.
+
+
 **Memory-path diagnosis —5 October19:12 UTC:** actual selected2K models
 reproduce selected NLL under instrumentation.95.69–95.74%of selections revisit
 seen slots; median per-mode retention0.7545–0.7584, mean retained norms3.61–3.85

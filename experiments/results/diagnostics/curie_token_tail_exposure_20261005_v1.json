@@ -1,0 +1,68 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "train_tokens": 2048,
+      "targets": 2040,
+      "distinct_tokens": 796,
+      "branch_targets": [
+        2040,
+        0,
+        0,
+        0
+      ],
+      "tail_targets": 0
+    },
+    {
+      "train_tokens": 8192,
+      "targets": 8184,
+      "distinct_tokens": 2696,
+      "branch_targets": [
+        7489,
+        695,
+        0,
+        0
+      ],
+      "tail_targets": 695
+    },
+    {
+      "train_tokens": 32768,
+      "targets": 32760,
+      "distinct_tokens": 6778,
+      "branch_targets": [
+        26915,
+        5845,
+        0,
+        0
+      ],
+      "tail_targets": 5845
+    },
+    {
+      "train_tokens": 65536,
+      "targets": 65528,
+      "distinct_tokens": 10914,
+      "branch_targets": [
+        51272,
+        13343,
+        913,
+        0
+      ],
+      "tail_targets": 14256
+    },
+    {
+      "train_tokens": 262144,
+      "targets": 262136,
+      "distinct_tokens": 23144,
+      "branch_targets": [
+        196953,
+        47809,
+        17374,
+        0
+      ],
+      "tail_targets": 65183
+    }
+  ],
+  "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+  "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+  "scope": "Train-only frequency rank, contiguous eight-lane next-token targets; no training or development selection. Zero tail targets means tail conditional classifiers receive no target NLL gradient; head branch gates still receive normalization gradients."
+}
