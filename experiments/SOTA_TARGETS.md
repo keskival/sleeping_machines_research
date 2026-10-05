@@ -70,6 +70,10 @@ the current best configuration is queued on AWS. Leaderboard: AEGRU .71 (six-ses
 **SHD.** Official files downloaded; driver ready (speaker-held-out validation); development arms are queued after primate
 round 2.
 
+**Primate six-session official run (P0-3), partial (5 Oct 08:45 UTC):** session 1/6, indy_20160622_01 (untouched), R²
+**0.768**, from the pre-fixed configuration. Leaderboard six-session best AEGRU .71. Partial: no claim until all six sessions;
+report the six-session mean and the five-untouched-session mean (indy_20170131_02 was the development session).
+
 **Selection correction (4 Oct, 23:45 UTC):** the report and scoreboard previously quoted the best *test* arm (.754, val
 .715) as the development result. Selected by validation, as the protocol requires, the development result is .724 (round 3
 traces arm, val4 .750): below tinyRSNN .746 and bigRSNN .772 on this session. indy_20170131_02 is also one of the six
