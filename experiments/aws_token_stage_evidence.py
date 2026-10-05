@@ -18,6 +18,10 @@ def stage_row(result, selection, work=None):
     args = result['args']; curve = result['curve']; selected = selection['selected']
     if not curve or curve[0]['step'] != 0 or any(not math.isfinite(r['dev_nll']) for r in curve):
         raise ValueError('Finite initial-inclusive trajectory required')
+    expected=[0]+list(range(args['eval_every'],args['steps']+1,args['eval_every']))
+    if expected[-1]!=args['steps']:expected.append(args['steps'])
+    if [r['step'] for r in curve]!=expected:
+        raise ValueError('Complete declared development selection schedule required')
     best = min(curve, key=lambda r: (r['dev_nll'], r['step']))
     if best['step'] != selected['step'] or not math.isclose(best['dev_nll'], selected['dev_nll'], abs_tol=1e-10, rel_tol=0.):
         raise ValueError('Selection must match best initial-inclusive curve')

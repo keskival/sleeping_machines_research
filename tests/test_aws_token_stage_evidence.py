@@ -33,6 +33,10 @@ class Evidence(unittest.TestCase):
         self.assertIsNone(r['fitting_mflops_per_target'])
         self.assertIsNone(r['inference_mflops_per_target'])
 
+    def test_missing_final_selection_opportunity(self):
+        self.result['curve'].pop()
+        with self.assertRaises(ValueError):stage.stage_row(self.result,self.selection)
+
     def test_pending_fit_cannot_supply_quality(self):
         self.result['status']='running'
         with self.assertRaises(ValueError):stage.stage_row(self.result,self.selection)
