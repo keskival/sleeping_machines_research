@@ -117,3 +117,20 @@ home-field benchmark. Each FAS arm needs its smoke to pass.
 3. The FAS references, already queued (AWS_FAS_REFERENCES.md).
 
 The FAS recruitment sweep and the grokking testbed run on curie.
+
+**P0-6 blocking step done (5 Oct 04:22 UTC, curie).** Windowed (E64 T256) validation rescore of the tuned LSTM arms on
+text8[90M:90.2M]:
+
+| Budget | Arm | Windowed validation | Carried-state validation |
+|---|---|---:|---:|
+| A | LSTM-512 4.5 passes | 1.7688 | 1.7688 |
+| A | LSTM-384 6 passes | 1.7779 | 1.7779 |
+| B | LSTM-384 2.5 passes | 1.8518 | 1.8518 |
+| B | LSTM-256 5 passes | 1.8722 | 1.8721 |
+
+- The carried-state values reproduce the AWS `best_valid_bpc` exactly, and windowing changes nothing.
+- Cross-architecture validation selection is now valid:
+  - Budget A selects LSTM-512 (validation 1.769; best Transformer 1.950). Native **loses**: 1.888 against 1.826.
+  - Budget B selects LSTM-384 (1.852; best Transformer 2.191). Native **loses**: 1.955 against 1.915.
+- Transformer sub-comparisons stay native wins in quality, at 101–109% of the Transformer arms' compute.
+- Results: `experiments/results/language_stream/curie_lstm_valwin_*_20261005T011500Z.json`.

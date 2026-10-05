@@ -1,0 +1,53 @@
+{
+ "status": "completed",
+ "args": {
+  "checkpoint": "experiments/results/aws_20260929/aws_tuned_ref_10M_B_lstm256_p5_lr0.003_s0_20261004T210000Z/lstm_D10000000_s256_p5_dr0.1_v_lr0.003_wu200.pt",
+  "tag": "curie_lstm_valwin_10M_B_lstm256_p5_lr0.003_s0_20261005T011500Z",
+  "test": 200000,
+  "context_curve": 0,
+  "offset": 90000000,
+  "window": 256,
+  "batch": 256
+ },
+ "checkpoint": "experiments/results/aws_20260929/aws_tuned_ref_10M_B_lstm256_p5_lr0.003_s0_20261004T210000Z/lstm_D10000000_s256_p5_dr0.1_v_lr0.003_wu200.pt",
+ "checkpoint_sha256": "5db322cbe01ff651d2d7f7ce5f45d2d551ed3404733bccfbd5a2d0e2e153ab6d",
+ "reference_args": {
+  "model": "lstm",
+  "D": 10000000,
+  "passes": 5.0,
+  "size": 256,
+  "layers": 2,
+  "ctx": 256,
+  "test": 1000000,
+  "dropout": 0.1,
+  "batch_size": 32,
+  "valid": 200000,
+  "device": "cpu",
+  "gpu_memory_fraction": 0.5,
+  "lr": 0.003,
+  "warmup": 200,
+  "weight_decay": 0.0,
+  "seed": 0
+ },
+ "stream_bpc": 1.8721355740567764,
+ "stream_targets": 199999,
+ "window": {
+  "T": 256,
+  "bpc": 1.8721563780200925,
+  "targets": 199936,
+  "state": "reset per window"
+ },
+ "interval": [
+  90000000,
+  90200000
+ ],
+ "context_curve": null,
+ "wall_s": 10.432610561023466,
+ "hardware": {
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+  "torch": "2.14.1+cpu",
+  "device": "cpu",
+  "threads": 1
+ },
+ "scope": "Evaluation of saved weights only; no training. Bins and test interval match language_stream_rescore."
+}
