@@ -60,3 +60,23 @@ with an extrapolated score; no scaling exponent is inferred from two cells.
 Reserved larger points:256K, then1M;4Mheld back for a predicted extrapolation
 check if those stages produce a viable scaling surface. The eventual primary
 comparison remains the selected strong Transformer in the region where it leads LSTM references.
+
+## Completed P16 decision and neighboring-width admission
+
+P16 seed6 completed: selected step128 NLL8.099440 versus initial8.162280,
+gain0.062840;131056fitting targets,409.799targets/s,peakRSS448368KiB.
+The selected checkpoint has0.208993NLL contextual gain over constant TRAIN-mean
+features and addressed-state erasure costs0.006892NLL. Message erasure improves
+loss0.024694; combined erasure improves0.028288. All source/RNG/partition checks
+pass. Frozen interventions are not retrained architecture comparisons; they
+change routing inputs and readout features as well as removing history.
+
+Admit the predeclared P24 same-data/two-pass cell with every mechanism retained.
+The concrete question is whether increased feature capacity improves held-out
+quality and the allocation of history between addressed state and message.
+Repeat the same utility diagnostic at its selected checkpoint before interpreting
+capacity gains. Do not remove message transport based on this one intervention.
+This is a routine width comparison, not an architectural substitution. P24
+timeout1200s is bounded from measured P16wall326s with room for larger vector
+work; RSS1.2GB/VMS5GB/8GiBavailable floor and single-thread host lock retained.
+P32 remains unlaunched pending review of the completed neighboring cell.

@@ -1,3 +1,19 @@
+## Appendix. Tokenized language: reserved 64K data exposure
+
+Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data.
+
+Single seed, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two passes, 256 updates, 2,040 scored development targets. P16/D2/H2/U4, batch64, credit16 and uniform-site K4 actual alternative-write credit; all temporal, sparse and persistent-state mechanisms retained. Initialization is eligible for selection, with evaluation every64 updates. Public validation untouched.
+
+| Payload | Seed | Fit targets | Initial NLL | Selected NLL | Gain | Selected step |
+| --- | --- | --- | --- | --- | --- | --- |
+| 16 | 6 | 131056 | 8.162280 | 8.099440 | 0.062840 | 128 |
+
+Measured ordinary fitting throughput: 409.80 targets/s; peak RSS: 448368 KiB. The learning gate requires a 0.02 NLL improvement over initialization.
+
+The 8K and 64K fits score the same development population and both use two passes. Their train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. This single width/data step supplies no fitted scaling exponent or matched-compute Transformer win.
+
+Frozen selected-checkpoint context gain: 0.208993 NLL. History interventions: {"both": -0.028287635130041622, "memory": 0.006892396889480068, "message": -0.02469433055204462}. These matched-RNG interventions use the same frozen readout; the constant TRAIN-mean feature control is not an optimally refitted unigram, and erasures are not retrained ablations.
+
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 
 Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This integrated stage advances the Transformer-leading language program; tiny fits are engineering diagnostics.
