@@ -89,8 +89,8 @@ Race selection has the exact softmax winner probabilities, but one winning value
 | 10M vs tuned Transformers at ≤ 352 TF (P0-6; 4 arms, validation-selected) | 1.996 (tf128x4 5.4p lr0.003) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Better quality at 102% of its compute (not matched) |
 | 10M vs tuned dense at ≤ 107 TF (P0-6; 4 arms, validation-selected) | 1.915 (lstm384 2.5p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Loss |
 | 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
-| 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point; run queued |
-| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point; run queued |
+| 90M vs LSTM-512, 6 passes | 1.661 | 1.800 (p64/d4/pool2 + route credit; 4× less training compute) | Efficiency point; run queued |
+| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.800 (p64/d4/pool2 + route credit; 8× less training compute) | Efficiency point; run queued |
 | NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.84 (57.6 KB vs 490 KB) | Loss vs LSTM |
 | NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.724 (validation-selected arm, development session indy_20170131_02, also one of the six official sessions; tinyRSNN .746 there) | Pending (six-session run; also report the five untouched sessions) |
 | SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |
@@ -3065,6 +3065,7 @@ Training budget: whole-fit FLOPs estimate; inference budget: per-position FLOPs 
 | Ours p32/d4/pool4 + route credit (AWS, 1 passes, seed 6) | 177,019 | 10,986 | 1.997 / 1.998 | 107.6 | 1.20 |
 | Ours p32/d8/pool2 + route credit (AWS, 1 passes, seed 6) | 210,043 | 10,986 | 1.984 / 1.983 | 127.4 | 1.42 |
 | Ours p64/d4/pool2 + route credit (AWS, 1 passes, seed 6) | 422,475 | 10,986 | 1.858 / 1.857 | 241.2 | 2.68 |
+| Ours p64/d4/pool2 + route credit (AWS, 4 passes, seed 6) | 422,475 | 43,945 | 1.801 / 1.800 | 964.9 | 2.68 |
 | E64 LSTM-512, 6 passes (AWS) | 1,199,323 | 65,917 | — / 1.661 | 3893 | 7.21 |
 | E64 Transformer-256x4, 4 passes (AWS) | 3,238,427 | 43,945 | — / 1.604 | 8000 | 22.22 |
 
