@@ -65,3 +65,37 @@ not an unexamined hundred-million-token investment.
 
 No scaling coefficients have been measured for the new tokenized setup yet.
 Current8K pilot variants are mechanism comparisons, not a scaling dataset.
+
+## FLOP frontier and sparse capacity: 5 October clarification
+
+The user targets lower language loss at equal complete fitting FLOPs and useful
+capacity growing faster than selected activity. Treat this as the selection
+criterion, not a constraint imposed on fitted coefficients. Lower loss at a
+given compute budget and a steeper decline in reducible loss are distinct
+claims; reserve a larger point to test extrapolation and possible crossover.
+Dense Chinchilla allocation does not prescribe total sparse parameter count
+or persistent state size. Nor does additional stored state prove additional
+useful representational capacity. Measure quality and utilization as it grows.
+
+Dense reference: Hoffmann et al., Training Compute-Optimal Large Language Models
+(https://arxiv.org/abs/2203.15556), empirically balances model size and training
+tokens. Routed reference: Clark et al., Unified Scaling Laws for Routed Language
+Models (https://proceedings.mlr.press/v162/clark22a/clark22a.pdf), fits log loss
+in active model size and effective expert count with an interaction and expert
+saturation. Its fixed 130B-token training regime is not a compute-optimal
+data-allocation sweep. Krajewski et al., Scaling Laws for Fine-Grained Mixture
+of Experts (https://arxiv.org/abs/2402.07871), varies data and expert granularity
+and finds an increasing modelled compute advantage for optimized MoE. Its
+large-budget extrapolations are predictions, not completed fits at those scales.
+Thus sparse Transformers are substantive scaling competitors; beating a dense
+reference alone does not imply beating the best sparse Transformer frontier.
+
+For our family separately fit available capacity, selected work, discovery,
+credit work, data exposure and persistent state. Keep lexical/readout work
+explicit. Increasing pool size currently increases scored keys and may increase
+optimizer work even when selected writes stay fixed. Scalable discovery and
+learning are implementation objectives, not assumed zero-cost properties.
+The current 2K/8K pilots differ in passes and evaluation populations and do not
+identify a scaling exponent. The admitted 64K test holds the 8K development
+population and two-pass protocol; width/data crossed cells follow its learning
+gate. No empirical exponent or below-Transformer law is claimed yet.

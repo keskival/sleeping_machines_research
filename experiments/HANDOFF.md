@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**8K actual work completed / 64K admitted — 5 October:** credit16 seed6 full
+16368-target replay has zero trajectory error and complete arithmetic coverage:
+0.826898 MFLOPs/fitting target, 0.272633 MFLOPs/evaluation target. Boundaries
+and separate special-function counts are in the completed diagnostic JSON
+curie_fixed_batch_tokens_8k_c16_work_20261005_v1. Admission receipt passes
+both-seed learning/context, work coverage/parity and source/resume contracts.
+The waiting tmux has advanced to guarded 64K fitting; inspect its logs/results
+before admitting another job. TOKEN_SCALING_PLAN.md now distinguishes dense
+allocation from sparse capacity, frontier offsets from slopes, and includes
+primary MoE scaling references. User requests FLOP advantage and faster capacity
+growth; these are empirical success criteria, not imposed priors on coefficients.
+
+
 **8Kintegrated stage and coupling decision —5 October19:46UTC:** local host idle,
 ~10GiBavailable, no GPU tool; bounded one-thread run_safe fits in tmux reserved
 8GiB, RSS1.2GB/VMS5GB/240s. Existing AWSpackets preserved; remote admission remains
