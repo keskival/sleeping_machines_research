@@ -193,3 +193,22 @@ estimates for dense references), and inference work up to the decision at N.
   +0.041 = 3.2 sigma; N=512 +0.015 = 1.4 sigma (not significant). Evidence level: exploratory, single training seed. The
   dense/SSM/point-process references (AWS) and a second native seed decide the claim. Suggested next: seed 7 of the same
   configuration, and paired bootstrap on per-run scores once the native driver saves them.
+- 5 Oct 06:30 UTC (Docker review host): **identity-aware oracle bound: the early range is not information-limited**
+  (`experiments/fas/oracle_bound.py`, `experiments/results/fas/fas_v1_oracle_bound_test_20261005T060000Z.json`). Item identity is
+  recovered from SimPy sub-process creation: all 30 items, 35–36 events each, none unassigned, and every regenerated test run is
+  verified byte-identical (ids and times) to the official data. The oracle scores each item's own step-to-step durations against
+  clean training durations (robust z; fit on the same 2,000 clean seeds). AUROC, all faults:
+
+| Detector | N=64 | N=128 | N=256 | N=512 | N=1024 |
+|---|---:|---:|---:|---:|---:|
+| oracle_sq (identity-aware) | 0.611 | 0.684 | 0.755 | 0.885 | 1.000 |
+| oracle_max_step (identity-aware) | 0.592 | 0.679 | 0.755 | 0.913 | 1.000 |
+| native p32/d4 (identity-free) | 0.526 | 0.562 | 0.600 | 0.742 | 0.994 |
+| best classical (identity-free) | 0.532 | 0.566 | 0.559 | 0.727 | 0.998 |
+
+  Signal exists from N≈64. Share of the oracle's above-chance AUROC recovered at N=256: native 39%, best classical 23%; at
+  N=512: native 59%. The remaining gap is the cost of interleaving (unknown item identity), i.e. a de-interleaving problem:
+  per-process addressed state and first-arrival races are the architecture's stated answer. Retry faults are the most
+  detectable for the oracle (N=256: 0.845), wear the least (0.672–0.700). Implication for native design: routing each event
+  to a per-item slot (the item boundary is inferable from the 31-step order) is the mechanism to test. Pool size and
+  addressing are the levers, not width. The oracle is a bound, not a competitor: it uses identity the benchmark hides.
