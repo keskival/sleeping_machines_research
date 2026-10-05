@@ -26,7 +26,7 @@ Every deliverable below has a pass/fail number. Report it as a win or a loss in 
 | P0-2 | **10M win against LSTM-512 at matched compute** | curie: p128/d4 4 passes, starts right after the FAS arm (~00:15 UTC 5 Oct); fallback p96/d4 pool 4 with sampled credit, 6 passes | test bpc < 1.799 at ≤ 433 TF; tuned LSTM-512 4.5p is 1.825 at budget A | queued. History curves (4 Oct): the gap to the LSTM is per-event local modelling (present from 2-4 chars of history, constant), not context or routing noise, so width is the direct test |
 | P0-3 | **NeuroBench primate leaderboard** | AWS: `queue/aws_primate_admission_20261004T184500Z/manifest.json` (six-session r1) | six-session mean R² > 0.71 (AEGRU) | prepared |
 | P0-4 | **NeuroBench Mackey-Glass leaderboard** | AWS r1 (repeats 20–29 running); curie expected-reception development → a pre-declared tau 17 run | 30-repeat sMAPE < 13.37 (LSTM), with a smaller footprint | 20/30: 14.37; third batch unblocked 4 Oct 23:55 (pins match, driver does not import the drifted file) |
-| P0-6 | **Tuned dense references at our budgets** (added 4 Oct 21:00 UTC, user-directed) | AWS: ten `queue/aws_tuned_ref_10M_*_20261004T210000Z.txt` first (1.5–3 h each), then four `aws_tuned_ref_90M_*` (TUNED_BASELINES.md) | native beats the validation-selected tuned arm at each budget (A ≤ 352 TF: 1.888; B ≤ 107 TF: 1.955; 90M C/D once P0-1 completes) | running; 5/6 A arms done: LSTM-512 4.5p 1.826 (val-leading) and LSTM-384 1.840 beat native 1.888 (losses, context-independent); tuned TF192x4 2.027, TF128x4 1.996 and TF256x4 lr.002 2.053 are behind native 1.888 (5/6 arms; TF256x4 lr.001 pending); budget B 1/4: LSTM-384 1.915 beats native 1.955 at 106 TF (loss); curie native lr .003/.006 fairness arms queued after P0-2 |
+| P0-6 | **Tuned dense references at our budgets** (added 4 Oct 21:00 UTC, user-directed) | AWS: ten `queue/aws_tuned_ref_10M_*_20261004T210000Z.txt` first (1.5–3 h each), then four `aws_tuned_ref_90M_*` (TUNED_BASELINES.md) | native beats the validation-selected tuned arm at each budget (A ≤ 352 TF: 1.888; B ≤ 107 TF: 1.955; 90M C/D once P0-1 completes) | running; 5/6 A arms done: LSTM-512 4.5p 1.826 (val-leading) and LSTM-384 1.840 beat native 1.888 (losses, context-independent); tuned TF192x4 2.027, TF128x4 1.996 and TF256x4 lr.002 2.053 are behind native 1.888 budget A 6/6 complete (TF256x4 lr.001 2.199); budget B 3/4: LSTM-384 1.915, LSTM-256 1.934 beat native 1.955; TF192x3 2.315 behind; admission waits for windowed LSTM validation rescore (below); curie native lr .003/.006 fairness arms queued after P0-2 |
 | P0-7 | **Home-field async wins** (added 4 Oct 22:40 UTC, user-directed) | curie: FAS native arm (v6 queue, after the streaming evaluations), SHD aug/expected p32d4; AWS: FAS data + five references (AWS_FAS_REFERENCES.md) after the P0-1/P0-6 owners | FAS (experiments/FAS_BENCHMARK.md): native AUROC above every reference (LSTM, Transformer, LRU, S5-style, Mamba-style; classical) at N <= 256 process events, at no more training/inference work; SHD: a parameter- or work-matched result against small SNNs (cAdLIF 94.19% at 38.7K params; DCLS 95.07% at 0.2M) | queued |
 | P0-5 | **Scoreboard** | report/scoreboard.py: REPORT.md / PDF page 2, generated from result files on every rebuild | every comparison listed as win / loss / efficiency point per WIN_CRITERIA | **done** (5 wins of 13) |
 
@@ -35,6 +35,16 @@ slot frees; P0-6 90M arms and the P1-1 seed `aws_language_10M_r1_p64d4_4pass_lin
 P0-6, a matched-compute win against an untuned reference will not survive review, so it ranks with P0-1. The long depth-8 streaming
 replay/teacher fits are research diagnostics: checkpoint them at their next milestone and suspend them (do not delete
 anything) until P0-1 and P0-3 are running. Resume them afterwards.
+
+**P0-6 blocking step (5 Oct 04:10 UTC): windowed VALIDATION rescore of the tuned LSTM arms.** Budget A is complete (6/6);
+budget B is 3/4. `report/tuned_reference_admission.py` correctly refuses cross-architecture validation selection while
+LSTM validation is carried-state and Transformer validation is windowed. Owner: curie (text8 + language_stream_rescore
+tooling; inference only, minutes per arm). Rescore text8[90M:90.2M] with E64 T256 windows, the same scorer as the
+Transformer arms, for A: lstm384_p6, lstm512_p4.5 and B: lstm384_p2.5, lstm256_p5 (+ any later LSTM arm). Save each
+as a new result beside the original; never edit the AWS JSON. `reference_window_rescore.py` covers TEST only, so add a
+validation interval mode or use language_stream_rescore. Expected outcome, not a substitute for the run: selection
+unchanged (LSTM-512 val 1.769 vs best TF 1.950; test context effect 0.0000), so budget A = loss to tuned LSTM-512
+1.826, and the Transformer sub-comparison = native win (1.888 vs TF128x4 1.996 at 101% compute).
 
 ## P1 — confirm and widen the wins
 
