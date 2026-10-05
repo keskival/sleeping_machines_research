@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "historical_dataset_bytes_identical": true,
+  "rows": [
+    {
+      "split": "train_clean",
+      "sha256": "7efafabf524b618ad6ba1173fcf3f0d023eae848b21f57a6b233bfc09bac8661",
+      "runs": 10000,
+      "events": 13638850
+    },
+    {
+      "split": "val_clean",
+      "sha256": "810bff48bd0668a6cbca119eb11cabe90477d10bcae7a2ba0465971a698abc05",
+      "runs": 1000,
+      "events": 1363976
+    },
+    {
+      "split": "val_faulty",
+      "sha256": "5479413627ec69f5b05428e3fd4119f7cfe01fd4343a6b9fc7f711bc129bc78f",
+      "runs": 1000,
+      "events": 4634539
+    },
+    {
+      "split": "test_clean",
+      "sha256": "f682088af3936e09c8739aa510fe0218ed92371ba38879eeaaf58a03092c2dd2",
+      "runs": 2000,
+      "events": 2727823
+    },
+    {
+      "split": "test_faulty",
+      "sha256": "34b8f30c094d245a27f1177ea4a2f1132b42d256c47c7d761be987ff07ebbc76",
+      "runs": 2000,
+      "events": 8913681
+    }
+  ],
+  "scope": "All five NPZ split files exactly match saved FASv1 hashes. Regeneration manifest timestamps/wall times differ; split populations and bytes match."
+}

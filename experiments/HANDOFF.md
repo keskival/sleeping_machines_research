@@ -1,5 +1,13 @@
 # Session handoff — 2026-09-30
 
+**FASdata exact regeneration completed:** allfiveTRAIN/VAL/TESTnpz hashes,
+runs/eventcounts and generatorargs match historical FASv1manifest exactly.
+Read-only streamingSHAreceipt curie_fas_v1_replication_data_identity_20261005_v1.json;
+manifest timestamps/wallclock differ as expected. Seed7two-window frozen-driver
+smoke now live under originalFAShandle; inspect numerical outcome before fullfit.
+Language lowerLRwaiter retained afterFASsequence; no competinglocalfit.
+
+
 **256Kutility completed / recipe repair scheduled /FASdata live:** contextgain
 0.524467NLL vs frozen TRAINmean; addressederase+0.019070,message+0.078129,
 both+0.064475. Same checkpoint/source/matchedRNG/partition checks pass.
