@@ -279,3 +279,19 @@ estimates for dense references), and inference work up to the decision at N.
   six generic classical controls and this de-interleaver, plus a timing-aware de-interleaver (assign to the candidate whose
   elapsed time since its last event is most typical). That is the stronger rule a reviewer would try, and it must be run
   before claiming headroom; (3) only then native arms and AWS references. The oracle bounds the discriminating range.
+- 5 Oct 12:45 UTC (Docker review host): **v2 probe with the timing-aware de-interleaver**
+  (`fas_v2_probe_timed_drop02_20261005T123000Z.json`; same 300+300 runs; the oracle reproduces the first probe exactly).
+  The timing-aware rule chooses, among items waiting for the event's type, the one whose elapsed time since its last event
+  is most typical. Pair accuracy 0.86 (FIFO 0.72).
+
+| v2 detector | N=128 | N=256 | N=512 | N=1024 |
+|---|---:|---:|---:|---:|
+| oracle | 0.572 | 0.598 | 0.673 | 0.792 |
+| timing-aware de-interleaver | 0.512 | 0.587 | 0.568 | 0.679 |
+| FIFO de-interleaver | 0.517 | 0.502 | 0.498 | 0.530 |
+
+  The timing rule takes nearly all of the oracle's signal at N=256; ~0.10 of headroom remains at N=512–1024. A v2 claim must beat
+  the timing-aware rule, not FIFO. To widen the discriminating range before freezing v2, probe harder settings: 3–4 lines,
+  drop 5%, and line-specific speed offsets (which make timing ambiguous). Procedural note: an intermediate run of this probe
+  fitted clean statistics from one training run because of an indentation error introduced by an edit. It was
+  discarded unpublished, and the fixed version is above.
