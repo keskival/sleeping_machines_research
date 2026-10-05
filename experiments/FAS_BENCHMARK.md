@@ -263,3 +263,19 @@ estimates for dense references), and inference work up to the decision at N.
   4. Benchmark revision (FAS v2) where FIFO binding breaks: several product variants with different routes, stations that allow
      overtaking (parallel machines), and dropped/duplicated events. Rerun the oracle and this de-interleaver first. The
      home-field claim belongs where structure-aware rules lose information.
+- 5 Oct 11:45 UTC (Docker review host): **FAS v2 probe: two merged lines + 2% event dropout breaks structure-aware binding**
+  (`experiments/fas/v2_probe.py`, `experiments/results/fas/fas_v2_probe_drop02_20261005T113000Z.json`; 300+300 runs, AUROC SE ≈ .023).
+  Construction without simulator changes: runs s and s+5,000,000 of the same split are merged by timestamp (the first faulty
+  for positives), and each process event is dropped with p=.02 (seeded). FIFO de-interleaver pair accuracy drops to 0.72
+  (clean) / 0.71 (faulty).
+
+| v2 detector | N=128 | N=256 | N=512 | N=1024 |
+|---|---:|---:|---:|---:|
+| oracle (true line+item identity, max-step) | 0.572 | 0.598 | 0.673 | 0.792 |
+| FIFO route de-interleaver | 0.517 | 0.502 | 0.498 | 0.530 |
+
+  The structure-aware rule collapses to chance while signal remains for a model that binds correctly. This is the property
+  v1 lacked. Proposal for v2 before any native run: (1) freeze a seeded v2 generator and dataset (2,000+2,000 test); (2) rerun the
+  six generic classical controls and this de-interleaver, plus a timing-aware de-interleaver (assign to the candidate whose
+  elapsed time since its last event is most typical). That is the stronger rule a reviewer would try, and it must be run
+  before claiming headroom; (3) only then native arms and AWS references. The oracle bounds the discriminating range.
