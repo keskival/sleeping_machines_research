@@ -1,5 +1,20 @@
 # Session handoff — 2026-09-30
 
+**Parameterized member/decoder freedom —5 October18:40 UTC:**
+new recipes use `token_language.py`/`token_language_engine.py`, with corrected
+initial selection, completed local/first-site/uniform-site credit choices,
+position sampling and selectable adaptive tail minimum. Historical/pending
+producers preserved.3decoder contracts passed, actual default learning parity
+and full-width resume passed. Current32features->16/8/4tail ranks are selectable,
+not a family limit. Matched8K tail32comparison queued after uniform-site default
+control in immutable `aws_capacity_tokens_20261005T184000Z` addendum; no pending
+quality inferred. Prioritized integrated member remains uniform-site actual
+future-write credit; tail width is unselected until empirical comparison.
+New report appendix source derives completed tables and unified work units;
+standalone Markdown rendered, main report next build includes it. Main PDF
+was not rebuilt here. Read TOKEN_DECODER_CAPACITY_20261005 theory note.
+AWS delivery still unobserved; access question remains pending.
+
 **Full event-site credit member —5 October18:33 UTC:**
 `event_coverage_token_language_lab.py` samples outcome-independent event sites,
 weights causal suffix utility, and removes the immediate-only local surrogate

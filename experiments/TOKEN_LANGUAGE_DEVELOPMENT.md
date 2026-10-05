@@ -143,3 +143,29 @@ claiming a speed advantage. Its value is constant proposal count during
 capacity growth. Next admitted small fit is pool32 with shared input/output/
 gate/control maps, private keys, key-read maps, clocks and memories, same
 8K data/128-update budget. A capacity-use score alone is not a quality win.
+
+## Current parameterized entry point —5 October18:40 UTC
+
+Use `token_language.py` for new recipes, through unique run_safe queues.
+It includes corrected initial/trained checkpoint selection and delegates to
+`token_language_engine.py`. Select local credit (`--future-site first
+--future-every 0`), first-site actual suffix credit, or uniform event-site
+credit. Select suffix scoring count and adaptive minimum tail width explicitly.
+Frequency initialization and balanced inputs are supporting choices in the
+prepared queues; they are not model-family restrictions. Historical drivers
+and source-pinned pending AWS queues remain preserved.
+
+Default-capacity learning matches the completed event driver exactly. Wide-tail
+normalization, prior and available contextual-rank contracts pass; full-width
+actual resume passes. P16/H2 has32features; old tail projections16/8/4 are a
+selectable readout bottleneck. Full-width32quality is queued on AWS, unmeasured.
+No improvement is inferred from parameter count or the rank contract alone.
+
+Completed later studies and work:
+`TOKEN_2K_CREDIT_FINDINGS_20261005.md`; uniform-site repair and its0.067745NLL
+trained gain are in `theory/TOKEN_EVENT_CREDIT_COVERAGE_20261005.md`.
+All2Ktrained variants lose to initialization. Complete synthetic work audits
+and their scope are in `theory/TOKEN_INTEGRATED_WORK_FINDINGS_20261005.md`.
+The completed pool32tied-map arm gives8.267295 versus pool4 8.239298, a0.027997
+loss at the same8Ktarget budget. More capacity by itself did not improve it.
+The report's new tokenized appendix derives tables from completed files only.
