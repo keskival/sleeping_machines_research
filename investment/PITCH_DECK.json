@@ -227,22 +227,22 @@
           "Better at 88% of its inference compute (more training)"
         ],
         [
-          "vs LSTM-512, 6 passes (10M chars): queued rerun",
+          "vs LSTM-512, 6 passes (10M chars)",
           "1.799 bpc",
           "1.888 bpc",
-          "Behind by 0.09 at 81% of its training compute"
+          "Behind by 0.09; a wider model did not close it"
         ],
         [
-          "vs best tuned LSTM so far (2 tuned runs)",
-          "1.826 bpc",
+          "vs best tuned LSTM (6 tuned runs)",
+          "1.825 bpc",
           "1.888 bpc",
           "Behind by 0.06; it used 92% of our compute"
         ],
         [
-          "vs best tuned Transformer so far (2 tuned runs)",
+          "vs best tuned Transformer (4 tuned runs)",
           "1.996 bpc",
           "1.888 bpc",
-          "Better by 0.11 at equal training compute (101%)"
+          "Better by 0.11 at ~equal compute (102%)"
         ],
         [
           "vs LSTM-512 / Transformer (90M chars): queued",
@@ -259,8 +259,8 @@
       ],
       "banner": "Wins vs both saved Transformers; a tuned small LSTM still leads. That gap is the next proof.",
       "banner_y": 548,
-      "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; tuned versions at our budgets are running. Scoreboard: evidence pack R1.",
-      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued. Update 5 Oct 00:40: second tuned arm LSTM-512 4.5 passes, 324 TF, test 1.826 (validation 1.769, leading the group); native 1.888 at 352 TF. Update 5 Oct 03:45: budget B (<=107 TF) first tuned arm LSTM-384 2.5 passes 1.915 vs native 1.955: also a loss."
+      "caveat": "Compute = estimated arithmetic operations. Baselines trained by us; 10 tuned runs at our two budgets complete, selected by validation. Scoreboard: evidence pack R1.",
+      "notes": "Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. \"Passes\" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued. Update 5 Oct 00:40: second tuned arm LSTM-512 4.5 passes, 324 TF, test 1.826 (validation 1.769, leading the group); native 1.888 at 352 TF. Update 5 Oct 03:45: budget B (<=107 TF) first tuned arm LSTM-384 2.5 passes 1.915 vs native 1.955: also a loss. Final 5 Oct 04:40: P0-6 complete; validation selection confirmed with windowed LSTM validation (curie). Budget A: tuned LSTM-512 1.825 beats native 1.888; tuned Transformers best 1.996 (native better at 102% compute). Budget B: tuned LSTM-384 1.915 beats native 1.955; best tuned Transformer 2.215. P0-2 (p128/d4 4-pass) 1.907 at 411 TF: loss."
     },
     {
       "kind": "table",

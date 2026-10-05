@@ -50,6 +50,14 @@ def page(native, public):
         rows.append([f"10M vs tuned dense at {label} (P0-6; {group['required']} arms, validation-selected)",
                      f"{ref['test_bpc']:.3f} ({name})", f"{q:.3f} ({best['label']}; {best['whole'] / 1e12:.0f} TF)",
                      'WIN' if q < ref['test_bpc'] else 'Loss'])
+        tfs=[r for r in group['rows'] if r['args']['model']=='tf']
+        if tfs:                                   # architecture sub-comparison, also validation-selected
+            t=min(tfs,key=lambda r:r['selection_valid']);ta=t['args'];ratio=best['whole']/t['whole']
+            verdict=('WIN' if q<t['test_bpc'] and ratio<=1 else
+                     f"Better quality at {100*ratio:.0f}% of its compute (not matched)" if q<t['test_bpc'] else 'Loss')
+            rows.append([f"10M vs tuned Transformers at {label} (P0-6; {len(tfs)} arms, validation-selected)",
+                         f"{t['test_bpc']:.3f} (tf{ta['size']}x{ta['layers']} {ta['passes']:g}p lr{ta.get('lr')})",
+                         f"{q:.3f} ({best['label']}; {best['whole'] / 1e12:.0f} TF)",verdict])
     # 90M
     if native.get('native90'):
         for c in native['controls90']:

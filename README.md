@@ -15,8 +15,10 @@
 | 10M vs Transformer-256x4, 4 passes at ≤ its inference compute (7.4 MF/pos) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
 | 10M vs LSTM-512, 6 passes at ≤ its training compute (432.6 TF) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | Loss |
 | 10M vs LSTM-512, 6 passes at ≤ its inference compute (2.4 MF/pos) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | Loss |
-| 10M vs tuned dense at ≤ 352 TF (P0-6) | pending | align LSTM validation/test contexts | Pending |
-| 10M vs tuned dense at ≤ 107 TF (P0-6) | pending | 3/4 arms complete | Pending |
+| 10M vs tuned dense at ≤ 352 TF (P0-6; 6 arms, validation-selected) | 1.825 (lstm512 4.5p lr0.002) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Loss |
+| 10M vs tuned Transformers at ≤ 352 TF (P0-6; 4 arms, validation-selected) | 1.996 (tf128x4 5.4p lr0.003) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Better quality at 102% of its compute (not matched) |
+| 10M vs tuned dense at ≤ 107 TF (P0-6; 4 arms, validation-selected) | 1.915 (lstm384 2.5p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Loss |
+| 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
 | 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point; run queued |
 | 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point; run queued |
 | NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.37 (57.6 KB vs 490 KB) | Pending (20/30 repeats) |

@@ -121,3 +121,15 @@ If the two TF256x4 arms do not beat 1.888, the Transformer win survives tuning. 
 Checked objection, "T256 attention handicaps the small Transformers": with the shape estimator, a ctx-128 TF256x4 costs 206 TF per
 10M-character pass versus 222 TF at ctx 256 (7% less). The projection/FFN term dominates at these widths, so a shorter
 training context would buy under 0.1 extra pass. No additional arm queued.
+
+## Final verdict (5 Oct 04:50 UTC; scoreboard generated from result files)
+
+Validation selection was confirmed with windowed LSTM validation (curie aac6d082; equals carried-state).
+`report/tuned_reference_admission.py` now accepts a checkpoint-hash-bound windowed rescore.
+- Budget A (≤ 352 TF): tuned LSTM-512 4.5p **1.825** vs native 1.888: **loss**. Best tuned Transformer (tf128×4 5.4p) 1.996:
+  native better at 102% of its compute (not a formal matched win).
+- Budget B (≤ 107 TF): tuned LSTM-384 2.5p **1.915** vs native 1.955: **loss**. Best tuned Transformer (tf128×4 1.6p) 2.215:
+  native better at 104% of its compute.
+- P0-2 (native p128/d4 4-pass, 1.907 at 411 TF) is also a loss. At 10M the native model sits between tuned Transformers and
+  tuned LSTMs. The gap to LSTMs is local (2–4 character) modelling (FINDINGS). Queued levers: content taps, weight decay,
+  native lr.
