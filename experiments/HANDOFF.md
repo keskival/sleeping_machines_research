@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**Memory-path diagnosis —5 October19:12 UTC:** actual selected2K models
+reproduce selected NLL under instrumentation.95.69–95.74%of selections revisit
+seen slots; median per-mode retention0.7545–0.7584, mean retained norms3.61–3.85
+exceed new-write norms2.65–2.81; same-winner memory value differences0.246–0.263.
+Stored memory survives and affects key/value computation. Do not redesign
+transport as a dead-memory repair on this evidence. Prioritize trained readout/
+state credit sensitivity and existing AWS full-width decoder/horizon comparisons.
+Read TOKEN_MEMORY_PATH_20261005; all core mechanisms and frozen queues retained.
+
+
 **Persistent utility diagnosis —5 October19:10 UTC:** frozen selected2K
 seed6/7credit16/64 checkpoints reproduce original NLL under token-wise
 partition and matched RNG. Erasing recurrent messages costs0.04618–0.06734NLL;
