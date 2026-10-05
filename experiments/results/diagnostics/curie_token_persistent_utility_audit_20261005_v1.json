@@ -1,0 +1,86 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_20261005_v1",
+      "seed": 6,
+      "credit_window": 16,
+      "targets": 1016,
+      "losses": {
+        "intact": 8.812526323663906,
+        "no_memory": 8.811920181034118,
+        "no_message": 8.879540007884108,
+        "no_history": 8.8780390559219
+      },
+      "history_gains": {
+        "no_memory": -0.0006061426297883088,
+        "no_message": 0.0670136842202016,
+        "no_history": 0.06551273225799292
+      },
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "04670c423f027c1665bdf57e40af4fa2609d46dd2a3702632057c2b5f6fc30b0"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_20261005_v1",
+      "seed": 6,
+      "credit_window": 64,
+      "targets": 1016,
+      "losses": {
+        "intact": 8.81946984238512,
+        "no_memory": 8.820857952898882,
+        "no_message": 8.8656505712374,
+        "no_history": 8.863008514164001
+      },
+      "history_gains": {
+        "no_memory": 0.0013881105137620864,
+        "no_message": 0.04618072885227953,
+        "no_history": 0.043538671778881266
+      },
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "45e61612fd3dafab4f5825d9f7fdda147e8e4aafa6fc4957337ef895d00a4c89"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 16,
+      "targets": 1016,
+      "losses": {
+        "intact": 8.81383756202037,
+        "no_memory": 8.81376578488688,
+        "no_message": 8.876590706232026,
+        "no_history": 8.875622340074674
+      },
+      "history_gains": {
+        "no_memory": -7.177713349015846e-05,
+        "no_message": 0.06275314421165668,
+        "no_history": 0.06178477805430482
+      },
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "b55e4a1a5013d7051c639bdded523a62f64740fc3b24934342de7db74ffec28f"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 64,
+      "targets": 1016,
+      "losses": {
+        "intact": 8.81285291581642,
+        "no_memory": 8.811773071138878,
+        "no_message": 8.88019610577681,
+        "no_history": 8.879349678520143
+      },
+      "history_gains": {
+        "no_memory": -0.0010798446775410753,
+        "no_message": 0.0673431899603898,
+        "no_history": 0.06649676270372318
+      },
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "45b8c662e8826de20087017b0dcab7cf51ad4213f70710177b9f8743a590c67b"
+    }
+  ],
+  "scope": "Frozen selected development checkpoints. Before every token, erase addressed memory and its arrival/seen markers, previous-event message, or both; retain global position and matched route RNG. Interventions are out of training distribution, not retrained ablations. No fitting or public validation."
+}

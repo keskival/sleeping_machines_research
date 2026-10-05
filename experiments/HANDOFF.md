@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**Persistent utility diagnosis —5 October19:10 UTC:** frozen selected2K
+seed6/7credit16/64 checkpoints reproduce original NLL under token-wise
+partition and matched RNG. Erasing recurrent messages costs0.04618–0.06734NLL;
+erasing addressed memory/arrival/seen has mixed−0.001080to+0.001388effects.
+Messages can carry multi-event history. This is a frozen intervention, not a
+retrained ablation or family limitation. Read TOKEN_PERSISTENT_UTILITY_20261005.
+Prioritize trained memory-path sensitivity/transport retention contracts, then
+small integrated repair if indicated; repeat on already queued AWS8K selected
+models before promotion. Both horizon members and full mechanisms retained.
+Earlier promotion audit's four failures refer to batch16 historical runs;
+new batch64 runs beat initialization in both seeds. Shared origin now includes
+dfcbda93; GitHub delivery confirmed, AWS token admission/results unobserved.
+
+
 **Learned fixed-batch gains —5 October19:05 UTC:** paired2K batch64credit16/64
 fits completed for seeds6/7 at8,160targets/16updates. Selected dev16/64:
 seed6 8.812527/8.819470,seed7 8.813838/8.812853, initial8.906910. Both members
