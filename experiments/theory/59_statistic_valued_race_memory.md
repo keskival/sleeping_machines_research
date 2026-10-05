@@ -1814,3 +1814,40 @@ second seed.
 - Arms: with and without weight decay, looking for a delayed fall in held-out loss after saturation.
 - Promotion: the integrated contracts (race, sparse writes, counterfactual credit) are kept; the allocation is an
   added rule, stated as such.
+
+## 421. A "weight decay" for fast memories: decay exists, a storage cost does not, and it opposes recruitment
+
+**Question (user, 5 October).** Should dynamic memories (fast weights) have an analogue of weight decay, so that they
+compress and grok as well?
+
+**What already exists.**
+- Each slot decays with a learned rate times an input-dependent forget gate.
+- A leaky integrator is an exponentially weighted estimate: the MAP state under a drift prior, as with the forgetting
+  factor in recursive least squares. That is time-domain shrinkage, the fast-weight analogue of an L2 prior.
+- Training shortened these decays (base half-lives typically ~6 characters; §413 measurements). The loss rewards
+  forgetting interference, not compact storage.
+
+**What weight decay adds for grokking.**
+- Parameter weight decay favours the minimum-norm solution, which gradually replaces a memorizing solution with a
+  compact, generalizing one (Power et al., 2022).
+- The memory analogue is a *storage cost*: a penalty on write magnitude, ‖write·W_in x‖, or on the number of distinct
+  slots written per episode. This is a description-length pressure: keep only predictive information, in fewer
+  memories. It is compression, not forgetting.
+
+**Tension with §419.**
+- A storage or slot cost is the force opposite to recruitment.
+- The intended dynamics pair them: recruit on novelty (a free-slot prior or gated allocation, §§419–420), then
+  consolidate on redundancy (a storage cost).
+- Applying the cost before recruitment works would deepen the collapse diagnosed in §419.
+- **Order:**
+  1. Establish recruitment (§419 sweep).
+  2. Add the storage cost with the recruitment knob held fixed; λ_store ∈ {1e-4, 1e-3} on the mean squared write.
+     Measure slots used, memory norms, AUROC and validation NLL.
+
+**Parameter weight decay is untested and cheaper.**
+- Native language runs use Adam without weight decay or dropout, and select final weights.
+- The tuned LSTM references use dropout .1 and validation-selected checkpoints.
+- **Proposed arm:** p64/d4 4-pass at the budget-B protocol with AdamW, weight decay {.01, .1}, via a thin wrapper (the
+  base driver is pinned).
+- **Readout:** test bpc against 1.955, plus the 2–4-character history-curve bin.
+- **Placement:** after the current curie chain, or in a free AWS slot.
