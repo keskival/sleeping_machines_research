@@ -1759,3 +1759,45 @@ second seed.
 - R2 tied gains more from pool than untied pools do.
 - R3 increases the number of slots used most strongly.
 - If no knob moves slot use, Proposition 2's missing write term dominates, and item 4 or 5 is the next step.
+
+## 420. Hypothesis (user, 5 October): maximal recruitment memorizes first, then saturation forces compression
+
+**User's intuition.**
+1. If dormant capacity is recruited at every training example, each example seen once is memorized immediately, until
+   the routes and memories are full.
+2. After that, training should "grok": compress what was learned while still memorizing every example, now driven by
+   ordinary loss minimization, since optionality is saturated.
+
+**Assessment, with the parts that need correcting:**
+1. **Which capacity.**
+   - Slot memories are per-episode state, reset per run or segment. They cannot memorize training examples across the
+     dataset. Slot recruitment (§419; FAS de-interleaving) is a separate question.
+   - Cross-example memorization lives in routes and their (untied) private parameters. The hypothesis applies there.
+2. **One-shot memorization needs an allocation rule, not only exposure.** Small optimizer steps move a newly recruited
+   route only slightly per example.
+   - Immediate memorization needs surprise- and novelty-gated allocation: when the loss is high and no key matches
+     well, claim a dormant unit and set its key and value directly from the example.
+   - Prior art: Platt's Resource-Allocating Network (1991) and adaptive-resonance networks; note 01's
+     "when gradients cannot help, recruit".
+3. **The phase shift needs a compression pressure.**
+   - Grokking (Power et al., 2022) is driven mainly by weight decay (norm and efficiency), not by saturation as such.
+   - Saturation does force later examples to share routes, and the resulting interference can induce shared structure.
+     That is plausible, but routes already dedicated to memories need a cost for staying separate (weight decay,
+     description length or reuse pressure) before they merge.
+4. **Recruitment must be gated, not maximal.** Always recruiting prevents reuse of learned routes for similar inputs,
+   which removes generalization.
+
+**Where it could pay off.**
+- The 10M language deficit is local (2–4 characters of history).
+- Routes allocated to frequent short contexts act as a learned count table, a kind of memorization that generalizes.
+
+**Test design (deferred until the §419 sweep reports):**
+- Mechanism: novelty- and surprise-gated allocation, using the previous event's loss (so it stays causal) and the best
+  key match. The allocation writes the key and value of a dormant route in one step.
+- Measurements:
+  - training loss on examples seen once;
+  - occupancy of dormant routes over training;
+  - held-out loss.
+- Arms: with and without weight decay, looking for a delayed fall in held-out loss after saturation.
+- Promotion: the integrated contracts (race, sparse writes, counterfactual credit) are kept; the allocation is an
+  added rule, stated as such.
