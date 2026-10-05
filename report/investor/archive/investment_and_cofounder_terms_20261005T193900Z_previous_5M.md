@@ -10,13 +10,13 @@ We invite prospective angel investors and cofounders contributing sweat equity t
 
 | Term | Proposal |
 |---|---|
-| Pre-money equity valuation | **€10,000,000** |
+| Pre-money equity valuation | **€5,000,000** |
 | Target aggregate new investment | **€250,000–€500,000** |
 | Financing basis | A priced equity investment into the company |
 | Investor allocation | Proportional to each investor's cash contribution at the agreed share price |
 | Use of funds | Founder runway, research and engineering, compute, reproducible validation and initial commercial development |
 
-The €10 million valuation is the proposed value of the company's equity immediately before this financing. New cash increases the post-money valuation.
+The €5 million valuation is the proposed value of the company's equity immediately before this financing. New cash increases the post-money valuation.
 
 **Cash investor ownership = investment ÷ (pre-money valuation + total new cash investment).**
 
@@ -24,30 +24,10 @@ The illustrations below assume the indicated amount is the entire round. They ex
 
 | Total cash raised | Pre-money valuation | Post-money valuation | Aggregate ownership bought with cash |
 |---|---:|---:|---:|
-| €250,000 | €10,000,000 | €10,250,000 | 2.44% |
-| €500,000 | €10,000,000 | €10,500,000 | 4.76% |
+| €250,000 | €5,000,000 | €5,250,000 | 4.76% |
+| €500,000 | €5,000,000 | €5,500,000 | 9.09% |
 
-If several investors participate, they divide the aggregate cash-investor allocation in proportion to their investments. For example, two investors contributing €250,000 each in a €500,000 round each receive approximately **2.38%** from their cash investment alone, under these assumptions.
-
-### Why we propose €10 million
-
-The proposed price recognizes an implemented general-purpose model family, a record of research execution and the opportunity to build a reusable model/learning/runtime platform. Investment gives a share of that platform opportunity across language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. A first useful software deployment can create value while the broader substrate develops.
-
-| Basis for the proposal | Existing substance | Economic rationale |
-|---|---|---|
-| Implemented research asset | Integrated models, temporal and sparse-state mechanisms, numerical contracts, source-bound results and reproducible experiment tooling | Capital develops an existing technical program and its accumulated know-how |
-| Evidence for distinctive mechanisms | Route credit improves 2.506386→2.371491 BPC at about 0.30% extra estimated fitting work; added receiver capacity improves 2.371491→2.345157 while retaining eight selected writes | Useful learning and capacity mechanisms can support differentiated quality/resource economics |
-| Platform scope | Common temporal/event and persistent-state construction across model, learning, runtime and potential hardware layers | Successful core engineering can be reused across products; software licensing and deployment are early routes to value capture |
-| Founder execution | Tero Keski-Valkama's applied-ML, software-architecture and invention experience, together with the implemented research record | Relevant ability to develop and test the next model, recruit complementary skills and build a commercial offering |
-| Focused next financing | €250,000–€500,000 to advance scalable tokenized language, resource accounting and initial commercial validation | A bounded investment can fund evidence that supports a subsequent financing and product decision |
-
-The two mechanism comparisons are exploratory single-seed evidence under their saved protocols; they support the technical execution case. The [research investment case](../../investment/INVESTMENT_CASE.md) supplies the broader evidence and [founder/contribution record](../../investment/VALUATION_RATIONALE.md). Current tokenized development learning and its complete arithmetic ledgers are documented in the [language appendix](../appendices/tokenized_language_development_20261005.md).
-
-**€10 million is our proposed negotiating valuation, not an independent appraisal or a guaranteed minimum value.** The previous €5 million was a discussion anchor. This revision asks investors to price the implemented platform and execution opportunity at a premium; it does not claim that a new small-fit result mechanically doubled the company's value. The opportunities share core technical dependencies and are not valued by adding their markets together.
-
-For market context, KPMG's *Venture Pulse Q2 2026* reports a **US$5.9 million median European seed pre-money valuation** using data through 30 June 2026. That is a broad market reference in US dollars, not a euro-denominated comparable appraisal of this company. The €10 million case therefore rests on company-specific differentiation and execution, rather than a claim that every AI venture receives this price. [KPMG, page 52](https://kpmg.com/content/dam/kpmgsites/xx/pdf/2026/07/kpmg-private-enterprise-quarterly-q2-26-global-report.pdf#page=52)
-
-Investor diligence should establish the company's usable rights to code, research contributions and other assets, founder commitment, the milestone budget and the first deployment/customer-validation path. No company patents, revenue or customer commitments are assumed here. The founder's earlier employer-owned patents provide experience and are excluded from venture assets. The €250,000–€500,000 angel/cofounder proposal here is a separate financing scenario from the larger €3 million platform-financing scenario described in the broader investment materials; the parties must select one coherent round structure before closing.
+If several investors participate, they divide the aggregate cash-investor allocation in proportion to their investments. For example, two investors contributing €250,000 each in a €500,000 round each receive approximately **4.55%** from their cash investment alone, under these assumptions.
 
 ### Convertible loan alternative
 
@@ -60,7 +40,7 @@ The framework also proposes a **convertible loan** as an alternative to immediat
 | Maturity | Loan term and maturity date to be agreed |
 | Qualified financing | Automatic conversion at a subsequent priced equity round meeting an agreed minimum new-cash threshold |
 | Conversion price | Discount to the next round's share price and/or a valuation cap to be agreed; if both apply, use the lower conversion price |
-| Valuation cap | Amount and pre-money or post-money basis to be agreed separately from the €10 million priced-equity proposal |
+| Valuation cap | Amount and pre-money or post-money basis to be agreed separately from the €5 million priced-equity proposal |
 | Conversion shares | Share class and associated rights to be specified |
 | No qualifying financing by maturity | Agree repayment, extension by agreement, or conversion under a specified fallback valuation and procedure |
 | Sale or change of control before conversion | Agree repayment or conversion treatment and payment priority |
@@ -68,7 +48,7 @@ The framework also proposes a **convertible loan** as an alternative to immediat
 
 **Shares issued on conversion = convertible amount ÷ agreed conversion price per share.** The convertible amount includes principal and accrued interest if interest conversion is agreed. Ownership depends on the complete capitalization table at conversion, including new financing and other converting instruments.
 
-The cash-ownership examples above apply to priced equity only. A convertible lender's eventual percentage is determined at conversion. The €10 million priced valuation does not automatically set the loan's valuation cap. Interest, discount, cap, maturity and conversion conditions remain terms for agreement.
+The cash-ownership examples above apply to priced equity only. A convertible lender's eventual percentage is determined at conversion. The €5 million priced valuation does not automatically set the loan's valuation cap. Interest, discount, cap, maturity and conversion conditions remain terms for agreement.
 
 ## 2. Vesting stock for sweat-equity cofounders
 
@@ -120,4 +100,4 @@ This document is a **non-binding proposal for discussion**. It is not an offer a
 
 **Suggested opening statement**
 
-> We propose a €10 million pre-money valuation reflecting the implemented technology, research execution and the opportunity to build a general-purpose model and computing platform. We seek €250,000–€500,000 through priced equity at that valuation, convertible loans with agreed conversion terms, or a combination. Cofounders contributing sweat equity may receive a separate founder-stock allocation with four-year vesting and a one-year cliff, whether or not they also invest cash. We will document financing, conversion scenarios and founder allocations together in a transparent capitalization table.
+> We seek €250,000–€500,000 through priced equity at a proposed €5 million pre-money valuation, convertible loans with agreed conversion terms, or a combination. Cofounders contributing sweat equity may receive a separate founder-stock allocation with four-year vesting and a one-year cliff, whether or not they also invest cash. We will document financing, conversion scenarios and founder allocations together in a transparent capitalization table.
