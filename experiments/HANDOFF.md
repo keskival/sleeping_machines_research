@@ -13,6 +13,21 @@ Earlier promotion audit's four failures refer to batch16 historical runs;
 new batch64 runs beat initialization in both seeds. Shared origin now includes
 dfcbda93; GitHub delivery confirmed, AWS token admission/results unobserved.
 
+**AWS fixed-batch continuation —5 October19:12 UTC:** all three guarded slots
+occupied;~23GiB available. Verified1,981source/queue bindings and active job
+pins. Frozen scheduler alphabetically loads slot3capacity/event/horizon before
+prerequisite producers, then blocks missing predecessors; original packets
+remain intact. Added immutable `zz_aws_fixed_batch_tokens_20261005T191244Z.json`
+on slot1 after existing allocation/data/resume packet: matched8K batch64,
+credit16/64, seeds6/7,16,368targets/32updates, initial-inclusive selection.
+Four uniquely named jobs use original contracted horizon implementation,
+RSS1.2GB/VMS6GB/300s and8GiBfloor via run_safe. Static dependency ordering
+passes; physical admission pending safe slot1boundary. No incumbent interrupted.
+Prioritized member retains temporal races, sparse addressed persistent state,
+separate keys/values and actual alternative-write credit. Remaining gaps:
+complete fitting/inference work audit, contextual/memory contribution at8K,
+all-key discovery, bounded credit and broader capacity. No architecture departure.
+Receipt: `results/diagnostics/aws_fixed_batch_tokens_receipt_20261005T191244Z.json`.
 
 **Learned fixed-batch gains —5 October19:05 UTC:** paired2K batch64credit16/64
 fits completed for seeds6/7 at8,160targets/16updates. Selected dev16/64:
