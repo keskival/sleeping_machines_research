@@ -185,3 +185,128 @@ exposure Gini and half-lives, and charges fitting and inference work.
 - A knob from X2–X7 is promoted if it moves X1's curve, by lowering loss at large pool or steepening the slope, without
   worse validation loss at pool 2.
 - Losses and null results are recorded beside the derivations.
+
+---
+
+## 426. Holography, defined: the transfer kernel
+
+**User question.** We need a sparse holography. How is it defined formally? What do we lose when items are stored on
+non-intersecting routes? How does the degree of holography affect grokking? How can holography be approximated across
+sparse routes without making routing dense: a sub-holography, a mixture of holograms?
+
+**Definition 426.1 (transfer kernel).**
+- One gradient step on example x changes the prediction on x' by δf(x') = −η·K(x, x')·∂L_x/∂f, where
+  K(x, x') = ⟨∇_θ f(x), ∇_θ f(x')⟩ is the neural tangent kernel, restricted to the parameters the two examples touch.
+- *All* cross-example transfer, positive (generalization) and negative (interference), passes through K.
+
+**Definition 426.2 (holographic degree).**
+
+    H = E_{x≠x'} |K(x,x')| / E_x K(x,x).
+
+- A dense network has H of order one (every example moves every weight).
+- A model whose examples use non-intersecting parameter sets has K(x, x') = 0 across sets, so H ≈ Pr[same route].
+
+**What is lost with non-intersecting routes (Proposition 426.3).**
+- If supp ∇f(x) ∩ supp ∇f(x') = ∅ whenever r(x) ≠ r(x'), training on x never changes the prediction on x'.
+- Each route is an independent learner on its own traffic n_r = p_r·N. It gets *zero interference and zero transfer*.
+- **Losses:**
+  1. *Data efficiency.* Shared structure must be relearned on every route. If the structure has dimension d_s, the
+     estimation cost rises from κd_s/N to κ·U_used·d_s/N (§422.1).
+  2. *Generalization to new combinations.* A test item routed to r is predicted only from r's training items.
+  3. *Graceful degradation.* There is no redundancy in superposition.
+- **Gained:** no interference, hence no catastrophic forgetting between routes, and isolated memorization capacity.
+
+**The ideal is neither extreme.** Let a(x, x') = cos(∇L_x, ∇L_x') be the target alignment: whether the two examples
+want the same update. The ideal kernel transfers where a > 0 and isolates where a < 0. Holography should be
+*selective*, high between aligned examples and low between conflicting ones. A dense network shares everything and
+relies on cancellation; disjoint routes share nothing.
+
+## 427. Holographic degree and grokking
+
+**Setting.** Grokking (Power et al., 2022) is the late transition from a memorizing to a generalizing solution, driven
+mainly by weight decay. The generalizing circuit has a lower norm than the sum of per-example memorizers.
+
+**Proposition 427.1 (no cross-route grokking without overlap).**
+- With disjoint parameter blocks, the minimum-norm interpolant decomposes into independent per-block solutions. No
+  shared, lower-norm rule exists to grok toward across blocks.
+- Weight decay only shrinks each block's memorizer.
+- Grokking can occur *within* a route, on its own traffic n_r, so the data each route needs to grok grows with U.
+
+**Proposition 427.2 (overlap enables grokking).**
+- When routes share a basis (θ_u = θ_0 + B·c_u), a rule expressed in θ_0 serves all examples at one norm cost.
+- A memorization spread over the c_u costs norm per item.
+- Weight decay therefore favours migrating structure into the shared part, the sparse analogue of the grokking
+  transition. **Prediction:** with more holographic overlap, grokking becomes possible and faster. With pure isolation,
+  the model memorizes without grokking.
+
+**Asymmetric decay as a sparse grokking driver (Proposition 427.3).**
+- Weight decay λ_p on private parameters greater than λ_s on shared ones makes private storage costlier than shared.
+- Information that *can* be expressed in the shared basis migrates there over training. Item-specific residue that
+  cannot stays private.
+- This is the compression half of the user's §420 picture: memorize in private routes, then compress into the shared
+  hologram.
+- §425 consolidation replay accelerates the migration by distilling private into shared.
+
+## 428. Sparse holography: a mixture of holograms
+
+**Construction 428.1 (our routes are already combinatorial codes).**
+- An example's route is the tuple of winners over all (layer, head) positions, so there are U^{H·D} route codes.
+- Two examples share a unit's parameters at each position where they pick the same unit. Their transfer kernel is
+
+      K(x,x') = K_shared(x,x') + Σ_{(l,h)} 1[r_lh(x) = r_lh(x')] · K_{u}(x,x').
+
+- For unrelated examples with balanced routing, the expected overlap is Σ_{positions} Σ_u p_u² ≈ H·D/U positions. For
+  similar inputs (similar keys) it is higher.
+- This is Kanerva's sparse distributed memory and locality-sensitive coding, realized by learned races (Kanerva 1988:
+  each item stored in several of many hard locations, retrieved by summing them).
+
+**The knobs, and what each does to the kernel:**
+
+| Knob | Effect on K | Compute |
+|---|---|---|
+| Pool U ↑ | per-position collision falls ~1/U: more isolation | flat (winner-only) |
+| Heads H ↑ (at fixed H·P) | more positions: finer-graded overlap, more "mixture components" | flat at fixed H·P |
+| k-winner races (first k arrivals deliver, values summed) | each item in k locations: explicit SDM | ×k delivered |
+| Tied or low-rank private maps | adds a dense K_shared; private blocks smaller | flat |
+| Soft exposure in training (§418 expected reception) | dense K in training, sparse at inference | training only |
+| Key smoothness (temperature, key norm) | overlap tracks input similarity (LSH quality) | flat |
+| Asymmetric decay λ_p > λ_s | moves information from private to shared over training | flat |
+
+- **"Mixture of holograms":** each (layer, head) position is a small hologram over its pool, and an example is a
+  superposition across positions.
+- **"Sub-holography":** a shared dense basis (the hologram) plus sparse private coordinates.
+- Both are realized by the same substrate; they differ in where the parameters live.
+
+**Optimal holographic degree.**
+- Transfer should follow target alignment a(x, x').
+- The routing learns this if co-routing is credited by the realized benefit of shared updates. Counterfactual credit
+  supplies it at the route level: routes whose shared parameters reduce other examples' loss gain score.
+- A cheap diagnostic is the correlation, over example pairs, between route-code overlap and gradient alignment. It
+  should be positive.
+
+---
+
+## Grokking and holography testbed (pre-declared; small, fast)
+
+**Task:** an algorithmic event task with a known shared rule. Modular addition mod p = 97, as event sequences
+(a, b, =) → c, with a training fraction of 30–50%. This is the standard grokking setting.
+- It measures memorization (training accuracy) and generalization (held-out accuracy) over long training with weight
+  decay.
+- The native integrated core is used. Dense MLP and Transformer controls are diagnostic, run on AWS per AGENTS.md.
+
+| # | Arms (equal active compute) | Prediction |
+|---|---|---|
+| G1 | pool U ∈ {2, 8, 32}, untied | larger U: memorizes faster, groks later or never (§427.1) |
+| G2 | same with tied maps | groks at every U (§427.2) |
+| G3 | heads H ∈ {2, 4, 8} at fixed H·P | more positions: earlier grokking (graded overlap) |
+| G4 | asymmetric decay λ_p/λ_s ∈ {1, 10} with low-rank private maps | λ_p > λ_s: earlier grokking, information moves to shared |
+| G5 | k-winner races k ∈ {1, 2} | k = 2: higher H, earlier grokking at ×2 delivery |
+
+**Measurements:**
+- Training and held-out accuracy curves, and the step at which held-out accuracy crosses 50% and 90%.
+- Holographic degree: sampled NTK overlap on 256 example pairs.
+- Overlap–alignment correlation.
+- Private versus shared norm over training.
+
+**Gates:** the predictions above, each with two seeds. A failure of G2 (tied maps still do not grok) would falsify
+§427.2 for this substrate, and must be recorded as such.
