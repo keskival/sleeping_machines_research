@@ -2946,3 +2946,19 @@ in diagnostics/aws_integrated_tokens_receipt_20261005T181000Z.json.
 Current slot1p96~192.5M/360M; slot2CLSTM; slot3pool4k1fullfit~11.5M/40M.
 WD.01 completed/pushed1966f315: T256test1.9551072 at107.196TF; noquality
 improvement vsplain~1.955. K2/WD.1/capacity remainpending beforetokenpacket.
+
+AWS selectedallocationapproach: nextsafe slot1boundary afterp96, immutable
+addendum aws_token_allocation_20261005T190000Z with7stages: pinneddata,
+actual-driver exactresume, secondseed7 paired2x2 private/shared maps x
+local/futurewritecredit at8192TRAIN/2048DEVtokens, thenstdlibaudit. Other
+agentseed6slot3packetretained; noactivejobpreempted.23actualdependencyfiles
+frozen insteadofallunrelatedmodules. No corpus/modelsubstitution.
+Audit9stdlibcasespassed: complete matchedquad, rejected partial/source/
+settings/treatment/cadence/nonfinite/work inconsistencies. .02NLL practical
+pilotgate; independentseed, fullFLOPs, larger-data usefulcapacity remain
+mandatory before scalingpromotion. No scalingcoefficientsclaimed.
+Fitsretain races/keys/privatepersistentstate andboundedfuture alternative
+credit. Sharingchangesmaps/exposure, notselectedwritecount. Allscoredkeys,
+replay,readout,backward/AdamW chargedinCPUwall; targethardware efficiency
+notmeasured. Finalrecoveryartifactembeds validation-selectedmodel so both
+reportedqualityweights andexactcontinuationpublish. ReadpacketREADME.
