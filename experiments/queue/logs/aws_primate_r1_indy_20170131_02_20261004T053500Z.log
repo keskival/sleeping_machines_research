@@ -1,0 +1,26 @@
+/workspace/experiments/primate_reaching_native.py:127: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  losses.append(float(loss))
+Loading indy_20170131_02.mat
+{"session": "indy_20170131_02", "step": 0, "loss": 1.158398151397705}
+{"session": "indy_20170131_02", "step": 200, "loss": 0.6492914032936096}
+{"session": "indy_20170131_02", "step": 400, "loss": 0.3733681407570839}
+{"session": "indy_20170131_02", "step": 600, "loss": 0.2961889308691025}
+{"session": "indy_20170131_02", "step": 800, "loss": 0.2612040039896965}
+{"session": "indy_20170131_02", "step": 1000, "loss": 0.23807109534740448}
+{"session": "indy_20170131_02", "step": 1200, "loss": 0.21894990026950836}
+{"session": "indy_20170131_02", "step": 1400, "loss": 0.20145426154136659}
+{"session": "indy_20170131_02", "step": 1600, "loss": 0.18210023015737534}
+{"session": "indy_20170131_02", "step": 1800, "loss": 0.15575342163443565}
+{"session": "indy_20170131_02", "step": 2000, "loss": 0.1420212869346142}
+{"session": "indy_20170131_02", "step": 2200, "loss": 0.12951291754841804}
+{"session": "indy_20170131_02", "step": 2400, "loss": 0.11892774298787118}
+{"session": "indy_20170131_02", "step": 2600, "loss": 0.11059537380933762}
+{"session": "indy_20170131_02", "step": 2800, "loss": 0.10137601792812348}
+{"session": "indy_20170131_02", "step": 3000, "loss": 0.09753834784030914}
+{"session": "indy_20170131_02", "step": 3200, "loss": 0.09044895239174366}
+{"session": "indy_20170131_02", "step": 3400, "loss": 0.0868519476056099}
+{"session": "indy_20170131_02", "step": 3600, "loss": 0.0849937817454338}
+{"session": "indy_20170131_02", "step": 3800, "loss": 0.08458324044942855}
+{"session": "indy_20170131_02", "test_r2": 0.7337554036738748, "unsmoothed_test_r2": 0.7328081066978344, "val_r2": 0.7286885289416554, "readout_smoothing": {"alpha": 0.6, "val_r2": 0.7316953585173676, "grid": {"0.0": 0.7286885289416554, "0.3": 0.73036895487656, "0.5": 0.7314009377003283, "0.6": 0.7316953585173676, "0.7": 0.7312507619602222, "0.75": 0.7301770978695772, "0.8": 0.7275218361981073, "0.85": 0.7207169631966803, "0.9": 0.7005172281329384, "0.93": 0.6672228836326518, "0.95": 0.6189275325384579}, "test_r2": 0.7337554036738748}, "route_samples": 4, "single_stream": {"val_r2": 0.726121887843382, "test_r2": 0.7250472242401232}, "fit_bins": 131634, "val_bins": 20245, "test_bins": 52116, "channels": 96, "final_train_mse": 0.08510436087846757, "fit_s": 3577.809761511977, "parameters": 44826}
+{"mean_test_r2": 0.7337554036738748}
