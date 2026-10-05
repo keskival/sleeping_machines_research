@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**P24seed7completed:** initial8.162279795,selectedstep128NLL8.078991340,
+gain0.083288455 passes learning gate. Seed6selected8.033310714;both select
+first-pass boundary(step128). Both two-pass finals worsen:8.183002906/
+8.307177016,retained in curves. Full131056-target fit cost remains charged;
+do not retrospectively claim a one-pass FLOP win.375.188targets/s,496128KiB
+peakRSS. Guarded seed7utility now runs under postrepeat; successful learning/
+context diagnostic admits seed6full-work replay,then verified256Kfit.
+Report appendix adds independent-seed reliability page; capacity advantage
+overP16 remains single-seed until paired repeat. After larger-data measurement
+consider one bounded exposure/schedule comparison if second-pass degradation
+repeats; do not redesign temporal memory from this optimizer/data behavior.
+
+
 **64K independent repeat admitted:** P32utility completed: context0.166731,
 addressederasure+0.002895,message−0.009512,both−0.011456NLL. Three widths
 quality/context gates/source checks complete; receipt chooses P24selected

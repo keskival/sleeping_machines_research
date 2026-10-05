@@ -36,6 +36,23 @@ The 8K and 64K fits score the same development population and both use two passe
 
 Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.
 
+## Appendix. Independent seed for selected 64K capacity
+
+Payload24, selected from the three completed seed6 capacity fits. Seeds6/7 share GPT-2 FineWeb, 65,536 admitted training tokens, 131,056 fitting targets/two passes and 2,040 development targets; initialization-inclusive selection every64 updates. Public validation untouched.
+
+| Seed | Initial NLL | Selected NLL | Gain | Selected step |
+| --- | --- | --- | --- | --- |
+| 6 | 8.162280 | 8.033311 | 0.128969 | 128 |
+| 7 | 8.162280 | 8.078991 | 0.083288 | 128 |
+
+This repeat measures selected-member learning reliability and seed variation. The quality gain over P16 is a seed6 capacity comparison; it is not a paired two-seed capacity win.
+
+| Context gain | Memory erase delta | Message erase delta | Both erase delta |
+| --- | --- | --- | --- |
+| 0.234159 | 0.005551 | -0.032675 | -0.039134 |
+
+Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means history removal hurts prediction. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.
+
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 
 Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This integrated stage advances the Transformer-leading language program; tiny fits are engineering diagnostics.
