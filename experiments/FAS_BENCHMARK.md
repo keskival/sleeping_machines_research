@@ -245,3 +245,21 @@ estimates for dense references), and inference work up to the decision at N.
     a *specific* item is late. The remaining gap to the identity-aware oracle (.755 at N = 256) is **per-item binding**.
   - Next diagnostic: per-slot write purity against the oracle's item identities (diagnostic only; identities never enter
     the model). Then original-write credit across truncated segments (BENCHMARK_WIN_NEXT_STEPS.md §2).
+- 5 Oct 11:00 UTC (Docker review host): **a classical route-aware de-interleaver equals the oracle; FAS v1 is solved by structure**
+  (`experiments/fas/deinterleave_baseline.py`, `experiments/results/fas/fas_v1_deinterleave_test_20261005T110000Z.json`).
+  Identity-free: learn the item route from clean runs (35 types; 66% of clean items follow it exactly), then assign each process
+  event online to the waiting item whose next expected type matches, FIFO. On 2,000 clean + 2,000 faulty test runs, item-own
+  pair accuracy is **1.000** and 99.0–99.4% of events are assigned. Scoring the inferred item-own durations as the oracle does gives
+  AUROC identical to the oracle: **0.755 at N=256, 0.913 at N=512** (native pool 2: 0.600 / 0.742; R0/R1/R3/R8: 0.566–0.578).
+  Consequences:
+  1. The deck/valuation line "earlier fault detection than every classical method" is withdrawn. The structure-aware
+     classical control beats native by .155 at N=256. The earlier comparison (native > six identity-free generic controls)
+     stays true as stated, but it is not the strongest classical control.
+  2. FAS v1's interleaving is not ambiguous: items never overtake at a station, so FIFO binding is exact. A race-model
+     advantage on v1 would require native ≥ 0.755; the native binding gap (R8: horizon fixed, AUROC unchanged) is real.
+  3. Design target for the native arms: learn this binding (route each event to the slot of the item whose last event is its
+     route predecessor). Diagnostic: train on clean runs and measure whether race winners track true item identity
+     (winner-to-item mutual information from oracle_bound.run_with_identity).
+  4. Benchmark revision (FAS v2) where FIFO binding breaks: several product variants with different routes, stations that allow
+     overtaking (parallel machines), and dropped/duplicated events. Rerun the oracle and this de-interleaver first. The
+     home-field claim belongs where structure-aware rules lose information.

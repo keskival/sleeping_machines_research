@@ -904,7 +904,7 @@
         [
           "Event-log anomaly detection (existing hardware)",
           "Built-in biases: computational time, first-arrival races, separate state per concurrent process.",
-          "FAS benchmark, first run: earlier detection than every classical method (AUROC 0.600 vs 0.559 at 256 events); neural baselines pending."
+          "FAS v1 is solved by a simple route rule (AUROC 0.755 at 256 events vs our 0.600); proof needs a harder v2 with ambiguous interleaving."
         ],
         [
           "Irregular inputs",

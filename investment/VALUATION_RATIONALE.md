@@ -42,7 +42,7 @@ integrated construction and its eventual quality/resource behavior.
 | Adaptive communications/codecs | Fewer transmitted bits and less recomputation for reconstruction or a declared task | A real independently decodable wire format and a superior quality/rate/work/latency curve |
 | Embodied generalist learning | Share useful representations across sensing, acting, language and reasoning | Joint learning and separately measured transfer in both directions, including held-out tasks |
 | Compute/hardware IP | Co-design local state, scheduling and communication for target platforms | Precision, scheduling, memory/interconnect and physical energy economics demonstrated |
-| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS early fault detection against LSTM, Transformer, SSM and point-process references; NeuroBench; SHD. Then one design-partner dataset |
+| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS v2 (ambiguous interleaving) against structure-aware rules and LSTM, Transformer, SSM and point-process references; NeuroBench; SHD. Then one design-partner dataset |
 
 One successful deployment can provide value before the full platform exists.
 
@@ -71,6 +71,11 @@ Evidence stage, 4 October:
   (AUROC 0.50–0.56 up to 256 process events).
 - The first native arm is queued. Dense, SSM and point-process references follow on AWS.
 - The value is to be claimed only from completed comparisons.
+
+Evidence update, 5 October: the native model beats the generic classical controls early (AUROC 0.600 vs 0.559 at 256
+events), but a structure-aware classical rule (known route plus first-in-first-out matching) recovers item identity exactly
+and reaches 0.755. FAS v1 is therefore not a home-field win. Its interleaving is unambiguous. The claim moves to a harder
+v2 (product variants, overtaking, dropped events) where such rules lose information.
 Reusable mechanisms and tooling could then lower the cost of entering adjacent
 workloads. Value capture could include model/runtime licensing, deployment
 software, communication SDKs, accelerator IP and later hardware. These are

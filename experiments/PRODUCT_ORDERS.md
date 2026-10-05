@@ -90,6 +90,12 @@ budget-C tuned references first (they give the tuned verdict for the completed P
 and the X1 capacity arms (per-event levers), then p96 as the trajectory check. The product owner decides; nothing is
 cancelled.
 
+**P0-7 FAS correction (5 Oct 11:00, review host):** a classical route-aware FIFO de-interleaver recovers item identity
+exactly and equals the oracle (0.755 at N=256, 0.913 at N=512). Native pool-2 0.600, recruitment arms 0.566–0.578. The
+"earlier than every classical method" claim is withdrawn. FAS v1 cannot show a race advantage unless native reaches ≥ .755.
+Next: (a) winner-identity diagnostic on the native arms; (b) FAS v2 with ambiguous interleaving (product variants,
+overtaking, dropped events), validated with oracle + de-interleaver before any native run.
+
 ## P1 — confirm and widen the wins
 
 | # | Deliverable | Pass criterion |
