@@ -112,3 +112,17 @@ reference values from the cited fmi-basel results summaries).
 - At par with bigRSNN on the same sessions, at ~1/26 of its footprint (179 KB against 4.6 MB). Above tinyRSNN.
 - Leaderboard six-session means: AEGRU .710, bigRSNN .698, tinyRSNN .660.
 - The leaderboard claim waits for all six sessions; AEGRU publishes no per-session values.
+
+**Primate P0-3, 3/6 sessions (5 Oct 11:55 UTC):**
+
+| Session | Ours | tinyRSNN | bigRSNN |
+|---|---:|---:|---:|
+| loco_20170210_03 (new) | **.529** | .622 | .698 |
+| Mean over 3 | .632 | .640 | .684 |
+
+- A **leaderboard win is now effectively out of reach.** Passing AEGRU's .710 six-session mean would need the remaining
+  three sessions to average ~.79.
+- Likely cause: the configuration was developed on one indy session only. Loco is a different monkey (the tinyRSNN
+  footprint differs between monkeys, suggesting different channel counts).
+- All six sessions will still be reported, with the five untouched-session mean.
+- A future official attempt needs a new pre-declared configuration, developed on validation splits of both monkeys.
