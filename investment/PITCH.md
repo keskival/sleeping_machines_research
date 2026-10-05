@@ -2,18 +2,15 @@
 
 **The next general-purpose substrate for machine intelligence.**
 
-Sleeping Machines is building one trainable architecture, learning rule and execution model for intelligence
-everywhere: frontier language and reasoning, multimodal world models, embodied intelligence and robotics, event-native
-analytics, continual on-device learning, adaptive communication and self-designing models, running economically from
-datacenters to phones, robots and sensors, and ultimately on globally clockless, event-driven hardware that learns on
-chip. General intelligence is the overarching aspiration.
+Sleeping Machines aims to make intelligence composable within **one trainable computing substrate**. Language and reasoning, perception and world models, embodied action, typed tables and interleaved process streams become different forms of experience available to the same learner. The ambition extends through continual learning, communication and self-design to the hardware that executes them.
 
-Today's deep learning computes in lockstep: every layer runs at every step and memory is a buffer to rescan. Sleeping
-Machines computes through time and sparse events. Messages carry content, an arrival time and an address; persistent
-memories evolve with elapsed time; candidate routes race through learned delays; the winner acts, and the routes that
-did not win still receive counterfactual credit. Delay-coded aggregation reproduces softmax attention exactly, so the
-family contains Transformer-class computation, and dense synchronous layers are a special case. One model computes
-densely where a task needs it and selectively everywhere else, with more stored capacity than selected work.
+An observation enters through an interface that respects its meaning: a token, a sensory event, a typed comparison or an action. It becomes an addressed message interacting with persistent memory. Learned delays and temporal races decide which evidence meets and which computation happens. Small messages carry new evidence into deeper state; separate keys and values distinguish where evidence goes from what it says. Counterfactual credit teaches the routes and writes that could have happened.
+
+The larger promise is that these are **reusable learned computations**. Comparison, binding, retention, prediction and planning learned from one form of experience can support another through shared representations and end-to-end credit. Perception can inform reasoning; reasoning can guide action; process traces and tables can contribute to the same world model. Joint training must measure that transfer and the retention of existing skills.
+
+This also connects the learner to its execution. Time performs computation, including useful sleeps; local events can advance it without a mandatory global clock. Inference and learning are designed around the same temporal, addressed substrate. Available memory and skill can grow beyond the activity recruited for one observation, with work tuned from small data and constrained devices to large datasets and datacenters. Candidate discovery and alternative learning work count in that budget.
+
+**A revealing proof of the platform:** mixed-type tables, token sequences and anonymous event streams learned through the same temporal core, followed by measured skill transfer. The program spans small-data usefulness and large-data scaling.
 
 **What is already shown** (single seeds; native compute traced, reference compute shape-estimated):
 - **Beats Transformers at a fraction of their compute.** On 10M characters of text8 the native model reaches 1.888 bpc

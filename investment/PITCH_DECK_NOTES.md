@@ -23,7 +23,20 @@ The next general-purpose substrate for machine intelligence.
 Sleeping Machines aims to be the next general-purpose substrate for machine intelligence: one trainable architecture, learning rule and execution model spanning language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and datacenter, edge and clockless hardware. Private review deck. The founder proposes a €3M raise. €50M priced pre-money is the central bullish negotiating thesis developed here; €100M is a stretch scenario, neither an independent fair-value appraisal nor an investor offer. The research evidence is exploratory and single-seed. No customer interest has been reported. No investor, vendor or customer has been contacted in preparing this deck.
 
 
-## 2. Beats the saved Transformer baselines at a fraction of the compute.
+## 2. One substrate for learning, representing and executing intelligence.
+
+Different forms of experience can teach reusable computations within the same learner.
+
+AGI here means the long-term ambition of broadly transferable learning and competence across domains, not a claim that a shared graph or computational universality guarantees intelligence. The visual is a proposed family composition, not an implemented robotics system. Common content/time/address/state interfaces can connect asynchronous sensory and motor events with language and deliberation; local dense regions, joins and batching remain available. No global periodic tick is required by the family, but causal ordering, timers and task/actuator deadlines remain. Fast persistent state and slower learned rules offer a path to online adaptation and memory-policy learning; fully native sparse asynchronous learning is still a research target. The opportunity is to test whether embodied experience teaches transferable causal, geometric and planning abstractions and whether cognitive learning improves action, using shared representations and credit. Both directions require separate held-out, matched-data/work comparisons with joint dense/VLA, isolated-module and stopped-credit controls, including retention, replay and system resources. Existing PaLM-E and RT-2 demonstrate related joint-learning or web-to-control precedents; we do not claim that conventional models cannot integrate these domains. Neither precedent establishes our proposed motor-to-cognitive transfer or our cost advantage. Shared parameters do not establish AGI, and no project embodied-transfer/robot-control experiment has completed. Platform upside is conditional and correlated with the same unresolved learning and execution risks; it is not an extra independent valuation or an assigned probability. See INVESTOR_PROOF_PLAN.md for staged work and the smallest simulated transfer protocol; no queue or new compute is reserved by this slide. Editorial update 5 October: the platform thesis encompasses heterogeneous representations, shared learning and execution semantics, and small-to-large operating regimes. Mixed-type tabular success would be evidence of this unification; numeric-only tabular fits are not that proof. Joint skill transfer, clockless learning hardware and scaling advantages require their own completed comparisons.
+
+- [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
+
+- [T4: Driess et al. — PaLM-E: An Embodied Multimodal Language Model](https://arxiv.org/abs/2303.03378) — Joint embodied, vision and language training with positive transfer; a precedent, not evidence for this substrate or motor-to-general-cognition transfer.
+
+- [T5: Brohan et al. — RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://arxiv.org/abs/2307.15818) — Joint vision/language/action learning transfers web knowledge to robotic control. Neither an AGI demonstration nor evidence for our resource advantage.
+
+
+## 3. Beats the saved Transformer baselines at a fraction of the compute.
 
 Wikipedia text (text8); same data and test set for all. Error: bits/char (bpc) or sMAPE %; lower is better.
 
@@ -32,7 +45,7 @@ Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more co
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 3. Event-driven models aimed for parity. Ours beats small Transformers on compute.
+## 4. Event-driven models aimed for parity. Ours beats small Transformers on compute.
 
 Published event-driven and spiking language models, as reported by their authors, beside our completed result.
 
@@ -51,9 +64,9 @@ Literature check (web search, 4 October 2026), not a systematic review. Prior ev
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 4. Model capacity and the cost of using it must scale differently.
+## 5. Intelligence must compose across experience and execution.
 
-The opportunity: preserve useful intelligence while reducing the work paid for each prediction.
+A common substrate connects what a model learns with how and where it computes.
 
 This is the problem definition and investment hypothesis. It is not a claim that all existing architectures perform dense work or lack memory. MoE already separates available parameters from selected computation; recurrent and selective-state models already retain state. Our proposed contribution is a temporal race/state/alternative-credit construction and its tested consequences. Software and hardware benefits must be evaluated with tuned incumbents under the same workload boundaries.
 
@@ -62,7 +75,7 @@ This is the problem definition and investment hypothesis. It is not a claim that
 - [S6: Google — Eighth-generation TPU architecture announcement](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/) — TPU 8t/8i, model–hardware co-design and sparse MoE infrastructure. Existing internal capability creates both potential fit and competition.
 
 
-## 5. One model family across today's architectural landscape.
+## 6. One model family across today's architectural landscape.
 
 Our approach combines strengths of today's main model types.
 
@@ -71,26 +84,13 @@ This is the whole-family position, not a claim that every implemented member con
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 6. Choose the right computation in each region.
+## 7. Choose the right computation in each region.
 
 One family can mix selective temporal programs with rich interaction and causal memory.
 
 The local choices form a generative design space, not a catalogue of unrelated benchmark models. Selective and full-support regions can coexist; synchronous barriers are optional local schedules inside event semantics. The same model structure supports causal parameter updates and batching. Current state/statistical adaptation and an online pilot are scoped evidence; they do not establish fully asynchronous on-chip learning or a general TTT gain. Learned event routes already adapt execution inside a fixed graph; operator selection, reception/depth choice, allocation and growth/pruning require future utility, state/version migration and resource accounting. The formal core defines twelve fields and compatibility rules, and illustrative complete members show contrasting constructions without adding benchmark evidence. Preserve computation, representation and trainability through interfaces; forward equality, learning preservation and lower cost are distinct contracts. Learned memory/scheduling can be viewed as fast-state adaptation governed by slow trained rules, drawing on memory-augmented meta-learning and TTT. The opportunity register defines native irregular ingestion, asynchronous codecs and joint embodied/cognitive paths with explicit first proofs. The prior-art boundary and full work/bit accounting are stated in the report.
 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
-
-
-## 7. A substrate for intelligence that learns across mind and body.
-
-The ambition: connect sensing, action, language and reasoning in one trainable model, across their natural timescales.
-
-AGI here means the long-term ambition of broadly transferable learning and competence across domains, not a claim that a shared graph or computational universality guarantees intelligence. The visual is a proposed family composition, not an implemented robotics system. Common content/time/address/state interfaces can connect asynchronous sensory and motor events with language and deliberation; local dense regions, joins and batching remain available. No global periodic tick is required by the family, but causal ordering, timers and task/actuator deadlines remain. Fast persistent state and slower learned rules offer a path to online adaptation and memory-policy learning; fully native sparse asynchronous learning is still a research target. The opportunity is to test whether embodied experience teaches transferable causal, geometric and planning abstractions and whether cognitive learning improves action, using shared representations and credit. Both directions require separate held-out, matched-data/work comparisons with joint dense/VLA, isolated-module and stopped-credit controls, including retention, replay and system resources. Existing PaLM-E and RT-2 demonstrate related joint-learning or web-to-control precedents; we do not claim that conventional models cannot integrate these domains. Neither precedent establishes our proposed motor-to-cognitive transfer or our cost advantage. Shared parameters do not establish AGI, and no project embodied-transfer/robot-control experiment has completed. Platform upside is conditional and correlated with the same unresolved learning and execution risks; it is not an extra independent valuation or an assigned probability. See INVESTOR_PROOF_PLAN.md for staged work and the smallest simulated transfer protocol; no queue or new compute is reserved by this slide.
-
-- [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
-
-- [T4: Driess et al. — PaLM-E: An Embodied Multimodal Language Model](https://arxiv.org/abs/2303.03378) — Joint embodied, vision and language training with positive transfer; a precedent, not evidence for this substrate or motor-to-general-cognition transfer.
-
-- [T5: Brohan et al. — RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://arxiv.org/abs/2307.15818) — Joint vision/language/action learning transfers web knowledge to robotic control. Neither an AGI demonstration nor evidence for our resource advantage.
 
 
 ## 8. Messages race. Selected memories update. Alternatives learn.

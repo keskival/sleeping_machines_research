@@ -1,5 +1,24 @@
 # Session handoff — 2026-09-30
 
+**Unified platform narrative, user-directed:** README/VISION/report cover and
+pitch now connect heterogeneous experience → meaningful interfaces → shared
+temporal memory/programs → reusable skills → adaptive execution. Learning,
+representation and execution are the platform thesis, not a list of independent
+benefits. Mixed-type tabular learning and small-to-large data performance are
+central evidence bridges; numeric-only fits and separate-domain instances are
+not mixed-type or joint-transfer proofs. Typed direction records the integrated
+contract/fit, mixed-type benchmark and nested-data/shared-core comparisons.
+Financial scenarios and all benchmark numbers retained.
+
+**Timing completed:** 64K/P24 exact curve parity 0, 256 updates/131056 fitting
+targets. Whole fitting wall 263.3138s; backward153.3752s (58.25%), factual
+core63.8125s (24.23%), alternative core29.8466s (11.33%), both readouts2.0185s
+(0.77%). CPU engineering priority is backward/core execution, not output-head
+wall time despite its arithmetic share. No quality/FLOP/energy gain inferred.
+Frozen FAS dependency sources must remain unchanged while retry runs. FAS
+retry PID45309 running at observation, stable~1.24GBRSS; revalidate handles.
+
+
 **Coherent transfer story recorded:** VISION/README connect appropriate
 interfaces→shared temporal/state programs→end-to-end learning/transfer→adaptive
 resources. Separatearchitecture instances are not themselves skilltransfer.

@@ -39,3 +39,28 @@ no model fit or numerical training resources. Next implement learned predicate
 selection and actual counterfactual suffix credit in the integrated event
 model, then run the small fit described above before allocating a benchmark.
 No current FAS/language source or job is changed.
+
+## Unification proof and data-scale bridge
+
+The headline question is whether this same temporal/sparse construction learns
+usefully from heterogeneous tables as well as token sequences and asynchronous
+logs. It tests a common representation and learning substrate across domains.
+A tabular win alone is one anchor; independently trained instances do not prove
+shared skills.
+
+First integrate the existing typed interface with addressed memory, computational
+races and actual alternative-write suffix credit. Use bounded mixed-type
+interaction witnesses to verify that all these mechanisms participate in the
+fit, including missingness and category relabeling. Then freeze a genuinely
+mixed-type dataset protocol and compare trees, a type-aware dense control and
+the integrated model on identical splits and tuning budgets. Preserve the
+existing numeric-only losses as a separate comparison.
+
+For the small-to-large claim, use nested FIT subsets with fixed DEV/test and
+FIT-only preprocessing. Report quality and complete fitting/inference work at
+each size, available predicates and memory, selected comparisons and writes,
+and seeds. Tune using DEV under a stated equal budget; do not choose an apparent
+scaling curve from test results. The next transfer experiment connects typed
+comparisons and sequential reasoning through shared trained core parameters,
+compares separate-core controls and checks donor retention under matched total
+work. This is an explicit research sequence, not a completed result.

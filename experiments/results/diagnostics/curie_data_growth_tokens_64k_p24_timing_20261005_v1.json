@@ -1,0 +1,29 @@
+{
+  "status": "completed",
+  "control": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json",
+  "control_sha256": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+  "audited_tag": "curie_data_growth_tokens_64k_p24_timingfit_20261005_v1",
+  "optimizer_updates": 256,
+  "fitting_targets": 131056,
+  "phase_wall_s": {
+    "factual_core_forward": 63.81245164072607,
+    "factual_readout": 1.8178874831064604,
+    "counterfactual_core_forward": 29.846615853370167,
+    "counterfactual_readout": 0.20059470244450495,
+    "backward": 153.3751505385735,
+    "optimizer_step": 9.039840048993938
+  },
+  "phase_calls": {
+    "factual_core_forward": 256,
+    "factual_readout": 256,
+    "counterfactual_core_forward": 256,
+    "counterfactual_readout": 256,
+    "backward": 256,
+    "optimizer_step": 256
+  },
+  "whole_fitting_wall_s": 263.31382788933115,
+  "other_in_step_wall_s": 5.221287622116506,
+  "curve_parity_max_error": 0.0,
+  "producer_sha256": "66165386ee124e3225c9dcbc19848ea2e319056b49a54a8c2a7cc1e9f26257a6",
+  "scope": "One-thread CPU perf_counter intervals, zero_grad through AdamWstep. Core includes token interface, temporal operations, keys/writes and message/state processing. Readout is exact adaptive NLL. Backward covers all gradients; optimizer separate. Other covers teacher sampling/weighting, reductions, clipping and in-step diagnostics. Preprocessing/evaluation/post-step diagnostics/serialization excluded. Wrappers add timing overhead; arithmetic trace wall is not used. No hardware energy, FLOP reduction or quality gain inferred."
+}
