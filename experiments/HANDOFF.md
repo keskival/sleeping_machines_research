@@ -1,5 +1,16 @@
 # Session handoff — 2026-09-30
 
+**Message factor diagnostic prepared:** source inspection confirms full-message
+erasure also switches normalization and read-clock policy through has_ctx/
+ctx_arr. Existing scores retained with this precise intervention scope.
+TOKEN_MESSAGE_FACTOR_DIAGNOSTIC_20261005.md derives payload-only comparison
+(retain timestamp/presence) against intact/full erasure on both P24seeds.
+New script parses; numerical selected-score/RNG/source checks remain queued.
+No pinned model/work/utility sources changed. Waiting tmux follows work and
+256Khandles, then run_safe one-job diagnostic300s/1.2GBRSS/5GBVMS/8GiBfloor.
+No train/readout refit, no architectural substitution or assumed gain.
+
+
 **P24replicated utility / full-work running:** seed7context0.234159NLL,
 addressederasure+0.005551;seed6context0.252343/addressed+0.007313. Useful
 context and addressed memory repeat. Message utility does not:seed7message

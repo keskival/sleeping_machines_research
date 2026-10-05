@@ -34,7 +34,7 @@ The 8K and 64K fits score the same development population and both use two passe
 | 24 | 0.252343 | 0.007313 | 0.022623 | 0.014234 |
 | 32 | 0.166731 | 0.002895 | -0.009512 | -0.011456 |
 
-Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.
+Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. A payload-only diagnostic is queued separately.
 
 ## Appendix. Independent seed for selected 64K capacity
 
@@ -51,7 +51,7 @@ This repeat measures selected-member learning reliability and seed variation. Th
 | --- | --- | --- | --- |
 | 0.234159 | 0.005551 | -0.032675 | -0.039134 |
 
-Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means history removal hurts prediction. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.
+Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means the intervention hurts prediction. Full-message erasure bundles payload, arrival metadata and presence, including changes to normalization and the read clock. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.
 
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 

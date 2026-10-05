@@ -78,7 +78,7 @@ def pages():
     if utilities:
         page += [
             ('table', (['Payload', 'Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], utilities, [55, 105, 130, 130, 130])),
-            ('p', 'Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.')]
+            ('p', 'Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. A payload-only diagnostic is queued separately.')]
     missing = set(completed) - {int(r[0]) for r in utilities}
     if missing:
         page.append(('p', 'Selected-checkpoint utility pending for payload ' + ', '.join(map(str, sorted(missing))) + '; no utility value is predicted.'))
@@ -135,7 +135,7 @@ def repeat_pages():
         values = [[f"{row['context_gain']:.6f}",
                    *[f"{row['history_gains'][k]:.6f}" for k in ('memory', 'message', 'both')]]]
         page += [('table', (['Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], values, [115, 140, 140, 140])),
-                 ('p', 'Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means history removal hurts prediction. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.')]
+                 ('p', 'Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means the intervention hurts prediction. Full-message erasure bundles payload, arrival metadata and presence, including changes to normalization and the read clock. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.')]
     else:
         page.append(('p', 'Independent-seed utility pending; no predicted utility is reported.'))
     return [page]
