@@ -1,0 +1,165 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "aws_mg_tau17_r1_p16d2_k8_delta_mix8_from20_20261004T061500Z",
+    "tau": 17,
+    "repeats": 10,
+    "first_repeat": 20,
+    "payload": 16,
+    "depth": 2,
+    "heads": 2,
+    "pool": 2,
+    "tie_pools": false,
+    "taps": 8,
+    "segment": 64,
+    "lanes": 32,
+    "steps": 1500,
+    "lr": 0.003,
+    "clip": 1.0,
+    "warmup": 8,
+    "route_credit": "linear",
+    "compiled": true,
+    "seed": 0,
+    "closed_loop": 0,
+    "delta": true,
+    "argmax": false,
+    "train_argmax": false,
+    "eval_modes": "mix8,argmax,sampled",
+    "closed_from": 0.5
+  },
+  "parameters": 14393,
+  "footprint_bytes_float32": 57572,
+  "repeats": [
+    {
+      "repeat": 20,
+      "smape": 12.678239740817974,
+      "smape_by_mode": {
+        "mix8": 12.678239740817974,
+        "argmax": 14.710248463813647,
+        "sampled": 19.316214977633635
+      },
+      "final_train_mse": 3.0362159395735944e-05,
+      "wall_s": 257.75623335601995
+    },
+    {
+      "repeat": 21,
+      "smape": 14.13748318130645,
+      "smape_by_mode": {
+        "mix8": 14.13748318130645,
+        "argmax": 13.414468611250255,
+        "sampled": 20.05389649488388
+      },
+      "final_train_mse": 4.3865305633516984e-05,
+      "wall_s": 254.93755661003524
+    },
+    {
+      "repeat": 22,
+      "smape": 12.051710471641487,
+      "smape_by_mode": {
+        "mix8": 12.051710471641487,
+        "argmax": 23.256369651315588,
+        "sampled": 13.283783153067844
+      },
+      "final_train_mse": 6.613509540329688e-05,
+      "wall_s": 254.84548701398307
+    },
+    {
+      "repeat": 23,
+      "smape": 24.715897309037345,
+      "smape_by_mode": {
+        "mix8": 24.715897309037345,
+        "argmax": 17.580045888989474,
+        "sampled": 11.09356523316436
+      },
+      "final_train_mse": 3.623496359068667e-05,
+      "wall_s": 254.8413298370433
+    },
+    {
+      "repeat": 24,
+      "smape": 22.805135141144298,
+      "smape_by_mode": {
+        "mix8": 22.805135141144298,
+        "argmax": 15.328722430136546,
+        "sampled": 21.555360451121025
+      },
+      "final_train_mse": 3.0006695124029647e-05,
+      "wall_s": 254.59488781000255
+    },
+    {
+      "repeat": 25,
+      "smape": 18.70764497614043,
+      "smape_by_mode": {
+        "mix8": 18.70764497614043,
+        "argmax": 27.268615982821228,
+        "sampled": 22.847724781021384
+      },
+      "final_train_mse": 4.837585311179282e-05,
+      "wall_s": 254.72885135700926
+    },
+    {
+      "repeat": 26,
+      "smape": 18.160223085834442,
+      "smape_by_mode": {
+        "mix8": 18.160223085834442,
+        "argmax": 19.02205760205663,
+        "sampled": 17.81103245214731
+      },
+      "final_train_mse": 3.3110371532529825e-05,
+      "wall_s": 254.45468169398373
+    },
+    {
+      "repeat": 27,
+      "smape": 9.287552105373962,
+      "smape_by_mode": {
+        "mix8": 9.287552105373962,
+        "argmax": 27.651815021374148,
+        "sampled": 26.02771189949194
+      },
+      "final_train_mse": 4.099201378267025e-05,
+      "wall_s": 254.138929720968
+    },
+    {
+      "repeat": 28,
+      "smape": 11.111543008615058,
+      "smape_by_mode": {
+        "mix8": 11.111543008615058,
+        "argmax": 27.221499652658025,
+        "sampled": 30.119310480356237
+      },
+      "final_train_mse": 3.2286279565596485e-05,
+      "wall_s": 254.6837237100117
+    },
+    {
+      "repeat": 29,
+      "smape": 14.055937303311245,
+      "smape_by_mode": {
+        "mix8": 14.055937303311245,
+        "argmax": 21.989922502964834,
+        "sampled": 22.076616482249158
+      },
+      "final_train_mse": 3.925549899577163e-05,
+      "wall_s": 254.15365014702547
+    }
+  ],
+  "mean_smape": 15.771136632322268,
+  "primary_mode": "mix8",
+  "mean_smape_by_mode": {
+    "mix8": 15.771136632322268,
+    "argmax": 20.74437658073804,
+    "sampled": 20.418521640513678
+  },
+  "protocol": "NeuroBench Mackey-Glass (neurobench 2.3.0 slices, split and SMAPE); autonomous 750-step forecast",
+  "source_sha256": {
+    "experiments/mackey_glass_native.py": "06cea672c090bf6a42f810be404e74a8bead618bb007108532f9eb89c44dabb4",
+    "sleeping_machines/sparse_inference.py": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "data_sha256": "5a38b38eca91667c120a3fbbe1a27859ef6071c521a03753ef1cace39d3ce745",
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 2549.1435528339935
+}
