@@ -1,0 +1,2 @@
+# THEORY §419 recruitment sweep arm R5_pool8_tied_bal01 (screen: 1 epoch, 10K clean runs; compare within the sweep; all four declared rules + occupancy).
+curie_fas_recruit_R5_pool8_tied_bal01_20261005T033000Z experiments/fas/native.py --data fas_v1_20261004 --compiled --payload 32 --depth 4 --heads 2 --route-credit linear --lanes 64 --max-events 1100 --train-max-events 1024 --lr 0.003 --segment 128 --eval-runs 1000 --epochs 1 --fit-runs 10000 --pool 8 --tie-pools --balance 0.01 --tag curie_fas_v1_recruit_R5_pool8_tied_bal01_e1_20261005T033000Z

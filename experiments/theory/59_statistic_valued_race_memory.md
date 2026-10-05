@@ -1659,3 +1659,103 @@ Contracts (tests/test_expected_reception.py): the incremental stepper equals the
 independent); pool 1 equals the deterministic winner race; compiled equals eager with every gradient. Prediction for MG
 (tau 18/19 development): at least as good as the pool-1 control (16.4) and better than the sampled member's argmax / mix8
 inference (18.5 / 17.2), with pool 4 no longer harmful because pooling replaces fragmentation by interpolation.
+
+## 419. Unused capacity is a fixed point of myopic route credit; recruitment needs continuation value, exposure or shared maps
+
+**Question (user, 5 October).** The FAS gap to the identity-aware oracle (AUROC .755 against our .600 at N = 256) looks
+like a failure to de-interleave 30 concurrent items. Earlier pool results showed the same pattern: the model kept using
+slots it had already written although free capacity existed. Why does training not recruit unused slots? What does the
+theory say about unused capacity at the end of training, and which knobs should make recruitment more aggressive?
+
+**Setting.** One race per head per layer:
+- Units u = 1..U have scores s_u and probabilities π = softmax(s). The race winner W ~ π both *delivers* its proposal
+  v_W and *receives the write* (slot W gets m_new_W).
+- Write F_i for the full-suffix loss given choice i, and R = Σ_i π_i F_i (note 87).
+- The exact choice credit is ∂R/∂s_i = π_i (F_i − R).
+- The implemented linear credit (§413) replaces F_i − R by g·(v_i − v̄), where g is the loss gradient at the realized
+  value. Its proposals are detached (`linear_route_credit`), so a losing unit's content receives no gradient. Only the
+  winner's content learns, through the factual path.
+
+**Proposition 1 (dormancy is an ε-stationary set).**
+- Suppose π_u(x) ≤ ε on the training distribution.
+- The score credit of u is bounded by ε·|g|·|v_u − v̄|.
+- The content gradient of u's private parameters is E[1{W = u} ∂L/∂θ_u], which is O(ε).
+- So a dormant unit is stationary to first order *whatever its potential value*: gradient training cannot discover it.
+- Exposure over N arrivals is 1 − (1 − ε)^N ≈ 1 − e^{−Nε} (§282). The score clamp of ±12 allows ε ≈ e^{−24}.
+- **Consequence:** at the end of training, unused capacity on the training distribution is expected, not anomalous.
+  It is not evidence that the capacity is useless.
+
+**Proposition 2 (coupled read/write makes free slots lose by construction).**
+- A free slot has m = 0, so its candidate memory is just the current input: m_new = write·W_in x.
+- Its proposal therefore lacks private history; it still sees x, which carries the transported context of the
+  previous event.
+- Decompose F_i − R = Δ_i^deliver + Δ_i^write:
+  - Δ_i^deliver is the immediate loss difference of delivering v_i.
+  - Δ_i^write is the future consequence of writing slot i, here overwriting slot i's previous memory.
+- For a free slot, Δ^deliver ≥ 0 when history matters, and Δ^write ≤ 0, because nothing is overwritten and every other
+  item's memory survives.
+- The linear credit keeps only the first-order part of Δ^deliver and drops Δ^write.
+- **So free slots are pushed down systematically by the very term that is credited, and the term that favours them is
+  missing.**
+- The FAS de-interleaving policy (one slot per in-flight item) is exactly a policy whose value lies in Δ^write.
+
+**Proposition 3 (untrained-loser bias, "settling").**
+- The counterfactual value is evaluated at current parameters. A rarely selected unit has untrained private maps, so
+  g·(v_u − v̄) tends to be unfavourable.
+- That lowers s_u, then exposure, then training: a positive feedback, the rich get richer.
+- Optionality is the value *after* learning (§§152, 159–163: a reachable correction set and a continuation value, not
+  an uncertainty bonus). The myopic credit omits the learning reserve.
+- Both credit terms scale with g. As the training error shrinks, the drive to switch routes shrinks proportionally,
+  while content refinement of the incumbent continues.
+- This is the "small error settles into existing routes" intuition, made precise: the switching gradient π_i(F_i − R)
+  is never larger than the realized loss difference, while the content gradient keeps improving the incumbent.
+
+**Corollary (tied maps remove Proposition 3, not Proposition 2).**
+- With shared maps (§398), a slot's processing is trained whenever any slot of its pool wins.
+- A free slot then differs only in key and state, so the untrained-loser bias disappears.
+- The missing write term (Proposition 2) remains.
+
+**Knobs, in order of cost:**
+1. **Exposure:** a training-time score temperature τ > 1 (evaluation at τ = 1), which flattens π and raises ε; or a
+   load-balance penalty λ·U·Σ_u (mean π_u)² per head and layer. The penalty is the established mixture-of-experts
+   importance loss, labelled as a supporting primitive. It raises exposure without choosing which slot.
+2. **An occupancy-aware prior:** a fixed score bonus b for never-written slots.
+   - It approximates Δ^write ≤ 0 at the only point where its sign is known: a free slot overwrites nothing.
+   - It must be fixed, not learnable. If learnable, it would be trained only by the myopic credit and switched off.
+   - It is part of the model's policy, applied at both training and evaluation.
+3. **Shared maps:** `--tie-pools`, which removes Proposition 3.
+4. **Write-consequence credit:** the first-order Δ^write is exactly `linear_write_credit`
+   (π_i(G_i·D_i − Σ_j π_j G_j·D_j), where G_j is the future gradient on slot j's memory). It diverged when D counted
+   lazy decay as change (linear_rw, linear_rwn at pool 4). A stabilized form, or the sampled two-branch estimator of
+   note 87, is the principled repair.
+5. **Decoupled write address (architectural; needs its own contract note before any run):** a second race chooses the
+   slot to write, separately from the race that delivers. It retains races, sparse addressed writes and counterfactual
+   credit, and it costs one extra key-scoring pass per event.
+
+**Pre-declared sweep (FAS v1; p32/d4; carried-state segments of 128; 2 epochs; selection by validation-clean NLL;
+all four declared scoring rules):**
+
+| Arm | Change | What it tests |
+|---|---|---|
+| R0 | pool 8 untied (queued) | baseline capacity |
+| R1 | pool 8 tied | Proposition 3 |
+| R2 | pool 32 tied | capacity at ≥ 1 slot per in-flight item |
+| R3 | pool 8 tied, free-slot bonus b = 3 | Proposition 2 (prior) |
+| R4 | pool 8 tied, training temperature τ = 2 | exposure |
+| R5 | pool 8 tied, balance λ = .01 | exposure, slot-agnostic |
+
+**Measurements:**
+- AUROC at N = 128, 256, 512.
+- Validation NLL.
+- Per layer and head: the mean number of distinct slots written per run, the fraction of dead slots (never written in
+  any validation run) and the mean π entropy.
+
+**Gate:** a knob is promoted if it gives ≥ .02 AUROC at N = 256 (primary rule) over R1 without worse validation NLL,
+*and* increases the number of slots used. Winning knobs are then combined at pool 32, and the arm is confirmed with a
+second seed.
+
+**Predictions:**
+- R1 ≥ R0.
+- R2 tied gains more from pool than untied pools do.
+- R3 increases the number of slots used most strongly.
+- If no knob moves slot use, Proposition 2's missing write term dominates, and item 4 or 5 is the next step.

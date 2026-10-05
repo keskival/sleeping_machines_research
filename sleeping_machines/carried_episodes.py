@@ -28,9 +28,23 @@ def detach(state):
     return {k: ([x.detach() for x in v] if isinstance(v, list) else v.detach()) for k, v in state.items()}
 
 
-def carried_logits(model, stamps, marks, state=None, seed=0, step=None, route_credit=None, deterministic=False):
+def carried_logits(model, stamps, marks, state=None, seed=0, step=None, route_credit=None, deterministic=False,
+                   recruit=None):
     """stamps (n, T) float64 absolute times; marks (n, T, content).  Every lane has T events in this segment.
-    Returns (logits (n, T, classes), final state; not detached: call detach() between segments for truncated credit)."""
+    Returns (logits (n, T, classes), final state; not detached: call detach() between segments for truncated credit).
+    recruit: dict(free_bias=..., temperature=..., eager=False) uses sleeping_machines.recruit_layer (THEORY §419) and
+    additionally returns the list of (layer, pi) race probabilities."""
+    pis = None
+    if recruit is not None:
+        from .recruit_layer import compiled_recruit_layer, recruit_layer
+        base = recruit_layer if recruit.get('eager') else compiled_recruit_layer()
+        fb, tau = float(recruit.get('free_bias', 0.)), float(recruit.get('temperature', 1.))
+        pis = []
+
+        def step(*args):
+            *out, pi = base(*args, free_bias=fb, temperature=tau)
+            pis.append(pi)
+            return tuple(out)
     step = step or compiled_step()
     source = 0
     layers = model._stacked(source)
@@ -72,6 +86,11 @@ def carried_logits(model, stamps, marks, state=None, seed=0, step=None, route_cr
                     model.transport_rate[depth], model.transport_frequency[depth],
                     route_credit in ('linear', 'linear_rw', 'linear_rwn'), route_credit in ('linear_rw', 'linear_rwn'),
                     route_credit == 'linear_rwn')
+                if pis is not None:
+                    pis[-1] = (depth, pis[-1])
             ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
             every.append(model.head(x))
-    return torch.stack(every, 1), dict(mem=mem, arr=arr, seen=seen, ctx_vals=ctx_vals, ctx_arr=ctx_arr, has_ctx=has_ctx)
+    state = dict(mem=mem, arr=arr, seen=seen, ctx_vals=ctx_vals, ctx_arr=ctx_arr, has_ctx=has_ctx)
+    if pis is not None:
+        return torch.stack(every, 1), state, pis
+    return torch.stack(every, 1), state

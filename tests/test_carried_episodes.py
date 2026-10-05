@@ -38,3 +38,27 @@ def test_detached_state_truncates_credit_only():
     b.sum().backward()
     assert all(torch.isfinite(p.grad).all() for p in model.parameters() if p.grad is not None)
     assert not any(x.requires_grad for x in detach(st)['mem'])
+
+
+def test_recruit_layer_neutral_settings_equal_layer_step():
+    model = _model(); stamps, marks = _data()
+    with torch.no_grad():
+        a, _ = carried_logits(model, stamps, marks, step=layer_step, deterministic=True)
+        b, _, pis = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True))
+    torch.testing.assert_close(a, b, rtol=0, atol=0)
+    assert len(pis) == stamps.shape[1] * model.depth and pis[0][1].shape == (3, 2, 2)
+
+
+def test_free_bias_prefers_unwritten_slots():
+    model = _model(); stamps, marks = _data()
+    with torch.no_grad():
+        _, st0, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True))
+        _, st1, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True, free_bias=30.))
+    used0 = sum(int(s.sum()) for s in st0['seen']); used1 = sum(int(s.sum()) for s in st1['seen'])
+    assert used1 >= used0 and used1 == sum(s.numel() for s in st1['seen'])   # a huge bonus fills every slot
+
+
+def test_balance_penalty_range():
+    from sleeping_machines.recruit_layer import balance_penalty
+    uniform = [(0, torch.full((4, 2, 4), .25))]; collapsed = [(0, torch.tensor([1., 0, 0, 0]).expand(4, 2, 4))]
+    assert abs(float(balance_penalty(uniform)) - 1) < 1e-6 and abs(float(balance_penalty(collapsed)) - 4) < 1e-6

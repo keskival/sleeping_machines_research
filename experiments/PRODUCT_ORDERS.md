@@ -102,3 +102,11 @@ compute convention). Losses are reported just as plainly.
 
 The FAS pool sweep moves ahead of the lr arms (about 10 h) because the oracle bound shows early-detection headroom on the
 home-field benchmark. Each FAS arm needs its smoke to pass.
+
+**FAS recruitment sweep replaces the plain pool sweep (5 Oct 03:35 UTC; THEORY §419):**
+- Order: torch contracts, then a smoke run with every knob active, then R0 (pool 8 untied), R1 (pool 8 tied), R3 (tied
+  with free-slot bonus 3), R4 (tied with training temperature 2), R5 (tied with balance .01), then pool 2 seed 7, then the
+  pool-32 smoke and R2 (pool 32 tied, 5K runs).
+- Arms are screened at 1 epoch, compared within the sweep, and reported with occupancy.
+- The other host's 2-epoch untied pool 8 and pool 32 queues are kept but not chained: R0 covers untied pool 8. Untied
+  pool 32 is predicted to suffer the untrained-loser bias (§419 Proposition 3); run it later if R2 wins.

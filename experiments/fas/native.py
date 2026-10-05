@@ -82,18 +82,46 @@ def prefix_scores(per_type, per_gap, lengths):
     return out
 
 
-def scores(model, runs, lanes, fn):
-    """per-rule prefix scores for every run, and the mean per-event NLL."""
-    parts = []; total = 0.; count = 0
+def scores(model, runs, lanes, fn, recruit_kw=None):
+    """per-rule prefix scores for every run, the mean per-event NLL, and slot occupancy (recruit_kw path only).
+    recruit_kw: evaluate through carried_logits with the recruitment layer (neutral settings equal the standard
+    layer; THEORY §419), padding each batch to its longest run by repeating the last event (padded positions are
+    never scored); occupancy is read from the written flags after the batch's shortest run."""
+    parts = []; total = 0.; count = 0; used = []; ever = None
     model.eval()
     with torch.no_grad():
         for b in range(0, len(runs), lanes):
             idx = list(range(b, min(b + lanes, len(runs))))
             rows, y, g, mask = batch(runs, idx)
-            pt, pg = nll(fn(model, rows, 314159, all_logits=True), y, g, mask, parts=True)
+            if recruit_kw is None:
+                z = fn(model, rows, 314159, all_logits=True)
+            else:
+                from sleeping_machines.carried_episodes import carried_logits
+                T = y.shape[1]; lens = [len(runs[j][0]) for j in idx]; L0 = min(lens)
+                st_np = np.stack([np.concatenate([runs[j][1], np.full(T - len(runs[j][1]), runs[j][1][-1])]) for j in idx])
+                id_np = np.stack([np.concatenate([runs[j][0], np.full(T - len(runs[j][0]), runs[j][0][-1])]) for j in idx])
+                stamps = torch.from_numpy(st_np).to(torch.float64); marks = torch.from_numpy(EYE[id_np])
+                z1, st, _ = carried_logits(model, stamps[:, :L0], marks[:, :L0], seed=314159, route_credit=None,
+                                           recruit=recruit_kw)
+                seen = torch.stack(st['seen'])                                  # (D, n, H, U)
+                used.append(seen.sum(-1).float().mean(1).numpy())               # (D, H): slots written per run
+                ever = seen.any(1) if ever is None else ever | seen.any(1)      # (D, H, U)
+                if T > L0:
+                    z2, _, _ = carried_logits(model, stamps[:, L0:], marks[:, L0:], state=st, seed=314160,
+                                              route_credit=None, recruit=recruit_kw)
+                    z = torch.cat([z1, z2], 1)
+                else:
+                    z = z1
+            pt, pg = nll(z, y, g, mask, parts=True)
             pt, pg = pt.numpy(), pg.numpy(); total += pt.sum() + pg.sum(); count += int(mask.sum())
             parts.append(prefix_scores(pt, pg, [len(runs[j][0]) for j in idx]))
-    return {r: np.concatenate([q[r] for q in parts]) for r in RULES}, total / max(count, 1)
+    occ = None
+    if used:
+        U = ever.shape[-1]
+        occ = dict(slots_written_per_run=np.mean(used, 0).round(3).tolist(), pool=U,
+                   dead_slot_fraction=(1 - ever.float().mean(-1)).numpy().round(3).tolist(),
+                   scope='per layer x head; written flags after each batch\'s shortest run')
+    return {r: np.concatenate([q[r] for q in parts]) for r in RULES}, total / max(count, 1), occ
 
 
 def aurocs(sc_clean, sc_faulty, kinds):
@@ -131,6 +159,10 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--tie-pools', action='store_true', help='share each pool\'s maps (§398); removes the untrained-loser bias (§419)')
+    p.add_argument('--free-bias', type=float, default=0., help='fixed score bonus for never-written slots (§419; training and evaluation)')
+    p.add_argument('--train-temperature', type=float, default=1., help='race score temperature in training only (§419 exposure)')
+    p.add_argument('--balance', type=float, default=0., help='load-balance (importance) penalty weight on race probabilities (§419)')
     p.add_argument('--segment', type=int, default=0, help='truncated credit: segments of this many events with the '
                    'state carried (detached) across segments (sleeping_machines/carried_episodes.py); 0: whole runs')
     a = p.parse_args()
@@ -145,6 +177,11 @@ def main():
     val_c, val_f, val_k = val_c[:a.eval_runs], val_f[:a.eval_runs], val_k[:a.eval_runs]
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=a.payload, depth=a.depth,
                                             heads=a.heads, pool=a.pool)
+    if a.tie_pools:
+        from dvs_tied_pool_benchmark import tie_pools
+        model = tie_pools(model)
+    recruit = (a.free_bias != 0. or a.train_temperature != 1. or a.balance > 0.)
+    rkw = dict(free_bias=a.free_bias, temperature=1., eager=not a.compiled) if a.segment else None   # evaluation at tau = 1
     fn = batched_logits
     if a.compiled:
         from torch._dynamo import config as dynamo_config
@@ -185,10 +222,18 @@ def main():
                     def seg_step(step_fn):
                         nonlocal state
                         model.train(); opt.zero_grad(set_to_none=True)
-                        z, st = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
-                                               step=step_fn, route_credit=rc)
+                        if recruit:
+                            z, st, pis = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
+                                                        route_credit=rc, recruit=dict(free_bias=a.free_bias,
+                                                        temperature=a.train_temperature, eager=not a.compiled))
+                        else:
+                            z, st = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
+                                                   step=step_fn, route_credit=rc)
                         per = nll(z, y[:, sl], g[:, sl], mask[:, sl]); m = mask[:, sl].sum()
                         loss = per.sum() / m
+                        if recruit and a.balance > 0:
+                            from sleeping_machines.recruit_layer import balance_penalty
+                            loss = loss + a.balance * balance_penalty(pis)
                         loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
                         state = detach(st); box['loss'] = float(loss.detach()); box['n'] = int(m)
                     if w < a.trace_windows:     # work trace: the batched formulation (same per-event operators), fresh state
@@ -226,9 +271,9 @@ def main():
             if w % 25 == 0:
                 print(json.dumps(dict(window=w, of=total, train_nll=box['loss'],
                                       events_per_s=events_seen / (time.perf_counter() - started))), flush=True)
-        sc_c, val_nll = scores(model, val_c, 64, fn); sc_f, _ = scores(model, val_f, 64, fn)
+        sc_c, val_nll, occ = scores(model, val_c, 64, fn, rkw); sc_f, _, _ = scores(model, val_f, 64, fn, rkw)
         curve.append(dict(epoch=epoch, train_nll=loss_sum / max(n_sum, 1), val_clean_nll=val_nll,
-                          val_auroc=aurocs(sc_c, sc_f, val_k), epoch_s=time.perf_counter() - t0))
+                          val_auroc=aurocs(sc_c, sc_f, val_k), val_clean_occupancy=occ, epoch_s=time.perf_counter() - t0))
         print(json.dumps(curve[-1]), flush=True)
         if val_nll < best[0]:
             best = (val_nll, epoch, {k: v.detach().clone() for k, v in model.state_dict().items()})
@@ -240,11 +285,11 @@ def main():
     test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
     if a.max_windows:                   # smoke: a bounded test subset, labelled by status
         test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
-    sc_c, test_nll = scores(model, test_c, 64, fn); sc_f, _ = scores(model, test_f, 64, fn)
+    sc_c, test_nll, test_occ = scores(model, test_c, 64, fn, rkw); sc_f, _, _ = scores(model, test_f, 64, fn, rkw)
     work = (ledger['arithmetic_flops'] + ledger['special_function_evaluations']) / traced_events if traced_events else None
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()), curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
-                  test_clean_nll=test_nll, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
+                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
                   work=dict(fit_unit_special_flops_per_event_estimate=work,
                             whole_fit_unit_special_flops_estimate=work * events_seen if work else None,
                             fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'),
