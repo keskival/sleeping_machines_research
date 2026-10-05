@@ -1,5 +1,20 @@
 # Session handoff — 2026-09-30
 
+**Selected-member work continuation prepared:** tmux
+curie_data_growth_64k_postrepeat_20261005_v1 waits on the independent-repeat
+handle, then runs prepared selected-width seed7utility through run_safe.
+Stdlib token_capacity_postrepeat_gate.py requires completed repeat/selection;
+after utility it requires0.02learning,positivecontext,RNG/partition checks
+before admitting selected-width seed6whole-fit/inference work replay. Missing
+repeat receipt was checked to reject admission. Trace uses token_stage_work.py
+with exact trajectory parity and full formula coverage;5400stimeout follows
+measured8Ktrace437s/ordinary45s and64Kordinary326-400s. Every job remains
+one-thread/1.2GBRSS/5GBVMS/8GiBfloor. Prepared queues for16/24/32 are distinct;
+only receipt-selected member executes. Do not admit256Kuntil selected-member
+repeat/utility/work completion is reviewed. Report64Kwork paths already match
+these queue outputs; source/appendix regeneration follows completion.
+
+
 **Independent seed continuation prepared:** tmux
 curie_data_growth_64k_repeat_20261005_v1 waits on the namedP32fit/utility handles,
 then stdlib token_capacity_repeat_admission.py requires completed matching
