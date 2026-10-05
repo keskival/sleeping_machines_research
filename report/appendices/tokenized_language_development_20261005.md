@@ -25,7 +25,11 @@ All parameters include the token interface and readout; the core/input column in
 
 The 8K, 64K and 256K stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.
 
-Selected-checkpoint utility pending for payload 24; no utility value is predicted.
+| Payload | Context gain | Memory erase delta | Message erase delta | Both erase delta |
+| --- | --- | --- | --- | --- |
+| 24 | 0.524467 | 0.019070 | 0.078129 | 0.064475 |
+
+Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. The completed payload-only diagnostic is shown separately.
 
 ## Appendix. Tokenized language: 64K capacity/data comparisons
 

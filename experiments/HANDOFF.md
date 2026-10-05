@@ -1,5 +1,20 @@
 # Session handoff — 2026-09-30
 
+**256Kutility completed / recipe repair scheduled /FASdata live:** contextgain
+0.524467NLL vs frozen TRAINmean; addressederase+0.019070,message+0.078129,
+both+0.064475. Same checkpoint/source/matchedRNG/partition checks pass.
+Useful addressed state and message information measured at256K, single seed.
+Report updated; full256Kfit FLOPs/independentseed remain pending.
+One newlanguagefit LR0.001 vs saved0.003 is prepared under
+curie_token_lower_lr_256k_20261005_v1 tmux, waiting admittedFAShandle.
+Stdlib gate validated completed deterioration>0.05, improving TRAINprobe,
+524272fit/2040DEV and exactqueue difference onlytag/LR; allsourcepins retained.
+No training-score/cost advantage assumed, no newarchitecture/source change.
+2400s/1.2GBRSS/5GBVMS/8GiBreserve from parent's1363s/500896KiB measurement.
+FAS missingdata generation now live PID34363at observation underrun_safe;
+then smokes and seeds7/8. Revalidatehandles; no concurrentlocalfit.
+
+
 **256Kcompleted / message payload replicated:** P24seed6selected step512
 DEV7.741714418 vs init8.078820442, gain0.337106024; final7.867909630,
 final−selected0.126195212, TRAINprobe6.340256→6.087312. Recorded lowerLRgate
