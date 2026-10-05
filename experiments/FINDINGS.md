@@ -1,5 +1,30 @@
 # Findings log
 
+## NeuroBench Mackey-Glass official result: 14.84 sMAPE over 30 repeats (loss to LSTM 13.37; ESN 14.79) — 5 October
+
+Official τ = 17 protocol: 30 start offsets, configuration fixed in advance (p16/d2, increment targets, 1,500 steps;
+primary inference mode: mean over 8 race-noise streams). Results from AWS r1 (`aws_mg_tau17_r1_*`, three batches of 10;
+aggregate via `experiments/public_benchmarks/collect_neurobench_mg.py`, protocol-eligible).
+
+| Mode | Mean sMAPE (lower is better) |
+|---|---:|
+| 8-stream average (primary) | **14.838** |
+| argmax (reporting only) | 18.43 |
+| sampled (reporting only) | 17.65 |
+
+- The last 10 repeats averaged 15.77, so the mean rose from 14.37 (at 20 repeats) to 14.84.
+- **Loss** against the LSTM (13.37). A tie, within noise, with the ESN (14.79; ours is 0.05 worse).
+- Footprint 57.6 KB, against 281 KB for the ESN and 490 KB for the LSTM.
+- Traced inference about 93K multiply-adds per step (8 streams), against the leaderboard's effective MACs of 4.4K
+  (ESN) and 60K (LSTM).
+- There is no leaderboard win and no Pareto win. The smallest footprint is the only favourable column.
+
+Interpretation:
+- Sampled races add output noise (§417). The deterministic expected-reception member did not robustly help in
+  development (§418).
+- Any further Mackey-Glass work needs a pre-declared new configuration and a fresh 30-repeat run. The recorded result
+  stands as reported.
+
 ## taps3 (last three characters on each event): +.011 bpc at +1% work, below the .02 promotion gate — 5 October
 
 Run `curie_language_batched_10M_p64d4_pool2_linear_4pass_taps3_l64_lr004_cmp_s6_20261005T020000Z` (driver by the

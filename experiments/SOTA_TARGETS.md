@@ -88,3 +88,10 @@ primary mix8 mean sMAPE **13.598** (reporting-only argmax 19.05, sampled 18.37);
 all 30 repeats. Rough inference estimate: mix8 runs 8 winner-only streams (about 8.5K multiply-adds per stream per step
 at p16/d2/pool 2, i.e. about 68K; LSTM 6.03e4 effective MACs), so the deterministic expected-reception member (one stream,
 about 1.5× one winner-only stream) is the resource-efficient candidate if its tau 18/19 development holds up.
+
+**Mackey-Glass official result (5 Oct 08:15 UTC):** 30/30 repeats; pre-declared primary 8-stream average **14.84**
+sMAPE.
+- Loss to LSTM 13.37; within noise of ESN 14.79, though 0.05 worse.
+- Footprint 57.6 KB, the smallest of the three.
+- No leaderboard win.
+- Details: FINDINGS, 5 October.
