@@ -91,3 +91,14 @@ larger-than-90M scale.
 When a P0/P1 run completes: (1) one line in the scoreboard — win, loss or efficiency point with the numbers; (2) commit the
 result file; (3) queue the confirming seed if it is a win. No paragraph of caveats: one scope sentence (data, seeds,
 compute convention). Losses are reported just as plainly.
+
+**Curie order after P0-2 (5 Oct 02:45 UTC, product owner):**
+1. LSTM validation rescore (P0-6 blocking step).
+2. taps3 compiled smoke, then taps3.
+3. FAS pool 8 compiled smoke (updated driver, RSS check), then FAS pool 8 and pool 2 seed 7.
+4. FAS pool 32 smoke, then pool 32.
+5. Native lr .003, then lr .006.
+6. The rest of the v6 queue.
+
+The FAS pool sweep moves ahead of the lr arms (about 10 h) because the oracle bound shows early-detection headroom on the
+home-field benchmark. Each FAS arm needs its smoke to pass.
