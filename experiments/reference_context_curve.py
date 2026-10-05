@@ -37,7 +37,9 @@ def ce_bits(net, x, y, state=None):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--checkpoint', required=True); p.add_argument('--tag', required=True)
-    p.add_argument('--test', type=int, default=1_000_000); p.add_argument('--context-curve', type=int, default=1024)
+    p.add_argument('--test', type=int, default=1_000_000); p.add_argument('--context-curve', type=int, default=1024,
+                                                                       help='0: skip the history curve')
+    p.add_argument('--offset', type=int, default=95_000_000, help='interval start (90_000_000: the E64 validation interval)')
     p.add_argument('--window', type=int, default=256); p.add_argument('--batch', type=int, default=256)
     a = p.parse_args()
     out = OUT / f'{a.tag}.json'
@@ -49,7 +51,7 @@ def main():
     if args['model'] != 'lstm':
         raise ValueError('LSTM checkpoint required')
     net = LSTMLM(args['size'], args.get('dropout', 0.0)); net.load_state_dict(ck['state']); net.eval()
-    text = torch.from_numpy(load_text(95_000_000, a.test).astype(np.int64))
+    text = torch.from_numpy(load_text(a.offset, a.test).astype(np.int64))
     n = len(text)
     # 1. saved protocol: one stream, carried state, blocks of 4096 (e64_lm_baselines.score)
     tot = 0.; cnt = 0; state = None
@@ -67,25 +69,28 @@ def main():
             part = b[r] if j == 0 else b[r, half:]
             tot += float(part.sum()); cnt += part.numel()
     window = tot / cnt
-    # 3. history curve: disjoint windows of C from a fresh state, binned by position
-    C = a.context_curve; edges = [e for e in CURVE if e < C] + [C]
-    which = np.searchsorted(edges, np.arange(C), side='right') - 1
-    bits = np.zeros(len(edges) - 1); count = np.zeros(len(edges) - 1, dtype=np.int64)
-    starts = list(range(0, n - C - 1, C))
-    for i in range(0, len(starts), a.batch):
-        s = starts[i:i + a.batch]
-        x = torch.stack([text[j:j + C] for j in s]); y = torch.stack([text[j + 1:j + C + 1] for j in s])
-        b, _ = ce_bits(net, x, y)
-        per_pos = b.sum(0).numpy()
-        for k in range(C):
-            bits[which[k]] += per_pos[k]; count[which[k]] += len(s)
+    curve = None
+    if a.context_curve:
+        # 3. history curve: disjoint windows of C from a fresh state, binned by position
+        C = a.context_curve; edges = [e for e in CURVE if e < C] + [C]
+        which = np.searchsorted(edges, np.arange(C), side='right') - 1
+        bits = np.zeros(len(edges) - 1); count = np.zeros(len(edges) - 1, dtype=np.int64)
+        starts = list(range(0, n - C - 1, C))
+        for i in range(0, len(starts), a.batch):
+            s = starts[i:i + a.batch]
+            x = torch.stack([text[j:j + C] for j in s]); y = torch.stack([text[j + 1:j + C + 1] for j in s])
+            b, _ = ce_bits(net, x, y)
+            per_pos = b.sum(0).numpy()
+            for k in range(C):
+                bits[which[k]] += per_pos[k]; count[which[k]] += len(s)
     result = dict(status='completed', args=vars(a), checkpoint=str(ck_path.relative_to(ROOT)),
                   checkpoint_sha256=hashlib.sha256(ck_path.read_bytes()).hexdigest(), reference_args=args,
                   stream_bpc=stream, stream_targets=n - 1,
                   window=dict(T=T, bpc=window, targets=cnt, state='reset per window'),
+                  interval=[a.offset, a.offset + a.test],
                   context_curve=dict(C=C, by_history={f'{edges[j]}-{edges[j + 1]}': dict(bpc=float(bits[j] / count[j]),
                                                                                          targets=int(count[j]))
-                                                      for j in range(len(bits)) if count[j]}),
+                                                      for j in range(len(bits)) if count[j]}) if a.context_curve else None,
                   wall_s=time.perf_counter() - started,
                   hardware=dict(platform=platform.platform(), torch=torch.__version__, device='cpu', threads=1),
                   scope='Evaluation of saved weights only; no training. Bins and test interval match language_stream_rescore.')
