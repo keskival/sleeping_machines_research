@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**256Kcompleted / message payload replicated:** P24seed6selected step512
+DEV7.741714418 vs init8.078820442, gain0.337106024; final7.867909630,
+final−selected0.126195212, TRAINprobe6.340256→6.087312. Recorded lowerLRgate
+passes; bounded same-data/seed/two-pass LR0.001 comparison is next languagefit,
+after already-admitted diagnostics/FASsequence.524272fit targets charged,
+384.661targets/s,500896KiBRSS. Full256Kwork pending; no projectedcost filled.
+Messagefactor completed: payload-only erasure +0.105206/+0.101270NLLseeds6/7;
+fullmessage+0.022621/−0.032673 retained with distinct normalization/clock scope.
+Messagecontent contribution repeats; no retrainedablation/causaldecomposition.
+Report appends both results; scaling snapshotv3hasfivecompletedcells/no curve.
+Selected256KutilityPID33750live at observation; source/RNG/partition gates
+pending. RequestedFASwaiter retained; numerical data/smokes still pending.
+
+
 **Three-front user priority recorded:** PRODUCT_ORDERS now retains boundedFAS/
 tabular spend alongside primary integrated language objective. ExistingFAS
 seed7/8waiter preserved. Next newtabular task: integrated typed-comparison/race

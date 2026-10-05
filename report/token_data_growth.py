@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def pages():
-    return stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages()
+    return stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages() + message_factor_pages()
 
 
 def stage_pages(budget, label):
@@ -95,7 +95,7 @@ def stage_pages(budget, label):
     if utilities:
         page += [
             ('table', (['Payload', 'Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], utilities, [55, 105, 130, 130, 130])),
-            ('p', 'Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. A payload-only diagnostic is queued separately.')]
+            ('p', 'Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. The completed payload-only diagnostic is shown separately.')]
     missing = set(completed) - {int(r[0]) for r in utilities}
     if missing:
         page.append(('p', 'Selected-checkpoint utility pending for payload ' + ', '.join(map(str, sorted(missing))) + '; no utility value is predicted.'))
@@ -156,3 +156,24 @@ def repeat_pages():
     else:
         page.append(('p', 'Independent-seed utility pending; no predicted utility is reported.'))
     return [page]
+
+
+def message_factor_pages():
+    path = ROOT / 'experiments/results/diagnostics/curie_token_message_factors_64k_20261005_v1.json'
+    if not path.exists():
+        return []
+    result = json.loads(path.read_text())
+    if result['status'] != 'completed':
+        return []
+    rows = []
+    assert {row['seed'] for row in result['rows']} == {6, 7}
+    for row in result['rows']:
+        selection = json.loads((ROOT / ('experiments/results/token_language/' + row['tag'] + '.selection.json')).read_text())
+        assert row['selected'] == selection['selected']
+        assert row['matched_rng'] and row['partition_parity'] and row['scored_targets'] == 2040
+        assert abs(row['scores']['intact'] - row['selected']['dev_nll']) < 2e-6
+        rows.append([str(row['seed']), f"{row['scores']['intact']:.6f}", f"{row['deltas']['payload']:.6f}", f"{row['deltas']['full_message']:.6f}"])
+    return [[('h1', 'Appendix. Tokenized messages: replicated payload contribution'),
+        ('p', 'P24 selected64Kcheckpoints, two seeds, 2,040development targets. Erasure delta is intervention NLL minus intact NLL. Payload-only erasure hurts prediction in both seeds by0.105206/0.101270NLL; the message information path contributes under this intervention.'),
+        ('table', (['Seed', 'Intact NLL', 'Payload erase delta', 'Full message erase delta'], rows, [65, 130, 160, 185])),
+        ('p', result['scope'])]]

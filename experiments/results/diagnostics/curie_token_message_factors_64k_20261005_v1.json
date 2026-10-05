@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1",
+      "seed": 6,
+      "selected": {
+        "step": 128,
+        "dev_nll": 8.033310714422488,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.best_step00000128.pt"
+      },
+      "scores": {
+        "intact": 8.033311012971636,
+        "payload": 8.138517303078197,
+        "full_message": 8.055932500315647
+      },
+      "deltas": {
+        "payload": 0.1052062901065618,
+        "full_message": 0.02262148734401137
+      },
+      "scored_targets": 2040,
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "32875968d8a3a87017751635766e97f23d34816a8c60ca0e5b0a9d4b1b98d607"
+    },
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1",
+      "seed": 7,
+      "selected": {
+        "step": 128,
+        "dev_nll": 8.07899134018842,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.best_step00000128.pt"
+      },
+      "scores": {
+        "intact": 8.078991202396505,
+        "payload": 8.180261219336707,
+        "full_message": 8.046318030123617
+      },
+      "deltas": {
+        "payload": 0.10127001694020166,
+        "full_message": -0.03267317227288835
+      },
+      "scored_targets": 2040,
+      "matched_rng": true,
+      "partition_parity": true,
+      "checkpoint_sha256": "752bf8b4296e67a2ee7ce18c74252f9ff93e723af26b688624fd25df08834741"
+    }
+  ],
+  "producer_source_sha256": "0a09ef0eaadf11823f4ae4bd6519f3b28309d647441e7ab95e5e1ab9e09c36ae",
+  "scope": "Frozen selected checkpoints, development only. Payload intervention zeros ctx_vals while preserving ctx_arr and has_ctx before each event; full-message intervention zeros all three. Payload intervention preserves the normalization branch and incoming arrival metadata at that event, but future routes/timing/states can change. Matched route RNG and intact chunk-partition/selected-score parity. Neither intervention is a retrained architecture or a causal decomposition of total gains."
+}

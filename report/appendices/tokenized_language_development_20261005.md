@@ -1,3 +1,32 @@
+## Appendix. Tokenized language: 256K capacity/data comparisons
+
+Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.
+
+Seed6, development only. GPT-2 FineWeb: 262,144 admitted training tokens, two passes/524,272 fitting targets, 1024 updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with four evaluation checkpoints over the two passes. Public validation untouched.
+
+| Payload | Initial NLL | Selected NLL | Gain | Selected step |
+| --- | --- | --- | --- | --- |
+| 24 | 8.078820 | 7.741714 | 0.337106 | 512 |
+
+| Payload | All parameters | Core + input parameters | Readout parameters | Targets/s | RSS KiB |
+| --- | --- | --- | --- | --- | --- |
+| 24 | 3164842 | 2462880 | 701962 | 384.66 | 500896 |
+
+| Member | Fit targets | Whole-fit GFLOPs | Fit MFLOPs/target | Eval MFLOPs/target |
+| --- | --- | --- | --- | --- |
+| 24 | 524272 | pending | pending | pending |
+| TF head ≥ | 695992320 | ≥161331598.841610 | ≥231.800832 | ≥77.266944 |
+
+TF head ≥ is a source-derived arithmetic lower bound: forward output projection plus its two explicit backward matrix contractions; evaluation has one projection. Width768 and padded50,304classes give231.800832MFLOPs/fitting target and77.266944MFLOPs/evaluation target, at two FLOPs per multiply-add. Other reference computation and optimizer work are excluded. Its695,992,320training targets and public NLL3.2774 use a different data/quality population from these native development fits; these columns show raw work, not a matched-quality or iso-FLOP win. FP8 GPU arithmetic and native CPUfloat32 have different hardware costs.
+
+Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.
+
+All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.
+
+The 8K, 64K and 256K stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.
+
+Selected-checkpoint utility pending for payload 24; no utility value is predicted.
+
 ## Appendix. Tokenized language: 64K capacity/data comparisons
 
 Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.
@@ -37,7 +66,7 @@ The 8K, 64K and 256K stages score the same development population and use two pa
 | 24 | 0.252343 | 0.007313 | 0.022623 | 0.014234 |
 | 32 | 0.166731 | 0.002895 | -0.009512 | -0.011456 |
 
-Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. A payload-only diagnostic is queued separately.
+Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; full-message erasure removes payload, arrival metadata and presence together, changing the normalization branch and read-clock policy. Frozen erasures are not retrained architecture comparisons. The completed payload-only diagnostic is shown separately.
 
 ## Appendix. Independent seed for selected 64K capacity
 
@@ -55,6 +84,17 @@ This repeat measures selected-member learning reliability and seed variation. Th
 | 0.234159 | 0.005551 | -0.032675 | -0.039134 |
 
 Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means the intervention hurts prediction. Full-message erasure bundles payload, arrival metadata and presence, including changes to normalization and the read clock. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.
+
+## Appendix. Tokenized messages: replicated payload contribution
+
+P24 selected64Kcheckpoints, two seeds, 2,040development targets. Erasure delta is intervention NLL minus intact NLL. Payload-only erasure hurts prediction in both seeds by0.105206/0.101270NLL; the message information path contributes under this intervention.
+
+| Seed | Intact NLL | Payload erase delta | Full message erase delta |
+| --- | --- | --- | --- |
+| 6 | 8.033311 | 0.105206 | 0.022621 |
+| 7 | 8.078991 | 0.101270 | -0.032673 |
+
+Frozen selected checkpoints, development only. Payload intervention zeros ctx_vals while preserving ctx_arr and has_ctx before each event; full-message intervention zeros all three. Payload intervention preserves the normalization branch and incoming arrival metadata at that event, but future routes/timing/states can change. Matched route RNG and intact chunk-partition/selected-score parity. Neither intervention is a retrained architecture or a causal decomposition of total gains.
 
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 
