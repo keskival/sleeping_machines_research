@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**P24complete work verified /256Krunning:** exact replay DEVcurve parity0,
+256updates/131056fit targets,2040eval targets; arithmetic formula coverage
+complete and unsupported floating ops empty. Fullfit192.211764864GF,
+1.466638421MF/fit target,0.403427927MF/eval target. Special functions separate
+(2.035496336Gfit/15.438661Meval), random sampling work unquantified; detailed
+scope preserved in receipt. Selected DEV8.033310714. Report common-unit table
+now contains measured cost; immutable scaling snapshotv2 assigns it only to
+exact P24seed6cell. No law fitted or comparable-quality TFwin claimed.
+256Kadmission passed; live CPUfitPID27234 at observation (revalidate),
+curie_data_growth_256k_20261005_v1 tmux,524272targets/1024updates/two passes,
+2400s/1.2GBRSS/5GBVMS/8GiBreserve. Messagefactor,256Kutility and requestedFAS
+replication waiters retained. Preserve frozen training sources while fit runs.
+
+
 **User typed-tabular direction recorded:** TYPED_PREDICATE_EVENT_DIRECTION_20261005.md
 specifies per-type learned comparisons before sparse temporal routes and deeper
 neural mixing. Current adapter is feature-ID/numeric/missingness, not this

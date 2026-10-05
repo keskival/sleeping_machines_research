@@ -19,7 +19,7 @@ Seed6, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two pas
 | Member | Fit targets | Whole-fit GFLOPs | Fit MFLOPs/target | Eval MFLOPs/target |
 | --- | --- | --- | --- | --- |
 | 16 | 131056 | pending | pending | pending |
-| 24 | 131056 | pending | pending | pending |
+| 24 | 131056 | 192.211765 | 1.466638 | 0.403428 |
 | 32 | 131056 | pending | pending | pending |
 | TF head ≥ | 695992320 | ≥161331598.841610 | ≥231.800832 | ≥77.266944 |
 
