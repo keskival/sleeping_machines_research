@@ -1,5 +1,17 @@
 # Session handoff — 2026-09-30
 
+**Local prerequisites completed —5 October18:15 UTC:** memory recovered above
+10GiB, so guarded integrated resume completed exit0 at18:12:14, exact parity of
+model/AdamW/state/all RNGs/cursor/quality/48targets, peak337428KiB. Guarded full
+operator audits then completed; v3 covers all floating operators at pilot batch
+B8/T16:253.930317MFLOPs per128targets,1.983831MFLOPs/target. Synthetic equal-tail
+decoder workload, first optimizer update; not benchmark or whole-fit evidence.
+Replay likelihood47.286432MFLOPs versus replay core3.006080MFLOPs motivates
+independent sampling of utility scoring positions, derived in
+[theory/TOKEN_INTEGRATED_WORK_FINDINGS_20261005.md](theory/TOKEN_INTEGRATED_WORK_FINDINGS_20261005.md).
+No AWS pinned source changed. AWS packet delivery still lacks an accepted
+GitHub SSH credential; prior push attempt failed publickey authentication.
+
 **AWS queue direction —5 October18:10 UTC:** user authorizes larger diagnostics
 on AWS. Added immutable token packet to the existing repair manifest's addenda,
 slot3, preserving live job ordering. Data setup -> actual integrated resume ->
