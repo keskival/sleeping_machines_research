@@ -85,8 +85,8 @@ Race selection has the exact softmax winner probabilities, but one winning value
 | 10M vs Transformer-256x4, 4 passes at ≤ its inference compute (7.4 MF/pos) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
 | 10M vs LSTM-512, 6 passes at ≤ its training compute (432.6 TF) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | Loss |
 | 10M vs LSTM-512, 6 passes at ≤ its inference compute (2.4 MF/pos) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | Loss |
-| 10M vs tuned dense at ≤ 352 TF (P0-6) | pending | 0/6 arms complete | Pending |
-| 10M vs tuned dense at ≤ 107 TF (P0-6) | pending | 0/4 arms complete | Pending |
+| 10M vs tuned dense at ≤ 352 TF (P0-6) | pending | align LSTM validation/test contexts | Pending |
+| 10M vs tuned dense at ≤ 107 TF (P0-6) | pending | 3/4 arms complete | Pending |
 | 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point; run queued |
 | 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point; run queued |
 | NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.37 (57.6 KB vs 490 KB) | Pending (20/30 repeats) |
@@ -3128,6 +3128,12 @@ Official protocol: 30 start offsets, 750 teacher-forced training points, 750 aut
 | tau 18, p16/d2/pool2, increments, 3000 steps | race | mix8 21.0, argmax 18.4, sampled 15.1 | 3 |
 | tau 18, p16/d2/pool4, increments | race | mix8 23.0, argmax 18.3, sampled 19.8 | 3 |
 | tau 18, p16/d2/pool2, 1000 steps | race | sampled 23.0 | 3 |
+| tau 18, p16/d2/pool2, increments | expected reception | sampled 23.1 | 3 |
+| tau 18, p16/d2/pool4, increments | expected reception | sampled 17.1 | 3 |
+| tau 18, p16/d2/pool2, increments | expected reception | sampled 21.4 | 3 |
+| tau 18, p32/d2/pool2, increments | expected reception | sampled 19.8 | 3 |
+| tau 19, p16/d2/pool2, increments | expected reception | sampled 23.5 | 3 |
+| tau 19, p16/d2/pool4, increments | expected reception | sampled 30.4 | 3 |
 
 Findings (THEORY §§417–418): sampled races inject output noise; deterministic or averaged inference helps; closed-loop training did not; the exact-expected-reception member (deterministic delivery, hard writes) is under development. Three repeats cannot rank close arms (per-repeat spread is large).
 
