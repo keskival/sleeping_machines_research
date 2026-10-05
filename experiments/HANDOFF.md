@@ -1,5 +1,16 @@
 # Session handoff — 2026-09-30
 
+**Low-overhead language timing implementation prepared:** token_stage_timing.py
+replays exact completed64K/P24control, times factual/alternative core/readout,
+backward/optimizer plus remaining zero_grad→step interval. Sourcechecks,
+completedbudget and exactcurveparity gate result. No torchdispatch/profiler,
+no arithmeticcost inference from walltime. Syntax passed; numerical pending.
+Uniqueonejob queue behind liveFAS and lowerLR handles; waiter requires completed
+524272-target recipefit, then1200s/1.2GBRSS/5GBVMS/8GiBreserve (parent~350s).
+Timing will choose engineeringtarget before substitutions; frozenmodels
+unchanged. FASseed7advanced200→400windows atlatestcheck, stable1.23GBRSS.
+
+
 **Measured language visualization exported:** PNG/SVG inreport/figures/
 token_language_measured_scaling_20261005_v1, standaloneproducer and JSONsource
 hashreceipt. Completed8K/64K/256Kquality points,64Kcapacity and two executed
