@@ -1,0 +1,35 @@
+{
+  "run_tag": "aws_tuned_ref_10M_B_lstm384_p2.5_lr0.003_s0_20261004T210000Z",
+  "script": "experiments/e64_lm_baselines.py",
+  "arguments": [
+    "--model",
+    "lstm",
+    "--D",
+    "10000000",
+    "--size",
+    "384",
+    "--passes",
+    "2.5",
+    "--dropout",
+    "0.1",
+    "--valid",
+    "200000",
+    "--lr",
+    "0.003",
+    "--warmup",
+    "200"
+  ],
+  "output_redirected": true,
+  "source_sha256": "5cdbe33462fb6d9f987600c62fc479187392fb1a89361fc37d2af488d905c53b",
+  "git_commit": "8eb9190bfe9c9aaea339a2c2408aa10252f6d736",
+  "limits": {
+    "MEM_CAP_KB": "24000000",
+    "MEM_CAP_RSS_KB": "4000000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "28800"
+  },
+  "start_utc": "2026-10-04T23:48:50Z",
+  "status": "completed",
+  "wall_s": 1291.763,
+  "peak_rss_kb": 1552032
+}
