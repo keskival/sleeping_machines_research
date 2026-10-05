@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**Measured language visualization exported:** PNG/SVG inreport/figures/
+token_language_measured_scaling_20261005_v1, standaloneproducer and JSONsource
+hashreceipt. Completed8K/64K/256Kquality points,64Kcapacity and two executed
+whole-fitcost points shown separately; no fittedcurve/predicted256Kcost.
+Selected prior/data differences, parameter coupling and special-function/
+random-work conventions explicit. Figure visually inspected and reportpage/
+Markdown integrated with provenancechecks. FullFASseed7live; sourcespreserved.
+
+
 **Typed-threshold learning derivation/primitive checked:** joint two-clock
 winner/time score sign(W)−T(r_true−r_false), threshold pullback−1/scale.
 Twenty stdlib closed-moment/finite-difference cases pass; categorical-only

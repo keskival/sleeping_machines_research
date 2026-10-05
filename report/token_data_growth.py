@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def pages():
-    return stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages() + message_factor_pages()
+    return measured_pages() + stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages() + message_factor_pages()
 
 
 def stage_pages(budget, label):
@@ -177,3 +177,20 @@ def message_factor_pages():
         ('p', 'P24 selected64Kcheckpoints, two seeds, 2,040development targets. Erasure delta is intervention NLL minus intact NLL. Payload-only erasure hurts prediction in both seeds by0.105206/0.101270NLL; the message information path contributes under this intervention.'),
         ('table', (['Seed', 'Intact NLL', 'Payload erase delta', 'Full message erase delta'], rows, [65, 130, 160, 185])),
         ('p', result['scope'])]]
+
+
+def measured_pages():
+    name = 'token_language_measured_scaling_20261005_v1'
+    path = ROOT / ('report/figures/' + name + '.json')
+    if not path.exists():
+        return []
+    receipt = json.loads(path.read_text())
+    assert receipt['status'] == 'completed_measured_visualization' and not receipt['curve_fitted']
+    import hashlib
+    for source, digest in receipt['input_sha256'].items():
+        assert hashlib.sha256((ROOT / source).read_bytes()).hexdigest() == digest
+    return [[('h1', 'Appendix. Measured language quality, capacity and compute'),
+        ('p', 'Sleeping Machines pursues a general-purpose substrate spanning language/reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. Completed integrated language measurements show quality improving with data and a useful intermediate capacity choice.'),
+        ('figure', (name, 174)),
+        ('p', 'P16 selected NLL improves8.297491→8.099440 from8Kto64K TRAINtokens; P24 improves8.033311→7.741714 from64Kto256K. At64K/P24 beats P16/P32 by0.066129/0.057108NLL, seed6. The independent P24seed7point is8.078991. Each plotted point is a completed fit.'),
+        ('p', receipt['scope'])]]
