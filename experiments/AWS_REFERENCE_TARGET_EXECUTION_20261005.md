@@ -31,3 +31,24 @@ resets and report its target count, checkpoint/data/source hashes, route RNG,
 quality and complete inference work. Public scoring follows selected native
 quality/scaling and resource gates; these planning contracts supply no quality
 prediction. Reuse the published3.2774NLL rather than training its Transformer.
+
+## Implemented bounded native scorer
+
+`aws_reference_stream_score.py` now implements the native stream over these
+ranges with exact next-token likelihood, per-sequence state resets, causal EOS
+handling and one recorded route generator. Losses are summed by actual target
+count; shorter final chunks receive their correct weight. It verifies selected
+checkpoint/data/producer provenance, records CPU wall/RSS and reports the
+published-reference quality verdict only after all10,485,760targets complete.
+It rejects pending fits, initialized selections and incomplete benchmark
+selection records before public scoring. No public run is admitted yet.
+
+Eleven stdlib scorer tests pass: target-weighted chunk invariance, correct
+state continuity/reset groups, rejection of target skips, nonfinite losses,
+incomplete/reordered populations and incomplete selection evidence. Native
+model parity is still pending, not proved by those tests. The guarded numerical
+prerequisite `zy_aws_reference_score_contracts_20261005T200000Z.json` runs the
+actual same `native_window` on synthetic GPT-2 IDs and observed EOS. It compares
+numeric states, route RNG and NLL across two execution partitions, without
+fitting or accessing public data. The immutable packet follows slot1's existing
+allocation packet at its safe admission boundary.
