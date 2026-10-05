@@ -1,18 +1,26 @@
-## Appendix. Tokenized language: reserved 64K data exposure
+## Appendix. Tokenized language: reserved 64K capacity comparisons
 
-Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data.
+Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.
 
-Single seed, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two passes, 256 updates, 2,040 scored development targets. P16/D2/H2/U4, batch64, credit16 and uniform-site K4 actual alternative-write credit; all temporal, sparse and persistent-state mechanisms retained. Initialization is eligible for selection, with evaluation every64 updates. Public validation untouched.
+Seed6, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two passes/131,056 fitting targets, 256 updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with evaluation every64 updates. Public validation untouched.
 
-| Payload | Seed | Fit targets | Initial NLL | Selected NLL | Gain | Selected step |
-| --- | --- | --- | --- | --- | --- | --- |
-| 16 | 6 | 131056 | 8.162280 | 8.099440 | 0.062840 | 128 |
+| Payload | Initial NLL | Selected NLL | Gain | Selected step |
+| --- | --- | --- | --- | --- |
+| 16 | 8.162280 | 8.099440 | 0.062840 | 128 |
 
-Measured ordinary fitting throughput: 409.80 targets/s; peak RSS: 448368 KiB. The learning gate requires a 0.02 NLL improvement over initialization.
+| Payload | All parameters | Core parameters | Readout parameters | Targets/s | RSS KiB |
+| --- | --- | --- | --- | --- | --- |
+| 16 | 2115464 | 1631184 | 484280 | 409.80 | 448368 |
 
-The 8K and 64K fits score the same development population and both use two passes. Their train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. This single width/data step supplies no fitted scaling exponent or matched-compute Transformer win.
+All parameters include the token interface and readout. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.
 
-Frozen selected-checkpoint context gain: 0.208993 NLL. History interventions: {"both": -0.028287635130041622, "memory": 0.006892396889480068, "message": -0.02469433055204462}. These matched-RNG interventions use the same frozen readout; the constant TRAIN-mean feature control is not an optimally refitted unigram, and erasures are not retrained ablations.
+The 8K and 64K fits score the same development population and both use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.
+
+| Payload | Context gain | Memory erase delta | Message erase delta | Both erase delta |
+| --- | --- | --- | --- | --- |
+| 16 | 0.208993 | 0.006892 | -0.024694 | -0.028288 |
+
+Context gain is constant TRAIN-mean feature NLL minus intact NLL through the same frozen readout. Erasure deltas are intervention NLL minus intact NLL: positive means erasure hurts prediction, negative means it helps. Source, matched-RNG and partition checks pass. The constant-feature control is not an optimally refitted unigram; frozen erasures change routing and readout features and are not retrained architecture comparisons.
 
 ## Appendix. Tokenized8K: replicated learning and memory-use decisions
 
