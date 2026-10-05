@@ -116,3 +116,23 @@ ratios at most one. State capacity, scored keys and selected writes remain
 separate ratios. No scaling queue is admitted by this reader. Eighteen policy,
 admission and comparison tests pass; synthetic metadata fixtures test refusal
 rules only and are never research evidence. Numerical bank results are pending.
+
+## Heavier AWS stage, measured admission
+
+User direction reaffirms heavier AWS experiments. The next declared comparison
+is U4/U16 at P24/D2/H2, seeds6/7,65536TRAINtokens/two passes,131056fitting
+targets per arm,256optimizer updates and evaluation every64. Four paired
+fits separate bank-size effects from a single lucky seed. Sharing and actual
+uniform-site K4 future-write consequences remain fixed.
+
+`aws_private_bank_scale_plan.plan` requires the complete matched smoke quality/
+work/utility comparison, finite logged losing-write consequences/gradients,
+positive context utility in both arms and at least0.02learning in one. A smoke
+quality win for the larger bank is not required to investigate its exposure
+at64K. RSS reservation is1.5times measured ordinary peak rounded upward; timeout
+is twice131056 divided by measured throughput plus120seconds. Reservations
+over4GBRSS/6000s or below8GiBavailable reserve are rejected for revised planning.
+The planner launches nothing and admits no job before completed evidence.
+Source/data pins and live host occupancy must be checked when concrete unique
+queues are constructed. Twenty-three policy/admission/comparison/planning
+tests pass, using explicitly synthetic fixtures only for refusal logic.
