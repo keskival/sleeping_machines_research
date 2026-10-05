@@ -57,6 +57,31 @@ class Evidence(unittest.TestCase):
         self.work['fitting_arithmetic_flops_per_target']/=1e6
         with self.assertRaises(ValueError):stage.stage_row(self.result,self.selection,self.work)
 
+    def test_saved_utility_bound_to_selection(self):
+        r=stage.stage_row(self.result,self.selection)
+        utility=json.loads((ROOT/'experiments/results/diagnostics/curie_fixed_batch_tokens_8k_utility_20261005_v1.json').read_text())['rows'][0]
+        stage.add_utility(r,utility)
+        self.assertGreater(r['context_gain'],0)
+
+    def test_utility_selection_mismatch(self):
+        r=stage.stage_row(self.result,self.selection)
+        utility=json.loads((ROOT/'experiments/results/diagnostics/curie_fixed_batch_tokens_8k_utility_20261005_v1.json').read_text())['rows'][0]
+        utility['selected']['step']+=1
+        with self.assertRaises(ValueError):stage.add_utility(r,utility)
+
+    def test_unmatched_rng_rejected(self):
+        r=stage.stage_row(self.result,self.selection)
+        utility=json.loads((ROOT/'experiments/results/diagnostics/curie_fixed_batch_tokens_8k_utility_20261005_v1.json').read_text())['rows'][0]
+        utility['matched_rng']=False
+        with self.assertRaises(ValueError):stage.add_utility(r,utility)
+
+    def test_negative_erasure_cost_preserved(self):
+        r=stage.stage_row(self.result,self.selection)
+        utility=json.loads((ROOT/'experiments/results/diagnostics/curie_fixed_batch_tokens_8k_utility_20261005_v1.json').read_text())['rows'][0]
+        utility['history_gains']['message']=-.02
+        stage.add_utility(r,utility)
+        self.assertEqual(r['message_erasure_cost'],-.02)
+
     def test_other_control_rejected(self):
         self.work['control']='experiments/results/token_language/another.json'
         with self.assertRaises(ValueError):stage.stage_row(self.result,self.selection,self.work)

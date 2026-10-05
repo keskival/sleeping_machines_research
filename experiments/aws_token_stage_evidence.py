@@ -77,6 +77,23 @@ def stage_row(result, selection, work=None):
     return row
 
 
+def add_utility(row, utility):
+    if utility['tag'] != row['tag'] or utility['fit_targets'] != row['fitting_targets'] or utility['dev_targets'] != row['dev_targets']:
+        raise ValueError('Utility populations differ from selected fit')
+    selected=utility['selected']
+    if selected['step'] != row['selected_step'] or not math.isclose(selected['dev_nll'], row['selected_dev_nll'], rel_tol=0., abs_tol=2e-6):
+        raise ValueError('Utility belongs to another checkpoint selection')
+    if utility.get('partition_parity') is not True or utility.get('matched_rng') is not True:
+        raise ValueError('Utility needs matched route RNG/partition evidence')
+    metrics={'context_gain':utility['context_gain'],
+        'memory_erasure_cost':utility['history_gains']['memory'],
+        'message_erasure_cost':utility['history_gains']['message']}
+    if not all(math.isfinite(v) for v in metrics.values()):raise ValueError('Nonfinite utility')
+    row.update(metrics)
+    row['utility_checkpoint_sha256']=utility['checkpoint_sha256']
+    return row
+
+
 def collect(root):
     folder=root/'experiments/results/token_language'
     rows=[]; inputs={}; pending=[]
@@ -95,6 +112,17 @@ def collect(root):
         if tag=='curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1' and work_path.exists():
             work=json.loads(work_path.read_text());paths.append(work_path)
         row=stage_row(result,selection,work)
+        row.update(context_gain=None,memory_erasure_cost=None,message_erasure_cost=None)
+        utility_name=('curie_fixed_batch_tokens_8k_utility_20261005_v1' if tag.startswith('curie_fixed_batch_')
+                      else 'curie_data_growth_tokens_64k_utility_20261005_v1' if result['args']['payload']==16 else None)
+        if utility_name:
+            utility_path=root/'experiments/results/diagnostics'/(utility_name+'.json')
+            if utility_path.exists():
+                utility=json.loads(utility_path.read_text())
+                if utility.get('status')=='completed':
+                    matches=[r for r in utility['rows'] if r['tag']==tag]
+                    if len(matches)!=1:raise ValueError('Missing or duplicate utility row')
+                    add_utility(row,matches[0]);paths.append(utility_path)
         rows.append(row)
         for p in paths:inputs[str(p.relative_to(root))]=hashlib.sha256(p.read_bytes()).hexdigest()
     # This surface shares the development population; prior/cadence changes are
@@ -115,7 +143,14 @@ def markdown(record):
         values=[r['admitted_train_tokens'],r['payload'],r['seed'],r['credit_window'],r['fitting_targets'],f"{r['equivalent_passes']:.2f}",r['persistent_memory_scalars_per_lane'],f"{r['scored_keys_per_target']}/{r['selected_writes_per_target']}"]
         values += [fmt(r[k]) for k in ('initial_dev_nll','selected_dev_nll','learning_gain','whole_fit_gflops','fitting_mflops_per_target','inference_mflops_per_target')]
         text.append('| '+' | '.join(map(str,values))+' |')
-    text += ['', 'Pending stage names: '+', '.join(record['pending'])+'.', '',
+    text += ['', '| TRAIN tokens | P | Seed | Credit | Context gain NLL | Memory erasure cost NLL | Message erasure cost NLL |',
+             '|---:|---:|---:|---:|---:|---:|---:|']
+    for r in record['rows']:
+        values=[r['admitted_train_tokens'],r['payload'],r['seed'],r['credit_window']]
+        values += [fmt(r.get(k)) for k in ('context_gain','memory_erasure_cost','message_erasure_cost')]
+        text.append('| '+' | '.join(map(str,values))+' |')
+    text += ['', 'Frozen utility uses matched route RNG and selected weights; negative erasure cost means the intervention improves loss. Context gain uses a constant causal TRAIN-mean feature through the same readout. These are not retrained ablations or additive attribution.', '']
+    text += ['', 'Pending stage names: ' +', '.join(record['pending'])+'.', '',
         'Available memory, key scoring, selected writes and learning work are distinct columns. Decoder and optimizer work are included in executed ledgers; state size is not a FLOP saving. Evaluation here includes exact likelihood/scorer reductions.', '']
     return '\n'.join(text)
 
