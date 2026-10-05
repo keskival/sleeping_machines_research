@@ -186,3 +186,10 @@ estimates for dense references), and inference work up to the decision at N.
   All four are reported for every model; the primary rule stays `total`. The native driver now saves its selected
   weights. The scoring functions pass numpy checks. A full torch smoke run waits for memory headroom (P0-2 is running
   with about 0.9 GB above the floor).
+- 5 Oct 03:40 UTC (Docker review host): **native vs every classical control, including the stronger ones.** At N=256 the native
+  0.600 exceeds all six identity-free controls (gap_z 0.559; order3/timed_ngram 0.550; gap_robust_z 0.549; gap_quantile 0.525;
+  gap_cusum 0.521). At N=512, native 0.742 vs best 0.727 (gap_z; timed_ngram 0.722). Test-sampling significance
+  (Hanley–McNeil SE, 2,000 clean + 2,000 faulty runs, treated as independent, which is conservative for paired scores): N=256
+  +0.041 = 3.2 sigma; N=512 +0.015 = 1.4 sigma (not significant). Evidence level: exploratory, single training seed. The
+  dense/SSM/point-process references (AWS) and a second native seed decide the claim. Suggested next: seed 7 of the same
+  configuration, and paired bootstrap on per-run scores once the native driver saves them.
