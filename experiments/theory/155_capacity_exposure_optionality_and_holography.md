@@ -310,3 +310,27 @@ mainly by weight decay. The generalizing circuit has a lower norm than the sum o
 
 **Gates:** the predictions above, each with two seeds. A failure of G2 (tied maps still do not grok) would falsify
 §427.2 for this substrate, and must be recorded as such.
+
+## Testbed results, first pass (5 October; train fraction .40; `experiments/results/grok/`)
+
+| Arm | Held-out ≥ .99 at step | Final private / shared norm | Holographic degree; overlap–alignment corr. (last) |
+|---|---:|---|---|
+| G1 untied, pool 2 | 2,000 | 26.5 / 19.1 | .173; .08 |
+| G2 tied, pool 2 | 2,500 | 1.6 / 27.7 | .182; .02 |
+| G2 tied, pool 8 | 3,000 | 1.9 / 28.2 | .179; .10 |
+| G1 untied, pool 8 (operator stop after generalization) | 3,000 | 28.8 / 26.7 | .160; .29 |
+| G4 tied pool 8, λ_p/λ_s = 10 | 3,000 | 0.4 / 26.9 | .212; .05 |
+
+**Reading against the predictions:**
+- **§427.1:** pool 2 generalizes earlier than pool 8, in both the untied and tied variants. *Consistent.*
+- **§427.2 (overlap enables grokking):** every arm generalizes, and the tied arms are not earlier. *Not discriminated
+  at this training fraction.*
+- **§427.3 (asymmetric decay earlier):** G4 shows no change in timing, although its private norm collapses to .4.
+  *Not supported at this setting.*
+- **§428 (route overlap tracks update alignment after learning):** the strongest signal is G1 pool 8 (−.01 before,
+  +.29 after); the other arms are small. *Mixed.*
+
+**Status:**
+- The task is too easy at .40: the memorization lag is only 250–500 steps, so arms do not separate.
+- A harder pass (train fraction .25; G1/G2 pools 2 and 8, plus G4) is queued after the curie chain.
+- The remaining .40 arms (G3 head count; pool 32 tied and untied) are running.

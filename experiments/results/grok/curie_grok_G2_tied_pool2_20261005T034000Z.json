@@ -1,0 +1,234 @@
+{
+ "status": "completed",
+ "args": {
+  "tag": "curie_grok_G2_tied_pool2_20261005T034000Z",
+  "p": 97,
+  "train_frac": 0.4,
+  "steps": 20000,
+  "batch": 512,
+  "lr": 0.001,
+  "wd_private": 1.0,
+  "wd_shared": 1.0,
+  "payload": 32,
+  "depth": 2,
+  "heads": 4,
+  "pool": 2,
+  "tie_pools": true,
+  "route_credit": "linear",
+  "seed": 0,
+  "data_seed": 0,
+  "eval_every": 250,
+  "holo_every": 2500,
+  "holo_pairs": 32,
+  "post_steps": 2000,
+  "compiled": false
+ },
+ "parameters": 142081,
+ "private_parameters": 1040,
+ "shared_parameters": 141041,
+ "train_pairs": 3764,
+ "heldout_pairs": 5645,
+ "curve": [
+  {
+   "step": 250,
+   "train_loss": 4.344410419464111,
+   "train_acc": 0.039851222104144525,
+   "test_acc": 0.0012400354295837024,
+   "private_norm": 35.51095199584961,
+   "shared_norm": 35.799163818359375,
+   "wall_s": 38.27648414397845
+  },
+  {
+   "step": 500,
+   "train_loss": 3.995187282562256,
+   "train_acc": 0.0783740701381509,
+   "test_acc": 0.0,
+   "private_norm": 27.62384605407715,
+   "shared_norm": 30.139902114868164,
+   "wall_s": 75.87841335398844
+  },
+  {
+   "step": 750,
+   "train_loss": 3.8571486473083496,
+   "train_acc": 0.09325185972369819,
+   "test_acc": 0.0,
+   "private_norm": 21.55345344543457,
+   "shared_norm": 27.98543357849121,
+   "wall_s": 113.50714489095844
+  },
+  {
+   "step": 1000,
+   "train_loss": 3.7248618602752686,
+   "train_acc": 0.11158342189160468,
+   "test_acc": 0.0,
+   "private_norm": 16.97117042541504,
+   "shared_norm": 28.669784545898438,
+   "wall_s": 151.20768787601264
+  },
+  {
+   "step": 1250,
+   "train_loss": 3.6098389625549316,
+   "train_acc": 0.12247608926673752,
+   "test_acc": 0.0,
+   "private_norm": 13.589823722839355,
+   "shared_norm": 30.701839447021484,
+   "wall_s": 188.24762776197167
+  },
+  {
+   "step": 1500,
+   "train_loss": 3.4602530002593994,
+   "train_acc": 0.1532943676939426,
+   "test_acc": 0.0,
+   "private_norm": 10.94978141784668,
+   "shared_norm": 32.530391693115234,
+   "wall_s": 225.3212121599936
+  },
+  {
+   "step": 1750,
+   "train_loss": 3.220183849334717,
+   "train_acc": 0.21599362380446332,
+   "test_acc": 0.0001771479185119575,
+   "private_norm": 8.782590866088867,
+   "shared_norm": 33.857704162597656,
+   "wall_s": 262.29762830096297
+  },
+  {
+   "step": 2000,
+   "train_loss": 2.9123361110687256,
+   "train_acc": 0.3095111583421892,
+   "test_acc": 0.0010628875110717448,
+   "private_norm": 6.9302263259887695,
+   "shared_norm": 34.59382247924805,
+   "wall_s": 299.5786907330039
+  },
+  {
+   "step": 2250,
+   "train_loss": 0.879442572593689,
+   "train_acc": 0.8993092454835282,
+   "test_acc": 0.33427812223206377,
+   "private_norm": 5.298452854156494,
+   "shared_norm": 34.40122604370117,
+   "wall_s": 337.20730730996
+  },
+  {
+   "step": 2500,
+   "train_loss": 0.017021648585796356,
+   "train_acc": 1.0,
+   "test_acc": 0.9992914083259522,
+   "private_norm": 4.001744270324707,
+   "shared_norm": 32.63092041015625,
+   "wall_s": 374.704978455964
+  },
+  {
+   "step": 2750,
+   "train_loss": 0.012301540933549404,
+   "train_acc": 1.0,
+   "test_acc": 0.9989371124889282,
+   "private_norm": 3.0491816997528076,
+   "shared_norm": 31.496837615966797,
+   "wall_s": 415.61187138798414
+  },
+  {
+   "step": 3000,
+   "train_loss": 0.006437346339225769,
+   "train_acc": 1.0,
+   "test_acc": 0.999645704162976,
+   "private_norm": 2.3944039344787598,
+   "shared_norm": 30.518901824951172,
+   "wall_s": 452.72359408997
+  },
+  {
+   "step": 3250,
+   "train_loss": 0.0021049559582024813,
+   "train_acc": 1.0,
+   "test_acc": 1.0,
+   "private_norm": 1.9484127759933472,
+   "shared_norm": 29.24907112121582,
+   "wall_s": 490.29196295997826
+  },
+  {
+   "step": 3500,
+   "train_loss": 0.0027283227536827326,
+   "train_acc": 1.0,
+   "test_acc": 1.0,
+   "private_norm": 1.7153398990631104,
+   "shared_norm": 28.451438903808594,
+   "wall_s": 527.8590672090068
+  },
+  {
+   "step": 3750,
+   "train_loss": 0.006707475986331701,
+   "train_acc": 0.9997343251859724,
+   "test_acc": 0.999822852081488,
+   "private_norm": 1.6269474029541016,
+   "shared_norm": 28.05389404296875,
+   "wall_s": 565.071409999975
+  },
+  {
+   "step": 4000,
+   "train_loss": 0.00037012368557043374,
+   "train_acc": 1.0,
+   "test_acc": 1.0,
+   "private_norm": 1.5134062767028809,
+   "shared_norm": 27.040267944335938,
+   "wall_s": 602.368623204995
+  },
+  {
+   "step": 4250,
+   "train_loss": 0.00028378446586430073,
+   "train_acc": 1.0,
+   "test_acc": 1.0,
+   "private_norm": 1.5158939361572266,
+   "shared_norm": 27.22362518310547,
+   "wall_s": 639.4735600869753
+  },
+  {
+   "step": 4500,
+   "train_loss": 0.0012947057839483023,
+   "train_acc": 0.9994686503719448,
+   "test_acc": 0.999822852081488,
+   "private_norm": 1.5657302141189575,
+   "shared_norm": 27.701231002807617,
+   "wall_s": 676.6105158599676
+  }
+ ],
+ "holography": [
+  {
+   "step": 2500,
+   "degree": 0.1681952263777504,
+   "overlap_alignment_corr": 0.06381733649554626,
+   "mean_route_overlap": 0.5046291947364807,
+   "mean_alignment": 0.07809128549572668,
+   "pairs": 2016
+  },
+  {
+   "step": 4500,
+   "degree": 0.18217251366067602,
+   "overlap_alignment_corr": 0.024044164080945857,
+   "mean_route_overlap": 0.5086650252342224,
+   "mean_alignment": 0.07960817301707518,
+   "pairs": 2016
+  }
+ ],
+ "first_step_heldout_acc_ge": {
+  "0.5": 2500,
+  "0.9": 2500,
+  "0.99": 2500
+ },
+ "final": {
+  "train_acc": 0.9994686503719448,
+  "test_acc": 0.999822852081488
+ },
+ "evaluation": "deterministic races (highest score wins)",
+ "source_sha256": {
+  "experiments/grok/modadd_native.py": "6e3b106773357e06bc59bd40ce42101c7c2814d249cdd2aa4b52a6818ee67020",
+  "sleeping_machines/carried_episodes.py": "b56bee18bc4fd22d6b2440438fb52c141644c2eba0440c2c1ea6ac67483895ca",
+  "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4"
+ },
+ "hardware": {
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+  "torch": "2.14.1+cpu",
+  "threads": 1
+ },
+ "wall_s": 680.4721634250018
+}

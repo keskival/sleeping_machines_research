@@ -1,0 +1,2 @@
+# Grokking testbed, harder setting (train fraction .25; THEORY §§426-428): at .40 all arms generalize by step 2,000-3,000 with a short lag, so arms do not separate. Early stop 2,000 steps after .99.
+curie_grokhard_G4_tied_pool8_wdp10_20261005T130000Z experiments/grok/modadd_native.py --steps 30000 --depth 2 --seed 0 --train-frac 0.25 --heads 4 --payload 32 --pool 8 --tie-pools --wd-private 10 --wd-shared 1 --tag curie_grokhard_G4_tied_pool8_wdp10_20261005T130000Z
