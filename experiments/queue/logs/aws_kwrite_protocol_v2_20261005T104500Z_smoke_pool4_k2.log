@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/experiments/language_kwrite_protocol_v2.py", line 235, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/experiments/language_kwrite_protocol_v2.py", line 216, in main
+    base.main()
+    ~~~~~~~~~^^
+  File "/workspace/experiments/language_batched_benchmark.py", line 203, in main
+    rec = capture(lambda: step(traced)); ledger = merge([ledger, rec]) if ledger else rec; traced_chars += S * B
+  File "/workspace/experiments/language_kwrite_protocol_v2.py", line 124, in capture
+    raise ValueError(record['unsupported_floating_operators'])
+ValueError: {'aten.logsumexp.default': {'calls': 512, 'arithmetic_flops': 0, 'special_function_evaluations': 0, 'comparisons': 0, 'floating_input_elements': 262144, 'floating_output_elements': 65536, 'classification': 'UNSUPPORTED floating operator'}}

@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import subprocess
 import threading
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -67,6 +68,9 @@ def main():
                 record = json.loads(source.read_text())
                 if record.get('status') != 'completed':
                     raise ValueError('Predecessor did not complete: '+str(source))
+                for name, digest in required.get('source_sha256', {}).items():
+                    if record.get('source_sha256', {}).get(name) != digest:
+                        raise ValueError('Predecessor source mismatch: '+str(source))
                 for field in ('manifest_sha256', 'stage'):
                     if field in required and record.get(field) != required[field]:
                         raise ValueError('Predecessor binding mismatch: '+str(source))
@@ -113,7 +117,34 @@ def main():
                 save()
 
         def worker(slot, jobs):
-            for job in jobs:
+            pending = list(jobs)
+            admitted = {j['name'] for j in jobs}
+            loaded = set()
+            while pending or plan.get('accept_addenda', False):
+                if not pending:
+                    for extra in sorted((path.parent/'addenda').glob('*.json')):
+                        if str(extra) in loaded:
+                            continue
+                        packet = json.loads(extra.read_text())
+                        assert packet['host'] == plan['host']
+                        assert packet['parent_manifest_sha256'] == hashlib.sha256(path.read_bytes()).hexdigest()
+                        for candidate in packet.get('slots', {}).get(str(slot), []):
+                            assert candidate['name'] not in admitted
+                            candidate = dict(candidate)
+                            candidate['source_sha256'] = {**candidate['source_sha256'], str(extra): hashlib.sha256(extra.read_bytes()).hexdigest()}
+                            pending.append(candidate)
+                            admitted.add(candidate['name'])
+                        loaded.add(str(extra))
+                    if not pending:
+                        with mutex:
+                            state.setdefault('idle_slots', {})[str(slot)] = 'awaiting immutable addendum'
+                            save()
+                        time.sleep(30)
+                        continue
+                job = pending.pop(0)
+                with mutex:
+                    state.setdefault('idle_slots', {}).pop(str(slot), None)
+
                 try:
                     ready(job)
                 except Exception as error:

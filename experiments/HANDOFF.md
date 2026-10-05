@@ -2742,3 +2742,21 @@ innewdir. ReadnewREADMEforhypotheses/accounting/scope; wholefitresults will
 autopublish. Allten10Mcontrols, nativep64fourpass, sixprimate and MG30complete.
 Newprogram advances currentuserrequest whilekeeping larger-data controls
 active. No improvement/supremacy asserted beforecompletedmeasurements.
+
+AWS improvement repair16:05: v2 numericalcontractsPASSED (40947335pushed).
+Bothfullshape pool4smokes rejected unsupported aten.logsumexp.default during
+strict fittingworktrace. No longkwritefit admitted. Added separatev3 driver/
+manifest withstablelogsumexpformula2n arithmetic,n+r specials,n-r compares,
+and forward/backwardcoverage plus3x4ledgercontract. Oldv2sources untouched.
+WD3windowsmokeCOMPLETED; retainedexactsource/RSS1.5x predecessor.
+Newimmutablemanifest queue/aws_model_improvement_repair_20261005T161000Z,
+tmux aws_model_improvement_repair/_progress. Slot1p96samecheckpoint18000;
+slot2earlyCLSTMrestarted freshsame-settingsoutput _recovery_20261005T161000Z,
+thenoriginalCTF/DTFpair. OldCLSTMprovenance/stdout archivedinterrupted, no
+completedquality; accountedoperationaldiscard inearly_control_interruption.
+Slot3 v3contracts/smokes, WD.01, matchedpool4k1/k2, WD.1,capacitysmokefits.
+Scheduler nowaccepts source-boundimmutableaddenda sofreedslotscanbefilled
+withoutfurtherinterruptions. Boundsource/queuepacket beforeadmission; retains
+ordinarylock/3slots/RSSwatchdog/8GiBfloor. NewREADME records repair andmapping.
+The v2 contract auto-publication's pullfailedwhiletrackededitsweredirty; its
+commitwaspushedwithourstartupcommit. Keepthatmetadataerrorbesidepassedcontract.

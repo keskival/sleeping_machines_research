@@ -1,0 +1,39 @@
+{
+  "status": "interrupted_for_protocol_repair",
+  "captured_utc": "2026-10-05T16:04:46.012676+00:00",
+  "original_dense_provenance": "experiments/results/aws_20260929/aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z/provenance.json",
+  "original_dense_metadata": {
+    "run_tag": "aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z",
+    "script": "experiments/e64_lm_baselines.py",
+    "arguments": [
+      "--model",
+      "lstm",
+      "--D",
+      "90000000",
+      "--size",
+      "512",
+      "--passes",
+      "1.4",
+      "--dropout",
+      "0.1",
+      "--valid",
+      "200000",
+      "--lr",
+      "0.002",
+      "--warmup",
+      "500"
+    ],
+    "output_redirected": true,
+    "source_sha256": "5cdbe33462fb6d9f987600c62fc479187392fb1a89361fc37d2af488d905c53b",
+    "git_commit": "d1e25253c141e636d0b8f0ded57166b1eb9d7e12",
+    "limits": {
+      "MEM_CAP_KB": "24000000",
+      "MEM_CAP_RSS_KB": "6000000",
+      "MIN_AVAIL_MB": "8192",
+      "JOB_TIMEOUT_S": "64800"
+    },
+    "start_utc": "2026-10-05T15:58:03Z",
+    "status": "running"
+  },
+  "scope": "Early non-checkpointed C LSTM interrupted during v3 reservation transfer. Original source/settings retained for unique-output restart. Old stdout/provenance preserved; not a completed fit. Native checkpoint reused, with both transitions and discarded-work bounds retained."
+}
