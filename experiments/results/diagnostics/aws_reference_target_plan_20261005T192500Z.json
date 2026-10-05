@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "evidence": "standard-library protocol contracts; no model or public scoring",
+  "tests_passed": 9,
+  "captured_utc": "2026-10-05T19:54:17.154067+00:00",
+  "published_source": "experiments/references/modded_nanogpt_20250126_0bdd5ee9.txt",
+  "published_source_sha256": "62a81a281be714d90e183c95b6190643940626f4dd9a9ba37b02e6ed704118ab",
+  "source_sha256": {
+    "experiments/aws_reference_target_plan.py": "4d3f248d647da8c0262e1ee65ec51b1bfad41b967f2664d9c69f5b32a20da0ab"
+  },
+  "plans": {
+    "16": {
+      "targets": 10485760,
+      "reset_sequences": 40,
+      "execution_windows": 81920,
+      "first_target": 1,
+      "last_target": 10485760,
+      "required_tokens": 10485761,
+      "history": "Carry numerical state between execution chunks; reset at each rank sequence start and observed EOS"
+    },
+    "64": {
+      "targets": 10485760,
+      "reset_sequences": 40,
+      "execution_windows": 20480,
+      "first_target": 1,
+      "last_target": 10485760,
+      "required_tokens": 10485761,
+      "history": "Carry numerical state between execution chunks; reset at each rank sequence start and observed EOS"
+    },
+    "65537": {
+      "targets": 10485760,
+      "reset_sequences": 40,
+      "execution_windows": 20,
+      "first_target": 1,
+      "last_target": 10485760,
+      "required_tokens": 10485761,
+      "history": "Carry numerical state between execution chunks; reset at each rank sequence start and observed EOS"
+    },
+    "262144": {
+      "targets": 10485760,
+      "reset_sequences": 40,
+      "execution_windows": 5,
+      "first_target": 1,
+      "last_target": 10485760,
+      "required_tokens": 10485761,
+      "history": "Carry numerical state between execution chunks; reset at each rank sequence start and observed EOS"
+    },
+    "300000": {
+      "targets": 10485760,
+      "reset_sequences": 40,
+      "execution_windows": 5,
+      "first_target": 1,
+      "last_target": 10485760,
+      "required_tokens": 10485761,
+      "history": "Carry numerical state between execution chunks; reset at each rank sequence start and observed EOS"
+    }
+  }
+}
