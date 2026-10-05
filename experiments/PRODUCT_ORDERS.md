@@ -38,6 +38,14 @@ Fill the free slots now, in this order (each through run_safe.sh, with the usual
 
 The leaderboard items are the cheapest route to a public result. Idle slots are the largest current waste.
 
+**Strict Transformer matched-compute retries (5 Oct 11:00 UTC; investor-relevant, cheap): first free AWS slot.**
+- `queue/aws_language_10M_strictB_p64d4_3.8pass_20261005T110000Z.txt` (~2.5 h; target ≤ 102.7 TF against TF128x4 2.215).
+- `queue/aws_language_10M_strictA_p96d4_5.85pass_20261005T110000Z.txt` (~6 h; target ≤ 347 TF against TF128x4 1.996).
+
+Today's tuned-Transformer wins are 2–4% over the Transformers' budgets. These runs fit under them, and the traced work
+decides whether they qualify. A win upgrades deck slide 2 from "~equal compute" to "beats the validation-selected
+tuned Transformer at no more of its training compute".
+
 ## P0 — do these first (all hosts)
 
 | # | Deliverable | Host / queue | Pass criterion | Status |

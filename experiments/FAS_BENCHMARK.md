@@ -237,3 +237,11 @@ estimates for dense references), and inference work up to the decision at N.
   - R4's first attempt was lost to an operator error during the reorder (orphaned job stopped; no result written). It
     is rerun after R7.
   - R8 (timescales initialized from 1 to 1,000 s) started 09:45.
+- 5 Oct 10:45 UTC: **R8** (tied pool 8, timescales initialized from 1 to 1,000 s).
+  - **Long horizons survive training:** median learned base half-life ~24 s, p90 ~350 s, maximum ~650 s (R0/R1: ~8 s).
+  - Validation-clean NLL .947, better than tied R1's 1.032.
+  - **Detection does not improve:** test AUROC .573 at N = 256 and .717 at N = 512 (R0 .578 / .721).
+  - Conclusion: horizon is not the bottleneck by itself. A long-lived slot holding a blend of items does not show when
+    a *specific* item is late. The remaining gap to the identity-aware oracle (.755 at N = 256) is **per-item binding**.
+  - Next diagnostic: per-slot write purity against the oracle's item identities (diagnostic only; identities never enter
+    the model). Then original-write credit across truncated segments (BENCHMARK_WIN_NEXT_STEPS.md §2).
