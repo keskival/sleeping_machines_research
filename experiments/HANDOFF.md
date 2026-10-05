@@ -1,5 +1,22 @@
 # Session handoff — 2026-09-30
 
+**AWS exact public-scorer implementation —5 October20:00UTC:**
+`aws_reference_stream_score.py` executes exact40reset sequences/10,485,760
+targets with bounded token lookahead, target-weighted NLL, causal EOS and
+persistent state between execution chunks. Eleven stdlib scorer/selection
+checks PASSED; no public scoring. New immutable slot1numerical prerequisite
+`zy_aws_reference_score_contracts_20261005T200000Z.json` tests the actual same
+native_window on synthetic GPT-2IDs, observed EOS and chunk9/2, requiring
+NLL/state/RNG parity. Numerical execution PENDING,120s/700MB RSS/3GB VMS,
+one thread/8GiBfloor through run_safe; original fits/source pins intact.
+Public scorer requires completed benchmark selection, independent-seed/
+larger-data/work/CPU/protocol gates and selected checkpoint/data/source hashes.
+Prioritized model remains paired8Kcredit16 integrated temporal/sparse actual
+write-credit recipe and the reserved64Kdata stage reported by curie. AWS all
+three slot PIDs are live; no fourth job admitted. Remaining quality, useful
+bank capacity and scaling/public benchmark requirements remain active.
+Details: AWS_REFERENCE_TARGET_EXECUTION_20261005.md.
+
 **64K follow-up prepared:** guarded utility queue
 curie_data_growth_tokens_64k_utility_20261005_v1.txt waits on the live host lock
 in tmux curie_data_growth_64k_utility_20261005_v1 (600s diagnostic timeout,
