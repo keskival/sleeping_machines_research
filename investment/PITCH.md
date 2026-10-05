@@ -18,7 +18,10 @@ The research already has tangible positive results. On the completed single-seed
 the saved Transformer control with about 15.4 times less estimated fitting
 work. A larger model slightly beats the saved LSTM's quality but uses more work.
 A separate causal CPU pilot improves predictions through full-backbone online
-adaptation. These are early scoped results, not modern frontier or hardware
+adaptation. Against baselines retuned at our exact compute budgets (10 runs, selected
+by validation), the native model beats every tuned Transformer but loses to
+tuned small LSTMs by 0.04–0.06 bpc. Closing that local-modelling gap is the
+current language milestone. These are early scoped results, not modern frontier or hardware
 claims. The current report preserves their controls and limitations.
 
 The first commercial target is useful quality at lower total datacenter cost.

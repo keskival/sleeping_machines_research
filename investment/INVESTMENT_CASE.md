@@ -114,6 +114,10 @@ Three observations are particularly relevant to investment:
   writes unchanged, but 16 to 32 scored keys and about 1.65 times fitting work.
   These results establish progress and a capacity/activity distinction;
   total-resource leadership over the LSTM is still open.
+- **Tuned baselines at our budgets (5 October 2026).** Ten dense baselines retuned at the native compute budgets and
+  selected by validation: the native model beats every tuned Transformer (1.888 vs 1.996 bpc at about equal compute) and
+  loses to tuned LSTMs (1.888 vs 1.825 at ≤ 352 TF; 1.955 vs 1.915 at ≤ 107 TF). The LSTM's lead is local 2–4-character
+  modelling. Content taps, weight decay and learning-rate tuning are queued to close it.
 
 A separate integrated full-backbone online CPU experiment scores 3.1909 bpc
 with frozen weights versus 3.0957 with adaptation on 8,191 new development
