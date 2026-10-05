@@ -3324,3 +3324,11 @@ credit. Sharingchangesmaps/exposure, notselectedwritecount. Allscoredkeys,
 replay,readout,backward/AdamW chargedinCPUwall; targethardware efficiency
 notmeasured. Finalrecoveryartifactembeds validation-selectedmodel so both
 reportedqualityweights andexactcontinuationpublish. ReadpacketREADME.
+
+
+**AWS private-bank utility continuation prepared (20:50 UTC):** slot1 addendum
+zzzzzz_aws_private_bank_utility_20261005T205000Z.json requires both paired2K
+smokes, reconstructs exact source-bound private-bank checkpoints and reuses
+DEV NLL/partition/matched-RNG memory-message erasure checks. Reports U4/U16
+384/1536memory scalars,4/4selected writes,16/64scored keys per token alongside
+quality. Guarded240s/1.2GBRSS/5GBVMS/8GiBfloor; pending, no new worker.

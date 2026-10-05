@@ -66,3 +66,23 @@ source-bound checkpoints and measured throughput/RSS are required before
 64K admission. A quality loss is retained as a loss, not a reason to erase
 the smaller arm or silently tune the recipe. Full work must include the
 larger discovery bank and private optimizer work.
+
+## Paired selected-bank utility prepared
+
+The guarded `aws_private_bank_utility.py` wrapper reconstructs the exact new
+model, validates completed fit source/recipe binding, then reuses the existing
+selected-checkpoint utility implementation. It reproduces selected DEV NLL,
+checks single-token versus original partition parity and equal route RNG, and
+measures memory/message/both erasures plus the train-mean-feature context
+control. Output adds available memory scalars, selected writes and scored keys
+per token. U4 has384 memory scalars, four writes and16 scored keys; U16 has1536
+scalars, four writes and64 keys. These are capacity/activity counts, not total
+work or proof of predictive usefulness. Frozen erasure scope remains unchanged.
+
+Slot1 addendum `zzzzzz_aws_private_bank_utility_20261005T205000Z.json` follows
+both smokes and requires their completed source-bound results. One unique
+queue,240s timeout,1.2GBRSS/5GBVMS and scheduler8GiBfloor. Execution is pending.
+Next admission must use completed paired quality, actual future-credit logs,
+measured resource use and these utility results; a larger bank can lose and
+that loss stays in the record. Full fitting/inference work remains required
+for any efficiency comparison.
