@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**Typed-threshold learning derivation/primitive checked:** joint two-clock
+winner/time score sign(W)−T(r_true−r_false), threshold pullback−1/scale.
+Twenty stdlib closed-moment/finite-difference cases pass; categorical-only
+credit misses puretimingcost even for identical branchlosses. Theorynote
+ typed_threshold_joint_credit_20261005.md distinguishes stochastic threshold,
+factualpath derivatives, counterfactualsuffix and unitnormalized parameters.
+No integrated learning/quality claim; next contract actual predicate-suffix
+replay. ActiveFAS/language source closures unchanged.
+
+
 **Typed comparator interface implemented, diagnostic-only:** numericthreshold,
 categoricalmembership, Boolean and explicitmissing/unknown events; selected
 comparisons readonlyselectedfields. Comparison margins become competing
