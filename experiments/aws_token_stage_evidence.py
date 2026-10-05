@@ -118,7 +118,8 @@ def collect(root):
         row=stage_row(result,selection,work)
         row.update(context_gain=None,memory_erasure_cost=None,message_erasure_cost=None)
         utility_name=('curie_fixed_batch_tokens_8k_utility_20261005_v1' if tag.startswith('curie_fixed_batch_')
-                      else 'curie_data_growth_tokens_64k_utility_20261005_v1' if result['args']['payload']==16 else None)
+                      else 'curie_data_growth_tokens_64k_utility_20261005_v1' if result['args']['payload']==16
+                      else f"curie_data_growth_tokens_64k_p{result['args']['payload']}_utility_20261005_v1")
         if utility_name:
             utility_path=root/'experiments/results/diagnostics'/(utility_name+'.json')
             if utility_path.exists():

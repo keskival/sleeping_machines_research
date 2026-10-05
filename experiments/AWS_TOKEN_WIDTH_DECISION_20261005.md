@@ -2,7 +2,8 @@
 
 `aws_token_width_decision.py` compares the completed P16/P24 pair, optionally
 adding P32 after its own fit and selected-checkpoint utility complete. The
-current evidence has P16 only, so no wider member is selected or promoted.
+initial20:20receipt had P16 only and selected no wider member. The completed
+P16/P24pair now provisionally selects P24; the pending P32 cell is excluded.
 Every record is immutable input evidence captured by SHA256 in the decision.
 
 Same65,536admitted training tokens,131,056fitting presentations/two passes,
@@ -29,6 +30,17 @@ script nor its tests provide a scaling exponent or public Transformer win.
 Nine stdlib decision contracts pass, including different data/optimizer/
 history/cadence, missing utility, pending fits and negative context rejection.
 Synthetic P24fixtures test decision logic only and never enter research tables.
-The saved current receipt contains no P24/P32 quality prediction. Thirteen
+The saved current receipt contains no P24/P32 quality prediction. Fourteen
 stage-evidence checks also pass, with complete selection-cadence validation
 now required in the common quality/work reader.
+
+Completed pair: P24 selected8.033311 versus P16 8.099440, a0.066129NLL
+single-seed development accuracy gain at the same data/passes/cadence. P24
+has1.496051times the parameters and1.5times the stored memory scalars, with
+16scored keys/four selected writes still unchanged. Width changes vector
+processing cost; complete64Kwork is pending. Selected P24 context gain is
+0.252343NLL; memory/message erasure costs0.007313/0.022623. These frozen
+interventions are distinct from retrained controls. The current pair receipt
+is `results/diagnostics/aws_token_width_decision_20261005T202500Z.json`.
+The existing local continuation waits for P32 before actually admitting one
+selected-width seed7repeat. This reader changes no live job or admission order.
