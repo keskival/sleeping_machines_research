@@ -1,5 +1,21 @@
 # Session handoff — 2026-09-30
 
+**Backward engineering probe prepared and guarded:** measured58.25%backward
+CPU share motivates isolated ExplicitRotation autograd experiment, not a
+rotation-bottleneck claim. Forward expression and float64 clock trigonometry
+preserved; broadcast adjoints reduced before payload→angle casting. First-order
+only, higher derivatives explicitly refused. No pinned native/FAS source edits.
+Queue `curie_rotation_backward_probe_20261005_v1.txt` checks24 primitive cases,
+finite differences, selected64K/P24 integrated forward/state/forced-write risk,
+all gradients and AdamW update, then5 interleaved objective/backward timings.
+Compilation passed, numerical results pending. tmux
+`curie_rotation_followup_20261005_v1` waits FAS and unifiedfollowup sessions,
+9504MiB physical headroom, then600s/800MBRSS/8GiB reserve probe; existing
+P32/256K utility queue follows if parent result exists. No default kernel or
+fitting recipe promoted, no speed/FLOP/quality result invented. FASPID45309
+live at latestpoll, window1000/2512,~1.24GBRSS; revalidate runtime.
+
+
 **Prioritized integrated followups admitted:** tmux
 `curie_unified_followup_20261005_v1` waits the entire admitted FAS retry/seed8
 sequence, then9504MiB physical headroom. New typed P8D2 one-job queue runs
