@@ -52,6 +52,10 @@ unchanged (LSTM-512 val 1.769 vs best TF 1.950; test context effect 0.0000), so 
 - It runs first after P0-2 finishes (around 04:00 UTC), before taps3 and the native lr arms.
 - Results land in `experiments/results/language_stream/curie_lstm_valwin_*`. The AWS JSONs are untouched.
 
+**P0-7 FAS update (5 Oct 06:30):** identity-aware oracle bound .755 at N=256 / .913 at N=512, so the early range is
+discriminating and native (pool 2, .600/.742) recovers 39%/59% of it. Curie queues: pool2 seed 7 (replication), pool 8,
+pool 32 (per-item slots for 30 interleaved items), `curie_fas_native_p32d4_*_20261005T063500Z`.
+
 ## P1 — confirm and widen the wins
 
 | # | Deliverable | Pass criterion |

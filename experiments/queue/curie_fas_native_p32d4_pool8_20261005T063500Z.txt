@@ -1,0 +1,5 @@
+# FAS oracle follow-up (FAS_BENCHMARK.md 5 Oct 06:30): oracle .755 at N=256 vs native pool-2 .600, so the gap is de-interleaving.
+# 30 concurrent items need per-item slots: pool sweep 2 -> 8 -> 32 (>= items), same protocol as curie_fas_v1_native_p32d4_linear_seg128_t1024_e2.
+# Pool-32 training work grows with pool (linear credit computes all slots): check RSS/time with a short --max-windows smoke first.
+# Order on curie: after the taps/lr chain; pool2_s7 (replication) and pool8 first, then pool32. Report all four declared rules.
+curie_fas_native_p32d4_pool8_20261005T063500Z experiments/fas/native.py --data fas_v1_20261004 --compiled --payload 32 --depth 4 --heads 2 --route-credit linear --epochs 2 --lanes 64 --fit-runs 10000 --max-events 1100 --train-max-events 1024 --lr 0.003 --segment 128 --eval-runs 1000 --pool 8 --seed 6 --tag curie_fas_v1_native_p32d4_pool8_linear_seg128_t1024_e2_20261005T063500Z
