@@ -1,5 +1,24 @@
 # Findings log
 
+## P0-2 loss: native p128/d4 4-pass 1.907 bpc at 411 TF (pass criterion < 1.799 at ≤ 433 TF) — 5 October
+
+Run `curie_language_batched_10M_p128d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261004T194000Z`:
+- Model: 1.66M parameters, linear route credit, lr .004 cosine, seed 6.
+- Test bpc: 1.9068 (T256 windows) and 1.9161 (T128); dev 1.842. Fitting work 411 TF (traced, extrapolated); wall
+  time 4.3 h on curie.
+- **Loss** against LSTM-512 6-pass (1.799 at 433 TF) and against tuned LSTM-512 4.5-pass (1.826 at 324 TF).
+- It is also worse than native p96/d4 6-pass (1.888 at 352 TF). Width spent on fewer passes does not help.
+- Against Transformer-256×4 4-pass (1.908 at 889 TF) it is a tie at 0.46× the compute, not a win.
+
+Interpretation: consistent with the history-curve diagnosis (4 October). The gap is per-event local modelling, and
+width alone does not close it.
+
+Next levers, queued:
+- the taps3 content-tap arm (curie, running next);
+- parameter weight decay (AWS, §421);
+- native learning-rate arms (curie);
+- the capacity and recruitment program (note 155).
+
 ## The 10M LSTM lead is local modelling, not context: history curves and streaming — 4 October
 
 Evaluation only, same test interval text8[95M:96M]
