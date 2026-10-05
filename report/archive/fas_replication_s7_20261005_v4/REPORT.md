@@ -4537,16 +4537,3 @@ Variance-times-work pairs four-history DOUBLE projected raw variance with one-wi
 Eleven discarded updates: five traced, five exact untraced verifications and one serialized full recovery. Fixed FIT0..3 and adjacent unused FIT24..31 predictions saved for every arm; not IID, DEV or test. Inference traces/reconstruction/admission/verification/evaluation remain additional work. Total campaign FLOPs/traffic/energy unknown, not zero; measured step work is not the campaign total. Earlier negative content evidence retained.
 
 Theory136; 60.076s/362876KiB. Numerically admitted cost/variance tradeoff only. Temporal races, private sparse state/key-values and counterfactual learning retained. AWS corrected replay10M plus exact teachers/controls and other-host live-gate/calibrated language quality remain priority.
-
-## FAS native frozen-recipe replication
-
-**Replicated win against all six anonymous generic controls at256 events.** Completed native fitting seeds: 6, 7.
-
-| Native seed | AUROC N256 | Gap vs controls | AUROC N512 | Gap vs controls |
-| --- | --- | --- | --- | --- |
-| 6 | 0.599794 | +0.041126 | 0.742185 | +0.014952 |
-| 7 | 0.591049 | +0.032381 | 0.735964 | +0.008730 |
-
-Best generic controls: 0.558669 AUROC atN256 and 0.727233 atN512. The fixed P32/D4/H2/U2 recipe uses two passes over10,000 clean FIT runs; selection uses validation-clean NLL only. Test:2,000 clean and2,000 faulty runs. Seed7 score artifacts reproduce all18 aggregate/type/prefix AUROCs exactly and retain the selected weights.
-
-FAS v1 replication, not sealed v2 confirmation. Generic-control comparison uses saved references; stronger neural benchmarks are pending. FIFO/timing de-interleaving trained on hidden item identities remain oracle-assisted diagnostics, excluded here. Original seed6 has aggregate scores, not the new per-run artifact; paired multi-seed bootstrap cannot be reconstructed from those aggregates. Current frozen dependency hashes are checked; historical unrecorded dependency identity is not independently verified.

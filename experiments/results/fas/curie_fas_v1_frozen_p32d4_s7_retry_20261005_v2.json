@@ -1,0 +1,181 @@
+{
+  "status": "completed",
+  "args": {
+    "data": "fas_v1_20261004",
+    "tag": "curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 2,
+    "route_credit": "linear",
+    "compiled": true,
+    "epochs": 2,
+    "lanes": 64,
+    "fit_runs": 10000,
+    "max_events": 1100,
+    "train_max_events": 1024,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 7,
+    "eval_runs": 1000,
+    "trace_windows": 1,
+    "max_windows": 0,
+    "segment": 128
+  },
+  "parameters": 111456,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll": 1.940289914762131,
+      "val_clean_nll": 1.001073545066467,
+      "val_auroc": {
+        "32": {
+          "all": 0.500404,
+          "wear_and_tear": 0.4986409185803758,
+          "retry_delay": 0.5020249520153551
+        },
+        "64": {
+          "all": 0.516831,
+          "wear_and_tear": 0.5096409185803757,
+          "retry_delay": 0.5234414587332054
+        },
+        "128": {
+          "all": 0.554851,
+          "wear_and_tear": 0.5584780793319415,
+          "retry_delay": 0.5515163147792707
+        },
+        "256": {
+          "all": 0.606674,
+          "wear_and_tear": 0.6166743215031315,
+          "retry_delay": 0.5974798464491363
+        },
+        "512": {
+          "all": 0.733759,
+          "wear_and_tear": 0.6850563674321503,
+          "retry_delay": 0.7785355086372361
+        },
+        "1024": {
+          "all": 0.997129,
+          "wear_and_tear": 0.999125260960334,
+          "retry_delay": 0.9952936660268714
+        }
+      },
+      "epoch_s": 1447.546352898993
+    },
+    {
+      "epoch": 2,
+      "train_nll": 0.6034172144812501,
+      "val_clean_nll": 0.1718666730613807,
+      "val_auroc": {
+        "32": {
+          "all": 0.504368,
+          "wear_and_tear": 0.4991670146137787,
+          "retry_delay": 0.5091497120921306
+        },
+        "64": {
+          "all": 0.512811,
+          "wear_and_tear": 0.5048183716075156,
+          "retry_delay": 0.5201593090211133
+        },
+        "128": {
+          "all": 0.55824,
+          "wear_and_tear": 0.565098121085595,
+          "retry_delay": 0.5519347408829175
+        },
+        "256": {
+          "all": 0.619679,
+          "wear_and_tear": 0.6284321503131524,
+          "retry_delay": 0.6116314779270633
+        },
+        "512": {
+          "all": 0.735012,
+          "wear_and_tear": 0.681713987473904,
+          "retry_delay": 0.7840134357005758
+        },
+        "1024": {
+          "all": 0.993275,
+          "wear_and_tear": 0.9976137787056367,
+          "retry_delay": 0.9892859884836852
+        }
+      },
+      "epoch_s": 1345.6733514819643
+    }
+  ],
+  "selected_epoch": 2,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": 0.1741441842538236,
+  "test_auroc": {
+    "32": {
+      "all": 0.517766,
+      "wear_and_tear": 0.51525168756027,
+      "retry_delay": 0.5204735202492212
+    },
+    "64": {
+      "all": 0.52872175,
+      "wear_and_tear": 0.5269146576663453,
+      "retry_delay": 0.5306677050882659
+    },
+    "128": {
+      "all": 0.55565175,
+      "wear_and_tear": 0.5661133076181292,
+      "retry_delay": 0.5443862928348909
+    },
+    "256": {
+      "all": 0.591049,
+      "wear_and_tear": 0.5970284474445516,
+      "retry_delay": 0.5846100726895119
+    },
+    "512": {
+      "all": 0.73596375,
+      "wear_and_tear": 0.6935086788813887,
+      "retry_delay": 0.781681204569055
+    },
+    "1024": {
+      "all": 0.993824,
+      "wear_and_tear": 0.9966668273866924,
+      "retry_delay": 0.9907627206645898
+    }
+  },
+  "work": {
+    "fit_unit_special_flops_per_event_estimate": 737978.248046875,
+    "whole_fit_unit_special_flops_estimate": 15113794520000.0,
+    "fitting_events": 20480000,
+    "scope": "first window traced (eager), extrapolated per event"
+  },
+  "data_manifest_sha256": "20138ee677ad0dd512d6f81c91f2568423a31f96a8f72947e4acc489484b619e",
+  "source_sha256": {
+    "experiments/fas/native.py": "49084e5d2526087ea80f61e5a6db0f8bcfa1a6ad6d359444f49e96685d0b9d3a",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 2965.700253960036,
+  "selected_weights": "experiments/results/fas/checkpoints/curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2_selected.pt",
+  "selected_weights_sha256": "4a5297d4c6035ec974713a3151603c5597bbfe3260db5719d019568893b27523",
+  "replication": {
+    "control": "experiments/results/fas/curie_fas_v1_native_p32d4_linear_seg128_t1024_e2_20261004T231500Z.json",
+    "control_sha256": "b922cfeedab74af35e392d12936e7bf0f15b009b6d25fe5360acdedb4abe43b0",
+    "frozen_driver": "experiments/fas/native_v1_seed6_frozen_20261005.py",
+    "execution_source_sha256": {
+      "experiments/fas/native_v1_seed6_frozen_20261005.py": "49084e5d2526087ea80f61e5a6db0f8bcfa1a6ad6d359444f49e96685d0b9d3a",
+      "experiments/fas/native_v1_replication.py": "a9bf3ba5097ae8881387ed82906fe131c9416e97d39aa938b360702ae584eccc",
+      "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+      "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/carried_episodes.py": "b56bee18bc4fd22d6b2440438fb52c141644c2eba0440c2c1ea6ac67483895ca",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+      "experiments/fas/generate.py": "63adec5a7ab6b670fab614c62aa66b76c25f27d67f7005e7a48713c3805834ff"
+    },
+    "scores_path": "experiments/results/fas/curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2_scores.npz",
+    "scores_sha256": "b13b6050f53960151988ab598f8f81c529fa1fac02d18c6182b052008e34cb50",
+    "historical_dataset_bytes_identical": true,
+    "scope": "Exact recorded driver and recorded dependency hashes; additional current dependency hashes frozen. Historical unrecorded dependencies are not independently verified. FAS v1 replication, not sealed v2 confirmation. Original first-window extrapolated work convention retained."
+  }
+}

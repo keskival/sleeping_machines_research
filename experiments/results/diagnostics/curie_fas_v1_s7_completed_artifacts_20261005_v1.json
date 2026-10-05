@@ -1,0 +1,57 @@
+{
+  "status": "completed",
+  "result": "experiments/results/fas/curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2.json",
+  "result_sha256": "d1acea05b8049ffb51f578dc118ea74df715dc319d875aae25bec221a0d7cf80",
+  "seed": 7,
+  "selected_epoch": 2,
+  "score_shapes": {
+    "clean": [
+      2000,
+      6
+    ],
+    "faulty": [
+      2000,
+      6
+    ]
+  },
+  "source_identity": true,
+  "data_byte_identity": true,
+  "recipe_identity": true,
+  "selected_weight_sha256": "4a5297d4c6035ec974713a3151603c5597bbfe3260db5719d019568893b27523",
+  "scores_sha256": "b13b6050f53960151988ab598f8f81c529fa1fac02d18c6182b052008e34cb50",
+  "auroc_recomputed": {
+    "32": {
+      "all": 0.517766,
+      "wear_and_tear": 0.51525168756027,
+      "retry_delay": 0.5204735202492212
+    },
+    "64": {
+      "all": 0.52872175,
+      "wear_and_tear": 0.5269146576663453,
+      "retry_delay": 0.5306677050882659
+    },
+    "128": {
+      "all": 0.55565175,
+      "wear_and_tear": 0.5661133076181292,
+      "retry_delay": 0.5443862928348909
+    },
+    "256": {
+      "all": 0.591049,
+      "wear_and_tear": 0.5970284474445516,
+      "retry_delay": 0.5846100726895119
+    },
+    "512": {
+      "all": 0.73596375,
+      "wear_and_tear": 0.6935086788813887,
+      "retry_delay": 0.781681204569055
+    },
+    "1024": {
+      "all": 0.993824,
+      "wear_and_tear": 0.9966668273866924,
+      "retry_delay": 0.9907627206645898
+    }
+  },
+  "auroc_max_error": 0.0,
+  "scope": "Artifact-only verification; no model fit/inference. Dataset seed IDs and fault kinds are audit/evaluation metadata, never model inputs. Exact recorded driver/current frozen dependency closure; historical unrecorded dependency identity is not independently verified. FAS v1 native replication, not sealed v2 confirmation.",
+  "producer_sha256": "4ce1dfe07344a1cadbb305f2ece9bebc8fe67af22024a8321e2dd45f29550d70"
+}

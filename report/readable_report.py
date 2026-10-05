@@ -5371,6 +5371,7 @@ def blocks(M, tasks, ev):
     pages.extend(runpy.run_path(str(ROOT/'report/hardware_cost_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/native_language_batched_appendix.py'))['pages'](tasks['native_language_batched']))
     pages.extend(runpy.run_path(str(ROOT/'report/tokenized_language_development.py'))['pages']())
+    pages.extend(runpy.run_path(str(ROOT/'report/fas_native_replication.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/public_benchmarks_appendix.py'))['pages'](tasks['public_benchmarks']))
     pages.extend(runpy.run_path(str(ROOT/'report/current_dvs_appendix.py'))['pages'](tasks['current_dvs_appendix']))
     pages.extend(runpy.run_path(str(ROOT/'report/reception_evidence.py'))['pages'](tasks['reception_evidence']))

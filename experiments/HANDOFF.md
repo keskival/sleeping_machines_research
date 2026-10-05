@@ -1,5 +1,23 @@
 # Session handoff — 2026-09-30
 
+**FASseed7 completed and artifact-verified:** retryexit0; selectedepoch2 by
+validation-clean NLL. Test AUROC N2560.591049/N5120.73596375, versusseed6
+0.59979425/0.74218525 and bestsixanonymousgenericcontrols0.5586685/0.72723325.
+Replicatednative-seed win againstthose controls atN256, notstrong-neural or
+sealedv2confirmation. Exact18score/type/prefix metrics recomputed from
+2000clean×6/2000faulty×6 saved scores; data bytes, recipe, currentfrozen
+dependencyclosure and selectedweights hashes verified. Originalseed6 has
+aggregate scores only: pairedmulti-seedbootstrap notinvented.
+Artifact-only verifier importsno model and performsnofit/inference.
+README/report appendixevidence/PDF updated; sourcepage addedtofullrenderer.
+Publicationfas_replication_s7_20261005_v4 preservesall252previouspages and
+addsonepage, previousPDFarchived. Firstthreepublication attempts refused
+inheritedRUSAGEpeak; validreceipt usesprocessVmHWM render-phase74MB.
+Currentpriority: seed8 fullfitPID56629 runningaftercompletedtwo-windowsmoke;
+thenpriorguardedtyped/P32language/rotation/utility queue sequence. Revalidate
+runtimebeforeaction; frozenFASdependency files remainuntouched.
+
+
 **New completed AWS90M references published:** corrected collector previously
 stopped at the first completed arm and hardcodedTF256/LSTM512 labels. It now
 retains all completed90M arms with actual sizes. NewTF192D4:1.780187554bpc,
