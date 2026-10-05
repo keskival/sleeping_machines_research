@@ -62,3 +62,13 @@ def test_balance_penalty_range():
     from sleeping_machines.recruit_layer import balance_penalty
     uniform = [(0, torch.full((4, 2, 4), .25))]; collapsed = [(0, torch.tensor([1., 0, 0, 0]).expand(4, 2, 4))]
     assert abs(float(balance_penalty(uniform)) - 1) < 1e-6 and abs(float(balance_penalty(collapsed)) - 4) < 1e-6
+
+
+def test_stale_bias_neutral_at_zero_and_fills_slots_when_large():
+    model = _model(); stamps, marks = _data()
+    with torch.no_grad():
+        a, _, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True))
+        b, _, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True, stale_bias=0.))
+        _, st, _ = carried_logits(model, stamps, marks, deterministic=True, recruit=dict(eager=True, stale_bias=30.))
+    torch.testing.assert_close(a, b, rtol=0, atol=0)
+    assert sum(int(s.sum()) for s in st['seen']) == sum(s.numel() for s in st['seen'])

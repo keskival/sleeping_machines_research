@@ -16,7 +16,7 @@ from .compiled_episodes import _rotate, _transport
 
 def recruit_layer(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, query, key, key_read, clock_bias, control_w,
                   control_b, rate, frequency, input_w, output_w, gate_w, gate_b, gain, transport_rate, transport_frequency,
-                  linear_credit=False, write_credit=False, written_only=False, free_bias=0., temperature=1.):
+                  linear_credit=False, write_credit=False, written_only=False, free_bias=0., temperature=1., stale_bias=0.):
     n = x.shape[0]
     H, U, P = m.shape[1], m.shape[2], m.shape[3]
     total = H * P
@@ -29,15 +29,18 @@ def recruit_layer(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, que
     q_u = q[:, :, None, :].expand(n, H, U, P)
     read = key.view(H, U, P) + torch.einsum('hupq,lhuq->lhup', key_read.view(H, U, P, P), m)
     scores = ((q_u * read).sum(-1) / math.sqrt(P) + clock_bias.view(H, U)).clamp(-12, 12)
-    if free_bias:                                  # optimistic prior: a never-written slot overwrites nothing (§419)
-        scores = scores + free_bias * (~seen_d).to(scores.dtype)
-    if temperature != 1.:
-        scores = scores / temperature
     controls = torch.einsum('hucp,lhup->lhuc', control_w.view(H, U, 2, P), F.layer_norm(x_u, (P,))) + control_b.view(H, U, 2)
     forget = F.softplus(controls[..., 0]) / math.log(2)
     write = 2 * torch.sigmoid(controls[..., 1])
     age = (arrival[:, None, None] - prev).clamp_min(0)
     decay = torch.exp(-age.to(m.dtype)[..., None] * rate.view(H, U, P // 2) * forget[..., None]).repeat_interleave(2, -1)
+    if free_bias:                                  # optimistic prior: a never-written slot overwrites nothing (§419)
+        scores = scores + free_bias * (~seen_d).to(scores.dtype)
+    if stale_bias:                                 # graded optionality: content already lost to decay costs nothing to replace
+        staleness = torch.where(seen_d, 1 - decay.detach().mean(-1), torch.ones_like(scores))
+        scores = scores + stale_bias * staleness.to(scores.dtype)
+    if temperature != 1.:
+        scores = scores / temperature
     m_new = _rotate(m * decay, age[..., None] * frequency.view(H, U, P // 2))
     written = write[..., None] * torch.einsum('hupq,lhuq->lhup', input_w.view(H, U, P, P), x_u)
     m_new = m_new + written

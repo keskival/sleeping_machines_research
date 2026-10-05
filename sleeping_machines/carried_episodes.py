@@ -38,11 +38,11 @@ def carried_logits(model, stamps, marks, state=None, seed=0, step=None, route_cr
     if recruit is not None:
         from .recruit_layer import compiled_recruit_layer, recruit_layer
         base = recruit_layer if recruit.get('eager') else compiled_recruit_layer()
-        fb, tau = float(recruit.get('free_bias', 0.)), float(recruit.get('temperature', 1.))
+        fb, tau, sb = float(recruit.get('free_bias', 0.)), float(recruit.get('temperature', 1.)), float(recruit.get('stale_bias', 0.))
         pis = []
 
         def step(*args):
-            *out, pi = base(*args, free_bias=fb, temperature=tau)
+            *out, pi = base(*args, free_bias=fb, temperature=tau, stale_bias=sb)
             pis.append(pi)
             return tuple(out)
     step = step or compiled_step()

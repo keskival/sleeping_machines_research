@@ -164,6 +164,7 @@ def main():
     p.add_argument('--key-norm', type=float, default=1.)
     p.add_argument('--tie-pools', action='store_true', help='share each pool\'s maps (§398); removes the untrained-loser bias (§419)')
     p.add_argument('--free-bias', type=float, default=0., help='fixed score bonus for never-written slots (§419; training and evaluation)')
+    p.add_argument('--stale-bias', type=float, default=0., help='score bonus x (1 - retained fraction) of each slot; never-written = 1 (§419 graded optionality)')
     p.add_argument('--train-temperature', type=float, default=1., help='race score temperature in training only (§419 exposure)')
     p.add_argument('--balance', type=float, default=0., help='load-balance (importance) penalty weight on race probabilities (§419)')
     p.add_argument('--segment', type=int, default=0, help='truncated credit: segments of this many events with the '
@@ -192,8 +193,8 @@ def main():
     if a.tie_pools:
         from dvs_tied_pool_benchmark import tie_pools
         model = tie_pools(model)
-    recruit = (a.free_bias != 0. or a.train_temperature != 1. or a.balance > 0.)
-    rkw = dict(free_bias=a.free_bias, temperature=1., eager=not a.compiled) if a.segment else None   # evaluation at tau = 1
+    recruit = (a.free_bias != 0. or a.stale_bias != 0. or a.train_temperature != 1. or a.balance > 0.)
+    rkw = dict(free_bias=a.free_bias, stale_bias=a.stale_bias, temperature=1., eager=not a.compiled) if a.segment else None   # evaluation at tau = 1
     fn = batched_logits
     if a.compiled:
         from torch._dynamo import config as dynamo_config
@@ -236,7 +237,7 @@ def main():
                         model.train(); opt.zero_grad(set_to_none=True)
                         if recruit:
                             z, st, pis = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
-                                                        route_credit=rc, recruit=dict(free_bias=a.free_bias,
+                                                        route_credit=rc, recruit=dict(free_bias=a.free_bias, stale_bias=a.stale_bias,
                                                         temperature=a.train_temperature, eager=not a.compiled))
                         else:
                             z, st = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
@@ -293,6 +294,12 @@ def main():
             break
     model.load_state_dict(best[2])
     weights = ROOT / 'experiments/results/fas/checkpoints' / f'{a.tag}_selected.pt'
+    with torch.no_grad():                # §419 prediction: successful recruitment lengthens learned memory horizons
+        half_lives = {}
+        for depth, Lp in enumerate(model._stacked(0)):
+            hl = (math.log(2) / Lp['rate'].double().flatten()).numpy()
+            half_lives[depth] = dict(p10=float(np.quantile(hl, .1)), median=float(np.median(hl)), p90=float(np.quantile(hl, .9)),
+                                     max=float(hl.max()), unit='seconds of simulator time, at unit forget gate (base rate only)')
     weights.parent.mkdir(exist_ok=True); torch.save(model.state_dict(), weights)
     test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
     if a.max_windows:                   # smoke: a bounded test subset, labelled by status
@@ -301,7 +308,7 @@ def main():
     work = (ledger['arithmetic_flops'] + ledger['special_function_evaluations']) / traced_events if traced_events else None
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()), curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
-                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
+                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, memory_half_lives=half_lives, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
                   work=dict(fit_unit_special_flops_per_event_estimate=work,
                             whole_fit_unit_special_flops_estimate=work * events_seen if work else None,
                             fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'),

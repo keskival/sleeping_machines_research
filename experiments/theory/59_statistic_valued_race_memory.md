@@ -1744,6 +1744,22 @@ theory say about unused capacity at the end of training, and which knobs should 
 - This fixes the starting point only. Propositions 2 and 3 act throughout training, so it is tested beside the
   persistent knobs (arm R6).
 
+**Forgetting as a substitute for routing (user, 5 October).**
+- If old memories interfere strongly enough that training pushes toward forgetting, the model is routing into
+  occupied slots where they interfere, when a free slot would interfere with nothing.
+- This is the observable consequence of Proposition 2. The address cannot learn to avoid interference, because the
+  write consequence is missing from its credit. The only gradient-reachable remedy is to shorten every memory's horizon
+  (measured base half-lives of ~6 characters in language, §413).
+- **Prediction:** arms that recruit successfully also learn longer half-lives. Every FAS arm now reports
+  `memory_half_lives` (base rate at unit forget gate; the input-dependent forget gate scales it).
+
+**Graded optionality.**
+- A free slot exists only until it is written. In long streams every slot fills, and recruitment means replacing the
+  slot whose content is worth least.
+- A heavily decayed slot is almost free. The staleness bonus b·(1 − mean retained fraction since its last write)
+  generalizes the free-slot bonus; never-written slots count as fully stale.
+- It is part of the policy in training and evaluation. Arm R7: free bonus 3 plus staleness bonus 3.
+
 **Pre-declared sweep (FAS v1; p32/d4; carried-state segments of 128; 2 epochs; selection by validation-clean NLL;
 all four declared scoring rules):**
 
@@ -1756,6 +1772,7 @@ all four declared scoring rules):**
 | R4 | pool 8 tied, training temperature τ = 2 | exposure |
 | R5 | pool 8 tied, balance λ = .01 | exposure, slot-agnostic |
 | R6 | pool 8 tied, findable initialization (key_read = 0, orthogonal keys) | the starting point |
+| R7 | pool 8 tied, free bonus 3 + staleness bonus 3 | graded optionality |
 
 **Measurements:**
 - AUROC at N = 128, 256, 512.
