@@ -1,0 +1,78 @@
+{
+  "status": "completed",
+  "scope": "Read-only initial evidence audit, not a completed crossover or frontier study; no ML runtime.",
+  "study_status": "pending",
+  "protocol_path": "experiments/LANGUAGE_CROSSOVER_PLAN.md",
+  "protocol_sha256": "3276cc214b87c080b991f8a1e9ff36dde2c4c5f6be26fd37357788234a7b08f9",
+  "admission_source_sha256": "3b1e8b37eee6b8bf9ec069c402fedafb3a9e26cf02aebbf6b36c0f85c725a19e",
+  "groups": [
+    {
+      "group": "A",
+      "common_fitting_cap_flops": 352100000000000.0,
+      "status": "completed",
+      "completed": 6,
+      "required": 6,
+      "equal_compute_crossover_demonstrated": false,
+      "validation_selected_by_family": {
+        "tf": {
+          "result_path": "experiments/results/aws_20260929/aws_tuned_ref_10M_A_tf128L4_p5.4_lr0.003_s0_20261004T210000Z/tf_D10000000_s128_L4_p5.4_dr0.1_v_lr0.003_wu200.json",
+          "result_sha256": "2cd33053ad13655f4f0e0b43802428bc020caaf01447c330e053d38d6e1b045f",
+          "validation_bpc": 1.950146871935868,
+          "historical_test_bpc": 1.9962083471858978,
+          "whole_fit_flops": 346748697561279
+        },
+        "lstm": {
+          "result_path": "experiments/results/aws_20260929/aws_tuned_ref_10M_A_lstm512_p4.5_lr0.002_s0_20261004T210000Z/lstm_D10000000_s512_p4.5_dr0.1_v_lr0.002_wu200.json",
+          "result_sha256": "1e34de81d79aa26c5aa1168b200fa16f3ae61b69156f9c42e1d7ace11b6d4310",
+          "validation_bpc": 1.7687876898409005,
+          "historical_test_bpc": 1.8254978344709736,
+          "whole_fit_flops": 324444748109493
+        }
+      },
+      "held_out_context_alignment_required": true
+    },
+    {
+      "group": "B",
+      "common_fitting_cap_flops": 107200000000000.0,
+      "status": "completed",
+      "completed": 4,
+      "required": 4,
+      "equal_compute_crossover_demonstrated": false,
+      "validation_selected_by_family": {
+        "tf": {
+          "result_path": "experiments/results/aws_20260929/aws_tuned_ref_10M_B_tf128L4_p1.6_lr0.003_s0_20261004T210000Z/tf_D10000000_s128_L4_p1.6_dr0.1_v_lr0.003_wu200.json",
+          "result_sha256": "144d4f80d10318cb3dba91ced09a3db93d00238104999f5874597a55cfccfdd7",
+          "validation_bpc": 2.1912285904871682,
+          "historical_test_bpc": 2.2151703115938566,
+          "whole_fit_flops": 102746200324257
+        },
+        "lstm": {
+          "result_path": "experiments/results/aws_20260929/aws_tuned_ref_10M_B_lstm384_p2.5_lr0.003_s0_20261004T210000Z/lstm_D10000000_s384_p2.5_dr0.1_v_lr0.003_wu200.json",
+          "result_sha256": "b1e531ddc3b6acc7da494f21ad28601872b69f9f354f28001b51a3d759914683",
+          "validation_bpc": 1.851811467380133,
+          "historical_test_bpc": 1.915068517136743,
+          "whole_fit_flops": 105663061289259
+        }
+      },
+      "held_out_context_alignment_required": true
+    },
+    {
+      "group": "C",
+      "common_fitting_cap_flops": 960000000000000.0,
+      "status": "pending",
+      "completed": 0,
+      "required": 2,
+      "equal_compute_crossover_demonstrated": false
+    },
+    {
+      "group": "D",
+      "common_fitting_cap_flops": 2100000000000000.0,
+      "status": "pending",
+      "completed": 0,
+      "required": 2,
+      "equal_compute_crossover_demonstrated": false,
+      "missing_arm": "No D-optimized LSTM; eligible C result is only a lower-budget anchor."
+    }
+  ],
+  "numerical_runtime_calls": 0
+}

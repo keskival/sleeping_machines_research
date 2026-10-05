@@ -3,6 +3,35 @@
 Owner: the user. Product owner: curie agent, on the user's instruction. **Every agent (curie, AWS, local) reads this
 first and works these orders in priority order.** Definitions of win/loss: experiments/WIN_CRITERIA.md.
 
+**Latest user direction (5 October): Transformers at larger scale are the main
+opponent.** [LANGUAGE_CROSSOVER_PLAN.md](LANGUAGE_CROSSOVER_PLAN.md) defines the
+primary objective: locate a Transformer-leading language regime, then establish
+integrated event-model advantage at equal complete fitting compute and confirm
+at a reserved larger point. Reuse the pending 90M C controls and D Transformer
+arms; a D-optimized recurrent control is missing. Small-scale count/LSTM wins
+are diagnostic and intermediate evidence, not a gate to modern language work.
+The modern corpus/tokenizer, strong Transformer and GPU execution requirements
+in FRONTIER_COMPUTE_PROTOCOL.md now belong to the main path rather than P2.
+Preserve active jobs and enact this priority at safe owner boundaries. Finish
+near-complete primate and existing strict-budget comparisons. FAS v1's FIFO
+control beats native; further v1 sweeps are deferred unless already admitted or
+needed for one bounded transferable diagnosis. Historical orders below remain
+as the record; this paragraph governs new discretionary admission.
+
+**User-directed completion packet (5 October, review session):**
+[BENCHMARK_WIN_EXECUTION.md](BENCHMARK_WIN_EXECUTION.md) and
+`queue/benchmark_win_execution_20261005T111500Z.json` track retained next-step
+tasks, explicit deferrals, smoke/contract dependencies and completed results. Reuse
+the owner's strict A/B retries below; the packet adds matching budget-B seed7
+confirmation after a passed seed6 comparison. Before future k-write fits,
+read the source-frozen v2 repair: the old wrapper's traced optimizer windows
+use k1 while later windows use k2. Preserve old queues/results, check active
+owners, then use corrected v2 stages. Numerical v2 contracts remain unrun.
+FAS R8 is completed; its longer horizons did not close the early-detection gap.
+The bounded binding/credit diagnostic specification is in FAS_BINDING_DIAGNOSTIC.md;
+it is deferred behind the language scaling objective after the stronger FIFO result.
+This packet admits no worker and does not replace active scheduler manifests.
+
 ## What increases our valuation
 
 Investors buy three things, in this order:

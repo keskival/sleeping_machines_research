@@ -5,6 +5,14 @@ into falsifiable architecture comparisons. It is a development plan, not a
 completed frontier benchmark. Existing deferred AWS Transformer comparisons
 retain priority; later runs require a provisioned GPU host and the guarded queue.
 
+**Main research path, user direction 5 October:** this modern-language program
+is the primary contest against Transformers at scale. The
+[crossover plan](LANGUAGE_CROSSOVER_PLAN.md) connects existing 90M controls to
+budget/context bracketing and a confirmed event-model comparison in a
+Transformer-leading region. Beating small text8 LSTMs is not a prerequisite.
+Modern protocol and execution preparation proceed while existing references
+complete; no unprovisioned GPU run is implied.
+
 ## Representation and baseline gate
 
 The 27-character text8 [integrated receiver/KV experiments](INTEGRATED_LANGUAGE.md)

@@ -1,0 +1,2 @@
+# FAS reference smoke: actual full event-length and lane shape, two fitting windows; run before original fit and measure RSS.
+aws_fas_reference_smoke_lru_20261005T104500Z experiments/aws_benchmark.py --run-tag aws_fas_reference_smoke_lru_20261005T104500Z --script experiments/fas/dense.py -- --data fas_v1_20261004 --tag aws_fas_reference_smoke_lru_20261005T104500Z --model lru --d 128 --layers 2 --epochs 3 --lanes 16 --epochs 1 --fit-runs 32 --max-windows 2 --eval-runs 8

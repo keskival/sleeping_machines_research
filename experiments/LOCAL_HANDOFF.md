@@ -1,5 +1,76 @@
 # Local host: current research continuation
 
+## Main objective updated: Transformers at larger scale — 5 October 2026
+
+Latest user direction: small-scale counts/LSTM battles are secondary; find and
+beat a strong Transformer in a larger-data region where it leads, at equal
+complete fitting compute. LANGUAGE_CROSSOVER_PLAN.md connects existing 90M
+C/D queues to adaptive budget/context bracketing, modern language/GPU protocol
+preparation, three-seed confirmation and a reserved larger point. Small text8
+LSTM wins are not an admission gate. No crossover or frontier advantage is
+established. D lacks a budget-optimized recurrent arm; modern corpus/tokenizer
+and GPU execution/provisioning remain open. No core mechanism substitution.
+
+Owner commit d2cd7f43 appeared during preparation: FAS-v1 FIFO de-interleaver
+matches the oracle (.755/.913 at N256/N512), above native .600/.742. Preserve
+the old generic-control lead with this revision. Further v1 sweeps and the
+binding diagnosis are deferred behind language scaling except already admitted
+work. New k-write contracts/smokes stay prepared; full fits are conditional on
+one bounded transferable hypothesis rather than automatically launching all.
+
+Revised inventory queue/benchmark_win_execution_20261005T111500Z.json retains
+40 rows: 23 active requirements, 16 deferred, one historical R8 completion.
+It adds existing 90M D Transformer queues and the ongoing native p96 queue;
+it launches nothing and changes no active coordinator. The original inventory
+and dated snapshots remain intact. Execution checks distinguish deferrals and
+active prerequisites. Numerical contracts remain UNRUN on physical owners.
+
+Seven standard-library contract groups now pass, including explicit deferral
+and dependency handling. The source-bound initial crossover audit is
+results/diagnostics/language_crossover_initial_audit_20261005T111500Z.json:
+10M A/B validation-selected LSTMs lead; 90M C/D are pending. It does not infer
+a crossover from unequal-work saved references or count physical running state.
+
+## User-directed benchmark completion packet — 5 October 2026
+
+User: make sure all next-step items are done. BENCHMARK_WIN_EXECUTION.md plus
+queue/benchmark_win_execution_20261005T104500Z.json track 37 tasks, including
+source/queue bindings, smokes and prerequisites. Current completed evidence:
+two primate sessions plus newly published R8. Other required tasks remain
+incomplete; this is preparation, not benchmark success or physical admission.
+
+Found old language_kwrite_benchmark's traced windows execute ordinary k1
+optimizer steps while later compiled windows use k2. Prepared separate
+language_kwrite_protocol_v2.py and 7 guarded stages: integrated k1/base and
+k1/k2 eager/compiled all-gradient/padding/write-count contracts, then each
+actual-shape smoke and fit. All numerical contracts UNRUN. Full eager k-write
+step arithmetic traced; top-k comparison proxy separate, traffic/inference
+unmeasured. Old sources/queues untouched. Physical owner checks any active
+old run before using v2; keep its historical evidence and accounting warning.
+
+Five full-shape FAS reference smoke queues added before old reference fits.
+Reused curie owner's new strict A/B 3.8/5.85-pass retries instead of duplicate
+seed6 training. language_strict_budget.py prepares matching B seed7 after
+an actually winning, source-matching seed6 result and a smoke; work/window/
+finite-metric eligibility explicit. All admissions remain AWS/curie owner work.
+
+R8 result appeared during preparation: median base half-life 24s/p90~350s,
+AUROC .573 at N256, no material gain. Added required FAS_BINDING_DIAGNOSTIC.md:
+actual selected checkpoint, recorded-policy parity, TRAIN-only item/slot
+association conditioned on mark and detach-boundary coverage. Hidden item
+IDs are diagnostic only. Its inventory row remains owner preparation required.
+
+Six standard-library contract groups pass with zero Torch/NumPy imports:
+dispatch consistency; queues/running/argument/drift; frozen result/budget
+eligibility; recursive dependencies/cycle rejection; second-seed quality/work/
+target/source gate; all source pins plus
+physical-container refusal. Docker review lacks physical reservations/SSH;
+no ML invocation, training, profiling, host waiter or fourth slot was started.
+Priority integrated AWS p96/D4/H2/U2 four-pass 90M already running is preserved;
+strict retries, six-session primate, reference comparisons and targeted
+per-event tests follow owner orders. Depth/write utility/binding, trained
+sparse parity and physical economics remain gaps; no core substitution.
+
 ## IP protection funding case — 5 October 2026
 
 Founder confirms earlier patents are owned by his former employer; exclude them

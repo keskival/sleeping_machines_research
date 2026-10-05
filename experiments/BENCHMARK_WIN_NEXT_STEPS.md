@@ -3,8 +3,18 @@
 5 October 2026 · Decision memo from completed results · No new host admission.
 
 This plan supports PRODUCT_ORDERS.md; it does not cancel active jobs, alter
-frozen queues or change their owner order. Physical owners must inspect current
+frozen queues. The latest user direction changes future discretionary priority
+as specified below. Physical owners must inspect current
 slots, locks, memory and result files before admitting any run through run_safe.sh.
+
+**Strategic update:** [LANGUAGE_CROSSOVER_PLAN.md](LANGUAGE_CROSSOVER_PLAN.md)
+makes larger-data Transformer competition the main objective. Reuse the 90M
+controls, bracket the competitive region, then compare the integrated model at
+equal full fitting compute and confirm at a larger reserved point. Small-scale
+LSTM/count comparisons support diagnosis rather than setting the destination.
+Complete near-finished primate evidence and existing strict-budget retries;
+further broad small-scale sweeps have lower priority. The FAS correction below
+supersedes the original lead interpretation without deleting its evidence.
 
 ## 1. Complete the credible public comparison first
 
@@ -25,9 +35,21 @@ Reference checked 5 October:
 [official NeuroBench leaderboard](https://github.com/NeuroBench/neurobench/blob/main/leaderboard.rst).
 Existing queue: queue/aws_primate_admission_20261004T184500Z/manifest.json.
 
-## 2. Turn the industrial lead into a strong controlled result
+## 2. Industrial comparison: retain the result and revise its priority
 
-The first FAS native arm reaches .600 AUROC at 256 events versus the best tested
+**Later control, 5 October:** the route-aware FIFO de-interleaver reaches .755
+AUROC at 256 events and .913 at 512, matching the identity-aware oracle and
+beating native .600/.742. FAS v1 is not a home-field win against the strongest
+tested classical control. R8's longer horizons survive, but AUROC .573 at 256
+does not close the gap. Preserve the earlier results below as comparisons to
+the generic controls. Defer the five new reference fits, native replication
+and longer v1 sweeps behind the language scaling path, except already admitted
+jobs. One bounded TRAIN-only binding diagnostic can inform a transferable
+memory repair; its specification is FAS_BINDING_DIAGNOSTIC.md. Any v2 benchmark
+must challenge the structure-aware control before model training. See
+FAS_BENCHMARK.md for the result and protocol revision.
+
+The original comparison: the first FAS native arm reaches .600 AUROC at 256 events versus the then-best tested
 classical control's .559. Repeat that exact arm on seed 7 and complete the five
 AWS neural references before claiming a broader advantage. Report their actual
 training work and inference work together. The references are specified
@@ -38,7 +60,7 @@ external leaderboard or customer deployment.
 The next native mechanism test is existing R8 (long-timescale initialization).
 R0/R1/R3 use their slots but learn roughly 7–8-second half-lives. Typical
 item-own event gaps are about 29 seconds: a 7-second half-life retains only 6% of
-a write across that median gap. A 100-second half-life retains approximately82%.
+a write across that median gap. A 100-second half-life retains approximately 82%.
 This motivates testing retention and binding rather than simply adding slots.
 
 Read out clean-validation NLL, learned horizons, occupancy and declared primary
@@ -54,7 +76,12 @@ new configuration on development data; further tuning on these already inspected
 test scores needs a fresh held-out confirmation. Existing paths:
 FAS_BENCHMARK.md, AWS_FAS_REFERENCES.md and the curie recruitment/R8 queues.
 
-## 3. Close the language gap through a small controlled mechanism sequence
+## 3. Use small language tests to prepare the larger-scale contest
+
+The sequence below diagnoses a candidate recipe; it is not a requirement to
+beat a small-scale LSTM before scaling. Run corrected contracts/smokes first,
+then choose a bounded mechanism comparison only if it addresses a concrete
+scaling failure. Completed width/taps losses do not justify an expanding grid.
 
 At 10M, the native budget-B result is 1.955 BPC at 107.2 TF; tuned LSTM-384 is 1.915
 at approximately 106 TF. Budget A is 1.888 versus tuned LSTM-512's 1.826. Wider
@@ -66,8 +93,9 @@ Use already prepared weight-decay and learning-rate arms, followed by the
 k-winner contracts/smoke and matched k1/k2 mechanism comparison. Pool 2/k2 updates
 all slots: label it a dense-write diagnostic. Pool 4/k2 retains sparse writes and
 is the relevant integrated follow-up. Retain computational time, addressed
-state, separate keys/values and counterfactual route learning. Charge second
-arrivals, extra writes/deliveries, candidate discovery and learning work.
+state, separate keys/values and counterfactual route learning. Charge selected
+writes, any additional deliveries, candidate discovery and learning work. The
+prepared k-write variants keep one delivered value per head; they change writes.
 
 The pool 4 four-pass mechanism tests cost approximately twice the pool 2 fit;
 they do not qualify as budget-B wins just by beating 1.915. Promote only after

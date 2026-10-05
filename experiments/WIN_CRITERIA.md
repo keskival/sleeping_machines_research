@@ -6,6 +6,13 @@ strongest references by spending matched compute on our own models (more passes 
 terms once, for every agent and every document. State each win plainly as a win; state its scope once, next to it, not as
 a hedge in every sentence.
 
+**Primary objective, user direction 5 October:** the strategic target is a
+reproducible quality/work advantage over strong Transformers in larger-data
+language regimes where they lead, followed by a confirmed scaling trend.
+Small-scale LSTM/count wins still count within their declared scope; they do
+not establish frontier advantage. LANGUAGE_CROSSOVER_PLAN.md defines the
+equal-compute crossover study and the modern-protocol continuation.
+
 ## Win types
 
 | Win | Definition | Example wording |

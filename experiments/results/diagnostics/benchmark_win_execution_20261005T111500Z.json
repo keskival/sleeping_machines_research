@@ -1,0 +1,665 @@
+{
+  "status": "incomplete",
+  "completed": 2,
+  "required": 23,
+  "retained": 40,
+  "deferred": 16,
+  "historical_completed": 1,
+  "tasks": [
+    {
+      "id": "primate_indy_20160622_01",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_indy_20160622_01_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_indy_20160622_01_20261004T053500Z.json",
+      "status": "completed",
+      "blockers": [],
+      "disposition": "required",
+      "result_sha256": "79e6eff801d53f5e81be2963de6b9102c45846495451e4ff0fee27224ac9b322",
+      "metrics": {}
+    },
+    {
+      "id": "primate_indy_20160630_01",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_indy_20160630_01_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_indy_20160630_01_20261004T053500Z.json",
+      "status": "completed",
+      "blockers": [],
+      "disposition": "required",
+      "result_sha256": "d22beb84668a1d551079c5c1fe218826edd39524e463216a8a1d56e7cae23f27",
+      "metrics": {}
+    },
+    {
+      "id": "primate_loco_20170210_03",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_loco_20170210_03_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_loco_20170210_03_20261004T053500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "primate_loco_20170215_02",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_loco_20170215_02_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_loco_20170215_02_20261004T053500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "primate_loco_20170301_05",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_loco_20170301_05_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_loco_20170301_05_20261004T053500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "primate_indy_20170131_02",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_primate_r1_indy_20170131_02_20261004T053500Z.txt",
+      "result": "experiments/results/neurobench_primate/aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_indy_20170131_02_20261004T053500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "curie_fas_native_p32d4_pool2_s7_20261005T063500Z",
+      "owner": "curie",
+      "queue": "experiments/queue/curie_fas_native_p32d4_pool2_s7_20261005T063500Z.txt",
+      "result": "experiments/results/fas/curie_fas_v1_native_p32d4_pool2_s7_linear_seg128_t1024_e2_20261005T063500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "curie_fas_recruit_R8_pool8_tied_tau1000_20261005T033000Z",
+      "owner": "curie",
+      "queue": "experiments/queue/curie_fas_recruit_R8_pool8_tied_tau1000_20261005T033000Z.txt",
+      "result": "experiments/results/fas/curie_fas_v1_recruit_R8_pool8_tied_tau1000_e1_20261005T033000Z.json",
+      "status": "completed",
+      "blockers": [],
+      "disposition": "historical",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language.",
+      "result_sha256": "ed96ee3c616f42cd4d1d1e671e899c62176f12eb1e72378c8575d5e599fcf367",
+      "metrics": {
+        "test_auroc": {
+          "32": {
+            "all": 0.52039475,
+            "wear_and_tear": 0.5201865959498554,
+            "retry_delay": 0.5206188992731049
+          },
+          "64": {
+            "all": 0.51950875,
+            "wear_and_tear": 0.5198760848601736,
+            "retry_delay": 0.5191131879543095
+          },
+          "128": {
+            "all": 0.5415125,
+            "wear_and_tear": 0.552274831243973,
+            "retry_delay": 0.5299231568016615
+          },
+          "256": {
+            "all": 0.5727965,
+            "wear_and_tear": 0.5877497589199614,
+            "retry_delay": 0.5566941848390446
+          },
+          "512": {
+            "all": 0.71708725,
+            "wear_and_tear": 0.6763963355834137,
+            "retry_delay": 0.760904984423676
+          },
+          "1024": {
+            "all": 0.9759795,
+            "wear_and_tear": 0.9939720347155255,
+            "retry_delay": 0.9566043613707165
+          },
+          "rules": {
+            "type": {
+              "32": {
+                "all": 0.521772,
+                "wear_and_tear": 0.5173813886210222,
+                "retry_delay": 0.5265
+              },
+              "64": {
+                "all": 0.52104275,
+                "wear_and_tear": 0.5150192864030858,
+                "retry_delay": 0.5275290758047767
+              },
+              "128": {
+                "all": 0.5436515,
+                "wear_and_tear": 0.5530945033751206,
+                "retry_delay": 0.5334828660436137
+              },
+              "256": {
+                "all": 0.575455,
+                "wear_and_tear": 0.5831591128254581,
+                "retry_delay": 0.567158878504673
+              },
+              "512": {
+                "all": 0.73219075,
+                "wear_and_tear": 0.6848061716489875,
+                "retry_delay": 0.7832165109034268
+              },
+              "1024": {
+                "all": 0.990942,
+                "wear_and_tear": 0.9895708775313404,
+                "retry_delay": 0.9924184839044652
+              }
+            },
+            "gap": {
+              "32": {
+                "all": 0.515468,
+                "wear_and_tear": 0.5218876567020251,
+                "retry_delay": 0.508555036344756
+              },
+              "64": {
+                "all": 0.51325025,
+                "wear_and_tear": 0.5213317261330762,
+                "retry_delay": 0.5045477673935618
+              },
+              "128": {
+                "all": 0.5284065,
+                "wear_and_tear": 0.5355824493731919,
+                "retry_delay": 0.5206791277258567
+              },
+              "256": {
+                "all": 0.55664525,
+                "wear_and_tear": 0.5762965284474445,
+                "retry_delay": 0.5354839044652129
+              },
+              "512": {
+                "all": 0.664057,
+                "wear_and_tear": 0.6422299903567985,
+                "retry_delay": 0.687561266874351
+              },
+              "1024": {
+                "all": 0.88424475,
+                "wear_and_tear": 0.9669411764705882,
+                "retry_delay": 0.7951936656282451
+              }
+            },
+            "gap_window32_max": {
+              "32": {
+                "all": 0.515468,
+                "wear_and_tear": 0.5218876567020251,
+                "retry_delay": 0.508555036344756
+              },
+              "64": {
+                "all": 0.51003075,
+                "wear_and_tear": 0.5227994214079075,
+                "retry_delay": 0.4962808930425753
+              },
+              "128": {
+                "all": 0.51274225,
+                "wear_and_tear": 0.5278948891031823,
+                "retry_delay": 0.4964252336448598
+              },
+              "256": {
+                "all": 0.523786,
+                "wear_and_tear": 0.5444416586306654,
+                "retry_delay": 0.5015430944963655
+              },
+              "512": {
+                "all": 0.592632,
+                "wear_and_tear": 0.6268539054966249,
+                "retry_delay": 0.5557803738317757
+              },
+              "1024": {
+                "all": 0.82708,
+                "wear_and_tear": 0.9621571841851495,
+                "retry_delay": 0.6816230529595015
+              }
+            }
+          }
+        },
+        "memory_half_lives": {
+          "0": {
+            "p10": 1.0548079307389044,
+            "median": 23.89633180502693,
+            "p90": 381.7592568527335,
+            "max": 660.2981060173112,
+            "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+          },
+          "1": {
+            "p10": 0.9327942092563553,
+            "median": 25.766589812939316,
+            "p90": 367.22802082962835,
+            "max": 650.3175459081006,
+            "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+          },
+          "2": {
+            "p10": 0.9272155986098999,
+            "median": 24.27631723615059,
+            "p90": 325.8798608098572,
+            "max": 613.4692448927844,
+            "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+          },
+          "3": {
+            "p10": 1.117631278925427,
+            "median": 22.138050301358987,
+            "p90": 352.7790364636202,
+            "max": 619.6958273194709,
+            "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+          }
+        }
+      }
+    },
+    {
+      "id": "curie_language_native_lr0.003_10M_p96d4_6pass_20261005T000500Z",
+      "owner": "curie",
+      "queue": "experiments/queue/curie_language_native_lr0.003_10M_p96d4_6pass_20261005T000500Z.txt",
+      "result": "experiments/results/language_batched/curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr0.003_cmp_s6_20261005T000500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "curie_language_native_lr0.006_10M_p96d4_6pass_20261005T000500Z",
+      "owner": "curie",
+      "queue": "experiments/queue/curie_language_native_lr0.006_10M_p96d4_6pass_20261005T000500Z.txt",
+      "result": "experiments/results/language_batched/curie_language_batched_10M_p96d4_pool2_linear_6pass_l64_lr0.006_cmp_s6_20261005T000500Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_fas_v1_lru_d128L2_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_lru_d128L2_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_lru_d128L2_20261004T224000Z/aws_fas_v1_lru_d128L2_e3_s0_20261004T224000Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z",
+        "aws_fas_reference_smoke_lru_20261005T104500Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_v1_lstm_d128L2_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_lstm_d128L2_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_lstm_d128L2_20261004T224000Z/aws_fas_v1_lstm_d128L2_e3_s0_20261004T224000Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z",
+        "aws_fas_reference_smoke_lstm_20261005T104500Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_v1_mamba_d128L2_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_mamba_d128L2_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_mamba_d128L2_20261004T224000Z/aws_fas_v1_mamba_d128L2_e3_s0_20261004T224000Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z",
+        "aws_fas_reference_smoke_mamba_20261005T104500Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_v1_s5t_d128L2_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_s5t_d128L2_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_s5t_d128L2_20261004T224000Z/aws_fas_v1_s5t_d128L2_e3_s0_20261004T224000Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z",
+        "aws_fas_reference_smoke_s5t_20261005T104500Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_v1_transformer_d128L2_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_transformer_d128L2_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_transformer_d128L2_20261004T224000Z/aws_fas_v1_transformer_d128L2_e3_s0_20261004T224000Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z",
+        "aws_fas_reference_smoke_transformer_20261005T104500Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_language_10M_wd0.01_p64d4_4pass_20261005T040000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_language_10M_wd0.01_p64d4_4pass_20261005T040000Z.txt",
+      "result": "experiments/results/language_batched/aws_language_batched_10M_p64d4_pool2_linear_4pass_wd0.01_l64_lr004_cmp_s6_20261005T040000Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_language_10M_wd0.1_p64d4_4pass_20261005T040000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_language_10M_wd0.1_p64d4_4pass_20261005T040000Z.txt",
+      "result": "experiments/results/language_batched/aws_language_batched_10M_p64d4_pool2_linear_4pass_wd0.1_l64_lr004_cmp_s6_20261005T040000Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_contracts",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_contracts.txt",
+      "result": "experiments/results/diagnostics/aws_kwrite_protocol_v2_20261005T104500Z_contracts.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 1800
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool2_k2",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool2_k2.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool2_k2.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts"
+      ],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 1800
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_fit_pool2_k2",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool2_k2.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool2_k2.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts",
+        "smoke_pool2_k2"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Contracts/smokes first; select one bounded transferable mechanism comparison rather than admit all full small-scale fits.",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 18000
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k1",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k1.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k1.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts"
+      ],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 1800
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k1",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k1.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k1.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts",
+        "smoke_pool4_k1"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Contracts/smokes first; select one bounded transferable mechanism comparison rather than admit all full small-scale fits.",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 18000
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k2",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k2.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_smoke_pool4_k2.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts"
+      ],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 1800
+      }
+    },
+    {
+      "id": "aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k2",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_kwrite_protocol_v2_20261005T104500Z/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k2.txt",
+      "result": "experiments/results/language_batched/aws_kwrite_protocol_v2_20261005T104500Z_fit_pool4_k2.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "contracts",
+        "smoke_pool4_k2"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Contracts/smokes first; select one bounded transferable mechanism comparison rather than admit all full small-scale fits.",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 3500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 18000
+      }
+    },
+    {
+      "id": "aws_native_strict_tfB_20261005T104500Z_smoke",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_native_strict_tfB_20261005T104500Z/aws_native_strict_tfB_20261005T104500Z_smoke.txt",
+      "result": "experiments/results/language_batched/aws_native_strict_tfB_20261005T104500Z_smoke.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 2500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 1800
+      }
+    },
+    {
+      "id": "aws_native_strict_tfB_20261005T104500Z_seed7",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_native_strict_tfB_20261005T104500Z/aws_native_strict_tfB_20261005T104500Z_seed7.txt",
+      "result": "experiments/results/language_batched/aws_native_strict_tfB_20261005T104500Z_seed7.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "smoke",
+        "aws_language_10M_strictB_p64d4_3.8pass_20261005T110000Z"
+      ],
+      "disposition": "required",
+      "source_drift": [],
+      "guards": {
+        "MIN_AVAIL_MB": 8192,
+        "MEM_CAP_RSS_KB": 2500000,
+        "MEM_CAP_KB": 8000000,
+        "JOB_TIMEOUT_S": 18000
+      }
+    },
+    {
+      "id": "90M_C_aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z/provenance.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "90M_C_aws_tuned_ref_90M_C_tf192L4_p0.8_lr0.002_s0_20261004T210000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_tuned_ref_90M_C_tf192L4_p0.8_lr0.002_s0_20261004T210000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_tuned_ref_90M_C_tf192L4_p0.8_lr0.002_s0_20261004T210000Z/provenance.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_fas_reference_smoke_lru_20261005T104500Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_reference_smoke_lru_20261005T104500Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_reference_smoke_lru_20261005T104500Z/aws_fas_reference_smoke_lru_20261005T104500Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_reference_smoke_lstm_20261005T104500Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_reference_smoke_lstm_20261005T104500Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_reference_smoke_lstm_20261005T104500Z/aws_fas_reference_smoke_lstm_20261005T104500Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_reference_smoke_mamba_20261005T104500Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_reference_smoke_mamba_20261005T104500Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_reference_smoke_mamba_20261005T104500Z/aws_fas_reference_smoke_mamba_20261005T104500Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_reference_smoke_s5t_20261005T104500Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_reference_smoke_s5t_20261005T104500Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_reference_smoke_s5t_20261005T104500Z/aws_fas_reference_smoke_s5t_20261005T104500Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_reference_smoke_transformer_20261005T104500Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_reference_smoke_transformer_20261005T104500Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_reference_smoke_transformer_20261005T104500Z/aws_fas_reference_smoke_transformer_20261005T104500Z.json",
+      "status": "prerequisites_pending",
+      "blockers": [
+        "aws_fas_v1_data_20261004T224000Z"
+      ],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_fas_v1_data_20261004T224000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_fas_v1_data_20261004T224000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_fas_v1_data_20261004T224000Z/provenance.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+    },
+    {
+      "id": "aws_language_10M_strictA_p96d4_5.85pass_20261005T110000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_language_10M_strictA_p96d4_5.85pass_20261005T110000Z.txt",
+      "result": "experiments/results/language_batched/aws_language_batched_10M_p96d4_pool2_linear_5.85pass_l64_lr004_cmp_s6_strictA_20261005T110000Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_language_10M_strictB_p64d4_3.8pass_20261005T110000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_language_10M_strictB_p64d4_3.8pass_20261005T110000Z.txt",
+      "result": "experiments/results/language_batched/aws_language_batched_10M_p64d4_pool2_linear_3.8pass_l64_lr004_cmp_s6_strictB_20261005T110000Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "fas_binding_r8",
+      "owner": "curie",
+      "queue": null,
+      "result": "experiments/results/diagnostics/curie_fas_binding_r8_20261005T104500Z.json",
+      "status": "owner_preparation_required",
+      "blockers": [],
+      "disposition": "deferred",
+      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language.",
+      "specification": "experiments/FAS_BINDING_DIAGNOSTIC.md"
+    },
+    {
+      "id": "90M_D_aws_tuned_ref_90M_D_tf192L4_p1.75_lr0.002_s0_20261004T210000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_tuned_ref_90M_D_tf192L4_p1.75_lr0.002_s0_20261004T210000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_tuned_ref_90M_D_tf192L4_p1.75_lr0.002_s0_20261004T210000Z/provenance.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "90M_D_aws_tuned_ref_90M_D_tf256L4_p1_lr0.001_s0_20261004T210000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_tuned_ref_90M_D_tf256L4_p1_lr0.001_s0_20261004T210000Z.txt",
+      "result": "experiments/results/aws_20260929/aws_tuned_ref_90M_D_tf256L4_p1_lr0.001_s0_20261004T210000Z/provenance.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    },
+    {
+      "id": "aws_language_90M_r4_p96d4_4pass_linear_20261004T193000Z",
+      "owner": "AWS",
+      "queue": "experiments/queue/aws_language_90M_r4_p96d4_4pass_linear_20261004T193000Z.txt",
+      "result": "experiments/results/language_batched/aws_language_batched_90M_r4_p96d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z.json",
+      "status": "not_completed",
+      "blockers": [],
+      "disposition": "required"
+    }
+  ],
+  "physical_host_inspected": false,
+  "numerical_runtime_calls": 0,
+  "scope": "Active execution checklist only; deferred/historical rows remain visible. Completion does not establish the research objective or a benchmark win.",
+  "manifest_sha256": "9c3f82fe67168c2724cf7a542f3b98d2dd6adaf6e5e41bb88669936ad3a1e8ec"
+}
