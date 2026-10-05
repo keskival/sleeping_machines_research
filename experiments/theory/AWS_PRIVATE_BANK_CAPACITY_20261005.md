@@ -104,3 +104,15 @@ Two one-job replay queues follow smokes/utility in slot1 addendum
 the completed8K trace437s/ordinary45s measurement with a shorter2K fit and
 P24/larger private bank;1.2GBRSS/5GBVMS and8GiBfloor remain enforced.
 Execution is pending; no estimated work is inserted in report cells.
+
+## Completed-pair interpretation contract
+
+`aws_private_bank_comparison.compare` combines actual raw/selection/work/utility
+records. It rejects pending or absent work, mismatched data/settings/source,
+wrong bank recipes and incomplete exact-checkpoint parity. It reports selected
+DEV quality as a paired single-seed win/loss/tie and complete fit/inference
+work ratios in common units. A Pareto win additionally requires both work
+ratios at most one. State capacity, scored keys and selected writes remain
+separate ratios. No scaling queue is admitted by this reader. Eighteen policy,
+admission and comparison tests pass; synthetic metadata fixtures test refusal
+rules only and are never research evidence. Numerical bank results are pending.
