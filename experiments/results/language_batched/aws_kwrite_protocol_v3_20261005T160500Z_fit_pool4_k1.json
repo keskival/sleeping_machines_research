@@ -1,0 +1,1838 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "aws_kwrite_protocol_v3_20261005T160500Z_fit_pool4_k1",
+    "fit": 10000000,
+    "test": 1000000,
+    "dev": 1000000,
+    "segment": 128,
+    "lanes": 64,
+    "passes": 4.0,
+    "lr": 0.004,
+    "clip": 1.0,
+    "payload": 64,
+    "depth": 4,
+    "heads": 2,
+    "pool": 4,
+    "seed": 6,
+    "eval_every": 0,
+    "max_windows": 0,
+    "trace_windows": 2,
+    "skip_init_from": 0,
+    "skip_gate_bias": -4.0,
+    "cosine": true,
+    "eval_segment": 256,
+    "compiled": true,
+    "route_credit": "linear",
+    "tie_pools": false,
+    "tau_max": 0.0,
+    "checkpoint_every": 0,
+    "resume": false
+  },
+  "parameters": 689787,
+  "source_sha256": {
+    "experiments/aws_coarse_native.py": "7ccd7fafe81eaf4138492184eafdd565bfd433a77adaa4d5756d5bcf33f7f23b",
+    "experiments/dvs_batched_benchmark.py": "16e30945607fc514ae1854def295c2cc588963b3cf43580aeefd00632b7cf031",
+    "experiments/dvs_batched_large_benchmark.py": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+    "experiments/dvs_batched_le_benchmark.py": "1128844698a98014d9b6cf00291a9560295965e5983f434ce56ac40e461df15f",
+    "experiments/dvs_batched_reg_benchmark.py": "06e3534281caea0d37a2faf2de7911df904d29513334c665757bb676ffdb0e16",
+    "experiments/dvs_clock_calibrated_benchmark.py": "25fddc4beadd4052d74a458bf1b11707131049af01a996cfaf1a4cf3723ee89e",
+    "experiments/dvs_local_expectation_benchmark.py": "69dac4a86eb6afc8629f30a0b3594abbf6fce58ea50338f4aa5fa6108086d65a",
+    "experiments/dvs_native_benchmark.py": "7d96e2ab4653bd036c565db7ef8ac33153e6afd8ebb34f3bc1ed3c6254b8d8a3",
+    "experiments/dvs_tied_pool_benchmark.py": "c84f9846351f817b2b5dab73c3755d6eeaef57907d179a2bafe2c30f62c6a2ae",
+    "experiments/e120_shared_tasks.py": "40049870698d79fff8afbfb5446a91fd3b4596c9ac973938ceefac2dcf24be26",
+    "experiments/e14_depth.py": "1bdbd1eb771f78224c32bf36f3f7a02be965cc315efb99eb2718cabcfbdf4e72",
+    "experiments/e17_market.py": "0426e9bef3f4baa6be717cd58ab17cdd66106c57c1810ac153885f5ccd23e756",
+    "experiments/e27_veto.py": "7a1920a0cfe4c672e66dd12538f4d77ab1e877db127ffc67d071921cf81bdf78",
+    "experiments/e28_routing.py": "2994303e959379583b4d5b8d2ecb816de7a54f00c22bcb3abac51e6e13c02e66",
+    "experiments/e35_free.py": "9fe1be79bef5b202327300e21a37c7ff9e8ed8b7e68af6ed9db43a25bc9acebd",
+    "experiments/e42_when.py": "86c407e3b3e7855bf8bc3af82965d932087b8fe267c4f743a6c8b9e24658243e",
+    "experiments/e61_race_attention.py": "15d253d3c2c6ed0f4f0c16fbe7426794259c923d117f7e3245d9cfb64ef069a8",
+    "experiments/e6_hidden.py": "ef5a4d51af4573af8e4afe38fc74915a2d8a9880133f71e4f31921eae4feca33",
+    "experiments/integrated_language_protocol.py": "bfe4fb180d735f9f0c624d6ba732abec608663e98a66e08863f587ebf22eb19c",
+    "experiments/language_batched_benchmark.py": "e43bc4be9ac519c81cd139e8dc2cd1aae21efc1d7f5856a50721923f68f4f995",
+    "experiments/parallel_event_language.py": "5962f8acf22c8a8fcbc58e6cf4b0ddb3347ae635b53d27675ddffee734406fc3",
+    "experiments/parallel_head_accumulated_language.py": "8c88254ee1b2d2a19d90190679054f57f0aa9e68d6350afac18e2112a08e3c5f",
+    "experiments/parallel_head_gradient_accumulation.py": "cad04a5287e0cbce04a01180594eff4e0e613784d988e9f63aa8b8ee8673f815",
+    "experiments/parallel_head_race_language_screen.py": "c596df906c1741f66de487fee8894e95315d74d26b90a9e6628915de1dac2d16",
+    "experiments/race_language_contracts.py": "80bba2683f45b116f3b9ce798e80e4d8a3148f0e138d7aec9bf467d41fb17a5f",
+    "experiments/race_language_screen.py": "3308aca20b4cf64f70550a03ae7763361e823800ba22f449d127210c65141cec",
+    "experiments/sparse_language_contracts.py": "b64ea885625907efa85e1faf1443b696f92869c5c6f679a89afaeeb71236e417",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/batched_addressed_fit.py": "db22bc8594c40e86955dd4be79121240586c105feb2eaae12e28d5e08092e246",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_query.py": "43dccd3a40a82f980e74eb8a5e58d05a2bd8a6dc1f2dc37b626b9c219a951ee5",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/evidence_memory.py": "f4548b16d6f9ec03db5543c579221ec368074894766b4368a66e1a479ed1497a",
+    "sleeping_machines/factorized_race.py": "5bbfdf41ea63770a2394dde6e39fbe4b94b79dbab95c863f6413480ae3aa5568",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/language_memory.py": "20cc1f3b2549c1997264d75410b37afe70148f46b587fc985c6210ed2e1b0300",
+    "sleeping_machines/native_stream_language.py": "e344b6f3d421800d08c15cbbd8c67a4b7fd04d7d281669514c2d7690f2a1cfd9",
+    "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/race_language.py": "70081a66f23f5d2db9dd6351645a91a9534562f98e8b414a64071ec60650760a",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/selective_stream_language.py": "0b78ff0fe2d4d81ad3ca97475414c6b5bc7afec791cafd673839664a29347207",
+    "sleeping_machines/sim.py": "c68910dd05316d099dae95adc03d298b71f3768cfbcb75579006804c0300a3f2",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "experiments/language_kwrite_protocol_v3.py": "c87391e5525c33ef19b5d13dbe53faeb12f6637b7ba4befcca7275ec811cc1dd"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "device": "cpu",
+    "threads": 1
+  },
+  "protocol": {
+    "fit": [
+      0,
+      10000000
+    ],
+    "dev": [
+      90000000,
+      91000000
+    ],
+    "test": [
+      95000000,
+      96000000
+    ],
+    "segment": 128,
+    "lanes": 64,
+    "state": "reset per segment",
+    "credit": "whole segment (exact BPTT within it)",
+    "race": "factorized law; shared per-step noise across lanes; per-window seed",
+    "evaluation": "E64 windows of S, stride S/2, second half scored after the first window",
+    "selection": "final weights (no development selection)",
+    "schedule": "cosine annealing over all windows",
+    "route_credit": "factorized race plus linearized local-expectation score credit pi_i g.(v_i - v_bar)",
+    "kernels": "compiled layer steps (torch.compile/inductor, contract-tested against the batched path)",
+    "write_policy": "identical k-write policy for traced updates, training and evaluation"
+  },
+  "curve": [],
+  "fitting_chars": 39993344,
+  "windows": 4882,
+  "train_chars_per_s": 5526.186707149101,
+  "work": {
+    "fit_unit_special_flops_per_char_estimate": 4374412.111816406,
+    "whole_fit_unit_special_flops_estimate": 174947368385640.0,
+    "scope": "Full eager k-write forward/loss/backward/clip/Adam traced on first windows; extrapolated over fit. Additional top-k selection and state movement are not physical runtime/traffic measurements. Inference work not established.",
+    "traces": [
+      {
+        "arithmetic_flops": 35707981732,
+        "special_function_evaluations": 127202288,
+        "formula_coverage_complete": true,
+        "unsupported_floating_operators": {},
+        "operators": {
+          "profiler._record_function_enter_new.default": {
+            "calls": 2,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "profiler._record_function_exit._RecordFunction": {
+            "calls": 2,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.stack.default": {
+            "calls": 4211,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 45308372,
+            "floating_output_elements": 45308372,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.softplus.default": {
+            "calls": 1796,
+            "arithmetic_flops": 608256,
+            "special_function_evaluations": 608256,
+            "comparisons": 304128,
+            "floating_input_elements": 304128,
+            "floating_output_elements": 304128,
+            "classification": "softplus exp/log formula"
+          },
+          "aten.add.Tensor": {
+            "calls": 40603,
+            "arithmetic_flops": 377561542,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 720080779,
+            "floating_output_elements": 377561542,
+            "classification": "elementwise arithmetic"
+          },
+          "aten._to_copy.default": {
+            "calls": 15877,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 45860224,
+            "floating_output_elements": 45860224,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.lift_fresh.default": {
+            "calls": 8629,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 229748,
+            "floating_output_elements": 229748,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.max.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "reduction comparisons"
+          },
+          "aten._local_scalar_dense.default": {
+            "calls": 1399,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 373,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.zeros.default": {
+            "calls": 529,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 151360,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.select.int": {
+            "calls": 11944,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 116818688,
+            "floating_output_elements": 28076128,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.copy_.default": {
+            "calls": 232,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1204224,
+            "floating_output_elements": 602112,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gt.Scalar": {
+            "calls": 2429,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 605568,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.unsqueeze.default": {
+            "calls": 26878,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 198275008,
+            "floating_output_elements": 198275008,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.t.default": {
+            "calls": 4352,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 51552256,
+            "floating_output_elements": 51552256,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.mm.default": {
+            "calls": 2304,
+            "arithmetic_flops": 3984588800,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 42663936,
+            "floating_output_elements": 22904832,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.max.dim": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 40960,
+            "floating_input_elements": 81920,
+            "floating_output_elements": 40960,
+            "classification": "reduction comparisons"
+          },
+          "aten.maximum.default": {
+            "calls": 128,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 8192,
+            "floating_input_elements": 16384,
+            "floating_output_elements": 8192,
+            "classification": "comparison/sign selection"
+          },
+          "aten.where.self": {
+            "calls": 8789,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 78531606,
+            "floating_output_elements": 59110272,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.slice.Tensor": {
+            "calls": 1536,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 12582912,
+            "floating_output_elements": 6291456,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.sub.Tensor": {
+            "calls": 5120,
+            "arithmetic_flops": 12009472,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23560192,
+            "floating_output_elements": 12009472,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.clamp_min.default": {
+            "calls": 1792,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 344064,
+            "floating_input_elements": 344064,
+            "floating_output_elements": 344064,
+            "classification": "comparison/sign selection"
+          },
+          "aten.neg.default": {
+            "calls": 9466,
+            "arithmetic_flops": 23182080,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23182080,
+            "floating_output_elements": 23182080,
+            "classification": "scalar sign arithmetic"
+          },
+          "aten.mul.Tensor": {
+            "calls": 55669,
+            "arithmetic_flops": 544620545,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 903060865,
+            "floating_output_elements": 544620545,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.exp.default": {
+            "calls": 2816,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 11534336,
+            "comparisons": 0,
+            "floating_input_elements": 11534336,
+            "floating_output_elements": 11534336,
+            "classification": "special function"
+          },
+          "aten.detach.default": {
+            "calls": 10703,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 76822140,
+            "floating_output_elements": 76822140,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.expand.default": {
+            "calls": 4352,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23855104,
+            "floating_output_elements": 89128960,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.clone.default": {
+            "calls": 2304,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 38797312,
+            "floating_output_elements": 38797312,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.view.default": {
+            "calls": 53246,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 879410560,
+            "floating_output_elements": 879410560,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.unbind.int": {
+            "calls": 1792,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.cos.default": {
+            "calls": 3584,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 22020096,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "special function"
+          },
+          "aten.sin.default": {
+            "calls": 3584,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 22020096,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "special function"
+          },
+          "aten.cat.default": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 5242880,
+            "floating_output_elements": 5242880,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.addmm.default": {
+            "calls": 256,
+            "arithmetic_flops": 326328320,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4656512,
+            "floating_output_elements": 1269760,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.sigmoid.default": {
+            "calls": 1152,
+            "arithmetic_flops": 36175872,
+            "special_function_evaluations": 18087936,
+            "comparisons": 0,
+            "floating_input_elements": 18087936,
+            "floating_output_elements": 18087936,
+            "classification": "sigmoid: exp + add + reciprocal"
+          },
+          "aten.native_layer_norm.default": {
+            "calls": 1664,
+            "arithmetic_flops": 272146432,
+            "special_function_evaluations": 565248,
+            "comparisons": 0,
+            "floating_input_elements": 38797312,
+            "floating_output_elements": 39927808,
+            "classification": "fused layer norm conventional formula"
+          },
+          "aten.empty.memory_format": {
+            "calls": 1024,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 4096,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.exponential_.default": {
+            "calls": 1024,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4096,
+            "floating_output_elements": 4096,
+            "classification": "RNG generation (additional unquantified cost)"
+          },
+          "aten.permute.default": {
+            "calls": 30712,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 799801344,
+            "floating_output_elements": 799801344,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.bmm.default": {
+            "calls": 9212,
+            "arithmetic_flops": 29175578624,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 471597056,
+            "floating_output_elements": 235798528,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.sum.dim_IntList": {
+            "calls": 17522,
+            "arithmetic_flops": 186235648,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 212644224,
+            "floating_output_elements": 26408576,
+            "classification": "reduction additions and optional division"
+          },
+          "aten.div.Tensor": {
+            "calls": 4980,
+            "arithmetic_flops": 2262651,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2528891,
+            "floating_output_elements": 2262651,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.clamp.default": {
+            "calls": 513,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 262145,
+            "floating_input_elements": 262145,
+            "floating_output_elements": 262145,
+            "classification": "comparison/sign selection"
+          },
+          "aten._unsafe_view.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 16777216,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gelu.default": {
+            "calls": 512,
+            "arithmetic_flops": 83886080,
+            "special_function_evaluations": 16777216,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 16777216,
+            "classification": "GELU erf formula"
+          },
+          "aten.min.dim": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 65536,
+            "classification": "reduction comparisons"
+          },
+          "aten.logsumexp.default": {
+            "calls": 512,
+            "arithmetic_flops": 524288,
+            "special_function_evaluations": 327680,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 65536,
+            "classification": "stable logsumexp: max/subtract/exp/sum/log/add; shape estimate"
+          },
+          "aten.aminmax.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.scatter_.value": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.bitwise_and.Tensor": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.gather.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 4194304,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.squeeze.dim": {
+            "calls": 19303,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 193509184,
+            "floating_output_elements": 193509184,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._softmax.default": {
+            "calls": 512,
+            "arithmetic_flops": 720896,
+            "special_function_evaluations": 262144,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 262144,
+            "classification": "stable softmax arithmetic + exp + max"
+          },
+          "aten.bitwise_or.Tensor": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.eq.Scalar": {
+            "calls": 128,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.zeros_like.default": {
+            "calls": 872,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1600758,
+            "floating_output_elements": 1600758,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._log_softmax.default": {
+            "calls": 1,
+            "arithmetic_flops": 655360,
+            "special_function_evaluations": 229376,
+            "comparisons": 212992,
+            "floating_input_elements": 221184,
+            "floating_output_elements": 221184,
+            "classification": "stable log-softmax arithmetic + exp/log + max"
+          },
+          "aten.nll_loss_forward.default": {
+            "calls": 1,
+            "arithmetic_flops": 16384,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 221184,
+            "floating_output_elements": 2,
+            "classification": "NLL selection/reduction upper scalar count"
+          },
+          "aten.ones_like.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 1,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.nll_loss_backward.default": {
+            "calls": 1,
+            "arithmetic_flops": 16384,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 221186,
+            "floating_output_elements": 221184,
+            "classification": "NLL selection/reduction upper scalar count"
+          },
+          "aten._log_softmax_backward_data.default": {
+            "calls": 1,
+            "arithmetic_flops": 655360,
+            "special_function_evaluations": 221184,
+            "comparisons": 0,
+            "floating_input_elements": 442368,
+            "floating_output_elements": 221184,
+            "classification": "log-softmax backward"
+          },
+          "aten.scalar_tensor.default": {
+            "calls": 6358,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 6358,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.softplus_backward.default": {
+            "calls": 1796,
+            "arithmetic_flops": 912384,
+            "special_function_evaluations": 304128,
+            "comparisons": 304128,
+            "floating_input_elements": 608256,
+            "floating_output_elements": 304128,
+            "classification": "softplus derivative"
+          },
+          "aten.select_backward.default": {
+            "calls": 7550,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4996992,
+            "floating_output_elements": 10174208,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.new_zeros.default": {
+            "calls": 1151,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4235200,
+            "floating_output_elements": 16859008,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.scatter.src": {
+            "calls": 639,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 122688,
+            "floating_output_elements": 81792,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._softmax_backward_data.default": {
+            "calls": 512,
+            "arithmetic_flops": 983040,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 524288,
+            "floating_output_elements": 262144,
+            "classification": "softmax backward reduction"
+          },
+          "aten.scatter_add.default": {
+            "calls": 512,
+            "arithmetic_flops": 4194304,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 20971520,
+            "floating_output_elements": 16777216,
+            "classification": "source scatter additions"
+          },
+          "aten.sigmoid_backward.default": {
+            "calls": 1152,
+            "arithmetic_flops": 54263808,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 36175872,
+            "floating_output_elements": 18087936,
+            "classification": "sigmoid derivative"
+          },
+          "aten.transpose.int": {
+            "calls": 6140,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 163971072,
+            "floating_output_elements": 163971072,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gelu_backward.default": {
+            "calls": 512,
+            "arithmetic_flops": 184549376,
+            "special_function_evaluations": 33554432,
+            "comparisons": 0,
+            "floating_input_elements": 33554432,
+            "floating_output_elements": 16777216,
+            "classification": "GELU backward erf/exp formula"
+          },
+          "aten.native_layer_norm_backward.default": {
+            "calls": 1664,
+            "arithmetic_flops": 425639936,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 78725120,
+            "floating_output_elements": 38797312,
+            "classification": "fused layer norm backward conventional formula"
+          },
+          "aten.lt.Scalar": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.logical_and_.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.slice_backward.default": {
+            "calls": 254,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1040384,
+            "floating_output_elements": 2080768,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gt.Tensor": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16256,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.div.Scalar": {
+            "calls": 127,
+            "arithmetic_flops": 8128,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 8128,
+            "floating_output_elements": 8128,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.eq.Tensor": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16256,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.masked_fill.Scalar": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 8128,
+            "floating_output_elements": 8128,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.new_empty_strided.default": {
+            "calls": 168,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 593920,
+            "floating_output_elements": 593920,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._foreach_norm.Scalar": {
+            "calls": 1,
+            "arithmetic_flops": 1379202,
+            "special_function_evaluations": 372,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 372,
+            "classification": "foreach L2 norm squares/reductions"
+          },
+          "aten.linalg_vector_norm.default": {
+            "calls": 1,
+            "arithmetic_flops": 743,
+            "special_function_evaluations": 1,
+            "comparisons": 0,
+            "floating_input_elements": 372,
+            "floating_output_elements": 1,
+            "classification": "L2 norm squares/reduction/sqrt"
+          },
+          "aten.isnan.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.isinf.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.logical_or.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.reciprocal.default": {
+            "calls": 1,
+            "arithmetic_flops": 1,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 1,
+            "classification": "reciprocal division"
+          },
+          "aten._foreach_mul_.Tensor": {
+            "calls": 1,
+            "arithmetic_flops": 689787,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 689788,
+            "floating_output_elements": 0,
+            "classification": "foreach elementwise arithmetic"
+          },
+          "aten.add_.Tensor": {
+            "calls": 744,
+            "arithmetic_flops": 690159,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 690159,
+            "floating_output_elements": 690159,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.lerp_.Scalar": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1379574,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          },
+          "aten.mul_.Tensor": {
+            "calls": 372,
+            "arithmetic_flops": 689787,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 689787,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.addcmul_.default": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2069361,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          },
+          "aten.sqrt.default": {
+            "calls": 372,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 689787,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 689787,
+            "classification": "special function"
+          },
+          "aten.addcdiv_.default": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2069361,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          }
+        },
+        "exponential_random_draws": 4096
+      },
+      {
+        "arithmetic_flops": 35707981732,
+        "special_function_evaluations": 127202288,
+        "formula_coverage_complete": true,
+        "unsupported_floating_operators": {},
+        "operators": {
+          "profiler._record_function_enter_new.default": {
+            "calls": 2,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "profiler._record_function_exit._RecordFunction": {
+            "calls": 2,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.stack.default": {
+            "calls": 4211,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 45308372,
+            "floating_output_elements": 45308372,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.softplus.default": {
+            "calls": 1796,
+            "arithmetic_flops": 608256,
+            "special_function_evaluations": 608256,
+            "comparisons": 304128,
+            "floating_input_elements": 304128,
+            "floating_output_elements": 304128,
+            "classification": "softplus exp/log formula"
+          },
+          "aten.add.Tensor": {
+            "calls": 40603,
+            "arithmetic_flops": 377561542,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 720080779,
+            "floating_output_elements": 377561542,
+            "classification": "elementwise arithmetic"
+          },
+          "aten._to_copy.default": {
+            "calls": 15877,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 45860224,
+            "floating_output_elements": 45860224,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.lift_fresh.default": {
+            "calls": 8257,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 229376,
+            "floating_output_elements": 229376,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.max.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "reduction comparisons"
+          },
+          "aten._local_scalar_dense.default": {
+            "calls": 1399,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 373,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.zeros.default": {
+            "calls": 529,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 151360,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.select.int": {
+            "calls": 11944,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 116818688,
+            "floating_output_elements": 28076128,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.copy_.default": {
+            "calls": 232,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1204224,
+            "floating_output_elements": 602112,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gt.Scalar": {
+            "calls": 2429,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 605568,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.unsqueeze.default": {
+            "calls": 26878,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 198275008,
+            "floating_output_elements": 198275008,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.t.default": {
+            "calls": 4352,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 51552256,
+            "floating_output_elements": 51552256,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.mm.default": {
+            "calls": 2304,
+            "arithmetic_flops": 3984588800,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 42663936,
+            "floating_output_elements": 22904832,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.max.dim": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 40960,
+            "floating_input_elements": 81920,
+            "floating_output_elements": 40960,
+            "classification": "reduction comparisons"
+          },
+          "aten.maximum.default": {
+            "calls": 128,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 8192,
+            "floating_input_elements": 16384,
+            "floating_output_elements": 8192,
+            "classification": "comparison/sign selection"
+          },
+          "aten.where.self": {
+            "calls": 8789,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 78531606,
+            "floating_output_elements": 59110272,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.slice.Tensor": {
+            "calls": 1536,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 12582912,
+            "floating_output_elements": 6291456,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.sub.Tensor": {
+            "calls": 5120,
+            "arithmetic_flops": 12009472,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23560192,
+            "floating_output_elements": 12009472,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.clamp_min.default": {
+            "calls": 1792,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 344064,
+            "floating_input_elements": 344064,
+            "floating_output_elements": 344064,
+            "classification": "comparison/sign selection"
+          },
+          "aten.neg.default": {
+            "calls": 9466,
+            "arithmetic_flops": 23182080,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23182080,
+            "floating_output_elements": 23182080,
+            "classification": "scalar sign arithmetic"
+          },
+          "aten.mul.Tensor": {
+            "calls": 55669,
+            "arithmetic_flops": 544620545,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 903060865,
+            "floating_output_elements": 544620545,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.exp.default": {
+            "calls": 2816,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 11534336,
+            "comparisons": 0,
+            "floating_input_elements": 11534336,
+            "floating_output_elements": 11534336,
+            "classification": "special function"
+          },
+          "aten.detach.default": {
+            "calls": 10703,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 76822140,
+            "floating_output_elements": 76822140,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.expand.default": {
+            "calls": 4352,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 23855104,
+            "floating_output_elements": 89128960,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.clone.default": {
+            "calls": 2304,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 38797312,
+            "floating_output_elements": 38797312,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.view.default": {
+            "calls": 53246,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 879410560,
+            "floating_output_elements": 879410560,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.unbind.int": {
+            "calls": 1792,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.cos.default": {
+            "calls": 3584,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 22020096,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "special function"
+          },
+          "aten.sin.default": {
+            "calls": 3584,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 22020096,
+            "comparisons": 0,
+            "floating_input_elements": 22020096,
+            "floating_output_elements": 22020096,
+            "classification": "special function"
+          },
+          "aten.cat.default": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 5242880,
+            "floating_output_elements": 5242880,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.addmm.default": {
+            "calls": 256,
+            "arithmetic_flops": 326328320,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4656512,
+            "floating_output_elements": 1269760,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.sigmoid.default": {
+            "calls": 1152,
+            "arithmetic_flops": 36175872,
+            "special_function_evaluations": 18087936,
+            "comparisons": 0,
+            "floating_input_elements": 18087936,
+            "floating_output_elements": 18087936,
+            "classification": "sigmoid: exp + add + reciprocal"
+          },
+          "aten.native_layer_norm.default": {
+            "calls": 1664,
+            "arithmetic_flops": 272146432,
+            "special_function_evaluations": 565248,
+            "comparisons": 0,
+            "floating_input_elements": 38797312,
+            "floating_output_elements": 39927808,
+            "classification": "fused layer norm conventional formula"
+          },
+          "aten.empty.memory_format": {
+            "calls": 1024,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 4096,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.exponential_.default": {
+            "calls": 1024,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4096,
+            "floating_output_elements": 4096,
+            "classification": "RNG generation (additional unquantified cost)"
+          },
+          "aten.permute.default": {
+            "calls": 30712,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 799801344,
+            "floating_output_elements": 799801344,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.bmm.default": {
+            "calls": 9212,
+            "arithmetic_flops": 29175578624,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 471597056,
+            "floating_output_elements": 235798528,
+            "classification": "registered contraction (2 FLOPs/MAC)"
+          },
+          "aten.sum.dim_IntList": {
+            "calls": 17522,
+            "arithmetic_flops": 186235648,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 212644224,
+            "floating_output_elements": 26408576,
+            "classification": "reduction additions and optional division"
+          },
+          "aten.div.Tensor": {
+            "calls": 4980,
+            "arithmetic_flops": 2262651,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2528891,
+            "floating_output_elements": 2262651,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.clamp.default": {
+            "calls": 513,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 262145,
+            "floating_input_elements": 262145,
+            "floating_output_elements": 262145,
+            "classification": "comparison/sign selection"
+          },
+          "aten._unsafe_view.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 16777216,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gelu.default": {
+            "calls": 512,
+            "arithmetic_flops": 83886080,
+            "special_function_evaluations": 16777216,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 16777216,
+            "classification": "GELU erf formula"
+          },
+          "aten.min.dim": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 65536,
+            "classification": "reduction comparisons"
+          },
+          "aten.logsumexp.default": {
+            "calls": 512,
+            "arithmetic_flops": 524288,
+            "special_function_evaluations": 327680,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 65536,
+            "classification": "stable logsumexp: max/subtract/exp/sum/log/add; shape estimate"
+          },
+          "aten.aminmax.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.scatter_.value": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.bitwise_and.Tensor": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.gather.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16777216,
+            "floating_output_elements": 4194304,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.squeeze.dim": {
+            "calls": 19303,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 193509184,
+            "floating_output_elements": 193509184,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._softmax.default": {
+            "calls": 512,
+            "arithmetic_flops": 720896,
+            "special_function_evaluations": 262144,
+            "comparisons": 196608,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 262144,
+            "classification": "stable softmax arithmetic + exp + max"
+          },
+          "aten.bitwise_or.Tensor": {
+            "calls": 640,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.eq.Scalar": {
+            "calls": 128,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.zeros_like.default": {
+            "calls": 128,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 221184,
+            "floating_output_elements": 221184,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._log_softmax.default": {
+            "calls": 1,
+            "arithmetic_flops": 655360,
+            "special_function_evaluations": 229376,
+            "comparisons": 212992,
+            "floating_input_elements": 221184,
+            "floating_output_elements": 221184,
+            "classification": "stable log-softmax arithmetic + exp/log + max"
+          },
+          "aten.nll_loss_forward.default": {
+            "calls": 1,
+            "arithmetic_flops": 16384,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 221184,
+            "floating_output_elements": 2,
+            "classification": "NLL selection/reduction upper scalar count"
+          },
+          "aten.ones_like.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 1,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.nll_loss_backward.default": {
+            "calls": 1,
+            "arithmetic_flops": 16384,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 221186,
+            "floating_output_elements": 221184,
+            "classification": "NLL selection/reduction upper scalar count"
+          },
+          "aten._log_softmax_backward_data.default": {
+            "calls": 1,
+            "arithmetic_flops": 655360,
+            "special_function_evaluations": 221184,
+            "comparisons": 0,
+            "floating_input_elements": 442368,
+            "floating_output_elements": 221184,
+            "classification": "log-softmax backward"
+          },
+          "aten.scalar_tensor.default": {
+            "calls": 6358,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 6358,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.softplus_backward.default": {
+            "calls": 1796,
+            "arithmetic_flops": 912384,
+            "special_function_evaluations": 304128,
+            "comparisons": 304128,
+            "floating_input_elements": 608256,
+            "floating_output_elements": 304128,
+            "classification": "softplus derivative"
+          },
+          "aten.select_backward.default": {
+            "calls": 7550,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4996992,
+            "floating_output_elements": 10174208,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.new_zeros.default": {
+            "calls": 1151,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 4235200,
+            "floating_output_elements": 16859008,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.scatter.src": {
+            "calls": 639,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 122688,
+            "floating_output_elements": 81792,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._softmax_backward_data.default": {
+            "calls": 512,
+            "arithmetic_flops": 983040,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 524288,
+            "floating_output_elements": 262144,
+            "classification": "softmax backward reduction"
+          },
+          "aten.scatter_add.default": {
+            "calls": 512,
+            "arithmetic_flops": 4194304,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 20971520,
+            "floating_output_elements": 16777216,
+            "classification": "source scatter additions"
+          },
+          "aten.sigmoid_backward.default": {
+            "calls": 1152,
+            "arithmetic_flops": 54263808,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 36175872,
+            "floating_output_elements": 18087936,
+            "classification": "sigmoid derivative"
+          },
+          "aten.transpose.int": {
+            "calls": 6140,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 163971072,
+            "floating_output_elements": 163971072,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gelu_backward.default": {
+            "calls": 512,
+            "arithmetic_flops": 184549376,
+            "special_function_evaluations": 33554432,
+            "comparisons": 0,
+            "floating_input_elements": 33554432,
+            "floating_output_elements": 16777216,
+            "classification": "GELU backward erf/exp formula"
+          },
+          "aten.native_layer_norm_backward.default": {
+            "calls": 1664,
+            "arithmetic_flops": 425639936,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 78725120,
+            "floating_output_elements": 38797312,
+            "classification": "fused layer norm backward conventional formula"
+          },
+          "aten.lt.Scalar": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 262144,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.logical_and_.default": {
+            "calls": 512,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.slice_backward.default": {
+            "calls": 254,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1040384,
+            "floating_output_elements": 2080768,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.gt.Tensor": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16256,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.div.Scalar": {
+            "calls": 127,
+            "arithmetic_flops": 8128,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 8128,
+            "floating_output_elements": 8128,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.eq.Tensor": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 16256,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.masked_fill.Scalar": {
+            "calls": 127,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 8128,
+            "floating_output_elements": 8128,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.new_empty_strided.default": {
+            "calls": 168,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 593920,
+            "floating_output_elements": 593920,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten._foreach_norm.Scalar": {
+            "calls": 1,
+            "arithmetic_flops": 1379202,
+            "special_function_evaluations": 372,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 372,
+            "classification": "foreach L2 norm squares/reductions"
+          },
+          "aten.linalg_vector_norm.default": {
+            "calls": 1,
+            "arithmetic_flops": 743,
+            "special_function_evaluations": 1,
+            "comparisons": 0,
+            "floating_input_elements": 372,
+            "floating_output_elements": 1,
+            "classification": "L2 norm squares/reduction/sqrt"
+          },
+          "aten.isnan.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.isinf.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 0,
+            "classification": "data movement, indexing or control (excluded from FLOPs)"
+          },
+          "aten.logical_or.default": {
+            "calls": 1,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 0,
+            "floating_output_elements": 0,
+            "classification": "integer/control (excluded from FLOPs)"
+          },
+          "aten.reciprocal.default": {
+            "calls": 1,
+            "arithmetic_flops": 1,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1,
+            "floating_output_elements": 1,
+            "classification": "reciprocal division"
+          },
+          "aten._foreach_mul_.Tensor": {
+            "calls": 1,
+            "arithmetic_flops": 689787,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 689788,
+            "floating_output_elements": 0,
+            "classification": "foreach elementwise arithmetic"
+          },
+          "aten.add_.Tensor": {
+            "calls": 744,
+            "arithmetic_flops": 690159,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 690159,
+            "floating_output_elements": 690159,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.lerp_.Scalar": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 1379574,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          },
+          "aten.mul_.Tensor": {
+            "calls": 372,
+            "arithmetic_flops": 689787,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 689787,
+            "classification": "elementwise arithmetic"
+          },
+          "aten.addcmul_.default": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2069361,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          },
+          "aten.sqrt.default": {
+            "calls": 372,
+            "arithmetic_flops": 0,
+            "special_function_evaluations": 689787,
+            "comparisons": 0,
+            "floating_input_elements": 689787,
+            "floating_output_elements": 689787,
+            "classification": "special function"
+          },
+          "aten.addcdiv_.default": {
+            "calls": 372,
+            "arithmetic_flops": 2069361,
+            "special_function_evaluations": 0,
+            "comparisons": 0,
+            "floating_input_elements": 2069361,
+            "floating_output_elements": 689787,
+            "classification": "three scalar arithmetic operations"
+          }
+        },
+        "exponential_random_draws": 4096
+      }
+    ]
+  },
+  "dev_bpc": 1.8567800796684637,
+  "dev_targets": 999936,
+  "test_bpc": 1.9349538067900904,
+  "test_targets": 999936,
+  "eval_segment": 256,
+  "dev_bpc_eval_segment": 1.8566410644951141,
+  "test_bpc_eval_segment": 1.9345899276828262,
+  "test_targets_eval_segment": 999936,
+  "final_weights": "experiments/results/language_batched/checkpoints/aws_kwrite_protocol_v3_20261005T160500Z_fit_pool4_k1_final.pt",
+  "wall_s": 7776.835885033011,
+  "max_rss_kb": 2093324,
+  "write_k": 1,
+  "deliver_k": false,
+  "benchmark_eligible": true,
+  "stage": "fit_pool4_k1",
+  "manifest_sha256": "739a695f758f6ed11dadccdaab636c41a5eb15d0846f0417bfb70a45a1a58fc7"
+}
