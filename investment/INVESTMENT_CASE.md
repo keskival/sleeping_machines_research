@@ -1,5 +1,9 @@
 # Sleeping Machines: the investment case
 
+Sleeping Machines aims to be a **universal trainable computing substrate**: one composable architecture for language and reasoning, multimodal world models, embodiment, typed tabular data, synchronous samples, asynchronous events, anonymous interleaved process traces, token sequences, continual learning, communication, self-design and hardware.
+
+The ambition combines distinct design axes: **computation through sleeps and temporal races; globally clockless event-driven execution; learning in the same temporal, addressed and asynchronous substrate as inference; capacity beyond selected activity; and tunable work for small-data, low-resource and large-scale settings**. Data modality is a separate axis from each of these. Scaling advantages and economical intelligence from sensors to datacenters are targets to measure. See [the full vision](../VISION.md).
+
 **A learning architecture and computing substrate for intelligence everywhere.**
 
 Prepared 3 October; revised 5 October 2026. Investment thesis and proposed commercial strategy;

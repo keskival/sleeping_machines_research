@@ -1,9 +1,13 @@
 # Sleeping Machines
 
-A general-purpose architecture that computes with time
+A universal trainable computing substrate that computes through time
 
 Tero Keski-Valkama and Karoliina Salminen · Research report · 5 October 2026
 
+
+Sleeping Machines aims to be a **universal trainable computing substrate**: one composable architecture for language and reasoning, multimodal world models, embodiment, typed tabular data, synchronous samples, asynchronous events, anonymous interleaved process traces, token sequences, continual learning, communication, self-design and hardware.
+
+The ambition combines distinct design axes: **computation through sleeps and temporal races; globally clockless event-driven execution; learning in the same temporal, addressed and asynchronous substrate as inference; capacity beyond selected activity; and tunable work for small-data, low-resource and large-scale settings**. Data modality is a separate axis from each of these. Scaling advantages and economical intelligence from sensors to datacenters are targets to measure. See [the full vision](VISION.md).
 ## The model family and its place in the landscape — 4 October 2026
 
 **Sleeping Machines is a family of causal networks of stateful temporal

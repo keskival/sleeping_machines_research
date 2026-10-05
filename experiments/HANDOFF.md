@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**Universal substrate ambition updated on userdirection:** VISION.md separates
+modality, sleeps/time, globallyclockless execution, sharedlearning/inference
+semantics, capacitybeyondactivity and resource/dataadaptation. README/report/
+covergenerator/investormaterials leadwith fullscope. CurrentCPUbatch/credit
+runtime distinguished from clockless/asynchronous target; no scaling or
+small-device gains invented, financialterms unchanged. Completedlanguage
+recipecomparison retained separately; timing/FASretry handles preserved.
+
+
 **LowerLRcompleted / timing running:** selected7.740814568/final7.801747281,
 both firstpassstep512. Versus0.003selectedgain0.000899850/finalgain0.066162349,
 late deterioration0.126195→0.060933. Same524272targets/data/source/recipeexceptLR.
