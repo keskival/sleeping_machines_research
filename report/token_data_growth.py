@@ -6,11 +6,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def pages():
+    return stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages()
+
+
+def stage_pages(budget, label):
+    expected_targets = 2 * (budget - 8)
     folder = ROOT / 'experiments/results/token_language'
     rows, resources, utilities, work, completed = [], [], [], [], []
     frozen = None
     for width in (16, 24, 32):
-        tag = f'curie_data_growth_tokens_64k_b64_c16_p{width}_s6_20261005_v1'
+        tag = f'curie_data_growth_tokens_{label}_b64_c16_p{width}_s6_20261005_v1'
         path = folder / (tag + '.json')
         selection_path = path.with_suffix('.selection.json')
         if not path.exists() or not selection_path.exists():
@@ -19,12 +24,14 @@ def pages():
         selection = json.loads(selection_path.read_text())
         if result['status'] != 'completed' or selection['status'] != 'completed':
             continue
+        if result['args']['train_tokens'] != budget or result['args']['seed'] != 6 or result['args']['payload'] != width:
+            raise ValueError('Data-stage identity mismatch')
         protocol = {k: v for k, v in result['args'].items() if k not in ('payload', 'tag')}
         if frozen is None:
             frozen = protocol
         elif protocol != frozen:
             raise ValueError('Capacity comparison protocol changed')
-        if result['presentations_total'] != 131056:
+        if result['presentations_total'] != expected_targets:
             raise ValueError('Incomplete two-pass fit')
         initial = result['curve'][0]['dev_nll']
         selected = selection['selected']['dev_nll']
@@ -37,7 +44,7 @@ def pages():
                           str(result['core_parameters']), str(result['readout_parameters']),
                           f"{result['train_tokens_per_second']:.2f}", str(result['max_rss_kb'])])
         completed.append(width)
-        work_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_64k_p{width}_work_20261005_v1.json'
+        work_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_{label}_p{width}_work_20261005_v1.json'
         if work_path.exists():
             audit = json.loads(work_path.read_text())
             if audit['status'] != 'completed' or audit['fitting_targets'] != result['presentations_total']:
@@ -52,8 +59,8 @@ def pages():
                          f"{audit['inference_arithmetic_flops_per_target']/1e6:.6f}"])
         else:
             work.append([str(width), str(result['presentations_total']), 'pending', 'pending', 'pending'])
-        suffix = '' if width == 16 else f'_p{width}'
-        utility_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_64k{suffix}_utility_20261005_v1.json'
+        suffix = '' if label == '64k' and width == 16 else f'_p{width}'
+        utility_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_{label}{suffix}_utility_20261005_v1.json'
         if utility_path.exists():
             utility = json.loads(utility_path.read_text())
             if utility['status'] != 'completed':
@@ -66,15 +73,15 @@ def pages():
     if not rows:
         return []
     page = [
-        ('h1', 'Appendix. Tokenized language: reserved 64K capacity comparisons'),
+        ('h1', f'Appendix. Tokenized language: {label.upper()} capacity/data comparisons'),
         ('p', 'Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.'),
-        ('p', 'Seed6, development only. GPT-2 FineWeb: 65,536 admitted training tokens, two passes/131,056 fitting targets, 256 updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with evaluation every64 updates. Public validation untouched.'),
+        ('p', f'Seed6, development only. GPT-2 FineWeb: {budget:,} admitted training tokens, two passes/{expected_targets:,} fitting targets, {result["args"]["steps"]} updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with four evaluation checkpoints over the two passes. Public validation untouched.'),
         ('table', (['Payload', 'Initial NLL', 'Selected NLL', 'Gain', 'Selected step'], rows, [60, 115, 115, 110, 105])),
         ('table', (['Payload', 'All parameters', 'Core + input parameters', 'Readout parameters', 'Targets/s', 'RSS KiB'], resources, [45, 110, 105, 120, 85, 80])),
         ('table', (['Payload', 'Fit targets', 'Whole-fit GFLOPs', 'Fit MFLOPs/target', 'Eval MFLOPs/target'], work, [45, 90, 125, 125, 125])),
         ('p', 'Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.'),
         ('p', 'All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.'),
-        ('p', 'The 8K and 64K fits score the same development population and both use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]
+        ('p', 'The 8K, 64K and 256K stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]
     if utilities:
         page += [
             ('table', (['Payload', 'Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], utilities, [55, 105, 130, 130, 130])),
@@ -82,7 +89,7 @@ def pages():
     missing = set(completed) - {int(r[0]) for r in utilities}
     if missing:
         page.append(('p', 'Selected-checkpoint utility pending for payload ' + ', '.join(map(str, sorted(missing))) + '; no utility value is predicted.'))
-    return [page] + repeat_pages()
+    return [page]
 
 
 def repeat_pages():

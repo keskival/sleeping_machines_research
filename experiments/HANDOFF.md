@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**256Kcompleted-evidence reporting/utility prepared:** report/token_data_growth.py
+now emits completed256Kstage before64K/repeat, validating expected data/seed/
+width/exposure and using common quality/resource/work columns. Pending256K
+is checked to emit no page. Three distinct utility queues prepared; only
+receipt-selected width executes. Waiting tmux curie_data_growth_256k_utility_20261005_v1
+follows256Kfit and message-factor handles, then stdlib token_256k_utility_queue.py
+requires completed524272-target fit and initial-inclusive selection. Missing
+prerequisites checked to reject. Guarded utility1200s/1.2GBRSS/5GBVMS/8GiBfloor
+allows262KTRAINfeature sweep (~50MiBP24features) and2040-target interventions.
+Review completed256Kcurve/context/memory before another data/width admission.
+Full-work replay remains live; original training/trace sources preserved.
+
+
 **Scaling data input implemented:** token_scaling_dataset.py validates completed
 64K/256K/1Mtwo-pass cells, equal checkpoint-count cadence, initial-inclusive
 selection and source/data/optimizer/history family. Actual arithmetic attaches
