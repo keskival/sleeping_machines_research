@@ -4,34 +4,6 @@ A universal trainable computing substrate that computes through time
 
 Tero Keski-Valkama and Karoliina Salminen · Research report · 5 October 2026
 
-## Scoreboard — wins, losses and open targets
-
-**5 wins against saved references** in 19 headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: experiments/PRODUCT_ORDERS.md. Single seeds unless stated; tuned references and confirming seeds are pending.
-
-| Comparison | Reference | Ours | Verdict |
-| --- | --- | --- | --- |
-| 10M vs LSTM-256 at ≤ its training compute (20.3 TF) | 2.171 | 2.326 (p32/d8, skip2 + route credit; 14.2 TF) | Loss |
-| 10M vs LSTM-256 at ≤ its inference compute (0.7 MF/pos) | 2.171 | 1.955 (p64/d4 + route credit, 4 passes; 0.6 MF/pos) | WIN |
-| 10M vs Transformer-256x2 at ≤ its training compute (111.3 TF) | 2.427 | 1.955 (p64/d4 + route credit, 4 passes; 107.2 TF) | WIN |
-| 10M vs Transformer-256x2 at ≤ its inference compute (3.7 MF/pos) | 2.427 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
-| 10M vs Transformer-256x4, 4 passes at ≤ its training compute (888.8 TF) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | WIN |
-| 10M vs Transformer-256x4, 4 passes at ≤ its inference compute (7.4 MF/pos) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
-| 10M vs LSTM-512, 6 passes at ≤ its training compute (432.6 TF) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | Loss |
-| 10M vs LSTM-512, 6 passes at ≤ its inference compute (2.4 MF/pos) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | Loss |
-| 10M vs tuned dense at ≤ 352 TF (P0-6; 6 arms, validation-selected) | 1.825 (lstm512 4.5p lr0.002) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Loss |
-| 10M vs tuned Transformers at ≤ 352 TF (P0-6; 4 arms, validation-selected) | 1.996 (tf128x4 5.4p lr0.003) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Better quality at 102% of its compute (not matched) |
-| 10M vs tuned dense at ≤ 107 TF (P0-6; 4 arms, validation-selected) | 1.915 (lstm384 2.5p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Loss |
-| 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
-| 90M vs LSTM-512, 6 passes | 1.661 | 1.800 (p64/d4/pool2 + route credit; 4× less training compute) | Efficiency point; run queued |
-| 90M four-pass vs LSTM-512, 1.4 passes | 1.729 (908 TF) | 1.800 (p64/d4/pool2 + route credit; 965 TF) | LOSS (single seed) |
-| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.800 (p64/d4/pool2 + route credit; 8× less training compute) | Efficiency point; run queued |
-| 90M four-pass vs Transformer-192x4, 0.8 passes | 1.780 (946 TF) | 1.800 (p64/d4/pool2 + route credit; 965 TF) | LOSS (single seed) |
-| NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.84 (57.6 KB vs 490 KB) | Loss vs LSTM |
-| NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.724 (validation-selected arm, development session indy_20170131_02, also one of the six official sessions; tinyRSNN .746 there) | Pending (six-session run; also report the five untouched sessions) |
-| SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |
-
-Native compute is traced (fitting extrapolated from traced windows; inference from the exact winner-only trace); references use the saved shape estimates or the leaderboard's published counts. Multi-pass native rows may use more optimizer updates than one-pass references. A native row qualifies for a budget only if its own estimate does not exceed the reference's. Native and Transformer score the same 999,936 targets with reset T256 windows; saved LSTMs carry state across 999,999 targets of the same test interval. LSTM rows are saved-reference quality/work wins or losses; identical-context rescoring is pending.
-
 ## Our ambition: a universal trainable computing substrate
 
 Sleeping Machines aims to make intelligence composable within one trainable computing substrate. Language and reasoning, perception and world models, embodied action, typed tables and interleaved process streams become different forms of experience available to the same learner. The ambition extends through continual learning, communication and self-design to the hardware that executes them.
@@ -104,6 +76,32 @@ precedents and first proof condition.
 **We know of no mathematical obstruction to this architectural direction.** The decisive question is how native learning scales. The crossover study (LANGUAGE_CROSSOVER_PLAN.md) compares the integrated model with competent Transformers at equal complete fitting compute on modern language data.
 
 A winner-only race delivers the sampled winner's value instead of the attention average and skips the value-aggregation half of attention arithmetic; the saving grows with context length. Exact delay-coded aggregation keeps the average and pays for deliveries and normalization. Replay fitting already saves about 49.66% of its work. The target is better prediction at a fully counted resource budget (§§280,317).
+
+## Scoreboard — wins, losses and open targets
+
+**5 wins against saved references** in 17 headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: experiments/PRODUCT_ORDERS.md. Single seeds unless stated; tuned references and confirming seeds are pending.
+
+| Comparison | Reference | Ours | Verdict |
+| --- | --- | --- | --- |
+| 10M vs LSTM-256 at ≤ its training compute (20.3 TF) | 2.171 | 2.326 (p32/d8, skip2 + route credit; 14.2 TF) | Loss |
+| 10M vs LSTM-256 at ≤ its inference compute (0.7 MF/pos) | 2.171 | 1.955 (p64/d4 + route credit, 4 passes; 0.6 MF/pos) | WIN |
+| 10M vs Transformer-256x2 at ≤ its training compute (111.3 TF) | 2.427 | 1.955 (p64/d4 + route credit, 4 passes; 107.2 TF) | WIN |
+| 10M vs Transformer-256x2 at ≤ its inference compute (3.7 MF/pos) | 2.427 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
+| 10M vs Transformer-256x4, 4 passes at ≤ its training compute (888.8 TF) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | WIN |
+| 10M vs Transformer-256x4, 4 passes at ≤ its inference compute (7.4 MF/pos) | 1.908 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | WIN |
+| 10M vs LSTM-512, 6 passes at ≤ its training compute (432.6 TF) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 352.1 TF) | Loss |
+| 10M vs LSTM-512, 6 passes at ≤ its inference compute (2.4 MF/pos) | 1.799 | 1.888 (p96/d4 + route credit, 6 passes; 1.3 MF/pos) | Loss |
+| 10M vs tuned dense at ≤ 352 TF (P0-6; 6 arms, validation-selected) | 1.825 (lstm512 4.5p lr0.002) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Loss |
+| 10M vs tuned Transformers at ≤ 352 TF (P0-6; 4 arms, validation-selected) | 1.996 (tf128x4 5.4p lr0.003) | 1.888 (p96/d4 + route credit, 6 passes; 352 TF) | Better quality at 102% of its compute (not matched) |
+| 10M vs tuned dense at ≤ 107 TF (P0-6; 4 arms, validation-selected) | 1.915 (lstm384 2.5p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Loss |
+| 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
+| 90M vs LSTM-512, 6 passes | 1.661 | 1.800 (p64/d4/pool2 + route credit; 4× less training compute) | Efficiency point; run queued |
+| 90M vs Transformer-256x4, 4 passes | 1.604 | 1.800 (p64/d4/pool2 + route credit; 8× less training compute) | Efficiency point; run queued |
+| NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.84 (57.6 KB vs 490 KB) | Loss vs LSTM |
+| NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.724 (validation-selected arm, development session indy_20170131_02, also one of the six official sessions; tinyRSNN .746 there) | Pending (six-session run; also report the five untouched sessions) |
+| SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |
+
+Native compute is traced (fitting extrapolated from traced windows; inference from the exact winner-only trace); references use the saved shape estimates or the leaderboard's published counts. Multi-pass native rows may use more optimizer updates than one-pass references. A native row qualifies for a budget only if its own estimate does not exceed the reference's. Native and Transformer score the same 999,936 targets with reset T256 windows; saved LSTMs carry state across 999,999 targets of the same test interval. LSTM rows are saved-reference quality/work wins or losses; identical-context rescoring is pending.
 
 ## Current language evidence — 3 October 2026
 

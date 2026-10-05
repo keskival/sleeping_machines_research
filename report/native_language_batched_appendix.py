@@ -137,13 +137,12 @@ def load(read):
                 if isinstance(row.get('test_bpc'), float) and 'params' in row and 'steps' in row:
                     w = estimate(row['args'], row['params'], row['steps'])
                     test, rescore = reference_score(str(rp.relative_to(RES)), row['test_bpc'])
-                    controls90.append(dict(label=f"{label}, {row['args']['passes']:g} passes", parameters=row['params'],
+                    actual_label=(f"Transformer-{row['args']['size']}x{row['args']['layers']}" if model=='tf' else f"LSTM-{row['args']['size']}")
+                    controls90.append(dict(label=f"{actual_label}, {row['args']['passes']:g} passes", parameters=row['params'],
                                            updates=row['steps'], test=test, original_test=row['test_bpc'], rescore=rescore,
                                            path=str(rp.relative_to(ROOT)), whole=w['total_training_flops'],
                                            fit=w['total_training_flops'] / w['training_token_positions']))
                     break
-            if controls90 and controls90[-1]['label'].startswith(label):
-                break
     return dict(native=native, controls=controls, native90=native90, controls90=controls90)
 
 

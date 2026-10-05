@@ -92,12 +92,10 @@ Full evidence, protocols and every completed comparison, wins and losses alike: 
 [the PDF](report/sleeping_machines_status.pdf). Earlier README text: [archive](report/archive/README_20261005T150000Z_previous.md).
 
 <!-- scoreboard:start -->
-## Scoreboard — wins, losses and open targets
-
-**5 wins against saved references** in 19 headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: experiments/PRODUCT_ORDERS.md. Single seeds unless stated; tuned references and confirming seeds are pending.
+## Scoreboard (generated from result files; definitions in experiments/WIN_CRITERIA.md)
 
 | Comparison | Reference | Ours | Verdict |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | 10M vs LSTM-256 at ≤ its training compute (20.3 TF) | 2.171 | 2.326 (p32/d8, skip2 + route credit; 14.2 TF) | Loss |
 | 10M vs LSTM-256 at ≤ its inference compute (0.7 MF/pos) | 2.171 | 1.955 (p64/d4 + route credit, 4 passes; 0.6 MF/pos) | WIN |
 | 10M vs Transformer-256x2 at ≤ its training compute (111.3 TF) | 2.427 | 1.955 (p64/d4 + route credit, 4 passes; 107.2 TF) | WIN |
@@ -111,15 +109,12 @@ Full evidence, protocols and every completed comparison, wins and losses alike: 
 | 10M vs tuned dense at ≤ 107 TF (P0-6; 4 arms, validation-selected) | 1.915 (lstm384 2.5p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Loss |
 | 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
 | 90M vs LSTM-512, 6 passes | 1.661 | 1.800 (p64/d4/pool2 + route credit; 4× less training compute) | Efficiency point; run queued |
-| 90M four-pass vs LSTM-512, 1.4 passes | 1.729 (908 TF) | 1.800 (p64/d4/pool2 + route credit; 965 TF) | LOSS (single seed) |
 | 90M vs Transformer-256x4, 4 passes | 1.604 | 1.800 (p64/d4/pool2 + route credit; 8× less training compute) | Efficiency point; run queued |
-| 90M four-pass vs Transformer-192x4, 0.8 passes | 1.780 (946 TF) | 1.800 (p64/d4/pool2 + route credit; 965 TF) | LOSS (single seed) |
 | NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.84 (57.6 KB vs 490 KB) | Loss vs LSTM |
 | NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.724 (validation-selected arm, development session indy_20170131_02, also one of the six official sessions; tinyRSNN .746 there) | Pending (six-session run; also report the five untouched sessions) |
 | SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |
 
-Native compute is traced (fitting extrapolated from traced windows; inference from the exact winner-only trace); references use the saved shape estimates or the leaderboard's published counts. Multi-pass native rows may use more optimizer updates than one-pass references. A native row qualifies for a budget only if its own estimate does not exceed the reference's. Native and Transformer score the same 999,936 targets with reset T256 windows; saved LSTMs carry state across 999,999 targets of the same test interval. LSTM rows are saved-reference quality/work wins or losses; identical-context rescoring is pending.
-
+Single seeds unless stated; same test interval; native/Transformer reset T256 windows, saved LSTM carries state. Identical-context LSTM rescoring is pending. Native compute traced, references shape-estimated or as published. Full report: REPORT.md; orders: experiments/PRODUCT_ORDERS.md.
 <!-- scoreboard:end -->
 
 ## Architecture and learning

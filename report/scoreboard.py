@@ -61,6 +61,15 @@ def page(native, public):
     # 90M
     if native.get('native90'):
         for c in native['controls90']:
+            dominated=[r for r in native['native90'] if eligible(r)
+                       and c['whole'] <= r['whole'] and c['test'] < r['test256']]
+            if dominated:
+                strongest=min(dominated,key=lambda r:r['test256'])
+                rows.append([f"90M four-pass vs {c['label']}",
+                    f"{c['test']:.3f} ({c['whole']/1e12:.0f} TF)",
+                    f"{strongest['test256']:.3f} ({strongest['label']}; {strongest['whole']/1e12:.0f} TF)",
+                    'LOSS (single seed)'])
+                continue
             b = best_within(native['native90'], c['whole'], 'whole')
             if b is None:
                 rows.append([f"90M vs {c['label']}", f"{c['test']:.3f}", 'no native T256 row within budget', 'Pending'])

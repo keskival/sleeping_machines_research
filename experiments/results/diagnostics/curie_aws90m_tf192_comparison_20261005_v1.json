@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "verdict": "Loss (single seed)",
+  "ours_bpc": 1.8000915781509703,
+  "reference_bpc": 1.780187553988504,
+  "ours_whole_fit_tflops_est": 964.8975463677,
+  "reference_whole_fit_tflops_est": 946.250554193109,
+  "ours_fit_mflops_per_target_est": 2.6802900219726564,
+  "reference_fit_mflops_per_target_est": 13.14246226574707,
+  "scored_test_targets": 999936,
+  "source_sha256": {
+    "experiments/results/language_batched/aws_language_batched_90M_r4_p64d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z.json": "9721392f21187c75cb9e3cc190bae214fd542ba0970dda4344a939922aadd5e8",
+    "experiments/results/aws_20260929/aws_tuned_ref_90M_C_tf192L4_p0.8_lr0.002_s0_20261004T210000Z/tf_D90000000_s192_L4_p0.8_dr0.1_v_lr0.002_wu500.json": "95fa01768285d7ccfc460c5edcdcf2f00cc8bd2574695e8678b0136cca48ba3b",
+    "experiments/results/aws_20260929/aws_tuned_ref_90M_C_tf192L4_p0.8_lr0.002_s0_20261004T210000Z/provenance.json": "2d7e145a76030026edd99c0e1ed65e27bd5f77859f6c6d49d1eda93c019ef912"
+  },
+  "scope": "text8 TRAIN[0:90M], test[95M:96M], E64 reset T256/stride128 scoring. Native four passes/final selection, Transformer0.8passes/DEV-selected from200KDEV; independent fitting seeds and different tuning opportunity. Native traced-window extrapolation with special functions, Transformer shape-based estimate/backward2x; not complete equal-FLOP proof or tokenized public-reference comparison. Historical10M wins and older90M efficiency points retained."
+}

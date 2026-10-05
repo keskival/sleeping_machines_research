@@ -93,7 +93,7 @@ def render(stage):
                 ('BACKGROUND',(0,0),(-1,0),colors.HexColor('#edf3fb')),
                 ('LINEBELOW',(0,0),(-1,0),.7,colors.HexColor('#1f5fa8')),
                 ('LINEBELOW',(0,1),(-1,-1),.25,colors.HexColor('#dbe1e8')),
-                ('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4)]))
+                ('TOPPADDING',(0,0),(-1,-1),2),('BOTTOMPADDING',(0,0),(-1,-1),2)]))
             flow.append(table)
         else:
             style=ParagraphStyle(kind,fontName='ScoreB' if kind=='h1' else 'Score',

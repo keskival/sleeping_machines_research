@@ -1,5 +1,25 @@
 # Session handoff — 2026-09-30
 
+**New completed AWS90M references published:** corrected collector previously
+stopped at the first completed arm and hardcodedTF256/LSTM512 labels. It now
+retains all completed90M arms with actual sizes. NewTF192D4:1.780187554bpc,
+946.2506TFestimate; nativeP64D4four-passT256:1.800091578,964.8975TF.
+Loss(single seed); same999936scored test targets, finalnative vsDEV-selected
+reference/tuning differences and work conventions explicit. LSTM5121.4passes
+1.728724378/908.4217TF also collected (stateful scoring distinguished).
+Bounded scoreboard publicationaws90m_control_update_20261005_v3 retained251
+other PDFpages verbatim;README/md/PDF scoreboard updated, previousPDFarchived.
+Source-bound TF comparison receipt added. Historical10M wins/old90M efficiency
+points preserved. Main program stays proper-token CPU native fits/publicreuse.
+
+**1M data stage prepared, not admitted:** fixedP24/P32 queues,1,048,576
+TRAINtokens,4,096 updates/two passes,2,097,136 fitting targets,fourDEVchecks.
+ReadTOKEN_DATA_GROWTH_1M_20261005.md for source/quality/utility/work admission.
+Do not borrow64Kwork to fill larger costcells or promote untestedrotation.
+Select from completed256Kwidth evidence;4M remains reserved extrapolation.
+No newlongfit launched and all priorwaiting/running handles preserved.
+
+
 **Backward engineering probe prepared and guarded:** measured58.25%backward
 CPU share motivates isolated ExplicitRotation autograd experiment, not a
 rotation-bottleneck claim. Forward expression and float64 clock trigonometry
