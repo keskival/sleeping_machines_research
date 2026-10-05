@@ -15,6 +15,16 @@ Interpretation:
 - The remaining deficit is in how events are processed, not only in what they can see.
 - Next: parameter weight decay (AWS, §421) and the learning-rate arms (curie).
 
+**Write-bandwidth hypothesis (5 Oct 06:20, Docker review host; proposal, not run).** Taps show that access is not the
+bottleneck. Per character, each native layer changes only the winning slot of each head: H·P = 128 state values at p64/H2. The
+tuned LSTM-384 rewrites all 384 cell values through four dense gates every step. Sparse writes buy capacity beyond
+activity, but they cap state change per event. Local (2–4 character) modelling needs a fast, dense summary of recent input.
+Prediction: more writes per event close more of the gap than more width (p128 did not help) or more visibility (taps:
++.011). The in-architecture test is k-winner writes, the top-2 race arrivals per head writing per event (route credit
+extends to the second arrival; races, addressed writes and key/value separation retained). It is charged as 2× selected
+writes and value deliveries. 10M p64/d4 4-pass, k=2 vs k=1 (1.955), same budget class. An always-written recency slot
+would be a labelled dense-carrier control, not the fix. Needs a contract that k=1 reproduces the current forward exactly.
+
 ## P0-2 loss: native p128/d4 4-pass 1.907 bpc at 411 TF (pass criterion < 1.799 at ≤ 433 TF) — 5 October
 
 Run `curie_language_batched_10M_p128d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261004T194000Z`:
