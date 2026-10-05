@@ -223,3 +223,10 @@ estimates for dense references), and inference work up to the decision at N.
     substitutes for routing (§419); a 7-second memory cannot carry an item across its own steps.
   - Added arm **R8**: tied pool 8 with timescales initialized log-spaced from 1 to 1,000 s (`--tau-max 1000`). It runs
     first after the sweep, and its learned half-lives are reported to test whether long horizons survive training.
+- 5 Oct 07:55 UTC (Docker review host): **memory horizon the detectable signal needs** (identity recovery from oracle_bound.py; 150
+  clean training seeds). Item-own consecutive event gaps, the quantity the oracle scores: median 29.4 s, p90 46.6 s, max 606 s;
+  67% exceed 7 s, 56% exceed 20 s, 6% exceed 60 s. Mean fraction of a write retained after one own-gap: half-life 7 s 0.38,
+  30 s 0.65, 100 s 0.85, 300 s 0.94. At the median gap, R0's learned ~7 s half-life retains about 6% (0.5^(29/7)). This
+  quantitatively supports curie's R0 diagnosis (horizon plus binding, not dormancy). Target learned half-lives are ≥ 30–100 s;
+  R8's 1–1,000 s initialization spans that range. The test is whether training keeps them long. If training shortens them
+  again, a horizon-preserving constraint or prior on the slowest timescales is the next arm.
