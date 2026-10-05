@@ -1,5 +1,34 @@
 # Findings log
 
+## Credit fidelity audit: the implemented route credit is nearly blind on FAS — 5 October
+
+THEORY §§429–430; `experiments/credit_fidelity_audit.py`.
+
+**Method.**
+- Exact counterfactual credit by forced shadow lanes (one race forced to each alternative; all other noise shared).
+- Compared with the implemented training score gradient (timing plus linear value credit).
+- Trained FAS models: 3 validation runs, first 300 events, 6 sampled races per run.
+
+| Model | Races / pairs | corr(implemented, exact) | Sign agreement | Share of |F − R|: next / rest of segment / beyond segment |
+|---|---|---:|---:|---|
+| R0 (untied pool 8, ~7 s half-lives) | 18 / 138 | **−.08** | .60 | .47 / .79 / .46 |
+| R8 (tied pool 8, ~24 s half-lives) | 18 / 143 | .29 | .64 | .16 / .70 / .79 |
+
+(The shares can sum above one because the parts partly cancel.)
+
+**Interpretation.**
+- The implemented credit is barely related to the true consequences of routing choices on FAS: sign agreement is
+  near chance.
+- Most of a choice's effect lies after the next prediction, and with long memories most lies beyond the 128-event
+  training segment. This is the regime where value-only, truncated credit is blind.
+- That explains why recruitment knobs, tying and longer horizons did not move detection: the signal that would teach
+  per-item binding barely exists.
+- It confirms §419 Proposition 2 quantitatively, and motivates the transported write credit of §430 Corollary 430.4.
+
+**Scope.** Single noise realization per exact credit (noisy), 18 races per model, FAS only. Next steps: a larger audit,
+a language audit, and then the estimator-level test of the transported write credit against the same exact credits,
+before any training.
+
 ## P0-1 first arm: 90M native p64/d4 4-pass 1.800 bpc at 0.97 PF — efficiency point, not a win — 5 October
 
 Run `aws_language_batched_90M_r4_p64d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z` (AWS, checkpointed):

@@ -334,3 +334,145 @@ mainly by weight decay. The generalizing circuit has a lower norm than the sum o
 - The task is too easy at .40: the memorization lag is only 250–500 steps, so arms do not separate.
 - A harder pass (train fraction .25; G1/G2 pools 2 and 8, plus G4) is queued after the curie chain.
 - The remaining .40 arms (G3 head count; pool 32 tied and untied) are running.
+
+---
+
+## 429. Credit fidelity: measure the learning rule against exact counterfactuals, then repair the largest error
+
+**User direction (5 October).** Leaderboard wins should not be expected before the systematic problems in the learning
+rules are fixed so that the model uses its full capacity. Advance understanding in a way that leads to the fix.
+
+**Principle.** Every hypothesized defect (§§419, 424, 425 and the FAS/language results) is a claim that the implemented
+credit differs from the true credit in a specific way. Our substrate allows that difference to be measured exactly:
+forcing one race to a chosen alternative while sharing all other noise draws gives the true counterfactual loss of
+that choice. So defects can be *measured* on trained models before repairs are trained.
+
+**Decomposition.** For a race r at event k with probabilities π and full-suffix losses F_u (force alternative u, roll
+the episode forward), the exact choice credit is c_u = π_u (F_u − R), with R = Σ_j π_j F_j. Split each suffix loss by
+horizon:
+
+    F_u − R = Δ_u^next + Δ_u^window + Δ_u^beyond.
+
+- Δ^next is the next prediction's loss: mostly the delivered value.
+- Δ^window is the remaining loss inside the training segment: delivery effects that persist plus the write
+  consequences that truncated BPTT can still see.
+- Δ^beyond is the loss after the training segment ends: credit that truncated training never sees.
+
+The implemented score gradient (timing credit plus the linear value credit, §413) is the estimator ĉ.
+
+**Fidelity metrics, per trained model and task:**
+1. corr(ĉ, c) and sign agreement over (race, alternative) pairs: does the rule point the right way?
+2. The share of |F_u − R| carried by Δ^next, Δ^window and Δ^beyond:
+   - a large Δ^window share means myopic delivery credit misses write consequences (§419 Proposition 2);
+   - a large Δ^beyond share means truncation drops credit (FAS items span ~720 s, while segments cover ~85 s).
+3. Free versus occupied alternatives: the mean exact c_u for writing a free or stale slot against an occupied one.
+   This tests whether optionality is real on the data.
+
+**Repair rule.** Each candidate repair is evaluated first by fidelity: whether it raises corr(ĉ, c) on the same races,
+or captures the missing horizon share. Only then is it given a long training run. This orders the repairs by measured
+error, not intuition:
+
+| Measured largest error | Repair |
+|---|---|
+| Δ^window large, ĉ blind to it | write-consequence credit (§424; stabilized written-content form) |
+| Δ^beyond large | longer credit windows, carried eligibility, or segment overlap |
+| Exact credit favours unexplored alternatives with untrained content | content credit for sampled alternatives (note 87) or soft-exposure phases (§425) |
+| ĉ accurate but quality poor | not a credit problem: capacity, binding architecture or write bandwidth |
+
+**Tool:** `experiments/credit_fidelity_audit.py`. It uses saved selected weights and forced shadow lanes in
+`batched_logits`, and runs as evaluation only.
+
+## 430. First-order counterfactual credit with writes: the coordinate theorem behind the write-credit divergences
+
+**User direction (5 October):** less trial and error, more formal theory. §429 supplies exact ground truth by forced
+shadow lanes. This section derives what that ground truth should equal to first order, why both earlier write-credit
+estimators diverged, and the estimator that is correct by construction.
+
+**Setting.** At race r, at time t, in head h of layer d:
+- slots j = 1..U hold stored memories m_j with stamps τ_j (τ_j < t, or "never written");
+- the race selects W ~ π, which delivers v_W and writes slot W;
+- every slot's candidate is m'_j = A_j(t − τ_j) m_j + w_j, where:
+  - A_j(Δ) = Rot_j(Δ)·exp(−Δ·rate_j·f_j) is the transport (rotation and decay, with forget gate f_j);
+  - w_j is the written content.
+- Memory is *lazy*: an unwritten slot keeps (m_j, τ_j) and is transported only when read.
+
+A later read of slot j at time s > t sees
+
+    written at t:   A_j(s − t) [A_j(t − τ_j) m_j + w_j]
+    not written:    A_j(s − τ_j) m_j.
+
+**Lemma 430.1 (semigroup).** If the forget gate is constant on [τ_j, s], A_j(s − t)·A_j(t − τ_j) = A_j(s − τ_j). The
+difference between the two cases at any later read is then exactly A_j(s − t)·w_j: *the written content, transported
+from t*.
+- Proof: rotations about fixed axes commute and compose additively; exponential decay composes multiplicatively.
+- With an input-dependent forget gate the identity holds up to the gate difference, a second-order effect when gates
+  vary slowly.
+
+**Proposition 430.2 (first-order choice credit).** Let g be the loss gradient at the delivered value. Let
+Γ_j(t) = Σ_{reads at s > t} A_j(s − t)^T ∂L/∂(value read at s) be the *transported state gradient*: the derivative of
+the future loss with respect to a perturbation of slot j *expressed at time t*. Then, to first order,
+
+    F_u − F_W = g·(v_u − v_W) + Γ_u(t)·w_u − Γ_W(t)·w_W + O(‖δ‖²),
+
+and the exact first-order choice credit is
+
+    c_u ≈ π_u [ g·(v_u − v̄) + (Γ_u·w_u − Σ_j π_j Γ_j·w_j) ].
+
+- The first bracket term is the implemented linear value credit (§413).
+- The second is the *write credit*: the value of placing content w_u in slot u rather than where the race would
+  otherwise place it.
+- Its sign carries optionality. For a free slot, nothing is overwritten. For an occupied slot, the content's future
+  value is lost, and that loss enters through Γ_u: the term −Γ_u·(1 − A)m_u appears when the forget gate differs
+  across the overwrite.
+
+**Theorem 430.3 (why linear_rw and linear_rwn diverged).** Both surrogates add (π − π̄)·D_j to the *stored* memory
+of every slot. For a slot that does not win, the stored memory sits in its *old* coordinates (m_j, τ_j). Backpropagation
+therefore returns the stored-coordinate gradient G_j = ∂L/∂m_j|_{τ_j}. By the semigroup lemma,
+
+    G_j = A_j(t − τ_j)^T Γ_j(t).
+
+- **linear_rw** used D_j = m'_j − m_j = (A_j(t − τ_j) − I) m_j + w_j. The term (A − I)m_j is pure lazy decay: not a
+  change of future reads, yet counted as one. Its magnitude grows with the age t − τ_j and the norm of m_j, and its
+  sign is systematic (decay shrinks memories). The credit is then biased toward choices that "change" old slots, with no
+  bound on the bias.
+- **linear_rwn** used D_j = w_j, but paired it with the stored-coordinate G_j:
+
+      G_j·w_j = Γ_j(t)·A_j(t − τ_j) w_j ≠ Γ_j(t)·w_j.
+
+  The written content is effectively transported *backwards* to the old stamp: under-weighted by the decay
+  exp(−age·rate) and rotated by the wrong phase. For old slots the phase error makes the sign of the credit for long
+  ages essentially random. The bias is therefore systematic in rotation and grows with slot age. Adding pool slots adds
+  old, rarely written slots, which matches rwn diverging at pool 4 but not at pool 2.
+
+**Corollary 430.4 (the correct estimator).** Compute Γ_j(t) for every slot, i.e. the gradient with respect to a
+zero-valued perturbation ε_j added to slot j *with stamp t*. Equivalently, carry a per-slot shadow perturbation channel
+that is transported from t like a real write. Inverting A_j would amplify by exp(+age·rate) and is unstable; the shadow
+channel avoids that.
+- Implementation, zero-valued and exact to first order: at each race, let every slot j's next-read value include
+  (π_j − π̄_j)·A_j(s − t) w_j, detached in w and transported from t. Backpropagation then delivers
+  π_j Γ_j·w_j − Σ π Γ·w to the scores.
+- Cost: one extra transported vector per slot touched, which is the same order as a read. For winner-only inference
+  the cost is zero (the forward is unchanged).
+
+**Predictions (falsifiable with the §429 audit, no training needed):**
+1. On trained FAS and language models, the first-order credit of Proposition 430.2 tracks the forced-lane exact
+   credit c better than the value-only credit does: higher corr(ĉ, c) and higher sign agreement.
+2. The gain concentrates where the audit's window share is large.
+3. Pairing D = w with stored-coordinate G (rwn) loses fidelity as the age of the slots raced over grows; the
+   transported form does not.
+4. Training with the transported write credit is stable at pool ≥ 4 (unlike rwn) and lengthens learned half-lives
+   (forgetting stops substituting for routing, §419).
+
+**Order of work implied by the theory:**
+1. Audit the current credit (running).
+2. Compute the first-order prediction and compare it with exact credit on the same races (estimator-level test).
+3. Only then train with the transported write credit.
+
+**Scope.** First order in the choice (hard switches can change later topology: route flips downstream). The audit
+measures the residual. Forget-gate variation enters at second order.
+
+**§429 first measurements (5 October):**
+- R0: corr −.08, sign agreement .60; horizon shares next / window / beyond .47 / .79 / .46.
+- R8: corr .29, sign agreement .64; shares .16 / .70 / .79.
+- Both are consistent with §430: the omitted write term and the truncated horizon carry most of the true credit, and
+  more so with longer memories.
