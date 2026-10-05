@@ -40,6 +40,15 @@ def page():
                      f"{d['fitting']['arithmetic_flops']/1e9:.6f}",
                      f"{d['fitting_arithmetic_flops_per_target']/1e6:.6f}",
                      f"{d['inference_arithmetic_flops_per_target']/1e6:.6f}"])
+    bound_path = ROOT / 'experiments/results/diagnostics/modded_nanogpt_head_work_bound_20261005_v1.json'
+    if bound_path.exists():
+        bound = json.loads(bound_path.read_text())
+        if bound['status'] != 'completed_source_bound_lower_bound' or bound['complete_reference_work']:
+            raise ValueError('Invalid reference lower bound')
+        work.append(['TF head ≥', str(bound['fitting_targets']),
+                     f"≥{bound['fitting_head_arithmetic_flops']/1e9:.6f}",
+                     f"≥{bound['fitting_head_arithmetic_flops_per_target']/1e6:.6f}",
+                     f"≥{bound['inference_head_arithmetic_flops_per_target']/1e6:.6f}"])
     return [('h1','Appendix. Tokenized8K: replicated learning and memory-use decisions'),
         ('p','Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This integrated stage advances the Transformer-leading language program; tiny fits are engineering diagnostics.'),
         ('p','Both horizons beat initialization in both seeds. GPT-2 FineWeb:8192admitted training tokens,16368fitting target presentations/two passes,32AdamWupdates,2040development targets. P16/D2/H2/U4,batch64; credit16/64 share data/updates/cadence. Initial-inclusive development selection every8updates; public validation untouched. Four selected writes,16scored keys and256persistent memory scalars per lane. The bounded local fits preserve the immutable AWSqueues.'),
@@ -48,5 +57,6 @@ def page():
         ('p','Context gain uses the same frozen readout with a constant mean of8184causal TRAINfeatures. Memory gain is NLL after per-token addressed-state/arrival/seen erasure minus intact NLL; negative means the intervention improves loss. Recurrent-message erasure costs0.017843–0.021955NLL. Matched route RNG, source binding and token partition parity pass. These are frozen interventions, not retrained ablations; the constant-feature control is not an optimally refitted unigram.'),
         ('table',(['Alternative','Seed','Selected NLL','Gain vs credit16','Parameters'],comparisons,[135,40,100,120,90])),
         ('p','Full-width decoder tails lose at seed6 and are effectively tied at seed7. Retain the narrower decoder. First-tail training exposure is695targets/data pass, so this comparison exercises learned tail projections. The memory-gain intervention doubles the existing unit output contribution while preserving all temporal/state/routing/learning mechanisms and parameter count; it is selected only from completed fits. See TOKEN_MEMORY_COUPLING_20261005.md for derivation and contracts.'),
-        ('table',(['Native member','Fit targets','Whole fit GFLOPs','Fit MFLOPs/target','Eval MFLOPs/target'],work,[110,65,110,115,105])),
+        ('table',(['Member','Fit targets','Whole fit GFLOPs','Fit MFLOPs/target','Eval MFLOPs/target'],work,[110,65,110,115,105])),
+        ('p', 'TF head ≥ is a source-derived arithmetic lower bound: forward output projection plus its two explicit backward matrix contractions; evaluation has one projection. Width768 and padded50,304classes give231.800832MFLOPs/fitting target and77.266944MFLOPs/evaluation target, at two FLOPs per multiply-add. Other reference computation and optimizer work are excluded. Its695,992,320training targets and public NLL3.2774 use a different data/quality population from these native development fits; these columns show raw work, not a matched-quality or iso-FLOP win. FP8 GPU arithmetic and native CPUfloat32 have different hardware costs.'),
         ('p','Actual whole-fit traces must reproduce each control trajectory. Arithmetic includes factual computation, all-key discovery, suffix replay, exact target readout, backward, clipping, optimizer and in-step diagnostics; initialization/frequency counting,evaluation and serialization excluded. Special functions separate; random-sampling work unquantified. Evaluation includes scorer reductions. Pending cells contain no predicted work or quality. Equal updates/data here are not an iso-FLOP claim. Selected Transformer-reference quality and resource protocol remains the larger benchmark target.')]

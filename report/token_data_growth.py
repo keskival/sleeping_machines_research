@@ -72,13 +72,23 @@ def stage_pages(budget, label):
                               *[f"{row['history_gains'][k]:.6f}" for k in ('memory', 'message', 'both')]])
     if not rows:
         return []
+    bound_path = ROOT / 'experiments/results/diagnostics/modded_nanogpt_head_work_bound_20261005_v1.json'
+    if bound_path.exists():
+        bound = json.loads(bound_path.read_text())
+        if bound['status'] != 'completed_source_bound_lower_bound' or bound['complete_reference_work']:
+            raise ValueError('Invalid reference lower bound')
+        work.append(['TF head ≥', str(bound['fitting_targets']),
+                     f"≥{bound['fitting_head_arithmetic_flops']/1e9:.6f}",
+                     f"≥{bound['fitting_head_arithmetic_flops_per_target']/1e6:.6f}",
+                     f"≥{bound['inference_head_arithmetic_flops_per_target']/1e6:.6f}"])
     page = [
         ('h1', f'Appendix. Tokenized language: {label.upper()} capacity/data comparisons'),
         ('p', 'Sleeping Machines pursues a general-purpose substrate for language and reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. This stage measures integrated tokenized learning with more data and capacity.'),
         ('p', f'Seed6, development only. GPT-2 FineWeb: {budget:,} admitted training tokens, two passes/{expected_targets:,} fitting targets, {result["args"]["steps"]} updates, 2,040 scored development targets. Payload varies; depth2/heads2/pool4, batch64, credit16 and uniform-site K4 actual alternative-write credit are fixed. Every temporal, sparse and persistent-state mechanism is retained. Initialization is eligible for selection, with four evaluation checkpoints over the two passes. Public validation untouched.'),
         ('table', (['Payload', 'Initial NLL', 'Selected NLL', 'Gain', 'Selected step'], rows, [60, 115, 115, 110, 105])),
         ('table', (['Payload', 'All parameters', 'Core + input parameters', 'Readout parameters', 'Targets/s', 'RSS KiB'], resources, [45, 110, 105, 120, 85, 80])),
-        ('table', (['Payload', 'Fit targets', 'Whole-fit GFLOPs', 'Fit MFLOPs/target', 'Eval MFLOPs/target'], work, [45, 90, 125, 125, 125])),
+        ('table', (['Member', 'Fit targets', 'Whole-fit GFLOPs', 'Fit MFLOPs/target', 'Eval MFLOPs/target'], work, [65, 85, 120, 120, 120])),
+        ('p', 'TF head ≥ is a source-derived arithmetic lower bound: forward output projection plus its two explicit backward matrix contractions; evaluation has one projection. Width768 and padded50,304classes give231.800832MFLOPs/fitting target and77.266944MFLOPs/evaluation target, at two FLOPs per multiply-add. Other reference computation and optimizer work are excluded. Its695,992,320training targets and public NLL3.2774 use a different data/quality population from these native development fits; these columns show raw work, not a matched-quality or iso-FLOP win. FP8 GPU arithmetic and native CPUfloat32 have different hardware costs.'),
         ('p', 'Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.'),
         ('p', 'All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.'),
         ('p', 'The 8K, 64K and 256K stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]

@@ -1,5 +1,16 @@
 # Session handoff — 2026-09-30
 
+**Reference head arithmetic bound recorded:** source-pinned stdlib derivation
+finds width768/padded50304 output classes and three explicit training matrix
+contractions. Head-only231.800832MFLOPs/fit target,77.266944MFLOPs/eval target;
+695992320fit targets yield161331598.841610GFLOPs. Complete-reference work
+remains false; other computation/optimizer excluded. Native development and
+published public quality/data differ. Common report work columns include this
+lower-bound row without a matched-quality/isoflop claim. Proof/receipt in
+references/MODDED_NANOGPT_WORK_BOUND_20261005.md. No model execution/source
+change; active P24work replay and serial256K admission preserved.
+
+
 **256Kcompleted-evidence reporting/utility prepared:** report/token_data_growth.py
 now emits completed256Kstage before64K/repeat, validating expected data/seed/
 width/exposure and using common quality/resource/work columns. Pending256K

@@ -1,0 +1,21 @@
+{
+  "status": "completed_source_bound_lower_bound",
+  "complete_reference_work": false,
+  "reference": "modded-nanoGPT historical 2025-01-26 BatchSize",
+  "source_url": "https://github.com/KellerJordan/modded-nanogpt/blob/4ea6b937337a4889b8cfe3f38a93d120048d8f71/records/track_1_short/2025-01-26_BatchSize/0bdd5ee9-ac28-4202-bdf1-c906b102b0ec.txt",
+  "source_sha256": "62a81a281be714d90e183c95b6190643940626f4dd9a9ba37b02e6ed704118ab",
+  "width": 768,
+  "padded_output_classes": 50304,
+  "mac_flops": 2,
+  "fitting_targets": 695992320,
+  "inference_targets": 10485760,
+  "fitting_head_arithmetic_flops": 161331598841610240,
+  "fitting_head_arithmetic_flops_per_target": 231800832,
+  "inference_head_arithmetic_flops_per_target": 77266944,
+  "inference_head_arithmetic_flops": 810202630717440,
+  "formula": "Forward XW^T and explicit backward dY W / dY^T X: each 2*targets*768*50304; training three contractions, evaluation one.",
+  "included": "Dense output projection contractions only, source-derived conventional arithmetic.",
+  "excluded": "Attention, local MLPs, embeddings, scalar operations, normalization/softcap/cross entropy, dtype scaling/casts, optimizer, communication, diagnostics and initialization. All excluded costs are nonnegative; no complete baseline FLOP claim.",
+  "scope": "Arithmetic lower bound, not an executed trace, GPU timing, traffic or energy. FP8 training and FP32/BF16 evaluation still count two arithmetic FLOPs per multiply-add; bit precision/hardware cost differs from CPU native. Published NLL3.2774 belongs to the full reference/public population, not this isolated head. Unequal native development data/quality prevents a benchmark win claim.",
+  "producer_source_sha256": "a0900ad9a0cf238b7e2b48fe1cf9a804f6543e33b0d73ba79f41888ecfc039c8"
+}
