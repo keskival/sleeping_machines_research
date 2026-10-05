@@ -1,0 +1,191 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1",
+      "seed": 6,
+      "credit_window": 16,
+      "minimum_tail_width": 0,
+      "train_tokens": 8192,
+      "fit_targets": 16368,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.297491335401348,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1.best_step00000016.pt"
+      },
+      "promotion": {
+        "selected_step": 16,
+        "selected_dev_nll": 8.297491335401348,
+        "initial_dev_nll": 8.340313361672795,
+        "contextual_learning_gain": 0.04282202627144649,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 8.297491073608398,
+      "train_mean_nll": 8.315250396728516,
+      "context_gain": 0.017759323120117188,
+      "erasure_nll": {
+        "intact": 8.297491021249808,
+        "memory": 8.297872103896795,
+        "message": 8.31533457251156,
+        "both": 8.314041803397384
+      },
+      "history_gains": {
+        "memory": 0.0003810302883966443,
+        "message": 0.017843498903161503,
+        "both": 0.016550729788985308
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "eec1cb9caa4b8497848ab0103d9743a42f8134a51ea61571fc2833fdff8dd5e3",
+      "train_feature_observations": 8184
+    },
+    {
+      "tag": "curie_fixed_batch_tokens_8k_b64_c64_s6_20261005_v1",
+      "seed": 6,
+      "credit_window": 64,
+      "minimum_tail_width": 0,
+      "train_tokens": 8192,
+      "fit_targets": 16368,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.300131405101103,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c64_s6_20261005_v1.best_step00000016.pt"
+      },
+      "promotion": {
+        "selected_step": 16,
+        "selected_dev_nll": 8.300131405101103,
+        "initial_dev_nll": 8.340313361672795,
+        "contextual_learning_gain": 0.04018195657169166,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 8.300130844116211,
+      "train_mean_nll": 8.30202865600586,
+      "context_gain": 0.0018978118896484375,
+      "erasure_nll": {
+        "intact": 8.300131291034175,
+        "memory": 8.2998623455272,
+        "message": 8.320478972266702,
+        "both": 8.319606816534902
+      },
+      "history_gains": {
+        "memory": -0.0002684985890102354,
+        "message": 0.020348128150491362,
+        "both": 0.019475972418691256
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "5934d5dc1d0c12d571ab9e0fb7262a287f9580cb0a27dd941e94461f7a8d4269",
+      "train_feature_observations": 8184
+    },
+    {
+      "tag": "curie_fixed_batch_tokens_8k_b64_c16_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 16,
+      "minimum_tail_width": 0,
+      "train_tokens": 8192,
+      "fit_targets": 16368,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.286427217371324,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c16_s7_20261005_v1.best_step00000016.pt"
+      },
+      "promotion": {
+        "selected_step": 16,
+        "selected_dev_nll": 8.286427217371324,
+        "initial_dev_nll": 8.340313361672795,
+        "contextual_learning_gain": 0.05388614430147065,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 8.286426544189453,
+      "train_mean_nll": 8.313941955566406,
+      "context_gain": 0.027515411376953125,
+      "erasure_nll": {
+        "intact": 8.286427260380165,
+        "memory": 8.287406728781907,
+        "message": 8.308381701450722,
+        "both": 8.307236162821452
+      },
+      "history_gains": {
+        "memory": 0.0009801845924535257,
+        "message": 0.021955157261269065,
+        "both": 0.020809618631998816
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "c2a50cf50386c8ad9b3b275849cc96e47fae49f6be7c61b651b8d6275c4351e5",
+      "train_feature_observations": 8184
+    },
+    {
+      "tag": "curie_fixed_batch_tokens_8k_b64_c64_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 64,
+      "minimum_tail_width": 0,
+      "train_tokens": 8192,
+      "fit_targets": 16368,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.29023557176777,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c64_s7_20261005_v1.best_step00000016.pt"
+      },
+      "promotion": {
+        "selected_step": 16,
+        "selected_dev_nll": 8.29023557176777,
+        "initial_dev_nll": 8.340313361672795,
+        "contextual_learning_gain": 0.05007778990502487,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 8.29023551940918,
+      "train_mean_nll": 8.30794620513916,
+      "context_gain": 0.01771068572998047,
+      "erasure_nll": {
+        "intact": 8.290235712013992,
+        "memory": 8.290684518627092,
+        "message": 8.311520849489698,
+        "both": 8.310564600252638
+      },
+      "history_gains": {
+        "memory": 0.0004489992179124158,
+        "message": 0.02128533008051825,
+        "both": 0.020329080843458414
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "d90024dd563fbe2fa354788faf2fde156d83699d24527c8e52ea2e8746d93a68",
+      "train_feature_observations": 8184
+    }
+  ],
+  "source_sha256": "166b662c1cf93d980f1f26bebdb4d5e83b2cbc7ea976c549d5a9c139e354333f",
+  "scope": "Frozen development interventions on initial-inclusive selected checkpoints, exact causal model features and train-only constant-feature mean. State erased before each subsequent token; same route RNG and token partition parity. Out-of-distribution erasure, not retrained ablation. Mean-feature control not an optimally refitted unigram. No fitting, public validation or full hard-alternative credit measurement."
+}

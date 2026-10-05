@@ -1,5 +1,37 @@
 # Session handoff — 2026-09-30
 
+**8Kintegrated stage and coupling decision —5 October19:46UTC:** local host idle,
+~10GiBavailable, no GPU tool; bounded one-thread run_safe fits in tmux reserved
+8GiB, RSS1.2GB/VMS5GB/240s. Existing AWSpackets preserved; remote admission remains
+unobserved. Four completed8Kfits use8192TRAINtokens,16368presentations/two passes,
+32updates,batch64,2040devtargets. Initial8.340313. Selected credit16/64seed6:
+8.297491/8.300131;seed7:8.286427/8.290236. Both learn in both seeds;16wins both
+paired selected comparisons,0.003224mean gap below seed spread. Default decoder
+retained:fullwidthseed6/7is8.302969/8.286345,no consistentgain. Frozen utility:
+credit16contextgains0.017759/0.027515,addressederasurecost0.000381/0.000980;
+credit64context0.001898/0.017711,addressed−0.000268/+0.000449. Message erasure
+cost0.017843–0.021955. Source/RNG/partition parity pass. See stage/utility JSONs.
+Derived unitgain2repair keeps all mechanisms and exact scalar arithmetic shapes;
+8contracts passed, including actual tiny-fit scale1parity and scale2resume plus
+rejecting changed gain. Seed6gain2selected8.310055 loses to8.297491;fails
+predeclared0.002NLLgate,so no seed7or gain grid. Original temporal transport and
+all frozen sources retained. Read TOKEN_MEMORY_COUPLING_20261005 before departure.
+Current prioritized member:packedP16/D2/H2/U4,batch64credit16,frequency adaptive
+output/defaulttails,balanced GPT-2input,persistent state,uniformK4actualwritecredit.
+Exact whole-fit8Kcredit16work audit runs in tmux curie_fixed_batch_8k_c16_work_20261005_v1,
+queue curie_fixed_batch_tokens_8k_c16_work_20261005_v1.txt,900sbounded timeout based
+on measured2Kaudit overhead. Inspect completion before further fitting. Next:reserved64Kdata exposure after work parity;
+waiting tmux curie_data_growth_64k_20261005_v1 executes token_64k_admission.py
+then unique run_safe queue curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.txt.
+It requires both8Kseed learning/context gates, full work coverage/parity and source
+pins;64Ktwo passes=131056targets/256updates,eval every64,2040devtargets,
+RSS1.2GB/VMS5GB/900s/8GiBfloor. Read TOKEN_DATA_GROWTH_64K_20261005.md.
+ useful addressed memory remains the measured
+gap,alongside large-bank quality/discovery/optional schedules/public endpoint.
+Report source/appendix adds completed8Krows and keeps work pending until results.
+Continuous goal active:user asked autonomous ongoing work without repeated prompts.
+
+
 **Strength-led tokenized continuation —5 October:** user requests continued language
 supremacy work and native strengths without imposing Transformer topology/windows.
 Read TOKEN_STRENGTH_EXECUTION_20261005.md. Retain temporal races, sparse addressed

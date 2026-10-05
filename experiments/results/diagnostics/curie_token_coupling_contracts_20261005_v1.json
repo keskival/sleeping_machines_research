@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "contracts": [
+    "scale1 all parameters/features/state/RNG/gradient parity",
+    "scale2 exact chunk partition/state/RNG parity",
+    "scale2 exact normalized initial output",
+    "scale2 finite nonzero deep addressed-state gradient",
+    "scale2 lane-local EOS reset",
+    "scale1 actual tiny-fit curve/model/optimizer/state/RNG parity",
+    "scale2 actual interruption/resume model/optimizer/state/all RNG parity",
+    "changed gain scale rejected at resume"
+  ],
+  "scope": "Synthetic numerical checks plus five sequential tiny integrated fits; actual uniform-site alternative-write teacher, four internal credit windows per update. Original sources and prior results preserved."
+}
