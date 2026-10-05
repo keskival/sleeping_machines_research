@@ -70,6 +70,13 @@ the current best configuration is queued on AWS. Leaderboard: AEGRU .71 (six-ses
 **SHD.** Official files downloaded; driver ready (speaker-held-out validation); development arms are queued after primate
 round 2.
 
+**Primate P0-3, 4/6 (5 Oct 13:40 UTC): leaderboard win out of reach.** loco_20170215_02 R² 0.519 (tinyRSNN .608, bigRSNN .629).
+Paired mean over 4 sessions: ours .604, tinyRSNN .632, bigRSNN .670. A six-session mean > .71 would need ≈ .92 on the last two.
+The consistent pattern: Indy (96 channels) at or above both references, Loco (192 channels) behind by .09–.18. Follow-up
+after the run completes, as a new pre-declared protocol: the fixed configuration was chosen on an Indy session, and Loco test
+values have now been seen, so any Loco-informed change (input normalization or channel grouping for 192 channels) must be
+developed on validation splits only and declared before a fresh run. A rerun is not a repair of this result.
+
 **Primate P0-3, 3/6 (5 Oct 13:00 UTC):** loco_20170210_03 R² **0.529** (tinyRSNN .622, bigRSNN .698). This is the first Loco session,
 and we trail both clearly. Paired mean over 3 sessions: ours .632, tinyRSNN .640, bigRSNN .684. A six-session mean > .71 now
 needs the remaining three (loco_20170215_02, loco_20170301_05, indy_20170131_02) to average ≈ .79, above every session
