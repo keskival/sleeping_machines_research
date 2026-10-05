@@ -55,6 +55,8 @@ precedents and first proof condition.
 - **Continual and on-device learning, adaptive communication and self-designing models:** delays, routes, memory policies, codecs and structure learn from use.
 - **Computing substrates:** datacenter and edge serving with capacity beyond activity, and clockless, memory-local event hardware that learns on chip.
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 ## Already demonstrated
 
 - **Counterfactual route credit works.** Value-informed credit improves native language from 2.507 to 2.371 bpc for 0.3% extra training work, and the depth-8 model from 2.456 to 2.326.

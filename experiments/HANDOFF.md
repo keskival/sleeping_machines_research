@@ -1,5 +1,9 @@
 # Session handoff — 2026-09-30
 
+**Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
+
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 **FAS v2 confirmatory program (5 Oct 14:30 UTC, user-directed):** read [FAS_V2_CONFIRMATORY_PROTOCOL.md](FAS_V2_CONFIRMATORY_PROTOCOL.md).
 Stages 0–2 (generator, beam de-interleaver, per-run score saving, validation calibration) are CPU-light; start them now.
 
@@ -2771,3 +2775,50 @@ continuinghealthy. Thesecompletedsmokesare contracts/throughput, NOTquality
 evidence. Furtherphysicaltrainingresults pending. New explicitrecovery
 bindings letreporttunedgroupread identical-settingsC retry without replacing
 originalinterruptedrow;10stdlibregression/bindinggroups passed a757eef9.
+
+## Curie tokenized small-first implementation — 5 Oct, review workspace
+
+User now explicitly orders persistent systematic development until a scalable
+benchmark-winning family member exists, reconsidering old implementation
+choices, with small capacity/grokking diagnostics before large fits. Active
+Codex goal tracks this; no benchmark win is claimed from these pilots.
+
+The image DOES contain CPU PyTorch; created ignored `.venv-docker` using system
+packages and admitted bounded one-thread jobs via ordinary run_safe.sh, unique
+one-job queues, 8 GiB memory floor, 0.85–1.2 GB RSS caps. No old host job was
+interrupted. Installed missing `python3-dev` after the first compiled contract
+failed on absent Python.h. Failed queue/log retained; new-name retry passed.
+
+Implemented `token_episodes.py` (lookup input, numeric state carry, explicit
+RNG, EOS lane resets, local value credit), `token_readout.py` (normalized
+adaptive likelihood), train-only frequency-initialized readout, bounded
+laboratory drivers and checkpoint recovery. Existing source-pinned core
+kernels are unchanged. Six eager contracts pass, including stochastic chunk
+partition and all-gradient parity, readout normalization and exact restored
+optimizer update. Compiled token-core feature/all-gradient/write parity passes.
+
+Completed development fits under `results/token_language`: legacy input best
+dev9.3313, balanced9.3949, balanced+frequency readout8.2376, on the same16,368
+presentations/8,192 training tokens/2,048 disjoint dev tokens. Frequency-readout
+variant wins this development comparison; no matched-FLOP claim. Its initial
+train-only frequency dev8.3403 improves by.1027. Balanced input alone fits better
+but loses dev by.0636. Tiny512-token dense-head memorization reaches.02436
+trainNLL; held-out loss rises. Eager adaptive fit516–517tokens/s, peak385MB;
+dense memorization222tokens/s, peak435MB. Compiled fitting speed being measured.
+
+Prioritized model: balanced-input, train-frequency initialized adaptive
+readout, integrated temporal races with persistent deep state/local value
+credit. Current one-job queue `curie_token_compiled_pilot_20261005_v4.txt`.
+Next: carried-vs-reset, pool capacity/tying and larger small-data sample, then
+bounded future-write counterfactual teacher and credit horizon if diagnostics
+support them. Current gaps: future alternative writes do not receive outcome
+credit; all keys/proposals and dense optimizer are charged; inter-token waiting
+rare at timestamp spacing1; no full-fit FLOP trace yet. These are implementation
+work, not architecture ceilings. Original producers archived by source hash.
+
+Pinned FineWeb GPT-2 100M-token train and validation shards downloaded under
+ignoreddata/. Public first10,485,760 validation targets reserved; dev starts
+20,971,520. Historical modded-nanoGPT Jan26 published source/log/license stored
+underreferences/:3.2774NLL,12layers/width768,696,975,360 presentations,document
+masking/sliding attention,long validation sequences. Reuse, do not retrain it.
+See TOKEN_LANGUAGE_DEVELOPMENT.md for constructions, gates and exact scope.

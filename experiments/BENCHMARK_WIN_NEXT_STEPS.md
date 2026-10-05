@@ -1,5 +1,7 @@
 # Next steps toward benchmark wins
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 5 October 2026 · Decision memo from completed results · No new host admission.
 
 This plan supports PRODUCT_ORDERS.md; it does not cancel active jobs, alter
@@ -37,16 +39,13 @@ Existing queue: queue/aws_primate_admission_20261004T184500Z/manifest.json.
 
 ## 2. Industrial comparison: retain the result and revise its priority
 
-**Later control, 5 October:** the route-aware FIFO de-interleaver reaches .755
-AUROC at 256 events and .913 at 512, matching the identity-aware oracle and
-beating native .600/.742. FAS v1 is not a home-field win against the strongest
-tested classical control. R8's longer horizons survive, but AUROC .573 at 256
+**Oracle-assisted diagnostic, 5 October:** FIFO reaches .755 AUROC at 256 events and .913 at 512 after fitting its route with hidden TRAIN item identities. Exclude it from fair-reference rankings. Native .600/.742 retains its win against the six generic controls. R8's longer horizons survive, but AUROC .573 at 256
 does not close the gap. Preserve the earlier results below as comparisons to
 the generic controls. Defer the five new reference fits, native replication
 and longer v1 sweeps behind the language scaling path, except already admitted
 jobs. One bounded TRAIN-only binding diagnostic can inform a transferable
 memory repair; its specification is FAS_BINDING_DIAGNOSTIC.md. Any v2 benchmark
-must challenge the structure-aware control before model training. See
+must audit reference training inputs before model training; privileged trackers remain oracle diagnostics. See
 FAS_BENCHMARK.md for the result and protocol revision.
 
 The original comparison: the first FAS native arm reaches .600 AUROC at 256 events versus the then-best tested

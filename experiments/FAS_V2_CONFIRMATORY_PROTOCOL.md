@@ -1,12 +1,14 @@
 # FAS v2 confirmatory protocol: interleaved event streams with ambiguous identity
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 5 October 2026 · User-directed · Queue: `queue/fas_v2_confirmatory_20261005T143000Z/manifest.json`
 
 ## Purpose
 
 Show, in a form that survives investor and reviewer scrutiny, whether the native architecture detects faults earlier
 than every strong alternative when several processes write into one log and their identities cannot be recovered by
-structure. FAS v1 did not test this: a classical FIFO de-interleaver recovers item identity exactly and reaches the
+structure. FAS v1 supplies an oracle-assisted diagnostic: FIFO uses hidden TRAIN item identities to learn its route and reaches the
 identity-aware oracle (0.755 at N=256, 0.913 at N=512; native 0.600 / 0.742). The v2 probe showed the property v1
 lacked: with two merged lines and 2% dropped events, FIFO binding collapses to chance and a timing-aware de-interleaver
 keeps most, but not all, of the oracle's signal (FAS_BENCHMARK.md, 5 Oct 11:45 and 12:45).
@@ -18,9 +20,8 @@ any learned model sees v2 data.
 ## What convinces
 
 1. **The benchmark difficulty is set without learned models.** The v2 setting is chosen on validation data from
-   the oracle and the classical detectors only, by the rule in Stage 1. Native results never influence it.
-2. **The strongest classical answer is in the comparison.** Structure-aware de-interleavers (FIFO, timing-aware and
-   a beam-search data-association tracker) are run, not only generic rules.
+   the identity-aware oracle, oracle-assisted diagnostics and eligible anonymous-log classical references, by the rule in Stage 1. Native results never influence it.
+2. **Fair classical references learn from anonymous logs only.** FIFO, timing-aware and beam trackers using identity-derived routes or timing distributions are oracle-assisted diagnostics. A tracker is eligible as a reference only after its full fitting path passes an anonymous-input audit.
 3. **Modern neural references get the same data, inputs, budget and tuning opportunity.** LSTM, Transformer with
    continuous-time encoding, LRU, S5 discretized by real gaps, Mamba-style selective SSM.
 4. **One primary endpoint, one decision rule, three seeds, paired uncertainty.** Fixed below.
@@ -53,7 +54,7 @@ any learned model sees v2 data.
     (`*_scores.npz`) so paired bootstrap is possible.
   - A suffix-mutation causality probe for every learned model (changing events after position t leaves scores up to
     t unchanged), as in the E171 audit.
-- `experiments/fas/beam_deinterleave.py`: strongest classical baseline. Multiple-hypothesis assignment of each
+- `experiments/fas/beam_deinterleave.py`: proposed classical tracker. It is a fair reference only if route transitions and gap densities are learned exclusively from anonymous logs; otherwise classify it as oracle-assisted. Multiple-hypothesis assignment of each
   process event to a (line, item) track, scoring hypotheses by the clean route-transition model plus per-transition
   gap density; beam width chosen from {16, 64, 256} on validation. Score as the oracle does (item-own durations).
 - Record SHA256 of the generator, drivers, scorers and this protocol in the manifest before Stage 2.
@@ -61,14 +62,13 @@ any learned model sees v2 data.
 ## Stage 1: setting calibration (validation only, classical and oracle only)
 
 Generate validation-only calibration sets (1,000 clean + 1,000 faulty samples) over the grid
-K ∈ {2, 3, 4}, p ∈ {0.02, 0.05}, δ ∈ {0, ±5% alternating by line}. On each, run: oracle (true identity), FIFO,
-timing-aware and beam de-interleavers, the six generic controls (elapsed, tick_count, gap_z, gap_quantile,
+K ∈ {2, 3, 4}, p ∈ {0.02, 0.05}, δ ∈ {0, ±5% alternating by line}. On each, run: oracle (true identity), oracle-assisted FIFO and timing-aware diagnostics, a beam tracker classified by its fitting-input audit, and the six generic controls (elapsed, tick_count, gap_z, gap_quantile,
 gap_cusum, gap_robust_z) and order3/timed_ngram.
 
 **Selection rule.** Primary prefix N* = 512. Choose the mildest setting (smallest K, then smallest p, then δ=0)
 that satisfies both:
 - oracle AUROC ≥ 0.70 at N*;
-- oracle − best identity-free classical detector ≥ 0.08 at N*.
+- oracle − best information-matched classical reference ≥ 0.08 at N*.
 
 If no setting qualifies, stop: FAS in this form is not a discriminating home-field benchmark, and that is reported
 as the result. Publish the full calibration grid either way
@@ -109,7 +109,7 @@ estimated; state both conventions in the table. Report actual work for each sele
 
 **Primary endpoint:** test AUROC at N*=512, all faults, primary scoring rule (`total`), native seed mean.
 
-**Strongest baseline:** the highest test AUROC at N* among all classical detectors and the seed means of all neural
+**Strongest baseline:** exclude every oracle-assisted method (including hidden-identity-trained FIFO and timing-aware probes). Use the highest test AUROC at N* among information-matched classical references and the seed means of all neural
 families (taking the maximum on test favours the baselines; this is deliberate).
 
 **Win** if all three hold:
@@ -143,7 +143,7 @@ Identity-stripped real logs, so the claim generalizes beyond the simulator. Cand
   anomalies injected with the established process-mining scheme (skip, insert, rework, early, late).
 
 Admit a candidate only if the Stage 1 style gate holds on its validation split (identity-aware oracle minus best
-identity-free classical ≥ 0.05). Write and freeze a protocol addendum with the same stages before any learned model
+information-matched classical reference ≥ 0.05). Write and freeze a protocol addendum with the same stages before any learned model
 runs on it.
 
 ## Hosts and order
@@ -153,3 +153,7 @@ runs on it.
 - Stage 3–4 references: AWS slots, after their two-window smokes set RSS caps (≥ 8 GiB MemAvailable kept).
 - Admission: first free capacity without preempting running jobs. Every training run gets a uniquely named one-job
   queue created by the physical owner once its stage contracts pass.
+
+## Protocol amendment: oracle-assisted classification, 5 October 2026
+
+This user-directed amendment corrects reference eligibility after auditing hidden TRAIN identity use; it is not the original frozen protocol. Preserve original queue/source pins and historical results. Physical owners must create a new uniquely named, source-bound protocol/manifest before executing an amended stage; existing frozen queues are not silently redefined. Oracle-assisted results remain diagnostic measurements. No training or queue admission was performed by this correction.

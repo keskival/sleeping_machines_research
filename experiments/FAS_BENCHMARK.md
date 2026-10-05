@@ -1,5 +1,7 @@
 # FAS interlaced-event anomaly benchmark (opened 4 October 2026)
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 User direction: show the architecture in its home field, asynchronous event representations, with a challenge
 in interlaced sequences. Data come from the user's own simulator, FAS-Simulator (Keski-Valkama 2017, *A simulator for
 event-oriented data in flexible assembly system fault prediction*, Procedia Computer Science 119:121–130). The simulator is
@@ -245,13 +247,13 @@ estimates for dense references), and inference work up to the decision at N.
     a *specific* item is late. The remaining gap to the identity-aware oracle (.755 at N = 256) is **per-item binding**.
   - Next diagnostic: per-slot write purity against the oracle's item identities (diagnostic only; identities never enter
     the model). Then original-write credit across truncated segments (BENCHMARK_WIN_NEXT_STEPS.md §2).
-- 5 Oct 11:00 UTC (Docker review host): **a classical route-aware de-interleaver equals the oracle; FAS v1 is solved by structure**
+- 5 Oct 11:00 UTC (Docker review host): **oracle-assisted FIFO matches the identity-aware oracle (historical fair-reference interpretation superseded)**
   (`experiments/fas/deinterleave_baseline.py`, `experiments/results/fas/fas_v1_deinterleave_test_20261005T110000Z.json`).
-  Identity-free: learn the item route from clean runs (35 types; 66% of clean items follow it exactly), then assign each process
+  Oracle-assisted: learn the item route using hidden TRAIN item identities from clean runs (35 types; 66% of clean items follow it exactly), then assign each process
   event online to the waiting item whose next expected type matches, FIFO. On 2,000 clean + 2,000 faulty test runs, item-own
   pair accuracy is **1.000** and 99.0–99.4% of events are assigned. Scoring the inferred item-own durations as the oracle does gives
   AUROC identical to the oracle: **0.755 at N=256, 0.913 at N=512** (native pool 2: 0.600 / 0.742; R0/R1/R3/R8: 0.566–0.578).
-  Consequences:
+  Historical consequences below are superseded by the protocol correction at the top: privileged training structure prevents a fair-reference loss verdict. Scores remain valid oracle-assisted diagnostics.
   1. The deck/valuation line "earlier fault detection than every classical method" is withdrawn. The structure-aware
      classical control beats native by .155 at N=256. The earlier comparison (native > six identity-free generic controls)
      stays true as stated, but it is not the strongest classical control.
@@ -272,7 +274,7 @@ estimates for dense references), and inference work up to the decision at N.
 | v2 detector | N=128 | N=256 | N=512 | N=1024 |
 |---|---:|---:|---:|---:|
 | oracle (true line+item identity, max-step) | 0.572 | 0.598 | 0.673 | 0.792 |
-| FIFO route de-interleaver | 0.517 | 0.502 | 0.498 | 0.530 |
+| Oracle-assisted FIFO (hidden TRAIN identities) | 0.517 | 0.502 | 0.498 | 0.530 |
 
   The structure-aware rule collapses to chance while signal remains for a model that binds correctly. This is the property
   v1 lacked. Proposal for v2 before any native run: (1) freeze a seeded v2 generator and dataset (2,000+2,000 test); (2) rerun the
@@ -287,7 +289,7 @@ estimates for dense references), and inference work up to the decision at N.
 | v2 detector | N=128 | N=256 | N=512 | N=1024 |
 |---|---:|---:|---:|---:|
 | oracle | 0.572 | 0.598 | 0.673 | 0.792 |
-| timing-aware de-interleaver | 0.512 | 0.587 | 0.568 | 0.679 |
+| Oracle-assisted timing-aware tracker (hidden TRAIN identities) | 0.512 | 0.587 | 0.568 | 0.679 |
 | FIFO de-interleaver | 0.517 | 0.502 | 0.498 | 0.530 |
 
   The timing rule takes nearly all of the oracle's signal at N=256; ~0.10 of headroom remains at N=512–1024. A v2 claim must beat

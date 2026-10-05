@@ -1,0 +1,61 @@
+{
+  "status": "completed_static_audit",
+  "scope": "leading integrated native language path and existing alternative implementations; not every family member",
+  "numerical_runs_started": 0,
+  "source_bindings": [
+    {
+      "path": "experiments/language_batched_benchmark.py",
+      "saved_sha256": "e43bc4be9ac519c81cd139e8dc2cd1aae21efc1d7f5856a50721923f68f4f995",
+      "current_sha256": "e43bc4be9ac519c81cd139e8dc2cd1aae21efc1d7f5856a50721923f68f4f995"
+    },
+    {
+      "path": "sleeping_machines/batched_episodes.py",
+      "saved_sha256": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+      "current_sha256": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9"
+    },
+    {
+      "path": "experiments/dvs_batched_large_benchmark.py",
+      "saved_sha256": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889",
+      "current_sha256": "a7f743ee7a3fe5a6794f73fea0638500f1b62d3dbff2578bcbd8948ca0832889"
+    },
+    {
+      "path": "sleeping_machines/fast_native_core.py",
+      "saved_sha256": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "current_sha256": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a"
+    },
+    {
+      "path": "sleeping_machines/addressed_event_heads.py",
+      "saved_sha256": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "current_sha256": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3"
+    },
+    {
+      "path": "sleeping_machines/sparse_training.py",
+      "saved_sha256": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "current_sha256": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f"
+    },
+    {
+      "path": "sleeping_machines/compiled_episodes.py",
+      "saved_sha256": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "current_sha256": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+    }
+  ],
+  "parent_result": "experiments/results/language_batched/aws_language_batched_90M_r4_p64d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z.json",
+  "parent_sha256": "9721392f21187c75cb9e3cc190bae214fd542ba0970dda4344a939922aadd5e8",
+  "confirmed_restrictions": [
+    "hardcoded_27_character_driver",
+    "dense_onehot_input",
+    "reset_state_each_training_segment",
+    "reset_window_evaluation",
+    "local_linear_credit_not_counterfactual_future_write_utility",
+    "no_direct_loser_value_map_gradient_from_local_teacher",
+    "all_proposals_evaluated_in_leading_training_backend",
+    "small_pool2_capacity_example",
+    "fixed_depth_all_heads",
+    "bounded_clocks_and_score_clamp",
+    "shared_lane_noise",
+    "final_checkpoint_selection",
+    "random_with_replacement_presentations"
+  ],
+  "causal_quality_penalties": "require integrated comparisons; not inferred from source alone",
+  "report": "experiments/LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md"
+}

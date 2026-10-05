@@ -1,5 +1,13 @@
 # Local host: current research continuation
 
+**Latest user direction — implementation serves the objective:** we own and change the implementation. Current driver/backend choices are engineering work to resolve, never reasons to constrain tokenization, persistent memory, routing, learning or the research ambition. Build the capabilities the selected economical experiment requires. See OPEN_LANGUAGE_REFERENCE_PLAN.md and LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md.
+
+**Implementation audit (5 October, user-directed):** read [LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md](LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md). Thirteen leading-path restrictions recorded against seven source hashes matching the completed 90M fit. No numerical job or kernel edit; restriction presence is confirmed, quality penalties require integrated tests. Priorities: token IDs, persistent document fitting/selection, routing/continuation credit, sparse learning at larger useful capacity. Existing streaming rescores show evaluation carry alone leaves p96 quality ~1.888.
+
+**Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
+
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 ## Main objective updated: Transformers at larger scale — 5 October 2026
 
 Latest user direction: small-scale counts/LSTM battles are secondary; find and
@@ -11,9 +19,7 @@ LSTM wins are not an admission gate. No crossover or frontier advantage is
 established. D lacks a budget-optimized recurrent arm; modern corpus/tokenizer
 and GPU execution/provisioning remain open. No core mechanism substitution.
 
-Owner commit d2cd7f43 appeared during preparation: FAS-v1 FIFO de-interleaver
-matches the oracle (.755/.913 at N256/N512), above native .600/.742. Preserve
-the old generic-control lead with this revision. Further v1 sweeps and the
+Owner commit d2cd7f43 published FAS-v1 FIFO scores (.755/.913 at N256/N512), above native .600/.742. The subsequent audit identifies hidden TRAIN item identities in route fitting: classify FIFO as oracle-assisted, not a fair reference. Preserve the native win against generic controls. Further v1 sweeps and the
 binding diagnosis are deferred behind language scaling except already admitted
 work. New k-write contracts/smokes stay prepared; full fits are conditional on
 one bounded transferable hypothesis rather than automatically launching all.
@@ -3707,3 +3713,7 @@ shared HANDOFF.md: native content/time language with sparse addressed state and
 counterfactual route credit, AWS scaling/tuned comparisons and confirming seeds.
 Joint multimodal training, delayed writer credit, trained sparse serving and
 measured hardware work remain the concrete next proofs. No departure proposed.
+
+## CPU tokenized language reference selection and scaling repair — 5 October
+
+User directs public GPT/Transformer reference reuse, properly tokenized data and CPU-only native fitting. OPEN_LANGUAGE_REFERENCE_PLAN.md contains the verified shortlist, remote revision register, measured ~7,979 character/s CPU anchor, vocabulary/head cost diagnosis and bounded routing/learning repair loop. WikiText-103 is the smallest reviewed tokenized corpus with published recurrent/Transformer quality evidence; FineWeb is the GPT-style replication path, with specific smaller records requiring selection/audit. No baseline retraining, GPU provisioning, dataset download or ML job was launched. Prioritized integrated member remains D4/H2 addressed event heads with persistent temporal memory, sparse races and counterfactual credit. Remaining prerequisites: exact reference selection, token-ID interface, normalized output head, CPU smoke and owner queue admission. No core mechanism departure is proposed; token gathers preserve one-hot projection algebra.

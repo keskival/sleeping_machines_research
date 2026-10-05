@@ -1,5 +1,7 @@
 # Benchmark-win execution: owner continuation packet
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 5 October 2026, 10:45 UTC · User instruction: make sure the next-step plan is done.
 
 The revised [execution inventory](queue/benchmark_win_execution_20261005T111500Z.json)
@@ -38,8 +40,7 @@ to map the competitive region; a small text8 LSTM win is not a prerequisite.
 Prepare the modern corpus/tokenizer, causal/context contracts and complete
 accounting while these controls finish. No modern run is admitted here.
 
-The later FAS FIFO control reaches the oracle (.755 at N256, .913 at N512),
-beating native .600/.742. Further FAS-v1 fits, smokes, replication and binding
+The FAS FIFO oracle-assisted diagnostic reaches .755 at N256 and .913 at N512 using hidden TRAIN identities. Native .600/.742 is compared separately against information-matched references. Further FAS-v1 fits, smokes, replication and binding
 work are deferred behind language scaling unless already admitted. Preserve
 their queues and completed evidence. The instructions below remain the
 admission procedure if an owner later reactivates a deferred diagnostic; they
@@ -120,7 +121,7 @@ purity using oracle identities only in the diagnostic, then inspect original-
 write credit across truncated segments. Neither diagnosis is yet proved by R8.
 Original pool 2 FAS seed 7 and the
 [binding diagnostic specification](FAS_BINDING_DIAGNOSTIC.md) remain visible
-as deferred inventory rows after the stronger FIFO control. A bounded binding
+as deferred inventory rows under the language priority; FIFO is an oracle-assisted diagnostic. A bounded binding
 diagnosis may nominate a transferable memory repair; it cannot establish a
 v1 win against that control. Preserve active fits; use any native learning-rate
 arms as bounded recipe evidence, then prioritize the larger-data objective.

@@ -1,13 +1,10 @@
-"""Route-aware de-interleaving control for FAS (FAS_BENCHMARK.md, after R8 "binding, not horizon").
+"""Oracle-assisted FIFO diagnostic for FAS; NOT an anonymous-log reference.
 
-Identity-free classical control: each item follows a fixed route of event types (learned from clean training runs with
-the oracle's recovered identities). Process events are assigned online to the waiting item whose next expected type
-matches, first in first out among candidates. A route-start event opens a new item. Unmatched events are left
-unassigned. The inferred identities then feed the same scoring as oracle_bound.py (robust z of item-own step durations
-against clean training durations). This reports the assignment accuracy on test runs (against the recovered truth) and AUROC.
-
-If this rule recovers most of the oracle's signal, it is a strong control for any FAS home-field claim and specifies the
-binding computation a race model must learn. It uses no labels beyond clean-run structure.
+learn_route() groups clean TRAIN events by hidden simulator item identity to
+recover the route. Test predictions use observed events only, but training has
+privileged structure unavailable to native and generic controls. Retain scores
+as oracle-assisted diagnostics; exclude from fair-reference win/loss selection.
+Historical filename retained for compatibility. No algorithm changed.
 """
 import argparse
 from collections import Counter, defaultdict, deque

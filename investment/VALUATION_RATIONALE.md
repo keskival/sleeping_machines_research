@@ -45,7 +45,7 @@ quality/resource behavior.
 | Adaptive communications/codecs | Fewer transmitted bits and less recomputation for reconstruction or a declared task | A real independently decodable wire format and a superior quality/rate/work/latency curve |
 | Embodied generalist learning | Share useful representations across sensing, acting, language and reasoning | Joint learning and separately measured transfer in both directions, including held-out tasks |
 | Compute/hardware IP | Co-design local state, scheduling and communication for target platforms | Precision, scheduling, memory/interconnect and physical energy economics demonstrated |
-| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS v2 (ambiguous interleaving) against structure-aware rules and LSTM, Transformer, SSM and point-process references; NeuroBench; SHD. Then one design-partner dataset |
+| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS v2 (ambiguous interleaving) against anonymous-log classical and LSTM, Transformer, SSM and point-process references; oracle-assisted trackers reported separately; NeuroBench; SHD. Then one design-partner dataset |
 
 One successful deployment can provide value before the full platform exists.
 
@@ -75,11 +75,7 @@ Evidence stage, 4 October:
 - The first native arm is queued. Dense, SSM and point-process references follow on AWS.
 - The value is to be claimed only from completed comparisons.
 
-Evidence update, 5 October: the native model beats every generic classical control early (AUROC 0.600 vs 0.559 at 256
-events). In v1 a structure-aware rule (known route plus first-in-first-out matching) recovers item identity exactly and
-reaches 0.755, so v1 does not contain the ambiguous-identity problem. FAS v2 (merged lines, dropped events, ambiguous
-identity), where such rules collapse to chance, is now pre-registered with strong classical and neural references,
-three seeds and a sealed test ([protocol](../experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md)).
+Evidence update, 5 October: native wins against all six tested generic classical controls early (single-seed AUROC **0.600 vs 0.559 at 256 events**). The FIFO method reaches 0.755 using a route recovered from hidden training item identities. It is an **oracle-assisted diagnostic**, not a fair reference for discovering structure from anonymous traces. The v2 timing-aware probe also uses identity-derived training timing statistics. These scores do not establish a classical win under the native information protocol. FAS v2 is pre-registered; its primary reference comparisons must exclude privileged methods and retain them separately as oracle diagnostics ([protocol](../experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md)).
 Reusable mechanisms and tooling could then lower the cost of entering adjacent
 workloads. Value capture could include model/runtime licensing, deployment
 software, communication SDKs, accelerator IP and later hardware. These are

@@ -1,5 +1,9 @@
 # Main objective: language advantage where Transformers lead
 
+**Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
+
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 5 October 2026 · User-directed research priority · Prepared, not demonstrated.
 
 Our principal contest is against strong Transformers on larger, representative
@@ -155,7 +159,7 @@ event family.
 Complete near-finished primate evidence and existing strict Transformer-budget
 retries. Use small language mechanism tests only to nominate a scalable recipe
 or resolve a blocking numerical/accounting failure. Further attempts to beat
-small-scale LSTMs, counts or the structurally solved FAS-v1 task have lower
+small-scale LSTMs, counts or FAS-v1 oracle-assisted diagnostics have lower
 priority than the 90M controls and modern-language preparation. Preserve old
 queues and active jobs; owners enact the revised priority at safe boundaries.
 

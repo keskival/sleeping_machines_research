@@ -1,8 +1,10 @@
 # FAS binding and truncated-write diagnosis after R8
 
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 5 October 2026 · Bounded diagnostic, deferred behind language scaling · Physical owner: curie.
 
-The later FIFO de-interleaver matches the oracle and beats native on FAS v1
+The oracle-assisted FIFO diagnostic matches the identity-aware oracle on FAS v1 using a route learned from hidden TRAIN item identities. Its higher score is a diagnostic target, not a fair native loss
 (FAS_BENCHMARK.md). This diagnostic can inform a transferable binding/credit
 repair; it no longer belongs to a required v1 home-field-win campaign. Keep
 already admitted jobs and choose any further admission under the revised

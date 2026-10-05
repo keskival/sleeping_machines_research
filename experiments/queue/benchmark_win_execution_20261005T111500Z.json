@@ -56,7 +56,7 @@
       "queue_sha256": "9f7e49fa2dee3fcf187bcdb43f04d98ea14a2365658786aa577b369f010a97aa",
       "result": "experiments/results/fas/curie_fas_v1_native_p32d4_pool2_s7_linear_seg128_t1024_e2_20261005T063500Z.json",
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "curie_fas_recruit_R8_pool8_tied_tau1000_20261005T033000Z",
@@ -65,7 +65,7 @@
       "queue_sha256": "77f2f81b12d9d66e0f3a556ce0814b6bae223e9ea674833f7a7102e03410013c",
       "result": "experiments/results/fas/curie_fas_v1_recruit_R8_pool8_tied_tau1000_e1_20261005T033000Z.json",
       "disposition": "historical",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "curie_language_native_lr0.003_10M_p96d4_6pass_20261005T000500Z",
@@ -94,7 +94,7 @@
         "aws_fas_reference_smoke_lru_20261005T104500Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_v1_lstm_d128L2_20261004T224000Z",
@@ -107,7 +107,7 @@
         "aws_fas_reference_smoke_lstm_20261005T104500Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_v1_mamba_d128L2_20261004T224000Z",
@@ -120,7 +120,7 @@
         "aws_fas_reference_smoke_mamba_20261005T104500Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_v1_s5t_d128L2_20261004T224000Z",
@@ -133,7 +133,7 @@
         "aws_fas_reference_smoke_s5t_20261005T104500Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_v1_transformer_d128L2_20261004T224000Z",
@@ -146,7 +146,7 @@
         "aws_fas_reference_smoke_transformer_20261005T104500Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_language_10M_wd0.01_p64d4_4pass_20261005T040000Z",
@@ -287,7 +287,7 @@
         "aws_fas_v1_data_20261004T224000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_reference_smoke_lstm_20261005T104500Z",
@@ -300,7 +300,7 @@
         "aws_fas_v1_data_20261004T224000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_reference_smoke_mamba_20261005T104500Z",
@@ -313,7 +313,7 @@
         "aws_fas_v1_data_20261004T224000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_reference_smoke_s5t_20261005T104500Z",
@@ -326,7 +326,7 @@
         "aws_fas_v1_data_20261004T224000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_reference_smoke_transformer_20261005T104500Z",
@@ -339,7 +339,7 @@
         "aws_fas_v1_data_20261004T224000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_fas_v1_data_20261004T224000Z",
@@ -348,7 +348,7 @@
       "queue_sha256": "6d4a4e24f4555bd558dea95936ed2acf90f21f868a2b9ce02cb6709c1c60f8f1",
       "result": "experiments/results/aws_20260929/aws_fas_v1_data_20261004T224000Z/provenance.json",
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "aws_language_10M_strictA_p96d4_5.85pass_20261005T110000Z",
@@ -377,7 +377,7 @@
         "curie_fas_recruit_R8_pool8_tied_tau1000_20261005T033000Z"
       ],
       "disposition": "deferred",
-      "disposition_reason": "Stronger FIFO control matches the oracle and beats native on v1; retain evidence and active jobs, prioritize larger-data language."
+      "disposition_reason": "FIFO is an oracle-assisted diagnostic using hidden training identities, not a fair native-loss reference; retain evidence and active jobs. Larger-data language priority is unchanged."
     },
     {
       "id": "90M_D_aws_tuned_ref_90M_D_tf192L4_p1.75_lr0.002_s0_20261004T210000Z",
@@ -409,7 +409,7 @@
     "Prepare the modern-language/GPU protocol and a bounded crossover bracket; a D-optimized LSTM arm is missing. Do not require a 10M LSTM win before scaling.",
     "Finish frozen primate sessions and existing strict-budget retries, reporting full6/five-untouched means and actual same-unit resources.",
     "Use corrected k-write contracts/smokes first; choose a bounded scalable intervention instead of a broad small-scale grid.",
-    "FAS v1 replication/references/binding and full k-write fit arms are deferred, retained and not automatically cancelled. No v1 home-field win claim survives the FIFO control.",
+    "FAS v1 replication/references/binding and full k-write fit arms are deferred, retained and not automatically cancelled. Native wins against the six generic controls stand; oracle-assisted FIFO cannot invalidate an information-matched win.",
     "Report incomplete active tasks, deferred rows, physical owners and modern protocol/provisioning gaps separately; never mark frontier success from this checklist."
   ],
   "supersedes": "experiments/queue/benchmark_win_execution_20261005T104500Z.json",

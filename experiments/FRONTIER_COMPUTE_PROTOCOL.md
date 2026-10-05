@@ -1,5 +1,7 @@
 # Modern language models and adaptive compute budgets
 
+**Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
+
 This protocol turns [the compute-allocation theory](theory/43_compute_allocation_and_frontier_scaling.md)
 into falsifiable architecture comparisons. It is a development plan, not a
 completed frontier benchmark. Existing deferred AWS Transformer comparisons

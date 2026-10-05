@@ -1,5 +1,11 @@
 # Product orders — what we are after (issued 4 October 2026, 19:20 UTC)
 
+**Latest user direction — implementation serves the objective:** we own and change the implementation. Current driver/backend choices are engineering work to resolve, never reasons to constrain tokenization, persistent memory, routing, learning or the research ambition. Build the capabilities the selected economical experiment requires. See OPEN_LANGUAGE_REFERENCE_PLAN.md and LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md.
+
+**Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
+
+**Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
+
 Owner: the user. Product owner: curie agent, on the user's instruction. **Every agent (curie, AWS, local) reads this
 first and works these orders in priority order.** Definitions of win/loss: experiments/WIN_CRITERIA.md.
 
@@ -14,7 +20,7 @@ The modern corpus/tokenizer, strong Transformer and GPU execution requirements
 in FRONTIER_COMPUTE_PROTOCOL.md now belong to the main path rather than P2.
 Preserve active jobs and enact this priority at safe owner boundaries. Finish
 near-complete primate and existing strict-budget comparisons. FAS v1's FIFO
-control beats native; further v1 sweeps are deferred unless already admitted or
+method is an oracle-assisted diagnostic, excluded from fair-reference verdicts; further v1 sweeps are deferred unless already admitted or
 needed for one bounded transferable diagnosis. Historical orders below remain
 as the record; this paragraph governs new discretionary admission.
 
@@ -31,7 +37,7 @@ use k1 while later windows use k2. Preserve old queues/results, check active
 owners, then use corrected v2 stages. Numerical v2 contracts remain unrun.
 FAS R8 is completed; its longer horizons did not close the early-detection gap.
 The bounded binding/credit diagnostic specification is in FAS_BINDING_DIAGNOSTIC.md;
-it is deferred behind the language scaling objective after the stronger FIFO result.
+it is deferred behind the language scaling objective under the larger-data language priority; FIFO is oracle-assisted.
 This packet admits no worker and does not replace active scheduler manifests.
 
 ## What increases our valuation
@@ -121,7 +127,7 @@ budget-C tuned references first (they give the tuned verdict for the completed P
 and the X1 capacity arms (per-event levers), then p96 as the trajectory check. The product owner decides; nothing is
 cancelled.
 
-**P0-7 FAS correction (5 Oct 11:00, review host):** a classical route-aware FIFO de-interleaver recovers item identity
+**Historical P0-7 interpretation (5 Oct 11:00; superseded by the oracle-assisted protocol correction above):** a classical route-aware FIFO de-interleaver recovers item identity
 exactly and equals the oracle (0.755 at N=256, 0.913 at N=512). Native pool-2 0.600, recruitment arms 0.566–0.578. The
 "earlier than every classical method" claim is withdrawn. FAS v1 cannot show a race advantage unless native reaches ≥ .755.
 Next: (a) winner-identity diagnostic on the native arms; (b) FAS v2 with ambiguous interleaving (product variants,

@@ -142,3 +142,24 @@
   result paths. Old queues/drivers are retired. Use causal E173/E174 results;
   a corrected90M mixture comparison is still open. Audit-only archives and
   old rendered reports are not a source of benchmark claims.
+
+# FAS oracle classification (user direction, 5 October 2026)
+
+- FIFO de-interleaving learns its route from hidden TRAIN item identities; the v2 timing-aware probe also learns gap statistics from those identities. Classify both as oracle-assisted diagnostics, never fair anonymous-log references. Test-time anonymity does not repair privileged training information.
+- Preserve their measured scores and historical evidence with the protocol correction. Exclude privileged methods from reference selection and native win/loss decisions; retain the native single-seed 0.600 vs 0.559 AUROC win against six generic controls at N=256.
+- Admit structure-learning references only when all fitting and selection use the same anonymous inputs as native. Keep oracle diagnostics separate in tables and benchmark decision rules.
+
+# Language evidence: CPU and public-reference reuse (user direction, 5 October 2026)
+
+- Read experiments/OPEN_LANGUAGE_REFERENCE_PLAN.md for the current language path. Use properly tokenized data and CPU-only execution. Reuse published GPT/Transformer runs and checkpoints rather than retraining their replications or launching a new LSTM crossover grid.
+- Match the selected reference's exact tokenizer, corpus and scored-target/history protocol. Published quality comparisons need no new baseline fit. Claim matched training compute only with an audited baseline work record; missing work does not block a scoped quality result.
+- Spend new fitting resources on the integrated temporal/sparse model, starting with a bounded token-interface fit and measured CPU throughput/RSS. Preserve the core mechanisms and all existing evidence/jobs. GPU benefit is unmeasured, but current work remains CPU-only.
+
+- Do not redirect the main language program to character/byte prediction because it is easier for the current implementation. Proper tokenization is a user requirement. Address CPU costs in the token interface and learning implementation; benchmark convenience does not authorize changing the research objective.
+
+- Before scaling the native language path, read experiments/LANGUAGE_IMPLEMENTATION_AUDIT_20261005.md. Driver/backend restrictions must not be generalized into limits of the model family. Distinguish persistent numerical state from gradient truncation, factual path differentiation from alternative-write credit, and selected inference activity from complete learning work. Repair measured failures while preserving core mechanisms; do not infer intent from code or invent quality gains from static inspection.
+
+# Implementation ownership (user direction, 5 October 2026)
+
+- We make the implementation. Current driver/backend choices are engineering work to change, not restrictions to accept or reasons to narrow the architecture, use handicapped data representations, or avoid useful experiments.
+- Implement the capabilities needed for properly tokenized language, useful persistent memory and scalable routing/learning. Use resource measurements to choose economical execution and prioritize work; do not let existing code veto the objective. Numerical contracts and integrated comparisons are how we validate the engineering work.

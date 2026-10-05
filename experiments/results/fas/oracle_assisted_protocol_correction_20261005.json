@@ -1,0 +1,18 @@
+{
+  "classification": "oracle_assisted_diagnostic",
+  "eligible_fair_reference": false,
+  "reason": "FIFO route learned from hidden TRAIN item identities; timing-aware probe also uses identity-derived TRAIN transition-gap statistics. Test-time anonymity does not remove training privilege.",
+  "supersedes": "Descriptions as identity-free classical references and native-loss verdicts based on these methods.",
+  "preserved_results": [
+    "experiments/results/fas/fas_v1_deinterleave_test_20261005T110000Z.json",
+    "experiments/results/fas/fas_v2_probe_drop02_20261005T113000Z.json",
+    "experiments/results/fas/fas_v2_probe_timed_drop02_20261005T123000Z.json"
+  ],
+  "fair_native_comparison": {
+    "evidence": "single_seed",
+    "prefix_process_events": 256,
+    "native_auroc": 0.6,
+    "best_of_six_generic_controls_auroc": 0.559
+  },
+  "reference_admission": "All fitting and selection inputs must match anonymous-log protocol; privileged diagnostics excluded from primary reference ranking."
+}

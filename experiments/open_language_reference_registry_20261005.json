@@ -1,0 +1,58 @@
+{
+  "status": "researched_not_admitted",
+  "execution": "cpu_only",
+  "reference_policy": "reuse_published_runs_no_duplicate_baseline_training",
+  "tokenization": "reference_exact_word_or_GPT2_BPE",
+  "checked_revisions": {
+    "transformer_xl": {
+      "url": "https://api.github.com/repos/kimiyoung/transformer-xl/commits/master",
+      "revision": "44781ed21dbaec88b280f74d9ae2877f52b492a5",
+      "files": []
+    },
+    "modded_nanogpt": {
+      "url": "https://api.github.com/repos/KellerJordan/modded-nanogpt/commits/master",
+      "revision": "4ea6b937337a4889b8cfe3f38a93d120048d8f71",
+      "files": []
+    },
+    "llmc": {
+      "url": "https://api.github.com/repos/karpathy/llm.c/commits/master",
+      "revision": "f1e2ace651495b74ae22d45d1723443fd00ecd3a",
+      "files": []
+    },
+    "fineweb_tokens": {
+      "url": "https://huggingface.co/api/datasets/kjj0/fineweb10B-gpt2",
+      "revision": "889765ea1f903759787add96995d81171b632d0c",
+      "files": [
+        "README.md"
+      ]
+    },
+    "wikitext": {
+      "url": "https://huggingface.co/api/datasets/Salesforce/wikitext",
+      "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+      "files": [
+        "README.md"
+      ]
+    },
+    "fineweb_edu_gpt2_weights": {
+      "url": "https://huggingface.co/api/models/bardiaegz/gpt2-124m-fineweb",
+      "revision": "ece6f6994af36f6b54f83ae9749444ace4b0be79",
+      "files": [
+        "README.md",
+        "gpt2_124m_weights.pt",
+        "pretrain_final.pt",
+        "sft_final.pt"
+      ]
+    }
+  },
+  "measured_cpu_anchor": {
+    "result": "experiments/results/language_batched/aws_language_batched_90M_r4_p64d4_4pass_linear_l64_lr004_cmp_s6_20261004T193000Z.json",
+    "train_chars_per_s": 7978.638269401208,
+    "wall_s": 45775.57701670006
+  },
+  "pending": [
+    "reference_choice_and_scoring_audit",
+    "tokenized_native_interface",
+    "measured_CPU_token_throughput",
+    "exact_reference_work_audit_if_claiming_matched_training_compute"
+  ]
+}

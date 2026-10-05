@@ -63,3 +63,7 @@ run at the reference's compute. It is neither a win nor a loss.
   (1.888 vs 1.799 at 0.81× training compute).
 - **90M:** efficiency point (1.857 vs 1.661 / 1.604 at 1/16–1/33 of the compute); multi-pass native runs at about half
   the LSTM's compute are queued to settle it.
+
+## Information matching: FAS oracle-assisted diagnostics
+
+A fair reference must receive the same available training and inference information as the evaluated model. Hidden TRAIN process/item identities used to learn routes or transition-gap distributions constitute privileged supervision even when test predictions are identity-free. FAS FIFO and the v2 timing-aware probe therefore belong in an oracle-assisted diagnostic table and are excluded from strongest-reference selection and win/loss verdicts. Retain their measurements and the native single-seed 0.600 vs 0.559 AUROC win against the six generic controls at N=256.

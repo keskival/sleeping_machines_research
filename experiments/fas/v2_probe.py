@@ -5,6 +5,10 @@ clean, or the first faulty) are merged by timestamp into one log, and each proce
 probability --drop (deterministic per seed). Both lines emit identical event types, so FIFO matching can confuse items
 across lines, and drops break strict route matching. The oracle keeps true identity (line, item), drops included.
 
+ORACLE-ASSISTED DIAGNOSTICS: FIFO learns its route from hidden TRAIN item
+identities; the timing-aware method also uses identity-derived TRAIN gap
+statistics (gstats). These methods are not eligible anonymous-log references.
+
 Reports item-own pair accuracy of the FIFO de-interleaver, and AUROC at prefixes for the oracle and the de-interleaver
 (the same scoring as oracle_bound.py). Probe scale only; a v2 dataset would be generated and frozen separately.
 """
