@@ -230,3 +230,10 @@ estimates for dense references), and inference work up to the decision at N.
   quantitatively supports curie's R0 diagnosis (horizon plus binding, not dormancy). Target learned half-lives are ≥ 30–100 s;
   R8's 1–1,000 s initialization spans that range. The test is whether training keeps them long. If training shortens them
   again, a horizon-preserving constraint or prior on the slowest timescales is the next arm.
+- 5 Oct 09:46 UTC: **R1 (tied) and R3 (tied + free-slot bonus 3)**, test AUROC at N = 256: .567 and .566, against
+  R0 (untied) .578. Slots are fully used in all three, and half-lives stay ~8 s.
+  - Tying costs a little capacity. The free-slot bonus changes nothing, as expected once slots are already used.
+  - The recruitment arms (R4–R7) were moved after the horizon arm R8 and the grokking testbed.
+  - R4's first attempt was lost to an operator error during the reorder (orphaned job stopped; no result written). It
+    is rerun after R7.
+  - R8 (timescales initialized from 1 to 1,000 s) started 09:45.
