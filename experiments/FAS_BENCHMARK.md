@@ -295,3 +295,7 @@ estimates for dense references), and inference work up to the decision at N.
   drop 5%, and line-specific speed offsets (which make timing ambiguous). Procedural note: an intermediate run of this probe
   fitted clean statistics from one training run because of an indentation error introduced by an edit. It was
   discarded unpublished, and the fixed version is above.
+- 5 Oct 14:30 UTC: **FAS v2 confirmatory protocol pre-registered** ([FAS_V2_CONFIRMATORY_PROTOCOL.md](FAS_V2_CONFIRMATORY_PROTOCOL.md);
+  queue manifest `queue/fas_v2_confirmatory_20261005T143000Z/manifest.json`). The v2 setting is selected from the K/drop/speed
+  grid by oracle-vs-classical headroom on validation, before any learned model runs. Win rule: native seed-mean AUROC at
+  N=512 ≥ strongest baseline + 0.02, paired-bootstrap 95% lower bound > 0, every native seed above the strongest baseline.

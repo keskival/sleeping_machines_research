@@ -18,6 +18,8 @@ control beats native; further v1 sweeps are deferred unless already admitted or
 needed for one bounded transferable diagnosis. Historical orders below remain
 as the record; this paragraph governs new discretionary admission.
 
+**FAS v2 confirmatory program (5 October 14:30 UTC, user-directed):** [FAS_V2_CONFIRMATORY_PROTOCOL.md](FAS_V2_CONFIRMATORY_PROTOCOL.md), queue manifest `queue/fas_v2_confirmatory_20261005T143000Z/manifest.json`. Pre-registered home-field test with ambiguous identity: setting chosen from oracle/classical headroom on validation only, strongest de-interleavers and five neural references, equal tuning budgets, three seeds, sealed test ledger, one primary endpoint (AUROC at N=512). Stages 0–2 are CPU-light and start now; training stages take free capacity without preempting running jobs. This replaces further FAS v1 sweeps.
+
 **User-directed completion packet (5 October, review session):**
 [BENCHMARK_WIN_EXECUTION.md](BENCHMARK_WIN_EXECUTION.md) and
 `queue/benchmark_win_execution_20261005T111500Z.json` track retained next-step

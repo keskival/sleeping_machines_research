@@ -1,0 +1,198 @@
+{
+ "status": "prepared_unrun",
+ "task_id": "fas_v2_confirmatory",
+ "directed_by": "user, 5 October 2026",
+ "protocol": "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md",
+ "protocol_sha256": "2517c947c2b256683171044a5f4bc9c58a97ea5e6535a57d88fbb3f776fe36e6",
+ "scope": "Pre-registered FAS v2 confirmation. Owners create one-job queue files per stage once its contracts pass; no training command is fabricated here. Admit in free capacity without preempting running jobs.",
+ "primary_endpoint": {
+  "metric": "test AUROC, all faults, rule total",
+  "prefix_N": 512,
+  "aggregate": "native mean of seeds 6,7,8"
+ },
+ "decision_rule": {
+  "margin_auroc": 0.02,
+  "paired_bootstrap": {
+   "resamples": 10000,
+   "stratified": true,
+   "ci": 0.95,
+   "lower_bound_gt": 0
+  },
+  "every_native_seed_above_strongest_baseline": true,
+  "strongest_baseline": "max on test over classical detectors and neural family seed means"
+ },
+ "calibration_rule": {
+  "grid": {
+   "K": [
+    2,
+    3,
+    4
+   ],
+   "drop": [
+    0.02,
+    0.05
+   ],
+   "speed_offset": [
+    0,
+    0.05
+   ]
+  },
+  "N": 512,
+  "oracle_min": 0.7,
+  "oracle_minus_best_classical_min": 0.08,
+  "choose": "mildest qualifying: smallest K, then drop, then offset 0",
+  "no_learned_models": true
+ },
+ "tuning_budget": {
+  "configs_per_learned_family": 8,
+  "selection_primary": "validation-clean NLL",
+  "selection_secondary": "validation AUROC at N=512, reported separately"
+ },
+ "seeds": {
+  "native": [
+   6,
+   7,
+   8
+  ],
+  "references": [
+   0,
+   1,
+   2
+  ]
+ },
+ "test_ledger": "experiments/results/fas/fas_v2_test_ledger.jsonl",
+ "stages": {
+  "s0_generator": {
+   "owner": "curie or review host",
+   "kind": "implementation+contracts",
+   "creates": "experiments/fas/generate_v2.py",
+   "checks": [
+    "same npz format as generate.py",
+    "identity sidecar unreadable by learned drivers",
+    "seeded random tie-breaking",
+    "single TICK stream",
+    "drop RNG independent of fault/identity",
+    "disjoint seeds per split and line"
+   ],
+   "requires": []
+  },
+  "s0_driver_scores": {
+   "owner": "curie",
+   "kind": "implementation+contracts",
+   "modifies": [
+    "experiments/fas/native.py",
+    "experiments/fas/dense.py"
+   ],
+   "checks": [
+    "per-run validation/test scores saved for every rule and prefix",
+    "suffix-mutation causality probe passes"
+   ],
+   "requires": []
+  },
+  "s0_beam_deinterleaver": {
+   "owner": "review host",
+   "kind": "implementation+contracts",
+   "creates": "experiments/fas/beam_deinterleave.py",
+   "checks": [
+    "equals oracle on FAS v1",
+    "beam width selected on validation"
+   ],
+   "requires": []
+  },
+  "s0_freeze": {
+   "owner": "any",
+   "kind": "record source sha256 of generator, drivers, scorers in this manifest",
+   "requires": [
+    "s0_generator",
+    "s0_driver_scores",
+    "s0_beam_deinterleaver"
+   ]
+  },
+  "s1_calibration": {
+   "owner": "curie or review host",
+   "kind": "classical+oracle on validation only",
+   "output": "experiments/results/fas/fas_v2_calibration_20261005T143000Z.json",
+   "stop_if": "no setting satisfies calibration_rule",
+   "requires": [
+    "s0_freeze"
+   ],
+   "guards": {
+    "MIN_AVAIL_MB": 8192
+   }
+  },
+  "s2_dataset": {
+   "owner": "curie and AWS (regenerate, verify hashes)",
+   "kind": "generate frozen dataset",
+   "name": "fas_v2_<setting>_20261005",
+   "sizes": {
+    "train_clean": 10000,
+    "val_clean": 1000,
+    "val_faulty": 1000,
+    "test_clean": 2000,
+    "test_faulty": 2000
+   },
+   "requires": [
+    "s1_calibration"
+   ]
+  },
+  "s2_classical_test": {
+   "owner": "review host",
+   "kind": "score every classical detector and oracle once on test, ledgered",
+   "requires": [
+    "s2_dataset"
+   ]
+  },
+  "s3_cap": {
+   "owner": "curie+AWS",
+   "kind": "two-window smokes of native and each reference; fix common training-work cap C and RSS caps in this manifest",
+   "requires": [
+    "s2_dataset"
+   ]
+  },
+  "s3_native_dev": {
+   "owner": "curie",
+   "kind": "up to 8 configurations, train/validation only",
+   "requires": [
+    "s3_cap"
+   ]
+  },
+  "s3_reference_dev": {
+   "owner": "AWS",
+   "kind": "up to 8 configurations per family: lstm, transformer, lru, s5t, mamba",
+   "requires": [
+    "s3_cap"
+   ]
+  },
+  "s4_confirm_native": {
+   "owner": "curie",
+   "kind": "selected config, seeds 6,7,8, test once each, ledgered",
+   "requires": [
+    "s3_native_dev"
+   ]
+  },
+  "s4_confirm_references": {
+   "owner": "AWS",
+   "kind": "selected config per family, seeds 0,1,2, test once each, ledgered",
+   "requires": [
+    "s3_reference_dev"
+   ]
+  },
+  "s5_analysis": {
+   "owner": "any",
+   "kind": "paired bootstrap, decision rule, operational metrics, sanity controls, generated table+figure, scoreboard line",
+   "output": "experiments/results/fas/fas_v2_confirmatory_verdict_20261005T143000Z.json",
+   "requires": [
+    "s2_classical_test",
+    "s4_confirm_native",
+    "s4_confirm_references"
+   ]
+  },
+  "s6_real_data": {
+   "owner": "review host then curie/AWS",
+   "kind": "HDFS (Loghub) or BPIC identity-stripped track; admit only if oracle minus best classical >= 0.05 on validation; freeze addendum first",
+   "requires": [
+    "s5_analysis"
+   ]
+  }
+ }
+}
