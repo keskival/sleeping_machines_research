@@ -52,3 +52,16 @@ Record full fitting and inference work before extrapolating to larger fits.
 Selection remains open across the broader family: clock cadence, richer
 reception, protected memory and decoder rank are revisable coordinates. Passing
 these contracts validates this construction, not a requirement to retain it.
+
+## Estimator contract —18:07 UTC
+
+The driver now uses `paired_route_credit.py` to enforce the score-only estimator:
+replay utility and sampling probabilities are detached inside the function.
+Queue `curie_integrated_token_contracts_20261005_v2.txt` completed exit0 at18:07:47:
+**4 tests passed in1.58s**. The added contract enumerates the actual mixture
+sampling law and proves equality to the conditional expected-utility gradient
+on nonuniform three-receiver fixtures, with zero forward contribution and no
+replay-loss derivative. Numerical evidence is saved in
+`results/diagnostics/curie_integrated_token_contracts_20261005_v2.json`.
+The preceding v1 source is recoverable at main commit2c80abbd; its evidence is
+preserved. Host available memory then fell to8321MiB; no larger job admitted.

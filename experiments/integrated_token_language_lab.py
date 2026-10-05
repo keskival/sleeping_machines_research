@@ -24,6 +24,7 @@ from sleeping_machines.sparse_counterfactual_episodes import token_features, det
 from sleeping_machines.packed_token_core import PackedTokenCore
 from sleeping_machines.token_readout import TokenReadout
 from sleeping_machines.frequency_token_readout import FrequencyTokenReadout
+from sleeping_machines.paired_route_credit import paired_route_credit
 
 
 def sha(path):
@@ -211,6 +212,7 @@ def main():
          source_sha256={str(f):sha(ROOT/f) for f in (str(Path(__file__).resolve().relative_to(ROOT)),
          'sleeping_machines/sparse_counterfactual_episodes.py','sleeping_machines/sparse_counterfactual_layer.py',
          'sleeping_machines/sparse_training.py','sleeping_machines/packed_token_core.py','sleeping_machines/token_readout.py','sleeping_machines/frequency_token_readout.py',
+         'sleeping_machines/paired_route_credit.py',
          'sleeping_machines/recruit_layer.py','sleeping_machines/compiled_episodes.py',
          'sleeping_machines/fast_native_core.py','sleeping_machines/addressed_event_heads.py',
          'sleeping_machines/parallel_stream_language.py','sleeping_machines/sparse_race_language.py')})
@@ -256,7 +258,6 @@ def main():
             proposal = .9*conditional + .1*eligible/(a.pool-1)
             alt = torch.multinomial(proposal,1,generator=model.alternative_generator).squeeze(1)
             q = proposal.gather(1,alt[:,None]).squeeze(1)
-            pj = pi.gather(1,alt[:,None]).squeeze(1)
             model.force_site = (0,depth,head,alt)
             shadow_gen = torch.Generator(); shadow_gen.set_state(rng_before)
             model.shadow_mode=True
@@ -265,7 +266,7 @@ def main():
                 alternative_loss = model.readout.nll(shadow,buf[:,1:]).reshape(a.lanes,n).mean(-1)
             model.shadow_mode=False
             difference = alternative_loss.double()-token_nll.detach().reshape(a.lanes,n).mean(-1).double()
-            future_term = (((pj-pj.detach())/q)*difference).mean()
+            future_term = paired_route_credit(pi, alt, q, difference)
             future_audit = dict(site=[0,depth,head],winner=winner.tolist(),alternative=alt.tolist(),
                                proposal_probability=q.tolist(),mean_suffix_loss_delta=float(difference.mean()))
         model.force_site = model.suppress_site = None

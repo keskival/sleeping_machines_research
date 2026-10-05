@@ -5,6 +5,7 @@ from sleeping_machines.packed_token_core import PackedTokenCore
 from sleeping_machines.sparse_token_episodes import token_features as parent
 from sleeping_machines.sparse_counterfactual_episodes import token_features, detach
 import test_counterfactual_token_episodes as future_contracts
+from sleeping_machines.paired_route_credit import paired_route_credit
 
 
 def test_packed_sparse_factual_and_local_credit_match_parent_after_parameter_change():
@@ -57,3 +58,28 @@ def test_partition_preserves_sparse_and_future_route_state_with_packed_parameter
     assert torch.equal(ag.get_state(), ag2.get_state())
     assert all(torch.equal(x, y) for x, y in zip(sa['mem'], sb['mem']))
     assert torch.equal(sa['race_winners'][2:], sb['race_winners'])
+
+
+def test_actual_estimator_matches_expected_utility_and_detaches_replay_and_proposal():
+    logits = torch.tensor([[.2, -.7, .6], [-.3, .8, .1]], dtype=torch.double, requires_grad=True)
+    pi = logits.softmax(-1)
+    winners = torch.tensor([0, 1])
+    costs = torch.tensor([[2., 1., 4.], [3., 5., 1.]], dtype=torch.double, requires_grad=True)
+    base = costs.gather(1, winners[:, None]).squeeze(1)
+    eligible = 1 - torch.nn.functional.one_hot(winners, 3).double()
+    conditional = pi * eligible
+    conditional = conditional / conditional.sum(-1, keepdim=True)
+    proposal = .9 * conditional + .1 * eligible / 2
+    expected = 0.
+    for offset in (1, 2):
+        alt = (winners + offset) % 3
+        q = proposal.gather(1, alt[:, None]).squeeze(1)
+        delta = costs.gather(1, alt[:, None]).squeeze(1) - base
+        term = paired_route_credit(pi, alt, q, delta)
+        assert term.item() == 0.
+        # Weight by the actual sampling law without differentiating sampling.
+        expected = expected + paired_route_credit(pi, alt, q, delta * q.detach())
+        assert torch.autograd.grad(term, costs, allow_unused=True, retain_graph=True)[0] is None
+    exact = torch.autograd.grad((pi * costs.detach()).sum(-1).mean(), logits, retain_graph=True)[0]
+    actual = torch.autograd.grad(expected, logits)[0]
+    assert torch.allclose(exact, actual, atol=1e-12, rtol=1e-12)

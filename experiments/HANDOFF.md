@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**Integrated estimator contract —5 October18:07 UTC:** v2 integrated contracts
+completed exit0, **4 passed in1.58s**. The actual driver estimator now enforces
+detached replay utility/sampling probabilities and its mixture-law expectation
+matches conditional expected route utility. v1 evidence and producer commit
+2c80abbd remain preserved. Current8321MiB available leaves129MiB above the
+mandatory8192MiB floor: integrated resume and quality fits remain unrun. This
+memory condition does not stop implementation/analysis work; no benchmark or
+scaling quality is inferred from these numerical contracts.
+
 **Integrated token candidate — 5 October, continuation:**
 `integrated_token_language_lab.py` now combines packed parameter banks, sparse
 winner/one-alternative value execution and bounded actual future-write credit.
