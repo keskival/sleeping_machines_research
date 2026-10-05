@@ -2882,3 +2882,15 @@ common future noise, includes one replay in fitting cost. Gap: bounded current
 chunk only, no direct replay gradient to losing maps. Currentqueue
 curie_counterfactual_token_smoke_20261005_v1; numerical success is not a quality
 win. Compare at same8K/128-update budget before promotion.
+
+AWS receipt afterpull/rebase2c3608ac: reviewednew FAMILY_DESIGN_SELECTION,
+TOKEN_SCALING_PLAN and TOKEN_SPARSE_FUTURE_INTEGRATION notes. Five-stage
+FineWeb/GPT2 tokenaddendum aws_integrated_tokens_20261005T181000Z received;
+parentmanifestSHA, allsources andqueues verified. NOTyetadmitted: slot3
+workerwillreadimmutablepacket afterexistingbacklog. Data -> exactresume
+contract -> matched8Klocal/futurecredit -> 64Kconditionalqualitygain.
+Noactivefitpreempted andactive numericalsourcebindingsstillmatch. Receipt
+in diagnostics/aws_integrated_tokens_receipt_20261005T181000Z.json.
+Current slot1p96~192.5M/360M; slot2CLSTM; slot3pool4k1fullfit~11.5M/40M.
+WD.01 completed/pushed1966f315: T256test1.9551072 at107.196TF; noquality
+improvement vsplain~1.955. K2/WD.1/capacity remainpending beforetokenpacket.

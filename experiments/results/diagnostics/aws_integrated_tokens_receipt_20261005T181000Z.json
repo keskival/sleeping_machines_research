@@ -1,0 +1,16 @@
+{
+  "status": "received_verified_pending",
+  "captured_utc": "2026-10-05T18:15:38.416431+00:00",
+  "addendum": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/aws_integrated_tokens_20261005T181000Z.json",
+  "addendum_sha256": "0969e927d6eae71ebea37d2d756568332002a1cd22a683f80da11896ebbb9fad",
+  "parent_manifest": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/manifest.json",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "jobs": [
+    "aws_integrated_tokens_data_20261005T181000Z",
+    "aws_integrated_tokens_resume_20261005T181000Z",
+    "aws_integrated_tokens_small_local_20261005T181000Z",
+    "aws_integrated_tokens_small_future_20261005T181000Z",
+    "aws_integrated_tokens_64k_future_20261005T181000Z"
+  ],
+  "scope": "Received on AWS after pull/rebase2c3608ac. All queues and sources match. Five staged token jobs await existing slot3 backlog; no physical admission or token-quality/benchmark claim. Healthy active source bindings unchanged."
+}
