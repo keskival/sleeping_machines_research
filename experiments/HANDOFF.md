@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**User typed-tabular direction recorded:** TYPED_PREDICATE_EVENT_DIRECTION_20261005.md
+specifies per-type learned comparisons before sparse temporal routes and deeper
+neural mixing. Current adapter is feature-ID/numeric/missingness, not this
+predicate interface; existing numeric datasets do not prove mixed-type ability.
+Retains core mechanisms; explicit hard-threshold learning/search work and
+contracts required before integrated fit. No architectural substitution or
+job displacement. Language audit and user-directed FAS repeats preserved.
+
+
 **FAS repeat artifacts completed before execution:** wrapper now saves the
 selected state_dict after the existing scorer returns, plus per-run total
 scores, fault kinds and clean/faulty simulator seed IDs. No fit/scorer/RNG
