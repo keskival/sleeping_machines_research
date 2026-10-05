@@ -33,6 +33,18 @@ keeping single-seed capacity gain separate. Appendix regenerated for three
 completed widths. Inspect live handles and receipts before any new job.
 
 
+**Distinct AWS bank-capacity path prepared (20:40 UTC):** shared receiver rules,
+private U4/U16 addresses at fixed P24/D2/H2 and four selected writes/token.
+Canonical construction preserves shared maps/readout/RNG; replica clock bias
+-log(4) preserves initial aggregate race law only inside unclipped scores at
+temperature one. Five stdlib policy checks pass. Numerical construction and
+factual-gradient contracts await existing slot1 scheduler addendum
+zzzz_aws_private_bank_contracts_20261005T204000Z.json; no new worker or long fit.
+See theory/AWS_PRIVATE_BANK_CAPACITY_20261005.md. Next: source-bound fit wrapper,
+actual-future-credit smoke plus clipping audit, then matched U4/U16 fits and
+full learning/discovery accounting. This supplements the curie width program;
+all original jobs/pins/results are preserved.
+
 **Selected-member work continuation prepared:** tmux
 curie_data_growth_64k_postrepeat_20261005_v1 waits on the independent-repeat
 handle, then runs prepared selected-width seed7utility through run_safe.
