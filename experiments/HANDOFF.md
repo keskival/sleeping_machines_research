@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**Sampled utility implemented —5 October18:19 UTC:** original AWS pins intact.
+New sampled driver retains actual alternative writes and expected suffix utility;
+three numerical contracts passed, actual K2 resume exact, full-score endpoint
+learning trajectory exact. K4 work audit:218.255413 versus253.930317MFLOPs per
+128synthetic targets,14.05%lower arithmetic; all operators covered. No quality
+claim. Additional slot3 immutable packet queues matched8K K4 quality comparison
+after the previously prepared full-score arm. All `curie_sampled_*` records
+preserved. AWS delivery still awaiting working credentials/access path.
+
 **Local prerequisites completed —5 October18:15 UTC:** memory recovered above
 10GiB, so guarded integrated resume completed exit0 at18:12:14, exact parity of
 model/AdamW/state/all RNGs/cursor/quality/48targets, peak337428KiB. Guarded full

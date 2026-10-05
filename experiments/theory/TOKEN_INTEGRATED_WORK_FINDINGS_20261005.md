@@ -60,3 +60,24 @@ position RNG, exact resume/partition contracts, enumeration of utility sampling
 and matched small-quality comparison are required before promotion. K=1,4,n
 are possible coordinates; select by measured quality/work rather than assuming
 the smallest K is best. Existing AWS source-pinned queues remain unchanged.
+
+## Implemented sampled utility —18:19 UTC
+
+`sampled_utility_token_language_lab.py` implements independent persistent
+position sampling, matching factual/scored alternative targets, and causal
+replay only through the last sampled position. The original driver and pinned
+AWS packet are unchanged. Three numerical contracts passed. Actual sampled
+K2 interruption/resume matches every learning state and RNG exactly; the K=n
+control reproduces the original6-update model/AdamW/quality trajectory exactly.
+Completed result files use `curie_sampled_*_20261005_v1` names.
+
+On the same synthetic B8/T16 fixture, K4 sampled positions[1,3,6,9] use
+**218.255413MFLOPs/step,1.705120MFLOPs/target**, compared with full scoring
+253.930317 and1.983831. Total arithmetic is14.05%lower; replay likelihood is
+12.713512MFLOPs versus47.286432. All floating operators have formulas. This is
+one realization of estimator work, not a quality or hardware speed win.
+
+Additional immutable AWS packet `addenda/aws_sampled_tokens_20261005T182000Z.json`
+queues an8K K4 comparison after the existing full-score future-credit arm.
+It reuses the same data, dimensions, target budget, seed and decoder. Future
+quality and estimator variance remain for the completed comparison to measure.
