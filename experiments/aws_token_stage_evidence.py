@@ -103,6 +103,7 @@ def collect(root):
     rows=[]; inputs={}; pending=[]
     tags=[f'curie_fixed_batch_tokens_8k_b64_c{w}_s{s}_20261005_v1' for w in (16,64) for s in (6,7)]
     tags += [f'curie_data_growth_tokens_64k_b64_c16_p{p}_s6_20261005_v1' for p in (16,24,32)]
+    tags += ['curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1']
     for tag in tags:
         path=folder/(tag+'.json'); selection_path=folder/(tag+'.selection.json')
         if not path.exists() or not selection_path.exists():
@@ -112,14 +113,18 @@ def collect(root):
             pending.append(tag);continue
         work_path=root/'experiments/results/diagnostics/curie_fixed_batch_tokens_8k_c16_work_20261005_v1.json'
         work=None
+        if tag=='curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1':
+            work_path=root/'experiments/results/diagnostics/curie_data_growth_tokens_64k_p24_work_20261005_v1.json'
         paths=[path,selection_path]
-        if tag=='curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1' and work_path.exists():
+        if tag in ('curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1','curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1') and work_path.exists():
             work=json.loads(work_path.read_text());paths.append(work_path)
         row=stage_row(result,selection,work)
         row.update(context_gain=None,memory_erasure_cost=None,message_erasure_cost=None)
         utility_name=('curie_fixed_batch_tokens_8k_utility_20261005_v1' if tag.startswith('curie_fixed_batch_')
                       else 'curie_data_growth_tokens_64k_utility_20261005_v1' if result['args']['payload']==16
                       else f"curie_data_growth_tokens_64k_p{result['args']['payload']}_utility_20261005_v1")
+        if tag=='curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1':
+            utility_name='curie_data_growth_tokens_64k_p24_s7_utility_20261005_v1'
         if utility_name:
             utility_path=root/'experiments/results/diagnostics'/(utility_name+'.json')
             if utility_path.exists():

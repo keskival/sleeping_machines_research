@@ -27,6 +27,15 @@ class Evidence(unittest.TestCase):
         self.assertEqual(r['equivalent_passes'],2)
         self.assertAlmostEqual(r['whole_fit_gflops'],13.534669444)
 
+    def test_completed_p24_work_stays_seed_specific(self):
+        record=stage.collect(ROOT)
+        rows={r['tag']:r for r in record['rows']}
+        prefix='curie_data_growth_tokens_64k_b64_c16_p24_'
+        seed6=rows[prefix+'s6_20261005_v1'];seed7=rows[prefix+'s7_20261005_v1']
+        self.assertAlmostEqual(seed6['whole_fit_gflops'],192.211764864)
+        self.assertIsNone(seed7['whole_fit_gflops'])
+        self.assertGreater(seed7['memory_erasure_cost'],0)
+
     def test_missing_work_stays_unknown(self):
         r=stage.stage_row(self.result,self.selection)
         self.assertIsNone(r['whole_fit_gflops'])
