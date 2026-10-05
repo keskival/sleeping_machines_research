@@ -2682,3 +2682,31 @@ for nextnativeadmission. Do not silently modifyactive manifest or treatunrelated
 source driftasnewmodeltraining. This admissionmetadata issue remains recorded;
 no completednativequality or tunedwin is asserted. Preserve allnativecheckpoints
 and healthy currentdensefits; correctpostflightbeforedeclaringP0stagecomplete.
+
+AWS 5 Oct 07:23 UTC: pulled/rebased product-owner urgent slot order b22243e4.
+All ten 10M tuned dense controls completed and pushed; curie has already
+completed windowed validation selection. Native loses overall budget A
+(1.888 vs LSTM512 1.826) and B (1.955 vs LSTM384 1.915); Transformer
+subcomparisons remain positive. Do not select controls on TEST.
+
+Transferred the normal host reservation after terminating the verified old
+guarded tree, retaining exact native checkpoint at 323584000 presentations
+(window39500, cumulative40924.14s). New immutable continuation manifest:
+queue/aws_product_continue_20261005T073000Z/manifest.json, tmux
+aws_product_continue, same coordinator and settings, unique resume job name.
+Slot1 p64 native90M resumes then p96; slot2 six original primate r1 sessions;
+slot3 original MG batch20..29. ALL THREE admitted through run_safe.sh, no
+errors at admission, ~27GiB available. Model/Adam/schedule/cursor/RNG saved;
+unknown discarded work <=4095999 presentations, recorded beside checkpoint.
+
+Source bindings now cover transitive local dependencies and reported producer
+fields (including native dvs_batched_large_benchmark.py). Primate default
+reception=race does not execute conditional expected_reception imports; that
+unrelated drift is explicitly excluded, not substituted into the race model.
+Original manifests/results preserved. New milestone publisher active in
+tmux aws_product_continue_progress. Measured recent native window1.037s gives
+~75–80min remaining training at transition, plus final evaluation; resource
+competition can change ETA. Queued next priority remains FAS data+references
+(with required smoke), weight-decay smoke+arms, X1 arms; prepare continuation
+when a slot frees. Four90M tuned controls, seed7/pool8 confirmation, historical
+sparse recovery and suspended depth8 fits also remain assigned, not dropped.

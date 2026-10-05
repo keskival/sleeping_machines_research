@@ -1,0 +1,20 @@
+{
+  "status": "checkpointed_transition",
+  "old_manifest": "experiments/queue/aws_product_priority_20261005T001500Z/manifest.json",
+  "new_manifest": "experiments/queue/aws_product_continue_20261005T073000Z/manifest.json",
+  "stopped_processes": [
+    2032218,
+    2032226,
+    2032242,
+    2032264,
+    2032278,
+    2238539
+  ],
+  "seen": 323584000,
+  "window": 39500,
+  "wall_s": 40924.13519256504,
+  "checkpoint": "experiments/queue/aws_product_continue_20261005T073000Z/native_resume.pt",
+  "checkpoint_sha256": "fedfe65915408330c1c441a9cde6309fb250f77669e8bad44d1a5853dc668cf9",
+  "discarded_presentations_upper_bound": 4095999,
+  "scope": "Exact saved model/Adam/schedule/RNG/cursor resumed. Uncheckpointed prior computation unknown, bounded by 500 windows. Race-only primate excludes unreachable expected-reception imports; executed sources unchanged."
+}
