@@ -82,4 +82,60 @@ def pages():
     missing = set(completed) - {int(r[0]) for r in utilities}
     if missing:
         page.append(('p', 'Selected-checkpoint utility pending for payload ' + ', '.join(map(str, sorted(missing))) + '; no utility value is predicted.'))
+    return [page] + repeat_pages()
+
+
+def repeat_pages():
+    receipt_path = ROOT / 'experiments/queue/curie_data_growth_64k_repeat_admission_20261005_v1.json'
+    if not receipt_path.exists():
+        return []
+    receipt = json.loads(receipt_path.read_text())
+    width = receipt['selected_payload']
+    rows = []
+    repeat_protocol = None
+    for seed in (6, 7):
+        tag = f'curie_data_growth_tokens_64k_b64_c16_p{width}_s{seed}_20261005_v1'
+        path = ROOT / f'experiments/results/token_language/{tag}.json'
+        selection_path = path.with_suffix('.selection.json')
+        if not path.exists() or not selection_path.exists():
+            return []
+        result = json.loads(path.read_text())
+        selection = json.loads(selection_path.read_text())
+        if result['status'] != 'completed' or selection['status'] != 'completed':
+            return []
+        if result['args']['seed'] != seed or result['args']['payload'] != width:
+            raise ValueError('Repeat identity mismatch')
+        if result['presentations_total'] != 131056:
+            raise ValueError('Repeat data exposure mismatch')
+        protocol = {k: v for k, v in result['args'].items() if k not in ('seed', 'tag')}
+        if repeat_protocol is None:
+            repeat_protocol = protocol
+        elif repeat_protocol != protocol:
+            raise ValueError('Repeat protocol changed')
+        initial = result['curve'][0]['dev_nll']
+        selected = selection['selected']['dev_nll']
+        if abs(selected - min(x['dev_nll'] for x in result['curve'])) > 2e-6:
+            raise ValueError('Repeat selection mismatch')
+        rows.append([str(seed), f'{initial:.6f}', f'{selected:.6f}',
+                     f'{initial-selected:.6f}', str(selection['selected']['step'])])
+    if abs(float(rows[0][2]) - receipt['seed6_selected_nll']) > 2e-6:
+        raise ValueError('Repeat parent selection changed')
+    page = [('h1', 'Appendix. Independent seed for selected 64K capacity'),
+            ('p', f'Payload{width}, selected from the three completed seed6 capacity fits. Seeds6/7 share GPT-2 FineWeb, 65,536 admitted training tokens, 131,056 fitting targets/two passes and 2,040 development targets; initialization-inclusive selection every64 updates. Public validation untouched.'),
+            ('table', (['Seed', 'Initial NLL', 'Selected NLL', 'Gain', 'Selected step'], rows, [55, 115, 115, 110, 105])),
+            ('p', 'This repeat measures selected-member learning reliability and seed variation. The quality gain over P16 is a seed6 capacity comparison; it is not a paired two-seed capacity win.')]
+    utility_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_64k_p{width}_s7_utility_20261005_v1.json'
+    if utility_path.exists():
+        utility = json.loads(utility_path.read_text())
+        if utility['status'] != 'completed':
+            raise ValueError('Incomplete repeat utility')
+        row = utility['rows'][0]
+        if row['tag'] != tag or row['selected'] != selection['selected']:
+            raise ValueError('Repeat utility checkpoint mismatch')
+        values = [[f"{row['context_gain']:.6f}",
+                   *[f"{row['history_gains'][k]:.6f}" for k in ('memory', 'message', 'both')]]]
+        page += [('table', (['Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], values, [115, 140, 140, 140])),
+                 ('p', 'Frozen interventions use the same readout and matched RNG, with intact partition parity. Positive erasure delta means history removal hurts prediction. Constant TRAIN-mean features are not an optimally refitted unigram; no retrained ablation claim.')]
+    else:
+        page.append(('p', 'Independent-seed utility pending; no predicted utility is reported.'))
     return [page]
