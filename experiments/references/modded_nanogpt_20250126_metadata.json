@@ -1,0 +1,21 @@
+{
+  "reference": "modded-nanoGPT historical 2025-01-26 BatchSize",
+  "repository_revision": "4ea6b937337a4889b8cfe3f38a93d120048d8f71",
+  "source_url": "https://github.com/KellerJordan/modded-nanogpt/blob/4ea6b937337a4889b8cfe3f38a93d120048d8f71/records/track_1_short/2025-01-26_BatchSize/0bdd5ee9-ac28-4202-bdf1-c906b102b0ec.txt",
+  "log_sha256": "62a81a281be714d90e183c95b6190643940626f4dd9a9ba37b02e6ed704118ab",
+  "reported_final_validation_nll": 3.2774,
+  "iterations": 1770,
+  "sequence_length": 49152,
+  "validation_tokens": 10485760,
+  "validation_sequence_length": 262144,
+  "layers": 12,
+  "heads": 6,
+  "model_width": 768,
+  "vocabulary": 50257,
+  "dataset": "FineWeb classic GPT-2 tokens",
+  "dataset_revision": "889765ea1f903759787add96995d81171b632d0c",
+  "scope": "Published log reused; no dense model retrained. Context policy and world size must be audited before final comparison; tokenized pilot dev is disjoint and is not this benchmark score.",
+  "world_size": 8,
+  "training_token_presentations": 695992320,
+  "attention_policy": "EOS document masking; causal sliding window; validation sequence 262144 per GPU, resets per sequence"
+}

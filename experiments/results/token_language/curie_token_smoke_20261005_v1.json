@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "evidence": "development single seed",
+  "args": {
+    "tag": "curie_token_smoke_20261005_v1",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 1024,
+    "dev_offset": 20971520,
+    "dev_tokens": 256,
+    "steps": 4,
+    "chunk": 8,
+    "lanes": 4,
+    "payload": 8,
+    "heads": 2,
+    "depth": 2,
+    "pool": 4,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "linear",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": false,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 4,
+    "resume": null
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/token_language_lab.py": "8bbdd4b3901f7b14a9a1cc0e317b8950a53a1d7b6baf90827a51946f9a81ab31",
+      "sleeping_machines/token_episodes.py": "3575b1827962f9cda400d44cac8fa4589c0060eaed38e851698e876e2a444a93",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 1027026,
+  "best_dev_nll": 11.989378429594494,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.851764976978302,
+      "dev_nll": 12.109573243156312
+    },
+    {
+      "step": 4,
+      "batch_nll": 7.68367338180542,
+      "gradient_norm": 1.5982494354248047,
+      "train_nll": 7.645166367292404,
+      "dev_nll": 11.989378429594494,
+      "route_entropy": 1.3660054206848145,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              40,
+              24,
+              20,
+              44
+            ],
+            [
+              31,
+              17,
+              24,
+              56
+            ]
+          ],
+          [
+            [
+              40,
+              32,
+              16,
+              40
+            ],
+            [
+              36,
+              40,
+              12,
+              40
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            3.797990028464603,
+            3.622262688656547
+          ],
+          [
+            3.7941979290586487,
+            3.6901086617219985
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.34375,
+            0.4375
+          ],
+          [
+            0.3125,
+            0.3125
+          ]
+        ]
+      },
+      "wall_s": 1.0785804960178211
+    }
+  ],
+  "presentations_this_invocation": 128,
+  "train_wall_s_this_invocation": 0.46592535212403163,
+  "train_tokens_per_second": 274.72211893274647,
+  "wall_s": 1.1209258689777926,
+  "max_rss_kb": 347296,
+  "host": "curie",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-candidate proposals, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Contiguous lane streams; numeric state carried; credit truncated per chunk; EOS reset; separate development interval; public validation untouched"
+}

@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "scope": "Reanalysis of saved modular-addition curves; held-out pairs are development measurements used for stopping, not a sealed language test",
+  "curves": [
+    {
+      "result": "experiments/results/grok/curie_grok_G2_tied_pool2_20261005T034000Z.json",
+      "status": "completed",
+      "train99_step": 2500,
+      "heldout99_step": 2500,
+      "last_train_acc": 0.9994686503719448,
+      "last_heldout_acc": 0.999822852081488,
+      "data_seed": 0,
+      "fit_seed": 0
+    },
+    {
+      "result": "experiments/results/grok/curie_grok_smoke2_20261005T064500Z.json",
+      "status": "completed",
+      "train99_step": null,
+      "heldout99_step": null,
+      "last_train_acc": 0.010361317747077577,
+      "last_heldout_acc": 0.010097431355181577,
+      "data_seed": 0,
+      "fit_seed": 0
+    },
+    {
+      "result": "experiments/results/grok/curie_grok_G1_untied_pool8_20261005T034000Z.json",
+      "status": "stopped_by_operator_after_generalization",
+      "train99_step": 3000,
+      "heldout99_step": 3000,
+      "last_train_acc": 1.0,
+      "last_heldout_acc": 1.0,
+      "data_seed": 0,
+      "fit_seed": 0
+    },
+    {
+      "result": "experiments/results/grok/curie_grok_G1_untied_pool2_20261005T034000Z.json",
+      "status": "completed",
+      "train99_step": 2000,
+      "heldout99_step": 2000,
+      "last_train_acc": 1.0,
+      "last_heldout_acc": 1.0,
+      "data_seed": 0,
+      "fit_seed": 0
+    },
+    {
+      "result": "experiments/results/grok/curie_grok_G2_tied_pool8_20261005T034000Z.json",
+      "status": "completed",
+      "train99_step": 2750,
+      "heldout99_step": 3000,
+      "last_train_acc": 0.9981402763018066,
+      "last_heldout_acc": 0.9989371124889282,
+      "data_seed": 0,
+      "fit_seed": 0
+    },
+    {
+      "result": "experiments/results/grok/curie_grok_G4_tied_pool8_wdp10_20261005T034000Z.json",
+      "status": "completed",
+      "train99_step": 2750,
+      "heldout99_step": 3000,
+      "last_train_acc": 0.9976089266737513,
+      "last_heldout_acc": 0.9975199291408325,
+      "data_seed": 0,
+      "fit_seed": 0
+    }
+  ]
+}

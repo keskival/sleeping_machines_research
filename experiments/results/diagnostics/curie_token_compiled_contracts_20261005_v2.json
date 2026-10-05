@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "contract": "float32 eager/compiled token features, every gradient and hard writes",
+  "cold_forward_backward_s": {
+    "False": 0.0632656060042791,
+    "True": 69.60835278499871
+  },
+  "host": "curie",
+  "max_rss_kb": 506720,
+  "sources": {
+    "experiments/token_compiled_contracts.py": "acc79b99cc9aee28bf04dbbd5648f12bd1a6bb67ca19023d4b2da1cd1c58b7c6",
+    "sleeping_machines/token_episodes_compiled.py": "09fea762b88aff4a309d223d5144948bd015e1cb6999e078b4a226c32edac215",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4"
+  }
+}

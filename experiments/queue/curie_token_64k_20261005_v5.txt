@@ -1,0 +1,1 @@
+curie_token_64k_20261005_v5 experiments/token_language_lab_v5.py --tag curie_token_64k_20261005_v5 --compiled --readout-init frequency --input-init balanced --steps 128 --eval-every 32 --train-tokens 65536 --dev-tokens 8192 --payload 16 --heads 2 --depth 2 --pool 4 --lanes 64 --eval-lanes 8 --chunk 16
