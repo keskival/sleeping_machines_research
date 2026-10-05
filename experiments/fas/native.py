@@ -159,6 +159,9 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--findable-init', action='store_true', help='§419 init: key_read = 0 (free and occupied slots start on '
+                   'equal key-only footing) and orthogonal per-head keys of norm --key-norm')
+    p.add_argument('--key-norm', type=float, default=1.)
     p.add_argument('--tie-pools', action='store_true', help='share each pool\'s maps (§398); removes the untrained-loser bias (§419)')
     p.add_argument('--free-bias', type=float, default=0., help='fixed score bonus for never-written slots (§419; training and evaluation)')
     p.add_argument('--train-temperature', type=float, default=1., help='race score temperature in training only (§419 exposure)')
@@ -177,6 +180,15 @@ def main():
     val_c, val_f, val_k = val_c[:a.eval_runs], val_f[:a.eval_runs], val_k[:a.eval_runs]
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=a.payload, depth=a.depth,
                                             heads=a.heads, pool=a.pool)
+    if a.findable_init:
+        with torch.no_grad():
+            for layer in model.units:
+                for head in layer:
+                    units = [u for pool in head for u in pool]
+                    Q = torch.linalg.qr(torch.randn(a.payload, max(a.payload, len(units))))[0]
+                    for k, unit in enumerate(units):
+                        unit.key_read.weight.zero_()
+                        unit.key.copy_(Q[:, k % Q.shape[1]] * a.key_norm)
     if a.tie_pools:
         from dvs_tied_pool_benchmark import tie_pools
         model = tie_pools(model)

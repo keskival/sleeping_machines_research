@@ -1732,6 +1732,18 @@ theory say about unused capacity at the end of training, and which knobs should 
    slot to write, separately from the race that delivers. It retains races, sparse addressed writes and counterfactual
    credit, and it costs one extra key-scoring pass per event.
 
+**Initialization biases toward reuse (user, 5 October: "initialize so free routes stay findable").**
+- Keys start small, N(0, .1²), with clock biases 0. The stored-memory map `key_read` uses the default linear
+  initialization, whose output is much larger than the key term.
+- So an occupied slot's score carries an extra random term in its memory, while a free slot's score is only the small
+  key term.
+- The race selects the maximum, so the wider score spread of occupied slots makes them win disproportionately at
+  initialization. The initialization itself favours reuse, and the myopic credit then locks that in.
+- **Findable initialization:** `key_read = 0`, so slots start on equal, key-only footing and the memory term must earn
+  its influence through credit; plus orthogonal per-head keys of fixed norm, so some unit matches every input direction.
+- This fixes the starting point only. Propositions 2 and 3 act throughout training, so it is tested beside the
+  persistent knobs (arm R6).
+
 **Pre-declared sweep (FAS v1; p32/d4; carried-state segments of 128; 2 epochs; selection by validation-clean NLL;
 all four declared scoring rules):**
 
@@ -1743,6 +1755,7 @@ all four declared scoring rules):**
 | R3 | pool 8 tied, free-slot bonus b = 3 | Proposition 2 (prior) |
 | R4 | pool 8 tied, training temperature τ = 2 | exposure |
 | R5 | pool 8 tied, balance λ = .01 | exposure, slot-agnostic |
+| R6 | pool 8 tied, findable initialization (key_read = 0, orthogonal keys) | the starting point |
 
 **Measurements:**
 - AUROC at N = 128, 256, 512.
