@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "aws_primate_r1_p32d2_pool4tied_sm_rs4_4k_indy_20160622_01_20261004T053500Z",
+    "sessions": "indy_20160622_01",
+    "payload": 32,
+    "depth": 2,
+    "heads": 2,
+    "pool": 4,
+    "tie_pools": true,
+    "segment": 250,
+    "lanes": 32,
+    "steps": 4000,
+    "lr": 0.003,
+    "weight_decay": 0.0,
+    "clip": 1.0,
+    "warmup": 25,
+    "val_fraction": 0.1333,
+    "route_credit": "linear",
+    "compiled": true,
+    "seed": 1,
+    "route_samples": 4,
+    "val_blocks": 1,
+    "reception": "race",
+    "traces": "",
+    "smoothing": true
+  },
+  "sessions": [
+    {
+      "session": "indy_20160622_01",
+      "test_r2": 0.7676575211742996,
+      "unsmoothed_test_r2": 0.7622190443815063,
+      "val_r2": 0.7827527434611952,
+      "readout_smoothing": {
+        "alpha": 0.6,
+        "val_r2": 0.7848211073773184,
+        "grid": {
+          "0.0": 0.7827527434611952,
+          "0.3": 0.7840865150482019,
+          "0.5": 0.7847568462714047,
+          "0.6": 0.7848211073773184,
+          "0.7": 0.7841685555906471,
+          "0.75": 0.7830845551163788,
+          "0.8": 0.7806610517962795,
+          "0.85": 0.7748221253217552,
+          "0.9": 0.7580591451593637,
+          "0.93": 0.7303464084261029,
+          "0.95": 0.6889269829737532
+        },
+        "test_r2": 0.7676575211742996
+      },
+      "route_samples": 4,
+      "single_stream": {
+        "val_r2": 0.7796085454554843,
+        "test_r2": 0.7575078128141228
+      },
+      "fit_bins": 415734,
+      "val_bins": 63941,
+      "test_bins": 132745,
+      "channels": 96,
+      "final_train_mse": 0.14471280410885812,
+      "fit_s": 3610.96006420895,
+      "parameters": 44826
+    }
+  ],
+  "mean_test_r2": 0.7676575211742996,
+  "protocol": "NeuroBench primate reaching (neurobench 2.3.0 loader, train_ratio .5, 4 ms bins); official R2",
+  "source_sha256": {
+    "experiments/primate_reaching_native.py": "7774918a191fbfefee38a2c0cc6dff2f18826068246e2257330f7299530a1c45",
+    "sleeping_machines/sparse_inference.py": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "experiments/vendor/neurobench_2_3_0/neurobench/datasets/primate_reaching.py": "185687c69a7ddca2c6aa95217dbc4b5090e3f2e14446d363e4c1f2e979ca1b51"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 5124.829928323976
+}
