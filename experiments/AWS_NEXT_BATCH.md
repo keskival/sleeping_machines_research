@@ -1,5 +1,10 @@
 # Current AWS work
 
+**Slot check (5 Oct 09:55 UTC):** MG repeats 20–29 finished ~08:15 (P0-4 complete), so slot 3 should be free. If it is idle,
+admit `aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z` now, then `aws_tuned_ref_90M_C_tf192L4_p0.8_*`. They are
+not in the product-priority manifest. They decide the tuned verdict for the completed P0-1 (1.800 at 0.97 PF). Slot 1 runs p96
+and slot 2 the remaining primate sessions. After the C refs: kwrite smoke/arms, weight-decay arms, X1, FAS references.
+
 **URGENT (5 Oct 07:15 UTC): two AWS slots idle since ~01:30. Fill now** (PRODUCT_ORDERS.md "URGENT AWS slot order"):
 slot 2 → P0-3 primate six sessions (`aws_primate_r1_*_20261004T053500Z`, move out of slot 1); slot 3 → P0-4 MG repeats 20–29
 (`aws_mg_tau17_r1_from20`). Then, in the first free slot: the two 90M budget-C tuned references
