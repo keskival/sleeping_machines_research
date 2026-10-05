@@ -91,7 +91,7 @@ Race selection has the exact softmax winner probabilities, but one winning value
 | 10M vs tuned Transformers at ≤ 107 TF (P0-6; 2 arms, validation-selected) | 2.215 (tf128x4 1.6p lr0.003) | 1.955 (p64/d4 + route credit, 4 passes; 107 TF) | Better quality at 104% of its compute (not matched) |
 | 90M vs LSTM-512, 6 passes | 1.661 | 1.857 (p64/d4/pool2 + route credit; 16× less training compute) | Efficiency point; run queued |
 | 90M vs Transformer-256x4, 4 passes | 1.604 | 1.857 (p64/d4/pool2 + route credit; 33× less training compute) | Efficiency point; run queued |
-| NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.37 (57.6 KB vs 490 KB) | Pending (20/30 repeats) |
+| NeuroBench Mackey-Glass (sMAPE; LSTM 13.37, ESN 14.79) | 13.37 | 14.84 (57.6 KB vs 490 KB) | Loss vs LSTM |
 | NeuroBench primate reaching (R²; leaderboard 0.71 six-session) | 0.710 | 0.724 (validation-selected arm, development session indy_20170131_02, also one of the six official sessions; tinyRSNN .746 there) | Pending (six-session run; also report the five untouched sessions) |
 | SHD (accuracy; best published 96.4%) | 96.4% | development queued | Pending |
 
@@ -179,7 +179,7 @@ Means and individual seeds6/7/8 on281 reserved rows (270 feature groups). 128 fi
 
 **Learned native language at 10M, one pass (THEORY §413).** Alternative-value credit (forward values unchanged) improves the integrated native core from **2.507 to 2.370** test bpc at the same size. More width reaches **2.163** (T256 2.162) versus **2.171** for LSTM-256 and **2.427** for Transformer. Winner-only trace: **1.32** versus 0.68 MFLOPs/position; fitting 5.87 versus 2.03 MFLOPs/character. Traced/estimated conventions differ; single seeds, more work than LSTM, trained sparse parity pending. Multi-pass and 90M rows have their own references: 10M six passes 1.888 vs the 4-pass Transformer-256x4 1.908 (1.5x its updates) and the 6-pass LSTM-512 1.799; 90M one pass 1.857 vs multi-pass LSTM-512 1.661 and Transformer 1.604 at 16-33x our estimated fitting work. The native appendix retains every arm and failed write credit.
 
-**Public benchmarks (NeuroBench), in progress.** Mackey-Glass official tau 17: our 14,393-parameter race member scores **14.37** sMAPE after 20/30 repeats (LSTM 13.37, ESN 14.79 on the leaderboard; our float32 footprint 57.6 KB versus 490/281 KB). Primate reaching development session: validation-selected arm test R² **0.724** (tinyRSNN .746, bigRSNN .772 on that session, so below both there; leaderboard six-session best .71, run pending; earlier text quoted the best test arm, .754, which was a test-selected figure). Partial and development results only; no leaderboard claim yet. See the public-benchmark appendix.
+**Public benchmarks (NeuroBench), in progress.** Mackey-Glass official tau 17: our 14,393-parameter race member scores **14.84** sMAPE after 30/30 repeats (LSTM 13.37, ESN 14.79 on the leaderboard; our float32 footprint 57.6 KB versus 490/281 KB). Primate reaching development session: validation-selected arm test R² **0.724** (tinyRSNN .746, bigRSNN .772 on that session, so below both there; leaderboard six-session best .71, run pending; earlier text quoted the best test arm, .754, which was a test-selected figure). Partial and development results only; no leaderboard claim yet. See the public-benchmark appendix.
 
 **Native data scaling.** The same 54,907-parameter construction improves from **3.765 to 3.557 bpc** when fitting data grows from2K to8K characters, using **15.12 whole-fit GFLOPs**. Both use four passes and the same 8,191 development targets; this is one-seed completed data-scaling evidence.
 
@@ -3104,9 +3104,9 @@ Targets and rules: experiments/SOTA_TARGETS.md. Official protocols are fixed bef
 
 | Model | sMAPE | Footprint (bytes) | Inference ops / step |
 | --- | --- | --- | --- |
-| Ours: race member, mix8 (primary, partial: 20/30 repeats) | 14.37 | 57,572 (float32) | 93,264 (traced) |
-| Ours: same weights, argmax (reporting only) | 17.27 | 57,572 | 11,658 (traced) |
-| Ours: same weights, sampled (reporting only) | 16.27 | 57,572 | 11,658 (traced) |
+| Ours: race member, mix8 (primary, complete) | 14.84 | 57,572 (float32) | 93,264 (traced) |
+| Ours: same weights, argmax (reporting only) | 18.43 | 57,572 | 11,658 (traced) |
+| Ours: same weights, sampled (reporting only) | 17.65 | 57,572 | 11,658 (traced) |
 | LSTM (NeuroBench) | 13.37 | 490,000 | 60,300 (effective MACs) |
 | ESN (NeuroBench) | 14.79 | 281,000 | 4,370 (effective MACs) |
 
