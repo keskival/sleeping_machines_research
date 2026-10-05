@@ -1,5 +1,16 @@
 # Session handoff — 2026-09-30
 
+**64K P32 completed:** selectedstep64NLL8.090418677 vs initial8.162279795,
+131056targets,4,225,420parameters,343.932targets/s,546508KiBpeakRSS.
+It loses to P24selected8.033310714 by0.057108NLL. All three width records
+retained; no monotonic capacity law. P32utility follows through its guarded
+queue. Named repeat coordinator will admit P24seed7 after utility/source gates
+complete; postrepeat coordinator then utility/full work. Report source now also
+accepts completed seed7reliability as a separate page with matching protocol,
+keeping single-seed capacity gain separate. Appendix regenerated for three
+completed widths. Inspect live handles and receipts before any new job.
+
+
 **Selected-member work continuation prepared:** tmux
 curie_data_growth_64k_postrepeat_20261005_v1 waits on the independent-repeat
 handle, then runs prepared selected-width seed7utility through run_safe.
