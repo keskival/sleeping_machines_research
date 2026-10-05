@@ -35,6 +35,19 @@ transport as a dead-memory repair on this evidence. Prioritize trained readout/
 state credit sensitivity and existing AWS full-width decoder/horizon comparisons.
 Read TOKEN_MEMORY_PATH_20261005; all core mechanisms and frozen queues retained.
 
+**AWS selected-memory diagnostic —5 October19:20 UTC:** new guarded slot1
+addendum `zzz_aws_memory_path_audit_20261005T192000Z.json` follows all four8K
+fixed-batch fits. Reproduces selected DEV/RNG/partition; observes selected-slot
+age/decay/retained-write norms and bounded memory-value VJPs, then repeats
+memory/message erasures. Synthetic double memory-value/key-score sensitivity
+contracts execute first. Eight stdlib admission checks PASSED; native
+contracts and actual checkpoint audit PENDING. Original active jobs and pinned
+model code untouched. Theory: TOKEN_SELECTED_MEMORY_PATH_20261005.md.
+Prioritized member/queue remains paired8K sparse persistent temporal model
+with actual-write credit in `zz_aws_fixed_batch_tokens_20261005T191244Z.json`.
+Next repair is selected by measured retention/access/learning failure; no
+architectural departure or predicted improvement. Full work audit, broader
+capacity and all-key discovery remain gaps before scaling promotion.
 
 **Persistent utility diagnosis —5 October19:10 UTC:** frozen selected2K
 seed6/7credit16/64 checkpoints reproduce original NLL under token-wise
