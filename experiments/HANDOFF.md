@@ -1,5 +1,14 @@
 # Session handoff — 2026-09-30
 
+**FAS repeat artifacts completed before execution:** wrapper now saves the
+selected state_dict after the existing scorer returns, plus per-run total
+scores, fault kinds and clean/faulty simulator seed IDs. No fit/scorer/RNG
+change. These permit paired sample identity checks and selected-model reuse;
+historical seed6aggregate-only limitation remains. Manifest wrapper hash
+updated while tmux waits for language handles. Syntax passed, numerical
+smoke still pending; language audit PID12140 remains live.
+
+
 **User orders more FAS seeds and benchmarks (5 Oct21:07UTC):** persistent tmux
 curie_fas_v1_replication_20261005_v1 waits admitted language work/256K/message/
 utility handles, then guarded missing-data generation, two-window smokes and

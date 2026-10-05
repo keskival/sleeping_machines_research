@@ -30,22 +30,35 @@ def main():
     byte_identity=all(actual['splits'][k]['sha256']==v['sha256'] for k,v in expected['splits'].items())
     namespace={'__file__':str(FROZEN),'__name__':'fas_frozen_driver'}
     exec(compile(FROZEN.read_bytes(),str(FROZEN),'exec'),namespace)
-    captured=[]; original_scores=namespace['scores']
+    captured=[]; models=[]; original_scores=namespace['scores']
     def scores(*args,**kwargs):
         value=original_scores(*args,**kwargs)
         captured.append(value[0].copy())
+        models[:] = [args[0]]
         return value
     namespace['scores']=scores
     namespace['main']()
     assert len(captured)>=2
     score_path=ROOT/f'experiments/results/fas/{tag}_scores.npz'
     if score_path.exists():raise FileExistsError(score_path)
-    namespace['np'].savez_compressed(score_path,test_clean=captured[-2],test_faulty=captured[-1],prefixes=namespace['PREFIXES'])
+    np=namespace['np']
+    with np.load(data.parent/'test_faulty.npz',allow_pickle=False) as original:
+        kinds=original['fault'][:len(captured[-1])]
+        faulty_seeds=original['seed'][:len(captured[-1])]
+    with np.load(data.parent/'test_clean.npz',allow_pickle=False) as original:
+        clean_seeds=original['seed'][:len(captured[-2])]
+    np.savez_compressed(score_path,test_clean=captured[-2],test_faulty=captured[-1],prefixes=namespace['PREFIXES'],fault_kind=kinds,test_clean_seed=clean_seeds,test_faulty_seed=faulty_seeds)
+    weights=ROOT/f'experiments/results/fas/checkpoints/{tag}_selected.pt'
+    weights.parent.mkdir(parents=True,exist_ok=True)
+    if weights.exists():raise FileExistsError(weights)
+    namespace['torch'].save(models[0].state_dict(),weights)
     output=ROOT/f'experiments/results/fas/{tag}.json'
     result=json.loads(output.read_text())
     for key,value in control['args'].items():
         if key not in ('tag','seed','max_windows','eval_runs','trace_windows'):assert result['args'][key]==value,key
     result['source_sha256']['experiments/fas/native.py']=sha(FROZEN)
+    result['selected_weights']=str(weights.relative_to(ROOT))
+    result['selected_weights_sha256']=sha(weights)
     result['replication']=dict(control=str(CONTROL.relative_to(ROOT)),control_sha256=sha(CONTROL),
         frozen_driver=str(FROZEN.relative_to(ROOT)),execution_source_sha256=manifest['execution_source_sha256'],
         scores_path=str(score_path.relative_to(ROOT)),scores_sha256=sha(score_path),historical_dataset_bytes_identical=byte_identity,
