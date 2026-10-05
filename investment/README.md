@@ -5,8 +5,7 @@ The **[full 36-slide deck](sleeping_machines_pitch_deck.pdf)** adds 17 optional
 technical and financial diligence slides. The current discussion draft proposes
 a **€3M raise**, with **€50M priced pre-money as the bullish negotiating
 case** and €100M as a separate appendix stretch scenario. Neither price is an independent
-appraisal or an investor offer. The numerical results do not estimate the odds
-of platform success. No customer interest has been reported.
+appraisal or an investor offer. No customer commitments exist yet.
 
 The founder instructed on 3 October 2026 that the repository is now private.
 These are local private-review artifacts. Distribution, partner outreach and
@@ -34,7 +33,7 @@ families, heterogeneous regions and same-structure learning. The language
 fits then illustrate one branch. Slide 5 now diagrams the AGI opportunity:
 sensing/action and language/reasoning exchange experience through shared
 persistent state and learning. Bidirectional held-out transfer and retention
-are proof requirements, not demonstrated project capabilities. PaLM-E and
+are its proof requirements. PaLM-E and
 RT-2 are attributed joint-learning precedents. The proof plan prioritizes
 replication, trained sparse execution and delayed memory credit, with owner
 queue links and promotion gates. The report adds a visual family chapter with

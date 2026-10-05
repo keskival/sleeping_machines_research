@@ -2,7 +2,7 @@
 
 **A learning architecture and computing substrate for intelligence everywhere.**
 
-Prepared 3 October; revised 5 October 2026. Investment thesis and proposed commercial strategy;
+Prepared 3 October; revised 4 October 2026. Investment thesis and proposed commercial strategy;
 completed research evidence is identified separately from product ambitions.
 
 Current terms: **€3M raise at €50M priced pre-money**, with €100M as a separate
@@ -27,16 +27,12 @@ licensing, deployment software, accelerator IP and eventually hardware. Each
 route draws on a common architecture and toolchain. The initial product must
 solve a specific customer problem; the broader platform is the expansion path.
 
-The ambition is the next general-purpose substrate for machine intelligence:
-one architecture, learning rule and execution model spanning frontier language
-and reasoning, multimodal world models, embodied intelligence and robotics,
-event-native analytics, continual on-device learning, adaptive communication
-and self-designing models, on hardware from datacenters to phones, robots,
-sensors and clockless event processors that learn on chip. General intelligence
-is the overarching aspiration. The case rests on a working research program
-with concrete positive results and a staged way to turn them into customer
-value; frontier capability, commercial serving savings and clockless chips are
-the milestones this round funds.
+The ambition is substantial: next-generation frontier models with useful memory
+and adaptive behavior at a better quality/resource frontier, supported by
+computing substrates suited to continuous interaction. Frontier capability,
+commercial serving savings and fabricated clockless chips remain milestones.
+The current case rests on a working research program with concrete positive
+results and a staged way to turn them into customer value.
 
 ## Why this could become a foundational platform
 
@@ -51,15 +47,16 @@ actually performs?
 Our architecture explicitly separates available capacity, scored keys,
 selected state updates, delivered values and counterfactual learning work.
 This makes capacity beyond selected activity a design objective. Deep memories
-and learned routes allocate work to the current need while preserving a larger
-store of skills and context. Scalable key discovery is the next engineering
-step (the current implementation scores all keys in its pools).
+and learned routes could allocate work to the current need while preserving a
+larger store of skills and context. The present implementation still scores
+all keys in its candidate pools; scalable discovery is a required advance.
 
 If these mechanisms improve the quality/resource frontier, the benefit can be
 spent on lower cost or greater capability at the same budget. For example,
 a demonstrated 40% reduction in a relevant total cost would permit about
-1.67 times the corresponding work at the same budget. The scaling study
-measures whether the advantage widens with scale.
+1.67 times the corresponding work at the same budget. That is arithmetic under
+the stated boundary, not an observed gain or evidence of better scaling
+exponents. A widening advantage with scale must be measured.
 
 ## The advantage portfolio
 
@@ -77,7 +74,7 @@ measures whether the advantage widens with scale.
 
 Clockless circuits, sparse models, recurrent state and on-chip learning have
 precedents. Intel's Loihi 2 describes asynchronous cores and programmable
-learning. Our differentiation is the complete trainable construction:
+learning. Our proposed differentiation is the complete trainable construction:
 deep content-bearing temporal computation, addressed persistent memory and
 credit to unrealized hard routes, translated into a useful system. [Intel Loihi 2](https://www.intel.com/content/dam/www/central-libraries/us/en/documents/neuromorphic-computing-loihi-2-brief.pdf)
 
@@ -106,41 +103,43 @@ Three observations are particularly relevant to investment:
   and unchanged hard forward behavior. The improvement also appears in a
   completed depth-8 model. This is evidence that learning the alternatives
   matters, rather than evidence that additional activity alone explains gains.
-- **The sparse native construction beats Transformers at lower compute.**
+- **The sparse native construction has a credible quality/work foothold.**
   Credited p32/D4 beats the saved one-pass Transformer by 0.0554 bpc with about
-  15.4 times less estimated fitting work and 15.2 times fewer parameters. With
-  more passes, the native model reaches 1.888 bpc against the 4-pass
-  Transformer-256x4's 1.908 at 0.40x its training and 0.18x its inference
-  compute.
+  15.4 times less estimated fitting work and 15.2 times fewer parameters.
+  This is a scoped exploratory comparison against that saved small control;
+  it does not establish superiority to optimized contemporary frontier models.
 - **Quality and useful capacity improve.** The p96 model slightly exceeds the
   saved LSTM's quality, while using about 2.9 times its fitting work. At p32,
   doubling slots from 16 to 32 improves 2.3715 to 2.3452 with eight selected
   writes unchanged, but 16 to 32 scored keys and about 1.65 times fitting work.
-  Useful capacity grows beyond selected activity.
+  These results establish progress and a capacity/activity distinction;
+  total-resource leadership over the LSTM is still open.
 - **Tuned baselines at our budgets (5 October 2026).** Ten dense baselines retuned at the native compute budgets and
-  selected by validation: the native model beats every tuned Transformer at both budgets (1.888 vs 1.996; 1.955 vs
-  2.215 bpc, at about equal compute). Tuned small LSTMs lead at these budgets (1.825 at ≤ 352 TF; 1.915 at ≤ 107 TF),
-  on local 2–4-character modelling. The strategic contest is against Transformers at scale.
+  selected by validation: the native model beats every tuned Transformer (1.888 vs 1.996 bpc at about equal compute) and
+  loses to tuned LSTMs (1.888 vs 1.825 at ≤ 352 TF; 1.955 vs 1.915 at ≤ 107 TF). The LSTM's lead is local 2–4-character
+  modelling. Content taps, weight decay and learning-rate tuning are queued to close it.
 
 A separate integrated full-backbone online CPU experiment scores 3.1909 bpc
 with frozen weights versus 3.0957 with adaptation on 8,191 new development
 targets. Predictions precede each 16-character block update; both arms have
-persistent event state. Next: gains under drift with retained quality and
-bounded update cost.
+persistent event state. This supports useful causal adaptation in one
+checkpoint/window/rate. It does not establish lifelong learning, reduced total
+retraining cost or a clockless hardware learner.
 
-The program also spans event speech, event vision, tabular tasks, interleaved
-industrial event logs and temporal prediction, each at its own maturity; the
-report lists every win and loss per domain. Invalid target-dependent mixtures
-are quarantined and excluded from this investment case.
+The program also spans event speech, event vision, tabular tasks and temporal
+prediction. Those experiments support a broader research direction, with
+different maturity levels and strong controls that sometimes lead. They do not
+yet support one universal advantage claim. Causal count references remain
+strong in their established region. Invalid target-dependent mixtures remain
+quarantined and are excluded from this investment case.
 
 Completed parents and exact values are indexed by the accompanying evidence
 manifest. [Research status](../report/sleeping_machines_status.pdf)
 
 The numerical table above remains the frozen 3 October 10M comparison.
-At 90M characters, four native passes reach 1.800 bpc at 0.97 PFLOPs (saved
-LSTM-512 1.661 at 3.9 PFLOPs; Transformer 1.604 at 8.0 PFLOPs); the larger p96
-fit and the equal-compute tuned references are running. See the
-[current evidence map](../report/architecture_evidence.md).
+Separately, the [current evidence map](../report/architecture_evidence.md) records
+completed 90M learning at 1.857306 BPC on test[95M:96M], T256, one seed. It
+changes width/data; no full official-test or matched-scale win follows.
 
 ## Expanded platform opportunities
 
@@ -152,9 +151,11 @@ regions. Variable-rate coding, irregular-input models and joint VLA learning
 already have precedents. The proposed value is their economical temporal and
 selective integration, with first proof conditions and current gaps explicit.
 
-Joint motor/reasoning learning can teach shared physical abstractions and
-planning skills; transfer in each direction is tested separately on held-out
-tasks. General intelligence is the overarching aspiration.
+Joint motor/reasoning learning could teach shared physical abstractions and
+planning skills. Motor-to-cognitive and reverse transfer need separate,
+controlled held-out tests. AGI remains a broader aspiration with no project
+demonstration. Novel architectural choices are a starting point for generalism,
+not a guarantee of transfer or universal economic superiority.
 
 ## Markets: one foundation, distinct products
 
@@ -166,9 +167,9 @@ training and stronger scalable models are larger opportunities. A software
 proof can precede the capital demands of custom silicon.
 
 The IEA's updated outlook puts datacenter electricity at 485 TWh in 2025 and
-projects 950 TWh in 2030. That is the scale of the constraint (not all of it
-is addressable AI spend); validated quality per watt and dollar has
-substantial economic value.
+projects 950 TWh in 2030. This demonstrates the scale of the constraint; all
+datacenter electricity is not our addressable AI spend. Our inference is that
+validated quality per watt and dollar could have substantial economic value.
 [IEA outlook](https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary)
 
 **Mobile, wearables and personal devices.** The desired product is an SDK/model
@@ -191,8 +192,8 @@ substrate. The proposed product is a model/runtime or embedded accelerator
 that improves a measured perception or adaptive-control workload. Learning
 from deployment could eventually address changing payloads, environments and
 sensor characteristics. Closed-loop transfer, latency, robustness and retained
-skills are proven in robotic trials, the next stage after recorded-stream
-models.
+skills require robotic demonstrations; current text/event experiments do not
+establish those properties.
 
 IFR reports five million industrial robots operating in 2025 and more than
 600,000 new installations that year. This is a concrete industrial ecosystem,
@@ -204,7 +205,8 @@ streams, connected vehicles, private enterprise AI, environmental sensing and
 adaptive forecasting share aspects of the same opportunity. Some need sparse
 continuous sensing; others need capable private inference or adaptation. They
 are expansion options after a repeatable first product, with their own data,
-quality and deployment protocols.
+quality and deployment protocols. We should not sell one benchmark as proof
+that all these markets have already been solved.
 
 ## Define the upside in economic terms
 
@@ -233,7 +235,7 @@ and substrate platform with durable billion-dollar annual revenue could
 support much larger, potentially tens-of-billions outcomes under suitable
 economics. The route to that upside is owning a widely adopted layer of AI
 infrastructure, with defensible quality/cost benefits and meaningful value
-capture.
+capture. Exceptional architecture alone does not guarantee distribution.
 
 This is why the upside can justify early investment: capital today buys an
 opportunity to establish that layer before the complete platform is proven.
@@ -242,16 +244,20 @@ applications do not constitute independent chances of success.
 
 ## Defensibility and capital efficiency
 
-The moat combines a learning method, an execution contract,
+The potential moat combines a learning method, an execution contract,
 model/runtime engineering, memory/routing design, hardware mappings and a
 growing corpus of reproducible evidence. Successful deployments can add
 integration know-how, task-specific learning policies and developer adoption.
-The combination is harder to reproduce than any isolated primitive.
+The combination may be harder to reproduce than any isolated primitive.
+Distribution, measured benefit and the ability to keep improving will matter
+as much as the architecture's initial originality.
 
-No patents are filed yet. The historical manifesto is public and cites a 2021
-origin; the round funds a documented inventory of ownership, contributor
-rights, dependencies, licenses and protectable implementations, and a
-freedom-to-operate review.
+This is proposed defensibility, not an established patent portfolio. The
+historical manifesto is public and cites a 2021 origin; corporate ownership,
+contributor rights, dependencies, licenses and protectable implementations
+still need a documented inventory. No exclusive rights or freedom-to-operate
+opinion is asserted here. Public research can support credibility and adoption
+while the company develops commercial execution capabilities.
 
 Funding should convert this proposed moat into documented company assets:
 ownership and disclosure review, patent counsel's assessment, selective priority
@@ -278,12 +284,14 @@ semantics; it cannot demonstrate the energy of a fabricated clockless ASIC.
 The current opening proposal is **€3M at €50M priced pre-money**; **€100M**
 is a stretch scenario. This prices the potential of a model/learning/runtime
 and computing-substrate platform, supported by research execution and a staged
-program. It is a negotiating position, not an independent appraisal.
+program. It is an aggressive negotiating thesis, not an independent appraisal,
+a market-clearing estimate or a value calculated from benchmark scores.
 
 The rationale now treats asynchronous ingestion/output, learned memory policies
 and embodied/cognitive integration as concrete expansion options. The common
 structure could permit end-to-end learning across their information and credit
-paths. Each has its prior art and first discriminating test.
+paths. These are specified opportunities, with prior art and discriminating
+tests; they do not supply completed codec, motor-transfer or AGI evidence.
 
 Execution supports taking the ambition seriously: implemented integrated
 models, completed mechanism comparisons, larger-data learning, retained
@@ -309,27 +317,24 @@ rights, execution and reproducible benefits determine attainable terms.
 
 ## What the next investment should buy
 
-1. **A reproducible model advantage at scale.** Race attention against
-   competent Transformers at equal complete compute on modern language data,
-   across a scaling curve on GPU, with replications.
-2. **A home-field win on event streams.** The pre-registered FAS v2 benchmark
-   with ambiguous identities, then identity-stripped real logs and a design
-   partner.
-3. **A deployable sparse backend.** Admit actual-trained winner/state/cache/RNG
+1. **A reproducible model advantage.** Finish the assigned language fits and
+   replications; establish a modern representative comparison with complete
+   resource accounting. Keep strong counts, recurrent and attention controls.
+2. **A deployable sparse backend.** Admit actual-trained winner/state/cache/RNG
    parity and heldout rescore, then measure setup, residency, latency,
    throughput and total cost. The prepared packed-weight worker is an initial
    runtime implementation; its lifecycle checks pass, native admission is open.
-4. **One customer workload and one adoption route.** Define the buyer, useful
+3. **One customer workload and one adoption route.** Define the buyer, useful
    quality level, deployment constraints and acceptable integration cost.
    Proposed first route: a software/model/runtime proof for datacenter AI,
    while validating event-stream strengths for later edge/robotics products.
-5. **A credible adaptation result.** Demonstrate prequential gains under drift,
+4. **A credible adaptation result.** Demonstrate prequential gains under drift,
    retained stationary quality and bounded update resources against competent
    online baselines. Distinguish state updates from learned weight adaptation.
-6. **A hardware execution contract.** Export validated traces; establish event
+5. **A hardware execution contract.** Export validated traces; establish event
    ordering, precision, timing, local state and backpressure. Measure clock,
    communication, memory and learning overhead before an ASIC commitment.
-7. **Company-owned IP protection.** Document contributions and assignments,
+6. **Company-owned IP protection.** Document contributions and assignments,
    review prior disclosures and prior art, and file selectively for qualifying
    technical inventions. Stage prosecution and international protection by
    commercial relevance; retain confidential implementation know-how.

@@ -1,61 +1,45 @@
 # Sleeping Machines — investor pitch
 
-**A learning architecture and computing substrate for intelligence everywhere.**
+**The next general-purpose substrate for machine intelligence.**
 
-We are building AI that computes through time and sparse events, learns which
-work to perform, and maintains persistent context. The ambition is capable,
-adaptive intelligence from datacenters to mobile devices and robots, with
-models, execution software and eventually clockless hardware designed together.
+Sleeping Machines is building one trainable architecture, learning rule and execution model for intelligence
+everywhere: frontier language and reasoning, multimodal world models, embodied intelligence and robotics, event-native
+analytics, continual on-device learning, adaptive communication and self-designing models, running economically from
+datacenters to phones, robots and sensors, and ultimately on globally clockless, event-driven hardware that learns on
+chip. General intelligence is the overarching aspiration.
 
-Our core combines learned temporal races, addressed memory, separate keys and
-values, deep content-bearing messages and counterfactual credit to routes that
-did not win. This creates a path to more useful capacity than selected work,
-and to learning near the point of use. The complete construction and its
-quality/resource consequences are the proposed differentiation.
+Today's deep learning computes in lockstep: every layer runs at every step and memory is a buffer to rescan. Sleeping
+Machines computes through time and sparse events. Messages carry content, an arrival time and an address; persistent
+memories evolve with elapsed time; candidate routes race through learned delays; the winner acts, and the routes that
+did not win still receive counterfactual credit. Delay-coded aggregation reproduces softmax attention exactly, so the
+family contains Transformer-class computation, and dense synchronous layers are a special case. One model computes
+densely where a task needs it and selectively everywhere else, with more stored capacity than selected work.
 
-The research already has tangible positive results. On the completed single-seed
-10M-character, one-pass text8 comparison, a small credited native model beats
-the saved Transformer control with about 15.4 times less estimated fitting
-work. A larger model slightly beats the saved LSTM's quality but uses more work.
-A separate causal CPU pilot improves predictions through full-backbone online
-adaptation. Against baselines retuned at our exact compute budgets (10 runs, selected
-by validation), the native model beats every tuned Transformer but loses to
-tuned small LSTMs by 0.04–0.06 bpc. Closing that local-modelling gap is the
-current language milestone. These are early scoped results, not modern frontier or hardware
-claims. The current report preserves their controls and limitations.
+**What is already shown** (single seeds; native compute traced, reference compute shape-estimated):
+- **Beats Transformers at a fraction of their compute.** On 10M characters of text8 the native model reaches 1.888 bpc
+  against the 4-pass Transformer-256×4's 1.908, at 0.40× its training and 0.18× its inference compute, and beats the
+  validation-selected tuned Transformers at both budgets (1.888 vs 1.996; 1.955 vs 2.215). Tuned small LSTMs lead at
+  these budgets by 0.04–0.06 bpc.
+- **Counterfactual route credit works:** 2.507 → 2.371 bpc for 0.3% extra training work.
+- **Capacity beyond activity:** doubling the receiver pool improves 2.371 → 2.345 bpc at the same selected work.
+- **Learned temporal computation:** 99.7–99.9% event-order accuracy from 2,000 examples seen once (Transformers
+  33–41%); 95.3% on timing-only discrimination where any order-only model is capped at 50%; 100% on unseen modular
+  rules; 100% retrieval at four times the training context.
+- **Scales with data and adapts online:** 1.800 bpc after 90M characters; online adaptation 3.191 → 3.096 bpc.
+- **Hardware economics:** in the cost model, 5.8× fewer bytes moved per character than Transformer-256×4 at better
+  quality (modelled; silicon measurement is a funded milestone).
 
-The first commercial target is useful quality at lower total datacenter cost.
-The next steps are actual-trained sparse-backend admission, measured serving,
-modern replication and a defined customer deployment. Software/model licensing
-can precede accelerator IP and custom silicon. Mobile and robotics extend the
-platform toward always-available contextual AI and adaptive machines.
+**Paths to revenue.** Two entry routes share the core: datacenter AI at lower total cost (models and runtime), and
+event-native vertical models on existing CPUs and GPUs for interleaved, timestamped logs in industry, IoT, IT
+operations, security and finance, priced on detection value, the shortest path to revenue. Licensed runtime and
+accelerator IP and learning-capable event processors for mobile and robotics follow. The largest outcome is ownership
+of a widely used AI infrastructure layer.
 
-The upside is ownership of a widely used AI infrastructure layer: models and
-runtime, licensed compute IP, and potentially a family of learning-capable event
-processors. Repeatable datacenter deployments or OEM design wins can support
-large businesses; successful frontier-scale models and cross-domain adoption
-could make this a foundational platform.
+**The raise.** €3M at €50M priced pre-money, with €100M as a stretch scenario. The 18-month program buys the team, the
+decisive proofs (race attention against competent Transformers at scale on GPU, the pre-registered FAS v2 home-field
+benchmark and a real-data track, trained sparse serving), hardware feasibility on FPGA and neuromorphic silicon, and
+company-owned IP through patent review and selective filings.
 
-The current proposal is a **€3M raise at €50M priced pre-money**, with **€100M**
-as a stretch scenario. The case combines platform ambition, mechanisms with
-scoped empirical support, relevant founder experience and a staged execution
-plan. It does not price the company by adding application markets or claiming
-AGI. The €3M/18-month program buys team, quality replication, runtime proof and
-hardware feasibility and company-owned IP protection, including patent review
-and selective filings; attainable terms depend on investor conviction and diligence.
-
-The expanded opportunity includes native irregular ingestion, adaptive
-asynchronous codecs, task-oriented communications and learned memory policies.
-Shared sensing/action/language paths could let embodied experience inform
-cognition. These are testable opportunities, not completed application wins.
-Existing learned codecs, irregular-stream models and VLA systems are relevant
-precedents and controls.
-
-Prepared 3 October; revised 4 October 2026. Read the
-[current valuation rationale](VALUATION_RATIONALE.md),
-[full investment case](INVESTMENT_CASE.md),
-[opportunity register](../report/model_family_opportunities.md) and
-[current research evidence](../report/architecture_evidence.md).
-The [original pitch](archive/valuation_20261004T171500Z_previous_PITCH.md)
-preserves earlier pricing. This remains a fundraising thesis; scalable generalism,
-commercial advantage and clockless hardware economics require their own proofs.
+Read the [valuation rationale](VALUATION_RATIONALE.md), [full investment case](INVESTMENT_CASE.md),
+[opportunity register](../report/model_family_opportunities.md) and [research evidence](../report/architecture_evidence.md).
+The [previous pitch](archive/pitch_20261005T160000Z_previous_PITCH.md) is archived.

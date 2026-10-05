@@ -1,40 +1,37 @@
 # Valuation rationale: ambition, platform potential and execution
 
-4 October 2026, revised 5 October · Private founder/investor discussion · Not an independent appraisal.
+4 October 2026 · Private founder/investor discussion · Not an independent appraisal.
 
 **Current proposal: raise €3M at €50M priced pre-money.** The €100M case remains
-a stretch scenario. The breadth of the family is the rationale for seeking a
-platform premium. The proposal funds the next decisive evidence,
+a stretch scenario. The broader family definition strengthens the rationale
+for seeking a platform premium; it does not establish a market-clearing price
+or a probability of success. The proposal funds the next decisive evidence,
 team and execution capacity rather than requiring that the entire vision be
 finished before investment.
 
 ## 1. The ambition being financed
 
-Sleeping Machines aims to be the next general-purpose substrate for machine
-intelligence: a learning and thinking substrate that connects content,
-computational time, persistent evidence, selective work and learning. One
-architecture, learning rule and execution model spans frontier language and
-reasoning, multimodal world models, embodied intelligence and robotics,
-event-native analytics, continual on-device learning, adaptive communication
-and self-designing models. The common event/state interface permits
-heterogeneous local programs, dense and selective regions, synchronous and
-asynchronous schedules, and streamed or batched learning; each member fixes its
-operators and contracts.
+Sleeping Machines aims to establish a general learning and thinking substrate
+that connects content, computational time, persistent evidence, selective work
+and learning. The common event/state interface permits heterogeneous local
+programs, dense and selective regions, synchronous and asynchronous schedules,
+and streamed or batched learning. A chosen member fixes its actual operators and
+contracts; broad family membership does not grant every member every capability.
 
 The largest outcome would be a widely adopted model/learning/runtime layer,
 with compatible communication and compute substrates from datacenters to mobile
-and robotics. Integrated embodied and cognitive learning expands the core
-model's reach, with motor experience and reasoning teaching shared
-representations. General intelligence is the overarching aspiration; the
-financial model does not price it.
+and robotics. Integrated embodied and cognitive learning could expand the core
+model's useful reach, with motor experience and reasoning teaching shared
+representations. General intelligence is an overarching aspiration, not a
+current capability claim or a quantified probability in the financial model.
 
 The [opportunity register](../report/model_family_opportunities.md) gives this
 breadth concrete mechanisms and proof conditions. Asynchronous codecs,
 irregular-stream ingestion, task-oriented communication, learned memory
-policies and embodied transfer are further uses of the same core, each with its
-evidence stage and first proof. Familiar neural methods address portions of
-these problems; the thesis is the integrated construction and its
-quality/resource behavior.
+policies and embodied transfer are additional possible uses of the same core.
+They remain at their stated evidence stages. Familiar neural methods already
+address portions of these problems; our investment thesis concerns the useful
+integrated construction and its eventual quality/resource behavior.
 
 ## 2. Why the platform could earn a premium
 
@@ -75,11 +72,10 @@ Evidence stage, 4 October:
 - The first native arm is queued. Dense, SSM and point-process references follow on AWS.
 - The value is to be claimed only from completed comparisons.
 
-Evidence update, 5 October: the native model beats every generic classical control early (AUROC 0.600 vs 0.559 at 256
-events). In v1 a structure-aware rule (known route plus first-in-first-out matching) recovers item identity exactly and
-reaches 0.755, so v1 does not contain the ambiguous-identity problem. FAS v2 (merged lines, dropped events, ambiguous
-identity), where such rules collapse to chance, is now pre-registered with strong classical and neural references,
-three seeds and a sealed test ([protocol](../experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md)).
+Evidence update, 5 October: the native model beats the generic classical controls early (AUROC 0.600 vs 0.559 at 256
+events), but a structure-aware classical rule (known route plus first-in-first-out matching) recovers item identity exactly
+and reaches 0.755. FAS v1 is therefore not a home-field win. Its interleaving is unambiguous. The claim moves to a harder
+v2 (product variants, overtaking, dropped events) where such rules lose information.
 Reusable mechanisms and tooling could then lower the cost of entering adjacent
 workloads. Value capture could include model/runtime licensing, deployment
 software, communication SDKs, accelerator IP and later hardware. These are
@@ -97,7 +93,8 @@ capturing part of the value created.
 The project has progressed from a manifesto to implemented temporal/state
 mechanisms, integrated language models, controlled mechanism comparisons,
 source-bound results and a formal family with explicit composition/learning
-contracts. This is evidence of research execution.
+contracts. This is evidence of research execution, not yet evidence of operating
+a scaled company or deploying a frontier product.
 
 The [current evidence map](../report/architecture_evidence.md) supplies anchors:
 
@@ -106,17 +103,16 @@ The [current evidence map](../report/architecture_evidence.md) supplies anchors:
 - Doubling available receiver capacity improves 2.371491→2.345157 BPC with
   eight selected writes retained; fitting work rises about 1.650×. Useful
   capacity beyond activity is supported within that scope, with costs charged.
-- At 10M characters the native model beats the 4-pass Transformer-256x4
-  (1.888 vs 1.908 BPC) at 0.40× its training and 0.18× its inference compute,
-  and beats the validation-selected tuned Transformers at both budgets. Tuned
-  small LSTMs lead at these budgets by 0.04–0.06 BPC.
-- At 90M characters, four native passes reach 1.800 BPC at 0.97 PFLOPs.
-- A causal online pilot improves 3.190859→3.095738 BPC through adaptation;
-  economical native adaptation is the next step.
+- A completed 90M-trained member reaches 1.857306 BPC on the restricted
+  test[95M:96M] region, T256. It supplies larger-data learning evidence, with
+  changed width/data, one seed and no full official-test or matched-scale win.
+- An earlier causal neural online pilot improves 3.190859→3.095738 BPC at
+  10.736× processing work. Adaptation is possible within that scope; economical
+  native adaptation remains to be demonstrated.
 
-These anchors are single-seed. The retained negative findings, causal-protocol
-corrections, numerical contracts and full-resource definitions make the program
-reviewable. The future premium depends on turning this
+These anchors are exploratory and single-seed. The retained negative findings,
+causal-protocol corrections, numerical contracts and full-resource definitions
+help make the program reviewable. The future premium depends on turning this
 execution discipline into replicated, deployable benefits.
 
 Tero Keski-Valkama is the sole founder. His public
