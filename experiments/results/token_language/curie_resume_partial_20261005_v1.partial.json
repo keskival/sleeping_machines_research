@@ -1,0 +1,191 @@
+{
+  "status": "checkpointed",
+  "evidence": "development single seed",
+  "args": {
+    "tag": "curie_resume_partial_20261005_v1",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 512,
+    "dev_offset": 20971520,
+    "dev_tokens": 128,
+    "steps": 6,
+    "chunk": 4,
+    "eval_lanes": 2,
+    "lanes": 2,
+    "payload": 8,
+    "heads": 1,
+    "depth": 2,
+    "pool": 2,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "linear",
+    "future_every": 1,
+    "future_scale": 1.0,
+    "readout_init": "frequency",
+    "input_init": "balanced",
+    "state_mode": "carry",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": false,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 3,
+    "resume": null,
+    "stop_after_step": 3
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/persistent_token_language_lab.py": "43115ab889aa10cd027d602bce65c7ecd11f4e6ec3d5c4fec2f69a6c3d8ab2fd",
+      "sleeping_machines/counterfactual_token_episodes.py": "5d4d8be8d08a8453a742a19e23ea66d37b16e5132a38d264868f38c10f91495e",
+      "sleeping_machines/counterfactual_token_layer.py": "914d2a01fb8b7f2fb81c24e836d124e4cc358f44dca66cc88f5769f52fc07968",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 562201,
+  "best_dev_nll": 9.508850672888377,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.5649753510952,
+      "dev_nll": 9.511229923793248
+    },
+    {
+      "step": 3,
+      "batch_nll": 7.251448631286621,
+      "gradient_norm": 1.6327601671218872,
+      "train_nll": 7.558190762996674,
+      "dev_nll": 9.508850672888377,
+      "future_write_teacher": {
+        "site": [
+          0,
+          0,
+          0
+        ],
+        "winner": [
+          1,
+          0
+        ],
+        "alternative": [
+          0,
+          1
+        ],
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 0.00011372566223144531
+      },
+      "route_entropy": 0.6451149582862854,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              8,
+              16
+            ]
+          ],
+          [
+            [
+              7,
+              17
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.8898815748423097
+          ],
+          [
+            1.828758372307556
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.6666666666666666
+          ],
+          [
+            0.7083333333333334
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "units.0.0.0.0.key": 1.1660988093353808e-05,
+        "units.0.0.0.0.clock_bias": 1.608391357876826e-05,
+        "units.0.0.0.0.raw_rate": 7.260495294758584e-06,
+        "units.0.0.0.0.frequency": 0.0002197316789533943,
+        "units.0.0.0.0.key_read.weight": 3.503183324937709e-05,
+        "units.0.0.0.0.input.weight": 0.0003169952251482755,
+        "units.0.0.0.0.output.weight": 0.00034209448494948447,
+        "units.0.0.0.0.gate.weight": 0.0001301186712225899,
+        "units.0.0.0.0.gate.bias": 8.496631198795512e-05,
+        "units.0.0.0.0.control.weight": 2.398662400082685e-05,
+        "units.0.0.0.0.control.bias": 8.10107849247288e-06,
+        "units.0.0.0.1.key": 1.0603970622469205e-05,
+        "units.0.0.0.1.clock_bias": 1.4789955457672477e-05,
+        "units.0.0.0.1.raw_rate": 1.3257720638648607e-05,
+        "units.0.0.0.1.frequency": 0.00011714007268892601,
+        "units.0.0.0.1.key_read.weight": 3.1413816031999886e-05,
+        "units.0.0.0.1.input.weight": 0.00023081833205651492,
+        "units.0.0.0.1.output.weight": 0.0005647138459607959,
+        "units.0.0.0.1.gate.weight": 0.0002159256546292454,
+        "units.0.0.0.1.gate.bias": 9.716968634165823e-05,
+        "units.0.0.0.1.control.weight": 8.075343066593632e-05,
+        "units.0.0.0.1.control.bias": 6.500893505290151e-06,
+        "units.1.0.0.0.key": 3.19861137541011e-05,
+        "units.1.0.0.0.clock_bias": 3.298821638964e-06,
+        "units.1.0.0.0.raw_rate": 2.2506774257635698e-05,
+        "units.1.0.0.0.frequency": 0.0004702295991592109,
+        "units.1.0.0.0.key_read.weight": 7.006030500633642e-05,
+        "units.1.0.0.0.input.weight": 0.0002784546813927591,
+        "units.1.0.0.0.output.weight": 0.0004882485081907362,
+        "units.1.0.0.0.gate.weight": 0.00013870529073756188,
+        "units.1.0.0.0.gate.bias": 9.265317203244194e-05,
+        "units.1.0.0.0.control.weight": 7.409363752231002e-05,
+        "units.1.0.0.0.control.bias": 2.619615406729281e-05,
+        "units.1.0.0.1.key": 3.2237196137430146e-05,
+        "units.1.0.0.1.clock_bias": 3.4500103538448457e-06,
+        "units.1.0.0.1.raw_rate": 4.8110243369592354e-05,
+        "units.1.0.0.1.frequency": 0.0005013724439777434,
+        "units.1.0.0.1.key_read.weight": 0.00013383971236180514,
+        "units.1.0.0.1.input.weight": 0.0007063662051223218,
+        "units.1.0.0.1.output.weight": 0.0008961032144725323,
+        "units.1.0.0.1.gate.weight": 0.00016413167759310454,
+        "units.1.0.0.1.gate.bias": 7.631017069797963e-05,
+        "units.1.0.0.1.control.weight": 0.00012292932660784572,
+        "units.1.0.0.1.control.bias": 8.191195229301229e-05
+      },
+      "memory_effective_rank": [
+        [
+          1.9633101446360792
+        ],
+        [
+          1.7367437439168651
+        ]
+      ],
+      "wall_s": 0.65944734797813
+    }
+  ],
+  "presentations_total": 24,
+  "train_wall_s_total": 0.15643319499213248,
+  "best_checkpoint": "/workspace/experiments/results/token_language/curie_resume_partial_20261005_v1.best_step00000003.pt",
+  "presentations_this_invocation": 24,
+  "train_wall_s_this_invocation": 0.15643319499213248,
+  "train_tokens_per_second": 153.42012289148116,
+  "wall_s": 0.6754571619676426,
+  "max_rss_kb": 336764,
+  "host": "curie",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-candidate proposals, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Bounded per-chunk alternative-write suffix teacher with fixed site first-time/common future noise; contiguous lane streams; numeric state carried; credit truncated per chunk; EOS reset; separate development interval; public validation untouched"
+}

@@ -1,5 +1,22 @@
 # Session handoff — 2026-09-30
 
+**Integrated token candidate — 5 October, continuation:**
+`integrated_token_language_lab.py` now combines packed parameter banks, sparse
+winner/one-alternative value execution and bounded actual future-write credit.
+Construction/reasoning: [theory/TOKEN_SPARSE_FUTURE_INTEGRATION_20261005.md](theory/TOKEN_SPARSE_FUTURE_INTEGRATION_20261005.md).
+Numerical queue `curie_integrated_token_contracts_20261005_v1.txt` completed
+18:04:59 UTC: **3 tests passed in1.49s**, exit0, one-thread270000KiB RSS cap,
+mandatory8192MiB host reserve. Parent sparse/packed gradients after changed
+weights, actual future-write effects, conditional utility gradient and
+partition/RNG contracts pass. Integrated-driver resume queue is prepared,
+**unrun**: current8474MiB available leaves282MiB headroom, below prior equivalent
+driver peak~339MiB. Syntax and whitespace checks pass.
+Next: integrated contracts, actual driver resume parity, small teacher quality
+comparison, then member selection and rough scaling. All-key discovery, bounded
+credit horizon, inactive inter-token waiting at the current cadence and adaptive
+decoder rank remain named design choices to investigate. The family selection
+document explicitly separates implementation results from family-wide claims.
+
 **Latest user direction — CPU-only, tokenized language, reuse public baselines (5 October):** [OPEN_LANGUAGE_REFERENCE_PLAN.md](OPEN_LANGUAGE_REFERENCE_PLAN.md) supersedes new discretionary baseline grids and GPU provisioning requirements below. Reuse published Transformer runs/checkpoints and their exact data/tokenizer; train our integrated models. Start from the smallest credible published Transformer-leading tokenized regime, not a new LSTM crossover campaign. Measure native tokenized CPU throughput and output-head cost before admitting a long fit. Existing jobs/results remain preserved.
 
 **Protocol correction — 5 October 2026, user-directed:** FIFO is an **oracle-assisted diagnostic**, not an eligible reference for anonymous-process learning. `deinterleave_baseline.learn_route()` uses hidden TRAIN item identities to recover the route. The v2 timing-aware probe additionally fits transition-gap statistics with those identities. Neither receives test identities for prediction, but both receive privileged training structure unavailable to native and generic controls. Their scores are retained as oracle-assisted diagnostic targets; exclude them from strongest-reference selection and win/loss verdicts. Native's completed single-seed win against the six generic controls stands: **0.600 vs 0.559 AUROC at N=256**. A fair structure-learning reference must fit exclusively on the same anonymous training logs. Historical contrary interpretations below are superseded by this correction; numerical records remain preserved.
@@ -2822,3 +2839,28 @@ ignoreddata/. Public first10,485,760 validation targets reserved; dev starts
 underreferences/:3.2774NLL,12layers/width768,696,975,360 presentations,document
 masking/sliding attention,long validation sequences. Reuse, do not retrain it.
 See TOKEN_LANGUAGE_DEVELOPMENT.md for constructions, gates and exact scope.
+
+Curie17:36 update: committed oracle/token directions1847f521 and implementation/
+first small fits32754fee on main (agent author Codex). Compiled pilot838tokens/s
+vs eager516, identical bestdev8.2376. 64K/B64 compiled admission was STOPPED by
+8GiB memory floor (8154MB); no quality and failed log retained. Current host
+availability~8.4GiB requires tighter small-job margins; no guard bypass.
+
+Sparse token integration passes3 contracts including cache refresh after weight
+changes with persisted memory. Pool4 sampled bestdev8.2393 at450tokens/s.
+Pool32 shared value-map fitbestdev8.2673 at392tokens/s: loss vs pool4 on this8K
+sample. All keys/initial current-weight cache refresh and Adam work charged.
+More slots alone have not improved this pilot.
+
+Bounded actual alternative-write suffix teacher implemented separately. Three
+contracts pass: no-intervention feature/all-gradient parity; equal immediate
+delivery with different future outcomes; paired teacher equals enumerated
+conditional expected-loss score gradient. First contract attempt exposed a
+missing dtype name in the new masking branch; fixed before training, failed
+log preserved, new-name retry passes. THEORY reasoning in
+`theory/TOKEN_FUTURE_WRITE_CREDIT_20261005.md`: replaces local teacher only at
+one chosen site, retains factual clock/map credit, keeps actual first time and
+common future noise, includes one replay in fitting cost. Gap: bounded current
+chunk only, no direct replay gradient to losing maps. Currentqueue
+curie_counterfactual_token_smoke_20261005_v1; numerical success is not a quality
+win. Compare at same8K/128-update budget before promotion.

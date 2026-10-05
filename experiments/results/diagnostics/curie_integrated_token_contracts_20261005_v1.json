@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "evidence": "numerical construction contracts",
+  "tests": 3,
+  "pytest_seconds": 1.49,
+  "exit_code": 0,
+  "completed_utc": "2026-10-05 18:04:59",
+  "queue": "experiments/queue/curie_integrated_token_contracts_20261005_v1.txt",
+  "log": "experiments/queue/logs/curie_integrated_token_contracts_20261005_v1.log",
+  "guards": {
+    "threads": 1,
+    "rss_cap_kib": 270000,
+    "address_space_cap_kib": 5000000,
+    "min_available_mib": 8192,
+    "timeout_s": 60
+  },
+  "source_sha256": {
+    "tests/test_integrated_token_core.py": "a7cce2ae88c32938f0da533e011dd782d6a50e080de971b203fa06ba6b05240b",
+    "experiments/integrated_token_contracts.py": "2559f9212331657e0deccea009d6cede0615812eac1e87cb557ae83a3f50ba78",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d"
+  },
+  "scope": "Small double-precision fixtures: packed sparse parent gradients after parameter changes/EOS, alternative-write future effect and conditional utility gradient, stochastic partition and RNG/state parity. No training-quality claim."
+}
