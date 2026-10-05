@@ -1,5 +1,21 @@
 # Session handoff — 2026-09-30
 
+**Independent seed continuation prepared:** tmux
+curie_data_growth_64k_repeat_20261005_v1 waits on the namedP32fit/utility handles,
+then stdlib token_capacity_repeat_admission.py requires completed matching
+protocol/initial-inclusive selection, core/utility/checkpoint source hashes,
+partition/RNG checks and winning-member0.02learning/positivecontext gates.
+It admits exactly one prepared seed7queue for the lowest selectedNLL width
+(parameters break exact ties). PendingP32was checked to reject admission.
+The repeat is reliability evidence; capacity gain versusP16 still requires
+paired seed confirmation. Guarded repeat1200s/1.2GBRSS/5GBVMS/8GiBfloor,
+ordinary run_safe lock,CPU one thread. Receipt/wait log in queue directory.
+Do not launch competing local fits while these handles are live. Next after
+repeat: utility and complete fitting/inference work for selectedmember, then
+crossed256Kdata/capacity stage. User-requested scaling visualization remains
+a report deliverable once sufficient crossed cells support estimation.
+
+
 **64K P24 completed / P32 admitted:** P24selectedstep128NLL8.033310714 vs
 P16step128NLL8.099439913,0.066129quality gain at same data/passes/cadence.
 Initial8.162279795,131056targets,3,164,842parameters,374.869targets/s,
