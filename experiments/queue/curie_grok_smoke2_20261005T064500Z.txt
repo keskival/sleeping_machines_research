@@ -1,0 +1,2 @@
+# Grokking testbed smoke, second attempt (first failed: holography called autograd.grad twice on one graph; fixed with retain_graph). THEORY §§426-428.
+curie_grok_smoke2_20261005T064500Z experiments/grok/modadd_native.py --steps 60 --eval-every 30 --holo-every 60 --holo-pairs 8 --pool 8 --tie-pools --wd-private 10 --wd-shared 1 --tag curie_grok_smoke2_20261005T064500Z

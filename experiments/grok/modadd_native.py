@@ -101,7 +101,7 @@ def holography(model, a, b, p, pairs, seed, eager):
     grads_f, grads_l = [], []
     for i in range(len(idx)):
         z = forward(model, s[i:i + 1], m[i:i + 1], 0, None, True, eager)
-        gf = torch.autograd.grad(z[0, y[i]], params, allow_unused=True)
+        gf = torch.autograd.grad(z[0, y[i]], params, allow_unused=True, retain_graph=True)
         grads_f.append(torch.cat([(g if g is not None else torch.zeros_like(q)).flatten() for g, q in zip(gf, params)]))
         gl = torch.autograd.grad(F.cross_entropy(z, y[i:i + 1]), params, allow_unused=True)
         grads_l.append(torch.cat([(g if g is not None else torch.zeros_like(q)).flatten() for g, q in zip(gl, params)]))

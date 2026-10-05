@@ -1,5 +1,20 @@
 # Findings log
 
+## taps3 (last three characters on each event): +.011 bpc at +1% work, below the .02 promotion gate — 5 October
+
+Run `curie_language_batched_10M_p64d4_pool2_linear_4pass_taps3_l64_lr004_cmp_s6_20261005T020000Z` (driver by the
+review host; wrapper around the pinned base driver):
+- Test bpc 1.9439 (T256 windows) and 1.9425 (T128); dev 1.864. 429K parameters; fitting work 108.3 TF.
+- Against the identical plain p64/d4 4-pass (1.955 at 107.2 TF): 0.011 better at 1% more fitting work. The gain was
+  consistent through training (dev at 13M characters: 2.156 against 2.166; at 26M: 2.032 against 2.043).
+- **Not promoted:** the pre-declared gate was at least .02 at no more than 10% more work.
+- Still behind tuned LSTM-384 (1.915) at budget B.
+
+Interpretation:
+- Direct access to the last three characters closes about a sixth of the 2–4-character local gap.
+- The remaining deficit is in how events are processed, not only in what they can see.
+- Next: parameter weight decay (AWS, §421) and the learning-rate arms (curie).
+
 ## P0-2 loss: native p128/d4 4-pass 1.907 bpc at 411 TF (pass criterion < 1.799 at ≤ 433 TF) — 5 October
 
 Run `curie_language_batched_10M_p128d4_pool2_linear_4pass_l64_lr004_cmp_s6_20261004T194000Z`:
