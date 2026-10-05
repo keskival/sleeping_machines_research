@@ -86,3 +86,21 @@ Next admission must use completed paired quality, actual future-credit logs,
 measured resource use and these utility results; a larger bank can lose and
 that loss stays in the record. Full fitting/inference work remains required
 for any efficiency comparison.
+
+## Complete work replay prepared
+
+`aws_private_bank_work.py` reuses the frozen full token arithmetic auditor
+with the exact private-bank model. It executes every optimizer update and
+selected DEV inference, then requires exact final model/optimizer/memory,
+position, route/site/alternative/score-position generators, Torch RNG, write
+counts and fitting target count. DEV trajectory parity is also required.
+A final completed receipt is written only after exact numeric state and full
+formula coverage pass. Random sampling cost remains unquantified; special
+functions stay separate. Measured ordinary fit throughput/RSS accompanies
+traced arithmetic; instrumented wall does not replace ordinary throughput.
+
+Two one-job replay queues follow smokes/utility in slot1 addendum
+`zzzzzzz_aws_private_bank_work_20261005T205500Z.json`. Each600s cap follows
+the completed8K trace437s/ordinary45s measurement with a shorter2K fit and
+P24/larger private bank;1.2GBRSS/5GBVMS and8GiBfloor remain enforced.
+Execution is pending; no estimated work is inserted in report cells.

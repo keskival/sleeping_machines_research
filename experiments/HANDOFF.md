@@ -3343,3 +3343,12 @@ smokes, reconstructs exact source-bound private-bank checkpoints and reuses
 DEV NLL/partition/matched-RNG memory-message erasure checks. Reports U4/U16
 384/1536memory scalars,4/4selected writes,16/64scored keys per token alongside
 quality. Guarded240s/1.2GBRSS/5GBVMS/8GiBfloor; pending, no new worker.
+
+
+**AWS bank complete-work continuation prepared (20:55 UTC):** addendum
+zzzzzzz_aws_private_bank_work_20261005T205500Z.json provides distinctU4/U16
+whole-fit and selected-inference replay queues after the2Ksmokes. Original
+full arithmetic auditor remains source-frozen. New wrapper requires final
+model/optimizer/memory/generator/Torch-RNG/write/target exact parity and full
+formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
+8GiBfloor; pending, no larger fit or public scoring admitted.
