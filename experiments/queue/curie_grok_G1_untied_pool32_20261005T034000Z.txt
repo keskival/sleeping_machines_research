@@ -1,2 +1,3 @@
 # Grokking testbed arm G1_untied_pool32 (THEORY §§426-428 pre-declared G1-G4; mod 97, train fraction .4, AdamW, 20K steps).
-curie_grok_G1_untied_pool32_20261005T034000Z experiments/grok/modadd_native.py --steps 20000 --depth 2 --seed 0 --heads 4 --payload 32 --pool 32 --tag curie_grok_G1_untied_pool32_20261005T034000Z
+# DEFERRED (5 Oct 14:50 UTC): pool 32 runs at 1.65 s/step (~2.5 h per arm); tied G2 pool 32 answers the capacity question first, and the transported-credit tests and FAS repair arms wait on this host. Job line kept:
+# curie_grok_G1_untied_pool32_20261005T034000Z experiments/grok/modadd_native.py --steps 20000 --depth 2 --seed 0 --heads 4 --payload 32 --pool 32 --tag curie_grok_G1_untied_pool32_20261005T034000Z
