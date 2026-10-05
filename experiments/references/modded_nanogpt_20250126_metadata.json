@@ -14,8 +14,14 @@
   "vocabulary": 50257,
   "dataset": "FineWeb classic GPT-2 tokens",
   "dataset_revision": "889765ea1f903759787add96995d81171b632d0c",
-  "scope": "Published log reused; no dense model retrained. Context policy and world size must be audited before final comparison; tokenized pilot dev is disjoint and is not this benchmark score.",
+  "scope": "Published log/source reused; no dense model retrained. EOS/reset/target and composed attention support audited. Historical data hashes absent; current named FineWeb/GPT-2 shards are immutable and SHA-pinned. Different development rows are not benchmark scores.",
   "world_size": 8,
   "training_token_presentations": 695992320,
-  "attention_policy": "EOS document masking; causal sliding window; validation sequence 262144 per GPU, resets per sequence"
+  "attention_policy": "Observed EOS document boundaries; 128-token blocks; final3long attention layers at14blocks and8short at7blocks; block7 has no attention; fresh262144-position rank sequences.",
+  "context_audit": "experiments/references/MODDED_NANOGPT_CONTEXT_AUDIT_20261005.md",
+  "validation_target_indices_in_first_shard": [
+    1,
+    10485760
+  ],
+  "released_weights_in_this_record": false
 }

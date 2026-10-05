@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_20261005_v1",
+      "seed": 6,
+      "credit_window": 16,
+      "targets": 1016,
+      "train_feature_observations": 2040,
+      "losses": {
+        "contextual": 8.81252670288086,
+        "zero_features": 8.89883041381836,
+        "train_mean_features": 8.81755542755127
+      },
+      "gain_over_training_mean": 0.005028724670410156,
+      "checkpoint_sha256": "04670c423f027c1665bdf57e40af4fa2609d46dd2a3702632057c2b5f6fc30b0"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_20261005_v1",
+      "seed": 6,
+      "credit_window": 64,
+      "targets": 1016,
+      "train_feature_observations": 2040,
+      "losses": {
+        "contextual": 8.819469451904297,
+        "zero_features": 8.895602226257324,
+        "train_mean_features": 8.834733963012695
+      },
+      "gain_over_training_mean": 0.015264511108398438,
+      "checkpoint_sha256": "45e61612fd3dafab4f5825d9f7fdda147e8e4aafa6fc4957337ef895d00a4c89"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 16,
+      "targets": 1016,
+      "train_feature_observations": 2040,
+      "losses": {
+        "contextual": 8.813838005065918,
+        "zero_features": 8.898862838745117,
+        "train_mean_features": 8.825116157531738
+      },
+      "gain_over_training_mean": 0.011278152465820312,
+      "checkpoint_sha256": "b55e4a1a5013d7051c639bdded523a62f64740fc3b24934342de7db74ffec28f"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_s7_20261005_v1",
+      "seed": 7,
+      "credit_window": 64,
+      "targets": 1016,
+      "train_feature_observations": 2040,
+      "losses": {
+        "contextual": 8.81285285949707,
+        "zero_features": 8.89885425567627,
+        "train_mean_features": 8.824251174926758
+      },
+      "gain_over_training_mean": 0.0113983154296875,
+      "checkpoint_sha256": "45b8c662e8826de20087017b0dcab7cf51ad4213f70710177b9f8743a590c67b"
+    }
+  ],
+  "scope": "Frozen development intervention on selected seed6/7 checkpoints; same readout, training-only feature mean. Constant features remove token/state dependence but need not be an optimally refitted unigram control. No fitting/public validation. Actual dev count1016 from1024admitted tokens and8lane starts."
+}

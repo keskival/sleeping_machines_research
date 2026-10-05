@@ -1,5 +1,19 @@
 # Session handoff — 2026-09-30
 
+**Learned fixed-batch gains —5 October19:05 UTC:** paired2K batch64credit16/64
+fits completed for seeds6/7 at8,160targets/16updates. Selected dev16/64:
+seed6 8.812527/8.819470,seed7 8.813838/8.812853, initial8.906910. Both members
+beat initialization in both seeds; horizon rank changes, so retain both for8K.
+Frozen training-mean-feature readout controls reveal positive contextual
+contributions0.0050–0.0153NLL, separate from marginal recalibration. Actual dev
+denominator is1,016targets from1,024admitted tokens/8lanes; original losses
+preserved with correction. Train scores are probes. See
+TOKEN_FIXED_BATCH_LEARNING_20261005.md. Published Transformer reset/target/
+attention source audit completed; metadata links it. No public scoring.
+Prioritized integrated setup now includes fixed optimizer batch64 and selectable
+16/64credit boundaries, actual uniform-site writes and selected readout width.
+Source-pinned8Kqueues remain the next data-scale test; no benchmark win yet.
+
 **Promotion/admission audit —5 October:** `token_promotion_gate.py` now assesses
 completed trajectories including initialization, using the same0.02NLL
 practical small-fit gain convention as the paired seed7allocation study.
