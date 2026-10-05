@@ -1,0 +1,2 @@
+# Compiled smoke for the taps3 driver on curie (requested in curie_language_taps3_10M_p64d4_4pass_20261005T020000Z.txt); 3 windows, no evaluation.
+curie_language_taps3_smoke_20261005T004000Z experiments/language_taps_benchmark.py --taps 3 --tag curie_language_taps3_smoke_maxw3_20261005T004000Z --payload 64 --pool 2 --passes 4 --fit 10000000 --dev 1000000 --segment 128 --lanes 64 --lr 0.004 --cosine --eval-segment 256 --compiled --depth 4 --route-credit linear --max-windows 3
