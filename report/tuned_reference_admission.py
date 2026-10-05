@@ -22,7 +22,8 @@ def load_group(group,cap,result_root=None):
         line=[l for l in queue.read_text().splitlines() if l and not l.startswith('#')]
         if len(line)!=1:raise ValueError('One-job tuned queue required')
         tokens=shlex.split(line[0]);arguments=tokens[tokens.index('--')+1:]
-        directory=result_root/tokens[0];provenance=directory/'provenance.json'
+        resolve=runpy.run_path(str(ROOT/'experiments/tuned_reference_recovery.py'))['result_directory']
+        directory=resolve(queue,arguments,result_root);provenance=directory/'provenance.json'
         if not provenance.exists():continue
         p=json.loads(provenance.read_text())
         if p['status']!='completed':continue

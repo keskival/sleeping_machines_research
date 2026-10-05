@@ -1,0 +1,12 @@
+{
+  "scope": "Explicit same-settings reruns; original interrupted output preserved. No result admitted until completed source/queue/argument bindings pass.",
+  "recoveries": [
+    {
+      "original_queue": "experiments/queue/aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z.txt",
+      "original_queue_sha256": "5b0a812d1b231150e3da46e000693d8aaff9d3db2c73f8485b4b74f878da5a5e",
+      "recovery_queue": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/aws_tuned_ref_90M_C_lstm512_p1.4_lr0.002_s0_20261004T210000Z_recovery_20261005T161000Z.txt",
+      "recovery_queue_sha256": "4d03b0d7d9f204fb7bde1f6e3caa2152319deb07516e2a450587a3f512912617",
+      "script_sha256": "5cdbe33462fb6d9f987600c62fc479187392fb1a89361fc37d2af488d905c53b"
+    }
+  ]
+}
