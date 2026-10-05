@@ -1,0 +1,1 @@
+curie_integrated_2k_k4_20261005_v1 experiments/sampled_utility_token_language_lab.py --tag curie_integrated_2k_k4_20261005_v1 --readout-init frequency --input-init balanced --steps 64 --eval-every 16 --train-tokens 2048 --dev-tokens 1024 --payload 16 --depth 2 --heads 2 --pool 4 --lanes 8 --eval-lanes 8 --chunk 16 --future-every 1 --future-score-positions 4

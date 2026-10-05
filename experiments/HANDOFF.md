@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**Learned credit comparison —5 October18:25 UTC:** three distinct local2K
+diagnostics completed under guard,8160presentations each. Best trained dev:
+local9.131615/full9.130419/K4sampled9.130868; all lose to initialization8.906910.
+Training improves while development worsens. Source-pinned AWS8K arms remain
+the next data-scale comparison. Driver selection excluded initialization;
+original results preserved with explicit correction. New selection entry point
+saves initialization, includes it in selection and passed exact actual learning
+trajectory parity. Read [TOKEN_2K_CREDIT_FINDINGS_20261005.md](TOKEN_2K_CREDIT_FINDINGS_20261005.md).
+Do not promote a trained checkpoint that loses to initialization. The first-token
+only future-credit site/horizon remains a specific learning coordinate to repair,
+not evidence that the family cannot learn or scale. GitHub CLI also confirms no
+authenticated host; AWS delivery remains pending the requested access information.
+
 **Sampled utility implemented —5 October18:19 UTC:** original AWS pins intact.
 New sampled driver retains actual alternative writes and expected suffix utility;
 three numerical contracts passed, actual K2 resume exact, full-score endpoint

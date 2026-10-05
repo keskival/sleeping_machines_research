@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "evidence": "single-seed development",
+  "records": [
+    {
+      "arm": "local",
+      "result": "experiments/results/token_language/curie_integrated_2k_local_20261005_v1.json",
+      "initial_dev_nll": 8.906910333107776,
+      "best_trained_dev_nll": 9.131614745132566,
+      "best_observed_dev_nll": 8.906910333107776,
+      "best_observed_step": 0,
+      "initial_checkpoint_saved": false,
+      "final_train_nll": 4.788194537162781,
+      "train_tokens_per_second": 404.08757228462576,
+      "presentations": 8160
+    },
+    {
+      "arm": "full",
+      "result": "experiments/results/token_language/curie_integrated_2k_full_20261005_v1.json",
+      "initial_dev_nll": 8.906910333107776,
+      "best_trained_dev_nll": 9.130418552188424,
+      "best_observed_dev_nll": 8.906910333107776,
+      "best_observed_step": 0,
+      "initial_checkpoint_saved": false,
+      "final_train_nll": 4.778685927391052,
+      "train_tokens_per_second": 342.8349300209565,
+      "presentations": 8160
+    },
+    {
+      "arm": "k4",
+      "result": "experiments/results/token_language/curie_integrated_2k_k4_20261005_v1.json",
+      "initial_dev_nll": 8.906910333107776,
+      "best_trained_dev_nll": 9.130867545060285,
+      "best_observed_dev_nll": 8.906910333107776,
+      "best_observed_step": 0,
+      "initial_checkpoint_saved": false,
+      "final_train_nll": 4.777326345443726,
+      "train_tokens_per_second": 351.84244179914805,
+      "presentations": 8160
+    }
+  ],
+  "scope": "Same2048trainingtokens,8160presentations,1024developmenttokens,seed6,P16D2H2U4. All trained checkpoints lose to initialization. Original best_dev_nll excludes initialization; preserved with this explicit selection correction. No benchmark claim."
+}
