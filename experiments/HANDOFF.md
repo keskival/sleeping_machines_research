@@ -1,5 +1,15 @@
 # Session handoff — 2026-09-30
 
+**Coherent transfer story recorded:** VISION/README connect appropriate
+interfaces→shared temporal/state programs→end-to-end learning/transfer→adaptive
+resources. Separatearchitecture instances are not themselves skilltransfer.
+Firstjointproof compares shared vs separate cores with equal totalfit/tuning/
+adaptation work, checks bothlosses' sharedparametercredit and donorretention/
+negative-transfer controls. AnonymousFAS no hiddenidentity/timing metadata via
+auxlanguage. Existing benchmarks keep scope; no newfitadmitted or mainlanguage
+redirected. Timing/FASretry handles preserved; revalidate runtime.
+
+
 **Universal substrate ambition updated on userdirection:** VISION.md separates
 modality, sleeps/time, globallyclockless execution, sharedlearning/inference
 semantics, capacitybeyondactivity and resource/dataadaptation. README/report/
