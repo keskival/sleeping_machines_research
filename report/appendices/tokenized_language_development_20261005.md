@@ -224,10 +224,10 @@ Synthetic P16/D2/H2/U4/B8/T16, vocabulary50,257; all adaptive tails exercised, f
 | Full scoring | 128 | 253.930317 | 1.983831 |
 | K4 scoring | 128 | 218.255413 | 1.705120 |
 
-K4 arithmetic is14.05%lower in this realization. Replay readout falls47.286432to12.713512MFLOPs. Complete fitting and per-target fitting FLOPs on the actual corpus, and winner-only inference FLOPs, are not yet traced; no whole-fit resource win is claimed.
+K4 arithmetic is14.05%lower in this realization. Replay readout falls47.286432to12.713512MFLOPs. This table is a synthetic first-update diagnostic. Completed actual-corpus8K/P16 and64K/P24whole-fit/inference traces now appear above, with exact trajectory parity and complete arithmetic coverage. The256Kwhole-fit trace is pending; no smaller-fit extrapolation fills it.
 
 Exact actual-driver interruption/resume passed for integrated, sampled-position and uniform-site learners, including all relevant RNGs. Full-score sampled learning equals the original trajectory. Wider decoder tails preserve normalization and initial token priors; default parameterized learning parity and full-width resume passed.
 
 The public reference target reuses the modded-nanoGPT2025-01-26log:3.2774NLL,695,992,320training presentations,10,485,760reserved validation targets. That protocol/context differs from these development rows. EOS/reset/target and layered attention boundaries are source-audited; historical data hashes are absent and no checkpoint is released by this record. No dense reference is retrained.
 
-Prepared AWS8K comparisons test broader credit and full-width tails before selecting a scaling member. They are unrun here and have no predicted scores. Rough scaling laws follow a selected promising member and actual resource measurements. GitHub delivery is confirmed through the shared origin reference; AWS admission/results remain unobserved.
+Prepared AWS8K comparisons remain unrun here, with AWS admission/results unobserved. Completed local paired8Kfits retained credit16 and narrower tails; the64Kcapacity comparison selected P24, followed by the completed256Kfit. Measured-data visualization and source-bound whole-fit costs appear above. The next language fit tests lower learning rate after repeated second-pass deterioration; fixed-recipe scaling and recipe repair stay separate.
