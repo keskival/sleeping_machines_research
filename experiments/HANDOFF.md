@@ -1,5 +1,23 @@
 # Session handoff — 2026-09-30
 
+**Full event-site credit member —5 October18:33 UTC:**
+`event_coverage_token_language_lab.py` samples outcome-independent event sites,
+weights causal suffix utility, and removes the immediate-only local surrogate
+to avoid double credit. Retains clocks/content/state/races and actual alternate
+writes.2numerical contracts and actual site-RNG resume parity passed. At2K,
+best trained dev9.063122 versus first-site K4control9.130868:0.067745NLL gain,
+single seed/same8160targets. Initial8.906910 still wins selection; step64
+10.354817 overfits. No final route concentration in recorded diagnostics.
+See [theory/TOKEN_EVENT_CREDIT_COVERAGE_20261005.md](theory/TOKEN_EVENT_CREDIT_COVERAGE_20261005.md).
+Prioritized integrated next queue is `aws_event_credit_tokens_8k_k4_20261005T183300Z.txt`
+in the immutable slot3event-credit addendum, after its matched first-site K4
+control. Its artifact bundle preserves initial/selected/final state. Remaining
+mechanism gaps: chunk-bounded credit, all-key discovery, current time cadence,
+decoder capacity/regularization and broader protected memory. No inference
+mechanism departure; learner replacement and work are derived explicitly.
+Connected GitHub get-repo also returns404 for the origin repository; delivery
+is unobserved, with access question pending. No old AWS pin modified.
+
 **Learned credit comparison —5 October18:25 UTC:** three distinct local2K
 diagnostics completed under guard,8160presentations each. Best trained dev:
 local9.131615/full9.130419/K4sampled9.130868; all lose to initialization8.906910.
