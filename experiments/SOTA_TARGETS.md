@@ -99,3 +99,16 @@ sMAPE.
 - Footprint 57.6 KB, the smallest of the three.
 - No leaderboard win.
 - Details: FINDINGS, 5 October.
+
+**Primate P0-3, 2/6 sessions (5 Oct 10:25 UTC): paired comparison** (`experiments/public_benchmarks/primate_paired.py`;
+reference values from the cited fmi-basel results summaries).
+
+| Session | Ours | tinyRSNN | bigRSNN |
+|---|---:|---:|---:|
+| indy_20160622_01 | .768 | .752 | .770 |
+| indy_20160630_01 | .600 | .545 | .585 |
+| Mean so far | .684 | .648 | .677 |
+
+- At par with bigRSNN on the same sessions, at ~1/26 of its footprint (179 KB against 4.6 MB). Above tinyRSNN.
+- Leaderboard six-session means: AEGRU .710, bigRSNN .698, tinyRSNN .660.
+- The leaderboard claim waits for all six sessions; AEGRU publishes no per-session values.
