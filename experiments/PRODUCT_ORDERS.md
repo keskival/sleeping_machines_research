@@ -30,6 +30,7 @@ Fill the free slots now, in this order (each through run_safe.sh, with the usual
 1. **Slot 2: P0-3 primate six-session r1.** Move the six `aws_primate_r1_*_20261004T053500Z` jobs out of slot 1.
 2. **Slot 3: P0-4 Mackey-Glass third batch** (repeats 20–29; pins verified 4 Oct 23:55).
 3. Then, in the first free slot:
+   - the two 90M budget-C tuned references (P0-1's tuned comparison; ~4 h each; added 07:15);
    - the FAS data job and the five FAS references (AWS_FAS_REFERENCES.md);
    - the weight-decay smoke and arms;
    - the X1 capacity-curve arms (AWS_CAPACITY_PROGRAM.md).

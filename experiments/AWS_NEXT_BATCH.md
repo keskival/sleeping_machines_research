@@ -1,5 +1,11 @@
 # Current AWS work
 
+**URGENT (5 Oct 07:15 UTC): two AWS slots idle since ~01:30. Fill now** (PRODUCT_ORDERS.md "URGENT AWS slot order"):
+slot 2 → P0-3 primate six sessions (`aws_primate_r1_*_20261004T053500Z`, move out of slot 1); slot 3 → P0-4 MG repeats 20–29
+(`aws_mg_tau17_r1_from20`). Then, in the first free slot: the two 90M budget-C tuned references
+(`aws_tuned_ref_90M_C_tf192L4_p0.8_*`, `aws_tuned_ref_90M_C_lstm512_p1.4_*`). These give P0-1's tuned verdict, and P0-1 finishes ~09:00.
+After those: FAS references, weight-decay smoke/arms, X1 capacity arms. Slot 1 continues P0-1, then p96.
+
 **P0-4 Mackey-Glass third batch unblocked (check 4 Oct, 23:55 UTC, Docker review host):** all 175 pinned sources in
 `queue/aws_neurobench_admission_20261004T064000Z/manifest.json` match current main (sha256 recomputed). An actual import trace of
 `experiments/mackey_glass_native.py` loads 14 sleeping_machines modules and **not** `expected_reception.py`, the file
