@@ -13,6 +13,16 @@ consider one bounded exposure/schedule comparison if second-pass degradation
 repeats; do not redesign temporal memory from this optimizer/data behavior.
 
 
+**AWS paired private-bank smokes prepared (20:45 UTC):** new source-bound fit
+wrapper delegates to original uniform-site K4 actual-future-write teacher and
+initial-inclusive selection. Shared-rule P24/D2/H2 U4/U16 arms use matched2K
+TRAIN/eight updates/batch64/credit16/evalevery4, distinct one-job queues.
+Slot1 addendum zzzzz_aws_private_bank_smokes_20261005T204500Z.json requires
+completed preceding construction contracts; 180s/1.2GBRSS/5GBVMS/8GiBfloor.
+Eleven stdlib policy/admission checks pass. Cold-head clipping audit observes
+first initial evaluation forward only. Source/queue hashes verified; all jobs
+remain queued behind the existing three live AWS fits. No64K bank fit admitted.
+
 **64K independent repeat admitted:** P32utility completed: context0.166731,
 addressederasure+0.002895,message−0.009512,both−0.011456NLL. Three widths
 quality/context gates/source checks complete; receipt chooses P24selected

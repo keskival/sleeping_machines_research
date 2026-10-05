@@ -42,3 +42,27 @@ run bounded U4/U16 actual-future-credit smoke fits and clipping audit, then pair
 64K seeds6/7 with unchanged data, passes, evaluation cadence and full work.
 This path retains the core mechanisms and tests bank capacity separately from
 the other host's message-width/data program. It does not displace that program.
+
+## Source-bound integrated smoke continuation
+
+`aws_private_bank_fit.py` installs the new model only for the original
+initial-inclusive selection call, restoring the original model afterwards.
+Both 2K arms use P24/D2/H2, shared rules, batch64/credit16, eight lanes,
+eight optimizer updates, evaluation every four updates and uniform-site K4
+actual alternative-write consequences. Data shards are SHA-bound. Both arms
+require the completed numerical contract; neither is conditioned on the
+other arm's accuracy. Public validation stays untouched. The first initial
+evaluation forward observes truly zero-memory/unseen heads and records actual
+unclipped and shifted score extrema, while calling the unchanged race kernel.
+This limited probe does not certify the entire initial training population.
+Its overhead is included in whole-run wall/RSS, outside fit-only timing.
+
+Slot1 addendum `zzzzz_aws_private_bank_smokes_20261005T204500Z.json` follows the
+construction contract alphabetically. Each arm has its own one-job queue,
+180s timeout, 1.2GB RSS/5GB VMS cap and scheduler 8GiB available-memory floor.
+Eleven stdlib policy/admission tests pass; model contracts and both smokes
+remain pending. Numerical success, finite actual-future-credit gradients,
+source-bound checkpoints and measured throughput/RSS are required before
+64K admission. A quality loss is retained as a loss, not a reason to erase
+the smaller arm or silently tune the recipe. Full work must include the
+larger discovery bank and private optimizer work.
