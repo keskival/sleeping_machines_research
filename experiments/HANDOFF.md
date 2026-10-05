@@ -2719,3 +2719,26 @@ competition can change ETA. Queued next priority remains FAS data+references
 (with required smoke), weight-decay smoke+arms, X1 arms; prepare continuation
 when a slot frees. Four90M tuned controls, seed7/pool8 confirmation, historical
 sparse recovery and suspended depth8 fits also remain assigned, not dropped.
+
+AWS 5 Oct15:58: user explicitly requested progress on write bandwidth,
+regularization and capacity. Prepared and admitted 19-job immutable manifest
+queue/aws_model_improvement_20261005T160000Z/manifest.json. New tmux
+aws_model_improvement (+_progress publisher). Slot1 originalp96 resumed
+window18000/147456000 presentations after verifiedoldguardclosure; exact
+checkpoint/Adam/schedule/RNG archived, discardedunknown<=4095999. Slot2
+original90M C LSTM then CTF and bothDTFs. Slot3 correctedkwritev2 contracts,
+pool4k1/k2smokes,WDsmoke,matchedpool4k1/k2fits,WD.01/.1fits and three
+capacitysmoke/fitpairs (tied8,tied32,untied32). No oldbuggykwritewrapperfits.
+Contracts/smokes NOTyetclaimedpassed atadmission; corecontracts require
+k1base/eager/compiledlogits+gradientparity, statepadding/writecounts.
+Same temporal/sparsemechanisms retained; k2writeshalfpool4, onevaluedelivery.
+InferencecostfornewpolicyNOTestablished; equalpassesaremechanismdiagnostic.
+
+Scheduler readiness gates missing/failed/source-boundprior/RSS1.5xmargin;
+faileddiagnostics blockdescendants butleaveunrelatedarms/controlsrunning.
+Five stdlibadmissioncases plusindependentjobcheckedpassed. All19source/queue
+bindings verified, outputsabsent, ~27GiBavailable. Oldcoordinator preserved
+innewdir. ReadnewREADMEforhypotheses/accounting/scope; wholefitresults will
+autopublish. Allten10Mcontrols, nativep64fourpass, sixprimate and MG30complete.
+Newprogram advances currentuserrequest whilekeeping larger-data controls
+active. No improvement/supremacy asserted beforecompletedmeasurements.

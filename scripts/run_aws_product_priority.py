@@ -59,60 +59,85 @@ def main():
         state['status'] = 'running'
         save()
 
+        def ready(job):
+            for required in job.get('requires', []):
+                source = Path(required['result'])
+                if not source.exists():
+                    raise ValueError('Missing predecessor: '+str(source))
+                record = json.loads(source.read_text())
+                if record.get('status') != 'completed':
+                    raise ValueError('Predecessor did not complete: '+str(source))
+                for field in ('manifest_sha256', 'stage'):
+                    if field in required and record.get(field) != required[field]:
+                        raise ValueError('Predecessor binding mismatch: '+str(source))
+                if required.get('rss_margin'):
+                    if record['max_rss_kb'] * required['rss_margin'] > job['rss_kb']:
+                        raise ValueError('Measured smoke needs a larger reservation: '+str(source))
+
+        def execute(slot, job):
+            frozen(job)
+            env = dict(os.environ, AWS_GYM_SLOT=str(slot),
+                       AWS_GYM_HOST_LOCK_FD=str(reservation.fileno()),
+                       MEM_CAP_KB=str(job.get('vms_kb', 24000000)), MEM_CAP_RSS_KB=str(job.get('rss_kb', 4000000)),
+                       MIN_AVAIL_MB='8192', JOB_TIMEOUT_S=str(job['timeout_s']),
+                       TORCHINDUCTOR_COMPILE_THREADS='1', MAX_JOBS='1')
+            with mutex:
+                state['active'][str(slot)] = dict(job=job)
+                save()
+            subprocess.run(['bash', 'experiments/queue/run_safe.sh', job['queue']],
+                           env=env, pass_fds=(reservation.fileno(),), check=True)
+            frozen(job)
+            files = [job['queue'], 'experiments/queue/logs/'+job['name']+'.log',
+                     str(Path(job['queue']).parent/('runner_'+Path(job['queue']).stem+'.out'))]
+            if job.get('result'):
+                result = json.loads(Path(job['result']).read_text())
+                assert result['status'] == 'completed'
+                if job['kind'] == 'dense_reference':
+                    assert result['source_sha256'] == job['source_sha256'][result['script']]
+                    files.extend(str(p) for p in Path(job['result']).parent.glob('*') if p.suffix in ('.json', '.pt'))
+                else:
+                    for name, digest in result['source_sha256'].items():
+                        assert digest == job['source_sha256'][name], name
+                if result.get('final_weights'):
+                    files.append(result['final_weights'])
+                if job['kind'] == 'mackey_glass':
+                    assert result['primary_mode'] == 'mix8'
+                    assert [r['repeat'] for r in result['repeats']] == list(range(job['first_repeat'], job['first_repeat']+10))
+                elif job['kind'] == 'streaming':
+                    files.append(str(Path(job['result']).with_suffix('.progress.pt')))
+                files.append(job['result'])
+            publish(files, 'Publish guarded benchmark continuation '+job['name'])
+            with mutex:
+                state['completed'].append(job['name'])
+                state['active'].pop(str(slot), None)
+                save()
+
         def worker(slot, jobs):
-            try:
-                for job in jobs:
-                    if failed.is_set():
-                        return
-                    frozen(job)
-                    env = dict(os.environ, AWS_GYM_SLOT=str(slot),
-                               AWS_GYM_HOST_LOCK_FD=str(reservation.fileno()),
-                               MEM_CAP_KB=str(job.get('vms_kb', 24000000)), MEM_CAP_RSS_KB=str(job.get('rss_kb', 4000000)),
-                               MIN_AVAIL_MB='8192', JOB_TIMEOUT_S=str(job['timeout_s']),
-                               TORCHINDUCTOR_COMPILE_THREADS='1', MAX_JOBS='1')
+            for job in jobs:
+                try:
+                    ready(job)
+                except Exception as error:
                     with mutex:
-                        state['active'][str(slot)] = dict(job=job)
+                        state.setdefault('blocked', []).append(dict(slot=slot, job=job['name'], error=str(error)))
                         save()
-                    subprocess.run(['bash', 'experiments/queue/run_safe.sh', job['queue']],
-                                   env=env, pass_fds=(reservation.fileno(),), check=True)
-                    frozen(job)
-                    files = [job['queue'], 'experiments/queue/logs/'+job['name']+'.log',
-                             str(Path(job['queue']).parent/('runner_'+Path(job['queue']).stem+'.out'))]
-                    if job.get('result'):
-                        result = json.loads(Path(job['result']).read_text())
-                        assert result['status'] == 'completed'
-                        if job['kind'] == 'dense_reference':
-                            assert result['source_sha256'] == job['source_sha256'][result['script']]
-                            files.extend(str(p) for p in Path(job['result']).parent.glob('*') if p.suffix in ('.json', '.pt'))
-                        else:
-                            for name, digest in result['source_sha256'].items():
-                                assert digest == job['source_sha256'][name], name
-                        if job['kind'] == 'language_fit':
-                            files.append(result['final_weights'])
-                        if job['kind'] == 'mackey_glass':
-                            assert result['primary_mode'] == 'mix8'
-                            assert [r['repeat'] for r in result['repeats']] == list(range(job['first_repeat'], job['first_repeat']+10))
-                        elif job['kind'] == 'streaming':
-                            files.append(str(Path(job['result']).with_suffix('.progress.pt')))
-                        files.append(job['result'])
-                    publish(files, 'Publish guarded benchmark continuation '+job['name'])
+                    continue
+                try:
+                    execute(slot, job)
+                except Exception as error:
+                    # A failed diagnostic blocks its descendants through ready(),
+                    # while unrelated arms and controls retain their admission.
                     with mutex:
-                        state['completed'].append(job['name'])
+                        state.setdefault('errors', []).append(dict(slot=slot, job=job['name'], error=str(error)))
                         state['active'].pop(str(slot), None)
                         save()
-            except BaseException as error:
-                failed.set()
-                with mutex:
-                    state.setdefault('errors', []).append(dict(slot=slot, error=str(error)))
-                    save()
-                raise
+                    print('JOB FAILED '+job['name']+': '+str(error), flush=True)
 
         with ThreadPoolExecutor(max_workers=3) as pool:
             futures = [pool.submit(worker, int(slot), jobs) for slot, jobs in plan['slots'].items()]
             try:
                 for future in futures:
                     future.result()
-                state['status'] = 'completed'
+                state['status'] = 'needs_review' if state.get('errors') or state.get('blocked') else 'completed'
                 save()
             except BaseException:
                 state['status'] = 'needs_review'
