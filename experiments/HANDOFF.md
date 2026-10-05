@@ -2760,3 +2760,14 @@ withoutfurtherinterruptions. Boundsource/queuepacket beforeadmission; retains
 ordinarylock/3slots/RSSwatchdog/8GiBfloor. NewREADME records repair andmapping.
 The v2 contract auto-publication's pullfailedwhiletrackededitsweredirty; its
 commitwaspushedwithourstartupcommit. Keepthatmetadataerrorbesidepassedcontract.
+
+AWS16:08 improvement gates: v3numerical+logsumexpforward/backwardledger
+contractsCOMPLETED/pushed24034279. Fullshape pool4k1 smokeCOMPLETED/pushed
+a3ee97b1; pool4k2COMPLETED/pushedaefc8904. Bothcompleteoperatorcoverage
+and1.5xRSSmargin passed; noerrors/blockedrows inrepairedlifecycle. Full
+AdamWwd.01 p64D4fourpass started16:08:37 in slot3. Nextsameworker: matched
+pool4k1/k2fits, wd.1,capacitysmoke/fits. Slot1nativep96 andslot2CLSTM
+continuinghealthy. Thesecompletedsmokesare contracts/throughput, NOTquality
+evidence. Furtherphysicaltrainingresults pending. New explicitrecovery
+bindings letreporttunedgroupread identical-settingsC retry without replacing
+originalinterruptedrow;10stdlibregression/bindinggroups passed a757eef9.
