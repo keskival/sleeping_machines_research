@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**P24replicated utility / full-work running:** seed7context0.234159NLL,
+addressederasure+0.005551;seed6context0.252343/addressed+0.007313. Useful
+context and addressed memory repeat. Message utility does not:seed7message
+erasure−0.032675,both−0.039134 versus seed6+0.022623/+0.014234. Frozen
+interventions/source/RNG/partition checks pass; no architecture removal
+conclusion. Completed result now rendered and retained. Postrepeat tmux owns
+the host lock running token_stage_work.py replay of P24seed6, bounded5400s
+(actual PID12140 at observation; revalidate). Output
+curie_data_growth_tokens_64k_p24_work_20261005_v1.json must complete/parity/
+coverage before256Kwaiter admits selected P24. Preserve frozen work script,
+engine and selection sources while replay runs. No parallel local fit.
+
+
 **P24seed7completed:** initial8.162279795,selectedstep128NLL8.078991340,
 gain0.083288455 passes learning gate. Seed6selected8.033310714;both select
 first-pass boundary(step128). Both two-pass finals worsen:8.183002906/
