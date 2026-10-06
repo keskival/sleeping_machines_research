@@ -334,3 +334,8 @@ estimates for dense references), and inference work up to the decision at N.
   - LRU differs by 4.4e-6 for N ≤ cut, against 8.6 for N > cut. This is float32 rounding in its causal FFT convolution,
     not a leak. It passes at tol 1e-5; both records are kept.
   - Trained models are probed from their result JSON with the same script.
+- 6 Oct 20:07 UTC (curie FAS session, B3 Stage 1): **amended calibration complete; all 12 settings qualify**
+  (oracle .747–.821; gap to the best anonymous classical detector .106–.198; per-line prefixes, line-aware oracle).
+  - The original merged-prefix grid qualified none, as predicted.
+  - Selected: K = 2, p = .02, δ = 0 (oracle .821 vs order3 .685).
+  - Stage 2 data `fas_v2_K2_drop0.02_delta0_20261005` is generating. Development log: `experiments/fas/B3_DEVELOPMENT_LOG.md`.

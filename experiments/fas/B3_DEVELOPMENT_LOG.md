@@ -190,3 +190,18 @@ oracle's .821.
   The deep layers' history context matters as concurrency grows. FAS v2 has ~36 items in flight, so C1 keeps them; no
   skip-deep v2 configuration is declared. For §438 this means predictive routing should *upgrade* the deep layers' routes,
   not remove the layers.
+- 6 Oct 20:07 UTC: **Stage 1 amended calibration complete** (`fas_v2_calibration_amended_grid_20261006T1550Z.json`).
+  **All 12 settings qualify**: oracle .747–.821, gap to the best anonymous classical detector .106–.198. Speed
+  offsets give the largest gaps (≥ .156), because pooled classical statistics cannot absorb them. The selection is
+  confirmed: K = 2, p = .02, δ = 0 (oracle .821, order3 .685, gap .136). Stage 2 data generation started on completion.
+- 6 Oct 20:07 UTC: **§438 predictive-routed deep layer, first form: negative.** 6 processes, 9 binding slots:
+
+  | deep layer | α (sampled / argmax) | validation NLL |
+  |---|---|---|
+  | predictive layer, 9 slots | .67 / .59 | 2.18 |
+  | learned deep layer | .82 / .90 | 1.82 |
+  | none | .77 / .74 | 2.25 |
+
+  The learned deep layer's value is cross-process history context. The predictive layer outputs only the written slot's
+  process-specific memory, duplicating the binding partition, and its local objective may compete with the top
+  objective. Not adopted; C1 is unchanged.

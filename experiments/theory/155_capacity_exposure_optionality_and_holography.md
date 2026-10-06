@@ -1032,3 +1032,20 @@ guards:
 - keep the slot keys as fixed random anchors for diversity.
 
 The capacity margin of §436.4 applies per layer.
+
+**438.1 First test: negative (binding toy, 6 processes, 9 binding slots).** A predictive-routed deep layer (9 slots, own
+race readout, local likelihood) in place of the learned deep layer:
+
+| deep layer | α (sampled / argmax) | validation NLL |
+|---|---|---|
+| predictive layer | .67 / .59 | 2.18 |
+| learned deep layer | .82 / .90 | 1.82 |
+| no deep layer | .77 / .74 | 2.25 |
+
+Revised reading:
+- At this level the learned deep layer supplies *cross-process history context*, not binding. A layer whose slots
+  are partitioned by predictability duplicates the binding layer and provides no shared context.
+- Predictive routing therefore belongs where a layer's job is partitioning (binding, experts), not where its job is
+  summarising across partitions.
+- The next form to test keeps a shared context path beside the predictive slots, with local and global objectives
+  weighted. Until then, class-(a) routing is adopted only at the binding layer.
