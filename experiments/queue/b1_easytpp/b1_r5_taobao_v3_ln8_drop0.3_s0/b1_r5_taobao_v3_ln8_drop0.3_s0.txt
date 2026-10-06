@@ -1,0 +1,2 @@
+# B1 EasyTPP: round 5 (final DEV round before TEST protocol): dropout 0.3 on Taobao/Amazon/StackOverflow (gave Taxi its best DEV); wider states overfit (r4), so regularization is the remaining lever. Decides the selected per-dataset configurations
+b1_r5_taobao_v3_ln8_drop0.3_s0 experiments/tpp/race_tpp_v3.py --tag b1_r5_taobao_v3_ln8_drop0.3_s0 --dataset taobao --seed 0 --n-lognormal 8 --dropout 0.3 --patience 30
