@@ -4110,3 +4110,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS positive time-scale probe completed:** intact/cold-start/RNG/source/checkpoint/parameter checks pass. lr.003 seeds6/7 scale¼ΔNLL−.002278049/−.010396496,scale1/16−.002102149/−.020606544; lr.001 split seed effects preserved in full table. Nonzero temporal evolution can improve frozen DEV scores. Next learning/alternative-write/resume numerical contracts then matched integrated fits; scale selection is DEV tuning. Receipt aws_private_bank_256k_scale_20261006T034826Z.json,peak439564KiBRSS. All active work unchanged; no trained/public win claimed.
+
+
+**AWS positive-scale integrated model implemented:** TimeScaledPrivateBankModel wraps every eager factual/forced-alternative forward with the same positive coefficient scale, preserving parameter names/storage and gradient paths. Checkpoint extra state pins the scale and hook/model source, rejecting incompatible recipes through inherited validation. Compiled mode rejected pending its numerical audit. Syntax passes only; scale1 factual/gradient equivalence, nontrivial scaled rate/frequency gradients, alternative-write suffix credit and checkpoint roundtrip/rejection still require guarded contracts before training. Active jobs untouched.
