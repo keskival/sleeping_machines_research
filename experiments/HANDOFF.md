@@ -1,5 +1,18 @@
 # Session handoff — 2026-09-30
 
+**P32/256K completed; rotation not promoted:** selectedDEV7.753460454 at
+step512, final8.058756989, same524272targets/1,024updates/fourchecks. P24
+selected7.741714418 leads by0.011746036(single seed); preserve both. Collector
+v4 now contains6completed cells, no curve fit or larger cost imputation.
+Rotation probe24primitive/finite-difference/whole-gradient/AdamW contracts
+match exactly; nodes4,781→3,949, but median0.138252s→0.142692s(+3.21%).
+No speedimprovement; original kernel retained, no full-fit rotation followup.
+SelectedP32utility PID72359 live at latestpoll (~434MBRSS). Typed1,024step
+thenchunk-gather probe remain admitted behindit, with guards unchanged.
+Main nextscale remains prepared1M/P24 after utility/accounting review and
+measured engineering improvement;4M reserved. Revalidate handles and results.
+
+
 **FAS third native seed complete; language nowlive:** seed8 selectedepoch2,
 N2560.5863735/N5120.7328695; all18score/type/prefix metrics recomputeexactly
 from2000clean/2000faulty score arrays; weight/data/recipe/frozen source hashes

@@ -28,3 +28,15 @@ interleaved CPU timings including factual backward and alternative replay.
 No speedup, arithmetic reduction or language-quality gain is claimed before
 those measurements. A full fitting replay follows only if the contract passes
 and measured execution improves. Existing quality/work records remain controls.
+
+## Completed probe decision (6 October)
+
+All24 primitive cases, finite differences, integrated forward/state/actual
+forced-write risk, every parameter gradient and the AdamW update match exactly
+(maximum recorded error0). Graph nodes fall4,781→3,949. Five interleaved
+objective/backward timings have median0.138252s reference and0.142692s explicit
+(3.21% higher). Scope: one selectedP24checkpoint/64 FIT tokens, no optimizer
+in the timed interval. This probe supplies no CPU speed improvement. Retain
+the original kernel; do not spend a full-fit replay on this candidate. The
+lexical gather probe targets the separately observed repeated dense gradient
+buffers instead.

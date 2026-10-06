@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "primitive": {
+    "cases": 24,
+    "forward_max_error": 0.0,
+    "first_gradient_max_error": 0.0,
+    "finite_difference_passed": true,
+    "higher_derivatives_supported": false
+  },
+  "control": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json",
+  "control_sha256": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+  "checkpoint_sha256": "32875968d8a3a87017751635766e97f23d34816a8c60ca0e5b0a9d4b1b98d607",
+  "integrated": {
+    "input_tokens": 64,
+    "forward_state_continuation_max_error": 0.0,
+    "all_gradient_max_error": 0.0,
+    "adamw_update_max_error": 0.0,
+    "graph_nodes": {
+      "reference": 4781,
+      "explicit": 3949
+    }
+  },
+  "interleaved_wall_s": {
+    "reference": [
+      0.14422622899292037,
+      0.13825207395711914,
+      0.13809581700479612,
+      0.14332104800269008,
+      0.1378019520197995
+    ],
+    "explicit": [
+      0.14269155595684424,
+      0.14173643302638084,
+      0.1403464880422689,
+      0.1445786320255138,
+      0.14402358699589968
+    ]
+  },
+  "wall_s": 3.2873505940078758,
+  "peak_rss_kib": 507400,
+  "source_sha256": {
+    "sleeping_machines/explicit_rotation_backward.py": "4bba8fc51c9a0e1332e15bc6c6e413b00307be4bab31307b38446ad3a4183ab4",
+    "experiments/rotation_backward_probe.py": "2f554866ec16a3d138e093f52aee8558a0c8c1ee0ed85fae782864a0bcf7930a"
+  },
+  "scope": "One selected trained P24 checkpoint, 64 FIT tokens, exact forward/state/forced-write continuation plus first-order gradients/AdamW parity. Five interleaved CPU objective/backward timings per kernel, no optimizer/evaluation inside timing; no full-fit throughput, FLOP, energy or quality gain. Fixed forced alternative is a contract, not a claimed unbiased training estimator. Existing source kernels unchanged."
+}
