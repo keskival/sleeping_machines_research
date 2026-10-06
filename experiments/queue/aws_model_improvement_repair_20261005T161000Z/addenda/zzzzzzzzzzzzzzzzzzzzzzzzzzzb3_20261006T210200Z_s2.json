@@ -1,0 +1,100 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "User-directed admission (6 Oct ~21:00 UTC) of the curie runner request: FAS v2 Stage 2 data, the two neural reference smokes (AGENTS.md exception 17:46 UTC) and native development arms C1 and C2, sequential on one slot so every job follows the data",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_fas_v2_data_20261006T1715Z",
+        "queue": "experiments/queue/aws_fas_v2_data_20261006T1715Z.txt",
+        "queue_sha256": "da100465b513363e8458460b53c623818eaa89860c237d9405eb7095d6b0cdda",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/generate_v2.py": "72b4491ce87c6f5f7a18399d2d7b3c0774c8b9dc3adeb8a0d80a6970a73d0afb"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_data_20261006T1715Z/provenance.json",
+        "timeout_s": 3600,
+        "rss_kb": 2500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_smoke_lstm_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_smoke_lstm_20261006T1815Z.txt",
+        "queue_sha256": "247c32962ee83e0477cb75f05c8fd83ab0916b829020daa0fc6d763b8425cabf",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_smoke_lstm_20261006T1815Z/provenance.json",
+        "timeout_s": 3600,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/aws_20260929/aws_fas_v2_data_20261006T1715Z/provenance.json"
+          }
+        ]
+      },
+      {
+        "name": "aws_fas_v2_ref_smoke_transformer_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_smoke_transformer_20261006T1815Z.txt",
+        "queue_sha256": "5d37f21ceaa2141a38acccf33a68e649b4f769530d3c34de71ae8d7491448e84",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_smoke_transformer_20261006T1815Z/provenance.json",
+        "timeout_s": 3600,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/aws_20260929/aws_fas_v2_data_20261006T1715Z/provenance.json"
+          }
+        ]
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_20261006T1715Z",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_20261006T1715Z.txt",
+        "queue_sha256": "e7080c8180269d81634aa927f88070ed8fea2e69fa1dd5bfe2a97d363ac50eb6",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/native_race_readout.py": "b4dfd6386a8eb3a544798250410d024ab8d4fd7b11ea77b50f10775c5ac27cc2"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/provenance.json",
+        "timeout_s": 18000,
+        "rss_kb": 5000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/aws_20260929/aws_fas_v2_data_20261006T1715Z/provenance.json"
+          }
+        ]
+      },
+      {
+        "name": "aws_fas_v2_dev_C2_20261006T1715Z",
+        "queue": "experiments/queue/aws_fas_v2_dev_C2_20261006T1715Z.txt",
+        "queue_sha256": "ac430d40c9aa43b8aca767945ecdba31e7bf3702880e4d400a8ec19dd19da217",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C2_20261006T1715Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 5000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/aws_20260929/aws_fas_v2_data_20261006T1715Z/provenance.json"
+          }
+        ]
+      }
+    ]
+  }
+}

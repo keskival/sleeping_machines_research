@@ -110,3 +110,11 @@ after the v2 data queue (`aws_fas_v2_data_20261006T1715Z`):
 
 Expected wall time per run on one thread: LSTM ~1–2 h, Transformer ~3–6 h (estimates; the smokes measure them). The
 sealed three-seed confirmation of each family's selected configuration is queued only after Stage 3 selection.
+
+**AWS admission (6 Oct 2026, ~21:02 UTC, user-directed).** Admitted on AWS gym slot 2 as addendum
+`zzz…b3_20261006T210200Z_s2.json` of `aws_model_improvement_repair_20261005T161000Z`, strictly sequential after the slot's
+current B1 seed: `aws_fas_v2_data_20261006T1715Z` (generate_v2, 1 h cap, 2.5 GB) → `aws_fas_v2_ref_smoke_lstm_20261006T1815Z`
+→ `aws_fas_v2_ref_smoke_transformer_20261006T1815Z` (4 GB each) → `aws_fas_v2_dev_C1_20261006T1715Z` (5 h, 5 GB) →
+`aws_fas_v2_dev_C2_20261006T1715Z` (4 h, 5 GB). Every job after the data requires the data provenance `completed`.
+Results publish automatically (results/aws_20260929/<tag>/). The 12-run reference grid is not admitted yet; size it from
+the smokes' peak RSS and wall time.
