@@ -4116,3 +4116,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS integrated time contracts implemented:** guarded aws_private_bank_time_contracts.py checks scale1 exact factual outputs/parameter gradients against saved-class control, nonzero finite rate/frequency gradients at1,¼,1/16, actual forced-write suffix utility with zero-forward/nonzero-key-gradient credit, model/state/route-RNG continuation, and cross-scale checkpoint rejection. Deterministic q=1 proposal is a path contract, not sampled-estimator validation; optimizer resume remains separate. Syntax passes; numerical run must be uniquely admitted to idle slot1 with measured reservation. No numerical pass or fit admission inferred.
+
+
+**AWS scaled learning contracts admitted20261006T035307Z:** unique idle-slot1 queueaws_private_bank_time_contracts_20261006T035307Z;180s bounded synthetic16-token integrated factual/forced-alternative/continuation checks at1,¼,1/16.1.6GBRSS covers simultaneous control/restored models and gradients beyond prior approximately440MB scoring;5GBVMS/8GiBfloor. All pins checked; existing dense2/work3 preserved. Numerical outcome pending.
