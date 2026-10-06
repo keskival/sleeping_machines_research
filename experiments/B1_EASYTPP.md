@@ -96,3 +96,7 @@ scoring of each selected configuration with 5 seeds; measure inference work.
 | 6 Oct | r2 Retweet (v3) | defective delayed clocks on Retweet | DEV **−6.089** at epoch 20 and improving (time −5.315, mark −0.774), vs v1 −6.403 | ≈0.26 nats ahead of the best published TEST (NHP −6.348) before the +0.036 offset |
 | 6 Oct | final Taxi | TEST protocol queued: v3, 8 delayed clocks, dropout 0.3; 5 seeds | pending | Taxi verdict |
 | 6 Oct | r5 | dropout 0.3 on Taobao / Amazon (16 clocks) / StackOverflow | pending | last DEV round; then TEST protocol per dataset |
+| 6 Oct | audit | grid audit (`grid_audit.py`): DEV scored as recorded and with gaps dequantized inside their recording cell | Retweet v3: −5.919 recorded vs **−6.632 dequantized** (drop 0.71; 37.5% of delayed clocks at the 0.005 dispersion floor); Taxi drop 0.000; Taobao 0.0001; StackOverflow 0.009 | **The Retweet DEV lead was an artifact of integer-second recording and is withdrawn.** Smooth intensity references cannot spike on grid points; ours must not either |
+| 6 Oct | v5 | resolution floor: every delayed clock's spread at its delay is at least one recording cell, σ ≥ max(0.005, cell·e^(−μ)); cells from TRAIN: Retweet 1 s, Taxi 1 s (1/3600 h), StackOverflow 2⁻¹³, Taobao 10⁻⁴ (87% of gaps), Amazon none | contract PASS | all final protocols use v5 |
+| 6 Oct | r5 | dropout 0.3 | Taobao 1.284 (vs 1.281); Amazon 16 clocks **0.724** (vs 0.720) | selected |
+| 6 Oct | final | TEST protocols queued (v5, 5 seeds): Taxi, Taobao, Amazon; Retweet v5 development run | pending | |
