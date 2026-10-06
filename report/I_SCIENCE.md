@@ -82,7 +82,15 @@ Marked event streams with continuous times, on the official EasyTPP splits and t
 | **Ours, single model** | **0.5250 ± 0.0010** | 0.733 | **−0.208** | **20,504** | **20,708** |
 | **Ours, 5-seed predictive mixture** | **0.5363** | **0.740** | **−0.204** | 102,520 | 103,540 |
 
-**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. Amazon, Taobao, StackOverflow and Retweet are in their TEST protocols. S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
+| Taobao (nats/event) | Total | Time | Mark | Parameters | Inference MACs/event |
+| --- | --- | --- | --- | --- | --- |
+| Best published (IFTPP) | 1.318 ± 0.017 | 2.708 | −1.391 | — | — |
+| S2P2 | 1.304 ± 0.039 | 2.719 | −1.415 | 26,801 | 26,016 |
+| **Ours, single model** | **1.3991 ± 0.0025** | **2.753** | **−1.353** | **24,046** | **24,362** |
+
+**Win on Taobao, confirmed over 5 seeds:** +0.081 nats per event over the best published model, with the best time and mark log-likelihoods, at 0.92× S2P2's per-event work.
+
+**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. Amazon, StackOverflow and Retweet are in development and TEST protocols. Both winning results pass a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
 
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 
@@ -197,7 +205,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 
 | Battle | Benchmark | Pass criterion | What it settles |
 | --- | --- | --- | --- |
-| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi won** (§4.0); four datasets in TEST protocol |
+| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi and Taobao won** (§4.0); pass criterion met; three datasets continue |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | Asynchronous channels, informative missingness and silence on real data |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered | A confirmed event-native analytics win and a benchmark we define |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |
