@@ -1,3 +1,20 @@
+# Both 1M utilities complete; independent P24 seed admitted — 6 October 2026
+
+P32 utility exited0 at04:29:01UTC: contextNLL7.263761520, TRAINmean8.208047867,
+contextgain0.944286346; erasure deltas memory+0.013540290,message+0.440228511,
+both+0.395294635. Selected2048,2040DEV/1048568TRAINfeature observations;
+partition and matched RNG pass. Full-message erasure changes presence/timing/
+normalization, not isolated value attribution. P24 quality lead0.012257894 stays.
+
+Unique curie_original_1m_p24_s7_20261006_v1 queue launched in same-named tmux
+through run_safe after no training process/free host lock check; original parent
+source hashes and both utility contracts pass. Same1M/two-pass/4096updates/
+fourDEVchecks/fixedlr.003/originalkernel, seed7 only. Measured parent4376s
+motivates9000s cap,800000KiBRSS/5GBVMS/8GiBreserve,1CPUthread. Physical
+MemAvailable10983MiB,cgroupcurrent849MB/10GiB. No score prediction.
+Independent confirmation precedes4M extrapolation; full larger arithmetic still
+requires actual accounting. Revalidate newPID before further action.
+
 # Crossed-width scaling visualization refreshed — 6 October 2026
 
 Source-checked figure v3 now includes completed P24/P32 at1M, historical v1/v2
