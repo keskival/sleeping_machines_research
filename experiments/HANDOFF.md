@@ -4137,3 +4137,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS actual-driver scaled optimizer resume completed:**20261006T040042Z passes scales1,¼,1/16 six-update/three-update-interruption comparisons with96actual fitting targets per full path; model/optimizer/persistent state/cursor/step/all route-teacher/global RNGs/writes/presentations and scored quality curves exactly equal. Source pins reverified; peak612048KiBRSS. Real token interval and uniform-siteK4 future teacher; numerical continuation contract, not benchmark quality. Scaled fit wrapper learning/resume prerequisites now completed; next bounded source-bound smoke measures ordinary throughput/RSS before matched fits. Existing 256K full-work replays remain protected.
+
+
+**AWS scaled fit smoke admitted20261006T040249Z:** unique idle-slot1 pairaws_private_bank_time_smoke_20261006T040249Z,scale1/1over16;8192TRAIN/two passes16368targets/32updates,every16DEV2040targets,P24D2H2U4uniformK4credit. Completed learning/resume and prior construction/work/payload gates bound by pins.180s/983040KiBRSS/5GBVMS/8GiBfloor derive prior847targets/s and615544KiBRSS with margin;26GiB available. Preserve dense2/work3. Ordinary throughput/RSS and wrapper correctness pending; no public win.
