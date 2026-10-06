@@ -946,3 +946,19 @@ dense backward over all alternatives).
 3. I1 for language (R1 owner).
 
 Each change states the failure it addresses and runs its contracts before any long run (AGENTS.md).
+
+**437.1 A taxonomy of internal routes, by when their consequence is observed.**
+
+| class | example | learning rule without learned route credit |
+|---|---|---|
+| (a) consequence observed now | which process emitted this event (binding); which expert explains this output | posterior routing plus the filtering bound (Theorem 434.1); EM for mixtures of experts is the classical instance |
+| (b) consequence later, but a content key exists at both write and read time | associative memory: write (key, value), later query by key | content addressing: the slot is a function of the key (hashing, product keys, race over key similarity), so read and write meet with no credit |
+| (c) consequence later, with no shared key | which state to carry for a future, unspecified use | needs backward information: fixed-lag smoothing (posterior over the route given the next Δ events, computable by L-particle look-ahead) or sampled counterfactual credit (§429's forced lanes, k alternatives) |
+
+*Implication.* Credit blindness (§429) and route chaos (§431) are class-(c) problems. Classes (a) and (b) can be
+removed from the credit problem by construction. A model design should push routes into (a) and (b):
+- predictive readouts make consequences immediate;
+- keys make them addressable.
+
+Only the remainder pays for counterfactual credit. The T1 toy therefore tests a class-(a) route inside the network
+(a race-selected expert whose output is the next observation), and a class-(c) route with fixed-lag particle smoothing.
