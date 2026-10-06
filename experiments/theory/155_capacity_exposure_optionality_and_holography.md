@@ -549,3 +549,62 @@ memory horizon, and with small score margins at later races.
 - S and estimator fidelity on the three-seed FAS models and on a language model.
 - S as a function of horizon initialization (R0 against R8 is one point each).
 - A margin-regularized R8 variant: does S fall without shortening horizons, and does transported fidelity rise?
+
+## 432. Interleaving symmetry: why anonymous merged event logs are race-native (user direction, 6 October)
+
+**Setting.** K processes (assembly items, sessions, machines) each emit a timed event sequence
+s_i = ((e_{i,1}, t_{i,1}), (e_{i,2}, t_{i,2}), …). The log is their merge: the events of all s_i sorted by time.
+It has no process ids and no correlation keys. Processes may interact through shared resources such as a station,
+a queue or a lock.
+
+**Definition (interleaving symmetry).** Let L = merge(s_1, …, s_K). Shuffling which hidden process each event came from
+is not a symmetry, because each process keeps its own order and timing. The ambiguity is the shuffle product: the
+same L arises from every assignment of its events to K order-preserving subsequences that the generator could have
+produced. A detector should depend on L only through the likelihood marginalised over those consistent assignments:
+  p(L) = Σ_{assignments a consistent with L} Π_i p(s_i(a)) · p(interactions | a).
+- Interleaving is a special case of permutation symmetry, but it is not the same thing:
+  - a permutation-symmetric model (a set function, attention without order) discards the order within each stream,
+    which carries the signal;
+  - an order-sensitive sequence model ties its prediction to one particular merge and must learn the binding from
+    scratch.
+- No standard classical primitive is invariant over shuffles while preserving within-stream order.
+  - Attention is permutation-equivariant.
+  - Recurrent nets, Transformers with position codes and SSMs read a single order.
+
+**Proposition 432.1 (superposition is a race).** Suppose each process i has, at time t, a pending next event with hazard
+λ_i(· | its own history, shared state). The merged log is the superposition of the K point processes. Its next event is
+the earliest pending event:
+  argmin_i τ_i, with τ_i ~ λ_i,
+and the event that fires is the winner's. This is exactly a temporal race among K competitors whose clocks are
+conditioned on persistent per-competitor state. Interactions couple the clocks through shared state.
+
+Sketch: superposition of independent point processes is a standard result. The first event time is the minimum of
+the competitors' next-event times, and the identity of the minimiser is the race winner. Dependence through shared
+state makes the hazards conditional, and the race is still the generative form.
+
+**Consequence.**
+- A model with addressed persistent state (slots) and a race between them can represent the generative process
+  directly:
+  - a slot stores a process's own history (binding);
+  - the race decides which slot's continuation explains the next event;
+  - the delay law carries timing.
+- Learning to bind is learning which slot wins. The route credit questions of §§429–431 are therefore the central
+  learning problem on this data, not a side issue.
+- Depth adds the interactions: deeper races condition on other slots' states.
+
+**Fair references.**
+- Knowing the processes (the route, its repeated and optional steps, tie behaviour) is privileged knowledge.
+- A de-interleaving tracker whose structure was designed by inspecting true identities is a structure-assisted
+  diagnostic, even when its parameters are fitted on anonymous logs.
+  - It is not an information-matched reference.
+  - experiments/fas/beam_deinterleave.py is such a diagnostic. Its initialisation and link rule were designed after
+    inspecting identity routes on 6 October.
+- Generic sequence and point-process models (LSTM/RMTPP, THP-style Transformer, LRU, S5, Mamba) and generic classical
+  detectors are the fair references. They see the same anonymous log.
+
+**Predictions to test** (FAS v2, Stages 3–5):
+- Native advantage over generic references grows with K (more concurrent streams) and with event dropout, which
+  breaks rigid structure.
+- Native performance degrades under the within-sample timestamp shuffle control: timing carries the binding.
+- The native model's per-slot write sources concentrate on single processes. This is measured by the binding
+  diagnostic with oracle identities, used for evaluation only.

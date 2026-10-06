@@ -301,3 +301,24 @@ estimates for dense references), and inference work up to the decision at N.
   queue manifest `queue/fas_v2_confirmatory_20261005T143000Z/manifest.json`). The v2 setting is selected from the K/drop/speed
   grid by oracle-vs-classical headroom on validation, before any learned model runs. Win rule: native seed-mean AUROC at
   N=512 ≥ strongest baseline + 0.02, paired-bootstrap 95% lower bound > 0, every native seed above the strongest baseline.
+- 6 Oct (curie FAS session, B3 Stage 0): **v2 generator frozen in code**. `experiments/fas/generate_v2.py` implements
+  the protocol's Stage 0 generator:
+  - K lines, line 0 faulty;
+  - seeds `seed_base + 10M·split + K·run + line`;
+  - dropout from line-seed RNG only;
+  - ±δ alternating speed;
+  - one 10 s plant clock;
+  - seeded random tie-break;
+  - no line tag;
+  - `identity.npz` sidecar.
+
+  Contracts: `tests/test_fas_generate_v2.py` (5 pass). No v2 data has been generated yet.
+
+  A beam de-interleaver (`beam_deinterleave.py`) was started as the protocol's tracker. It is reclassified as a
+  **structure-assisted diagnostic**, because its design used identity-inspected route structure (privileged process
+  knowledge; user direction). It is excluded from the Stage 1 gate and from fair-reference selection, and its
+  development has stopped.
+  - Measured pair accuracy: ~0.49 at K=1 and ~0.26 at K=2 with drop .02.
+  - With true-track parameters: 0.96 and 0.62.
+
+  Theory: note 155 §432 (interleaving symmetry; a superposition of timed processes is a race).
