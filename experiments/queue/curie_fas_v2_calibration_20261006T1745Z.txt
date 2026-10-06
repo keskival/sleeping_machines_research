@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2 confirmation), Stage 1 setting calibration: validation only, oracle + oracle-assisted diagnostics + information-matched classical references, no learned model. Decision: the v2 setting (or "no setting qualifies") by the pre-registered rule at N*=512. CPU single-thread, <1 GB.
+curie_fas_v2_calibration_20261006T1745Z experiments/fas/calibrate_v2.py --tag grid_20261006T1745Z --fit 1000 --val 1000 --K 2,3,4 --drop 0.02,0.05 --delta 0,0.05
