@@ -229,3 +229,19 @@ A proposed time-scale change must then preserve temporal evolution, race
 attention, sparse writes, key/value separation and alternative-write credit,
 pass numerical contracts, and undergo an integrated paired fit. Frozen active
 fit/work sources remain unchanged.
+
+
+## Completed 256K temporal-operator diagnosis
+
+Four selected GPT-2/FineWeb DEV checkpoints,2040targets, frozen weights and matched route RNG; positive changes worsen NLL. All source/raw-fit/checkpoint hashes, intact/partition/cold-start parity, parameter nonmutation and zero_age/seen parity pass.
+
+| Rate | Seed | No decay ΔNLL | No rotation ΔNLL | Zero age ΔNLL | Arrival-only erase ΔNLL |
+|---|---:|---:|---:|---:|---:|
+|0.003|6|-0.004867516|-0.007564902|-0.015779112|0.010713991|
+|0.003|7|-0.011039107|-0.010441803|-0.024449096|0.012638215|
+|0.001|6|0.001373110|0.001080578|-0.003595221|0.000244083|
+|0.001|7|-0.009541055|-0.012178043|-0.003931476|-0.000866011|
+
+For lr.003 both seeds improve when decay or rotation is suppressed independently, and when both are suppressed through zero age. Arrival-only erasure retains seen=true and changes old timestamps; it worsens both seeds. The observed benefit is specific to temporal evolution, not a generic benefit from clearing any metadata. Joint gains are not additive and later routes can change. The lr.001 effects vary by seed. Receipt: aws_private_bank_256k_time_20261006T034518Z.json; peak439560KiBRSS.
+
+Next integrated hypothesis: slower memory evolution per token may preserve useful content while retaining nonzero decay, rotation, temporal races, message transport, sparse updates and counterfactual learning. First test nonzero temporal scale interventions against the intact selected checkpoints, then require numerical equivalence of the intact scale and an integrated paired fit before any architectural benefit claim. Do not promote zero-age/no-decay/no-rotation diagnostics into the main architecture. Existing complete-work replays and saved controls remain intact.

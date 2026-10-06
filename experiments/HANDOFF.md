@@ -4101,3 +4101,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS timing probe admitted slot1 20261006T034518Z:** idle bounded slot1 receives unique one-job queue aws_private_bank_256k_time_20261006T034518Z, four completed source-bound selected fits, six operator/metadata modes.720s cap scales prior four-mode480s reservation by6/4;1.2GBRSS/5GBVMS/8GiBfloor with26GiB MemAvailable. All source pins/completed dependencies checked. Existing dense slot2 and exact-work slot3 preserved; only three one-thread CPU jobs allowed. Numerical results pending; no altered training or quality claim.
+
+
+**AWS256K isolated timing probe completed:** all source/checkpoint/numerical parity/RNG/parameter-nonmutation contracts pass. lr.003 seeds6/7 no_decayΔNLL−.004867516/−.011039107; no_rotation−.007564902/−.010441803; zero_age−.015779112/−.024449096; arrival-only erase+.010713991/+.012638215. Separate operators affect useful memory; diagnosis motivates nonzero temporal-scale probes and then integrated paired fits, retaining temporal computation and full core mechanisms. lr.001 mixed effects preserved in theory/report table. Receipt aws_private_bank_256k_time_20261006T034518Z.json,peak439560KiBRSS. Complete-work slot3 live; slot1 available. No retrained gain/public win claimed.
