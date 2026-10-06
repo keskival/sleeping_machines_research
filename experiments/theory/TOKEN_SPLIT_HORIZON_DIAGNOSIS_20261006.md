@@ -39,3 +39,10 @@ Independent off-diagonal64K fits are not admitted by this note. First finish the
 live credit64 exact work replay and implement contracted support. Retain P24/
 credit16 as the main language member and the completed two-seed1M results.
 The reserved4M extrapolation and public-reference objective remain unchanged.
+
+
+## 64K diagnosis admission after integrated smoke
+
+The corrected actual-driver contracts pass all12 tiny fits, including exact diagonal/default learning and off-diagonal optimizer/state/RNG resume. Both2K off-diagonal smokes learn against common initialization8.871766: F64/A16 selects8.810150, F16/A64 selects8.798182,4,080 fitting targets/8updates/two DEVchecks. Ordinary wall10.626/11.049s and RSS488668/488816KiB. Selected context/memory utility is negative for F64/A16 and positive for F16/A64 in this smoke; retain both results. F64/A16 exact whole-work replay passes; F16/A64 replay is running.
+
+Source-pinned 64K admission waits for both completed smoke exact-state/selection/formula receipts. Run F64/A16 then F16/A64 at256updates/131,056 fitting targets/four DEVchecks, fixed batch64/lr.003/seed6/P24D2H2U4 and the same token intervals. Reuse completed F16/A16 and F64/A64 diagonal controls. This isolates which coupled credit change causes the measured64K loss; it is not a new architecture or proof of a horizon penalty for the family. Each fit900s/1.2GBRSS/5GBVMS/8GiB floor/one thread, derived from283.56s full64K fit and measured smoke RSS with margin. Follow with selected utility and exact complete-work replay for each arm (5400s audit cap, based on completed46.4-minute64K tracing). All jobs sequential through unique one-job run_safe queues. Larger4M remains reserved; public validation untouched. Do not promote an off-diagonal member before comparable quality and complete work are available.
