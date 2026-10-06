@@ -195,3 +195,37 @@ U16 quality losses: 0.020071830 NLL on seed6 and 0.004985016 on seed7. U4 has po
 
 
 **AWS256K payload isolation completed:** all four frozen intervention, partition, matched-RNG and selected checkpoint/raw-fit SHA bindings pass. Payload-only erase raises NLL0.011118247/0.013576500 at lr.003 (seeds6/7), retaining timing/message state: stored content is useful in both seeds. Metadata-only erase changes NLL−0.015779112/−0.024449096. At lr.001 payload erase changes+0.001017466/−0.000701684; metadata erase−0.003595221/−0.003931476. Frozen causal interventions can alter later routes; they are not retrained ablations or additive attribution. Timing metadata is a measured diagnosis target; no core mechanism is removed. Receipt aws_private_bank_256k_payload_20261006T030500Z.json. First lr.003seed6 complete-work replay is live; all four whole-fit work rows await exact completed evidence.
+
+
+## Arrival-metadata diagnosis after the 256K payload probe
+
+The inspected implementation gives the metadata intervention a precise meaning.
+`_unit` in `sleeping_machines/sparse_training.py` uses the last arrival only
+when the selected receiver is marked seen; otherwise it uses the current
+arrival. Clearing seen therefore sets its memory age to zero while retaining
+payload. This disables both age-dependent decay and rotation for that update:
+`exp(-age * rate * forget)` and `rotate(memory, age * frequency)`.
+With free_bias=0, seen does not enter the immediate race score. Memory updates
+can change refreshed keys and subsequent races, so the measured DEV gain is
+not a pure routing effect and does not identify decay versus rotation.
+
+The unchanged driver increments token position by one; race delays add
+0.001–0.011 per layer. That explicit time convention is part of the tested
+implementation. It must not be interpreted as a proven optimal time scale.
+The completed metadata probe improves the lr.003 seeds by0.015779112 and
+0.024449096NLL. These numbers motivate separating temporal operators before
+changing their learned parameterization.
+
+Required next bounded diagnosis: matched selected checkpoints, scored targets,
+route RNG and intact feature parity; separate seen-only, arrival-only,
+rotation-only and decay-only interventions. Check that the first three
+metadata modes retain payload tensors and read caches, and verify first-event
+race parity at free_bias=0. For rotation/decay separation, retain all learned
+rates, frequencies and clocks in the saved source-bound control; isolate only
+the operation inside selected unit evolution through an explicit diagnostic
+kernel, with intact-mode numerical parity before scoring. Record all later
+route effects. No retraining or architecture benefit follows from this probe.
+A proposed time-scale change must then preserve temporal evolution, race
+attention, sparse writes, key/value separation and alternative-write credit,
+pass numerical contracts, and undergo an integrated paired fit. Frozen active
+fit/work sources remain unchanged.
