@@ -1,3 +1,18 @@
+# Crossed P32/1M fit and selectedutility sequence — 6 October 2026
+
+P32/1M PID100862 verified live (~520MBRSS), tmux
+curie_original_1m_p32_admission_20261006_v1,9000s/800MBRSS/8GiBfloor.
+Newtmux curie_original_1m_p32_utility_admission_20261006_v1 waits entirefit,
+requires completed2,097,136targets and intactstreamedcontract sourceSHA,
+then uniqueonejob/run_safe selectedutility1200s withsamecaps. P24utility372s
+motivates timeoutallowance. Source-preserving diagnostic, no training/default
+kernel changes. Bashsyntax passed; numerical results pending.
+
+Nextdecision is completed P24vsP32 quality/utility at1M alongside256Kwidthgap;
+no largerfitcost imputation, no selectedtraining scores in completed cells.
+4Mreserved. SourceREPORT/figure contain completedP24/1Mdata-growthresult,
+not a fitted law or public-reference matched-compute result. Revalidatejobs.
+
 # P24/1M utility completed; P32/1M live — 6 October 2026
 
 P32PID100862 verified live around522MBRSS, tmux
