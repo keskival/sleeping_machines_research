@@ -77,3 +77,7 @@ peaks; neither has addressed per-mark memory.
 
 | Date | Iteration | Change | DEV result | Diagnosis / next |
 |---|---|---|---|---|
+| 6 Oct | contract | race_tpp numerical contract | density integral 1 − 3e−12; exact compensator = quadrature; Σ_k λ_k = λ | PASS |
+| 6 Oct | r1 | default race clocks (d32, 16 modes, 2 layers, 2 exp + 4 log-normal clocks, dv4), early stop | Taxi 0.475 (time 0.707, mark −0.232); StackOverflow −2.203 (−0.735, −1.468); Taobao 1.249 (2.697, −1.448) | Overfits after ~25–50 epochs. Mark LL at count-model level on Taxi: time-conditional mark resolution limited to 6 clocks. StackOverflow time LL weakest. |
+| 6 Oct | calibration | count models scored on DEV and TEST (`split_calibration.py`) | TEST − DEV offsets, total: Taxi +0.10, Taobao +0.12, Retweet +0.03, Amazon −0.01, StackOverflow −0.01 | DEV numbers are read against TEST references with these offsets; verdicts only from one TEST scoring of the selected config, 5 seeds |
+| 6 Oct | g0–g3 | user direction: long training past the memorization peak; decoupled decay 0/0.1/1, asymmetric private decay ×10 (THEORY §427.3), d64; 1,500 epochs, no early stopping | pending | decides the training recipe |
