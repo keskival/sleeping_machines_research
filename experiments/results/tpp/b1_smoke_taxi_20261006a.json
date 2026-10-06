@@ -1,0 +1,70 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_smoke_taxi_20261006a",
+ "dataset": "taxi",
+ "args": {
+  "dataset": "taxi",
+  "tag": "b1_smoke_taxi_20261006a",
+  "seed": 0,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 4,
+  "dv": 4,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.0,
+  "batch": 32,
+  "epochs": 3,
+  "patience": 3,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1
+ },
+ "K": 10,
+ "scale": 0.14583333333333337,
+ "parameters": 17708,
+ "best_epoch": 2,
+ "epochs_run": 3,
+ "wall_s": 3.386756658554077,
+ "dev": {
+  "ll": 0.4342759693608725,
+  "time_ll": 0.6912030551236427,
+  "mark_ll": -0.2569270857627701,
+  "events": 7204,
+  "rmse": 0.2727979452287361,
+  "acc": 0.9106052193225985
+ },
+ "history": [
+  {
+   "epoch": 0,
+   "train_ll": -0.2093855434982995,
+   "dev_ll": 0.3680331575974004,
+   "dev_time_ll": 0.6844634004861159,
+   "dev_mark_ll": -0.3164302428887155,
+   "epoch_s": 1.1251015663146973
+  },
+  {
+   "epoch": 1,
+   "train_ll": 0.4212350479911454,
+   "dev_ll": 0.43045095835647995,
+   "dev_time_ll": 0.6912084824992359,
+   "dev_mark_ll": -0.26075752414275594,
+   "epoch_s": 1.140395164489746
+  },
+  {
+   "epoch": 2,
+   "train_ll": 0.45325439876627527,
+   "dev_ll": 0.4342759693608725,
+   "dev_time_ll": 0.6912030551236427,
+   "dev_mark_ll": -0.2569270857627701,
+   "epoch_s": 1.112131118774414
+  }
+ ],
+ "checkpoint": "experiments/results/tpp/b1_smoke_taxi_20261006a.pt",
+ "source_sha256": {
+  "experiments/tpp/race_tpp.py": "092f34833db01641560e6568182fddccff032c8ed246fd56ab91957baacbccd7"
+ }
+}
