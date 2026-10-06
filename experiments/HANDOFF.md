@@ -4413,3 +4413,15 @@ Selected utility passes matched RNG/partition checks. F64/A16 context gain−.00
 
 
 **Curie 64K separated-horizon diagnosis conditionally admitted:** tmux curie_split_horizon_64k_admission_20261006_v1 waits for both2K exact-state/selection/formula work receipts before sequential F64/A16,F16/A64 seed6fits. Same completed diagonal control settings/data: P24D2H2U4,batch64,lr.003,256updates/131056targets/fourDEVchecks. Fit900s/1.2GBRSS/5GBVMS/8GiBfloor/thread1 derive283.56s full64Kfit and488816KiB smoke peak. curie_split_horizon_64k_followthrough_20261006_v1 waits bothcompletedfits then selected utility900s and two exact-work5400s queues; full64Kprior traced replay46.4min. All source-pinned and one-job queues, no concurrent model work. F64/A16 smoke full-work alreadypassed; otherarm live. Read updated diagnosis note;4M/publicvalidation remain protected.
+
+
+**Separated-horizon 2K complete work receipts:** both exact model/optimizer/persistent-state/all-RNG/curve/selection replays pass with zero curve error and complete arithmetic formulas.
+
+| Factual / alternative horizon | Selected DEV NLL | Whole-fit GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target |
+| --- | ---: | ---: | ---: | ---: |
+| 64 / 16 | 8.810150 | 4.773255 | 1.169916 | 0.421974 |
+| 16 / 64 | 8.798182 | 4.854445 | 1.189815 | 0.422863 |
+
+Scope: seed6,2K GPT-2 FineWeb,4,080 fitting targets/two passes/8updates,2,040DEV targets,two checks plus initialization. F16/A64 wins smoke quality by.011968NLL with higher fitting/inference work; no Pareto win. Complete arithmetic charges realized factual/alternative computation, backward, clipping, optimizer and in-step diagnostics; initialization/frequency counts/validation/serialization excluded, special functions separate, random work unquantified. Sources:curie_split_horizon_2k_f64_a16_work_20261006_v1.json andcurie_split_horizon_2k_f16_a64_work_20261006_v1.json. The gated64K diagnosis now runs; no larger result is predicted.
+
+**64K admission released06:50:57UTC:** bothsmokeexactreceipts/source/inputcheckpoint hashes verified; F64/A16 fit running first, F16/A64 next. Preserve originalcredit16leadingmember and allcompleteddiagonals.

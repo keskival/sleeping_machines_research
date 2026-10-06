@@ -4756,3 +4756,13 @@ The separated-horizon state witness passes: changing the alternative horizon pre
 **Separated-horizon integrated smoke — 6 October:** corrected actual-driver v2 passes all12 sequential tiny fits: default/explicit diagonal model/optimizer/state/all-RNG/curve parity at horizons4/16, off-diagonal interruption/resume, causal endpoints and importance weights. State-gradient witness is independently passed. Two P24/D2/H2/U4 GPT-2 FineWeb2K off-diagonal smokes completed with4,080 fitting targets,8updates,two DEVchecks plus initialization,2,040DEV targets,seed6. F64/A16 selects step4,NLL8.810150;F16/A64 selects step8,NLL8.798182;sharedinitial8.871766. Ordinary totalwall10.626/11.049s,peakRSS488668/488816KiB. These are integrated engineering/learning smokes, not a larger-data benchmark or equal-compute win.
 
 Selected utility passes matched RNG/partition checks. F64/A16 context gain−.000748 and memory-erasure delta−.001631;F16/A64 context gain+.016326 and memory-erasure delta+.003716. Full-message erasure deltas+.049783/+.041959 include presence,timing and normalization changes; frozen interventions, not retrained ablations. Exact smoke full-work replays are running sequentially; review their exact full-state/selection/formula receipts before admitting the64K diagnosis. Core mechanisms and originalcredit16member retained.
+
+
+**Separated-horizon 2K complete work receipts:** both exact model/optimizer/persistent-state/all-RNG/curve/selection replays pass with zero curve error and complete arithmetic formulas.
+
+| Factual / alternative horizon | Selected DEV NLL | Whole-fit GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target |
+| --- | ---: | ---: | ---: | ---: |
+| 64 / 16 | 8.810150 | 4.773255 | 1.169916 | 0.421974 |
+| 16 / 64 | 8.798182 | 4.854445 | 1.189815 | 0.422863 |
+
+Scope: seed6,2K GPT-2 FineWeb,4,080 fitting targets/two passes/8updates,2,040DEV targets,two checks plus initialization. F16/A64 wins smoke quality by.011968NLL with higher fitting/inference work; no Pareto win. Complete arithmetic charges realized factual/alternative computation, backward, clipping, optimizer and in-step diagnostics; initialization/frequency counts/validation/serialization excluded, special functions separate, random work unquantified. Sources:curie_split_horizon_2k_f64_a16_work_20261006_v1.json andcurie_split_horizon_2k_f16_a64_work_20261006_v1.json. The gated64K diagnosis now runs; no larger result is predicted.
