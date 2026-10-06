@@ -4191,3 +4191,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K positive-time follow-through queued20261006T041757Z:**aws_private_bank_time_256k_audit_20261006T041757Z adds selected TRAIN-mean/memory/message utility900s,payload/metadata isolation480s,four exact whole-work replays16000s each after fourfit dependencies. Frozen source closure verified;1.2GBRSS/5GBVMS/8GiBfloor. Slot1 sequential preserves original slot3 accounting and dense2. Work cap derives prior32min64K tracing with4xupdates and2xmargin; instrumented wall is separate from ordinary fit throughput. All output names unique; no pending metric predicted.
+
+
+**AWS256K time-scale1 seed6 completed:** selected7.714196299DEVNLL atstep384,initial8.078814937,final7.949386058; every scored DEV step exactly matches saved original lr.003seed6 control. This is whole-curve quality parity, not cross-source full-state parity. Ordinary throughput857.367targets/s,peak614240KiBRSS,524272fit/2040DEVtargets. Source aws_private_bank_time_256k_20261006T041606Z_scale1_s6.aws.json. Positive1/16pairedfit next; selected utility and exact whole-work queued. All previous valid evidence preserved; no public-reference win.
