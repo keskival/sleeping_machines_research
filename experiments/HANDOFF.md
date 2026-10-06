@@ -4230,3 +4230,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K positive-time fourfits completed:** scale1/1over16 seed6NLL7.714196299/7.696178960(win.018017339),seed7NLL7.731961478/7.753842941(loss.021881463). Mean favors scale1 by0.001932062NLL; no replicated quality win. All source/data/settings paired,524272fit/2040DEVtargets. Preserve all wins/losses/frozenprobes. Selected utility/payload then exact fullwork follows; no new scaled architecture promotion before those receipts. Seed7throughput847.019/RSS615736KiB. Public benchmark stillpending.
+
+
+**AWS256K time-pair selected utility completed:** all selected-checkpoint/population/RNG/partition/scale-recipe bindings pass. Scale1 seeds6/7 memory-erase NLLcost0.011117961/0.013576829; scale1/16 costs0.042988944/0.032271318. Slower evolution increases frozen persistent-memory dependence in both seeds; erasure clears payload plus arrival/seen metadata. Message-erase costs scale1.106802512/.096233420,scaled.178162352/.160341287. Context gains scale1.491587162/.477763176,scaled.566825390/.470665455. Quality remains split-seed with mean scale1 preference; these interventions are not retrained/additive attribution. Receipt aws_private_bank_time_256k_audit_20261006T041757Z_utility.json. Payload-only probe and exact whole-work next; no public win.
