@@ -44,7 +44,9 @@ class RaceReadout(nn.Module):
         classes = M > 0 (THEORY §436.1): a mixture of M step classes, p_s(e, tau) = sum_c pi_c p_c(e) f_c(tau), which
         couples type and duration (a skipped step changes both) at M instead of V duration laws per slot.
         context=False drops the merged-stream context from the per-slot laws (THEORY §436.3: the context path lets every
-        slot predict the merged distribution, which weakens the pressure to bind)."""
+        slot predict the merged distribution, which weakens the pressure to bind). context='additive' makes the per-slot
+        hidden state depend on slot memory only (computable once per write) and adds a context term shared by all
+        slots to the output logits (O(1) per event)."""
         super().__init__()
         self.types, self.H, self.U, self.P, self.eps = types, heads, pool, payload, eps
         self.type_durations, self.classes, self.context = type_durations, classes, context
@@ -64,16 +66,22 @@ class RaceReadout(nn.Module):
             with torch.no_grad():
                 self.out.bias[V:V + D] = mu0             # log seconds: FAS item-own steps are ~5–76 s
                 self.out.bias[V + D:] = 0.
+        if context == 'additive':
+            self.ctx_out = nn.Linear(total_payload, self.out.out_features, bias=False)
+            nn.init.zeros_(self.ctx_out.weight)
 
     def forward(self, mem, x):
         """mem (n, H, U, P) top-layer memories; x (n, total_payload). Returns per-slot laws, slots flattened.
         mu and log_sigma are (n, S) or, with type_durations, (n, S, V)."""
         n = mem.shape[0]
         h = self.mem_in(F.layer_norm(mem, (self.P,))) + self.slot
-        if self.context:
+        if self.context is True:
             h = h + self.ctx_in(x)[:, None, None]
         h = F.gelu(h)
-        o = self.out(h).reshape(n, self.H * self.U, -1).double()
+        o = self.out(h)
+        if self.context == 'additive':
+            o = o + self.ctx_out(x)[:, None, None]
+        o = o.reshape(n, self.H * self.U, -1).double()
         V = self.types
         if self.classes:
             M = self.classes

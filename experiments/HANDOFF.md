@@ -4543,7 +4543,7 @@ writes. Requested order:
 4. then E2, E3 and the audits.
 
 E1, R2 and R1 take about 1–1.4 h each, ~2.5 GB RSS. Contracts: tests/test_race_readout.py (6 pass); compiled
-throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain47`; runs the v2 development arms C1, C2, C1 particles, C1 diagnostics, C3, C4 (B3_DEVELOPMENT_LOG.md) first once the v2 data exists, then the v1 arms; after R2 comes its particle evaluation (§434, evaluation only); R3 = R2 at pool 24 per head, §434.3, follows R1, WAIT=1 so it queues behind any held host lock) needs the exact line
+throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain48`; runs the v2 development arms C1, C2, C1 particles, C1 diagnostics, C3, C4, C5 (B3_DEVELOPMENT_LOG.md) first once the v2 data exists, then the v1 arms; after R2 comes its particle evaluation (§434, evaluation only); R3 = R2 at pool 24 per head, §434.3, follows R1, WAIT=1 so it queues behind any held host lock) needs the exact line
 CURIE_WINDOW_GRANTED_FAS_DEV and MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
 
 **Git LFS migration — curie clone made coherent (6 Oct 16:40 UTC, curie FAS session, user-directed).**

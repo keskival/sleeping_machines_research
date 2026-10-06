@@ -60,7 +60,8 @@ def main():
                                             depth=args['depth'], heads=args['heads'], pool=args['pool'])
     Ub = args['binding_slots']
     readout = RaceReadout(V, 1, Ub, args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
-                          type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
+                          type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0),
+                              context=dict(full=True, additive='additive', none=False)[args.get('readout_context', 'full')])
     binding = BindingMemory(args['heads'] * args['payload'], Ub, args['payload'], tau_max=args.get('tau_max') or 1000.,
                                 gated=args.get('binding_gated', False))
     wpath = Path(res['selected_weights']); wpath = wpath if wpath.is_absolute() else ROOT / wpath

@@ -92,6 +92,9 @@ def main():
     p.add_argument('--binding-slots', type=int, default=0, help='dedicated binding memory with this many slots above the deep '
                    'network, posterior-routed (THEORY §436); the readout reads it with one emitting head')
     p.add_argument('--binding-gated', action='store_true', help='per-dimension overwrite gate on binding writes (§436.2)')
+    p.add_argument('--readout-context', choices=('full', 'additive', 'none'), default='full',
+                   help='merged-stream context in the per-slot laws: full (inside the slot MLP), additive (shared logit '
+                        'shift; per-slot laws computable once per write), none (§436.3)')
     p.add_argument('--route-credit', default='linear'); p.add_argument('--compiled', action='store_true')
     p.add_argument('--epochs', type=int, default=1); p.add_argument('--lanes', type=int, default=64)
     p.add_argument('--fit-runs', type=int, default=10000); p.add_argument('--max-events', type=int, default=1100)
@@ -126,7 +129,7 @@ def main():
     binding = None
     if a.binding_slots:
         readout = RaceReadout(V, 1, a.binding_slots, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations,
-                              classes=a.step_classes)
+                              classes=a.step_classes, context=dict(full=True, additive='additive', none=False)[a.readout_context])
         binding = BindingMemory(a.heads * a.payload, a.binding_slots, a.payload, tau_max=a.tau_max or 1000., gated=a.binding_gated)
     else:
         readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations,

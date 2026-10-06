@@ -87,6 +87,7 @@ def main():
     p.add_argument('--gated', action='store_true')
     p.add_argument('--train-argmax', action='store_true', help='hard-EM writes in training (deterministic races)')
     p.add_argument('--hidden', type=int, default=32); p.add_argument('--no-context', action='store_true')
+    p.add_argument('--additive-context', action='store_true')
     p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
                    'counts (THEORY §434.1.2), e.g. 1,4,16')
     a = p.parse_args()
@@ -98,7 +99,7 @@ def main():
     T = a.K * a.R
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V_TOY, classes=V_TOY + 2, payload=8, depth=1, heads=2, pool=2)
     ro = RaceReadout(V_TOY, 1, a.slots, 8, 16, hidden=a.hidden, mu0=2., classes=a.classes,
-                     context=not a.no_context)
+                     context='additive' if a.additive_context else not a.no_context)
     bm = BindingMemory(16, a.slots, 8, tau_max=100., gated=a.gated)
     params = list(model.parameters()) + list(ro.parameters()) + list(bm.parameters())
     opt = torch.optim.Adam(params, lr=a.lr)

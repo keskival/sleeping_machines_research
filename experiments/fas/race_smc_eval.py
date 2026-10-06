@@ -93,7 +93,8 @@ def main():
     binding = None
     if args.get('binding_slots'):
         readout = RaceReadout(V, 1, args['binding_slots'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
-                              type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
+                              type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0),
+                              context=dict(full=True, additive='additive', none=False)[args.get('readout_context', 'full')])
         binding = BindingMemory(args['heads'] * args['payload'], args['binding_slots'], args['payload'], tau_max=args.get('tau_max') or 1000.,
                                 gated=args.get('binding_gated', False))
     else:

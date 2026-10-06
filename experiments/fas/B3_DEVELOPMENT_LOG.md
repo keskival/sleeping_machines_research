@@ -31,7 +31,8 @@ The common training cap C is fixed from the C1 smoke.
 | C2 | standard native head (native.py, pool 8) | — | our previous architecture on v2 |
 | C3 | C1 without step classes (single duration law per slot) | §435.2 | does type–duration coupling pay at p = .02? |
 | C4 | C1 with U_b = 36 (exactly the anonymous peak, no headroom) | §434.3 | does binding need spare capacity (toy: α .48 vs .90)? |
-| C5–C8 | reserved for iterations after error analysis of C1–C4 | | |
+| C5 | C1 with additive readout context (per-slot laws computable once per write) | §436.3 | does the low-cost readout match C1? (toy: α .922 vs .934) |
+| C6–C8 | reserved for iterations after error analysis of C1–C5 | | |
 
 Evaluation-only on the selected C1 checkpoint: particle evaluation, L = 1, 4, 16 (§434.1.2). This does not count
 toward the budget, because it adds no fitted configuration.
@@ -167,3 +168,7 @@ oracle's .821.
   tested as a development configuration, not swapped in silently.
 
   References (forward, shape estimates, T ≈ 2,100): Transformer d64 / d128 = 1.3 / 3.0; LSTM d64 / d128 = 0.14 / 0.54.
+- 6 Oct 19:16 UTC: toy, additive readout context (hidden 64, 3 processes): argmax α .922, validation NLL 1.75. Full
+  context gave α .934 / NLL 1.73; no context α .856 / NLL 1.89. This is within single-seed noise of full context, at a
+  per-event readout cost of only the duration CDFs once the per-slot laws are cached per write. Declared as C5 (budget
+  slot 5).
