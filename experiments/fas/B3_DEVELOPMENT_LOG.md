@@ -105,3 +105,24 @@ oracle's .821.
   The references' fit work is about 3 × forward plus the optimizer (dense.py's convention). The Transformer's
   per-event cost grows with log length; C1's is constant. C1's implementation still computes every deep-layer slot
   proposal densely, so these figures are an upper bound on what the architecture needs.
+- 6 Oct 18:45 UTC (user question: do models assume the number of parallel processes?). No model assumes a process
+  count. The binding memory has a *capacity* U.
+  - Unused slots go silent (pending probability → 0), and finished processes free their slot: gated writes let a new
+    process take it over.
+  - Only more *simultaneously active* processes than U forces slot sharing. That is graceful mis-binding, with the loss
+    of §434.2, not a failure.
+
+  **Sizing fairness:** C1's U = 40 was first set from the identity-measured peak concurrency (35), which is privileged
+  information. The anonymous estimate (`anonymous_concurrency.py`: starts of the earliest type minus ends of the latest
+  universally visited type; training logs only) gives mean 33.5 / max 36 against identity 34.2 / 35. The **declared
+  sizing rule is U = anonymous peak concurrency on training logs + 10%**, which gives 40, unchanged.
+
+  **Declared secondary stress test** (descriptive, outside the decision rule): score C1, trained at K = 2, on a K = 3
+  validation-format set (concurrency ~54 > U), against references trained at K = 2. This measures degradation beyond
+  capacity.
+- 6 Oct 18:45 UTC: toy at 5% dropout (§435.2):
+  - 3 step classes against one duration law: validation NLL 2.046 vs 2.143 at the end, 2.045 vs 2.222 averaged over
+    steps 400–600, a gain of 0.10–0.18 nats/event (predicted .1–.2);
+  - argmax α .917 vs .892.
+
+  C1's 3 step classes stand. Single seed.
