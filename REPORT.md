@@ -4703,3 +4703,18 @@ Source-bound PNG/SVG/JSON figure and scaling collectionv5 preserve older figures
 and records. Seven completed original-family data/capacity cells collected;
 1M/256K fitting cost is absent, not filled from64K. Streaming64K mean contract
 and selected1M utility follow the completed fit through the admitted guard.
+
+## Selected P24/1M utility — completed
+
+ContextNLL7.251502991 versus TRAIN-mean featureNLL8.194331169:
+context gain0.942828178. Memory-state erasure raises loss0.010388255;
+message-state erasure raises loss0.436171649; both erasures raise0.398140171.
+Selectedstep2048,2,040causal DEVtargets,1,048,568TRAINfeature observations.
+Partition/route-RNG parity pass. Streamed TRAINmean usesfloat64 sums cast to
+feature dtype;64Kcontract maxmeanerror2.38e-7 and constant-featureNLLerror0.
+Frozen interventions, not retrained ablations; message erasure includes presence,
+timing and residual normalization, not isolated message-value effect. Mean
+feature reference is not an optimally refitted unigram. Publicvalidation untouched.
+
+P32/1M fixed-recipe crossedwidth fit started03:04:01UTC, after positiveutility
+and intactparent source/data gates. No completed P32/1Mquality or work cell yet.

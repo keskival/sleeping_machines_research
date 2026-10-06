@@ -1,3 +1,24 @@
+# P24/1M utility completed; P32/1M live — 6 October 2026
+
+P32PID100862 verified live around522MBRSS, tmux
+curie_original_1m_p32_admission_20261006_v1; preserve9000s/800MBRSS/8GiBreserve.
+Revalidate beforeaction. Priorutility completedexit0, results preserved.
+
+## Selected P24/1M utility — completed
+
+ContextNLL7.251502991 versus TRAIN-mean featureNLL8.194331169:
+context gain0.942828178. Memory-state erasure raises loss0.010388255;
+message-state erasure raises loss0.436171649; both erasures raise0.398140171.
+Selectedstep2048,2,040causal DEVtargets,1,048,568TRAINfeature observations.
+Partition/route-RNG parity pass. Streamed TRAINmean usesfloat64 sums cast to
+feature dtype;64Kcontract maxmeanerror2.38e-7 and constant-featureNLLerror0.
+Frozen interventions, not retrained ablations; message erasure includes presence,
+timing and residual normalization, not isolated message-value effect. Mean
+feature reference is not an optimally refitted unigram. Publicvalidation untouched.
+
+P32/1M fixed-recipe crossedwidth fit started03:04:01UTC, after positiveutility
+and intactparent source/data gates. No completed P32/1Mquality or work cell yet.
+
 # 1M utility live; crossed P32 stage admitted — 6 October 2026
 
 Streaming64K contract completed: meanmaxerror2.384185791e-7 over65,528 TRAIN
