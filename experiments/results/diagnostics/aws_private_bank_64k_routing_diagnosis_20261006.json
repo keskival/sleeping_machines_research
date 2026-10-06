@@ -1,0 +1,68 @@
+{
+  "status": "completed",
+  "scope": "Read-only diagnosis of four completed development fits; cumulative selected-training write counts, not route utility.",
+  "input_sha256": {
+    "experiments/results/token_language/aws_private_bank_64k_p24_u4_s6_20261006T003043Z.aws.json": "dbd8b927a465a295d8f7ebfc9ae622f0292876997dd6df940cafc6f75990e643",
+    "experiments/results/token_language/aws_private_bank_64k_p24_u4_s7_20261006T003043Z.aws.json": "3a37fbc79ec9dc2b7a40f05d3f12f5a16c4d1f779cba9a8a8e5ab99717f3e63a",
+    "experiments/results/token_language/aws_private_bank_64k_p24_u16_s6_20261006T003043Z.aws.json": "f48d5959f0f4e626bd02a2fe00415208380789990e738a83df0c5ce35e9bd816",
+    "experiments/results/token_language/aws_private_bank_64k_p24_u16_s7_20261006T003043Z.aws.json": "8ecfc9562b265f67048b7e2c0d006643c777f55ff0467c954fc33096478e7b65"
+  },
+  "rows": [
+    {
+      "pool": 4,
+      "seed": 6,
+      "selected_step": 128,
+      "selected_nll": 8.014633717256434,
+      "final_nll": 8.291113999310662,
+      "final_minus_selected": 0.27648028205422825,
+      "used_fraction": 1.0,
+      "effective_receivers_min": 3.979901985364404,
+      "effective_receivers_max": 3.9912391661606335,
+      "minimum_receiver_writes": 14759,
+      "maximum_receiver_writes": 19272,
+      "mean_receiver_writes": 16382.0
+    },
+    {
+      "pool": 4,
+      "seed": 7,
+      "selected_step": 128,
+      "selected_nll": 8.033177274816177,
+      "final_nll": 8.25320015701593,
+      "final_minus_selected": 0.2200228821997534,
+      "used_fraction": 1.0,
+      "effective_receivers_min": 3.9865084872404655,
+      "effective_receivers_max": 3.997698832628824,
+      "minimum_receiver_writes": 14701,
+      "maximum_receiver_writes": 18483,
+      "mean_receiver_writes": 16382.0
+    },
+    {
+      "pool": 16,
+      "seed": 6,
+      "selected_step": 128,
+      "selected_nll": 8.034705547257966,
+      "final_nll": 8.188843850528492,
+      "final_minus_selected": 0.15413830327052658,
+      "used_fraction": 1.0,
+      "effective_receivers_min": 15.9719424008186,
+      "effective_receivers_max": 15.982189239902311,
+      "minimum_receiver_writes": 3586,
+      "maximum_receiver_writes": 4545,
+      "mean_receiver_writes": 4095.5
+    },
+    {
+      "pool": 16,
+      "seed": 7,
+      "selected_step": 128,
+      "selected_nll": 8.038162291283701,
+      "final_nll": 8.247474580652574,
+      "final_minus_selected": 0.20931228936887258,
+      "used_fraction": 1.0,
+      "effective_receivers_min": 15.972416923140585,
+      "effective_receivers_max": 15.989654256703503,
+      "minimum_receiver_writes": 3621,
+      "maximum_receiver_writes": 4618,
+      "mean_receiver_writes": 4095.5
+    }
+  ]
+}
