@@ -1,3 +1,18 @@
+# Independent P24/1M seed completed; utility live — 6 October 2026
+
+Seed7 guardedfit exited0 at05:44:00UTC,2,097,136targets/4096updates/two passes.
+Selected finalstep4096 NLL7.263557344324, initial8.022527477788; milestones1024
+7.421951473460,2048 7.282941511566,3072 7.360450774548. Totalwall4386.008253s.
+P24seeds6/7 selected7.251503259995/7.263557344324, mean7.257530302160.
+Protocol fields apartfrom seed/tag and all sourcehashes match. Seed7 recovers
+late to finalbest; do notgeneralize milestone deterioration into finalfailure.
+
+Automatic utility PID130188 verified live(~266MiBRSS), same guarded1200squeue.
+Next completeutility then update two-seedpacket/figure and PDF snapshot. P24
+prioritized; larger completework unmeasured and4Mreserved. No public-reference
+quality/matched-FLOP win. No newfit queued beyondutility; choose useful longer
+credit/memory test from completed evidence ratherthan automatic width growth.
+
 # Independent 1M confirmation follow-through queued — 6 October 2026
 
 P24 seed7 PID116795 verified live (~478MiBRSS). New tmux
