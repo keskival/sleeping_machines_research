@@ -4140,3 +4140,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled fit smoke admitted20261006T040249Z:** unique idle-slot1 pairaws_private_bank_time_smoke_20261006T040249Z,scale1/1over16;8192TRAIN/two passes16368targets/32updates,every16DEV2040targets,P24D2H2U4uniformK4credit. Completed learning/resume and prior construction/work/payload gates bound by pins.180s/983040KiBRSS/5GBVMS/8GiBfloor derive prior847targets/s and615544KiBRSS with margin;26GiB available. Preserve dense2/work3. Ordinary throughput/RSS and wrapper correctness pending; no public win.
+
+
+**AWS scaled fit smoke completed:** source/data/settings-matched scale1/1over16,8192TRAIN/two passes16368fit targets/32updates/2040DEV. Selected NLL8.274547143/8.279691569; scale1/16 quality loss0.005144426NLL. Ordinary throughput885.469/874.219targets/s; peak607504/607432KiBRSS. Initial-inclusive selection/target and cold-clock checks pass. This8K trained loss is preserved beside256K frozen intervention gains; it does not predict a larger-data fit. New wrappers execute correctly with measured CPU/RSS. Exact smoke work replay is next before larger admitted fits; no public-reference or matched-compute claim.
