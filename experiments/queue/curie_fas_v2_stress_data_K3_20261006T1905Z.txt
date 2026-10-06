@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2), declared secondary stress test (B3_DEVELOPMENT_LOG.md): a K=3 validation-format set (1,000 + 1,000; concurrency ~54) to score models trained at K=2 beyond their sizing. Descriptive only, outside the decision rule. CPU <1 GB, ~15 min.
+curie_fas_v2_stress_data_K3_20261006T1905Z experiments/fas/generate_v2.py --name fas_v2_stress_K3_drop0.02_delta0_20261005 --K 3 --drop 0.02 --delta 0 --train 0 --val 1000 --test 0
