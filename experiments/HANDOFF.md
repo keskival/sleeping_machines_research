@@ -4125,3 +4125,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS time contractv2 failed on fixture shape:**20261006T035500Z passed scale1 factual/gradient equality and nonzero rate/frequency checks, then attempted mean(1) on the flat readout NLL vector. New v3 source reshapes actual suffix losses by lane before reduction. Original v1/v2 sources, queues and failed logs preserved. Other scales, alternative credit and checkpoint continuation remain unvalidated; no completed contract claimed.
+
+
+**AWS integrated positive-scale learning contracts completed:** v3_20261006T035644Z passes scale1 exact factual/parameter-gradient parity, finite nonzero rate/frequency gradients at1,¼,1/16, actual forced-alternative suffix differences+.000412669/+.000311715/+.000036921 with zero-forward route terms/nonzero key credit, exact model/state/RNG continuation, and cross-scale checkpoint rejection. Source hashes reverified; peak601464KiBRSS. Synthetic16-token/one identical decoder-only warmup, deterministic q=1 path contract; no quality or sampled-estimator claim. v1 zero-head/v2 loss-shape failures remain preserved. Full optimizer-resume and unique integrated fit/work wrappers still required before scaling claims. Existing 256K complete-work replay live.
