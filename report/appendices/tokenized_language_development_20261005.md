@@ -293,3 +293,6 @@ U16 quality losses: 0.020071830 NLL on seed6 and 0.004985016 on seed7. U4 has po
 
 
 **AWS256K U4 lr.003seed7 fit completed:** selected7.731961478NLL at step384 vs initial8.078814937, improvement0.346853458; final7.896858126. Same262144TRAIN/two passes524272targets/1024updates/every128DEV/2040DEV protocol as seed6. Ordinary throughput864.047targets/s,peak613788KiBRSS. Both lr.003seeds select step384 and deteriorate later; lower-lr.001paired fits next. Selected utility/fullwork stillpending, no publicreferencewin claimed.
+
+
+**AWS256K U4 lr.001seed6 completed:** selected7.725794295DEVNLL at step512, initial8.078814937,final7.773004031. Matched data/source/settings except lr/tag; lower-lr quality loss0.011597996NLL against lr.003selected7.714196299. Same524272fitting/2040DEVtargets. Seed7lower-lr and utility/work pending. Source result aws_private_bank_256k_u4_lr0001_s6_20261006T030000Z.aws.json; retain both trajectories, no superiority inferred from slower learning.
