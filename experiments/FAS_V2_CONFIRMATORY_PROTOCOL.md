@@ -157,3 +157,19 @@ runs on it.
 ## Protocol amendment: oracle-assisted classification, 5 October 2026
 
 This user-directed amendment corrects reference eligibility after auditing hidden TRAIN identity use; it is not the original frozen protocol. Preserve original queue/source pins and historical results. Physical owners must create a new uniquely named, source-bound protocol/manifest before executing an amended stage; existing frozen queues are not silently redefined. Oracle-assisted results remain diagnostic measurements. No training or queue admission was performed by this correction.
+
+## Protocol amendment: no new external-architecture training, 6 October 2026 (user direction)
+
+AGENTS.md ("Own-model focus", 6 October 2026) forbids new Transformer, LSTM or other external-architecture training on
+any host, including "missing" controls listed in older orders. For this protocol:
+- **Neural reference families are not trained.** The Stage 3–4 cells for LSTM, Transformer, LRU, S5 and Mamba are
+  reported as "not run (user direction, 6 October 2026)", never as losses or wins. The AWS FAS reference queues
+  (AWS_FAS_REFERENCES.md) are withdrawn. dense.py stays as the published reference implementation for outside
+  submissions.
+- **Strongest baseline** (Stage 5): the highest test AUROC at N* among the information-matched classical references
+  (anonymous-log fitting only). Oracle-assisted and structure-assisted methods remain excluded, as before.
+- **Scope of a win:** "native vs information-matched classical detectors". There is no claim against neural
+  sequence models until published or submitted results exist under this exact protocol. The public FAS release
+  (generator, frozen data hashes, scorer and leaderboard) invites those submissions.
+- Everything else is unchanged: setting calibration, native tuning budget, seeds, sealed test ledger and decision
+  rule. The native model still develops on validation within its 8-configuration budget.

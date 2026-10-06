@@ -64,3 +64,11 @@ no complete-work matched-compute claim follows automatically.
 The shared completed FAS results contain no tree-based detector. The replicated headline compares three native seeds with the six named anonymous generic timing/count controls; it is not a win against trees. Completed tree comparisons in other directories concern tabular datasets and must not be presented as FAS references.
 
 A prospective tree reference must fit exclusively on the same anonymous clean FIT logs, select from validation-clean data under the common budget, and produce a causal prefix anomaly score. No hidden item identities, clean/fault labels unavailable to the native fit, future events, or test-driven feature/hyperparameter choices may enter fitting. Include feature construction, fitting and prefix scoring in its resource record. Before execution, freeze an explicit new protocol/manifest with feature semantics, clean-training objective, selection rule, resource boundary and output provenance. Preserve the existing sealed-v2 manifest; adding a reference requires a source-bound amendment rather than silently redefining it. A v1 follow-up uses an exploratory label because its test comparisons are already visible. No tree run has been admitted by this gap record.
+
+## Withdrawn — 6 October 2026 (user direction: no new external-architecture training)
+
+AGENTS.md forbids new Transformer, LSTM and other external-architecture training on any host. The five queues above
+(`aws_fas_v1_{lstm,transformer,lru,s5t,mamba}_d128L2_20261004T224000Z`) and the v1 data regeneration queue are
+withdrawn and must not be admitted. None had run. FAS comparisons use the information-matched classical references
+(FAS_V2_CONFIRMATORY_PROTOCOL.md amendment of 6 October). dense.py remains the reference implementation published with
+the benchmark for outside submissions.

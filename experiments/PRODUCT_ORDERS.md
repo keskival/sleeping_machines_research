@@ -16,7 +16,7 @@ Benchmark work follows AGENTS.md "Benchmark work is development to win": owned, 
 |---|---|---|---|---|---|
 | **B1 (lead)** | **EasyTPP** temporal point processes: Retweet, Taxi, StackOverflow, Amazon, Taobao (ICLR 2024 benchmark, official splits) | Published EasyTPP tables: NHP, THP, SAHP, AttNHP, FullyNN, IntensityFree, ODE-TPP | AWS host | Beat the best published log-likelihood on ≥ 2 of 5 datasets with type error/time RMSE no worse than the best published; confirmed on 3 seeds; inference work measured | No best-published LL on any dataset after the documented development plan (about two weeks) |
 | **B2** | Irregular multivariate time series classification: P12, P19, PAM (Raindrop protocol and splits) | Published Raindrop, ViTST, Warpformer and later tables | AWS after B1 first fits | Beat best published AUROC (P12/P19) or accuracy (PAM) on its official splits | Same rule as B1 |
-| **B3** | FAS v2 sealed confirmation (FAS_V2_CONFIRMATORY_PROTOCOL.md), then public release of FAS with a leaderboard | Pre-registered references | Existing FAS owner | As pre-registered; no expansion | As pre-registered |
+| **B3** | FAS v2 sealed confirmation (FAS_V2_CONFIRMATORY_PROTOCOL.md), then public release of FAS with a leaderboard | Information-matched classical references (neural families not trained: 6 Oct no-new-dense-controls direction; protocol amendment) | Existing FAS owner | As pre-registered; no expansion | As pre-registered |
 | **R1** | Language research track, at most one slot | Count n-gram references; later a published small Transformer | One owner | Gates before any scaling or claim: solve associative recall/induction with irregular gaps; beat KN trigram on the 65,528-target DEV slice | — |
 
 Every battle reports measured inference work (operations, CPU latency; energy where measurable) next to quality.
@@ -31,8 +31,8 @@ battles and does not compete with them:
 - Its Stage 2 (fixing the measured route-chaos and credit failure on FAS validation data) is **B3 development plus the
   shared route-credit enabler**.
 - Its maturity gate is the same rule as "Benchmark work is development to win".
-- AWS priority follows the battle table: B1 leads. The FAS neural references are B3 references under
-  FAS_V2_CONFIRMATORY_PROTOCOL.md.
+- AWS priority follows the battle table: B1 leads. The FAS neural references are withdrawn: under the 6 October
+  no-new-dense-controls direction they are not trained (protocol amendment, AWS_FAS_REFERENCES.md).
 
 ## Admission rule (all hosts, all agents)
 
