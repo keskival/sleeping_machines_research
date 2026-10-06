@@ -4388,3 +4388,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K native lr.003seed6 complete-work finished:** exact model/optimizer/persistent-state/cursor/all-RNG replay and zero DEV-curve error; fitting/inference formula coverage complete. SelectedNLL7.714196299,whole-fit799.094103930GFLOPs,fitting1.524197561MFLOPs/target,inference0.394663518MFLOPs/target.524272fit/2040DEVtargets/two passes; entire1024-updatefit charged despite selectedstep384. Special functions separate/random work unquantified. Source aws_private_bank_256k_lr0003_s6_work_20261006T030500Z.json. Other native/scaled work rows pending; no matched-public-reference win.
+
+
+**Curie separated-horizon follow-through prepared (6 October):** `split_horizon_token_stage_work.py` and `split_horizon_token_stage_utility.py` preserve whole-fit arithmetic replay and selected-checkpoint streamed TRAIN-mean/erasure scoring with the separated-horizon backend. Both refuse controls without declared `future_credit_window`; original live accounting sources are unchanged. Source syntax passes; numerical execution awaits the live credit64 work replay and queued state/actual-driver contracts. State parity now includes `has_ctx`; driver parity requires equal full curve lengths and binds its producer hash. No off-diagonal benchmark admitted or predicted.
