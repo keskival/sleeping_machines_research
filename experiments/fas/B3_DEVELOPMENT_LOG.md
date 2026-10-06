@@ -93,3 +93,15 @@ oracle's .821.
   Timestamp correction: entries from 17:05 to 17:47 were first written with times 5–40 minutes too late. They now
   carry the commit times, and the same correction is applied to the reference-exception notes (AGENTS.md, protocol,
   AWS_FAS_REFERENCES.md, PRODUCT_ORDERS.md). Queue tags keep their original suffixes; they are identifiers, not times.
+- 6 Oct 18:23 UTC: **measured work of the C1 configuration** (`work_c1size_20261006T1820Z.json`; operation audit, one
+  eager training window of 8 × 128 events, and inference on 4 validation runs).
+
+  | model | fit, MFLOP/event | inference, MFLOP/event | convention |
+  |---|---|---|---|
+  | C1 | 5.08 (+0.037 M special) | 1.69 (+0.019 M special) | measured: forward + backward + optimizer |
+  | LSTM d64 / d128 | — | 0.14 / 0.54 | shape estimate, forward |
+  | Transformer d64 / d128 | — | 1.3 / 3.0 | shape estimate, forward, mean over T ≈ 2,100 |
+
+  The references' fit work is about 3 × forward plus the optimizer (dense.py's convention). The Transformer's
+  per-event cost grows with log length; C1's is constant. C1's implementation still computes every deep-layer slot
+  proposal densely, so these figures are an upper bound on what the architecture needs.

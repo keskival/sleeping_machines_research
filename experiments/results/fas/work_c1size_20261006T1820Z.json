@@ -1,0 +1,212 @@
+{
+  "status": "smoke",
+  "battle": "B3",
+  "args": {
+    "data": "fas_v1_20261004",
+    "tag": "work_c1size_20261006T1820Z",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 8,
+    "hidden": 64,
+    "posterior": false,
+    "type_durations": false,
+    "step_classes": 3,
+    "binding_slots": 40,
+    "binding_gated": true,
+    "route_credit": "linear",
+    "compiled": false,
+    "epochs": 1,
+    "lanes": 8,
+    "fit_runs": 16,
+    "max_events": 1100,
+    "train_max_events": 1024,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 4,
+    "max_windows": 1,
+    "segment": 128,
+    "tau_max": 1000.0,
+    "no_test": true,
+    "trace_windows": 1
+  },
+  "parameters": 338468,
+  "readout_parameters": 22580,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll_time_units": 7.972541046024081,
+      "val_clean_nll": 8.579758274029498,
+      "val_auroc": {
+        "32": {
+          "all": 0.625,
+          "wear_and_tear": 0.5,
+          "retry_delay": 0.75
+        },
+        "64": {
+          "all": 0.625,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.625
+        },
+        "128": {
+          "all": 0.625,
+          "wear_and_tear": 0.75,
+          "retry_delay": 0.5
+        },
+        "256": {
+          "all": 0.5,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.375
+        },
+        "512": {
+          "all": 0.75,
+          "wear_and_tear": 0.75,
+          "retry_delay": 0.75
+        },
+        "1024": {
+          "all": 0.6875,
+          "wear_and_tear": 0.75,
+          "retry_delay": 0.625
+        },
+        "rules": {
+          "type": {
+            "32": {
+              "all": 0.5,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.375
+            },
+            "64": {
+              "all": 0.6875,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.625
+            },
+            "128": {
+              "all": 0.8125,
+              "wear_and_tear": 0.875,
+              "retry_delay": 0.75
+            },
+            "256": {
+              "all": 0.75,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.75
+            },
+            "512": {
+              "all": 0.3125,
+              "wear_and_tear": 0.25,
+              "retry_delay": 0.375
+            },
+            "1024": {
+              "all": 0.375,
+              "wear_and_tear": 0.125,
+              "retry_delay": 0.625
+            }
+          },
+          "gap": {
+            "32": {
+              "all": 0.625,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.75
+            },
+            "64": {
+              "all": 0.625,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.625
+            },
+            "128": {
+              "all": 0.5625,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.5
+            },
+            "256": {
+              "all": 0.5,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.375
+            },
+            "512": {
+              "all": 0.8125,
+              "wear_and_tear": 0.875,
+              "retry_delay": 0.75
+            },
+            "1024": {
+              "all": 0.75,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.75
+            }
+          },
+          "gap_window32_max": {
+            "32": {
+              "all": 0.625,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.75
+            },
+            "64": {
+              "all": 0.5,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.5
+            },
+            "128": {
+              "all": 0.625,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.5
+            },
+            "256": {
+              "all": 0.5,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.5
+            },
+            "512": {
+              "all": 1.0,
+              "wear_and_tear": 1.0,
+              "retry_delay": 1.0
+            },
+            "1024": {
+              "all": 0.875,
+              "wear_and_tear": 1.0,
+              "retry_delay": 0.75
+            }
+          }
+        }
+      },
+      "val_clean_occupancy": {
+        "binding_or_top_layer_slots_written_per_run": [
+          40.0
+        ],
+        "pool": 40
+      },
+      "epoch_s": 64.10578514798544
+    }
+  ],
+  "selected_epoch": 1,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": null,
+  "test_auroc": "not scored (development run, --no-test)",
+  "selected_weights": "experiments/results/fas/checkpoints/work_c1size_20261006T1820Z_selected.pt",
+  "per_run_scores": {
+    "path": "experiments/results/fas/work_c1size_20261006T1820Z_scores.npz",
+    "sha256": "779a8a97b6bd18f879d84c15bf8ce3695dee57f0c6600e6be76cd8b700edf235"
+  },
+  "work": {
+    "fitting_events": 1024,
+    "traced_fitting_events": 1024,
+    "fit_arithmetic_flops_per_event": 5080612.0615234375,
+    "fit_special_function_evaluations_per_event": 37260.564453125,
+    "whole_fit_arithmetic_flops_estimate": 5202546751.0,
+    "inference_arithmetic_flops_per_event": 1692178.1592836946,
+    "inference_special_function_evaluations_per_event": 18837.70876531574,
+    "scope": "operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including backward and optimizer, extrapolated per event; inference traced on 4 validation runs (padded events included); arithmetic and special functions counted separately"
+  },
+  "data_manifest_sha256": "7f1e4da56ad97c6a1209dd8243b74e9fc3f0a3bd68e899b472a9ef95d836adf2",
+  "source_sha256": {
+    "experiments/fas/native_race_readout.py": "2df852630dc9374affe1c186e5ea4c4e9df1188bbcaad0edcd0cc1c8dca1e380",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+    "sleeping_machines/race_readout.py": "ca78e5ca7fc5bccc6b5a0bfc921ff87d4c71f1b7cbb3e48d205038aa738601fb",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 187.9662341499934
+}
