@@ -1,0 +1,488 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "aws_fixed_batch_tokens_8k_b64_c16_s6_20261005T191244Z",
+      "seed": 6,
+      "credit_window": 16,
+      "targets": 2040,
+      "checkpoint_sha256": "722a967be28e46f6edd406d13b43f10db57b7e7a06b556ccb7a81e966dcaa975",
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.302674057904412,
+        "checkpoint": "/workspace/experiments/results/token_language/aws_fixed_batch_tokens_8k_b64_c16_s6_20261005T191244Z.best_step00000016.pt"
+      },
+      "losses": {
+        "intact": 8.302673887738994,
+        "no_memory": 8.303370352352367,
+        "no_message": 8.315688277225869,
+        "no_history": 8.314304583680396
+      },
+      "history_gains": {
+        "no_memory": 0.0006964646133731378,
+        "no_message": 0.013014389486874833,
+        "no_history": 0.011630695941402536
+      },
+      "selected_seen_write_statistics": {
+        "selected_age": {
+          "count": 7937,
+          "mean": 3.9078990155938147,
+          "min": 0.994938947444723,
+          "median": 3.0,
+          "max": 37.9976922438311
+        },
+        "decay": {
+          "count": 63496,
+          "mean": 0.6285484769554247,
+          "min": 1.723847969980756e-16,
+          "median": 0.754849374294281,
+          "max": 0.9913045167922974
+        },
+        "retained_norm": {
+          "count": 7937,
+          "mean": 3.846211625661345,
+          "min": 0.06809055805206299,
+          "median": 3.69094181060791,
+          "max": 10.732367515563965
+        },
+        "write_norm": {
+          "count": 7937,
+          "mean": 2.5881652232154844,
+          "min": 0.7707087993621826,
+          "median": 2.58358097076416,
+          "max": 5.448400974273682
+        },
+        "retained_to_write": {
+          "count": 7937,
+          "mean": 1.5465347445185647,
+          "min": 0.024883845821022987,
+          "median": 1.458539366722107,
+          "max": 6.520294189453125
+        },
+        "memory_value_vjp_norm": {
+          "count": 90,
+          "mean": 0.08397628946436776,
+          "min": 0.03700723871588707,
+          "median": 0.07180947065353394,
+          "max": 0.20305374264717102
+        },
+        "memory_score_contribution": {
+          "count": 31785,
+          "mean": -0.0506988093789637,
+          "min": -2.4793193340301514,
+          "median": -0.04586024582386017,
+          "max": 2.465524196624756
+        },
+        "memory_score_vjp_norm": {
+          "count": 31785,
+          "mean": 0.327401178785047,
+          "min": 0.11718691140413284,
+          "median": 0.3237035870552063,
+          "max": 0.7612835168838501
+        }
+      },
+      "vjp_probes": 8,
+      "observer_partition_rng_parity": true
+    },
+    {
+      "tag": "aws_fixed_batch_tokens_8k_b64_c64_s6_20261005T191244Z",
+      "seed": 6,
+      "credit_window": 64,
+      "targets": 2040,
+      "checkpoint_sha256": "10b165527fe4282f33e6512060db340bcdf80e5b244191ab5b9f715fd39b276a",
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.296470492493873,
+        "checkpoint": "/workspace/experiments/results/token_language/aws_fixed_batch_tokens_8k_b64_c64_s6_20261005T191244Z.best_step00000016.pt"
+      },
+      "losses": {
+        "intact": 8.29647019704183,
+        "no_memory": 8.29656250149596,
+        "no_message": 8.320623934502695,
+        "no_history": 8.319533621096143
+      },
+      "history_gains": {
+        "no_memory": 9.230445412988786e-05,
+        "no_message": 0.0241537374608658,
+        "no_history": 0.02306342405431394
+      },
+      "selected_seen_write_statistics": {
+        "selected_age": {
+          "count": 7937,
+          "mean": 3.919237597719904,
+          "min": 0.9946092929661461,
+          "median": 3.0,
+          "max": 41.00013880672324
+        },
+        "decay": {
+          "count": 63496,
+          "mean": 0.6294535951166983,
+          "min": 1.4219134434137274e-18,
+          "median": 0.7578738927841187,
+          "max": 0.9911314845085144
+        },
+        "retained_norm": {
+          "count": 7937,
+          "mean": 3.9508124323221736,
+          "min": 0.08407480269670486,
+          "median": 3.8271470069885254,
+          "max": 11.243681907653809
+        },
+        "write_norm": {
+          "count": 7937,
+          "mean": 2.535522259932344,
+          "min": 0.910283088684082,
+          "median": 2.5066142082214355,
+          "max": 5.686175346374512
+        },
+        "retained_to_write": {
+          "count": 7937,
+          "mean": 1.62914924283241,
+          "min": 0.026933036744594574,
+          "median": 1.5349889993667603,
+          "max": 7.1786675453186035
+        },
+        "memory_value_vjp_norm": {
+          "count": 90,
+          "mean": 0.08965674431787597,
+          "min": 0.03902110829949379,
+          "median": 0.0844440907239914,
+          "max": 0.2023250311613083
+        },
+        "memory_score_contribution": {
+          "count": 31790,
+          "mean": -0.04546278706869241,
+          "min": -2.729722499847412,
+          "median": -0.03586401417851448,
+          "max": 2.205294609069824
+        },
+        "memory_score_vjp_norm": {
+          "count": 31790,
+          "mean": 0.3259755076428617,
+          "min": 0.08196090906858444,
+          "median": 0.31937047839164734,
+          "max": 0.7652574777603149
+        }
+      },
+      "vjp_probes": 8,
+      "observer_partition_rng_parity": true
+    },
+    {
+      "tag": "aws_fixed_batch_tokens_8k_b64_c16_s7_20261005T191244Z",
+      "seed": 7,
+      "credit_window": 16,
+      "targets": 2040,
+      "checkpoint_sha256": "35b59a9b88d1202cd769d423b8d343bcfb050082bd5b4ca2bb48a2e4740eb34f",
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.28485657935049,
+        "checkpoint": "/workspace/experiments/results/token_language/aws_fixed_batch_tokens_8k_b64_c16_s7_20261005T191244Z.best_step00000016.pt"
+      },
+      "losses": {
+        "intact": 8.284856930901023,
+        "no_memory": 8.285928170821245,
+        "no_message": 8.308302481034223,
+        "no_history": 8.307177803563137
+      },
+      "history_gains": {
+        "no_memory": 0.0010712399202219558,
+        "no_message": 0.023445550133200044,
+        "no_history": 0.0223208726621138
+      },
+      "selected_seen_write_statistics": {
+        "selected_age": {
+          "count": 7937,
+          "mean": 3.9207475623364685,
+          "min": 0.9941340793779148,
+          "median": 2.999294956532083,
+          "max": 44.00002284732969
+        },
+        "decay": {
+          "count": 63496,
+          "mean": 0.6341757748243002,
+          "min": 1.11275192358686e-19,
+          "median": 0.7623492479324341,
+          "max": 0.9913488626480103
+        },
+        "retained_norm": {
+          "count": 7937,
+          "mean": 4.026334487235943,
+          "min": 0.08759235590696335,
+          "median": 3.8208305835723877,
+          "max": 12.728788375854492
+        },
+        "write_norm": {
+          "count": 7937,
+          "mean": 2.596697727911746,
+          "min": 0.8807371258735657,
+          "median": 2.5361104011535645,
+          "max": 5.006950378417969
+        },
+        "retained_to_write": {
+          "count": 7937,
+          "mean": 1.6092934281068552,
+          "min": 0.03764432668685913,
+          "median": 1.5152281522750854,
+          "max": 5.541356563568115
+        },
+        "memory_value_vjp_norm": {
+          "count": 88,
+          "mean": 0.07191285054961388,
+          "min": 0.03588338941335678,
+          "median": 0.07000216096639633,
+          "max": 0.16722124814987183
+        },
+        "memory_score_contribution": {
+          "count": 31894,
+          "mean": -0.08200757065762726,
+          "min": -2.797710657119751,
+          "median": -0.055365532636642456,
+          "max": 3.359055519104004
+        },
+        "memory_score_vjp_norm": {
+          "count": 31894,
+          "mean": 0.34053970453218246,
+          "min": 0.06796345859766006,
+          "median": 0.3343850374221802,
+          "max": 0.6922030448913574
+        }
+      },
+      "vjp_probes": 8,
+      "observer_partition_rng_parity": true
+    },
+    {
+      "tag": "aws_fixed_batch_tokens_8k_b64_c64_s7_20261005T191244Z",
+      "seed": 7,
+      "credit_window": 64,
+      "targets": 2040,
+      "checkpoint_sha256": "0abc1785fd14bba59aa5764c94155011db492f010cf233f2837568fb6ae55c9d",
+      "selected": {
+        "step": 16,
+        "dev_nll": 8.295391247319241,
+        "checkpoint": "/workspace/experiments/results/token_language/aws_fixed_batch_tokens_8k_b64_c64_s7_20261005T191244Z.best_step00000016.pt"
+      },
+      "losses": {
+        "intact": 8.295390549828024,
+        "no_memory": 8.295863564809164,
+        "no_message": 8.31269739001405,
+        "no_history": 8.311900537154253
+      },
+      "history_gains": {
+        "no_memory": 0.0004730149811393858,
+        "no_message": 0.01730684018602524,
+        "no_history": 0.01650998732622888
+      },
+      "selected_seen_write_statistics": {
+        "selected_age": {
+          "count": 7937,
+          "mean": 3.9284337508469203,
+          "min": 0.9953679341876835,
+          "median": 3.0,
+          "max": 47.00174453507665
+        },
+        "decay": {
+          "count": 63496,
+          "mean": 0.6288776961316012,
+          "min": 8.55496099481001e-22,
+          "median": 0.7567074298858643,
+          "max": 0.9913769364356995
+        },
+        "retained_norm": {
+          "count": 7937,
+          "mean": 4.070665582089854,
+          "min": 0.08858156204223633,
+          "median": 3.9495186805725098,
+          "max": 12.017133712768555
+        },
+        "write_norm": {
+          "count": 7937,
+          "mean": 2.5909211410448205,
+          "min": 0.9995436668395996,
+          "median": 2.5196151733398438,
+          "max": 5.432473182678223
+        },
+        "retained_to_write": {
+          "count": 7937,
+          "mean": 1.6407939662922892,
+          "min": 0.030803529545664787,
+          "median": 1.5454596281051636,
+          "max": 6.080251216888428
+        },
+        "memory_value_vjp_norm": {
+          "count": 88,
+          "mean": 0.07682096488265829,
+          "min": 0.04042626917362213,
+          "median": 0.07288408279418945,
+          "max": 0.16400346159934998
+        },
+        "memory_score_contribution": {
+          "count": 31912,
+          "mean": -0.05220143953851577,
+          "min": -3.6232833862304688,
+          "median": -0.030560828745365143,
+          "max": 3.0554261207580566
+        },
+        "memory_score_vjp_norm": {
+          "count": 31912,
+          "mean": 0.341826434235989,
+          "min": 0.11392293870449066,
+          "median": 0.33329880237579346,
+          "max": 0.785607635974884
+        }
+      },
+      "vjp_probes": 8,
+      "observer_partition_rng_parity": true
+    }
+  ],
+  "primitive_contract": {
+    "status": "passed",
+    "analytic": 0.11294445268736641,
+    "finite_difference": 0.11294445269502028,
+    "key_score_analytic": -0.0029547170697878343,
+    "key_score_finite_difference": -0.002954717071013135,
+    "unselected_gradient_zero": true,
+    "selected_gradient_nonzero": true,
+    "scope": "Synthetic double-precision selected-value primitive; fixed receiver and clocks"
+  },
+  "source_sha256": {
+    "experiments/aws_integrated_token_job.py": "29d7b6a09cd2c2098435391a57066766439d4917116723ac186746fc1fc92a86",
+    "experiments/aws_integrated_token_resume_contracts.py": "ce21ddb590af715eefad190e9a8f2669d57d37fe4405fe3d978f908ec3475a28",
+    "experiments/integrated_token_language_lab.py": "b30739b7c5c50f9e7dfeffca916deb1896900fe6a0f9af8cdde73b8030d4a44d",
+    "sleeping_machines/batched_evolution_offset_fit.py": "e42cf155d4dc19a67fea4e01cb2ea5041fe74841f2f86f4d85ffa2577b1522aa",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/statistic_race_sampled.py": "14666815c41b2cbfa48d633101ca53022d0bf8b97954383506a3012a386df37b",
+    "sleeping_machines/sparse_inference.py": "c9fe72a957b5cae54e5c990ea3e668b070f80712b08c6d5226077cd12283657f",
+    "sleeping_machines/clock_preserving_temperature.py": "a92cad3bd49747fe7e55bf17b4536de03ac048b3c0ac3d68d000100998f11f26",
+    "sleeping_machines/episodic_race_language.py": "80181b8c4bda71bcca7299a33974cf808e6c9e64e35a9a7c24691de31b0d465a",
+    "sleeping_machines/event_query.py": "43dccd3a40a82f980e74eb8a5e58d05a2bd8a6dc1f2dc37b626b9c219a951ee5",
+    "sleeping_machines/decay_timing_reference.py": "d490f4effd73e60918d5ef5097f8ee7fb59e13ab9b95a3c35298e718821e2ab3",
+    "sleeping_machines/carried_episodes.py": "b56bee18bc4fd22d6b2440438fb52c141644c2eba0440c2c1ea6ac67483895ca",
+    "sleeping_machines/affine_packets.py": "a85022c5b2035dfbf3cb00108039273ad3e32135aa89eb938054bef20d5fbe68",
+    "sleeping_machines/historical_write_credit.py": "a93a6bc4ab5333deada8e764718ed22393e4a4bd851d9880dc4c4006ee4643b9",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/depth_growth.py": "6f16d1fcd12d59d0922c08dc1e8bf76371b65025ab39282418b75e5d01d7207c",
+    "sleeping_machines/compact_context_predictor.py": "030cac14da24bf02d2cd418c376ee704685721b1ca703ff992ec7ed2d619019f",
+    "sleeping_machines/nuisance_readout.py": "430380c4fd8417c516b0c1bf15fe061d1ebbb685e8a915c841329567dfd86bcb",
+    "sleeping_machines/native_bounded_score_diagnostic.py": "c088fad3407358c0d3cdfef1a7a35967fabc10d263d0713eb188c87b1397506f",
+    "sleeping_machines/readout_absorption.py": "4758466d95e233bdcd83aa409c0fb8e8bcea4b261142ff120175ae00ecfc9fde",
+    "sleeping_machines/batched_addressed_fit.py": "db22bc8594c40e86955dd4be79121240586c105feb2eaae12e28d5e08092e246",
+    "sleeping_machines/counterfactual_token_layer.py": "914d2a01fb8b7f2fb81c24e836d124e4cc358f44dca66cc88f5769f52fc07968",
+    "sleeping_machines/count_composed_stream.py": "8d62fb72d8e8dc77ac15542cdb07acd95433f933fe01e39478e2c9c0bbf6f409",
+    "sleeping_machines/exact_pi_race.py": "8a35a05eeef3303cf18364860e2f3f8210565d77313eb136a24d8c4dfe1f95a9",
+    "sleeping_machines/language_memory.py": "20cc1f3b2549c1997264d75410b37afe70148f46b587fc985c6210ed2e1b0300",
+    "sleeping_machines/late_projected_context_memory.py": "7dc4a9c2b9117cb5208bfde31df6c535fbd0214ac2479471a984a128f472089b",
+    "sleeping_machines/event_history_control.py": "37333ba488a906d540580dd3cb21cb6f5bd0b9fcd11ebe5310fa7febc3e731d8",
+    "sleeping_machines/count_continuation.py": "48fb3c5c7e6f03e62d6398e427c98900e2ee49a65697565d0404b083465fd0e6",
+    "sleeping_machines/query_feature_inference.py": "06c0ec31105716c912b71bbd78eaf1ab6509e54195fbd331710e78d677988cea",
+    "sleeping_machines/causal_language_shadow.py": "986899a7da3a5ccddeaa0750190bedf78dfcdef19db388322fb407dd623809ee",
+    "sleeping_machines/causal_language_shadow_cached_prefix.py": "3d5e74742073c8d8c31e0c5747190332742b851be63c90cbe9372b56da9cfa5e",
+    "sleeping_machines/temporal_modes.py": "9ae0c5581b487d22f44a4b6e82e2213778318741f9dbcce8fc7d8f1fbd8c8598",
+    "sleeping_machines/silence_burst.py": "1abd182444eb4381e979ad985568682992c6bf769e904a7e38cf1152cf98dac1",
+    "sleeping_machines/sparse_token_episodes.py": "d810eed879a354c91cdbf3ff2c42411611ddde70196a6b7ac9d6e966841d3eb0",
+    "sleeping_machines/clock_noise_episodes.py": "ea54f7e625a834cff490eadc87a64cef0cb64013cd769a5fb5efc02a9072c0af",
+    "sleeping_machines/clock_feature_event_heads.py": "1ab46c6d1c4dfd550a48b06eb8a4e83d065e634a2e8bf2492ec112380a41fae7",
+    "sleeping_machines/causal_language_shadow_winner_reuse.py": "fa0b2abc6753630f74bc27c4a6357e11de4059a2ec716e347cb1f2275c70cf07",
+    "sleeping_machines/token_episodes.py": "3575b1827962f9cda400d44cac8fa4589c0060eaed38e851698e876e2a444a93",
+    "sleeping_machines/shared_event.py": "4bf0c696b6f9c8c55bb9930a091c6a33e0b1207150ab8030c2050387b782a314",
+    "sleeping_machines/polynomial_query_readout.py": "096248b2df160292aa94470877d750985536eb4aabe5c0e31b3d21400e28dfeb",
+    "sleeping_machines/state_write_credit.py": "061f4cd62bb539fb31a8bfdf222e43624cff98b045a1045756a533cc4a9c93b6",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/shadow_lanes.py": "a26482f6c6f1038a35f9b6f914b0a16b9fa941195093fc9455a29e95e0d0407c",
+    "sleeping_machines/fused_context_reader.py": "f6b227da48edeebc3be6356e19435e0abbe22d37c161dbf651f55e58f60c1cae",
+    "sleeping_machines/race_window.py": "394bc405c68c29ffbf54d4a7394ed6f0d8c568fa6e0633fcc8c6c8e0718c1de1",
+    "sleeping_machines/compact_tied_inference.py": "c97d41b1e3c6619f9d15a8b10e79b8b4f629428dcc298b01b26fa6f2b6f36d8e",
+    "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+    "sleeping_machines/statistic_race_top.py": "8b28866999fa67d5cbc58e145ee9a9b0c411322e2f7f4f1d972f1d07a4088a3b",
+    "sleeping_machines/bounded_score_sensitivity.py": "58f16f55906967025d839d030d48107c77e88385b16a37a2e716e608c714366f",
+    "sleeping_machines/checkpointed_addressed_replay.py": "03a62bd98c650f2199bd06f7562b397bde0c376f599a58e49cf7821b5b218934",
+    "sleeping_machines/numpy_addressed_inference.py": "d2018f3f9a7e7a8e62d02fc404ac4782df5880c06b9f7b365ead429cfdc96ad2",
+    "sleeping_machines/historical_write_race_language.py": "1493b7bbbac57bb3cdc10c5d9e90c177229e860098112b7d2e543269cefadcc2",
+    "sleeping_machines/evidence_memory.py": "f4548b16d6f9ec03db5543c579221ec368074894766b4368a66e1a479ed1497a",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "sleeping_machines/count_escape_gate.py": "49be8e7d3cdc5e06744db727cf63f20ab0aaec08a5bbcaf7d05f8d65448d6a50",
+    "sleeping_machines/counterfactual_token_episodes.py": "5d4d8be8d08a8453a742a19e23ea66d37b16e5132a38d264868f38c10f91495e",
+    "sleeping_machines/prefix_tokenizer.py": "8f58e4643e1112781b2f0ea696bd1d134aa017e818dbd7c9225dfc043d08a712",
+    "sleeping_machines/context_addressed_memory.py": "8b2f031fd0aa501db41247768cbd09c4a18c7f22b419e5a5257531cf736c82dd",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/replay_priority_sampling.py": "c5680a08ce6504e4922d42719e18d61f97cdaec6a65700abc3cb1d419b552e97",
+    "sleeping_machines/clock_noise_law.py": "9cc2a1fa4ea45b24fe55876a5b0eeaa5924583a4a002412e648076fdde743ec5",
+    "sleeping_machines/rule_seed_event_heads.py": "a8fbe3c0e7573af6e00c3d8e02e5b2cca8dd6439efee1fe6d231b48a83352817",
+    "sleeping_machines/bridge_batched_episodes.py": "b78c648022d4c9fb282e87f12a675a614fb57ab402adc8ce7115b952667fe958",
+    "sleeping_machines/energy.py": "1346a497d9c5f28e8c996dd8d7584641c3bd7c0c07e408753669662dbe2cd596",
+    "sleeping_machines/causal_language_shadow_rng.py": "b8c3c2607aafa7d464de143ac65822d3751f4a510518f61fb3ba236c76302b31",
+    "sleeping_machines/clock_feature_races.py": "514c1bf396539d7e1bfc71fa6827adcb4ac1ca36e80e80a607d77b9e29233c4f",
+    "sleeping_machines/causal_language_shadow_compact_suffix.py": "72d1bd6a052512a9d8ae9378aee355999ca2377e539fbd53acc5a8b83cee9c4d",
+    "sleeping_machines/native_window_diagnostic.py": "a2cd073c943db88b12ebe6617687646beef3e4a6c3503fa638749c4ecf9469ca",
+    "sleeping_machines/statistic_race_memory.py": "2cb23fe82397cee721ba934fc7b15004a20f7868cac97b0715885aa59e338293",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/sparse_token_layer.py": "b1437b693c868a55b5eb3867130dd7eeda8128369abfbf2a52f819357a51c71e",
+    "sleeping_machines/count_carrying_language.py": "745809a8ce6800c7807ea23cc9846cb2f3575db682bb651dde6d9dcb02c1f95a",
+    "sleeping_machines/temporal_window.py": "7823078972b4ad672553e084cb5e86895ba7da44064542ab648bbd1d9e6ed4c2",
+    "sleeping_machines/serial_residual.py": "bd2f4f8ad29203154c1c0429a980418b59a267ec5b5270cfb5b672ed583d9f6b",
+    "sleeping_machines/sim.py": "c68910dd05316d099dae95adc03d298b71f3768cfbcb75579006804c0300a3f2",
+    "sleeping_machines/folded_polynomial_readout.py": "831d086f878c443513d2df23e53e2f2575b64bbd25450d71bf4e898e9b80949a",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/phase_memory.py": "e16161aa13f63b34ee13edf5d8bf9d0bb47cf6183c0bf18ee796927350cd4c7f",
+    "sleeping_machines/factorized_race.py": "5bbfdf41ea63770a2394dde6e39fbe4b94b79dbab95c863f6413480ae3aa5568",
+    "sleeping_machines/dilated_delay_taps.py": "4a5c52a0f951bf319ce3f3dbbd1ff90ea3c62483c9ad436253bcbbedd51ccab4",
+    "sleeping_machines/selective_stream_language.py": "0b78ff0fe2d4d81ad3ca97475414c6b5bc7afec791cafd673839664a29347207",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/causal_contexts.py": "f8a0058b71f66a237f76a8474baaec3727bb06e4b070653bffdf9bf1c68c96af",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/transported_credit.py": "0e79df42e25d5f5dd6591b8d54066a3f41a47944044edfdd6d8798f899f49f66",
+    "sleeping_machines/head_conditioned_depth.py": "b750016d14703ffc738abde223ceefa57002a0a7d1f2aeb7bf7bc9b19283967d",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+    "sleeping_machines/native_stream_language.py": "e344b6f3d421800d08c15cbbd8c67a4b7fd04d7d281669514c2d7690f2a1cfd9",
+    "sleeping_machines/expected_reception.py": "889d6a01ab005f6b86d3e682a8b0b188322c1f0795bb5becd4f5419d250fb94d",
+    "sleeping_machines/bridge_addressed_events.py": "f0145418baf6e8f5fcf0c9baad2831d49195fadf7212ce7ec51b9d3454a5480f",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/token_episodes_compiled.py": "09fea762b88aff4a309d223d5144948bd015e1cb6999e078b4a226c32edac215",
+    "sleeping_machines/prepacked_sparse_inference.py": "c06fc7ff0f122133ffade2780612e123d2ff59eced4a6fbe4c615f7553221aac",
+    "sleeping_machines/repeated_temporal_race.py": "103800bba528704cf54c7cf13fb08228f48d7da8b963136664405f0da3725422",
+    "sleeping_machines/query_only_native_readout.py": "836aa2d61f18ccb49d5065c42ccbdbf33d215c2a12dab0c0857bc7c5d4eb6e8d",
+    "sleeping_machines/joint_race_credit.py": "9de9a9f3bf5f750f3c023257d290f7d682cc1c71136bd49a11f4dbb51619302d",
+    "sleeping_machines/threshold_spike_train.py": "e5c8e02f058ba4d5f45415442d37a93d045f08644514068a2178f9d890e6813b",
+    "sleeping_machines/quadratic_native_readout.py": "895d0c9823f19f22a32094765bd05bd4286bb8f97f8cede1017c7356160be760",
+    "sleeping_machines/observer_conditioned_depth.py": "867a528ff432319122ba3d8b9422740f911c66de620f3072277597c30721a65d",
+    "sleeping_machines/readout_calibration.py": "037621374c3600e8613241814ec5e857545fcd41794019cac82a3ff1986653dc",
+    "sleeping_machines/evolution_offset_heads.py": "c0ec0c4f3ef4dbe300c10fe993b5d4dde04158eebf92aa45b8cdc527e48228f4",
+    "sleeping_machines/relative_race_window.py": "c9f8ce8d0c5c3e727c6643982bb2a382edf5cb42c7511935c5d303c8812210d2",
+    "sleeping_machines/race_transformer.py": "95e25857037bd948987fb95719fe51649488f950589375c202f9f29e96cfcd17",
+    "sleeping_machines/joint_outcome_race_query.py": "574ecfa06ee7c8576383f38ecf0c6e506da5cd4177e8756fa0a9aeb59a4fabf3",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/conditional_branch_content_credit.py": "42f60df6a5fb68e7cc4dcbd00a9495e8c114eee5af9f75df7760ca9955e39e3e",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/statistic_race_credit.py": "3ae3b1368ac9efd778ac03d9a36b15121b38d5a894bb18fe37c50950674f2093",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/objectives.py": "5ab73ee498e29220230cbd768816d8aaef27606bb41309587f472b5a2897d9f7",
+    "sleeping_machines/repeated_arrival_race_language.py": "4e1748430d8a141ce0d90fb7a21f9e95fd34f8822f9544b8d25b6a8643fee8d8",
+    "sleeping_machines/race_language.py": "70081a66f23f5d2db9dd6351645a91a9534562f98e8b414a64071ec60650760a",
+    "experiments/aws_sampled_token_job.py": "e41d3d403befa92848b13c12b9b87aeeed66470ad5582259c1b302860fdc88b1",
+    "experiments/sampled_utility_token_language_lab.py": "77a711b770f37827831c43015237914a1027fb6ae01e570662b238a60e727cf9",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "experiments/aws_event_token_job.py": "407fc9385494a9adb5753ab95db1f6e96970d0a8764d174d9179ccb90f90ba39",
+    "experiments/event_coverage_token_language_lab.py": "9b4c849c7896c146272ff59a2616a9494fb3bd3251793bcea0346d8ec039b624",
+    "experiments/event_selected_token_language_lab.py": "4309317f5e03ca9a6d3ff9d7155a96c8144c800f1232d9d1fa58e1c60a78c03b",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "experiments/aws_capacity_token_job.py": "eaaf0a8083c27216635d0167c2a239d3e649ff817d0ef4384706197b93522378",
+    "experiments/token_language.py": "86a13e8bcf75bff1880f44ee59747b6f58c6683ebc4463d8dfeccac4a96b66b4",
+    "experiments/token_language_engine.py": "534ac18aa89d478385bae1cbad923ca30c52fa33f2d74f361279d12c8bcc7d45",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "experiments/aws_horizon_token_job.py": "8571e9a1cdefab30d7d9bfb8a9c5c1fda99a76ff3e0c2bb423f7a1c5c2b17a80",
+    "experiments/horizon_token_language.py": "74188a3698d0240639568443f806e2dcc9b07d5c22f0179eba4a922793d349eb",
+    "experiments/horizon_token_language_engine.py": "39b11a75915266f609ca968c14a8953d7aba4403646aa5dcc1812afa9e5cf5f8",
+    "experiments/aws_selected_memory_path_audit.py": "c55daf303b9bd8157aa85c118299bb128ddc5bf50cd62f4f7e5bdb39f993fd21"
+  },
+  "wall_s": 11.361523719038814,
+  "max_rss_kb": 392076,
+  "scope": "Frozen selected 8K development checkpoints, same targets and route RNG. Selected-slot decay factors and retained/write norms are measured on intact trajectories; bounded VJP probes measure selected value sensitivity at fixed receiver. Erasure interventions are out of distribution and are not retrained ablations. No public scoring, fitting or FLOP claim."
+}
