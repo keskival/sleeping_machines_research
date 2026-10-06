@@ -1,3 +1,17 @@
+# 64K gathered fit completed — 6 October 2026
+
+## Gathered 64K quality result — completed
+
+Seed6 gatheredP24 selectedDEV8.076229080 atstep128, final8.427038574,
+131,056fitting targets/256updates/two passes; fittingwall223.211527s,
+totalwall229.161500s. Originalseed6 selected8.033310714: gathered loses by
+0.042918366NLL. Originalseed7 selected8.07899134 supplies separate repeat
+variation, not a same-seed replacement. Original sources and leading result
+retained. No1M gathered implementation promoted from this single run.
+Selected memory/message utility and complete64K arithmetic follow via the
+already admitted guarded sequence. Gatherseed7 fixed-recipe queue prepared,
+not launched; compare paired quality and full work before choosing1M execution.
+
 # Current live stage — 6 October 2026
 
 64K gatheredP24 fit PID75735 live, tmux curie_gather_64k_admission_20261006_v1,

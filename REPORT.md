@@ -4603,3 +4603,15 @@ metadata publication. Original ledger/log and separate failure receipt preserved
 no exit-0 invented. The64K admission gate verified completed numerical/arithmetic
 evidence and started the unique gathered64K fit at00:50:26UTC. Larger quality
 and work cells remain pending; this pilot is an implementation efficiency result.
+
+## Gathered 64K quality result — completed
+
+Seed6 gatheredP24 selectedDEV8.076229080 atstep128, final8.427038574,
+131,056fitting targets/256updates/two passes; fittingwall223.211527s,
+totalwall229.161500s. Originalseed6 selected8.033310714: gathered loses by
+0.042918366NLL. Originalseed7 selected8.07899134 supplies separate repeat
+variation, not a same-seed replacement. Original sources and leading result
+retained. No1M gathered implementation promoted from this single run.
+Selected memory/message utility and complete64K arithmetic follow via the
+already admitted guarded sequence. Gatherseed7 fixed-recipe queue prepared,
+not launched; compare paired quality and full work before choosing1M execution.
