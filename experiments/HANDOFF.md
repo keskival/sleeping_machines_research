@@ -4161,3 +4161,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled utility/payload scorers prepared:** aws_private_bank_time_utility_scoring.py reconstructs each declared fit scale from its bound raw result and verifies checkpoint recipe; retains selected TRAIN-mean/memory/message RNG/partition scoring. aws_private_bank_time_payload_utility.py retains payload/metadata isolation contracts and checkpoint/data/source hashes with per-row scale. Syntax passes; guarded scoring pending completed fits. New256Kscale1seed6 PID2753476 live; no core/frozen source edited.
+
+
+**AWS256K positive-time follow-through queued20261006T041757Z:**aws_private_bank_time_256k_audit_20261006T041757Z adds selected TRAIN-mean/memory/message utility900s,payload/metadata isolation480s,four exact whole-work replays16000s each after fourfit dependencies. Frozen source closure verified;1.2GBRSS/5GBVMS/8GiBfloor. Slot1 sequential preserves original slot3 accounting and dense2. Work cap derives prior32min64K tracing with4xupdates and2xmargin; instrumented wall is separate from ordinary fit throughput. All output names unique; no pending metric predicted.
