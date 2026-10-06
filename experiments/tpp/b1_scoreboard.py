@@ -21,24 +21,31 @@ REF = {  # dataset: (best model, total, sd, best time, best mark) from S2P2 Tabl
 def main():
     out = {}
     for ds, (name, ref, ref_sd, ref_time, ref_mark) in REF.items():
-        runs = [json.loads(Path(f).read_text()) for f in sorted(glob.glob(str(ROOT / f'experiments/results/tpp/b1_final_{ds}_*_s*.json')))]
-        runs = [r for r in runs if 'test' in r]
-        if not runs:
-            continue
+        allruns = [json.loads(Path(f).read_text()) for f in sorted(glob.glob(str(ROOT / f'experiments/results/tpp/b1_final_{ds}_*_s*.json')))]
+        groups = {}
+        for r in allruns:
+            if 'test' in r:
+                groups.setdefault(re.sub(r'_s\d+$', '', r['tag']), []).append(r)
+        for version, runs in sorted(groups.items()):
+            summarize(out, ds, version, runs, name, ref, ref_sd, ref_time, ref_mark)
+    if '--write' in sys.argv:
+        (ROOT / 'experiments/results/tpp/b1_scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
+
+
+def summarize(out, ds, version, runs, name, ref, ref_sd, ref_time, ref_mark):
+    if True:
         agg = {}
         for k in ('ll', 'time_ll', 'mark_ll', 'rmse', 'acc'):
             v = [r['test'][k] for r in runs]
             agg[k] = (statistics.mean(v), statistics.stdev(v) if len(v) > 1 else 0.0)
-        out[ds] = dict(seeds=len(runs), version=sorted({re.sub(r'_s\d+$', '', r['tag']) for r in runs}),
+        out[version] = dict(dataset=ds, seeds=len(runs),
                        params=runs[0]['parameters'], test={k: dict(mean=m, sd=s) for k, (m, s) in agg.items()},
                        reference=dict(model=name, ll=ref, sd=ref_sd, best_time_ll=ref_time, best_mark_ll=ref_mark),
                        gap_ll=agg['ll'][0] - ref, win=agg['ll'][0] > ref)
         m, s = agg['ll']
-        print(f"{ds:14} n={len(runs)}  ours {m:.4f} ± {s:.4f}  vs {name} {ref:.3f} ± {ref_sd:.3f}  gap {m - ref:+.4f}"
+        print(f"{version:34} n={len(runs)}  ours {m:.4f} ± {s:.4f}  vs {name} {ref:.3f} ± {ref_sd:.3f}  gap {m - ref:+.4f}"
               f"  time {agg['time_ll'][0]:.3f} (best {ref_time})  mark {agg['mark_ll'][0]:.3f} (best {ref_mark})"
               f"  {'WIN' if m > ref else 'behind'}")
-    if '--write' in sys.argv:
-        (ROOT / 'experiments/results/tpp/b1_scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
 
 
 if __name__ == '__main__':
