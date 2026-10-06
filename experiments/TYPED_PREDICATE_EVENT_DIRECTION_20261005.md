@@ -109,3 +109,10 @@ step-count-dependent schedule. It waits the admitted language/rotation/utility
 sequence and9504MiB headroom;600s/800MBRSS/8GiB reserve. No numerical result
 from that pending fit is claimed and no sparse predicate-discovery or learned
 threshold claim is promoted.
+
+
+## Completed witness and typed-composition theory — 6 October
+
+The 1,024-update fixed-predicate fit completed: 100% on 256 synthetic DEV rows from 64 FIT rows, NLL0.0000898102,6,370parameters,52.705s. Its first64updates reproduce the prior pilot and all integration contracts pass. Preserve the earlier pending entries as historical state; this is fixed-predicate integration, not learned threshold discovery or a real-tree win.
+
+[TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md](theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md) formalizes type-preserving event composition, a restricted raw-nominal affine obstruction and the distinction between inference and learning invariance. It preserves joint winner/time and direct factual credit and assigns predicate discovery/threshold learning their own estimator contracts.39stdlib mathematical/interface witnesses pass with maximum finite-difference error1.94e-10. This theory feeds the authorized typed-learning program and investor explanation; it changes no live kernel or queue.

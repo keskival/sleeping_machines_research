@@ -337,3 +337,8 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 - [Explicit rotation backward engineering probe](theory/explicit_rotation_backward_20261005.md) — measured backward/core CPU priority, mixed-precision first-order adjoint and isolated numerical/integrated/update/timing contracts. Default kernels unchanged; numerical execution pending.
 
 - [Credit-window token gather](theory/chunk_token_gather_20261006.md) — repeated lexical backward buffers in the executed64K ledger; state-independent lookup hoist, retained causal event operations and all-gradient/update/count/timing contracts. Isolated implementation only, numerical execution pending.
+
+
+## Typed semantics and temporal composition — 6 October 2026
+
+[Typed semantics, legal composition and temporal learning](theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md) derives the restricted nominal raw-affine obstruction, typed-interface/core composition invariance and additional training-equivalence conditions. It retains joint winner/time credit and separates fixed predicate evidence from learned discovery. Thirty-nine stdlib mathematical/interface contracts pass, maximum finite-difference error1.94e-10; no new model fit or kernel substitution. Trees, typed neural baselines and established hybrid precedents remain controls.

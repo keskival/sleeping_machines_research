@@ -40,14 +40,6 @@ Source-bound numerical packet: [headline evidence](../report/unification_headlin
 - **Hardware economics:** in the cost model, 5.8× fewer bytes moved per character than Transformer-256×4 at better
   quality (modelled; silicon measurement is a funded milestone).
 
-## Typed learning: preserve meaning, then compose evidence
-
-A category label, a temperature, a duration and a missing observation support different operations. Our typed interface applies meaningful comparisons before their outcomes enter addressed messages and persistent neural state. Computational races select evidence; counterfactual consequences teach the routes. Neural sums remain useful once representations share a declared latent space.
-
-The proposed advantage combines tree-compatible conditional decisions with deep temporal memory and a common interface across modalities. Valid changes of units or category labels should preserve the evidence and downstream computation; training requires compatible parameter and optimizer coordinates too. The new theory derives these conditions and retains credit through computational time. **39 mathematical/interface contracts pass.** The integrated synthetic mixed-type fit already reaches 100% on 256 DEV rows from 64 FIT rows with fixed predicates. Learned predicate discovery, real tables versus trees and shared-core skill transfer are the next proofs.
-
-Modern tabular neural models already use typed feature maps; comparison layers and neural/tree hybrids have precedents. Our contribution is the complete temporal/sparse composition and its tested consequences. See [typed semantics and race composition](../experiments/theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md).
-
 **Paths to revenue.** Two entry routes share the core: datacenter AI at lower total cost (models and runtime), and
 event-native vertical models on existing CPUs and GPUs for interleaved, timestamped logs in industry, IoT, IT
 operations, security and finance, priced on detection value, the shortest path to revenue. Licensed runtime and
