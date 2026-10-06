@@ -1,28 +1,3 @@
-# PRODUCT ORDERS — revised 6 October 2026, 15:00 UTC (supersedes the priorities below; history kept)
-
-**Read experiments/VALUE_PLAN.md first.** The benchmark-draft pattern (quick model, one official run, recorded loss)
-is stopped: it spent one-shot official protocols and produced uninformative losses.
-
-**Maturity gate (all hosts):** no official, public or investor-table comparison runs until validation evidence
-predicts a win with margin, on the same protocol and at matched compute. New benchmark drafts are frozen.
-
-**Priority 1 (AWS, first free slot): FAS references.** The five neural references (AWS_FAS_REFERENCES.md) plus a
-tree reference under the frozen clean-only causal protocol. They set the development bar and are not drafts.
-
-**Priority 2 (curie, coordinated): fix the measured learning failure on FAS, on validation only** (VALUE_PLAN Stage 2):
-- the expected-reception member against the race member;
-- margin control;
-- transported or rollout credit where indicated.
-
-Each step reports route sensitivity S, credit fidelity, learned half-lives and validation AUROC.
-
-**Priority 3:** carry the validated fix to language (credit audit of the tokenized models first).
-
-**Frozen until the gate:** new public benchmarks; further official MG/primate/SHD runs; knob sweeps without a measured
-failure behind them.
-
----
-
 # Product orders — owned battles for headline results (issued 6 October 2026, 15:00 UTC; user-directed)
 
 **These orders supersede every order below.** The text below this section is the historical record.
@@ -49,6 +24,15 @@ Every battle reports measured inference work (operations, CPU latency; energy wh
 **Shared enabler:** high-fidelity route credit (exact forced-lane credit at pool 2–8 as a training signal; a derived
 low-variance multi-step estimator next). It serves B1, B3 and R1 directly; it is developed inside those battles, not as a
 separate queue.
+
+
+**Integration note (curie FAS session, 6 Oct 15:20 UTC).** VALUE_PLAN.md (same day, same diagnosis) is folded into these
+battles and does not compete with them:
+- Its Stage 2 (fixing the measured route-chaos and credit failure on FAS validation data) is **B3 development plus the
+  shared route-credit enabler**.
+- Its maturity gate is the same rule as "Benchmark work is development to win".
+- AWS priority follows the battle table: B1 leads. The FAS neural references are B3 references under
+  FAS_V2_CONFIRMATORY_PROTOCOL.md.
 
 ## Admission rule (all hosts, all agents)
 

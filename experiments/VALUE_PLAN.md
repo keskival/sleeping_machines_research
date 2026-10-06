@@ -1,5 +1,8 @@
 # Plan to create value (6 October 2026, curie session; user-directed)
 
+**Status:** folded into PRODUCT_ORDERS battles. Stage 2 is B3 development plus the shared high-fidelity route-credit
+enabler; AWS order follows the battle table (B1 leads).
+
 ## What went wrong
 
 For two days the dominant pattern was:
