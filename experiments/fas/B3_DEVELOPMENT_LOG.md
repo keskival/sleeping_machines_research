@@ -224,3 +224,11 @@ oracle's .821.
   Negative in this form: the deep layers carry history context, so skipped events leave gaps, and the model was not
   trained with gaps. Untested: gate-aware training, and highly deterministic streams such as FAS routes. Not adopted
   for v2.
+- 6 Oct 21:31 UTC: **classical development targets on the frozen v2 validation set**
+  (`fas_v2_classical_val_20261006T2115Z.json`; per-run scores saved for Stage 5 alarm calibration).
+  - Best at merged 1,024 (N* = 512 per line): order3 .685, reproducing the Stage 1 calibration exactly; ngram3 .675;
+    timed_ngram .670; gap_z .665.
+  - Earlier prefixes: merged 512 (256 per line) order3 / timed_ngram .565; merged 256 order3 .543.
+  - The gap statistics (quantile, CUSUM, robust z) sit near chance. Interleaving destroys adjacent-gap meaning, as
+    expected.
+  - C1 target: above .685 at N* by more than the seed spread (identity oracle .821).
