@@ -4131,3 +4131,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled fit/accounting wrappers prepared:** aws_private_bank_time_fit.py consumes explicit positive memory-time scale, completed source-bound construction/learning/optimizer-resume receipts, and frozen data/source pins before selection-inclusive fitting. Scale is top-level result and checkpoint recipe metadata, avoiding an unsupported backend CLI option. aws_private_bank_time_work.py reconstructs exactly that scale and retains complete model/optimizer/state/cursor/teacher-RNG replay equality and formula coverage; scaling multiplications are executed within the arithmetic audit. Syntax passes. No scaled fit admitted; optimizer-resume receipt and measured bounded smoke remain required. Existing source-pinned runs unchanged.
+
+
+**AWS real-driver time resume contracts implemented:** aws_private_bank_time_resume_contracts.py runs unique full/three-update-interrupted/resumed six-update paths at1,¼,1/16 using uniform-siteK4 future teacher and P24D2H2U4. Compares model/optimizer/persistent state/cursor/all route-teacher generators/writes/presentations and quality curve exactly;96targets per full path. Syntax passes; uniquely guarded numerical admission pending. Existing work replay preserved.
