@@ -166,3 +166,17 @@ Receipt `experiments/results/diagnostics/aws_private_bank_8k_completed_pair_2026
 U16 quality point win0.007109279NLL; whole-fit arithmetic+2.8978%,inference+1.5005%; no Pareto win. Entire two-pass fitting work charged; special functions separate and random work unquantified. Context utility now positive0.027648926/0.035558701NLL(U4/U16). Addressed-memory erase−0.000387592/−0.000237985still improves NLL; useful addressed memory is the next measured target. Fullmessage erase+0.038303459/+0.039863149 includes normalization/clock metadata changes. Preserve failed2Kutility evidence alongside this result.
 
 Declared scaling planner passes actual future-credit logs, complete work and context gates. Prepared64K P24/D2/H2,U4/U16,seeds6/7,two passes131056fitting targets,256updates/every64DEV. Measured ordinary throughput/RSS yields U4:415s/917504KiBRSS; U16:424s/983040KiBRSS;5GBVMS/8GiBfloor. This receipt prepares reservations; unique source/data-bound scheduler packets and currenthostcheck must admit execution. No public Transformer score or confirmed capacity advantage claimed.
+
+
+## Private-bank 64K paired seeds: quality and utility completed
+
+P24/D2/H2, GPT-2/FineWeb, 65536 TRAIN tokens, two passes/131056 fitting targets, 2040 DEV targets, seeds6/7. Both banks select step128; four writes/token remain fixed. Source-bound utility receipt: `experiments/results/diagnostics/aws_private_bank_64k_utility_20261006T004500Z.json`. Partition and matched-RNG checks pass for all four selected checkpoints.
+
+| Bank | Seed | Selected DEV NLL | Context gain vs TRAIN mean | Addressed-memory erase NLL increase |
+|---|---:|---:|---:|---:|
+| U4 |6|8.014633717|0.242652893|0.004298971|
+| U4 |7|8.033177275|0.260075569|0.008523578|
+| U16 |6|8.034705547|0.331803322|-0.000055797|
+| U16 |7|8.038162291|0.311744690|0.000589367|
+
+U16 quality losses: 0.020071830 NLL on seed6 and 0.004985016 on seed7. U4 has positive addressed-memory utility in both seeds under the frozen erasure intervention (memory plus arrival/seen metadata); U16 has mixed signs. Full message erasure has distinct clock/normalization effects and is not a pure payload test. More private slots did not improve this matched development stage. Preserve the earlier 2K/8K point wins with their exposure scope. Complete per-seed fitting/inference work replays are queued; work cells await completed exact-state/curve receipts. No larger fit is admitted before this accounting and diagnosis.

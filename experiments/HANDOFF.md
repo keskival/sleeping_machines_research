@@ -3779,3 +3779,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS64K bank audits queued 20261006T004500Z:** selected utility for all four U4/U16 seeds6/7 follows fits, then four source-bound complete fitting/inference replays. Frozen8K wrappers and source hashes verified. Unique queues/aws_private_bank_64k_audit_20261006T004500Z; utility480s, work4200s (8K replay approximately240s scaled eightfold with margin),1.2GBRSS/5GBVMS/8GiBfloor. Exact state/curve and full formula coverage required; pending cells stay pending. No further scaling before utility and work evidence.
+
+
+**AWS64K paired quality/utility completed:** U4 NLL8.014633717/8.033177275 vs U16 8.034705547/8.038162291, seeds6/7. Larger bank loses .020071830/.004985016. U4 addressed-memory erasure costs .004298971/.008523578 NLL; U16 mixed −.000055797/+.000589367. All matched-RNG/partition checks pass. Theory/appendix preserve earlier exposure wins; full work remains queued/running, no larger fit admitted. Prioritize U4 as current bank recipe; diagnose capacity loss before further capacity scaling.
