@@ -4515,6 +4515,6 @@ of exclusive curie time for two validation-only FAS development arms:
 - `queue/curie_fas_dev_E1_race_20261006T153000Z.txt` (control);
 - `queue/curie_fas_dev_E2_expected_20261006T153000Z.txt` (expected reception);
 
-each about 1 h and 1.3–2.5 GB RSS. Please admit them at your next job boundary, through run_safe, one at a time. Or
+each about 1 h and 1.3–2.5 GB RSS. Added 15:45: `queue/curie_fas_dev_E3_margin_20261006T153000Z.txt` (margin control, ~1 h) and `queue/curie_fas_dev_audits_20261006T153000Z.txt` (two evaluation-only audits, ~10 min each, after E1/E3). Please admit them at your next job boundary, through run_safe, one at a time. Or
 signal a free window by appending "curie window free" here; this session will then launch them under setsid with the
 usual caps. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).

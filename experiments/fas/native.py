@@ -179,6 +179,9 @@ def main():
     p.add_argument('--free-bias', type=float, default=0., help='fixed score bonus for never-written slots (§419; training and evaluation)')
     p.add_argument('--stale-bias', type=float, default=0., help='score bonus x (1 - retained fraction) of each slot; never-written = 1 (§419 graded optionality)')
     p.add_argument('--train-temperature', type=float, default=1., help='race score temperature in training only (§419 exposure)')
+    p.add_argument('--margin', type=float, default=0., help='weight of the routing-margin penalty mean(relu(m0 - (log p1 - log p2))) '
+                   'over races (THEORY §431: larger margins make remembered changes cross fewer later decision boundaries)')
+    p.add_argument('--margin-target', type=float, default=2.)
     p.add_argument('--balance', type=float, default=0., help='load-balance (importance) penalty weight on race probabilities (§419)')
     p.add_argument('--segment', type=int, default=0, help='truncated credit: segments of this many events with the '
                    'state carried (detached) across segments (sleeping_machines/carried_episodes.py); 0: whole runs')
@@ -214,7 +217,7 @@ def main():
     if a.tie_pools:
         from dvs_tied_pool_benchmark import tie_pools
         model = tie_pools(model)
-    recruit = (a.free_bias != 0. or a.stale_bias != 0. or a.train_temperature != 1. or a.balance > 0.)
+    recruit = (a.free_bias != 0. or a.stale_bias != 0. or a.train_temperature != 1. or a.balance > 0. or a.margin > 0.)
     rkw = dict(free_bias=a.free_bias, stale_bias=a.stale_bias, temperature=1., eager=not a.compiled) if a.segment else None
     exp_step = None
     if a.reception == 'expected':
@@ -275,6 +278,10 @@ def main():
                         if recruit and a.balance > 0:
                             from sleeping_machines.recruit_layer import balance_penalty
                             loss = loss + a.balance * balance_penalty(pis)
+                        if recruit and a.margin > 0:             # routing-margin penalty (§431)
+                            lp = torch.stack([pi for _, pi in pis]).clamp_min(1e-12).log()      # (races, n, H, U)
+                            top2 = lp.topk(2, -1).values
+                            loss = loss + a.margin * torch.relu(a.margin_target - (top2[..., 0] - top2[..., 1])).mean()
                         loss.float().backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip); opt.step()
                         state = detach(st); box['loss'] = float(loss.detach()); box['n'] = int(m)
                     if w < a.trace_windows:     # work trace: the batched formulation (same per-event operators), fresh state
