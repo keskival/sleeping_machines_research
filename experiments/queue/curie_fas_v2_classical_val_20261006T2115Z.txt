@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2) Stage 3: per-run validation scores of the nine information-matched classical detectors (fit on 2,000 clean training logs). Decision: the development target per detector at every prefix and the validation scores Stage 5 needs to calibrate alarms; reproduces the Stage 1 calibration on the frozen data. CPU, <1 GB, ~15 min. Validation only.
+curie_fas_v2_classical_val_20261006T2115Z experiments/fas/classical_scores_v2.py --data fas_v2_K2_drop0.02_delta0_20261005 --split val --fit-runs 2000 --tag fas_v2_classical_val_20261006T2115Z
