@@ -1,0 +1,2 @@
+# B1 EasyTPP: B1 TEST protocol, StackOverflow: selected on DEV (v5, 8 delayed clocks, 3 layers, dropout 0.3, floor 2^-13; v6 did not help). 5 seeds; decides the StackOverflow verdict
+b1_final_stackoverflow_v5_s1 experiments/tpp/race_tpp_v5.py --tag b1_final_stackoverflow_v5_s1 --dataset stackoverflow --seed 1 --n-lognormal 8 --layers 3 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125 --score-test
