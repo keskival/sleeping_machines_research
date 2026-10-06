@@ -1,5 +1,54 @@
 # Findings log
 
+## Overnight results, 5–6 October: three language levers fail, a grokking prediction holds, transported write credit not supported — 6 October
+
+**Language levers** (10M; T256 test bpc; same protocol as p64/d4 4-pass linear 1.955 at 107 TF):
+
+| Arm | bpc | Work | Verdict |
+|---|---:|---:|---|
+| AdamW, weight decay .01 (§421) | 1.9551 | 107 TF | no change |
+| AdamW, weight decay .1 | 1.9666 | 107 TF | worse |
+| Pool 4, k = 1 (AWS v3 driver) | 1.9346 | 175 TF | control; .02 better than pool 2 at 1.6× work |
+| Pool 4, k = 2 writes (write bandwidth) | 1.9357 | 175 TF | no gain over k = 1 |
+| p32 pool 8 tied, sampled credit, one pass (X1) | 2.4747 | 6 TF | worse than pool-2 linear 2.370 |
+
+- The AWS host replaced my k-write wrapper with a corrected v3 driver after finding a defect; the k1/k2 numbers are
+  from v3.
+- Weight decay, write bandwidth and tied sampled capacity do not close the local language gap.
+
+**FAS:**
+- Seed 7 replicates (.591 / .736 at N = 256 / 512, against seed 6's .600 / .742); the multi-seed win is published by
+  the review host.
+- F2 (rwn write credit, the falsification test of §430.3): AUROC .540 at N = 256, validation NLL 2.13 (3K runs).
+  Learning is damaged, as predicted, but the matched control F3 was stopped by the memory floor, so the comparison is
+  incomplete.
+
+**Transported write credit, estimator test (§430 prediction 1, before any training):** fidelity against exact
+forced-lane credit on the same races and noise.
+
+| Model | Value-only credit (corr / sign) | Transported (corr / sign) |
+|---|---|---|
+| R8 | .29 / .64 | .18 / .53 |
+| R0 | −.08 / .60 | .15 / .60 |
+
+- Mixed, and worse on R8. **The prediction is not supported.** Not promoted to training.
+- Likely cause: forced alternatives change later hard routes (topology), outside the first-order regime. The next
+  diagnostic is to count route flips per forced lane.
+
+**Grokking testbed, harder setting** (train fraction .25; step at which held-out accuracy reaches .99):
+
+| Arm | Step |
+|---|---:|
+| Untied pool 2 | 4,750 |
+| Untied pool 8 | 8,000 |
+| Tied pool 8 | 8,250 |
+| **Tied pool 8, private decay 10× shared** | **4,750** |
+
+- Larger pools grok later (§427.1 consistent).
+- **Asymmetric private/shared decay groks 1.7× sooner (§427.3 supported; single seed).**
+- At train fraction .40, tied pool 32 reached .99 at 3,250 steps, against 3,000 for pool 8 and 2,500 for pool 2:
+  monotone in pool.
+
 ## Credit fidelity audit: the implemented route credit is nearly blind on FAS — 5 October
 
 THEORY §§429–430; `experiments/credit_fidelity_audit.py`.
