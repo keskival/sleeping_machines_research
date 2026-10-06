@@ -210,19 +210,26 @@ class BindingMemory(nn.Module):
     Per event this costs one O(P * total_payload) write plus the readout's O(Ub * P * hidden) scoring. Binding capacity
     is decoupled from the per-slot proposal computation of the deep layers."""
 
-    def __init__(self, total_payload, slots, payload, tau_max=1000.):
+    def __init__(self, total_payload, slots, payload, tau_max=1000., gated=False):
         super().__init__()
-        self.slots, self.payload = slots, payload
+        self.slots, self.payload, self.gated = slots, payload, gated
         self.inp = nn.Linear(total_payload, payload)
         tau = torch.logspace(0, math.log10(tau_max), payload)
         self.raw_rate = nn.Parameter(torch.expm1(1 / tau).log())
+        if gated:          # per-dimension overwrite gate (THEORY §436.2): a slot can hold its process's latest state
+            self.gate = nn.Linear(total_payload, payload)
 
     def write(self, bmem, t_ref, bseen, slot, x, now):
         n = bmem.shape[0]
         onehot = F.one_hot(slot, self.slots).to(torch.bool)
         age = (now - torch.gather(t_ref, 1, slot[:, None]).squeeze(1)).clamp_min(0)
         old = torch.gather(bmem, 1, slot[:, None, None].expand(n, 1, self.payload)).squeeze(1)
-        new = old * torch.exp(-age[:, None].to(old.dtype) * F.softplus(self.raw_rate)) + self.inp(x)
+        kept = old * torch.exp(-age[:, None].to(old.dtype) * F.softplus(self.raw_rate))
+        if self.gated:
+            g = torch.sigmoid(self.gate(x))
+            new = (1 - g) * kept + g * self.inp(x)
+        else:
+            new = kept + self.inp(x)
         bmem = torch.where(onehot[..., None], new[:, None], bmem)
         return bmem, torch.where(onehot, now[:, None], t_ref), bseen | onehot
 

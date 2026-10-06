@@ -50,3 +50,13 @@ oracle's .821.
   - Data note: over a whole run, faulty samples carry ~7× more plant-clock ticks, because the faulty line runs far
     longer and the single clock runs to the last event. Process-event counts are equal. Within a prefix this is
     legitimate elapsed-time evidence, already available to the `elapsed` and `tick_count` references.
+- 6 Oct 17:45 UTC: **small integrated fit of the binding mechanism** (`binding_toy.py`). Synthetic data: 3 interleaved
+  processes, 8-step routes, log-normal steps with CV .15, no dropout. Model: binding memory 6 slots + race readout,
+  2 step classes, trained from scratch, 300 steps of 16 samples.
+  - Binding purity α rose from chance .27 to .71 with additive slot writes.
+  - With the per-dimension overwrite gate it reached .75 (sampled writes) and .81 (argmax writes); validation NLL fell
+    from 4.87 to 1.94.
+  - The Bayes-greedy ceiling (true routes and laws, `binding_toy_oracle.py`) is α = .911, so 300 steps close ~75% of
+    the gap from chance to that ceiling.
+  - Gated writes go into C1-family iterations once compared on v2 (§436.2: a slot must be able to hold its process's
+    latest state). A longer fit (1,200 steps) is running.
