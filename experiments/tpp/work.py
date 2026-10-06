@@ -34,13 +34,16 @@ def ours(result):
     r = json.loads((ROOT / result).read_text()); a = r['args']
     mod = importlib.import_module(Path(next(iter(r['source_sha256']))).stem)
     kw = {'floor_cell': a['floor_cell']} if 'floor_cell' in a else {}
+    nw = a.get('n_window', 0)
+    if nw:
+        kw.update(n_window=nw, window_edges=([0.1] * nw, [0.2] * nw))
     m = mod.RaceTPP(r['K'], a['d'], a['modes'], a['layers'], a['n_exp'], a['n_lognormal'], a['dv'], 0.0, r['scale'],
                     [0.0] * a['n_lognormal'], **kw)
     params = sum(p.numel() for p in m.parameters())
     d, n, L, K, dv = a['d'], a['modes'], a['layers'], r['K'], a['dv']
-    M, ne, nl = a['n_exp'] + a['n_lognormal'], a['n_exp'], a['n_lognormal']
+    M, ne, nl = a['n_exp'] + a['n_lognormal'] + nw, a['n_exp'], a['n_lognormal']
     layer = 2 * n * d + n * d + 6 * n + 2 * n * d + 4 * d * d + 10 * d
-    head = (d + K * dv) * (ne + 3 * nl + M) + d * M * K + M * K * dv
+    head = (d + K * dv) * (ne + 3 * nl + M + 4 * nw) + d * M * K + M * K * dv
     macs = 2 * d + L * layer + d * dv + 2 * K * dv + head + M * K
     return dict(params=params, macs_per_event=macs, config=dict(d=d, modes=n, layers=L, clocks=M, dv=dv))
 
