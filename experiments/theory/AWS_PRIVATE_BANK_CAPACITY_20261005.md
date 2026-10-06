@@ -136,3 +136,19 @@ The planner launches nothing and admits no job before completed evidence.
 Source/data pins and live host occupancy must be checked when concrete unique
 queues are constructed. Twenty-three policy/admission/comparison/planning
 tests pass, using explicitly synthetic fixtures only for refusal logic.
+
+
+## Completed slot-three 2K pair — 6 October
+
+Source-bound receipt: `experiments/results/diagnostics/aws_private_bank_completed_pair_20261006T001500Z.json`. One paired seed6,2048 TRAIN tokens/two passes,4080 fitting targets and2040 DEV targets. Numerical construction/private storage/shared rules and cold-score unclipped contracts passed. Both complete-work replays preserve exact final model/optimizer/numerical state/generators/writes/target counts and DEV trajectory.
+
+| Bank | Selected DEV NLL | Whole-fit arithmetic GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target | State scalars/lane | Keys/token | Writes/token |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| U4 |8.807352462|4.776962302|1.170824094|0.422863252|384|16|4|
+| U16 |8.798389869|4.928382142|1.207936800|0.429010641|1536|64|4|
+
+Quality point win: U16 improves0.008962594NLL. Whole-fit work increases3.1698%; inference work increases1.4538%. No Pareto win. Arithmetic excludes unquantified random work; special functions remain separate in original completed receipts. Entire two-pass fit is charged despite selected step4.
+
+Utility gate fails: context vs frozen TRAIN-mean feature control is−0.000505447NLL(U4) and−0.000254631(U16). Addressed-memory erasure changes NLL−0.001491221/−0.000725333; full message erasure changes+0.051540440/+0.059556840. These frozen interventions include metadata/normalization effects. Neither current bank has demonstrated useful addressed memory on this2K exposure. The declared64K scaling planner refuses both; its gate is retained.
+
+Next bounded test: same P24/shared-rule/private-bank/actual uniform-site K4 mechanism at8192TRAIN tokens/two passes,32updates/evaluation every8, then matched selected utility and exact work replay. This tests token exposure and the TRAIN-frequency initialization using the established8K development regime before heavier scaling. It changes no core mechanism and predicts no quality gain. Fit caps derive from measured ordinary throughput916/890targets per second and612296/623036KiBRSS; use180s/1.2GBRSS/5GBVMS/8GiBreserve after rechecking host occupancy and source/data pins. New unique queues/tags are required; this note alone admits no run.
