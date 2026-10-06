@@ -3795,3 +3795,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS64K paired quality/utility completed:** U4 NLL8.014633717/8.033177275 vs U16 8.034705547/8.038162291, seeds6/7. Larger bank loses .020071830/.004985016. U4 addressed-memory erasure costs .004298971/.008523578 NLL; U16 mixed −.000055797/+.000589367. All matched-RNG/partition checks pass. Theory/appendix preserve earlier exposure wins; full work remains queued/running, no larger fit admitted. Prioritize U4 as current bank recipe; diagnose capacity loss before further capacity scaling.
+
+
+**AWS64K payload/metadata probe prepared:** aws_private_bank_payload_utility.py adds separate payload-only(mem), metadata-only(arr/seen), full-memory and intact interventions. Original state immutable, all unselected fields retained by identity; numeric zeroing/RNG/selected partition contracts checked inside guarded execution. Stdlib container checks pass; numerical evidence pending. Unique480s/1.2GBRSS/5GBVMS queue aws_private_bank_64k_payload_20261006T010500Z follows all four complete-work receipts; frozen sources pinned. This is a selected DEV diagnostic, no fitting or larger scaling.
