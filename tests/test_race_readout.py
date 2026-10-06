@@ -183,3 +183,38 @@ def test_binding_writes_the_most_responsible_slot_and_learns():
     ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, binding=bm)
     (-(ll * valid).sum()).backward()
     assert bm.inp.weight.grad.abs().sum() > 0 and bm.raw_rate.grad is not None
+
+
+def test_step_class_mixture_density_integrates_and_runs():
+    torch.manual_seed(5)
+    S, V, M = 3, 4, 2
+    ro = RaceReadout(V, 1, S, 8, 16, hidden=8, mu0=0., classes=M)
+    with torch.no_grad():
+        p = ro(torch.randn(1, 1, S, 8), torch.randn(1, 16))
+    t_ref = torch.tensor([[0., -.5, -2.]], dtype=torch.float64); t_now = torch.tensor([0.], dtype=torch.float64)
+    grid = torch.exp(torch.linspace(-9, 7, 40001, dtype=torch.float64))
+    from sleeping_machines.race_readout import log_surv
+    mass = 0.
+    for e in range(V):
+        ll, _, _ = event_terms({k: v.expand(len(grid), *v.shape[1:]) for k, v in p.items()}, t_ref.expand(len(grid), S),
+                               t_now.expand(len(grid)), grid, torch.full((len(grid),), e), 1e-3)
+        mass += float(torch.trapezoid(ll.exp(), grid))
+    never = float((log_surv(p, torch.full((1, S), 1e9, dtype=torch.float64), 1e-3)
+                   - log_surv(p, (t_now[:, None] - t_ref), 1e-3)).sum().exp())
+    assert abs(mass + never - 1) < 3e-3, (mass, never)
+    from sleeping_machines.race_readout import BindingMemory
+    model, _ = _model(); stamps, marks, ids = _data()
+    ro5 = RaceReadout(5, 1, 4, 8, 16, hidden=8, mu0=0., classes=3); bm = BindingMemory(16, 4, 8)
+    ll, _, valid, _ = readout_episode(model, ro5, stamps, marks, ids, binding=bm)
+    assert torch.isfinite(ll).all()
+
+
+def test_binding_compiled_equals_eager():
+    from sleeping_machines.race_readout import BindingMemory
+    torch.manual_seed(6)
+    model, _ = _model(); stamps, marks, ids = _data()
+    ro = RaceReadout(5, 1, 4, 8, 16, hidden=8, mu0=0., classes=2); bm = BindingMemory(16, 4, 8)
+    with torch.no_grad():
+        a = readout_episode(model, ro, stamps, marks, ids, deterministic=True, binding=bm)
+        b = readout_episode(model, ro, stamps, marks, ids, deterministic=True, binding=bm, compiled=True)
+    torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)

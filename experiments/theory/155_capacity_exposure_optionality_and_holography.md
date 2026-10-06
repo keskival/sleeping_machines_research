@@ -852,3 +852,12 @@ objective of Theorem 434.1. race_smc_eval.py gives the L-particle estimate.
 **Comparison.** On v2 validation (K=2, p=.02), the native development configurations (budget 8) start from
 R5 = binding memory U_b = 40 + type-conditional durations (§435.2), against R2-style top-layer binding at pool 8.
 Contracts: tests/test_race_readout.py (12 pass: chaining, posterior writes, gradients into the binding path).
+
+**436.1 Step-class mixture (cost repair of §435.2).**
+- Type-conditional durations need V duration laws per slot: 40 slots × 46 log-normal CDFs per event, 491 events/s at
+  16 lanes.
+- The coupling §435.2 measures comes from skipped steps (one step against two), so a mixture of M step classes
+  carries it: p_s(e, τ) = Σ_c π_c p_c(e) f_c(τ), with survival 1 − q Σ_c π_c F_c(τ).
+- At M = 3 the cost is 120 CDFs per event. With a compiled binding write, throughput is 818 events/s at 16 lanes
+  (U_b = 40, p32 d4 pool 8); R2 at pool 8 does 1,242.
+- Contracts: density normalisation, binding episode, compiled = eager (14 pass).

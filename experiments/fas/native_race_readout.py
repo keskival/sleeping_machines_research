@@ -88,6 +88,8 @@ def main():
     p.add_argument('--heads', type=int, default=2); p.add_argument('--pool', type=int, default=8)
     p.add_argument('--hidden', type=int, default=64); p.add_argument('--posterior', action='store_true')
     p.add_argument('--type-durations', action='store_true', help='own durations conditioned on the next type (THEORY §435.2)')
+    p.add_argument('--step-classes', type=int, default=0, help='per-slot mixture of M step classes coupling type and '
+                   'duration (THEORY §436.1); cheaper than --type-durations')
     p.add_argument('--binding-slots', type=int, default=0, help='dedicated binding memory with this many slots above the deep '
                    'network, posterior-routed (THEORY §436); the readout reads it with one emitting head')
     p.add_argument('--route-credit', default='linear'); p.add_argument('--compiled', action='store_true')
@@ -122,10 +124,12 @@ def main():
                             unit.raw_rate.copy_(torch.expm1(1 / tau).log())
     binding = None
     if a.binding_slots:
-        readout = RaceReadout(V, 1, a.binding_slots, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
+        readout = RaceReadout(V, 1, a.binding_slots, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations,
+                              classes=a.step_classes)
         binding = BindingMemory(a.heads * a.payload, a.binding_slots, a.payload, tau_max=a.tau_max or 1000.)
     else:
-        readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
+        readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations,
+                              classes=a.step_classes)
     params = [q for q in model.parameters()] + list(readout.parameters()) + (list(binding.parameters()) if binding else [])
     opt = torch.optim.Adam(params, lr=a.lr)
     T = len(train[0][0]); per_epoch = math.ceil(len(train) / a.lanes) * math.ceil(T / a.segment)

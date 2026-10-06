@@ -37,20 +37,31 @@ from .parallel_stream_language import precise_rotate
 
 
 class RaceReadout(nn.Module):
-    def __init__(self, types, heads, pool, payload, total_payload, hidden=64, eps=1e-3, mu0=2.5, type_durations=False):
+    def __init__(self, types, heads, pool, payload, total_payload, hidden=64, eps=1e-3, mu0=2.5, type_durations=False,
+                 classes=0):
         """type_durations (THEORY §435.2): each slot's own-duration law is conditioned on the next type,
-        f_s(tau | e), instead of one law f_s(tau) shared by all types."""
+        f_s(tau | e), instead of one law f_s(tau) shared by all types.
+        classes = M > 0 (THEORY §436.1): a mixture of M step classes, p_s(e, tau) = sum_c pi_c p_c(e) f_c(tau), which
+        couples type and duration (a skipped step changes both) at M instead of V duration laws per slot."""
         super().__init__()
         self.types, self.H, self.U, self.P, self.eps = types, heads, pool, payload, eps
-        self.type_durations = type_durations
+        self.type_durations, self.classes = type_durations, classes
         self.slot = nn.Parameter(torch.randn(heads, pool, hidden) * .1)
         self.mem_in = nn.Linear(payload, hidden)
         self.ctx_in = nn.Linear(total_payload, hidden, bias=False)
-        V = types; D = V if type_durations else 1
-        self.out = nn.Linear(hidden, V + 2 * D + 1)
-        with torch.no_grad():
-            self.out.bias[V:V + D] = mu0                 # log seconds: FAS item-own steps are ~5–76 s
-            self.out.bias[V + D:] = 0.
+        V = types
+        if classes:
+            M = classes
+            self.out = nn.Linear(hidden, M * V + 3 * M + 1)
+            with torch.no_grad():
+                self.out.bias.zero_()
+                self.out.bias[M * V + M:M * V + 2 * M] = mu0 + torch.linspace(-.5, .5, M)   # spread class durations
+        else:
+            D = V if type_durations else 1
+            self.out = nn.Linear(hidden, V + 2 * D + 1)
+            with torch.no_grad():
+                self.out.bias[V:V + D] = mu0             # log seconds: FAS item-own steps are ~5–76 s
+                self.out.bias[V + D:] = 0.
 
     def forward(self, mem, x):
         """mem (n, H, U, P) top-layer memories; x (n, total_payload). Returns per-slot laws, slots flattened.
@@ -58,7 +69,14 @@ class RaceReadout(nn.Module):
         n = mem.shape[0]
         h = F.gelu(self.mem_in(F.layer_norm(mem, (self.P,))) + self.ctx_in(x)[:, None, None] + self.slot)
         o = self.out(h).reshape(n, self.H * self.U, -1).double()
-        V = self.types; D = V if self.type_durations else 1
+        V = self.types
+        if self.classes:
+            M = self.classes
+            return dict(logp=F.log_softmax(o[..., :M * V].reshape(n, -1, M, V), -1),
+                        logpi=F.log_softmax(o[..., M * V:M * V + M], -1), mu=o[..., M * V + M:M * V + 2 * M],
+                        log_sigma=o[..., M * V + 2 * M:M * V + 3 * M].clamp(-4, 3),
+                        logq=F.logsigmoid(o[..., -1]), log1mq=F.logsigmoid(-o[..., -1]))
+        D = V if self.type_durations else 1
         mu, ls = o[..., V:V + D], o[..., V + D:V + 2 * D].clamp(-4, 3)
         if not self.type_durations:
             mu, ls = mu[..., 0], ls[..., 0]
@@ -71,7 +89,11 @@ def _typed(p):
 
 
 def log_surv(p, tau, eps):
-    """log S_s(tau) = log(1 - q_s F_s(tau)); with type-conditional durations F_s = sum_e p_s(e) F_s(tau | e)."""
+    """log S_s(tau) = log(1 - q_s F_s(tau)); with type-conditional durations F_s = sum_e p_s(e) F_s(tau | e);
+    with step classes F_s = sum_c pi_c F_c(tau)."""
+    if 'logpi' in p:
+        z = (torch.log(tau.clamp_min(0) + eps)[..., None] - p['mu']) / p['log_sigma'].exp()
+        return torch.logaddexp(p['log1mq'], p['logq'] + torch.logsumexp(p['logpi'] + torch.special.log_ndtr(-z), -1))
     if _typed(p):
         z = (torch.log(tau.clamp_min(0) + eps)[..., None] - p['mu']) / p['log_sigma'].exp()
         return torch.logaddexp(p['log1mq'], p['logq'] + torch.logsumexp(p['logp'] + torch.special.log_ndtr(-z), -1))
@@ -96,6 +118,16 @@ def event_terms(p, t_ref, t_now, t_next, e_next, eps):
     tau_now = (t_now[:, None] - t_ref).clamp_min(0); tau = (t_next[:, None] - t_ref).clamp_min(0)
     ls = log_surv(p, tau, eps)
     base = (ls - log_surv(p, tau_now, eps)).sum(-1)
+    if 'logpi' in p:
+        u = torch.log(tau.clamp_min(0) + eps)[..., None]
+        z = (u - p['mu']) / p['log_sigma'].exp()
+        comp = p['logq'][..., None] + p['logpi'] - .5 * z ** 2 - .5 * math.log(2 * math.pi) - p['log_sigma'] - u   # (n,S,M)
+        M = comp.shape[-1]
+        pe = p['logp'].gather(-1, e_next[:, None, None, None].expand(-1, comp.shape[1], M, 1)).squeeze(-1)
+        fire_t = torch.logsumexp(comp, -1) - ls
+        fire = torch.logsumexp(comp + pe, -1) - ls
+        lse = torch.logsumexp(fire, -1)
+        return base + lse, base + torch.logsumexp(fire_t, -1), fire - lse[:, None]
     dens = log_fire_density(p, tau, eps)
     if _typed(p):
         fire_t = torch.logsumexp(dens, -1) - ls
@@ -221,8 +253,12 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     mem, arr, seen = list(st['mem']), list(st['arr']), list(st['seen'])
     ctx_vals, ctx_arr, has_ctx = st['ctx_vals'], st['ctx_arr'], st['has_ctx']
     t_ref = st.get('t_ref'); prev = st.get('laws'); t_prev = st.get('t_prev')
+    bwrite = None
     if binding is not None:
         Ub = binding.slots
+        bwrite = binding.write
+        if compiled:
+            bwrite = _COMPILED.setdefault(('bwrite', id(binding)), torch.compile(binding.write, dynamic=False, fullgraph=True))
         bmem = st.get('bmem'); bseen = st.get('bseen')
         if bmem is None:
             bmem = torch.zeros(n, Ub, binding.payload, dtype=model.embedding.weight.dtype)
@@ -282,7 +318,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     t_ref = now[:, None].expand(n, Ub).clone()
                 if bslot is None:
                     bslot = torch.zeros(n, dtype=torch.long)
-                bmem, t_ref, bseen = binding.write(bmem, t_ref, bseen, bslot, x, now)
+                bmem, t_ref, bseen = bwrite(bmem, t_ref, bseen, bslot, x, now)
                 t_ref = torch.where(~bseen, now[:, None], t_ref)        # never-written slots: births timed from now
                 prev = read(bmem[:, None], x); t_prev = now
                 continue

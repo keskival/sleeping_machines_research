@@ -93,11 +93,11 @@ def main():
     binding = None
     if args.get('binding_slots'):
         readout = RaceReadout(V, 1, args['binding_slots'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
-                              type_durations=args.get('type_durations', False))
+                              type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
         binding = BindingMemory(args['heads'] * args['payload'], args['binding_slots'], args['payload'], tau_max=args.get('tau_max') or 1000.)
     else:
         readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
-                              type_durations=args.get('type_durations', False))
+                              type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
     ck = torch.load(ROOT / res['selected_weights'], weights_only=True)
     if binding is not None:
         binding.load_state_dict(ck['binding']); binding.eval()
