@@ -173,3 +173,32 @@ any host, including "missing" controls listed in older orders. For this protocol
   (generator, frozen data hashes, scorer and leaderboard) invites those submissions.
 - Everything else is unchanged: setting calibration, native tuning budget, seeds, sealed test ledger and decision
   rule. The native model still develops on validation within its 8-configuration budget.
+
+## Protocol amendment: per-line prefixes and line-aware oracle in Stage 1, 6 October 2026 (curie FAS session)
+
+**Disclosure:** written after the original Stage 1 grid (`fas_v2_calibration_grid_20261006T1745Z`) had reported 3 of
+its 12 settings. No learned model has seen v2 data.
+
+The original grid runs to completion unchanged, and its result is reported first. Its first settings at merged
+N*=512:
+
+| setting | oracle | best anonymous classical | gap |
+|---|---|---|---|
+| K=2, p=.02, δ=0 | .683 | .565 | .119 |
+| K=2, p=.02, δ=±5% | .554 | .550 | .004 |
+| K=2, p=.05, δ=0 | .669 | .567 | .102 |
+
+**Two design errors, each fixed from a principle that holds for every setting:**
+1. **Merged prefix.** The fault sits on one line. A merged N* gives every detector N*/K events of that line, so raising
+   K also removes data, confounding interleaving difficulty with data volume. **Fix:** N counts process events per
+   line: the merged prefix is N·K, with primary N* = 512 per line. Secondary prefixes are 128, 256 and 960 per line;
+   960 because each line keeps ≥ ~1,007 events at p=.05.
+2. **Pooled oracle statistics.** The identity oracle knows the line but pooled its duration statistics across lines.
+   With a ±5% speed offset, that blurs the oracle by as much as the faults themselves (.554). **Fix:** the gate's
+   oracle keys statistics by (line, prev type, type) (`oracle_line_max_step`). The pooled oracle stays reported.
+
+Everything else is unchanged: the grid, the thresholds (oracle ≥ .70; oracle − best information-matched classical
+≥ .08), the mildest-qualifying rule and every classical reference.
+- Implementation: `experiments/fas/calibrate_v2b.py`. Output: `results/fas/fas_v2_calibration_amended_<tag>.json`.
+- If the amended grid selects a setting, Stage 2 generates it, and Stages 3–5 measure N in per-line units
+  (merged prefix N·K). Native development uses validation only, as before.

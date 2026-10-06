@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2 confirmation), Stage 1 amended calibration (protocol amendment 6 Oct: per-line prefixes, line-aware oracle). Decision: the v2 setting under the amended form. Validation only, no learned model. CPU single-thread, <1 GB.
+curie_fas_v2_calibration_amended_20261006T1550Z experiments/fas/calibrate_v2b.py --tag grid_20261006T1550Z --fit 1000 --val 1000 --K 2,3,4 --drop 0.02,0.05 --delta 0,0.05
