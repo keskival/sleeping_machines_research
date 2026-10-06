@@ -4221,3 +4221,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K time-scale1 seed6 completed:** selected7.714196299DEVNLL atstep384,initial8.078814937,final7.949386058; every scored DEV step exactly matches saved original lr.003seed6 control. This is whole-curve quality parity, not cross-source full-state parity. Ordinary throughput857.367targets/s,peak614240KiBRSS,524272fit/2040DEVtargets. Source aws_private_bank_time_256k_20261006T041606Z_scale1_s6.aws.json. Positive1/16pairedfit next; selected utility and exact whole-work queued. All previous valid evidence preserved; no public-reference win.
+
+
+**AWS256K positive-time seed6 quality win:** scale1/1over16 selected7.714196299/7.696178960DEVNLL, gain0.018017339NLL; selectedstep384/512. Same source/data/settings/524272fit/2040DEVtargets,P24D2H2U4,lr.003,uniformK4future credit; slower nonzero decay/rotation retains all core mechanisms. Scaled initial8.078814937/final7.917095708,ordinary throughput843.615targets/s,peak615556KiBRSS. Exploratory paired seed6 DEV quality win; seed7,selected utility and exact complete-work pending. No Pareto/matched-reference/public win claimed. Preserve8Ktrained loss and frozen probes. Sourceaws_private_bank_time_256k_20261006T041606Z_scale1over16_s6.aws.json.
