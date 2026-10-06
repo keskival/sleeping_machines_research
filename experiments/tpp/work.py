@@ -37,6 +37,9 @@ def ours(result):
     nw = a.get('n_window', 0)
     if nw:
         kw.update(n_window=nw, window_edges=([0.1] * nw, [0.2] * nw))
+    ns = a.get('state_modes', 0)
+    if ns:
+        kw.update(state_modes=ns)
     m = mod.RaceTPP(r['K'], a['d'], a['modes'], a['layers'], a['n_exp'], a['n_lognormal'], a['dv'], 0.0, r['scale'],
                     [0.0] * a['n_lognormal'], **kw)
     params = sum(p.numel() for p in m.parameters())
@@ -45,6 +48,8 @@ def ours(result):
     layer = 2 * n * d + n * d + 6 * n + 2 * n * d + 4 * d * d + 10 * d
     head = (d + K * dv) * (ne + 3 * nl + M + 4 * nw) + d * M * K + M * K * dv
     macs = 2 * d + L * layer + d * dv + 2 * K * dv + head + M * K
+    if ns:   # state write and recurrence; per-event hazard and marks at the event (+ compensator nodes, counted separately)
+        macs += 2 * ns * d + 6 * ns + d + d * K + (6 * ns + 2 * ns + 2 * ns * K)
     return dict(params=params, macs_per_event=macs, config=dict(d=d, modes=n, layers=L, clocks=M, dv=dv))
 
 
