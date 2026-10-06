@@ -4236,3 +4236,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K time-pair payload-only evidence completed:** source/raw-fit/checkpointSHA and all intervention/RNG/partition checks pass. Erasing stored payload while preserving arrival/seen and message state raises scale1NLL.011118247/.013576500,scale1/16NLL.042988906/.032270319(seeds6/7). Slower evolution increases useful stored-content dependence in both seeds. Metadata-only erasure still improves scale1−.015779112/−.024449096 andscaled−.012348304/−.014775777. Changed content can alter later routes; frozen causal interventions are not retrained/additive attribution. Selected quality remains split-seed, mean scale1better. Receipt aws_private_bank_time_256k_audit_20261006T041757Z_payload.json; exact whole-work pending, no publicbenchmark claim.
+
+
+**AWS completed multi-seed time-stage reader prepared:** aws_private_bank_time_stage.py requires at least two distinct exact completed pairs, identical data/source/settings/scales/target populations across seeds, reports per-seed verdicts plus mean quality/work in consistent units, and distinguishes mean improvement from every-seed quality/Pareto wins. No pending/estimated work admitted. Syntax/empty-stage refusal pass; actual stage awaits four ledgers. Live firstscaledworkPID2777041/nativeworkPID2736252 verified.
