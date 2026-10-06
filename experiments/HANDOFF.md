@@ -1,3 +1,18 @@
+# Report split into three parts; n-gram calibration of tokenized language — 6 October 2026
+
+User direction: separate science from machinery. New `report/I_SCIENCE.md` (+PDF, 8 pp) is the curated reader-facing
+report. `report/split_report.py` regenerates `report/II_METHODS.md` (46 sections, 31 pp) and `report/III_RECORD.md`
+(42 narrative + 154 record sections, 147 pp) from REPORT.md and renders all three PDFs; every record section lands
+verbatim in exactly one part (asserted). Classification: `report/split_manifest.json`. REPORT.md and its builders are
+unchanged; rerun the splitter after REPORT.md changes.
+
+Completed count references (`experiments/token_ngram_reference.py`, AWS slot 3 via addendum, 9.5 s, published
+d3e82900): on the native 2,040-target DEV slice, KN bigram/trigram score 8.139/8.155 (64K), 7.647/7.648 (256K),
+7.251/7.217 (1M) against native P24 8.033, 7.742, 7.252/7.264. Native tokenized quality is bigram-level. The slice is
+hard and noisy (SE ~0.09; bigram 6.584 at 1M on 65,528 targets). Score native models on the larger slice next. Part I §6
+lists the next decisive tests: home-field external win, high-fidelity credit, memory/recall tasks, parallel-scan training,
+measured efficiency.
+
 # Own-model focus; dense controls end — 6 October 2026
 
 User direction 14:00 UTC: improve our own models from here; no new Transformer/LSTM training on any host. Use

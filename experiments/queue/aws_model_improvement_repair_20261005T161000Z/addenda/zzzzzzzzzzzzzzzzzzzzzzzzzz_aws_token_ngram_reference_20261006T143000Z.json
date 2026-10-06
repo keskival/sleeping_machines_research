@@ -1,0 +1,22 @@
+{
+  "host": "ip-172-31-47-132",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "purpose": "Count n-gram (unigram/bigram/trigram KN) references on the exact native tokenized FineWeb TRAIN/DEV slices; no neural training. User-directed own-model calibration, 6 Oct 2026.",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_token_ngram_reference_20261006T143000Z",
+        "queue": "experiments/queue/aws_token_ngram_reference_20261006T143000Z/aws_token_ngram_reference_20261006T143000Z.txt",
+        "queue_sha256": "bff7e62eecb5e8c521bbc5eaae2a11717fb02d37b22fb637486c6efe4df921cc",
+        "kind": "ngram_reference",
+        "source_sha256": {
+          "experiments/token_ngram_reference.py": "7b3e7f021055b10fa5947f227d391d24bdc1608201dad4f3df2ba8d3ea13e56b"
+        },
+        "result": "experiments/results/token_language/aws_token_ngram_reference_20261006T143000Z.json",
+        "timeout_s": 3600,
+        "rss_kb": 5000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

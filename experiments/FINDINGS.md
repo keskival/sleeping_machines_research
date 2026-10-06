@@ -1,5 +1,24 @@
 # Findings log
 
+## Tokenized language is at bigram level; the DEV slice is hard and noisy — 6 October
+
+Count references fitted on the identical FineWeb TRAIN prefix and scored on the identical 2,040 native DEV targets
+(`experiments/token_ngram_reference.py`; `results/token_language/aws_token_ngram_reference_20261006T143000Z.json`):
+
+| TRAIN tokens | Native P24 (2 passes) | KN bigram | KN trigram | Unigram (add-one) |
+|---|---:|---:|---:|---:|
+| 64K | **8.033** | 8.139 | 8.155 | 8.162 |
+| 256K | 7.742 | **7.647** | 7.648 | 7.972 |
+| 1M | 7.252 / 7.264 (s6 / s7) | 7.251 | **7.217** | 7.950 |
+
+- Native beats the count models at 64K, trails at 256K and ties the bigram at 1M; the trigram leads at 1M by .03–.05.
+  The counts fit in seconds; the native 1M fit took 73 min at 480 tokens/s.
+- The earlier "context gain" (~1 nat) was measured against a constant-feature readout, not against a bigram.
+- Standard error of the 2,040-target mean is ~.09 nats (unpaired). On 65,528 targets from the same offset the bigram
+  scores 6.584 at 1M (7.251 on the native slice): the slice is harder than average. Differences of ~.02 nats on it do
+  not separate variants.
+- Next: score native checkpoints on the 65,528-target slice; memory/recall diagnostics before more token scaling.
+
 ## Overnight results, 5–6 October: three language levers fail, a grokking prediction holds, transported write credit not supported — 6 October
 
 **Language levers** (10M; T256 test bpc; same protocol as p64/d4 4-pass linear 1.955 at 107 TF):

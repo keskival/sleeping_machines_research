@@ -1,0 +1,199 @@
+# Sleeping Machines — Part I: The science
+
+A trainable computing substrate that computes through time
+
+Tero Keski-Valkama and Karoliina Salminen · Research report, Part I · 6 October 2026
+
+This is the reader-facing report: the ambition, the model family and its theory, what the evidence shows on each front, and the experiments that decide the next step. Two companion parts hold the rest. [Part II — Methods and machinery](II_METHODS.md) collects protocols, metric definitions, compute accounting, numerical contracts and implementation checks. [Part III — Experiment record](III_RECORD.md) preserves every experiment entry and the earlier narrative chapters verbatim. `REPORT.md` remains the complete combined record; Parts II and III are generated from it by `report/split_report.py`.
+
+## 1. The ambition
+
+Sleeping Machines aims to make intelligence composable within **one trainable computing substrate**. Language and reasoning, multimodal world models, embodied action, event-native analytics over interleaved process streams, and typed tables become different forms of experience available to the same learner. The ambition extends through continual and on-device learning, learned communication and self-designing models to the hardware that executes them: globally clockless, memory-local event hardware that learns on chip.
+
+An observation enters through an interface that respects its meaning: a token, a sensory event, a typed comparison or an action. It becomes an addressed message that interacts with persistent memory. Learned delays and temporal races decide which evidence meets and which computation happens. Small messages carry new evidence into deeper state; separate keys and values distinguish where evidence goes from what it says. Counterfactual credit teaches the routes and writes that could have happened. Available memory and skill can grow beyond the activity recruited for any one observation.
+
+Each benchmark below is evidence for one front of this program. None of them defines the project.
+
+## 2. The model family
+
+Every message carries **content, an arrival time and an address**. Receivers hold persistent memories that decay and rotate with the real time elapsed between events. Candidate routes **race through learned delays**: the winner updates state and sends the next message, and the routes that did not win still receive **counterfactual credit**. Arrival order decides which memories meet and which computation happens, so delays perform computation rather than label it. Dense synchronous layers are a special case; one model can compute densely where a task needs it and selectively elsewhere.
+
+![Position among model families](figures/architecture_landscape.svg)
+
+The four architectural bets, and the mechanisms each one keeps explicit:
+
+| Bet | Mechanisms | Why it matters |
+| --- | --- | --- |
+| **Time performs computation** | Learned delays, temporal races including race attention, decay and rotation by elapsed time | Selection and combination happen in the timing itself; waiting is part of the computation |
+| **Hard routes learn through counterfactual credit** | Winner-only forward execution; credit to unrealized alternatives and optional routes | Discrete sparse routing is a long-standing training problem; crediting alternatives trains it without dense inference |
+| **Deep persistent event representations** | Sparse addressed state updates; small messages mixing incoming content with persistent memory; separate keys and values | Memory is addressed and retained, not a buffer rescanned at every step |
+| **Capacity beyond activity** | Large receiver pools, few selected writes per event | Stored skill can grow faster than the work spent per observation |
+
+Supervision is silence-aware where the objective depends on waiting: the absence of an event until a real clock deadline is an observation, not missing data. Work is accounted separately for available capacity, scored keys, selected state updates, value deliveries and counterfactual learning work, so a dormant receiver is never reported as free to score or train. Part II gives the accounting conventions.
+
+## 3. The theory
+
+### 3.1 Foundational principles
+
+The foundational calculus ([THEORY.md](../experiments/THEORY.md), §§1–25) reduces to five principles. Later notes extend each.
+
+| | Principle | Consequence |
+| --- | --- | --- |
+| P1 | **Inference is tropical; unrealized futures are its dequantization.** A race computes minimums over event times (min-plus); at temperature σ the possible histories form a recombining forest weighted by e^(−cost/σ). | Near-miss weighting is the derivative of the soft minimum; credit is conserved at each collapse; holistic backpropagation is inside–outside. |
+| P2 | **Weaving closes the past.** Collapses are stopping times; later inputs cannot affect them. | When to commit is an optimal-stopping problem; woven and unwoven counterfactuals differ. |
+| P3 | **A race neuron is a weighted mean in time.** Within a piece, T = θ/ρ + Σ uᵢtᵢ. | Exact time-shift equivariance; urgency (ρ) and evidence (u) separate; learning must recruit absent evidence additively. |
+| P4 | **Credit must reach what did not happen.** Along the realized history credit reaches only nodes that fired; the blind spot compounds with depth. | Counterfactual credit matters from depth 2; routing networks share the same boundary term. |
+| P5 | **Thresholds are prices.** Homeostasis is the dual update of a capacity constraint; a race layer with homeostasis is an online entropic optimal-transport solver. | Target rates are capacities; log-ratio updates balance faster. |
+
+### 3.2 Temporal algebra and attention
+
+**An exponential race selects route i with probability softmax(score)ᵢ exactly, and delay-coded aggregation reproduces softmax attention exactly over the delivered keys** (theory notes [08](../experiments/theory/08_vector_memory_and_deep_stacks.md) and [151](../experiments/theory/151_normalized_clock_noise_and_precision_credit.md)). The family therefore contains a Transformer-capable function class. A winner-only race delivers the sampled winner's value instead of the weighted average and skips the value-aggregation half of attention arithmetic. One winner is a sample, not the average: averaging m independent winners has mean-square error variance/m.
+
+With width d, depth L, N historical keys, feed-forward expansion r and shared projection work B = (8 + 4r)d² per layer, S extra evolving-state work per layer, P updated parameters and U targets per Adam update (two FLOPs per multiply-add):
+
+| Per token / target | Transformer | Race substitution |
+| --- | --- | --- |
+| Inference | L(B + 4Nd) | L(B + 2Nd + S) |
+| Training, approximate | 3LB + 12LNd + 19P/U | 3L(B + S) + 10LNd + 20P/U |
+| Logical value reads (FP32) | 4LNd bytes | 4Ld bytes |
+| Logical key + value reads | 8LNd bytes | 4L(N + 1)d bytes |
+
+The race training term charges admitted losing-value credit; it is not winner-only training. At fixed width the attention-only arithmetic limit is about 2× at inference and 1.2× during counterfactual training, and total key/value access improves by at most about 2×. Larger gains require richer temporal computation to reach the same quality at smaller width αd and depth βL: projection work scales by βα² and context work by βα. These are logical counts, not measured off-chip traffic or joules.
+
+### 3.3 Keys, values, credit and depth
+
+- **Key/value separation** ([note 22](../experiments/theory/22_key_value_separation_and_race_boundaries.md), §§194–196) isolates harmful winner changes, preserves actual routing during smooth value learning, and derives joint key/value/clock counterfactual policy credit with its reachability requirements.
+- **Statistic-valued race memory** ([note 59](../experiments/theory/59_statistic_valued_race_memory.md), §§382–392): learned keys with sufficient-statistic values give zero-variance counterfactual route credit and closed-form write credit. Hierarchical count backoff is an exact cascade of escape races ([note 58](../experiments/theory/58_sufficient_statistic_state_and_count_references.md)).
+- **Depth** ([notes 04, 08c](../experiments/theory/08c_sparse_attention_and_depth_bounds.md)): residual depth and temporal gauges, sparse-attention depth bounds, and the conditional depth bounds of causal context bridges. Counterfactual credit matters from depth 2 because the realized-history blind spot compounds with depth (P4).
+- **Compute allocation**: the useful quantity is prediction quality at a fully counted budget of fitting, inference and learning work, including candidate discovery and losing-value credit. Capacity, activity and teaching work are separate axes (§§299–302, [note 46](../experiments/theory/46_integrated_sparse_temporal_language.md)).
+- **Typed semantics** ([TYPED_SEMANTICS_AND_RACE_COMPOSITION](../experiments/theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md)): type-respecting comparisons (numeric, ordinal, categorical, missingness) enter before neural mixing, with the equivariance conditions learning must satisfy. 39 mathematical/interface contracts pass.
+
+## 4. Evidence, front by front
+
+Conventions for every table in this section: single seed unless a seed count is stated; native fitting work is traced (and extrapolated from traced windows for long fits), dense references use shape estimates; "train compute" counts the complete fit including counterfactual credit and optimizer work. Every number comes from a completed result file; pending cells say pending.
+
+### 4.1 Learned temporal computation (synthetic, multi-run)
+
+| Task | Ours | Reference | Verdict |
+| --- | --- | --- | --- |
+| Depth-3 event chains, 2,000 examples seen once (5 runs) | **99.73–99.93%** | Transformers 33.25–40.80% (same distinct examples, repeated fitting) | **Win** |
+| Race retrieval at 4× training context (5 runs) | **100%** within 4,000 examples | Best of seven Transformer configurations, lower | **Win** |
+| Unseen mod-17 triples via a learned phase rule | **100%** of 3,440 | — | Solved |
+| Timing-only discrimination (identical marks, addresses, order) | **95.31%** | Order-only control 50.00% (exact ceiling) | **Win** |
+| 16-source order, shared rules with private memories | **75.39%**, 14,180 parameters | Private rules 44.14%, 157,940 parameters | **Win** (11.1× fewer parameters) |
+
+![accomplishments](figures/accomplishments.png)
+
+These are structured tasks with declared priors; they establish that the mechanisms learn order, timing and retrieval from few examples. Elapsed time is used as information: clearing persistent state drops the timing task to 50%.
+
+### 4.2 Hard-route credit and capacity beyond activity (text8, 10M characters, one pass)
+
+| Change | Test bpc | Cost |
+| --- | --- | --- |
+| Value-informed alternative credit, p32/D4 | 2.507 → **2.371** | +0.3% fitting work; forward unchanged |
+| Same credit at depth 8 | 2.456 → **2.326** | |
+| Double the receiver pool at 8 selected writes/char | 2.371 → **2.345** | 1.65× fitting work; inference arithmetic flat (0.163 → 0.164 MFLOPs/position) |
+
+Counterfactual credit to unrealized alternatives works, at depth, for almost no extra work, and stored capacity improves quality without raising inference arithmetic.
+
+### 4.3 Character language (text8)
+
+Same test interval text8[95M:96M]; native and Transformers score reset T256 windows, LSTMs carry state; budgets are complete training compute.
+
+| Data | Budget | Ours | Tuned LSTM | Tuned Transformer | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| 10M | ≤ 352 TF | **1.888** (p96/d4, 6 passes) | 1.826 (LSTM-512) | 1.996 (TF128×4) | Win vs Transformers; **loss** vs LSTM |
+| 10M | ≤ 107 TF | **1.955** (p64/d4, 4 passes) | 1.915 (LSTM-384) | 2.215 (TF128×4) | Win vs Transformers; **loss** vs LSTM |
+| 10M | 888.8 TF (TF) | 1.888 at 352 TF (0.40×) and 0.18× inference | — | 1.908 (TF256×4, 4 passes) | **Win**: better quality at 0.40× training, 0.18× inference compute |
+| 90M | C, ≈ 0.96 PF | 1.800 (p64/d4, 0.97 PF) | 1.729 (LSTM-512, 0.91 PF) | 1.780 (TF192×4, 0.95 PF) | **Loss** to both |
+| 90M | D, ≈ 2.1 PF | 1.783 (p96/d4, 2.11 PF) | — | 1.704 (TF192×4, 2.07 PF); TF256×4 pending | **Loss** |
+
+![One-pass 10M native variants against saved dense controls (3 October): quality and whole-fit work in one unit](figures/current_native_language_status.png)
+
+At 10M characters the native model beats tuned Transformers at equal or lower compute; tuned LSTMs lead. At 90M both dense families lead, and the gap to the best dense reference is wider than at 10M (0.07–0.08 bpc versus 0.04–0.06). The direction of that trend is the central problem for the language front.
+
+### 4.4 Properly tokenized language (FineWeb, GPT-2 BPE)
+
+Fixed P24 integrated model, 3.16M parameters, two passes; DEV is 2,040 next-token targets (8 lanes × 255) from the FineWeb validation shard; count references are fitted on the identical TRAIN prefix and scored on the identical targets ([result](../experiments/results/token_language/aws_token_ngram_reference_20261006T143000Z.json), `experiments/token_ngram_reference.py`).
+
+| TRAIN tokens | Ours (DEV NLL, nats) | Kneser–Ney bigram | Kneser–Ney trigram | Add-one unigram |
+| --- | --- | --- | --- | --- |
+| 64K | **8.033** | 8.139 | 8.155 | 8.162 |
+| 256K | 7.742 | **7.647** | 7.648 | 7.972 |
+| 1M | 7.252 / 7.264 (seeds 6 / 7) | 7.251 | **7.217** | 7.950 |
+
+![token n-gram calibration](figures/token_ngram_calibration_20261006.png)
+
+**The native tokenized model currently performs at bigram level.** It beats the count models at 64K tokens, trails them at 256K, and ties the bigram at 1M while the trigram leads by 0.03–0.05 nats. The count models fit in seconds; the native 1M fit took 73 minutes at 480 training tokens/s on one CPU thread. Erasing persistent memory raises native loss by only 0.010 / 0.017 nats (seeds 6 / 7): memory is used, but carries little.
+
+The 2,040-target DEV slice has a standard error of about 0.09 nats for an unpaired mean and is harder than average: on 65,528 targets from the same offset the bigram scores 6.584 at 1M rather than 7.251. Differences of 0.02 nats on this slice, such as the 256K time-scale pair (+0.018 on seed 6, −0.022 on seed 7), do not separate variants. Native models are next scored on the larger slice.
+
+Two further completed results: credit window 64 lost to credit window 16 by 0.129 nats at 64K tokens (credit 16 retained), and slower memory evolution increased stored-content dependence in both seeds (payload erasure 0.043 / 0.032 versus 0.011 / 0.014) without a replicated quality gain.
+
+### 4.5 Anonymous interleaved processes (FAS v1)
+
+Early fault detection from anonymous interleaved event logs; test 2,000 clean and 2,000 faulty runs; references are six generic controls fitted on the same anonymous inputs.
+
+| Native seed | AUROC at 256 events | AUROC at 512 events |
+| --- | --- | --- |
+| 6 | **0.5998** | **0.7422** |
+| 7 | **0.5910** | **0.7360** |
+| 8 | **0.5864** | **0.7329** |
+| Best generic control | 0.5587 | 0.7272 |
+
+**Replicated win: all three seeds beat the best generic control at both horizons**, by +0.028 to +0.041 at 256 events and +0.006 to +0.015 at 512. FIFO and timing-aware de-interleaving learn their routes from hidden training identities; they are oracle-assisted diagnostics and are excluded from the comparison. The pre-registered, sealed FAS v2 protocol with stronger neural references is the confirmatory test.
+
+### 4.6 Typed tables
+
+| Task | Ours | Reference | Verdict |
+| --- | --- | --- | --- |
+| Synthetic mixed-type interaction, 64 FIT rows | **100%** on 256 DEV rows, 6,370 parameters | — | Mechanism learns (fixed predicates, one seed) |
+| Banknote, reserved test, 3 seeds | 91.8% | Boosted trees 94.0%; logistic regression 94.7% | **Loss** |
+
+![banknote reserved test](figures/banknote_reserved_test.png)
+
+### 4.7 Public benchmarks, speech and adaptation
+
+| Benchmark | Ours | Reference | Verdict |
+| --- | --- | --- | --- |
+| NeuroBench Mackey-Glass, τ 17, 30 repeats (sMAPE) | 14.84, 57.6 KB | LSTM 13.37 (490 KB), ESN 14.79 | **Loss**; smallest footprint |
+| NeuroBench primate reaching, development session (R²) | 0.724 | tinyRSNN 0.746 on that session | Below; six-session run pending |
+| Spiking speech, 512 private held-speaker utterances | 79.69% | Published SHD official test: 94–96% (different partition) | Official comparison pending |
+| Online adaptation to a new character stream | 3.191 → 3.096 bpc | — | Adapts during use |
+
+### 4.8 Learning dynamics: grokking
+
+On a harder modular task (train fraction 0.25), larger pools grok later (untied pool 2: 4,750 steps; pool 8: 8,000), and **asymmetric memory decay — private decay 10× shared — groks 1.7× sooner** (4,750 versus 8,250 steps for tied pool 8), as theory §427.3 predicted. Single seed.
+
+## 5. What the evidence says
+
+**What works.** The temporal mechanisms learn order, timing and retrieval from few examples where Transformers fail; time is used as information. Counterfactual route credit improves language at depth for 0.3% extra work. Stored capacity improves quality at flat inference arithmetic. On anonymous interleaved processes the native model beats every generic control across three seeds. At 10M characters it beats tuned Transformers at equal or lower compute.
+
+**What does not work yet.** Three measured problems explain most of the losses.
+
+1. **Memory carries little context in language.** Tokenized quality is at bigram level, and erasing persistent memory costs 0.01–0.02 nats. The model is mostly using the current token.
+2. **The implemented route credit is nearly blind on long horizons.** An exact audit on FAS (one race forced to each alternative, all other noise shared) finds correlation −0.08 and 0.29 between the implemented credit and the true consequence of each routing choice, with 60–64% sign agreement. Most of a choice's effect lies after the next prediction, and with long memories beyond the training segment. The proposed transported write credit scored worse (0.18 on R8) and was not promoted. This is why weight decay, extra write bandwidth, larger tied pools and a longer credit window all failed to move the language gap: the signal that would teach binding barely exists.
+3. **Throughput.** Training runs at 480–860 tokens/s on one CPU thread. A 100M-token fit takes days; GPT-2-scale data is out of reach for the current implementation. This is an implementation limit, not a property of the family.
+
+The gap to dense models widening from 10M to 90M characters is consistent with problems 1 and 2: dense models convert additional data into context use, and ours does not yet.
+
+## 6. The next decisive tests
+
+In priority order. Each states what it settles.
+
+| # | Test | Pass condition | What it settles |
+| --- | --- | --- | --- |
+| 1 | **Home-field external win**: sealed FAS v2, and one public irregular-time-series or event benchmark scored against its published leaderboard | Beat the strongest fair published or pre-registered reference at the primary endpoint | The substrate's advantage on the domain it was built for, in a form outsiders recognize |
+| 2 | **High-fidelity credit**: exact forced-lane credit as the training signal at pool 2–8, then a derived low-variance multi-step estimator | Estimator correlation with exact credit above 0.8; quality gains on FAS and tokens | Whether credit fidelity is the bottleneck; if not, the information path is |
+| 3 | **Memory carries context**: associative recall, induction/copy and selective copying with irregular gaps; tokens scored on the 65,528-target DEV slice | Solve recall at small scale; beat the trigram, then a 5-gram, on tokens | Whether persistent memory binds and retrieves; removes the bigram-level result |
+| 4 | **Parallel training**: between route decisions, decay and rotation are a diagonal linear recurrence; derive the exact parallel-scan decomposition and implement it | Exact equivalence to the sequential driver; measured tokens/s gain | Whether the family trains at language scale, and how races and routes sit on a scannable core |
+| 5 | **Measured efficiency at equal quality** on the task from test 1 | Wall time and energy per prediction on CPU/edge hardware below the published best model run for inference | The serving and hardware thesis, measured rather than modelled |
+
+Language scaling runs follow tests 2 and 3. New Transformer and LSTM training is retired: comparisons use published benchmark scores under the exact matching protocol and the dense results already completed.
+
+## 7. Where to read further
+
+- [Part II — Methods and machinery](II_METHODS.md): metric definitions, evaluation protocols, compute and work accounting, numerical contracts, admission gates, replay drivers and the hardware cost model.
+- [Part III — Experiment record](III_RECORD.md): every experiment entry, wins and losses, and the earlier narrative chapters as published.
+- [Model family overview](model_family_overview.md) → [formal core](model_family_specification.md) → [design rationale](model_family_design.md) → [composition rules](model_family_composition.md); [visual atlas](architecture_atlas.html); [claims and evidence map](architecture_evidence.md).
+- [THEORY.md](../experiments/THEORY.md) and its numbered notes; [FINDINGS.md](../experiments/FINDINGS.md) for the dated results log; [WIN_CRITERIA.md](../experiments/WIN_CRITERIA.md) for win definitions.

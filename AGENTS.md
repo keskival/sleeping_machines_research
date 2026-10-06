@@ -52,6 +52,16 @@
   exact matching data, tokenizer and scoring protocol. The 90M D Transformer 256x4 run already in progress on AWS
   completes as admitted; it is the last one. Completed dense-control results stay in the record and tables.
 
+# Report structure (user direction, 6 October 2026)
+
+- The report is split into three parts. `report/I_SCIENCE.md` (Part I — The science) is curated by hand and is the
+  reader-facing report: ambition, model family, theory, evidence per front and next decisive tests. Update it when a
+  completed result changes a headline, a front's verdict or the test priorities; keep it short.
+- `REPORT.md` stays the complete combined record that builders and publishers maintain. After changing it, run
+  `.venv-docker/bin/python report/split_report.py` to regenerate Part II (`report/II_METHODS.md`: protocols, accounting,
+  contracts, drivers) and Part III (`report/III_RECORD.md`: every experiment entry) and all three PDFs. Place new section
+  titles via `report/split_manifest.json` (patterns, overrides, reviewed list) when the run summary flags them.
+
 # Current product orders (read first)
 
 - `experiments/PRODUCT_ORDERS.md` lists the P0/P1 deliverables, hosts, queues and pass criteria that increase the

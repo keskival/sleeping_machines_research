@@ -110,8 +110,11 @@ modelled, not measured on silicon.
 - **Length generalization:** 100% retrieval at four times the training context.
 - **Speech (SHD):** 79.7% on 512 held-out development utterances from reserved speakers; official test untouched.
 
-Full evidence, protocols and every completed comparison, wins and losses alike: [REPORT.md](REPORT.md) and
-[the PDF](report/sleeping_machines_status.pdf). Earlier README text: [archive](report/archive/README_20261005T150000Z_previous.md).
+The report comes in three parts: [Part I — The science](report/I_SCIENCE.md) ([PDF](report/I_SCIENCE.pdf)): ambition,
+model family, theory, evidence per front and the next decisive tests; [Part II — Methods and machinery](report/II_METHODS.md)
+([PDF](report/II_METHODS.pdf)): protocols, accounting, contracts and drivers; [Part III — Experiment record](report/III_RECORD.md)
+([PDF](report/III_RECORD.pdf)): every experiment entry, wins and losses alike. The complete combined record remains
+[REPORT.md](REPORT.md) and [its PDF](report/sleeping_machines_status.pdf). Earlier README text: [archive](report/archive/README_20261005T150000Z_previous.md).
 
 <!-- scoreboard:start -->
 ## Scoreboard — wins, losses and open targets
@@ -171,7 +174,8 @@ semantics natively. All candidate discovery, teaching and optimizer work is coun
 
 | Document | Purpose |
 | --- | --- |
-| [Report and applications](REPORT.md) | Accessible overview, strongest results, potential and benchmark appendices |
+| [Report Part I — The science](report/I_SCIENCE.md) | Ambition, model family, theory, evidence per front, next decisive tests |
+| [Part II — Methods](report/II_METHODS.md) · [Part III — Record](report/III_RECORD.md) · [Complete record](REPORT.md) | Protocols, accounting and implementation checks; every experiment entry; the combined record |
 | [Research value plan](experiments/RESEARCH_VALUE_PLAN.md) | Prioritized uncertainty-reducing experiments, protocols and scaling gates |
 | [Integrated language](experiments/INTEGRATED_LANGUAGE.md) | Native receiver, episodic KV architecture, evidence and queues |
 | [Shared model](experiments/SHARED_MODEL.md) | Earlier cross-task implementation, adapters, contracts and retained evidence |
