@@ -4239,3 +4239,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS completed multi-seed time-stage reader prepared:** aws_private_bank_time_stage.py requires at least two distinct exact completed pairs, identical data/source/settings/scales/target populations across seeds, reports per-seed verdicts plus mean quality/work in consistent units, and distinguishes mean improvement from every-seed quality/Pareto wins. No pending/estimated work admitted. Syntax/empty-stage refusal pass; actual stage awaits four ledgers. Live firstscaledworkPID2777041/nativeworkPID2736252 verified.
+
+
+**AWS positive-time evidence figure published:** report/figures/aws_private_bank_time_256k_20261006.svg/.png show actual completed per-seed DEV trajectories/selected checkpoints and payload-only erasure costs; split quality and stronger stored-content dependence visible together. Input SHA manifest and plotting producer source retained. Render visually checked, no projected work/energy/public score. Active audits preserved.

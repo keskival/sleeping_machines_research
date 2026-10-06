@@ -377,3 +377,8 @@ Seed6 quality win0.018017339NLL; seed7 quality loss0.021881463NLL. The two-seed 
 
 
 **AWS256K time-pair payload-only evidence completed:** source/raw-fit/checkpointSHA and all intervention/RNG/partition checks pass. Erasing stored payload while preserving arrival/seen and message state raises scale1NLL.011118247/.013576500,scale1/16NLL.042988906/.032270319(seeds6/7). Slower evolution increases useful stored-content dependence in both seeds. Metadata-only erasure still improves scale1−.015779112/−.024449096 andscaled−.012348304/−.014775777. Changed content can alter later routes; frozen causal interventions are not retrained/additive attribution. Selected quality remains split-seed, mean scale1better. Receipt aws_private_bank_time_256k_audit_20261006T041757Z_payload.json; exact whole-work pending, no publicbenchmark claim.
+
+
+![Completed paired development curves and payload utility](../figures/aws_private_bank_time_256k_20261006.svg)
+
+Dots mark each selected checkpoint. The two-seed mean favors scale1 by0.001932062NLL; slower evolution increases payload-erasure cost in both seeds. Source-bound figure inputs are recorded beside the PNG/SVG exports. Complete-work results remain pending.
