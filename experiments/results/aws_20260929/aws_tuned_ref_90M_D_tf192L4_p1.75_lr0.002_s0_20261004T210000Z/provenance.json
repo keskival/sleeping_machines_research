@@ -1,0 +1,37 @@
+{
+  "run_tag": "aws_tuned_ref_90M_D_tf192L4_p1.75_lr0.002_s0_20261004T210000Z",
+  "script": "experiments/e64_lm_baselines.py",
+  "arguments": [
+    "--model",
+    "tf",
+    "--D",
+    "90000000",
+    "--size",
+    "192",
+    "--layers",
+    "4",
+    "--passes",
+    "1.75",
+    "--dropout",
+    "0.1",
+    "--valid",
+    "200000",
+    "--lr",
+    "0.002",
+    "--warmup",
+    "500"
+  ],
+  "output_redirected": true,
+  "source_sha256": "5cdbe33462fb6d9f987600c62fc479187392fb1a89361fc37d2af488d905c53b",
+  "git_commit": "efc26e477b45fe809156c33f7ac50421ba604404",
+  "limits": {
+    "MEM_CAP_KB": "24000000",
+    "MEM_CAP_RSS_KB": "6000000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "64800"
+  },
+  "start_utc": "2026-10-05T22:46:55Z",
+  "status": "completed",
+  "wall_s": 32766.045,
+  "peak_rss_kb": 3472320
+}
