@@ -4146,3 +4146,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled smoke full-work audits admitted20261006T040519Z:** idle slot1 unique sequentialaws_private_bank_time_smoke_work_20261006T040519Z scale1/1over16, actual completed fit dependencies and frozen source closure verified.1800s each with1.2GBRSS/5GBVMS/8GiBfloor; cap exceeds measured approximately32min64K replay scaled to1/8targets with ample tracing/evaluation margin. Full model/optimizer/state/cursor/all-RNG equality and complete arithmetic formulas mandatory. Existing 256K audit slot3/dense2 preserved. Accounting and scaled quality remain pending together.
+
+
+**AWS scale comparison reader implemented:** aws_private_bank_time_comparison.py requires completed exact full-state/formula-covered ledgers, identical full data/source/settings/exposure and source-bound recipes differing only by positive memory scale. Same GFLOPs/fit-MFLOPs-target/inference-MFLOPs-target columns and explicit paired-seed quality/Pareto verdict. Missing work is refused; no estimated denominator or memory claim. Syntax/refusal pass; actual smoke pair audit pending.
