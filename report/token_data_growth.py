@@ -184,7 +184,7 @@ def message_factor_pages():
 
 
 def measured_pages():
-    name = 'token_language_measured_scaling_20261006_v2'
+    name = 'token_language_measured_scaling_20261006_v3'
     path = ROOT / ('report/figures/' + name + '.json')
     if not path.exists():
         return []
@@ -196,5 +196,5 @@ def measured_pages():
     return [[('h1', 'Appendix. Measured language quality, capacity and compute'),
         ('p', 'Sleeping Machines pursues a general-purpose substrate spanning language/reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. Completed integrated language measurements show quality improving with data and a useful intermediate capacity choice.'),
         ('figure', (name, 174)),
-        ('p', 'P16 selected NLL improves8.297491→8.099440 from8Kto64K TRAINtokens; P24 improves8.033311→7.741714→7.251503 from64Kto256Kto1M. The256Kto1M gain is0.490211NLL, seed6 at fixed recipe. At64K/P24 beats P16/P32 by0.066129/0.057108NLL, seed6. The independent P24seed7point is8.078991. Each plotted point is a completed fit.'),
+        ('p', 'P16 selected NLL improves8.297491→8.099440 from8Kto64K TRAINtokens; P24 improves8.033311→7.741714→7.251503 from64Kto256Kto1M. The256Kto1M gain is0.490211NLL, seed6 at fixed recipe. At64K/P24 beats P16/P32 by0.066129/0.057108NLL, seed6. The independent P24seed7point is8.078991. At1M/P24 beats P32 by0.012258NLL; both select step2,048. Each plotted point is a completed fit.'),
         ('p', receipt['scope'])]]

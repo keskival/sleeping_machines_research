@@ -14,7 +14,7 @@ def build(prefix):
         p=ROOT/name;blob=p.read_bytes();provenance[name]=hashlib.sha256(blob).hexdigest();r=json.loads(blob)
         assert r['status']=='completed';return r
     rows=[]
-    for tokens,label,widths in ((8192,'8k',(16,)),(65536,'64k',(16,24,32)),(262144,'256k',(24,32)),(1048576,'1m',(24,))):
+    for tokens,label,widths in ((8192,'8k',(16,)),(65536,'64k',(16,24,32)),(262144,'256k',(24,32)),(1048576,'1m',(24,32))):
         for width in widths:
             tag=f'curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1' if label=='8k' else f'curie_data_growth_tokens_{label}_b64_c16_p{width}_s6_20261005_v1'
             r=read(f'experiments/results/token_language/{tag}.json')

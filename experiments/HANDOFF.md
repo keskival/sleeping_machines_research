@@ -1,3 +1,14 @@
+# Crossed-width scaling visualization refreshed — 6 October 2026
+
+Source-checked figure v3 now includes completed P24/P32 at1M, historical v1/v2
+preserved. PNG visually inspected; standalone SVG/JSON preserved. Collector v6
+contains eight completed original-stage cells. No fitted curve/exponent or larger
+cost imputation; P16 at256K/1M missing, crossed quality grid remains incomplete.
+RootREPORT and PDFproducer point to v3; PDF publication still pending. Producer
+checks below exclude incomplete utility while admitting completed P32quality.
+P32utility PID115436 verified live; preserve guarded queue. Next finishutility,
+review completed width/data packet and select economical credit/memory diagnosis.
+
 # P32/1M completed; selected utility live — 6 October 2026
 
 Guarded fit exited0 at04:22:14UTC. Completed2,097,136targets/4096updates,
