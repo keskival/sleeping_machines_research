@@ -1,3 +1,15 @@
+# Longer-credit utility and exact work follow-through queued — 6 October 2026
+
+Credit64fit PID131439 verified live(~465MiBRSS). New same-prefix followthrough
+session waits entirefit, requires131056completedtargets/credit64/sourceSHA,
+then uniqueonejob streamedutility600s and exactfullfit token_stage_work5400s.
+Both use5GBVMS/1200000KiBRSS/8GiBfloor/oneCPUthread; no concurrent modeljob.
+Matched RNG/partition gates beforework; audit requires owncurveparity and every
+256optimizerupdates/completeformulas. Existing64Kfulltrace workload motivates
+5400s allowance; ordinarywall is separate. Charge changed replay/graph work,
+not assumedcredit-window savings. Bashsyntax passed; all newmetrics pending.
+No promotedarchitecture or4Mfit. PDFrefresh of completed1Mpacket next.
+
 # Replicated 1M utility; bounded longer-credit comparison — 6 October 2026
 
 Seed7 selectedutility exited0 at05:50:44: contextgain0.995918751,
