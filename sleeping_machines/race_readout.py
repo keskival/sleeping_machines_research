@@ -330,7 +330,7 @@ class BindingMemory(nn.Module):
 
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
-                    deterministic=False, compiled=False, binding=None, record=None, sparse=False):
+                    deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -339,6 +339,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     binding: a BindingMemory. The readout then reads the binding slots (readout built with heads=1, pool=Ub). Each event
     is written to one binding slot drawn by the posterior race (argmax when deterministic); the first event of a stream
     takes slot 0. The deep layers keep their learned races (no override).
+    skip_deep: no deep race layers; the event embedding feeds the binding memory and readout directly (THEORY §438
+    ablation: are learned-route layers needed when binding and readout are posterior/likelihood-driven?).
     sparse: inference only (no grad): deep layers run sparse_layer_step (winner-only computation, cached slot reads);
     outputs equal the dense path (tests/test_race_readout.py).
     record: optional list; per event it receives dict(slot=written binding slot (n,) or None, hazard=the rescaled
@@ -407,7 +409,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                                  for h in range(H)], -1)
             x = torch.where(has_ctx[:, None], F.layer_norm(x + torch.sigmoid(model.source_gate(x)) * context,
                                                              (model.total_payload,)), x)
-            for depth in range(D):
+            for depth in (() if skip_deep else range(D)):
                 Lp = layers[depth]
                 noise = torch.stack([torch.empty(U, dtype=torch.float64).exponential_() for _ in range(H)])
                 if deterministic:
@@ -428,7 +430,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     wrote = (arr[depth] != old_arr) | (seen[depth] & ~old_seen)
                     base = now[:, None].expand(n, H * U) if t_ref is None else t_ref
                     t_ref = torch.where(wrote.reshape(n, H * U), now[:, None], base)
-            ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
+            if not skip_deep:
+                ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
             if binding is not None:
                 if t_ref is None:
                     t_ref = now[:, None].expand(n, Ub).clone()

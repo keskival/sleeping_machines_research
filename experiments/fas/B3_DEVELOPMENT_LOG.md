@@ -180,3 +180,13 @@ oracle's .821.
 
   The learned route never binds. Posterior routing turns the same route into inference. This is consistent with the
   credit-blindness audit (§429). Single seed; the learned arm has no recruitment aids (free-slot bias and similar).
+- 6 Oct 19:35 UTC: **skip-deep ablation** (§438: binding memory and race readout without the deep learned-route layers):
+
+  | processes | with deep layers (α / NLL) | without (α / NLL) |
+  |---|---|---|
+  | 3 | .934 / 1.73 | .938 / 1.75 |
+  | 6 (9 slots) | .90 / 1.82 | .74 / 2.25 |
+
+  The deep layers' history context matters as concurrency grows. FAS v2 has ~36 items in flight, so C1 keeps them; no
+  skip-deep v2 configuration is declared. For §438 this means predictive routing should *upgrade* the deep layers' routes,
+  not remove the layers.

@@ -63,12 +63,15 @@ def alpha_of(slots, who, lens):
     return same / max(n, 1)
 
 
+SKIP = dict(deep=False)
+
+
 def evaluate(model, ro, bm, data, T, deterministic=False):
     stamps, marks, ids, who, lens = batch(data, T)
     rec = []
     with torch.no_grad():
         ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=1, binding=bm, record=rec,
-                                          deterministic=deterministic)
+                                          deterministic=deterministic, skip_deep=SKIP['deep'])
     mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
     slots = torch.stack([r['slot'] for r in rec], 1).numpy()
     return float(-(ll * mask).sum() / mask.sum()), alpha_of(slots, who, lens)
@@ -88,10 +91,12 @@ def main():
     p.add_argument('--train-argmax', action='store_true', help='hard-EM writes in training (deterministic races)')
     p.add_argument('--hidden', type=int, default=32); p.add_argument('--no-context', action='store_true')
     p.add_argument('--additive-context', action='store_true')
+    p.add_argument('--skip-deep', action='store_true', help='no deep race layers (THEORY §438 ablation)')
     p.add_argument('--learned-routing', action='store_true', help='comparison: query/key write race with linear write credit (§437 T1)')
     p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
                    'counts (THEORY §434.1.2), e.g. 1,4,16')
     a = p.parse_args()
+    SKIP['deep'] = a.skip_deep
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     V_TOY = a.R + 1
     medians = np.exp(np.linspace(math.log(3.), math.log(20.), a.R))[rng.permutation(a.R)]
@@ -110,7 +115,7 @@ def main():
         idx = rng.integers(0, len(train), a.lanes)
         stamps, marks, ids, _, lens = batch([train[i] for i in idx], T)
         ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=step, binding=bm,
-                                          deterministic=a.train_argmax)
+                                          deterministic=a.train_argmax, skip_deep=a.skip_deep)
         mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
         loss = -(ll * mask).sum() / mask.sum()
         opt.zero_grad(); loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, 1.); opt.step()
