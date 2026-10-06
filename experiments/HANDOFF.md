@@ -1,3 +1,17 @@
+# Longer-credit diagnosis and selected-initial utility — 6 October 2026
+
+Utility completedexit0 at05:57:28. Selectedinitialcontextgain0, all history
+interventions unchanged within1.22e-7NLL; matched RNG/partition pass. This is
+initialization, not learned memory evidence. Exactfullwork PID132567 verified
+live(~480MiBRSS),5400s serialqueue; preserve source pins.
+
+New theory/TOKEN_SPLIT_HORIZON_DIAGNOSIS_20261006.md records coupled factual/
+alternativecredit failure and the off-diagonal diagnosis needed before repair.
+Checkpoint192 gradientnorm26.662 versus5.527 and teacherweight180 versus52
+suggest testing each horizon separately; four sparse logs do not prove variance
+or cause. No architecture edit/newfit admitted. Required diagonalparity/causality/
+gradient/resume contracts and completework precede any promotion.
+
 # Longer-credit64K completed: quality loss — 6 October 2026
 
 Guardedexit0 at05:56:33;131056targets/256updates/two passes. Credit64selected
