@@ -27,7 +27,7 @@ The common training cap C is fixed from the C1 smoke.
 
 | id | configuration | theory | question |
 |---|---|---|---|
-| C1 | race readout + binding memory U_b = 40 + step-class mixture M = 3 | §§433–436 | main candidate |
+| C1 | race readout (hidden 64) + gated binding memory U_b = 40 + step-class mixture M = 3 | §§433–436 | main candidate |
 | C2 | standard native head (native.py, pool 8) | — | our previous architecture on v2 |
 | C3 | C1 without step classes (single duration law per slot) | §435.2 | does type–duration coupling pay at p = .02? |
 | C4 | C1 with U_b = 24 (below KλW ≈ 36) | §434.3 | does capacity below the Little's-law bound cost AUROC? |

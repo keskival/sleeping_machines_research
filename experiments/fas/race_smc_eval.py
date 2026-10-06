@@ -94,7 +94,8 @@ def main():
     if args.get('binding_slots'):
         readout = RaceReadout(V, 1, args['binding_slots'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
                               type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
-        binding = BindingMemory(args['heads'] * args['payload'], args['binding_slots'], args['payload'], tau_max=args.get('tau_max') or 1000.)
+        binding = BindingMemory(args['heads'] * args['payload'], args['binding_slots'], args['payload'], tau_max=args.get('tau_max') or 1000.,
+                                gated=args.get('binding_gated', False))
     else:
         readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
                               type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))

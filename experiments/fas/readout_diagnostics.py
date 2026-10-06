@@ -61,7 +61,8 @@ def main():
     Ub = args['binding_slots']
     readout = RaceReadout(V, 1, Ub, args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
                           type_durations=args.get('type_durations', False), classes=args.get('step_classes', 0))
-    binding = BindingMemory(args['heads'] * args['payload'], Ub, args['payload'], tau_max=args.get('tau_max') or 1000.)
+    binding = BindingMemory(args['heads'] * args['payload'], Ub, args['payload'], tau_max=args.get('tau_max') or 1000.,
+                                gated=args.get('binding_gated', False))
     wpath = Path(res['selected_weights']); wpath = wpath if wpath.is_absolute() else ROOT / wpath
     ck = torch.load(wpath, weights_only=True)
     model.load_state_dict(ck['model']); readout.load_state_dict(ck['readout']); binding.load_state_dict(ck['binding'])
