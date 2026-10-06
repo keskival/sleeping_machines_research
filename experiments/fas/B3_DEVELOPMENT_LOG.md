@@ -27,10 +27,10 @@ The common training cap C is fixed from the C1 smoke.
 
 | id | configuration | theory | question |
 |---|---|---|---|
-| C1 | race readout (hidden 64) + gated binding memory U_b = 40 + step-class mixture M = 3 | §§433–436 | main candidate |
+| C1 | race readout (hidden 64) + gated binding memory U_b = 54 (1.5 × anonymous peak concurrency) + step-class mixture M = 3 | §§433–436 | main candidate |
 | C2 | standard native head (native.py, pool 8) | — | our previous architecture on v2 |
 | C3 | C1 without step classes (single duration law per slot) | §435.2 | does type–duration coupling pay at p = .02? |
-| C4 | C1 with U_b = 24 (below KλW ≈ 36) | §434.3 | does capacity below the Little's-law bound cost AUROC? |
+| C4 | C1 with U_b = 36 (exactly the anonymous peak, no headroom) | §434.3 | does binding need spare capacity (toy: α .48 vs .90)? |
 | C5–C8 | reserved for iterations after error analysis of C1–C4 | | |
 
 Evaluation-only on the selected C1 checkpoint: particle evaluation, L = 1, 4, 16 (§434.1.2). This does not count
@@ -126,3 +126,18 @@ oracle's .821.
   - argmax α .917 vs .892.
 
   C1's 3 step classes stand. Single seed.
+- 6 Oct 18:48 UTC: **capacity toy** (6 concurrent processes, Bayes-greedy ceiling α .886, 600 steps):
+
+  | slots | argmax α | validation NLL |
+  |---|---|---|
+  | 3 | .31 | 2.19 |
+  | 6 | .48 | 2.11 |
+  | 9 | **.90** | **1.82** |
+
+  Binding needs *spare* capacity, not just capacity equal to concurrency. Early posterior mis-writes need free slots
+  to escape into; without them, shared slots lock in. This is the optionality argument of §§422–424 measured on
+  binding. The earlier remark that binding gets harder to learn at higher concurrency is withdrawn: the K = 6 arm with
+  6 slots had zero headroom.
+
+  **Revised sizing rule: U = 1.5 × anonymous peak concurrency** (v2: 1.5 × 36 = 54). C1 and C3 now use U = 54. C4
+  becomes the no-headroom ablation (U = 36). None of these queues has started. Single-seed toy evidence.
