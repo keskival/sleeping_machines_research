@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-05",
   "classification": "Private review draft; no external distribution by this work",
   "source_accessed_date": "2026-10-03",
   "sources": {
@@ -172,12 +172,6 @@
       "short": "Timing-coded LLM",
       "url": "https://arxiv.org/abs/2609.05151",
       "scope": "Time-to-first-spike coding on GPT-2/BERT, up to 1.5B parameters; authors report a clear perplexity gap on language modeling."
-    },
-    "R4": {
-      "label": "Completed cross-domain headline evidence — 6 October 2026",
-      "short": "Cross-domain evidence",
-      "url": "../report/unification_headline_evidence_20261006_v1.json",
-      "scope": "Fourteen SHA-bound completed results, selections, generic controls and artifact receipts. Three-seed FAS v1 wins; synthetic typed witness; two-seed1M token-language learning and memory utility. Separately fitted instances."
     }
   },
   "slides": [
@@ -492,31 +486,31 @@
     },
     {
       "kind": "cards",
-      "section": "Replicated and integrated platform evidence",
-      "title": "One temporal family learns across three data structures.",
-      "subtitle": "Different interfaces; addressed memory, temporal computation and counterfactual route credit.",
+      "section": "Early proof",
+      "title": "The language experiments establish three useful facts.",
+      "subtitle": "Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.",
       "sources": [
-        "R4"
+        "R1"
       ],
-      "notes": "All headline numbers bind completed result files in report/unification_headline_evidence_20261006_v1.json. FAS means over seeds6/7/8 versus the saved six anonymous generic controls, excluding privileged identity-trained diagnostics. Typed synthetic witness has64FIT/256DEV rows,fixed predicates,one seed. Token language uses GPT-2 FineWeb1MTRAIN,two passes,2040DEV targets,two seeds. Independently fitted family members are evidence for construction breadth; shared-parameter skill transfer, real mixed-type/tree benchmarks, public Transformer advantage and scaling laws are subsequent tests.",
+      "notes": "T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is {best_lstm_gain:.4f} bpc, with {best_lstm_fit_ratio:.2f} times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.",
       "cards": [
         {
-          "label": "ANONYMOUS INTERLEAVED LOGS",
-          "metric": "0.592 vs 0.559 AUROC",
-          "body": "FAS at 256 events: all three native seeds beat six saved generic controls. At 512 events: mean 0.737 vs 0.727. Replicated v1 quality wins; sealed v2 follows."
+          "label": "IT LEARNS REAL TEXT",
+          "metric": "1.888 bits/char",
+          "body": "Better than the 4-layer Transformer baseline (1.908) with 40% of its training compute. The larger LSTM (1.799) is still ahead."
         },
         {
-          "label": "MIXED TYPES, SMALL DATA",
-          "metric": "100% on 256 DEV rows",
-          "body": "64 FIT rows;6,370 parameters. Typed comparisons feed the integrated temporal core. Category/order/missingness and alternative-write checks pass. Synthetic interaction; fixed predicates."
+          "label": "TRAINING UNCHOSEN PATHS HELPS",
+          "metric": "−{credit_gain:.3f} bits/char",
+          "body": "Giving learning signal to the paths the model did not take cuts the error of the same small model, for 0.3% more training compute."
         },
         {
-          "label": "TOKEN LANGUAGE, USEFUL MEMORY",
-          "metric": "7.2515 / 7.2636 NLL",
-          "body": "Two seeds at 1M TRAIN tokens. Erasing persistent memory raises loss in both. Fixed-width quality improves with data. DEV evidence; public Transformer comparison follows."
+          "label": "MORE MEMORY, SAME RUNNING WORK",
+          "metric": "16 → 32 slots",
+          "body": "Doubling memory slots lowers the error while each input still updates only 8 slots. Training cost rises; running cost barely changes."
         }
       ],
-      "banner": "A common construction across data forms. Next: shared skills, real tables and the reserved larger language point."
+      "banner": "Single runs on one dataset. The next proof is repeated runs plus a measured cost advantage."
     },
     {
       "kind": "scatter",
@@ -1396,36 +1390,8 @@
         "P4",
         "P5"
       ]
-    },
-    {
-      "kind": "cards",
-      "section": "Appendix / historical language mechanism proof",
-      "title": "The language experiments establish three useful facts.",
-      "subtitle": "Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.",
-      "sources": [
-        "R1"
-      ],
-      "notes": "T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is {best_lstm_gain:.4f} bpc, with {best_lstm_fit_ratio:.2f} times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.",
-      "cards": [
-        {
-          "label": "IT LEARNS REAL TEXT",
-          "metric": "1.888 bits/char",
-          "body": "Better than the 4-layer Transformer baseline (1.908) with 40% of its training compute. The larger LSTM (1.799) is still ahead."
-        },
-        {
-          "label": "TRAINING UNCHOSEN PATHS HELPS",
-          "metric": "−{credit_gain:.3f} bits/char",
-          "body": "Giving learning signal to the paths the model did not take cuts the error of the same small model, for 0.3% more training compute."
-        },
-        {
-          "label": "MORE MEMORY, SAME RUNNING WORK",
-          "metric": "16 → 32 slots",
-          "body": "Doubling memory slots lowers the error while each input still updates only 8 slots. Training cost rises; running cost barely changes."
-        }
-      ],
-      "banner": "Single runs on one dataset. The next proof is repeated runs plus a measured cost advantage."
     }
   ],
-  "editorial_revision": "Completed cross-domain evidence anchors supporting universal substrate ambition; all historical evidence retained.",
+  "editorial_revision": "20261005_unified_learning_representation_execution",
   "main_slide_count": 21
 }

@@ -102,13 +102,13 @@ This construction combines familiar vector operations with temporal computation 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 9. The language experiments establish three useful facts.
+## 9. One temporal family learns across three data structures.
 
-Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.
+Different interfaces; addressed memory, temporal computation and counterfactual route credit.
 
-T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is 0.0081 bpc, with 2.89 times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.
+All headline numbers bind completed result files in report/unification_headline_evidence_20261006_v1.json. FAS means over seeds6/7/8 versus the saved six anonymous generic controls, excluding privileged identity-trained diagnostics. Typed synthetic witness has64FIT/256DEV rows,fixed predicates,one seed. Token language uses GPT-2 FineWeb1MTRAIN,two passes,2040DEV targets,two seeds. Independently fitted family members are evidence for construction breadth; shared-parameter skill transfer, real mixed-type/tree benchmarks, public Transformer advantage and scaling laws are subsequent tests.
 
-- [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
+- [R4: Completed cross-domain headline evidence — 6 October 2026](../report/unification_headline_evidence_20261006_v1.json) — Fourteen SHA-bound completed results, selections, generic controls and artifact receipts. Three-seed FAS v1 wins; synthetic typed witness; two-seed1M token-language learning and memory utility. Separately fitted instances.
 
 
 ## 10. Single pass: error versus training compute.
@@ -418,6 +418,15 @@ The founder profile and portfolio are linked from the founder slide (F1, F3). Tr
 Summaries of each paper's own claims; datasets, scales and compute conventions differ from ours.
 
 
+
+
+## 41. The language experiments establish three useful facts.
+
+Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.
+
+T256 test values come from completed held-out evaluations; training scores are excluded. This frozen numerical comparison is the 10M experiment; the completed larger-data result is separately scoped in the protocol appendix and current report. One nominal pass uses about 9.994M training positions. A single seed and differing native/control training order limit generalization. The p96 improvement over LSTM is 0.0081 bpc, with 2.89 times fitting work; this one-pass row is a quality win at higher training compute; the matched-compute wins (slide 2) use the multi-pass and wider rows.
+
+- [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
 ## Reproduce and inspect

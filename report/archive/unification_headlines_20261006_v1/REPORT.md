@@ -4,20 +4,6 @@ A universal trainable computing substrate that computes through time
 
 Tero Keski-Valkama and Karoliina Salminen · Research report · 5 October 2026
 
-## Headline evidence for the universal substrate
-
-**Token sequences, anonymous interleaved process logs and mixed-type comparisons now learn within the temporal/sparse family.** They exercise different information structures through addressed messages, persistent memory, temporal computation and credit to unrealized alternatives. This is evidence for a common computing construction spanning small-data tables, asynchronous analytics and tokenized language.
-
-| Evidence front | Completed indication | What it establishes |
-| --- | --- | --- |
-| **Anonymous interleaved processes** | FAS mean AUROC **0.5924 vs 0.5587** at 256 events; **0.7370 vs 0.7272** at 512 events. All three native seeds beat the best of six saved generic controls at both points. | Replicated early-detection quality wins on FAS v1. Privileged identity-assisted diagnostics are excluded; sealed v2 and stronger neural references are the next benchmark. |
-| **Mixed-type tables, small data** | **100% accuracy on 256 synthetic DEV rows from 64 FIT rows**,6,370 learned parameters. Numeric, categorical, Boolean and missingness comparisons enter before neural message processing. | The integrated core learns the mixed-type interaction; relabeling, column-order, missing-value semantics and actual alternative-write credit checks pass. Fixed predicates, one seed; learned discovery and real tables versus trees are the next tests. |
-| **Properly tokenized language, growing data** | P24 reaches **7.2515 / 7.2636 DEV NLL** at 1M TRAIN tokens across two seeds. Memory erasure raises loss **0.0104 / 0.0174**. Fixed-width seed6 quality improves **8.0333 → 7.7417 → 7.2515** from 64K → 256K → 1M TRAIN tokens. | Replicated language learning and useful persistent memory, with measured data-growth quality. Two passes; public Transformer quality, full larger fitting work and the reserved 4M point are the next comparisons. No scaling law is fitted. |
-
-**The unifying advantage is the reusable construction:** type-respecting comparisons and tokens become events; events recruit meaningful state and teach hard routes through their consequences. Available capacity, selected activity, temporal learning and execution are separate design axes. The larger ambition connects language and reasoning, multimodal world models, embodiment, continual learning, communication, self-design and clockless hardware through this substrate. Joint training with shared parameters must next measure skill transfer and donor-skill retention. These completed instances were trained separately.
-
-Source-bound numerical packet: [headline evidence](report/unification_headline_evidence_20261006_v1.json).
-
 ## Scoreboard — wins, losses and open targets
 
 **5 wins against saved references** in 19 headline comparisons. Definitions: experiments/WIN_CRITERIA.md; orders: experiments/PRODUCT_ORDERS.md. Single seeds unless stated; tuned references and confirming seeds are pending.
@@ -4587,7 +4573,7 @@ only state-independent lexical lookup; event delivery, races, state, keys/values
 sparse writes and continuation credit retain their operations. Original kernels
 remain unchanged; no full-trajectory parity or quality win claimed.
 
-Typed synthetic witness:100% accuracy on256DEV rows after1,024updates from 64 FIT
+Typed synthetic witness:100% accuracy on256DEV rows after1,024updates from64FIT
 rows (16,384 row presentations),6,370parameters, finalNLL0.0000898102,52.7048s.
 First100% atstep496; first64updates exactly reproduce the prior pilot. All
 column-order/category-relabel, missing-versus-zero, row-reset, shared path,
@@ -4783,17 +4769,3 @@ Scope: seed6,2K GPT-2 FineWeb,4,080 fitting targets/two passes/8updates,2,040DEV
 
 
 **64K factual64/alternative16 completed — 6 October:** selected DEV NLL8.092461799 atstep128; initialization8.162279795 and final8.286884861. Shortening alternative-write teacher horizon64→16 while retaining factual gradient64 improves selected quality by**.069817996NLL** against the completed64/64 control. It still loses**.059151085NLL** to factual16/alternative16 (8.033310714). Seed6,P24D2H2U4,same GPT-2 data/131,056 fitting targets/256updates/four checks plus initialization/2,040DEV targets; all non-horizon settings and data hashes match. Total ordinarywall269.449s,peakRSS496332KiB,guardedexit0at06:55:33UTC. Source curie_split_horizon_64k_f64_a16_s6_20261006_v1.json. This identifies a useful teacher-horizon change at fixed factual64 in this recipe; the reverse16/64 arm is running. Selected utility and exact full-work remain queued, so no matched-compute or Pareto verdict yet. Original16/16member retained.
-
-
-**Completed64K separated-horizon quality comparison — 6 October:**
-
-| Factual horizon | Alternative teaching horizon | Selected DEV NLL | Verdict versus16/16 |
-| ---: | ---: | ---: | --- |
-| 16 | 16 | 8.033311 | Retained leading recipe |
-| 64 | 16 | 8.092462 | Loss +0.059151 |
-| 16 | 64 | 8.126795 | Loss +0.093484 |
-| 64 | 64 | 8.162280 | Loss +0.128969; selects initialization |
-
-Scope: seed6,P24D2H2U4,GPT-2 FineWeb64K/two passes/131,056 fitting targets/256updates/four DEV checks plus initialization/2,040DEV targets,all non-horizon settings/data matched. Both off-diagonals selectstep128. F16/A64 final8.261615,totalwall282.033s,peakRSS495836KiB;guardedexit0at07:00:21UTC. Each individual horizon extension loses quality in this completed recipe; retain16/16. This is a diagnosed learning-policy result, not a family limit on useful memory. Full off-diagonal work replays are queued/running, so comparable-compute verdicts await those receipts.
-
-Selected frozen utility forF64/A16 andF16/A64: context gains+.183097/+.122484NLL; memory-state erasure deltas+.004307/+.001647. Full-message-state erasure deltas−.009977/−.006562 and both-state deltas−.013729/−.008505 are preserved. These interventions include timing/presence/normalization effects and are not retrained ablations. Matched route RNG/partition checks pass;2,040DEV targets. Source curie_split_horizon_64k_utility_20261006_v1.json.

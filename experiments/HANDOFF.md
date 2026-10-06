@@ -4430,3 +4430,19 @@ Scope: seed6,2K GPT-2 FineWeb,4,080 fitting targets/two passes/8updates,2,040DEV
 **64K factual64/alternative16 completed — 6 October:** selected DEV NLL8.092461799 atstep128; initialization8.162279795 and final8.286884861. Shortening alternative-write teacher horizon64→16 while retaining factual gradient64 improves selected quality by**.069817996NLL** against the completed64/64 control. It still loses**.059151085NLL** to factual16/alternative16 (8.033310714). Seed6,P24D2H2U4,same GPT-2 data/131,056 fitting targets/256updates/four checks plus initialization/2,040DEV targets; all non-horizon settings and data hashes match. Total ordinarywall269.449s,peakRSS496332KiB,guardedexit0at06:55:33UTC. Source curie_split_horizon_64k_f64_a16_s6_20261006_v1.json. This identifies a useful teacher-horizon change at fixed factual64 in this recipe; the reverse16/64 arm is running. Selected utility and exact full-work remain queued, so no matched-compute or Pareto verdict yet. Original16/16member retained.
 
 **Current prioritized fit:** curie_split_horizon_64k_f16_a64_s6_20261006_v1,started06:55:33 in existing guarded admission session. Follow-through selected utility and exact full-state/work replays already queued. Remaining mechanism gaps: optional scheduling/larger useful sparse capacity/public-reference quality;4M reserved. No architectural departure.
+
+
+**Completed64K separated-horizon quality comparison — 6 October:**
+
+| Factual horizon | Alternative teaching horizon | Selected DEV NLL | Verdict versus16/16 |
+| ---: | ---: | ---: | --- |
+| 16 | 16 | 8.033311 | Retained leading recipe |
+| 64 | 16 | 8.092462 | Loss +0.059151 |
+| 16 | 64 | 8.126795 | Loss +0.093484 |
+| 64 | 64 | 8.162280 | Loss +0.128969; selects initialization |
+
+Scope: seed6,P24D2H2U4,GPT-2 FineWeb64K/two passes/131,056 fitting targets/256updates/four DEV checks plus initialization/2,040DEV targets,all non-horizon settings/data matched. Both off-diagonals selectstep128. F16/A64 final8.261615,totalwall282.033s,peakRSS495836KiB;guardedexit0at07:00:21UTC. Each individual horizon extension loses quality in this completed recipe; retain16/16. This is a diagnosed learning-policy result, not a family limit on useful memory. Full off-diagonal work replays are queued/running, so comparable-compute verdicts await those receipts.
+
+Selected frozen utility forF64/A16 andF16/A64: context gains+.183097/+.122484NLL; memory-state erasure deltas+.004307/+.001647. Full-message-state erasure deltas−.009977/−.006562 and both-state deltas−.013729/−.008505 are preserved. These interventions include timing/presence/normalization effects and are not retrained ablations. Matched route RNG/partition checks pass;2,040DEV targets. Source curie_split_horizon_64k_utility_20261006_v1.json.
+
+**Headline publication completed:** README/report cover/PITCH and main/full pitch deck now present replicatedFASv1 wins,integrated syntheticmixed-type learning and two-seedtokenlanguage/useful-memory results as anchors for universal substrate breadth. report/unification_headline_evidence_20261006_v1.json pins14inputs. ReportPDF256pages adds onefront evidencepage and preserves all255priorpage texts; deck41slides retainsoldlanguageproofinappendix. Render/geometry/hash checks and visual review pass. Sources and previousPDFs archived. Cross-domainsharedskilltransfer is explicitly the next test; no hypotheticalbenchmark inserted. Currentmodeljob: F64/A16 exact64Kwork replay started07:01:23UTC,followedF16/A64; sources frozen.

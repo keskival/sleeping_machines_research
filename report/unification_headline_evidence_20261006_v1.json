@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "fas": {
+    "256": {
+      "native_seeds": [
+        0.59979425,
+        0.591049,
+        0.5863735
+      ],
+      "mean": 0.5924055833333334,
+      "best_six_generic_controls": 0.5586685,
+      "evidence": "Three-native-seed quality win against saved anonymous generic controls; FAS v1, stronger sealed v2 benchmark next."
+    },
+    "512": {
+      "native_seeds": [
+        0.74218525,
+        0.73596375,
+        0.7328695
+      ],
+      "mean": 0.7370061666666666,
+      "best_six_generic_controls": 0.72723325,
+      "evidence": "Three-native-seed quality win against saved anonymous generic controls; FAS v1, stronger sealed v2 benchmark next."
+    }
+  },
+  "typed": {
+    "fit_rows": 64,
+    "dev_rows": 256,
+    "accuracy": 1.0,
+    "nll": 8.981018618214875e-05,
+    "parameters": 6370,
+    "scope": "Synthetic mixed-type interaction witness, one seed; fixed predicates and canonical complete comparison presentation. Existing integrated temporal/sparse core, learned receiver selection and actual alternative-write terminal-risk credit. No learned thresholds/predicate discovery, tree benchmark, scaling/transfer or complete FLOP claim."
+  },
+  "language": {
+    "selected_dev_nll": [
+      7.251503259995404,
+      7.2635573443244486
+    ],
+    "mean": 7.2575303021599264,
+    "memory_erasure_nll_deltas": [
+      0.010388254651836348,
+      0.01738021887984953
+    ],
+    "scope": "Two native seeds, GPT-2 FineWeb 1M TRAIN/two passes,2040 DEV targets; public-reference and complete larger-work comparison next."
+  },
+  "input_sha256": {
+    "experiments/results/fas/curie_fas_v1_native_p32d4_linear_seg128_t1024_e2_20261004T231500Z.json": "b922cfeedab74af35e392d12936e7bf0f15b009b6d25fe5360acdedb4abe43b0",
+    "experiments/results/fas/curie_fas_v1_frozen_p32d4_s7_retry_20261005_v2.json": "d1acea05b8049ffb51f578dc118ea74df715dc319d875aae25bec221a0d7cf80",
+    "experiments/results/fas/curie_fas_v1_frozen_p32d4_s8_20261005_v1.json": "784c367c53566acfb1e4e82b2f1b9f199af2f728033d52d2003d10bd37a2e86a",
+    "experiments/results/fas/fas_v1_classical_test_20261004T221500Z.json": "32b5610bdb8e38379123531e86fbe9afba35733f5fee4581682e891f6693d36e",
+    "experiments/results/fas/fas_v1_strong_classical_test_20261005T010000Z.json": "7f32a55ab84b5cc2d7525805859c47d25ac5266f0a3049e6cfcea8ed410039bf",
+    "experiments/results/diagnostics/curie_fas_v1_s7_completed_artifacts_20261005_v1.json": "bbef0e38bfceb041b41005976516c58ff8445318a3b4d948a4297786a2fb9643",
+    "experiments/results/diagnostics/curie_fas_v1_s8_completed_artifacts_20261006_v1.json": "89966cd65e2b21247498d3f19b65272301ff8acfa72394961d93669a4f277191",
+    "experiments/results/typed_tabular/curie_typed_temporal_p8d2_1024steps_20261006_v1.json": "47acff30364e8bc96b3dc71db1dae8b258b2d602f75c239a7758d10223a9bd22",
+    "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.json": "2e406e1d02e8a60a6aa65697e6041d54f79af28278ce8f1c42669a2c154b127d",
+    "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.selection.json": "9d0e6f388cf738e6226cd144d9cb98cc4a14697aad046893014f48fe3fcb69f3",
+    "experiments/results/token_language/curie_original_1m_p24_s7_20261006_v1.json": "4fa0fa350f2b6c06966e2083cbd8aab4ac92443787409b504f3269412fb225ab",
+    "experiments/results/token_language/curie_original_1m_p24_s7_20261006_v1.selection.json": "d1caf43a47df297008e654a4f81fad2bcdd0b931bd20a0b59b42a25074eb33fb",
+    "experiments/results/diagnostics/curie_original_1m_utility_20261006_v1.json": "75d9636f020eff92f4285d182574dde52273f1b74056acc9a225822c64466cf1",
+    "experiments/results/diagnostics/curie_original_1m_p24_s7_utility_20261006_v1.json": "789cea09e32a76dfa0c5a7733515d288f95bee6157deb60edf34305aabe8f640"
+  },
+  "interpretation": "Evidence for breadth of a temporal/sparse family across token streams, anonymous interleaved event logs and typed comparison events. Separately trained instances; shared learned cross-domain transfer is the next test."
+}
