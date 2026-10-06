@@ -1,0 +1,2 @@
+# B1: B1 TEST protocol, StackOverflow v12 (state clock; DEV -2.143 vs v5 -2.173, audit-clean: dequantized drop 0.0001, 512-node compensator identical): 5 seeds, TEST once per seed at best DEV; then Retweet v12 development (grid-safe state clock)
+b1_final_stackoverflow_v12_s2 experiments/tpp/race_tpp_v12.py --tag b1_final_stackoverflow_v12_s2 --dataset stackoverflow --seed 2 --n-lognormal 8 --layers 3 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125 --state-modes 16 --score-test
