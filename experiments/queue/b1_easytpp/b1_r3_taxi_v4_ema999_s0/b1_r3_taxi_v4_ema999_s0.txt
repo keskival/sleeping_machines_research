@@ -1,0 +1,2 @@
+# B1 EasyTPP: round 3 regularization on taxi (small data overfits after ~25 epochs): dropout 0.3; weight EMA 0.999; EMA + d64 + wd 1.0 long. Decides the B1 regularization recipe
+b1_r3_taxi_v4_ema999_s0 experiments/tpp/race_tpp_v4.py --tag b1_r3_taxi_v4_ema999_s0 --dataset taxi --seed 0 --n-lognormal 8 --ema 0.999 --patience 60
