@@ -1,0 +1,2 @@
+# B1 EasyTPP: StackOverflow structure round under the resolution floor (est. ~0.03 behind S2P2 after offsets; time LL weaker): 4 exponential clocks for the heavy tail; 16 delayed clocks; 3 memory layers. Decides the StackOverflow configuration for its TEST protocol
+b1_r7_so_v5_exp4_s0 experiments/tpp/race_tpp_v5.py --tag b1_r7_so_v5_exp4_s0 --dataset stackoverflow --seed 0 --n-lognormal 8 --n-exp 4 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125
