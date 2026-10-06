@@ -126,3 +126,8 @@ the smokes' peak RSS and wall time.
 
 The 12 grid queues (`aws_fas_v2_ref_{lstm,transformer}_d{64,128}_lr*_s0_20261006T1815Z`) and
 `aws_fas_v2_dev_C1/C2_20261006T1715Z` are ready for admission.
+
+**AWS smoke results (6 Oct, ~23:40 UTC).** `aws_fas_v2_data_20261006T1715Z` completed. Reference smokes completed: LSTM
+d128 (2 windows, 8 eval runs) 4 s wall, peak RSS 1.05 GB; Transformer d128 8 s, peak RSS 1.36 GB
+(results/aws_20260929/<tag>/). Native C1 is running on slot 2, then C2. The 12-run reference grid can be admitted with
+caps derived from these smokes (≈ 3 GB RSS leaves a wide margin); request it and it will be queued on a free slot.
