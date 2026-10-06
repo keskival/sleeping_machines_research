@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def pages():
-    return measured_pages() + stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages() + message_factor_pages()
+    return measured_pages() + stage_pages(1048576, '1m') + stage_pages(262144, '256k') + stage_pages(65536, '64k') + repeat_pages() + message_factor_pages()
 
 
 def stage_pages(budget, label):
@@ -61,6 +61,10 @@ def stage_pages(budget, label):
             work.append([str(width), str(result['presentations_total']), 'pending', 'pending', 'pending'])
         suffix = '' if label == '64k' and width == 16 else f'_p{width}'
         utility_path = ROOT / f'experiments/results/diagnostics/curie_data_growth_tokens_{label}{suffix}_utility_20261005_v1.json'
+        if label == '1m':
+            utility_path = ROOT / ('experiments/results/diagnostics/' +
+                ('curie_original_1m_utility_20261006_v1.json' if width == 24 else
+                 f'curie_original_1m_p{width}_utility_20261006_v1.json'))
         if utility_path.exists():
             utility = json.loads(utility_path.read_text())
             if utility['status'] != 'completed':
@@ -91,7 +95,7 @@ def stage_pages(budget, label):
         ('p', 'TF head ≥ is a source-derived arithmetic lower bound: forward output projection plus its two explicit backward matrix contractions; evaluation has one projection. Width768 and padded50,304classes give231.800832MFLOPs/fitting target and77.266944MFLOPs/evaluation target, at two FLOPs per multiply-add. Other reference computation and optimizer work are excluded. Its695,992,320training targets and public NLL3.2774 use a different data/quality population from these native development fits; these columns show raw work, not a matched-quality or iso-FLOP win. FP8 GPU arithmetic and native CPUfloat32 have different hardware costs.'),
         ('p', 'Work cells require a complete replay with trajectory parity and full arithmetic formula coverage. Fitting includes discovery, actual alternative-write replay, readout, backward, clipping, optimizer and in-step diagnostics; preprocessing, evaluation and serialization are separate. Special functions are counted separately, random sampling work remains unquantified. Pending cells contain no extrapolation from a smaller fit.'),
         ('p', 'All parameters include the token interface and readout; the core/input column includes lexical input parameters. Selected activity remains four writes and sixteen scored keys per token, while vector width grows. Equal data and passes are not equal fitting FLOPs. These ordinary throughput measurements exclude instrumented arithmetic tracing.'),
-        ('p', 'The 8K, 64K and 256K stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]
+        ('p', 'The 8K, 64K, 256K and 1M stages score the same development population and use two passes. Train-frequency priors and evaluation cadence differ; report absolute loss and within-fit learning separately. The learning gate requires a 0.02 NLL improvement over initialization. No scaling exponent or matched-compute Transformer win is inferred from these cells.')]
     if utilities:
         page += [
             ('table', (['Payload', 'Context gain', 'Memory erase delta', 'Message erase delta', 'Both erase delta'], utilities, [55, 105, 130, 130, 130])),
@@ -180,7 +184,7 @@ def message_factor_pages():
 
 
 def measured_pages():
-    name = 'token_language_measured_scaling_20261005_v1'
+    name = 'token_language_measured_scaling_20261006_v2'
     path = ROOT / ('report/figures/' + name + '.json')
     if not path.exists():
         return []
@@ -192,5 +196,5 @@ def measured_pages():
     return [[('h1', 'Appendix. Measured language quality, capacity and compute'),
         ('p', 'Sleeping Machines pursues a general-purpose substrate spanning language/reasoning, multimodal world models, embodiment, event-native analytics, continual learning, communication, self-design and hardware. Completed integrated language measurements show quality improving with data and a useful intermediate capacity choice.'),
         ('figure', (name, 174)),
-        ('p', 'P16 selected NLL improves8.297491→8.099440 from8Kto64K TRAINtokens; P24 improves8.033311→7.741714 from64Kto256K. At64K/P24 beats P16/P32 by0.066129/0.057108NLL, seed6. The independent P24seed7point is8.078991. Each plotted point is a completed fit.'),
+        ('p', 'P16 selected NLL improves8.297491→8.099440 from8Kto64K TRAINtokens; P24 improves8.033311→7.741714→7.251503 from64Kto256Kto1M. The256Kto1M gain is0.490211NLL, seed6 at fixed recipe. At64K/P24 beats P16/P32 by0.066129/0.057108NLL, seed6. The independent P24seed7point is8.078991. Each plotted point is a completed fit.'),
         ('p', receipt['scope'])]]

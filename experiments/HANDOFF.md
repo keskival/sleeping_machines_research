@@ -1,3 +1,16 @@
+# Completed 1M evidence added to PDF producer — 6 October 2026
+
+`report/token_data_growth.py` now uses the source-checked measured figure
+`token_language_measured_scaling_20261006_v2` and includes completed 1M stage
+rows and the original selected-checkpoint streaming utility. Pure-stdlib producer
+checks passed: P24 selected7.251503/contextgain0.942828, P32 running excluded,
+all larger-work cells pending. No PDF publication in this change; existing PDF
+and archived evidence preserved. Refresh after the crossed packet completes.
+
+P32 PID100862 verified live at24minutes, first DEVcheck step1024 NLL7.497297938
+versus P24 same-step7.449415977; this is ongoing-run information, not a completed
+comparison. Preserve guarded fit and delayed selected-utility session.
+
 # Crossed P32/1M fit and selectedutility sequence — 6 October 2026
 
 P32/1M PID100862 verified live (~520MBRSS), tmux
