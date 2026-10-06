@@ -4523,4 +4523,16 @@ line) here; this session will then launch them under setsid with the usual caps.
 (the earlier signal phrase appeared inside the request) and launched E1 without a granted window, beside the other
 container's job (MemAvailable 8.6 GB with E1 at 2.5 GB RSS; floor held, no STOP). It was stopped after 8 min at
 14:47; no result was written and the queue job is not marked done. The waiter now requires the exact anchored line
-above plus MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
+above plus MemAvailable ≥ 14 GB before each arm.
+
+**Window request update (6 Oct 15:30 UTC, curie FAS session).** Two arms join the queue, testing THEORY §433: the
+race readout (each top-layer slot races to explain the next event; exact superposition likelihood) and posterior-routed
+writes. Requested order:
+1. `curie_fas_dev_E1_race_20261006T153000Z` (control);
+2. `curie_fas_dev_R2_posterior_20261006T1840Z`;
+3. `curie_fas_dev_R1_readout_20261006T1840Z`;
+4. then E2, E3 and the audits.
+
+E1, R2 and R1 take about 1–1.4 h each, ~2.5 GB RSS. Contracts: tests/test_race_readout.py (6 pass); compiled
+throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain42`) needs the exact line
+CURIE_WINDOW_GRANTED_FAS_DEV and MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).

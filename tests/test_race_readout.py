@@ -82,3 +82,12 @@ def test_readout_gradients_reach_memory_path():
     assert ro.out.weight.grad.abs().sum() > 0
     assert model.units[-1][0][0][0].input.weight.grad is not None or any(
         p.grad is not None and p.grad.abs().sum() > 0 for n, p in model.named_parameters() if 'input' in n)
+
+
+def test_compiled_episode_equals_eager():
+    model, ro = _model(); stamps, marks, ids = _data()
+    with torch.no_grad():
+        a = readout_episode(model, ro, stamps, marks, ids, posterior=True, deterministic=True)
+        b = readout_episode(model, ro, stamps, marks, ids, posterior=True, deterministic=True, compiled=True)
+    torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)
+    torch.testing.assert_close(a[1], b[1], rtol=1e-5, atol=1e-6)

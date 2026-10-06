@@ -154,6 +154,13 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     The state carries the top-layer write times and the previous event's laws, so segments chain exactly."""
     from .carried_episodes import initial_state
     step = compiled_routed_step() if compiled else routed_layer_step
+    terms = event_terms
+    read = readout
+    if compiled:
+        if 'terms' not in _COMPILED:
+            _COMPILED['terms'] = torch.compile(event_terms, dynamic=False, fullgraph=True)
+        terms = _COMPILED['terms']
+        read = _COMPILED.setdefault(('readout', id(readout)), torch.compile(readout, dynamic=False, fullgraph=True))
     layers = model._stacked(0)
     D, H, U, P = model.depth, model.heads, model.pool, model.payload
     n, T = stamps.shape
@@ -177,7 +184,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             now = stamps[:, k]
             route = None
             if prev is not None:
-                lt, lti, logr = event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps)
+                lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps)
                 ll_tot.append(lt); ll_time.append(lti); valid.append(torch.ones(n, dtype=torch.bool))
                 if posterior:                 # per-head posterior over that head's slots
                     route = torch.log_softmax(logr.view(n, H, U), -1).detach()
@@ -210,7 +217,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
             unseen = ~seen[D - 1].reshape(n, H * U)                  # never-written slots: births timed from now
             t_ref = torch.where(unseen, now[:, None], t_ref)
-            prev = readout(mem[D - 1], x); t_prev = now
+            prev = read(mem[D - 1], x); t_prev = now
     state = dict(mem=mem, arr=arr, seen=seen, ctx_vals=ctx_vals, ctx_arr=ctx_arr, has_ctx=has_ctx,
                  t_ref=t_ref, laws=prev, t_prev=t_prev)
     return torch.stack(ll_tot, 1), torch.stack(ll_time, 1), torch.stack(valid, 1), state
