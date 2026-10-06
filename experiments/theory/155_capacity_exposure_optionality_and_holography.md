@@ -1049,3 +1049,8 @@ Revised reading:
   summarising across partitions.
 - The next form to test keeps a shared context path beside the predictive slots, with local and global objectives
   weighted. Until then, class-(a) routing is adopted only at the binding layer.
+
+**437.3 I4 first test: negative at inference-only gating** (toy, 6 processes). Skipping the deep layers for
+well-predicted events costs NLL roughly in proportion to the skipped share (+0.06 at 9%, +0.20 at 20%). The deep
+layers' cross-process context (§438.1) needs every event. Remaining forms: training with the gate (the model learns
+to tolerate gaps), or gating that still applies a cheap state update (a decay-only step) instead of skipping.

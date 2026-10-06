@@ -211,3 +211,16 @@ oracle's .821.
     disjoint across splits; no per-event identity in the anonymous files.
   - The declared K = 3 stress set (`fas_v2_stress_K3_drop0.02_delta0_20261005`, validation only) is also generated.
   - Test splits are sealed.
+- 6 Oct 20:39 UTC: **surprise-gated processing** (§437 I4), applied at inference only to the trained 6-process toy:
+
+  | gate (nats) | events skipping deep layers | NLL | α |
+  |---|---|---|---|
+  | none | 0% | 1.930 | .823 |
+  | 0 | 2% | 1.950 | .818 |
+  | −0.5 | 9% | 1.991 | .801 |
+  | −1 | 20% | 2.126 | .775 |
+  | −2 | 46% | 2.529 | .731 |
+
+  Negative in this form: the deep layers carry history context, so skipped events leave gaps, and the model was not
+  trained with gaps. Untested: gate-aware training, and highly deterministic streams such as FAS routes. Not adopted
+  for v2.
