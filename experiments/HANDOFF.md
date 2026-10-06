@@ -1,3 +1,23 @@
+# 1M live; bounded selected utility scheduled — 6 October 2026
+
+Original1M/P24 PID85710 verified live (~492MBRSS), tmux
+curie_original_1m_admission_20261006_v1; preserve9000s/800MBRSS/8GiBfloor.
+Newtmux curie_original_1m_utility_admission_20261006_v1 waits its completion,
+requires2,097,136fitting targets, runs unique64K streaming-mean contract then
+unique1M selectedutility queue throughrun_safe,600s/1200s respectively, samecaps.
+No concurrent model work admitted. Revalidate handles beforeanylaunch.
+
+streamed_token_stage_utility.py is an isolated clone of token_stage_utility:
+replaces retained fullTRAINfeatures with causal chunkwisefloat64 sums cast to
+feature dtype; counts every feature observation, preserves carried state/RNG,
+readout, DEV features and frozen erasure interventions. Memory is bounded by
+one feature chunk plus persistent state, rather than allTRAINfeature tensors.
+Contract compares oldfull64K mean(maxerror<1e-6) and constant-feature NLL
+(error<2e-6), sourceSHA checked before1M use. Compilation/bashsyntax passed;
+numerical evidence pending. Original utility script preserved. This changes
+only diagnostic aggregation, not architecture, training, quality or workclaims.
+Larger1M full fitting arithmetic remains unmeasured; do not insert64K costs.
+
 # Original1M admitted; message interpretation corrected — 6 October 2026
 
 Tmux curie_original_1m_admission_20261006_v1 performs source/data/positiveutility
