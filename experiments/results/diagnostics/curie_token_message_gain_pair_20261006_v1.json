@@ -1,0 +1,271 @@
+{
+  "status": "completed",
+  "host": "curie",
+  "wall_s": 20.211262000957504,
+  "rows": [
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1",
+      "selected": {
+        "step": 128,
+        "dev_nll": 8.033310714422488,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.best_step00000128.pt"
+      },
+      "checkpoint_sha256": "32875968d8a3a87017751635766e97f23d34816a8c60ca0e5b0a9d4b1b98d607",
+      "targets": 2040,
+      "interventions": [
+        {
+          "message_gain": 1.0,
+          "dev_nll": 8.033310714422488,
+          "difference_from_intact": 0.0,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08174444735050201,
+            "maximum": 0.1488611251115799,
+            "mean": 0.11151823463782766,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.5,
+          "dev_nll": 8.074255251416973,
+          "difference_from_intact": 0.04094453699448586,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08174444735050201,
+            "maximum": 0.1488611251115799,
+            "mean": 0.11151823463782766,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.25,
+          "dev_nll": 8.107121725643383,
+          "difference_from_intact": 0.0738110112208954,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08174444735050201,
+            "maximum": 0.1488611251115799,
+            "mean": 0.11151823463782766,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.0,
+          "dev_nll": 8.138517611634498,
+          "difference_from_intact": 0.10520689721201038,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08174444735050201,
+            "maximum": 0.1488611251115799,
+            "mean": 0.11151823463782766,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "tag": "curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1",
+      "selected": {
+        "step": 128,
+        "dev_nll": 8.07899134018842,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.best_step00000128.pt"
+      },
+      "checkpoint_sha256": "752bf8b4296e67a2ee7ce18c74252f9ff93e723af26b688624fd25df08834741",
+      "targets": 2040,
+      "interventions": [
+        {
+          "message_gain": 1.0,
+          "dev_nll": 8.07899134018842,
+          "difference_from_intact": 0.0,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.07051780819892883,
+            "maximum": 0.15505684912204742,
+            "mean": 0.11026241374171637,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.5,
+          "dev_nll": 8.130108522901349,
+          "difference_from_intact": 0.051117182712928866,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.07051780819892883,
+            "maximum": 0.15505684912204742,
+            "mean": 0.11026241374171637,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.25,
+          "dev_nll": 8.163115976371017,
+          "difference_from_intact": 0.08412463618259736,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.07051780819892883,
+            "maximum": 0.15505684912204742,
+            "mean": 0.11026241374171637,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.0,
+          "dev_nll": 8.180260751761642,
+          "difference_from_intact": 0.101269411573222,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.07051780819892883,
+            "maximum": 0.15505684912204742,
+            "mean": 0.11026241374171637,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "tag": "curie_gather_tokens_64k_b64_c16_p24_s6_20261006_v1",
+      "selected": {
+        "step": 128,
+        "dev_nll": 8.076229080499386,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_gather_tokens_64k_b64_c16_p24_s6_20261006_v1.best_step00000128.pt"
+      },
+      "checkpoint_sha256": "8675ebf4c0362a116c328fb69c85dab7c8cd029c4ff1887f907f8e3316f411d1",
+      "targets": 2040,
+      "interventions": [
+        {
+          "message_gain": 1.0,
+          "dev_nll": 8.076229080499386,
+          "difference_from_intact": 0.0,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08330220729112625,
+            "maximum": 0.14614804089069366,
+            "mean": 0.11154670329654919,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.5,
+          "dev_nll": 8.10840478036918,
+          "difference_from_intact": 0.03217569986979285,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08330220729112625,
+            "maximum": 0.14614804089069366,
+            "mean": 0.11154670329654919,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.25,
+          "dev_nll": 8.1362107220818,
+          "difference_from_intact": 0.05998164158241437,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08330220729112625,
+            "maximum": 0.14614804089069366,
+            "mean": 0.11154670329654919,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.0,
+          "dev_nll": 8.156236835554534,
+          "difference_from_intact": 0.08000775505514746,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08330220729112625,
+            "maximum": 0.14614804089069366,
+            "mean": 0.11154670329654919,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "tag": "curie_gather_tokens_64k_b64_c16_p24_s7_20261006_v1",
+      "selected": {
+        "step": 64,
+        "dev_nll": 8.077518717447917,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_gather_tokens_64k_b64_c16_p24_s7_20261006_v1.best_step00000064.pt"
+      },
+      "checkpoint_sha256": "85a5ee8626bcd71f97d33be25b592bb16d5ca07a6cdb11290482d5b1345beaf5",
+      "targets": 2040,
+      "interventions": [
+        {
+          "message_gain": 1.0,
+          "dev_nll": 8.077518717447917,
+          "difference_from_intact": 0.0,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08902847766876221,
+            "maximum": 0.14205434918403625,
+            "mean": 0.11510477003708385,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.5,
+          "dev_nll": 8.081479061351104,
+          "difference_from_intact": 0.003960343903186114,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08902847766876221,
+            "maximum": 0.14205434918403625,
+            "mean": 0.11510477003708385,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.25,
+          "dev_nll": 8.080261709175858,
+          "difference_from_intact": 0.002742991727940236,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08902847766876221,
+            "maximum": 0.14205434918403625,
+            "mean": 0.11510477003708385,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        },
+        {
+          "message_gain": 0.0,
+          "dev_nll": 8.076678347120097,
+          "difference_from_intact": -0.0008403703278201391,
+          "observed_gate_coordinates": 97920,
+          "original_gate_stats": {
+            "minimum": 0.08902847766876221,
+            "maximum": 0.14205434918403625,
+            "mean": 0.11510477003708385,
+            "fraction_below_001": 0.0,
+            "fraction_above_099": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "parent_sha256": {
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.json": "b33b750f6d3d6c35a79dadd7d2baafb2e921460cd6c23abf939d64db845b8dfa",
+    "experiments/results/token_language/curie_gather_tokens_64k_b64_c16_p24_s6_20261006_v1.json": "ae3a5ec2370882a275519527de1dfbabdfb93b97b40992c0634a2bb781f2a510",
+    "experiments/results/token_language/curie_gather_tokens_64k_b64_c16_p24_s7_20261006_v1.json": "737bfdedb0db2b5e269b393ba1702cac5f03ae37a7550d68780636acba971394"
+  },
+  "source_sha256": "8dc6e0bee4364c06c63ff09c8667675b067a23950a31064c4fe5e3d30898c435",
+  "scope": "Frozen selected-checkpoint DEV interventions, gain multiplies learned sigmoid message gate before transport residual mixing; gain1 identity contracts exactly. Same seed+100000 reset for each causal evaluator, same data/target/history partition. State trajectories change as intended. No fitting, threshold selection, public validation or retrained ablation. Gate statistics include calls at no-context/EOS events, not only delivered messages. Original per-event evaluation kernel used for all checkpoints; gathered inference forward is contract-equivalent."
+}

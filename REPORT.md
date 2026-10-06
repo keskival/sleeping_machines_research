@@ -4641,3 +4641,42 @@ and in-step diagnostics; excludes initialization/frequency counts/evaluation/
 serialization. Special functions separate, random work unquantified. No
 comparable-quality or Transformer supremacy claim. Original leading result
 retained. Gatherseed7 now running; message-gain probe follows its completed fit.
+
+## Two-seed gather quality and message-intervention correction
+
+| Execution | Seed6 selected NLL | Seed7 selected NLL | Two-seed mean |
+| --- | ---: | ---: | ---: |
+| Original | 8.033311 | 8.078991 | 8.056151 |
+| Gathered | 8.076229 | 8.077519 | 8.076874 |
+
+Gathered mean loses0.020723NLL; seed6 loses0.042918 and seed7 improves0.001473.
+Fixed64K proper-token development protocol; two training seeds, four checks.
+Gatheredseed7 final8.298770441, fittingwall220.260248s,total225.523587s.
+Complete gathered work belongs to seed6 only; no seed7 work total imputed.
+
+**Correction to the earlier message-harm interpretation:** message-state erasure
+changes ctx_vals,ctx_arr andhas_ctx. It removes the residual-normalization branch
+and can change read_time as well as message values. Its seed6 improvement0.022583
+remains a measured full-state intervention; it is not an isolated value-harm result.
+The causal message-gain probe preserves presence/clock metadata and normalization.
+
+| Selected checkpoint | Loss change at gain1/2 | Loss change at gain1/4 | Loss change at gain0 |
+| --- | ---: | ---: | ---: |
+| Originalseed6 | +0.040945 | +0.073811 | +0.105207 |
+| Originalseed7 | +0.051117 | +0.084125 | +0.101269 |
+| Gatheredseed6 | +0.032176 | +0.059982 | +0.080008 |
+| Gatheredseed7 | +0.003960 | +0.002743 | -0.000840 |
+
+All gain1 scores reproduce selected checkpoints exactly. Frozen2040-target DEV
+interventions, same causal partition and RNG reset; no fitting or public test.
+Observed learned gates span0.0705–0.1551 across checkpoints: no saturation at
+0.01/0.99. Values help both original seeds and gatheredseed6 under this probe.
+Gatheredseed7 is nearly indifferent atgain0. No gate-strength training repair
+selected from these interventions. Preserve memory benefit and all original
+full-erasure numbers beside this protocol correction.
+
+First1M scaling fit uses originalP24, unchanged credit16/two passes/four checks,
+2,097,136fitting targets. Selected256K parent7.741714 with positive context utility;
+source/data admission hashes checked. Larger whole-fit work remains a separate
+measurement, not borrowed64K work.4M reserved. CPU guarded9000s timeout based on
+256K1369.5s×4 plus allowance;800MBRSS/8GiBMemAvailable, unique existing unrun queue.
