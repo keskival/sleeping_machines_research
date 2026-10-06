@@ -31,6 +31,19 @@ class TokenAudit(OperationAudit):
             return 0, 0, 0, 'random sampling; sampling work unquantified'
         return super().formula(func, args, kwargs, out)
 
+def assert_exact(left, right, path='checkpoint'):
+    if isinstance(left, torch.Tensor):
+        assert torch.equal(left, right), path
+    elif isinstance(left, dict):
+        assert left.keys() == right.keys(), path
+        for key in left: assert_exact(left[key], right[key], f'{path}.{key}')
+    elif isinstance(left, (list, tuple)):
+        assert len(left) == len(right), path
+        for index, (x, y) in enumerate(zip(left, right)):
+            assert_exact(x, y, f'{path}[{index}]')
+    else:
+        assert left == right, path
+
 def main():
     global engine
     p = argparse.ArgumentParser()
@@ -82,7 +95,23 @@ def main():
     assert len(result['curve']) == len(control['curve'])
     errors = [abs(x['dev_nll'] - y['dev_nll']) for x, y in zip(result['curve'], control['curve'])]
     assert max(errors) < 2e-6, errors
+    replay_checkpoint = folder / (a.tag + '.pt')
+    original_checkpoint = folder / (control['args']['tag'] + '.pt')
+    replay = torch.load(replay_checkpoint, weights_only=False)
+    original = torch.load(original_checkpoint, weights_only=False)
+    exact_fields = ('model', 'optimizer', 'state', 'cursor', 'step', 'writes',
+        'generator', 'alternative_generator', 'local_generator', 'position_generator',
+        'site_generator', 'torch_rng', 'total_presentations', 'settings', 'identity', 'best')
+    for field in exact_fields: assert_exact(original[field], replay[field], field)
+    assert len(original['curve']) == len(replay['curve'])
+    for index, (x, y) in enumerate(zip(original['curve'], replay['curve'])):
+        for field in ('step', 'train_nll', 'dev_nll', 'future_write_teacher'):
+            assert_exact(x[field], y[field], f'curve[{index}].{field}')
+    del original, replay
     chosen = json.loads((folder / (a.tag + '.selection.json')).read_text())['selected']
+    original_selection_path = control_path.with_suffix('.selection.json')
+    original_selected = json.loads(original_selection_path.read_text())['selected']
+    for field in ('step', 'dev_nll'): assert_exact(original_selected[field], chosen[field], f'selected.{field}')
     settings = SimpleNamespace(**control['args'])
     train, dev = engine.load_tokens(settings.train_file), engine.load_tokens(settings.dev_file)
     counts = engine.LaneTokens(train, 0, settings.train_tokens, settings.lanes).counts()
@@ -95,6 +124,7 @@ def main():
         nll = engine.evaluate(model, data, settings)
     assert abs(nll - chosen['dev_nll']) < 2e-6
     fitting, evaluation = fit.result(), inference.result()
+    assert fitting['formula_coverage_complete'] and evaluation['formula_coverage_complete']
     targets = data.shape[0] * (data.shape[1] - 1)
     record = dict(status='completed', control=str(control_path), audited_tag=a.tag,
         fitting=fitting, inference=evaluation, fitting_targets=result['presentations_total'],
@@ -102,6 +132,9 @@ def main():
         fitting_arithmetic_flops_per_target=fitting['arithmetic_flops']/result['presentations_total'],
         inference_arithmetic_flops_per_target=evaluation['arithmetic_flops']/targets,
         curve_parity_max_error=max(errors), selected_dev_nll=nll,
+        full_numerical_state_parity=True, exact_fields=list(exact_fields),
+        input_sha256={str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in (control_path, original_selection_path, original_checkpoint, replay_checkpoint, checkpoint)},
         source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         scope='Executed whole-fit arithmetic through every optimizer update plus exact selected development evaluation. Fitting includes factual computation, discovery, counterfactual suffix replay, readouts, teacher, backward, clipping, optimizer and in-step diagnostics; excludes initialization, frequency counts, evaluation, hashes/serialization. Evaluation includes scorer reductions; no backward/optimizer. Special functions separate, random work unquantified, not CPU instructions/physical traffic/energy. Instrumented wall is not ordinary throughput.')
     output.parent.mkdir(parents=True, exist_ok=True)
