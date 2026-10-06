@@ -24,6 +24,12 @@ equal-compute crossover study and the modern-protocol continuation.
 | **Leaderboard win** | Better than every entry of a cited public leaderboard under its official protocol and metric | "New best on the NeuroBench primate-reaching leaderboard (R² X vs AEGRU 0.71)." |
 | **Pareto win** | Better quality and lower compute on the same axis at once (strictly dominates the reference) | Implied by a matched-compute win with lower compute. |
 
+**Near-matched win:** our quality is better and our compute is within 10% above the reference's on that axis. Report it as
+a win with the ratio ("beats Transformer-256×4 at near-equal compute, 1.06×").
+
+**Sizing rule:** size every native run from the reference's measured compute so it finishes at or under it (leave a
+margin for estimate error); a quality win is then matched by construction.
+
 A comparison where we use less compute but have worse quality, and no reference exists at our compute, is an
 **efficiency point**: report the gap and the compute ratio, then close it — with a matched-compute reference or a native
 run at the reference's compute. It is neither a win nor a loss.
