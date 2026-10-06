@@ -4107,3 +4107,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS positive time-scale probe admitted 20261006T034826Z:** unique idle-slot1 queueaws_private_bank_256k_scale_20261006T034826Z, four completed selected fits/scales1,.5,.25,.0625. Scaled unit coefficients retain nonzero decay/rotation; race/message clocks unchanged. Stdlib finite-positive scale and argument checks/syntax pass; numerical intact/cold-start/RNG/parameter contracts are mandatory in scoring.480s prior four-mode reservation,1.2GBRSS/5GBVMS/8GiBfloor; current available26GiB, existing slot2/3 preserved. New hook/scorer pins verified; no trained gain claimed.
+
+
+**AWS positive time-scale probe completed:** intact/cold-start/RNG/source/checkpoint/parameter checks pass. lr.003 seeds6/7 scale¼ΔNLL−.002278049/−.010396496,scale1/16−.002102149/−.020606544; lr.001 split seed effects preserved in full table. Nonzero temporal evolution can improve frozen DEV scores. Next learning/alternative-write/resume numerical contracts then matched integrated fits; scale selection is DEV tuning. Receipt aws_private_bank_256k_scale_20261006T034826Z.json,peak439564KiBRSS. All active work unchanged; no trained/public win claimed.

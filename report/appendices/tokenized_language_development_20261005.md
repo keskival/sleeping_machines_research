@@ -321,3 +321,17 @@ Four selected GPT-2/FineWeb DEV checkpoints,2040targets, frozen weights and matc
 For lr.003 both seeds improve when decay or rotation is suppressed independently, and when both are suppressed through zero age. Arrival-only erasure retains seen=true and changes old timestamps; it worsens both seeds. The observed benefit is specific to temporal evolution, not a generic benefit from clearing any metadata. Joint gains are not additive and later routes can change. The lr.001 effects vary by seed. Receipt: aws_private_bank_256k_time_20261006T034518Z.json; peak439560KiBRSS.
 
 Next integrated hypothesis: slower memory evolution per token may preserve useful content while retaining nonzero decay, rotation, temporal races, message transport, sparse updates and counterfactual learning. First test nonzero temporal scale interventions against the intact selected checkpoints, then require numerical equivalence of the intact scale and an integrated paired fit before any architectural benefit claim. Do not promote zero-age/no-decay/no-rotation diagnostics into the main architecture. Existing complete-work replays and saved controls remain intact.
+
+
+## Positive memory time-scale probe completed
+
+Four frozen selected checkpoints,2040GPT-2/FineWebDEVtargets; matched RNG/source/checkpoint bindings, intact/cold-start parity and parameter-nonmutation checks pass. Scale multiplies selected-unit decay rates and rotation frequencies only; races/message transport retain their clocks. Changes below are NLL relative to intact scale1; negative improves.
+
+| Rate | Seed | Scale½ ΔNLL | Scale¼ ΔNLL | Scale1/16 ΔNLL |
+|---|---:|---:|---:|---:|
+|.003|6|0.000733046|-0.002278049|-0.002102149|
+|.003|7|-0.009130194|-0.010396496|-0.020606544|
+|.001|6|0.003222267|0.001668051|-0.003784767|
+|.001|7|0.003185545|0.004215110|0.011803483|
+
+At lr.003, scales¼ and1/16 improve both selected seeds while retaining nonzero decay and rotation. The lr.001 results split by seed. This is development intervention evidence; selecting a scale here is tuning, not independent confirmation. Next validate factual and alternative-write learning through scaled unit coefficients, intact-scale numerical equivalence and checkpoint/resume accounting before a paired integrated fit. Preserve scale1 controls and completed work evidence. Receipt aws_private_bank_256k_scale_20261006T034826Z.json; peak439564KiBRSS. No trained or public-reference win claimed.
