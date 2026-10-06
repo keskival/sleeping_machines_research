@@ -344,3 +344,6 @@ At lr.003, scales¼ and1/16 improve both selected seeds while retaining nonzero 
 
 
 **AWS scaled fit smoke completed:** source/data/settings-matched scale1/1over16,8192TRAIN/two passes16368fit targets/32updates/2040DEV. Selected NLL8.274547143/8.279691569; scale1/16 quality loss0.005144426NLL. Ordinary throughput885.469/874.219targets/s; peak607504/607432KiBRSS. Initial-inclusive selection/target and cold-clock checks pass. This8K trained loss is preserved beside256K frozen intervention gains; it does not predict a larger-data fit. New wrappers execute correctly with measured CPU/RSS. Exact smoke work replay is next before larger admitted fits; no public-reference or matched-compute claim.
+
+
+**AWS scaled-smoke scale1 work completed:** exact full numerical training state and zero DEV-curve replay error; formula coverage complete. Selected NLL8.274547143; whole-fit21.017819982GFLOPs, fitting1.284079911MFLOPs/target, inference0.409690078MFLOPs/target.16368fit/2040DEVtargets,two passes; special functions separate/sampling unquantified, full fit charged. Source aws_private_bank_time_smoke_work_20261006T040519Z_scale1.json. Scaled-arm exact replay pending; no paired work verdict yet.

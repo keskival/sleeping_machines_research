@@ -4149,3 +4149,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scale comparison reader implemented:** aws_private_bank_time_comparison.py requires completed exact full-state/formula-covered ledgers, identical full data/source/settings/exposure and source-bound recipes differing only by positive memory scale. Same GFLOPs/fit-MFLOPs-target/inference-MFLOPs-target columns and explicit paired-seed quality/Pareto verdict. Missing work is refused; no estimated denominator or memory claim. Syntax/refusal pass; actual smoke pair audit pending.
+
+
+**AWS scaled-smoke scale1 work completed:** exact full numerical training state and zero DEV-curve replay error; formula coverage complete. Selected NLL8.274547143; whole-fit21.017819982GFLOPs, fitting1.284079911MFLOPs/target, inference0.409690078MFLOPs/target.16368fit/2040DEVtargets,two passes; special functions separate/sampling unquantified, full fit charged. Source aws_private_bank_time_smoke_work_20261006T040519Z_scale1.json. Scaled-arm exact replay pending; no paired work verdict yet.
