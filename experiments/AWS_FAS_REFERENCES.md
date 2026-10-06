@@ -57,3 +57,10 @@ timing diagnostics are oracle-assisted and excluded from fair-reference
 selection. Retain arithmetic versus special-function conventions and report
 quality/work together; current native work is first-window extrapolated, so
 no complete-work matched-compute claim follows automatically.
+
+
+## Tree-reference gap — 6 October 2026
+
+The shared completed FAS results contain no tree-based detector. The replicated headline compares three native seeds with the six named anonymous generic timing/count controls; it is not a win against trees. Completed tree comparisons in other directories concern tabular datasets and must not be presented as FAS references.
+
+A prospective tree reference must fit exclusively on the same anonymous clean FIT logs, select from validation-clean data under the common budget, and produce a causal prefix anomaly score. No hidden item identities, clean/fault labels unavailable to the native fit, future events, or test-driven feature/hyperparameter choices may enter fitting. Include feature construction, fitting and prefix scoring in its resource record. Before execution, freeze an explicit new protocol/manifest with feature semantics, clean-training objective, selection rule, resource boundary and output provenance. Preserve the existing sealed-v2 manifest; adding a reference requires a source-bound amendment rather than silently redefining it. A v1 follow-up uses an exploratory label because its test comparisons are already visible. No tree run has been admitted by this gap record.
