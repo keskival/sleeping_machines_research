@@ -68,7 +68,24 @@ A prospective tree reference must fit exclusively on the same anonymous clean FI
 ## Withdrawn — 6 October 2026 (user direction: no new external-architecture training)
 
 AGENTS.md forbids new Transformer, LSTM and other external-architecture training on any host. The five queues above
-(`aws_fas_v1_{lstm,transformer,lru,s5t,mamba}_d128L2_20261004T224000Z`) and the v1 data regeneration queue are
-withdrawn and must not be admitted. None had run. FAS comparisons use the information-matched classical references
+(`aws_fas_v1_{lstm,transformer,lru,s5t,mamba}_d128L2_20261004T224000Z`) are withdrawn and must not be admitted.
+Correction (16:10 UTC): the v1 data regeneration queue (`aws_fas_v1_data_20261004T224000Z`) generates data, not a model,
+and stays valid. Native B3 development arms on AWS need it first. None had run. FAS comparisons use the information-matched classical references
 (FAS_V2_CONFIRMATORY_PROTOCOL.md amendment of 6 October). dense.py remains the reference implementation published with
 the benchmark for outside submissions.
+
+## B3 own-model development arms on AWS — request, 6 October 2026, 16:10 UTC (curie FAS session)
+
+Curie is held by the other container's queue, and the curie window for the FAS development arms has not been granted.
+Request for the first free AWS gym slot, one one-thread job at a time, in this order. These are our own model, not
+external architectures:
+1. `queue/aws_fas_v1_data_20261004T224000Z.txt` (data; ~4 min, <1 GB). Check event counts against
+   `results/fas/fas_v1_20261004_manifest.json`.
+2. `queue/aws_fas_dev_R2_posterior_20261006T1610Z.txt` (race readout plus posterior-routed writes, THEORY §§433–434;
+   ~1.3 h at curie speed, ~2.5 GB RSS).
+3. `queue/aws_fas_dev_E1_race_20261006T1610Z.txt` (the matched control; ~1 h, ~2.5 GB).
+4. `queue/aws_fas_dev_R2_particles_20261006T1610Z.txt` (evaluation only; ~25 min).
+
+Use a two-window smoke first to set the RSS caps. native.py and native_race_readout.py now have a top-level `OUT` for
+aws_benchmark.py; default paths are unchanged. If curie grants its window first, the curie copies run there and the
+AWS copies are dropped. Never run both.

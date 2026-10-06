@@ -32,6 +32,13 @@ EYE = np.eye(V, dtype=np.float32)
 LOG_EPS = .01
 
 
+OUT = ROOT / 'experiments/results/fas'      # redirected by experiments/aws_benchmark.py
+
+
+def _rel(path):
+    path = Path(path).resolve()
+    return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+
 def load(path, max_events):
     z = np.load(path); o, all_ids, all_t = z['offsets'], z['ids'], z['times_ms']; out = []   # decompress once
     for r in range(len(o) - 1):
@@ -186,7 +193,7 @@ def main():
     p.add_argument('--segment', type=int, default=0, help='truncated credit: segments of this many events with the '
                    'state carried (detached) across segments (sleeping_machines/carried_episodes.py); 0: whole runs')
     a = p.parse_args()
-    out = ROOT / 'experiments/results/fas' / f'{a.tag}.json'
+    out = Path(OUT) / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     if Path(a.tag).name != a.tag or out.exists():
         raise ValueError('Unique unused tag required')
@@ -329,14 +336,14 @@ def main():
         if w >= total:
             break
     model.load_state_dict(best[2])
-    weights = ROOT / 'experiments/results/fas/checkpoints' / f'{a.tag}_selected.pt'
+    weights = Path(OUT) / 'checkpoints' / f'{a.tag}_selected.pt'
     with torch.no_grad():                # §419 prediction: successful recruitment lengthens learned memory horizons
         half_lives = {}
         for depth, Lp in enumerate(model._stacked(0)):
             hl = (math.log(2) / Lp['rate'].double().flatten()).numpy()
             half_lives[depth] = dict(p10=float(np.quantile(hl, .1)), median=float(np.median(hl)), p90=float(np.quantile(hl, .9)),
                                      max=float(hl.max()), unit='seconds of simulator time, at unit forget gate (base rate only)')
-    weights.parent.mkdir(exist_ok=True); torch.save(model.state_dict(), weights)
+    weights.parent.mkdir(parents=True, exist_ok=True); torch.save(model.state_dict(), weights)
     if a.no_test:
         test_c = test_f = test_k = []
     else:
@@ -350,7 +357,7 @@ def main():
     work = (ledger['arithmetic_flops'] + ledger['special_function_evaluations']) / traced_events if traced_events else None
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()), curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
-                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, memory_half_lives=half_lives, test_auroc=aurocs(sc_c, sc_f, test_k) if sc_c is not None else 'not scored (development run, --no-test)', selected_weights=str(weights.relative_to(ROOT)),
+                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, memory_half_lives=half_lives, test_auroc=aurocs(sc_c, sc_f, test_k) if sc_c is not None else 'not scored (development run, --no-test)', selected_weights=_rel(weights),
                   work=dict(fit_unit_special_flops_per_event_estimate=work,
                             whole_fit_unit_special_flops_estimate=work * events_seen if work else None,
                             fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'
@@ -371,7 +378,7 @@ def main():
         per_run['test_fault_kind'] = np.asarray(test_k)
     score_path = out.with_name(f'{a.tag}_scores.npz')
     np.savez_compressed(score_path, **per_run)
-    result['per_run_scores'] = dict(path=str(score_path.relative_to(ROOT)),
+    result['per_run_scores'] = dict(path=_rel(score_path),
                                     sha256=hashlib.sha256(score_path.read_bytes()).hexdigest())
     out.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(dict(test_auroc=result['test_auroc'], selected_epoch=best[1])), flush=True)

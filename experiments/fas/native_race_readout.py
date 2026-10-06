@@ -37,6 +37,13 @@ from sleeping_machines.fast_native_core import fast_class  # noqa: E402
 from sleeping_machines.race_readout import RaceReadout, detach_state, readout_episode  # noqa: E402
 
 
+OUT = ROOT / 'experiments/results/fas'      # redirected by experiments/aws_benchmark.py
+
+
+def _rel(path):
+    path = Path(path).resolve()
+    return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+
 def tensors(runs, idx):
     """pad to the longest run by repeating the last event; lengths returned."""
     T = max(len(runs[j][0]) for j in idx)
@@ -87,7 +94,7 @@ def main():
     p.add_argument('--max-windows', type=int, default=0); p.add_argument('--segment', type=int, default=128)
     p.add_argument('--tau-max', type=float, default=1000.); p.add_argument('--no-test', action='store_true')
     a = p.parse_args()
-    out = ROOT / 'experiments/results/fas' / f'{a.tag}.json'
+    out = Path(OUT) / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     if Path(a.tag).name != a.tag or out.exists():
         raise ValueError('Unique unused tag required')
@@ -151,8 +158,8 @@ def main():
             best = (val_nll, epoch, ({k: v.detach().clone() for k, v in model.state_dict().items()},
                                      {k: v.detach().clone() for k, v in readout.state_dict().items()}), (sc_c, sc_f))
     model.load_state_dict(best[2][0]); readout.load_state_dict(best[2][1])
-    weights = ROOT / 'experiments/results/fas/checkpoints' / f'{a.tag}_selected.pt'
-    weights.parent.mkdir(exist_ok=True); torch.save(dict(model=model.state_dict(), readout=readout.state_dict()), weights)
+    weights = Path(OUT) / 'checkpoints' / f'{a.tag}_selected.pt'
+    weights.parent.mkdir(parents=True, exist_ok=True); torch.save(dict(model=model.state_dict(), readout=readout.state_dict()), weights)
     sc_tc = sc_tf = test_k = None; test_nll = None
     if not a.no_test:
         test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
@@ -170,8 +177,8 @@ def main():
                   curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
                   test_clean_nll=test_nll,
                   test_auroc=aurocs(sc_tc, sc_tf, test_k) if sc_tc is not None else 'not scored (development run, --no-test)',
-                  selected_weights=str(weights.relative_to(ROOT)),
-                  per_run_scores=dict(path=str(score_path.relative_to(ROOT)), sha256=hashlib.sha256(score_path.read_bytes()).hexdigest()),
+                  selected_weights=_rel(weights),
+                  per_run_scores=dict(path=_rel(score_path), sha256=hashlib.sha256(score_path.read_bytes()).hexdigest()),
                   work=dict(fitting_events=events_seen, readout_madds_per_event=a.heads * a.pool * (a.payload * a.hidden + a.hidden * (V + 3))
                             + a.heads * a.payload * a.hidden, scope='readout analytic; integrated per-event work not traced (development driver)'),
                   data_manifest_sha256=hashlib.sha256((d / 'manifest.json').read_bytes()).hexdigest(),
