@@ -1,0 +1,2 @@
+# B1 EasyTPP: long-training regime test (user direction): does DEV LL recover past the memorization peak under decoupled weight decay / asymmetric private decay? Decides B1 training recipe (early stopping vs long decay-regularized training)
+b1_g1_taxi_d64_wd0.1_long_s0 experiments/tpp/race_tpp_v2.py --tag b1_g1_taxi_d64_wd0.1_long_s0 --dataset taxi --seed 0 --d 64 --modes 32 --wd 0.1 --epochs 1500 --patience 0
