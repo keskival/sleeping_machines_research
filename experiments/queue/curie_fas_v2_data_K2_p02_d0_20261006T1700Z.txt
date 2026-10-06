@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2 confirmation), Stage 2: generate the selected setting (amended Stage 1 rule: K=2, drop .02, delta 0) with 10,000 clean training, 1,000+1,000 validation and 2,000+2,000 test samples. Decision: freezes the v2 dataset for native development (validation only) and the sealed test. CPU, single thread, <2 GB.
+curie_fas_v2_data_K2_p02_d0_20261006T1700Z experiments/fas/generate_v2.py --name fas_v2_K2_drop0.02_delta0_20261005 --K 2 --drop 0.02 --delta 0 --train 10000 --val 1000 --test 2000

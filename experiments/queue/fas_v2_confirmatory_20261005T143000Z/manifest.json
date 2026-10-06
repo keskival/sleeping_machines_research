@@ -194,5 +194,36 @@
     "s5_analysis"
    ]
   }
+ },
+ "stage0_freeze": {
+  "utc": "2026-10-06T17:00:00Z",
+  "by": "curie FAS session (B3 owner)",
+  "note": "Stage 0 hashes before Stage 2 data generation. Driver files may change during Stage 3 development; the Stage 4 confirmation records its own source hashes per run.",
+  "sha256": {
+   "experiments/fas/generate_v2.py": "72b4491ce87c6f5f7a18399d2d7b3c0774c8b9dc3adeb8a0d80a6970a73d0afb",
+   "experiments/fas/calibrate_v2.py": "bc0696886dc5677dc6a7c987d1c37733ceaa2a6af45cffc89368bd1d8631223e",
+   "experiments/fas/calibrate_v2b.py": "f41648e048f73569ded7660d7ec9caede5b97e47e624cf02837eba2cecb30659",
+   "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+   "experiments/fas/native_race_readout.py": "cf6ec0fe70942a120fcfd27afd79aefd83a6fa3b8865cfc20c8753ba7e3d621f",
+   "experiments/fas/race_smc_eval.py": "4dd6addf70f4e858c1466e96999e0989d662c3e871cc5641dbd179fb6317c964",
+   "experiments/fas/dense.py": "8fa9bae15d780fcd64fd243f37611499fa64478c6d90ff081e35cf4a16048e54",
+   "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+   "experiments/fas/strong_baselines.py": "d3022e2d3fe35e0de488f18afffb34e3fc6fc7e215b24da75335f2c2c123cfa7",
+   "experiments/fas/timed_ngram.py": "0bd776bc6fe42d47d585ecb9da24e81c65428335be1e7cbf361b86d6f6481227",
+   "experiments/fas/oracle_bound.py": "506ce8315f60e730e64e4b7d33029c85f952e6c11d3cb8d33ec5a1c3d684d288",
+   "experiments/fas/causality_probe.py": "ea1f0aae960948823739ecf8d53147b6205fbd71b2e0ae92526c07c38921703b",
+   "sleeping_machines/race_readout.py": "0ef236693b5c605a3b6f819aa0ae8e24f606d65964a18c33557db973e1987f57",
+   "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "c3cfd16da531aa1ba9590b1546d0b9c09bf55b82553b0648dbdc00c7be470ca1"
+  }
+ },
+ "stage1": {
+  "original": "experiments/results/fas/fas_v2_calibration_grid_20261006T1745Z.json (no setting qualifies)",
+  "amended": "experiments/results/fas/fas_v2_calibration_amended_grid_20261006T1550Z.json (in progress)",
+  "selected_by_amended_rule": {
+   "K": 2,
+   "drop": 0.02,
+   "delta": 0.0,
+   "note": "first setting in the mildest-first order qualifies (oracle_line .821, best classical order3 .685, gap .136 at N*=512 per line), so the selection is fixed regardless of the remaining settings"
+  }
  }
 }
