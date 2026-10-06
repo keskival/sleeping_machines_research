@@ -4551,3 +4551,33 @@ Theory136; 60.076s/362876KiB. Numerically admitted cost/variance tradeoff only. 
 Best generic controls: 0.558669 AUROC at N=256 and 0.727233 at N=512. The fixed P32/D4/H2/U2 recipe uses two passes over 10,000 clean FIT runs; selection uses validation-clean NLL only. Test: 2,000 clean and 2,000 faulty runs. Seeds7/8 score artifacts each reproduce all 18 aggregate/type/prefix AUROCs exactly and retain the selected weights.
 
 FAS v1 replication, not sealed v2 confirmation. Generic-control comparison uses saved references; stronger neural benchmarks are pending. FIFO/timing de-interleaving trained on hidden item identities remain oracle-assisted diagnostics, excluded here. Original seed6 has aggregate scores, not the new per-run artifact; paired multi-seed bootstrap cannot be reconstructed from those aggregates. Current frozen dependency hashes are checked; historical unrecorded dependency identity is not independently verified.
+
+## Gathered token interface and typed witness — 6 October 2026
+
+Completed ordinary paired proper-GPT2/FineWeb 8K fits: same seed6, P24/D2/H2/U4,
+credit16, actual uniform-site alternative-write teacher,16,368 fitting targets,
+32updates/two passes, fourDEVchecks/2,040scored targets. Both selectstep16.
+
+| Execution | Selected DEV NLL | Fitting seconds | Total seconds |
+| --- | ---: | ---: | ---: |
+| Original per-event lexical gather | 8.277777 | 33.0973 | 38.3440 |
+| Credit-window lexical gather | 8.277663 | 26.6620 | 31.7247 |
+
+Fitting time fell19.45% in one sequential CPU pair. Selected quality is nearly
+identical; later trajectories differ by up to0.010467NLL. Full arithmetic audits
+are running separately; timing is not a FLOP or energy measurement. Integrated
+probe: forward/state/actual forced-write risk and AdamW update exact;
+all-gradient maximum error7.45e-9. Embedding backward callbacks8→1; five
+interleaved objective/backward median times0.138485→0.113322s. The gather moves
+only state-independent lexical lookup; event delivery, races, state, keys/values,
+sparse writes and continuation credit retain their operations. Original kernels
+remain unchanged; no full-trajectory parity or quality win claimed.
+
+Typed synthetic witness:100% accuracy on256DEV rows after1,024updates from64FIT
+rows (16,384 row presentations),6,370parameters, finalNLL0.0000898102,52.7048s.
+First100% atstep496; first64updates exactly reproduce the prior pilot. All
+column-order/category-relabel, missing-versus-zero, row-reset, shared path,
+nonzero key-credit and actual alternative-write risk contracts pass. Fixed
+numeric/categorical/Boolean predicates feed integrated temporal learning; this
+is not learned threshold discovery or a real tabular/tree benchmark win.
+Next tabular comparison uses real mixed-type data and tree references.

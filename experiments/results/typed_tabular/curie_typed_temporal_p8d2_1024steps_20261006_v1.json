@@ -1,0 +1,506 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "curie_typed_temporal_p8d2_1024steps_20261006_v1",
+    "steps": 1024,
+    "seed": 6,
+    "save_weights": true
+  },
+  "contracts": {
+    "column_presentation_invariant": true,
+    "category_relabel_invariant": true,
+    "missing_distinct_from_zero": true,
+    "independent_row_reset": true,
+    "training_inference_same_deterministic_path": true,
+    "finite_nonzero_key_credit": true,
+    "actual_alternative_write_changes_terminal_risk": true,
+    "observed_updates": 128,
+    "teacher": {
+      "site": [
+        3,
+        1,
+        0
+      ],
+      "inverse_site_probability": 16,
+      "winner": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "alternative": [
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      "proposal_probability": [
+        0.32936744462419115,
+        0.32936744462419115,
+        0.33420501400328173,
+        0.34387595135747656,
+        0.33420501400328173,
+        0.3405970305788964,
+        0.32052113199203525,
+        0.337577062291744
+      ],
+      "terminal_loss_difference": [
+        0.02321481704711914,
+        -0.010305255651473999,
+        0.06392931938171387,
+        -0.03156903386116028,
+        0.06392931938171387,
+        -0.031195133924484253,
+        0.04759860038757324,
+        -0.03249025344848633
+      ],
+      "factual_nll": 0.7683658599853516,
+      "selected_updates": 128,
+      "comparisons_per_row": 3,
+      "available_predicates": 3,
+      "scored_keys_per_event": 16,
+      "replay_events": 32,
+      "scope": "Fixed predicate bank; full comparisons, sparse learned state updates; one actual alternative-write continuation teacher. No FLOP or tabular win claim."
+    }
+  },
+  "curve": [
+    {
+      "step": 0,
+      "dev_nll": 0.758639931678772,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 16,
+      "dev_nll": 0.7232734560966492,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 32,
+      "dev_nll": 0.7136023640632629,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 48,
+      "dev_nll": 0.7059417366981506,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 64,
+      "dev_nll": 0.7052433490753174,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 80,
+      "dev_nll": 0.6984050869941711,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 96,
+      "dev_nll": 0.6474668383598328,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 112,
+      "dev_nll": 0.6080091595649719,
+      "dev_accuracy": 0.68359375
+    },
+    {
+      "step": 128,
+      "dev_nll": 0.5700067281723022,
+      "dev_accuracy": 0.734375
+    },
+    {
+      "step": 144,
+      "dev_nll": 0.6250753998756409,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 160,
+      "dev_nll": 0.6279043555259705,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 176,
+      "dev_nll": 0.6009696125984192,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 192,
+      "dev_nll": 0.5708231329917908,
+      "dev_accuracy": 0.60546875
+    },
+    {
+      "step": 208,
+      "dev_nll": 0.5634497404098511,
+      "dev_accuracy": 0.640625
+    },
+    {
+      "step": 224,
+      "dev_nll": 0.5615690350532532,
+      "dev_accuracy": 0.640625
+    },
+    {
+      "step": 240,
+      "dev_nll": 0.5636208653450012,
+      "dev_accuracy": 0.62109375
+    },
+    {
+      "step": 256,
+      "dev_nll": 0.5715657472610474,
+      "dev_accuracy": 0.50390625
+    },
+    {
+      "step": 272,
+      "dev_nll": 0.5624257326126099,
+      "dev_accuracy": 0.609375
+    },
+    {
+      "step": 288,
+      "dev_nll": 0.5846359133720398,
+      "dev_accuracy": 0.50390625
+    },
+    {
+      "step": 304,
+      "dev_nll": 0.5412490367889404,
+      "dev_accuracy": 0.6875
+    },
+    {
+      "step": 320,
+      "dev_nll": 0.5904567837715149,
+      "dev_accuracy": 0.46484375
+    },
+    {
+      "step": 336,
+      "dev_nll": 0.47265827655792236,
+      "dev_accuracy": 0.7265625
+    },
+    {
+      "step": 352,
+      "dev_nll": 0.4740775525569916,
+      "dev_accuracy": 0.6875
+    },
+    {
+      "step": 368,
+      "dev_nll": 0.43483126163482666,
+      "dev_accuracy": 0.6796875
+    },
+    {
+      "step": 384,
+      "dev_nll": 0.4071277379989624,
+      "dev_accuracy": 0.78125
+    },
+    {
+      "step": 400,
+      "dev_nll": 0.4502735733985901,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 416,
+      "dev_nll": 0.36958667635917664,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 432,
+      "dev_nll": 0.32515549659729004,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 448,
+      "dev_nll": 0.2810026705265045,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 464,
+      "dev_nll": 0.25633704662323,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 480,
+      "dev_nll": 0.1958487331867218,
+      "dev_accuracy": 0.859375
+    },
+    {
+      "step": 496,
+      "dev_nll": 0.13098417222499847,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 512,
+      "dev_nll": 0.06175801157951355,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 528,
+      "dev_nll": 0.01562555320560932,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 544,
+      "dev_nll": 0.006955695804208517,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 560,
+      "dev_nll": 0.004234226420521736,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 576,
+      "dev_nll": 0.0015994722489267588,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 592,
+      "dev_nll": 0.0019302533473819494,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 608,
+      "dev_nll": 0.0011268293019384146,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 624,
+      "dev_nll": 0.001433819648809731,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 640,
+      "dev_nll": 0.0008996508549898863,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 656,
+      "dev_nll": 0.0005026787403039634,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 672,
+      "dev_nll": 0.0006963129271753132,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 688,
+      "dev_nll": 0.0005129285855218768,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 704,
+      "dev_nll": 0.0004302801098674536,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 720,
+      "dev_nll": 0.0004233983054291457,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 736,
+      "dev_nll": 0.00032514199847355485,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 752,
+      "dev_nll": 0.0002590187359601259,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 768,
+      "dev_nll": 0.0002188943326473236,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 784,
+      "dev_nll": 0.00019553981837816536,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 800,
+      "dev_nll": 0.00018377549713477492,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 816,
+      "dev_nll": 0.00018433656077831984,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 832,
+      "dev_nll": 0.00016585281991865486,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 848,
+      "dev_nll": 0.00015027300105430186,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 864,
+      "dev_nll": 0.00013590059825219214,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 880,
+      "dev_nll": 0.00013070098066236824,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 896,
+      "dev_nll": 0.00012237890041433275,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 912,
+      "dev_nll": 0.0001131115059251897,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 928,
+      "dev_nll": 0.0001076948392437771,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 944,
+      "dev_nll": 9.953667904483154e-05,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 960,
+      "dev_nll": 9.684374526841566e-05,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 976,
+      "dev_nll": 0.00011061590339522809,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 992,
+      "dev_nll": 0.0001083455717889592,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 1008,
+      "dev_nll": 9.83683203230612e-05,
+      "dev_accuracy": 1.0
+    },
+    {
+      "step": 1024,
+      "dev_nll": 8.981018618214875e-05,
+      "dev_accuracy": 1.0
+    }
+  ],
+  "last_teacher": {
+    "site": [
+      2,
+      1,
+      0
+    ],
+    "inverse_site_probability": 16,
+    "winner": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "alternative": [
+      0,
+      2,
+      0,
+      1,
+      2,
+      1,
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    "proposal_probability": [
+      0.5304132240750628,
+      0.15348493851967115,
+      0.6921569655933796,
+      0.17882817144526925,
+      0.15348493851967115,
+      0.26995638254315774,
+      0.1422938874712879,
+      0.2402206949401942,
+      0.7912325242392961,
+      0.26639028487596944,
+      0.49309096718903245,
+      0.560566098214639,
+      0.290758604479668,
+      0.6921569655933796,
+      0.18211556104694618,
+      0.7912325242392961
+    ],
+    "terminal_loss_difference": [
+      1.883397635538131e-05,
+      -2.8610002118512057e-06,
+      -1.4304987416835502e-06,
+      -6.317804945865646e-06,
+      -2.8610002118512057e-06,
+      -5.707863601855934e-05,
+      -9.259828948415816e-05,
+      -2.7297719498164952e-05,
+      1.1920926112907182e-07,
+      -1.1920923270736239e-07,
+      0.00010606320574879646,
+      0.0,
+      -1.0728370398283005e-05,
+      -1.4304987416835502e-06,
+      0.0,
+      1.1920926112907182e-07
+    ],
+    "factual_nll": 7.915816968306899e-05,
+    "selected_updates": 256,
+    "comparisons_per_row": 3,
+    "available_predicates": 3,
+    "scored_keys_per_event": 16,
+    "replay_events": 64,
+    "scope": "Fixed predicate bank; full comparisons, sparse learned state updates; one actual alternative-write continuation teacher. No FLOP or tabular win claim."
+  },
+  "fit_rows": 64,
+  "dev_rows": 256,
+  "fitting_row_presentations": 16384,
+  "parameters": 6370,
+  "wall_s": 52.70476715400582,
+  "peak_rss_kib": 323892,
+  "source_sha256": {
+    "sleeping_machines/typed_temporal_model.py": "f80bf2a71ddce23a8c24c8b55f24aef02310dfa5d6bd67d2179c5ed5717f570b",
+    "sleeping_machines/typed_predicate_interface.py": "114a47e22f93dd6bb7a2894cf5a01849b2c5b7e4a08baa79529ad434bacba61b",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "experiments/typed_temporal_pilot.py": "61bce27ac2317f83f85cbf7bc22d1cb4456c7009395e4a7af9201cc431946a8c"
+  },
+  "scope": "Synthetic mixed-type interaction witness, one seed; fixed predicates and canonical complete comparison presentation. Existing integrated temporal/sparse core, learned receiver selection and actual alternative-write terminal-risk credit. No learned thresholds/predicate discovery, tree benchmark, scaling/transfer or complete FLOP claim.",
+  "final_weights": "experiments/results/typed_tabular/curie_typed_temporal_p8d2_1024steps_20261006_v1.pt",
+  "final_weights_sha256": "e8a903bf3cf4e5231c93d515d624c3f9d0c6ebde662923d3b2d9052aea9b50ba"
+}

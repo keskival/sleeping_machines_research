@@ -34,3 +34,25 @@ and EOS. It checks output/state/forced-write risk, every parameter gradient and
 AdamW update; counts embedding backward calls and output elements; and times
 five interleaved forward/continuation/backward repetitions per implementation.
 A full small-fit replay and cost record follow only after contracted improvement.
+
+## Gathered token interface and typed witness — 6 October 2026
+
+Completed ordinary paired proper-GPT2/FineWeb 8K fits: same seed6, P24/D2/H2/U4,
+credit16, actual uniform-site alternative-write teacher,16,368 fitting targets,
+32updates/two passes, fourDEVchecks/2,040scored targets. Both selectstep16.
+
+| Execution | Selected DEV NLL | Fitting seconds | Total seconds |
+| --- | ---: | ---: | ---: |
+| Original per-event lexical gather | 8.277777 | 33.0973 | 38.3440 |
+| Credit-window lexical gather | 8.277663 | 26.6620 | 31.7247 |
+
+Fitting time fell19.45% in one sequential CPU pair. Selected quality is nearly
+identical; later trajectories differ by up to0.010467NLL. Full arithmetic audits
+are running separately; timing is not a FLOP or energy measurement. Integrated
+probe: forward/state/actual forced-write risk and AdamW update exact;
+all-gradient maximum error7.45e-9. Embedding backward callbacks8→1; five
+interleaved objective/backward median times0.138485→0.113322s. The gather moves
+only state-independent lexical lookup; event delivery, races, state, keys/values,
+sparse writes and continuation credit retain their operations. Original kernels
+remain unchanged; no full-trajectory parity or quality win claimed.
+

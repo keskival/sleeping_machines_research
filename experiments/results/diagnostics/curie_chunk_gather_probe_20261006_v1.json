@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "control": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json",
+  "control_sha256": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+  "checkpoint_sha256": "32875968d8a3a87017751635766e97f23d34816a8c60ca0e5b0a9d4b1b98d607",
+  "integrated": {
+    "input_tokens": 64,
+    "forward_state_continuation_max_error": 0.0,
+    "all_gradient_max_error": 7.450580596923828e-09,
+    "adamw_update_max_error": 0.0,
+    "graph_nodes": {
+      "reference": 4791,
+      "gathered": 4785
+    }
+  },
+  "embedding_backward": {
+    "reference": {
+      "calls": 8,
+      "output_elements": 19298688
+    },
+    "gathered": {
+      "calls": 1,
+      "output_elements": 2412336
+    }
+  },
+  "interleaved_wall_s": {
+    "reference": [
+      0.13465822802390903,
+      0.13590007898164913,
+      0.13848505297210068,
+      0.14230458601377904,
+      0.13930947805056348
+    ],
+    "gathered": [
+      0.10790296597406268,
+      0.11264580400893465,
+      0.11332150601083413,
+      0.1138162249699235,
+      0.11588134296471253
+    ]
+  },
+  "wall_s": 3.4430297950166278,
+  "peak_rss_kib": 510708,
+  "source_sha256": {
+    "sleeping_machines/chunk_gather_counterfactual_episodes.py": "712569484e3bd55cd5050ed40d3a50667744f8361e5dcaf7c5e1616fd90473ba",
+    "experiments/chunk_gather_probe.py": "10ae898c6a17a26e1586f9c7a0a6e8d743a4052c2f9461195cc9a376b7588604"
+  },
+  "scope": "One selected trained P24 checkpoint, 64 FIT-derived fixture tokens including duplicates/EOS, exact forward/state/forced-write continuation plus gradients/AdamW parity. Five interleaved CPU objective/backward timings per kernel, no optimizer/evaluation inside timing; no full-fit throughput, FLOP, energy or quality gain. Fixed forced alternative is a contract, not a claimed unbiased training estimator. Existing source kernels unchanged."
+}

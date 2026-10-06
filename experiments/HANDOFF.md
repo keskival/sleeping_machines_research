@@ -1,3 +1,44 @@
+# Latest continuation — 6 October 2026
+
+Live priority: tmux curie_gather_work_pair_20261006_v1 runs original8K/P24
+whole-work audit then gathered audit via unique one-job queues/run_safe.sh,
+900s/800000KiB RSS/8192MiB MemAvailable. Original PID73417 live at00:41UTC,
+around475MiB RSS. Revalidate runtime before launching anything. Audit each
+against its own completed parent; full curves differ. Main next scale remains
+proper-token1M/P24 following executed gather quality/work admission;4M reserved.
+P32/256K selected memory/message-erasure utility completed and preserved.
+No rotation substitution. Saved typed finalweights available for diagnostics.
+
+## Gathered token interface and typed witness — 6 October 2026
+
+Completed ordinary paired proper-GPT2/FineWeb 8K fits: same seed6, P24/D2/H2/U4,
+credit16, actual uniform-site alternative-write teacher,16,368 fitting targets,
+32updates/two passes, fourDEVchecks/2,040scored targets. Both selectstep16.
+
+| Execution | Selected DEV NLL | Fitting seconds | Total seconds |
+| --- | ---: | ---: | ---: |
+| Original per-event lexical gather | 8.277777 | 33.0973 | 38.3440 |
+| Credit-window lexical gather | 8.277663 | 26.6620 | 31.7247 |
+
+Fitting time fell19.45% in one sequential CPU pair. Selected quality is nearly
+identical; later trajectories differ by up to0.010467NLL. Full arithmetic audits
+are running separately; timing is not a FLOP or energy measurement. Integrated
+probe: forward/state/actual forced-write risk and AdamW update exact;
+all-gradient maximum error7.45e-9. Embedding backward callbacks8→1; five
+interleaved objective/backward median times0.138485→0.113322s. The gather moves
+only state-independent lexical lookup; event delivery, races, state, keys/values,
+sparse writes and continuation credit retain their operations. Original kernels
+remain unchanged; no full-trajectory parity or quality win claimed.
+
+Typed synthetic witness:100% accuracy on256DEV rows after1,024updates from64FIT
+rows (16,384 row presentations),6,370parameters, finalNLL0.0000898102,52.7048s.
+First100% atstep496; first64updates exactly reproduce the prior pilot. All
+column-order/category-relabel, missing-versus-zero, row-reset, shared path,
+nonzero key-credit and actual alternative-write risk contracts pass. Fixed
+numeric/categorical/Boolean predicates feed integrated temporal learning; this
+is not learned threshold discovery or a real tabular/tree benchmark win.
+Next tabular comparison uses real mixed-type data and tree references.
+
 # Session handoff — 2026-09-30
 
 **P32/256K completed; rotation not promoted:** selectedDEV7.753460454 at
