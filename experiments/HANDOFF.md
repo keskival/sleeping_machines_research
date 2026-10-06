@@ -4534,5 +4534,5 @@ writes. Requested order:
 4. then E2, E3 and the audits.
 
 E1, R2 and R1 take about 1–1.4 h each, ~2.5 GB RSS. Contracts: tests/test_race_readout.py (6 pass); compiled
-throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain43`, WAIT=1 so it queues behind any held host lock) needs the exact line
+throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain44`; R3 = R2 at pool 24 per head, §434.3, follows R1, WAIT=1 so it queues behind any held host lock) needs the exact line
 CURIE_WINDOW_GRANTED_FAS_DEV and MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
