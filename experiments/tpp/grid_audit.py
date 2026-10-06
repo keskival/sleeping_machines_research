@@ -20,6 +20,7 @@ def main():
     ap.add_argument('--result', required=True)
     ap.add_argument('--cell', type=float, default=1.0)
     ap.add_argument('--seed', type=int, default=0)
+    ap.add_argument('--quad-nodes', type=int, default=0, help='re-evaluate with this many compensator nodes (state clock)')
     a = ap.parse_args()
     torch.set_num_threads(1); torch.set_default_dtype(torch.float64)
     r = json.loads((ROOT / a.result).read_text())
@@ -29,9 +30,18 @@ def main():
     gaps = np.concatenate([np.diff(t) for t, _ in train]); pos = gaps[gaps > 0]
     qs = np.log(np.quantile(pos, np.linspace(0.1, 0.9, args['n_lognormal']))).tolist()
     kw = {k: args[k] for k in ('floor_cell',) if k in args}
+    if args.get('n_window', 0):
+        kw.update(n_window=args['n_window'], window_edges=([0.1] * args['n_window'], [0.2] * args['n_window']))
+    if args.get('state_modes', 0):
+        kw.update(state_modes=args['state_modes'])
+        if a.quad_nodes:
+            kw.update(quad_nodes=a.quad_nodes)
     model = mod.RaceTPP(r['K'], args['d'], args['modes'], args['layers'], args['n_exp'], args['n_lognormal'], args['dv'],
                         0.0, r['scale'], qs, **kw)
-    model.load_state_dict(torch.load(ROOT / r['checkpoint'])); model.eval()
+    state = torch.load(ROOT / r['checkpoint'])
+    if a.quad_nodes:
+        state = {k: v for k, v in state.items() if k not in ('gl_x', 'gl_w')}
+    model.load_state_dict(state, strict=not a.quad_nodes); model.eval()
     rng = np.random.default_rng(a.seed)
     deq = []
     for t, m in dev:
@@ -45,6 +55,7 @@ def main():
         for tt, mm, mask in mod.batches(dev[:200], 64, False, random.Random(0)):
             h, slots = model.encode(tt, mm, mask)
             _, mu, sigma, _, _ = model.clocks(h, slots)
+            sigma = sigma[..., :args['n_lognormal']]
             sig.append(sigma[mask].reshape(-1, sigma.shape[-1]))
     sig = torch.cat(sig)
     out = dict(result=a.result, cell=a.cell, dev_raw=raw, dev_dequantized=dq, drop=raw['ll'] - dq['ll'],
