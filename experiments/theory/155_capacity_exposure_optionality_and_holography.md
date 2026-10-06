@@ -608,3 +608,64 @@ state makes the hazards conditional, and the race is still the generative form.
 - Native performance degrades under the within-sample timestamp shuffle control: timing carries the binding.
 - The native model's per-slot write sources concentrate on single processes. This is measured by the binding
   diagnostic with oracle identities, used for evaluation only.
+
+## 433. Race readout and posterior-routed writes: the superposition likelihood as the model's head (6 October)
+
+**Failure addressed** (measured on FAS v1):
+- The native model reaches validation/test AUROC ≈ .59–.60 at N=256, against the identity oracle's .755.
+- The credit audit (§429) shows the implemented route credit nearly blind (corr −.08/.29).
+- Long-memory routing is chaotic (§431: a median of 125 later winner flips per forced choice).
+- The oracle's power comes from item-own durations. The current head predicts the next *merged* event from one pooled
+  vector, so the model must learn binding indirectly, through hard write routes whose credit is the measured blind
+  spot.
+
+**Theory** (§432.1). The merged log is a superposition of per-process renewal processes, so the exact next-event law is
+a race over the processes' pending events.
+
+The readout makes each top-layer slot s a competitor:
+- a type law p_s;
+- a log-normal own-duration law f_s measured from t_s, the slot's last write;
+- a pending probability q_s.
+
+The model's likelihood is then the exact superposition density:
+  log p(e, t') = Σ_v [log S_v(t'−t_v) − log S_v(t−t_v)] + logsumexp_s [log q_s f_s(t'−t_s) p_s(e) − log S_s(t'−t_s)].
+- It integrates to the probability that any event occurs (contract: tests/test_race_readout.py).
+- Survival of the non-firing slots is silence-aware supervision. A slot that predicted an event that did not come
+  pays for it.
+- If slots hold processes, the likelihood is literally the oracle's model with learned per-process laws.
+
+**Posterior-routed writes.** The responsibility r_s ∝ q_s f_s p_s(e) / S_s is the posterior probability that slot s's
+race produced the event. Writing the event to a slot drawn by an exponential race over log r (per head) is posterior
+sampling: the filtering rule "write where predicted".
+- It is a hard sparse write, chosen by a race.
+- Its scores come from the model's own predictive likelihood, not from a separate query/key race that needs learned
+  credit. Binding therefore needs no learned write credit: it is self-consistent, like an E-step.
+- The likelihood gradient is exact for the readout's soft mixture over slots, with no route chaos in the likelihood path.
+
+**Mechanisms.**
+- Retained:
+  - the deep race network below the top layer, with its learned query/key races, delays, transport and carried state;
+  - sparse addressed writes, one slot per head;
+  - small messages mixing content with memory;
+  - key/value separation in the lower layers;
+  - timing as computation.
+- Added:
+  - per-slot race readout (a temporal race at the output);
+  - silence-aware survival supervision.
+- Replaced (R2 only): the top layer's query/key write scores, by posterior responsibilities.
+- Removed: nothing else.
+
+**Work.**
+- Inference adds per event H·U·(P·h + h·(V+3)) + H·P·h multiply-adds (p32, h64, H2, U8: ~114K), plus survival terms
+  (special functions) for H·U slots. This is dense over the H·U top-layer slots: the readout scores every slot, as a
+  race scores every competitor's clock.
+- Learning adds the same, times the usual backward factor. No counterfactual lanes are needed.
+- Sparse variants come next: score only seen slots plus one free slot.
+
+**Required comparison** (FAS v1 validation, disclosed development, seeds 6):
+- E1 (race control, standard head, pool 8, τmax 1000) against R1 (race readout, learned writes) and R2 (race readout,
+  posterior writes);
+- same data, same segment, epoch and learning rate;
+- validation AUROC at N=128/256/512 (rule total), validation NLL in log-gap units, and top-layer slot use.
+- Adopt R2 for the v2 development budget if it beats E1 by more than the seed spread (.009 at N=256 on v1) at
+  N ≤ 512.
