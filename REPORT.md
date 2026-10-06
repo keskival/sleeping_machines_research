@@ -4718,3 +4718,8 @@ feature reference is not an optimally refitted unigram. Publicvalidation untouch
 
 P32/1M fixed-recipe crossedwidth fit started03:04:01UTC, after positiveutility
 and intactparent source/data gates. No completed P32/1Mquality or work cell yet.
+
+
+### Completed crossed-width comparison at 1M tokens — 6 October 2026
+
+P24 wins selected development quality against P32: **7.251503 versus 7.263761 NLL**, a **0.012258 NLL** advantage. Seed6, GPT-2 FineWeb,1,048,576 admitted TRAIN tokens,two passes/2,097,136 fitting targets,4,096 updates,four development evaluations plus eligible initialization,2,040 scored DEV targets. Both select step2,048. P32 final NLL is7.294566 and total wall time4,686.710 seconds; the guarded run exited0. Width changes core and token-interface capacity; this is an equal-data comparison, with larger full fitting work still unmeasured. Selected P32 memory/context utility is running.

@@ -1,3 +1,19 @@
+# P32/1M completed; selected utility live — 6 October 2026
+
+Guarded fit exited0 at04:22:14UTC. Completed2,097,136targets/4096updates,
+four DEVchecks plus eligible initialization. P32 selected7.263761153876 at2048,
+final7.294566315296; curve initial8.022527477788,1024 7.497297937730,
+3072 7.292188337737. Totalwall4686.710309s. P24 selected7.251503259995 wins
+same fixed-recipe/data/selection seed6 comparison by0.012257893880NLL.
+Width changes token interface and readout as well as core; unequal compute.
+Larger complete-work cells remain unmeasured, no public-reference win claim.
+
+Automatic selectedutility PID115436 verified live (~274MiBRSS), unique queue
+curie_original_1m_p32_utility_20261006_v1,1200s/800MBRSS/8GiBfloor.
+Next: finish utility, collect eight-cell crossed quality packet and refresh raw
+measurement visualization/report. P24 remains prioritized integrated member;
+4M reserved; no new architecture or long fit admitted before packet review.
+
 # Completed 1M evidence added to PDF producer — 6 October 2026
 
 `report/token_data_growth.py` now uses the source-checked measured figure
