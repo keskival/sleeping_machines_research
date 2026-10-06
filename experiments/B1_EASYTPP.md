@@ -110,3 +110,5 @@ single-model TEST mean ± sd over its 5 protocol seeds and (2) the uniform predi
 with per-event inference MACs beside S2P2's. The mixture is a matched-compute (inference) comparison only where 5× our
 MACs ≤ S2P2's (Taxi 0.41×, Retweet 0.29×) or within 10% (near-matched); elsewhere (Amazon 1.25×, Taobao 4.5×,
 StackOverflow 4.6×) it is reported as a higher-compute result, not a matched win.
+| 6 Oct | **final Taxi** | v5, 8 delayed clocks, dropout 0.3, floor 1 s; 5 seeds, TEST once per seed at best DEV | single model **0.5250 ± 0.0010** (time 0.733, mark −0.208) vs S2P2 0.522 ± 0.004; **5-seed mixture 0.5363** (time **0.740**, mark **−0.204**) | **WIN, confirmed (5 seeds).** The mixture beats every published model on total, time (best published 0.735, IFTPP) and mark (best −0.211) LL at 0.41× S2P2's per-event inference MACs; the single model leads on the mean at 1/12 of S2P2's parameters and per-event MACs |
+| 6 Oct | StackOverflow selection | v5 base −2.175, 3 layers −2.173, v6 −2.179 (DEV) | selected v5 3 layers | TEST protocol queued |
