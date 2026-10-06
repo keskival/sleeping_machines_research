@@ -669,3 +669,101 @@ sampling: the filtering rule "write where predicted".
 - validation AUROC at N=128/256/512 (rule total), validation NLL in log-gap units, and top-layer slot use.
 - Adopt R2 for the v2 development budget if it beats E1 by more than the seed spread (.009 at N=256 on v1) at
   N ≤ 512.
+
+## 434. Binding as inference: the race readout is a particle filter over interleavings (6 October)
+
+**Setting.** As in §432, the anonymous log L = (x_1, …, x_T), x_k = (type, time), is a merge of hidden processes.
+The binding is a latent assignment path a_{1:T}: a_k is the slot (process) that emitted x_k.
+
+The exact interleaving-marginal likelihood is
+  p(L) = Σ_{a_{1:T}} Π_k p(x_k, a_k | x_{<k}, a_{<k}).
+It sums over up to U^T paths. Exact marginalisation is a data-association problem, exponential in general.
+
+The race readout (§433) supplies the per-step joint: log p(x_k, a_k = s | past) = base + fire_s. Posterior routing
+(R2) draws a_k ∝ p(x_k, a_k | past).
+
+**Theorem 434.1 (posterior-routed writes are single-particle SIS with the optimal proposal).** Let
+Ẑ = Π_k p(x_k | x_{<k}, a_{<k}), with a_k drawn from p(a_k | x_{≤k}, a_{<k}) along one sampled path. Then
+E[Ẑ] = p(L).
+
+*Proof.* Proposal q_k(a_k) = p(a_k | x_k, past). The incremental importance weight is
+p(x_k, a_k | past) / q_k(a_k) = p(x_k | past). This is independent of a_k. The product of the weights is the
+standard SIS estimate of the normalising constant, which is unbiased for any proposal with adequate support
+(Doucet & Johansen 2009; one particle, no resampling). ∎
+
+Stochastic routes in the lower layers are further latent variables drawn from their prior. Their weights are 1, so
+unbiasedness is unaffected.
+
+*Numerical check* (toy: 3 slots, 4 types, 7 events, log-normal defective laws; exact sum over all 3^7 paths;
+implementation-level `event_terms`; experiments/theory/smc_check_434.py):
+- E[Ẑ]/p = 1.007 ± 0.005 over 20,000 paths;
+- E log Ẑ is 0.144 nats below log p (the Jensen gap);
+- the argmax path's log-likelihood is 1.07 nats below log p.
+
+**Corollaries.**
+1. R2 trains a **filtering variational objective**: E log Ẑ ≤ log p(L) (Jensen). This is FIVO/IWAE with one particle
+   (Maddison et al. 2017; Burda et al. 2016). The detached routing matches FIVO's omission of the resampling
+   score-function terms. The binding rule therefore optimises a bound on the likelihood marginalised over all
+   interleavings, not a heuristic.
+2. **More particles tighten the bound** and sharpen the anomaly score. Run L lanes per sample with independent route
+   noise; resample by the incremental weights p(x_k | past) when the effective sample size falls; score
+   −log((1/L) Σ_l Ẑ_l). The forced-lane machinery already runs lanes in parallel. Compute ↔ binding-accuracy is then an
+   explicit dial: L × per-event work.
+3. **Evaluate by sampling or particles, not argmax.** The argmax path is not an estimator: it is 1.07 nats below in the
+   toy, against 0.14 for a sampled path. native_race_readout.py samples with a fixed seed.
+4. **Exactness condition.** The theorem treats the emitting slot as one variable over the readout's H·U slots. R2
+   draws one write per head from that head's conditional posterior, so with H > 1 each head is its own redundant
+   tracker and the weight identity holds only approximately. An exact variant uses one emission head (H = 1 at the
+   top layer), or a per-head product-of-experts emission. Record which variant runs.
+
+**Proposition 434.2 (binding accuracy and detection power).** Take a detector that commits to an assignment and scores
+the mean robust z of item-own durations, as the oracle and FIFO/timed trackers do. Let a fraction α of pairs be
+correctly bound. A correct pair carries the fault shift δ (unit variance). A mis-bound pair is a duration from the
+wrong item, with zero mean shift and variance ρ ≫ 1 (heavy tails, clipped at 50). Over n pairs:
+  d'_eff = δ √n · α / sqrt(α + (1 − α) ρ) = d'_oracle · α / sqrt(α + (1 − α) ρ),   AUROC = Φ(d'/√2).
+- *Calibration from the v2 probe* (K=2, p=.02, N=512): the oracle is .673 (d' = .634); the timing-aware tracker
+  binds α = .86 of pairs and scores .568 (d' = .242), which implies ρ ≈ 30.
+- *Consequence:* 14% mis-binding removes 62% of d'. Retaining 87% of d' needs α ≈ .99.
+- *Steepness:* committed-assignment detectors are steep functions of binding accuracy, so de-interleave-then-detect
+  pipelines collapse under modest dropout or speed offsets, as measured.
+- *Race readout:* it scores each event under the mixture over slots (log Σ_s), not under a committed slot. An event
+  whose committed slot is wrong can still be explained by the right slot in the score. Errors act only through
+  corrupted slot states (wrong t_s) at later events.
+- *Hypothesis to measure:* the readout's effective ρ is far below 30. Test: compare its validation AUROC with the
+  oracle as top-layer binding purity (the binding diagnostic, oracle identities used for evaluation only) varies.
+
+**Proposition 434.3 (slot capacity by Little's law).** In steady state the mean number of items in progress is
+L_items = λ W (Little's law: arrival rate λ, mean time in system W).
+- For K lines, a binding layer needs U ≥ K λ W slots per head, plus a fluctuation margin.
+- FAS: items start every ~60 s per line (λ ≈ 1/60 s⁻¹) and take W ≈ 820 s. So λW ≈ 13.7 per line; the measured
+  maximum is 18 per line and 35 at K=2.
+- *Prescription:* U ≈ 20 K per head (pool 40 at K=2, 60 at K=3).
+- With U < KλW, items must share slots. Sharing is mis-binding by construction, and the loss follows 434.2.
+- The current v1 development pool (8 per head, 16 slots) is below λW = 13.7 per head for a single line.
+- *Prediction:* R1/R2 at pool 8 under-use the readout. A pool-16/24 arm on v1 should gain, saturating near
+  U ≈ 18.
+
+**Proposition 434.4 (prefix scaling isolates interleaving).**
+- *Per line:* evidence about the faulty line grows with the number of that line's events. FAS faults are
+  progressive, so d' grows faster than √n. The v1 oracle's d' rises ×1.49 from N=128 to 256 and ×1.97 from 256 to 512.
+- *Merged prefix:* at merged prefix N, each line contributes ~N/K events. Detection at fixed merged N then falls with
+  K for every detector, even with perfect binding.
+- *Per-line prefix:* N_line · K holds the faulty-line evidence fixed, so differences between detectors measure
+  binding and interleaving alone. This is the formal basis of the Stage 1 amendment.
+
+**Intuition: why race models carry the right inductive bias.**
+- *Race readout:* with U ≥ KλW slots, the R2 model class contains the generative family (K marked renewal processes,
+  log-normal own durations, Markov types) as a special case. Its objective is then the one-particle bound of
+  Theorem 434.1 on the true likelihood.
+- *Sequence model:* it would have to learn, in one dense state, a filter over exponentially many assignments, with no
+  structural prior for "one process per slot, own clocks, earliest fires".
+- *Clocks bind:* the responsibilities are sharp because each slot measures its own elapsed time. A line-speed offset
+  is absorbed into that slot's own law. Pooled detectors cannot absorb it (the .554 pooled oracle at δ = ±5%).
+
+**Tests implied** (ordered by cost):
+1. R2 against R1 against E1 (queued).
+2. Particle evaluation of the R2 checkpoint, L ∈ {1, 4, 16} lanes with resampling. Evaluation only. Predicted:
+   validation NLL falls and AUROC rises with L.
+3. A pool sweep on v1, U ∈ {8, 16, 24}. Predicted: saturation near U ≈ 18.
+4. A binding-purity diagnostic for R1/R2 against AUROC, testing the readout's effective ρ.
+5. An H=1 top-layer R2 variant for exactness.
