@@ -4738,4 +4738,16 @@ Independent P24/1M seed7 utility completed: **context gain0.995919**, memory-sta
 
 ### Longer credit at fixed optimizer batch — completed 64K comparison
 
-**Credit64 loses to credit16: selected NLL8.162280 versus8.033311**, a0.128969NLL loss. Seed6,P24/D2/H2/U4,GPT-2 FineWeb64K,two passes/131,056fitting targets,256updates and fourDEVchecks; optimizerbatch64 and all settings except creditwindow match. Credit64 selects initialization; finaltrained loss8.284746. Retaincredit16. This comparison changes factual gradient horizon and alternative-write utility boundary together. Its selected-state utility diagnostic evaluates initialization; complete fitting work is queued.
+**Credit64 loses to credit16: selected NLL8.162280 versus8.033311**, a0.128969NLL loss. Seed6,P24/D2/H2/U4,GPT-2 FineWeb64K,two passes/131,056fitting targets,256updates and fourDEVchecks; optimizerbatch64 and all settings except creditwindow match. Credit64 selects initialization; finaltrained loss8.284746. Retaincredit16. This comparison changes factual gradient horizon and alternative-write utility boundary together. Its selected-state utility diagnostic evaluates initialization; complete fitting work has now been audited below.
+
+
+Credit64 also uses **0.883788% more complete fitting arithmetic**. The full replay reproduces every development curve value exactly (zero error), with all 256 optimizer updates and complete arithmetic formulas.
+
+| Factual / alternative credit | Selected DEV NLL | Whole fit GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target |
+| --- | ---: | ---: | ---: | ---: |
+| 16 / 16 | 8.033311 | 192.211765 | 1.466638 | 0.403428 |
+| 64 / 64 | 8.162280 | 193.910510 | 1.479600 | 0.402539 |
+
+Scope: paired seed6,131,056 fitting targets,2,040 scored DEV targets, identical data/batches/passes/selection opportunity. Fitting includes factual computation, candidate discovery, realized alternative-write replay, teacher/readouts, backward, clipping, optimizer and in-step diagnostics; initialization, frequency counts, validation and serialization are excluded. Special functions are separate; random sampling work is unquantified. Inference evaluates each selected checkpoint, including initialization for credit64. No Pareto win: quality and fitting cost both favor credit16. Sources: `curie_data_growth_tokens_64k_p24_work_20261005_v1.json` and `curie_credit64_tokens_64k_p24_work_20261006_v1.json`.
+
+The separated-horizon state witness passes: changing the alternative horizon preserves all inference features, numeric state and route RNG. Initial-memory gradient L1 is0 with factual horizon8 and4.709780 with factual horizon32, independent of alternative horizon8/32. The actual-driver contract first failed in the test harness because initialization has no teacher record; the failure is preserved and a uniquely tagged corrected contract is running. Off-diagonal fits require its completed parity/resume/causal-credit receipt.

@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "stage": "driver contract harness",
+  "error": "KeyError: future_write_teacher on initial curve row",
+  "completed_contract": false,
+  "source_sha256": "ed2c5a407563c6a56ce46aaad599ee6b94e0307a8075bd31310334f691eda8e3",
+  "log": "experiments/queue/logs/curie_split_horizon_driver_contracts_20261006_v1.log",
+  "interpretation": "Initialization has no teacher record. Numerical checkpoint diagonal parity had passed through F4; harness failed before completing curve and resume checks. No off-diagonal fit admitted."
+}

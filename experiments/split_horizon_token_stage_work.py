@@ -106,7 +106,8 @@ def main():
     assert len(original['curve']) == len(replay['curve'])
     for index, (x, y) in enumerate(zip(original['curve'], replay['curve'])):
         for field in ('step', 'train_nll', 'dev_nll', 'future_write_teacher'):
-            assert_exact(x[field], y[field], f'curve[{index}].{field}')
+            assert (field in x) == (field in y), (index, field)
+            assert_exact(x.get(field), y.get(field), f'curve[{index}].{field}')
     del original, replay
     chosen = json.loads((folder / (a.tag + '.selection.json')).read_text())['selected']
     original_selection_path = control_path.with_suffix('.selection.json')

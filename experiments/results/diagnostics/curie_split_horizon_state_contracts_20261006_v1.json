@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "factual": 8,
+      "alternative": 8,
+      "initial_memory_gradient_l1": 0.0
+    },
+    {
+      "factual": 8,
+      "alternative": 32,
+      "initial_memory_gradient_l1": 0.0
+    },
+    {
+      "factual": 32,
+      "alternative": 8,
+      "initial_memory_gradient_l1": 4.709780216217041
+    },
+    {
+      "factual": 32,
+      "alternative": 32,
+      "initial_memory_gradient_l1": 4.709780216217041
+    }
+  ],
+  "numeric_state_parity": true,
+  "feature_parity": true,
+  "route_rng_parity": true,
+  "factual_gradient_contract": true,
+  "source_sha256": {
+    "experiments/split_horizon_state_contracts.py": "cf23d809da8a1fef25fedcc03166a81e223713c6ad389bf9b8787dda33468048",
+    "experiments/split_horizon_token_language_engine.py": "6085552561e26c09ef0be68791d016db40cde2b8ef6f6ec1693ac91b4e1e20f7"
+  },
+  "scope": "Integrated two-depth state/gradient witness. Alternative utility learning is covered by separate actual-driver contracts; no quality claim."
+}
