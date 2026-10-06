@@ -148,16 +148,18 @@ Early fault detection from anonymous interleaved event logs; test 2,000 clean an
 | Task | Ours | Reference | Verdict |
 | --- | --- | --- | --- |
 | Synthetic mixed-type interaction, 64 FIT rows | **100%** on 256 DEV rows, 6,370 parameters | — | Mechanism learns (fixed predicates, one seed) |
-| Banknote, reserved test, 3 seeds | 91.8% | Boosted trees 94.0%; logistic regression 94.7% | **Loss** |
+| Banknote, reserved test, 3 seeds | 91.8% | Boosted trees 94.0%; logistic regression 94.7% | Behind; first-pass variant |
 
 ![banknote reserved test](figures/banknote_reserved_test.png)
 
 ### 4.7 Public benchmarks, speech and adaptation
 
+Attempt levels follow [WIN_CRITERIA.md](../experiments/WIN_CRITERIA.md). A first-pass variant is an existing member with at most knob-level tuning and no task-specific design; its result describes that variant, not the family. These benchmarks are not current battles.
+
 | Benchmark | Ours | Reference | Verdict |
 | --- | --- | --- | --- |
-| NeuroBench Mackey-Glass, τ 17, 30 repeats (sMAPE) | 14.84, 57.6 KB | LSTM 13.37 (490 KB), ESN 14.79 | **Loss**; smallest footprint |
-| NeuroBench primate reaching, 5 of 6 official sessions (R²) | 0.619 paired mean | tinyRSNN 0.643, bigRSNN 0.683; leaderboard 0.71 | **Loss**; the 0.71 target is out of reach |
+| NeuroBench Mackey-Glass, τ 17, 30 repeats (sMAPE) | 14.84, 57.6 KB | LSTM 13.37 (490 KB), ESN 14.79 | Behind; first-pass variant; smallest footprint |
+| NeuroBench primate reaching, 5 of 6 official sessions (R²) | 0.619 paired mean | tinyRSNN 0.643, bigRSNN 0.683; leaderboard 0.71 | Behind; first-pass variant |
 | Spiking speech, 512 private held-speaker utterances | 79.69% | Published SHD official test: 94–96% (different partition) | Official comparison pending |
 | Online adaptation to a new character stream | 3.191 → 3.096 bpc | — | Adapts during use |
 
@@ -177,19 +179,18 @@ On a harder modular task (train fraction 0.25), larger pools grok later (untied 
 
 The gap to dense models widening from 10M to 90M characters is consistent with problems 1 and 2: dense models convert additional data into context use, and ours does not yet.
 
-## 6. The next decisive tests
+## 6. The plan: owned battles where the mathematics favours us
 
-In priority order. Each states what it settles.
+A race of exponential clocks over memory that decays with elapsed time is a temporal point process. The first clock to finish gives the next event's type and time; the waiting time without events enters the likelihood as a survival term, which is our silence-aware supervision. Timed, irregular event data is therefore the family's home field, and it has public leaderboards. Each battle is an owned development project: study the task and the leading methods, design the model for the task within the family, iterate on development data with error analysis, then run the sealed protocol ([PRODUCT_ORDERS.md](../experiments/PRODUCT_ORDERS.md)).
 
-| # | Test | Pass condition | What it settles |
+| Battle | Benchmark | Pass criterion | What it settles |
 | --- | --- | --- | --- |
-| 1 | **Home-field external win**: sealed FAS v2, and one public irregular-time-series or event benchmark scored against its published leaderboard | Beat the strongest fair published or pre-registered reference at the primary endpoint | The substrate's advantage on the domain it was built for, in a form outsiders recognize |
-| 2 | **High-fidelity credit**: exact forced-lane credit as the training signal at pool 2–8, then a derived low-variance multi-step estimator | Estimator correlation with exact credit above 0.8; quality gains on FAS and tokens | Whether credit fidelity is the bottleneck; if not, the information path is |
-| 3 | **Memory carries context**: associative recall, induction/copy and selective copying with irregular gaps; tokens scored on the 65,528-target DEV slice | Solve recall at small scale; beat the trigram, then a 5-gram, on tokens | Whether persistent memory binds and retrieves; removes the bigram-level result |
-| 4 | **Parallel training**: between route decisions, decay and rotation are a diagonal linear recurrence; derive the exact parallel-scan decomposition and implement it | Exact equivalence to the sequential driver; measured tokens/s gain | Whether the family trains at language scale, and how races and routes sit on a scannable core |
-| 5 | **Measured efficiency at equal quality** on the task from test 1 | Wall time and energy per prediction on CPU/edge hardware below the published best model run for inference | The serving and hardware thesis, measured rather than modelled |
+| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 3 seeds; measured inference work | Public leaderboard wins on the family's home field |
+| **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | Asynchronous channels, informative missingness and silence on real data |
+| **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered | A confirmed event-native analytics win and a benchmark we define |
+| **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |
 
-Language scaling runs follow tests 2 and 3. New Transformer and LSTM training is retired: comparisons use published benchmark scores under the exact matching protocol and the dense results already completed.
+High-fidelity route credit (exact forced-lane credit at small pools, then a low-variance multi-step estimator) is developed inside B1, B3 and R1, where model sizes make it affordable. Parallel-scan training of the linear decay/rotation core follows when a battle's fitting time requires it. Every result reports measured inference work beside quality. New Transformer and LSTM training is retired: comparisons use published scores under the exact matching protocol and the dense results already completed.
 
 ## 7. Where to read further
 

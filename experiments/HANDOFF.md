@@ -1,3 +1,12 @@
+# Owned battles replace benchmark busywork — 6 October 2026, 15:00 UTC (user-directed)
+
+PRODUCT_ORDERS.md now opens with the governing battle list: B1 EasyTPP (lead, AWS, this session owns it), B2
+P12/P19/PAM, B3 FAS v2 sealed + public release, R1 language research (one slot, gated). Admission rule: every job names
+its battle and the decision it changes. Stop list there. AGENTS.md "Benchmark work is development to win" and
+WIN_CRITERIA.md attempt levels (first-pass variant / in development / developed attempt) forbid quick-variant LOSS
+verdicts; Mackey-Glass, primate reaching and banknote are relabelled first-pass variants (numbers kept). Part I §6 is the
+battle plan. Running jobs finish at their boundaries; the 90M Transformer is the last dense job.
+
 # Report split into three parts; n-gram calibration of tokenized language — 6 October 2026
 
 User direction: separate science from machinery. New `report/I_SCIENCE.md` (+PDF, 8 pp) is the curated reader-facing

@@ -28,6 +28,18 @@ A comparison where we use less compute but have worse quality, and no reference 
 **efficiency point**: report the gap and the compute ratio, then close it — with a matched-compute reference or a native
 run at the reference's compute. It is neither a win nor a loss.
 
+## Attempt levels (always attach one to a benchmark result; user direction 6 October 2026)
+
+| Level | Meaning | How to report |
+|---|---|---|
+| **First-pass variant** | An existing or quickly assembled member with at most knob-level tuning (width, pool, learning rate, decay), without task-specific design or error-analysis-driven iteration | "First-pass variant: X vs reference Y." Never a verdict on the family; never a front-door LOSS. |
+| **In development** | Owned battle; design rationale written; iterating on development data | "In development: best X vs Y (development data)." |
+| **Developed attempt** | The owner worked a documented improvement plan (design, error analysis, iterations) and ran the sealed protocol | Win at its evidence level, or **developed-attempt loss** with the diagnosis of what the family lacks there |
+
+Win/loss wording applies to developed attempts. Earlier benchmark losses keep their numbers and are relabelled by
+attempt level where that changes their interpretation (Mackey-Glass: about 20 knob-level development runs of one member; primate reaching: about 10 on one session;
+banknote: fixed selection opportunities. All three are first-pass variants).
+
 ## Evidence levels (always attach one)
 
 - **Win (single seed)** — one completed run; normal for development and the first report.

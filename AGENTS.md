@@ -62,6 +62,20 @@
   contracts, drivers) and Part III (`report/III_RECORD.md`: every experiment entry) and all three PDFs. Place new section
   titles via `report/split_manifest.json` (patterns, overrides, reviewed list) when the run summary flags them.
 
+# Benchmark work is development to win, not a verdict on a quick variant (user direction, 6 October 2026)
+
+- Do not assemble a quick family member, run it once on a benchmark and record LOSS. A first-pass variant's result is
+  evidence about that variant only; publishing it as a verdict damages the project and teaches nothing.
+- Each chosen benchmark is an owned engineering project: study the task and the leading published methods; write the
+  design rationale (which of our mechanisms should win and why); build the model for the task within the family;
+  iterate on development data with error analysis after every round. The test protocol stays sealed; the model does not
+  stay frozen.
+- Report development status as "in development: best X vs reference Y (development data)". Declare a win, or a
+  *developed-attempt loss* with a written diagnosis of why the family falls short there, only after the owner has worked
+  a documented improvement plan. Results of first-pass variants are labelled as such.
+- Work only the battles listed in `experiments/PRODUCT_ORDERS.md`. Every queued job names its battle and the decision
+  its result changes; jobs without both are not admitted. Contracts and smokes run only inside a battle's pipeline.
+
 # Current product orders (read first)
 
 - `experiments/PRODUCT_ORDERS.md` lists the P0/P1 deliverables, hosts, queues and pass criteria that increase the

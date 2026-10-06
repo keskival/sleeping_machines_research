@@ -1,4 +1,50 @@
-# Product orders — what we are after (issued 4 October 2026, 19:20 UTC)
+# Product orders — owned battles for headline results (issued 6 October 2026, 15:00 UTC; user-directed)
+
+**These orders supersede every order below.** The text below this section is the historical record.
+
+## The strategy
+
+We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
+clocks over memory that decays with elapsed time is a temporal point process: the first finisher gives the next event's
+type and time, and the waiting time without events enters the likelihood as a survival term (silence-aware supervision).
+Timed, irregular event data is our home field; public leaderboards there are where headline wins come from in weeks.
+Benchmark work follows AGENTS.md "Benchmark work is development to win": owned, designed, iterated, then verdict.
+
+## The battles
+
+| Id | Battle | Public reference | Owner | Pass criterion (developed attempt) | Stop rule |
+|---|---|---|---|---|---|
+| **B1 (lead)** | **EasyTPP** temporal point processes: Retweet, Taxi, StackOverflow, Amazon, Taobao (ICLR 2024 benchmark, official splits) | Published EasyTPP tables: NHP, THP, SAHP, AttNHP, FullyNN, IntensityFree, ODE-TPP | AWS host | Beat the best published log-likelihood on ≥ 2 of 5 datasets with type error/time RMSE no worse than the best published; confirmed on 3 seeds; inference work measured | No best-published LL on any dataset after the documented development plan (about two weeks) |
+| **B2** | Irregular multivariate time series classification: P12, P19, PAM (Raindrop protocol and splits) | Published Raindrop, ViTST, Warpformer and later tables | AWS after B1 first fits | Beat best published AUROC (P12/P19) or accuracy (PAM) on its official splits | Same rule as B1 |
+| **B3** | FAS v2 sealed confirmation (FAS_V2_CONFIRMATORY_PROTOCOL.md), then public release of FAS with a leaderboard | Pre-registered references | Existing FAS owner | As pre-registered; no expansion | As pre-registered |
+| **R1** | Language research track, at most one slot | Count n-gram references; later a published small Transformer | One owner | Gates before any scaling or claim: solve associative recall/induction with irregular gaps; beat KN trigram on the 65,528-target DEV slice | — |
+
+Every battle reports measured inference work (operations, CPU latency; energy where measurable) next to quality.
+
+**Shared enabler:** high-fidelity route credit (exact forced-lane credit at pool 2–8 as a training signal; a derived
+low-variance multi-step estimator next). It serves B1, B3 and R1 directly; it is developed inside those battles, not as a
+separate queue.
+
+## Admission rule (all hosts, all agents)
+
+1. Every queued job names its battle (B1, B2, B3, R1) and the decision its result changes. No battle, no admission.
+2. Each battle keeps a one-page frozen protocol, a table of published reference numbers with sources, a development log
+   with error analysis per iteration, a timebox and its stop rule.
+3. Contracts and smokes run only as steps of a battle pipeline: one smoke per new driver, numerical contracts only for
+   new mathematics.
+4. One weekly scoreboard. Part I of the report changes when a battle produces an outcome.
+
+## Stopped (complete running jobs at safe boundaries; do not start new ones)
+
+Private-bank and time-scale audit chains; split-horizon contract and admission ceremonies; token width/learning-rate/
+capacity sweeps; k-write and tied/untied pool arms; grokking follow-ups; Mackey-Glass and primate reaching; SHD and
+DVS gesture; real-table comparisons against trees (until typed learning has a battle); dense controls of any kind;
+PDF-append republishing. Completed results stay in the record.
+
+
+# Historical orders (superseded 6 October 2026, 15:00 UTC)
+
+## Product orders — what we are after (issued 4 October 2026, 19:20 UTC)
 
 **Latest user direction — improve our own models; no new dense controls (6 October 2026):** compute goes to
 improving the integrated temporal/sparse models. No new Transformer/LSTM (or other external-architecture) training on
