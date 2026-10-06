@@ -962,3 +962,16 @@ removed from the credit problem by construction. A model design should push rout
 
 Only the remainder pays for counterfactual credit. The T1 toy therefore tests a class-(a) route inside the network
 (a race-selected expert whose output is the next observation), and a class-(c) route with fixed-lag particle smoothing.
+
+**437.2 T1 first result (binding toy, 3 processes).**
+- *Posterior-routed writes:* α .93, NLL 1.73.
+- *Learned query/key write race with linear write credit* (our deep layers' rule): α .10–.22, below chance, NLL 2.25
+  and then diverging.
+
+The write route's consequences appear only in later predictions. The first-order credit gives the race scores almost
+no usable signal, while choosing the route by the readout's posterior makes it an inference problem with an exact
+filtering objective.
+
+Next T1 test: replace the learned races of the deep layers by posterior-style routing where a predictive consequence
+exists (class (a) of §437.1). For the deep layers, that means a per-slot predictive head scoring the slot's proposal
+against the next observed event.

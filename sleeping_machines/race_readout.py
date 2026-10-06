@@ -281,14 +281,38 @@ class BindingMemory(nn.Module):
     Per event this costs one O(P * total_payload) write plus the readout's O(Ub * P * hidden) scoring. Binding capacity
     is decoupled from the per-slot proposal computation of the deep layers."""
 
-    def __init__(self, total_payload, slots, payload, tau_max=1000., gated=False):
+    def __init__(self, total_payload, slots, payload, tau_max=1000., gated=False, learned=False):
         super().__init__()
-        self.slots, self.payload, self.gated = slots, payload, gated
+        self.slots, self.payload, self.gated, self.learned = slots, payload, gated, learned
+        if learned:        # comparison arm (THEORY §437 T1): a query/key write race learned by linear write credit
+            self.query = nn.Linear(total_payload, payload)
+            self.key = nn.Parameter(torch.randn(slots, payload) * .1)
+            self.key_read = nn.Linear(payload, payload, bias=False)
         self.inp = nn.Linear(total_payload, payload)
         tau = torch.logspace(0, math.log10(tau_max), payload)
         self.raw_rate = nn.Parameter(torch.expm1(1 / tau).log())
         if gated:          # per-dimension overwrite gate (THEORY §436.2): a slot can hold its process's latest state
             self.gate = nn.Linear(total_payload, payload)
+
+    def learned_write(self, bmem, t_ref, bseen, x, now, noise):
+        """Learned write race: scores q(x) . (key_s + key_read m_s) / sqrt(P); winner by the exponential race; a
+        zero-valued linear write credit (pi - pi.detach()) * (m_new_s - m_s).detach() for every slot (§430, value
+        channel) carries the readout's gradient to the scores."""
+        n, U, P = bmem.shape
+        scores = (self.query(x)[:, None] * (self.key[None] + self.key_read(bmem))).sum(-1) / math.sqrt(P)
+        s64 = scores.clamp(-12, 12).to(torch.float64)
+        slot = (noise / s64.exp()).argmin(-1)
+        age = (now[:, None] - t_ref).clamp_min(0)
+        kept = bmem * torch.exp(-age[..., None].to(bmem.dtype) * F.softplus(self.raw_rate))
+        if self.gated:
+            g = torch.sigmoid(self.gate(x))[:, None]
+            cand = (1 - g) * kept + g * self.inp(x)[:, None]
+        else:
+            cand = kept + self.inp(x)[:, None]
+        onehot = F.one_hot(slot, U).to(torch.bool)
+        pi = torch.softmax(s64, -1).to(bmem.dtype)
+        new = torch.where(onehot[..., None], cand, bmem) + (pi - pi.detach())[..., None] * (cand - bmem).detach()
+        return new, torch.where(onehot, now[:, None], t_ref), bseen | onehot, slot
 
     def write(self, bmem, t_ref, bseen, slot, x, now):
         n = bmem.shape[0]
@@ -369,7 +393,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     tau_now = (t_prev[:, None] - t_ref).clamp_min(0); tau = (now[:, None] - t_ref).clamp_min(0)
                     hazard = -(log_surv(prev, tau, readout.eps) - log_surv(prev, tau_now, readout.eps)).sum(-1).detach()
                 ll_tot.append(lt); ll_time.append(lti); valid.append(torch.ones(n, dtype=torch.bool))
-                if binding is not None:      # exponential race over log responsibilities = a posterior sample
+                if binding is not None and not binding.learned:   # exponential race over log responsibilities = a posterior sample
                     noise_b = torch.ones(n, Ub, dtype=torch.float64) if deterministic else torch.empty(n, Ub, dtype=torch.float64).exponential_()
                     bslot = (logr.detach() - noise_b.log()).argmax(-1)
                 elif posterior:               # per-head posterior over that head's slots
@@ -408,9 +432,13 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             if binding is not None:
                 if t_ref is None:
                     t_ref = now[:, None].expand(n, Ub).clone()
-                if bslot is None:
-                    bslot = torch.zeros(n, dtype=torch.long)
-                bmem, t_ref, bseen = bwrite(bmem, t_ref, bseen, bslot, x, now)
+                if binding.learned:
+                    noise_l = torch.ones(n, Ub, dtype=torch.float64) if deterministic else torch.empty(n, Ub, dtype=torch.float64).exponential_()
+                    bmem, t_ref, bseen, bslot = binding.learned_write(bmem, t_ref, bseen, x, now, noise_l)
+                else:
+                    if bslot is None:
+                        bslot = torch.zeros(n, dtype=torch.long)
+                    bmem, t_ref, bseen = bwrite(bmem, t_ref, bseen, bslot, x, now)
                 if record is not None:
                     record.append(dict(slot=bslot.detach(), hazard=hazard))
                 t_ref = torch.where(~bseen, now[:, None], t_ref)        # never-written slots: births timed from now

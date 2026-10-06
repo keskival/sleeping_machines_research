@@ -172,3 +172,11 @@ oracle's .821.
   context gave α .934 / NLL 1.73; no context α .856 / NLL 1.89. This is within single-seed noise of full context, at a
   per-event readout cost of only the duration CDFs once the per-slot laws are cached per write. Declared as C5 (budget
   slot 5).
+- 6 Oct 19:22 UTC: **T1 (THEORY §437): learned write race against posterior routing**, binding toy (3 processes, hidden 64,
+  gated, 600 steps):
+  - posterior routing: α .93, NLL 1.73;
+  - learned query/key write race with linear write credit: α .10–.22 (chance .33), NLL 2.25 at best, then diverging
+    to 3.6.
+
+  The learned route never binds. Posterior routing turns the same route into inference. This is consistent with the
+  credit-blindness audit (§429). Single seed; the learned arm has no recruitment aids (free-slot bias and similar).
