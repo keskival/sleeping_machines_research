@@ -356,3 +356,6 @@ At lr.003, scales¼ and1/16 improve both selected seeds while retaining nonzero 
 
 
 **AWS256K positive-time seed6 quality win:** scale1/1over16 selected7.714196299/7.696178960DEVNLL, gain0.018017339NLL; selectedstep384/512. Same source/data/settings/524272fit/2040DEVtargets,P24D2H2U4,lr.003,uniformK4future credit; slower nonzero decay/rotation retains all core mechanisms. Scaled initial8.078814937/final7.917095708,ordinary throughput843.615targets/s,peak615556KiBRSS. Exploratory paired seed6 DEV quality win; seed7,selected utility and exact complete-work pending. No Pareto/matched-reference/public win claimed. Preserve8Ktrained loss and frozen probes. Sourceaws_private_bank_time_256k_20261006T041606Z_scale1over16_s6.aws.json.
+
+
+**AWS256K time-scale1 seed7 completed:** selected7.731961478DEVNLL atstep384,initial8.078814937,final7.896858126; every scored DEV step exactly matches saved original lr.003seed7 control. Both scale1seeds reproduce saved curves; full-state cross-source parity is a separate claim. Ordinary throughput856.246targets/s,peak617436KiBRSS,524272fit/2040DEVtargets. Source aws_private_bank_time_256k_20261006T041606Z_scale1_s7.aws.json. Last1/16seed7fit next; selected utility and exact whole-work pending. Seed6qualitywin preserved; two-seed verdict awaits finalfit.
