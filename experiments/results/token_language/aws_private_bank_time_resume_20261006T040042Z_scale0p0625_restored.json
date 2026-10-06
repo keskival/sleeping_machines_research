@@ -1,0 +1,831 @@
+{
+  "status": "completed",
+  "evidence": "development single seed",
+  "args": {
+    "tag": "aws_private_bank_time_resume_20261006T040042Z_scale0p0625_restored",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 512,
+    "dev_offset": 20971520,
+    "dev_tokens": 128,
+    "steps": 6,
+    "chunk": 8,
+    "eval_lanes": 2,
+    "lanes": 2,
+    "credit_window": 16,
+    "minimum_tail_width": 0,
+    "payload": 24,
+    "heads": 2,
+    "depth": 2,
+    "pool": 4,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "sampled",
+    "compiled": false,
+    "future_site": "uniform",
+    "future_score_positions": 4,
+    "future_every": 1,
+    "future_scale": 1.0,
+    "readout_init": "frequency",
+    "input_init": "balanced",
+    "state_mode": "carry",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": true,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 3,
+    "resume": "/workspace/experiments/results/token_language/aws_private_bank_time_resume_20261006T040042Z_scale0p0625_partial.pt",
+    "stop_after_step": null
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/horizon_token_language_engine.py": "39b11a75915266f609ca968c14a8953d7aba4403646aa5dcc1812afa9e5cf5f8",
+      "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+      "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+      "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+      "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+      "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+      "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+      "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 3143218,
+  "core_bank_sharing": {
+    "key": false,
+    "key_read": false,
+    "clock_bias": false,
+    "input": true,
+    "output": true,
+    "gate_w": true,
+    "gate_b": true,
+    "control_w": true,
+    "control_b": true,
+    "raw_rate": false,
+    "frequency": false
+  },
+  "core_parameters": 2441256,
+  "readout_parameters": 701962,
+  "decoder_tail_widths": [
+    24,
+    12,
+    6
+  ],
+  "best_dev_nll": 9.473125821068173,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.564976513385773,
+      "dev_nll": 9.511230710953
+    },
+    {
+      "step": 3,
+      "batch_nll": 7.578021049499512,
+      "gradient_norm": 2.9154670238494873,
+      "train_nll": 7.49750155210495,
+      "dev_nll": 9.50579343523298,
+      "future_write_teacher": {
+        "site": [
+          4,
+          0,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 16.0,
+        "credit_end": 8,
+        "winner": [
+          0,
+          1
+        ],
+        "alternative": [
+          3,
+          3
+        ],
+        "scoring_positions": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "replay_length": 8,
+        "proposal_probability": [
+          0.2617262914504561,
+          0.46325850514247574
+        ],
+        "mean_suffix_loss_delta": -0.00024700164794921875
+      },
+      "route_entropy": 1.2924047708511353,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              17,
+              12,
+              5,
+              14
+            ],
+            [
+              8,
+              12,
+              8,
+              20
+            ]
+          ],
+          [
+            [
+              11,
+              17,
+              5,
+              15
+            ],
+            [
+              18,
+              16,
+              5,
+              9
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            3.7030980696738145,
+            3.7010086375868205
+          ],
+          [
+            3.685249196136915,
+            3.609199382885563
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.3541666666666667,
+            0.4166666666666667
+          ],
+          [
+            0.3541666666666667,
+            0.375
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              0.00012834323570132256,
+              6.015324834152125e-05,
+              0.00014699391613248736,
+              0.00033498668926768005
+            ],
+            [
+              1.354088823291022e-07,
+              1.8460707451595226e-07,
+              1.3885028238291852e-07,
+              1.75179906136691e-07
+            ]
+          ],
+          [
+            [
+              2.3832647855215328e-07,
+              4.4575841684491024e-07,
+              2.446248004162044e-07,
+              3.6017650018038694e-07
+            ],
+            [
+              4.5196932774160814e-07,
+              6.26751102572598e-07,
+              9.829223017732147e-07,
+              6.604668669751845e-07
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              0.001127767376601696,
+              0.00030840630643069744,
+              0.0007298456621356308,
+              0.0027728730347007513
+            ],
+            [
+              7.057898869788914e-07,
+              1.2418305459505063e-06,
+              7.253636340465164e-07,
+              1.0335598972233129e-06
+            ]
+          ],
+          [
+            [
+              1.213910877595481e-06,
+              6.238617061171681e-06,
+              1.1676290796458488e-06,
+              3.000690639964887e-06
+            ],
+            [
+              3.28194164467277e-06,
+              2.5747890504135285e-06,
+              4.904100023850333e-06,
+              3.1887145723885624e-06
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              0.00027698141639120877,
+              0.00013940309872850776,
+              0.00031733812647871673,
+              0.0007363425684161484
+            ],
+            [
+              5.038619406150247e-07,
+              5.678455750057765e-07,
+              5.196244501348701e-07,
+              5.755509278060345e-07
+            ]
+          ],
+          [
+            [
+              2.985431422075635e-07,
+              4.285325516661942e-08,
+              5.191208174437634e-07,
+              7.055138553369034e-07
+            ],
+            [
+              1.5045997088236618e-06,
+              1.8717756802288932e-06,
+              2.658412313394365e-06,
+              1.9611311472544912e-06
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0027570619713515043
+            ],
+            [
+              0.0019815650302916765
+            ]
+          ],
+          [
+            [
+              0.0011317833559587598
+            ],
+            [
+              0.0010936312610283494
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0030597930308431387
+            ],
+            [
+              0.002621228341013193
+            ]
+          ],
+          [
+            [
+              0.0029847300611436367
+            ],
+            [
+              0.0020216256380081177
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0007878190372139215
+            ],
+            [
+              0.0006991579430177808
+            ]
+          ],
+          [
+            [
+              0.0008929522009566426
+            ],
+            [
+              0.0006218046764843166
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0002869566669687629
+            ],
+            [
+              0.00024078333808574826
+            ]
+          ],
+          [
+            [
+              0.00031247109291143715
+            ],
+            [
+              0.00022084388183429837
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.00043493235716596246
+            ],
+            [
+              0.00041112929466180503
+            ]
+          ],
+          [
+            [
+              0.00026227254420518875
+            ],
+            [
+              0.0002860819804482162
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.00011315996380290017
+            ],
+            [
+              5.344485543901101e-05
+            ]
+          ],
+          [
+            [
+              7.331617962336168e-05
+            ],
+            [
+              7.925367754069157e-06
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              6.295875209616497e-06,
+              8.822888958093245e-06,
+              0.0,
+              1.2687828530033585e-05
+            ],
+            [
+              2.6939762847177917e-06,
+              4.524973974184832e-06,
+              8.657519146026971e-08,
+              1.9924851585528813e-05
+            ]
+          ],
+          [
+            [
+              5.229961516306503e-06,
+              7.778663530189078e-06,
+              1.0220669537375215e-05,
+              6.340283562167315e-06
+            ],
+            [
+              1.1476453437353484e-05,
+              6.0136312640679535e-06,
+              0.0,
+              2.1436669612739934e-06
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              5.525599044631235e-05,
+              9.685650002211332e-05,
+              0.0,
+              8.497217640979216e-05
+            ],
+            [
+              2.5946445020963438e-05,
+              4.1223731386708096e-05,
+              5.174553052711417e-07,
+              8.196754060918465e-05
+            ]
+          ],
+          [
+            [
+              3.001522236445453e-05,
+              5.612203312921338e-05,
+              3.275030030636117e-05,
+              2.6529158276389353e-05
+            ],
+            [
+              5.7014578487724066e-05,
+              2.4588471205788665e-05,
+              0.0,
+              7.639853720320389e-06
+            ]
+          ]
+        ],
+        "banks.query": 0.00467163510620594
+      },
+      "memory_effective_rank": [
+        [
+          5.4404256785939085,
+          4.5429054549992705
+        ],
+        [
+          4.506009678818743,
+          4.618548043744169
+        ]
+      ],
+      "wall_s": 0.5721763800829649
+    },
+    {
+      "step": 6,
+      "batch_nll": 7.4626641273498535,
+      "gradient_norm": 3.3148348331451416,
+      "train_nll": 7.330810099840164,
+      "dev_nll": 9.473125821068173,
+      "future_write_teacher": {
+        "site": [
+          5,
+          1,
+          1
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 12.0,
+        "credit_end": 8,
+        "winner": [
+          0,
+          1
+        ],
+        "alternative": [
+          1,
+          2
+        ],
+        "scoring_positions": [
+          5,
+          6,
+          7
+        ],
+        "replay_length": 8,
+        "proposal_probability": [
+          0.3022248393206245,
+          0.24067163859643387
+        ],
+        "mean_suffix_loss_delta": 0.00033354759216308594
+      },
+      "route_entropy": 1.1786710023880005,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              24,
+              27,
+              11,
+              34
+            ],
+            [
+              25,
+              30,
+              18,
+              23
+            ]
+          ],
+          [
+            [
+              30,
+              27,
+              15,
+              24
+            ],
+            [
+              25,
+              27,
+              23,
+              21
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            3.7404369251427765,
+            3.9356192390608435
+          ],
+          [
+            3.8840312243643664,
+            3.9826352409244024
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.3541666666666667,
+            0.3125
+          ],
+          [
+            0.3125,
+            0.28125
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              7.773398920107866e-07,
+              8.384112106796238e-07,
+              1.0386896747149876e-06,
+              1.7788299828680465e-06
+            ],
+            [
+              1.121274863180588e-06,
+              1.419026602889062e-06,
+              7.146324492168787e-07,
+              5.863002456862887e-07
+            ]
+          ],
+          [
+            [
+              1.6868332295416621e-06,
+              1.3157687135390006e-06,
+              1.1956760772591224e-06,
+              2.9201310098869726e-06
+            ],
+            [
+              0.00028658154769800603,
+              0.0005458455416373909,
+              0.001001578290015459,
+              0.0004630157782230526
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              8.364103450730909e-06,
+              1.0729225323302671e-05,
+              6.615002348553389e-06,
+              2.3015587430563755e-05
+            ],
+            [
+              9.10406652110396e-06,
+              1.814106508390978e-05,
+              5.283206064632395e-06,
+              6.561366717505734e-06
+            ]
+          ],
+          [
+            [
+              4.381518010632135e-05,
+              1.6362624592147768e-05,
+              1.1500324035296217e-05,
+              3.429144635447301e-05
+            ],
+            [
+              0.003223567036911845,
+              0.0075889998115599155,
+              0.013843012973666191,
+              0.005729310680180788
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              8.932463515520794e-07,
+              7.527901288995054e-07,
+              2.2522778309053137e-08,
+              1.737659658829216e-06
+            ],
+            [
+              2.442755430820398e-06,
+              7.757441267131071e-08,
+              8.465637506560597e-07,
+              7.630393952240411e-07
+            ]
+          ],
+          [
+            [
+              2.8400168048392516e-06,
+              1.3771191333944444e-06,
+              1.3606271522803581e-06,
+              3.822984126600204e-06
+            ],
+            [
+              3.363083305885084e-05,
+              0.0014484543353319168,
+              0.0018440288258716464,
+              0.00042731300345622003
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.004113783128559589
+            ],
+            [
+              0.003975633531808853
+            ]
+          ],
+          [
+            [
+              0.0028111354913562536
+            ],
+            [
+              0.005012212786823511
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.010385754518210888
+            ],
+            [
+              0.008719215169548988
+            ]
+          ],
+          [
+            [
+              0.0087820990011096
+            ],
+            [
+              0.006584738381206989
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0019279259722679853
+            ],
+            [
+              0.0019147401908412576
+            ]
+          ],
+          [
+            [
+              0.0016475081210955977
+            ],
+            [
+              0.0011895347852259874
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0007278966368176043
+            ],
+            [
+              0.0007315656403079629
+            ]
+          ],
+          [
+            [
+              0.0005344462115317583
+            ],
+            [
+              0.00035596112138591707
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.00044784689089283347
+            ],
+            [
+              0.0008462165715172887
+            ]
+          ],
+          [
+            [
+              0.0007853694842197001
+            ],
+            [
+              0.0009019240969792008
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.00010780616867123172
+            ],
+            [
+              0.00028721478884108365
+            ]
+          ],
+          [
+            [
+              9.891439549392089e-05
+            ],
+            [
+              1.6531408618902788e-05
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              0.0,
+              3.49963420376298e-06,
+              4.063453161506914e-06,
+              6.628534174524248e-05
+            ],
+            [
+              3.316937363706529e-05,
+              2.614591721794568e-05,
+              0.0,
+              4.744044872495579e-06
+            ]
+          ],
+          [
+            [
+              1.4623834431404248e-05,
+              0.0,
+              9.268360372516327e-06,
+              2.7489917556522414e-05
+            ],
+            [
+              7.564227416878566e-05,
+              3.480039595160633e-05,
+              1.548813634144608e-05,
+              3.9972943341126665e-05
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0,
+              5.5660479119978845e-05,
+              2.23886854655575e-05,
+              0.0004249162448104471
+            ],
+            [
+              0.00021333656331989914,
+              0.00022574317699763924,
+              0.0,
+              6.514063716167584e-05
+            ]
+          ],
+          [
+            [
+              7.807900692569092e-05,
+              0.0,
+              0.00010535054752836004,
+              0.0001772456307662651
+            ],
+            [
+              0.0005274667637422681,
+              0.0005164315807633102,
+              8.5685052908957e-05,
+              0.00033273393637500703
+            ]
+          ]
+        ],
+        "banks.query": 0.020992310717701912
+      },
+      "memory_effective_rank": [
+        [
+          5.053679456846451,
+          4.836036998958988
+        ],
+        [
+          4.958452495802921,
+          4.282778858549298
+        ]
+      ],
+      "wall_s": 1.141106188064441
+    }
+  ],
+  "presentations_total": 96,
+  "train_wall_s_total": 0.590444911038503,
+  "best_checkpoint": "/workspace/experiments/results/token_language/aws_private_bank_time_resume_20261006T040042Z_scale0p0625_restored.best_step00000006.pt",
+  "presentations_this_invocation": 48,
+  "train_wall_s_this_invocation": 0.2938341631088406,
+  "train_tokens_per_second": 163.3574513329142,
+  "wall_s": 1.1671672790544108,
+  "max_rss_kb": 612048,
+  "host": "ip-172-31-47-132",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-key scoring, winner/sampled-value proposals, winner-only suffix replay, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Packed parameter banks; winner+sampled-value factual learning and winner-only suffix replay; uniform event-site credit (local value surrogate disabled) or first-site control; uniformly sampled causal suffix utility with winner-only replay through the last scored position; bounded per-chunk alternative-write suffix teacher with fixed site first-time/common future noise; contiguous lane streams; numeric state carried; credit truncated per configured window inside the optimizer chunk; EOS reset; separate development interval; public validation untouched"
+}
