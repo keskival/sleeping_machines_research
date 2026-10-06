@@ -85,6 +85,7 @@ def main():
     p.add_argument('--payload', type=int, default=32); p.add_argument('--depth', type=int, default=4)
     p.add_argument('--heads', type=int, default=2); p.add_argument('--pool', type=int, default=8)
     p.add_argument('--hidden', type=int, default=64); p.add_argument('--posterior', action='store_true')
+    p.add_argument('--type-durations', action='store_true', help='own durations conditioned on the next type (THEORY §435.2)')
     p.add_argument('--route-credit', default='linear'); p.add_argument('--compiled', action='store_true')
     p.add_argument('--epochs', type=int, default=1); p.add_argument('--lanes', type=int, default=64)
     p.add_argument('--fit-runs', type=int, default=10000); p.add_argument('--max-events', type=int, default=1100)
@@ -115,7 +116,7 @@ def main():
                         for unit in pool:
                             tau = torch.logspace(0, math.log10(a.tau_max), unit.raw_rate.numel(), dtype=unit.raw_rate.dtype)
                             unit.raw_rate.copy_(torch.expm1(1 / tau).log())
-    readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden)
+    readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
     params = [q for q in model.parameters()] + list(readout.parameters())
     opt = torch.optim.Adam(params, lr=a.lr)
     T = len(train[0][0]); per_epoch = math.ceil(len(train) / a.lanes) * math.ceil(T / a.segment)

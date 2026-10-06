@@ -89,7 +89,8 @@ def main():
     res = json.loads(Path(a.result).read_text()); args = res['args']
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=args['payload'],
                                             depth=args['depth'], heads=args['heads'], pool=args['pool'])
-    readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'])
+    readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
+                          type_durations=args.get('type_durations', False))
     ck = torch.load(ROOT / res['selected_weights'], weights_only=True)
     model.load_state_dict(ck['model']); readout.load_state_dict(ck['readout']); model.eval(); readout.eval()
     d = ROOT / 'experiments/data/fas' / args['data']
