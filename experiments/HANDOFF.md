@@ -4397,3 +4397,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **Separated-horizon work replay strengthened before numerical use:** full model, optimizer, persistent state, cursor, writes, every route/site/position/teacher/global RNG, settings/identity/best and all numerical learning-curve fields must now exactly reproduce the completed control. Selected step/NLL must match; control, selection, original/replayed checkpoints and selected weights are SHA-bound. Complete fitting/inference arithmetic formulas are required before publication. Original credit64 replay remains untouched. This is prepared code, not a passed numerical receipt.
+
+
+**Curie off-diagonal smoke follow-through waiting:** tmux `curie_split_horizon_2k_followthrough_20261006_v1` waits for the two-smoke session, requires both completed 8-update/4080-target results and selected receipts plus unchanged fit and scorer sources, then runs one guarded utility job followed by two unique full-work replay queues. Utility300s and work600s each,1.2GBRSS/5GBVMS/8GiB floor/one thread; caps derive the completed 1M utility and live 64K tracing reduced to 2K, with evaluation margin. Exact full-state/selection replay and formula coverage are mandatory in the new work driver. No concurrent model job or 64K fit is admitted; review completed tiny-contract/smoke receipts before scaling.
