@@ -1,3 +1,22 @@
+# Full64K audit completed; seed7 live — 6 October 2026
+
+## Completed 64K gathered-interface work
+
+| Seed6 P24 execution | Selected DEV NLL | Whole-fit GFLOPs | Fit MFLOPs/target | Inference MFLOPs/target |
+| --- | ---: | ---: | ---: | ---: |
+| Original | 8.033311 | 192.211765 | 1.466638 | 0.403428 |
+| Gathered | 8.076229 | 155.257457 | 1.184665 | 0.403428 |
+
+Gathered fitting arithmetic is 19.23% lower. Quality loss: gathered
+selected NLL is0.042918 higher. Same proper-token64K data/seed6/P24 recipe,
+131,056fitting targets/two passes/all256updates,2,040selected DEV targets.
+Each audit reproduces its own parent exactly and has complete formula coverage.
+Fitting charges factual/alternative continuation, backward, clipping, optimizer
+and in-step diagnostics; excludes initialization/frequency counts/evaluation/
+serialization. Special functions separate, random work unquantified. No
+comparable-quality or Transformer supremacy claim. Original leading result
+retained. Gatherseed7 now running; message-gain probe follows its completed fit.
+
 # Message-learning diagnostic admitted — 6 October 2026
 
 Existing64K wholework PID76656 verified live at00:57UTC (~471MBRSS), then
