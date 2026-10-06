@@ -1,9 +1,10 @@
 # Valuation rationale: ambition, platform potential and execution
 
-4 October 2026, revised 5 October · Private founder/investor discussion · Not an independent appraisal.
+4 October 2026, revised 6 October · Private founder/investor discussion · Not an independent appraisal.
 
 **Current proposal: raise €3M at €50M priced pre-money.** The €100M case remains
-a stretch scenario. The breadth of the family is the rationale for seeking a
+a stretch scenario. Since the proposal was set, the family has its first public-leaderboard wins (EasyTPP Taobao and
+Taxi, 6 October, §3). These make €50M materially more defensible; §5 states what would carry €100M. The breadth of the family is the rationale for seeking a
 platform premium. The proposal funds the next decisive evidence,
 team and execution capacity rather than requiring that the entire vision be
 finished before investment.
@@ -45,7 +46,7 @@ quality/resource behavior.
 | Adaptive communications/codecs | Fewer transmitted bits and less recomputation for reconstruction or a declared task | A real independently decodable wire format and a superior quality/rate/work/latency curve |
 | Embodied generalist learning | Share useful representations across sensing, acting, language and reasoning | Joint learning and separately measured transfer in both directions, including held-out tasks |
 | Compute/hardware IP | Co-design local state, scheduling and communication for target platforms | Precision, scheduling, memory/interconnect and physical energy economics demonstrated |
-| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | Home-field benchmark wins: FAS v2 (ambiguous interleaving) against anonymous-log classical and LSTM, Transformer, SSM and point-process references; oracle-assisted trackers reported separately; NeuroBench; SHD. Then one design-partner dataset |
+| Event-native vertical models (inductive biases, existing hardware) | Better detection and forecasting on asynchronous, timestamped, interleaved event data than dense models, sold as models/runtime on ordinary CPUs and GPUs | **Begun:** confirmed public EasyTPP wins (Taobao, Taxi) at a fraction of the state of the art's compute. Next: the remaining EasyTPP datasets; irregular clinical/sensor series (P12, P19, PAM); sealed FAS v2 against anonymous-log classical detectors and small LSTM/Transformer references (oracle-assisted trackers reported separately). Then one design-partner dataset |
 
 One successful deployment can provide value before the full platform exists.
 
@@ -74,6 +75,18 @@ Evidence stage, 4 October:
   (AUROC 0.50–0.56 up to 256 process events).
 - The first native arm is queued. Dense, SSM and point-process references follow on AWS.
 - The value is to be claimed only from completed comparisons.
+
+Evidence update, 6 October:
+- **Public leaderboard wins (EasyTPP):**
+  - Taobao 1.399 ± 0.003 vs best published 1.318 nats/event at 0.92× the leading model's per-event compute;
+  - Taxi: a 5-seed mixture (0.536) beats every published model at 0.41× S2P2's compute; a single model (0.525)
+    leads S2P2 (0.522) on the mean at 1/12 of its parameters and compute.
+
+  Both are 5 seeds on official splits with a sealed test; this is the battle's pass criterion. StackOverflow is ahead
+  only at 4.6× compute (accuracy-only); Amazon and Retweet are in development.
+- **FAS v2:** the sealed setting is selected on validation (2 interleaved lines, 2% dropped events). The identity
+  oracle reaches AUROC 0.821 against 0.685 for the best anonymous classical detector, so a binding model has room
+  to win. Development is in progress with a race readout derived from the interleaving theory.
 
 Evidence update, 5 October: native wins against all six tested generic classical controls early (single-seed AUROC **0.600 vs 0.559 at 256 events**). The FIFO method reaches 0.755 using a route recovered from hidden training item identities. It is an **oracle-assisted diagnostic**, not a fair reference for discovering structure from anonymous traces. The v2 timing-aware probe also uses identity-derived training timing statistics. These scores do not establish a classical win under the native information protocol. FAS v2 is pre-registered; its primary reference comparisons must exclude privileged methods and retain them separately as oracle diagnostics ([protocol](../experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md)).
 Reusable mechanisms and tooling could then lower the cost of entering adjacent
@@ -106,11 +119,16 @@ The [current evidence map](../report/architecture_evidence.md) supplies anchors:
   (1.888 vs 1.908 BPC) at 0.40× its training and 0.18× its inference compute,
   and beats the validation-selected tuned Transformers at both budgets. Tuned
   small LSTMs lead at these budgets by 0.04–0.06 BPC.
-- At 90M characters, four native passes reach 1.800 BPC at 0.97 PFLOPs.
+- At 90M characters, at equal training compute:
+  - ≈ 2.1 PF: native 1.783 BPC beats a tuned Transformer-256×4 (1.811) at 1.06× compute, but a Transformer-192×4
+    (1.704) leads;
+  - ≈ 0.96 PF: native 1.800 loses to a tuned LSTM-512 (1.729) and a Transformer-192×4 (1.780).
+- **Public benchmark:** confirmed EasyTPP wins on Taobao and Taxi (5 seeds, sealed test, a fraction of the leading
+  model's compute).
 - A causal online pilot improves 3.190859→3.095738 BPC through adaptation;
   economical native adaptation is the next step.
 
-These anchors are single-seed. The retained negative findings, causal-protocol
+The language anchors are single-seed; the EasyTPP wins are 5-seed. The retained negative findings, causal-protocol
 corrections, numerical contracts and full-resource definitions make the program
 reviewable. The future premium depends on turning this
 execution discipline into replicated, deployable benefits.
@@ -173,7 +191,19 @@ that corresponds to €530M or €1.03B exit equity value under the respective
 rows. Further dilution raises the required outcome. This is conditional equity
 arithmetic, not an exit forecast or a discount-rate-adjusted return estimate.
 
-**Assessment:** €50M remains aligned with the ambition as an aggressive,
+**Assessment (revised 6 October):** €50M remains aligned with the ambition and is now better supported. The family has
+confirmed public-leaderboard wins at a fraction of the state of the art's compute, the "useful-quality/full-cost
+advantage" this rationale names as the highest-value evidence. That moves €50M from aggressive toward
+defensible.
+
+€100M becomes arguable when two or more of these hold:
+- matched-compute wins on further EasyTPP datasets;
+- a second domain (irregular clinical/sensor series, or the sealed FAS v2 confirmation);
+- an independent reproduction of a leaderboard result.
+
+Investor competition, not the evidence alone, sets the attainable price.
+
+Earlier assessment (5 October): €50M remains aligned with the ambition as an aggressive,
 evidence-informed negotiating thesis. The new definition/opportunities strengthen
 the explanation of potential value, while their untested status leaves much
 of the financing risk unchanged. €100M is a stretch scenario. We should not

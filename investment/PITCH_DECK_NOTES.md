@@ -13,7 +13,7 @@ All financial outcomes, budgets and milestone timelines are assumptions. No cust
 Numerical benchmark/financial ledger: frozen 3 October 2026. The protocol notes separately scope the report's completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.
 
 
-Reading guide: slides 1–22 form the investor pitch; the remaining slides are optional technical and financial diligence.
+Reading guide: slides 1–23 form the investor pitch; the remaining slides are optional technical and financial diligence.
 
 
 ## 1. Sleeping Machines
@@ -36,16 +36,25 @@ AGI here means the long-term ambition of broadly transferable learning and compe
 - [T5: Brohan et al. — RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://arxiv.org/abs/2307.15818) — Joint vision/language/action learning transfers web knowledge to robotic control. Neither an AGI demonstration nor evidence for our resource advantage.
 
 
-## 3. Beats the saved Transformer baselines at a fraction of the compute.
+## 3. First public-leaderboard wins: timed event data (EasyTPP).
+
+Public benchmark (ICLR 2024), official splits. Log-likelihood per event in nats: higher is better. Sealed test, 5 seeds.
+
+Source: experiments/B1_EASYTPP.md. Pre-registered reporting rule (fixed before any 5-seed TEST aggregate): single-model TEST mean ± sd over 5 seeds and the uniform 5-seed predictive mixture, with per-event inference MACs beside S2P2. A mixture is a matched-compute result only where 5x our MACs <= S2P2 (Taxi 0.41x, Retweet 0.29x); elsewhere it is a higher-compute (pure accuracy) result. Taobao single model 1.3991 ± 0.0025 vs best published 1.318 ± 0.017 (IFTPP), S2P2 1.304; best time (2.753) and mark (-1.353) LL; 24,362 vs 26,016 MACs/event. Taxi single 0.5250 ± 0.0010 vs S2P2 0.522 ± 0.004 at 20,708 vs 249,856 MACs/event; 5-seed mixture 0.5363 beats every published model on total, time and mark LL. StackOverflow: single model -2.1809 ± 0.0055 (behind by 0.018), mixture -2.154 at 4.6x S2P2 MACs. Amazon v5 TEST 0.7008 ± 0.0263 (3 seeds) vs S2P2 0.781; v8 logistic-window clocks DEV 0.768 vs v5 0.724, TEST protocol next. Retweet: a v3 DEV lead was withdrawn after the recording-grid audit (scores fell when event times were dequantized within their recording resolution); Taxi and Taobao pass that audit. B1 pass criterion: best published LL on at least 2 of 5 datasets with 5 seeds.
+
+- [R_B1: EasyTPP battle dossier and sealed TEST results (6 October 2026)](../experiments/B1_EASYTPP.md) — Official EasyTPP splits and per-event log-likelihood protocol; 5 seeds, TEST scored once per seed at best DEV; published references with sources; per-event compute counted from released layer definitions.
+
+
+## 4. Beats the saved Transformer baselines at a fraction of the compute.
 
 Wikipedia text (text8); same data and test set for all. Error: bits/char (bpc) or sMAPE %; lower is better.
 
-Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. "Passes" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued. Update 5 Oct 00:40: second tuned arm LSTM-512 4.5 passes, 324 TF, test 1.826 (validation 1.769, leading the group); native 1.888 at 352 TF. Update 5 Oct 03:45: budget B (<=107 TF) first tuned arm LSTM-384 2.5 passes 1.915 vs native 1.955: also a loss. Final 5 Oct 04:40: P0-6 complete; validation selection confirmed with windowed LSTM validation (curie). Budget A: tuned LSTM-512 1.825 beats native 1.888; tuned Transformers best 1.996 (native better at 102% compute). Budget B: tuned LSTM-384 1.915 beats native 1.955; best tuned Transformer 2.215. P0-2 (p128/d4 4-pass) 1.907 at 411 TF: loss. Update 5 Oct 08:45: P0-1 90M native 4-pass 1.800 at 0.97 PF (efficiency point; 4x compute bought .057 bpc from the 1-pass 1.857).
+Matched-compute rows follow experiments/WIN_CRITERIA.md: our run uses no more compute than the reference on the stated axis and scores better. Evaluation window T=256 characters for every model. "Passes" = epochs over the 10M training characters. sMAPE = symmetric mean absolute percentage error (NeuroBench Mackey-Glass, tau 17). Training compute: whole-fit estimate; inference: per-position (native exact winner-only trace). The 4-pass Transformer comparison uses a 6-pass native run with 1.5x the optimizer updates; an update-matched rerun is queued. Second seeds are queued. The 90M row is an efficiency point, not yet a matched-compute result. NeuroBench Mackey-Glass is partial (20 of 30 official repeats). Update 5 Oct: the first completed tuned dense control (LSTM-384, lr .003, warmup, 6 passes, 254 TF) scores 1.840 versus our 1.888 at 352 TF: a loss at matched training compute, stated plainly. Five more tuned arms are running; the LSTM's stateful scoring context is being aligned; native runs were not learning-rate tuned either, and a matching native lr check is queued. Update 5 Oct 00:40: second tuned arm LSTM-512 4.5 passes, 324 TF, test 1.826 (validation 1.769, leading the group); native 1.888 at 352 TF. Update 5 Oct 03:45: budget B (<=107 TF) first tuned arm LSTM-384 2.5 passes 1.915 vs native 1.955: also a loss. Final 5 Oct 04:40: P0-6 complete; validation selection confirmed with windowed LSTM validation (curie). Budget A: tuned LSTM-512 1.825 beats native 1.888; tuned Transformers best 1.996 (native better at 102% compute). Budget B: tuned LSTM-384 1.915 beats native 1.955; best tuned Transformer 2.215. P0-2 (p128/d4 4-pass) 1.907 at 411 TF: loss. Update 5 Oct 08:45: P0-1 90M native 4-pass 1.800 at 0.97 PF (efficiency point; 4x compute bought .057 bpc from the 1-pass 1.857). NeuroBench Mackey-Glass (draft-stage configuration, official 30 repeats): 14.84 sMAPE vs LSTM 13.37 and ESN 14.79; recorded in FINDINGS and the evidence pack; moved off the headline table under the maturity gate (VALUE_PLAN.md, 6 Oct). Update 6 Oct: 90M budget D (about 2.1 PF): native p96/d4 1.783 vs tuned Transformer-256x4 1.811 at 1.06x compute (near-matched win) and vs Transformer-192x4 1.704 (loss); at budget C (about 0.96 PF) native 1.800 loses to LSTM-512 1.729 and TF192x4 1.780 (report Part I, section 4.3).
 
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 4. Event-driven models aimed for parity. Ours beats small Transformers on compute.
+## 5. Event-driven models aimed for parity. Ours beats small Transformers on compute.
 
 Published event-driven and spiking language models, as reported by their authors, beside our completed result.
 
@@ -64,7 +73,7 @@ Literature check (web search, 4 October 2026), not a systematic review. Prior ev
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 5. Intelligence must compose across experience and execution.
+## 6. Intelligence must compose across experience and execution.
 
 A common substrate connects what a model learns with how and where it computes.
 
@@ -75,7 +84,7 @@ This is the problem definition and investment hypothesis. It is not a claim that
 - [S6: Google — Eighth-generation TPU architecture announcement](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/) — TPU 8t/8i, model–hardware co-design and sparse MoE infrastructure. Existing internal capability creates both potential fit and competition.
 
 
-## 6. One model family across today's architectural landscape.
+## 7. One model family across today's architectural landscape.
 
 Our approach combines strengths of today's main model types.
 
@@ -84,7 +93,7 @@ This is the whole-family position, not a claim that every implemented member con
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 7. Choose the right computation in each region.
+## 8. Choose the right computation in each region.
 
 One family can mix selective temporal programs with rich interaction and causal memory.
 
@@ -93,7 +102,7 @@ The local choices form a generative design space, not a catalogue of unrelated b
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 8. Messages race. Selected memories update. Alternatives learn.
+## 9. Messages race. Selected memories update. Alternatives learn.
 
 A simple event loop connects representation, timing and sparse computation.
 
@@ -102,7 +111,7 @@ This construction combines familiar vector operations with temporal computation 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 9. One temporal family learns across three data structures.
+## 10. One temporal family learns across three data structures.
 
 Different interfaces; addressed memory, temporal computation and counterfactual route credit.
 
@@ -111,7 +120,7 @@ All headline numbers bind completed result files in report/unification_headline_
 - [R4: Completed cross-domain headline evidence — 6 October 2026](../report/unification_headline_evidence_20261006_v1.json) — Fourteen SHA-bound completed results, selections, generic controls and artifact receipts. Three-seed FAS v1 wins; synthetic typed witness; two-seed1M token-language learning and memory utility. Separately fitted instances.
 
 
-## 10. Respect types. Race decisions. Compose learned state.
+## 11. Respect types. Race decisions. Compose learned state.
 
 Meaningful comparisons become events before evidence enters a common neural representation.
 
@@ -120,7 +129,7 @@ Theory and39stdlibcontracts in experiments/theory/TYPED_SEMANTICS_AND_RACE_COMPO
 - [R5: Typed semantics, race composition and39mathematical/interface contracts](../experiments/theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md) — Derived restricted raw-affine obstruction, typed event composition, unit/category contracts and joint-time credit. Existing synthetic fixed-predicate integration retained; learned predicate discovery and real-tree comparisons are next tests.
 
 
-## 11. Single pass: error versus training compute.
+## 12. Single pass: error versus training compute.
 
 Each model sees the 10M training characters once. Lower and further left is better. Slide 2 adds multi-pass runs.
 
@@ -129,7 +138,7 @@ p32 / D4 credited: 2.371491 bpc, 7.243 estimated whole-fit TFLOPs, 108,875 param
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 12. Start with low-batch language inference on existing hardware.
+## 13. Start with low-batch language inference on existing hardware.
 
 Product hypothesis for local and on-premise text applications; no customer interest reported yet.
 
@@ -138,7 +147,7 @@ This is a product hypothesis chosen to make the research investable and testable
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 13. Software proves the advantage. Hardware multiplies it.
+## 14. Software proves the advantage. Hardware multiplies it.
 
 One research program, with staged routes to deployment.
 
@@ -151,7 +160,7 @@ Hardware is a multiplier on the software result, applied to different parts of t
 - [H3: Private hardware thesis (4 October 2026)](HARDWARE_THESIS.md) — Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement.
 
 
-## 14. A useful alternative could strengthen a hardware ecosystem.
+## 15. A useful alternative could strengthen a hardware ecosystem.
 
 Potential evaluation and licensing routes; no partner interest or relationship is claimed.
 
@@ -164,14 +173,14 @@ AMD is the strongest identified public fit precedent, not a presumed buyer. Its 
 - [S6: Google — Eighth-generation TPU architecture announcement](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/) — TPU 8t/8i, model–hardware co-design and sparse MoE infrastructure. Existing internal capability creates both potential fit and competition.
 
 
-## 15. Price the runtime against verified customer value.
+## 16. Price the runtime against verified customer value.
 
 Illustrative annual license economics; assumptions to test with an evaluation partner.
 
 This example brings the commercial argument to an auditable customer denominator rather than treating global electricity, capex or subscriber counts as company TAM. All amounts are annual EUR. €1M eligible workload spend × 20% reduction = €200k gross saving; a 20% capture yields a €40k annual license and €160k buyer benefit before migration and other costs. Twenty-five equivalent licenses produce €1M annual revenue. None of these assumptions is established by current FLOP estimates or customers. Customer-count, scope, quality, reliability and adoption must be validated. This replaces the main-deck €1B spend/100M devices illustration; platform-scale scenarios remain explicitly hypothetical in the appendix.
 
 
-## 16. AI research and software architecture in one founder.
+## 17. AI research and software architecture in one founder.
 
 Tero Keski-Valkama · Sole founder · Public career and invention record.
 
@@ -184,7 +193,7 @@ The XING timeline lists Cybercom December 2012–June 2018, HERE July 2018–Apr
 - [F3: Tero Keski-Valkama — public project portfolio](https://keskival.github.io/) — Self-published portfolio lists Sleeping Machines and FAS Simulator; project access may have changed. Sole-founder status supplied by founder.
 
 
-## 17. Build defensibility across the model and its execution.
+## 18. Build defensibility across the model and its execution.
 
 The strongest potential asset is an integrated stack that is difficult to reproduce and deploy.
 
@@ -195,7 +204,7 @@ Tero instructed on 3 October 2026 that the GitHub repository was made private. T
 - [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
 
 
-## 18. Three gates determine whether this becomes a business.
+## 19. Three gates determine whether this becomes a business.
 
 Each gate has a falsifiable result and a consequence for further spending.
 
@@ -206,7 +215,7 @@ The principal investor risks are scalable prediction quality, economical executi
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 19. The next 18 months produce evidence investors can underwrite.
+## 20. The next 18 months produce evidence investors can underwrite.
 
 Proposed milestones measured from funding; spending advances with completed gates.
 
@@ -215,14 +224,14 @@ The timing is a planning assumption measured from funding. Three seeds and tuned
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 20. €3M funds an 18-month research and engineering program.
+## 21. €3M funds an 18-month research and engineering program.
 
 Team, staged compute, hardware feasibility and IP protection, including selective patent filings.
 
 The proposed allocation totals exactly €3M: team €1.35M, compute/replication €0.90M, hardware feasibility/measurement €0.25M, legal/IP/operations €0.20M, reserve €0.30M. Average six FTE × €150k/year fully loaded × 1.5 years equals €1.35M; this is a staffing assumption, not an actual hiring plan or salary survey. Operating burn excludes reserve; total budget consumption would average about €166.7k/month over 18 months if reserve is spent. Stage compute purchases by quality/system gates. Allocate founder plus representation/credit, systems/compiler, evaluation and hardware-measurement skills; exact staffing mix and ramp remain open. The existing €0.20M legal/IP/operations envelope explicitly includes IP inventory, counsel review, selective patent priority filings and staged prosecution alongside corporate/operating needs. Obtain counsel quotes before dividing this shared envelope; it is not €0.20M earmarked solely for patents, and no number of filings or grant timeline is promised. See IP_PROTECTION_PLAN.md. The founder’s earlier employer-owned patents are excluded from company assets. Commercially useful company-owned rights can strengthen defensibility; filing alone does not establish valuation uplift.
 
 
-## 21. Raise €3M to establish a commercially valuable platform.
+## 22. Raise €3M to establish a commercially valuable platform.
 
 Proposed priced round; terms remain subject to company formation and investor diligence.
 
@@ -237,14 +246,14 @@ Proposed priced round; terms remain subject to company formation and investor di
 - [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
 
 
-## 22. Build the model. Prove the economics. Open the hardware path.
+## 23. Build the model. Prove the economics. Open the hardware path.
 
 €3M proposed raise · €50M proposed pre-money · Private investor discussion.
 
 Requested financing is €3M. The financing purpose is an aggressive but gated increase in experiment throughput and engineering capacity. The key next investor asset is replicated quality plus a measured service-level advantage; a clockless-chip thesis adds upside after mapping is credible. This private deck includes an appendix for diligence rather than presenting pending work as completed. Contact details, company identity, jurisdiction, cap table and legal terms should be supplied by the founder before distribution. No outbound messages or public release were made.
 
 
-## 23. The same model improves when unchosen paths receive credit.
+## 24. The same model improves when unchosen paths receive credit.
 
 Controlled small-model comparison; held-out error and estimated complete training work.
 
@@ -255,7 +264,7 @@ The local linearized credit estimator adds a derivative pathway for alternative 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 24. More available state. The same eight selected writes.
+## 25. More available state. The same eight selected writes.
 
 Small model with alternative credit: available memory doubles; selected updates stay fixed.
 
@@ -264,7 +273,7 @@ Pool 2 → 4 changes memory scalars from 512 to 1,024 and parameters from 108,87
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 25. The sparse path is implemented; system proof is next.
+## 26. The sparse path is implemented; system proof is next.
 
 Inference arithmetic per predicted character. Green bars: our implemented sparse runtime, which computes only the selected paths.
 
@@ -275,7 +284,7 @@ Small random float64 fixtures match full-emulator logits within roughly 1e-10. A
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 26. An adaptation signal exists. Its work is accounted for.
+## 27. An adaptation signal exists. Its work is accounted for.
 
 Predict-before-update experiment on a new text stream; separate from the latest model family.
 
@@ -286,7 +295,7 @@ Frozen versus online evaluation scores 8,191 targets with predict-before-update,
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 27. One substrate can support new communication and learning patterns.
+## 28. One substrate can support new communication and learning patterns.
 
 Application hypotheses with first proofs; no codec, embodied-transfer or AGI result yet. The first row needs no special hardware.
 
@@ -295,7 +304,7 @@ The register in report/model_family_opportunities.md records six opportunities, 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 28. The contribution is the complete construction.
+## 29. The contribution is the complete construction.
 
 Established alternatives already address parts of this problem; they remain essential controls.
 
@@ -308,7 +317,7 @@ The pitch does not assert sole invention of sparse activation, gating, normaliza
 - [T3: Gu and Dao — Mamba](https://arxiv.org/abs/2312.00752) — Selective recurrent state-space sequence models are relevant competitive controls. No matched modern SSM result is claimed.
 
 
-## 29. What clockless, memory-local silicon can buy.
+## 30. What clockless, memory-local silicon can buy.
 
 Physical mechanisms, their basis and what must be measured. No chip exists yet.
 
@@ -321,7 +330,7 @@ Mechanisms with physical bases, not measurements. Dense models can also use SRAM
 - [H3: Private hardware thesis (4 October 2026)](HARDWARE_THESIS.md) — Mechanism analysis of clockless, event-driven, memory-local execution; no chip or joule measurement.
 
 
-## 30. AMD’s Silo AI deal supports the strategic logic.
+## 31. AMD’s Silo AI deal supports the strategic logic.
 
 Announced approximately $665M all-cash acquisition in 2024; a mature-company precedent.
 
@@ -334,7 +343,7 @@ AMD’s announcement connects the acquisition to end-to-end AI solutions, engine
 - [S3: Liquid AI — $250M Series A announcement, 13 December 2024](https://www.liquid.ai/blog/we-raised-250m-to-scale-capable-and-efficient-general-purpose-ai) — Financing announcement and AMD collaboration on efficient models; funding amount is not a disclosed company valuation.
 
 
-## 31. The constraints reach from power grids to robot batteries.
+## 32. The constraints reach from power grids to robot batteries.
 
 Economic context for efficient intelligence; these figures are not our revenue market.
 
@@ -347,14 +356,14 @@ IEA projects all datacenter electricity, not only AI demand; GSMA subscribers ar
 - [M3: IFR — World Robotics 2026 release, 24 September 2026](https://ifr.org/ifr-press-releases/news/five-million-robots-now-operate-in-factories-globally) — 5 million operating industrial robots in 2025 and more than 600,000 annual installations; no adoption by this project.
 
 
-## 32. Successful platform adoption can support very large outcomes.
+## 33. Successful platform adoption can support very large outcomes.
 
 Conditional commercial arithmetic illustrates the scale required; no forecast or market multiple claim.
 
 The €10B/€50B equity scenarios use deliberately stated revenue multiples rather than observed comparables. They require economics, durable margins and value capture that are wholly unproven. Multiplying revenue by a selected multiple is not an enterprise/equity reconciliation: the examples assume negligible net debt at exit. The scenarios overlap and are alternatives, not additive. Infrastructure relevance can justify funding risky research, but cannot itself prove a current valuation. Smaller niche success, delayed commercialization, licensing-only outcomes, further dilution and total failure remain possible.
 
 
-## 33. The completed comparisons, using consistent resource units.
+## 34. The completed comparisons, using consistent resource units.
 
 Frozen 10M-character, one-pass evidence. Model definitions are on the next slide.
 
@@ -363,7 +372,7 @@ All fitting columns include estimated complete step arithmetic rather than forwa
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 34. Plain-language labels map to reproducible model records.
+## 35. Plain-language labels map to reproducible model records.
 
 Message width counts scalars; available memory counts local state slots.
 
@@ -372,7 +381,7 @@ These names are editorial labels for the frozen completed configurations, not ne
 - [R1: Private completed language evidence ledger (3 October 2026)](pitch_deck_benchmarks.csv) — Saved native fits and E64 controls. Original JSON records and SHA256 hashes are supplied in the private diligence pack.
 
 
-## 35. The comparison boundaries are part of the evidence.
+## 36. The comparison boundaries are part of the evidence.
 
 Maintain the original records and disclose what a result actually measures.
 
@@ -383,7 +392,7 @@ The native score pays overlap-window warmup, evaluating roughly twice as many in
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 36. Keep the failures beside the positive mechanism results.
+## 37. Keep the failures beside the positive mechanism results.
 
 A disciplined research program should revise interpretations when evidence changes.
 
@@ -394,42 +403,42 @@ D8 uncredited pool 2 scores 2.4565 and pool 4 2.4981 at T256. The D4 credited po
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 37. Reverse-underwriting shows the assumptions behind a price.
+## 38. Reverse-underwriting shows the assumptions behind a price.
 
 This arithmetic is a sensitivity tool; the research does not estimate platform-success probabilities.
 
 The illustrative model discounts the retained fraction of a successful future equity outcome to today and assigns zero failure value. It is not a complete corporate DCF, does not model all cash flows, and assumes the retained cohort benefits from an exit equity value after future financing. €10B exit × 30% retention / 1.15^10 is the conditional present value; €50M requires 6.7426% and €100M requires 13.4852%. These are neither forecasts nor inferred from small benchmarks. A €3M priced round at €50M pre-money gives 5.6604% initial investor ownership before option-pool changes, fees, preferences or future rounds; at €100M it gives 2.9126%. An investor must independently accept technology scalability, commercial value capture, rights and execution to support a premium price.
 
 
-## 38. The price depends on dilution, exit scale and time.
+## 39. The price depends on dilution, exit scale and time.
 
 Required platform-success odds at 10 years and 15% discount; zero failure value.
 
 This table is generated from the frozen financial model, not entered by hand. At a €3B outcome and 10% retained equity, the required probabilities are much higher than at a €30B exit with 50% retention. A lower discount rate increases the present value, while delays and dilution reduce it. In the €3M/€50M round, an investor retains 1.6981% at exit if 30% of its initial stake survives, giving €169.81M or 56.60× gross MOIC in the assumed €10B success outcome. That conditional upside is not expected return; failure is zero and cash-flow timing/preferences are omitted.
 
 
-## 39. A private evidence pack and primary external context.
+## 40. A private evidence pack and primary external context.
 
 Source labels in slide footers are clickable; companion files must travel with the PDF.
 
 Raw research evidence is private, per founder instruction. Original completed result SHA256 hashes are in pitch_deck_evidence_20261003.json. The status PDF contains detailed theory and historical evidence; do not treat invalid-protocol archives or old rendered report scores as active claims. Market sources were accessed on 3 October 2026. These external sector denominators support relevance, not customer intent or a venture revenue forecast.
 
 
-## 40. Public precedents establish relevance, not endorsement.
+## 41. Public precedents establish relevance, not endorsement.
 
 Historical roles are self-reported; inventorship is checked against the primary published document.
 
 The founder profile and portfolio are linked from the founder slide (F1, F3). Transformer and Mamba references are linked from the competition slide. The private diligence checklist remains open: corporate entity, cap table, founder commitment, contribution chain including Karoliina Salminen, employer invention assignments, licenses, compute/hiring quotes, trained backend admission, replication and measured service advantage. A private repository does not rescind earlier disclosures or itself establish patentability. No permission to distribute or contact potential partners is inferred from preparing this deck.
 
 
-## 41. Prior event-driven language models.
+## 42. Prior event-driven language models.
 
 Summaries of each paper's own claims; datasets, scales and compute conventions differ from ours.
 
 
 
 
-## 42. The language experiments establish three useful facts.
+## 43. The language experiments establish three useful facts.
 
 Wikipedia text (text8), 10M characters of training. Prediction error in bits per character: lower is better.
 

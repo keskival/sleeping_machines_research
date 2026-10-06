@@ -12,12 +12,13 @@ This also connects the learner to its execution. Time performs computation, incl
 
 **A revealing proof of the platform:** mixed-type tables, token sequences and anonymous event streams learned through the same temporal core, followed by measured skill transfer. The program spans small-data usefulness and large-data scaling.
 
-## Three evidence anchors for the platform
+## Evidence anchors for the platform
 
 **Token sequences, anonymous interleaved process logs and mixed-type comparisons now learn within the temporal/sparse family.** They exercise different information structures through addressed messages, persistent memory, temporal computation and credit to unrealized alternatives. This is evidence for a common computing construction spanning small-data tables, asynchronous analytics and tokenized language.
 
 | Evidence front | Completed indication | What it establishes |
 | --- | --- | --- |
+| **Public benchmark: timed event data (EasyTPP, ICLR 2024)** | **Taobao 1.399 ± 0.003 vs best published 1.318** nats/event (+0.081) at 0.92× the leader's compute; **Taxi**: a 5-seed mixture (0.536) beats every published model at 0.41× S2P2's compute (NeurIPS 2025), and a single model leads S2P2 on the mean (0.525 vs 0.522) at 1/12 of its parameters and compute. StackOverflow: mixture ahead (−2.154 vs −2.163) at 4.6× compute, an accuracy-only result. Official splits, sealed test, 5 seeds. | **Confirmed wins on a public leaderboard of the family's home field**, at a fraction of the state of the art's compute. The battle's pass criterion (best published on 2 of 5 datasets) is met; Amazon and Retweet are in development. |
 | **Anonymous interleaved processes** | FAS mean AUROC **0.5924 vs 0.5587** at 256 events; **0.7370 vs 0.7272** at 512 events. All three native seeds beat the best of six saved generic controls at both points. | Replicated early-detection quality wins on FAS v1. Privileged identity-assisted diagnostics are excluded; sealed v2 and stronger neural references are the next benchmark. |
 | **Mixed-type tables, small data** | **100% accuracy on 256 synthetic DEV rows from 64 FIT rows**,6,370 learned parameters. Numeric, categorical, Boolean and missingness comparisons enter before neural message processing. | The integrated core learns the mixed-type interaction; relabeling, column-order, missing-value semantics and actual alternative-write credit checks pass. Fixed predicates, one seed; learned discovery and real tables versus trees are the next tests. |
 | **Properly tokenized language, growing data** | P24 reaches **7.2515 / 7.2636 DEV NLL** at 1M TRAIN tokens across two seeds. Memory erasure raises loss **0.0104 / 0.0174**. Fixed-width seed6 quality improves **8.0333 → 7.7417 → 7.2515** from 64K → 256K → 1M TRAIN tokens. | Replicated language learning and useful persistent memory, with measured data-growth quality. Two passes; public Transformer quality, full larger fitting work and the reserved 4M point are the next comparisons. No scaling law is fitted. |
@@ -26,7 +27,9 @@ This also connects the learner to its execution. Time performs computation, incl
 
 Source-bound numerical packet: [headline evidence](../report/unification_headline_evidence_20261006_v1.json).
 
-**What is already shown** (single seeds; native compute traced, reference compute shape-estimated):
+**What is already shown** (language rows single-seed; native compute traced, reference compute shape-estimated):
+- **Wins a public leaderboard on its home field:** EasyTPP Taobao (+0.081 nats/event over the best published model at
+  0.92× the leader's compute) and Taxi (beats every published model at 0.41× S2P2's compute), 5 seeds, sealed test.
 - **Beats Transformers at a fraction of their compute.** On 10M characters of text8 the native model reaches 1.888 bpc
   against the 4-pass Transformer-256×4's 1.908, at 0.40× its training and 0.18× its inference compute, and beats the
   validation-selected tuned Transformers at both budgets (1.888 vs 1.996; 1.955 vs 2.215). Tuned small LSTMs lead at
@@ -36,7 +39,9 @@ Source-bound numerical packet: [headline evidence](../report/unification_headlin
 - **Learned temporal computation:** 99.7–99.9% event-order accuracy from 2,000 examples seen once (Transformers
   33–41%); 95.3% on timing-only discrimination where any order-only model is capped at 50%; 100% on unseen modular
   rules; 100% retrieval at four times the training context.
-- **Scales with data and adapts online:** 1.800 bpc after 90M characters; online adaptation 3.191 → 3.096 bpc.
+- **Scales with data and adapts online:** at 90M characters the native model reaches 1.783 bpc and beats a tuned
+  Transformer-256×4 (1.811) at 1.06× its compute, while a tuned Transformer-192×4 (1.704) still leads; online
+  adaptation 3.191 → 3.096 bpc.
 - **Hardware economics:** in the cost model, 5.8× fewer bytes moved per character than Transformer-256×4 at better
   quality (modelled; silicon measurement is a funded milestone).
 

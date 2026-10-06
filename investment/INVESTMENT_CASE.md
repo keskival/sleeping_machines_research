@@ -87,6 +87,26 @@ credit to unrealized hard routes, translated into a useful system. [Intel Loihi 
 
 ## What already makes the case tangible
 
+**Public leaderboard wins on the family's home field (6 October 2026).** On EasyTPP (ICLR 2024), the standard benchmark
+for marked event streams in continuous time, the model is a race of delayed clocks over persistent temporal memory.
+Official splits, the published per-event log-likelihood protocol, 5 seeds, sealed test scored once per seed
+([dossier](../experiments/B1_EASYTPP.md)):
+
+| Dataset | Best published (nats/event, higher better) | Ours | Per-event compute vs S2P2 (NeurIPS 2025) |
+|---|---|---|---|
+| Taobao | 1.318 ± 0.017 (IFTPP) | **1.399 ± 0.003** | 0.92× |
+| Taxi, 5-seed mixture | 0.522 ± 0.004 (S2P2) | **0.536** | 0.41× |
+| Taxi, single model | 0.522 ± 0.004 | **0.525 ± 0.001** | 1/12 (parameters and compute) |
+| StackOverflow, 5-seed mixture | −2.163 ± 0.009 (S2P2) | **−2.154** | 4.6× (accuracy-only result) |
+| Amazon (in development) | 0.781 (S2P2) | 0.701 | — |
+
+- **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute. They meet the battle's pass
+  criterion (best published on 2 of 5 datasets).
+- **StackOverflow** is ahead only at higher compute; its single model is 0.018 behind.
+- **Amazon and Retweet** are in development: a new clock shape gained +0.044 on Amazon development data.
+- These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
+  terms where its mathematics fits: a race of clocks *is* a temporal point process.
+
 These completed language comparisons use text8, 10M fitting characters, one
 pass and the saved controls' T256 evaluation window. Each native row is a single
 seed. Fitting work includes backward, route-credit and optimizer estimates.
@@ -141,10 +161,13 @@ Completed parents and exact values are indexed by the accompanying evidence
 manifest. [Research status](../report/sleeping_machines_status.pdf)
 
 The numerical table above remains the frozen 3 October 10M comparison.
-At 90M characters, four native passes reach 1.800 bpc at 0.97 PFLOPs (saved
-LSTM-512 1.661 at 3.9 PFLOPs; Transformer 1.604 at 8.0 PFLOPs); the larger p96
-fit and the equal-compute tuned references are running. See the
-[current evidence map](../report/architecture_evidence.md).
+At 90M characters, against tuned references at equal training compute, the results are mixed:
+- **≈ 0.96 PF:** native 1.800 bpc loses to a tuned LSTM-512 (1.729) and a tuned Transformer-192×4 (1.780).
+- **≈ 2.1 PF:** native 1.783 beats a tuned Transformer-256×4 (1.811) at 1.06× its compute, while a Transformer-192×4
+  (1.704) leads.
+
+The gap to the best dense model widens from 10M to 90M; that trend is the central language problem (report Part I
+§4.3). See the [current evidence map](../report/architecture_evidence.md).
 
 ## Expanded platform opportunities
 
@@ -284,6 +307,15 @@ is a stretch scenario. This prices the potential of a model/learning/runtime
 and computing-substrate platform, supported by research execution and a staged
 program. It is a negotiating position, not an independent appraisal.
 
+**Public de-risking since the proposal was set.** The confirmed EasyTPP wins (Taobao, Taxi) are the first instance of
+the evidence the rationale names as most valuable: a repeated useful-quality and full-cost advantage, on a public
+leaderboard with published baselines.
+- They make the €50M opening price materially more defensible.
+- They do not by themselves establish the €100M case, which needs the advantage beyond one benchmark family:
+  - further datasets at matched compute;
+  - a second domain (irregular clinical series, sealed FAS v2);
+  - ideally an independent reproduction.
+
 The rationale now treats asynchronous ingestion/output, learned memory policies
 and embodied/cognitive integration as concrete expansion options. The common
 structure could permit end-to-end learning across their information and credit
@@ -316,9 +348,12 @@ rights, execution and reproducible benefits determine attainable terms.
 1. **A reproducible model advantage at scale.** Race attention against
    competent Transformers at equal complete compute on modern language data,
    across a scaling curve on GPU, with replications.
-2. **A home-field win on event streams.** The pre-registered FAS v2 benchmark
-   with ambiguous identities, then identity-stripped real logs and a design
-   partner.
+2. **Extend the home-field wins on event streams.** Public EasyTPP wins are
+   achieved (Taxi, Taobao). Next:
+   - the remaining datasets at matched compute;
+   - a second public domain (irregular clinical and sensor series: P12, P19, PAM);
+   - the sealed FAS v2 confirmation on anonymous interleaved logs, against small LSTM/Transformer references;
+   - identity-stripped real logs with a design partner.
 3. **A deployable sparse backend.** Admit actual-trained winner/state/cache/RNG
    parity and heldout rescore, then measure setup, residency, latency,
    throughput and total cost. The prepared packed-weight worker is an initial

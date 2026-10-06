@@ -90,7 +90,7 @@ Marked event streams with continuous times, on the official EasyTPP splits and t
 
 **Win on Taobao, confirmed over 5 seeds:** +0.081 nats per event over the best published model, with the best time and mark log-likelihoods, at 0.92× S2P2's per-event work.
 
-**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. Amazon, StackOverflow and Retweet are in development and TEST protocols. Both winning results pass a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
+**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. StackOverflow's 5-seed TEST is complete: the single model is 0.018 behind S2P2 (−2.181 vs −2.163), and the 5-seed mixture is ahead (−2.154) at 4.6× S2P2's per-event compute, an accuracy-only result under the pre-registered rule. Amazon (v5 TEST 0.701 vs 0.781; v8 +0.044 on DEV) and Retweet are in development. Both winning results pass a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
 
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 

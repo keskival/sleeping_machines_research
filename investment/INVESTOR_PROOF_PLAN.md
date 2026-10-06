@@ -7,6 +7,16 @@ explains the upside; it does not replace those proofs. The €3M raise and €10
 stretch case remain as described in [the valuation rationale](VALUATION_RATIONALE.md).
 This is an execution plan, not a prediction of investor acceptance.
 
+## Status update, 6 October 2026
+
+- **Public event benchmark: achieved.** Confirmed EasyTPP wins on Taobao (+0.081 nats/event over the best published
+  model, 0.92× the leading model's compute) and Taxi (5-seed mixture beats every published model at 0.41× S2P2's
+  compute), 5 seeds, sealed test ([dossier](../experiments/B1_EASYTPP.md)).
+- **Remaining event datasets:** StackOverflow is ahead only at higher compute; Amazon and Retweet are in development.
+- **Second domain:** irregular clinical/sensor series (B2) has started.
+- **FAS v2:** the sealed setting is selected; development is in progress.
+- **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
+
 ## 1. What we have, and what would change the investment decision
 
 | Investor question | Present evidence | Next decision-changing artifact |
