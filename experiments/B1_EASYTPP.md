@@ -91,3 +91,8 @@ peaks; neither has addressed per-mark memory.
 ahead on Taxi and Taobao (time and mark), behind on Amazon time (≈0.06 after r4) and StackOverflow time (≈0.03),
 near level on Retweet. Next: finish r4 and Retweet v3; per-dataset small grid as the references did; then one TEST
 scoring of each selected configuration with 5 seeds; measure inference work.
+| 6 Oct | r4 | wider state (d64, 32 modes) with 16 clocks; StackOverflow 16 clocks | Amazon d64 0.661 (vs 0.720 at d32); StackOverflow 16 clocks −2.178, d64 −2.188 (vs −2.171) | wider states overfit these small datasets; capacity is not the limit |
+| 6 Oct | g1–g3 | long training with decay 0.1 / 1.0 / asymmetric private ×10 | best DEV all at early epochs (0.478, 0.460, g3 0.29 by epoch 133 and falling) | on these noisy event datasets long decayed training does not recover past early selection; recipe: v3 + DEV early selection |
+| 6 Oct | r2 Retweet (v3) | defective delayed clocks on Retweet | DEV **−6.089** at epoch 20 and improving (time −5.315, mark −0.774), vs v1 −6.403 | ≈0.26 nats ahead of the best published TEST (NHP −6.348) before the +0.036 offset |
+| 6 Oct | final Taxi | TEST protocol queued: v3, 8 delayed clocks, dropout 0.3; 5 seeds | pending | Taxi verdict |
+| 6 Oct | r5 | dropout 0.3 on Taobao / Amazon (16 clocks) / StackOverflow | pending | last DEV round; then TEST protocol per dataset |

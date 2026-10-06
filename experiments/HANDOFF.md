@@ -1,3 +1,12 @@
+# Repository migrated to Git LFS (6 October 2026, ~16:30 UTC)
+
+`origin` is now `git@github.com:keskival/sleeping_machines_research.git`, with history rewritten by an LFS migration
+(snapshot at the old `ff6f5f4a`). On the AWS host the old local history is kept as branch `backup/pre-lfs-main-20261006`;
+the eight commits made after the snapshot (B3 AWS slot request, THEORY §435, six B1 commits) were cherry-picked onto the
+migrated history and pushed (`f1c8ca13..9ee2964c`); trees verified identical except the 67 LFS-converted files and
+`.gitattributes`; `git lfs fsck` OK. Other hosts: fetch, keep a backup branch, replay any local-only commits onto
+`origin/main` (match by subject), `git lfs pull`, then reset `main`. Never push the old history.
+
 # Owned battles replace benchmark busywork — 6 October 2026, 15:00 UTC (user-directed)
 
 PRODUCT_ORDERS.md now opens with the governing battle list: B1 EasyTPP (lead, AWS, this session owns it), B2
