@@ -1,0 +1,2 @@
+# B1 EasyTPP: B1 TEST protocol (configs selected on DEV): Taxi v5 8 clocks drop 0.3 cell 1 s; Taobao v5 8 clocks drop 0.3 cell 1e-4; Amazon v5 16 clocks drop 0.3 (no grid). 5 seeds each; TEST scored once per seed at best-DEV checkpoint. Decides the three verdicts against S2P2/HHP/IFTPP
+b1_final_amazon_v5_s2 experiments/tpp/race_tpp_v5.py --tag b1_final_amazon_v5_s2 --dataset amazon --seed 2 --n-lognormal 16 --dropout 0.3 --patience 30 --score-test
