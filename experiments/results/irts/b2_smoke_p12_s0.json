@@ -1,0 +1,54 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "tag": "b2_smoke_p12_s0",
+ "dataset": "P12",
+ "split": 0,
+ "args": {
+  "dataset": "P12",
+  "split": 0,
+  "tag": "b2_smoke_p12_s0",
+  "seed": 0,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "J": 4,
+  "dv": 4,
+  "dropout": 0.2,
+  "lr": 0.002,
+  "wd": 0.0001,
+  "batch": 128,
+  "epochs": 2,
+  "patience": 2,
+  "score_test": false
+ },
+ "parameters": 41833,
+ "best_epoch": 1,
+ "epochs_run": 2,
+ "wall_s": 138.01758408546448,
+ "val": {
+  "auroc": 0.8493806752564479,
+  "auprc": 0.5159817552404775
+ },
+ "history": [
+  {
+   "epoch": 0,
+   "train_loss": 0.9683623782536782,
+   "val_auroc": 0.8325841806118521,
+   "val_auprc": 0.46935156872707184,
+   "epoch_s": 69.07934093475342
+  },
+  {
+   "epoch": 1,
+   "train_loss": 0.8447344202443382,
+   "val_auroc": 0.8493806752564479,
+   "val_auprc": 0.5159817552404775,
+   "epoch_s": 68.92989158630371
+  }
+ ],
+ "checkpoint": "experiments/results/irts/b2_smoke_p12_s0.pt",
+ "source_sha256": {
+  "experiments/irts/race_irts.py": "fabe630e1f4992c9e93fdd75023c95ba5e9aa3e3807c7a74347004def2ec71e4",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
