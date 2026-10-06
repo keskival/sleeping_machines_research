@@ -1,0 +1,214 @@
+{
+  "status": "smoke",
+  "battle": "B3",
+  "args": {
+    "data": "fas_v1_20261004",
+    "tag": "work_c1size_u54_20261006T1930Z",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 8,
+    "hidden": 64,
+    "posterior": false,
+    "type_durations": false,
+    "step_classes": 3,
+    "binding_slots": 54,
+    "binding_gated": true,
+    "route_credit": "linear",
+    "compiled": false,
+    "epochs": 1,
+    "lanes": 8,
+    "fit_runs": 16,
+    "max_events": 1100,
+    "train_max_events": 1024,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 4,
+    "max_windows": 1,
+    "segment": 128,
+    "tau_max": 1000.0,
+    "no_test": true,
+    "trace_windows": 1
+  },
+  "parameters": 339364,
+  "readout_parameters": 23476,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll_time_units": 8.11675873483305,
+      "val_clean_nll": 8.584768856115678,
+      "val_auroc": {
+        "32": {
+          "all": 0.4375,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.25
+        },
+        "64": {
+          "all": 0.5,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.375
+        },
+        "128": {
+          "all": 0.6875,
+          "wear_and_tear": 0.875,
+          "retry_delay": 0.5
+        },
+        "256": {
+          "all": 0.625,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.625
+        },
+        "512": {
+          "all": 0.5,
+          "wear_and_tear": 0.625,
+          "retry_delay": 0.375
+        },
+        "1024": {
+          "all": 0.4375,
+          "wear_and_tear": 0.875,
+          "retry_delay": 0.0
+        },
+        "rules": {
+          "type": {
+            "32": {
+              "all": 0.375,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.125
+            },
+            "64": {
+              "all": 0.5,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.25
+            },
+            "128": {
+              "all": 0.5,
+              "wear_and_tear": 0.875,
+              "retry_delay": 0.125
+            },
+            "256": {
+              "all": 0.375,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.25
+            },
+            "512": {
+              "all": 0.4375,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.25
+            },
+            "1024": {
+              "all": 0.375,
+              "wear_and_tear": 0.75,
+              "retry_delay": 0.0
+            }
+          },
+          "gap": {
+            "32": {
+              "all": 0.4375,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.25
+            },
+            "64": {
+              "all": 0.4375,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.375
+            },
+            "128": {
+              "all": 0.6875,
+              "wear_and_tear": 0.875,
+              "retry_delay": 0.5
+            },
+            "256": {
+              "all": 0.6875,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.75
+            },
+            "512": {
+              "all": 0.5,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.375
+            },
+            "1024": {
+              "all": 0.4375,
+              "wear_and_tear": 0.875,
+              "retry_delay": 0.0
+            }
+          },
+          "gap_window32_max": {
+            "32": {
+              "all": 0.4375,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.25
+            },
+            "64": {
+              "all": 0.375,
+              "wear_and_tear": 0.625,
+              "retry_delay": 0.125
+            },
+            "128": {
+              "all": 0.75,
+              "wear_and_tear": 1.0,
+              "retry_delay": 0.5
+            },
+            "256": {
+              "all": 0.5625,
+              "wear_and_tear": 0.5,
+              "retry_delay": 0.625
+            },
+            "512": {
+              "all": 0.25,
+              "wear_and_tear": 0.25,
+              "retry_delay": 0.25
+            },
+            "1024": {
+              "all": 0.6875,
+              "wear_and_tear": 1.0,
+              "retry_delay": 0.375
+            }
+          }
+        }
+      },
+      "val_clean_occupancy": {
+        "binding_or_top_layer_slots_written_per_run": [
+          54.0
+        ],
+        "pool": 54
+      },
+      "epoch_s": 54.94032926898217
+    }
+  ],
+  "selected_epoch": 1,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": null,
+  "test_auroc": "not scored (development run, --no-test)",
+  "selected_weights": "experiments/results/fas/checkpoints/work_c1size_u54_20261006T1930Z_selected.pt",
+  "per_run_scores": {
+    "path": "experiments/results/fas/work_c1size_u54_20261006T1930Z_scores.npz",
+    "sha256": "55dd719d77fa36f1fde4e849bde841350f3bdf18541e769552351265675175a0"
+  },
+  "work": {
+    "fitting_events": 1024,
+    "traced_fitting_events": 1024,
+    "fit_arithmetic_flops_per_event": 6102713.4521484375,
+    "fit_special_function_evaluations_per_event": 44966.361328125,
+    "whole_fit_arithmetic_flops_estimate": 6249178575.0,
+    "inference_arithmetic_flops_per_event": 2034756.56267672,
+    "inference_special_function_evaluations_per_event": 22491.088595664467,
+    "sparse_inference_arithmetic_flops_per_event": 1501962.029217719,
+    "sparse_inference_special_function_evaluations_per_event": 15803.088595664467,
+    "scope": "operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including backward and optimizer, extrapolated per event; inference traced on 4 validation runs (padded events included), dense (as trained) and sparse (winner-only deep layers with cached reads; identical outputs); arithmetic and special functions counted separately"
+  },
+  "data_manifest_sha256": "7f1e4da56ad97c6a1209dd8243b74e9fc3f0a3bd68e899b472a9ef95d836adf2",
+  "source_sha256": {
+    "experiments/fas/native_race_readout.py": "08ee287651c8e71cf1212d032ba7a65c619aa1f1159195b8df90ac490b5bd0b8",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+    "sleeping_machines/race_readout.py": "bf6eebea2946657bdd38540c6ac9d2d453514eb2fcf428c6ef7a5f11f9e85554",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.41",
+    "torch": "2.14.1+cpu",
+    "threads": 1
+  },
+  "wall_s": 297.68591029098025
+}

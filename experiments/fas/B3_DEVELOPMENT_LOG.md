@@ -152,3 +152,18 @@ oracle's .821.
   L particles multiply inference work by L (C1: 1.69 MFLOP/event at L = 1). Any L > 1 used for v2 scoring is declared
   before test scoring, and its work is reported at that L. C1's particle evaluation (L = 1, 4, 16) on v2 validation
   sets it.
+- 6 Oct 19:13 UTC: **sparse inference** (winner-only deep layers, exactly cached reads; contracts 16/16) and C1 work
+  re-measured at U = 54 (`work_c1size_u54_20261006T1930Z.json`):
+
+  | C1 work (MFLOP/event) | value |
+  |---|---|
+  | fit (forward + backward + optimizer) | 6.10 |
+  | inference, dense | 2.04 |
+  | inference, sparse | **1.50** |
+
+  The readout now dominates inference: 54 slots × (P·h + h·(M·V + 3M + 1)) ≈ 1.2 MFLOP/event. Next work optimisation:
+  make the per-slot laws change only on writes, with the context entering as a shared additive logit term (O(1) per
+  event), so per-event readout work reduces to the U·M duration CDFs. This changes the context interaction; it is
+  tested as a development configuration, not swapped in silently.
+
+  References (forward, shape estimates, T ≈ 2,100): Transformer d64 / d128 = 1.3 / 3.0; LSTM d64 / d128 = 0.14 / 0.54.
