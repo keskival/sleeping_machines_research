@@ -4080,3 +4080,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K U4 lr.001seed6 completed:** selected7.725794295DEVNLL at step512, initial8.078814937,final7.773004031. Matched data/source/settings except lr/tag; lower-lr quality loss0.011597996NLL against lr.003selected7.714196299. Same524272fitting/2040DEVtargets. Seed7lower-lr and utility/work pending. Source result aws_private_bank_256k_u4_lr0001_s6_20261006T030000Z.aws.json; retain both trajectories, no superiority inferred from slower learning.
+
+
+**AWS256K paired learning-rate fits completed:** Seed6: lr.003 selected7.714196299 at step384; lr.001 selected7.725794295 at step512; lower-rate loss0.011597996NLL. Seed7: lr.003 selected7.731961478 at step384; lr.001 selected7.729918955 at step640; lower-rate win0.002042524NLL. Same262144GPT-2TRAINtokens/two passes524272fit targets,2040DEVtargets; paired data/source/settings match except lr/tag. Both seeds favor lr.003 selected development quality. Retain all four complete trajectories. Selected memory/payload utility and exact complete-work replays are queued; no public-reference or matched-compute claim.
