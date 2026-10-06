@@ -152,3 +152,17 @@ Quality point win: U16 improves0.008962594NLL. Whole-fit work increases3.1698%; 
 Utility gate fails: context vs frozen TRAIN-mean feature control is−0.000505447NLL(U4) and−0.000254631(U16). Addressed-memory erasure changes NLL−0.001491221/−0.000725333; full message erasure changes+0.051540440/+0.059556840. These frozen interventions include metadata/normalization effects. Neither current bank has demonstrated useful addressed memory on this2K exposure. The declared64K scaling planner refuses both; its gate is retained.
 
 Next bounded test: same P24/shared-rule/private-bank/actual uniform-site K4 mechanism at8192TRAIN tokens/two passes,32updates/evaluation every8, then matched selected utility and exact work replay. This tests token exposure and the TRAIN-frequency initialization using the established8K development regime before heavier scaling. It changes no core mechanism and predicts no quality gain. Fit caps derive from measured ordinary throughput916/890targets per second and612296/623036KiBRSS; use180s/1.2GBRSS/5GBVMS/8GiBreserve after rechecking host occupancy and source/data pins. New unique queues/tags are required; this note alone admits no run.
+
+
+## Completed private-bank8K exposure pair — 6 October
+
+Receipt `experiments/results/diagnostics/aws_private_bank_8k_completed_pair_20261006T002600Z.json` binds fits, selection, utility and work inputs. One paired seed6,8192GPT-2TRAINtokens/two passes,16368fitting targets,2040DEVtargets. Both complete-work replays have exact final numerical training state and zero DEV-curve error.
+
+| Bank | Selected DEV NLL | Whole-fit arithmetic GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target | State scalars/lane | Scored keys/token | Selected writes/token |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| U4 |8.274547143|21.017907004|1.284085228|0.409690078|384|16|4|
+| U16 |8.267437864|21.626956732|1.321295011|0.415837466|1536|64|4|
+
+U16 quality point win0.007109279NLL; whole-fit arithmetic+2.8978%,inference+1.5005%; no Pareto win. Entire two-pass fitting work charged; special functions separate and random work unquantified. Context utility now positive0.027648926/0.035558701NLL(U4/U16). Addressed-memory erase−0.000387592/−0.000237985still improves NLL; useful addressed memory is the next measured target. Fullmessage erase+0.038303459/+0.039863149 includes normalization/clock metadata changes. Preserve failed2Kutility evidence alongside this result.
+
+Declared scaling planner passes actual future-credit logs, complete work and context gates. Prepared64K P24/D2/H2,U4/U16,seeds6/7,two passes131056fitting targets,256updates/every64DEV. Measured ordinary throughput/RSS yields U4:415s/917504KiBRSS; U16:424s/983040KiBRSS;5GBVMS/8GiBfloor. This receipt prepares reservations; unique source/data-bound scheduler packets and currenthostcheck must admit execution. No public Transformer score or confirmed capacity advantage claimed.

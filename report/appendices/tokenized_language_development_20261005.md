@@ -244,3 +244,17 @@ Exact actual-driver interruption/resume passed for integrated, sampled-position 
 The public reference target reuses the modded-nanoGPT2025-01-26log:3.2774NLL,695,992,320training presentations,10,485,760reserved validation targets. That protocol/context differs from these development rows. EOS/reset/target and layered attention boundaries are source-audited; historical data hashes are absent and no checkpoint is released by this record. No dense reference is retrained.
 
 Prepared AWS8K comparisons remain unrun here, with AWS admission/results unobserved. Completed local paired8Kfits retained credit16 and narrower tails; the64Kcapacity comparison selected P24, followed by the completed256Kfit. Measured-data visualization and source-bound whole-fit costs appear above. The next language fit tests lower learning rate after repeated second-pass deterioration; fixed-recipe scaling and recipe repair stay separate.
+
+
+## Completed private-bank8K exposure pair — 6 October
+
+Receipt `experiments/results/diagnostics/aws_private_bank_8k_completed_pair_20261006T002600Z.json` binds fits, selection, utility and work inputs. One paired seed6,8192GPT-2TRAINtokens/two passes,16368fitting targets,2040DEVtargets. Both complete-work replays have exact final numerical training state and zero DEV-curve error.
+
+| Bank | Selected DEV NLL | Whole-fit arithmetic GFLOPs | Fitting MFLOPs/target | Inference MFLOPs/target | State scalars/lane | Scored keys/token | Selected writes/token |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| U4 |8.274547143|21.017907004|1.284085228|0.409690078|384|16|4|
+| U16 |8.267437864|21.626956732|1.321295011|0.415837466|1536|64|4|
+
+U16 quality point win0.007109279NLL; whole-fit arithmetic+2.8978%,inference+1.5005%; no Pareto win. Entire two-pass fitting work charged; special functions separate and random work unquantified. Context utility now positive0.027648926/0.035558701NLL(U4/U16). Addressed-memory erase−0.000387592/−0.000237985still improves NLL; useful addressed memory is the next measured target. Fullmessage erase+0.038303459/+0.039863149 includes normalization/clock metadata changes. Preserve failed2Kutility evidence alongside this result.
+
+Declared scaling planner passes actual future-credit logs, complete work and context gates. Prepared64K P24/D2/H2,U4/U16,seeds6/7,two passes131056fitting targets,256updates/every64DEV. Measured ordinary throughput/RSS yields U4:415s/917504KiBRSS; U16:424s/983040KiBRSS;5GBVMS/8GiBfloor. This receipt prepares reservations; unique source/data-bound scheduler packets and currenthostcheck must admit execution. No public Transformer score or confirmed capacity advantage claimed.
