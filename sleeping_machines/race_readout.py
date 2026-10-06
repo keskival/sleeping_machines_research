@@ -228,7 +228,7 @@ class BindingMemory(nn.Module):
 
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
-                    deterministic=False, compiled=False, binding=None):
+                    deterministic=False, compiled=False, binding=None, record=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -236,7 +236,9 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     The state carries the top-layer write times and the previous event's laws, so segments chain exactly.
     binding: a BindingMemory. The readout then reads the binding slots (readout built with heads=1, pool=Ub). Each event
     is written to one binding slot drawn by the posterior race (argmax when deterministic); the first event of a stream
-    takes slot 0. The deep layers keep their learned races (no override)."""
+    takes slot 0. The deep layers keep their learned races (no override).
+    record: optional list; per event it receives dict(slot=written binding slot (n,) or None, hazard=the rescaled
+    interval ΔΛ = -base (n,) or None for a stream's first event), detached, for evaluation diagnostics."""
     from .carried_episodes import initial_state
     step = compiled_routed_step() if compiled else routed_layer_step
     terms = event_terms
@@ -277,9 +279,12 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
         torch.manual_seed(seed)
         for k in range(T):
             now = stamps[:, k]
-            route = None; bslot = None
+            route = None; bslot = None; hazard = None
             if prev is not None:
                 lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps)
+                if record is not None:
+                    tau_now = (t_prev[:, None] - t_ref).clamp_min(0); tau = (now[:, None] - t_ref).clamp_min(0)
+                    hazard = -(log_surv(prev, tau, readout.eps) - log_surv(prev, tau_now, readout.eps)).sum(-1).detach()
                 ll_tot.append(lt); ll_time.append(lti); valid.append(torch.ones(n, dtype=torch.bool))
                 if binding is not None:      # exponential race over log responsibilities = a posterior sample
                     noise_b = torch.ones(n, Ub, dtype=torch.float64) if deterministic else torch.empty(n, Ub, dtype=torch.float64).exponential_()
@@ -319,9 +324,13 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                 if bslot is None:
                     bslot = torch.zeros(n, dtype=torch.long)
                 bmem, t_ref, bseen = bwrite(bmem, t_ref, bseen, bslot, x, now)
+                if record is not None:
+                    record.append(dict(slot=bslot.detach(), hazard=hazard))
                 t_ref = torch.where(~bseen, now[:, None], t_ref)        # never-written slots: births timed from now
                 prev = read(bmem[:, None], x); t_prev = now
                 continue
+            if record is not None:
+                record.append(dict(slot=None, hazard=hazard))
             unseen = ~seen[D - 1].reshape(n, H * U)                  # never-written slots: births timed from now
             t_ref = torch.where(unseen, now[:, None], t_ref)
             prev = read(mem[D - 1], x); t_prev = now

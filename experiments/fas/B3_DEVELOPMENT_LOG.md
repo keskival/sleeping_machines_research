@@ -43,3 +43,10 @@ oracle's .821.
 
 - 6 Oct 17:10 UTC: plan declared. The v2 data (Stage 2) is queued behind the amended calibration grid. Training
   waits for a curie window or an AWS gym slot.
+- 6 Oct 17:20 UTC: error analysis ready (`readout_diagnostics.py`, evaluation only, validation identities used only for
+  diagnosis). It reports binding purity α (the α of §434.2), item concentration and the time-rescaling fit (§435.3:
+  KS of rescaled intervals, tie fraction), plus AUROC split by binding purity. It is queued right after C1 and its
+  particle evaluation.
+  - Data note: over a whole run, faulty samples carry ~7× more plant-clock ticks, because the faulty line runs far
+    longer and the single clock runs to the last event. Process-event counts are equal. Within a prefix this is
+    legitimate elapsed-time evidence, already available to the `elapsed` and `tick_count` references.
