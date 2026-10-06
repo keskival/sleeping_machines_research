@@ -21,12 +21,20 @@ def member_terms(mod, r, seqs):
     gaps = np.concatenate([np.diff(t) for t, _ in train]); pos = gaps[gaps > 0]
     qs = np.log(np.quantile(pos, np.linspace(0.1, 0.9, a['n_lognormal']))).tolist()
     kw = {'floor_cell': a['floor_cell']} if 'floor_cell' in a else {}
+    if a.get('n_window', 0):
+        qq = np.quantile(pos, np.linspace(0.02, 0.98, a['n_window'] + 1))
+        kw.update(n_window=a['n_window'], window_edges=(qq[:-1].tolist(), qq[1:].tolist()))
+    if a.get('state_modes', 0):
+        kw.update(state_modes=a['state_modes'])
     m = mod.RaceTPP(r['K'], a['d'], a['modes'], a['layers'], a['n_exp'], a['n_lognormal'], a['dv'], 0.0, r['scale'],
                     qs, **kw)
     m.load_state_dict(torch.load(ROOT / r['checkpoint'])); m.eval()
     times, totals = [], []
     with torch.no_grad():
         for t, mk, mask in mod.batches(seqs, 64, False, random.Random(0)):
+            if hasattr(m, 'event_terms'):
+                lt, lk, _ = m.event_terms(t, mk, mask); v = mask[:, 1:]
+                times.append(lt[v]); totals.append(lk[v]); continue
             h, slots = m.encode(t, mk, mask)
             params = m.clocks(h[:, :-1], slots[:, :-1])
             tau = (t[:, 1:] - t[:, :-1]).clamp_min(0)
