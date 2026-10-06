@@ -4092,3 +4092,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS timing diagnosis derived:** metadata erasure sets selected-unit age to zero via seen=false, disabling decay and rotation together; at free_bias=0 immediate scores have no direct seen term, but later refreshed keys/routes can change. Token position increments1 versus race delays0.001–0.011/layer. Theory private-bank note records separate seen/arrival/decay/rotation probes and intact-kernel parity requirements before any redesign. No optimal time-scale or retrained gain claimed; frozen live sources unchanged.
+
+
+**AWS timing isolation hook prepared:** aws_memory_time_intervention.py wraps the selected-unit call only: no_decay zeroes supplied decay rates, no_rotation zeroes supplied frequencies, zero_age zeroes supplied seen mask. It preserves parameter storage, race clocks, transport and all other arguments; restores the hook on exceptions. Stdlib sentinel argument-isolation/invalid-mode/restoration checks pass. Numerical unit equivalence, integrated intact parity and selected DEV scoring still require a unique guarded queue; no measured benefit or numerical pass claimed. Existing 256K work replay remains live and unchanged.
