@@ -1,3 +1,13 @@
+# Independent 1M confirmation follow-through queued — 6 October 2026
+
+P24 seed7 PID116795 verified live (~478MiBRSS). New tmux
+curie_original_1m_p24_s7_utility_admission_20261006_v1 waits entire fit session,
+requires completed2,097,136targets and unchanged streamed-mean contract source,
+then unique one-job selectedutility through run_safe1200s/800000KiBRSS/5GBVMS/
+8GiBfloor. Measured P24/P32utilities372/392s justify allowance. Bash syntax pass.
+No concurrent training/diagnostic launched. Numerical result pending. Review
+seed7 quality/utility before4M; retain all completed stage evidence and mechanisms.
+
 # Both 1M utilities complete; independent P24 seed admitted — 6 October 2026
 
 P32 utility exited0 at04:29:01UTC: contextNLL7.263761520, TRAINmean8.208047867,
