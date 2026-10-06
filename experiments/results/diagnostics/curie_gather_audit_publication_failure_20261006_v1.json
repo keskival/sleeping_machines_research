@@ -1,0 +1,12 @@
+{
+  "status": "completed_arithmetic_audit_with_failed_wrapper_publication",
+  "ledger": "experiments/results/diagnostics/curie_gather_tokens_8k_p24_work_20261006_v1.json",
+  "ledger_sha256": "4c9ad413b4b1e914cbb605e81d34cff67505883386cd73661bf5eb5a0ff18ffc",
+  "log": "experiments/queue/logs/curie_gather_tokens_8k_p24_work_20261006_v1.log",
+  "log_sha256": "582a8d36025711e66e83e53adddbedd2b2ef31e58a94509d914fe85d9c9b4183",
+  "loaded_wrapper_git_revision": "f9a01659",
+  "loaded_wrapper_sha256": "e66f19119ee6b3b6b1147c6dcec28a05f1a16ae48c9529342b3613238466cac6",
+  "runner_exit_code": 1,
+  "reason": "Audit saved complete own-parent-parity ledger before old loaded wrapper reparsed --output from mutated sys.argv. Fix committed while process was already loaded did not affect running code.",
+  "scope": "Preserve original ledger and exit-1 history. Wrapper execution_override/hash augmentation was not published. Actual arithmetic audit and selected inference passed; no rerun or fabricated exit-0."
+}

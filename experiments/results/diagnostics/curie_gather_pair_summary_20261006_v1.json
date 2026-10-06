@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "execution": "control",
+      "selected_dev_nll": 8.277776979932598,
+      "fit_targets": 16368,
+      "inference_targets": 2040,
+      "whole_fit_gflops": 21.0312271,
+      "fit_mflops_per_target": 1.2848990163734115,
+      "inference_mflops_per_target": 0.40969007794117646,
+      "fit_wall_s": 33.09726746805245,
+      "total_wall_s": 38.344026706996374
+    },
+    {
+      "execution": "gather",
+      "selected_dev_nll": 8.277663047640932,
+      "fit_targets": 16368,
+      "inference_targets": 2040,
+      "whole_fit_gflops": 16.416140092,
+      "fit_mflops_per_target": 1.0029411102150538,
+      "inference_mflops_per_target": 0.40969007794117646,
+      "fit_wall_s": 26.66203057311941,
+      "total_wall_s": 31.724705199012533
+    }
+  ],
+  "source_sha256": {
+    "experiments/results/diagnostics/curie_control_tokens_8k_p24_work_20261006_v1.json": "4b9b7dcf20525cda37719d4e7924dcf132ec75cb23ab80b27da15e853902e959",
+    "experiments/results/token_language/curie_control_tokens_8k_b64_c16_p24_s6_20261006_v1.json": "021b611da68ea199fb15daba989cf7ecc5d99d4409c8cb2c06c3646bb5705bf1",
+    "experiments/results/diagnostics/curie_gather_tokens_8k_p24_work_20261006_v1.json": "4c9ad413b4b1e914cbb605e81d34cff67505883386cd73661bf5eb5a0ff18ffc",
+    "experiments/results/token_language/curie_gather_tokens_8k_b64_c16_p24_s6_20261006_v1.json": "474b0fbe8526979a59d031210f1883d8b50ce27049db8eca12bc1f159c470732"
+  },
+  "between_execution_curve_max_error": 0.01046669155943647,
+  "fitting_arithmetic_reduction_fraction": 0.2194397400615773,
+  "fitting_wall_reduction_fraction": 0.19443408435891973,
+  "scope": "One paired seed6 8K proper-token pilot. Each full audit replays its own parent. Complete fitting arithmetic boundary excludes initialization/evaluation/serialization; special functions separate and random work unquantified. Inference includes scorer reductions. Wall is one sequential pair, not repeated benchmark. Different later curves; no quality supremacy, physical traffic or energy claim."
+}

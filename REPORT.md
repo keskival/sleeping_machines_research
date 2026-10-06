@@ -4581,3 +4581,25 @@ nonzero key-credit and actual alternative-write risk contracts pass. Fixed
 numeric/categorical/Boolean predicates feed integrated temporal learning; this
 is not learned threshold discovery or a real tabular/tree benchmark win.
 Next tabular comparison uses real mixed-type data and tree references.
+
+## Completed gathered-interface arithmetic — 6 October 2026
+
+| 8K/P24 execution | Whole-fit GFLOPs | Fit MFLOPs/target | Inference MFLOPs/target |
+| --- | ---: | ---: | ---: |
+| Original | 21.031227 | 1.284899 | 0.409690 |
+| Gathered | 16.416140 | 1.002941 | 0.409690 |
+
+**21.94% less fitting arithmetic** in the completed seed6 paired pilot.
+Both audits reproduce their own completed parent curves exactly;32optimizer
+updates/16,368fitting targets,2,040selected-inference targets, full formula
+coverage. Fitting includes factual/alternative continuation, backward, clipping,
+optimizer and in-step diagnostics; excludes initialization/evaluation/serialization.
+Special functions separate, random work unquantified. Inference includes scorer
+reductions. Selected quality8.277777/8.277663; between-execution trajectories differ.
+
+Gathered runner exited1 after the audit saved its complete ledger: the already
+loaded old wrapper tried to recover --output from mutated arguments during
+metadata publication. Original ledger/log and separate failure receipt preserved;
+no exit-0 invented. The64K admission gate verified completed numerical/arithmetic
+evidence and started the unique gathered64K fit at00:50:26UTC. Larger quality
+and work cells remain pending; this pilot is an implementation efficiency result.
