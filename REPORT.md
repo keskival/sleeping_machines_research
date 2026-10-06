@@ -4731,3 +4731,6 @@ P32 selected-checkpoint utility completed with intact context NLL7.263762 versus
 ### Independent 1M-token confirmation — 6 October 2026
 
 P24 selected DEV NLL is **7.251503 / 7.263557** across seeds6/7, mean **7.257530**. Both completed two passes/2,097,136 fitting targets with the same source,data,recipe and four-checkpoint selection opportunity;2,040DEV targets. Seed6 selects step2,048;seed7 selects finalstep4,096 after recovering from the step3,072 loss rise. Seed7 total wall time4,386.008 seconds,guarded exit0. Its selected-checkpoint utility diagnostic is running. All fitting targets remain charged irrespective of selected checkpoint; complete larger fitting arithmetic is pending.
+
+
+Independent P24/1M seed7 utility completed: **context gain0.995919**, memory-state erasure delta**+0.017380**, full-message-state erasure**+0.475144**, both**+0.443788 NLL**. Matched RNG and partition contracts pass on2,040DEV targets. Seed6 also has positive context and memory erasure effects; this replicates useful history under the frozen interventions. Full-message erasure includes timing,presence and normalization changes.

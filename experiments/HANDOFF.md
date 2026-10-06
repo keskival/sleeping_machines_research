@@ -1,3 +1,29 @@
+# Replicated 1M utility; bounded longer-credit comparison — 6 October 2026
+
+Seed7 selectedutility exited0 at05:50:44: contextgain0.995918751,
+memoryerase+0.017380219,fullmessageerase+0.475143590,botherase+0.443787700.
+ContextNLL7.263556957,TRAINmean8.259475708;1048568TRAINfeatures/2040DEV,
+matched RNG/partition pass. Seed6memory+0.010388255 and context+0.942828178;
+positivehistoryutility replicated, full-message intervention bundles timing/
+presence/norm. Preserve qualitymean7.257530302; no public/iso-FLOP claim.
+
+Next uniquequeue/tmux curie_credit64_tokens_64k_p24_s6_20261006_v1 tests
+credit64 versus savedP24credit16 at fixed optimizerbatch64,data,two passes,
+256updates/fourDEVchecks/seed6/lr.003. Numericalcredit/RNG/resumecontracts
+already completed; sourcepins checked, originalkernel unchanged. Theory note
+TOKEN_FIXED_BATCH_HORIZON_20261005 read. Failure addressed: small measured
+addressedmemory effect, with16-position gradient/alternativeutility boundary.
+Longercredit restores paths within64 while retaining numericmemory,races,
+keys/values,sparsewrites and actualalternativewrite teacher. Not constant FLOPs:
+charge changed graph/replay cost before promotion. Prior8Kcredit64 is diagnostic
+with mixed horizon quality; new64K test targets the learnedP24/data regime.
+
+No other training process/freehostlock and10835MiBavailable checked before
+run_safe admission. Caps1200s/1200000KiBRSS/5GBVMS/8GiBfloor,oneCPUthread,
+based completed64Koriginal349s and bounded8Kcredit64 workload. RevalidatePID;
+selectedutility and fullwork follow a completed fit, no quality prediction.
+4M remainsreserved, PDF completedpacketrefresh pending.
+
 # Independent 1M seed added to measured visualization — 6 October 2026
 
 Collector v7 verifies nine completed original-stage cells, including distinct
