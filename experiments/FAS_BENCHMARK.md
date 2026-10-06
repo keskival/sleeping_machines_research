@@ -322,3 +322,15 @@ estimates for dense references), and inference work up to the decision at N.
   - With true-track parameters: 0.96 and 0.62.
 
   Theory: note 155 §432 (interleaving symmetry; a superposition of timed processes is a race).
+- 6 Oct (curie FAS session, B3 Stage 0, continued): **driver contracts**.
+  - `native.py` and `dense.py` now write `<tag>_scores.npz` with per-run scores for every rule and prefix. Validation
+    scores come from the selected epoch; test scores only when test is scored. These support the protocol's paired
+    bootstrap.
+  - `dense.py` also saves its selected weights under `checkpoints/`.
+  - `experiments/fas/causality_probe.py` is the suffix-mutation probe. Untrained-architecture results
+    (`results/diagnostics/causality_untrained_*_20261006T1700Z.json`, 4 runs, cut 200) pass exactly, with zero
+    difference for N ≤ cut: LSTM, Transformer, Mamba, S5, native race, carried native, and carried native with
+    expected reception.
+  - LRU differs by 4.4e-6 for N ≤ cut, against 8.6 for N > cut. This is float32 rounding in its causal FFT convolution,
+    not a leak. It passes at tol 1e-5; both records are kept.
+  - Trained models are probed from their result JSON with the same script.

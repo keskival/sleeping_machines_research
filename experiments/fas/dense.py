@@ -237,9 +237,12 @@ def main():
         print(json.dumps(curve[-1]), flush=True)
         if val_nll < best[0]:
             best = (val_nll, epoch, {k: v.detach().clone() for k, v in model.state_dict().items()})
+            best_val_scores = (sc_c, sc_f)
         if w >= total:
             break
     model.load_state_dict(best[2])
+    weights = Path(OUT) / 'checkpoints' / f'{a.tag}_selected.pt'
+    weights.parent.mkdir(parents=True, exist_ok=True); torch.save(model.state_dict(), weights)
     test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
     if a.max_windows:
         test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
@@ -254,6 +257,16 @@ def main():
                                  ('experiments/fas/dense.py', 'experiments/fas/native.py', 'experiments/fas/baselines.py')},
                   hardware=dict(platform=platform.platform(), torch=torch.__version__, threads=a.threads),
                   wall_s=time.perf_counter() - started)
+    # per-run scores (FAS v2 protocol Stage 0: paired bootstrap); validation from the selected epoch
+    per_run = dict(prefixes=np.array(PREFIXES), rules=np.array(RULES), val_fault_kind=np.asarray(val_k),
+                   test_fault_kind=np.asarray(test_k))
+    for split, (c, f) in (('val', best_val_scores), ('test', (sc_c, sc_f))):
+        for r in RULES:
+            per_run[f'{split}_clean_{r}'] = c[r]; per_run[f'{split}_faulty_{r}'] = f[r]
+    score_path = out.with_name(f'{a.tag}_scores.npz')
+    np.savez_compressed(score_path, **per_run)
+    result['per_run_scores'] = dict(path=score_path.name, sha256=hashlib.sha256(score_path.read_bytes()).hexdigest())
+    result['selected_weights'] = dict(path=str(Path('checkpoints') / weights.name), sha256=hashlib.sha256(weights.read_bytes()).hexdigest())
     out.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(dict(model=a.model, params=params, test_auroc=result['test_auroc'], selected_epoch=best[1])), flush=True)
 

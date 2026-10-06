@@ -1,0 +1,22 @@
+{
+ "status": "completed",
+ "kind": "dense",
+ "model_args": {
+  "model": "mamba",
+  "d": 32,
+  "layers": 1
+ },
+ "untrained": true,
+ "runs": 4,
+ "cut": 200,
+ "prefixes_checked": [
+  32,
+  64,
+  128
+ ],
+ "max_abs_diff_prefix_le_cut": 0.0,
+ "max_abs_diff_prefix_gt_cut": 4.1582853989862,
+ "passed": true,
+ "source": "untrained",
+ "data": "fas_v1_20261004"
+}

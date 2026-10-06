@@ -1,0 +1,23 @@
+{
+ "status": "completed",
+ "kind": "native",
+ "model_args": {
+  "payload": 16,
+  "depth": 2,
+  "heads": 2,
+  "pool": 4
+ },
+ "untrained": true,
+ "runs": 4,
+ "cut": 200,
+ "prefixes_checked": [
+  32,
+  64,
+  128
+ ],
+ "max_abs_diff_prefix_le_cut": 0.0,
+ "max_abs_diff_prefix_gt_cut": 0.4682305822170125,
+ "passed": true,
+ "source": "untrained",
+ "data": "fas_v1_20261004"
+}
