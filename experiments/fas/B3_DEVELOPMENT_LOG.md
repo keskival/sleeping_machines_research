@@ -82,3 +82,9 @@ oracle's .821.
   | Transformer d64 / d128 | 110K / 425K | 1.3 / 3.0 |
 
   The Transformer's per-event cost grows with log length; ours is constant per event.
+- 6 Oct 18:25 UTC: no-context ablation (§436.3), hidden 32: argmax α .908 (.88 sampled), validation NLL 1.83, against
+  α .81 / NLL 1.94 with context at the same size. This supports the shortcut hypothesis: merged-stream context lets
+  slots predict without binding.
+
+  The toy processes are independent; FAS processes interact through shared stations, so C1 keeps the context at hidden
+  64. If C1's diagnostics show low binding purity, a no-context or context-gated readout is the first C5–C8 iteration.

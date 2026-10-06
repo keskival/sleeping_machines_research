@@ -861,3 +861,19 @@ Contracts: tests/test_race_readout.py (12 pass: chaining, posterior writes, grad
 - At M = 3 the cost is 120 CDFs per event. With a compiled binding write, throughput is 818 events/s at 16 lanes
   (U_b = 40, p32 d4 pool 8); R2 at pool 8 does 1,242.
 - Contracts: density normalisation, binding episode, compiled = eager (14 pass).
+
+**436.2–436.3 (small integrated fit, `experiments/fas/binding_toy.py`; 3 interleaved 8-step processes; Bayes-greedy
+binding ceiling .911).**
+
+| readout variant (600–1,200 steps, gated writes) | argmax α | validation NLL |
+|---|---|---|
+| hidden 32, additive writes (300 steps) | .71 | 1.97 |
+| hidden 32, gated writes | .80–.84 | 1.77 |
+| hidden 32, no merged context | .908 | 1.83 |
+| hidden 64, with context | **.934** | **1.73** |
+
+- *Gated writes* (§436.2) let a slot hold its process's latest state.
+- *The context shortcut* (§436.3): with merged-stream context, slots can predict the merged next-event law without
+  binding. Removing the context forces binding at fixed readout capacity; more capacity reaches binding with the
+  context kept.
+- Learned binding can exceed the greedy-oracle ceiling: the readout uses information the greedy assignment ignores.
