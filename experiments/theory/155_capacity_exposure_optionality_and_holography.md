@@ -975,3 +975,60 @@ filtering objective.
 Next T1 test: replace the learned races of the deep layers by posterior-style routing where a predictive consequence
 exists (class (a) of §437.1). For the deep layers, that means a per-slot predictive head scoring the slot's proposal
 against the next observed event.
+
+## 438. Predictive routing: every layer as a superposition race model of its input stream (proposal, 6 October)
+
+**Failure addressed.**
+- The deep layers' routes are learned by first-order credit. That credit is nearly blind (§429: corr −0.08/0.29),
+  chaotic under long memory (§431), and fails outright on binding (§437.2: α ≤ chance where posterior routing
+  reaches .93).
+
+**Theory.** Layer d receives a stream of event representations x^d_k with times t_k. Treat it like the observed log of
+§432:
+- each slot u of the layer keeps a predictive law g_u(x, τ) for the next input it expects (type-like features, own
+  duration since its last write);
+- an arriving input is routed by the posterior race over r_u ∝ q_u g_u(x^d_k, τ_u) / S_u(τ_u);
+- the layer's local objective is the superposition log-likelihood of its input stream (Theorem 434.1: an exact
+  filtering bound for that layer's own latent routing).
+
+The route is class (a) of §437.1: its consequence, how well the chosen slot predicted the input, is observed when the
+route is taken. No learned route credit is needed.
+
+The layer's output is unchanged: the winning slot's proposal (memory mixed with the input), delivered with the race
+delay.
+
+**What it means.**
+- Each layer partitions its input events into predictable streams at its own level of abstraction: processes at the
+  binding layer, sub-processes or event roles below.
+- Training gets layer-local objectives (one predictive likelihood per layer) beside the end-to-end task loss. This
+  is predictive-coding-style local learning, with a proof that each local objective bounds that layer's marginal
+  likelihood.
+
+**Mechanisms.**
+- *Retained:* temporal races (now posterior-scored), delays as computation, sparse addressed writes (one slot per head
+  per event), persistent state, small messages mixing input with memory, and the race readout.
+- *Replaced:* the query/key race scores of routed layers, by predictive responsibilities. Keys survive as part of each
+  slot's predictive law (its static identity).
+- *Removed:* the linear route credit for those layers. Their routes no longer need it.
+
+**Work.**
+- *Inference:* per layer, U predictive-law evaluations per event (with cached per-slot laws as in §436.3: U duration
+  CDFs plus a feature-likelihood term), replacing U query/key scores of similar size. Winner-only proposals as in
+  sparse inference.
+- *Training:* local likelihood terms add little. The linear-credit backward over all U proposals disappears, so
+  training work moves toward activity-proportional (T2).
+
+**Required comparison before any long run.**
+- *Contracts:* the per-layer density integrates to the event probability; segment chaining is exact; posterior writes
+  go to the most responsible slot.
+- *Integrated fits:*
+  - a toy where two levels of grouping exist (processes made of sub-processes);
+  - then FAS v1 validation, against C2-style learned routing at equal size.
+- *Measures:* binding purity per layer, validation NLL and AUROC, and training events/s.
+
+**Risk.** The feature-likelihood g_u(x) on continuous representations can collapse (every slot predicts the mean). Two
+guards:
+- predict only low-dimensional projections of x;
+- keep the slot keys as fixed random anchors for diversity.
+
+The capacity margin of §436.4 applies per layer.
