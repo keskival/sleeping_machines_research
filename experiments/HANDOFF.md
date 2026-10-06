@@ -4143,3 +4143,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled fit smoke completed:** source/data/settings-matched scale1/1over16,8192TRAIN/two passes16368fit targets/32updates/2040DEV. Selected NLL8.274547143/8.279691569; scale1/16 quality loss0.005144426NLL. Ordinary throughput885.469/874.219targets/s; peak607504/607432KiBRSS. Initial-inclusive selection/target and cold-clock checks pass. This8K trained loss is preserved beside256K frozen intervention gains; it does not predict a larger-data fit. New wrappers execute correctly with measured CPU/RSS. Exact smoke work replay is next before larger admitted fits; no public-reference or matched-compute claim.
+
+
+**AWS scaled smoke full-work audits admitted20261006T040519Z:** idle slot1 unique sequentialaws_private_bank_time_smoke_work_20261006T040519Z scale1/1over16, actual completed fit dependencies and frozen source closure verified.1800s each with1.2GBRSS/5GBVMS/8GiBfloor; cap exceeds measured approximately32min64K replay scaled to1/8targets with ample tracing/evaluation margin. Full model/optimizer/state/cursor/all-RNG equality and complete arithmetic formulas mandatory. Existing 256K audit slot3/dense2 preserved. Accounting and scaled quality remain pending together.
