@@ -1,0 +1,2 @@
+# B1 EasyTPP: v6 adds time since sequence start to event messages (process tempo depends on tenure); StackOverflow (~0.035 behind, time LL) and Amazon (~0.06 behind). Decides whether v6 replaces v5 for these datasets
+b1_r8_so_v6_s0 experiments/tpp/race_tpp_v6.py --tag b1_r8_so_v6_s0 --dataset stackoverflow --seed 0 --n-lognormal 8 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125
