@@ -14,7 +14,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 COORD = ROOT / 'experiments/queue/aws_model_improvement_repair_20261005T161000Z'
-SOURCES = ['experiments/tpp/race_tpp.py']
 
 
 def sha(p):
@@ -28,6 +27,7 @@ def main():
     ap.add_argument('--timeout', type=int, default=7200)
     ap.add_argument('--rss-kb', type=int, default=3000000)
     ap.add_argument('--purpose', required=True, help='the decision this batch of results changes')
+    ap.add_argument('--source', default='experiments/tpp/race_tpp.py', help='pinned driver version')
     a = ap.parse_args()
     stamp = time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())
     jobs = []
@@ -38,10 +38,10 @@ def main():
         q = qdir / f'{tag}.txt'
         if q.exists():
             raise SystemExit(f'queue {q} exists; job names are never reused')
-        q.write_text(f'# B1 EasyTPP: {a.purpose}\n{tag} experiments/tpp/race_tpp.py --tag {tag} {args}\n')
+        q.write_text(f'# B1 EasyTPP: {a.purpose}\n{tag} {a.source} --tag {tag} {args}\n')
         rel = str(q.relative_to(ROOT))
         jobs.append(dict(name=tag, queue=rel, queue_sha256=sha(rel), kind='b1_tpp',
-                         source_sha256={s: sha(s) for s in SOURCES},
+                         source_sha256={a.source: sha(a.source)},
                          result=f'experiments/results/tpp/{tag}.json', timeout_s=a.timeout,
                          rss_kb=a.rss_kb, vms_kb=8000000))
     packet = dict(host='ip-172-31-47-132', battle='B1', purpose=a.purpose,

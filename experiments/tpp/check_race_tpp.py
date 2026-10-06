@@ -4,7 +4,8 @@ import math, sys
 from pathlib import Path
 import torch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from race_tpp import RaceTPP
+import importlib
+RaceTPP = importlib.import_module(sys.argv[1] if len(sys.argv) > 1 else 'race_tpp').RaceTPP
 
 torch.set_default_dtype(torch.float64); torch.manual_seed(1)
 K, scale = 5, 0.3
