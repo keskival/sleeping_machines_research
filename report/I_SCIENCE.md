@@ -157,7 +157,7 @@ Early fault detection from anonymous interleaved event logs; test 2,000 clean an
 | Benchmark | Ours | Reference | Verdict |
 | --- | --- | --- | --- |
 | NeuroBench Mackey-Glass, τ 17, 30 repeats (sMAPE) | 14.84, 57.6 KB | LSTM 13.37 (490 KB), ESN 14.79 | **Loss**; smallest footprint |
-| NeuroBench primate reaching, development session (R²) | 0.724 | tinyRSNN 0.746 on that session | Below; six-session run pending |
+| NeuroBench primate reaching, 5 of 6 official sessions (R²) | 0.619 paired mean | tinyRSNN 0.643, bigRSNN 0.683; leaderboard 0.71 | **Loss**; the 0.71 target is out of reach |
 | Spiking speech, 512 private held-speaker utterances | 79.69% | Published SHD official test: 94–96% (different partition) | Official comparison pending |
 | Online adaptation to a new character stream | 3.191 → 3.096 bpc | — | Adapts during use |
 
