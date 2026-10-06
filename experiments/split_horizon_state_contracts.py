@@ -31,7 +31,7 @@ def main():
    assert torch.equal(reference[0],numeric[0]) and torch.equal(reference[2],numeric[2])
    for key in ('mem','arr','seen'):
     assert all(torch.equal(v,w) for v,w in zip(reference[1][key],s[key]))
-   for key in ('position','ctx_vals','ctx_arr','last_writes','race_winners'):assert torch.equal(reference[1][key],s[key]),key
+   for key in ('position','ctx_vals','ctx_arr','has_ctx','last_writes','race_winners'):assert torch.equal(reference[1][key],s[key]),key
   rows.append(dict(factual=factual,alternative=alternative,initial_memory_gradient_l1=size))
  result=dict(status='completed',rows=rows,numeric_state_parity=True,feature_parity=True,route_rng_parity=True,factual_gradient_contract=True,source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),ROOT/'experiments/split_horizon_token_language_engine.py']},scope='Integrated two-depth state/gradient witness. Alternative utility learning is covered by separate actual-driver contracts; no quality claim.')
  output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)

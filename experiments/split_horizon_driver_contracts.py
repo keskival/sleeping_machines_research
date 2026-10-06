@@ -45,6 +45,7 @@ def main():
   default=run(f'default{horizon}',split,horizon)
   diagonal=run(f'diagonal{horizon}',split,horizon,horizon)
   for field in FIELDS:equal(old[field],default[field]);equal(old[field],diagonal[field])
+  assert len(old['curve'])==len(default['curve'])==len(diagonal['curve'])
   for x,y,z in zip(old['curve'],default['curve'],diagonal['curve']):
    for field in ('step','train_nll','dev_nll','future_write_teacher'):equal(x[field],y[field]);equal(x[field],z[field])
   del old,default,diagonal;gc.collect()
@@ -53,9 +54,11 @@ def main():
   partial=run(label+'_partial',split,factual,alternative,['--stop-after-step','2']);del partial;gc.collect()
   resumed=run(label+'_resumed',split,factual,alternative,['--resume',str(folder/(a.tag+'_'+label+'_partial.pt'))])
   for field in FIELDS:equal(full[field],resumed[field])
+  assert len(full['curve'])==len(resumed['curve'])
   for x,y in zip(full['curve'],resumed['curve']):
    for field in ('step','train_nll','dev_nll','future_write_teacher'):equal(x[field],y[field])
   del full,resumed;gc.collect()
  result=dict(status='completed',records=records,input_sha256=provenance,exact_fields=list(FIELDS),diagonal_parity=True,off_diagonal_resume=True,causal_endpoints=True,importance_weight_contract=True,scope='Tiny actual-driver learning contracts; no benchmark quality claim. Factual gradient-cut and cross-partition feature witnesses are separate required checks.')
+ result['producer_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
  out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 if __name__=='__main__':main()
