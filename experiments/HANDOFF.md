@@ -1,3 +1,15 @@
+# Split-horizon actual-driver contracts queued after audit — 6 October 2026
+
+PID132567 exactcredit64audit revalidatedlive. New contractadmissiontmux waits
+entirefollowthrough, requires256updates/exactcurve/fullformulas, then guarded
+uniqueonejob600s/1.2GBRSS/5GBVMS/8GiBfloor. Runner syntaxpassed; numericalpending.
+Twelve sequential tinyfits insideoneguardedjob: original/default/explicitdiagonal
+atF=A4/16, offdiagonalF4A16/F16A4 full/partial/resumed. Checks exactmodel,AdamW,
+state,all RNGs,cursor,targets,writes,quality/teachertraces,causal scoring endpoints
+and importanceweights. No benchmark claim. Separate inferencepartition/factual
+gradient witness stillrequired before64Koffdiagonal admission. Originalsources
+unchanged; no concurrent training. Queueidentified in filenames.
+
 # Isolated split-horizon implementation prepared — 6 October 2026
 
 New split_horizon_token_language_engine.py clones the original engine, adds
