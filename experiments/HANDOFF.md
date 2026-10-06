@@ -4098,3 +4098,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS timing scorer implemented, not admitted:** aws_private_bank_time_utility.py reuses source/data/checkpoint-bound selected DEV scoring with six modes: intact,no_decay,no_rotation,zero_age,seen_only,arrival_only. Requires selected intact/chunk parity, first-token feature parity, matched route RNG/targets, unchanged parameter version counters, source hashes and zero_age/seen_only score parity; saves checkpoint/raw-fit hashes. Payload/read caches and temporal race/message transport remain unchanged at each intervention entry; subsequent dynamics may differ. Syntax passes; numerical claims await unique guarded scheduler admission. All existing frozen jobs preserved.
+
+
+**AWS timing probe admitted slot1 20261006T034518Z:** idle bounded slot1 receives unique one-job queue aws_private_bank_256k_time_20261006T034518Z, four completed source-bound selected fits, six operator/metadata modes.720s cap scales prior four-mode480s reservation by6/4;1.2GBRSS/5GBVMS/8GiBfloor with26GiB MemAvailable. All source pins/completed dependencies checked. Existing dense slot2 and exact-work slot3 preserved; only three one-thread CPU jobs allowed. Numerical results pending; no altered training or quality claim.
