@@ -906,3 +906,43 @@ model:
 
 The bound tightens monotonically with diminishing returns. The argmax path beats a single sampled particle on this
 trained model, but not 16 or more.
+
+## 437. Races everywhere: from one operation to the whole model and its training (user question, 6 October)
+
+**Diagnosis.** Against Transformers we replaced one operation, attention, by a race. A race is simultaneously:
+- a selection;
+- a posterior sampler (the exponential race draws from the softmax);
+- a clock (the winner's time carries computation);
+- a likelihood with silence (the losers' survival terms).
+
+Every other place where a conventional stack makes a choice or spends compute is still dense. This applies at
+inference (MLP experts, output layer, depth, which inputs to process) and in training (credit through hard routes,
+dense backward over all alternatives).
+
+**Programme.**
+
+*Inference:*
+- I1 race-selected expert banks in place of MLP blocks (capacity beyond activity);
+- I2 competing-risks race readouts, done for FAS (§433); tournament races for large output sets;
+- I3 halting races for adaptive depth (delay encodes confidence; anytime answers);
+- I4 surprise-gated processing (predictable events take a cached state update; full computation is spent on
+  surprising events, so cost scales with information);
+- I5 posterior-routed writes, done (§§434–436).
+
+*Training:*
+- T1 internal routes as latent events learned by filtering inference rather than backpropagation through hard choices.
+  Theorem 434.1 generalises to any route whose consequence is an observed event: posterior routing plus the filtering
+  bound. This is the direct remedy for the measured credit blindness (§429) and route chaos (§431);
+- T2 training work proportional to activity (posterior or k-sampled counterfactual credit instead of all-alternative
+  linear credit);
+- T3 particles in training (measured in evaluation: NLL 1.885 → 1.810 from L = 1 to 64);
+- T4 elastic capacity (recruit slots when the free pool runs low; §436.4: binding needs spare capacity);
+- T5 event-proportional training cost on bursty data (closed-form survival); to be benchmarked explicitly.
+
+**Order.**
+1. T1 on a toy whose hidden route is observable only through outcomes: a two-layer race model trained with
+   posterior-routed internal races against learned races with linear credit. Measure route recovery and NLL.
+2. I4 for FAS inference after C1.
+3. I1 for language (R1 owner).
+
+Each change states the failure it addresses and runs its contracts before any long run (AGENTS.md).
