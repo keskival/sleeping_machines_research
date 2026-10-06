@@ -72,6 +72,18 @@ The race training term charges admitted losing-value credit; it is not winner-on
 
 Conventions for every table in this section: single seed unless a seed count is stated; native fitting work is traced (and extrapolated from traced windows for long fits), dense references use shape estimates; "train compute" counts the complete fit including counterfactual credit and optimizer work. Every number comes from a completed result file; pending cells say pending.
 
+### 4.0 Public benchmark: temporal point processes (EasyTPP)
+
+Marked event streams with continuous times, on the official EasyTPP splits and the per-event log-likelihood protocol of the published state of the art (S2P2, NeurIPS 2025; [B1 dossier](../experiments/B1_EASYTPP.md)). Our model is a race of delayed clocks over persistent temporal memory: after each event, exponential clocks and delayed clocks that may stay silent race, and the first to fire sets the next event's time and mark. The likelihood is exact; losing clocks are credited through the survival term. Clocks may not resolve time below the data's recording resolution. Five seeds; TEST scored once per seed at the best DEV checkpoint.
+
+| Taxi (nats/event, higher is better) | Total | Time | Mark | Parameters | Inference MACs/event |
+| --- | --- | --- | --- | --- | --- |
+| Best published (S2P2) | 0.522 ± 0.004 | 0.733 | −0.211 | 251,850 | 249,856 |
+| **Ours, single model** | **0.5250 ± 0.0010** | 0.733 | **−0.208** | **20,504** | **20,708** |
+| **Ours, 5-seed predictive mixture** | **0.5363** | **0.740** | **−0.204** | 102,520 | 103,540 |
+
+**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. Amazon, Taobao, StackOverflow and Retweet are in their TEST protocols. S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
+
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 
 | Task | Ours | Reference | Verdict |
@@ -185,7 +197,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 
 | Battle | Benchmark | Pass criterion | What it settles |
 | --- | --- | --- | --- |
-| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 3 seeds; measured inference work | Public leaderboard wins on the family's home field |
+| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi won** (§4.0); four datasets in TEST protocol |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | Asynchronous channels, informative missingness and silence on real data |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered | A confirmed event-native analytics win and a benchmark we define |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |
