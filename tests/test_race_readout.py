@@ -218,3 +218,40 @@ def test_binding_compiled_equals_eager():
         a = readout_episode(model, ro, stamps, marks, ids, deterministic=True, binding=bm)
         b = readout_episode(model, ro, stamps, marks, ids, deterministic=True, binding=bm, compiled=True)
     torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)
+
+
+def test_sparse_layer_step_equals_dense_inference():
+    from sleeping_machines.race_readout import slot_reads, sparse_layer_step
+    torch.manual_seed(7)
+    model, _ = _model(); stamps, marks, ids = _data()
+    L = model._stacked(0)[0]; D = model.depth; H, U, P = model.heads, model.pool, model.payload
+    n = stamps.shape[0]
+    x = model.embedding.weight[0][None] + model.content(marks[:, 0])
+    m = torch.randn(n, H, U, P); arr = torch.rand(n, H, U, dtype=torch.float64); seen = torch.rand(n, H, U) > .4
+    arrival = stamps[:, 0] + 1.; active = torch.ones(n, dtype=torch.bool)
+    noise = torch.empty(H, U, dtype=torch.float64).exponential_()
+    mix = model.channel_mix[0]
+    args = (x, arrival, m, arr, seen, active, noise, mix.weight, mix.bias, L['query'], L['key'], L['key_read'],
+            L['clock_bias'], L['control_w'], L['control_b'], L['rate'], L['frequency'], L['input'], L['output'],
+            L['gate_w'], L['gate_b'], L['gain'], model.transport_rate[0], model.transport_frequency[0])
+    with torch.no_grad():
+        dense = routed_layer_step(*args, False)
+        reads = slot_reads(m, L['key'], L['key_read'])
+        sparse = sparse_layer_step(*args, reads)
+    for a, b in zip(dense, sparse[:7]):
+        torch.testing.assert_close(a, b, rtol=1e-5, atol=1e-6)
+    torch.testing.assert_close(sparse[7], slot_reads(sparse[2], L['key'], L['key_read']), rtol=1e-5, atol=1e-6)
+
+
+def test_sparse_episode_equals_dense_with_binding():
+    from sleeping_machines.race_readout import BindingMemory
+    torch.manual_seed(8)
+    model, _ = _model(); stamps, marks, ids = _data()
+    ro = RaceReadout(5, 1, 4, 8, 16, hidden=8, mu0=0., classes=2); bm = BindingMemory(16, 4, 8, gated=True)
+    with torch.no_grad():
+        a = readout_episode(model, ro, stamps, marks, ids, seed=3, binding=bm)
+        b1 = readout_episode(model, ro, stamps[:, :5], marks[:, :5], ids[:, :5], seed=3, binding=bm, sparse=True)
+        b = readout_episode(model, ro, stamps, marks, ids, seed=3, binding=bm, sparse=True)
+    torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)
+    torch.testing.assert_close(a[1], b[1], rtol=1e-5, atol=1e-6)
+    assert 'reads' in b1[3]

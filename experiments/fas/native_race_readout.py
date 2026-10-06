@@ -206,10 +206,12 @@ def main():
     infer = None
     if a.trace_windows:                 # measured inference work: eager, no grad, 4 validation runs
         st_i, mk_i, id_i, len_i = tensors(val_c, list(range(min(4, len(val_c)))))
-        def infer_step():
+        def infer_step(sparse):
             with torch.no_grad():
-                readout_episode(model, readout, st_i, mk_i, id_i, seed=314159, posterior=a.posterior, binding=binding)
-        infer = capture(infer_step); infer_events = st_i.shape[0] * st_i.shape[1]
+                readout_episode(model, readout, st_i, mk_i, id_i, seed=314159, posterior=a.posterior, binding=binding,
+                                sparse=sparse)
+        infer = capture(lambda: infer_step(False)); infer_sparse = capture(lambda: infer_step(True))
+        infer_events = st_i.shape[0] * st_i.shape[1]
     readout_params = sum(q.numel() for q in readout.parameters()) + (sum(q.numel() for q in binding.parameters()) if binding else 0)
     result = dict(status='smoke' if a.max_windows else 'completed', battle='B3', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()) + readout_params, readout_parameters=readout_params,
@@ -224,9 +226,12 @@ def main():
                             whole_fit_arithmetic_flops_estimate=ledger['arithmetic_flops'] / traced_events * events_seen if ledger else None,
                             inference_arithmetic_flops_per_event=infer['arithmetic_flops'] / infer_events if infer else None,
                             inference_special_function_evaluations_per_event=infer['special_function_evaluations'] / infer_events if infer else None,
+                            sparse_inference_arithmetic_flops_per_event=infer_sparse['arithmetic_flops'] / infer_events if infer else None,
+                            sparse_inference_special_function_evaluations_per_event=infer_sparse['special_function_evaluations'] / infer_events if infer else None,
                             scope='operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including '
                                   'backward and optimizer, extrapolated per event; inference traced on 4 validation runs '
-                                  '(padded events included); arithmetic and special functions counted separately'),
+                                  '(padded events included), dense (as trained) and sparse (winner-only deep layers with cached '
+                                  'reads; identical outputs); arithmetic and special functions counted separately'),
                   data_manifest_sha256=hashlib.sha256((d / 'manifest.json').read_bytes()).hexdigest(),
                   source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in
                                  ('experiments/fas/native_race_readout.py', 'experiments/fas/native.py',

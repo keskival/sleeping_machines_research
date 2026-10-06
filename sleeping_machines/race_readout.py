@@ -194,6 +194,64 @@ def routed_layer_step(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b,
     return x_out, arrival_out, new_mem, new_arr, new_seen, values, arrivals
 
 
+def slot_reads(m, key, key_read):
+    """read vectors key_s + key_read_s m_s for all slots (n, H, U, P): the cache sparse_layer_step keeps exact."""
+    H, U, P = m.shape[1], m.shape[2], m.shape[3]
+    return key.view(H, U, P) + torch.einsum('hupq,lhuq->lhup', key_read.view(H, U, P, P), m)
+
+
+@torch.no_grad()
+def sparse_layer_step(x, arrival, m, arr_d, seen_d, active, noise, mix_w, mix_b, query, key, key_read, clock_bias,
+                      control_w, control_b, rate, frequency, input_w, output_w, gate_w, gate_b, gain, transport_rate,
+                      transport_frequency, reads, route_scores=None):
+    """Inference-only equivalent of routed_layer_step (THEORY §436 work note).
+    - Scores use the cached reads (n, H, U, P). A slot's read changes only when the slot is written.
+    - Controls, decay, write, output and gate are computed for the winning slot of each head only.
+    - The winner's read is refreshed after its write.
+    Returns routed_layer_step's seven outputs plus the updated reads. Per head and event: U*P (scores) plus ~4 P^2
+    (winner) multiply-adds, instead of ~5 U P^2."""
+    n = x.shape[0]
+    H, U, P = m.shape[1], m.shape[2], m.shape[3]
+    mixed = F.linear(x, mix_w, mix_b)
+    all_features = F.layer_norm(mixed, (H * P,))
+    incoming = mixed.view(n, H, P)
+    q = torch.einsum('hpd,ld->lhp', query, all_features)
+    scores = ((q[:, :, None, :] * reads).sum(-1) / math.sqrt(P) + clock_bias.view(H, U)).clamp(-12, 12)
+    if route_scores is not None:
+        scores = route_scores.clamp(-12, 12)
+    s64 = scores.to(torch.float64)
+    times = noise[None] / s64.exp()
+    first, winner = times.min(-1)                                              # (n, H)
+    delay = .001 + .010 * first / (1 + first)
+    hu = torch.arange(H)[None] * U + winner                                    # flat slot index (n, H)
+    pick = lambda t: t.view(H * U, *t.shape[1:])[hu] if t.dim() > 1 else t.view(H * U)[hu]
+    m_w = torch.gather(m, 2, winner[:, :, None, None].expand(n, H, 1, P)).squeeze(2)        # (n, H, P)
+    prev = torch.where(torch.gather(seen_d, 2, winner[..., None]).squeeze(2),
+                       torch.gather(arr_d, 2, winner[..., None]).squeeze(2), arrival[:, None])
+    xn = F.layer_norm(incoming, (P,))
+    controls = torch.einsum('lhcp,lhp->lhc', pick(control_w.view(H * U, 2, P)), xn) + pick(control_b.view(H * U, 2))
+    forget = F.softplus(controls[..., 0]) / math.log(2)
+    write = 2 * torch.sigmoid(controls[..., 1])
+    age = (arrival[:, None] - prev).clamp_min(0)
+    decay = torch.exp(-age.to(m.dtype)[..., None] * pick(rate.view(H * U, P // 2)) * forget[..., None]).repeat_interleave(2, -1)
+    m_new = _rotate(m_w * decay, age[..., None] * pick(frequency.view(H * U, P // 2)))
+    m_new = m_new + write[..., None] * torch.einsum('lhpq,lhq->lhp', pick(input_w.view(H * U, P, P)), incoming)
+    y = F.layer_norm(torch.einsum('lhpq,lhq->lhp', pick(output_w.view(H * U, P, P)), m_new) + incoming, (P,))
+    gate = torch.einsum('lhpq,lhq->lhp', pick(gate_w.view(H * U, P, P)), F.gelu(y)) + pick(gate_b.view(H * U, P))
+    values = incoming + gain * y * torch.sigmoid(gate)
+    onehot = F.one_hot(winner, U).to(torch.bool) & active[:, None, None]
+    new_mem = torch.where(onehot[..., None], m_new[:, :, None, :], m)
+    new_read = pick(key.view(H * U, P)) + torch.einsum('lhpq,lhq->lhp', pick(key_read.view(H * U, P, P)), m_new)
+    reads = torch.where(onehot[..., None], new_read[:, :, None, :], reads)
+    new_arr = torch.where(onehot, arrival[:, None, None], arr_d)
+    new_seen = seen_d | onehot
+    arrivals = arrival[:, None] + delay
+    arrival_out = arrivals.max(-1).values
+    age_h = arrival_out[:, None] - arrivals
+    x_out = torch.cat([_transport(values[:, h], age_h[:, h], transport_rate[h], transport_frequency[h]) for h in range(H)], -1)
+    return x_out, arrival_out, new_mem, new_arr, new_seen, values, arrivals, reads
+
+
 _COMPILED = {}
 
 
@@ -240,7 +298,7 @@ class BindingMemory(nn.Module):
 
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
-                    deterministic=False, compiled=False, binding=None, record=None):
+                    deterministic=False, compiled=False, binding=None, record=None, sparse=False):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -249,6 +307,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     binding: a BindingMemory. The readout then reads the binding slots (readout built with heads=1, pool=Ub). Each event
     is written to one binding slot drawn by the posterior race (argmax when deterministic); the first event of a stream
     takes slot 0. The deep layers keep their learned races (no override).
+    sparse: inference only (no grad): deep layers run sparse_layer_step (winner-only computation, cached slot reads);
+    outputs equal the dense path (tests/test_race_readout.py).
     record: optional list; per event it receives dict(slot=written binding slot (n,) or None, hazard=the rescaled
     interval ΔΛ = -base (n,) or None for a stream's first event), detached, for evaluation diagnostics."""
     from .carried_episodes import initial_state
@@ -280,6 +340,9 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     active = torch.ones(n, dtype=torch.bool)
     lin = route_credit in ('linear', 'linear_rw', 'linear_rwn')
     ll_tot, ll_time, valid = [], [], []
+    reads = None
+    if sparse:
+        reads = list(st.get('reads') or [slot_reads(mem[d], layers[d]['key'], layers[d]['key_read']) for d in range(D)])
 
     def transport(value, age, depth, head):
         age = age.clamp_min(0)
@@ -319,12 +382,16 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     noise = torch.ones_like(noise)
                 mix = model.channel_mix[depth]
                 old_arr, old_seen = arr[depth], seen[depth]
-                x, arrival, mem[depth], arr[depth], seen[depth], values, arrivals = step(
-                    x, arrival, mem[depth], arr[depth], seen[depth], active, noise, mix.weight, mix.bias, Lp['query'],
-                    Lp['key'], Lp['key_read'], Lp['clock_bias'], Lp['control_w'], Lp['control_b'], Lp['rate'],
-                    Lp['frequency'], Lp['input'], Lp['output'], Lp['gate_w'], Lp['gate_b'], Lp['gain'],
-                    model.transport_rate[depth], model.transport_frequency[depth], lin,
-                    route if depth == D - 1 else None)
+                common = (x, arrival, mem[depth], arr[depth], seen[depth], active, noise, mix.weight, mix.bias, Lp['query'],
+                          Lp['key'], Lp['key_read'], Lp['clock_bias'], Lp['control_w'], Lp['control_b'], Lp['rate'],
+                          Lp['frequency'], Lp['input'], Lp['output'], Lp['gate_w'], Lp['gate_b'], Lp['gain'],
+                          model.transport_rate[depth], model.transport_frequency[depth])
+                if sparse:
+                    x, arrival, mem[depth], arr[depth], seen[depth], values, arrivals, reads[depth] = sparse_layer_step(
+                        *common, reads[depth], route if depth == D - 1 else None)
+                else:
+                    x, arrival, mem[depth], arr[depth], seen[depth], values, arrivals = step(
+                        *common, lin, route if depth == D - 1 else None)
                 if depth == D - 1 and binding is None:
                     wrote = (arr[depth] != old_arr) | (seen[depth] & ~old_seen)
                     base = now[:, None].expand(n, H * U) if t_ref is None else t_ref
@@ -350,6 +417,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                  t_ref=t_ref, laws=prev, t_prev=t_prev)
     if binding is not None:
         state.update(bmem=bmem, bseen=bseen)
+    if sparse:
+        state['reads'] = reads
     return torch.stack(ll_tot, 1), torch.stack(ll_time, 1), torch.stack(valid, 1), state
 
 
