@@ -4022,3 +4022,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K follow-through queued 20261006T030500Z:** four fit tags feed selected TRAIN-mean/memory-message utility(900s), payload/metadata isolation(480s), then four exact complete-work replays(16000s each). Unique packets/one-job queues aws_private_bank_256k_audit_20261006T030500Z; all frozen source pins verified,1.2GBRSS/5GBVMS/8GiBfloor. Work cap derives from measured64Kapproximately32min replay, fourfold updates plus2xmargin; ordinary fit throughput is separate. No projected quality/work cells. Slot3 sequential; existing slot2 preserved.
+
+
+**AWS256K U4 lr.003seed6 fit completed:** selected DEV7.714196299NLL at step384 vs initial8.078814937, improvement0.364618638; final7.949386058.262144GPT-2TRAINtokens/two passes524272fitting targets,1024updates/every128DEV,2040DEV at offset20971520. Retained P24D2H2U4/fourwrites/uniformK4future credit; completed ordinary throughput863.222targets/s,peak613752KiBRSS. Source resultaws_private_bank_256k_u4_lr0003_s6_20261006T030000Z.aws.json; comparison against64K involves different TRAIN-frequency initialization and exposure, not iso-compute. Other seed/rate fits, selected utility and exact work pending; no work estimate or public-reference claim.
