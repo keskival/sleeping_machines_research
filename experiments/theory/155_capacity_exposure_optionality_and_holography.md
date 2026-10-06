@@ -877,3 +877,21 @@ binding ceiling .911).**
   binding. Removing the context forces binding at fixed readout capacity; more capacity reaches binding with the
   context kept.
 - Learned binding can exceed the greedy-oracle ceiling: the readout uses information the greedy assignment ignores.
+
+**436.4 Binding needs spare capacity (optionality, §§422–424, measured on binding).** Toy with 6 concurrent processes
+(Bayes-greedy ceiling α .886, 600 steps):
+
+| slots | argmax α | validation NLL |
+|---|---|---|
+| 3 | .31 | 2.19 |
+| 6 | .48 | 2.11 |
+| 9 | **.90** | **1.82** |
+
+- *Mechanism:* posterior writes made early in training, before the laws are informative, are partly wrong. With free
+  slots, a wrongly placed process can move to an unused slot and specialise there. With U equal to the concurrency,
+  every error forces sharing, and shared slots learn mixed laws that keep their responsibilities flat: a near-symmetric
+  trap like the beam tracker's EM collapse.
+- *Free capacity is optionality:* the exposure value of unused routes (§423) appears here as the escape route from
+  mis-binding.
+- *Sizing rule:* U ≈ 1.5 × peak concurrency, where peak concurrency is estimated anonymously (`anonymous_concurrency.py`).
+  The cost of spare slots is linear: readout scoring only, with no deep-layer work.
