@@ -278,3 +278,6 @@ U16 quality losses: 0.020071830 NLL on seed6 and 0.004985016 on seed7. U4 has po
 
 
 **Completed 64K U4 seed7 full-work audit:** aws_private_bank_64k_u4_s7_work_20261006T004500Z.json verifies exact final numerical training state, zero DEV-curve error and complete fitting/inference formulas.131056fit targets/256updates,2040DEV; selected8.033177275NLL. Whole-fit192.176490850GFLOPs,1.466369268MFLOPs/fit target,.403427927MFLOPs/inference target. Fitting special functions2,030,773,646 separate; random work unquantified and same accounting exclusions as seed6. Both U4seeds now completely accounted; two U16replays and payload-only probe pending.
+
+
+**64K seed6 capacity pair fully accounted:** exact final numerical state and zero DEV-curve errors in both replay receipts. U4/U16 selected NLL 8.014633717/8.034705547; whole-fit 192.106413024/197.028696288 GFLOPs; fitting 1.465834552/1.503393178 MFLOPs/target; inference 0.403427927/0.409575316 MFLOPs/target. U16 quality loss0.020071830NLL with fitting work+2.5623% and inference+1.5238%; no Pareto win.131056fit/2040DEVtargets,256updates,two passes; special functions separate/random unquantified. Receipt aws_private_bank_64k_s6_completed_pair_20261006.json binds input hashes. Seed7U16work/payload-only probe pending.
