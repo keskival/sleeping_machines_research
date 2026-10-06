@@ -97,12 +97,13 @@ Official splits, the published per-event log-likelihood protocol, 5 seeds, seale
 | Taobao | 1.318 ± 0.017 (IFTPP) | **1.399 ± 0.003** | 0.92× |
 | Taxi, 5-seed mixture | 0.522 ± 0.004 (S2P2) | **0.536** | 0.41× |
 | Taxi, single model | 0.522 ± 0.004 | **0.525 ± 0.001** | 1/12 (parameters and compute) |
-| StackOverflow, 5-seed mixture | −2.163 ± 0.009 (S2P2) | **−2.154** | 4.6× (accuracy-only result) |
+| StackOverflow | −2.163 ± 0.009 (S2P2) | **−2.144 ± 0.004** | 1.26× (accuracy win) |
 | Amazon (in development) | 0.781 (S2P2) | 0.701 | — |
 
-- **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute. They meet the battle's pass
-  criterion (best published on 2 of 5 datasets).
-- **StackOverflow** is ahead only at higher compute; its single model is 0.018 behind.
+- **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.
+- **StackOverflow is a confirmed win** in accuracy (+0.019 nats/event) at 1.26× compute, from a continuous-time state
+  clock that passed the recording-grid audit.
+- Three of five datasets are won, past the battle's pass criterion (best published on 2 of 5).
 - **Amazon and Retweet** are in development: a new clock shape gained +0.044 on Amazon development data.
 - These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
   terms where its mathematics fits: a race of clocks *is* a temporal point process.
@@ -307,7 +308,7 @@ is a stretch scenario. This prices the potential of a model/learning/runtime
 and computing-substrate platform, supported by research execution and a staged
 program. It is a negotiating position, not an independent appraisal.
 
-**Public de-risking since the proposal was set.** The confirmed EasyTPP wins (Taobao, Taxi) are the first instance of
+**Public de-risking since the proposal was set.** The confirmed EasyTPP wins (Taobao, Taxi, StackOverflow) are the first instance of
 the evidence the rationale names as most valuable: a repeated useful-quality and full-cost advantage, on a public
 leaderboard with published baselines.
 - They make the €50M opening price materially more defensible.
@@ -349,7 +350,7 @@ rights, execution and reproducible benefits determine attainable terms.
    competent Transformers at equal complete compute on modern language data,
    across a scaling curve on GPU, with replications.
 2. **Extend the home-field wins on event streams.** Public EasyTPP wins are
-   achieved (Taxi, Taobao). Next:
+   achieved (Taxi, Taobao, StackOverflow). Next:
    - the remaining datasets at matched compute;
    - a second public domain (irregular clinical and sensor series: P12, P19, PAM);
    - the sealed FAS v2 confirmation on anonymous interleaved logs, against small LSTM/Transformer references;

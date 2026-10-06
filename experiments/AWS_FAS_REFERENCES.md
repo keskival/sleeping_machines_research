@@ -118,3 +118,11 @@ current B1 seed: `aws_fas_v2_data_20261006T1715Z` (generate_v2, 1 h cap, 2.5 GB)
 `aws_fas_v2_dev_C2_20261006T1715Z` (4 h, 5 GB). Every job after the data requires the data provenance `completed`.
 Results publish automatically (results/aws_20260929/<tag>/). The 12-run reference grid is not admitted yet; size it from
 the smokes' peak RSS and wall time.
+
+**Smokes completed (6 October, ~21:30 UTC):**
+- v2 data byte-identical to curie (all split hashes equal);
+- LSTM d128: peak RSS 1.05 GB, ~25K events/s (a full grid run ≈ 20 min); suggested cap 2.5 GB;
+- Transformer d128 (4 lanes, scoring batch 4): peak RSS 1.36 GB, ~3K events/s (≈ 3 h per run); suggested cap 3 GB.
+
+The 12 grid queues (`aws_fas_v2_ref_{lstm,transformer}_d{64,128}_lr*_s0_20261006T1815Z`) and
+`aws_fas_v2_dev_C1/C2_20261006T1715Z` are ready for admission.

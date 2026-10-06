@@ -232,3 +232,10 @@ oracle's .821.
   - The gap statistics (quantile, CUSUM, robust z) sit near chance. Interleaving destroys adjacent-gap meaning, as
     expected.
   - C1 target: above .685 at N* by more than the seed spread (identity oracle .821).
+- 6 Oct 23:31 UTC: **AWS admitted the v2 data and the reference smokes.**
+  - The AWS v2 dataset is byte-identical to curie's (all five split hashes and event counts equal): the generator
+    reproduces across hosts.
+  - Smokes, 2 windows each:
+    - LSTM d128: 276,528 parameters, peak RSS 1.05 GB, ~25K events/s. A full 3-pass run takes ~20 min.
+    - Transformer d128 (4 lanes): 425,392 parameters, peak RSS 1.36 GB, ~3K events/s. A full 3-pass run takes ~3 h.
+  - Suggested caps: LSTM 2.5 GB, Transformer 3 GB.

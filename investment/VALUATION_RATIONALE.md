@@ -3,8 +3,8 @@
 4 October 2026, revised 6 October · Private founder/investor discussion · Not an independent appraisal.
 
 **Current proposal: raise €3M at €50M priced pre-money.** The €100M case remains
-a stretch scenario. Since the proposal was set, the family has its first public-leaderboard wins (EasyTPP Taobao and
-Taxi, 6 October, §3). These make €50M materially more defensible; §5 states what would carry €100M. The breadth of the family is the rationale for seeking a
+a stretch scenario. Since the proposal was set, the family has its first public-leaderboard wins (EasyTPP Taobao, Taxi
+and StackOverflow, 6 October, §3). These make €50M materially more defensible; §5 states what would carry €100M. The breadth of the family is the rationale for seeking a
 platform premium. The proposal funds the next decisive evidence,
 team and execution capacity rather than requiring that the entire vision be
 finished before investment.
@@ -82,8 +82,10 @@ Evidence update, 6 October:
   - Taxi: a 5-seed mixture (0.536) beats every published model at 0.41× S2P2's compute; a single model (0.525)
     leads S2P2 (0.522) on the mean at 1/12 of its parameters and compute.
 
-  Both are 5 seeds on official splits with a sealed test; this is the battle's pass criterion. StackOverflow is ahead
-  only at 4.6× compute (accuracy-only); Amazon and Retweet are in development.
+  - StackOverflow: −2.144 ± 0.004 vs −2.163 (+0.019) at 1.26× S2P2's compute (accuracy win).
+
+  All are 5 seeds on official splits with a sealed test: three of five datasets won, past the battle's pass criterion.
+  Amazon and Retweet are in development.
 - **FAS v2:** the sealed setting is selected on validation (2 interleaved lines, 2% dropped events). The identity
   oracle reaches AUROC 0.821 against 0.685 for the best anonymous classical detector, so a binding model has room
   to win. Development is in progress with a race readout derived from the interleaving theory.
@@ -124,7 +126,7 @@ The [current evidence map](../report/architecture_evidence.md) supplies anchors:
     (1.704) leads;
   - ≈ 0.96 PF: native 1.800 loses to a tuned LSTM-512 (1.729) and a Transformer-192×4 (1.780).
 - **Public benchmark:** confirmed EasyTPP wins on Taobao and Taxi (5 seeds, sealed test, a fraction of the leading
-  model's compute).
+  model's compute) and StackOverflow (accuracy win at 1.26× compute).
 - A causal online pilot improves 3.190859→3.095738 BPC through adaptation;
   economical native adaptation is the next step.
 
@@ -197,7 +199,7 @@ advantage" this rationale names as the highest-value evidence. That moves €50M
 defensible.
 
 €100M becomes arguable when two or more of these hold:
-- matched-compute wins on further EasyTPP datasets;
+- matched-compute wins on further EasyTPP datasets (StackOverflow, won at 1.26× compute, is partway there);
 - a second domain (irregular clinical/sensor series, or the sealed FAS v2 confirmation);
 - an independent reproduction of a leaderboard result.
 
