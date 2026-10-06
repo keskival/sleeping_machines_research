@@ -4242,3 +4242,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS positive-time evidence figure published:** report/figures/aws_private_bank_time_256k_20261006.svg/.png show actual completed per-seed DEV trajectories/selected checkpoints and payload-only erasure costs; split quality and stronger stored-content dependence visible together. Input SHA manifest and plotting producer source retained. Render visually checked, no projected work/energy/public score. Active audits preserved.
+
+
+**AWS secondary-DEV diagnosis prepared, not admitted:** aws_private_bank_time_secondary_dev.py evaluates fixed primary-selected checkpoints on one declared larger development interval beyond their primary interval, retains exact token/lane/chunk/EOS/source/checkpoint protocol and verifies original selected NLL first. No refit/reselection/official-public-validation scoring. Intended to diagnose split-seed small-DEV quality while existing full-work audits run; extra interval is not an independent training seed. Syntax passes only. Unique guarded slot/development provenance and measured cap required before execution. Public reference remains protected.
