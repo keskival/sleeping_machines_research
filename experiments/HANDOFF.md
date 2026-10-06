@@ -1,3 +1,25 @@
+# Message-learning diagnostic admitted — 6 October 2026
+
+Existing64K wholework PID76656 verified live at00:57UTC (~471MBRSS), then
+already admittedseed7 repeat. New tmux curie_token_message_gain_admission_20261006_v1
+waits the seed7 session, requires both completed gathered parents, then runs
+unique one-job message-gain probe through run_safe600s/800MBRSS/8GiBreserve.
+Compare original/gathered64K selected checkpoints, seeds6/7, gains1/.5/.25/0.
+Gain1 returns original logits and must exactly reproduce selected DEV evaluation;
+others temporarily transform sigmoid gate logits and restore hook. Same causal
+partition and evaluator RNG reset. No fit/public validation/parameter edits;
+original inference kernel for all, with existing gather forward contract.
+Gate stats include no-context/EOS calls. Source/data/checkpoint hashes checked.
+Compilation/bash syntax pass; numerical evidence pending behind existing jobs.
+
+Concrete failure: gatheredseed6 message erasure improves loss0.02258 while
+memory erasure costs0.01012. Gate-dose comparison tests whether message
+strength is harmful across seeds/kernels before choosing a learning repair.
+This is not an architecture substitution or evidence that persistent memory
+should be removed. Read theory110 for persistence versus horizon credit and
+LANGUAGE_IMPLEMENTATION_AUDIT before a repair. Main next target remains1M
+proper-token integrated fit then protected4M; no implementation promoted yet.
+
 # Latest utility and running audit — 6 October 2026
 
 ## Gathered 64K selected-state utility
