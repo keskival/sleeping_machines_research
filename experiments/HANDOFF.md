@@ -4104,3 +4104,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K isolated timing probe completed:** all source/checkpoint/numerical parity/RNG/parameter-nonmutation contracts pass. lr.003 seeds6/7 no_decayΔNLL−.004867516/−.011039107; no_rotation−.007564902/−.010441803; zero_age−.015779112/−.024449096; arrival-only erase+.010713991/+.012638215. Separate operators affect useful memory; diagnosis motivates nonzero temporal-scale probes and then integrated paired fits, retaining temporal computation and full core mechanisms. lr.001 mixed effects preserved in theory/report table. Receipt aws_private_bank_256k_time_20261006T034518Z.json,peak439560KiBRSS. Complete-work slot3 live; slot1 available. No retrained gain/public win claimed.
+
+
+**AWS positive time-scale probe admitted 20261006T034826Z:** unique idle-slot1 queueaws_private_bank_256k_scale_20261006T034826Z, four completed selected fits/scales1,.5,.25,.0625. Scaled unit coefficients retain nonzero decay/rotation; race/message clocks unchanged. Stdlib finite-positive scale and argument checks/syntax pass; numerical intact/cold-start/RNG/parameter contracts are mandatory in scoring.480s prior four-mode reservation,1.2GBRSS/5GBVMS/8GiBfloor; current available26GiB, existing slot2/3 preserved. New hook/scorer pins verified; no trained gain claimed.
