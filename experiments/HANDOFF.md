@@ -4545,3 +4545,22 @@ writes. Requested order:
 E1, R2 and R1 take about 1–1.4 h each, ~2.5 GB RSS. Contracts: tests/test_race_readout.py (6 pass); compiled
 throughput 1,240 events/s at 16 lanes. The waiter (tmux `curie_chain45`; after R2 comes its particle evaluation (§434, evaluation only); R3 = R2 at pool 24 per head, §434.3, follows R1, WAIT=1 so it queues behind any held host lock) needs the exact line
 CURIE_WINDOW_GRANTED_FAS_DEV and MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
+
+**Git LFS migration — curie clone made coherent (6 Oct 16:40 UTC, curie FAS session, user-directed).**
+- Upstream rewrote history from `02aebad4` (14 Sep) onward, putting 67 explicit large paths under LFS
+  (`.gitattributes`). The migrated tip is `f1c8ca13`.
+- This clone's 6 local-only commits (none touches an LFS path) were replayed onto `origin/main` in a temporary
+  worktree. `main` moved by compare-and-swap, and the index was refreshed without rewriting working files. Running
+  jobs were unaffected.
+- Backup of the old history: branch `backup/pre-lfs`. `git lfs fsck` is OK.
+- **Every other clone (AWS host, any other container) must do the same before its next push:**
+  1. `git lfs install --local`;
+  2. `git branch backup/pre-lfs main`; `git fetch origin`;
+  3. find the old local commit X whose subject matches the migrated history's last shared commit;
+  4. cherry-pick `X..backup/pre-lfs` onto `origin/main` (if any of those commits touches an LFS path, first run
+     `git lfs migrate import --include=<that path> --include-ref=main --exclude-ref=X`);
+  5. move main and restore `.gitattributes` from HEAD.
+
+  Never merge or force-push old-history commits; that reintroduces the multi-gigabyte blobs.
+- 52 tracked files over 5 MB (older checkpoints and zips) remain ordinary blobs under upstream's explicit-path rules.
+  New result checkpoints and score files stay git-ignored (`experiments/results/**/*.pt`, `*.npz`).

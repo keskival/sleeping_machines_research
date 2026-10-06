@@ -112,3 +112,41 @@ def test_smc_eval_particles_finite_and_resample():
     with torch.no_grad():
         lz = smc_log_z(model, ro, stamps, marks, ids, 8, True)
     assert torch.isfinite(lz).all() and lz.shape == stamps.shape
+
+
+def test_type_durations_density_integrates_and_reduces_to_shared_law():
+    torch.manual_seed(2)
+    S, V = 3, 4
+    o = torch.randn(1, S, 3 * V + 1, dtype=torch.float64)
+    p = dict(logp=torch.log_softmax(o[..., :V], -1), mu=o[..., V:2 * V], log_sigma=o[..., 2 * V:3 * V].clamp(-1, 1) * .5,
+             logq=torch.nn.functional.logsigmoid(o[..., -1]), log1mq=torch.nn.functional.logsigmoid(-o[..., -1]))
+    t_ref = torch.tensor([[0., -.5, -2.]], dtype=torch.float64); t_now = torch.tensor([0.], dtype=torch.float64)
+    grid = torch.exp(torch.linspace(-9, 6, 40001, dtype=torch.float64))
+    from sleeping_machines.race_readout import log_surv
+    mass = 0.
+    for e in range(V):
+        ll, _, _ = event_terms({k: v.expand(len(grid), *v.shape[1:]) for k, v in p.items()}, t_ref.expand(len(grid), S),
+                               t_now.expand(len(grid)), grid, torch.full((len(grid),), e), 1e-3)
+        mass += float(torch.trapezoid(ll.exp(), grid))
+    never = float((log_surv(p, torch.full((1, S), 1e9, dtype=torch.float64), 1e-3)
+                   - log_surv(p, (t_now[:, None] - t_ref), 1e-3)).sum().exp())
+    assert abs(mass + never - 1) < 2e-3, (mass, never)
+    # identical per-type laws reduce to the shared-law readout
+    shared = dict(p, mu=p['mu'][..., 0], log_sigma=p['log_sigma'][..., 0])
+    tied = dict(p, mu=p['mu'][..., :1].expand(-1, -1, V), log_sigma=p['log_sigma'][..., :1].expand(-1, -1, V))
+    a = event_terms(shared, t_ref, t_now, torch.tensor([1.3], dtype=torch.float64), torch.tensor([2]), 1e-3)
+    b = event_terms(tied, t_ref, t_now, torch.tensor([1.3], dtype=torch.float64), torch.tensor([2]), 1e-3)
+    for x, y in zip(a, b):
+        torch.testing.assert_close(x, y)
+
+
+def test_type_durations_episode_runs_and_chains():
+    torch.manual_seed(3)
+    model, _ = _model(); ro = RaceReadout(5, 2, 3, 8, 16, hidden=16, mu0=0., type_durations=True)
+    stamps, marks, ids = _data()
+    with torch.no_grad():
+        a = readout_episode(model, ro, stamps, marks, ids, posterior=True, deterministic=True)
+        b1 = readout_episode(model, ro, stamps[:, :5], marks[:, :5], ids[:, :5], posterior=True, deterministic=True)
+        b2 = readout_episode(model, ro, stamps[:, 5:], marks[:, 5:], ids[:, 5:], state=detach_state(b1[3]),
+                             posterior=True, deterministic=True)
+    torch.testing.assert_close(torch.cat([b1[0], b2[0]], 1), a[0], rtol=1e-6, atol=1e-8)
