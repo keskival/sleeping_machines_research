@@ -29,7 +29,8 @@ def main():
   args=['--credit-window',str(factual)]
   if alternative is not None:args+=['--future-credit-window',str(alternative)]
   sys.argv=['driver','--tag',tag,*base,*args,*extra];engine.main();gc.collect()
-  result=json.loads(path.read_text());checkpoint=torch.load(path.with_suffix('.pt'),weights_only=False)
+  if not path.exists():path=path.with_suffix('.partial.json')
+  result=json.loads(path.read_text());checkpoint=torch.load(folder/(tag+'.pt'),weights_only=False)
   for row in result['curve'][1:]:
    teacher=row['future_write_teacher'];token=teacher['site'][0];window=factual if alternative is None else alternative
    n=16;end=min(n,(token//window+1)*window)

@@ -1,3 +1,15 @@
+# Split-horizon state witnesses prepared; driver partial path corrected
+
+Staticreview found partial engine results use .partial.json, not .json; pending
+contractrunner now reads that exactpath and originaltag checkpoint. No numerical
+run hadstarted, no failure hidden. Newstatecontract covers allF/A8/32combos:
+exactfeatures/numericmemories/timestamps/writes/winners/routeRNG, initialmemory
+credit zero forF8 andnonzeroF32 independentofA. Same initializednumericstate.
+ASTsyntaxpassed; numericalpending. Admission script now lists120sstate job then
+600sdriver job, bothguarded sequential aftercredit64audit. Livewaiter already
+loaded oldscript, so restart onlythe waiting admission session toapply newqueue;
+neverinterrupt workPID132567. Numericalgates stillrequired beforeoffdiagonalfit.
+
 # Split-horizon actual-driver contracts queued after audit — 6 October 2026
 
 PID132567 exactcredit64audit revalidatedlive. New contractadmissiontmux waits
