@@ -87,6 +87,8 @@ def main():
     p.add_argument('--gated', action='store_true')
     p.add_argument('--train-argmax', action='store_true', help='hard-EM writes in training (deterministic races)')
     p.add_argument('--hidden', type=int, default=32); p.add_argument('--no-context', action='store_true')
+    p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
+                   'counts (THEORY §434.1.2), e.g. 1,4,16')
     a = p.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     V_TOY = a.R + 1
@@ -114,7 +116,16 @@ def main():
             curve.append(dict(step=step, train_nll=float(loss), val=evaluate(model, ro, bm, val, T),
                               val_argmax=evaluate(model, ro, bm, val, T, deterministic=True)))
             print(json.dumps(curve[-1]), flush=True)
-    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0,
+    smc = {}
+    if a.particles:
+        sys.path.insert(0, str(ROOT / 'experiments/fas')); sys.path.insert(0, str(ROOT / 'experiments'))
+        from race_smc_eval import smc_log_z
+        stamps, marks, ids, _, lens = batch(val, T)
+        for L in map(int, a.particles.split(',')):
+            lz = smc_log_z(model, ro, stamps, marks, ids, L, True, binding=bm).numpy()
+            smc[L] = float(np.mean([-lz[i, n - 1] / (n - 1) for i, n in enumerate(lens)]))
+            print(json.dumps(dict(particles=L, val_nll=smc[L])), flush=True)
+    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0, smc_val_nll=smc,
                verdict='binding emerges' if curve[-1]['val'][1] > .8 else 'binding does not emerge at this budget')
     print(json.dumps(dict(start=curve[0], end=curve[-1], verdict=res['verdict'])))
     if a.out:

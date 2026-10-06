@@ -895,3 +895,14 @@ binding ceiling .911).**
   mis-binding.
 - *Sizing rule:* U ≈ 1.5 × peak concurrency, where peak concurrency is estimated anonymously (`anonymous_concurrency.py`).
   The cost of spare slots is linear: readout scoring only, with no deep-layer work.
+
+**434.1.2 measured (binding toy, 6 processes, 9 slots).** Validation NLL with L-particle SMC evaluation of one trained
+model:
+- L = 1: 1.885;
+- L = 4: 1.834;
+- L = 16: 1.815;
+- L = 64: 1.810;
+- argmax path: 1.821.
+
+The bound tightens monotonically with diminishing returns. The argmax path beats a single sampled particle on this
+trained model, but not 16 or more.

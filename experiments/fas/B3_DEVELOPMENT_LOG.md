@@ -141,3 +141,14 @@ oracle's .821.
 
   **Revised sizing rule: U = 1.5 × anonymous peak concurrency** (v2: 1.5 × 36 = 54). C1 and C3 now use U = 54. C4
   becomes the no-headroom ablation (U = 36). None of these queues has started. Single-seed toy evidence.
+- 6 Oct 19:06 UTC: **particle evaluation on the toy** (6 processes, 9 slots, trained 600 steps; THEORY §434.1.2). Validation
+  NLL by particle count:
+
+  | particles | 1 | 4 | 16 | 64 | argmax path |
+  |---|---|---|---|---|---|
+  | NLL | 1.885 | 1.834 | 1.815 | 1.810 | 1.821 |
+
+  The bound tightens monotonically with diminishing returns, as FIVO predicts. Particles are an inference-compute dial:
+  L particles multiply inference work by L (C1: 1.69 MFLOP/event at L = 1). Any L > 1 used for v2 scoring is declared
+  before test scoring, and its work is reported at that L. C1's particle evaluation (L = 1, 4, 16) on v2 validation
+  sets it.
