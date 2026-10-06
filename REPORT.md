@@ -4615,3 +4615,12 @@ retained. No1M gathered implementation promoted from this single run.
 Selected memory/message utility and complete64K arithmetic follow via the
 already admitted guarded sequence. Gatherseed7 fixed-recipe queue prepared,
 not launched; compare paired quality and full work before choosing1M execution.
+
+## Gathered 64K selected-state utility
+
+Selected contextNLL8.076229095 versus TRAIN-mean feature8.327357292,
+gain0.251128197. Memory erasure raises loss0.010124504; message erasure lowers
+loss0.022582731; both erasures lower loss0.026153897. Exact causal partition and
+matched route-RNG contracts pass. These are frozen DEV interventions, not
+retrained ablations; message history hurts this selected checkpoint under this
+intervention. Preserve the positive memory result and negative message result.

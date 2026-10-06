@@ -1,3 +1,18 @@
+# Latest utility and running audit — 6 October 2026
+
+## Gathered 64K selected-state utility
+
+Selected contextNLL8.076229095 versus TRAIN-mean feature8.327357292,
+gain0.251128197. Memory erasure raises loss0.010124504; message erasure lowers
+loss0.022582731; both erasures lower loss0.026153897. Exact causal partition and
+matched route-RNG contracts pass. These are frozen DEV interventions, not
+retrained ablations; message history hurts this selected checkpoint under this
+intervention. Preserve the positive memory result and negative message result.
+Complete64K whole-work audit PID76656 live at00:55UTC,5400s/800MBRSS/8GiBreserve.
+Seed7 fixed-recipe gather admitted behind entire audit session via
+curie_gather_64k_s7_admission_20261006_v1; completed fullcoverage/parity gate
+required, then uniqueonejob/run_safe1200s. No1M implementation selected yet.
+
 # 64K gathered fit completed — 6 October 2026
 
 ## Gathered 64K quality result — completed
