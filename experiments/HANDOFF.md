@@ -4122,3 +4122,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS time contracts first run failed/fixture repaired:** unique20261006T035307Z stopped on zero raw_rate/frequency gradients atscale1. FrequencyTokenReadout zeroes contextual output weights, so initialization sends no factual gradient into the core. This is a fixture cold-start issue, not scaled-model learning evidence. Original source/queue/log preserved. New v2 driver warms only the decoder with one identical synthetic SGD step on detached features, then tests core gradients and actual alternatives. v2 syntax/guarded rerun pending; no numerical pass claimed.
+
+
+**AWS time contractv2 failed on fixture shape:**20261006T035500Z passed scale1 factual/gradient equality and nonzero rate/frequency checks, then attempted mean(1) on the flat readout NLL vector. New v3 source reshapes actual suffix losses by lane before reduction. Original v1/v2 sources, queues and failed logs preserved. Other scales, alternative credit and checkpoint continuation remain unvalidated; no completed contract claimed.
