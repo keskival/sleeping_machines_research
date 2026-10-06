@@ -1,0 +1,330 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 1,
+      "targets": 8,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.790327072143555,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0027894370892093804,
+        "gradient_rms": 6.163843379603804e-05,
+        "state_l2": 51.019470654231924,
+        "gradient_state_inner_product": 0.007614206477040824,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.02496581885346096,
+        "gradient_rms": 0.0015603636783413101,
+        "state_l2": 23.511863752938034,
+        "gradient_state_inner_product": 0.047550677020621115,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.11173024628521995,
+      "checkpoint_sha256": "04670c423f027c1665bdf57e40af4fa2609d46dd2a3702632057c2b5f6fc30b0"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 16,
+      "targets": 128,
+      "prefix_tokens_per_lane": 32,
+      "nll": 9.014630317687988,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0006866218774967592,
+        "gradient_rms": 1.5172343302781164e-05,
+        "state_l2": 51.019470654231924,
+        "gradient_state_inner_product": -0.0002348468348465708,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0019427727522289683,
+        "gradient_rms": 0.00012142329701431053,
+        "state_l2": 23.511863752938034,
+        "gradient_state_inner_product": 0.001336965930069706,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.3534236707350301,
+      "checkpoint_sha256": "04670c423f027c1665bdf57e40af4fa2609d46dd2a3702632057c2b5f6fc30b0"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 64,
+      "targets": 512,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.817956924438477,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.00027277111758521196,
+        "gradient_rms": 6.027447092385515e-06,
+        "state_l2": 51.019470654231924,
+        "gradient_state_inner_product": 0.0004137587768794909,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0004794354106809848,
+        "gradient_rms": 2.996471316756155e-05,
+        "state_l2": 23.511863752938034,
+        "gradient_state_inner_product": 0.0003758092083964556,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.5689423674354193,
+      "checkpoint_sha256": "04670c423f027c1665bdf57e40af4fa2609d46dd2a3702632057c2b5f6fc30b0"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 1,
+      "targets": 8,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.811469078063965,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0037896379299704633,
+        "gradient_rms": 8.373995870387077e-05,
+        "state_l2": 52.95957813899992,
+        "gradient_state_inner_product": -0.0001104587307695329,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.03277346731031932,
+        "gradient_rms": 0.0020483417068949575,
+        "state_l2": 23.843432840527342,
+        "gradient_state_inner_product": 0.06812658163360336,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.11563127862205862,
+      "checkpoint_sha256": "45e61612fd3dafab4f5825d9f7fdda147e8e4aafa6fc4957337ef895d00a4c89"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 16,
+      "targets": 128,
+      "prefix_tokens_per_lane": 32,
+      "nll": 9.04422378540039,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.001041061953478734,
+        "gradient_rms": 2.3004436466878975e-05,
+        "state_l2": 52.95957813899992,
+        "gradient_state_inner_product": -0.0037838127185060386,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.002837576636357081,
+        "gradient_rms": 0.00017734853977231755,
+        "state_l2": 23.843432840527342,
+        "gradient_state_inner_product": 0.003673813904146869,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.3668841715638254,
+      "checkpoint_sha256": "45e61612fd3dafab4f5825d9f7fdda147e8e4aafa6fc4957337ef895d00a4c89"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_20261005_v1",
+      "seed": 6,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 64,
+      "targets": 512,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.819923400878906,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0003566608772170135,
+        "gradient_rms": 7.881166402002904e-06,
+        "state_l2": 52.95957813899992,
+        "gradient_state_inner_product": -0.0008550078761224818,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0007110062432172658,
+        "gradient_rms": 4.443789020107911e-05,
+        "state_l2": 23.843432840527342,
+        "gradient_state_inner_product": 0.0009264084474686237,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.5016283339554682,
+      "checkpoint_sha256": "45e61612fd3dafab4f5825d9f7fdda147e8e4aafa6fc4957337ef895d00a4c89"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 1,
+      "targets": 8,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.640856742858887,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0021237190126326367,
+        "gradient_rms": 4.6928003598979284e-05,
+        "state_l2": 55.69522424674445,
+        "gradient_state_inner_product": 0.001890667349241004,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.02121659152047853,
+        "gradient_rms": 0.0013260369700299084,
+        "state_l2": 24.23407060672395,
+        "gradient_state_inner_product": 0.042330856316295455,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.10009708725281322,
+      "checkpoint_sha256": "b55e4a1a5013d7051c639bdded523a62f64740fc3b24934342de7db74ffec28f"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 16,
+      "targets": 128,
+      "prefix_tokens_per_lane": 32,
+      "nll": 9.023576736450195,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.000560426836995449,
+        "gradient_rms": 1.2383800524950309e-05,
+        "state_l2": 55.69522424674445,
+        "gradient_state_inner_product": -0.001981694655875019,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0021258899901236204,
+        "gradient_rms": 0.00013286812438272628,
+        "state_l2": 24.23407060672395,
+        "gradient_state_inner_product": 0.0027238540815878757,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.2636198672551538,
+      "checkpoint_sha256": "b55e4a1a5013d7051c639bdded523a62f64740fc3b24934342de7db74ffec28f"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit16_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 16,
+      "diagnostic_horizon": 64,
+      "targets": 512,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.821976661682129,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.00018659333178836616,
+        "gradient_rms": 4.123169069742034e-06,
+        "state_l2": 55.69522424674445,
+        "gradient_state_inner_product": -9.484912423413734e-05,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0005281315666866983,
+        "gradient_rms": 3.300822291791865e-05,
+        "state_l2": 24.23407060672395,
+        "gradient_state_inner_product": 0.0006565996015396921,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.3533084245635677,
+      "checkpoint_sha256": "b55e4a1a5013d7051c639bdded523a62f64740fc3b24934342de7db74ffec28f"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 1,
+      "targets": 8,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.65188980102539,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0021506503189641876,
+        "gradient_rms": 4.752310701564339e-05,
+        "state_l2": 53.49041427488891,
+        "gradient_state_inner_product": 0.003054491171783746,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.019743893797737205,
+        "gradient_rms": 0.0012339933623585755,
+        "state_l2": 23.635880341559233,
+        "gradient_state_inner_product": 0.03785835398269713,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.10892736463213086,
+      "checkpoint_sha256": "45b8c662e8826de20087017b0dcab7cf51ad4213f70710177b9f8743a590c67b"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 16,
+      "targets": 128,
+      "prefix_tokens_per_lane": 32,
+      "nll": 9.017026901245117,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.0005416678177047234,
+        "gradient_rms": 1.1969280845297766e-05,
+        "state_l2": 53.49041427488891,
+        "gradient_state_inner_product": -0.000812890994647663,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0020485012004807057,
+        "gradient_rms": 0.00012803132503004413,
+        "state_l2": 23.635880341559233,
+        "gradient_state_inner_product": 0.0027787825839917777,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.26442152807995156,
+      "checkpoint_sha256": "45b8c662e8826de20087017b0dcab7cf51ad4213f70710177b9f8743a590c67b"
+    },
+    {
+      "tag": "curie_horizon_2k_batch64_credit64_s7_20261005_v1",
+      "seed": 7,
+      "trained_credit_window": 64,
+      "diagnostic_horizon": 64,
+      "targets": 512,
+      "prefix_tokens_per_lane": 32,
+      "nll": 8.818964004516602,
+      "memory": {
+        "coordinates": 2048,
+        "gradient_l2": 0.00019611540481060338,
+        "gradient_rms": 4.33357914489758e-06,
+        "state_l2": 53.49041427488891,
+        "gradient_state_inner_product": -4.8173454428953276e-05,
+        "all_finite": true
+      },
+      "message": {
+        "coordinates": 256,
+        "gradient_l2": 0.0005119318625081387,
+        "gradient_rms": 3.199574140675867e-05,
+        "state_l2": 23.635880341559233,
+        "gradient_state_inner_product": 0.0006847323986295985,
+        "all_finite": true
+      },
+      "memory_to_message_gradient_l2": 0.3830888818870608,
+      "checkpoint_sha256": "45b8c662e8826de20087017b0dcab7cf51ad4213f70710177b9f8743a590c67b"
+    }
+  ],
+  "scope": "Selected trained models, same frozen causal development prefix and continuation RNG. Diagnostic permits continuous state credit for up to64positions, overriding training detach window only for derivative measurement. Gradients of mean NLL to initial stored values/message, conditional on factual hard winners; include differentiable clocks but omit discrete alternate-route utility. No fitting, optimizer update, public validation, or claim of full route-learning credit."
+}

@@ -4564,3 +4564,31 @@ CURIE_WINDOW_GRANTED_FAS_DEV and MemAvailable ≥ 14 GB before each arm. Two ses
   Never merge or force-push old-history commits; that reintroduces the multi-gigabyte blobs.
 - 52 tracked files over 5 MB (older checkpoints and zips) remain ordinary blobs under upstream's explicit-path rules.
   New result checkpoints and score files stay git-ignored (`experiments/results/**/*.pt`, `*.npz`).
+
+**Recovered from a dropped worktree (6 Oct 17:30 UTC, curie FAS session, user-directed).** The user moved
+uncommitted work from a worktree that ran out of credits to `dropped_work/`. Completed outputs whose queue files were
+already committed, but whose results were not, are restored at their original paths. Nothing was overwritten.
+
+R1 token-language results (owner: token-language track; numbers as recorded, not re-interpreted here):
+
+| run | selected DEV NLL |
+|---|---|
+| curie_data_growth_tokens_256k_b64_c16_p16_s6_20261005_v1 (the 256K P16 queue named in TOKEN_P16_CROSSED_MEASUREMENT_20261006.md) | 7.7443 |
+| curie_data_growth_tokens_1m_b64_c16_p16_s6_20261006_v1 (initial 8.0225, contextual gain .760; small-fit promotable, not scaling-ready) | 7.2622 |
+| curie_split_horizon_64k_f64_a16_work_20261006_v1 (fitting 1.46 MFLOP/target, inference 0.40 MFLOP/target) | 8.0925 |
+| curie_split_horizon_64k_f16_a64_work_20261006_v1 (1.48 / 0.40 MFLOP/target) | 8.1268 |
+| curie_horizon_2k_batch64_credit64_tail32_20261005_v1 | 8.8195 |
+
+Also restored:
+- the streamed-utility diagnostics for P16 256K/1M (experiments/streamed_token_stage_utility.py);
+- the work audits of both split-horizon runs;
+- `experiments/token_state_credit_audit.py`, with its queue and its completed result
+  (`results/diagnostics/curie_token_state_credit_audit_20261005_v1.json`);
+- the rendered outputs (published.pdf, previews) of the token_1m_snapshot, unification_headlines and
+  typed_semantics_theory publications, whose archive directories were committed without them. The PDFs are LFS-tracked.
+
+Not restored (kept in dropped_work/):
+- fas_replication_s7 v1–v3: REPORT.md identical to the committed v4; superseded attempts;
+- unified_story_20261005_v1: its render receipt says failed; v2 is committed.
+
+The selected checkpoints these results reference (`*.best_step*.pt`) were not in the dropped work.

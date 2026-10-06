@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "tag": "curie_data_growth_tokens_1m_b64_c16_p16_s6_20261006_v1",
+      "seed": 6,
+      "credit_window": 16,
+      "minimum_tail_width": 0,
+      "unit_gain_scale": 1.0,
+      "train_tokens": 1048576,
+      "fit_targets": 2097136,
+      "dev_targets": 2040,
+      "selected": {
+        "step": 2048,
+        "dev_nll": 7.262162990196078,
+        "checkpoint": "/workspace/experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p16_s6_20261006_v1.best_step00002048.pt"
+      },
+      "promotion": {
+        "selected_step": 2048,
+        "selected_dev_nll": 7.262162990196078,
+        "initial_dev_nll": 8.02252747778799,
+        "contextual_learning_gain": 0.7603644875919127,
+        "small_fit_promotable": true,
+        "practical_gain_threshold": 0.02,
+        "scaling_ready": false,
+        "remaining_gates": [
+          "independent seed",
+          "complete resource accounting",
+          "larger-data predictive-capacity comparison"
+        ]
+      },
+      "context_nll": 7.2621636390686035,
+      "train_mean_nll": 8.212470054626465,
+      "context_gain": 0.9503064155578613,
+      "erasure_nll": {
+        "intact": 7.262163104263006,
+        "memory": 7.289436660093419,
+        "message": 7.662191572376326,
+        "both": 7.6179009587157
+      },
+      "history_gains": {
+        "memory": 0.02727302102481577,
+        "message": 0.40002793330772235,
+        "both": 0.35573731964709676
+      },
+      "partition_parity": true,
+      "matched_rng": true,
+      "checkpoint_sha256": "cbe7445e69768d4445e87f5a7106f9e23e80576f1b5cb01dbc470488ccf72734",
+      "train_feature_observations": 1048568,
+      "mean_contract": null
+    }
+  ],
+  "source_sha256": "efb008a318936923be999b8512dbc2b57e913b2f4a9efa1905addb6465208c04",
+  "scope": "Frozen development interventions on initial-inclusive selected checkpoints, exact causal model features and streaming train-only constant-feature mean (float64 sums, cast to feature dtype). State erased before each subsequent token; same route RNG and token partition parity. Out-of-distribution erasure, not retrained ablation. Mean-feature control not an optimally refitted unigram. No fitting, public validation or full hard-alternative credit measurement."
+}
