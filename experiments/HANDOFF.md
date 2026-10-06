@@ -3677,3 +3677,6 @@ full arithmetic auditor remains source-frozen. New wrapper requires final
 model/optimizer/memory/generator/Torch-RNG/write/target exact parity and full
 formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 8GiBfloor; pending, no larger fit or public scoring admitted.
+
+
+**AWS token dependency admission repaired 20261006T000818Z:** slot3 completed integrated resume/local/future/64K and sampledK4 fits. Alphabetical addendum intake had marked event/capacity/horizon predecessors missing before producer execution. New immutable packet `experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzz_aws_token_dependency_recovery_20261006T000818Z.json` retries those four never-executed jobs in topological order, with unique queue names and unchanged original command/source/output tags. No successful run reused or model/source changed; blocked history preserved. Bank comparison remains slot1; public benchmark score/full work pending.
