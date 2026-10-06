@@ -767,3 +767,53 @@ L_items = λ W (Little's law: arrival rate λ, mean time in system W).
 3. A pool sweep on v1, U ∈ {8, 16, 24}. Predicted: saturation near U ≈ 18.
 4. A binding-purity diagnostic for R1/R2 against AUROC, testing the readout's effective ρ.
 5. An H=1 top-layer R2 variant for exactness.
+
+## 435. What anonymity costs, what the readout must factor, and calibrated alarms for free (6 October)
+
+**Theorem 435.1 (interleaving information-loss identity).** Let A be the hidden binding and L the anonymous log, with
+clean and faulty laws P_c and P_f. The chain rule of KL divergence gives exactly
+  D(P_f^L ‖ P_c^L) = D(P_f^{L,A} ‖ P_c^{L,A}) − E_{P_f} [ D( P_f(A | L) ‖ P_c(A | L) ) ].
+- The information in the anonymous log equals the identity oracle's information minus how much the fault changes the
+  posterior over bindings.
+- By Stein's lemma, these divergences are the error exponents at a fixed false-alarm rate. No anonymous detector can
+  exceed the left side.
+- The Neyman–Pearson-optimal anonymous detector is the marginal likelihood ratio p_f(L)/p_c(L), marginalised over
+  bindings.
+- The one-class score −log p_c(L) needs the same marginalisation. R2 with particles (§434) estimates exactly that.
+- Consequence for the Stage 1 gate: oracle − best classical mixes two parts. Only D_anon − D_classical is reachable
+  by any anonymous model; the binding-posterior term is irreducible. Estimate it with the SMC model when sizing claims.
+
+**Proposition 435.2 (type–duration coupling is created by silence).** A slot's next event law must be p_s(e) f_s(τ | e).
+The factorised readout of §433, p_s(e) f_s(τ), loses exactly E[I(E; T | state)] nats per event.
+
+Measured on true item tracks (150 runs, K=1, 24 log-duration bins; shuffle floor ≤ .002; experiments/theory/mi_check_435.py):
+
+| state given | p = 0 | p = .02 | p = .05 |
+|---|---|---|---|
+| current type | .405 | .443 | .486 |
+| previous + current type (route position) | .019 | .105 | .191 |
+
+The duration entropy given the route position is 0.67–0.81 nats.
+- Once the slot knows its route position, coupling is near zero without dropout. It grows linearly with the dropout
+  rate: a silently dropped step makes the next type skip ahead *and* the duration double.
+- Prescription for v2 (dropout is part of every setting): **type-conditional own durations** f_s(τ | e), with
+  survival S_s(τ) = 1 − q_s Σ_e p_s(e) F_s(τ | e). This is silence-aware modelling of missing events inside each
+  slot's race.
+- The cost is V log-normal CDFs per slot per event. The predicted gain is ≈ .1–.2 nats per event at p = .02–.05,
+  concentrated in the duration term, which carries the fault signal.
+
+**Proposition 435.3 (time rescaling gives calibrated alarms).** The readout is a marked point process with total
+cumulative hazard Λ. Between events, ΔΛ_k = −base_k = Σ_v [log S_v(t − t_v) − log S_v(t' − t_v)], in closed form
+(§433). By the time-rescaling theorem (Brown et al. 2002), under the clean model the ΔΛ_k are i.i.d. Exp(1). The
+mark residuals (randomised probability integral transform of the type) are i.i.d. U(0, 1).
+- Anomaly statistics therefore have a known null with no validation calibration. Faults add delay, so Page's
+  one-sided CUSUM on ΔΛ_k − 1 gives alarms whose false-alarm rate is set analytically.
+- Model check, development only: the Kolmogorov–Smirnov statistic of 1 − exp(−ΔΛ) on clean validation measures
+  misfit.
+- Declaring this as a v2 rule requires a protocol amendment before Stage 3 (rules are fixed per protocol).
+
+**Tests implied:**
+- R4: R2 with type-conditional durations, on v2 data (dropout present). Predicted ≈ .1–.2 nats/event lower NLL than
+  R2 at p = .02–.05, and higher AUROC.
+- KS uniformity of rescaled intervals on R2's clean validation, as a fit diagnostic.
+- An SMC estimate of the binding-posterior term of 435.1 on v2, to bound the reachable native gain.
