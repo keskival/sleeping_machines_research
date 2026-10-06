@@ -1,0 +1,54 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_smoke_retweet_20261006a",
+ "dataset": "retweet",
+ "args": {
+  "dataset": "retweet",
+  "tag": "b1_smoke_retweet_20261006a",
+  "seed": 0,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 4,
+  "dv": 4,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.0,
+  "batch": 32,
+  "epochs": 1,
+  "patience": 1,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1
+ },
+ "K": 3,
+ "scale": 40.0,
+ "parameters": 15650,
+ "best_epoch": 0,
+ "epochs_run": 1,
+ "wall_s": 64.498948097229,
+ "dev": {
+  "ll": -6.445995187821617,
+  "time_ll": -5.668253627310958,
+  "mark_ll": -0.7777415605106587,
+  "events": 213521,
+  "rmse": 14670.305972235365,
+  "acc": 0.6061464680289058
+ },
+ "history": [
+  {
+   "epoch": 0,
+   "train_ll": -6.577914280056117,
+   "dev_ll": -6.445995187821617,
+   "dev_time_ll": -5.668253627310958,
+   "dev_mark_ll": -0.7777415605106587,
+   "epoch_s": 64.4934504032135
+  }
+ ],
+ "checkpoint": "experiments/results/tpp/b1_smoke_retweet_20261006a.pt",
+ "source_sha256": {
+  "experiments/tpp/race_tpp.py": "092f34833db01641560e6568182fddccff032c8ed246fd56ab91957baacbccd7"
+ }
+}
