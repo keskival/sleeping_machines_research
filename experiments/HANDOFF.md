@@ -3735,3 +3735,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS64K private-bank paired-seed fits admitted 20261006T003043Z:** immutable `experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzz_aws_private_bank_64k_20261006T003043Z.json` runs sequential U4s6/U4s7/U16s6/U16s7 in free slot3. Passed8Kcomparison revalidated via all input hashes and actual gate; data/full source pins verified. P24D2H2,4selectedwrites,allbankkeys scored,uniform-siteK4future credit unchanged.65536TRAIN/two passes131056targets,256updates/every64DEV. Measured415s/917504KiBRSS(U4),424s/983040KiBRSS(U16),5GBVMS/8GiBfloor; currentMemAvailable24.63GiB. All completed2K/8Kevidence and active slots1/2 preserved. Selected utility/full-work follow completed fits; no pending quality or projected work cells.
+
+
+**AWS64K bank audits queued 20261006T004500Z:** selected utility for all four U4/U16 seeds6/7 follows fits, then four source-bound complete fitting/inference replays. Frozen8K wrappers and source hashes verified. Unique queues/aws_private_bank_64k_audit_20261006T004500Z; utility480s, work4200s (8K replay approximately240s scaled eightfold with margin),1.2GBRSS/5GBVMS/8GiBfloor. Exact state/curve and full formula coverage required; pending cells stay pending. No further scaling before utility and work evidence.
