@@ -161,7 +161,15 @@ Early fault detection from anonymous interleaved event logs; test 2,000 clean an
 | 8 | **0.5864** | **0.7329** |
 | Best generic control | 0.5587 | 0.7272 |
 
-**Replicated win: all three seeds beat the best generic control at both horizons**, by +0.028 to +0.041 at 256 events and +0.006 to +0.015 at 512. FIFO and timing-aware de-interleaving learn their routes from hidden training identities; they are oracle-assisted diagnostics and are excluded from the comparison. The pre-registered, sealed FAS v2 protocol with stronger neural references is the confirmatory test.
+**Replicated win: all three seeds beat the best generic control at both horizons**, by +0.028 to +0.041 at 256 events and +0.006 to +0.015 at 512. FIFO and timing-aware de-interleaving learn their routes from hidden training identities; they are oracle-assisted diagnostics and are excluded from the comparison.
+
+**FAS v2 (B3, in development).** The confirmatory benchmark merges two production lines into one anonymous log with 2% of events dropped. The setting was chosen on validation data before any learned model saw it. At 512 events per line, the identity-aware oracle reaches AUROC 0.821 and the best anonymous classical detector 0.685: 0.136 of signal that only correct binding of events to processes can reach. Neural reference families are not trained (6 October direction). The sealed comparison is against the information-matched classical detectors, and the public release invites outside submissions.
+
+The model being developed for it follows from the theory of interleaving:
+- A merged log of timed processes is a superposition. Its next event is the earliest pending event of the hidden processes, which is a race.
+- A race readout gives each memory slot its own clock and own-duration law, and scores the next event by the exact superposition likelihood.
+- Writing each event to the slot whose race most likely produced it is a particle filter: it trains a lower bound on the likelihood marginalised over all interleavings, with no learned write credit (theory §§432–436).
+- In a small integrated fit on synthetic interleaved processes, binding purity rose from chance (0.27) to 0.81 against a Bayes-greedy ceiling of 0.91.
 
 ### 4.6 Typed tables
 
@@ -207,7 +215,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | --- | --- | --- | --- |
 | **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi and Taobao won** (§4.0); pass criterion met; three datasets continue |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | Asynchronous channels, informative missingness and silence on real data |
-| **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered | A confirmed event-native analytics win and a benchmark we define |
+| **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Setting selected (oracle 0.821 vs classical 0.685); race-readout binding model in development |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |
 
 High-fidelity route credit (exact forced-lane credit at small pools, then a low-variance multi-step estimator) is developed inside B1, B3 and R1, where model sizes make it affordable. Parallel-scan training of the linear decay/rotation core follows when a battle's fitting time requires it. Every result reports measured inference work beside quality. New Transformer and LSTM training is retired: comparisons use published scores under the exact matching protocol and the dense results already completed.
