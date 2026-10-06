@@ -4734,3 +4734,8 @@ P24 selected DEV NLL is **7.251503 / 7.263557** across seeds6/7, mean **7.257530
 
 
 Independent P24/1M seed7 utility completed: **context gain0.995919**, memory-state erasure delta**+0.017380**, full-message-state erasure**+0.475144**, both**+0.443788 NLL**. Matched RNG and partition contracts pass on2,040DEV targets. Seed6 also has positive context and memory erasure effects; this replicates useful history under the frozen interventions. Full-message erasure includes timing,presence and normalization changes.
+
+
+### Longer credit at fixed optimizer batch — completed 64K comparison
+
+**Credit64 loses to credit16: selected NLL8.162280 versus8.033311**, a0.128969NLL loss. Seed6,P24/D2/H2/U4,GPT-2 FineWeb64K,two passes/131,056fitting targets,256updates and fourDEVchecks; optimizerbatch64 and all settings except creditwindow match. Credit64 selects initialization; finaltrained loss8.284746. Retaincredit16. This comparison changes factual gradient horizon and alternative-write utility boundary together. Its selected-state utility diagnostic evaluates initialization; complete fitting work is queued.

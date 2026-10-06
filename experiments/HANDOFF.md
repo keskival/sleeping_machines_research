@@ -1,3 +1,19 @@
+# Longer-credit64K completed: quality loss — 6 October 2026
+
+Guardedexit0 at05:56:33;131056targets/256updates/two passes. Credit64selected
+initial8.162279794730 atstep0; trainedDEV64/128/192/256 is8.209970511642/
+8.241530953202/8.331489832261/8.284745758655. Totalwall283.555546s.
+Savedcredit16selected8.033310714422 wins by0.128969080308NLL under matched
+P24/data/seed6/updates/checkpoints. Longercreditfails improvementoverinitial;
+retaincredit16. This changescreditgraph and alternativeutility boundary together,
+not proof thatlongermemory isuseless. Exactcostqueued, no projectedworkverdict.
+
+Utility PID132469 verified live(~304MiBRSS). It evaluates selectedINITIAL,
+so anyutility isinitial-statefeature utility, not learnedcredit64memory evidence.
+Afteritscontracts exactfullwork runs automatically; preserve planned5400scap.
+Next diagnose longer-creditlearning instability/teacher variance from trained
+state ratherthan promote width-only scaling or infer familylimitations.
+
 # Completed 1M packet published to PDF — 6 October 2026
 
 Bounded publisher report/publish_token_1m_snapshot_20261006_v1.py appended two
