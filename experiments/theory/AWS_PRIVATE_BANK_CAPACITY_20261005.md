@@ -274,3 +274,15 @@ At lr.003, scales¼ and1/16 improve both selected seeds while retaining nonzero 
 
 
 **AWS256K positive-time seed6 quality win:** scale1/1over16 selected7.714196299/7.696178960DEVNLL, gain0.018017339NLL; selectedstep384/512. Same source/data/settings/524272fit/2040DEVtargets,P24D2H2U4,lr.003,uniformK4future credit; slower nonzero decay/rotation retains all core mechanisms. Scaled initial8.078814937/final7.917095708,ordinary throughput843.615targets/s,peak615556KiBRSS. Exploratory paired seed6 DEV quality win; seed7,selected utility and exact complete-work pending. No Pareto/matched-reference/public win claimed. Preserve8Ktrained loss and frozen probes. Sourceaws_private_bank_time_256k_20261006T041606Z_scale1over16_s6.aws.json.
+
+
+## Completed 256K positive-time paired quality
+
+Two exploratory paired seeds, GPT-2/FineWeb262144TRAINtokens/two passes524272fit targets/2040DEVtargets; source/data/settings matched except tag and declared time scale. Positive gain favors scale1/16.
+
+| Seed | Scale1 DEV NLL | Scale1/16 DEV NLL | Gain NLL | Scaled verdict |
+|---|---:|---:|---:|---|
+|6|7.714196299|7.696178960|0.018017339|win|
+|7|7.731961478|7.753842941|-0.021881463|loss|
+
+Seed6 quality win0.018017339NLL; seed7 quality loss0.021881463NLL. The two-seed mean favors scale1 by0.001932062NLL. Slower evolution improved the frozen256Kprobe and one trained seed, but the trained gain did not repeat across both seeds. Preserve all trajectories and8Ksmoke loss. Seed7scaled selectedstep384/final8.053792796,ordinary throughput847.019targets/s,peak615736KiBRSS. Selected memory/payload utility and exact complete-work are queued; use those completed receipts for the next model decision. No Pareto/public-reference win.

@@ -4227,3 +4227,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K time-scale1 seed7 completed:** selected7.731961478DEVNLL atstep384,initial8.078814937,final7.896858126; every scored DEV step exactly matches saved original lr.003seed7 control. Both scale1seeds reproduce saved curves; full-state cross-source parity is a separate claim. Ordinary throughput856.246targets/s,peak617436KiBRSS,524272fit/2040DEVtargets. Source aws_private_bank_time_256k_20261006T041606Z_scale1_s7.aws.json. Last1/16seed7fit next; selected utility and exact whole-work pending. Seed6qualitywin preserved; two-seed verdict awaits finalfit.
+
+
+**AWS256K positive-time fourfits completed:** scale1/1over16 seed6NLL7.714196299/7.696178960(win.018017339),seed7NLL7.731961478/7.753842941(loss.021881463). Mean favors scale1 by0.001932062NLL; no replicated quality win. All source/data/settings paired,524272fit/2040DEVtargets. Preserve all wins/losses/frozenprobes. Selected utility/payload then exact fullwork follows; no new scaled architecture promotion before those receipts. Seed7throughput847.019/RSS615736KiB. Public benchmark stillpending.
