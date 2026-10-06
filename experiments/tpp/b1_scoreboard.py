@@ -5,7 +5,7 @@ Reads experiments/results/tpp/b1_final_<dataset>_<version>_s<seed>.json; reports
 total/time/mark per-event LL, RMSE and accuracy, and the gap to the best published model (S2P2 Table 8; 5 seeds).
 A win requires the mean to exceed the best published mean; it is reported with both seed spreads.
 """
-import glob, json, re, statistics
+import glob, json, re, statistics, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -37,7 +37,8 @@ def main():
         print(f"{ds:14} n={len(runs)}  ours {m:.4f} ± {s:.4f}  vs {name} {ref:.3f} ± {ref_sd:.3f}  gap {m - ref:+.4f}"
               f"  time {agg['time_ll'][0]:.3f} (best {ref_time})  mark {agg['mark_ll'][0]:.3f} (best {ref_mark})"
               f"  {'WIN' if m > ref else 'behind'}")
-    (ROOT / 'experiments/results/tpp/b1_scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
+    if '--write' in sys.argv:
+        (ROOT / 'experiments/results/tpp/b1_scoreboard.json').write_text(json.dumps(out, indent=1) + '\n')
 
 
 if __name__ == '__main__':
