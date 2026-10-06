@@ -4697,7 +4697,7 @@ cadence scale with data. Larger width/seed comparisons and complete larger-stage
 work measurements are the next tests. No fitted exponent or matched-quality/
 iso-FLOP Transformer win. Publicvalidation untouched;4M reserved.
 
-![Completed tokenized data/capacity/work measurements](report/figures/token_language_measured_scaling_20261006_v3.png)
+![Completed tokenized data/capacity/work measurements](report/figures/token_language_measured_scaling_20261006_v4.png)
 
 Source-bound PNG/SVG/JSON figure and scaling collectionv5 preserve older figures
 and records. Seven completed original-family data/capacity cells collected;

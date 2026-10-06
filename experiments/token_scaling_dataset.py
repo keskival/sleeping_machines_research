@@ -20,6 +20,8 @@ def collect():
         for width in (16,24,32):
             for seed in (6,7):
                 tag=f'curie_data_growth_tokens_{label}_b64_c16_p{width}_s{seed}_20261005_v1'
+                if (budget,width,seed)==(1048576,24,7):
+                    tag='curie_original_1m_p24_s7_20261006_v1'
                 path=ROOT/f'experiments/results/token_language/{tag}.json'
                 selection_path=path.with_suffix('.selection.json')
                 if not path.exists() or not selection_path.exists():continue

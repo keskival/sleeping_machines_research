@@ -1,3 +1,13 @@
+# Independent 1M seed added to measured visualization — 6 October 2026
+
+Collector v7 verifies nine completed original-stage cells, including distinct
+curie_original_1m_p24_s7 tag with identical protocol family. No cost lent from
+seed6. Figure v4 adds seed7 diamond at1M and retains64Krepeat, sourceSHA receipt,
+standalonePNG/SVG/JSON. Visually inspected; producer pages validate. RootREPORT
+and PDFproducer usev4; oldfigures preserved, PDF refresh pending. No fittedlaw.
+Seed7 utility PID130188 verified live; next completeutility, then publication
+and a concrete credit/memory diagnosis before broader scaling admission.
+
 # Independent P24/1M seed completed; utility live — 6 October 2026
 
 Seed7 guardedfit exited0 at05:44:00UTC,2,097,136targets/4096updates/two passes.

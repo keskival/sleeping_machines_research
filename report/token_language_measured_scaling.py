@@ -25,6 +25,7 @@ def build(prefix):
             assert selected['dev_nll']==min(x['dev_nll'] for x in r['curve'])
             rows.append(dict(tokens=tokens,width=width,parameters=r['parameters'],initial=r['curve'][0]['dev_nll'],selected=selected['dev_nll'],final=r['curve'][-1]['dev_nll']))
     repeat=read('experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.selection.json')['selected']['dev_nll']
+    repeat_1m=read('experiments/results/token_language/curie_original_1m_p24_s7_20261006_v1.selection.json')['selected']['dev_nll']
     work=[]
     for path,tokens,width in [('experiments/results/diagnostics/curie_fixed_batch_tokens_8k_c16_work_20261005_v1.json',8192,16),('experiments/results/diagnostics/curie_data_growth_tokens_64k_p24_work_20261005_v1.json',65536,24)]:
         r=read(path);assert r['curve_parity_max_error']<2e-6 and r['fitting']['formula_coverage_complete']
@@ -37,7 +38,7 @@ def build(prefix):
     for width in (16,24,32):
         chosen=[r for r in rows if r['width']==width]
         axes[0].scatter([r['tokens'] for r in chosen],[r['selected'] for r in chosen],color=colors[width],label=f'P{width}',s=45)
-    axes[0].scatter([65536],[repeat],marker='D',facecolors='none',edgecolors=colors[24],label='P24 seed7',s=50)
+    axes[0].scatter([65536,1048576],[repeat,repeat_1m],marker='D',facecolors='none',edgecolors=colors[24],label='P24 seed7',s=50)
     axes[0].set_xscale('log',base=2);axes[0].set_xticks([8192,65536,262144,1048576],['8K','64K','256K','1M'])
     axes[0].set(xlabel='Distinct admitted TRAIN tokens',ylabel='Selected development NLL',title='Data growth: measured points')
     axes[0].legend(fontsize=8)
@@ -54,8 +55,8 @@ def build(prefix):
     for suffix in ('.png','.svg','.json'):
         if prefix.with_suffix(suffix).exists():raise FileExistsError(prefix.with_suffix(suffix))
     fig.savefig(prefix.with_suffix('.png'),dpi=200);fig.savefig(prefix.with_suffix('.svg'));plt.close(fig)
-    record=dict(status='completed_measured_visualization',rows=rows,seed7_p24_repeat=repeat,work=work,input_sha256=provenance,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),curve_fitted=False,
-        scope='Same2040-target DEV population and two-pass fits, initial-inclusive selection; TRAIN frequency prior and checkpoint cadence depend on budget. Seed6 primary; one P24seed7 repeat. Width changes core/input/readout together. No raw points connected or extrapolated. Audited cost points differ in data and width; no iso-quality/iso-FLOP or exponent claim. Arithmetic fit boundary includes discovery/replay/backward/optimizer; special functions separate, random-sampling work unquantified. 256K and 1M work absent until actual audits. 4M remains reserved.')
+    record=dict(status='completed_measured_visualization',rows=rows,seed7_p24_repeat=repeat,seed7_p24_1m_repeat=repeat_1m,work=work,input_sha256=provenance,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),curve_fitted=False,
+        scope='Same2040-target DEV population and two-pass fits, initial-inclusive selection; TRAIN frequency prior and checkpoint cadence depend on budget. Seed6 primary; P24seed7 repeats at64K and1M. Width changes core/input/readout together. No raw points connected or extrapolated. Audited cost points differ in data and width; no iso-quality/iso-FLOP or exponent claim. Arithmetic fit boundary includes discovery/replay/backward/optimizer; special functions separate, random-sampling work unquantified. 256K and 1M work absent until actual audits. 4M remains reserved.')
     prefix.with_suffix('.json').write_text(json.dumps(record,indent=2)+'\n')
     print('Exported PNG/SVG and source-bound measurement receipt')
 if __name__=='__main__':
