@@ -382,3 +382,6 @@ Seed6 quality win0.018017339NLL; seed7 quality loss0.021881463NLL. The two-seed 
 ![Completed paired development curves and payload utility](../figures/aws_private_bank_time_256k_20261006.svg)
 
 Dots mark each selected checkpoint. The two-seed mean favors scale1 by0.001932062NLL; slower evolution increases payload-erasure cost in both seeds. Source-bound figure inputs are recorded beside the PNG/SVG exports. Complete-work results remain pending.
+
+
+**AWS256K native lr.003seed6 complete-work finished:** exact model/optimizer/persistent-state/cursor/all-RNG replay and zero DEV-curve error; fitting/inference formula coverage complete. SelectedNLL7.714196299,whole-fit799.094103930GFLOPs,fitting1.524197561MFLOPs/target,inference0.394663518MFLOPs/target.524272fit/2040DEVtargets/two passes; entire1024-updatefit charged despite selectedstep384. Special functions separate/random work unquantified. Source aws_private_bank_256k_lr0003_s6_work_20261006T030500Z.json. Other native/scaled work rows pending; no matched-public-reference win.

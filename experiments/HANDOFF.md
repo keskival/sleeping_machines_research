@@ -4270,3 +4270,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS secondary-DEV diagnosis prepared, not admitted:** aws_private_bank_time_secondary_dev.py evaluates fixed primary-selected checkpoints on one declared larger development interval beyond their primary interval, retains exact token/lane/chunk/EOS/source/checkpoint protocol and verifies original selected NLL first. No refit/reselection/official-public-validation scoring. Intended to diagnose split-seed small-DEV quality while existing full-work audits run; extra interval is not an independent training seed. Syntax passes only. Unique guarded slot/development provenance and measured cap required before execution. Public reference remains protected.
+
+
+**AWS256K native lr.003seed6 complete-work finished:** exact model/optimizer/persistent-state/cursor/all-RNG replay and zero DEV-curve error; fitting/inference formula coverage complete. SelectedNLL7.714196299,whole-fit799.094103930GFLOPs,fitting1.524197561MFLOPs/target,inference0.394663518MFLOPs/target.524272fit/2040DEVtargets/two passes; entire1024-updatefit charged despite selectedstep384. Special functions separate/random work unquantified. Source aws_private_bank_256k_lr0003_s6_work_20261006T030500Z.json. Other native/scaled work rows pending; no matched-public-reference win.
