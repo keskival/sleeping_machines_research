@@ -1,0 +1,2 @@
+# B1 EasyTPP: B1 TEST protocol, Amazon v8 (16 delayed + 4 logistic-window clocks, dropout 0.3; DEV 0.768 vs v5 0.724, v8 8x8 0.723): 5 seeds, TEST once per seed at best DEV. Decides the Amazon verdict vs S2P2 0.781
+b1_final_amazon_v8_s3 experiments/tpp/race_tpp_v8.py --tag b1_final_amazon_v8_s3 --dataset amazon --seed 3 --n-lognormal 16 --n-window 4 --dropout 0.3 --patience 30 --score-test
