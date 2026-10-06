@@ -84,3 +84,10 @@ peaks; neither has addressed per-mark memory.
 | 6 Oct | analysis | Amazon gap histogram | 31% uniform on [0.010, 0.015], 69% uniform on [0.70, 0.80]; a two-box density alone is worth ≈ 2.61 nats | A race of always-firing clocks cannot put 69% of mass on the later box: the earliest clock almost always wins |
 | 6 Oct | r2 (v3) | delayed clocks fire with learned probability π (silent routes), 8 log-normal clocks | Amazon **0.705** (2.585, −1.880); Taobao **1.281** (2.733, −1.453); Taxi **0.485** (0.712, −0.227); StackOverflow **−2.171** (−0.712, −1.459) | v3 improves all four; v3 is the B1 model. Small datasets peak at 13–35 epochs |
 | 6 Oct | g0, g1 | long training, no early stop: no decay (g0); d64 + decay 0.1 (g1) | g0 best 0.475 at epoch 27, DEV 0.32 by epoch 589; g1 DEV 0.18 by epoch 209 and falling | no recovery yet; decay 0.1 at lr 3e−3 is too weak; g2 (decay 1.0) and g3 (asymmetric) pending |
+| 6 Oct | r3 (v4) | Taxi regularization: dropout 0.3; weight EMA 0.999; EMA + d64 + decay 1.0, 600 epochs | 0.487; 0.484; 0.453 (train ≈ DEV, no memorization, lower plateau) | Regularization alone does not move Taxi past v3 (0.485); g2 (decay 1.0) also plateaus ≈ 0.453 by epoch 809; g3 (asymmetric private decay) pending |
+| 6 Oct | r4 | Amazon, 16 delayed clocks | **0.720** (time 2.602, mark −1.881) | denser clock tiling helps box-shaped gaps; d64 variant and StackOverflow arms queued; Retweet v3 queued |
+
+**Status (6 Oct ~16:30 UTC).** Estimated against published TEST bests using count-model split offsets (not a verdict):
+ahead on Taxi and Taobao (time and mark), behind on Amazon time (≈0.06 after r4) and StackOverflow time (≈0.03),
+near level on Retweet. Next: finish r4 and Retweet v3; per-dataset small grid as the references did; then one TEST
+scoring of each selected configuration with 5 seeds; measure inference work.
