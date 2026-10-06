@@ -1,0 +1,2 @@
+# B1 EasyTPP: v7 windowed (Kumaraswamy) delayed clocks on Amazon: DEV bound analysis shows ~0.036 nats lost to box shape (exact two-box 2.639 vs ours 2.603). Decides whether v7 replaces v5 for Amazon (and is tried on Taobao)
+b1_r9_amazon_v7_ln8_w8_s0 experiments/tpp/race_tpp_v7.py --tag b1_r9_amazon_v7_ln8_w8_s0 --dataset amazon --seed 0 --n-lognormal 8 --n-window 8 --dropout 0.3 --patience 30
