@@ -4119,3 +4119,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS scaled learning contracts admitted20261006T035307Z:** unique idle-slot1 queueaws_private_bank_time_contracts_20261006T035307Z;180s bounded synthetic16-token integrated factual/forced-alternative/continuation checks at1,¼,1/16.1.6GBRSS covers simultaneous control/restored models and gradients beyond prior approximately440MB scoring;5GBVMS/8GiBfloor. All pins checked; existing dense2/work3 preserved. Numerical outcome pending.
+
+
+**AWS time contracts first run failed/fixture repaired:** unique20261006T035307Z stopped on zero raw_rate/frequency gradients atscale1. FrequencyTokenReadout zeroes contextual output weights, so initialization sends no factual gradient into the core. This is a fixture cold-start issue, not scaled-model learning evidence. Original source/queue/log preserved. New v2 driver warms only the decoder with one identical synthetic SGD step on detached features, then tests core gradients and actual alternatives. v2 syntax/guarded rerun pending; no numerical pass claimed.
