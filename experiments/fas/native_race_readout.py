@@ -13,9 +13,8 @@ comparable to native.py's.
 Selection: validation-clean NLL. --no-test for development (B3 maturity gate). Development on fas_v1 validation is
 disclosed and not counted in the v2 tuning budget.
 
-Work: the readout adds per event, per slot, about 2*(P*h + h*(V+3)) multiply-adds plus the context map 2*H*P*h once
-per event. The integrated per-event work is not traced by this development driver; trace it before any confirmatory
-use.
+Work: the first training window(s) run eagerly under the operation audit (work_audit.FasAudit; forward, backward and
+optimizer) and are extrapolated per event. Inference work is traced on 4 validation runs.
 """
 import argparse
 import hashlib
@@ -101,6 +100,7 @@ def main():
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--max-windows', type=int, default=0); p.add_argument('--segment', type=int, default=128)
     p.add_argument('--tau-max', type=float, default=1000.); p.add_argument('--no-test', action='store_true')
+    p.add_argument('--trace-windows', type=int, default=1, help='training windows traced by the operation audit (eager)')
     a = p.parse_args()
     out = Path(OUT) / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -139,7 +139,9 @@ def main():
         total = min(total, a.max_windows)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(opt, total)
     rc = None if a.route_credit == 'none' else a.route_credit
-    curve = []; best = (math.inf, None, None, None); events_seen = 0; w = 0
+    curve = []; best = (math.inf, None, None, None); events_seen = 0; w = 0; ledger = None; traced_events = 0
+    from parallel_head_accumulated_language import merge
+    from work_audit import capture
     for epoch in range(1, a.epochs + 1):
         order = rng.permutation(len(train)); t0 = time.perf_counter(); loss_sum = 0.; n_sum = 0
         for b in range(0, len(order), a.lanes):
@@ -151,13 +153,24 @@ def main():
                 if w >= total:
                     break
                 sl = slice(s, s + a.segment)
-                model.train(); readout.train(); opt.zero_grad(set_to_none=True)
-                ll, _, valid, st = readout_episode(model, readout, stamps[:, sl], marks[:, sl], ids[:, sl], state=state,
-                                                   seed=100000 + w, route_credit=rc, posterior=a.posterior,
-                                                   compiled=a.compiled, binding=binding)
-                m = valid.sum()
-                loss = -(ll * valid).sum() / m.clamp_min(1)
-                loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, a.clip); opt.step(); schedule.step()
+                box = {}
+
+                def train_step(compiled):
+                    model.train(); readout.train(); opt.zero_grad(set_to_none=True)
+                    ll, _, valid, st = readout_episode(model, readout, stamps[:, sl], marks[:, sl], ids[:, sl], state=state,
+                                                       seed=100000 + w, route_credit=rc, posterior=a.posterior,
+                                                       compiled=compiled, binding=binding)
+                    m = valid.sum()
+                    loss = -(ll * valid).sum() / m.clamp_min(1)
+                    loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, a.clip); opt.step()
+                    box.update(st=st, m=m, loss=loss)
+                if w < a.trace_windows:          # measured work: eager formulation under the operation audit
+                    rec = capture(lambda: train_step(False)); ledger = merge([ledger, rec]) if ledger else rec
+                    traced_events += stamps.shape[0] * (min(s + a.segment, T) - s)
+                else:
+                    train_step(a.compiled)
+                st, m, loss = box['st'], box['m'], box['loss']
+                schedule.step()
                 state = detach_state(st); w += 1
                 events_seen += stamps.shape[0] * (min(s + a.segment, T) - s)
                 loss_sum += float(loss.detach()) * int(m); n_sum += int(m)
@@ -190,6 +203,13 @@ def main():
             for r in RULES:
                 per_run[f'{split}_clean_{r}'] = pair[0][r]; per_run[f'{split}_faulty_{r}'] = pair[1][r]
     score_path = out.with_name(f'{a.tag}_scores.npz'); np.savez_compressed(score_path, **per_run)
+    infer = None
+    if a.trace_windows:                 # measured inference work: eager, no grad, 4 validation runs
+        st_i, mk_i, id_i, len_i = tensors(val_c, list(range(min(4, len(val_c)))))
+        def infer_step():
+            with torch.no_grad():
+                readout_episode(model, readout, st_i, mk_i, id_i, seed=314159, posterior=a.posterior, binding=binding)
+        infer = capture(infer_step); infer_events = st_i.shape[0] * st_i.shape[1]
     readout_params = sum(q.numel() for q in readout.parameters()) + (sum(q.numel() for q in binding.parameters()) if binding else 0)
     result = dict(status='smoke' if a.max_windows else 'completed', battle='B3', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()) + readout_params, readout_parameters=readout_params,
@@ -198,8 +218,15 @@ def main():
                   test_auroc=aurocs(sc_tc, sc_tf, test_k) if sc_tc is not None else 'not scored (development run, --no-test)',
                   selected_weights=_rel(weights),
                   per_run_scores=dict(path=_rel(score_path), sha256=hashlib.sha256(score_path.read_bytes()).hexdigest()),
-                  work=dict(fitting_events=events_seen, readout_madds_per_event=a.heads * a.pool * (a.payload * a.hidden + a.hidden * (V + 3))
-                            + a.heads * a.payload * a.hidden, scope='readout analytic; integrated per-event work not traced (development driver)'),
+                  work=dict(fitting_events=events_seen, traced_fitting_events=traced_events,
+                            fit_arithmetic_flops_per_event=ledger['arithmetic_flops'] / traced_events if ledger else None,
+                            fit_special_function_evaluations_per_event=ledger['special_function_evaluations'] / traced_events if ledger else None,
+                            whole_fit_arithmetic_flops_estimate=ledger['arithmetic_flops'] / traced_events * events_seen if ledger else None,
+                            inference_arithmetic_flops_per_event=infer['arithmetic_flops'] / infer_events if infer else None,
+                            inference_special_function_evaluations_per_event=infer['special_function_evaluations'] / infer_events if infer else None,
+                            scope='operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including '
+                                  'backward and optimizer, extrapolated per event; inference traced on 4 validation runs '
+                                  '(padded events included); arithmetic and special functions counted separately'),
                   data_manifest_sha256=hashlib.sha256((d / 'manifest.json').read_bytes()).hexdigest(),
                   source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in
                                  ('experiments/fas/native_race_readout.py', 'experiments/fas/native.py',
