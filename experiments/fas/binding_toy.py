@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from sleeping_machines.addressed_event_heads import AddressedEventHeads  # noqa: E402
 from sleeping_machines.fast_native_core import fast_class  # noqa: E402
-from sleeping_machines.race_readout import BindingMemory, RaceReadout, detach_state, readout_episode  # noqa: E402
+from sleeping_machines.race_readout import BindingMemory, PredictiveLayer, RaceReadout, detach_state, readout_episode  # noqa: E402
 
 
 def sample(rng, K, R, medians, cv, stagger, drop):
@@ -63,7 +63,7 @@ def alpha_of(slots, who, lens):
     return same / max(n, 1)
 
 
-SKIP = dict(deep=False)
+SKIP = dict(deep=False, pred=None)
 
 
 def evaluate(model, ro, bm, data, T, deterministic=False):
@@ -71,7 +71,7 @@ def evaluate(model, ro, bm, data, T, deterministic=False):
     rec = []
     with torch.no_grad():
         ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=1, binding=bm, record=rec,
-                                          deterministic=deterministic, skip_deep=SKIP['deep'])
+                                          deterministic=deterministic, skip_deep=SKIP['deep'], pred_layers=SKIP['pred'])
     mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
     slots = torch.stack([r['slot'] for r in rec], 1).numpy()
     return float(-(ll * mask).sum() / mask.sum()), alpha_of(slots, who, lens)
@@ -92,6 +92,8 @@ def main():
     p.add_argument('--hidden', type=int, default=32); p.add_argument('--no-context', action='store_true')
     p.add_argument('--additive-context', action='store_true')
     p.add_argument('--skip-deep', action='store_true', help='no deep race layers (THEORY §438 ablation)')
+    p.add_argument('--pred-layer', type=int, default=0, help='a predictive-routed deep layer with this many slots in place '
+                   'of the learned deep layers (THEORY §438); its local likelihood joins the loss')
     p.add_argument('--learned-routing', action='store_true', help='comparison: query/key write race with linear write credit (§437 T1)')
     p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
                    'counts (THEORY §434.1.2), e.g. 1,4,16')
@@ -107,17 +109,27 @@ def main():
     ro = RaceReadout(V_TOY, 1, a.slots, 8, 16, hidden=a.hidden, mu0=2., classes=a.classes,
                      context='additive' if a.additive_context else not a.no_context)
     bm = BindingMemory(16, a.slots, 8, tau_max=100., gated=a.gated, learned=a.learned_routing)
-    params = list(model.parameters()) + list(ro.parameters()) + list(bm.parameters())
+    if a.pred_layer:
+        SKIP['deep'] = True
+        SKIP['pred'] = torch.nn.ModuleList([PredictiveLayer(V_TOY, 16, a.pred_layer, 8, hidden=a.hidden, classes=a.classes,
+                                                            tau_max=100.)])
+    params = list(model.parameters()) + list(ro.parameters()) + list(bm.parameters()) + (list(SKIP['pred'].parameters()) if SKIP['pred'] else [])
     opt = torch.optim.Adam(params, lr=a.lr)
     curve = [dict(step=0, val=evaluate(model, ro, bm, val, T))]
     t0 = time.perf_counter()
     for step in range(1, a.steps + 1):
         idx = rng.integers(0, len(train), a.lanes)
         stamps, marks, ids, _, lens = batch([train[i] for i in idx], T)
+        local = []
         ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=step, binding=bm,
-                                          deterministic=a.train_argmax, skip_deep=a.skip_deep)
+                                          deterministic=a.train_argmax, skip_deep=SKIP['deep'], pred_layers=SKIP['pred'],
+                                          local=local)
         mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
         loss = -(ll * mask).sum() / mask.sum()
+        if local:                      # layer-local superposition likelihoods (§438)
+            inside = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None])
+            for k, (lll, lv) in enumerate(local):
+                loss = loss - (lll * (lv & inside[:, k])).sum() / mask.sum()
         opt.zero_grad(); loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, 1.); opt.step()
         if step % max(1, a.steps // 6) == 0 or step == a.steps:
             curve.append(dict(step=step, train_nll=float(loss), val=evaluate(model, ro, bm, val, T),

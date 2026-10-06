@@ -329,8 +329,44 @@ class BindingMemory(nn.Module):
         return bmem, torch.where(onehot, now[:, None], t_ref), bseen | onehot
 
 
+class PredictiveLayer(nn.Module):
+    """A deep layer with predictive routing (THEORY §438). Its slots form a binding memory over the layer's input event
+    stream. Each slot's race readout predicts the next input (type law, own-duration law, pending probability). An
+    arriving input is written to the slot drawn by the posterior race of those predictions, so the route needs no
+    learned credit. The layer contributes its own superposition log-likelihood (a local objective) and outputs
+    LN(x + W [x, m_s*]) from the written slot's updated memory."""
+
+    def __init__(self, types, total_payload, slots, payload, hidden=64, classes=0, tau_max=1000., gated=True):
+        super().__init__()
+        self.memory = BindingMemory(total_payload, slots, payload, tau_max=tau_max, gated=gated)
+        self.readout = RaceReadout(types, 1, slots, payload, total_payload, hidden=hidden, classes=classes)
+        self.out = nn.Linear(total_payload + payload, total_payload)
+        self.total_payload = total_payload
+
+    def step(self, st, x, now, etype, deterministic):
+        """st: dict(bmem, t_ref, bseen, laws, t_prev) or None. Returns x_out, local log-lik (n,), valid (n,), new st."""
+        n = x.shape[0]; U, P = self.memory.slots, self.memory.payload
+        if st is None:
+            st = dict(bmem=torch.zeros(n, U, P, dtype=x.dtype), t_ref=now[:, None].expand(n, U).clone(),
+                      bseen=torch.zeros(n, U, dtype=torch.bool), laws=None, t_prev=None)
+        if st['laws'] is not None:
+            ll, _, logr = event_terms(st['laws'], st['t_ref'], st['t_prev'], now, etype, self.readout.eps)
+            noise = torch.ones(n, U, dtype=torch.float64) if deterministic else torch.empty(n, U, dtype=torch.float64).exponential_()
+            slot = (logr.detach() - noise.log()).argmax(-1); valid = torch.ones(n, dtype=torch.bool)
+        else:
+            ll = torch.zeros(n, dtype=torch.float64); slot = torch.zeros(n, dtype=torch.long)
+            valid = torch.zeros(n, dtype=torch.bool)
+        bmem, t_ref, bseen = self.memory.write(st['bmem'], st['t_ref'], st['bseen'], slot, x, now)
+        t_ref = torch.where(~bseen, now[:, None], t_ref)
+        m_s = torch.gather(bmem, 1, slot[:, None, None].expand(n, 1, P)).squeeze(1)
+        x_out = F.layer_norm(x + self.out(torch.cat([x, m_s], -1)), (self.total_payload,))
+        laws = self.readout(bmem[:, None], x)
+        return x_out, ll, valid, dict(bmem=bmem, t_ref=t_ref, bseen=bseen, laws=laws, t_prev=now)
+
+
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
-                    deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False):
+                    deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False,
+                    pred_layers=None, local=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -339,6 +375,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     binding: a BindingMemory. The readout then reads the binding slots (readout built with heads=1, pool=Ub). Each event
     is written to one binding slot drawn by the posterior race (argmax when deterministic); the first event of a stream
     takes slot 0. The deep layers keep their learned races (no override).
+    pred_layers: optional list of PredictiveLayer applied after the deep race layers (or instead of them with
+    skip_deep); their local log-likelihoods are appended to `local` (a list) per event as (ll (n,), valid (n,)).
     skip_deep: no deep race layers; the event embedding feeds the binding memory and readout directly (THEORY §438
     ablation: are learned-route layers needed when binding and readout are posterior/likelihood-driven?).
     sparse: inference only (no grad): deep layers run sparse_layer_step (winner-only computation, cached slot reads);
@@ -432,6 +470,12 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     t_ref = torch.where(wrote.reshape(n, H * U), now[:, None], base)
             if not skip_deep:
                 ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
+            if pred_layers:
+                pst = list(st.get('pred') or [None] * len(pred_layers)) if k == 0 else pst
+                for li, layer in enumerate(pred_layers):
+                    x, lll, lv, pst[li] = layer.step(pst[li], x, now, types[:, k], deterministic)
+                    if local is not None:
+                        local.append((lll, lv))
             if binding is not None:
                 if t_ref is None:
                     t_ref = now[:, None].expand(n, Ub).clone()
@@ -456,20 +500,19 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                  t_ref=t_ref, laws=prev, t_prev=t_prev)
     if binding is not None:
         state.update(bmem=bmem, bseen=bseen)
+    if pred_layers:
+        state['pred'] = pst
     if sparse:
         state['reads'] = reads
     return torch.stack(ll_tot, 1), torch.stack(ll_time, 1), torch.stack(valid, 1), state
 
 
 def detach_state(state):
-    out = {}
-    for k, v in state.items():
-        if isinstance(v, list):
-            out[k] = [x.detach() for x in v]
-        elif isinstance(v, dict):
-            out[k] = {a: b.detach() for a, b in v.items()}
-        elif v is None:
-            out[k] = None
-        else:
-            out[k] = v.detach()
-    return out
+    """detach every tensor in a (nested) state of dicts, lists and tensors; None stays None."""
+    if state is None:
+        return None
+    if isinstance(state, dict):
+        return {k: detach_state(v) for k, v in state.items()}
+    if isinstance(state, (list, tuple)):
+        return [detach_state(v) for v in state]
+    return state.detach() if torch.is_tensor(state) else state
