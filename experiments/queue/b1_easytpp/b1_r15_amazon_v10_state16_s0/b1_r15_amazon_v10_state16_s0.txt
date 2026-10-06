@@ -1,0 +1,2 @@
+# B1: v10 continuous-time state clock (hazard and marks follow a persistent memory evolving through the silent interval) on the datasets whose deficit is time LL: StackOverflow (TEST -2.181 vs -2.163) and Amazon (0.768 vs 0.781). Decides whether v10 supersedes v8/v5 there
+b1_r15_amazon_v10_state16_s0 experiments/tpp/race_tpp_v10.py --tag b1_r15_amazon_v10_state16_s0 --dataset amazon --seed 0 --n-lognormal 16 --n-window 4 --dropout 0.3 --patience 30 --state-modes 16
