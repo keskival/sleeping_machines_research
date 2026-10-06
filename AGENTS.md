@@ -34,14 +34,23 @@
   pending. Replace a leading valid result only after a completed, comparable
   run improves it, retaining the previous result in the historical record.
   State protocol errors and revised interpretations beside the original
-  numbers instead of silently deleting them. Keep existing dense controls;
-  the user has reserved new Transformer/LSTM training for AWS.
+  numbers instead of silently deleting them. Keep existing dense control
+  results as historical evidence; launch no new Transformer/LSTM training on
+  any host (user direction, 6 October 2026, below).
 - Preserve the established architectural case when editing the report: time
   performs computation, hard routes learn through counterfactual credit, deep
   persistent event representations, and capacity beyond activity. Retain the
   supporting temporal algebra, key/value separation, silence-aware supervision,
   depth theory and compute-allocation reasoning. Integrate new findings with
   their evidence and scope instead of replacing these principles ad hoc.
+
+# Own-model focus: no new dense controls (user direction, 6 October 2026)
+
+- From 6 October 2026, spend compute on improving our own integrated models. Do not queue or launch new
+  Transformer, LSTM or other external-architecture training on any host, including retries, tuning arms or
+  "missing" controls listed in older orders. Compare against published benchmark and leaderboard scores under the
+  exact matching data, tokenizer and scoring protocol. The 90M D Transformer 256x4 run already in progress on AWS
+  completes as admitted; it is the last one. Completed dense-control results stay in the record and tables.
 
 # Current product orders (read first)
 

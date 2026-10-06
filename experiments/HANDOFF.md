@@ -1,3 +1,13 @@
+# Own-model focus; dense controls end — 6 October 2026
+
+User direction 14:00 UTC: improve our own models from here; no new Transformer/LSTM training on any host. Use
+published benchmark/leaderboard scores (exact protocol) and already completed dense results. AWS
+`aws_tuned_ref_90M_D_tf256L4_p1_lr0.001_s0_20261004T210000Z` (slot 2, step 7686/10986 at 13:24, valid 1.797 bpc,
+~2.6 s/step, ETA ~15:45-16:00 UTC) runs to completion and auto-publishes; it is the last dense job in
+`aws_model_improvement_repair_20261005T161000Z` (C LSTM512, C TF192 and D TF192 already completed; no dense addenda).
+AWS slots 1 and 3 are idle awaiting addenda: next admissions are integrated-model work only. AGENTS.md and
+PRODUCT_ORDERS.md updated.
+
 # Split-horizon state witnesses prepared; driver partial path corrected
 
 Staticreview found partial engine results use .partial.json, not .json; pending

@@ -1,5 +1,14 @@
 # Product orders — what we are after (issued 4 October 2026, 19:20 UTC)
 
+**Latest user direction — improve our own models; no new dense controls (6 October 2026):** compute goes to
+improving the integrated temporal/sparse models. No new Transformer/LSTM (or other external-architecture) training on
+any host: no retries, tuning arms, strict matched-compute retries or the "missing" D-optimized recurrent control below.
+References are published benchmark/leaderboard scores on the exact matching protocol, plus dense results already
+completed. The running AWS `aws_tuned_ref_90M_D_tf256L4_p1_lr0.001_s0_20261004T210000Z` finishes as admitted and is
+the last dense control; it is the only remaining dense job in `aws_model_improvement_repair_20261005T161000Z`. This
+supersedes dense-training admissions in the paragraphs and tables below (P0-6, the strict Transformer retries,
+P1-4); their completed numbers remain the record.
+
 **Latest user direction — retain three evidence fronts (5 October):** continue
 proactively on the strongest integrated language path, while allocating bounded
 compute to improving FAS and tabular headline results. More FAS seeds and
