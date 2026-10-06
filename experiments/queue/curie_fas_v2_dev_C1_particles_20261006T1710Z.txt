@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2) native development, evaluation only (~40 min). Decision: whether L-particle SMC evaluation (THEORY §434.1.2) of C1 raises v2 validation AUROC / lowers NLL; sets the particle count of the v2 configuration.
+curie_fas_v2_dev_C1_particles_20261006T1710Z experiments/fas/race_smc_eval.py --result experiments/results/fas/curie_fas_v2_dev_C1_20261006T1710Z.json --particles 1,4,16 --runs 200 --lanes 16 --compiled --tag curie_fas_v2_dev_C1_particles_20261006T1710Z

@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2) native development, B3_DEVELOPMENT_LOG.md C2. Decision: our previous native head on v2 (reference for C1). ~1.5 h, ~3 GB.
+curie_fas_v2_dev_C2_20261006T1710Z experiments/fas/native.py --data fas_v2_K2_drop0.02_delta0_20261005 --compiled --payload 32 --depth 4 --heads 2 --pool 8 --route-credit linear --lanes 64 --max-events 2200 --train-max-events 2048 --lr 0.003 --segment 128 --eval-runs 1000 --epochs 1 --fit-runs 5000 --tau-max 1000 --seed 6 --no-test --tag curie_fas_v2_dev_C2_20261006T1710Z
