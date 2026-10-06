@@ -4113,3 +4113,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS positive-scale integrated model implemented:** TimeScaledPrivateBankModel wraps every eager factual/forced-alternative forward with the same positive coefficient scale, preserving parameter names/storage and gradient paths. Checkpoint extra state pins the scale and hook/model source, rejecting incompatible recipes through inherited validation. Compiled mode rejected pending its numerical audit. Syntax passes only; scale1 factual/gradient equivalence, nontrivial scaled rate/frequency gradients, alternative-write suffix credit and checkpoint roundtrip/rejection still require guarded contracts before training. Active jobs untouched.
+
+
+**AWS integrated time contracts implemented:** guarded aws_private_bank_time_contracts.py checks scale1 exact factual outputs/parameter gradients against saved-class control, nonzero finite rate/frequency gradients at1,¼,1/16, actual forced-write suffix utility with zero-forward/nonzero-key-gradient credit, model/state/route-RNG continuation, and cross-scale checkpoint rejection. Deterministic q=1 proposal is a path contract, not sampled-estimator validation; optimizer resume remains separate. Syntax passes; numerical run must be uniquely admitted to idle slot1 with measured reservation. No numerical pass or fit admission inferred.
