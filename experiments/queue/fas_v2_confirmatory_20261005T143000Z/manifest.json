@@ -218,12 +218,28 @@
  },
  "stage1": {
   "original": "experiments/results/fas/fas_v2_calibration_grid_20261006T1745Z.json (no setting qualifies)",
-  "amended": "experiments/results/fas/fas_v2_calibration_amended_grid_20261006T1550Z.json (in progress)",
+  "amended": "experiments/results/fas/fas_v2_calibration_amended_grid_20261006T1550Z.json (all 12 settings qualify; selection K=2, drop .02, delta 0)",
   "selected_by_amended_rule": {
    "K": 2,
    "drop": 0.02,
    "delta": 0.0,
    "note": "first setting in the mildest-first order qualifies (oracle_line .821, best classical order3 .685, gap .136 at N*=512 per line), so the selection is fixed regardless of the remaining settings"
   }
+ },
+ "stage2": {
+  "utc": "2026-10-06T20:14:00Z",
+  "dataset": "fas_v2_K2_drop0.02_delta0_20261005",
+  "manifest": "experiments/results/fas/fas_v2_K2_drop0.02_delta0_20261005_manifest.json",
+  "split_sha256": {
+   "train_clean": "5c5f3dcc8da03fa9b20d120edca763b8ea74c518dd8e6496b899baa1b7e649ba",
+   "val_clean": "562d053db38f4ac2aacf2d86b3b9808b421b3affcf37a4a8333642c3cac18ce9",
+   "val_faulty": "ee629a22feadee96a4bf9b07c0d8c84b9b8b58c3759a358a6464915b7d8686b8",
+   "test_clean": "2b442b57d4b5486b208c463a95769fd16ad5b959ab14f0641bc45ebdc1c3b4f7",
+   "test_faulty": "61b2f3ba9773343599d1d180cbd574d4b87d9635355a436f9d8193605ae07120"
+  },
+  "identity_sha256": "2dfbd12b75e6c9ea3cc337d146c1b670334a5110b8d0d229a633369b9bebafa9",
+  "generator_sha256": "72b4491ce87c6f5f7a18399d2d7b3c0774c8b9dc3adeb8a0d80a6970a73d0afb",
+  "checks": "process events per sample 2,042-2,100; fault kinds 491/509 (val), 1,022/978 (test); seeds disjoint across splits; anonymous files carry no per-event identity",
+  "note": "Frozen from here. Test splits are sealed: only Stage 4 confirmation scoring with ledger entries may read them."
  }
 }

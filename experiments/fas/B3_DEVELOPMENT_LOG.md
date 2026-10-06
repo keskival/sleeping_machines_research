@@ -205,3 +205,9 @@ oracle's .821.
   The learned deep layer's value is cross-process history context. The predictive layer outputs only the written slot's
   process-specific memory, duplicating the binding partition, and its local objective may compete with the top
   objective. Not adopted; C1 is unchanged.
+- 6 Oct 20:31 UTC: **Stage 2 data frozen**: `fas_v2_K2_drop0.02_delta0_20261005`, with the manifest published in
+  results/fas and the split hashes in the B3 queue manifest.
+  - Checks: 2,042–2,100 process events per sample; fault kinds 491/509 (validation) and 1,022/978 (test); seeds
+    disjoint across splits; no per-event identity in the anonymous files.
+  - The declared K = 3 stress set (`fas_v2_stress_K3_drop0.02_delta0_20261005`, validation only) is also generated.
+  - Test splits are sealed.
