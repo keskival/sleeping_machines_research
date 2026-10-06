@@ -1,0 +1,33 @@
+{
+  "run_tag": "aws_fas_v2_data_20261006T1715Z",
+  "script": "experiments/fas/generate_v2.py",
+  "arguments": [
+    "--name",
+    "fas_v2_K2_drop0.02_delta0_20261005",
+    "--K",
+    "2",
+    "--drop",
+    "0.02",
+    "--delta",
+    "0",
+    "--train",
+    "10000",
+    "--val",
+    "1000",
+    "--test",
+    "2000"
+  ],
+  "output_redirected": false,
+  "source_sha256": "72b4491ce87c6f5f7a18399d2d7b3c0774c8b9dc3adeb8a0d80a6970a73d0afb",
+  "git_commit": "0316d667f863e76c1301783580999e072cfd3255",
+  "limits": {
+    "MEM_CAP_KB": "12000000",
+    "MEM_CAP_RSS_KB": "2500000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "3600"
+  },
+  "start_utc": "2026-10-06T21:44:58Z",
+  "status": "completed",
+  "wall_s": 432.45,
+  "peak_rss_kb": 1070436
+}
