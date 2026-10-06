@@ -1,0 +1,215 @@
+{
+  "status": "completed",
+  "battle": "B3",
+  "args": {
+    "data": "fas_v2_K2_drop0.02_delta0_20261005",
+    "tag": "aws_fas_v2_dev_C1_20261006T1715Z",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 8,
+    "hidden": 64,
+    "posterior": false,
+    "type_durations": false,
+    "step_classes": 3,
+    "binding_slots": 54,
+    "binding_gated": true,
+    "readout_context": "full",
+    "route_credit": "linear",
+    "compiled": true,
+    "epochs": 1,
+    "lanes": 64,
+    "fit_runs": 5000,
+    "max_events": 2200,
+    "train_max_events": 2048,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 1000,
+    "max_windows": 0,
+    "segment": 128,
+    "tau_max": 1000.0,
+    "no_test": true,
+    "trace_windows": 1
+  },
+  "parameters": 339364,
+  "readout_parameters": 23476,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll_time_units": 0.35107739669936533,
+      "val_clean_nll": 0.3375853028603736,
+      "val_auroc": {
+        "32": {
+          "all": 0.493015,
+          "wear_and_tear": 0.5013380855397148,
+          "retry_delay": 0.48498624754420433
+        },
+        "64": {
+          "all": 0.503932,
+          "wear_and_tear": 0.5002932790224033,
+          "retry_delay": 0.5074420432220039
+        },
+        "128": {
+          "all": 0.509127,
+          "wear_and_tear": 0.5087209775967414,
+          "retry_delay": 0.5095186640471513
+        },
+        "256": {
+          "all": 0.511501,
+          "wear_and_tear": 0.5092158859470468,
+          "retry_delay": 0.513705304518664
+        },
+        "512": {
+          "all": 0.53931,
+          "wear_and_tear": 0.5525987780040733,
+          "retry_delay": 0.5264911591355599
+        },
+        "1024": {
+          "all": 0.629845,
+          "wear_and_tear": 0.6070529531568228,
+          "retry_delay": 0.6518310412573673
+        },
+        "rules": {
+          "type": {
+            "32": {
+              "all": 0.487877,
+              "wear_and_tear": 0.485949083503055,
+              "retry_delay": 0.4897367387033399
+            },
+            "64": {
+              "all": 0.486923,
+              "wear_and_tear": 0.4873665987780041,
+              "retry_delay": 0.4864950884086444
+            },
+            "128": {
+              "all": 0.500433,
+              "wear_and_tear": 0.49220570264765784,
+              "retry_delay": 0.508369351669941
+            },
+            "256": {
+              "all": 0.526834,
+              "wear_and_tear": 0.5287942973523422,
+              "retry_delay": 0.524943025540275
+            },
+            "512": {
+              "all": 0.557354,
+              "wear_and_tear": 0.5646089613034623,
+              "retry_delay": 0.5503555992141453
+            },
+            "1024": {
+              "all": 0.673319,
+              "wear_and_tear": 0.6292505091649695,
+              "retry_delay": 0.7158290766208252
+            }
+          },
+          "gap": {
+            "32": {
+              "all": 0.491999,
+              "wear_and_tear": 0.502928716904277,
+              "retry_delay": 0.4814557956777996
+            },
+            "64": {
+              "all": 0.506814,
+              "wear_and_tear": 0.5047372708757637,
+              "retry_delay": 0.5088172888015717
+            },
+            "128": {
+              "all": 0.51073,
+              "wear_and_tear": 0.5137963340122199,
+              "retry_delay": 0.5077721021611002
+            },
+            "256": {
+              "all": 0.502694,
+              "wear_and_tear": 0.4964521384928717,
+              "retry_delay": 0.5087151277013753
+            },
+            "512": {
+              "all": 0.51495,
+              "wear_and_tear": 0.5192382892057027,
+              "retry_delay": 0.5108133595284873
+            },
+            "1024": {
+              "all": 0.549789,
+              "wear_and_tear": 0.5598615071283096,
+              "retry_delay": 0.5400726915520628
+            }
+          },
+          "gap_window32_max": {
+            "32": {
+              "all": 0.491999,
+              "wear_and_tear": 0.502928716904277,
+              "retry_delay": 0.4814557956777996
+            },
+            "64": {
+              "all": 0.509423,
+              "wear_and_tear": 0.5032403258655804,
+              "retry_delay": 0.5153870333988212
+            },
+            "128": {
+              "all": 0.507374,
+              "wear_and_tear": 0.5067698574338085,
+              "retry_delay": 0.5079567779960708
+            },
+            "256": {
+              "all": 0.504367,
+              "wear_and_tear": 0.495837067209776,
+              "retry_delay": 0.5125952848722987
+            },
+            "512": {
+              "all": 0.502531,
+              "wear_and_tear": 0.492020366598778,
+              "retry_delay": 0.5126699410609037
+            },
+            "1024": {
+              "all": 0.500791,
+              "wear_and_tear": 0.4910570264765784,
+              "retry_delay": 0.5101807465618861
+            }
+          }
+        }
+      },
+      "val_clean_occupancy": {
+        "binding_or_top_layer_slots_written_per_run": [
+          54.0
+        ],
+        "pool": 54
+      },
+      "epoch_s": 6306.374210441019
+    }
+  ],
+  "selected_epoch": 1,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": null,
+  "test_auroc": "not scored (development run, --no-test)",
+  "selected_weights": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/checkpoints/aws_fas_v2_dev_C1_20261006T1715Z_selected.pt",
+  "per_run_scores": {
+    "path": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/aws_fas_v2_dev_C1_20261006T1715Z_scores.npz",
+    "sha256": "4f1ec358b44ea279ca4cd12d89fd91308685ab96d1f11e9b4b241f8cadd57da4"
+  },
+  "work": {
+    "fitting_events": 10240000,
+    "traced_fitting_events": 8192,
+    "fit_arithmetic_flops_per_event": 6063051.104370117,
+    "fit_special_function_evaluations_per_event": 44612.955322265625,
+    "whole_fit_arithmetic_flops_estimate": 62085643308750.0,
+    "inference_arithmetic_flops_per_event": 2034759.2397129186,
+    "inference_special_function_evaluations_per_event": 22492.029665071772,
+    "sparse_inference_arithmetic_flops_per_event": 1501902.933492823,
+    "sparse_inference_special_function_evaluations_per_event": 15804.02966507177,
+    "scope": "operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including backward and optimizer, extrapolated per event; inference traced on 4 validation runs (padded events included), dense (as trained) and sparse (winner-only deep layers with cached reads; identical outputs); arithmetic and special functions counted separately"
+  },
+  "data_manifest_sha256": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463",
+  "source_sha256": {
+    "experiments/fas/native_race_readout.py": "b4dfd6386a8eb3a544798250410d024ab8d4fd7b11ea77b50f10775c5ac27cc2",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+    "sleeping_machines/race_readout.py": "4289f025afac44e5275b1755b584c26f57d469168d38958d57b9067c7e37ece4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 6788.458127732039
+}
