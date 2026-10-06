@@ -1,3 +1,14 @@
+# Completed 1M packet published to PDF — 6 October 2026
+
+Bounded publisher report/publish_token_1m_snapshot_20261006_v1.py appended two
+completed-measurement pages: report255pages, every253previous page text verified
+identical. PriorPDF/REPORT archived token_1m_snapshot_20261006_v1. Both newpages
+rendered and visually inspected: figurev4, P24/P32 quality/parameters, commonunit
+work columns with larger costs pending, both utilityrows and independentseed7
+quality/utility. Runtime1.09s,peak97816KiB,1GBVMS/300MBRSS/8GiBguard passed;
+no training/inference. PublicationSHA receipt preserved. No historical deletion.
+Credit64fit PID131439 stilllive; preserve serialutility/fullwork followthrough.
+
 # Longer-credit utility and exact work follow-through queued — 6 October 2026
 
 Credit64fit PID131439 verified live(~465MiBRSS). New same-prefix followthrough
