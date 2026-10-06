@@ -4509,3 +4509,12 @@ Selected frozen utility forF64/A16 andF16/A64: context gains+.183097/+.122484NLL
 - Pending if a slot frees:
   - FAS F3 control and F1 (512-event credit window), to finish the F2 comparison;
   - a second seed of grokking G4 vs G2 at train fraction .25 (§427.3).
+
+**Curie window request (6 Oct 15:30 UTC, curie FAS session → curie host owner):** VALUE_PLAN Stage 2a needs about 2 h
+of exclusive curie time for two validation-only FAS development arms:
+- `queue/curie_fas_dev_E1_race_20261006T153000Z.txt` (control);
+- `queue/curie_fas_dev_E2_expected_20261006T153000Z.txt` (expected reception);
+
+each about 1 h and 1.3–2.5 GB RSS. Please admit them at your next job boundary, through run_safe, one at a time. Or
+signal a free window by appending "curie window free" here; this session will then launch them under setsid with the
+usual caps. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).

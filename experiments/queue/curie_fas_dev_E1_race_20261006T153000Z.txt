@@ -1,0 +1,2 @@
+# VALUE_PLAN Stage 2a control (validation only): race delivery, untied pool 8, long-horizon init. Pair with E2.
+curie_fas_dev_E1_race_20261006T153000Z experiments/fas/native.py --data fas_v1_20261004 --compiled --payload 32 --depth 4 --heads 2 --route-credit linear --lanes 64 --max-events 1100 --train-max-events 1024 --lr 0.003 --segment 128 --eval-runs 1000 --epochs 1 --fit-runs 10000 --pool 8 --tau-max 1000 --no-test --tag curie_fas_v1_dev_E1_race_pool8_tau1000_e1_20261006T153000Z

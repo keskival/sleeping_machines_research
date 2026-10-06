@@ -82,7 +82,7 @@ def prefix_scores(per_type, per_gap, lengths):
     return out
 
 
-def scores(model, runs, lanes, fn, recruit_kw=None):
+def scores(model, runs, lanes, fn, recruit_kw=None, carried_step=None):
     """per-rule prefix scores for every run, the mean per-event NLL, and slot occupancy (recruit_kw path only).
     recruit_kw: evaluate through carried_logits with the recruitment layer (neutral settings equal the standard
     layer; THEORY §419), padding each batch to its longest run by repeating the last event (padded positions are
@@ -93,7 +93,7 @@ def scores(model, runs, lanes, fn, recruit_kw=None):
         for b in range(0, len(runs), lanes):
             idx = list(range(b, min(b + lanes, len(runs))))
             rows, y, g, mask = batch(runs, idx)
-            if recruit_kw is None:
+            if recruit_kw is None and carried_step is None:
                 z = fn(model, rows, 314159, all_logits=True)
             else:
                 from sleeping_machines.carried_episodes import carried_logits
@@ -101,14 +101,20 @@ def scores(model, runs, lanes, fn, recruit_kw=None):
                 st_np = np.stack([np.concatenate([runs[j][1], np.full(T - len(runs[j][1]), runs[j][1][-1])]) for j in idx])
                 id_np = np.stack([np.concatenate([runs[j][0], np.full(T - len(runs[j][0]), runs[j][0][-1])]) for j in idx])
                 stamps = torch.from_numpy(st_np).to(torch.float64); marks = torch.from_numpy(EYE[id_np])
-                z1, st, _ = carried_logits(model, stamps[:, :L0], marks[:, :L0], seed=314159, route_credit=None,
-                                           recruit=recruit_kw)
+                if carried_step is not None:
+                    z1, st = carried_logits(model, stamps[:, :L0], marks[:, :L0], seed=314159, step=carried_step)
+                else:
+                    z1, st, _ = carried_logits(model, stamps[:, :L0], marks[:, :L0], seed=314159, route_credit=None,
+                                               recruit=recruit_kw)
                 seen = torch.stack(st['seen'])                                  # (D, n, H, U)
                 used.append(seen.sum(-1).float().mean(1).numpy())               # (D, H): slots written per run
                 ever = seen.any(1) if ever is None else ever | seen.any(1)      # (D, H, U)
                 if T > L0:
-                    z2, _, _ = carried_logits(model, stamps[:, L0:], marks[:, L0:], state=st, seed=314160,
-                                              route_credit=None, recruit=recruit_kw)
+                    if carried_step is not None:
+                        z2, _ = carried_logits(model, stamps[:, L0:], marks[:, L0:], state=st, seed=314160, step=carried_step)
+                    else:
+                        z2, _, _ = carried_logits(model, stamps[:, L0:], marks[:, L0:], state=st, seed=314160,
+                                                  route_credit=None, recruit=recruit_kw)
                     z = torch.cat([z1, z2], 1)
                 else:
                     z = z1
@@ -159,6 +165,10 @@ def main():
     p.add_argument('--lr', type=float, default=.003); p.add_argument('--clip', type=float, default=1.)
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--trace-windows', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--reception', choices=('race', 'expected'), default='race',
+                   help='expected: exact expected reception (THEORY §418; smooth delivered value, hard argmax writes), '
+                        'removing route chaos from the value path (§431); training and evaluation')
+    p.add_argument('--no-test', action='store_true', help='development run: skip test scoring (VALUE_PLAN maturity gate)')
     p.add_argument('--tau-max', type=float, default=0., help='initialize unit memory time constants log-spaced from 1 to '
                    'this many seconds (default 0: unit default 1-100 s); R0 learned median half-lives ~7 s while one item '
                    'spends ~720 s on the line')
@@ -205,7 +215,14 @@ def main():
         from dvs_tied_pool_benchmark import tie_pools
         model = tie_pools(model)
     recruit = (a.free_bias != 0. or a.stale_bias != 0. or a.train_temperature != 1. or a.balance > 0.)
-    rkw = dict(free_bias=a.free_bias, stale_bias=a.stale_bias, temperature=1., eager=not a.compiled) if a.segment else None   # evaluation at tau = 1
+    rkw = dict(free_bias=a.free_bias, stale_bias=a.stale_bias, temperature=1., eager=not a.compiled) if a.segment else None
+    exp_step = None
+    if a.reception == 'expected':
+        if recruit or not a.segment:
+            raise ValueError('--reception expected requires --segment and no recruitment knobs')
+        from sleeping_machines.expected_reception import compiled_expected_layer, expected_layer
+        exp_step = compiled_expected_layer() if a.compiled else expected_layer
+        rkw = None   # evaluation at tau = 1
     fn = batched_logits
     if a.compiled:
         from torch._dynamo import config as dynamo_config
@@ -252,7 +269,7 @@ def main():
                                                         temperature=a.train_temperature, eager=not a.compiled))
                         else:
                             z, st = carried_logits(model, stamps[:, sl], marks[:, sl], state=state, seed=100000 + w,
-                                                   step=step_fn, route_credit=rc)
+                                                   step=exp_step if exp_step is not None else step_fn, route_credit=rc)
                         per = nll(z, y[:, sl], g[:, sl], mask[:, sl]); m = mask[:, sl].sum()
                         loss = per.sum() / m
                         if recruit and a.balance > 0:
@@ -295,7 +312,7 @@ def main():
             if w % 25 == 0:
                 print(json.dumps(dict(window=w, of=total, train_nll=box['loss'],
                                       events_per_s=events_seen / (time.perf_counter() - started))), flush=True)
-        sc_c, val_nll, occ = scores(model, val_c, 64, fn, rkw); sc_f, _, _ = scores(model, val_f, 64, fn, rkw)
+        sc_c, val_nll, occ = scores(model, val_c, 64, fn, rkw, exp_step); sc_f, _, _ = scores(model, val_f, 64, fn, rkw, exp_step)
         curve.append(dict(epoch=epoch, train_nll=loss_sum / max(n_sum, 1), val_clean_nll=val_nll,
                           val_auroc=aurocs(sc_c, sc_f, val_k), val_clean_occupancy=occ, epoch_s=time.perf_counter() - t0))
         print(json.dumps(curve[-1]), flush=True)
@@ -312,17 +329,24 @@ def main():
             half_lives[depth] = dict(p10=float(np.quantile(hl, .1)), median=float(np.median(hl)), p90=float(np.quantile(hl, .9)),
                                      max=float(hl.max()), unit='seconds of simulator time, at unit forget gate (base rate only)')
     weights.parent.mkdir(exist_ok=True); torch.save(model.state_dict(), weights)
-    test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
+    if a.no_test:
+        test_c = test_f = test_k = []
+    else:
+        test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
     if a.max_windows:                   # smoke: a bounded test subset, labelled by status
         test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
-    sc_c, test_nll, test_occ = scores(model, test_c, 64, fn, rkw); sc_f, _, _ = scores(model, test_f, 64, fn, rkw)
+    if a.no_test:
+        sc_c = sc_f = None; test_nll = test_occ = None
+    else:
+        sc_c, test_nll, test_occ = scores(model, test_c, 64, fn, rkw, exp_step); sc_f, _, _ = scores(model, test_f, 64, fn, rkw, exp_step)
     work = (ledger['arithmetic_flops'] + ledger['special_function_evaluations']) / traced_events if traced_events else None
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()), curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',
-                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, memory_half_lives=half_lives, test_auroc=aurocs(sc_c, sc_f, test_k), selected_weights=str(weights.relative_to(ROOT)),
+                  test_clean_nll=test_nll, test_clean_occupancy=test_occ, memory_half_lives=half_lives, test_auroc=aurocs(sc_c, sc_f, test_k) if sc_c is not None else 'not scored (development run, --no-test)', selected_weights=str(weights.relative_to(ROOT)),
                   work=dict(fit_unit_special_flops_per_event_estimate=work,
                             whole_fit_unit_special_flops_estimate=work * events_seen if work else None,
-                            fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'),
+                            fitting_events=events_seen, scope='first window traced (eager), extrapolated per event'
+                            + ('; expected reception: traced window uses the race path as a proxy (expected delivery computes all proposals, as the race path does)' if a.reception == 'expected' else '')),
                   data_manifest_sha256=hashlib.sha256((d / 'manifest.json').read_bytes()).hexdigest(),
                   source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in
                                  ('experiments/fas/native.py', 'experiments/fas/baselines.py',
