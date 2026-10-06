@@ -1,3 +1,21 @@
+# 1M utility live; crossed P32 stage admitted — 6 October 2026
+
+Streaming64K contract completed: meanmaxerror2.384185791e-7 over65,528 TRAIN
+feature observations; constant-featureNLLerror0. Selected1M utility PID99613
+verified live (~272MBRSS), tmux curie_original_1m_utility_admission_20261006_v1.
+Newtmux curie_original_1m_p32_admission_20261006_v1 waits that entire session,
+requires completedpositive P24/1Mcontextutility and P32/256K parentutility,
+checks P32parent source/data hashes, then invokesexistingunique P32/1M queue
+throughrun_safe9000s/800MBRSS/8GiBreserve. Preserve onehostjob; no1M P32score
+exists yet. Timeoutbased1177s P32/256K and4376s P24/1M measured workloads.
+
+Purpose: same1M data/credit/passes/fourDEVchecks crossedwidth, retainedraces,
+keys-values/sparseaddressedpersistentstate/actualalternativewritecredit.
+Width also changesinput/readout, so this is not constant-FLOP capacity.
+Noquality or scalingprediction inserted.4M remainsreserved; no extrapolation
+prediction frozen before broader completed packet. Largerfullworkaudit missing,
+not borrowed from64K. Revalidate runtime/results beforeaction.
+
 # 1M completed; selected utility sequence live — 6 October 2026
 
 ## Completed 1M proper-token stage — 6 October 2026
