@@ -51,6 +51,11 @@
   "missing" controls listed in older orders. Compare against published benchmark and leaderboard scores under the
   exact matching data, tokenizer and scoring protocol. The 90M D Transformer 256x4 run already in progress on AWS
   completes as admitted; it is the last one. Completed dense-control results stay in the record and tables.
+- Exception (user direction, 6 October 2026, 18:10 UTC): small LSTM and time-encoded Transformer references for the
+  FAS v2 confirmation (battle B3) may be trained. FAS is our own benchmark and has no published scores, and the
+  references strengthen the case. Scope: `experiments/fas/dense.py`, models `lstm` and `transformer`, d ≤ 128, ≤ 2
+  layers. Tuning is limited to the protocol's grid on validation only, with three seeds for the selected
+  configuration, through run_safe on AWS gym slots. No other external architectures are included.
 
 # Report structure (user direction, 6 October 2026)
 

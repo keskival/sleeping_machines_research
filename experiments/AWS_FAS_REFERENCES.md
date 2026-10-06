@@ -98,3 +98,15 @@ B3_DEVELOPMENT_LOG.md). In the first free AWS gym slot, in order:
 
 The v1 arms (R2, E1, particles) become optional diagnostics. As before, the AWS and curie copies of the same arm never
 both run: the first to start owns it, and the other is dropped.
+
+## Small neural references for FAS v2 — reinstated 6 October 2026, 18:15 UTC (user direction)
+
+AGENTS.md exception plus protocol amendment: LSTM and time-encoded Transformer only. In the first free AWS gym slots,
+after the v2 data queue (`aws_fas_v2_data_20261006T1715Z`):
+1. the smokes, `aws_fas_v2_ref_smoke_{lstm,transformer}_20261006T1815Z` (2 windows; set RSS caps from them; the
+   Transformer runs with 4 lanes and scoring batches of 4 because attention memory grows with lanes × T²);
+2. the 12 grid runs, `aws_fas_v2_ref_{lstm,transformer}_d{64,128}_lr{0.0003,0.001,0.003}_s0_20261006T1815Z`
+   (validation only, `--no-test`).
+
+Expected wall time per run on one thread: LSTM ~1–2 h, Transformer ~3–6 h (estimates; the smokes measure them). The
+sealed three-seed confirmation of each family's selected configuration is queued only after Stage 3 selection.

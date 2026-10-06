@@ -38,14 +38,16 @@ from .parallel_stream_language import precise_rotate
 
 class RaceReadout(nn.Module):
     def __init__(self, types, heads, pool, payload, total_payload, hidden=64, eps=1e-3, mu0=2.5, type_durations=False,
-                 classes=0):
+                 classes=0, context=True):
         """type_durations (THEORY §435.2): each slot's own-duration law is conditioned on the next type,
         f_s(tau | e), instead of one law f_s(tau) shared by all types.
         classes = M > 0 (THEORY §436.1): a mixture of M step classes, p_s(e, tau) = sum_c pi_c p_c(e) f_c(tau), which
-        couples type and duration (a skipped step changes both) at M instead of V duration laws per slot."""
+        couples type and duration (a skipped step changes both) at M instead of V duration laws per slot.
+        context=False drops the merged-stream context from the per-slot laws (THEORY §436.3: the context path lets every
+        slot predict the merged distribution, which weakens the pressure to bind)."""
         super().__init__()
         self.types, self.H, self.U, self.P, self.eps = types, heads, pool, payload, eps
-        self.type_durations, self.classes = type_durations, classes
+        self.type_durations, self.classes, self.context = type_durations, classes, context
         self.slot = nn.Parameter(torch.randn(heads, pool, hidden) * .1)
         self.mem_in = nn.Linear(payload, hidden)
         self.ctx_in = nn.Linear(total_payload, hidden, bias=False)
@@ -67,7 +69,10 @@ class RaceReadout(nn.Module):
         """mem (n, H, U, P) top-layer memories; x (n, total_payload). Returns per-slot laws, slots flattened.
         mu and log_sigma are (n, S) or, with type_durations, (n, S, V)."""
         n = mem.shape[0]
-        h = F.gelu(self.mem_in(F.layer_norm(mem, (self.P,))) + self.ctx_in(x)[:, None, None] + self.slot)
+        h = self.mem_in(F.layer_norm(mem, (self.P,))) + self.slot
+        if self.context:
+            h = h + self.ctx_in(x)[:, None, None]
+        h = F.gelu(h)
         o = self.out(h).reshape(n, self.H * self.U, -1).double()
         V = self.types
         if self.classes:

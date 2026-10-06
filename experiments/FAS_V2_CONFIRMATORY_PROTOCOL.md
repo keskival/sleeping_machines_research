@@ -202,3 +202,21 @@ Everything else is unchanged: the grid, the thresholds (oracle ≥ .70; oracle �
 - Implementation: `experiments/fas/calibrate_v2b.py`. Output: `results/fas/fas_v2_calibration_amended_<tag>.json`.
 - If the amended grid selects a setting, Stage 2 generates it, and Stages 3–5 measure N in per-line units
   (merged prefix N·K). Native development uses validation only, as before.
+
+## Protocol amendment: small neural references reinstated, 6 October 2026, 18:10 UTC (user direction)
+
+This replaces the "no new external-architecture training" amendment for two families (AGENTS.md exception of the same
+time):
+- **LSTM** (RMTPP input pattern) and **causal Transformer with continuous-time encoding** (THP input pattern), from
+  `experiments/fas/dense.py`, d ∈ {64, 128}, 2 layers. They share the native model's head, loss, clean-only training,
+  scoring rules and selection rule (validation-clean NLL).
+- **Tuning:** each family runs the 6-point grid d ∈ {64, 128} × lr ∈ {3e-4, 1e-3, 3e-3} on v2 validation (`--no-test`).
+  The selected configuration then trains with seeds 0, 1, 2 for Stage 4, and each seed is scored once on the sealed
+  test (ledger).
+- **Common training cap** (all learned families, native included): at most 3 passes over the same 5,000 clean
+  training samples. References may use all 3 passes; native development so far uses 1. This deliberately favours the
+  references.
+- **Strongest baseline** (Stage 5): the maximum test AUROC at N* over the information-matched classical detectors
+  *and* the two neural families' seed means.
+- LRU, S5 and Mamba remain out of scope.
+- Prefixes stay per line: N* = 512 per line, a merged prefix of 1,024 at K = 2.

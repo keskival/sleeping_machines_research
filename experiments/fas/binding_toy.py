@@ -85,6 +85,8 @@ def main():
     p.add_argument('--classes', type=int, default=2); p.add_argument('--lr', type=float, default=.01)
     p.add_argument('--seed', type=int, default=0); p.add_argument('--out', default='')
     p.add_argument('--gated', action='store_true')
+    p.add_argument('--train-argmax', action='store_true', help='hard-EM writes in training (deterministic races)')
+    p.add_argument('--hidden', type=int, default=32); p.add_argument('--no-context', action='store_true')
     a = p.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     V_TOY = a.R + 1
@@ -93,7 +95,8 @@ def main():
     train, val = data[:a.train], data[a.train:]
     T = a.K * a.R
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V_TOY, classes=V_TOY + 2, payload=8, depth=1, heads=2, pool=2)
-    ro = RaceReadout(V_TOY, 1, a.slots, 8, 16, hidden=32, mu0=2., classes=a.classes)
+    ro = RaceReadout(V_TOY, 1, a.slots, 8, 16, hidden=a.hidden, mu0=2., classes=a.classes,
+                     context=not a.no_context)
     bm = BindingMemory(16, a.slots, 8, tau_max=100., gated=a.gated)
     params = list(model.parameters()) + list(ro.parameters()) + list(bm.parameters())
     opt = torch.optim.Adam(params, lr=a.lr)
@@ -102,7 +105,8 @@ def main():
     for step in range(1, a.steps + 1):
         idx = rng.integers(0, len(train), a.lanes)
         stamps, marks, ids, _, lens = batch([train[i] for i in idx], T)
-        ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=step, binding=bm)
+        ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=step, binding=bm,
+                                          deterministic=a.train_argmax)
         mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
         loss = -(ll * mask).sum() / mask.sum()
         opt.zero_grad(); loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, 1.); opt.step()

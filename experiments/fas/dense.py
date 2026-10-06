@@ -199,6 +199,9 @@ def main():
     p.add_argument('--fit-runs', type=int, default=10000); p.add_argument('--max-events', type=int, default=1100)
     p.add_argument('--eval-runs', type=int, default=1000); p.add_argument('--seed', type=int, default=0)
     p.add_argument('--threads', type=int, default=1); p.add_argument('--max-windows', type=int, default=0)
+    p.add_argument('--eval-lanes', type=int, default=64, help='runs per scoring batch (Transformer attention memory grows '
+                   'with lanes x T^2)')
+    p.add_argument('--no-test', action='store_true', help='development run: validation only, the sealed test is not loaded')
     a = p.parse_args()
     out = Path(OUT) / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -231,7 +234,7 @@ def main():
             if w % 50 == 0:
                 print(json.dumps(dict(window=w, of=total, train_nll=float(loss.detach()),
                                       events_per_s=events / (time.perf_counter() - started))), flush=True)
-        sc_c, val_nll = scores(model, val_c, 64); sc_f, _ = scores(model, val_f, 64)
+        sc_c, val_nll = scores(model, val_c, a.eval_lanes); sc_f, _ = scores(model, val_f, a.eval_lanes)
         curve.append(dict(epoch=epoch, train_nll=ls / max(ns, 1), val_clean_nll=val_nll, val_auroc=aurocs(sc_c, sc_f, val_k),
                           epoch_s=time.perf_counter() - t0))
         print(json.dumps(curve[-1]), flush=True)
@@ -243,13 +246,15 @@ def main():
     model.load_state_dict(best[2])
     weights = Path(OUT) / 'checkpoints' / f'{a.tag}_selected.pt'
     weights.parent.mkdir(parents=True, exist_ok=True); torch.save(model.state_dict(), weights)
-    test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
-    if a.max_windows:
-        test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
-    sc_c, test_nll = scores(model, test_c, 64); sc_f, _ = scores(model, test_f, 64)
+    sc_c = sc_f = test_k = test_nll = None
+    if not a.no_test:
+        test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
+        if a.max_windows:
+            test_c, test_f, test_k = test_c[:a.eval_runs], test_f[:a.eval_runs], test_k[:a.eval_runs]
+        sc_c, test_nll = scores(model, test_c, a.eval_lanes); sc_f, _ = scores(model, test_f, a.eval_lanes)
     result = dict(status='smoke' if a.max_windows else 'completed', args=vars(a), parameters=params, curve=curve,
                   selected_epoch=best[1], selection='validation-clean NLL only', test_clean_nll=test_nll,
-                  test_auroc=aurocs(sc_c, sc_f, test_k),
+                  test_auroc=aurocs(sc_c, sc_f, test_k) if sc_c is not None else 'not scored (development run, --no-test)',
                   work=dict(method='shape estimate', forward_flops_per_event=fwd, inference_flops_per_event=fwd,
                             fitting_events=events, whole_fit_flops_estimate=3 * fwd * events + 14 * params * w),
                   data_manifest_sha256=hashlib.sha256((d / 'manifest.json').read_bytes()).hexdigest(),
@@ -258,9 +263,12 @@ def main():
                   hardware=dict(platform=platform.platform(), torch=torch.__version__, threads=a.threads),
                   wall_s=time.perf_counter() - started)
     # per-run scores (FAS v2 protocol Stage 0: paired bootstrap); validation from the selected epoch
-    per_run = dict(prefixes=np.array(PREFIXES), rules=np.array(RULES), val_fault_kind=np.asarray(val_k),
-                   test_fault_kind=np.asarray(test_k))
+    per_run = dict(prefixes=np.array(PREFIXES), rules=np.array(RULES), val_fault_kind=np.asarray(val_k))
+    if test_k is not None:
+        per_run['test_fault_kind'] = np.asarray(test_k)
     for split, (c, f) in (('val', best_val_scores), ('test', (sc_c, sc_f))):
+        if c is None:
+            continue
         for r in RULES:
             per_run[f'{split}_clean_{r}'] = c[r]; per_run[f'{split}_faulty_{r}'] = f[r]
     score_path = out.with_name(f'{a.tag}_scores.npz')

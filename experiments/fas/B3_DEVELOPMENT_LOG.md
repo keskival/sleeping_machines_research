@@ -60,3 +60,25 @@ oracle's .821.
     the gap from chance to that ceiling.
   - Gated writes go into C1-family iterations once compared on v2 (§436.2: a slot must be able to hold its process's
     latest state). A longer fit (1,200 steps) is running.
+- 6 Oct 17:55 UTC: binding toy, 1,200 steps (gated): validation NLL 1.97 → 1.77, but α plateaus at .78–.80 (sampled)
+  and .80–.84 (argmax), against the .911 ceiling. The remaining binding gap is not a step-budget gap. Testing
+  hard-EM (argmax) training writes and a larger readout (hidden 64).
+- 6 Oct 18:15 UTC: binding toy arms (600 steps, gated writes):
+  - hard-EM (argmax) training: α .82 (no gain);
+  - **readout hidden 64: α .934 with argmax writes (.88 sampled)**, above the Bayes-greedy ceiling .911, with
+    validation NLL 1.73.
+
+  The binding gap was readout capacity; C1 already uses hidden 64. A no-context ablation (§436.3) is running.
+- 6 Oct 18:15 UTC: **small neural references reinstated** (user direction; AGENTS.md exception, protocol amendment).
+  LSTM and time-encoded Transformer, d ∈ {64, 128} × lr ∈ {3e-4, 1e-3, 3e-3}, at most 3 passes over the same 5,000
+  clean samples, validation only. Two smokes and 12 grid queues are prepared for AWS (`aws_fas_v2_ref_*_20261006T1815Z`).
+
+  Sizes:
+
+  | model | parameters | forward MFLOP/event (T ~ 2,100) |
+  |---|---|---|
+  | C1 | 338K | not traced |
+  | LSTM d64 / d128 | 73K / 277K | 0.14 / 0.54 |
+  | Transformer d64 / d128 | 110K / 425K | 1.3 / 3.0 |
+
+  The Transformer's per-event cost grows with log length; ours is constant per event.
