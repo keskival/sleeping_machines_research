@@ -103,6 +103,8 @@ work, and §11.1's linearity in the weights is a known property that we exploit.
 
 Section numbers remain global and unchanged, so references such as “THEORY §57” continue to work. The detailed derivations are split into shorter thematic notes:
 
+- [A race of delayed clocks as a marked point process](theory/RACE_OF_DELAYED_CLOCKS_20261006.md) — B1: exact race likelihood with silent delays, logistic windows and a continuous-time state clock; the resolution principle and its audit; three confirmed public-benchmark wins.
+
 - [Integrated sparse temporal language](theory/46_integrated_sparse_temporal_language.md) — §§299–302: contextual key races, persistent selected receivers, bounded arrival times, counterfactual credit and capacity/activity accounting. This is the prioritized combined-mechanism candidate.
 
 - [Race attention and resource identity](theory/45_race_attention_and_resource_identity.md) — §§294–298: timing normalization, corrected shared-clock variance, conserved centered teachers, indexed winner retrieval and resource boundaries.
