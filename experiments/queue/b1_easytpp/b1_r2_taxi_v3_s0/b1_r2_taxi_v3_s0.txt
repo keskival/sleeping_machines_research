@@ -1,0 +1,2 @@
+# B1 EasyTPP: round 2: defective delayed clocks (fire probability) + 8 log-normal clocks; error analysis showed a race of always-firing clocks cannot represent Amazon's 31%/69% two-box gaps (time LL 1.65 vs 2.65). Decides whether v3 replaces v1 as the B1 model
+b1_r2_taxi_v3_s0 experiments/tpp/race_tpp_v3.py --tag b1_r2_taxi_v3_s0 --dataset taxi --seed 0 --n-lognormal 8 --patience 30
