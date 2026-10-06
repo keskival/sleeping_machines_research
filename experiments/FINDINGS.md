@@ -1,5 +1,26 @@
 # Findings log
 
+## Route chaos explains the credit blindness: one forced choice flips 0.7% (R0) or 16% (R8) of later routes — 6 October
+
+THEORY §431; credit-fidelity audit with route-flip counts
+(`experiments/results/diagnostics/curie_credit_audit_flips_fas_R{0,8}_*`).
+
+- **Sensitivity:** forcing one race alternative changes a median of 5 later winners in R0 (short memory, ~7 s
+  half-lives) and 125 in R8 (long memory, ~24 s).
+- **Low-sensitivity regime** (R0, at or below the median flips): the transported write credit raises correlation with
+  exact credit from .00 to .49 (sign .76 → .77). §430's first-order derivation is supported where its assumption
+  holds.
+- **High-sensitivity regime** (R8, and R0's many-flip half): no first-order estimator tracks exact credit.
+
+Long memory makes hard routing chaotic, which is why the long horizons in R8 trained but could not teach binding.
+
+**Next, by theory:**
+1. Reduce route sensitivity (routing margins; expected reception in long-memory regions).
+2. Rollout credit for high-sensitivity races.
+3. Transported credit where sensitivity is low.
+
+Single noise realization per exact credit; 18 races per model; FAS only.
+
 ## Tokenized language is at bigram level; the DEV slice is hard and noisy — 6 October
 
 Count references fitted on the identical FineWeb TRAIN prefix and scored on the identical 2,040 native DEV targets

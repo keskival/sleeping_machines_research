@@ -501,3 +501,51 @@ Restated, Theorem 430.3:
 
 Proposals read m′ + transport(σ^v), and scores read m + σ^s. The forward is unchanged (both channels are exactly zero).
 Backpropagation delivers the full first-order choice credit to the scores.
+
+## 431. Route chaos: long memory makes hard routing sensitive, and first-order credit fails exactly there
+
+**Measurement** (§429 audit with route-flip counts; 18 races × 8 alternatives per model; FAS v1; 6 October). Forcing
+one alternative at one race changes the winners of many *later* races:
+- **R0** (untied pool 8, learned half-lives ~7 s): median **5** later winners change, 0.7% of later races.
+- **R8** (tied pool 8, ~24 s): median **125**, about 16% of later races (p90 433).
+
+Fidelity of the credit estimators against exact forced-lane credit, split at the median flip count:
+
+| Model / half | Value-only (corr, sign) | Transported write credit (§430) |
+|---|---|---|
+| R0, few flips | .00, .76 | **.49, .77** |
+| R0, many flips | −.19, .44 | −.27, .43 |
+| R8, few flips | .49, .63 | −.08, .53 |
+| R8, many flips | .23, .66 | .32, .54 |
+
+**Interpretation.**
+1. In the low-sensitivity regime (R0, few flips), the transported write credit does what §430 predicts: it adds the
+   write consequence that value-only credit misses, raising the correlation with exact credit from .00 to .49.
+   **§430 is supported where its first-order assumption holds.**
+2. Long memories turn hard routing *chaotic*. A changed choice persists in slot memory, shifts later scores across
+   decision boundaries, and flips a large fraction of later routes. No first-order (gradient) credit can represent the
+   true effect, because it is dominated by discrete cascades. On R8, even the "few flips" half is chaotic (median 125).
+3. **The resulting tension:** binding needs long memory (FAS item gaps of ~29 s), and long memory with hard routing
+   makes credit cascade-dominated. This explains the whole FAS pattern: long horizons trained (R8) but nothing could
+   teach binding.
+
+**Formal quantity.** The route sensitivity S = E[#later winner changes | one forced change] is a discrete analogue of a
+Lyapunov exponent for the routing dynamics. First-order credit is valid only when S is small. S rises with the
+memory horizon, and with small score margins at later races.
+
+**Repair directions implied (prioritized):**
+1. **Control sensitivity, not just credit.** Keep long memory but enlarge routing margins, so a remembered change
+   rarely crosses a later decision boundary:
+   - a margin regularizer on the top-two score gap at races;
+   - a lower training temperature on a well-trained model;
+   - or soft or expected reception (§418) in long-memory regions, where choices act smoothly.
+   - Prediction: S falls while horizons stay long, and transported credit fidelity rises on long-memory models.
+2. **Rollout credit where S is large.** Use exact paired forced-lane differences over a bounded horizon, the audit's
+   own estimator, as the training signal for a few sampled races per window. This is unbiased for the sampled races by
+   construction. *Cost:* (alternatives × horizon) extra lane-steps per sampled race, charged as fitting work.
+3. **Transported write credit where S is small** (short-memory layers), now with measured support.
+
+**Falsifiable next measurements:**
+- S and estimator fidelity on the three-seed FAS models and on a language model.
+- S as a function of horizon initialization (R0 against R8 is one point each).
+- A margin-regularized R8 variant: does S fall without shortening horizons, and does transported fidelity rise?
