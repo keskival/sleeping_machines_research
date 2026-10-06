@@ -1,3 +1,16 @@
+# Live admission update — 6 October 2026
+
+Original8K/P24 full audit completed:21.031227100GF wholefit,
+1.284899016MF/fit target,0.409690078MF/inference target;32updates/16,368targets,
+curve parity0 and full formula coverage/no unsupported floating operators.
+Gathered audit now running after original exited0 at00:44:05UTC.
+Tmux curie_gather_64k_admission_20261006_v1 waits the entire live audit pair,
+then gates both own-parent replay parity, complete fitting/inference coverage,
+lower gathered fitting arithmetic and selected loss difference<0.01 before
+running the unique64K/P24 gather queue via run_safe.sh,1200s/800MBRSS/8GiBreserve.
+Any failed gate stops admission. Original64K/P24 ordinaryfit263s motivates timeout;
+no1M job launched. Revalidate handles/results before action.
+
 # Latest continuation — 6 October 2026
 
 Live priority: tmux curie_gather_work_pair_20261006_v1 runs original8K/P24
