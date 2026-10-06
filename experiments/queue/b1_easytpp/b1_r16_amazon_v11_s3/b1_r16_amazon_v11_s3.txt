@@ -1,0 +1,2 @@
+# B1: v11 clustered window init, Amazon seeds 2-3 (moved from slot 2 to make room for B3)
+b1_r16_amazon_v11_s3 experiments/tpp/race_tpp_v11.py --tag b1_r16_amazon_v11_s3 --dataset amazon --seed 3 --n-lognormal 16 --n-window 4 --dropout 0.3 --patience 30
