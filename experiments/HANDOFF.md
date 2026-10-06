@@ -4061,3 +4061,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS256K U4 lr.003seed6 fit completed:** selected DEV7.714196299NLL at step384 vs initial8.078814937, improvement0.364618638; final7.949386058.262144GPT-2TRAINtokens/two passes524272fitting targets,1024updates/every128DEV,2040DEV at offset20971520. Retained P24D2H2U4/fourwrites/uniformK4future credit; completed ordinary throughput863.222targets/s,peak613752KiBRSS. Source resultaws_private_bank_256k_u4_lr0003_s6_20261006T030000Z.aws.json; comparison against64K involves different TRAIN-frequency initialization and exposure, not iso-compute. Other seed/rate fits, selected utility and exact work pending; no work estimate or public-reference claim.
+
+
+**AWS256K U4 lr.003seed7 fit completed:** selected7.731961478NLL at step384 vs initial8.078814937, improvement0.346853458; final7.896858126. Same262144TRAIN/two passes524272targets/1024updates/every128DEV/2040DEV protocol as seed6. Ordinary throughput864.047targets/s,peak613788KiBRSS. Both lr.003seeds select step384 and deteriorate later; lower-lr.001paired fits next. Selected utility/fullwork stillpending, no publicreferencewin claimed.
