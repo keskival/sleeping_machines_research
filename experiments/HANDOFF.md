@@ -1,3 +1,15 @@
+# Isolated split-horizon implementation prepared — 6 October 2026
+
+New split_horizon_token_language_engine.py clones the original engine, adds
+optional --future-credit-window (defaultNone followscredit_window) only to
+counterfactual scoring endpoint/importanceweight. Factual segment/detach path
+unchanged. New split_horizon_token_language.py delegates original initial-inclusive
+selector to isolatedengine. Newdriver/selector/engine pinned in newresultidentity.
+Originalsource remainsunchanged for livefullwork PID132567. ASTsyntaxpassed;
+numericaldefault/diagonal/causal/gradient/resume validation pending, no fit or
+promotion. Implement contract runner next, schedule after entireworksession.
+Read theory/TOKEN_SPLIT_HORIZON_DIAGNOSIS_20261006.md; preserve all mechanisms.
+
 # Longer-credit diagnosis and selected-initial utility — 6 October 2026
 
 Utility completedexit0 at05:57:28. Selectedinitialcontextgain0, all history
