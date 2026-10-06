@@ -1,0 +1,98 @@
+{
+  "status": "completed_measured_visualization",
+  "rows": [
+    {
+      "tokens": 8192,
+      "width": 16,
+      "parameters": 2115464,
+      "initial": 8.340313361672795,
+      "selected": 8.297491335401348,
+      "final": 8.422999482996323
+    },
+    {
+      "tokens": 65536,
+      "width": 16,
+      "parameters": 2115464,
+      "initial": 8.162279794730392,
+      "selected": 8.099439912683824,
+      "final": 8.231404143688726
+    },
+    {
+      "tokens": 65536,
+      "width": 24,
+      "parameters": 3164842,
+      "initial": 8.162279794730392,
+      "selected": 8.033310714422488,
+      "final": 8.183002905752145
+    },
+    {
+      "tokens": 65536,
+      "width": 32,
+      "parameters": 4225420,
+      "initial": 8.162279794730392,
+      "selected": 8.090418677236519,
+      "final": 8.352937107460171
+    },
+    {
+      "tokens": 262144,
+      "width": 24,
+      "parameters": 3164842,
+      "initial": 8.078820441750919,
+      "selected": 7.741714417700674,
+      "final": 7.867909629672181
+    },
+    {
+      "tokens": 262144,
+      "width": 32,
+      "parameters": 4225420,
+      "initial": 8.078820441750919,
+      "selected": 7.753460454005821,
+      "final": 8.058756989123774
+    },
+    {
+      "tokens": 1048576,
+      "width": 24,
+      "parameters": 3164842,
+      "initial": 8.02252747778799,
+      "selected": 7.251503259995404,
+      "final": 7.27628879921109
+    }
+  ],
+  "seed7_p24_repeat": 8.07899134018842,
+  "work": [
+    {
+      "tokens": 8192,
+      "width": 16,
+      "gflops": 13.534669444,
+      "nll": 8.297491335401348
+    },
+    {
+      "tokens": 65536,
+      "width": 24,
+      "gflops": 192.211764864,
+      "nll": 8.033310714422488
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1.json": "91c4218667323ba2748cc4d549bf67f8eea5a1ca4f8bb68fb236dc3148767b8d",
+    "experiments/results/token_language/curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1.selection.json": "4b3308cb2c4dcd52174dd8bdd2f03b0898562e748cc2dd0e2b570d85d8cb8873",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.json": "6087c2835024422985cbd79c7400f74b6abdfd9936bc8f7e8ebaefde2c96bda2",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.selection.json": "124bbc298b007b61e302e94e1506c05182a0d4a46263452e295a2eb307e62660",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.selection.json": "4b94ff67d5179b5a9a3ba005aa8f827b0a1e1d11ad0f6b36bf216d6e2dfcc6e2",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.json": "efbbbdeb781c6924310747d2013fc47ede9ae7843a8bc130a204e311a558a02e",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.selection.json": "465efc391634e476c081548f24d22282c2c729296ed8da560a8f7e366b64e8f9",
+    "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p24_s6_20261005_v1.json": "ef179a1290d14664397bedb8c721a84e40d9e3dd1211f3f464b2a6dfb5b58686",
+    "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p24_s6_20261005_v1.selection.json": "d967d3ca7a498135b5ae2c8b79019f154f2e3d4a5c6434ad584e27733d036031",
+    "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p32_s6_20261005_v1.json": "1bf99ff89a8ba8783e039a3764afb59ec1d8b95c8d461d852ed0ea8dd9891e2e",
+    "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p32_s6_20261005_v1.selection.json": "f4a2aaa22e714bad97d6a60dcd41fe55f77c24af20782707034e1a48784505ee",
+    "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.json": "2e406e1d02e8a60a6aa65697e6041d54f79af28278ce8f1c42669a2c154b127d",
+    "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.selection.json": "9d0e6f388cf738e6226cd144d9cb98cc4a14697aad046893014f48fe3fcb69f3",
+    "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s7_20261005_v1.selection.json": "f203221d0605ee7e81e37dd5bea18c43c310280ce8a22ecd44a07970689d3ab2",
+    "experiments/results/diagnostics/curie_fixed_batch_tokens_8k_c16_work_20261005_v1.json": "8deb7668aed7272d6439b78df0e293d7ed2ddb9bceeeb68770434f043b442248",
+    "experiments/results/diagnostics/curie_data_growth_tokens_64k_p24_work_20261005_v1.json": "7eaff758ffca0f0eb1f804a8cc37494199c281f1f5514274015e123af2c2f1ee"
+  },
+  "producer_sha256": "50460ea4aa93c07c82ca38b0df4f09bdc5647162e6d7161220d9acf12f9dafd9",
+  "curve_fitted": false,
+  "scope": "Same2040-target DEV population and two-pass fits, initial-inclusive selection; TRAIN frequency prior and checkpoint cadence depend on budget. Seed6 primary; one P24seed7 repeat. Width changes core/input/readout together. No raw points connected or extrapolated. Audited cost points differ in data and width; no iso-quality/iso-FLOP or exponent claim. Arithmetic fit boundary includes discovery/replay/backward/optimizer; special functions separate, random-sampling work unquantified. 256K and 1M work absent until actual audits. 4M remains reserved."
+}

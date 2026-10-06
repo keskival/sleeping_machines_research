@@ -14,7 +14,7 @@ def build(prefix):
         p=ROOT/name;blob=p.read_bytes();provenance[name]=hashlib.sha256(blob).hexdigest();r=json.loads(blob)
         assert r['status']=='completed';return r
     rows=[]
-    for tokens,label,widths in ((8192,'8k',(16,)),(65536,'64k',(16,24,32)),(262144,'256k',(24,))):
+    for tokens,label,widths in ((8192,'8k',(16,)),(65536,'64k',(16,24,32)),(262144,'256k',(24,32)),(1048576,'1m',(24,))):
         for width in widths:
             tag=f'curie_fixed_batch_tokens_8k_b64_c16_s6_20261005_v1' if label=='8k' else f'curie_data_growth_tokens_{label}_b64_c16_p{width}_s6_20261005_v1'
             r=read(f'experiments/results/token_language/{tag}.json')
@@ -38,7 +38,7 @@ def build(prefix):
         chosen=[r for r in rows if r['width']==width]
         axes[0].scatter([r['tokens'] for r in chosen],[r['selected'] for r in chosen],color=colors[width],label=f'P{width}',s=45)
     axes[0].scatter([65536],[repeat],marker='D',facecolors='none',edgecolors=colors[24],label='P24 seed7',s=50)
-    axes[0].set_xscale('log',base=2);axes[0].set_xticks([8192,65536,262144],['8K','64K','256K'])
+    axes[0].set_xscale('log',base=2);axes[0].set_xticks([8192,65536,262144,1048576],['8K','64K','256K','1M'])
     axes[0].set(xlabel='Distinct admitted TRAIN tokens',ylabel='Selected development NLL',title='Data growth: measured points')
     axes[0].legend(fontsize=8)
     central=[r for r in rows if r['tokens']==65536]
@@ -55,7 +55,7 @@ def build(prefix):
         if prefix.with_suffix(suffix).exists():raise FileExistsError(prefix.with_suffix(suffix))
     fig.savefig(prefix.with_suffix('.png'),dpi=200);fig.savefig(prefix.with_suffix('.svg'));plt.close(fig)
     record=dict(status='completed_measured_visualization',rows=rows,seed7_p24_repeat=repeat,work=work,input_sha256=provenance,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),curve_fitted=False,
-        scope='Same2040-target DEV population and two-pass fits, initial-inclusive selection; TRAIN frequency prior and checkpoint cadence depend on budget. Seed6 primary; one P24seed7 repeat. Width changes core/input/readout together. No raw points connected or extrapolated. Audited cost points differ in data and width; no iso-quality/iso-FLOP or exponent claim. Arithmetic fit boundary includes discovery/replay/backward/optimizer; special functions separate, random-sampling work unquantified. 256K work absent until an actual audit.')
+        scope='Same2040-target DEV population and two-pass fits, initial-inclusive selection; TRAIN frequency prior and checkpoint cadence depend on budget. Seed6 primary; one P24seed7 repeat. Width changes core/input/readout together. No raw points connected or extrapolated. Audited cost points differ in data and width; no iso-quality/iso-FLOP or exponent claim. Arithmetic fit boundary includes discovery/replay/backward/optimizer; special functions separate, random-sampling work unquantified. 256K and 1M work absent until actual audits. 4M remains reserved.')
     prefix.with_suffix('.json').write_text(json.dumps(record,indent=2)+'\n')
     print('Exported PNG/SVG and source-bound measurement receipt')
 if __name__=='__main__':

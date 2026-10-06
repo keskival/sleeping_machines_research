@@ -1,3 +1,28 @@
+# 1M completed; selected utility sequence live — 6 October 2026
+
+## Completed 1M proper-token stage — 6 October 2026
+
+P24/D2/H2/U4, seed6, eight persistent lanes, credit16, actual uniform-site
+alternative-write continuation teacher, GPT2 FineWeb tokens. Two passes completed:
+2,097,136fitting targets/4,096updates/four DEV checks,2,040scored DEV targets.
+Selected7.251503260 atstep2048; final7.276288799. Curve: initial8.022527478,
+step10247.449415977,step30727.317058488. Whole fittingwall4370.162024s;
+total4375.510293s. Original implementation and fixed0.003recipe preserved.
+
+P24 selected losses:64K8.033310714 →256K7.741714418 →1M7.251503260.
+1M improves0.490211158NLL over256K on the same development population.
+Single-seed data-growth evidence; corpus-frequency initialization and four-check
+cadence scale with data. Larger width/seed comparisons and complete larger-stage
+work measurements are the next tests. No fitted exponent or matched-quality/
+iso-FLOP Transformer win. Publicvalidation untouched;4M reserved.
+
+![Completed tokenized data/capacity/work measurements](report/figures/token_language_measured_scaling_20261006_v2.png)
+
+Source-bound PNG/SVG/JSON figure and scaling collectionv5 preserve older figures
+and records. Seven completed original-family data/capacity cells collected;
+1M/256K fitting cost is absent, not filled from64K. Streaming64K mean contract
+and selected1M utility follow the completed fit through the admitted guard.
+
 # 1M live; bounded selected utility scheduled — 6 October 2026
 
 Original1M/P24 PID85710 verified live (~492MBRSS), tmux
