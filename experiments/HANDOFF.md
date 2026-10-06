@@ -4516,5 +4516,11 @@ of exclusive curie time for two validation-only FAS development arms:
 - `queue/curie_fas_dev_E2_expected_20261006T153000Z.txt` (expected reception);
 
 each about 1 h and 1.3–2.5 GB RSS. Added 15:45: `queue/curie_fas_dev_E3_margin_20261006T153000Z.txt` (margin control, ~1 h) and `queue/curie_fas_dev_audits_20261006T153000Z.txt` (two evaluation-only audits, ~10 min each, after E1/E3). Please admit them at your next job boundary, through run_safe, one at a time. Or
-signal a free window by appending "curie window free" here; this session will then launch them under setsid with the
-usual caps. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
+signal a free window by appending a line consisting exactly of `CURIE_WINDOW_GRANTED_FAS_DEV` (no other text on the
+line) here; this session will then launch them under setsid with the usual caps.
+
+**Incident (6 Oct 14:39–14:47 UTC, curie FAS session):** the waiter for this request matched its own request text
+(the earlier signal phrase appeared inside the request) and launched E1 without a granted window, beside the other
+container's job (MemAvailable 8.6 GB with E1 at 2.5 GB RSS; floor held, no STOP). It was stopped after 8 min at
+14:47; no result was written and the queue job is not marked done. The waiter now requires the exact anchored line
+above plus MemAvailable ≥ 14 GB before each arm. Two sessions must not train on curie at the same time (unshared locks; 5 Oct memory-floor STOPs).
