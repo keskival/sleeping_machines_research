@@ -131,3 +131,8 @@ StackOverflow 4.6×) it is reported as a higher-compute result, not a matched wi
 | 6 Oct | v12 Retweet | state clock with frequency/decay caps | DEV −6.246 (time −5.481) | **audit: artifact.** Dequantized drop 0.224 (floored v5 baseline 0.0006, so the audit is calibrated). Per-gap analysis: the entire loss is at zero gaps (4% of events: +0.626 recorded vs −4.688 dequantized) — a hazard spike at exactly τ = 0 scoring same-second events at an instant. Withdrawn |
 | 6 Oct | v13 | below one recording cell the state clock's hazard and marks are held at their value at one cell; compensator λ(c)·min(τ, c) + ∫_c^τ λ | normalization 1 − 5e−10 with cell (mass below the check grid included); compensator = 400k-point quadrature to 1e−11 | Retweet v13 queued. StackOverflow's win is unaffected (cell 2⁻¹³, audit drop −0.0002) |
 | 6 Oct | v11 Amazon | clustered window init, 4 seeds | DEV 0.691 / **0.797** / **0.798** / 0.742 (time up to 2.675) | higher ceiling, seed variance remains: optimization has distinct basins. Next: protocol seeds as best-of-3 restarts selected on DEV (3× training compute reported) |
+
+**Pre-registered Amazon v11 protocol (fixed 6 Oct ~23:40 UTC, before any of its runs).** Configuration: v11, 16 delayed +
+4 clustered-window clocks, dropout 0.3, patience 30. Protocol seed s ∈ {0..4} trains restarts with seeds s, s+100,
+s+200; `b1_restart_select.py` keeps the restart with the best DEV LL and reports its TEST (selection never reads TEST).
+Training compute is 3× a single fit; inference compute is unchanged (one selected model per protocol seed).
