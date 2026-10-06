@@ -4458,3 +4458,20 @@ Selected frozen utility forF64/A16 andF16/A64: context gains+.183097/+.122484NLL
 
 
 **User-requested typed theory and pitch update completed:** new theory TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md derives semantic type constraints, restricted raw-affine nominal-code obstruction, invariant event/core composition and extra learning-equivariance conditions. It extends existing joint winner/time threshold credit without discarding clocks or factual derivatives; comparison/receiver/threshold learning remain distinct.39stdlib contracts pass (1.94e-10 max derivative error), scoped to math/interface not a new model fit. Primary FT-Transformer, tree-benchmark, CatBoost and NODE papers reviewed and linked; weighted latent sums/typed neural maps are correctly allowed, no every-typed-data superiority claim. Deck newmain slide10 has three stages (typed comparisons, temporal races, deep shared state);22main/42full slides rebuilt, notes/sources updated. ReportPDF257pages appends typedtheory and preserves every256priorpage text; bounded resource/hash/geometry checks and visual review pass. OldPDF/editable sources archived under typed_semantics_theory_20261006_v1. No live fit/accounting source changed; PID145132 stilllive F64/A16 exact audit, then F16/A64/P16 sizing stages.
+
+**Curie container coordination and queue review (6 Oct 14:10 UTC, curie session):**
+- Two agent containers share the physical curie host, and their run_safe locks are not shared. Memory-floor STOPs
+  (F3 17:17, F1 18:09, native lr .003 22:08 on 5 Oct) coincided with concurrent jobs.
+- **This container launches no further curie training while the review host's curie queue (separated horizons, P16
+  crossed scaling) is active.** Remaining items go to the owning queue on request or to AWS.
+- Retired from this container's queue:
+  - native lr .003/.006 arms (tuned-LSTM verdict final; low value);
+  - recruitment arms R2/R4–R7 (FAS slots fully used);
+  - transported write-credit training (failed its estimator-level test, FINDINGS 6 Oct).
+- Kept as cheap, evaluation-only diagnostics available to any owner:
+  - `experiments/credit_fidelity_audit.py` (exact forced-lane credit against implemented and transported estimators). It
+    applies directly to the separated-horizon question;
+  - a route-flip count per forced lane (next to add).
+- Pending if a slot frees:
+  - FAS F3 control and F1 (512-event credit window), to finish the F2 comparison;
+  - a second seed of grokking G4 vs G2 at train fraction .25 (§427.3).
