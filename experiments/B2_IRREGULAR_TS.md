@@ -43,3 +43,5 @@ validation, then the five-split protocol.
 
 | Date | Iteration | Change | Validation result | Diagnosis / next |
 |---|---|---|---|---|
+| 6 Oct | build | allow-list loader; cache (P12 11,988 records × ≤214 steps × 36 channels; P19 38,803 × ≤60 × 34; official split sizes 9,590/1,199/1,199 and 31,042/3,880/3,881); event-native classifier `race_irts.py` | — | |
+| 6 Oct | smoke | P12 split 0, 2 epochs | val AUROC 0.849, AUPRC 0.516 (69 s/epoch, 2.8 GB) | full development fit queued |
