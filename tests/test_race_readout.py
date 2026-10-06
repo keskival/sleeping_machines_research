@@ -91,3 +91,24 @@ def test_compiled_episode_equals_eager():
         b = readout_episode(model, ro, stamps, marks, ids, posterior=True, deterministic=True, compiled=True)
     torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)
     torch.testing.assert_close(a[1], b[1], rtol=1e-5, atol=1e-6)
+
+
+def test_smc_eval_single_particle_matches_episode():
+    import sys
+    sys.path.insert(0, 'experiments/fas')
+    from race_smc_eval import smc_log_z
+    model, ro = _model(); stamps, marks, ids = _data()
+    with torch.no_grad():
+        ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, posterior=True, deterministic=True)
+        lz = smc_log_z(model, ro, stamps, marks, ids, 1, True, deterministic=True)
+    torch.testing.assert_close(lz, torch.cumsum(ll * valid, 1), rtol=1e-6, atol=1e-8)
+
+
+def test_smc_eval_particles_finite_and_resample():
+    import sys
+    sys.path.insert(0, 'experiments/fas')
+    from race_smc_eval import smc_log_z
+    model, ro = _model(); stamps, marks, ids = _data()
+    with torch.no_grad():
+        lz = smc_log_z(model, ro, stamps, marks, ids, 8, True)
+    assert torch.isfinite(lz).all() and lz.shape == stamps.shape
