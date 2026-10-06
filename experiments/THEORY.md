@@ -335,3 +335,5 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 - [Selected token memory-path diagnosis](theory/TOKEN_SELECTED_MEMORY_PATH_20261005.md) — derived retention/value/key distinctions and queued selected8K observer; eight stdlib admission checks pass, native contracts and frozen diagnostics pending. No transport substitution or predicted quality gain.
 
 - [Explicit rotation backward engineering probe](theory/explicit_rotation_backward_20261005.md) — measured backward/core CPU priority, mixed-precision first-order adjoint and isolated numerical/integrated/update/timing contracts. Default kernels unchanged; numerical execution pending.
+
+- [Credit-window token gather](theory/chunk_token_gather_20261006.md) — repeated lexical backward buffers in the executed64K ledger; state-independent lookup hoist, retained causal event operations and all-gradient/update/count/timing contracts. Isolated implementation only, numerical execution pending.

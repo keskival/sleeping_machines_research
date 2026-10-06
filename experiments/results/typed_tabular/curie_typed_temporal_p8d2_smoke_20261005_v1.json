@@ -1,0 +1,203 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "curie_typed_temporal_p8d2_smoke_20261005_v1",
+    "steps": 64,
+    "seed": 6
+  },
+  "contracts": {
+    "column_presentation_invariant": true,
+    "category_relabel_invariant": true,
+    "missing_distinct_from_zero": true,
+    "independent_row_reset": true,
+    "training_inference_same_deterministic_path": true,
+    "finite_nonzero_key_credit": true,
+    "actual_alternative_write_changes_terminal_risk": true,
+    "observed_updates": 128,
+    "teacher": {
+      "site": [
+        3,
+        1,
+        0
+      ],
+      "inverse_site_probability": 16,
+      "winner": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "alternative": [
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      "proposal_probability": [
+        0.32936744462419115,
+        0.32936744462419115,
+        0.33420501400328173,
+        0.34387595135747656,
+        0.33420501400328173,
+        0.3405970305788964,
+        0.32052113199203525,
+        0.337577062291744
+      ],
+      "terminal_loss_difference": [
+        0.02321481704711914,
+        -0.010305255651473999,
+        0.06392931938171387,
+        -0.03156903386116028,
+        0.06392931938171387,
+        -0.031195133924484253,
+        0.04759860038757324,
+        -0.03249025344848633
+      ],
+      "factual_nll": 0.7683658599853516,
+      "selected_updates": 128,
+      "comparisons_per_row": 3,
+      "available_predicates": 3,
+      "scored_keys_per_event": 16,
+      "replay_events": 32,
+      "scope": "Fixed predicate bank; full comparisons, sparse learned state updates; one actual alternative-write continuation teacher. No FLOP or tabular win claim."
+    }
+  },
+  "curve": [
+    {
+      "step": 0,
+      "dev_nll": 0.758639931678772,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 16,
+      "dev_nll": 0.7232734560966492,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 32,
+      "dev_nll": 0.7136023640632629,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 48,
+      "dev_nll": 0.7059417366981506,
+      "dev_accuracy": 0.54296875
+    },
+    {
+      "step": 64,
+      "dev_nll": 0.7052433490753174,
+      "dev_accuracy": 0.54296875
+    }
+  ],
+  "last_teacher": {
+    "site": [
+      3,
+      1,
+      1
+    ],
+    "inverse_site_probability": 16,
+    "winner": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "alternative": [
+      3,
+      2,
+      0,
+      2,
+      3,
+      0,
+      2,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2
+    ],
+    "proposal_probability": [
+      0.25875602396349867,
+      0.3243446103962719,
+      0.4190315467004921,
+      0.3290808912115659,
+      0.25662384290323603,
+      0.42472277716279316,
+      0.3061423007440037,
+      0.2607485088195224,
+      0.25719411555548943,
+      0.4115321602022205,
+      0.4213015092527025,
+      0.40881616678788896,
+      0.4121630848249354,
+      0.3243446103962719,
+      0.40881616678788896,
+      0.32224081846622976
+    ],
+    "terminal_loss_difference": [
+      0.00128096342086792,
+      -0.01754438877105713,
+      -0.01607373356819153,
+      -0.019700288772583008,
+      0.0020928680896759033,
+      0.031182050704956055,
+      -0.023074626922607422,
+      -0.00167161226272583,
+      -0.002156496047973633,
+      -0.01390695571899414,
+      -0.021016716957092285,
+      0.030111074447631836,
+      -0.018359839916229248,
+      -0.01754438877105713,
+      0.030111074447631836,
+      0.034415245056152344
+    ],
+    "factual_nll": 0.6535401940345764,
+    "selected_updates": 256,
+    "comparisons_per_row": 3,
+    "available_predicates": 3,
+    "scored_keys_per_event": 16,
+    "replay_events": 64,
+    "scope": "Fixed predicate bank; full comparisons, sparse learned state updates; one actual alternative-write continuation teacher. No FLOP or tabular win claim."
+  },
+  "fit_rows": 64,
+  "dev_rows": 256,
+  "fitting_row_presentations": 1024,
+  "parameters": 6370,
+  "wall_s": 4.110872676013969,
+  "peak_rss_kib": 323892,
+  "source_sha256": {
+    "sleeping_machines/typed_temporal_model.py": "f80bf2a71ddce23a8c24c8b55f24aef02310dfa5d6bd67d2179c5ed5717f570b",
+    "sleeping_machines/typed_predicate_interface.py": "114a47e22f93dd6bb7a2894cf5a01849b2c5b7e4a08baa79529ad434bacba61b",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "experiments/typed_temporal_pilot.py": "902c98472e8b1711c4ac54f20cdf33861e1067a3edbdd94656d5a3e988dd6ce9"
+  },
+  "scope": "Synthetic mixed-type interaction witness, one seed; fixed predicates and canonical complete comparison presentation. Existing integrated temporal/sparse core, learned receiver selection and actual alternative-write terminal-risk credit. No learned thresholds/predicate discovery, tree benchmark, scaling/transfer or complete FLOP claim."
+}

@@ -1,5 +1,32 @@
 # Session handoff — 2026-09-30
 
+**FAS third native seed complete; language nowlive:** seed8 selectedepoch2,
+N2560.5863735/N5120.7328695; all18score/type/prefix metrics recomputeexactly
+from2000clean/2000faulty score arrays; weight/data/recipe/frozen source hashes
+pass. Seeds6/7/8 all beat the savedsixgeneric controls atN256; mean result
+is not a sealedv2 or strong-neural comparison. Three-seed FAS appendix replaces
+the two-seed page, retaining the other252pages and archiving the priorPDF.
+
+**Typed witness completed:**64updates/4.11s,6,370parameters; allintegration
+contracts pass. DEV NLL0.758640→0.705243, accuracy54.296875% throughout.
+Additional fixed-recipe1,024updates +finalweights queued under
+curie_typed_followup_20261006_v1 afterlanguage/rotation/utility. The64update
+result is integration evidence, not a learned mixed-type benchmarkwin.
+
+**Gather engineering hypothesis source-bound:**64Kledger16,382dense embedding
+backward calls/39.5189billion logical gradient-output elements motivates
+credit-window lookup hoist. No measuredphysicaltraffic or speedgain inferred.
+Isolated chunk_gather_counterfactual_episodes.py changeslookup location only,
+retains clocks/state/EOS/keys/values/sparsewrites/actual continuationcredit.
+Guarded all-gradient/update/callback/timing probe waitsprioritysequence and
+typedfollowup;600s/800MBRSS/8GiBreserve. Compilation passed, numerical pending.
+
+**Current main model/queue:** unchangedP32/256K fixed proper-token fit,
+PID67557 live at observation (~541MBRSS), followed byrotation and selected
+P32 utility. Revalidate handles.1Mconfigs prepared, not admitted;4M reserved.
+No architectural departure/default kernel replacement promoted.
+
+
 **FASseed7 completed and artifact-verified:** retryexit0; selectedepoch2 by
 validation-clean NLL. Test AUROC N2560.591049/N5120.73596375, versusseed6
 0.59979425/0.74218525 and bestsixanonymousgenericcontrols0.5586685/0.72723325.

@@ -4540,14 +4540,13 @@ Theory136; 60.076s/362876KiB. Numerically admitted cost/variance tradeoff only. 
 
 ## FAS native frozen-recipe replication
 
-**Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
+**Replicated win against all six anonymous generic controls at256 events.** Completed native fitting seeds: 6, 7.
 
 | Native seed | AUROC N256 | Gap vs controls | AUROC N512 | Gap vs controls |
 | --- | --- | --- | --- | --- |
 | 6 | 0.599794 | +0.041126 | 0.742185 | +0.014952 |
 | 7 | 0.591049 | +0.032381 | 0.735964 | +0.008730 |
-| 8 | 0.586373 | +0.027705 | 0.732869 | +0.005636 |
 
-Best generic controls: 0.558669 AUROC at N=256 and 0.727233 at N=512. The fixed P32/D4/H2/U2 recipe uses two passes over 10,000 clean FIT runs; selection uses validation-clean NLL only. Test: 2,000 clean and 2,000 faulty runs. Seeds7/8 score artifacts each reproduce all 18 aggregate/type/prefix AUROCs exactly and retain the selected weights.
+Best generic controls: 0.558669 AUROC atN256 and 0.727233 atN512. The fixed P32/D4/H2/U2 recipe uses two passes over10,000 clean FIT runs; selection uses validation-clean NLL only. Test:2,000 clean and2,000 faulty runs. Seed7 score artifacts reproduce all18 aggregate/type/prefix AUROCs exactly and retain the selected weights.
 
 FAS v1 replication, not sealed v2 confirmation. Generic-control comparison uses saved references; stronger neural benchmarks are pending. FIFO/timing de-interleaving trained on hidden item identities remain oracle-assisted diagnostics, excluded here. Original seed6 has aggregate scores, not the new per-run artifact; paired multi-seed bootstrap cannot be reconstructed from those aggregates. Current frozen dependency hashes are checked; historical unrecorded dependency identity is not independently verified.

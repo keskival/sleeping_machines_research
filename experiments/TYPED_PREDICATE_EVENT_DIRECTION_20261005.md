@@ -90,3 +90,22 @@ interaction. Queue `curie_typed_temporal_p8d2_smoke_20261005_v1.txt`: 64 updates
 waits behind the admitted FAS sequence. Static compilation passed; numerical
 contracts and learning result are pending. No tabular win or transfer result
 is inferred. The fixed P32/256K language cell follows independently.
+
+## Completed first integration; additional exposure queued (6 October)
+
+The64-update witness completed in4.11s. Column-order/category-relabel
+invariance, missingness, row reset, deterministic train/inference parity,
+finite nonzero key credit and actual alternative-write risk change all pass.
+It has6,370 learned parameters, three fixed predicates and four events per row;
+each event scores16 receiver keys and performs four selected state updates.
+DEV NLL0.758640→0.705243; accuracy remains54.296875%. Integration is verified;
+this run has not learned the interaction sufficiently for a tabular headline.
+
+Queuecurie_typed_temporal_p8d2_1024steps_20261006_v1 keeps the construction,
+FIT/DEV rows, seed, optimizer and teacher fixed and increases exposure to
+1,024 updates. It saves final weights for diagnosis. The first64-update curve
+can be compared to the completed pilot because this optimizer has no
+step-count-dependent schedule. It waits the admitted language/rotation/utility
+sequence and9504MiB headroom;600s/800MBRSS/8GiB reserve. No numerical result
+from that pending fit is claimed and no sparse predicate-discovery or learned
+threshold claim is promoted.

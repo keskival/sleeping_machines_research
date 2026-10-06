@@ -64,7 +64,7 @@ def contracts(model):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--steps',type=int,default=64);p.add_argument('--seed',type=int,default=6)
+    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--steps',type=int,default=64);p.add_argument('--seed',type=int,default=6);p.add_argument('--save-weights',action='store_true')
     a=p.parse_args();out=ROOT/'experiments/results/typed_tabular'/f'{a.tag}.json'
     if out.exists():raise FileExistsError(out)
     torch.set_num_threads(1);torch.manual_seed(a.seed);start=time.monotonic()
@@ -88,6 +88,13 @@ def main():
         if step%16==0 or step==a.steps:evaluate(step)
     sources=['sleeping_machines/typed_temporal_model.py','sleeping_machines/typed_predicate_interface.py','sleeping_machines/sparse_counterfactual_episodes.py','sleeping_machines/sparse_counterfactual_layer.py','sleeping_machines/packed_token_core.py','sleeping_machines/paired_route_credit.py',str(Path(__file__).relative_to(ROOT))]
     result=dict(status='completed',args=vars(a),contracts=proof,curve=curve,last_teacher=audit,fit_rows=64,dev_rows=256,fitting_row_presentations=a.steps*16,parameters=sum(p.numel() for p in model.parameters()),wall_s=time.monotonic()-start,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,source_sha256={s:hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in sources},scope='Synthetic mixed-type interaction witness, one seed; fixed predicates and canonical complete comparison presentation. Existing integrated temporal/sparse core, learned receiver selection and actual alternative-write terminal-risk credit. No learned thresholds/predicate discovery, tree benchmark, scaling/transfer or complete FLOP claim.')
+    out.parent.mkdir(parents=True,exist_ok=True)
+    if a.save_weights:
+        weights=out.with_suffix('.pt')
+        if weights.exists():raise FileExistsError(weights)
+        torch.save(model.state_dict(),weights)
+        result['final_weights']=str(weights.relative_to(ROOT))
+        result['final_weights_sha256']=hashlib.sha256(weights.read_bytes()).hexdigest()
     out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n')
 
 if __name__=='__main__':main()
