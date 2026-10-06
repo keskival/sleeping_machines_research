@@ -1,0 +1,2 @@
+# B1: WIN_CRITERIA sizing rule: StackOverflow v12 (3 layers) costs 1.26x S2P2's per-event MACs; 2 layers is ~1.08x (near-matched). DEV check decides whether a near-matched StackOverflow protocol follows
+b1_r18_so_v12_l2_state16_s0 experiments/tpp/race_tpp_v12.py --tag b1_r18_so_v12_l2_state16_s0 --dataset stackoverflow --seed 0 --n-lognormal 8 --layers 2 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125 --state-modes 16
