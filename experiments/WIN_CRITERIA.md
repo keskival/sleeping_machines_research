@@ -40,6 +40,13 @@ Win/loss wording applies to developed attempts. Earlier benchmark losses keep th
 attempt level where that changes their interpretation (Mackey-Glass: about 20 knob-level development runs of one member; primate reaching: about 10 on one session;
 banknote: fixed selection opportunities. All three are first-pass variants).
 
+## Maturity gate (added 6 October; VALUE_PLAN.md)
+
+No official, public or investor-table comparison is run until validation (development) evidence predicts a win with
+margin, on the same protocol and at matched compute. Draft-stage results are development notes, not win/loss
+verdicts. Official one-shot protocols (repeat sets, held-out sessions, test files) are scarce assets: spend them only
+on a configuration expected to win.
+
 ## Evidence levels (always attach one)
 
 - **Win (single seed)** — one completed run; normal for development and the first report.
