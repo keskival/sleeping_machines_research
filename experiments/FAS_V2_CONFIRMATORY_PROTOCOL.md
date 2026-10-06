@@ -203,7 +203,7 @@ Everything else is unchanged: the grid, the thresholds (oracle ≥ .70; oracle �
 - If the amended grid selects a setting, Stage 2 generates it, and Stages 3–5 measure N in per-line units
   (merged prefix N·K). Native development uses validation only, as before.
 
-## Protocol amendment: small neural references reinstated, 6 October 2026, 18:10 UTC (user direction)
+## Protocol amendment: small neural references reinstated, 6 October 2026, 17:46 UTC (user direction)
 
 This replaces the "no new external-architecture training" amendment for two families (AGENTS.md exception of the same
 time):

@@ -41,16 +41,16 @@ oracle's .821.
 
 ## Log
 
-- 6 Oct 17:10 UTC: plan declared. The v2 data (Stage 2) is queued behind the amended calibration grid. Training
+- 6 Oct 17:05 UTC: plan declared. The v2 data (Stage 2) is queued behind the amended calibration grid. Training
   waits for a curie window or an AWS gym slot.
-- 6 Oct 17:20 UTC: error analysis ready (`readout_diagnostics.py`, evaluation only, validation identities used only for
+- 6 Oct 17:09 UTC: error analysis ready (`readout_diagnostics.py`, evaluation only, validation identities used only for
   diagnosis). It reports binding purity α (the α of §434.2), item concentration and the time-rescaling fit (§435.3:
   KS of rescaled intervals, tie fraction), plus AUROC split by binding purity. It is queued right after C1 and its
   particle evaluation.
   - Data note: over a whole run, faulty samples carry ~7× more plant-clock ticks, because the faulty line runs far
     longer and the single clock runs to the last event. Process-event counts are equal. Within a prefix this is
     legitimate elapsed-time evidence, already available to the `elapsed` and `tick_count` references.
-- 6 Oct 17:45 UTC: **small integrated fit of the binding mechanism** (`binding_toy.py`). Synthetic data: 3 interleaved
+- 6 Oct 17:39 UTC: **small integrated fit of the binding mechanism** (`binding_toy.py`). Synthetic data: 3 interleaved
   processes, 8-step routes, log-normal steps with CV .15, no dropout. Model: binding memory 6 slots + race readout,
   2 step classes, trained from scratch, 300 steps of 16 samples.
   - Binding purity α rose from chance .27 to .71 with additive slot writes.
@@ -60,16 +60,16 @@ oracle's .821.
     the gap from chance to that ceiling.
   - Gated writes go into C1-family iterations once compared on v2 (§436.2: a slot must be able to hold its process's
     latest state). A longer fit (1,200 steps) is running.
-- 6 Oct 17:55 UTC: binding toy, 1,200 steps (gated): validation NLL 1.97 → 1.77, but α plateaus at .78–.80 (sampled)
+- 6 Oct 17:46 UTC: binding toy, 1,200 steps (gated): validation NLL 1.97 → 1.77, but α plateaus at .78–.80 (sampled)
   and .80–.84 (argmax), against the .911 ceiling. The remaining binding gap is not a step-budget gap. Testing
   hard-EM (argmax) training writes and a larger readout (hidden 64).
-- 6 Oct 18:15 UTC: binding toy arms (600 steps, gated writes):
+- 6 Oct 17:46 UTC: binding toy arms (600 steps, gated writes):
   - hard-EM (argmax) training: α .82 (no gain);
   - **readout hidden 64: α .934 with argmax writes (.88 sampled)**, above the Bayes-greedy ceiling .911, with
     validation NLL 1.73.
 
   The binding gap was readout capacity; C1 already uses hidden 64. A no-context ablation (§436.3) is running.
-- 6 Oct 18:15 UTC: **small neural references reinstated** (user direction; AGENTS.md exception, protocol amendment).
+- 6 Oct 17:46 UTC: **small neural references reinstated** (user direction; AGENTS.md exception, protocol amendment).
   LSTM and time-encoded Transformer, d ∈ {64, 128} × lr ∈ {3e-4, 1e-3, 3e-3}, at most 3 passes over the same 5,000
   clean samples, validation only. Two smokes and 12 grid queues are prepared for AWS (`aws_fas_v2_ref_*_20261006T1815Z`).
 
@@ -82,9 +82,14 @@ oracle's .821.
   | Transformer d64 / d128 | 110K / 425K | 1.3 / 3.0 |
 
   The Transformer's per-event cost grows with log length; ours is constant per event.
-- 6 Oct 18:25 UTC: no-context ablation (§436.3), hidden 32: argmax α .908 (.88 sampled), validation NLL 1.83, against
+- 6 Oct 17:47 UTC: no-context ablation (§436.3), hidden 32: argmax α .908 (.88 sampled), validation NLL 1.83, against
   α .81 / NLL 1.94 with context at the same size. This supports the shortcut hypothesis: merged-stream context lets
   slots predict without binding.
 
   The toy processes are independent; FAS processes interact through shared stations, so C1 keeps the context at hidden
   64. If C1's diagnostics show low binding purity, a no-context or context-gated readout is the first C5–C8 iteration.
+- 6 Oct 17:49 UTC: hidden 64 without context: argmax α .856, NLL 1.89, worse than hidden 64 with context (.934, 1.73).
+  C1's choice of context at hidden 64 stands. Toy arms are single-seed; differences of a few points are within noise.
+  Timestamp correction: entries from 17:05 to 17:47 were first written with times 5–40 minutes too late. They now
+  carry the commit times, and the same correction is applied to the reference-exception notes (AGENTS.md, protocol,
+  AWS_FAS_REFERENCES.md, PRODUCT_ORDERS.md). Queue tags keep their original suffixes; they are identifiers, not times.

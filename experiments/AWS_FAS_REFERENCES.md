@@ -99,7 +99,7 @@ B3_DEVELOPMENT_LOG.md). In the first free AWS gym slot, in order:
 The v1 arms (R2, E1, particles) become optional diagnostics. As before, the AWS and curie copies of the same arm never
 both run: the first to start owns it, and the other is dropped.
 
-## Small neural references for FAS v2 — reinstated 6 October 2026, 18:15 UTC (user direction)
+## Small neural references for FAS v2 — reinstated 6 October 2026, 17:46 UTC (user direction)
 
 AGENTS.md exception plus protocol amendment: LSTM and time-encoded Transformer only. In the first free AWS gym slots,
 after the v2 data queue (`aws_fas_v2_data_20261006T1715Z`):
