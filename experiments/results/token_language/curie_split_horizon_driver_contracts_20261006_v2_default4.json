@@ -1,0 +1,1048 @@
+{
+  "status": "completed",
+  "evidence": "development single seed",
+  "args": {
+    "tag": "curie_split_horizon_driver_contracts_20261006_v2_default4",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 512,
+    "dev_offset": 20971520,
+    "dev_tokens": 128,
+    "steps": 4,
+    "chunk": 16,
+    "eval_lanes": 2,
+    "lanes": 2,
+    "credit_window": 4,
+    "future_credit_window": null,
+    "minimum_tail_width": 0,
+    "payload": 8,
+    "heads": 1,
+    "depth": 2,
+    "pool": 2,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "sampled",
+    "compiled": false,
+    "future_site": "uniform",
+    "future_score_positions": 2,
+    "future_every": 1,
+    "future_scale": 1.0,
+    "readout_init": "frequency",
+    "input_init": "balanced",
+    "state_mode": "carry",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": false,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 1,
+    "resume": null,
+    "stop_after_step": null
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/split_horizon_token_language_engine.py": "6085552561e26c09ef0be68791d016db40cde2b8ef6f6ec1693ac91b4e1e20f7",
+      "experiments/split_horizon_token_language.py": "f2ba7a73f97fb3e523e0a0d6e2887c142b1688f2ea170a89d8243b76f8376678",
+      "experiments/horizon_token_language.py": "74188a3698d0240639568443f806e2dcc9b07d5c22f0179eba4a922793d349eb",
+      "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+      "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+      "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+      "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+      "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+      "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+      "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 562201,
+  "core_bank_sharing": {
+    "key": false,
+    "key_read": false,
+    "clock_bias": false,
+    "input": false,
+    "output": false,
+    "gate_w": false,
+    "gate_b": false,
+    "control_w": false,
+    "control_b": false,
+    "raw_rate": false,
+    "frequency": false
+  },
+  "core_parameters": 403604,
+  "readout_parameters": 158597,
+  "decoder_tail_widths": [
+    4,
+    2,
+    1
+  ],
+  "best_dev_nll": 9.504452659970237,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.564975261688232,
+      "dev_nll": 9.511229499937995
+    },
+    {
+      "step": 1,
+      "batch_nll": 7.4760541915893555,
+      "gradient_norm": 0.9369461536407471,
+      "train_nll": 7.559315741062164,
+      "dev_nll": 9.50916253952753,
+      "future_write_teacher": {
+        "site": [
+          12,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 8.0,
+        "credit_end": 16,
+        "winner": [
+          0,
+          0
+        ],
+        "alternative": [
+          1,
+          1
+        ],
+        "scoring_positions": [
+          12,
+          13
+        ],
+        "replay_length": 14,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 0.0
+      },
+      "route_entropy": 0.6720346212387085,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              12,
+              20
+            ]
+          ],
+          [
+            [
+              11,
+              21
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9378192408783848
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.625
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.query": 0.0
+      },
+      "memory_effective_rank": [
+        [
+          2.224169418834837
+        ],
+        [
+          2.465234144945429
+        ]
+      ],
+      "wall_s": 0.6261973300133832
+    },
+    {
+      "step": 2,
+      "batch_nll": 7.40427827835083,
+      "gradient_norm": 0.9023981690406799,
+      "train_nll": 7.551675379276276,
+      "dev_nll": 9.5074460468595,
+      "future_write_teacher": {
+        "site": [
+          15,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 2.0,
+        "credit_end": 16,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 5.817413330078125e-05
+      },
+      "route_entropy": 0.64490807056427,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              28,
+              36
+            ]
+          ],
+          [
+            [
+              22,
+              42
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9843952490181156
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.5625
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              2.82538877627303e-07,
+              2.069541977789413e-07
+            ]
+          ],
+          [
+            [
+              1.3904324987379368e-05,
+              1.3792616300634108e-05
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              8.514585942975827e-07,
+              5.181458959668817e-07
+            ]
+          ],
+          [
+            [
+              3.595960879465565e-05,
+              6.759745156159624e-05
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              1.051143158292689e-06,
+              7.97842517386016e-07
+            ]
+          ],
+          [
+            [
+              2.47679327003425e-05,
+              2.2199934392119758e-05
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.00024020935234148055,
+              0.00026073158369399607
+            ]
+          ],
+          [
+            [
+              0.0002042152627836913,
+              0.00025721220299601555
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0004455566231627017,
+              0.0004816727014258504
+            ]
+          ],
+          [
+            [
+              0.0002858364605344832,
+              0.0005592344095930457
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.00012897458509542048,
+              0.0001848196261562407
+            ]
+          ],
+          [
+            [
+              6.721063982695341e-05,
+              0.00012044372851960361
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              8.226502541219816e-05,
+              0.00011580405407585204
+            ]
+          ],
+          [
+            [
+              2.9117272788425907e-05,
+              8.841956150718033e-05
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              9.190733544528484e-05,
+              7.113178435247391e-05
+            ]
+          ],
+          [
+            [
+              9.216619218932465e-05,
+              0.00012088573566870764
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              2.342264815524686e-05,
+              2.0348049929452827e-06
+            ]
+          ],
+          [
+            [
+              3.6367535358294845e-05,
+              5.726449307985604e-05
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              9.409143785887863e-06,
+              1.1439425179560203e-05
+            ]
+          ],
+          [
+            [
+              2.5333367375424132e-05,
+              9.246936315321364e-06
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.00019779369176831096,
+              0.00010311366349924356
+            ]
+          ],
+          [
+            [
+              0.0002918036771006882,
+              0.00027628251700662076
+            ]
+          ]
+        ],
+        "banks.query": 6.0179547290317714e-05
+      },
+      "memory_effective_rank": [
+        [
+          1.9893110531234413
+        ],
+        [
+          1.9596298989761762
+        ]
+      ],
+      "wall_s": 1.2756498930393718
+    },
+    {
+      "step": 3,
+      "batch_nll": 7.557745456695557,
+      "gradient_norm": 0.9092163443565369,
+      "train_nll": 7.542345225811005,
+      "dev_nll": 9.505915081690228,
+      "future_write_teacher": {
+        "site": [
+          8,
+          0,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 8.0,
+        "credit_end": 12,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          9,
+          11
+        ],
+        "replay_length": 12,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 3.0994415283203125e-06
+      },
+      "route_entropy": 0.6557126045227051,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              42,
+              54
+            ]
+          ],
+          [
+            [
+              30,
+              66
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9843952490181156
+          ],
+          [
+            1.8609486313308101
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.5625
+          ],
+          [
+            0.6875
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              2.831869278452359e-05,
+              2.6794165023602545e-05
+            ]
+          ],
+          [
+            [
+              2.221195018137223e-06,
+              1.1088831115557696e-06
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              7.573348557343706e-05,
+              6.640954234171659e-05
+            ]
+          ],
+          [
+            [
+              4.464961875783047e-06,
+              8.184523721865844e-06
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              3.2477453260071343e-06,
+              8.65798119775718e-06
+            ]
+          ],
+          [
+            [
+              2.4832299914123723e-06,
+              1.182089363283012e-06
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0005865543498657644,
+              0.0005275108851492405
+            ]
+          ],
+          [
+            [
+              0.0008391591836698353,
+              0.0007642274140380323
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0011667826911434531,
+              0.0007311461959034204
+            ]
+          ],
+          [
+            [
+              0.0007490507559850812,
+              0.0017587401671335101
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.00030480296118184924,
+              0.00045432060142047703
+            ]
+          ],
+          [
+            [
+              0.00026741789770312607,
+              0.00030163631890900433
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.00015086689381860197,
+              0.00011213672405574471
+            ]
+          ],
+          [
+            [
+              0.00014944358554203063,
+              0.000167607213370502
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0001455233432352543,
+              0.0001441140047973022
+            ]
+          ],
+          [
+            [
+              0.00019067963876295835,
+              0.00040923268534243107
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              8.1936115748249e-05,
+              4.980399171472527e-05
+            ]
+          ],
+          [
+            [
+              2.036940713878721e-05,
+              0.00018847752653528005
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              4.8345460527343675e-05,
+              1.265308674192056e-05
+            ]
+          ],
+          [
+            [
+              3.300926255178638e-05,
+              5.3879157349001616e-05
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0007421686314046383,
+              0.00027126583154313266
+            ]
+          ],
+          [
+            [
+              0.000337167177349329,
+              0.0024809534661471844
+            ]
+          ]
+        ],
+        "banks.query": 0.00015581857587676495
+      },
+      "memory_effective_rank": [
+        [
+          2.5867729048574506
+        ],
+        [
+          1.891239821786172
+        ]
+      ],
+      "wall_s": 1.8951520530390553
+    },
+    {
+      "step": 4,
+      "batch_nll": 7.593983173370361,
+      "gradient_norm": 0.9711418151855469,
+      "train_nll": 7.531471610069275,
+      "dev_nll": 9.504452659970237,
+      "future_write_teacher": {
+        "site": [
+          13,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 6.0,
+        "credit_end": 16,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          14,
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": -5.53131103515625e-05
+      },
+      "route_entropy": 0.6412359476089478,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              62,
+              66
+            ]
+          ],
+          [
+            [
+              44,
+              84
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9990235169495665
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.515625
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              5.922480568187893e-07,
+              1.500679559285345e-06
+            ]
+          ],
+          [
+            [
+              0.00043759794789366424,
+              0.0004397443844936788
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              8.336322025570553e-06,
+              8.674367563799024e-06
+            ]
+          ],
+          [
+            [
+              0.0021699080243706703,
+              0.0029971529729664326
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              4.957831606589025e-06,
+              7.152111720643006e-06
+            ]
+          ],
+          [
+            [
+              8.633744437247515e-05,
+              8.0687808804214e-05
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.000781764043495059,
+              0.0007738486747257411
+            ]
+          ],
+          [
+            [
+              0.0014973324723541737,
+              0.001167492475360632
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.002371789887547493,
+              0.001389293815009296
+            ]
+          ],
+          [
+            [
+              0.0016757342964410782,
+              0.0015215747989714146
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0008083157008513808,
+              0.00037060907925479114
+            ]
+          ],
+          [
+            [
+              0.00038038656930439174,
+              0.0005616230773739517
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0003974971768911928,
+              0.0001725309411995113
+            ]
+          ],
+          [
+            [
+              0.0001553493202663958,
+              0.000268723611952737
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.00028129667043685913,
+              0.0001319104922004044
+            ]
+          ],
+          [
+            [
+              0.0004637950623873621,
+              0.0002470545005053282
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.00010219540126854554,
+              6.283528637140989e-05
+            ]
+          ],
+          [
+            [
+              0.0001222335413331166,
+              5.6389992096228525e-05
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              5.2594357839552686e-05,
+              1.677716863923706e-05
+            ]
+          ],
+          [
+            [
+              6.422066508093849e-05,
+              8.193537360057235e-05
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0008802800439298153,
+              0.0007066961843520403
+            ]
+          ],
+          [
+            [
+              0.0007589522283524275,
+              0.00218750792555511
+            ]
+          ]
+        ],
+        "banks.query": 0.00299688708037138
+      },
+      "memory_effective_rank": [
+        [
+          2.286037461872712
+        ],
+        [
+          1.8503360651475196
+        ]
+      ],
+      "wall_s": 2.5358374280040152
+    }
+  ],
+  "presentations_total": 128,
+  "train_wall_s_total": 0.6704043860081583,
+  "best_checkpoint": "/workspace/experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_default4.best_step00000004.pt",
+  "presentations_this_invocation": 128,
+  "train_wall_s_this_invocation": 0.6704043860081583,
+  "train_tokens_per_second": 190.9295384568715,
+  "wall_s": 2.5473173440550454,
+  "max_rss_kb": 351544,
+  "host": "curie",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-key scoring, winner/sampled-value proposals, winner-only suffix replay, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Packed parameter banks; winner+sampled-value factual learning and winner-only suffix replay; uniform event-site credit (local value surrogate disabled) or first-site control; uniformly sampled causal suffix utility with winner-only replay through the last scored position; bounded per-chunk alternative-write suffix teacher with fixed site first-time/common future noise; contiguous lane streams; numeric state carried; credit truncated per configured window inside the optimizer chunk; EOS reset; separate development interval; public validation untouched"
+}

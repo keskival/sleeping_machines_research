@@ -1,0 +1,100 @@
+{
+  "status": "completed",
+  "records": {
+    "original4": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504452659970237
+    },
+    "default4": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504452659970237
+    },
+    "diagonal4": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504452659970237
+    },
+    "original16": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504842122395834
+    },
+    "default16": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504842122395834
+    },
+    "diagonal16": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504842122395834
+    },
+    "f4a16": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504440792023189
+    },
+    "f4a16_partial": {
+      "status": "checkpointed",
+      "targets": 64,
+      "final_dev": 9.5074460468595
+    },
+    "f4a16_resumed": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.504440792023189
+    },
+    "f16a4": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.505112178741939
+    },
+    "f16a4_partial": {
+      "status": "checkpointed",
+      "targets": 64,
+      "final_dev": 9.507633754185267
+    },
+    "f16a4_resumed": {
+      "status": "completed",
+      "targets": 128,
+      "final_dev": 9.505112178741939
+    }
+  },
+  "input_sha256": {
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_original4.json": "13d042a9a13b654f8c7b6038314a921d81c31d5012e1e4d5b23e91c084c59ac3",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_default4.json": "fed6caa76d6b16767decc165980d75ac491b18ea254c14b97d264d8f9848caf4",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_diagonal4.json": "ecbb70bfefdf2fb57ae629ec130b8fd6a8c6628a6e8c6e865c34c786709593f9",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_original16.json": "d90b4928597c7b0442d274addcc472a2afba555cf26c762b53e5393001914c77",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_default16.json": "e22052a6813ed179cee42fe6f496abb633e066254f22dfa202b42e09e5bc778d",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_diagonal16.json": "610f7accaf3855112e7abc43cb6562b1916f90bda07f590e8692be969328d001",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f4a16.json": "2a3bbd3d53c59147b336f4d402728d75d5b98728a6b4d7abfabdb0945571d11b",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f4a16_partial.partial.json": "9641b0eb055385ba4bc71499d779e17b3a6f4d2bad36f2910b5a08a23811f7ed",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f4a16_resumed.json": "094b86c405343373f9393c0ca6874b4b82bb79dcde7c50b44810d0912f86e6b2",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f16a4.json": "8c73c1bee4bb6fa2776ea43a2960681f08b125f1533551fb982a5555f007b233",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f16a4_partial.partial.json": "991d92c10547b05112e37ba8016708c772b3050d6ed6516afa98cf9aa09d480d",
+    "experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_f16a4_resumed.json": "daf757990c71383eb7369d941a04a150806cb75b6c330df5de0b1fe67c11cd3e"
+  },
+  "exact_fields": [
+    "model",
+    "optimizer",
+    "state",
+    "generator",
+    "alternative_generator",
+    "local_generator",
+    "position_generator",
+    "site_generator",
+    "torch_rng",
+    "cursor",
+    "step",
+    "total_presentations",
+    "writes"
+  ],
+  "diagonal_parity": true,
+  "off_diagonal_resume": true,
+  "causal_endpoints": true,
+  "importance_weight_contract": true,
+  "scope": "Tiny actual-driver learning contracts; no benchmark quality claim. Factual gradient-cut and cross-partition feature witnesses are separate required checks.",
+  "producer_sha256": "ae4b79c8948171a7639a46197ee94ea50055ccf2c08f4a7d0d4dd004117a99f4"
+}

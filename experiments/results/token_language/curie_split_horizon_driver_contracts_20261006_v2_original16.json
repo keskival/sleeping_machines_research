@@ -1,0 +1,1045 @@
+{
+  "status": "completed",
+  "evidence": "development single seed",
+  "args": {
+    "tag": "curie_split_horizon_driver_contracts_20261006_v2_original16",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 512,
+    "dev_offset": 20971520,
+    "dev_tokens": 128,
+    "steps": 4,
+    "chunk": 16,
+    "eval_lanes": 2,
+    "lanes": 2,
+    "credit_window": 16,
+    "minimum_tail_width": 0,
+    "payload": 8,
+    "heads": 1,
+    "depth": 2,
+    "pool": 2,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "sampled",
+    "compiled": false,
+    "future_site": "uniform",
+    "future_score_positions": 2,
+    "future_every": 1,
+    "future_scale": 1.0,
+    "readout_init": "frequency",
+    "input_init": "balanced",
+    "state_mode": "carry",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": false,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 1,
+    "resume": null,
+    "stop_after_step": null
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/horizon_token_language_engine.py": "39b11a75915266f609ca968c14a8953d7aba4403646aa5dcc1812afa9e5cf5f8",
+      "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+      "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+      "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+      "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+      "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+      "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+      "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 562201,
+  "core_bank_sharing": {
+    "key": false,
+    "key_read": false,
+    "clock_bias": false,
+    "input": false,
+    "output": false,
+    "gate_w": false,
+    "gate_b": false,
+    "control_w": false,
+    "control_b": false,
+    "raw_rate": false,
+    "frequency": false
+  },
+  "core_parameters": 403604,
+  "readout_parameters": 158597,
+  "decoder_tail_widths": [
+    4,
+    2,
+    1
+  ],
+  "best_dev_nll": 9.504842122395834,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.564975261688232,
+      "dev_nll": 9.511229499937995
+    },
+    {
+      "step": 1,
+      "batch_nll": 7.4760541915893555,
+      "gradient_norm": 0.9369461536407471,
+      "train_nll": 7.559315741062164,
+      "dev_nll": 9.50916253952753,
+      "future_write_teacher": {
+        "site": [
+          12,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 8.0,
+        "credit_end": 16,
+        "winner": [
+          0,
+          0
+        ],
+        "alternative": [
+          1,
+          1
+        ],
+        "scoring_positions": [
+          12,
+          13
+        ],
+        "replay_length": 14,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 0.0
+      },
+      "route_entropy": 0.6720346212387085,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              12,
+              20
+            ]
+          ],
+          [
+            [
+              11,
+              21
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9378192408783848
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.625
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.query": 0.0
+      },
+      "memory_effective_rank": [
+        [
+          2.224169418834837
+        ],
+        [
+          2.465234144945429
+        ]
+      ],
+      "wall_s": 0.6179416440427303
+    },
+    {
+      "step": 2,
+      "batch_nll": 7.40427827835083,
+      "gradient_norm": 0.9024487733840942,
+      "train_nll": 7.551728367805481,
+      "dev_nll": 9.507633754185267,
+      "future_write_teacher": {
+        "site": [
+          15,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 2.0,
+        "credit_end": 16,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 5.817413330078125e-05
+      },
+      "route_entropy": 0.64490807056427,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              28,
+              36
+            ]
+          ],
+          [
+            [
+              22,
+              42
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9843952490181156
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.5625
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              5.463200523081468e-07,
+              6.94086679686734e-07
+            ]
+          ],
+          [
+            [
+              1.4348076547321398e-05,
+              1.2845409401052166e-05
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              2.973091795865912e-06,
+              3.07761774820392e-06
+            ]
+          ],
+          [
+            [
+              3.700268280226737e-05,
+              6.840303831268102e-05
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              3.077576593568665e-06,
+              2.974472863570554e-06
+            ]
+          ],
+          [
+            [
+              2.660706013557501e-05,
+              1.864169826149009e-05
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0004461739445105195,
+              0.00029819365590810776
+            ]
+          ],
+          [
+            [
+              0.0003190542047377676,
+              0.0004155500791966915
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0006389391492120922,
+              0.0005191036616452038
+            ]
+          ],
+          [
+            [
+              0.00037670196616090834,
+              0.0007562565733678639
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.00016004554345272481,
+              0.00022270345652941614
+            ]
+          ],
+          [
+            [
+              9.089565719477832e-05,
+              0.00014794403978157789
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.00010370503878220916,
+              0.00013131098239682615
+            ]
+          ],
+          [
+            [
+              2.9390679628704675e-05,
+              0.00010454790754010901
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.00018681070650927722,
+              8.273255662061274e-05
+            ]
+          ],
+          [
+            [
+              0.0001621067785890773,
+              8.878193330019712e-05
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              5.1653729315148667e-05,
+              1.405810508003924e-05
+            ]
+          ],
+          [
+            [
+              7.515308243455365e-05,
+              4.3521311454242095e-05
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              2.749645682342816e-05,
+              1.6103404050227255e-05
+            ]
+          ],
+          [
+            [
+              2.243522794742603e-05,
+              3.087320874328725e-05
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0009054074180312455,
+              0.00010184130223933607
+            ]
+          ],
+          [
+            [
+              0.0005457209190353751,
+              0.0010848511010408401
+            ]
+          ]
+        ],
+        "banks.query": 6.095178105169907e-05
+      },
+      "memory_effective_rank": [
+        [
+          1.9893110531234413
+        ],
+        [
+          1.9596298989761762
+        ]
+      ],
+      "wall_s": 1.2461681650020182
+    },
+    {
+      "step": 3,
+      "batch_nll": 7.557766914367676,
+      "gradient_norm": 0.9113002419471741,
+      "train_nll": 7.542457163333893,
+      "dev_nll": 9.506114414760045,
+      "future_write_teacher": {
+        "site": [
+          8,
+          0,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 16.0,
+        "credit_end": 16,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          11,
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": -0.0007212162017822266
+      },
+      "route_entropy": 0.6544911861419678,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              42,
+              54
+            ]
+          ],
+          [
+            [
+              30,
+              66
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.9843952490181156
+          ],
+          [
+            1.8609486313308101
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.5625
+          ],
+          [
+            0.6875
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              0.0013073863228783011,
+              0.0013069127453491092
+            ]
+          ],
+          [
+            [
+              2.892062411774532e-06,
+              1.5653782838853658e-06
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              0.004158848896622658,
+              0.0034878451842814684
+            ]
+          ],
+          [
+            [
+              8.107079338515177e-06,
+              1.4238024050428066e-05
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              0.0028806100599467754,
+              0.002890199888497591
+            ]
+          ],
+          [
+            [
+              8.33232479635626e-06,
+              9.457976375415456e-06
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0019685295410454273,
+              0.0030105768237262964
+            ]
+          ],
+          [
+            [
+              0.0008400127408094704,
+              0.001229080487973988
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0016647014999762177,
+              0.0012087118811905384
+            ]
+          ],
+          [
+            [
+              0.0011715784203261137,
+              0.0024004026781767607
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0003220316139049828,
+              0.0005597006529569626
+            ]
+          ],
+          [
+            [
+              0.0004125192353967577,
+              0.0004568176227621734
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.00017710091196931899,
+              0.00013432459672912955
+            ]
+          ],
+          [
+            [
+              0.0002324788656551391,
+              0.0002586816262919456
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0005909412284381688,
+              0.0010971811134368181
+            ]
+          ],
+          [
+            [
+              0.0002813308092299849,
+              0.00040062746847979724
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.0002623375621624291,
+              0.000288839393761009
+            ]
+          ],
+          [
+            [
+              0.00013933665468357503,
+              0.0002991993969772011
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              0.0001370695244986564,
+              5.880317257833667e-05
+            ]
+          ],
+          [
+            [
+              5.370044891606085e-05,
+              0.00013575702905654907
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0010103132808580995,
+              0.004871773067861795
+            ]
+          ],
+          [
+            [
+              0.0004690653586294502,
+              0.01024752575904131
+            ]
+          ]
+        ],
+        "banks.query": 0.007638981565833092
+      },
+      "memory_effective_rank": [
+        [
+          2.588234560432159
+        ],
+        [
+          1.8560535566385385
+        ]
+      ],
+      "wall_s": 1.8698866690392606
+    },
+    {
+      "step": 4,
+      "batch_nll": 7.594338417053223,
+      "gradient_norm": 0.9638010263442993,
+      "train_nll": 7.531845211982727,
+      "dev_nll": 9.504842122395834,
+      "future_write_teacher": {
+        "site": [
+          13,
+          1,
+          0
+        ],
+        "inverse_site_probability": 32,
+        "utility_weight": 6.0,
+        "credit_end": 16,
+        "winner": [
+          1,
+          1
+        ],
+        "alternative": [
+          0,
+          0
+        ],
+        "scoring_positions": [
+          13,
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          1.0,
+          1.0
+        ],
+        "mean_suffix_loss_delta": 2.1457672119140625e-05
+      },
+      "route_entropy": 0.6412352323532104,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              63,
+              65
+            ]
+          ],
+          [
+            [
+              44,
+              84
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            1.99975586434169
+          ],
+          [
+            1.9031141162555836
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.5078125
+          ],
+          [
+            0.65625
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              1.3981368738313904e-06,
+              1.7684249087324133e-06
+            ]
+          ],
+          [
+            [
+              0.0004623169079422951,
+              0.0004623292770702392
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              1.4590899809263647e-05,
+              1.1980047929682769e-05
+            ]
+          ],
+          [
+            [
+              0.0022368507925421,
+              0.0029113662894815207
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              8.957528734754305e-06,
+              1.0069824384117965e-05
+            ]
+          ],
+          [
+            [
+              2.370452602917794e-05,
+              3.56961609213613e-05
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0013144448166713119,
+              0.0007911209249868989
+            ]
+          ],
+          [
+            [
+              0.0023107712622731924,
+              0.0017490922473371029
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.002305586589500308,
+              0.0014477426884695888
+            ]
+          ],
+          [
+            [
+              0.0013861811021342874,
+              0.0016843656776472926
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0008303175563924015,
+              0.0004962358507327735
+            ]
+          ],
+          [
+            [
+              0.0004795189597643912,
+              0.0005322140059433877
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.00028873814153485,
+              0.0002569174685049802
+            ]
+          ],
+          [
+            [
+              0.00021888059563934803,
+              0.0002926797023974359
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0004558984364848584,
+              0.0001045424651238136
+            ]
+          ],
+          [
+            [
+              0.0007045965176075697,
+              0.000402770412620157
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.00010571610619081184,
+              7.382680450973567e-06
+            ]
+          ],
+          [
+            [
+              0.00026618290576152503,
+              0.00012928456999361515
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              7.717580592725426e-05,
+              1.4387451301445253e-05
+            ]
+          ],
+          [
+            [
+              0.00031600194051861763,
+              0.00027114772819913924
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0022763500455766916,
+              0.0019005925860255957
+            ]
+          ],
+          [
+            [
+              0.0035496444907039404,
+              0.002783742733299732
+            ]
+          ]
+        ],
+        "banks.query": 0.0029988852329552174
+      },
+      "memory_effective_rank": [
+        [
+          2.246753601678196
+        ],
+        [
+          1.8472392230942967
+        ]
+      ],
+      "wall_s": 2.499259539996274
+    }
+  ],
+  "presentations_total": 128,
+  "train_wall_s_total": 0.6825574690010399,
+  "best_checkpoint": "/workspace/experiments/results/token_language/curie_split_horizon_driver_contracts_20261006_v2_original16.best_step00000004.pt",
+  "presentations_this_invocation": 128,
+  "train_wall_s_this_invocation": 0.6825574690010399,
+  "train_tokens_per_second": 187.52999683284543,
+  "wall_s": 2.5266793300397694,
+  "max_rss_kb": 356624,
+  "host": "curie",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-key scoring, winner/sampled-value proposals, winner-only suffix replay, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Packed parameter banks; winner+sampled-value factual learning and winner-only suffix replay; uniform event-site credit (local value surrogate disabled) or first-site control; uniformly sampled causal suffix utility with winner-only replay through the last scored position; bounded per-chunk alternative-write suffix teacher with fixed site first-time/common future noise; contiguous lane streams; numeric state carried; credit truncated per configured window inside the optimizer chunk; EOS reset; separate development interval; public validation untouched"
+}
