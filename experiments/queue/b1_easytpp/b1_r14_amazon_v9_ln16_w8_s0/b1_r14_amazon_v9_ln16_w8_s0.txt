@@ -1,0 +1,2 @@
+# B1: Amazon development beyond v8 (TEST seed0 0.768 vs S2P2 0.781): sequence age (v9; v6 gave +0.005 on v5), and 8 windows with 16 delayed clocks. Decides whether a v9 Amazon protocol supersedes v8
+b1_r14_amazon_v9_ln16_w8_s0 experiments/tpp/race_tpp_v9.py --tag b1_r14_amazon_v9_ln16_w8_s0 --dataset amazon --seed 0 --n-lognormal 16 --n-window 8 --dropout 0.3 --patience 30
