@@ -1,0 +1,2 @@
+# B1: v11 clustered window initialization (k-means on TRAIN log gaps): Amazon v8 seeds diverge (DEV 0.768 vs 0.739; windows snap onto boxes at different epochs, one quantile window initialized between the boxes). Two seeds test whether data-driven windows remove the seed variance
+b1_r16_amazon_v11_s1 experiments/tpp/race_tpp_v11.py --tag b1_r16_amazon_v11_s1 --dataset amazon --seed 1 --n-lognormal 16 --n-window 4 --dropout 0.3 --patience 30
