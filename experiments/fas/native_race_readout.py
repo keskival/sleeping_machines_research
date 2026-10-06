@@ -34,7 +34,7 @@ sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'experiments')); sy
 from native import EYE, LOG_EPS, PREFIXES, RULES, V, aurocs, load, prefix_scores  # noqa: E402
 from sleeping_machines.addressed_event_heads import AddressedEventHeads  # noqa: E402
 from sleeping_machines.fast_native_core import fast_class  # noqa: E402
-from sleeping_machines.race_readout import RaceReadout, detach_state, readout_episode  # noqa: E402
+from sleeping_machines.race_readout import BindingMemory, RaceReadout, detach_state, readout_episode  # noqa: E402
 
 
 OUT = ROOT / 'experiments/results/fas'      # redirected by experiments/aws_benchmark.py
@@ -63,20 +63,22 @@ def parts(ll_tot, ll_time, stamps, lengths):
 
 
 @torch.no_grad()
-def scores(model, readout, runs, lanes, posterior, compiled):
+def scores(model, readout, runs, lanes, posterior, compiled, binding=None):
     out = []; total = 0.; count = 0; used = []
     model.eval(); readout.eval()
     for b in range(0, len(runs), lanes):
         idx = list(range(b, min(b + lanes, len(runs))))
         stamps, marks, ids, lengths = tensors(runs, idx)
         ll, llt, _, st = readout_episode(model, readout, stamps, marks, ids, seed=314159, posterior=posterior,
-                                         compiled=compiled)
+                                         compiled=compiled, binding=binding)
         pt, pg, mask = parts(ll, llt, stamps, lengths)
         total += pt.sum() + pg.sum(); count += int(mask.sum())
         out.append(prefix_scores(pt, pg, lengths))
-        used.append(st['seen'][-1].sum(-1).float().mean(0).numpy())
+        used.append(st['bseen'].sum(-1).float().mean(0, keepdim=True).numpy() if binding is not None
+                    else st['seen'][-1].sum(-1).float().mean(0).numpy())
     return ({r: np.concatenate([q[r] for q in out]) for r in RULES}, total / max(count, 1),
-            dict(top_layer_slots_written_per_run=np.mean(used, 0).round(3).tolist(), pool=model.pool))
+            dict(binding_or_top_layer_slots_written_per_run=np.mean(used, 0).round(3).tolist(),
+                 pool=binding.slots if binding is not None else model.pool))
 
 
 def main():
@@ -86,6 +88,8 @@ def main():
     p.add_argument('--heads', type=int, default=2); p.add_argument('--pool', type=int, default=8)
     p.add_argument('--hidden', type=int, default=64); p.add_argument('--posterior', action='store_true')
     p.add_argument('--type-durations', action='store_true', help='own durations conditioned on the next type (THEORY §435.2)')
+    p.add_argument('--binding-slots', type=int, default=0, help='dedicated binding memory with this many slots above the deep '
+                   'network, posterior-routed (THEORY §436); the readout reads it with one emitting head')
     p.add_argument('--route-credit', default='linear'); p.add_argument('--compiled', action='store_true')
     p.add_argument('--epochs', type=int, default=1); p.add_argument('--lanes', type=int, default=64)
     p.add_argument('--fit-runs', type=int, default=10000); p.add_argument('--max-events', type=int, default=1100)
@@ -116,8 +120,13 @@ def main():
                         for unit in pool:
                             tau = torch.logspace(0, math.log10(a.tau_max), unit.raw_rate.numel(), dtype=unit.raw_rate.dtype)
                             unit.raw_rate.copy_(torch.expm1(1 / tau).log())
-    readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
-    params = [q for q in model.parameters()] + list(readout.parameters())
+    binding = None
+    if a.binding_slots:
+        readout = RaceReadout(V, 1, a.binding_slots, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
+        binding = BindingMemory(a.heads * a.payload, a.binding_slots, a.payload, tau_max=a.tau_max or 1000.)
+    else:
+        readout = RaceReadout(V, a.heads, a.pool, a.payload, a.heads * a.payload, hidden=a.hidden, type_durations=a.type_durations)
+    params = [q for q in model.parameters()] + list(readout.parameters()) + (list(binding.parameters()) if binding else [])
     opt = torch.optim.Adam(params, lr=a.lr)
     T = len(train[0][0]); per_epoch = math.ceil(len(train) / a.lanes) * math.ceil(T / a.segment)
     total = a.epochs * per_epoch
@@ -140,7 +149,7 @@ def main():
                 model.train(); readout.train(); opt.zero_grad(set_to_none=True)
                 ll, _, valid, st = readout_episode(model, readout, stamps[:, sl], marks[:, sl], ids[:, sl], state=state,
                                                    seed=100000 + w, route_credit=rc, posterior=a.posterior,
-                                                   compiled=a.compiled)
+                                                   compiled=a.compiled, binding=binding)
                 m = valid.sum()
                 loss = -(ll * valid).sum() / m.clamp_min(1)
                 loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, a.clip); opt.step(); schedule.step()
@@ -150,29 +159,33 @@ def main():
                 if w % 25 == 0:
                     print(json.dumps(dict(window=w, of=total, train_nll_t=float(loss.detach()),
                                           events_per_s=events_seen / (time.perf_counter() - started))), flush=True)
-        sc_c, val_nll, occ = scores(model, readout, val_c, 64, a.posterior, a.compiled)
-        sc_f, _, _ = scores(model, readout, val_f, 64, a.posterior, a.compiled)
+        sc_c, val_nll, occ = scores(model, readout, val_c, 64, a.posterior, a.compiled, binding)
+        sc_f, _, _ = scores(model, readout, val_f, 64, a.posterior, a.compiled, binding)
         curve.append(dict(epoch=epoch, train_nll_time_units=loss_sum / max(n_sum, 1), val_clean_nll=val_nll,
                           val_auroc=aurocs(sc_c, sc_f, val_k), val_clean_occupancy=occ, epoch_s=time.perf_counter() - t0))
         print(json.dumps(curve[-1]), flush=True)
         if val_nll < best[0]:
             best = (val_nll, epoch, ({k: v.detach().clone() for k, v in model.state_dict().items()},
-                                     {k: v.detach().clone() for k, v in readout.state_dict().items()}), (sc_c, sc_f))
+                                     {k: v.detach().clone() for k, v in readout.state_dict().items()},
+                                     {k: v.detach().clone() for k, v in binding.state_dict().items()} if binding else None), (sc_c, sc_f))
     model.load_state_dict(best[2][0]); readout.load_state_dict(best[2][1])
+    if binding is not None:
+        binding.load_state_dict(best[2][2])
     weights = Path(OUT) / 'checkpoints' / f'{a.tag}_selected.pt'
-    weights.parent.mkdir(parents=True, exist_ok=True); torch.save(dict(model=model.state_dict(), readout=readout.state_dict()), weights)
+    weights.parent.mkdir(parents=True, exist_ok=True); torch.save(dict(model=model.state_dict(), readout=readout.state_dict(),
+                                                                   binding=binding.state_dict() if binding else None), weights)
     sc_tc = sc_tf = test_k = None; test_nll = None
     if not a.no_test:
         test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
-        sc_tc, test_nll, _ = scores(model, readout, test_c, 64, a.posterior, a.compiled)
-        sc_tf, _, _ = scores(model, readout, test_f, 64, a.posterior, a.compiled)
+        sc_tc, test_nll, _ = scores(model, readout, test_c, 64, a.posterior, a.compiled, binding)
+        sc_tf, _, _ = scores(model, readout, test_f, 64, a.posterior, a.compiled, binding)
     per_run = dict(prefixes=np.array(PREFIXES), rules=np.array(RULES), val_fault_kind=np.asarray(val_k))
     for split, pair in (('val', best[3]), ('test', (sc_tc, sc_tf))):
         if pair[0] is not None:
             for r in RULES:
                 per_run[f'{split}_clean_{r}'] = pair[0][r]; per_run[f'{split}_faulty_{r}'] = pair[1][r]
     score_path = out.with_name(f'{a.tag}_scores.npz'); np.savez_compressed(score_path, **per_run)
-    readout_params = sum(q.numel() for q in readout.parameters())
+    readout_params = sum(q.numel() for q in readout.parameters()) + (sum(q.numel() for q in binding.parameters()) if binding else 0)
     result = dict(status='smoke' if a.max_windows else 'completed', battle='B3', args=vars(a),
                   parameters=sum(q.numel() for q in model.parameters()) + readout_params, readout_parameters=readout_params,
                   curve=curve, selected_epoch=best[1], selection='validation-clean NLL only',

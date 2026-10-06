@@ -150,3 +150,36 @@ def test_type_durations_episode_runs_and_chains():
         b2 = readout_episode(model, ro, stamps[:, 5:], marks[:, 5:], ids[:, 5:], state=detach_state(b1[3]),
                              posterior=True, deterministic=True)
     torch.testing.assert_close(torch.cat([b1[0], b2[0]], 1), a[0], rtol=1e-6, atol=1e-8)
+
+
+def _binding(Ub=5):
+    from sleeping_machines.race_readout import BindingMemory
+    torch.manual_seed(4)
+    model, _ = _model()
+    ro = RaceReadout(5, 1, Ub, 8, 16, hidden=16, mu0=0., type_durations=True)
+    return model, ro, BindingMemory(16, Ub, 8, tau_max=100.)
+
+
+def test_binding_segments_chain_exactly():
+    model, ro, bm = _binding(); stamps, marks, ids = _data()
+    with torch.no_grad():
+        a = readout_episode(model, ro, stamps, marks, ids, deterministic=True, binding=bm)
+        b1 = readout_episode(model, ro, stamps[:, :5], marks[:, :5], ids[:, :5], deterministic=True, binding=bm)
+        b2 = readout_episode(model, ro, stamps[:, 5:], marks[:, 5:], ids[:, 5:], state=detach_state(b1[3]),
+                             deterministic=True, binding=bm)
+    torch.testing.assert_close(torch.cat([b1[0], b2[0]], 1), a[0], rtol=1e-6, atol=1e-8)
+    assert a[3]['bseen'][:, 0].all()
+
+
+def test_binding_writes_the_most_responsible_slot_and_learns():
+    model, ro, bm = _binding(); stamps, marks, ids = _data(n=2, T=7)
+    with torch.no_grad():
+        st = readout_episode(model, ro, stamps[:, :6], marks[:, :6], ids[:, :6], deterministic=True, binding=bm)[3]
+        _, _, logr = event_terms(st['laws'], st['t_ref'], st['t_prev'], stamps[:, 6], ids[:, 6], ro.eps)
+        st2 = readout_episode(model, ro, stamps[:, 6:], marks[:, 6:], ids[:, 6:], state=detach_state(st),
+                              deterministic=True, binding=bm)[3]
+    changed = (st2['bmem'] != st['bmem']).any(-1)
+    assert torch.equal(changed, torch.nn.functional.one_hot(logr.argmax(-1), 5).bool())
+    ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, binding=bm)
+    (-(ll * valid).sum()).backward()
+    assert bm.inp.weight.grad.abs().sum() > 0 and bm.raw_rate.grad is not None

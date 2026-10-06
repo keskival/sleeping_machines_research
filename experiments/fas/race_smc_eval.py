@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'experiments')); sy
 from native import EYE, PREFIXES, V, auroc, load  # noqa: E402
 from sleeping_machines.addressed_event_heads import AddressedEventHeads  # noqa: E402
 from sleeping_machines.fast_native_core import fast_class  # noqa: E402
-from sleeping_machines.race_readout import RaceReadout, detach_state, readout_episode  # noqa: E402
+from sleeping_machines.race_readout import BindingMemory, RaceReadout, detach_state, readout_episode  # noqa: E402
 
 OUT = ROOT / 'experiments/results/fas'
 
@@ -47,7 +47,8 @@ def gather_state(state, index):
 
 
 @torch.no_grad()
-def smc_log_z(model, readout, stamps, marks, types, L, posterior, seed=314159, deterministic=False, compiled=False):
+def smc_log_z(model, readout, stamps, marks, types, L, posterior, seed=314159, deterministic=False, compiled=False,
+              binding=None):
     """stamps (n, T). Returns log Z (n, T): cumulative SMC log-likelihood estimate after each event (event 0 = 0)."""
     n, T = stamps.shape
     rep = lambda x: x.repeat_interleave(L, 0)
@@ -58,7 +59,7 @@ def smc_log_z(model, readout, stamps, marks, types, L, posterior, seed=314159, d
     for k in range(T):
         ll, _, valid, st = readout_episode(model, readout, st_s[:, k:k + 1], mk_s[:, k:k + 1], ty_s[:, k:k + 1], state=state,
                                            seed=seed + 7919 * k, posterior=posterior, deterministic=deterministic,
-                                           compiled=compiled)
+                                           compiled=compiled, binding=binding)
         state = detach_state(st)
         logw = logw + (ll[:, 0] * valid[:, 0]).view(n, L)
         cur = logz + torch.logsumexp(logw, 1) - np.log(L)
@@ -89,9 +90,17 @@ def main():
     res = json.loads(Path(a.result).read_text()); args = res['args']
     model = fast_class(AddressedEventHeads)(sources=1, content_dim=V, classes=V + 2, payload=args['payload'],
                                             depth=args['depth'], heads=args['heads'], pool=args['pool'])
-    readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
-                          type_durations=args.get('type_durations', False))
+    binding = None
+    if args.get('binding_slots'):
+        readout = RaceReadout(V, 1, args['binding_slots'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
+                              type_durations=args.get('type_durations', False))
+        binding = BindingMemory(args['heads'] * args['payload'], args['binding_slots'], args['payload'], tau_max=args.get('tau_max') or 1000.)
+    else:
+        readout = RaceReadout(V, args['heads'], args['pool'], args['payload'], args['heads'] * args['payload'], hidden=args['hidden'],
+                              type_durations=args.get('type_durations', False))
     ck = torch.load(ROOT / res['selected_weights'], weights_only=True)
+    if binding is not None:
+        binding.load_state_dict(ck['binding']); binding.eval()
     model.load_state_dict(ck['model']); readout.load_state_dict(ck['readout']); model.eval(); readout.eval()
     d = ROOT / 'experiments/data/fas' / args['data']
     val_c, _ = load(d / 'val_clean.npz', args['max_events']); val_f, val_k = load(d / 'val_faulty.npz', args['max_events'])
@@ -107,7 +116,8 @@ def main():
             for b in range(0, len(runs), a.lanes):
                 idx = list(range(b, min(b + a.lanes, len(runs))))
                 stamps, marks, ids, lengths = tensors(runs, idx)
-                lz = smc_log_z(model, readout, stamps, marks, ids, L, args['posterior'], compiled=a.compiled).numpy()
+                lz = smc_log_z(model, readout, stamps, marks, ids, L, args['posterior'] or bool(args.get('binding_slots')),
+                               compiled=a.compiled, binding=binding).numpy()
                 for r, n_ev in enumerate(lengths):
                     for j, N in enumerate(PREFIXES):
                         if N <= n_ev:

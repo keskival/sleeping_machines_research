@@ -170,13 +170,41 @@ def compiled_routed_step():
     return _COMPILED['step']
 
 
+class BindingMemory(nn.Module):
+    """Dedicated binding capacity (THEORY §436): Ub slots above the deep race network, written once per event by the
+    posterior race of the readout (one emitting head, so Theorem 434.1 holds exactly).
+    The written slot s* is updated as m_s* <- exp(-(t - t_s*) * rate) * m_s* + W x, where x is the deep network's
+    output for the event and rate is per dimension, initialized log-spaced to time constants 1..tau_max seconds.
+    Per event this costs one O(P * total_payload) write plus the readout's O(Ub * P * hidden) scoring. Binding capacity
+    is decoupled from the per-slot proposal computation of the deep layers."""
+
+    def __init__(self, total_payload, slots, payload, tau_max=1000.):
+        super().__init__()
+        self.slots, self.payload = slots, payload
+        self.inp = nn.Linear(total_payload, payload)
+        tau = torch.logspace(0, math.log10(tau_max), payload)
+        self.raw_rate = nn.Parameter(torch.expm1(1 / tau).log())
+
+    def write(self, bmem, t_ref, bseen, slot, x, now):
+        n = bmem.shape[0]
+        onehot = F.one_hot(slot, self.slots).to(torch.bool)
+        age = (now - torch.gather(t_ref, 1, slot[:, None]).squeeze(1)).clamp_min(0)
+        old = torch.gather(bmem, 1, slot[:, None, None].expand(n, 1, self.payload)).squeeze(1)
+        new = old * torch.exp(-age[:, None].to(old.dtype) * F.softplus(self.raw_rate)) + self.inp(x)
+        bmem = torch.where(onehot[..., None], new[:, None], bmem)
+        return bmem, torch.where(onehot, now[:, None], t_ref), bseen | onehot
+
+
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
-                    deterministic=False, compiled=False):
+                    deterministic=False, compiled=False, binding=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
     (zero, with valid False, for the first event of a stream), valid (n, T) bool, and the state (not detached).
-    The state carries the top-layer write times and the previous event's laws, so segments chain exactly."""
+    The state carries the top-layer write times and the previous event's laws, so segments chain exactly.
+    binding: a BindingMemory. The readout then reads the binding slots (readout built with heads=1, pool=Ub). Each event
+    is written to one binding slot drawn by the posterior race (argmax when deterministic); the first event of a stream
+    takes slot 0. The deep layers keep their learned races (no override)."""
     from .carried_episodes import initial_state
     step = compiled_routed_step() if compiled else routed_layer_step
     terms = event_terms
@@ -193,6 +221,12 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     mem, arr, seen = list(st['mem']), list(st['arr']), list(st['seen'])
     ctx_vals, ctx_arr, has_ctx = st['ctx_vals'], st['ctx_arr'], st['has_ctx']
     t_ref = st.get('t_ref'); prev = st.get('laws'); t_prev = st.get('t_prev')
+    if binding is not None:
+        Ub = binding.slots
+        bmem = st.get('bmem'); bseen = st.get('bseen')
+        if bmem is None:
+            bmem = torch.zeros(n, Ub, binding.payload, dtype=model.embedding.weight.dtype)
+            bseen = torch.zeros(n, Ub, dtype=torch.bool)
     active = torch.ones(n, dtype=torch.bool)
     lin = route_credit in ('linear', 'linear_rw', 'linear_rwn')
     ll_tot, ll_time, valid = [], [], []
@@ -207,11 +241,14 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
         torch.manual_seed(seed)
         for k in range(T):
             now = stamps[:, k]
-            route = None
+            route = None; bslot = None
             if prev is not None:
                 lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps)
                 ll_tot.append(lt); ll_time.append(lti); valid.append(torch.ones(n, dtype=torch.bool))
-                if posterior:                 # per-head posterior over that head's slots
+                if binding is not None:      # exponential race over log responsibilities = a posterior sample
+                    noise_b = torch.ones(n, Ub, dtype=torch.float64) if deterministic else torch.empty(n, Ub, dtype=torch.float64).exponential_()
+                    bslot = (logr.detach() - noise_b.log()).argmax(-1)
+                elif posterior:               # per-head posterior over that head's slots
                     route = torch.log_softmax(logr.view(n, H, U), -1).detach()
             else:
                 z = torch.zeros(n, dtype=torch.float64)
@@ -235,16 +272,27 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     Lp['frequency'], Lp['input'], Lp['output'], Lp['gate_w'], Lp['gate_b'], Lp['gain'],
                     model.transport_rate[depth], model.transport_frequency[depth], lin,
                     route if depth == D - 1 else None)
-                if depth == D - 1:
+                if depth == D - 1 and binding is None:
                     wrote = (arr[depth] != old_arr) | (seen[depth] & ~old_seen)
                     base = now[:, None].expand(n, H * U) if t_ref is None else t_ref
                     t_ref = torch.where(wrote.reshape(n, H * U), now[:, None], base)
             ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
+            if binding is not None:
+                if t_ref is None:
+                    t_ref = now[:, None].expand(n, Ub).clone()
+                if bslot is None:
+                    bslot = torch.zeros(n, dtype=torch.long)
+                bmem, t_ref, bseen = binding.write(bmem, t_ref, bseen, bslot, x, now)
+                t_ref = torch.where(~bseen, now[:, None], t_ref)        # never-written slots: births timed from now
+                prev = read(bmem[:, None], x); t_prev = now
+                continue
             unseen = ~seen[D - 1].reshape(n, H * U)                  # never-written slots: births timed from now
             t_ref = torch.where(unseen, now[:, None], t_ref)
             prev = read(mem[D - 1], x); t_prev = now
     state = dict(mem=mem, arr=arr, seen=seen, ctx_vals=ctx_vals, ctx_arr=ctx_arr, has_ctx=has_ctx,
                  t_ref=t_ref, laws=prev, t_prev=t_prev)
+    if binding is not None:
+        state.update(bmem=bmem, bseen=bseen)
     return torch.stack(ll_tot, 1), torch.stack(ll_time, 1), torch.stack(valid, 1), state
 
 

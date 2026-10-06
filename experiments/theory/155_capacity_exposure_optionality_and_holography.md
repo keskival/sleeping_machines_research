@@ -817,3 +817,38 @@ mark residuals (randomised probability integral transform of the type) are i.i.d
   R2 at p = .02–.05, and higher AUROC.
 - KS uniformity of rescaled intervals on R2's clean validation, as a fit diagnostic.
 - An SMC estimate of the binding-posterior term of 435.1 on v2, to bound the reachable native gain.
+
+## 436. Binding memory: capacity separated from computation (6 October)
+
+**Failure addressed.** Binding needs U ≥ KλW slots (§434.3): ~36 at the selected v2 setting (K = 2). In the deep race
+layers each slot computes a proposal, O(P²) per slot per event, so raising every layer's pool to 40 multiplies the
+whole network's work by ~5. The top layer also has H = 2 heads, so Theorem 434.1 holds only approximately (§434.1.4).
+
+**Change.**
+- A BindingMemory of U_b slots sits above the deep race network, which keeps pool 8.
+- Each event is written to one slot s*, drawn by the exponential race over the readout's log responsibilities
+  (posterior sampling; argmax when deterministic): m_s* ← exp(−(t − t_s*) r) ⊙ m_s* + W x. x is the deep network's
+  output; the rates r are per dimension, initialised to time constants 1–1000 s.
+- The race readout reads the U_b binding slots with one emitting head.
+
+**Retained:**
+- deep temporal races with learned query/key routes and linear credit;
+- transport, delays and carried state;
+- sparse addressed writes (one binding slot per event);
+- the superposition race readout with silence-aware survival.
+
+**Replaced:** the top layer's role as binder. The deep layers now compute event representations, and the binding
+memory holds processes.
+
+**Work per event.**
+- Deep network: unchanged.
+- One binding write: P × H·P multiply-adds.
+- Readout: U_b · (P·h + h·(3V + 1)) multiply-adds plus U_b · V log-normal CDFs (type-conditional durations).
+- Binding capacity is linear in U_b, with no per-slot proposal computation: capacity beyond activity.
+
+**Exactness.** One emitting head, so R2-style training with binding memory is exactly the single-particle filtering
+objective of Theorem 434.1. race_smc_eval.py gives the L-particle estimate.
+
+**Comparison.** On v2 validation (K=2, p=.02), the native development configurations (budget 8) start from
+R5 = binding memory U_b = 40 + type-conditional durations (§435.2), against R2-style top-layer binding at pool 8.
+Contracts: tests/test_race_readout.py (12 pass: chaining, posterior writes, gradients into the binding path).
