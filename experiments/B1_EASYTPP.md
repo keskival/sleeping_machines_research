@@ -100,3 +100,13 @@ scoring of each selected configuration with 5 seeds; measure inference work.
 | 6 Oct | v5 | resolution floor: every delayed clock's spread at its delay is at least one recording cell, σ ≥ max(0.005, cell·e^(−μ)); cells from TRAIN: Retweet 1 s, Taxi 1 s (1/3600 h), StackOverflow 2⁻¹³, Taobao 10⁻⁴ (87% of gaps), Amazon none | contract PASS | all final protocols use v5 |
 | 6 Oct | r5 | dropout 0.3 | Taobao 1.284 (vs 1.281); Amazon 16 clocks **0.724** (vs 0.720) | selected |
 | 6 Oct | final | TEST protocols queued (v5, 5 seeds): Taxi, Taobao, Amazon; Retweet v5 development run | pending | |
+| 6 Oct | r7, r8 | StackOverflow under the floor: 4 exp clocks −2.190, 16 clocks −2.187; v6 (time since sequence start) queued for StackOverflow and Amazon | — | the unfloored −2.166 partly exploited the 2⁻¹³ grid; StackOverflow ~0.035 behind |
+| 6 Oct | final Taxi s0 | first TEST seed | **TEST 0.5250** (time 0.732, mark −0.207) vs S2P2 0.522 ± 0.004 | count-model split offsets overestimated TEST (predicted ≈0.58); no longer used — only TEST protocols decide |
+| 6 Oct | resources | `work.py`: parameters / per-event MACs | S2P2 ÷ ours: Taxi 12.3× / 12.1×, Amazon 4.1× / 4.0×, Retweet 17.6× / 17.5×, Taobao 1.1×, StackOverflow 1.1× | |
+| 6 Oct | ensemble (DEV) | predictive mixture of five Taxi members (`ensemble_eval.py`) | members 0.484–0.492, mixture **0.497** | |
+
+**Pre-registered reporting rule (fixed 6 Oct before any 5-seed TEST aggregate was seen).** Each dataset reports (1) the
+single-model TEST mean ± sd over its 5 protocol seeds and (2) the uniform predictive mixture of those 5 seeds on TEST,
+with per-event inference MACs beside S2P2's. The mixture is a matched-compute (inference) comparison only where 5× our
+MACs ≤ S2P2's (Taxi 0.41×, Retweet 0.29×) or within 10% (near-matched); elsewhere (Amazon 1.25×, Taobao 4.5×,
+StackOverflow 4.6×) it is reported as a higher-compute result, not a matched win.
