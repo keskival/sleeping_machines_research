@@ -1,0 +1,2 @@
+# Battle B3 (FAS v2) Stage 2 data on AWS (same generator and seeds as curie; CPU ~20 min, <2 GB). Decision: enables the v2 development arms on AWS. Check per-split runs/events against the curie manifest when it is published.
+aws_fas_v2_data_20261006T1715Z experiments/aws_benchmark.py --run-tag aws_fas_v2_data_20261006T1715Z --stdout-only --script experiments/fas/generate_v2.py -- --name fas_v2_K2_drop0.02_delta0_20261005 --K 2 --drop 0.02 --delta 0 --train 10000 --val 1000 --test 2000

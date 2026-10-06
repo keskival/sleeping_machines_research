@@ -89,3 +89,12 @@ external architectures:
 Use a two-window smoke first to set the RSS caps. native.py and native_race_readout.py now have a top-level `OUT` for
 aws_benchmark.py; default paths are unchanged. If curie grants its window first, the curie copies run there and the
 AWS copies are dropped. Never run both.
+
+**Update 17:15 UTC: v2 supersedes the v1 request above.** Stage 1 selected the v2 setting (K = 2, p = .02, δ = 0;
+B3_DEVELOPMENT_LOG.md). In the first free AWS gym slot, in order:
+1. `queue/aws_fas_v2_data_20261006T1715Z.txt`;
+2. `queue/aws_fas_v2_dev_C1_20261006T1715Z.txt`;
+3. `queue/aws_fas_v2_dev_C2_20261006T1715Z.txt`.
+
+The v1 arms (R2, E1, particles) become optional diagnostics. As before, the AWS and curie copies of the same arm never
+both run: the first to start owns it, and the other is dropped.
