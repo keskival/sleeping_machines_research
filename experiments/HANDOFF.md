@@ -4134,3 +4134,6 @@ formula coverage before publishing its completed receipt.600s/1.2GBRSS/5GBVMS/
 
 
 **AWS real-driver time resume contracts implemented:** aws_private_bank_time_resume_contracts.py runs unique full/three-update-interrupted/resumed six-update paths at1,¼,1/16 using uniform-siteK4 future teacher and P24D2H2U4. Compares model/optimizer/persistent state/cursor/all route-teacher generators/writes/presentations and quality curve exactly;96targets per full path. Syntax passes; uniquely guarded numerical admission pending. Existing work replay preserved.
+
+
+**AWS actual-driver scaled optimizer resume completed:**20261006T040042Z passes scales1,¼,1/16 six-update/three-update-interruption comparisons with96actual fitting targets per full path; model/optimizer/persistent state/cursor/step/all route-teacher/global RNGs/writes/presentations and scored quality curves exactly equal. Source pins reverified; peak612048KiBRSS. Real token interval and uniform-siteK4 future teacher; numerical continuation contract, not benchmark quality. Scaled fit wrapper learning/resume prerequisites now completed; next bounded source-bound smoke measures ordinary throughput/RSS before matched fits. Existing 256K full-work replays remain protected.
