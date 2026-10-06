@@ -66,12 +66,13 @@ def alpha_of(slots, who, lens):
 SKIP = dict(deep=False, pred=None)
 
 
-def evaluate(model, ro, bm, data, T, deterministic=False):
+def evaluate(model, ro, bm, data, T, deterministic=False, gate=None, stats=None):
     stamps, marks, ids, who, lens = batch(data, T)
     rec = []
     with torch.no_grad():
         ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=1, binding=bm, record=rec,
-                                          deterministic=deterministic, skip_deep=SKIP['deep'], pred_layers=SKIP['pred'])
+                                          deterministic=deterministic, skip_deep=SKIP['deep'], pred_layers=SKIP['pred'],
+                                          surprise_gate=gate, gate_stats=stats)
     mask = torch.from_numpy(np.arange(T)[None] < np.asarray(lens)[:, None]) & valid
     slots = torch.stack([r['slot'] for r in rec], 1).numpy()
     return float(-(ll * mask).sum() / mask.sum()), alpha_of(slots, who, lens)
@@ -95,6 +96,8 @@ def main():
     p.add_argument('--pred-layer', type=int, default=0, help='a predictive-routed deep layer with this many slots in place '
                    'of the learned deep layers (THEORY §438); its local likelihood joins the loss')
     p.add_argument('--learned-routing', action='store_true', help='comparison: query/key write race with linear write credit (§437 T1)')
+    p.add_argument('--gate-eval', default='', help='after training: surprise-gate thresholds (nats) to evaluate, e.g. '
+                   '"-1,0,1"; reports NLL, alpha and the fraction of events that skip the deep layers (THEORY §437 I4)')
     p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
                    'counts (THEORY §434.1.2), e.g. 1,4,16')
     a = p.parse_args()
@@ -135,6 +138,12 @@ def main():
             curve.append(dict(step=step, train_nll=float(loss), val=evaluate(model, ro, bm, val, T),
                               val_argmax=evaluate(model, ro, bm, val, T, deterministic=True)))
             print(json.dumps(curve[-1]), flush=True)
+    gates = {}
+    for g in [float(v) for v in a.gate_eval.split(',') if v]:
+        st_ = []
+        nll_g, al_g = evaluate(model, ro, bm, val, T, gate=g, stats=st_)
+        gates[g] = dict(val_nll=nll_g, alpha=al_g, skipped=float(np.mean(st_)))
+        print(json.dumps(dict(gate=g, **gates[g])), flush=True)
     smc = {}
     if a.particles:
         sys.path.insert(0, str(ROOT / 'experiments/fas')); sys.path.insert(0, str(ROOT / 'experiments'))
@@ -144,7 +153,7 @@ def main():
             lz = smc_log_z(model, ro, stamps, marks, ids, L, True, binding=bm).numpy()
             smc[L] = float(np.mean([-lz[i, n - 1] / (n - 1) for i, n in enumerate(lens)]))
             print(json.dumps(dict(particles=L, val_nll=smc[L])), flush=True)
-    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0, smc_val_nll=smc,
+    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0, smc_val_nll=smc, gates=gates,
                verdict='binding emerges' if curve[-1]['val'][1] > .8 else 'binding does not emerge at this budget')
     print(json.dumps(dict(start=curve[0], end=curve[-1], verdict=res['verdict'])))
     if a.out:

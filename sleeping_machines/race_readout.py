@@ -366,7 +366,7 @@ class PredictiveLayer(nn.Module):
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
                     deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False,
-                    pred_layers=None, local=None):
+                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -377,6 +377,9 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     takes slot 0. The deep layers keep their learned races (no override).
     pred_layers: optional list of PredictiveLayer applied after the deep race layers (or instead of them with
     skip_deep); their local log-likelihoods are appended to `local` (a list) per event as (ll (n,), valid (n,)).
+    surprise_gate: a log-likelihood threshold (nats). When the readout gave the arriving event a log-likelihood above it
+    (a predictable event), that lane skips the deep layers: their state is kept and x is the layer input. The binding
+    memory and readout still update (THEORY §437 I4). gate_stats (list) receives the skipped fraction per event.
     skip_deep: no deep race layers; the event embedding feeds the binding memory and readout directly (THEORY §438
     ablation: are learned-route layers needed when binding and readout are posterior/likelihood-driven?).
     sparse: inference only (no grad): deep layers run sparse_layer_step (winner-only computation, cached slot reads);
@@ -441,12 +444,20 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             else:
                 z = torch.zeros(n, dtype=torch.float64)
                 ll_tot.append(z); ll_time.append(z); valid.append(torch.zeros(n, dtype=torch.bool))
+            gate = torch.zeros(n, dtype=torch.bool)
+            if surprise_gate is not None and prev is not None:
+                gate = lt.detach() > surprise_gate
+            if gate_stats is not None:
+                gate_stats.append(float(gate.float().mean()))
             x = model.embedding.weight[0][None] + model.content(marks[:, k])
             arrival = torch.where(has_ctx, torch.maximum(now, ctx_arr.max(-1).values), now)
             context = torch.cat([transport(ctx_vals[:, h * P:(h + 1) * P], arrival - ctx_arr[:, h], D - 1, h)
                                  for h in range(H)], -1)
             x = torch.where(has_ctx[:, None], F.layer_norm(x + torch.sigmoid(model.source_gate(x)) * context,
                                                              (model.total_payload,)), x)
+            if gate.any():
+                saved = ([t.clone() for t in mem], [t.clone() for t in arr], [t.clone() for t in seen],
+                         ctx_vals, ctx_arr, x, arrival)
             for depth in (() if skip_deep else range(D)):
                 Lp = layers[depth]
                 noise = torch.stack([torch.empty(U, dtype=torch.float64).exponential_() for _ in range(H)])
@@ -470,6 +481,15 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                     t_ref = torch.where(wrote.reshape(n, H * U), now[:, None], base)
             if not skip_deep:
                 ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
+            if gate.any() and not skip_deep:          # gated lanes keep their deep state; x is the layer input
+                g4, g3, g1 = gate[:, None, None, None], gate[:, None, None], gate[:, None]
+                for dd in range(D):
+                    mem[dd] = torch.where(g4, saved[0][dd], mem[dd]); arr[dd] = torch.where(g3, saved[1][dd], arr[dd])
+                    seen[dd] = torch.where(g3, saved[2][dd], seen[dd])
+                    if sparse:
+                        reads[dd] = torch.where(g4, slot_reads(mem[dd], layers[dd]['key'], layers[dd]['key_read']), reads[dd])
+                ctx_vals = torch.where(g1, saved[3], ctx_vals); ctx_arr = torch.where(g1, saved[4], ctx_arr)
+                x = torch.where(g1, saved[5], x)
             if pred_layers:
                 pst = list(st.get('pred') or [None] * len(pred_layers)) if k == 0 else pst
                 for li, layer in enumerate(pred_layers):
