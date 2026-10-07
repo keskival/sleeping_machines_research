@@ -1,0 +1,2 @@
+# G1: G1 generality: self-supervised next-measurement pretraining on unlabeled P12 TRAIN records (time, channels, values) then mortality fine-tuning with 10/30/100% labels vs scratch at equal total epochs; validation only. Decides whether generative event experience transfers to clinical classification
+g1_p12_s0_pre10_lf0.1 experiments/irts/race_irts_g1.py --tag g1_p12_s0_pre10_lf0.1 --dataset P12 --split 0 --label-frac 0.1 --pretrain-epochs 10 --finetune-epochs 40
