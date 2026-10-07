@@ -71,3 +71,11 @@ does not establish a valuation uplift. Investor diligence should see the rights
 inventory, counsel assessment, filing receipts and actual application status,
 plus the plan and cost for maintaining protection. Keep confidential technical
 details out of unrestricted materials until their disclosure is deliberate.
+
+## Update, 7 October 2026: patent-support package
+
+The invention inventory now exists: [`ip/`](../ip/README.md) holds invention disclosures (IDF-01–06), a disclosure
+register dated against the public boundary (commit `6278e6b2`, 3 October 2026 23:59:31 UTC), an itemized Europe/US
+split, US grace-period deadlines (earliest 8 September 2027), filing logistics and an inventorship assessment for
+AI-assisted work. Until the priority filing exists, the evidence brief, papers and technical deck slides are shared only
+under NDA.

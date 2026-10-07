@@ -1,5 +1,8 @@
 # Private investment materials
 
+**Patent hold (7 October 2026):** the inventions behind the benchmark wins are unpublished and not yet filed. Share the
+evidence brief, papers and technical slides only under NDA until the priority filing exists; see [`ip/`](../ip/README.md).
+
 For a non-technical first read, start with the **[9-page evidence brief](sleeping_machines_evidence_brief.pdf)**:
 every public benchmark win, what each benchmark is and why it matters, units and direction for every comparison,
 and the evidence behind the larger vision (source: `brief/evidence_brief.tex`, figures from completed result files via
