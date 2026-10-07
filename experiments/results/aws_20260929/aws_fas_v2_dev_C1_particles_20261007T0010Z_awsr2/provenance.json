@@ -1,0 +1,30 @@
+{
+  "run_tag": "aws_fas_v2_dev_C1_particles_20261007T0010Z_awsr2",
+  "script": "experiments/fas/race_smc_eval.py",
+  "arguments": [
+    "--result",
+    "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/aws_fas_v2_dev_C1_20261006T1715Z.json",
+    "--particles",
+    "1,4,16",
+    "--runs",
+    "200",
+    "--lanes",
+    "16",
+    "--compiled",
+    "--tag",
+    "aws_fas_v2_dev_C1_particles_20261007T0010Z_awsr2"
+  ],
+  "output_redirected": true,
+  "source_sha256": "b7fff8e9fcaeba4770fac672766fbe6f08030b0a2a22f295c83c0e33bc01a67b",
+  "git_commit": "87045e9fc88bb24175dc533bd71debafce43d74b",
+  "limits": {
+    "MEM_CAP_KB": "12000000",
+    "MEM_CAP_RSS_KB": "4500000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "5400"
+  },
+  "start_utc": "2026-10-07T14:47:35Z",
+  "status": "completed",
+  "wall_s": 3465.338,
+  "peak_rss_kb": 1099816
+}
