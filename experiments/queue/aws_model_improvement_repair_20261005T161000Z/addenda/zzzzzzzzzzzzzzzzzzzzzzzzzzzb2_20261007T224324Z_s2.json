@@ -1,0 +1,70 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P12 joint silence-aware supervision (development, validation only): P12 peaks by epoch 2-5 and overfits one label bit per record; pretraining the next-measurement objective did not help (G1). G1j keeps it during supervised training (weights 0.02/0.05/0.15), so every time step supervises the memory. aux 0 must reproduce G1 scratch at 100% labels (0.875 / 0.583) exactly (equivalence contract). Decides whether dense self-supervision closes the P12 gap to MTM (0.880 TEST)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "g1j_p12_s0_lf1.0_aux0",
+        "queue": "experiments/queue/b2/g1j_p12_s0_lf1.0_aux0/g1j_p12_s0_lf1.0_aux0.txt",
+        "queue_sha256": "868386ac0ac102e766258defb030d2ea8c5fb3ead041d166329c5635d1884b60",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1j.py": "11f9aab6671ffd90b4983a1ee2d186fdd7612e1fdc21959a340b5402c2b2f045",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1j_p12_s0_lf1.0_aux0.json",
+        "timeout_s": 21600,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1j_p12_s0_lf1.0_aux0.02",
+        "queue": "experiments/queue/b2/g1j_p12_s0_lf1.0_aux0.02/g1j_p12_s0_lf1.0_aux0.02.txt",
+        "queue_sha256": "3130053be4266f302caad1115f43f4b46a9a2ed7dfb779828fa599277cd0f47f",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1j.py": "11f9aab6671ffd90b4983a1ee2d186fdd7612e1fdc21959a340b5402c2b2f045",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1j_p12_s0_lf1.0_aux0.02.json",
+        "timeout_s": 21600,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1j_p12_s0_lf1.0_aux0.05",
+        "queue": "experiments/queue/b2/g1j_p12_s0_lf1.0_aux0.05/g1j_p12_s0_lf1.0_aux0.05.txt",
+        "queue_sha256": "5e8cb7456eaa80f7c0c6e873b82a1f7902ce0b59d6bbf8abafd4015dcc5726b7",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1j.py": "11f9aab6671ffd90b4983a1ee2d186fdd7612e1fdc21959a340b5402c2b2f045",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1j_p12_s0_lf1.0_aux0.05.json",
+        "timeout_s": 21600,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1j_p12_s0_lf1.0_aux0.15",
+        "queue": "experiments/queue/b2/g1j_p12_s0_lf1.0_aux0.15/g1j_p12_s0_lf1.0_aux0.15.txt",
+        "queue_sha256": "368323cf6342dd2a7b2f671dd1a491e1c20551f1995bca495a376ed817617f3e",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1j.py": "11f9aab6671ffd90b4983a1ee2d186fdd7612e1fdc21959a340b5402c2b2f045",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1j_p12_s0_lf1.0_aux0.15.json",
+        "timeout_s": 21600,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

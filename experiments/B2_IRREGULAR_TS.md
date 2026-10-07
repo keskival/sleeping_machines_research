@@ -104,3 +104,4 @@ model rerun from scratch (also an independent-hardware reproduction of the P19 r
 same network (temporal head inputs zeroed; zero gradient into the temporal layers, verified), trees on the same statistics,
 and a validation-weighted rank blend of ours and trees. Full > statistics-only isolates what the temporal memory adds;
 blend > both shows information the summaries lack.
+| 7 Oct | P12 G1j (queued) | joint silence-aware supervision: next-measurement log-loss (when, which channels, values) added to the classification loss with weight 0.02 / 0.05 / 0.15; weight 0 is an exact-reproduction control of G1 scratch (0.875 / 0.583) | — | hypothesis: dense per-step supervision keeps the memory learning after the label signal is exhausted (epoch 2–5 peak) |
