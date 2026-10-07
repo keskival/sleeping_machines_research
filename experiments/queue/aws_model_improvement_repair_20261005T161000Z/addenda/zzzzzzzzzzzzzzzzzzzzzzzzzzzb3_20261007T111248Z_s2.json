@@ -1,0 +1,85 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "B3 round 2 re-admission under fresh names (_awsr2): C6 pinned to the current driver, GLR evaluations of C6 and C1, diagnostics and particles; evaluators fixed for OUT-as-string",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_fas_v2_dev_C6_20261007T0045Z_awsr2",
+        "queue": "experiments/queue/aws_fas_v2_dev_C6_20261007T0045Z_awsr2.txt",
+        "queue_sha256": "7bc9c147c8fc5daeaa46ffef08219702b17c6be7e92934b8ddef447a7da193c1",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/native_race_readout.py": "de69f9b64648b71613832b0a6d2291555591edad0610e0cf0954144e702699b9"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z_awsr2/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 5500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_dev_C6_glr_20261007T1010Z_awsr2",
+        "queue": "experiments/queue/aws_fas_v2_dev_C6_glr_20261007T1010Z_awsr2.txt",
+        "queue_sha256": "30d0c2ab7dbd6635c8503fb4cc68094297bc30567a10ece20063d9a9dd5025f2",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/glr_eval.py": "dd347fee67780de2f87a3800faa2d4528b303f0cb09993f10f3bb8a997dc135f"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_glr_20261007T1010Z_awsr2/provenance.json",
+        "timeout_s": 5400,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z_awsr2/provenance.json"
+          }
+        ]
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_glr_20261007T1010Z_awsr2",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_glr_20261007T1010Z_awsr2.txt",
+        "queue_sha256": "173c4dd92b71506490d3ed774b3d1f40dd730ee8bd1cd302c1794354788a3dde",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/glr_eval.py": "dd347fee67780de2f87a3800faa2d4528b303f0cb09993f10f3bb8a997dc135f"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_glr_20261007T1010Z_awsr2/provenance.json",
+        "timeout_s": 5400,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z_awsr2",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_diagnostics_20261007T0010Z_awsr2.txt",
+        "queue_sha256": "a0c8b6616d2e0e760d537d5fc48aad557057880c1cd9ca84e0e36f2dd59ab775",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/readout_diagnostics.py": "2bc6652735602dd90fa2d0c6596bf67035b0d4452732b17a46d8c28aa1fc5704"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_diagnostics_20261007T0010Z_awsr2/provenance.json",
+        "timeout_s": 3600,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_particles_20261007T0010Z_awsr2",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_particles_20261007T0010Z_awsr2.txt",
+        "queue_sha256": "50053b338d48ccead1be2719f6d26245ef5e248d1d715270277475c206da3427",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/race_smc_eval.py": "b7fff8e9fcaeba4770fac672766fbe6f08030b0a2a22f295c83c0e33bc01a67b"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_particles_20261007T0010Z_awsr2/provenance.json",
+        "timeout_s": 5400,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

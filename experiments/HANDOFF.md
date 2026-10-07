@@ -4631,3 +4631,11 @@ the three €100M conditions hold. The third, independent reproduction, is the p
 
 Either the curie host owner runs them in its next job gap, or appending the exact line CURIE_WINDOW_GRANTED_FAS_DEV
 lets this container's waiter run them first (≈ 10 min), ahead of B3's C6. Results go to `results/tpp/curie_repro_taxi_v5_s*`.
+
+**B3 round 2 re-admitted on AWS under fresh names (7 Oct ~11:13 UTC).** The first admission failed: (a) C6's pinned
+`native_race_readout.py` hash no longer matched after the 09:16 GLR change; (b) `readout_diagnostics.py`,
+`race_smc_eval.py` and `glr_eval.py` crashed with `OUT / name` because `aws_benchmark.py` redirects `OUT` as a string —
+fixed to `Path(OUT) / name` in all three (curie owners: please keep this form). Job names cannot be reused, so the queue
+files were copied with an `_awsr2` suffix (all internal tags, including C6-GLR's pointer to the C6 checkpoint):
+`aws_fas_v2_dev_C6_20261007T0045Z_awsr2` (running) → `…C6_glr_…_awsr2` (requires C6) → `…C1_glr_…_awsr2` →
+`…C1_diagnostics_…_awsr2` → `…C1_particles_…_awsr2`, slot 2. Results publish under experiments/results/aws_20260929/<tag>/.

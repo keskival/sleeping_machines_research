@@ -49,7 +49,7 @@ def main():
     p.add_argument('--result', required=True); p.add_argument('--runs', type=int, default=200)
     p.add_argument('--lanes', type=int, default=32); p.add_argument('--tag', required=True)
     a = p.parse_args()
-    out = OUT / f'{a.tag}.json'
+    out = Path(OUT) / f'{a.tag}.json'   # aws_benchmark redirects OUT as a string
     if out.exists():
         raise ValueError('Unique unused tag required')
     torch.set_num_threads(1)
