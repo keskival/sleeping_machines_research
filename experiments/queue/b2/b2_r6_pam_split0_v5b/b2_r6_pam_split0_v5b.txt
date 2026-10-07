@@ -1,0 +1,2 @@
+# B2: B2 PAM development (8 activities, 17 sensor channels, 600 steps, 60% missing): v5 = v3 statistic slots + multi-class head; split 0 to establish standing vs MTM accuracy 97.5
+b2_r6_pam_split0_v5b experiments/irts/race_irts_v5.py --tag b2_r6_pam_split0_v5b --dataset PAM --split 0 --epochs 60 --patience 12 --batch 64
