@@ -1,0 +1,2 @@
+# B2: B2: v3 (statistic slots; P12 val 0.872) on P19 split 0 to establish the P19 standing (MTM TEST 0.903); and v3 on P12 with lr 5e-4 (v3 peaks at epoch 4). v4 threshold comparisons overfit faster (0.868)
+b2_r5_p12_split0_v3_lr5e-4 experiments/irts/race_irts_v3.py --tag b2_r5_p12_split0_v3_lr5e-4 --dataset P12 --split 0 --lr 5e-4 --epochs 60 --patience 15
