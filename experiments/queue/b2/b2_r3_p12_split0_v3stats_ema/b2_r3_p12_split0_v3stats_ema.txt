@@ -1,0 +1,2 @@
+# B2: B2 v3 statistic-valued channel slots (count, mean, min, max, first, last, trend, staleness; THEORY note 59): diagnosis showed a tree on per-channel summaries matches our P12 val AUROC (0.867 vs 0.866) and beats AUPRC (0.581 vs 0.549), so the temporal model is not yet extracting more than summaries. Decides the B2 architecture
+b2_r3_p12_split0_v3stats_ema experiments/irts/race_irts_v3.py --tag b2_r3_p12_split0_v3stats_ema --dataset P12 --split 0 --lr 1e-3 --ema 0.995 --epochs 60 --patience 15
