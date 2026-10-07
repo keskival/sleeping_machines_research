@@ -289,3 +289,12 @@ oracle's .821.
     noise. That fits tie-dominated, unbound merged timing.
   - **Round-2 success signals for C6:** retry-delay AUROC rising toward .89, the total rule exceeding the type rule,
     and the wear-and-tear AUROC passing gap_z's .658.
+- 7 Oct 05:31 UTC: **AWS admitted round 2** (slot 2, after its queued B1/B2 protocols): C6 → C1 diagnostics → C1
+  particles. The AWS owner points to B1's remedy for the same tie pathology (RACE_OF_DELAYED_CLOCKS_20261006.md §3,
+  race_tpp_v16.py): hold hazards at their one-cell value below the recording cell, and dequantise target gaps within
+  their cell.
+  - C6's recording-cell probability F(τ + δ) − F(τ) is the exact discretised likelihood. Dequantised training
+    estimates it stochastically (by Jensen, E_U log f(τ + U) ≤ log of the cell average), and the held hazard bounds
+    the same spike.
+  - Both remove the unbounded tie reward, so C6 is unchanged. If C6 helps, B3 and B1 share one principle in two exact
+    forms.
