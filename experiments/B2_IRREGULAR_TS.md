@@ -64,3 +64,4 @@ against MTM 90.3 ± 2.0 / 58.3 ± 5.3.
 **Pre-registered P12 protocol (fixed 7 Oct ~03:50 UTC, before any of its runs).** `race_irts_v3.py` defaults (d32, 2
 layers, J=4, dropout 0.2, lr 2e-3, batch 128, patience 12, ≤ 60 epochs), seed 0, five official splits, validation-AUROC
 selection, TEST once per split; against MTM 88.0 ± 1.0 / 58.6 ± 4.1.
+| 7 Oct | **final P12 (v3)** | pre-registered: five official splits, validation-AUROC selection, TEST once per split | per split AUROC 0.875 / 0.885 / 0.864 / 0.877 / 0.856; **TEST AUROC 0.871 ± 0.011, AUPRC 0.585 ± 0.024** | **Behind MTM on AUROC** (0.880 ± 0.010), **level on AUPRC** (0.586 ± 0.041); ahead of GraFITi 0.866, Warpformer 0.865, ViTST 0.851. Developed attempt on the P19 configuration; P12-specific development (longer records: up to 214 steps, 36 channels) is the next lever |
