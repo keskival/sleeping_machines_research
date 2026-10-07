@@ -1,0 +1,2 @@
+# R1 gate 2: keyed token model, 1M tokens, seed 2 (s0: 6.019 vs KN trigram 6.537); decision: is the gate-2 result reproducible across seeds
+curie_r1g2_keyed1_1M_s2_20261007T2055Z experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_1M_s2_20261007T2055Z --keyed 1 --train-tokens 1048576 --seed 2
