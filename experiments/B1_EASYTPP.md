@@ -153,3 +153,13 @@ Training compute is 3× a single fit; inference compute is unchanged (one select
 | 7 Oct | v17 Amazon | one window per gap component, 4 seeds (3 done) | DEV 0.802 / 0.796 / **0.739** | basin less frequent, not gone. Diagnosis: in the low seed both upper-box windows drifted to ≈[1.1, 1.3], beyond every observed gap (good seed: one window exactly on [0.700, 0.800], fire prob 1.0) |
 | 7 Oct | v18 | windows anchored to their gap component: start within ×e^±0.3, width within ×e^±0.5 of the data-derived init | contract PASS; 5 seeds queued | if all five seeds reach the high basin, a restart-free Amazon protocol follows |
 | 7 Oct | **final Retweet (v16), 5 seeds, TEST** | pre-registered protocol: every clock held below the 1 s cell, target dequantization, best-DEV checkpoint, TEST once per seed | **−6.3262 ± 0.0009** (seeds −6.3272, −6.3261, −6.3250, −6.3270, −6.3256); time −5.558, mark −0.768 | **WIN** vs NHP −6.348 (+0.022) and S2P2 −6.365 (+0.039); all 5 seeds ahead; EasyTPP Monte Carlo estimator −6.3256 on seed 2 (exact −6.3250); grid-audit drop 0.0038; 19,654 parameters, 19,850 MACs/event vs S2P2 298,627 / 297,600 (15×). Fourth of five datasets won |
+
+**Pre-registered Amazon v18 protocol (fixed 7 Oct 14:55 UTC, before any v18 TEST scoring; seeds 2–4 not yet
+trained).** Configuration as queued in `b1_r24_amazon_v18_s{0..4}` (v18 anchored windows, 16 delayed clocks + 4 windows,
+dropout 0.3, patience 30), one run per seed, **no restarts** (one third of the v11 protocol's training work). Each seed's
+best-DEV checkpoint is scored **once** on TEST by `experiments/tpp/score_test.py`, which first rebuilds the model and
+must reproduce the run's recorded DEV log-likelihood to 1e−9 (otherwise the scoring is void and the seed is rerun with
+`--score-test`). The CPU fit is deterministic per seed, so this equals a fresh `--score-test` run of the same seed
+without repeating its training. Report: TEST mean ± sd over the five seeds and every seed's value, whatever they are,
+against S2P2 0.781 ± 0.011; a win requires the mean ahead; "all seeds ahead" is stated only if true. The v11 result
+(0.7839 ± 0.0265) stays in the record.
