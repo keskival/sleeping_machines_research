@@ -1,0 +1,2 @@
+# B2: B2 P12 model-side gain (development, validation only): error analysis shows validation AUROC 0.809 on the sparsest third of P12 stays vs 0.898 on the densest. v8 adds per-channel ordering latency (time of first measurement) and measurement rate plus record duration (contract PASS). P12 split 0 vs the protocol model 0.872 / 0.575 decides a new P12 protocol; P19 split 0 vs 0.919 / 0.626 checks the sepsis win does not regress
+b2_r13_p19_split0_v8_latency experiments/irts/race_irts_v8.py --tag b2_r13_p19_split0_v8_latency --dataset P19 --split 0 --epochs 40 --patience 8

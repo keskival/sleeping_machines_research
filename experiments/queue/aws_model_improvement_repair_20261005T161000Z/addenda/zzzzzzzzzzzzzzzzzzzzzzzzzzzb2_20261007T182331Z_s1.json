@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P12 model-side gain (development, validation only): error analysis shows validation AUROC 0.809 on the sparsest third of P12 stays vs 0.898 on the densest. v8 adds per-channel ordering latency (time of first measurement) and measurement rate plus record duration (contract PASS). P12 split 0 vs the protocol model 0.872 / 0.575 decides a new P12 protocol; P19 split 0 vs 0.919 / 0.626 checks the sepsis win does not regress",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_r13_p12_split0_v8_latency",
+        "queue": "experiments/queue/b2/b2_r13_p12_split0_v8_latency/b2_r13_p12_split0_v8_latency.txt",
+        "queue_sha256": "5f61d2ff3624e31e8c5afc98120e64fdb33b8199b687e47d1f7fb9ca050e2caa",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "8399626afa914e5dad3c0e15facaa659eb182c9bfe24eb6fa502253f3f77dd3a",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r13_p12_split0_v8_latency.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r13_p19_split0_v8_latency",
+        "queue": "experiments/queue/b2/b2_r13_p19_split0_v8_latency/b2_r13_p19_split0_v8_latency.txt",
+        "queue_sha256": "1248addc0a9ddcad21507fe4f1d2de1b454bf545a0dcb3b390ff1df28a666392",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "8399626afa914e5dad3c0e15facaa659eb182c9bfe24eb6fa502253f3f77dd3a",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r13_p19_split0_v8_latency.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
