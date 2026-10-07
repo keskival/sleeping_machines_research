@@ -61,21 +61,51 @@ def parts(ll_tot, ll_time, stamps, lengths):
     return pt * mask, pg * mask, mask
 
 
+GLR_GRID = [0., .05, .1, .2, .3, .5, .8]       # log slowdowns of the per-step GLR rule (THEORY §440.3)
+
+
+def glr_prefix_scores(scaled, ids, lengths, min_events=5):
+    """Per-step slowdown GLR: for prefix N, events 1..N-1, each event type e with >= min_events events gives
+    G_e = max_s sum_k [ll_k(s) - ll_k(0)] / n_e over GLR_GRID; the score is max_e G_e. scaled: (n, T, G) per-event
+    log-likelihoods under each slowdown (event 0 unused); ids (n, T). Returns (n, len(PREFIXES)), NaN if too short."""
+    out = np.full((len(lengths), len(PREFIXES)), np.nan)
+    gain = scaled - scaled[..., :1]
+    for r, n_ev in enumerate(lengths):
+        for j, N in enumerate(PREFIXES):
+            if N > n_ev:
+                continue
+            g, e = gain[r, 1:N], ids[r, 1:N]
+            best = -np.inf
+            for t in np.unique(e):
+                m = e == t
+                if m.sum() >= min_events:
+                    best = max(best, g[m].sum(0).max() / m.sum())
+            out[r, j] = best if np.isfinite(best) else 0.
+    return out
+
+
 @torch.no_grad()
-def scores(model, readout, runs, lanes, posterior, compiled, binding=None, cell=None):
+def scores(model, readout, runs, lanes, posterior, compiled, binding=None, cell=None, glr=False):
     out = []; total = 0.; count = 0; used = []
     model.eval(); readout.eval()
     for b in range(0, len(runs), lanes):
         idx = list(range(b, min(b + lanes, len(runs))))
         stamps, marks, ids, lengths = tensors(runs, idx)
+        scaled = [] if glr else None
         ll, llt, _, st = readout_episode(model, readout, stamps, marks, ids, seed=314159, posterior=posterior,
-                                         compiled=compiled, binding=binding, cell=cell)
+                                         compiled=compiled, binding=binding, cell=cell,
+                                         scale_grid=GLR_GRID if glr else None, scaled=scaled)
         pt, pg, mask = parts(ll, llt, stamps, lengths)
         total += pt.sum() + pg.sum(); count += int(mask.sum())
-        out.append(prefix_scores(pt, pg, lengths))
+        rules = prefix_scores(pt, pg, lengths)
+        if glr:
+            sk = torch.stack([x if x is not None else torch.zeros(len(idx), len(GLR_GRID), dtype=torch.float64)
+                              for x in scaled], 1).numpy()
+            rules['glr_max'] = glr_prefix_scores(sk, ids.numpy(), lengths)
+        out.append(rules)
         used.append(st['bseen'].sum(-1).float().mean(0, keepdim=True).numpy() if binding is not None
                     else st['seen'][-1].sum(-1).float().mean(0).numpy())
-    return ({r: np.concatenate([q[r] for q in out]) for r in RULES}, total / max(count, 1),
+    return ({r: np.concatenate([q[r] for q in out]) for r in out[0]}, total / max(count, 1),
             dict(binding_or_top_layer_slots_written_per_run=np.mean(used, 0).round(3).tolist(),
                  pool=binding.slots if binding is not None else model.pool))
 

@@ -220,3 +220,33 @@ time):
   *and* the two neural families' seed means.
 - LRU, S5 and Mamba remain out of scope.
 - Prefixes stay per line: N* = 512 per line, a merged prefix of 1,024 at K = 2.
+
+## Protocol amendment: native primary scoring rule = per-step slowdown GLR, 7 October 2026 (curie FAS session)
+
+**Disclosure.** Declared before any FAS evaluation of the rule; only toy evaluations exist. FAS v2 validation results
+under the old rule (C1 .630, C2 .663 total) are known.
+
+**Rule.** For native models with a race readout, the primary score at prefix N is `glr_max` (THEORY §440.3).
+- For each event type e with at least 5 events among events 1..N−1, take
+  G_e = max_s Σ_k [log p_s(x_k | past) − log p_0(x_k | past)] / n_e over the declared log-slowdown grid
+  s ∈ {0, .05, .1, .2, .3, .5, .8}.
+- p_s scales every own duration by e^s. The score is max_e G_e.
+- Implementation: `native_race_readout.glr_prefix_scores`, `experiments/fas/glr_eval.py`.
+
+**Why it is declared a priori.**
+- *Theory:* §440 shows the per-step score test, and its GLR extension, to be the locally most powerful and the adaptive
+  one-class tests against slowdowns. FAS faults are slowdowns (wear and tear, retry delay). The identity oracle's
+  statistic is the identity-aware special case.
+- *Toy evidence* (binding toy, synthetic step slowdowns): glr_max against mean NLL AUROC
+
+  | slowdown | 3 processes | 6 processes |
+  |---|---|---|
+  | 1.2× | .731 vs .636 | .723 vs .644 |
+  | 1.5× | .911 vs .871 | .832 vs .850 |
+
+**Unchanged.**
+- Native configuration selection stays by validation-clean NLL. The rule is fixed, not selected on faulty data.
+- `total` stays reported as a secondary native rule, beside the other declared rules.
+- Classical references keep the maximum over their nine detectors on test.
+- Neural references keep their NLL rules. The GLR needs per-step duration laws that they do not have.
+- The decision rule, thresholds and the sealed test.

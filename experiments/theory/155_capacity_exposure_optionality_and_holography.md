@@ -1136,3 +1136,26 @@ detectors already select from nine statistics.
 2. The silence term adds power for stalls (faults that withhold events).
 3. On FAS, the late family moves native timing above the type rule and toward the oracle's per-fault profile
    (largest gain on retry delay, §439 analysis).
+
+**440.3 GLR over the slowdown magnitude, per step (toy results).**
+- The score test is locally optimal but loses to mean NLL on gross faults: at 1.5×, late_max .818 vs NLL .871 with 3
+  processes, and .710 vs .850 with 6.
+- The generalised likelihood ratio maximises the log-likelihood gain over the slowdown magnitude. *Per step*, it is the
+  union-intersection test over the unknown affected step:
+  G = max_e max_s Σ_{k∈e} [ℓ_k(s) − ℓ_k(0)] / n_e.
+
+AUROC, 600-step trained models, synthetic single-step slowdowns:
+
+| setting | mean NLL | late_max | global GLR | **per-step GLR** |
+|---|---|---|---|---|
+| 3 processes, 1.2× | .636 | .691 | .575 | **.731** |
+| 3 processes, 1.5× | .871 | .818 | .663 | **.911** |
+| 6 processes, 1.2× | .644 | .656 | .576 | **.723** |
+| 6 processes, 1.5× | **.850** | .710 | .693 | .832 |
+
+- Locality matters: a global slowdown dilutes a one-step fault.
+- The per-step GLR keeps the score test's gain on subtle faults (+.08 to +.10 over NLL) and stays at or near NLL on
+  gross ones.
+- It needs no identities and no fault labels: only the readout's per-slot laws, the posterior responsibilities and the
+  silence terms.
+- Declared as the B3 native primary rule before any FAS evaluation (protocol amendment, 7 October).
