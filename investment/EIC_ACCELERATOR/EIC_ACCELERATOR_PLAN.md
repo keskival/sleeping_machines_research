@@ -26,7 +26,7 @@ before submitting; work programmes change yearly, and the 2027 programme will go
 
 | Requirement | Status | Gap and action |
 |---|---|---|
-| Legal entity (EU SME) | No company yet (deck: terms "subject to company formation") | Allowed at application (natural person). **Incorporate a Finnish Oy early** anyway: the PIC, the cap table, the team criterion, national co-funding and investor traction all go through the company |
+| Legal entity (EU SME) | No company yet (deck: terms "subject to company formation") | Allowed at application (natural person). **Incorporate early** anyway, as a Finnish Oy or a Spanish S.L. (§9): the PIC, the cap table, the team criterion, national co-funding and investor traction all go through the company |
 | Deep-tech novelty | Strong: a new trainable substrate (temporal races, addressed sparse state, counterfactual credit), exact containment of attention and Mamba, formal theory | Present it as one product-relevant breakthrough, not a research catalogue |
 | **TRL 5/6** | Event-native models validated on **real-world public data**: EasyTPP (taxi, e-commerce, Q&A logs) and ICU records (P19). Defensibly TRL 4–5 (validated against real data, in the lab). **No deployment in a relevant operational environment yet (TRL 6)** | **The decisive gap.** Run a pilot on a design partner's own operational event data (industrial or IoT event logs, IT operations or security logs, or clinical time series), with a measured result. Even a short pilot with a letter of intent strengthens TRL 5/6 |
 | IP | No company-owned patents; IP plan exists (`investment/IP_PROTECTION_PLAN.md`) | File priority applications on the core constructions **before** any public disclosure; EIC evaluates IP at the short stage. Coordinate with the two private paper drafts, which must wait for the disclosure decision |
@@ -79,7 +79,7 @@ All costs are planning assumptions to be replaced by the EIC lump-sum budget tem
 
 | When | Action |
 |---|---|
-| Oct 2026 | Incorporate the Finnish Oy; get the company PIC; IP counsel and priority filings on the core constructions; choose the beachhead; approach 3–5 design partners |
+| Oct 2026 | Incorporate (Oy or S.L., §9); get the company PIC; IP counsel and priority filings on the core constructions; choose the beachhead; approach 3–5 design partners |
 | Oct–Nov 2026 | Sign one design-partner pilot or letter of intent; secure written investor interest; name team or adviser commitments; contact the Finnish EIC National Contact Point (Business Finland) for a pre-review |
 | Nov–Dec 2026 | Run the pilot's first measurement. Submit the **short proposal** when TRL 5/6 evidence exists (earliest batching: **first Tuesday of December 2026**, or January 2027) |
 | Within 12 months of a GO | Full proposal at the first suitable 2027 cut-off, after the free coaching; meanwhile finish the pilot and close the round |
@@ -113,3 +113,27 @@ Sources: [EIC Accelerator page](https://eic.ec.europa.eu/eic-funding-opportuniti
 [EIC Accelerator FAQ](https://eic.ec.europa.eu/eic-frequently-asked-questions/faqs-eic-accelerator_en) ·
 [Business Finland DTA](https://www.businessfinland.fi/en/services/funding/funding-services//deep-tech-accelerator-dta) ·
 [Business Finland 2026 funding services](https://www.businessfinland.fi/en/whats-new/news/2026/what-do-business-finlands-funding-services-look-like-at-the-beginning-of-2026/)
+
+## 9. Where to incorporate: Finnish Oy or Spanish S.L. (added 7 October 2026)
+
+The EIC accepts an SME established in **any** EU Member State; both are eligible. The deciding factors are where the
+founder and team actually live and work, and the national co-funding.
+
+| Factor | Spanish S.L. | Finnish Oy |
+|---|---|---|
+| EIC eligibility | Yes | Yes |
+| **Seal of Excellence follow-up** | CDTI has run direct-grant calls for Spanish SMEs holding an EIC Accelerator Seal of Excellence (FEDER co-funded; reported up to €2.5M per project; 2025: €22M to 11 SMEs; the 2026 call, €7.5M, was limited to Canary Islands and Valencian companies) | No equivalent Seal-of-Excellence scheme identified (not verified) |
+| Early R&D grant | **CDTI NEOTEC 2026**: up to 70% of eligible costs, max €250k (85% / €325k if a PhD is hired); company ≤ 3 years old; **paid-in share capital ≥ €20,000** before applying | **Business Finland Sprint** (2026 pilot, first R&D funding); **Deep Tech Accelerator**: three €400k phases (two grants, one loan) at 75% of costs, startups < 5 years old; 2026 call closed 16 Aug |
+| Other national instruments | ENISA participative loans; the Startup Law regime (Ley 28/2022: reduced corporate tax in the first years, better stock-option treatment, certified startup status) — **verify current terms** | Business Finland loans and grants; a strong Nordic seed and VC ecosystem |
+| Investor practicalities | Share transfers and capital increases go through a notary; workable, but more friction for VC rounds and option plans | Simple share transfers; familiar to Nordic investors |
+
+**Rule that overrides the table:** incorporate where the company will really be managed and where the founder and team
+work. The EIC checks operational capacity. National programmes require a real local establishment. A company managed
+from another country risks tax residence and permanent-establishment problems. If the founder lives in Spain, the S.L.
+is the natural choice, and CDTI's Seal-of-Excellence funding makes even an unsuccessful EIC full proposal valuable.
+
+Sources: [CDTI Seal of Excellence 2026 call](https://www.cdti.es/en/noticias/cdti-innovacion-75-millones-pymes-canarias-valencia-sello-excelencia-eic-feder-2026) ·
+[BOE extract, 18 May 2026](https://www.boe.es/buscar/doc.php?id=BOE-B-2026-16523) ·
+[CDTI: €22M to 11 SMEs with the Seal (Dec 2025)](https://www.muypymes.com/2025/12/19/cdti-innovacion-millones-pymes-espanolas-sello-excelencia) ·
+[NEOTEC 2026 call](https://www.cdti.es/sites/default/files/2026-04/convocatoria_neotec_2026.pdf) ·
+[Seal of Excellence aid up to €2.5M (deducible.es)](https://deducible.es/ayudas-pymes-sello-de-excelencia-2026-hasta-25-millones-de-euros-para-proyectos-de-id-reconocidos-por-el-eic-accelerator/)
