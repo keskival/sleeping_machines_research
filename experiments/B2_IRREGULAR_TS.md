@@ -49,3 +49,5 @@ validation, then the five-split protocol.
 | 7 Oct | r2 | dropout 0.4 + decay 1e-3 | val AUROC 0.859 (best epoch 4) | regularization does not help |
 | 7 Oct | diagnosis | gradient-boosted trees on per-channel summaries (count, mean, min, max, first, last, last−first, last time) + statics, split 0 | val **AUROC 0.867, AUPRC 0.581** | our model (0.866 / 0.549) extracts no more than record summaries yet |
 | 7 Oct | v3 | addressed channel slots carry sufficient statistics (THEORY note 59): count, running mean, min, max, first, last, trend, staleness; readout mixes them with temporal state | queued | |
+| 7 Oct | r2 EMA | lr 7e-4 + weight EMA | val AUROC 0.860 | no gain |
+| 7 Oct | v3 | statistic-valued channel slots | val **AUROC 0.872**, AUPRC 0.575 (best epoch 4; 65,001 parameters) | above the summary-tree diagnostic (0.867); MTM TEST 0.880. v4: typed comparisons on the statistics queued |
