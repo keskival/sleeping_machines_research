@@ -1,0 +1,52 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM TEST protocol (pre-registered 7 Oct 19:45 UTC in experiments/B2_IRREGULAR_TS.md): v7 crops 0.8, jitter 0.1, EMA 0.999, five official splits, TEST once per split; development split 0 at 0.9756 validation accuracy. Decides PAM vs MTM 97.5 +/- 0.2",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_final_pam_v7ema_split0",
+        "queue": "experiments/queue/b2/b2_final_pam_v7ema_split0/b2_final_pam_v7ema_split0.txt",
+        "queue_sha256": "38aac26601eb7f70026ca925f515e9e85aae8e951785b002c5a560c92bbeb003",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v7ema_split0.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v7ema_split1",
+        "queue": "experiments/queue/b2/b2_final_pam_v7ema_split1/b2_final_pam_v7ema_split1.txt",
+        "queue_sha256": "41867e464c407b37a46090a84392d53ac3a6ecef23938232755d1589187330c3",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v7ema_split1.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v7ema_split4",
+        "queue": "experiments/queue/b2/b2_final_pam_v7ema_split4/b2_final_pam_v7ema_split4.txt",
+        "queue_sha256": "a79442ab77ac9faf4fe967e02a572d0f67a5914cec7850fa54a981ad486fb4cc",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v7ema_split4.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

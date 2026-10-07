@@ -76,3 +76,12 @@ selection, TEST once per split; against MTM 88.0 ± 1.0 / 58.6 ± 4.1.
 | 7 Oct | PAM r10 (v7 + EMA 0.999) | weight averaging, 120-epoch budget | val acc plateau **0.959** (stable, no swings), below r8's 0.972 peak | r8's peak partly reflects selection over noisy epochs; the stable level is ≈ 0.96 vs MTM 0.975. Round 5: wider memory under augmentation, and stronger augmentation |
 | 7 Oct | P12 error analysis (validation, split 0, protocol model) | AUROC by tercile of observations: 0.809 / 0.882 / 0.898; by steps: 0.815 / 0.857 / 0.903. Misranked positives carry 347 observations vs 455 for well-ranked ones | the gap to MTM sits in sparsely measured stays | in sparse records which tests are ordered and when carries the signal; the slots held count and staleness but not ordering latency. **v8**: + per-channel time of first measurement and measurement rate, + record duration and steps (contract PASS on a hand-computed batch). Queued on P12 and P19 split 0 |
 | 7 Oct | P12 r13 (v8 ordering latency) | + time of first measurement and measurement rate per channel, record duration | val 0.872 / 0.569 (best epoch 2) vs protocol model 0.872 / 0.575 | **no gain**. Count and staleness already carried the ordering signal the model can use; the epoch-2 peak persists across lr, augmentation, ensembling and inputs. P12 is paused at TEST 0.871 / 0.585 (level with MTM on AUPRC); slots go to PAM. v8 on P19 runs as a regression check |
+| 7 Oct | P19 r13 (v8) | regression check of the ordering-latency inputs | val 0.918 / 0.626 vs protocol model 0.919 / 0.626 | no regression, no gain |
+| 7 Oct | PAM r10 (v7 + EMA 0.999) | weight averaging, 120-epoch budget | val acc **0.9756**, F1 0.976 at epoch 81, holding 0.974–0.976 over the last five epochs | the averaged model is stable at MTM's level (TEST 0.975 ± 0.002 / F1 0.976); this configuration goes to the protocol |
+
+**Pre-registered PAM protocol (fixed 7 Oct 19:42 UTC, before any of its runs).** `race_irts_v7.py` with random 80% crops,
+10% amplitude jitter, EMA 0.999 of the weights (selected and scored), batch 64, ≤ 120 epochs, patience 25, seed 0;
+five official Raindrop splits; checkpoint selected on validation accuracy; TEST scored once per split with
+`--score-test`. Report: TEST accuracy and macro F1 (also precision and recall) as mean ± sd over the five splits with
+every split's value, whatever they are, against MTM 97.5 ± 0.2 accuracy / 97.6 ± 0.2 F1 (higher is better). A win
+requires the mean accuracy ahead; ties are stated as ties. Split 0's development run (r10) is not reused.

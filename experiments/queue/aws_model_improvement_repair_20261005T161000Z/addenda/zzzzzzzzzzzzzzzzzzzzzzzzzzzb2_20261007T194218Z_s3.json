@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM TEST protocol (pre-registered 7 Oct 19:45 UTC in experiments/B2_IRREGULAR_TS.md): v7 crops 0.8, jitter 0.1, EMA 0.999, five official splits, TEST once per split; development split 0 at 0.9756 validation accuracy. Decides PAM vs MTM 97.5 +/- 0.2",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b2_final_pam_v7ema_split2",
+        "queue": "experiments/queue/b2/b2_final_pam_v7ema_split2/b2_final_pam_v7ema_split2.txt",
+        "queue_sha256": "f6c46b3120a3b4e821cb72d47a60744b898ebb0d23a72ae34693a963c406a14c",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v7ema_split2.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v7ema_split3",
+        "queue": "experiments/queue/b2/b2_final_pam_v7ema_split3/b2_final_pam_v7ema_split3.txt",
+        "queue_sha256": "00f81de6e13b6b1302677f271888fad3c8f80d28b83a8a38bf6fbf5ac4b96432",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v7ema_split3.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

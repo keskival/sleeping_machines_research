@@ -1,0 +1,2 @@
+# B2: B2 PAM TEST protocol (pre-registered 7 Oct 19:45 UTC in experiments/B2_IRREGULAR_TS.md): v7 crops 0.8, jitter 0.1, EMA 0.999, five official splits, TEST once per split; development split 0 at 0.9756 validation accuracy. Decides PAM vs MTM 97.5 +/- 0.2
+b2_final_pam_v7ema_split3 experiments/irts/race_irts_v7.py --tag b2_final_pam_v7ema_split3 --dataset PAM --split 3 --crop 0.8 --jitter 0.1 --ema 0.999 --epochs 120 --patience 25 --batch 64 --score-test
