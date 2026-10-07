@@ -1,6 +1,11 @@
 # Private investment materials
 
-Start with the **[19-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
+For a non-technical first read, start with the **[9-page evidence brief](sleeping_machines_evidence_brief.pdf)**:
+every public benchmark win, what each benchmark is and why it matters, units and direction for every comparison,
+and the evidence behind the larger vision (source: `brief/evidence_brief.tex`, figures from completed result files via
+`brief/make_brief_figures.py`).
+
+Then the **[19-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
 The **[full 36-slide deck](sleeping_machines_pitch_deck.pdf)** adds 17 optional
 technical and financial diligence slides. The current discussion draft proposes
 a **€3M raise**, with **€50M priced pre-money as the bullish negotiating
