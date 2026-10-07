@@ -51,6 +51,7 @@ def main():
     ap.add_argument('--results', nargs='+', required=True)
     ap.add_argument('--samples', type=int, default=10)
     ap.add_argument('--repeats', type=int, default=5)
+    ap.add_argument('--write', action='store_true', help='append rows to the tracked results file')
     a = ap.parse_args()
     torch.set_num_threads(1); torch.set_default_dtype(torch.float64)
     rows = []
@@ -84,9 +85,10 @@ def main():
         row = dict(result=path, dataset=r['args']['dataset'], exact=exact_tot / n, easytpp_mc_mean=float(mc.mean() / n),
                    easytpp_mc_sd=float(mc.std(ddof=1) / n), recorded_test=r['test']['ll'], events=n)
         rows.append(row); print(json.dumps(row), flush=True)
-    out = ROOT / 'experiments/results/tpp/b1_easytpp_estimator_check.json'
-    old = json.loads(out.read_text()) if out.exists() else []
-    out.write_text(json.dumps(old + rows, indent=1) + '\n')
+    if a.write:
+        out = ROOT / 'experiments/results/tpp/b1_easytpp_estimator_check.json'
+        old = json.loads(out.read_text()) if out.exists() else []
+        out.write_text(json.dumps(old + rows, indent=1) + '\n')
 
 
 if __name__ == '__main__':
