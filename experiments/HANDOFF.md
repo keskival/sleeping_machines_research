@@ -1,3 +1,24 @@
+# R1 recall round 1: negative, and a task shortcut found (curie, 7 Oct 14:20 UTC)
+
+Completed (seed 0, 20,000 training sequences, 60 epochs each, results in `results/tpp/recall/`):
+
+| Arm | TEST recall, 8 pairs (chance 3.1%) | TEST LL | 16-pair recall | 16-pair LL |
+|---|---|---|---|---|
+| Keyed read, backprop (v1) | 38.9% | −3.082 | 11.1% | −11.71 |
+| Frozen B1 v5 | 38.6% | −3.128 | 17.5% | −8.91 |
+
+**The keyed read added nothing.** Diagnosis (`recall_diagnose.py`): (i) the preceding key is not linearly decodable from
+the state written at the value event (3.9% / 3.6% vs 3.1% chance), so there was nothing to bind; (ii) both models'
+recall rises with query position from ~20% to 100% at the last query: v1–v3 queried every key exactly once, so later
+queries can be answered by elimination (the value not yet repeated; ~34% on average). **The 38% plateau is that
+shortcut, not memory.** No binding was learned by either model. The local-credit arm and the first v3 arms were stopped
+at start (uninformative on the flawed task); their partial checkpoints were deleted and the stops are logged.
+
+**v4** (`recall_tpp_v4.py`): queries with replacement and a reported set baseline (uniform guess among the context values,
+≈14%); binding is claimed only above it. v3 mechanisms carried: the written key sees the predecessor's message
+(`--prev-msg`), normalized keys/queries with learned sharpness (`--qk-norm`). Queue (tmux `curie_r1_v4`, sequential, each
+followed by its diagnosis): v4 keyed1 prev+norm → v4 frozen v5 → v4 keyed2 local race credit prev+norm.
+
 # External materials updated for the Retweet win (curie, 7 Oct ~13:50 UTC, user-requested)
 
 Retweet v16 five-seed TEST completed (s2 published f40808cf): −6.3262 ± 0.0009 vs NHP −6.348 (best published), S2P2

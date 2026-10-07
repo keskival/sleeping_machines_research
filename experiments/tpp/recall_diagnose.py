@@ -28,7 +28,7 @@ def main():
     driver = next(k for k in res['source_sha256'] if 'recall_tpp' in k)
     mod = importlib.import_module(Path(driver).stem)
     kk, kv, n = args['kk'], args['kv'], args['pairs']
-    T, M, R = mod.make_split(args['dev'], n, kk, kv, np.random.default_rng(2000 + args['seed']))
+    T, M, R = mod.make_split(args['dev'], n, kk, kv, np.random.default_rng(2000 + args['seed']))[:3]
     K = kk + kv
     gaps = torch.diff(mod.make_split(args['train'], n, kk, kv, np.random.default_rng(1000 + args['seed']))[0], dim=1)
     pos = gaps[gaps > 0].numpy(); scale = float(np.median(pos))
