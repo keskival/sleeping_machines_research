@@ -1,0 +1,2 @@
+# B1: Amazon v17: one logistic window per gap component (diagnosis: low-basin seeds lose entirely on the 0.70-0.80 box, 1.763 vs 1.928 time LL, when three narrow windows fail to tile it). Four seeds test whether the basin variance disappears (development; current pre-registered protocol unaffected)
+b1_r23_amazon_v17_s3 experiments/tpp/race_tpp_v17.py --tag b1_r23_amazon_v17_s3 --dataset amazon --seed 3 --n-lognormal 16 --n-window 4 --dropout 0.3 --patience 30
