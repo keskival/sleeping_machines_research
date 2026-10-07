@@ -1,0 +1,2 @@
+# B1: B1 Retweet TEST protocol: v16 (grid-safe state clock; DEV -6.352, audit drop 0.0038 vs v5 baseline 0.0006) with target dequantization; 5 seeds, TEST once per seed at best DEV; decides Retweet vs NHP -6.348
+b1_final_retweet_v16_s2 experiments/tpp/race_tpp_v16.py --tag b1_final_retweet_v16_s2 --dataset retweet --seed 2 --n-lognormal 8 --n-window 4 --patience 8 --floor-cell 1.0 --state-modes 16 --dequant-target 1.0 --score-test
