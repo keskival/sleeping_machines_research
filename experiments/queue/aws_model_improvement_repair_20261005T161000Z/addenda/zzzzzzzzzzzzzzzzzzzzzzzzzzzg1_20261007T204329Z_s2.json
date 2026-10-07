@@ -1,0 +1,58 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G1",
+  "purpose": "G1b cross-cohort transfer (development, validation only): G1 pretrained on the same P12 records it fine-tuned on and showed no robust gain (AUROC mean +0.008). G1b pretrains the unchanged encoder on 31,042 unlabeled P19 stays from other hospitals, mapped onto P12's variables (24 shared; contract PASS against the release variable lists), then fine-tunes on P12 with 10% of labels, splits 0-2, against the existing scratch runs. Decides whether generative experience from one clinical cohort transfers to another",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "g1b_p19to_p12_s0_pre10_lf0.1",
+        "queue": "experiments/queue/g1/g1b_p19to_p12_s0_pre10_lf0.1/g1b_p19to_p12_s0_pre10_lf0.1.txt",
+        "queue_sha256": "e52b17f7483f26b84a1245e8b88c6c412245a5d4942446b0fe8a234dd69f138e",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1b.py": "6abd3a9201fd2d9424223bed4b92ef4478258d5c40cd8a2f8066420154453020",
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1b_p19to_p12_s0_pre10_lf0.1.json",
+        "timeout_s": 21600,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1b_p19to_p12_s1_pre10_lf0.1",
+        "queue": "experiments/queue/g1/g1b_p19to_p12_s1_pre10_lf0.1/g1b_p19to_p12_s1_pre10_lf0.1.txt",
+        "queue_sha256": "ad6ac163e09a1452c2ed9249d8cca55507fa070f8c68a550abf13c41ca8abeeb",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1b.py": "6abd3a9201fd2d9424223bed4b92ef4478258d5c40cd8a2f8066420154453020",
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1b_p19to_p12_s1_pre10_lf0.1.json",
+        "timeout_s": 21600,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1b_p19to_p12_s2_pre10_lf0.1",
+        "queue": "experiments/queue/g1/g1b_p19to_p12_s2_pre10_lf0.1/g1b_p19to_p12_s2_pre10_lf0.1.txt",
+        "queue_sha256": "b0a4d87e71460b40850678f7496de42de9d7ccaccb8fbc08320e12bf31100153",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1b.py": "6abd3a9201fd2d9424223bed4b92ef4478258d5c40cd8a2f8066420154453020",
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1b_p19to_p12_s2_pre10_lf0.1.json",
+        "timeout_s": 21600,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
