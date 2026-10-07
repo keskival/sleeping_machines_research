@@ -142,9 +142,9 @@ Tero Keski-Valkama is the sole founder. His public
 [professional history](https://www.xing.com/profile/Tero_KeskiValkama) and
 [project portfolio](https://keskival.github.io/) support relevant applied-ML and
 software-architecture experience, subject to reference/availability diligence.
-The published [EP4148389A2 application](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf)
-names him as inventor and HERE Global B.V. as applicant; it is evidence of
-invention experience. The founder confirmed on 5 October 2026 that his earlier
+The published patent record ([Google Patents, all publications](https://patents.google.com/?inventor=Keski-Valkama&dups=language))
+names him as inventor or co-inventor on 35 US and EP patent documents (priority 2019 onward), 13 of them granted
+patents, all assigned to HERE Global B.V.; it is evidence of sustained invention experience. The founder confirmed on 5 October 2026 that his earlier
 patents belong to his former employer; they are excluded from this venture's
 assets and valuation. Sole-founder status
 does not imply sole research authorship: preserve Karoliina Salminen's credit

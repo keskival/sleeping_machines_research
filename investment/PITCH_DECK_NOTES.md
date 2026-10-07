@@ -197,11 +197,11 @@ This example brings the commercial argument to an auditable customer denominator
 
 Tero Keski-Valkama · Sole founder · Public career and invention record.
 
-The XING timeline lists Cybercom December 2012–June 2018, HERE July 2018–April 2022, Alloy May 2022–August 2023, and Kaiko September 2023–December 2025. The founder’s portfolio lists Sleeping Machines and FAS Simulator. The primary EPO application EP4148389A2, published 15 March 2023, names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. It supports relevant invention experience, not a patent grant or an asset owned by this venture. Public personal biography and university links have availability/staleness issues; no degree or current-employment claim is inferred from them. Founder availability and references remain diligence items.
+The XING timeline lists Cybercom December 2012–June 2018, HERE July 2018–April 2022, Alloy May 2022–August 2023, and Kaiko September 2023–December 2025. The founder’s portfolio lists Sleeping Machines and FAS Simulator. The published patent record (Google Patents, all publications, checked 7 October 2026) names Tero Juhani Keski-Valkama as inventor or co-inventor on 35 US and EP patent documents with priority dates from 2019 and publications through October 2025, 13 of them granted patents (12 US, 1 EP), all assigned to HERE Global B.V.; for example EP4148389A2 (maps from geospatial observations). The record supports sustained invention experience; these patents belong to the former employer and are not assets of this venture. Public personal biography and university links have availability/staleness issues; no degree or current-employment claim is inferred from them. Founder availability and references remain diligence items.
 
 - [F1: Tero Keski-Valkama — public professional timeline](https://www.xing.com/profile/Tero_KeskiValkama) — Self-reported historical roles: Cybercom, HERE, Alloy.ai, Kaiko.ai. Dates and current commitment require founder confirmation.
 
-- [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
+- [F2: Patent record — Google Patents inventor search (all publications)](https://patents.google.com/?inventor=Keski-Valkama&dups=language) — 35 published US and EP patent documents name Tero Juhani Keski-Valkama as inventor or co-inventor (priority 2019 onward; publications through October 2025), 13 of them granted patents; assignee HERE Global B.V. Experience evidence, not Sleeping Machines-owned IP.
 
 - [F3: Tero Keski-Valkama — public project portfolio](https://keskival.github.io/) — Self-published portfolio lists Sleeping Machines and FAS Simulator; project access may have changed. Sole-founder status supplied by founder.
 
@@ -214,7 +214,7 @@ Tero instructed on 3 October 2026 that the GitHub repository was made private. T
 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
-- [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
+- [F2: Patent record — Google Patents inventor search (all publications)](https://patents.google.com/?inventor=Keski-Valkama&dups=language) — 35 published US and EP patent documents name Tero Juhani Keski-Valkama as inventor or co-inventor (priority 2019 onward; publications through October 2025), 13 of them granted patents; assignee HERE Global B.V. Experience evidence, not Sleeping Machines-owned IP.
 
 
 ## 20. Three gates determine whether this becomes a business.
@@ -256,7 +256,7 @@ Proposed priced round; terms remain subject to company formation and investor di
 
 - [F1: Tero Keski-Valkama — public professional timeline](https://www.xing.com/profile/Tero_KeskiValkama) — Self-reported historical roles: Cybercom, HERE, Alloy.ai, Kaiko.ai. Dates and current commitment require founder confirmation.
 
-- [F2: European Patent Office — published application EP4148389A2](https://patentimages.storage.googleapis.com/25/dd/41/af29b8e1391162/EP4148389A2.pdf) — Primary published document names Tero Juhani Keski-Valkama as inventor and HERE Global B.V. as applicant. Experience evidence, not Sleeping Machines-owned IP or proof of a grant.
+- [F2: Patent record — Google Patents inventor search (all publications)](https://patents.google.com/?inventor=Keski-Valkama&dups=language) — 35 published US and EP patent documents name Tero Juhani Keski-Valkama as inventor or co-inventor (priority 2019 onward; publications through October 2025), 13 of them granted patents; assignee HERE Global B.V. Experience evidence, not Sleeping Machines-owned IP.
 
 
 ## 24. Build the model. Prove the economics. Open the hardware path.
@@ -439,7 +439,7 @@ Raw research evidence is private, per founder instruction. Original completed re
 
 ## 42. Public precedents establish relevance, not endorsement.
 
-Historical roles are self-reported; inventorship is checked against the primary published document.
+Historical roles are self-reported; inventorship is checked against the published patent record.
 
 The founder profile and portfolio are linked from the founder slide (F1, F3). Transformer and Mamba references are linked from the competition slide. The private diligence checklist remains open: corporate entity, cap table, founder commitment, contribution chain including Karoliina Salminen, employer invention assignments, licenses, compute/hiring quotes, trained backend admission, replication and measured service advantage. A private repository does not rescind earlier disclosures or itself establish patentability. No permission to distribute or contact potential partners is inferred from preparing this deck.
 
