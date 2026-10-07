@@ -52,6 +52,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | Keyed read, backprop | 1 | **99.4%** | −0.020 | −2.924 | 37.6% |
 | Keyed read, backprop | 2 | **99.2%** | −0.027 | −2.913 | 45.1% |
 | **Keyed read, backprop, 3 seeds** | mean ± sd | **99.4 ± 0.2%** | | **−2.919** | 44.6 ± 6.8% |
+| Ablation: predecessor message only (no normalization), backprop | 0 | 97.3% | −0.164 | −2.993 | **90.1%** |
 | Keyed read, local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
 | Frozen B1 v5 | 0 | 21.6% | −2.231 | −3.512 | 12.3% |
 | Set baseline | — | 14.1% | | | 7.9% |
@@ -77,6 +78,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | 7 Oct 15:40 | 2 | Same, local race credit only | 91.9%; 79.4% at 16 pairs | Learning through the race alone works; it extrapolates better than backprop |
 | 7 Oct 16:01 | 2 | Backprop seed 1 | 99.4%; 37.6% at 16 pairs | Reproduced; extrapolation varies by seed |
 | 7 Oct 16:22 | 2 | Backprop seed 2 | 99.2%; 45.1% at 16 pairs | Gate 1 met at training length (3 seeds) |
+| 7 Oct 16:35 | 2 | Ablation: predecessor message only | 97.3%; **90.1%** at 16 pairs | The message carries the binding; the learned sharpness of the normalized match costs length generalization |
 
 ## Next
 
