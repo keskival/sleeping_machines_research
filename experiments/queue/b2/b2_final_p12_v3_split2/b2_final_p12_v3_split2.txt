@@ -1,0 +1,2 @@
+# B2: B2 P12 TEST protocol (pre-registered): v3, five official splits, validation-AUROC selection, TEST once per split (split 0 val 0.872; P19's TEST ran above validation)
+b2_final_p12_v3_split2 experiments/irts/race_irts_v3.py --tag b2_final_p12_v3_split2 --dataset P12 --split 2 --epochs 60 --patience 12 --score-test
