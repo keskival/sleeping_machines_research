@@ -96,3 +96,11 @@ splits, rounds chosen on the official validation split, TEST once per split (`ex
 representation; our model is level with the trees on AUROC and +0.021 on AUPRC, within split spread. Next decisive
 test for B2: a margin over the statistics reader (temporal interactions the summaries cannot express), measured
 paired per split.
+
+**Paired per-split comparison, ours − trees (TEST, from the result files):** ΔAUROC +.010 / +.007 / −.004 / −.006 / +.005
+(mean +.002); ΔAUPRC +.037 / +.008 / +.042 / −.000 / +.017 (mean +.021, 4 of 5 splits ahead, paired t ≈ 2.6, p ≈ .06).
+**Queued on curie (user direction, 7 Oct 23:40):** `experiments/irts/p19_complementarity.py`, five splits. Per split: our
+model rerun from scratch (also an independent-hardware reproduction of the P19 result), a statistics-only ablation of the
+same network (temporal head inputs zeroed; zero gradient into the temporal layers, verified), trees on the same statistics,
+and a validation-weighted rank blend of ours and trees. Full > statistics-only isolates what the temporal memory adds;
+blend > both shows information the summaries lack.
