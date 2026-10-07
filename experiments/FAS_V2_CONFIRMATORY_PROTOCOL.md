@@ -267,3 +267,10 @@ AUROC at N* for the selected native configuration. Each (configuration, rule) pa
 budget, so choosing a rule is charged as selection, not given free. The reference side is unchanged: its strongest
 baseline is the maximum test AUROC over the information-matched classical detectors and the two neural families' seed
 means.
+
+**Correction to the amendment above, 7 October 2026, 23:20 UTC (curie owner, disclosed).** Charging every
+(configuration, rule) pair against the 8-configuration native budget would exhaust it after fewer than three
+configurations. Instead, no rule is selected on validation: **the native primary rule reverts to `total`**, the rule
+declared on 5 October before any v2 data existed. `type` and `glr_max` remain reported secondary rules. Native
+configurations used so far on v2 validation: C1, C2, C6 (previous owner), C7 and C8 (round 3, running); C9 queued =
+6 of 8.
