@@ -415,7 +415,8 @@ class PredictiveLayer(nn.Module):
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
                     deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False,
-                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None, cell=None, late=None):
+                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None, cell=None, late=None,
+                    scale_grid=None, scaled=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -428,6 +429,9 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     skip_deep); their local log-likelihoods are appended to `local` (a list) per event as (ll (n,), valid (n,)).
     late: optional list; per event it receives the slowdown score T_k = d/ds log p_s(event | past) at s = 0 (THEORY §440),
     by a central difference (h = 0.05), detached, for evaluation (None for a stream's first event).
+    scale_grid, scaled: with a list of log slowdowns s, `scaled` (a list) receives per event the event log-likelihoods
+    under each s, shape (n, len(scale_grid)), detached (None for a stream's first event); for generalised likelihood
+    ratio statistics over the slowdown magnitude (THEORY §440.3).
     cell: recording resolution in seconds for the cell likelihood (event_terms; THEORY §439); None = point density.
     surprise_gate: a log-likelihood threshold (nats). When the readout gave the arriving event a log-likelihood above it
     (a predictable event), that lane skips the deep layers: their state is kept and x is the layer input. The binding
@@ -489,8 +493,15 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
                         up = event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell, .05)[0]
                         dn = event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell, -.05)[0]
                     late.append((up - dn) / .1)
-            elif late is not None:
-                late.append(None)
+                if scaled is not None:
+                    with torch.no_grad():
+                        scaled.append(torch.stack([event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell, sc)[0]
+                                                   for sc in scale_grid], -1))
+            else:
+                if late is not None:
+                    late.append(None)
+                if scaled is not None:
+                    scaled.append(None)
             if prev is not None:
                 if record is not None:
                     tau_now = (t_prev[:, None] - t_ref).clamp_min(0); tau = (now[:, None] - t_ref).clamp_min(0)

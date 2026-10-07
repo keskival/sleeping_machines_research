@@ -148,12 +148,16 @@ def main():
         faulty = [sample(frng, a.K, a.R, medians, a.cv, a.stagger, a.drop, slow_step=int(frng.integers(0, a.R)), slow=a.fault_eval)
                   for _ in range(200)]
 
+        grid = [0., .05, .1, .2, .3, .5, .8]
+
         def stats(data):
             stamps, marks, ids, who, lens = batch(data, T)
-            late = []
+            late, scaled = [], []
             with torch.no_grad():
                 ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=7, binding=bm, late=late,
-                                                  skip_deep=SKIP['deep'], pred_layers=SKIP['pred'])
+                                                  skip_deep=SKIP['deep'], pred_layers=SKIP['pred'],
+                                                  scale_grid=grid, scaled=scaled)
+            Sk = torch.stack([x if x is not None else torch.zeros(len(data), len(grid), dtype=torch.float64) for x in scaled], 1).numpy()
             Tk = torch.stack([x if x is not None else torch.zeros(len(data), dtype=torch.float64) for x in late], 1).numpy()
             ok = (np.arange(T)[None] < np.asarray(lens)[:, None]) & valid.numpy()
             nll = np.array([-(ll[i].numpy()[ok[i]]).mean() for i in range(len(data))])
@@ -162,10 +166,21 @@ def main():
             for i in range(len(data)):
                 per = [Tk[i][ok[i] & (idsn[i] == e)] for e in np.unique(idsn[i][ok[i]])]
                 lmax.append(max(v.mean() for v in per if len(v) >= 3))
-            return nll, late_mean, np.array(lmax)
+            glr, glr_max = [], []
+            for i in range(len(data)):
+                g = Sk[i][ok[i]]                                     # (events, grid)
+                gain = g.sum(0) - g[:, 0].sum()
+                glr.append(gain.max() / max(ok[i].sum(), 1))
+                best = []
+                for e in np.unique(idsn[i][ok[i]]):
+                    ge = g[idsn[i][ok[i]] == e]
+                    if len(ge) >= 3:
+                        best.append((ge.sum(0) - ge[:, 0].sum()).max() / len(ge))
+                glr_max.append(max(best))
+            return nll, late_mean, np.array(lmax), np.array(glr), np.array(glr_max)
         c, f = stats(clean), stats(faulty)
         y = np.r_[np.zeros(len(clean)), np.ones(len(faulty))]
-        for name, j in (('mean_nll', 0), ('late', 1), ('late_max', 2)):
+        for name, j in (('mean_nll', 0), ('late', 1), ('late_max', 2), ('glr', 3), ('glr_max', 4)):
             faults[name] = float(roc_auc_score(y, np.r_[c[j], f[j]]))
         print(json.dumps(dict(fault_factor=a.fault_eval, auroc=faults)), flush=True)
     gates = {}
