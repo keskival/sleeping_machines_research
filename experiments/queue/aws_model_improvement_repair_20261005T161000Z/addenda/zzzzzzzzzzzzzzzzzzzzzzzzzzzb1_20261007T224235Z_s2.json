@@ -1,0 +1,49 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 unified configuration (development, DEV only, seed 0): the five EasyTPP wins use five driver versions (v5, v12, v16, v18). v19 combines every mechanism (defective delayed clocks, anchored logistic windows, state clock, resolution principle with target-only dequantization; contracts PASS: density integral 1-5e-9 with a cell, exact equality with v18 without one). One configuration on all five datasets, only the recording cell (data metadata) differing, decides whether a single model wins the whole benchmark",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b1_r25_amazon_v19_unified_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_amazon_v19_unified_s0/b1_r25_amazon_v19_unified_s0.txt",
+        "queue_sha256": "bfb540d9d9263b436f40293c89ea4cb5125ba56735448b296b1623429a9ab640",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_amazon_v19_unified_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_stackoverflow_v19_unified_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_stackoverflow_v19_unified_s0/b1_r25_stackoverflow_v19_unified_s0.txt",
+        "queue_sha256": "3ceeb43e04fa80e6c060e438435a748b348872ac060bac9285b575c0cf07175f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_stackoverflow_v19_unified_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_taxi_v19_unified_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_taxi_v19_unified_s0/b1_r25_taxi_v19_unified_s0.txt",
+        "queue_sha256": "085b4c99bd713f37364f0074a1592ce63f9062cef1ef5f25a9a3f3a785d841d9",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_taxi_v19_unified_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

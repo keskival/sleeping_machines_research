@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 unified configuration (development, DEV only, seed 0): the five EasyTPP wins use five driver versions (v5, v12, v16, v18). v19 combines every mechanism (defective delayed clocks, anchored logistic windows, state clock, resolution principle with target-only dequantization; contracts PASS: density integral 1-5e-9 with a cell, exact equality with v18 without one). One configuration on all five datasets, only the recording cell (data metadata) differing, decides whether a single model wins the whole benchmark",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r25_retweet_v19_unified_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_retweet_v19_unified_s0/b1_r25_retweet_v19_unified_s0.txt",
+        "queue_sha256": "2253551a1c24c94ed719f28ccca3f381ae2207951128ff6034a4b73465ff134d",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_retweet_v19_unified_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_taobao_v19_unified_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_taobao_v19_unified_s0/b1_r25_taobao_v19_unified_s0.txt",
+        "queue_sha256": "88c83d5bfac2b756bb80d008f2632b28d151c573b935995cf8ff994b6f6badf3",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_taobao_v19_unified_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
