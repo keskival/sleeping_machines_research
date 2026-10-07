@@ -273,3 +273,19 @@ oracle's .821.
     (first in curie_chain49; only one copy runs). C3–C5, not yet run, also get the cell likelihood, so each ablation
     isolates its own change. The curie copies of C1/C2 are dropped (run on AWS).
   - **Status:** in development. Best so far C2 .663 (total) vs reference order3 .685.
+- 7 Oct 01:31 UTC: **per-fault analysis at N*** (v2 validation; from the result files):
+
+  | AUROC | wear-and-tear | retry delay |
+  |---|---|---|
+  | oracle (line-aware max-step) | .749 | **.890** |
+  | order3 | .646 | .723 |
+  | gap_z | .658 | .679 |
+  | C2 total / type | .626 / .645 | .699 / .730 |
+  | C1 total / type | .607 / .629 | .652 / .716 |
+
+  - The oracle's lead is largest on retry delay (+.167 over order3). Retries add waiting inside a specific item's
+    bowl-feeder steps, visible only through item-own durations (binding).
+  - Both native models score better on the type rule than on the total rule, so their timing likelihood currently adds
+    noise. That fits tie-dominated, unbound merged timing.
+  - **Round-2 success signals for C6:** retry-delay AUROC rising toward .89, the total rule exceeding the type rule,
+    and the wear-and-tear AUROC passing gap_z's .658.
