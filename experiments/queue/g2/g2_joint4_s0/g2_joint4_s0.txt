@@ -1,0 +1,2 @@
+# G2: G2 generality: one shared temporal core (memory layers + gap encoder) trained jointly on Taxi, Taobao, StackOverflow and Amazon with dataset-specific mark/clock heads; per-dataset DEV vs per-dataset models. Decides whether temporal dynamics are shared across event domains
+g2_joint4_s0 experiments/tpp/g2_joint.py --tag g2_joint4_s0 --datasets taxi,taobao,stackoverflow,amazon --seed 0
