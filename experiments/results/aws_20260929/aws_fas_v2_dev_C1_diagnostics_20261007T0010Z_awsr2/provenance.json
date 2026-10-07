@@ -1,0 +1,27 @@
+{
+  "run_tag": "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z_awsr2",
+  "script": "experiments/fas/readout_diagnostics.py",
+  "arguments": [
+    "--result",
+    "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/aws_fas_v2_dev_C1_20261006T1715Z.json",
+    "--runs",
+    "300",
+    "--lanes",
+    "32",
+    "--tag",
+    "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z_awsr2"
+  ],
+  "output_redirected": true,
+  "source_sha256": "2bc6652735602dd90fa2d0c6596bf67035b0d4452732b17a46d8c28aa1fc5704",
+  "git_commit": "25fd31d1aee60c7c05bf4da477a60e29ffe9ac78",
+  "limits": {
+    "MEM_CAP_KB": "12000000",
+    "MEM_CAP_RSS_KB": "4500000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "3600"
+  },
+  "start_utc": "2026-10-07T14:42:17Z",
+  "status": "completed",
+  "wall_s": 313.376,
+  "peak_rss_kb": 455516
+}
