@@ -136,3 +136,6 @@ StackOverflow 4.6×) it is reported as a higher-compute result, not a matched wi
 4 clustered-window clocks, dropout 0.3, patience 30. Protocol seed s ∈ {0..4} trains restarts with seeds s, s+100,
 s+200; `b1_restart_select.py` keeps the restart with the best DEV LL and reports its TEST (selection never reads TEST).
 Training compute is 3× a single fit; inference compute is unchanged (one selected model per protocol seed).
+| 7 Oct | v13 Retweet | state clock held below one cell | DEV −6.326 (time −5.562) | **audit: not clean.** Dequantized drop 0.045 (baseline 0.0006): 0.031 at 1 s gaps (−1.764 recorded vs −2.276 dequantized) — rate caps bound the time scale but not the amplitude, so the hazard can still sharpen within a cell. Not counted |
+| 7 Oct | v14 | uniform dequantization of TRAIN gaps within the recording cell each epoch (standard for density models of discretized data); evaluation unchanged on the protocol's raw data | Retweet queued | |
+| 7 Oct | Amazon protocol (partial) | restart selection by DEV | seed 0: DEV picks 0.798 over 0.691 → TEST **0.798**; seed 1 → TEST 0.796 | above S2P2 0.781 so far; three seeds remaining |
