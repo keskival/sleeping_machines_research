@@ -84,4 +84,5 @@ selection, TEST once per split; against MTM 88.0 ± 1.0 / 58.6 ± 4.1.
 five official Raindrop splits; checkpoint selected on validation accuracy; TEST scored once per split with
 `--score-test`. Report: TEST accuracy and macro F1 (also precision and recall) as mean ± sd over the five splits with
 every split's value, whatever they are, against MTM 97.5 ± 0.2 accuracy / 97.6 ± 0.2 F1 (higher is better). A win
-requires the mean accuracy ahead; ties are stated as ties. Split 0's development run (r10) is not reused.
+requires the mean accuracy ahead; ties are stated as ties. Split 0's development run (r10) is not reused. (Audit note: this text was written before split 0 started at 19:42:20 and committed at 19:43, before
+its first epoch completed.)
