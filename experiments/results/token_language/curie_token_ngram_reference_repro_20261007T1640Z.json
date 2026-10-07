@@ -1,0 +1,178 @@
+{
+  "status": "completed",
+  "tag": "curie_token_ngram_reference_repro_20261007T1640Z",
+  "kind": "count_ngram_reference",
+  "protocol": {
+    "tokenizer": "GPT-2 BPE (llm.c FineWeb shards)",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "native_dev": {
+      "offset": 20971520,
+      "lanes": 8,
+      "lane_tokens": 256,
+      "targets": 2040
+    },
+    "large_dev": {
+      "offset": 20971520,
+      "lanes": 8,
+      "lane_tokens": 8192,
+      "targets": 65528
+    },
+    "discount": 0.9,
+    "units": "nats per token"
+  },
+  "rows": [
+    {
+      "train_tokens": 65536,
+      "native_dev_2040": {
+        "unigram_add1": {
+          "nll": 8.16168391473604,
+          "standard_error": 0.06015996677009192,
+          "targets": 2040
+        },
+        "bigram_kn": {
+          "nll": 8.139319738993965,
+          "standard_error": 0.09896754476787745,
+          "targets": 2040
+        },
+        "trigram_kn": {
+          "nll": 8.154526226972003,
+          "standard_error": 0.10056554436672163,
+          "targets": 2040
+        }
+      },
+      "large_dev_65528": {
+        "unigram_add1": {
+          "nll": 7.924883466345654,
+          "standard_error": 0.010438176451532276,
+          "targets": 65528
+        },
+        "bigram_kn": {
+          "nll": 7.5440047859687756,
+          "standard_error": 0.017185012302324117,
+          "targets": 65528
+        },
+        "trigram_kn": {
+          "nll": 7.551278386837697,
+          "standard_error": 0.0174824401288631,
+          "targets": 65528
+        }
+      }
+    },
+    {
+      "train_tokens": 262144,
+      "native_dev_2040": {
+        "unigram_add1": {
+          "nll": 7.972294476162466,
+          "standard_error": 0.06631147656009517,
+          "targets": 2040
+        },
+        "bigram_kn": {
+          "nll": 7.646859729460214,
+          "standard_error": 0.09627646990376106,
+          "targets": 2040
+        },
+        "trigram_kn": {
+          "nll": 7.6477540784048355,
+          "standard_error": 0.09918537600189371,
+          "targets": 2040
+        }
+      },
+      "large_dev_65528": {
+        "unigram_add1": {
+          "nll": 7.686814266266794,
+          "standard_error": 0.01130673876711807,
+          "targets": 65528
+        },
+        "bigram_kn": {
+          "nll": 7.058398874788845,
+          "standard_error": 0.016357076648675573,
+          "targets": 65528
+        },
+        "trigram_kn": {
+          "nll": 7.048772871747603,
+          "standard_error": 0.016891730902629666,
+          "targets": 65528
+        }
+      }
+    },
+    {
+      "train_tokens": 1048576,
+      "native_dev_2040": {
+        "unigram_add1": {
+          "nll": 7.949972507978786,
+          "standard_error": 0.0694391085476648,
+          "targets": 2040
+        },
+        "bigram_kn": {
+          "nll": 7.250578783085885,
+          "standard_error": 0.09124152816721585,
+          "targets": 2040
+        },
+        "trigram_kn": {
+          "nll": 7.2169676655622546,
+          "standard_error": 0.09572006246041177,
+          "targets": 2040
+        }
+      },
+      "large_dev_65528": {
+        "unigram_add1": {
+          "nll": 7.604142940069683,
+          "standard_error": 0.011591905534382798,
+          "targets": 65528
+        },
+        "bigram_kn": {
+          "nll": 6.584255696752069,
+          "standard_error": 0.015087441877512113,
+          "targets": 65528
+        },
+        "trigram_kn": {
+          "nll": 6.537191865517778,
+          "standard_error": 0.015921497244768212,
+          "targets": 65528
+        }
+      }
+    },
+    {
+      "train_tokens": 4194304,
+      "native_dev_2040": {
+        "unigram_add1": {
+          "nll": 7.913265823743251,
+          "standard_error": 0.06954496725918072,
+          "targets": 2040
+        },
+        "bigram_kn": {
+          "nll": 6.791896468096842,
+          "standard_error": 0.0841774465281177,
+          "targets": 2040
+        },
+        "trigram_kn": {
+          "nll": 6.710702743374247,
+          "standard_error": 0.09065522344388857,
+          "targets": 2040
+        }
+      },
+      "large_dev_65528": {
+        "unigram_add1": {
+          "nll": 7.573587895130949,
+          "standard_error": 0.011620448394750394,
+          "targets": 65528
+        },
+        "bigram_kn": {
+          "nll": 6.209090913051747,
+          "standard_error": 0.014250178466447725,
+          "targets": 65528
+        },
+        "trigram_kn": {
+          "nll": 6.1002300611463784,
+          "standard_error": 0.01544128513475617,
+          "targets": 65528
+        }
+      }
+    }
+  ],
+  "wall_s": 13.317403554916382,
+  "source_sha256": {
+    "experiments/token_ngram_reference.py": "7b3e7f021055b10fa5947f227d391d24bdc1608201dad4f3df2ba8d3ea13e56b"
+  }
+}

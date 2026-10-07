@@ -100,5 +100,5 @@ This is a three-factor rule whose factors are all available at the slot and the 
    token's slot holds keys from its state and its predecessor's message; per-head distance decay). TRAIN = first 1M tokens
    of train shard 1 in 256-token lanes; selection on a disjoint val slice (offset 10,485,760); the 65,528-target slice is
    scored once. Gate: KN trigram 6.537 at 1M tokens (bigram 6.584). Queued after the recall chain and the KN data check:
-   smoke, keyed 1M, no-read ablation 1M (≈22 min per epoch on one CPU thread).
+   smoke, keyed 1M, no-read ablation 1M (≈22 min per epoch on one CPU thread). Data check (7 Oct 19:14): the KN references rerun on curie's downloaded shards reproduce all 24 AWS values exactly (`curie_token_ngram_reference_repro_20261007T1640Z`).
 4. Offer the mechanism to B1 (AWS) for datasets where marks recur with context (StackOverflow, Retweet).
