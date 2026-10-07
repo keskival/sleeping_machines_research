@@ -305,3 +305,36 @@ oracle's .821.
   - `glr_eval.py` evaluates checkpoints; AWS queues are ready for C1 (now) and C6 (after it completes).
   - Expected on FAS: glr_max exceeds the total rule, with the largest gain on retry delay, where the oracle's lead is
     largest.
+- 7 Oct 22:10 UTC: **B3 ownership moves to the curie host session** (user direction; the earlier curie FAS session is not
+  returning). **Round 2 results** (AWS, v2 validation, merged N* = 1,024):
+
+  | AUROC at N* | total | type | glr_max (declared primary) |
+  |---|---|---|---|
+  | C6 = C1 + 1 ms recording cell | **.664** | .682 | .578 |
+  | C1 | .621 | .675 | .466 |
+  | C2 (round 1) | .663 | .688 | — |
+
+  References: order3 .685, line-aware oracle .821. C1 particles (1 / 4 / 16): .634 / .639 / .636.
+  - **The recording cell helps** C1's likelihood rule (.621 → .664) but not past order3.
+  - **glr_max fails on FAS** (.578, .466), against its toy evidence. Its "own durations" need correct item attribution,
+    which C1/C6 lack (below). The rule was declared a priori for the sealed test; the declaration stands in the record,
+    and the primary-rule question is reopened before any test scoring (protocol amendment to follow, disclosed).
+  - **Binding is the bottleneck.** C1 diagnostics: binding purity α = 0.30 (median), item concentration 0.12; by
+    faulty-run binding at N*: **high purity .735, low purity .511**. Where the model binds, it already beats order3;
+    where it does not, it is at chance. More particles do not help (inference over a poor binding model).
+  - **Round 3 plan (curie owner):** carry the R1 gate-1 mechanism (experiments/R1_RECALL.md): the predecessor message.
+    In R1 binding failed entirely until each written key carried the predecessor's message explicitly (21.6% → 97–99%,
+    3 seeds; flat over age and irregular gaps), and local race credit learned it without backpropagation (77%). In FAS
+    the in-line predecessor is not the previous merged event, so the read must find it by key: each event writes a key
+    from (state, type); the next event queries for its in-line predecessor; the matched predecessor's message enters
+    the event's write. Second: sufficient-statistic memories per event-type pair (containment of order3/timed_ngram/
+    gap_z, as in the P19 win). Status: **in development, best .664 (C6 total) vs reference .685 (order3)**.
+- 7 Oct 22:40 UTC: **Round 3 queued on curie** (validation only). `experiments/fas/race_tpp_fas.py`: the B1 race model
+  (race_tpp_v16: all five EasyTPP datasets won; hazards held at their one-cell value below 1 ms and target
+  dequantization, the remedy for the 36% zero-ms gaps) on FAS v2, scored with native.py's rules and prefixes. C7 = race
+  model; C8 = C7 + keyed predecessor-message read (R1). Substitution rationale: the native heads' binding failure
+  (purity .30) is the measured limit; the B1 model retains the race of delayed clocks, exact survival, temporal memory
+  and addressed slots, and adds separate keys with sparse writes. Protocol cap: 3 passes over 5,000 clean samples
+  (≈21 s per 32-run batch, ≈3 h per arm). Functional test: finite per-position scores, ~50k parameters.
+  **Sufficient-statistic memories:** whenever used, the small LSTM/Transformer references get the same statistics in one
+  arm, so a win does not rest on features the references lacked.
