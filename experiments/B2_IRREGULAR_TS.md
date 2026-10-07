@@ -86,3 +86,4 @@ five official Raindrop splits; checkpoint selected on validation accuracy; TEST 
 every split's value, whatever they are, against MTM 97.5 ± 0.2 accuracy / 97.6 ± 0.2 F1 (higher is better). A win
 requires the mean accuracy ahead; ties are stated as ties. Split 0's development run (r10) is not reused. (Audit note: this text was written before split 0 started at 19:42:20 and committed at 19:43, before
 its first epoch completed.)
+| 7 Oct | PAM r10 final (v7 + EMA 0.999) | 120 epochs | **val acc 0.981, F1 0.983** (best epoch 117 of 120; 46,316 parameters) | development level above MTM's TEST 0.975 / 0.976; still improving at the epoch cap. The pre-registered five-split protocol (same configuration) is running: splits 0 and 2 started |
