@@ -90,3 +90,9 @@ chapter can be refreshed independently with bounded vector rendering:
 `.venv-docker/bin/python report/family_report.py --tag UNIQUE_REPORT_TAG`.
 It preserves every other report page and archives the prior PDF. Future full
 report rebuilds include the same chapter and Markdown entry automatically.
+
+## Non-dilutive funding
+
+- [EIC Accelerator preparation](EIC_ACCELERATOR/EIC_ACCELERATOR_PLAN.md): 2026 rules (grant up to €2.5M; zero equity
+  via grant only with proof of financing), eligibility gap analysis (the decisive gap is TRL 6, a design-partner pilot),
+  timeline, budget, and drafts of the short proposal, the 10-slide deck and the 3-minute video.
