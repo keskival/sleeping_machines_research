@@ -27,8 +27,9 @@ def fig_results():
     rows = [('Taobao', final('b1_final_taobao_v5'), 1.318, 0.017, 'IFTPP'),
             ('Taxi', final('b1_final_taxi_v5'), 0.522, 0.004, 'S2P2'),
             ('StackOverflow', final('b1_final_stackoverflow_v12'), -2.163, 0.009, 'S2P2'),
-            ('Retweet', final('b1_final_retweet_v16'), -6.348, 0.0, 'NHP')]
-    fig, axes = plt.subplots(1, 4, figsize=(9.2, 2.4))
+            ('Retweet', final('b1_final_retweet_v16'), -6.348, 0.0, 'NHP'),
+            ('Amazon', final('b1_final_amazon_v18'), 0.781, 0.011, 'S2P2')]
+    fig, axes = plt.subplots(1, 5, figsize=(11.0, 2.4))
     for ax, (name, ours, ref, sd, refname) in zip(axes, rows):
         ax.errorbar([0], [ref], yerr=[sd], fmt='s', color=GRAY, ms=7, capsize=4, label=f'best published ({refname})')
         ax.scatter([1] * len(ours), ours, color=BLUE, s=18, alpha=.6, zorder=3)
@@ -41,7 +42,7 @@ def fig_results():
 
 def fig_compute():
     pts = [('Taxi', 20708, 0.5250, 249856, 0.522), ('Taobao', 24362, 1.3991, 26016, 1.304),
-           ('StackOverflow', 36732, -2.1444, 29216, -2.163), ('Retweet', 19850, -6.3262, 297600, -6.365)]
+           ('StackOverflow', 36732, -2.1444, 29216, -2.163), ('Retweet', 19850, -6.3262, 297600, -6.365), ('Amazon', 35936, 0.8028, 125568, 0.781)]
     fig, ax = plt.subplots(figsize=(4.6, 2.8))
     for name, ours_c, ours_ll, ref_c, ref_ll in pts:
         ax.annotate('', xy=(ours_c, ours_ll - ref_ll), xytext=(ref_c, 0), arrowprops=dict(arrowstyle='->', color=GRAY, lw=1))

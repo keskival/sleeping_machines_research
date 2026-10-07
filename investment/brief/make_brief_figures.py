@@ -34,8 +34,9 @@ def fig_runs():
               ('Taxi rides\n(Taxi)', seeds('b1_final_taxi_v5'), 0.522, 'S2P2'),
               ('Q&A activity\n(StackOverflow)', seeds('b1_final_stackoverflow_v12'), -2.163, 'S2P2'),
               ('Social media\n(Retweet)', seeds('b1_final_retweet_v16'), -6.348, 'NHP'),
+              ('Reviews\n(Amazon)', seeds('b1_final_amazon_v18'), 0.781, 'S2P2'),
               ('Sepsis\n(P19)', [s['auprc'] for s in p19['per_split']], 0.583, 'MTM')]
-    fig, axes = plt.subplots(1, 5, figsize=(7.6, 2.6))
+    fig, axes = plt.subplots(1, 6, figsize=(7.8, 2.6))
     for ax, (name, ours, ref, refname) in zip(axes, panels):
         ax.axhline(ref, color=PUB, lw=2.2, zorder=2)
         ax.scatter(range(len(ours)), ours, color=OURS, s=26, zorder=3, edgecolor='white', linewidth=.8)
@@ -54,9 +55,9 @@ def fig_runs():
 def fig_size():
     """Model size against the leading published model (parameters)."""
     rows = [('Retweet', 19654, 298627, 'S2P2'), ('Taxi', 20504, 251850, 'S2P2'),
-            ('Sepsis (P19)', 62681, 873000, 'MTM'), ('StackOverflow*', 29191, 30166, 'S2P2'),
+            ('Sepsis (P19)', 62681, 873000, 'MTM'), ('Amazon', 35000, 127056, 'S2P2'), ('StackOverflow*', 29191, 30166, 'S2P2'),
             ('Taobao', 24046, 26801, 'S2P2')]
-    fig, ax = plt.subplots(figsize=(7.2, 2.5))
+    fig, ax = plt.subplots(figsize=(7.2, 2.8))
     for i, (name, ours, ref, refname) in enumerate(rows):
         y = len(rows) - 1 - i
         ax.barh(y + .19, ref / 1000, height=.36, color=PUB)
@@ -65,7 +66,7 @@ def fig_size():
         ax.text(ours / 1000 + 8, y - .19, f'ours  {ours / 1000:,.1f}K', va='center', fontsize=7.4, color=OURS,
                 fontweight='bold')
         if ref / ours > 2:
-            ax.text(1240, y, f'{ref / ours:.0f}× smaller', va='center', ha='right', fontsize=8.6, color=INK,
+            ax.text(1240, y, (f'{ref / ours:.0f}× smaller' if ref / ours >= 9.5 else f'{ref / ours:.1f}× smaller'), va='center', ha='right', fontsize=8.6, color=INK,
                     fontweight='bold')
     ax.set_yticks(range(len(rows)), [r[0] for r in rows][::-1], fontsize=8.4)
     ax.set_xlim(0, 1250); ax.set_xlabel('learned parameters, thousands  (↓ fewer is smaller and cheaper)')
@@ -76,13 +77,13 @@ def fig_size():
 def fig_compute():
     """Per-event compute against S2P2 (multiply-accumulates per event, counted from its released layers)."""
     rows = [('Retweet', 19850, 297600), ('Taxi', 20708, 249856), ('Taobao', 24362, 26016),
-            ('StackOverflow*', 29660, 29216)]
-    fig, ax = plt.subplots(figsize=(3.5, 2.3))
+            ('Amazon', 35936, 125568), ('Stack-\nOverflow*', 29660, 29216)]
+    fig, ax = plt.subplots(figsize=(3.7, 2.3))
     names = [r[0] for r in rows]; x = range(len(rows))
     ax.bar([i - .2 for i in x], [r[2] / 1000 for r in rows], width=.38, color=PUB, label='S2P2 (NeurIPS 2025)')
     ax.bar([i + .2 for i in x], [r[1] / 1000 for r in rows], width=.38, color=OURS, label='ours')
     for i, (n, o, s) in enumerate(rows):
-        ax.text(i, max(o, s) / 1000 + 9, f'ours:\n1/{s / o:.0f}' if s / o > 2 else f'ours:\n{o / s:.2f}×', ha='center', linespacing=.95,
+        ax.text(i, max(o, s) / 1000 + 9, (f'ours:\n1/{s / o:.0f}' if s / o > 9.5 else f'ours:\n{o / s:.2f}×') if s / o > 2 else f'ours:\n{o / s:.2f}×', ha='center', linespacing=.95,
                 fontsize=7.6, fontweight='bold', color=INK)
     ax.set_xticks(list(x), names, fontsize=7.4); ax.set_ylabel('thousand multiply-adds per event\n(↓ lower is cheaper)', fontsize=7.6)
     ax.set_ylim(0, 350); ax.legend(frameon=False, fontsize=7.2, loc='upper right')

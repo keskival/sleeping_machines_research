@@ -163,3 +163,7 @@ must reproduce the run's recorded DEV log-likelihood to 1e−9 (otherwise the sc
 without repeating its training. Report: TEST mean ± sd over the five seeds and every seed's value, whatever they are,
 against S2P2 0.781 ± 0.011; a win requires the mean ahead; "all seeds ahead" is stated only if true. The v11 result
 (0.7839 ± 0.0265) stays in the record.
+
+| Date | Run | Change | Result | Reading |
+|---|---|---|---|---|
+| 7 Oct | **final Amazon (v18), pre-registered protocol, TEST** | anchored windows; one run per seed, no restarts; best-DEV checkpoints scored once by `score_test.py` (DEV reproduced exactly, |diff| 0 for all five) | **0.8028 ± 0.0007** (seeds 0.8032, 0.8021, 0.8030, 0.8022, 0.8036); time **2.657**, mark **−1.854** | **WIN** vs S2P2 0.781 ± 0.011 (+0.022), all 5 seeds ahead, best published time (2.652) and mark (−1.871); EasyTPP Monte Carlo estimator 0.8037–0.8060; no recording grid (281K distinct gaps); 35,000 parameters, 35,936 MACs/event vs S2P2 127,056 / 125,568 (0.29×). **All five EasyTPP datasets won** |

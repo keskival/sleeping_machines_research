@@ -100,10 +100,10 @@ Official splits, the published per-event log-likelihood protocol, 5 seeds, seale
 | StackOverflow | −2.163 (S2P2) | **−2.144 ± 0.004** | 1.26× |
 | StackOverflow, matched | −2.163 (S2P2) | **−2.153 ± 0.005** | 1.015× |
 | Retweet | −6.348 (NHP) | **−6.326 ± 0.001** | 1/15 |
-| Amazon (not confirmed) | 0.781 (S2P2) | 0.784 ± 0.027 | 0.29× |
+| Amazon | 0.781 (S2P2) | **0.803 ± 0.001** | 0.29× |
 
-Higher is better; compute is per-event inference work. Amazon is ahead on the mean, but one of five seeds landed in a
-low optimization basin.
+Higher is better (log-likelihood, nats per event); compute is per-event inference work relative to S2P2. Every seed is
+ahead of the best published result on every dataset.
 
 **A second public win, with the same core, in clinical early warning (7 October 2026).** On P19 (PhysioNet 2019 sepsis
 prediction, 38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive), five official splits, TEST scored once per
@@ -126,8 +126,12 @@ for mortality prediction with fewer labels, with a fuller pretraining budget
   clock that passed the recording-grid audit.
 - **Retweet is a confirmed win:** −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of
   S2P2's parameters and per-event compute.
-- Four of five datasets are won, past the battle's pass criterion (best published on 2 of 5).
-- **Amazon:** the pre-registered five-seed protocol is ahead on the mean (0.784 vs 0.781) at 0.29× S2P2's compute, but one seed's restarts all landed in a weaker optimization basin, so it is not a confirmed win; a fix for that basin is in testing.
+- **Amazon is a confirmed win (7 October):** 0.803 ± 0.001 vs S2P2 0.781 ± 0.011, all five seeds ahead, with the best
+  published time and type log-likelihoods, at 0.29× S2P2's per-event compute and 3.6× fewer parameters.
+- **All five EasyTPP datasets are won**, against a pass criterion of two.
+- **How Amazon was won:** the previous protocol (0.784 ± 0.027) had one seed stuck in a weaker optimization basin; the
+  diagnosis (delay windows drifting beyond all observed gaps) led to windows anchored to their gap component, which
+  removed the basin: five seeds within 0.0015 of each other, one run each, no restarts.
 - These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
   terms where its mathematics fits: a race of clocks *is* a temporal point process.
 

@@ -50,7 +50,7 @@ win paragraph, summary and battle rows), PITCH.md, INVESTMENT_CASE.md (results t
 had a stray Amazon row; `build_investment_case.py` gained a 4-column layout), VALUATION_RATIONALE, PITCH_DECK.json,
 EIC video script, partner proposal, Paper 1 `paper.tex` (Retweet row and discussion). Rebuilt: pitch deck, investment
 case, investor pitch and Part I PDFs. **Paper 1 `paper.pdf` is stale**: curie has no LaTeX; rebuild on a host that has it.
-Count now: EasyTPP 4/5 (Taxi, Taobao, StackOverflow, Retweet) + P19 = five public wins; Amazon mean ahead, unconfirmed.
+Count now: EasyTPP 5/5 (Taxi, Taobao, StackOverflow, Retweet, Amazon: v18 0.8028 ± 0.0007 vs 0.781, 7 Oct) + P19 = six public wins. Investor evidence brief: `investment/sleeping_machines_evidence_brief.pdf` (source `investment/brief/`; rebuild figures with `make_brief_figures.py`, then latexmk).
 
 # R1 gate on the winning B1 model: multi-query associative recall with irregular gaps (curie, 7 Oct 13:10 UTC)
 

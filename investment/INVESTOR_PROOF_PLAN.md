@@ -12,9 +12,11 @@ This is an execution plan, not a prediction of investor acceptance.
 - **Public event benchmark: achieved.** Confirmed EasyTPP wins on Taobao (+0.081 nats/event over the best published
   model, 0.92× the leading model's compute) and Taxi (5-seed mixture beats every published model at 0.41× S2P2's
   compute), 5 seeds, sealed test ([dossier](../experiments/B1_EASYTPP.md)).
-- **Third dataset won:** StackOverflow (+0.019 nats/event at 1.26× compute, 5 seeds). Amazon is ahead on the mean at 0.29× compute but not confirmed (one low-basin seed)
+- **Third dataset won:** StackOverflow (+0.019 nats/event at 1.26× compute, 5 seeds).
 - **Fourth dataset won:** Retweet −6.326 ± 0.001 vs −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's parameters
   and compute.
+- **Fifth dataset won, leaderboard complete:** Amazon 0.803 ± 0.001 vs 0.781 (S2P2), all five seeds ahead, at 0.29×
+  S2P2's compute.
 - **Second domain: achieved on P19.** Sepsis prediction, five official splits: AUROC 0.916 ± 0.022, AUPRC 0.639 ±
   0.039 vs the best published 0.903 / 0.583 (MTM) ([dossier](../experiments/B2_IRREGULAR_TS.md)). P12 is in its TEST
   protocol; PAM (wearable sensors) in development.

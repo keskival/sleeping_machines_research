@@ -1,0 +1,57 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_final_amazon_v18_s3",
+ "dataset": "amazon",
+ "args": {
+  "dataset": "amazon",
+  "tag": "b1_r24_amazon_v18_s3",
+  "seed": 3,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 16,
+  "dv": 4,
+  "dropout": 0.3,
+  "lr": 0.003,
+  "wd": 0.0,
+  "wd_private_mult": 1.0,
+  "batch": 32,
+  "epochs": 200,
+  "patience": 30,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1,
+  "n_window": 4,
+  "state_modes": 0,
+  "floor_cell": 0.0
+ },
+ "K": 16,
+ "scale": 0.7274546722242992,
+ "parameters": 35000,
+ "best_epoch": 77,
+ "scored_from": "experiments/results/tpp/b1_r24_amazon_v18_s3.json",
+ "checkpoint": "experiments/results/tpp/b1_r24_amazon_v18_s3.pt",
+ "dev": {
+  "ll": 0.803624286167936,
+  "time_ll": 2.6795265889707447,
+  "mark_ll": -1.8759023028028088,
+  "events": 40073,
+  "rmse": 0.32802759006368537,
+  "acc": 0.3982981059566292
+ },
+ "dev_reproduced": 0.803624286167936,
+ "test": {
+  "ll": 0.8021931397045059,
+  "time_ll": 2.656487693282909,
+  "mark_ll": -1.8542945535784032,
+  "events": 82197,
+  "rmse": 0.3266727200525123,
+  "acc": 0.4096864849082083
+ },
+ "source_sha256": {
+  "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf",
+  "experiments/tpp/score_test.py": "2bb477bc547fe7b636bc676798220fce1ab64bba769ef7f3a81f560d370f82dc"
+ }
+}

@@ -24,7 +24,7 @@
 \maketitle
 
 \begin{abstract}
-We model the next event of a marked temporal point process as the winner of a race between independent clocks started at the previous event: exponential clocks, delayed clocks that fire only with a learned probability, flat delay windows with learned soft edges, and a state clock whose hazard follows a persistent memory that keeps evolving through the silent interval. Each clock carries its own mark distribution, so the predicted event type depends on elapsed time through which clock is likely to win. Apart from the state clock, every term of the likelihood is closed-form: no Monte Carlo compensator is needed, and every losing clock receives exact credit through its survival factor. On EasyTPP with its official splits and the per-event log-likelihood protocol of the current state of the art, the model exceeds the best published result on Taobao ($1.399 \pm 0.003$ vs.\ $1.318$ nats/event), Taxi ($0.525 \pm 0.001$ vs.\ $0.522$, using $1/12$ of the leading model's parameters and per-event compute; a five-model mixture reaches $0.536$ at $0.41\times$ its compute) StackOverflow ($-2.144 \pm 0.004$ vs.\ $-2.163$) and Retweet ($-6.326 \pm 0.001$ vs.\ $-6.348$, at $1/15$ of S2P2's parameters and per-event compute), five seeds each. We further show that continuous-time models can gain large spurious likelihood on benchmarks whose timestamps are recorded on a grid, by concentrating density on grid points or at exactly-zero gaps, and give a resolution principle and a dequantization audit that rule this out. Every reported result passes the audit and is unchanged under the benchmark's own Monte Carlo estimator.
+We model the next event of a marked temporal point process as the winner of a race between independent clocks started at the previous event: exponential clocks, delayed clocks that fire only with a learned probability, flat delay windows with learned soft edges, and a state clock whose hazard follows a persistent memory that keeps evolving through the silent interval. Each clock carries its own mark distribution, so the predicted event type depends on elapsed time through which clock is likely to win. Apart from the state clock, every term of the likelihood is closed-form: no Monte Carlo compensator is needed, and every losing clock receives exact credit through its survival factor. On EasyTPP with its official splits and the per-event log-likelihood protocol of the current state of the art, the model exceeds the best published result on Taobao ($1.399 \pm 0.003$ vs.\ $1.318$ nats/event), Taxi ($0.525 \pm 0.001$ vs.\ $0.522$, using $1/12$ of the leading model's parameters and per-event compute; a five-model mixture reaches $0.536$ at $0.41\times$ its compute) StackOverflow ($-2.144 \pm 0.004$ vs.\ $-2.163$), Retweet ($-6.326 \pm 0.001$ vs.\ $-6.348$, at $1/15$ of S2P2's parameters and per-event compute) and Amazon ($0.803 \pm 0.001$ vs.\ $0.781$, at $0.29\times$ its compute): all five datasets, five seeds each, every seed ahead. We further show that continuous-time models can gain large spurious likelihood on benchmarks whose timestamps are recorded on a grid, by concentrating density on grid points or at exactly-zero gaps, and give a resolution principle and a dequantization audit that rule this out. Every reported result passes the audit and is unchanged under the benchmark's own Monte Carlo estimator.
 \end{abstract}
 
 \section{Introduction}
@@ -35,7 +35,7 @@ Intensity models need the compensator $\int \lambda$, typically estimated by Mon
 \paragraph{Contributions.}
 (i) A race-of-clocks MTPP with four clock families, each introduced to fix a measured failure (\S\ref{sec:model}).
 (ii) The \emph{recording-resolution pitfall}: flexible continuous-time models can exploit timestamp grids for large spurious likelihood; we give a resolution principle and an audit (\S\ref{sec:pitfall}).
-(iii) Results on EasyTPP that exceed the best published model on four of five datasets, three at a fraction of its compute, verified under the benchmark's own estimator (\S\ref{sec:results}).
+(iii) Results on EasyTPP that exceed the best published model on all five datasets, four at a fraction of its compute, verified under the benchmark's own estimator (\S\ref{sec:results}).
 
 \section{The race of delayed clocks}\label{sec:model}
 \subsection{Output law}
@@ -107,7 +107,7 @@ Dataset & Best published & Ours (5 seeds) & Compute vs.\ S2P2 \\
 Taobao & $1.318\pm0.017$ (IFTPP); S2P2 $1.304$ & $\mathbf{1.3991\pm0.0025}$ & $0.92\times$ \\
 Taxi & $0.522\pm0.004$ (S2P2) & $\mathbf{0.5250\pm0.0010}$; mixture $\mathbf{0.5363}$ & $1/12$; mixture $0.41\times$ \\
 StackOverflow & $-2.163\pm0.009$ (S2P2) & $\mathbf{-2.1444\pm0.0037}$; matched size $\mathbf{-2.1525\pm0.0045}$ & $1.26\times$; $1.015\times$ \\
-Amazon & $0.781\pm0.011$ (S2P2) & $0.7839\pm0.0265$ (4 of 5 seeds $\ge0.794$; one seed in a low basin) & $0.29\times$ \\
+Amazon & $0.781\pm0.011$ (S2P2) & $\mathbf{0.8028\pm0.0007}$ (all 5 seeds ahead) & $0.29\times$ \\
 Retweet & $-6.348$ (NHP); S2P2 $-6.365$ & $\mathbf{-6.3262\pm0.0009}$ (all 5 seeds ahead) & $1/15$ \\
 \bottomrule
 \end{tabular}
@@ -117,9 +117,9 @@ Retweet & $-6.348$ (NHP); S2P2 $-6.365$ & $\mathbf{-6.3262\pm0.0009}$ (all 5 see
 
 On Taobao the model also has the best published time (2.753 vs.\ 2.719) and mark ($-1.353$ vs.\ $-1.391$) log-likelihoods; on Taxi the mixture beats every published model on total, time ($0.740$ vs.\ $0.735$) and mark ($-0.204$ vs.\ $-0.211$); on StackOverflow the mark log-likelihood is the best published ($-1.501$ vs.\ $-1.510$) and the time log-likelihood ties the best. Figure~\ref{fig:results} shows the seed distributions and Figure~\ref{fig:compute} the compute positions.
 
-\paragraph{Estimator parity.} Rescoring all twenty final models with the benchmark's own estimator---log intensity at the events minus a 10-point uniform Monte Carlo compensator per interval---gives Taxi $0.5244$, Taobao $1.3992$, StackOverflow $-2.1427$ and Retweet $-6.3267$, within Monte Carlo spread of our exact values.
+\paragraph{Estimator parity.} Rescoring all twenty-five final models with the benchmark's own estimator---log intensity at the events minus a 10-point uniform Monte Carlo compensator per interval---gives Taxi $0.5244$, Taobao $1.3992$, StackOverflow $-2.1427$, Retweet $-6.3267$ and Amazon $0.8048$, within Monte Carlo spread of our exact values.
 
-\paragraph{Audit.} All reported models pass the dequantization audit (Taxi $0.000$, Taobao $0.0002$, StackOverflow $-0.0002$, Retweet $0.0038$ nats/event; Retweet's whole-second grid leaves a small residual against a $0.0006$ baseline).
+\paragraph{Audit.} All reported models pass the dequantization audit (Taxi $0.000$, Taobao $0.0002$, StackOverflow $-0.0002$, Retweet $0.0038$ nats/event; Retweet's whole-second grid leaves a small residual against a $0.0006$ baseline). Amazon's times carry no recording grid (281K distinct gaps, no zero gaps).
 
 \begin{figure}[t]
 \centering
@@ -145,7 +145,7 @@ On Taobao the model also has the best published time (2.753 vs.\ 2.719) and mark
 From the development log (DEV, single seeds unless stated): always-firing to defective delayed clocks, Amazon $-0.229\to0.705$; log-normal tiling to logistic windows, $0.724\to0.768$; quantile to clustered window initialization, best seeds $0.797$ with remaining seed variance; state clock on StackOverflow, $-2.173\to-2.143$. Wider encoders overfit these small datasets (Amazon $0.661$ at width 64 vs.\ $0.720$ at 32), and long training with decoupled or asymmetric weight decay did not recover past early selection.
 
 \section{Discussion and limitations}
-The race-of-clocks head gives exact likelihoods with time-dependent marks at small size; on Taxi a model with 20.5K parameters exceeds a 252K-parameter state-space model. Amazon's optimization has distinct basins; we use restart selection on DEV and report its threefold training cost. On Retweet the grid-safe model wins only after every clock's hazard is held at its one-cell value below the recording resolution; the remaining audit residual is $0.004$ nats/event, under a fifth of the margin. The encoder recurrence is sequential; its linear part admits a parallel scan. The audit applies to any continuous-time model evaluated on gridded timestamps.
+The race-of-clocks head gives exact likelihoods with time-dependent marks at small size; on Taxi a model with 20.5K parameters exceeds a 252K-parameter state-space model. Amazon's optimization had distinct basins: free delay windows could drift beyond every observed gap; anchoring each window to its gap component removed the low basin (five seeds within $0.0015$ nats/event, no restarts). On Retweet the grid-safe model wins only after every clock's hazard is held at its one-cell value below the recording resolution; the remaining audit residual is $0.004$ nats/event, under a fifth of the margin. The encoder recurrence is sequential; its linear part admits a parallel scan. The audit applies to any continuous-time model evaluated on gridded timestamps.
 
 \paragraph{Reproducibility.} Drivers, numerical contracts, the audit, the estimator-parity check, compute accounting and all result files are in the accompanying repository (\texttt{experiments/tpp/}, \texttt{experiments/results/tpp/}).
 

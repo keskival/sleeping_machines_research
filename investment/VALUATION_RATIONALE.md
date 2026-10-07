@@ -89,8 +89,8 @@ Evidence update, 6 October:
 
   Retweet (7 October): −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's
   parameters and per-event compute.
-  All are 5 seeds on official splits with a sealed test: four of five datasets won, past the battle's pass criterion.
-  Amazon is ahead on the mean (0.784 vs 0.781), not yet confirmed.
+  All are 5 seeds on official splits with a sealed test: all five datasets won, against a pass criterion of two.
+  Amazon (7 October): 0.803 ± 0.001 vs S2P2 0.781, all five seeds ahead, at 0.29× S2P2's per-event compute.
 - **FAS v2:** the sealed setting is selected on validation (2 interleaved lines, 2% dropped events). The identity
   oracle reaches AUROC 0.821 against 0.685 for the best anonymous classical detector, so a binding model has room
   to win. Development is in progress with a race readout derived from the interleaving theory.
@@ -214,8 +214,8 @@ Investor competition, not the evidence alone, sets the attainable price.
 - *Second domain:* **met** — P19 sepsis prediction, five official splits, AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039 vs
   the best published 0.903 / 0.583 (MTM), with the same temporal memory core as the event model.
 - *Matched-compute wins on further EasyTPP datasets:* **met** — StackOverflow at matched size (0.968× S2P2's parameters,
-  1.015× its per-event compute): −2.1525 ± 0.0045 vs −2.163, all five seeds above S2P2. Also: the Amazon protocol (0.29× S2P2's per-event
-  compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed).
+  1.015× its per-event compute): −2.1525 ± 0.0045 vs −2.163, all five seeds above S2P2. Also: Amazon at 0.29× S2P2's per-event compute,
+  0.803 ± 0.001 vs 0.781, all five seeds ahead.
 - *Independent reproduction:* **met on independent hardware** — the Taxi win was rerun from scratch on the curie host
   (Intel i5-4690 desktop CPU, separately downloaded HuggingFace `easytpp/taxi` release, frozen driver sha256 73d2f95e…,
   five seeds): TEST 0.5252 ± 0.0007 nats/event vs the AWS run's 0.5250 ± 0.0010 and S2P2's 0.522 ± 0.004. Seeds 0, 1 and 3
