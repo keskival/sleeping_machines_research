@@ -38,3 +38,9 @@ from a completed run; pending cells stay pending.
 G3 is already queued (B2 PAM). G1 is next: it reuses the B2 data and the B1 clock head, and it is the strongest single
 demonstration of generality an investor can understand (*the same model that predicts the next clinical measurement
 learns to predict mortality from fewer labels*). G2 follows when B1's protocols free slots.
+
+## Results log
+
+| Date | Experiment | Setting | Result | Reading |
+|---|---|---|---|---|
+| 7 Oct | G1 | P12 split 0, 10% labels (959 records), validation | pretrained (10 epochs next-measurement modelling on unlabeled TRAIN) **AUROC 0.838, AUPRC 0.507**; scratch 0.825 / 0.446 | +0.013 AUROC, +0.061 AUPRC from generative event pretraining; one split, one seed — 30%/100% and more seeds/splits next |
