@@ -1,0 +1,2 @@
+# B2: B2 PAM round 3: augmentation against memorization (v5/v6 peak by epoch 11-42 with training loss -> 0; val acc 0.946/0.940 vs MTM 0.975): random 80% crops and 10% amplitude jitter in training, full records at evaluation
+b2_r8_pam_split0_v7_crop0.8_jit0.1 experiments/irts/race_irts_v7.py --tag b2_r8_pam_split0_v7_crop0.8_jit0.1 --dataset PAM --split 0 --crop 0.8 --jitter 0.1 --epochs 80 --patience 15 --batch 64
