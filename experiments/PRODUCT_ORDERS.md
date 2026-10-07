@@ -18,7 +18,7 @@ Benchmark work follows AGENTS.md "Benchmark work is development to win": owned, 
 | **B2** | Irregular multivariate time series classification: P12, P19, PAM (Raindrop protocol and splits) | Published Raindrop, ViTST, Warpformer and later tables | AWS after B1 first fits | Beat best published AUROC (P12/P19) or accuracy (PAM) on its official splits | Same rule as B1 |
 | **B3** | FAS v2 sealed confirmation (FAS_V2_CONFIRMATORY_PROTOCOL.md), then public release of FAS with a leaderboard | Information-matched classical references plus small LSTM and time-encoded Transformer references (AGENTS.md exception, 6 Oct 17:46) | Existing FAS owner | As pre-registered; no expansion | As pre-registered |
 | **G** | Generality track (7 Oct, user-directed): self-supervised event pretraining → clinical classification (G1), one model across five event datasets (G2), PAM (G3), event→event transfer (G4) | — | AWS | Per [GENERALITY_PLAN.md](GENERALITY_PLAN.md) | — |
-| **R1** | Language research track, at most one slot | Count n-gram references; later a published small Transformer | One owner | Gates before any scaling or claim: solve associative recall/induction with irregular gaps; beat KN trigram on the 65,528-target DEV slice | — |
+| **R1** | Language research track, at most one slot ([dossier](R1_RECALL.md)) | Count n-gram references; later a published small Transformer | One owner | Gates before any scaling or claim: solve associative recall/induction with irregular gaps; beat KN trigram on the 65,528-target DEV slice | — |
 
 Every battle reports measured inference work (operations, CPU latency; energy where measurable) next to quality.
 
