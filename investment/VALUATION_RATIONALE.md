@@ -220,7 +220,7 @@ Investor competition, not the evidence alone, sets the attainable price.
   five seeds): TEST 0.5252 ± 0.0007 nats/event vs the AWS run's 0.5250 ± 0.0010 and S2P2's 0.522 ± 0.004. Seeds 0, 1 and 3
   reproduce AWS to ≤ 3·10⁻⁹; seeds 2 and 4 differ by +0.0001 and +0.0010 (different BLAS/CPU arithmetic changes the
   early-stopping path). All five curie seeds are above S2P2's mean. Same codebase and team; a third-party rerun of the
-  released code is the stronger form and the next step. The estimator-parity check (all wins hold under EasyTPP's own
+  released code is the stronger form and the next step; the one-command kit is `experiments/tpp/reproduce_taxi/`. The estimator-parity check (all wins hold under EasyTPP's own
   Monte Carlo estimator) is separate supporting evidence.
 Supporting, not on the list: exact containment of Mamba (selective SSM) and attention in the family; two private paper
 drafts. **All three conditions now hold (7 October), which makes €100M arguable on this rationale's own criteria;** the reproduction is on independent hardware by the same team, and a third-party rerun is the next step. The asking price is the founder's decision.
