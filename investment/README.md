@@ -14,6 +14,7 @@ the files does not authorize those actions. Earlier public disclosures remain
 part of IP diligence.
 
 - [Current valuation rationale: ambition, potential and execution](VALUATION_RATIONALE.md)
+- [Proposal to the founding partners: €15M pre-money, co-founder vesting, team reserve](PARTNER_TERM_PROPOSAL.md)
 - [Investor proof plan: priorities, gates and existing execution paths](INVESTOR_PROOF_PLAN.md)
 - [IP protection: ownership, patent review and selective filing deliverables](IP_PROTECTION_PLAN.md)
 - [Updated investment case](INVESTMENT_CASE.md) and [one-page pitch](PITCH.md)
