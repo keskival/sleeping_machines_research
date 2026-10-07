@@ -1,0 +1,2 @@
+# G1: G1 replication on P12 splits 1-2 at 10%/30% labels (split 0: AUPRC +0.061 at 10%, +0.035 at 30%; AUROC +0.013/+0.004). Decides whether the transfer effect is robust beyond one split
+g1_p12_s1_scratch_lf0.1 experiments/irts/race_irts_g1.py --tag g1_p12_s1_scratch_lf0.1 --dataset P12 --split 1 --label-frac 0.1 --pretrain-epochs 0 --finetune-epochs 50

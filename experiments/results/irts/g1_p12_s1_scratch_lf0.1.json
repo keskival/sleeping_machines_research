@@ -1,0 +1,126 @@
+{
+ "status": "completed",
+ "track": "G1",
+ "tag": "g1_p12_s1_scratch_lf0.1",
+ "args": {
+  "dataset": "P12",
+  "split": 1,
+  "tag": "g1_p12_s1_scratch_lf0.1",
+  "seed": 0,
+  "label_frac": 0.1,
+  "pretrain_epochs": 0,
+  "finetune_epochs": 50,
+  "patience": 12,
+  "lr": 0.002,
+  "batch": 128,
+  "d": 32,
+  "dropout": 0.2
+ },
+ "labelled": 959,
+ "val": {
+  "auroc": 0.8527339870903674,
+  "auprc": 0.5237846052750558
+ },
+ "best_epoch": 5,
+ "pretrain_history": [],
+ "history": [
+  {
+   "epoch": 0,
+   "val_auroc": 0.8122465657067196,
+   "val_auprc": 0.42989386503946286
+  },
+  {
+   "epoch": 1,
+   "val_auroc": 0.8311972442899702,
+   "val_auprc": 0.4616654941628508
+  },
+  {
+   "epoch": 2,
+   "val_auroc": 0.8355521764316451,
+   "val_auprc": 0.47670056108087083
+  },
+  {
+   "epoch": 3,
+   "val_auroc": 0.8391830105925189,
+   "val_auprc": 0.5028212904767069
+  },
+  {
+   "epoch": 4,
+   "val_auroc": 0.8507737504137702,
+   "val_auprc": 0.5196369752353936
+  },
+  {
+   "epoch": 5,
+   "val_auroc": 0.8527339870903674,
+   "val_auprc": 0.5237846052750558
+  },
+  {
+   "epoch": 6,
+   "val_auroc": 0.8361159384309832,
+   "val_auprc": 0.5161610400427636
+  },
+  {
+   "epoch": 7,
+   "val_auroc": 0.8429690086064217,
+   "val_auprc": 0.5239570003687263
+  },
+  {
+   "epoch": 8,
+   "val_auroc": 0.8372744952002649,
+   "val_auprc": 0.5181816123232039
+  },
+  {
+   "epoch": 9,
+   "val_auroc": 0.8253837719298245,
+   "val_auprc": 0.5034829401652272
+  },
+  {
+   "epoch": 10,
+   "val_auroc": 0.8384744289970208,
+   "val_auprc": 0.5162023844037269
+  },
+  {
+   "epoch": 11,
+   "val_auroc": 0.8362142088712348,
+   "val_auprc": 0.518181055041572
+  },
+  {
+   "epoch": 12,
+   "val_auroc": 0.8289473684210527,
+   "val_auprc": 0.49844094623996704
+  },
+  {
+   "epoch": 13,
+   "val_auroc": 0.8174859318106587,
+   "val_auprc": 0.4930989113722761
+  },
+  {
+   "epoch": 14,
+   "val_auroc": 0.8155256951340615,
+   "val_auprc": 0.4869698822617898
+  },
+  {
+   "epoch": 15,
+   "val_auroc": 0.7935648378020523,
+   "val_auprc": 0.45430977533684924
+  },
+  {
+   "epoch": 16,
+   "val_auroc": 0.8024143495531281,
+   "val_auprc": 0.4851344879509852
+  },
+  {
+   "epoch": 17,
+   "val_auroc": 0.7867479725256538,
+   "val_auprc": 0.4744756600501967
+  }
+ ],
+ "wall_s": 163.88794445991516,
+ "parameters": 68961,
+ "checkpoint": "experiments/results/irts/g1_p12_s1_scratch_lf0.1.pt",
+ "source_sha256": {
+  "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+  "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
