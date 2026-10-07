@@ -1,0 +1,62 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P12 seed ensemble (development, validation only): P12 TEST AUROC 0.871 vs MTM 0.880; the earlier ensemble probe had no seed diversity (+0.003). Seeds 1-4 of the protocol configuration on split 0, averaged with seed 0, decide whether a 5-seed ensemble (about 313K parameters, fewer than MTM's 873K) closes the gap and earns a pre-registered 5-split ensemble protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r9_p12_split0_v3_seed1",
+        "queue": "experiments/queue/b2/b2_r9_p12_split0_v3_seed1/b2_r9_p12_split0_v3_seed1.txt",
+        "queue_sha256": "c96355810da5f97979712efcf36b31d96249dcbb6fa2a574d59aed328fed6571",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33"
+        },
+        "result": "experiments/results/irts/b2_r9_p12_split0_v3_seed1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r9_p12_split0_v3_seed2",
+        "queue": "experiments/queue/b2/b2_r9_p12_split0_v3_seed2/b2_r9_p12_split0_v3_seed2.txt",
+        "queue_sha256": "d1f4b9857c5bd9c3048ee7b2c440abee580542f1eada64f8062a1135f4a2ddab",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33"
+        },
+        "result": "experiments/results/irts/b2_r9_p12_split0_v3_seed2.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r9_p12_split0_v3_seed3",
+        "queue": "experiments/queue/b2/b2_r9_p12_split0_v3_seed3/b2_r9_p12_split0_v3_seed3.txt",
+        "queue_sha256": "7e93fc5e3780a2076c676d0f9a3cc7d016d7b4e6281f3437a127309508f54f69",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33"
+        },
+        "result": "experiments/results/irts/b2_r9_p12_split0_v3_seed3.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r9_p12_split0_v3_seed4",
+        "queue": "experiments/queue/b2/b2_r9_p12_split0_v3_seed4/b2_r9_p12_split0_v3_seed4.txt",
+        "queue_sha256": "118d9a3984ce64d60022d1eb4dbe70ed0ec594aafffa05ca7c77ca5ea11f44f6",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33"
+        },
+        "result": "experiments/results/irts/b2_r9_p12_split0_v3_seed4.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

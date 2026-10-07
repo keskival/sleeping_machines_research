@@ -1,0 +1,2 @@
+# B2: B2 P12 seed ensemble (development, validation only): P12 TEST AUROC 0.871 vs MTM 0.880; the earlier ensemble probe had no seed diversity (+0.003). Seeds 1-4 of the protocol configuration on split 0, averaged with seed 0, decide whether a 5-seed ensemble (about 313K parameters, fewer than MTM's 873K) closes the gap and earns a pre-registered 5-split ensemble protocol
+b2_r9_p12_split0_v3_seed1 experiments/irts/race_irts_v3.py --tag b2_r9_p12_split0_v3_seed1 --dataset P12 --split 0 --epochs 60 --patience 12 --seed 1
