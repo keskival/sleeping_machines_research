@@ -1,0 +1,2 @@
+# B1: B1 near-matched StackOverflow protocol (WIN_CRITERIA sizing rule): v12 2 layers, 29,191 parameters (S2P2 30,166), ~1.015x its per-event MACs; DEV -2.157. 5 seeds
+b1_final_stackoverflow_v12l2_s4 experiments/tpp/race_tpp_v12.py --tag b1_final_stackoverflow_v12l2_s4 --dataset stackoverflow --seed 4 --n-lognormal 8 --layers 2 --dropout 0.3 --patience 30 --floor-cell 0.0001220703125 --state-modes 16 --score-test
