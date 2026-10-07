@@ -50,12 +50,14 @@ This is a three-factor rule whose factors are all available at the slot and the 
 |---|---|---|---|---|---|
 | Keyed read, backprop | 0 | **99.6%** | −0.012 | **−2.922** | 51.2% |
 | Keyed read, backprop | 1 | **99.4%** | −0.020 | −2.924 | 37.6% |
+| Keyed read, backprop | 2 | **99.2%** | −0.027 | −2.913 | 45.1% |
+| **Keyed read, backprop, 3 seeds** | mean ± sd | **99.4 ± 0.2%** | | **−2.919** | 44.6 ± 6.8% |
 | Keyed read, local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
 | Frozen B1 v5 | 0 | 21.6% | −2.231 | −3.512 | 12.3% |
 | Set baseline | — | 14.1% | | | 7.9% |
 
-Parameters: 36,325 for the keyed model, 34,740 for v5. Pending:
-- backprop seed 2;
+**Gate 1 status: met at the training length over three seeds** (99.4 ± 0.2% vs the set baseline 14.1% and frozen v5
+21.6%); length generalization (16 pairs) is not yet met. Parameters: 36,325 for the keyed model, 34,740 for v5. Pending:
 - ablations: predecessor message only, normalization only;
 - mixed-length training (4–16 pairs, 32-pair held-out test);
 - local race credit, seeds 1–2.
@@ -74,6 +76,7 @@ Parameters: 36,325 for the keyed model, 34,740 for v5. Pending:
 | 7 Oct 14:18 | 2 (v4 task) | Queries with replacement and set baseline; predecessor message and normalized match | 99.6% vs v5 21.6% (seed 0) | Binding learned |
 | 7 Oct 15:40 | 2 | Same, local race credit only | 91.9%; 79.4% at 16 pairs | Learning through the race alone works; it extrapolates better than backprop |
 | 7 Oct 16:01 | 2 | Backprop seed 1 | 99.4%; 37.6% at 16 pairs | Reproduced; extrapolation varies by seed |
+| 7 Oct 16:22 | 2 | Backprop seed 2 | 99.2%; 45.1% at 16 pairs | Gate 1 met at training length (3 seeds) |
 
 ## Next
 
