@@ -1,0 +1,2 @@
+# R1 (message-only design after ablation: prev-msg necessary, qk-norm costs length generalization); mixed-length training 4-16 pairs, message-only; decision: does length generalization reach 32 pairs
+curie_r1_v5len_p_keyed1_s0_20261007T1715Z experiments/tpp/recall_tpp_v5.py --tag curie_r1_v5len_p_keyed1_s0_20261007T1715Z --keyed 1 --prev-msg 1 --pairs-min 4 --pairs-max 16 --seed 0
