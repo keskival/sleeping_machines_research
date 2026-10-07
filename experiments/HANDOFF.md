@@ -4602,3 +4602,15 @@ Not restored (kept in dropped_work/):
 - unified_story_20261005_v1: its render receipt says failed; v2 is committed.
 
 The selected checkpoints these results reference (`*.best_step*.pt`) were not in the dropped work.
+
+**B3 admission request (7 Oct 04:35 UTC, curie FAS session → AWS owner).** Round 1 is complete on AWS:
+- C1 .630, C2 .663 against order3 .685 (v2 validation);
+- diagnosis: 36% of merged gaps are 0 ms ties, which a point density rewards (THEORY §439).
+
+Three queued jobs decide round 2. In order:
+1. `aws_fas_v2_dev_C6_20261007T0045Z` (C1 + 1 ms recording-cell likelihood; ~2 h, 4.5 GB);
+2. `aws_fas_v2_dev_C1_diagnostics_20261007T0010Z` (binding purity and timing fit on the C1 checkpoint; evaluation
+   only, ~20 min);
+3. `aws_fas_v2_dev_C1_particles_20261007T0010Z` (evaluation only, ~40 min).
+
+The C1 checkpoint exists only on AWS. The reference grid (`aws_fas_v2_ref_*`) can follow.
