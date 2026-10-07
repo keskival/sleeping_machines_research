@@ -87,3 +87,12 @@ every split's value, whatever they are, against MTM 97.5 ± 0.2 accuracy / 97.6 
 requires the mean accuracy ahead; ties are stated as ties. Split 0's development run (r10) is not reused. (Audit note: this text was written before split 0 started at 19:42:20 and committed at 19:43, before
 its first epoch completed.)
 | 7 Oct | PAM r10 final (v7 + EMA 0.999) | 120 epochs | **val acc 0.981, F1 0.983** (best epoch 117 of 120; 46,316 parameters) | development level above MTM's TEST 0.975 / 0.976; still improving at the epoch cap. The pre-registered five-split protocol (same configuration) is running: splits 0 and 2 started |
+
+**Reverse-ablation diagnostic (curie, 7 Oct 22:31 UTC; user request).** Gradient-boosted trees on the per-channel
+statistics our slots hold (count, mean, min, max, first, last, last − first, last time) plus statics, five official P19
+splits, rounds chosen on the official validation split, TEST once per split (`experiments/irts/summary_tree_diagnostic.py`,
+`results/irts/curie_b2_p19_summary_tree_20261007T2320Z.json`): **AUROC 0.914 ± 0.020, AUPRC 0.618 ± 0.041**, against ours
+0.916 ± 0.022 / 0.639 ± 0.039 and MTM 0.903 / 0.583. The P19 margin over MTM comes mostly from the statistic-valued
+representation; our model is level with the trees on AUROC and +0.021 on AUPRC, within split spread. Next decisive
+test for B2: a margin over the statistics reader (temporal interactions the summaries cannot express), measured
+paired per split.

@@ -1,0 +1,73 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "kind": "classical summary-statistic diagnostic (no neural training)",
+ "dataset": "P19",
+ "tag": "curie_b2_p19_summary_tree_20261007T2320Z",
+ "args": {
+  "dataset": "P19",
+  "tag": "curie_b2_p19_summary_tree_20261007T2320Z",
+  "max_iter": 1000,
+  "lr": 0.05
+ },
+ "n_features": 278,
+ "splits": [
+  {
+   "split": 0,
+   "rounds": 200,
+   "val_auroc": 0.9188693344039972,
+   "test_auroc": 0.9322414900449583,
+   "test_auprc": 0.6659644598782711
+  },
+  {
+   "split": 1,
+   "rounds": 400,
+   "val_auroc": 0.8990153712924875,
+   "test_auroc": 0.9157339107062865,
+   "test_auprc": 0.6369095450551313
+  },
+  {
+   "split": 2,
+   "rounds": 100,
+   "val_auroc": 0.9005913978494624,
+   "test_auroc": 0.8864710577348772,
+   "test_auprc": 0.559551822917634
+  },
+  {
+   "split": 3,
+   "rounds": 200,
+   "val_auroc": 0.9028109944196042,
+   "test_auroc": 0.9319017065305026,
+   "test_auprc": 0.6294247002922692
+  },
+  {
+   "split": 4,
+   "rounds": 200,
+   "val_auroc": 0.9071335656783821,
+   "test_auroc": 0.9012172527834051,
+   "test_auprc": 0.5980619860772104
+  }
+ ],
+ "test_auroc_mean": 0.9135130835600058,
+ "test_auroc_sd": 0.01985123014226116,
+ "test_auprc_mean": 0.6179825028441032,
+ "test_auprc_sd": 0.04062756562685964,
+ "references": {
+  "ours": [
+   0.916,
+   0.022,
+   0.639,
+   0.039
+  ],
+  "MTM": [
+   0.903,
+   0.02,
+   0.583,
+   0.053
+  ]
+ },
+ "wall_s": 815.76180768013,
+ "source_sha256": {
+  "experiments/irts/summary_tree_diagnostic.py": "b65f85ec324421f5c3783decffca40c0ae6485902a94ac3ac3b42a17ec4d98b5"
+ }
+}

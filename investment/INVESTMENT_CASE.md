@@ -110,7 +110,8 @@ prediction, 38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive), f
 split: **AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039** against the best published 0.903 / 0.583 (MTM, 2025), with
 62,681 parameters ([dossier](../experiments/B2_IRREGULAR_TS.md)). The classifier reuses the EasyTPP model's temporal
 memory layer — same code, same size — adding addressed channel memories with sufficient statistics, typed comparisons
-and time-since-measurement as information.
+and time-since-measurement as information. Most of the margin over MTM comes from that statistic-valued channel memory:
+gradient-boosted trees on the same per-channel statistics score 0.914 ± 0.020 / 0.618 ± 0.041 on the same splits, so the model is level with a classical reader of the same statistics.
 
 **Generality, stated precisely.** The EasyTPP leader S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is shown on one task
 type. One Sleeping Machines family now wins public benchmarks on generative event modelling and on sparse clinical

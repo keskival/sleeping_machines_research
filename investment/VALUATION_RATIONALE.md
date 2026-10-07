@@ -85,7 +85,8 @@ Evidence update, 6 October:
   - StackOverflow: −2.144 ± 0.004 vs −2.163 (+0.019) at 1.26× S2P2's compute (accuracy win).
 - **Public clinical win (P19 sepsis, 7 October):** AUPRC 0.639 vs 0.583 and AUROC 0.916 vs 0.903 against the best
   published model on the five official splits, with the same temporal memory core as the event model — evidence that the
-  family generalizes across data types, not only across event datasets.
+  family generalizes across data types, not only across event datasets. Most of the margin is the statistic-valued channel
+  memory: gradient-boosted trees on the same per-channel statistics score 0.914 ± 0.020 / 0.618 ± 0.041 on the same splits.
 
   Retweet (7 October): −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's
   parameters and per-event compute.

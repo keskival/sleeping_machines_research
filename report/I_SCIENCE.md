@@ -124,7 +124,7 @@ PhysioNet 2019 sepsis prediction on the five official Raindrop splits (38,803 IC
 | Best published (MTM, 2025) | 0.903 ± 0.020 | 0.583 ± 0.053 |
 | **Ours (62,681 parameters; MTM reports 873K for its PAM configuration)** | **0.916 ± 0.022** | **0.639 ± 0.039** |
 
-**Win on P19 over the best published model**, with AUPRC — the clinically relevant metric at 4% prevalence — ahead by more than either model's split spread. On P12 (in-hospital mortality, five official splits) the same configuration reaches TEST AUROC 0.871 ± 0.011 and AUPRC 0.585: behind MTM on AUROC (0.880), level on AUPRC (0.586), ahead of every other published model. PAM is in development.
+**Win on P19 over the best published model**, with AUPRC — the clinically relevant metric at 4% prevalence — ahead by more than either model's split spread. **Where the margin comes from:** gradient-boosted trees on the same per-channel statistics score 0.914 ± 0.020 / 0.618 ± 0.041 on the same splits (reverse-ablation diagnostic, 7 Oct), so most of the gain over MTM is the statistic-valued channel memory; our full model is level with those trees on AUROC (+0.002) and ahead on AUPRC (+0.021), within split spread. On P12 (in-hospital mortality, five official splits) the same configuration reaches TEST AUROC 0.871 ± 0.011 and AUPRC 0.585: behind MTM on AUROC (0.880), level on AUPRC (0.586), ahead of every other published model. PAM is in development.
 
 ### 4.0c One family across data types
 
