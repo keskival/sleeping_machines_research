@@ -250,3 +250,20 @@ under the old rule (C1 .630, C2 .663 total) are known.
 - Classical references keep the maximum over their nine detectors on test.
 - Neural references keep their NLL rules. The GLR needs per-step duration laws that they do not have.
 - The decision rule, thresholds and the sealed test.
+
+## Protocol amendment: primary rule reopened after glr_max failed on validation, 7 October 2026, 23:00 UTC (curie owner)
+
+**Disclosure.** Written after the validation results of the 7 October amendment's rule: glr_max at N* scored .578 (C6)
+and .466 (C1), below each model's own total rule (.664, .621) and type rule (.682, .675). No test scoring has occurred;
+the sealed ledger is untouched. The earlier amendment and its toy evidence stay in the record.
+
+**Diagnosis.** glr_max scores each event type's own-duration slowdown. "Own durations" require attributing each event to
+its item; the native models' binding purity is .30 (C1 diagnostics), so the per-type statistics mix items and the
+test loses its power. The rule is locally most powerful only under correct attribution (THEORY §440); FAS v2 is the
+case where attribution is the hard part.
+
+**Rule from here.** The native primary rule is chosen on validation from the declared rules {total, type, glr_max}, by
+AUROC at N* for the selected native configuration. Each (configuration, rule) pair counts against the native tuning
+budget, so choosing a rule is charged as selection, not given free. The reference side is unchanged: its strongest
+baseline is the maximum test AUROC over the information-matched classical detectors and the two neural families' seed
+means.
