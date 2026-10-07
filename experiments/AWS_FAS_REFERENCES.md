@@ -138,3 +138,9 @@ protocols: `aws_fas_v2_dev_C6_20261007T0045Z` (4 h cap, 5.5 GB) → `aws_fas_v2_
 next. Note for C6: B1 found the same tie pathology on Retweet (zero gaps scored by a hazard spike at τ = 0); its remedy —
 hold every hazard at its one-cell value below the recording cell, and train with the target gap dequantized within its cell
 — is in experiments/theory/RACE_OF_DELAYED_CLOCKS_20261006.md §3 and race_tpp_v16.py.
+
+**Added 7 Oct ~10:10 UTC (B3, evaluation only, on AWS checkpoints):**
+- `aws_fas_v2_dev_C1_glr_20261007T1010Z` (any time; ~45 min);
+- `aws_fas_v2_dev_C6_glr_20261007T1010Z` (after C6 completes).
+
+They score the declared native primary rule glr_max (protocol amendment of 7 October; THEORY §440.3) on v2 validation.

@@ -298,3 +298,10 @@ oracle's .821.
     the same spike.
   - Both remove the unbounded tie reward, so C6 is unchanged. If C6 helps, B3 and B1 share one principle in two exact
     forms.
+- 7 Oct 09:17 UTC: **scoring theory to practice.**
+  - The per-step slowdown GLR (THEORY §440.3) beats mean NLL on toy step slowdowns by +.08 to +.10 AUROC on subtle
+    faults and stays near it on gross ones.
+  - It is declared a priori as the native primary rule (protocol amendment, before any FAS evaluation).
+  - `glr_eval.py` evaluates checkpoints; AWS queues are ready for C1 (now) and C6 (after it completes).
+  - Expected on FAS: glr_max exceeds the total rule, with the largest gain on retry delay, where the oracle's lead is
+    largest.
