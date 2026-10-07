@@ -115,8 +115,10 @@ and time-since-measurement as information.
 **Generality, stated precisely.** The EasyTPP leader S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is shown on one task
 type. One Sleeping Machines family now wins public benchmarks on generative event modelling and on sparse clinical
 classification, with further evidence on process logs, character language and few-shot temporal reasoning; large-scale
-language and real tables remain behind. The next tests turn breadth into transfer: self-supervised event pretraining on
-unlabeled clinical records for mortality prediction with fewer labels, and one model across five event datasets
+language and real tables remain behind. One shared temporal core (14,080 parameters) trained jointly on Taxi, Taobao,
+StackOverflow and Amazon matches or beats the separate per-dataset models on three of four (development data): mobility,
+shopping and Q&A timing share one learned dynamics. Next: self-supervised event pretraining on unlabeled clinical records
+for mortality prediction with fewer labels, with a fuller pretraining budget
 ([generality plan](../experiments/GENERALITY_PLAN.md)).
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.
