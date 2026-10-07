@@ -23,7 +23,27 @@ SPEC = {
 }
 
 
+def main_pam():
+    z = ROOT / 'data/raindrop/PAM/PAMdata.zip'
+    arr = load_npy(z, 'PAMAP2data/processed_data/PTdict_list.npy').astype(np.float32)        # [N, 600, 17]
+    y = load_npy(z, 'PAMAP2data/processed_data/arr_outcomes.npy')[:, 0].astype(np.int64)
+    N, T, C = arr.shape
+    times = np.tile(np.arange(T, dtype=np.float32), (N, 1))                                # time = step index
+    lens = np.full(N, T, np.int64); static = np.zeros((N, 1), np.float32)
+    splits = []
+    for k in range(1, 6):
+        tr, va, te = load_npy(z, f'PAMAP2data/splits/PAMAP2_split_{k}.npy')
+        splits.append((np.asarray(tr, np.int64), np.asarray(va, np.int64), np.asarray(te, np.int64)))
+    out = ROOT / 'data/raindrop/cache'; out.mkdir(exist_ok=True)
+    np.savez_compressed(out / 'PAM.npz', times=times, vals=arr, mask=arr != 0, lens=lens, static=static, y=y,
+                        **{f'split{k}_{part}': idx for k, sp in enumerate(splits) for part, idx in zip(('train', 'val', 'test'), sp)})
+    print('PAM records', N, 'T', T, 'channels', C, 'classes', np.bincount(y), 'obs frac', round(float((arr != 0).mean()), 3),
+          'split sizes', [tuple(len(x) for x in sp) for sp in splits])
+
+
 def main(name):
+    if name == 'PAM':
+        return main_pam()
     s = SPEC[name]
     recs = load_npy(ROOT / s['zip'], s['records'])
     y = load_npy(ROOT / s['zip'], s['outcomes'])[:, s['label_col']].astype(np.int64)
