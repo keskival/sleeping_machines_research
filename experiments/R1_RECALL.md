@@ -87,6 +87,10 @@ This is a three-factor rule whose factors are all available at the slot and the 
 1. Finish confirmation (seeds and ablations), then state gate 1 as met or not.
 2. Length generalization: mixed-length training (running next); the local-credit result suggests that co-adapting the
    backbone to the read hurts extrapolation.
-3. Carry the keyed read and predecessor message into the token language interface for gate 2 (KN trigram on the
-   65,528-target DEV slice).
+3. **Gate 2 (prepared 7 Oct 18:00):** `experiments/r1_token_keyed_lm.py` carries the keyed predecessor-message read to
+   GPT-2-tokenized FineWeb: tied embedding, two B1 temporal-memory layers, keyed read over the lane's past tokens (each
+   token's slot holds keys from its state and its predecessor's message; per-head distance decay). TRAIN = first 1M tokens
+   of train shard 1 in 256-token lanes; selection on a disjoint val slice (offset 10,485,760); the 65,528-target slice is
+   scored once. Gate: KN trigram 6.537 at 1M tokens (bigram 6.584). Queued after the recall chain and the KN data check:
+   smoke, keyed 1M, no-read ablation 1M (≈22 min per epoch on one CPU thread).
 4. Offer the mechanism to B1 (AWS) for datasets where marks recur with context (StackOverflow, Retweet).

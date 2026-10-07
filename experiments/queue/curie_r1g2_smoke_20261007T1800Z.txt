@@ -1,0 +1,2 @@
+# R1 gate 2 (tokenized FineWeb, GPT-2 BPE, CPU): smoke of new driver r1_token_keyed_lm.py; decision: admit the 1M fits (runtime/RSS)
+curie_r1g2_smoke_20261007T1800Z experiments/r1_token_keyed_lm.py --tag curie_r1g2_smoke_20261007T1800Z --keyed 1 --train-tokens 65536 --epochs 1 --score 0
