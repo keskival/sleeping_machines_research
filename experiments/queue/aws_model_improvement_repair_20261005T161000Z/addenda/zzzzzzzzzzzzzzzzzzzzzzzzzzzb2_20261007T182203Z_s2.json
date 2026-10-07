@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM round 5 (development, validation only): augmentation removed the memorization ceiling (0.946 -> 0.972 peak; EMA-averaged weights hold a stable 0.959) vs MTM 0.975. A wider memory (d48, 48 modes) previously lost (0.934) when memorization was the limit; with crops and jitter it tests whether capacity now pays. The second arm tests stronger augmentation (60% crops, 15% jitter). Decides the configuration for the five-split PAM protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r12_pam_split0_v7_d48m48_crop0.8_jit0.1",
+        "queue": "experiments/queue/b2/b2_r12_pam_split0_v7_d48m48_crop0.8_jit0.1/b2_r12_pam_split0_v7_d48m48_crop0.8_jit0.1.txt",
+        "queue_sha256": "35a39fe67818f0c8ead47551a24537427a52d78b63a0f0dbc32e832e9a1bf280",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r12_pam_split0_v7_d48m48_crop0.8_jit0.1.json",
+        "timeout_s": 32400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r12_pam_split0_v7_crop0.6_jit0.15",
+        "queue": "experiments/queue/b2/b2_r12_pam_split0_v7_crop0.6_jit0.15/b2_r12_pam_split0_v7_crop0.6_jit0.15.txt",
+        "queue_sha256": "95895663b1501e28676baf72fa49801fbcfb7ad69624164301163c5f1125af03",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r12_pam_split0_v7_crop0.6_jit0.15.json",
+        "timeout_s": 32400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
