@@ -53,6 +53,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | Keyed read, backprop | 2 | **99.2%** | −0.027 | −2.913 | 45.1% |
 | **Keyed read, backprop, 3 seeds** | mean ± sd | **99.4 ± 0.2%** | | **−2.919** | 44.6 ± 6.8% |
 | Ablation: predecessor message only (no normalization), backprop | 0 | 97.3% | −0.164 | −2.993 | **90.1%** |
+| Ablation: normalized match only (no message), backprop | 0 | 21.6% | −2.203 | −3.492 | 12.4% |
 | Keyed read, local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
 | Frozen B1 v5 | 0 | 21.6% | −2.231 | −3.512 | 12.3% |
 | Set baseline | — | 14.1% | | | 7.9% |
@@ -79,7 +80,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | 7 Oct 16:01 | 2 | Backprop seed 1 | 99.4%; 37.6% at 16 pairs | Reproduced; extrapolation varies by seed |
 | 7 Oct 16:22 | 2 | Backprop seed 2 | 99.2%; 45.1% at 16 pairs | Gate 1 met at training length (3 seeds) |
 | 7 Oct 16:35 | 2 | Ablation: predecessor message only | 97.3%; **90.1%** at 16 pairs | The message carries the binding; the learned sharpness of the normalized match costs length generalization |
-| 7 Oct 17:15 | 2 | Ablation: normalized match only | ≈20% dev recall at epoch 42 (v5 level) | The predecessor message is necessary. Design fixed to **message only**; the not-yet-started queues for message+normalization (`curie_r1_v5len_*_20261007T1520Z`, `curie_r1_v4_pn_keyed2_s{1,2}_20261007T1545Z`) are superseded and were never run; replaced by the message-only chain (backprop seeds 1–2, local race credit seeds 0–2, mixed-length 4–16 pairs) |
+| 7 Oct 17:15 | 2 | Ablation: normalized match only | TEST 21.6%, 12.4% at 16 pairs (identical to v5) | The predecessor message is necessary. Design fixed to **message only**; the not-yet-started queues for message+normalization (`curie_r1_v5len_*_20261007T1520Z`, `curie_r1_v4_pn_keyed2_s{1,2}_20261007T1545Z`) are superseded and were never run; replaced by the message-only chain (backprop seeds 1–2, local race credit seeds 0–2, mixed-length 4–16 pairs) |
 
 ## Next
 
