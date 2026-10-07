@@ -301,11 +301,11 @@
         [
           "Retweet (social)",
           "−6.348",
-          "in test protocol",
-          "Grid-safe model level with the leader in development"
+          "−6.326 ± 0.001",
+          "Win at 1/15 of S2P2's compute; all 5 seeds ahead"
         ]
       ],
-      "banner": "Three of five datasets won, each at about the state of the art’s compute or far less.",
+      "banner": "Four of five datasets won, each at about the state of the art’s compute or far less.",
       "banner_y": 548,
       "caveat": "Leaders: S2P2 (NeurIPS 2025) on Taxi, StackOverflow, Amazon; IFTPP on Taobao; NHP on Retweet. Compute = per-event inference multiply-adds.",
       "notes": "Source: experiments/B1_EASYTPP.md. Pre-registered reporting rule (fixed before any 5-seed TEST aggregate): single-model TEST mean ± sd over 5 seeds and the uniform 5-seed predictive mixture, with per-event inference MACs beside S2P2. A mixture is a matched-compute result only where 5x our MACs <= S2P2 (Taxi 0.41x, Retweet 0.29x); elsewhere it is a higher-compute (pure accuracy) result. Taobao single model 1.3991 ± 0.0025 vs best published 1.318 ± 0.017 (IFTPP), S2P2 1.304; best time (2.753) and mark (-1.353) LL; 24,362 vs 26,016 MACs/event. Taxi single 0.5250 ± 0.0010 vs S2P2 0.522 ± 0.004 at 20,708 vs 249,856 MACs/event; 5-seed mixture 0.5363 beats every published model on total, time and mark LL. StackOverflow: single model -2.1809 ± 0.0055 (behind by 0.018), mixture -2.154 at 4.6x S2P2 MACs. Amazon v5 TEST 0.7008 ± 0.0263 (3 seeds) vs S2P2 0.781; v8 logistic-window clocks DEV 0.768 vs v5 0.724, TEST protocol next. Retweet: a v3 DEV lead was withdrawn after the recording-grid audit (scores fell when event times were dequantized within their recording resolution); Taxi and Taobao pass that audit. B1 pass criterion: best published LL on at least 2 of 5 datasets with 5 seeds. Update 6 Oct 22:00: StackOverflow v12 (continuous-time state clock, 3 layers): single model -2.1444 ± 0.0037 vs S2P2 -2.163 ± 0.009 (+0.019 nats), best mark LL, time level with the best, at 1.26x S2P2 per-event MACs (36,732 vs 29,216): a confirmed pure-accuracy win (5 seeds, audit-clean); 5-seed mixture -2.1113. The earlier v5 row (mixture -2.154 at 4.6x) is superseded."
@@ -646,7 +646,7 @@
         [
           "Generative event streams",
           "EasyTPP (5 public datasets)",
-          "Win on 3: Taxi, Taobao, StackOverflow"
+          "Win on 4: Taxi, Taobao, StackOverflow, Retweet"
         ],
         [
           "Irregular clinical records",

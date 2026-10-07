@@ -1,3 +1,14 @@
+# External materials updated for the Retweet win (curie, 7 Oct ~13:50 UTC, user-requested)
+
+Retweet v16 five-seed TEST completed (s2 published f40808cf): −6.3262 ± 0.0009 vs NHP −6.348 (best published), S2P2
+−6.365, HHP −6.357; all seeds −6.3250…−6.3272; time −5.558 (best published −5.584), mark −0.768 (NHP −0.764); `work.py`:
+19,654 parameters / 19,850 MACs per event vs S2P2 298,627 / 297,600 (1/15). Updated: README, Part I (§4.0 Retweet table and
+win paragraph, summary and battle rows), PITCH.md, INVESTMENT_CASE.md (results table rebuilt: it overflowed the page and
+had a stray Amazon row; `build_investment_case.py` gained a 4-column layout), VALUATION_RATIONALE, PITCH_DECK.json,
+EIC video script, partner proposal, Paper 1 `paper.tex` (Retweet row and discussion). Rebuilt: pitch deck, investment
+case, investor pitch and Part I PDFs. **Paper 1 `paper.pdf` is stale**: curie has no LaTeX; rebuild on a host that has it.
+Count now: EasyTPP 4/5 (Taxi, Taobao, StackOverflow, Retweet) + P19 = five public wins; Amazon mean ahead, unconfirmed.
+
 # R1 gate on the winning B1 model: multi-query associative recall with irregular gaps (curie, 7 Oct 13:10 UTC)
 
 R1 had no active owner. Its first gate (associative recall/induction with irregular gaps) is tested on the model that wins

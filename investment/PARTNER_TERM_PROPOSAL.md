@@ -21,7 +21,7 @@ priced on its own terms, and each Partner's stake grows with what they deliver.
 ## 2. Why €15M pre-money
 
 - **Public evidence:**
-  - Confirmed wins over the best published results on three EasyTPP leaderboard datasets (Taxi, Taobao, StackOverflow),
+  - Confirmed wins over the best published results on four EasyTPP leaderboard datasets (Taxi, Taobao, StackOverflow, Retweet),
     StackOverflow at matched model size and compute.
   - A second domain: P19 sepsis prediction, AUROC 0.916 vs 0.903 published.
   - The Taxi win reproduced from scratch on separate hardware (0.5252 vs 0.5250), with a one-command kit ready for a

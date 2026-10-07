@@ -16,7 +16,7 @@ when something *should* have happened and didn't. Its cost per event stays const
 
 **1:05–1:45 · Proof (screen: the leaderboard table).**
 "We tested it where others publish. On the public EasyTPP event-stream benchmarks we beat the published state of the
-art on three of five datasets, two of them at a fraction of the leading model's compute. On ICU sepsis prediction,
+art on four of five datasets, three of them at a fraction of the leading model's compute. On ICU sepsis prediction,
 the same core beats the best published model on the official splits."
 
 **1:45–2:25 · The product and why now (founder, or the future commercial lead).**

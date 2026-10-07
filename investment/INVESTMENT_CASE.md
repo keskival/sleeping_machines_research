@@ -87,18 +87,23 @@ credit to unrealized hard routes, translated into a useful system. [Intel Loihi 
 
 ## What already makes the case tangible
 
-**Public leaderboard wins on the family's home field (6 October 2026).** On EasyTPP (ICLR 2024), the standard benchmark
+**Public leaderboard wins on the family's home field (6–7 October 2026).** On EasyTPP (ICLR 2024), the standard benchmark
 for marked event streams in continuous time, the model is a race of delayed clocks over persistent temporal memory.
 Official splits, the published per-event log-likelihood protocol, 5 seeds, sealed test scored once per seed
 ([dossier](../experiments/B1_EASYTPP.md)):
 
-| Dataset | Best published (nats/event, higher better) | Ours | Per-event compute vs S2P2 (NeurIPS 2025) |
+| Dataset (nats/event) | Best published | Ours | Compute vs S2P2 |
 |---|---|---|---|
-| Taobao | 1.318 ± 0.017 (IFTPP) | **1.399 ± 0.003** | 0.92× |
-| Taxi, 5-seed mixture | 0.522 ± 0.004 (S2P2) | **0.536** | 0.41× |
-| Taxi, single model | 0.522 ± 0.004 | **0.525 ± 0.001** | 1/12 (parameters and compute) |
-| StackOverflow | −2.163 ± 0.009 (S2P2) | **−2.144 ± 0.004** | 1.26× (accuracy win) |
-| StackOverflow, matched size | −2.163 ± 0.009 (S2P2) | **−2.153 ± 0.005** (all 5 seeds above) | **1.015× (near-matched)** |
+| Taobao | 1.318 (IFTPP) | **1.399 ± 0.003** | 0.92× |
+| Taxi | 0.522 (S2P2) | **0.525 ± 0.001** | 1/12 |
+| Taxi, 5-seed mixture | 0.522 (S2P2) | **0.536** | 0.41× |
+| StackOverflow | −2.163 (S2P2) | **−2.144 ± 0.004** | 1.26× |
+| StackOverflow, matched | −2.163 (S2P2) | **−2.153 ± 0.005** | 1.015× |
+| Retweet | −6.348 (NHP) | **−6.326 ± 0.001** | 1/15 |
+| Amazon (not confirmed) | 0.781 (S2P2) | 0.784 ± 0.027 | 0.29× |
+
+Higher is better; compute is per-event inference work. Amazon is ahead on the mean, but one of five seeds landed in a
+low optimization basin.
 
 **A second public win, with the same core, in clinical early warning (7 October 2026).** On P19 (PhysioNet 2019 sepsis
 prediction, 38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive), five official splits, TEST scored once per
@@ -113,13 +118,14 @@ classification, with further evidence on process logs, character language and fe
 language and real tables remain behind. The next tests turn breadth into transfer: self-supervised event pretraining on
 unlabeled clinical records for mortality prediction with fewer labels, and one model across five event datasets
 ([generality plan](../experiments/GENERALITY_PLAN.md)).
-| Amazon | 0.781 ± 0.011 (S2P2) | 0.784 ± 0.027 (mean ahead; one of five seeds in a low basin) | 0.29× |
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.
 - **StackOverflow is a confirmed win** in accuracy (+0.019 nats/event) at 1.26× compute, from a continuous-time state
   clock that passed the recording-grid audit.
-- Three of five datasets are won, past the battle's pass criterion (best published on 2 of 5).
-- **Amazon:** the pre-registered five-seed protocol is ahead on the mean (0.784 vs 0.781) at 0.29× S2P2's compute, but one seed's restarts all landed in a weaker optimization basin, so it is not a confirmed win; a fix for that basin is in testing. **Retweet:** a grid-safe model is level with the leader on development data and is in its test protocol.
+- **Retweet is a confirmed win:** −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of
+  S2P2's parameters and per-event compute.
+- Four of five datasets are won, past the battle's pass criterion (best published on 2 of 5).
+- **Amazon:** the pre-registered five-seed protocol is ahead on the mean (0.784 vs 0.781) at 0.29× S2P2's compute, but one seed's restarts all landed in a weaker optimization basin, so it is not a confirmed win; a fix for that basin is in testing.
 - These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
   terms where its mathematics fits: a race of clocks *is* a temporal point process.
 

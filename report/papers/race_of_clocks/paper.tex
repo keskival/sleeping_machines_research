@@ -35,7 +35,7 @@ Intensity models need the compensator $\int \lambda$, typically estimated by Mon
 \paragraph{Contributions.}
 (i) A race-of-clocks MTPP with four clock families, each introduced to fix a measured failure (\S\ref{sec:model}).
 (ii) The \emph{recording-resolution pitfall}: flexible continuous-time models can exploit timestamp grids for large spurious likelihood; we give a resolution principle and an audit (\S\ref{sec:pitfall}).
-(iii) Results on EasyTPP that exceed the best published model on three of five datasets, two at a fraction of its compute, verified under the benchmark's own estimator (\S\ref{sec:results}).
+(iii) Results on EasyTPP that exceed the best published model on four of five datasets, three at a fraction of its compute, verified under the benchmark's own estimator (\S\ref{sec:results}).
 
 \section{The race of delayed clocks}\label{sec:model}
 \subsection{Output law}
@@ -108,7 +108,7 @@ Taobao & $1.318\pm0.017$ (IFTPP); S2P2 $1.304$ & $\mathbf{1.3991\pm0.0025}$ & $0
 Taxi & $0.522\pm0.004$ (S2P2) & $\mathbf{0.5250\pm0.0010}$; mixture $\mathbf{0.5363}$ & $1/12$; mixture $0.41\times$ \\
 StackOverflow & $-2.163\pm0.009$ (S2P2) & $\mathbf{-2.1444\pm0.0037}$; matched size $\mathbf{-2.1525\pm0.0045}$ & $1.26\times$; $1.015\times$ \\
 Amazon & $0.781\pm0.011$ (S2P2) & $0.7839\pm0.0265$ (4 of 5 seeds $\ge0.794$; one seed in a low basin) & $0.29\times$ \\
-Retweet & $-6.348$ (NHP) & \pending{five-seed protocol of the grid-safe model (DEV $-6.352$)} & --- \\
+Retweet & $-6.348$ (NHP); S2P2 $-6.365$ & $\mathbf{-6.3262\pm0.0009}$ & $1/15$ \\
 \bottomrule
 \end{tabular}
 \caption{EasyTPP TEST per-event log-likelihood (nats; higher is better).}
@@ -145,7 +145,7 @@ On Taobao the model also has the best published time (2.753 vs.\ 2.719) and mark
 From the development log (DEV, single seeds unless stated): always-firing to defective delayed clocks, Amazon $-0.229\to0.705$; log-normal tiling to logistic windows, $0.724\to0.768$; quantile to clustered window initialization, best seeds $0.797$ with remaining seed variance; state clock on StackOverflow, $-2.173\to-2.143$. Wider encoders overfit these small datasets (Amazon $0.661$ at width 64 vs.\ $0.720$ at 32), and long training with decoupled or asymmetric weight decay did not recover past early selection.
 
 \section{Discussion and limitations}
-The race-of-clocks head gives exact likelihoods with time-dependent marks at small size; on Taxi a model with 20.5K parameters exceeds a 252K-parameter state-space model. Amazon's optimization has distinct basins; we use restart selection on DEV and report its threefold training cost. Retweet's grid-safe models do not yet exceed NHP. The encoder recurrence is sequential; its linear part admits a parallel scan. The audit applies to any continuous-time model evaluated on gridded timestamps.
+The race-of-clocks head gives exact likelihoods with time-dependent marks at small size; on Taxi a model with 20.5K parameters exceeds a 252K-parameter state-space model. Amazon's optimization has distinct basins; we use restart selection on DEV and report its threefold training cost. On Retweet the grid-safe model (every clock held at its one-second-cell hazard below the cell; audit drop $0.004$) exceeds NHP by $0.022$ nats/event with all five seeds. The encoder recurrence is sequential; its linear part admits a parallel scan. The audit applies to any continuous-time model evaluated on gridded timestamps.
 
 \paragraph{Reproducibility.} Drivers, numerical contracts, the audit, the estimator-parity check, compute accounting and all result files are in the accompanying repository (\texttt{experiments/tpp/}, \texttt{experiments/results/tpp/}).
 

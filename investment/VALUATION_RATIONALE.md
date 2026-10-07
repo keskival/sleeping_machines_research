@@ -87,8 +87,10 @@ Evidence update, 6 October:
   published model on the five official splits, with the same temporal memory core as the event model — evidence that the
   family generalizes across data types, not only across event datasets.
 
-  All are 5 seeds on official splits with a sealed test: three of five datasets won, past the battle's pass criterion.
-  Amazon and Retweet are in development.
+  Retweet (7 October): −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's
+  parameters and per-event compute.
+  All are 5 seeds on official splits with a sealed test: four of five datasets won, past the battle's pass criterion.
+  Amazon is ahead on the mean (0.784 vs 0.781), not yet confirmed.
 - **FAS v2:** the sealed setting is selected on validation (2 interleaved lines, 2% dropped events). The identity
   oracle reaches AUROC 0.821 against 0.685 for the best anonymous classical detector, so a binding model has room
   to win. Development is in progress with a race readout derived from the interleaving theory.

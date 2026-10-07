@@ -93,6 +93,7 @@ def render(stage):
                     index += 1
                 count = len(rows[0]); width = A4[0]-36*mm
                 if count == 5: proportions = [.33, .13, .17, .18, .19]
+                elif count == 4: proportions = [.30, .24, .26, .20]
                 elif 'Mechanism' in rows[0][0].getPlainText(): proportions = [.23, .36, .41]
                 else: proportions = [.22, .55, .23]
                 table = Table(rows, colWidths=[width*x for x in proportions], repeatRows=1, hAlign='LEFT')
