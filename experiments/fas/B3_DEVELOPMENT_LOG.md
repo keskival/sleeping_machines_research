@@ -239,3 +239,25 @@ oracle's .821.
     - LSTM d128: 276,528 parameters, peak RSS 1.05 GB, ~25K events/s. A full 3-pass run takes ~20 min.
     - Transformer d128 (4 lanes): 425,392 parameters, peak RSS 1.36 GB, ~3K events/s. A full 3-pass run takes ~3 h.
   - Suggested caps: LSTM 2.5 GB, Transformer 3 GB.
+- 7 Oct 00:02 UTC: **C1 completed on AWS** (round 1; `aws_fas_v2_dev_C1_20261006T1715Z`; 1 pass over 5,000 samples,
+  10.24M events; 1.9 h; peak RSS 4.5 GB; 339,364 parameters).
+
+  v2 validation AUROC by merged prefix (×2 = per line):
+
+  | rule | 256 | 512 | 1,024 (N*) |
+  |---|---|---|---|
+  | total (primary) | .512 | .539 | **.630** |
+  | type | .527 | .557 | .673 |
+  | gap | .503 | .515 | .550 |
+
+  Targets at N*: order3 .685, oracle .821. **Status: in development, best .630 vs reference .685.**
+
+  - **Reading:** the signal is almost all in event *order* (the type rule matches the order-only trigram); *timing* is
+    weak. The oracle's advantage is item-own durations, which need binding. So binding is the suspect, although all
+    54 slots are written.
+  - **Measured work:** fit 6.06 MFLOP/event; inference 2.04 dense, 1.50 sparse.
+  - **Error analysis queued on AWS**, where the checkpoint is: `aws_fas_v2_dev_C1_diagnostics_20261007T0010Z`
+    (binding purity, time-rescaling fit, AUROC by purity) and `aws_fas_v2_dev_C1_particles_20261007T0010Z`.
+  - **Round-2 candidates, chosen by those results:**
+    - if purity is low: binding aids (no-context readout C-variant, longer training up to the 3-pass cap, more slots);
+    - if purity is high but timing weak: readout duration laws (more step classes, type-conditional durations).
