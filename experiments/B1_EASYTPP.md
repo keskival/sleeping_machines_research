@@ -141,3 +141,6 @@ Training compute is 3× a single fit; inference compute is unchanged (one select
 | 7 Oct | Amazon protocol (partial) | restart selection by DEV | seed 0: DEV picks 0.798 over 0.691 → TEST **0.798**; seed 1 → TEST 0.796 | above S2P2 0.781 so far; three seeds remaining |
 | 7 Oct | v14 | dequantized whole TRAIN sequences | Retweet DEV −6.70 at epoch 4; stopped | design error: history inputs never contained exact zero gaps in training but do in DEV/TEST (input mismatch) |
 | 7 Oct | v15 | dequantize only the scored target gap within its cell during training; history inputs stay as recorded | Retweet queued | |
+| 7 Oct | v15 | target-only dequantization | Retweet DEV −6.61 after epoch 1; stopped | trained to put first-cell mass on delayed clocks, whose hazard at exactly τ = 0 is zero, so raw zero gaps score poorly |
+| 7 Oct | v16 | resolution principle for every clock: hazards held at their one-cell value on [0, c), log S = −h(c)·min(τ, c) + [log S0(max(τ, c)) − log S0(c)] | normalization 1 − 4e−9 | Retweet v16 (with target dequantization) queued |
+| 7 Oct | Amazon protocol (partial) | — | seeds 0–1 complete: TEST 0.7969 ± 0.0014 | seeds 2–4 restarts running |
