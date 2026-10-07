@@ -139,3 +139,5 @@ Training compute is 3× a single fit; inference compute is unchanged (one select
 | 7 Oct | v13 Retweet | state clock held below one cell | DEV −6.326 (time −5.562) | **audit: not clean.** Dequantized drop 0.045 (baseline 0.0006): 0.031 at 1 s gaps (−1.764 recorded vs −2.276 dequantized) — rate caps bound the time scale but not the amplitude, so the hazard can still sharpen within a cell. Not counted |
 | 7 Oct | v14 | uniform dequantization of TRAIN gaps within the recording cell each epoch (standard for density models of discretized data); evaluation unchanged on the protocol's raw data | Retweet queued | |
 | 7 Oct | Amazon protocol (partial) | restart selection by DEV | seed 0: DEV picks 0.798 over 0.691 → TEST **0.798**; seed 1 → TEST 0.796 | above S2P2 0.781 so far; three seeds remaining |
+| 7 Oct | v14 | dequantized whole TRAIN sequences | Retweet DEV −6.70 at epoch 4; stopped | design error: history inputs never contained exact zero gaps in training but do in DEV/TEST (input mismatch) |
+| 7 Oct | v15 | dequantize only the scored target gap within its cell during training; history inputs stay as recorded | Retweet queued | |

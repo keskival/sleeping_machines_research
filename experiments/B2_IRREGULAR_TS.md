@@ -58,3 +58,4 @@ validation, then the five-split protocol.
 layers, J=4, dropout 0.2, lr 2e-3, batch 128, patience 8, ≤ 40 epochs), seed 0, the five official splits; checkpoint
 selected by validation AUROC; TEST scored once per split. Report mean ± sd of TEST AUROC and AUPRC over the five splits
 against MTM 90.3 ± 2.0 / 58.3 ± 5.3.
+| 7 Oct | v3 lr 5e-4 | slower learning on P12 | val AUROC 0.870 (best epoch 10) | no gain over lr 2e-3 (0.872) |
