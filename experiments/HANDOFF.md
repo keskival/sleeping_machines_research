@@ -1,3 +1,13 @@
+# Request to the curie host: independent reproduction of an EasyTPP win (7 October 2026)
+
+Valuation condition "independent reproduction of a leaderboard result" (investment/VALUATION_RATIONALE.md §5). Please
+rerun Taxi from scratch on curie with the frozen driver `experiments/tpp/race_tpp_v5.py` (sha in any
+`experiments/results/tpp/b1_final_taxi_v5_s*.json`), data from the HuggingFace `easytpp/taxi` release, five seeds:
+`--dataset taxi --seed {0..4} --n-lognormal 8 --dropout 0.3 --patience 30 --floor-cell 0.000277777777777778 --score-test
+--tag curie_repro_taxi_v5_s{seed}` through run_safe (≈2 min per seed, < 1 GB). Report TEST mean ± sd against AWS
+0.5250 ± 0.0010 and S2P2 0.522 ± 0.004. Exact agreement is not expected (different CPU/BLAS); agreement within seed spread
+is the criterion.
+
 # Repository migrated to Git LFS (6 October 2026, ~16:30 UTC)
 
 `origin` is now `git@github.com:keskival/sleeping_machines_research.git`, with history rewritten by an LFS migration
