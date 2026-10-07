@@ -40,8 +40,8 @@ binding at all (21.6%, identical to the frozen v5 model, against a set baseline 
    calibrated to the training number of competitors over-sharpens when competitors double. Mixed-length training
    removes the dependence: 91.6% at 32 pairs, twice the longest training length (seed 0).
 4. **It carries to language.** The same read over GPT-2-tokenized FineWeb (1M training tokens) scores 6.019 nats per
-   token on the 65,528-target slice, against KN trigram 6.537 at the same data and 6.100 at 4×. The no-read ablation
-   and seeds decide how much of the margin the read carries.
+   token on the 65,528-target slice, against KN trigram 6.537 at the same data and 6.100 at 4×. Without the read the same model scores 6.193:
+   the read carries 0.175 nats per token of the margin (seed 0; seeds 1–2 queued).
 
 ## §444 Prediction for interleaved processes (FAS v2)
 
