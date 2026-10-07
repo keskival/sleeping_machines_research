@@ -1,0 +1,2 @@
+# B2: B2 PAM round 2 (v5 split 0 val acc 0.946 vs MTM TEST 0.975): v6 adds per-channel variance and mean absolute change (motion intensity and rhythm) to the statistic slots; and a wider temporal memory (d48, 48 modes) to resolve oscillation frequencies
+b2_r7_pam_split0_v6_d48m48 experiments/irts/race_irts_v6.py --tag b2_r7_pam_split0_v6_d48m48 --dataset PAM --split 0 --d 48 --modes 48 --epochs 60 --patience 12 --batch 64
