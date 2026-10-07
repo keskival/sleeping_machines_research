@@ -53,3 +53,8 @@ validation, then the five-split protocol.
 | 7 Oct | v3 | statistic-valued channel slots | val **AUROC 0.872**, AUPRC 0.575 (best epoch 4; 65,001 parameters) | above the summary-tree diagnostic (0.867); MTM TEST 0.880. v4: typed comparisons on the statistics queued |
 | 7 Oct | v3 EMA / v4 | weight EMA on v3; v4 soft thresholds on statistics (145K parameters) | 0.871; 0.868 (best epoch 2) | v4 overfits faster; v3 retained. Next: P19 standing, slower lr on P12 |
 | 7 Oct | v3 P19 | statistic slots, P19 split 0 | val **AUROC 0.919**, AUPRC 0.626 | MTM TEST 0.903 ± 2.0; P19 five-split protocol next |
+
+**Pre-registered P19 protocol (fixed 7 Oct ~02:20 UTC, before any of its runs).** `race_irts_v3.py` defaults (d32, 2
+layers, J=4, dropout 0.2, lr 2e-3, batch 128, patience 8, ≤ 40 epochs), seed 0, the five official splits; checkpoint
+selected by validation AUROC; TEST scored once per split. Report mean ± sd of TEST AUROC and AUPRC over the five splits
+against MTM 90.3 ± 2.0 / 58.3 ± 5.3.
