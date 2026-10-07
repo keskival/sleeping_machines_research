@@ -1,0 +1,2 @@
+# B1: Retweet v16: resolution principle for every clock (hazards held at their one-cell value below the 1 s cell, closed-form compensator) plus target-only dequantization; v15 scored exact zero gaps with zero delayed-clock hazard (DEV -6.61 after epoch 1). Decides the honest Retweet standing
+b1_r22_retweet_v16_s0 experiments/tpp/race_tpp_v16.py --tag b1_r22_retweet_v16_s0 --dataset retweet --seed 0 --n-lognormal 8 --n-window 4 --patience 8 --floor-cell 1.0 --state-modes 16 --dequant-target 1.0
