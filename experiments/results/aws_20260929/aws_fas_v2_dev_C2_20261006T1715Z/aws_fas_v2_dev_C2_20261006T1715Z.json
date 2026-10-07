@@ -1,0 +1,275 @@
+{
+  "status": "completed",
+  "args": {
+    "data": "fas_v2_K2_drop0.02_delta0_20261005",
+    "tag": "aws_fas_v2_dev_C2_20261006T1715Z",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 8,
+    "route_credit": "linear",
+    "compiled": true,
+    "epochs": 1,
+    "lanes": 64,
+    "fit_runs": 5000,
+    "max_events": 2200,
+    "train_max_events": 2048,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 1000,
+    "trace_windows": 1,
+    "max_windows": 0,
+    "reception": "race",
+    "no_test": true,
+    "tau_max": 1000.0,
+    "findable_init": false,
+    "key_norm": 1.0,
+    "tie_pools": false,
+    "free_bias": 0.0,
+    "stale_bias": 0.0,
+    "train_temperature": 1.0,
+    "margin": 0.0,
+    "margin_target": 2.0,
+    "balance": 0.0,
+    "segment": 128
+  },
+  "parameters": 315888,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll": 3.076381987602816,
+      "val_clean_nll": 2.6550955330770067,
+      "val_auroc": {
+        "32": {
+          "all": 0.497608,
+          "wear_and_tear": 0.49056415478615073,
+          "retry_delay": 0.5044027504911591
+        },
+        "64": {
+          "all": 0.501651,
+          "wear_and_tear": 0.49463136456211815,
+          "retry_delay": 0.5084223968565815
+        },
+        "128": {
+          "all": 0.518658,
+          "wear_and_tear": 0.5161894093686354,
+          "retry_delay": 0.5210392927308448
+        },
+        "256": {
+          "all": 0.535596,
+          "wear_and_tear": 0.5353177189409368,
+          "retry_delay": 0.5358644400785855
+        },
+        "512": {
+          "all": 0.564697,
+          "wear_and_tear": 0.5782382892057026,
+          "retry_delay": 0.5516345776031434
+        },
+        "1024": {
+          "all": 0.66343,
+          "wear_and_tear": 0.6264704684317719,
+          "retry_delay": 0.6990825147347741
+        },
+        "rules": {
+          "type": {
+            "32": {
+              "all": 0.502567,
+              "wear_and_tear": 0.5041303462321792,
+              "retry_delay": 0.5010589390962672
+            },
+            "64": {
+              "all": 0.494408,
+              "wear_and_tear": 0.49072301425661913,
+              "retry_delay": 0.49796267190569743
+            },
+            "128": {
+              "all": 0.514381,
+              "wear_and_tear": 0.5126171079429735,
+              "retry_delay": 0.5160825147347741
+            },
+            "256": {
+              "all": 0.542071,
+              "wear_and_tear": 0.5443503054989817,
+              "retry_delay": 0.5398722986247544
+            },
+            "512": {
+              "all": 0.571591,
+              "wear_and_tear": 0.5804663951120163,
+              "retry_delay": 0.5630294695481336
+            },
+            "1024": {
+              "all": 0.688333,
+              "wear_and_tear": 0.6454297352342159,
+              "retry_delay": 0.7297190569744597
+            }
+          },
+          "gap": {
+            "32": {
+              "all": 0.493634,
+              "wear_and_tear": 0.48218533604887986,
+              "retry_delay": 0.5046777996070727
+            },
+            "64": {
+              "all": 0.508493,
+              "wear_and_tear": 0.5006476578411405,
+              "retry_delay": 0.5160609037328094
+            },
+            "128": {
+              "all": 0.515243,
+              "wear_and_tear": 0.5151853360488798,
+              "retry_delay": 0.5152986247544205
+            },
+            "256": {
+              "all": 0.517676,
+              "wear_and_tear": 0.5131303462321792,
+              "retry_delay": 0.5220609037328094
+            },
+            "512": {
+              "all": 0.537051,
+              "wear_and_tear": 0.5444684317718941,
+              "retry_delay": 0.5298958742632613
+            },
+            "1024": {
+              "all": 0.579735,
+              "wear_and_tear": 0.5828065173116089,
+              "retry_delay": 0.5767721021611002
+            }
+          },
+          "gap_window32_max": {
+            "32": {
+              "all": 0.493634,
+              "wear_and_tear": 0.48218533604887986,
+              "retry_delay": 0.5046777996070727
+            },
+            "64": {
+              "all": 0.514753,
+              "wear_and_tear": 0.5108900203665988,
+              "retry_delay": 0.5184793713163065
+            },
+            "128": {
+              "all": 0.514447,
+              "wear_and_tear": 0.5130346232179226,
+              "retry_delay": 0.5158094302554027
+            },
+            "256": {
+              "all": 0.518067,
+              "wear_and_tear": 0.5163584521384929,
+              "retry_delay": 0.5197151277013753
+            },
+            "512": {
+              "all": 0.518842,
+              "wear_and_tear": 0.5187881873727087,
+              "retry_delay": 0.5188939096267191
+            },
+            "1024": {
+              "all": 0.533983,
+              "wear_and_tear": 0.5387637474541751,
+              "retry_delay": 0.5293713163064833
+            }
+          }
+        }
+      },
+      "val_clean_occupancy": {
+        "slots_written_per_run": [
+          [
+            7.942999839782715,
+            5.836999893188477
+          ],
+          [
+            7.436999797821045,
+            7.9039998054504395
+          ],
+          [
+            8.0,
+            8.0
+          ],
+          [
+            8.0,
+            7.714000225067139
+          ]
+        ],
+        "pool": 8,
+        "dead_slot_fraction": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "scope": "per layer x head; written flags after each batch's shortest run"
+      },
+      "epoch_s": 2038.4196334149456
+    }
+  ],
+  "selected_epoch": 1,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": null,
+  "test_clean_occupancy": null,
+  "memory_half_lives": {
+    "0": {
+      "p10": 1.0790067366268894,
+      "median": 25.222890209911668,
+      "p90": 338.8377215954928,
+      "max": 677.8149212270092,
+      "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+    },
+    "1": {
+      "p10": 1.075016049633879,
+      "median": 25.59231475801875,
+      "p90": 326.8001568928305,
+      "max": 668.2432674025325,
+      "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+    },
+    "2": {
+      "p10": 1.0450899164271226,
+      "median": 25.248421515892836,
+      "p90": 288.1803611586603,
+      "max": 649.8922185726187,
+      "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+    },
+    "3": {
+      "p10": 1.0830018854813481,
+      "median": 24.00815979738314,
+      "p90": 311.3999744310748,
+      "max": 693.2434276916391,
+      "unit": "seconds of simulator time, at unit forget gate (base rate only)"
+    }
+  },
+  "test_auroc": "not scored (development run, --no-test)",
+  "selected_weights": "experiments/results/aws_20260929/aws_fas_v2_dev_C2_20261006T1715Z/checkpoints/aws_fas_v2_dev_C2_20261006T1715Z_selected.pt",
+  "work": {
+    "fit_unit_special_flops_per_event_estimate": 2150930.423828125,
+    "whole_fit_unit_special_flops_estimate": 22025527540000.0,
+    "fitting_events": 10240000,
+    "scope": "first window traced (eager), extrapolated per event"
+  },
+  "data_manifest_sha256": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463",
+  "source_sha256": {
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "sleeping_machines/batched_episodes.py": "dcd7c5807e2197a3c74f5d6feb9672a3bbe86b86d35e462474c8d994ed49b9d9",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 2040.2140886840643,
+  "per_run_scores": {
+    "path": "experiments/results/aws_20260929/aws_fas_v2_dev_C2_20261006T1715Z/aws_fas_v2_dev_C2_20261006T1715Z_scores.npz",
+    "sha256": "026e4e07ca876b864c1aeb3b781017cae345b51652d77d9da6f23f39bd684b4b"
+  }
+}
