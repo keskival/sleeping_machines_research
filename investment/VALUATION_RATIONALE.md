@@ -213,8 +213,7 @@ Investor competition, not the evidence alone, sets the attainable price.
   the best published 0.903 / 0.583 (MTM), with the same temporal memory core as the event model.
 - *Matched-compute wins on further EasyTPP datasets:* **met** — StackOverflow at matched size (0.968× S2P2's parameters,
   1.015× its per-event compute): −2.1525 ± 0.0045 vs −2.163, all five seeds above S2P2. Also: the Amazon protocol (0.29× S2P2's per-event
-  compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed); a matched-size StackOverflow protocol (≈1.0× S2P2)
-  is queued.
+  compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed).
 - *Independent reproduction:* **met on independent hardware** — the Taxi win was rerun from scratch on the curie host
   (Intel i5-4690 desktop CPU, separately downloaded HuggingFace `easytpp/taxi` release, frozen driver sha256 73d2f95e…,
   five seeds): TEST 0.5252 ± 0.0007 nats/event vs the AWS run's 0.5250 ± 0.0010 and S2P2's 0.522 ± 0.004. Seeds 0, 1 and 3
