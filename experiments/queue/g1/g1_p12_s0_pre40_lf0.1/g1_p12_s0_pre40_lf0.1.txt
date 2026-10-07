@@ -1,0 +1,2 @@
+# G1: G1 pretraining budget: 10-epoch pretraining gave AUPRC +0.061/+0.017/-0.007 on splits 0/1/2 at 10% labels while the next-measurement validation NLL was still falling every epoch (14.40 -> 12.69). 40 epochs on all three splits decides whether a fuller generative pretraining makes the label-efficiency gain consistent (compared with the existing early-stopped scratch runs)
+g1_p12_s0_pre40_lf0.1 experiments/irts/race_irts_g1.py --tag g1_p12_s0_pre40_lf0.1 --dataset P12 --split 0 --label-frac 0.1 --pretrain-epochs 40 --finetune-epochs 40

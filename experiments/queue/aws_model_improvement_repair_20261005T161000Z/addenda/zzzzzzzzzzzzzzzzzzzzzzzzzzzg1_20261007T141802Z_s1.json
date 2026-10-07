@@ -1,0 +1,55 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G1",
+  "purpose": "G1 pretraining budget: 10-epoch pretraining gave AUPRC +0.061/+0.017/-0.007 on splits 0/1/2 at 10% labels while the next-measurement validation NLL was still falling every epoch (14.40 -> 12.69). 40 epochs on all three splits decides whether a fuller generative pretraining makes the label-efficiency gain consistent (compared with the existing early-stopped scratch runs)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "g1_p12_s0_pre40_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s0_pre40_lf0.1/g1_p12_s0_pre40_lf0.1.txt",
+        "queue_sha256": "1a6cf7cfa83af785bee34060c4edc92ff2bb1032837cdbcc95644e5379cc6f0f",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s0_pre40_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s1_pre40_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s1_pre40_lf0.1/g1_p12_s1_pre40_lf0.1.txt",
+        "queue_sha256": "85369c54ad7e0a3937746a1fab19ea04ee9cd29e40b361326b23cba4e7d5294e",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s1_pre40_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s2_pre40_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s2_pre40_lf0.1/g1_p12_s2_pre40_lf0.1.txt",
+        "queue_sha256": "19f54eab44871773208de206850506f5b9e5a332b2a8b843899daee811ff4b54",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s2_pre40_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
