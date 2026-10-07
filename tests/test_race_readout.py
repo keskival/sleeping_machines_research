@@ -288,3 +288,23 @@ def test_cell_likelihood_normalises_and_matches_density_for_small_cells():
     # (3) a tie (zero elapsed time) has bounded log-likelihood: probability <= 1 per cell
     tie = event_terms(p, t_now[:, None].expand(1, S).clone(), t_now, t_now, torch.tensor([0]), 1e-3, cell=cell)[0]
     assert float(tie) + math.log(cell) <= 1e-9
+
+
+def test_slowdown_alternative_is_normalised():
+    torch.manual_seed(10)
+    S, V, M = 3, 4, 2
+    ro = RaceReadout(V, 1, S, 8, 16, hidden=8, mu0=0., classes=M)
+    with torch.no_grad():
+        p = ro(torch.randn(1, 1, S, 8), torch.randn(1, 16))
+    t_ref = torch.tensor([[0., -.5, -2.]], dtype=torch.float64); t_now = torch.tensor([0.], dtype=torch.float64)
+    from sleeping_machines.race_readout import log_surv
+    grid = torch.exp(torch.linspace(-9, 7, 40001, dtype=torch.float64))
+    s = .3; mass = 0.
+    for e in range(V):
+        ll, _, _ = event_terms({k: v.expand(len(grid), *v.shape[1:]) for k, v in p.items()}, t_ref.expand(len(grid), S),
+                               t_now.expand(len(grid)), grid, torch.full((len(grid),), e), 1e-3, scale=s)
+        mass += float(torch.trapezoid(ll.exp(), grid))
+    shrink = math.exp(-s)
+    never = float((log_surv(p, torch.full((1, S), 1e9, dtype=torch.float64), 1e-3)
+                   - log_surv(p, (t_now[:, None] - t_ref) * shrink, 1e-3)).sum().exp())
+    assert abs(mass + never - 1) < 3e-3, (mass, never)

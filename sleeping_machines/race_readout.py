@@ -134,17 +134,31 @@ def log_diff_ndtr(z1, z2):
     return torch.where(z1 < 0, lower, upper)
 
 
-def event_terms(p, t_ref, t_now, t_next, e_next, eps, cell=None):
+def event_terms(p, t_ref, t_now, t_next, e_next, eps, cell=None, scale=0.):
     """p: laws after the previous event; t_ref (n, S) last-write times; t_now (n,) previous event time; t_next (n,),
     e_next (n,) long: the event. Returns (log-lik total (n,), time-only (n,), log responsibilities (n, S)).
     cell (seconds): the recording resolution (THEORY §439). The firing term uses the probability of the recorded
     cell [tau, tau + cell), log(S_s(tau) - S_s(tau + cell)) - log S_s(tau) - log cell, instead of the point density,
-    so exact ties cannot earn unbounded likelihood. Per-second units are kept."""
+    so exact ties cannot earn unbounded likelihood. Per-second units are kept.
+    scale (THEORY §440): the log slowdown s of the alternative in which every own duration is scaled by e^s. Durations
+    enter as tau e^-s; point densities carry the Jacobian -s; the recorded cell is scaled with them (its probability is
+    still divided by the unscaled cell). d/ds at s = 0 is the score statistic of a slowdown."""
     tau_now = (t_now[:, None] - t_ref).clamp_min(0); tau = (t_next[:, None] - t_ref).clamp_min(0)
+    if scale:
+        shrink = math.exp(-scale)
+        tau_now, tau = tau_now * shrink, tau * shrink
+        cell_s = cell * shrink if cell is not None else None
+        return _event_terms_tau(p, tau_now, tau, e_next, eps, cell_s, cell, -scale if cell is None else 0.)
+    return _event_terms_tau(p, tau_now, tau, e_next, eps, cell, cell, 0.)
+
+
+def _event_terms_tau(p, tau_now, tau, e_next, eps, cell, cell_norm, jac):
+    """event_terms on given own durations; cell: the (possibly scaled) cell width; cell_norm: the width the cell
+    probability is divided by; jac: an additive log-Jacobian on the firing terms (point densities under scaling)."""
     ls = log_surv(p, tau, eps)
     base = (ls - log_surv(p, tau_now, eps)).sum(-1)
     if cell is not None:
-        lc = math.log(cell)
+        lc = math.log(cell_norm)
         z1 = lambda mu, ls_: (torch.log(tau + eps) - mu) / ls_.exp()
         z2 = lambda mu, ls_: (torch.log(tau + cell + eps) - mu) / ls_.exp()
         if 'logpi' in p:
@@ -169,14 +183,14 @@ def event_terms(p, t_ref, t_now, t_next, e_next, eps, cell=None):
     if 'logpi' in p:
         u = torch.log(tau.clamp_min(0) + eps)[..., None]
         z = (u - p['mu']) / p['log_sigma'].exp()
-        comp = p['logq'][..., None] + p['logpi'] - .5 * z ** 2 - .5 * math.log(2 * math.pi) - p['log_sigma'] - u   # (n,S,M)
+        comp = p['logq'][..., None] + p['logpi'] - .5 * z ** 2 - .5 * math.log(2 * math.pi) - p['log_sigma'] - u + jac   # (n,S,M)
         M = comp.shape[-1]
         pe = p['logp'].gather(-1, e_next[:, None, None, None].expand(-1, comp.shape[1], M, 1)).squeeze(-1)
         fire_t = torch.logsumexp(comp, -1) - ls
         fire = torch.logsumexp(comp + pe, -1) - ls
         lse = torch.logsumexp(fire, -1)
         return base + lse, base + torch.logsumexp(fire_t, -1), fire - lse[:, None]
-    dens = log_fire_density(p, tau, eps)
+    dens = log_fire_density(p, tau, eps) + jac
     if _typed(p):
         fire_t = torch.logsumexp(dens, -1) - ls
         fire = dens.gather(-1, e_next[:, None, None].expand(-1, dens.shape[1], 1)).squeeze(-1) - ls
@@ -401,7 +415,7 @@ class PredictiveLayer(nn.Module):
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
                     deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False,
-                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None, cell=None):
+                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None, cell=None, late=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -412,6 +426,8 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     takes slot 0. The deep layers keep their learned races (no override).
     pred_layers: optional list of PredictiveLayer applied after the deep race layers (or instead of them with
     skip_deep); their local log-likelihoods are appended to `local` (a list) per event as (ll (n,), valid (n,)).
+    late: optional list; per event it receives the slowdown score T_k = d/ds log p_s(event | past) at s = 0 (THEORY §440),
+    by a central difference (h = 0.05), detached, for evaluation (None for a stream's first event).
     cell: recording resolution in seconds for the cell likelihood (event_terms; THEORY §439); None = point density.
     surprise_gate: a log-likelihood threshold (nats). When the readout gave the arriving event a log-likelihood above it
     (a predictable event), that lane skips the deep layers: their state is kept and x is the layer input. The binding
@@ -468,6 +484,14 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             route = None; bslot = None; hazard = None
             if prev is not None:
                 lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell)
+                if late is not None:
+                    with torch.no_grad():
+                        up = event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell, .05)[0]
+                        dn = event_terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell, -.05)[0]
+                    late.append((up - dn) / .1)
+            elif late is not None:
+                late.append(None)
+            if prev is not None:
                 if record is not None:
                     tau_now = (t_prev[:, None] - t_ref).clamp_min(0); tau = (now[:, None] - t_ref).clamp_min(0)
                     hazard = -(log_surv(prev, tau, readout.eps) - log_surv(prev, tau_now, readout.eps)).sum(-1).detach()

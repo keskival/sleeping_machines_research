@@ -1082,3 +1082,57 @@ non-zero durations, which is where faults act.
 
 **Test.** C6 = C1 + δ = 1 ms (`--cell-ms 1`). Prediction: validation NLL rises (no tie spike), the timing (gap)
 AUROC rises above C1's .550, and the total AUROC rises toward or above the classical .685.
+
+## 440. Silence-aware score tests: the locally most powerful one-class detector for slowdowns (7 October)
+
+**Problem.** Training is one-class: there is a clean model p₀ and no fault model. The B3 primary score, mean NLL over
+the prefix, tests typicality in every direction at once.
+
+On v2 the measurements show its cost:
+- the type rule beats the total rule, so the timing NLL adds noise;
+- the oracle's strongest statistic is *signed* and *per step* (max over transitions of mean robust z).
+
+The faults have a known *shape* without known parameters: a component slows down, so durations of the affected steps
+lengthen.
+
+**Alternative family.** For a process (slot) s and an affected step class c, the slowed model scales own durations by
+a = e^ε: f_{s,c}^ε(τ) = f_{s,c}(τ e^{−ε}) e^{−ε}. The score test against ε > 0 is locally most powerful among
+level-α tests for small ε (Neyman–Pearson in the local limit; Rao). Its statistic is
+T = ∂_ε log p_ε(L) |_{ε=0}.
+
+**Proposition 440.1 (score of the race readout).** For log-normal own-duration laws in u = log(τ + ε₀) with location
+μ and scale σ:
+- the firing term contributes ∂_ε log f^ε = (u − μ)/σ² per firing event;
+- the survival of any slot contributes ∂_ε log S^ε(τ) = h(τ) τ̃ with h = f/S and τ̃ = τ + ε₀, i.e.
+  q Σ_c π_c φ(z_c)/σ_c / S.
+
+Summing over the merged likelihood of §433 with posterior responsibilities r_s (and class posteriors w_{s,c}) gives,
+per event k:
+
+T_k = Σ_s r_s Σ_c w_{s,c} (u_s − μ_{s,c})/σ_{s,c}²   (firing lateness)
+    + Σ_v [ℓ_v(τ'_v) − ℓ_v(τ_now,v)],   with ℓ_v(τ) = ∂_ε log S_v^ε(τ)   (silence lateness).
+
+- The first term is the *signed* standardised lateness of the event that arrived, attributed to its slot.
+- The second grows while expected events fail to arrive. A stalled step is detected through silence, before any late
+  event appears.
+
+**Corollary 440.2 (the oracle's statistic is a special case).**
+- With true identities (r = indicator), Gaussian log-durations and the silence term dropped, Σ_k T_k restricted to one
+  transition type is the oracle's mean signed z for that type, up to the 1/σ weighting.
+- The oracle's max over transitions is the union-intersection test over the unknown affected step.
+- The race readout supplies r, the per-step laws and the silence term from anonymous data. It is the model-based
+  analogue of the oracle's detector.
+
+**Detector family (declared before use).**
+- **late**: mean_k T_k over the prefix.
+- **late_max**: max over event types e of the mean of firing lateness on events of type e (minimum 5 events), plus
+  the silence term.
+
+Two-sided NLL remains the primary B3 rule unless an amendment admits a native rule selected on validation; classical
+detectors already select from nine statistics.
+
+**Predictions** (toy with synthetic slowdowns, then FAS):
+1. late and late_max exceed mean NLL in AUROC for duration-scaling faults at equal prefix.
+2. The silence term adds power for stalls (faults that withhold events).
+3. On FAS, the late family moves native timing above the type rule and toward the oracle's per-fault profile
+   (largest gain on retry delay, §439 analysis).

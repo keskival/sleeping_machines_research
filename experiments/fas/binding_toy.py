@@ -30,12 +30,12 @@ from sleeping_machines.fast_native_core import fast_class  # noqa: E402
 from sleeping_machines.race_readout import BindingMemory, PredictiveLayer, RaceReadout, detach_state, readout_episode  # noqa: E402
 
 
-def sample(rng, K, R, medians, cv, stagger, drop):
+def sample(rng, K, R, medians, cv, stagger, drop, slow_step=None, slow=1.):
     ev = []
     for k in range(K):
         t = k * stagger + rng.exponential(stagger / 4)
         for r in range(R):
-            t += medians[r] * math.exp(cv * rng.standard_normal())
+            t += medians[r] * math.exp(cv * rng.standard_normal()) * (slow if r == slow_step else 1.)
             if rng.random() >= drop:
                 ev.append((t, r + 1, k))
     ev.sort()
@@ -96,6 +96,8 @@ def main():
     p.add_argument('--pred-layer', type=int, default=0, help='a predictive-routed deep layer with this many slots in place '
                    'of the learned deep layers (THEORY §438); its local likelihood joins the loss')
     p.add_argument('--learned-routing', action='store_true', help='comparison: query/key write race with linear write credit (§437 T1)')
+    p.add_argument('--fault-eval', type=float, default=0., help='after training: AUROC of mean NLL vs the slowdown score '
+                   'statistics (THEORY §440) on clean vs faulty samples in which one route step is slowed by this factor')
     p.add_argument('--gate-eval', default='', help='after training: surprise-gate thresholds (nats) to evaluate, e.g. '
                    '"-1,0,1"; reports NLL, alpha and the fraction of events that skip the deep layers (THEORY §437 I4)')
     p.add_argument('--particles', default='', help='after training: SMC evaluation of validation NLL with these particle '
@@ -138,6 +140,34 @@ def main():
             curve.append(dict(step=step, train_nll=float(loss), val=evaluate(model, ro, bm, val, T),
                               val_argmax=evaluate(model, ro, bm, val, T, deterministic=True)))
             print(json.dumps(curve[-1]), flush=True)
+    faults = {}
+    if a.fault_eval:
+        from sklearn.metrics import roc_auc_score
+        frng = np.random.default_rng(a.seed + 99)
+        clean = [sample(frng, a.K, a.R, medians, a.cv, a.stagger, a.drop) for _ in range(200)]
+        faulty = [sample(frng, a.K, a.R, medians, a.cv, a.stagger, a.drop, slow_step=int(frng.integers(0, a.R)), slow=a.fault_eval)
+                  for _ in range(200)]
+
+        def stats(data):
+            stamps, marks, ids, who, lens = batch(data, T)
+            late = []
+            with torch.no_grad():
+                ll, _, valid, _ = readout_episode(model, ro, stamps, marks, ids, seed=7, binding=bm, late=late,
+                                                  skip_deep=SKIP['deep'], pred_layers=SKIP['pred'])
+            Tk = torch.stack([x if x is not None else torch.zeros(len(data), dtype=torch.float64) for x in late], 1).numpy()
+            ok = (np.arange(T)[None] < np.asarray(lens)[:, None]) & valid.numpy()
+            nll = np.array([-(ll[i].numpy()[ok[i]]).mean() for i in range(len(data))])
+            late_mean = np.array([Tk[i][ok[i]].mean() for i in range(len(data))])
+            idsn = ids.numpy(); lmax = []
+            for i in range(len(data)):
+                per = [Tk[i][ok[i] & (idsn[i] == e)] for e in np.unique(idsn[i][ok[i]])]
+                lmax.append(max(v.mean() for v in per if len(v) >= 3))
+            return nll, late_mean, np.array(lmax)
+        c, f = stats(clean), stats(faulty)
+        y = np.r_[np.zeros(len(clean)), np.ones(len(faulty))]
+        for name, j in (('mean_nll', 0), ('late', 1), ('late_max', 2)):
+            faults[name] = float(roc_auc_score(y, np.r_[c[j], f[j]]))
+        print(json.dumps(dict(fault_factor=a.fault_eval, auroc=faults)), flush=True)
     gates = {}
     for g in [float(v) for v in a.gate_eval.split(',') if v]:
         st_ = []
@@ -153,7 +183,7 @@ def main():
             lz = smc_log_z(model, ro, stamps, marks, ids, L, True, binding=bm).numpy()
             smc[L] = float(np.mean([-lz[i, n - 1] / (n - 1) for i, n in enumerate(lens)]))
             print(json.dumps(dict(particles=L, val_nll=smc[L])), flush=True)
-    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0, smc_val_nll=smc, gates=gates,
+    res = dict(args=vars(a), chance_alpha=1 / a.K, curve=curve, wall_s=time.perf_counter() - t0, smc_val_nll=smc, gates=gates, fault_auroc=faults,
                verdict='binding emerges' if curve[-1]['val'][1] > .8 else 'binding does not emerge at this budget')
     print(json.dumps(dict(start=curve[0], end=curve[-1], verdict=res['verdict'])))
     if a.out:
