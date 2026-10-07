@@ -98,6 +98,7 @@ Official splits, the published per-event log-likelihood protocol, 5 seeds, seale
 | Taxi, 5-seed mixture | 0.522 ± 0.004 (S2P2) | **0.536** | 0.41× |
 | Taxi, single model | 0.522 ± 0.004 | **0.525 ± 0.001** | 1/12 (parameters and compute) |
 | StackOverflow | −2.163 ± 0.009 (S2P2) | **−2.144 ± 0.004** | 1.26× (accuracy win) |
+| StackOverflow, matched size | −2.163 ± 0.009 (S2P2) | **−2.153 ± 0.005** (all 5 seeds above) | **1.015× (near-matched)** |
 
 **A second public win, with the same core, in clinical early warning (7 October 2026).** On P19 (PhysioNet 2019 sepsis
 prediction, 38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive), five official splits, TEST scored once per

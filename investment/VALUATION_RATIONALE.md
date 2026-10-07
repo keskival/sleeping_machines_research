@@ -211,14 +211,15 @@ Investor competition, not the evidence alone, sets the attainable price.
 **Condition status, 7 October 2026.**
 - *Second domain:* **met** — P19 sepsis prediction, five official splits, AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039 vs
   the best published 0.903 / 0.583 (MTM), with the same temporal memory core as the event model.
-- *Matched-compute wins on further EasyTPP datasets:* **in progress** — the Amazon protocol (0.29× S2P2's per-event
+- *Matched-compute wins on further EasyTPP datasets:* **met** — StackOverflow at matched size (0.968× S2P2's parameters,
+  1.015× its per-event compute): −2.1525 ± 0.0045 vs −2.163, all five seeds above S2P2. Also: the Amazon protocol (0.29× S2P2's per-event
   compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed); a matched-size StackOverflow protocol (≈1.0× S2P2)
   is queued.
 - *Independent reproduction:* **not yet** — requested from the curie host (Taxi, five seeds, frozen driver). The
   estimator-parity check (all wins hold under EasyTPP's own Monte Carlo estimator) supports the numbers but is not
   independent.
 Supporting, not on the list: exact containment of Mamba (selective SSM) and attention in the family; two private paper
-drafts. One more condition makes €100M arguable on this rationale's own criteria; the asking price is the founder's decision.
+drafts. **Two of the three conditions now hold (7 October), which makes €100M arguable on this rationale's own criteria;** the independent reproduction (curie, Taxi) is queued. The asking price is the founder's decision.
 
 Earlier assessment (5 October): €50M remains aligned with the ambition as an aggressive,
 evidence-informed negotiating thesis. The new definition/opportunities strengthen
