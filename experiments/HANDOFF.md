@@ -1,3 +1,25 @@
+# R1 recall round 2 (v4, shortcut-free): the event model binds content; local race credit learns it (curie, 7 Oct 15:40 UTC)
+
+Task: 8 key–value pairs, then 8 queries drawn with replacement; inter-pair gaps log-uniform 0.05–50; 32 keys / 32 values
+(chance 3.1%); set baseline = uniform guess among context values. Seed 0, 20,000 training sequences, TEST 1,000 sequences
+(8,000 recall events); 16-pair evaluation is twice the training length.
+
+| Arm | Recall 8 pairs | Recall LL | Total LL | Recall 16 pairs | Params |
+|---|---|---|---|---|---|
+| Keyed read + predecessor message + normalized match, backprop | **99.6%** | −0.012 | **−2.922** | 51.2% | 36,325 |
+| Same, **local race credit only** (no gradient from the read into the network) | **91.9%** | −0.379 | −3.282 | **79.4%** | 36,325 |
+| Frozen B1 v5 | 21.6% | −2.231 | −3.512 | 12.3% | 34,740 |
+| Set baseline | 14.1% | | | 7.9% | |
+
+Diagnosis (backprop arm): the keyed match alone ranks the correct value first in 99.76% of queries; recall is flat
+across pair age (99.2–100%) and elapsed time (0.01 to >100 time units); the preceding key is decodable from the state at
+only 20.7%, so binding travels through the predecessor message, not the decaying state. Local credit: the key/query maps
+learn only from the race error at the read (every losing value credited by its probability) and elapsed-time-decayed
+slot traces; it early-stopped at epoch 16 (dev LL), and extrapolates better than backprop (79% vs 51% at 16 pairs).
+**Single seed; confirmation running** (seeds 1–2, ablations prev-msg-only / qk-norm-only, then mixed-length training
+4–16 pairs with a 32-pair held-out test). Gate status: R1's first gate (recall/induction with irregular gaps) is met on
+seed 0; the claim waits for seeds.
+
 # R1 recall round 1: negative, and a task shortcut found (curie, 7 Oct 14:20 UTC)
 
 Completed (seed 0, 20,000 training sequences, 60 epochs each, results in `results/tpp/recall/`):
