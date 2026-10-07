@@ -8,7 +8,7 @@ for a European/US patent attorney, who decides claim scope, inventorship, jurisd
 | File | Content |
 |---|---|
 | [DISCLOSURE_REGISTER.md](DISCLOSURE_REGISTER.md) | Every candidate invention with its first commit, public/unpublished status and the jurisdictions still open |
-| [INVENTORSHIP_AND_AI.md](INVENTORSHIP_AND_AI.md) | **Read first.** Much of the recent engineering was done by AI agents under the founders' direction; patent offices require a natural-person inventor who contributed to the conception of each claim |
+| [INVENTORSHIP_AND_AI.md](INVENTORSHIP_AND_AI.md) | Inventorship position (founder: significant contribution to each invention), AI-assistance disclosure for counsel, contribution-record template, ownership steps |
 | [inventions/IDF-01_race_of_delayed_clocks.md](inventions/IDF-01_race_of_delayed_clocks.md) | Event prediction by a race of heterogeneous delayed clocks with per-clock mark laws (EasyTPP 5/5 wins) |
 | [inventions/IDF-02_resolution_safe_continuous_time_models.md](inventions/IDF-02_resolution_safe_continuous_time_models.md) | State clock over persistent memory; hazards held below the recording resolution; target-only dequantization; the dequantization audit |
 | [inventions/IDF-03_event_native_irregular_series_classifier.md](inventions/IDF-03_event_native_irregular_series_classifier.md) | Addressed per-channel memories with sufficient statistics, written only on measurement (P19 sepsis win; PAM in protocol) |

@@ -95,5 +95,5 @@ parameters to data-derived gap components.
 
 ## 8. Inventors and contributions
 
-See `../INVENTORSHIP_AND_AI.md`: implementation and several constructions by an AI agent under the founder's direction;
-founders to document their contributions before filing.
+Tero Keski-Valkama (founder statement: significant contribution to the conception of this invention); AI coding agents
+assisted with implementation and experiments. Contribution record: `../INVENTORSHIP_AND_AI.md`.
