@@ -83,6 +83,9 @@ Evidence update, 6 October:
     leads S2P2 (0.522) on the mean at 1/12 of its parameters and compute.
 
   - StackOverflow: −2.144 ± 0.004 vs −2.163 (+0.019) at 1.26× S2P2's compute (accuracy win).
+- **Public clinical win (P19 sepsis, 7 October):** AUPRC 0.639 vs 0.583 and AUROC 0.916 vs 0.903 against the best
+  published model on the five official splits, with the same temporal memory core as the event model — evidence that the
+  family generalizes across data types, not only across event datasets.
 
   All are 5 seeds on official splits with a sealed test: three of five datasets won, past the battle's pass criterion.
   Amazon and Retweet are in development.

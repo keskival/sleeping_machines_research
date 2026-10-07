@@ -98,6 +98,20 @@ Official splits, the published per-event log-likelihood protocol, 5 seeds, seale
 | Taxi, 5-seed mixture | 0.522 ± 0.004 (S2P2) | **0.536** | 0.41× |
 | Taxi, single model | 0.522 ± 0.004 | **0.525 ± 0.001** | 1/12 (parameters and compute) |
 | StackOverflow | −2.163 ± 0.009 (S2P2) | **−2.144 ± 0.004** | 1.26× (accuracy win) |
+
+**A second public win, with the same core, in clinical early warning (7 October 2026).** On P19 (PhysioNet 2019 sepsis
+prediction, 38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive), five official splits, TEST scored once per
+split: **AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039** against the best published 0.903 / 0.583 (MTM, 2025), with
+62,681 parameters ([dossier](../experiments/B2_IRREGULAR_TS.md)). The classifier reuses the EasyTPP model's temporal
+memory layer — same code, same size — adding addressed channel memories with sufficient statistics, typed comparisons
+and time-since-measurement as information.
+
+**Generality, stated precisely.** The EasyTPP leader S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is shown on one task
+type. One Sleeping Machines family now wins public benchmarks on generative event modelling and on sparse clinical
+classification, with further evidence on process logs, character language and few-shot temporal reasoning; large-scale
+language and real tables remain behind. The next tests turn breadth into transfer: self-supervised event pretraining on
+unlabeled clinical records for mortality prediction with fewer labels, and one model across five event datasets
+([generality plan](../experiments/GENERALITY_PLAN.md)).
 | Amazon (in development) | 0.781 (S2P2) | 0.701 | — |
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.
@@ -308,7 +322,7 @@ is a stretch scenario. This prices the potential of a model/learning/runtime
 and computing-substrate platform, supported by research execution and a staged
 program. It is a negotiating position, not an independent appraisal.
 
-**Public de-risking since the proposal was set.** The confirmed EasyTPP wins (Taobao, Taxi, StackOverflow) are the first instance of
+**Public de-risking since the proposal was set.** The confirmed EasyTPP wins (Taobao, Taxi, StackOverflow) and the P19 clinical win are the first instances of
 the evidence the rationale names as most valuable: a repeated useful-quality and full-cost advantage, on a public
 leaderboard with published baselines.
 - They make the €50M opening price materially more defensible.

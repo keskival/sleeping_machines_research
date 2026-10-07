@@ -14,7 +14,11 @@ This is an execution plan, not a prediction of investor acceptance.
   compute), 5 seeds, sealed test ([dossier](../experiments/B1_EASYTPP.md)).
 - **Third dataset won:** StackOverflow (+0.019 nats/event at 1.26× compute, 5 seeds). Amazon and Retweet are in
   development.
-- **Second domain:** irregular clinical/sensor series (B2) has started.
+- **Second domain: achieved on P19.** Sepsis prediction, five official splits: AUROC 0.916 ± 0.022, AUPRC 0.639 ±
+  0.039 vs the best published 0.903 / 0.583 (MTM) ([dossier](../experiments/B2_IRREGULAR_TS.md)). P12 is in its TEST
+  protocol; PAM (wearable sensors) in development.
+- **Generality track G:** self-supervised event pretraining → clinical prediction with fewer labels; one model across five
+  event datasets ([plan](../experiments/GENERALITY_PLAN.md)).
 - **FAS v2:** the sealed setting is selected; development is in progress.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 
