@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM round 4 (development, validation only): v7 augmentation lifted validation accuracy from 0.946 to 0.970 (MTM 0.975) and was still rising at epoch 41 of 80, with epoch-to-epoch swings of 0.946-0.970. Weight averaging (EMA 0.999) and a 120-epoch budget decide whether a stable selected model reaches MTM's level and earns a pre-registered five-split PAM protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b2_r10_pam_split0_v7_crop0.8_jit0.1_ema999_e120",
+        "queue": "experiments/queue/b2/b2_r10_pam_split0_v7_crop0.8_jit0.1_ema999_e120/b2_r10_pam_split0_v7_crop0.8_jit0.1_ema999_e120.txt",
+        "queue_sha256": "e969439ad239ff44222e0f7ef24d398599a891f54061c47b9b6d724fc22583fd",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r10_pam_split0_v7_crop0.8_jit0.1_ema999_e120.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
