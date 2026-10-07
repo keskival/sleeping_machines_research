@@ -1,0 +1,27 @@
+{
+  "run_tag": "aws_fas_v2_dev_C6_glr_20261007T1010Z_awsr2",
+  "script": "experiments/fas/glr_eval.py",
+  "arguments": [
+    "--result",
+    "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z_awsr2/aws_fas_v2_dev_C6_20261007T0045Z_awsr2.json",
+    "--runs",
+    "1000",
+    "--lanes",
+    "32",
+    "--tag",
+    "aws_fas_v2_dev_C6_glr_20261007T1010Z_awsr2"
+  ],
+  "output_redirected": true,
+  "source_sha256": "dd347fee67780de2f87a3800faa2d4528b303f0cb09993f10f3bb8a997dc135f",
+  "git_commit": "6cb33d439d21387c4f494baf1e480cd6ddef2f91",
+  "limits": {
+    "MEM_CAP_KB": "12000000",
+    "MEM_CAP_RSS_KB": "4500000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "5400"
+  },
+  "start_utc": "2026-10-07T13:34:54Z",
+  "status": "completed",
+  "wall_s": 2343.92,
+  "peak_rss_kb": 457640
+}
