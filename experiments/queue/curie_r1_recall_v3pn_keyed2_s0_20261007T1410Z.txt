@@ -1,0 +1,2 @@
+# R1: v3 recall (predecessor message in keys + normalized sharp match), keyed=2; decision: do these lift recall above the v1/v2 plateau (~39%) and fix 16-pair extrapolation, with backprop (1) and local race credit (2)
+curie_r1_recall_v3pn_keyed2_s0_20261007T1410Z experiments/tpp/recall_tpp_v3.py --tag curie_r1_recall_v3pn_keyed2_s0_20261007T1410Z --keyed 2 --prev-msg 1 --qk-norm 1 --seed 0

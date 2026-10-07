@@ -37,6 +37,9 @@ def main():
     kw = dict(dk=args['dk'])
     if args['keyed'] == 2:
         kw['local'] = True
+    for f in ('prev_msg', 'qk_norm'):
+        if args.get(f):
+            kw[f] = True
     model = mod.KeyedRaceTPP(*margs, **kw) if args['keyed'] else mod.RaceTPP(*margs)
     model.load_state_dict(torch.load(ROOT / res['checkpoint'])); model.eval()
     mask = torch.ones_like(M, dtype=torch.bool)
