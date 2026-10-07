@@ -1,4 +1,6 @@
 """Contracts of the competing-risks race readout and posterior routing (sleeping_machines/race_readout.py; §§432–433)."""
+import math
+
 import numpy as np
 import torch
 
@@ -255,3 +257,34 @@ def test_sparse_episode_equals_dense_with_binding():
     torch.testing.assert_close(a[0], b[0], rtol=1e-5, atol=1e-6)
     torch.testing.assert_close(a[1], b[1], rtol=1e-5, atol=1e-6)
     assert 'reads' in b1[3]
+
+
+def test_cell_likelihood_normalises_and_matches_density_for_small_cells():
+    torch.manual_seed(9)
+    S, V, M = 3, 4, 2
+    ro = RaceReadout(V, 1, S, 8, 16, hidden=8, mu0=0., classes=M)
+    with torch.no_grad():
+        p = ro(torch.randn(1, 1, S, 8), torch.randn(1, 16))
+    t_ref = torch.tensor([[0., -.5, -2.]], dtype=torch.float64); t_now = torch.tensor([0.], dtype=torch.float64)
+    from sleeping_machines.race_readout import log_surv
+    # (1) small cells: cell log-likelihood ~ density log-likelihood
+    t_next = torch.tensor([.7], dtype=torch.float64)
+    a = event_terms(p, t_ref, t_now, t_next, torch.tensor([1]), 1e-3)[0]
+    b = event_terms(p, t_ref, t_now, t_next, torch.tensor([1]), 1e-3, cell=1e-7)[0]
+    assert abs(float(a - b)) < 1e-3, (float(a), float(b))
+    # (2) discrete normalisation on a cell grid (exact up to same-cell coincidences of two slots)
+    cell = 1e-3
+    grid = torch.arange(0, 400., cell, dtype=torch.float64)[:200000]
+    total = 0.
+    for e in range(V):
+        ll, _, _ = event_terms({k: v.expand(len(grid), *v.shape[1:]) for k, v in p.items()}, t_ref.expand(len(grid), S),
+                               t_now.expand(len(grid)), grid, torch.full((len(grid),), e), 1e-3, cell=cell)
+        total += float((ll.exp() * cell).sum())
+    never = float((log_surv(p, torch.full((1, S), 1e9, dtype=torch.float64), 1e-3)
+                   - log_surv(p, (t_now[:, None] - t_ref), 1e-3)).sum().exp())
+    tail = float((log_surv(p, torch.full((1, S), 200., dtype=torch.float64) - t_ref, 1e-3)
+                  - log_surv(p, (t_now[:, None] - t_ref), 1e-3)).sum().exp()) - never
+    assert abs(total + never + tail - 1) < 5e-3, (total, never, tail)
+    # (3) a tie (zero elapsed time) has bounded log-likelihood: probability <= 1 per cell
+    tie = event_terms(p, t_now[:, None].expand(1, S).clone(), t_now, t_now, torch.tensor([0]), 1e-3, cell=cell)[0]
+    assert float(tie) + math.log(cell) <= 1e-9

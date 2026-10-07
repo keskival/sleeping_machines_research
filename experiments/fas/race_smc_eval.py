@@ -48,7 +48,7 @@ def gather_state(state, index):
 
 @torch.no_grad()
 def smc_log_z(model, readout, stamps, marks, types, L, posterior, seed=314159, deterministic=False, compiled=False,
-              binding=None):
+              binding=None, cell=None):
     """stamps (n, T). Returns log Z (n, T): cumulative SMC log-likelihood estimate after each event (event 0 = 0)."""
     n, T = stamps.shape
     rep = lambda x: x.repeat_interleave(L, 0)
@@ -59,7 +59,7 @@ def smc_log_z(model, readout, stamps, marks, types, L, posterior, seed=314159, d
     for k in range(T):
         ll, _, valid, st = readout_episode(model, readout, st_s[:, k:k + 1], mk_s[:, k:k + 1], ty_s[:, k:k + 1], state=state,
                                            seed=seed + 7919 * k, posterior=posterior, deterministic=deterministic,
-                                           compiled=compiled, binding=binding)
+                                           compiled=compiled, binding=binding, cell=cell)
         state = detach_state(st)
         logw = logw + (ll[:, 0] * valid[:, 0]).view(n, L)
         cur = logz + torch.logsumexp(logw, 1) - np.log(L)
@@ -119,7 +119,8 @@ def main():
                 idx = list(range(b, min(b + a.lanes, len(runs))))
                 stamps, marks, ids, lengths = tensors(runs, idx)
                 lz = smc_log_z(model, readout, stamps, marks, ids, L, args['posterior'] or bool(args.get('binding_slots')),
-                               compiled=a.compiled, binding=binding).numpy()
+                               compiled=a.compiled, binding=binding,
+                               cell=args.get('cell_ms') / 1000. if args.get('cell_ms') else None).numpy()
                 for r, n_ev in enumerate(lengths):
                     for j, N in enumerate(PREFIXES):
                         if N <= n_ev:

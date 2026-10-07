@@ -125,12 +125,47 @@ def log_fire_density(p, tau, eps):
     return p['logq'] - .5 * z ** 2 - .5 * math.log(2 * math.pi) - p['log_sigma'] - u
 
 
-def event_terms(p, t_ref, t_now, t_next, e_next, eps):
+def log_diff_ndtr(z1, z2):
+    """log(Phi(z2) - Phi(z1)) for z2 >= z1, stable in both tails (lower-tail form when z1 < 0, upper-tail otherwise)."""
+    a, b = torch.special.log_ndtr(z2), torch.special.log_ndtr(z1)
+    lower = a + torch.log1p(-torch.exp((b - a).clamp(max=-1e-12)))
+    c, d = torch.special.log_ndtr(-z1), torch.special.log_ndtr(-z2)
+    upper = c + torch.log1p(-torch.exp((d - c).clamp(max=-1e-12)))
+    return torch.where(z1 < 0, lower, upper)
+
+
+def event_terms(p, t_ref, t_now, t_next, e_next, eps, cell=None):
     """p: laws after the previous event; t_ref (n, S) last-write times; t_now (n,) previous event time; t_next (n,),
-    e_next (n,) long: the event. Returns (log-lik total (n,), time-only (n,), log responsibilities (n, S))."""
+    e_next (n,) long: the event. Returns (log-lik total (n,), time-only (n,), log responsibilities (n, S)).
+    cell (seconds): the recording resolution (THEORY §439). The firing term uses the probability of the recorded
+    cell [tau, tau + cell), log(S_s(tau) - S_s(tau + cell)) - log S_s(tau) - log cell, instead of the point density,
+    so exact ties cannot earn unbounded likelihood. Per-second units are kept."""
     tau_now = (t_now[:, None] - t_ref).clamp_min(0); tau = (t_next[:, None] - t_ref).clamp_min(0)
     ls = log_surv(p, tau, eps)
     base = (ls - log_surv(p, tau_now, eps)).sum(-1)
+    if cell is not None:
+        lc = math.log(cell)
+        z1 = lambda mu, ls_: (torch.log(tau + eps) - mu) / ls_.exp()
+        z2 = lambda mu, ls_: (torch.log(tau + cell + eps) - mu) / ls_.exp()
+        if 'logpi' in p:
+            u1, u2 = torch.log(tau + eps)[..., None], torch.log(tau + cell + eps)[..., None]
+            sig = p['log_sigma'].exp()
+            comp = p['logq'][..., None] + p['logpi'] + log_diff_ndtr((u1 - p['mu']) / sig, (u2 - p['mu']) / sig)
+            M = comp.shape[-1]
+            pe = p['logp'].gather(-1, e_next[:, None, None, None].expand(-1, comp.shape[1], M, 1)).squeeze(-1)
+            fire_t = torch.logsumexp(comp, -1) - ls - lc
+            fire = torch.logsumexp(comp + pe, -1) - ls - lc
+        elif _typed(p):
+            u1, u2 = torch.log(tau + eps)[..., None], torch.log(tau + cell + eps)[..., None]
+            sig = p['log_sigma'].exp()
+            dens = p['logq'][..., None] + p['logp'] + log_diff_ndtr((u1 - p['mu']) / sig, (u2 - p['mu']) / sig)
+            fire_t = torch.logsumexp(dens, -1) - ls - lc
+            fire = dens.gather(-1, e_next[:, None, None].expand(-1, dens.shape[1], 1)).squeeze(-1) - ls - lc
+        else:
+            fire_t = p['logq'] + log_diff_ndtr(z1(p['mu'], p['log_sigma']), z2(p['mu'], p['log_sigma'])) - ls - lc
+            fire = fire_t + p['logp'].gather(-1, e_next[:, None, None].expand(-1, fire_t.shape[1], 1)).squeeze(-1)
+        lse = torch.logsumexp(fire, -1)
+        return base + lse, base + torch.logsumexp(fire_t, -1), fire - lse[:, None]
     if 'logpi' in p:
         u = torch.log(tau.clamp_min(0) + eps)[..., None]
         z = (u - p['mu']) / p['log_sigma'].exp()
@@ -366,7 +401,7 @@ class PredictiveLayer(nn.Module):
 
 def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, route_credit='linear', posterior=False,
                     deterministic=False, compiled=False, binding=None, record=None, sparse=False, skip_deep=False,
-                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None):
+                    pred_layers=None, local=None, surprise_gate=None, gate_stats=None, cell=None):
     """carried_episodes.carried_logits' loop with the race readout.
     stamps (n, T) float64 absolute seconds; marks (n, T, content); types (n, T) long event ids.
     Returns ll_total (n, T), ll_time (n, T): the log-likelihood of event j of this segment given everything before it
@@ -377,6 +412,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
     takes slot 0. The deep layers keep their learned races (no override).
     pred_layers: optional list of PredictiveLayer applied after the deep race layers (or instead of them with
     skip_deep); their local log-likelihoods are appended to `local` (a list) per event as (ll (n,), valid (n,)).
+    cell: recording resolution in seconds for the cell likelihood (event_terms; THEORY §439); None = point density.
     surprise_gate: a log-likelihood threshold (nats). When the readout gave the arriving event a log-likelihood above it
     (a predictable event), that lane skips the deep layers: their state is kept and x is the layer input. The binding
     memory and readout still update (THEORY §437 I4). gate_stats (list) receives the skipped fraction per event.
@@ -431,7 +467,7 @@ def readout_episode(model, readout, stamps, marks, types, state=None, seed=0, ro
             now = stamps[:, k]
             route = None; bslot = None; hazard = None
             if prev is not None:
-                lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps)
+                lt, lti, logr = terms(prev, t_ref, t_prev, now, types[:, k], readout.eps, cell)
                 if record is not None:
                     tau_now = (t_prev[:, None] - t_ref).clamp_min(0); tau = (now[:, None] - t_ref).clamp_min(0)
                     hazard = -(log_surv(prev, tau, readout.eps) - log_surv(prev, tau_now, readout.eps)).sum(-1).detach()

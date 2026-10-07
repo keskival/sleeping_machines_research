@@ -62,14 +62,14 @@ def parts(ll_tot, ll_time, stamps, lengths):
 
 
 @torch.no_grad()
-def scores(model, readout, runs, lanes, posterior, compiled, binding=None):
+def scores(model, readout, runs, lanes, posterior, compiled, binding=None, cell=None):
     out = []; total = 0.; count = 0; used = []
     model.eval(); readout.eval()
     for b in range(0, len(runs), lanes):
         idx = list(range(b, min(b + lanes, len(runs))))
         stamps, marks, ids, lengths = tensors(runs, idx)
         ll, llt, _, st = readout_episode(model, readout, stamps, marks, ids, seed=314159, posterior=posterior,
-                                         compiled=compiled, binding=binding)
+                                         compiled=compiled, binding=binding, cell=cell)
         pt, pg, mask = parts(ll, llt, stamps, lengths)
         total += pt.sum() + pg.sum(); count += int(mask.sum())
         out.append(prefix_scores(pt, pg, lengths))
@@ -103,8 +103,11 @@ def main():
     p.add_argument('--seed', type=int, default=6); p.add_argument('--eval-runs', type=int, default=1000)
     p.add_argument('--max-windows', type=int, default=0); p.add_argument('--segment', type=int, default=128)
     p.add_argument('--tau-max', type=float, default=1000.); p.add_argument('--no-test', action='store_true')
+    p.add_argument('--cell-ms', type=float, default=0., help='recording resolution in ms for the cell likelihood (THEORY §439); '
+                   '0 = point density')
     p.add_argument('--trace-windows', type=int, default=1, help='training windows traced by the operation audit (eager)')
     a = p.parse_args()
+    CELL = a.cell_ms / 1000. if a.cell_ms else None
     out = Path(OUT) / f'{a.tag}.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     if Path(a.tag).name != a.tag or out.exists():
@@ -162,7 +165,7 @@ def main():
                     model.train(); readout.train(); opt.zero_grad(set_to_none=True)
                     ll, _, valid, st = readout_episode(model, readout, stamps[:, sl], marks[:, sl], ids[:, sl], state=state,
                                                        seed=100000 + w, route_credit=rc, posterior=a.posterior,
-                                                       compiled=compiled, binding=binding)
+                                                       compiled=compiled, binding=binding, cell=CELL)
                     m = valid.sum()
                     loss = -(ll * valid).sum() / m.clamp_min(1)
                     loss.float().backward(); torch.nn.utils.clip_grad_norm_(params, a.clip); opt.step()
@@ -180,8 +183,8 @@ def main():
                 if w % 25 == 0:
                     print(json.dumps(dict(window=w, of=total, train_nll_t=float(loss.detach()),
                                           events_per_s=events_seen / (time.perf_counter() - started))), flush=True)
-        sc_c, val_nll, occ = scores(model, readout, val_c, 64, a.posterior, a.compiled, binding)
-        sc_f, _, _ = scores(model, readout, val_f, 64, a.posterior, a.compiled, binding)
+        sc_c, val_nll, occ = scores(model, readout, val_c, 64, a.posterior, a.compiled, binding, CELL)
+        sc_f, _, _ = scores(model, readout, val_f, 64, a.posterior, a.compiled, binding, CELL)
         curve.append(dict(epoch=epoch, train_nll_time_units=loss_sum / max(n_sum, 1), val_clean_nll=val_nll,
                           val_auroc=aurocs(sc_c, sc_f, val_k), val_clean_occupancy=occ, epoch_s=time.perf_counter() - t0))
         print(json.dumps(curve[-1]), flush=True)
@@ -198,8 +201,8 @@ def main():
     sc_tc = sc_tf = test_k = None; test_nll = None
     if not a.no_test:
         test_c, _ = load(d / 'test_clean.npz', a.max_events); test_f, test_k = load(d / 'test_faulty.npz', a.max_events)
-        sc_tc, test_nll, _ = scores(model, readout, test_c, 64, a.posterior, a.compiled, binding)
-        sc_tf, _, _ = scores(model, readout, test_f, 64, a.posterior, a.compiled, binding)
+        sc_tc, test_nll, _ = scores(model, readout, test_c, 64, a.posterior, a.compiled, binding, CELL)
+        sc_tf, _, _ = scores(model, readout, test_f, 64, a.posterior, a.compiled, binding, CELL)
     per_run = dict(prefixes=np.array(PREFIXES), rules=np.array(RULES), val_fault_kind=np.asarray(val_k))
     for split, pair in (('val', best[3]), ('test', (sc_tc, sc_tf))):
         if pair[0] is not None:
@@ -212,7 +215,7 @@ def main():
         def infer_step(sparse):
             with torch.no_grad():
                 readout_episode(model, readout, st_i, mk_i, id_i, seed=314159, posterior=a.posterior, binding=binding,
-                                sparse=sparse)
+                                sparse=sparse, cell=CELL)
         infer = capture(lambda: infer_step(False)); infer_sparse = capture(lambda: infer_step(True))
         infer_events = st_i.shape[0] * st_i.shape[1]
     readout_params = sum(q.numel() for q in readout.parameters()) + (sum(q.numel() for q in binding.parameters()) if binding else 0)

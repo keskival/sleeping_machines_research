@@ -1054,3 +1054,31 @@ Revised reading:
 well-predicted events costs NLL roughly in proportion to the skipped share (+0.06 at 9%, +0.20 at 20%). The deep
 layers' cross-process context (§438.1) needs every event. Remaining forms: training with the gate (the model learns
 to tolerate gaps), or gating that still applies a cheap state update (a decay-only step) instead of skipping.
+
+## 439. The resolution principle for race readouts: score recorded cells, not points (7 October)
+
+**Failure.** FAS records time in milliseconds. On v2 validation:
+- 36% of merged gaps are exactly 0 ms;
+- 29% of item-own durations are exactly 0 ms (same-item steps sharing a timestamp).
+
+A continuous own-duration density with log(τ + ε) and ε = 1 ms gives a tied event a density up to ~1/(σ ε). That is
++10 nats per tie, which the likelihood rewards without any information about faults. Round 1 shows the symptom:
+- C1 has a far lower validation NLL than C2 (0.338 against 2.655);
+- yet C1 has worse detection (.630 against .663);
+- and its timing rule is near chance (.550).
+
+The B1 battle found the same pathology ("zero-gap spike"; grid audit).
+
+**Principle.** Data recorded at resolution δ have the likelihood of the recorded cell. Slot s firing in
+[τ, τ + δ), with no other slot before it, has probability ≈ [S_s(τ) − S_s(τ + δ)] Π_{v≠s} S_v(τ_v)/S_v(e_v):
+- ties get a bounded probability;
+- per-second units are kept by subtracting log δ;
+- as δ → 0 the density is recovered (contract);
+- the discrete probabilities sum to one up to same-cell coincidences of two slots (contract, 5e-3);
+- log(Φ(z₂) − Φ(z₁)) is computed in the stable tail (`log_diff_ndtr`).
+
+The likelihood then spends no capacity on resolving below the recording cell. The duration laws must explain
+non-zero durations, which is where faults act.
+
+**Test.** C6 = C1 + δ = 1 ms (`--cell-ms 1`). Prediction: validation NLL rises (no tie spike), the timing (gap)
+AUROC rises above C1's .550, and the total AUROC rises toward or above the classical .685.

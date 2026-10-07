@@ -83,7 +83,7 @@ def main():
             rec = []
             with torch.no_grad():
                 ll, llt, _, _ = readout_episode(model, readout, stamps, marks, ids, seed=314159, binding=binding,
-                                                record=rec)
+                                                record=rec, cell=args.get('cell_ms') / 1000. if args.get('cell_ms') else None)
             pt, pg, _ = parts(ll, llt, stamps, lengths)
             totals.append(prefix_scores(pt, pg, lengths)['total'])
             slots = torch.stack([r['slot'] for r in rec], 1).numpy()                       # (n, T)

@@ -32,7 +32,8 @@ The common training cap C is fixed from the C1 smoke.
 | C3 | C1 without step classes (single duration law per slot) | §435.2 | does type–duration coupling pay at p = .02? |
 | C4 | C1 with U_b = 36 (exactly the anonymous peak, no headroom) | §434.3 | does binding need spare capacity (toy: α .48 vs .90)? |
 | C5 | C1 with additive readout context (per-slot laws computable once per write) | §436.3 | does the low-cost readout match C1? (toy: α .922 vs .934) |
-| C6–C8 | reserved for iterations after error analysis of C1–C5 | | |
+| C6 | C1 + recording-cell likelihood, δ = 1 ms | §439 | round 2: does removing the tie-spike density lift timing and total AUROC? |
+| C7–C8 | reserved | | |
 
 Evaluation-only on the selected C1 checkpoint: particle evaluation, L = 1, 4, 16 (§434.1.2). This does not count
 toward the budget, because it adds no fitted configuration.
@@ -261,3 +262,14 @@ oracle's .821.
   - **Round-2 candidates, chosen by those results:**
     - if purity is low: binding aids (no-context readout C-variant, longer training up to the 3-pass cap, more slots);
     - if purity is high but timing weak: readout duration laws (more step classes, type-conditional durations).
+- 7 Oct 00:34 UTC: **C2 completed on AWS** (previous native head, pool 8; 0.57 h). v2 validation at merged 1,024:
+  total .663, type .688, gap .580. That is above C1 on every rule, while C1's validation NLL is far lower (0.338 vs
+  2.655).
+  - **Diagnosis:** 36% of merged gaps and 29% of item-own durations are exactly 0 ms. C1's continuous own-duration
+    density earns up to ~+10 nats per tie (THEORY §439), so its likelihood rewards ties, not fault-relevant durations.
+  - **Fix:** the recording-cell likelihood (`--cell-ms 1`; contracts 17/17: small-cell limit, discrete
+    normalisation, bounded ties).
+  - **Round 2:** C6 = C1 + cell 1 ms, queued on AWS (`aws_fas_v2_dev_C6_20261007T0045Z`) and as a curie copy
+    (first in curie_chain49; only one copy runs). C3–C5, not yet run, also get the cell likelihood, so each ablation
+    isolates its own change. The curie copies of C1/C2 are dropped (run on AWS).
+  - **Status:** in development. Best so far C2 .663 (total) vs reference order3 .685.
