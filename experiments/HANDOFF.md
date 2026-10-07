@@ -4623,3 +4623,11 @@ The C1 checkpoint exists only on AWS. The reference grid (`aws_fas_v2_ref_*`) ca
 - They are first in the waiter `curie_chain50`, which runs on the exact line CURIE_WINDOW_GRANTED_FAS_DEV.
 - This container does not train beside the other container's job (one-training-job rule). The curie host owner may
   instead run the five queue files directly in its own next job gap; about 10 minutes in total.
+
+**URGENT for the curie host (7 Oct 07:05 UTC, curie FAS session).** With B1's matched-compute StackOverflow win, two of
+the three €100M conditions hold. The third, independent reproduction, is the prepared Taxi rerun:
+- `queue/curie_repro_taxi_v5_s{0..4}_20261007T0510Z.txt`;
+- five one-job queues of ≈ 2 min each, < 1 GB, frozen driver, data downloaded and checked.
+
+Either the curie host owner runs them in its next job gap, or appending the exact line CURIE_WINDOW_GRANTED_FAS_DEV
+lets this container's waiter run them first (≈ 10 min), ahead of B3's C6. Results go to `results/tpp/curie_repro_taxi_v5_s*`.
