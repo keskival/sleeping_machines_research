@@ -1,0 +1,2 @@
+# B1: Retweet v13: state clock held at its one-cell value below the 1 s recording cell (v12's DEV gain came entirely from a hazard spike at exactly zero gap: zero-gap events +0.63 recorded vs -4.69 dequantized). Decides the honest Retweet state-clock standing
+b1_r19_retweet_v13_state16_s0 experiments/tpp/race_tpp_v13.py --tag b1_r19_retweet_v13_state16_s0 --dataset retweet --seed 0 --n-lognormal 8 --n-window 4 --patience 8 --floor-cell 1.0 --state-modes 16
