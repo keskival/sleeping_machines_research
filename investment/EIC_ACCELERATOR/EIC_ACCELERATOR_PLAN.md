@@ -26,7 +26,7 @@ before submitting; work programmes change yearly, and the 2027 programme will go
 
 | Requirement | Status | Gap and action |
 |---|---|---|
-| Legal entity (EU SME) | No company yet (deck: terms "subject to company formation") | Allowed at application (natural person). **Incorporate early** anyway, as a Finnish Oy or a Spanish S.L. (§9): the PIC, the cap table, the team criterion, national co-funding and investor traction all go through the company |
+| Legal entity (EU SME) | No company yet (deck: terms "subject to company formation") | Allowed at application (natural person). **Incorporate a Spanish S.L. early** anyway (§9; the founder lives in Spain): the PIC, the cap table, the team criterion, national co-funding and investor traction all go through the company |
 | Deep-tech novelty | Strong: a new trainable substrate (temporal races, addressed sparse state, counterfactual credit), exact containment of attention and Mamba, formal theory | Present it as one product-relevant breakthrough, not a research catalogue |
 | **TRL 5/6** | Event-native models validated on **real-world public data**: EasyTPP (taxi, e-commerce, Q&A logs) and ICU records (P19). Defensibly TRL 4–5 (validated against real data, in the lab). **No deployment in a relevant operational environment yet (TRL 6)** | **The decisive gap.** Run a pilot on a design partner's own operational event data (industrial or IoT event logs, IT operations or security logs, or clinical time series), with a measured result. Even a short pilot with a letter of intent strengthens TRL 5/6 |
 | IP | No company-owned patents; IP plan exists (`investment/IP_PROTECTION_PLAN.md`) | File priority applications on the core constructions **before** any public disclosure; EIC evaluates IP at the short stage. Coordinate with the two private paper drafts, which must wait for the disclosure decision |
@@ -79,18 +79,31 @@ All costs are planning assumptions to be replaced by the EIC lump-sum budget tem
 
 | When | Action |
 |---|---|
-| Oct 2026 | Incorporate (Oy or S.L., §9); get the company PIC; IP counsel and priority filings on the core constructions; choose the beachhead; approach 3–5 design partners |
-| Oct–Nov 2026 | Sign one design-partner pilot or letter of intent; secure written investor interest; name team or adviser commitments; contact the Finnish EIC National Contact Point (Business Finland) for a pre-review |
+| Oct–Nov 2026 | Incorporate the Spanish S.L. with **€20,000 paid-in share capital** (keeps NEOTEC open, §6) and apply for ENISA certification as an empresa emergente (Ley 28/2022); get the company PIC; IP counsel and priority filings on the core constructions; choose the beachhead; approach 3–5 design partners |
+| Oct–Nov 2026 | Sign one design-partner pilot or letter of intent; secure written investor interest; name team or adviser commitments; contact the Spanish EIC National Contact Point at **CDTI** for a pre-review |
 | Nov–Dec 2026 | Run the pilot's first measurement. Submit the **short proposal** when TRL 5/6 evidence exists (earliest batching: **first Tuesday of December 2026**, or January 2027) |
 | Within 12 months of a GO | Full proposal at the first suitable 2027 cut-off, after the free coaching; meanwhile finish the pilot and close the round |
 | Interview | ~8–9 weeks after the full-proposal cut-off; jury of entrepreneurs and investors |
 
-## 6. Complementary Finnish funding (check current calls)
+## 6. Complementary Spanish funding and support (check current calls)
 
-- **Business Finland Sprint:** pilot call for small companies' first R&D funding (launched 2026).
-- **Business Finland Deep Tech Accelerator:** three €400k phases (two grants, one loan) at 75% of costs, for startups
-  under five years old commercialising research. The 2026 call ran 11 May–16 Aug 2026; watch for 2027.
-- National funding counts as "financial means" for grant-only and as traction.
+- **CDTI (Centro para el Desarrollo Tecnológico y la Innovación)** is the Spanish National Contact Point for the EIC.
+  Give consent to share the proposal with the NCP at submission, and ask CDTI for a pre-review before submitting.
+- **CDTI NEOTEC** (tech-based small companies under 3 years old, **paid-in share capital ≥ €20,000**):
+  - grant up to 70% of the business plan, at most €250k (85% and €325k if a PhD is hired); project budget at least
+    €175k;
+  - the 2026 call ran 14 April – 14 May 2026 for projects starting 1 January 2027; expect the 2027 call in spring 2027;
+  - the company must already be incorporated when applying.
+- **CDTI Seal of Excellence follow-up:** CDTI has funded Spanish SMEs whose EIC Accelerator full proposal earned a Seal
+  of Excellence (€22M to 11 SMEs in December 2025; reported up to €2.5M per project). The 2026 call (€7.5M) was
+  limited to the Canary Islands and the Valencian Community (FEDER regional funds). An EIC full proposal therefore has
+  value even without EIC funding. Check the current national and regional rules.
+- **ENISA:** participative loans; certification of *empresa emergente* under the Startup Law (Ley 28/2022). Benefits
+  include 15% corporate tax for the first four years with a positive base, a stock-option exemption raised to €50k a
+  year, and deferral of tax payable in the first profitable years.
+- **Regional programmes** depend on the autonomous community where the S.L. is domiciled. Several regions run their own
+  Seal-of-Excellence or deep-tech instruments.
+- All of these count as "financial means" for grant-only and as traction.
 
 ## 7. Risks to the application and mitigations
 
@@ -111,26 +124,24 @@ All costs are planning assumptions to be replaced by the EIC lump-sum budget tem
 Sources: [EIC Accelerator page](https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en) ·
 [Guide for applicants v6.0, WP2026](https://eic.ec.europa.eu/document/download/9d96fbf3-4d85-4ad0-9483-c77ce348111d_en?filename=EIC+Accelerator+guide+for+applicants_WP26.pdf) ·
 [EIC Accelerator FAQ](https://eic.ec.europa.eu/eic-frequently-asked-questions/faqs-eic-accelerator_en) ·
-[Business Finland DTA](https://www.businessfinland.fi/en/services/funding/funding-services//deep-tech-accelerator-dta) ·
-[Business Finland 2026 funding services](https://www.businessfinland.fi/en/whats-new/news/2026/what-do-business-finlands-funding-services-look-like-at-the-beginning-of-2026/)
+[CDTI NEOTEC 2026 press note](https://www.cdti.es/sites/default/files/2026-04/20260413_ndp_neotec_2026_1.pdf) ·
+[Startup Law benefits (ASEST)](https://asest.es/story/beneficios-para-startups/)
 
-## 9. Where to incorporate: Finnish Oy or Spanish S.L. (added 7 October 2026)
+## 9. Where to incorporate: Spanish S.L. (decided 7 October 2026)
 
-The EIC accepts an SME established in **any** EU Member State; both are eligible. The deciding factors are where the
-founder and team actually live and work, and the national co-funding.
+The founder lives in Spain and wants no ties to other jurisdictions, so the company is a **Spanish S.L.**
+- The EIC accepts an SME established in any Member State.
+- Incorporating where the company is actually managed avoids tax-residence and permanent-establishment problems, and it
+  satisfies the operational-capacity checks of the EIC and the national programmes.
 
-| Factor | Spanish S.L. | Finnish Oy |
-|---|---|---|
-| EIC eligibility | Yes | Yes |
-| **Seal of Excellence follow-up** | CDTI has run direct-grant calls for Spanish SMEs holding an EIC Accelerator Seal of Excellence (FEDER co-funded; reported up to €2.5M per project; 2025: €22M to 11 SMEs; the 2026 call, €7.5M, was limited to Canary Islands and Valencian companies) | No equivalent Seal-of-Excellence scheme identified (not verified) |
-| Early R&D grant | **CDTI NEOTEC 2026**: up to 70% of eligible costs, max €250k (85% / €325k if a PhD is hired); company ≤ 3 years old; **paid-in share capital ≥ €20,000** before applying | **Business Finland Sprint** (2026 pilot, first R&D funding); **Deep Tech Accelerator**: three €400k phases (two grants, one loan) at 75% of costs, startups < 5 years old; 2026 call closed 16 Aug |
-| Other national instruments | ENISA participative loans; the Startup Law regime (Ley 28/2022: reduced corporate tax in the first years, better stock-option treatment, certified startup status) — **verify current terms** | Business Finland loans and grants; a strong Nordic seed and VC ecosystem |
-| Investor practicalities | Share transfers and capital increases go through a notary; workable, but more friction for VC rounds and option plans | Simple share transfers; familiar to Nordic investors |
-
-**Rule that overrides the table:** incorporate where the company will really be managed and where the founder and team
-work. The EIC checks operational capacity. National programmes require a real local establishment. A company managed
-from another country risks tax residence and permanent-establishment problems. If the founder lives in Spain, the S.L.
-is the natural choice, and CDTI's Seal-of-Excellence funding makes even an unsuccessful EIC full proposal valuable.
+Practical points for the S.L.:
+- **Share capital of €20,000, fully paid in** (the legal minimum is lower, but NEOTEC requires €20k).
+- Founder's agreement and cap table ready for the round, including an option pool.
+- Share transfers and capital increases go through a notary: plan the round's mechanics with counsel early.
+- The ENISA certification as *empresa emergente* follows incorporation.
+- **IP assignment:** the founder assigns the core inventions, code and know-how to the S.L. in writing. Preserve
+  research co-authorship credit (Karoliina Salminen).
+- Domicile in the autonomous community where the founder lives, so regional programmes apply.
 
 Sources: [CDTI Seal of Excellence 2026 call](https://www.cdti.es/en/noticias/cdti-innovacion-75-millones-pymes-canarias-valencia-sello-excelencia-eic-feder-2026) ·
 [BOE extract, 18 May 2026](https://www.boe.es/buscar/doc.php?id=BOE-B-2026-16523) ·

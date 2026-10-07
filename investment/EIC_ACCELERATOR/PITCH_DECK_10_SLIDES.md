@@ -5,7 +5,7 @@ style of `investment/PITCH_DECK.json`; keep each slide to one message.
 
 1. **EVENTCORE: AI that computes through time.**
    - Event-native models for operational event streams, on ordinary CPUs.
-   - [Company], [country of incorporation].
+   - [Company] S.L., Spain.
 2. **The problem.**
    - Industrial, IT and clinical data are irregular, interleaved, partly missing events.
    - Sequence AI recomputes history per event and needs GPUs.

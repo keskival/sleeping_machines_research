@@ -137,7 +137,7 @@ long-term upside, not part of this project.
 
 - Planned private round: €3M [status: LOIs, commitments].
 - Grant-only request: the round finances the 30% co-funding and the scaling beyond the grant.
-- [National funding: Business Finland Sprint / DTA status.]
+- [National funding: CDTI NEOTEC / ENISA status.]
 
 ### 3.3 Risks and mitigation
 
