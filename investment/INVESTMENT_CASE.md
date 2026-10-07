@@ -117,8 +117,9 @@ type. One Sleeping Machines family now wins public benchmarks on generative even
 classification, with further evidence on process logs, character language and few-shot temporal reasoning; large-scale
 language and real tables remain behind. One shared temporal core (14,080 parameters) trained jointly on Taxi, Taobao,
 StackOverflow and Amazon matches or beats the separate per-dataset models on three of four (development data): mobility,
-shopping and Q&A timing share one learned dynamics. Next: self-supervised event pretraining on unlabeled clinical records
-for mortality prediction with fewer labels, with a fuller pretraining budget
+shopping and Q&A timing share one learned dynamics. Next: transfer across clinical datasets, pretraining on 31K unlabeled
+sepsis-cohort stays before predicting mortality in another cohort with few labels (pretraining on the same records as the
+labels gave no robust gain)
 ([generality plan](../experiments/GENERALITY_PLAN.md)).
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.

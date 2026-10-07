@@ -681,7 +681,7 @@
       ],
       "banner": "S2P2, the event-benchmark leader, is shown on one task type. We win on several.",
       "banner_y": 536,
-      "caveat": "Large-scale language (90M characters) and real tables remain behind; transfer from event pretraining to clinical labels is in replication.",
+      "caveat": "Large-scale language (90M characters) and real tables remain behind; next test: transfer from a large unlabeled clinical cohort to another.",
       "notes": "Positioning: S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is evaluated only on marked event likelihood. Its parent family, deep state-space models, is general on dense sequences and language; published SSM results do not, to our knowledge, show one model winning event likelihood and sparse clinical classification together. Track G (experiments/GENERALITY_PLAN.md): self-supervised event pretraining on unlabeled clinical records transferred to mortality prediction with fewer labels (G1); one model across five event datasets (G2); PAM wearable sensors (G3); event-to-event transfer (G4)."
     },
     {
