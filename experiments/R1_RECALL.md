@@ -60,6 +60,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | Keyed read, local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
 | **Message only, local race credit, 3 seeds** | mean ± sd | **77.4 ± 5.4%** (77.3 / 72.2 / 82.9) | | | 57.4 ± 5.2% |
 | Frozen B1 v5 | 0 | 21.6% | −2.231 | −3.512 | 12.3% |
+| **Message only, mixed-length training (4–16 pairs), backprop** | 0 | **99.2%** | | −3.124 | 97.5% (in range); **91.6% at 32 pairs** (held out; set baseline 5.0%) |
 | Set baseline | — | 14.1% | | | 7.9% |
 
 **Gate 1 status: met at the training length over three seeds** (99.4 ± 0.2% vs the set baseline 14.1% and frozen v5
@@ -87,6 +88,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | 7 Oct 17:15 | 2 | Ablation: normalized match only | TEST 21.6%, 12.4% at 16 pairs (identical to v5) | The predecessor message is necessary. Design fixed to **message only**; the not-yet-started queues for message+normalization (`curie_r1_v5len_*_20261007T1520Z`, `curie_r1_v4_pn_keyed2_s{1,2}_20261007T1545Z`) are superseded and were never run; replaced by the message-only chain (backprop seeds 1–2, local race credit seeds 0–2, mixed-length 4–16 pairs) |
 | 7 Oct 18:02 | 2 | Message only, backprop seeds 1–2 | 3 seeds: 97.5 ± 1.7%; 16 pairs 73.8 ± 14.7% | Recommended design reproduces; generalizes better than message + normalization (44.6 ± 6.8%) but varies by seed |
 | 7 Oct 18:42 | 2 | Message only, local race credit seeds 0–2 | 77.4 ± 5.4%; 16 pairs 57.4 ± 5.2% | **Learning through the race alone binds content reproducibly** (≈5.5× the set baseline). Below backprop (97.5%) and below the normalized local variant (91.9%, seed 0; seeds 1–2 queued) |
+| 7 Oct 19:14 | 3 | Mixed-length training 4–16 pairs (`recall_tpp_v5.py`), message only | 99.2% at 8; 97.5% at 16; **91.6% at 32 pairs** (2× the longest training length) | Length generalization follows from mixed lengths; seed 0, more seeds next |
 
 ## Next
 
