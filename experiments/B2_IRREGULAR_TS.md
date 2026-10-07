@@ -60,3 +60,7 @@ selected by validation AUROC; TEST scored once per split. Report mean ± sd of T
 against MTM 90.3 ± 2.0 / 58.3 ± 5.3.
 | 7 Oct | v3 lr 5e-4 | slower learning on P12 | val AUROC 0.870 (best epoch 10) | no gain over lr 2e-3 (0.872) |
 | 7 Oct | **final P19 (v3)** | pre-registered: v3 defaults, five official splits, validation-AUROC selection, TEST once per split | per split AUROC 0.942 / 0.923 / 0.883 / 0.926 / 0.907; **TEST AUROC 0.916 ± 0.022, AUPRC 0.639 ± 0.039** (62,681 parameters) | **WIN over the best published model on the official splits** (MTM 0.903 ± 0.020 / 0.583 ± 0.053): AUPRC +0.056 (beyond both split spreads), AUROC +0.013 (within one split sd). Literature check 7 Oct: arXiv 2602.19531 reports ≈0.897 with its own 5-fold CV (different protocol); QuITE (2605.28166) does not report P19 |
+
+**Pre-registered P12 protocol (fixed 7 Oct ~03:50 UTC, before any of its runs).** `race_irts_v3.py` defaults (d32, 2
+layers, J=4, dropout 0.2, lr 2e-3, batch 128, patience 12, ≤ 60 epochs), seed 0, five official splits, validation-AUROC
+selection, TEST once per split; against MTM 88.0 ± 1.0 / 58.6 ± 4.1.
