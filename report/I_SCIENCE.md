@@ -110,6 +110,21 @@ PhysioNet 2019 sepsis prediction on the five official Raindrop splits (38,803 IC
 
 **Win on P19 over the best published model**, with AUPRC — the clinically relevant metric at 4% prevalence — ahead by more than either model's split spread. P12 and PAM are in development (P12 validation AUROC 0.872 vs MTM TEST 0.880).
 
+### 4.0c One family across data types
+
+The same construction — persistent memories that decay and rotate with elapsed time, addressed memory written sparsely, typed comparisons, silence as information, and temporal races — wins public benchmarks of different kinds. The P19 classifier imports the very temporal memory layer of the EasyTPP model, at the same size (32 wide, 16 modes, 2 layers).
+
+| Data type | Benchmark | Result |
+| --- | --- | --- |
+| Generative event streams (when and what happens next) | EasyTPP, 5 datasets | **Wins on 3** (Taxi, Taobao, StackOverflow); Amazon and Retweet in progress |
+| Irregular clinical records (classification) | P19 sepsis, official splits | **Win**, AUPRC 0.639 vs 0.583 |
+| Anonymous interleaved process logs | FAS v1, 3 seeds | **Win** vs six generic controls, 0.592 vs 0.559 AUROC |
+| Character language | text8, 10M characters | **Win** vs tuned Transformers at ≤ equal compute; **loss** to tuned LSTMs; **loss** at 90M |
+| Temporal reasoning from few examples | synthetic, 5 runs | 99.7% vs Transformers 33–41% |
+| Mixed-type tables | synthetic; banknote | learns the synthetic interaction; **trees lead** on banknote |
+
+**Positioning.** The EasyTPP leader S2P2 (NeurIPS 2025) is demonstrated on one task type, event likelihood. Its parent family, deep state-space models, is general on dense sequences and language. Our claim is specific: one family, with one shared core, wins public benchmarks on both generative event modelling and sparse clinical classification, with further evidence on process logs, language and reasoning. The tests that make this a transfer claim — self-supervised event pretraining for clinical prediction, one model across five event datasets — are track G ([plan](../experiments/GENERALITY_PLAN.md)).
+
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 
 | Task | Ours | Reference | Verdict |
