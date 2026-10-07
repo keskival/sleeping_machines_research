@@ -202,9 +202,9 @@ def main():
         plan = [(g, i) for g in range(len(trains)) for i in range(0, per, a.batch)]
         perms = [torch.randperm(per, generator=gen) for _ in trains]
         for j in torch.randperm(len(plan), generator=gen).tolist():
-            g, i = plan[j]; tr = trains[g]
+            g, i = plan[j]; split = trains[g]
             idx = perms[g][i:i + a.batch]
-            t, m = tr[0][idx], tr[1][idx]
+            t, m = split[0][idx], split[1][idx]
             tl, ml, n, _ = model.loglik(t, m, torch.ones_like(m, dtype=torch.bool))
             loss = -(tl + ml) / n
             opt.zero_grad(); loss.backward(); nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step()
