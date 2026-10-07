@@ -1,0 +1,111 @@
+{
+ "status": "completed",
+ "track": "G1",
+ "tag": "g1_p12_s0_scratch_lf0.3",
+ "args": {
+  "dataset": "P12",
+  "split": 0,
+  "tag": "g1_p12_s0_scratch_lf0.3",
+  "seed": 0,
+  "label_frac": 0.3,
+  "pretrain_epochs": 0,
+  "finetune_epochs": 50,
+  "patience": 12,
+  "lr": 0.002,
+  "batch": 128,
+  "d": 32,
+  "dropout": 0.2
+ },
+ "labelled": 2877,
+ "val": {
+  "auroc": 0.8422250401938361,
+  "auprc": 0.48636252158821563
+ },
+ "best_epoch": 2,
+ "pretrain_history": [],
+ "history": [
+  {
+   "epoch": 0,
+   "val_auroc": 0.8137157220171644,
+   "val_auprc": 0.41657517698306096
+  },
+  {
+   "epoch": 1,
+   "val_auroc": 0.8347467222209641,
+   "val_auprc": 0.4741031173538062
+  },
+  {
+   "epoch": 2,
+   "val_auroc": 0.8422250401938361,
+   "val_auprc": 0.48636252158821563
+  },
+  {
+   "epoch": 3,
+   "val_auroc": 0.8421231403274383,
+   "val_auprc": 0.5121207465299916
+  },
+  {
+   "epoch": 4,
+   "val_auroc": 0.8258927560517199,
+   "val_auprc": 0.49066104531692245
+  },
+  {
+   "epoch": 5,
+   "val_auroc": 0.8362412535948008,
+   "val_auprc": 0.5072045173937771
+  },
+  {
+   "epoch": 6,
+   "val_auroc": 0.82871198568873,
+   "val_auprc": 0.4828690963127473
+  },
+  {
+   "epoch": 7,
+   "val_auroc": 0.8177634111546388,
+   "val_auprc": 0.47951770229134194
+  },
+  {
+   "epoch": 8,
+   "val_auroc": 0.8206618962432916,
+   "val_auprc": 0.4776611402321479
+  },
+  {
+   "epoch": 9,
+   "val_auroc": 0.8039729625687824,
+   "val_auprc": 0.4644420013878585
+  },
+  {
+   "epoch": 10,
+   "val_auroc": 0.7964097280405789,
+   "val_auprc": 0.4667299487569116
+  },
+  {
+   "epoch": 11,
+   "val_auroc": 0.7962965059668033,
+   "val_auprc": 0.4549511148047528
+  },
+  {
+   "epoch": 12,
+   "val_auroc": 0.8085754398677566,
+   "val_auprc": 0.4726254401398464
+  },
+  {
+   "epoch": 13,
+   "val_auroc": 0.7939528090396505,
+   "val_auprc": 0.4264638854406543
+  },
+  {
+   "epoch": 14,
+   "val_auroc": 0.7951076741921606,
+   "val_auprc": 0.432767067757419
+  }
+ ],
+ "wall_s": 339.26502084732056,
+ "parameters": 68961,
+ "checkpoint": "experiments/results/irts/g1_p12_s0_scratch_lf0.3.pt",
+ "source_sha256": {
+  "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+  "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
