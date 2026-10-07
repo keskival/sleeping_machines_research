@@ -131,3 +131,10 @@ The 12 grid queues (`aws_fas_v2_ref_{lstm,transformer}_d{64,128}_lr*_s0_20261006
 d128 (2 windows, 8 eval runs) 4 s wall, peak RSS 1.05 GB; Transformer d128 8 s, peak RSS 1.36 GB
 (results/aws_20260929/<tag>/). Native C1 is running on slot 2, then C2. The 12-run reference grid can be admitted with
 caps derived from these smokes (≈ 3 GB RSS leaves a wide margin); request it and it will be queued on a free slot.
+
+**AWS admission, B3 round 2 (7 Oct ~05:00 UTC).** Admitted on slot 2, sequential, after the slot's queued B1/B2
+protocols: `aws_fas_v2_dev_C6_20261007T0045Z` (4 h cap, 5.5 GB) → `aws_fas_v2_dev_C1_diagnostics_20261007T0010Z` →
+`aws_fas_v2_dev_C1_particles_20261007T0010Z` (evaluation on the AWS C1 checkpoint). The reference grid can be requested
+next. Note for C6: B1 found the same tie pathology on Retweet (zero gaps scored by a hazard spike at τ = 0); its remedy —
+hold every hazard at its one-cell value below the recording cell, and train with the target gap dequantized within its cell
+— is in experiments/theory/RACE_OF_DELAYED_CLOCKS_20261006.md §3 and race_tpp_v16.py.
