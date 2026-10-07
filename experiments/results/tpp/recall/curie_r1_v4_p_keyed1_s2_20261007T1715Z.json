@@ -1,0 +1,201 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "decision": "whether the B1 event model needs a query-keyed addressed read to bind content across irregular gaps (gates transfer of the B1 model to language recall)",
+ "tag": "curie_r1_v4_p_keyed1_s2_20261007T1715Z",
+ "args": {
+  "tag": "curie_r1_v4_p_keyed1_s2_20261007T1715Z",
+  "keyed": 1,
+  "seed": 2,
+  "pairs": 8,
+  "pairs_extra": 16,
+  "kk": 32,
+  "kv": 32,
+  "train": 20000,
+  "dev": 1000,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "dk": 16,
+  "prev_msg": 1,
+  "qk_norm": 0,
+  "dv": 4,
+  "lr": 0.003,
+  "batch": 64,
+  "epochs": 60,
+  "patience": 8,
+  "max_wall_s": 2400,
+  "threads": 1
+ },
+ "K": 64,
+ "scale": 0.27430129950399085,
+ "parameters": 36325,
+ "chance_recall_acc": 0.03125,
+ "best_epoch": 9,
+ "epochs_run": 18,
+ "wall_s": 707.1985518932343,
+ "dev": {
+  "ll": -3.0185399899097223,
+  "time_ll": -0.7235157835775672,
+  "mark_ll": -2.2950242063321555,
+  "events": 31000,
+  "recall_acc": 0.954125,
+  "recall_mark_ll": -0.23594804085981227,
+  "set_baseline_acc": 0.14184047619047618,
+  "recall_events": 8000
+ },
+ "test": {
+  "ll": -3.0126707863864843,
+  "time_ll": -0.7208342042572489,
+  "mark_ll": -2.2918365821292355,
+  "events": 31000,
+  "recall_acc": 0.958375,
+  "recall_mark_ll": -0.22149647306624506,
+  "set_baseline_acc": 0.14013452380952382,
+  "recall_events": 8000
+ },
+ "extrapolation": {
+  "pairs": 16,
+  "ll": -4.386044507584398,
+  "time_ll": -0.7588760042322332,
+  "mark_ll": -3.6271685033521646,
+  "events": 63000,
+  "recall_acc": 0.6965,
+  "recall_mark_ll": -1.3564414502443498,
+  "set_baseline_acc": 0.07955263764013763,
+  "recall_events": 16000
+ },
+ "history": [
+  {
+   "epoch": 0,
+   "train_ll": -3.6418844203385854,
+   "dev_ll": -3.334911681844737,
+   "dev_recall_acc": 0.856625,
+   "epoch_s": 40.8
+  },
+  {
+   "epoch": 1,
+   "train_ll": -3.276008647203277,
+   "dev_ll": -3.291317818226999,
+   "dev_recall_acc": 0.881375,
+   "epoch_s": 39.2
+  },
+  {
+   "epoch": 2,
+   "train_ll": -3.2316938099567785,
+   "dev_ll": -3.202536208012451,
+   "dev_recall_acc": 0.9035,
+   "epoch_s": 39.2
+  },
+  {
+   "epoch": 3,
+   "train_ll": -3.2043410436183235,
+   "dev_ll": -3.149275988904487,
+   "dev_recall_acc": 0.919125,
+   "epoch_s": 39.4
+  },
+  {
+   "epoch": 4,
+   "train_ll": -3.186624579848787,
+   "dev_ll": -3.227714186315177,
+   "dev_recall_acc": 0.901375,
+   "epoch_s": 39.7
+  },
+  {
+   "epoch": 5,
+   "train_ll": -3.1897579200462642,
+   "dev_ll": -3.205363358107298,
+   "dev_recall_acc": 0.918375,
+   "epoch_s": 39.5
+  },
+  {
+   "epoch": 6,
+   "train_ll": -3.178845905501834,
+   "dev_ll": -3.201685193248092,
+   "dev_recall_acc": 0.907875,
+   "epoch_s": 38.8
+  },
+  {
+   "epoch": 7,
+   "train_ll": -3.1404821551829456,
+   "dev_ll": -3.0432456905316188,
+   "dev_recall_acc": 0.9565,
+   "epoch_s": 38.7
+  },
+  {
+   "epoch": 8,
+   "train_ll": -3.13190286966526,
+   "dev_ll": -3.06500388764469,
+   "dev_recall_acc": 0.947125,
+   "epoch_s": 39.3
+  },
+  {
+   "epoch": 9,
+   "train_ll": -3.1153197352135864,
+   "dev_ll": -3.0185399899097223,
+   "dev_recall_acc": 0.954125,
+   "epoch_s": 39.2
+  },
+  {
+   "epoch": 10,
+   "train_ll": -3.141433740919498,
+   "dev_ll": -3.4739643470687844,
+   "dev_recall_acc": 0.857,
+   "epoch_s": 39.1
+  },
+  {
+   "epoch": 11,
+   "train_ll": -3.15827781766856,
+   "dev_ll": -3.0567687257389435,
+   "dev_recall_acc": 0.9515,
+   "epoch_s": 39.5
+  },
+  {
+   "epoch": 12,
+   "train_ll": -3.193100879161247,
+   "dev_ll": -3.175355406035622,
+   "dev_recall_acc": 0.93475,
+   "epoch_s": 39.5
+  },
+  {
+   "epoch": 13,
+   "train_ll": -3.180133126408058,
+   "dev_ll": -3.201809813652533,
+   "dev_recall_acc": 0.92425,
+   "epoch_s": 39.3
+  },
+  {
+   "epoch": 14,
+   "train_ll": -3.0886895565134482,
+   "dev_ll": -3.1214777632782162,
+   "dev_recall_acc": 0.95075,
+   "epoch_s": 39.0
+  },
+  {
+   "epoch": 15,
+   "train_ll": -3.1054470701264316,
+   "dev_ll": -3.347078839971735,
+   "dev_recall_acc": 0.930125,
+   "epoch_s": 39.3
+  },
+  {
+   "epoch": 16,
+   "train_ll": -3.085474012759291,
+   "dev_ll": -3.0516071166616276,
+   "dev_recall_acc": 0.962625,
+   "epoch_s": 39.0
+  },
+  {
+   "epoch": 17,
+   "train_ll": -3.093459584275271,
+   "dev_ll": -4.2858445941847405,
+   "dev_recall_acc": 0.560125,
+   "epoch_s": 38.7
+  }
+ ],
+ "checkpoint": "experiments/results/tpp/recall/curie_r1_v4_p_keyed1_s2_20261007T1715Z.pt",
+ "source_sha256": {
+  "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}
