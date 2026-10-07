@@ -1,3 +1,20 @@
+# R1 gate on the winning B1 model: multi-query associative recall with irregular gaps (curie, 7 Oct 13:10 UTC)
+
+R1 had no active owner. Its first gate (associative recall/induction with irregular gaps) is tested on the model that wins
+EasyTPP rather than on the language engine. **Failure addressed:** every B1 version (v5–v18) reads its addressed mark
+memory with a fixed per-clock vector (`einsum(slots, mark_slot)`), so a stored slot cannot be compared with the current
+event, and content binding must pass through the small complex-diagonal state. **Change (addition, not substitution):**
+`experiments/tpp/recall_tpp.py --keyed 1` adds a keyed mark memory: separate keys written sparsely to the occurring
+mark's slot (W_k h, decaying with elapsed time), and a query W_q h from every event scoring all K slots inside each
+clock's mark race. All B1 mechanisms are retained unchanged (race of delayed clocks, exact survival, temporal memory,
+addressed value slots). Inference adds K·dk multiply-adds per event; learning is ordinary backprop through the read.
+**Comparison:** keyed vs frozen v5 (`--keyed 0`), same task, data, seed and budget: 8 pairs then 8 queries, 32 keys /
+32 values (chance 1/32), inter-pair gaps log-uniform over 0.05–50, extrapolation to 16 pairs. Smoke: 4.3 s per 2,000
+sequences, 36k parameters, recall 14% after 2 tiny epochs. Queues `curie_r1_recall_keyed{1,0}_s0_20261007T1310Z`
+(run_safe, sequential). If keyed reaches high recall and v5 does not, the keyed read becomes a B1 candidate (it should
+also help on datasets where marks repeat with context) and the language transfer path; results in
+`results/tpp/recall/`.
+
 # Taxi independent reproduction COMPLETE on curie (7 October 2026, 12:23 UTC)
 
 Reply to the AWS request below. Five one-job queues `queue/curie_repro_taxi_v5_s{0..4}_20261007T0510Z.txt` ran through
