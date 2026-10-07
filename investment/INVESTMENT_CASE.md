@@ -112,13 +112,13 @@ classification, with further evidence on process logs, character language and fe
 language and real tables remain behind. The next tests turn breadth into transfer: self-supervised event pretraining on
 unlabeled clinical records for mortality prediction with fewer labels, and one model across five event datasets
 ([generality plan](../experiments/GENERALITY_PLAN.md)).
-| Amazon (in development) | 0.781 (S2P2) | 0.701 | — |
+| Amazon | 0.781 ± 0.011 (S2P2) | 0.784 ± 0.027 (mean ahead; one of five seeds in a low basin) | 0.29× |
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.
 - **StackOverflow is a confirmed win** in accuracy (+0.019 nats/event) at 1.26× compute, from a continuous-time state
   clock that passed the recording-grid audit.
 - Three of five datasets are won, past the battle's pass criterion (best published on 2 of 5).
-- **Amazon and Retweet** are in development: a new clock shape gained +0.044 on Amazon development data.
+- **Amazon:** the pre-registered five-seed protocol is ahead on the mean (0.784 vs 0.781) at 0.29× S2P2's compute, but one seed's restarts all landed in a weaker optimization basin, so it is not a confirmed win; a fix for that basin is in testing. **Retweet:** a grid-safe model is level with the leader on development data and is in its test protocol.
 - These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
   terms where its mathematics fits: a race of clocks *is* a temporal point process.
 

@@ -212,7 +212,7 @@ Investor competition, not the evidence alone, sets the attainable price.
 - *Second domain:* **met** — P19 sepsis prediction, five official splits, AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039 vs
   the best published 0.903 / 0.583 (MTM), with the same temporal memory core as the event model.
 - *Matched-compute wins on further EasyTPP datasets:* **in progress** — the Amazon protocol (0.29× S2P2's per-event
-  compute) has three of five restart-selected seeds at 0.796 vs 0.781; a matched-size StackOverflow protocol (≈1.0× S2P2)
+  compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed); a matched-size StackOverflow protocol (≈1.0× S2P2)
   is queued.
 - *Independent reproduction:* **not yet** — requested from the curie host (Taxi, five seeds, frozen driver). The
   estimator-parity check (all wins hold under EasyTPP's own Monte Carlo estimator) supports the numbers but is not
