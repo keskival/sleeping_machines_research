@@ -99,6 +99,17 @@ Marked event streams with continuous times, on the official EasyTPP splits and t
 
 **Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. StackOverflow's 5-seed TEST is complete: the single model is 0.018 behind S2P2 (−2.181 vs −2.163), and the 5-seed mixture is ahead (−2.154) at 4.6× S2P2's per-event compute, an accuracy-only result under the pre-registered rule. Amazon (v5 TEST 0.701 vs 0.781; v8 +0.044 on DEV) and Retweet are in development. Both winning results pass a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
 
+### 4.0b Public benchmark: irregular clinical time series (P19 sepsis)
+
+PhysioNet 2019 sepsis prediction on the five official Raindrop splits (38,803 ICU stays, 34 irregularly sampled channels, 4.2% positive). Our event-native classifier treats each time step as an event; addressed channel memories carry sufficient statistics (count, mean, min, max, first, last, trend, staleness) and decay with elapsed time; values enter through typed comparisons; silence (time since a channel was last measured) is an input ([B2 dossier](../experiments/B2_IRREGULAR_TS.md)).
+
+| P19, 5 official splits | TEST AUROC | TEST AUPRC |
+| --- | --- | --- |
+| Best published (MTM, 2025) | 0.903 ± 0.020 | 0.583 ± 0.053 |
+| **Ours (62,681 parameters)** | **0.916 ± 0.022** | **0.639 ± 0.039** |
+
+**Win on P19 over the best published model**, with AUPRC — the clinically relevant metric at 4% prevalence — ahead by more than either model's split spread. P12 and PAM are in development (P12 validation AUROC 0.872 vs MTM TEST 0.880).
+
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 
 | Task | Ours | Reference | Verdict |
@@ -221,7 +232,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | Battle | Benchmark | Pass criterion | What it settles |
 | --- | --- | --- | --- |
 | **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi, Taobao and StackOverflow won** (§4.0); pass criterion met; Amazon and Retweet continue |
-| **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | Asynchronous channels, informative missingness and silence on real data |
+| **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | **P19 won** (§4.0b); P12 and PAM in development |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Setting selected (oracle 0.821 vs classical 0.685); race-readout binding model in development |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |
 
