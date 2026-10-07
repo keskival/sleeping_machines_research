@@ -1,0 +1,2 @@
+# B2: B2 P19 TEST protocol (pre-registered): v3 statistic slots, five official splits, validation-AUROC selection, TEST once per split; split 0 development val AUROC 0.919 vs MTM TEST 0.903
+b2_final_p19_v3_split1 experiments/irts/race_irts_v3.py --tag b2_final_p19_v3_split1 --dataset P19 --split 1 --epochs 40 --patience 8 --score-test
