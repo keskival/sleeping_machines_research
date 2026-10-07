@@ -1,0 +1,64 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "gate": 2,
+ "decision": "does the keyed predecessor-message read carry over to tokenized language; KN trigram at the same training tokens is the gate (1M: 6.537, 4M: 6.100 on the 65,528-target slice)",
+ "tag": "curie_r1g2_smoke_20261007T1800Z",
+ "args": {
+  "tag": "curie_r1g2_smoke_20261007T1800Z",
+  "keyed": 1,
+  "seed": 0,
+  "train_tokens": 65536,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 2,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 1,
+  "patience": 2,
+  "max_wall_s": 10800,
+  "score": 0,
+  "threads": 1
+ },
+ "parameters": 3333845,
+ "best_epoch": 0,
+ "epochs_run": 1,
+ "wall_s": 80.38676619529724,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 8.588210098445415,
+   "select_nll": 8.057173929740932,
+   "epoch_s": 80
+  }
+ ],
+ "select": {
+  "nll": 8.057173929740932,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1g2_smoke_20261007T1800Z.pt",
+ "references": {
+  "kn_trigram": {
+   "65536": 7.551,
+   "262144": 7.049,
+   "1048576": 6.537,
+   "4194304": 6.1
+  },
+  "kn_bigram": {
+   "65536": 7.544,
+   "262144": 7.058,
+   "1048576": 6.584,
+   "4194304": 6.209
+  },
+  "source": "experiments/results/token_language/aws_token_ngram_reference_20261006T143000Z.json"
+ },
+ "source_sha256": {
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}

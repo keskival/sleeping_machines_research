@@ -90,6 +90,20 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | 7 Oct 18:42 | 2 | Message only, local race credit seeds 0–2 | 77.4 ± 5.4%; 16 pairs 57.4 ± 5.2% | **Learning through the race alone binds content reproducibly** (≈5.5× the set baseline). Below backprop (97.5%) and below the normalized local variant (91.9%, seed 0; seeds 1–2 queued) |
 | 7 Oct 19:14 | 3 | Mixed-length training 4–16 pairs (`recall_tpp_v5.py`), message only | 99.2% at 8; 97.5% at 16; **91.6% at 32 pairs** (2× the longest training length) | Length generalization follows from mixed lengths; seed 0, more seeds next |
 
+## Gate 2 results (65,528-target FineWeb slice, GPT-2 BPE, nats per token, scored once)
+
+| Model (1M training tokens unless stated) | Seed | Score | Selection slice | Parameters |
+|---|---|---|---|---|
+| **Keyed temporal-memory token model** (`r1_token_keyed_lm.py`, best epoch 2 of 5) | 0 | **6.019** | 6.310 | 3,333,845 |
+| KN trigram | — | 6.537 | | |
+| KN bigram | — | 6.584 | | |
+| KN trigram, 4M tokens | — | 6.100 | | |
+
+**Gate 2 met on seed 0:** 0.518 nats per token below KN trigram at the same training tokens (KN standard error on this
+slice ≈ 0.017), and below KN trigram trained on 4× the tokens. Pending: the no-read ablation (same model, `--keyed 0`)
+to attribute the gain, and more seeds. The model overfits after epoch 2 (train 5.54 → 5.06 while selection rises), so
+regularization and the 4M setting are the next levers.
+
 ## Next
 
 1. Finish confirmation (seeds and ablations), then state gate 1 as met or not.
