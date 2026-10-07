@@ -1,0 +1,2 @@
+# B2: B2 P12 model-side gain (development, validation only): P12 peaks at epoch 2-5 and then memorizes (TEST AUROC 0.871 vs MTM 0.880); random crops and amplitude jitter lifted PAM validation accuracy 0.946 -> 0.972. Two crop strengths on split 0 decide whether augmentation moves P12 past the protocol model (val 0.872 / 0.575) by enough to justify a new five-split protocol
+b2_r11_p12_split0_v7_crop0.6_jit0.1 experiments/irts/race_irts_v7.py --tag b2_r11_p12_split0_v7_crop0.6_jit0.1 --dataset P12 --split 0 --crop 0.6 --jitter 0.1 --epochs 80 --patience 20

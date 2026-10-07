@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P12 model-side gain (development, validation only): P12 peaks at epoch 2-5 and then memorizes (TEST AUROC 0.871 vs MTM 0.880); random crops and amplitude jitter lifted PAM validation accuracy 0.946 -> 0.972. Two crop strengths on split 0 decide whether augmentation moves P12 past the protocol model (val 0.872 / 0.575) by enough to justify a new five-split protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r11_p12_split0_v7_crop0.8_jit0.1",
+        "queue": "experiments/queue/b2/b2_r11_p12_split0_v7_crop0.8_jit0.1/b2_r11_p12_split0_v7_crop0.8_jit0.1.txt",
+        "queue_sha256": "e6d87855a1b29e21051380e2899cadc139499183a8f4ca8cf16a2bc96c0fcfa9",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r11_p12_split0_v7_crop0.8_jit0.1.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r11_p12_split0_v7_crop0.6_jit0.1",
+        "queue": "experiments/queue/b2/b2_r11_p12_split0_v7_crop0.6_jit0.1/b2_r11_p12_split0_v7_crop0.6_jit0.1.txt",
+        "queue_sha256": "77aadfbdf603e7f473886cdaa072dba22744c62e888e44392c31e2ffcb203007",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r11_p12_split0_v7_crop0.6_jit0.1.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
