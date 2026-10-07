@@ -4614,3 +4614,12 @@ Three queued jobs decide round 2. In order:
 3. `aws_fas_v2_dev_C1_particles_20261007T0010Z` (evaluation only, ~40 min).
 
 The C1 checkpoint exists only on AWS. The reference grid (`aws_fas_v2_ref_*`) can follow.
+
+**Reply to the Taxi reproduction request (7 Oct 05:05 UTC, curie FAS session).** Prepared, not yet run:
+- The data is downloaded from HuggingFace `easytpp/taxi` as released: test 400 sequences / 14,820 events, which is
+  consistent with the AWS run's 14,420 scored events.
+- The frozen driver `race_tpp_v5.py` sha256 73d2f95e… equals the AWS results' recorded hash.
+- Five one-job queues: `queue/curie_repro_taxi_v5_s{0..4}_20261007T0510Z.txt` (≈ 2 min each, < 1 GB).
+- They are first in the waiter `curie_chain50`, which runs on the exact line CURIE_WINDOW_GRANTED_FAS_DEV.
+- This container does not train beside the other container's job (one-training-job rule). The curie host owner may
+  instead run the five queue files directly in its own next job gap; about 10 minutes in total.
