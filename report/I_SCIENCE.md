@@ -98,15 +98,15 @@ Marked event streams with continuous times, on the official EasyTPP splits and t
 | --- | --- | --- | --- | --- | --- |
 | Best published (NHP) | −6.348 | −5.584 | −0.764 | — | — |
 | S2P2 | −6.365 | — | — | 298,627 | 297,600 |
-| **Ours, single model (grid-safe clocks)** | **−6.3262 ± 0.0009** | **−5.558** | −0.768 | **19,654** | **19,850** |
+| **Ours, single model (every clock held below the 1 s recording cell)** | **−6.3262 ± 0.0009** | −5.558 | −0.768 | **19,654** | **19,850** |
 
 **Win on StackOverflow, confirmed over 5 seeds:** +0.019 nats per event over the best published model, with the best mark log-likelihood and time level with the best, at 1.26× S2P2's per-event work; **a matched-size model (fewer parameters than S2P2, 1.015× its per-event work) also wins, with all five seeds above S2P2**. The gain comes from a state clock: a persistent memory that keeps evolving through the silent interval drives part of the hazard.
 
 **Win on Taobao, confirmed over 5 seeds:** +0.081 nats per event over the best published model, with the best time and mark log-likelihoods, at 0.92× S2P2's per-event work.
 
-**Win on Retweet, confirmed over 5 seeds:** +0.022 nats per event over the best published model (NHP) and +0.039 over S2P2, every seed ahead (−6.3250 to −6.3272), with the best time log-likelihood, at 1/15 of S2P2's parameters and per-event work. Retweet times are recorded in whole seconds; every clock holds its one-cell hazard below the cell, and the recording-grid audit moves the score by 0.004, a fifth of the margin. Under EasyTPP's own Monte Carlo estimator the seeds score −6.3261 to −6.3277.
+**Win on Retweet, confirmed over 5 seeds:** +0.022 nats per event over the best published model (NHP) and +0.039 over S2P2, every seed ahead (−6.3250 to −6.3272), with the best time log-likelihood, at 1/15 of S2P2's parameters and per-event work. Retweet times are recorded in whole seconds; every clock holds its one-cell hazard below the cell, and the recording-grid audit moves the score by 0.004, a fifth of the margin. Under EasyTPP's own Monte Carlo estimator the seeds score −6.3252 to −6.3277.
 
-**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. StackOverflow's 5-seed TEST is complete: the single model is 0.018 behind S2P2 (−2.181 vs −2.163), and the 5-seed mixture is ahead (−2.154) at 4.6× S2P2's per-event compute, an accuracy-only result under the pre-registered rule. Amazon's pre-registered protocol is ahead on the mean (0.784 ± 0.027 vs 0.781) at 0.29× S2P2's compute; one seed landed in a low optimization basin, so it is not yet a confirmed win. The Taxi win reproduces on independent hardware (curie desktop CPU, separately downloaded data, frozen driver, five seeds): 0.5252 ± 0.0007 vs 0.5250 ± 0.0010 on AWS, every seed above S2P2's mean. Every winning result passes a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
+**Win on Taxi, confirmed over 5 seeds:** the 5-seed mixture beats every published model on total, time (best published 0.735) and mark log-likelihood at 0.41× S2P2's per-event inference work; a single model leads S2P2 on the mean at 1/12 of its parameters and per-event work. The earlier StackOverflow model (v5, without the state clock) was 0.018 behind S2P2 (−2.181 vs −2.163), its 5-seed mixture ahead (−2.154) at 4.6× compute; the state-clock model above supersedes it. Amazon is ahead on the mean (0.784 ± 0.027 vs 0.781) at 0.29× compute, not yet confirmed (one low-basin seed); anchored windows (v18) are in development. The Taxi win reproduces on independent hardware (curie desktop CPU, separately downloaded data, frozen driver, five seeds): 0.5252 ± 0.0007 vs 0.5250 ± 0.0010 on AWS, every seed above S2P2's mean. All four winning results pass a recording-grid audit (scores unchanged when event times are dequantized within their recording resolution; Retweet within 0.004 nats). S2P2 parameters and MACs are counted from its released layer definitions at its published configuration.
 
 ### 4.0b Public benchmark: irregular clinical time series (P19 sepsis)
 
@@ -125,7 +125,7 @@ The same construction — persistent memories that decay and rotate with elapsed
 
 | Data type | Benchmark | Result |
 | --- | --- | --- |
-| Generative event streams (when and what happens next) | EasyTPP, 5 datasets | **Wins on 4** (Taxi, Taobao, StackOverflow, Retweet); Amazon ahead on the mean, not confirmed |
+| Generative event streams (when and what happens next) | EasyTPP, 5 datasets | **Wins on 4** (Taxi, Taobao, StackOverflow, Retweet); Amazon ahead on the mean, confirmation in progress |
 | Irregular clinical records (classification) | P19 sepsis, official splits | **Win**, AUPRC 0.639 vs 0.583 |
 | Anonymous interleaved process logs | FAS v1, 3 seeds | **Win** vs six generic controls, 0.592 vs 0.559 AUROC |
 | Character language | text8, 10M characters | **Win** vs tuned Transformers at ≤ equal compute; **loss** to tuned LSTMs; **loss** at 90M |
@@ -255,7 +255,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 
 | Battle | Benchmark | Pass criterion | What it settles |
 | --- | --- | --- | --- |
-| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi, Taobao, StackOverflow and Retweet won** (§4.0); pass criterion met; Amazon continues |
+| **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi, Taobao, StackOverflow and Retweet won** (§4.0); pass criterion exceeded; Amazon continues |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | **P19 won** (§4.0b); P12 and PAM in development |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Setting selected (oracle 0.821 vs classical 0.685); race-readout binding model in development |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | Whether persistent memory binds context; gates any language scaling |

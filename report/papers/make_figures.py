@@ -26,8 +26,9 @@ def final(prefix):
 def fig_results():
     rows = [('Taobao', final('b1_final_taobao_v5'), 1.318, 0.017, 'IFTPP'),
             ('Taxi', final('b1_final_taxi_v5'), 0.522, 0.004, 'S2P2'),
-            ('StackOverflow', final('b1_final_stackoverflow_v12'), -2.163, 0.009, 'S2P2')]
-    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.4))
+            ('StackOverflow', final('b1_final_stackoverflow_v12'), -2.163, 0.009, 'S2P2'),
+            ('Retweet', final('b1_final_retweet_v16'), -6.348, 0.0, 'NHP')]
+    fig, axes = plt.subplots(1, 4, figsize=(9.2, 2.4))
     for ax, (name, ours, ref, sd, refname) in zip(axes, rows):
         ax.errorbar([0], [ref], yerr=[sd], fmt='s', color=GRAY, ms=7, capsize=4, label=f'best published ({refname})')
         ax.scatter([1] * len(ours), ours, color=BLUE, s=18, alpha=.6, zorder=3)
@@ -40,15 +41,17 @@ def fig_results():
 
 def fig_compute():
     pts = [('Taxi', 20708, 0.5250, 249856, 0.522), ('Taobao', 24362, 1.3991, 26016, 1.304),
-           ('StackOverflow', 36732, -2.1444, 29216, -2.163)]
+           ('StackOverflow', 36732, -2.1444, 29216, -2.163), ('Retweet', 19850, -6.3262, 297600, -6.365)]
     fig, ax = plt.subplots(figsize=(4.6, 2.8))
     for name, ours_c, ours_ll, ref_c, ref_ll in pts:
         ax.annotate('', xy=(ours_c, ours_ll - ref_ll), xytext=(ref_c, 0), arrowprops=dict(arrowstyle='->', color=GRAY, lw=1))
         ax.scatter([ref_c], [0], color=GRAY, marker='s', s=36, zorder=3)
         ax.scatter([ours_c], [ours_ll - ref_ll], color=BLUE, s=40, zorder=3)
-        ax.annotate(name, (ours_c, ours_ll - ref_ll), textcoords='offset points', xytext=(6, 4), fontsize=8, color=INK)
+        ax.annotate(name, (ours_c, ours_ll - ref_ll), textcoords='offset points', xytext=(6, -11 if name == 'Taxi' else 4),
+                    fontsize=8, color=INK)
     ax.axhline(0, color=GRAY, lw=.8)
-    ax.set_xscale('log'); ax.set_xlabel('per-event inference multiply-accumulates (log)')
+    ax.set_xscale('log'); ax.set_xticks([2e4, 5e4, 1e5, 3e5], ['20K', '50K', '100K', '300K']); ax.minorticks_off()
+    ax.set_xlabel('per-event inference multiply-accumulates (log)')
     ax.set_ylabel('TEST LL − S2P2 (nats/event)')
     ax.set_title('Likelihood gain over S2P2 vs compute')
     fig.tight_layout(); fig.savefig(OUT / 'b1_compute.png', dpi=200); plt.close(fig)
@@ -56,7 +59,8 @@ def fig_compute():
 
 def fig_audit():
     rows = [('unconstrained delayed clocks', -5.919, -6.632), ('state clock, rotation', -6.252, -6.485),
-            ('state clock, rate caps', -6.246, -6.470), ('grid-safe (floored clocks)', -6.393, -6.394)]
+            ('state clock, rate caps', -6.246, -6.470), ('grid-safe (floored clocks)', -6.393, -6.394),
+            ('grid-safe (held below cell; final)', -6.352, -6.3558)]
     fig, ax = plt.subplots(figsize=(5.6, 2.5))
     for i, (name, rec, deq) in enumerate(rows):
         y = len(rows) - 1 - i
