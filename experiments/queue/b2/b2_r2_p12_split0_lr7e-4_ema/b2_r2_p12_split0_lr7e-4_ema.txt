@@ -1,0 +1,2 @@
+# B2: B2 round 2 regularization on P12 split 0 (r1 val AUROC 0.866 at epoch 5, then overfits): dropout 0.4 + decay 1e-3; lr 7e-4 + weight EMA 0.995. Decides the P12 training recipe
+b2_r2_p12_split0_lr7e-4_ema experiments/irts/race_irts_v2.py --tag b2_r2_p12_split0_lr7e-4_ema --dataset P12 --split 0 --lr 7e-4 --ema 0.995 --epochs 60 --patience 15
