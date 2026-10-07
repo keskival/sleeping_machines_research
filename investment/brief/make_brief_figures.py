@@ -55,21 +55,22 @@ def fig_runs():
 def fig_size():
     """Model size against the leading published model (parameters)."""
     rows = [('Retweet', 19654, 298627, 'S2P2'), ('Taxi', 20504, 251850, 'S2P2'),
-            ('Sepsis (P19)', 62681, 873000, 'MTM'), ('Amazon', 35000, 127056, 'S2P2'), ('StackOverflow*', 29191, 30166, 'S2P2'),
+            ('Amazon', 35000, 127056, 'S2P2'), ('StackOverflow*', 29191, 30166, 'S2P2'),
             ('Taobao', 24046, 26801, 'S2P2')]
-    fig, ax = plt.subplots(figsize=(7.2, 2.8))
+    XMAX = max(r[2] for r in rows) / 1000 * 1.45
+    fig, ax = plt.subplots(figsize=(7.2, 2.6))
     for i, (name, ours, ref, refname) in enumerate(rows):
         y = len(rows) - 1 - i
         ax.barh(y + .19, ref / 1000, height=.36, color=PUB)
         ax.barh(y - .19, ours / 1000, height=.36, color=OURS)
-        ax.text(ref / 1000 + 8, y + .19, f'{refname}  {ref / 1000:,.0f}K', va='center', fontsize=7.4, color=MUTED)
-        ax.text(ours / 1000 + 8, y - .19, f'ours  {ours / 1000:,.1f}K', va='center', fontsize=7.4, color=OURS,
+        ax.text(ref / 1000 + 4, y + .19, f'{refname}  {ref / 1000:,.0f}K', va='center', fontsize=7.4, color=MUTED)
+        ax.text(ours / 1000 + 4, y - .19, f'ours  {ours / 1000:,.1f}K', va='center', fontsize=7.4, color=OURS,
                 fontweight='bold')
         if ref / ours > 2:
-            ax.text(1240, y, (f'{ref / ours:.0f}× smaller' if ref / ours >= 9.5 else f'{ref / ours:.1f}× smaller'), va='center', ha='right', fontsize=8.6, color=INK,
+            ax.text(XMAX - 5, y, (f'{ref / ours:.0f}× smaller' if ref / ours >= 9.5 else f'{ref / ours:.1f}× smaller'), va='center', ha='right', fontsize=8.6, color=INK,
                     fontweight='bold')
     ax.set_yticks(range(len(rows)), [r[0] for r in rows][::-1], fontsize=8.4)
-    ax.set_xlim(0, 1250); ax.set_xlabel('learned parameters, thousands  (↓ fewer is smaller and cheaper)')
+    ax.set_xlim(0, XMAX); ax.set_xlabel('learned parameters, thousands  (↓ fewer is smaller and cheaper)')
     ax.grid(axis='y', visible=False)
     fig.tight_layout(); save(fig, 'size')
 

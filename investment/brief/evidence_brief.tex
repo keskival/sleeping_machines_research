@@ -146,7 +146,7 @@ Taxi {\color{muted}\footnotesize nats/event \up} & 0.522 (S2P2) & \textbf{0.525 
 StackOverflow {\color{muted}\footnotesize nats/event \up} & $-2.163$ (S2P2) & \textbf{$-2.144 \pm 0.004$} & +0.019 & 1.26$\times$ compute; a model of S2P2's size also wins ($-2.153$) \\
 Retweet {\color{muted}\footnotesize nats/event \up} & $-6.348$ (NHP) & \textbf{$-6.326 \pm 0.001$} & +0.022 & \textbf{1/15 of S2P2's size and compute}; S2P2 scores $-6.365$ \\
 Amazon {\color{muted}\footnotesize nats/event \up} & 0.781 (S2P2) & \textbf{0.803 $\pm$ 0.001} & +0.022 & \textbf{0.29$\times$ S2P2's compute}, 3.6$\times$ smaller; best time and type predictions \\
-Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639 $\pm$ 0.039} & +0.056 & \textbf{14$\times$ smaller} than MTM (62,681 vs 873K parameters); AUROC 0.916 vs 0.903 \up \\
+Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639 $\pm$ 0.039} & +0.056 & 62,681 parameters (MTM reports 873K for its PAM configuration; its P19 size is not reported); AUROC 0.916 vs 0.903 \up \\
 \bottomrule
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard deviation across the five runs. Compute is multiply-adds per event, counted from S2P2's released code at its published configuration.}
@@ -161,7 +161,7 @@ Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639
 
 \begin{center}\includegraphics[width=\linewidth]{size.pdf}\end{center}
 \vspace{-4mm}
-{\small\color{muted}Learned parameters, in thousands; fewer means a smaller, cheaper model (lower is better). Grey: the leading published model (S2P2 on EasyTPP; MTM, 2025, on sepsis). Every Sleeping Machines model shown is also more accurate than the model beside it. *StackOverflow: the model matched to S2P2's size, which also wins.}
+{\small\color{muted}Learned parameters, in thousands; fewer means a smaller, cheaper model (lower is better). Grey: S2P2, the leading published state-space model on EasyTPP, at its published configuration for each dataset. Every Sleeping Machines model shown is also more accurate than the model beside it. *StackOverflow: the model matched to S2P2's size, which also wins.}
 
 \begin{minipage}[t]{.5\linewidth}\vspace{0pt}
 \includegraphics[width=\linewidth]{compute.pdf}
