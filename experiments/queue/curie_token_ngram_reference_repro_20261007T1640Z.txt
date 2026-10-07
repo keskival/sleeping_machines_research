@@ -1,0 +1,2 @@
+# R1 gate 2 prep (evaluation only, no neural training): rerun the KN references on curie's freshly downloaded kjj0/fineweb10B-gpt2 shards; decision: the shards match the AWS reference data (identical NLLs) before any gate-2 fit
+curie_token_ngram_reference_repro_20261007T1640Z experiments/token_ngram_reference.py --tag curie_token_ngram_reference_repro_20261007T1640Z
