@@ -1,0 +1,216 @@
+{
+  "status": "completed",
+  "battle": "B3",
+  "args": {
+    "data": "fas_v2_K2_drop0.02_delta0_20261005",
+    "tag": "aws_fas_v2_dev_C6_20261007T0045Z_awsr2",
+    "payload": 32,
+    "depth": 4,
+    "heads": 2,
+    "pool": 8,
+    "hidden": 64,
+    "posterior": false,
+    "type_durations": false,
+    "step_classes": 3,
+    "binding_slots": 54,
+    "binding_gated": true,
+    "readout_context": "full",
+    "route_credit": "linear",
+    "compiled": true,
+    "epochs": 1,
+    "lanes": 64,
+    "fit_runs": 5000,
+    "max_events": 2200,
+    "train_max_events": 2048,
+    "lr": 0.003,
+    "clip": 1.0,
+    "seed": 6,
+    "eval_runs": 1000,
+    "max_windows": 0,
+    "segment": 128,
+    "tau_max": 1000.0,
+    "no_test": true,
+    "cell_ms": 1.0,
+    "trace_windows": 1
+  },
+  "parameters": 339364,
+  "readout_parameters": 23476,
+  "curve": [
+    {
+      "epoch": 1,
+      "train_nll_time_units": 0.5721352329408803,
+      "val_clean_nll": 1.365505322426589,
+      "val_auroc": {
+        "32": {
+          "all": 0.501966,
+          "wear_and_tear": 0.4980020366598778,
+          "retry_delay": 0.5057897838899803
+        },
+        "64": {
+          "all": 0.508369,
+          "wear_and_tear": 0.4986395112016293,
+          "retry_delay": 0.5177544204322201
+        },
+        "128": {
+          "all": 0.513719,
+          "wear_and_tear": 0.5070122199592668,
+          "retry_delay": 0.520188605108055
+        },
+        "256": {
+          "all": 0.522929,
+          "wear_and_tear": 0.521613034623218,
+          "retry_delay": 0.5241984282907662
+        },
+        "512": {
+          "all": 0.551247,
+          "wear_and_tear": 0.5596150712830957,
+          "retry_delay": 0.5431748526522593
+        },
+        "1024": {
+          "all": 0.662669,
+          "wear_and_tear": 0.6225193482688391,
+          "retry_delay": 0.7013988212180746
+        },
+        "rules": {
+          "type": {
+            "32": {
+              "all": 0.502785,
+              "wear_and_tear": 0.5000142566191446,
+              "retry_delay": 0.5054577603143419
+            },
+            "64": {
+              "all": 0.490813,
+              "wear_and_tear": 0.48440325865580447,
+              "retry_delay": 0.49699607072691554
+            },
+            "128": {
+              "all": 0.50791,
+              "wear_and_tear": 0.49667413441955194,
+              "retry_delay": 0.5187485265225933
+            },
+            "256": {
+              "all": 0.5306,
+              "wear_and_tear": 0.5319307535641548,
+              "retry_delay": 0.5293163064833006
+            },
+            "512": {
+              "all": 0.558578,
+              "wear_and_tear": 0.565857433808554,
+              "retry_delay": 0.5515559921414538
+            },
+            "1024": {
+              "all": 0.681916,
+              "wear_and_tear": 0.6412830957230142,
+              "retry_delay": 0.7211119842829077
+            }
+          },
+          "gap": {
+            "32": {
+              "all": 0.499745,
+              "wear_and_tear": 0.49576171079429737,
+              "retry_delay": 0.5035874263261296
+            },
+            "64": {
+              "all": 0.512629,
+              "wear_and_tear": 0.5034786150712831,
+              "retry_delay": 0.5214557956777996
+            },
+            "128": {
+              "all": 0.512429,
+              "wear_and_tear": 0.5080753564154786,
+              "retry_delay": 0.5166286836935167
+            },
+            "256": {
+              "all": 0.513231,
+              "wear_and_tear": 0.5070061099796334,
+              "retry_delay": 0.5192357563850688
+            },
+            "512": {
+              "all": 0.528985,
+              "wear_and_tear": 0.536081466395112,
+              "retry_delay": 0.522139489194499
+            },
+            "1024": {
+              "all": 0.578532,
+              "wear_and_tear": 0.5782932790224032,
+              "retry_delay": 0.5787622789783889
+            }
+          },
+          "gap_window32_max": {
+            "32": {
+              "all": 0.499745,
+              "wear_and_tear": 0.49576171079429737,
+              "retry_delay": 0.5035874263261296
+            },
+            "64": {
+              "all": 0.51539,
+              "wear_and_tear": 0.5067331975560081,
+              "retry_delay": 0.5237406679764244
+            },
+            "128": {
+              "all": 0.506791,
+              "wear_and_tear": 0.4998859470468432,
+              "retry_delay": 0.5134518664047151
+            },
+            "256": {
+              "all": 0.501052,
+              "wear_and_tear": 0.4905234215885947,
+              "retry_delay": 0.5112082514734774
+            },
+            "512": {
+              "all": 0.494356,
+              "wear_and_tear": 0.4894826883910387,
+              "retry_delay": 0.49905697445972497
+            },
+            "1024": {
+              "all": 0.502614,
+              "wear_and_tear": 0.5049226069246436,
+              "retry_delay": 0.5003870333988212
+            }
+          }
+        }
+      },
+      "val_clean_occupancy": {
+        "binding_or_top_layer_slots_written_per_run": [
+          54.0
+        ],
+        "pool": 54
+      },
+      "epoch_s": 8026.606391149107
+    }
+  ],
+  "selected_epoch": 1,
+  "selection": "validation-clean NLL only",
+  "test_clean_nll": null,
+  "test_auroc": "not scored (development run, --no-test)",
+  "selected_weights": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z_awsr2/checkpoints/aws_fas_v2_dev_C6_20261007T0045Z_awsr2_selected.pt",
+  "per_run_scores": {
+    "path": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z_awsr2/aws_fas_v2_dev_C6_20261007T0045Z_awsr2_scores.npz",
+    "sha256": "3044f703b4236872040940e9a97c588dd64ab6897c2b2cdf7f072bfe0a02c857"
+  },
+  "work": {
+    "fitting_events": 10240000,
+    "traced_fitting_events": 8192,
+    "fit_arithmetic_flops_per_event": 6072748.744995117,
+    "fit_special_function_evaluations_per_event": 47077.549072265625,
+    "whole_fit_arithmetic_flops_estimate": 62184947148750.0,
+    "inference_arithmetic_flops_per_event": 2037727.8186602872,
+    "inference_special_function_evaluations_per_event": 24489.073684210525,
+    "sparse_inference_arithmetic_flops_per_event": 1504871.5124401913,
+    "sparse_inference_special_function_evaluations_per_event": 17801.073684210525,
+    "scope": "operation audit (experiments/fas/work_audit.py) of the first training window(s), eager, including backward and optimizer, extrapolated per event; inference traced on 4 validation runs (padded events included), dense (as trained) and sparse (winner-only deep layers with cached reads; identical outputs); arithmetic and special functions counted separately"
+  },
+  "data_manifest_sha256": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463",
+  "source_sha256": {
+    "experiments/fas/native_race_readout.py": "de69f9b64648b71613832b0a6d2291555591edad0610e0cf0954144e702699b9",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+    "sleeping_machines/race_readout.py": "338313fc259472e5ec9cdf693cc7c9986d2ca90a359bef648c02fad5f48af4b2",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84"
+  },
+  "hardware": {
+    "platform": "Linux-7.0.0-1006-aws-x86_64-with-glibc2.43",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "wall_s": 8514.803091558977
+}
