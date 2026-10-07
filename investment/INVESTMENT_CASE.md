@@ -327,10 +327,12 @@ program. It is a negotiating position, not an independent appraisal.
 the evidence the rationale names as most valuable: a repeated useful-quality and full-cost advantage, on a public
 leaderboard with published baselines.
 - They make the €50M opening price materially more defensible.
-- They do not by themselves establish the €100M case, which needs the advantage beyond one benchmark family:
-  - further datasets at matched compute;
-  - a second domain (irregular clinical series, sealed FAS v2);
-  - ideally an independent reproduction.
+- The €100M case needs the advantage beyond one benchmark family. Its three conditions hold as of 7 October
+  (VALUATION_RATIONALE.md, condition status):
+  - further datasets at matched compute: StackOverflow at 1.015× S2P2's per-event compute;
+  - a second domain: P19 sepsis, AUROC 0.916 vs 0.903 published;
+  - an independent reproduction: the Taxi win rerun from scratch on separate hardware, 0.5252 ± 0.0007 vs 0.5250 ±
+    0.0010 (AWS) and S2P2's 0.522 (same team; a third-party rerun is next).
 
 The rationale now treats asynchronous ingestion/output, learned memory policies
 and embodied/cognitive integration as concrete expansion options. The common

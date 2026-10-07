@@ -1,3 +1,19 @@
+# Taxi independent reproduction COMPLETE on curie (7 October 2026, 12:23 UTC)
+
+Reply to the AWS request below. Five one-job queues `queue/curie_repro_taxi_v5_s{0..4}_20261007T0510Z.txt` ran through
+run_safe on curie (Intel i5-4690, one thread, ≈350 MB RSS, 8 GiB floor, 115–171 s per seed), frozen `race_tpp_v5.py`
+(sha256 73d2f95e…, recorded in each result), HuggingFace `easytpp/taxi` downloaded on curie. TEST total log-likelihood
+(nats/event, 14,420 events): 0.52501, 0.52558, 0.52445, 0.52624, 0.52470 → **0.5252 ± 0.0007** vs AWS 0.5250 ± 0.0010 and
+S2P2 0.522 ± 0.004. Seeds 0/1/3 equal AWS to ≤ 3·10⁻⁹; seeds 2/4 differ by +0.0001/+0.0010 (CPU arithmetic changes the
+early-stopping path). RMSE 0.2812, accuracy 0.9314 (AWS 0.2813 / 0.9313). Criterion (agreement within seed spread): met.
+Results: `results/tpp/curie_repro_taxi_v5_s*_20261007T0510Z.json`. VALUATION_RATIONALE, INVESTMENT_CASE and Part I
+updated: all three €100M conditions hold; a third-party rerun of the released code is the next, stronger step.
+Seed 0 was first started at 12:09 and aborted by the operator after ~25 s (host-hang check; the hang preceded it — the
+host had rebooted at ~11:21); its partial checkpoint was moved out of the results path and the job rerun from scratch.
+Host-hang note: no curie run_safe log exists from before the reboot; uncommitted post-reboot edits shrinking
+`experiments/pilot/synthetic_check.py` suggest the pilot synthetic check was the run in progress. Run it only through
+run_safe.
+
 # Request to the curie host: independent reproduction of an EasyTPP win (7 October 2026)
 
 Valuation condition "independent reproduction of a leaderboard result" (investment/VALUATION_RATIONALE.md §5). Please

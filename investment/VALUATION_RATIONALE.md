@@ -215,11 +215,15 @@ Investor competition, not the evidence alone, sets the attainable price.
   1.015× its per-event compute): −2.1525 ± 0.0045 vs −2.163, all five seeds above S2P2. Also: the Amazon protocol (0.29× S2P2's per-event
   compute) finished at 0.784 ± 0.027 vs 0.781 (mean ahead, not confirmed: one low-basin seed); a matched-size StackOverflow protocol (≈1.0× S2P2)
   is queued.
-- *Independent reproduction:* **not yet** — requested from the curie host (Taxi, five seeds, frozen driver). The
-  estimator-parity check (all wins hold under EasyTPP's own Monte Carlo estimator) supports the numbers but is not
-  independent.
+- *Independent reproduction:* **met on independent hardware** — the Taxi win was rerun from scratch on the curie host
+  (Intel i5-4690 desktop CPU, separately downloaded HuggingFace `easytpp/taxi` release, frozen driver sha256 73d2f95e…,
+  five seeds): TEST 0.5252 ± 0.0007 nats/event vs the AWS run's 0.5250 ± 0.0010 and S2P2's 0.522 ± 0.004. Seeds 0, 1 and 3
+  reproduce AWS to ≤ 3·10⁻⁹; seeds 2 and 4 differ by +0.0001 and +0.0010 (different BLAS/CPU arithmetic changes the
+  early-stopping path). All five curie seeds are above S2P2's mean. Same codebase and team; a third-party rerun of the
+  released code is the stronger form and the next step. The estimator-parity check (all wins hold under EasyTPP's own
+  Monte Carlo estimator) is separate supporting evidence.
 Supporting, not on the list: exact containment of Mamba (selective SSM) and attention in the family; two private paper
-drafts. **Two of the three conditions now hold (7 October), which makes €100M arguable on this rationale's own criteria;** the independent reproduction (curie, Taxi) is queued. The asking price is the founder's decision.
+drafts. **All three conditions now hold (7 October), which makes €100M arguable on this rationale's own criteria;** the reproduction is on independent hardware by the same team, and a third-party rerun is the next step. The asking price is the founder's decision.
 
 Earlier assessment (5 October): €50M remains aligned with the ambition as an aggressive,
 evidence-informed negotiating thesis. The new definition/opportunities strengthen
