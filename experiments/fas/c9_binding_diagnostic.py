@@ -17,7 +17,7 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'experiments/fas')); sys.path.insert(0, str(ROOT / 'experiments/tpp'))
-import race_tpp_fas_v2 as R  # noqa: E402
+import importlib  # noqa: E402
 
 
 def main():
@@ -28,6 +28,7 @@ def main():
     a = ap.parse_args()
     torch.set_default_dtype(torch.float64); torch.set_num_threads(1)
     res = json.loads((ROOT / a.result).read_text()); args = res['args']
+    R = importlib.import_module(next(Path(k).stem for k in res['source_sha256'] if 'race_tpp_fas' in k))
     d = ROOT / 'experiments/data/fas' / args['data']
     z = np.load(d / 'val_clean.npz'); o, ids_all, t_all = z['offsets'], z['ids'], z['times_ms']
     idn = np.load(d / 'identity.npz'); line_all, item_all = idn['val_clean_line'], idn['val_clean_item']
@@ -56,6 +57,9 @@ def main():
             gf = torch.stack([lg, lg ** 2, (lg == 0).to(lg.dtype)], -1)
             q = P.q(m).view(1, L, 1, P.h, P.dq); k = P.k(mi).view(1, L, W, P.h, P.dq)
             sc = (q * k).sum(-1) / math.sqrt(P.dq) + P.gap_w(gf)
+            if hasattr(P, 'pair_mu'):
+                mu = P.pair_mu[m[:, :, None], mi]; ls = P.pair_log_sigma[m[:, :, None], mi]
+                sc = sc + (-0.5 * ((lg - mu) / ls.exp()) ** 2 - ls).unsqueeze(-1) * P.pair_w
             att = torch.softmax(sc.masked_fill(~valid[None, :, :, None], -1e9), 2)[0].numpy()   # [L, W, h]
             for j in range(1, L):
                 prev = [i for i in range(max(0, j - W), j) if line[i] == line[j] and item[i] == item[j]]

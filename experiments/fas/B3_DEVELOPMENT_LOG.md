@@ -357,3 +357,10 @@ oracle's .821.
   blend .691. Binding has not landed. Diagnostic queued (identity sidecar, diagnostic only): attention mass on the true
   in-line item predecessor vs same line vs the previous merged event. **Status: in development, best .688 (C9) vs
   reference .685 (order3); not a win.** Budget: 6 of 8.
+- 8 Oct 07:55 UTC: **C9 binding diagnostic** (200 validation-clean runs; identity sidecar opened by diagnostic code only):
+  attention mass on the true item predecessor 2.6% / 4.0% per head (uniform 3.1%); on the same line 49.5% (≈ the 50%
+  share of two lines); on the previous merged event 11.5%. **C9's attention does not bind:** its better fit came from
+  recency. 29% of events have their item predecessor outside the 32-event window. Cause: predecessor candidates are mostly
+  events of the same type (the same step for other items), so only timing separates them, and C9's gap term was a single
+  linear function shared by all type pairs. **C10** (`race_tpp_fas_v3.py`, config 7 of 8): a learned duration law per
+  (event type, candidate type) in the attention score, window 64; queued with the same diagnostic.
