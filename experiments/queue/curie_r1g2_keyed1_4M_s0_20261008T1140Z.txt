@@ -1,0 +1,2 @@
+# R1 language scaling (after gate 2 met at 1M): keyed temporal-memory token model at 4M TRAIN tokens; decision: does the margin over KN trigram hold or grow with data (KN trigram 4M: 6.100)
+curie_r1g2_keyed1_4M_s0_20261008T1140Z experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_4M_s0_20261008T1140Z --keyed 1 --train-tokens 4194304 --max-wall-s 21000
