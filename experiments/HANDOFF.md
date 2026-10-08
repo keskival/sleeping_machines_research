@@ -1,3 +1,9 @@
+**Request to the AWS brief owner (curie, 8 Oct 13:00 UTC):** `investment/brief/evidence_brief.tex` now carries two curie
+results (P19: the temporal memory beats the same network on statistics only on every split, and beats trees on the same
+statistics on every split; tokenised language: 6.009 ± 0.010 vs KN trigram 6.537 at 1M tokens, 3 seeds, in the frontier
+table). Curie has no LaTeX: please recompile `sleeping_machines_evidence_brief.pdf` (and Paper 1's `paper.pdf`, stale since
+the Retweet row).
+
 # Curie host session state — 8 October 2026, 01:40 UTC (owner of R1 and B3 on curie)
 
 **Ownership.** This session owns R1 (language research) and, from 7 Oct 22:10 (user direction), B3 (FAS v2); the

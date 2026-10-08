@@ -148,7 +148,7 @@ StackOverflow {\color{muted}\footnotesize nats/event \up} & $-2.163$ (S2P2) & \t
 Retweet {\color{muted}\footnotesize nats/event \up} & $-6.348$ (NHP) & \textbf{$-6.326 \pm 0.001$} & +0.022 & \textbf{1/15 of S2P2's size and compute}; S2P2 scores $-6.365$ \\
 Amazon {\color{muted}\footnotesize nats/event \up} & 0.781 (S2P2) & \textbf{0.803 $\pm$ 0.001} & +0.022 & \textbf{0.29$\times$ S2P2's compute}, 3.6$\times$ smaller; best time and type predictions \\
 Wearables, PAM {\color{muted}\footnotesize accuracy \up} & 0.975 (MTM) & \textbf{0.978 $\pm$ 0.007} & +0.003 & \textbf{19$\times$ smaller} than MTM (46,316 vs 873K parameters); F1 0.980 vs 0.976; 4 of 5 splits ahead \\
-Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639 $\pm$ 0.039} & +0.056 & 62,681 parameters (MTM reports 873K for its PAM configuration; its P19 size is not reported); AUROC 0.916 vs 0.903 \up \\
+Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639 $\pm$ 0.039} & +0.056 & 62,681 parameters (MTM reports 873K for its PAM configuration; its P19 size is not reported); AUROC 0.916 vs 0.903 \up; not just summary statistics: without its temporal memory the same network drops to 0.572 on every split, and it beats trees on the same statistics on every split \\
 \bottomrule
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard deviation across the five runs. Compute is multiply-adds per event, counted from S2P2's released code at its published configuration.}
@@ -276,7 +276,8 @@ S2P2 is shown on one kind of task. Our family wins on two very different ones wi
 Front & Current result & Next test \\
 \midrule
 P12 mortality & AUROC 0.871 vs 0.880 \up{} (behind); AUPRC level, 0.585 vs 0.586 \up & Ensemble of five runs, still far smaller than the leader (in progress) \\
-Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU; properly tokenised language \\
+Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs), and ahead of the count model given 4$\times$ the data (6.100); recall across irregular gaps solved (97.5\%) & Larger training sets (4M tokens running); a published small Transformer under the same protocol \\
+Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU \\
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 \bottomrule
