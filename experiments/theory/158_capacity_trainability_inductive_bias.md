@@ -120,6 +120,11 @@ tuned dense models at 90M characters.
 - Theorem 1 at small size: five EasyTPP wins with 20–36K parameters; Retweet at 1/15 and Taxi at 1/12 of the leader's
   parameters and per-event compute.
 - §451(1): our exact likelihoods agree with the benchmark's Monte Carlo scorer within its noise on all 25 final models.
+- **Prediction 4, measured** (`experiments/theory/compensator_gradient_variance.py`; Taxi checkpoint, 64 TRAIN sequences,
+  40 repeats): replacing the exact compensator by the uniform Monte Carlo estimate with J points per interval adds
+  relative gradient noise ‖g_MC − g_exact‖/‖g_exact‖ of **59% (J = 1), 18% (J = 10, the EasyTPP scorer's setting) and
+  6% (J = 100)**, falling as 1/√J; the mean of the MC gradients is unbiased (residuals at the 40-repeat noise level).
+  Exact-compensator training has zero estimator noise and costs one closed-form evaluation per interval instead of J.
 - §451(2) and Proposition 2: generated streams reproduce timing and mark transitions (taxi: gap KS 0.014, transition TV
   0.024; naive 0.063 / 0.53).
 - §452: each failure mode was measured before its fix and the fix was verified by a pre-registered or audited run.
@@ -137,7 +142,7 @@ tuned dense models at 90M characters.
 3. **Time reparameterisation:** replacing elapsed-time decay by position-indexed decay should hurt most on the datasets
    with the widest gap ranges (Taobao, StackOverflow) and least on near-regular ones.
 4. **Gradient variance:** at matched model size, exact-compensator training has lower per-step gradient variance than a
-   Monte-Carlo-compensator variant of the same model; measurable with a fixed batch.
+   Monte-Carlo-compensator variant of the same model. **Confirmed (§454): 18% relative gradient noise at J = 10, 0 exact.**
 5. **Superposition advantage:** on synthetic superpositions of K renewal processes, the race head's advantage over a
    single-intensity model grows with K.
 

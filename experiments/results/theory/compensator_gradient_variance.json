@@ -1,0 +1,23 @@
+{
+ "checkpoint": "experiments/results/tpp/curie_repro_taxi_v5_s0_20261007T0510Z.pt",
+ "batch_sequences": 64,
+ "events": 2314,
+ "exact_grad_norm": 0.3896839072247129,
+ "mc": {
+  "1": {
+   "relative_noise": 0.5863794608580021,
+   "relative_bias_of_mean": 0.06888921840336205,
+   "repeats": 40
+  },
+  "10": {
+   "relative_noise": 0.18215029826500045,
+   "relative_bias_of_mean": 0.02030111444991205,
+   "repeats": 40
+  },
+  "100": {
+   "relative_noise": 0.06018656849170047,
+   "relative_bias_of_mean": 0.009112060193847617,
+   "repeats": 40
+  }
+ }
+}
