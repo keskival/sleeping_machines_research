@@ -60,7 +60,16 @@ def main():
             if hasattr(P, 'pair_mu'):
                 mu = P.pair_mu[m[:, :, None], mi]; ls = P.pair_log_sigma[m[:, :, None], mi]
                 sc = sc + (-0.5 * ((lg - mu) / ls.exp()) ** 2 - ls).unsqueeze(-1) * P.pair_w
-            att = torch.softmax(sc.masked_fill(~valid[None, :, :, None], -1e9), 2)[0].numpy()   # [L, W, h]
+            sc = sc.masked_fill(~valid[None, :, :, None], -1e9)
+            if getattr(P, 'consume', False):
+                cons = sc.new_zeros(1, L + W); rows = []
+                for jj in range(L):
+                    pos = torch.arange(jj, jj + W)
+                    aj = torch.softmax(sc[:, jj] + (1 - cons[:, pos].clamp(max=1 - 1e-3)).log().unsqueeze(-1), 1)
+                    cons = cons.index_add(1, pos, aj.mean(-1)); rows.append(aj)
+                att = torch.stack(rows, 1)[0].numpy()
+            else:
+                att = torch.softmax(sc, 2)[0].numpy()                                   # [L, W, h]
             for j in range(1, L):
                 prev = [i for i in range(max(0, j - W), j) if line[i] == line[j] and item[i] == item[j]]
                 acc['events'] += 1

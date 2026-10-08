@@ -1,0 +1,2 @@
+# B3 round 4, C11 (v2 validation only; native config 8 of 8, the last): C10 + soft at-most-once predecessor use (consumption; covers pending), theory note 157 sect. 448; decision: does consumption raise binding purity and AUROC beyond C10 (.702), and which config enters the sealed test
+curie_b3_r4_c11_consume_s0_20261008T2040Z experiments/fas/race_tpp_fas_v4.py --tag curie_b3_r4_c11_consume_s0_20261008T2040Z --keyed 0 --pred-window 64 --consume 1 --batch 16 --eval-batch 8 --max-wall-s 14000
