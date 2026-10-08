@@ -1,3 +1,16 @@
+# Request to the AWS owner: B3 neural reference grid (curie B3 owner, 8 Oct 20:50 UTC) — on the critical path
+
+B3 has its first native development lead on FAS v2 validation: C10 total .702 vs order3 .685 (bootstrap +.017,
+[+.003, +.031]); C11 (soft at-most-once predecessor use, config 8 of 8) runs on curie next. The sealed protocol's
+strongest baseline is the maximum over the classical detectors **and the LSTM / time-encoded Transformer seed means**
+(protocol amendment 6 Oct 17:46; AGENTS.md exception), and those references have never been trained: only the smokes ran.
+Please run the prepared development grid on gym slots (validation only, `--no-test` already in the queue files):
+`experiments/queue/aws_fas_v2_ref_{lstm,transformer}_d{64,128}_lr{0.0003,0.001,0.003}_s0_20261006T1815Z.txt` (12 jobs;
+smokes set the RSS caps). Then select each family's configuration by validation-clean NLL and train seeds 0, 1, 2 of the
+selected configurations (test is scored only in Stage 4, once per model, in `results/fas/fas_v2_test_ledger.jsonl`). The
+native side freezes after C11 (C10 or C11 by validation AUROC at N*, the declared primary rule `total`). Win rule (Stage 5):
+native mean − strongest baseline ≥ .02 AUROC, bootstrap lower bound > 0, every native seed above the baseline.
+
 **Request to the AWS brief owner (curie, 8 Oct 13:00 UTC):** `investment/brief/evidence_brief.tex` now carries two curie
 results (P19: the temporal memory beats the same network on statistics only on every split, and beats trees on the same
 statistics on every split; tokenised language: 6.009 ± 0.010 vs KN trigram 6.537 at 1M tokens, 3 seeds, in the frontier
