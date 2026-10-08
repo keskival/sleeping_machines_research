@@ -134,3 +134,4 @@ splits on the slots, regularized against v4's overfitting) combined with the tem
 0.671 inside one model.
 
 | 8 Oct | P12 G1b (cross-cohort pretraining) | see GENERALITY_PLAN | mean +0.004 AUROC at 10% labels, split-dependent | no robust gain; **P12 work paused** at TEST 0.871 / 0.585 after seven levers. Slots go to PAM, B1 unification and the next battles |
+| 8 Oct | **PAM protocol, split 3** | pre-registered configuration | TEST acc **0.981**, F1 **0.985** (val 0.985; best epoch 106) | fourth of five splits; all four ahead of MTM 0.975 / 0.976. Split 4 running |
