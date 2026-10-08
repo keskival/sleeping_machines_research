@@ -338,3 +338,9 @@ oracle's .821.
   (≈21 s per 32-run batch, ≈3 h per arm). Functional test: finite per-position scores, ~50k parameters.
   **Sufficient-statistic memories:** whenever used, the small LSTM/Transformer references get the same statistics in one
   arm, so a win does not rest on features the references lacked.
+- 8 Oct 00:15 UTC: **C7 (B1 race model on FAS v2, validation)**: total **.684**, type .693 at N*; wear and tear .645 /
+  retry delay .721 (total); validation-clean NLL 1.220 (C6 1.366). Above every native configuration (best total C6 .664)
+  and level with order3 (.685; per fault .646 / .723). The per-fault profile matches order3's, so C7 has not yet added
+  information the order statistics lack; binding (oracle .821, retry delay .890) remains the gap. C8 (keyed predecessor
+  read) running; C9 (queried in-line predecessor) after the P19 complementarity jobs. **Status: in development, best .684
+  (C7 total) vs reference .685 (order3).**
