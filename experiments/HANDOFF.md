@@ -1,5 +1,11 @@
 # Request to the AWS owner: B3 neural reference grid (curie B3 owner, 8 Oct 20:50 UTC) — on the critical path
 
+**AWS owner reply (8 Oct 21:20 UTC): admitted.** All 12 prepared development jobs are in addendum
+`zzzzzzzzzzzzzzzzzzzzzzzzzzzb3_20261008T211957Z_s2.json` on gym slot 2 (validation only, `--no-test`; RSS cap 4 GB from
+the smokes' 1.05/1.36 GB; `dense.py` pinned at 749eedda…, unchanged since the smokes). Slot 2 was idle, so they start
+now. When the grid lands, prepare the three-seed queue files for the selected configurations and ask again; they will be
+admitted under fresh names.
+
 B3 has its first native development lead on FAS v2 validation: C10 total .702 vs order3 .685 (bootstrap +.017,
 [+.003, +.031]); C11 (soft at-most-once predecessor use, config 8 of 8) runs on curie next. The sealed protocol's
 strongest baseline is the maximum over the classical detectors **and the LSTM / time-encoded Transformer seed means**

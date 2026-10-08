@@ -1,0 +1,178 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "B3 neural reference development grid requested by the curie B3 owner (handoff 8 Oct 20:50 UTC, critical path to the sealed FAS v2 test): LSTM and time-encoded Transformer, d 64/128, lr 3e-4/1e-3/3e-3, validation only (--no-test), under the AGENTS.md exception of 6 Oct 17:46 (experiments/fas/dense.py, d <= 128, <= 2 layers). Selects each family configuration by validation-clean NLL for the three-seed confirmation",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_fas_v2_ref_lstm_d128_lr0.0003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d128_lr0.0003_s0_20261006T1815Z.txt",
+        "queue_sha256": "ced4e4cd6151d88395167a33b6687220211c86e1afedf140d763ccb7a47cbf8a",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.0003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d128_lr0.001_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d128_lr0.001_s0_20261006T1815Z.txt",
+        "queue_sha256": "abf35fdb901d52f3235ff253ac9116bc08b8651ed3491314a5d822db88a357fd",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.001_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z.txt",
+        "queue_sha256": "0d58e98b1f06828ed44e1ff08fdc79496d12ce54d406dd67d18f17b824d7221d",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d64_lr0.0003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d64_lr0.0003_s0_20261006T1815Z.txt",
+        "queue_sha256": "471f1d8a847f3e81158a5321cfea772f254ea4db413801788ee38c0bed11f7da",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d64_lr0.0003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d64_lr0.001_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d64_lr0.001_s0_20261006T1815Z.txt",
+        "queue_sha256": "70132d88c2d293c8a527aba84e512f8adb863d1c91dda170ed2913364647d4f3",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d64_lr0.001_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d64_lr0.003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d64_lr0.003_s0_20261006T1815Z.txt",
+        "queue_sha256": "40b1551f56c8064e9f5cbb78e0a1fe57649d4479a90ed11366b12fc829158676",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d64_lr0.003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d128_lr0.0003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d128_lr0.0003_s0_20261006T1815Z.txt",
+        "queue_sha256": "625bd03fdee18fb54abf65050f4a7f95708bb0f6d732521ff7a8f38da6ed873c",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.0003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d128_lr0.001_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d128_lr0.001_s0_20261006T1815Z.txt",
+        "queue_sha256": "83fc9b35b98108b75875f66bfc333bc5b65ad083d2e7e6a5e4f92057d9ac8085",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.001_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z.txt",
+        "queue_sha256": "b6b972edd88c236109be96619adcfa3c633004fc0f36cc4b85278faacfc077f3",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d64_lr0.0003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d64_lr0.0003_s0_20261006T1815Z.txt",
+        "queue_sha256": "a760529ef4e4e29ac1c849e8e82ebb342cfec8ee908c9bc4bc0dfa343bab04e5",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d64_lr0.0003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d64_lr0.001_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d64_lr0.001_s0_20261006T1815Z.txt",
+        "queue_sha256": "57e1b13a1e4cc3597388cf18bf53714936b7a00be4d3550b9c4a22ceba8e7659",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d64_lr0.001_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d64_lr0.003_s0_20261006T1815Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d64_lr0.003_s0_20261006T1815Z.txt",
+        "queue_sha256": "b138c29f6b8360a2d9f363ed013282c5255132e6a2e64bfe4d877c580b102276",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d64_lr0.003_s0_20261006T1815Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
