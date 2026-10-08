@@ -95,6 +95,7 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | Model (1M training tokens unless stated) | Seed | Score | Selection slice | Parameters |
 |---|---|---|---|---|
 | **Keyed temporal-memory token model** (`r1_token_keyed_lm.py`, best epoch 2 of 5) | 0 | **6.019** | 6.310 | 3,333,845 |
+| Keyed temporal-memory token model | 1 | **5.9996** | 6.308 | 3,333,845 |
 | Same model **without the keyed read** (ablation, best epoch 2 of 5) | 0 | 6.193 | 6.465 | 3,321,425 |
 | KN trigram | — | 6.537 | | |
 | KN bigram | — | 6.584 | | |
