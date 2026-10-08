@@ -40,6 +40,12 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH="/home/node/.npm-global/bin:${PATH}"
 ENV CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION=400
 ENV CODEX_HOME=/home/node/.codex
+# The root disk is small; /workspace is a large bind mount. Keep growing caches on /workspace (git-ignored).
+ENV XDG_CACHE_HOME=/workspace/.cache \
+    PIP_CACHE_DIR=/workspace/.cache/pip \
+    npm_config_cache=/workspace/.cache/npm \
+    TORCHINDUCTOR_CACHE_DIR=/workspace/.cache/torchinductor \
+    TEXMFVAR=/workspace/.cache/texmf-var
 
 COPY scripts/configure_codex_container.py /usr/local/lib/configure_codex_container.py
 RUN python3 /usr/local/lib/configure_codex_container.py /home/node/.codex/config.toml
