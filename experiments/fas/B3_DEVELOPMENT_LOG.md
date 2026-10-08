@@ -372,3 +372,11 @@ oracle's .821.
   final 1.153), then was stopped by the RSS watchdog (2.82 GB > 2.8 GB cap) while scoring validation at the end of pass 2
   (training held at 2.0–2.15 GB). No result file. Driver gains `--eval-batch`; second retry (validation scoring batch 8,
   cap 3.3 GB, MemAvailable ≈ 10 GB) queued after the R1 4M-token language run, which had already started.
+- 8 Oct 20:20 UTC: **C10 (queried predecessor with learned per-type-pair duration laws, window 64; config 7 of 8)**:
+  validation total **.702**, type .711 at N*; wear and tear .656, **retry delay .746**; validation-clean NLL **1.023** (C9
+  1.153). **First native lead over order3 (.685):** paired bootstrap C10 − order3 = **+.017, 95% [+.003, +.031], P(ahead)
+  .99**; Spearman with order3 .836 (C7–C9 .85), blend .698. **Binding diagnostic:** attention on the true item predecessor
+  **5.9%** (uniform 1.6% at W = 64; C9 4.0% vs 3.1%), same line 49.7%, previous merged event 14.4%; 92% of predecessors
+  inside the window. Binding has begun (theory note 157 Prediction 1, partially) but is far from exact; the remaining terms
+  of §448 (at-most-once use of a predecessor; pending items only) are the last development configuration (C11, 8 of 8).
+  **Status: in development, best .702 (C10) vs reference .685 (order3), validation, single seed.**

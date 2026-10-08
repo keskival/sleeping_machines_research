@@ -50,7 +50,7 @@ datasets (four complete, all ahead on the mean).
 - **Theory:** a race of clocks contains softmax attention and Mamba-style selective state spaces exactly.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (level with the best classical detector).
+characters, P12 mortality AUROC, real-world tables, FAS v2 (in development: 0.702 vs the best classical detector's 0.685 on validation, single seed; sealed test pending).
 
 ## 2. The model family
 
