@@ -110,6 +110,13 @@ tuned dense models at 90M characters.
 
 ## §454 What the evidence says about the theory
 
+- **Theorem 1, numerically** (`experiments/theory/race_universality_check.py`, `results/theory/race_universality_check.{json,png}`):
+  maximum-likelihood fits of one exponential + M defective log-normal clocks to three targets on [0.05, 50].
+  KL(target ‖ race) for M = 1/2/4/8/16: two separated modes 0.375 / ≈0 / ≈0 / ≈0 / ≈0; truncated Pareto (α = 1.2) 0.283 /
+  0.136 / 0.045 / 0.0078 / 0.0039; narrow spike on a broad background 0.051 / 0.0083 / 0.0011 / ≈0 / ≈0 (≈0: within the
+  ±0.001 sampling noise). The pointwise log-density error on the two-mode target stays near 0.9 because it is
+  concentrated in the inter-mode valley where the target density is nearly zero: the theorem's condition (hazard
+  bounded away from 0) is exactly what fails there, while the KL, which weights by the target's own mass, vanishes.
 - Theorem 1 at small size: five EasyTPP wins with 20–36K parameters; Retweet at 1/15 and Taxi at 1/12 of the leader's
   parameters and per-event compute.
 - §451(1): our exact likelihoods agree with the benchmark's Monte Carlo scorer within its noise on all 25 final models.
