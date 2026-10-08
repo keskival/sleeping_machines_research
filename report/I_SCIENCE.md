@@ -264,16 +264,16 @@ On a harder modular task (train fraction 0.25), larger pools grok later (untied 
 
 **The predecessor message is what makes binding learnable.** Without it the stored state carries the previous key only inside a time-weighted sum (linearly decodable at 3.9% against 3.1% chance) and the read learns nothing; with it the match ranks the right value first in 99.8% of queries, flat across pair age and elapsed time. The race's own error at the read, applied with time-decaying slot traces, learns the binding without backpropagation.
 
-**Tokenized language** (R1 gate 2; GPT-2 BPE FineWeb, 1M TRAIN tokens; selection on a disjoint validation slice; the 65,528-target slice scored once; nats per token; seed 0, seeds 1–2 running):
+**Tokenized language** (R1 gate 2; GPT-2 BPE FineWeb, 1M TRAIN tokens; selection on a disjoint validation slice; the 65,528-target slice scored once per seed; nats per token):
 
 | Model | 65,528-target slice |
 | --- | --- |
-| **Temporal-memory token model with the keyed predecessor read** (3.3M parameters) | **6.019** |
-| Same without the keyed read | 6.193 |
+| **Temporal-memory token model with the keyed predecessor read** (3.3M parameters), 3 seeds | **6.009 ± 0.010** |
+| Same without the keyed read (seed 0) | 6.193 |
 | Kneser–Ney trigram, same 1M tokens | 6.537 |
 | Kneser–Ney trigram, 4M tokens | 6.100 |
 
-The keyed read adds 0.175 nats per token and takes the model below the trigram fitted on four times the data.
+The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09; the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
 
 ## 5. What the evidence says
 
@@ -281,7 +281,7 @@ The keyed read adds 0.175 nats per token and takes the model below the trigram f
 
 **What does not work yet.** Three measured problems explain most of the losses.
 
-1. **The native P24 token model carries little context.** Its tokenized quality is at bigram level, and erasing persistent memory costs 0.01–0.02 nats. The compact temporal-memory model with the keyed predecessor read (§4.5) uses context: 6.019 against KN trigram 6.537 at 1M tokens, 0.175 of it from the read (seed 0).
+1. **The native P24 token model carries little context.** Its tokenized quality is at bigram level, and erasing persistent memory costs 0.01–0.02 nats. The compact temporal-memory model with the keyed predecessor read (§4.5) uses context: 6.009 ± 0.010 (3 seeds) against KN trigram 6.537 at 1M tokens, 0.175 of it from the read.
 2. **The implemented route credit is nearly blind on long horizons.** An exact audit on FAS (one race forced to each alternative, all other noise shared) finds correlation −0.08 and 0.29 between the implemented credit and the true consequence of each routing choice, with 60–64% sign agreement. Most of a choice's effect lies after the next prediction, and with long memories beyond the training segment. The proposed transported write credit scored worse (0.18 on R8) and was not promoted. This is why weight decay, extra write bandwidth, larger tied pools and a longer credit window all failed to move the language gap: the signal that would teach binding barely exists.
 3. **Throughput.** Training runs at 480–860 tokens/s on one CPU thread. A 100M-token fit takes days; GPT-2-scale data is out of reach for the current implementation. This is an implementation limit, not a property of the family.
 
@@ -296,7 +296,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi, Taobao, StackOverflow and Retweet won** (§4.0); pass criterion exceeded; Amazon continues |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | **P19 and PAM won** (§4.0b); P12 in development |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Setting selected (oracle 0.821 vs classical 0.685); race-readout binding model in development |
-| **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met on seed 0** (6.019 vs 6.537), seeds 1–2 running |
+| **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met** (6.009 ± 0.010 vs KN trigram 6.537, 3 seeds); next: a published small Transformer reference |
 
 High-fidelity route credit (exact forced-lane credit at small pools, then a low-variance multi-step estimator) is developed inside B1, B3 and R1, where model sizes make it affordable. Parallel-scan training of the linear decay/rotation core follows when a battle's fitting time requires it. Every result reports measured inference work beside quality. New Transformer and LSTM training is retired: comparisons use published scores under the exact matching protocol and the dense results already completed.
 

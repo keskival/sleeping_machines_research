@@ -96,15 +96,17 @@ This is a three-factor rule whose factors are all available at the slot and the 
 |---|---|---|---|---|
 | **Keyed temporal-memory token model** (`r1_token_keyed_lm.py`, best epoch 2 of 5) | 0 | **6.019** | 6.310 | 3,333,845 |
 | Keyed temporal-memory token model | 1 | **5.9996** | 6.308 | 3,333,845 |
+| Keyed temporal-memory token model | 2 | **6.0068** | 6.325 | 3,333,845 |
+| **Keyed model, 3 seeds** | mean ± sd | **6.009 ± 0.010** | | |
 | Same model **without the keyed read** (ablation, best epoch 2 of 5) | 0 | 6.193 | 6.465 | 3,321,425 |
 | KN trigram | — | 6.537 | | |
 | KN bigram | — | 6.584 | | |
 | KN trigram, 4M tokens | — | 6.100 | | |
 
-**Gate 2 met on seed 0:** 0.518 nats per token below KN trigram at the same training tokens (KN standard error on this
+**Gate 2 met over three seeds (6.009 ± 0.010; seed 0 first):** 0.518 nats per token below KN trigram at the same training tokens (KN standard error on this
 slice ≈ 0.017), and below KN trigram trained on 4× the tokens. Ablation: the temporal memory alone scores
 6.193 (0.344 below KN trigram); **the keyed predecessor read adds 0.175 nats per token**, which takes the model
-past KN trigram at 4× the data. Pending: seeds 1–2 of the keyed model. The model overfits after epoch 2 (train 5.54 → 5.06 while selection rises), so
+past KN trigram at 4× the data. Seeds 1–2 (8 Oct): 5.9996 and 6.0068. The model overfits after epoch 2 (train 5.54 → 5.06 while selection rises), so
 regularization and the 4M setting are the next levers.
 
 ## Next
