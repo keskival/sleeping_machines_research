@@ -203,3 +203,4 @@ checkpoint (curie reproduction, seed 0), 200 TEST sequences, each continued from
 gap distribution KS **0.014** vs a marginal-marks/exponential-gaps reference 0.063; mark-transition total variation
 **0.024** vs 0.527; log-gap quantiles −3.38/−2.64/−1.91/−1.32/−0.74 vs real −3.42/−2.64/−1.93/−1.33/−0.80. Generated streams
 reproduce both timing and the pickup/drop-off alternation (`results/tpp/generate/taxi_v5_s0_generated_200.json`).
+| 8 Oct | unified protocol, Retweet seed 2 | pre-registered; DEV reproduced exactly | TEST −6.3231 (NHP −6.348); audit drop 0.0072 | four of five Retweet seeds ahead; seed 4 training |
