@@ -29,8 +29,8 @@ covariates, slot values, staleness and a projection of the normalized statistics
   published 0.903 / 0.583 (MTM), with 62,681 parameters.
 - Diagnostic: before the statistic-valued slots the temporal model extracted no more than gradient-boosted trees on
   per-channel summaries (0.866 vs 0.867 validation AUROC); with them it surpassed both (0.872).
-- PAM wearable activity recognition (development): validation accuracy 0.981, F1 0.983 with 46,316 parameters (MTM TEST
-  0.975 / 0.976); five-split protocol running.
+- PAM wearable activity recognition (five official splits, TEST): accuracy 0.978 ± 0.007, F1 0.980 ± 0.008 vs MTM
+  0.975 / 0.976, with 46,316 parameters; four of five splits ahead.
 - Compute and memory: slot updates only for measured channels (sparse writes); constant-size per-channel state
   independent of record length.
 Evidence: `experiments/B2_IRREGULAR_TS.md`, `experiments/results/irts/b2_final_p19_v3_*`.

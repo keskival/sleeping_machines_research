@@ -35,8 +35,9 @@ def fig_runs():
               ('Q&A activity\n(StackOverflow)', seeds('b1_final_stackoverflow_v12'), -2.163, 'S2P2'),
               ('Social media\n(Retweet)', seeds('b1_final_retweet_v16'), -6.348, 'NHP'),
               ('Reviews\n(Amazon)', seeds('b1_final_amazon_v18'), 0.781, 'S2P2'),
-              ('Sepsis\n(P19)', [s['auprc'] for s in p19['per_split']], 0.583, 'MTM')]
-    fig, axes = plt.subplots(1, 6, figsize=(7.8, 2.6))
+              ('Sepsis\n(P19)', [s['auprc'] for s in p19['per_split']], 0.583, 'MTM'),
+              ('Sensors\n(PAM)', [json.loads((ROOT / f'experiments/results/irts/b2_final_pam_v7ema_split{k}.json').read_text())['test']['acc'] for k in range(5)], 0.975, 'MTM')]
+    fig, axes = plt.subplots(1, 7, figsize=(8.8, 2.6))
     for ax, (name, ours, ref, refname) in zip(axes, panels):
         ax.axhline(ref, color=PUB, lw=2.2, zorder=2)
         ax.scatter(range(len(ours)), ours, color=OURS, s=26, zorder=3, edgecolor='white', linewidth=.8)
@@ -44,7 +45,7 @@ def fig_runs():
         ax.set_ylim(lo - pad, hi + pad); ax.set_xlim(-.8, len(ours) - .2)
         ax.text(-.7, ref - pad * .12, f'best published\n({refname})', color=MUTED, fontsize=6.6, va='top')
         ax.set_xticks([]); ax.set_title(name, fontsize=8.6); ax.tick_params(labelsize=7)
-        ax.set_ylabel('AUPRC, 0–1 ↑' if 'P19' in name else 'nats per event ↑', fontsize=7.2)
+        ax.set_ylabel('AUPRC, 0–1 ↑' if 'P19' in name else 'accuracy, 0–1 ↑' if 'PAM' in name else 'nats per event ↑', fontsize=7.2)
         ax.grid(axis='x', visible=False)
         n_above = sum(o > ref for o in ours)
         ax.text(.5, -.1, f'{n_above} of {len(ours)} ahead', transform=ax.transAxes, ha='center', va='top',
@@ -54,7 +55,7 @@ def fig_runs():
 
 def fig_size():
     """Model size against the leading published model (parameters)."""
-    rows = [('Retweet', 19654, 298627, 'S2P2'), ('Taxi', 20504, 251850, 'S2P2'),
+    rows = [('Wearables (PAM)', 46316, 873000, 'MTM'), ('Retweet', 19654, 298627, 'S2P2'), ('Taxi', 20504, 251850, 'S2P2'),
             ('Amazon', 35000, 127056, 'S2P2'), ('StackOverflow*', 29191, 30166, 'S2P2'),
             ('Taobao', 24046, 26801, 'S2P2')]
     XMAX = max(r[2] for r in rows) / 1000 * 1.45

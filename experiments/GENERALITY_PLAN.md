@@ -13,6 +13,7 @@ transfer to another? Each experiment states what it settles. Losses are reported
 | Anonymous interleaved process logs | FAS v1, 3 seeds | 0.592 vs 0.559 AUROC against six generic controls | temporal/sparse native race model |
 | Character language | text8 10M | Beats tuned Transformers at ≤ equal compute; LSTM leads; 90M behind | integrated temporal/sparse core with route credit |
 | Temporal reasoning (synthetic) | event-order, timing-only, retrieval | 99.7% vs Transformers 33–41%; timing-only 95.3% vs order-only ceiling 50% | race/delay members |
+| Wearable sensors (activity) | PAM, five official splits | **G3 met:** accuracy 0.978 ± 0.007, F1 0.980 ± 0.008 vs MTM 0.975 / 0.976 (4 of 5 splits ahead) | same temporal memory layer, statistic slots, crops + jitter + EMA |
 | Mixed-type tables | synthetic witness; banknote | 100% synthetic; trees lead on banknote | typed comparisons into the temporal core |
 
 Shared code, not only shared ideas: `experiments/irts/race_irts*.py` imports `TemporalMemoryLayer` from

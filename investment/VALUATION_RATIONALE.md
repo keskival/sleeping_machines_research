@@ -83,6 +83,8 @@ Evidence update, 6 October:
     leads S2P2 (0.522) on the mean at 1/12 of its parameters and compute.
 
   - StackOverflow: −2.144 ± 0.004 vs −2.163 (+0.019) at 1.26× S2P2's compute (accuracy win).
+- **Public wearable-sensor win (PAM, 8 October):** accuracy 0.978 ± 0.007 and F1 0.980 ± 0.008 vs the best published
+  0.975 / 0.976 (MTM), five official splits, 46,316 parameters; four of five splits ahead.
 - **Public clinical win (P19 sepsis, 7 October):** AUPRC 0.639 vs 0.583 and AUROC 0.916 vs 0.903 against the best
   published model on the five official splits, with the same temporal memory core as the event model — evidence that the
   family generalizes across data types, not only across event datasets. Paired five-split tests (8 Oct):

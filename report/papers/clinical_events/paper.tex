@@ -96,7 +96,7 @@ AUPRC, the clinically relevant metric at 4\% prevalence, improves by 5.6 points,
 \label{fig:p19}
 \end{figure}
 
-\paragraph{P12 and PAM.} On P12 in-hospital mortality, with the P19 configuration unchanged, TEST AUROC is $87.1 \pm 1.1$ and AUPRC $58.5 \pm 2.4$: behind MTM on AUROC ($88.0 \pm 1.0$), level on AUPRC ($58.6 \pm 4.1$), and ahead of GraFITi, Warpformer and ViTST. PAM activity recognition: \pending{development (MTM accuracy 97.5)}.
+\paragraph{P12 and PAM.} On P12 in-hospital mortality, with the P19 configuration unchanged, TEST AUROC is $87.1 \pm 1.1$ and AUPRC $58.5 \pm 2.4$: behind MTM on AUROC ($88.0 \pm 1.0$), level on AUPRC ($58.6 \pm 4.1$), and ahead of GraFITi, Warpformer and ViTST. On PAM activity recognition (wearable inertial sensors, eight classes, five official splits), with random crops, amplitude jitter and weight averaging in training, TEST accuracy is $97.8 \pm 0.7$ and F1 $98.0 \pm 0.8$ against MTM's $97.5 \pm 0.2$ and $97.6 \pm 0.2$, with 46,316 parameters; four of five splits are ahead (split 4: 96.4).
 
 \paragraph{Transfer from self-supervised event modelling.} The encoder can be pretrained without labels to predict the next measurement event---when, which channels, which values---and then fine-tuned for mortality. \pending{pretrained vs.\ scratch at 10/30/100\% labels}.
 

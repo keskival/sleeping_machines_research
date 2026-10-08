@@ -112,14 +112,18 @@ split: **AUROC 0.916 ± 0.022 and AUPRC 0.639 ± 0.039** against the best publis
 memory layer — same code, same size — adding addressed channel memories with sufficient statistics, typed comparisons
 and time-since-measurement as information. Paired five-split tests (8 Oct): removing the model's temporal memory (same network reading only its statistic slots) drops it to 0.900 / 0.572 on every split (paired ΔAUPRC +0.072, t = 31), and gradient-boosted trees on the same statistics score 0.914 / 0.618: the temporal memory carries signal the statistics lack, and the model leads the trees on AUPRC on every split (+0.026, paired t = 4.2; AUROC level). The result reproduces from scratch on separate hardware (AUROC within 0.0004 on all five splits).
 
+**A third public win, in wearable sensors (8 October 2026).** On PAM (activity recognition from wearable inertial
+sensors, eight classes), five official splits, TEST scored once per split under a pre-registered protocol: **accuracy
+0.978 ± 0.007 and F1 0.980 ± 0.008** against the best published 0.975 / 0.976 (MTM, 2025), with 46,316 parameters.
+Four of five splits are ahead; split 4 scores 0.964.
+
 **Generality, stated precisely.** The EasyTPP leader S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is shown on one task
 type. One Sleeping Machines family now wins public benchmarks on generative event modelling and on sparse clinical
 classification, with further evidence on process logs, character language and few-shot temporal reasoning; large-scale
 language and real tables remain behind. One shared temporal core (14,080 parameters) trained jointly on Taxi, Taobao,
 StackOverflow and Amazon matches or beats the separate per-dataset models on three of four (development data): mobility,
-shopping and Q&A timing share one learned dynamics. Next: transfer across clinical datasets, pretraining on 31K unlabeled
-sepsis-cohort stays before predicting mortality in another cohort with few labels (pretraining on the same records as the
-labels gave no robust gain)
+shopping and Q&A timing share one learned dynamics. Generative pretraining, on the same clinical cohort or on 31K
+stays from another, gave no robust label-efficiency gain on mortality prediction (mean +0.004 AUROC at 10% labels)
 ([generality plan](../experiments/GENERALITY_PLAN.md)).
 
 - **Taobao and Taxi are confirmed wins** at a fraction of the state of the art's compute.

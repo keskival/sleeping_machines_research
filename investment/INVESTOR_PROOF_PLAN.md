@@ -18,8 +18,9 @@ This is an execution plan, not a prediction of investor acceptance.
 - **Fifth dataset won, leaderboard complete:** Amazon 0.803 ± 0.001 vs 0.781 (S2P2), all five seeds ahead, at 0.29×
   S2P2's compute.
 - **Second domain: achieved on P19.** Sepsis prediction, five official splits: AUROC 0.916 ± 0.022, AUPRC 0.639 ±
-  0.039 vs the best published 0.903 / 0.583 (MTM) ([dossier](../experiments/B2_IRREGULAR_TS.md)). P12 is in its TEST
-  protocol; PAM (wearable sensors) in development.
+  0.039 vs the best published 0.903 / 0.583 (MTM) ([dossier](../experiments/B2_IRREGULAR_TS.md)). P12: level with MTM on AUPRC, behind on AUROC.
+- **Third domain: achieved on PAM (8 October).** Wearable activity recognition, five official splits: accuracy
+  0.978 ± 0.007, F1 0.980 ± 0.008 vs MTM 0.975 / 0.976, 46,316 parameters; four of five splits ahead.
 - **Generality track G:** self-supervised event pretraining → clinical prediction with fewer labels; one model across five
   event datasets ([plan](../experiments/GENERALITY_PLAN.md)).
 - **FAS v2:** the sealed setting is selected; development is in progress.

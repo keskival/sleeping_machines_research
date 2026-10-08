@@ -640,7 +640,7 @@
         330,
         466
       ],
-      "rowh": 40,
+      "rowh": 35,
       "size": 14,
       "rows": [
         [
@@ -657,6 +657,11 @@
           "Irregular clinical records",
           "P19 sepsis, official splits",
           "Win: AUPRC 0.639 vs 0.583"
+        ],
+        [
+          "Wearable sensors (activity)",
+          "PAM, official splits",
+          "Win: accuracy 0.978 vs 0.975 (4 of 5 splits ahead)"
         ],
         [
           "Anonymous interleaved process logs",
@@ -681,8 +686,8 @@
       ],
       "banner": "S2P2, the event-benchmark leader, is shown on one task type. We win on several.",
       "banner_y": 536,
-      "caveat": "Large-scale language (90M characters) and real tables remain behind; next test: transfer from a large unlabeled clinical cohort to another.",
-      "notes": "Positioning: S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is evaluated only on marked event likelihood. Its parent family, deep state-space models, is general on dense sequences and language; published SSM results do not, to our knowledge, show one model winning event likelihood and sparse clinical classification together. Track G (experiments/GENERALITY_PLAN.md): self-supervised event pretraining on unlabeled clinical records transferred to mortality prediction with fewer labels (G1); one model across five event datasets (G2); PAM wearable sensors (G3); event-to-event transfer (G4)."
+      "caveat": "Large-scale language (90M characters) and real tables remain behind; pretraining on one clinical cohort did not reliably transfer to another.",
+      "notes": "Positioning: S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is evaluated only on marked event likelihood. Its parent family, deep state-space models, is general on dense sequences and language; published SSM results do not, to our knowledge, show one model winning event likelihood and sparse clinical classification together. Track G (experiments/GENERALITY_PLAN.md): self-supervised event pretraining on unlabeled clinical records transferred to mortality prediction with fewer labels (G1); one model across five event datasets (G2); PAM wearable sensors (G3); event-to-event transfer (G4). Update 8 Oct 07:40: PAM (wearable activity recognition) five-split TEST protocol, pre-registered 7 Oct 19:42 UTC: accuracy 0.9775 ± 0.0074, F1 0.9803 ± 0.0080 vs MTM 0.975 ± 0.002 / 0.976 ± 0.002, 46,316 parameters; per split 0.979, 0.981, 0.981, 0.981, 0.964 (split 4 behind). Win under the pre-registered rule (mean accuracy ahead)."
     },
     {
       "kind": "cards",

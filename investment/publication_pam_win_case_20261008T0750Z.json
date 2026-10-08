@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "tag": "pam_win_case_20261008T0750Z",
+  "published_utc": "2026-10-08T07:43:53.528690+00:00",
+  "source_sha256": {
+    "investment/INVESTMENT_CASE.md": "a4928ede313c54c87a57555e17676ffedb0c5e48574b520c38760088ae32884d",
+    "investment/PITCH.md": "35a5a11791fad8749ca589448a772405bb684cb7dd1a4504bfc555a623e7052f",
+    "investment/evidence_20261003.json": "75c718c9da2fd285ac6b00209b0c145ad52c0e9ba64e37c9ec2b21b244f32465",
+    "scripts/build_investment_case.py": "3b8c0a65869b2886106701cbcc1a097940dc53a70d30489aa19692372a577e62"
+  },
+  "previous_sha256": {
+    "sleeping_machines_investment_case.pdf": "d9d5cb68d2e7d477efc91c384ec24a3389b5be6552da855758165cb6c06c0431",
+    "sleeping_machines_investor_pitch.pdf": "d9599eee01a983674a1ae114640eea38404b7b7703e5321804588220b907f0d0"
+  },
+  "outputs_sha256": {
+    "sleeping_machines_investment_case.pdf": "53c8b39eeeb5b502a3d08238bb680879639aea0ccb050af5a14511a966f416c9",
+    "sleeping_machines_investor_pitch.pdf": "92583306229a0da7fee6387f27f763deea8e9c69445d3b90d3e0d7af5ea6b144"
+  },
+  "pages": {
+    "sleeping_machines_investment_case.pdf": 9,
+    "sleeping_machines_investor_pitch.pdf": 4
+  },
+  "render_wall_s": 0.5583264470333233,
+  "peak_render_rss_kib": 41172,
+  "guards": {
+    "threads": 1,
+    "rss_kib": 300000,
+    "address_space_kib": 1000000,
+    "min_available_mib": 8192,
+    "timeout_s": 120
+  },
+  "scope": "Investment narrative and saved evidence; no model runtime or numerical import"
+}
