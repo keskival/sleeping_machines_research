@@ -387,3 +387,9 @@ oracle's .821.
   ledger); compiled, not run (the ledger does not yet exist; no test scoring has occurred). Win rule reminder: native mean
   − strongest baseline ≥ .02 at N*, bootstrap lower bound > 0, every native seed above the baseline. C10's validation
   margin (+.017) is below .02, so C11 matters.
+- 8 Oct 21:20 UTC: **Stage 5 decision script** (`experiments/fas/stage5_decision.py`) applies the pre-registered rule
+  mechanically (strongest baseline = max over classical detectors and neural family seed means; margin ≥ .02; stratified
+  paired bootstrap on seed-rank-averaged scores; every seed above). Dry run on **validation** with C10 as all three
+  "seeds" vs the classical references: difference +.017, bootstrap [+.003, +.031], every seed above, margin not met →
+  **tie** (a first version ranked clean and faulty scores separately; the dry run exposed it; fixed to pooled ranks).
+  On validation, C10 meets two of the three win conditions; the .02 margin is what C11 must add.
