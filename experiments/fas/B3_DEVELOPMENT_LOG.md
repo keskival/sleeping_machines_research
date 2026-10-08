@@ -344,3 +344,6 @@ oracle's .821.
   information the order statistics lack; binding (oracle .821, retry delay .890) remains the gap. C8 (keyed predecessor
   read) running; C9 (queried in-line predecessor) after the P19 complementarity jobs. **Status: in development, best .684
   (C7 total) vs reference .685 (order3).**
+  - Complementarity check (validation, saved per-run scores, untuned rank average): Spearman C7 vs order3 .853; C7+order3
+    .689, C7+order3+gap_z .691 (vs .684 / .685 alone). C7 has learned the order statistics with exact likelihood and little
+    beyond them; the remaining ~.14 to the oracle is binding, which C8/C9 target.
