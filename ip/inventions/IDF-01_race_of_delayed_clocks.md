@@ -43,6 +43,15 @@ distribution (clustering) and constrained to stay near them: log a = log a₀ + 
 0.5·tanh(ρ_w)). Unanchored windows drifted beyond every observed gap in some training runs (a low-likelihood basin);
 anchoring removed the basin.
 
+**Single configuration with data-derived rules** (IDF-01e, 8 Oct 2026): one model configuration serves heterogeneous
+event streams; two rules read from the training data replace per-dataset tuning: (i) window clocks are enabled only when
+the histogram of log inter-event gaps separates into ≥ 2 components of ≥ 5% mass each (detected by empty-bin separation);
+otherwise only exponential, delayed log-normal and state clocks are used, because windows on a single-humped distribution
+create a weaker timing optimum (measured: StackOverflow seed 4 −2.1785 with windows vs −2.1406 without); (ii) the
+recording resolution of the timestamps sets the cell of the resolution principle (IDF-02). Under a pre-registered protocol
+this single configuration is ahead of the best published results on Taobao, Taxi, StackOverflow and Amazon (Retweet
+pending), at 0.09×–1.03× S2P2's per-event compute.
+
 ## 4. Embodiments
 
 - Encoder: stacked complex-diagonal temporal memories that decay and rotate with real elapsed time
@@ -88,6 +97,8 @@ parameters to data-derived gap components.
    with learned edges and scale, its survival computed in closed form.
 4. …wherein window positions and widths are initialized from components of the observed gap distribution and constrained
    to bounded ranges around them.
+4a. …wherein window clocks are instantiated only if the distribution of observed inter-event gaps separates into at
+   least two components, determined automatically from the training data.
 5. …training by maximizing the closed-form likelihood without sampling the compensator.
 6. …executed on event-driven hardware in which clocks are delay elements and the first arrival selects the output.
 7. System and computer-readable-medium claims mirroring 1–6; application claims (IT/network monitoring, industrial
