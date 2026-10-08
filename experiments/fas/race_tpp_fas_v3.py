@@ -187,6 +187,7 @@ def main():
     ap.add_argument('--dv', type=int, default=4)
     ap.add_argument('--dk', type=int, default=16)
     ap.add_argument('--pred-window', type=int, default=0, help='queried in-line predecessor window (0 = off)')
+    ap.add_argument('--eval-batch', type=int, default=32, help='runs per validation scoring batch (memory peak)')
     ap.add_argument('--dropout', type=float, default=0.1)
     ap.add_argument('--lr', type=float, default=3e-3)
     ap.add_argument('--batch', type=int, default=16)
@@ -232,7 +233,7 @@ def main():
                 print(json.dumps(dict(epoch=epoch, step=bi, train_nll=tl / tn, elapsed_s=round(time.time() - start))), flush=True)
             if time.time() - start > a.max_wall_s:
                 break
-        _, _, vnll = per_position(model, val_c, 32)
+        _, _, vnll = per_position(model, val_c, a.eval_batch)
         history.append(dict(epoch=epoch, train_nll=tl / tn, val_clean_nll=vnll, epoch_s=round(time.time() - e0)))
         print(json.dumps(history[-1]), flush=True)
         if vnll < best:
@@ -240,8 +241,8 @@ def main():
         if time.time() - start > a.max_wall_s:
             break
     model.load_state_dict(torch.load(ckpt))
-    PTc, PGc, nll_c = per_position(model, val_c, 32)
-    PTf, PGf, _ = per_position(model, val_f, 32)
+    PTc, PGc, nll_c = per_position(model, val_c, a.eval_batch)
+    PTf, PGf, _ = per_position(model, val_f, a.eval_batch)
     sc_c = prefix_scores(PTc, PGc, [len(r[0]) for r in val_c])
     sc_f = prefix_scores(PTf, PGf, [len(r[0]) for r in val_f])
     res = aurocs(sc_c, sc_f, np.asarray(val_k))

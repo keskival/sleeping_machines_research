@@ -368,3 +368,7 @@ oracle's .821.
   attention tensors); no result, its diagnostic failed for lack of a checkpoint. Retry at batch 16 under a new name
   (`curie_b3_r4_c10_pairdur_b16_s0_20261008T0820Z`, cap 2.8 GB) queued after the R1 gate-2 seeds, which had already
   started.
+- 8 Oct 12:38 UTC: C10 (batch 16) reached validation-clean NLL **1.193 after one pass** (C9 1.340 at the same point; C9
+  final 1.153), then was stopped by the RSS watchdog (2.82 GB > 2.8 GB cap) while scoring validation at the end of pass 2
+  (training held at 2.0–2.15 GB). No result file. Driver gains `--eval-batch`; second retry (validation scoring batch 8,
+  cap 3.3 GB, MemAvailable ≈ 10 GB) queued after the R1 4M-token language run, which had already started.
