@@ -13,11 +13,13 @@ enough. An application that names the wrong inventors can be invalid or unenforc
 ## Inventorship position
 
 **Founder statement (7 October 2026): Tero Keski-Valkama has significantly contributed to the conception of each
-invention in this package (IDF-01 to IDF-06).**
+invention in this package (IDF-01 to IDF-07).**
 
 The research programme, its theory (temporal races, delays as computation, sparse addressed state, counterfactual credit,
 clockless execution, statistic-valued memory) and the direction of each development come from the founders (Tero
-Keski-Valkama; Karoliina Salminen credited on research; her inventorship to be assessed per claim). AI coding agents
+Keski-Valkama; Karoliina Salminen credited on research). **Founder statement, 8 October 2026: Karoliina Salminen is not an inventor of any
+invention in this package (IDF-01 to IDF-07); her contributions date from many years earlier and are not patentable
+subject matter now. Her research credit is preserved separately.**. AI coding agents
 (Claude) assisted with implementation, derivations, numerical checks and experiments in this repository under the
 founder's direction and review. Patent applications name the human inventors only; AI assistance is disclosed to counsel.
 
@@ -32,7 +34,7 @@ answer quick and robust in any later challenge. Template (one per IDF):
 | Key idea / design decision the founder conceived or selected, and the alternatives rejected | |
 | Modifications the founder made to drafts or implementations | |
 | Dates and evidence (messages, commits, notes, conversation logs) | |
-| Other contributors (Karoliina Salminen or others) and their contribution | |
+| Other contributors and their contribution (none for IDF-01 to IDF-07 per the founder statement above) | |
 
 Evidence sources already in place: commit history (first commits in the disclosure register), the theory notes, the
 battle dossiers and the agent session logs, which record the founder's directions.

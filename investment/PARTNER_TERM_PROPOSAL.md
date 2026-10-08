@@ -79,7 +79,8 @@ Each co-founder grant of 3.0% vests in two parts:
 1. A third-party reproduction of a leaderboard result, or a paper accepted at a peer-reviewed venue.
 2. A new confirmed public-benchmark win, or an integrated-model result that passes a declared research gate.
 3. A production-grade inference or training component adopted in a pilot.
-4. A patent application filed with Karoliina as inventor.
+4. A first company-owned technical result that becomes a filed patent application or a published, peer-reviewed
+   method (contributor or inventor).
 
 The research and engineering roles get different milestones but the same structure, size and schedule. If Karoliina joins
 after incorporation, the earmarked 3.0% is granted from the team reserve as options under Ley 28/2022, with vesting

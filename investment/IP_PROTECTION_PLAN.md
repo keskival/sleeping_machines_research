@@ -18,6 +18,9 @@ filed application is documented in the current investment materials.
 Research authorship, inventorship and ownership are separate questions. Preserve
 Karoliina Salminen's research credit and document all contributions, relevant
 employment obligations, assignments to the intended company and dependencies.
+Founder statement (8 October 2026): Karoliina Salminen is not an inventor of any
+candidate invention (IDF-01 to IDF-07); her input dates from many years earlier
+and is not patentable now.
 The repository is private, but earlier disclosures remain part of the audit.
 
 ## What the funding should buy
