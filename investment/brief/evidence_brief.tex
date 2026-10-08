@@ -276,7 +276,7 @@ S2P2 is shown on one kind of task. Our family wins on two very different ones wi
 Front & Current result & Next test \\
 \midrule
 P12 mortality & AUROC 0.871 vs 0.880 \up{} (behind); AUPRC level, 0.585 vs 0.586 \up & Ensemble of five runs, still far smaller than the leader (in progress) \\
-Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs), and ahead of the count model given 4$\times$ the data (6.100); recall across irregular gaps solved (97.5\%) & Larger training sets (4M tokens running); a published small Transformer under the same protocol \\
+Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs); at 4M tokens 5.521 vs 6.100, so the lead grows with data; recall across irregular gaps solved (97.5\%) & Further data scaling (16M tokens); a published small Transformer under the same protocol \\
 Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU \\
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\

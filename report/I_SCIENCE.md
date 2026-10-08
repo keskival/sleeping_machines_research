@@ -272,8 +272,9 @@ On a harder modular task (train fraction 0.25), larger pools grok later (untied 
 | Same without the keyed read (seed 0) | 6.193 |
 | Kneser–Ney trigram, same 1M tokens | 6.537 |
 | Kneser–Ney trigram, 4M tokens | 6.100 |
+| **Same model at 4M TRAIN tokens** (seed 0) | **5.521** |
 
-The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09; the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
+The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09, and **the margin grows with data**: at 4M tokens the model scores 5.521 against the trigram's 6.100 (0.579; seed 0); the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
 
 ## 5. What the evidence says
 
