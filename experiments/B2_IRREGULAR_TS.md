@@ -113,3 +113,23 @@ blend > both shows information the summaries lack.
 | 8 Oct | **PAM protocol, split 1** | pre-registered configuration | TEST acc **0.981**, F1 **0.983** (val 0.978; best epoch 73) | third of five splits; all three scored splits ahead of MTM 0.975 / 0.976 |
 | 8 Oct | P12 G1j aux 0.02 / 0.05 | joint next-measurement loss | val 0.871 / 0.578 (best epoch 4); 0.875 / 0.579 (best epoch 9) vs control 0.875 / 0.583 | the dense loss delays the peak (epoch 4 → 9) but does not raise it; aux 0.15 running |
 | 8 Oct | P12 G1j aux 0.15 | joint next-measurement loss | val 0.876 / 0.581 (best epoch 14) vs control 0.875 / 0.583 | **closed for P12**: across weights 0.02 / 0.05 / 0.15 the peak moves later (epoch 4 → 9 → 14) and AUROC drifts +0.001, within noise and far from the +0.009 needed. Six well-founded levers (lr, augmentation, ensembling, ordering-latency inputs, same-cohort pretraining, joint dense supervision) leave P12 at TEST 0.871 / 0.585 (level with MTM on AUPRC). Remaining P12 test: G1b cross-cohort pretraining (running) |
+
+**P19 complementarity result (curie, 8 Oct 05:34 UTC; five official splits, TEST once per model; results
+`results/irts/curie_b2_p19_compl_split*_20261008T0000Z.json`, predictions `*_preds.npz`):**
+
+| Model | AUROC | AUPRC |
+|---|---|---|
+| Full model (curie rerun) | **0.916 ± 0.022** | **0.644 ± 0.040** |
+| Same network, statistics only | 0.900 ± 0.018 | 0.572 ± 0.037 |
+| Trees on the same statistics | 0.914 ± 0.020 | 0.618 ± 0.041 |
+| Rank blend, full + trees (weight 0.5 chosen on validation in every split) | 0.925 ± 0.021 | 0.671 ± 0.040 |
+
+Paired per split: full − statistics only +0.017 AUROC (5/5, t 5.3), +0.072 AUPRC (5/5, t 31); full − trees +0.002
+AUROC (3/5), +0.026 AUPRC (5/5, t 4.2); blend − better single model +0.007 / +0.027 (5/5 both). Reproduction: the
+curie rerun matches the AWS protocol AUROC within 0.0004 on all five splits (AUPRC within 0.0003 except split 3,
++0.025). **Reading:** the temporal memory carries signal the statistics lack; the P19 win is not a statistics artifact.
+**In-family improvement indicated:** our neural statistics reader is weaker than trees on the same statistics (0.900 vs
+0.914), while the temporal memory adds what trees lack; a stronger statistic reader (soft thresholds / tree-like
+splits on the slots, regularized against v4's overfitting) combined with the temporal memory targets the blend's 0.925 /
+0.671 inside one model.
+

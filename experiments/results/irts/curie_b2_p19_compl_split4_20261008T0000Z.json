@@ -1,0 +1,46 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "dataset": "P19",
+ "split": 4,
+ "tag": "curie_b2_p19_compl_split4_20261008T0000Z",
+ "seed": 0,
+ "full": {
+  "best_epoch": 5,
+  "test": {
+   "auroc": 0.9066178380343878,
+   "auprc": 0.615090248688225
+  }
+ },
+ "stats_only": {
+  "best_epoch": 5,
+  "test": {
+   "auroc": 0.890244662614929,
+   "auprc": 0.5396102733410718
+  }
+ },
+ "tree": {
+  "rounds": 200,
+  "test": {
+   "auroc": 0.9012172527834051,
+   "auprc": 0.5980619860772104
+  }
+ },
+ "blend": {
+  "weight_full": 0.5,
+  "test": {
+   "auroc": 0.9127231485810261,
+   "auprc": 0.641134203773417
+  }
+ },
+ "aws_protocol_model": {
+  "auroc": 0.906557235121985,
+  "auprc": 0.6151988979820922
+ },
+ "wall_s": 2306.987058877945,
+ "source_sha256": {
+  "experiments/irts/p19_complementarity.py": "030d9a711b1007b9c63cb7239538fbc0f426cba05bbb0a535bd031ecb04c0143",
+  "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+  "experiments/irts/summary_tree_diagnostic.py": "b65f85ec324421f5c3783decffca40c0ae6485902a94ac3ac3b42a17ec4d98b5"
+ }
+}
