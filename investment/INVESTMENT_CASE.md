@@ -39,6 +39,9 @@ datasets (four complete, all ahead on the mean).
   at 4× the data 5.521 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
+- **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
+  what-if analysis and synthetic data; taxi streams match real timing (gap KS 0.014 vs 0.063 naive) and event-to-event
+  structure (0.024 vs 0.53).
 - **Reasoning from few examples:** temporal event chains 99.7% vs Transformers 33–41%; race retrieval 100% at 4× context.
 - **Character language:** beats tuned Transformers at equal or lower compute (text8, 10M characters).
 - **Learning signal and capacity:** credit to unchosen routes cuts error by 0.14 bits per character for 0.3% more work;

@@ -310,6 +310,25 @@ def render(stage):
             p(s['opportunity'],52,544,1176,17,muted,maxh=36)
             banner(s['banner'],594)
 
+        elif kind=='timeline':
+            # rows of event ticks: each track is a labelled stream of (time, type); colours by type
+            tracks=s['tracks']; tmax=max(e[0] for tr in tracks for e in tr['events']) or 1.0
+            colors=s.get('type_colors',{}); x0,x1=300,1200; y=200
+            for tr in tracks:
+                p(tr['label'],52,y-8,240,15,tr.get('color',text),True,maxh=40)
+                line(x0,y+12,x1,y+12,'#213349',1.2)
+                for t_,k in tr['events']:
+                    xx=x0+(t_/tmax)*(x1-x0); col=colors.get(str(k),cyan)
+                    c.setFillColor(HexColor(col)); c.rect(xx-2.5,H-(y+26),5,28,fill=1,stroke=0)
+                y+=s.get('track_gap',78)
+            legend=s.get('legend',[])
+            for i,(lab,col) in enumerate(legend):
+                c.setFillColor(HexColor(col)); c.rect(300+i*260,H-(y+8),14,14,fill=1,stroke=0); p(lab,320+i*260,y-6,230,14,muted)
+            p(s.get('axis','time'),x0,y+22,700,13,muted)
+            if s.get('stats'): p(s['stats'],52,y+50,1176,15,text,maxh=60)
+            if s.get('banner'): banner(s['banner'],s.get('banner_y',586))
+            if s.get('caveat'): p(s['caveat'],52,630,1176,13,muted,maxh=32)
+
         elif kind=='scatter':
             x0,y0,pw,ph=115,205,695,325
             def point(x,y): return x0+x/120*pw, y0+(2.55-y)/.45*ph
