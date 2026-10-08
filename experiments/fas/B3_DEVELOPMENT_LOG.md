@@ -351,3 +351,9 @@ oracle's .821.
   delay .723; validation-clean NLL **1.175** (best fit so far; C7 1.220). Better likelihood, no detection gain. As theory
   note 156 §444 predicts, the previous merged event is often the other line's, so its message does not bind items.
   **C9 (queried in-line predecessor)** is the decisive round-3 test; it runs after the P19 complementarity jobs.
+- 8 Oct 07:25 UTC: **C9 (B1 race model + queried in-line predecessor attention, window 32)**: total **.688**, type .695 at N*;
+  wear and tear .647, retry delay .728; validation-clean NLL **1.153** (best fit). First native configuration above
+  order3 (.685), but within noise: paired bootstrap C9 − order3 = +.003, 95% [−.011, +.016]; Spearman with order3 .854,
+  blend .691. Binding has not landed. Diagnostic queued (identity sidecar, diagnostic only): attention mass on the true
+  in-line item predecessor vs same line vs the previous merged event. **Status: in development, best .688 (C9) vs
+  reference .685 (order3); not a win.** Budget: 6 of 8.
