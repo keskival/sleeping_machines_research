@@ -15,6 +15,41 @@ and [application opportunity register](../report/model_family_opportunities.md).
 The [previous memo](archive/valuation_20261004T171500Z_previous_INVESTMENT_CASE.md)
 retains the earlier $10M discussion for historical review.
 
+## Wins and advances at a glance (8 October 2026)
+
+**Seven public leaderboard wins**, each on the official splits with a sealed test scored once per run, 34 of 35 independent
+runs ahead of the best published result:
+
+| Benchmark | Ours | Best published | At what cost |
+| --- | --- | --- | --- |
+| EasyTPP Taxi (mobility events) | 0.525 ± 0.001 | 0.522 (S2P2, NeurIPS 2025) | 1/12 of the leader's parameters and compute; **reproduced independently on separate hardware** |
+| EasyTPP Taobao (shopping) | 1.399 ± 0.003 | 1.318 (IFTPP) | 0.92× the leader's compute; largest margin (+0.081) |
+| EasyTPP StackOverflow (Q&A activity) | −2.153 ± 0.005 | −2.163 (S2P2) | **matched size and compute**; all 5 seeds ahead |
+| EasyTPP Retweet (social cascades) | −6.326 ± 0.001 | −6.348 (NHP) | **1/15** of S2P2's parameters and compute |
+| EasyTPP Amazon (shopping reviews) | 0.803 ± 0.001 | 0.781 (S2P2) | 0.29× the leader's compute |
+| P19 ICU sepsis prediction | AUPRC 0.639, AUROC 0.916 | 0.583 / 0.903 (MTM) | temporal memory adds +0.072 AUPRC on every split beyond summary statistics; reproduced |
+| PAM wearable activity recognition | accuracy 0.978, F1 0.980 | 0.975 / 0.976 (MTM) | 46K parameters vs MTM's 873K |
+
+**Rigor:** pre-registered reporting rules; the benchmark's own scorer agrees; a recording-grid audit every win passes; a
+one-command kit for third-party reproduction. **In progress:** one single configuration across all five EasyTPP
+datasets (four complete, all ahead on the mean).
+
+**Advances beyond the leaderboards:**
+- **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);
+  at 4× the data 5.521 vs 6.100, so the lead grows with data.
+- **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
+  training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
+- **Reasoning from few examples:** temporal event chains 99.7% vs Transformers 33–41%; race retrieval 100% at 4× context.
+- **Character language:** beats tuned Transformers at equal or lower compute (text8, 10M characters).
+- **Learning signal and capacity:** credit to unchosen routes cuts error by 0.14 bits per character for 0.3% more work;
+  doubling memory slots lowers error with the same eight writes per input.
+- **Generality:** one shared temporal core serves four event domains; anonymous interleaved process logs (FAS v1) beat six
+  generic detectors across three seeds.
+- **Theory:** a race of clocks contains softmax attention and Mamba-style selective state spaces exactly.
+
+**Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
+characters, P12 mortality AUROC, real-world tables, FAS v2 (level with the best classical detector).
+
 ## The proposition
 
 Sleeping Machines aims to make capable intelligence economical wherever it is
