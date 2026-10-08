@@ -347,3 +347,7 @@ oracle's .821.
   - Complementarity check (validation, saved per-run scores, untuned rank average): Spearman C7 vs order3 .853; C7+order3
     .689, C7+order3+gap_z .691 (vs .684 / .685 alone). C7 has learned the order statistics with exact likelihood and little
     beyond them; the remaining ~.14 to the oracle is binding, which C8/C9 target.
+- 8 Oct 02:50 UTC: **C8 (C7 + keyed read with the merged predecessor's message)**: total .681, type .689 at N*; retry
+  delay .723; validation-clean NLL **1.175** (best fit so far; C7 1.220). Better likelihood, no detection gain. As theory
+  note 156 §444 predicts, the previous merged event is often the other line's, so its message does not bind items.
+  **C9 (queried in-line predecessor)** is the decisive round-3 test; it runs after the P19 complementarity jobs.
