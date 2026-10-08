@@ -1,0 +1,26 @@
+/workspace/experiments/irts/race_irts_g1j.py:66: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  return -((time_ll + obs_ll + val_ll) * w).sum() / n, dict(time=float((time_ll * w).sum() / n),
+{"epoch": 0, "val_auroc": 0.8461312017390911, "val_auprc": 0.5312719442732886}
+{"epoch": 1, "val_auroc": 0.8632390570865696, "val_auprc": 0.5620125800886162}
+{"epoch": 2, "val_auroc": 0.8640485949140644, "val_auprc": 0.5666960211762633}
+{"epoch": 3, "val_auroc": 0.8677339734154571, "val_auprc": 0.5665775089596977}
+{"epoch": 4, "val_auroc": 0.8673999682978193, "val_auprc": 0.5719497584210026}
+{"epoch": 5, "val_auroc": 0.8700380426167885, "val_auprc": 0.5756961204834092}
+{"epoch": 6, "val_auroc": 0.8718099680713752, "val_auprc": 0.5747594294379011}
+{"epoch": 7, "val_auroc": 0.8711249745250333, "val_auprc": 0.5732828766463322}
+{"epoch": 8, "val_auroc": 0.87007767034261, "val_auprc": 0.5704653511346192}
+{"epoch": 9, "val_auroc": 0.8749348973075791, "val_auprc": 0.579170752705397}
+{"epoch": 10, "val_auroc": 0.873678132288671, "val_auprc": 0.5646860457762484}
+{"epoch": 11, "val_auroc": 0.8748782862706913, "val_auprc": 0.5679829868636713}
+{"epoch": 12, "val_auroc": 0.8649939992300899, "val_auprc": 0.5450133295517481}
+{"epoch": 13, "val_auroc": 0.8666300581961458, "val_auprc": 0.540881157018492}
+{"epoch": 14, "val_auroc": 0.8584554244695547, "val_auprc": 0.5247681962691967}
+{"epoch": 15, "val_auroc": 0.8599442947397025, "val_auprc": 0.5181313830384526}
+{"epoch": 16, "val_auroc": 0.8520527161975499, "val_auprc": 0.5232051164466243}
+{"epoch": 17, "val_auroc": 0.8575949367088608, "val_auprc": 0.5218071296861081}
+{"epoch": 18, "val_auroc": 0.8436006883902086, "val_auprc": 0.5177942261765076}
+{"epoch": 19, "val_auroc": 0.8450669142456013, "val_auprc": 0.5137965675638445}
+{"epoch": 20, "val_auroc": 0.8566438712891464, "val_auprc": 0.5005179414855601}
+{"epoch": 21, "val_auroc": 0.8497543080999072, "val_auprc": 0.4823795512825914}
+VAL {"auroc": 0.8749348973075791, "auprc": 0.579170752705397}
