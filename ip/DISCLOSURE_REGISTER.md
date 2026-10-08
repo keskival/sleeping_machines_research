@@ -23,6 +23,10 @@ counsel should verify against the GitHub history and any other disclosures.
 | IDF-04a | One temporal core trained jointly on several event domains with domain-specific mark embeddings and clock heads | 7 Oct 04:20 `82a7b39d` (`g2_joint.py`) | matches or beats separate models on 3 of 4 | multi-task learning is known externally |
 | IDF-04b | Cross-cohort generative pretraining with a variable map | 7 Oct 20:43 `27541f3a` (`race_irts_g1b.py`) | pending | transfer learning is known externally |
 | IDF-05 | Selective SSMs executed as content-delayed events over decaying memory with content-addressed write/read; exact equivalence | 7 Oct 04:05 `cfb11282` (`MAMBA_CONTAINMENT_20261007.md`, `mamba_containment_check.py`) | equivalence to 4e−13 | **Public note 08 (28 Sept): "Event selectivity is free … Mamba-style models have to learn"**: the motivation is public; the exact construction is not |
+| IDF-07a | Keyed event memory: written keys carry the predecessor's message; type-addressed decaying slots scored inside the race | 7 Oct 13:10 `48372867` (keyed memory); predecessor message 14:05 `15306a57` (`recall_tpp_v3.py`) | recall 97.5% vs 21.6%; FineWeb 6.009 vs KN 6.537 | induction heads, pointer/neural cache (external) |
+| IDF-07b | Local three-factor learning of the keyed read (race error × time-decayed slot traces; no gradient into the network) | 7 Oct 13:26 `8b038f4e` (`recall_tpp_v2.py`) | recall 77.4% (3 seeds) | IDF-06b public (generic counterfactual credit) |
+| IDF-07c | Mixed-length training / unnormalized match for length-robust recall | 7 Oct 15:05 `722cd2a0` (`recall_tpp_v5.py`) | 91.6% at 2× length | curriculum over lengths is known externally |
+| IDF-07d | Queried in-line predecessor with learned per-type-pair duration laws (de-interleaving from the merged likelihood) | 7 Oct 22:35 `c86787be`; duration laws 8 Oct 07:44 `cb1ffa3b` | FAS v2 best early fit; detection pending | FIFO de-interleaving uses identities (oracle) |
 
 ## Public inventions (EP closed; US open until one year after first public appearance)
 

@@ -14,6 +14,7 @@ for a European/US patent attorney, who decides claim scope, inventorship, jurisd
 | [inventions/IDF-03_event_native_irregular_series_classifier.md](inventions/IDF-03_event_native_irregular_series_classifier.md) | Addressed per-channel memories with sufficient statistics, written only on measurement (P19 sepsis win; PAM in protocol) |
 | [inventions/IDF-04_shared_temporal_core_and_cross_cohort_transfer.md](inventions/IDF-04_shared_temporal_core_and_cross_cohort_transfer.md) | One temporal core serving several event domains; cross-cohort pretraining with a variable map |
 | [inventions/IDF-05_selective_state_space_as_delayed_events.md](inventions/IDF-05_selective_state_space_as_delayed_events.md) | Executing selective state-space models (Mamba-class) as content-delayed events over decaying memory |
+| [inventions/IDF-07_predecessor_message_binding.md](inventions/IDF-07_predecessor_message_binding.md) | Keyed event memory with predecessor-message keys; local three-factor learning; queried in-line predecessor with per-pair duration laws (unpublished, EP and US open) |
 | [inventions/IDF-06_us_grace_period_foundations.md](inventions/IDF-06_us_grace_period_foundations.md) | Foundations already public (September–October 2026): race attention, exponential-race routing, counterfactual route credit, key/value separation, statistic-valued memory, clockless execution. **US-only, with deadlines** |
 
 ## The disclosure boundary (founder statement, 7 October 2026)
