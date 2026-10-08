@@ -133,3 +133,4 @@ curie rerun matches the AWS protocol AUROC within 0.0004 on all five splits (AUP
 splits on the slots, regularized against v4's overfitting) combined with the temporal memory targets the blend's 0.925 /
 0.671 inside one model.
 
+| 8 Oct | P12 G1b (cross-cohort pretraining) | see GENERALITY_PLAN | mean +0.004 AUROC at 10% labels, split-dependent | no robust gain; **P12 work paused** at TEST 0.871 / 0.585 after seven levers. Slots go to PAM, B1 unification and the next battles |
