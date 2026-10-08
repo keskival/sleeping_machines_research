@@ -1,0 +1,2 @@
+# R1 language scaling, seed 1 at 4M TRAIN tokens (same config as s0: 5.521 vs KN trigram 6.100); decision: is the growing margin reproducible across seeds
+curie_r1g2_keyed1_4M_s1_20261008T1840Z experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_4M_s1_20261008T1840Z --keyed 1 --train-tokens 4194304 --seed 1 --max-wall-s 21000
