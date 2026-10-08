@@ -380,3 +380,10 @@ oracle's .821.
   inside the window. Binding has begun (theory note 157 Prediction 1, partially) but is far from exact; the remaining terms
   of §448 (at-most-once use of a predecessor; pending items only) are the last development configuration (C11, 8 of 8).
   **Status: in development, best .702 (C10) vs reference .685 (order3), validation, single seed.**
+- 8 Oct 21:00 UTC: **Stage 4 path prepared.** (1) The protocol's strongest baseline includes the LSTM and time-encoded
+  Transformer seed means, which have never been trained (only smokes): the 12-job reference grid is requested from AWS
+  (HANDOFF). (2) `experiments/fas/score_sealed_test.py` scores one trained native model on test exactly once, writes
+  per-run scores for the paired bootstrap and appends `results/fas/fas_v2_test_ledger.jsonl` (refuses a tag already in the
+  ledger); compiled, not run (the ledger does not yet exist; no test scoring has occurred). Win rule reminder: native mean
+  − strongest baseline ≥ .02 at N*, bootstrap lower bound > 0, every native seed above the baseline. C10's validation
+  margin (+.017) is below .02, so C11 matters.
