@@ -1,0 +1,58 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_final_unified_v19_stackoverflow_s0",
+ "dataset": "stackoverflow",
+ "args": {
+  "dataset": "stackoverflow",
+  "tag": "b1_r26_stackoverflow_v19_rule_s0",
+  "seed": 0,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 8,
+  "dv": 4,
+  "dropout": 0.3,
+  "lr": 0.003,
+  "wd": 0.0,
+  "wd_private_mult": 1.0,
+  "batch": 32,
+  "epochs": 200,
+  "patience": 30,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1,
+  "n_window": 0,
+  "state_modes": 16,
+  "dequant_target": 0.0001220703125,
+  "floor_cell": 0.0001220703125
+ },
+ "K": 22,
+ "scale": 0.537841796875,
+ "parameters": 29191,
+ "best_epoch": 42,
+ "scored_from": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s0.json",
+ "checkpoint": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s0.pt",
+ "dev": {
+  "ll": -2.145308805561798,
+  "time_ll": -0.6881101937480728,
+  "mark_ll": -1.457198611813725,
+  "events": 25361,
+  "rmse": 1.0300615016226315,
+  "acc": 0.5024249832419857
+ },
+ "dev_reproduced": -2.145308805561798,
+ "test": {
+  "ll": -2.1462956648774214,
+  "time_ll": -0.6400028320002908,
+  "mark_ll": -1.5062928328771306,
+  "events": 26117,
+  "rmse": 1.0138575478184315,
+  "acc": 0.48290385572615535
+ },
+ "source_sha256": {
+  "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+  "experiments/tpp/score_test.py": "2bb477bc547fe7b636bc676798220fce1ab64bba769ef7f3a81f560d370f82dc"
+ }
+}

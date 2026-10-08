@@ -1,0 +1,58 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_final_unified_v19_taxi_s4",
+ "dataset": "taxi",
+ "args": {
+  "dataset": "taxi",
+  "tag": "b1_r26_taxi_v19_rule_s4",
+  "seed": 4,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 8,
+  "dv": 4,
+  "dropout": 0.3,
+  "lr": 0.003,
+  "wd": 0.0,
+  "wd_private_mult": 1.0,
+  "batch": 32,
+  "epochs": 200,
+  "patience": 30,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1,
+  "n_window": 0,
+  "state_modes": 16,
+  "dequant_target": 0.000277777777777778,
+  "floor_cell": 0.000277777777777778
+ },
+ "K": 10,
+ "scale": 0.14583333333333337,
+ "parameters": 22339,
+ "best_epoch": 14,
+ "scored_from": "experiments/results/tpp/b1_r26_taxi_v19_rule_s4.json",
+ "checkpoint": "experiments/results/tpp/b1_r26_taxi_v19_rule_s4.pt",
+ "dev": {
+  "ll": 0.4884086458587437,
+  "time_ll": 0.7185536977762061,
+  "mark_ll": -0.2301450519174624,
+  "events": 7204,
+  "rmse": 0.269478321306028,
+  "acc": 0.9215713492504164
+ },
+ "dev_reproduced": 0.4884086458587437,
+ "test": {
+  "ll": 0.5246020416248244,
+  "time_ll": 0.7349907899086083,
+  "mark_ll": -0.21038874828378396,
+  "events": 14420,
+  "rmse": 0.28010696468497487,
+  "acc": 0.9296116504854369
+ },
+ "source_sha256": {
+  "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+  "experiments/tpp/score_test.py": "2bb477bc547fe7b636bc676798220fce1ab64bba769ef7f3a81f560d370f82dc"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "status": "completed",
+ "battle": "B1",
+ "tag": "b1_final_unified_v19_taobao_s1",
+ "dataset": "taobao",
+ "args": {
+  "dataset": "taobao",
+  "tag": "b1_r26_taobao_v19_rule_s1",
+  "seed": 1,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 8,
+  "dv": 4,
+  "dropout": 0.3,
+  "lr": 0.003,
+  "wd": 0.0,
+  "wd_private_mult": 1.0,
+  "batch": 32,
+  "epochs": 200,
+  "patience": 30,
+  "max_wall_s": 21600,
+  "score_test": false,
+  "threads": 1,
+  "n_window": 0,
+  "state_modes": 16,
+  "dequant_target": 0.0001,
+  "floor_cell": 0.0001
+ },
+ "K": 17,
+ "scale": 0.00890000001527358,
+ "parameters": 26336,
+ "best_epoch": 13,
+ "scored_from": "experiments/results/tpp/b1_r26_taobao_v19_rule_s1.json",
+ "checkpoint": "experiments/results/tpp/b1_r26_taobao_v19_rule_s1.pt",
+ "dev": {
+  "ll": 1.2794694199790337,
+  "time_ll": 2.731850893233546,
+  "mark_ll": -1.4523814732545122,
+  "events": 11272,
+  "rmse": 0.12392992231790945,
+  "acc": 0.5871185237757275
+ },
+ "dev_reproduced": 1.2794694199790337,
+ "test": {
+  "ll": 1.4005617070772234,
+  "time_ll": 2.7569282823366947,
+  "mark_ll": -1.3563665752594716,
+  "events": 27955,
+  "rmse": 0.124725432232677,
+  "acc": 0.6183866928993025
+ },
+ "source_sha256": {
+  "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+  "experiments/tpp/score_test.py": "2bb477bc547fe7b636bc676798220fce1ab64bba769ef7f3a81f560d370f82dc"
+ }
+}
