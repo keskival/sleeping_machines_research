@@ -136,3 +136,9 @@ splits on the slots, regularized against v4's overfitting) combined with the tem
 | 8 Oct | P12 G1b (cross-cohort pretraining) | see GENERALITY_PLAN | mean +0.004 AUROC at 10% labels, split-dependent | no robust gain; **P12 work paused** at TEST 0.871 / 0.585 after seven levers. Slots go to PAM, B1 unification and the next battles |
 | 8 Oct | **PAM protocol, split 3** | pre-registered configuration | TEST acc **0.981**, F1 **0.985** (val 0.985; best epoch 106) | fourth of five splits; all four ahead of MTM 0.975 / 0.976. Split 4 running |
 | 8 Oct | **final PAM (pre-registered protocol), 5 splits, TEST** | v7, crops 0.8, jitter 0.1, EMA 0.999, ≤ 120 epochs | accuracy **0.9775 ± 0.0074**, F1 **0.9803 ± 0.0080**, precision 0.9824, recall 0.9788; per split accuracy 0.979 / 0.981 / 0.981 / 0.981 / **0.964**; 46,316 parameters | **WIN** under the pre-registered rule (mean accuracy ahead of MTM 0.975 ± 0.002; F1 ahead of 0.976 ± 0.002). Four of five splits ahead; split 4 behind (best epoch 46, the earliest of the five). Our split spread (0.007) is wider than MTM's (0.002) |
+
+**Development (curie, 8 Oct 08:14 UTC, validation only): quantile-encoded statistics reader** (`p19_quantile_reader.py`;
+statistics encoded by the TRAIN empirical CDF, the tree's monotone invariance, entering the head beside the temporal
+features; 104K parameters). Validation vs the protocol model: ΔAUROC +.003 / +.003 / −.004, ΔAUPRC +.000 / +.005 / −.009
+(splits 0–2); mean +.001 / −.001. **No consistent gain; no TEST run.** The statistic encoding is not what limits the full
+model; the temporal memory already supplies what the trees lack (complementarity result above).

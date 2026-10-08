@@ -1,0 +1,102 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "dataset": "P19",
+ "split": 0,
+ "tag": "curie_b2_p19_qreader_dev_split0_20261008T0600Z",
+ "seed": 0,
+ "parameters": 104025,
+ "best_epoch": 7,
+ "history": [
+  {
+   "epoch": 0,
+   "val_auroc": 0.9033948965024983,
+   "val_auprc": 0.5933107692207451
+  },
+  {
+   "epoch": 1,
+   "val_auroc": 0.8937979568165595,
+   "val_auprc": 0.5848786910813419
+  },
+  {
+   "epoch": 2,
+   "val_auroc": 0.90698422257911,
+   "val_auprc": 0.624931949096744
+  },
+  {
+   "epoch": 3,
+   "val_auroc": 0.9095679425410421,
+   "val_auprc": 0.6353837252029398
+  },
+  {
+   "epoch": 4,
+   "val_auroc": 0.9161629342136571,
+   "val_auprc": 0.6337035440192372
+  },
+  {
+   "epoch": 5,
+   "val_auroc": 0.9090511985486558,
+   "val_auprc": 0.6084235205405875
+  },
+  {
+   "epoch": 6,
+   "val_auroc": 0.9052276647632644,
+   "val_auprc": 0.5933267106524583
+  },
+  {
+   "epoch": 7,
+   "val_auroc": 0.9225311533428503,
+   "val_auprc": 0.6255973912278507
+  },
+  {
+   "epoch": 8,
+   "val_auroc": 0.9028725761360933,
+   "val_auprc": 0.5954855836342923
+  },
+  {
+   "epoch": 9,
+   "val_auroc": 0.896120516595289,
+   "val_auprc": 0.5877518991515147
+  },
+  {
+   "epoch": 10,
+   "val_auroc": 0.8882494646680943,
+   "val_auprc": 0.5802648861493136
+  },
+  {
+   "epoch": 11,
+   "val_auroc": 0.8921993962645729,
+   "val_auprc": 0.6059722583151204
+  },
+  {
+   "epoch": 12,
+   "val_auroc": 0.8812827147275756,
+   "val_auprc": 0.5805430079629789
+  },
+  {
+   "epoch": 13,
+   "val_auroc": 0.8556369706162265,
+   "val_auprc": 0.5194971379604756
+  },
+  {
+   "epoch": 14,
+   "val_auroc": 0.8829779324292173,
+   "val_auprc": 0.5696102178256817
+  },
+  {
+   "epoch": 15,
+   "val_auroc": 0.8644885349750178,
+   "val_auprc": 0.5564635480046501
+  }
+ ],
+ "val": {
+  "auroc": 0.9225311533428503,
+  "auprc": 0.6255973912278507
+ },
+ "wall_s": 1151.1449224948883,
+ "source_sha256": {
+  "experiments/irts/p19_quantile_reader.py": "187ca2ecddd3d70ebb03f23f3dce8b8ed7983b0cb8dadb7a6ea24ac8b13360d3",
+  "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+  "experiments/irts/summary_tree_diagnostic.py": "b65f85ec324421f5c3783decffca40c0ae6485902a94ac3ac3b42a17ec4d98b5"
+ }
+}

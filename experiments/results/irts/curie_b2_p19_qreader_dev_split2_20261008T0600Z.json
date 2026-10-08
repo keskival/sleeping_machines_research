@@ -1,0 +1,87 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "dataset": "P19",
+ "split": 2,
+ "tag": "curie_b2_p19_qreader_dev_split2_20261008T0600Z",
+ "seed": 0,
+ "parameters": 104025,
+ "best_epoch": 4,
+ "history": [
+  {
+   "epoch": 0,
+   "val_auroc": 0.8820816532258065,
+   "val_auprc": 0.5630526772574023
+  },
+  {
+   "epoch": 1,
+   "val_auroc": 0.8966213037634408,
+   "val_auprc": 0.6230020191723004
+  },
+  {
+   "epoch": 2,
+   "val_auroc": 0.8976495295698924,
+   "val_auprc": 0.586735697153619
+  },
+  {
+   "epoch": 3,
+   "val_auroc": 0.9032560483870966,
+   "val_auprc": 0.6202746593886096
+  },
+  {
+   "epoch": 4,
+   "val_auroc": 0.9044640456989248,
+   "val_auprc": 0.6207152275769194
+  },
+  {
+   "epoch": 5,
+   "val_auroc": 0.8962785618279571,
+   "val_auprc": 0.603977732978175
+  },
+  {
+   "epoch": 6,
+   "val_auroc": 0.8979519489247311,
+   "val_auprc": 0.6144473393445574
+  },
+  {
+   "epoch": 7,
+   "val_auroc": 0.8882308467741936,
+   "val_auprc": 0.6202580751610052
+  },
+  {
+   "epoch": 8,
+   "val_auroc": 0.8926915322580644,
+   "val_auprc": 0.5893742400739365
+  },
+  {
+   "epoch": 9,
+   "val_auroc": 0.892755376344086,
+   "val_auprc": 0.6201271746209526
+  },
+  {
+   "epoch": 10,
+   "val_auroc": 0.8870766129032259,
+   "val_auprc": 0.6180345296748703
+  },
+  {
+   "epoch": 11,
+   "val_auroc": 0.8821471774193548,
+   "val_auprc": 0.6123685193015254
+  },
+  {
+   "epoch": 12,
+   "val_auroc": 0.8877956989247312,
+   "val_auprc": 0.6332200320401783
+  }
+ ],
+ "val": {
+  "auroc": 0.9044640456989248,
+  "auprc": 0.6207152275769194
+ },
+ "wall_s": 977.1983106136322,
+ "source_sha256": {
+  "experiments/irts/p19_quantile_reader.py": "187ca2ecddd3d70ebb03f23f3dce8b8ed7983b0cb8dadb7a6ea24ac8b13360d3",
+  "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+  "experiments/irts/summary_tree_diagnostic.py": "b65f85ec324421f5c3783decffca40c0ae6485902a94ac3ac3b42a17ec4d98b5"
+ }
+}
