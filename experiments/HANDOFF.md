@@ -1,3 +1,29 @@
+# Curie host session state — 8 October 2026, 01:40 UTC (owner of R1 and B3 on curie)
+
+**Ownership.** This session owns R1 (language research) and, from 7 Oct 22:10 (user direction), B3 (FAS v2); the
+earlier curie FAS session is not returning. AWS keeps B1, B2 and the generality track.
+
+**Results since 7 Oct 12:00 (details in the dossiers):**
+- Taxi win reproduced on curie (0.5252 ± 0.0007 vs AWS 0.5250 ± 0.0010); third-party kit `experiments/tpp/reproduce_taxi/`.
+- R1 gate 1 met (experiments/R1_RECALL.md): keyed read + predecessor message 97.5 ± 1.7% recall (3 seeds; set baseline
+  14.1%); local race credit 77.4 ± 5.4%; mixed-length training 91.6% at 2× length (seed 0). Theory note 156.
+- R1 gate 2 on seed 0: 6.019 nats/token on the 65,528-target FineWeb slice vs KN trigram 6.537 (1M tokens); without the
+  keyed read 6.193. Seeds 1–2 queued.
+- B2 P19 reverse ablation: trees on our slot statistics 0.914 / 0.618 vs ours 0.916 / 0.639, MTM 0.903 / 0.583; stated
+  beside every P19 claim. Complementarity test (full vs statistics-only vs trees vs blend, five splits) queued.
+- B3 round 3: C7 (B1 race model) total .684 at N* vs order3 .685 (native best .664); Spearman with order3 .85, so binding
+  is the gap. Protocol: primary rule reverted to `total` (disclosed); native budget 6 of 8 after C9.
+
+**Queue** (tmux `curie_main_queue`, script `r16.sh` in this session's scratchpad; one job at a time through run_safe):
+C8 (running) → P19 complementarity splits 0–4 → C9 (queried in-line predecessor) → R1 gate-2 seeds 1–2 → R1 normalized
+local-credit seeds 1–2 and mixed-length seeds 1–2. Do not edit queue files of jobs not yet started without checking the
+script's read offset (/proc/<pid>/fdinfo/255).
+
+**Next decisions:** B3: if C8/C9 lift binding (per-fault profile departs from order3, retry delay toward .89), freeze the
+native configuration and run the sealed protocol; else the sufficient-statistic containment arm with the same statistics
+given to the small LSTM/Transformer references. B2: the complementarity result decides whether P19 is stated as a
+temporal-memory win or a statistic-representation win. R1: if gate 2 holds over seeds, the 4M-token setting (KN 6.100).
+
 # R1 recall round 2 (v4, shortcut-free): the event model binds content; local race credit learns it (curie, 7 Oct 15:40 UTC)
 
 Task: 8 key–value pairs, then 8 queries drawn with replacement; inter-pair gaps log-uniform 0.05–50; 32 keys / 32 values
