@@ -105,3 +105,4 @@ same network (temporal head inputs zeroed; zero gradient into the temporal layer
 and a validation-weighted rank blend of ours and trees. Full > statistics-only isolates what the temporal memory adds;
 blend > both shows information the summaries lack.
 | 7 Oct | P12 G1j (queued) | joint silence-aware supervision: next-measurement log-loss (when, which channels, values) added to the classification loss with weight 0.02 / 0.05 / 0.15; weight 0 is an exact-reproduction control of G1 scratch (0.875 / 0.583) | — | hypothesis: dense per-step supervision keeps the memory learning after the label signal is exhausted (epoch 2–5 peak) |
+| 8 Oct | PAM r12 (v7, d48 × 48 modes) | wider memory under crops 0.8 + jitter 0.1, no EMA | val acc 0.968, F1 0.971 (best epoch 34; 98,652 parameters) vs 0.972 at d32 (46,316) | **no gain from capacity** even without the memorization ceiling: the small model is the right size for PAM. The protocol configuration (d32 + EMA) stands |
