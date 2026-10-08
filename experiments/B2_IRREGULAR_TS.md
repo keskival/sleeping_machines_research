@@ -110,3 +110,5 @@ blend > both shows information the summaries lack.
 | 8 Oct | PAM r12 (v7, crops 0.6, jitter 0.15) | stronger augmentation, no EMA | val acc 0.972, F1 0.973 (best epoch 70) | same as crops 0.8 / jitter 0.1 without EMA (0.972): augmentation strength is not a lever; EMA is |
 | 8 Oct | **PAM protocol, split 2** | pre-registered configuration | TEST acc **0.981**, F1 **0.984** (val 0.987; best epoch 115) | second of five splits; both scored splits ahead of MTM 0.975 / 0.976. Splits 1, 3, 4 running or queued |
 | 8 Oct | P12 G1j control (aux 0) | equivalence contract | val 0.874708 / 0.583319, identical to G1 scratch at 100% labels | **PASS**: the joint driver reproduces the baseline exactly; weighted arms running |
+| 8 Oct | **PAM protocol, split 1** | pre-registered configuration | TEST acc **0.981**, F1 **0.983** (val 0.978; best epoch 73) | third of five splits; all three scored splits ahead of MTM 0.975 / 0.976 |
+| 8 Oct | P12 G1j aux 0.02 / 0.05 | joint next-measurement loss | val 0.871 / 0.578 (best epoch 4); 0.875 / 0.579 (best epoch 9) vs control 0.875 / 0.583 | the dense loss delays the peak (epoch 4 → 9) but does not raise it; aux 0.15 running |
