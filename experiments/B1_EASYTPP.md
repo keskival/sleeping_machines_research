@@ -195,3 +195,11 @@ The dedicated-model wins stay in the record.
 | 8 Oct | unified protocol, Retweet seed 0 | pre-registered; DEV reproduced exactly | TEST **−6.3264** (NHP −6.348); grid audit drop **0.0093** on DEV (v16: 0.0038; baseline 0.0006) | ahead; the residual is larger than v16's but under half the margin (dequantized-equivalent ≈ −6.336). Cell floors on windows verified intact in v19; the difference is longer, more regularized training (patience 30, dropout 0.3). Every unified Retweet seed is audited and reported |
 | 8 Oct | unified protocol, Retweet seed 1 | pre-registered; DEV reproduced exactly | TEST **−6.3225** (best Retweet TEST so far; dedicated v16 best seed −6.3250; NHP −6.348); audit drop 0.0080 | ahead by 0.026, three times the audit residual. Seeds 2–4 training |
 | 8 Oct | unified protocol, Retweet seed 3 | pre-registered; DEV reproduced exactly | TEST −6.3266 (NHP −6.348); audit drop 0.0085 | three of five Retweet seeds ahead; seeds 2 and 4 training |
+
+**Generative mode (curie, 8 Oct; `experiments/tpp/generate_race.py`).** The race of clocks samples exactly: each clock
+draws its firing time (Exp(rate·w); defective delayed clocks fire with probability π at LogNormal(μ, σ)), the earliest
+gives the time, its mark law the type, and the event is fed back into the memory; no thinning or rejection. Taxi v5
+checkpoint (curie reproduction, seed 0), 200 TEST sequences, each continued from its first event to its real length:
+gap distribution KS **0.014** vs a marginal-marks/exponential-gaps reference 0.063; mark-transition total variation
+**0.024** vs 0.527; log-gap quantiles −3.38/−2.64/−1.91/−1.32/−0.74 vs real −3.42/−2.64/−1.93/−1.33/−0.80. Generated streams
+reproduce both timing and the pickup/drop-off alternation (`results/tpp/generate/taxi_v5_s0_generated_200.json`).
