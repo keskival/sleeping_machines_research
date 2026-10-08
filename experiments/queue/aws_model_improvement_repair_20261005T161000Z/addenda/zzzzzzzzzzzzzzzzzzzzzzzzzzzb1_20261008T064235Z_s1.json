@@ -1,0 +1,231 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 unified configuration with the data-derived window rule (development, DEV only): window clocks only when the TRAIN gap distribution separates into >= 2 components (>= 5% each): Amazon and Retweet yes, Taxi, Taobao, StackOverflow no, matching every dedicated winning model. StackOverflow seed 4 with windows fell into a weaker timing basin (time LL -0.724 vs -0.69). Decides the configuration of the unified TEST protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r26_stackoverflow_v19_rule_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_stackoverflow_v19_rule_s0/b1_r26_stackoverflow_v19_rule_s0.txt",
+        "queue_sha256": "08bd2d1a42f63201cac8ef3b835ff0eadfa562f239bf0f97d1d9567cf9a3a171",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_stackoverflow_v19_rule_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_stackoverflow_v19_rule_s1/b1_r26_stackoverflow_v19_rule_s1.txt",
+        "queue_sha256": "8ddda54d76569475bb5bc5cc14f1616a4bce6c95dee1be2b511a9ab1933e7f51",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_stackoverflow_v19_rule_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_stackoverflow_v19_rule_s2/b1_r26_stackoverflow_v19_rule_s2.txt",
+        "queue_sha256": "3a5e346b518b24031639ccb48009f86c81e73e5eac87d065f8e82e53662be730",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_stackoverflow_v19_rule_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_stackoverflow_v19_rule_s3/b1_r26_stackoverflow_v19_rule_s3.txt",
+        "queue_sha256": "e0bc1c909179404488bfa0aff196e493b3a4763c624152609896fdcbf85b719f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_stackoverflow_v19_rule_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_stackoverflow_v19_rule_s4/b1_r26_stackoverflow_v19_rule_s4.txt",
+        "queue_sha256": "a6aa610a28ea1b54b3da077323368592608ed08384024a6c840f854e533ed432",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_stackoverflow_v19_rule_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taxi_v19_rule_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taxi_v19_rule_s0/b1_r26_taxi_v19_rule_s0.txt",
+        "queue_sha256": "ece714fd7db57f66d594e1c449ca13603029939ba8bf6f09e05b5582c9634b84",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taxi_v19_rule_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taxi_v19_rule_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taxi_v19_rule_s1/b1_r26_taxi_v19_rule_s1.txt",
+        "queue_sha256": "0ac20ffc0e64e0efb75708f50bbafd94a773e8a30a14222f2650639804d1a170",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taxi_v19_rule_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taxi_v19_rule_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taxi_v19_rule_s2/b1_r26_taxi_v19_rule_s2.txt",
+        "queue_sha256": "a4fe9f21f8a63b55c959f15ba620f80639700d1f0e286f60dc51c98a6e276ee5",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taxi_v19_rule_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taxi_v19_rule_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taxi_v19_rule_s3/b1_r26_taxi_v19_rule_s3.txt",
+        "queue_sha256": "b186c3742cc2d67b30d38260c0908bd5fa9447c84c596cf4db89a96162260caa",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taxi_v19_rule_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taxi_v19_rule_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taxi_v19_rule_s4/b1_r26_taxi_v19_rule_s4.txt",
+        "queue_sha256": "7cc97c758f61ba3c48d50a685639b2dbbd949dd191622037040d6b65b2177fbc",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taxi_v19_rule_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taobao_v19_rule_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taobao_v19_rule_s0/b1_r26_taobao_v19_rule_s0.txt",
+        "queue_sha256": "5e13435e5b53267abc57431f809ccc8ec463f79f18f91222543a2f59f6dc3f09",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taobao_v19_rule_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taobao_v19_rule_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taobao_v19_rule_s1/b1_r26_taobao_v19_rule_s1.txt",
+        "queue_sha256": "36286c3ccd8333db4a7e66f846bf78a90df809c1dac891bd2a0f2a7faa97b14c",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taobao_v19_rule_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taobao_v19_rule_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taobao_v19_rule_s2/b1_r26_taobao_v19_rule_s2.txt",
+        "queue_sha256": "d69179ddbc54ea7d4c394fc94cc85ea07afea05cf5251146259c6154b7ee56e9",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taobao_v19_rule_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taobao_v19_rule_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taobao_v19_rule_s3/b1_r26_taobao_v19_rule_s3.txt",
+        "queue_sha256": "59652b3b16b50240a970a1904bf39d7d4f2669ef9ee7004da9a918d3a07cab19",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taobao_v19_rule_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r26_taobao_v19_rule_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_r26_taobao_v19_rule_s4/b1_r26_taobao_v19_rule_s4.txt",
+        "queue_sha256": "6591496f32aa4928517c187dfe6a2521c8c13606a2565fe85d229ecc04c255c5",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r26_taobao_v19_rule_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_retweet_v19_unified_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_retweet_v19_unified_s1/b1_r25_retweet_v19_unified_s1.txt",
+        "queue_sha256": "25f4c2955844c7797a0349fb8cd82a1868418668932899dd56951c19ff9e4596",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_retweet_v19_unified_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_retweet_v19_unified_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_retweet_v19_unified_s2/b1_r25_retweet_v19_unified_s2.txt",
+        "queue_sha256": "1a061c9ea2ab32638c9fa6bf1ba301045b8d507caaa11780578a47c0b13c4611",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_retweet_v19_unified_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 unified configuration with the data-derived window rule (development, DEV only): window clocks only when the TRAIN gap distribution separates into >= 2 components (>= 5% each): Amazon and Retweet yes, Taxi, Taobao, StackOverflow no, matching every dedicated winning model. StackOverflow seed 4 with windows fell into a weaker timing basin (time LL -0.724 vs -0.69). Decides the configuration of the unified TEST protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r25_retweet_v19_unified_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_retweet_v19_unified_s3/b1_r25_retweet_v19_unified_s3.txt",
+        "queue_sha256": "eeda3be8e04397494bceae57257a9edea2269aa2610d2fb6b071902e54338a48",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_retweet_v19_unified_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r25_retweet_v19_unified_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_r25_retweet_v19_unified_s4/b1_r25_retweet_v19_unified_s4.txt",
+        "queue_sha256": "a1dbf2125439cb5c2d1f2572e990165d1bcaf70a9b1cf6251012df09fe1e262d",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp/b1_r25_retweet_v19_unified_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
