@@ -109,3 +109,4 @@ blend > both shows information the summaries lack.
 | 8 Oct | **PAM protocol, split 0** | pre-registered configuration | TEST acc **0.979**, F1 **0.983** (val 0.981, reproducing r10 exactly; best epoch 117) | first of five splits; MTM 0.975 ± 0.002 / 0.976. No verdict until all five splits are scored |
 | 8 Oct | PAM r12 (v7, crops 0.6, jitter 0.15) | stronger augmentation, no EMA | val acc 0.972, F1 0.973 (best epoch 70) | same as crops 0.8 / jitter 0.1 without EMA (0.972): augmentation strength is not a lever; EMA is |
 | 8 Oct | **PAM protocol, split 2** | pre-registered configuration | TEST acc **0.981**, F1 **0.984** (val 0.987; best epoch 115) | second of five splits; both scored splits ahead of MTM 0.975 / 0.976. Splits 1, 3, 4 running or queued |
+| 8 Oct | P12 G1j control (aux 0) | equivalence contract | val 0.874708 / 0.583319, identical to G1 scratch at 100% labels | **PASS**: the joint driver reproduces the baseline exactly; weighted arms running |
