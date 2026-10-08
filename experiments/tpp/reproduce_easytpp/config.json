@@ -1,0 +1,270 @@
+{
+ "taxi": {
+  "driver": "experiments/tpp/race_tpp_v5.py",
+  "driver_sha256": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+  "args": [
+   "--d",
+   "32",
+   "--modes",
+   "16",
+   "--layers",
+   "2",
+   "--n-exp",
+   "2",
+   "--n-lognormal",
+   "8",
+   "--dv",
+   "4",
+   "--dropout",
+   "0.3",
+   "--lr",
+   "0.003",
+   "--wd",
+   "0.0",
+   "--wd-private-mult",
+   "1.0",
+   "--batch",
+   "32",
+   "--epochs",
+   "200",
+   "--patience",
+   "30",
+   "--max-wall-s",
+   "21600",
+   "--score-test",
+   "--floor-cell",
+   "0.000277777777777778"
+  ],
+  "data_sha256": {
+   "train": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+   "dev": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf",
+   "test": "dc1e765b6626c2a231ab026606e29864c082807354066e0307494fb738bcc059"
+  },
+  "ours_aws": [
+   0.525,
+   0.001
+  ],
+  "published": [
+   "S2P2",
+   0.522
+  ],
+  "scored_test_events": 14420
+ },
+ "taobao": {
+  "driver": "experiments/tpp/race_tpp_v5.py",
+  "driver_sha256": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+  "args": [
+   "--d",
+   "32",
+   "--modes",
+   "16",
+   "--layers",
+   "2",
+   "--n-exp",
+   "2",
+   "--n-lognormal",
+   "8",
+   "--dv",
+   "4",
+   "--dropout",
+   "0.3",
+   "--lr",
+   "0.003",
+   "--wd",
+   "0.0",
+   "--wd-private-mult",
+   "1.0",
+   "--batch",
+   "32",
+   "--epochs",
+   "200",
+   "--patience",
+   "30",
+   "--max-wall-s",
+   "21600",
+   "--score-test",
+   "--floor-cell",
+   "0.0001"
+  ],
+  "data_sha256": {
+   "train": "aea30eea6f18e85e1cf0789fcf6ba748116fdbe05df77733779fe288bed8cd8f",
+   "dev": "b5c4a2ed781c3c3cc4fc5118dd2a6eeb1ead93d342ed8ab4dcaeb8aa73528fe5",
+   "test": "1efdd46d7bdf3efd00fb260e4b239ba2278dde03f455f71d30320aed48b3bb84"
+  },
+  "ours_aws": [
+   1.3991,
+   0.0025
+  ],
+  "published": [
+   "IFTPP",
+   1.318
+  ],
+  "scored_test_events": 27955
+ },
+ "stackoverflow": {
+  "driver": "experiments/tpp/race_tpp_v12.py",
+  "driver_sha256": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238",
+  "args": [
+   "--d",
+   "32",
+   "--modes",
+   "16",
+   "--layers",
+   "2",
+   "--n-exp",
+   "2",
+   "--n-lognormal",
+   "8",
+   "--dv",
+   "4",
+   "--dropout",
+   "0.3",
+   "--lr",
+   "0.003",
+   "--wd",
+   "0.0",
+   "--wd-private-mult",
+   "1.0",
+   "--batch",
+   "32",
+   "--epochs",
+   "200",
+   "--patience",
+   "30",
+   "--max-wall-s",
+   "21600",
+   "--score-test",
+   "--n-window",
+   "0",
+   "--state-modes",
+   "16",
+   "--floor-cell",
+   "0.0001220703125"
+  ],
+  "data_sha256": {
+   "train": "809e68fbaba02f657b3dc2cb02ecb4df1f58c4fc8f9fbccdfa83defe71ef5413",
+   "dev": "4c4e595342c4c2624a77502695654ce3bec157242be30b6f3654575791741c6a",
+   "test": "e531fafc1cc2c109fcfe0a312e43beddda16725ec7c2a98b651609550f9ffb51"
+  },
+  "ours_aws": [
+   -2.1525,
+   0.0045
+  ],
+  "published": [
+   "S2P2",
+   -2.163
+  ],
+  "scored_test_events": 26117
+ },
+ "retweet": {
+  "driver": "experiments/tpp/race_tpp_v16.py",
+  "driver_sha256": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+  "args": [
+   "--d",
+   "32",
+   "--modes",
+   "16",
+   "--layers",
+   "2",
+   "--n-exp",
+   "2",
+   "--n-lognormal",
+   "8",
+   "--dv",
+   "4",
+   "--dropout",
+   "0.1",
+   "--lr",
+   "0.003",
+   "--wd",
+   "0.0",
+   "--wd-private-mult",
+   "1.0",
+   "--batch",
+   "32",
+   "--epochs",
+   "200",
+   "--patience",
+   "8",
+   "--max-wall-s",
+   "21600",
+   "--score-test",
+   "--n-window",
+   "4",
+   "--state-modes",
+   "16",
+   "--dequant-target",
+   "1.0",
+   "--floor-cell",
+   "1.0"
+  ],
+  "data_sha256": {
+   "train": "20f2358e346997e228c058ecaf76c09a3353863e0099816472a8bf80655b4e3c",
+   "dev": "686a297e163486cc164083a6acc63badb332d41f782e198a01048869298eb419",
+   "test": "3ea0967389716870966d2d32e996d8f5e784a6a5fa0c8b2c259ddfef41780e3a"
+  },
+  "ours_aws": [
+   -6.3262,
+   0.0009
+  ],
+  "published": [
+   "NHP",
+   -6.348
+  ],
+  "scored_test_events": 216465
+ },
+ "amazon": {
+  "driver": "experiments/tpp/race_tpp_v18.py",
+  "driver_sha256": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf",
+  "args": [
+   "--d",
+   "32",
+   "--modes",
+   "16",
+   "--layers",
+   "2",
+   "--n-exp",
+   "2",
+   "--n-lognormal",
+   "16",
+   "--dv",
+   "4",
+   "--dropout",
+   "0.3",
+   "--lr",
+   "0.003",
+   "--wd",
+   "0.0",
+   "--wd-private-mult",
+   "1.0",
+   "--batch",
+   "32",
+   "--epochs",
+   "200",
+   "--patience",
+   "30",
+   "--max-wall-s",
+   "21600",
+   "--n-window",
+   "4",
+   "--state-modes",
+   "0",
+   "--floor-cell",
+   "0.0"
+  ],
+  "data_sha256": {
+   "train": "8740573649df7d0bb5fd096d0a42e778c2a3cd5e72d4e24b7f4c8023515ed628",
+   "dev": "85dd359da75e5edbd11e64a0ebc4580e9d057c45fa738d40da3f8b79663150e9",
+   "test": "d584f34d960603a4d5448c5e616eb6770e51f47c4c22704fba18e79772815ea0"
+  },
+  "ours_aws": [
+   0.8028,
+   0.0007
+  ],
+  "published": [
+   "S2P2",
+   0.781
+  ],
+  "scored_test_events": 82197
+ }
+}
