@@ -364,3 +364,7 @@ oracle's .821.
   events of the same type (the same step for other items), so only timing separates them, and C9's gap term was a single
   linear function shared by all type pairs. **C10** (`race_tpp_fas_v3.py`, config 7 of 8): a learned duration law per
   (event type, candidate type) in the attention score, window 64; queued with the same diagnostic.
+- 8 Oct 08:17 UTC: C10 (batch 32) stopped by the RSS watchdog at 3.52 GB (cap 3.5 GB; the 64-event window doubles the
+  attention tensors); no result, its diagnostic failed for lack of a checkpoint. Retry at batch 16 under a new name
+  (`curie_b3_r4_c10_pairdur_b16_s0_20261008T0820Z`, cap 2.8 GB) queued after the R1 gate-2 seeds, which had already
+  started.
