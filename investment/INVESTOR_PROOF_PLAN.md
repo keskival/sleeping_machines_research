@@ -15,6 +15,8 @@ This is an execution plan, not a prediction of investor acceptance.
 - **Third dataset won:** StackOverflow (+0.019 nats/event at 1.26× compute, 5 seeds).
 - **Fourth dataset won:** Retweet −6.326 ± 0.001 vs −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's parameters
   and compute.
+- **One configuration wins all five (8 October):** pre-registered unified protocol, 24 of 25 seeds ahead, 0.07–1.03×
+  S2P2's per-event compute.
 - **Fifth dataset won, leaderboard complete:** Amazon 0.803 ± 0.001 vs 0.781 (S2P2), all five seeds ahead, at 0.29×
   S2P2's compute.
 - **Second domain: achieved on P19.** Sepsis prediction, five official splits: AUROC 0.916 ± 0.022, AUPRC 0.639 ±

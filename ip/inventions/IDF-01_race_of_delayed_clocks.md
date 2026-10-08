@@ -49,8 +49,8 @@ the histogram of log inter-event gaps separates into ≥ 2 components of ≥ 5% 
 otherwise only exponential, delayed log-normal and state clocks are used, because windows on a single-humped distribution
 create a weaker timing optimum (measured: StackOverflow seed 4 −2.1785 with windows vs −2.1406 without); (ii) the
 recording resolution of the timestamps sets the cell of the resolution principle (IDF-02). Under a pre-registered protocol
-this single configuration is ahead of the best published results on Taobao, Taxi, StackOverflow and Amazon (Retweet
-pending), at 0.09×–1.03× S2P2's per-event compute.
+this single configuration is ahead of the best published results on all five EasyTPP datasets (24 of 25 seeds), at
+0.07×–1.03× S2P2's per-event compute.
 
 ## 4. Embodiments
 

@@ -92,7 +92,8 @@ Evidence update, 6 October:
 
   Retweet (7 October): −6.326 ± 0.001 vs the best published −6.348 (NHP), all five seeds ahead, at 1/15 of S2P2's
   parameters and per-event compute.
-  All are 5 seeds on official splits with a sealed test: all five datasets won, against a pass criterion of two.
+  All are 5 seeds on official splits with a sealed test: all five datasets won, against a pass criterion of two, and one model configuration wins all five without per-dataset
+  tuning (pre-registered, 24 of 25 seeds ahead).
   Amazon (7 October): 0.803 ± 0.001 vs S2P2 0.781, all five seeds ahead, at 0.29× S2P2's per-event compute.
 - **FAS v2:** the sealed setting is selected on validation (2 interleaved lines, 2% dropped events). The identity
   oracle reaches AUROC 0.821 against 0.685 for the best anonymous classical detector, so a binding model has room

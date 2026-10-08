@@ -114,6 +114,24 @@ Conventions for every table in this section: single seed unless a seed count is 
 
 Marked event streams with continuous times, on the official EasyTPP splits and the per-event log-likelihood protocol of the published state of the art (S2P2, NeurIPS 2025; [B1 dossier](../experiments/B1_EASYTPP.md)). Our model is a race of delayed clocks over persistent temporal memory: after each event, exponential clocks and delayed clocks that may stay silent race, and the first to fire sets the next event's time and mark. The likelihood is exact; losing clocks are credited through the survival term. Clocks may not resolve time below the data's recording resolution. Five seeds; TEST scored once per seed at the best DEV checkpoint.
 
+**One configuration wins all five datasets (pre-registered unified protocol, 8 October 2026).** A single model
+configuration, with no per-dataset tuning, is ahead of the best published result on every EasyTPP dataset. Two rules are
+read from the data: window clocks are used only when the training gap distribution separates into two or more components
+(Amazon, Retweet), and each dataset's timestamp resolution sets the recording cell. Five seeds, sealed test, every
+checkpoint scored once after exact reproduction of its development score:
+
+| Unified model (nats/event, higher is better) | Ours | Best published | Seeds ahead | Per-event compute vs S2P2 |
+| --- | --- | --- | --- | --- |
+| Taobao | **1.3967 ± 0.0031** | 1.318 (IFTPP) | 5/5 | 1.03× |
+| Taxi | **0.5262 ± 0.0034** | 0.522 (S2P2) | 4/5 | **0.09×** |
+| StackOverflow | **−2.1436 ± 0.0029** | −2.163 (S2P2) | 5/5 | 1.015× |
+| Retweet | **−6.3242 ± 0.0021** | −6.348 (NHP) | 5/5 | **0.07×** |
+| Amazon | **0.8017 ± 0.0006** | 0.781 (S2P2) | 5/5 | **0.24×** |
+
+24 of 25 runs are ahead (Taxi seed 2: 0.521). The single configuration exceeds our own dedicated models on Taxi (0.5250),
+StackOverflow (−2.1444) and Retweet (−6.3262). Retweet recording-grid audit drops 0.007–0.009 nats/event on every seed,
+about a third of the margin.
+
 | Taxi (nats/event, higher is better) | Total | Time | Mark | Parameters | Inference MACs/event |
 | --- | --- | --- | --- | --- | --- |
 | Best published (S2P2) | 0.522 ± 0.004 | 0.733 | −0.211 | 251,850 | 249,856 |
@@ -172,7 +190,7 @@ The same construction — persistent memories that decay and rotate with elapsed
 
 | Data type | Benchmark | Result |
 | --- | --- | --- |
-| Generative event streams (when and what happens next) | EasyTPP, 5 datasets | **Wins on all 5** (Taxi, Taobao, StackOverflow, Retweet, Amazon) |
+| Generative event streams (when and what happens next) | EasyTPP, 5 datasets | **Wins on all 5** (Taxi, Taobao, StackOverflow, Retweet, Amazon), **including with one configuration for all five** |
 | Irregular clinical records (classification) | P19 sepsis, official splits | **Win**, AUPRC 0.639 vs 0.583 |
 | Wearable sensors (activity recognition) | PAM, official splits | **Win**, accuracy 0.978 vs 0.975 (4 of 5 splits ahead) |
 | Anonymous interleaved process logs | FAS v1, 3 seeds | **Win** vs six generic controls, 0.592 vs 0.559 AUROC |

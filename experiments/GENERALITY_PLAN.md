@@ -8,7 +8,7 @@ transfer to another? Each experiment states what it settles. Losses are reported
 
 | Data type | Public benchmark or protocol | Result | Core configuration |
 |---|---|---|---|
-| Generative event streams (time + type) | EasyTPP, official splits, 5 seeds | Wins on all five (Taxi, Taobao, StackOverflow, Retweet, Amazon) vs S2P2/IFTPP/NHP | temporal memory d32 × 16 modes × 2 layers (StackOverflow 3), addressed mark memory, race-of-clocks head |
+| Generative event streams (time + type) | EasyTPP, official splits, 5 seeds | Wins on all five (Taxi, Taobao, StackOverflow, Retweet, Amazon) vs S2P2/IFTPP/NHP, also with one configuration for all five (pre-registered) | temporal memory d32 × 16 modes × 2 layers (StackOverflow 3), addressed mark memory, race-of-clocks head |
 | Irregular clinical records (classification) | P19 sepsis, five official splits | Win: AUROC 0.916 ± 0.022, AUPRC 0.639 ± 0.039 vs MTM 0.903 / 0.583 | **same temporal memory layer code and size** (d32 × 16 × 2), addressed channel memory with sufficient statistics, typed comparisons |
 | Anonymous interleaved process logs | FAS v1, 3 seeds | 0.592 vs 0.559 AUROC against six generic controls | temporal/sparse native race model |
 | Character language | text8 10M | Beats tuned Transformers at ≤ equal compute; LSTM leads; 90M behind | integrated temporal/sparse core with route credit |

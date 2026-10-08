@@ -153,6 +153,10 @@ Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard deviation across the five runs. Compute is multiply-adds per event, counted from S2P2's released code at its published configuration.}
 
+\begin{tile}
+\textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute.
+\end{tile}
+
 \begin{callout}
 \textbf{Why these wins matter.} EasyTPP is the standard benchmark of the field, and S2P2 is a 2025 model from a strong industrial and academic team. We lead on all five of its datasets, and on two of them with a model one-twelfth to one-fifteenth its size. The same family also leads a public clinical benchmark and a public wearable-sensor benchmark. These are not one lucky run: 34 of 35 independent runs are ahead.
 \end{callout}

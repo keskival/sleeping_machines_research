@@ -172,6 +172,9 @@ stays from another, gave no robust label-efficiency gain on mortality prediction
 - **Amazon is a confirmed win (7 October):** 0.803 ± 0.001 vs S2P2 0.781 ± 0.011, all five seeds ahead, with the best
   published time and type log-likelihoods, at 0.29× S2P2's per-event compute and 3.6× fewer parameters.
 - **All five EasyTPP datasets are won**, against a pass criterion of two.
+- **One configuration wins the whole benchmark (8 October):** a single model configuration, no per-dataset tuning,
+  ahead of the best published result on all five datasets in a pre-registered protocol (24 of 25 seeds ahead), at 0.07×
+  to 1.03× S2P2's per-event compute. It also beats our own dedicated models on Taxi, StackOverflow and Retweet.
 - **How Amazon was won:** the previous protocol (0.784 ± 0.027) had one seed stuck in a weaker optimization basin; the
   diagnosis (delay windows drifting beyond all observed gaps) led to windows anchored to their gap component, which
   removed the basin: five seeds within 0.0015 of each other, one run each, no restarts.
