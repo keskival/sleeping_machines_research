@@ -178,3 +178,16 @@ against S2P2 0.781 ± 0.011; a win requires the mean ahead; "all seeds ahead" is
 | 8 Oct | unified + window rule, Taxi 5 seeds; Taobao seeds 0–3 (DEV) | no windows | Taxi 0.4905 / 0.4940 / 0.4886 / 0.4887 / 0.4884, **mean 0.4900** vs dedicated v5 0.4872 (all five seeds ahead); Taobao 1.2780 / 1.2795 / 1.2832 / 1.2790 vs dedicated 1.2840 / 1.2844 / 1.2829 / 1.2858 | Taxi improves on every seed (+0.0028), where the public margin is narrowest; Taobao −0.004 (dedicated TEST margin over the best published model +0.081) |
 | 8 Oct | unified: Taobao seed 4, Amazon seed 4 (DEV) | — | Taobao 1.2782 (dedicated 1.2828): 5-seed mean 1.2796 vs 1.2840; Amazon 0.8046: 5-seed mean 0.8030 vs v18 0.8039 (4 seeds) | Amazon seed 4 above the dedicated range. Taobao −0.004: queued a check without target dequantization (only 87% of Taobao gaps lie on its grid) |
 | 8 Oct | Taobao without target dequantization (DEV, 5 seeds) | floor cell kept | 1.2777 / 1.2774 / 1.2820 / 1.2790 / 1.2790, mean 1.2790 vs 1.2796 with it (dedicated 1.2840) | **hypothesis rejected**: dequantization is not the cause. The −0.004 comes from what v19 adds over v5 on Taobao (state clock, cell-held hazards), the mechanisms that win StackOverflow and Retweet. The unified configuration stays as it is; Taobao's TEST margin over the best published model (+0.081) absorbs it |
+
+**Pre-registered unified protocol (fixed 8 Oct 2026 09:45 UTC, before any v19 checkpoint is scored on TEST).** One
+configuration for all five datasets: `race_tpp_v19.py`, 2 layers, d 32, 16 memory modes, 2 exponential and 8 delayed
+log-normal clocks, 16 state-clock modes, dropout 0.3, patience 30, seeds 0–4. Two data rules, no per-dataset tuning:
+(1) logistic windows (4) only when the TRAIN gap histogram separates into ≥ 2 components of ≥ 5% each (Amazon, Retweet);
+(2) the recording cell is the data's timestamp resolution (Taxi 1/3600, Taobao 1e−4, StackOverflow 2⁻¹³, Retweet 1,
+Amazon none), used for the resolution principle and target-only dequantization. Runs: `b1_r26_{taxi,taobao,stackoverflow}_v19_rule_s{0..4}`,
+`b1_r25_{amazon,retweet}_v19_unified_s{0..4}`. Each best-DEV checkpoint is scored **once** on TEST by
+`experiments/tpp/score_test.py --out-prefix b1_final_unified_v19_<dataset>` after reproducing its recorded DEV to 1e−9.
+Report all 25 TEST values and per-dataset mean ± sd against the best published results (Taobao 1.318, Taxi 0.522,
+StackOverflow −2.163, Retweet −6.348, Amazon 0.781), with parameters and per-event MACs. "One configuration wins the
+benchmark" is claimed only if the mean is ahead on all five; otherwise the result is reported per dataset as it is.
+The dedicated-model wins stay in the record.
