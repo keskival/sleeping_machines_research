@@ -1,0 +1,21 @@
+{
+ "checkpoint": "experiments/results/tpp/curie_repro_taxi_v5_s0_20261007T0510Z.pt",
+ "dataset": "taxi",
+ "float64": {
+  "max_abs_diff_incremental_vs_batch": 7.105427357601002e-15,
+  "events": 3706,
+  "us_per_event": 635.5212674042649,
+  "events_per_second": 1573.511464194454
+ },
+ "float32": {
+  "max_abs_diff_incremental_vs_batch": 2.86102294921875e-05,
+  "events": 3706,
+  "us_per_event": 732.2012512143365,
+  "events_per_second": 1365.7447298014397
+ },
+ "analytic_macs_per_event": {
+  "ours": 20708,
+  "s2p2": 249856,
+  "source": "experiments/tpp/work.py; report Part I \u00a74.0"
+ }
+}

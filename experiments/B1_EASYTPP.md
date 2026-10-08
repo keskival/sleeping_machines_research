@@ -206,3 +206,11 @@ reproduce both timing and the pickup/drop-off alternation (`results/tpp/generate
 | 8 Oct | unified protocol, Retweet seed 2 | pre-registered; DEV reproduced exactly | TEST −6.3231 (NHP −6.348); audit drop 0.0072 | four of five Retweet seeds ahead; seed 4 training |
 | 8 Oct | unified protocol, Retweet seed 4 | pre-registered; DEV reproduced exactly | TEST −6.3224; audit drop 0.0082 | all five Retweet seeds ahead |
 | 8 Oct | **UNIFIED PROTOCOL VERDICT** | one configuration (v19 + window rule + recording cell), 5 datasets × 5 seeds, TEST once per checkpoint | Taobao **1.3967 ± 0.0031**, Taxi **0.5262 ± 0.0034**, StackOverflow **−2.1436 ± 0.0029**, Retweet **−6.3242 ± 0.0021**, Amazon **0.8017 ± 0.0006**; time / mark LL 2.755 / −1.358, 0.735 / −0.209, −0.642 / −1.502, −5.556 / −0.768, 2.656 / −1.855 | **WIN on all five with one configuration**: 24 of 25 seeds ahead (Taxi seed 2 0.521 vs 0.522). Above our dedicated models on Taxi, StackOverflow and Retweet. Per-event MACs vs S2P2: 1.03×, 0.09×, 1.015×, 0.07×, 0.24×. Retweet audit drops 0.007–0.009. EasyTPP Monte Carlo estimator agrees on all 25 checkpoints within its sampling noise (means: Taobao 1.3967, Taxi 0.5256, StackOverflow −2.1400, Retweet −6.3244, Amazon 0.8035; every gap < 2 estimator sd) |
+
+**Measured streaming inference (curie, 8 Oct; `experiments/tpp/streaming_latency.py`).** An incremental per-event step
+(temporal memory states and mark slots carried; next-event distribution after each event) reproduces the batch encoder's
+clock parameters to 7e-15 (float64). Taxi v5 checkpoint, batch 1, one CPU thread (Intel i5-4690, other jobs running),
+3,706 held-out events: **0.64 ms per event (≈1,570 events/s) in float64, 0.73 ms in float32**. The time is eager-PyTorch
+per-operation overhead: the model's arithmetic is 20,708 multiply-accumulates per event (S2P2: 249,856), so a fused
+implementation would be far faster (engineering estimate, not measured). Measured as-is, one core keeps up with
+event streams of over a thousand events per second.
