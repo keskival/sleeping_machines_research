@@ -52,10 +52,18 @@ numerically. It is a superset of the current architecture classes, not a niche a
 | EasyTPP Taobao (e-commerce events) | 1.399 ± 0.003 nats/event | 1.318 (IFTPP) | 0.92× the leading model's per-event compute |
 | EasyTPP Taxi (mobility events) | 0.525 ± 0.001; 5-model ensemble 0.536 | 0.522 (S2P2, NeurIPS 2025) | single model at **1/12** of the leading model's parameters and compute; ensemble at 0.41× |
 | EasyTPP StackOverflow (activity events) | −2.1525 ± 0.0045 | −2.163 (S2P2) | **matched compute** (1.015×) |
-| P19 ICU sepsis prediction (irregular clinical records) | AUPRC 0.639 ± 0.039, AUROC 0.916 | AUPRC 0.583, AUROC 0.903 (MTM) | 62,681 parameters |
+| EasyTPP Retweet (social cascades) | −6.326 ± 0.001 | −6.348 (NHP); S2P2 −6.365 | **1/15** of the leading model's parameters and compute |
+| EasyTPP Amazon (shopping events) | 0.803 ± 0.001 | 0.781 (S2P2) | 0.29× the leading model's per-event compute |
+| P19 ICU sepsis prediction (irregular clinical records) | AUPRC 0.639 ± 0.039, AUROC 0.916 | AUPRC 0.583, AUROC 0.903 (MTM) | 62,681 parameters; without its temporal memory the same network falls to AUPRC 0.572 on every split |
+| PAM wearable activity recognition | accuracy 0.978 ± 0.007, F1 0.980 | 0.975 / 0.976 (MTM) | 46,316 parameters vs MTM's 873K |
 
-All results use five seeds or five official splits, test sets scored once, and pre-registered protocols. The evidence
-files are in the diligence pack.
+All five EasyTPP datasets, P19 and PAM are won. All results use five seeds or five official splits, test sets scored once,
+and pre-registered protocols. The Taxi result was reproduced from scratch on separate hardware (0.5252 vs 0.5250), and a
+one-command kit is available for third-party reruns. The evidence files are in the diligence pack.
+
+**Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's
+temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney
+trigram's 6.537, and 5.521 against 6.100 at 4M tokens: the lead grows with data.
 
 **Anonymous interleaved industrial logs.**
 - Benchmark: FAS, the founder's assembly-line simulator.

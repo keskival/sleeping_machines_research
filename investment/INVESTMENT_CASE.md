@@ -119,8 +119,8 @@ Four of five splits are ahead; split 4 scores 0.964.
 
 **Generality, stated precisely.** The EasyTPP leader S2P2 (NeurIPS 2025, GE HealthCare and UC Irvine) is shown on one task
 type. One Sleeping Machines family now wins public benchmarks on generative event modelling and on sparse clinical
-classification, with further evidence on process logs, character language and few-shot temporal reasoning; large-scale
-language and real tables remain behind. One shared temporal core (14,080 parameters) trained jointly on Taxi, Taobao,
+classification (P19) and wearable sensors (PAM), with further evidence on process logs, tokenized and character language
+and few-shot temporal reasoning; large-scale language and real tables remain behind. One shared temporal core (14,080 parameters) trained jointly on Taxi, Taobao,
 StackOverflow and Amazon matches or beats the separate per-dataset models on three of four (development data): mobility,
 shopping and Q&A timing share one learned dynamics. Generative pretraining, on the same clinical cohort or on 31K
 stays from another, gave no robust label-efficiency gain on mortality prediction (mean +0.004 AUROC at 10% labels)
@@ -200,7 +200,11 @@ At 90M characters, against tuned references at equal training compute, the resul
   (1.704) leads.
 
 The gap to the best dense model widens from 10M to 90M; that trend is the central language problem (report Part I
-§4.3). See the [current evidence map](../report/architecture_evidence.md).
+§4.3).
+
+**Tokenized language (8 October 2026).** A temporal-memory token model with the keyed predecessor read scores
+6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.521 vs 6.100, so the lead grows with data. The keyed predecessor read behind it also solves associative recall across irregular gaps (97.5%, 3 seeds) (report Part I §4.5). The count models are a floor, not the frontier; a published small Transformer under the same
+protocol is the next reference. See the [current evidence map](../report/architecture_evidence.md).
 
 ## Expanded platform opportunities
 

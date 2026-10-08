@@ -96,6 +96,24 @@ AUPRC, the clinically relevant metric at 4\% prevalence, improves by 5.6 points,
 \label{fig:p19}
 \end{figure}
 
+\paragraph{Is it only the statistics?} Gradient-boosted trees on the same per-channel statistics also beat MTM (Table~\ref{tab:compl}), so we tested what the temporal memory adds with paired per-split comparisons (TEST once per model; the full model was retrained on separate hardware and matches the protocol AUROC within 0.04 points on every split). Removing the temporal features at the readout, so the same network reads only its statistic slots, staleness and statics, costs $1.7 \pm 0.6$ AUROC and $7.2 \pm 0.5$ AUPRC points, on every split ($t = 5.3$ and $31$). The full model leads the trees on AUPRC on every split ($+2.6$, $t = 4.2$) and is level on AUROC ($+0.2$). A rank blend of the model and the trees beats both on every split, so the model carries information the summaries lack.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lcc}
+\toprule
+P19, five official splits & AUROC & AUPRC \\
+\midrule
+Ours (full model) & $91.6 \pm 2.2$ & $64.4 \pm 4.0$ \\
+Same network, statistics only & $90.0 \pm 1.8$ & $57.2 \pm 3.7$ \\
+Gradient-boosted trees on the same statistics & $91.4 \pm 2.0$ & $61.8 \pm 4.1$ \\
+Rank blend of ours and the trees & $92.5 \pm 2.1$ & $67.1 \pm 4.0$ \\
+\bottomrule
+\end{tabular}
+\caption{What the temporal memory adds beyond summary statistics (paired over the same five splits).}
+\label{tab:compl}
+\end{table}
+
 \paragraph{P12 and PAM.} On P12 in-hospital mortality, with the P19 configuration unchanged, TEST AUROC is $87.1 \pm 1.1$ and AUPRC $58.5 \pm 2.4$: behind MTM on AUROC ($88.0 \pm 1.0$), level on AUPRC ($58.6 \pm 4.1$), and ahead of GraFITi, Warpformer and ViTST. On PAM activity recognition (wearable inertial sensors, eight classes, five official splits), with random crops, amplitude jitter and weight averaging in training, TEST accuracy is $97.8 \pm 0.7$ and F1 $98.0 \pm 0.8$ against MTM's $97.5 \pm 0.2$ and $97.6 \pm 0.2$, with 46,316 parameters; four of five splits are ahead (split 4: 96.4).
 
 \paragraph{Transfer from self-supervised event modelling.} The encoder can be pretrained without labels to predict the next measurement event---when, which channels, which values---and then fine-tuned for mortality. \pending{pretrained vs.\ scratch at 10/30/100\% labels}.

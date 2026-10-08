@@ -16,10 +16,11 @@ style of `investment/PITCH_DECK.json`; keep each slide to one message.
    - Sparse addressed state; constant per-event cost.
    - Contains attention and Mamba as special cases.
 4. **Proof on public leaderboards.**
-   - Table: EasyTPP Taobao, Taxi, StackOverflow (matched compute); P19 sepsis.
+   - Table: all five EasyTPP datasets (Taobao, Taxi, StackOverflow at matched compute, Retweet at 1/15, Amazon at 0.29×); P19 sepsis; PAM wearables.
+   - Taxi reproduced on separate hardware; third-party kit ready.
    - Each row with the best published result and our compute ratio.
 5. **Proof of efficiency.**
-   - Per-event compute vs the leading models: 1/12 (Taxi single model), 0.92× (Taobao), matched (StackOverflow).
+   - Per-event compute vs the leading models: 1/12 (Taxi single model), 1/15 (Retweet), 0.29× (Amazon), 0.92× (Taobao), matched (StackOverflow); PAM at 1/19 of MTM's parameters.
    - Constant cost vs a Transformer's growing context cost.
 6. **Product and beachhead.**
    - Early fault and anomaly detection on operational logs.
