@@ -16,6 +16,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     procps psmisc lsof util-linux tmux sudo nano \
     && rm -rf /var/lib/apt/lists/*
 
+# LaTeX for the papers (report/papers) and the evidence brief (investment/brief): pdflatex, latexmk, bibtex,
+# TikZ/tcolorbox/enumitem (latex-extra, pictures), Lato and FontAwesome 5 (fonts-extra), lmodern, cm-super.
+# Build with scripts/build_latex_docs.sh.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-pictures \
+    texlive-fonts-recommended texlive-fonts-extra lmodern cm-super latexmk \
+    && rm -rf /var/lib/apt/lists/*
+
 # CPU research environment; GPU hosts use the AWS bootstrap script.
 COPY requirements.txt /tmp/research-requirements.txt
 RUN pip3 install --no-cache-dir --break-system-packages \
