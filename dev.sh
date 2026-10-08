@@ -205,6 +205,8 @@ else
   exec docker run \
     --interactive \
     --tty \
+    --log-opt max-size=50m \
+    --log-opt max-file=2 \
     --name "${CONTAINER_NAME}" \
     --user "$(id -u):$(id -g)" \
     --network host \

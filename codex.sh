@@ -116,6 +116,8 @@ echo "Starting ${CONTAINER_NAME}: Docker isolation, Codex sandbox disabled."
 exec docker run \
     --interactive \
     --tty \
+    --log-opt max-size=50m \
+    --log-opt max-file=2 \
     --name "${CONTAINER_NAME}" \
     --label sleeping-machines.codex-sandbox=disabled \
     --user "$(id -u):$(id -g)" \
