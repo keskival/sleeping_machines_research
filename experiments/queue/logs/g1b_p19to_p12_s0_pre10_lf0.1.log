@@ -1,0 +1,32 @@
+/workspace/experiments/irts/race_irts_g1.py:59: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  return -((time_ll + obs_ll + val_ll) * w).sum() / n, dict(time=float((time_ll * w).sum() / n),
+{"epoch": 0, "train_nll": 12.11999780899332, "p12_val_nll": 39.92105484008789, "p12_val_time": -15.171780586242676, "p12_val_obs": -15.84990119934082, "p12_val_val": -8.899370193481445}
+{"epoch": 1, "train_nll": 9.338589152696244, "p12_val_nll": 39.11689758300781, "p12_val_time": -14.363983154296875, "p12_val_obs": -15.893774032592773, "p12_val_val": -8.859136581420898}
+{"epoch": 2, "train_nll": 8.868508763138484, "p12_val_nll": 37.84986877441406, "p12_val_time": -13.10688304901123, "p12_val_obs": -15.88456916809082, "p12_val_val": -8.858412742614746}
+{"epoch": 3, "train_nll": 8.48398609203159, "p12_val_nll": 36.534366607666016, "p12_val_time": -11.718523979187012, "p12_val_obs": -15.91768741607666, "p12_val_val": -8.89815902709961}
+{"epoch": 4, "train_nll": 8.169371048358519, "p12_val_nll": 35.49672317504883, "p12_val_time": -10.680602073669434, "p12_val_obs": -16.00360107421875, "p12_val_val": -8.812518119812012}
+{"epoch": 5, "train_nll": 7.911193233307133, "p12_val_nll": 34.35862350463867, "p12_val_time": -9.427063941955566, "p12_val_obs": -16.178600311279297, "p12_val_val": -8.752957344055176}
+{"epoch": 6, "train_nll": 7.703870768922174, "p12_val_nll": 33.23814392089844, "p12_val_time": -8.307268142700195, "p12_val_obs": -16.285072326660156, "p12_val_val": -8.645808219909668}
+{"epoch": 7, "train_nll": 7.5242281541344465, "p12_val_nll": 32.4791145324707, "p12_val_time": -7.695074081420898, "p12_val_obs": -16.27712059020996, "p12_val_val": -8.506919860839844}
+{"epoch": 8, "train_nll": 7.371994276251362, "p12_val_nll": 31.814014434814453, "p12_val_time": -7.312275409698486, "p12_val_obs": -16.0847225189209, "p12_val_val": -8.417016983032227}
+{"epoch": 9, "train_nll": 7.224244513897834, "p12_val_nll": 31.242036819458008, "p12_val_time": -6.8273491859436035, "p12_val_obs": -16.079269409179688, "p12_val_val": -8.33542251586914}
+{"epoch": 0, "val_auroc": 0.7518908086320509, "val_auprc": 0.37220078726004346}
+{"epoch": 1, "val_auroc": 0.7868651072213039, "val_auprc": 0.407493646291986}
+{"epoch": 2, "val_auroc": 0.8146328208147462, "val_auprc": 0.4441713941384797}
+{"epoch": 3, "val_auroc": 0.825309662371776, "val_auprc": 0.46349944602632126}
+{"epoch": 4, "val_auroc": 0.8309028328162859, "val_auprc": 0.46543072682780606}
+{"epoch": 5, "val_auroc": 0.8330483911143317, "val_auprc": 0.4837356030921781}
+{"epoch": 6, "val_auroc": 0.8310726659269491, "val_auprc": 0.480126252515217}
+{"epoch": 7, "val_auroc": 0.8260795724734494, "val_auprc": 0.47640631131924976}
+{"epoch": 8, "val_auroc": 0.8321822422499492, "val_auprc": 0.48807697206982803}
+{"epoch": 9, "val_auroc": 0.8298781730486176, "val_auprc": 0.49380562338080075}
+{"epoch": 10, "val_auroc": 0.8169651955345214, "val_auprc": 0.4626276493934105}
+{"epoch": 11, "val_auroc": 0.8098605104051085, "val_auprc": 0.4398993482349206}
+{"epoch": 12, "val_auroc": 0.8155329363012612, "val_auprc": 0.4745475752397924}
+{"epoch": 13, "val_auroc": 0.8171859785783836, "val_auprc": 0.4584000617801846}
+{"epoch": 14, "val_auroc": 0.803378546681461, "val_auprc": 0.4269295420303988}
+{"epoch": 15, "val_auroc": 0.8130024229523788, "val_auprc": 0.4387491147894904}
+{"epoch": 16, "val_auroc": 0.8045730395597925, "val_auprc": 0.4363882443153594}
+{"epoch": 17, "val_auroc": 0.8102850931817667, "val_auprc": 0.4492657883660256}
+VAL {"auroc": 0.8330483911143317, "auprc": 0.4837356030921781}
