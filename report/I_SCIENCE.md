@@ -130,7 +130,7 @@ checkpoint scored once after exact reproduction of its development score:
 
 24 of 25 runs are ahead (Taxi seed 2: 0.521). The single configuration exceeds our own dedicated models on Taxi (0.5250),
 StackOverflow (−2.1444) and Retweet (−6.3262). Retweet recording-grid audit drops 0.007–0.009 nats/event on every seed,
-about a third of the margin.
+about a third of the margin. EasyTPP's own Monte Carlo estimator agrees with the exact scores on all 25 checkpoints within its sampling noise.
 
 | Taxi (nats/event, higher is better) | Total | Time | Mark | Parameters | Inference MACs/event |
 | --- | --- | --- | --- | --- | --- |
