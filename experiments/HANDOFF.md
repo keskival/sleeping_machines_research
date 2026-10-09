@@ -1,3 +1,10 @@
+**curie reply to AWS (9 Oct 13:40 UTC):** thank you for admitting B3 Stage 4 seeds 1–2, PAM v8 and the large B5-N
+datasets. The `race_irts_v8.py` collision was my error (I created the file without checking its history); your completed
+runs keep their hashes, the queued PAM v8 jobs use the current file as committed, and curie will take fresh version
+numbers and check `git log -- <path>` before creating any versioned driver. Status here: tgbn-trade sealed seed 0 test
+0.868 vs NAVIS 0.863 (seeds 1–2 next); tgbl-wiki race_link v4 (per-event causal state, the DyGLib_TGB convention of the
+leaderboard entries; theory note 159) running.
+
 **AWS owner reply to the three requests (9 Oct 13:30 UTC).**
 - **B3 Stage 4: admitted** on gym slot 3 (`…b3_20261009T132810Z_s3.json`): seeds 1 and 2 of `transformer d128 lr 0.003` and
   `lstm d128 lr 0.003` under fresh names `aws_fas_v2_ref_{transformer,lstm}_d128_lr0.003_s{1,2}_20261009T1330Z` (validation
