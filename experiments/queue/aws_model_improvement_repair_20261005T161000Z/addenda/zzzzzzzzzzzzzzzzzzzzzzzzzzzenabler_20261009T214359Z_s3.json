@@ -1,0 +1,192 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared enabler, theory note 160 sect. 11 (founder direction: unshared forward and backward weights that train each other): per-event trace learner with its own backward matrices trained by the forward's local updates (Kolen-Pollack) vs fixed random feedback vs exact transposes, Taxi DEV, 3 seeds. Decides whether a fully local learner without weight transport keeps exact-credit quality",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online2_kp_contract",
+        "queue": "experiments/queue/enabler/online2_kp_contract/online2_kp_contract.txt",
+        "queue_sha256": "01ceeefea772ad74402ca0c976826833ca4b72e860a58ad6118caee84c00709b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_kp_contract.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_contract",
+        "queue": "experiments/queue/enabler/online2_contract/online2_contract.txt",
+        "queue_sha256": "886c9844aced3a4a43e353d8d2ddd90211266c8e2595625e137e6644375530f7",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_contract.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_smoke_kp",
+        "queue": "experiments/queue/enabler/online2_smoke_kp/online2_smoke_kp.txt",
+        "queue_sha256": "6139a3d436e46befa39c43ff69b9879a5a51e4c99f6dac04c2fe02f2b7329db1",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_smoke_kp.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_smoke_fa",
+        "queue": "experiments/queue/enabler/online2_smoke_fa/online2_smoke_fa.txt",
+        "queue_sha256": "73f13389137840b7410f460b28020c014b98536195634f2a21092972dc421bee",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_smoke_fa.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_kp_s0",
+        "queue": "experiments/queue/enabler/online2_taxi_online_kp_s0/online2_taxi_online_kp_s0.txt",
+        "queue_sha256": "23453fce504417f1c3328d3b98dbc5c9915b36d124ebba5f959c3f4effcc9bdd",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_kp_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_kp_s1",
+        "queue": "experiments/queue/enabler/online2_taxi_online_kp_s1/online2_taxi_online_kp_s1.txt",
+        "queue_sha256": "e686ebedc7bf167efa4c0533486bcdabccdf66cee19af593c1eed4c5fe33911d",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_kp_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_kp_s2",
+        "queue": "experiments/queue/enabler/online2_taxi_online_kp_s2/online2_taxi_online_kp_s2.txt",
+        "queue_sha256": "7354cb5364f935fd8b5aba56d0209f44c28008466f82157e485bf7dac133fca0",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_kp_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_fa_s0",
+        "queue": "experiments/queue/enabler/online2_taxi_online_fa_s0/online2_taxi_online_fa_s0.txt",
+        "queue_sha256": "9eaa3b5fe570d3517da57f339ef0c0d5a3c6b95697380fb4e18826bc9c139da8",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_fa_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_fa_s1",
+        "queue": "experiments/queue/enabler/online2_taxi_online_fa_s1/online2_taxi_online_fa_s1.txt",
+        "queue_sha256": "9d15b9608c05157698b12871536ea437806185ba09e70d504b7fdfa15d125a95",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_fa_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_fa_s2",
+        "queue": "experiments/queue/enabler/online2_taxi_online_fa_s2/online2_taxi_online_fa_s2.txt",
+        "queue_sha256": "a72b932acd529d980483dc24887df774747412de5217c0207bb0e500ee3572b6",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_fa_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_trace_s0",
+        "queue": "experiments/queue/enabler/online2_taxi_online_trace_s0/online2_taxi_online_trace_s0.txt",
+        "queue_sha256": "59fc028a535e9b70a621e810f12471d061d39e9d8de4438e6e69e21c502fa601",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_trace_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_trace_s1",
+        "queue": "experiments/queue/enabler/online2_taxi_online_trace_s1/online2_taxi_online_trace_s1.txt",
+        "queue_sha256": "82e8a78eab5089e7372276ef547fd0e9f575dec4d28a5b494b711b2a6c01dc2c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_trace_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online2_taxi_online_trace_s2",
+        "queue": "experiments/queue/enabler/online2_taxi_online_trace_s2/online2_taxi_online_trace_s2.txt",
+        "queue_sha256": "191563e0156d7c67400ff1a0e748b90ef1dafac92f48074076ceea7102c38e31",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online2_taxi_online_trace_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

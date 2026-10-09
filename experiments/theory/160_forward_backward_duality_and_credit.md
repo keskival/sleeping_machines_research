@@ -383,3 +383,57 @@ R1 hidden-write fit, implement a tiny stochastic addressed key/value memory with
 route histories to validate pair targets, full parameter gradients and elapsed-time/silence terms. Retain the current
 R1 keyed/predecessor model as the same-family reference and measure complete replay/learning work. This closes the
 semantic gap without mistaking inexpensive output-clock attribution for deep memory learning.
+
+## 11. Unshared directions that train each other (founder direction, 9 Oct)
+
+*"[The two passes] don't need to share weights. But these two directions of passes should train each other."*
+
+**Where the familiar schemes stand.** An RBM uses one weight matrix in both directions. Backpropagation reuses the
+forward weights transposed, which on physical hardware means moving weights to a second datapath. The wake–sleep
+algorithm (Helmholtz machine) has separate recognition and generative weights. Each set is trained only on samples from
+the other, so the two sets have no common fixed point (§6). Feedback alignment uses separate, fixed random feedback:
+unshared, but static.
+
+**The construction: two parameter sets with one fixed point, each set trained by the other.**
+
+- **Credit model.** The credit model ψ (§§3, 6) is separate from the forward model θ.
+  - The forward model's verdicts and sampled causes train ψ.
+  - ψ's credit trains θ.
+  - Their joint fixed point is q_ψ = ρ_θ, the exact posterior.
+- **Learned feedback weights.** In the backward path, every matrix whose transpose would carry error gets its own
+  feedback matrix B.
+  - B receives exactly the update its forward partner W receives: the local product of input and output activity,
+    which both ends of the connection observe. Both also receive the same decoupled decay.
+  - Then W − B evolves as (1 − η·wd)(W − B). Duality B = W is the attracting fixed point, learned rather than assumed
+    (Kolen & Pollack 1994; Akrout et al. 2019 for deep networks).
+  - Once aligned, the learned backward pass delivers exact credit. While misaligned, it delivers credit that the
+    forward weights themselves align to, as in feedback alignment, so learning proceeds during convergence.
+- **Forward traces in the memory.** In the per-event trace learner (§7), the memory's credit runs forward through the
+  forward weights in the forward direction, so no transpose is needed there. With learned feedback in the
+  readout and clock head, the whole learner is local:
+  - no weight transport;
+  - no stored history;
+  - no global backward sweep.
+  On a delay-line substrate, the backward path is a separate physical structure that learns to become the
+  time-reversed dual of the forward one.
+
+**Contracts** (`experiments/credit/online_race_v2.py`, float64):
+- Feedback initialized at B = W stays identical to W, and every parameter matches the exact-transpose learner after 9
+  per-event AdamW updates (difference 0.0; weights moved 8.9e−3).
+- The trace gradient equals BPTT (4.4e−16).
+
+**Test (slot 3, Taxi DEV, 3 seeds)** compares three feedback arms, all with identical decay on the four readout/head
+matrices:
+- `online_kp`: mutual training;
+- `online_fa`: static random feedback;
+- `online_trace`: exact transposes.
+
+The cosine between each W and its B is logged every epoch.
+
+**Predictions stated before results:**
+- `online_kp` cosines rise toward 1 within the first epochs.
+- `online_kp` DEV log-likelihood lands within 0.02 nats/event of `online_trace`.
+- `online_fa` ends lower than both, with cosines that rise only partially, because the forward weights must adapt to a
+  static backward path.
+
+A mutual arm no better than the static one would mean the backward direction's learning adds nothing at this scale.
