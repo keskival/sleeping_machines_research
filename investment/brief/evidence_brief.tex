@@ -118,6 +118,8 @@ PAM & PAMAP2 physical-activity monitoring: 5,333 recordings from wearable inerti
 P12 mortality & PhysioNet 2012: 11,988 intensive-care stays, 36 irregular measurements & Predicting in-hospital mortality from the first 48 hours & AUROC and AUPRC, 0 to 1 \up \\
 TGB trade & UN trade flows between 255 countries, 1986--2016 & Which partners a country trades with most next year & NDCG@10, 0 to 1 \up \\
 TGB wiki & 157,474 timed Wikipedia edits by 8,227 users on 1,000 pages & Which page a user edits next & MRR, 0 to 1 \up \\
+\midrule
+Neural-TPP benchmark (TMLR 2023/2025) & Seven event datasets (LastFM listening, MOOC course activity, Github, Stack Overflow, Wikipedia edits, MIMIC2 hospital visits, Retweets), five fixed splits each & A second, independent event benchmark: when the next event happens and what it is & negative log-likelihood, nats per sequence \down \\
 \bottomrule
 \end{tabularx}}
 
@@ -127,6 +129,7 @@ TGB wiki & 157,474 timed Wikipedia edits by 8,227 users on 1,000 pages & Which p
 \begin{itemize}
 \item \textbf{Log-likelihood (nats per event), higher is better.} It measures how much probability the model gave to what actually happened, both its timing and its type. A gain of 0.08 nats per event means the model assigns about 8\% more probability to every real event, on average, compounding over every event in a sequence. Values can be negative; less negative is better.
 \item \textbf{AUPRC, higher is better (0 to 1).} How well the model ranks the rare patients who develop sepsis (4\% of stays) ahead of everyone else, with emphasis on raising true alarms without false ones. It is the clinically relevant metric when the condition is rare. \textbf{AUROC} (0 to 1, higher is better) measures overall ranking.
+\item \textbf{Negative log-likelihood per sequence, lower is better.} The same probability measure summed over a whole sequence and negated, as the neural-TPP benchmark reports it; time and type (``mark'') parts are reported separately and add up to the total.
 \item \textbf{NDCG@10 and MRR, higher is better (0 to 1).} How well the model ranks the true next partners or pages near the top of a list of all candidates.
 \item \textbf{Size and cost, lower is better.} Parameters measure how big a model is; multiply-adds per event measure the work needed for each prediction, which drives running cost and energy.
 \end{itemize}
@@ -160,6 +163,10 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 
 \begin{tile}
 \textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all nine benchmarks, 40 of 41 independent runs are ahead.
+\end{tile}
+
+\begin{tile}
+\textbf{A second event benchmark: Wikipedia won with no tuning.} On the neural-TPP benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025), the frozen one-configuration EasyTPP model, unchanged, scores a total negative log-likelihood of $\mathbf{-240.42 \pm 43.31}$ (standard error over five fixed splits; nats per sequence \down) against a bar of $-122.62$: the best published time component plus the best published type component, a combination no single published model reaches (best single model $-2.67$). Four of five splits are below the bar. The win is in predicting which page is edited next: 28.49 vs 144.79 \down. Most edits return to the same page, and 10--27\% of test pages never appear in training; our addressed memory copies any page it has seen in the sequence, which per-page embeddings cannot do. The scoring was verified from the saved models (exact reproduction, no leakage of future events, probabilities summing to one, the published units). The other completed datasets of this benchmark are losses (next pages).
 \end{tile}
 
 
@@ -287,7 +294,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tuning: Wikipedia won ($-240.42$ vs $-122.62$ \up; marks $28.49$ vs $144.79$); MOOC lost ($-226.85$ vs $-239.7$ \down; timing gap); Stack Overflow lost ($12.714$ vs $11.9$; time $-91.598$ beats $-91.1$); Github ($-198.5$ vs $-272.9$) and MIMIC2 ($7.01$ vs $2.42$) lost; Retweets, LastFM pending & Five-split verdicts per dataset \\
+Second TPP benchmark (nats per sequence \down) & Frozen one-configuration model, no tuning; Wikipedia won (previous pages). Behind: MOOC $-226.85$ vs $-239.7$ (timing gap); Stack Overflow $12.714$ vs $11.9$ (time component ahead, $-91.598$ vs $-91.1$); Github $-198.5$ vs $-272.9$ (four of five runs diverged numerically during training); MIMIC2 $7.01$ vs $2.42$. Retweets and LastFM running & Remaining two verdicts; numerically guarded training; a developed attempt with per-sequence type statistics (a training-free counter already beats our type predictions on two datasets) \\
 \bottomrule
 \end{tabularx}}
 
@@ -302,7 +309,7 @@ Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tunin
 \end{itemize}
 
 \begin{callout}
-\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
+\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller, and the same frozen model wins Wikipedia on a second event benchmark without tuning. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
 \end{callout}
 
 \end{document}
