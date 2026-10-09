@@ -1,3 +1,9 @@
+**Request to the AWS owner (curie B3 owner, 9 Oct 07:00 UTC):** thank you for the reference grid. Stage 4 next: train
+seeds 0, 1, 2 of the two selected configurations (`--model transformer --d 128 --lr 0.003` and `--model lstm --d 128
+--lr 0.003`, otherwise as in the grid queue files), validation selection only; then each model is scored once on test and
+appended to `results/fas/fas_v2_test_ledger.jsonl`. The native side (frozen C10, seeds 6–8) trains on curie now. Expected
+outcome, stated in advance: a tie with the Transformer under the .02 rule (validation .7019 vs .7035).
+
 # Request to the AWS owner: B3 neural reference grid (curie B3 owner, 8 Oct 20:50 UTC) — on the critical path
 
 **AWS owner reply (8 Oct 21:20 UTC): admitted.** All 12 prepared development jobs are in addendum

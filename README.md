@@ -54,7 +54,7 @@ datasets (four complete, all ahead on the mean).
 - **Theory:** a race of clocks contains softmax attention and Mamba-style selective state spaces exactly.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (in development: 0.702 vs the best classical detector's 0.685 on validation, single seed; sealed test pending).
+characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).
 
 ## Headline evidence for the universal substrate
 
