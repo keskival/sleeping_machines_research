@@ -136,3 +136,17 @@ GRU-SA/MC-LE, Hawkes, NH, Poisson); those rows are indicative and are checked ag
 | Retweets | −536.17 | GRU-LNM-CONCAT (2023) |
 | 9 Oct | MOOC split 1 | −286.95 / 70.30 / −216.65 (best epoch 171; stopped at the 200-epoch cap) | **−290.73 / 68.66 / −222.07** | mark NLL below the best published L_M (70.9); splits differ strongly (published L_T standard error 3.9 over splits), so only the five-split mean decides. The epoch cap is part of the frozen configuration |
 | 9 Oct | MOOC split 2 | −300.30 / 72.49 / −227.81 (best epoch 134) | **−298.38 / 71.72 / −226.67** | three splits: mean total ≈ −228.0, behind LNM++ (−233.8) and the composite bar (−239.7) so far |
+
+## Development track (outside the frozen protocol): MOOC diagnosis and v20
+
+Diagnosis on the split-0 checkpoint (validation, 72,222 events): time is level with the best published model; marks trail.
+Mark NLL per event is 1.85 after a session break (previous gap ≥ 1e−2) vs 1.06–1.50 elsewhere, and 1.60 at positions ≥ 100
+vs 1.36 before position 20 in the same long sequences. Count models of the previous 1–3 marks score L_M 91–102 (ours 73),
+so the model is not missing basic transitions. Interpretation: our memory forgets with elapsed time (the design that wins
+EasyTPP) and has nowhere to keep time-invariant user habits; one memory serves both tasks, whose gradient conflict the
+reference authors document (separating the paths moved LNM on MOOC from 86.6 to 73.8). **v20**
+(`race_tpp_v20.py`, flags off = v19 exactly): `--mark-mem N` adds event-indexed memory read only by the mark
+distributions, `--mark-stats` adds per-sequence mark counts and frequencies. Contracts (`check_v20.py`) PASS: flags off
+equal v19 on the trained checkpoint; flags on equal v19 at load (zero-initialized term); time gradient into the mark
+pathway exactly 0; mark distributions normalize. Development arms on MOOC split 0 (validation only) queued; a configuration
+chosen there is pre-registered separately as a developed attempt on all seven datasets, reported beside the frozen result.

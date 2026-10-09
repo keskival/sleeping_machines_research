@@ -1,0 +1,66 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 development (validation only, outside the frozen protocol): MOOC diagnosis (9 Oct) shows mark NLL 1.85/event after session breaks vs 1.06-1.50 elsewhere, and 1.60 vs 1.36 deep in long sequences; time is level with the best published, marks trail (75.1 vs 70.9). v20 adds per-event-decaying mark memory read only by the marks (no time gradient; contract PASS) and persistent mark statistics. Arms vs the frozen validation total -233.88 decide v20's configuration for a separately pre-registered developed attempt",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b4dev_mooc_s0_stats",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_stats/b4dev_mooc_s0_stats.txt",
+        "queue_sha256": "55acdcedab99eac44f8fcdb406976bff0de69f6209323036b428bd0c7b42863c",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_stats.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4dev_mooc_s0_markmem1",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_markmem1/b4dev_mooc_s0_markmem1.txt",
+        "queue_sha256": "a54883a8643229ba1e70118bce63cc89b02f3b903a5a404d85b76268b1fbd9a7",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_markmem1.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4dev_mooc_s0_mem1_stats",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_mem1_stats/b4dev_mooc_s0_mem1_stats.txt",
+        "queue_sha256": "d50874a78d659662d9738e27236a0672d2407c946b4806d40ea7801da63066b2",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_mem1_stats.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4dev_mooc_s0_mem1_stats_d48",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_mem1_stats_d48/b4dev_mooc_s0_mem1_stats_d48.txt",
+        "queue_sha256": "3e5aa2b03befa127f6089e202aa97695ee9df5f76ff47a8bea01493edffa3b38",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_mem1_stats_d48.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
