@@ -42,6 +42,10 @@ datasets (four complete, all ahead on the mean).
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
   what-if analysis and synthetic data; taxi streams match real timing (gap KS 0.014 vs 0.063 naive) and event-to-event
   structure (0.024 vs 0.53).
+- **Exact training signal and measured speed:** the closed-form likelihood removes the Monte Carlo gradient noise that
+  sampled-intensity models carry (18% relative noise at the common 10-sample setting, measured); a streaming per-event
+  update runs at about 1,500 events per second on one CPU core in plain PyTorch (Taxi; 20.7K multiply-adds per event vs
+  the leader's 250K). A race of clocks provably approximates any continuous inter-event density, confirmed numerically.
 - **Reasoning from few examples:** temporal event chains 99.7% vs Transformers 33–41%; race retrieval 100% at 4× context.
 - **Character language:** beats tuned Transformers at equal or lower compute (text8, 10M characters).
 - **Learning signal and capacity:** credit to unchosen routes cuts error by 0.14 bits per character for 0.3% more work;
