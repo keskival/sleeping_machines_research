@@ -176,4 +176,7 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   (the development optimum was epoch 0 with a slow decline after it), validation selection over those epochs, seeds 0,
   1, 2, each with `--score-test` (test scored once per seed). Win rule unchanged: mean test MRR over the three seeds
   above TPNet's 0.827 with every seed above 0.827. Reported either way.
+- 9 Oct 14:05: race_link v4 d = 16 development run complete: **best validation MRR 0.8515** (epoch 0; then .849, .845, .840,
+  .833, .8xx: the identities overfit the training period), 171,627 parameters (identity tables 9,227×16 + 1,000×16 +
+  1,000), 6 epochs in 70 minutes. The d = 0 run follows; the sealed variant is chosen by the pre-registered rule above.
 

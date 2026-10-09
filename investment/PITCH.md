@@ -55,10 +55,11 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 **New event domains, in development (9 October; development data, sealed tests not yet scored):**
 - **Temporal Graph Benchmark, node affinity (tgbn-trade, world trade flows):** validation NDCG@10 **0.875** vs 0.860 for
   the leaderboard leader NAVIS (ICLR 2026) and for persistent forecast, ahead in every validation year, with 2,107
-  parameters and 4 minutes of CPU fitting. The pre-registered sealed test (3 seeds; bar: NAVIS's 0.863) is queued.
+  parameters and 4 minutes of CPU fitting. Pre-registered sealed test (3 seeds; bar: NAVIS's 0.863): the first seed scores
+  0.868; seeds 2 and 3 are queued.
 - **Temporal Graph Benchmark, link prediction:** the official evaluation is reproduced exactly (EdgeBank 0.527 / 0.495,
-  as published). tgbl-wiki in development: 0.776 vs TPNet's 0.842 (both validation; repeat interactions already above
-  recency, new pairs are the gap being worked). tgbl-review: a training-free decayed event state reaches 0.344
+  as published). tgbl-wiki in development: **0.852 vs TPNet's 0.842** (both validation): exact per-event state lifted our
+  model from 0.776 to 0.852 (theory note 159 predicted at least +0.03); the pre-registered sealed test is next. tgbl-review: a training-free decayed event state reaches 0.344
   validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
   model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means.

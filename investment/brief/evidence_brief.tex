@@ -284,8 +284,8 @@ Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6
 Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU \\
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
-Temporal graphs: node affinity (TGB tgbn-trade) & In development: validation NDCG@10 0.875 vs 0.860 for the leader NAVIS \up{}, ahead in every validation year, 2,107 parameters & Pre-registered sealed test, 3 seeds, bar 0.863 (queued) \\
-Temporal graphs: link prediction (TGB) & Evaluation reproduced exactly; tgbl-wiki 0.776 vs TPNet 0.842 MRR \up{} (both validation, behind); tgbl-review: training-free event state above TGN, TGAT and TNCN & Second development round (transitions, recency rank, learned identities) \\
+Temporal graphs: node affinity (TGB tgbn-trade) & In development: validation NDCG@10 0.875 vs 0.860 for the leader NAVIS \up{}, ahead in every validation year, 2,107 parameters & Pre-registered sealed test, 3 seeds, bar 0.863: first seed 0.868 \\
+Temporal graphs: link prediction (TGB) & Evaluation reproduced exactly; tgbl-wiki 0.852 vs TPNet 0.842 MRR \up{} (both validation; exact per-event state, 0.776 before); tgbl-review: training-free event state above TGN, TGAT and TNCN & Pre-registered sealed test, 3 seeds, bar 0.827 (TPNet test) \\
 Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tuning: 35 pre-registered runs in progress & Five-split verdicts per dataset \\
 \bottomrule
 \end{tabularx}}

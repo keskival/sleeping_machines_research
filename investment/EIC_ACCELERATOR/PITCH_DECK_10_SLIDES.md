@@ -19,7 +19,7 @@ style of `investment/PITCH_DECK.json`; keep each slide to one message.
    - Table: all five EasyTPP datasets (Taobao, Taxi, StackOverflow at matched compute, Retweet at 1/15, Amazon at 0.29×); P19 sepsis; PAM wearables.
    - Taxi reproduced on separate hardware; third-party kit ready.
    - Each row with the best published result and our compute ratio.
-   - Next (in development, 9 Oct): Temporal Graph Benchmark node affinity, validation 0.875 vs leader 0.860 (sealed test queued); TGB link prediction and a second TPP benchmark running.
+   - Next (in development, 9 Oct): Temporal Graph Benchmark, ahead of both leaders on validation (node affinity 0.875 vs 0.860; link prediction 0.852 vs 0.842); sealed tests running; a second TPP benchmark running.
 5. **Proof of efficiency.**
    - Per-event compute vs the leading models: 1/12 (Taxi single model), 1/15 (Retweet), 0.29× (Amazon), 0.92× (Taobao), matched (StackOverflow); PAM at 1/19 of MTM's parameters.
    - Constant cost vs a Transformer's growing context cost.

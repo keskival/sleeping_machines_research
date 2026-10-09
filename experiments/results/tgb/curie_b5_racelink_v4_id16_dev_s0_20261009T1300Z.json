@@ -1,0 +1,149 @@
+{
+ "status": "completed",
+ "battle": "B5",
+ "tag": "curie_b5_racelink_v4_id16_dev_s0_20261009T1300Z",
+ "model": "race_link v4 (per-event causal state; v3 = v2 + destination bias and source-destination identities; v2 = v1 + ordinal recency, pair share, last-destination flag, decayed page transitions)",
+ "args": {
+  "tag": "curie_b5_racelink_v4_id16_dev_s0_20261009T1300Z",
+  "seed": 0,
+  "epochs": 6,
+  "hidden": 64,
+  "d_id": 16,
+  "lr": 0.003,
+  "bs": 200,
+  "max_train_events": 0,
+  "max_eval_events": 0,
+  "score_test": false,
+  "max_wall_s": 10000.0,
+  "root": "/workspace/data/tgb"
+ },
+ "features": 41,
+ "parameters": 171627,
+ "history": [
+  {
+   "epoch": 0,
+   "train_ce": 1.238392890317233,
+   "val_mrr": 0.8515158403698585,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9310482703597676
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06508370177226007
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.0635608857350379
+    }
+   },
+   "epoch_s": 702.5342402458191
+  },
+  {
+   "epoch": 1,
+   "train_ce": 1.0900403800304141,
+   "val_mrr": 0.8492366582418712,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9281846334270811
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06796562339202492
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.06812071282754471
+    }
+   },
+   "epoch_s": 705.6245322227478
+  },
+  {
+   "epoch": 2,
+   "train_ce": 1.0213683755388798,
+   "val_mrr": 0.8451517293243126,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9233337829504569
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06849809519681808
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.07663924239424985
+    }
+   },
+   "epoch_s": 708.9805643558502
+  },
+  {
+   "epoch": 3,
+   "train_ce": 0.9389524927064187,
+   "val_mrr": 0.8397424301574489,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9175785332397846
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06620435770868541
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.07517528015093651
+    }
+   },
+   "epoch_s": 709.456953048706
+  },
+  {
+   "epoch": 4,
+   "train_ce": 0.8595423913264155,
+   "val_mrr": 0.8324672750327095,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9097811757542424
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06462805821543094
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.0721657570721612
+    }
+   },
+   "epoch_s": 700.1979374885559
+  },
+  {
+   "epoch": 5,
+   "train_ce": 0.7938746419235154,
+   "val_mrr": 0.8253693151515623,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9023102251656917
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.061278154238359195
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.06866160489346826
+    }
+   },
+   "epoch_s": 697.8833496570587
+  }
+ ],
+ "best_val_mrr": 0.8515158403698585,
+ "test_mrr": "not scored (development run)",
+ "wall_s": 4231.698846817017,
+ "source_sha256": "69556678066d04c55e65d3eb87058caa3ed7422759c944a106aba79117061e48",
+ "checkpoint": "experiments/results/tgb/curie_b5_racelink_v4_id16_dev_s0_20261009T1300Z.pt"
+}
