@@ -1,0 +1,205 @@
+{
+ "status": "completed",
+ "battle": "B3",
+ "round": 3,
+ "tag": "curie_b3_stage4_c10_s6_20261009T0600Z",
+ "args": {
+  "tag": "curie_b3_stage4_c10_s6_20261009T0600Z",
+  "data": "fas_v2_K2_drop0.02_delta0_20261005",
+  "keyed": 0,
+  "seed": 6,
+  "fit_runs": 5000,
+  "train_max_events": 1024,
+  "max_events": 1100,
+  "eval_runs": 1000,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "n_exp": 2,
+  "n_lognormal": 8,
+  "n_window": 4,
+  "dv": 4,
+  "dk": 16,
+  "pred_window": 64,
+  "eval_batch": 8,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "batch": 16,
+  "epochs": 3,
+  "cell_s": 0.001,
+  "max_wall_s": 12000.0
+ },
+ "data": "fas_v2_K2_drop0.02_delta0_20261005",
+ "parameters": 61630,
+ "scale_s": 1.1190000000001419,
+ "best_epoch": 2,
+ "epochs_run": 3,
+ "wall_s": 6413.501250267029,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 0.29795175930230483,
+   "val_clean_nll": 1.105884869645565,
+   "epoch_s": 2081
+  },
+  {
+   "epoch": 1,
+   "train_nll": -0.5055906867001044,
+   "val_clean_nll": 0.9462726209779215,
+   "epoch_s": 2095
+  },
+  {
+   "epoch": 2,
+   "train_nll": -0.5845933675311595,
+   "val_clean_nll": 0.9126498801040399,
+   "epoch_s": 2096
+  }
+ ],
+ "val_clean_nll": 0.9126498801040399,
+ "val_auroc": {
+  "32": {
+   "all": 0.501879,
+   "wear_and_tear": 0.4986415478615071,
+   "retry_delay": 0.5050019646365422
+  },
+  "64": {
+   "all": 0.520694,
+   "wear_and_tear": 0.5114582484725051,
+   "retry_delay": 0.5296031434184676
+  },
+  "128": {
+   "all": 0.523991,
+   "wear_and_tear": 0.5135173116089613,
+   "retry_delay": 0.5340943025540275
+  },
+  "256": {
+   "all": 0.553089,
+   "wear_and_tear": 0.5541160896130346,
+   "retry_delay": 0.5520982318271119
+  },
+  "512": {
+   "all": 0.594058,
+   "wear_and_tear": 0.6018513238289206,
+   "retry_delay": 0.5865402750491159
+  },
+  "1024": {
+   "all": 0.699378,
+   "wear_and_tear": 0.6484989816700611,
+   "retry_delay": 0.7484577603143419
+  },
+  "rules": {
+   "type": {
+    "32": {
+     "all": 0.50628,
+     "wear_and_tear": 0.5120549898167006,
+     "retry_delay": 0.5007092337917485
+    },
+    "64": {
+     "all": 0.510113,
+     "wear_and_tear": 0.5125315682281059,
+     "retry_delay": 0.5077799607072692
+    },
+    "128": {
+     "all": 0.52543,
+     "wear_and_tear": 0.5238716904276985,
+     "retry_delay": 0.5269332023575638
+    },
+    "256": {
+     "all": 0.567801,
+     "wear_and_tear": 0.5762606924643584,
+     "retry_delay": 0.5596404715127702
+    },
+    "512": {
+     "all": 0.596016,
+     "wear_and_tear": 0.606213849287169,
+     "retry_delay": 0.5861787819253438
+    },
+    "1024": {
+     "all": 0.711444,
+     "wear_and_tear": 0.6642769857433809,
+     "retry_delay": 0.756943025540275
+    }
+   },
+   "gap": {
+    "32": {
+     "all": 0.500562,
+     "wear_and_tear": 0.4941079429735234,
+     "retry_delay": 0.5067878192534381
+    },
+    "64": {
+     "all": 0.521235,
+     "wear_and_tear": 0.5083441955193483,
+     "retry_delay": 0.5336699410609037
+    },
+    "128": {
+     "all": 0.51947,
+     "wear_and_tear": 0.5086863543788187,
+     "retry_delay": 0.5298722986247544
+    },
+    "256": {
+     "all": 0.536632,
+     "wear_and_tear": 0.5372321792260693,
+     "retry_delay": 0.5360530451866404
+    },
+    "512": {
+     "all": 0.572546,
+     "wear_and_tear": 0.591173116089613,
+     "retry_delay": 0.5545776031434184
+    },
+    "1024": {
+     "all": 0.649151,
+     "wear_and_tear": 0.6203930753564155,
+     "retry_delay": 0.6768919449901768
+    }
+   },
+   "gap_window32_max": {
+    "32": {
+     "all": 0.500562,
+     "wear_and_tear": 0.4941079429735234,
+     "retry_delay": 0.5067878192534381
+    },
+    "64": {
+     "all": 0.531087,
+     "wear_and_tear": 0.5164745417515275,
+     "retry_delay": 0.5451827111984283
+    },
+    "128": {
+     "all": 0.508211,
+     "wear_and_tear": 0.5028961303462322,
+     "retry_delay": 0.5133379174852652
+    },
+    "256": {
+     "all": 0.52884,
+     "wear_and_tear": 0.5327780040733198,
+     "retry_delay": 0.525041257367387
+    },
+    "512": {
+     "all": 0.541357,
+     "wear_and_tear": 0.5653849287169043,
+     "retry_delay": 0.5181787819253438
+    },
+    "1024": {
+     "all": 0.603393,
+     "wear_and_tear": 0.6192321792260692,
+     "retry_delay": 0.5881139489194499
+    }
+   }
+  }
+ },
+ "prefixes": [
+  32,
+  64,
+  128,
+  256,
+  512,
+  1024
+ ],
+ "test_auroc": "not scored (development run)",
+ "checkpoint": "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z.pt",
+ "decision": "does the B1 race model (and the keyed predecessor read) bind FAS v2 lines better than the native C1/C6 (best .664 total) and pass order3 (.685) on validation",
+ "source_sha256": {
+  "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+  "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+  "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+ }
+}

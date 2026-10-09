@@ -414,3 +414,9 @@ oracle's .821.
   expected sealed outcome is a **tie**; the native model fits the merged log far better (1.02 vs 2.01 nats per event) at
   about 1/7 of the parameters, but the pre-registered endpoint is detection AUROC. Stage 4 continues as registered
   (native seeds 6–8 on curie; reference seeds 0–2 of the selected Transformer and LSTM on AWS), then one test scoring each.
+- 9 Oct 11:00 UTC: **Stage 4 native seeds complete on curie** (frozen C10, validation only, test untouched): seeds 6, 7, 8
+  validation AUROC at N* = 1024 (rule `total`) **.699, .692, .704** (mean .699); type rule .711, .703, .714;
+  validation-clean NLL .913, 1.033, 1.021; best epoch 2 of 3 in each. Waiting for the AWS reference seeds 0–2
+  (Transformer d128 and LSTM d128, lr .003); AWS gym slots are on B4 (35 runs, ~1–2 days). Then one test scoring per model
+  (`score_sealed_test.py`) and `stage5_decision.py`.
+
