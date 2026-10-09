@@ -399,3 +399,10 @@ oracle's .821.
   under the declared primary rule `total`; also about half the cost). Development budget used: 8 of 8. Stage 4 queued on
   curie: C10 seeds 6, 7, 8 (training and validation only); test is scored with `score_sealed_test.py` once the neural
   reference grid exists (requested from AWS), then `stage5_decision.py`. Unused C11 Stage 4 queue files are not run.
+  - C11 binding diagnostic: attention on the true item predecessor 4.6% best head (C10 5.9%; uniform 1.6%), same line
+    49.7% (C10 49.7%), previous merged event 8.5%. Consumption does not raise purity. Both C10 and C11 put ~50% of their
+    attention on the same line, i.e. chance for K = 2: the gain comes from preferring plausible predecessors, not from
+    separating the lines. With identical routes and durations across lines, only an item's exact age at its step separates
+    candidates (note 157 §447), so the learned per-pair laws are likely too broad. Next lever (a future round; the
+    development budget is spent): initialise the per-pair duration laws from the merged log's own duration structure
+    (e.g. EM over candidate ages) instead of from zero, and measure their learned widths.
