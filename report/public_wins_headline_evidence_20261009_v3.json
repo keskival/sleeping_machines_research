@@ -330,6 +330,139 @@
   "diagnosis": "Time component ahead; mark component carries the total-NLL gap",
   "scope": "Five fixed splits; NLL per sequence; uncertainty is standard error"
  },
+ "b4_wikipedia": {
+  "L_T": {
+   "mean": -268.90417603630175,
+   "sd": 91.27568118111861,
+   "values": [
+    -127.42358084129025,
+    -296.574100323719,
+    -328.5599174239956,
+    -234.67327800073045,
+    -357.2900035917737
+   ],
+   "se": 40.8197255627159
+  },
+  "L_M": {
+   "mean": 28.488417131938284,
+   "sd": 6.31581525162067,
+   "values": [
+    35.505532549324265,
+    24.896656770619348,
+    28.51481129222794,
+    33.52491839760606,
+    20.000166649913815
+   ],
+   "se": 2.824518447190751
+  },
+  "total": {
+   "mean": -240.4157589043635,
+   "sd": 96.83883218841578,
+   "values": [
+    -91.91804829196597,
+    -271.67744355309964,
+    -300.0451061317677,
+    -201.14835960312442,
+    -337.28983694185985
+   ],
+   "se": 43.307642326998476
+  },
+  "bar": -122.62,
+  "best_single": -2.67,
+  "published_time": -267.41,
+  "published_marks": 144.79,
+  "splits_ahead": 4,
+  "verdict": "win (pre-registered frozen configuration)",
+  "diagnosis": "Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 (reproduction, causality, mark normalisation, published units)"
+ },
+ "b4_github": {
+  "L_T": {
+   "mean": -357.6842840424203,
+   "sd": 150.65512758413342,
+   "values": [
+    -480.43445285517373,
+    -536.9293439467396,
+    -175.5412090504107,
+    -257.55183155306366,
+    -337.9645828067138
+   ],
+   "se": 67.3750212874052
+  },
+  "L_M": {
+   "mean": 159.1604203772416,
+   "sd": 51.985640205421376,
+   "values": [
+    129.163334405696,
+    235.20803847911688,
+    96.06377384111632,
+    168.17842820629392,
+    167.18852695398476
+   ],
+   "se": 23.248685070633666
+  },
+  "total": {
+   "mean": -198.52386366517868,
+   "sd": 123.32604326837009,
+   "values": [
+    -351.27111844947774,
+    -301.72130546762264,
+    -79.4774352092944,
+    -89.37340334676972,
+    -170.776055852729
+   ],
+   "se": 55.153083228831164
+  },
+  "bar": -272.9,
+  "best_single": -269.7,
+  "published_time": -382.4,
+  "published_marks": 109.5,
+  "verdict": "loss (pre-registered frozen configuration)",
+  "diagnosis": "Splits 1-4 diverged to NaN at epochs 3-6 (no non-finite guard); selection fell back to epochs 2-3"
+ },
+ "b4_mimic2": {
+  "L_T": {
+   "mean": 2.994655252935909,
+   "sd": 0.23049920668926321,
+   "values": [
+    3.122252507284776,
+    2.7571706553837556,
+    3.2836721002495435,
+    2.76320125517635,
+    3.04697974658512
+   ],
+   "se": 0.10308237898339336
+  },
+  "L_M": {
+   "mean": 4.015386866185038,
+   "sd": 0.35075877560934465,
+   "values": [
+    4.3500528592024805,
+    3.68985679540872,
+    4.124594748431931,
+    3.5989848341712385,
+    4.313445093710816
+   ],
+   "se": 0.15686409319341796
+  },
+  "total": {
+   "mean": 7.010042119120946,
+   "sd": 0.5549191942219852,
+   "values": [
+    7.472305366487257,
+    6.447027450792476,
+    7.408266848681475,
+    6.362186089347588,
+    7.360424840295936
+   ],
+   "se": 0.2481674080599535
+  },
+  "bar": 2.42,
+  "best_single": 3.1,
+  "published_time": 0.13,
+  "published_marks": 2.29,
+  "verdict": "loss (pre-registered frozen configuration)",
+  "diagnosis": "About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)"
+ },
  "r1_recall": {
   "mixed_length": {
    "test": {
@@ -558,6 +691,21 @@
   "experiments/results/tpp_b4/b4_stack_overflow_s2.json": "04aa3b234e051d876cc7c7b694bd5180a6dce68244d845bd43ce7ced82589dd4",
   "experiments/results/tpp_b4/b4_stack_overflow_s3.json": "25fbbbcdd45808d34ee611ccd2d4e760b0805b44619e1e66b7da66163bde211a",
   "experiments/results/tpp_b4/b4_stack_overflow_s4.json": "14ec5de3df75e2af081b80fcf33f839a3e5bda62fdb019464d6e0e86aa40e0b1",
+  "experiments/results/tpp_b4/b4_wikipedia_s0.json": "697f73905bb93bd5d7cd71fc04b7b1f6ae5f4ff1f7d452fa9b7b8d3170f2fee9",
+  "experiments/results/tpp_b4/b4_wikipedia_s1.json": "77c4b782cccc9cefba6fede12f0a809edb52489d8fe2e22dbc84ae077badf0dd",
+  "experiments/results/tpp_b4/b4_wikipedia_s2.json": "83be650a8c08e404dac11fb4739577190b36707b7db88a71f9fcbe3a16968bc1",
+  "experiments/results/tpp_b4/b4_wikipedia_s3.json": "4754b8277ddb8c7fca8891a60db8ca2236058f8f0cdd32e7fdfbc00a3e689465",
+  "experiments/results/tpp_b4/b4_wikipedia_s4.json": "5dd0b286434a5fde220624eec97162c61107ea770d2d46b9df702c6f3823c7a2",
+  "experiments/results/tpp_b4/b4_github_s0.json": "066ba7f7bc4e23d0a669dd4ac42e55b6418faa9fd16bd6d50d5c8549a77e67bf",
+  "experiments/results/tpp_b4/b4_github_s1.json": "83757d59cd792aa18ba2bb458946062b49fd2ac2d1350f084386a5b010ae909a",
+  "experiments/results/tpp_b4/b4_github_s2.json": "fc966808947ac117a80e6dda9992fec0259daeb44e29910b2e17dd7ed52a99a7",
+  "experiments/results/tpp_b4/b4_github_s3.json": "dc99a4e29f81aed1f5e7e9f708d0c5f5ea8f67921cec7fdd5f914a39942ddf6f",
+  "experiments/results/tpp_b4/b4_github_s4.json": "1dd8787d261dc21859476c798a4489372a19ec5e7fb631e3bf5c2a0fbf3672c0",
+  "experiments/results/tpp_b4/b4_mimic2_s0.json": "56d20bf2322e223986a0d5f24a570b5143acc9156fedf9967b6c2be05e8a6ae4",
+  "experiments/results/tpp_b4/b4_mimic2_s1.json": "2ecdf4c57b1a2d6a7d7b14beb06e4eccb9b566cfb71ba85b853406f7eee92bf4",
+  "experiments/results/tpp_b4/b4_mimic2_s2.json": "e2a4364ad9b2c95092532789f15061c411fe93fc8257f35704bb4bd042157719",
+  "experiments/results/tpp_b4/b4_mimic2_s3.json": "bac5155b9bfbb1faf2ed91d46fb7d367ddec30e028324ca3add7d98cc6d6c143",
+  "experiments/results/tpp_b4/b4_mimic2_s4.json": "1efcceca3d1bbd72c6eb5ddacca681a424d2a111d76291b0c98e086fc8910ced",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s0_20261007T1715Z.json": "cf7e79a304f441a893e71d3bafb9929f5947a8852691f9e022134cdff7274347",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s1_20261007T1915Z.json": "559a8a8167a36434c2b275f201a7aa2bc692415892d1feeac846456d41b1ed96",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s2_20261007T1915Z.json": "bac7decf97ae30fbb44f8d7f4aaab4b262383c682bb7d7e31e3ce34819e75c59",
@@ -567,7 +715,7 @@
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "33675862b9c653a9a3259aeef374694a76c2ebbeeb417643926bad35da57d9a8",
   "experiments/tgb/B5_TGB.md": "0a4b9e1ddb645f21c0ba95ce626ef5b9eb0f88e6188d8179ceaf6683daa79011",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "3726f3a2964c7bee928005987137c6fcf25ba672df9c0ee8bb60c805b6429f7e",
-  "experiments/fas/B3_DEVELOPMENT_LOG.md": "812007af4f43b8d61c43ee6067377611e1cb0796cd9f33ff500357a06b052b1f"
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "9a6c378fb8569f70ee6e1d572d067d439d7e58dd4659439a6453cb82658eecfb",
+  "experiments/fas/B3_DEVELOPMENT_LOG.md": "0238201f629161ffed380351a5277e5dd01cf73de094d7119de5f5d0c58842ae"
  }
 }

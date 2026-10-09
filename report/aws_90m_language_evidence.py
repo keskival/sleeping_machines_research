@@ -20,8 +20,10 @@ def pages():
         rows.append([label,str(r['parameters']),f"{r['test_bpc_eval_segment']:.6f}",
                      f"{r['work']['whole_fit_unit_special_flops_estimate']/1e9:,.1f}",
                      f"{r['work']['fit_unit_special_flops_per_char_estimate']/1e6:.6f}"])
-    for pattern,label in [('*lstm_D90000000*.json','LSTM (6 passes)'),('*tf_D90000000*.json','Transformer (4 passes)')]:
-        path=next((ROOT/'experiments/results/aws_20260929').rglob(pattern))
+    # Exact baseline files: a glob also matches the later tuned 90M arms and picked one in filesystem order.
+    for rel,label in [('aws_e64_lstm_D90M_baseline_20260929/lstm_D90000000_s512_p6_dr0.1_v.json','LSTM (6 passes)'),
+                      ('aws_e64_tf_D90M_baseline_rss6g_20260930/tf_D90000000_s256_L4_p4_dr0.1_v.json','Transformer (4 passes)')]:
+        path=ROOT/'experiments/results/aws_20260929'/rel
         r=json.loads(path.read_text());work=r['training_flops_estimate']['total_training_flops']
         rows.append([label,str(r['params']),f"{r['test_bpc']:.6f}",f'{work/1e9:,.1f}',
                      f"{work/r['training_token_positions']/1e6:.6f}"])

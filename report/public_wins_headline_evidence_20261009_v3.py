@@ -70,6 +70,9 @@ wiki_dev = load('experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_2026100
 wiki = [load(f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json')['test_mrr'] for s in range(3)]
 mooc = b4_stats('b4_mooc')
 stack_overflow = b4_stats('b4_stack_overflow')
+wikipedia = b4_stats('b4_wikipedia')
+github = b4_stats('b4_github')
+mimic2 = b4_stats('b4_mimic2')
 recall_mixed = recall_stats([f'experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s{s}_{stamp}.json'
                             for s, stamp in enumerate(('20261007T1715Z', '20261007T1915Z', '20261007T1915Z'))])
 recall_local_normalized = recall_stats([f'experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s{s}_{stamp}.json'
@@ -100,6 +103,18 @@ packet = dict(
                           verdict='loss (pre-registered frozen configuration)',
                           diagnosis='Time component ahead; mark component carries the total-NLL gap',
                           scope='Five fixed splits; NLL per sequence; uncertainty is standard error'),
+    b4_wikipedia=dict(**wikipedia, bar=-122.62, best_single=-2.67, published_time=-267.41, published_marks=144.79,
+                      splits_ahead=int(sum(v < -122.62 for v in wikipedia['total']['values'])),
+                      verdict='win (pre-registered frozen configuration)',
+                      diagnosis='Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen '
+                                'in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 '
+                                '(reproduction, causality, mark normalisation, published units)'),
+    b4_github=dict(**github, bar=-272.9, best_single=-269.7, published_time=-382.4, published_marks=109.5,
+                   verdict='loss (pre-registered frozen configuration)',
+                   diagnosis='Splits 1-4 diverged to NaN at epochs 3-6 (no non-finite guard); selection fell back to epochs 2-3'),
+    b4_mimic2=dict(**mimic2, bar=2.42, best_single=3.1, published_time=0.13, published_marks=2.29,
+                   verdict='loss (pre-registered frozen configuration)',
+                   diagnosis='About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)'),
     r1_recall=dict(mixed_length=recall_mixed, local_normalized=recall_local_normalized,
                    scope='Three completed seeds per configuration; mean and sample SD; '
                          'mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring'),
