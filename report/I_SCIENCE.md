@@ -69,9 +69,10 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   is in the marks, 28.49 vs 144.79. Our addressed mark memory copies pages never seen in training (10–27% of test edits),
   which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
   2.83 SE vs −239.7; timing carries the gap. **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
-  published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **Github lost** (−198.5 vs
-  −272.9; four of five splits diverged to NaN by epoch 6 and fell back to epoch 2–3 weights; guarded fits are queued)
-  and **MIMIC2 lost** (7.01 vs 2.42), both behind on marks. Retweets and LastFM are pending. These are
+  published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
+  2.42; its mark path overfits ~100-sequence training sets). **Github has no valid verdict yet:** its −198.5 (bar −272.9)
+  comes from four of five splits whose weights went NaN by epoch 8 after one non-finite update, leaving epoch 2–3
+  checkpoints; guarded protocol reruns (TEST once, configuration unchanged) are queued, as for Wikipedia split 0. Retweets and LastFM are pending. These are
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
@@ -403,7 +404,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | **B1 (lead)** | EasyTPP: Retweet, Taxi, StackOverflow, Amazon, Taobao | Best published log-likelihood on ≥ 2 of 5 datasets, type and time accuracy no worse; 5 seeds; measured inference work | **Taxi, Taobao, StackOverflow and Retweet won** (§4.0); pass criterion exceeded; Amazon continues |
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | **P19 and PAM won** (§4.0b); P12 in development |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Native model frozen (duration-matched predecessor attention, C10): validation 0.702 vs the time-encoded Transformer reference 0.704 at about 1/7 of its parameters; tie expected under the 0.02 rule; sealed seeds running |
-| **B4** | Second neural-TPP benchmark (Bosser & Ben Taieb, TMLR 2023/2025): LastFM, MOOC, Github, Stack Overflow, Wikipedia, MIMIC2, Retweets; 5 fixed splits | The frozen one-configuration EasyTPP model, no tuning, below the best published time + mark NLL on a dataset (pre-registered) | Frozen configuration: **Wikipedia won** (−240.4 vs −122.6; marks 28.5 vs 144.8); MOOC, Stack Overflow, Github, MIMIC2 lost; Stack Overflow time component ahead; Retweets, LastFM pending |
+| **B4** | Second neural-TPP benchmark (Bosser & Ben Taieb, TMLR 2023/2025): LastFM, MOOC, Github, Stack Overflow, Wikipedia, MIMIC2, Retweets; 5 fixed splits | The frozen one-configuration EasyTPP model, no tuning, below the best published time + mark NLL on a dataset (pre-registered) | Frozen configuration: **Wikipedia won** (−240.4 vs −122.6; marks 28.5 vs 144.8); MOOC, Stack Overflow, MIMIC2 lost; Github numerical failure, guarded reruns queued; Stack Overflow time component ahead; Retweets, LastFM pending |
 | **B5** | Temporal Graph Benchmark: dynamic link prediction (tgbl-wiki-v2, tgbl-review-v2) and node affinity (tgbn-trade, then genre/reddit/token) | Test MRR / NDCG@10 above the leaderboard leader (TPNet 0.827 on wiki; NAVIS 0.863 on trade) on 3 seeds, official loaders and evaluators | **tgbn-trade won** (0.868 ± 0.0005 vs NAVIS 0.863, 3 sealed seeds); **tgbl-wiki won** (0.835 ± 0.0003 vs TPNet 0.827, 3 sealed seeds) |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met** (6.009 ± 0.010 vs KN trigram 6.537, 3 seeds); next: a published small Transformer reference |
 

@@ -1,0 +1,94 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 protocol repair: Github splits 1-4 and Wikipedia split 0 ended in NaN parameters (one non-finite batch through clip_grad_norm_), so their verdict numbers come from epoch 2-5 checkpoints. Guarded driver skips non-finite updates, otherwise bitwise identical (contract). Decides the Github verdict and Wikipedia split 0; originals stay beside",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4g_contract",
+        "queue": "experiments/queue/b4/b4g_contract/b4g_contract.txt",
+        "queue_sha256": "26871f9fc8b6425fcb1e64bf2e6c41b5da2923aa7687dc09647a33a8b1ef40b0",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_contract.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4g_github_s1",
+        "queue": "experiments/queue/b4/b4g_github_s1/b4g_github_s1.txt",
+        "queue_sha256": "e3e6e29b26b418313fe306370472db8e6467e47b250d7ccc26f44efb45a457c7",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_github_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4g_github_s2",
+        "queue": "experiments/queue/b4/b4g_github_s2/b4g_github_s2.txt",
+        "queue_sha256": "688a24f9864daa8c2ba66e4f5362a64e207c3199eba9a5b84555184877feb300",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_github_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4g_github_s3",
+        "queue": "experiments/queue/b4/b4g_github_s3/b4g_github_s3.txt",
+        "queue_sha256": "ce90e3cc6e087a2fc0e9a8508b085691ba32a3e9410a2bf7d1de6ba80e743159",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_github_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4g_github_s4",
+        "queue": "experiments/queue/b4/b4g_github_s4/b4g_github_s4.txt",
+        "queue_sha256": "7ce11b6f8bff2d580976e65d48d6bc11e54b7bbc43ff9a537a0cdb93204a231a",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_github_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4g_wikipedia_s0",
+        "queue": "experiments/queue/b4/b4g_wikipedia_s0/b4g_wikipedia_s0.txt",
+        "queue_sha256": "aa4f8ee744352ba60815a680a81acda6eddb67526587a0e9b6bf17aa0f7e2ce3",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_wikipedia_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

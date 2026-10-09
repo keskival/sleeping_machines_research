@@ -104,10 +104,10 @@ Per sequence, mean (standard error over splits), lower is better. Bar = best pub
 
 | Dataset | L_T vs best published | L_M vs best published | Total vs bar | Verdict |
 |---|---|---|---|---|
-| **Wikipedia** | −268.90 (40.82) vs −267.41 | **28.49 (2.82) vs 144.79** | **−240.42 (43.31) vs −122.62** | **WIN**: 4 of 5 splits below the bar (totals −91.92 / −271.68 / −300.05 / −201.15 / −337.29); also below the best single published model (−2.67) |
+| **Wikipedia** | −268.90 (40.82) vs −267.41 | **28.49 (2.82) vs 144.79** | **−240.42 (43.31) vs −122.62** | **WIN**: 4 of 5 splits below the bar (totals −91.92 / −271.68 / −300.05 / −201.15 / −337.29); also below the best single published model (−2.67). Split 0 is a numerical failure (NaN parameters from epoch 6; checkpoint from epoch 5); guarded rerun queued |
 | Stack Overflow | **−91.60 (1.56) vs −91.1** | 104.31 (0.72) vs 103.0 | 12.71 (0.87) vs 11.9 | LOSS; time component ahead |
 | MOOC | −298.57 (4.08) vs −310.6 | 71.73 (1.27) vs 70.9 | −226.85 (2.83) vs −239.7 | LOSS |
-| Github | −357.68 (67.38) vs −382.4 | 159.16 (23.25) vs 109.5 | −198.52 (55.15) vs −272.9 | LOSS |
+| Github | −357.68 (67.38) vs −382.4 | 159.16 (23.25) vs 109.5 | −198.52 (55.15) vs −272.9 | **Numerical failure, no verdict**: splits 1–4 reached NaN parameters at epochs 3–8, so their checkpoints come from epochs 2–3; guarded reruns queued. Split 0 (trained normally, epoch 36): −351.27 vs −272.9 bar |
 | MIMIC2 | 2.99 (0.10) vs 0.13 | 4.02 (0.16) vs 2.29 | 7.01 (0.25) vs 2.42 | LOSS |
 | Retweets | 4 of 5 splits | | mean total −516.06 vs −538.70 | pending split 2 |
 | LastFM | 1 of 5 splits | | −720.10 vs −849.65 | pending splits 1–4 |
@@ -127,8 +127,22 @@ the repeat rule per split.
 
 **Scoring verification of the Wikipedia win (9 Oct 22:40, AWS; saved checkpoints, VALIDATION only, TEST untouched).** On splits 0 and 4: (1) reloading the selected checkpoint reproduces the recorded validation L_T/L_M to every printed digit (−157.9036/25.7534; −209.5313/21.7601); (2) every event is scored, including the first of each sequence; (3) causality: replacing all later marks and times leaves every earlier event's time and mark log-likelihood unchanged (max difference exactly 0); (4) normalisation: summing the mark probability over all 50 marks at every position of six sequences gives 1 within |log Σ| ≤ 7.2e−4 (≤ 0.04 nats per sequence); (5) units match the published table: a uniform guess over 50 marks on the five TEST splits averages 260.0 nats per sequence against published GRU-LNM-CONCAT 259.12. Our 28.49 is 0.44 nats per event: 90–93% of consecutive Wikipedia events repeat the previous page (0.13–0.17 nats each in our model), and the remainder cost 2.9–4.0 nats, below uniform's 3.91 (log 50). A training-free per-sequence counter reaches 19.5 on split-0 validation, so the low mark loss comes from the data's repeat structure, which the published models fail to exploit.
 
-**Github and MIMIC2.** Both lose on marks as well as time: L_M 159.2 vs 109.5 and 4.02 vs 2.29. The mark gap is
-unaffected by the recording grid and is the development target there, as on MOOC and Stack Overflow. MIMIC2's time
+**Numerical failure (protocol error, found 9 Oct 22:45 UTC).** One batch with a non-finite loss or gradient makes
+`clip_grad_norm_` scale every gradient by NaN; AdamW then writes NaN into every parameter and all later epochs are NaN.
+Selection keeps the last finite checkpoint. This happened on Github splits 1–4 (epochs 3–8) and Wikipedia split 0
+(epoch 6); every other completed split trained without it. The original numbers stay in the results log. The rule for
+reruns depends only on training, not on any score: every split whose run ended with non-finite parameters is retrained
+with `race_tpp_b4g.py`. That driver skips a non-finite update and logs it, and is otherwise bitwise identical when all
+updates are finite (contract job `b4g_contract`). Retweets and LastFM runs still in progress fall under the same rule.
+
+**Error analysis against simple history baselines (validation, fitted on TRAIN).** Unigram, repeat-last-mark and
+first-order Markov (bigram) mark models give context for L_M:
+- **MOOC and Stack Overflow:** our validation L_M (≈ 71 and ≈ 104) is far below the bigram (≈ 102 and ≈ 124).
+- **Github:** split 0 (282 vs 303) is below the bigram. The NaN-failed splits score above it.
+- **MIMIC2:** about 3 events per sequence. We sit at the bigram level (3.41–4.47 vs 3.62–4.38) while the best published
+  L_M is 2.29. Its splits select checkpoints at epochs 3–11, so a 103–121-sequence training set is overfitting the
+  frozen configuration. MIMIC2 is a development target for small-data regularization of the mark path; its time values
+  are on a coarse recording cell (0.033), where the gridded-metric analysis below applies to L_T. MIMIC2's time
 values are on a coarse recording cell (0.033), where the gridded-metric analysis below applies to L_T.
 
 ## Protocol note on zero gaps (9 Oct 2026, recorded while runs train; verdict rule unchanged)
