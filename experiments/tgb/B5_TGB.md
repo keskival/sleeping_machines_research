@@ -206,4 +206,7 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   2014 0.843, 2015 0.868. Model: race_affinity v1, 2,107 parameters (NAVIS: 1,280), about 4 minutes of fitting on one CPU
   thread. Evidence level: confirmed leaderboard win (3 seeds, configuration fixed before test, official loader and
   Evaluator, test scored once per seed). Scored locally; leaderboard submission after the patent priority filing.
+- 9 Oct 16:57: **tgbl-wiki sealed seed 0 (race_link v4, d = 0, 7,995 parameters): TEST MRR 0.8353**, validation 0.8518;
+  above TPNet's 0.827 ± 0.001 (and the LocalGlobal heuristic's 0.821) on this seed. Seeds 1–2 pending; verdict by the
+  pre-registered rule.
 
