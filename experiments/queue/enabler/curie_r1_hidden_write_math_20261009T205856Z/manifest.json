@@ -1,0 +1,32 @@
+{
+  "tag": "curie_r1_hidden_write_math_20261009T205856Z",
+  "battle": "B1/R1",
+  "host": "curie",
+  "training": false,
+  "queue": "experiments/queue/enabler/curie_r1_hidden_write_math_20261009T205856Z/curie_r1_hidden_write_math_20261009T205856Z.txt",
+  "source_sha256": {
+    "experiments/credit/hidden_write_math.py": "cf29b668b929f24165dedd86ff83ef711eb52b0786e6a1741d4739d96f85e73d"
+  },
+  "result": "experiments/results/credit/curie_r1_hidden_write_math_20261009T205856Z.json",
+  "rss_kb": 250000,
+  "vms_kb": 1000000,
+  "timeout_s": 120,
+  "jobs": [
+    {
+      "tag": "curie_r1_hidden_write_math_20261009T205856Z",
+      "queue": "experiments/queue/enabler/curie_r1_hidden_write_math_20261009T205856Z/curie_r1_hidden_write_math_20261009T205856Z.txt",
+      "result": "experiments/results/credit/curie_r1_hidden_write_math_20261009T205856Z.json",
+      "rss_kb": 250000,
+      "vms_kb": 1000000,
+      "timeout_s": 120,
+      "driver": "experiments/credit/hidden_write_math.py",
+      "sources": {
+        "experiments/credit/hidden_write_math.py": "cf29b668b929f24165dedd86ff83ef711eb52b0786e6a1741d4739d96f85e73d"
+      },
+      "result_sources": {
+        "experiments/credit/hidden_write_math.py": "cf29b668b929f24165dedd86ff83ef711eb52b0786e6a1741d4739d96f85e73d"
+      },
+      "queue_sha256": "fab2c8097bec7ac732f481893c0cfa5ed078f6a70e5e929e19a00df8bc480ca3"
+    }
+  ]
+}
