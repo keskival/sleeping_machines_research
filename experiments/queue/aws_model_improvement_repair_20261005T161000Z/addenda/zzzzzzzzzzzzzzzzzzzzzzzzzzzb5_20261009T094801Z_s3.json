@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "B5 tgbl-review-v2 (AWS lineage of race_link, sparse for 352K nodes; development, validation only): smoke then the first full development fit (6 epochs, sampled race with 20 competitors). Decides whether addressed time-decayed memory with learned identities approaches the leaderboard (GraphMixer 0.521 test / 0.428 val) beyond the training-free heuristic",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b5_review_link_smoke",
+        "queue": "experiments/queue/b5/aws_b5_review_link_smoke/aws_b5_review_link_smoke.txt",
+        "queue_sha256": "dd87e612cbded528382b6ea8f770528d30b5e488c7b4eb99496b7d7d93bbae11",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_link_smoke.json",
+        "timeout_s": 64800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "aws_b5_review_link_v1_s0",
+        "queue": "experiments/queue/b5/aws_b5_review_link_v1_s0/aws_b5_review_link_v1_s0.txt",
+        "queue_sha256": "4e846e97f19679073f19326e00d77b57c6104107606ef9ef6b949c55be194de1",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_link_v1_s0.json",
+        "timeout_s": 64800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
