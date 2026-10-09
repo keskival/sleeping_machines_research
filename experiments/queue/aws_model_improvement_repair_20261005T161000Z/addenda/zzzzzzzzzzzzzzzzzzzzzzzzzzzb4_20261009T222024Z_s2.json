@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 development (validation only, outside the frozen protocol): on LastFM split-0 VAL a training-free per-sequence mark counter scores L_M 694.7 vs our frozen model's best 711.0 (Wikipedia 19.5 vs 25.8), so the mark path lacks stationary per-sequence habits; Hawkes (514.1) leads published L_M on LastFM TEST. Decides whether v20 persistent mark statistics (with/without per-event mark memory) close the LastFM mark gap, and so the developed-attempt configuration chosen with the MOOC v20 arms",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4dev_lastfm_s0_stats",
+        "queue": "experiments/queue/b4/b4dev_lastfm_s0_stats/b4dev_lastfm_s0_stats.txt",
+        "queue_sha256": "638d0d0877c53839460b5a40c2e8518d1012906b469d422929e2f57a0c5ad343",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_lastfm_s0_stats.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000
+      },
+      {
+        "name": "b4dev_lastfm_s0_mem1_stats",
+        "queue": "experiments/queue/b4/b4dev_lastfm_s0_mem1_stats/b4dev_lastfm_s0_mem1_stats.txt",
+        "queue_sha256": "3ee60a7699b694fec1b078642199bbff03076b8e8ca9149edc6b7b13620cbef8",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v20.py": "7cf7a10afb34c84f9d69dfa2076b4a549e6d4760fee7f14e0d0d3f2ca2984a7b",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_lastfm_s0_mem1_stats.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000
+      }
+    ]
+  }
+}
