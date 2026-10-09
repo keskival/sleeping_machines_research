@@ -218,4 +218,6 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   Reverse-flow ablation pending (note 159 prediction 3 graded when both are in).
 - 9 Oct 18:15: **tgbl-wiki sealed seed 1: TEST MRR 0.8350** (validation 0.8519). Seeds 0–1 both above TPNet 0.827;
   seed 2 pending.
+- 9 Oct 18:20: **reverse-flow ablation** (validation, seed 0): 0.8759 (full 0.8747): reciprocity adds nothing measurable.
+  Note 159 prediction 3 graded (partly confirmed: history shape carries half the gain; reverse flow none).
 

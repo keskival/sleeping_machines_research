@@ -88,4 +88,11 @@ by the maximum of that coordinate over the vectors.
 - **Prediction 2 — confirmed** (9 Oct 16:18): the development fit beat persistent forecast on 4 of 4 validation years,
   and the sealed seeds average test 0.8680 ± 0.0005 vs NAVIS 0.863 (every seed above). Prediction 3 (whether the gain is
   trend information) is tested by the queued ablations.
+- **Prediction 3 — partly confirmed, revised** (9 Oct 18:20, tgbn-trade ablations, validation, seed 0): full 0.8747;
+  without history-shape features (lags 2–4, decayed affinities, growth) **0.8677**; without reverse flow **0.8759**;
+  persistent forecast 0.8604. Trend/history-shape information carries **half** of the gain over persistent forecast
+  (0.0070 of 0.0143), not "most"; reciprocity carries none (removing it is level, +0.0012). **Revised statement:** the
+  margin over convex predictors splits evenly between extrapolating history shape (Proposition 3) and the nonlinear,
+  calibrated reading of the current level together with the destination's global share and the node's context; bilateral
+  reverse flow is redundant given those.
 
