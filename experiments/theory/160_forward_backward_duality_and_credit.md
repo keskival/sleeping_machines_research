@@ -80,7 +80,7 @@ and the reciprocity assumption before generalizing.
 
 - 9 Oct: `experiments/credit/hindsight_race.py` written. Contract: with the exact posterior, the hindsight router update
   equals the exact marginal-likelihood gradient at depth 1 and 2 (max |diff| 2.4e−7, float32), so the experiment measures
-  only the cost of *learning* the posterior from forward samples. Grid queued (5 arms × depth 1, 2 × 3 seeds): dense exact,
+  only the cost of *learning* the posterior from forward samples. Arms (5 × depth 1, 2 × 3 seeds): dense exact,
   REINFORCE, straight-through Gumbel, hindsight (proposed: one expert per example plus one sleep sample), exact-posterior
   oracle; metrics: held-out marginal log-likelihood against the teacher's (Bayes ceiling), route recovery, expert
   evaluations per example.
@@ -89,8 +89,7 @@ and the reciprocity assumption before generalizing.
   credit is a cheap read). `hindsight_race_v2.py` adds **hindsight_async** (sleep samples from a stale snapshot of the
   forward model refreshed every 50 steps, consumed through a replay buffer: q trains off the forward lockstep) and
   **hindsight_slow** (q updated at 1/8 of the forward rate), and counts multiply-accumulates per training example for every
-  arm (router, experts, credit model, sleep sampling). The v1 addendum was withdrawn before loading; the v2 grid (7 arms ×
-  depth 1, 2 × 3 seeds, after a smoke) replaces it. Success criteria stated before results: hindsight within a small margin
+  arm (router, experts, credit model, sleep sampling). Success criteria stated before results: hindsight within a small margin
   of the oracle and dense on held-out likelihood and route recovery, clearly above REINFORCE at depth 2, at a fraction of
   dense MACs; the async and slow variants close to synchronous hindsight.
 
@@ -106,7 +105,7 @@ misses** (runner-up clocks and margins) as counterfactual information for the lo
 **Trainable forward messages.** Three parameter sets: forward function θ (trained by credit), credit model ψ (the backward
 pass's slow parameters, trained on the forward pass's sampled causes), and a forward message head φ trained by credit
 quality alone, so the forward pass learns what to tell the backward pass. Test `hindsight_race_v3.py --arm hindsight_msg`:
-4-dimensional learned message; the credit model sees only (message, outcome); queued behind the v2 grid.
+4-dimensional learned message; the credit model sees only (message, outcome).
 
 ## 6. Closing the recursion: a shared verdict for two learning objectives (founder direction, 9 Oct)
 
@@ -149,8 +148,7 @@ model must therefore adapt faster than ρ_θ drifts. It is "slow" relative to a 
 examples, and per-example credit is a cheap read. It is not slow relative to θ. The `hindsight_slow` arm (q at 1/8 of the
 forward rate) tests the wrong side of this condition, and the theory predicts its credit gap grows.
 
-**Predictions** (`hindsight_race_v5.py`, 18 runs: closed / hindsight / hybrid × depth 1, 2 × 3 seeds, test credit gap
-logged per epoch):
+**Predictions** (closed vs sleep-only vs dense, test credit gap logged per epoch):
 
 - (a) The closed arm's credit gap falls monotonically to near zero, while sleep-only hindsight keeps a residual gap early in training.
 - (b) The closed arm matches the oracle's held-out likelihood and route recovery at depth 2 with S = 2 proposals: 3 expert evaluations per example against 32 for dense.
@@ -159,7 +157,7 @@ logged per epoch):
 A failure of (a) with success of (b) would mean the forward side learns without the backward side converging, i.e. an
 open loop that happens to work. That would be evidence against closure as the mechanism.
 
-Test log, 9 Oct: v4 `hindsight_hybrid` (6 runs) and the v5 grid (18 runs) are queued on slot 1 behind the v2/v3 grids.
+**Queue state (23:15 UTC).** The v1–v5 grids were withdrawn unstarted because of the unseeded teacher (correction below). Predictions (a) and (b) are tested by the matched, seeded v6 pipeline (§8: dense, closed h64/h8, sleep-only, closed S = 1, with posterior KL/TV). The hybrid (c) and message-head arms wait for a seeded rerun after v6 reports.
 **Protocol correction (19:12 UTC): v1–v5 initialize the teacher from an unseeded global torch RNG. The shared `data-seed`
 seeds input and cause draws but not the teacher weights, so separate arms do not have a matched teacher. These runs are
 individual construction diagnostics; do not use their cross-arm scores as a matched comparison. Preserve their queues
