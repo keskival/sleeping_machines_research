@@ -195,3 +195,6 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   growth and context; MLP race over classes, online updates at training label times. Memory fits token (≈61K users × 1,001
   classes × 4 scales). Structural check: 27 finite features; persistent forecast through our replay 0.356 NDCG@10 on the
   first 60 training label times of genre. Development fit queued on slot 2 (validation only).
+- 9 Oct 14:31: **tgbn-trade sealed seed 1: TEST NDCG@10 0.8674** (.893 / .843 / .866), validation 0.8740 (epoch 111).
+  Seeds 0–1 both above NAVIS's 0.863; seed 2 pending.
+
