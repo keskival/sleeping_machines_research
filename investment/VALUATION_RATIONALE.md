@@ -227,7 +227,7 @@ Investor competition, not the evidence alone, sets the attainable price.
   early-stopping path). All five curie seeds are above S2P2's mean. Same codebase and team; a third-party rerun of the
   released code is the stronger form and the next step; one-command kits: `experiments/tpp/reproduce_taxi/` and `experiments/tpp/reproduce_easytpp/` (all five wins, drivers and data checksum-verified). The estimator-parity check (all wins hold under EasyTPP's own
   Monte Carlo estimator) is separate supporting evidence.
-Supporting, not on the list: first tokenized-language evidence (6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.521 vs 6.100); exact containment of Mamba (selective SSM) and attention in the family; two private paper
+Supporting, not on the list: first tokenized-language evidence (6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.510 vs 6.100); exact containment of Mamba (selective SSM) and attention in the family; two private paper
 drafts. **All three conditions now hold (7 October), which makes €100M arguable on this rationale's own criteria;** the reproduction is on independent hardware by the same team, and a third-party rerun is the next step. The asking price is the founder's decision.
 
 Earlier assessment (5 October): €50M remains aligned with the ambition as an aggressive,

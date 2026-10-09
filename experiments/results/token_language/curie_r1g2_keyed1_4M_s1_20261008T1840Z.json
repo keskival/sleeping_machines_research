@@ -1,0 +1,92 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "gate": 2,
+ "decision": "does the keyed predecessor-message read carry over to tokenized language; KN trigram at the same training tokens is the gate (1M: 6.537, 4M: 6.100 on the 65,528-target slice)",
+ "tag": "curie_r1g2_keyed1_4M_s1_20261008T1840Z",
+ "args": {
+  "tag": "curie_r1g2_keyed1_4M_s1_20261008T1840Z",
+  "keyed": 1,
+  "seed": 1,
+  "train_tokens": 4194304,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 2,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 21000.0,
+  "score": 1,
+  "threads": 1
+ },
+ "parameters": 3333845,
+ "best_epoch": 3,
+ "epochs_run": 5,
+ "wall_s": 21010.603085041046,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 6.805992173962295,
+   "select_nll": 6.154020233974261,
+   "epoch_s": 4494
+  },
+  {
+   "epoch": 1,
+   "train_nll": 5.7110094667878,
+   "select_nll": 5.875242195073488,
+   "epoch_s": 4542
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.475196950719692,
+   "select_nll": 5.811401493909246,
+   "epoch_s": 4591
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.363205445930362,
+   "select_nll": 5.785150294077938,
+   "epoch_s": 4504
+  },
+  {
+   "epoch": 4,
+   "train_nll": 5.27197639390849,
+   "select_nll": 5.7926105970747015,
+   "epoch_s": 2879
+  }
+ ],
+ "select": {
+  "nll": 5.785150294077938,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.pt",
+ "references": {
+  "kn_trigram": {
+   "65536": 7.551,
+   "262144": 7.049,
+   "1048576": 6.537,
+   "4194304": 6.1
+  },
+  "kn_bigram": {
+   "65536": 7.544,
+   "262144": 7.058,
+   "1048576": 6.584,
+   "4194304": 6.209
+  },
+  "source": "experiments/results/token_language/aws_token_ngram_reference_20261006T143000Z.json"
+ },
+ "score_65528": {
+  "nll": 5.49918786767143,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}

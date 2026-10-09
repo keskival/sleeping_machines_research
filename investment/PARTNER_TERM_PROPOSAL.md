@@ -27,7 +27,7 @@ priced on its own terms, and each Partner's stake grows with what they deliver.
   - Two further domains: P19 sepsis prediction (AUROC 0.916 vs 0.903 published) and PAM wearable activity recognition
     (accuracy 0.978 vs 0.975).
   - First tokenized-language evidence: 6.009 vs a Kneser–Ney trigram's 6.537 nats per token at 1M training tokens, with the
-    lead growing at 4M (5.521 vs 6.100).
+    lead growing at 4M (5.510 vs 6.100).
   - The Taxi win reproduced from scratch on separate hardware (0.5252 vs 0.5250), with a one-command kit ready for a
     third-party rerun.
 

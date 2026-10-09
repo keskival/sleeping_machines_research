@@ -35,7 +35,7 @@ datasets (four complete, all ahead on the mean).
 
 **Advances beyond the leaderboards:**
 - **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);
-  at 4× the data 5.521 vs 6.100, so the lead grows with data.
+  at 4× the data 5.510 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
@@ -333,9 +333,9 @@ On a harder modular task (train fraction 0.25), larger pools grok later (untied 
 | Same without the keyed read (seed 0) | 6.193 |
 | Kneser–Ney trigram, same 1M tokens | 6.537 |
 | Kneser–Ney trigram, 4M tokens | 6.100 |
-| **Same model at 4M TRAIN tokens** (seed 0) | **5.521** |
+| **Same model at 4M TRAIN tokens**, 2 seeds | **5.510 ± 0.016** |
 
-The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09, and **the margin grows with data**: at 4M tokens the model scores 5.521 against the trigram's 6.100 (0.579; seed 0); the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
+The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09, and **the margin grows with data**: at 4M tokens the model scores 5.510 ± 0.016 against the trigram's 6.100 (0.590; 2 seeds); the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
 
 ## 5. What the evidence says
 

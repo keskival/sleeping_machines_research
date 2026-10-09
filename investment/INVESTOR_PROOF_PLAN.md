@@ -28,7 +28,7 @@ This is an execution plan, not a prediction of investor acceptance.
 - **FAS v2:** the sealed setting is selected; development is in progress.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
-  beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.521 vs 6.100 at 4M). Next: a
+  beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
 
 ## 1. What we have, and what would change the investment decision

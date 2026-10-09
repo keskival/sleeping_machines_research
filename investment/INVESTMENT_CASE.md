@@ -36,7 +36,7 @@ datasets (four complete, all ahead on the mean).
 
 **Advances beyond the leaderboards:**
 - **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);
-  at 4× the data 5.521 vs 6.100, so the lead grows with data.
+  at 4× the data 5.510 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
@@ -248,7 +248,7 @@ The gap to the best dense model widens from 10M to 90M; that trend is the centra
 §4.3).
 
 **Tokenized language (8 October 2026).** A temporal-memory token model with the keyed predecessor read scores
-6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.521 vs 6.100, so the lead grows with data. The keyed predecessor read behind it also solves associative recall across irregular gaps (97.5%, 3 seeds) (report Part I §4.5). The count models are a floor, not the frontier; a published small Transformer under the same
+6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.510 vs 6.100, so the lead grows with data. The keyed predecessor read behind it also solves associative recall across irregular gaps (97.5%, 3 seeds) (report Part I §4.5). The count models are a floor, not the frontier; a published small Transformer under the same
 protocol is the next reference. See the [current evidence map](../report/architecture_evidence.md).
 
 ## Expanded platform opportunities

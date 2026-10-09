@@ -33,7 +33,7 @@ datasets (four complete, all ahead on the mean).
 
 **Advances beyond the leaderboards:**
 - **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);
-  at 4× the data 5.521 vs 6.100, so the lead grows with data.
+  at 4× the data 5.510 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
@@ -66,7 +66,7 @@ characters, P12 mortality AUROC, real-world tables, FAS v2 (in development: 0.70
 | **One family across data types** | The P19 classifier reuses the event model's temporal memory layer (same code, same size). | Wins on generative event modelling and on sparse clinical classification; the EasyTPP leader S2P2 is shown on one task type. Transfer tests are next ([generality plan](../experiments/GENERALITY_PLAN.md)). |
 | **Anonymous interleaved processes** | FAS mean AUROC **0.5924 vs 0.5587** at 256 events; **0.7370 vs 0.7272** at 512 events. All three native seeds beat the best of six saved generic controls at both points. | Replicated early-detection quality wins on FAS v1. Privileged identity-assisted diagnostics are excluded; sealed v2 and stronger neural references are the next benchmark. |
 | **Mixed-type tables, small data** | **100% accuracy on 256 synthetic DEV rows from 64 FIT rows**,6,370 learned parameters. Numeric, categorical, Boolean and missingness comparisons enter before neural message processing. | The integrated core learns the mixed-type interaction; relabeling, column-order, missing-value semantics and actual alternative-write credit checks pass. Fixed predicates, one seed; learned discovery and real tables versus trees are the next tests. |
-| **Properly tokenized language** | The temporal-memory token model with the keyed predecessor read scores **6.009 ± 0.010** nats per token (3 seeds) at 1M GPT-2 tokens of FineWeb vs a Kneser–Ney trigram's 6.537; at 4M tokens **5.521** vs 6.100. | First tokenized-language evidence that persistent memory binds context; the lead grows with data. A published small Transformer under the same protocol is the next reference. |
+| **Properly tokenized language** | The temporal-memory token model with the keyed predecessor read scores **6.009 ± 0.010** nats per token (3 seeds) at 1M GPT-2 tokens of FineWeb vs a Kneser–Ney trigram's 6.537; at 4M tokens **5.510** vs 6.100. | First tokenized-language evidence that persistent memory binds context; the lead grows with data. A published small Transformer under the same protocol is the next reference. |
 
 **The unifying advantage is the reusable construction:** type-respecting comparisons and tokens become events; events recruit meaningful state and teach hard routes through their consequences. Available capacity, selected activity, temporal learning and execution are separate design axes. The larger ambition connects language and reasoning, multimodal world models, embodiment, continual learning, communication, self-design and clockless hardware through this substrate. Joint training with shared parameters must next measure skill transfer and donor-skill retention. These completed instances were trained separately.
 

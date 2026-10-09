@@ -103,11 +103,13 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | KN bigram | — | 6.584 | | |
 | KN trigram, 4M tokens | — | 6.100 | | |
 | **Keyed model, 4M TRAIN tokens** (best epoch 3; run stopped at its 5.8 h limit in epoch 4) | 0 | **5.521** | 5.788 | 3,333,845 |
+| Keyed model, 4M TRAIN tokens (same limit) | 1 | **5.499** | 5.785 | 3,333,845 |
+| **Keyed model, 4M, 2 seeds** | mean ± sd | **5.510 ± 0.016** | | |
 
 **Gate 2 met over three seeds (6.009 ± 0.010; seed 0 first):** 0.518 nats per token below KN trigram at the same training tokens (KN standard error on this
 slice ≈ 0.017), and below KN trigram trained on 4× the tokens. Ablation: the temporal memory alone scores
 6.193 (0.344 below KN trigram); **the keyed predecessor read adds 0.175 nats per token**, which takes the model
-past KN trigram at 4× the data. Seeds 1–2 (8 Oct): 5.9996 and 6.0068. **Scaling (8 Oct, seed 0): at 4M TRAIN tokens 5.521 vs KN trigram 6.100; the margin grows from 0.528 (1M) to 0.579 (4M)** — the model gains 0.488 nats per token from 4× data, the trigram 0.437. The model overfits after epoch 2 (train 5.54 → 5.06 while selection rises), so
+past KN trigram at 4× the data. Seeds 1–2 (8 Oct): 5.9996 and 6.0068. **Scaling (8–9 Oct, 2 seeds): at 4M TRAIN tokens 5.510 ± 0.016 (5.521, 5.499) vs KN trigram 6.100; the margin grows from 0.528 (1M) to 0.590 (4M)** — the model gains 0.488 nats per token from 4× data, the trigram 0.437. The model overfits after epoch 2 (train 5.54 → 5.06 while selection rises), so
 regularization and the 4M setting are the next levers.
 
 ## Next

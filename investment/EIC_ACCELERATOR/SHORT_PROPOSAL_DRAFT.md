@@ -63,7 +63,7 @@ one-command kit is available for third-party reruns. The evidence files are in t
 
 **Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's
 temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney
-trigram's 6.537, and 5.521 against 6.100 at 4M tokens: the lead grows with data.
+trigram's 6.537, and 5.510 against 6.100 at 4M tokens: the lead grows with data.
 
 **Anonymous interleaved industrial logs.**
 - Benchmark: FAS, the founder's assembly-line simulator.
