@@ -1,7 +1,7 @@
 # B4 (proposed) — the neural TPP benchmark of Bosser & Ben Taieb, with the frozen unified model
 
-8 October 2026 · **Proposal awaiting the founder's admission** (PRODUCT_ORDERS lists B1–B3, G, R1; a new battle needs
-the user's go-ahead). No training has run. Data downloaded and studied only.
+**Admitted by the founder on 9 October 2026** (PRODUCT_ORDERS row B4). Pre-registered protocol below, fixed before any
+B4 fit.
 
 ## Why this battle
 
@@ -64,3 +64,36 @@ stated only where they hold. Compute (parameters, MACs per event) reported.
 2. Per-sequence scoring with the first event from t = 0 (empty history) and no terminal survival term; contract against
    a hand-computed sequence and against the reference code's formula.
 3. Recording-cell detection per dataset (timestamp resolution) and the component rule for windows, applied as in B1.
+
+
+## Reference bars (fixed 9 Oct 2026, before any fit)
+
+Bar = best published L_T + best published L_M on the dataset, each the minimum over every model in the TMLR 2023
+per-dataset tables (Appendix B) and the 2025 Table 1, even when the two come from different models: beating it beats
+every published model. Per sequence, mean over the five splits, lower is better.
+
+| Dataset | Best L_T (model, paper) | Best L_M (model, paper) | Bar |
+|---|---|---|---|
+| LastFM | −1363.78 (GRU-LNM-CONCAT, 2023) | 514.13 (Hawkes, 2023) | **−849.65** |
+| MOOC | −310.6 (LNM+, 2025) | 70.9 (THP++, 2025) | **−239.7** |
+| Github | −382.4 (GRU-RMTPP-LCONCAT, 2023) | 109.5 (FNN++, 2025) | **−272.9** |
+| Stack Overflow | −91.1 (LNM+, 2025) | 103.0 (THP++, 2025) | **11.9** |
+| Wikipedia | −267.41 (GRU-RMTPP-LCONCAT, 2023) | 144.79 (Hawkes, 2023) | **−122.62** |
+| MIMIC2 | 0.13 (GRU-LNM-TO, 2023) | 2.29 (GRU-RMTPP-LCONCAT, 2023) | **2.42** |
+| Retweets | −621.33 (GRU-LNM-CONCAT, 2023) | 82.63 (GRU-RMTPP-LCONCAT, 2023) | **−538.70** |
+
+If a stronger published number on the same data and splits is found later (ESANN 2023, the authors' thesis), the bar
+moves to it and the verdict is reported against the stronger number.
+
+## Pre-registered B4 protocol (fixed 9 Oct 2026, before any B4 fit)
+
+- Driver `experiments/tpp/race_tpp_b4.py` with the **frozen unified configuration** of B1 (`race_tpp_v19.py` unchanged:
+  2 layers, d 32, 16 memory modes, 2 exponential + 8 delayed clocks, 16 state modes, dropout 0.3, lr 3e−3, batch 32,
+  patience 30, seed 0) and its two data rules computed on each split's TRAIN data: windows only for ≥ 2 gap components
+  (MOOC, MIMIC2, Retweets); recording cell by the divisor rule (all but Stack Overflow). Adapter contract
+  `experiments/tpp/check_b4_adapter.py` PASS.
+- Five official splits per dataset, one run per split; checkpoint selected on validation mean per-sequence L_T + L_M;
+  TEST scored once per split (`--score-test`).
+- Report per dataset: mean (standard error over splits) of L_T, L_M and L_T + L_M, every split's values, parameters and
+  per-event compute. **Win on a dataset**: mean L_T + L_M below the bar. Component wins stated only where they hold.
+  All seven datasets are reported whatever the outcome. No configuration change between datasets or after any TEST score.
