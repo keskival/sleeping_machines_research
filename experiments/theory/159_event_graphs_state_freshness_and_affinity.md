@@ -85,4 +85,7 @@ by the maximum of that coordinate over the vectors.
   identity tables fit the training period's node behaviour and drift. On interaction streams the family's inductive
   bias (relevance carried by time-decayed state, §458) is the generalising part; identity capacity is not needed for the
   validation lead over TPNet (0.842).
+- **Prediction 2 — confirmed** (9 Oct 16:18): the development fit beat persistent forecast on 4 of 4 validation years,
+  and the sealed seeds average test 0.8680 ± 0.0005 vs NAVIS 0.863 (every seed above). Prediction 3 (whether the gain is
+  trend information) is tested by the queued ablations.
 

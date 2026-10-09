@@ -83,6 +83,9 @@ Evidence update, 6 October:
     leads S2P2 (0.522) on the mean at 1/12 of its parameters and compute.
 
   - StackOverflow: −2.144 ± 0.004 vs −2.163 (+0.019) at 1.26× S2P2's compute (accuracy win).
+- **Public temporal-graph win (TGB tgbn-trade, 9 October):** test NDCG@10 0.8680 ± 0.0005 vs 0.863 for the leaderboard
+  leader NAVIS (ICLR 2026), all three pre-registered sealed seeds ahead, 2,107 parameters, four CPU-minutes of fitting.
+  A fourth kind of data (interaction graphs), won at the first sealed attempt.
 - **Public wearable-sensor win (PAM, 8 October):** accuracy 0.978 ± 0.007 and F1 0.980 ± 0.008 vs the best published
   0.975 / 0.976 (MTM), five official splits, 46,316 parameters; four of five splits ahead.
 - **Public clinical win (P19 sepsis, 7 October):** AUPRC 0.639 vs 0.583 and AUROC 0.916 vs 0.903 against the best

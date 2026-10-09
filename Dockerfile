@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Build with scripts/build_latex_docs.sh.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-pictures \
-    texlive-fonts-recommended texlive-fonts-extra lmodern cm-super latexmk \
+    texlive-fonts-recommended texlive-fonts-extra lmodern cm-super latexmk poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # CPU research environment; GPU hosts use the AWS bootstrap script.

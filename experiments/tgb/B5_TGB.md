@@ -200,4 +200,10 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct 15:42: race_link v4 d = 0 development run complete: **best validation MRR 0.8518** (epochs .8517 / .8518 / .8515
   / .8512 / .8510 / .8505: stable), **7,995 parameters**. Pre-registered selection: d = 0 (0.8518 ≥ 0.8515 − 0.002).
   Sealed seeds 0–2 of v4 d = 0 queued (curie_b5_wiki_sealed_v4_id0_s{0,1,2}_20261009T1340Z).
+- 9 Oct 16:18: **tgbn-trade SEALED VERDICT: WIN (pre-registered rule met).** Test NDCG@10 seeds 0 / 1 / 2: **0.8683 /
+  0.8674 / 0.8683, mean 0.8680 ± 0.0005**, every seed above NAVIS 0.863 ± 0.001 (ICLR 2026, leaderboard leader);
+  persistent forecast 0.855 (our replay 0.854); validation mean 0.8744. Per test year (mean over seeds): 2013 0.893,
+  2014 0.843, 2015 0.868. Model: race_affinity v1, 2,107 parameters (NAVIS: 1,280), about 4 minutes of fitting on one CPU
+  thread. Evidence level: confirmed leaderboard win (3 seeds, configuration fixed before test, official loader and
+  Evaluator, test scored once per seed). Scored locally; leaderboard submission after the patent priority filing.
 
