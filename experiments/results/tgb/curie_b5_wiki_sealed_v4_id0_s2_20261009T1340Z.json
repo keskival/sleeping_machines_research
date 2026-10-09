@@ -1,0 +1,89 @@
+{
+ "status": "completed",
+ "battle": "B5",
+ "tag": "curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z",
+ "model": "race_link v4 (per-event causal state; v3 = v2 + destination bias and source-destination identities; v2 = v1 + ordinal recency, pair share, last-destination flag, decayed page transitions)",
+ "args": {
+  "tag": "curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z",
+  "seed": 2,
+  "epochs": 3,
+  "hidden": 64,
+  "d_id": 0,
+  "lr": 0.003,
+  "bs": 200,
+  "max_train_events": 0,
+  "max_eval_events": 0,
+  "score_test": true,
+  "max_wall_s": 1000000000.0,
+  "root": "/workspace/data/tgb"
+ },
+ "features": 41,
+ "parameters": 7995,
+ "history": [
+  {
+   "epoch": 0,
+   "train_ce": 1.2519287297606114,
+   "val_mrr": 0.8513703207430592,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9307776331524283
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06691562434136103
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.06339909284967246
+    }
+   },
+   "epoch_s": 699.66663646698
+  },
+  {
+   "epoch": 1,
+   "train_ce": 1.1167534760202393,
+   "val_mrr": 0.8517093248793436,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9307865019765251
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06825070788136181
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.07085717726667742
+    }
+   },
+   "epoch_s": 712.6184251308441
+  },
+  {
+   "epoch": 2,
+   "train_ce": 1.1039668909047682,
+   "val_mrr": 0.8515564253725765,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.9082172642987173,
+     "mrr": 0.9303514101118061
+    },
+    "new_pair_known_source": {
+     "share": 0.05774522670505059,
+     "mrr": 0.06850034719528797
+    },
+    "new_source": {
+     "share": 0.03403750899623217,
+     "mrr": 0.07755105599836398
+    }
+   },
+   "epoch_s": 697.0154435634613
+  }
+ ],
+ "best_val_mrr": 0.8517093248793436,
+ "test_mrr": 0.8356125467494251,
+ "wall_s": 2118.66184091568,
+ "source_sha256": "69556678066d04c55e65d3eb87058caa3ed7422759c944a106aba79117061e48",
+ "checkpoint": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z.pt"
+}

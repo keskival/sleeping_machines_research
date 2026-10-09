@@ -95,4 +95,6 @@ by the maximum of that coordinate over the vectors.
   margin over convex predictors splits evenly between extrapolating history shape (Proposition 3) and the nonlinear,
   calibrated reading of the current level together with the destination's global share and the node's context; bilateral
   reverse flow is redundant given those.
+- **Prediction 1 — confirmed on the sealed test** (9 Oct 18:59): with per-event exact state the identity-free model scores
+  test MRR 0.8353 ± 0.0003 over three pre-registered seeds against TPNet's 0.827; the batch-stale v2 had validation 0.776.
 

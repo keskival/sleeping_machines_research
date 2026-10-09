@@ -220,4 +220,10 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   seed 2 pending.
 - 9 Oct 18:20: **reverse-flow ablation** (validation, seed 0): 0.8759 (full 0.8747): reciprocity adds nothing measurable.
   Note 159 prediction 3 graded (partly confirmed: history shape carries half the gain; reverse flow none).
+- 9 Oct 18:59: **tgbl-wiki SEALED VERDICT: WIN (pre-registered rule met).** race_link v4 without identities (7,995
+  parameters): TEST MRR seeds 0 / 1 / 2 **0.8353 / 0.8350 / 0.8356, mean 0.8353 ± 0.0003**, every seed above TPNet
+  0.827 ± 0.001 (leaderboard leader), LocalGlobal 0.821, HyperEvent 0.810, DyGFormer 0.798; validation 0.8518. Evidence
+  level: confirmed leaderboard win (3 seeds, variant chosen on validation by the pre-registered rule, official loader,
+  negatives and Evaluator, test scored once per seed). Scored locally; leaderboard submission after the patent priority
+  filing. Inference: 4.5 ms per query on one CPU thread with the exact state update and all 1,000 candidates scored.
 
