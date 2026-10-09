@@ -1,0 +1,62 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 development (validation only, outside the frozen protocol): frozen Github splits 1-4 turned all weights NaN at epochs 3-6 (no non-finite guard: one NaN step poisons AdamW state) and selected epochs 2-3, yet reached test L_M 96-235 vs published 109.5; total -198.5 vs bar -272.9. Smoke must reproduce frozen b4_github_s1 epochs 0-1 exactly (v20 flags off == v19). Guarded arms on splits 1 and 3 locate the non-finite source and decide whether a stable fit closes the Github gap for the developed attempt",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4dev_github_s1_guard_smoke",
+        "queue": "experiments/queue/b4/b4dev_github_s1_guard_smoke/b4dev_github_s1_guard_smoke.txt",
+        "queue_sha256": "0b06c61f6830c1e3fe7b936059f84d287a14a8a085095d9ac35bcd301bd0ac18",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v22.py": "ad36b8c0a4a3661428dfaa0aab9ad91ab45d03039a75778eafe7cdb1811e24ed",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_github_s1_guard_smoke.json",
+        "timeout_s": 25200,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000
+      },
+      {
+        "name": "b4dev_github_s1_guard",
+        "queue": "experiments/queue/b4/b4dev_github_s1_guard/b4dev_github_s1_guard.txt",
+        "queue_sha256": "4a5a37d5ca9157a2d9d5c83a7d21439fb4aaece0a1c2970b377e5125ecb7537b",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v22.py": "ad36b8c0a4a3661428dfaa0aab9ad91ab45d03039a75778eafe7cdb1811e24ed",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_github_s1_guard.json",
+        "timeout_s": 25200,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000,
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4dev/b4dev_github_s1_guard_smoke.json"
+          }
+        ]
+      },
+      {
+        "name": "b4dev_github_s3_guard",
+        "queue": "experiments/queue/b4/b4dev_github_s3_guard/b4dev_github_s3_guard.txt",
+        "queue_sha256": "7ded43ca70d6c1d35d3f1f00e9c2fd0abd6b1f897cf5037ccc76eec6509d7d24",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v22.py": "ad36b8c0a4a3661428dfaa0aab9ad91ab45d03039a75778eafe7cdb1811e24ed",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_github_s3_guard.json",
+        "timeout_s": 25200,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000,
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4dev/b4dev_github_s1_guard_smoke.json"
+          }
+        ]
+      }
+    ]
+  }
+}
