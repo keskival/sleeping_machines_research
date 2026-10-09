@@ -18,8 +18,11 @@ every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E1
 - **Marks (K = 6):** aggressor side (buy / sell) × price move relative to the previous trade (up / unchanged / down).
 - **Splits (chronological):** train 1–24 Aug 2026; validation 25–31 Aug; **sealed test 1–7 Sep 2026**, scored once per
   model after development is frozen.
-- **Primary metric:** test log-likelihood per event (time + mark, nats), streamed over each full test day (every event
-  predicted from all earlier events of that day). Timestamps are recorded on a 1 µs grid and many consecutive aggTrades
+- **Primary metric:** test log-likelihood per event (time + mark, nats). **Amended 9 Oct 17:45, before any fit:** each
+  day is cut into consecutive windows of 1,024 events; the first 128 events of a window are context only and the other
+  896 are scored, each from the events before it in its window; every model is scored on exactly the same windows and
+  events (full-day streaming with unbounded history was intractable for the encoder and would favour models with longer
+  context). Timestamps are recorded on a 1 µs grid and many consecutive aggTrades
   share a timestamp (one taker order walking the book), so **every model's time term is the interval likelihood of the
   1 µs recording cell containing the gap**, S(g) − S(g + 1 µs), not a density at g (the resolution principle of our
   EasyTPP work; a point density at a zero gap is unbounded and would reward grid exploitation).
