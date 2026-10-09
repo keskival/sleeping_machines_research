@@ -197,4 +197,7 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   first 60 training label times of genre. Development fit queued on slot 2 (validation only).
 - 9 Oct 14:31: **tgbn-trade sealed seed 1: TEST NDCG@10 0.8674** (.893 / .843 / .866), validation 0.8740 (epoch 111).
   Seeds 0–1 both above NAVIS's 0.863; seed 2 pending.
+- 9 Oct 15:42: race_link v4 d = 0 development run complete: **best validation MRR 0.8518** (epochs .8517 / .8518 / .8515
+  / .8512 / .8510 / .8505: stable), **7,995 parameters**. Pre-registered selection: d = 0 (0.8518 ≥ 0.8515 − 0.002).
+  Sealed seeds 0–2 of v4 d = 0 queued (curie_b5_wiki_sealed_v4_id0_s{0,1,2}_20261009T1340Z).
 

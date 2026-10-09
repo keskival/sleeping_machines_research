@@ -78,3 +78,11 @@ by the maximum of that coordinate over the vectors.
 - **Prediction 1 — confirmed** (9 Oct 13:45, race_link v4 first epoch, validation): 0.8515 vs v2's 0.776 (+0.075, ≥ 0.03
   predicted). Repeat-pair share rises from 85.4% to 90.8% (the hidden in-batch repeats become visible) and repeat-pair MRR
   from 0.896 to 0.931 (fresher newest destination). v4 also adds identities (d = 16); the d = 0 run separates the two.
+- **Observation (not pre-registered), 9 Oct 15:42 — inductive state vs transductive identity.** With identical state
+  features, learned per-node identities (d = 16; 171,627 parameters) peak at validation 0.8515 after one epoch and then
+  decline to 0.833 by epoch 4, while the identity-free readout (7,995 parameters) stays at 0.851–0.852 for six epochs.
+  The state features are functions of elapsed time and observed history, so they transfer to a later period unchanged;
+  identity tables fit the training period's node behaviour and drift. On interaction streams the family's inductive
+  bias (relevance carried by time-decayed state, §458) is the generalising part; identity capacity is not needed for the
+  validation lead over TPNet (0.842).
+
