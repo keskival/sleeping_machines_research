@@ -25,6 +25,8 @@ Benchmark work follows AGENTS.md "Benchmark work is development to win": owned, 
 
 Every battle reports measured inference work (operations, CPU latency; energy where measurable) next to quality.
 
+**Shared enabler, first test (user-directed 9 Oct 2026):** theory note 160's credit model trained by the forward race's own sampled causes, against REINFORCE, straight-through Gumbel, dense exact and an exact-posterior oracle on hard winner-only routing (`experiments/credit/hindsight_race.py`, 30 runs, queue label ENABLER).
+
 **Shared enabler:** high-fidelity route credit (exact forced-lane credit at pool 2–8 as a training signal; a derived
 low-variance multi-step estimator next). It serves B1, B3 and R1 directly; it is developed inside those battles, not as a
 separate queue.

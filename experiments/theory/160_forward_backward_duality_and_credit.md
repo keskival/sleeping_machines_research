@@ -75,3 +75,12 @@ own sampled causes, so the backward pass has a well-posed objective and can be e
 
 A failure of (3) or (4) is evidence about that construction; diagnose credit variance, cause coverage of the sleep samples
 and the reciprocity assumption before generalizing.
+
+## Test log
+
+- 9 Oct: `experiments/credit/hindsight_race.py` written. Contract: with the exact posterior, the hindsight router update
+  equals the exact marginal-likelihood gradient at depth 1 and 2 (max |diff| 2.4e−7, float32), so the experiment measures
+  only the cost of *learning* the posterior from forward samples. Grid queued (5 arms × depth 1, 2 × 3 seeds): dense exact,
+  REINFORCE, straight-through Gumbel, hindsight (proposed: one expert per example plus one sleep sample), exact-posterior
+  oracle; metrics: held-out marginal log-likelihood against the teacher's (Bayes ceiling), route recovery, expert
+  evaluations per example.
