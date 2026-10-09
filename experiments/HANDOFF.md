@@ -24,6 +24,8 @@ No existing inference architecture changed. Counts/wall/RSS include meta-trainin
 Analytic witnesses completed in aws_reciprocal_update_math_20261009T2137Z.json; correction of the earlier scalar-objective
 convention is stated in theory/aws_20261009_reciprocal_update_learning.md. PyTorch contracts and fits remain pending.
 
+**Per-event learning without BPTT (note 160 §§7, 11; AWS, Opus session) — 9 Oct 21:45 UTC.** `credit/online_race.py` (exact forward eligibility traces through the temporal memory; trace gradient == BPTT 4.4e-16) and `online_race_v2.py` (unshared backward matrices trained by the forward's own local updates, Kolen–Pollack; from B = W it reproduces the exact learner, difference 0.0). Slot 3 queues `online1_*` (BPTT vs online_trace vs online_local) and `online2_*` (online_kp vs online_fa vs online_trace), Taxi DEV, 3 seeds each, pass criteria in §§7/11. This line does not overlap the v6/v7 cause-attribution pipelines; v1–v5 credit grids (unseeded teachers) stay as per-run diagnostics only.
+
 **Earlier matched credit pipelines remain:** v6 compact closed-credit and v7 pairwise persistent/reset, source-pinned
 on slot 1; reciprocal-credit7 controller admits three-seed confirmation only on its DEV likelihood/posterior-KL gates.
 v1–v5 teacher weights are unseeded: individual diagnostics only, never matched cross-arm evidence. Prioritized integrated
