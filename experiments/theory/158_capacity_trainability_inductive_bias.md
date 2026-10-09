@@ -143,6 +143,12 @@ tuned dense models at 90M characters.
    saturation point.
 3. **Time reparameterisation:** replacing elapsed-time decay by position-indexed decay should hurt most on the datasets
    with the widest gap ranges (Taobao, StackOverflow) and least on near-regular ones.
+   **Mixed (9 Oct, `experiments/tpp/race_tpp_v5pos.py`, seed 0, dev LL vs the AWS elapsed-time runs with identical
+   configuration):** Taxi +0.001 (0.4879 vs 0.4872), Taobao +0.010 (1.2938 vs 1.2840), **StackOverflow −0.057 (−2.2296 vs
+   −2.1731)**. Elapsed-time memory is essential on StackOverflow, where relevance decays in calendar time (badge activity
+   over months; the loss is three times StackOverflow's margin over the published leader), and unnecessary on Taobao,
+   where recent order matters and the gap still enters each event's input. **Revised statement:** elapsed-time decay
+   matters where the relevance of past events decays in real time, not merely where gaps are wide.
 4. **Gradient variance:** at matched model size, exact-compensator training has lower per-step gradient variance than a
    Monte-Carlo-compensator variant of the same model. **Confirmed (§454): 18% relative gradient noise at J = 10, 0 exact.**
 5. **Superposition advantage:** on synthetic superpositions of K renewal processes, the race head's advantage over a
