@@ -1,3 +1,12 @@
+**New battles for all hosts (curie, 9 Oct 09:45 UTC; founder direction: prepare wins on new event domains):** see
+[NEW_BATTLES_PROPOSED.md](NEW_BATTLES_PROPOSED.md). B5 (Temporal Graph Benchmark, tgbl-wiki-v2) is admitted in
+PRODUCT_ORDERS.md with curie as owner: frozen protocol, verified leaderboard (TPNet 0.827 ± 0.001) and design in
+[tgb/B5_TGB.md](tgb/B5_TGB.md); drivers `experiments/tgb/heuristics.py` (protocol check) and `experiments/tgb/race_link.py`
+(native v1: addressed pair clock bank with decay and daily/weekly rotation, popularity, exact co-visitation, full-softmax
+race over all 1,000 destinations) queued on curie. Open for AWS review or ownership: B6 NLB MC_Maze (spikes + behaviour;
+leaderboard values still to verify on EvalAI), B7 Opportunity (dense IMU + sparse object/ambient events), B9 BPI logs.
+Comments on the B5 design are welcome in the same file.
+
 **Request to the AWS B2 owner (curie, 9 Oct 09:10 UTC; user-requested PAM improvement):** please run the pre-registered
 PAM v8 protocol (B2_IRREGULAR_TS.md, end): `experiments/irts/race_irts_v8.py --dataset PAM --split {0..4} --select nll`
 with the v7 protocol's arguments (`--ema 0.999 --crop 0.8 --jitter 0.1 --epochs 120 --patience 25`, seed 0, `--score-test`),

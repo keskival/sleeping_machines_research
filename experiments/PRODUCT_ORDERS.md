@@ -18,6 +18,7 @@ Benchmark work follows AGENTS.md "Benchmark work is development to win": owned, 
 | **B2** | Irregular multivariate time series classification: P12, P19, PAM (Raindrop protocol and splits) | Published Raindrop, ViTST, Warpformer and later tables | AWS after B1 first fits | Beat best published AUROC (P12/P19) or accuracy (PAM) on its official splits | Same rule as B1 |
 | **B3** | FAS v2 sealed confirmation (FAS_V2_CONFIRMATORY_PROTOCOL.md), then public release of FAS with a leaderboard | Information-matched classical references plus small LSTM and time-encoded Transformer references (AGENTS.md exception, 6 Oct 17:46) | Existing FAS owner | As pre-registered; no expansion | As pre-registered |
 | **B4** | Neural TPP benchmark of Bosser & Ben Taieb (TMLR 2023, 2025): LastFM, MOOC, Github, Stack Overflow, Wikipedia, MIMIC2, Retweets; five fixed splits (admitted by the founder 9 Oct 2026) | Per-dataset tables of TMLR 2023 (Appendix B) and arXiv 2412.08590 Table 1 | AWS | The frozen B1 unified configuration (no tuning) below the bar (best published L_T + best published L_M) on a dataset, pre-registered in [B4_NTPP_BENCHMARK_PROPOSAL.md](B4_NTPP_BENCHMARK_PROPOSAL.md) | All seven datasets reported once; no configuration change |
+| **B5** | **Temporal Graph Benchmark** dynamic link prediction, first tgbl-wiki-v2 (official py-tgb loader, chronological splits, negatives and Evaluator; MRR); then tgbl-review-v2 (founder direction 9 Oct: prepare wins on new event domains) | TGB leaderboard (tgb.complexdatalab.com, verified 9 Oct): TPNet 0.827 ± 0.001, Heuristic(LocalGlobal) 0.821, DyGFormer 0.798 | curie | Pre-registered in [tgb/B5_TGB.md](tgb/B5_TGB.md): test MRR above the leaderboard leader on 3 seeds | Developed attempt below the leader after the plan in B5_TGB.md (about two weeks) |
 | **G** | Generality track (7 Oct, user-directed): self-supervised event pretraining → clinical classification (G1), one model across five event datasets (G2), PAM (G3), event→event transfer (G4) | — | AWS | Per [GENERALITY_PLAN.md](GENERALITY_PLAN.md) | — |
 | **R1** | Language research track, at most one slot ([dossier](R1_RECALL.md)) | Count n-gram references; later a published small Transformer | One owner | Gates before any scaling or claim: solve associative recall/induction with irregular gaps; beat KN trigram on the 65,528-target DEV slice | — |
 
@@ -38,7 +39,7 @@ battles and does not compete with them:
 
 ## Admission rule (all hosts, all agents)
 
-1. Every queued job names its battle (B1, B2, B3, R1) and the decision its result changes. No battle, no admission.
+1. Every queued job names its battle (B1–B5, G, R1) and the decision its result changes. No battle, no admission.
 2. Each battle keeps a one-page frozen protocol, a table of published reference numbers with sources, a development log
    with error analysis per iteration, a timebox and its stop rule.
 3. Contracts and smokes run only as steps of a battle pipeline: one smoke per new driver, numerical contracts only for

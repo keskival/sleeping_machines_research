@@ -1,0 +1,2 @@
+# B5 (proposed) race_link v1 smoke on tgbl-wiki-v2 (5k train events, 1k val queries, 2 epochs); decision: does the native pipeline run within memory/time and agree with the official evaluator before the development fit
+curie_b5_racelink_smoke_20261009T0945Z experiments/tgb/race_link.py --tag curie_b5_racelink_smoke_20261009T0945Z --max-train-events 5000 --max-eval-events 1000 --epochs 2
