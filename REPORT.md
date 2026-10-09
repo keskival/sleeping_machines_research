@@ -6,7 +6,7 @@ Tero Keski-Valkama and Karoliina Salminen · Research report · 9 October 2026
 
 ## Public benchmark record — 9 October 2026
 
-Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. Own numbers are computed from the result files in the source-bound packet [public_wins_headline_evidence_20261009_v2.json](report/public_wins_headline_evidence_20261009_v2.json). The reader-facing account of these results, their mechanisms and theory is [Part I](report/I_SCIENCE.md); the appendices below are the experiment record. Earlier versions of this report are in git history.
+Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. Own numbers are computed from the result files in the source-bound packet [public_wins_headline_evidence_20261009_v3.json](report/public_wins_headline_evidence_20261009_v3.json). The reader-facing account of these results, their mechanisms and theory is [Part I](report/I_SCIENCE.md); the appendices below are the experiment record. Earlier versions of this report are in git history.
 
 | Benchmark | Ours (sealed test) | Best published | Verdict and cost |
 | --- | --- | --- | --- |
@@ -19,9 +19,9 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | P19 sepsis (ICU records) | AUPRC 0.639 ± 0.039; AUROC 0.916 | 0.583 / 0.903 (MTM) | Win, five official splits; 62,681 parameters |
 | PAM wearable activity | accuracy 0.978 ± 0.007; F1 0.980 | 0.975 / 0.976 (MTM) | Win, 4 of 5 splits ahead; 46,316 vs 873K parameters |
 | TGB tgbn-trade (node affinity, NDCG@10) | 0.8680 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | Win, 3 of 3 pre-registered seeds; 2,107 parameters |
+| TGB tgbl-wiki (link prediction, MRR) | 0.8353 ± 0.0003 | 0.827 (TPNet) | Win, 3 of 3 pre-registered seeds; 7,995 parameters |
 | P12 mortality (ICU records) | AUROC 0.871; AUPRC 0.585 | 0.880 / 0.586 (MTM) | Behind on AUROC, level on AUPRC |
 | Bosser & Ben Taieb MOOC (total NLL, lower better) | -226.8 ± 6.3 | bar −239.7 (pre-registered); best single model −233.8 | Loss (frozen one-configuration model); six datasets running |
-| TGB tgbl-wiki (link prediction, MRR) | validation 0.8518 (7,995 parameters) | TPNet validation 0.842, test 0.827 | In development, ahead on validation; sealed seeds running |
 | FAS v2 (anonymous interleaved logs) | validation 0.702 | time-encoded Transformer reference 0.704 | In development; sealed verdict pending the reference seeds |
 
 ## The model family and its place in the landscape — 4 October 2026
