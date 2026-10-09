@@ -11,7 +11,11 @@ import html
 import io
 import json
 import os
+import sys
 from datetime import date
+
+# The documented file invocation must also resolve report.* imports in runpy pages.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/sleeping_machines-mpl")
 

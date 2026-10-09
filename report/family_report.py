@@ -243,23 +243,26 @@ def integrate(source, destination, chapter):
         kept=[i for i,p in enumerate(old) if not any(marker in p.get_text() for marker in (MARKER,LEGACY_MARKER))]
         if not kept: raise ValueError('Report has no retained evidence pages')
         merged=pymupdf.open(); mapping={}
-        merged.insert_pdf(old,from_page=kept[0],to_page=kept[0]);mapping[kept[0]+1]=1
         scores=[i for i in kept[1:] if 'Scoreboard — wins, losses and open targets' in old[i].get_text()]
         if len(scores)>1: raise ValueError('Multiple scoreboards require review')
-        if scores:
-            merged.insert_pdf(old,from_page=scores[0],to_page=scores[0]);mapping[scores[0]+1]=2
+        appendix=next((i for i in kept if 'Appendix A. Deep event recognition' in old[i].get_text()),None)
+        # The source-bound benchmark table can span pages. Keep its continuation
+        # with the cover before inserting the family chapter and experiment record.
+        front=[i for i in kept if i<appendix] if appendix is not None else [kept[0],*scores]
+        for i in front:
+            merged.insert_pdf(old,from_page=i,to_page=i);mapping[i+1]=len(merged)
         family_start=len(merged)
         merged.insert_pdf(family)
         runs=[]
-        for i in kept[1:]:
-            if i in scores: continue
+        for i in kept:
+            if i in front: continue
             if not runs or i!=runs[-1][1]+1: runs.append([i,i])
             else: runs[-1][1]=i
         for first,last in runs:
             offset=len(merged)
             merged.insert_pdf(old,from_page=first,to_page=last)
             for i in range(first,last+1): mapping[i+1]=offset+i-first+1
-        toc=([[1,'Scoreboard',2]] if scores else [])
+        toc=([[1,'Scoreboard',mapping[scores[0]+1]]] if scores else [])
         toc+=[[1,'Model family and landscape',family_start+1]]+[[2,s['title'],i+family_start+1] for i,s in enumerate(sections())]
         inherited=[[level,title,mapping[page]] for level,title,page in old.get_toc() if page in mapping]
         # Existing reports may have their own hierarchy; keep it under a root.
@@ -279,10 +282,10 @@ def integrate(source, destination, chapter):
             for x0,y0,x1,y1,*_ in new[i].get_text('blocks'):
                 if min(x0,y0)<0 or x1>new[i].rect.width or y1>new[i].rect.height:
                     raise ValueError('Out-of-bounds family text')
-        if scores and 'Scoreboard — wins, losses and open targets' not in new[1].get_text():
-            raise ValueError('Scoreboard must remain page 2')
+        if scores and 'Scoreboard — wins, losses and open targets' not in new[mapping[scores[0]+1]-1].get_text():
+            raise ValueError('Missing scoreboard')
     return dict(retained_pages=len(kept),family_pages=len(sections()),total_pages=len(kept)+len(sections()),
-                scoreboard_page=2 if scores else None,
+                front_pages=len(front),scoreboard_page=mapping[scores[0]+1] if scores else None,
                 retained_evidence_text='identical on every retained page')
 
 

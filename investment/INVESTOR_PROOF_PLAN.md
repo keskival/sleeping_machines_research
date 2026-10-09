@@ -34,7 +34,7 @@ This is an execution plan, not a prediction of investor acceptance.
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
 - **New event domains (in development):** tgbl-review (AWS): a training-free state is above TGN/TGAT/TNCN on validation.
   Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
-  model; first verdict: MOOC lost (−226.9 vs bar −239.7; timing is the gap).
+  model; frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap) and Stack Overflow (12.714 vs 11.9; time component ahead, marks carry the gap). Five dataset verdicts pending.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a

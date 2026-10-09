@@ -5401,6 +5401,7 @@ def benchmark_record_page():
     e = json.loads(packet.read_text()); E = e['easytpp']
     def ll(d): return f"{E[d]['ours']['mean']:.4f} ± {E[d]['ours']['sd']:.4f}"
     P19, P12, PAM, TR, WK, B4 = e['p19'], e['p12'], e['pam'], e['tgbn_trade'], e['tgbl_wiki'], e['b4_mooc']
+    B4SO = e['b4_stack_overflow']
     uni = ' / '.join(f"{E[d]['unified']['mean']:.3f}" for d in ('taxi', 'taobao', 'stackoverflow', 'retweet', 'amazon'))
     rows = [
         ['EasyTPP Taxi (nats/event, higher better)', ll('taxi'), '0.522 (S2P2)', 'Win, 5 of 5 seeds; 1/12 of S2P2 parameters and compute; reproduced on separate hardware'],
@@ -5415,7 +5416,8 @@ def benchmark_record_page():
         ['TGB tgbn-trade (node affinity, NDCG@10)', f"{TR['ndcg']['mean']:.4f} ± {TR['ndcg']['sd']:.4f}", '0.863 (NAVIS, ICLR 2026)', 'Win, 3 of 3 pre-registered seeds; 2,107 parameters'],
         ['TGB tgbl-wiki (link prediction, MRR)', f"{WK['mrr']['mean']:.4f} ± {WK['mrr']['sd']:.4f}", '0.827 (TPNet)', f"Win, 3 of 3 pre-registered seeds; {WK['parameters']:,} parameters"],
         ['P12 mortality (ICU records)', f"AUROC {P12['auroc'][0]:.3f}; AUPRC {P12['auprc'][0]:.3f}", '0.880 / 0.586 (MTM)', 'Behind on AUROC, level on AUPRC'],
-        ['Bosser & Ben Taieb MOOC (total NLL, lower better)', f"{B4['total']['mean']:.1f} ± {B4['total']['sd']:.1f}", 'bar −239.7 (pre-registered); best single model −233.8', 'Loss (frozen one-configuration model); six datasets running'],
+        ['Bosser & Ben Taieb MOOC (NLL/sequence, lower better)', f"{B4['total']['mean']:.2f} ± {B4['total']['se']:.2f} SE", 'bar −239.7 (pre-registered); best single model −233.8', 'Loss of frozen one-configuration model; five fixed splits'],
+        ['Bosser & Ben Taieb Stack Overflow (NLL/sequence)', f"{B4SO['total']['mean']:.3f} ± {B4SO['total']['se']:.3f} SE; time {B4SO['L_T']['mean']:.3f}; marks {B4SO['L_M']['mean']:.3f}", 'bar 11.9; best single model 12.1; time −91.1; marks 103.0', 'Loss of frozen configuration; time component ahead, marks carry the gap; five fixed splits'],
         ['FAS v2 (anonymous interleaved logs)', 'validation 0.702', 'time-encoded Transformer reference 0.704', 'In development; sealed verdict pending the reference seeds'],
     ]
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),

@@ -245,6 +245,30 @@
   }
  },
  "b4_mooc": {
+  "L_T": {
+   "mean": -298.5744034238857,
+   "sd": 9.114855503153553,
+   "values": [
+    -310.42708377723847,
+    -290.7344721556111,
+    -298.3849784934505,
+    -288.81968633198477,
+    -304.50579636114384
+   ],
+   "se": 4.076287302027878
+  },
+  "L_M": {
+   "mean": 71.72629430670452,
+   "sd": 2.8490380495943413,
+   "values": [
+    75.04520705563453,
+    68.65982455781516,
+    71.7167003787009,
+    69.15333221264893,
+    74.056407328723
+   ],
+   "se": 1.2741285498752728
+  },
   "total": {
    "mean": -226.84810911718122,
    "sd": 6.328315049635399,
@@ -254,11 +278,57 @@
     -226.66827811474957,
     -219.66635411933584,
     -230.44938903242084
-   ]
+   ],
+   "se": 2.8301085268039414
   },
   "bar": -239.7,
   "best_single": -233.8,
-  "verdict": "loss (pre-registered)"
+  "verdict": "loss (pre-registered frozen configuration)"
+ },
+ "b4_stack_overflow": {
+  "L_T": {
+   "mean": -91.59799258518899,
+   "sd": 3.495095854488763,
+   "values": [
+    -95.45623313876051,
+    -87.16543683428566,
+    -88.77695246549077,
+    -93.84645298343854,
+    -92.74488750396951
+   ],
+   "se": 1.5630543837029174
+  },
+  "L_M": {
+   "mean": 104.31247976752938,
+   "sd": 1.6067653538602051,
+   "values": [
+    106.46998946729741,
+    102.26648210752779,
+    103.3121420841671,
+    104.96919436396138,
+    104.54459081469322
+   ],
+   "se": 0.7185673110245845
+  },
+  "total": {
+   "mean": 12.714487182340383,
+   "sd": 1.9540718096695688,
+   "values": [
+    11.013756328536893,
+    15.101045273242134,
+    14.53518961867634,
+    11.122741380522836,
+    11.799703310723716
+   ],
+   "se": 0.8738874798674373
+  },
+  "bar": 11.9,
+  "best_single": 12.1,
+  "published_time": -91.1,
+  "published_marks": 103.0,
+  "verdict": "loss (pre-registered frozen configuration)",
+  "diagnosis": "Time component ahead; mark component carries the total-NLL gap",
+  "scope": "Five fixed splits; NLL per sequence; uncertainty is standard error"
  },
  "fas_v2": "level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule",
  "input_sha256": {
@@ -331,10 +401,15 @@
   "experiments/results/tpp_b4/b4_mooc_s2.json": "2cca0e458d0b3a88ab83de901e080858d25f8a27dc6fae0e6e7d1196f579efe3",
   "experiments/results/tpp_b4/b4_mooc_s3.json": "4a95f94b727d36aa0ba6f51afd3caf1fdc0823e040a857ce3dd8dbab7edd04db",
   "experiments/results/tpp_b4/b4_mooc_s4.json": "0e33e18a4e3e9bc6a0588d60d660bd4bd6731e2201203746e6d95f141c23b059",
+  "experiments/results/tpp_b4/b4_stack_overflow_s0.json": "7a845e12d171cec4c0303842fc6737a55e981c78c0c311dca199024b78f0708c",
+  "experiments/results/tpp_b4/b4_stack_overflow_s1.json": "32a1fdf25a8f90db4715a10088a8ce73628b8ec28d4409392625fcd15f97d4f2",
+  "experiments/results/tpp_b4/b4_stack_overflow_s2.json": "04aa3b234e051d876cc7c7b694bd5180a6dce68244d845bd43ce7ced82589dd4",
+  "experiments/results/tpp_b4/b4_stack_overflow_s3.json": "25fbbbcdd45808d34ee611ccd2d4e760b0805b44619e1e66b7da66163bde211a",
+  "experiments/results/tpp_b4/b4_stack_overflow_s4.json": "14ec5de3df75e2af081b80fcf33f839a3e5bda62fdb019464d6e0e86aa40e0b1",
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
-  "experiments/B2_IRREGULAR_TS.md": "9fcd7a89ac2c60bde08e9a57f12cc2a638bb7b29a7b09782d16bdb0db31c9827",
+  "experiments/B2_IRREGULAR_TS.md": "33675862b9c653a9a3259aeef374694a76c2ebbeeb417643926bad35da57d9a8",
   "experiments/tgb/B5_TGB.md": "00adb4f2264b32874d48543cc1e4701b35d28165417c34a97c6362f29f48743b",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "7caa55891f17be6b2d85c3955687542b793730fefb6d7ed4d3b83ca9aac65442",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "3726f3a2964c7bee928005987137c6fcf25ba672df9c0ee8bb60c805b6429f7e",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "812007af4f43b8d61c43ee6067377611e1cb0796cd9f33ff500357a06b052b1f"
  }
 }

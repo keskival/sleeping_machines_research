@@ -21,7 +21,8 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | TGB tgbn-trade (node affinity, NDCG@10) | 0.8680 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | Win, 3 of 3 pre-registered seeds; 2,107 parameters |
 | TGB tgbl-wiki (link prediction, MRR) | 0.8353 ± 0.0003 | 0.827 (TPNet) | Win, 3 of 3 pre-registered seeds; 7,995 parameters |
 | P12 mortality (ICU records) | AUROC 0.871; AUPRC 0.585 | 0.880 / 0.586 (MTM) | Behind on AUROC, level on AUPRC |
-| Bosser & Ben Taieb MOOC (total NLL, lower better) | -226.8 ± 6.3 | bar −239.7 (pre-registered); best single model −233.8 | Loss (frozen one-configuration model); six datasets running |
+| Bosser & Ben Taieb MOOC (NLL/sequence, lower better) | -226.85 ± 2.83 SE | bar −239.7 (pre-registered); best single model −233.8 | Loss of frozen one-configuration model; five fixed splits |
+| Bosser & Ben Taieb Stack Overflow (NLL/sequence) | 12.714 ± 0.874 SE; time -91.598; marks 104.312 | bar 11.9; best single model 12.1; time −91.1; marks 103.0 | Loss of frozen configuration; time component ahead, marks carry the gap; five fixed splits |
 | FAS v2 (anonymous interleaved logs) | validation 0.702 | time-encoded Transformer reference 0.704 | In development; sealed verdict pending the reference seeds |
 
 ## The model family and its place in the landscape — 4 October 2026

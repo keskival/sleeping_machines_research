@@ -8,6 +8,8 @@ Non-fitting B1/R1 integration contract is queued behind the host lock in tmux `c
 
 B10 post-fit diagnostics are prepared in `experiments/queue/curie_b10_diagnostics_20261009T210711Z/manifest.json`. Non-training controller `scripts/await_curie_analysis.py` waits for the three existing development results, then runs the source-pinned decomposition/causality contract and exact saved-weight validation replay through run_safe. It isolates time/mark, recording-cell gap groups, sides and days and requires reproduction of the saved DEV likelihood. TEST remains sealed. Numerical results are pending.
 
+Completed B4 Stack Overflow evidence was reconciled into the current report: five fixed splits, total NLL 12.714 ± 0.874 SE vs bar 11.9 (frozen-configuration loss), time −91.598 vs published −91.1 (component win), marks 104.312 vs 103.0. Source/config consistency is checked by the current headline packet builder. No AWS training was changed or repeated.
+
 Research target remains the shared B1/R1 route-credit enabler and R1's keyed predecessor-message memory. Pending pairwise output-cause pilots on AWS do not yet solve hidden write credit. Curie develops the mathematical and causal integration contracts without changing pinned AWS sources. No new external neural control or architectural substitution is admitted.
 
 **AWS — reciprocal learning, active autonomous continuation (9 Oct 20:05 UTC).**

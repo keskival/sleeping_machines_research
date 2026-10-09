@@ -25,6 +25,19 @@ def stats(vals):
     return dict(mean=float(np.mean(vals)), sd=float(np.std(vals, ddof=1)), values=[float(v) for v in vals])
 
 
+def b4_stats(prefix):
+    records = [load(f'experiments/results/tpp_b4/{prefix}_s{k}.json') for k in range(5)]
+    assert all(r['status'] == 'completed' and r['split'] == k and r['args']['score_test']
+               for k, r in enumerate(records)), 'Five completed official B4 splits required'
+    assert len({json.dumps(r['config'], sort_keys=True) for r in records}) == 1
+    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) == 1
+    assert len({r['dataset'] for r in records}) == 1
+    result = {key: stats([r['test'][key] for r in records]) for key in ('L_T', 'L_M', 'total')}
+    for value in result.values():
+        value['se'] = value['sd'] / np.sqrt(5)
+    return result
+
+
 def tpp(prefix, n=5):
     return stats([load(f'experiments/results/tpp/{prefix}_s{s}.json')['test']['ll'] for s in range(n)])
 
@@ -40,7 +53,8 @@ pam = [load(f'experiments/results/irts/b2_final_pam_v7ema_split{k}.json')['test'
 trade = [load(f'experiments/results/tgb/curie_b5_trade_affinity_sealed_s{s}_20261009T1210Z.json')['test_ndcg'] for s in range(3)]
 wiki_dev = load('experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_20261009T1300Z.json')
 wiki = [load(f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json')['test_mrr'] for s in range(3)]
-mooc = [load(f'experiments/results/tpp_b4/b4_mooc_s{k}.json')['test']['total'] for k in range(5)]
+mooc = b4_stats('b4_mooc')
+stack_overflow = b4_stats('b4_stack_overflow')
 for doc in ('experiments/B1_EASYTPP.md', 'experiments/B2_IRREGULAR_TS.md', 'experiments/tgb/B5_TGB.md',
             'experiments/B4_NTPP_BENCHMARK_PROPOSAL.md', 'experiments/fas/B3_DEVELOPMENT_LOG.md'):
     inputs[doc] = hashlib.sha256((ROOT / doc).read_bytes()).hexdigest()
@@ -61,7 +75,12 @@ packet = dict(
     tgbn_trade=dict(ndcg=stats(trade), published=dict(model='NAVIS (ICLR 2026)', ndcg=0.863), persistent_forecast=0.855),
     tgbl_wiki=dict(mrr=stats(wiki), val_mrr=wiki_dev['best_val_mrr'], parameters=wiki_dev['parameters'],
                    published=dict(model='TPNet', val=0.842, test=0.827)),
-    b4_mooc=dict(total=stats(mooc), bar=-239.7, best_single=-233.8, verdict='loss (pre-registered)'),
+    b4_mooc=dict(**mooc, bar=-239.7, best_single=-233.8, verdict='loss (pre-registered frozen configuration)'),
+    b4_stack_overflow=dict(**stack_overflow, bar=11.9, best_single=12.1,
+                          published_time=-91.1, published_marks=103.0,
+                          verdict='loss (pre-registered frozen configuration)',
+                          diagnosis='Time component ahead; mark component carries the total-NLL gap',
+                          scope='Five fixed splits; NLL per sequence; uncertainty is standard error'),
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
            'sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule',
     input_sha256=inputs)
