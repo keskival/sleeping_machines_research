@@ -108,10 +108,12 @@ packet = dict(
                       verdict='win (pre-registered frozen configuration)',
                       diagnosis='Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen '
                                 'in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 '
-                                '(reproduction, causality, mark normalisation, published units)'),
+                                '(reproduction, causality, mark normalisation, published units). Split 0 reached NaN parameters at epoch 6 '
+                                '(checkpoint from epoch 5); guarded protocol rerun queued'),
     b4_github=dict(**github, bar=-272.9, best_single=-269.7, published_time=-382.4, published_marks=109.5,
-                   verdict='loss (pre-registered frozen configuration)',
-                   diagnosis='Splits 1-4 diverged to NaN at epochs 3-6 (no non-finite guard); selection fell back to epochs 2-3'),
+                   verdict='no valid verdict yet (numerical failure; guarded protocol reruns queued)',
+                   diagnosis='Splits 1-4 reached NaN parameters at epochs 3-8 (no non-finite guard); checkpoints from epochs 2-3; '
+                             'b4g reruns (TEST once, configuration unchanged) queued'),
     b4_mimic2=dict(**mimic2, bar=2.42, best_single=3.1, published_time=0.13, published_marks=2.29,
                    verdict='loss (pre-registered frozen configuration)',
                    diagnosis='About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)'),

@@ -178,10 +178,10 @@ To test transfer, we took the frozen one-configuration EasyTPP model to the neur
 \toprule
 Dataset {\color{muted}\footnotesize nats/sequence \down} & Bar & Sleeping Machines & Time / type parts (ours vs best published) & Verdict \\
 \midrule
-Wikipedia edits & $-122.62$ & $\mathbf{-240.42 \pm 43.31}$ & $-268.90$ vs $-267.41$ / \textbf{28.49 vs 144.79} & \textbf{Won}; 4 of 5 splits below the bar \\
+Wikipedia edits & $-122.62$ & $\mathbf{-240.42 \pm 43.31}$ & $-268.90$ vs $-267.41$ / \textbf{28.49 vs 144.79} & \textbf{Won}; 4 of 5 splits below the bar; split 0 is rerun (numerical failure) \\
 MOOC course activity & $-239.7$ & $-226.85 \pm 2.83$ & $-298.57$ vs $-310.6$ / 71.73 vs 70.9 & Behind; timing gap \\
 Stack Overflow & 11.9 & $12.714 \pm 0.874$ & \textbf{$-91.60$ vs $-91.1$} / 104.31 vs 103.0 & Behind; time part ahead \\
-Github & $-272.9$ & $-198.52 \pm 55.15$ & $-357.68$ vs $-382.4$ / 159.16 vs 109.5 & Behind; four of five runs diverged numerically in training \\
+Github & $-272.9$ & ($-198.52 \pm 55.15$) & $-357.68$ vs $-382.4$ / 159.16 vs 109.5 & No valid verdict yet: four of five runs failed numerically in training; guarded reruns queued \\
 MIMIC2 hospital visits & 2.42 & $7.01 \pm 0.25$ & 2.99 vs 0.13 / 4.02 vs 2.29 & Behind \\
 Retweets, LastFM & & & & Running \\
 \bottomrule
@@ -193,7 +193,7 @@ Retweets, LastFM & & & & Running \\
 \end{tile}
 
 \begin{tile}
-\textbf{What the losses teach.} A simple per-sequence counter, with no training, predicts the next type better than our model on two of these datasets, so the next development step adds persistent per-sequence type statistics to the memory. Github's training diverged to invalid values in four of five runs; numerically guarded runs are queued. Both are development steps outside the sealed protocol; the verdicts above stand as registered.
+\textbf{What the losses teach.} A simple per-sequence counter, with no training, predicts the next type better than our model on two of these datasets, so the next development step adds persistent per-sequence type statistics to the memory. Github's training produced invalid values in four of five runs (one bad update poisoned the optimiser); those splits, and Wikipedia split 0, are retrained once with a guard that skips such updates, configuration unchanged, and scored once on test. The type-statistics step is development outside the sealed protocol.
 \end{tile}
 
 \newpage
@@ -320,7 +320,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow, Github and MIMIC2 behind (page 5); Retweets and LastFM running & Remaining two verdicts; numerically guarded training; a developed attempt with per-sequence type statistics \\
+Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow and MIMIC2 behind (page 5); Github awaiting guarded reruns; Retweets and LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
 \bottomrule
 \end{tabularx}}
 

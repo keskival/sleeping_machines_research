@@ -373,7 +373,7 @@
   "published_marks": 144.79,
   "splits_ahead": 4,
   "verdict": "win (pre-registered frozen configuration)",
-  "diagnosis": "Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 (reproduction, causality, mark normalisation, published units)"
+  "diagnosis": "Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 (reproduction, causality, mark normalisation, published units). Split 0 reached NaN parameters at epoch 6 (checkpoint from epoch 5); guarded protocol rerun queued"
  },
  "b4_github": {
   "L_T": {
@@ -416,8 +416,8 @@
   "best_single": -269.7,
   "published_time": -382.4,
   "published_marks": 109.5,
-  "verdict": "loss (pre-registered frozen configuration)",
-  "diagnosis": "Splits 1-4 diverged to NaN at epochs 3-6 (no non-finite guard); selection fell back to epochs 2-3"
+  "verdict": "no valid verdict yet (numerical failure; guarded protocol reruns queued)",
+  "diagnosis": "Splits 1-4 reached NaN parameters at epochs 3-8 (no non-finite guard); checkpoints from epochs 2-3; b4g reruns (TEST once, configuration unchanged) queued"
  },
  "b4_mimic2": {
   "L_T": {
@@ -715,7 +715,7 @@
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "33675862b9c653a9a3259aeef374694a76c2ebbeeb417643926bad35da57d9a8",
   "experiments/tgb/B5_TGB.md": "0a4b9e1ddb645f21c0ba95ce626ef5b9eb0f88e6188d8179ceaf6683daa79011",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "9a6c378fb8569f70ee6e1d572d067d439d7e58dd4659439a6453cb82658eecfb",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "3268449ee0df2f9ccfa9179356215bedb31071cc64ee0c4e2473c79cd2e3521a",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "0238201f629161ffed380351a5277e5dd01cf73de094d7119de5f5d0c58842ae"
  }
 }
