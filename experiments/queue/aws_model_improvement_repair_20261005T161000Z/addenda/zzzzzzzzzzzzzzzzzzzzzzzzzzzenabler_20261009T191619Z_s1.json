@@ -1,0 +1,243 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "B1/R1 shared route-credit enabler: decide whether compact learned backward credit tracks posterior and preserves DEV likelihood at lower total learner work; matched seeded teacher, S1 verdict ablation, no external architecture training",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_credit6_20261009T191619Z_contract",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_contract/aws_credit6_20261009T191619Z_contract.txt",
+        "queue_sha256": "e873adc6a022cc74a7da33762accee8aab347bf666117410e3c0e5f8cd6871cb",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+          "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_smoke",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_smoke/aws_credit6_20261009T191619Z_smoke.txt",
+        "queue_sha256": "178d7513e021540e20a5bddf5f1fda9df77d4688db19ce9ffe0f0d0dfbf92413",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_dense",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_dense/aws_credit6_20261009T191619Z_dense.txt",
+        "queue_sha256": "853558c39b3b097eab6bfcce1d95be1d92c87db04ff8eb3adbc6595c945396dd",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_dense.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_closed_h64_s2",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_closed_h64_s2/aws_credit6_20261009T191619Z_closed_h64_s2.txt",
+        "queue_sha256": "f609cde8c60e4d9672c77dd4a233795271afb2f3629bf0304087f2319de806fc",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h64_s2.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_closed_h8_s2",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_closed_h8_s2/aws_credit6_20261009T191619Z_closed_h8_s2.txt",
+        "queue_sha256": "7c8b716f3a3aa31039a7f54f5868571fa0e97abd16b2719e9eb61420176c765a",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h8_s2.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_sleep_h8",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_sleep_h8/aws_credit6_20261009T191619Z_sleep_h8.txt",
+        "queue_sha256": "8fae24bed00a1db3d0005764bfcbc0ebd18bd527ebd64092e5c24c240f6e7d1c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_sleep_h8.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_closed_h8_s1",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_closed_h8_s1/aws_credit6_20261009T191619Z_closed_h8_s1.txt",
+        "queue_sha256": "e08b8b37d2f4fe8553ec98028a85db1fc18302f16fb89bdc79a7b8c8d416e2f7",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h8_s1.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/check_v6.py": "505fb018608f85fef8afc4783f5ba9b27d8c0424003aca0ff052f273b470586d",
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351",
+              "experiments/credit/estimator_audit.py": "13918a5852fac80ba97360ba92a547ef9d2b9cc01dfdf3d19466acb8bdc22ed6"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_credit6_20261009T191619Z_analysis",
+        "queue": "experiments/queue/enabler/aws_credit6_20261009T191619Z_analysis/aws_credit6_20261009T191619Z_analysis.txt",
+        "queue_sha256": "61230807fe43d9faf0e30b49c6d9485ef830f01e4c2ab44f38fc00c44742bb2a",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/analyze_v6.py": "c046a54aed3dfb5bb6c8a6f267c38449c1513aa855624b0f9142178f10fcc440"
+        },
+        "result": "experiments/results/credit/aws_credit6_20261009T191619Z_analysis.json",
+        "timeout_s": 120,
+        "rss_kb": 250000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_dense.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h64_s2.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h8_s2.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_sleep_h8.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h8_s1.json",
+            "source_sha256": {
+              "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

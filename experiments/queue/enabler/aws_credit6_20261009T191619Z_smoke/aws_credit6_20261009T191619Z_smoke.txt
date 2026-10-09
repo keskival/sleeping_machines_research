@@ -1,0 +1,2 @@
+# B1/R1 shared route-credit enabler: decide whether compact learned backward credit tracks posterior and preserves DEV likelihood at lower total learner work; matched seeded teacher, S1 verdict ablation, no external architecture training
+aws_credit6_20261009T191619Z_smoke experiments/credit/hindsight_race_v6.py --tag aws_credit6_20261009T191619Z_smoke --arm closed --depth 2 --credit-hidden 8 --proposals 2 --epochs 2 --n-train 1024 --n-test 256 --seed 0

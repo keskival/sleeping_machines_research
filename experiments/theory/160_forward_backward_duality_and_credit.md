@@ -108,7 +108,7 @@ pass's slow parameters, trained on the forward pass's sampled causes), and a for
 quality alone, so the forward pass learns what to tell the backward pass. Test `hindsight_race_v3.py --arm hindsight_msg`:
 4-dimensional learned message; the credit model sees only (message, outcome); queued behind the v2 grid.
 
-## 6. Closing the recursion: one objective both sides climb (founder direction, 9 Oct)
+## 6. Closing the recursion: a shared verdict for two learning objectives (founder direction, 9 Oct)
 
 *"If it's just the backward pass mirrored, it's a static universe. It needs to converge towards learning both sides."*
 
@@ -130,19 +130,21 @@ Bengio 2015):
 - **Forward (θ):** Σ_s w_s ∇ log p_θ(y, k_s | x). This is an estimate of ∇ log p_θ(y|x), and its router part is Σ_s w_s e_{k_s} − π = ρ̂ − π, i.e. §2's credit.
 - **Backward (ψ):** Σ_s w_s ∇ log q(k_s | x, y) (wake), plus the sleep loss on sampled causes as an anchor.
 
-Both are stochastic gradients of the pair (log p_θ(y|x), −KL(ρ_θ ‖ q_ψ)) on the **data**, whose joint fixed point is
-q = ρ_θ and ∇_θ log p_θ = 0. The recursion closes as a contraction:
+Their target updates are the marginal-likelihood gradient for θ and the posterior-cross-entropy gradient for ψ on
+**data** (the posterior target is detached). At finite S these self-normalized estimators are biased when q differs from
+ρ. They are two coupled learning objectives, not the gradient of one established joint scalar potential. A common
+fixed point is possible when q represents and reaches the posterior and θ reaches a stationary likelihood; global
+convergence is a hypothesis. The feedback mechanism is:
 
-- A better q gives lower-variance, less-biased weights, hence a more exact forward gradient. The self-normalized bias is O(var w / S), and var w = 0 when q = ρ.
+- A better q gives lower-variance, less-biased weights, hence a more exact forward gradient. With adequate proposal support and moment conditions the usual self-normalized bias decreases asymptotically as O(1/S); its constant depends on weight moments and the gradient integrand. When q = ρ all importance weights are equal and the sampled credit is unbiased.
 - A better forward model moves ρ_θ less per step, so q's target stops drifting.
 
 The credit gap KL(ρ ‖ q) is the measurable state of the backward side. Learning has converged on both sides when the
-likelihood plateaus *and* the gap goes to zero. Cost: S proposals per example instead of all K causes (S/K of dense).
+likelihood plateaus *and* the gap goes to zero. Expert work: S proposals plus sleep sampling per example instead of all K causes. Total work also includes the credit model, router/candidate discovery and optimizer; S/K is not a total-work ratio.
 Contract (`experiments/credit/check_closed_v5.py`): enumerating every cause once reproduces the exact router gradient
 (1.8e−7 at depth 1, 4.2e−7 at depth 2).
 
-**Timescales (refines the "slow backward parameters" direction).** By two-timescale stochastic approximation (Borkar
-1997), the joint iteration converges when the follower tracks its moving target faster than the target moves. The credit
+**Timescales (refines the "slow backward parameters" direction).** Two-timescale stochastic approximation motivates having the follower track its moving target faster than the target moves. Convergence additionally needs stability, step-size and estimator assumptions; the current fixed-rate Adam experiment does not establish those conditions. The credit
 model must therefore adapt faster than ρ_θ drifts. It is "slow" relative to a single example: it amortizes credit across
 examples, and per-example credit is a cheap read. It is not slow relative to θ. The `hindsight_slow` arm (q at 1/8 of the
 forward rate) tests the wrong side of this condition, and the theory predicts its credit gap grows.
@@ -158,6 +160,11 @@ A failure of (a) with success of (b) would mean the forward side learns without 
 open loop that happens to work. That would be evidence against closure as the mechanism.
 
 Test log, 9 Oct: v4 `hindsight_hybrid` (6 runs) and the v5 grid (18 runs) are queued on slot 1 behind the v2/v3 grids.
+**Protocol correction (19:12 UTC): v1–v5 initialize the teacher from an unseeded global torch RNG. The shared `data-seed`
+seeds input and cause draws but not the teacher weights, so separate arms do not have a matched teacher. These runs are
+individual construction diagnostics; do not use their cross-arm scores as a matched comparison. Preserve their queues
+and any completed results. v6 isolates teacher initialization with `data-seed` and records the generated-data digest.
+Its held-out toy data is explicitly DEV, not a sealed public benchmark test.
 
 ## 7. Prediction 4 built: per-event learning through the memory without BPTT
 
@@ -176,3 +183,61 @@ Test log, 9 Oct: v4 `hindsight_hybrid` (6 runs) and the v5 grid (18 runs) are qu
   - `online_local`: traces dropped.
 - **Pass criterion, stated before results:** `online_trace` within 0.02 nats/event of BPTT, and clearly above
   `online_local`.
+
+
+## 8. Finite-proposal feedback and full learner cost (9 Oct, AWS autonomous continuation)
+
+**Completed mathematical audit:** [estimator_audit.py](../credit/estimator_audit.py), evidence
+[aws_estimator_math_audit_20261009T1912Z.json](../results/credit/aws_estimator_math_audit_20261009T1912Z.json).
+No fitting was performed. Exact multinomial enumeration tests the estimator used by the `closed` arm.
+
+For two causes with posterior ρ = (0.8, 0.2) and proposal q = (0.2, 0.8):
+
+| Proposals S | Expected first-cause credit | Posterior TV bias |
+| --- | --- | --- |
+| 1 | 0.200000 | 0.600000 |
+| 2 | 0.341176 | 0.458824 |
+| 4 | 0.516169 | 0.283831 |
+| 8 | 0.666844 | 0.133156 |
+| 32 | 0.778042 | 0.021958 |
+
+At S = 1 the normalized weight is always 1. The expected wake update to q's logits is
+E_q[e_k − q] = 0: the forward likelihood verdict cannot teach the backward model through this estimator. Sleep can
+still train it. At S ≥ 2 the verdict moves q toward ρ in this example. At q = ρ, the expected posterior estimate is
+exact at every S; locally on the probability-simplex tangent, the derivative of E[ρ̂] − q is −(1 − 1/S) I.
+This is an attracting **mean-field direction for a fixed posterior**; the actual neural update's metric, finite samples,
+optimizer and moving forward model determine its dynamics. The audit verifies the two-cause derivative numerically;
+it does not prove a global contraction or monotonic KL during coupled training.
+
+The old once-each enumeration contract is valid for a **uniform** proposal. Once-each enumeration followed by division
+by a nonuniform q does not reproduce ρ: in the example it yields (0.941176, 0.058824). v6 contracts check every forward
+parameter under the valid uniform enumeration, teacher reproducibility, and separation of detached θ/ψ update paths.
+
+**The backward learner must earn its cost.** Under v5's leading-linear MAC convention (three times forward MACs for
+differentiated operations, one for sleep generation), including the credit network, two proposals and one sleep draw:
+
+| Depth | Credit hidden width | Dense MACs/example | Closed MACs/example | Closed/dense |
+| --- | --- | --- | --- | --- |
+| 1 | 64 | 4,224 | 35,424 | 8.386× |
+| 2 | 64 | 17,280 | 46,688 | 2.702× |
+| 2 | 16 | 17,280 | 9,824 | 0.569× |
+| 2 | 8 | 17,280 | 6,368 | 0.369× |
+
+These are **modeled linear work**, not whole-fitting FLOPs, CPU latency or energy. Softmax, sampling, nonlinearities,
+biases and Adam work are outside those numbers. Selected indexing of the expert parameter tensor still creates a dense
+gradient tensor and invokes dense Adam: sparse expert evaluation does not imply sparse optimizer work. v6 records
+optimizer parameter visits, whole-fit/per-example MAC estimates, evaluation work, wall time, RSS and hardware separately.
+The depth-2 h8 setting offers a concrete engineering target; its credit fidelity and quality require fitting.
+
+**Next decision:** matched-teacher depth-2 DEV pilots compare dense exact, closed h64/S2, closed h8/S2,
+sleep-only h8, and closed h8/S1. The last arm tests whether verdict feedback adds useful learning beyond sleep.
+Inspect likelihood, posterior KL/TV, effective sample size, duplicate proposals and total learner cost together.
+The diagnostic has hard winner routing and cause credit; it lacks persistent temporal memory and is not an integrated
+family benchmark verdict. Successful credit must next be integrated into R1 recall or B1 event learning with those
+mechanisms retained. Known method attribution: [Bornschein & Bengio, Reweighted Wake-Sleep](https://arxiv.org/abs/1406.2751)
+and [Le et al., Revisiting RWS for Models with Stochastic Control Flow](https://arxiv.org/abs/1805.10469).
+
+Pipeline admitted at 19:16 UTC: `aws_credit6_20261009T191619Z` (slot 1, behind existing work); contract and smoke are prerequisites,
+then the five pilots above and `analyze_v6.py`. Automatic result: `experiments/results/credit/aws_credit6_20261009T191619Z_analysis.json`.
+The predeclared compact-quality screen is final DEV likelihood within 0.02 nats of dense and lower linear MACs;
+passing it selects three-seed confirmation, not a win claim. Numerical contracts and fitting results remain pending.

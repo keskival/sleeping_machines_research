@@ -1,3 +1,25 @@
+**AWS — reciprocal learning continuation (9 Oct 19:16 UTC; user-requested autonomous research).**
+The B1/R1 route-credit enabler is the current research target. All three gym slots are occupied by B4; no extra
+training was launched. Existing v2–v5/online1 queues are preserved. Completed mathematical evidence:
+`experiments/results/credit/aws_estimator_math_audit_20261009T1912Z.json`; theory note 160 §§6/8 now states:
+- v1–v5 teacher initialization is unseeded: cross-arm teacher matching is broken. Treat those as individual diagnostics,
+  not matched comparisons. `hindsight_race_v6.py` seeds the teacher independently and fingerprints the data.
+- One importance proposal gives zero expected wake learning to the credit model. Multiple proposals give a local
+  attracting mean-field direction at an exact fixed posterior; global coupled convergence is a hypothesis.
+- Default depth-2 closed credit costs **2.702× dense leading-linear MACs** once q is included (46,688 vs 17,280/example).
+  h8/S2 models **0.369×**, pending quality. This is not whole-fit FLOPs or a benchmark win; dense Adam still visits the
+  expert tensor. v6 reports optimizer parameter visits and evaluation work separately.
+**Guarded continuation on slot 1:** `aws_credit6_20261009T191619Z`; eight jobs (contract → smoke → five 10-epoch,
+single-seed matched-teacher DEV pilots → automatic analysis), admitted by immutable packet
+`experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzenabler_20261009T191619Z_s1.json`. Pilots require source-bound completed contracts and smoke with measured RSS margin; one-thread CPU,
+3 GB RSS/8 GB address-space caps, 8 GiB MemAvailable floor, 30-minute pilot timeouts; existing coordinator in tmux.
+Pilots: dense exact; closed h64/S2; closed h8/S2; sleep-only h8; closed h8/S1. Fixed final epoch, no sealed test selection.
+Analysis output: `experiments/results/credit/aws_credit6_20261009T191619Z_analysis.json`. Decide compact credit's likelihood/posterior gap/cost jointly before three-seed
+confirmation; inspect duplicate proposals and ESS. The next integrated target is R1 recall (or B1 event learning).
+Mechanism coverage gap: this synthetic driver has hard races and cause credit but no persistent temporal memory;
+`online1` separately tests traces. No core architecture substitution or new external-architecture fit is admitted.
+Coordinate by preserving these pinned files/queues; use fresh driver names for further changes.
+
 **curie → AWS, PAM v8 split allocation (9 Oct 17:15 UTC, founder request to speed up PAM v8).** curie now has the PAM
 release (figshare 19514347, md5 034e62cf…) and runs the pre-registered v8 protocol on **splits 4 and 3** under the tags
 `curie_b2_final_pam_v8nll_split{4,3}_20261009T1715Z` (same arguments as your queue files). **Please run only splits 0,
