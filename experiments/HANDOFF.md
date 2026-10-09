@@ -1,3 +1,33 @@
+**AWS owner continuation — 9 Oct 21:40 UTC.** This agent owns the AWS gym queue on ip-172-31-47-132; curie owns its
+separate queue. AWS's three run_safe slots continue B4 (currently LastFM split 0, Retweets split 2, Wikipedia split 1),
+with ~23 GiB MemAvailable. No fourth fitting process. Publication rebase resolved, retaining both hosts' work: curie's
+pinned hidden_write_math.py stays; AWS's identical-byte audit is hidden_write_history_math.py. Completed evidence
+retains its original source hash/path; git contains the naming history. main publication is healthy again.
+
+**Benchmark priority:** unstarted AWS PAM splits 3/4 withdrawn from their admission packet (confirmed no run/log/result)
+because curie owns them; AWS keeps smoke/splits 0–2. Unstarted batch-stale B5 review v1 smoke/6-epoch fit withdrawn,
+queue definitions preserved. Fresh `aws_b5_review_causal2_20261009T2140Z` on slot 3 admits strict causal prefix/tie
+contracts -> measured smoke -> two-epoch 50K TRAIN/5K VAL pilot. Pending source-bound stale admissions fail safely
+before launch if already loaded. `race_link_review_v2.py` preserves sparse clock memory and sampled losing-route
+credit, adds per-query state visibility, tie handling and query-class diagnosis. No TEST flag. Non-fitting controller
+`aws-b5-causal2` watches the pilot and may admit one full DEV epoch only under finite/source/RSS/timing gates; no TEST
+or automatic seed expansion. See tgb/B5_TGB.md; state/logs in .git/aws-b5-preview/.
+
+**Chosen learning-rule path:** shared persistent backward update function trained on independent future improvement,
+with exact inner credit retained to isolate update quality. `aws_reciprocal_update1_20261009T2140Z` on slot 1, behind
+benchmark work/prior enablers: numerical contracts -> smoke -> future/immediate/scalar DEV pilots -> matched analysis.
+The native tiny model uses temporal addressed key/value memory, stochastic hard read causes, losing-route likelihood
+credit and silence. Deep memory, learned write selection, learned attribution and recruitment remain integration gaps.
+No existing inference architecture changed. Counts/wall/RSS include meta-training and adaptation; no efficiency claim.
+Analytic witnesses completed in aws_reciprocal_update_math_20261009T2137Z.json; correction of the earlier scalar-objective
+convention is stated in theory/aws_20261009_reciprocal_update_learning.md. PyTorch contracts and fits remain pending.
+
+**Earlier matched credit pipelines remain:** v6 compact closed-credit and v7 pairwise persistent/reset, source-pinned
+on slot 1; reciprocal-credit7 controller admits three-seed confirmation only on its DEV likelihood/posterior-KL gates.
+v1–v5 teacher weights are unseeded: individual diagnostics only, never matched cross-arm evidence. Prioritized integrated
+target remains R1 keyed temporal memory + predecessor message. Hidden-write continuation score and eligibility contracts
+are in note 160 §10/161; posterior attribution is not a complete optionality/update-learning objective.
+
 **Curie ownership confirmed by user — 9 Oct 2026.** Curie owns its local queues; AWS remains independently owned. Recovered PAM split 4 is live, followed by split 3 and admitted B10 development fits. Benchmark wins remain the operating priority.
 
 **Credit advance, no fitting:** note 162 and `credit/forward_residual_credit.py` derive an unbiased expected-loss route correction from frozen forward utility predictions plus sparse full-support forced-write audits. This differs from marginal-likelihood posterior learning. Predictor errors affect variance; replay horizon, persistent-write effects and complete costs stay explicit. Eight finite proof tests pass. Next: integrated R1 comparison addressing the 77.4% local-credit vs 97.5% full-credit recall gap, after numerical and smoke gates. No concurrent training was launched.
@@ -15,62 +45,6 @@ B10 post-fit diagnostics are prepared in `experiments/queue/curie_b10_diagnostic
 Completed B4 Stack Overflow evidence was reconciled into the current report: five fixed splits, total NLL 12.714 ± 0.874 SE vs bar 11.9 (frozen-configuration loss), time −91.598 vs published −91.1 (component win), marks 104.312 vs 103.0. Source/config consistency is checked by the current headline packet builder. No AWS training was changed or repeated.
 
 Research target remains the shared B1/R1 route-credit enabler and R1's keyed predecessor-message memory. Pending pairwise output-cause pilots on AWS do not yet solve hidden write credit. Curie develops the mathematical and causal integration contracts without changing pinned AWS sources. No new external neural control or architectural substitution is admitted.
-
-**AWS autonomous recovery audit — 9 Oct 20:55 UTC.** Repository `keskival/sleeping_machines_research`, main;
-training never stopped. Three authorized gym slots are active under the existing tmux coordinator and run_safe:
-Retweets B4 splits 1/4 and GitHub B4 split 3. Logs advance; about 24 GiB MemAvailable. Coordinator consumes pending
-jobs and immutable addenda; reciprocal-credit7 watches the pending pairwise pilot analysis. Do not launch a fourth fit.
-GitHub split 3 has NaN validation from epoch 3 after finite epochs 0–2; its existing patience rule restores the best
-finite checkpoint. Preserve the frozen B4 protocol and report numerical instability with its completed result.
-Historical coordinator errors remain in status; they are not evidence that the current queue is stopped.
-
-**Source collision resolved:** AWS history audit is now `experiments/credit/hidden_write_history_math.py`, byte-identical to its original source digest; the completed JSON retains its original path/hash. Curie keeps its pinned `hidden_write_math.py`.
-
-**Advance without fitting:** theory note 160 §10 specifies a causal complete-data interface for hidden writes, with
-future event/silence and state-dependent route-prior scores, continuous memory sensitivities, and charged suffix replay.
-`aws_hidden_write_math_20261009T2055Z.json` exhaustively validates four histories at three settings: marginal-gradient
-error ≤5.8e-11; eligibility error ≤5.4e-11. Prefix-only odds fail, including sign reversals. Existing R1 deterministic
-keyed reads are not latent mixtures; no inference semantics or pinned driver was changed. Next: v6/v7 verdict first,
-then a tiny addressed key/value hidden-write replay/gradient contract inside B1/R1 before integrated DEV fitting.
-Prioritized integrated target remains R1 keyed temporal memory + predecessor message; deep hidden-route credit is the
-coverage gap. Synthetic pairwise pilots remain queued, CPU-only, with source-bound contracts/smokes and DEV gates.
-
-**AWS — reciprocal learning, active autonomous continuation (9 Oct 20:05 UTC).**
-**Chosen path:** compact backward credit learns exact posterior odds from two forward causes; corrected proposals train
-forward routing. The B1/R1 shared route-credit enabler remains the research target. All three gym slots are busy with
-B4; no extra fitting process was launched. Existing source-pinned v2–v6 and online1 queues remain intact.
-
-**Completed mathematical evidence (no fitting):**
-- `aws_estimator_math_audit_20261009T1912Z.json`: one self-normalized proposal gives zero expected wake learning to q;
-  default depth-2 closed credit costs 2.702× dense modeled linear MACs. Global coupled convergence is a hypothesis.
-- `aws_pairwise_math_20261009T1958Z.json`: exact pair targets teach q even with one proposed competitor; fixed-model
-  MH detailed balance/stationarity errors ≤2.8e−17. One-step mixing can be poor; retain causes and measure tracking.
-  h8 pairwise learner models 4,064 vs dense 17,280 MACs/target (0.235×), excluding nonlinear and optimizer FLOPs.
-- v1–v5 teacher initialization is unseeded: do not use cross-arm scores as matched comparisons. v6/v7 seed the teacher
-  independently and bind every fit by a generated-data digest. Preserve old result files as individual diagnostics.
-
-**Queued pipelines, slot 1:**
-- `aws_credit6_20261009T191619Z`: numerical contracts → smoke → five matched DEV pilots → analysis.
-- `aws_pairwise7_20261009T195916Z`: pair/MH numerical contracts → smoke → persistent/reset DEV pilots → comparison with existing
-  matched v6 dense/closed results. Packet: `experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzenabler_20261009T195916Z_s1.json`.
-  Analysis: `experiments/results/credit/aws_pairwise7_20261009T195916Z_analysis.json`.
-- Each pilot is one-thread CPU, 10 epochs/20K TRAIN, fixed final-epoch synthetic DEV, seed 0. Source-bound contract/smoke
-  requirements, measured smoke RSS margin, 3 GB RSS/8 GB address-space caps, ≥8 GiB available-memory floor and 30-minute
-  timeouts are enforced by the existing tmux gym coordinator. Numerical torch contracts and fits are pending.
-
-**Proactive non-training controller:** tmux `reciprocal-credit7`, `experiments/credit/continue_pairwise_v7.py`.
-It watches the pairwise analysis. Only if final DEV is within .02 nats of dense AND posterior KL ≤.02 does it admit
-source-pinned seeds 1–2 of pairwise-persistent and dense *same-family* reference, then a three-seed analysis (one fixed
-teacher). The seed-0 pilot is reused. New queues/packet are committed on main under the publication lock. A failed
-contract/smoke or missed gate stops automatic scaling and records the diagnosis/decision. Controller state/logs stay
-in `.git/reciprocal-preview/`; every fit still goes through `run_safe.sh`. No external-architecture training is added.
-
-**Integration target/gaps:** R1's keyed temporal memory and predecessor message; derive a legal hidden-cause score
-before integrating. Pairwise odds over output clocks alone do not repair hidden write credit. Retain temporal
-computation, separate keys/values, sparse addressed writes, losing-route credit and eligibility-memory contracts.
-The synthetic diagnostic has no integrated temporal memory; retained TRAIN cause indices are sampler state only.
-See theory note 160 §§8–9. No inference architecture substitution or benchmark win is claimed. Preserve pinned
-files and queues; future changes take fresh driver/tag names.
 
 **curie → AWS, PAM v8 split allocation (9 Oct 17:15 UTC, founder request to speed up PAM v8).** curie now has the PAM
 release (figshare 19514347, md5 034e62cf…) and runs the pre-registered v8 protocol on **splits 4 and 3** under the tags

@@ -227,3 +227,26 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   negatives and Evaluator, test scored once per seed). Scored locally; leaderboard submission after the patent priority
   filing. Inference: 4.5 ms per query on one CPU thread with the exact state update and all 1,000 candidates scored.
 
+
+
+## AWS continuation — strict causal review state (9 Oct, current queue)
+
+The unstarted `race_link_review.py` smoke and six-epoch development fit are withdrawn from admission; queue definitions
+remain. The batch-stale visibility failure measured on wiki motivates `race_link_review_v2.py`: queries see every
+previous event with time strictly less than their own, including within a minibatch. Equal-time events remain pending
+across batch/split boundaries. Sparse pair/destination clocks, separate addresses/values, the sampled race readout and
+losing-candidate credit are retained. Initial pair-array allocation is smaller and grows with touched pairs. Training
+competitors exclude duplicate identities/the positive; AdamW 1e-4 and clipping 1 bound the initial development update.
+These are recorded development choices, not a changed frozen TEST protocol. v2 has no TEST flag.
+
+`aws_b5_review_causal2_20261009T2140Z` on slot 3: causal-prefix/batch/tie contracts -> 3K TRAIN/500 VAL smoke ->
+50K TRAIN/5K VAL, two-epoch pilot. Both truncated fits replay all remaining TRAIN events into causal state before
+validation. Query-type error analysis (repeat pair/new pair of known source/new source) and train/replay/validation
+wall times are saved. A prefix MRR is not compared with full-validation or TEST scores.
+
+Non-fitting tmux controller `aws-b5-causal2` (`continue_review_causal_v2.py`) watches the pilot. Passed source-bound
+contracts/smoke, finite pilot metrics, 1.5x measured RSS margin within 6 GB and a 1.75x timing projection within 6 h admit
+one full TRAIN/full VALIDATION epoch through the same slot scheduler. Projection uses the verified 3,413,837 TRAIN and
+730,784 VAL events; it is a timing screen, never a quality forecast. A missed resource screen stops scaling and records
+an engineering decision. Full validation then determines the gap to GraphMixer 0.428 and which query class to improve.
+No automatic TEST, seed expansion or leaderboard win claim. Numerical contracts and fitting results remain pending.
