@@ -393,3 +393,9 @@ oracle's .821.
   "seeds" vs the classical references: difference +.017, bootstrap [+.003, +.031], every seed above, margin not met →
   **tie** (a first version ranked clean and faulty scores separately; the dry run exposed it; fixed to pooled ranks).
   On validation, C10 meets two of the three win conditions; the .02 margin is what C11 must add.
+- 9 Oct 06:55 UTC: **C11 (C10 + soft at-most-once predecessor use; config 8 of 8, the last)**: validation total .7014,
+  type .712; wear and tear .660, retry delay .742; validation-clean NLL 1.025 (C10: .7019 / .711 / .656 / .746 / 1.023).
+  Consumption leaves fit and detection unchanged. **Native configuration frozen: C10** (higher validation AUROC at N*
+  under the declared primary rule `total`; also about half the cost). Development budget used: 8 of 8. Stage 4 queued on
+  curie: C10 seeds 6, 7, 8 (training and validation only); test is scored with `score_sealed_test.py` once the neural
+  reference grid exists (requested from AWS), then `stage5_decision.py`. Unused C11 Stage 4 queue files are not run.
