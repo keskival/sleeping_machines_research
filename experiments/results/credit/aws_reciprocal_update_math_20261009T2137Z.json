@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 reciprocal update learner",
+  "scope": "analytic expectation contracts; no fitting, no learned optimizer performance claim",
+  "future_optimal_step": 0.2,
+  "same_example_optimal_step": 1.0,
+  "future_risk_at_future_step": 2.4,
+  "future_risk_at_same_example_step": 4.0,
+  "meta_derivative_error": 0.0,
+  "optimal_shared_scalar_step": 0.11232876712328767,
+  "shared_scalar_remaining_loss": 0.19726027397260276,
+  "curvature_conditioned_remaining_loss": 0.0,
+  "recruitment_immediate_value": -0.1,
+  "recruitment_continuation_value": 0.30000000000000004,
+  "information_option_value": 1.0,
+  "decision": "Train update quality on independent continuation; distinguish update geometry, attribution and recruitment",
+  "source_sha256": {
+    "experiments/credit/reciprocal_update_math_v1.py": "d069cc8f4cc89f5d9109903c51632a79eb0ab99b46a216614ca883939fedc09d"
+  },
+  "correction": "The 2135Z packet used the step minimizing squared displacement, then evaluated curvature-weighted loss. This packet minimizes that loss directly; the qualitative witness is unchanged."
+}

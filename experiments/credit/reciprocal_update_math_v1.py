@@ -18,7 +18,7 @@ def audit():
     # A shared update map can amortize different curvatures. A single scalar
     # step cannot solve both quadratics from the same initial displacement.
     curvatures = (1., 9.)
-    scalar = sum(curvatures)/sum(v*v for v in curvatures)
+    scalar = sum(v*v for v in curvatures)/sum(v*v*v for v in curvatures)
     scalar_remaining = sum(h*(1-scalar*h)**2/2 for h in curvatures)/2
     structured_remaining = sum(h*(1-(1/h)*h)**2/2 for h in curvatures)/2
     assert scalar_remaining > .1 and structured_remaining == 0.

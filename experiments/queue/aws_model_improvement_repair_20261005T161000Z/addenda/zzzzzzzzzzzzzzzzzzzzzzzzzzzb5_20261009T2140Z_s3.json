@@ -1,0 +1,85 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "Correct per-query strict causal state on tgbl-review; contract then measured smoke then bounded prefix pilot/error analysis. No full fit or TEST before pilot resource/quality diagnosis",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b5_review_causal2_20261009T2140Z_contract",
+        "queue": "experiments/queue/b5/aws_b5_review_causal2_20261009T2140Z_contract/aws_b5_review_causal2_20261009T2140Z_contract.txt",
+        "queue_sha256": "0f8e423288d6e9570269f8529fcf497b1defaf87cf0ffd9ac7c0e390391f5283",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_contract.json",
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000,
+        "requires": []
+      },
+      {
+        "name": "aws_b5_review_causal2_20261009T2140Z_smoke",
+        "queue": "experiments/queue/b5/aws_b5_review_causal2_20261009T2140Z_smoke/aws_b5_review_causal2_20261009T2140Z_smoke.txt",
+        "queue_sha256": "8dfa198689645e3a02fb31b5c3d7fc0c783e23e6e67fcd8807bd944fdd3f7c53",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_smoke.json",
+        "timeout_s": 1200,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            }
+          }
+        ]
+      },
+      {
+        "name": "aws_b5_review_causal2_20261009T2140Z_pilot",
+        "queue": "experiments/queue/b5/aws_b5_review_causal2_20261009T2140Z_pilot/aws_b5_review_causal2_20261009T2140Z_pilot.txt",
+        "queue_sha256": "ce13bc46a07ed5e67c4d31aafbb03cd322906d6df25c9f4e0109c0eddccdc4dc",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_pilot.json",
+        "timeout_s": 3600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            }
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_smoke.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      }
+    ]
+  }
+}

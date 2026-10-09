@@ -1,0 +1,162 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1/R1",
+  "purpose": "Independent-future update learning vs same-example and scalar controls; bounded synthetic DEV only; no benchmark TEST or automatic long scaling",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_contract",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_contract/aws_reciprocal_update1_20261009T2140Z_contract.txt",
+        "queue_sha256": "0d15db2761b92135a5a80d272af8e0c6faf1927bdfca83d80bf1911cee8458d0",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_contract.json",
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": []
+      },
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_smoke",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_smoke/aws_reciprocal_update1_20261009T2140Z_smoke.txt",
+        "queue_sha256": "adaf73361fdb09c3807759fea7c00e0bbc35f1a7ae0309c4f4fbf558a02892dd",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_smoke.json",
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          }
+        ]
+      },
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_future",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_future/aws_reciprocal_update1_20261009T2140Z_future.txt",
+        "queue_sha256": "57152818c074b8b5b565b841dbba80f4ebe2b77d8f539fb5c8c3e278516e061f",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_future.json",
+        "timeout_s": 1200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_immediate",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_immediate/aws_reciprocal_update1_20261009T2140Z_immediate.txt",
+        "queue_sha256": "46243097ed2fa1f0c8ff435de38d97609999984e1902681f32edb8ed264c83c6",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_immediate.json",
+        "timeout_s": 1200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_scalar",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_scalar/aws_reciprocal_update1_20261009T2140Z_scalar.txt",
+        "queue_sha256": "8564abff177089f8abf71a1f12cb8f40b4df0cd60104b4d9b9d35b57cd703ab7",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_scalar.json",
+        "timeout_s": 1200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            },
+            "rss_margin": 1.5
+          }
+        ]
+      },
+      {
+        "name": "aws_reciprocal_update1_20261009T2140Z_analysis",
+        "queue": "experiments/queue/enabler/aws_reciprocal_update1_20261009T2140Z_analysis/aws_reciprocal_update1_20261009T2140Z_analysis.txt",
+        "queue_sha256": "14e924251ae0881c206e2a800cbc5bf27e07899448f7c030e4b2817d4227b490",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/analyze_reciprocal_update_v1.py": "1246bb70ca041df2d5af648f414dfc6b5d003d8f239ba7742f6289aa64f47eb5"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_analysis.json",
+        "timeout_s": 120,
+        "rss_kb": 250000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_future.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_immediate.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          },
+          {
+            "result": "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_scalar.json",
+            "source_sha256": {
+              "experiments/credit/reciprocal_update_v1.py": "c1eca513f15435c20c0954ff3b3632715910c49202093d390a2b8bcbd56d464d"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

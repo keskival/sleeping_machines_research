@@ -1,0 +1,2 @@
+# B1/R1 reciprocal update learner: smoke changes whether the development pipeline advances
+aws_reciprocal_update1_20261009T2140Z_smoke experiments/credit/reciprocal_update_v1.py --tag aws_reciprocal_update1_20261009T2140Z_smoke --arm future --meta-steps 3 --inner-steps 3 --batch 2 --dev-tasks 2
