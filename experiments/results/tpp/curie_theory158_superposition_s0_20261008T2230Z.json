@@ -1,0 +1,50 @@
+{
+ "status": "completed",
+ "tag": "curie_theory158_superposition_s0_20261008T2230Z",
+ "theory": "note 158 sect. 455 prediction 5",
+ "args": {
+  "tag": "curie_theory158_superposition_s0_20261008T2230Z",
+  "ks": "1,2,4,8",
+  "seed": 0,
+  "epochs": 25,
+  "max_wall_s": 600.0
+ },
+ "rows": [
+  {
+   "K": 1,
+   "events_per_seq": 19.533333333333335,
+   "full_ll": -0.7329743208676046,
+   "single_ll": -1.719775213414571,
+   "advantage": 0.9868008925469663,
+   "full_params": 16456,
+   "single_params": 14432
+  },
+  {
+   "K": 2,
+   "events_per_seq": 82.24666666666667,
+   "full_ll": 0.48333085284360383,
+   "single_ll": -0.4309739123034723,
+   "advantage": 0.9143047651470761,
+   "full_params": 16456,
+   "single_params": 14432
+  },
+  {
+   "K": 4,
+   "events_per_seq": 125.63333333333334,
+   "full_ll": 0.11622655163965265,
+   "single_ll": -0.3805441612316275,
+   "advantage": 0.49677071287128016,
+   "full_params": 17468,
+   "single_params": 14578
+  },
+  {
+   "K": 8,
+   "events_per_seq": 227.40666666666667,
+   "full_ll": -0.06375397116262957,
+   "single_ll": -0.27083019342008774,
+   "advantage": 0.20707622225745817,
+   "full_params": 19492,
+   "single_params": 14870
+  }
+ ]
+}

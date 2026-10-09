@@ -131,6 +131,8 @@ tuned dense models at 90M characters.
 - §450 / Proposition 5: recall 21.6% → 97.5% with the predecessor message; 77.4% by local credit.
 - §453(2): FAS v2, duration-matched predecessor attention gives the first native lead over the best classical detector
   (validation .702 vs .685).
+- §453(2) qualified by Prediction 5's refutation: the timing advantage of the race shrinks with the number of superposed
+  processes (0.99 → 0.21 nats per event from K = 1 to 8); on superposed streams the value is in binding.
 
 ## §455 Predictions to test next
 
@@ -145,6 +147,14 @@ tuned dense models at 90M characters.
    Monte-Carlo-compensator variant of the same model. **Confirmed (§454): 18% relative gradient noise at J = 10, 0 exact.**
 5. **Superposition advantage:** on synthetic superpositions of K renewal processes, the race head's advantage over a
    single-intensity model grows with K.
+   **Refuted (9 Oct, `experiments/tpp/superposition_test.py`, seed 0):** advantage (full race − single exponential clock with
+   the same memory, nats per event) **0.987 / 0.914 / 0.497 / 0.207 for K = 1 / 2 / 4 / 8**: positive at every K but
+   shrinking. Reason (Palm–Khintchine): a superposition of many sparse renewal processes approaches a Poisson process; the
+   merged gaps become short relative to each process's cycle, the conditional intensity is nearly constant within a gap,
+   and a single history-conditioned clock comes close. **Revised statement:** the race's *timing* advantage is largest
+   for few concurrent processes with structured timing; on heavily superposed streams its value must come from
+   identifying the processes (binding, note 157) and from mark structure, not from the within-gap intensity shape. This
+   matches B3, where the gain on interleaved logs came only with predecessor binding.
 
 ## §456 Summary
 
