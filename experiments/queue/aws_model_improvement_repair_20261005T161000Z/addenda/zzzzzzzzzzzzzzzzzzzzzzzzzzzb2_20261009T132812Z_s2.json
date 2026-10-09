@@ -4,35 +4,7 @@
   "purpose": "B2 PAM v8 pre-registered protocol (curie, 9 Oct; B2_IRREGULAR_TS.md): v7 configuration with selection on validation cross-entropy instead of tied accuracy; five official splits, TEST once per split. Decides whether continuous selection removes the split-4 early freeze (v7 test 0.964) and strengthens the PAM win",
   "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
   "slots": {
-    "2": [
-      {
-        "name": "b2_final_pam_v8nll_split3",
-        "queue": "experiments/queue/b2/b2_final_pam_v8nll_split3/b2_final_pam_v8nll_split3.txt",
-        "queue_sha256": "6c8fa807a9839bbdb8b1bd9ec5b8089714001ca69736e05b26f4bb6e7d504a84",
-        "kind": "b2_job",
-        "source_sha256": {
-          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
-          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
-        },
-        "result": "experiments/results/irts/b2_final_pam_v8nll_split3.json",
-        "timeout_s": 32400,
-        "rss_kb": 6000000,
-        "vms_kb": 8000000
-      },
-      {
-        "name": "b2_final_pam_v8nll_split4",
-        "queue": "experiments/queue/b2/b2_final_pam_v8nll_split4/b2_final_pam_v8nll_split4.txt",
-        "queue_sha256": "e842517bd410ba3e64a9e153b6bb02c40481739d878f08f5e26c9d51ba4cfda7",
-        "kind": "b2_job",
-        "source_sha256": {
-          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
-          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
-        },
-        "result": "experiments/results/irts/b2_final_pam_v8nll_split4.json",
-        "timeout_s": 32400,
-        "rss_kb": 6000000,
-        "vms_kb": 8000000
-      }
-    ]
-  }
+    "2": []
+  },
+  "withdrawal": "9 Oct AWS audit: splits 3/4 assigned to curie under HANDOFF 17:15/recovery 20:54. Neither AWS run started. Prevent duplicate TEST; retain queue definitions, no execution."
 }
