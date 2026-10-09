@@ -65,7 +65,9 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   model from 0.776 to 0.852 (theory note 159 predicted at least +0.03); the pre-registered sealed test is next. tgbl-review: a training-free decayed event state reaches 0.344
   validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
-  model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means.
+  model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means. **First verdict: MOOC
+  lost** (total NLL −226.9 vs the pre-registered bar −239.7 and the best single published model's −233.8; marks nearly
+  level, inter-event timing is the gap).
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
 characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).

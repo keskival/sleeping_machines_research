@@ -66,7 +66,7 @@ task (tgbn-trade), our model reaches validation NDCG@10 0.875 against 0.860 for 
 validation year with 2,107 parameters; the first of three pre-registered sealed test seeds scores 0.868 against NAVIS's
 0.863. On TGB link prediction (tgbl-wiki, evaluation reproduced exactly) exact per-event state gives validation MRR 0.852
 against 0.842 for the leader TPNet; its sealed test is next. A second neural-TPP benchmark (35 pre-registered runs with
-the frozen one-configuration model) is running.
+the frozen one-configuration model) is running; its first dataset, MOOC, is a loss (total NLL −226.9 vs the bar −239.7).
 
 **Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's
 temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney

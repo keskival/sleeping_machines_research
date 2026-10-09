@@ -32,7 +32,7 @@ This is an execution plan, not a prediction of investor acceptance.
   NDCG@10 0.875 vs 0.860 for the leader NAVIS; first sealed seed 0.868 vs NAVIS's 0.863 on test (seeds 2–3 pending). TGB link prediction: evaluation
   reproduced exactly; tgbl-wiki 0.852 vs TPNet 0.842 (both validation; sealed test next), tgbl-review training-free state above TGN/TGAT/TNCN.
   Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
-  model.
+  model; first verdict: MOOC lost (−226.9 vs bar −239.7; timing is the gap).
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
