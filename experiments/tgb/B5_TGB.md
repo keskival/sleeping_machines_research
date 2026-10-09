@@ -213,4 +213,7 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   prediction over all 255 destinations (2,107 parameters); tgbl-wiki v4 4.5 ms per query including the per-event state
   update and scoring all 1,000 candidates (220 queries/s; d = 0 and d = 16 equal: the cost is the feature map, mostly the
   1,000 × 1,000 co-visitation product, not the readout).
+- 9 Oct 17:36: **tgbn-trade trend ablation** (`--drop trend`, validation, seed 0): 0.8677 vs full 0.8747 and persistent
+  forecast 0.8604; the history-shape features carry about half (0.0070 of 0.0143) of the gain over persistent forecast.
+  Reverse-flow ablation pending (note 159 prediction 3 graded when both are in).
 

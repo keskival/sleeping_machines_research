@@ -25,7 +25,8 @@ every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E1
   context). Timestamps are recorded on a 1 µs grid and many consecutive aggTrades
   share a timestamp (one taker order walking the book), so **every model's time term is the interval likelihood of the
   1 µs recording cell containing the gap**, S(g) − S(g + 1 µs), not a density at g (the resolution principle of our
-  EasyTPP work; a point density at a zero gap is unbounded and would reward grid exploitation).
+  EasyTPP work; a point density at a zero gap is unbounded and would reward grid exploitation); the mark term is the mark
+  law at the cell's midpoint, g + 0.5 µs, for every model (specified 9 Oct 17:55, before any fit).
 - **Secondary metrics (reported beside, never replacing, the primary):** (a) 60 s realised-variance forecasts issued every
   minute, QLIKE loss, vs EWMA and HAR-style regressions of past realised variance; (b) direction of the 10 s mid move on
   ≥ 1 bp moves (E17's metric) vs online logistic regression and momentum; (c) P&L after a 2 bp cost of the direction
@@ -44,3 +45,8 @@ every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E1
 ## Development log
 
 - 9 Oct: battle admitted; data download of 1 Aug – 7 Sep 2026 started (checksums verified per file).
+- 9 Oct 17:55: data downloaded (38 days, every SHA-256 verified). Driver `b10_tpp.py` (Poisson, multivariate Hawkes with
+  two exponential kernels, race_tpp_v5 race) with the common interval likelihood; contract: the Hawkes closed-form
+  compensator and interval likelihood equal brute-force numerical integration to 1e-6 nats on a synthetic sequence with
+  tied timestamps; the race terms are finite at zero gaps. Development fits of all three queued after data preparation.
+
