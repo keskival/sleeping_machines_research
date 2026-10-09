@@ -24,10 +24,10 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 
 | Method | Test MRR |
 |---|---|
-| TPNet | 0.827 ± 0.001 |
-| Heuristic (LocalGlobal) | 0.821 |
+| TPNet | 0.827 ± 0.001 (validation 0.842 ± 0.001) |
+| Heuristic (LocalGlobal) | 0.821 (validation 0.842) |
 | HyperEvent | 0.810 |
-| DyGFormer | 0.798 |
+| DyGFormer | 0.798 (validation 0.816) |
 | NAT | 0.749 |
 
 ## Design rationale (why the family should win here)
@@ -165,4 +165,9 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct 12:55: **tgbn-trade sealed seed 0: TEST NDCG@10 0.8683** (2013 / 2014 / 2015: .893 / .843 / .868); validation
   0.8747 (selected epoch 95); persistent forecast in our replay 0.8541 on test (leaderboard 0.855: protocol fidelity on
   test too). Above NAVIS (0.863) on this seed; the pre-registered verdict needs seeds 1 and 2 (queued).
+- 9 Oct 13:45: **race_link v4 (per-event causal state, identities d = 16), development run in progress:** validation MRR
+  0.8515 / 0.8492 / 0.8452 after epochs 0 / 1 / 2 (selection keeps the best); repeat pairs now 90.8% of queries (in-batch
+  repeats visible) at 0.931 MRR. **The leaderboard's validation column: TPNet 0.842 ± 0.001, LocalGlobal heuristic 0.842,
+  DyGFormer 0.816.** Correction: earlier external text compared our validation MRR with TPNet's *test* 0.827; replaced
+  by the like-for-like validation comparison (0.776 vs 0.842 for the completed v2) until v4 completes.
 

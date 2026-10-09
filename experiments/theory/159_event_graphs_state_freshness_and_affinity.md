@@ -74,3 +74,7 @@ by the maximum of that coordinate over the vectors.
 ## Grades
 
 (Filled in as results arrive; a refuted prediction is stated beside the original claim with the reason.)
+
+- **Prediction 1 — confirmed** (9 Oct 13:45, race_link v4 first epoch, validation): 0.8515 vs v2's 0.776 (+0.075, ≥ 0.03
+  predicted). Repeat-pair share rises from 85.4% to 90.8% (the hidden in-batch repeats become visible) and repeat-pair MRR
+  from 0.896 to 0.931 (fresher newest destination). v4 also adds identities (d = 16); the d = 0 run separates the two.

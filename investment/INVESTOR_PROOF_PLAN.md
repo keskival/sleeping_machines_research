@@ -30,7 +30,7 @@ This is an execution plan, not a prediction of investor acceptance.
   reference seeds on AWS.
 - **New event domains (9 October, in development):** Temporal Graph Benchmark node affinity (tgbn-trade): validation
   NDCG@10 0.875 vs 0.860 for the leader NAVIS, sealed 3-seed test queued (bar 0.863). TGB link prediction: evaluation
-  reproduced exactly; tgbl-wiki 0.773 vs TPNet 0.827 (validation), tgbl-review training-free state above TGN/TGAT/TNCN.
+  reproduced exactly; tgbl-wiki 0.776 vs TPNet 0.842 (both validation), tgbl-review training-free state above TGN/TGAT/TNCN.
   Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
   model.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
