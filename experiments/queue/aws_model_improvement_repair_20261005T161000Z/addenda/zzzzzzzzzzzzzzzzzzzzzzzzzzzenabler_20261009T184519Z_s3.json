@@ -1,0 +1,164 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared enabler, theory note 160 prediction 4: per-event learning with exact forward eligibility traces (no BPTT, no stored history) vs full BPTT vs traces dropped, same race TPP model, Taxi DEV. Decides whether asynchronous on-substrate learning keeps BPTT quality",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online1_contract",
+        "queue": "experiments/queue/enabler/online1_contract/online1_contract.txt",
+        "queue_sha256": "feffe317583653a3bcb4b9608c414618c563842298c8521ceace57cd7ab6e853",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_contract.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_smoke_trace",
+        "queue": "experiments/queue/enabler/online1_smoke_trace/online1_smoke_trace.txt",
+        "queue_sha256": "26f69df4540aafe915d420bcf90d3cece8505b50708e13d4b3783076ce411393",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_smoke_trace.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_bptt_s0",
+        "queue": "experiments/queue/enabler/online1_taxi_bptt_s0/online1_taxi_bptt_s0.txt",
+        "queue_sha256": "4e2c8430995049a46ae9965397ca8336cd1c7c0721f331bc8bb26d78801458f9",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_bptt_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_bptt_s1",
+        "queue": "experiments/queue/enabler/online1_taxi_bptt_s1/online1_taxi_bptt_s1.txt",
+        "queue_sha256": "2586029806a5fbffa820db0ae6875024c8fbb6f2bc742f9e43720ba23262ff04",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_bptt_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_bptt_s2",
+        "queue": "experiments/queue/enabler/online1_taxi_bptt_s2/online1_taxi_bptt_s2.txt",
+        "queue_sha256": "afa2d484ac2a4c09797aeba0ec1cbd819aecc70b021e01257b6f08bef5ad3906",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_bptt_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_trace_s0",
+        "queue": "experiments/queue/enabler/online1_taxi_online_trace_s0/online1_taxi_online_trace_s0.txt",
+        "queue_sha256": "c4b5e1e607345437b9f2d22e4154a13c30d46847e7aab8f8e36b23e6117cdca1",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_trace_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_trace_s1",
+        "queue": "experiments/queue/enabler/online1_taxi_online_trace_s1/online1_taxi_online_trace_s1.txt",
+        "queue_sha256": "c0c8404c83edc009f7c52e850bd73d86ee097d706968713589535cfa42ec79d8",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_trace_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_trace_s2",
+        "queue": "experiments/queue/enabler/online1_taxi_online_trace_s2/online1_taxi_online_trace_s2.txt",
+        "queue_sha256": "ecdd0cdc5f00c0096ca9f103d3aeca952db01ec54fb53e9f3a61161c9d610e04",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_trace_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_local_s0",
+        "queue": "experiments/queue/enabler/online1_taxi_online_local_s0/online1_taxi_online_local_s0.txt",
+        "queue_sha256": "eae90a8b3f108f54fd3691338f4db5951a5b28511a2aa7baae66d0740eb9694b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_local_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_local_s1",
+        "queue": "experiments/queue/enabler/online1_taxi_online_local_s1/online1_taxi_online_local_s1.txt",
+        "queue_sha256": "ea22eff2c67fbcbe34ec941a556d3c2cf2c807a61297ab5072cf8935cfe8fb5b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_local_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1_taxi_online_local_s2",
+        "queue": "experiments/queue/enabler/online1_taxi_online_local_s2/online1_taxi_online_local_s2.txt",
+        "queue_sha256": "dc94808a96a3ee43210d4471f732d3eccedba73d928e036dfcb31d9c789712fc",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1_taxi_online_local_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

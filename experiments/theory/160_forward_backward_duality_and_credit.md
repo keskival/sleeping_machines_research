@@ -158,3 +158,21 @@ A failure of (a) with success of (b) would mean the forward side learns without 
 open loop that happens to work. That would be evidence against closure as the mechanism.
 
 Test log, 9 Oct: v4 `hindsight_hybrid` (6 runs) and the v5 grid (18 runs) are queued on slot 1 behind the v2/v3 grids.
+
+## 7. Prediction 4 built: per-event learning through the memory without BPTT
+
+`experiments/credit/online_race.py` trains a race-of-clocks TPP over one complex-diagonal temporal memory.
+- **Learner.** Every memory parameter (write, gate, embedding, gap encoder, decay rates, frequencies) carries a forward
+  eligibility trace S_t = a_t S_(t−1) + ∂(a_t z_(t−1) + b_t)/∂θ. When event t+1 arrives:
+  - its loss is differentiated locally (head, readout);
+  - the memory credit λ_t = ∂ℓ/∂z_t is contracted with the traces;
+  - the weights update immediately.
+  Nothing is stored, there is no backward sweep, and there is no sequence-level step.
+- **Contract (float64, fixed weights).** The summed per-event gradient equals BPTT to 4.4e−16 over all parameters. With
+  the traces zeroed it fails (relative difference 1.0, worst parameter Wr), so the contract is sensitive to the traces.
+- **Grid** (slot 3; 3 seeds per arm; Taxi DEV log-likelihood per event):
+  - BPTT;
+  - `online_trace`: per-event, 16 concurrent streams share each update;
+  - `online_local`: traces dropped.
+- **Pass criterion, stated before results:** `online_trace` within 0.02 nats/event of BPTT, and clearly above
+  `online_local`.
