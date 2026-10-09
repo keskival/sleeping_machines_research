@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "B5-N node affinity on tgbn-genre (development, validation only; AWS ownership of the large datasets per curie's request): streaming race_affinity v2 (decayed edge affinity at four day scales, revealed label lags and decayed label averages, global shares; MLP race over 513 classes). Checks done: destination id = class index (py-tgb code), labels summarise the following days (L1 1.18 vs 1.40), revealed past labels are part of TGB's official loop; persistent forecast replayed through the same stream. Decides whether v2 beats NAVIS (0.528 test) on validation before a sealed protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_b5n_genre_affinity_v2_dev_s0",
+        "queue": "experiments/queue/b5/aws_b5n_genre_affinity_v2_dev_s0/aws_b5n_genre_affinity_v2_dev_s0.txt",
+        "queue_sha256": "cb3f0cbbcc052a0df8416f60152275a32982706e4204c9237e1e721be7a45767",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_affinity_v2.py": "17aadb1bdc140caf424a4c124e0a320fc0c7f3cad8f253fae7c9d987371bcbd1",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5n_genre_affinity_v2_dev_s0.json",
+        "timeout_s": 43200,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

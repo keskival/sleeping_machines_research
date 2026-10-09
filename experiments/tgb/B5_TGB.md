@@ -180,3 +180,18 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   .833, .8xx: the identities overfit the training period), 171,627 parameters (identity tables 9,227×16 + 1,000×16 +
   1,000), 6 epochs in 70 minutes. The d = 0 run follows; the sealed variant is chosen by the pre-registered rule above.
 
+
+## B5-N large datasets on AWS (genre, reddit, token)
+
+- **Checks before any fit (9 Oct):** (1) destination id = class index 0..C−1 and users numbered from C, for genre, reddit and
+  token (py-tgb `pre_process.load_edgelist_datetime`, `_sr`, `_token`; the label dictionaries use the same name→index map).
+  (2) tgbn-genre labels are daily (1,579 label times, 23/25 h gaps from DST), sum to 1 and summarise the following days:
+  L1 distance of a label to the user's next 7 days of edges 1.18 vs 1.40 to the previous 7 days; no simple window
+  reproduces them exactly (TGB's own weighting), so features use only strictly earlier edges. (3) TGB's official loop reveals
+  each node's label after its label time fires and is scored; the official Persistent Forecast predicts that last revealed
+  label (examples/nodeproppred/tgbn-genre/persistant_forecast.py), so revealed past labels are legitimate inputs.
+- **Driver `race_affinity_v2.py` (streaming):** TGB's batch-of-200 loop with one label pointer; per-user decayed edge
+  affinity at 1, 3, 7, 30 days (lazy decay), the last three revealed labels and decayed label averages, global shares,
+  growth and context; MLP race over classes, online updates at training label times. Memory fits token (≈61K users × 1,001
+  classes × 4 scales). Structural check: 27 finite features; persistent forecast through our replay 0.356 NDCG@10 on the
+  first 60 training label times of genre. Development fit queued on slot 2 (validation only).
