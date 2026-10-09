@@ -1,0 +1,329 @@
+{
+ "status": "completed",
+ "date": "2026-10-09",
+ "easytpp": {
+  "taxi": {
+   "ours": {
+    "mean": 0.5249671688714412,
+    "sd": 0.0010019736593303258,
+    "values": [
+     0.52500542369506,
+     0.5255797461834721,
+     0.5243035156224567,
+     0.5262382083531023,
+     0.5237089505031152
+    ]
+   },
+   "unified": {
+    "mean": 0.5261518550011567,
+    "sd": 0.0034345636143325157,
+    "values": [
+     0.5299993253185226,
+     0.5275475377582795,
+     0.5210485265794309,
+     0.5275618437247263,
+     0.5246020416248244
+    ]
+   },
+   "published": {
+    "model": "S2P2",
+    "ll": 0.522
+   },
+   "seeds_ahead": 5
+  },
+  "taobao": {
+   "ours": {
+    "mean": 1.3991189066007919,
+    "sd": 0.0024994599448641764,
+    "values": [
+     1.4009672767634231,
+     1.401878162542889,
+     1.3978007109026274,
+     1.399319647757512,
+     1.3956287350375078
+    ]
+   },
+   "unified": {
+    "mean": 1.3966527898840382,
+    "sd": 0.0030930133109838397,
+    "values": [
+     1.3939604605915132,
+     1.4005617070772234,
+     1.3986395332107067,
+     1.3968760681329453,
+     1.3932261804078023
+    ]
+   },
+   "published": {
+    "model": "IFTPP",
+    "ll": 1.318
+   },
+   "seeds_ahead": 5
+  },
+  "stackoverflow": {
+   "ours": {
+    "mean": -2.1525169632147287,
+    "sd": 0.004472602596207385,
+    "values": [
+     -2.1577424159527068,
+     -2.1537233492644288,
+     -2.150735293578231,
+     -2.1545086823789283,
+     -2.145875074899348
+    ]
+   },
+   "unified": {
+    "mean": -2.1436152835099405,
+    "sd": 0.0028753276805312017,
+    "values": [
+     -2.1462956648774214,
+     -2.143188463053789,
+     -2.1430330558940676,
+     -2.1393178434282727,
+     -2.1462413902961504
+    ]
+   },
+   "published": {
+    "model": "S2P2",
+    "ll": -2.163
+   },
+   "seeds_ahead": 5
+  },
+  "retweet": {
+   "ours": {
+    "mean": -6.326178288584292,
+    "sd": 0.0009269951031628532,
+    "values": [
+     -6.327220426092771,
+     -6.326088489445172,
+     -6.325006947332979,
+     -6.326975955613993,
+     -6.325599624436546
+    ]
+   },
+   "unified": {
+    "mean": -6.324198412274552,
+    "sd": 0.0021330144786227594,
+    "values": [
+     -6.326425670897589,
+     -6.32247669733731,
+     -6.323142270791604,
+     -6.32659585701707,
+     -6.322351565329185
+    ]
+   },
+   "published": {
+    "model": "NHP",
+    "ll": -6.348
+   },
+   "seeds_ahead": 5
+  },
+  "amazon": {
+   "ours": {
+    "mean": 0.8028092409954501,
+    "sd": 0.0006544927759687493,
+    "values": [
+     0.8031908557094012,
+     0.802069106647475,
+     0.8030088964928918,
+     0.8021931397045059,
+     0.8035842064229776
+    ]
+   },
+   "unified": {
+    "mean": 0.8017126764022204,
+    "sd": 0.0005576591323189433,
+    "values": [
+     0.8017566119262057,
+     0.8009013040806399,
+     0.8016964584142746,
+     0.8017327787471689,
+     0.8024762288428128
+    ]
+   },
+   "published": {
+    "model": "S2P2",
+    "ll": 0.781
+   },
+   "seeds_ahead": 5
+  }
+ },
+ "easytpp_seeds_ahead": 25,
+ "unified_seeds_ahead": 24,
+ "p19": {
+  "auroc": [
+   0.9158849828204916,
+   0.022286011103235318
+  ],
+  "auprc": [
+   0.6389649290286282,
+   0.03940742968584937
+  ],
+  "published": {
+   "model": "MTM",
+   "auroc": 0.903,
+   "auprc": 0.583
+  }
+ },
+ "p12": {
+  "auroc": [
+   0.8712235105018621,
+   0.011498062814080815
+  ],
+  "auprc": [
+   0.5846987002951508,
+   0.02453759758905254
+  ],
+  "published": {
+   "model": "MTM",
+   "auroc": 0.88,
+   "auprc": 0.586
+  }
+ },
+ "pam": {
+  "acc": {
+   "mean": 0.9775280898876405,
+   "sd": 0.007372666548700166,
+   "values": [
+    0.9794007490636704,
+    0.9812734082397003,
+    0.9812734082397003,
+    0.9812734082397003,
+    0.9644194756554307
+   ]
+  },
+  "f1": {
+   "mean": 0.9803427827302503,
+   "sd": 0.008016608019828316,
+   "values": [
+    0.9829402106682199,
+    0.9829037604685347,
+    0.9842497151100542,
+    0.985490105439039,
+    0.9661301219654042
+   ]
+  },
+  "published": {
+   "model": "MTM",
+   "acc": 0.975,
+   "f1": 0.976
+  },
+  "splits_ahead": 4
+ },
+ "tgbn_trade": {
+  "ndcg": {
+   "mean": 0.8679834701519167,
+   "sd": 0.0005349680506297763,
+   "values": [
+    0.8682526403496212,
+    0.8673673755841073,
+    0.8683303945220215
+   ]
+  },
+  "published": {
+   "model": "NAVIS (ICLR 2026)",
+   "ndcg": 0.863
+  },
+  "persistent_forecast": 0.855
+ },
+ "tgbl_wiki": {
+  "status": "in development; sealed seeds running",
+  "val_mrr": 0.8518229016892851,
+  "parameters": 7995,
+  "published": {
+   "model": "TPNet",
+   "val": 0.842,
+   "test": 0.827
+  }
+ },
+ "b4_mooc": {
+  "total": {
+   "mean": -226.84810911718122,
+   "sd": 6.328315049635399,
+   "values": [
+    -235.38187672160393,
+    -222.07464759779594,
+    -226.66827811474957,
+    -219.66635411933584,
+    -230.44938903242084
+   ]
+  },
+  "bar": -239.7,
+  "best_single": -233.8,
+  "verdict": "loss (pre-registered)"
+ },
+ "fas_v2": "level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule",
+ "input_sha256": {
+  "experiments/results/tpp/b1_final_taxi_v5_s0.json": "ed707f8c47f919427588159e934002a11c8254435337fc13302b48abc6423c28",
+  "experiments/results/tpp/b1_final_taxi_v5_s1.json": "e04a4756602d3926247488e5205619f3f6577048d62ff2b5bff081f3f4e80816",
+  "experiments/results/tpp/b1_final_taxi_v5_s2.json": "a5ae91fc8f3882ba7fef67c342a63123e7b31965a54d642aa7e985073a9473dc",
+  "experiments/results/tpp/b1_final_taxi_v5_s3.json": "c2be9985759a9aceaa3c7805539e9f3521be3d8dfce51e9a68a8b32e1718806a",
+  "experiments/results/tpp/b1_final_taxi_v5_s4.json": "447808745b952f3ff8687cfd0e34009b8e040940eb812fabfe811119c2ee8e8c",
+  "experiments/results/tpp/b1_final_taobao_v5_s0.json": "599587d6011edbb664fc3ea8e83e6e3afaea0651a41af3925548aa3455fac0d8",
+  "experiments/results/tpp/b1_final_taobao_v5_s1.json": "e982941fdddb36a02f230b067496408645c6fc88bb2bf4ed726586e544bd2557",
+  "experiments/results/tpp/b1_final_taobao_v5_s2.json": "cdc41377c4e6e47cc743abb085a05d0b46b240676cb2e40348b5da5044817c70",
+  "experiments/results/tpp/b1_final_taobao_v5_s3.json": "99bb75ac8da8d84b3272c4ecb6ac744ea20f01046c0d362d456e7303c69be00b",
+  "experiments/results/tpp/b1_final_taobao_v5_s4.json": "47a6e83e45387ed101e000b2304bb63f56237a1d9d98d6278d256af1f1b5c334",
+  "experiments/results/tpp/b1_final_stackoverflow_v12l2_s0.json": "8edc805f7e8c205c6ac571f03a7e9741880b33c3bd7d17de7ce64bcb92ec2334",
+  "experiments/results/tpp/b1_final_stackoverflow_v12l2_s1.json": "8ca63150a609a18b2dfce62ffdc3825590591cf539482f18fd0696b10ea9bbeb",
+  "experiments/results/tpp/b1_final_stackoverflow_v12l2_s2.json": "1e4bf8098272ca4b04df0fe5d78ad9bc8c0da91e7e1f1589d0825e75469b1295",
+  "experiments/results/tpp/b1_final_stackoverflow_v12l2_s3.json": "ebfeecc83bb1c3edcfa5f6250a6c17ead139f9d5c7a0d8770fff7e47c8d302fc",
+  "experiments/results/tpp/b1_final_stackoverflow_v12l2_s4.json": "715231e36eb600b46d7eb58b67e7f437852c05fd1313b1bb9669ded4d38c0d0c",
+  "experiments/results/tpp/b1_final_retweet_v16_s0.json": "7b4b7d7f49c02e49919093af8f4c18dcf17f1f53e00c2dfd5a0c060bd369dbf5",
+  "experiments/results/tpp/b1_final_retweet_v16_s1.json": "ff3c3b6f279f5bc4e7b714828327132de3e39e68921326aa858138b27a4c51bb",
+  "experiments/results/tpp/b1_final_retweet_v16_s2.json": "7e4e420f6443f907ad61a887c33be06660d417d2d1581340a171fef4e1e1a936",
+  "experiments/results/tpp/b1_final_retweet_v16_s3.json": "97ed2e8024a43a2a9209ef53eca7f900a1616aa07b1f9e03dab32252315dad67",
+  "experiments/results/tpp/b1_final_retweet_v16_s4.json": "48bcca770d4787d6f55e4a26730ca472f9b577c523e81258027ecf874fa8cca9",
+  "experiments/results/tpp/b1_final_amazon_v18_s0.json": "9630aa7ca1609cb41737c2a2e29492ef1b5b601f244afa29713b5cda95001109",
+  "experiments/results/tpp/b1_final_amazon_v18_s1.json": "a2c1c052fb1b50c1dc420014b4f866a96cf73e1f6118b940cb45b97754ab615b",
+  "experiments/results/tpp/b1_final_amazon_v18_s2.json": "1b20cd1b1e491bb9eec256c8dbac3df41e7f9a0d11168e7566e476c3b66edd00",
+  "experiments/results/tpp/b1_final_amazon_v18_s3.json": "b406916d80676d8c19adadc2f093b7522e445681b288c1ff92925b7f6e6547d9",
+  "experiments/results/tpp/b1_final_amazon_v18_s4.json": "aa302d2993ad9d2bb46b134a0abafbd4ee2777e83dc0d9f6b12c86eae19ab29a",
+  "experiments/results/tpp/b1_final_unified_v19_taxi_s0.json": "dc1c13ef70fd76e8af19eb8254feb5d0d2d9b212953b91d0af6905f3567491da",
+  "experiments/results/tpp/b1_final_unified_v19_taxi_s1.json": "cce2135bf49183d22062c163cdcf2887ab96e55214eaf87cba38577838d9bbe0",
+  "experiments/results/tpp/b1_final_unified_v19_taxi_s2.json": "629e9c3eae78bd6c391226a09cda7db1906b8d4ac68b53295df0535a51655751",
+  "experiments/results/tpp/b1_final_unified_v19_taxi_s3.json": "38bcac58c7032966253ee58663a2a738d59a1de218a41dc368e92fed64c999c9",
+  "experiments/results/tpp/b1_final_unified_v19_taxi_s4.json": "3aa2a93a8629d8d7212b467f70faee920f112826caedbaab0edaa70d93672278",
+  "experiments/results/tpp/b1_final_unified_v19_taobao_s0.json": "375fed39b4c649f7f3c733a8a891a70ed1869f800e70cfa5ce7f8b131712abb3",
+  "experiments/results/tpp/b1_final_unified_v19_taobao_s1.json": "ee6dc39d3f034d7052833d5c6dad11c15e0089612badcbda9205f74aacc5c2ba",
+  "experiments/results/tpp/b1_final_unified_v19_taobao_s2.json": "4e2d7b2a9d83ecdc95ed7f061ed5a50cadd308f505eb914080f4a727880446ef",
+  "experiments/results/tpp/b1_final_unified_v19_taobao_s3.json": "714b306dcfd6d788844de536046a4bb310d3f1fcc693e50ea502cc6e347bfcc4",
+  "experiments/results/tpp/b1_final_unified_v19_taobao_s4.json": "dc63a5f049abf5c6bd315f86cd69137bd4a50855494e4ef1689ca7f13eacf1ff",
+  "experiments/results/tpp/b1_final_unified_v19_stackoverflow_s0.json": "ad181bd7b656f5fb69f27d424dcac7617b2cf89334f27ffaa608ea7bdb3f00e0",
+  "experiments/results/tpp/b1_final_unified_v19_stackoverflow_s1.json": "fe3a0ca4d0c0ee254c94a38fcb91fc825e800f11a542f4b0f1a30862691218fe",
+  "experiments/results/tpp/b1_final_unified_v19_stackoverflow_s2.json": "0e816bbe37c5ed0c00a03bcda78fb8ffdf84e22fbfc474f5b4385aa670b457c9",
+  "experiments/results/tpp/b1_final_unified_v19_stackoverflow_s3.json": "51b776159b23adf5fe2be3fd6c4e36d1f64e1f35090bb85bb7ef5c8c1b01628b",
+  "experiments/results/tpp/b1_final_unified_v19_stackoverflow_s4.json": "338bad01c09f29f00a6adbe8f2849e37b2f3cc6a09f01833e0f6a806407bf8fb",
+  "experiments/results/tpp/b1_final_unified_v19_retweet_s0.json": "fa1a3883cd105ae7759adba8dc26b1f7ea086f3e568c780800f12469b56006c2",
+  "experiments/results/tpp/b1_final_unified_v19_retweet_s1.json": "a185aae29c2fa022df737315ebc9d635a91858f79f2eebebb2c47ccfe9891f40",
+  "experiments/results/tpp/b1_final_unified_v19_retweet_s2.json": "16c6765aca9950d98ceafa0e1c07fa7951b8a51cf6e63a1c7155b73e8974680a",
+  "experiments/results/tpp/b1_final_unified_v19_retweet_s3.json": "175f378aff8887ad8465a5255044b34de5324ad822d078571c35be96af8355f9",
+  "experiments/results/tpp/b1_final_unified_v19_retweet_s4.json": "252f6244365f703aea997b9c5079a8bcca135056d84094f1e75080c72625a099",
+  "experiments/results/tpp/b1_final_unified_v19_amazon_s0.json": "34a96189b7423d6b331b05824d8eb558043c567b742a55aedd8496bc468486fe",
+  "experiments/results/tpp/b1_final_unified_v19_amazon_s1.json": "835691c1ef386abc69745c70035cc0b647c69e70d8de5a1d84ed0de5fc8d6adb",
+  "experiments/results/tpp/b1_final_unified_v19_amazon_s2.json": "a07fa814c4fb5d0bf0c8dd6187083a4a31dada4b3ec21b7afe55ebaf05e4b722",
+  "experiments/results/tpp/b1_final_unified_v19_amazon_s3.json": "a038d0be8c0b7bd955bd54ffde131e839c3fd7f117d7d1a97a11eb34e3f84801",
+  "experiments/results/tpp/b1_final_unified_v19_amazon_s4.json": "3933a74258168c2b4f48594b9a789eb4b7c4da127d8c8333153a96f15267433b",
+  "experiments/results/irts/b2_final_p19_v3_summary.json": "db91e602bdd4832421c89c1fe25be6425bc8ff73bdda086d09fe81720a317771",
+  "experiments/results/irts/b2_final_p12_v3_summary.json": "27895e5f2185912a994862ed27530200557a0767e5cd535392da4423cd42ac6d",
+  "experiments/results/irts/b2_final_pam_v7ema_split0.json": "d2a58b2e6bb06cfebc081d4ea4e2406d0003e3c8b39831b8529cbaecbd9e69a9",
+  "experiments/results/irts/b2_final_pam_v7ema_split1.json": "f71a65f6c7658e15b2968a519ac4970bbf52c899c66f8b434c98ed72caa5ce4b",
+  "experiments/results/irts/b2_final_pam_v7ema_split2.json": "65798113244cf9fd5d5ea0d6c7e56cb26b44c1d7b06d96eaa324503a19dcbe4f",
+  "experiments/results/irts/b2_final_pam_v7ema_split3.json": "ef3f6d1bb5d7257a7a1253fa8da3dd53bbbad0a35a57011f124c425e49ff58ca",
+  "experiments/results/irts/b2_final_pam_v7ema_split4.json": "1e8ad8f3aa6c0cb6e81b038fe96f86f8f2dfb3f386553e9b22bbf4dd99e9b5ed",
+  "experiments/results/tgb/curie_b5_trade_affinity_sealed_s0_20261009T1210Z.json": "729cca7f0aa103665e6657aa7e8317e5b7059c0e7842b107db64b96511bc532a",
+  "experiments/results/tgb/curie_b5_trade_affinity_sealed_s1_20261009T1210Z.json": "13f2774c8aa5b9f3745ac574f2fccbd436bf310811f1e1ab38dc778476635c9b",
+  "experiments/results/tgb/curie_b5_trade_affinity_sealed_s2_20261009T1210Z.json": "d6ef48569121889f1c9a72deeedb7361d036fa0875c0ba4237a261b67803c2da",
+  "experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_20261009T1300Z.json": "8af2670a97512a1a9512411d524c4c498d8f3b85f4467984bb8356ca072a7d4b",
+  "experiments/results/tpp_b4/b4_mooc_s0.json": "c7abb0b42f4c1a27a65097a3ba9b686224ea4f4b7f3941bb3c7a862098497b8e",
+  "experiments/results/tpp_b4/b4_mooc_s1.json": "1c33f0ba58f7dcf3f41b539ccd717dba620050797023b8f6aca839942bb7b5d3",
+  "experiments/results/tpp_b4/b4_mooc_s2.json": "2cca0e458d0b3a88ab83de901e080858d25f8a27dc6fae0e6e7d1196f579efe3",
+  "experiments/results/tpp_b4/b4_mooc_s3.json": "4a95f94b727d36aa0ba6f51afd3caf1fdc0823e040a857ce3dd8dbab7edd04db",
+  "experiments/results/tpp_b4/b4_mooc_s4.json": "0e33e18a4e3e9bc6a0588d60d660bd4bd6731e2201203746e6d95f141c23b059",
+  "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
+  "experiments/B2_IRREGULAR_TS.md": "9fcd7a89ac2c60bde08e9a57f12cc2a638bb7b29a7b09782d16bdb0db31c9827",
+  "experiments/tgb/B5_TGB.md": "dad73c927931e33214ae67f9c1ace34b2e2a074cd9e31245d3478c089a48c6d4",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "755cc774e9feb56c945809486bd6a3511935669381acfe70a2668066c7b77ba8",
+  "experiments/fas/B3_DEVELOPMENT_LOG.md": "812007af4f43b8d61c43ee6067377611e1cb0796cd9f33ff500357a06b052b1f"
+ }
+}

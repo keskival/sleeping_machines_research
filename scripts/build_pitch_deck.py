@@ -132,7 +132,7 @@ def write_notes():
     metrics = verify()['metrics']
     notes = ['# Sleeping Machines — full pitch deck and diligence notes',
              '\nProposed raise: €3M. Bullish negotiating case: €50M priced pre-money; €100M stretch scenario.',
-             '\nThe current valuation rationale is VALUATION_RATIONALE.md; the former $10M memo is preserved in the archive. The €50M proposal prices the platform ambition and execution case, not benchmark scores or a sum of application markets.',
+             '\nThe current valuation rationale is VALUATION_RATIONALE.md. The €50M proposal prices the platform ambition and execution case, not benchmark scores or a sum of application markets.',
              '\nAll financial outcomes, budgets and milestone timelines are assumptions. No customer interest has been reported. Repository is private by founder instruction on 3 October 2026. This deck is a private review artifact; distribution and any future publication require a considered disclosure decision.',
             '\nNumerical benchmark/financial ledger: frozen 3 October 2026. The protocol notes separately scope the report\'s completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.',
             f"\nReading guide: slides 1–{content.get('main_slide_count', len(content['slides']))} form the investor pitch; the remaining slides are optional technical and financial diligence."]
@@ -509,13 +509,13 @@ def limits():
 def publish(tag):
     if not tag or Path(tag).name!=tag: raise ValueError('Unique plain tag required')
     stage=ROOT / '.git/pitch-deck-preview' / tag
-    record=INV / ('publication_'+tag+'.json')
+    record=stage / 'publication.json'                       # receipt stays with the local preview; git is the record
     if stage.exists() or record.exists(): raise ValueError('Fresh tag required; old artifacts preserved')
     if available()<8192*1024: raise ValueError('Less than 8GiB available')
     verify()
     inputs=[CONTENT,EVIDENCE,Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
             INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
-            ROOT/'report/sleeping_machines_status.pdf',ROOT/'report/model_family_specification.md',
+            ROOT/'report/I_SCIENCE.md',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',
             ROOT/'report/model_family_composition.md',ROOT/'report/model_family_opportunities.md',
             INV/'VALUATION_RATIONALE.md',INV/'INVESTOR_PROOF_PLAN.md',INV/'INVESTMENT_CASE.md',INV/'PITCH.md']
@@ -576,16 +576,7 @@ def publish(tag):
     if hashes!={str(x.relative_to(ROOT)):sha(x) for x in inputs}: raise ValueError('Concurrent deck-source change')
     if previous!=(sha(OUTPUT) if OUTPUT.exists() else None): raise ValueError('Concurrent deck publication')
     if previous_main!=(sha(MAIN_OUTPUT) if MAIN_OUTPUT.exists() else None): raise ValueError('Concurrent main-pitch publication')
-    if OUTPUT.exists():
-        archive=INV/'archive'/(tag+'_previous_'+OUTPUT.name)
-        archive.parent.mkdir(exist_ok=True)
-        if archive.exists(): raise ValueError('Preserve existing archive')
-        shutil.copy2(OUTPUT,archive)
     temporary=OUTPUT.with_suffix('.publishing'); shutil.copy2(stage/OUTPUT.name,temporary); temporary.replace(OUTPUT)
-    if MAIN_OUTPUT.exists():
-        archive=INV/'archive'/(tag+'_previous_'+MAIN_OUTPUT.name)
-        if archive.exists(): raise ValueError('Preserve previous main pitch')
-        shutil.copy2(MAIN_OUTPUT,archive)
     temporary=MAIN_OUTPUT.with_suffix('.publishing'); shutil.copy2(stage/MAIN_OUTPUT.name,temporary); temporary.replace(MAIN_OUTPUT)
     record.write_text(json.dumps(dict(status='completed',published_utc=datetime.now(timezone.utc).isoformat(),
         source_sha256=hashes,previous_sha256=previous,output_sha256=sha(OUTPUT),slides=pages,

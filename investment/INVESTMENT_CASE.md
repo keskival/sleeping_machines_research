@@ -12,8 +12,6 @@ completed research evidence is identified separately from product ambitions.
 Current terms: **€3M raise at €50M priced pre-money**, with €100M as a separate
 stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
 and [application opportunity register](../report/model_family_opportunities.md).
-The [previous memo](archive/valuation_20261004T171500Z_previous_INVESTMENT_CASE.md)
-retains the earlier $10M discussion for historical review.
 
 ## Wins and advances at a glance (9 October 2026)
 

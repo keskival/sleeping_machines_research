@@ -85,10 +85,10 @@ def generated(part, entries, source_sha, stamp):
                  'precision checks, and the hardware cost model. Sections appear in record order.', '']
         groups = [('', entries)]
     else:
-        head += ['This part preserves the earlier narrative chapters exactly as published, then every experiment entry '
-                 'in record order, wins and losses alike. Part I supersedes the narrative chapters for readers; nothing '
-                 'here is deleted or rewritten.', '']
-        groups = [('# A. Earlier narrative chapters, as published', [e for e in entries if e[0] == 'III-narrative']),
+        head += ['This part opens with the public benchmark record and the model-family chapter, then lists every '
+                 'experiment entry in record order, wins and losses alike. Part I is the reader-facing account; earlier '
+                 'versions are in git history.', '']
+        groups = [('# A. Public benchmark record and model family', [e for e in entries if e[0] == 'III-narrative']),
                   ('# B. Experiment record', [e for e in entries if e[0] == 'III'])]
     toc = ['## Contents', '']
     for heading, group in groups:

@@ -1685,7 +1685,7 @@ def blocks(M, tasks, ev):
     pages.append([
         ("title", "Sleeping Machines"),
         ("sub", "A universal trainable computing substrate that computes through time"),
-        ("small", "Tero Keski-Valkama and Karoliina Salminen · Research report · 5 October 2026"),
+        ("small", "Tero Keski-Valkama and Karoliina Salminen · Research report · " + date.today().strftime("%-d %B %Y")),
         ("h1", 'Our ambition: a universal trainable computing substrate'),
         ("p", 'Sleeping Machines aims to make intelligence composable within one trainable computing substrate. Language and reasoning, perception and world models, embodied action, typed tables and interleaved process streams become different forms of experience available to the same learner. The ambition extends through continual learning, communication and self-design to the hardware that executes them.'),
         ("p", 'An observation enters through an interface that respects its meaning: a token, a sensory event, a typed comparison or an action. It becomes an addressed message interacting with persistent memory. Learned delays and temporal races decide which evidence meets and which computation happens. Small messages carry new evidence into deeper state; separate keys and values distinguish where evidence goes from what it says. Counterfactual credit teaches the routes and writes that could have happened.'),
@@ -5351,21 +5351,6 @@ def blocks(M, tasks, ev):
     pages[opening_index:opening_index]=architectural_pages
     score=runpy.run_path(str(ROOT/'report/scoreboard.py'))['page'](tasks['native_language_batched'],tasks['public_benchmarks'])
     pages.insert(1, score)      # first page after the cover (PRODUCT_ORDERS.md P0-5)
-    readme=ROOT/'README.md'; text=readme.read_text()
-    start,end='<!-- scoreboard:start -->','<!-- scoreboard:end -->'
-    table=[b for kind,b in score if kind=='table'][0]
-    block=(start+'\n## Scoreboard (generated from result files; definitions in experiments/WIN_CRITERIA.md)\n\n'
-           +'| '+' | '.join(table[0])+' |\n|'+'---|'*len(table[0])+'\n'
-           +''.join('| '+' | '.join(r)+' |\n' for r in table[1])
-           +'\nSingle seeds unless stated; same test interval; native/Transformer reset T256 windows, saved LSTM carries state. '
-           +'Identical-context LSTM rescoring is pending. Native compute traced, references shape-estimated or as '
-           +'published. Full report: REPORT.md; orders: experiments/PRODUCT_ORDERS.md.\n'+end)
-    if start in text:
-        text=text[:text.index(start)]+block+text[text.index(end)+len(end):]
-    else:
-        marker='**Deep learning that computes with time.**\n'
-        text=text.replace(marker,marker+'\n'+block+'\n',1)
-    readme.write_text(text)
     pages.extend(runpy.run_path(str(ROOT/'report/aws_90m_language_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/aws_public_benchmark_evidence.py'))['pages']())
     pages.extend(runpy.run_path(str(ROOT/'report/hardware_cost_evidence.py'))['pages']())
@@ -5410,6 +5395,38 @@ def markdown(pages):
     return "\n".join(line.rstrip(" \t") for line in rendered.splitlines())+"\n"
 
 
+def benchmark_record_page():
+    """Public benchmark record from the newest source-bound packet (report/public_wins_headline_evidence_*.json)."""
+    packet = sorted((ROOT/'report').glob('public_wins_headline_evidence_*.json'))[-1]
+    e = json.loads(packet.read_text()); E = e['easytpp']
+    def ll(d): return f"{E[d]['ours']['mean']:.4f} ± {E[d]['ours']['sd']:.4f}"
+    P19, P12, PAM, TR, WK, B4 = e['p19'], e['p12'], e['pam'], e['tgbn_trade'], e['tgbl_wiki'], e['b4_mooc']
+    uni = ' / '.join(f"{E[d]['unified']['mean']:.3f}" for d in ('taxi', 'taobao', 'stackoverflow', 'retweet', 'amazon'))
+    rows = [
+        ['EasyTPP Taxi (nats/event, higher better)', ll('taxi'), '0.522 (S2P2)', 'Win, 5 of 5 seeds; 1/12 of S2P2 parameters and compute; reproduced on separate hardware'],
+        ['EasyTPP Taobao', ll('taobao'), '1.318 (IFTPP)', 'Win, 5 of 5; +0.081 at 0.92× S2P2 compute'],
+        ['EasyTPP StackOverflow', ll('stackoverflow'), '−2.163 (S2P2)', 'Win at matched size and compute, 5 of 5'],
+        ['EasyTPP Retweet', ll('retweet'), '−6.348 (NHP)', 'Win, 5 of 5; 1/15 of S2P2 parameters and compute'],
+        ['EasyTPP Amazon', ll('amazon'), '0.781 (S2P2)', 'Win, 5 of 5; 0.29× S2P2 compute'],
+        ['EasyTPP, one configuration for all five', uni + ' (Taxi / Taobao / SO / Retweet / Amazon)', 'as above',
+         f"Win on all five without per-dataset tuning; {e['unified_seeds_ahead']} of 25 seeds ahead (pre-registered)"],
+        ['P19 sepsis (ICU records)', f"AUPRC {P19['auprc'][0]:.3f} ± {P19['auprc'][1]:.3f}; AUROC {P19['auroc'][0]:.3f}", '0.583 / 0.903 (MTM)', 'Win, five official splits; 62,681 parameters'],
+        ['PAM wearable activity', f"accuracy {PAM['acc']['mean']:.3f} ± {PAM['acc']['sd']:.3f}; F1 {PAM['f1']['mean']:.3f}", '0.975 / 0.976 (MTM)', f"Win, {PAM['splits_ahead']} of 5 splits ahead; 46,316 vs 873K parameters"],
+        ['TGB tgbn-trade (node affinity, NDCG@10)', f"{TR['ndcg']['mean']:.4f} ± {TR['ndcg']['sd']:.4f}", '0.863 (NAVIS, ICLR 2026)', 'Win, 3 of 3 pre-registered seeds; 2,107 parameters'],
+        ['P12 mortality (ICU records)', f"AUROC {P12['auroc'][0]:.3f}; AUPRC {P12['auprc'][0]:.3f}", '0.880 / 0.586 (MTM)', 'Behind on AUROC, level on AUPRC'],
+        ['Bosser & Ben Taieb MOOC (total NLL, lower better)', f"{B4['total']['mean']:.1f} ± {B4['total']['sd']:.1f}", 'bar −239.7 (pre-registered); best single model −233.8', 'Loss (frozen one-configuration model); six datasets running'],
+        ['TGB tgbl-wiki (link prediction, MRR)', f"validation {WK['val_mrr']:.4f} ({WK['parameters']:,} parameters)", 'TPNet validation 0.842, test 0.827', 'In development, ahead on validation; sealed seeds running'],
+        ['FAS v2 (anonymous interleaved logs)', 'validation 0.702', 'time-encoded Transformer reference 0.704', 'In development; sealed verdict pending the reference seeds'],
+    ]
+    return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),
+            ('p', 'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '
+                  'Own numbers are computed from the result files in the source-bound packet '
+                  f'<a href="{packet.relative_to(ROOT)}">{packet.name}</a>. The reader-facing account of these results, '
+                  'their mechanisms and theory is <a href="report/I_SCIENCE.md">Part I</a>; the appendices below are the '
+                  'experiment record. Earlier versions of this report are in git history.'),
+            ('table', (['Benchmark', 'Ours (sealed test)', 'Best published', 'Verdict and cost'], rows, [42, 44, 38, 50]))]
+
+
 def build(M):
     from reportlab.lib import colors
     from reportlab.lib.pagesizes import A4
@@ -5419,14 +5436,21 @@ def build(M):
     tasks, ev = results(), evidence(M)
     figures(M, tasks, ev)
     pages = blocks(M, tasks, ev)
-    archive = ROOT/"report/archive/20260929_before_shared_model.md"
-    if not archive.exists():
-        archive.parent.mkdir(exist_ok=True)
-        archive.write_text((ROOT/"REPORT.md").read_text())
+    # The document carries the current state only: the cover, the public benchmark record (from the newest
+    # source-bound packet) and the experiment appendices. Superseded narrative is not regenerated; git is the history,
+    # and the reader-facing account is report/I_SCIENCE.md.
+    first_appendix = next(i for i, page in enumerate(pages) if any(k in ('h1', 'title') and str(v).startswith('Appendix A')
+                                                                   for k, v in page))
+    cover = []
+    for kind, value in pages[0]:                           # title, subtitle and byline only
+        if kind == 'h1':
+            break
+        cover.append((kind, value))
+    pages = [cover + benchmark_record_page()] + pages[first_appendix:]
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
-    boundary=report_markdown.find('\n## Already demonstrated')
-    if boundary<0: raise ValueError('Report has no section boundary')
+    boundary=report_markdown.find('\n## Appendix A')
+    if boundary<0: raise ValueError('Report has no appendix boundary')
     report_markdown=report_markdown[:boundary+1]+markdown_frontmatter()+report_markdown[boundary+1:]
     (ROOT/"REPORT.md").write_text(report_markdown)
     st = M["styles"]()

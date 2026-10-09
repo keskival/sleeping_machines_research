@@ -30,13 +30,14 @@
   and coordinate overlapping files. Update findings and the report from completed result
   files, and distinguish exploratory single-seed evidence from benchmark
   claims.
-- Preserve completed result files and older report evidence while new runs are
-  pending. Replace a leading valid result only after a completed, comparable
-  run improves it, retaining the previous result in the historical record.
-  State protocol errors and revised interpretations beside the original
-  numbers instead of silently deleting them. Keep existing dense control
-  results as historical evidence; launch no new Transformer/LSTM training on
-  any host (user direction, 6 October 2026, below).
+- Preserve completed result files (they are the evidence). Documents carry the
+  current state: replace a leading result in the text only after a completed,
+  comparable run improves it, and state a protocol error or revised
+  interpretation where the current number appears. Superseded text, archived
+  copies and old versions are not carried in documents or folders; git history
+  is the record (user direction, 9 October 2026, below). Keep existing dense
+  control results as evidence; launch no new Transformer/LSTM training on any
+  host (user direction, 6 October 2026, below).
 - Preserve the established architectural case when editing the report: time
   performs computation, hard routes learn through counterfactual credit, deep
   persistent event representations, and capacity beyond activity. Retain the
@@ -56,6 +57,18 @@
   references strengthen the case. Scope: `experiments/fas/dense.py`, models `lstm` and `transformer`, d ≤ 128, ≤ 2
   layers. Tuning is limited to the protocol's grid on validation only, with three seeds for the selected
   configuration, through run_safe on AWS gym slots. No other external architectures are included.
+
+# Current state only; git is the history (user direction, 9 October 2026)
+
+- Documents (README, report parts, REPORT.md and its PDF, investor and EIC materials, papers) state the current results
+  and status. Do not keep superseded sections "as the historical record", previous-version copies, `archive/` folders,
+  stacked headline pages or publication receipt files in the repository; earlier versions live in git history.
+- `report/make_pdf.py` regenerates REPORT.md and report/sleeping_machines_status.pdf as cover + public benchmark record
+  (from the newest `report/public_wins_headline_evidence_*.json` packet) + model-family chapter + experiment appendices.
+  Update the packet script and regenerate; do not append pages to the PDF.
+- Deck and investment-case builders keep their publication receipts in the local `.git/*-preview/<tag>/` folder only.
+- Result files under `experiments/results/` and the invalid-protocol quarantine under `experiments/archive/` are data, not
+  document history; they stay.
 
 # Report structure (user direction, 6 October 2026)
 

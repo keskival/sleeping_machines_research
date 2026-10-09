@@ -136,8 +136,7 @@ def publish(tag):
         raise ValueError('Fresh plain tag required')
     stage = ROOT/'.git/investment-preview'/tag
     if stage.exists(): raise ValueError('Preserve previous preview; use a fresh tag')
-    record_path = ROOT/'investment'/('publication_'+tag+'.json')
-    if record_path.exists(): raise ValueError('Preserve previous publication record')
+    record_path = stage/'publication.json'                  # receipt stays with the local preview; git is the record
     if available() < 8192*1024: raise ValueError('Less than 8 GiB available')
     verify_evidence()
     hashes = {name: sha(ROOT/name) for name in INPUTS}
@@ -193,11 +192,6 @@ def publish(tag):
                   scope='Investment narrative and saved evidence; no model runtime or numerical import')
     for name in outputs:
         path = ROOT/'investment'/name
-        if path.exists():
-            archive = ROOT/'investment/archive'/(tag+'_previous_'+name)
-            if archive.exists(): raise ValueError('Preserve previous investor artifact')
-            archive.parent.mkdir(exist_ok=True)
-            shutil.copy2(path, archive)
         temporary = path.with_suffix('.publishing')
         shutil.copy2(stage/name, temporary); temporary.replace(path)
     with record_path.open('x') as file:

@@ -85,7 +85,6 @@ characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation 
 
 **The unifying advantage is the reusable construction:** type-respecting comparisons and tokens become events; events recruit meaningful state and teach hard routes through their consequences. Available capacity, selected activity, temporal learning and execution are separate design axes. The larger ambition connects language and reasoning, multimodal world models, embodiment, continual learning, communication, self-design and clockless hardware through this substrate. Joint training with shared parameters must next measure skill transfer and donor-skill retention. These completed instances were trained separately.
 
-Source-bound numerical packet: [headline evidence](../report/unification_headline_evidence_20261006_v1.json).
 
 **What is already shown** (language rows single-seed; native compute traced, reference compute shape-estimated):
 - **Wins a public leaderboard on its home field:** EasyTPP Taobao (+0.081 nats/event over the best published model at
@@ -129,4 +128,3 @@ company-owned IP through patent review and selective filings.
 
 Read the [valuation rationale](VALUATION_RATIONALE.md), [full investment case](INVESTMENT_CASE.md),
 [opportunity register](../report/model_family_opportunities.md) and [research evidence](../report/architecture_evidence.md).
-The [previous pitch](archive/pitch_20261005T160000Z_previous_PITCH.md) is archived.
