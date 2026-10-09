@@ -1,0 +1,188 @@
+{
+ "status": "completed",
+ "battle": "B5",
+ "tag": "curie_b5_racelink_v2_dev_s0_20261009T1120Z",
+ "model": "race_link v2 (v1 + ordinal recency, pair share, last-destination flag, decayed page transitions)",
+ "args": {
+  "tag": "curie_b5_racelink_v2_dev_s0_20261009T1120Z",
+  "seed": 0,
+  "epochs": 8,
+  "hidden": 64,
+  "lr": 0.003,
+  "bs": 200,
+  "max_train_events": 0,
+  "max_eval_events": 0,
+  "score_test": false,
+  "max_wall_s": 12000.0,
+  "root": "/workspace/data/tgb"
+ },
+ "features": 41,
+ "parameters": 6995,
+ "history": [
+  {
+   "epoch": 0,
+   "train_ce": 1.8685866733214724,
+   "val_mrr": 0.7737263824613524,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.895467164185145
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.06683436611367875
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.0491389171080064
+    }
+   },
+   "epoch_s": 305.1826226711273
+  },
+  {
+   "epoch": 1,
+   "train_ce": 1.776129066412054,
+   "val_mrr": 0.7732189514143852,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.8944498153401588
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.06829023432453447
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.05316714952400284
+    }
+   },
+   "epoch_s": 298.37570118904114
+  },
+  {
+   "epoch": 2,
+   "train_ce": 1.7686091820381664,
+   "val_mrr": 0.7735101890719158,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.894167717959929
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07074312903673961
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.0586270596196634
+    }
+   },
+   "epoch_s": 300.2614052295685
+  },
+  {
+   "epoch": 3,
+   "train_ce": 1.7644606437338082,
+   "val_mrr": 0.7744867447725822,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.8948656982143166
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07184221031033297
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.06351074206462429
+    }
+   },
+   "epoch_s": 298.40876054763794
+  },
+  {
+   "epoch": 4,
+   "train_ce": 1.7612013037850665,
+   "val_mrr": 0.7752277982216169,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.8955247789030399
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07226079569253255
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.06594084340102073
+    }
+   },
+   "epoch_s": 303.4420020580292
+  },
+  {
+   "epoch": 5,
+   "train_ce": 1.75866220378765,
+   "val_mrr": 0.7752937096267845,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.8954935214221469
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07283389770469531
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.0666708779037459
+    }
+   },
+   "epoch_s": 304.11520624160767
+  },
+  {
+   "epoch": 6,
+   "train_ce": 1.7566253954669164,
+   "val_mrr": 0.7757660864363232,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.895944205760254
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07306156821231519
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.0678299810593936
+    }
+   },
+   "epoch_s": 298.2957925796509
+  },
+  {
+   "epoch": 7,
+   "train_ce": 1.7549401723652467,
+   "val_mrr": 0.7761392872954233,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.8543245417213496,
+     "mrr": 0.8962151770712116
+    },
+    "new_pair_known_source": {
+     "share": 0.08750687947165657,
+     "mrr": 0.07359475564468108
+    },
+    "new_source": {
+     "share": 0.058168578806993776,
+     "mrr": 0.06946395341381839
+    }
+   },
+   "epoch_s": 300.0659773349762
+  }
+ ],
+ "best_val_mrr": 0.7761392872954233,
+ "test_mrr": "not scored (development run)",
+ "wall_s": 2414.587599515915,
+ "source_sha256": "f5c4bd3fd39f7f53e2273d4b077016826fa146f63bd4da0ad5100723109a86d1",
+ "checkpoint": "experiments/results/tgb/curie_b5_racelink_v2_dev_s0_20261009T1120Z.pt"
+}

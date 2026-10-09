@@ -141,4 +141,20 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   frozen as run (cross-entropy race loss, defaults): seeds 0–2 with `--score-test`
   (curie_b5_trade_affinity_sealed_s{0,1,2}_20261009T1210Z), win rule as pre-registered above.
 - 9 Oct 11:42: race_link v1 (tgbl-wiki) final: best val MRR 0.7729 (epoch 5). v2 running.
+- 9 Oct 12:30: race_link v2 final: best **val MRR 0.776** (v1 0.773): repeat pairs .896, new pairs of known sources .074,
+  new sources .069. Recency rank and page transitions add little under the batch-stale state.
+- 9 Oct 12:45: **protocol diagnosis — batch-stale state.** v1–v3 (and `heuristics.py`, EdgeBank's TGB convention) score a
+  batch of 200 queries from the state before the batch. The leaderboard's TPNet / DyGFormer / GraphMixer entries use the
+  DyGLib_TGB evaluation, whose neighbour sampler is built on the full data and returns every interaction with time
+  strictly below the query's (`find_neighbors_before`, `np.searchsorted`; `full_neighbor_sampler` in
+  `train_link_prediction.py`), i.e. per-event causal state including earlier events of the same batch. Measured on the
+  edge list: **5.4% of validation queries (test 5.4%) repeat a pair seen only earlier in their batch**, which our v1–v3
+  scored as new pairs (~.07 MRR), and the next destination equals the source's last destination for **80.3% of queries
+  per event vs 70.0% batch-stale** (test 77.9% vs 66.4%). Per-event causal state is the comparable convention and is
+  native to the family (one O(n_dst) state update per event).
+- 9 Oct 13:00: **race_link v4** (`race_link_v4.py`): v3 with per-event causal state (strict t < t_query; ties excluded),
+  for training and evaluation; co-visitation/transition decay by a lazily rescaled reference time. Contract: state equals
+  a brute-force exact computation to 2e-7 relative error (v1–v3's batch-level decay over-decayed the newest
+  contributions by up to one batch span: 0.5% / 2% relative, documented). Queued: identities d = 16 and d = 0; the
+  batch-stale v3 run was withdrawn before it started.
 
