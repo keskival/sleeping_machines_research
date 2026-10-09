@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 development (validation only): MOOC verdict shows time as the main gap (L_T -298.6 vs -310.6 over five splits); more delayed clocks for MOOC's multi-scale gaps (bursts on a 1-s grid, sessions, breaks), alone and with the v20 mark pathways. Decides the developed-attempt configuration with the four v20 arms",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b4dev_mooc_s0_ln16",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_ln16/b4dev_mooc_s0_ln16.txt",
+        "queue_sha256": "745ad13cb73883fd28f0c7466921ed1e65a640b502c67d8ee528e6f05597e37d",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v21.py": "1180b7d8d058b2f87ad89673b15a95bcd3f783111a001d9589f5bbc072588edc",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_ln16.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4dev_mooc_s0_ln32_mem1_stats",
+        "queue": "experiments/queue/b4/b4dev_mooc_s0_ln32_mem1_stats/b4dev_mooc_s0_ln32_mem1_stats.txt",
+        "queue_sha256": "add323bf83e5d26896e165702fcdc6a3c5d26198adce169fa14c64149d2f3e0a",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4v21.py": "1180b7d8d058b2f87ad89673b15a95bcd3f783111a001d9589f5bbc072588edc",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+        },
+        "result": "experiments/results/tpp_b4dev/b4dev_mooc_s0_ln32_mem1_stats.json",
+        "timeout_s": 28800,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
