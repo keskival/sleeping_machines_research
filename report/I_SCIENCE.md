@@ -236,11 +236,12 @@ heuristics (persistent forecast, moving average) beat every temporal graph neura
 | Moving average / TGNv2 / DyGFormer | 0.823 / 0.735 / 0.388 | — |
 
 Official loader and evaluator, configuration fixed before the test, test scored once per seed; about four minutes of
-fitting on one CPU thread. Theory note 159 explains the margin: our readout contains persistent forecast and moving
+fitting on one CPU thread and 0.22 ms per prediction (measured, one thread). Theory note 159 explains the margin: our readout contains persistent forecast and moving
 averages as special cases and can extrapolate a rising partner, which a convex combination of past vectors cannot
 (Proposition 3; the trend ablation is queued). On link prediction (tgbl-wiki), updating the state exactly at every event,
 as the family does natively, lifted validation MRR from 0.776 to 0.852 against TPNet's 0.842 with 7,995 parameters; its
-first pre-registered sealed seed scores 0.835 on test against TPNet's 0.827, with two seeds to go.
+first pre-registered sealed seed scores 0.835 on test against TPNet's 0.827, with two seeds to go; one query, with the
+exact state update and all 1,000 candidates scored, takes 4.5 ms on one CPU thread.
 
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 

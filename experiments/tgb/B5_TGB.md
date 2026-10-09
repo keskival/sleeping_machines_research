@@ -209,4 +209,8 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct 16:57: **tgbl-wiki sealed seed 0 (race_link v4, d = 0, 7,995 parameters): TEST MRR 0.8353**, validation 0.8518;
   above TPNet's 0.827 ± 0.001 (and the LocalGlobal heuristic's 0.821) on this seed. Seeds 1–2 pending; verdict by the
   pre-registered rule.
+- 9 Oct 17:32: **measured inference cost** (one CPU thread, plain numpy/PyTorch, untuned): tgbn-trade 0.22 ms per node
+  prediction over all 255 destinations (2,107 parameters); tgbl-wiki v4 4.5 ms per query including the per-event state
+  update and scoring all 1,000 candidates (220 queries/s; d = 0 and d = 16 equal: the cost is the feature map, mostly the
+  1,000 × 1,000 co-visitation product, not the readout).
 
