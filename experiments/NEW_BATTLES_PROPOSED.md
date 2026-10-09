@@ -61,6 +61,30 @@ only; a pre-registered test protocol; first-pass results are labelled as such.
 - **Why it fits:** interleaved cases with timestamps, FAS on real data, and the pilot-kit market (industrial and IT logs).
 - **References:** published deep predictive-process-monitoring benchmarks; to verify protocol and splits.
 
+## B10 — Crypto market event streams, revisited with the current family (proposed 9 Oct, founder question)
+
+- **History:** E17 (Sept 2026, preregistered, 21 BTCUSDT days, prequential): direction accuracy on ≥ 1 bp moves race 0.593
+  vs online logistic regression 0.583 vs 10 s momentum 0.591; the race decided a third earlier; continual learning gave no
+  benefit over a frozen model (−0.2 [−0.6, +0.1]); every learner lost money after a 2 bp cost. E80/E84 later fitted market
+  event world models (point-process likelihood). Raw `data/binance` is no longer on curie (public, re-downloadable from
+  data.binance.vision).
+- **What is different now:** the race-of-clocks TPP that won all five EasyTPP datasets (exact likelihood, delayed and
+  windowed clocks, recording-resolution handling), exact per-event state (+0.075 MRR on TGB from freshness alone),
+  multi-timescale rotation clocks, addressed mark memory with sufficient statistics, exact generative sampling, and a
+  measured 1,500 events/s streaming update on one CPU core.
+- **Reframed target (where the mathematics is right, and claims stay credible):** probabilistic forecasting of the trade
+  stream (next-trade time, side and size: log-likelihood vs Hawkes and neural-TPP references; short-horizon realised
+  volatility and trade-intensity forecasts, the inputs of execution and risk systems). Direction accuracy and P&L after
+  costs are reported as secondary metrics only; no trading-edge claim without a cost-inclusive, prequential, multi-month
+  out-of-sample protocol.
+- **Online learning:** E17 showed no exploitable drift over three weeks and was confounded (the step size also applied to
+  the pilot week). The family now adapts through exact per-event state; weight-level tracking is tested separately on
+  months that include regime changes, with the corrected protocol (pilot at full rate, tracking variants afterwards).
+- **Public generative benchmark:** LOB-Bench (ICML 2025; LOBSTER message format) scores generated limit-order-book
+  message streams on spread, volumes, imbalance, inter-arrival times, a discriminator and market-impact responses; our
+  exact generative race is a natural entrant (data access to verify).
+- **Cost:** one month of BTCUSDT aggTrades is tens of MB per day; CPU-feasible.
+
 ## Later (GPU-scale, after funding)
 
 - Event cameras: Prophesee Gen1 / 1Mpx detection, DSEC (flow, disparity, detection), N-ImageNet, eTraM; event + frame
