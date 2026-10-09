@@ -111,3 +111,9 @@ Whether the published models exploit it cannot be verified without their trained
 architectures). The pre-registered verdicts stand as defined; on Retweets and Github the result is reported with this
 note, and with our L_T on the events with positive gaps beside it for interpretation. Early validation fits fit this
 pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweets 35 nats behind.
+
+## Results log
+
+| Date | Run | Validation (L_T / L_M / total) | TEST (L_T / L_M / total) | Notes |
+|---|---|---|---|---|
+| 9 Oct | MOOC split 0 | −307.25 / 73.37 / −233.88 (best epoch 134 of 165) | **−310.43 / 75.05 / −235.38** | 57,238 parameters; cell 3.89e−6, 4 windows. Below LNM++'s total (−233.8, best single published model, 5-split mean) but above the composite bar (−239.7); mark NLL is the weaker component. Verdict on the five-split mean |
