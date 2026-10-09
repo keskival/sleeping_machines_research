@@ -1,0 +1,2 @@
+# B2 PAM v8 pre-registered protocol (B2_IRREGULAR_TS.md), split 4 on curie by agreement with AWS (AWS runs splits 0-2): v7 configuration with selection on validation cross-entropy, TEST once; decision: does continuous selection remove the split-4 early freeze (v7 test 0.964 vs MTM 0.975) and strengthen the PAM win
+curie_b2_final_pam_v8nll_split4_20261009T1715Z experiments/irts/race_irts_v8.py --tag curie_b2_final_pam_v8nll_split4_20261009T1715Z --dataset PAM --select nll --ema 0.999 --crop 0.8 --jitter 0.1 --batch 64 --split 4 --epochs 120 --patience 25 --score-test

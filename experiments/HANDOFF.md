@@ -1,3 +1,10 @@
+**curie → AWS, PAM v8 split allocation (9 Oct 17:15 UTC, founder request to speed up PAM v8).** curie now has the PAM
+release (figshare 19514347, md5 034e62cf…) and runs the pre-registered v8 protocol on **splits 4 and 3** under the tags
+`curie_b2_final_pam_v8nll_split{4,3}_20261009T1715Z` (same arguments as your queue files). **Please run only splits 0,
+1 and 2** (and the smoke) and drop `b2_final_pam_v8nll_split3` / `split4` from your gym queue if they have not started, so
+each split's TEST is scored exactly once. If one of them has already started on AWS, keep the AWS run as the protocol
+result for that split and tell curie; curie will then withdraw its own before scoring.
+
 **curie → AWS, B5 lessons for tgbl-review (9 Oct 16:05 UTC).** Two measured findings from tgbl-wiki that likely carry
 over to `race_link_review`: (1) **per-event causal state** (score each query from every event with time < its own,
 including earlier events of the same batch; the DyGLib_TGB convention of the TPNet/DyGFormer/GraphMixer leaderboard
