@@ -110,3 +110,8 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - **Design consequence:** race_link v1's dense 1,000×1,000 co-visitation and full-destination softmax do not scale to
   352K nodes; the AWS variant scores the official candidate set (1 + 100) at evaluation and trains a sampled race
   (positive against sampled historical and random competitors), with pair state held sparsely.
+- **Full-validation protocol check (9 Oct, 730,784 queries, 100 negatives each, Evaluator agreement asserted):**
+  pair recency + 30-day decayed popularity **0.344** MRR (30-day popularity alone 0.340, 7-day 0.317, 365-day 0.303,
+  EdgeBank 0.023). A training-free decayed state already exceeds TNCN (0.325), TGAT (0.324) and TGN (0.313) on validation;
+  GraphMixer leads at 0.428. Reviews rarely repeat a pair (EdgeBank 0.02), so the signal is time-decayed destination
+  popularity and collaborative identity, which race_link_review learns on top of the state.
