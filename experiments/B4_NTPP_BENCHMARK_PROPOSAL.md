@@ -97,3 +97,17 @@ moves to it and the verdict is reported against the stronger number.
 - Report per dataset: mean (standard error over splits) of L_T, L_M and L_T + L_M, every split's values, parameters and
   per-event compute. **Win on a dataset**: mean L_T + L_M below the bar. Component wins stated only where they hold.
   All seven datasets are reported whatever the outcome. No configuration change between datasets or after any TEST score.
+
+## Protocol note on zero gaps (9 Oct 2026, recorded while runs train; verdict rule unchanged)
+
+In the reference code an exactly-zero inter-event time is replaced by ε = 1e−20 before the log-normal mixture density is
+evaluated (`tpp/models/decoders/log_normal_mixture.py`: `delta_t + (delta_t == 0) * epsilon`, `epsilon = 1e-20`). A mixture
+component near log τ ≈ −46 with a small scale then earns tens of nats per zero-gap event: the recording-resolution
+pitfall of B1 (a likelihood gain from the timestamp grid, not from the process). Zero gaps occur in **Retweets (4.0% of
+gaps, ≈ 4–5 per sequence)** and **Github (1.3%)**; LastFM, MOOC, Stack Overflow, Wikipedia and MIMIC2 have none. Our
+model holds every hazard at its one-cell value below the recording cell and cannot place such a spike.
+
+Whether the published models exploit it cannot be verified without their trained checkpoints (we do not train external
+architectures). The pre-registered verdicts stand as defined; on Retweets and Github the result is reported with this
+note, and with our L_T on the events with positive gaps beside it for interpretation. Early validation fits fit this
+pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweets 35 nats behind.
