@@ -135,3 +135,4 @@ GRU-SA/MC-LE, Hawkes, NH, Poisson); those rows are indicative and are checked ag
 | MIMIC2 | 3.1 | GRU-LNM-CONCAT (2023) |
 | Retweets | −536.17 | GRU-LNM-CONCAT (2023) |
 | 9 Oct | MOOC split 1 | −286.95 / 70.30 / −216.65 (best epoch 171; stopped at the 200-epoch cap) | **−290.73 / 68.66 / −222.07** | mark NLL below the best published L_M (70.9); splits differ strongly (published L_T standard error 3.9 over splits), so only the five-split mean decides. The epoch cap is part of the frozen configuration |
+| 9 Oct | MOOC split 2 | −300.30 / 72.49 / −227.81 (best epoch 134) | **−298.38 / 71.72 / −226.67** | three splits: mean total ≈ −228.0, behind LNM++ (−233.8) and the composite bar (−239.7) so far |
