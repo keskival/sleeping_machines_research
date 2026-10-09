@@ -92,3 +92,21 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct: AWS takes the large link datasets (tgbl-review-v2, tgbl-coin-v2) with a sparse variant of race_link (HANDOFF).
 - 9 Oct: B5-N opened (tgbn-trade); race_affinity v1 queued first at the seed-8 boundary (chain r19: trade, wiki
   heuristics, race_link smoke and dev, then the theory clock-count test and R1 confirmations).
+
+## tgbl-review-v2 on AWS (AWS owner; development, validation only)
+
+- **Data (verified 9 Oct, official loader):** archive sha256 `01336972…1dafb` from the py-tgb URL; 4,873,540 events,
+  352,637 nodes, 3,413,837 / 730,784 / 728,919 train/val/test; **not bipartite** (298,589 nodes appear as both source and
+  destination); 100 negatives per positive (v2). Files under `data/tgb_aws/root/tgbl_review/` (py-tgb prefixes its package
+  directory to `root`, so drivers pass `--root ../../../data/tgb_aws/root`).
+- **Pickle safety:** the negative-sample files are pickles; `pickletools` shows only `numpy.dtype`,
+  `numpy.core.numeric._frombuffer` and `numpy.core.multiarray.scalar`. `experiments/tgb/safe_tgb.py` loads them with an
+  allow-list unpickler and patches py-tgb's `load_pkl` (`safe_tgb.patch_tgb()`); use it on every host.
+- **Leaderboard (verified 9 Oct):** GraphMixer **0.521 ± 0.015** test (0.428 val), CTAN 0.405, TNCN 0.377, TGAT 0.355,
+  TGN 0.349 (0.313 val), NAT 0.341, DyGFormer 0.224.
+- **Protocol check** (`experiments/tgb/heuristics_review.py`, validation only, official Evaluator agreement asserted on
+  the first 50 queries): on the first 2,000 validation queries, 30-day decayed popularity alone reaches MRR 0.29 and
+  pair-recency + popularity 0.296 (TGN validation 0.313). Full-validation run in progress.
+- **Design consequence:** race_link v1's dense 1,000×1,000 co-visitation and full-destination softmax do not scale to
+  352K nodes; the AWS variant scores the official candidate set (1 + 100) at evaluation and trains a sampled race
+  (positive against sampled historical and random competitors), with pair state held sparsely.
