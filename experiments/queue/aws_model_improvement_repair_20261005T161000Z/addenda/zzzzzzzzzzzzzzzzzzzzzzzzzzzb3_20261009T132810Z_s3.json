@@ -1,0 +1,66 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "B3 Stage 4 reference seeds 1 and 2 of the two selected configurations (transformer and LSTM, d128, lr 0.003), curie request 9 Oct 07:00 UTC; validation selection only (--no-test); seed 0 of each is the completed grid run (deterministic, not retrained); test scored once later with the Stage 4 ledger tool. AGENTS.md exception of 6 Oct (FAS references, d <= 128, <= 2 layers)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z.txt",
+        "queue_sha256": "3927a432424254617b68a5cafc0b133e5cb2058e67d2244bbb4892b438e0f1c6",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z.txt",
+        "queue_sha256": "b5d5fef3f68ab4d431413e66a10546c7fabb12804f45026b500793551f827644",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z.txt",
+        "queue_sha256": "71959e70adcbf5c0fdeed94f7bf64e90c76b42dbfd970a6d61a36fc263bece20",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z",
+        "queue": "experiments/queue/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z.txt",
+        "queue_sha256": "71a4bd895eadc185e9d3e48fd7e2455116443c4cc430d7533ea82ee27da8b763",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 4000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

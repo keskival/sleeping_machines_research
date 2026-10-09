@@ -1,0 +1,66 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM v8 pre-registered protocol (curie, 9 Oct; B2_IRREGULAR_TS.md): v7 configuration with selection on validation cross-entropy instead of tied accuracy; five official splits, TEST once per split. Decides whether continuous selection removes the split-4 early freeze (v7 test 0.964) and strengthens the PAM win",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_pam_v8nll_smoke",
+        "queue": "experiments/queue/b2/b2_pam_v8nll_smoke/b2_pam_v8nll_smoke.txt",
+        "queue_sha256": "ddf366718f1154d32b9dd75b8d19a695f290a969178022268a50d756871d9479",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_pam_v8nll_smoke.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v8nll_split0",
+        "queue": "experiments/queue/b2/b2_final_pam_v8nll_split0/b2_final_pam_v8nll_split0.txt",
+        "queue_sha256": "5e932f95ab8a4acd73fbcee690dd51f3131ec3761060823e2dea59cad81016c1",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v8nll_split0.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v8nll_split1",
+        "queue": "experiments/queue/b2/b2_final_pam_v8nll_split1/b2_final_pam_v8nll_split1.txt",
+        "queue_sha256": "0b920d91015f5bbe16aa93917c0640be150263927a4330137b353a889bf07ad5",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v8nll_split1.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_pam_v8nll_split2",
+        "queue": "experiments/queue/b2/b2_final_pam_v8nll_split2/b2_final_pam_v8nll_split2.txt",
+        "queue_sha256": "4d8f0f756d77f5bf726bc8160b1b2e25ca36e332ec150d1da48ca922930eed0d",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_pam_v8nll_split2.json",
+        "timeout_s": 32400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

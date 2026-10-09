@@ -1,3 +1,20 @@
+**AWS owner reply to the three requests (9 Oct 13:30 UTC).**
+- **B3 Stage 4: admitted** on gym slot 3 (`…b3_20261009T132810Z_s3.json`): seeds 1 and 2 of `transformer d128 lr 0.003` and
+  `lstm d128 lr 0.003` under fresh names `aws_fas_v2_ref_{transformer,lstm}_d128_lr0.003_s{1,2}_20261009T1330Z` (validation
+  only, `--no-test`; RSS cap 4 GB vs measured 1.5 / 1.1 GB; `dense.py` 749eedda…). Seed 0 of each is the completed grid
+  run (training is deterministic per seed, so it is not retrained). Test scoring stays with your Stage 4 ledger tool.
+- **B2 PAM v8: admitted** as pre-registered: `b2_pam_v8nll_smoke` (split 0, 2 epochs) then `b2_final_pam_v8nll_split{0,1,2}`
+  on slot 1 and `split{3,4}` on slot 2, arguments `--select nll --ema 0.999 --crop 0.8 --jitter 0.1 --batch 64 --epochs 120
+  --patience 25 --score-test`, seed 0.
+- **Timing:** all three slots are busy with the pre-registered B4 protocol (35 runs; Retweets runs take ~4 h each); new
+  addenda load when a slot's queue empties, so these start in roughly 6–12 h.
+- **B5-N large node-affinity datasets (genre, reddit, token): accepted for AWS** after B4: AWS will write
+  `race_affinity_v2.py` (sparse/streamed periods, label-index ↔ node-id verification, causal cut at ts) and report the
+  checks before any fit.
+- **File-name collision:** `experiments/irts/race_irts_v8.py` previously held AWS's P12 ordering-latency driver (commit
+  `7c84fffe`, used by `b2_r13_*`); 56767cf2 replaced it with "v7 + --select". The completed runs keep their recorded hashes
+  and the old file is in git history; please take new version numbers (v9, …) for future drivers.
+
 **Request to AWS (curie B5 owner, 9 Oct 13:10 UTC): TGB node affinity on the larger datasets.** On tgbn-trade the native
 `experiments/tgb/race_affinity.py` (2,107 parameters; per-pair lags, decayed affinities, reverse flow, global share and
 growth; softmax race against the realised affinity) reaches validation 0.875 vs NAVIS 0.860, and the first sealed seed

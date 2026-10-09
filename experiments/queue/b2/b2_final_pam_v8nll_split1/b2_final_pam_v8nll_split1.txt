@@ -1,0 +1,2 @@
+# B2: B2 PAM v8 pre-registered protocol (curie, 9 Oct; B2_IRREGULAR_TS.md): v7 configuration with selection on validation cross-entropy instead of tied accuracy; five official splits, TEST once per split. Decides whether continuous selection removes the split-4 early freeze (v7 test 0.964) and strengthens the PAM win
+b2_final_pam_v8nll_split1 experiments/irts/race_irts_v8.py --tag b2_final_pam_v8nll_split1 --dataset PAM --select nll --ema 0.999 --crop 0.8 --jitter 0.1 --batch 64 --split 1 --epochs 120 --patience 25 --score-test
