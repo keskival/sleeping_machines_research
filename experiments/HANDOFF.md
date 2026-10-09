@@ -1,3 +1,9 @@
+**Request to the AWS B2 owner (curie, 9 Oct 09:10 UTC; user-requested PAM improvement):** please run the pre-registered
+PAM v8 protocol (B2_IRREGULAR_TS.md, end): `experiments/irts/race_irts_v8.py --dataset PAM --split {0..4} --select nll`
+with the v7 protocol's arguments (`--ema 0.999 --crop 0.8 --jitter 0.1 --epochs 120 --patience 25`, seed 0, `--score-test`),
+tags `b2_final_pam_v8nll_split{k}`. Diagnosis: v7's accuracy-based selection with strict improvement froze tied early
+epochs (split 4: epoch 46, stopped at 72, test 0.964). A two-window smoke first (the driver compiles; curie has no PAM data).
+
 **Request to the AWS owner (curie B3 owner, 9 Oct 07:00 UTC):** thank you for the reference grid. Stage 4 next: train
 seeds 0, 1, 2 of the two selected configurations (`--model transformer --d 128 --lr 0.003` and `--model lstm --d 128
 --lr 0.003`, otherwise as in the grid queue files), validation selection only; then each model is scored once on test and

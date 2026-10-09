@@ -142,3 +142,16 @@ statistics encoded by the TRAIN empirical CDF, the tree's monotone invariance, e
 features; 104K parameters). Validation vs the protocol model: ΔAUROC +.003 / +.003 / −.004, ΔAUPRC +.000 / +.005 / −.009
 (splits 0–2); mean +.001 / −.001. **No consistent gain; no TEST run.** The statistic encoding is not what limits the full
 model; the temporal memory already supplies what the trees lack (complementarity result above).
+
+**PAM v8 protocol, pre-registered (curie, 9 Oct 09:10 UTC; to run on AWS).** *Diagnosis (validation curves of the final
+v7 protocol):* validation accuracy on ~530 records moves in steps of ~0.002 and saturates near ten errors; v7 selected on
+accuracy with strict improvement and counted patience from the selected epoch. In four of five splits the selected
+accuracy was tied again later (0 / 11 / 3 / 7 / 5 ties after the selected epoch for splits 0–4), so the earliest tied epoch
+was kept; split 4 selected epoch 46 and stopped at 72 (test 0.964), split 1 stopped at 99, while splits 0, 2, 3 ran to
+120 and peaked at epochs 106–117. *Disclosure:* the motivation includes having seen split 4's low TEST score; the rule
+below is generic and applies to every split. *Rule:* `experiments/irts/race_irts_v8.py --select nll` selects on
+validation cross-entropy (continuous; patience counts from its last improvement); configuration otherwise identical to
+the v7 protocol (d 32, 16 modes, 2 layers, J 4, dropout 0.2, lr 0.002, wd 1e-4, batch 64, ≤ 120 epochs, patience 25,
+EMA 0.999, crop 0.8, jitter 0.1, seed 0); five official splits; TEST scored once per split. Both v7 (0.9775 ± 0.0074) and
+v8 are reported. *Decision:* v8 replaces v7 as the stated PAM result only if its five-split mean is higher; a clear win
+needs every split ahead of MTM's 0.975 or a mean margin beyond our split spread.

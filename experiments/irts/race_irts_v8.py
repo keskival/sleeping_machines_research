@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""B2: event-native classifier for irregular multivariate time series (P12, P19), Raindrop splits.
+"""B2 v8 = v7 with a continuous model-selection criterion (curie, 9 Oct; PAM diagnosis in B2_IRREGULAR_TS.md).
+
+v7 selected on validation accuracy with strict improvement and early-stopped with patience counted from that epoch. On
+PAM the validation set has ~530 records, so accuracy moves in steps of ~0.002 and saturates near ten errors: in four of
+the five final splits the selected accuracy was tied again later (up to 11 times), so the earliest of several tied
+epochs was kept and patience stopped training early (split 4: selected epoch 46, stopped at 72; the other splits ran to
+99–120). `--select nll` (multi-class) selects on validation cross-entropy, which keeps improving smoothly after accuracy
+saturates, and counts patience from its last improvement. Everything else is v7.
+
+B2: event-native classifier for irregular multivariate time series (P12, P19), Raindrop splits.
 
 Every time step is an event carrying the channels observed then. Each observed value first passes typed comparisons
 (learned per-channel thresholds, soft step features) before neural mixing; the event message is the sum over observed
@@ -8,10 +17,6 @@ rotate with the real elapsed time (B1's layer), plus an addressed channel memory
 when that channel is measured, decaying with time since its last measurement. Silence is information: the readout sees
 how long each channel has gone unmeasured. Readout: final state, mean state, channel slots, staleness and statics.
 Selection on the validation split (AUROC); TEST scored once at the selected checkpoint with --score-test.
-
-v8 (7 Oct): + per-channel ordering latency (time of first measurement; never-measured channels sit past the record
-end) and measurement rate, + record duration and step count. Diagnosis: P12 validation AUROC is 0.809 on the sparsest
-third of stays vs 0.898 on the densest; in sparse records which tests are ordered, and when, carries the signal.
 """
 import argparse, hashlib, json, math, random, sys, time
 from pathlib import Path
@@ -55,10 +60,9 @@ class RaceIRTS(nn.Module):
         self.slot_log_rate = nn.Parameter(torch.logspace(-2, 0.5, dv).log())
         self.static = nn.Linear(S, d)
         # statistic-valued channel slots (THEORY note 59): count, mean, min, max, first, last, trend, staleness
-        # v8: + ordering latency (log time of first measurement) and measurement rate per channel
-        self.stat_norm = nn.LayerNorm(C * 12)
-        self.stat_proj = nn.Linear(C * 12, 2 * d)
-        self.head = nn.Sequential(nn.Linear(3 * d + C * (dv + 2) + 2 * d + 2, 2 * d), nn.GELU(), nn.Dropout(dropout),
+        self.stat_norm = nn.LayerNorm(C * 10)
+        self.stat_proj = nn.Linear(C * 10, 2 * d)
+        self.head = nn.Sequential(nn.Linear(3 * d + C * (dv + 2) + 2 * d, 2 * d), nn.GELU(), nn.Dropout(dropout),
                                   nn.Linear(2 * d, n_classes))
 
     def forward(self, t, z, mask, lens, static):
@@ -75,11 +79,8 @@ class RaceIRTS(nn.Module):
         slots = x.new_zeros(B, C, self.dv); since = x.new_full((B, C), 48.0); seen = x.new_zeros(B, C)
         cnt = x.new_zeros(B, C); ssum = x.new_zeros(B, C); vmin = x.new_full((B, C), 6.0); vmax = x.new_full((B, C), -6.0)
         first = x.new_zeros(B, C); last = x.new_zeros(B, C); ssq = x.new_zeros(B, C); absd = x.new_zeros(B, C)
-        t_first = x.new_full((B, C), -1.0); elapsed = x.new_zeros(B, 1)
         for i in range(T):
             m = mask[:, i].float() * valid[:, i:i + 1].float()
-            elapsed = elapsed + dt[:, i:i + 1]
-            t_first = torch.where((t_first < 0) & (m > 0), elapsed.expand(B, C), t_first)
             slots = slots * decay[:, i].unsqueeze(1) * (1 - m).unsqueeze(-1) + vals[:, i] * m.unsqueeze(-1)
             since = (since + dt[:, i:i + 1]) * (1 - m)
             zi = z[:, i]
@@ -94,15 +95,12 @@ class RaceIRTS(nn.Module):
         vmin = vmin * seen; vmax = vmax * seen
         var = (ssq / cnt.clamp_min(1) - mean ** 2).clamp_min(0)
         mad = absd / (cnt - 1).clamp_min(1)
-        latency = torch.where(t_first < 0, elapsed.expand(B, C) + 1.0, t_first)        # never measured: past the record end
-        rate = cnt / (elapsed + 1.0)
         stats = torch.stack([torch.log1p(cnt), mean, vmin, vmax, first, last, last - first, torch.log1p(since),
-                             torch.sqrt(var + 1e-6), mad, torch.log1p(latency), torch.log1p(rate)], -1)
+                             torch.sqrt(var + 1e-6), mad], -1)
         stat_feat = F.gelu(self.stat_proj(self.stat_norm(stats.flatten(1))))
         last_h = x[torch.arange(B), (lens - 1).clamp_min(0)]
         mean_h = (x * valid.unsqueeze(-1)).sum(1) / lens.clamp_min(1).unsqueeze(-1)
-        span = torch.cat([torch.log1p(elapsed), torch.log1p(lens.float()).unsqueeze(-1)], -1)   # record duration, steps
-        feats = torch.cat([last_h, mean_h, self.static(static), slots.flatten(1), torch.log1p(since), seen, stat_feat, span], -1)
+        feats = torch.cat([last_h, mean_h, self.static(static), slots.flatten(1), torch.log1p(since), seen, stat_feat], -1)
         return self.head(feats)
 
 
@@ -112,7 +110,8 @@ def metrics(y, logits):
         return dict(auroc=float(roc_auc_score(y, p)), auprc=float(average_precision_score(y, p)))
     pred = logits.argmax(1).numpy()
     p, r, f, _ = precision_recall_fscore_support(y, pred, average='macro', zero_division=0)
-    return dict(acc=float((pred == y).mean()), precision=float(p), recall=float(r), f1=float(f))
+    nll = float(F.cross_entropy(logits, torch.from_numpy(np.asarray(y)).long()))
+    return dict(acc=float((pred == y).mean()), precision=float(p), recall=float(r), f1=float(f), nll=nll)
 
 
 def main():
@@ -132,6 +131,8 @@ def main():
     ap.add_argument('--batch', type=int, default=128)
     ap.add_argument('--epochs', type=int, default=60)
     ap.add_argument('--patience', type=int, default=12)
+    ap.add_argument('--select', choices=['default', 'nll'], default='default',
+                    help='nll: select on validation cross-entropy (lower is better) instead of accuracy (multi-class only)')
     ap.add_argument('--score-test', action='store_true')
     ap.add_argument('--ema', type=float, default=0.0, help='select/evaluate an exponential moving average of weights')
     ap.add_argument('--crop', type=float, default=0.0, help='train on random contiguous crops of this fraction of each record (0 = off)')
@@ -172,7 +173,7 @@ def main():
 
     ema = torch.optim.swa_utils.AveragedModel(model, multi_avg_fn=torch.optim.swa_utils.get_ema_multi_avg_fn(a.ema)) if a.ema > 0 else None
     scored = lambda: ema.module if ema is not None else model
-    best, best_epoch, history, start = -1.0, -1, [], time.time()
+    best, best_epoch, history, start = -math.inf, -1, [], time.time()
     for epoch in range(a.epochs):
         model.train(); e0 = time.time(); perm = np.random.permutation(tr); tot = 0.0
         for i in range(0, len(perm), a.batch):
@@ -196,8 +197,9 @@ def main():
         vm = run(va)
         history.append(dict(epoch=epoch, train_loss=tot / len(tr), **{f'val_{k}': v for k, v in vm.items()}, epoch_s=time.time() - e0))
         print(json.dumps(history[-1]), flush=True)
-        if vm[sel_key] > best:
-            best, best_epoch = vm[sel_key], epoch; torch.save(scored().state_dict(), ckpt)
+        score = -vm['nll'] if (a.select == 'nll' and multi) else vm[sel_key]
+        if score > best:
+            best, best_epoch = score, epoch; torch.save(scored().state_dict(), ckpt)
         if epoch - best_epoch >= a.patience:
             break
     scored().load_state_dict(torch.load(ckpt))
