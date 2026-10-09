@@ -153,3 +153,25 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 | 9 Oct | MOOC splits 3, 4 | — | −288.82 / 69.15 / −219.67; −304.51 / 74.06 / −230.45 | |
 | 9 Oct | **MOOC VERDICT (pre-registered)** | five splits, TEST | L_T **−298.57 (se 4.08)**, L_M **71.73 (1.27)**, total **−226.85 (2.83)** | **LOSS**: total above the bar −239.7 and above the best single published model (LNM++ −233.8; secondary). L_M is within 0.8 of the best published (70.9) and below LNM++ (73.8); **L_T is the larger gap** (−298.6 vs −310.6, ≈ 0.25 nats/event). **Revised diagnosis:** the split-0 analysis ("time level, marks trail") rested on our best time split; over five splits time is the main gap. MOOC's timestamps lie on a one-second grid (every gap a multiple of the cell), so published L_T may include grid exploitation that our resolution principle forbids; this cannot be verified without the authors' checkpoints and is stated as a caveat, not a correction of the verdict |
 | 9 Oct | Retweets splits 0, 3 | — | −596.69 / 83.12 / −513.57; −610.25 / 85.19 / −525.07 | behind the bar (−538.7) and the best single published model (−536.2); the zero-gap note applies (4.0% zero gaps); positive-gap L_T reported at the verdict |
+
+## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
+
+A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
+architecture: a statistical estimate) was scored with the protocol's metric, as recorded and with every gap dequantized
+inside its recording cell (zero gaps scored at the reference code's ε = 1e−20 as recorded). Time NLL per sequence, lower is
+better:
+
+| Split-0 validation | Ours raw | Ours dequantized | Mixture raw | Mixture dequantized | Best published L_T (test) |
+|---|---|---|---|---|---|
+| MOOC (1-s grid, 33% of gaps exactly on 1–10 cells) | −307.25 | −307.11 | **−342.15** | +571.84 | −310.6 |
+| Retweets (1-s grid, 3.9% zero gaps; 1,500 sequences) | −584.60 | −584.18 | **−791.55** | +3,096.32 | −621.33 |
+
+By gap size on MOOC, the context-free mixture beats our model only on gaps of 1–10 recording cells (by 49 nats per
+sequence: spikes on lattice points) and loses to it on every longer range (by 14 nats per sequence: the history model
+works). **Reading:** on gridded datasets the protocol's raw time NLL rewards density spikes on the recording lattice by
+hundreds of nats per sequence; a model that ignores history entirely beats every published model on MOOC and Retweets
+time NLL, and its advantage collapses by 900–3,900 nats when the rounding is removed. Our model moves by ≤ 0.4. Whether the
+published models exploit the lattice cannot be established without their checkpoints; what is established is that the
+metric is dominated by it on these datasets. The pre-registered verdicts stand as defined (MOOC: loss); they are reported
+with this analysis beside them. **Valid comparisons in B4:** Stack Overflow, the one grid-free dataset (no recording cell
+detected), and the mark component L_M on every dataset (unaffected by the time grid).
