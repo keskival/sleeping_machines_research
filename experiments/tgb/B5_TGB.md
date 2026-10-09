@@ -157,4 +157,9 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   a brute-force exact computation to 2e-7 relative error (v1–v3's batch-level decay over-decayed the newest
   contributions by up to one batch span: 0.5% / 2% relative, documented). Queued: identities d = 16 and d = 0; the
   batch-stale v3 run was withdrawn before it started.
+- 9 Oct 13:10: transparency note for the tgbn-trade sealed seeds: since the seed-0 development run, `race_affinity.py`
+  gained two inert options (`--loss`, default `ce`; `--drop`, default `none`) and the integer-index fix; the sealed runs
+  use the defaults, i.e. the configuration as developed. Their source hash differs from the development run's for that
+  reason only. Ablations (`--drop trend`, `--drop reverse`, validation only) are queued after the sealed seeds (theory
+  note 159, prediction 3).
 
