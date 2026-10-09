@@ -12,6 +12,25 @@ Completed B4 Stack Overflow evidence was reconciled into the current report: fiv
 
 Research target remains the shared B1/R1 route-credit enabler and R1's keyed predecessor-message memory. Pending pairwise output-cause pilots on AWS do not yet solve hidden write credit. Curie develops the mathematical and causal integration contracts without changing pinned AWS sources. No new external neural control or architectural substitution is admitted.
 
+**AWS autonomous recovery audit — 9 Oct 20:55 UTC.** Repository `keskival/sleeping_machines_research`, main;
+training never stopped. Three authorized gym slots are active under the existing tmux coordinator and run_safe:
+Retweets B4 splits 1/4 and GitHub B4 split 3. Logs advance; about 24 GiB MemAvailable. Coordinator consumes pending
+jobs and immutable addenda; reciprocal-credit7 watches the pending pairwise pilot analysis. Do not launch a fourth fit.
+GitHub split 3 has NaN validation from epoch 3 after finite epochs 0–2; its existing patience rule restores the best
+finite checkpoint. Preserve the frozen B4 protocol and report numerical instability with its completed result.
+Historical coordinator errors remain in status; they are not evidence that the current queue is stopped.
+
+**Source collision resolved:** AWS history audit is now `experiments/credit/hidden_write_history_math.py`, byte-identical to its original source digest; the completed JSON retains its original path/hash. Curie keeps its pinned `hidden_write_math.py`.
+
+**Advance without fitting:** theory note 160 §10 specifies a causal complete-data interface for hidden writes, with
+future event/silence and state-dependent route-prior scores, continuous memory sensitivities, and charged suffix replay.
+`aws_hidden_write_math_20261009T2055Z.json` exhaustively validates four histories at three settings: marginal-gradient
+error ≤5.8e-11; eligibility error ≤5.4e-11. Prefix-only odds fail, including sign reversals. Existing R1 deterministic
+keyed reads are not latent mixtures; no inference semantics or pinned driver was changed. Next: v6/v7 verdict first,
+then a tiny addressed key/value hidden-write replay/gradient contract inside B1/R1 before integrated DEV fitting.
+Prioritized integrated target remains R1 keyed temporal memory + predecessor message; deep hidden-route credit is the
+coverage gap. Synthetic pairwise pilots remain queued, CPU-only, with source-bound contracts/smokes and DEV gates.
+
 **AWS — reciprocal learning, active autonomous continuation (9 Oct 20:05 UTC).**
 **Chosen path:** compact backward credit learns exact posterior odds from two forward causes; corrected proposals train
 forward routing. The B1/R1 shared route-credit enabler remains the research target. All three gym slots are busy with

@@ -324,3 +324,62 @@ family's dense reference, with seed 0 reused; a final analysis requires all thre
 A failed pipeline or gate records a development decision and stops automatic scaling. Fits remain CPU-only under
 source-bound `run_safe.sh` jobs. Three seeds vary learner initialization on one fixed teacher; they do not test a broad
 teacher distribution or establish a public benchmark win. Numerical torch contracts and fitting results are pending.
+
+
+## 10. Hidden-write credit: causal history scores, not output-clock relabelling
+
+**B1/R1 integration derivation, 9 Oct 20:55 UTC.** The failure addressed is using a local output responsibility or
+prefix-only route score as credit for a hidden write that changes future memory. The proposed interface retains sparse
+writes, persistent temporal state, separate keys/values, elapsed-time computation and counterfactual learning. This is
+an interface specification for a stochastic hidden-route member; the current R1 keyed read is not silently replaced.
+
+Let observations be x_1:T (marks and gaps), hidden writes c_1:T, and causal state s_t = F_theta(s_(t-1), x_t, c_t).
+Prediction precedes the write: event density f_theta(x_t | s_(t-1)), then route prior
+pi_theta(c_t | s_(t-1), x_t). A valid complete-data log score is
+
+    A_theta(c) = sum_t [log f_theta(x_t | s_(t-1)(c_<t))
+                        + log pi_theta(c_t | s_(t-1)(c_<t), x_t)].
+
+Each f includes mark density and the integrated hazard for the observed gap. A censored observation window additionally
+includes its terminal survival; the tiny audit has an observed final query, no terminal censoring. State updates are
+deterministic conditional on the routes. Observed targets enter the posterior credit model during training, never the
+causal forward router. For positive differentiable scores on fixed finite route support:
+
+    grad log sum_c exp(A_theta(c)) = E_posterior[grad A_theta(c)].
+
+**The complete-data gradient still needs memory credit.** For a held-fixed route history, eligibility
+S_t = (partial F / partial s) S_(t-1) + partial F / partial theta carries parameter sensitivity. Every event-density and
+route-prior score uses its direct parameter derivative plus its state derivative contracted with S_(t-1). For a
+state-independent diagonal decay/write this reduces to the reciprocal trace in §1. State-dependent gates or routes
+add their state Jacobian; dropping it is an approximation. Posterior inference replaces the discrete-route summation,
+not the continuous sensitivity calculation. Fixed-weight equality does not grant exactness after online weight changes.
+
+**A pair verdict over histories is legal, but has a suffix cost.** Replacing c_u while retaining later route indices
+requires replay from the state immediately before u, recomputing every affected later state, event density AND route
+prior. Prefix terms cancel in A(c') - A(c). Old suffix likelihood caches cannot be reused. Pairwise BCE then uses
+sigmoid(A(c') - A(c)); MH correction for a block proposal uses the actual reverse/forward proposal probabilities.
+The independence formula in §9 applies only to independence proposals over the chosen history space. Charge replay
+length, state snapshots, proposal scoring, continuous sensitivities and optimizer work; two proposed histories need
+not cost just two expert evaluations. A bounded suffix is exact only with a specified conditional boundary or a proved
+finite dependency; temporal decay alone does not give exact finite support.
+
+**Existing R1 read semantics.** `recall_tpp_v4.py` makes deterministic addressed writes and adds query/key scores to a
+mark race. A q-weighted nonlinear read does not generally equal a mixture over sampled reads. There is no missing
+latent-write posterior to infer in that deterministic operation. Two legal next paths are (a) learn an approximate
+continuous adjoint for the existing operation and validate against its exact gradients, or (b) specify a stochastic
+hidden-write member with the complete-data score above and compare it against the existing R1 model on DEV. Path (b)
+changes forward semantics and requires the architectural comparison before any long fit. No substitution is made here.
+
+**Completed non-fitting evidence:** `experiments/credit/hidden_write_history_math.py` (renamed after a cross-host filename collision; identical source bytes), source-bound result
+`experiments/results/credit/aws_hidden_write_math_20261009T2055Z.json`. Two binary sparse writes, a decaying persistent
+scalar state, state-dependent route priors, marked exponential clocks and a future query enumerate four histories at
+three parameter settings. Posterior-mean complete-data gradients match finite differences of marginal log likelihood
+with maximum error 5.8e-11; memory eligibility score errors are at most 5.4e-11. Prefix-only odds fail all three cases
+and even reverse the sign of the full odds. This is a mathematical contract for this tiny model, not fitted recall,
+full R1 integration, a nonlinear-memory contract or an efficiency claim.
+
+**Next capability decision:** first let the existing matched v6/v7 DEV pilots settle compact-credit fidelity. Before an
+R1 hidden-write fit, implement a tiny stochastic addressed key/value memory with causal suffix replay; enumerate its
+route histories to validate pair targets, full parameter gradients and elapsed-time/silence terms. Retain the current
+R1 keyed/predecessor model as the same-family reference and measure complete replay/learning work. This closes the
+semantic gap without mistaking inexpensive output-clock attribution for deep memory learning.

@@ -1,0 +1,74 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 hidden-write credit integration",
+  "scope": "stdlib exhaustive mathematical audit; no fitting or benchmark score",
+  "causes": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "rows": [
+    {
+      "theta": -0.7,
+      "posterior": [
+        0.20784087963908277,
+        0.29312567553382957,
+        0.3609077102362535,
+        0.138125734590834
+      ],
+      "posterior_mean_score": 1.1715833940289273,
+      "marginal_finite_difference": 1.1715833939884845,
+      "gradient_error": 4.044276025183535e-11,
+      "eligibility_error": 3.413735960577924e-11,
+      "full_replayed_log_odds": 0.5518494901306887,
+      "prefix_only_log_odds": -0.7
+    },
+    {
+      "theta": 0.2,
+      "posterior": [
+        0.2635362240360561,
+        0.26138593480803574,
+        0.231020483005527,
+        0.24405735815038074
+      ],
+      "posterior_mean_score": -0.5753012652619688,
+      "marginal_finite_difference": -0.575301265204331,
+      "gradient_error": 5.7637783434927314e-11,
+      "eligibility_error": 5.350864196174143e-11,
+      "full_replayed_log_odds": -0.13168445354517733,
+      "prefix_only_log_odds": 0.2
+    },
+    {
+      "theta": 0.9,
+      "posterior": [
+        0.2668184574099323,
+        0.3955807127273796,
+        0.19672229948407619,
+        0.14087853037861212
+      ],
+      "posterior_mean_score": -1.8307480195330053,
+      "marginal_finite_difference": -1.8307480194934553,
+      "gradient_error": 3.95499188954318e-11,
+      "eligibility_error": 3.457478747748155e-11,
+      "full_replayed_log_odds": -0.30477540538389114,
+      "prefix_only_log_odds": 0.9
+    }
+  ],
+  "decision": "Complete-data hidden-write score needs causal suffix replay and memory sensitivities; prefix-only odds fail",
+  "source_sha256": {
+    "experiments/credit/hidden_write_math.py": "bb5f8cb311d7cba947ff4ee86bc02fcea0844cbe785b31aa70f4e94f3399a097"
+  }
+}
