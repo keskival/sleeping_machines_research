@@ -107,3 +107,54 @@ misses** (runner-up clocks and margins) as counterfactual information for the lo
 pass's slow parameters, trained on the forward pass's sampled causes), and a forward message head φ trained by credit
 quality alone, so the forward pass learns what to tell the backward pass. Test `hindsight_race_v3.py --arm hindsight_msg`:
 4-dimensional learned message; the credit model sees only (message, outcome); queued behind the v2 grid.
+
+## 6. Closing the recursion: one objective both sides climb (founder direction, 9 Oct)
+
+*"If it's just the backward pass mirrored, it's a static universe. It needs to converge towards learning both sides."*
+
+**The mirror is static.** The time-reversed adjoint (§1) has no parameters of its own. It is exact for the current
+forward weights and learns nothing across examples: each credit computation starts from scratch. It is the *structure*
+of the backward pass (the right architecture and initialization for q, by reciprocity), not its learning.
+
+**Open loops do not converge to a common point.** In sleep-only hindsight, q minimizes KL(p_θ ‖ q) on the model's own
+samples and θ follows q's credit on the data. The two losses differ, so this is a pair of games, not one objective
+(the known weakness of wake-sleep, Hinton et al. 1995). The router's gradient bias is exactly
+E_data[(q − ρ_θ)·∇ log π] ≤ 2·TV_data(q, ρ_θ)·max‖∇ log π‖. That is q's credit error *on the data*, which sleep-only
+training reaches only as p_θ approaches the data. The loop helps itself only once it is already right.
+
+**Closed loop: one verdict trains both sides.** For any cause k proposed by q, the forward pass can score the proposal
+exactly: p_θ(y, k | x) = π_θ(k|x)·p_θ(y|x,k). The importance weight w_k ∝ p_θ(y, k | x)/q(k | x, y) is the forward pass's
+verdict on the backward pass's guess. Trained on the same self-normalized weights (reweighted wake-sleep, Bornschein &
+Bengio 2015):
+
+- **Forward (θ):** Σ_s w_s ∇ log p_θ(y, k_s | x). This is an estimate of ∇ log p_θ(y|x), and its router part is Σ_s w_s e_{k_s} − π = ρ̂ − π, i.e. §2's credit.
+- **Backward (ψ):** Σ_s w_s ∇ log q(k_s | x, y) (wake), plus the sleep loss on sampled causes as an anchor.
+
+Both are stochastic gradients of the pair (log p_θ(y|x), −KL(ρ_θ ‖ q_ψ)) on the **data**, whose joint fixed point is
+q = ρ_θ and ∇_θ log p_θ = 0. The recursion closes as a contraction:
+
+- A better q gives lower-variance, less-biased weights, hence a more exact forward gradient. The self-normalized bias is O(var w / S), and var w = 0 when q = ρ.
+- A better forward model moves ρ_θ less per step, so q's target stops drifting.
+
+The credit gap KL(ρ ‖ q) is the measurable state of the backward side. Learning has converged on both sides when the
+likelihood plateaus *and* the gap goes to zero. Cost: S proposals per example instead of all K causes (S/K of dense).
+Contract (`experiments/credit/check_closed_v5.py`): enumerating every cause once reproduces the exact router gradient
+(1.8e−7 at depth 1, 4.2e−7 at depth 2).
+
+**Timescales (refines the "slow backward parameters" direction).** By two-timescale stochastic approximation (Borkar
+1997), the joint iteration converges when the follower tracks its moving target faster than the target moves. The credit
+model must therefore adapt faster than ρ_θ drifts. It is "slow" relative to a single example: it amortizes credit across
+examples, and per-example credit is a cheap read. It is not slow relative to θ. The `hindsight_slow` arm (q at 1/8 of the
+forward rate) tests the wrong side of this condition, and the theory predicts its credit gap grows.
+
+**Predictions** (`hindsight_race_v5.py`, 18 runs: closed / hindsight / hybrid × depth 1, 2 × 3 seeds, test credit gap
+logged per epoch):
+
+- (a) The closed arm's credit gap falls monotonically to near zero, while sleep-only hindsight keeps a residual gap early in training.
+- (b) The closed arm matches the oracle's held-out likelihood and route recovery at depth 2 with S = 2 proposals: 3 expert evaluations per example against 32 for dense.
+- (c) Hybrid, with exact posterior supervision on 10% of the data, sits between the two.
+
+A failure of (a) with success of (b) would mean the forward side learns without the backward side converging, i.e. an
+open loop that happens to work. That would be evidence against closure as the mechanism.
+
+Test log, 9 Oct: v4 `hindsight_hybrid` (6 runs) and the v5 grid (18 runs) are queued on slot 1 behind the v2/v3 grids.

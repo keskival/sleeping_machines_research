@@ -1,0 +1,88 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared enabler, theory note 160 sect. 6: hybrid credit model (sleep samples plus exact posterior on 10% of real examples). Tests the predicted remedy for the data-model mismatch bias of sleep-only credit, at 0.1x dense cost for the credit supervision",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "credit4_hindsight_hybrid_d1_s0",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d1_s0/credit4_hindsight_hybrid_d1_s0.txt",
+        "queue_sha256": "93d2398b8518da2ff8fd6b8cce7244a732a4af48c5558eccd9d092108bccffd3",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d1_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit4_hindsight_hybrid_d1_s1",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d1_s1/credit4_hindsight_hybrid_d1_s1.txt",
+        "queue_sha256": "14cd0ef88e599b700683c25c5e2a4633d2077f409984a35089f21e9072efa612",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d1_s1.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit4_hindsight_hybrid_d1_s2",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d1_s2/credit4_hindsight_hybrid_d1_s2.txt",
+        "queue_sha256": "a8ab0dbc29ed578e8fdafead5f86be1025e6def31a216e9a6b83d510461bff6c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d1_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit4_hindsight_hybrid_d2_s0",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d2_s0/credit4_hindsight_hybrid_d2_s0.txt",
+        "queue_sha256": "3f0c76649772f95c1c67c58e25361d2316b9ba93d9df7ab63af2de516a2c807b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d2_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit4_hindsight_hybrid_d2_s1",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d2_s1/credit4_hindsight_hybrid_d2_s1.txt",
+        "queue_sha256": "f709e78db2d75eb1deb8feb97f894a34e6b7ce678cff721e4bdfd56dc5fa319e",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d2_s1.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit4_hindsight_hybrid_d2_s2",
+        "queue": "experiments/queue/enabler/credit4_hindsight_hybrid_d2_s2/credit4_hindsight_hybrid_d2_s2.txt",
+        "queue_sha256": "b3fc2192779aa3b13622ef9cb739cd9cd8cb6843916833c62f2864ae4289b1b5",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/hindsight_race_v4.py": "e1d299c150cf8a8d802c58ac8613fd56875c41ea8ef51711a80cf5709731fc29"
+        },
+        "result": "experiments/results/credit/credit4_hindsight_hybrid_d2_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
