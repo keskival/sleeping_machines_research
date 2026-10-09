@@ -57,17 +57,18 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | Message only, backprop | 2 | 95.8% | | −3.013 | 69.7% |
 | **Message only, backprop, 3 seeds (recommended design)** | mean ± sd | **97.5 ± 1.7%** | | −2.978 | **73.8 ± 14.7%** |
 | Ablation: normalized match only (no message), backprop | 0 | 21.6% | −2.203 | −3.492 | 12.4% |
-| Keyed read, local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
+| Keyed read, normalized local race credit | 0 | **91.9%** | −0.379 | −3.282 | **79.4%** |
+| Same | 1 | 83.8% | -0.578 | -3.182 | 23.1% |
+| Same | 2 | 94.2% | -0.212 | -3.067 | 23.3% |
+| **Normalized local race credit, 3 seeds** | mean ± sd | **90.0 ± 5.5%** | | **−3.177** | **41.9 ± 32.4%** |
 | **Message only, local race credit, 3 seeds** | mean ± sd | **77.4 ± 5.4%** (77.3 / 72.2 / 82.9) | | | 57.4 ± 5.2% |
 | Frozen B1 v5 | 0 | 21.6% | −2.231 | −3.512 | 12.3% |
 | **Message only, mixed-length training (4–16 pairs), backprop** | 0 | **99.2%** | | −3.124 | 97.5% (in range); **91.6% at 32 pairs** (held out; set baseline 5.0%) |
+| **Mixed lengths, backprop, 3 seeds** | mean ± sd | **99.0 ± 0.3%** | | **−3.128** | **96.8 ± 0.7% at 16; 90.2 ± 1.2% at held-out 32** |
 | Set baseline | — | 14.1% | | | 7.9% |
 
 **Gate 1 status: met at the training length over three seeds** (99.4 ± 0.2% vs the set baseline 14.1% and frozen v5
-21.6%); length generalization (16 pairs) is not yet met. Parameters: 36,325 for the keyed model, 34,740 for v5. Pending:
-- ablations: predecessor message only, normalization only;
-- mixed-length training (4–16 pairs, 32-pair held-out test);
-- local race credit, seeds 1–2.
+21.6%). **Length generalization confirmed with mixed-length training:** three seeds reach 90.2 ± 1.2% at 32 pairs, twice the longest training length (set baseline 4.9%). Parameters: 36,325 for the keyed model, 34,740 for v5. The ablations, mixed-length seeds and normalized local-credit seeds are completed; do not rerun their queues.
 
 **Diagnosis** (backprop, seed 0):
 - The keyed match alone ranks the correct value first in 99.76% of queries.
@@ -87,8 +88,11 @@ This is a three-factor rule whose factors are all available at the slot and the 
 | 7 Oct 16:35 | 2 | Ablation: predecessor message only | 97.3%; **90.1%** at 16 pairs | The message carries the binding; the learned sharpness of the normalized match costs length generalization |
 | 7 Oct 17:15 | 2 | Ablation: normalized match only | TEST 21.6%, 12.4% at 16 pairs (identical to v5) | The predecessor message is necessary. Design fixed to **message only**; the not-yet-started queues for message+normalization (`curie_r1_v5len_*_20261007T1520Z`, `curie_r1_v4_pn_keyed2_s{1,2}_20261007T1545Z`) are superseded and were never run; replaced by the message-only chain (backprop seeds 1–2, local race credit seeds 0–2, mixed-length 4–16 pairs) |
 | 7 Oct 18:02 | 2 | Message only, backprop seeds 1–2 | 3 seeds: 97.5 ± 1.7%; 16 pairs 73.8 ± 14.7% | Recommended design reproduces; generalizes better than message + normalization (44.6 ± 6.8%) but varies by seed |
-| 7 Oct 18:42 | 2 | Message only, local race credit seeds 0–2 | 77.4 ± 5.4%; 16 pairs 57.4 ± 5.2% | **Learning through the race alone binds content reproducibly** (≈5.5× the set baseline). Below backprop (97.5%) and below the normalized local variant (91.9%, seed 0; seeds 1–2 queued) |
-| 7 Oct 19:14 | 3 | Mixed-length training 4–16 pairs (`recall_tpp_v5.py`), message only | 99.2% at 8; 97.5% at 16; **91.6% at 32 pairs** (2× the longest training length) | Length generalization follows from mixed lengths; seed 0, more seeds next |
+| 7 Oct 18:42 | 2 | Message only, local race credit seeds 0–2 | 77.4 ± 5.4%; 16 pairs 57.4 ± 5.2% | **Learning through the race alone binds content reproducibly** (≈5.5× the set baseline). Below backprop (97.5%) and normalized local credit (90.0 ± 5.5%, three completed seeds) |
+| 7 Oct 19:14 | 3 | Mixed-length training 4–16 pairs (`recall_tpp_v5.py`), message only | 99.2% at 8; 97.5% at 16; **91.6% at 32 pairs** (2× the longest training length) | Length generalization follows from mixed lengths; all three seeds now completed |
+
+| 9 Oct reconciliation | 3 confirmation | Mixed-length seeds 0–2, identical source/configuration | 99.0 ± 0.3% at 8; 96.8 ± 0.7% at 16; **90.2 ± 1.2% at 32** (91.6 / 89.8 / 89.2) | Length generalization confirmed; reuse completed evidence |
+| 9 Oct reconciliation | Local confirmation | Normalized local-credit seeds 0–2 | 90.0 ± 5.5% at 8; **41.9 ± 32.4% at 16** (79.4 / 23.1 / 23.3) | Better training-length mean than message-only local credit; length behavior must be part of the next DEV comparison |
 
 ## Gate 2 results (65,528-target FineWeb slice, GPT-2 BPE, nats per token, scored once)
 
@@ -114,13 +118,7 @@ regularization and the 4M setting are the next levers.
 
 ## Next
 
-1. Finish confirmation (seeds and ablations), then state gate 1 as met or not.
-2. Length generalization: mixed-length training (running next); the local-credit result suggests that co-adapting the
-   backbone to the read hurts extrapolation.
-3. **Gate 2 (prepared 7 Oct 18:00):** `experiments/r1_token_keyed_lm.py` carries the keyed predecessor-message read to
-   GPT-2-tokenized FineWeb: tied embedding, two B1 temporal-memory layers, keyed read over the lane's past tokens (each
-   token's slot holds keys from its state and its predecessor's message; per-head distance decay). TRAIN = first 1M tokens
-   of train shard 1 in 256-token lanes; selection on a disjoint val slice (offset 10,485,760); the 65,528-target slice is
-   scored once. Gate: KN trigram 6.537 at 1M tokens (bigram 6.584). Queued after the recall chain and the KN data check:
-   smoke, keyed 1M, no-read ablation 1M (≈22 min per epoch on one CPU thread). Data check (7 Oct 19:14): the KN references rerun on curie's downloaded shards reproduce all 24 AWS values exactly (`curie_token_ngram_reference_repro_20261007T1640Z`).
-4. Offer the mechanism to B1 (AWS) for datasets where marks recur with context (StackOverflow, Retweet).
+1. **Sparse credit integration (B1/R1 enabler).** Theory note 162 supplies frozen forward utility predictions plus full-support forced-write corrections for the conditional expected-loss route component. The existing recall model's addressed writes are deterministic: adding an optional destination is an explicit diagnostic extension, not a claim that the current model already has a latent write router. `credit/check_native_write_residual.py` preserves the two-layer temporal core, delayed clocks, exact survival, predecessor message and separate key/value writes. It tests original-write parity, prefix causality, native shared-parameter route-gradient means and the separate continuous-path term. No production driver is changed. Queued non-fitting gate: `queue/enabler/curie_r1_native_write_residual_20261009T2140Z/manifest.json`; result pending behind Curie's host lock.
+2. After the native contract, add an integrated smoke before admitting a bounded DEV fit. Compare full credit, message-only local credit, normalized local credit and the corrected forward predictor on the same native model/data/horizon. Measure DEV recall at 8/16/32 pairs, per-parameter credit error/variance, complete replay/discovery/optimizer work, CPU time and storage. Forward-supported route credit alone does not restore the detached continuous producer gradients in local mode; preserve or separately derive their learning rather than attributing the 77.4→97.5 gap to a missing latent route.
+3. Tokenized language gates are met. Next quality comparison uses a published small Transformer with matching tokenizer, data and scoring; no new external reference training. Own-model development prioritizes regularization and measured interface cost before scaling.
+4. The predecessor-message mechanism is available for B1 datasets with contextual mark recurrence. AWS owns admission and execution there.

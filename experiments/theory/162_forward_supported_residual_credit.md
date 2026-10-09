@@ -209,3 +209,12 @@ packet storage, complete work and recall. The existing 77.4% local-credit
 versus 97.5% full-differentiation recall gap supplies the benchmark-relevant
 target. Admit a bounded fit after native contracts and measured smoke costs;
 use the existing queue discipline and no new external architecture.
+
+The current R1 keyed writes are deterministic. A latent optional write is an
+explicit diagnostic extension, implemented only in `credit/check_native_write_residual.py`.
+That non-fitting initialized native contract is queued behind the host lock;
+no native-gradient result is claimed before completion. Correcting its route
+component does not restore the detached continuous producer gradients of local
+mode. Compare both normalized and message-only local credit: the completed
+normalized arm is 90.0 ± 5.5% at eight pairs and 41.9 ± 32.4% at 16. Retain
+continuous credit and length-specific DEV diagnosis in the integration gate.

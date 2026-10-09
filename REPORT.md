@@ -4027,3 +4027,17 @@ Variance-times-work pairs four-history DOUBLE projected raw variance with one-wi
 Eleven discarded updates: five traced, five exact untraced verifications and one serialized full recovery. Fixed FIT0..3 and adjacent unused FIT24..31 predictions saved for every arm; not IID, DEV or test. Inference traces/reconstruction/admission/verification/evaluation remain additional work. Total campaign FLOPs/traffic/energy unknown, not zero; measured step work is not the campaign total. Earlier negative content evidence retained.
 
 Theory136; 60.076s/362876KiB. Numerically admitted cost/variance tradeoff only. Temporal races, private sparse state/key-values and counterfactual learning retained. AWS corrected replay10M plus exact teachers/controls and other-host live-gate/calibrated language quality remain priority.
+
+## Appendix. R1 recall: completed length and local-credit confirmation
+
+The predecessor-message keyed race model learns bindings across irregular gaps. Mixed-length training confirms length generalization over three seeds: 90.2% mean recall at 32 pairs, twice the maximum training length. The original seed-0 result is 91.6%. The normalized local-credit arm reaches 90.0% mean at eight pairs; its 16-pair result varies sharply across seeds. Message-only local credit is 77.4% at eight pairs and 57.4% at 16 pairs. The credit-development comparison must measure both binding and length generalization.
+
+| Configuration / evaluation | Mean ± SD | Seeds 0 / 1 / 2 | Set baseline |
+| --- | --- | --- | --- |
+| Mixed lengths, 8 pairs | 99.0% ± 0.3 pp | 99.2% / 99.2% / 98.7% | 14.1% |
+| Mixed lengths, 16 pairs (in training range) | 96.8% ± 0.7 pp | 97.5% / 96.8% / 96.2% | 7.9% |
+| Mixed lengths, 32 pairs (held out) | 90.2% ± 1.2 pp | 91.6% / 89.8% / 89.2% | 4.9% |
+| Normalized local credit, 8 pairs | 90.0% ± 5.5 pp | 91.9% / 83.8% / 94.2% | 14.1% |
+| Normalized local credit, 16 pairs | 41.9% ± 32.4 pp | 79.4% / 23.1% / 23.3% | 7.9% |
+
+Three completed seeds per configuration; mean and sample SD; mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring. Source and configuration consistency are checked by the headline packet builder. All completed result files are retained. These are recall-task results, not a language leaderboard claim. The forward-supported residual estimator has eight finite mathematical tests; its initialized native forced-write contract is queued, and an integrated learning comparison follows only after that gate passes.

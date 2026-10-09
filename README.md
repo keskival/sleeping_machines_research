@@ -40,7 +40,7 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 - **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);
   at 4× the data 5.510 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
-  training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
+  training length (seed 0; three-seed mean 90.2 ± 1.2%); **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
   what-if analysis and synthetic data; taxi streams match real timing (gap KS 0.014 vs 0.063 naive) and event-to-event
   structure (0.024 vs 0.53).

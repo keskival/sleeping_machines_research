@@ -42,6 +42,21 @@ def tpp(prefix, n=5):
     return stats([load(f'experiments/results/tpp/{prefix}_s{s}.json')['test']['ll'] for s in range(n)])
 
 
+def recall_stats(paths):
+    records = [load(path) for path in paths]
+    assert [r['args']['seed'] for r in records] == [0, 1, 2]
+    assert all(r['status'] == 'completed' and r['battle'] == 'R1' for r in records)
+    assert len({json.dumps({k: v for k, v in r['args'].items() if k not in ('tag', 'seed')},
+                           sort_keys=True) for r in records}) == 1
+    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) == 1
+    for source, expected in records[0]['source_sha256'].items():
+        assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest() == expected
+    sections = ('test', 'extrapolation', 'extrapolation_far') if 'extrapolation_far' in records[0] else ('test', 'extrapolation')
+    return {section: dict(recall=stats([r[section]['recall_acc'] for r in records]),
+                          ll=stats([r[section]['ll'] for r in records]),
+                          set_baseline=stats([r[section]['set_baseline_acc'] for r in records])) for section in sections}
+
+
 easy = dict(taxi=tpp('b1_final_taxi_v5'), taobao=tpp('b1_final_taobao_v5'), stackoverflow=tpp('b1_final_stackoverflow_v12l2'),
             retweet=tpp('b1_final_retweet_v16'), amazon=tpp('b1_final_amazon_v18'))
 unified = {d: tpp(f'b1_final_unified_v19_{d}') for d in ('taxi', 'taobao', 'stackoverflow', 'retweet', 'amazon')}
@@ -55,6 +70,10 @@ wiki_dev = load('experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_2026100
 wiki = [load(f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json')['test_mrr'] for s in range(3)]
 mooc = b4_stats('b4_mooc')
 stack_overflow = b4_stats('b4_stack_overflow')
+recall_mixed = recall_stats([f'experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s{s}_{stamp}.json'
+                            for s, stamp in enumerate(('20261007T1715Z', '20261007T1915Z', '20261007T1915Z'))])
+recall_local_normalized = recall_stats([f'experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s{s}_{stamp}.json'
+                                       for s, stamp in enumerate(('20261007T1425Z', '20261007T1900Z', '20261007T1900Z'))])
 for doc in ('experiments/B1_EASYTPP.md', 'experiments/B2_IRREGULAR_TS.md', 'experiments/tgb/B5_TGB.md',
             'experiments/B4_NTPP_BENCHMARK_PROPOSAL.md', 'experiments/fas/B3_DEVELOPMENT_LOG.md'):
     inputs[doc] = hashlib.sha256((ROOT / doc).read_bytes()).hexdigest()
@@ -81,6 +100,9 @@ packet = dict(
                           verdict='loss (pre-registered frozen configuration)',
                           diagnosis='Time component ahead; mark component carries the total-NLL gap',
                           scope='Five fixed splits; NLL per sequence; uncertainty is standard error'),
+    r1_recall=dict(mixed_length=recall_mixed, local_normalized=recall_local_normalized,
+                   scope='Three completed seeds per configuration; mean and sample SD; '
+                         'mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring'),
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
            'sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule',
     input_sha256=inputs)

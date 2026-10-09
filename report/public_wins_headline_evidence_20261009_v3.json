@@ -330,6 +330,158 @@
   "diagnosis": "Time component ahead; mark component carries the total-NLL gap",
   "scope": "Five fixed splits; NLL per sequence; uncertainty is standard error"
  },
+ "r1_recall": {
+  "mixed_length": {
+   "test": {
+    "recall": {
+     "mean": 0.9901249999999999,
+     "sd": 0.0029394940040762254,
+     "values": [
+      0.9915,
+      0.992125,
+      0.98675
+     ]
+    },
+    "ll": {
+     "mean": -3.127644712491746,
+     "sd": 0.007848304709099857,
+     "values": [
+      -3.1243011853590406,
+      -3.13661109781262,
+      -3.122021854303579
+     ]
+    },
+    "set_baseline": {
+     "mean": 0.14051349206349206,
+     "sd": 0.00034932379879147276,
+     "values": [
+      0.14082261904761903,
+      0.1405833333333333,
+      0.14013452380952382
+     ]
+    }
+   },
+   "extrapolation": {
+    "recall": {
+     "mean": 0.9682916666666667,
+     "sd": 0.006844344532775442,
+     "values": [
+      0.9751875,
+      0.9681875,
+      0.9615
+     ]
+    },
+    "ll": {
+     "mean": -3.452095553422646,
+     "sd": 0.03411630370312113,
+     "values": [
+      -3.418332241524394,
+      -3.4514002000809487,
+      -3.4865542186625933
+     ]
+    },
+    "set_baseline": {
+     "mean": 0.07918423428423427,
+     "sd": 0.00031925431692906756,
+     "values": [
+      0.07901154539904538,
+      0.07898851981351979,
+      0.07955263764013763
+     ]
+    }
+   },
+   "extrapolation_far": {
+    "recall": {
+     "mean": 0.9022916666666667,
+     "sd": 0.012320640287068443,
+     "values": [
+      0.9160625,
+      0.8985,
+      0.8923125
+     ]
+    },
+    "ll": {
+     "mean": -3.852366039784421,
+     "sd": 0.028348359456112887,
+     "values": [
+      -3.8300803360715663,
+      -3.8842728036366676,
+      -3.8427449796450293
+     ]
+    },
+    "set_baseline": {
+     "mean": 0.04936520095153896,
+     "sd": 0.00020588922264190804,
+     "values": [
+      0.04953310245601604,
+      0.049135486055575564,
+      0.04942701434302525
+     ]
+    }
+   }
+  },
+  "local_normalized": {
+   "test": {
+    "recall": {
+     "mean": 0.8997916666666667,
+     "sd": 0.05486707421881842,
+     "values": [
+      0.919125,
+      0.837875,
+      0.942375
+     ]
+    },
+    "ll": {
+     "mean": -3.1772808043589595,
+     "sd": 0.10759541528384961,
+     "values": [
+      -3.282203512822304,
+      -3.1824405602054613,
+      -3.067198340049113
+     ]
+    },
+    "set_baseline": {
+     "mean": 0.14051349206349206,
+     "sd": 0.00034932379879147276,
+     "values": [
+      0.14082261904761903,
+      0.1405833333333333,
+      0.14013452380952382
+     ]
+    }
+   },
+   "extrapolation": {
+    "recall": {
+     "mean": 0.41933333333333334,
+     "sd": 0.32441856844527767,
+     "values": [
+      0.7939375,
+      0.2309375,
+      0.233125
+     ]
+    },
+    "ll": {
+     "mean": -4.821604459126835,
+     "sd": 0.9833449905991098,
+     "values": [
+      -3.69356098457662,
+      -5.273350597183449,
+      -5.497901795620437
+     ]
+    },
+    "set_baseline": {
+     "mean": 0.07918423428423427,
+     "sd": 0.00031925431692906756,
+     "values": [
+      0.07901154539904538,
+      0.07898851981351979,
+      0.07955263764013763
+     ]
+    }
+   }
+  },
+  "scope": "Three completed seeds per configuration; mean and sample SD; mixed training 4\u201316 pairs, held-out 32-pair evaluation; no new scoring"
+ },
  "fas_v2": "level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule",
  "input_sha256": {
   "experiments/results/tpp/b1_final_taxi_v5_s0.json": "ed707f8c47f919427588159e934002a11c8254435337fc13302b48abc6423c28",
@@ -406,9 +558,15 @@
   "experiments/results/tpp_b4/b4_stack_overflow_s2.json": "04aa3b234e051d876cc7c7b694bd5180a6dce68244d845bd43ce7ced82589dd4",
   "experiments/results/tpp_b4/b4_stack_overflow_s3.json": "25fbbbcdd45808d34ee611ccd2d4e760b0805b44619e1e66b7da66163bde211a",
   "experiments/results/tpp_b4/b4_stack_overflow_s4.json": "14ec5de3df75e2af081b80fcf33f839a3e5bda62fdb019464d6e0e86aa40e0b1",
+  "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s0_20261007T1715Z.json": "cf7e79a304f441a893e71d3bafb9929f5947a8852691f9e022134cdff7274347",
+  "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s1_20261007T1915Z.json": "559a8a8167a36434c2b275f201a7aa2bc692415892d1feeac846456d41b1ed96",
+  "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s2_20261007T1915Z.json": "bac7decf97ae30fbb44f8d7f4aaab4b262383c682bb7d7e31e3ce34819e75c59",
+  "experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s0_20261007T1425Z.json": "d26db462f667e23f7db2357ed58a1433cadbe4c725107dac079b2170933e2825",
+  "experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s1_20261007T1900Z.json": "d2e19dc9aed241933a96d8302ea9d284b21c555383321b1ac47fc694e93df95b",
+  "experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s2_20261007T1900Z.json": "e518da6ee00171781054f5a9f2277c0513a6ab68e0159b8c2fa0bfd9b3f38b65",
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "33675862b9c653a9a3259aeef374694a76c2ebbeeb417643926bad35da57d9a8",
-  "experiments/tgb/B5_TGB.md": "00adb4f2264b32874d48543cc1e4701b35d28165417c34a97c6362f29f48743b",
+  "experiments/tgb/B5_TGB.md": "0a4b9e1ddb645f21c0ba95ce626ef5b9eb0f88e6188d8179ceaf6683daa79011",
   "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "3726f3a2964c7bee928005987137c6fcf25ba672df9c0ee8bb60c805b6429f7e",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "812007af4f43b8d61c43ee6067377611e1cb0796cd9f33ff500357a06b052b1f"
  }

@@ -1,0 +1,29 @@
+{
+  "tag": "curie_r1_native_write_residual_20261009T2140Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "training": false,
+  "purpose": "One initialized native two-layer addressed-write replay contract; no fitting or benchmark data; no change to AWS sources",
+  "jobs": [
+    {
+      "tag": "curie_r1_native_write_residual_20261009T2140Z",
+      "driver": "experiments/credit/check_native_write_residual.py",
+      "queue": "experiments/queue/enabler/curie_r1_native_write_residual_20261009T2140Z/curie_r1_native_write_residual_20261009T2140Z.txt",
+      "queue_sha256": "019aedcba2e6b470f04b1e7251e48058905f717e12604a0625bae5cece954a45",
+      "sources": {
+        "experiments/credit/check_native_write_residual.py": "61eb2f4694ab0ef8e397d7b8e178270280f119483971d8d0b4e0d012b13a2aa3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_native_write_residual.py": "61eb2f4694ab0ef8e397d7b8e178270280f119483971d8d0b4e0d012b13a2aa3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_r1_native_write_residual_20261009T2140Z.json",
+      "timeout_s": 180,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    }
+  ]
+}

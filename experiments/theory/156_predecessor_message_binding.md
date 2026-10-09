@@ -38,7 +38,11 @@ binding at all (21.6%, identical to the frozen v5 model, against a set baseline 
 3. **Sharpness must not encode length.** Normalizing keys and queries with a learned sharpness adds ~2 points at the
    training length but costs generalization (16 pairs: 44.6% vs 73.8% without normalization): a learned temperature
    calibrated to the training number of competitors over-sharpens when competitors double. Mixed-length training
-   removes the dependence: 91.6% at 32 pairs, twice the longest training length (seed 0).
+   improves length generalization: 91.6% at 32 pairs, twice the longest training length (seed 0);
+   all three seeds reach 90.2 ± 1.2%, versus the 4.9% set baseline. Normalized local credit
+   is 90.0 ± 5.5% at eight pairs but 41.9 ± 32.4% at 16; its seed-0 79.4%
+   extrapolation does not describe the three-seed behavior. Compare both local designs
+   and length-specific DEV errors before attributing a new credit improvement.
 4. **It carries to language.** The same read over GPT-2-tokenized FineWeb (1M training tokens) scores 6.009 ± 0.010 nats per
    token (3 seeds) on the 65,528-target slice, against KN trigram 6.537 at the same data and 6.100 at 4×. Without the read the same model scores 6.193:
    the read carries 0.175 nats per token of the margin (seed-0 ablation).

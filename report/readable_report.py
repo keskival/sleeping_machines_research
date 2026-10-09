@@ -5449,6 +5449,34 @@ def build(M):
             break
         cover.append((kind, value))
     pages = [cover + benchmark_record_page()] + pages[first_appendix:]
+    packet = sorted((ROOT/'report').glob('public_wins_headline_evidence_*.json'))[-1]
+    recall = json.loads(packet.read_text())['r1_recall']
+    rows = []
+    for label, arm, section in (
+            ('Mixed lengths, 8 pairs', 'mixed_length', 'test'),
+            ('Mixed lengths, 16 pairs (in training range)', 'mixed_length', 'extrapolation'),
+            ('Mixed lengths, 32 pairs (held out)', 'mixed_length', 'extrapolation_far'),
+            ('Normalized local credit, 8 pairs', 'local_normalized', 'test'),
+            ('Normalized local credit, 16 pairs', 'local_normalized', 'extrapolation')):
+        r = recall[arm][section]
+        rows.append([label, f"{r['recall']['mean']:.1%} ± {100*r['recall']['sd']:.1f} pp",
+                     ' / '.join(f'{v:.1%}' for v in r['recall']['values']),
+                     f"{r['set_baseline']['mean']:.1%}"])
+    pages.append([
+        ('h1', 'Appendix. R1 recall: completed length and local-credit confirmation'),
+        ('p', 'The predecessor-message keyed race model learns bindings across irregular gaps. '
+         'Mixed-length training confirms length generalization over three seeds: 90.2% mean recall '
+         'at 32 pairs, twice the maximum training length. The original seed-0 result is 91.6%. '
+         'The normalized local-credit arm reaches 90.0% mean at eight pairs; its 16-pair result '
+         'varies sharply across seeds. Message-only local credit is 77.4% at eight pairs and '
+         '57.4% at 16 pairs. The credit-development comparison must measure both binding and length generalization.'),
+        ('table', (['Configuration / evaluation', 'Mean ± SD', 'Seeds 0 / 1 / 2', 'Set baseline'],
+                   rows, [64, 34, 52, 25])),
+        ('small', recall['scope'] + '. Source and configuration consistency are checked by the headline '
+         'packet builder. All completed result files are retained. These are recall-task results, '
+         'not a language leaderboard claim. The forward-supported residual estimator has eight '
+         'finite mathematical tests; its initialized native forced-write contract is queued, '
+         'and an integrated learning comparison follows only after that gate passes.')])
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')

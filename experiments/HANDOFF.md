@@ -27,6 +27,9 @@ on slot 1; reciprocal-credit7 controller admits three-seed confirmation only on 
 v1–v5 teacher weights are unseeded: individual diagnostics only, never matched cross-arm evidence. Prioritized integrated
 target remains R1 keyed temporal memory + predecessor message. Hidden-write continuation score and eligibility contracts
 are in note 160 §10/161; posterior attribution is not a complete optionality/update-learning objective.
+**Curie native credit gate prepared — 9 Oct 21:40 UTC.** `queue/enabler/curie_r1_native_write_residual_20261009T2140Z/manifest.json` is non-fitting, source-pinned and waiting behind the host lock in tmux `curie-native-write-contract`. It introduces one explicit optional key/value destination into an initialized two-layer native R1 diagnostic, preserving incoming messages and time/mark likelihood. Production R1 writes remain deterministic. Route credit and continuous producer credit are distinct; this gate certifies the former before any integrated smoke/DEV fitting. Numerical execution is pending.
+
+**Completed R1 confirmations reconciled:** mixed-length seeds 0–2 give 99.0 ± 0.3% at 8 pairs, 96.8 ± 0.7% at 16 and 90.2 ± 1.2% at held-out 32 (seed 0 remains 91.6%). Normalized local-credit seeds give 90.0 ± 5.5% at 8 and 41.9 ± 32.4% at 16. All six source/configuration records agree; no retraining or scoring. The next credit comparison includes both local designs and DEV length generalization.
 
 **Curie ownership confirmed by user — 9 Oct 2026.** Curie owns its local queues; AWS remains independently owned. Recovered PAM split 4 is live, followed by split 3 and admitted B10 development fits. Benchmark wins remain the operating priority.
 
