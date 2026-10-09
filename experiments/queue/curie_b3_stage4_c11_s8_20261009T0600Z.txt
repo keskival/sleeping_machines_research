@@ -1,0 +1,2 @@
+# B3 Stage 4 (sealed protocol): frozen native config C11, seed 8; training and validation only (test scored separately by score_sealed_test.py once the references exist); decision: native seed for the sealed comparison
+curie_b3_stage4_c11_s8_20261009T0600Z experiments/fas/race_tpp_fas_v4.py --tag curie_b3_stage4_c11_s8_20261009T0600Z --keyed 0 --pred-window 64 --consume 1 --batch 16 --eval-batch 8 --seed 8 --max-wall-s 14000
