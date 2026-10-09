@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared enabler, note 160 sects. 7/11: applies the pre-stated criteria to the online1/online2 Taxi grids (no training). Decides whether per-event trace learning and mutually trained feedback pass",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online_analysis_20261009",
+        "queue": "experiments/queue/enabler/online_analysis_20261009/online_analysis_20261009.txt",
+        "queue_sha256": "bc01d936bda45c1f2205db554d5e7158ed77738b5b6eb3ba2b5ef9d3966d1073",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/analyze_online.py": "bca18e66d7b48feae6d0bf9e8ea604d7da431cb37a301cfa8587d81898d11543"
+        },
+        "result": "experiments/results/credit/online_analysis_20261009.json",
+        "timeout_s": 600,
+        "rss_kb": 1000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
