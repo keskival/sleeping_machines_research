@@ -435,3 +435,35 @@ The cosine between each W and its B is logged every epoch.
   static backward path.
 
 A mutual arm no better than the static one would mean the backward direction's learning adds nothing at this scale.
+
+## 12. Exact per-event learning across depth (9 Oct)
+
+One diagonal memory layer has diagonal traces: each mode depends only on its own parameters, so the trace costs no more
+than the parameters. Stacking breaks this. Layer-1 parameters reach the layer-2 state through every past layer-2 input,
+so exact forward credit must carry S_2 = ∂z_2/∂P for every lower parameter P:
+
+  S_1,t = a_1,t S_1,t−1 + local_1,t
+  ∂u_2,t/∂P = ∂u_t/∂P + R_1 S_1,t (+ readout terms)
+  S_2,t = a_2,t S_2,t−1 + own_2,t + J_2,t ∂u_2,t/∂P,
+
+where J_2 = ∂b_2/∂u_2 is the layer-2 write Jacobian. When an event arrives, its loss is differentiated locally with
+respect to (z_2, u_2) and the head. The memory-path gradient is λ_2·S_2 + μ·∂u_2/∂P.
+- **Cost.** Each event and stream costs O(n_2·|P|) for the trace update and storage. For Taxi (n = 16, |P| = 4,704) that
+  is 4·16·4,704 = 301k trace floats per stream. This price of exactness grows with depth × lower parameters, not with
+  sequence length. BPTT's stored history grows with sequence length.
+- **Truncation.** The layer-local alternative (as in e-prop) keeps no history of S_2 with respect to lower parameters, so
+  lower layers receive credit only through the current input.
+
+**Contract** (`experiments/credit/online_deep.py --contract`, float64, fixed weights, two layers):
+- online_deep equals BPTT on every parameter: maximum relative difference 9.6e−16.
+- The layer-local truncation differs by 112–124% on lower-layer parameters, so the contract separates the two.
+
+**Test.** Slot 3, after the one-layer grids: BPTT, online_deep, online_trunc and online_local, Taxi DEV, 3 seeds each.
+
+**Predictions:**
+- online_deep is within 0.02 nats/event of BPTT.
+- online_trunc lands between online_deep and online_local. The size of that gap measures how much learning depends on
+  cross-layer temporal credit.
+
+If truncation costs nothing here, the cheap layer-local learner is enough at this scale. If it costs a lot, exact depth
+traces (or a learned approximation of them, §§3, 11) are the path to per-event learning of our deep stacks.
