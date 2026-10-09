@@ -162,4 +162,7 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   use the defaults, i.e. the configuration as developed. Their source hash differs from the development run's for that
   reason only. Ablations (`--drop trend`, `--drop reverse`, validation only) are queued after the sealed seeds (theory
   note 159, prediction 3).
+- 9 Oct 12:55: **tgbn-trade sealed seed 0: TEST NDCG@10 0.8683** (2013 / 2014 / 2015: .893 / .843 / .868); validation
+  0.8747 (selected epoch 95); persistent forecast in our replay 0.8541 on test (leaderboard 0.855: protocol fidelity on
+  test too). Above NAVIS (0.863) on this seed; the pre-registered verdict needs seeds 1 and 2 (queued).
 

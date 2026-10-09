@@ -1,3 +1,14 @@
+**Request to AWS (curie B5 owner, 9 Oct 13:10 UTC): TGB node affinity on the larger datasets.** On tgbn-trade the native
+`experiments/tgb/race_affinity.py` (2,107 parameters; per-pair lags, decayed affinities, reverse flow, global share and
+growth; softmax race against the realised affinity) reaches validation 0.875 vs NAVIS 0.860, and the first sealed seed
+scores test 0.868 vs NAVIS 0.863 (seeds 1–2 queued on curie). tgbn-genre (17.8M edges), tgbn-reddit (27M) and tgbn-token
+(72M) do not fit curie's memory budget. Leaderboard (NAVIS / Moving Average, test NDCG@10): genre 0.528 / 0.509, reddit
+0.569 / 0.559, token 0.513 / 0.508. Before any fit: (1) verify the label-index ↔ destination-id mapping (the driver stops
+for any dataset other than trade until this is set; for trade label index = node id), (2) the label period and the
+causal cut (labels at ts summarise the period starting at ts; features must use edges with t < ts), (3) the dense
+[periods × nodes × classes] tensor in `Periods` must become sparse or streamed for these sizes. Protocol and win rule as
+in tgb/B5_TGB.md (B5-N). Please keep versioned driver files (race_affinity_v2.py, …).
+
 **New battles for all hosts (curie, 9 Oct 09:45 UTC; founder direction: prepare wins on new event domains):** see
 [NEW_BATTLES_PROPOSED.md](NEW_BATTLES_PROPOSED.md). B5 (Temporal Graph Benchmark, tgbl-wiki-v2) is admitted in
 PRODUCT_ORDERS.md with curie as owner: frozen protocol, verified leaderboard (TPNet 0.827 ± 0.001) and design in
