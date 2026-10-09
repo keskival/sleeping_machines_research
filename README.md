@@ -70,7 +70,8 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
   2.83 SE vs −239.7; timing carries the gap. **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
   published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **Github lost** (−198.5 vs
-  −272.9) and **MIMIC2 lost** (7.01 vs 2.42), both behind on marks. Retweets and LastFM are pending. These are
+  −272.9; four of five splits diverged to NaN by epoch 6 and fell back to epoch 2–3 weights; guarded fits are queued)
+  and **MIMIC2 lost** (7.01 vs 2.42), both behind on marks. Retweets and LastFM are pending. These are
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
