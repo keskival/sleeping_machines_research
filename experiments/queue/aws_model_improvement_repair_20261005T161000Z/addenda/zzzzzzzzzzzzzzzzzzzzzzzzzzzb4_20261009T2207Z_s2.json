@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Complete frozen LastFM split 1 without model/protocol changes. Original 8 GB virtual-memory cap rejected a 321 MB allocation before first epoch; no checkpoint or TEST existed. Same 9 GB RSS watchdog, 8 GiB MemAvailable floor; raise virtual address cap to 16 GB. Preserve failed log. Fresh result tag.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4_lastfm_s1_memretry_20261009T2207Z",
+        "queue": "experiments/queue/b4/b4_lastfm_s1_memretry_20261009T2207Z/b4_lastfm_s1_memretry_20261009T2207Z.txt",
+        "queue_sha256": "f04f0677db5a0bc264567d6b4fa8c08b4b4f6bdf27dba7b79ab74d2f77f32bab",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s1_memretry_20261009T2207Z.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000
+      }
+    ]
+  }
+}
