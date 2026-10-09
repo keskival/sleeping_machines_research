@@ -216,4 +216,6 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct 17:36: **tgbn-trade trend ablation** (`--drop trend`, validation, seed 0): 0.8677 vs full 0.8747 and persistent
   forecast 0.8604; the history-shape features carry about half (0.0070 of 0.0143) of the gain over persistent forecast.
   Reverse-flow ablation pending (note 159 prediction 3 graded when both are in).
+- 9 Oct 18:15: **tgbl-wiki sealed seed 1: TEST MRR 0.8350** (validation 0.8519). Seeds 0–1 both above TPNet 0.827;
+  seed 2 pending.
 
