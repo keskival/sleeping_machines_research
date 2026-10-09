@@ -165,10 +165,36 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 \textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all nine benchmarks, 40 of 41 independent runs are ahead.
 \end{tile}
 
+
+
+\newpage
+% ---------------------------------------------------------------- second benchmark
+\sect{A second event benchmark}{The same model, unchanged: Wikipedia won}
+
+To test transfer, we took the frozen one-configuration EasyTPP model to the neural temporal-point-process benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025): seven datasets, five fixed splits each, every split scored once on its sealed test set. No setting was tuned for these datasets. The pre-registered bar is the best published time component plus the best published type component, a combination that no single published model reaches.
+
+{\small
+\begin{tabularx}{\linewidth}{>{\bfseries}l r r r Y}
+\toprule
+Dataset {\color{muted}\footnotesize nats/sequence \down} & Bar & Sleeping Machines & Time / type parts (ours vs best published) & Verdict \\
+\midrule
+Wikipedia edits & $-122.62$ & $\mathbf{-240.42 \pm 43.31}$ & $-268.90$ vs $-267.41$ / \textbf{28.49 vs 144.79} & \textbf{Won}; 4 of 5 splits below the bar \\
+MOOC course activity & $-239.7$ & $-226.85 \pm 2.83$ & $-298.57$ vs $-310.6$ / 71.73 vs 70.9 & Behind; timing gap \\
+Stack Overflow & 11.9 & $12.714 \pm 0.874$ & \textbf{$-91.60$ vs $-91.1$} / 104.31 vs 103.0 & Behind; time part ahead \\
+Github & $-272.9$ & $-198.52 \pm 55.15$ & $-357.68$ vs $-382.4$ / 159.16 vs 109.5 & Behind; four of five runs diverged numerically in training \\
+MIMIC2 hospital visits & 2.42 & $7.01 \pm 0.25$ & 2.99 vs 0.13 / 4.02 vs 2.29 & Behind \\
+Retweets, LastFM & & & & Running \\
+\bottomrule
+\end{tabularx}}
+{\footnotesize\color{muted}$\pm$ is the standard error over the five fixed splits. Negative log-likelihood per sequence: lower is better.}
+
 \begin{tile}
-\textbf{A second event benchmark: Wikipedia won with no tuning.} On the neural-TPP benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025), the frozen one-configuration EasyTPP model, unchanged, scores a total negative log-likelihood of $\mathbf{-240.42 \pm 43.31}$ (standard error over five fixed splits; nats per sequence \down) against a bar of $-122.62$: the best published time component plus the best published type component, a combination no single published model reaches (best single model $-2.67$). Four of five splits are below the bar. The win is in predicting which page is edited next: 28.49 vs 144.79 \down. Most edits return to the same page, and 10--27\% of test pages never appear in training; our addressed memory copies any page it has seen in the sequence, which per-page embeddings cannot do. The scoring was verified from the saved models (exact reproduction, no leakage of future events, probabilities summing to one, the published units). The other completed datasets of this benchmark are losses (next pages).
+\textbf{Why Wikipedia is won.} About 90\% of consecutive edits return to the page just edited, and 10--27\% of test pages never appear in training. Our addressed memory keeps one slot per page, written when that page occurs and read by that page's own score, so it can copy any page seen earlier in the sequence. Models that learn one embedding per page cannot copy a page they never trained on; the best published GRU model scores the page as if guessing uniformly. We verified the scoring from the saved models: exact reproduction, no leakage of future events, probabilities summing to one, and the published units.
 \end{tile}
 
+\begin{tile}
+\textbf{What the losses teach.} A simple per-sequence counter, with no training, predicts the next type better than our model on two of these datasets, so the next development step adds persistent per-sequence type statistics to the memory. Github's training diverged to invalid values in four of five runs; numerically guarded runs are queued. Both are development steps outside the sealed protocol; the verdicts above stand as registered.
+\end{tile}
 
 \newpage
 % ---------------------------------------------------------------- efficiency
@@ -294,7 +320,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & Frozen one-configuration model, no tuning; Wikipedia won (previous pages). Behind: MOOC $-226.85$ vs $-239.7$ (timing gap); Stack Overflow $12.714$ vs $11.9$ (time component ahead, $-91.598$ vs $-91.1$); Github $-198.5$ vs $-272.9$ (four of five runs diverged numerically during training); MIMIC2 $7.01$ vs $2.42$. Retweets and LastFM running & Remaining two verdicts; numerically guarded training; a developed attempt with per-sequence type statistics (a training-free counter already beats our type predictions on two datasets) \\
+Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow, Github and MIMIC2 behind (page 5); Retweets and LastFM running & Remaining two verdicts; numerically guarded training; a developed attempt with per-sequence type statistics \\
 \bottomrule
 \end{tabularx}}
 
