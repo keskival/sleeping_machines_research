@@ -61,7 +61,7 @@ only; a pre-registered test protocol; first-pass results are labelled as such.
 - **Why it fits:** interleaved cases with timestamps, FAS on real data, and the pilot-kit market (industrial and IT logs).
 - **References:** published deep predictive-process-monitoring benchmarks; to verify protocol and splits.
 
-## B10 — Crypto market event streams, revisited with the current family (proposed 9 Oct, founder question)
+## B10 — Crypto market event streams, revisited with the current family (ADMITTED by the founder, 9 Oct)
 
 - **History:** E17 (Sept 2026, preregistered, 21 BTCUSDT days, prequential): direction accuracy on ≥ 1 bp moves race 0.593
   vs online logistic regression 0.583 vs 10 s momentum 0.591; the race decided a third earlier; continual learning gave no
