@@ -1,0 +1,220 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 pre-registered protocol (9 Oct 2026, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md): frozen B1 unified configuration on the Bosser & Ben Taieb neural TPP benchmark, five official splits, validation selection, TEST once per split. Decides whether one configuration, never tuned on these data, beats the best published L_T + L_M",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4_mooc_s0",
+        "queue": "experiments/queue/b4/b4_mooc_s0/b4_mooc_s0.txt",
+        "queue_sha256": "62027dfad0a1d4caf4ff9fbf9c74e2e1a4bbe691228fdd616b46f02e05a66344",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mooc_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mooc_s1",
+        "queue": "experiments/queue/b4/b4_mooc_s1/b4_mooc_s1.txt",
+        "queue_sha256": "4700fed160c17bee65b859f691a5acc5a2738183047803ae0733da4d05b56555",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mooc_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mooc_s2",
+        "queue": "experiments/queue/b4/b4_mooc_s2/b4_mooc_s2.txt",
+        "queue_sha256": "f0e73f262f4bfe659359d07c64430da02435f70a25f98e36ba7ff82018c87dfa",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mooc_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mooc_s3",
+        "queue": "experiments/queue/b4/b4_mooc_s3/b4_mooc_s3.txt",
+        "queue_sha256": "72379b3a1a49bd44f45b7761ae17508b5e3d3c6c16abe7678ff03b43b93d4b3c",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mooc_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mooc_s4",
+        "queue": "experiments/queue/b4/b4_mooc_s4/b4_mooc_s4.txt",
+        "queue_sha256": "97b55d091b98286699471263e51c3533f72712c9a25111a4ffb639bed37ce249",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mooc_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_stack_overflow_s0",
+        "queue": "experiments/queue/b4/b4_stack_overflow_s0/b4_stack_overflow_s0.txt",
+        "queue_sha256": "4c9d4d068aaa9d1394a33e810a2c2e3bad1e83264ddc4f5de97ef2235b500f2f",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_stack_overflow_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_stack_overflow_s1",
+        "queue": "experiments/queue/b4/b4_stack_overflow_s1/b4_stack_overflow_s1.txt",
+        "queue_sha256": "520214cbf547db8b0739d5402b1ebcedb79fdfc7d5b32b7706f98c41d5ad6085",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_stack_overflow_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_stack_overflow_s2",
+        "queue": "experiments/queue/b4/b4_stack_overflow_s2/b4_stack_overflow_s2.txt",
+        "queue_sha256": "e7c99aeb73e753284c0a19c61010c6d07a819dc60ad21763da6c29c472a2b7e0",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_stack_overflow_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_stack_overflow_s3",
+        "queue": "experiments/queue/b4/b4_stack_overflow_s3/b4_stack_overflow_s3.txt",
+        "queue_sha256": "c6bfd26b9f6470578f222d4a86d33b77dc0d7fb029a8cd7d11a2e49bfef3cb2f",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_stack_overflow_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_stack_overflow_s4",
+        "queue": "experiments/queue/b4/b4_stack_overflow_s4/b4_stack_overflow_s4.txt",
+        "queue_sha256": "6e029247babdb456e8d44730533cf3db5a4450eb525c463bba403dfede06f898",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_stack_overflow_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_github_s0",
+        "queue": "experiments/queue/b4/b4_github_s0/b4_github_s0.txt",
+        "queue_sha256": "96842b14d96fc81b2e3dd9bbe385fbbc3806937ce6a6fb11714a221aefc430ce",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_github_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_github_s1",
+        "queue": "experiments/queue/b4/b4_github_s1/b4_github_s1.txt",
+        "queue_sha256": "4b7a856e55b9249b427d13a672518434e3e2063b9402fa5e0b27b7fc3e27aaff",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_github_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_github_s2",
+        "queue": "experiments/queue/b4/b4_github_s2/b4_github_s2.txt",
+        "queue_sha256": "482c0bc73206d8f9936d5558486f9111e11d7e7f1643ae38be93458276795839",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_github_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_github_s3",
+        "queue": "experiments/queue/b4/b4_github_s3/b4_github_s3.txt",
+        "queue_sha256": "d52342e9f5f510d9cb5ff31a5322daabcdd2d67a9732708bb1b1ff09e4284b77",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_github_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_github_s4",
+        "queue": "experiments/queue/b4/b4_github_s4/b4_github_s4.txt",
+        "queue_sha256": "ce9c873c61bf614f6ad221ee60bf8a7f595e14c3cf28035e670f253b3e3f7a6b",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_github_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

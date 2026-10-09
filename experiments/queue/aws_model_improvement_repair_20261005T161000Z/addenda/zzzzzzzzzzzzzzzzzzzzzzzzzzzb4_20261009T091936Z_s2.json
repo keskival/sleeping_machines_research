@@ -1,0 +1,80 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 pre-registered protocol (9 Oct 2026, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md): frozen B1 unified configuration on the Bosser & Ben Taieb neural TPP benchmark, five official splits, validation selection, TEST once per split. Decides whether one configuration, never tuned on these data, beats the best published L_T + L_M",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4_lastfm_s0",
+        "queue": "experiments/queue/b4/b4_lastfm_s0/b4_lastfm_s0.txt",
+        "queue_sha256": "d0b4b79758d93d37715d9df7f1c920fb263d1c822830bfdba6e450fab693519d",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_lastfm_s1",
+        "queue": "experiments/queue/b4/b4_lastfm_s1/b4_lastfm_s1.txt",
+        "queue_sha256": "f050b9e28026717a236045e0b7558cc73d0dca9becb7919d1c8614288f325701",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_lastfm_s2",
+        "queue": "experiments/queue/b4/b4_lastfm_s2/b4_lastfm_s2.txt",
+        "queue_sha256": "04de6898324e7d66ccecda707b7db994f3e6966f1892dda9c81781e3537817b2",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_lastfm_s3",
+        "queue": "experiments/queue/b4/b4_lastfm_s3/b4_lastfm_s3.txt",
+        "queue_sha256": "704cabe8954ba9e4e2dd1c674fba8fd9014f8e60158b2c502a3a752b57db9ca4",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_lastfm_s4",
+        "queue": "experiments/queue/b4/b4_lastfm_s4/b4_lastfm_s4.txt",
+        "queue_sha256": "634636d1b9b656c96516da8fa81b91221ff81b36b20b444ffc9af301c847a6c7",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_lastfm_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

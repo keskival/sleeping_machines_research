@@ -1,0 +1,178 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 pre-registered protocol (9 Oct 2026, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md): frozen B1 unified configuration on the Bosser & Ben Taieb neural TPP benchmark, five official splits, validation selection, TEST once per split. Decides whether one configuration, never tuned on these data, beats the best published L_T + L_M",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b4_retweets_s3",
+        "queue": "experiments/queue/b4/b4_retweets_s3/b4_retweets_s3.txt",
+        "queue_sha256": "01ad653f8872c30cc810a7a866f5d32f94615c35d264dde19f09911f80cddc52",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_retweets_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_retweets_s4",
+        "queue": "experiments/queue/b4/b4_retweets_s4/b4_retweets_s4.txt",
+        "queue_sha256": "658c8b0638419293aca8e23a01c00752d83b1524a0e7750b0959f32c2522b000",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_retweets_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_wikipedia_s0",
+        "queue": "experiments/queue/b4/b4_wikipedia_s0/b4_wikipedia_s0.txt",
+        "queue_sha256": "db1b070b685999e4aec7117ffd6b4f4b6154c99496b28cf79322a5d89ba9d2df",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_wikipedia_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_wikipedia_s1",
+        "queue": "experiments/queue/b4/b4_wikipedia_s1/b4_wikipedia_s1.txt",
+        "queue_sha256": "f0e96721c3d731fa2c85d4de14a165a4267d4d69b7801cbc9d31d0e715e6f817",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_wikipedia_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_wikipedia_s2",
+        "queue": "experiments/queue/b4/b4_wikipedia_s2/b4_wikipedia_s2.txt",
+        "queue_sha256": "470c159b5f449c2c75c82d482255a17274706aeff702e43713406f279087897b",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_wikipedia_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_wikipedia_s3",
+        "queue": "experiments/queue/b4/b4_wikipedia_s3/b4_wikipedia_s3.txt",
+        "queue_sha256": "3c13f615c554ac2019e6f52be824954a9bf61c88ca37d7ff3ae30b70a2f84d07",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_wikipedia_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_wikipedia_s4",
+        "queue": "experiments/queue/b4/b4_wikipedia_s4/b4_wikipedia_s4.txt",
+        "queue_sha256": "3115e0368f91dcf0f174ce5ab72e84ed6a651c104011e0850fdb3192cf237264",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_wikipedia_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mimic2_s0",
+        "queue": "experiments/queue/b4/b4_mimic2_s0/b4_mimic2_s0.txt",
+        "queue_sha256": "172df2dd1420aa3f79c93fe3e142e184b2855ad89ebe122856d1142183ac285b",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mimic2_s0.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mimic2_s1",
+        "queue": "experiments/queue/b4/b4_mimic2_s1/b4_mimic2_s1.txt",
+        "queue_sha256": "7d4113e83ed95b80239a3560585d808e6bfccc1c107e4a17b06dd29395350ba5",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mimic2_s1.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mimic2_s2",
+        "queue": "experiments/queue/b4/b4_mimic2_s2/b4_mimic2_s2.txt",
+        "queue_sha256": "a3f0eaeac437c4b5c45920a3d3bfde79505dd80b2a26d564e42682198de7b57a",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mimic2_s2.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mimic2_s3",
+        "queue": "experiments/queue/b4/b4_mimic2_s3/b4_mimic2_s3.txt",
+        "queue_sha256": "3a574879b3cec5f2b0ff2ef73b83032422314bdb830870c11944a1c11924efa4",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mimic2_s3.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4_mimic2_s4",
+        "queue": "experiments/queue/b4/b4_mimic2_s4/b4_mimic2_s4.txt",
+        "queue_sha256": "b257dc4a3f9c37bb986eb39ec3dd41ebc603fde0554c61db81017a19b55e92ca",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4_mimic2_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
