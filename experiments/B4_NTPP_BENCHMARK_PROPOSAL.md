@@ -131,6 +131,6 @@ GRU-SA/MC-LE, Hawkes, NH, Poisson); those rows are indicative and are checked ag
 | MOOC | −233.8 | LNM++ (2025) |
 | Github | −269.7 | LNM++ (2025) |
 | Stack Overflow | 12.1 | LNM+ (2025) |
-| Wikipedia | −2.67 (to verify) | GRU-LNM-CONCAT (2023) |
+| Wikipedia | −2.67 (verified: L_T −261.79 + L_M 259.12) | GRU-LNM-CONCAT (2023) |
 | MIMIC2 | 3.1 | GRU-LNM-CONCAT (2023) |
 | Retweets | −536.17 | GRU-LNM-CONCAT (2023) |
