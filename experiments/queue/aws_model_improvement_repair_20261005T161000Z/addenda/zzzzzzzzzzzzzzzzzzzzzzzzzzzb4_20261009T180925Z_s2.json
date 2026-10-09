@@ -1,0 +1,58 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 audit (user exception 9 Oct 2026, AGENTS.md): train the reference authors' own GRU + log-normal-mixture model with their code and README configuration, then score the same checkpoint on recorded vs dequantized test times. Decides whether the published model class exploits the timestamp grid on MOOC and Retweets (a context-free mixture gains 914 / 3,887 nats per sequence from it)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4audit_lnm_mooc_s0_smoke",
+        "queue": "experiments/queue/b4/b4audit_lnm_mooc_s0_smoke/b4audit_lnm_mooc_s0_smoke.txt",
+        "queue_sha256": "b24b8519ac075c995977ccf889e80b3c102e9068aafb69b2af0f1d46bc14c0ea",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/b4audit/audit_lnm.py": "1c4e193aa3fd8ae85d3996e327786ebf5eeaf0fb908722a63ea1848884fcc4aa",
+          "data/ntpp_bosser/code/repo/scripts/train.py": "e1884649294227fa923598cdcaead952047fb73358d5fd61fc1da3b3470d0050",
+          "data/ntpp_bosser/code/repo/tpp/models/decoders/log_normal_mixture.py": "14b0a0e8b7d54c91e36620e4aef104b87df7e362740cd1901dd8eafb80e78a61",
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3"
+        },
+        "result": "experiments/results/b4audit/b4audit_lnm_mooc_s0_smoke.json",
+        "timeout_s": 43200,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4audit_lnm_mooc_s0",
+        "queue": "experiments/queue/b4/b4audit_lnm_mooc_s0/b4audit_lnm_mooc_s0.txt",
+        "queue_sha256": "ef0d4aefb3432a6de28a9b454e15f706eec3a7891258971989e204f4a8285017",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/b4audit/audit_lnm.py": "1c4e193aa3fd8ae85d3996e327786ebf5eeaf0fb908722a63ea1848884fcc4aa",
+          "data/ntpp_bosser/code/repo/scripts/train.py": "e1884649294227fa923598cdcaead952047fb73358d5fd61fc1da3b3470d0050",
+          "data/ntpp_bosser/code/repo/tpp/models/decoders/log_normal_mixture.py": "14b0a0e8b7d54c91e36620e4aef104b87df7e362740cd1901dd8eafb80e78a61",
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3"
+        },
+        "result": "experiments/results/b4audit/b4audit_lnm_mooc_s0.json",
+        "timeout_s": 43200,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b4audit_lnm_retweets_s0",
+        "queue": "experiments/queue/b4/b4audit_lnm_retweets_s0/b4audit_lnm_retweets_s0.txt",
+        "queue_sha256": "015b2b002c311ef8b35815ded654aa731cc6fce507cb7a8360649e1eb21c1202",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/b4audit/audit_lnm.py": "1c4e193aa3fd8ae85d3996e327786ebf5eeaf0fb908722a63ea1848884fcc4aa",
+          "data/ntpp_bosser/code/repo/scripts/train.py": "e1884649294227fa923598cdcaead952047fb73358d5fd61fc1da3b3470d0050",
+          "data/ntpp_bosser/code/repo/tpp/models/decoders/log_normal_mixture.py": "14b0a0e8b7d54c91e36620e4aef104b87df7e362740cd1901dd8eafb80e78a61",
+          "experiments/tpp/race_tpp_b4.py": "faf5fd3064028a2f3caeab77f97c9d525ce5360ca3128148b84e057b2bd85cd3"
+        },
+        "result": "experiments/results/b4audit/b4audit_lnm_retweets_s0.json",
+        "timeout_s": 43200,
+        "rss_kb": 8000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

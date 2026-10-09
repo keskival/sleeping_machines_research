@@ -1,0 +1,2 @@
+# B4: B4 audit (user exception 9 Oct 2026, AGENTS.md): train the reference authors' own GRU + log-normal-mixture model with their code and README configuration, then score the same checkpoint on recorded vs dequantized test times. Decides whether the published model class exploits the timestamp grid on MOOC and Retweets (a context-free mixture gains 914 / 3,887 nats per sequence from it)
+b4audit_lnm_retweets_s0 experiments/b4audit/audit_lnm.py --tag b4audit_lnm_retweets_s0 --dataset retweets_filtered --split 0

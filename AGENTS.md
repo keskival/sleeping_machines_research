@@ -70,6 +70,12 @@
 - Result files under `experiments/results/` and the invalid-protocol quarantine under `experiments/archive/` are data, not
   document history; they stay.
 
+- Exception (user direction, 9 October 2026): B4 audit of the published log-normal-mixture models. AWS may train the
+  reference authors' own LNM models with their MIT-licensed code (github.com/tanguybosser/ntpp-tmlr2023) on MOOC and
+  Retweets splits, solely to score them as recorded and dequantized within the recording cell. They are audit
+  instruments, not tuned competitors: no tuning beyond the authors' published configuration, results reported only in the
+  B4 loss analysis.
+
 # Report structure (user direction, 6 October 2026)
 
 - The report is split into three parts. `report/I_SCIENCE.md` (Part I — The science) is curated by hand and is the
