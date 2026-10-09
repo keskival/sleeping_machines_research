@@ -84,3 +84,12 @@ and the reciprocity assumption before generalizing.
   REINFORCE, straight-through Gumbel, hindsight (proposed: one expert per example plus one sleep sample), exact-posterior
   oracle; metrics: held-out marginal log-likelihood against the teacher's (Bayes ceiling), route recovery, expert
   evaluations per example.
+- 9 Oct (founder direction: aim for reduced synchrony, reduced FLOPs, and the forward pass training the slow parameters of
+  the backward pass): the credit model q *is* the backward pass's slow parameters (learned across examples; per-example
+  credit is a cheap read). `hindsight_race_v2.py` adds **hindsight_async** (sleep samples from a stale snapshot of the
+  forward model refreshed every 50 steps, consumed through a replay buffer: q trains off the forward lockstep) and
+  **hindsight_slow** (q updated at 1/8 of the forward rate), and counts multiply-accumulates per training example for every
+  arm (router, experts, credit model, sleep sampling). The v1 addendum was withdrawn before loading; the v2 grid (7 arms ×
+  depth 1, 2 × 3 seeds, after a smoke) replaces it. Success criteria stated before results: hindsight within a small margin
+  of the oracle and dense on held-out likelihood and route recovery, clearly above REINFORCE at depth 2, at a fraction of
+  dense MACs; the async and slow variants close to synchronous hindsight.
