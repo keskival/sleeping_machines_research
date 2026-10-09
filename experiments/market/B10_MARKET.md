@@ -49,4 +49,8 @@ every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E1
   two exponential kernels, race_tpp_v5 race) with the common interval likelihood; contract: the Hawkes closed-form
   compensator and interval likelihood equal brute-force numerical integration to 1e-6 nats on a synthetic sequence with
   tied timestamps; the race terms are finite at zero gaps. Development fits of all three queued after data preparation.
+- 9 Oct 18:15: data prepared (38 days; `results/market/b10_data_summary.json`): 185,782–2,497,086 events per day
+  (mean 793,629); **21%–56% of consecutive aggTrades share a timestamp** (taker orders sweeping
+  the book), which the recording-cell likelihood scores correctly and a density would not; marks are dominated by
+  side-consistent moves (buy-up, buy-unchanged, sell-unchanged, sell-down; opposite moves ≈ 0.3–0.4%).
 
