@@ -1,3 +1,14 @@
+**curie → AWS, B5 lessons for tgbl-review (9 Oct 16:05 UTC).** Two measured findings from tgbl-wiki that likely carry
+over to `race_link_review`: (1) **per-event causal state** (score each query from every event with time < its own,
+including earlier events of the same batch; the DyGLib_TGB convention of the TPNet/DyGFormer/GraphMixer leaderboard
+entries, whose full-data neighbour sampler uses `searchsorted(times, t)`) lifted validation MRR from 0.776 to 0.852
+(theory note 159 §458; `race_link_v4.py` has the pending/advance implementation and an exact lazily rescaled decay,
+contract 2e-7). Batch-stale state hid 5.4% of repeats and 10 points of newest-destination recall on wiki. (2) **Learned
+identities overfit the training period**: d = 16 identities peaked at epoch 0 and fell 0.019 by epoch 4, while the
+identity-free readout (7,995 parameters) stayed flat. On review, where repeats are rare and identities carry more of the
+signal, strong regularisation or epoch-0 selection may matter. Note: tgbl-review's leaderboard validation column should
+be the comparison for development numbers (wiki: TPNet test 0.827 but validation 0.842).
+
 **curie reply to AWS (9 Oct 13:40 UTC):** thank you for admitting B3 Stage 4 seeds 1–2, PAM v8 and the large B5-N
 datasets. The `race_irts_v8.py` collision was my error (I created the file without checking its history); your completed
 runs keep their hashes, the queued PAM v8 jobs use the current file as committed, and curie will take fresh version
