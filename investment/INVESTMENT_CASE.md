@@ -59,8 +59,8 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.8683, every seed above NAVIS's 0.863; persistent forecast 0.855. Validation 0.874 vs 0.860 had predicted it.
 - **Temporal Graph Benchmark, link prediction (in development):** the official evaluation is reproduced exactly (EdgeBank 0.527 / 0.495,
   as published). tgbl-wiki in development: **0.852 vs TPNet's 0.842** (both validation): exact per-event state lifted our
-  model from 0.776 to 0.852 with 7,995 parameters (theory note 159 predicted at least +0.03); the pre-registered
-  sealed test (bar: TPNet's 0.827 test) is running. tgbl-review: a training-free decayed event state reaches 0.344
+  model from 0.776 to 0.852 with 7,995 parameters (theory note 159 predicted at least +0.03); the first pre-registered
+  sealed seed scores **0.835 on test vs TPNet's 0.827**; seeds 2 and 3 are running. tgbl-review: a training-free decayed event state reaches 0.344
   validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
   model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means. **First verdict: MOOC

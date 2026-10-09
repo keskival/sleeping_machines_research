@@ -31,7 +31,7 @@ This is an execution plan, not a prediction of investor acceptance.
 - **Fourth domain: achieved on temporal graphs (9 October).** TGB node affinity (tgbn-trade): test NDCG@10 0.8680 ±
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
 - **New event domains (in development):** TGB link prediction: evaluation
-  reproduced exactly; tgbl-wiki 0.852 vs TPNet 0.842 (both validation; sealed test next), tgbl-review training-free state above TGN/TGAT/TNCN.
+  reproduced exactly; tgbl-wiki first sealed seed 0.835 vs TPNet 0.827 on test (validation 0.852 vs 0.842; two seeds to go), tgbl-review training-free state above TGN/TGAT/TNCN.
   Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
   model; first verdict: MOOC lost (−226.9 vs bar −239.7; timing is the gap).
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
