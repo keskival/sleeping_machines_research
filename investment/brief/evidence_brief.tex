@@ -287,7 +287,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tuning: MOOC lost ($-226.85$ vs $-239.7$ \down; timing gap); Stack Overflow lost ($12.714$ vs $11.9$; time $-91.598$ beats $-91.1$, marks $104.312$ trail $103.0$); five dataset verdicts pending & Five-split verdicts per dataset \\
+Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tuning: Wikipedia won ($-240.42$ vs $-122.62$ \up; marks $28.49$ vs $144.79$); MOOC lost ($-226.85$ vs $-239.7$ \down; timing gap); Stack Overflow lost ($12.714$ vs $11.9$; time $-91.598$ beats $-91.1$); Github ($-198.5$ vs $-272.9$) and MIMIC2 ($7.01$ vs $2.42$) lost; Retweets, LastFM pending & Five-split verdicts per dataset \\
 \bottomrule
 \end{tabularx}}
 
