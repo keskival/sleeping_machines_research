@@ -64,7 +64,31 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
    between the pair clocks and the source's own activity clock.
 4. Seeds 0–2 of the selected configuration; test scored once; measured inference latency.
 
+## B5-N — node affinity prediction (tgbn-trade first; genre/reddit/token by size)
+
+- **Leaderboard (tgb.complexdatalab.com, verified 9 Oct 2026), test NDCG@10:** tgbn-trade NAVIS **0.863** (val 0.860),
+  Persistent Forecast 0.855 (val 0.860), Moving Average 0.823, TGNv2 0.735, DyGFormer 0.388. tgbn-genre NAVIS 0.528, Moving
+  Average 0.509. tgbn-reddit NAVIS 0.569, Moving Average 0.559. tgbn-token NAVIS 0.513, Moving Average 0.508. Training-free
+  heuristics beat every temporal GNN; NAVIS (ICLR 2026, arXiv 2510.06940) is a gated linear state-space model over past
+  affinity vectors (1–5K parameters; outputs are convex combinations of past vectors and the input) trained with a
+  LambdaLoss plus margin term; its own ablation gives 0.859 with cross-entropy and 0.857 without the global state.
+- **Protocol (frozen):** official `NodePropPredDataset` and `Evaluator` (sklearn `ndcg_score`, k = 10, mean over the
+  nodes of a label time), TGB's example loop (batches of 200 edges per split, one label pointer, a label time fires when
+  a batch's last timestamp exceeds it; split score = mean over its fired label times). Replayed on tgbn-trade: validation
+  fires label years 2009–2012, test 2013–2015. Label(ts) equals the normalised flows of the period starting at ts
+  (checked: label 1992 = 1992 flows), so predictions use only edges with t < ts.
+- **Why we should win:** heuristics win because affinity is persistent and decays with time; a learned mixture of
+  multi-timescale decayed affinities contains persistent forecast and moving averages as special cases. NAVIS is limited
+  to convex combinations (cannot extrapolate a rising partner) and to a last-vector global state. Our readout is
+  nonlinear over the pair's lags, decays, growth, the reverse flow (bilateral trade), the destination's global share and
+  growth and node context; the race over all destinations is trained against the realised affinity distribution.
+- **Win rule:** mean test NDCG@10 over seeds 0–2 above NAVIS (0.863) with every seed above it; test scored once.
+- Driver `experiments/tgb/race_affinity.py` (v1); class mapping verified for tgbn-trade (label index = node id).
+
 ## Development log
 
 - 9 Oct: data and official loader verified; protocol-check and race_link v1 smoke/dev jobs queued on curie
   (curie_b5_*_20261009T09*.txt) after the running B3 Stage 4 seed and the remaining curie chain.
+- 9 Oct: AWS takes the large link datasets (tgbl-review-v2, tgbl-coin-v2) with a sparse variant of race_link (HANDOFF).
+- 9 Oct: B5-N opened (tgbn-trade); race_affinity v1 queued first at the seed-8 boundary (chain r19: trade, wiki
+  heuristics, race_link smoke and dev, then the theory clock-count test and R1 confirmations).
