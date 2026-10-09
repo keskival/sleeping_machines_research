@@ -117,3 +117,20 @@ pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweet
 | Date | Run | Validation (L_T / L_M / total) | TEST (L_T / L_M / total) | Notes |
 |---|---|---|---|---|
 | 9 Oct | MOOC split 0 | −307.25 / 73.37 / −233.88 (best epoch 134 of 165) | **−310.43 / 75.05 / −235.38** | 57,238 parameters; cell 3.89e−6, 4 windows. Below LNM++'s total (−233.8, best single published model, 5-split mean) but above the composite bar (−239.7); mark NLL is the weaker component. Verdict on the five-split mean |
+
+## Secondary comparison (reported beside the pre-registered verdict, never replacing it)
+
+Best total of a single published model (its own L_T + L_M), mean over five splits, lower is better. 2025: Table 1 of
+arXiv 2412.08590 (every model reports both). 2023: only the nine models present in both the NLL-T and NLL-M tables of
+Appendix B can be paired (GRU-EC-TEMWL, GRU-FNN-LCONCAT, GRU-LNM-CONCAT, GRU-MLP/MC-LCONCAT, GRU-RMTPP-LCONCAT,
+GRU-SA/MC-LE, Hawkes, NH, Poisson); those rows are indicative and are checked against the PDF before use.
+
+| Dataset | Best single-model total | Model (paper) |
+|---|---|---|
+| LastFM | −697.5 | LNM++ (2025) |
+| MOOC | −233.8 | LNM++ (2025) |
+| Github | −269.7 | LNM++ (2025) |
+| Stack Overflow | 12.1 | LNM+ (2025) |
+| Wikipedia | −2.67 (to verify) | GRU-LNM-CONCAT (2023) |
+| MIMIC2 | 3.1 | GRU-LNM-CONCAT (2023) |
+| Retweets | −536.17 | GRU-LNM-CONCAT (2023) |
