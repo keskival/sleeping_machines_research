@@ -170,4 +170,10 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   repeats visible) at 0.931 MRR. **The leaderboard's validation column: TPNet 0.842 ± 0.001, LocalGlobal heuristic 0.842,
   DyGFormer 0.816.** Correction: earlier external text compared our validation MRR with TPNet's *test* 0.827; replaced
   by the like-for-like validation comparison (0.776 vs 0.842 for the completed v2) until v4 completes.
+- 9 Oct 13:40: **tgbl-wiki sealed protocol, fixed before either v4 development run completes.** Model: `race_link_v4.py`;
+  identities d = 16 or d = 0, whichever has the higher best validation MRR in its seed-0 development run (tie within
+  0.002: d = 0, the smaller model). Configuration otherwise as developed (hidden 64, lr 3e-3, batch 200), `--epochs 3`
+  (the development optimum was epoch 0 with a slow decline after it), validation selection over those epochs, seeds 0,
+  1, 2, each with `--score-test` (test scored once per seed). Win rule unchanged: mean test MRR over the three seeds
+  above TPNet's 0.827 with every seed above 0.827. Reported either way.
 
