@@ -25,7 +25,14 @@ This is an execution plan, not a prediction of investor acceptance.
   0.978 ± 0.007, F1 0.980 ± 0.008 vs MTM 0.975 / 0.976, 46,316 parameters; four of five splits ahead.
 - **Generality track G:** self-supervised event pretraining → clinical prediction with fewer labels; one model across five
   event datasets ([plan](../experiments/GENERALITY_PLAN.md)).
-- **FAS v2:** the sealed setting is selected; development is in progress.
+- **FAS v2 (9 October):** native model frozen; validation 0.702 vs the time-encoded Transformer reference 0.704 at about
+  1/7 of its parameters; native sealed seeds complete; the verdict (tie expected under the 0.02 rule) follows the
+  reference seeds on AWS.
+- **New event domains (9 October, in development):** Temporal Graph Benchmark node affinity (tgbn-trade): validation
+  NDCG@10 0.875 vs 0.860 for the leader NAVIS, sealed 3-seed test queued (bar 0.863). TGB link prediction: evaluation
+  reproduced exactly; tgbl-wiki 0.773 vs TPNet 0.827 (validation), tgbl-review training-free state above TGN/TGAT/TNCN.
+  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
+  model.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a

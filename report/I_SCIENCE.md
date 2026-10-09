@@ -14,7 +14,7 @@ An observation enters through an interface that respects its meaning: a token, a
 
 Each benchmark below is evidence for one front of this program. None of them defines the project.
 
-### Wins and advances at a glance (8 October 2026)
+### Wins and advances at a glance (9 October 2026)
 
 **Seven public leaderboard wins**, each on the official splits with a sealed test scored once per run, 34 of 35 independent
 runs ahead of the best published result:
@@ -45,7 +45,7 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 - **Exact training signal and measured speed:** the closed-form likelihood removes the Monte Carlo gradient noise that
   sampled-intensity models carry (18% relative noise at the common 10-sample setting, measured); a streaming per-event
   update runs at about 1,500 events per second on one CPU core in plain PyTorch (Taxi; 20.7K multiply-adds per event vs
-  the leader's 250K). A race of clocks provably approximates any continuous inter-event density, confirmed numerically.
+  the leader's 250K). A race of clocks provably approximates any continuous inter-event density, confirmed numerically; likelihood saturates once the number of clocks covers the data's gap modes (predicted, then confirmed), so model size follows from the data.
 - **Reasoning from few examples:** temporal event chains 99.7% vs Transformers 33–41%; race retrieval 100% at 4× context.
 - **Character language:** beats tuned Transformers at equal or lower compute (text8, 10M characters).
 - **Learning signal and capacity:** credit to unchosen routes cuts error by 0.14 bits per character for 0.3% more work;
@@ -53,6 +53,17 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 - **Generality:** one shared temporal core serves four event domains; anonymous interleaved process logs (FAS v1) beat six
   generic detectors across three seeds.
 - **Theory:** a race of clocks contains softmax attention and Mamba-style selective state spaces exactly.
+
+**New event domains, in development (9 October; development data, sealed tests not yet scored):**
+- **Temporal Graph Benchmark, node affinity (tgbn-trade, world trade flows):** validation NDCG@10 **0.875** vs 0.860 for
+  the leaderboard leader NAVIS (ICLR 2026) and for persistent forecast, ahead in every validation year, with 2,107
+  parameters and 4 minutes of CPU fitting. The pre-registered sealed test (3 seeds; bar: NAVIS's 0.863) is queued.
+- **Temporal Graph Benchmark, link prediction:** the official evaluation is reproduced exactly (EdgeBank 0.527 / 0.495,
+  as published). tgbl-wiki in development: 0.773 vs TPNet's 0.827 (validation; repeat interactions already above
+  recency, new pairs are the gap being worked). tgbl-review: a training-free decayed event state reaches 0.344
+  validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
+- **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
+  model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
 characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).

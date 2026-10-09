@@ -68,6 +68,8 @@ State clock & $\exp(-\int_0^\tau\lambda_s)$ & hazard follows memory through the 
 
 \paragraph{State clock.} A complex memory $z_i$ is written at each event and evolves through the silence as $z(\tau)=e^{(-r+i\omega)\tau}z_i$; its hazard is $\lambda_s(\tau)=\mathrm{softplus}(\mathrm{Re}\,\langle c,z(\tau)\rangle+b_i)$ and its marks are $\mathrm{softmax}(Uz(\tau)+Vh_i)$, so marks change continuously with elapsed time. Its compensator uses Gauss--Legendre quadrature; with 24 and 48 nodes the next-gap density integrates to one within $10^{-5}$. On StackOverflow the state clock improved DEV time log-likelihood from $-0.717$ to $-0.688$.
 
+\paragraph{How many delayed clocks.} A race of one exponential and $M$ defective delayed clocks approximates any continuous inter-event density on a compact gap range as $M$ grows. At finite size the likelihood saturates once the clocks cover the components of the gap distribution: on renewal streams with $G$ well-separated log-normal gap components, test log-likelihood per event is $-1.403, -0.676, -0.673, -0.672, -0.672$ for $M=1,2,4,8,16$ at $G=2$, and $-3.746, -3.372, -2.628, -1.902, -1.903$ at $G=6$ (saturation at the first tested $M\ge G$). The clock count is therefore chosen from the number of modes of the training gaps in log-time; extra clocks cost compute but do not reduce likelihood.
+
 \subsection{Encoder}
 Clock parameters are read from a persistent state after each event: two layers of complex-diagonal memories (16 modes, width 32) that decay and rotate with the real elapsed time, written by messages that mix the event's content with memory, plus an addressed per-mark memory with one slot per mark, written only when that mark occurs and decaying at learned rates. Each mark's logit reads its own slot.
 

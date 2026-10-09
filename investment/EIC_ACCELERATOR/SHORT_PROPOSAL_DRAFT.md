@@ -61,6 +61,12 @@ All five EasyTPP datasets, P19 and PAM are won. A single configuration with no p
 and pre-registered protocols. The Taxi result was reproduced from scratch on separate hardware (0.5252 vs 0.5250), and a
 one-command kit is available for third-party reruns. The evidence files are in the diligence pack.
 
+In development on new event domains (9 October 2026, development data): on the Temporal Graph Benchmark's node-affinity
+task (tgbn-trade), our model reaches validation NDCG@10 0.875 against 0.860 for the current leader NAVIS, ahead in every
+validation year with 2,107 parameters; the pre-registered sealed test is queued. TGB link prediction (evaluation
+reproduced exactly) and a second neural-TPP benchmark (35 pre-registered runs with the frozen one-configuration model)
+are running.
+
 **Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's
 temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney
 trigram's 6.537, and 5.510 against 6.100 at 4M tokens: the lead grows with data.
