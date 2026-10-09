@@ -1,0 +1,32 @@
+{
+  "tag": "curie_b10_diagnostics_20261009T210711Z_contract_only",
+  "host": "curie",
+  "battle": "B10",
+  "training": false,
+  "fit_manifest": "experiments/queue/curie_recovery_20261009T205307Z/manifest.json",
+  "purpose": "Non-fitting observer contract waits behind current training lock; replay controller reuses its successful result",
+  "jobs": [
+    {
+      "tag": "curie_b10_diagnostics_20261009T210711Z_contract",
+      "driver": "experiments/market/check_b10_components.py",
+      "queue": "experiments/queue/curie_b10_diagnostics_20261009T210711Z/curie_b10_diagnostics_20261009T210711Z_contract.txt",
+      "queue_sha256": "4c102c88a3555f4273c1012b9f783a2495d4181d829ce9c3e055bdb9dbbbde87",
+      "sources": {
+        "experiments/market/check_b10_components.py": "a4e91dcd4153765dce0ab0815a24cc6ccad6fcd7af250c10d4abc7a0eb89f91f",
+        "experiments/market/b10_components.py": "5e94775c7fe16e1a1188dc28f4e8ae654c6601fffc2e7c21686159bdb171b908",
+        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/market/check_b10_components.py": "a4e91dcd4153765dce0ab0815a24cc6ccad6fcd7af250c10d4abc7a0eb89f91f",
+        "experiments/market/b10_components.py": "5e94775c7fe16e1a1188dc28f4e8ae654c6601fffc2e7c21686159bdb171b908",
+        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/market/curie_b10_diagnostics_20261009T210711Z_contract.json",
+      "timeout_s": 180,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000
+    }
+  ]
+}
