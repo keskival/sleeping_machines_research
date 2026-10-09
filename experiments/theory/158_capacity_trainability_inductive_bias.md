@@ -141,6 +141,13 @@ tuned dense models at 90M characters.
 2. **Clock count scaling (Theorem 1):** log-likelihood improves with the number of delayed clocks until the empirical gap
    distribution's components are covered, then saturates; dataset complexity (number of gap components) predicts the
    saturation point.
+   **Confirmed (9 Oct, `experiments/tpp/clock_count_test.py`, seed 0; renewal streams with G well-separated log-normal
+   gap components, mark tied to component; race_tpp_v5 with one exponential and n delayed clocks; TEST log-likelihood
+   per event):** G = 2: **−1.403 / −0.676 / −0.673 / −0.672 / −0.672** for n = 1 / 2 / 4 / 8 / 16 (+0.73 nats from 1 to 2
+   clocks, ≤ 0.004 after); G = 6: **−3.746 / −3.372 / −2.628 / −1.902 / −1.903** (gains through n = 8, flat from 8 to 16;
+   n = 6 not tested). Saturation occurs at the first tested n ≥ G in both cases. Practical rule: choose the number of
+   delayed clocks from the number of modes of the training gap distribution (in log-time); extra clocks cost compute but
+   do not hurt likelihood.
 3. **Time reparameterisation:** replacing elapsed-time decay by position-indexed decay should hurt most on the datasets
    with the widest gap ranges (Taobao, StackOverflow) and least on near-regular ones.
    **Mixed (9 Oct, `experiments/tpp/race_tpp_v5pos.py`, seed 0, dev LL vs the AWS elapsed-time runs with identical

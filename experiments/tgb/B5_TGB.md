@@ -134,4 +134,11 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   new pairs of known sources .07, new sources .06). The readout adds little beyond epoch 0: the features limit it.
 - 9 Oct 11:45: **race_link v3** (versioned `race_link_v3.py`) = v2 + destination bias and source–destination identity
   inner product (collaborative evidence; AWS found identities decisive on tgbl-review). Queued after v2.
+- 9 Oct 11:46: **tgbn-trade race_affinity v1 development fit (seed 0, validation only): val NDCG@10 0.8747** vs persistent
+  forecast 0.8604 in our replay (leaderboard PF val 0.860: protocol fidelity) and NAVIS val 0.860; every validation label
+  year above (2009–2012: .873 / .876 / .871 / .879); 2,107 parameters, 29 features, best epoch 95 of 200, 4 minutes on
+  one CPU thread. First-round development result; test untouched. **Sealed protocol started** with the configuration
+  frozen as run (cross-entropy race loss, defaults): seeds 0–2 with `--score-test`
+  (curie_b5_trade_affinity_sealed_s{0,1,2}_20261009T1210Z), win rule as pre-registered above.
+- 9 Oct 11:42: race_link v1 (tgbl-wiki) final: best val MRR 0.7729 (epoch 5). v2 running.
 
