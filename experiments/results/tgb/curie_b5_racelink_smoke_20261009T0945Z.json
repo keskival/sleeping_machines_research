@@ -1,0 +1,68 @@
+{
+ "status": "completed",
+ "battle": "B5",
+ "tag": "curie_b5_racelink_smoke_20261009T0945Z",
+ "model": "race_link v1 (addressed pair clock bank + popularity + co-visitation, MLP readout, full-softmax race over destinations)",
+ "args": {
+  "tag": "curie_b5_racelink_smoke_20261009T0945Z",
+  "seed": 0,
+  "epochs": 2,
+  "hidden": 64,
+  "lr": 0.003,
+  "bs": 200,
+  "max_train_events": 5000,
+  "max_eval_events": 1000,
+  "score_test": false,
+  "max_wall_s": 1000000000.0,
+  "root": "/workspace/data/tgb"
+ },
+ "features": 36,
+ "parameters": 6665,
+ "history": [
+  {
+   "epoch": 0,
+   "train_ce": 4.373863916397095,
+   "val_mrr": 0.7551588740125417,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.857,
+     "mrr": 0.8645536860254663
+    },
+    "new_pair_known_source": {
+     "share": 0.092,
+     "mrr": 0.11727807998442039
+    },
+    "new_source": {
+     "share": 0.051,
+     "mrr": 0.06758395549314283
+    }
+   },
+   "epoch_s": 17.765485286712646
+  },
+  {
+   "epoch": 1,
+   "train_ce": 1.6568485260009767,
+   "val_mrr": 0.7629283622248983,
+   "val_by_type": {
+    "repeat_pair": {
+     "share": 0.857,
+     "mrr": 0.8739760409240782
+    },
+    "new_pair_known_source": {
+     "share": 0.092,
+     "mrr": 0.12534626627740575
+    },
+    "new_source": {
+     "share": 0.051,
+     "mrr": 0.04703997363611403
+    }
+   },
+   "epoch_s": 17.189486503601074
+  }
+ ],
+ "best_val_mrr": 0.7629283622248983,
+ "test_mrr": "not scored (development run)",
+ "wall_s": 39.19967079162598,
+ "source_sha256": "3a9bf0db53b5c02bed7cef386e9a05e85e5ec307cfa484fe9ae7dd50dea91847",
+ "checkpoint": "experiments/results/tgb/curie_b5_racelink_smoke_20261009T0945Z.pt"
+}

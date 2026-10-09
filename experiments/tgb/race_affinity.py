@@ -63,10 +63,11 @@ class Periods:
         d = ds.full_data; self.L = np.sort(np.asarray(ds.label_ts)).astype(float)
         t = d['timestamps'].astype(float); w = np.asarray(d['edge_feat'], float).reshape(len(t), -1)[:, 0]
         k = np.searchsorted(self.L, t, side='right') - 1                               # -1 = before the first label time
-        self.N = int(max(d['sources'].max(), d['destinations'].max())) + 1; self.C = ds.num_classes
+        src, dst = d['sources'].astype(np.int64), d['destinations'].astype(np.int64)  # stored as floats in tgbn-trade
+        self.N = int(max(src.max(), dst.max())) + 1; self.C = ds.num_classes
         self.A = np.zeros((len(self.L) + 1, self.N, self.C), np.float32)               # index k+1
-        c = cls_of_dst[d['destinations']]; ok = c >= 0
-        np.add.at(self.A, (k[ok] + 1, d['sources'][ok], c[ok]), w[ok])
+        c = cls_of_dst[dst]; ok = c >= 0
+        np.add.at(self.A, (k[ok] + 1, src[ok], c[ok]), w[ok])
         self.Arev = None
         if self.N == self.C:                                                           # node-to-node affinity: reverse flow
             self.Arev = np.transpose(self.A, (0, 2, 1))
@@ -139,13 +140,13 @@ def main():
     d = ds.full_data
     if a.dataset != 'tgbn-trade':
         raise SystemExit('class mapping verified for tgbn-trade only; verify label index <-> destination id first')
-    cls_of_dst = np.arange(int(d['destinations'].max()) + 1)                          # verified: label index = node id
+    cls_of_dst = np.arange(int(d['destinations'].max()) + 1, dtype=np.int64)                          # verified: label index = node id
     fired = fired_label_times(ds, [('train', ds.train_mask), ('val', ds.val_mask), ('test', ds.test_mask)])
     print('fired label times', fired, flush=True)
     per = Periods(ds, cls_of_dst); L = ds.label_dict
 
     def batch(ts):
-        nodes = np.array(list(L[ts].keys())); y = np.stack([np.asarray(L[ts][n], np.float32) for n in nodes])
+        nodes = np.array(list(L[ts].keys()), dtype=np.int64); y = np.stack([np.asarray(L[ts][n], np.float32) for n in nodes])
         return torch.from_numpy(per.features(ts, nodes)), torch.from_numpy(y)
 
     data = {s: [(ts,) + batch(ts) for ts in fired[s]] for s in ('train', 'val')}

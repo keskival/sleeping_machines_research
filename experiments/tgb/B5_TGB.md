@@ -115,3 +115,19 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
   EdgeBank 0.023). A training-free decayed state already exceeds TNCN (0.325), TGAT (0.324) and TGN (0.313) on validation;
   GraphMixer leads at 0.428. Reviews rarely repeat a pair (EdgeBank 0.02), so the signal is time-decayed destination
   popularity and collaborative identity, which race_link_review learns on top of the state.
+- 9 Oct 11:03: **protocol reproduced.** `heuristics.py` on the official loader/negatives/Evaluator (999 negatives per
+  query): EdgeBank-∞ test MRR **0.4947**, the value TGB publishes for EdgeBank-∞ on tgbl-wiki (0.495). Our crude
+  decayed-recency grid (validation-selected 1-hour pair decay, no popularity) 0.756 val / 0.729 test; adding popularity
+  on a linear scale hurt repeat pairs (scale mismatch), so heuristics are not pursued further. Query types on validation:
+  repeat pair 85.7%, new pair of a known source 9.2%, new source 5.1%; recency alone ranks repeat pairs at 0.885 and new
+  pairs at chance (0.002).
+- 9 Oct 11:04: race_link v1 smoke (5K train events, 1K val queries, 2 epochs, 6,665 parameters): val MRR 0.763 (repeat
+  0.874, new pair of known source 0.125, new source 0.047). Full v1 development fit running.
+- 9 Oct 11:20: **race_link v2** written from that diagnosis (versioned file `race_link_v2.py`): ordinal recency rank of
+  the candidate among the source's pages, the pair's share of the source's activity, last-destination flag, and decayed
+  page-to-page transitions T[last(s), c] read by the source's last page (a sequential key read; scores new pairs).
+  Feature contract checked on a hand example. Queued after v1 (curie_b5_racelink_v2_dev_s0_20261009T1120Z).
+- 9 Oct: tgbn-trade v1 job failed at load (float-typed node ids used as indices; fixed); rerun queued as
+  curie_b5_trade_affinity_dev_s0_v2_20261009T1105Z. Label-pointer replay confirmed: val label years 2009–2012, test
+  2013–2015.
+
