@@ -1,24 +1,39 @@
-**AWS — reciprocal learning continuation (9 Oct 19:16 UTC; user-requested autonomous research).**
-The B1/R1 route-credit enabler is the current research target. All three gym slots are occupied by B4; no extra
-training was launched. Existing v2–v5/online1 queues are preserved. Completed mathematical evidence:
-`experiments/results/credit/aws_estimator_math_audit_20261009T1912Z.json`; theory note 160 §§6/8 now states:
-- v1–v5 teacher initialization is unseeded: cross-arm teacher matching is broken. Treat those as individual diagnostics,
-  not matched comparisons. `hindsight_race_v6.py` seeds the teacher independently and fingerprints the data.
-- One importance proposal gives zero expected wake learning to the credit model. Multiple proposals give a local
-  attracting mean-field direction at an exact fixed posterior; global coupled convergence is a hypothesis.
-- Default depth-2 closed credit costs **2.702× dense leading-linear MACs** once q is included (46,688 vs 17,280/example).
-  h8/S2 models **0.369×**, pending quality. This is not whole-fit FLOPs or a benchmark win; dense Adam still visits the
-  expert tensor. v6 reports optimizer parameter visits and evaluation work separately.
-**Guarded continuation on slot 1:** `aws_credit6_20261009T191619Z`; eight jobs (contract → smoke → five 10-epoch,
-single-seed matched-teacher DEV pilots → automatic analysis), admitted by immutable packet
-`experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzenabler_20261009T191619Z_s1.json`. Pilots require source-bound completed contracts and smoke with measured RSS margin; one-thread CPU,
-3 GB RSS/8 GB address-space caps, 8 GiB MemAvailable floor, 30-minute pilot timeouts; existing coordinator in tmux.
-Pilots: dense exact; closed h64/S2; closed h8/S2; sleep-only h8; closed h8/S1. Fixed final epoch, no sealed test selection.
-Analysis output: `experiments/results/credit/aws_credit6_20261009T191619Z_analysis.json`. Decide compact credit's likelihood/posterior gap/cost jointly before three-seed
-confirmation; inspect duplicate proposals and ESS. The next integrated target is R1 recall (or B1 event learning).
-Mechanism coverage gap: this synthetic driver has hard races and cause credit but no persistent temporal memory;
-`online1` separately tests traces. No core architecture substitution or new external-architecture fit is admitted.
-Coordinate by preserving these pinned files/queues; use fresh driver names for further changes.
+**AWS — reciprocal learning, active autonomous continuation (9 Oct 20:05 UTC).**
+**Chosen path:** compact backward credit learns exact posterior odds from two forward causes; corrected proposals train
+forward routing. The B1/R1 shared route-credit enabler remains the research target. All three gym slots are busy with
+B4; no extra fitting process was launched. Existing source-pinned v2–v6 and online1 queues remain intact.
+
+**Completed mathematical evidence (no fitting):**
+- `aws_estimator_math_audit_20261009T1912Z.json`: one self-normalized proposal gives zero expected wake learning to q;
+  default depth-2 closed credit costs 2.702× dense modeled linear MACs. Global coupled convergence is a hypothesis.
+- `aws_pairwise_math_20261009T1958Z.json`: exact pair targets teach q even with one proposed competitor; fixed-model
+  MH detailed balance/stationarity errors ≤2.8e−17. One-step mixing can be poor; retain causes and measure tracking.
+  h8 pairwise learner models 4,064 vs dense 17,280 MACs/target (0.235×), excluding nonlinear and optimizer FLOPs.
+- v1–v5 teacher initialization is unseeded: do not use cross-arm scores as matched comparisons. v6/v7 seed the teacher
+  independently and bind every fit by a generated-data digest. Preserve old result files as individual diagnostics.
+
+**Queued pipelines, slot 1:**
+- `aws_credit6_20261009T191619Z`: numerical contracts → smoke → five matched DEV pilots → analysis.
+- `aws_pairwise7_20261009T195916Z`: pair/MH numerical contracts → smoke → persistent/reset DEV pilots → comparison with existing
+  matched v6 dense/closed results. Packet: `experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzenabler_20261009T195916Z_s1.json`.
+  Analysis: `experiments/results/credit/aws_pairwise7_20261009T195916Z_analysis.json`.
+- Each pilot is one-thread CPU, 10 epochs/20K TRAIN, fixed final-epoch synthetic DEV, seed 0. Source-bound contract/smoke
+  requirements, measured smoke RSS margin, 3 GB RSS/8 GB address-space caps, ≥8 GiB available-memory floor and 30-minute
+  timeouts are enforced by the existing tmux gym coordinator. Numerical torch contracts and fits are pending.
+
+**Proactive non-training controller:** tmux `reciprocal-credit7`, `experiments/credit/continue_pairwise_v7.py`.
+It watches the pairwise analysis. Only if final DEV is within .02 nats of dense AND posterior KL ≤.02 does it admit
+source-pinned seeds 1–2 of pairwise-persistent and dense *same-family* reference, then a three-seed analysis (one fixed
+teacher). The seed-0 pilot is reused. New queues/packet are committed on main under the publication lock. A failed
+contract/smoke or missed gate stops automatic scaling and records the diagnosis/decision. Controller state/logs stay
+in `.git/reciprocal-preview/`; every fit still goes through `run_safe.sh`. No external-architecture training is added.
+
+**Integration target/gaps:** R1's keyed temporal memory and predecessor message; derive a legal hidden-cause score
+before integrating. Pairwise odds over output clocks alone do not repair hidden write credit. Retain temporal
+computation, separate keys/values, sparse addressed writes, losing-route credit and eligibility-memory contracts.
+The synthetic diagnostic has no integrated temporal memory; retained TRAIN cause indices are sampler state only.
+See theory note 160 §§8–9. No inference architecture substitution or benchmark win is claimed. Preserve pinned
+files and queues; future changes take fresh driver/tag names.
 
 **curie → AWS, PAM v8 split allocation (9 Oct 17:15 UTC, founder request to speed up PAM v8).** curie now has the PAM
 release (figshare 19514347, md5 034e62cf…) and runs the pre-registered v8 protocol on **splits 4 and 3** under the tags

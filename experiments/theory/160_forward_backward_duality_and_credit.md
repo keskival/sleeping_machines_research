@@ -241,3 +241,86 @@ Pipeline admitted at 19:16 UTC: `aws_credit6_20261009T191619Z` (slot 1, behind e
 then the five pilots above and `analyze_v6.py`. Automatic result: `experiments/results/credit/aws_credit6_20261009T191619Z_analysis.json`.
 The predeclared compact-quality screen is final DEV likelihood within 0.02 nats of dense and lower linear MACs;
 passing it selects three-seed confirmation, not a win claim. Numerical contracts and fitting results remain pending.
+
+## 9. Chosen development path: exact pairwise verdicts and corrected cause proposals
+
+**Failure addressed.** Small self-normalized proposal sets teach biased credit; one proposal teaches no expected
+wake credit at all. A large recognition MLP spends more linear work than the experts it avoids. The chosen next
+construction uses a compact q and an exact *relative* posterior target supplied by two forward causes. This changes
+credit estimation, not the inference architecture. Existing v6 queues remain pinned for the comparison.
+
+**Forward trains backward on real data.** Let a_i = p_θ(y, cause i | x) and a_j likewise. The forward pass evaluates only
+these two causes. It supplies the exact binary target t_ij = a_j/(a_i+a_j), detached from θ. The credit model predicts
+σ(log q_j − log q_i), fitted by binary cross-entropy. This target needs no marginal likelihood, no exact full posterior
+and no privileged teacher labels. Each pair gives an informative verdict when its predicted odds are wrong.
+
+For frozen positive pair weights the loss is convex in unconstrained q logits; its Hessian is a weighted graph
+Laplacian. With a connected pair graph and positive causes its unique optimum modulo a constant is
+log q_i = log a_i + constant, hence q = ρ. The current pair-sampling weights depend on detached proposals and retained
+causes, so this fixed-weight convexity result is not a convergence theorem for the adaptive neural learner. It does give
+an exact common target for every visited pair. Compact q may lack the capacity to represent it; the DEV credit gap
+measures that independently of forward likelihood.
+
+**Backward proposes; forward corrects.** Propose j from g = (1−ε)q + ε/K, ε = 0.1. For retained cause i accept j with
+
+    A(i,j) = min(1, a_j g_i / (a_i g_j)).
+
+This is independence Metropolis–Hastings, not a new sampler. Detailed balance follows from
+ρ_i g_j A(i,j) = min(ρ_i g_j, ρ_j g_i) = ρ_j g_i A(j,i). For a fixed forward model and proposal, its invariant law is
+ρ even when q is wrong. Positive g makes the finite chain irreducible; self proposals make it aperiodic. If the actual
+proposal g equals ρ, one proposal is an independent posterior draw. Otherwise a finite chain started away from ρ is
+biased. Neural updates move its target, and persistent chains must track that movement.
+
+At stationarity a sampled cause supplies the complete-data gradient ∇ log a_i, whose expectation is the exact
+marginal-likelihood gradient (Fisher's identity). Pairwise q training uses two no-gradient expert scores; forward
+training re-evaluates only the accepted cause with gradients. Acceptance decisions and q are detached from that
+forward update. There is no new inference-time credit network or altered forward winner rule.
+
+**Completed finite-state evidence:** [pairwise_math.py](../credit/pairwise_math.py), saved in
+[aws_pairwise_math_20261009T1958Z.json](../results/credit/aws_pairwise_math_20261009T1958Z.json). Three two-/three-cause
+examples give maximum detailed-balance error 1.7e−18 and stationarity error 2.8e−17. For ρ=(.8,.2), g=(.2,.8), TV error
+from a g start is .6 initially, .45 after one step, .0601 after eight and .0000603 after 32. Thus correctness of the
+stationary distribution does not grant one-step credit fidelity. The pair gradient at the wrong q is (−.6,+.6), giving
+useful learning where the one-proposal self-normalized wake gradient is zero.
+
+**Implementation:** [pairwise_race_v7.py](../credit/pairwise_race_v7.py). `pairwise_persistent` retains one cause index per
+TRAIN item between visits; `pairwise_reset` restarts from g on every visit. Every visit scores both current and proposed
+causes at the current weights, preventing stale likelihood-cache errors. Cause indices take 160,000 bytes for 20,000
+items. They are sampler state, not a substitute for the model's persistent temporal memory. No DEV target is used to
+fit these states or select epochs. Exploration, duplicate pairs, MH acceptance, actual moves and posterior KL/TV are
+reported; high acceptance alone is not evidence of good credit.
+
+**Learning work:** at d=16, K=8, K2=4, C=10, h=8, two no-gradient expert scores plus one differentiated expert,
+one differentiated router and one differentiated q cost 4,064 modeled leading-linear MACs per training target versus
+17,280 for dense (0.235×). Ten epochs × 20,000 targets model 0.8128 vs 3.456 billion MACs. These use identical units and
+target denominators. Nonlinear, bias, sampling and optimizer FLOPs are excluded. Both implementations still allocate
+dense expert gradients and run dense Adam; total fitting work and latency must be assessed separately. This is a design
+budget, not a measured efficiency win.
+
+**Decision pipeline:** numerical contracts → one smoke → persistent and reset depth-2 DEV pilots (seed 0, ten epochs)
+→ automatic comparison against the existing matched v6 dense and compact-closed pilots. Source-bound dependencies
+prevent fitting or comparison after a failed contract/smoke. Final-epoch likelihood within .02 nats of dense and
+posterior KL ≤ .02 selects three-seed confirmation. Failure calls for posterior-gap, pair-coverage and chain-tracking
+diagnosis, not a family loss. No new external-architecture reference is trained.
+
+**Integration target and retained mechanisms.** R1's existing keyed temporal memory and predecessor message remain the
+candidate for integrated testing; preserve decay/rotation, irregular elapsed time, separate keys/values, sparse writes,
+losing-route credit and complete learning accounting. Its existing marginal over output clock causes can support pair
+posterior odds, but those output clocks already have cheap exact responsibilities. The useful target is hidden route/
+write credit. A hidden cause must expose a valid causal complete-data score; a nonlinear weighted read cannot silently
+be replaced by a mixture likelihood. Derive that interface and its memory/eligibility credit contracts before changing
+R1. The present synthetic diagnostic establishes neither hidden temporal-write credit nor integration.
+
+**Attribution.** [Hastings (1970)](https://academic.oup.com/biomet/article-abstract/57/1/97/284580) supplies the sampler;
+[Naesseth et al., Markovian Score Climbing (2020)](https://arxiv.org/abs/2003.10374) is the close precedent for learning an
+inclusive-posterior proposal with Markovian samples. The construction here adds forward pair-odds supervision and
+charges the full forward/backward learner within this race-credit diagnostic. No general novelty or convergence claim
+is attached to that combination.
+
+Active continuation: `aws_pairwise7_20261009T195916Z` on gym slot 1 (contract → smoke → two pilots → comparison),
+analysis `experiments/results/credit/aws_pairwise7_20261009T195916Z_analysis.json`. The non-training `continue_pairwise_v7.py` controller watches in tmux
+`reciprocal-credit7`. Passing BOTH predeclared pilot gates admits learner seeds 1–2 of pairwise-persistent and the same
+family's dense reference, with seed 0 reused; a final analysis requires all three seeds to pass the development gates.
+A failed pipeline or gate records a development decision and stops automatic scaling. Fits remain CPU-only under
+source-bound `run_safe.sh` jobs. Three seeds vary learner initialization on one fixed teacher; they do not test a broad
+teacher distribution or establish a public benchmark win. Numerical torch contracts and fitting results are pending.
