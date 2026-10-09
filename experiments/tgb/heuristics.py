@@ -66,10 +66,12 @@ def run_split(ds, ev, st, mask, split, sidx, didx, names=None, bs=200, n_check=5
         for q in range(len(s)):
             ng = np.asarray(negs[q]); n_neg.append(len(ng))
             cand = didx[np.concatenate([[c[q]], ng])]
+            su, cu = int(sidx[s[q]]), int(didx[c[q]])
+            kind = 'repeat_pair' if st.seen[su, cu] else 'new_pair_known_source' if st.seen[su].any() else 'new_source'
             sc = st.scores(sidx[s[q]], cand, t[q])
             for k, v in sc.items():
                 if names is None or k in names:
-                    r = rr(v); mrr.setdefault(k, []).append(r)
+                    r = rr(v); mrr.setdefault(k, []).append(r); mrr.setdefault(k + '|' + kind, []).append(r)
                     if checked < n_check:                                             # agree with the official Evaluator
                         o = ev.eval({'y_pred_pos': v[:1], 'y_pred_neg': v[None, 1:], 'eval_metric': ['mrr']})['mrr']
                         assert abs(float(o) - r) < 1e-6, (k, o, r)
@@ -99,9 +101,9 @@ def main():
     st.add(sidx[d['sources'][tr]], didx[d['destinations'][tr]], d['timestamps'][tr].astype(float))
     print(f'train state built {time.time() - t0:.0f}s', flush=True)
     val, nneg = run_split(ds, ev, st, ds.val_mask, 'val', sidx, didx)
-    best = max((k for k in val if k != 'edgebank_inf'), key=val.get)
+    best = max((k for k in val if k != 'edgebank_inf' and '|' not in k), key=val.get)
     print('val edgebank_inf', val['edgebank_inf'], 'best', best, val[best], f'{time.time() - t0:.0f}s', flush=True)
-    test, nneg_t = run_split(ds, ev, st, ds.test_mask, 'test', sidx, didx, names={'edgebank_inf', best})
+    test, nneg_t = run_split(ds, ev, st, ds.test_mask, 'test', sidx, didx, names={'edgebank_inf', best} | {n + '|' + k for n in ('edgebank_inf', best) for k in ('repeat_pair', 'new_pair_known_source', 'new_source')})
     out = dict(status='completed', tag=a.tag, battle='B5', dataset='tgbl-wiki (v2 negatives)', protocol=
                'official py-tgb loader, negatives and Evaluator; MRR; selection on validation; test scored once',
                negatives_per_query=dict(val=nneg, test=nneg_t),

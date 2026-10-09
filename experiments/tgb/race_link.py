@@ -171,23 +171,28 @@ def main():
 
     @torch.no_grad()
     def evaluate(mem, idx, split, check=50):
-        model.eval(); out = []
+        model.eval(); out = []; kinds = []
         for b in range(0, len(idx), a.bs):
             ix = idx[b:b + a.bs]
             logit = model(torch.from_numpy(mem.features(S[ix], T[ix]))).numpy()
             negs = ds.negative_sampler.query_batch(src_all[ix], dst_all[ix], ts_all[ix], split_mode=split)
             for q in range(len(ix)):
                 v = logit[q, didx[np.concatenate([[dst_all[ix[q]]], np.asarray(negs[q])])]]; r = rr(v); out.append(r)
+                su, cu = int(S[ix[q]]), int(Dn[ix[q]])                                 # error analysis by query type
+                kinds.append('repeat_pair' if (su, cu) in mem.pair else 'new_pair_known_source' if mem.rows[su] else 'new_source')
                 if len(out) <= check:
                     o = ev.eval({'y_pred_pos': v[:1], 'y_pred_neg': v[None, 1:], 'eval_metric': ['mrr']})['mrr']
                     assert abs(float(o) - r) < 1e-6
             mem.add(S[ix], Dn[ix], T[ix])
-        return float(np.mean(out))
+        out, kinds = np.array(out), np.array(kinds)
+        evaluate.by_type = {k: dict(share=float((kinds == k).mean()), mrr=float(out[kinds == k].mean()))
+                            for k in ('repeat_pair', 'new_pair_known_source', 'new_source') if (kinds == k).any()}
+        return float(out.mean())
 
     hist, best, state = [], -1.0, None
     for ep in range(a.epochs):
         te0 = time.time(); mem, loss = replay_train(True); val = evaluate(mem, va, 'val')
-        hist.append(dict(epoch=ep, train_ce=loss, val_mrr=val, epoch_s=time.time() - te0)); print(json.dumps(hist[-1]), flush=True)
+        hist.append(dict(epoch=ep, train_ce=loss, val_mrr=val, val_by_type=evaluate.by_type, epoch_s=time.time() - te0)); print(json.dumps(hist[-1]), flush=True)
         if val > best:
             best, state = val, {k: v.clone() for k, v in model.state_dict().items()}
         if time.time() - t0 > a.max_wall_s:
