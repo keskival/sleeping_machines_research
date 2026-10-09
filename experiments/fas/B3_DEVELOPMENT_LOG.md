@@ -420,3 +420,5 @@ oracle's .821.
   (Transformer d128 and LSTM d128, lr .003); AWS gym slots are on B4 (35 runs, ~1–2 days). Then one test scoring per model
   (`score_sealed_test.py`) and `stage5_decision.py`.
 
+
+- 9 Oct 21:54 UTC, Curie: Stage 4 tool repair prepared before TEST access. `score_sealed_v2.py` binds source/result/checkpoint/frozen-data hashes and reproduces selected validation, then reserves the original trained model before loading TEST arrays. `stage5_decision_v2.py` uses all seeds of the strongest neural family in its paired bootstrap and enforces sample/missing-mask pairing. Registered configuration, primary rule and decision mapping are retained. Eight synthetic tests pass; guarded contract queued behind Curie's host lock. A non-training watcher awaits the nine selected checkpoints and then creates/commits the once-only scoring pipeline. Reference seeds 1/2 and the AWS selected checkpoint artifacts are pending. No tuning-budget entry, model fit or TEST score was added.
