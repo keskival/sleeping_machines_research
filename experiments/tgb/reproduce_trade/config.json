@@ -1,0 +1,13 @@
+{
+  "claim": "TGB tgbn-trade node affinity, test NDCG@10 0.8680 +/- 0.0005 over seeds 0-2 (0.8683, 0.8674, 0.8683) vs leaderboard leader NAVIS 0.863",
+  "driver": "experiments/tgb/race_affinity.py",
+  "driver_sha256": "e88c02d8fc3740d9bb1a904a25fa2ea7754f5860eb0ecf7d271fd37bc5a4b3f6",
+  "package": "py-tgb==2.3.0",
+  "data_sha256": {
+    "tgbn-trade_edgelist.csv": "f7eb7f98f153d0802fbaf1073f8f0bff8efe72325b4a1db6ee90998847c80553",
+    "tgbn-trade_node_labels.csv": "bb11ff00f4832162210ec6cf7f4aa5d9c6f9f3c1caeb21a3e5f2e128ea06f818"
+  },
+  "seeds": [0, 1, 2],
+  "expected_test_ndcg": [0.8683, 0.8674, 0.8683],
+  "tolerance": 0.002
+}
