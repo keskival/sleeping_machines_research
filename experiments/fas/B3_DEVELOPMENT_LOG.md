@@ -406,3 +406,11 @@ oracle's .821.
     candidates (note 157 §447), so the learned per-pair laws are likely too broad. Next lever (a future round; the
     development budget is spent): initialise the per-pair duration laws from the merged log's own duration structure
     (e.g. EM over candidate ages) instead of from zero, and measure their learned widths.
+- 9 Oct 06:40 UTC: **Neural reference grid completed on AWS** (12 jobs, validation only; selection by validation-clean NLL as
+  pre-registered). Selected configurations: **time-encoded Transformer d128, lr .003: validation AUROC at N* .7035**,
+  validation-clean NLL 2.011, 425,392 parameters; LSTM d128, lr .003: .662, NLL 2.590, 276,528 parameters. (Other grid
+  points .648–.681.) **The strongest validation baseline is now the Transformer, level with the frozen native C10 (.7019;
+  NLL 1.023; ~62K parameters).** Stated before any test scoring: under the Stage 5 rule (margin ≥ .02 on test), the
+  expected sealed outcome is a **tie**; the native model fits the merged log far better (1.02 vs 2.01 nats per event) at
+  about 1/7 of the parameters, but the pre-registered endpoint is detection AUROC. Stage 4 continues as registered
+  (native seeds 6–8 on curie; reference seeds 0–2 of the selected Transformer and LSTM on AWS), then one test scoring each.
