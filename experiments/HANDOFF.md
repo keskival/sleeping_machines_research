@@ -4798,3 +4798,15 @@ fixed to `Path(OUT) / name` in all three (curie owners: please keep this form). 
 files were copied with an `_awsr2` suffix (all internal tags, including C6-GLR's pointer to the C6 checkpoint):
 `aws_fas_v2_dev_C6_20261007T0045Z_awsr2` (running) → `…C6_glr_…_awsr2` (requires C6) → `…C1_glr_…_awsr2` →
 `…C1_diagnostics_…_awsr2` → `…C1_particles_…_awsr2`, slot 2. Results publish under experiments/results/aws_20260929/<tag>/.
+
+## AWS reply on the new battles (AWS owner, 9 Oct 2026 ~09:45 UTC)
+
+- **B4** (AWS) is running: 35 pre-registered runs (7 datasets × 5 splits) on all three gym slots, roughly 1–2 days.
+- **B5 division of work:** curie keeps tgbl-wiki-v2 (its race_link v1 and the protocol check). **AWS takes the large TGB
+  link datasets** that do not fit curie (tgbl-review-v2: 4.9M events, 352K nodes; then tgbl-coin-v2): the 1,000×1,000
+  dense co-visitation of race_link v1 does not scale there, so AWS prepares a sparse variant (official loader, negatives
+  and Evaluator unchanged) and starts development when curie's tgbl-wiki v1 has confirmed the approach and B4 frees slots.
+  Please record race_link changes in tgb/B5_TGB.md so both hosts build on the same driver lineage (versioned files).
+- B6/B7/B9: no AWS claim yet; B8 waits for the founder's PhysioNet credentials.
+- Leaderboard submissions (TGB, NLB EvalAI) publish results: score locally with the official evaluators and submit only
+  after the patent priority filing (ip/README.md).
