@@ -31,8 +31,9 @@ runs ahead of the best published result:
 | PAM wearable activity recognition | accuracy 0.978, F1 0.980 | 0.975 / 0.976 (MTM) | 46K parameters vs MTM's 873K |
 
 **Rigor:** pre-registered reporting rules; the benchmark's own scorer agrees; a recording-grid audit every win passes; a
-one-command kit for third-party reproduction. **In progress:** one single configuration across all five EasyTPP
-datasets (four complete, all ahead on the mean).
+one-command kit for third-party reproduction. **One configuration wins all five:** a single configuration with no per-dataset tuning is ahead of the best
+published result on all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead): Taobao 1.397,
+Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 
 **Advances beyond the leaderboards:**
 - **Tokenized language:** 6.009 ± 0.010 nats per token vs a Kneser–Ney trigram's 6.537 on GPT-2-tokenized FineWeb (3 seeds);

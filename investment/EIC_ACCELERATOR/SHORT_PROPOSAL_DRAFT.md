@@ -57,7 +57,7 @@ numerically. It is a superset of the current architecture classes, not a niche a
 | P19 ICU sepsis prediction (irregular clinical records) | AUPRC 0.639 ± 0.039, AUROC 0.916 | AUPRC 0.583, AUROC 0.903 (MTM) | 62,681 parameters; without its temporal memory the same network falls to AUPRC 0.572 on every split |
 | PAM wearable activity recognition | accuracy 0.978 ± 0.007, F1 0.980 | 0.975 / 0.976 (MTM) | 46,316 parameters vs MTM's 873K |
 
-All five EasyTPP datasets, P19 and PAM are won. All results use five seeds or five official splits, test sets scored once,
+All five EasyTPP datasets, P19 and PAM are won. A single configuration with no per-dataset tuning also wins all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead). All results use five seeds or five official splits, test sets scored once,
 and pre-registered protocols. The Taxi result was reproduced from scratch on separate hardware (0.5252 vs 0.5250), and a
 one-command kit is available for third-party reruns. The evidence files are in the diligence pack.
 
