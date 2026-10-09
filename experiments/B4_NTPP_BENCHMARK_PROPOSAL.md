@@ -125,6 +125,8 @@ rule. The time component is level with the best published value (−268.90 vs �
 win against the published record. Next test (validation only): L_M split by marks seen and unseen in TRAIN, and against
 the repeat rule per split.
 
+**Scoring verification of the Wikipedia win (9 Oct 22:40, AWS; saved checkpoints, VALIDATION only, TEST untouched).** On splits 0 and 4: (1) reloading the selected checkpoint reproduces the recorded validation L_T/L_M to every printed digit (−157.9036/25.7534; −209.5313/21.7601); (2) every event is scored, including the first of each sequence; (3) causality: replacing all later marks and times leaves every earlier event's time and mark log-likelihood unchanged (max difference exactly 0); (4) normalisation: summing the mark probability over all 50 marks at every position of six sequences gives 1 within |log Σ| ≤ 7.2e−4 (≤ 0.04 nats per sequence); (5) units match the published table: a uniform guess over 50 marks on the five TEST splits averages 260.0 nats per sequence against published GRU-LNM-CONCAT 259.12. Our 28.49 is 0.44 nats per event: 90–93% of consecutive Wikipedia events repeat the previous page (0.13–0.17 nats each in our model), and the remainder cost 2.9–4.0 nats, below uniform's 3.91 (log 50). A training-free per-sequence counter reaches 19.5 on split-0 validation, so the low mark loss comes from the data's repeat structure, which the published models fail to exploit.
+
 **Github and MIMIC2.** Both lose on marks as well as time: L_M 159.2 vs 109.5 and 4.02 vs 2.29. The mark gap is
 unaffected by the recording grid and is the development target there, as on MOOC and Stack Overflow. MIMIC2's time
 values are on a coarse recording cell (0.033), where the gridded-metric analysis below applies to L_T.
