@@ -114,11 +114,23 @@ class Readout(nn.Module):
         return self.mlp(self.norm(x)).squeeze(-1)
 
 
+def lambda_loss(score, y, top=20):
+    """LambdaRank-style pairwise loss for NDCG with sklearn's linear gains: pairs (i in the label's top-k, j with y_j <
+    y_i), weighted by |y_i - y_j| * |1/log2(1+r_i) - 1/log2(1+r_j)| at the current (detached) predicted ranks."""
+    k = min(top, y.shape[-1]); yi, ii = y.topk(k, -1); si = score.gather(-1, ii)            # [n, k]
+    with torch.no_grad():
+        rank = score.argsort(-1, descending=True).argsort(-1).float() + 1                  # [n, C]
+        disc = 1.0 / torch.log2(1 + rank); di = disc.gather(-1, ii)
+        w = (yi[..., None] - y[:, None, :]).clamp_min(0) * (di[..., None] - disc[:, None, :]).abs()
+    return (w * nn.functional.softplus(-(si[..., None] - score[:, None, :]))).sum((-1, -2)).mean()
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--tag', required=True); ap.add_argument('--dataset', default='tgbn-trade')
     ap.add_argument('--seed', type=int, default=0); ap.add_argument('--epochs', type=int, default=200)
     ap.add_argument('--hidden', type=int, default=32); ap.add_argument('--lr', type=float, default=3e-3)
-    ap.add_argument('--wd', type=float, default=1e-3); ap.add_argument('--score-test', action='store_true')
+    ap.add_argument('--wd', type=float, default=1e-3); ap.add_argument('--loss', choices=('ce', 'lambda', 'ce+lambda'), default='ce')
+    ap.add_argument('--score-test', action='store_true')
     ap.add_argument('--root', default=str(ROOT / 'data/tgb'))
     a = ap.parse_args(); torch.manual_seed(a.seed); np.random.seed(a.seed); torch.set_num_threads(1); t0 = time.time()
     from tgb.nodeproppred.dataset import NodePropPredDataset
@@ -156,8 +168,12 @@ def main():
     for ep in range(a.epochs):
         model.train(); tot = 0.0
         for i in np.random.permutation(len(data['train'])):
-            _, x, y = data['train'][i]; logp = torch.log_softmax(model(x), -1)
-            loss = -(y * logp).sum(-1).mean(); opt.zero_grad(); loss.backward(); opt.step(); tot += float(loss)
+            _, x, y = data['train'][i]; sc = model(x); loss = 0.0
+            if 'ce' in a.loss:
+                loss = loss - (y * torch.log_softmax(sc, -1)).sum(-1).mean()
+            if 'lambda' in a.loss:
+                loss = loss + lambda_loss(sc, y)
+            opt.zero_grad(); loss.backward(); opt.step(); tot += float(loss)
         val, _ = score('val'); hist.append(dict(epoch=ep, train_ce=tot / len(data['train']), val_ndcg=val))
         if ep % 10 == 0:
             print(json.dumps(hist[-1]), flush=True)
