@@ -30,15 +30,24 @@ only; a pre-registered test protocol; first-pass results are labelled as such.
 
 - **Why it fits:** spikes are asynchronous events; hand kinematics are a dense stream; the metrics (co-smoothing bits per
   spike, velocity R², PSTH R²) reward a latent state driven by events. Public leaderboard on EvalAI (challenge 1256).
-- **References:** NDT, AutoLFADS, STNDT lineage lead (paper: arXiv 2109.04463). **Exact current leaderboard values to be
-  verified on EvalAI before any claim** (the page is browser-rendered; not machine-readable from curie).
+- **Leaderboard (verified 9 Oct 2026 via the EvalAI API, challenge 1256):** MC_Maze 5 ms co-bps: STNDT ensemble **0.3862**
+  (vel R² 0.910), S5 0.3823, DLFM 0.3779 (2025), SSLFADS 0.3748, AESMTE3 ensemble 0.3676, NDT-L 0.3536, AutoLFADS (Kubeflow)
+  0.3510. MC_Maze 20 ms: LangevinFlow **0.3650**, NDT 0.3597, Sequential Monte Carlo 0.3589, AutoLFADS 0.3554.
+- **Gate:** both EvalAI phases (validation and test) ended 31 January 2026 and are inactive; the test held-out spikes are
+  not public. A new scored entry needs the organisers to reopen evaluation (founder or AWS could ask the NLB team). Until
+  then B6 is not a winnable battle; it stays on this list for when evaluation reopens.
 - **Cost:** MC_Maze small/medium/large are CPU-feasible (DANDI downloads).
 
 ## B7 — Opportunity activity/gesture challenge (dense IMUs + sparse ambient/object sensors)
 
 - **Why it fits:** the clearest small benchmark mixing dense body-worn inertial streams with binary object and ambient
   events (doors, drawers, switches): one substrate for both.
-- **References:** challenge protocol and published DeepConvLSTM-lineage results; to verify.
+- **References (protocols differ; to fix before admission):** challenge protocol (ADL4–5 of subjects 2–3 as test, 113
+  body-worn channels): DeepConvLSTM weighted F1 0.915 with the null class. Leave-one-subject-out on 79 channels, macro F1:
+  TinyHAR 88.7, DeepConvLSTM 87.2 (arXiv 2602.06523).
+- **Caveat for the thesis:** the standard protocols use body-worn sensors only. The mixed dense-plus-sparse angle (object
+  and ambient switches) is not part of the published comparison; using those channels would be a new protocol with no
+  published bar. Under the standard protocol B7 is a dense-sensor parity battle.
 - **Cost:** small; UCI download.
 
 ## B8 — HiRID-ICU-Benchmark / YAIB (dense 2-minute vitals + irregular labs, medications)
