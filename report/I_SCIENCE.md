@@ -16,7 +16,7 @@ Each benchmark below is evidence for one front of this program. None of them def
 
 ### Wins and advances at a glance (9 October 2026)
 
-**Eight public leaderboard wins**, each on the official splits with a sealed test scored once per run, 37 of 38 independent
+**Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
 runs ahead of the best published result:
 
 | Benchmark | Ours | Best published | At what cost |
@@ -29,6 +29,7 @@ runs ahead of the best published result:
 | P19 ICU sepsis prediction | AUPRC 0.639, AUROC 0.916 | 0.583 / 0.903 (MTM) | temporal memory adds +0.072 AUPRC on every split beyond summary statistics; reproduced |
 | PAM wearable activity recognition | accuracy 0.978, F1 0.980 | 0.975 / 0.976 (MTM) | 46K parameters vs MTM's 873K |
 | **TGB tgbn-trade** (temporal graph: node affinity, world trade) | NDCG@10 0.868 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | 2,107 parameters, 4 CPU-minutes; **a new domain**: interaction graphs, where heuristics beat every temporal GNN |
+| **TGB tgbl-wiki** (temporal graph: link prediction, Wikipedia edits) | MRR 0.835 ± 0.0003 | 0.827 (TPNet) | 7,995 parameters; exact per-event state; 4.5 ms per query on one CPU thread |
 
 **Rigor:** pre-registered reporting rules; the benchmark's own scorer agrees; a recording-grid audit every win passes; a
 one-command kit for third-party reproduction. **One configuration wins all five:** a single configuration with no per-dataset tuning is ahead of the best
@@ -58,11 +59,10 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 **New event domains (9 October):**
 - **Temporal Graph Benchmark, node affinity: won** (table). Pre-registered sealed test, 3 seeds: 0.8683 / 0.8674 /
   0.8683, every seed above NAVIS's 0.863; persistent forecast 0.855. Validation 0.874 vs 0.860 had predicted it.
-- **Temporal Graph Benchmark, link prediction (in development):** the official evaluation is reproduced exactly (EdgeBank 0.527 / 0.495,
-  as published). tgbl-wiki in development: **0.852 vs TPNet's 0.842** (both validation): exact per-event state lifted our
-  model from 0.776 to 0.852 with 7,995 parameters (theory note 159 predicted at least +0.03); the first pre-registered
-  sealed seed scores **0.835 on test vs TPNet's 0.827**; seeds 2 and 3 are running. tgbl-review: a training-free decayed event state reaches 0.344
-  validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
+- **Temporal Graph Benchmark, link prediction: won** (table). Exact per-event state lifted our model from 0.776 to
+  0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
+  0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
+  event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
   model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means. **First verdict: MOOC
   lost** (total NLL −226.9 vs the pre-registered bar −239.7 and the best single published model's −233.8; marks nearly
@@ -222,7 +222,7 @@ The same construction — persistent memories that decay and rotate with elapsed
 
 **Positioning.** The EasyTPP leader S2P2 (NeurIPS 2025) is demonstrated on one task type, event likelihood. Its parent family, deep state-space models, is general on dense sequences and language. Our claim is specific: one family, with one shared core, wins public benchmarks on both generative event modelling and sparse clinical classification, with further evidence on process logs, language and reasoning. The tests that make this a transfer claim — self-supervised event pretraining for clinical prediction, one model across five event datasets — are track G ([plan](../experiments/GENERALITY_PLAN.md)).
 
-### 4.0d Public benchmark: temporal interaction graphs (TGB)
+### 4.0d Public benchmarks: temporal interaction graphs (TGB)
 
 The Temporal Graph Benchmark asks which entity interacts with which, and when. On its node-affinity task, simple
 heuristics (persistent forecast, moving average) beat every temporal graph neural network, and the leader NAVIS (ICLR
@@ -241,8 +241,8 @@ averages as special cases and can extrapolate a rising partner, which a convex c
 (Proposition 3). Ablations bear this out in part: removing the history-shape features gives back half of the gain over
 persistent forecast (validation 0.8677 vs 0.8747; persistent forecast 0.8604), while removing reciprocity costs nothing. On link prediction (tgbl-wiki), updating the state exactly at every event,
 as the family does natively, lifted validation MRR from 0.776 to 0.852 against TPNet's 0.842 with 7,995 parameters; its
-first pre-registered sealed seed scores 0.835 on test against TPNet's 0.827, with two seeds to go; one query, with the
-exact state update and all 1,000 candidates scored, takes 4.5 ms on one CPU thread.
+three pre-registered sealed seeds score **0.8353 ± 0.0003 on test against TPNet's 0.827**, every seed ahead: a second TGB
+win. One query, with the exact state update and all 1,000 candidates scored, takes 4.5 ms on one CPU thread.
 
 ### 4.1 Learned temporal computation (synthetic, multi-run)
 
@@ -396,7 +396,7 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | **B2** | Irregular clinical and sensor series: P12, P19, PAM (Raindrop protocol) | Best published AUROC / accuracy on official splits | **P19 and PAM won** (§4.0b); P12 in development |
 | **B3** | FAS v2 sealed confirmation, then public release of FAS | As pre-registered: native seed mean ≥ best information-matched classical + 0.02 AUROC at 512 events per line, paired bootstrap lower bound > 0 | A confirmed event-native analytics win and a benchmark we define. Native model frozen (duration-matched predecessor attention, C10): validation 0.702 vs the time-encoded Transformer reference 0.704 at about 1/7 of its parameters; tie expected under the 0.02 rule; sealed seeds running |
 | **B4** | Second neural-TPP benchmark (Bosser & Ben Taieb, TMLR 2023/2025): LastFM, MOOC, Github, Stack Overflow, Wikipedia, MIMIC2, Retweets; 5 fixed splits | The frozen one-configuration EasyTPP model, no tuning, below the best published time + mark NLL on a dataset (pre-registered) | Whether the EasyTPP wins transfer unchanged to a second benchmark suite; 35 runs in progress |
-| **B5** | Temporal Graph Benchmark: dynamic link prediction (tgbl-wiki-v2, tgbl-review-v2) and node affinity (tgbn-trade, then genre/reddit/token) | Test MRR / NDCG@10 above the leaderboard leader (TPNet 0.827 on wiki; NAVIS 0.863 on trade) on 3 seeds, official loaders and evaluators | **tgbn-trade won** (0.868 ± 0.0005 vs NAVIS 0.863, 3 sealed seeds); tgbl-wiki: first sealed seed 0.835 vs TPNet 0.827 on test, two seeds to go |
+| **B5** | Temporal Graph Benchmark: dynamic link prediction (tgbl-wiki-v2, tgbl-review-v2) and node affinity (tgbn-trade, then genre/reddit/token) | Test MRR / NDCG@10 above the leaderboard leader (TPNet 0.827 on wiki; NAVIS 0.863 on trade) on 3 seeds, official loaders and evaluators | **tgbn-trade won** (0.868 ± 0.0005 vs NAVIS 0.863, 3 sealed seeds); **tgbl-wiki won** (0.835 ± 0.0003 vs TPNet 0.827, 3 sealed seeds) |
 | **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met** (6.009 ± 0.010 vs KN trigram 6.537, 3 seeds); next: a published small Transformer reference |
 
 High-fidelity route credit (exact forced-lane credit at small pools, then a low-variance multi-step estimator) is developed inside B1, B3 and R1, where model sizes make it affordable. Parallel-scan training of the linear decay/rotation core follows when a battle's fitting time requires it. Every result reports measured inference work beside quality. New Transformer and LSTM training is retired: comparisons use published scores under the exact matching protocol and the dense results already completed.

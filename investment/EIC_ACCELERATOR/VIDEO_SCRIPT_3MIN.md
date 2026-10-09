@@ -17,7 +17,7 @@ when something *should* have happened and didn't. Its cost per event stays const
 **1:05–1:45 · Proof (screen: the leaderboard table).**
 "We tested it where others publish. On the public EasyTPP event-stream benchmarks we beat the published state of the
 art on all five datasets, four of them at a fraction of the leading model's compute. On ICU sepsis prediction,
-wearable activity recognition and the Temporal Graph Benchmark's trade network, the same core beats the best published
+wearable activity recognition and two Temporal Graph Benchmark leaderboards, the same core beats the best published
 models on the official splits. And one of
 our wins was reproduced from scratch on separate hardware."
 

@@ -227,7 +227,15 @@
   "persistent_forecast": 0.855
  },
  "tgbl_wiki": {
-  "status": "in development; sealed seeds running",
+  "mrr": {
+   "mean": 0.8352907021984337,
+   "sd": 0.0003050881293892607,
+   "values": [
+    0.8352538397086952,
+    0.8350057201371809,
+    0.8356125467494251
+   ]
+  },
   "val_mrr": 0.8518229016892851,
   "parameters": 7995,
   "published": {
@@ -315,6 +323,9 @@
   "experiments/results/tgb/curie_b5_trade_affinity_sealed_s1_20261009T1210Z.json": "13f2774c8aa5b9f3745ac574f2fccbd436bf310811f1e1ab38dc778476635c9b",
   "experiments/results/tgb/curie_b5_trade_affinity_sealed_s2_20261009T1210Z.json": "d6ef48569121889f1c9a72deeedb7361d036fa0875c0ba4237a261b67803c2da",
   "experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_20261009T1300Z.json": "8af2670a97512a1a9512411d524c4c498d8f3b85f4467984bb8356ca072a7d4b",
+  "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s0_20261009T1340Z.json": "5491ce9b3462e59be246de35308e0f74376ba92fe6291864c0f7b5e604c17836",
+  "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s1_20261009T1340Z.json": "e94e8051f8cbd59061540cee0e5d5d138797cbb3b53cf13a73826ab0307d21df",
+  "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z.json": "87778c3473dbc6bbb4d2db9dec217e10263dc004bbf0218afd85bee95cb91af2",
   "experiments/results/tpp_b4/b4_mooc_s0.json": "c7abb0b42f4c1a27a65097a3ba9b686224ea4f4b7f3941bb3c7a862098497b8e",
   "experiments/results/tpp_b4/b4_mooc_s1.json": "1c33f0ba58f7dcf3f41b539ccd717dba620050797023b8f6aca839942bb7b5d3",
   "experiments/results/tpp_b4/b4_mooc_s2.json": "2cca0e458d0b3a88ab83de901e080858d25f8a27dc6fae0e6e7d1196f579efe3",
@@ -322,8 +333,8 @@
   "experiments/results/tpp_b4/b4_mooc_s4.json": "0e33e18a4e3e9bc6a0588d60d660bd4bd6731e2201203746e6d95f141c23b059",
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "9fcd7a89ac2c60bde08e9a57f12cc2a638bb7b29a7b09782d16bdb0db31c9827",
-  "experiments/tgb/B5_TGB.md": "dad73c927931e33214ae67f9c1ace34b2e2a074cd9e31245d3478c089a48c6d4",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "755cc774e9feb56c945809486bd6a3511935669381acfe70a2668066c7b77ba8",
+  "experiments/tgb/B5_TGB.md": "00adb4f2264b32874d48543cc1e4701b35d28165417c34a97c6362f29f48743b",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "7caa55891f17be6b2d85c3955687542b793730fefb6d7ed4d3b83ca9aac65442",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "812007af4f43b8d61c43ee6067377611e1cb0796cd9f33ff500357a06b052b1f"
  }
 }

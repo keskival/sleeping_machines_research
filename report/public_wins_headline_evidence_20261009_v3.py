@@ -1,10 +1,9 @@
-"""Source-bound evidence packet for the 9 October public-benchmark headline page of the status report (supersedes the
-7 October v1 page, which stays in the PDF as history).
+"""Source-bound evidence packet for the 9 October public-benchmark public benchmark record (REPORT.md and its PDF).
 
 Every own number is computed here from completed result files, and every input file's sha256 is recorded. Published
 reference numbers are quoted from the battle dossiers (experiments/B1_EASYTPP.md, experiments/B2_IRREGULAR_TS.md,
 experiments/tgb/B5_TGB.md, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md), whose hashes are recorded too.
-Output: report/public_wins_headline_evidence_20261009_v2.json.
+Output: report/public_wins_headline_evidence_20261009_v3.json.
 """
 import hashlib
 import json
@@ -40,6 +39,7 @@ p12 = load('experiments/results/irts/b2_final_p12_v3_summary.json')
 pam = [load(f'experiments/results/irts/b2_final_pam_v7ema_split{k}.json')['test'] for k in range(5)]
 trade = [load(f'experiments/results/tgb/curie_b5_trade_affinity_sealed_s{s}_20261009T1210Z.json')['test_ndcg'] for s in range(3)]
 wiki_dev = load('experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_20261009T1300Z.json')
+wiki = [load(f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json')['test_mrr'] for s in range(3)]
 mooc = [load(f'experiments/results/tpp_b4/b4_mooc_s{k}.json')['test']['total'] for k in range(5)]
 for doc in ('experiments/B1_EASYTPP.md', 'experiments/B2_IRREGULAR_TS.md', 'experiments/tgb/B5_TGB.md',
             'experiments/B4_NTPP_BENCHMARK_PROPOSAL.md', 'experiments/fas/B3_DEVELOPMENT_LOG.md'):
@@ -59,13 +59,13 @@ packet = dict(
     pam=dict(acc=stats([t['acc'] for t in pam]), f1=stats([t['f1'] for t in pam]), published=dict(model='MTM', acc=0.975, f1=0.976),
              splits_ahead=int(sum(t['acc'] > 0.975 for t in pam))),
     tgbn_trade=dict(ndcg=stats(trade), published=dict(model='NAVIS (ICLR 2026)', ndcg=0.863), persistent_forecast=0.855),
-    tgbl_wiki=dict(status='in development; sealed seeds running', val_mrr=wiki_dev['best_val_mrr'], parameters=wiki_dev['parameters'],
+    tgbl_wiki=dict(mrr=stats(wiki), val_mrr=wiki_dev['best_val_mrr'], parameters=wiki_dev['parameters'],
                    published=dict(model='TPNet', val=0.842, test=0.827)),
     b4_mooc=dict(total=stats(mooc), bar=-239.7, best_single=-233.8, verdict='loss (pre-registered)'),
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
            'sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule',
     input_sha256=inputs)
-out = ROOT / 'report/public_wins_headline_evidence_20261009_v2.json'
+out = ROOT / 'report/public_wins_headline_evidence_20261009_v3.json'
 out.write_text(json.dumps(packet, indent=1) + '\n')
 print(json.dumps(dict(easy={d: round(easy[d]['mean'], 4) for d in easy}, seeds_ahead=seeds_ahead, pam=packet['pam']['acc']['mean'],
                       trade=packet['tgbn_trade']['ndcg']['mean'], mooc=packet['b4_mooc']['total']['mean'])))

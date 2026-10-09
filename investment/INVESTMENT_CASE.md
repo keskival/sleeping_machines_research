@@ -15,7 +15,7 @@ and [application opportunity register](../report/model_family_opportunities.md).
 
 ## Wins and advances at a glance (9 October 2026)
 
-**Eight public leaderboard wins**, each on the official splits with a sealed test scored once per run, 37 of 38 independent
+**Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
 runs ahead of the best published result:
 
 | Benchmark | Ours | Best published | At what cost |
@@ -28,6 +28,7 @@ runs ahead of the best published result:
 | P19 ICU sepsis prediction | AUPRC 0.639, AUROC 0.916 | 0.583 / 0.903 (MTM) | temporal memory adds +0.072 AUPRC on every split beyond summary statistics; reproduced |
 | PAM wearable activity recognition | accuracy 0.978, F1 0.980 | 0.975 / 0.976 (MTM) | 46K parameters vs MTM's 873K |
 | **TGB tgbn-trade** (temporal graph: node affinity, world trade) | NDCG@10 0.868 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | 2,107 parameters, 4 CPU-minutes; **a new domain**: interaction graphs, where heuristics beat every temporal GNN |
+| **TGB tgbl-wiki** (temporal graph: link prediction, Wikipedia edits) | MRR 0.835 ± 0.0003 | 0.827 (TPNet) | 7,995 parameters; exact per-event state; 4.5 ms per query on one CPU thread |
 
 **Rigor:** pre-registered reporting rules; the benchmark's own scorer agrees; a recording-grid audit every win passes; a
 one-command kit for third-party reproduction. **One configuration wins all five:** a single configuration with no per-dataset tuning is ahead of the best
@@ -57,11 +58,10 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 **New event domains (9 October):**
 - **Temporal Graph Benchmark, node affinity: won** (table). Pre-registered sealed test, 3 seeds: 0.8683 / 0.8674 /
   0.8683, every seed above NAVIS's 0.863; persistent forecast 0.855. Validation 0.874 vs 0.860 had predicted it.
-- **Temporal Graph Benchmark, link prediction (in development):** the official evaluation is reproduced exactly (EdgeBank 0.527 / 0.495,
-  as published). tgbl-wiki in development: **0.852 vs TPNet's 0.842** (both validation): exact per-event state lifted our
-  model from 0.776 to 0.852 with 7,995 parameters (theory note 159 predicted at least +0.03); the first pre-registered
-  sealed seed scores **0.835 on test vs TPNet's 0.827**; seeds 2 and 3 are running. tgbl-review: a training-free decayed event state reaches 0.344
-  validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
+- **Temporal Graph Benchmark, link prediction: won** (table). Exact per-event state lifted our model from 0.776 to
+  0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
+  0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
+  event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 splits): the frozen one-configuration EasyTPP
   model, with no tuning, is running all 35 pre-registered runs; verdicts on five-split means. **First verdict: MOOC
   lost** (total NLL −226.9 vs the pre-registered bar −239.7 and the best single published model's −233.8; marks nearly

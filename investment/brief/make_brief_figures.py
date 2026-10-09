@@ -37,8 +37,9 @@ def fig_runs():
               ('Reviews\n(Amazon)', seeds('b1_final_amazon_v18'), 0.781, 'S2P2'),
               ('Sepsis\n(P19)', [s['auprc'] for s in p19['per_split']], 0.583, 'MTM'),
               ('Sensors\n(PAM)', [json.loads((ROOT / f'experiments/results/irts/b2_final_pam_v7ema_split{k}.json').read_text())['test']['acc'] for k in range(5)], 0.975, 'MTM'),
-              ('Trade\n(TGB)', [json.loads((ROOT / f'experiments/results/tgb/curie_b5_trade_affinity_sealed_s{s}_20261009T1210Z.json').read_text())['test_ndcg'] for s in range(3)], 0.863, 'NAVIS')]
-    fig, axes = plt.subplots(1, len(panels), figsize=(9.8, 2.6))
+              ('Trade\n(TGB)', [json.loads((ROOT / f'experiments/results/tgb/curie_b5_trade_affinity_sealed_s{s}_20261009T1210Z.json').read_text())['test_ndcg'] for s in range(3)], 0.863, 'NAVIS'),
+              ('Wiki edits\n(TGB)', [json.loads((ROOT / f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json').read_text())['test_mrr'] for s in range(3)], 0.827, 'TPNet')]
+    fig, axes = plt.subplots(1, len(panels), figsize=(10.8, 2.6))
     for ax, (name, ours, ref, refname) in zip(axes, panels):
         ax.axhline(ref, color=PUB, lw=2.2, zorder=2)
         ax.scatter(range(len(ours)), ours, color=OURS, s=26, zorder=3, edgecolor='white', linewidth=.8)
@@ -46,7 +47,7 @@ def fig_runs():
         ax.set_ylim(lo - pad, hi + pad); ax.set_xlim(-.8, len(ours) - .2)
         ax.text(-.7, ref - pad * .12, f'best published\n({refname})', color=MUTED, fontsize=6.6, va='top')
         ax.set_xticks([]); ax.set_title(name, fontsize=8.6); ax.tick_params(labelsize=7)
-        ax.set_ylabel('AUPRC, 0–1 ↑' if 'P19' in name else 'accuracy, 0–1 ↑' if 'PAM' in name else 'NDCG@10, 0–1 ↑' if 'TGB' in name else 'nats per event ↑', fontsize=7.2)
+        ax.set_ylabel('AUPRC, 0–1 ↑' if 'P19' in name else 'accuracy, 0–1 ↑' if 'PAM' in name else ('MRR, 0–1 ↑' if 'Wiki' in name else 'NDCG@10, 0–1 ↑') if 'TGB' in name else 'nats per event ↑', fontsize=7.2)
         ax.grid(axis='x', visible=False)
         n_above = sum(o > ref for o in ours)
         ax.text(.5, -.1, f'{n_above} of {len(ours)} ahead', transform=ax.transAxes, ha='center', va='top',

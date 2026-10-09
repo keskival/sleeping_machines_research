@@ -28,10 +28,11 @@ This is an execution plan, not a prediction of investor acceptance.
 - **FAS v2 (9 October):** native model frozen; validation 0.702 vs the time-encoded Transformer reference 0.704 at about
   1/7 of its parameters; native sealed seeds complete; the verdict (tie expected under the 0.02 rule) follows the
   reference seeds on AWS.
-- **Fourth domain: achieved on temporal graphs (9 October).** TGB node affinity (tgbn-trade): test NDCG@10 0.8680 ±
+- **Fourth domain: achieved on temporal graphs (9 October), two TGB leaderboards.** TGB link prediction (tgbl-wiki): test
+  MRR 0.8353 ± 0.0003 vs 0.827 for the leader TPNet, all three pre-registered seeds ahead, 7,995 parameters. TGB node
+  affinity (tgbn-trade): test NDCG@10 0.8680 ±
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
-- **New event domains (in development):** TGB link prediction: evaluation
-  reproduced exactly; tgbl-wiki first sealed seed 0.835 vs TPNet 0.827 on test (validation 0.852 vs 0.842; two seeds to go), tgbl-review training-free state above TGN/TGAT/TNCN.
+- **New event domains (in development):** tgbl-review (AWS): a training-free state is above TGN/TGAT/TNCN on validation.
   Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration
   model; first verdict: MOOC lost (−226.9 vs bar −239.7; timing is the gap).
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.

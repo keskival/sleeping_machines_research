@@ -48,7 +48,7 @@
 \begin{minipage}[t]{.235\linewidth}\stat{5 of 5}{datasets won on the public EasyTPP event-prediction leaderboard}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{0.639}{sepsis early-warning AUPRC vs 0.583 for the best published model\up}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{15$\times$}{smaller and cheaper than the state-of-the-art model on Retweet, while more accurate}\end{minipage}\hfill
-\begin{minipage}[t]{.235\linewidth}\stat{37 / 38}{independent runs ahead of the best published result on the eight benchmarks won}\end{minipage}
+\begin{minipage}[t]{.235\linewidth}\stat{40 / 41}{independent runs ahead of the best published result on the nine benchmarks won}\end{minipage}
 
 \vspace{8mm}
 \begin{callout}
@@ -56,7 +56,7 @@
 \end{callout}
 
 \vspace{5mm}
-{\bfseries 37 of 38 independent runs ahead of the best published result}\par\vspace{-1mm}
+{\bfseries 40 of 41 independent runs ahead of the best published result}\par\vspace{-1mm}
 \includegraphics[width=\linewidth]{runs.pdf}\par
 \vspace{2mm}
 {\small\color{muted}All results in this brief are completed runs on official benchmark data, scored once on sealed test sets. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
@@ -138,7 +138,7 @@ TGB wiki & 157,474 timed Wikipedia edits by 8,227 users on 1,000 pages & Which p
 
 \begin{center}\includegraphics[width=\linewidth]{runs.pdf}\end{center}
 \vspace{-3mm}
-{\small\color{muted}Each blue dot is one independent run (EasyTPP: five training seeds; sepsis and wearables: the five official data splits; trade graphs: three pre-registered seeds), scored once on the sealed test set. The grey line is the best published result. Higher is better in every panel: log-likelihood in nats per event for the EasyTPP datasets, AUPRC (0 to 1) for sepsis, accuracy (0 to 1) for wearables, NDCG@10 (0 to 1) for trade graphs.}
+{\small\color{muted}Each blue dot is one independent run (EasyTPP: five training seeds; sepsis and wearables: the five official data splits; temporal graphs: three pre-registered seeds), scored once on the sealed test set. The grey line is the best published result. Higher is better in every panel: log-likelihood in nats per event for the EasyTPP datasets, AUPRC (0 to 1) for sepsis, accuracy (0 to 1) for wearables, NDCG@10 and MRR (0 to 1) for the two temporal-graph benchmarks.}
 
 {\small
 \begin{tabularx}{\linewidth}{>{\bfseries}l r r r Y}
@@ -153,12 +153,13 @@ Amazon {\color{muted}\footnotesize nats/event \up} & 0.781 (S2P2) & \textbf{0.80
 Wearables, PAM {\color{muted}\footnotesize accuracy \up} & 0.975 (MTM) & \textbf{0.978 $\pm$ 0.007} & +0.003 & \textbf{19$\times$ smaller} than MTM (46,316 vs 873K parameters); F1 0.980 vs 0.976; 4 of 5 splits ahead \\
 Sepsis, P19 {\color{muted}\footnotesize AUPRC \up} & 0.583 (MTM) & \textbf{0.639 $\pm$ 0.039} & +0.056 & 62,681 parameters; AUROC 0.916 vs 0.903 \up; without its temporal memory the same network drops to 0.572 on every split \\
 Trade graphs, TGB tgbn-trade {\color{muted}\footnotesize NDCG@10 \up} & 0.863 (NAVIS) & \textbf{0.868 $\pm$ 0.0005} & +0.005 & 2,107 parameters (NAVIS 1,280); 3 of 3 sealed seeds ahead; a new domain \\
+Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPNet) & \textbf{0.835 $\pm$ 0.0003} & +0.008 & 7,995 parameters; 3 of 3 sealed seeds ahead; 4.5 ms per query on one CPU thread \\
 \bottomrule
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard deviation across the runs (five; three on TGB). Compute is multiply-adds per event, counted from S2P2's released code at its published configuration.}
 
 \begin{tile}
-\textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all eight benchmarks, 37 of 38 independent runs are ahead.
+\textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all nine benchmarks, 40 of 41 independent runs are ahead.
 \end{tile}
 
 
@@ -199,7 +200,7 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
   ar/.style={-{Stealth[length=2.5mm]},line width=1pt,color=pub}]
 \node[core] (c) {One temporal\\memory core};
 \node[leaf,above left=4mm and 14mm of c] (a) {\textbf{Event prediction}\\all 5 EasyTPP datasets won};
-\node[leaf,above right=4mm and 14mm of c] (b) {\textbf{Clinical, wearable, graphs}\\P19, PAM and TGB trade won};
+\node[leaf,above right=4mm and 14mm of c] (b) {\textbf{Clinical, wearable, graphs}\\P19, PAM, TGB trade and wiki won};
 \node[leaf,left=14mm of c] (d) {\textbf{Interleaved process logs}\\beats six generic models};
 \node[leaf,right=14mm of c] (e) {\textbf{Character language}\\beats Transformers at\\equal or less compute};
 \node[leaf,below left=4mm and 14mm of c] (f) {\textbf{Temporal reasoning}\\99.7\% vs 33--41\%};
@@ -227,7 +228,7 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \node[step=150mm,fill=ours!10,anchor=south west] (s1) at (0,0) {\textbf{1. Mathematics: it contains today's leading architectures.} A race of clocks reproduces the attention of Transformers \emph{exactly}, and Mamba-style selective state-space models are exact members of the family (verified numerically to $4\times10^{-13}$). Everything those models can represent, ours can, plus native time and sparsity.};
 \node[step=140mm,fill=ours!20,anchor=south west] (s2) at (10,22) {\textbf{2. The mechanisms work.} Event order learned from 2,000 examples seen once: 99.7\% accuracy vs 33--41\% for Transformers \up. Timing-only discrimination: 95.3\% where any order-only model is capped at 50\% \up. Learning from roads not taken improves language 2.507 $\to$ 2.371 bits per character \down{} for 0.3\% extra training work; more idle capacity improves it further at the same active work.};
 \node[step=130mm,fill=ours!32,anchor=south west] (s3) at (20,48) {\textbf{3. It learns language efficiently.} On 10M characters it beats a Transformer: 1.888 vs 1.908 bits per character \down{} with 0.40$\times$ its training compute. At 90M characters it beats a tuned Transformer-256$\times$4 (1.783 vs 1.811 \down) at 1.06$\times$ its compute.};
-\node[step=120mm,fill=ours!50,anchor=south west,text=white] (s4) at (30,68) {\textbf{4. It wins public benchmarks.} All 5 EasyTPP datasets, P19 sepsis, PAM wearables and TGB trade graphs, at up to 15$\times$ smaller size; 37 of 38 runs ahead.};
+\node[step=120mm,fill=ours!50,anchor=south west,text=white] (s4) at (30,68) {\textbf{4. It wins public benchmarks.} All 5 EasyTPP datasets, P19 sepsis, PAM wearables and two TGB graph leaderboards, at up to 15$\times$ smaller size; 40 of 41 runs ahead.};
 \node[step=110mm,fill=ours,anchor=south west,text=white] (s5) at (40,82) {\textbf{5. It generalises.} One shared core across four event domains; one memory layer for events and clinical records.};
 \node[step=100mm,fill=ink,anchor=south west,text=white] (s6) at (50,96) {\textbf{Next: scale and transfer.} Large-scale language on GPUs, skill transfer between data types, clockless hardware.};
 \end{tikzpicture}
@@ -252,10 +253,10 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \textbf{\faLock\ Sealed tests, rules fixed in advance.} Every win uses the benchmark's official data splits. The reporting rule is written down before the test set is touched, and each model is scored on the test set exactly once.
 \end{tile}
 \begin{tile}[height=31mm]
-\textbf{\faRedo\ Independent runs.} Every reported result is the average of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with its spread: 37 of 38 runs are ahead of the best published result.
+\textbf{\faRedo\ Independent runs.} Every reported result is the average of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with its spread: 40 of 41 runs are ahead of the best published result.
 \end{tile}
 \begin{tile}[height=31mm]
-\textbf{\faServer\ Reproduced on separate hardware.} The Taxi win was reproduced independently on a separate desktop computer with separately downloaded data: 0.5252 vs 0.5250 nats per event \up, every run above S2P2. One-command kits let third parties rerun the EasyTPP and TGB trade wins.
+\textbf{\faServer\ Reproduced on separate hardware.} The Taxi win was reproduced independently on a separate desktop computer with separately downloaded data: 0.5252 vs 0.5250 nats per event \up, every run above S2P2. One-command kits let third parties rerun the EasyTPP and both TGB wins.
 \end{tile}
 \end{minipage}\hfill
 \begin{minipage}[t]{.485\linewidth}
@@ -285,7 +286,6 @@ Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6
 Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU \\
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
-Temporal graphs: link prediction (TGB wiki) & First sealed seed: test MRR 0.835 vs TPNet 0.827 \up{} (7,995 parameters; validation 0.852 vs 0.842) & Seeds 2 and 3 of the pre-registered test (running) \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
 Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tuning: MOOC lost (total NLL $-226.9$ vs bar $-239.7$ \down; timing is the gap); Retweets behind on its first two splits; five more datasets running & Five-split verdicts per dataset \\
 \bottomrule
@@ -302,7 +302,7 @@ Second TPP benchmark (7 datasets) & The frozen one-configuration model, no tunin
 \end{itemize}
 
 \begin{callout}
-\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on eight public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
+\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
 \end{callout}
 
 \end{document}

@@ -16,10 +16,10 @@ style of `investment/PITCH_DECK.json`; keep each slide to one message.
    - Sparse addressed state; constant per-event cost.
    - Contains attention and Mamba as special cases.
 4. **Proof on public leaderboards.**
-   - Table: all five EasyTPP datasets (Taobao, Taxi, StackOverflow at matched compute, Retweet at 1/15, Amazon at 0.29×); P19 sepsis; PAM wearables; TGB trade graphs (0.868 vs 0.863).
+   - Table: all five EasyTPP datasets (Taobao, Taxi, StackOverflow at matched compute, Retweet at 1/15, Amazon at 0.29×); P19 sepsis; PAM wearables; TGB trade graphs (0.868 vs 0.863); TGB Wikipedia link prediction (0.835 vs 0.827).
    - Taxi reproduced on separate hardware; third-party kit ready.
    - Each row with the best published result and our compute ratio.
-   - Next (in development, 9 Oct): Temporal Graph Benchmark: node affinity won (0.868 vs 0.863, 3 sealed seeds); link prediction: first sealed seed 0.835 vs TPNet 0.827 on test, two seeds to go; a second TPP benchmark running.
+   - Temporal Graph Benchmark (9 Oct): node affinity won (0.868 vs 0.863, 3 sealed seeds); link prediction won (0.835 vs TPNet 0.827, 3 sealed seeds). In development: a second TPP benchmark (MOOC lost; six datasets running).
 5. **Proof of efficiency.**
    - Per-event compute vs the leading models: 1/12 (Taxi single model), 1/15 (Retweet), 0.29× (Amazon), 0.92× (Taobao), matched (StackOverflow); PAM at 1/19 of MTM's parameters.
    - Constant cost vs a Transformer's growing context cost.

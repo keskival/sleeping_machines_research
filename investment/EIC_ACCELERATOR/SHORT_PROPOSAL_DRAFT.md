@@ -57,15 +57,16 @@ numerically. It is a superset of the current architecture classes, not a niche a
 | P19 ICU sepsis prediction (irregular clinical records) | AUPRC 0.639 ± 0.039, AUROC 0.916 | AUPRC 0.583, AUROC 0.903 (MTM) | 62,681 parameters; without its temporal memory the same network falls to AUPRC 0.572 on every split |
 | PAM wearable activity recognition | accuracy 0.978 ± 0.007, F1 0.980 | 0.975 / 0.976 (MTM) | 46,316 parameters vs MTM's 873K |
 | TGB tgbn-trade (trade graphs, node affinity) | NDCG@10 0.868 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | 2,107 parameters, 4 CPU-minutes |
+| TGB tgbl-wiki (link prediction) | MRR 0.835 ± 0.0003 | 0.827 (TPNet) | 7,995 parameters, 4.5 ms per query |
 
-All five EasyTPP datasets, P19, PAM and the Temporal Graph Benchmark's tgbn-trade are won. A single configuration with no per-dataset tuning also wins all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead). All results use five seeds or five official splits, test sets scored once,
+All five EasyTPP datasets, P19, PAM and two Temporal Graph Benchmark leaderboards (tgbn-trade, tgbl-wiki) are won. A single configuration with no per-dataset tuning also wins all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead). All results use five seeds or five official splits, test sets scored once,
 and pre-registered protocols. The Taxi result was reproduced from scratch on separate hardware (0.5252 vs 0.5250), and a
 one-command kit is available for third-party reruns. The evidence files are in the diligence pack.
 
 In development on new event domains (9 October 2026, development data): on the Temporal Graph Benchmark's node-affinity
 task (tgbn-trade), our model reaches validation NDCG@10 0.875 against 0.860 for the current leader NAVIS, ahead in every
 validation year with 2,107 parameters; all three pre-registered sealed test seeds are ahead (0.868 ± 0.0005 vs 0.863): won. On TGB link prediction (tgbl-wiki, evaluation reproduced exactly) exact per-event state gives validation MRR 0.852
-against 0.842 for the leader TPNet, and the first sealed seed scores 0.835 on test against its 0.827. A second neural-TPP benchmark (35 pre-registered runs with
+against 0.842 for the leader TPNet, and all three sealed seeds score 0.835 on test against its 0.827: won. A second neural-TPP benchmark (35 pre-registered runs with
 the frozen one-configuration model) is running; its first dataset, MOOC, is a loss (total NLL −226.9 vs the bar −239.7).
 
 **Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's

@@ -5413,9 +5413,9 @@ def benchmark_record_page():
         ['P19 sepsis (ICU records)', f"AUPRC {P19['auprc'][0]:.3f} ± {P19['auprc'][1]:.3f}; AUROC {P19['auroc'][0]:.3f}", '0.583 / 0.903 (MTM)', 'Win, five official splits; 62,681 parameters'],
         ['PAM wearable activity', f"accuracy {PAM['acc']['mean']:.3f} ± {PAM['acc']['sd']:.3f}; F1 {PAM['f1']['mean']:.3f}", '0.975 / 0.976 (MTM)', f"Win, {PAM['splits_ahead']} of 5 splits ahead; 46,316 vs 873K parameters"],
         ['TGB tgbn-trade (node affinity, NDCG@10)', f"{TR['ndcg']['mean']:.4f} ± {TR['ndcg']['sd']:.4f}", '0.863 (NAVIS, ICLR 2026)', 'Win, 3 of 3 pre-registered seeds; 2,107 parameters'],
+        ['TGB tgbl-wiki (link prediction, MRR)', f"{WK['mrr']['mean']:.4f} ± {WK['mrr']['sd']:.4f}", '0.827 (TPNet)', f"Win, 3 of 3 pre-registered seeds; {WK['parameters']:,} parameters"],
         ['P12 mortality (ICU records)', f"AUROC {P12['auroc'][0]:.3f}; AUPRC {P12['auprc'][0]:.3f}", '0.880 / 0.586 (MTM)', 'Behind on AUROC, level on AUPRC'],
         ['Bosser & Ben Taieb MOOC (total NLL, lower better)', f"{B4['total']['mean']:.1f} ± {B4['total']['sd']:.1f}", 'bar −239.7 (pre-registered); best single model −233.8', 'Loss (frozen one-configuration model); six datasets running'],
-        ['TGB tgbl-wiki (link prediction, MRR)', f"validation {WK['val_mrr']:.4f} ({WK['parameters']:,} parameters)", 'TPNet validation 0.842, test 0.827', 'In development, ahead on validation; sealed seeds running'],
         ['FAS v2 (anonymous interleaved logs)', 'validation 0.702', 'time-encoded Transformer reference 0.704', 'In development; sealed verdict pending the reference seeds'],
     ]
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),

@@ -25,7 +25,8 @@ priced on its own terms, and each Partner's stake grows with what they deliver.
     Retweet, Amazon),
     StackOverflow at matched model size and compute.
   - Three further domains: P19 sepsis prediction (AUROC 0.916 vs 0.903 published), PAM wearable activity recognition
-    (accuracy 0.978 vs 0.975) and Temporal Graph Benchmark trade graphs (NDCG@10 0.868 vs 0.863, 9 October).
+    (accuracy 0.978 vs 0.975) and two Temporal Graph Benchmark leaderboards (trade graphs NDCG@10 0.868 vs 0.863; Wikipedia link
+    prediction MRR 0.835 vs 0.827; 9 October).
   - First tokenized-language evidence: 6.009 vs a Kneser–Ney trigram's 6.537 nats per token at 1M training tokens, with the
     lead growing at 4M (5.510 vs 6.100).
   - The Taxi win reproduced from scratch on separate hardware (0.5252 vs 0.5250), with a one-command kit ready for a
