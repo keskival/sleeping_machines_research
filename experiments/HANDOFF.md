@@ -6,6 +6,8 @@ Current curie pipeline: `experiments/queue/curie_recovery_20261009T205307Z/manif
 
 Non-fitting B1/R1 integration contract is queued behind the host lock in tmux `curie-hidden-write-math`: `experiments/queue/enabler/curie_r1_hidden_write_math_20261009T205856Z/manifest.json`. Theory note 161 derives legal forced-write odds, reciprocal-adjoint approximation, a sharp residual-score/posterior-TV bound, and the distinction between next-event and delayed-query credit. It changes no AWS source or training recipe; numerical queue execution is pending.
 
+B10 post-fit diagnostics are prepared in `experiments/queue/curie_b10_diagnostics_20261009T210711Z/manifest.json`. Non-training controller `scripts/await_curie_analysis.py` waits for the three existing development results, then runs the source-pinned decomposition/causality contract and exact saved-weight validation replay through run_safe. It isolates time/mark, recording-cell gap groups, sides and days and requires reproduction of the saved DEV likelihood. TEST remains sealed. Numerical results are pending.
+
 Research target remains the shared B1/R1 route-credit enabler and R1's keyed predecessor-message memory. Pending pairwise output-cause pilots on AWS do not yet solve hidden write credit. Curie develops the mathematical and causal integration contracts without changing pinned AWS sources. No new external neural control or architectural substitution is admitted.
 
 **AWS — reciprocal learning, active autonomous continuation (9 Oct 20:05 UTC).**

@@ -54,3 +54,5 @@ every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E1
   the book), which the recording-cell likelihood scores correctly and a density would not; marks are dominated by
   side-consistent moves (buy-up, buy-unchanged, sell-unchanged, sell-down; opposite moves ≈ 0.3–0.4%).
 
+
+**Current diagnostic pipeline (9 Oct):** once all three admitted development fits complete, `analyze_b10_dev.py` replays their saved weights on the exact validation windows. It requires the saved validation likelihood to reproduce, then reports time/mark terms, gap groups (zero, positive <10 µs, 10 µs–1 ms, 1–100 ms, ≥100 ms), mark/side transitions and each validation day. `check_b10_components.py` first checks parity with the original likelihood and causal independence of past scores from a future mark. Fits and TEST scoring are unchanged. The analysis labels these first-pass development results and determines the next improvement plan; it produces no benchmark win/loss verdict. Numeric execution is pending behind the live B2/B10 queue.
