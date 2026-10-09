@@ -1,0 +1,15 @@
+{
+  "claim": "TGB tgbl-wiki-v2 dynamic link prediction, test MRR of race_link v4 (identity-free, 7,995 parameters), seeds 0-2, vs leaderboard leader TPNet 0.827",
+  "driver": "experiments/tgb/race_link_v4.py",
+  "driver_sha256": "69556678066d04c55e65d3eb87058caa3ed7422759c944a106aba79117061e48",
+  "args": ["--d-id", "0", "--epochs", "3", "--score-test"],
+  "package": "py-tgb==2.3.0",
+  "data_sha256": {
+    "tgbl-wiki_edgelist_v2.csv": "a6b73e09c0d1e5b9db11e7e7aa416f2e87838a745273e0446a79952cf4cfae09",
+    "tgbl-wiki_val_ns_v2.pkl": "abad4e8946f383bdac12e43c9e9a8e1e206b50543848e925819433efef0a1461",
+    "tgbl-wiki_test_ns_v2.pkl": "f792762ab4756c044257685b1a1fb3f5f617487723482a7e3310535b4565b8c6"
+  },
+  "seeds": [0, 1, 2],
+  "expected_test_mrr": [0.8353, 0.8350, null],
+  "tolerance": 0.002
+}
