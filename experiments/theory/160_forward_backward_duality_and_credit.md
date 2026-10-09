@@ -93,3 +93,17 @@ and the reciprocity assumption before generalizing.
   depth 1, 2 × 3 seeds, after a smoke) replaces it. Success criteria stated before results: hindsight within a small margin
   of the oracle and dense on held-out likelihood and route recovery, clearly above REINFORCE at depth 2, at a fraction of
   dense MACs; the async and slow variants close to synchronous hindsight.
+
+## 5. What the forward pass should give the backward pass (founder direction, 9 Oct)
+
+A standard forward pass hands the backward pass stored activations (and optimizer moments, which are running
+statistics), and none of it is trained to make credit easier. In our substrate the forward pass can supply: (i) **causes**
+(which clock won, which route fired, which write was read: the labels credit needs); (ii) **precomputed sensitivities**
+(forward eligibility traces, §1); (iii) **sufficient statistics** that make route credit closed-form (note 59); (iv) **a
+prediction of its own credit**, so the backward pass sends only the surprise (actual − predicted) as sparse events: less
+traffic, synchrony and work; (v) **confidence** (clock-noise precision, note 151) for precision-weighted credit; (vi) **near
+misses** (runner-up clocks and margins) as counterfactual information for the losers.
+**Trainable forward messages.** Three parameter sets: forward function θ (trained by credit), credit model ψ (the backward
+pass's slow parameters, trained on the forward pass's sampled causes), and a forward message head φ trained by credit
+quality alone, so the forward pass learns what to tell the backward pass. Test `hindsight_race_v3.py --arm hindsight_msg`:
+4-dimensional learned message; the credit model sees only (message, outcome); queued behind the v2 grid.
