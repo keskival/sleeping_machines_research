@@ -155,3 +155,5 @@ the v7 protocol (d 32, 16 modes, 2 layers, J 4, dropout 0.2, lr 0.002, wd 1e-4, 
 EMA 0.999, crop 0.8, jitter 0.1, seed 0); five official splits; TEST scored once per split. Both v7 (0.9775 ± 0.0074) and
 v8 are reported. *Decision:* v8 replaces v7 as the stated PAM result only if its five-split mean is higher; a clear win
 needs every split ahead of MTM's 0.975 or a mean margin beyond our split spread.
+
+**Current execution (curie, 9 Oct 20:54 UTC):** splits 4 and 3 use `race_irts_v9.py`, whose model, augmentation, optimizer, EMA and selection are identical to v8. The change adds exact epoch-boundary restart state and a one-time TEST reservation. The interrupted split-4 v8 run ended after epoch 23 without scoring TEST; its weights-only checkpoint is preserved, and seed 0 is restarted under a fresh tag. The recovery numerical contract checks forward parity and exact resumed optimizer/EMA/RNG updates (zero error). Five-split headline replacement still follows the rule above; AWS owns splits 0–2.

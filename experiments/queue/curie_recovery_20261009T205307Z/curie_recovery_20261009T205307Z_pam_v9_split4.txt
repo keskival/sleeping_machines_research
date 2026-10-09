@@ -1,0 +1,2 @@
+# B2 recovery: exact registered fitting protocol with resumable state; decision: complete interrupted PAM confirmation
+curie_recovery_20261009T205307Z_pam_v9_split4 experiments/irts/race_irts_v9.py --tag curie_recovery_20261009T205307Z_pam_v9_split4 --dataset PAM --select nll --ema 0.999 --crop 0.8 --jitter 0.1 --batch 64 --split 4 --epochs 120 --patience 25 --score-test

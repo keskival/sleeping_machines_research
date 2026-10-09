@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "battle": "B2",
+  "tag": "curie_recovery_20261009T205307Z_b2_contract2",
+  "checks": {
+    "v8_v9_forward_max_error": 0.0,
+    "resumed_model_max_error": 0.0,
+    "resumed_ema_max_error": 0,
+    "resumed_loss_error": 0.0,
+    "optimizer_exact": true,
+    "source_change_refused": true
+  },
+  "source_sha256": {
+    "experiments/irts/check_recovery_v9.py": "1bf42eb5c72c8a03f1d492f125b537cdebc92cdc90a626f28e16946bfc2fa2ad",
+    "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+    "experiments/irts/race_irts_v9.py": "9955b366cd18d9252c731865f1bb8664c858255e7544744a9ea8f7049027796a",
+    "experiments/irts/recovery_state.py": "358f144a7e26f3eaf402025c9fbde4bb23a826158dde4a4b5e77e8336510939e",
+    "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+  }
+}
