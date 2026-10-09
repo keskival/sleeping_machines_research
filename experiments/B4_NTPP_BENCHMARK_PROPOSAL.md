@@ -98,6 +98,37 @@ moves to it and the verdict is reported against the stronger number.
   per-event compute. **Win on a dataset**: mean L_T + L_M below the bar. Component wins stated only where they hold.
   All seven datasets are reported whatever the outcome. No configuration change between datasets or after any TEST score.
 
+## Verdicts (pre-registered frozen configuration; five official splits, TEST scored once per split)
+
+Per sequence, mean (standard error over splits), lower is better. Bar = best published L_T + best published L_M.
+
+| Dataset | L_T vs best published | L_M vs best published | Total vs bar | Verdict |
+|---|---|---|---|---|
+| **Wikipedia** | −268.90 (40.82) vs −267.41 | **28.49 (2.82) vs 144.79** | **−240.42 (43.31) vs −122.62** | **WIN**: 4 of 5 splits below the bar (totals −91.92 / −271.68 / −300.05 / −201.15 / −337.29); also below the best single published model (−2.67) |
+| Stack Overflow | **−91.60 (1.56) vs −91.1** | 104.31 (0.72) vs 103.0 | 12.71 (0.87) vs 11.9 | LOSS; time component ahead |
+| MOOC | −298.57 (4.08) vs −310.6 | 71.73 (1.27) vs 70.9 | −226.85 (2.83) vs −239.7 | LOSS |
+| Github | −357.68 (67.38) vs −382.4 | 159.16 (23.25) vs 109.5 | −198.52 (55.15) vs −272.9 | LOSS |
+| MIMIC2 | 2.99 (0.10) vs 0.13 | 4.02 (0.16) vs 2.29 | 7.01 (0.25) vs 2.42 | LOSS |
+| Retweets | 4 of 5 splits | | mean total −516.06 vs −538.70 | pending split 2 |
+| LastFM | 1 of 5 splits | | −720.10 vs −849.65 | pending splits 1–4 |
+
+**Why Wikipedia is won, and what it says about the bar.** Wikipedia's marks are pages. In TRAIN, 91–93% of a user's
+consecutive edits repeat the previous page. In TEST, 10–27% of events (by split) carry a page never seen in that split's
+TRAIN data. A model that learns one embedding per mark cannot copy a page it never trained on. GRU-LNM-CONCAT scores
+L_M 259.12 per sequence: log 50 = 3.91 nats per event over ≈ 66 events, i.e. uniform over the 50 marks. Hawkes scores
+144.79. Our
+addressed mark memory has one slot per mark, written whenever that mark occurs and read by that mark's own score. It
+copies any page, seen in training or not: L_M 28.49. A repeat-last-mark rule fitted on TRAIN (repeat probability, otherwise
+uniform) scores 31.2–41.1 (mean 37.4) on the same TEST splits. That also lies far below the published L_M, so the
+published mark scores miss the dominant repeat structure of this dataset. Our model is 8.9 nats/sequence better than that
+rule. The time component is level with the best published value (−268.90 vs −267.41; SE 40.8). The win is a mark-memory
+win against the published record. Next test (validation only): L_M split by marks seen and unseen in TRAIN, and against
+the repeat rule per split.
+
+**Github and MIMIC2.** Both lose on marks as well as time: L_M 159.2 vs 109.5 and 4.02 vs 2.29. The mark gap is
+unaffected by the recording grid and is the development target there, as on MOOC and Stack Overflow. MIMIC2's time
+values are on a coarse recording cell (0.033), where the gridded-metric analysis below applies to L_T.
+
 ## Protocol note on zero gaps (9 Oct 2026, recorded while runs train; verdict rule unchanged)
 
 In the reference code an exactly-zero inter-event time is replaced by ε = 1e−20 before the log-normal mixture density is
@@ -117,6 +148,12 @@ pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweet
 | Date | Run | Validation (L_T / L_M / total) | TEST (L_T / L_M / total) | Notes |
 |---|---|---|---|---|
 | 9 Oct | MOOC split 0 | −307.25 / 73.37 / −233.88 (best epoch 134 of 165) | **−310.43 / 75.05 / −235.38** | 57,238 parameters; cell 3.89e−6, 4 windows. Below LNM++'s total (−233.8, best single published model, 5-split mean) but above the composite bar (−239.7); mark NLL is the weaker component. Verdict on the five-split mean |
+| 9 Oct | MOOC split 1 | −286.95 / 70.30 / −216.65 (best epoch 171; stopped at the 200-epoch cap) | **−290.73 / 68.66 / −222.07** | mark NLL below the best published L_M (70.9); splits differ strongly (published L_T standard error 3.9 over splits), so only the five-split mean decides. The epoch cap is part of the frozen configuration |
+| 9 Oct | MOOC split 2 | −300.30 / 72.49 / −227.81 (best epoch 134) | **−298.38 / 71.72 / −226.67** | three splits: mean total ≈ −228.0, behind LNM++ (−233.8) and the composite bar (−239.7) so far |
+| 9 Oct | MOOC splits 3, 4 | — | −288.82 / 69.15 / −219.67; −304.51 / 74.06 / −230.45 | |
+| 9 Oct | **MOOC VERDICT (pre-registered)** | five splits, TEST | L_T **−298.57 (se 4.08)**, L_M **71.73 (1.27)**, total **−226.85 (2.83)** | **LOSS**: total above the bar −239.7 and above the best single published model (LNM++ −233.8; secondary). L_M is within 0.8 of the best published (70.9) and below LNM++ (73.8); **L_T is the larger gap** (−298.6 vs −310.6, ≈ 0.25 nats/event). **Revised diagnosis:** the split-0 analysis ("time level, marks trail") rested on our best time split; over five splits time is the main gap. MOOC's timestamps lie on a one-second grid (every gap a multiple of the cell), so published L_T may include grid exploitation that our resolution principle forbids; this cannot be verified without the authors' checkpoints and is stated as a caveat, not a correction of the verdict |
+| 9 Oct | Retweets splits 0, 3 | — | −596.69 / 83.12 / −513.57; −610.25 / 85.19 / −525.07 | behind the bar (−538.7) and the best single published model (−536.2); the zero-gap note applies (4.0% zero gaps); positive-gap L_T reported at the verdict |
+| 9 Oct | **Stack Overflow VERDICT (pre-registered frozen configuration)** | five fixed splits, TEST; grid-free dataset | L_T **−91.598 (SE 1.563)**, L_M **104.312 (0.719)**, total **12.714 (0.874)**; split totals **11.014 / 15.101 / 14.535 / 11.123 / 11.800** | **LOSS**: total above the bar 11.9 and best single published model 12.1. **Time component win:** −91.598 vs best published −91.1. Mark NLL trails 103.0 by 1.312; the time gain of 0.498 offsets part of it. 29,762 parameters, 22 marks; identical frozen configuration and source hashes across all splits. This diagnoses the frozen transfer result, not the developed mark-path attempt; v20 development stays on validation |
 
 ## Secondary comparison (reported beside the pre-registered verdict, never replacing it)
 
@@ -134,8 +171,6 @@ GRU-SA/MC-LE, Hawkes, NH, Poisson); those rows are indicative and are checked ag
 | Wikipedia | −2.67 (verified: L_T −261.79 + L_M 259.12) | GRU-LNM-CONCAT (2023) |
 | MIMIC2 | 3.1 | GRU-LNM-CONCAT (2023) |
 | Retweets | −536.17 | GRU-LNM-CONCAT (2023) |
-| 9 Oct | MOOC split 1 | −286.95 / 70.30 / −216.65 (best epoch 171; stopped at the 200-epoch cap) | **−290.73 / 68.66 / −222.07** | mark NLL below the best published L_M (70.9); splits differ strongly (published L_T standard error 3.9 over splits), so only the five-split mean decides. The epoch cap is part of the frozen configuration |
-| 9 Oct | MOOC split 2 | −300.30 / 72.49 / −227.81 (best epoch 134) | **−298.38 / 71.72 / −226.67** | three splits: mean total ≈ −228.0, behind LNM++ (−233.8) and the composite bar (−239.7) so far |
 
 ## Development track (outside the frozen protocol): MOOC diagnosis and v20
 
@@ -150,9 +185,6 @@ distributions, `--mark-stats` adds per-sequence mark counts and frequencies. Con
 equal v19 on the trained checkpoint; flags on equal v19 at load (zero-initialized term); time gradient into the mark
 pathway exactly 0; mark distributions normalize. Development arms on MOOC split 0 (validation only) queued; a configuration
 chosen there is pre-registered separately as a developed attempt on all seven datasets, reported beside the frozen result.
-| 9 Oct | MOOC splits 3, 4 | — | −288.82 / 69.15 / −219.67; −304.51 / 74.06 / −230.45 | |
-| 9 Oct | **MOOC VERDICT (pre-registered)** | five splits, TEST | L_T **−298.57 (se 4.08)**, L_M **71.73 (1.27)**, total **−226.85 (2.83)** | **LOSS**: total above the bar −239.7 and above the best single published model (LNM++ −233.8; secondary). L_M is within 0.8 of the best published (70.9) and below LNM++ (73.8); **L_T is the larger gap** (−298.6 vs −310.6, ≈ 0.25 nats/event). **Revised diagnosis:** the split-0 analysis ("time level, marks trail") rested on our best time split; over five splits time is the main gap. MOOC's timestamps lie on a one-second grid (every gap a multiple of the cell), so published L_T may include grid exploitation that our resolution principle forbids; this cannot be verified without the authors' checkpoints and is stated as a caveat, not a correction of the verdict |
-| 9 Oct | Retweets splits 0, 3 | — | −596.69 / 83.12 / −513.57; −610.25 / 85.19 / −525.07 | behind the bar (−538.7) and the best single published model (−536.2); the zero-gap note applies (4.0% zero gaps); positive-gap L_T reported at the verdict |
 
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
@@ -175,4 +207,3 @@ published models exploit the lattice cannot be established without their checkpo
 metric is dominated by it on these datasets. The pre-registered verdicts stand as defined (MOOC: loss); they are reported
 with this analysis beside them. **Valid comparisons in B4:** Stack Overflow, the one grid-free dataset (no recording cell
 detected), and the mark component L_M on every dataset (unaffected by the time grid).
-| 9 Oct | **Stack Overflow VERDICT (pre-registered frozen configuration)** | five fixed splits, TEST; grid-free dataset | L_T **−91.598 (SE 1.563)**, L_M **104.312 (0.719)**, total **12.714 (0.874)**; split totals **11.014 / 15.101 / 14.535 / 11.123 / 11.800** | **LOSS**: total above the bar 11.9 and best single published model 12.1. **Time component win:** −91.598 vs best published −91.1. Mark NLL trails 103.0 by 1.312; the time gain of 0.498 offsets part of it. 29,762 parameters, 22 marks; identical frozen configuration and source hashes across all splits. This diagnoses the frozen transfer result, not the developed mark-path attempt; v20 development stays on validation |
