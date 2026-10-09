@@ -130,4 +130,8 @@ mixed dense and asynchronous data). First dataset: **tgbl-wiki-v2**; next: tgbl-
 - 9 Oct: tgbn-trade v1 job failed at load (float-typed node ids used as indices; fixed); rerun queued as
   curie_b5_trade_affinity_dev_s0_v2_20261009T1105Z. Label-pointer replay confirmed: val label years 2009–2012, test
   2013–2015.
+- 9 Oct 11:35: race_link v1 full development fit plateaus at **val MRR 0.773** (epochs 0–5: .772 → .773; repeat pairs .893,
+  new pairs of known sources .07, new sources .06). The readout adds little beyond epoch 0: the features limit it.
+- 9 Oct 11:45: **race_link v3** (versioned `race_link_v3.py`) = v2 + destination bias and source–destination identity
+  inner product (collaborative evidence; AWS found identities decisive on tgbl-review). Queued after v2.
 
