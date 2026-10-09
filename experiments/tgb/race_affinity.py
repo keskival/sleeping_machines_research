@@ -131,6 +131,7 @@ def main():
     ap.add_argument('--seed', type=int, default=0); ap.add_argument('--epochs', type=int, default=200)
     ap.add_argument('--hidden', type=int, default=32); ap.add_argument('--lr', type=float, default=3e-3)
     ap.add_argument('--wd', type=float, default=1e-3); ap.add_argument('--loss', choices=('ce', 'lambda', 'ce+lambda'), default='ce')
+    ap.add_argument('--drop', choices=('none', 'trend', 'reverse'), default='none')  # ablations (note 159 prediction 3)
     ap.add_argument('--score-test', action='store_true')
     ap.add_argument('--root', default=str(ROOT / 'data/tgb'))
     a = ap.parse_args(); torch.manual_seed(a.seed); np.random.seed(a.seed); torch.set_num_threads(1); t0 = time.time()
@@ -147,7 +148,12 @@ def main():
 
     def batch(ts):
         nodes = np.array(list(L[ts].keys()), dtype=np.int64); y = np.stack([np.asarray(L[ts][n], np.float32) for n in nodes])
-        return torch.from_numpy(per.features(ts, nodes)), torch.from_numpy(y)
+        x = per.features(ts, nodes)
+        if a.drop == 'trend':                    # history shape: lags 2-4, decayed affinities, growth (+ logs); level kept
+            x[..., [1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 16, 17, 18, 19, 24, 25, 27]] = 0.0
+        elif a.drop == 'reverse':                                                      # reverse flow R1, R4 (+ logs)
+            x[..., [8, 9, 20, 21]] = 0.0
+        return torch.from_numpy(x), torch.from_numpy(y)
 
     data = {s: [(ts,) + batch(ts) for ts in fired[s]] for s in ('train', 'val')}
     if a.score_test:
