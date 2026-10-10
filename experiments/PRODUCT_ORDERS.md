@@ -4,6 +4,8 @@
 
 **Learning priority, user direction 10 October:** demonstrate efficient learning as depth and model size grow, with complete work to reach matched quality. Curie owns the compact-credit/depth implementation under B1/R1; preserve AWS's admitted two-layer online3 comparison and completed confirmations. [Execution and evidence gates](DEEP_LEARNING_SCALING.md). One-layer gains per pass are supporting evidence, not the scaling claim.
 
+**PAM decision, user direction 10 October:** retain the original sealed v7 five-split result (accuracy 0.9775 ± 0.0074, F1 0.9803 ± 0.0080). Stop further v8/v9 replacement runs; preserve completed results/checkpoints. Proceed on other fronts before returning to PAM development. No new PAM fitting or TEST scoring is admitted.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential

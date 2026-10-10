@@ -1,0 +1,33 @@
+{
+  "tag": "curie_fronts_20261010T1220Z",
+  "host": "curie",
+  "phases": [
+    {
+      "name": "state_credit_and_report",
+      "manifest": "experiments/queue/curie_post_pam_20261010T1050Z/enabler_manifest.json"
+    },
+    {
+      "name": "future_credit_small_signal",
+      "manifest": "experiments/queue/enabler/curie_future_credit_v1_20261010T1140Z/manifest.json"
+    },
+    {
+      "name": "sealed_fas",
+      "manifest": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/manifest.json"
+    },
+    {
+      "name": "b10_development",
+      "manifest": "experiments/queue/curie_fronts_20261010T1220Z/b10_manifest.json"
+    },
+    {
+      "name": "report_after_benchmarks",
+      "manifest": "experiments/queue/curie_post_pam_20261010T1050Z/report_final_manifest.json"
+    }
+  ],
+  "prerequisite_results": [
+    "experiments/results/irts/b2_final_pam_v7ema_split0.json",
+    "experiments/results/irts/b2_final_pam_v7ema_split1.json",
+    "experiments/results/irts/b2_final_pam_v7ema_split2.json",
+    "experiments/results/irts/b2_final_pam_v7ema_split3.json",
+    "experiments/results/irts/b2_final_pam_v7ema_split4.json"
+  ]
+}
