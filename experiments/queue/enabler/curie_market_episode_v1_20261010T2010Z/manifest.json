@@ -1,0 +1,31 @@
+{
+  "tag": "curie_market_episode_v1_20261010T2010Z",
+  "host": "curie",
+  "battle": "B10/R1",
+  "jobs": [
+    {
+      "tag": "curie_market_episode_v1_20261010T2010Z_contract",
+      "driver": "experiments/market/check_episode_state.py",
+      "queue": "experiments/queue/enabler/curie_market_episode_v1_20261010T2010Z/curie_market_episode_v1_20261010T2010Z_contract.txt",
+      "queue_sha256": "5a4101e9824df897830ca3a3397654cb3f0da498dd26f7ef87de667c143ac35c",
+      "sources": {
+        "experiments/market/check_episode_state.py": "fa6adbc1deb18d30939c6d85f65559a56bd87bd2eef166eaee62d9662537a0eb",
+        "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f"
+      },
+      "result_sources": {
+        "experiments/market/check_episode_state.py": "fa6adbc1deb18d30939c6d85f65559a56bd87bd2eef166eaee62d9662537a0eb",
+        "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f"
+      },
+      "result": "experiments/results/market/curie_market_episode_v1_20261010T2010Z_contract.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 300
+    }
+  ]
+}
