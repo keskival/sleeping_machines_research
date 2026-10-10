@@ -1,0 +1,267 @@
+{
+  "tag": "curie_averaged_credit_depth_v4_20261010T1750Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke.txt",
+      "queue_sha256": "7a0054064594ca3f0b4ef9397b4aed5019d3fe7fec3819852e6139290237113a",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": []
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s170",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s170.txt",
+      "queue_sha256": "71d67ed0844a5b1620c8262ffb925d4af697995c7597b3e8ab0bfdf3483d2b86",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s170.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke"
+      ]
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s171",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s171.txt",
+      "queue_sha256": "9a742e64868c6ebf7f11325197a35e866b861d308b5144d4b5b447c3e35f70b8",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s171.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke"
+      ]
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s172",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s172.txt",
+      "queue_sha256": "3ee0da441a5921d045ee2eff03a4bb2f910e436f005fd8d0728c8c13f954beb9",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d4_pilot_s172.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d4_smoke"
+      ]
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke.txt",
+      "queue_sha256": "d3c8601ad7b5d46aa1543e79c06120ff999c91a9230ff4cda0e6df8689ba41f9",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": []
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s170",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s170.txt",
+      "queue_sha256": "da4cbad7d853e01b0df84a35f6504f189d9ebb0ed1e648464a6d890066b14bd2",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s170.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke"
+      ]
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s171",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s171.txt",
+      "queue_sha256": "9d253d1915ab13c4e5c491874d41f81f850b9f759d0bf29f9504c9611bdca7d1",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s171.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke"
+      ]
+    },
+    {
+      "tag": "curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s172",
+      "driver": "experiments/credit/averaged_future_credit_depth_v4.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_depth_v4_20261010T1750Z/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s172.txt",
+      "queue_sha256": "bf68ab6960762eed3b78139f6402239267d483de0e4fb94a4c48f36e09b9fb4b",
+      "sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/averaged_future_credit_depth_v4.py": "8becc248be5c6d0b9072a265a40ea1dbc7c8c4409bdcd35f953626d15f8ec490",
+        "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_averaged_credit_depth_v4_20261010T1750Z_d8_pilot_s172.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_averaged_credit_depth_v4_20261010T1750Z_d8_smoke"
+      ]
+    }
+  ]
+}
