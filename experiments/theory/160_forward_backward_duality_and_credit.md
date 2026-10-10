@@ -182,6 +182,27 @@ Its held-out toy data is explicitly DEV, not a sealed public benchmark test.
 - **Pass criterion, stated before results:** `online_trace` within 0.02 nats/event of BPTT, and clearly above
   `online_local`.
 
+**Result (10 Oct 06:15 UTC; Taxi DEV log-likelihood per scored event, nats, higher is better; 3 seeds; 20 passes over
+TRAIN for every arm; `experiments/results/credit/online1_*`).**
+
+| Arm | Final DEV LL (SE) | Seeds | Time / mark part | Updates | Wall |
+|---|---|---|---|---|---|
+| BPTT | 0.4557 (0.0070) | 0.4607 / 0.4645 / 0.4419 | 0.7005 / −0.2448 | 1,760 | 0.9 min |
+| **online_trace** | **0.4805 (0.0035)** | 0.4812 / 0.4742 / 0.4862 | 0.7099 / −0.2294 | 63,440 | 3.1 min |
+| online_local | 0.4728 (0.0017) | 0.4733 / 0.4696 / 0.4755 | 0.7082 / −0.2354 | 63,440 | 1.3 min |
+
+**PASS** at matched data passes:
+- online_trace is 0.025 above BPTT, not merely within 0.02.
+- Every trace seed is above the online_local mean (+0.0077).
+
+Two effects separate:
+- **Per-event updating** is worth +0.017 over batched BPTT at the same number of data passes. BPTT is still rising at
+  epoch 20, so this is sample efficiency per pass, not a converged-quality claim.
+- **Exact temporal credit through the memory** (the traces) is worth +0.0077 nats/event on Taxi, on every seed.
+
+Wall time reflects a Python per-event loop, not the method's arithmetic. Next: BPTT at 100 epochs (`online1b_*`, queued)
+tests whether converged BPTT ends above the per-event learner.
+
 
 ## 8. Finite-proposal feedback and full learner cost (9 Oct, AWS autonomous continuation)
 
