@@ -173,6 +173,27 @@ mode). A failure of P2 with P1 holding would mean weighted credit concentrates o
 silence, i.e. the sparsity is in the wrong coordinates; a failure of P1 would mean addressing is not spreading writes as
 assumed (hash collisions or a few dominant marks).
 
+**Result of the pre-registered test (`credit_spectrum_v2_taxi_K16_K64_s1`, 10 Oct 14:00 UTC; addressed writes, one 4-mode slot
+per event, Taxi DEV; DEV LL 0.467 at K = 16, 0.460 at K = 64).**
+
+| Quantity | K = 16 (64 modes) | K = 64 (256 modes) | Ratio | Prediction | Verdict |
+|---|---|---|---|---|---|
+| modes with eligibility > 1% per event (P1) | 11.78 | 11.49 | 0.98 | < 1.25 | **holds** |
+| eligibility-weighted k(ε = 0.1), pooled covariance (P2) | 21 | 78 | 3.71 | 0.75–1.25 | **fails** |
+| unweighted k(ε = 0.1) (P3) | 64 | 107 | 1.67 | ≥ 1.5 | **holds** |
+| (weighted, window-4 predictor) | 17 | 68 | 4.0 | — | — |
+| (weighted participation ratio) | 5.0 | 8.7 | 1.73 | — | — |
+
+**P2 failed as operationalized.** The interpretation pre-registered for "P2 fails while P1 holds" (credit concentrating where
+eligibility does not silence it) does not fit: eligibility does silence all but ≈ 11.5 modes per event at both sizes. A
+post-hoc explanation, stated as such: k(ε) is computed from the covariance pooled over all events, i.e. the dimension of the
+*union* of per-event credit vectors; with addressed writes different events activate different slots, so the union grows with
+K even when each event's support stays fixed. Theorem E's rate is per event with the support known to the decoder from
+eligibility, which P1 measures. **The capacity-independence claim is therefore not yet established**: it needs the per-event
+quantity measured directly (number of eligibility-weighted components above the water level per event, and the per-event rate),
+which this driver did not record. Until then the evidence is: per-event active support flat in K (P1), pooled credit dimension
+growing ≈ K^0.95 (P2).
+
 ## 8. Which credit method for which mode: a per-mode cost law
 
 For mode m with per-event contraction ρ_m = e^{−r_mΔ}, P_m parameters feeding it, and a target relative credit error ε,
