@@ -1,0 +1,159 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (route credit, theory note 160)",
+ "tag": "aws_credit6_20261009T191619Z_sleep_h8",
+ "args": {
+  "tag": "aws_credit6_20261009T191619Z_sleep_h8",
+  "arm": "hindsight",
+  "depth": 2,
+  "K": 8,
+  "K2": 4,
+  "d": 16,
+  "C": 10,
+  "n_train": 20000,
+  "n_test": 5000,
+  "epochs": 10,
+  "batch": 64,
+  "lr": 0.003,
+  "sleep": 1,
+  "msg_dim": 4,
+  "dense_frac": 0.1,
+  "proposals": 2,
+  "credit_hidden": 8,
+  "snap": 50,
+  "q_every": 8,
+  "seed": 0,
+  "data_seed": 1234
+ },
+ "teacher_dev_marginal_ll": -1.5394467115402222,
+ "final_dev_marginal_ll": -2.2284812927246094,
+ "final_route_purity": 0.07760000228881836,
+ "best_dev_marginal_ll": -2.2283642292022705,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_marginal_ll": -2.262589931488037,
+   "route_purity": 0.07100000232458115,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.042364198714494705,
+   "credit_tv": 0.11452732980251312,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 1,
+   "dev_marginal_ll": -2.242126703262329,
+   "route_purity": 0.07699999958276749,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.03350086882710457,
+   "credit_tv": 0.10188937932252884,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 2,
+   "dev_marginal_ll": -2.2344253063201904,
+   "route_purity": 0.07000000029802322,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.028634924441576004,
+   "credit_tv": 0.09394929558038712,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 3,
+   "dev_marginal_ll": -2.230775833129883,
+   "route_purity": 0.06759999692440033,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.02677045948803425,
+   "credit_tv": 0.09089301526546478,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 4,
+   "dev_marginal_ll": -2.2294085025787354,
+   "route_purity": 0.06840000301599503,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.0266339723020792,
+   "credit_tv": 0.09052571654319763,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 5,
+   "dev_marginal_ll": -2.228747844696045,
+   "route_purity": 0.06759999692440033,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.026556283235549927,
+   "credit_tv": 0.09040267765522003,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 6,
+   "dev_marginal_ll": -2.2283778190612793,
+   "route_purity": 0.06759999692440033,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.026590103283524513,
+   "credit_tv": 0.09000542759895325,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 7,
+   "dev_marginal_ll": -2.2283642292022705,
+   "route_purity": 0.06960000097751617,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.026551617309451103,
+   "credit_tv": 0.09047874808311462,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 8,
+   "dev_marginal_ll": -2.228605031967163,
+   "route_purity": 0.07500000298023224,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.02584751881659031,
+   "credit_tv": 0.08905000239610672,
+   "optimizer_parameter_visits_per_example": 104.7924
+  },
+  {
+   "epoch": 9,
+   "dev_marginal_ll": -2.2284812927246094,
+   "route_purity": 0.07760000228881836,
+   "expert_evals_per_example": 2.0,
+   "macs_per_example": 4992.0,
+   "credit_kl": 0.026433508843183517,
+   "credit_tv": 0.08989552408456802,
+   "optimizer_parameter_visits_per_example": 104.7924
+  }
+ ],
+ "selection": "fixed final epoch for cross-arm comparison; best DEV is diagnostic only",
+ "final_credit_kl": 0.026433508843183517,
+ "final_credit_tv": 0.08989552408456802,
+ "expert_evals_per_example": 2.0,
+ "macs_per_example": 4992.0,
+ "whole_fit_linear_macs": 998400000.0,
+ "wall_s": 6.612722635269165,
+ "data_sha256": "d5982a522c933f65c76d0ec57f7b3653e6516f78db6b18c12ff2278f5d0a7e16",
+ "evaluation_split": "synthetic development; no sealed benchmark test",
+ "mechanism_scope": "hard-route credit diagnostic; no temporal memory or integrated benchmark claim",
+ "work_convention": "leading-linear MAC estimate (3x for differentiated operations); nonlinear, sampling, bias and optimizer FLOPs excluded",
+ "optimizer_parameter_visits": 20958480,
+ "optimizer_parameter_visits_per_example": 104.7924,
+ "evaluation_linear_macs": 598400000,
+ "evaluation_work_convention": "model marginal once, plus posterior and q once for credit arms; excludes teacher data generation and route-purity mapping",
+ "max_rss_kb": 417640,
+ "hardware": {
+  "host": "ip-172-31-47-132",
+  "cpu": "",
+  "threads": 1,
+  "torch": "2.14.0+cpu"
+ },
+ "source_sha256": {
+  "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+ }
+}
