@@ -1,0 +1,2 @@
+# B1: B1/R1 validate measured 2.52x block speed on actual Taxi TRAIN sequences then paired one-epoch equivalence and DEV; preserves original model, no TEST; epoch requires real-data parity and >=1.5x speed
+aws_deep_blocks_real_20261010T180155Z_smoke experiments/credit/online_deep_blocks_fit.py --tag aws_deep_blocks_real_20261010T180155Z_smoke --stage real --gate experiments/results/credit/aws_deep_blocks_20261010T175852Z_measure.json

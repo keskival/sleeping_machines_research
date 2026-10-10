@@ -9,3 +9,9 @@ This follows note 160 section 12 and retains complete cross-layer history. It ch
 Pipeline: existing fixed-weight every-parameter BPTT contract with block traces; four changing-weight online batches checking likelihood, parameters and every Adam state; then complete-step measurements at B1/d16/n8, B16/d32/n16 (existing Taxi shape), B4/d64/n32. Everything runs through AWS run_safe slot 1 with immutable source hashes, one CPU thread, 2 GB RSS cap and 8 GiB available floor. No TEST reads. A source-bound comparison of actual Taxi TRAIN batches precedes any longer fit: retain learning behavior to 1e-9 and require at least 1.5x whole-step speed at the existing shape to justify adoption. Failure means diagnose and repair under fresh tags; never alter active online3 jobs.
 
 Full fitting-quality/work curves and depth >=4 remain the next evidence gates. Neither tensor sparsity nor wall speed is reported as a FLOP/energy or leaderboard win.
+
+## Completed synthetic execution gate — 10 October
+
+`aws_deep_blocks_20261010T175852Z`: fixed-weight maximum relative gradient error 9.56e-16; changing-weight parameter error <=4.44e-16 and Adam-state error <=4.67e-15. Complete online-batch speedups: d16/n8/B1 1.04x; original Taxi d32/n16/B16 2.52x; d64/n32/B4 3.05x. Persistent trace storage at Taxi shape: 301,056 -> 167,072 floats per stream (44.5% reduction). Large shape: 47.1% reduction. One-thread float64, four synthetic batches per arm, three timed after warmup; only width/batch shapes change, depth stays two.
+
+Actual-data pipeline `aws_deep_blocks_real_20261010T180155Z`: four paired real TRAIN batches, then a paired complete epoch if the first stage retains numerical parity and >=1.5x speed. It records every-batch parameter/gradient/Adam parity, loading/evaluation separately, exact data hashes and per-arm DEV. No independent quality improvement is inferred from matching an existing learner.
