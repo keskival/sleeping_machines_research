@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{8}{Formal Verification with Lean 4}{Reading a theorem, checking its proof, and identifying what the formal statement does not claim}
+\section*{Why this tutorial}
+A numerical witness checks selected inputs. A proof assistant checks a statement for every input satisfying its explicit assumptions. Both are useful: a checked inequality does not verify an entire training program, and a successful model fit does not prove a scaling theorem. This tutorial teaches how to read the small formal cores supporting our credit theory.
+\section{Propositions, proofs and the kernel}
+Lean represents a proposition as a type and a proof as a term inhabiting that type. A tactic helps construct the term; a small kernel checks it. ``The tactic succeeded'' means the resulting term passed type checking, relative to its imported definitions and axioms. It says nothing about whether the formal proposition faithfully expresses the intended scientific claim.
+\paragraph{Read hypotheses first.} In this standalone example, $h$ is a proof supplied as an input:
+\begin{verbatim}
+import Mathlib
+example (x y : Real) (h : x <= y) : 2*x <= 2*y := by
+  nlinarith
+\end{verbatim}
+The proof does not show $x\le y$ universally. It shows that whenever this hypothesis holds, doubling preserves the inequality. Mathematical objects have types: \texttt{Real}, \texttt{Nat}, finite sets and finite sums cannot be interchanged without explicit casts.
+\section{Tactics as mathematical steps}
+\begin{itemize}
+\item \texttt{intro} brings a quantified variable or implication hypothesis into the context; \texttt{exact} supplies a term with precisely the current goal's type.
+\item \texttt{rw} rewrites using an equality; \texttt{simp} applies a controlled collection of simplification lemmas.
+\item \texttt{ring} normalizes polynomial identities. It does not prove an analytic theorem about an integral or logarithm.
+\item \texttt{field\_simp} clears denominators. Nonzero-denominator obligations must still be justified.
+\item \texttt{linarith} combines linear equalities/inequalities; \texttt{nlinarith} also preprocesses polynomial facts.
+\item \texttt{positivity} proves suitable sign facts from known hypotheses and the structure of an expression.
+\end{itemize}
+\begin{example}[A denominator obligation]
+\begin{verbatim}
+import Mathlib
+example (x : Real) (hx : 0 < x) : x / x = 1 := by
+  exact div_self (ne_of_gt hx)
+\end{verbatim}
+The positive-denominator hypothesis supplies $x\ne0$. For $x=0$, Lean's field division gives $0/0=0$, so the unrestricted statement would be false.
+\end{example}
+\section{Walk through the project}
+The project is \texttt{experiments/lean/credit\_theory}. Its \texttt{lean-toolchain} and Lake manifest pin Lean and Mathlib. The current pin is Lean 4.35.0-rc4 with the matching Mathlib revision. Use the pinned project environment rather than silently upgrading it.
+\paragraph{Basic.lean.} \texttt{var\_eq\_half\_pairwise} proves the finite weighted-variance identity given weights summing to one. The algebraic identity does not itself require nonnegative weights; \texttt{sampled\_credit\_variance\_bound} adds nonnegativity and bounded scores to obtain the probability interpretation and bound. \texttt{geom\_tail\_le} proves a finite transported-tail bound for $0\le\rho<1$. \texttt{info\_from\_waiting} proves a logarithmic ratio equals $2r\tau$; identifying that ratio with complex Gaussian information is a separate statistical argument.
+\paragraph{Scaling.lean.} \texttt{count\_above\_level\_le} bounds the number of components above a threshold by total mass divided by the threshold. \texttt{powerlaw\_rate\_le} bounds a finite logarithmic sum; \texttt{powerlaw\_tail\_le} needs $\alpha>1$. These are implications from a spectrum model, not proofs that our measured spectra have that model.
+\paragraph{Coupled.lean.} \texttt{coupled\_contraction} takes nonnegative comparison coefficients, $a,d<1$ and $bc<(1-a)(1-d)$, then constructs $w>0$ and $q\in[0,1)$ so $x'+we'\le q(x+we)$. Its finite-dimensional proof does not infer those coefficients from neural training. \texttt{coupled\_converges} turns a supplied one-step potential bound into a geometric bound by induction.
+\paragraph{Surprise.lean.} \texttt{audit\_cost\_lower\_bound} applies Cauchy--Schwarz to show
+$(\sum_i|r_i|\sqrt{c_i})^2/V\le\sum_ic_ip_i$, assuming positive $p_i,V$ and $\sum_ir_i^2/p_i\le V$. The actual residual-audit variance is $\sum_i(1/p_i-1)r_i^2$: the formal theorem uses the larger uncentered budget $\sum_ir_i^2/p_i$. Keeping these denominators distinct avoids claiming the wrong constant.
+\paragraph{RaceFisher.lean.} \texttt{race\_fisher\_offdiag} and \texttt{race\_fisher\_diag} check rational identities after the exponential-race moments have been supplied. They do not derive the moments, establish martingale integrability, or prove a shared neural parameter Fisher is diagonal.
+\section{Reproduce and inspect}
+With Elan and the pinned toolchain installed, run from the project directory:
+\begin{verbatim}
+lake exe cache get
+lake build
+\end{verbatim}
+The cache command obtains Mathlib artifacts; the build checks the project. Dependencies may require network access and substantial disk space. The tutorial PDF build is separate and does not establish a fresh Lean build on a host lacking this toolchain.
+
+For an axiom inspection, save this as \texttt{Inspect.lean} in a temporary copy of the project:
+\begin{verbatim}
+import CreditTheory
+#check coupled_contraction
+#print axioms coupled_contraction
+#print axioms sampled_credit_variance_bound
+#print axioms race_fisher_diag
+\end{verbatim}
+Then run \texttt{lake env lean Inspect.lean}. \texttt{\#check} reports the type; \texttt{\#print axioms} lists transitive axiom dependencies. Standard classical developments may use \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. A dependency on \texttt{sorryAx} signals an admitted hole. An arbitrary declared axiom can also hide an unproved result even when there is no literal \texttt{sorry} in the theorem body.
+\begin{keyidea}
+Review the statement, imported axioms, and connection to the implementation. Kernel acceptance checks logical derivation. It does not certify the data protocol, PyTorch gradients, clockless hardware, or superiority over BPTT.
+\end{keyidea}
+\section*{Exercises}
+\begin{exercise}Why is a theorem with hypothesis \texttt{h : False} unhelpful for model stability?\end{exercise}
+\begin{solution}From falsehood any proposition follows. Unless the assumptions are satisfiable in the scientific setting, the checked implication carries no useful stability guarantee.\end{solution}
+\begin{exercise}An audit theorem assumes $p_i>0$. Can deterministic omission of a block use it?\end{exercise}
+\begin{solution}No: omission has $p_i=0$ and removes residual-correction support. Prove a separate approximation bound or restore positive inclusion probability.\end{solution}
+\begin{exercise}Which extra checks connect \texttt{race\_fisher\_diag} to a training method?\end{exercise}
+\begin{solution}Verify the observation law and stated moments, account for censoring and hidden causes, map log-scales to shared weights, and check the implementation's score/gradient. The rational identity supplies only one link in that chain.\end{solution}
+\begin{inourmodels}
+The Lean project accompanies notes 164--168. Numerical contracts separately check native temporal transport, state carry, full parameter gradients and changing-weight versions. Experiment result files supply quality and cost evidence. The Gaussian coding, renewal and neural calibration assumptions must be justified outside the finite algebra proved here.
+\end{inourmodels}
+\paragraph{Further reading.} \href{https://docs.lean-lang.org/theorem_proving_in_lean4/}{Theorem Proving in Lean 4}, chapters on propositions, tactics and axioms; \href{https://lean-lang.org/doc/reference/latest/Axioms}{Lean's axiom reference}. Project commands use the pinned revision above.
+\end{document}
