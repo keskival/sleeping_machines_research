@@ -65,7 +65,8 @@ def main():
                 queue = str(resume_queue.relative_to(ROOT))
             state.update(status='running', current_job=job['tag'], queue=queue); save()
             env = dict(os.environ, OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1',
-                       MEM_CAP_KB=str(job['vms_kb']), MEM_CAP_RSS_KB=str(job['rss_kb']), MIN_AVAIL_MB='8192',
+                       MEM_CAP_KB=str(job['vms_kb']), MEM_CAP_RSS_KB=str(job['rss_kb']),
+                       MIN_AVAIL_MB=os.environ.get('MIN_AVAIL_MB', '10240'),
                        JOB_TIMEOUT_S=str(job['timeout_s']), WAIT='1')
             subprocess.run(['bash', 'experiments/queue/run_safe.sh', queue], cwd=ROOT, env=env, check=True)
             validate(job); state['completed'].append(job['result']); save()

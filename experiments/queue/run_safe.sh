@@ -33,6 +33,21 @@ MEM_CAP_KB=${MEM_CAP_KB:-6000000}
 MEM_CAP_RSS_KB=${MEM_CAP_RSS_KB:-3500000}
 MIN_AVAIL_MB=${MIN_AVAIL_MB:-6000}
 JOB_TIMEOUT_S=${JOB_TIMEOUT_S:-1800}
+# The host may have ample memory while this container reaches its own limit.
+# Keep headroom for the controller and services in the same cgroup too.
+CGROUP_RESERVE_MB=${CGROUP_RESERVE_MB:-2048}
+check_cgroup_memory() {
+  local limit current remaining
+  [ -r /sys/fs/cgroup/memory.max ] && [ -r /sys/fs/cgroup/memory.current ] || return 0
+  read -r limit < /sys/fs/cgroup/memory.max
+  [ "$limit" = max ] && return 0
+  read -r current < /sys/fs/cgroup/memory.current
+  remaining=$(( (limit - current) / 1048576 ))
+  if [ "$remaining" -lt "$CGROUP_RESERVE_MB" ]; then
+    echo "$(date +%T) STOP: cgroup headroom=${remaining}MB below ${CGROUP_RESERVE_MB}MB"
+    return 1
+  fi
+}
 if [[ ! "$JOB_TIMEOUT_S" =~ ^[1-9][0-9]*$ ]]; then
   echo "JOB_TIMEOUT_S must be a positive integer number of seconds" >&2
   exit 2
@@ -75,6 +90,7 @@ while IFS= read -r line; do
     continue
   fi
   avail=$(awk '/MemAvailable/{print int($2/1024)}' /proc/meminfo)
+  check_cgroup_memory || exit 2
   if [ "$avail" -lt "$MIN_AVAIL_MB" ]; then
     echo "$(date +%T) STOP before $name: MemAvailable=${avail}MB below ${MIN_AVAIL_MB}MB"
     exit 2
@@ -85,6 +101,10 @@ while IFS= read -r line; do
   job_pid=$pid
   last_heartbeat=$SECONDS
   while kill -0 $pid 2>/dev/null; do
+    if ! check_cgroup_memory; then
+      stop_job
+      exit 2
+    fi
     avail=$(awk '/MemAvailable/{print int($2/1024)}' /proc/meminfo)
     rss=$(ps -eo pgid=,rss= | awk -v group="$pid" '$1 == group {total += $2} END {print total + 0}')
     if [ "$rss" -gt "$MEM_CAP_RSS_KB" ]; then
