@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder) + depth_credit_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder) + depth_credit_pages(folder) + structured_credit_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -194,3 +194,21 @@ def depth_credit_pages(folder):
         ('small',records[0][2]['metrics']['depth_scope']),
         ('table',(['Depth','Seed','Total GFLOPs','MFLOPs/target','Wall s'],work,[18,18,43,45,43])),
         ('small','All four critic fits and shared teacher generation charged together. Supported arithmetic excludes special/unsupported operations. Different frozen actor depths have different target distributions; this is intervention-interface transfer, not a matched-quality actor-learning scaling result.')]]
+
+
+def structured_credit_pages(folder):
+    prefix='curie_structured_credit_v5b_20261010T1845Z';files=[folder/(prefix+f'_pilot_s{s}.json') for s in (170,171,172)]
+    if not all(p.exists() for p in files):return []
+    records=[json.loads(p.read_text()) for p in files];assert all(r['status']=='completed' for r in records);rows=[];work=[]
+    for seed,r in zip((170,171,172),records):
+        for arm in r['metrics']['arms']:
+            for label in ('basis','unseen_directions','augmented_pool'):
+                v=arm['scopes'][label];rows.append([str(seed),arm['arm'],label.replace('_',' '),f'{v["relative_mse"]:.3f}',f'{v["utility_gain_vs_train_constant"]:.6g}'])
+        n=r['metrics']['teacher_target_presentations'];work.append([str(seed),str(n),f'{r["supported_flops"]/1e9:.3f}',f'{r["supported_flops"]/n/1e6:.4f}',f'{r["wall_s"]:.1f}'])
+    return [[('h1','Appendix. R1 structured response credit and unseen update directions'),
+        ('p','A shared connected prefix encoder predicts eight constrained response components; exact mark-normalization algebra supplies intervention values. This changes the critic head, retaining native temporal computation and keyed memory. Free and structured heads have nearly equal parameter counts and identical prefix initialization, labels and fitting steps.'),
+        ('table',(['Seed','Critic','Action pool','DEV MSE','Future loss gain'],rows,[16,30,55,26,40])),
+        ('small',records[0]['metrics']['scope']),
+        ('table',(['Seed','Teacher targets','Total GFLOPs','MFLOPs/target','Wall s'],work,[17,40,40,40,30])),
+        ('small',records[0]['flop_scope']),
+        ('p','The response geometry gives bounded sensitivity and curvature, plus a conditional value-to-gradient certificate under uniform approximation error. Held-out mean MSE and sixteen directions do not supply that uniform certificate. Native value/action-gradient contracts pass depths 2/4/8; selected state writes preserve past losses. Full online actor training and asynchronous hardware costs are the next integration tests.')]]

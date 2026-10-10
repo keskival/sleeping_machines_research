@@ -1,0 +1,71 @@
+{
+  "tag": "curie_structured_finish_20261010T1910Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_response_geometry_20261010T1850Z",
+      "driver": "experiments/credit/check_response_geometry.py",
+      "queue": "experiments/queue/enabler/curie_response_geometry_20261010T1850Z/curie_response_geometry_20261010T1850Z.txt",
+      "queue_sha256": "f96edeb91c1cfd24d06f4771b036bca51f8f93d099f6b2ee9193d59d8bec3b6f",
+      "sources": {
+        "experiments/credit/check_response_geometry.py": "2a6eaa8dc86d2319da59af048cd6efd056cf3027419e7efb74b050f33e77f22d"
+      },
+      "result_sources": {
+        "experiments/credit/check_response_geometry.py": "2a6eaa8dc86d2319da59af048cd6efd056cf3027419e7efb74b050f33e77f22d"
+      },
+      "result": "experiments/results/credit/curie_response_geometry_20261010T1850Z.json",
+      "rss_kb": 200000,
+      "vms_kb": 1000000,
+      "timeout_s": 60
+    },
+    {
+      "tag": "curie_response_policy_20261010T1900Z",
+      "driver": "experiments/credit/check_response_policy.py",
+      "queue": "experiments/queue/enabler/curie_response_policy_20261010T1900Z/curie_response_policy_20261010T1900Z.txt",
+      "queue_sha256": "2e900b17d60c4622a74883985c8afc6bbdb243401c1e1bc4eeb3bbe9e8ed42c8",
+      "sources": {
+        "experiments/credit/check_response_policy.py": "b567806398afde3a5b6646d6605cbc25f9eeb50779c3d3fb14c9c80150caaf3b",
+        "experiments/credit/response_credit_policy.py": "fe66bba97e04aca709579109f0d862bb0c2fd2541052214c6e654ca06f443148",
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_response_policy.py": "b567806398afde3a5b6646d6605cbc25f9eeb50779c3d3fb14c9c80150caaf3b",
+        "experiments/credit/response_credit_policy.py": "fe66bba97e04aca709579109f0d862bb0c2fd2541052214c6e654ca06f443148",
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_response_policy_20261010T1900Z.json",
+      "rss_kb": 1000000,
+      "vms_kb": 8000000,
+      "timeout_s": 180
+    },
+    {
+      "tag": "curie_structured_finish_20261010T1910Z_report",
+      "driver": "scripts/build_curie_credit_report.py",
+      "queue": "experiments/queue/enabler/curie_structured_finish_20261010T1910Z/curie_structured_finish_20261010T1910Z_report.txt",
+      "queue_sha256": "0e2a081a1b30accff085599c63ab21b48565f54c9631215b32f9d233391ed407",
+      "sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result_sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result": ".git/curie-report-build-preview/curie_structured_finish_20261010T1910Z_report/result.json",
+      "rss_kb": 1200000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}
