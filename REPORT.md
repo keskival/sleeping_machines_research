@@ -4285,3 +4285,28 @@ Matched prefix encoders, head parameter counts differ by rounding only, common b
 All teacher response extraction, both fits, 25-action evaluation and selected-write replays included; special/unsupported arithmetic excluded.
 
 The response geometry gives bounded sensitivity and curvature, plus a conditional value-to-gradient certificate under uniform approximation error. Held-out mean MSE and sixteen directions do not supply that uniform certificate. Native value/action-gradient contracts pass depths 2/4/8; selected state writes preserve past losses. Full online actor training and asynchronous hardware costs are the next integration tests.
+
+## Appendix. R1 saved future credit guides continuous state writes
+
+Saved critics propose one continuous radius-bounded native key-write adjustment from the observed prefix. The structured cotangent is contracted directly from reusable response activations; the free critic uses its action derivative. Fresh future continuations assess utility without critic refitting.
+
+| Seed | Proposal | Gain vs no-op | Gain vs TRAIN action |
+| --- | --- | --- | --- |
+| 170 | free_gradient | 0.00928444 | -0.00028397 |
+| 170 | structured_cotangent | 0.00975059 | 0.000182178 |
+| 171 | free_gradient | 0.0229301 | 0.00339719 |
+| 171 | structured_cotangent | 0.0238309 | 0.00429801 |
+| 172 | free_gradient | 0.0207095 | 0.000885379 |
+| 172 | structured_cotangent | 0.022477 | 0.00265285 |
+
+Saved critics and frozen native actor; fresh independent prefixes/continuations, single bounded proposal per critic. TRAIN reference regenerated and charged; all 25 reference directions plus two proposals evaluated through exact local responses. Four actual writes per critic checked by native replay. Prefix bootstrap conditional on fitted seed, not seed uncertainty. Proposals have no certified population-gradient error bound. Forward weights and credit weights do not update; this measures state-write utility, not online actor learning, async scheduling or hardware savings.
+
+| Seed | Prior fit GFLOPs | Evaluation GFLOPs | MFLOPs/target | Wall s |
+| --- | --- | --- | --- | --- |
+| 170 | 21.000 | 0.085 | 0.0057 | 97.8 |
+| 171 | 21.000 | 0.085 | 0.0057 | 96.5 |
+| 172 | 21.000 | 0.085 | 0.0057 | 98.0 |
+
+All reference regeneration, cotangent/proposal inference, fresh response evaluation and selected native writes; excludes special/unsupported arithmetic. Prior fitting work reported separately; no amortized savings claim.
+
+The response packet stores 112 scalars and produces a four-dimensional proposal; this excludes encoder activations, forward state, weights and optimizer memory. Proposals are explicitly uncertified for population future gradients. State-write utility is distinct from forward-weight learning or asynchronous hardware efficiency.
