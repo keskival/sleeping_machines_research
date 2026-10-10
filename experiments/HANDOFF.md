@@ -1,3 +1,5 @@
+**Curie replication diagnosis and native clock-read repair.** Original real-credit gate fails; seed183 catastrophic across all arms. Observer-only replay reproduces scores and locates6.022ms event with exponential weighted log-rate44-45; affine clock read of accumulating positive slots is the engineering target. New variant log1p-compresses slot inputs to the clock head only, keeps stored values, temporal state/races/mark scoring and all learner arms. Contract -> smoke -> bounded seed183 pilot under curie_real_boundary_stable_v1_20261010T2310Z; no TEST or substitution of old results. Tutorials4-8 sources complete; checked PDF build is active.
+
 **Curie real online-credit confirmation completed.** [{"seed": 181, "over_untrained": 0.00485284992635826, "over_bptt": 0.03272140805913892}, {"seed": 182, "over_untrained": -0.02874232039037139, "over_bptt": 0.01241685104502821}, {"seed": 183, "over_untrained": 2630745333395.0703, "over_bptt": -25809154614239.945}]; all-seed point gate=False. Same8192-event TRAIN fragment, not a domain benchmark or optimized efficiency claim. Completed result decision experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_decision.json; actor/credit/optimizer/state snapshots preserved. Next: fresh chronological fragments and learned-state/route integration at depth4/8 after error analysis.
 
 **Curie first positive real online-credit indication; replication admitted.** V3 seed181 calibrated replay NLL12.365258 beats untrained audits12.370111 (+0.004853) and native BPTT12.397980 (+0.032721) on8192 real TRAIN targets; raw replay12.440472 harms quality.65 audits,520 critic steps; whole two-arm phase71.70s. No optimized efficiency or benchmark claim. Source-bound confirmation compares BPTT/untrained/calibrated replay seeds182/183 under curie_real_boundary_confirm_20261010T2210Z after a wrapper smoke; same fragment, no TEST. Publication/report follows completed files.
@@ -88,7 +90,7 @@ geometry: diagonal Fisher = expected wins); Lean 4 project `experiments/lean/cre
 axioms only; elan at ~/.elan). Open theory/measurement items: (1) per-event credit rate for addressed writes (note 165 §7b: P2
 failed as operationalized; measure per-event support/rate directly); (2) Laplace prior repairs (note 167 §5); (3) sparsity-over-
 training test (note 165 §9); (4) symmetry-breaking specialization test (note 168 §4).
-*Tutorials:* `tutorials/` 1–3 done (LaTeX+PDF); 4–8 outlined in `tutorials/README.md`.
+*Tutorials:* `tutorials/` 1–8 written; tutorials4–8 PDF layout/section validation runs before publication via scripts/build_tutorials.py.
 *Lessons:* read HANDOFF/PRODUCT_ORDERS heads every check (a user decision was relayed via curie); edit tracked files only inside
 the publication lock; compare development arms with window averages or several seeds (shared seed-0 batch order creates common
 best-epoch dips).
