@@ -1,0 +1,341 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_sparse_receiver_20261010T2240Z_smoke",
+  "args": {
+    "tag": "curie_sparse_receiver_20261010T2240Z_smoke",
+    "mode": "smoke"
+  },
+  "rows": [
+    {
+      "seed": 170,
+      "critic": "structured",
+      "budget": 1,
+      "prefixes": 2,
+      "queried_receiver_packets": 2,
+      "proposal_draws": 0,
+      "gain_vs_train_fixed": 0.008181143224665097,
+      "gain_bootstrap95": [
+        0.0081237310403304,
+        0.008238555408999794
+      ],
+      "gain_vs_noop": 0.005701118041738811,
+      "prediction_mse_against_rollout_mean": 3.859479417350079e-06,
+      "within_prefix_response_variance": 4.065650361286861e-06,
+      "conditional_mean_error_unbiased_estimate": 1.8266542367066485e-06,
+      "policy_wall_s": 0.1372502730009728,
+      "policy_supported_flops": 200832,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 3.5388358909926865e-16,
+      "chosen_routes_actions": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.020776355594814548,
+      "difference_bootstrap95": [
+        0.01597529588513222,
+        0.02557741530449688
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "structured",
+      "budget": 2,
+      "prefixes": 2,
+      "queried_receiver_packets": 4,
+      "proposal_draws": 2,
+      "gain_vs_train_fixed": 0.022844334259131654,
+      "gain_bootstrap95": [
+        0.011872697804766633,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.02036430907620537,
+      "prediction_mse_against_rollout_mean": 2.550707413958625e-05,
+      "within_prefix_response_variance": 2.0402691831929878e-05,
+      "conditional_mean_error_unbiased_estimate": 1.530572822362131e-05,
+      "policy_wall_s": 0.1378987589996541,
+      "policy_supported_flops": 323840,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 2.445960101127298e-16,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.0061131645603479945,
+      "difference_bootstrap95": [
+        0.0,
+        0.012226329120695989
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "structured",
+      "budget": 4,
+      "prefixes": 2,
+      "queried_receiver_packets": 8,
+      "proposal_draws": 6,
+      "gain_vs_train_fixed": 0.02895749881947965,
+      "gain_bootstrap95": [
+        0.024099026925462622,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.026477473636553363,
+      "prediction_mse_against_rollout_mean": 2.617674527414234e-05,
+      "within_prefix_response_variance": 3.9842083044015426e-05,
+      "conditional_mean_error_unbiased_estimate": 6.255703752134628e-06,
+      "policy_wall_s": 0.13865096300287405,
+      "policy_supported_flops": 569856,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 9.71445146547012e-17,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.0,
+      "difference_bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "structured",
+      "budget": 8,
+      "prefixes": 2,
+      "queried_receiver_packets": 16,
+      "proposal_draws": 14,
+      "gain_vs_train_fixed": 0.02895749881947965,
+      "gain_bootstrap95": [
+        0.024099026925462622,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.026477473636553363,
+      "prediction_mse_against_rollout_mean": 2.1828077495391596e-05,
+      "within_prefix_response_variance": 2.4274794180120537e-05,
+      "conditional_mean_error_unbiased_estimate": 9.690680405331327e-06,
+      "policy_wall_s": 0.1418259100028081,
+      "policy_supported_flops": 1061888,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 9.71445146547012e-17,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.0,
+      "difference_bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "free",
+      "budget": 1,
+      "prefixes": 2,
+      "queried_receiver_packets": 2,
+      "proposal_draws": 0,
+      "gain_vs_train_fixed": 0.008181143224665097,
+      "gain_bootstrap95": [
+        0.0081237310403304,
+        0.008238555408999794
+      ],
+      "gain_vs_noop": 0.005701118041738811,
+      "prediction_mse_against_rollout_mean": 5.5973954376485285e-06,
+      "within_prefix_response_variance": 4.065650361286861e-06,
+      "conditional_mean_error_unbiased_estimate": 3.564570257005098e-06,
+      "policy_wall_s": 0.13350469199940562,
+      "policy_supported_flops": 443752,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 3.5388358909926865e-16,
+      "chosen_routes_actions": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.009420985648281923,
+      "difference_bootstrap95": [
+        -0.006735444007933034,
+        0.02557741530449688
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "free",
+      "budget": 2,
+      "prefixes": 2,
+      "queried_receiver_packets": 4,
+      "proposal_draws": 2,
+      "gain_vs_train_fixed": 0.026476719129238394,
+      "gain_bootstrap95": [
+        0.01913746754498012,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.023996693946312108,
+      "prediction_mse_against_rollout_mean": 3.5991276403778176e-05,
+      "within_prefix_response_variance": 2.0402691831929878e-05,
+      "conditional_mean_error_unbiased_estimate": 2.5789930487813238e-05,
+      "policy_wall_s": 0.13700602800236084,
+      "policy_supported_flops": 809680,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 1.8735013540549517e-16,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": -0.008874590256291375,
+      "difference_bootstrap95": [
+        -0.01774918051258275,
+        0.0
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "free",
+      "budget": 4,
+      "prefixes": 2,
+      "queried_receiver_packets": 8,
+      "proposal_draws": 6,
+      "gain_vs_train_fixed": 0.01760212887294702,
+      "gain_bootstrap95": [
+        0.0013882870323973671,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.015122103690020733,
+      "prediction_mse_against_rollout_mean": 4.332483204305865e-05,
+      "within_prefix_response_variance": 3.9842083044015426e-05,
+      "conditional_mean_error_unbiased_estimate": 2.340379052105094e-05,
+      "policy_wall_s": 0.14004745800048113,
+      "policy_supported_flops": 1541536,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 9.71445146547012e-17,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.0,
+      "difference_bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seed": 170,
+      "critic": "free",
+      "budget": 8,
+      "prefixes": 2,
+      "queried_receiver_packets": 16,
+      "proposal_draws": 14,
+      "gain_vs_train_fixed": 0.01760212887294702,
+      "gain_bootstrap95": [
+        0.0013882870323973671,
+        0.03381597071349667
+      ],
+      "gain_vs_noop": 0.015122103690020733,
+      "prediction_mse_against_rollout_mean": 3.805323095732004e-05,
+      "within_prefix_response_variance": 2.4274794180120537e-05,
+      "conditional_mean_error_unbiased_estimate": 2.591583386725977e-05,
+      "policy_wall_s": 0.14726366000104463,
+      "policy_supported_flops": 3005248,
+      "selected_write_replay_supported_flops": 140288,
+      "native_write_replay_error": 9.71445146547012e-17,
+      "chosen_routes_actions": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "teacher_wall_s": 1.0236867479979992,
+      "teacher_supported_flops": 149504,
+      "gain_difference_dense_minus_budget": 0.0,
+      "difference_bootstrap95": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "saved_fit_bindings": [
+    {
+      "seed": 170,
+      "result": "experiments/results/credit/curie_unseen_receiver_v2_20261010T2140Z_pilot.json",
+      "result_sha256": "d437b101adf54d9e66eed1a917452fc12bb9c5484783ad44950c7a4efc2ca692",
+      "checkpoint": "experiments/results/credit/curie_unseen_receiver_v2_20261010T2140Z_pilot.pt",
+      "checkpoint_sha256": "a314cec77d7bc1f5e16b1c356da411440c4ead7fe4e697765214b62a9a6a27a2",
+      "prior_whole_fit_flops": 130523197440,
+      "prior_whole_fit_wall_s": 145.07195150299958
+    }
+  ],
+  "whole_wall_s": 3.494654673995683,
+  "peak_rss_kb": 318484,
+  "teacher_supported_flops": 149504,
+  "source_sha256": {
+    "experiments/credit/sparse_receiver_queries.py": "b9dcaeea5e3e864a05c8ba911de04c42f3bfbbe976d46870ae6240121229973d",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Saved nearly matched critics; no refit. Fresh synthetic prefixes/continuations, frozen depth4 native actor. TRAIN-best receiver anchor plus uniform implicit-index candidates, not learned acquisition. Candidate budget includes anchor; optional no-op score exactly zero for both critics. Policy work includes native prefix recomputation, which retains dense eight-mark forward scoring, all queried descriptors and critic work; no dense critic-score filtering. Teacher/replay costs and previous fitting are separate and charged. Timing includes Python FlopCounter instrumentation and is not production throughput or asynchronous hardware. Unbiased conditional-mean error estimates can be negative from finite continuations. No full actor learning, real-stream TEST or whole-fit efficiency claim."
+}
