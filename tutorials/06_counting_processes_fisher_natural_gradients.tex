@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{6}{Counting Processes and Fisher Geometry}{Compensators, timed races, and natural gradients with explicit parameter boundaries}
+\section*{Why this tutorial}
+Race learning observes both \emph{which} clock fired and \emph{when}. The waiting time supplies information that a winner-only classifier discards. Counting-process martingales reveal this information geometry and explain when a diagonal credit preconditioner is exact.
+\section{Counts, compensators and martingales}
+Let $N_i(t)$ count observed events of type $i$, with predictable intensity $\lambda_i(t\mid H_{t^-})$. Its compensator is $A_i(t)=\int_0^t\lambda_i(u)\dd u$. Under the usual integrability assumptions,
+\[
+ M_i(t)=N_i(t)-A_i(t)
+\]
+is a martingale: conditional expected future increments are zero. ``Predictable'' means the intensity is determined by the history before the event; using the arriving mark to define its own prior intensity would violate causality.
+\paragraph{Quadratic variation.} Unit jumps give $[M_i]_t=N_i(t)$ and predictable variation $\langle M_i\rangle_t=A_i(t)$. If two type processes have no simultaneous jumps, $[M_i,M_j]_t=0$ for $i\ne j$, and their compensated martingales are orthogonal. Physical timestamp ties in recorded data are not automatically independent simultaneous continuous-time jumps: use a declared event order or an appropriate joint observation model.
+\section{Scores as martingale integrals}
+Consider fixed observation horizon $T$ and log-scale coordinates
+\[
+ \lambda_i(t;\theta)=e^{\theta_i}b_i(t,H_{t^-}),
+\]
+where each predictable $b_i$ is a fixed function of observed history and does not otherwise depend on any $\theta_j$. The log-likelihood is
+\[
+ \ell(\theta)=\sum_i\int_0^T\log\lambda_i(t;\theta)\dd N_i(t)
+ -\sum_i\int_0^T\lambda_i(t;\theta)\dd t.
+\]
+Thus $U_i=\partial_{\theta_i}\ell=N_i(T)-A_i(T)=M_i(T)$. Martingale isometry and orthogonality give
+\[
+ F_{ij}=\E[U_iU_j]=\delta_{ij}\E[A_i(T)]
+ =\delta_{ij}\E[N_i(T)].
+\]
+The same identity holds for a stopped first-event experiment under the required optional-stopping and integrability conditions. Censored no-event observations contribute $-A_i$ to the score: silence is part of the information.
+\begin{keyidea}
+Diagonal Fisher information is exact for these separate log-intensity scale coordinates and observed event causes. It is not diagonal for every weight in a deep race network, or for an unobserved latent winner after marginalization.
+\end{keyidea}
+\section{A worked exponential race}
+For independent exponential clocks with rates $\lambda_i=e^{\theta_i}$, observe the first time $\tau$ and winner $I$. Write $\Lambda=\sum_i\lambda_i$ and $p_i=\lambda_i/\Lambda$. Then
+\[
+ \ell=\theta_I-\Lambda\tau,\qquad U_i=\mathbf1_{I=i}-\lambda_i\tau.
+\]
+Winner and time are independent, $\E\tau=1/\Lambda$, and $\E\tau^2=2/\Lambda^2$. For $i\ne j$,
+\[
+ \E[U_iU_j]=-\lambda_j\frac{p_i}{\Lambda}
+ -\lambda_i\frac{p_j}{\Lambda}
+ +\lambda_i\lambda_j\frac2{\Lambda^2}=0.
+\]
+On the diagonal, $p_i-2\lambda_ip_i/\Lambda+2\lambda_i^2/\Lambda^2=p_i$. Hence $F=\operatorname{diag}(p)$.
+\paragraph{The softmax gauge.} If only the winner is observed, $F_{\rm winner}=\operatorname{diag}(p)-pp^\top$. Adding a common constant to all $\theta_i$ leaves winner probabilities unchanged, so the all-ones direction is null. The timed race also supplies $pp^\top$, recovering $F=\operatorname{diag}(p)$. Time identifies the total rate.
+\section{Natural gradients and parameter sharing}
+Natural-gradient ascent uses $\Delta\theta=\eta F^{-1}U$. For independent race log-scales, this normalizes each coordinate by its expected win exposure. In practice, estimate exposure from past data and regularize near-zero entries; rare clocks otherwise produce enormous updates.
+\paragraph{Cram\'er--Rao.} For a locally unbiased estimator from $n$ independent races with identifiable parameters, $\Cov(\widehat\theta)\succeq F^{-1}/n$. A rarely winning clock has low information per observation. Stored capacity can therefore exceed statistically supported capacity even when dormant clocks are cheap to retain.
+\paragraph{Deep parameters.} If log-scales depend on shared weights $w$, with Jacobian $J=\partial\theta/\partial w$, the conditional pullback is $J^\top FJ$, generally dense. For history-dependent features, sum the corresponding event/compensator contributions with their own Jacobians. Generalized Gauss--Newton uses analogous output-space curvature pullbacks; the exact Hessian additionally contains second derivatives of the parameter map. Learning memory transport or hidden routes requires their credit paths too.
+\section*{Exercises}
+\begin{exercise}A two-clock race has rates $(2,1)$. Compute the timed and winner-only Fishers.\end{exercise}
+\begin{solution}Timed: $\operatorname{diag}(2/3,1/3)$. Winner-only: $\left(\begin{smallmatrix}2/9&-2/9\\-2/9&2/9\end{smallmatrix}\right)$, whose row sums vanish.\end{solution}
+\begin{exercise}No event occurs before censoring time $T$ in an exponential race. What is the score?\end{exercise}
+\begin{solution}$\ell=-\Lambda T$ and $U_i=-\lambda_iT$. Omitting this silence term biases learning toward excessive event rates.\end{solution}
+\begin{exercise}Both clock scales share one weight: $\theta_1=w$, $\theta_2=2w$. Find the scalar Fisher.\end{exercise}
+\begin{solution}$J=(1,2)^\top$, so $F_w=p_1+4p_2$. The diagonal race-coordinate result has been pulled back through a shared parameterization.\end{solution}
+\begin{inourmodels}
+Note 168 and credit/race\_fisher\_mc.py study timed-race geometry. RaceFisher.lean checks the exponential-race algebra given the stated moments; it does not formalize compensators or optional stopping. Native clock/mark heads share temporal and addressed value features. A diagonal local update must therefore be labelled a local coordinate preconditioner unless the complete pullback is accounted for.
+\end{inourmodels}
+\paragraph{Further reading.} Note 168, \emph{Race information geometry}, and its witness and Lean algebra; tutorial 1 for race survival and joint densities.
+\end{document}

@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{7}{Spectra, Scaling and Queues}{When sparse credit can scale, what temporal transport predicts, and how delayed work occupies memory}
+\section*{Why this tutorial}
+Large stored capacity is useful if only a small amount of work is needed per event. Spectral tails describe approximation cost; renewal laws describe temporal credit uncertainty; queueing laws describe the memory occupied by unfinished feedback. Each supplies a conditional scaling argument, not a hardware speed claim.
+\section{Power laws and the summability boundary}
+Suppose a credit covariance has ordered eigenvalues $v_i=Ci^{-\alpha}$, $i=1,\dots,N$. Dropping modes after $k$ has mean-squared error $\sum_{i>k}v_i$. For $\alpha>1$, the integral comparison gives
+\[
+ \sum_{i=k+1}^{N}Ci^{-\alpha}
+ \le C\int_k^\infty x^{-\alpha}\dd x
+ =\frac{C}{\alpha-1}k^{1-\alpha}.
+\]
+A target error $\epsilon$ therefore needs $k\ge[C/((\alpha-1)\epsilon)]^{1/(\alpha-1)}$, independently of $N$ \emph{if $C$ stays bounded as capacity grows}. At $\alpha=1$, the tail grows like $C\log(N/k)$; for $\alpha<1$ it grows as a power of $N$. Normalizing the spectrum separately at every $N$ changes the hypothesis.
+\paragraph{Rate of active modes.} For complex Gaussian modes water-filled at $v_k$, the active rate is approximately
+\[
+ R=\sum_{i\le k}\log(v_i/v_k)
+ =\alpha\sum_{i\le k}\log(k/i)\le\alpha k.
+\]
+The last inequality follows from $\log(k!)\ge k\log k-k$. Real Gaussian modes have half this rate. Scaling.lean checks the finite sum and tail inequalities; a fitted power-law plot does not prove the assumptions hold for larger models.
+\section{Rank, routes and eventwise work}
+The participation ratio $r_{\rm eff}=(\sum_iv_i)^2/\sum_iv_i^2$ summarizes a spectrum. It is neither algebraic rank nor a guarantee about the work required at a particular event.
+\begin{example}[Pooled rank is not per-event activity]
+Choose an address $J$ uniformly from $N$ positions and let $G=Ze_J$, with $\E Z=0$, $\E Z^2=1$. Every event has one nonzero credit coordinate. Pooled covariance is $I/N$, with participation ratio $N$. Conditional on the address, only one coordinate matters. Routing can expose structure that pooled eigenvalues hide.
+\end{example}
+Conversely, every event can have a dense low-rank vector: low effective rank alone does not make its discovery, emission or producer updates cheap. Use $\Cov(G)=\E[\Cov(G\mid H)]+\Cov(\E[G\mid H])$ to separate unpredictable residuals from predictable context variation.
+\paragraph{A route-mass bound.} If $v_i\ge0$ and $\sum_iv_i\le1$, then at most $1/\theta$ components can exceed $\theta$. Since $v_i\le1$, their complex Gaussian rate is at most $(1/\theta)\log(1/\theta)$. This does not charge the process that discovers those components; that work must be measured separately.
+\section{Temporal uncertainty through a Laplace transform}
+For decay rate $r>0$, phase frequency $\omega$ and i.i.d. nonnegative gaps $\tau_j$, define $L(s)=\E[e^{-s\tau}]$. Assume zero-mean innovations $c_j$ with variance $\sigma^2$ are independent across events and independent of gaps. The transported future tail is
+\[
+ Z=\sum_{j\ge1}\left(\prod_{k\le j}e^{(-r-i\omega)\tau_k}\right)c_j.
+\]
+Cross terms vanish, so when $L(2r)<1$,
+\[
+ \E|Z|^2=\sigma^2\sum_{j\ge1}L(2r)^j
+ =\sigma^2\frac{L(2r)}{1-L(2r)}.
+\]
+For exponential gaps of rate $\mu$, $L(s)=\mu/(\mu+s)$ and the variance is $\sigma^2\mu/(2r)$. Bursts and slow memory increase uncertainty. Nonzero innovation means add variance from the random transport; correlated/nonstationary gaps invalidate the i.i.d. renewal formula. Use a fitted local prior and audit it.
+\begin{keyidea}
+A \emph{mixture} of gap laws has a mixture of Laplace transforms. A \emph{race} of independent clocks has first-arrival density $f(t)=S(t)\sum_ih_i(t)$; integrate $e^{-st}f(t)$ against that law. Adding the separate clocks' Laplace transforms is generally wrong.
+\end{keyidea}
+\section{Delayed feedback is a queue}
+For a stable stationary queue, Little's law is $\E N=\lambda\E W$: average unresolved records equal record-arrival rate times average retention time. One derivation sums each record's occupancy area over a long interval and divides by the interval length. Boundary terms vanish under the stability assumptions.
+\paragraph{Memory accounting.} At 1000 retained records/s and 0.2 s average delay, there are 200 unresolved records on average. At 256 bytes/record this is 51,200 bytes, excluding weights, optimizer moments, caches and allocator overhead. An average is not a peak-RSS guarantee; bursts and long-tailed feedback require headroom. If each event creates multiple records, $\lambda$ is the record rate, not the event rate.
+\paragraph{How much capacity is learnable?} Let usage probabilities satisfy $p_j\asymp Cj^{-a}$ with $a>1$ and stable $C$. After $n$ independent uses,
+\[
+ K_{\rm seen}(n)=\sum_j[1-(1-p_j)^n]\asymp n^{1/a}
+\]
+before finite-capacity saturation. Split at $j_0=(Cn)^{1/a}$: frequent addresses contribute about $j_0$, and rare ones about $n\sum_{j>j_0}p_j\asymp n^{1/a}$. Useful specialization requires exposure and credit, not merely allocated slots.
+\section*{Exercises}
+\begin{exercise}For $C=1$, $\alpha=2$, what tail bound follows after retaining 100 modes?\end{exercise}
+\begin{solution}At most $1/100=0.01$. If $C$ doubled with model size, this bound would double too.\end{solution}
+\begin{exercise}For exponential gaps with $\mu=20$/s, $r=2$/s and $\sigma^2=0.1$, find tail variance.\end{exercise}
+\begin{solution}$\sigma^2\mu/(2r)=0.5$. This assumes independent zero-mean innovations and renewal gaps.\end{solution}
+\begin{exercise}A 5 kHz stream creates two records/event, retained for 10 ms. Estimate unresolved records.\end{exercise}
+\begin{solution}$10{,}000\times0.01=100$ records on average. Peak occupancy needs the delay and burst distributions.\end{solution}
+\begin{inourmodels}
+Notes 165--168 motivate spectrum-aware credit, temporal surprise, queue storage and exposure-limited specialization. The saved Taxi Laplace diagnostic found pooled rank correlation 0.83 but no audit-cost saving (ratio 1.02): between-mode ranking did not supply useful eventwise calibration. The next economical learner must charge candidate discovery, producer work, audits, replay, optimizers and unresolved records, then measure total work at matched quality and depth.
+\end{inourmodels}
+\end{document}
