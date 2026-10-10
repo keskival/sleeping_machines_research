@@ -95,6 +95,11 @@ depth.**
 | Per-event trace learner vs BPTT, two memory layers | 9.6e−16 (layer-local truncation differs by 112–124%) |
 | Mutually trained feedback started at B = W reproduces the exact learner (9 per-event AdamW updates) | difference 0.0 |
 
+Measured learning (Taxi DEV log-likelihood per event, 3 seeds, 20 passes over TRAIN; theory note 160 §§7, 11):
+- per-event trace learner (e) 0.4805 vs BPTT 0.4557; the traces add +0.0077 over per-event learning without them, on every seed;
+- unshared feedback trained by the forward updates (f) 0.4715 vs shared exact transposes 0.4736, with alignment cosine
+  1.000 on every feedback matrix; fixed random feedback 0.1699 (cosines 0.01–0.28).
+
 Modeled learning work at depth 2 for the pairwise credit learner: 4,064 vs 17,280 leading-linear MACs per target
 (0.235× dense). Measured fitting quality, credit gap and wall time are pending (queues listed in `experiments/HANDOFF.md`).
 
