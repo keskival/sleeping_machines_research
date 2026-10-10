@@ -73,9 +73,10 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
   2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
   published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
-  2.42; its mark path overfits ~100-sequence training sets). **Github has no valid verdict yet:** its −198.5 (bar −272.9)
-  comes from four of five splits whose weights went NaN by epoch 8 after one non-finite update, leaving epoch 2–3
-  checkpoints; guarded protocol reruns (TEST once, configuration unchanged) are queued, as for Wikipedia split 0. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). LastFM is pending. These are
+  2.42; its mark path overfits ~100-sequence training sets). **Github lost by 2.3 nats:** −270.62 ± 48.69 SE vs the bar
+  −272.90, yet below every single published model's total (best LNM++ −269.7) and ahead on time (−390.93 vs −382.4);
+  marks carry the gap (120.30 vs 109.5). Splits 1–4 are guarded reruns after a numerical failure (one long training
+  sequence gives a non-finite gradient and is skipped). **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). LastFM is pending. These are
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
