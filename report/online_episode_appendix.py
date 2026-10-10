@@ -85,7 +85,7 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages()
+    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages() + optimizer_aware_pages()
 
 
 def sparse_receiver_pages():
@@ -110,3 +110,13 @@ def shared_receiver_confirmation_pages():
     d=json.loads(p.read_text());assert d['status']=='completed'
     rows=[[str(r['seed']),f"{r['gain_retained']*100:.1f}%",f"{r['query_work_ratio']:.3f}",f"{r['shared']['unseen_inactive_relative_mse']:.4f}"] for r in d['rows']]
     return [[('h2','Shared prefix: seeded development gate'),('table',(['Seed','Gain retained','Query work ratio','Inactive error / zero'],rows,[22,43,48,54])),('p',f"Gate passes: {d['confirmation_gate']}. "+d['gate_scope']),('small',d['scope'])]]
+
+
+def optimizer_aware_pages():
+    p=ROOT/'experiments/results/credit/curie_optimizer_aware_fit_20261011T0010Z_pilot.json'
+    paired=ROOT/'experiments/results/credit/curie_paired_learning_effect_20261011T0030Z_fit.json'
+    if not p.exists() or not paired.exists():return []
+    d=json.loads(p.read_text());c=json.loads(paired.read_text());assert d['status']==c['status']=='completed'
+    rows=[[r['arm'].replace('_',' '),f"{r['learning_aware_relative_mse']:.4f}",f"{r['gain_vs_train_fixed']:+.6f}"] for r in d['rows']]
+    r=c['rows'][1];rows.append(['paired learning effect',f"{r['learning_aware_relative_mse']:.4f}",f"{r['gain_vs_train_fixed']:+.6f}"])
+    return [[('h2','Route credit including subsequent readout learning'),('p','Optional native key writes now influence later predictions through four branch-local Adam updates to the mark readout. Each branch scores feedback before updating and owns its288 readout parameters/optimizer coordinates. The timed/keyed carrier stays fixed and every revealed prefix is replayed causally. Independent-world scores agree with batched replay within1.2e-15; zero-learning-rate response agrees with the frozen formula within2.6e-16.'),('table',(['Credit model','Error / zero','Gain / target'],rows,[90,35,42])),('p',f"Whole-response correction learns better calibration from learning-aware labels, but both corrections reduce task utility relative to the saved model. Paired supervision learns only the learning-mediated difference: effect error/zero{c['learning_effect_relative_mse']:.4f}. Its selected gain relative to the preserved baseline{c['gain_over_preserved_baseline']:+.6f}; keep the saved model for selection."),('small',d['scope']),('small',c['scope']),('small',f"Whole initial phase{d['whole_wall_s']:.2f}s, teacher{d['teacher_supported_flops']/1e9:.3f}supportedGFLOPs; both fits{sum(r['supported_flops'] for r in d['fit_work'])/1e9:.3f}GFLOPs. Paired refit{c['whole_wall_s']:.2f}s/{c['fit_supported_flops']/1e9:.3f}GFLOPs, reusing those paid packets; saved baseline pretraining remains additional. Largest peak RSS{max(d['peak_rss_kb'],c['peak_rss_kb'])/1024:.1f}MiB. Next: task-valued confidence/selection calibration and independent fresh confirmation.")]]

@@ -397,3 +397,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Optimizer-aware route credit
 
 [Learning-mediated route effects](theory/OPTIMIZER_AWARE_ROUTE_CREDIT.md) defines causal branch-local learning replay, separates direct carrier influence from surviving weight/optimizer influence, and derives a conditional fixed-response error bound. Native Adam-world contracts pass; a matched-supervision pilot is admitted under B1/R1.
+
+## Shared world model of acting and learning
+
+[Unified predictive world and reciprocal credit](theory/SHARED_WORLD_MODEL_AND_RECIPROCAL_CREDIT.md) connects shared policy/loss/credit representations, learner-inclusive state, Bellman model-error bounds and paired learning-effect supervision. Known world-model and meta-gradient primitives are attributed; prototype intervention values remain scoped to the declared readout learning policy.
