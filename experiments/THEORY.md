@@ -385,3 +385,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Credit beyond the active counterfactual pool
 
 [Unseen route credit](theory/UNSEEN_ROUTE_CREDIT.md) defines shared route-conditioned generalization, causal feedback-conditioned predictions and a two-stage full-support estimator that avoids evaluating every dormant route. Discovery cost and route-sampling variance remain explicit; current market critic emits state cotangents rather than route-indexed values.
+
+## Credit information and depth economics
+
+[Forward packets for predictable learning](theory/CREDIT_INFORMATION_AND_DEPTH_ECONOMICS.md) separates future innovation, packet compression and critic approximation; derives exact-audit work thresholds, a depth-dependent residual-risk criterion and the difference between stale predictions and stale targets. It defines the next native measurements without a scaling claim.
