@@ -1,0 +1,2 @@
+# ENABLER: Theory note 167 test, DEV only: does the forward race's predicted gap law (Laplace transform at 2r per mode) predict the realized credit-tail magnitude, and how much does Laplace-allocated sparse auditing save vs uniform at equal variance (note 165 Theorem 10.1)? Decides whether the surprise estimate for surprise-adaptive credit can come from the forward pass in closed form
+credit_laplace_smoke experiments/credit/credit_laplace.py --tag credit_laplace_smoke --epochs 1 --max-train-seqs 40 --max-dev-seqs 20 --grid 16

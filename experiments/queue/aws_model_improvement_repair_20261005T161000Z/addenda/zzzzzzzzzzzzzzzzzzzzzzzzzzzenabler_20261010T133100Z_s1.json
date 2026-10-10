@@ -1,0 +1,47 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Theory note 167 test, DEV only: does the forward race's predicted gap law (Laplace transform at 2r per mode) predict the realized credit-tail magnitude, and how much does Laplace-allocated sparse auditing save vs uniform at equal variance (note 165 Theorem 10.1)? Decides whether the surprise estimate for surprise-adaptive credit can come from the forward pass in closed form",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "credit_laplace_smoke",
+        "queue": "experiments/queue/enabler/credit_laplace_smoke/credit_laplace_smoke.txt",
+        "queue_sha256": "17b391dd9bd5b8c40f910abb36fb206157567d577326a3d435e16dba5dc4a8fc",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_laplace.py": "4598b043686712c95b7c16c5a53f59c83ee17a7ee3293c93a1654c18c1778c1b",
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_laplace_smoke.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit_laplace_taxi_n16",
+        "queue": "experiments/queue/enabler/credit_laplace_taxi_n16/credit_laplace_taxi_n16.txt",
+        "queue_sha256": "2d6da3f19d92b8829a2de308442abb9712f9d47412a954b2c44e19ced8025f47",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_laplace.py": "4598b043686712c95b7c16c5a53f59c83ee17a7ee3293c93a1654c18c1778c1b",
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_laplace_taxi_n16.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/credit_laplace_smoke.json"
+          }
+        ]
+      }
+    ]
+  }
+}
