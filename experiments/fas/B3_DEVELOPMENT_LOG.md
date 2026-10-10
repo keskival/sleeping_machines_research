@@ -1,6 +1,6 @@
 # B3 development log (FAS v2; owner: curie FAS session)
 
-Protocol: `experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md` (with its amendments). The test set is sealed. Development uses
+Protocol: `experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md` (with its amendments). Sealed confirmation completed on 10 October: native 0.703656 versus time-encoded Transformer 0.704320, three seeds, registered verdict TIE; paired gap −0.000664, 95% [−0.008339, 0.007469]. Result: `results/fas/curie_b3_sealed_v4_20261010T0220Z_decision.json`. TEST reservations/scores are retained and not repeated. Further development uses
 training and validation only. Selection is by validation-clean NLL; validation AUROC is reported separately.
 
 ## Setting and references (Stage 1, validation, no learned model)

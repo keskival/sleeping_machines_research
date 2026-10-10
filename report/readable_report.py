@@ -5422,7 +5422,7 @@ def benchmark_record_page():
         ['Bosser & Ben Taieb Github (NLL/sequence)', f"{B4G['total']['mean']:.2f} ± {B4G['total']['se']:.2f} SE", 'bar −272.9; best single model −269.7', 'No valid verdict yet: splits 1–4 reached NaN parameters (one non-finite update), leaving epoch 2–3 checkpoints; guarded protocol reruns (TEST once, configuration unchanged) queued'],
         ['Bosser & Ben Taieb MIMIC2 (NLL/sequence)', f"{B4X['total']['mean']:.2f} ± {B4X['total']['se']:.2f} SE", 'bar 2.42; best single model 3.1', 'Loss of frozen configuration; time and marks behind'],
         ['Bosser & Ben Taieb Retweets (NLL/sequence)', f"{B4R['total']['mean']:.2f} ± {B4R['total']['se']:.2f} SE; time {B4R['L_T']['mean']:.2f}; marks {B4R['L_M']['mean']:.2f}", 'bar −538.70; best single model −536.17; time −621.33; marks 82.63', 'Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps)'],
-        ['FAS v2 (anonymous interleaved logs)', 'validation 0.702', 'time-encoded Transformer reference 0.704', 'In development; sealed verdict pending the reference seeds'],
+        ['FAS v2 (anonymous interleaved logs)', 'sealed TEST 0.70366 (3 seeds)', 'time-encoded Transformer 0.70432 (3 seeds)', 'TIE; paired gap -0.00066, 95% [-0.00834, 0.00747]'],
     ]
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),
             ('p', 'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '

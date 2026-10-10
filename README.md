@@ -78,7 +78,7 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).
+characters, P12 mortality AUROC, real-world tables, FAS v2 (sealed-test tie: native 0.70366 vs time-encoded Transformer 0.70432 AUROC, three seeds; paired difference −0.00066 with 95% interval [−0.00834, 0.00747]; native ahead of the best classical detector's 0.68223).
 
 ## Headline evidence for the universal substrate
 
