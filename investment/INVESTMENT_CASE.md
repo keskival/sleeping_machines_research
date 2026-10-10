@@ -67,7 +67,9 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   −240.42 ± 43.31 SE vs the bar −122.62 (best published time + best published mark NLL), 4 of 5 splits below it. The win
   is in the marks, 28.49 vs 144.79. Our addressed mark memory copies pages never seen in training (10–27% of test edits),
   which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
-  2.83 SE vs −239.7; timing carries the gap. **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
+  2.83 SE vs −239.7; timing carries the gap, and it is the recording grid: the authors' own log-normal-mixture model,
+  trained with their code, gains 16.9 nats per sequence on MOOC from timestamp rounding and falls about 5 nats behind
+  our time NLL once gaps are spread within the recording cell (ours moves ≤ 0.4). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
   published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
   2.42; its mark path overfits ~100-sequence training sets). **Github has no valid verdict yet:** its −198.5 (bar −272.9)
   comes from four of five splits whose weights went NaN by epoch 8 after one non-finite update, leaving epoch 2–3
