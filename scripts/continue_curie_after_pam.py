@@ -29,6 +29,8 @@ def publish(manifest_path):
     if manifest.get('battle')=='B3':
         paths.append('experiments/results/fas/fas_v2_test_ledger.jsonl')
     paths=[p for p in dict.fromkeys(paths) if (ROOT/p).exists()]
+    if not paths:
+        return  # Private report receipts have no repository evidence to publish.
     with open('/tmp/aws-language-publication.lock','a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
         if subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()!='main':
