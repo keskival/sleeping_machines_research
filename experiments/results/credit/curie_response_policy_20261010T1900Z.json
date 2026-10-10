@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "tag": "curie_response_policy_20261010T1900Z",
+  "battle": "R1/B1",
+  "metrics": [
+    {
+      "depth": 2,
+      "cotangent_error": 2.0514079191315086e-19,
+      "proposal_norm": 2.185794967078657e-06,
+      "retained_activation_elements": 112,
+      "status": "passed",
+      "scope": "Conditional certificate tested with surrogate itself as target, hence zero gradient error; not a certificate for actual future data."
+    },
+    {
+      "depth": 4,
+      "cotangent_error": 1.4212948157131143e-19,
+      "proposal_norm": 3.375580655300301e-06,
+      "retained_activation_elements": 112,
+      "status": "passed",
+      "scope": "Conditional certificate tested with surrogate itself as target, hence zero gradient error; not a certificate for actual future data."
+    },
+    {
+      "depth": 8,
+      "cotangent_error": 8.803848695524384e-20,
+      "proposal_norm": 2.0075270026197996e-06,
+      "retained_activation_elements": 112,
+      "status": "passed",
+      "scope": "Conditional certificate tested with surrogate itself as target, hence zero gradient error; not a certificate for actual future data."
+    }
+  ],
+  "wall_s": 0.07738792599775479,
+  "source_sha256": {
+    "experiments/credit/check_response_policy.py": "b567806398afde3a5b6646d6605cbc25f9eeb50779c3d3fb14c9c80150caaf3b",
+    "experiments/credit/response_credit_policy.py": "fe66bba97e04aca709579109f0d862bb0c2fd2541052214c6e654ca06f443148",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
