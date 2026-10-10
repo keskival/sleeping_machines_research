@@ -1,0 +1,100 @@
+{
+  "status": "completed",
+  "tag": "aws_deep_blocks_real_20261010T180155Z_smoke",
+  "battle": "B1/R1 deep credit",
+  "stage": "real",
+  "seed": 0,
+  "predecessor": {
+    "path": "experiments/results/credit/aws_deep_blocks_20261010T175852Z_measure.json",
+    "sha256": "49a87a7546200977ccbdea8b58ab08561498567ea34551f7a56d1aafb8a282d7"
+  },
+  "parity_pass": true,
+  "maximum_errors": {
+    "parameters": 4.440892098500626e-16,
+    "gradients": 1.021405182655144e-14,
+    "adam": 1.7763568394002505e-15,
+    "likelihood_sum": 2.2737367544323206e-13
+  },
+  "training_wall_s": {
+    "dense": 12.491701011895202,
+    "blocks": 5.001320726238191
+  },
+  "training_speedup": 2.497680451957537,
+  "evaluation_wall_s": {},
+  "validation": {},
+  "train_batches": 4,
+  "train_scored_events": 2272,
+  "optimizer_updates_per_arm": 142,
+  "trace_floats_per_stream": {
+    "dense": 301056,
+    "blocks": 167072
+  },
+  "scale": 0.14583333333333337,
+  "batch_checks": [
+    {
+      "batch": 0,
+      "shape": [
+        16,
+        36
+      ],
+      "errors": {
+        "parameters": 2.220446049250313e-16,
+        "gradients": 3.774758283725532e-15,
+        "adam": 1.7763568394002505e-15,
+        "likelihood_sum": 2.2737367544323206e-13
+      }
+    },
+    {
+      "batch": 1,
+      "shape": [
+        16,
+        36
+      ],
+      "errors": {
+        "parameters": 2.220446049250313e-16,
+        "gradients": 2.6645352591003757e-15,
+        "adam": 8.881784197001252e-16,
+        "likelihood_sum": 0.0
+      }
+    },
+    {
+      "batch": 2,
+      "shape": [
+        16,
+        36
+      ],
+      "errors": {
+        "parameters": 2.220446049250313e-16,
+        "gradients": 4.6629367034256575e-15,
+        "adam": 1.7763568394002505e-15,
+        "likelihood_sum": 2.842170943040401e-14
+      }
+    },
+    {
+      "batch": 3,
+      "shape": [
+        16,
+        38
+      ],
+      "errors": {
+        "parameters": 4.440892098500626e-16,
+        "gradients": 1.021405182655144e-14,
+        "adam": 1.7208456881689926e-15,
+        "likelihood_sum": 1.1368683772161603e-13
+      }
+    }
+  ],
+  "wall_s": 18.190312944934703,
+  "data_sha256": {
+    "train": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+    "dev": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf"
+  },
+  "max_rss_kb": 649548,
+  "source_sha256": {
+    "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+    "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+    "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+    "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+  },
+  "scope": "Same two-layer model, seed, shuffled TRAIN batches, per-event Adam and DEV scorer. No TEST. Complete online train steps timed; loading/evaluation/parity-check overhead separate. This is execution equivalence, not a changed quality or hard-routing claim."
+}
