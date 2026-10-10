@@ -1,5 +1,5 @@
 """Publish completed B1/R1 receiver-credit evidence and rebuild current report."""
-import fcntl,json,subprocess
+import fcntl,hashlib,json,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TAGS=['curie_unseen_receiver_v2_20261010T2140Z_pilot',*[f'curie_unseen_receiver_confirm_s{s}_20261010T2125Z' for s in (171,172)]]
@@ -8,6 +8,8 @@ def main():
     rows=[];paths=[]
     for tag in TAGS:
         p=ROOT/'experiments/results/credit'/f'{tag}.json';d=json.loads(p.read_text());assert d['status']=='completed'
+        for source,digest in d['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==digest,source
+        assert hashlib.sha256((ROOT/d['metrics']['checkpoint']).read_bytes()).hexdigest()==d['metrics']['checkpoint_sha256']
         paths.extend([str(p.relative_to(ROOT)),d['metrics']['checkpoint']])
         for arm in d['metrics']['arms']:
             rows.append(dict(seed=d['args']['seed'],arm=arm['arm'],inactive=arm['scopes']['unseen_inactive'],utility=arm['utility'],wall_s=d['wall_s'],supported_flops=d['supported_flops']))
