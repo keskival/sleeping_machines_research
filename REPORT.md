@@ -4465,6 +4465,19 @@ Saved nearly matched critics; no refit. Fresh synthetic prefixes/continuations, 
 
 Whole new diagnostic102.32s, RSS312.5MiB. Teacher work0.029GFLOPs is additional. Earlier critic fits/checkpoints remain charged in their own completed evidence; no new fitting occurs here. Selection replay and per-seed prior-fit costs are recorded in the result file.
 
+### Sharing forward context across receiver-credit queries
+
+The new critic encodes the common forward prefix once, then combines it with a seven-dimensional receiver-specific recurrent representation. Versioned context activation can be reused across queried addresses. Sparse/batched values and accumulated parameter gradients match the repeated-context reference; stale versions are rejected.
+
+| Critic | Parameters | Inactive error / zero | Gain / target | Query MFLOPs |
+| --- | --- | --- | --- | --- |
+| saved receiver gru | 10608 | 0.3607 | +0.014931 | 31.49 |
+| shared prefix | 10584 | 0.3761 | +0.014042 | 8.85 |
+
+Pilot: same seed170 actor, exact TRAIN/DEV prefixes, labels, steps, optimizer and nearly matched parameters as saved structured receiver critic. New factorized initialization, no matched encoder initialization. Smoke has fewer labels and is execution only. Frozen synthetic actor, no teacher labels for receivers6/7. Query work excludes common native descriptor generation, reported separately by sparse query diagnostic. New teacher and fitting work plus saved prior fitting charged; no full learning-efficiency or TEST claim.
+
+One seed170;128 TRAIN prefixes with8 continuations,64 DEV prefixes with16 continuations,256 steps. Whole64-prefix query work is in the same units for both arms; descriptors are precomputed for this query comparison. New fit12.90s/9.952supportedGFLOPs; teacher0.083GFLOPs; complete new phase134.95s, RSS363.8MiB. Fitting graphs, receiver state, optimizer and source packets are additional to the retained context output.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
