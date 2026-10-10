@@ -19,7 +19,7 @@ Post-boundary material: internal only until the priority filing (see `ip/`).
 ## Coverage and reading path
 
 4. **Information theory for learning signals** — entropy, mutual information, Gaussian channels; rate–distortion of a Gaussian
-   (log(v/D)), reverse water-filling (weighted form, sparsity as the optimum); side information and Wyner–Ziv (no rate loss for
+   (½ log(v/D) per real Gaussian; log(v/D) per circular complex Gaussian), reverse water-filling (weighted form, sparsity as the optimum); side information and Wyner–Ziv (no rate loss for
    Gaussians; value of a forward statistic = I(λ;Y)); indirect source coding (Wiener filtering against data noise). Our use:
    note 164 Part II, note 165 §§2–4.
 5. **Learning dynamics** — perturbed gradient descent on strongly convex losses; coupled two-system comparison and a weighted
