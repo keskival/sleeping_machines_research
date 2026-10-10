@@ -21,7 +21,8 @@ def measure(depth,pairs):
     opts=[torch.optim.Adam(m.parameters(),lr=.001) for m in (reference,fast)]
     timings={'reference':[],'scan':[]};maxgrad=maxloss=maxparam=maxstate=0.;losses=[]
     for k in range(4):
-        data=batch(18100+k,size=1,pairs=pairs);result={}
+        generator=torch.Generator().manual_seed(18100+k)
+        data=(torch.randn(1,4*pairs,generator=generator).exp().cumsum(1),torch.randint(0,8,(1,4*pairs),generator=generator));result={}
         # Alternate order to reduce systematic cache/timing-order effects.
         for i in ((0,1) if k%2==0 else (1,0)):
             name=('reference','scan')[i];result[name]=step((reference,fast)[i],opts[i],data)
@@ -32,7 +33,7 @@ def measure(depth,pairs):
             for key in x:maxstate=max(maxstate,float((x[key]-y[key]).abs().max()))
         losses.append(a[0]);assert max(maxgrad,maxloss,maxparam,maxstate)<1e-10
     L=int(data[0].shape[1]);median={k:statistics.median(v) for k,v in timings.items()}
-    return dict(depth=depth,batch=1,length=L,parameters=sum(p.numel() for p in reference.parameters()),scored_targets_per_step=L-1,steps_per_arm=4,warmup_steps=1,timing_s=timings,median_step_s=median,speedup=median['reference']/median['scan'],maximum_loss_error=maxloss,maximum_gradient_error=maxgrad,maximum_parameter_error=maxparam,maximum_optimizer_state_error=maxstate,reference_losses=losses,scope='Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result.')
+    return dict(depth=depth,batch=1,length=L,parameters=sum(p.numel() for p in reference.parameters()),scored_targets_per_step=L-1,steps_per_arm=4,warmup_steps=1,timing_s=timings,median_step_s=median,speedup=median['reference']/median['scan'],maximum_loss_error=maxloss,maximum_gradient_error=maxgrad,maximum_parameter_error=maxparam,maximum_optimizer_state_error=maxstate,reference_losses=losses,scope='Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result.')
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--tag',required=True);a=ap.parse_args();out=ROOT/'experiments/results/credit'/f'{a.tag}.json';assert not out.exists()
