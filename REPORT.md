@@ -4216,3 +4216,35 @@ Crossed history/label averaging, identical initial weights and common TRAIN-deri
 All shared teacher generation and four critic fits; supported PyTorch operations only, special/unsupported operations excluded. No work-to-quality claim.
 
 The admission gate requires improved DEV calibration and action utility in all three seeded replicates before depth scaling. This frozen-actor synthetic intervention diagnostic does not demonstrate an online asynchronous learner or deployment access to a true continuation generator.
+
+## Appendix. R1 denoised intervention credit at depth
+
+The same crossed history/label construction is applied to deeper frozen native actors. Averaged-label arms are shown; each is compared with its own TRAIN-mean action. All single-label diagnostics remain in result files.
+
+| Depth | Seed | History | DEV relative MSE | Future loss gain |
+| --- | --- | --- | --- | --- |
+| 4 | 170 | isolated | 0.326 | 0.00148519 |
+| 4 | 170 | connected | 0.417 | 0.000978398 |
+| 4 | 171 | isolated | 0.213 | -0.000459118 |
+| 4 | 171 | connected | 0.278 | -6.89094e-05 |
+| 4 | 172 | isolated | 0.475 | 0.000682843 |
+| 4 | 172 | connected | 0.321 | 0.00113248 |
+| 8 | 170 | isolated | 0.180 | 0 |
+| 8 | 170 | connected | 0.235 | 0 |
+| 8 | 171 | isolated | 0.248 | 0 |
+| 8 | 171 | connected | 0.170 | 0 |
+| 8 | 172 | isolated | 0.556 | 0.00126865 |
+| 8 | 172 | connected | 0.604 | 0.000314524 |
+
+Frozen initialized actor differs with depth; same sampled external prefixes/continuations and critic interface. Compare utility and calibration against each teacher-specific TRAIN constant. Not actor-learning efficiency with depth or comparable-quality compute.
+
+| Depth | Seed | Total GFLOPs | MFLOPs/target | Wall s |
+| --- | --- | --- | --- | --- |
+| 4 | 170 | 26.304 | 1.7640 | 114.2 |
+| 4 | 171 | 26.304 | 1.7640 | 111.4 |
+| 4 | 172 | 26.304 | 1.7640 | 112.7 |
+| 8 | 170 | 26.356 | 1.7674 | 167.8 |
+| 8 | 171 | 26.356 | 1.7674 | 168.4 |
+| 8 | 172 | 26.356 | 1.7674 | 168.9 |
+
+All four critic fits and shared teacher generation charged together. Supported arithmetic excludes special/unsupported operations. Different frozen actor depths have different target distributions; this is intervention-interface transfer, not a matched-quality actor-learning scaling result.
