@@ -365,3 +365,5 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 - [Coupled forward–credit convergence and storage](theory/166_coupled_credit_convergence_and_storage.md) — local linear convergence iff βκ > ηMG(1 + L/μ) (Lean-checked contraction); pending-credit storage law via Little's law.
 - Machine-checked lemmas: [experiments/lean/credit_theory](lean/credit_theory/CreditTheory) (Lean 4 + Mathlib, 16 theorems, standard axioms only).
 - [Conditions for useful learned credit](theory/CREDIT_LEARNING_CERTIFICATES.md) — producer-weighted calibration, informative-feature regression witness, exact residual-audit variance, overhead break-even condition and conditional smooth-descent benefit; small-scale fit/transfer/utility gates before depth scaling.
+
+- [Connected credit critic for future-directed learning](theory/CONNECTED_CREDIT_CRITIC.md) — intervention advantage on augmented causal history, finite-horizon RL recursion, connected persistent credit architecture, local adjoint boundary interpretation and sufficient finite/continuous action-improvement bounds.

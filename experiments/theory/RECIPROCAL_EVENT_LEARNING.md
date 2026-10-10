@@ -121,3 +121,7 @@ Primary precedents:
 - Andrychowicz et al., [Learning to learn by gradient descent by gradient descent](https://arxiv.org/abs/1606.04474).
 - Baydin et al., [Online Learning Rate Adaptation with Hypergradient Descent](https://arxiv.org/abs/1703.04782).
 - Grathwohl et al., [Backpropagation through the Void](https://arxiv.org/abs/1711.00123), as cited in note 163.
+
+## Connected future-directed credit target
+
+[CONNECTED_CREDIT_CRITIC.md](CONNECTED_CREDIT_CRITIC.md) formalizes the founder clarification: the primary learning-policy objective is future conditional performance, including changing distributions and inductive structure. A connected persistent intervention critic supplies continuation values/cotangents; exact derivatives of completed computations supply calibration and transport targets. Finite-horizon Bellman recursion applies on sufficient augmented state or full causal histories, with explicit time dependence. No stationary regime, tiny disconnected critic, free simulator or automatic value-to-derivative accuracy is assumed.
