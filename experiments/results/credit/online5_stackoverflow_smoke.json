@@ -1,0 +1,41 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (online learning, theory note 160 prediction 4)",
+ "tag": "online5_stackoverflow_smoke",
+ "args": {
+  "tag": "online5_stackoverflow_smoke",
+  "dataset": "stackoverflow",
+  "arm": "online_trace",
+  "d": 32,
+  "modes": 16,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 1,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 0,
+  "contract": false,
+  "decay": "linear",
+  "lr_final": 1e-05,
+  "K": 22
+ },
+ "scale": 0.537841796875,
+ "best_dev_ll": -2.264044004232896,
+ "final_dev_ll": -2.264044004232896,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_ll": -2.264044004232896,
+   "dev_time_ll": -0.691454305499229,
+   "dev_mark_ll": -1.5725896987336672,
+   "updates": 5638,
+   "epoch_s": 22.282392024993896
+  }
+ ],
+ "wall_s": 22.89814066886902,
+ "parameters": 14164,
+ "source_sha256": {
+  "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}

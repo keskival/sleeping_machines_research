@@ -1,0 +1,4 @@
+/workspace/experiments/credit/online_race_v3.py:281: UserWarning: Seems like `optimizer.step()` has been overridden after learning rate scheduler initialization. Please, make sure to call `optimizer.step()` before `lr_scheduler.step()`. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  r = _step(*args, **kw); sched.step(); return r
+{"epoch": 0, "dev_ll": -2.264044004232896, "dev_time_ll": -0.691454305499229, "dev_mark_ll": -1.5725896987336672, "updates": 5638, "epoch_s": 22.282392024993896}
+RESULT {"best_dev_ll": -2.264044004232896, "final_dev_ll": -2.264044004232896, "wall_s": 22.89814066886902}
