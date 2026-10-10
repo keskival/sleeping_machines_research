@@ -14,5 +14,13 @@
   },
   "gate": "positive utility, inactive error below zero, >=90% point utility retained, lower supported query work; seed170 selected pilot; seeds171/172 confirmation",
   "rss_cap_kb": 1500000,
-  "min_available_mb": 9216
+  "min_available_mb": 9216,
+  "hardware": {
+    "host": "curie",
+    "cpu": "Intel(R) Core(TM) i5-4690 CPU @ 3.50GHz",
+    "threads_per_job": 1,
+    "device": "CPU",
+    "precision": "float64",
+    "cgroup_memory_max": "10737418240"
+  }
 }
