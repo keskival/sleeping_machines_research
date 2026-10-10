@@ -1,0 +1,87 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_marks_decision_20261010T2301Z",
+  "battle": "B4 development",
+  "stage": "mark_memory_development_decision",
+  "development_gate": false,
+  "selected_mark_loss_reduction": 1.8197334200080917,
+  "selected_total_loss_reduction": 2.192783044032069,
+  "common_window_epochs": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "common_window_mark_loss_reduction": 0.6869879407312546,
+  "common_window_total_loss_reduction": 1.061002499402266,
+  "rule": "At least1 nat/sequence improvement in marks and total, at selected checkpoints and mean last20 common epochs; zero skipped updates.",
+  "selected_mark_memory": {
+    "L_T": -181.754249331557,
+    "L_M": 65.41702433816765,
+    "total": -116.33722499338933,
+    "sequences": 34
+  },
+  "selected_repaired_baseline": {
+    "L_T": -181.381199707533,
+    "L_M": 67.23675775817574,
+    "total": -114.14444194935726,
+    "sequences": 34
+  },
+  "accounting": [
+    {
+      "arm": "mark_memory",
+      "epochs": 64,
+      "train_targets": 851648,
+      "fitting_wall_s": 3695.0806633743923,
+      "seconds_per_train_target": 0.004338741667184555,
+      "evaluation_wall_s": 12.291814813157544,
+      "inference": {
+        "protocol": "full DEV likelihood forward, one CPU thread float64",
+        "scored_targets": 2094,
+        "wall_s": 0.1809513090411201,
+        "seconds_per_target": 8.64141876987202e-05
+      },
+      "max_rss_kb": 2874012
+    },
+    {
+      "arm": "repaired_baseline",
+      "epochs": 75,
+      "train_targets": 998025,
+      "fitting_wall_s": 3345.7023854439612,
+      "seconds_per_train_target": 0.003352323223810988,
+      "evaluation_wall_s": 11.699250526377,
+      "inference": {
+        "protocol": "full DEV likelihood forward, one CPU thread float64",
+        "scored_targets": 2094,
+        "wall_s": 0.15292415802832693,
+        "seconds_per_target": 7.302968387217141e-05
+      },
+      "max_rss_kb": 2618024
+    }
+  ],
+  "decision": "This mark variant fails its development gate: inspect time/mark and window differences before another change; no family-loss verdict.",
+  "scope": "Fixed Github split1 seed0 TRAIN/DEV development, original core settings. Extra mark capacity/work measured separately; no matched-compute, published-reference or TEST win.",
+  "inputs": {
+    "experiments/results/tpp_b4/aws_b4_marks_develop_20261010T2300Z.json": "eb8b6e5c5aace402651d28945a0df0752213fbffe1aa86e07e59dfb16859e061",
+    "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.json": "afc9f06d2ac7a89b68443c70627ad9f5a0b2cdb61751c93bbdbacb48af6a276f"
+  },
+  "source_sha256": {
+    "experiments/tpp/summarize_marks_development.py": "90e3f77ddd3937dfc977f723c672b2b226f1c9e140f44c0ac379ff7be1ad5dde"
+  }
+}
