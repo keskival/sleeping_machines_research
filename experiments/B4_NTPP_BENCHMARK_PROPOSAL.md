@@ -226,6 +226,8 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 
 **v20 development result 3 (10 Oct, MOOC split 0, VALIDATION only): `--mark-mem 1 --mark-stats`.** Best epoch 76 of 107, all finite, 71,115 parameters: L_T -308.53 / L_M 69.90 / total -238.63, level with `--mark-mem 1` alone (−308.26 / 69.69 / −238.57). Once the per-event mark memory exists, the per-sequence statistics add nothing on MOOC; the memory carries the gain. The simpler `--mark-mem 1` leads unless the LastFM stats arms (where a training-free counter beats the frozen marks) show a dataset-specific benefit.
 
+**v20 development result 4 (10 Oct 04:35, MOOC split 0, VALIDATION only): `--mark-mem 1 --mark-stats --d 48`.** Best epoch 76 of 107, all finite, 106,123 parameters, 50 min: L_T −308.95 / L_M 69.71 / total **−239.24**, the best MOOC validation total so far (d32 with the same pathways −238.63; mark memory alone −238.57; frozen −233.88). Width adds 0.6 nats per sequence, mostly in time (−308.95 vs −308.53), at 1.5× the parameters; the mark gain stays with the memory. The v21 delayed-clock arms (ln16; ln32 with memory and statistics) test the time component next.
+
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
 A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
