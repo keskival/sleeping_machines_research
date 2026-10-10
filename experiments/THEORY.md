@@ -373,3 +373,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Event-driven credit economics (10 October 2026)
 
 [Economical event credit](theory/ECONOMICAL_EVENT_CREDIT.md) specifies causal addressed credit state, calibrated residual audits, cost allocation, event emission, versioned asynchronous updates and complete work-to-quality gates under R1/B1.
+
+## Structured future response and derivative certificate
+
+[Structured response credit](theory/STRUCTURED_RESPONSE_CREDIT.md) derives the exact native key-write response, bounded sensitivity/curvature and a conditional value-to-gradient certificate. Source-pinned v5b pilots test held-out update directions and applied native state writes under R1/B1.

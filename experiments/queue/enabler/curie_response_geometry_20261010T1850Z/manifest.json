@@ -1,0 +1,23 @@
+{
+  "tag": "curie_response_geometry_20261010T1850Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_response_geometry_20261010T1850Z",
+      "driver": "experiments/credit/check_response_geometry.py",
+      "queue": "experiments/queue/enabler/curie_response_geometry_20261010T1850Z/curie_response_geometry_20261010T1850Z.txt",
+      "queue_sha256": "f96edeb91c1cfd24d06f4771b036bca51f8f93d099f6b2ee9193d59d8bec3b6f",
+      "sources": {
+        "experiments/credit/check_response_geometry.py": "2a6eaa8dc86d2319da59af048cd6efd056cf3027419e7efb74b050f33e77f22d"
+      },
+      "result_sources": {
+        "experiments/credit/check_response_geometry.py": "2a6eaa8dc86d2319da59af048cd6efd056cf3027419e7efb74b050f33e77f22d"
+      },
+      "result": "experiments/results/credit/curie_response_geometry_20261010T1850Z.json",
+      "rss_kb": 200000,
+      "vms_kb": 1000000,
+      "timeout_s": 60
+    }
+  ]
+}
