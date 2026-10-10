@@ -543,3 +543,24 @@ respect to (z_2, u_2) and the head. The memory-path gradient is λ_2·S_2 + μ·
 
 If truncation costs nothing here, the cheap layer-local learner is enough at this scale. If it costs a lot, exact depth
 traces (or a learned approximation of them, §§3, 11) are the path to per-event learning of our deep stacks.
+
+**Result (10 Oct 19:40 UTC; Taxi DEV log-likelihood per event, higher is better; 3 seeds; 20 passes; `online3_*_r2`):**
+
+| Arm | Seeds | Mean (SE) | Wall per run |
+|---|---|---|---|
+| BPTT (two layers) | 0.4495 / 0.4591 / 0.4167 | 0.4418 (0.0128) | 1.3 min |
+| **online_deep (exact cross-layer traces)** | 0.4767 / 0.4785 / 0.4756 | **0.4770 (0.0009)** | 85 min |
+| online_trunc (layer-local) | 0.4754 / 0.4573 / 0.4798 | 0.4708 (0.0069) | 83 min |
+| online_local (no traces) | 0.4560 / 0.4521 / 0.4615 | 0.4565 (0.0027) | 1.3 min |
+
+**PASS** on both predictions: online_deep is above BPTT (+0.035), and online_trunc lies between deep and local.
+
+Traces are worth +0.0205 over no traces at depth 2, against +0.0077 at depth 1 (§7). Cross-layer temporal credit adds
++0.006 on the mean and, above all, seed reliability: the exact learner's seed spread is 0.0009 against 0.0069, and one
+layer-local seed lost 0.021.
+
+Cost: the exact two-layer learner's wall time is 66 times BPTT's at this size. The truncated arm here computes the full
+traces and zeroes the cross-layer block, so its wall time is not its intrinsic cost.
+
+Scope (PRODUCT_ORDERS learning priority): quality per data pass and measured work at depth 2, not a scaling claim. That
+needs lower complete work to matched quality at depths ≥ 4 (DEEP_LEARNING_SCALING.md).
