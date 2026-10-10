@@ -1,0 +1,13 @@
+False
+NEW TRAINING HAS BEGUN
++-------+--------+--------+-------+--------+-----------+--------+--------+--------+--------+--------+---------+--------+--------+--------+---------+---------+--------+--------+---------+---------+--------+---------+
+| train | train  | train  | train | metri  |   metri   | metri  | metri  | metri  | metri  | other  |  other  | other  | other  | other  |  other  |  other  | other  | other  |  other  |  other  | other  |  other  |
+| epoch |   lr   | lr_po  | patie | train  |   val_l   | pre_w  | rec_w  | f1_we  | acc_w  | encod  |  encod  | encod  | encod  | encod  |  decod  |  decod  | decod  | decod  |  decod  |  decod  | decod  |  decod  |
+|       |        |        |       |        |           |        |        |        |        | embed  |   rnn   |  rnn   |  mlp   |  mlp   |   mu    |   mu    |   s    |   s    |    w    |    w    | marks  |  marks  |
+|       |        |        |       |        |           |        |        |        |        | weigh  |  weigh  | bias_  |  net   |  net   |  weigh  |  bias   | weigh  |  bias  |  weigh  |  bias   | weigh  |  bias   |
+|       |        |        |       |        |           |        |        |        |        |        |         |        | linea  | linea  |         |         |        |        |         |         |        |         |
+|       |        |        |       |        |           |        |        |        |        |        |         |        | weigh  |  bias  |         |         |        |        |         |         |        |         |
++=======+========+========+=======+========+===========+========+========+========+========+========+=========+========+========+========+=========+=========+========+========+=========+=========+========+=========+
+|  0/1  | 0.0010 | 0.0010 | 0/100 | 3.5932 | -100.5384 | 0.0034 | 0.0579 | 0.0063 | 0.9218 | 0.0097 | -0.0036 | 0.0110 | 0.0359 | 0.0662 | -0.0817 | -0.2140 | 0.0130 | 0.0998 | -0.0352 | -0.0609 | 0.0002 | -0.0565 |
+Total training time : 0:0:13
+RESULT {"test_recorded": {"loss": -101.18441772460938, "log ground density": 293.7630615234375, "log mark density": -192.57861328125, "window integral": 0.0}, "test_dequantized": {"loss": -100.94563293457031, "log ground density": 293.5243225097656, "log mark density": -192.57861328125, "window integral": 0.0}, "parameters": 7986, "wall_s": 28.81184458732605}
