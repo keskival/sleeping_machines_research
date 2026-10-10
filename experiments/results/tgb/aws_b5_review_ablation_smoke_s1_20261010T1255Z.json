@@ -1,0 +1,67 @@
+{
+ "status": "completed",
+ "battle": "B5 tgbl-review development (diagnosis)",
+ "tag": "aws_b5_review_ablation_smoke_s1_20261010T1255Z",
+ "args": {
+  "tag": "aws_b5_review_ablation_smoke_s1_20261010T1255Z",
+  "dataset": "tgbl-review",
+  "root": "../../../data/tgb_aws/root",
+  "checkpoint": "experiments/results/tgb/aws_b5_review_v3_full_dev_20261010T1010Z_r2.pt",
+  "expect_full_mrr": null,
+  "dim": 16,
+  "hidden": 64,
+  "max_val": 1000
+ },
+ "checkpoint_sha256": "72b2aa03b62695bcebfe76f9380d9fbd580884a80b8cea6918ab149a94a4adc9",
+ "queries": 1000,
+ "class_counts": {
+  "new_pair_known_source": 881,
+  "new_source": 119
+ },
+ "scorers": {
+  "full": {
+   "mrr": 0.22829549519047135,
+   "new_pair_known_source": 0.18674642440380834,
+   "new_source": 0.5358982797539176
+  },
+  "mlp": {
+   "mrr": 0.22809796854297743,
+   "new_pair_known_source": 0.20341702354953992,
+   "new_source": 0.41081992265405665
+  },
+  "mlp_bd": {
+   "mrr": 0.238149523605279,
+   "new_pair_known_source": 0.19794153722316318,
+   "new_source": 0.535823775728338
+  },
+  "ident": {
+   "mrr": 0.15073088630651524,
+   "new_pair_known_source": 0.13251064619480324,
+   "new_source": 0.2856219076377613
+  },
+  "pop30": {
+   "mrr": 0.2943818037229274,
+   "new_pair_known_source": 0.26827403332409455,
+   "new_source": 0.48766706188571485
+  },
+  "pop7": {
+   "mrr": 0.27988129053558397,
+   "new_pair_known_source": 0.25941927467926396,
+   "new_source": 0.4313689877575832
+  },
+  "pop30_mlp": {
+   "mrr": 0.25909259306651916,
+   "new_pair_known_source": 0.23292444986828217,
+   "new_source": 0.4528248128786768
+  }
+ },
+ "replay_wall_s": 28.255221128463745,
+ "wall_s": 28.60876154899597,
+ "scope": "VALIDATION only; no training; no TEST",
+ "source_sha256": {
+  "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+  "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+  "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+  "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+ }
+}
