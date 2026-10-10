@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -111,3 +111,33 @@ def noise_pages(folder):
         ('small','Non-fitting synthetic diagnostic, no TEST. Actor calls include all causal-prefix checks; '
          'supported work includes all native calls and analytic candidate responses, with special/unsupported '
          'operation arithmetic excluded. No complete-learning efficiency or benchmark win is claimed.')]]
+
+
+def cpu_scan_pages(folder):
+    prefix='curie_cpu_scan_v1_20261010T1510Z'
+    cp=folder/(prefix+'_contract.json');sp=folder/(prefix+'_smoke.json')
+    if not cp.exists() or not sp.exists():return []
+    c=json.loads(cp.read_text());r=json.loads(sp.read_text())
+    assert c['status']=='completed' and r['status']=='completed'
+    native=c['metrics']['native'];error=max(v['maximum_parameter_gradient_error'] for v in native)
+    rows=[]
+    for v in r['metrics']['rows']:
+        rows.append([str(v['batch']),str(v['length']),str(v['modes']),
+            f'{v["timing_s"]["reference"]:.4f}',f'{v["timing_s"]["scan"]:.4f}',
+            f'{v["runtime_reference_over_scan"]:.2f}'])
+    return [[('h1','Appendix. R1/B10 exact CPU temporal execution'),
+        ('p',f'Compiled complex recurrence and its first-order adjoint preserve native depths 2/4/8 '
+         f'with maximum parameter-gradient error {error:.2g}. Explicit initial state and chunked carry '
+         'preserve both numerical state and gradients. Projections, gates, physical decay/rotation, '
+         'norms, feedforward network, addressed mark memory and race heads are unchanged.'),
+        ('table',(['Batch','Length','Modes','Reference s','Scan s','Time ratio'],rows,[20,23,23,38,30,32])),
+        ('small',r['metrics']['scope']),
+        ('p','Kernel arithmetic is 8 scalar FLOPs per mode/event forward and 14 backward. Source '
+         'coefficient arrays use 4 batch × length × modes values and the stored state trajectory 2. '
+         'Array traffic, native projections, heads, mark-memory gradients, credit learning and optimizer '
+         'work must be included before any complete-fit advantage is claimed.'),
+        ('small',f'Contract wall including compilation {c["wall_s"]:.1f} s; parent peak RSS '
+         f'{c["peak_rss_kb"]/1024:.1f} MiB; maximum individual compiler-child RSS '
+         f'{c["peak_child_rss_kb"]/1024:.1f} MiB. Runner guards the whole process group. '
+         'One compiler worker; CPU float64. Higher-order backward/meta-Hessians are unsupported by this '
+         'backend and keep the established differentiable reference. No fitting run has adopted it.')]]
