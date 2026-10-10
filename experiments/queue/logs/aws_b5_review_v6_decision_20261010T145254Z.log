@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "battle": "B5 tgbl-review development",
+  "inputs": {
+    "A": {
+      "path": "experiments/results/tgb/aws_b5_review_v5_A_noid_popres_20261010T1335Z.json",
+      "sha256": "912e96e9e8f9f0da3120428a7edff59439ee82de1456e77fc3f98293671e0975"
+    },
+    "B": {
+      "path": "experiments/results/tgb/aws_b5_review_v5_B_noid_popres_hard_20261010T1335Z.json",
+      "sha256": "902fcf53cf60ac11e22d2795179905818d50b400014e5a9bb6606afa0a191e52"
+    },
+    "heuristic": {
+      "path": "experiments/results/tgb/aws_b5_review_ablation_full_s1_20261010T1255Z.json",
+      "sha256": "d61e1b417c4b1e57c21bba9e316274fc79bd1c607ca2fd7e2eac99ec86917fd9"
+    },
+    "C": {
+      "path": "experiments/results/tgb/aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z.json",
+      "sha256": "e01dc4892e33853486f39181d5adf3f89adeedc0786c9d55d196d731e7276a11"
+    },
+    "D": {
+      "path": "experiments/results/tgb/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z.json",
+      "sha256": "a63a603a151f1587bda925404e265df6ba013be34d7ccadd683c6ab4e78a4a1f"
+    }
+  },
+  "scope": "Full VALIDATION, seed 0, one TRAIN epoch; no TEST; development evidence",
+  "popularity_val_mrr": 0.34085945520278504,
+  "arms": {
+    "A": {
+      "val_mrr": 0.2613497954494801,
+      "gap_to_pop30": -0.07950965975330493,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 1256,
+          "mrr": 0.6314986201044253
+        },
+        "new_pair_known_source": {
+          "queries": 663980,
+          "mrr": 0.23912286779411432
+        },
+        "new_source": {
+          "queries": 65548,
+          "mrr": 0.47940875225736385
+        }
+      },
+      "wall_s": 488.6043658256531,
+      "max_rss_kb": 3156820,
+      "parameters": 11642367
+    },
+    "B": {
+      "val_mrr": 0.1116042679835086,
+      "gap_to_pop30": -0.22925518721927646,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 1256,
+          "mrr": 0.47040672857522364
+        },
+        "new_pair_known_source": {
+          "queries": 663980,
+          "mrr": 0.1007744534851233
+        },
+        "new_source": {
+          "queries": 65548,
+          "mrr": 0.21443157530233892
+        }
+      },
+      "wall_s": 483.84493136405945,
+      "max_rss_kb": 3153400,
+      "parameters": 11642367
+    },
+    "C": {
+      "val_mrr": 0.27476654734368844,
+      "gap_to_pop30": -0.0660929078590966,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 1256,
+          "mrr": 0.6056975828808644
+        },
+        "new_pair_known_source": {
+          "queries": 663980,
+          "mrr": 0.25388705016881513
+        },
+        "new_source": {
+          "queries": 65548,
+          "mrr": 0.47992794286357754
+        }
+      },
+      "wall_s": 487.33474707603455,
+      "max_rss_kb": 3156672,
+      "parameters": 11642367
+    },
+    "D": {
+      "val_mrr": 0.3071733723972304,
+      "gap_to_pop30": -0.03368608280555463,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 1256,
+          "mrr": 0.565940560853948
+        },
+        "new_pair_known_source": {
+          "queries": 663980,
+          "mrr": 0.28962550383450125
+        },
+        "new_source": {
+          "queries": 65548,
+          "mrr": 0.47996921940368825
+        }
+      },
+      "wall_s": 489.20643877983093,
+      "max_rss_kb": 3157484,
+      "parameters": 11642367
+    }
+  },
+  "best_logq_arm": "D",
+  "paired_logq_gain": {
+    "C_minus_A": 0.013416751894208323,
+    "D_minus_B": 0.19556910441372183
+  },
+  "beats_popularity": false,
+  "next_decision": "Diagnose sampled objective and residual calibration on TRAIN/VALIDATION; no TEST admission",
+  "approximation": "v6 uses end-of-batch proposal frequencies and does not correct duplicate/positive rejection; scores test this implementation, not exact sampled-softmax equivalence",
+  "tag": "aws_b5_review_v6_decision_20261010T145254Z",
+  "source_sha256": {
+    "experiments/tgb/review_logq_summary.py": "cebaada331f9cd2a545ea8597c5930663cd13ce8a5582a74bde18c85bd225fa2",
+    "experiments/queue/b5/aws_b5_review_v6_decision_20261010T145254Z/inputs.json": "bfb8aa4a4e214d889f2a28215e82a443358f22c9d0ebc837425736b393c917ba"
+  }
+}
