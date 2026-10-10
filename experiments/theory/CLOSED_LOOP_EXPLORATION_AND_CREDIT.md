@@ -406,3 +406,32 @@ by this note, and no current route generalization or efficient learning result
 is inferred from these sufficient conditions. The existing temporal races,
 addressed persistent values, separate keys, optional-route credit and
 silence-aware supervision remain the target substrate.
+
+## Completed native local reciprocal contracts — 10 October
+
+`aws_reciprocal_probe_contract_20261010T2149Z` verifies the expected teaching
+loss, mean update and coordinate mean-square contraction identities. A frozen
+native TemporalMemoryLayer (d8,modes4,two events with elapsed time0.37) supplies
+16 forward directional responses. Independent VJP audit maximum error8.88e-16;
+mirrored-update tracking identity error8.33e-16. One complete coordinate sweep
+recovers the local transpose to squared error6.19e-31. This is arithmetic and
+native-local transport evidence, not future-credit/task-learning evidence.
+
+Reusable `credit/reciprocal_transport.py` implements detached directional
+packets, a fixed-context/version transport and local outer-product teaching
+without autograd of a third credit model. Source-bound component contract
+`aws_reciprocal_transport_contract_20261010T2152Z` passes:16 generated packets
+reused in256 teaching updates, matrix error0, prediction error2.22e-16, wrong
+context and stale parameter-version rejection both pass.256 matrix entries
+and512 retained packet entries; entire component gate0.683s including forward
+probe initialization, peak RSS391060KB. These are cold small-contract costs,
+not an optimized throughput or scaling measurement.
+
+The implementation intentionally binds a single context and parameter version.
+It must not silently apply that matrix to unrelated prefixes or after actor
+updates. Next adoption gates are context-conditioned transport sharing, native
+moving-target tracking and downstream task utility at complete work. Mirrored
+linear updates have a proved identity, but do not solve the nonlinear
+context-dependent temporal Jacobian automatically. Curie owns the native joint
+credit integration; AWS's admitted learning and numerical-development queues
+remain intact. No fit or TEST was launched for these two contracts.
