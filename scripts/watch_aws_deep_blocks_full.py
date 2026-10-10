@@ -65,7 +65,10 @@ def main():
             files = ['experiments/credit/ONLINE_DEEP_BLOCKS.md', 'experiments/HANDOFF.md', 'report/I_SCIENCE.md',
                      'REPORT.md', 'report/sleeping_machines_status.pdf', 'report/II_METHODS.md', 'report/III_RECORD.md',
                      'report/figures/aws_deep_credit_blocks.png', 'report/figures/aws_deep_credit_blocks.svg',
-                     'report/figures/aws_deep_credit_blocks.inputs.json']
+                     'report/figures/aws_deep_credit_blocks.inputs.json',
+                     'report/figures/current_native_language_status.svg',
+                     'report/figures/latest_native_language_fitting.svg',
+                     'report/sleeping_machines_status.family.text.pdf']
             files += [str(p.relative_to(ROOT)) for p in (ROOT/'report').glob('I*_*.pdf')]
             files = sorted(set(files))
             subprocess.run(['git', 'add', '--', *files], cwd=ROOT, check=True)
