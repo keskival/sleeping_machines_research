@@ -1,0 +1,28 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 owned mark-path development: compose established per-event mark memory with verified numerical repair; preserve timing and zero-init parity before fixed TRAIN DEV fit",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b4_marks_contract_20261010T2257Z",
+        "queue": "experiments/queue/b4/aws_b4_marks_contract_20261010T2257Z/aws_b4_marks_contract_20261010T2257Z.txt",
+        "queue_sha256": "96e0bba4a6ee7447c2a8db21815651c57a2dc180975fdd2c54dfaffe71ea199c",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/check_logspread_marks.py": "f6f729f772887b678e312c93e3e91218bae49edb49073d1a91ac3affc1bc4be7",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_marks_contract_20261010T2257Z.json",
+        "timeout_s": 300,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
