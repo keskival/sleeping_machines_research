@@ -2,6 +2,8 @@
 
 **These orders supersede every order below.** The text below this section is the historical record.
 
+**Learning priority, user direction 10 October:** demonstrate efficient learning as depth and model size grow, with complete work to reach matched quality. Curie owns the compact-credit/depth implementation under B1/R1; preserve AWS's admitted two-layer online3 comparison and completed confirmations. [Execution and evidence gates](DEEP_LEARNING_SCALING.md). One-layer gains per pass are supporting evidence, not the scaling claim.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
