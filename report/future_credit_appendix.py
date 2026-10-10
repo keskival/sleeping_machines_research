@@ -51,4 +51,32 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]]
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder)
+
+
+def diagnostic_pages(folder):
+    path=folder/'curie_future_credit_v2_20261010T1240Z_decision.json'
+    if not path.exists():return []
+    result=json.loads(path.read_text())
+    if result['status']!='completed':raise ValueError('Completed credit decision evidence required')
+    rows=[]
+    for r in result['rows']:
+        rows.append([str(r['seed']),r['arm'],f'{r["dev_relative_mse"]:.3f}',
+            f'{r["constant_relative_mse"]:.3f}',f'{r["loss_reduction"]:.5f}'])
+    work=[]
+    for r in result['work']:
+        targets=r['teacher_scored_target_presentations'];mf=r['whole_supported_flops']/1e6
+        work.append([str(r['seed']),str(targets),f'{mf:.2f}',f'{mf/targets:.4f}',
+                     f'{r["wall_s"]:.2f}',f'{r["peak_rss_kb"]/1024:.1f}'])
+    decisions=' '.join(r['arm']+': '+r['decision'].replace('_',' ')+'.' for r in result['verdicts'])
+    return [[('h1','Appendix. R1 conditional future credit: larger-data diagnostic'),
+        ('p','128 TRAIN and 64 DEV contexts per fixed native teacher, three seeds, same critic architecture. '
+         'The reference fits one mean-advantage vector on TRAIN and chooses one fixed action for every DEV context. '
+         'Positive future-loss reduction means the critic improves on that action; MSE is relative to zero prediction.'),
+        ('table',(['Seed','Critic','DEV MSE','Constant MSE','Future-loss reduction'],rows,[15,31,32,36,48])),
+        ('p',decisions),
+        ('small',result['scope']),
+        ('table',(['Seed','Teacher targets','Whole work MF','MF/teacher target','Wall s','RSS MiB'],work,[16,34,35,42,24,30])),
+        ('small','Whole supported work includes paired native branches, both critic fits and proposal training/evaluation. '
+         'Teacher-target presentations are the common denominator; unsupported/special operation arithmetic is excluded. '
+         'Passing the conditional gate enables a coupled-learning design, not an efficiency or benchmark claim.')]]
