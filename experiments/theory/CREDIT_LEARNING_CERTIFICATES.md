@@ -74,3 +74,14 @@ Before scaling:
 4. Scale only after a useful small signal: measure total-work-to-quality and the overhead threshold across depth/data. Scaling should amortize a demonstrated learner, not substitute for evidence that it learns.
 
 Current coarse-coordinate pilot: mean TRAIN relative error 1.03184 over steps 1–16 and 1.06318 over steps 49–64; held-out error mostly about or above the zero-prediction baseline. TRAIN uses persistent state while assessment resets it, so that run does not isolate persistence utility. It supplies no clear positive learning signal. The state interface, optimization, and context mismatch are hypotheses to diagnose separately; the exact state-key contract is the next already-admitted gate. No new fitting job is admitted by this note.
+
+## Revealed feedback changes the information boundary
+
+Let F contain pre-feedback forward packets and Z the legitimately revealed feedback available before the actor update. For any square-integrable credit G, orthogonal projection gives
+
+    E||G-E[G|F]||^2 = E||G-E[G|F,Z]||^2
+      + E||E[G|F,Z]-E[G|F]||^2.
+
+Thus feedback cannot increase the optimal population residual; strict benefit requires informative Z. Prediction must be frozen before the audit label/draw as appropriate, not necessarily before all error feedback. Learning a conditional mean from unavailable future errors is a different and harder prediction problem. The implemented recurrent critic consumes cached forward states, observed gaps/marks and issued errors, retains learned time-evolving state, and only afterwards draws an independent exact audit. Finite fitting and actor/critic drift may still prevent a utility gain.
+
+The first real stable seed183 pilot reduces its matched-label audited cotangent MSE from0.00081036 (zero) to0.00074408 (feedback-conditioned calibrated prediction), about8.18%, while forward NLL12.796736 trails the untrained-audit arm12.795328. Calibration learning exists in this single online trajectory; usable update quality has not improved. The next objective measures producer-weighted credit error rather than treating unweighted state MSE as the learning objective. Historical replay targets need their original producer metric/version; computing/reconstructing it is paid work.

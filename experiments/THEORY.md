@@ -381,3 +381,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Real causal episode learning
 
 [Online episode learning](ONLINE_EPISODE_LEARNING.md) defines joint model/credit/optimizer development on market events and proper-token language, with within-episode adaptation and total counterfactual effects across changing weights distinguished from fixed-path response.
+
+## Credit beyond the active counterfactual pool
+
+[Unseen route credit](theory/UNSEEN_ROUTE_CREDIT.md) defines shared route-conditioned generalization, causal feedback-conditioned predictions and a two-stage full-support estimator that avoids evaluating every dormant route. Discovery cost and route-sampling variance remain explicit; current market critic emits state cotangents rather than route-indexed values.
