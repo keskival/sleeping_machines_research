@@ -393,3 +393,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Reciprocal actor–critic teaching
 
 [Task-valued cooperative teaching](theory/RECIPROCAL_ACTOR_CRITIC.md) makes the actor’s effect on critic learning an explicit downstream-task derivative, connects it to dual control, and separates useful evidence acquisition from merely reducing critic regression loss.
+
+## Optimizer-aware route credit
+
+[Learning-mediated route effects](theory/OPTIMIZER_AWARE_ROUTE_CREDIT.md) defines causal branch-local learning replay, separates direct carrier influence from surviving weight/optimizer influence, and derives a conditional fixed-response error bound. Native Adam-world contracts pass; a matched-supervision pilot is admitted under B1/R1.
