@@ -1,0 +1,45 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Theory note 165 (credit-rate scaling) measurement, DEV only: residual credit spectrum of the per-event temporal-memory learner after forward prediction (none / arrived outcome with shared transport / 4-event window) at 16 and 64 memory modes. Decides whether sparse credit cost per event is size-independent (alpha > 1, k(eps) flat in n) and so whether the compact-credit learner is prioritized on the depth/capacity scaling axis (DEEP_LEARNING_SCALING)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "credit_spectrum_smoke",
+        "queue": "experiments/queue/enabler/credit_spectrum_smoke/credit_spectrum_smoke.txt",
+        "queue_sha256": "48953e8bd8d3185da3b06051c65422ac333622259d1891f322fc30751b95e167",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_smoke.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit_spectrum_taxi_n16_n64",
+        "queue": "experiments/queue/enabler/credit_spectrum_taxi_n16_n64/credit_spectrum_taxi_n16_n64.txt",
+        "queue_sha256": "6b185ac943d856b763d51e0316cf7df7dc31ff6295664e236bbd156fdd1bb91e",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_taxi_n16_n64.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/credit_spectrum_smoke.json"
+          }
+        ]
+      }
+    ]
+  }
+}
