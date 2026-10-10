@@ -463,6 +463,50 @@
   "verdict": "loss (pre-registered frozen configuration)",
   "diagnosis": "About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)"
  },
+ "b4_retweets": {
+  "L_T": {
+   "mean": -598.8050261187883,
+   "sd": 8.361727321790946,
+   "values": [
+    -596.6897514910507,
+    -588.6612986916176,
+    -594.6884972488426,
+    -610.2546565290586,
+    -603.7309266333717
+   ],
+   "se": 3.7394781401683628
+  },
+  "L_M": {
+   "mean": 83.64969713780395,
+   "sd": 1.119955861382828,
+   "values": [
+    83.11853436102322,
+    82.40505631665444,
+    83.13876860534491,
+    85.18696672755487,
+    84.39915967844233
+   ],
+   "se": 0.500859487570267
+  },
+  "total": {
+   "mean": -515.1553289809842,
+   "sd": 7.252603631763395,
+   "values": [
+    -513.5712171300275,
+    -506.25624237496316,
+    -511.5497286434977,
+    -525.0676898015038,
+    -519.3317669549294
+   ],
+   "se": 3.243462946896961
+  },
+  "bar": -538.7,
+  "best_single": -536.17,
+  "published_time": -621.33,
+  "published_marks": 82.63,
+  "verdict": "loss (pre-registered frozen configuration)",
+  "diagnosis": "Marks level with the best published; timing gap on a 1-s grid with 4% zero gaps"
+ },
  "r1_recall": {
   "mixed_length": {
    "test": {
@@ -706,6 +750,11 @@
   "experiments/results/tpp_b4/b4_mimic2_s2.json": "e2a4364ad9b2c95092532789f15061c411fe93fc8257f35704bb4bd042157719",
   "experiments/results/tpp_b4/b4_mimic2_s3.json": "bac5155b9bfbb1faf2ed91d46fb7d367ddec30e028324ca3add7d98cc6d6c143",
   "experiments/results/tpp_b4/b4_mimic2_s4.json": "1efcceca3d1bbd72c6eb5ddacca681a424d2a111d76291b0c98e086fc8910ced",
+  "experiments/results/tpp_b4/b4_retweets_s0.json": "c047984312aef7d0cf4e7ba061c95d706ed65a156e210a498f971878e30c9715",
+  "experiments/results/tpp_b4/b4_retweets_s1.json": "f9639290f8cc803041523a1d83be33b1aed18364c76c6d6e003c353663925dea",
+  "experiments/results/tpp_b4/b4_retweets_s2.json": "f7fdd51f46428f1f4931491c54bf2f0dbf5e498d4c0107bace8b5033f65afe73",
+  "experiments/results/tpp_b4/b4_retweets_s3.json": "9345d9a8cd59f070e595f123cf0230e6e7683fba8f330cde0c96b9240def136c",
+  "experiments/results/tpp_b4/b4_retweets_s4.json": "437e2629d61ffa7d4f8173ab0812f55ebe51208074d1dd61c010d7f1bbdad17a",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s0_20261007T1715Z.json": "cf7e79a304f441a893e71d3bafb9929f5947a8852691f9e022134cdff7274347",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s1_20261007T1915Z.json": "559a8a8167a36434c2b275f201a7aa2bc692415892d1feeac846456d41b1ed96",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s2_20261007T1915Z.json": "bac7decf97ae30fbb44f8d7f4aaab4b262383c682bb7d7e31e3ce34819e75c59",
@@ -715,7 +764,7 @@
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "6e8d1c3326563a28e420999d0683263427f11a8b5d099b7b8fdb3ba1fc2bf994",
   "experiments/tgb/B5_TGB.md": "0a4b9e1ddb645f21c0ba95ce626ef5b9eb0f88e6188d8179ceaf6683daa79011",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "85edd823b5aeb44ddf96197b1494aed1d8f7c11b6d87dc0a53714475604a634b",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "6bf09fc0e94558e552090ea4ea3a02eb5985ee37349e854ece5938134d2d2f2b",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "2a56a7278e5b713fa808f20a0c287569dfaeb2bf2fb98b365cb1f603f10600ee"
  }
 }

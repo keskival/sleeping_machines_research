@@ -33,7 +33,7 @@ This is an execution plan, not a prediction of investor acceptance.
   affinity (tgbn-trade): test NDCG@10 0.8680 ±
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
 - **New event domains (in development):** tgbl-review (AWS): a training-free state is above TGN/TGAT/TNCN on validation.
-  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs), frozen one-configuration model: **Wikipedia won** (−240.42 ± 43.31 SE vs the bar −122.62; marks 28.49 vs 144.79, addressed mark memory copies unseen pages); frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap), Stack Overflow (12.714 vs 11.9; time component ahead), MIMIC2 (7.01 vs 2.42); Github has no valid verdict yet (four splits reached NaN parameters; guarded protocol reruns queued). Retweets and LastFM pending.
+  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs), frozen one-configuration model: **Wikipedia won** (−240.42 ± 43.31 SE vs the bar −122.62; marks 28.49 vs 144.79, addressed mark memory copies unseen pages); frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap), Stack Overflow (12.714 vs 11.9; time component ahead), MIMIC2 (7.01 vs 2.42); Github has no valid verdict yet (four splits reached NaN parameters; guarded protocol reruns queued). Retweets lost (−515.16 vs −538.70; marks level, timing behind); LastFM pending.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a

@@ -183,7 +183,8 @@ MOOC course activity & $-239.7$ & $-226.85 \pm 2.83$ & $-298.57$ vs $-310.6$ / 7
 Stack Overflow & 11.9 & $12.714 \pm 0.874$ & \textbf{$-91.60$ vs $-91.1$} / 104.31 vs 103.0 & Behind; time part ahead \\
 Github & $-272.9$ & ($-198.52 \pm 55.15$) & $-357.68$ vs $-382.4$ / 159.16 vs 109.5 & No valid verdict yet: four of five runs failed numerically in training; guarded reruns queued \\
 MIMIC2 hospital visits & 2.42 & $7.01 \pm 0.25$ & 2.99 vs 0.13 / 4.02 vs 2.29 & Behind \\
-Retweets, LastFM & & & & Running \\
+Retweets & $-538.70$ & $-515.16 \pm 3.24$ & $-598.81$ vs $-621.33$ / 83.65 vs 82.63 & Behind; type part level, timing gap \\
+LastFM & & & & Running \\
 \bottomrule
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard error over the five fixed splits. Negative log-likelihood per sequence: lower is better.}
@@ -320,7 +321,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow and MIMIC2 behind (page 5); Github awaiting guarded reruns; Retweets and LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
+Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow, MIMIC2 and Retweets behind (page 5); Github awaiting guarded reruns; LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
 \bottomrule
 \end{tabularx}}
 

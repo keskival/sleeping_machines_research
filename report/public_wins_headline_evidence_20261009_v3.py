@@ -73,6 +73,7 @@ stack_overflow = b4_stats('b4_stack_overflow')
 wikipedia = b4_stats('b4_wikipedia')
 github = b4_stats('b4_github')
 mimic2 = b4_stats('b4_mimic2')
+retweets = b4_stats('b4_retweets')
 recall_mixed = recall_stats([f'experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s{s}_{stamp}.json'
                             for s, stamp in enumerate(('20261007T1715Z', '20261007T1915Z', '20261007T1915Z'))])
 recall_local_normalized = recall_stats([f'experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s{s}_{stamp}.json'
@@ -117,6 +118,9 @@ packet = dict(
     b4_mimic2=dict(**mimic2, bar=2.42, best_single=3.1, published_time=0.13, published_marks=2.29,
                    verdict='loss (pre-registered frozen configuration)',
                    diagnosis='About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)'),
+    b4_retweets=dict(**retweets, bar=-538.70, best_single=-536.17, published_time=-621.33, published_marks=82.63,
+                     verdict='loss (pre-registered frozen configuration)',
+                     diagnosis='Marks level with the best published; timing gap on a 1-s grid with 4% zero gaps'),
     r1_recall=dict(mixed_length=recall_mixed, local_normalized=recall_local_normalized,
                    scope='Three completed seeds per configuration; mean and sample SD; '
                          'mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring'),

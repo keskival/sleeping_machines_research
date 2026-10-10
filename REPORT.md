@@ -26,6 +26,7 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | Bosser & Ben Taieb Stack Overflow (NLL/sequence) | 12.714 ± 0.874 SE; time -91.598; marks 104.312 | bar 11.9; best single model 12.1; time −91.1; marks 103.0 | Loss of frozen configuration; time component ahead, marks carry the gap; five fixed splits |
 | Bosser & Ben Taieb Github (NLL/sequence) | -198.52 ± 55.15 SE | bar −272.9; best single model −269.7 | No valid verdict yet: splits 1–4 reached NaN parameters (one non-finite update), leaving epoch 2–3 checkpoints; guarded protocol reruns (TEST once, configuration unchanged) queued |
 | Bosser & Ben Taieb MIMIC2 (NLL/sequence) | 7.01 ± 0.25 SE | bar 2.42; best single model 3.1 | Loss of frozen configuration; time and marks behind |
+| Bosser & Ben Taieb Retweets (NLL/sequence) | -515.16 ± 3.24 SE; time -598.81; marks 83.65 | bar −538.70; best single model −536.17; time −621.33; marks 82.63 | Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps) |
 | FAS v2 (anonymous interleaved logs) | validation 0.702 | time-encoded Transformer reference 0.704 | In development; sealed verdict pending the reference seeds |
 
 ## The model family and its place in the landscape — 4 October 2026
