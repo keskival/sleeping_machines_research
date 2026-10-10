@@ -63,7 +63,7 @@ Let w_h include packet discovery, prediction, amortized credit fitting, retained
 
 at the minimal constant a. Count local factual work common to both separately, and include earlier teacher/pretraining work in whole-fit comparisons. At zero allowed audit error and R>0, a=1. If R=0, prediction is exact almost surely and the limiting audit cost can vanish; finite evidence never proves R=0. An exploration floor adds its cost.
 
-This is an expected-work comparison for an estimator, not matched-quality training superiority. To link it to optimization, assume a fixed L-smooth objective F, an H-measurable unbiased stochastic gradient G, and a corrected estimate Ghat with added variance bounded tau. For theta'=theta-eta*Ghat,
+This is an expected-work comparison for an estimator, not matched-quality training superiority. To link it to optimization, assume a fixed L-smooth objective F, a conditionally unbiased stochastic gradient G given causal information H, and a corrected estimate Ghat with added variance bounded tau. For theta'=theta-eta*Ghat,
 
     E[F(theta')|H] <= F(theta)-eta||grad F(theta)||^2
                     + L*eta^2/2 * (E[||G||^2|H]+tau).       (6)
