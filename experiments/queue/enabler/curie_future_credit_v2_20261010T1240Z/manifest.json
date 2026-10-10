@@ -1,18 +1,7 @@
 {
-  "tag": "curie_fronts_20261010T1220Z_credit_v2_b10",
+  "tag": "curie_future_credit_v2_20261010T1240Z",
   "host": "curie",
-  "ownership": "curie B2 splits 4/3 and B10; AWS agent owns AWS queues",
-  "hardware": {
-    "host_memory_gib": 31,
-    "measured_previous_pam_rss_kb": 1924892,
-    "minimum_available_mib": 8192
-  },
-  "prior_interruption": {
-    "tag": "curie_b2_final_pam_v8nll_split4_20261009T1715Z",
-    "last_completed_epoch": 23,
-    "optimizer_missing": true,
-    "test_not_scored": true
-  },
+  "battle": "R1/B1",
   "jobs": [
     {
       "tag": "curie_future_credit_v2_20261010T1240Z_smoke",
@@ -127,58 +116,6 @@
       "requires": [
         "curie_future_credit_v2_20261010T1240Z_pilot_s171"
       ]
-    },
-    {
-      "tag": "curie_b10_poisson_dev_s0_20261009T1800Z",
-      "driver": "experiments/market/b10_tpp.py",
-      "queue": "experiments/queue/curie_b10_poisson_dev_s0_20261009T1800Z.txt",
-      "queue_sha256": "21accb4d703942fdebd647b6d73f6b9579684b2c0569ab3f4c7be24620aec899",
-      "sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
-        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
-      },
-      "result_sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9"
-      },
-      "result": "experiments/results/market/curie_b10_poisson_dev_s0_20261009T1800Z.json",
-      "timeout_s": 21600,
-      "rss_kb": 3000000,
-      "vms_kb": 8000000
-    },
-    {
-      "tag": "curie_b10_hawkes_dev_s0_20261009T1800Z",
-      "driver": "experiments/market/b10_tpp.py",
-      "queue": "experiments/queue/curie_b10_hawkes_dev_s0_20261009T1800Z.txt",
-      "queue_sha256": "5ffa93655825c85bc1923ec2181771764e32c593fdc8358f3a8da1c572e0f601",
-      "sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
-        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
-      },
-      "result_sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9"
-      },
-      "result": "experiments/results/market/curie_b10_hawkes_dev_s0_20261009T1800Z.json",
-      "timeout_s": 21600,
-      "rss_kb": 3000000,
-      "vms_kb": 8000000
-    },
-    {
-      "tag": "curie_b10_race_dev_s0_20261009T1800Z",
-      "driver": "experiments/market/b10_tpp.py",
-      "queue": "experiments/queue/curie_b10_race_dev_s0_20261009T1800Z.txt",
-      "queue_sha256": "080dcf0f5f215abb01ae935f27c0aa9179f9729210a20721d4742cd5c634b864",
-      "sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
-        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
-      },
-      "result_sources": {
-        "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9"
-      },
-      "result": "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json",
-      "timeout_s": 21600,
-      "rss_kb": 3000000,
-      "vms_kb": 8000000
     }
-  ],
-  "battle": "R1/B1/B10"
+  ]
 }
