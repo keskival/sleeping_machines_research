@@ -1,0 +1,24 @@
+{"epoch": 0, "train_loss": 1.6335302256671882, "val_mrr": 0.26783375086034844, "val_queries": 730784, "train_wall_s": 2520.446048974991, "remaining_history_replay_wall_s": 4.0531158447265625e-06, "val_wall_s": 143.50636386871338, "epoch_s": 2664.012095451355, "query_profile": {"repeat_pair": {"queries": 1256, "mrr": 0.5580739836813665}, "new_pair_known_source": {"queries": 663980, "mrr": 0.24682034803859113}, "new_source": {"queries": 65548, "mrr": 0.47513126524930366}}}
+{
+  "status": "completed",
+  "dataset": "tgbl-review",
+  "nodes": 352637,
+  "parameters": 11642366,
+  "val_mrr": 0.26783375086034844,
+  "best_epoch": 0,
+  "checkpoint": "experiments/results/tgb/aws_b5_review_v3_full_dev_20261010T1010Z_r2.pt",
+  "trained_events": 3413837,
+  "competitors_per_train_query": 20,
+  "protocol": "Per-query features from events strictly earlier than query timestamp; pending ties carried across batches and splits; official validation negatives/Evaluator; no TEST",
+  "evidence_level": "first-pass v2 development repair; bounded prefixes are diagnostics, not full validation claims",
+  "tag": "aws_b5_review_v3_full_dev_20261010T1010Z_r2",
+  "battle": "B5 tgbl-review development",
+  "wall_s": 2669.2027423381805,
+  "max_rss_kb": 3291488,
+  "source_sha256": {
+    "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+    "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+    "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+  }
+}
+V3 {} completed
