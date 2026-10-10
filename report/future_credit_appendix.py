@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -80,3 +80,34 @@ def diagnostic_pages(folder):
         ('small','Whole supported work includes paired native branches, both critic fits and proposal training/evaluation. '
          'Teacher-target presentations are the common denominator; unsupported/special operation arithmetic is excluded. '
          'Passing the conditional gate enables a coupled-learning design, not an efficiency or benchmark claim.')]]
+
+
+def noise_pages(folder):
+    prefix='curie_credit_noise_v1_20261010T1450Z'
+    files=[folder/(prefix+f'_measure_s{s}.json') for s in (170,171,172)]
+    contract=folder/(prefix+'_contract.json')
+    if not contract.exists() or not all(p.exists() for p in files):return []
+    records=[json.loads(p.read_text()) for p in files];c=json.loads(contract.read_text())
+    assert c['status']=='completed' and all(r['status']=='completed' for r in records)
+    error=max(r['maximum_branch_parity_error'] for r in c['metrics']);rows=[];work=[]
+    for seed,r in zip((170,171,172),records):
+        m=r['metrics'];rows.append([str(seed),f'{m["context_signal_energy"]:.6g}',
+            f'{m["mean_conditional_noise_energy"]:.6g}',f'{m["context_signal_fraction_of_raw_energy"]:.3f}'])
+        targets=m['scored_target_presentations'];mf=r['supported_flops']/1e6
+        work.append([str(seed),str(m['actor_forwards']),str(targets),f'{mf:.2f}',
+                     f'{mf/targets:.4f}',f'{r["wall_s"]:.2f}'])
+    return [[('h1','Appendix. R1 conditional credit: signal, noise and cached response'),
+        ('p',f'Exact cached key-write intervention values match complete native branch replay at depths 2/4/8 '
+         f'to {error:.2g}. This reuse applies because the intervention changes addressed mark scores while factual '
+         'future hidden states, queries and timing clocks stay unchanged on fixed external inputs. General internal '
+         'routing that alters those states requires a different calculation.'),
+        ('p','Each teacher uses 16 independently generated prefixes and two independent groups of eight legitimate '
+         'continuations per prefix. Cross-products of the two group means estimate conditional mean energy; '
+         'cross-prefix products estimate global mean energy. Their difference measures signal beyond a constant '
+         'predictor. Sample covariance measures unpredictable continuation noise. Finite signal estimates are '
+         'reported without clipping; full-prefix conditioning does not prove current packet sufficiency.'),
+        ('table',(['Seed','Context signal','Continuation noise','Signal/raw energy'],rows,[17,48,48,48])),
+        ('table',(['Seed','Actor calls','Teacher targets','Whole MF','MF/target','Wall s'],work,[15,28,35,33,29,23])),
+        ('small','Non-fitting synthetic diagnostic, no TEST. Actor calls include all causal-prefix checks; '
+         'supported work includes all native calls and analytic candidate responses, with special/unsupported '
+         'operation arithmetic excluded. No complete-learning efficiency or benchmark win is claimed.')]]
