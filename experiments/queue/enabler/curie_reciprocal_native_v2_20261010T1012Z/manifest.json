@@ -1,0 +1,128 @@
+{
+  "tag": "curie_reciprocal_native_v2_20261010T1012Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_reciprocal_native_v1_20261010T1008Z_contract",
+      "driver": "experiments/credit/reciprocal_native_v1.py",
+      "queue": "experiments/queue/enabler/curie_reciprocal_native_v1_20261010T1008Z/curie_reciprocal_native_v1_20261010T1008Z_contract.txt",
+      "queue_sha256": "8321968ebc004e84365a6620d7b67dfa874d6dfe73687ff08e7f67aff53edbd3",
+      "sources": {
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_reciprocal_native_v1_20261010T1008Z_contract.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    },
+    {
+      "tag": "curie_reciprocal_native_v2_20261010T1012Z_contract_d2",
+      "driver": "experiments/credit/reciprocal_native_v2.py",
+      "queue": "experiments/queue/enabler/curie_reciprocal_native_v2_20261010T1012Z/curie_reciprocal_native_v2_20261010T1012Z_contract_d2.txt",
+      "queue_sha256": "cbf9225a086005a968e36049de08e85680b1a127cc38cf069a0d072e1245098a",
+      "sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_reciprocal_native_v2_20261010T1012Z_contract_d2.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_reciprocal_native_v1_20261010T1008Z_contract"
+      ]
+    },
+    {
+      "tag": "curie_reciprocal_native_v2_20261010T1012Z_smoke_d2",
+      "driver": "experiments/credit/reciprocal_native_v2.py",
+      "queue": "experiments/queue/enabler/curie_reciprocal_native_v2_20261010T1012Z/curie_reciprocal_native_v2_20261010T1012Z_smoke_d2.txt",
+      "queue_sha256": "7579fe3b1e9a2df151b3c97c133dfbea9446b1cc543a6bd2bc5e4aa93e684b91",
+      "sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_reciprocal_native_v2_20261010T1012Z_smoke_d2.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_reciprocal_native_v2_20261010T1012Z_contract_d2"
+      ]
+    },
+    {
+      "tag": "curie_reciprocal_native_v2_20261010T1012Z_smoke_d4",
+      "driver": "experiments/credit/reciprocal_native_v2.py",
+      "queue": "experiments/queue/enabler/curie_reciprocal_native_v2_20261010T1012Z/curie_reciprocal_native_v2_20261010T1012Z_smoke_d4.txt",
+      "queue_sha256": "614639b2480c53cc879212731d0e03a4855778f5612821cc77095fcff98f7583",
+      "sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_reciprocal_native_v2_20261010T1012Z_smoke_d4.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_reciprocal_native_v2_20261010T1012Z_contract_d2"
+      ]
+    },
+    {
+      "tag": "curie_reciprocal_native_v2_20261010T1012Z_smoke_d8",
+      "driver": "experiments/credit/reciprocal_native_v2.py",
+      "queue": "experiments/queue/enabler/curie_reciprocal_native_v2_20261010T1012Z/curie_reciprocal_native_v2_20261010T1012Z_smoke_d8.txt",
+      "queue_sha256": "acbd2d215d376bde14973cd6442b34d0657c47d5cfe9b691cc0b4e9b82d42500",
+      "sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/reciprocal_native_v2.py": "97bb65f5bdaeb784ecbbd2544aeff69590a5abd3ec36d441b140f1de70aff38d",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_reciprocal_native_v2_20261010T1012Z_smoke_d8.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_reciprocal_native_v2_20261010T1012Z_contract_d2"
+      ]
+    }
+  ],
+  "purpose": "Selected teacher derivative parity and state/time correctness, then integrated measured native updates at depth 2/4/8; no TEST"
+}
