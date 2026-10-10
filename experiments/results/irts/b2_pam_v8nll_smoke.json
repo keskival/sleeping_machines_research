@@ -1,0 +1,67 @@
+{
+ "status": "completed",
+ "battle": "B2",
+ "tag": "b2_pam_v8nll_smoke",
+ "dataset": "PAM",
+ "split": 0,
+ "args": {
+  "dataset": "PAM",
+  "split": 0,
+  "tag": "b2_pam_v8nll_smoke",
+  "seed": 0,
+  "d": 32,
+  "modes": 16,
+  "layers": 2,
+  "J": 4,
+  "dv": 4,
+  "dropout": 0.2,
+  "lr": 0.002,
+  "wd": 0.0001,
+  "batch": 64,
+  "epochs": 2,
+  "patience": 25,
+  "select": "nll",
+  "score_test": false,
+  "ema": 0.999,
+  "crop": 0.8,
+  "jitter": 0.1
+ },
+ "parameters": 46316,
+ "best_epoch": 1,
+ "epochs_run": 2,
+ "wall_s": 296.81884026527405,
+ "val": {
+  "acc": 0.2795497185741088,
+  "precision": 0.571960694023815,
+  "recall": 0.21047299800262154,
+  "f1": 0.1811574944747687,
+  "nll": 1.92158043384552
+ },
+ "history": [
+  {
+   "epoch": 0,
+   "train_loss": 1.144635627653137,
+   "val_acc": 0.20075046904315197,
+   "val_precision": 0.29315226738755645,
+   "val_recall": 0.15263437863367738,
+   "val_f1": 0.10125130611370742,
+   "val_nll": 1.995117425918579,
+   "epoch_s": 148.69522428512573
+  },
+  {
+   "epoch": 1,
+   "train_loss": 0.5675548956922897,
+   "val_acc": 0.2795497185741088,
+   "val_precision": 0.571960694023815,
+   "val_recall": 0.21047299800262154,
+   "val_f1": 0.1811574944747687,
+   "val_nll": 1.92158043384552,
+   "epoch_s": 148.11413884162903
+  }
+ ],
+ "checkpoint": "experiments/results/irts/b2_pam_v8nll_smoke.pt",
+ "source_sha256": {
+  "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
