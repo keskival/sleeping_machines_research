@@ -4,6 +4,23 @@
   "battle": "R1/B1",
   "jobs": [
     {
+      "tag": "curie_averaged_decision_audit_20261010T1740Z",
+      "driver": "experiments/credit/audit_future_credit_decisions.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_finish_20261010T1730Z/curie_averaged_decision_audit_20261010T1740Z.txt",
+      "queue_sha256": "7977fbc7b60c35ed5bbf8e6ed6370d94801ae4332f15d1f6aa7d0d49ddef3df6",
+      "sources": {
+        "experiments/credit/audit_future_credit_decisions.py": "cf9e7d4255111c1fdec6cff1bf1a5cce0b46639f28800d5f6d97bf6518983803"
+      },
+      "result_sources": {
+        "experiments/credit/audit_future_credit_decisions.py": "cf9e7d4255111c1fdec6cff1bf1a5cce0b46639f28800d5f6d97bf6518983803"
+      },
+      "result": "experiments/results/credit/curie_averaged_decision_audit_20261010T1740Z.json",
+      "rss_kb": 300000,
+      "vms_kb": 2000000,
+      "timeout_s": 120,
+      "requires": []
+    },
+    {
       "tag": "curie_averaged_credit_finish_20261010T1730Z_report",
       "driver": "scripts/build_curie_credit_report.py",
       "queue": "experiments/queue/enabler/curie_averaged_credit_finish_20261010T1730Z/curie_averaged_credit_finish_20261010T1730Z_report.txt",
