@@ -2,7 +2,7 @@
 
 Introductory tutorials to the mathematics needed to read our theory notes (`experiments/theory/160`–`168`) and the
 machine-checked lemmas (`experiments/lean/credit_theory`). One topic per file; each has derivations, exercises with
-solutions, and a "where this appears in our work" box. Build: `latexmk -pdf <file>.tex` (shared style `tutorial.sty`).
+solutions, and a "where this appears in our work" box. Build one tutorial from `tutorials/`: `latexmk -pdf <file>.tex` (shared style `tutorial.sty`). Rebuild tutorials 4–8 with `scripts/build_tutorials.py --tag <unique-tag>`; it checks text extraction, required sections and layout before publishing. The Lean PDF is instructional; a fresh proof build requires the pinned toolchain separately.
 Post-boundary material: internal only until the priority filing (see `ip/`).
 
 | # | Tutorial | Status |
@@ -10,13 +10,13 @@ Post-boundary material: internal only until the priority filing (see `ip/`).
 | 1 | [Temporal point processes and races of clocks](01_point_processes_and_races.pdf) | done (3 pp.) |
 | 2 | [Adjoints, eligibility traces and temporal credit](02_adjoints_traces_temporal_credit.pdf) | done (3 pp.) |
 | 3 | [Gradient estimators and variance reduction](03_gradient_estimators_variance_reduction.pdf) | done (3 pp.) |
-| 4 | Information theory for learning signals | to write |
-| 5 | Learning dynamics: contraction, Bellman equations and TD | to write |
-| 6 | Counting-process martingales, Fisher information and natural gradients | to write |
-| 7 | Spectra, scaling and queues | to write |
-| 8 | Formal verification with Lean 4 | to write |
+| 4 | [Information theory for learning signals](04_information_theory_for_learning_signals.pdf) · [source](04_information_theory_for_learning_signals.tex) | done (3 pp.) |
+| 5 | [Learning dynamics: contraction, Bellman equations and TD](05_learning_dynamics_contraction_bellman_td.pdf) · [source](05_learning_dynamics_contraction_bellman_td.tex) | done (3 pp.) |
+| 6 | [Counting-process martingales, Fisher information and natural gradients](06_counting_processes_fisher_natural_gradients.pdf) · [source](06_counting_processes_fisher_natural_gradients.tex) | done (3 pp.) |
+| 7 | [Spectra, scaling and queues](07_spectra_scaling_and_queues.pdf) · [source](07_spectra_scaling_and_queues.tex) | done (3 pp.) |
+| 8 | [Formal verification with Lean 4](08_formal_verification_with_lean4.pdf) · [source](08_formal_verification_with_lean4.tex) | done (3 pp.) |
 
-## Outlines for the remaining tutorials (same format as 1–3: ~3 pages, exercises with solutions)
+## Coverage and reading path
 
 4. **Information theory for learning signals** — entropy, mutual information, Gaussian channels; rate–distortion of a Gaussian
    (log(v/D)), reverse water-filling (weighted form, sparsity as the optimum); side information and Wyner–Ziv (no rate loss for
