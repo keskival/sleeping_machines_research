@@ -1,0 +1,42 @@
+/workspace/experiments/tpp/diagnose_b4_backward.py:55: UserWarning: Anomaly Detection has been enabled. This mode will increase the runtime and should only be enabled for debugging.
+  with torch.autograd.detect_anomaly(check_nan=True):
+/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/graph.py:1072: UserWarning: Error detected in ExpBackward0. Traceback of forward call that caused the error:
+  File "/workspace/experiments/tpp/diagnose_b4_backward.py", line 88, in <module>
+    if __name__ == '__main__': main()
+  File "/workspace/experiments/tpp/diagnose_b4_backward.py", line 56, in main
+    params = model.clocks(hp, sp)
+  File "/workspace/experiments/tpp/race_tpp_v19.py", line 177, in clocks
+    floor = (self.floor_cell * torch.exp(-mu)).clamp_min(0.005) if self.floor_cell > 0 else 0.005
+ (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_anomaly_mode.cpp:130.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Traceback (most recent call last):
+  File "/workspace/experiments/tpp/diagnose_b4_backward.py", line 66, in main
+    loss.backward()
+    ~~~~~~~~~~~~~^^
+  File "/workspace/.venv-docker/lib/python3.14/site-packages/torch/_tensor.py", line 623, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/__init__.py", line 395, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/graph.py", line 1072, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+RuntimeError: Function 'ExpBackward0' returned nan values in its 0th output.
+
+{"status": "completed", "tag": "aws_b4_backward_diagnosis_20261010T1958Z", "battle": "B4 development", "stage": "backward_diagnosis", "dataset": "github_filtered", "split": 1, "shape": [7, 4699], "train_events": 9114, "zero_train_gaps": 376, "captured": {"log_rate": {"shape": [7, 4698, 2], "nonfinite": 0, "min": -1396.8867572341867, "max": 15.67045886119244}, "mu": {"shape": [7, 4698, 8], "nonfinite": 0, "min": -1440.830540327445, "max": 1089.6442978424348}, "sigma": {"shape": [7, 4698, 8], "nonfinite": 11550, "min": 0.005, "max": 5.682581482610621e+301}, "log_w": {"shape": [7, 4698, 10], "nonfinite": 0, "min": -2151.029395658798, "max": 0.0}, "log_pk": {"shape": [7, 4698, 10, 9], "nonfinite": 0, "min": -2516.970549164016, "max": 0.0}, "head_loss_finite": true, "head_loss": -3.742373914259521, "failed_backward": "Function 'ExpBackward0' returned nan values in its 0th output."}, "head_backward_failure_reproduced": true, "checkpoint": "experiments/results/tpp_b4/b4g_github_s1.pt", "checkpoint_sha256": "e68775c84cdd724647e90c6847b2bd73f33ae4d85afbc7e2775e9d040b8c2763", "source_result": {"path": "experiments/results/tpp_b4/b4g_github_s1.json", "sha256": "4db57412f678d2b770ecbdc6b47e9ea00cc7fc49480146c8efd82c5fac7725f7"}, "data_sha256": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f", "wall_s": 0.8830733719514683, "max_rss_kb": 572176, "source_sha256": {"experiments/tpp/diagnose_b4_backward.py": "fb5f6b275af7aa932bbce7a1f800c542f84f646caff6a1b439c7a5c2534614d0", "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1", "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"}, "scope": "Longest original TRAIN batch, validation-selected saved checkpoint, dropout off; isolated clock-head backward. No optimizer update, no TEST loading, no changed benchmark score."}
