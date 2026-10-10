@@ -184,11 +184,13 @@ A uniform query bound exists for the fixed native actor: its final LayerNorm out
     ||h|| <= ||gamma_LN||_infinity sqrt(d) + ||bias_LN||,
     Q <= ||W_query||_operator (||gamma_LN||_infinity sqrt(d)+||bias_LN||) + ||b_query||.
 
-This uses the standard normalization denominator with nonnegative epsilon; it is a bound on emitted messages, not a rescaling of persistent memory. Weight changes update the bound. Different readouts or normalization rules need their own bound.
+This uses the standard normalization denominator with positive epsilon; it is a bound on emitted messages, not a rescaling of persistent memory. Weight changes update the bound. Different readouts or normalization rules need their own bound.
 
 For true conditional continuation law P and predicted law P_psi, the bounded-expectation inequality gives
 
     |A_psi(H,a)-A(H,a)| <= 2 M TV(P_psi(.|H),P(.|H)).
+
+Here A is the future-loss component. Known deterministic action-work differences can be added exactly without changing this distribution-error bound; stochastic future work requires a bound for the combined resource-priced decoder. Candidate construction and evaluation remain charged.
 
 A decoder error bounded by epsilon_D adds epsilon_D. Therefore uniform continuation-distribution error delta gives critic error at most 2M delta+epsilon_D. Combined with the collaborative pool bound, selected action regret is at most
 
