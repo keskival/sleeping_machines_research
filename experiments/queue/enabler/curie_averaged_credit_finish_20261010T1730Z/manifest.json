@@ -1,0 +1,23 @@
+{
+  "tag": "curie_averaged_credit_finish_20261010T1730Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_averaged_credit_finish_20261010T1730Z_report",
+      "driver": "scripts/build_curie_credit_report.py",
+      "queue": "experiments/queue/enabler/curie_averaged_credit_finish_20261010T1730Z/curie_averaged_credit_finish_20261010T1730Z_report.txt",
+      "queue_sha256": "c3c34e4b13d1fcb30222e198504a032e27c6d415b87b7a0cb06bddbc09d82788",
+      "sources": {
+        "scripts/build_curie_credit_report.py": "69376716b0537b44d24e4435fa94f688eb557c7be00f2bf64d73afa3a7fed439"
+      },
+      "result_sources": {
+        "scripts/build_curie_credit_report.py": "69376716b0537b44d24e4435fa94f688eb557c7be00f2bf64d73afa3a7fed439"
+      },
+      "result": ".git/curie-report-build-preview/curie_averaged_credit_finish_20261010T1730Z_report/result.json",
+      "rss_kb": 1200000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}
