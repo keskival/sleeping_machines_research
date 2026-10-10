@@ -115,6 +115,8 @@ Measured learning (Taxi DEV log-likelihood per event, 3 seeds, 20 passes over TR
 - unshared feedback trained by the forward updates (f) 0.4715 vs shared exact transposes 0.4736, with alignment cosine
   1.000 on every feedback matrix; fixed random feedback 0.1699 (cosines 0.01–0.28).
 
+Negative result for element (c) in its self-normalized form (matched v6 diagnostic, single seed): with two proposals the closed loop's credit gap (KL 0.058) was larger than sleep-only training's (0.026), and both trailed dense exact credit by 0.14–0.19 nats. The pairwise exact-target form of (c) is the one under test.
+
 Modeled learning work at depth 2 for the pairwise credit learner: 4,064 vs 17,280 leading-linear MACs per target
 (0.235× dense). Measured fitting quality, credit gap and wall time are pending (queues listed in `experiments/HANDOFF.md`).
 
