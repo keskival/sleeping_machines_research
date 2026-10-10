@@ -4410,6 +4410,36 @@ One real TRAIN fragment; matched model and causal audit draws. Exact producer me
 
 The88x88 metric comes from an88x18164 producer Jacobian and is a paid diagnostic, not the final economical implementation. Its quadratic form matches the actual parameter VJP norm to3.6e-15. A stochastic projection needs its own variance/utility comparison. Route-conditioned credit beyond the active pool is specified separately: shared descriptors support predictions, and positive-support exploration supplies corrections without evaluating every dormant route.
 
+### Shared credit for never-labelled receiver addresses
+
+A route-conditioned connected critic learns only from receiver addresses0–5, then predicts optional native key-write effects at addresses6–7. Receiver descriptors contain observed state and token role, without raw receiver identity or future feedback. The comparison uses nearly matched structured-response and free heads.
+
+| Critic | Error / zero | Role mean / zero | Expanded-pool gain | Inactive selected |
+| --- | --- | --- | --- | --- |
+| free | 0.4053 | 0.8406 | +0.000756 | 5 |
+| structured | 0.3607 | 0.8406 | +0.002245 | 7 |
+
+Calibration concerns never-labelled receivers that differ from the factual active address. Lower relative error is better; positive pool gain means lower actual future loss than selection confined to training receivers. One fitted seed170,128 TRAIN and64 fresh DEV prefixes,8/16 synthetic continuations,256 steps. Prefix bootstrap intervals are conditional on this fitted seed.
+
+Native optional-write values, action derivatives, causal descriptors and receiver relabeling pass at depths2,4 and8. Value agreement is within1.6e-15. This interface preserves temporal/value evolution; the actor is frozen and factual write addresses remain observed marks.
+
+Entire pilot 145.07s, peak RSS423.3MiB, supported work130.523GFLOPs including teacher extraction, all eight receiver queries, both critic fits and selected-write replay. Unsupported operations are excluded. This is a synthetic mechanism diagnostic; causal changing-weight integration and sparse discovery are subsequent tests.
+
+### Three-seed receiver-generalization confirmation
+
+| Seed | Critic | Inactive error / zero | Expanded-pool gain |
+| --- | --- | --- | --- |
+| 170 | free | 0.4053 | +0.000756 |
+| 170 | structured | 0.3607 | +0.002245 |
+| 171 | free | 0.3095 | +0.002097 |
+| 171 | structured | 0.1812 | +0.002171 |
+| 172 | free | 0.3303 | +0.001838 |
+| 172 | structured | 0.2666 | +0.002226 |
+
+All structured pool gains positive: True. All structured inactive errors below TRAIN-role mean: True.
+
+Three fitted seeds, frozen native depth4 actor, synthetic fresh DEV continuations. Optional hard key writes; no online actor fitting, general internal routing, real-stream TEST or efficiency claim. Each phase fits both nearly parameter-matched critics and charges all receiver queries.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
