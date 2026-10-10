@@ -3,7 +3,7 @@
 #include <vector>
 
 static void check(at::Tensor x) {
-  TORCH_CHECK(x.device().is_cpu() && x.scalar_type()==at::kFloat64 && x.is_contiguous(),
+  TORCH_CHECK(x.device().is_cpu() && x.scalar_type()==at::kDouble && x.is_contiguous(),
               "CPU scan requires contiguous float64 tensors");
 }
 
