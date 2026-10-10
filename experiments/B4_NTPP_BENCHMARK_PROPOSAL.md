@@ -253,6 +253,8 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 
 **v21 `ln32` + mark memory + statistics (10 Oct 06:00, MOOC split 0, VALIDATION).** Best epoch 28 of 59 (early patience stop), 134,355 parameters: −307.79 / 70.05 / −237.75, no better than `--mark-mem 1` alone (best −238.57). With the `ln16` null result, more delayed clocks do not move MOOC time with or without the mark pathways. MOOC development arms are complete: `--mark-mem 1` is the developed mark configuration; the LastFM stats arms remain.
 
+**LastFM `--mark-stats` (10 Oct 13:45 UTC, split 0, VALIDATION, one seed): not a robust mark gain.** Best epoch 7 of 38 (all finite): L_T −1758.36 / L_M 703.98 / total −1054.38 vs frozen −1047.5 (L_M 711.0). Mean over epochs 5–35: total −1031.9 vs frozen −1025.6, **L_M 725.5 vs 722.8** (no mark improvement), L_T −1757.4 vs −1748.4. The best-epoch mark gain is selection noise; the training-free counter (694.7) still beats both. Diagnosis: LastFM validation L_M oscillates 700–850 across epochs in both runs; the mark path is unstable on these long (~270-event) sequences, which an extra feature does not fix. Next candidates for LastFM marks: the per-event mark memory (`--mark-mem 1`, the MOOC winner; arm `b4dev_lastfm_s0_mem1_stats` is queued) and win-normalized/lower-rate mark updates (note 168 §2: rarely winning marks need larger natural steps, frequent ones smaller).
+
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
 A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
