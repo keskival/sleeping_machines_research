@@ -164,3 +164,36 @@ A narrow exact computation reduces diagnosis cost. For the current key-write int
 For each clock, re-normalize its factual mark logits after adding beta_i to mark v, then combine with the factual clock hazards. The survival term cancels in the intervention advantage. One native factual trajectory therefore supplies values for every candidate; the exact parity contract compares this calculation with complete branch replay at depths 2/4/8, including a mixed-direction candidate. No inverse decay or fictitious future prediction is used. This reuse does not apply to general internal routes that change future hidden state, queries or clock parameters.
 
 Five non-fitting R1/B1 jobs are admitted in `queue/enabler/curie_credit_noise_v1_20261010T1450Z/manifest.json`: new response contract, one smoke and three seeded measurements. Each measures 16 prefixes with two independent groups of eight continuations from the original synthetic MQAR law, conditioned only on observable prefix key/value pairs. All actor calls, prefix causality checks and response arithmetic are charged. They run after existing B10 jobs and before the queued report build, under the same host guards. Next fitting changes depend on measured signal/noise rather than simply increasing model depth or sample count.
+
+## 12. A powerful shared continuation model with exact local response
+
+The cached-response calculation suggests a factorization rather than isolated gradient guessing. Let xi denote a future continuation and D(H,xi,a) its exact finite key-write loss difference. A connected high-capacity model P_psi(xi|H) predicts continuation evidence, and
+
+    A_psi(H,a) = E_{xi drawn from P_psi(.|H)} D(H,xi,a).
+
+The learned model can share temporal representations across routes/layers and use persistent event state; the exact local response does not constrain its capacity to a small linear predictor. Forward outcomes and latent forward trajectories supervise continuation representations when revealed; controlled branch audits calibrate intervention consequences. Factual supervision alone does not identify all action-conditioned transitions. For general routing where the intervention changes future internal state, replace the passive decoder with the corresponding intervened transition model and validate its counterfactuals.
+
+For the current intervention, a single mark's clock logit gains beta. Its normalization factor is 1+p_v(exp(beta)-1). The change in each clock's log probability of the realized mark lies in [-|beta|,|beta|]. Mixture hazards are unchanged, so the ratio of their marked intensities is a positively weighted average of component probability ratios, also in [exp(-|beta|),exp(|beta|)]. Thus
+
+    |D_i| <= |beta_i| <= ||q_i|| ||a|| / sqrt(dk),
+
+because physical decay has operator norm at most one. If ||q_i|| <= Q and ||a|| <= R, averaged future advantage obeys |D| <= M=QR/sqrt(dk). This bound does not clip or change the measured likelihood objective. For an unnormalized discounted sum multiply M by the sum of its nonnegative weights.
+
+A uniform query bound exists for the fixed native actor: its final LayerNorm output h satisfies
+
+    ||h|| <= ||gamma_LN||_infinity sqrt(d) + ||bias_LN||,
+    Q <= ||W_query||_operator (||gamma_LN||_infinity sqrt(d)+||bias_LN||) + ||b_query||.
+
+This uses the standard normalization denominator with nonnegative epsilon; it is a bound on emitted messages, not a rescaling of persistent memory. Weight changes update the bound. Different readouts or normalization rules need their own bound.
+
+For true conditional continuation law P and predicted law P_psi, the bounded-expectation inequality gives
+
+    |A_psi(H,a)-A(H,a)| <= 2 M TV(P_psi(.|H),P(.|H)).
+
+A decoder error bounded by epsilon_D adds epsilon_D. Therefore uniform continuation-distribution error delta gives critic error at most 2M delta+epsilon_D. Combined with the collaborative pool bound, selected action regret is at most
+
+    delta_pool + 4 M delta + 2 epsilon_D.
+
+Proof: integrate the bounded decoder against the signed difference of probability measures, whose total mass variation is twice TV, then apply the existing 2-epsilon action-selection bound. Approximate sampling adds estimation error. Factual likelihood accuracy is not automatically a uniform TV or counterfactual-calibration guarantee; evaluate the relevant conditional distributions and actual intervention values.
+
+This supplies an explicit route from richer forward/continuation learning to useful credit decisions. It is a sufficient-condition design target, not evidence that our current critic models P or satisfies these bounds. The queued conditional-noise measurement and cached-response parity contract come first. A later comparison can contrast direct value prediction with this structured continuation decoder under equal full work and the same dense supervision. No fitting job is added by this section.
