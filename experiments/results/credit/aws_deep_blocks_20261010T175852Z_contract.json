@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "tag": "aws_deep_blocks_20261010T175852Z_contract",
+  "battle": "B1/R1 exact deep-credit execution",
+  "stage": "contract",
+  "fixed_weight_contract": {
+    "online_deep": {
+      "max_rel": 9.560088608693272e-16,
+      "worst": "fr1",
+      "lower_layer_max_rel": 6.115119493193354e-16
+    },
+    "online_trunc": {
+      "max_rel": 1.2436177486248607,
+      "worst": "Wi1",
+      "lower_layer_max_rel": 1.1205106043288764
+    }
+  },
+  "measurements": [
+    {
+      "batch": 3,
+      "d": 8,
+      "modes": 4,
+      "K": 5,
+      "length": 12,
+      "parameter_error": 1.1102230246251565e-16,
+      "optimizer_state_error": 2.7755575615628914e-16,
+      "accumulated_likelihood_error": 7.105427357601002e-15,
+      "median_batch_s": {
+        "dense": 0.02327684301417321,
+        "blocks": 0.023859472945332527
+      },
+      "whole_step_speedup": 0.9755807711052857,
+      "dense_trace_floats": 17664,
+      "block_trace_floats": 11064,
+      "measured_scope": "Four complete online batches; three timed after warmup; forward, credit, backward, Adam included"
+    }
+  ],
+  "wall_s": 0.8674704519798979,
+  "max_rss_kb": 387100,
+  "source_sha256": {
+    "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+    "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+    "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+  },
+  "scope": "Same two-layer online3 model and learning rule; structural zeros removed; no TEST or quality claim. Cross-layer dense prefix remains; changing-weight drift is unchanged."
+}
