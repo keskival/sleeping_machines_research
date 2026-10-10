@@ -116,6 +116,27 @@
       "requires": [
         "curie_future_credit_v2_20261010T1240Z_pilot_s171"
       ]
+    },
+    {
+      "tag": "curie_future_credit_v2_20261010T1240Z_decision",
+      "driver": "experiments/credit/summarize_future_credit.py",
+      "queue": "experiments/queue/enabler/curie_future_credit_v2_20261010T1240Z/curie_future_credit_v2_20261010T1240Z_decision.txt",
+      "queue_sha256": "3b632a4515deb9fbf70e40097e7677b2cf4a202a5ce0cde0db88d8becf270cf5",
+      "sources": {
+        "experiments/credit/summarize_future_credit.py": "de5abde7ddcb6ba15bc3fc3ea30788e8a5d8aee94bddc084829ec6c46ee10e8b"
+      },
+      "result_sources": {
+        "experiments/credit/summarize_future_credit.py": "de5abde7ddcb6ba15bc3fc3ea30788e8a5d8aee94bddc084829ec6c46ee10e8b"
+      },
+      "result": "experiments/results/credit/curie_future_credit_v2_20261010T1240Z_decision.json",
+      "rss_kb": 256000,
+      "vms_kb": 8000000,
+      "timeout_s": 60,
+      "requires": [
+        "curie_future_credit_v2_20261010T1240Z_pilot_s170",
+        "curie_future_credit_v2_20261010T1240Z_pilot_s171",
+        "curie_future_credit_v2_20261010T1240Z_pilot_s172"
+      ]
     }
   ]
 }

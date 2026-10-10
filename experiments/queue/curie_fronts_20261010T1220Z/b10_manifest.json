@@ -1,17 +1,11 @@
 {
   "tag": "curie_fronts_20261010T1220Z_credit_v2_b10",
   "host": "curie",
-  "ownership": "curie B2 splits 4/3 and B10; AWS agent owns AWS queues",
+  "ownership": "curie R1/B1 future-credit diagnostics and B10 DEV; PAM stopped; AWS queues separately owned",
   "hardware": {
     "host_memory_gib": 31,
     "measured_previous_pam_rss_kb": 1924892,
-    "minimum_available_mib": 8192
-  },
-  "prior_interruption": {
-    "tag": "curie_b2_final_pam_v8nll_split4_20261009T1715Z",
-    "last_completed_epoch": 23,
-    "optimizer_missing": true,
-    "test_not_scored": true
+    "minimum_available_mib": 9216
   },
   "jobs": [
     {
@@ -126,6 +120,27 @@
       "timeout_s": 1200,
       "requires": [
         "curie_future_credit_v2_20261010T1240Z_pilot_s171"
+      ]
+    },
+    {
+      "tag": "curie_future_credit_v2_20261010T1240Z_decision",
+      "driver": "experiments/credit/summarize_future_credit.py",
+      "queue": "experiments/queue/enabler/curie_future_credit_v2_20261010T1240Z/curie_future_credit_v2_20261010T1240Z_decision.txt",
+      "queue_sha256": "3b632a4515deb9fbf70e40097e7677b2cf4a202a5ce0cde0db88d8becf270cf5",
+      "sources": {
+        "experiments/credit/summarize_future_credit.py": "de5abde7ddcb6ba15bc3fc3ea30788e8a5d8aee94bddc084829ec6c46ee10e8b"
+      },
+      "result_sources": {
+        "experiments/credit/summarize_future_credit.py": "de5abde7ddcb6ba15bc3fc3ea30788e8a5d8aee94bddc084829ec6c46ee10e8b"
+      },
+      "result": "experiments/results/credit/curie_future_credit_v2_20261010T1240Z_decision.json",
+      "rss_kb": 256000,
+      "vms_kb": 8000000,
+      "timeout_s": 60,
+      "requires": [
+        "curie_future_credit_v2_20261010T1240Z_pilot_s170",
+        "curie_future_credit_v2_20261010T1240Z_pilot_s171",
+        "curie_future_credit_v2_20261010T1240Z_pilot_s172"
       ]
     },
     {
