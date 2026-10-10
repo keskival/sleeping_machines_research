@@ -1,0 +1,108 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "rows": [
+    {
+      "seed": 170,
+      "reference": {
+        "arm": "saved_receiver_gru",
+        "parameters": 10608,
+        "unseen_inactive_relative_mse": 0.36069716188857376,
+        "gain_vs_fixed": 0.0149312526550727,
+        "gain_bootstrap95": [
+          0.012417289553270917,
+          0.017503724242128618
+        ],
+        "expanded_pool_gain": 0.002244776292319774,
+        "query_supported_flops": 31490048,
+        "query_wall_s": 0.011453753999376204,
+        "native_write_error": 2.7755575615628914e-16
+      },
+      "shared": {
+        "arm": "shared_prefix",
+        "parameters": 10584,
+        "unseen_inactive_relative_mse": 0.3761164717761162,
+        "gain_vs_fixed": 0.014042497765820963,
+        "gain_bootstrap95": [
+          0.011613243020682854,
+          0.016530349794274646
+        ],
+        "expanded_pool_gain": 0.0014797625386038418,
+        "query_supported_flops": 8847872,
+        "query_wall_s": 0.013476753993018065,
+        "native_write_error": 2.7755575615628914e-16
+      },
+      "gain_retained": 0.9404768702410381,
+      "query_work_ratio": 0.28097359521331944
+    },
+    {
+      "seed": 171,
+      "reference": {
+        "arm": "saved_receiver_gru",
+        "parameters": 10608,
+        "unseen_inactive_relative_mse": 0.18121725833710864,
+        "gain_vs_fixed": 0.012561342965221491,
+        "gain_bootstrap95": [
+          0.00956213511694005,
+          0.01579788678256762
+        ],
+        "expanded_pool_gain": 0.002171091175045339,
+        "query_supported_flops": 31490048,
+        "query_wall_s": 0.011386060999939218,
+        "native_write_error": 8.326672684688674e-17
+      },
+      "shared": {
+        "arm": "shared_prefix",
+        "parameters": 10584,
+        "unseen_inactive_relative_mse": 0.3283028644214271,
+        "gain_vs_fixed": 0.012560955165750341,
+        "gain_bootstrap95": [
+          0.009654033029518838,
+          0.015705588682346647
+        ],
+        "expanded_pool_gain": 0.002196340237788228,
+        "query_supported_flops": 8847872,
+        "query_wall_s": 0.013113135995808989,
+        "native_write_error": 9.367506770274758e-17
+      },
+      "gain_retained": 0.9999691275469332,
+      "query_work_ratio": 0.28097359521331944
+    },
+    {
+      "seed": 172,
+      "reference": {
+        "arm": "saved_receiver_gru",
+        "parameters": 10608,
+        "unseen_inactive_relative_mse": 0.2665604216642257,
+        "gain_vs_fixed": 0.012545479667090468,
+        "gain_bootstrap95": [
+          0.009562883747212708,
+          0.01572251507600688
+        ],
+        "expanded_pool_gain": 0.002226266358848486,
+        "query_supported_flops": 31490048,
+        "query_wall_s": 0.011602103004406672,
+        "native_write_error": 1.8041124150158794e-16
+      },
+      "shared": {
+        "arm": "shared_prefix",
+        "parameters": 10584,
+        "unseen_inactive_relative_mse": 0.2362596016226942,
+        "gain_vs_fixed": 0.011718219327162303,
+        "gain_bootstrap95": [
+          0.008776590297204455,
+          0.014638014389186495
+        ],
+        "expanded_pool_gain": 0.0016749785902028776,
+        "query_supported_flops": 8847872,
+        "query_wall_s": 0.013365997998334933,
+        "native_write_error": 1.8041124150158794e-16
+      },
+      "gain_retained": 0.9340590904548473,
+      "query_work_ratio": 0.28097359521331944
+    }
+  ],
+  "confirmation_gate": true,
+  "gate_scope": "Seed170 selected pilot; seeds171/172 confirm positive utility, inactive error below zero, at least90% point-gain retention and reduced supported query work. This is a synthetic frozen-actor development gate, not equal-quality dominance or matched whole-fit work.",
+  "scope": "Same per-seed actor/labels/steps/optimizer and nearly matched parameters, different critic initialization. Native depth4 optional key writes; previous and new teacher/fitting work charged. Query comparison excludes common descriptors. No online actor fitting, deployment wall-speed, full learning-efficiency, asynchronous hardware or TEST claim."
+}
