@@ -266,3 +266,26 @@ the wake-side verdicts (pairs/MH on data), whose bias vanishes as p_θ approache
 - Use race-sampled causes for hidden credit where the posterior is sharp, more samples where H₂(ρ) is large (F, G).
 Open derivations: the joint optimum of delay and rate (both trade against staleness); non-stationary gap processes
 (Theorem A becomes a conditional statement on the gap path); the coupled two-timescale convergence of θ and ψ.
+
+## Formal verification (Lean 4 + Mathlib, machine-checked)
+
+[`experiments/lean/credit_theory/CreditTheory/Basic.lean`](../lean/credit_theory/CreditTheory/Basic.lean)
+(`lake build`; toolchain leanprover/lean4:v4.35.0-rc4, Mathlib v4.35.0-rc4). Every theorem depends only on the standard
+axioms `propext`, `Classical.choice`, `Quot.sound` (no `sorry`):
+
+| Lean theorem | Statement | Note 164 |
+|---|---|---|
+| `var_eq_half_pairwise` | Σρ(v − ḡ)² = ½ΣΣρρ(v_i − v_j)² | Theorem F identity |
+| `pairwise_le_collision` | ΣΣρρd² ≤ 4G²(1 − Σρ²) for zero diagonal, |d| ≤ 2G | Theorem F bound |
+| `sampled_credit_variance_bound` | single-cause credit variance ≤ 2G²(1 − Σρ²) = 2G²(1 − e^{−H₂}) | Theorem F (per coordinate; summing coordinates gives the vector case) |
+| `geom_tail_le` | Σ_{j<N} ρ^{H+1+j} ≤ ρ^{H+1}/(1−ρ) | Result 2 horizon |
+| `delay_stationary`, `delay_objective_convex` | Lambert-W τ* is the stationary point; objective strictly convex | Theorem B |
+| `info_from_waiting` | log(R₀/R_τ) = 2rτ (constant gaps) | Theorem A |
+| `transport_saving` | log(σ²/(1−ρ²)/D) − log(σ²/D) = log 1/(1−ρ²) | Theorem C |
+| `waterfill_equal_minimizes` | Σx_i ≥ n·exp(mean log x): equal w_iD_i minimizes distortion at fixed rate | Theorem E (active set) |
+
+Not formalized (no Mathlib foundation for Shannon rate–distortion or Wyner–Ziv coding): the source-coding steps of
+Theorems C–E and the Gaussian mutual-information formula, which are cited classical results; the MLE asymptotics of
+Theorem G. Next formal targets: the random-gap expectation in Theorem A (equal laws ⇒ equal expected logs), the
+sup-norm contraction of the complex adjoint Bellman operator, and the unbiasedness of stochastic send-on-delta.
+

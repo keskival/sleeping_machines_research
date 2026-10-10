@@ -81,6 +81,21 @@ depth.**
 - Combined with (e), the whole learner is local. On a delay-line substrate, the backward path is a separate physical
   structure that learns to become the time-reversed dual of the forward one.
 
+**Extension (10 Oct 2026, theory note 164, commit 74642c57 and follow-ups; founder direction):**
+- (g) **Transport-conditioned credit:** the credit function predicts only the state cotangent, conditioned on the forward
+  state, arrived outcomes and the substrate's exact elapsed-time transport (decay, rotation, observed gaps), which is
+  shared, not learned; only the tail is learned, by temporal-difference bootstrapping with a complex, gap-dependent
+  discount equal to the memory's own transport.
+- (h) **Per-mode credit horizons and delays from forward decay rates:** horizon H_m(ε) and optimal application delay
+  τ*_m = W(2r²R/(Kη²))/(2r); credit for each mode applied asynchronously after its own delay; waiting supplies 2r nats of
+  credit information per unit time.
+- (i) **Event-triggered credit messages allocated by weighted reverse water-filling** on forward-computable residual
+  credit variance and eligibility norm; coordinates below the water level send nothing; deterministic and unbiased
+  stochastic send-on-delta implementations.
+- (j) **Local decoding of compressed credit with forward side information** at each parameter site (Wyner–Ziv), so the
+  backward path needs neither forward weights nor forward state.
+Machine-checked lemmas: `experiments/lean/credit_theory/CreditTheory/Basic.lean`.
+
 ## 3. Technical effects (measured contracts; learning tests queued, `experiments/theory/160_*.md` §§6–12)
 
 | Contract | Result |
