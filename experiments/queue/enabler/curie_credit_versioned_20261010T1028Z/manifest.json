@@ -1,0 +1,150 @@
+{
+  "tag": "curie_credit_versioned_20261010T1028Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "purpose": "Correct forward packet actor versions before any transfer fit",
+  "jobs": [
+    {
+      "tag": "curie_credit_versioned_20261010T1028Z_symmetry_d2",
+      "driver": "experiments/credit/check_credit_equivariance_v2.py",
+      "queue": "experiments/queue/enabler/curie_credit_versioned_20261010T1028Z/curie_credit_versioned_20261010T1028Z_symmetry_d2.txt",
+      "queue_sha256": "6b4ef313fbae8c85328374107db455121fcd5e0cc13c3044c0f8766421450f13",
+      "sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_versioned_20261010T1028Z_symmetry_d2.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    },
+    {
+      "tag": "curie_credit_versioned_20261010T1028Z_contract_d2",
+      "driver": "experiments/credit/reciprocal_native_v5.py",
+      "queue": "experiments/queue/enabler/curie_credit_versioned_20261010T1028Z/curie_credit_versioned_20261010T1028Z_contract_d2.txt",
+      "queue_sha256": "09a8cae77ac95a83f805faa5e439cce340465b114549bb46740624f72990ee85",
+      "sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_versioned_20261010T1028Z_contract_d2.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_credit_versioned_20261010T1028Z_symmetry_d2"
+      ]
+    },
+    {
+      "tag": "curie_credit_versioned_20261010T1028Z_smoke_d2",
+      "driver": "experiments/credit/reciprocal_native_v5.py",
+      "queue": "experiments/queue/enabler/curie_credit_versioned_20261010T1028Z/curie_credit_versioned_20261010T1028Z_smoke_d2.txt",
+      "queue_sha256": "a3555f41b82c600f3d98bd4ba14e059e4db8fc52dd949895533782c30bb34479",
+      "sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_versioned_20261010T1028Z_smoke_d2.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_credit_versioned_20261010T1028Z_contract_d2"
+      ]
+    },
+    {
+      "tag": "curie_credit_versioned_20261010T1028Z_smoke_d4",
+      "driver": "experiments/credit/reciprocal_native_v5.py",
+      "queue": "experiments/queue/enabler/curie_credit_versioned_20261010T1028Z/curie_credit_versioned_20261010T1028Z_smoke_d4.txt",
+      "queue_sha256": "3a23d5a4d4f44b31ed8dce2aca9fe2bd78dbebcc96e2a9b805b6d2da8246faa7",
+      "sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_versioned_20261010T1028Z_smoke_d4.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_credit_versioned_20261010T1028Z_smoke_d2"
+      ]
+    },
+    {
+      "tag": "curie_credit_versioned_20261010T1028Z_smoke_d8",
+      "driver": "experiments/credit/reciprocal_native_v5.py",
+      "queue": "experiments/queue/enabler/curie_credit_versioned_20261010T1028Z/curie_credit_versioned_20261010T1028Z_smoke_d8.txt",
+      "queue_sha256": "7c8a61439232a184eff1566b6dbbe7ecd3c42df570be3591bb9a98f524ee8a48",
+      "sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+        "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+        "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_versioned_20261010T1028Z_smoke_d8.json",
+      "timeout_s": 300,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_credit_versioned_20261010T1028Z_smoke_d4"
+      ]
+    }
+  ]
+}
