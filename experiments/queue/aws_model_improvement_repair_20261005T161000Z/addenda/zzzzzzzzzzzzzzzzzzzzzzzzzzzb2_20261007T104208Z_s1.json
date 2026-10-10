@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM round 3: augmentation against memorization (v5/v6 peak by epoch 11-42 with training loss -> 0; val acc 0.946/0.940 vs MTM 0.975): random 80% crops and 10% amplitude jitter in training, full records at evaluation",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_r8_pam_split0_v7_crop0.8_jit0.1",
+        "queue": "experiments/queue/b2/b2_r8_pam_split0_v7_crop0.8_jit0.1/b2_r8_pam_split0_v7_crop0.8_jit0.1.txt",
+        "queue_sha256": "19d3b77baf4d18ad9b91822600959d87287f99c40245ac05da5048abec709e42",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v7.py": "451f36c29f72eab1cc7aaf09cb8def45b219883587c453abd9ecabdbcb0c7db0",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r8_pam_split0_v7_crop0.8_jit0.1.json",
+        "timeout_s": 14400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P19 TEST protocol (pre-registered): v3 statistic slots, five official splits, validation-AUROC selection, TEST once per split; split 0 development val AUROC 0.919 vs MTM TEST 0.903",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_final_p19_v3_split0",
+        "queue": "experiments/queue/b2/b2_final_p19_v3_split0/b2_final_p19_v3_split0.txt",
+        "queue_sha256": "bd371f729194ebf1fb979dd8160567c9e3cce3cb3b8b9a898fca20873ac6255c",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p19_v3_split0.json",
+        "timeout_s": 7200,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p19_v3_split1",
+        "queue": "experiments/queue/b2/b2_final_p19_v3_split1/b2_final_p19_v3_split1.txt",
+        "queue_sha256": "adbebdbdd5fc360b1e3c62a254bd43a17c913efb8161f8c69eeeb3f3f1713d29",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p19_v3_split1.json",
+        "timeout_s": 7200,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p19_v3_split2",
+        "queue": "experiments/queue/b2/b2_final_p19_v3_split2/b2_final_p19_v3_split2.txt",
+        "queue_sha256": "9c37a55cf5f58ce8cc978eb536ce097c49c93f13eba97289f7997d8f959ea6c4",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p19_v3_split2.json",
+        "timeout_s": 7200,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p19_v3_split3",
+        "queue": "experiments/queue/b2/b2_final_p19_v3_split3/b2_final_p19_v3_split3.txt",
+        "queue_sha256": "de33ee6443297f4fbc4a66a6578dbed3bf731f595e224539a638cf2c600dfc7a",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p19_v3_split3.json",
+        "timeout_s": 7200,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p19_v3_split4",
+        "queue": "experiments/queue/b2/b2_final_p19_v3_split4/b2_final_p19_v3_split4.txt",
+        "queue_sha256": "91614cfd84a5a4e05939d1a839f5fb9fe41dfb8605d6817de666549b2216c3c0",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p19_v3_split4.json",
+        "timeout_s": 7200,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

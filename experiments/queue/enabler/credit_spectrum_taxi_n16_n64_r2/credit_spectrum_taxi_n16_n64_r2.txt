@@ -1,0 +1,3 @@
+# ENABLER: Theory note 165 (credit-rate scaling) measurement, DEV only: residual credit spectrum of the per-event temporal-memory learner after forward prediction (none / arrived outcome with shared transport / 4-event window) at 16 and 64 memory modes. Decides whether sparse credit cost per event is size-independent (alpha > 1, k(eps) flat in n) and so whether the compact-credit learner is prioritized on the depth/capacity scaling axis (DEEP_LEARNING_SCALING)
+# readmitted after the 10 Oct 09:58 shared run_safe.sh pin failure (never started); unchanged command, fresh tag
+credit_spectrum_taxi_n16_n64_r2 experiments/credit/credit_spectrum.py --tag credit_spectrum_taxi_n16_n64_r2 --modes 16 64 --epochs 20

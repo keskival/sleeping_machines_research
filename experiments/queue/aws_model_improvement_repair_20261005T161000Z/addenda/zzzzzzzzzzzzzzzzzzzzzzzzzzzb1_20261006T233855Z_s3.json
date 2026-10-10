@@ -1,0 +1,101 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 Amazon TEST protocol (pre-registered): v11, 5 protocol seeds x 3 restarts, restart chosen by DEV LL only (b1_restart_select.py); 3x training compute reported",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_final_amazon_v11r_s0_r1",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s0_r1/b1_final_amazon_v11r_s0_r1.txt",
+        "queue_sha256": "13fb9fe0e6c0333dd76092367ceec3b14eb35dd9e9e29591ba9522ec87911f3d",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s0_r1.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s1_r0",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s1_r0/b1_final_amazon_v11r_s1_r0.txt",
+        "queue_sha256": "6212f90040fd0ab3ffe85ae8555da33d4d1a7deee53ec62fee3971af22cf1c41",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s1_r0.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s1_r2",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s1_r2/b1_final_amazon_v11r_s1_r2.txt",
+        "queue_sha256": "bccaad1bd555c5e4524223edb0bed93c098814f8d4c17b98bc5c46f0ff4ec9a9",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s1_r2.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s2_r1",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s2_r1/b1_final_amazon_v11r_s2_r1.txt",
+        "queue_sha256": "2ad14a4550958f48cfd1af64d6710b60103877dff2af4618c92a31f7f1747a18",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s2_r1.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s3_r0",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s3_r0/b1_final_amazon_v11r_s3_r0.txt",
+        "queue_sha256": "7c3890ed369cb0ec1a61caa49185c3014a5dd55af2683e5804d9bb8991abef11",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s3_r0.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s3_r2",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s3_r2/b1_final_amazon_v11r_s3_r2.txt",
+        "queue_sha256": "7b6f44d30250e3336ddf07330e5b57600b5d89206ef1a3fa3eedfe4a2cb35454",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s3_r2.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_amazon_v11r_s4_r1",
+        "queue": "experiments/queue/b1_easytpp/b1_final_amazon_v11r_s4_r1/b1_final_amazon_v11r_s4_r1.txt",
+        "queue_sha256": "851985a80cc800abd94b9f39dcd6732bbc0a9c6b92ec8a2ecadabc9390082213",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_final_amazon_v11r_s4_r1.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

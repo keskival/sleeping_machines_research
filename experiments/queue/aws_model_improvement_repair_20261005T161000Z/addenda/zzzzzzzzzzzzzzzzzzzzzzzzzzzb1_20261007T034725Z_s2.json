@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet v16: resolution principle for every clock (hazards held at their one-cell value below the 1 s cell, closed-form compensator) plus target-only dequantization; v15 scored exact zero gaps with zero delayed-clock hazard (DEV -6.61 after epoch 1). Decides the honest Retweet standing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b1_r22_retweet_v16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r22_retweet_v16_s0/b1_r22_retweet_v16_s0.txt",
+        "queue_sha256": "fba3416f60dd20404272c39d193d5142fa45bba092d66fb87e7b21d6b8d87872",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a"
+        },
+        "result": "experiments/results/tpp/b1_r22_retweet_v16_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

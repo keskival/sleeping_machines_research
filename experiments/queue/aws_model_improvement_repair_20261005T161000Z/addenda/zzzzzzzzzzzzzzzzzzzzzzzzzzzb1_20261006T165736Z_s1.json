@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet development with the resolution floor (cell 1 s): the v3 DEV lead exploited the integer-second grid (audit drop 0.71 nats). Decides the honest Retweet standing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r6_retweet_v5_cell1_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r6_retweet_v5_cell1_s0/b1_r6_retweet_v5_cell1_s0.txt",
+        "queue_sha256": "2e682252e26cc8364d53504132869b1e56f471021282afc464d1422bdf6f9be3",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/tpp/b1_r6_retweet_v5_cell1_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

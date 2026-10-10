@@ -1,0 +1,75 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 near-matched StackOverflow protocol (WIN_CRITERIA sizing rule): v12 2 layers, 29,191 parameters (S2P2 30,166), ~1.015x its per-event MACs; DEV -2.157. 5 seeds",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_final_stackoverflow_v12l2_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12l2_s0/b1_final_stackoverflow_v12l2_s0.txt",
+        "queue_sha256": "adfab21a99722050476fcd9db84162ab67cf0193bbafa29156cd0023e6b1c18b",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12l2_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12l2_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12l2_s1/b1_final_stackoverflow_v12l2_s1.txt",
+        "queue_sha256": "565f4cf0896686c0c1ad7af04b0183dba7642829207b4346deac49197a4f0f01",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12l2_s1.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12l2_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12l2_s2/b1_final_stackoverflow_v12l2_s2.txt",
+        "queue_sha256": "217e9e74c7051df597bc2674a5487ba28e9d1a3eba21ace73a0797ee46b90f2d",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12l2_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12l2_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12l2_s3/b1_final_stackoverflow_v12l2_s3.txt",
+        "queue_sha256": "2d4c44604ede0bad71349bc1f2896d1035cad3593e45ea1b7b637b9f5dda17c5",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12l2_s3.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12l2_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12l2_s4/b1_final_stackoverflow_v12l2_s4.txt",
+        "queue_sha256": "7d301a04bd26cdbafe7924da4ddbc8e79442c38c7db7a9bf1c2af5d23bfcf450",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12l2_s4.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

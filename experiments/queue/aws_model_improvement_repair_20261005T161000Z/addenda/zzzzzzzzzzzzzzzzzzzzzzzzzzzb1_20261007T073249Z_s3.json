@@ -1,0 +1,75 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Amazon v18: windows anchored to their gap component (diagnosis of v17 low seed: both upper-box windows drifted to [1.1, 1.3], beyond all observed gaps). Five seeds test basin removal (development)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r24_amazon_v18_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r24_amazon_v18_s0/b1_r24_amazon_v18_s0.txt",
+        "queue_sha256": "968033f003fb8ff5ccc2f33c4c2b45c443891a667c87ccd14b1182ffdc8ef969",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf"
+        },
+        "result": "experiments/results/tpp/b1_r24_amazon_v18_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r24_amazon_v18_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_r24_amazon_v18_s1/b1_r24_amazon_v18_s1.txt",
+        "queue_sha256": "afc71de3d680adc1eec59a0639c5f8d4763f189e5eb9030bc74fbb24ab6ea397",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf"
+        },
+        "result": "experiments/results/tpp/b1_r24_amazon_v18_s1.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r24_amazon_v18_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r24_amazon_v18_s2/b1_r24_amazon_v18_s2.txt",
+        "queue_sha256": "a7cf3fd648a7042e4b088e7cd1017a722f555842de59d2987847198870e8c295",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf"
+        },
+        "result": "experiments/results/tpp/b1_r24_amazon_v18_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r24_amazon_v18_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r24_amazon_v18_s3/b1_r24_amazon_v18_s3.txt",
+        "queue_sha256": "5b1bfc0ce68c565ea42fe0d5eaba7c34c5c32b7424104be2a08cd50438cd7793",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf"
+        },
+        "result": "experiments/results/tpp/b1_r24_amazon_v18_s3.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r24_amazon_v18_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_r24_amazon_v18_s4/b1_r24_amazon_v18_s4.txt",
+        "queue_sha256": "d17de75932e99808f958fd6e9769aecd6a8211ebdf0ad5352599200acd2726df",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v18.py": "e0b87948d63c91812c2c1c2f21fa1ba010026181596142bf10ba50bf3b2428cf"
+        },
+        "result": "experiments/results/tpp/b1_r24_amazon_v18_s4.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

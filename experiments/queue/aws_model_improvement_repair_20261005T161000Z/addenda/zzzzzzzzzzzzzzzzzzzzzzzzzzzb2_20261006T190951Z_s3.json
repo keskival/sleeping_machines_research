@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 round 1: P12 split 0 full development fit (smoke: val AUROC 0.849 after 2 epochs; MTM TEST 0.880). Establishes the P12 gap for error analysis",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b2_r1_p12_split0_s0",
+        "queue": "experiments/queue/b2/b2_r1_p12_split0_s0/b2_r1_p12_split0_s0.txt",
+        "queue_sha256": "a26f6ac8c8e7abb8cda50163b2ec9aa9d595dd3034fc31addf9b79363ecb6039",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts.py": "fabe630e1f4992c9e93fdd75023c95ba5e9aa3e3807c7a74347004def2ec71e4",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r1_p12_split0_s0.json",
+        "timeout_s": 10800,
+        "rss_kb": 4500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

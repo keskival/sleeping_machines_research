@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "smoke: measure epoch time/RSS on taxi before sizing development runs",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_smoke_taxi_20261006a",
+        "queue": "experiments/queue/b1_easytpp/b1_smoke_taxi_20261006a/b1_smoke_taxi_20261006a.txt",
+        "queue_sha256": "70a8f26a10265ae6a6a027c960f1acf71c66fc650d348bb34d472a069a222db3",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp.py": "092f34833db01641560e6568182fddccff032c8ed246fd56ab91957baacbccd7"
+        },
+        "result": "experiments/results/tpp/b1_smoke_taxi_20261006a.json",
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

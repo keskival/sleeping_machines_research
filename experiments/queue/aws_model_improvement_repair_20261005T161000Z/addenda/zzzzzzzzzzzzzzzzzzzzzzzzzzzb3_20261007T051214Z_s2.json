@@ -1,0 +1,52 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "Curie request (HANDOFF faadd06c): B3 round 2 - C6 recording-cell likelihood, C1 diagnostics and particle evaluation on the AWS C1 checkpoint; sequential",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_fas_v2_dev_C6_20261007T0045Z",
+        "queue": "experiments/queue/aws_fas_v2_dev_C6_20261007T0045Z.txt",
+        "queue_sha256": "38ccba8755d1f83d539bfa7710e907b85ed1c0eb4dfb0f9a7ded7c11e9f3b998",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/native_race_readout.py": "c44bb58162ecb64e05e8eb854b450d25928bf12defa8fea5c375ab2ee4f593ad"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C6_20261007T0045Z/provenance.json",
+        "timeout_s": 14400,
+        "rss_kb": 5500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_diagnostics_20261007T0010Z.txt",
+        "queue_sha256": "886f0072be57384db1f12247494e88f55472dab43e23f9874171bdc858f3954b",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/readout_diagnostics.py": "f08a690f8ef74f379f323fbf517e442f2a3dcb1b608064724a31f14539855f59"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_diagnostics_20261007T0010Z/provenance.json",
+        "timeout_s": 3600,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_fas_v2_dev_C1_particles_20261007T0010Z",
+        "queue": "experiments/queue/aws_fas_v2_dev_C1_particles_20261007T0010Z.txt",
+        "queue_sha256": "980165624cd9d49cc3539a1bb2f5401af09284f989528cfb7c37ec2aada2fe43",
+        "kind": "dense_reference",
+        "source_sha256": {
+          "experiments/aws_benchmark.py": "b25799ac9f60cbc33a2e5c971a081a2811de74eadb0d17a9a1b6db1c2866ec60",
+          "experiments/fas/race_smc_eval.py": "fad3957745b0a197450f5b59c6ee43ff70cb216561085c5ba5f11001f4fb86b5"
+        },
+        "result": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_particles_20261007T0010Z/provenance.json",
+        "timeout_s": 5400,
+        "rss_kb": 4500000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

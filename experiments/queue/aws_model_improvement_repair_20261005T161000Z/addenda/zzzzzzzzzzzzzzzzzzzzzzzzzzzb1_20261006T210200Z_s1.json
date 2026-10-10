@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "v11 clustered window init, Amazon seeds 2-3 (moved from slot 2 to make room for B3)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r16_amazon_v11_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_r16_amazon_v11_s2/b1_r16_amazon_v11_s2.txt",
+        "queue_sha256": "00da9189269f06e9a756383d77f2b007ca61a33b73d9b06ef0f0cf70657e60fd",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_r16_amazon_v11_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r16_amazon_v11_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_r16_amazon_v11_s3/b1_r16_amazon_v11_s3.txt",
+        "queue_sha256": "4aef99f5db698d3a964b1ba4d8b0318fde9eebcc943d770307319a14d5f0ac80",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v11.py": "cbabc9229bb6588a515634c24aa167c5fbc6d2af2fc9ec1dde3d82e5165c10a9"
+        },
+        "result": "experiments/results/tpp/b1_r16_amazon_v11_s3.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

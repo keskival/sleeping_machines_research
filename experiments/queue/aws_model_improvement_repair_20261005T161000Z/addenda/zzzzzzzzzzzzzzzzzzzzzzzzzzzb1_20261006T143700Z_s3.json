@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "smoke: measure epoch time/RSS on retweet (largest) before sizing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_smoke_retweet_20261006a",
+        "queue": "experiments/queue/b1_easytpp/b1_smoke_retweet_20261006a/b1_smoke_retweet_20261006a.txt",
+        "queue_sha256": "b647c2485116bc6d4c56f529b3da5f62b58b06d2ba2e71e616d6f1b23bd81cb5",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp.py": "092f34833db01641560e6568182fddccff032c8ed246fd56ab91957baacbccd7"
+        },
+        "result": "experiments/results/tpp/b1_smoke_retweet_20261006a.json",
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

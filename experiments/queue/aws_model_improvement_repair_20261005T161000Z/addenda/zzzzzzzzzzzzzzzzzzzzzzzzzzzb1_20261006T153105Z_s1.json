@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "round 2 completion: v3 defective delayed clocks on retweet (largest dataset); decides whether v3 is the B1 model on all five",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r2_retweet_v3_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r2_retweet_v3_s0/b1_r2_retweet_v3_s0.txt",
+        "queue_sha256": "93f3b2b6d8e5548dee578903be252093c2218dbec6a8b8b85a3a97eaea114ebe",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v3.py": "34417d969cc465e99514c453b342a9796f2895cda4e946b517f236d2be1ec271"
+        },
+        "result": "experiments/results/tpp/b1_r2_retweet_v3_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet v15: target-only dequantization during training (v14 jittered history too, so zero-gap inputs never appeared in training: DEV -6.70, stopped). Decides the honest Retweet standing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b1_r21_retweet_v15_dqt_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r21_retweet_v15_dqt_s0/b1_r21_retweet_v15_dqt_s0.txt",
+        "queue_sha256": "d8d756ac27acd84e5f01842f63d07a7d45788a4d245abcf9be5c4720cee6790b",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v15.py": "40ae0b6e65d26e57e8a603426c59eab56c29c8e15ec1ea1b0031258e2fd5dfb5"
+        },
+        "result": "experiments/results/tpp/b1_r21_retweet_v15_dqt_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

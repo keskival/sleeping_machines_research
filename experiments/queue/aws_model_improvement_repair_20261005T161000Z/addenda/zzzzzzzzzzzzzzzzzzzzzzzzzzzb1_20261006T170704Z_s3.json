@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "v6 adds time since sequence start to event messages (process tempo depends on tenure); StackOverflow (~0.035 behind, time LL) and Amazon (~0.06 behind). Decides whether v6 replaces v5 for these datasets",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r8_so_v6_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r8_so_v6_s0/b1_r8_so_v6_s0.txt",
+        "queue_sha256": "7681cb10ce06dc0c91bfca6e2dc8f350c043d6c850f7f29307b0e9cd711e792c",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v6.py": "1e4194e0f33e8f3182fa8cecb8eaf01b18c214c09c4dfe4de008ea52f0f6cefe"
+        },
+        "result": "experiments/results/tpp/b1_r8_so_v6_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r8_amazon_v6_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r8_amazon_v6_s0/b1_r8_amazon_v6_s0.txt",
+        "queue_sha256": "39728e8f54e644cb5badf517111af4777268fa29f8c4e0e26d4e426898357fab",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v6.py": "1e4194e0f33e8f3182fa8cecb8eaf01b18c214c09c4dfe4de008ea52f0f6cefe"
+        },
+        "result": "experiments/results/tpp/b1_r8_amazon_v6_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "WIN_CRITERIA sizing rule: StackOverflow v12 (3 layers) costs 1.26x S2P2's per-event MACs; 2 layers is ~1.08x (near-matched). DEV check decides whether a near-matched StackOverflow protocol follows",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r18_so_v12_l2_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r18_so_v12_l2_state16_s0/b1_r18_so_v12_l2_state16_s0.txt",
+        "queue_sha256": "f68c91dda45868df256caedf92662953059fb9dd86b619016661f2bf15cb3b1f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_r18_so_v12_l2_state16_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "v8 logistic-window delayed clocks (differentiable edges) on Amazon: Kumaraswamy windows failed to optimize (0.677); Amazon deficit vs S2P2 is all time LL (TEST seed0 2.576 vs 2.652). Decides whether v8 replaces v5 for Amazon",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r11_amazon_v8_ln16_w4_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r11_amazon_v8_ln16_w4_s0/b1_r11_amazon_v8_ln16_w4_s0.txt",
+        "queue_sha256": "e36d0ac90ece8f20f6fed14535bcdbe5218e8801aac0ca4d5a570d537871b8dd",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/tpp/b1_r11_amazon_v8_ln16_w4_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r11_amazon_v8_ln8_w8_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r11_amazon_v8_ln8_w8_s0/b1_r11_amazon_v8_ln8_w8_s0.txt",
+        "queue_sha256": "1405eb140da131fc203c2c5c44484a7be07065f739496e4fff58008291885a17",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/tpp/b1_r11_amazon_v8_ln8_w8_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# ENABLER: Shared enabler, theory note 160 sect. 6: hybrid credit model (sleep samples plus exact posterior on 10% of real examples). Tests the predicted remedy for the data-model mismatch bias of sleep-only credit, at 0.1x dense cost for the credit supervision
+credit4_hindsight_hybrid_d2_s2 experiments/credit/hindsight_race_v4.py --tag credit4_hindsight_hybrid_d2_s2 --arm hindsight_hybrid --depth 2 --seed 2

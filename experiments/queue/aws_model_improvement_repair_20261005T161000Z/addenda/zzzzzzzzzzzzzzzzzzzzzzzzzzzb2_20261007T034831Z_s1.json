@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM development (8 activities, 17 sensor channels, 600 steps, 60% missing): v5 = v3 statistic slots + multi-class head; split 0 to establish standing vs MTM accuracy 97.5",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_r6_pam_split0_v5b",
+        "queue": "experiments/queue/b2/b2_r6_pam_split0_v5b/b2_r6_pam_split0_v5b.txt",
+        "queue_sha256": "330314bb9164b08e44f7cf51364862aa78171007e9fcbaac3155561c2d3ccf80",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v5.py": "df10d7e6b271d90bed910c628c5160aee9e0eaf5def6e2a7a68fb34d01f98f17",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r6_pam_split0_v5b.json",
+        "timeout_s": 14400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

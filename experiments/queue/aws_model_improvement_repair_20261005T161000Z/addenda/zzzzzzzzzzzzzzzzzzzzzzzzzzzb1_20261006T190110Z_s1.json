@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet v9 (v8 + cascade age, i.e. time since sequence start, in event messages): retweet rates decay with cascade age, which gap-only clocks cannot see; Retweet v5/v7 plateau at DEV -6.393/-6.396 vs NHP TEST -6.348. Decides the Retweet configuration",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r13_retweet_v9_age_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r13_retweet_v9_age_s0/b1_r13_retweet_v9_age_s0.txt",
+        "queue_sha256": "84726b7d3b75be78efb44a51082cd281a0f39f26fa284f9819f0fef91ecb45d8",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v9.py": "885a4f0aa8ac5c0998a121190a1144bb43e302186581dcea02440391d9787e27"
+        },
+        "result": "experiments/results/tpp/b1_r13_retweet_v9_age_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

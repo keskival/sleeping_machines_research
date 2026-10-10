@@ -1,0 +1,2 @@
+# ENABLER: Shared enabler, note 160 sect. 7: BPTT at 100 epochs (about 9k updates) so the per-event trace learner (0.4805 at 20 epochs vs BPTT 0.4557, BPTT still rising) is compared against converged BPTT, not only at matched data passes
+online1b_taxi_bptt_e100_s1 experiments/credit/online_race.py --tag online1b_taxi_bptt_e100_s1 --tag online1b_taxi_bptt_e100_s1 --dataset taxi --arm bptt --epochs 100 --seed 1

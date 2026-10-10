@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet v14: v13 + uniform dequantization of TRAIN gaps within the 1 s cell (v13 DEV -6.326 retains a 0.045 dequantized drop, 0.031 of it at 1 s gaps: amplitude can still sharpen the hazard within a cell). Decides the honest Retweet standing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b1_r20_retweet_v14_dq_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r20_retweet_v14_dq_s0/b1_r20_retweet_v14_dq_s0.txt",
+        "queue_sha256": "634105b60dfa5ef14d4b998f731a0bf5d08e812eec294a96383bdad9f3ca9b7f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v14.py": "8b54a891eecd8e7ece55c6e7a4525d97714ff17b06abbd4f74ccebae69a73fc4"
+        },
+        "result": "experiments/results/tpp/b1_r20_retweet_v14_dq_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 TEST protocol, StackOverflow v12 (state clock; DEV -2.143 vs v5 -2.173, audit-clean: dequantized drop 0.0001, 512-node compensator identical): 5 seeds, TEST once per seed at best DEV; then Retweet v12 development (grid-safe state clock)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_final_stackoverflow_v12_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12_s0/b1_final_stackoverflow_v12_s0.txt",
+        "queue_sha256": "a7e1901ee0bf26dbe306fe1149dfe4bd7b922d7fa00936f93ab897546c7f72d3",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12_s1",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12_s1/b1_final_stackoverflow_v12_s1.txt",
+        "queue_sha256": "35ce24724b0ad57c7aab0e59e7ec88d830755db2d2dee5dcefc130aa6943b0e4",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12_s2",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12_s2/b1_final_stackoverflow_v12_s2.txt",
+        "queue_sha256": "d0113829d8b579c2c07589b67cb16f484e50a1792b1271808987080d6b0cb408",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12_s3/b1_final_stackoverflow_v12_s3.txt",
+        "queue_sha256": "cde02d6f48132b637d8d4f2d08d13456d2a29ae4e1dc3eefc8eb0b0f820bf646",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12_s3.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_stackoverflow_v12_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_final_stackoverflow_v12_s4/b1_final_stackoverflow_v12_s4.txt",
+        "queue_sha256": "2ace7af82260896c06b5f0964976b478a55db4aebee999f8c63463ed8433beac",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_final_stackoverflow_v12_s4.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r17_retweet_v12_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r17_retweet_v12_state16_s0/b1_r17_retweet_v12_state16_s0.txt",
+        "queue_sha256": "28d56688c6a2dbca831fb85a9b923ae9194abf01a28fd782ce1572eee2750093",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v12.py": "21965e2d4b4868cafbfdd775d63af8dcc32c1571c52bf362beef89a92d3e8238"
+        },
+        "result": "experiments/results/tpp/b1_r17_retweet_v12_state16_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

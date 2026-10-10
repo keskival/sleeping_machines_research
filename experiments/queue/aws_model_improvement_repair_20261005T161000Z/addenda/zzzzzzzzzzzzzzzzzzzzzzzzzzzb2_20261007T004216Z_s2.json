@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 v4: typed comparisons (learned soft thresholds) on the statistic-valued channel slots \u2014 the tree-like decisions that make GBDT strong on these summaries, inside the family. v3 val AUROC 0.872. Decides the B2 architecture before multi-split runs",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r4_p12_split0_v4cmp",
+        "queue": "experiments/queue/b2/b2_r4_p12_split0_v4cmp/b2_r4_p12_split0_v4cmp.txt",
+        "queue_sha256": "c80a09574918e3ea218cd87dd018b765010f965d43dc98a824064a2c88f63702",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v4.py": "69443166997d57e4a2cdd885a176708314e36ea974709ba5e63947e52b9976fc",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r4_p12_split0_v4cmp.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

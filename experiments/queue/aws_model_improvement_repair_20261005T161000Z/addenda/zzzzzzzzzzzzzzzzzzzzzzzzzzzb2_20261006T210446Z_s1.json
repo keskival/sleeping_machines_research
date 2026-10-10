@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 round 2 regularization on P12 split 0 (r1 val AUROC 0.866 at epoch 5, then overfits): dropout 0.4 + decay 1e-3; lr 7e-4 + weight EMA 0.995. Decides the P12 training recipe",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_r2_p12_split0_drop0.4_wd1e-3",
+        "queue": "experiments/queue/b2/b2_r2_p12_split0_drop0.4_wd1e-3/b2_r2_p12_split0_drop0.4_wd1e-3.txt",
+        "queue_sha256": "e7a9b53282fde6bf4c63be73f4dab4c4ca02d8380c2c538d4ff072f067201c30",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v2.py": "5e01dec086d8792d5e75a4e67e1d5fdb184803c083f25cbd72429c8cd9ba394c",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r2_p12_split0_drop0.4_wd1e-3.json",
+        "timeout_s": 10800,
+        "rss_kb": 4500000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r2_p12_split0_lr7e-4_ema",
+        "queue": "experiments/queue/b2/b2_r2_p12_split0_lr7e-4_ema/b2_r2_p12_split0_lr7e-4_ema.txt",
+        "queue_sha256": "61a9b2625d99b5b133f9021b644d00494135108a9f3c769e46c12a670772f606",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v2.py": "5e01dec086d8792d5e75a4e67e1d5fdb184803c083f25cbd72429c8cd9ba394c",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r2_p12_split0_lr7e-4_ema.json",
+        "timeout_s": 10800,
+        "rss_kb": 4500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# ENABLER: Shared enabler, theory note 160 sect. 12: exact per-event learning through a two-layer temporal memory (forward traces across depth, == BPTT 9.6e-16) vs BPTT vs layer-local truncation (e-prop-like) vs no traces, Taxi DEV, 3 seeds. Decides whether cross-layer temporal credit matters and whether exact deep online learning keeps BPTT quality
+online3_taxi_online_trunc_s1 experiments/credit/online_deep.py --tag online3_taxi_online_trunc_s1 --tag online3_taxi_online_trunc_s1 --dataset taxi --arm online_trunc --seed 1

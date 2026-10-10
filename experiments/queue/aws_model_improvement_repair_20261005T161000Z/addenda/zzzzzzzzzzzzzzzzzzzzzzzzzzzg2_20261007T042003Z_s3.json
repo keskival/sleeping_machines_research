@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G2",
+  "purpose": "G2 generality: one shared temporal core (memory layers + gap encoder) trained jointly on Taxi, Taobao, StackOverflow and Amazon with dataset-specific mark/clock heads; per-dataset DEV vs per-dataset models. Decides whether temporal dynamics are shared across event domains",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "g2_joint4_s0",
+        "queue": "experiments/queue/g2/g2_joint4_s0/g2_joint4_s0.txt",
+        "queue_sha256": "b5341e71b77505dee78780fbbf33ef393d9505be3feba863e69c44a8996cd46e",
+        "kind": "g2_job",
+        "source_sha256": {
+          "experiments/tpp/g2_joint.py": "e132a7a9e132219ee6220557468510f75a9955be020d8a8cf3f938f5859cdf53",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/tpp/g2_joint4_s0.json",
+        "timeout_s": 36000,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

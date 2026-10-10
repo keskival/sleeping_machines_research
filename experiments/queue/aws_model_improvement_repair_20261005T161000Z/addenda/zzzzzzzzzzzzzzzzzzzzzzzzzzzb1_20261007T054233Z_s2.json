@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 Retweet TEST protocol: v16 (grid-safe state clock; DEV -6.352, audit drop 0.0038 vs v5 baseline 0.0006) with target dequantization; 5 seeds, TEST once per seed at best DEV; decides Retweet vs NHP -6.348",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b1_final_retweet_v16_s3",
+        "queue": "experiments/queue/b1_easytpp/b1_final_retweet_v16_s3/b1_final_retweet_v16_s3.txt",
+        "queue_sha256": "cd542d8ec8eba563d73079bed2f4dc16542aa0b422e774cecbadcfd2eddf90b9",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a"
+        },
+        "result": "experiments/results/tpp/b1_final_retweet_v16_s3.json",
+        "timeout_s": 18000,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_final_retweet_v16_s4",
+        "queue": "experiments/queue/b1_easytpp/b1_final_retweet_v16_s4/b1_final_retweet_v16_s4.txt",
+        "queue_sha256": "36cb35f031d22c5c2ff03a4ca8cccffc2b819f052a81c21851407a09249b82ab",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a"
+        },
+        "result": "experiments/results/tpp/b1_final_retweet_v16_s4.json",
+        "timeout_s": 18000,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

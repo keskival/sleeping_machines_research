@@ -1,0 +1,296 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "purpose": "Readmission with fresh tags of slot-3 jobs that never started: the shared run_safe.sh changed under the running coordinator (curie 9f457ded) and every job start failed its source pin at 09:58 UTC; AWS working copy restored to the pinned bytes. Commands, sources, caps and decisions unchanged.",
+  "slots": {
+    "3": [
+      {
+        "name": "credit_spectrum_smoke_r2",
+        "queue": "experiments/queue/enabler/credit_spectrum_smoke_r2/credit_spectrum_smoke_r2.txt",
+        "queue_sha256": "91f6b3f302497a11d53019ea6d5de1c2d2eb4d1fbf60ce7c932d73b53031acaf",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_smoke_r2.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit_spectrum_taxi_n16_n64_r2",
+        "queue": "experiments/queue/enabler/credit_spectrum_taxi_n16_n64_r2/credit_spectrum_taxi_n16_n64_r2.txt",
+        "queue_sha256": "df6f3c4e5fb2df288556ec7acd5ccbcde55b3e7234ab4441bd4d790e286fc569",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_taxi_n16_n64_r2.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/credit_spectrum_smoke_r2.json"
+          }
+        ]
+      },
+      {
+        "name": "online3_contract_r2",
+        "queue": "experiments/queue/enabler/online3_contract_r2/online3_contract_r2.txt",
+        "queue_sha256": "d0cabfd1d5a1d7ea67679adeb24128c40709013453d01be458604b556c4911f7",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_contract_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_smoke_deep_r2",
+        "queue": "experiments/queue/enabler/online3_smoke_deep_r2/online3_smoke_deep_r2.txt",
+        "queue_sha256": "853348de2b086ca2f4c2c4bcb9ac3587a8b40cfe01ce11a4b28ea5f163f6f66b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_smoke_deep_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_bptt_s0_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_bptt_s0_r2/online3_taxi_bptt_s0_r2.txt",
+        "queue_sha256": "e2148638e384084df491dd572f64225e44ccbbdff0a851ba79d15d8910c89f9c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_bptt_s0_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_bptt_s1_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_bptt_s1_r2/online3_taxi_bptt_s1_r2.txt",
+        "queue_sha256": "0261afdc6ccdb5042a192cecf9bb5d72a6b643151bfa5fee8c0a5df505c44846",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_bptt_s1_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_bptt_s2_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_bptt_s2_r2/online3_taxi_bptt_s2_r2.txt",
+        "queue_sha256": "1303394c9acc6986f8b497c2dcdbe7d67aac31dd7cbd334e4c9815d16da55387",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_bptt_s2_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_deep_s0_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_deep_s0_r2/online3_taxi_online_deep_s0_r2.txt",
+        "queue_sha256": "e934ff4227d76e3fd5c25ddeea0c3d467c26d868435a454b0ef126a9591c4845",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_deep_s0_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_deep_s1_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_deep_s1_r2/online3_taxi_online_deep_s1_r2.txt",
+        "queue_sha256": "05dc1cb4c28711f2b407cbe48f71a58f452285d9f6cfe41933a3537e837dcd3c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_deep_s1_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_deep_s2_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_deep_s2_r2/online3_taxi_online_deep_s2_r2.txt",
+        "queue_sha256": "42befbe34e0bbb0645f4dd1cec6c2e21413645437d44cba54d80425779c76b13",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_deep_s2_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_local_s0_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_local_s0_r2/online3_taxi_online_local_s0_r2.txt",
+        "queue_sha256": "8618cd9fd770a1d4846624503e68c0e6ce41a3907025aada802d474a78e3c377",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_local_s0_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_local_s1_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_local_s1_r2/online3_taxi_online_local_s1_r2.txt",
+        "queue_sha256": "96ca65e90c5513db61615907bea24545095ab552579a217c04e9d2fdbc62e722",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_local_s1_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_local_s2_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_local_s2_r2/online3_taxi_online_local_s2_r2.txt",
+        "queue_sha256": "05cf7f8fc8ac56094a6c5da202783c8d6eecbfb97e872b1dd5d7fca93d48233c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_local_s2_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_trunc_s0_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_trunc_s0_r2/online3_taxi_online_trunc_s0_r2.txt",
+        "queue_sha256": "096218310016d33c387adf70734b387746a8843b85c2fb0cda4f55433bacaf33",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_trunc_s0_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_trunc_s1_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_trunc_s1_r2/online3_taxi_online_trunc_s1_r2.txt",
+        "queue_sha256": "e5b696d0c53379f2ab36988700a42b8b30fba12f0533ae3021d6a4a97d419573",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_trunc_s1_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online3_taxi_online_trunc_s2_r2",
+        "queue": "experiments/queue/enabler/online3_taxi_online_trunc_s2_r2/online3_taxi_online_trunc_s2_r2.txt",
+        "queue_sha256": "83f587fd303339dd4863157f5735f8175b092c7f5d0844f93437b0aa6f19c011",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online3_taxi_online_trunc_s2_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online_analysis_20261009_r2",
+        "queue": "experiments/queue/enabler/online_analysis_20261009_r2/online_analysis_20261009_r2.txt",
+        "queue_sha256": "07d30c7bec5aea5e89225d235d975a4f0af998ae8148c142e29543728d52fcb9",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/analyze_online.py": "bca18e66d7b48feae6d0bf9e8ea604d7da431cb37a301cfa8587d81898d11543"
+        },
+        "result": "experiments/results/credit/online_analysis_20261009_r2.json",
+        "timeout_s": 600,
+        "rss_kb": 1000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1b_taxi_bptt_e100_s0_r2",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s0_r2/online1b_taxi_bptt_e100_s0_r2.txt",
+        "queue_sha256": "24bcd1c0b41943c450caebfff946bc920642e0b81c1920b837e1396b07723420",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s0_r2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1b_taxi_bptt_e100_s1_r2",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s1_r2/online1b_taxi_bptt_e100_s1_r2.txt",
+        "queue_sha256": "101482b8530ed516365bb85ed76959173a4dcb871d03df0fc2e95cd972b617f7",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s1_r2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1b_taxi_bptt_e100_s2_r2",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s2_r2/online1b_taxi_bptt_e100_s2_r2.txt",
+        "queue_sha256": "6a8421400d1c7880b6c9d50afd1ac8de65c65a73b4da9b32a9f92756aa92ac23",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s2_r2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

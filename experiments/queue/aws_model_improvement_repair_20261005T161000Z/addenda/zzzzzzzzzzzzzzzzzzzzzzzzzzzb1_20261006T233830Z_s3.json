@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet v13: state clock held at its one-cell value below the 1 s recording cell (v12's DEV gain came entirely from a hazard spike at exactly zero gap: zero-gap events +0.63 recorded vs -4.69 dequantized). Decides the honest Retweet state-clock standing",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r19_retweet_v13_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r19_retweet_v13_state16_s0/b1_r19_retweet_v13_state16_s0.txt",
+        "queue_sha256": "6bd622d7203c74547ea7b1ef4a328060b8f67f030ace0ccfcfc921d8e979fa5e",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v13.py": "819580d9208df0b30e9c8f48fb4372a4d88b2892d97d19b3beb509156686178e"
+        },
+        "result": "experiments/results/tpp/b1_r19_retweet_v13_state16_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

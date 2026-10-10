@@ -1,0 +1,49 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "round 3 regularization on taxi (small data overfits after ~25 epochs): dropout 0.3; weight EMA 0.999; EMA + d64 + wd 1.0 long. Decides the B1 regularization recipe",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r3_taxi_v4_drop0.3_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r3_taxi_v4_drop0.3_s0/b1_r3_taxi_v4_drop0.3_s0.txt",
+        "queue_sha256": "c808131184fd27e345be6f6ebd97218f5dbfc0e4f868bace691388f4805f4dcd",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v4.py": "e6413710ef94aa21a08dc23d4b3429e6f4c4929178bbac048427b50ab7953712"
+        },
+        "result": "experiments/results/tpp/b1_r3_taxi_v4_drop0.3_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r3_taxi_v4_ema999_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r3_taxi_v4_ema999_s0/b1_r3_taxi_v4_ema999_s0.txt",
+        "queue_sha256": "94266900c0569ca236e5ab1f080eb2136553ad07e3d201572cf8919a9b91f455",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v4.py": "e6413710ef94aa21a08dc23d4b3429e6f4c4929178bbac048427b50ab7953712"
+        },
+        "result": "experiments/results/tpp/b1_r3_taxi_v4_ema999_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r3_taxi_v4_ema999_d64_wd1_long_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r3_taxi_v4_ema999_d64_wd1_long_s0/b1_r3_taxi_v4_ema999_d64_wd1_long_s0.txt",
+        "queue_sha256": "5f7ff7ccee12c41082246efc72a6a8c6c1ed882b9d628bb4fe525bf076ea1ebd",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v4.py": "e6413710ef94aa21a08dc23d4b3429e6f4c4929178bbac048427b50ab7953712"
+        },
+        "result": "experiments/results/tpp/b1_r3_taxi_v4_ema999_d64_wd1_long_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

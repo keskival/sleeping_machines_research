@@ -1,0 +1,130 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G1",
+  "purpose": "G1 replication on P12 splits 1-2 at 10%/30% labels (split 0: AUPRC +0.061 at 10%, +0.035 at 30%; AUROC +0.013/+0.004). Decides whether the transfer effect is robust beyond one split",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "g1_p12_s1_pre10_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s1_pre10_lf0.1/g1_p12_s1_pre10_lf0.1.txt",
+        "queue_sha256": "c67b046016032112edad9312e8e8cb7d27755e1a9e376045c07c1ef0729b6516",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s1_pre10_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s1_scratch_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s1_scratch_lf0.1/g1_p12_s1_scratch_lf0.1.txt",
+        "queue_sha256": "3973d9c6f5636146763433a37a1ce278bae4b889b212de3d1fdfc355d0f5f1e3",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s1_scratch_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s1_pre10_lf0.3",
+        "queue": "experiments/queue/g1/g1_p12_s1_pre10_lf0.3/g1_p12_s1_pre10_lf0.3.txt",
+        "queue_sha256": "019371eda5f68bf1f59c064a01401c0e5c36e3b2e924d675a9e5a054cd440e63",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s1_pre10_lf0.3.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s1_scratch_lf0.3",
+        "queue": "experiments/queue/g1/g1_p12_s1_scratch_lf0.3/g1_p12_s1_scratch_lf0.3.txt",
+        "queue_sha256": "b425696dc3ac08c15b22be7beecc64e2a262f1b0da17a3f44b9eb923d46f136c",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s1_scratch_lf0.3.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s2_pre10_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s2_pre10_lf0.1/g1_p12_s2_pre10_lf0.1.txt",
+        "queue_sha256": "17684f35b10e78b1007f632900119fe7210b57ca1ef8a98030db66317a56e8ec",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s2_pre10_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s2_scratch_lf0.1",
+        "queue": "experiments/queue/g1/g1_p12_s2_scratch_lf0.1/g1_p12_s2_scratch_lf0.1.txt",
+        "queue_sha256": "cd0710cd47674f57c9cfa100ec4a8aae1bba1d70cbf44bcdddadb1182f14aa56",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s2_scratch_lf0.1.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s2_pre10_lf0.3",
+        "queue": "experiments/queue/g1/g1_p12_s2_pre10_lf0.3/g1_p12_s2_pre10_lf0.3.txt",
+        "queue_sha256": "8450e8c686598025493535a46ae1ede9df879726dac6447d044c4050b375c74e",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s2_pre10_lf0.3.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "g1_p12_s2_scratch_lf0.3",
+        "queue": "experiments/queue/g1/g1_p12_s2_scratch_lf0.3/g1_p12_s2_scratch_lf0.3.txt",
+        "queue_sha256": "cd52dc074274b012f96e94ea5483df54cb5821012456ede7f299c27a9ada16a8",
+        "kind": "g1_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_g1.py": "68d0cd62c1ead3536b66e21367e8f34afdfefdeed6894873cdf8a682b6535cba",
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/g1_p12_s2_scratch_lf0.3.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

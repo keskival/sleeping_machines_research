@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "round 1: default race-clock config on retweet DEV",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r1_retweet_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r1_retweet_s0/b1_r1_retweet_s0.txt",
+        "queue_sha256": "f7ce6edfde876f53f21407404fc6af15a7a50e1bd559d079df0929295caf3f4c",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp.py": "092f34833db01641560e6568182fddccff032c8ed246fd56ab91957baacbccd7"
+        },
+        "result": "experiments/results/tpp/b1_r1_retweet_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

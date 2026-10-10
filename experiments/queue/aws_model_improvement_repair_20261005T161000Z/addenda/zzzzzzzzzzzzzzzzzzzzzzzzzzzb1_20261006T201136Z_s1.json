@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "v10 continuous-time state clock (hazard and marks follow a persistent memory evolving through the silent interval) on the datasets whose deficit is time LL: StackOverflow (TEST -2.181 vs -2.163) and Amazon (0.768 vs 0.781). Decides whether v10 supersedes v8/v5 there",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b1_r15_so_v10_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r15_so_v10_state16_s0/b1_r15_so_v10_state16_s0.txt",
+        "queue_sha256": "951349ad950e1e87d9d97402318ef1bbc8873a0afc92f11237d42f52a3de6f37",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v10.py": "35a3ef575a52ccca88e96d58b01bc2ceb3a40394f2ed950ee11aada0d32474ad"
+        },
+        "result": "experiments/results/tpp/b1_r15_so_v10_state16_s0.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r15_amazon_v10_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r15_amazon_v10_state16_s0/b1_r15_amazon_v10_state16_s0.txt",
+        "queue_sha256": "a27fbc0e0316df4cd1f07cd48ccb28c98de17e68c2bae7aafe028e2456d8d07f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v10.py": "35a3ef575a52ccca88e96d58b01bc2ceb3a40394f2ed950ee11aada0d32474ad"
+        },
+        "result": "experiments/results/tpp/b1_r15_amazon_v10_state16_s0.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

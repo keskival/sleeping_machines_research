@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2: v3 (statistic slots; P12 val 0.872) on P19 split 0 to establish the P19 standing (MTM TEST 0.903); and v3 on P12 with lr 5e-4 (v3 peaks at epoch 4). v4 threshold comparisons overfit faster (0.868)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r5_p19_split0_v3",
+        "queue": "experiments/queue/b2/b2_r5_p19_split0_v3/b2_r5_p19_split0_v3.txt",
+        "queue_sha256": "0a17cf56e091b5855b915677097666100b7dc31219af1f3446fb2c706c836751",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r5_p19_split0_v3.json",
+        "timeout_s": 14400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r5_p12_split0_v3_lr5e-4",
+        "queue": "experiments/queue/b2/b2_r5_p12_split0_v3_lr5e-4/b2_r5_p12_split0_v3_lr5e-4.txt",
+        "queue_sha256": "64256b0fb39043a9cee4857a5754aa6054783e5d712bb7db79df65dd40d70334",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r5_p12_split0_v3_lr5e-4.json",
+        "timeout_s": 14400,
+        "rss_kb": 6000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 smoke: P12 split 0, 2 epochs; measure epoch time and RSS before sizing development runs",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_smoke_p12_s0",
+        "queue": "experiments/queue/b2/b2_smoke_p12_s0/b2_smoke_p12_s0.txt",
+        "queue_sha256": "b6be8373c5b7de12c3ff3632ffa1978a793c762ee01948e0762599e1b0642700",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts.py": "fabe630e1f4992c9e93fdd75023c95ba5e9aa3e3807c7a74347004def2ec71e4",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_smoke_p12_s0.json",
+        "timeout_s": 3600,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

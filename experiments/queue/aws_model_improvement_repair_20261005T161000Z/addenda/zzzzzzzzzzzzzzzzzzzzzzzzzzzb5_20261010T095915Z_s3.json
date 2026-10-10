@@ -1,0 +1,47 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "purpose": "Readmission with fresh tags of slot-3 jobs that never started: the shared run_safe.sh changed under the running coordinator (curie 9f457ded) and every job start failed its source pin at 09:58 UTC; AWS working copy restored to the pinned bytes. Commands, sources, caps and decisions unchanged.",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b5_review_v3_equiv_smoke_20261010T1010Z_r2",
+        "queue": "experiments/queue/b5/aws_b5_review_v3_equiv_smoke_20261010T1010Z_r2/aws_b5_review_v3_equiv_smoke_20261010T1010Z_r2.txt",
+        "queue_sha256": "a9680b0c42affa65242f190feb6719ee846e78de737f8ee658546fc41acbf121",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v3_equiv_smoke_20261010T1010Z_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b5_review_v3_full_dev_20261010T1010Z_r2",
+        "queue": "experiments/queue/b5/aws_b5_review_v3_full_dev_20261010T1010Z_r2/aws_b5_review_v3_full_dev_20261010T1010Z_r2.txt",
+        "queue_sha256": "7f0114e077b02d0a3ef994f631ba6dc9ec3319ccfe87ba22d249d4be9c41f6ef",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v3_full_dev_20261010T1010Z_r2.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v3_equiv_smoke_20261010T1010Z_r2.json"
+          }
+        ]
+      }
+    ]
+  }
+}

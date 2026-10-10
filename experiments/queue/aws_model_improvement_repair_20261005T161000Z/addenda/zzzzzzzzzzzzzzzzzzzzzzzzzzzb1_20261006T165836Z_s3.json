@@ -1,0 +1,62 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "StackOverflow structure round under the resolution floor (est. ~0.03 behind S2P2 after offsets; time LL weaker): 4 exponential clocks for the heavy tail; 16 delayed clocks; 3 memory layers. Decides the StackOverflow configuration for its TEST protocol",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r7_so_v5_exp4_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r7_so_v5_exp4_s0/b1_r7_so_v5_exp4_s0.txt",
+        "queue_sha256": "2197b6fd5df19fcccf8040ab27c9bc3e3490cd068d9a0b2f515d9e814b512029",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/tpp/b1_r7_so_v5_exp4_s0.json",
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r7_so_v5_ln16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r7_so_v5_ln16_s0/b1_r7_so_v5_ln16_s0.txt",
+        "queue_sha256": "9681974c2d45e5d98700507b826f420b7ae01b271a92f1dda5df6fad53849f1f",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/tpp/b1_r7_so_v5_ln16_s0.json",
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r7_so_v5_l3_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r7_so_v5_l3_s0/b1_r7_so_v5_l3_s0.txt",
+        "queue_sha256": "3e4bcb2f53931561f7cd87d15fb5d03905e8f704f5d528fb789fc564403bf221",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/tpp/b1_r7_so_v5_l3_s0.json",
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r7_so_v5_base_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r7_so_v5_base_s0/b1_r7_so_v5_base_s0.txt",
+        "queue_sha256": "23aecb0eef19d0d977b476a4e400d9739f431400a0bea6cc1a40015238e0cbb1",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/tpp/b1_r7_so_v5_base_s0.json",
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

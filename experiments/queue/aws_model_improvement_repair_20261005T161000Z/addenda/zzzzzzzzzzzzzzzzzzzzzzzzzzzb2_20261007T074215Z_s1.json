@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 PAM round 2 (v5 split 0 val acc 0.946 vs MTM TEST 0.975): v6 adds per-channel variance and mean absolute change (motion intensity and rhythm) to the statistic slots; and a wider temporal memory (d48, 48 modes) to resolve oscillation frequencies",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "b2_r7_pam_split0_v6",
+        "queue": "experiments/queue/b2/b2_r7_pam_split0_v6/b2_r7_pam_split0_v6.txt",
+        "queue_sha256": "d9dd1ad7993e8873bd99fc846a60f9ebd760271b2a56e37416239332a458ac50",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v6.py": "28f1e2ac490486f7d86dc7ecaa4bf77ac2bc4a8c51d09ae1af0134e0f44a40d7",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r7_pam_split0_v6.json",
+        "timeout_s": 14400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r7_pam_split0_v6_d48m48",
+        "queue": "experiments/queue/b2/b2_r7_pam_split0_v6_d48m48/b2_r7_pam_split0_v6_d48m48.txt",
+        "queue_sha256": "93e821e316f77ae09bd38ac573a77409274427ce7e77b8eb4dc123d2d4c719df",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v6.py": "28f1e2ac490486f7d86dc7ecaa4bf77ac2bc4a8c51d09ae1af0134e0f44a40d7",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r7_pam_split0_v6_d48m48.json",
+        "timeout_s": 14400,
+        "rss_kb": 7000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

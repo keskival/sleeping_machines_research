@@ -1,0 +1,38 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 v3 statistic-valued channel slots (count, mean, min, max, first, last, trend, staleness; THEORY note 59): diagnosis showed a tree on per-channel summaries matches our P12 val AUROC (0.867 vs 0.866) and beats AUPRC (0.581 vs 0.549), so the temporal model is not yet extracting more than summaries. Decides the B2 architecture",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_r3_p12_split0_v3stats",
+        "queue": "experiments/queue/b2/b2_r3_p12_split0_v3stats/b2_r3_p12_split0_v3stats.txt",
+        "queue_sha256": "966595638f5ebe198a3510f829e6cda453841e61231fdf1ca73cdcb8f8c30803",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r3_p12_split0_v3stats.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_r3_p12_split0_v3stats_ema",
+        "queue": "experiments/queue/b2/b2_r3_p12_split0_v3stats_ema/b2_r3_p12_split0_v3stats_ema.txt",
+        "queue_sha256": "49b55ff3cd381cb3d8d5dc7aad1b8b7a7cd357dbf7847d44442f46609701b414",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_r3_p12_split0_v3stats_ema.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

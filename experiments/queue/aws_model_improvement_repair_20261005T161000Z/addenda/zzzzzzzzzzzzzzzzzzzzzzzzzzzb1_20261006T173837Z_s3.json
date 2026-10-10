@@ -1,0 +1,36 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Retweet capacity (2.2M training events, unlike the small datasets where width overfit): d64/32 modes with 16 delayed clocks, and with 4 windowed clocks, under the 1 s resolution floor. Decides the Retweet configuration (v5 base DEV -6.393 vs NHP TEST -6.348)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r10_retweet_v7_d64_ln16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r10_retweet_v7_d64_ln16_s0/b1_r10_retweet_v7_d64_ln16_s0.txt",
+        "queue_sha256": "3933a8c4bcc835a61ca6b1638afdc5d91c3f9a0d35edc0e47d9f6248ac9ebbde",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v7.py": "2f7911385d01836c51c7de35c3a0d8a2d4747a22193a1764c6bbf9f0839eed04"
+        },
+        "result": "experiments/results/tpp/b1_r10_retweet_v7_d64_ln16_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b1_r10_retweet_v7_d64_ln8_w4_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r10_retweet_v7_d64_ln8_w4_s0/b1_r10_retweet_v7_d64_ln8_w4_s0.txt",
+        "queue_sha256": "7fe1a3dfd8c0c7c3753a5c57d5b3c31e681be2c2e45e7bbef6284430bf413bab",
+        "kind": "b1_tpp",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v7.py": "2f7911385d01836c51c7de35c3a0d8a2d4747a22193a1764c6bbf9f0839eed04"
+        },
+        "result": "experiments/results/tpp/b1_r10_retweet_v7_d64_ln8_w4_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

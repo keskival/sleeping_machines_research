@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "v10 state clock on Retweet (plateau -6.39 DEV across clock-only variants vs NHP TEST -6.348; NHP's own advantage is a continuous-time state). Decides the Retweet configuration",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "b1_r15_retweet_v10_state16_s0",
+        "queue": "experiments/queue/b1_easytpp/b1_r15_retweet_v10_state16_s0/b1_r15_retweet_v10_state16_s0.txt",
+        "queue_sha256": "ff24a7f2bb169466e5ca3b9661615d38ca9fe8a4f3d05c9149846dc59f9165cb",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_v10.py": "35a3ef575a52ccca88e96d58b01bc2ceb3a40394f2ed950ee11aada0d32474ad"
+        },
+        "result": "experiments/results/tpp/b1_r15_retweet_v10_state16_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 9000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

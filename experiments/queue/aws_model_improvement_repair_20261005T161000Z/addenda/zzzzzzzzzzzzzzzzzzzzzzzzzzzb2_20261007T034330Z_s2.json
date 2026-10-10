@@ -1,0 +1,80 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B2",
+  "purpose": "B2 P12 TEST protocol (pre-registered): v3, five official splits, validation-AUROC selection, TEST once per split (split 0 val 0.872; P19's TEST ran above validation)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b2_final_p12_v3_split0",
+        "queue": "experiments/queue/b2/b2_final_p12_v3_split0/b2_final_p12_v3_split0.txt",
+        "queue_sha256": "c3b9f8bfc717ceb9a0455093387d73e4b193e3425c860285d31b0b27e31357b5",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p12_v3_split0.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p12_v3_split1",
+        "queue": "experiments/queue/b2/b2_final_p12_v3_split1/b2_final_p12_v3_split1.txt",
+        "queue_sha256": "c8fe1eb136e4fb4a5b65af8d7b63755cf5ed98a8d5a0f9e4762dec023ad9f600",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p12_v3_split1.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p12_v3_split2",
+        "queue": "experiments/queue/b2/b2_final_p12_v3_split2/b2_final_p12_v3_split2.txt",
+        "queue_sha256": "6c181f17a8abd23a9f656e71673642a6a32fa9bd418df3d719fb8070f5d6cb22",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p12_v3_split2.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p12_v3_split3",
+        "queue": "experiments/queue/b2/b2_final_p12_v3_split3/b2_final_p12_v3_split3.txt",
+        "queue_sha256": "d09a2d02389984218a71e0a188b35444f136950886c3f5f467c90a20f0bd96b1",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p12_v3_split3.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "b2_final_p12_v3_split4",
+        "queue": "experiments/queue/b2/b2_final_p12_v3_split4/b2_final_p12_v3_split4.txt",
+        "queue_sha256": "0ef379a58dbd29c8dbda7f3ebd954bfba551a0e9d740b42a7c9e46c59ef2dd08",
+        "kind": "b2_job",
+        "source_sha256": {
+          "experiments/irts/race_irts_v3.py": "22f9281844f91d05fe9b8390b19dbb37a321d1613d62016421c0b868f3ed5b33",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/irts/b2_final_p12_v3_split4.json",
+        "timeout_s": 10800,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
