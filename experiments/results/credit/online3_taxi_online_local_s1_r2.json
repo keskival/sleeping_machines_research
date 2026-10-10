@@ -1,0 +1,193 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (deep online learning, theory note 160 sect. 12)",
+ "tag": "online3_taxi_online_local_s1_r2",
+ "args": {
+  "tag": "online3_taxi_online_local_s1_r2",
+  "dataset": "taxi",
+  "arm": "online_local",
+  "d": 32,
+  "modes": 16,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 20,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 1,
+  "contract": false,
+  "K": 10
+ },
+ "scale": 0.14583333333333337,
+ "best_dev_ll": 0.47030657752609895,
+ "final_dev_ll": 0.452052355122341,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_ll": 0.400812507986571,
+   "dev_time_ll": 0.6716475278356296,
+   "dev_mark_ll": -0.2708350198490586,
+   "updates": 3172,
+   "epoch_s": 3.72147536277771
+  },
+  {
+   "epoch": 1,
+   "dev_ll": 0.42466277676326286,
+   "dev_time_ll": 0.6742189020395187,
+   "dev_mark_ll": -0.24955612527625584,
+   "updates": 6344,
+   "epoch_s": 3.7158448696136475
+  },
+  {
+   "epoch": 2,
+   "dev_ll": 0.4506520443999978,
+   "dev_time_ll": 0.6944751536458309,
+   "dev_mark_ll": -0.24382310924583311,
+   "updates": 9516,
+   "epoch_s": 3.710235595703125
+  },
+  {
+   "epoch": 3,
+   "dev_ll": 0.4499594038197465,
+   "dev_time_ll": 0.69031486505249,
+   "dev_mark_ll": -0.2403554612327435,
+   "updates": 12688,
+   "epoch_s": 3.694230794906616
+  },
+  {
+   "epoch": 4,
+   "dev_ll": 0.4539311213170086,
+   "dev_time_ll": 0.6946384822398759,
+   "dev_mark_ll": -0.24070736092286726,
+   "updates": 15860,
+   "epoch_s": 3.703660726547241
+  },
+  {
+   "epoch": 5,
+   "dev_ll": 0.4582500484462054,
+   "dev_time_ll": 0.69845956062334,
+   "dev_mark_ll": -0.24020951217713463,
+   "updates": 19032,
+   "epoch_s": 3.690927505493164
+  },
+  {
+   "epoch": 6,
+   "dev_ll": 0.44997678351492904,
+   "dev_time_ll": 0.6936828190158629,
+   "dev_mark_ll": -0.24370603550093398,
+   "updates": 22204,
+   "epoch_s": 3.6988131999969482
+  },
+  {
+   "epoch": 7,
+   "dev_ll": 0.4557869889599644,
+   "dev_time_ll": 0.69595574347353,
+   "dev_mark_ll": -0.24016875451356554,
+   "updates": 25376,
+   "epoch_s": 3.694629430770874
+  },
+  {
+   "epoch": 8,
+   "dev_ll": 0.46161459980715874,
+   "dev_time_ll": 0.7007482483574512,
+   "dev_mark_ll": -0.23913364855029248,
+   "updates": 28548,
+   "epoch_s": 3.6699533462524414
+  },
+  {
+   "epoch": 9,
+   "dev_ll": 0.4618534408276302,
+   "dev_time_ll": 0.6996318508239655,
+   "dev_mark_ll": -0.23777840999633532,
+   "updates": 31720,
+   "epoch_s": 3.6947431564331055
+  },
+  {
+   "epoch": 10,
+   "dev_ll": 0.4648997739606316,
+   "dev_time_ll": 0.7014796378263479,
+   "dev_mark_ll": -0.23657986386571628,
+   "updates": 34892,
+   "epoch_s": 3.677522897720337
+  },
+  {
+   "epoch": 11,
+   "dev_ll": 0.46244516204163105,
+   "dev_time_ll": 0.7010660181643328,
+   "dev_mark_ll": -0.23862085612270165,
+   "updates": 38064,
+   "epoch_s": 3.6656603813171387
+  },
+  {
+   "epoch": 12,
+   "dev_ll": 0.4640491241575359,
+   "dev_time_ll": 0.7020858789075008,
+   "dev_mark_ll": -0.238036754749965,
+   "updates": 41236,
+   "epoch_s": 3.6670310497283936
+  },
+  {
+   "epoch": 13,
+   "dev_ll": 0.46512647109606375,
+   "dev_time_ll": 0.7022258755801557,
+   "dev_mark_ll": -0.23709940448409192,
+   "updates": 44408,
+   "epoch_s": 3.664684295654297
+  },
+  {
+   "epoch": 14,
+   "dev_ll": 0.47030657752609895,
+   "dev_time_ll": 0.7060797682147762,
+   "dev_mark_ll": -0.2357731906886773,
+   "updates": 47580,
+   "epoch_s": 3.6640465259552
+  },
+  {
+   "epoch": 15,
+   "dev_ll": 0.45328574965632257,
+   "dev_time_ll": 0.6920081435358638,
+   "dev_mark_ll": -0.23872239387954122,
+   "updates": 50752,
+   "epoch_s": 3.666904926300049
+  },
+  {
+   "epoch": 16,
+   "dev_ll": 0.4653130739859409,
+   "dev_time_ll": 0.7032253914091289,
+   "dev_mark_ll": -0.237912317423188,
+   "updates": 53924,
+   "epoch_s": 3.6668310165405273
+  },
+  {
+   "epoch": 17,
+   "dev_ll": 0.4668319896580518,
+   "dev_time_ll": 0.7069433369641458,
+   "dev_mark_ll": -0.24011134730609404,
+   "updates": 57096,
+   "epoch_s": 3.6895651817321777
+  },
+  {
+   "epoch": 18,
+   "dev_ll": 0.4612273296503492,
+   "dev_time_ll": 0.7005584251809222,
+   "dev_mark_ll": -0.23933109553057302,
+   "updates": 60268,
+   "epoch_s": 3.6870551109313965
+  },
+  {
+   "epoch": 19,
+   "dev_ll": 0.452052355122341,
+   "dev_time_ll": 0.6955270732598777,
+   "dev_mark_ll": -0.24347471813753682,
+   "updates": 63440,
+   "epoch_s": 3.6744322776794434
+  }
+ ],
+ "wall_s": 74.34121298789978,
+ "parameters": 11700,
+ "memory_path_parameters": 4704,
+ "trace_floats_per_stream": 301056,
+ "source_sha256": {
+  "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
