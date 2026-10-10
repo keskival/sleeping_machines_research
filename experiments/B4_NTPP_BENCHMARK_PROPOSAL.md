@@ -154,8 +154,8 @@ pitfall of B1 (a likelihood gain from the timestamp grid, not from the process).
 gaps, ≈ 4–5 per sequence)** and **Github (1.3%)**; LastFM, MOOC, Stack Overflow, Wikipedia and MIMIC2 have none. Our
 model holds every hazard at its one-cell value below the recording cell and cannot place such a spike.
 
-Whether the published models exploit it cannot be verified without their trained checkpoints (we do not train external
-architectures). The pre-registered verdicts stand as defined; on Retweets and Github the result is reported with this
+The LNM audit below trains the authors' own model and answers whether the published model class exploits it (MOOC:
+yes, 16.86 nats per sequence). The pre-registered verdicts stand as defined; on Retweets and Github the result is reported with this
 note, and with our L_T on the events with positive gaps beside it for interpretation. Early validation fits fit this
 pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweets 35 nats behind.
 
@@ -237,8 +237,8 @@ By gap size on MOOC, the context-free mixture beats our model only on gaps of 1�
 sequence: spikes on lattice points) and loses to it on every longer range (by 14 nats per sequence: the history model
 works). **Reading:** on gridded datasets the protocol's raw time NLL rewards density spikes on the recording lattice by
 hundreds of nats per sequence; a model that ignores history entirely beats every published model on MOOC and Retweets
-time NLL, and its advantage collapses by 900–3,900 nats when the rounding is removed. Our model moves by ≤ 0.4. Whether the
-published models exploit the lattice cannot be established without their checkpoints; what is established is that the
-metric is dominated by it on these datasets. The pre-registered verdicts stand as defined (MOOC: loss); they are reported
+time NLL, and its advantage collapses by 900–3,900 nats when the rounding is removed. Our model moves by ≤ 0.4. The authors' own
+LNM, trained with their code, moves by 16.86 nats per sequence on MOOC (LNM audit section), so the published model
+class does exploit the lattice and the metric is dominated by it on these datasets. The pre-registered verdicts stand as defined (MOOC: loss); they are reported
 with this analysis beside them. **Valid comparisons in B4:** Stack Overflow, the one grid-free dataset (no recording cell
 detected), and the mark component L_M on every dataset (unaffected by the time grid).
