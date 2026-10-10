@@ -1,0 +1,2 @@
+# B4: B4 frozen protocol: LastFM split 3 failed before its first epoch (356 MB allocation under the 8 GB address-space cap; no checkpoint, no TEST). Retried with the guarded driver b4g (bitwise identical when all updates are finite; contract b4g_contract) at 16 GB address space, since LastFM split 4 reached NaN; TEST once. Completes the five-split LastFM verdict
+b4g_lastfm_s3_memretry experiments/tpp/race_tpp_b4g.py --tag b4g_lastfm_s3_memretry --dataset lastfm_filtered --split 3 --score-test

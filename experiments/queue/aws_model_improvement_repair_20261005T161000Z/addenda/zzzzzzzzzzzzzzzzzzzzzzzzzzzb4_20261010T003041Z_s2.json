@@ -1,0 +1,29 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 frozen protocol: LastFM split 3 failed before its first epoch (356 MB allocation under the 8 GB address-space cap; no checkpoint, no TEST). Retried with the guarded driver b4g (bitwise identical when all updates are finite; contract b4g_contract) at 16 GB address space, since LastFM split 4 reached NaN; TEST once. Completes the five-split LastFM verdict",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4g_lastfm_s3_memretry",
+        "queue": "experiments/queue/b4/b4g_lastfm_s3_memretry/b4g_lastfm_s3_memretry.txt",
+        "queue_sha256": "657746aa97d28e1835bd6437b23cf6e7a4ec10fac7a8d1358ce29f32999c15d8",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_lastfm_s3_memretry.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000,
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/b4g_contract.json"
+          }
+        ]
+      }
+    ]
+  }
+}
