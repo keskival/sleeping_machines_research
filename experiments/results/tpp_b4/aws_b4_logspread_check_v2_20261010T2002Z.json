@@ -1,0 +1,102 @@
+{
+  "status": "completed",
+  "contract": [
+    {
+      "windows": 0,
+      "max_value_error": 1.1368683772161603e-13,
+      "max_normalized_gradient_error": 1.638927777931921e-16
+    },
+    {
+      "windows": 2,
+      "max_value_error": 9.094947017729282e-13,
+      "max_normalized_gradient_error": 1.6299258151262502e-16
+    }
+  ],
+  "tag": "aws_b4_logspread_check_v2_20261010T2002Z",
+  "battle": "B4 development",
+  "stage": "logspread_contract_real_backward",
+  "dataset": "github_filtered",
+  "split": 1,
+  "shape": [
+    7,
+    4699
+  ],
+  "train_events": 9114,
+  "zero_train_gaps": 376,
+  "captured": {
+    "log_rate": {
+      "shape": [
+        7,
+        4698,
+        2
+      ],
+      "nonfinite": 0,
+      "min": -1396.8867572341867,
+      "max": 15.67045886119244
+    },
+    "mu": {
+      "shape": [
+        7,
+        4698,
+        8
+      ],
+      "nonfinite": 0,
+      "min": -1440.830540327445,
+      "max": 1089.6442978424348
+    },
+    "sigma": {
+      "shape": [
+        7,
+        4698,
+        8
+      ],
+      "nonfinite": 0,
+      "min": -5.298317366548036,
+      "max": 1425.8667146792243
+    },
+    "log_w": {
+      "shape": [
+        7,
+        4698,
+        10
+      ],
+      "nonfinite": 0,
+      "min": -2151.029395658798,
+      "max": 0.0
+    },
+    "log_pk": {
+      "shape": [
+        7,
+        4698,
+        10,
+        9
+      ],
+      "nonfinite": 0,
+      "min": -2516.970549164016,
+      "max": 0.0
+    },
+    "head_loss_finite": true,
+    "head_loss": -3.742373914259522,
+    "head_gradients_finite": true,
+    "full_loss": -3.7501442380667585,
+    "full_gradients_finite": true,
+    "failed_backward": null
+  },
+  "head_backward_failure_reproduced": false,
+  "checkpoint": "experiments/results/tpp_b4/b4g_github_s1.pt",
+  "checkpoint_sha256": "e68775c84cdd724647e90c6847b2bd73f33ae4d85afbc7e2775e9d040b8c2763",
+  "source_result": {
+    "path": "experiments/results/tpp_b4/b4g_github_s1.json",
+    "sha256": "4db57412f678d2b770ecbdc6b47e9ea00cc7fc49480146c8efd82c5fac7725f7"
+  },
+  "data_sha256": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f",
+  "wall_s": 116.42390405992046,
+  "max_rss_kb": 2948080,
+  "source_sha256": {
+    "experiments/tpp/check_b4_logspread_v2.py": "d6958fca906c6d6ee60da08080c33b271bd2e294fb0a8c7bec47cef9b3483a0c",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "scope": "Finite-region value/gradient contracts plus longest TRAIN batch at saved checkpoint; dropout off, head and full-chain backwards. No optimizer update, no TEST loading, no changed benchmark score."
+}
