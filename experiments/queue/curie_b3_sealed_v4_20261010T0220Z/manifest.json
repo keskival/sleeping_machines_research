@@ -1,0 +1,516 @@
+{
+  "tag": "curie_b3_sealed_v4_20261010T0220Z",
+  "host": "curie",
+  "battle": "B3",
+  "training": false,
+  "jobs": [
+    {
+      "tag": "curie_b3_sealed_tools3_20261010T021555Z",
+      "driver": "experiments/fas/check_sealed_tools_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_tools3_20261010T021555Z/curie_b3_sealed_tools3_20261010T021555Z.txt",
+      "queue_sha256": "5b00037f624d4ab3220224362f3ae75dc547c544053f4f39b244897c68c584d8",
+      "sources": {
+        "experiments/fas/check_sealed_tools_v3.py": "ea365c76634e7bcfb76887a38cdcd3de2fa6ed1ab7e73392dc3b142ed134ef9f",
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "tests/test_fas_sealed_scoring.py": "de3a80f18ed346e19bbb4a9740c9c3dfbcc63dc47492cdf517a170c0821cecf2",
+        "scripts/await_curie_fas_stage4_v4.py": "b64e31e324b36ab239a9fa31b96e308e3a00778e990aa7f90d3c95d7a485c9a8",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "tests/test_fas_payload_identity.py": "539a702f7b880beab892e391f39d45bbcfae7eff6cfdefb0a6786a287100043b"
+      },
+      "result_sources": {
+        "experiments/fas/check_sealed_tools_v3.py": "ea365c76634e7bcfb76887a38cdcd3de2fa6ed1ab7e73392dc3b142ed134ef9f",
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "tests/test_fas_sealed_scoring.py": "de3a80f18ed346e19bbb4a9740c9c3dfbcc63dc47492cdf517a170c0821cecf2",
+        "scripts/await_curie_fas_stage4_v4.py": "b64e31e324b36ab239a9fa31b96e308e3a00778e990aa7f90d3c95d7a485c9a8",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "tests/test_fas_payload_identity.py": "539a702f7b880beab892e391f39d45bbcfae7eff6cfdefb0a6786a287100043b"
+      },
+      "result": "experiments/results/fas/curie_b3_sealed_tools3_20261010T021555Z.json",
+      "timeout_s": 180,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    },
+    {
+      "tag": "curie_b3_native_preflight_20261009T220053Z",
+      "driver": "experiments/fas/check_native_reconstruction.py",
+      "queue": "experiments/queue/curie_b3_native_preflight_20261009T220053Z/curie_b3_native_preflight_20261009T220053Z.txt",
+      "queue_sha256": "58091b91110aac47d6220f583184b9619b7b6a3b85fe1d3b7bd455c32ce8150b",
+      "sources": {
+        "experiments/fas/check_native_reconstruction.py": "a811f5eac6a7d62bc862bb4fd387f87095319858d79e54d12d7f81adac7d20dd",
+        "experiments/fas/score_sealed_v2.py": "6bc376e6bd196d44f903fc73f25413a577f49e43faac30701d4efb150df1414e",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/data/fas/fas_v2_K2_drop0.02_delta0_20261005/manifest.json": "355c03a0565b98a5f0175614b00715964b9ae6a5291f6da7e070ca911cdee77b",
+        "experiments/data/fas/fas_v2_K2_drop0.02_delta0_20261005/train_clean.npz": "5c5f3dcc8da03fa9b20d120edca763b8ea74c518dd8e6496b899baa1b7e649ba",
+        "experiments/data/fas/fas_v2_K2_drop0.02_delta0_20261005/val_clean.npz": "562d053db38f4ac2aacf2d86b3b9808b421b3affcf37a4a8333642c3cac18ce9",
+        "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z.json": "b5ee383cc5be0ac7f0dd869fb776c42e9dae0eee3a092b457f2cc515ef0bfb7e",
+        "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z.pt": "cd8c539b841f5afe5335b00323bc1136d2231fc4209159d3f81254850534a1b9",
+        "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z.json": "194021f4fa817f13f1f64a87da155f022204b84ea820eaf486f6e67bb620ac92",
+        "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z.pt": "72421c27017301f26804070cc42e127042124340359ee00769e43efec3c4a653",
+        "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z.json": "a9e1cb9ef3394dac918f9cd8a3834b8c8cb5b49d845d493bc07ad2856d2326b4",
+        "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z.pt": "203e4f2cbd700acf5b763b8533c6ced7d0ec07a9b2d8a43cff00d424a203eeb1",
+        "experiments/queue/curie_b3_native_preflight_20261009T220053Z/inputs.json": "98d521e3ffb7f45567bda9c49b815c7965ce36b2c90bfed6e9c4c227ffff43c2"
+      },
+      "result_sources": {
+        "experiments/fas/check_native_reconstruction.py": "a811f5eac6a7d62bc862bb4fd387f87095319858d79e54d12d7f81adac7d20dd",
+        "experiments/fas/score_sealed_v2.py": "6bc376e6bd196d44f903fc73f25413a577f49e43faac30701d4efb150df1414e",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/curie_b3_native_preflight_20261009T220053Z.json",
+      "timeout_s": 3600,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_native_s6",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s6.txt",
+      "queue_sha256": "91f3098124399e0abfe16bd7c5e727e229c8efd982dd42aabedb56bf839af411",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s6_admission.json": "24bdb7ad5d5ede70f40af16410e4ab4674b783efc6b64e2a98d889048eb2fec4",
+        "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z.json": "b5ee383cc5be0ac7f0dd869fb776c42e9dae0eee3a092b457f2cc515ef0bfb7e",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_native_s7",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s7.txt",
+      "queue_sha256": "61a50d76e1eee21f121e9d0cab23989da0dcae1511531d781040e17267e2e127",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s7_admission.json": "f341897fe8c017cc458e9fa716dc98430a091407af414fa8708bb66b598c9cb9",
+        "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z.json": "194021f4fa817f13f1f64a87da155f022204b84ea820eaf486f6e67bb620ac92",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_native_s8",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s8.txt",
+      "queue_sha256": "1e9e2b1c11784d93893369a08327538933601ce88c26c9bc19139047ef044cc3",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_native_s8_admission.json": "3acf6cc64a6fbed6e762029c3bdaf9898f5cab226a97d7fc1e47a3ccffb7be6a",
+        "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z.json": "a9e1cb9ef3394dac918f9cd8a3834b8c8cb5b49d845d493bc07ad2856d2326b4",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+        "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_lstm_s0",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s0.txt",
+      "queue_sha256": "856b628eee2a1437a1fcf7b0637d4a3eb69ae89e42e7ccf480e660a2424c1fff",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s0_admission.json": "f64c86c9943bc85d09122037824bc58ee2ac8196d8288da1981846a99e76042f",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z.json": "d13b20a274185c53852c0190308b6c41f9dd74c4ff66a49bb3b61fdf9c823e0b",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_lstm_s1",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s1.txt",
+      "queue_sha256": "81d074930ead828f04b580cf28ecda09abff5497549877fc4da19e86dd0ee9b7",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s1_admission.json": "f582d0a241db2395fe57ae0b296799a257fdbac54ace87bffd63ce7afa39f96a",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z.json": "630ddda539c5a42f7c905b4e6e4dc778c02947f8df7b6aa377a55970d3ec2a39",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_lstm_s2",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s2.txt",
+      "queue_sha256": "3a0ee14d784b93f86beb8bfc9889d9d22a250618061ced31ff3ef60b1a9fdc1e",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_lstm_s2_admission.json": "58b1a8f265ca62f6281aa4766ed7e5c85a2543b655cb0df393a124d786553e36",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z.json": "8b0d34997bc9600e0e81c19c0a70528fd189121720a085fe422dcd98ee0aed8d",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_transformer_s0",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s0.txt",
+      "queue_sha256": "698fca6d6f0ac6fc434d31dfb54dc7883c2285b85fbb2a03cc8de65e5ad495d3",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s0_admission.json": "7622fc5dbb64342ee96ad064c0336dfb25c046eb3fabe66c57bbaf72fb7cd109",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z.json": "2ed12668de3c0b6b3de59ea7ca1b62b2480b69592c671b6744f9de0213921c8a",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_transformer_s1",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s1.txt",
+      "queue_sha256": "1d342bdca6cd1fdc3c1f1f1c9bc0382f7c10c5e5dc50a3de4b7bc772e0b35be4",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s1_admission.json": "56333768f5b3bd120aee5a9324b83fddc89c01a3d634c1aa60d4f35e6281ae2a",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z.json": "e1df9a268aa3ad744aefea6081314e27073efd7e106814cab625996cc4eac6b7",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_transformer_s2",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s2.txt",
+      "queue_sha256": "7372f2a5e8b030a01104165ac3ac8c4cd349db5963f1e869a59aa14691026b0e",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_transformer_s2_admission.json": "643b57a50278fb8d3c3b453268609bff33b4ae85b4e7775d62742274940665f3",
+        "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z.json": "c3d2045de8406b90e1851af6d78de930d1ddf1b6f29803817c0863e285c61b60",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+        "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+      },
+      "result": "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_classical",
+      "driver": "experiments/fas/score_sealed_v3.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_classical.txt",
+      "queue_sha256": "960ce3f49eb500c77994819d855f308af5fdcfc883d6100b7ccba9d43f756b0d",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/classical_scores_v2.py": "da2e64be051e796adc25cf99ca101fc425eb6a0d7913d93684aaf8908efaf8fb",
+        "experiments/fas/strong_baselines.py": "d3022e2d3fe35e0de488f18afffb34e3fc6fc7e215b24da75335f2c2c123cfa7",
+        "experiments/fas/timed_ngram.py": "0bd776bc6fe42d47d585ecb9da24e81c65428335be1e7cbf361b86d6f6481227",
+        "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_classical_admission.json": "821e6f8f704c712e507c311ac5ecc261b1972c8b7411bac50effd21f84dbba74",
+        "experiments/results/fas/fas_v2_classical_val_20261006T2115Z.json": "6b07cf9b3c9474936d6fc379a7603c87835faf4d2346b6377b5ef26b8de88ca3",
+        "experiments/results/fas/aws_fas_v2_data_manifest.json": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463"
+      },
+      "result_sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+        "experiments/fas/classical_scores_v2.py": "da2e64be051e796adc25cf99ca101fc425eb6a0d7913d93684aaf8908efaf8fb",
+        "experiments/fas/strong_baselines.py": "d3022e2d3fe35e0de488f18afffb34e3fc6fc7e215b24da75335f2c2c123cfa7",
+        "experiments/fas/timed_ngram.py": "0bd776bc6fe42d47d585ecb9da24e81c65428335be1e7cbf361b86d6f6481227"
+      },
+      "result": "experiments/results/fas/curie_b3_sealed_v4_20261010T0220Z_classical_TEST.json",
+      "timeout_s": 7200,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z"
+      ]
+    },
+    {
+      "tag": "curie_b3_sealed_v4_20261010T0220Z_decision",
+      "driver": "experiments/fas/stage5_decision_v2.py",
+      "queue": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/curie_b3_sealed_v4_20261010T0220Z_decision.txt",
+      "queue_sha256": "c6831809bf4ccd043d1a1c80e8a5a39eeeb01cc9abaf00e7a3c530481e98a56f",
+      "sources": {
+        "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+        "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+        "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0"
+      },
+      "result_sources": {
+        "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+        "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+        "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39"
+      },
+      "result": "experiments/results/fas/curie_b3_sealed_v4_20261010T0220Z_decision.json",
+      "timeout_s": 1800,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "requires": [
+        "curie_b3_sealed_tools3_20261010T021555Z",
+        "curie_b3_native_preflight_20261009T220053Z",
+        "curie_b3_sealed_v4_20261010T0220Z_native_s6",
+        "curie_b3_sealed_v4_20261010T0220Z_native_s7",
+        "curie_b3_sealed_v4_20261010T0220Z_native_s8",
+        "curie_b3_sealed_v4_20261010T0220Z_lstm_s0",
+        "curie_b3_sealed_v4_20261010T0220Z_lstm_s1",
+        "curie_b3_sealed_v4_20261010T0220Z_lstm_s2",
+        "curie_b3_sealed_v4_20261010T0220Z_transformer_s0",
+        "curie_b3_sealed_v4_20261010T0220Z_transformer_s1",
+        "curie_b3_sealed_v4_20261010T0220Z_transformer_s2",
+        "curie_b3_sealed_v4_20261010T0220Z_classical"
+      ]
+    }
+  ],
+  "ownership": "Curie scores all selected checkpoints; AWS reference fitting remains AWS-owned",
+  "purpose": "Frozen C10 native and selected LSTM/Transformer families, classical suite, then registered decision; no tuning"
+}
