@@ -1,0 +1,39 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1/R1 separate fixed-input contraction error from accumulating numerical trajectory drift: same-incoming-state shadow audit at first absolute 1e-9 divergence; independently require TRAIN mean and DEV quality within preregistered 1e-6 nats/target; no TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_deep_blocks_roundoff_20261010T180851Z",
+        "queue": "experiments/queue/b1_easytpp/aws_deep_blocks_roundoff_20261010T180851Z/aws_deep_blocks_roundoff_20261010T180851Z.txt",
+        "queue_sha256": "b79a5920897e5bdb7e8a26e572bc0158b2f85a21ff276578c8fd729cf2afeb8e",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/online_deep_blocks_fit_v2.py": "babbe08b1520ccd4c66babde8d5ec991cf165852291fb355cd85a3368957b35c",
+          "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+          "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/aws_deep_blocks_roundoff_20261010T180851Z.json",
+        "timeout_s": 1800,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_deep_blocks_real_20261010T180155Z_smoke.json",
+            "source_sha256": {
+              "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+              "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+              "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+              "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+            },
+            "stage": "real"
+          }
+        ]
+      }
+    ]
+  }
+}

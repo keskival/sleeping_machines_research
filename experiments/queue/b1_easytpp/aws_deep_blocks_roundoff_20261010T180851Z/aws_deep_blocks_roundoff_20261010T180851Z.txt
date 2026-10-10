@@ -1,0 +1,2 @@
+# B1: B1/R1 separate fixed-input contraction error from accumulating numerical trajectory drift: same-incoming-state shadow audit at first absolute 1e-9 divergence; independently require TRAIN mean and DEV quality within preregistered 1e-6 nats/target; no TEST
+aws_deep_blocks_roundoff_20261010T180851Z experiments/credit/online_deep_blocks_fit_v2.py --tag aws_deep_blocks_roundoff_20261010T180851Z --stage epoch --gate experiments/results/credit/aws_deep_blocks_real_20261010T180155Z_smoke.json
