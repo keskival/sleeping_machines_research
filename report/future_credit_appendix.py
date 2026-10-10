@@ -114,7 +114,7 @@ def noise_pages(folder):
 
 
 def cpu_scan_pages(folder):
-    prefix='curie_cpu_scan_v1_20261010T1510Z'
+    prefix='curie_cpu_scan_dispatch_20261010T1635Z'
     cp=folder/(prefix+'_contract.json');sp=folder/(prefix+'_smoke.json')
     if not cp.exists() or not sp.exists():return []
     c=json.loads(cp.read_text());r=json.loads(sp.read_text())
