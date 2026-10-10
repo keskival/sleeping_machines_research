@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "tag": "curie_post_pam_20261010T1050Z_key_contract",
+  "battle": "R1/B1",
+  "training": false,
+  "metrics": [
+    {
+      "depth": 2,
+      "scored_targets": 22,
+      "errors": {
+        "key_cotangent": 1.3877787807814457e-17,
+        "query_cotangent": 6.938893903907228e-18,
+        "producer_state_cotangent": 3.469446951953614e-18,
+        "predecessor_cotangent": 3.469446951953614e-18
+      },
+      "key_cotangent_elements_per_write": 4,
+      "credit_transport_state_elements_per_stream": 32,
+      "available_key_slots": 8,
+      "writes_per_forward_event": 1,
+      "keys_scored_per_query": 8,
+      "credits_accumulated_per_query": 8,
+      "all_producer_parameter_work_eliminated": false,
+      "scope": "Exact receiver credit; subsequent deep producer contractions and candidate discovery remain charged. Completed-suffix delayed reference, not online scheduling."
+    },
+    {
+      "depth": 4,
+      "scored_targets": 22,
+      "errors": {
+        "key_cotangent": 1.3877787807814457e-17,
+        "query_cotangent": 6.938893903907228e-18,
+        "producer_state_cotangent": 5.204170427930421e-18,
+        "predecessor_cotangent": 3.469446951953614e-18
+      },
+      "key_cotangent_elements_per_write": 4,
+      "credit_transport_state_elements_per_stream": 32,
+      "available_key_slots": 8,
+      "writes_per_forward_event": 1,
+      "keys_scored_per_query": 8,
+      "credits_accumulated_per_query": 8,
+      "all_producer_parameter_work_eliminated": false,
+      "scope": "Exact receiver credit; subsequent deep producer contractions and candidate discovery remain charged. Completed-suffix delayed reference, not online scheduling."
+    },
+    {
+      "depth": 8,
+      "scored_targets": 22,
+      "errors": {
+        "key_cotangent": 5.204170427930421e-18,
+        "query_cotangent": 4.336808689942018e-18,
+        "producer_state_cotangent": 1.951563910473908e-18,
+        "predecessor_cotangent": 1.463672932855431e-18
+      },
+      "key_cotangent_elements_per_write": 4,
+      "credit_transport_state_elements_per_stream": 32,
+      "available_key_slots": 8,
+      "writes_per_forward_event": 1,
+      "keys_scored_per_query": 8,
+      "credits_accumulated_per_query": 8,
+      "all_producer_parameter_work_eliminated": false,
+      "scope": "Exact receiver credit; subsequent deep producer contractions and candidate discovery remain charged. Completed-suffix delayed reference, not online scheduling."
+    }
+  ],
+  "wall_s": 0.10217310099869792,
+  "decision": "Whether state-sized exact temporal key credit admits learned-tail and asynchronous scheduling integration",
+  "source_sha256": {
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
