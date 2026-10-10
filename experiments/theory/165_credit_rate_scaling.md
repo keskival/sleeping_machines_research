@@ -207,6 +207,33 @@ the slowest ones, the opposite of the naive intuition that learned credit is for
 credit-spectrum measurement (`credit_spectrum.py`) records per-mode residuals for the window-4 predictor, which checks
 the ρ^{2(H+1)} law per mode.
 
+## 9. Does sparsity grow as the credit model learns the domain? (founder question, 10 Oct)
+
+Write the residual credit variance of component i at training time t as v_i(t) = v_i^irr + a_i(t): v_i^irr = Var(λ_i | all
+forward information) is unpredictable in principle (it contains the data noise of Theorem 4), and a_i(t) ≥ 0 is the credit
+predictor's error, which falls as the predictor learns the domain's regularities. Under water-filling (note 164 Theorem E) the
+active set is A(θ, t) = {i : w_i v_i(t) > θ}.
+
+**Proposition 9.1 (sparsity grows with learning).** If every a_i(t) is non-increasing in t, so is |A(θ, t)|, and the credit
+rate R(t) = Σ_{i∈A} log(w_i v_i(t)/θ) is non-increasing. *Proof:* each w_i v_i(t) is non-increasing; membership in A and each
+log term can only fall. ∎
+
+**Proposition 9.2 (savings grow with scale: conditions).** Savings S(n, t) = C_dense(n)/R(n, t) with C_dense ∝ n. If
+(A) the predictor is a shared function of local forward features whose parameter count and approximation error do not grow
+with n, and (B) the unpredictable spectrum is summable uniformly in n (sup_n Σ_i w_i v_i^irr < ∞ with a fixed head), then
+R(n, t) → R_∞(θ) bounded in n as a_i → 0, and S(n, t) grows linearly in n. If (B) fails, S saturates at a constant factor
+however good the predictor becomes (the dense-write learner of §7b, k ∝ n^0.8, is in this regime).
+
+**The hidden-cost caveat.** A predictor whose small error ε is spread uniformly over n components has total residual n·ε.
+Components with w_i ε < θ are silent (zero traffic), so measured traffic savings grow with n, but the omitted credit is a
+*bias* of size n·ε in the update: the cost moves from communication to learning quality. Scale-growing savings are real only
+if predictor errors concentrate (condition B for a_i too) or are corrected by unbiased sparse audits (notes 162–163), whose
+variance must then be charged. Report distortion Σ_{i∉A} w_i v_i alongside traffic.
+
+**Test (cheap, no new architecture):** record k(ε), residual distortion and traffic per epoch at two sizes during training
+(credit_spectrum drivers evaluate after training only; per-epoch logging is the extension). Prediction under (A)+(B):
+k(ε, t) falls over training and the K = 64 / K = 16 traffic ratio falls below the capacity ratio as training proceeds.
+
 ## Formal verification (Lean 4 + Mathlib)
 
 [`CreditTheory/Scaling.lean`](../lean/credit_theory/CreditTheory/Scaling.lean); every theorem depends only on
