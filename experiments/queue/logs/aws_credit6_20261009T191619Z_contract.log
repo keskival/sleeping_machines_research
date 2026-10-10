@@ -1,0 +1,150 @@
+{
+  "teacher_independent_of_learner_rng": true,
+  "detached_update_paths": true,
+  "depth_1_all_parameter_max_error": 8.326672684688674e-17,
+  "depth_2_all_parameter_max_error": 3.8163916471489756e-17,
+  "math_audit": {
+    "status": "completed",
+    "scope": "exact finite-cause mathematical audit; no fitting",
+    "finite_proposal_bias": [
+      {
+        "proposals": 1,
+        "expected_credit": [
+          0.2,
+          0.8
+        ],
+        "posterior_tv_bias": 0.6000000000000001,
+        "expected_wake_q_logit_update": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "proposals": 2,
+        "expected_credit": [
+          0.3411764705882354,
+          0.6588235294117648
+        ],
+        "posterior_tv_bias": 0.45882352941176474,
+        "expected_wake_q_logit_update": [
+          0.1411764705882354,
+          -0.14117647058823524
+        ]
+      },
+      {
+        "proposals": 4,
+        "expected_credit": [
+          0.5161685726922352,
+          0.48383142730776535
+        ],
+        "posterior_tv_bias": 0.2838314273077651,
+        "expected_wake_q_logit_update": [
+          0.31616857269223514,
+          -0.3161685726922347
+        ]
+      },
+      {
+        "proposals": 8,
+        "expected_credit": [
+          0.666844142030621,
+          0.33315585796937935
+        ],
+        "posterior_tv_bias": 0.13315585796937918,
+        "expected_wake_q_logit_update": [
+          0.466844142030621,
+          -0.4668441420306207
+        ]
+      },
+      {
+        "proposals": 16,
+        "expected_credit": [
+          0.7474813883662347,
+          0.2525186116337661
+        ],
+        "posterior_tv_bias": 0.05251861163376573,
+        "expected_wake_q_logit_update": [
+          0.5474813883662346,
+          -0.547481388366234
+        ]
+      },
+      {
+        "proposals": 32,
+        "expected_credit": [
+          0.778042480286599,
+          0.22195751971340297
+        ],
+        "posterior_tv_bias": 0.021957519713402027,
+        "expected_wake_q_logit_update": [
+          0.5780424802865989,
+          -0.5780424802865971
+        ]
+      }
+    ],
+    "local_feedback": [
+      {
+        "proposals": 1,
+        "wake_feedback_derivative": 0.0
+      },
+      {
+        "proposals": 2,
+        "wake_feedback_derivative": -0.4999999999588667
+      },
+      {
+        "proposals": 4,
+        "wake_feedback_derivative": -0.7499999999383
+      },
+      {
+        "proposals": 8,
+        "wake_feedback_derivative": -0.8749999999002611
+      }
+    ],
+    "nonuniform_once_each_credit": [
+      0.9411764705882353,
+      0.058823529411764705
+    ],
+    "modeled_linear_work": [
+      {
+        "depth": 1,
+        "credit_hidden": 64,
+        "dense_linear_macs": 4224,
+        "closed_linear_macs": 35424,
+        "closed_over_dense": 8.386363636363637
+      },
+      {
+        "depth": 1,
+        "credit_hidden": 16,
+        "dense_linear_macs": 4224,
+        "closed_linear_macs": 5472,
+        "closed_over_dense": 1.2954545454545454
+      },
+      {
+        "depth": 1,
+        "credit_hidden": 8,
+        "dense_linear_macs": 4224,
+        "closed_linear_macs": 3168,
+        "closed_over_dense": 0.75
+      },
+      {
+        "depth": 2,
+        "credit_hidden": 64,
+        "dense_linear_macs": 17280,
+        "closed_linear_macs": 46688,
+        "closed_over_dense": 2.7018518518518517
+      },
+      {
+        "depth": 2,
+        "credit_hidden": 16,
+        "dense_linear_macs": 17280,
+        "closed_linear_macs": 9824,
+        "closed_over_dense": 0.5685185185185185
+      },
+      {
+        "depth": 2,
+        "credit_hidden": 8,
+        "dense_linear_macs": 17280,
+        "closed_linear_macs": 6368,
+        "closed_over_dense": 0.3685185185185185
+      }
+    ]
+  }
+}
