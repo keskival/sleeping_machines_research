@@ -121,7 +121,7 @@ packet = dict(
                    scope='Three completed seeds per configuration; mean and sample SD; '
                          'mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring'),
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
-           'sealed verdict pending the reference seeds; a tie is expected under the 0.02 rule',
+           'all selected reference seeds complete; sealed scoring awaits bound cross-host data identity',
     input_sha256=inputs)
 out = ROOT / 'report/public_wins_headline_evidence_20261009_v3.json'
 out.write_text(json.dumps(packet, indent=1) + '\n')

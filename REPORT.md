@@ -2,7 +2,7 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 9 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 10 October 2026
 
 ## Public benchmark record — 9 October 2026
 
