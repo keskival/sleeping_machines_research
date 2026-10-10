@@ -1,0 +1,29 @@
+{
+  "tag": "curie_token_episode_v2b_20261010T2040Z",
+  "host": "curie",
+  "battle": "R1",
+  "jobs": [
+    {
+      "tag": "curie_token_episode_v2b_20261010T2040Z_contract",
+      "driver": "experiments/credit/check_token_episode_state.py",
+      "queue": "experiments/queue/enabler/curie_token_episode_v2b_20261010T2040Z/curie_token_episode_v2b_20261010T2040Z_contract.txt",
+      "queue_sha256": "e7613918594a717bbc8758f7cd8d1708222dd7671ca59e3bbfb0fbf949108da4",
+      "sources": {
+        "experiments/credit/check_token_episode_state.py": "56417e23e39adf98620aa169557f3ff2352664b05178be7539a2f930f70bf278",
+        "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+        "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_token_episode_state.py": "56417e23e39adf98620aa169557f3ff2352664b05178be7539a2f930f70bf278",
+        "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+        "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_token_episode_v2b_20261010T2040Z_contract.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 300
+    }
+  ]
+}
