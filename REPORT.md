@@ -4509,3 +4509,20 @@ The fixed-recipe 20-pass quality preservation gate passes: mean final DEV 0.4759
 | 2 | saved dense | 0.475606 | 81.25 |
 
 Same model/recipe, 20 passes, three seeds, DEV only. Numerical trajectories may diverge; completed paired prefix is speed evidence; saved full-fit walls are historical. No TEST. Full-fit wall includes loading, evaluation and checkpoint work. The saved walls are historical; controlled speed comes from the paired prefix above. All parameter/Adam/RNG final checkpoints are published. Inference, FLOPs and energy are unchanged or unmeasured; this adoption gate is not a leaderboard result.
+
+## Appendix. B1 reciprocal forward teaching and native actor-update closure
+
+Forward tangent packets now teach a backward transport map, which carries credit into native actor input parameters. Four successive parameter versions match the exact-gradient reference, including Adam state and parameter updates. The local teaching rule uses forward responses and outer products; it has no third learned teacher.
+
+| Implementation | Actor steps | Probes | Teaching updates | Gradient error |
+| --- | --- | --- | --- | --- |
+| Scalar teaching | 4 | 128 | 4096 | 1.54e-16 |
+| Packet projection | 4 | 128 | 128 | 1.54e-16 |
+
+Rank-one packet projection reduces teaching updates from 4,096 to 128 with unchanged forward probes. Maximum parameter difference 5.55e-17; maximum Adam-state difference 2.78e-17. In a separate 12-version tracking diagnostic, refreshing two input directions per version reduces mean relative squared transport error by 22.0% versus a frozen map.
+
+Accounting: projection gate forward teaching 0.655s; both actor/reference arms and audits 0.028s; whole gate 1.309s, peak RSS 390.4MiB. Native forward loss is 0.951764 to 0.839469 on the repeated TRAIN prefix. Dense cut transport stores 1,024 values; full fitting FLOPs and inference work are unmeasured.
+
+Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.
+
+Evidence: aws_reciprocal_tracking_20261010T2157Z, aws_reciprocal_cut_contract_20261010T2200Z, aws_reciprocal_projection_20261010T2204Z. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.

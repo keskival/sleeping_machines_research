@@ -435,3 +435,40 @@ linear updates have a proved identity, but do not solve the nonlinear
 context-dependent temporal Jacobian automatically. Curie owns the native joint
 credit integration; AWS's admitted learning and numerical-development queues
 remain intact. No fit or TEST was launched for these two contracts.
+
+## Packet projection and completed moving-native closure
+
+A complete forward response z=Jv can teach every output cotangent at once.
+The unique minimum-Frobenius-norm change satisfying B_new^T v=z is
+
+    B_new = B + v (z-B^T v)^T/(v^T v).
+
+The constraint holds directly. Any other feasible change differs by an N
+with N^T v=0, orthogonal to this rank-one change, proving minimality. Relaxing
+by0<alpha<2 gives D_new=(I-alpha vv^T/(v^T v))D, so
+
+    ||D_new||_F^2 = ||D||_F^2 - (2alpha-alpha^2)||D^T v||^2/(v^T v).
+
+With isotropic normalized directions, expected squared error contracts by
+1-(2alpha-alpha^2)/n. Packet projection is equivalent to the full orthogonal
+output-coordinate teaching sweep at its matched scalar step. It changes
+teaching from m dense outer-product updates to one; storage remains n*m,
+probe generation remains paid, and this is not a novel projection primitive.
+
+Completed aws_reciprocal_tracking_20261010T2157Z:12 native exact-gradient actor
+updates on a four-event Taxi TRAIN prefix, two new directions refreshed each
+version. Mean relative squared tracking error0.009206 versus frozen0.011798
+(22.0% reduction); current-row errors<=4.44e-16, historical labels rejected.
+Initial dense teaching32 probes and all12 independent reverse audits charged.
+
+Completed aws_reciprocal_cut_contract_20261010T2200Z connects forward-taught
+transport to actor embedding/gap credit across four parameter versions. Native
+layer/head retain exact local derivatives. Gradient, Adam and parameter parity
+pass. Packet projection variant aws_reciprocal_projection_20261010T2204Z reduces
+local teaching updates4096->128 at identical128 forward probes; normalized
+gradient error<=1.55e-16, parameter difference5.55e-17, Adam-state difference
+2.78e-17. One TRAIN prefix, full directional refresh, dense matrix1024 values.
+Projection whole gate1.309s, forward teaching0.655s; reference/actor work0.028s.
+These cold contract costs show overhead still needs engineering; no efficiency,
+quality, sparse-learning or full-family closure claim follows. Current
+report appendix is source-bound to these completed result files.

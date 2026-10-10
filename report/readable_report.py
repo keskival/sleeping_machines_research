@@ -5494,6 +5494,9 @@ def build(M):
 
     from report.deep_credit_blocks_appendix import pages as deep_credit_blocks_pages
     pages.extend(deep_credit_blocks_pages())
+
+    from report.reciprocal_transport_appendix import pages as reciprocal_transport_pages
+    pages.extend(reciprocal_transport_pages())
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')
