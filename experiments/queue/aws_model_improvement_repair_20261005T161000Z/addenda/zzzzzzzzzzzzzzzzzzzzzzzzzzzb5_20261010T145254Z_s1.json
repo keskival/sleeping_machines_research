@@ -1,0 +1,81 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "Compare completed full-VALIDATION C/D with paired A/B and saved popularity; decide residual diagnosis or validation confirmation; no TEST or automatic fitting",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b5_review_v6_decision_20261010T145254Z",
+        "queue": "experiments/queue/b5/aws_b5_review_v6_decision_20261010T145254Z/aws_b5_review_v6_decision_20261010T145254Z.txt",
+        "queue_sha256": "9bc5f7f162af4f529e362cf1a9859797ee4a9e360d0f8cb742f755c2938e9b8b",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/review_logq_summary.py": "cebaada331f9cd2a545ea8597c5930663cd13ce8a5582a74bde18c85bd225fa2",
+          "experiments/queue/b5/aws_b5_review_v6_decision_20261010T145254Z/inputs.json": "bfb8aa4a4e214d889f2a28215e82a443358f22c9d0ebc837425736b393c917ba"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v6_decision_20261010T145254Z.json",
+        "timeout_s": 120,
+        "rss_kb": 300000,
+        "vms_kb": 1000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v5_A_noid_popres_20261010T1335Z.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac",
+              "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+              "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+              "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65"
+            }
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v5_B_noid_popres_hard_20261010T1335Z.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac",
+              "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+              "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+              "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65"
+            }
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_ablation_full_s1_20261010T1255Z.json",
+            "source_sha256": {
+              "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            }
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+              "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+              "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+              "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            }
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z.json",
+            "source_sha256": {
+              "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+              "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+              "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+              "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+              "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+              "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+              "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
