@@ -1,3 +1,5 @@
+**AWS addendum — 10 Oct 15:00 UTC.** Slot 1 now runs B5 v6 (`experiments/tgb/race_link_review_v6.py`: v5 + sampled-softmax log-Q correction in training): equivalence smoke (must reproduce v3 smoke exactly) → switch smoke → arm C (`aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z`: no identities, popularity residual, log-Q, v3 negatives) → arm D (`..._D_noid_popres_hard_logq_...`: + hard negatives). VALIDATION only. Next agent: compare C and D with the 30-day popularity heuristic (0.341) and GraphMixer val (0.428); record in `experiments/tgb/B5_TGB.md`. Everything else is as in the wrap-up entry below.
+
 **AWS session wrap-up for the next agent — 10 Oct 14:50 UTC (queue owner on ip-172-31-47-132).**
 *Coordinator:* `scripts/run_aws_product_priority.py` (tmux `aws_model_improvement_repair`), manifest
 `experiments/queue/aws_model_improvement_repair_20261005T161000Z`; submit jobs with `experiments/tpp/submit.py` (one call per slot,
