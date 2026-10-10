@@ -146,3 +146,21 @@ Proof: decompose Y-E[Y|Z] into Y-E[Y|H] and E[Y|H]-E[Y|Z]; the cross term vanish
 This turns the small-data explanation into a testable hypothesis: measure held-out prediction/utility as TRAIN diversity grows at fixed architecture, compare a context-free TRAIN mean, and inspect whether deeper/delayed/regime-dependent tasks actually require history beyond Z. Current V2 increases sample count and optimization budget together; it is a stronger-signal diagnostic, not a pure sample-scaling curve. A crossover study subsequently fixes optimization opportunities or demonstrates optimization convergence at each data point, preserving disjoint held-out contexts. No automatic advantage at greater size is asserted.
 
 The source-bound decision job summarizes all three V2 seeds after their fixed-checkpoint pilots. Positive conditional calibration and action utility must repeat before coupled design is advanced; context confidence intervals and seed replication are stated separately. The forward race's magnitude/uncertainty supervision (AWS note 167) is complementary: useful credit can improve allocation even when unpredictable signed tails have small conditional mean. Those existing AWS experiments stay separately owned.
+
+## 11. V2 outcome and conditional-noise diagnosis
+
+V2 completes at all three seeds. TRAIN error falls below the zero baseline, but neither arm passes the all-seed conditional calibration-and-utility gate against the TRAIN-mean fixed action. Isolated DEV relative MSE 0.771/0.638/0.788 versus constant 0.845/0.605/0.887. Connected 0.754/0.715/0.930. Isolated has positive point gains at seeds 170/172; connected passes both point endpoints only at 170. At seed 171 connected future loss is worse than the fixed action, with the paired context interval below zero. This is an unsuccessful conditional-transfer gate for these variants, not a developed-attempt family verdict. No deep fit is admitted.
+
+Next isolate target noise. Let Y be the vector of future intervention advantages, H a fixed observed prefix, and mu(H)=E[Y|H]. Two independent groups of continuation rollouts give means U,V with E[U dot V|H]=||mu(H)||^2. For independent prefixes, cross-prefix products estimate ||E Y||^2. Their difference estimates the conditional signal energy
+
+    E||mu(H)-E Y||^2 = E||mu(H)||^2 - ||E Y||^2.
+
+Within-prefix sample covariance measures unpredictable continuation noise. Finite cross-product estimates can be negative and are not clipped. This tests whether averaging legitimate continuations exposes learnable future structure; it does not certify sufficiency of the critic's current packet.
+
+A narrow exact computation reduces diagnosis cost. For the current key-write intervention, factual future hidden states, queries and timing clocks remain unchanged on the same external inputs. At later query i, the written mark v receives logit shift
+
+    beta_i(a) = q_i^T diag(exp(-r (t_i-t_j)/scale)) a / sqrt(dk).
+
+For each clock, re-normalize its factual mark logits after adding beta_i to mark v, then combine with the factual clock hazards. The survival term cancels in the intervention advantage. One native factual trajectory therefore supplies values for every candidate; the exact parity contract compares this calculation with complete branch replay at depths 2/4/8, including a mixed-direction candidate. No inverse decay or fictitious future prediction is used. This reuse does not apply to general internal routes that change future hidden state, queries or clock parameters.
+
+Five non-fitting R1/B1 jobs are admitted in `queue/enabler/curie_credit_noise_v1_20261010T1450Z/manifest.json`: new response contract, one smoke and three seeded measurements. Each measures 16 prefixes with two independent groups of eight continuations from the original synthetic MQAR law, conditioned only on observable prefix key/value pairs. All actor calls, prefix causality checks and response arithmetic are charged. They run after existing B10 jobs and before the queued report build, under the same host guards. Next fitting changes depend on measured signal/noise rather than simply increasing model depth or sample count.

@@ -100,7 +100,7 @@ def measure(a):
         global_mean_squared_norm=float(global_energy),
         context_signal_energy=float(signal),context_signal_fraction_of_raw_energy=float(signal)/max(total,1e-30),
         mean_conditional_noise_energy=float(torch.stack(within).mean()),raw_energy=total,
-        per_prefix=saved,actor_forwards=N*2*a.rollouts,causal_prefix_checks=N*2*a.rollouts,
+        per_prefix=saved,actor_forwards=N*4*a.rollouts+N,cached_response_forwards=N*2*a.rollouts,causal_prefix_checks=N*2*a.rollouts,
         scored_target_presentations=N*2*a.rollouts*((4*a.pairs-1)+(2*a.pairs-1))+N*(2*a.pairs-1),
         scope='Independent continuation halves give an unbiased conditional-mean energy witness; cross-prefix U-statistic estimates global mean energy. Finite estimates can be negative and are not clipped. Conditioning is the full observed synthetic prefix; sufficiency of current critic features is not assumed. Not a critic fit, scaling win or deployment simulator.')
 
