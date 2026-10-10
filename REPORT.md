@@ -4310,3 +4310,24 @@ Saved critics and frozen native actor; fresh independent prefixes/continuations,
 All reference regeneration, cotangent/proposal inference, fresh response evaluation and selected native writes; excludes special/unsupported arithmetic. Prior fitting work reported separately; no amortized savings claim.
 
 The response packet stores 112 scalars and produces a four-dimensional proposal; this excludes encoder activations, forward state, weights and optimizer memory. Proposals are explicitly uncertified for population future gradients. State-write utility is distinct from forward-weight learning or asynchronous hardware efficiency.
+
+## Appendix. Real market and token episodes: causal online adaptation
+
+Both real streams admit useful within-episode adaptation in this short bridge. Issued forecasts are scored before feedback updates; forward numerical state survives credit boundaries. Stateful frozen weights are the control, and the current learning arm is native online BPTT.
+
+| Domain | Arm | NLL/target | Updates | Wall s | ms/target |
+| --- | --- | --- | --- | --- | --- |
+| market | frozen | 12.97808 | 0 | 1.36 | 1.326 |
+| market | online bptt | 12.59141 | 32 | 4.18 | 4.087 |
+| language | frozen | 5.28992 | 0 | 5.04 | 4.919 |
+| language | online bptt | 5.26495 | 33 | 35.30 | 34.475 |
+
+One run, 1,024 fresh TRAIN targets per domain, 128-context observations, update groups of 32, CPU float64 and dropout disabled for both arms. Market model is initialized using only prior context gap statistics; language uses an available 4M-token pretrained keyed member. Language fast weights/optimizer/state reset after five observed EOS boundaries. Full vocabulary output and dense optimizer work are charged. These different warm starts are not compared across domains.
+
+Online adaptation lowers market NLL by 0.38668 and language NLL by 0.02497 nats/target. Its increased wall cost motivates an economical learned-credit comparison and model development. Cold market parameter fitting is one possible source of the gain; this bridge does not identify nonstationarity as the cause.
+
+Whole bridge including setup/copies and both domains 46.81 s; peak RSS 591.9 MiB. Per-arm wall includes context replay/scoring/backward/updates, but excludes model copy and initial optimizer construction. Language warm-start fitting cost 21010.6 s is separate and must be included in a complete-system comparison.
+
+Real-market state and fixed-parameter gradient contracts pass at depths 2/4/8, with saved-market score parity error 1.9e-10. A trained proper-token member preserves lazy addressed key transport, scores and every factual parameter gradient in float64 to 3.7e-15. Detachment preserves numbers while truncating credit; issued forecasts cannot be rewritten by later updates.
+
+No public language scoring interval or market TEST is read. Cached key-response algebra is valid within its fixed-learning-path assumptions; across changed optimizer updates the total effect needs versioned replay or audited transition prediction. Serial event-time CPU processing is not clockless hardware measurement.
