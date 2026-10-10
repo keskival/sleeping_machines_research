@@ -1,0 +1,136 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared learning enabler (note 160 sect. 7, PRODUCT_ORDERS learning priority, supporting evidence): does the per-event trace learner match converged BPTT with one fifth of the data passes beyond Taxi? amazon DEV, BPTT 20/100 passes vs online_trace 20 passes, 3 seeds. Decides whether the data-efficiency result generalizes",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online4_amazon_bptt_e20_s0",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e20_s0/online4_amazon_bptt_e20_s0.txt",
+        "queue_sha256": "50963dd8f76fd45e0b6943ea643d08f2202718e07781ebb44207951a171de092",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e20_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_bptt_e100_s0",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e100_s0/online4_amazon_bptt_e100_s0.txt",
+        "queue_sha256": "53c766703c6581cf1bbc122c284bd965641d89ec2187e622286f4c7b45d893b2",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e100_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_trace_e20_s0",
+        "queue": "experiments/queue/enabler/online4_amazon_trace_e20_s0/online4_amazon_trace_e20_s0.txt",
+        "queue_sha256": "f9ce9c68aee5a163bd0611b1c3ce86f4c4ae476258b79fe722843abeb6424383",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_trace_e20_s0.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_bptt_e20_s1",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e20_s1/online4_amazon_bptt_e20_s1.txt",
+        "queue_sha256": "a43c0e87b6ac867f5deb1f07f30f07cd4f24296eca5db49380c8818bdddb114f",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e20_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_bptt_e100_s1",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e100_s1/online4_amazon_bptt_e100_s1.txt",
+        "queue_sha256": "4f10f7f271659df0e34f66fb927038a6e71efc5c8b9ab6a0f0a440f7276a66ab",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e100_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_trace_e20_s1",
+        "queue": "experiments/queue/enabler/online4_amazon_trace_e20_s1/online4_amazon_trace_e20_s1.txt",
+        "queue_sha256": "9a0b256c5a918c5d52bf5c1d8440e5794a999b4440c5734ace9ddf5b41dc41b0",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_trace_e20_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_bptt_e20_s2",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e20_s2/online4_amazon_bptt_e20_s2.txt",
+        "queue_sha256": "bc55c521cd4b7d377ad8438ff94db598b50b5aae8445baa61ff5d200a10659a9",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e20_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_bptt_e100_s2",
+        "queue": "experiments/queue/enabler/online4_amazon_bptt_e100_s2/online4_amazon_bptt_e100_s2.txt",
+        "queue_sha256": "e00de256d0d9aa6995f3f1353e55508df1878ab6dbf81121c95183f64416c7fa",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_bptt_e100_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online4_amazon_trace_e20_s2",
+        "queue": "experiments/queue/enabler/online4_amazon_trace_e20_s2/online4_amazon_trace_e20_s2.txt",
+        "queue_sha256": "60f95594ad16c58a0a2fefd520043bf57bf60ee9584f38ec16b897cd4a915234",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online4_amazon_trace_e20_s2.json",
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
