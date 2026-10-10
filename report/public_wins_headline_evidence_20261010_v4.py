@@ -118,7 +118,7 @@ packet = dict(
     b4_github=dict(**github, bar=-272.9, best_single=-269.7, published_time=-382.4, published_marks=109.5,
                    verdict='loss by 2.28 (pre-registered frozen configuration; splits 1-4 guarded reruns)',
                    diagnosis='Below every single published total (-269.7); time component ahead; marks carry the gap. Guarded '
-                             'reruns skip one long training sequence whose gradient is non-finite'),
+                             'reruns skip the padded batch of the longest training sequences (59-68% of TRAIN events) whenever its padded positions overflow; splits 1-3 skip it in 55-60 of about 60 epochs'),
     b4_mimic2=dict(**mimic2, bar=2.42, best_single=3.1, published_time=0.13, published_marks=2.29,
                    verdict='loss (pre-registered frozen configuration)',
                    diagnosis='About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)'),

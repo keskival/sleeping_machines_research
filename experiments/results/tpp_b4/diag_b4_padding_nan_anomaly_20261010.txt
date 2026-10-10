@@ -1,0 +1,17 @@
+/tmp/claude-1000/work/nan_diag2.py:6: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/experiments/results/tpp_b4/b4g_github_s1.json' mode='r' encoding='UTF-8'>
+  r = json.load(open('/workspace/experiments/results/tpp_b4/b4g_github_s1.json')); cfg = r['config']
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/graph.py:1072: UserWarning: Error detected in ExpBackward0. Traceback of forward call that caused the error:
+  File "/tmp/claude-1000/work/nan_diag2.py", line 27, in <module>
+    tl, ml, n, _ = m.loglik(tt, mm, mask, cell); (-(tl + ml) / n).backward()
+  File "/workspace/experiments/tpp/race_tpp_v19.py", line 352, in loglik
+    time_lp, joint_lp, cache = self.event_terms(t, m, mask, target_jitter)
+  File "/workspace/experiments/tpp/race_tpp_v19.py", line 326, in event_terms
+    params = self.clocks(hp, slots[:, :-1])
+  File "/workspace/experiments/tpp/race_tpp_v19.py", line 177, in clocks
+    floor = (self.floor_cell * torch.exp(-mu)).clamp_min(0.005) if self.floor_cell > 0 else 0.005
+ (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/python_anomaly_mode.cpp:130.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+longest train sequences: [4699, 1010, 1010] cell 3.1717072346282293e-07
+--- padded batch of the 32 longest sequences ---
+anomaly: Function 'ExpBackward0' returned nan values in its 0th output.
