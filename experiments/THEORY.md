@@ -389,3 +389,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Credit information and depth economics
 
 [Forward packets for predictable learning](theory/CREDIT_INFORMATION_AND_DEPTH_ECONOMICS.md) separates future innovation, packet compression and critic approximation; derives exact-audit work thresholds, a depth-dependent residual-risk criterion and the difference between stale predictions and stale targets. It defines the next native measurements without a scaling claim.
+
+## Reciprocal actor–critic teaching
+
+[Task-valued cooperative teaching](theory/RECIPROCAL_ACTOR_CRITIC.md) makes the actor’s effect on critic learning an explicit downstream-task derivative, connects it to dual control, and separates useful evidence acquisition from merely reducing critic regression loss.

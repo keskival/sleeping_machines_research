@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_credit_information_20261010T2200Z_contract",
+  "wall_s": 0.03960623999591917,
+  "peak_rss_kb": 33460,
+  "metrics": {
+    "information_decomposition_error": 7.216449660063518e-16,
+    "nested_information_error": 8.881784197001252e-16,
+    "risk_parts": {
+      "innovation": 0.13000000000000003,
+      "compression": 6.0,
+      "fitting": 0.04999999999999999,
+      "total": 6.180000000000001
+    },
+    "optimal_audit_probabilities": [
+      0.06098209070884675,
+      0.06098209070884675,
+      0.05281203972974827
+    ],
+    "optimal_audit_cost": 0.3941944310455333,
+    "feasible_grid_points": 6883,
+    "best_grid_cost": 0.4347368421052632,
+    "optimal_cost_identity_error": 0.0,
+    "budget_identity_error": 0.0,
+    "enumerated_audit_outcomes": 8,
+    "audit_mean_error": 0.0,
+    "audit_variance_error": 0.0,
+    "current_label_stale_prediction_mean_error": 1.1102230246251565e-16,
+    "old_label_current_target_bias": 2.23606797749979,
+    "stale_risk": 6.180000000000001,
+    "stale_risk_upper": 7.287248842853312,
+    "depths": [
+      1,
+      4,
+      16,
+      64
+    ],
+    "fixed_residual_audit_ratios": [
+      0.009900990099009901,
+      0.038461538461538464,
+      0.13793103448275865,
+      0.39024390243902435
+    ],
+    "improving_residual_audit_ratios": [
+      0.009900990099009901,
+      0.002493765586034913,
+      0.0006246096189881324,
+      0.0001562255897516013
+    ],
+    "quadratic_descent_identity_error": 0.0
+  },
+  "source_sha256": {
+    "experiments/credit/check_credit_information_economics.py": "59258ed88c12bd47b00efcec84490eb5303cdef24b1d5e245b8e3a69de2fd63a",
+    "experiments/theory/CREDIT_INFORMATION_AND_DEPTH_ECONOMICS.md": "2c47bc0d552ad9aaad5be1ef5f50bdbf865429f7e1940f7ba7de76f872095aee"
+  },
+  "scope": "Finite arithmetic witnesses of proved conditional identities and an interior audit optimum; no neural fitting, general formal proof checking, real-stream depth efficiency or hardware claim."
+}
