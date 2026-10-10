@@ -1,0 +1,52 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared enabler, note 160 sect. 7: BPTT at 100 epochs (about 9k updates) so the per-event trace learner (0.4805 at 20 epochs vs BPTT 0.4557, BPTT still rising) is compared against converged BPTT, not only at matched data passes",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online1b_taxi_bptt_e100_s0",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s0/online1b_taxi_bptt_e100_s0.txt",
+        "queue_sha256": "0339981f78e80dfac91c3dd87777d5e213e0a77a43475f3483d3cf43f0e3cabd",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s0.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1b_taxi_bptt_e100_s1",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s1/online1b_taxi_bptt_e100_s1.txt",
+        "queue_sha256": "ceab4e13700f95b6ef412e4d11c61bd8fa40a8f3ee73a77161dd441972586bca",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s1.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online1b_taxi_bptt_e100_s2",
+        "queue": "experiments/queue/enabler/online1b_taxi_bptt_e100_s2/online1b_taxi_bptt_e100_s2.txt",
+        "queue_sha256": "778d5c432c1edb94017f1c456a6f5645391b616d511d080f5568bbb569db7be1",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online1b_taxi_bptt_e100_s2.json",
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
