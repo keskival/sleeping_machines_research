@@ -1,5 +1,7 @@
 # Formal-analysis tutorials (internal training material, confidential)
 
+All eight planned tutorials are complete. Each is three pages.
+
 Introductory tutorials to the mathematics needed to read our theory notes (`experiments/theory/160`–`168`) and the
 machine-checked lemmas (`experiments/lean/credit_theory`). One topic per file; each has derivations, exercises with
 solutions, and a "where this appears in our work" box. Build one tutorial from `tutorials/`: `latexmk -pdf <file>.tex` (shared style `tutorial.sty`). Rebuild tutorials 4–8 with `scripts/build_tutorials.py --tag <unique-tag>`; it checks text extraction, required sections and layout before publishing. The Lean PDF is instructional; a fresh proof build requires the pinned toolchain separately.
@@ -7,9 +9,9 @@ Post-boundary material: internal only until the priority filing (see `ip/`).
 
 | # | Tutorial | Status |
 |---|---|---|
-| 1 | [Temporal point processes and races of clocks](01_point_processes_and_races.pdf) | done (3 pp.) |
-| 2 | [Adjoints, eligibility traces and temporal credit](02_adjoints_traces_temporal_credit.pdf) | done (3 pp.) |
-| 3 | [Gradient estimators and variance reduction](03_gradient_estimators_variance_reduction.pdf) | done (3 pp.) |
+| 1 | [Temporal point processes and races of clocks](01_point_processes_and_races.pdf) · [source](01_point_processes_and_races.tex) | done (3 pp.) |
+| 2 | [Adjoints, eligibility traces and temporal credit](02_adjoints_traces_temporal_credit.pdf) · [source](02_adjoints_traces_temporal_credit.tex) | done (3 pp.) |
+| 3 | [Gradient estimators and variance reduction](03_gradient_estimators_variance_reduction.pdf) · [source](03_gradient_estimators_variance_reduction.tex) | done (3 pp.) |
 | 4 | [Information theory for learning signals](04_information_theory_for_learning_signals.pdf) · [source](04_information_theory_for_learning_signals.tex) | done (3 pp.) |
 | 5 | [Learning dynamics: contraction, Bellman equations and TD](05_learning_dynamics_contraction_bellman_td.pdf) · [source](05_learning_dynamics_contraction_bellman_td.tex) | done (3 pp.) |
 | 6 | [Counting-process martingales, Fisher information and natural gradients](06_counting_processes_fisher_natural_gradients.pdf) · [source](06_counting_processes_fisher_natural_gradients.tex) | done (3 pp.) |
