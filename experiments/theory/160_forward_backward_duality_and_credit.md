@@ -227,8 +227,13 @@ Two effects separate:
   epoch 20, so this is sample efficiency per pass, not a converged-quality claim.
 - **Exact temporal credit through the memory** (the traces) is worth +0.0077 nats/event on Taxi, on every seed.
 
-Wall time reflects a Python per-event loop, not the method's arithmetic. Next: BPTT at 100 epochs (`online1b_*`, queued)
-tests whether converged BPTT ends above the per-event learner.
+Wall time reflects a Python per-event loop, not the method's arithmetic.
+
+**Converged BPTT reference (`online1b_taxi_bptt_e100_s*_r2`, 100 passes, 8,800 updates, 5.0 min per run).** Final DEV LL
+0.4796 / 0.4777 / 0.4748 (mean 0.4774); best 0.4819 / 0.4819 / 0.4787 (mean 0.4808). BPTT first reaches the trace learner's
+20-pass mean (0.4805) at epoch 79 and epoch 58 on seeds 0 and 1, and never on seed 2. The per-event trace learner therefore
+**matches converged BPTT quality with one fifth of the data passes**, in 3.1 min against 5.0 min. Scope: one memory layer,
+Taxi DEV, 3 seeds; complete-work accounting beyond wall time (MACs, trace state) is in §12 for depth 2.
 
 
 ## 8. Finite-proposal feedback and full learner cost (9 Oct, AWS autonomous continuation)
