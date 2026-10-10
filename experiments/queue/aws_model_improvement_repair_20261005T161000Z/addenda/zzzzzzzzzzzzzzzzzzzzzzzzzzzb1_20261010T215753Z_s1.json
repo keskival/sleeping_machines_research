@@ -1,0 +1,26 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 R1 reciprocal native update gate after exact cut parity: one rank-one update reuses whole forward response, reducing repeated teaching arithmetic with unchanged probes and actor gradient target",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_reciprocal_projection_20261010T2204Z",
+        "queue": "experiments/queue/b1_easytpp/aws_reciprocal_projection_20261010T2204Z/aws_reciprocal_projection_20261010T2204Z.txt",
+        "queue_sha256": "5657eef033d1f7b44393cca4a2cec02e36688ba4334c6cb7010e1eb6b0a49b27",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_cut_projection_contract.py": "8d1b3e5a0fbe9679350e5a8db75e030a9013d3286878b5413c0eceafb3e4db8c",
+          "experiments/credit/reciprocal_transport_projection.py": "4c8f559dc7a3e94c7f529300bf75123622adc743a4db3ec1fd2c5f46d1553919",
+          "experiments/credit/reciprocal_transport.py": "c76d4560bfc4ea8f8c9bd378e4820fa8c165a877795bc44c6769c4e451191bca",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_projection_20261010T2204Z.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
