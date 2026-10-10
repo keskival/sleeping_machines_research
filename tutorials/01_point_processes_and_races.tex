@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{1}{Temporal Point Processes and Races of Clocks}{Hazards, survival, likelihoods with silence, and why a race is a posterior over causes}
+
+\section*{Why this tutorial}
+Our models predict \emph{when} the next event happens and \emph{what} it is. The mathematical language for that is the
+temporal point process. A \emph{race of clocks}, several candidate events competing to happen first, is the core primitive of
+our model family. This tutorial builds the vocabulary from scratch: hazards, survival, the likelihood of an event sequence
+(including the information carried by silence), marks, and races. It ends with the single most important identity for
+learning: the gradient of a race's log-likelihood is ``responsibility minus exposure''.
+
+\section{Events in continuous time}
+A \emph{temporal point process} is a random sequence of event times $0<t_1<t_2<\dots$. Its counting process is
+$N(t)=\#\{k: t_k\le t\}$. Write $\mathcal H_t$ for the history up to (but not including) $t$.
+
+\begin{definition}[Conditional intensity / hazard]
+The \emph{intensity} $\lambda(t)$ is the instantaneous event rate given the history:
+\[
+\lambda(t)\dd t = \Pr\{\text{an event in }[t,t+\dd t)\mid \mathcal H_t\}.
+\]
+For the waiting time $\tau$ since the last event, the same object is called the \emph{hazard} $h(\tau)$.
+\end{definition}
+
+The hazard determines everything else about the next waiting time:
+\begin{align*}
+\text{integrated hazard:}&\quad H(\tau)=\int_0^\tau h(s)\dd s,\\
+\text{survival (no event yet):}&\quad S(\tau)=\Pr\{\tau_{\text{next}}>\tau\}=e^{-H(\tau)},\\
+\text{density of the waiting time:}&\quad f(\tau)=h(\tau)\,S(\tau).
+\end{align*}
+\emph{Derivation.} $S(\tau+\dd\tau)=S(\tau)\,(1-h(\tau)\dd\tau)$, so $S'=-hS$ and $S=e^{-H}$; then $f=-S'=hS$.
+
+\begin{example}[Exponential clock]
+Constant hazard $h=\lambda$: $H=\lambda\tau$, $S=e^{-\lambda\tau}$, $f=\lambda e^{-\lambda\tau}$, mean $1/\lambda$.
+The exponential is \emph{memoryless}: $\Pr\{\tau>a+b\mid \tau>a\}=e^{-\lambda b}$.
+\end{example}
+\begin{example}[Shaped clocks]
+Weibull: $h(\tau)=\lambda k\tau^{k-1}$ (increasing hazard if $k>1$: ``due'' events). Log-normal: $\log\tau\sim\mathcal N(\mu,\sigma^2)$,
+a \emph{delayed} clock that rarely fires early. Our models use mixtures of exponential and delayed (log-normal) clocks.
+\end{example}
+
+\section{The likelihood of a sequence, and the information in silence}
+Observe events at $t_1,\dots,t_n$ in a window $[0,T]$. The probability density of exactly this observation is
+\[
+L=\Big(\prod_{k=1}^n \lambda(t_k)\Big)\exp\!\Big(-\int_0^T\lambda(t)\dd t\Big),\qquad
+\log L=\sum_{k}\log\lambda(t_k)-\int_0^T\lambda(t)\dd t .
+\]
+The integral term is the log-probability of \emph{no events} in all the gaps, including the final stretch $(t_n,T]$.
+
+\begin{keyidea}
+Silence is data. The integral $\int\lambda$ penalises a model that expects events where none occurred. A model that ignores
+silence can assign high likelihood to every observed event while predicting far too many unobserved ones. We call training
+that keeps this term \emph{silence-aware supervision}.
+\end{keyidea}
+
+\paragraph{Marks.} If each event carries a type (mark) $k\in\{1,\dots,K\}$, give each mark its own intensity $\lambda_k(t)$.
+The marked log-likelihood is $\sum_{\text{events}}\log\lambda_{k_j}(t_j)-\sum_k\int_0^T\lambda_k$. Equivalently, the total
+rate $\Lambda=\sum_k\lambda_k$ generates times and the mark is drawn with probability $\lambda_k/\Lambda$.
+
+\paragraph{Recording resolution.} Real timestamps are rounded (to seconds, days). A density model can put enormous density on the
+rounding lattice and gain likelihood without predicting anything. Comparing models fairly requires scoring at a stated resolution
+or \emph{dequantizing} (spreading each recorded time uniformly within its recording cell). This matters in practice: on some
+public benchmarks a large part of published likelihood comes from the lattice.
+
+\section{Races of clocks}
+\begin{definition}[Race]
+$K$ clocks run in parallel from the same start. Clock $i$ would fire after an independent waiting time with hazard $h_i$.
+The race outputs the \emph{first} firing time $\tau=\min_i\tau_i$ and the \emph{winner} $I=\arg\min_i\tau_i$.
+\end{definition}
+
+\begin{proposition}[Race laws]
+With $H_i(\tau)=\int_0^\tau h_i$:
+\begin{enumerate}
+\item The race's survival is the product $S(\tau)=\prod_i S_i(\tau)=e^{-\sum_i H_i(\tau)}$; its hazard is the sum $\sum_i h_i(\tau)$.
+\item The joint density of (time, winner) is $f(\tau,i)=h_i(\tau)\,S(\tau)$.
+\item Given that the first event happens at $\tau$, the winner is clock $i$ with probability
+\[
+\rho_i(\tau)=\frac{h_i(\tau)}{\sum_j h_j(\tau)} .
+\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(1) Independence: no clock has fired by $\tau$ iff each has not. (2) Clock $i$ fires in $[\tau,\tau+\dd\tau)$ with probability
+$h_i(\tau)S_i(\tau)\dd\tau$ and the others have not fired: multiply by $\prod_{j\neq i}S_j$. (3) Divide (2) by its sum over $i$.
+\end{proof}
+
+\begin{example}[Exponential race = softmax]
+With constant rates $\lambda_i=e^{\theta_i}$, $\rho_i=e^{\theta_i}/\sum_j e^{\theta_j}$ does not depend on $\tau$, so the winner is a
+softmax draw, independent of the time, and $\tau\sim\mathrm{Exp}(\sum\lambda_j)$. This is the ``Gumbel-max'' fact in disguise:
+$-\log\tau_i=\theta_i+\text{Gumbel noise}$, and the arg-max of noisy scores is softmax-distributed.
+\end{example}
+
+\section{Learning: responsibility minus exposure}
+Parametrize each clock's scale: $h_i(\tau)=e^{\theta_i}k_i(\tau)$, so $H_i=e^{\theta_i}K_i$ with $K_i=\int_0^\tau k_i$.
+For one observed first event at $\tau$ (winner unobserved, or marginalized), $\log f(\tau)=\log\sum_j h_j(\tau)-\sum_j H_j(\tau)$. Then
+\[
+\boxed{\;\frac{\partial \log f(\tau)}{\partial\theta_i}=\rho_i(\tau)-H_i(\tau)\;}
+\]
+\emph{Responsibility} $\rho_i$ (the posterior probability that clock $i$ caused the event) minus \emph{exposure} $H_i$ (how much
+clock $i$ was at risk without firing). If the winner is observed (a marked event), $\rho_i$ is replaced by the indicator $1[I=i]$.
+
+\begin{keyidea}
+The gradient of a race is an inference result: it attributes the observed event to its possible causes. That is literally
+credit assignment, and at the output of a race it is exact and local: each clock needs only its own hazard and the race's total
+rate. Note that the expected gradient is zero: $\E[\rho_i]=\E[H_i]$ (both equal the probability that $i$ wins), the usual
+zero-mean property of a score.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise} Show that the minimum of independent exponentials with rates $\lambda_i$ is exponential with rate $\sum\lambda_i$.\end{exercise}
+\begin{solution} $\Pr\{\min>\tau\}=\prod e^{-\lambda_i\tau}=e^{-(\sum\lambda_i)\tau}$.\end{solution}
+\begin{exercise} For two Weibull clocks with the same shape $k$, show the winner is independent of $\tau$. Is this true for different shapes?\end{exercise}
+\begin{solution} $\rho_i=\lambda_i k\tau^{k-1}/\sum_j\lambda_j k\tau^{k-1}=\lambda_i/\sum\lambda_j$. With different shapes $\rho_i$ depends on $\tau$:
+early events favour the clock with the decreasing hazard.\end{solution}
+\begin{exercise} Write the log-likelihood of a sequence observed on $[0,T]$ with no events at all. What does maximizing it do?\end{exercise}
+\begin{solution} $\log L=-\int_0^T\lambda$; it drives the predicted rate toward zero: silence teaches the model that events are rare.\end{solution}
+\begin{exercise} Derive $\partial\log f/\partial\theta_i=\rho_i-H_i$ for the race above.\end{exercise}
+\begin{solution} $\partial_{\theta_i}h_j=\delta_{ij}h_i$ and $\partial_{\theta_i}H_j=\delta_{ij}H_i$, so $\partial\log\sum h=h_i/\sum h=\rho_i$ and $\partial(-\sum H)=-H_i$.\end{solution}
+
+\begin{inourmodels}
+Race-of-clocks heads in \texttt{experiments/tpp/race\_tpp*.py} (EasyTPP battle B1, neural-TPP benchmark B4); silence-aware
+supervision throughout; the recording-resolution floor of our clocks and the B4 lattice audit; theory note 160 \S2 (race credit is
+posterior inference); note 168 (Fisher geometry of races, Tutorial 6).
+\end{inourmodels}
+\end{document}

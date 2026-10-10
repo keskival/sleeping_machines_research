@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{2}{Adjoints, Eligibility Traces and Temporal Credit}{Backpropagation through time, forward-mode traces, and why a decaying memory is its own backward pass}
+
+\section*{Why this tutorial}
+A recurrent model's state carries information forward in time; learning must carry \emph{credit} for later losses back to the
+earlier computations that caused them. There are two exact ways to do this: run the computation backwards (the adjoint, as in
+backpropagation through time) or carry sensitivities forwards (eligibility traces). For the linear decaying memories in our
+models both are unusually cheap and have a physical reading. This tutorial derives both, proves they agree, and quantifies
+what truncation costs.
+
+\section{Setting}
+State $s_t\in\R^n$ evolves by $s_t=F(s_{t-1},x_t;\theta)$ from inputs $x_t$; the loss is $L=\sum_{t=1}^T \ell_t(s_t)$.
+Write the local Jacobians $J_t=\partial F/\partial s_{t-1}$ (an $n\times n$ matrix), $e_t=\partial F/\partial\theta$ (an $n\times P$
+matrix, the \emph{local} parameter sensitivity at step $t$) and $c_t=\partial\ell_t/\partial s_t$ (the local cotangent).
+
+\section{Reverse mode: the adjoint}
+\begin{definition}[Adjoint] $\lambda_t=\dfrac{\dd L}{\dd s_t}$, the total effect of $s_t$ on the loss, through every later step.\end{definition}
+\begin{proposition}
+\[
+\lambda_T=c_T,\qquad \lambda_t=c_t+J_{t+1}^{\top}\lambda_{t+1},\qquad \nabla_\theta L=\sum_{t=1}^T e_t^{\top}\lambda_t .
+\]
+\end{proposition}
+\begin{proof}
+$s_t$ affects $L$ directly through $\ell_t$ and indirectly through $s_{t+1}=F(s_t,\dots)$; the chain rule gives the recursion.
+$\theta$ enters every step; each entry contributes $e_t^\top$ times the total effect of $s_t$.
+\end{proof}
+This is backpropagation through time (BPTT). It needs all states $s_1,\dots,s_T$ stored (memory $O(nT)$) and a backward sweep
+that starts only after the sequence ends.
+
+\section{Forward mode: eligibility traces}
+\begin{definition}[Eligibility trace] $S_t=\dfrac{\dd s_t}{\dd\theta}$ ($n\times P$), the total sensitivity of the current state to the parameters.\end{definition}
+\begin{proposition}
+\[
+S_0=0,\qquad S_t=J_tS_{t-1}+e_t,\qquad \nabla_\theta L=\sum_{t=1}^T S_t^{\top}c_t .
+\]
+\end{proposition}
+\begin{proof}
+Differentiate $s_t=F(s_{t-1},x_t;\theta)$: the direct term $e_t$ plus the path through $s_{t-1}$. Then $\dd\ell_t/\dd\theta=c_t^\top S_t$.
+\end{proof}
+This is real-time recurrent learning (RTRL). No history is stored and each loss can be applied the moment it arrives. The price
+is carrying $S_t$: $n\times P$ numbers, updated with an $n\times n$ by $n\times P$ product per step, generally far more
+expensive than BPTT.
+
+\begin{proposition}[The two agree]
+$\sum_t e_t^\top\lambda_t=\sum_t S_t^\top c_t$.
+\end{proposition}
+\begin{proof}
+Unroll: $\lambda_t=\sum_{u\ge t}(J_{t+1}^\top\cdots J_u^\top)c_u$ and $S_u=\sum_{t\le u}(J_u\cdots J_{t+1})e_t$. Both sides equal
+$\sum_{t\le u} e_t^\top (J_{t+1}^\top\cdots J_u^\top) c_u$: the same double sum, summed in the other order.
+\end{proof}
+
+\section{Diagonal decaying memories: both directions become cheap}
+Our temporal memories are banks of independent modes. Mode $m$ evolves as
+\[
+z_{t,m}=a_{t,m}\,z_{t-1,m}+b_{t,m},\qquad a_{t,m}=e^{(-r_m+i\omega_m)\Delta t_t},
+\]
+a complex number that decays at rate $r_m$ and rotates at frequency $\omega_m$ over the elapsed time $\Delta t_t$; $b_t$ is the
+write. The Jacobian is diagonal, so:
+\begin{itemize}
+\item \textbf{Traces stay small.} A parameter that affects only mode $m$ needs only that mode's trace: $S_{t}=a_{t}S_{t-1}+\partial b_t/\partial\theta$.
+Trace storage equals parameter count, not $n\times P$.
+\item \textbf{The adjoint is the memory run backwards.} For a real loss of complex states (use the real 2-vector
+$(\Re z,\Im z)$, equivalently the complex gradient $\partial L/\partial\Re z+i\,\partial L/\partial\Im z$), multiplication by $a$
+is a rotation-and-scaling whose transpose is multiplication by $\bar a$:
+\[
+\lambda_{t,m}=c_{t,m}+\overline{a_{t+1,m}}\;\lambda_{t+1,m}.
+\]
+Same decay, opposite rotation, run in reverse time: a delay line carries the echo back with the same attenuation.
+\end{itemize}
+
+\begin{keyidea}
+For a decaying, rotating memory the backward pass is not a second machine; it is the forward machine time-reversed. And the
+forward-mode trace is exact and history-free at the cost of one accumulator per parameter. Per-event learning (update the
+weights at every event, no stored sequence) is therefore exact for these memories at fixed weights.
+\end{keyidea}
+
+\section{Truncation and the credit horizon}
+Unrolling the adjoint for one mode, $\lambda_t=\sum_{j\ge0}\big(\prod_{k=1}^{j}\overline{a_{t+k}}\big)c_{t+j}$. If $|a|\le\rho<1$ and
+$|c|\le C$, keeping only $j\le H$ errs by at most
+\[
+C\sum_{j>H}\rho^{j}=C\,\frac{\rho^{H+1}}{1-\rho}.
+\]
+Fast modes ($\rho$ small) need a short credit horizon; slow modes need a long one. With $\rho=e^{-r\Delta}$, a relative error
+$\varepsilon$ needs about $\ln(1/\varepsilon)/(r\Delta)$ steps. \emph{Truncating the trace} (keeping only the current step's
+local term, as in e-prop) is the extreme case $H=0$ applied to the cross-step path.
+
+\section{Depth}
+Stack two memories: layer 2 reads layer 1. A layer-1 parameter now reaches layer-2 state through every past layer-2 input, so the
+exact layer-2 trace with respect to layer-1 parameters has $n_2\times P_1$ entries. Exact per-event learning across depth costs
+storage proportional to (upper state) $\times$ (lower parameters), not to sequence length. BPTT's cost is the reverse.
+Which is cheaper depends on depth, width and sequence length.
+
+\section*{Exercises}
+\begin{exercise} Scalar memory $s_t=a s_{t-1}+w x_t$, loss $L=\sum_t \tfrac12(s_t-y_t)^2$. Write $\lambda_t$ and $S_t=\dd s_t/\dd w$ and check $\sum_t x_t\lambda_t=\sum_t S_t(s_t-y_t)$ for $T=2$.\end{exercise}
+\begin{solution} $c_t=s_t-y_t$, $\lambda_2=c_2$, $\lambda_1=c_1+a c_2$; $e_t=x_t$; $S_1=x_1$, $S_2=ax_1+x_2$. Left: $x_1(c_1+ac_2)+x_2c_2$. Right: $x_1c_1+(ax_1+x_2)c_2$. Equal.\end{solution}
+\begin{exercise} Why must the backward pass use $\bar a$ and not $a$ for a complex mode?\end{exercise}
+\begin{solution} As a real $2\times2$ map, multiplication by $a=\alpha+i\beta$ is $\begin{psmallmatrix}\alpha&-\beta\\ \beta&\alpha\end{psmallmatrix}$; its transpose is multiplication by $\bar a$.\end{solution}
+\begin{exercise} A mode has $r=0.05$ per unit time and events arrive every $\Delta=1$. How many steps of exact credit are needed for 1\% truncation error (relative to the bound's scale)?\end{exercise}
+\begin{solution} $\rho=e^{-0.05}\approx0.951$; need $\rho^{H+1}\le0.01(1-\rho)$, i.e. $H+1\ge\ln(0.01\cdot0.049)/\ln0.951\approx152$.\end{solution}
+
+\begin{inourmodels}
+Theory note 160 \S1 (adjoint = time-reversed memory, checked to $10^{-16}$), \S7 (per-event trace learning beats batched BPTT per
+pass on Taxi), \S12 (exact traces across depth); \texttt{experiments/credit/online\_race.py}, \texttt{online\_deep.py}; note 164
+(the adjoint as a Bellman equation, Tutorial 5) and note 165 \S8 (which credit method for which mode).
+\end{inourmodels}
+\end{document}

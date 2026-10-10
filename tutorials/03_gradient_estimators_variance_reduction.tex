@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{3}{Gradient Estimators and Variance Reduction}{Score functions, control variates, importance sampling, Rao--Blackwell, and unbiased sparse credit}
+
+\section*{Why this tutorial}
+Hard decisions (which route wins, which memory slot is written) have no ordinary derivative, and exact credit is often too
+expensive to compute everywhere. Learning then relies on \emph{estimators} of the gradient. The two questions are always:
+is it \emph{unbiased} (right on average), and what is its \emph{variance} (how noisy)? This tutorial covers the standard toolkit
+and the specific construction our sparse-credit learners use: a cheap prediction of the credit, corrected by random audits so
+that it stays exactly unbiased.
+
+\section{The score-function estimator}
+For a distribution $p_\theta(z)$ and a function $f$,
+\[
+\nabla_\theta\,\E_{z\sim p_\theta}[f(z)]=\E_{z\sim p_\theta}\big[f(z)\,\nabla_\theta\log p_\theta(z)\big].
+\]
+\emph{Proof:} $\nabla\!\int p f=\int f\nabla p=\int f\,p\,\nabla\log p$. One sample $z$ gives the unbiased estimate
+$f(z)\nabla\log p_\theta(z)$ (REINFORCE). It needs no derivative of $f$, so it works for discrete choices, but its variance can be large.
+
+\paragraph{Baselines (control variates).} Because $\E[\nabla\log p]=0$, subtracting any constant $b$ keeps it unbiased:
+$(f(z)-b)\nabla\log p$. For a scalar parameter the variance-minimizing constant is
+$b^\star=\E[f\,(\nabla\log p)^2]/\E[(\nabla\log p)^2]$.
+\begin{keyidea}
+A control variate is anything with known expectation that is correlated with your estimate. Subtracting it costs no bias and
+removes the shared noise. Better predictions of the quantity give lower variance; a perfect prediction gives zero variance.
+\end{keyidea}
+
+\section{Importance sampling and self-normalization}
+To estimate $\E_p[g]$ with samples from a proposal $q$: $\E_p[g]=\E_q[w\,g]$ with $w=p/q$, unbiased if $q>0$ wherever $pg\ne0$.
+When $p$ is known only up to a constant (a posterior), one uses \emph{self-normalized} weights $\tilde w_s=w_s/\sum_r w_r$.
+This is biased at finite sample size $S$ (bias $O(1/S)$ under moment conditions) but consistent. With $S=1$ the normalized
+weight is always 1: it carries no information about whether the proposal was good.
+
+\section{Rao--Blackwellization}
+If $\hat g$ is unbiased and $Y$ is any available information, then $\E[\hat g\mid Y]$ is also unbiased and
+\[
+\Var(\E[\hat g\mid Y])\le\Var(\hat g)
+\]
+(law of total variance: $\Var\hat g=\E\Var(\hat g\mid Y)+\Var\E[\hat g\mid Y]$). Analytically averaging over anything you can
+average over never hurts. Example: at the output of a race, use the exact posterior responsibilities $\rho_i$ rather than one
+sampled winner.
+
+\section{Latent causes: Fisher's identity and the missing information}
+For a model with a latent cause $k$ (which route, which clock), the marginal likelihood gradient is
+\[
+\nabla\log p(y)=\E_{k\sim p(k\mid y)}\big[\nabla\log p(y,k)\big]\qquad\text{(Fisher's identity).}
+\]
+So a single \emph{posterior} sample $k$ gives an unbiased estimate. Its covariance is the \emph{missing-information matrix}
+$\Cov_{k\mid y}[\nabla\log p(y,k)]$. If every complete-data score has norm at most $G$ and $\rho_k=p(k\mid y)$,
+\[
+\tr\Cov\le 2G^2\Big(1-\sum_k\rho_k^2\Big)=2G^2\big(1-e^{-H_2(\rho)}\big),
+\]
+where $H_2$ is the collision (R\'enyi-2) entropy. \emph{Proof sketch:} the variance of a discrete distribution is half its mean
+squared pairwise distance; each squared distance is at most $(2G)^2$ and pairs with $k\ne l$ have total weight $1-\sum\rho_k^2$.
+\emph{Reading:} sampled-cause credit is nearly exact when the posterior is sharp.
+
+\section{Predicted credit plus sparse audits (unbiased sparse credit)}
+Let $g_b$ be the exact credit for block $b$ (a parameter block or a state cotangent) and $h_b$ a prediction of it, made before the
+audit from information already available. Audit block $b$ independently with probability $p_b>0$ (indicator $I_b$):
+\[
+\hat g_b=h_b+\frac{I_b}{p_b}\,(g_b-h_b).
+\]
+\begin{proposition}
+$\E[\hat g_b]=g_b$ and $\E\|\hat g_b-g_b\|^2=\big(\tfrac1{p_b}-1\big)\|g_b-h_b\|^2$.
+\end{proposition}
+\begin{proof}
+$\E[I_b/p_b]=1$ gives the mean. The error is $(I_b/p_b-1)(g_b-h_b)$ and $\E(I_b/p_b-1)^2=1/p_b-1$.
+\end{proof}
+The prediction affects only the variance, never the mean. A good predictor makes audits rarely necessary.
+
+\paragraph{Where to audit (Neyman allocation).} With audit costs $c_b$ and a variance budget $V$, minimize $\sum_b c_bp_b$ subject
+to $\sum_b\|r_b\|^2/p_b\le V$, where $r_b=g_b-h_b$ is the \emph{surprise}. By Cauchy--Schwarz,
+\[
+\sum_b c_bp_b\;\ge\;\frac{\big(\sum_b\|r_b\|\sqrt{c_b}\big)^2}{V},\qquad\text{with equality at }p_b\propto\frac{\|r_b\|}{\sqrt{c_b}}
+\]
+(capped at $p_b\le1$). Credit cost therefore scales with the \emph{square} of the surprise: heavy while the predictor is poor,
+cheap once surprises are small, and heavy again if the domain shifts.
+
+\begin{remark}
+The allocation must use only information available \emph{before} the audit draw (a predicted surprise), and the predictor must
+be frozen for the current draw. Re-fitting the predictor on the audited value and then recomputing the current baseline breaks
+the conditioning argument and can bias the estimate.
+\end{remark}
+
+\section*{Exercises}
+\begin{exercise} Show that $\E_{p_\theta}[\nabla\log p_\theta]=0$.\end{exercise}
+\begin{solution} $\int p\nabla\log p=\int\nabla p=\nabla\!\int p=\nabla1=0$.\end{solution}
+\begin{exercise} In the audit estimator, what happens with $p_b=1$? With $h_b=g_b$?\end{exercise}
+\begin{solution} $p_b=1$: $\hat g_b=g_b$ exactly (always audit). $h_b=g_b$: zero variance for any $p_b$ (no surprise).\end{solution}
+\begin{exercise} Two causes with posterior $(0.9,0.1)$ and scores bounded by $G=1$. Bound the variance of single-sample credit.\end{exercise}
+\begin{solution} $1-\sum\rho^2=1-0.82=0.18$, so $\tr\Cov\le0.36$. For $(0.5,0.5)$ it would be $1.0$.\end{solution}
+\begin{exercise} Derive the Neyman allocation with Lagrange multipliers.\end{exercise}
+\begin{solution} Stationarity of $\sum c_bp_b+\mu(\sum\|r_b\|^2/p_b-V)$: $c_b=\mu\|r_b\|^2/p_b^2$, so $p_b=\sqrt\mu\,\|r_b\|/\sqrt{c_b}$.\end{solution}
+
+\begin{inourmodels}
+REINFORCE, straight-through and closed-loop baselines in the hard-routing credit diagnostics (note 160 \S\S3--9); the collision-entropy
+bound (note 164 Theorem F, Lean-checked); forward-predicted credit with unbiased residual audits (notes 162--163); surprise-squared
+credit cost (note 165 \S10, Lean-checked); Rao--Blackwell conditioning on forward information (note 164 Result 1).
+\end{inourmodels}
+\end{document}
