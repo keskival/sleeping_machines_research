@@ -134,3 +134,16 @@ correctness and shadow-audit calibration on TRAIN/DEV. Include adaptation drift
 and routes absent from the immediate pool. Arithmetic contracts precede a
 bounded integrated pilot; no external architecture or sealed TEST is admitted.
 This note does not admit an additional queue or displace existing owned work.
+
+## Formal reciprocal closure
+
+[CLOSED_LOOP_EXPLORATION_AND_CREDIT.md](CLOSED_LOOP_EXPLORATION_AND_CREDIT.md)
+derives the augmented learning process, Bellman acquisition value, causal
+return/residual estimators, learned cotangent transport and producer-weighted
+teaching. Its reciprocal construction lets forward directional probes teach a
+backward map by a local outer-product rule, with an explicit identification
+and coordinate-probe contraction proof. Mirrored forward/feedback updates give
+a second exact alignment closure. The intended architecture is two mutually
+teaching directions in one event graph, not a finite stack of extra trainer
+passes. Global nonlinear optimality and economical native execution are not
+claimed; coupled stability and full work remain explicit gates.
