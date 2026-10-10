@@ -85,7 +85,7 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages + sparse_receiver_pages()
+    return result_pages + sparse_receiver_pages() + shared_receiver_pages()
 
 
 def sparse_receiver_pages():
@@ -94,3 +94,11 @@ def sparse_receiver_pages():
     d=json.loads(p.read_text());assert d['status']=='completed'
     rows=[[str(r['seed']),str(r['budget']),f"{r['gain_vs_train_fixed']:+.6f}",f"{r['policy_supported_flops']/1e6:.2f}",f"{r['policy_wall_s']:.2f}"] for r in d['rows'] if r['critic']=='structured']
     return [[('h2','Native selection with fewer queried receivers'),('p','Saved receiver critics now select native optional key writes using1,2,4 or8 receiver queries. Discovery anchors the TRAIN-best receiver and samples additional implicit indices without scoring unqueried descriptions. Every queried receiver evaluates nine messages; both critics receive an exact zero no-op option.'),('table',(['Seed','Receivers','Gain / target','Policy MFLOPs','Policy seconds'],rows,[22,30,40,41,34])),('small','Each row:32 fresh prefixes,8 independent synthetic continuations, frozen depth4 native actor. Positive gain means lower future loss than the TRAIN-fixed action. Policy work includes the native prefix recomputation, dense eight-mark forward scoring, queried descriptors and critic selection. MFLOPs are whole32-prefix work for every row; no per-target unit mixture. Wall includes FlopCounter instrumentation.'),('small',d['scope']),('p',f"Whole new diagnostic{d['whole_wall_s']:.2f}s, RSS{d['peak_rss_kb']/1024:.1f}MiB. Teacher work{d['teacher_supported_flops']/1e9:.3f}GFLOPs is additional. Earlier critic fits/checkpoints remain charged in their own completed evidence; no new fitting occurs here. Selection replay and per-seed prior-fit costs are recorded in the result file.")]]
+
+
+def shared_receiver_pages():
+    p=ROOT/'experiments/results/credit/curie_shared_receiver_fit_20261010T2300Z_pilot.json'
+    if not p.exists():return []
+    d=json.loads(p.read_text());assert d['status']=='completed'
+    rows=[[r['arm'].replace('_',' '),str(r['parameters']),f"{r['unseen_inactive_relative_mse']:.4f}",f"{r['gain_vs_fixed']:+.6f}",f"{r['query_supported_flops']/1e6:.2f}"] for r in d['rows']]
+    return [[('h2','Sharing forward context across receiver-credit queries'),('p','The new critic encodes the common forward prefix once, then combines it with a seven-dimensional receiver-specific recurrent representation. Versioned context activation can be reused across queried addresses. Sparse/batched values and accumulated parameter gradients match the repeated-context reference; stale versions are rejected.'),('table',(['Critic','Parameters','Inactive error / zero','Gain / target','Query MFLOPs'],rows,[50,25,35,32,25])),('small',d['scope']),('small',f"One seed170;128 TRAIN prefixes with8 continuations,64 DEV prefixes with16 continuations,256 steps. Whole64-prefix query work is in the same units for both arms; descriptors are precomputed for this query comparison. New fit{d['fit_wall_s']:.2f}s/{d['fit_supported_flops']/1e9:.3f}supportedGFLOPs; teacher{d['teacher_supported_flops']/1e9:.3f}GFLOPs; complete new phase{d['whole_wall_s']:.2f}s, RSS{d['peak_rss_kb']/1024:.1f}MiB. Fitting graphs, receiver state, optimizer and source packets are additional to the retained context output.")]]
