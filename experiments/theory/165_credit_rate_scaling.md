@@ -129,6 +129,40 @@ here: the state-space credit object with forward side information, the summabili
 criterion for learning cost, the K-independence of route credit and the squaring of the spectrum at event level, as
 properties of the race/temporal-memory substrate. Post-boundary and unpublished (IDF-08).
 
+## 8. Which credit method for which mode: a per-mode cost law
+
+For mode m with per-event contraction ρ_m = e^{−r_mΔ}, P_m parameters feeding it, and a target relative credit error ε,
+three methods are available (all with shared transport):
+
+| Method | Relative residual variance | Credit work per event |
+|---|---|---|
+| truncation at H events | ρ_m^{2(H+1)} (geometric tail, note 164 Result 2) | ∝ H |
+| exact forward trace | 0 | ∝ P_m (one trace per parameter, note 160 §§7, 12) |
+| exact window H₀ + TD-learned tail, f features | ≤ ρ_m^{2(H₀+1)} · κ_f / (1 − ρ_m²) | ∝ H₀ + f |
+
+The third row is the on-policy linear TD bound (Tsitsiklis & Van Roy 1997: ‖Φw* − V‖ ≤ ‖ΠV − V‖/√(1−γ²)) with the
+discount replaced by the mode's contraction; κ_f is the relative error of the best predictor in the feature span.
+
+**Theorem 8 (per-mode method choice).** Truncation reaches ε with H_m(ε) = ⌈ln(1/ε)/(2r_mΔ)⌉ − 1 events. It is
+cheaper than an exact trace exactly when
+
+    r_m > r_c(ε) = ln(1/ε) / (2Δ P_m),
+
+and a learned tail beats both only when its features are good enough to survive the slow-mode amplification,
+κ_f ≤ ε(1 − ρ_m²)ρ_m^{−2(H₀+1)}. Total credit work per event is therefore
+
+    W(ε) = Σ_m min( ln(1/ε)/(2r_mΔ), P_m, H₀ + f [if κ_f admissible] ),
+
+which, for decay rates spread log-uniformly over [r_min, r_max], gives exact traces only to the slowest modes, a
+fraction ln(r_c/r_min)/ln(r_max/r_min) of them, and short windows to the rest.
+
+*Reading.* Fast memories need almost no credit machinery; slow memories need exact traces (fixed cost, no history)
+unless the forward pass supplies features that predict their long-horizon credit well, and the bar for those
+features rises as 1/(1 − ρ²) ≈ 1/(2rΔ). The learned credit model is most valuable at intermediate time scales, not at
+the slowest ones, the opposite of the naive intuition that learned credit is for "long" dependencies. Test: the
+credit-spectrum measurement (`credit_spectrum.py`) records per-mode residuals for the window-4 predictor, which checks
+the ρ^{2(H+1)} law per mode.
+
 ## Formal verification (Lean 4 + Mathlib)
 
 [`CreditTheory/Scaling.lean`](../lean/credit_theory/CreditTheory/Scaling.lean); every theorem depends only on
