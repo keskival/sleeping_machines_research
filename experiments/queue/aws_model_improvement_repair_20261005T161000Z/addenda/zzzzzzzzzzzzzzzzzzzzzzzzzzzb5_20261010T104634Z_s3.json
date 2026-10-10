@@ -1,0 +1,47 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "B5 tgbl-review diagnosis (VALIDATION only, no training, no TEST): v3 full dev MRR 0.268 < training-free pop_30d 0.340, with known-source queries (0.247) below new-source queries (0.475). Scores the saved checkpoint with identity terms removed, popularity alone and popularity+network residual, per query class. Decides v4: drop/regularize the 11.6M identity parameters and/or score a residual on the popularity heuristic",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b5_review_ablation_smoke_20261010T1100Z",
+        "queue": "experiments/queue/b5/aws_b5_review_ablation_smoke_20261010T1100Z/aws_b5_review_ablation_smoke_20261010T1100Z.txt",
+        "queue_sha256": "2c315e64882a5d819adf8622cf8c2a8a200ae275e49be2aab560e97754eac137",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_ablation_smoke_20261010T1100Z.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b5_review_ablation_full_20261010T1100Z",
+        "queue": "experiments/queue/b5/aws_b5_review_ablation_full_20261010T1100Z/aws_b5_review_ablation_full_20261010T1100Z.txt",
+        "queue_sha256": "0b5ac9ae400d7c70dd528d7b9295f7af823352cadbf719d5914789b8aa1525d2",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_ablation_full_20261010T1100Z.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_ablation_smoke_20261010T1100Z.json"
+          }
+        ]
+      }
+    ]
+  }
+}
