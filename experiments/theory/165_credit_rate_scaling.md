@@ -160,6 +160,19 @@ addressed-write models (k selected slots of K), Theorem 3 predicts credit confin
 bounded rate. Next test: the same measurement on an addressed-write memory (R1 keyed memory or a k-of-K write variant of the
 Taxi learner) at K = 16 and 64 with fixed k; prediction: k(ε) flat in K.
 
+**Pre-registered prediction for the addressed-write follow-up (`credit_spectrum_v2_taxi_K16_K64`, written 10 Oct 11:50 UTC,
+before any v2 result exists).** Each event writes one content-addressed slot of b = 4 modes; addresses hash (mark, gap bucket)
+over K slots. A slot j whose modes decay at rate r_j keeps eligibility above 1% of its fresh value for W_j ≈ ln(100)/(2 r_j Δ̄)
+events. With roughly uniform addressing, slot j is eligibility-active with probability ≈ 1 − (1 − 1/K)^{W_j} ≤ min(1, W_j/K),
+so the expected number of eligibility-active modes is b·Σ_j min(1, W_j/K) ≤ b·(K·W̄)/K = b·W̄: **independent of K** once
+K ≫ max_j W_j is not required, only that the per-slot windows do not grow with K (they do not: rates are fixed log-uniform
+over the same range). Predictions: (P1) the mean count of modes with eligibility above 1% grows by less than 25% from
+K = 16 to K = 64; (P2) the eligibility-weighted k(ε = 0.1) (no predictor) at K = 64 is within 25% of K = 16, while
+(P3) the unweighted k(ε = 0.1) grows by at least 1.5× (credit is still dense in state space because the readout reads every
+mode). A failure of P2 with P1 holding would mean weighted credit concentrates on modes that eligibility does not
+silence, i.e. the sparsity is in the wrong coordinates; a failure of P1 would mean addressing is not spreading writes as
+assumed (hash collisions or a few dominant marks).
+
 ## 8. Which credit method for which mode: a per-mode cost law
 
 For mode m with per-event contraction ρ_m = e^{−r_mΔ}, P_m parameters feeding it, and a target relative credit error ε,
