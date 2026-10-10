@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "tag": "curie_averaged_credit_v3_20261010T1720Z_decision",
+  "battle": "R1/B1",
+  "arms": {
+    "isolated/single": {
+      "point_gate_all_seeds": false,
+      "mse_gains": [
+        1.6835298264376776e-07,
+        -3.6099458949010226e-06,
+        2.810383511711994e-05
+      ],
+      "utility_gains": [
+        0.0010436454450236218,
+        -0.000556563459162352,
+        0.0036108253111904074
+      ]
+    },
+    "isolated/averaged": {
+      "point_gate_all_seeds": false,
+      "mse_gains": [
+        5.1868910093210014e-05,
+        3.1829439642329035e-05,
+        5.117646726198369e-05
+      ],
+      "utility_gains": [
+        0.0032547451658992235,
+        -1.422807728274322e-06,
+        0.004888400204185764
+      ]
+    },
+    "connected/single": {
+      "point_gate_all_seeds": false,
+      "mse_gains": [
+        -1.0906020339048466e-05,
+        -2.985731737529186e-05,
+        -2.8338694050359353e-06
+      ],
+      "utility_gains": [
+        -0.0007798438289341286,
+        -0.0024708519170432938,
+        0.0007914491044622204
+      ]
+    },
+    "connected/averaged": {
+      "point_gate_all_seeds": true,
+      "mse_gains": [
+        2.3461784880708676e-05,
+        8.475719100607974e-06,
+        2.494140388892146e-05
+      ],
+      "utility_gains": [
+        7.247132514683606e-05,
+        4.008567569460864e-06,
+        0.003161542089465651
+      ]
+    }
+  },
+  "next_action": "Review label/history effects and uncertainty before any depth fit; no automatic scaling",
+  "scope": "Three synthetic frozen-actor pilots; point gate is calibration and utility above common TRAIN-mean action, not statistical confirmation."
+}

@@ -1,0 +1,286 @@
+{
+  "status": "completed",
+  "tag": "curie_averaged_credit_v3_20261010T1720Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_averaged_credit_v3_20261010T1720Z_smoke",
+    "mode": "smoke",
+    "seed": 170,
+    "steps": 2,
+    "train_packets": 2,
+    "dev_packets": 2,
+    "train_rollouts": 2,
+    "dev_rollouts": 2
+  },
+  "metrics": {
+    "arms": [
+      {
+        "history": "isolated",
+        "labels": "single",
+        "parameters": 7297,
+        "train_relative_mse": 0.9864953511113559,
+        "dev_relative_mse": 0.9771376640774779,
+        "dev_future_advantage": -0.01285676527732589,
+        "mse_gain_vs_averaged_train_constant": -0.00010797151870053585,
+        "utility_gain_vs_averaged_train_constant": -0.006100039016667069,
+        "mse_gain_bootstrap95": [
+          -0.0002497987545112788,
+          3.385571711020708e-05
+        ],
+        "utility_gain_bootstrap95": [
+          -0.014167926614781834,
+          0.0019678485814476968
+        ],
+        "chosen_actions": [
+          7,
+          7
+        ],
+        "chosen_advantages": [
+          0.0026443186463699225,
+          -0.028357849201021704
+        ],
+        "dev_predictions": [
+          [
+            0.0,
+            -0.00010826882173626875,
+            0.0003593205125973228,
+            0.00044059087752137906,
+            0.00013209789901064186,
+            0.00010754298738602388,
+            -0.0003622333399396017,
+            -0.00044228290234276464,
+            -0.00013276764103590486
+          ],
+          [
+            0.0,
+            -0.00010624233189098235,
+            0.00035130572166466043,
+            0.00042858744681116627,
+            0.00012803291251143546,
+            0.0001054440486930961,
+            -0.0003542917009330335,
+            -0.00042821666601774614,
+            -0.00012720506789002466
+          ]
+        ]
+      },
+      {
+        "history": "isolated",
+        "labels": "averaged",
+        "parameters": 7297,
+        "train_relative_mse": 0.975714987351112,
+        "dev_relative_mse": 0.9765011641922516,
+        "dev_future_advantage": -0.01285676527732589,
+        "mse_gain_vs_averaged_train_constant": -0.0001078075133714842,
+        "utility_gain_vs_averaged_train_constant": -0.006100039016667069,
+        "mse_gain_bootstrap95": [
+          -0.00024998457064083913,
+          3.436954389787072e-05
+        ],
+        "utility_gain_bootstrap95": [
+          -0.014167926614781834,
+          0.0019678485814476968
+        ],
+        "chosen_actions": [
+          7,
+          7
+        ],
+        "chosen_advantages": [
+          0.0026443186463699225,
+          -0.028357849201021704
+        ],
+        "dev_predictions": [
+          [
+            0.0,
+            -5.8255925066918816e-05,
+            0.0003958521481598702,
+            0.000422758189619648,
+            0.0001647669112119126,
+            5.620270705507612e-05,
+            -0.00039762451304184594,
+            -0.0004237495065241722,
+            -0.00016614863469797755
+          ],
+          [
+            0.0,
+            -6.351099542796767e-05,
+            0.0003860557245891464,
+            0.00041577081048668047,
+            0.00015660983384099063,
+            6.18576520163786e-05,
+            -0.00038850247954259036,
+            -0.0004150779079327983,
+            -0.00015628925186405963
+          ]
+        ]
+      },
+      {
+        "history": "connected",
+        "labels": "single",
+        "parameters": 7361,
+        "train_relative_mse": 0.9988513927803625,
+        "dev_relative_mse": 0.9947521498384299,
+        "dev_future_advantage": 0.001803275666622181,
+        "mse_gain_vs_averaged_train_constant": -0.00011251019906852118,
+        "utility_gain_vs_averaged_train_constant": -0.02076007996061514,
+        "mse_gain_bootstrap95": [
+          -0.0002589308335851511,
+          3.3910435448108715e-05
+        ],
+        "utility_gain_bootstrap95": [
+          -0.0261279212946939,
+          -0.01539223862653638
+        ],
+        "chosen_actions": [
+          4,
+          4
+        ],
+        "chosen_advantages": [
+          0.0038686306581244695,
+          -0.0002620793248801073
+        ],
+        "dev_predictions": [
+          [
+            0.0,
+            0.00013734364651810864,
+            0.00019989974042662438,
+            3.411415919476955e-05,
+            -0.00029758578537501654,
+            -0.00013725950920292766,
+            -0.00019895283534463555,
+            -3.3246462254773514e-05,
+            0.0002951664571487217
+          ],
+          [
+            0.0,
+            0.00013502506648973794,
+            0.00019818046357026177,
+            3.6796803028068505e-05,
+            -0.00029454183265687953,
+            -0.00013560399354051845,
+            -0.00019742260367541838,
+            -3.663502242848114e-05,
+            0.00029207105831402313
+          ]
+        ]
+      },
+      {
+        "history": "connected",
+        "labels": "averaged",
+        "parameters": 7361,
+        "train_relative_mse": 0.9916707726268537,
+        "dev_relative_mse": 0.9949055337692035,
+        "dev_future_advantage": 0.001803275666622181,
+        "mse_gain_vs_averaged_train_constant": -0.00011254972112126884,
+        "utility_gain_vs_averaged_train_constant": -0.02076007996061514,
+        "mse_gain_bootstrap95": [
+          -0.0002592972126509149,
+          3.419777040837723e-05
+        ],
+        "utility_gain_bootstrap95": [
+          -0.0261279212946939,
+          -0.01539223862653638
+        ],
+        "chosen_actions": [
+          4,
+          4
+        ],
+        "chosen_advantages": [
+          0.0038686306581244695,
+          -0.0002620793248801073
+        ],
+        "dev_predictions": [
+          [
+            0.0,
+            0.00015441149166183537,
+            0.00023037471077554827,
+            -1.4363070443045644e-05,
+            -0.0003002440856487179,
+            -0.00015419137537347598,
+            -0.00022971839471621657,
+            1.5178302395129303e-05,
+            0.00029821978605800657
+          ],
+          [
+            0.0,
+            0.0001503568361475884,
+            0.00022704679763116257,
+            -6.479937464986135e-06,
+            -0.00029980027155553275,
+            -0.0001510055697181787,
+            -0.00022657279825752564,
+            6.483648578978143e-06,
+            0.00029728692390374774
+          ]
+        ]
+      }
+    ],
+    "train_mean_reference": [
+      2.7755575615628914e-17,
+      -0.0030081410275006604,
+      0.025230363602525577,
+      0.007325117969730486,
+      0.0021663500705557184,
+      0.003565140852087905,
+      -0.023991356708024932,
+      -0.0058863227862671445,
+      -0.0018236893225544101
+    ],
+    "single_train_mean_reference": [
+      0.0,
+      -0.017584838311725207,
+      0.018435732220755868,
+      0.01786291634029767,
+      0.0014666117140719331,
+      0.018195547351943897,
+      -0.017244762697103788,
+      -0.015579828035376442,
+      -0.0010613253273295403
+    ],
+    "reference_selected_action": 6,
+    "reference_dev_relative_mse": 0.5581033579487169,
+    "reference_dev_future_advantage": -0.01895680429399296,
+    "dev_branch_mean_advantages": [
+      [
+        0.0,
+        0.011204775934655048,
+        0.012953442311068708,
+        -0.0016452916259351302,
+        0.0038686306581244695,
+        -0.010909885057756433,
+        -0.011523607968411911,
+        0.0026443186463699225,
+        -0.0035628406796135853
+      ],
+      [
+        0.0,
+        -0.021285815682275923,
+        0.026832362645702837,
+        0.029617251639004014,
+        -0.0002620793248801073,
+        0.02246143547981483,
+        -0.026390000619574007,
+        -0.028357849201021704,
+        0.00026413266940167324
+      ]
+    ],
+    "shared_train_scale": 0.01542647884830885,
+    "teacher_actor_forwards": 12,
+    "teacher_target_presentations": 68,
+    "scope": "Crossed history/label averaging, identical initial weights and common TRAIN-derived scale. All four arms share teacher generation. DEV evaluates finite independent continuation averages; bootstrap is prefix uncertainty conditional on fitted seed. Averaged TRAIN constant is the stronger common comparator; single TRAIN constant saved. Synthetic true-generator access is diagnostic, not a deployment capability. No actor weight updates or asynchronous learner.",
+    "gate": "All three seeds must improve DEV calibration and intervention selection against averaged TRAIN constant before depth scaling; no automated scaling."
+  },
+  "wall_s": 1.3467551829999138,
+  "peak_rss_kb": 318796,
+  "supported_flops": 4584896,
+  "flop_scope": "All shared teacher generation and four critic fits; supported PyTorch operations only, special/unsupported operations excluded. No work-to-quality claim.",
+  "source_sha256": {
+    "experiments/credit/averaged_future_credit_v3.py": "d63b158bc4683a35340806cce042eac6db90d6068c67f2d07c6dc780bdd45b6d",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
