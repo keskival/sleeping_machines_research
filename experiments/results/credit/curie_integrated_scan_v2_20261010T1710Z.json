@@ -1,0 +1,242 @@
+{
+  "status": "completed",
+  "tag": "curie_integrated_scan_v2_20261010T1710Z",
+  "battle": "R1/B1",
+  "training": "bounded four-update numerical/throughput diagnostic per arm and shape",
+  "metrics": [
+    {
+      "depth": 2,
+      "batch": 1,
+      "length": 128,
+      "parameters": 1723,
+      "scored_targets_per_step": 127,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.07216253400110872,
+          0.07675858500078903,
+          0.07469454100282746
+        ],
+        "scan": [
+          0.027043900998251047,
+          0.030249715000536526,
+          0.030487266998534324
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.07469454100282746,
+        "scan": 0.030249715000536526
+      },
+      "speedup": 2.4692642889859506,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        5.048902319483232,
+        4.435438743836599,
+        4.208044981142293,
+        4.477761561997722
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    },
+    {
+      "depth": 2,
+      "batch": 1,
+      "length": 512,
+      "parameters": 1723,
+      "scored_targets_per_step": 511,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.28970359899903997,
+          0.27712797400090494,
+          0.38641283600009046
+        ],
+        "scan": [
+          0.1002633469979628,
+          0.09816083500118111,
+          0.1001345990007394
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.28970359899903997,
+        "scan": 0.1001345990007394
+      },
+      "speedup": 2.893141849970366,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        7.4896338736586925,
+        7.159571048320911,
+        6.827052854505877,
+        6.877573147947793
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    },
+    {
+      "depth": 4,
+      "batch": 1,
+      "length": 128,
+      "parameters": 2633,
+      "scored_targets_per_step": 127,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.1171129190006468,
+          0.11506428199936636,
+          0.12455547900026431
+        ],
+        "scan": [
+          0.029825806002918398,
+          0.03044700600003125,
+          0.03129148700099904
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.1171129190006468,
+        "scan": 0.03044700600003125
+      },
+      "speedup": 3.8464510763562956,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        6.118005398328315,
+        5.114765558791467,
+        6.213449138800436,
+        4.823798457517082
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    },
+    {
+      "depth": 4,
+      "batch": 1,
+      "length": 512,
+      "parameters": 2633,
+      "scored_targets_per_step": 511,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.49188118600068265,
+          0.4783971430006204,
+          0.47846789799950784
+        ],
+        "scan": [
+          0.10214031500072451,
+          0.10268655600157217,
+          0.1024802570027532
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.47846789799950784,
+        "scan": 0.1024802570027532
+      },
+      "speedup": 4.668878786932135,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        8.073902300389939,
+        7.9279607199696525,
+        7.754544076613735,
+        6.397996186724228
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    },
+    {
+      "depth": 8,
+      "batch": 1,
+      "length": 128,
+      "parameters": 4453,
+      "scored_targets_per_step": 127,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.22206390900100814,
+          0.21464083899991238,
+          0.22280252799828304
+        ],
+        "scan": [
+          0.03563343600035296,
+          0.03733166900201468,
+          0.03870612800164963
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.22206390900100814,
+        "scan": 0.03733166900201468
+      },
+      "speedup": 5.948405601394999,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        5.159343210939478,
+        4.89130732034521,
+        5.420212532471691,
+        4.530334672613412
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    },
+    {
+      "depth": 8,
+      "batch": 1,
+      "length": 512,
+      "parameters": 4453,
+      "scored_targets_per_step": 511,
+      "steps_per_arm": 4,
+      "warmup_steps": 1,
+      "timing_s": {
+        "reference": [
+          0.9080009989993414,
+          0.8918816410005093,
+          0.8969017130002612
+        ],
+        "scan": [
+          0.11139360000015586,
+          0.11550970200187294,
+          0.11516873200162081
+        ]
+      },
+      "median_step_s": {
+        "reference": 0.8969017130002612,
+        "scan": 0.11516873200162081
+      },
+      "speedup": 7.787718918253253,
+      "maximum_loss_error": 0.0,
+      "maximum_gradient_error": 0.0,
+      "maximum_parameter_error": 0.0,
+      "maximum_optimizer_state_error": 0.0,
+      "reference_losses": [
+        6.388184166246453,
+        5.745294407417428,
+        5.623847973878799,
+        5.551188107460401
+      ],
+      "scope": "Synthetic random marked streams for throughput, not associative-recall quality. Entire native likelihood, backward and Adam plus identical gradient-copy instrumentation; CPU one thread float64. Four updates per arm, three timed after warmup; not work-to-quality or a sparse-learning result."
+    }
+  ],
+  "wall_s": 11.092577961000643,
+  "peak_rss_kb": 432140,
+  "source_sha256": {
+    "experiments/credit/measure_integrated_scan.py": "0969e113400e0ed64e3e89ea3e69d21b844db3883c10dc2c1a903e43758a58ea",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a"
+  },
+  "decision": "Do exact recurrence execution savings persist through complete native learning and optimizer updates as depth/horizon grow?",
+  "work_scope": "All timed complete steps included; no FLOP/energy advantage claimed. Same model arithmetic in both arms, execution backend differs. Persistent mark memory/key scoring remain dense; no higher-order gradients."
+}

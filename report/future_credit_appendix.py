@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -141,3 +141,36 @@ def cpu_scan_pages(folder):
          f'{c["peak_child_rss_kb"]/1024:.1f} MiB. Runner guards the whole process group. '
          'One compiler worker; CPU float64. Higher-order backward/meta-Hessians are unsupported by this '
          'backend and keep the established differentiable reference. No fitting run has adopted it.')]]
+
+
+def integrated_scan_pages(folder):
+    p=folder/'curie_integrated_scan_v2_20261010T1710Z.json'
+    if not p.exists():return []
+    r=json.loads(p.read_text());assert r['status']=='completed';rows=[]
+    for v in r['metrics']:
+        rows.append([str(v['depth']),str(v['length']),f'{v["median_step_s"]["reference"]*1000:.2f}',f'{v["median_step_s"]["scan"]*1000:.2f}',f'{v["speedup"]:.2f}'])
+    return [[('h1','Appendix. R1 native learning execution across depth'),
+        ('p','The compiled temporal scan accelerates complete native likelihood/backward/Adam steps while preserving losses, gradients, forward parameters and optimizer state with zero observed error. Temporal blocks, keyed memory, predecessor messages and silence-aware race likelihood remain unchanged.'),
+        ('table',(['Depth','Events','Reference ms','Scan ms','Speedup'],rows,[23,25,44,40,34])),
+        ('small','CPU float64, one thread, batch 1, random marked streams; four matched updates per arm/shape, first warmup, median of three timings with alternating execution order. Identical gradient-copy instrumentation is included. This is execution throughput, not benchmark quality, sparse-credit savings or hardware energy.'),
+        ('p','The gain increases with depth in this bounded measurement: 2.47 to 5.95 times at 128 events and 2.89 to 7.79 at 512. All factual first-order derivatives are retained. Dense addressed-key work remains charged; higher-order meta-gradients require the reference backend.'),
+        ('small',f'Whole diagnostic wall {r["wall_s"]:.2f} s; peak RSS {r["peak_rss_kb"]/1024:.1f} MiB. No FLOP reduction is claimed.')]]
+
+
+def averaged_credit_pages(folder):
+    prefix='curie_averaged_credit_v3_20261010T1720Z'
+    files=[folder/(prefix+f'_pilot_s{s}.json') for s in (170,171,172)]
+    if not all(p.exists() for p in files):return []
+    records=[json.loads(p.read_text()) for p in files];assert all(r['status']=='completed' for r in records)
+    rows=[];work=[]
+    for seed,r in zip((170,171,172),records):
+        for v in r['metrics']['arms']:
+            rows.append([str(seed),v['history']+'/'+v['labels'],f'{v["mse_gain_vs_averaged_train_constant"]:.6g}',f'{v["utility_gain_vs_averaged_train_constant"]:.6g}'])
+        targets=r['metrics']['teacher_target_presentations'];work.append([str(seed),str(targets),f'{r["supported_flops"]/1e9:.3f}',f'{r["supported_flops"]/targets/1e6:.4f}',f'{r["wall_s"]:.1f}'])
+    return [[('h1','Appendix. R1 future credit: label averaging and prefix history'),
+        ('p','Four crossed arms use identical prefix packets, continuation samples, fitting steps, initialization and a common TRAIN-derived target scale. Single-continuation and averaged-continuation labels are crossed with isolated and connected encoders. Positive gains indicate improvement against the common averaged TRAIN-mean fixed-action reference.'),
+        ('table',(['Seed','Arm','MSE reduction','Future loss reduction'],rows,[17,64,43,43])),
+        ('small',records[0]['metrics']['scope']),
+        ('table',(['Seed','Teacher targets','Total GFLOPs','MFLOPs/target','Wall s'],work,[17,39,39,39,33])),
+        ('small',records[0]['flop_scope']),
+        ('p','The admission gate requires improved DEV calibration and action utility in all three seeded replicates before depth scaling. This frozen-actor synthetic intervention diagnostic does not demonstrate an online asynchronous learner or deployment access to a true continuation generator.')]]
