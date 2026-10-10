@@ -1,0 +1,76 @@
+{
+  "tag": "curie_pam_completion_v4_20261010T1038Z",
+  "host": "curie",
+  "ownership": "curie B2 splits 4/3 and B10; AWS agent owns AWS queues",
+  "hardware": {
+    "host_memory_gib": 31,
+    "measured_previous_pam_rss_kb": 1924892,
+    "minimum_available_mib": 8192
+  },
+  "prior_interruption": {
+    "tag": "curie_b2_final_pam_v8nll_split4_20261009T1715Z",
+    "last_completed_epoch": 23,
+    "optimizer_missing": true,
+    "test_not_scored": true
+  },
+  "jobs": [
+    {
+      "tag": "curie_recovery_20261009T205307Z_b2_contract2",
+      "driver": "experiments/irts/check_recovery_v9.py",
+      "queue": "experiments/queue/curie_recovery_20261009T205307Z/curie_recovery_20261009T205307Z_b2_contract2.txt",
+      "queue_sha256": "b3f1793eecf5b72430194ab970aeb8a60c6235db0ef720854dd527c72e2d59a0",
+      "sources": {
+        "experiments/irts/check_recovery_v9.py": "1bf42eb5c72c8a03f1d492f125b537cdebc92cdc90a626f28e16946bfc2fa2ad",
+        "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+        "experiments/irts/race_irts_v9.py": "9955b366cd18d9252c731865f1bb8664c858255e7544744a9ea8f7049027796a",
+        "experiments/irts/recovery_state.py": "358f144a7e26f3eaf402025c9fbde4bb23a826158dde4a4b5e77e8336510939e",
+        "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+      },
+      "result_sources": {
+        "experiments/irts/check_recovery_v9.py": "1bf42eb5c72c8a03f1d492f125b537cdebc92cdc90a626f28e16946bfc2fa2ad",
+        "experiments/irts/race_irts_v8.py": "c5eb846957812871a98a04a7dee2b9c172211fa33e578b1b1c1752d380620e4e",
+        "experiments/irts/race_irts_v9.py": "9955b366cd18d9252c731865f1bb8664c858255e7544744a9ea8f7049027796a",
+        "experiments/irts/recovery_state.py": "358f144a7e26f3eaf402025c9fbde4bb23a826158dde4a4b5e77e8336510939e",
+        "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+      },
+      "result": "experiments/results/irts/curie_recovery_20261009T205307Z_b2_contract2.json",
+      "timeout_s": 180,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000
+    },
+    {
+      "tag": "curie_recovery_20261009T205307Z_pam_v9_split3",
+      "driver": "experiments/irts/race_irts_v9.py",
+      "queue": "experiments/queue/curie_recovery_20261009T205307Z/curie_recovery_20261009T205307Z_pam_v9_split3.txt",
+      "queue_sha256": "df4d6704905e04a5679b4b8dd464c7df8a27f35df313ef5e19a4490f89eb366c",
+      "sources": {
+        "experiments/irts/race_irts_v9.py": "9955b366cd18d9252c731865f1bb8664c858255e7544744a9ea8f7049027796a",
+        "experiments/irts/recovery_state.py": "358f144a7e26f3eaf402025c9fbde4bb23a826158dde4a4b5e77e8336510939e",
+        "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+      },
+      "result_sources": {
+        "experiments/irts/race_irts_v9.py": "9955b366cd18d9252c731865f1bb8664c858255e7544744a9ea8f7049027796a",
+        "experiments/irts/recovery_state.py": "358f144a7e26f3eaf402025c9fbde4bb23a826158dde4a4b5e77e8336510939e",
+        "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+      },
+      "result": "experiments/results/irts/curie_recovery_20261009T205307Z_pam_v9_split3.json",
+      "timeout_s": 36000,
+      "rss_kb": 3000000,
+      "vms_kb": 8000000,
+      "recovery": "experiments/results/irts/curie_recovery_20261009T205307Z_pam_v9_split3_recovery.pt",
+      "requires": [
+        "curie_recovery_20261009T205307Z_b2_contract2"
+      ]
+    }
+  ],
+  "battle": "B2",
+  "purpose": "Complete remaining Curie PAM fixed-NLL/EMA split 3, exact recovery; AWS retains splits 1/2",
+  "memory_policy": {
+    "admission_available_mib": 12288,
+    "execution_available_mib": 9216,
+    "rss_cap_kb": 3000000,
+    "cgroup_reserve_mib": 2048,
+    "reason": "Seven prior attempts stopped at the validation peak under the conservative 10 GiB floor; minimum observed available 9864 MiB; keep 9 GiB plus the original job and cgroup guards"
+  },
+  "reason": "Continue exact PAM from completed epoch 46 after bounded reciprocal gates and transfer probe; all preceding logs/checkpoints retained"
+}
