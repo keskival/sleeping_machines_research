@@ -234,6 +234,30 @@ variance must then be charged. Report distortion Σ_{i∉A} w_i v_i alongside tr
 (credit_spectrum drivers evaluate after training only; per-epoch logging is the extension). Prediction under (A)+(B):
 k(ε, t) falls over training and the K = 64 / K = 16 traffic ratio falls below the capacity ratio as training proceeds.
 
+## 10. Credit should start heavy and become cheaper as surprise falls (founder principle, 10 Oct)
+
+Use the predicted-credit-plus-audit form (notes 162–163): component i has predicted credit, surprise r_i = exact − predicted,
+audit cost c_i and inclusion probability p_i; the unbiased estimator adds variance Σ(1/p_i − 1)‖r_i‖².
+
+**Theorem 10.1 (cost scales with the square of surprise).** For any p_i > 0 with Σ‖r_i‖²/p_i ≤ V,
+
+    Σ_i c_i p_i  ≥  (Σ_i ‖r_i‖ √c_i)² / V,
+
+with equality at p_i ∝ ‖r_i‖/√c_i (when no p_i saturates at 1). Machine-checked: `audit_cost_lower_bound`
+(Cauchy–Schwarz). Hence the optimal schedule has three phases:
+1. **Heavy:** early, the credit model is ignorant, ‖r_i‖ is large, all p_i saturate at 1 and credit is exact (dense).
+2. **Cheapening:** once below saturation, cost ∝ (surprise)²; halving typical surprise quarters the cost. If surprise falls
+   like t^{−1/2} (estimation error of a predictor fitting a stationary target), per-event cost falls like 1/t and the
+   **cumulative credit cost over training grows like log T**, against T for dense credit.
+3. **Floor:** surprise cannot fall below the unpredictable part (data noise σ_i). With the variance budget matched to the
+   noise SGD already tolerates (V = κΣσ_i²), the floor cost relative to dense is (Σσ_i√c_i)²/(κΣσ_i²Σc_i) ≤ 1/κ by
+   Cauchy–Schwarz: small when the irreducible noise concentrates in few components, up to 1/κ when spread evenly
+   (condition (B) of §9).
+**Self-regulation.** Under a domain shift surprise rises, the p_i rise toward 1 and credit becomes heavy again until the model
+re-learns: no schedule is set by hand. **Requirement:** the allocation needs ‖r_i‖ before the audit, so the credit model must
+also predict its own surprise; that estimate must be calibrated, and allocation must use only information available before
+the draw (an over-confident surprise estimate under-audits and inflates variance, never biases the mean).
+
 ## Formal verification (Lean 4 + Mathlib)
 
 [`CreditTheory/Scaling.lean`](../lean/credit_theory/CreditTheory/Scaling.lean); every theorem depends only on
@@ -244,6 +268,7 @@ k(ε, t) falls over training and the K = 64 / K = 16 traffic ratio falls below t
 | `count_above_level_le` | #{v_j > θ} ≤ (Σ v)/θ | Theorem 3.1 |
 | `rate_above_level_le` | Σ_{v_j>θ} log(v_j/θ) ≤ (1/θ) log(1/θ) when v_j ≤ 1, Σ v ≤ 1, 0 < θ ≤ 1 | Theorem 3.2 (K-independent route credit) |
 | `sum_log_succ_eq_log_factorial`, `powerlaw_rate_le` | Σ_{i=1}^{k} log(k/i) = k log k − log k! ≤ k | Theorem 2 rate (R ≤ αk) |
+| `audit_cost_lower_bound` (Surprise.lean) | Σc_i p_i ≥ (Σ‖r_i‖√c_i)²/V under Σ r_i²/p_i ≤ V | §10 cost ∝ surprise² |
 | `powerlaw_tail_le` | Σ_{i=k}^{N−1} (i+1)^{−α} ≤ k^{1−α}/(α−1), α > 1, independent of N | Theorem 2 silent tail |
 
 Together these give Theorem 2's size independence for α > 1 without appeal to asymptotics: the rate to send the top k
