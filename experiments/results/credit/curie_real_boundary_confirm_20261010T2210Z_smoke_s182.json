@@ -1,0 +1,120 @@
+{
+  "status": "completed",
+  "tag": "curie_real_boundary_confirm_20261010T2210Z_smoke_s182",
+  "battle": "B10/R1",
+  "args": {
+    "tag": "curie_real_boundary_confirm_20261010T2210Z_smoke_s182",
+    "seed": 182,
+    "mode": "smoke",
+    "targets": 64,
+    "context": 32,
+    "group": 8,
+    "audit_probability": 0.25
+  },
+  "metrics": {
+    "rows": [
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_smoke_s182_bptt.pt",
+        "checkpoint_sha256": "d049f013157f507aa6db73950704fa7948241597c5a4fb0d4f497a2fb232269c",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "bptt",
+        "seed": 182,
+        "nll": 12.256566117321215,
+        "targets": 64,
+        "updates": 8,
+        "audits": 8,
+        "critic_steps": 0,
+        "wall_s": 0.35901228099828586,
+        "block_nll": [
+          12.256566117321215
+        ],
+        "audited_mse": [],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_smoke_s182_untrained_audit.pt",
+        "checkpoint_sha256": "36d4a959372dfd6f39f7db02b23e1f679e1414081ba585d2f9c5f3064016d679",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "untrained_audit",
+        "seed": 182,
+        "nll": 12.25320423404749,
+        "targets": 64,
+        "updates": 8,
+        "audits": 2,
+        "critic_steps": 0,
+        "wall_s": 0.30742587800341425,
+        "block_nll": [
+          12.25320423404749
+        ],
+        "audited_mse": [
+          0.013532177020551402,
+          0.0024783661534883514
+        ],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_smoke_s182_calibrated_audit.pt",
+        "checkpoint_sha256": "ce20b519f1f7361ad86f4318c7be792abf7bee201414497897a4ff50af7126c8",
+        "credit_trust": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm": "calibrated_audit",
+        "seed": 182,
+        "nll": 12.25320423404749,
+        "targets": 64,
+        "updates": 8,
+        "audits": 2,
+        "critic_steps": 16,
+        "wall_s": 0.3180458350034314,
+        "block_nll": [
+          12.25320423404749
+        ],
+        "audited_mse": [
+          0.013532177020551402,
+          0.013415337002401197
+        ],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      }
+    ]
+  },
+  "whole_wall_s": 1.8186660409992328,
+  "peak_rss_kb": 323484,
+  "source_sha256": {
+    "experiments/credit/real_boundary_confirmation.py": "a5a44535a39f94eb3e7dacf65545f302b14215ae13121fc5b6c48d4608d3b16e",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_learned_boundary_v3.py": "da8a7b792cef1eb756c6ac37486a36e35510a6d7ed6e32682f7bf201ba5c532b",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Replicated initializations/audit draws on same 8192-event real TRAIN fragment. Online actor and credit fitting; pre-optimizer unbiased residuals; replay and all dense local derivatives charged. Shared unused predictor scaffold in controls prevents optimized BPTT efficiency claim. No TEST or published benchmark verdict."
+}
