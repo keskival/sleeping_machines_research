@@ -173,6 +173,17 @@ pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweet
 | 10 Oct | LastFM split 4 (original, unguarded) | best epoch 35; NaN parameters from epoch 39; stopped at 66 | −1530.06 / 654.72 / −875.34 | below the bar −849.65 from an epoch-35 checkpoint (before the failure); under the 22:45 rule the guarded rerun `b4g_lastfm_s4` decides split 4 and this run stays as the record |
 | 9 Oct | **Stack Overflow VERDICT (pre-registered frozen configuration)** | five fixed splits, TEST; grid-free dataset | L_T **−91.598 (SE 1.563)**, L_M **104.312 (0.719)**, total **12.714 (0.874)**; split totals **11.014 / 15.101 / 14.535 / 11.123 / 11.800** | **LOSS**: total above the bar 11.9 and best single published model 12.1. **Time component win:** −91.598 vs best published −91.1. Mark NLL trails 103.0 by 1.312; the time gain of 0.498 offsets part of it. 29,762 parameters, 22 marks; identical frozen configuration and source hashes across all splits. This diagnoses the frozen transfer result, not the developed mark-path attempt; v20 development stays on validation |
 
+## LNM audit: the published model class on the recording grid (10 Oct, AWS; user exception of 9 Oct)
+
+`experiments/b4audit/audit_lnm.py` trains the reference authors' own GRU + 32-component log-normal-mixture model with their code (github.com/tanguybosser/ntpp-tmlr2023 @ 54c15fd, README configuration, no tuning, 7,986 parameters) and scores the same checkpoint with their own `evaluate()` (per-sequence means, the published units) on the recorded TEST file and on a twin whose gaps are dequantized inside the recording cell. Audit instrument only, not a competitor; reported only in this loss analysis.
+
+| MOOC split 0, TEST, nats per sequence (lower is better) | L_T recorded | L_T dequantized | L_M | Total recorded | Total dequantized |
+|---|---|---|---|---|---|
+| LNM, authors' code (`b4audit_lnm_mooc_s0`) | **−322.01** | −305.16 | 93.07 | −228.95 | −212.09 |
+| Ours, frozen B4 (`b4_mooc_s0`) | −310.43 | ≈ −310.3 (validation shift 0.14) | **75.05** | **−235.38** | ≈ −235.2 |
+
+**Reading.** The published model class earns **16.86 nats per sequence on MOOC from the one-second recording grid alone**: its time NLL is 11.6 nats better than ours as recorded and about 5 nats worse once each gap is placed uniformly inside its recording cell. Our model, whose clocks may not resolve time below one cell, moves by 0.14 on validation. The MOOC time-component gap in the verdict table (−298.6 vs −310.6) is therefore of the size the grid supplies to this model class, and on the total this LNM run is behind ours even as recorded. Scope: one split, one seed, the README LNM configuration (the published best L_T is from the LNM+ variant, 2025); our dequantized TEST value is inferred from the validation shift, not rescored. The pre-registered MOOC verdict (loss) stands as defined. Retweets audit (`b4audit_lnm_retweets_s0`, 3.9% zero gaps) running.
+
 ## Secondary comparison (reported beside the pre-registered verdict, never replacing it)
 
 Best total of a single published model (its own L_T + L_M), mean over five splits, lower is better. 2025: Table 1 of
