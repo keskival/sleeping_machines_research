@@ -1,0 +1,13 @@
+{
+  "tag": "curie_real_online_bridge_v1_20261010T2050Z_controller",
+  "phases": [
+    {
+      "name": "real_causal_adaptation_headroom",
+      "manifest": "experiments/queue/enabler/curie_real_online_bridge_v1_20261010T2050Z/manifest.json"
+    }
+  ],
+  "prerequisite_results": [
+    "experiments/results/market/curie_market_episode_v1_20261010T2010Z_contract.json",
+    "experiments/results/credit/curie_token_episode_v2b_20261010T2040Z_contract.json"
+  ]
+}
