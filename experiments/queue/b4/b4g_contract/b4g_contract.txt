@@ -1,0 +1,2 @@
+# B4: B4 protocol repair: Github splits 1-4 and Wikipedia split 0 ended in NaN parameters (one non-finite batch through clip_grad_norm_), so their verdict numbers come from epoch 2-5 checkpoints. Guarded driver skips non-finite updates, otherwise bitwise identical (contract). Decides the Github verdict and Wikipedia split 0; originals stay beside
+b4g_contract experiments/tpp/race_tpp_b4g.py --tag b4g_contract --dataset mimic2_filtered --split 0 --tag b4g_contract --contract
