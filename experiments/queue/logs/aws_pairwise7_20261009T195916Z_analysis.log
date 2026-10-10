@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 shared route-credit enabler",
+  "evidence_level": "single-seed synthetic DEV diagnostic; no benchmark verdict",
+  "rows": [
+    {
+      "tag": "aws_credit6_20261009T191619Z_dense",
+      "arm": "dense",
+      "final_dev_ll": -2.038346767425537,
+      "dev_gap_to_dense": 0.0,
+      "credit_kl": null,
+      "credit_tv": null,
+      "whole_fit_linear_macs": 3456000000.0,
+      "linear_macs_per_target": 17280.0,
+      "linear_ratio_to_dense": 1.0,
+      "optimizer_parameter_visits": 19155600,
+      "optimizer_parameter_visits_per_target": 95.778,
+      "wall_s": 4.365252256393433,
+      "max_rss_kb": 414080,
+      "last_epoch": {
+        "epoch": 9,
+        "dev_marginal_ll": -2.038346767425537,
+        "route_purity": 0.1850000023841858,
+        "expert_evals_per_example": 32.0,
+        "macs_per_example": 17280.0,
+        "optimizer_parameter_visits_per_example": 95.778
+      }
+    },
+    {
+      "tag": "aws_credit6_20261009T191619Z_closed_h8_s2",
+      "arm": "closed",
+      "final_dev_ll": -2.2191684246063232,
+      "dev_gap_to_dense": -0.18082165718078613,
+      "credit_kl": 0.05830441787838936,
+      "credit_tv": 0.13356289267539978,
+      "whole_fit_linear_macs": 1273600000.0,
+      "linear_macs_per_target": 6368.0,
+      "linear_ratio_to_dense": 0.3685185185185185,
+      "optimizer_parameter_visits": 20958480,
+      "optimizer_parameter_visits_per_target": 104.7924,
+      "wall_s": 7.4067466259002686,
+      "max_rss_kb": 418408,
+      "last_epoch": {
+        "epoch": 9,
+        "dev_marginal_ll": -2.2191684246063232,
+        "route_purity": 0.09619999676942825,
+        "expert_evals_per_example": 3.0,
+        "macs_per_example": 6368.0,
+        "credit_kl": 0.05830441787838936,
+        "credit_tv": 0.13356289267539978,
+        "optimizer_parameter_visits_per_example": 104.7924,
+        "proposal_ess": 1.8969882627677916,
+        "unique_proposals": 1.965425
+      }
+    },
+    {
+      "tag": "aws_pairwise7_20261009T195916Z_pairwise_persistent",
+      "arm": "pairwise_persistent",
+      "final_dev_ll": -2.1618916988372803,
+      "dev_gap_to_dense": -0.12354493141174316,
+      "credit_kl": 0.46492645144462585,
+      "credit_tv": 0.38461896777153015,
+      "whole_fit_linear_macs": 812800000,
+      "linear_macs_per_target": 4064.0,
+      "linear_ratio_to_dense": 0.2351851851851852,
+      "optimizer_parameter_visits": 20958480,
+      "optimizer_parameter_visits_per_target": 104.7924,
+      "wall_s": 6.275779962539673,
+      "max_rss_kb": 417500,
+      "last_epoch": {
+        "epoch": 9,
+        "dev_marginal_ll": -2.1618916988372803,
+        "route_purity": 0.14259999990463257,
+        "credit_kl": 0.46492645144462585,
+        "credit_tv": 0.38461896777153015,
+        "mh_acceptance": 0.4903,
+        "distinct_pair_fraction": 0.9597,
+        "move_fraction": 0.45,
+        "pair_bce": 0.6521712255477905,
+        "macs_per_example": 4064.0
+      }
+    },
+    {
+      "tag": "aws_pairwise7_20261009T195916Z_pairwise_reset",
+      "arm": "pairwise_reset",
+      "final_dev_ll": -2.2051520347595215,
+      "dev_gap_to_dense": -0.16680526733398438,
+      "credit_kl": 0.12440968304872513,
+      "credit_tv": 0.19531215727329254,
+      "whole_fit_linear_macs": 812800000,
+      "linear_macs_per_target": 4064.0,
+      "linear_ratio_to_dense": 0.2351851851851852,
+      "optimizer_parameter_visits": 20958480,
+      "optimizer_parameter_visits_per_target": 104.7924,
+      "wall_s": 6.5452656745910645,
+      "max_rss_kb": 417236,
+      "last_epoch": {
+        "epoch": 9,
+        "dev_marginal_ll": -2.2051520347595215,
+        "route_purity": 0.13099999725818634,
+        "credit_kl": 0.12440968304872513,
+        "credit_tv": 0.19531215727329254,
+        "mh_acceptance": 0.8083,
+        "distinct_pair_fraction": 0.96475,
+        "move_fraction": 0.77305,
+        "pair_bce": 0.6523043301582336,
+        "macs_per_example": 4064.0
+      }
+    }
+  ],
+  "decision": "Continue development; diagnose compact-credit approximation, pair coverage and posterior-chain tracking separately",
+  "gates": {
+    "final_dev_gap_nats": -0.02,
+    "credit_kl": 0.02
+  },
+  "work_scope": "modeled linear work, optimizer parameter visits separate; wall time on shared host, no energy measurement",
+  "inputs": {
+    "experiments/results/credit/aws_credit6_20261009T191619Z_dense.json": "8f76b7478236f71b7681f41bec925d103f1291f02a1a40728403e09b9272bbfb",
+    "experiments/results/credit/aws_credit6_20261009T191619Z_closed_h8_s2.json": "480bd277d33534c6b1ad474bb24062f87569bcdb1b416b30614bc2b4d9a2887a",
+    "experiments/results/credit/aws_pairwise7_20261009T195916Z_pairwise_persistent.json": "a676482eefea87f8df5f77ef39776dd1ab4121d81738e4f52a70193a1c75ecef",
+    "experiments/results/credit/aws_pairwise7_20261009T195916Z_pairwise_reset.json": "ee291b00607ba062a41acbfe60ed31895fbec7edbdc038807db7719b4f8bcb9a"
+  },
+  "tag": "aws_pairwise7_20261009T195916Z_analysis",
+  "source_sha256": {
+    "experiments/credit/analyze_pairwise_v7.py": "d4bc34e7a4b20b0cde0596eb12bf365eb7367ffab20f2195ba7ee16a7038a1e5"
+  }
+}
