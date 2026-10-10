@@ -1,0 +1,153 @@
+{
+  "status": "completed",
+  "tag": "curie_structured_credit_v5b_20261010T1845Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_structured_credit_v5b_20261010T1845Z_smoke",
+    "mode": "smoke",
+    "depth": 4,
+    "seed": 170,
+    "steps": 2,
+    "train_packets": 4,
+    "dev_packets": 4,
+    "train_rollouts": 2,
+    "dev_rollouts": 2
+  },
+  "metrics": {
+    "arms": [
+      {
+        "arm": "free",
+        "parameters": 9831,
+        "scopes": {
+          "basis": {
+            "relative_mse": 0.9871065429049489,
+            "mse_gain_vs_train_constant": -0.00014632295066722056,
+            "utility_gain_vs_train_constant": 0.0,
+            "utility_gain_bootstrap95": [
+              0.0,
+              0.0
+            ],
+            "mean_pool_regret": 0.004230520749465463,
+            "chosen_advantages": [
+              0.00882653229459965,
+              -0.018209351738670644,
+              -0.02472298415459253,
+              -0.0645452401628783
+            ]
+          },
+          "unseen_directions": {
+            "relative_mse": 0.9852612765510799,
+            "mse_gain_vs_train_constant": -0.00018930214383370802,
+            "utility_gain_vs_train_constant": 0.0,
+            "utility_gain_bootstrap95": [
+              0.0,
+              0.0
+            ],
+            "mean_pool_regret": 0.0034201657352095132,
+            "chosen_advantages": [
+              0.005557649559608658,
+              -0.0146971977168375,
+              -0.02801083768007727,
+              -0.0666485178430862
+            ]
+          },
+          "augmented_pool": {
+            "relative_mse": 0.9858250576799692,
+            "mse_gain_vs_train_constant": -0.00017382963429377253,
+            "utility_gain_vs_train_constant": 0.001286964979712623,
+            "utility_gain_bootstrap95": [
+              -0.0018168948326271104,
+              0.003278368130237866
+            ],
+            "mean_pool_regret": 0.004291338571176001,
+            "chosen_advantages": [
+              0.005557649559608658,
+              -0.0146971977168375,
+              -0.02801083768007727,
+              -0.0666485178430862
+            ]
+          }
+        },
+        "chosen_native_write_parity_error": 2.7755575615628914e-16
+      },
+      {
+        "arm": "structured",
+        "parameters": 9840,
+        "scopes": {
+          "basis": {
+            "relative_mse": 0.9950710430358493,
+            "mse_gain_vs_train_constant": -0.00014914598187358637,
+            "utility_gain_vs_train_constant": -0.017315588602301604,
+            "utility_gain_bootstrap95": [
+              -0.03640111785905488,
+              0.0040002547982745185
+            ],
+            "mean_pool_regret": 0.021546109351767068,
+            "chosen_advantages": [
+              -0.004728007223292604,
+              0.006453247621908044,
+              -0.010293778022922322,
+              -0.02082015172802853
+            ]
+          },
+          "unseen_directions": {
+            "relative_mse": 0.9940409005075642,
+            "mse_gain_vs_train_constant": -0.0001932810038971412,
+            "utility_gain_vs_train_constant": 0.0,
+            "utility_gain_bootstrap95": [
+              0.0,
+              0.0
+            ],
+            "mean_pool_regret": 0.0034201657352095132,
+            "chosen_advantages": [
+              0.005557649559608658,
+              -0.0146971977168375,
+              -0.02801083768007727,
+              -0.0666485178430862
+            ]
+          },
+          "augmented_pool": {
+            "relative_mse": 0.994355638223502,
+            "mse_gain_vs_train_constant": -0.00017739239596866138,
+            "utility_gain_vs_train_constant": 0.001286964979712623,
+            "utility_gain_bootstrap95": [
+              -0.0018168948326271104,
+              0.003278368130237866
+            ],
+            "mean_pool_regret": 0.004291338571176001,
+            "chosen_advantages": [
+              0.005557649559608658,
+              -0.0146971977168375,
+              -0.02801083768007727,
+              -0.0666485178430862
+            ]
+          }
+        },
+        "chosen_native_write_parity_error": 2.7755575615628914e-16
+      }
+    ],
+    "actor_depth": 4,
+    "query_bound": 1.2647323344839108,
+    "components": 8,
+    "critic_training_actions": 9,
+    "evaluation_actions": 25,
+    "checkpoint": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_smoke.pt",
+    "checkpoint_sha256": "148ab264cac32dc90481208a9fa7f7b4ca9acb6ba0cf7445013b35e95e0fa201",
+    "teacher_actor_forwards": 40,
+    "teacher_target_presentations": 248,
+    "scope": "Matched prefix encoders, head parameter counts differ by rounding only, common basis TRAIN labels/scale and fit steps. Sixteen unseen directions never enter critic fitting. TRAIN constant for unseen directions is computed from the same TRAIN continuations, giving the reference extra action information. Selected native writes checked on four independent DEV prefixes, all replay charged. Initialized frozen teacher, synthetic true-generator access, no actor weight fitting, online scheduling or hardware efficiency claim."
+  },
+  "wall_s": 2.572528107000835,
+  "peak_rss_kb": 322256,
+  "supported_flops": 8222640,
+  "flop_scope": "All teacher response extraction, both fits, 25-action evaluation and selected-write replays included; special/unsupported arithmetic excluded.",
+  "source_sha256": {
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
