@@ -1,0 +1,30 @@
+{
+  "host": "curie",
+  "battle": "B10/R1",
+  "sources": {
+    "experiments/credit/real_boundary_confirmation.py": "a5a44535a39f94eb3e7dacf65545f302b14215ae13121fc5b6c48d4608d3b16e",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_learned_boundary_v3.py": "da8a7b792cef1eb756c6ac37486a36e35510a6d7ed6e32682f7bf201ba5c532b",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "jobs": [
+    {
+      "tag": "curie_real_boundary_confirm_20261010T2210Z_smoke_s182",
+      "queue": "experiments/queue/enabler/curie_real_boundary_confirm_20261010T2210Z/curie_real_boundary_confirm_20261010T2210Z_smoke_s182.txt",
+      "result": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_smoke_s182.json"
+    },
+    {
+      "tag": "curie_real_boundary_confirm_20261010T2210Z_measure_s182",
+      "queue": "experiments/queue/enabler/curie_real_boundary_confirm_20261010T2210Z/curie_real_boundary_confirm_20261010T2210Z_measure_s182.txt",
+      "result": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_measure_s182.json"
+    },
+    {
+      "tag": "curie_real_boundary_confirm_20261010T2210Z_measure_s183",
+      "queue": "experiments/queue/enabler/curie_real_boundary_confirm_20261010T2210Z/curie_real_boundary_confirm_20261010T2210Z_measure_s183.txt",
+      "result": "experiments/results/credit/curie_real_boundary_confirm_20261010T2210Z_measure_s183.json"
+    }
+  ]
+}
