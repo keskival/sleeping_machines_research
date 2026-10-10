@@ -20,10 +20,13 @@ def pages():
         ('small','No public language scoring interval or market TEST is read. Cached key-response algebra is valid within its fixed-learning-path assumptions; across changed optimizer updates the total effect needs versioned replay or audited transition prediction. Serial event-time CPU processing is not clockless hardware measurement.')]] + learned_credit_pages()
 
 def learned_credit_pages():
-    tags=['curie_real_boundary_v2_20261010T2150Z_measure','curie_real_boundary_v1_20261010T2140Z_measure']
+    tags=['curie_real_boundary_v3_20261010T2200Z_measure','curie_real_boundary_v2_20261010T2150Z_measure','curie_real_boundary_v1_20261010T2140Z_measure']
     path=next((ROOT/'experiments/results/credit'/f'{t}.json' for t in tags if (ROOT/'experiments/results/credit'/f'{t}.json').exists()),None)
     if path is None:return []
     result=json.loads(path.read_text());assert result['status']=='completed';arms=result['metrics']['rows'];rows=[]
+    if 'v3_' in path.name:
+        control=json.loads((ROOT/'experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_measure.json').read_text())
+        arms=[a for a in control['metrics']['rows'] if a['arm'] in ('bptt','local','untrained_audit')]+arms
     for a in arms:
         rows.append([a['arm'].replace('_',' '),f'{a["nll"]:.6f}',str(a['audits']),str(a['critic_steps']),f'{a["wall_s"]:.2f}'])
     learned=next(a for a in arms if a['arm']=='learned_audit');zero=next(a for a in arms if a['arm']=='untrained_audit')
@@ -32,5 +35,5 @@ def learned_credit_pages():
         ('p','Actor and credit parameters now learn in the same causal real-data episode. A connected predictor sees produced temporal/value state before future feedback, estimates the next window cotangent, and learns only from selected revealed audits. Local factual gradients remain exact; residual correction preserves the boundary expectation before clipping and Adam.'),
         ('table',(['Arm','NLL/event','Audits','Critic steps','Wall s'],rows,[55,33,23,31,25])),
         ('small',f'One development TRAIN fragment, seed {result["args"]["seed"]}, {learned["targets"]} targets, groups {result["args"]["group"]}, audit probability {result["args"]["audit_probability"]}. Lower NLL is better. Raw learned predictor {direction} quality against the untrained predictor under identical audit draws; evolving actor paths differ. No replicated benchmark claim or TEST score.'),
-        ('p','V1 learned credit hurt quality on 2048 targets. V2 normalizes state features and adds a causal trust coefficient fitted from prior audit cross-moments; raw versus calibrated rows isolate the trust contribution. All-audit split gradients match full BPTT to 3.3e-16. Producer graphs are consumed under the same actor version before weights change.'),
-        ('small',f'Complete setup and all arms: {result["whole_wall_s"]:.2f} s; peak RSS {result["peak_rss_kb"]/1024:.1f} MiB. Predictor, local graph, audit VJPs and both optimizers are charged; this prototype does not replace the complete backward pass. Baseline arms also execute an unused predictor to retain the common scaffold, so these wall times do not establish superiority over optimized BPTT. No asynchronous hardware or energy claim.')]]
+        ('p','V1 learned credit hurt quality on 2048 targets. V2 normalizes state features and adds a causal trust coefficient fitted from prior audit cross-moments; raw versus calibrated rows isolate the trust contribution. V3 adds recency-weighted replay of already-revealed audit records; unchanged BPTT/local/untrained controls reuse V2 evidence. All-audit split gradients match full BPTT to 3.3e-16. Producer graphs are consumed under the same actor version before weights change.'),
+        ('small',f'Selected phase setup and its executed arms: {result["whole_wall_s"]:.2f} s; peak RSS {result["peak_rss_kb"]/1024:.1f} MiB. Predictor, local graph, audit VJPs and both optimizers are charged; this prototype does not replace the complete backward pass. Baseline arms also execute an unused predictor to retain the common scaffold, so these wall times do not establish superiority over optimized BPTT. No asynchronous hardware or energy claim.')]]

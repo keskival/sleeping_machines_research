@@ -1,0 +1,38 @@
+{
+  "host": "curie",
+  "battle": "B10/R1",
+  "decision": "Causal audit replay improves learned credit versus unchanged V2 controls?",
+  "sources": {
+    "experiments/credit/real_learned_boundary_v3.py": "da8a7b792cef1eb756c6ac37486a36e35510a6d7ed6e32682f7bf201ba5c532b",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "jobs": [
+    {
+      "tag": "curie_real_boundary_v3_20261010T2200Z_contract",
+      "queue": "experiments/queue/enabler/curie_real_boundary_v3_20261010T2200Z/curie_real_boundary_v3_20261010T2200Z_contract.txt",
+      "result": "experiments/results/credit/curie_real_boundary_v3_20261010T2200Z_contract.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 600
+    },
+    {
+      "tag": "curie_real_boundary_v3_20261010T2200Z_smoke",
+      "queue": "experiments/queue/enabler/curie_real_boundary_v3_20261010T2200Z/curie_real_boundary_v3_20261010T2200Z_smoke.txt",
+      "result": "experiments/results/credit/curie_real_boundary_v3_20261010T2200Z_smoke.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 600
+    },
+    {
+      "tag": "curie_real_boundary_v3_20261010T2200Z_measure",
+      "queue": "experiments/queue/enabler/curie_real_boundary_v3_20261010T2200Z/curie_real_boundary_v3_20261010T2200Z_measure.txt",
+      "result": "experiments/results/credit/curie_real_boundary_v3_20261010T2200Z_measure.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 600
+    }
+  ]
+}
