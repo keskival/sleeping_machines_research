@@ -1,0 +1,80 @@
+{
+ "status": "completed",
+ "battle": "B5 tgbl-review development (diagnosis)",
+ "tag": "aws_b5_review_ablation_full_s1_20261010T1255Z",
+ "args": {
+  "tag": "aws_b5_review_ablation_full_s1_20261010T1255Z",
+  "dataset": "tgbl-review",
+  "root": "../../../data/tgb_aws/root",
+  "checkpoint": "experiments/results/tgb/aws_b5_review_v3_full_dev_20261010T1010Z_r2.pt",
+  "expect_full_mrr": 0.26783375086034844,
+  "dim": 16,
+  "hidden": 64,
+  "max_val": 0
+ },
+ "checkpoint_sha256": "72b2aa03b62695bcebfe76f9380d9fbd580884a80b8cea6918ab149a94a4adc9",
+ "queries": 730784,
+ "class_counts": {
+  "new_pair_known_source": 663980,
+  "new_source": 65548,
+  "repeat_pair": 1256
+ },
+ "scorers": {
+  "full": {
+   "mrr": 0.26783375086034844,
+   "new_pair_known_source": 0.24682034803859113,
+   "new_source": 0.47513126524930366,
+   "repeat_pair": 0.5580739836813665
+  },
+  "mlp": {
+   "mrr": 0.27655896683261827,
+   "new_pair_known_source": 0.263026302588302,
+   "new_source": 0.4078852605153699,
+   "repeat_pair": 0.5769112810237729
+  },
+  "mlp_bd": {
+   "mrr": 0.2786289456586844,
+   "new_pair_known_source": 0.2586708604361313,
+   "new_source": 0.4751503832966162,
+   "repeat_pair": 0.5733600219163497
+  },
+  "ident": {
+   "mrr": 0.14755314679352824,
+   "new_pair_known_source": 0.13737436740646952,
+   "new_source": 0.24916644572196248,
+   "repeat_pair": 0.2255447226360797
+  },
+  "pop30": {
+   "mrr": 0.34085945520278504,
+   "new_pair_known_source": 0.3286824061822611,
+   "new_source": 0.4620277406854185,
+   "repeat_pair": 0.4546956270434211
+  },
+  "pop7": {
+   "mrr": 0.323307106239995,
+   "new_pair_known_source": 0.3134489251903262,
+   "new_source": 0.42046563490859296,
+   "repeat_pair": 0.4643005904675547
+  },
+  "pop30_mlp": {
+   "mrr": 0.3131396284596843,
+   "new_pair_known_source": 0.2997832306167684,
+   "new_source": 0.4438830730697259,
+   "repeat_pair": 0.5507269950522824
+  }
+ },
+ "replay_wall_s": 28.153096914291382,
+ "wall_s": 224.9180085659027,
+ "scope": "VALIDATION only; no training; no TEST",
+ "full_reproduction": {
+  "expected": 0.26783375086034844,
+  "got": 0.26783375086034844,
+  "abs_diff": 0.0
+ },
+ "source_sha256": {
+  "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+  "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+  "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+  "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+ }
+}
