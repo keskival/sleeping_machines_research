@@ -1,3 +1,34 @@
+**AWS session wrap-up for the next agent — 10 Oct 14:50 UTC (queue owner on ip-172-31-47-132).**
+*Coordinator:* `scripts/run_aws_product_priority.py` (tmux `aws_model_improvement_repair`), manifest
+`experiments/queue/aws_model_improvement_repair_20261005T161000Z`; submit jobs with `experiments/tpp/submit.py` (one call per slot,
+several `--job`; patch `vms_kb`/`requires` in the addendum before committing; commit inside `/tmp/aws-language-publication.lock`).
+`experiments/queue/run_safe.sh` is pinned host-locally by a git clean/smudge filter (`.git/aws-pinned/`, see 10:40 entry): do not
+remove it while this coordinator runs. The coordinator never readmits a job name; use fresh tags. Slot 1 is **idle** now.
+*Queue:* slot 2 = B4 guarded reruns `b4g_github_s1` (running) → s2–s4 → `b4g_wikipedia_s0` → `b4g_lastfm_s4` →
+`b4g_lastfm_s3_memretry` → `aws_b5n_genre_affinity_v2_dev_s0`; slot 3 = online3 deep s2 (running) → local/trunc seeds →
+`online_analysis_20261009_r2` → `online1b_*_r2` (parallel session's grids).
+*Benchmarks:* B4 verdicts: Wikipedia WIN; MOOC, Stack Overflow, MIMIC2, Retweets LOSS; Github no valid verdict until b4g reruns;
+LastFM valid splits 0/1/2 = −720.10/−736.96/−894.02 (bar −849.65), splits 3, 4 pending (guarded). When Github and LastFM complete:
+compute five-split verdicts and update B4 doc, packet `report/public_wins_headline_evidence_20261009_v3.py`, `report/readable_report.py`
+rows, README/Part I/PITCH/INVESTMENT_CASE/INVESTOR_PROOF_PLAN/EIC/evidence brief p.5, then `make_pdf.py`, `split_report.py`,
+`build_investment_case.py --tag <fresh>`, latexmk the brief. B4 development: `--mark-mem 1` is the robust mark gain on MOOC and LastFM
+(window averages); next = pre-register a developed attempt. B4 LNM audits (MOOC 16.9, Retweets 113.0 nats/seq from the recording
+grid) are recorded in the B4 loss analysis; **open user question:** whether the audit wording the parallel session put in front-door
+documents should be reduced to one scoped sentence (user exception says audit results belong in the B4 loss analysis).
+B5 tgbl-review: v3 0.268, ablation shows popularity 0.341 beats the trained network; v5 A 0.261 / B 0.112 → next fix is a logQ
+(sampled-softmax) correction (B5_TGB.md). B2 PAM: v8 stopped by user decision; headline stays v7 0.9775. B3: all six FAS reference
+checkpoints and the raw data manifest are published for curie.
+*Theory (this session):* notes 164–168 (sparse forward-trained delayed credit; credit-rate scaling incl. measured failures and
+pre-registered P1–P3 grading; coupled convergence and storage; temporal credit prior (Laplace) with its weak result; race information
+geometry: diagonal Fisher = expected wins); Lean 4 project `experiments/lean/credit_theory` (19 theorems, `lake build`, standard
+axioms only; elan at ~/.elan). Open theory/measurement items: (1) per-event credit rate for addressed writes (note 165 §7b: P2
+failed as operationalized; measure per-event support/rate directly); (2) Laplace prior repairs (note 167 §5); (3) sparsity-over-
+training test (note 165 §9); (4) symmetry-breaking specialization test (note 168 §4).
+*Tutorials:* `tutorials/` 1–3 done (LaTeX+PDF); 4–8 outlined in `tutorials/README.md`.
+*Lessons:* read HANDOFF/PRODUCT_ORDERS heads every check (a user decision was relayed via curie); edit tracked files only inside
+the publication lock; compare development arms with window averages or several seeds (shared seed-0 batch order creates common
+best-epoch dips).
+
 **Curie current state — 10 Oct 13:45 UTC.** User retains original sealed PAM v7 (five-split accuracy 0.9775 ± 0.0074, F1 0.9803 ± 0.0080); all PAM replacement training is stopped. Curie split 3 preserves completed epoch-70 recovery with no TEST scoring. AWS confirms split 2 stopped around epoch 28 with no TEST; no AWS PAM job remains pending. Preserve completed v8/v9 evidence; restart neither PAM controller.
 
 Live tmux `curie-fronts-20261010T1220Z` runs `scripts/continue_curie_fronts.py` and `queue/curie_fronts_20261010T1220Z/manifest.json`, one run_safe job at a time. State-key/report and first future-credit phase are completed/published. Sealed FAS scoring is active (native seeds 6/7/8 completed; neural references in progress). TEST reservations are once-only: no restart or new admission for a reserved job. Current host availability is about 11.4 GiB under scoring; execution floor 9 GiB, cgroup reserve 2 GiB, per-job watchdogs retained. Other services are untouched.

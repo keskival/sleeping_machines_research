@@ -61,3 +61,8 @@ correlation (bursts and slow modes carry the large tails) and a cost reduction t
 Attribution: Laplace transforms of renewal processes and discounted sums (standard renewal theory); Hawkes self-excitation
 (Hawkes 1971). New here: using the forward race's predicted gap law as the credit model's uncertainty prior per memory mode, as
 the input to surprise-adaptive sparse credit. Post-boundary, unpublished (IDF-08).
+
+## 5. Result (`credit_laplace_taxi_n16`, 10 Oct 14:30 UTC; Taxi DEV, dense-write learner, 16 modes)
+
+Pooled Spearman(V̂, |tail|²) = **0.83**, but this is driven by between-mode differences: within-mode Spearman is weak (−0.14 to 0.28; strongest on the slower-decay modes 10–13). Calibration is poor (log-log slope 3.9; predicted/realized per-mode means 0.1–4 and one degenerate slow mode with L ≈ 1). Audit cost at equal variance relative to uniform: **Laplace allocation 1.02 (no saving)**, realized per-mode means 0.53 (not causal), oracle 0.32. **Reading:** the renewal-Laplace prior captures *which modes* carry large credit but not *when*; it is not yet a usable causal surprise estimator. Repairs to test: per-mode σ² fitted on TRAIN, clamping L(2r) away from 1 for slow modes, and combining with the self-exciting surprise estimator of §2.4.
+
