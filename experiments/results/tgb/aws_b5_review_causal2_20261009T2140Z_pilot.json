@@ -1,0 +1,87 @@
+{
+  "status": "completed",
+  "args": {
+    "tag": "aws_b5_review_causal2_20261009T2140Z_pilot",
+    "contract": false,
+    "dataset": "tgbl-review",
+    "root": "../../../data/tgb_aws/root",
+    "seed": 0,
+    "epochs": 2,
+    "neg": 20,
+    "dim": 16,
+    "hidden": 64,
+    "max_train": 50000,
+    "max_val": 5000,
+    "lr": 0.003,
+    "weight_decay": 0.0001
+  },
+  "dataset": "tgbl-review",
+  "nodes": 352637,
+  "parameters": 11642366,
+  "val_mrr": 0.20003051217494006,
+  "best_epoch": 1,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 2.3926441588401794,
+      "val_mrr": 0.1985698975293443,
+      "val_queries": 5000,
+      "train_wall_s": 45.12924242019653,
+      "remaining_history_replay_wall_s": 22.226977109909058,
+      "val_wall_s": 0.941267728805542,
+      "epoch_s": 68.30513381958008,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 3,
+          "mrr": 0.75
+        },
+        "new_pair_known_source": {
+          "queries": 4538,
+          "mrr": 0.1717356651227484
+        },
+        "new_source": {
+          "queries": 459,
+          "mrr": 0.4602680595200203
+        }
+      }
+    },
+    {
+      "epoch": 1,
+      "train_loss": 2.3012746696472166,
+      "val_mrr": 0.20003051217494006,
+      "val_queries": 5000,
+      "train_wall_s": 39.70981407165527,
+      "remaining_history_replay_wall_s": 22.289536476135254,
+      "val_wall_s": 0.944115161895752,
+      "epoch_s": 62.94938588142395,
+      "query_profile": {
+        "repeat_pair": {
+          "queries": 3,
+          "mrr": 0.5833333333333334
+        },
+        "new_pair_known_source": {
+          "queries": 4538,
+          "mrr": 0.1733553867129995
+        },
+        "new_source": {
+          "queries": 459,
+          "mrr": 0.46125450102638044
+        }
+      }
+    }
+  ],
+  "checkpoint": "experiments/results/tgb/aws_b5_review_causal2_20261009T2140Z_pilot.pt",
+  "trained_events": 100000,
+  "competitors_per_train_query": 20,
+  "protocol": "Per-query features from events strictly earlier than query timestamp; pending ties carried across batches and splits; official validation negatives/Evaluator; no TEST",
+  "evidence_level": "first-pass v2 development repair; bounded prefixes are diagnostics, not full validation claims",
+  "tag": "aws_b5_review_causal2_20261009T2140Z_pilot",
+  "battle": "B5 tgbl-review development",
+  "wall_s": 136.52513456344604,
+  "max_rss_kb": 3251492,
+  "source_sha256": {
+    "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+    "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+    "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+  }
+}
