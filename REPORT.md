@@ -4044,4 +4044,30 @@ The predecessor-message keyed race model learns bindings across irregular gaps. 
 | Normalized local credit, 8 pairs | 90.0% ± 5.5 pp | 91.9% / 83.8% / 94.2% | 14.1% |
 | Normalized local credit, 16 pairs | 41.9% ± 32.4 pp | 79.4% / 23.1% / 23.3% | 7.9% |
 
-Three completed seeds per configuration; mean and sample SD; mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring. Source and configuration consistency are checked by the headline packet builder. All completed result files are retained. These are recall-task results, not a language leaderboard claim. The forward-supported residual estimator has eight finite mathematical tests; its initialized native forced-write contract is queued, and an integrated learning comparison follows only after that gate passes.
+Three completed seeds per configuration; mean and sample SD; mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring. Source and configuration consistency are checked by the headline packet builder. All completed result files are retained. These are recall-task results, not a language leaderboard claim. The forward-supported residual estimator has eight finite mathematical tests. Its initialized native optional-write contract passes (conditional-mean error ≤1.81e−15 over 1,614 parameters), as does the actual continuous-producer contract for plain and normalized keys (≤6.67e−16 over 1,587 parameters). Constructed predictor improvements reduce audit variance 16-fold; learned predictor quality and complete work to matched quality are measured separately in development.
+
+## Appendix. R1 reciprocal learning: native gates and credit transfer development
+
+R1/B1 development: the unchanged native keyed temporal model supports persistent credit functions and a learned update function. Depths 2, 4 and 8 pass selected-teacher and temporal-state parity; one-step future derivatives for credit and optimizer parameters agree with finite differences to 1.7e-10. Task-preserving key/value relabeling respects forward predictions, gradients and learned updates. Version-bound packets repair stale embedding features exposed by that symmetry test.
+
+| Depth | Actor params | FIT targets | Whole-fit MF | MF/target | Wall s | RSS MiB |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | 1723 | 132 | 4.578 | 0.0347 | 3.75 | 323.1 |
+| 4 | 2633 | 132 | 7.742 | 0.0587 | 5.97 | 335.2 |
+| 8 | 4453 | 132 | 13.866 | 0.1050 | 10.61 | 359.7 |
+
+Three updates per depth; unique FIT targets include support and independent future examples. Whole-fit/per-target arithmetic use the same PyTorch supported-operation convention; special functions and unsupported operations remain in the saved operator ledger and are not represented fully by this FLOP number. Wall includes instrumentation. Every native model has eight addressed mark slots and eight key slots, writes one of each per input, updates every temporal layer and scores all eight keys. Local actor backward, predicted coordinate updates and optimizer visits remain dense; selected teachers query only audited producer blocks. Inference is unchanged and not separately timed by these gates. No efficiency, benchmark or energy claim.
+
+The frozen-teacher coordinate-credit prototype did not produce useful calibration transfer after its fixed 64-step pilot. The actor snapshots stay fixed, all assessment credit states reset, and no assessment labels enter predictions. Relative missing-credit MSE 1.0 is the zero-correction baseline. This diagnoses the coarse coordinate feature interface; it is not a verdict on the model family or grokking.
+
+| DEV case | Depth | Pairs | Learned MSE | Frozen MSE |
+| --- | --- | --- | --- | --- |
+| same_depth | 2 | 2 | 1.0050 | 1.0003 |
+| long_history | 2 | 4 | 1.0409 | 0.9982 |
+| unseen_weights | 2 | 2 | 1.0217 | 1.0014 |
+| unseen_depth4 | 4 | 2 | 1.0097 | 0.9998 |
+| unseen_depth8 | 8 | 2 | 0.9974 | 1.0007 |
+
+Pilot: 128 TRAIN sequences, disjoint DEV seeds, no TEST; 2272 scored-target presentations with 4544 full/local teacher-gradient targets, 157.43 supported MFLOPs, 65.42 s, 513.8 MiB peak RSS. All teacher and assessment work included.
+
+Next gate: state-sized addressed key cotangents with exact forward elapsed-time transport, then learned credit tails and asynchronous credit clocks. Causal streams use actual timestamps and versioned pending records. Credit structure and optimizer parameters may adapt across regimes; frozen teachers isolate calibration capacity and do not assume stationary deployment. See CREDIT_GENERALIZATION.md and RECIPROCAL_EVENT_LEARNING.md. No delayed-generalization/grokking result is claimed.
