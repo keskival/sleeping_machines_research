@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/experiments/tpp/check_b4_logspread.py", line 122, in <module>
+    if __name__ == '__main__': main()
+                               ~~~~^^
+  File "/workspace/experiments/tpp/check_b4_logspread.py", line 66, in main
+    assert value_error < 1e-9 and grad_error < 1e-10, (nw, value_error, grad_error)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (2, nan, nan)

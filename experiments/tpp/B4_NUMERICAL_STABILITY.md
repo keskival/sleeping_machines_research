@@ -26,3 +26,23 @@ external architecture or sealed test score is part of this pipeline.
 
 Initial source-bound job: `aws_b4_backward_diagnosis_20261010T1958Z`, AWS slot 3,
 900-second timeout, 4 GB RSS watchdog, existing scheduler memory floor.
+
+Completed diagnosis: the original isolated head has finite loss -3.74237 but
+11,550 infinite sigma values. Autograd identifies ExpBackward0 at v19 line177,
+the recording-cell spread floor exp(-mu), with minimum mu -1440.83. This is
+an intermediate overflow, not evidence that the recording-cell likelihood
+itself must be non-finite. Result: aws_b4_backward_diagnosis_20261010T1958Z.
+
+Repair stores log spread = logaddexp(log softplus(raw), max(log(c)-mu,
+log(.005))); raw Gaussian terms use exp(-log spread) and log spread directly.
+Exponential survival uses exp(log rate + log weight). Logistic edges are also
+represented by their logarithms. The log-softplus negative tail below -30 uses
+the asymptote x (relative error below 5e-14); no delay/rate/gradient clipping
+is introduced. Existing parameters and architecture remain unchanged.
+
+The first window-contract fixture used invalid negative endpoints; its failed
+job/log stays recorded. Corrected positive endpoints run under
+aws_b4_logspread_check_v2_20261010T2002Z. Finite-region head comparisons passed;
+full-chain TRAIN backward is pending. A five-pass original-settings fresh fit
+is prepared, and is admitted only after the full-gradient gate passes. This
+pilot checks recurrence of skipped updates, not benchmark superiority.
