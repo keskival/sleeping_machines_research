@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "tag": "aws_reciprocal_transport_contract_20261010T2152Z",
+  "battle": "B1/R1",
+  "stage": "reciprocal_transport_component",
+  "max_matrix_error": 0.0,
+  "max_prediction_error": 2.220446049250313e-16,
+  "stale_version_rejected": true,
+  "wrong_context_rejected": true,
+  "forward_packets": 16,
+  "local_teaching_updates": 256,
+  "matrix_elements": 256,
+  "retained_packet_elements": 512,
+  "wall_s": 0.6828128900378942,
+  "max_rss_kb": 391060,
+  "gate": {
+    "path": "experiments/results/credit/aws_reciprocal_probe_contract_20261010T2149Z.json",
+    "sha256": "3e9fc4416693184c8c616dd82d960bf0d202f386f16e61699fa00aa8b83284fa"
+  },
+  "source_sha256": {
+    "experiments/credit/reciprocal_transport_contract.py": "44ff0e67c8095b6bd79f15023049aaa5d95d8ff5a95954498289658ae5b80941",
+    "experiments/credit/reciprocal_transport.py": "c76d4560bfc4ea8f8c9bd378e4820fa8c165a877795bc44c6769c4e451191bca",
+    "experiments/credit/reciprocal_probe_contract.py": "7860cf0e63702b6c6f4404f4915d60c045e1a677a0d11349f5a6b7688b1f9986",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "scope": "Frozen native temporal layer; 16 forward directional packets reused for 256 local outer-product teaching updates. Dense matrix/packet prototype, no third autograd teacher for local update. No changing actor, task utility, TEST or efficiency claim.",
+  "decision": "Use versioned local primitive for proposed reciprocal integration; context-conditioned sharing and moving-target tracking still require evidence."
+}
