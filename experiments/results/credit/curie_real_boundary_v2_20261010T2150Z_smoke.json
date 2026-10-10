@@ -1,0 +1,177 @@
+{
+  "status": "completed",
+  "battle": "B10/R1",
+  "tag": "curie_real_boundary_v2_20261010T2150Z_smoke",
+  "args": {
+    "tag": "curie_real_boundary_v2_20261010T2150Z_smoke",
+    "mode": "smoke",
+    "targets": 64,
+    "context": 32,
+    "group": 8,
+    "audit_probability": 0.25,
+    "seed": 181
+  },
+  "metrics": {
+    "rows": [
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_smoke_bptt.pt",
+        "checkpoint_sha256": "0e6bc6cace9c57b339aa37f76551d3fbc4b5350719f239e7ff8c62d3859fbbe4",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "bptt",
+        "seed": 181,
+        "nll": 9.372823260830241,
+        "targets": 64,
+        "updates": 8,
+        "audits": 8,
+        "critic_steps": 0,
+        "wall_s": 0.358949688001303,
+        "block_nll": [
+          9.372823260830241
+        ],
+        "audited_mse": [],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_smoke_local.pt",
+        "checkpoint_sha256": "1430ddb5bc9c90976c52c2568abd9312b201be9223c76896ca17314b128eb0b9",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "local",
+        "seed": 181,
+        "nll": 9.370056199241509,
+        "targets": 64,
+        "updates": 8,
+        "audits": 0,
+        "critic_steps": 0,
+        "wall_s": 0.276736505998997,
+        "block_nll": [
+          9.370056199241509
+        ],
+        "audited_mse": [],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_smoke_untrained_audit.pt",
+        "checkpoint_sha256": "329014d7507f5ef1659b18632e2ad2e422dae9dbe1def7db9626e4b2120140a4",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "untrained_audit",
+        "seed": 181,
+        "nll": 9.369754089837272,
+        "targets": 64,
+        "updates": 8,
+        "audits": 2,
+        "critic_steps": 0,
+        "wall_s": 0.3056435269973008,
+        "block_nll": [
+          9.369754089837272
+        ],
+        "audited_mse": [
+          0.001066339046849225,
+          0.00045362361770517017
+        ],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_smoke_learned_audit.pt",
+        "checkpoint_sha256": "81b809932041462201efefc3a1c1a8d4da5cdc8e41aa5003a68641d3a46c0a05",
+        "credit_trust": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "arm": "learned_audit",
+        "seed": 181,
+        "nll": 9.369301284063473,
+        "targets": 64,
+        "updates": 8,
+        "audits": 2,
+        "critic_steps": 2,
+        "wall_s": 0.30305610899813473,
+        "block_nll": [
+          9.369301284063473
+        ],
+        "audited_mse": [
+          0.001066339046849225,
+          0.0017086534149249905
+        ],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      },
+      {
+        "checkpoint": "experiments/results/credit/curie_real_boundary_v2_20261010T2150Z_smoke_calibrated_audit.pt",
+        "checkpoint_sha256": "e287f8067435c1201a487365b55c7834311b8c12098638ca5f41e3475d94c5f0",
+        "credit_trust": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1673447832427169
+        ],
+        "arm": "calibrated_audit",
+        "seed": 181,
+        "nll": 9.369754089837272,
+        "targets": 64,
+        "updates": 8,
+        "audits": 2,
+        "critic_steps": 2,
+        "wall_s": 0.2989822949966765,
+        "block_nll": [
+          9.369754089837272
+        ],
+        "audited_mse": [
+          0.001066339046849225,
+          0.001708398830053814
+        ],
+        "critic_parameters": 22920,
+        "boundary_width": 88
+      }
+    ]
+  },
+  "whole_wall_s": 2.396060276994831,
+  "peak_rss_kb": 323992,
+  "source_sha256": {
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Real TRAIN prefix; causal online actor and credit updates. Learned boundary cotangents extend local credit, not full backward replacement. Audits unbiased before clipping/Adam; nonlinear optimizer updates are not unbiased. Exact local derivatives, predictor, audit, optimizer and setup charged in wall; no efficiency or benchmark claim."
+}
