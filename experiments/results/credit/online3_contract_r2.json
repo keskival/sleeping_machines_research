@@ -1,0 +1,21 @@
+{
+ "status": "completed",
+ "tag": "online3_contract_r2",
+ "contract": {
+  "online_deep": {
+   "max_rel": 9.560088608693272e-16,
+   "worst": "fr1",
+   "lower_layer_max_rel": 6.115119493193354e-16
+  },
+  "online_trunc": {
+   "max_rel": 1.2436177486248607,
+   "worst": "Wi1",
+   "lower_layer_max_rel": 1.1205106043288764
+  }
+ },
+ "statement": "fixed weights: online_deep gradient == BPTT; online_trunc differs on lower-layer parameters",
+ "source_sha256": {
+  "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
