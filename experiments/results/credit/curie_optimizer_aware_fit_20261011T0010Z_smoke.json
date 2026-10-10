@@ -1,0 +1,128 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_optimizer_aware_fit_20261011T0010Z_smoke",
+  "args": {
+    "tag": "curie_optimizer_aware_fit_20261011T0010Z_smoke",
+    "mode": "smoke"
+  },
+  "rows": [
+    {
+      "arm": "saved_frozen_credit",
+      "learning_aware_relative_mse": 0.4696637143931219,
+      "unseen_learning_aware_relative_mse": 0.713483022877312,
+      "gain_vs_train_fixed": 0.008890630360549656,
+      "gain_bootstrap95": [
+        -0.0015989447038664562,
+        0.01938020542496577
+      ],
+      "gain_vs_noop": 0.00958811875898219,
+      "expanded_pool_gain": 0.0,
+      "unseen_nonzero_selected": 0,
+      "chosen_receiver_action": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "arm": "fixed_path_fit",
+      "learning_aware_relative_mse": 0.4692174751616429,
+      "unseen_learning_aware_relative_mse": 0.7121412939372338,
+      "gain_vs_train_fixed": 0.008890630360549656,
+      "gain_bootstrap95": [
+        -0.0015989447038664562,
+        0.01938020542496577
+      ],
+      "gain_vs_noop": 0.00958811875898219,
+      "expanded_pool_gain": 0.0,
+      "unseen_nonzero_selected": 0,
+      "chosen_receiver_action": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "arm": "learning_aware_fit",
+      "learning_aware_relative_mse": 0.46921811630828963,
+      "unseen_learning_aware_relative_mse": 0.7121186292434472,
+      "gain_vs_train_fixed": 0.008890630360549656,
+      "gain_bootstrap95": [
+        -0.0015989447038664562,
+        0.01938020542496577
+      ],
+      "gain_vs_noop": 0.00958811875898219,
+      "expanded_pool_gain": 0.0,
+      "unseen_nonzero_selected": 0,
+      "chosen_receiver_action": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    }
+  ],
+  "paired": {
+    "gain_learning_aware_over_fixed_path": 0.0,
+    "bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  "teacher_supported_flops": 53265888,
+  "fit_work": [
+    {
+      "arm": "fixed_path_fit",
+      "wall_s": 0.016170326998690143,
+      "supported_flops": 4810752
+    },
+    {
+      "arm": "learning_aware_fit",
+      "wall_s": 0.01657205499941483,
+      "supported_flops": 4810752
+    }
+  ],
+  "train_prefixes": 2,
+  "dev_prefixes": 2,
+  "train_rollouts": 1,
+  "dev_rollouts": 2,
+  "steps": 2,
+  "readout_adam_lr": 0.05,
+  "correction_parameters": 2817,
+  "fixed_response_vs_learning_response_mse": 5.778064786983867e-07,
+  "checkpoint": "experiments/results/credit/curie_optimizer_aware_fit_20261011T0010Z_smoke.pt",
+  "checkpoint_sha256": "f1d9499f873ce32456b87c02463ff78948fd00feeb700e608db4e4d6217aad34",
+  "prior_result": "experiments/results/credit/curie_shared_receiver_fit_20261010T2300Z_pilot.json",
+  "prior_checkpoint_sha256": "4fd2bf17cb14c5d6df7e0d244fdd92becd0b5692fb1be7c369059ac373734e32",
+  "whole_wall_s": 3.1297939580035745,
+  "peak_rss_kb": 325624,
+  "source_sha256": {
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Seed170 bounded synthetic development. Branch-local288-parameter readout Adam adapts after each of four revealed targets; carrier and critic remain fixed during each continuation. Full-prefix causal replay and all baseline/teacher/fitting work charged. Identical correction heads/initialization/steps/observations; labels deliberately compare frozen response with actual future-learning response. TRAIN labels only receivers0\u20135. DEV continuations are independent; intervals bootstrap prefixes conditional on fitted seed. No deep actor co-adaptation, online critic learning, general internal races, matched-quality whole-fit efficiency, hardware or TEST claim."
+}
