@@ -1,0 +1,25 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "TRAIN-only localization of finite-loss nonfinite backward on the longest Github batch; decides the numerical repair, no TEST or optimizer updates",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b4_backward_diagnosis_20261010T1958Z",
+        "queue": "experiments/queue/b4/aws_b4_backward_diagnosis_20261010T1958Z/aws_b4_backward_diagnosis_20261010T1958Z.txt",
+        "queue_sha256": "b737d7f0eb8e99973fb58f77dbc6a60ceb30c7a256e19f0a1f1c1a597ef39e1c",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/diagnose_b4_backward.py": "fb5f6b275af7aa932bbce7a1f800c542f84f646caff6a1b439c7a5c2534614d0",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_backward_diagnosis_20261010T1958Z.json",
+        "timeout_s": 900,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
