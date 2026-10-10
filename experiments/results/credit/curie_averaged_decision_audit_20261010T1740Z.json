@@ -1,0 +1,186 @@
+{
+  "status": "completed",
+  "tag": "curie_averaged_decision_audit_20261010T1740Z",
+  "battle": "R1/B1",
+  "training": false,
+  "metrics": [
+    {
+      "seed": 170,
+      "history": "isolated",
+      "averaging_mse_reduction": 5.170055711056624e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        2.362464338914211e-05,
+        8.169864982647096e-05
+      ],
+      "averaging_future_loss_reduction": 0.002211099720875601,
+      "averaging_future_loss_reduction_bootstrap95": [
+        0.0006240475035328146,
+        0.004291258673008461
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.0038997014434904264,
+          "mean_maximum_value_error": 0.014308195280128676,
+          "certified_optimal_fraction": 0.046875,
+          "observed_optimal_fraction": 0.59375
+        },
+        "averaged": {
+          "mean_pool_regret": 0.0016886017226148253,
+          "mean_maximum_value_error": 0.010432704268798287,
+          "certified_optimal_fraction": 0.125,
+          "observed_optimal_fraction": 0.765625
+        }
+      }
+    },
+    {
+      "seed": 170,
+      "history": "connected",
+      "averaging_mse_reduction": 3.436780521975714e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        -3.5695191187307074e-06,
+        7.03836094065029e-05
+      ],
+      "averaging_future_loss_reduction": 0.0008523151540809649,
+      "averaging_future_loss_reduction_bootstrap95": [
+        -0.00180617369612835,
+        0.003400508068863327
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.005723190717448177,
+          "mean_maximum_value_error": 0.016055976956514867,
+          "certified_optimal_fraction": 0.015625,
+          "observed_optimal_fraction": 0.515625
+        },
+        "averaged": {
+          "mean_pool_regret": 0.0048708755633672125,
+          "mean_maximum_value_error": 0.013001324589949079,
+          "certified_optimal_fraction": 0.125,
+          "observed_optimal_fraction": 0.59375
+        }
+      }
+    },
+    {
+      "seed": 171,
+      "history": "isolated",
+      "averaging_mse_reduction": 3.5439385537230054e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        2.3843492929269988e-05,
+        4.74110325328798e-05
+      ],
+      "averaging_future_loss_reduction": 0.0005551406514340777,
+      "averaging_future_loss_reduction_bootstrap95": [
+        1.2432637622097353e-05,
+        0.001380388738948756
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.0009126723862023344,
+          "mean_maximum_value_error": 0.013762044936433723,
+          "certified_optimal_fraction": 0.15625,
+          "observed_optimal_fraction": 0.84375
+        },
+        "averaged": {
+          "mean_pool_regret": 0.00035753173476825683,
+          "mean_maximum_value_error": 0.008766874041434777,
+          "certified_optimal_fraction": 0.40625,
+          "observed_optimal_fraction": 0.875
+        }
+      }
+    },
+    {
+      "seed": 171,
+      "history": "connected",
+      "averaging_mse_reduction": 3.833303647589983e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        1.7747132296012972e-05,
+        6.0353474036886814e-05
+      ],
+      "averaging_future_loss_reduction": 0.0024748604846127546,
+      "averaging_future_loss_reduction_bootstrap95": [
+        0.0009388229012976356,
+        0.004393164029030301
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.0028269608440832763,
+          "mean_maximum_value_error": 0.016605167184711056,
+          "certified_optimal_fraction": 0.125,
+          "observed_optimal_fraction": 0.703125
+        },
+        "averaged": {
+          "mean_pool_regret": 0.00035210035947052165,
+          "mean_maximum_value_error": 0.012451607720948069,
+          "certified_optimal_fraction": 0.296875,
+          "observed_optimal_fraction": 0.875
+        }
+      }
+    },
+    {
+      "seed": 172,
+      "history": "isolated",
+      "averaging_mse_reduction": 2.3072632144863763e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        1.3171506108980264e-05,
+        3.5058941249750425e-05
+      ],
+      "averaging_future_loss_reduction": 0.0012775748929953563,
+      "averaging_future_loss_reduction_bootstrap95": [
+        0.0003635416763251635,
+        0.0024445726377988197
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.002658041247286638,
+          "mean_maximum_value_error": 0.010252001780384875,
+          "certified_optimal_fraction": 0.109375,
+          "observed_optimal_fraction": 0.640625
+        },
+        "averaged": {
+          "mean_pool_regret": 0.0013804663542912818,
+          "mean_maximum_value_error": 0.00718768320904082,
+          "certified_optimal_fraction": 0.1875,
+          "observed_optimal_fraction": 0.734375
+        }
+      }
+    },
+    {
+      "seed": 172,
+      "history": "connected",
+      "averaging_mse_reduction": 2.7775273293957398e-05,
+      "averaging_mse_reduction_bootstrap95": [
+        5.448710489011442e-06,
+        5.079853475479511e-05
+      ],
+      "averaging_future_loss_reduction": 0.0023700929850034307,
+      "averaging_future_loss_reduction_bootstrap95": [
+        0.0005628246608995157,
+        0.004468150927609898
+      ],
+      "certificates": {
+        "single": {
+          "mean_pool_regret": 0.005477417454014825,
+          "mean_maximum_value_error": 0.013746171039051562,
+          "certified_optimal_fraction": 0.078125,
+          "observed_optimal_fraction": 0.4375
+        },
+        "averaged": {
+          "mean_pool_regret": 0.0031073244690113947,
+          "mean_maximum_value_error": 0.011418501160233517,
+          "certified_optimal_fraction": 0.078125,
+          "observed_optimal_fraction": 0.578125
+        }
+      }
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/credit/curie_averaged_credit_v3_20261010T1720Z_pilot_s170.json": "3c28f4ae98c0b90cd0a008d15bae2224c4f2d24f727e2ffe78e7f7ec57a48d62",
+    "experiments/results/credit/curie_averaged_credit_v3_20261010T1720Z_pilot_s171.json": "cf8acce2821a8deed298cb5c29c57df58931234eab42df641f3da059285cbb5b",
+    "experiments/results/credit/curie_averaged_credit_v3_20261010T1720Z_pilot_s172.json": "78a35ac1881509546d312e2a832a34facf107e315d3c7de1153728607b0d9010"
+  },
+  "source_sha256": {
+    "experiments/credit/audit_future_credit_decisions.py": "cf9e7d4255111c1fdec6cff1bf1a5cce0b46639f28800d5f6d97bf6518983803"
+  },
+  "wall_s": 0.02555621200008318,
+  "scope": "Finite DEV continuation averages, shared contexts and teacher per seed. Certificates compare predictions to observed sample means, not population future utility. Bootstrap is conditional prefix uncertainty. No new scoring, teacher replay, fitting or test access."
+}

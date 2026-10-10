@@ -24,7 +24,12 @@ def main():
         paths=['REPORT.md','report/sleeping_machines_status.pdf','report/II_METHODS.md','report/III_RECORD.md']
         paths.extend(str(p.relative_to(ROOT)) for p in (ROOT/'report').glob('I*_*.pdf'))
         paths=sorted(set(p for p in paths if (ROOT/p).exists()))
-        subprocess.run(['git','add','--',*paths],cwd=ROOT,check=True)
+        for attempt in range(15):
+            added=subprocess.run(['git','add','--',*paths],cwd=ROOT,text=True,capture_output=True)
+            if added.returncode==0:break
+            if 'index.lock' not in added.stderr:raise RuntimeError(added.stderr)
+            time.sleep(2)
+        else:raise RuntimeError('Git index stayed busy during report publication')
         if subprocess.run(['git','diff','--cached','--quiet','--',*paths],cwd=ROOT).returncode:
             subprocess.run(['git','commit','--only','-m','Regenerate current report with native reciprocal credit development','--',*paths],cwd=ROOT,check=True)
         sources=['scripts/build_curie_credit_report.py','report/reciprocal_native_appendix.py',
