@@ -16,7 +16,8 @@ variance σ² per mode):
     Var[λ_t − c_t | s_t] = σ² · L_t(2r) / (1 − L_t(2r)).
 
 *Proof.* E[Π_{k≤j} a_{t+k}^*] = L_t(r + iω)^j and E[Π_{k≤j} |a_{t+k}|²] = L_t(2r)^j; sum the geometric series (|L_t| < 1 for
-r > 0) and use independence of the cotangents. ∎
+r > 0) and use independence of the cotangents. The variance line is exact for c̄ = 0; with c̄ ≠ 0 the gap
+randomness adds Var[c̄ Σ_j Π_k a_{t+k}^*], which vanishes as the fitted model's mean score E[c] → 0 (§3). ∎
 
 For an exponential clock of rate μ, L_t(s) = μ/(μ + s), so
 
