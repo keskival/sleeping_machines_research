@@ -73,9 +73,16 @@ def unseen_receiver_pages():
     for a in d['metrics']['arms']:
         z=a['scopes']['unseen_inactive'];u=a['utility']
         rows.append([a['arm'],f"{z['relative_mse_vs_zero']:.4f}",f"{z['role_constant_relative_mse']:.4f}",f"{u['gain_from_expanding_counterfactual_pool']:+.6f}",str(u['unseen_inactive_selected'])])
-    return [[('h2','Shared credit for never-labelled receiver addresses'),
+    result_pages=[[('h2','Shared credit for never-labelled receiver addresses'),
         ('p','A route-conditioned connected critic learns only from receiver addresses0–5, then predicts optional native key-write effects at addresses6–7. Receiver descriptors contain observed state and token role, without raw receiver identity or future feedback. The comparison uses nearly matched structured-response and free heads.'),
         ('table',(['Critic','Error / zero','Role mean / zero','Expanded-pool gain','Inactive selected'],rows,[28,31,35,43,30])),
         ('small','Calibration concerns never-labelled receivers that differ from the factual active address. Lower relative error is better; positive pool gain means lower actual future loss than selection confined to training receivers. One fitted seed170,128 TRAIN and64 fresh DEV prefixes,8/16 synthetic continuations,256 steps. Prefix bootstrap intervals are conditional on this fitted seed.'),
         ('p','Native optional-write values, action derivatives, causal descriptors and receiver relabeling pass at depths2,4 and8. Value agreement is within1.6e-15. This interface preserves temporal/value evolution; the actor is frozen and factual write addresses remain observed marks.'),
         ('small',f"Entire pilot {d['wall_s']:.2f}s, peak RSS{d['peak_rss_kb']/1024:.1f}MiB, supported work{d['supported_flops']/1e9:.3f}GFLOPs including teacher extraction, all eight receiver queries, both critic fits and selected-write replay. Unsupported operations are excluded. This is a synthetic mechanism diagnostic; causal changing-weight integration and sparse discovery are subsequent tests.")]]
+
+    confirmation=ROOT/'experiments/results/credit/curie_unseen_receiver_confirm_20261010T2125Z_decision.json'
+    if confirmation.exists():
+        c=json.loads(confirmation.read_text());assert c['status']=='completed'
+        rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
+        result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
+    return result_pages
