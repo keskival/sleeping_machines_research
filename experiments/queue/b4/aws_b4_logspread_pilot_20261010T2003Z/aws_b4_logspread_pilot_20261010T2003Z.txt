@@ -1,0 +1,2 @@
+# B4: Completed same-likelihood/full-gradient gate passed; five-pass TRAIN/DEV pilot tests whether the original long batch remains trainable without skipped updates, no TEST
+aws_b4_logspread_pilot_20261010T2003Z experiments/tpp/b4_logspread_pilot.py --tag aws_b4_logspread_pilot_20261010T2003Z --gate experiments/results/tpp_b4/aws_b4_logspread_check_v2_20261010T2002Z.json
