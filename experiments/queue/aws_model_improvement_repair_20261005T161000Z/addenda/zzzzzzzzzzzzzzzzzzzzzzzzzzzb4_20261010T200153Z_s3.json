@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Completed same-likelihood/full-gradient gate passed; five-pass TRAIN/DEV pilot tests whether the original long batch remains trainable without skipped updates, no TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b4_logspread_pilot_20261010T2003Z",
+        "queue": "experiments/queue/b4/aws_b4_logspread_pilot_20261010T2003Z/aws_b4_logspread_pilot_20261010T2003Z.txt",
+        "queue_sha256": "07bd585cb3a7975e8656a82c8692ce5aa9e69afde2102e713d68537462c07f8b",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/b4_logspread_pilot.py": "0b6291e5203d480f1260b493bc31efb2a9a9541132e01514769a7e707ead1682",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/check_b4_logspread_v2.py": "d6958fca906c6d6ee60da08080c33b271bd2e294fb0a8c7bec47cef9b3483a0c"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_logspread_pilot_20261010T2003Z.json",
+        "timeout_s": 2400,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

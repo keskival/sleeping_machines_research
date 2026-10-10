@@ -42,7 +42,16 @@ is introduced. Existing parameters and architecture remain unchanged.
 
 The first window-contract fixture used invalid negative endpoints; its failed
 job/log stays recorded. Corrected positive endpoints run under
-aws_b4_logspread_check_v2_20261010T2002Z. Finite-region head comparisons passed;
-full-chain TRAIN backward is pending. A five-pass original-settings fresh fit
-is prepared, and is admitted only after the full-gradient gate passes. This
-pilot checks recurrence of skipped updates, not benchmark superiority.
+aws_b4_logspread_check_v2_20261010T2002Z. Completed: maximum finite-region value
+error 9.09e-13, normalized gradient error 1.64e-16; head and full-chain backward
+both finite on all 9,114 TRAIN events. Full loss -3.75014, 116.42 seconds with
+anomaly detection enabled, peak RSS 2,948,080 KB. Diagnostic time is not an
+inference or optimized training throughput measurement.
+
+Admitted slot3 pilot aws_b4_logspread_pilot_20261010T2003Z: fresh seed0, original
+settings, five TRAIN passes including the first original failure epoch; DEV
+only. Full-gradient/source gate checked again in the driver. Decision: whether
+the original problematic batch receives finite updates throughout the pilot.
+The guarded driver records any other skipped updates. Quality is development
+evidence, and the frozen benchmark result stays unchanged. 2,400-second queue
+timeout, 4 GB RSS watchdog, 1,800-second between-epoch wall budget.
