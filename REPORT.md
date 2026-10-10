@@ -4478,6 +4478,18 @@ Pilot: same seed170 actor, exact TRAIN/DEV prefixes, labels, steps, optimizer an
 
 One seed170;128 TRAIN prefixes with8 continuations,64 DEV prefixes with16 continuations,256 steps. Whole64-prefix query work is in the same units for both arms; descriptors are precomputed for this query comparison. New fit12.90s/9.952supportedGFLOPs; teacher0.083GFLOPs; complete new phase134.95s, RSS363.8MiB. Fitting graphs, receiver state, optimizer and source packets are additional to the retained context output.
 
+### Shared prefix: seeded development gate
+
+| Seed | Gain retained | Query work ratio | Inactive error / zero |
+| --- | --- | --- | --- |
+| 170 | 94.0% | 0.281 | 0.3761 |
+| 171 | 100.0% | 0.281 | 0.3283 |
+| 172 | 93.4% | 0.281 | 0.2363 |
+
+Gate passes: True. Seed170 selected pilot; seeds171/172 confirm positive utility, inactive error below zero, at least90% point-gain retention and reduced supported query work. This is a synthetic frozen-actor development gate, not equal-quality dominance or matched whole-fit work.
+
+Same per-seed actor/labels/steps/optimizer and nearly matched parameters, different critic initialization. Native depth4 optional key writes; previous and new teacher/fitting work charged. Query comparison excludes common descriptors. No online actor fitting, deployment wall-speed, full learning-efficiency, asynchronous hardware or TEST claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
