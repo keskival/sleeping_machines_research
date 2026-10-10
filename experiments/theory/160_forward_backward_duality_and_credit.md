@@ -157,6 +157,33 @@ forward rate) tests the wrong side of this condition, and the theory predicts it
 A failure of (a) with success of (b) would mean the forward side learns without the backward side converging, i.e. an
 open loop that happens to work. That would be evidence against closure as the mechanism.
 
+**Result (v6, matched seeded teacher, depth 2, single seed, 10 epochs; `aws_credit6_20261009T191619Z_analysis.json`):
+both predictions FAILED.**
+
+| Arm | DEV LL | Gap to dense | Credit KL(ρ‖q) | Linear work vs dense |
+|---|---|---|---|---|
+| dense exact | −2.038 | — | — | 1.00× |
+| closed, h64, S = 2 | −2.177 | −0.138 | 0.073 | 2.70× |
+| closed, h8, S = 2 | −2.219 | −0.181 | 0.058 | 0.37× |
+| closed, h8, S = 1 | −2.227 | −0.189 | 0.039 | 0.34× |
+| sleep-only, h8 | −2.228 | −0.190 | **0.026** | 0.29× |
+
+- **(a) fails.** The closed loop's credit gap is *larger* than sleep-only's, not smaller.
+- **(b) fails.** Every credit-model arm trails dense by 0.14–0.19 nats, against the 0.02 criterion.
+
+**Diagnosis.** With S = 2 the self-normalized verdict is a biased target that pulls q toward the causes it already
+proposes (§8: at S = 2 the expected credit is still far from ρ when q is wrong). The shared-verdict closure therefore
+does not deliver a better backward pass at small S. The forward side gains slightly (closed h8 −2.219 vs sleep −2.228),
+but from noisier credit rather than better credit. This is the "open loop that happens to work" case named above, and it
+is evidence against this construction of closure.
+
+**What survives.** The two directions do train each other when the backward side receives an *unbiased* signal from
+the forward side:
+- the mutually trained feedback matrices of §11 learn exact duality (cosine 1.000) and match exact credit;
+- the pairwise exact relative targets of §9 (v7, pending) give q an unbiased target from two forward evaluations.
+
+Next decisive test: v7 pairwise persistent/reset against this table.
+
 **Queue state (23:15 UTC).** The v1–v5 grids were withdrawn unstarted because of the unseeded teacher (correction below). Predictions (a) and (b) are tested by the matched, seeded v6 pipeline (§8: dense, closed h64/h8, sleep-only, closed S = 1, with posterior KL/TV). The hybrid (c) and message-head arms wait for a seeded rerun after v6 reports.
 **Protocol correction (19:12 UTC): v1–v5 initialize the teacher from an unseeded global torch RNG. The shared `data-seed`
 seeds input and cause draws but not the teacher weights, so separate arms do not have a matched teacher. These runs are
