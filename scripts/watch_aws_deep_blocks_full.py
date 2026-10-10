@@ -4,6 +4,8 @@ import argparse
 import fcntl
 import hashlib
 import json
+import os
+import re
 from pathlib import Path
 import subprocess
 import time
@@ -43,6 +45,7 @@ def main():
         with open('/tmp/aws-language-publication.lock', 'a') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
             assert subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip() == 'main'
+            subprocess.run(['git', 'pull', '--rebase'], cwd=ROOT, check=True)
             verdict = 'passes' if r['quality_preservation_gate_pass'] else 'fails'
             text = (f"Three-seed 20-pass quality gate {verdict}: mean final DEV {r['mean_final_dev_ll']:.6f} "
                     f"versus saved dense traces {r['reference_mean_final_dev_ll']:.6f}, "
@@ -75,8 +78,37 @@ def main():
             subprocess.run(['git', 'commit', '--only', '-m', 'Publish three-seed block-credit adoption decision and current report',
                             '--', *files], cwd=ROOT, check=True)
             for attempt in range(6):
-                subprocess.run(['git', 'pull', '--rebase'], cwd=ROOT, check=True)
                 if subprocess.run(['git', 'push', 'origin', 'main'], cwd=ROOT).returncode == 0: break
+                merged = subprocess.run(['git', 'pull', '--rebase'], cwd=ROOT)
+                if merged.returncode:
+                    conflicts = subprocess.check_output(['git', 'diff', '--name-only', '--diff-filter=U'], cwd=ROOT, text=True).splitlines()
+                    if not conflicts or any(name not in files for name in conflicts):
+                        subprocess.run(['git', 'rebase', '--abort'], cwd=ROOT, check=True)
+                        raise RuntimeError('Unexpected publication conflict; clean main preserved')
+                    for name in conflicts:
+                        target = ROOT/name
+                        if name == 'experiments/HANDOFF.md':
+                            pattern = re.compile(r'^<<<<<<<[^\n]*\n(.*?)^=======\n(.*?)^>>>>>>>[^\n]*\n', re.M|re.S)
+                            target.write_text(pattern.sub(lambda m:m.group(1).rstrip()+'\n\n'+m.group(2), target.read_text()))
+                        else:
+                            target.write_bytes(subprocess.check_output(['git', 'show', ':2:'+name], cwd=ROOT))
+                    # Keep upstream science and protocols; reapply only this completed decision.
+                    doc.write_text(doc.read_text().split(heading)[0]+heading+'\n'+text+'\n')
+                    lines = [line for line in science.read_text().splitlines() if not line.startswith(marker)]
+                    insertion = next(i for i,line in enumerate(lines) if line.startswith('**Credit development:**'))+1
+                    lines[insertion:insertion] = ['', marker+' '+text, '']
+                    science.write_text('\n'.join(lines)+'\n')
+                    subprocess.run(['git', 'add', '--', *files], cwd=ROOT, check=True)
+                    continued = subprocess.run(['git', 'rebase', '--continue'], cwd=ROOT, env=dict(os.environ, GIT_EDITOR='true'))
+                    if continued.returncode:
+                        subprocess.run(['git', 'rebase', '--abort'], cwd=ROOT, check=True)
+                        raise RuntimeError('Publication rebase stopped; clean main preserved')
+                # Rebuild generated artifacts from the merged sources instead of merging PDF bytes.
+                for script in ('report/make_pdf.py', 'report/split_report.py'):
+                    subprocess.run([str(ROOT/'.venv-docker/bin/python'), script], cwd=ROOT, check=True)
+                subprocess.run(['git', 'add', '--', *files], cwd=ROOT, check=True)
+                if subprocess.run(['git', 'diff', '--cached', '--quiet', '--', *files], cwd=ROOT).returncode:
+                    subprocess.run(['git', 'commit', '--only', '-m', 'Regenerate merged block-credit adoption report', '--', *files], cwd=ROOT, check=True)
             else: raise RuntimeError('Report push retries exhausted')
             state_path.write_text(json.dumps(dict(status='completed', result_sha256=hashlib.sha256(
                 result_path.read_bytes()).hexdigest(), tag=args.tag), indent=2)+'\n')
