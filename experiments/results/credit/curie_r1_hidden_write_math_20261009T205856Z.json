@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 route-credit integration",
+  "tag": "curie_r1_hidden_write_math_20261009T205856Z",
+  "checks": {
+    "cell_normalization_error": 2.220446049250313e-16,
+    "cell_adjoint_finite_difference_error": 7.592371176201596e-11,
+    "exact_hidden_write_mh_stationary_error": 5.551115123125783e-17,
+    "adjoint_score_half_span": 0.26797026866158635,
+    "adjoint_posterior_tv": 0.07537560485850761,
+    "posterior_tv_bound": 0.13318908236928947,
+    "approximate_mh_exact_posterior_drift": 0.025581534099176323,
+    "next_event_vs_two_event_posterior_tv": 0.05703666005824967,
+    "sharp_bound_error": 1.1102230246251565e-16,
+    "scope": "fixed causal prefix, one observed-event-time write; no fitting, no complete hidden-history claim"
+  },
+  "source_sha256": {
+    "experiments/credit/hidden_write_math.py": "cf29b668b929f24165dedd86ff83ef711eb52b0786e6a1741d4739d96f85e73d"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_b10_diagnostics_20261009T210711Z_contract",
+  "checks": {
+    "poisson": {
+      "decomposition_max_error": 0.0,
+      "future_mark_past_score_error": 0.0,
+      "finite_at_zero_gap": true
+    },
+    "hawkes": {
+      "decomposition_max_error": 0.0,
+      "future_mark_past_score_error": 0.0,
+      "finite_at_zero_gap": true
+    },
+    "race": {
+      "decomposition_max_error": 0.0,
+      "future_mark_past_score_error": 0.0,
+      "finite_at_zero_gap": true
+    }
+  },
+  "source_sha256": {
+    "experiments/market/check_b10_components.py": "a4e91dcd4153765dce0ab0815a24cc6ccad6fcd7af250c10d4abc7a0eb89f91f",
+    "experiments/market/b10_components.py": "5e94775c7fe16e1a1188dc28f4e8ae654c6601fffc2e7c21686159bdb171b908",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}

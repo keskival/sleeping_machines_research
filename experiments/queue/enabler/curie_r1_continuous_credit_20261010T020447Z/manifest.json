@@ -1,0 +1,30 @@
+{
+  "tag": "curie_r1_continuous_credit_20261010T020447Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "training": false,
+  "jobs": [
+    {
+      "tag": "curie_r1_continuous_credit_20261010T020447Z",
+      "driver": "experiments/credit/check_continuous_producer_credit.py",
+      "queue": "experiments/queue/enabler/curie_r1_continuous_credit_20261010T020447Z/curie_r1_continuous_credit_20261010T020447Z.txt",
+      "queue_sha256": "258232fd0256478ea1bd28b3445d9f3e4bac34a136658db0ea823e9527d914bd",
+      "sources": {
+        "experiments/credit/check_continuous_producer_credit.py": "5357d3f9779e67ee6d39fd9d6632480351d17a4de325a93494eafbc6a584d14a",
+        "experiments/credit/continuous_residual_credit.py": "aab3b0d8a7370428f6d7859cc84c60cf8d1008bdee91a41ef80f3c2398ab5f66",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_continuous_producer_credit.py": "5357d3f9779e67ee6d39fd9d6632480351d17a4de325a93494eafbc6a584d14a",
+        "experiments/credit/continuous_residual_credit.py": "aab3b0d8a7370428f6d7859cc84c60cf8d1008bdee91a41ef80f3c2398ab5f66",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_r1_continuous_credit_20261010T020447Z.json",
+      "timeout_s": 180,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    }
+  ]
+}

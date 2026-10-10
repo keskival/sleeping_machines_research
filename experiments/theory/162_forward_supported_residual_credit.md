@@ -212,8 +212,13 @@ use the existing queue discipline and no new external architecture.
 
 The current R1 keyed writes are deterministic. A latent optional write is an
 explicit diagnostic extension, implemented only in `credit/check_native_write_residual.py`.
-That non-fitting initialized native contract is queued behind the host lock;
-no native-gradient result is claimed before completion. Correcting its route
+That non-fitting initialized native contract completed: original-write/prefix
+parity errors are zero; route/path decomposition error is 4.44e-16, maximum
+conditional route-gradient mean error 1.81e-15 over 1,614 parameters, and
+variance falls from 29.9786 to 1.87366 for the constructed 75%-improved
+predictor, exactly 16-fold. Perfect relative prediction has variance 5.15e-29.
+Result: `results/credit/curie_r1_native_write_residual_20261009T2140Z.json`.
+These are initialized-model numerical identities, with no fitting or quality claim. Correcting its route
 component does not restore the detached continuous producer gradients of local
 mode. Compare both normalized and message-only local credit: the completed
 normalized arm is 90.0 ± 5.5% at eight pairs and 41.9 ± 32.4% at 16. Retain
