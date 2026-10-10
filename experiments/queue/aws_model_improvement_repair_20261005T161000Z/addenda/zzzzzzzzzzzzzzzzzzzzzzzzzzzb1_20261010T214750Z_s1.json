@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1 R1 reciprocal-learning pipeline: verify forward-probe teaching identities on native temporal computation before any changing-weight integration; no task fit or TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_reciprocal_probe_contract_20261010T2149Z",
+        "queue": "experiments/queue/b1_easytpp/aws_reciprocal_probe_contract_20261010T2149Z/aws_reciprocal_probe_contract_20261010T2149Z.txt",
+        "queue_sha256": "a9a2e6d1d6b3c13b3b5476995cb8c9721f13867d00a4252e17b64fca146736e0",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/reciprocal_probe_contract.py": "7860cf0e63702b6c6f4404f4915d60c045e1a677a0d11349f5a6b7688b1f9986",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_reciprocal_probe_contract_20261010T2149Z.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
