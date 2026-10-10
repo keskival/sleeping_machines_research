@@ -10,6 +10,10 @@ Preregistered, 21 BTCUSDT days, prequential: direction accuracy on ≥ 1 bp move
 0.583 vs 10 s momentum 0.591; the race decided a third earlier; continual learning gave no benefit (−0.2 [−0.6, +0.1]);
 every learner lost money after a 2 bp cost. Details: experiments/FINDINGS.md (E17), drivers e17_market.py, e80/e84.
 
+## Current development evidence (10 October)
+
+One-seed matched chronological DEV comparison, 801 TRAIN windows and 756 VAL windows, 1,024 events/window and 128-event context; all models use the same 1 µs recording-cell score. Poisson completes at **−13.70366 nats/event** (6 parameters, 5.0 s); Hawkes completes at **−9.11712** (80 parameters, 1,615.6 s), a +4.58654 DEV likelihood gain. Native race (18,164 parameters) is fitting through the guarded Curie queue. TEST is unscored. These are development references and a first native fit, not a family verdict or complete-work comparison; fitting arithmetic/inference work are unmeasured in this driver. The currently admitted native driver uses the v5 temporal/mark-memory core; the richer v19 mechanisms remain an integration priority if this diagnostic exposes missing coverage.
+
 ## Frozen protocol (pre-registered 9 Oct 2026, before any B10 fit)
 
 - **Data:** Binance spot BTCUSDT aggregated trades (data.binance.vision daily files; every file's SHA-256 checked against
