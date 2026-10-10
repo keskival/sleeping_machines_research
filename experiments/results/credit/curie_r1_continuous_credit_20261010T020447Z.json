@@ -1,0 +1,105 @@
+{
+  "status": "completed",
+  "battle": "R1/B1",
+  "tag": "curie_r1_continuous_credit_20261010T020447Z",
+  "training": false,
+  "metrics": [
+    {
+      "normalized": false,
+      "loss": 3.3502448201773065,
+      "local_gradient_parity_error": 0.0,
+      "full_gradient_decomposition_error": 8.326672684688674e-17,
+      "missing_gradient_l2": 0.25307877657657624,
+      "missing_gradient_squared_norm_by_parameter_group": {
+        "mark_slot": 0.0,
+        "log_sharp": 0.0,
+        "key_log_rate": 0.0,
+        "embed": 0.001889268637465635,
+        "gap": 0.0023333121427123226,
+        "layers": 0.05982628637331864,
+        "marks": 0.0,
+        "clock": 0.0,
+        "mark_ctx": 0.0,
+        "key_w": 0.0,
+        "query_w": 0.0
+      },
+      "arbitrary_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 1.9015072770699895,
+        "declared_variance_trace": 1.901507277069989,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "improved_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 0.11884420481687434,
+        "declared_variance_trace": 0.11884420481687433,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "perfect_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 1.1607493779833677e-31,
+        "declared_variance_trace": 0.0,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "parameters": 1587,
+      "producer_sites": 6,
+      "factual_layers": 2
+    },
+    {
+      "normalized": true,
+      "loss": 4.395636771988871,
+      "local_gradient_parity_error": 0.0,
+      "full_gradient_decomposition_error": 1.1102230246251565e-16,
+      "missing_gradient_l2": 2.1467659174253795,
+      "missing_gradient_squared_norm_by_parameter_group": {
+        "mark_slot": 0.0,
+        "log_sharp": 0.0,
+        "key_log_rate": 0.0,
+        "embed": 0.07872719232750476,
+        "gap": 0.10810734568871512,
+        "layers": 4.42176936620301,
+        "marks": 0.0,
+        "clock": 0.0,
+        "mark_ctx": 0.0,
+        "key_w": 0.0,
+        "query_w": 0.0
+      },
+      "arbitrary_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 7.811741884646572,
+        "declared_variance_trace": 7.8117418846465725,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "improved_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 0.48823386779041067,
+        "declared_variance_trace": 0.4882338677904108,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "perfect_predictor": {
+        "maximum_mean_error": 6.661338147750939e-16,
+        "variance_trace": 2.7059264019848084e-31,
+        "declared_variance_trace": 0.0,
+        "expected_audits": 3.0,
+        "audit_draws": 64
+      },
+      "parameters": 1587,
+      "producer_sites": 6,
+      "factual_layers": 2
+    }
+  ],
+  "decision": "Admit or reject corrected continuous producer credit for the actual R1 local-credit gap",
+  "scope": "Initialized native two-layer model, six-event fixed sequence, normalized/plain keys; every parameter and all 64 independent audit outcomes. No fit or quality/optimizer claim.",
+  "source_sha256": {
+    "experiments/credit/check_continuous_producer_credit.py": "5357d3f9779e67ee6d39fd9d6632480351d17a4de325a93494eafbc6a584d14a",
+    "experiments/credit/continuous_residual_credit.py": "aab3b0d8a7370428f6d7859cc84c60cf8d1008bdee91a41ef80f3c2398ab5f66",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "wall_s": 0.38191813899993576
+}

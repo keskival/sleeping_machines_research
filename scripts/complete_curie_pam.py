@@ -18,7 +18,10 @@ def memory_stop(output):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--manifest', required=True)
+    parser.add_argument('--min-available-mib', type=int, default=10240)
     args = parser.parse_args()
+    if args.min_available_mib < 8192:
+        raise ValueError('The host availability floor must preserve at least 8 GiB')
     if os.uname().nodename != 'curie':
         raise ValueError('Curie owns this controller')
     manifest = json.loads((ROOT / args.manifest).read_text())
@@ -43,7 +46,7 @@ def main():
         headroom = float('inf') if limit == 'max' else (int(limit) - used) / 1048576
         state.update(status='waiting_for_memory', available_mib=available, cgroup_headroom_mib=headroom if limit != 'max' else None)
         save()
-        # Measured PAM RSS ~1.9 GiB; leave 2 GiB above the enforced 10 GiB host floor.
+        # Admission preserves 12 GiB; the execution floor is separately explicit.
         if available < 12288 or headroom < 5120:
             time.sleep(30)
             continue
@@ -53,7 +56,7 @@ def main():
         with log.open('w') as stream:
             outcome = subprocess.run([str(ROOT / '.venv-docker/bin/python'), 'scripts/run_curie_recovery.py',
                                       '--manifest', args.manifest], cwd=ROOT,
-                                     env=dict(os.environ, MIN_AVAIL_MB='10240'), stdout=stream, stderr=subprocess.STDOUT)
+                                     env=dict(os.environ, MIN_AVAIL_MB=str(args.min_available_mib)), stdout=stream, stderr=subprocess.STDOUT)
         if outcome.returncode == 0:
             state['status'] = 'completed'
             save()
