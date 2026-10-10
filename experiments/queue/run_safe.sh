@@ -84,7 +84,9 @@ trap 'on_signal 143' TERM HUP
 mkdir -p "$(dirname "$0")/logs"
 while IFS= read -r line; do
   [[ -z "$line" || "$line" == \#* ]] && continue
-  name=${line%% *}; cmd="timeout --signal=TERM --kill-after=10s ${JOB_TIMEOUT_S}s /workspace/.venv-docker/bin/python ${line#* }"
+  # Keep timeout and its children in the setsid job group. Otherwise timeout
+  # can create a nested process group that escapes the runner's group kill.
+  name=${line%% *}; cmd="timeout --foreground --signal=TERM --kill-after=10s ${JOB_TIMEOUT_S}s /workspace/.venv-docker/bin/python ${line#* }"
   if [ -f "$RUNNER_LOG" ] && grep -Fq "done $name (exit 0)" "$RUNNER_LOG"; then
     echo "$(date +%T) skip $name: prior successful completion in $RUNNER_LOG"
     continue

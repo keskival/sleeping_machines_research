@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "battle": "B2",
+  "tag": "curie_runner_group_guard_20261010T1015Z",
+  "training": false,
+  "metrics": [
+    {
+      "process": "parent",
+      "pid": 8355,
+      "state": null,
+      "running": false
+    },
+    {
+      "process": "child",
+      "pid": 8357,
+      "state": "Z",
+      "running": false
+    }
+  ],
+  "decision": "Whether guarded jobs can leave live timeout descendants after RSS stop",
+  "scope": "64 MiB child fixture through run_safe, 32 MiB group RSS cap; both parent and child stopped"
+}
