@@ -1,0 +1,102 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "B5 tgbl-review development (VALIDATION only, no TEST): v5 arms fell below 30-day popularity (A 0.261, B 0.112 vs 0.341); diagnosis = sampled-softmax bias. Arms C (no identities + pop residual + logQ, v3 negatives) and D (C + hard negatives) test the log-Q correction; decides whether the learned model can exceed the 0.341 heuristic toward GraphMixer val 0.428",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b5_review_v6_equiv_smoke_20261010T1500Z",
+        "queue": "experiments/queue/b5/aws_b5_review_v6_equiv_smoke_20261010T1500Z/aws_b5_review_v6_equiv_smoke_20261010T1500Z.txt",
+        "queue_sha256": "4e0657d5f09ca129f4801b323e491981f6c8dc63dba4a84a7a92b3d621897aac",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+          "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+          "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v6_equiv_smoke_20261010T1500Z.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b5_review_v6_switch_smoke_20261010T1500Z",
+        "queue": "experiments/queue/b5/aws_b5_review_v6_switch_smoke_20261010T1500Z/aws_b5_review_v6_switch_smoke_20261010T1500Z.txt",
+        "queue_sha256": "1f00a28dc81605c17cd3ba8926684b1d062370f4737a229e18d157505084e98a",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+          "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+          "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v6_switch_smoke_20261010T1500Z.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z",
+        "queue": "experiments/queue/b5/aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z/aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z.txt",
+        "queue_sha256": "f2a82eb1b4a63040e0995a24289a8f1ee6dea0b0a960d7322b2fe0e945470adf",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+          "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+          "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v6_C_noid_popres_logq_20261010T1500Z.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_equiv_smoke_20261010T1500Z.json"
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_switch_smoke_20261010T1500Z.json"
+          }
+        ]
+      },
+      {
+        "name": "aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z",
+        "queue": "experiments/queue/b5/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z.txt",
+        "queue_sha256": "38db5997b716d35c73caed791144e5dd2850986f1764cb520f9cc7186c2ae11d",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/race_link_review_v6.py": "c5e47babf223cda82337f505c759a8a08888369bc196c25125e3a1b181a2162f",
+          "experiments/tgb/race_link_review_v5.py": "168f7b9da29ca893bc11639630ab724b48000651fd40500ded46d49055b5ae65",
+          "experiments/tgb/race_link_review_v4.py": "d8036eca6ff992be7ed8b8c879c869a263851560416ad3381b9cc56d5d235542",
+          "experiments/tgb/race_link_review_v3.py": "5640dea9a5a3c46c6bed6030ff321af97f0b77487309b0168571a7ece6f5139e",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z.json",
+        "timeout_s": 21600,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_equiv_smoke_20261010T1500Z.json"
+          },
+          {
+            "result": "experiments/results/tgb/aws_b5_review_v6_switch_smoke_20261010T1500Z.json"
+          }
+        ]
+      }
+    ]
+  }
+}
