@@ -1,0 +1,355 @@
+{
+  "status": "completed",
+  "battle": "B4 development",
+  "tag": "aws_b4_logspread_develop_decision_20261010T2113Z",
+  "stage": "numerical_development_decision",
+  "finite_update_gate": true,
+  "repaired_best_dev_total": -114.14444194935726,
+  "guarded_best_dev_total": -111.53697399846794,
+  "repaired_dev_loss_reduction": 2.6074679508893155,
+  "development_quality_improves": true,
+  "repaired_epochs": 75,
+  "guarded_epochs": 64,
+  "repaired_skips": 0,
+  "guarded_skips": 60,
+  "fitting_wall_s": 3345.7023854439612,
+  "evaluation_wall_s": 11.699250526377,
+  "completed_train_targets": 998025,
+  "inference": {
+    "protocol": "full DEV likelihood forward, one CPU thread float64",
+    "scored_targets": 2094,
+    "wall_s": 0.15292415802832693,
+    "seconds_per_target": 7.302968387217141e-05
+  },
+  "common_epoch_dev_curve": [
+    {
+      "epoch": 0,
+      "repaired_dev": 214.86737602250886,
+      "guarded_dev": 214.8673760225088
+    },
+    {
+      "epoch": 1,
+      "repaired_dev": 42.837973591900344,
+      "guarded_dev": 42.837973591900024
+    },
+    {
+      "epoch": 2,
+      "repaired_dev": -23.68646489701453,
+      "guarded_dev": -23.68646489701351
+    },
+    {
+      "epoch": 3,
+      "repaired_dev": -56.590847280347404,
+      "guarded_dev": -56.590847280334344
+    },
+    {
+      "epoch": 4,
+      "repaired_dev": -76.72460381753315,
+      "guarded_dev": -73.05497009688018
+    },
+    {
+      "epoch": 5,
+      "repaired_dev": -86.36493855720698,
+      "guarded_dev": -80.89075348344018
+    },
+    {
+      "epoch": 6,
+      "repaired_dev": -91.96218239786022,
+      "guarded_dev": -86.37229890551274
+    },
+    {
+      "epoch": 7,
+      "repaired_dev": -92.26060224529357,
+      "guarded_dev": -87.33742675998172
+    },
+    {
+      "epoch": 8,
+      "repaired_dev": -94.00664278674988,
+      "guarded_dev": -85.94663085267243
+    },
+    {
+      "epoch": 9,
+      "repaired_dev": -100.24946307891375,
+      "guarded_dev": -86.79331822902508
+    },
+    {
+      "epoch": 10,
+      "repaired_dev": -104.73501508087918,
+      "guarded_dev": -91.93213582096573
+    },
+    {
+      "epoch": 11,
+      "repaired_dev": -105.47406151084843,
+      "guarded_dev": -93.81775141662204
+    },
+    {
+      "epoch": 12,
+      "repaired_dev": -108.0491757775119,
+      "guarded_dev": -102.57276641426428
+    },
+    {
+      "epoch": 13,
+      "repaired_dev": -107.86023685167262,
+      "guarded_dev": -102.73433330869227
+    },
+    {
+      "epoch": 14,
+      "repaired_dev": -107.31721846633782,
+      "guarded_dev": -100.67874282911674
+    },
+    {
+      "epoch": 15,
+      "repaired_dev": -106.86132629706356,
+      "guarded_dev": -98.5383326653131
+    },
+    {
+      "epoch": 16,
+      "repaired_dev": -110.1706938011611,
+      "guarded_dev": -103.06752640733295
+    },
+    {
+      "epoch": 17,
+      "repaired_dev": -110.65573522308378,
+      "guarded_dev": -105.532559538672
+    },
+    {
+      "epoch": 18,
+      "repaired_dev": -109.75690493608678,
+      "guarded_dev": -106.03921127276998
+    },
+    {
+      "epoch": 19,
+      "repaired_dev": -109.9196322221743,
+      "guarded_dev": -105.2210590264219
+    },
+    {
+      "epoch": 20,
+      "repaired_dev": -109.32855232633406,
+      "guarded_dev": -103.44740925439798
+    },
+    {
+      "epoch": 21,
+      "repaired_dev": -110.03183378577089,
+      "guarded_dev": -105.5859568840017
+    },
+    {
+      "epoch": 22,
+      "repaired_dev": -110.83939479499061,
+      "guarded_dev": -107.81355764025554
+    },
+    {
+      "epoch": 23,
+      "repaired_dev": -112.0208540562728,
+      "guarded_dev": -109.43382806838532
+    },
+    {
+      "epoch": 24,
+      "repaired_dev": -111.9397687844954,
+      "guarded_dev": -107.99473260320825
+    },
+    {
+      "epoch": 25,
+      "repaired_dev": -112.71624746870862,
+      "guarded_dev": -108.1740276734693
+    },
+    {
+      "epoch": 26,
+      "repaired_dev": -110.15536903570832,
+      "guarded_dev": -110.12924964435967
+    },
+    {
+      "epoch": 27,
+      "repaired_dev": -111.50925194658204,
+      "guarded_dev": -110.86757110983324
+    },
+    {
+      "epoch": 28,
+      "repaired_dev": -113.32624033398446,
+      "guarded_dev": -110.20600586663228
+    },
+    {
+      "epoch": 29,
+      "repaired_dev": -112.60820080289744,
+      "guarded_dev": -108.41102795054385
+    },
+    {
+      "epoch": 30,
+      "repaired_dev": -112.81380515846398,
+      "guarded_dev": -108.89804901314488
+    },
+    {
+      "epoch": 31,
+      "repaired_dev": -112.5158355224022,
+      "guarded_dev": -109.69708638573395
+    },
+    {
+      "epoch": 32,
+      "repaired_dev": -113.25922248543765,
+      "guarded_dev": -110.90998323193567
+    },
+    {
+      "epoch": 33,
+      "repaired_dev": -112.2784449904284,
+      "guarded_dev": -111.53697399846794
+    },
+    {
+      "epoch": 34,
+      "repaired_dev": -112.68517171610071,
+      "guarded_dev": -110.635745883107
+    },
+    {
+      "epoch": 35,
+      "repaired_dev": -112.16609181387769,
+      "guarded_dev": -108.71418436220462
+    },
+    {
+      "epoch": 36,
+      "repaired_dev": -113.02754457742955,
+      "guarded_dev": -108.75030230630175
+    },
+    {
+      "epoch": 37,
+      "repaired_dev": -113.01684246420173,
+      "guarded_dev": -110.5516344130078
+    },
+    {
+      "epoch": 38,
+      "repaired_dev": -110.72919638017089,
+      "guarded_dev": -110.99662490898653
+    },
+    {
+      "epoch": 39,
+      "repaired_dev": -113.62277003505316,
+      "guarded_dev": -110.92444760487693
+    },
+    {
+      "epoch": 40,
+      "repaired_dev": -113.88722692307604,
+      "guarded_dev": -109.82804995736602
+    },
+    {
+      "epoch": 41,
+      "repaired_dev": -113.2362126991261,
+      "guarded_dev": -109.8681430857934
+    },
+    {
+      "epoch": 42,
+      "repaired_dev": -111.75628116303272,
+      "guarded_dev": -108.22396111849059
+    },
+    {
+      "epoch": 43,
+      "repaired_dev": -113.82834461360987,
+      "guarded_dev": -109.8622358254886
+    },
+    {
+      "epoch": 44,
+      "repaired_dev": -114.14444194935726,
+      "guarded_dev": -110.7597556570069
+    },
+    {
+      "epoch": 45,
+      "repaired_dev": -112.83254228377827,
+      "guarded_dev": -110.0334870357969
+    },
+    {
+      "epoch": 46,
+      "repaired_dev": -112.05501472428115,
+      "guarded_dev": -107.7409074875028
+    },
+    {
+      "epoch": 47,
+      "repaired_dev": -112.48996276398694,
+      "guarded_dev": -108.15007940200077
+    },
+    {
+      "epoch": 48,
+      "repaired_dev": -113.64914938796092,
+      "guarded_dev": -109.72903262410374
+    },
+    {
+      "epoch": 49,
+      "repaired_dev": -112.75017804631295,
+      "guarded_dev": -109.73026897261657
+    },
+    {
+      "epoch": 50,
+      "repaired_dev": -113.26001730150305,
+      "guarded_dev": -110.05428925264415
+    },
+    {
+      "epoch": 51,
+      "repaired_dev": -113.10113133091053,
+      "guarded_dev": -110.12194808416359
+    },
+    {
+      "epoch": 52,
+      "repaired_dev": -112.46436087117378,
+      "guarded_dev": -109.51224139749438
+    },
+    {
+      "epoch": 53,
+      "repaired_dev": -111.0134623705723,
+      "guarded_dev": -107.54124753735819
+    },
+    {
+      "epoch": 54,
+      "repaired_dev": -112.62619427166231,
+      "guarded_dev": -108.11113568842146
+    },
+    {
+      "epoch": 55,
+      "repaired_dev": -113.65115918059338,
+      "guarded_dev": -109.41637276271393
+    },
+    {
+      "epoch": 56,
+      "repaired_dev": -111.78387644969422,
+      "guarded_dev": -109.64508541063346
+    },
+    {
+      "epoch": 57,
+      "repaired_dev": -113.34968491235925,
+      "guarded_dev": -109.59661081178533
+    },
+    {
+      "epoch": 58,
+      "repaired_dev": -113.56117343226617,
+      "guarded_dev": -109.603619762974
+    },
+    {
+      "epoch": 59,
+      "repaired_dev": -112.07456872491451,
+      "guarded_dev": -108.11924241942492
+    },
+    {
+      "epoch": 60,
+      "repaired_dev": -111.7719648601825,
+      "guarded_dev": -108.22717507005638
+    },
+    {
+      "epoch": 61,
+      "repaired_dev": -113.28239368076599,
+      "guarded_dev": -108.89779895586689
+    },
+    {
+      "epoch": 62,
+      "repaired_dev": -111.46439273555201,
+      "guarded_dev": -108.60584917766127
+    },
+    {
+      "epoch": 63,
+      "repaired_dev": -110.89765400196235,
+      "guarded_dev": -107.4625859898725
+    }
+  ],
+  "decision": "Use completed DEV comparison and skipped-update diagnosis to choose the next numerical/mark-path step; no automatic fit.",
+  "scope": "One Github split1 seed0; own-model DEV comparison. Original guarded fitting skipped padded batches. Each arm selected by its DEV patience within its saved budget; frozen TEST verdict unchanged. No published-reference or matched-compute win.",
+  "inputs": {
+    "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.json": "afc9f06d2ac7a89b68443c70627ad9f5a0b2cdb61751c93bbdbacb48af6a276f",
+    "experiments/results/tpp_b4/b4g_github_s1.json": "4db57412f678d2b770ecbdc6b47e9ea00cc7fc49480146c8efd82c5fac7725f7"
+  },
+  "source_sha256": {
+    "experiments/tpp/summarize_b4_development.py": "76557daae8ddabb63a380756d66939fc4bec0030c368369d453b25d90cf6e7f3"
+  }
+}
