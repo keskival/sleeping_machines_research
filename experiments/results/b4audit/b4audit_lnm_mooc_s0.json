@@ -1,0 +1,28 @@
+{
+ "status": "completed",
+ "battle": "B4-audit",
+ "tag": "b4audit_lnm_mooc_s0",
+ "dataset": "mooc_filtered",
+ "split": 0,
+ "recording_cell": 3.887894882481646e-06,
+ "reference": "github.com/tanguybosser/ntpp-tmlr2023@54c15fd, README LNM configuration (GRU, 32-component log-normal mixture)",
+ "parameters": 7986,
+ "test_recorded": {
+  "loss": -228.9475860595703,
+  "log ground density": 322.0146484375,
+  "log mark density": -93.06702423095703,
+  "window integral": 0.0
+ },
+ "test_dequantized": {
+  "loss": -212.09036254882812,
+  "log ground density": 305.15740966796875,
+  "log mark density": -93.06702423095703,
+  "window integral": 0.0
+ },
+ "wall_s": 5469.017533302307,
+ "source_sha256": {
+  "experiments/b4audit/audit_lnm.py": "1c4e193aa3fd8ae85d3996e327786ebf5eeaf0fb908722a63ea1848884fcc4aa",
+  "data/ntpp_bosser/code/repo/scripts/train.py": "e1884649294227fa923598cdcaead952047fb73358d5fd61fc1da3b3470d0050",
+  "data/ntpp_bosser/code/repo/tpp/models/decoders/log_normal_mixture.py": "14b0a0e8b7d54c91e36620e4aef104b87df7e362740cd1901dd8eafb80e78a61"
+ }
+}
