@@ -5487,6 +5487,8 @@ def build(M):
          'measured separately in development.')])
     from report.reciprocal_native_appendix import pages as reciprocal_native_pages
     pages.extend(reciprocal_native_pages())
+    from report.future_credit_appendix import pages as future_credit_pages
+    pages.extend(future_credit_pages())
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')

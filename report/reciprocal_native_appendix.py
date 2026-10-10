@@ -55,7 +55,7 @@ def pages():
               f'{p["metrics"]["teacher_gradient_targets"]} full/local teacher-gradient targets, '
               f'{p["supported_flops"]/1e6:.2f} supported MFLOPs, {p["wall_s"]:.2f} s, '
               f'{p["peak_rss_kb"]/1024:.1f} MiB peak RSS. All teacher and assessment work included.'),
-             ('p','Next gate: state-sized addressed key cotangents with exact forward elapsed-time transport, then learned '
+             ('p','The state-sized addressed key cotangent contract passes at depths 2/4/8 (maximum error 1.39e-17). Next: learned '
               'credit tails and asynchronous credit clocks. Causal streams use actual timestamps and versioned pending '
               'records. Credit structure and optimizer parameters may adapt across regimes; frozen teachers isolate '
               'calibration capacity and do not assume stationary deployment. See CREDIT_GENERALIZATION.md and '
