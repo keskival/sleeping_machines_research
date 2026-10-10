@@ -85,4 +85,12 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages
+    return result_pages + sparse_receiver_pages()
+
+
+def sparse_receiver_pages():
+    p=ROOT/'experiments/results/credit/curie_sparse_receiver_20261010T2240Z_measure.json'
+    if not p.exists():return []
+    d=json.loads(p.read_text());assert d['status']=='completed'
+    rows=[[str(r['seed']),str(r['budget']),f"{r['gain_vs_train_fixed']:+.6f}",f"{r['policy_supported_flops']/1e6:.2f}",f"{r['policy_wall_s']:.2f}"] for r in d['rows'] if r['critic']=='structured']
+    return [[('h2','Native selection with fewer queried receivers'),('p','Saved receiver critics now select native optional key writes using1,2,4 or8 receiver queries. Discovery anchors the TRAIN-best receiver and samples additional implicit indices without scoring unqueried descriptions. Every queried receiver evaluates nine messages; both critics receive an exact zero no-op option.'),('table',(['Seed','Receivers','Gain / target','Policy MFLOPs','Policy seconds'],rows,[22,30,40,41,34])),('small','Each row:32 fresh prefixes,8 independent synthetic continuations, frozen depth4 native actor. Positive gain means lower future loss than the TRAIN-fixed action. Policy work includes the native prefix recomputation, dense eight-mark forward scoring, queried descriptors and critic selection. MFLOPs are whole32-prefix work for every row; no per-target unit mixture. Wall includes FlopCounter instrumentation.'),('small',d['scope']),('p',f"Whole new diagnostic{d['whole_wall_s']:.2f}s, RSS{d['peak_rss_kb']/1024:.1f}MiB. Teacher work{d['teacher_supported_flops']/1e9:.3f}GFLOPs is additional. Earlier critic fits/checkpoints remain charged in their own completed evidence; no new fitting occurs here. Selection replay and per-seed prior-fit costs are recorded in the result file.")]]
