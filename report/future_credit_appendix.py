@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder) + depth_credit_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -174,3 +174,23 @@ def averaged_credit_pages(folder):
         ('table',(['Seed','Teacher targets','Total GFLOPs','MFLOPs/target','Wall s'],work,[17,39,39,39,33])),
         ('small',records[0]['flop_scope']),
         ('p','The admission gate requires improved DEV calibration and action utility in all three seeded replicates before depth scaling. This frozen-actor synthetic intervention diagnostic does not demonstrate an online asynchronous learner or deployment access to a true continuation generator.')]]
+
+
+def depth_credit_pages(folder):
+    prefix='curie_averaged_credit_depth_v4_20261010T1750Z';records=[]
+    for depth in (4,8):
+        for seed in (170,171,172):
+            p=folder/(prefix+f'_d{depth}_pilot_s{seed}.json')
+            if not p.exists():return []
+            r=json.loads(p.read_text());assert r['status']=='completed';records.append((depth,seed,r))
+    rows=[];work=[]
+    for depth,seed,r in records:
+        for v in r['metrics']['arms']:
+            if v['labels']=='averaged':rows.append([str(depth),str(seed),v['history'],f'{v["dev_relative_mse"]:.3f}',f'{v["utility_gain_vs_averaged_train_constant"]:.6g}'])
+        targets=r['metrics']['teacher_target_presentations'];work.append([str(depth),str(seed),f'{r["supported_flops"]/1e9:.3f}',f'{r["supported_flops"]/targets/1e6:.4f}',f'{r["wall_s"]:.1f}'])
+    return [[('h1','Appendix. R1 denoised intervention credit at depth'),
+        ('p','The same crossed history/label construction is applied to deeper frozen native actors. Averaged-label arms are shown; each is compared with its own TRAIN-mean action. All single-label diagnostics remain in result files.'),
+        ('table',(['Depth','Seed','History','DEV relative MSE','Future loss gain'],rows,[18,18,35,47,49])),
+        ('small',records[0][2]['metrics']['depth_scope']),
+        ('table',(['Depth','Seed','Total GFLOPs','MFLOPs/target','Wall s'],work,[18,18,43,45,43])),
+        ('small','All four critic fits and shared teacher generation charged together. Supported arithmetic excludes special/unsupported operations. Different frozen actor depths have different target distributions; this is intervention-interface transfer, not a matched-quality actor-learning scaling result.')]]

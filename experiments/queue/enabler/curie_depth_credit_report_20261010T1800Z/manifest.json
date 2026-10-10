@@ -1,0 +1,23 @@
+{
+  "tag": "curie_depth_credit_report_20261010T1800Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_depth_credit_report_20261010T1800Z",
+      "driver": "scripts/build_curie_credit_report.py",
+      "queue": "experiments/queue/enabler/curie_depth_credit_report_20261010T1800Z/curie_depth_credit_report_20261010T1800Z.txt",
+      "queue_sha256": "cadb1dac0c6e53cc0a2e07aca9d326830078ffda256ed63f0e681a16d02f3581",
+      "sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result_sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result": ".git/curie-report-build-preview/curie_depth_credit_report_20261010T1800Z/result.json",
+      "rss_kb": 1200000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}
