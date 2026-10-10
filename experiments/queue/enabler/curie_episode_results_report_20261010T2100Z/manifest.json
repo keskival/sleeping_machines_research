@@ -1,0 +1,23 @@
+{
+  "tag": "curie_episode_results_report_20261010T2100Z",
+  "host": "curie",
+  "battle": "B10/R1",
+  "jobs": [
+    {
+      "tag": "curie_episode_results_report_20261010T2100Z",
+      "driver": "scripts/build_curie_episode_report.py",
+      "queue": "experiments/queue/enabler/curie_episode_results_report_20261010T2100Z/curie_episode_results_report_20261010T2100Z.txt",
+      "queue_sha256": "b17287570523dd05824b2ffd2adec246d01f2084512db655a367ec7276a5a014",
+      "sources": {
+        "scripts/build_curie_episode_report.py": "ab64ff7bf61bd78d5448607870989f44aff256a2688dfafe91caaa1e1f0e1670"
+      },
+      "result_sources": {
+        "scripts/build_curie_episode_report.py": "ab64ff7bf61bd78d5448607870989f44aff256a2688dfafe91caaa1e1f0e1670"
+      },
+      "result": ".git/curie-report-build-preview/curie_episode_results_report_20261010T2100Z/result.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}

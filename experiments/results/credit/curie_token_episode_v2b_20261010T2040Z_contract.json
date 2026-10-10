@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "tag": "curie_token_episode_v2b_20261010T2040Z_contract",
+  "battle": "R1",
+  "training": false,
+  "precision": "float64 algebra contract from saved float32 weights",
+  "real_gpt2_targets": 16,
+  "fresh_train_suffix_start": 4194304,
+  "score_error": 3.552713678800501e-15,
+  "all_parameter_gradient_error": 3.622102617839573e-15,
+  "detach_preserves_state_error": 0.0,
+  "future_suffix_causality_error": 0.0,
+  "issued_forecast_preserved_after_update": true,
+  "addressed_tokens": 16,
+  "persistent_key_values": 1024,
+  "checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "wall_s": 0.7352894689975074,
+  "source_sha256": {
+    "experiments/credit/check_token_episode_state.py": "56417e23e39adf98620aa169557f3ff2352664b05178be7539a2f930f70bf278",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Available trained keyed-token member, GPT-2 vocabulary and fresh TRAIN suffix. Lazy per-token key transport is an exact frozen-parameter representation of the recorded read; all present keys still scored and full vocabulary output paid. This is a member-specific contract, not proof of internal hard races or all sparse-family gradients. No public scoring slice read or new fitting."
+}
