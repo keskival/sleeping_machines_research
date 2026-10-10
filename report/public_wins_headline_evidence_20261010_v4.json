@@ -549,6 +549,57 @@
   "verdict": "loss (pre-registered frozen configuration)",
   "diagnosis": "Marks level with the best published; timing gap on a 1-s grid with 4% zero gaps"
  },
+ "b4_lastfm": {
+  "L_T": {
+   "mean": -1380.048455138642,
+   "sd": 155.24828472031942,
+   "values": [
+    -1287.975847981256,
+    -1315.1570283481483,
+    -1554.1850679802342,
+    -1208.2922409049738,
+    -1534.6320904785991
+   ],
+   "se": 69.42914360497522
+  },
+  "L_M": {
+   "mean": 605.4111511229887,
+   "sd": 48.220212140205675,
+   "values": [
+    567.876716538075,
+    578.2011458270164,
+    660.1611961143965,
+    565.1091991474287,
+    655.7074979880268
+   ],
+   "se": 21.5647344469921
+  },
+  "total": {
+   "mean": -774.6373040156535,
+   "sd": 108.17060134310252,
+   "values": [
+    -720.0991314431809,
+    -736.9558825211319,
+    -894.0238718658376,
+    -643.1830417575452,
+    -878.9245924905723
+   ],
+   "se": 48.375363554041456
+  },
+  "runs": [
+   "b4_lastfm_s0",
+   "b4_lastfm_s1_memretry_20261009T2207Z",
+   "b4_lastfm_s2",
+   "b4g_lastfm_s3_memretry",
+   "b4g_lastfm_s4"
+  ],
+  "bar": -849.65,
+  "best_single": -697.5,
+  "published_time": -1363.78,
+  "published_marks": 514.13,
+  "verdict": "loss (pre-registered frozen configuration; splits 1 and 3 memory retries, 3 and 4 guarded)",
+  "diagnosis": "Below every single published total; time component ahead; marks carry the gap"
+ },
  "r1_recall": {
   "mixed_length": {
    "test": {
@@ -797,6 +848,11 @@
   "experiments/results/tpp_b4/b4_retweets_s2.json": "f7fdd51f46428f1f4931491c54bf2f0dbf5e498d4c0107bace8b5033f65afe73",
   "experiments/results/tpp_b4/b4_retweets_s3.json": "9345d9a8cd59f070e595f123cf0230e6e7683fba8f330cde0c96b9240def136c",
   "experiments/results/tpp_b4/b4_retweets_s4.json": "437e2629d61ffa7d4f8173ab0812f55ebe51208074d1dd61c010d7f1bbdad17a",
+  "experiments/results/tpp_b4/b4_lastfm_s0.json": "3619170cfe58e8ff1eabf613f682aebf7cd2007aa730fda63ddbb22bbf14eb9b",
+  "experiments/results/tpp_b4/b4_lastfm_s1_memretry_20261009T2207Z.json": "0c5cd0a1211c494c6859cb8693ae82e2c9fe7c712483898a86a224573b6de737",
+  "experiments/results/tpp_b4/b4_lastfm_s2.json": "a4a945b98b911f94bfb1c50961dd8dc0f754b0e0268bd9d542b73f65f6172704",
+  "experiments/results/tpp_b4/b4g_lastfm_s3_memretry.json": "e47a12b8eca73d010296f15023d3596f43977a86808d92498a890371ca360ad3",
+  "experiments/results/tpp_b4/b4g_lastfm_s4.json": "2f4f8d22ca5021c38fe5bf3e046e3a66e1d316eaac1d8b6c7c19a5bf95959e8a",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s0_20261007T1715Z.json": "cf7e79a304f441a893e71d3bafb9929f5947a8852691f9e022134cdff7274347",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s1_20261007T1915Z.json": "559a8a8167a36434c2b275f201a7aa2bc692415892d1feeac846456d41b1ed96",
   "experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s2_20261007T1915Z.json": "bac7decf97ae30fbb44f8d7f4aaab4b262383c682bb7d7e31e3ce34819e75c59",
@@ -806,7 +862,7 @@
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
   "experiments/B2_IRREGULAR_TS.md": "cf6e15efc44524bbd74441f79e5a7d405cf30e2476c7c9b89193dd8c6bb6141b",
   "experiments/tgb/B5_TGB.md": "72352524dc2d58ebec6ceba03890cfa3a98b9493f086616a934d105b8735502f",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "9f3c041e6cb5600169454876d5256868206445de7b1ef0aadefdb1d4c0b7d972",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "aa3dabd3e7cb1461295288c04e489cd4a415df06da32104ea700e8b47dfe6e57",
   "experiments/fas/B3_DEVELOPMENT_LOG.md": "eceb4f3577be42b3e7d3217d45d168792a4fad31f2d15db193482dfd82dc340b"
  }
 }

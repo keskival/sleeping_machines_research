@@ -26,6 +26,7 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | Bosser & Ben Taieb Stack Overflow (NLL/sequence) | 12.714 ± 0.874 SE; time -91.598; marks 104.312 | bar 11.9; best single model 12.1; time −91.1; marks 103.0 | Loss of frozen configuration; time component ahead, marks carry the gap; five fixed splits |
 | Bosser & Ben Taieb Github (NLL/sequence) | -270.62 ± 48.69 SE | bar −272.9; best single model −269.7 | Loss by 2.28 of frozen configuration (splits 1–4 guarded reruns); below every single published total; time ahead, marks carry the gap |
 | Bosser & Ben Taieb MIMIC2 (NLL/sequence) | 7.01 ± 0.25 SE | bar 2.42; best single model 3.1 | Loss of frozen configuration; time and marks behind |
+| Bosser & Ben Taieb LastFM (NLL/sequence) | -774.64 ± 48.38 SE; time -1380.05; marks 605.41 | bar −849.65; best single model −697.5; time −1363.78; marks 514.13 | Loss of frozen configuration; below every single published total; time ahead, marks carry the gap |
 | Bosser & Ben Taieb Retweets (NLL/sequence) | -515.16 ± 3.24 SE; time -598.81; marks 83.65 | bar −538.70; best single model −536.17; time −621.33; marks 82.63 | Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps) |
 | FAS v2 (anonymous interleaved logs) | sealed TEST 0.70366 (3 seeds) | time-encoded Transformer 0.70432 (3 seeds) | TIE; mean gap -0.00066; seed-averaged-rank bootstrap 95% [-0.00834, 0.00747] |
 

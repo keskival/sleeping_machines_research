@@ -5402,6 +5402,7 @@ def benchmark_record_page():
     def ll(d): return f"{E[d]['ours']['mean']:.4f} ± {E[d]['ours']['sd']:.4f}"
     P19, P12, PAM, TR, WK, B4 = e['p19'], e['p12'], e['pam'], e['tgbn_trade'], e['tgbl_wiki'], e['b4_mooc']
     B4SO, B4W, B4G, B4X, B4R = e['b4_stack_overflow'], e['b4_wikipedia'], e['b4_github'], e['b4_mimic2'], e['b4_retweets']
+    B4L = e['b4_lastfm']
     uni = ' / '.join(f"{E[d]['unified']['mean']:.3f}" for d in ('taxi', 'taobao', 'stackoverflow', 'retweet', 'amazon'))
     rows = [
         ['EasyTPP Taxi (nats/event, higher better)', ll('taxi'), '0.522 (S2P2)', 'Win, 5 of 5 seeds; 1/12 of S2P2 parameters and compute; reproduced on separate hardware'],
@@ -5421,6 +5422,7 @@ def benchmark_record_page():
         ['Bosser & Ben Taieb Stack Overflow (NLL/sequence)', f"{B4SO['total']['mean']:.3f} ± {B4SO['total']['se']:.3f} SE; time {B4SO['L_T']['mean']:.3f}; marks {B4SO['L_M']['mean']:.3f}", 'bar 11.9; best single model 12.1; time −91.1; marks 103.0', 'Loss of frozen configuration; time component ahead, marks carry the gap; five fixed splits'],
         ['Bosser & Ben Taieb Github (NLL/sequence)', f"{B4G['total']['mean']:.2f} ± {B4G['total']['se']:.2f} SE", 'bar −272.9; best single model −269.7', 'Loss by 2.28 of frozen configuration (splits 1–4 guarded reruns); below every single published total; time ahead, marks carry the gap'],
         ['Bosser & Ben Taieb MIMIC2 (NLL/sequence)', f"{B4X['total']['mean']:.2f} ± {B4X['total']['se']:.2f} SE", 'bar 2.42; best single model 3.1', 'Loss of frozen configuration; time and marks behind'],
+        ['Bosser & Ben Taieb LastFM (NLL/sequence)', f"{B4L['total']['mean']:.2f} ± {B4L['total']['se']:.2f} SE; time {B4L['L_T']['mean']:.2f}; marks {B4L['L_M']['mean']:.2f}", 'bar −849.65; best single model −697.5; time −1363.78; marks 514.13', 'Loss of frozen configuration; below every single published total; time ahead, marks carry the gap'],
         ['Bosser & Ben Taieb Retweets (NLL/sequence)', f"{B4R['total']['mean']:.2f} ± {B4R['total']['se']:.2f} SE; time {B4R['L_T']['mean']:.2f}; marks {B4R['L_M']['mean']:.2f}", 'bar −538.70; best single model −536.17; time −621.33; marks 82.63', 'Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps)'],
         ['FAS v2 (anonymous interleaved logs)', 'sealed TEST 0.70366 (3 seeds)', 'time-encoded Transformer 0.70432 (3 seeds)', 'TIE; mean gap -0.00066; seed-averaged-rank bootstrap 95% [-0.00834, 0.00747]'],
     ]

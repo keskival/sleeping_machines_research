@@ -184,7 +184,7 @@ Stack Overflow & 11.9 & $12.714 \pm 0.874$ & \textbf{$-91.60$ vs $-91.1$} / 104.
 Github & $-272.90$ & $-270.62 \pm 48.69$ & \textbf{$-390.93$ vs $-382.4$} / 120.30 vs 109.5 & Behind by 2.3; time part ahead; below every single published model's total \\
 MIMIC2 hospital visits & 2.42 & $7.01 \pm 0.25$ & 2.99 vs 0.13 / 4.02 vs 2.29 & Behind \\
 Retweets & $-538.70$ & $-515.16 \pm 3.24$ & $-598.81$ vs $-621.33$ / 83.65 vs 82.63 & Behind; type part level, timing gap \\
-LastFM & & & & Running \\
+LastFM listening & $-849.65$ & $-774.64 \pm 48.38$ & \textbf{$-1380.05$ vs $-1363.78$} / 605.41 vs 514.13 & Behind; time part ahead; below every single published model's total \\
 \bottomrule
 \end{tabularx}}
 {\footnotesize\color{muted}$\pm$ is the standard error over the five fixed splits. Negative log-likelihood per sequence: lower is better.}
@@ -320,7 +320,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & Six verdicts behind (page 5), with type predictions far ahead on Wikipedia and time ahead on Stack Overflow and Github; LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
+Second TPP benchmark (nats per sequence \down) & All seven verdicts behind (page 5); type predictions far ahead on Wikipedia, time ahead on Stack Overflow, Github and LastFM & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
 \bottomrule
 \end{tabularx}}
 

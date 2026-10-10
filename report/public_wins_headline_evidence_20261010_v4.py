@@ -28,12 +28,13 @@ def stats(vals):
 def b4_stats(prefix, guarded=()):
     """Five official splits; splits in `guarded` use the guarded protocol rerun (b4g_*) that replaced a run ending with NaN
     parameters (training-only repair rule, B4 doc). Configuration must be identical; the drivers differ only by the guard."""
-    names = [f"{'b4g' + prefix[2:] if k in guarded else prefix}_s{k}" for k in range(5)]
+    names = (list(prefix) if isinstance(prefix, (list, tuple)) else
+             [f"{'b4g' + prefix[2:] if k in guarded else prefix}_s{k}" for k in range(5)])
     records = [load(f'experiments/results/tpp_b4/{n}.json') for n in names]
     assert all(r['status'] == 'completed' and r['split'] == k and r['args']['score_test']
                for k, r in enumerate(records)), 'Five completed official B4 splits required'
     assert len({json.dumps(r['config'], sort_keys=True) for r in records}) == 1
-    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) <= (2 if guarded else 1)
+    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) <= (2 if guarded or isinstance(prefix, (list, tuple)) else 1)
     assert len({r['dataset'] for r in records}) == 1
     result = {key: stats([r['test'][key] for r in records]) for key in ('L_T', 'L_M', 'total')}
     for value in result.values():
@@ -78,6 +79,7 @@ wikipedia = b4_stats('b4_wikipedia', guarded={0})
 github = b4_stats('b4_github', guarded={1, 2, 3, 4})
 mimic2 = b4_stats('b4_mimic2')
 retweets = b4_stats('b4_retweets')
+lastfm = b4_stats(['b4_lastfm_s0', 'b4_lastfm_s1_memretry_20261009T2207Z', 'b4_lastfm_s2', 'b4g_lastfm_s3_memretry', 'b4g_lastfm_s4'])
 recall_mixed = recall_stats([f'experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s{s}_{stamp}.json'
                             for s, stamp in enumerate(('20261007T1715Z', '20261007T1915Z', '20261007T1915Z'))])
 recall_local_normalized = recall_stats([f'experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s{s}_{stamp}.json'
@@ -125,6 +127,9 @@ packet = dict(
     b4_retweets=dict(**retweets, bar=-538.70, best_single=-536.17, published_time=-621.33, published_marks=82.63,
                      verdict='loss (pre-registered frozen configuration)',
                      diagnosis='Marks level with the best published; timing gap on a 1-s grid with 4% zero gaps'),
+    b4_lastfm=dict(**lastfm, bar=-849.65, best_single=-697.5, published_time=-1363.78, published_marks=514.13,
+                   verdict='loss (pre-registered frozen configuration; splits 1 and 3 memory retries, 3 and 4 guarded)',
+                   diagnosis='Below every single published total; time component ahead; marks carry the gap'),
     r1_recall=dict(mixed_length=recall_mixed, local_normalized=recall_local_normalized,
                    scope='Three completed seeds per configuration; mean and sample SD; '
                          'mixed training 4–16 pairs, held-out 32-pair evaluation; no new scoring'),
