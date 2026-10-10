@@ -1,0 +1,200 @@
+{
+  "kernel_error": 1.1102230246251565e-16,
+  "pair_posterior_gradient_max": 0.0,
+  "target_detached": true,
+  "depth1_stationary_all_parameter_gradient_error": 4.163336342344337e-17,
+  "depth2_stationary_all_parameter_gradient_error": 2.7755575615628914e-17,
+  "finite_state": {
+    "status": "completed",
+    "scope": "finite-state mathematical contracts, no fitting",
+    "max_detailed_balance_error": 1.734723475976807e-18,
+    "max_stationarity_error": 2.7755575615628914e-17,
+    "examples": [
+      {
+        "posterior": [
+          0.8,
+          0.2
+        ],
+        "proposal": [
+          0.2,
+          0.8
+        ],
+        "kernel": [
+          [
+            0.95,
+            0.05
+          ],
+          [
+            0.2,
+            0.8
+          ]
+        ],
+        "mixing": [
+          {
+            "steps": 0,
+            "tv": 0.6000000000000001
+          },
+          {
+            "steps": 1,
+            "tv": 0.45000000000000007
+          },
+          {
+            "steps": 2,
+            "tv": 0.3375
+          },
+          {
+            "steps": 4,
+            "tv": 0.18984375000000003
+          },
+          {
+            "steps": 8,
+            "tv": 0.06006774902343753
+          },
+          {
+            "steps": 16,
+            "tv": 0.006013557454571161
+          },
+          {
+            "steps": 32,
+            "tv": 6.027145543244239e-05
+          }
+        ],
+        "pair_logit_gradient": [
+          -0.6000000000000001,
+          0.6000000000000001
+        ]
+      },
+      {
+        "posterior": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "proposal": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "kernel": [
+          [
+            0.9666666666666667,
+            0.024999999999999998,
+            0.008333333333333337
+          ],
+          [
+            0.05,
+            0.9,
+            0.05
+          ],
+          [
+            0.05,
+            0.15,
+            0.8
+          ]
+        ],
+        "mixing": [
+          {
+            "steps": 0,
+            "tv": 0.7
+          },
+          {
+            "steps": 1,
+            "tv": 0.5479166666666667
+          },
+          {
+            "steps": 2,
+            "tv": 0.46215277777777786
+          },
+          {
+            "steps": 4,
+            "tv": 0.38833670910493834
+          },
+          {
+            "steps": 8,
+            "tv": 0.274191635706279
+          },
+          {
+            "steps": 16,
+            "tv": 0.13669282380233608
+          },
+          {
+            "steps": 32,
+            "tv": 0.033972596507375406
+          }
+        ],
+        "pair_logit_gradient": [
+          -1.2149859943977588,
+          -0.17543859649122817,
+          1.390424590888987
+        ]
+      },
+      {
+        "posterior": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "proposal": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "kernel": [
+          [
+            0.6,
+            0.3,
+            0.1
+          ],
+          [
+            0.6,
+            0.30000000000000004,
+            0.1
+          ],
+          [
+            0.6,
+            0.3,
+            0.10000000000000009
+          ]
+        ],
+        "mixing": [
+          {
+            "steps": 0,
+            "tv": 0.0
+          },
+          {
+            "steps": 1,
+            "tv": 0.0
+          },
+          {
+            "steps": 2,
+            "tv": 0.0
+          },
+          {
+            "steps": 4,
+            "tv": 0.0
+          },
+          {
+            "steps": 8,
+            "tv": 0.0
+          },
+          {
+            "steps": 16,
+            "tv": 0.0
+          },
+          {
+            "steps": 32,
+            "tv": 0.0
+          }
+        ],
+        "pair_logit_gradient": [
+          2.7755575615628914e-17,
+          -1.1102230246251565e-16,
+          8.326672684688674e-17
+        ]
+      }
+    ],
+    "depth2_h8_leading_training_macs": 4064,
+    "dense_leading_training_macs": 17280,
+    "work_scope": "3 router + 5 expert + 3 credit forward-equivalent linear MACs; optimizer/nonlinear work excluded"
+  }
+}
