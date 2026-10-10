@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "checks": {
+    "maximum_causal_prefix_error": 0.0,
+    "split_tie_boundary_error": 0.0,
+    "stale_batch_difference": 20.030118942260742,
+    "batch_sizes": [
+      1,
+      2,
+      3,
+      6
+    ],
+    "strict_timestamp_cut": true
+  },
+  "scope": "Numerical causal-state contracts; no fitting",
+  "tag": "aws_b5_review_causal2_20261009T2140Z_contract",
+  "battle": "B5 tgbl-review development",
+  "wall_s": 0.0040323734283447266,
+  "max_rss_kb": 279204,
+  "source_sha256": {
+    "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+    "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+    "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+  }
+}
