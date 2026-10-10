@@ -1,0 +1,50 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1/R1 preserve exact two-layer cross-layer credit while removing structural-zero work; gradient/update parity then whole-step timing decides admission of real TRAIN comparison",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_deep_blocks_20261010T175852Z_contract",
+        "queue": "experiments/queue/b1_easytpp/aws_deep_blocks_20261010T175852Z_contract/aws_deep_blocks_20261010T175852Z_contract.txt",
+        "queue_sha256": "d5a7ee740de5b8dce8786e1929620ef517b29b0f3a3714f96f60ee9a3f9fa3ec",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/aws_deep_blocks_20261010T175852Z_contract.json",
+        "timeout_s": 900,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "aws_deep_blocks_20261010T175852Z_measure",
+        "queue": "experiments/queue/b1_easytpp/aws_deep_blocks_20261010T175852Z_measure/aws_deep_blocks_20261010T175852Z_measure.txt",
+        "queue_sha256": "fa5a09a4cde48d32281bf19b22b9e4089ee1ef645e5694faac8cf0dd2703099a",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+          "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/aws_deep_blocks_20261010T175852Z_measure.json",
+        "timeout_s": 900,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_deep_blocks_20261010T175852Z_contract.json",
+            "source_sha256": {
+              "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+              "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+              "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
