@@ -1,0 +1,419 @@
+{"step": 0, "outer_nll": 0.8080917176975302}
+/workspace/experiments/credit/reciprocal_update_v1.py:174: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  value=float(loss(adapted,query));total+=value;initial_total+=initial_loss;gaps.append(value-initial_loss)
+{
+  "rows": [
+    {
+      "pool": "selection",
+      "arm": "no_update",
+      "lr": 0.0,
+      "mean_query_nll": 1.3523672604566066,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.0,
+        0.0
+      ],
+      "wall_s": 0.000942230224609375,
+      "adaptation_gradient_targets": 0,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "sgd",
+      "lr": 0.01,
+      "mean_query_nll": 1.3425164432297045,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        -0.013642550345523308,
+        -0.006059084108280599
+      ],
+      "wall_s": 0.005279541015625,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "sgd",
+      "lr": 0.03,
+      "mean_query_nll": 1.3307000052943558,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        -0.026092838975272814,
+        -0.01724167134922827
+      ],
+      "wall_s": 0.004884958267211914,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "sgd",
+      "lr": 0.1,
+      "mean_query_nll": 1.3237836699496643,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        -0.008960748030169885,
+        -0.04820643298371463
+      ],
+      "wall_s": 0.0049893856048583984,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "sgd",
+      "lr": 0.3,
+      "mean_query_nll": 1.3651966200247916,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.1220607642337701,
+        -0.09640204509740014
+      ],
+      "wall_s": 0.004647493362426758,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "adam",
+      "lr": 0.01,
+      "mean_query_nll": 1.330005300037058,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        -0.02607625342130593,
+        -0.018647667417791114
+      ],
+      "wall_s": 0.005631685256958008,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "adam",
+      "lr": 0.03,
+      "mean_query_nll": 1.3034396276824143,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        -0.05217335109982191,
+        -0.04568191444856251
+      ],
+      "wall_s": 0.005659580230712891,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "adam",
+      "lr": 0.1,
+      "mean_query_nll": 1.3026798829485384,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.003546623378818392,
+        -0.10292137839495452
+      ],
+      "wall_s": 0.005629539489746094,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "adam",
+      "lr": 0.3,
+      "mean_query_nll": 1.6252703306998406,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.5380730039525252,
+        0.00773313653394303
+      ],
+      "wall_s": 0.005575656890869141,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "learned",
+      "lr": 0.0,
+      "mean_query_nll": 1.3669103853759816,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.14196731533514195,
+        -0.11288106549639143
+      ],
+      "wall_s": 0.008338451385498047,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "selection",
+      "arm": "learned_reset",
+      "lr": 0.0,
+      "mean_query_nll": 1.367346075680028,
+      "mean_initial_nll": 1.3523672604566066,
+      "paired_change": [
+        0.15015698766769847,
+        -0.12019935722085529
+      ],
+      "wall_s": 0.008298158645629883,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "no_update",
+      "lr": 0.0,
+      "mean_query_nll": 1.0673522400789315,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.0,
+        0.0
+      ],
+      "wall_s": 0.0008440017700195312,
+      "adaptation_gradient_targets": 0,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "sgd",
+      "lr": 0.01,
+      "mean_query_nll": 1.0677073604846052,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.00021380889031008543,
+        0.0009240497016578253
+      ],
+      "wall_s": 0.004685878753662109,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "sgd",
+      "lr": 0.03,
+      "mean_query_nll": 1.0679598202099512,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.001662112422926132,
+        0.002877272684965959
+      ],
+      "wall_s": 0.004700660705566406,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "sgd",
+      "lr": 0.1,
+      "mean_query_nll": 1.0696840193220227,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.006177164683905945,
+        0.010840723170088884
+      ],
+      "wall_s": 0.004605293273925781,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "sgd",
+      "lr": 0.3,
+      "mean_query_nll": 1.1100429630180764,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.044857530497647735,
+        0.04052391538064226
+      ],
+      "wall_s": 0.005674839019775391,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "adam",
+      "lr": 0.01,
+      "mean_query_nll": 1.0730071587845351,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.0029007605799379332,
+        0.014210597991145324
+      ],
+      "wall_s": 0.005749940872192383,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "adam",
+      "lr": 0.03,
+      "mean_query_nll": 1.0960889385131947,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.005165045529912593,
+        0.06263844239843896
+      ],
+      "wall_s": 0.00570368766784668,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "adam",
+      "lr": 0.1,
+      "mean_query_nll": 1.2107931101439877,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.08361331991072418,
+        0.20326842021938862
+      ],
+      "wall_s": 0.005644798278808594,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "adam",
+      "lr": 0.3,
+      "mean_query_nll": 1.5447802364960337,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.4288238679151317,
+        0.5260321249190729
+      ],
+      "wall_s": 0.005538225173950195,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "learned",
+      "lr": 0.0,
+      "mean_query_nll": 1.1504817204840228,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.07704962976341312,
+        0.08920933104676987
+      ],
+      "wall_s": 0.008275747299194336,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "learned_reset",
+      "lr": 0.0,
+      "mean_query_nll": 1.163953588828119,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.09789482715052555,
+        0.09530787034784938
+      ],
+      "wall_s": 0.00830984115600586,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    }
+  ],
+  "selected_baseline_lr": {
+    "sgd": 0.1,
+    "adam": 0.1
+  },
+  "assessment": [
+    {
+      "pool": "assessment",
+      "arm": "no_update",
+      "lr": 0.0,
+      "mean_query_nll": 1.0673522400789315,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.0,
+        0.0
+      ],
+      "wall_s": 0.0008440017700195312,
+      "adaptation_gradient_targets": 0,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "sgd",
+      "lr": 0.1,
+      "mean_query_nll": 1.0696840193220227,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        -0.006177164683905945,
+        0.010840723170088884
+      ],
+      "wall_s": 0.004605293273925781,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "adam",
+      "lr": 0.1,
+      "mean_query_nll": 1.2107931101439877,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.08361331991072418,
+        0.20326842021938862
+      ],
+      "wall_s": 0.005644798278808594,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "learned",
+      "lr": 0.0,
+      "mean_query_nll": 1.1504817204840228,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.07704962976341312,
+        0.08920933104676987
+      ],
+      "wall_s": 0.008275747299194336,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    },
+    {
+      "pool": "assessment",
+      "arm": "learned_reset",
+      "lr": 0.0,
+      "mean_query_nll": 1.163953588828119,
+      "mean_initial_nll": 1.0673522400789315,
+      "paired_change": [
+        0.09789482715052555,
+        0.09530787034784938
+      ],
+      "wall_s": 0.00830984115600586,
+      "adaptation_gradient_targets": 48,
+      "assessed_targets": 16,
+      "value_causes_per_likelihood_target": 4
+    }
+  ]
+}
