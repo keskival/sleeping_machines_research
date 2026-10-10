@@ -51,7 +51,7 @@ def pages():
          'three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. '
          'This distinguishes conditional credit from global action preference. A small-data isolated advantage is '
          'a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. '
-         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder) + depth_credit_pages(folder) + structured_credit_pages(folder)
+         'Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.')]] + diagnostic_pages(folder) + noise_pages(folder) + cpu_scan_pages(folder) + integrated_scan_pages(folder) + averaged_credit_pages(folder) + depth_credit_pages(folder) + structured_credit_pages(folder) + trained_write_pages(folder)
 
 
 def diagnostic_pages(folder):
@@ -212,3 +212,19 @@ def structured_credit_pages(folder):
         ('table',(['Seed','Teacher targets','Total GFLOPs','MFLOPs/target','Wall s'],work,[17,40,40,40,30])),
         ('small',records[0]['flop_scope']),
         ('p','The response geometry gives bounded sensitivity and curvature, plus a conditional value-to-gradient certificate under uniform approximation error. Held-out mean MSE and sixteen directions do not supply that uniform certificate. Native value/action-gradient contracts pass depths 2/4/8; selected state writes preserve past losses. Full online actor training and asynchronous hardware costs are the next integration tests.')]]
+
+
+def trained_write_pages(folder):
+    prefix='curie_trained_write_v6_20261010T1920Z';files=[folder/(prefix+f'_measure_s{s}.json') for s in (170,171,172)]
+    if not all(p.exists() for p in files):return []
+    records=[json.loads(p.read_text()) for p in files];assert all(r['status']=='completed' for r in records);rows=[];work=[]
+    for seed,r in zip((170,171,172),records):
+        for v in r['metrics']['arms']:rows.append([str(seed),v['arm'],f'{v["gain_vs_noop"]:.6g}',f'{v["gain_vs_fixed_train_action"]:.6g}'])
+        n=r['metrics']['teacher_target_presentations'];work.append([str(seed),f'{r["metrics"]["prior_training_supported_flops"]/1e9:.3f}',f'{r["supported_flops"]/1e9:.3f}',f'{r["supported_flops"]/n/1e6:.4f}',f'{r["wall_s"]:.1f}'])
+    return [[('h1','Appendix. R1 saved future credit guides continuous state writes'),
+        ('p','Saved critics propose one continuous radius-bounded native key-write adjustment from the observed prefix. The structured cotangent is contracted directly from reusable response activations; the free critic uses its action derivative. Fresh future continuations assess utility without critic refitting.'),
+        ('table',(['Seed','Proposal','Gain vs no-op','Gain vs TRAIN action'],rows,[17,60,44,46])),
+        ('small',records[0]['metrics']['scope']),
+        ('table',(['Seed','Prior fit GFLOPs','Evaluation GFLOPs','MFLOPs/target','Wall s'],work,[17,44,44,43,19])),
+        ('small',records[0]['flop_scope']),
+        ('p','The response packet stores 112 scalars and produces a four-dimensional proposal; this excludes encoder activations, forward state, weights and optimizer memory. Proposals are explicitly uncertified for population future gradients. State-write utility is distinct from forward-weight learning or asynchronous hardware efficiency.')]]

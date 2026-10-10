@@ -1,0 +1,23 @@
+{
+  "tag": "curie_trained_write_report_20261010T1930Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_trained_write_report_20261010T1930Z",
+      "driver": "scripts/build_curie_credit_report.py",
+      "queue": "experiments/queue/enabler/curie_trained_write_report_20261010T1930Z/curie_trained_write_report_20261010T1930Z.txt",
+      "queue_sha256": "43fb0536f8fd3f486e1cd1be953200a1a914a3b03a5208087d2fefa85d7c6e07",
+      "sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result_sources": {
+        "scripts/build_curie_credit_report.py": "90ac4eeb67e42e4c37f23378430567fdb406ee029f293275c299c5588f077aa7"
+      },
+      "result": ".git/curie-report-build-preview/curie_trained_write_report_20261010T1930Z/result.json",
+      "rss_kb": 1200000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}
