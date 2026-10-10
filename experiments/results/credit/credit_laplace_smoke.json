@@ -1,0 +1,141 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (theory note 167: Laplace credit-magnitude prior)",
+ "tag": "credit_laplace_smoke",
+ "args": {
+  "tag": "credit_laplace_smoke",
+  "dataset": "taxi",
+  "modes": 16,
+  "d": 32,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 1,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 0,
+  "max_train_seqs": 40,
+  "max_dev_seqs": 20,
+  "grid": 16,
+  "K": 9
+ },
+ "dev_ll_history": [
+  {
+   "epoch": 0,
+   "dev_ll": -0.7345492734866189
+  }
+ ],
+ "events": 719,
+ "per_mode": [
+  {
+   "rate": 0.010138946287399943,
+   "spearman": 0.1462931144695705,
+   "mean_pred": 118022677.1449349,
+   "mean_real": 0.2664240787422046
+  },
+  {
+   "rate": 0.01613475384782344,
+   "spearman": 0.1405787724878384,
+   "mean_pred": 160364660.88046452,
+   "mean_real": 0.36233734021169245
+  },
+  {
+   "rate": 0.025250459242102213,
+   "spearman": 0.2079182179417147,
+   "mean_pred": 55607821.0094311,
+   "mean_real": 0.10041983285502701
+  },
+  {
+   "rate": 0.038619194059212235,
+   "spearman": -0.04239513638952274,
+   "mean_pred": 157698498.8558295,
+   "mean_real": 0.20141259716803256
+  },
+  {
+   "rate": 0.06343632152943925,
+   "spearman": 0.1528485348602658,
+   "mean_pred": 62894780.701421365,
+   "mean_real": 0.11731013982411312
+  },
+  {
+   "rate": 0.10153074448741622,
+   "spearman": 0.15312040348002165,
+   "mean_pred": 14524970.63352696,
+   "mean_real": 0.077067631563767
+  },
+  {
+   "rate": 0.15430963055249303,
+   "spearman": 0.10796580544266708,
+   "mean_pred": 3458627.1903431653,
+   "mean_real": 0.04980441994733612
+  },
+  {
+   "rate": 0.2558096075274439,
+   "spearman": 0.09048608340016247,
+   "mean_pred": 3011427.9672887116,
+   "mean_real": 0.04103040410465033
+  },
+  {
+   "rate": 0.38825735997604327,
+   "spearman": 0.0796951494325013,
+   "mean_pred": 301951.190677992,
+   "mean_real": 0.0052998249295835515
+  },
+  {
+   "rate": 0.6138953743339726,
+   "spearman": 0.06918270242767281,
+   "mean_pred": 0.23886246643348152,
+   "mean_real": 0.024471384848354483
+  },
+  {
+   "rate": 0.9695512995360411,
+   "spearman": 0.023419668811655515,
+   "mean_pred": 0.18067498311445654,
+   "mean_real": 0.019438192503627414
+  },
+  {
+   "rate": 1.5617835887207163,
+   "spearman": 0.0064154020788699875,
+   "mean_pred": 0.02673098545730045,
+   "mean_real": 0.0023993398065540296
+  },
+  {
+   "rate": 2.441562990181703,
+   "spearman": 0.008155316046866909,
+   "mean_pred": 0.037663792708371585,
+   "mean_real": 0.002889158818946884
+  },
+  {
+   "rate": 3.8739548905026395,
+   "spearman": 0.021466353635181436,
+   "mean_pred": 0.008873700339433702,
+   "mean_real": 0.0007059667601314198
+  },
+  {
+   "rate": 6.21166467835581,
+   "spearman": 0.02152030120240766,
+   "mean_pred": 0.009346780333126041,
+   "mean_real": 0.0007601925593390796
+  },
+  {
+   "rate": 9.87807289836829,
+   "spearman": 0.014066335814082027,
+   "mean_pred": 0.0051000504391526475,
+   "mean_real": 0.00040496535978408574
+  }
+ ],
+ "spearman_all": 0.7623914048729639,
+ "calibration_slope_log": 0.4741187806640489,
+ "audit_cost_vs_uniform": {
+  "laplace": 1026.037605977657,
+  "per_mode_constant": 0.5933546169687092,
+  "oracle": 0.3132137971172428
+ },
+ "scope": "DEV only; renewal approximation; audit costs by the Theorem 10.1 identity without saturation",
+ "wall_s": 1.1156082153320312,
+ "source_sha256": {
+  "experiments/credit/credit_laplace.py": "4598b043686712c95b7c16c5a53f59c83ee17a7ee3293c93a1654c18c1778c1b",
+  "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+  "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
