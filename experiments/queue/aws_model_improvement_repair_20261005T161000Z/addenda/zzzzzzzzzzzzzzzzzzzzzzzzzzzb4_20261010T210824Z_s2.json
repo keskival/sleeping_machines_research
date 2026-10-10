@@ -1,0 +1,28 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Five-pass zero-skip gate passed; fixed Github split1 TRAIN DEV development fit tests quality when all padded-batch training events receive gradients, no TEST or frozen replacement",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_b4_logspread_develop_20261010T2112Z",
+        "queue": "experiments/queue/b4/aws_b4_logspread_develop_20261010T2112Z/aws_b4_logspread_develop_20261010T2112Z.txt",
+        "queue_sha256": "8a3b5a1b9f90e3dbf37da612d911bdb8be7927ae1b0ed6f81c51f73d3c28be01",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/b4_logspread_develop.py": "d1466cb480fe13bb808fcf3a38293baae8e804643ee4cdfa985b79fdda8f8420",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/summarize_b4_logspread.py": "d946bf002bf7704df4f1f3d5300d4dd16746b274700bf17c18c23b6e88b3167d",
+          "experiments/tpp/b4_logspread_pilot.py": "0b6291e5203d480f1260b493bc31efb2a9a9541132e01514769a7e707ead1682"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.json",
+        "timeout_s": 10800,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

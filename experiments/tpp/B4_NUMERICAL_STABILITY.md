@@ -48,10 +48,30 @@ both finite on all 9,114 TRAIN events. Full loss -3.75014, 116.42 seconds with
 anomaly detection enabled, peak RSS 2,948,080 KB. Diagnostic time is not an
 inference or optimized training throughput measurement.
 
-Admitted slot3 pilot aws_b4_logspread_pilot_20261010T2003Z: fresh seed0, original
-settings, five TRAIN passes including the first original failure epoch; DEV
-only. Full-gradient/source gate checked again in the driver. Decision: whether
-the original problematic batch receives finite updates throughout the pilot.
-The guarded driver records any other skipped updates. Quality is development
-evidence, and the frozen benchmark result stays unchanged. 2,400-second queue
-timeout, 4 GB RSS watchdog, 1,800-second between-epoch wall budget.
+Completed five-pass pilot `aws_b4_logspread_pilot_20261010T2003Z`: **zero
+skipped updates**,225.30s, DEV sequence loss -76.7246 (time -166.5078,
+marks89.7832), best epoch4. Source-bound update decision passes. This is
+first-pass numerical development, not a benchmark win or a family verdict.
+
+The independent padding audit (`diag_b4_padding_nan.py`) finds the overflow
+at masked tail positions, where fake events keep accumulating addressed state.
+Single sequences remain finite. The guarded original skips the entire padded
+batch, not just one long sequence: Github splits1–3 lose59–68% of TRAIN events
+in55–60 epochs. Frozen verdicts already carry this correction. The log-spread
+repair recovers the pilot updates without changing valid-event computation.
+Explicitly stopping padded state writes is a further execution repair requiring
+score/gradient contracts; it is not silently included in this fit.
+
+Next admitted on AWS slot2: `aws_b4_logspread_develop_20261010T2112Z`, after
+existing admitted work, fixed Github split1/seed0 TRAIN/DEV. Original d32,
+2-layer model and AdamW0.003,100-pass ceiling and original30-pass DEV patience;
+no parameter grid, TEST interface or frozen-score replacement. Five-pass
+source-bound zero-skip gate is required at entry. Any further nonfinite update
+stops the fit for diagnosis. Save parameter/Adam/RNG and batch-order checkpoints
+after each pass. Record data/source hashes, training passes/targets, fitting
+and evaluation time, RSS and selected-checkpoint DEV forward latency. Full
+fitting FLOPs are unmeasured and cannot support an efficiency claim.
+
+Queue timeout10,800s,4GB RSS watchdog,8GB VMS and scheduler host floor8GiB;
+measured diagnostic full backward peak2.95GB. Model wall budget7,200s checked
+between passes. No active source or existing job was replaced.
