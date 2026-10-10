@@ -64,10 +64,14 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
   event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
 - **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 fixed splits; total NLL per sequence, lower is
-  better): the frozen one-configuration EasyTPP model, with no tuning, has five completed verdicts. **Wikipedia won:**
-  −240.42 ± 43.31 SE vs the bar −122.62 (best published time + best published mark NLL), 4 of 5 splits below it. The win
-  is in the marks, 28.49 vs 144.79. Our addressed mark memory copies pages never seen in training (10–27% of test edits),
-  which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
+  better): the frozen one-configuration EasyTPP model, with no tuning, has six completed verdicts, all
+  losses against the composite bar (best published time + best published mark NLL). **Wikipedia lost** under the
+  pre-registered repair rule: split 0's original run ended with NaN weights, and its guarded rerun scores +58,218 on
+  TEST because two of 118 test sequences receive astronomically confident hazards (millions of nats; median sequence
+  3.9), so the five-split mean is +11,421.66 vs −122.62. The other four splits average −277.54, and the **marks are the
+  strongest result in this benchmark**: 27.65 vs 144.79 best published, because our addressed mark memory copies pages
+  never seen in training (10–27% of test edits), which per-mark embeddings cannot do. Bounding the hazards is the
+  development fix. **MOOC lost:** −226.85 ±
   2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
   published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
   2.42; its mark path overfits ~100-sequence training sets). **Github lost by 2.3 nats:** −270.62 ± 48.69 SE vs the bar

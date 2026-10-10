@@ -169,7 +169,7 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 
 \newpage
 % ---------------------------------------------------------------- second benchmark
-\sect{A second event benchmark}{The same model, unchanged: Wikipedia won}
+\sect{A second event benchmark}{The same model, unchanged: the strongest type predictions, no total win yet}
 
 To test transfer, we took the frozen one-configuration EasyTPP model to the neural temporal-point-process benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025): seven datasets, five fixed splits each, every split scored once on its sealed test set. No setting was tuned for these datasets. The pre-registered bar is the best published time component plus the best published type component, a combination that no single published model reaches.
 
@@ -178,10 +178,10 @@ To test transfer, we took the frozen one-configuration EasyTPP model to the neur
 \toprule
 Dataset {\color{muted}\footnotesize nats/sequence \down} & Bar & Sleeping Machines & Time / type parts (ours vs best published) & Verdict \\
 \midrule
-Wikipedia edits & $-122.62$ & $\mathbf{-240.42 \pm 43.31}$ & $-268.90$ vs $-267.41$ / \textbf{28.49 vs 144.79} & \textbf{Won}; 4 of 5 splits below the bar; split 0 is rerun (numerical failure) \\
+Wikipedia edits & $-122.62$ & $+11{,}421.66$ & $+11{,}394.01$ vs $-267.41$ / \textbf{27.65 vs 144.79} & Behind: splits 1--4 average $-277.54$, but the guarded rerun of split 0 assigns exploding hazards to two test sequences; type part far ahead \\
 MOOC course activity & $-239.7$ & $-226.85 \pm 2.83$ & $-298.57$ vs $-310.6$ / 71.73 vs 70.9 & Behind; timing gap \\
 Stack Overflow & 11.9 & $12.714 \pm 0.874$ & \textbf{$-91.60$ vs $-91.1$} / 104.31 vs 103.0 & Behind; time part ahead \\
-Github & $-272.9$ & ($-198.52 \pm 55.15$) & $-357.68$ vs $-382.4$ / 159.16 vs 109.5 & No valid verdict yet: four of five runs failed numerically in training; guarded reruns queued \\
+Github & $-272.90$ & $-270.62 \pm 48.69$ & \textbf{$-390.93$ vs $-382.4$} / 120.30 vs 109.5 & Behind by 2.3; time part ahead; below every single published model's total \\
 MIMIC2 hospital visits & 2.42 & $7.01 \pm 0.25$ & 2.99 vs 0.13 / 4.02 vs 2.29 & Behind \\
 Retweets & $-538.70$ & $-515.16 \pm 3.24$ & $-598.81$ vs $-621.33$ / 83.65 vs 82.63 & Behind; type part level, timing gap \\
 LastFM & & & & Running \\
@@ -190,8 +190,7 @@ LastFM & & & & Running \\
 {\footnotesize\color{muted}$\pm$ is the standard error over the five fixed splits. Negative log-likelihood per sequence: lower is better.}
 
 \begin{tile}
-\textbf{Why Wikipedia is won.} About 90\% of consecutive edits return to the page just edited, and 10--27\% of test pages never appear in training. Our addressed memory keeps one slot per page, written when that page occurs and read by that page's own score, so it can copy any page seen earlier in the sequence. Models that learn one embedding per page cannot copy a page they never trained on; the best published GRU model scores the page as if guessing uniformly. We verified the scoring from the saved models: exact reproduction, no leakage of future events, probabilities summing to one, and the published units.
-\end{tile}
+\textbf{What Wikipedia shows.} About 90\% of consecutive edits return to the page just edited, and 10--27\% of test pages never appear in training. Our addressed memory keeps one slot per page, written when that page occurs and read by that page's own score, so it can copy any page seen earlier in the sequence: type NLL 27.65 against 144.79 for the best published model, whose GRU scores pages as if guessing uniformly. The total is lost: one split's training failed numerically, and its pre-registered guarded rerun gives two test sequences hazards so confident that ordinary silences cost millions of nats. Bounding hazards is the development fix. \end{tile}
 
 \begin{tile}
 \textbf{What the losses teach.} A simple per-sequence counter, with no training, predicts the next type better than our model on two of these datasets, so the next development step adds persistent per-sequence type statistics to the memory. Github's training produced invalid values in four of five runs (one bad update poisoned the optimiser); those splits, and Wikipedia split 0, are retrained once with a guard that skips such updates, configuration unchanged, and scored once on test. The type-statistics step is development outside the sealed protocol.
@@ -321,7 +320,7 @@ Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads:
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Overflow, MIMIC2 and Retweets behind (page 5); Github awaiting guarded reruns; LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
+Second TPP benchmark (nats per sequence \down) & Six verdicts behind (page 5), with type predictions far ahead on Wikipedia and time ahead on Stack Overflow and Github; LastFM running & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
 \bottomrule
 \end{tabularx}}
 
@@ -336,7 +335,7 @@ Second TPP benchmark (nats per sequence \down) & Wikipedia won; MOOC, Stack Over
 \end{itemize}
 
 \begin{callout}
-\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller, and the same frozen model wins Wikipedia on a second event benchmark without tuning. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
+\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller; on a second event benchmark the same frozen model, untuned, predicts Wikipedia page types far better than any published model, while its totals still trail. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
 \end{callout}
 
 \end{document}

@@ -281,6 +281,13 @@
    ],
    "se": 2.8301085268039414
   },
+  "runs": [
+   "b4_mooc_s0",
+   "b4_mooc_s1",
+   "b4_mooc_s2",
+   "b4_mooc_s3",
+   "b4_mooc_s4"
+  ],
   "bar": -239.7,
   "best_single": -233.8,
   "verdict": "loss (pre-registered frozen configuration)"
@@ -322,6 +329,13 @@
    ],
    "se": 0.8738874798674373
   },
+  "runs": [
+   "b4_stack_overflow_s0",
+   "b4_stack_overflow_s1",
+   "b4_stack_overflow_s2",
+   "b4_stack_overflow_s3",
+   "b4_stack_overflow_s4"
+  ],
   "bar": 11.9,
   "best_single": 12.1,
   "published_time": -91.1,
@@ -332,92 +346,106 @@
  },
  "b4_wikipedia": {
   "L_T": {
-   "mean": -268.90417603630175,
-   "sd": 91.27568118111861,
+   "mean": 11394.011326466589,
+   "sd": 26158.201618423507,
    "values": [
-    -127.42358084129025,
+    58187.15393167316,
     -296.574100323719,
     -328.5599174239956,
     -234.67327800073045,
     -357.2900035917737
    ],
-   "se": 40.8197255627159
+   "se": 11698.303397587995
   },
   "L_M": {
-   "mean": 28.488417131938284,
-   "sd": 6.31581525162067,
+   "mean": 27.65342704799579,
+   "sd": 5.3598050352156,
    "values": [
-    35.505532549324265,
+    31.330582129611788,
     24.896656770619348,
     28.51481129222794,
     33.52491839760606,
     20.000166649913815
    ],
-   "se": 2.824518447190751
+   "se": 2.396977680977547
   },
   "total": {
-   "mean": -240.4157589043635,
-   "sd": 96.83883218841578,
+   "mean": 11421.664753514584,
+   "sd": 26160.265055859192,
    "values": [
-    -91.91804829196597,
+    58218.48451380277,
     -271.67744355309964,
     -300.0451061317677,
     -201.14835960312442,
     -337.28983694185985
    ],
-   "se": 43.307642326998476
+   "se": 11699.226194862697
   },
+  "runs": [
+   "b4g_wikipedia_s0",
+   "b4_wikipedia_s1",
+   "b4_wikipedia_s2",
+   "b4_wikipedia_s3",
+   "b4_wikipedia_s4"
+  ],
   "bar": -122.62,
   "best_single": -2.67,
   "published_time": -267.41,
   "published_marks": 144.79,
   "splits_ahead": 4,
-  "verdict": "win (pre-registered frozen configuration)",
-  "diagnosis": "Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 (reproduction, causality, mark normalisation, published units). Split 0 reached NaN parameters at epoch 6 (checkpoint from epoch 5); guarded protocol rerun queued"
+  "verdict": "loss (pre-registered frozen configuration; split 0 guarded rerun)",
+  "diagnosis": "Split 0 original run ended with NaN parameters (TEST -91.92); its guarded rerun gives two of 118 TEST sequences exploding hazards (4.90 and 1.98 million nats; median sequence 3.9), so the mean is dominated by them. Splits 1-4 average -277.54. Marks lead every published model (mark memory copies repeated and unseen pages)"
  },
  "b4_github": {
   "L_T": {
-   "mean": -357.6842840424203,
-   "sd": 150.65512758413342,
+   "mean": -390.92610957354003,
+   "sd": 152.93620189879482,
    "values": [
     -480.43445285517373,
-    -536.9293439467396,
-    -175.5412090504107,
-    -257.55183155306366,
-    -337.9645828067138
+    -594.2965436567906,
+    -198.3155423457571,
+    -308.69089207234987,
+    -372.89311693762875
    ],
-   "se": 67.3750212874052
+   "se": 68.39514873326752
   },
   "L_M": {
-   "mean": 159.1604203772416,
-   "sd": 51.985640205421376,
+   "mean": 120.30419863325706,
+   "sd": 46.07476488067878,
    "values": [
     129.163334405696,
-    235.20803847911688,
-    96.06377384111632,
-    168.17842820629392,
-    167.18852695398476
+    190.4066647909289,
+    63.437548910836995,
+    106.03286769127106,
+    112.48057736755233
    ],
-   "se": 23.248685070633666
+   "se": 20.605261264103547
   },
   "total": {
-   "mean": -198.52386366517868,
-   "sd": 123.32604326837009,
+   "mean": -270.62191094028293,
+   "sd": 108.87421437900728,
    "values": [
     -351.27111844947774,
-    -301.72130546762264,
-    -79.4774352092944,
-    -89.37340334676972,
-    -170.776055852729
+    -403.88987886586165,
+    -134.8779934349201,
+    -202.6580243810788,
+    -260.41253957007643
    ],
-   "se": 55.153083228831164
+   "se": 48.690028869669064
   },
+  "runs": [
+   "b4_github_s0",
+   "b4g_github_s1",
+   "b4g_github_s2",
+   "b4g_github_s3",
+   "b4g_github_s4"
+  ],
   "bar": -272.9,
   "best_single": -269.7,
   "published_time": -382.4,
   "published_marks": 109.5,
-  "verdict": "no valid verdict yet (numerical failure; guarded protocol reruns queued)",
-  "diagnosis": "Splits 1-4 reached NaN parameters at epochs 3-8 (no non-finite guard); checkpoints from epochs 2-3; b4g reruns (TEST once, configuration unchanged) queued"
+  "verdict": "loss by 2.28 (pre-registered frozen configuration; splits 1-4 guarded reruns)",
+  "diagnosis": "Below every single published total (-269.7); time component ahead; marks carry the gap. Guarded reruns skip one long training sequence whose gradient is non-finite"
  },
  "b4_mimic2": {
   "L_T": {
@@ -456,6 +484,13 @@
    ],
    "se": 0.2481674080599535
   },
+  "runs": [
+   "b4_mimic2_s0",
+   "b4_mimic2_s1",
+   "b4_mimic2_s2",
+   "b4_mimic2_s3",
+   "b4_mimic2_s4"
+  ],
   "bar": 2.42,
   "best_single": 3.1,
   "published_time": 0.13,
@@ -500,6 +535,13 @@
    ],
    "se": 3.243462946896961
   },
+  "runs": [
+   "b4_retweets_s0",
+   "b4_retweets_s1",
+   "b4_retweets_s2",
+   "b4_retweets_s3",
+   "b4_retweets_s4"
+  ],
   "bar": -538.7,
   "best_single": -536.17,
   "published_time": -621.33,
@@ -735,16 +777,16 @@
   "experiments/results/tpp_b4/b4_stack_overflow_s2.json": "04aa3b234e051d876cc7c7b694bd5180a6dce68244d845bd43ce7ced82589dd4",
   "experiments/results/tpp_b4/b4_stack_overflow_s3.json": "25fbbbcdd45808d34ee611ccd2d4e760b0805b44619e1e66b7da66163bde211a",
   "experiments/results/tpp_b4/b4_stack_overflow_s4.json": "14ec5de3df75e2af081b80fcf33f839a3e5bda62fdb019464d6e0e86aa40e0b1",
-  "experiments/results/tpp_b4/b4_wikipedia_s0.json": "697f73905bb93bd5d7cd71fc04b7b1f6ae5f4ff1f7d452fa9b7b8d3170f2fee9",
+  "experiments/results/tpp_b4/b4g_wikipedia_s0.json": "e80ec0536df57308e0b91c233c50b30ed874151dfeff4440b3cb647bccbfbc81",
   "experiments/results/tpp_b4/b4_wikipedia_s1.json": "77c4b782cccc9cefba6fede12f0a809edb52489d8fe2e22dbc84ae077badf0dd",
   "experiments/results/tpp_b4/b4_wikipedia_s2.json": "83be650a8c08e404dac11fb4739577190b36707b7db88a71f9fcbe3a16968bc1",
   "experiments/results/tpp_b4/b4_wikipedia_s3.json": "4754b8277ddb8c7fca8891a60db8ca2236058f8f0cdd32e7fdfbc00a3e689465",
   "experiments/results/tpp_b4/b4_wikipedia_s4.json": "5dd0b286434a5fde220624eec97162c61107ea770d2d46b9df702c6f3823c7a2",
   "experiments/results/tpp_b4/b4_github_s0.json": "066ba7f7bc4e23d0a669dd4ac42e55b6418faa9fd16bd6d50d5c8549a77e67bf",
-  "experiments/results/tpp_b4/b4_github_s1.json": "83757d59cd792aa18ba2bb458946062b49fd2ac2d1350f084386a5b010ae909a",
-  "experiments/results/tpp_b4/b4_github_s2.json": "fc966808947ac117a80e6dda9992fec0259daeb44e29910b2e17dd7ed52a99a7",
-  "experiments/results/tpp_b4/b4_github_s3.json": "dc99a4e29f81aed1f5e7e9f708d0c5f5ea8f67921cec7fdd5f914a39942ddf6f",
-  "experiments/results/tpp_b4/b4_github_s4.json": "1dd8787d261dc21859476c798a4489372a19ec5e7fb631e3bf5c2a0fbf3672c0",
+  "experiments/results/tpp_b4/b4g_github_s1.json": "4db57412f678d2b770ecbdc6b47e9ea00cc7fc49480146c8efd82c5fac7725f7",
+  "experiments/results/tpp_b4/b4g_github_s2.json": "b98145442b32aa2708d452ee32cc4c12a55c4d6488e387014437536553ada675",
+  "experiments/results/tpp_b4/b4g_github_s3.json": "4b060ee3db248bf11214b63b98652ac7e2afc8989470356690d98650fb9df059",
+  "experiments/results/tpp_b4/b4g_github_s4.json": "9999a7c2dd3999f2c886a6a80a785737d9aa9dc4e040686221ddc7b54cd333e8",
   "experiments/results/tpp_b4/b4_mimic2_s0.json": "56d20bf2322e223986a0d5f24a570b5143acc9156fedf9967b6c2be05e8a6ae4",
   "experiments/results/tpp_b4/b4_mimic2_s1.json": "2ecdf4c57b1a2d6a7d7b14beb06e4eccb9b566cfb71ba85b853406f7eee92bf4",
   "experiments/results/tpp_b4/b4_mimic2_s2.json": "e2a4364ad9b2c95092532789f15061c411fe93fc8257f35704bb4bd042157719",
@@ -762,9 +804,9 @@
   "experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s1_20261007T1900Z.json": "d2e19dc9aed241933a96d8302ea9d284b21c555383321b1ac47fc694e93df95b",
   "experiments/results/tpp/recall/curie_r1_v4_pn_keyed2_s2_20261007T1900Z.json": "e518da6ee00171781054f5a9f2277c0513a6ab68e0159b8c2fa0bfd9b3f38b65",
   "experiments/B1_EASYTPP.md": "9c26e82dbc9fba4619c7027418c436e60951e9d4bc1750b2dba2275548ce3907",
-  "experiments/B2_IRREGULAR_TS.md": "6e8d1c3326563a28e420999d0683263427f11a8b5d099b7b8fdb3ba1fc2bf994",
-  "experiments/tgb/B5_TGB.md": "0a4b9e1ddb645f21c0ba95ce626ef5b9eb0f88e6188d8179ceaf6683daa79011",
-  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "6bf09fc0e94558e552090ea4ea3a02eb5985ee37349e854ece5938134d2d2f2b",
-  "experiments/fas/B3_DEVELOPMENT_LOG.md": "2a56a7278e5b713fa808f20a0c287569dfaeb2bf2fb98b365cb1f603f10600ee"
+  "experiments/B2_IRREGULAR_TS.md": "cf6e15efc44524bbd74441f79e5a7d405cf30e2476c7c9b89193dd8c6bb6141b",
+  "experiments/tgb/B5_TGB.md": "72352524dc2d58ebec6ceba03890cfa3a98b9493f086616a934d105b8735502f",
+  "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "e1bb6c73092bd0934171cedca948cfc76b85e849d07f0c22303af40b66ac8ba0",
+  "experiments/fas/B3_DEVELOPMENT_LOG.md": "eceb4f3577be42b3e7d3217d45d168792a4fad31f2d15db193482dfd82dc340b"
  }
 }

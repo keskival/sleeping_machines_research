@@ -3,7 +3,7 @@
 Every own number is computed here from completed result files, and every input file's sha256 is recorded. Published
 reference numbers are quoted from the battle dossiers (experiments/B1_EASYTPP.md, experiments/B2_IRREGULAR_TS.md,
 experiments/tgb/B5_TGB.md, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md), whose hashes are recorded too.
-Output: report/public_wins_headline_evidence_20261009_v3.json.
+Output: report/public_wins_headline_evidence_20261010_v4.json.
 """
 import hashlib
 import json
@@ -25,16 +25,20 @@ def stats(vals):
     return dict(mean=float(np.mean(vals)), sd=float(np.std(vals, ddof=1)), values=[float(v) for v in vals])
 
 
-def b4_stats(prefix):
-    records = [load(f'experiments/results/tpp_b4/{prefix}_s{k}.json') for k in range(5)]
+def b4_stats(prefix, guarded=()):
+    """Five official splits; splits in `guarded` use the guarded protocol rerun (b4g_*) that replaced a run ending with NaN
+    parameters (training-only repair rule, B4 doc). Configuration must be identical; the drivers differ only by the guard."""
+    names = [f"{'b4g' + prefix[2:] if k in guarded else prefix}_s{k}" for k in range(5)]
+    records = [load(f'experiments/results/tpp_b4/{n}.json') for n in names]
     assert all(r['status'] == 'completed' and r['split'] == k and r['args']['score_test']
                for k, r in enumerate(records)), 'Five completed official B4 splits required'
     assert len({json.dumps(r['config'], sort_keys=True) for r in records}) == 1
-    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) == 1
+    assert len({json.dumps(r['source_sha256'], sort_keys=True) for r in records}) <= (2 if guarded else 1)
     assert len({r['dataset'] for r in records}) == 1
     result = {key: stats([r['test'][key] for r in records]) for key in ('L_T', 'L_M', 'total')}
     for value in result.values():
         value['se'] = value['sd'] / np.sqrt(5)
+    result['runs'] = names
     return result
 
 
@@ -70,8 +74,8 @@ wiki_dev = load('experiments/results/tgb/curie_b5_racelink_v4_id0_dev_s0_2026100
 wiki = [load(f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json')['test_mrr'] for s in range(3)]
 mooc = b4_stats('b4_mooc')
 stack_overflow = b4_stats('b4_stack_overflow')
-wikipedia = b4_stats('b4_wikipedia')
-github = b4_stats('b4_github')
+wikipedia = b4_stats('b4_wikipedia', guarded={0})
+github = b4_stats('b4_github', guarded={1, 2, 3, 4})
 mimic2 = b4_stats('b4_mimic2')
 retweets = b4_stats('b4_retweets')
 recall_mixed = recall_stats([f'experiments/results/tpp/recall/curie_r1_v5len_p_keyed1_s{s}_{stamp}.json'
@@ -106,15 +110,15 @@ packet = dict(
                           scope='Five fixed splits; NLL per sequence; uncertainty is standard error'),
     b4_wikipedia=dict(**wikipedia, bar=-122.62, best_single=-2.67, published_time=-267.41, published_marks=144.79,
                       splits_ahead=int(sum(v < -122.62 for v in wikipedia['total']['values'])),
-                      verdict='win (pre-registered frozen configuration)',
-                      diagnosis='Mark-memory win: 90-93% of consecutive edits repeat the page, 10-27% of TEST pages are unseen '
-                                'in TRAIN; per-mark addressed memory copies them. Scoring verified on splits 0 and 4 '
-                                '(reproduction, causality, mark normalisation, published units). Split 0 reached NaN parameters at epoch 6 '
-                                '(checkpoint from epoch 5); guarded protocol rerun queued'),
+                      verdict='loss (pre-registered frozen configuration; split 0 guarded rerun)',
+                      diagnosis='Split 0 original run ended with NaN parameters (TEST -91.92); its guarded rerun gives two of 118 TEST '
+                                'sequences exploding hazards (4.90 and 1.98 million nats; median sequence 3.9), so the mean is dominated '
+                                'by them. Splits 1-4 average -277.54. Marks lead every published model (mark memory copies repeated and '
+                                'unseen pages)'),
     b4_github=dict(**github, bar=-272.9, best_single=-269.7, published_time=-382.4, published_marks=109.5,
-                   verdict='no valid verdict yet (numerical failure; guarded protocol reruns queued)',
-                   diagnosis='Splits 1-4 reached NaN parameters at epochs 3-8 (no non-finite guard); checkpoints from epochs 2-3; '
-                             'b4g reruns (TEST once, configuration unchanged) queued'),
+                   verdict='loss by 2.28 (pre-registered frozen configuration; splits 1-4 guarded reruns)',
+                   diagnosis='Below every single published total (-269.7); time component ahead; marks carry the gap. Guarded '
+                             'reruns skip one long training sequence whose gradient is non-finite'),
     b4_mimic2=dict(**mimic2, bar=2.42, best_single=3.1, published_time=0.13, published_marks=2.29,
                    verdict='loss (pre-registered frozen configuration)',
                    diagnosis='About 3 events per sequence; selection at epochs 3-11 (early overfitting of the mark path)'),
@@ -127,7 +131,7 @@ packet = dict(
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
            'all selected reference seeds complete; sealed scoring awaits bound cross-host data identity',
     input_sha256=inputs)
-out = ROOT / 'report/public_wins_headline_evidence_20261009_v3.json'
+out = ROOT / 'report/public_wins_headline_evidence_20261010_v4.json'
 out.write_text(json.dumps(packet, indent=1) + '\n')
 print(json.dumps(dict(easy={d: round(easy[d]['mean'], 4) for d in easy}, seeds_ahead=seeds_ahead, pam=packet['pam']['acc']['mean'],
                       trade=packet['tgbn_trade']['ndcg']['mean'], mooc=packet['b4_mooc']['total']['mean'])))
