@@ -1,0 +1,37 @@
+{
+  "host": "curie",
+  "battle": "B10/R1",
+  "decision": "Producer-weighted revealed-feedback credit: calibration and actor utility versus saved matched controls",
+  "sources": {
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_feedback_credit_metric.py": "b3d1be3a10f87d9f43bf040b3eba001e71588b417d2fb990ae98433bb32ff81f",
+    "experiments/credit/real_feedback_credit.py": "568768dd18d5eaaf6f828efe0a53948aa19e2f3969088bd213773d50fd65cd55",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_learned_boundary_v3.py": "da8a7b792cef1eb756c6ac37486a36e35510a6d7ed6e32682f7bf201ba5c532b",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "jobs": [
+    {
+      "tag": "curie_feedback_metric_v2_20261010T2355Z_contract",
+      "queue": "experiments/queue/enabler/curie_feedback_metric_v2_20261010T2355Z/curie_feedback_metric_v2_20261010T2355Z_contract.txt",
+      "queue_sha256": "f02ef4c2020bb206ecffb2810d45039e74139d48d8d6b7d6011a368a9ce545be",
+      "result": "experiments/results/credit/curie_feedback_metric_v2_20261010T2355Z_contract.json"
+    },
+    {
+      "tag": "curie_feedback_metric_v2_20261010T2355Z_smoke",
+      "queue": "experiments/queue/enabler/curie_feedback_metric_v2_20261010T2355Z/curie_feedback_metric_v2_20261010T2355Z_smoke.txt",
+      "queue_sha256": "581c5ca9fe883c9e6d12528a5be89155301fdee9dd7504184cbd088167147af9",
+      "result": "experiments/results/credit/curie_feedback_metric_v2_20261010T2355Z_smoke.json"
+    },
+    {
+      "tag": "curie_feedback_metric_v2_20261010T2355Z_measure",
+      "queue": "experiments/queue/enabler/curie_feedback_metric_v2_20261010T2355Z/curie_feedback_metric_v2_20261010T2355Z_measure.txt",
+      "queue_sha256": "a9ae3865b93d1a9bfeae8e50ad82665e56cb20772c9f1ddd9d5dd0438bbe88d9",
+      "result": "experiments/results/credit/curie_feedback_metric_v2_20261010T2355Z_measure.json"
+    }
+  ]
+}

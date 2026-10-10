@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_unseen_route_credit_v1_20261010T2340Z",
+  "metrics": {
+    "routes": 5,
+    "chosen_pool": [
+      0,
+      1
+    ],
+    "exploration_outside_pool": [
+      2,
+      3,
+      4
+    ],
+    "outcomes": 10,
+    "mean_error": 0.0,
+    "variance_error": 7.105427357601002e-15,
+    "trace_variance": 42.23,
+    "support_rejections": 4
+  },
+  "source_sha256": {
+    "experiments/credit/check_sampled_route_credit.py": "6e7c43c8b007b458781deb103db70ca54ae6ccd895bffba5d3ce8d62b620410c",
+    "experiments/credit/sampled_route_credit.py": "ffef1b127957cdf920022964a79af4c11fe46fb8a4a6a8aee04038ee1fafcbce"
+  },
+  "scope": "Exhaustive two-stage estimator arithmetic. No trained route generalization, native application, efficient discovery or hardware result."
+}
