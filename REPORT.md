@@ -4331,3 +4331,20 @@ Whole bridge including setup/copies and both domains 46.81 s; peak RSS 591.9 MiB
 Real-market state and fixed-parameter gradient contracts pass at depths 2/4/8, with saved-market score parity error 1.9e-10. A trained proper-token member preserves lazy addressed key transport, scores and every factual parameter gradient in float64 to 3.7e-15. Detachment preserves numbers while truncating credit; issued forecasts cannot be rewritten by later updates.
 
 No public language scoring interval or market TEST is read. Cached key-response algebra is valid within its fixed-learning-path assumptions; across changed optimizer updates the total effect needs versioned replay or audited transition prediction. Serial event-time CPU processing is not clockless hardware measurement.
+
+## Appendix. B1 exact deep online credit: structural blocks and real-data execution
+
+Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
+
+| Backend | TRAIN seconds | µs/scored TRAIN target | Trace MiB/stream |
+| --- | --- | --- | --- |
+| dense | 12.49 | 5498.1 | 2.297 |
+| blocks | 5.00 | 2201.3 | 1.275 |
+
+![aws deep credit blocks](report/figures/aws_deep_credit_blocks.png)
+
+Layer-1 state cannot depend on downstream parameters; its trace omits those columns. Input derivatives are scattered into their embedding/gap support. Layer-2 own-weight traces retain one vector per mode; the upstream cross-layer trace stays fully dense. Every retained sensitivity undergoes the same temporal decay and rotation. The fixed-weight every-parameter BPTT contract passes with 9.56e-16 relative error.
+
+One CPU thread, float64, seed 0; 2,272 scored TRAIN events, 142 updates per arm. Whole train steps include forward, exact credit transport, local backward and Adam. Trace storage is a tensor-element count, not total RSS. Larger-width synthetic batches give 3.05× speed, at depth two. These are execution measurements on a dense-write diagnostic member; no hard-routing, arbitrary-depth, whole-fit FLOP, energy or new benchmark-quality claim.
+
+Same-incoming-state audit at batch 54 gives gradient error 5.4e-15, parameter error 1.1e-16, zero mean-likelihood difference. Independent floating-point trajectories later crossed both absolute-gradient and per-target-likelihood identity guards. Both stopped logs are preserved; no completed paired epoch is claimed. A three-seed 20-pass final-DEV comparison uses the original model and recipe. Its predeclared adoption rule allows at most 0.002 mean quality loss and 0.005 on any seed. TEST remains untouched.
