@@ -30,6 +30,42 @@ subject to a resource constraint; full-support discovery is a structural
 identifiability requirement, not evidence that the learned policy is optimal.
 A no-probe atom and supported low-cost proposal allow learning both when and how.
 
+## Counterfactuals as feedstock for future interventions
+
+User clarification: counterfactual computations are reusable observations for
+future interventions, and their acquisition policy is guided by future
+advantage. Immediate counterfactual credit is one use of that information,
+not the complete objective for selecting the pool.
+
+A paid counterfactual can emit a versioned packet containing its conditioning
+prefix, route descriptor, intervention, alternative state/message, immediate
+loss/credit response, discovery probability and actual cost. The utility critic
+learns to map these packets and persistent history to later intervention
+advantage. Selected-route feedback and later factual error packets can refine
+those predictions. Packets may support route selection, improved learning
+updates, critic learning and later probe allocation; charge their computation
+once and charge each additional storage/read/learning use separately.
+
+Distinguish two learned policies: the intervention policy selects actions for
+predicted future advantage; the counterfactual-acquisition policy selects probes
+for their expected improvement of subsequent intervention/learning decisions,
+net of cost. A promising route may merit an intervention without another probe;
+an uncertain low-immediate-value route may merit a probe because it changes a
+later decision. Large uncertainty alone is not the acquisition reward.
+
+An immediate alternative outcome is a feature or partial label for this
+longer-horizon objective. It becomes an exact future-advantage label only when
+the declared continuation, persistent state and subsequent learning policy are
+included. Historical packets need their versions and propensities; shared
+representations can generalize to new contexts, but stale counterfactual values
+are not current exact values. Jointly learned critic/policy targets must remain
+causal, with delayed observations or supported audits checking their utility.
+
+Thus the loop is counterfactual packet -> predicted future intervention
+advantage -> chosen intervention/acquisition -> delayed feedback -> improved
+critic and policy. Discovery outside the existing pool expands this same loop;
+it is not a separate heuristic with an unrelated fitness function.
+
 ## Learning without routinely running two futures
 
 For sampled e~pi_phi(.|X), observe the factual delayed return R=-sum w loss-lambda work.
