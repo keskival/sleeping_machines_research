@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{4}{Information Theory for Learning Signals}{What forward information buys, Gaussian coding, and economical credit messages}
+\section*{Why this tutorial}
+A credit learner receives a forward packet and must predict how future errors affect a past computation. Information theory asks what uncertainty that packet removes and how many bits a useful credit message needs. It separates \emph{predictable structure}, irreducible future noise, and communication cost. A coding bound is not a measured training-speed bound.
+\section{Entropy and usable side information}
+For a discrete variable $X$, $H(X)=-\sum_xp(x)\log p(x)$; logarithms here are natural, so units are nats. Conditional entropy averages uncertainty after observing $Y$. Mutual information is
+\[
+ I(X;Y)=H(X)-H(X\mid Y)
+ =\E\log\frac{p(X,Y)}{p(X)p(Y)}\ge0.
+\]
+For continuous variables use differential entropy; it can be negative, while mutual information remains nonnegative. A deterministic statistic $Z=f(Y)$ obeys the data-processing inequality $I(X;Z)\le I(X;Y)$: compression cannot create information about $X$.
+\paragraph{What should the packet predict?} Let $G$ be future credit and $Y$ the currently available packet. Under squared error, the optimal predictor is $m(Y)=\E[G\mid Y]$. For any predictor $h$,
+\[
+ \E\|G-h(Y)\|^2
+ =\E\|G-m(Y)\|^2+\E\|m(Y)-h(Y)\|^2.
+\]
+\emph{Derivation:} expand the square and condition on $Y$; the cross term vanishes because $\E[G-m(Y)\mid Y]=0$. More capacity can reduce the second term, but not unpredictable future noise. In a nonstationary stream both the conditional mean and its noise law may evolve.
+\section{The Gaussian channel and rate--distortion}
+For a real Gaussian $X\sim\mathcal N(0,v)$, $h(X)=\tfrac12\log(2\pi e v)$. If $Y=X+N$, with independent $N\sim\mathcal N(0,n)$, then
+\[
+ I(X;Y)=\tfrac12\log(1+v/n),\qquad
+ \Var(X\mid Y)=\frac{vn}{v+n}.
+\]
+The mean-squared-error rate--distortion function of an i.i.d. real Gaussian source is
+\[
+ R(D)=\left[\tfrac12\log(v/D)\right]_+,\qquad [x]_+=\max(x,0).
+\]
+\emph{Lower bound:} $I(X;\widehat X)=h(X)-h(X\mid\widehat X)\ge h(X)-h(X-\widehat X)$, and Gaussian noise maximizes entropy at a fixed second moment $D$. Equality is attained by a Gaussian test channel. The operational theorem concerns long blocks and average distortion, not a one-message quantizer.
+\begin{keyidea}
+For a \emph{circular complex} Gaussian with $v=\E|X|^2$, the formula is $R(D)=[\log(v/D)]_+$ nats per complex sample. Its real and imaginary parts each have variance $v/2$. This factor of two matters for the complex temporal modes in our notes.
+\end{keyidea}
+\section{Weighted reverse water-filling}
+Suppose independent real Gaussian modes have variances $v_i$ and credit errors have importance weights $w_i>0$. Minimize the weighted distortion $\sum_iw_iD_i$ at a fixed total coding rate, with $0<D_i\le v_i$. On active modes the Lagrangian derivative gives
+\[
+ w_i-\frac{\beta}{2D_i}=0,\qquad
+ D_i=\min(v_i,\theta/w_i),\quad\theta=\beta/2.
+\]
+Only modes with $w_iv_i>\theta$ receive positive rate. The others can be omitted at the chosen distortion level. Weights may represent a producer sensitivity, but cross-mode correlations require a joint metric or an appropriate change of basis. A diagonal approximation must be labelled.
+\begin{example}
+Take $v=(9,1)$, $w=(1,4)$ and water level $\theta=2$. Then $D=(2,1/2)$; both modes are active. Rate is $\tfrac12\log(9/2)+\tfrac12\log2=\log3$ nats, and weighted distortion is $2+4(1/2)=4$.
+\end{example}
+\section{Side information and noisy teachers}
+If $(X,Y)$ are jointly Gaussian, write $X=\E[X\mid Y]+Z$ with an independent Gaussian innovation of variance $v_c$. When both ends know $Y$, encode only $Z$: $R_{X\mid Y}(D)=[\tfrac12\log(v_c/D)]_+$. The Gaussian Wyner--Ziv theorem gives the same rate when only the decoder knows $Y$, under memoryless jointly Gaussian sources and squared error. It requires block coding; it is not a claim that any learned decoder attains the bound. For $D<v_c$, the rate saving is $\tfrac12\log(v/v_c)=I(X;Y)$.
+\paragraph{Indirect source coding.} Suppose the desired signal is $X$, but the encoder only observes $Y=X+N$. Put $m(Y)=\E[X\mid Y]$, $d_0=\E(X-m(Y))^2$ and $v_m=\Var(m(Y))$. Every reconstruction based on $Y$ satisfies
+\[
+ \E(X-\widehat X)^2=d_0+\E(m(Y)-\widehat X)^2.
+\]
+Thus $D<d_0$ is impossible, and the real Gaussian indirect rate is $[\tfrac12\log(v_m/(D-d_0))]_+$ for $D>d_0$. Noisier gradient teachers need denoising or more information, not just a larger predictor.
+\section*{Exercises}
+\begin{exercise}With $v=4$, $n=1$, calculate the conditional variance and information.\end{exercise}
+\begin{solution}$v_c=4/5$ and $I=\tfrac12\log5$ nats. A real Gaussian code at $D=0.2$ costs $\tfrac12\log4$ with this side information, versus $\tfrac12\log20$ without it.\end{solution}
+\begin{exercise}A mode has weighted variance $w_iv_i=0.3$ and water level $0.5$. What is sent?\end{exercise}
+\begin{solution}Nothing: $D_i=v_i$ and its allocated rate is zero. This accepts distortion; it is not exact credit.\end{solution}
+\begin{exercise}Conditional residual variance falls by $e^{-2r\tau}$. Find the information gain under Gaussian assumptions.\end{exercise}
+\begin{solution}The log variance ratio is $2r\tau$. Information is $r\tau$ nats per real mode, or $2r\tau$ per circular complex mode.\end{solution}
+\begin{inourmodels}
+Note 164 Part II uses complex Gaussian innovations, forward side information and weighted coding. Note 165 separates total capacity from active credit dimensions. The real online-credit prototype learns conditional state cotangents; sparse residual audits correct its errors. Gaussian coding identities do not certify that prototype's calibration or runtime. Basic.lean proves log-ratio and active-set algebra, not the Shannon or Wyner--Ziv coding theorems.
+\end{inourmodels}
+\paragraph{Further reading.} MIT 6.441, chapters 23--25, \href{https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/resources/lecture-notes/}{rate--distortion lecture notes}; Wyner and Ziv, \emph{The rate-distortion function for source coding with side information at the decoder} (1976).
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{5}{Learning Dynamics}{Contraction, coupled learners, Bellman equations and temporal-difference credit}
+\section*{Why this tutorial}
+A forward model and its credit model form a coupled dynamical system: the actor changes what the critic must learn, and critic errors change the actor's updates. Stability therefore requires more than showing that either component works with the other frozen. We first study a local comparison system, then connect credit propagation to policy evaluation.
+\section{Gradient descent with imperfect credit}
+Let $f$ be twice differentiable, $\mu$-strongly convex and $L$-smooth, so $\mu I\preceq\nabla^2f\preceq LI$. With $0<\eta\le1/L$, the exact update map has Lipschitz constant $q=1-\eta\mu<1$. For
+\[
+ x_{t+1}=x_t-\eta(\nabla f(x_t)+e_t),
+\]
+we obtain $\|x_{t+1}-x^\star\|\le q\|x_t-x^\star\|+\eta\|e_t\|$. Iterating gives a decaying initial error plus $\eta\sum_{j<t}q^{t-1-j}\|e_j\|$. A uniform error bound $\|e_j\|\le\epsilon$ leaves a radius at most $\epsilon/\mu$. This is a strongly convex model of a local mechanism, not a global neural-network convergence claim.
+\section{Two learners and one weighted potential}
+Suppose actor error $x_t\ge0$ and credit error $z_t\ge0$ obey
+\[
+ \begin{pmatrix}x_{t+1}\\z_{t+1}\end{pmatrix}
+ \le \begin{pmatrix}a&b\\c&d\end{pmatrix}
+ \begin{pmatrix}x_t\\z_t\end{pmatrix},
+ \quad a,d\in[0,1),\ b>0,\ c\ge0.
+\]
+Here $b$ measures how critic error harms the actor; $c$ measures how actor motion changes the critic's target. The condition
+\[
+ bc<(1-a)(1-d)
+\]
+guarantees a contracting weighted potential. For $c>0$, choose
+\[
+ \frac{b}{1-d}<w<\frac{1-a}{c},\qquad
+ q=\max\{a+wc,\ d+b/w\}<1.
+\]
+Then $\Phi_t=x_t+wz_t$ satisfies $\Phi_{t+1}\le q\Phi_t$. For $c=0$, take any $w>b/(1-d)$. This is the algebra proved in Coupled.lean.
+\paragraph{Drift and forcing.} If the two inequalities have nonnegative additive forcing $u_t,v_t$, then $\Phi_{t+1}\le q\Phi_t+u_t+wv_t$. Constant forcing gives a tracking floor $(u+wv)/(1-q)$; changing inductive biases belong in this term, rather than being assumed stationary. Faster critic learning can reduce $d$, but changes compute and may alter other coefficients.
+\section{Bellman equations and temporal differences}
+For a fixed Markov transition matrix $P$, reward vector $r$ and discount $0\le\gamma<1$,
+\[
+ V=r+\gamma PV,\qquad (TV)(s)=r(s)+\gamma\E[V(S')\mid S=s].
+\]
+The sup-norm inequality $\|TV-TW\|_\infty\le\gamma\|V-W\|_\infty$ yields a unique fixed point. A transition gives the TD(0) target $r_t+\gamma V_\psi(S_{t+1})$ and error $\delta_t=r_t+\gamma V_\psi(S_{t+1})-V_\psi(S_t)$. Semi-gradient learning treats the target as fixed for that step. An $H$-step target uses $\sum_{j<H}\gamma^jr_{t+j}+\gamma^HV_\psi(S_{t+H})$.
+\paragraph{What linear TD guarantees.} Under on-policy sampling with stationary distribution $d$, let $\Pi$ be the orthogonal projection onto a linear feature space in $\|\cdot\|_d$. If $\widehat V=\Pi T\widehat V$ exists, then
+\[
+ \|\widehat V-V\|_d\le
+ \frac{\|\Pi V-V\|_d}{\sqrt{1-\gamma^2}}.
+\]
+\emph{Derivation:} stationarity and Jensen give $\|Pu\|_d\le\|u\|_d$. Hence $\|\widehat V-\Pi V\|_d\le\gamma\|\widehat V-V\|_d$. Orthogonality gives $\|\widehat V-V\|_d^2=\|\widehat V-\Pi V\|_d^2+\|\Pi V-V\|_d^2$. Rearrange. Convergence of stochastic TD also needs sampling and step-size conditions; this bound does not cover arbitrary off-policy nonlinear critics.
+\section{The adjoint as a transported Bellman equation}
+For a temporal mode $s_{t+1}=a_{t+1}s_t+w_{t+1}$, with
+$a_{t+1}=e^{(-r+i\omega)\Delta t_{t+1}}$, its complex adjoint satisfies
+\[
+ \lambda_t=c_t+a_{t+1}^{*}\lambda_{t+1},\qquad
+ c_t=\partial_{s_t}\ell_t.
+\]
+Real-coordinate cotangents use the transpose of the two-dimensional transport matrix; the equivalent complex notation uses conjugation. The backward transport decays and rotates oppositely; it is not the inverse forward transport. An $H$-step learned target is
+\[
+ \sum_{j=0}^{H-1}\left(\prod_{k=1}^{j}a_{t+k}^{*}\right)c_{t+j}
+ +\left(\prod_{k=1}^{H}a_{t+k}^{*}\right)V_\psi(H_{t+H}).
+\]
+Later revealed forward losses train the credit function. If $|a_t|\le\rho<1$, errors beyond $H$ terms are at most $C\rho^H/(1-\rho)$ when $|c_t|\le C$. Zero gaps can make $|a_t|=1$: positive decay alone does not guarantee a uniform event-index contraction. A finite terminal condition or a physical-time exposure bound is then needed.
+\paragraph{Feedback alignment.} Kolen--Pollack-style updates co-adapt forward and feedback matrices instead of setting backward weights permanently. This illustrates coupled learning, but alignment of linear feedback is not evidence of long-horizon credit generalization. Learned nonlinear temporal credit requires its own information, utility and cost tests.
+\section*{Exercises}
+\begin{exercise}For $a=0.8$, $d=0.7$, $b=0.1$, $c=0.2$, find a contracting potential.\end{exercise}
+\begin{solution}$bc=0.02<0.06$. Choose $w=0.5$, giving $q=\max(0.9,0.9)=0.9$ and $\Phi=x+0.5z$.\end{solution}
+\begin{exercise}A contraction $q=0.9$ has forcing $0.02$ each step. What is its limiting bound?\end{exercise}
+\begin{solution}$0.02/(1-0.9)=0.2$. A contraction can track a moving target with nonzero error.\end{solution}
+\begin{exercise}Why is an old stored credit activation insufficient after actor weights change?\end{exercise}
+\begin{solution}It records old inputs, not the old producer Jacobian. Reconstruct the original parameter version, retain valid sensitivities, or declare and audit a stale approximation. The current market prototype consumes each producer graph before its actor update.\end{solution}
+\begin{inourmodels}
+Notes 164 and 166 supply exact elapsed-time transport and coupled comparison bounds. ONLINE\_EPISODE\_LEARNING.md separates forward, credit and optimizer states and scores forecasts before feedback updates. Coupled.lean proves the comparison inequality once its coefficients are supplied; it does not prove measured neural updates satisfy those hypotheses.
+\end{inourmodels}
+\paragraph{Further reading.} Tsitsiklis and Van Roy (1997), \emph{An analysis of temporal-difference learning with function approximation}, DOI \href{https://doi.org/10.1109/9.580874}{10.1109/9.580874}; notes 164--166 for our transport and coupled-system construction.
+\end{document}
