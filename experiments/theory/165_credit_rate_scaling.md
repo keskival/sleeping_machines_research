@@ -110,7 +110,7 @@ subspace".
 
 ## 7. What this changes for the program
 
-1. **One number decides scalability of sparse credit:** the residual spectral exponent α (after forward prediction)
+1. **(Revised by §7b.) One number decides scalability of sparse credit, and dense writes fail it:** the residual spectral exponent α (after forward prediction)
    of each layer's credit. α > 1 ⇒ credit cost per event independent of width; α ≤ 1 ⇒ it grows. This is measurable
    from saved models without training: run the exact credit (traces) and the forward predictor on DEV events and
    eigendecompose the residual covariance per layer. That is the next analytic–empirical bridge; it gives a scaling
@@ -128,6 +128,37 @@ coding (Dobrushin & Tsybakov 1962; Witsenhausen 1980; Wolf & Ziv 1970); Lyapunov
 here: the state-space credit object with forward side information, the summability phase transition as the scaling
 criterion for learning cost, the K-independence of route credit and the squaring of the spectrum at event level, as
 properties of the race/temporal-memory substrate. Post-boundary and unpublished (IDF-08).
+
+## 7b. Measurement: the dense-write memory has extensive credit (prediction not supported for this learner)
+
+`credit_spectrum_taxi_n16_n64_r2` (10 Oct 11:05 UTC; Taxi DEV, 7,204 events; online_race `online_trace` learner retrained
+with the exact recipe of `online1_taxi_online_trace_s0`, reproducing its DEV log-likelihood digit for digit; exact memory
+adjoints; covariance of real 2n coordinates). Rows: residual after no prediction / arrived outcome with shared transport /
+4-event exact window.
+
+| Modes (dims) | Predictor | α (top half) | Participation ratio | k(ε = 0.1) | k(ε = 0.01) | Rate at ε = 0.01 |
+|---|---|---|---|---|---|---|
+| 16 (32) | none | 1.09 | 9.0 | 21 | 30 | 51.2 nats |
+| 16 (32) | arrived outcome | 1.29 | 7.2 | 18 | 23 | 41.0 |
+| 16 (32) | window 4 | 1.55 | 5.7 | 14 | 18 | 32.8 |
+| 64 (128) | none | 1.19 | 25.5 | 60 | 87 | 153.3 |
+| 64 (128) | arrived outcome | 1.27 | 23.1 | 57 | 76 | 137.8 |
+| 64 (128) | window 4 | 1.19 | 19.3 | 48 | 68 | 119.7 |
+
+**Result.** k(ε) is not flat in n: quadrupling the memory triples it (exponent ≈ 0.76 without prediction, 0.89–0.96 with the
+window predictor). The top normalized eigenvalue falls from 0.24 to 0.11: the spectrum *rescales* with n rather than keeping
+a fixed head, which is the α ≤ 1 regime of Theorem 2 in the scaling sense even though each spectrum's top half decays with
+α ≈ 1.1–1.5. Credit is sublinear in the state dimension (k/2n falls from 0.66 to 0.47 at ε = 0.1) but extensive. The
+forward predictors tested remove 20–40% of the components at fixed n; they do not change the scaling. (The 64-mode learner
+also ends below the 16-mode one on DEV, 0.4699 vs 0.4812, at the same 20 passes.)
+
+**Diagnosis.** This learner writes **every** memory mode at every event (dense `W_r u` write), so each event injects fresh
+credit into all n modes; a fixed summable head cannot exist. Theorem 3's mechanism, selection limiting which components
+receive credit, is what bounds credit traffic. **Size-independent credit is therefore a property of sparse addressed writes,
+not of temporal memory as such.** For the dense-write diagnostic learner, credit cost grows as ≈ n^{0.8}; for the family's
+addressed-write models (k selected slots of K), Theorem 3 predicts credit confined to written slots plus K route scalars with
+bounded rate. Next test: the same measurement on an addressed-write memory (R1 keyed memory or a k-of-K write variant of the
+Taxi learner) at K = 16 and 64 with fixed k; prediction: k(ε) flat in K.
 
 ## 8. Which credit method for which mode: a per-mode cost law
 
