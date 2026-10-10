@@ -224,6 +224,8 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 
 **v20 development result 2 (10 Oct 02:50, MOOC split 0, VALIDATION only, one seed): `--mark-mem 1`.** Best epoch 76 of 107, all epochs finite, 65,913 parameters, 48 min: L_T −308.26 / L_M **69.69** / total **−238.57**, against the frozen −307.25 / 73.37 / −233.88 and `--mark-stats` −306.99 / 72.21 / −234.78. A second memory read only by the marks, decaying per event instead of with elapsed time, lowers mark NLL by 3.68 nats per sequence; time also improves by 1.0, since the shared encoder no longer has to serve the time-invariant mark task (the gradient-conflict reading of the MOOC diagnosis). This is the first MOOC configuration below 70 mark nats on validation. Next arms: memory + statistics (running), the d48 variant, and the v21 delayed-clock arms for the time component.
 
+**v20 development result 3 (10 Oct, MOOC split 0, VALIDATION only): `--mark-mem 1 --mark-stats`.** Best epoch 76 of 107, all finite, 71,115 parameters: L_T -308.53 / L_M 69.90 / total -238.63, level with `--mark-mem 1` alone (−308.26 / 69.69 / −238.57). Once the per-event mark memory exists, the per-sequence statistics add nothing on MOOC; the memory carries the gain. The simpler `--mark-mem 1` leads unless the LastFM stats arms (where a training-free counter beats the frozen marks) show a dataset-specific benefit.
+
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
 A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
