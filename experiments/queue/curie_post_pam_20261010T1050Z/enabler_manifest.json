@@ -1,0 +1,45 @@
+{
+  "tag": "curie_post_pam_20261010T1050Z_enabler",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_post_pam_20261010T1050Z_key_contract",
+      "driver": "experiments/credit/native_key_credit.py",
+      "queue": "experiments/queue/curie_post_pam_20261010T1050Z/curie_post_pam_20261010T1050Z_key_contract.txt",
+      "queue_sha256": "7ff686a84428a6a0fe7c5a26368fe651ce7beb9fb4d5f7d65b4261bd6ec7df50",
+      "sources": {
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_post_pam_20261010T1050Z_key_contract.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 180
+    },
+    {
+      "tag": "curie_post_pam_20261010T1050Z_report",
+      "driver": "scripts/build_curie_credit_report.py",
+      "queue": "experiments/queue/curie_post_pam_20261010T1050Z/curie_post_pam_20261010T1050Z_report.txt",
+      "queue_sha256": "848ea9da7b31d08aa41eb424e10d5f646ade07a852feea466c18131e020955c0",
+      "sources": {
+        "scripts/build_curie_credit_report.py": "69376716b0537b44d24e4435fa94f688eb557c7be00f2bf64d73afa3a7fed439"
+      },
+      "result_sources": {
+        "scripts/build_curie_credit_report.py": "69376716b0537b44d24e4435fa94f688eb557c7be00f2bf64d73afa3a7fed439"
+      },
+      "result": ".git/curie-report-build-preview/curie_post_pam_20261010T1050Z_report/result.json",
+      "rss_kb": 1200000,
+      "vms_kb": 8000000,
+      "timeout_s": 1200
+    }
+  ]
+}

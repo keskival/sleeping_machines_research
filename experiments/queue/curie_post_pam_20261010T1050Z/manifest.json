@@ -1,0 +1,23 @@
+{
+  "tag": "curie_post_pam_20261010T1050Z",
+  "host": "curie",
+  "pam_result": "experiments/results/irts/curie_recovery_20261009T205307Z_pam_v9_split3.json",
+  "phases": [
+    {
+      "name": "state_credit_and_report",
+      "manifest": "experiments/queue/curie_post_pam_20261010T1050Z/enabler_manifest.json"
+    },
+    {
+      "name": "sealed_fas",
+      "manifest": "experiments/queue/curie_b3_sealed_v4_20261010T0220Z/manifest.json"
+    },
+    {
+      "name": "b10_development",
+      "manifest": "experiments/queue/curie_recovery_20261009T205307Z/manifest.json"
+    },
+    {
+      "name": "report_after_benchmarks",
+      "manifest": "experiments/queue/curie_post_pam_20261010T1050Z/report_final_manifest.json"
+    }
+  ]
+}
