@@ -1,0 +1,34 @@
+{
+  "tag": "curie_integrated_scan_v1_20261010T1700Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_integrated_scan_v1_20261010T1700Z",
+      "driver": "experiments/credit/measure_integrated_scan.py",
+      "queue": "experiments/queue/enabler/curie_integrated_scan_v1_20261010T1700Z/curie_integrated_scan_v1_20261010T1700Z.txt",
+      "queue_sha256": "0c0d21b556f2e874f91b9b0dae0f24f6f9195e081655721f24808ea0c750d7a3",
+      "sources": {
+        "experiments/credit/measure_integrated_scan.py": "3146141340136568a438b7c280beb88bffdebf18e15302c58fdf35426cf6f030",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+        "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+        "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a"
+      },
+      "result_sources": {
+        "experiments/credit/measure_integrated_scan.py": "3146141340136568a438b7c280beb88bffdebf18e15302c58fdf35426cf6f030",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+        "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+        "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a"
+      },
+      "result": "experiments/results/credit/curie_integrated_scan_v1_20261010T1700Z.json",
+      "rss_kb": 2000000,
+      "vms_kb": 8000000,
+      "timeout_s": 600,
+      "requires": []
+    }
+  ]
+}
