@@ -21,9 +21,10 @@ def extension():
         source=Path(__file__).with_suffix('.cpp')
         tag=hashlib.sha256(source.read_bytes()).hexdigest()[:12]
         directory=ROOT/'.git/temporal-scan-build'/tag;directory.mkdir(parents=True,exist_ok=True)
-        _EXTENSION=load(name='temporal_scan_'+tag,sources=[str(source)],
+        load(name='temporal_scan_'+tag,sources=[str(source)],
             extra_cflags=['-O2','-ffp-contract=off'],with_cuda=False,
-            build_directory=str(directory),verbose=True)
+            build_directory=str(directory),verbose=True,is_python_module=False)
+        _EXTENSION=torch.ops.temporal_scan_cpu
     return _EXTENSION
 
 

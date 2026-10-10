@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "probabilities": [
+        0.42857142857142855,
+        0.42857142857142855,
+        0.42857142857142855
+      ],
+      "mean_error": 4.440892098500626e-16,
+      "variance": 5.386666666666666,
+      "variance_formula_error": 1.7763568394002505e-15,
+      "expected_audit_cost": 3.0
+    },
+    {
+      "probabilities": [
+        0.6094683711646179,
+        0.29881645360442277,
+        0.5976329072088455
+      ],
+      "mean_error": 0.0,
+      "variance": 4.3594770739161515,
+      "variance_formula_error": 0.0,
+      "expected_audit_cost": 3.0
+    }
+  ],
+  "enumerated_masks": 16,
+  "scope": "Independent contribution audits, fixed version, full support. Discovery, native predictor cost and future utility are unmeasured.",
+  "status": "completed",
+  "tag": "curie_event_credit_v1_20261010T1650Z_contract",
+  "battle": "R1/B1",
+  "wall_s": 0.0003027200000360608,
+  "source_sha256": {
+    "experiments/credit/event_credit.py": "23a5029ecddf907fba52e4917efff0b3f47325084884a45de575d956f2ae73ba",
+    "experiments/credit/check_event_credit.py": "45a7125a17c6c1f806b14f5d3aaadd4dd44f67cecdee7ab3ac12da12367dda1e"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "status": "completed",
+  "tag": "curie_credit_noise_v1_20261010T1450Z_smoke",
+  "battle": "R1/B1",
+  "training": false,
+  "args": {
+    "tag": "curie_credit_noise_v1_20261010T1450Z_smoke",
+    "mode": "smoke",
+    "seed": 170,
+    "depth": 2,
+    "pairs": 2,
+    "prefixes": 2,
+    "rollouts": 2
+  },
+  "metrics": {
+    "prefixes": 2,
+    "independent_rollouts_per_half": 2,
+    "conditional_mean_squared_norm": 0.0010657167139505941,
+    "global_mean_squared_norm": 0.00048154499327954367,
+    "context_signal_energy": 0.0005841717206710505,
+    "context_signal_fraction_of_raw_energy": 0.19782944171414454,
+    "mean_conditional_noise_energy": 0.0023570717805956763,
+    "raw_energy": 0.002952905874926113,
+    "per_prefix": [
+      {
+        "prefix": 0,
+        "mean_advantage": [
+          2.7755575615628914e-17,
+          0.004035457759263762,
+          0.005497801653829723,
+          0.00012499299447196743,
+          0.0014223370060874006,
+          -0.0024954446847540238,
+          -0.004852276310341533,
+          0.0009166202131454075,
+          -0.0013644068004994257
+        ],
+        "continuation_variance": [
+          3.081487911019578e-33,
+          8.621846523952069e-05,
+          8.683230124005127e-05,
+          5.420012210931391e-05,
+          1.2351949041273088e-06,
+          9.241544852601142e-05,
+          7.842546390592617e-05,
+          5.351079071107661e-05,
+          1.113967143444683e-06
+        ]
+      },
+      {
+        "prefix": 1,
+        "mean_advantage": [
+          -3.469446951953614e-18,
+          0.01864467929808864,
+          0.029706855524169712,
+          0.0037752734164325577,
+          0.00015349530574364223,
+          -0.01741594503568932,
+          -0.027139301256258526,
+          -0.0022143817147481752,
+          -0.00015218645684590346
+        ],
+        "continuation_variance": [
+          4.814824860968091e-35,
+          0.00012448063487998607,
+          0.0017717355081332924,
+          0.0003678725461153899,
+          2.8913142595854874e-08,
+          0.00012067736239013415,
+          0.0015534349403996481,
+          0.00032193280369804446,
+          2.909865278902375e-08
+        ]
+      }
+    ],
+    "actor_forwards": 18,
+    "cached_response_forwards": 8,
+    "causal_prefix_checks": 8,
+    "scored_target_presentations": 86,
+    "scope": "Independent continuation halves give an unbiased conditional-mean energy witness; cross-prefix U-statistic estimates global mean energy. Finite estimates can be negative and are not clipped. Conditioning is the full observed synthetic prefix; sufficiency of current critic features is not assumed. Not a critic fit, scaling win or deployment simulator."
+  },
+  "decision": "Is prefix-dependent future credit obscured by continuation noise, and can exact cached response replace full counterfactual replay?",
+  "wall_s": 1.3436247399986314,
+  "peak_rss_kb": 314252,
+  "supported_flops": 297152,
+  "flop_scope": "Supported PyTorch formulas; includes all actors, analytic responses and prefix checks, excludes special/unsupported arithmetic.",
+  "source_sha256": {
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
