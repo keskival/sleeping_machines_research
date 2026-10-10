@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_optimizer_aware_20261010T2350Z_contract",
+  "metrics": {
+    "zero_lr_fixed_response_error": 2.5673907444456745e-16,
+    "batched_independent_score_error": 1.1102230246251565e-15,
+    "batched_independent_final_weight_error": 5.551115123125783e-17,
+    "no_op_world_error": 0.0,
+    "future_suffix_first_prediction_error": 0.0,
+    "adaptation_changes_intervention_response": 7.78383332178511e-05,
+    "score_update_versions": [
+      {
+        "target": 4,
+        "issued_version": 0,
+        "feedback_update_version": 1
+      },
+      {
+        "target": 5,
+        "issued_version": 1,
+        "feedback_update_version": 2
+      },
+      {
+        "target": 6,
+        "issued_version": 2,
+        "feedback_update_version": 3
+      },
+      {
+        "target": 7,
+        "issued_version": 3,
+        "feedback_update_version": 4
+      }
+    ],
+    "readout_parameters_per_world": 288,
+    "scope": "Native frozen temporal/keyed carrier with separate adapting mark readouts and Adam coordinates. Causal full-prefix replay, not complete deep actor learning or sparse asynchronous execution. Fixed response algebra exact only at zero adaptation."
+  },
+  "wall_s": 3.2617160709996824,
+  "peak_rss_kb": 318320,
+  "supported_flops": 3205568,
+  "source_sha256": {
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
