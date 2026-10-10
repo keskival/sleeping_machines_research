@@ -1,0 +1,80 @@
+{
+  "status": "completed",
+  "rows": [
+    {
+      "training_objective": "future",
+      "query_nll": 1.0044344653738178,
+      "baseline_arm": "adam",
+      "baseline_lr": 0.1,
+      "baseline_nll": 0.9958102507105724,
+      "gap_to_baseline": -0.008624214663245366,
+      "backward_parameters": 121,
+      "whole_meta_training_wall_s": 1.1820600032806396,
+      "whole_run_wall_s": 2.4228286743164062,
+      "assessment_adaptation_wall_s": 0.08831477165222168,
+      "baseline_assessment_adaptation_wall_s": 0.05912327766418457,
+      "meta_inner_targets": 10240,
+      "meta_outer_targets": 2560,
+      "adaptation_gradient_targets": 2048,
+      "assessed_targets": 512,
+      "max_rss_kb": 391684
+    },
+    {
+      "training_objective": "immediate",
+      "query_nll": 1.0153797113234624,
+      "baseline_arm": "adam",
+      "baseline_lr": 0.1,
+      "baseline_nll": 0.9958102507105724,
+      "gap_to_baseline": -0.01956946061289,
+      "backward_parameters": 121,
+      "whole_meta_training_wall_s": 1.1908221244812012,
+      "whole_run_wall_s": 2.432072639465332,
+      "assessment_adaptation_wall_s": 0.08851909637451172,
+      "baseline_assessment_adaptation_wall_s": 0.05826282501220703,
+      "meta_inner_targets": 10240,
+      "meta_outer_targets": 2560,
+      "adaptation_gradient_targets": 2048,
+      "assessed_targets": 512,
+      "max_rss_kb": 391832
+    },
+    {
+      "training_objective": "scalar",
+      "query_nll": 1.0022876904715383,
+      "baseline_arm": "adam",
+      "baseline_lr": 0.1,
+      "baseline_nll": 0.9958102507105724,
+      "gap_to_baseline": -0.006477439760965931,
+      "backward_parameters": 1,
+      "whole_meta_training_wall_s": 0.8544774055480957,
+      "whole_run_wall_s": 2.027327060699463,
+      "assessment_adaptation_wall_s": 0.06267237663269043,
+      "baseline_assessment_adaptation_wall_s": 0.06507277488708496,
+      "meta_inner_targets": 10240,
+      "meta_outer_targets": 2560,
+      "adaptation_gradient_targets": 2048,
+      "assessed_targets": 512,
+      "max_rss_kb": 389776
+    }
+  ],
+  "future_gain_over_objective_controls": {
+    "immediate": 0.010945245949644633,
+    "scalar": -0.002146774902279436
+  },
+  "paired_control_gain_mean": {
+    "immediate": 0.01094524594964464,
+    "scalar": -0.0021467749022793664
+  },
+  "development_gate": false,
+  "decision": "Development: diagnose adaptation trajectories and update geometry before changing the rule; no automatic scaling",
+  "scope": "Single learner seed, fixed forward initialization, synthetic development task distribution; no benchmark or total-work efficiency claim",
+  "inputs": {
+    "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_future.json": "99379ce7ab66b9dfd6489ec9d5dc42f728fd04473989588c5485cdca20e37ed4",
+    "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_immediate.json": "b033e19805dd8aae156af06f7c3b1447c6ed0c1c358587676d2d47ef1c7d85eb",
+    "experiments/results/credit/aws_reciprocal_update1_20261009T2140Z_scalar.json": "01359a43cd11051b68da8f4cb0eeef7f99e13a887e7a24b80e48772fdfbac4bc"
+  },
+  "tag": "aws_reciprocal_update1_20261009T2140Z_analysis",
+  "battle": "B1/R1 reciprocal-learning enabler",
+  "source_sha256": {
+    "experiments/credit/analyze_reciprocal_update_v1.py": "1246bb70ca041df2d5af648f414dfc6b5d003d8f239ba7742f6289aa64f47eb5"
+  }
+}
