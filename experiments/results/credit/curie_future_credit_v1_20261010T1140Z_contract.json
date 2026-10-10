@@ -1,0 +1,52 @@
+{
+  "status": "completed",
+  "tag": "curie_future_credit_v1_20261010T1140Z_contract",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_future_credit_v1_20261010T1140Z_contract",
+    "mode": "contract",
+    "seed": 170,
+    "depth": 2,
+    "pairs": 2,
+    "steps": 128,
+    "proposal_steps": 32,
+    "train_packets": 16,
+    "dev_packets": 16
+  },
+  "training": false,
+  "decision": "Whether connected dense-feedback future credit learns held-out intervention value and a jointly trained candidate improves coverage",
+  "metrics": [
+    {
+      "depth": 2,
+      "zero_intervention_parity": true,
+      "prefix_causality": true,
+      "past_loss_unchanged": true,
+      "directional_derivative_error": 1.387852419793001e-10
+    },
+    {
+      "depth": 4,
+      "zero_intervention_parity": true,
+      "prefix_causality": true,
+      "past_loss_unchanged": true,
+      "directional_derivative_error": 2.865821469022478e-11
+    },
+    {
+      "depth": 8,
+      "zero_intervention_parity": true,
+      "prefix_causality": true,
+      "past_loss_unchanged": true,
+      "directional_derivative_error": 1.6693178089832728e-11
+    }
+  ],
+  "wall_s": 2.5422704350003187,
+  "peak_rss_kb": 341728,
+  "supported_flops": 935488,
+  "flop_scope": "Supported PyTorch formulas; special/unsupported operations are excluded, wall includes profiling. All branch and critic/proposal work included.",
+  "source_sha256": {
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
