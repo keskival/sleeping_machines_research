@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "tag": "curie_cpu_scan_dispatch2_20261010T1640Z_smoke",
+  "battle": "R1/B10",
+  "training": false,
+  "args": {
+    "tag": "curie_cpu_scan_dispatch2_20261010T1640Z_smoke",
+    "mode": "smoke"
+  },
+  "metrics": {
+    "rows": [
+      {
+        "batch": 1,
+        "length": 128,
+        "modes": 16,
+        "timing_s": {
+          "reference": 0.025341849999676924,
+          "scan": 0.001066685999830952
+        },
+        "scalar_forward_flops": 16384,
+        "scalar_backward_flops": 28672,
+        "source_coefficient_elements": 8192,
+        "output_state_elements": 4096,
+        "runtime_reference_over_scan": 23.757553772800144
+      },
+      {
+        "batch": 8,
+        "length": 1024,
+        "modes": 16,
+        "timing_s": {
+          "reference": 0.9092528510009288,
+          "scan": 0.009240026000043144
+        },
+        "scalar_forward_flops": 1048576,
+        "scalar_backward_flops": 1835008,
+        "source_coefficient_elements": 524288,
+        "output_state_elements": 262144,
+        "runtime_reference_over_scan": 98.40371130954428
+      }
+    ],
+    "scope": "One bounded forward/backward observation per shape; warm cached compilation, exact recurrence kernel only. Native model projections, clocks, mark memory, optimizer and credit-model work are excluded. Whole training speedup unmeasured."
+  },
+  "decision": "Can exact compiled recurrence/adjoint preserve native deep learning contracts and reduce execution overhead?",
+  "wall_s": 1.1265038669989735,
+  "peak_rss_kb": 273256,
+  "source_sha256": {
+    "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "peak_child_rss_kb": 229104,
+  "rss_scope": "Parent and maximum individual child RSS reported separately; run_safe guards whole process group.",
+  "compiler_threads": 1,
+  "torch_version": "2.14.1+cpu"
+}

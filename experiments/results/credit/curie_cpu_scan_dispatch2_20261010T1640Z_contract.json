@@ -1,0 +1,86 @@
+{
+  "status": "completed",
+  "tag": "curie_cpu_scan_dispatch2_20261010T1640Z_contract",
+  "battle": "R1/B10",
+  "training": false,
+  "args": {
+    "tag": "curie_cpu_scan_dispatch2_20261010T1640Z_contract",
+    "mode": "contract"
+  },
+  "metrics": {
+    "scan": [
+      {
+        "batch": 2,
+        "length": 17,
+        "modes": 3,
+        "errors": {
+          "forward": 0.0,
+          "gradient": 0.0,
+          "chunked_forward": 0.0,
+          "chunked_gradient": 0.0
+        }
+      },
+      {
+        "batch": 1,
+        "length": 129,
+        "modes": 16,
+        "errors": {
+          "forward": 0.0,
+          "gradient": 0.0,
+          "chunked_forward": 0.0,
+          "chunked_gradient": 0.0
+        }
+      },
+      {
+        "batch": 1,
+        "length": 1024,
+        "modes": 16,
+        "errors": {
+          "forward": 0.0,
+          "gradient": 0.0,
+          "chunked_forward": 0.0,
+          "chunked_gradient": 0.0
+        }
+      }
+    ],
+    "native": [
+      {
+        "depth": 2,
+        "parameters": 1723,
+        "loss_error": 0.0,
+        "maximum_parameter_gradient_error": 0.0
+      },
+      {
+        "depth": 4,
+        "parameters": 2633,
+        "loss_error": 0.0,
+        "maximum_parameter_gradient_error": 0.0
+      },
+      {
+        "depth": 8,
+        "parameters": 4453,
+        "loss_error": 0.0,
+        "maximum_parameter_gradient_error": 0.0
+      }
+    ],
+    "first_order_only": true,
+    "numerical_state_carry": true,
+    "chunked_gradient_preserved": true,
+    "scope": "Identical native model and complete first-order gradients. Double backward/meta-Hessians are unsupported; do not substitute this backend in higher-order meta-gradient contracts."
+  },
+  "decision": "Can exact compiled recurrence/adjoint preserve native deep learning contracts and reduce execution overhead?",
+  "wall_s": 10.65665982200153,
+  "peak_rss_kb": 269416,
+  "source_sha256": {
+    "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "peak_child_rss_kb": 904516,
+  "rss_scope": "Parent and maximum individual child RSS reported separately; run_safe guards whole process group.",
+  "compiler_threads": 1,
+  "torch_version": "2.14.1+cpu"
+}
