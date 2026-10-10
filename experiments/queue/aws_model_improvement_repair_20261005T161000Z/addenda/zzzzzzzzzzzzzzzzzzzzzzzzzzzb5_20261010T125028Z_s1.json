@@ -1,0 +1,47 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B5",
+  "purpose": "B5 tgbl-review diagnosis (VALIDATION only, no training, no TEST), moved from slot 3 to idle slot 1: v3 full dev MRR 0.268 < pop_30d 0.340; known-source 0.247 < new-source 0.475. Scores the checkpoint without identity terms, popularity alone and popularity + network residual, per query class. Decides v4 arms",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b5_review_ablation_smoke_s1_20261010T1255Z",
+        "queue": "experiments/queue/b5/aws_b5_review_ablation_smoke_s1_20261010T1255Z/aws_b5_review_ablation_smoke_s1_20261010T1255Z.txt",
+        "queue_sha256": "94223fefbde1d31e4937918c510245d22c98e7e2b417432cea600b3520cca9fb",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_ablation_smoke_s1_20261010T1255Z.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b5_review_ablation_full_s1_20261010T1255Z",
+        "queue": "experiments/queue/b5/aws_b5_review_ablation_full_s1_20261010T1255Z/aws_b5_review_ablation_full_s1_20261010T1255Z.txt",
+        "queue_sha256": "ee172c9e7f004e07a26364b285b4994bfe2b8a699fe3df66ffee072d7f41ceb2",
+        "kind": "b5_job",
+        "source_sha256": {
+          "experiments/tgb/review_ablation_v1.py": "27d421a186a91c0a96651f3a8023512adfb598642f1589ca48379e3a9ebe171c",
+          "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+          "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+          "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+        },
+        "result": "experiments/results/tgb/aws_b5_review_ablation_full_s1_20261010T1255Z.json",
+        "timeout_s": 10800,
+        "rss_kb": 6000000,
+        "vms_kb": 12000000,
+        "requires": [
+          {
+            "result": "experiments/results/tgb/aws_b5_review_ablation_smoke_s1_20261010T1255Z.json"
+          }
+        ]
+      }
+    ]
+  }
+}

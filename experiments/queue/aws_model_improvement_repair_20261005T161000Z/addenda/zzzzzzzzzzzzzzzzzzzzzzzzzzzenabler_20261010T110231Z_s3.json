@@ -4,65 +4,15 @@
   "purpose": "Theory note 165 section 7b follow-up, DEV only: dense-write memory showed extensive credit (k(eps) ~ n^0.8). Same exact per-event learner with sparse ADDRESSED writes (one content-addressed slot of 4 modes per event) at K = 16 and 64 slots; eligibility-weighted credit spectra. Decides whether sparse addressed writes make credit cost per event independent of capacity (Theorem 3 mechanism), i.e. whether the capacity axis is the scaling axis for the compact credit learner",
   "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
   "slots": {
-    "3": [
-      {
-        "name": "credit_spectrum_v2_contract",
-        "queue": "experiments/queue/enabler/credit_spectrum_v2_contract/credit_spectrum_v2_contract.txt",
-        "queue_sha256": "47f8af8030c0c40323c6c5c51a04c703076e0f57aeedaa854bfd60bcfb276064",
-        "kind": "enabler_job",
-        "source_sha256": {
-          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
-          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
-          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
-          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
-        },
-        "result": "experiments/results/credit/credit_spectrum_v2_contract.json",
-        "timeout_s": 14400,
-        "rss_kb": 5000000,
-        "vms_kb": 8000000
-      },
-      {
-        "name": "credit_spectrum_v2_smoke",
-        "queue": "experiments/queue/enabler/credit_spectrum_v2_smoke/credit_spectrum_v2_smoke.txt",
-        "queue_sha256": "2b09c3a3575a9335fbfd8b1e978a8af350cf011f94a588a88529841e356d0e73",
-        "kind": "enabler_job",
-        "source_sha256": {
-          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
-          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
-          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
-          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
-        },
-        "result": "experiments/results/credit/credit_spectrum_v2_smoke.json",
-        "timeout_s": 14400,
-        "rss_kb": 5000000,
-        "vms_kb": 8000000,
-        "requires": [
-          {
-            "result": "experiments/results/credit/credit_spectrum_v2_contract.json"
-          }
-        ]
-      },
-      {
-        "name": "credit_spectrum_v2_taxi_K16_K64",
-        "queue": "experiments/queue/enabler/credit_spectrum_v2_taxi_K16_K64/credit_spectrum_v2_taxi_K16_K64.txt",
-        "queue_sha256": "ffdd54c8c068486c7424bfd09ce9f7032cb0b4e507c3b41ac8b3cdeac1717d4b",
-        "kind": "enabler_job",
-        "source_sha256": {
-          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
-          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
-          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
-          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
-        },
-        "result": "experiments/results/credit/credit_spectrum_v2_taxi_K16_K64.json",
-        "timeout_s": 14400,
-        "rss_kb": 5000000,
-        "vms_kb": 8000000,
-        "requires": [
-          {
-            "result": "experiments/results/credit/credit_spectrum_v2_smoke.json"
-          }
-        ]
-      }
-    ]
+    "3": []
+  },
+  "withdrawn": {
+    "jobs": [
+      "credit_spectrum_v2_contract",
+      "credit_spectrum_v2_smoke",
+      "credit_spectrum_v2_taxi_K16_K64"
+    ],
+    "utc": "2026-10-10T12:55Z",
+    "reason": "Never loaded; slot 1 idle while slot 3 is occupied for hours by the online3 grid. Resubmitted unchanged on slot 1 under fresh _s1 tags."
   }
 }

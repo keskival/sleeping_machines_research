@@ -1,0 +1,68 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Theory note 165 section 7b follow-up (pre-registered P1-P3), DEV only, moved from slot 3 to idle slot 1: addressed-write memory (one content-addressed 4-mode slot per event) at K = 16 and 64 slots; eligibility-weighted credit spectra. Decides whether sparse addressed writes make credit cost per event capacity-independent",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "credit_spectrum_v2_contract_s1",
+        "queue": "experiments/queue/enabler/credit_spectrum_v2_contract_s1/credit_spectrum_v2_contract_s1.txt",
+        "queue_sha256": "b72b5e0066e2c9b07685d5c4e44a1c4761a2a15c1dbaa4d86255064e40e8debd",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_v2_contract_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "credit_spectrum_v2_smoke_s1",
+        "queue": "experiments/queue/enabler/credit_spectrum_v2_smoke_s1/credit_spectrum_v2_smoke_s1.txt",
+        "queue_sha256": "26d7c529c74e5c43e3646fad57f0a314bbea502fabc883917ef74d5484277b4d",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_v2_smoke_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/credit_spectrum_v2_contract_s1.json"
+          }
+        ]
+      },
+      {
+        "name": "credit_spectrum_v2_taxi_K16_K64_s1",
+        "queue": "experiments/queue/enabler/credit_spectrum_v2_taxi_K16_K64_s1/credit_spectrum_v2_taxi_K16_K64_s1.txt",
+        "queue_sha256": "ec06a4511c84376a3126144984f7df6818ab0b37eed99bed81f39e3d5a09e867",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/credit_spectrum_v2.py": "6048ce6a243e056962cd48ce20ad7712e8089f404f8455e530c0d45e5021ff59",
+          "experiments/credit/credit_spectrum.py": "d13874a6e7347e28a36a3394cb9aab973c614a7438c0b60b3e8369ad44c344a3",
+          "experiments/credit/online_race.py": "5719bc6187b83904c574bba4824a8000c0928edd236e7847ac3d3ace85658d6f",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/credit_spectrum_v2_taxi_K16_K64_s1.json",
+        "timeout_s": 14400,
+        "rss_kb": 5000000,
+        "vms_kb": 8000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/credit_spectrum_v2_smoke_s1.json"
+          }
+        ]
+      }
+    ]
+  }
+}

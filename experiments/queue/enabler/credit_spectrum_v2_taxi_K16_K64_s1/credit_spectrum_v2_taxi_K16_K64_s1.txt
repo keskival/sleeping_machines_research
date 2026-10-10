@@ -1,0 +1,2 @@
+# ENABLER: Theory note 165 section 7b follow-up (pre-registered P1-P3), DEV only, moved from slot 3 to idle slot 1: addressed-write memory (one content-addressed 4-mode slot per event) at K = 16 and 64 slots; eligibility-weighted credit spectra. Decides whether sparse addressed writes make credit cost per event capacity-independent
+credit_spectrum_v2_taxi_K16_K64_s1 experiments/credit/credit_spectrum_v2.py --tag credit_spectrum_v2_taxi_K16_K64_s1 --slots 16 64 --epochs 20

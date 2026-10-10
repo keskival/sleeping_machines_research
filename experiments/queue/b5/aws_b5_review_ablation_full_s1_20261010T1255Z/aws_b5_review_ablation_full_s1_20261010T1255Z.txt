@@ -1,0 +1,2 @@
+# B5: B5 tgbl-review diagnosis (VALIDATION only, no training, no TEST), moved from slot 3 to idle slot 1: v3 full dev MRR 0.268 < pop_30d 0.340; known-source 0.247 < new-source 0.475. Scores the checkpoint without identity terms, popularity alone and popularity + network residual, per query class. Decides v4 arms
+aws_b5_review_ablation_full_s1_20261010T1255Z experiments/tgb/review_ablation_v1.py --tag aws_b5_review_ablation_full_s1_20261010T1255Z --checkpoint experiments/results/tgb/aws_b5_review_v3_full_dev_20261010T1010Z_r2.pt --expect-full-mrr 0.26783375086034844
