@@ -1,0 +1,2 @@
+# ENABLER: Shared enabler, theory note 160 sect. 11 (founder direction: unshared forward and backward weights that train each other): per-event trace learner with its own backward matrices trained by the forward's local updates (Kolen-Pollack) vs fixed random feedback vs exact transposes, Taxi DEV, 3 seeds. Decides whether a fully local learner without weight transport keeps exact-credit quality
+online2_taxi_online_fa_s2 experiments/credit/online_race_v2.py --tag online2_taxi_online_fa_s2 --tag online2_taxi_online_fa_s2 --dataset taxi --arm online_fa --seed 2
