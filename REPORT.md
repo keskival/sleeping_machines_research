@@ -27,7 +27,7 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | Bosser & Ben Taieb Github (NLL/sequence) | -198.52 ± 55.15 SE | bar −272.9; best single model −269.7 | No valid verdict yet: splits 1–4 reached NaN parameters (one non-finite update), leaving epoch 2–3 checkpoints; guarded protocol reruns (TEST once, configuration unchanged) queued |
 | Bosser & Ben Taieb MIMIC2 (NLL/sequence) | 7.01 ± 0.25 SE | bar 2.42; best single model 3.1 | Loss of frozen configuration; time and marks behind |
 | Bosser & Ben Taieb Retweets (NLL/sequence) | -515.16 ± 3.24 SE; time -598.81; marks 83.65 | bar −538.70; best single model −536.17; time −621.33; marks 82.63 | Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps) |
-| FAS v2 (anonymous interleaved logs) | validation 0.702 | time-encoded Transformer reference 0.704 | In development; sealed verdict pending the reference seeds |
+| FAS v2 (anonymous interleaved logs) | sealed TEST 0.70366 (3 seeds) | time-encoded Transformer 0.70432 (3 seeds) | TIE; mean gap -0.00066; seed-averaged-rank bootstrap 95% [-0.00834, 0.00747] |
 
 ## The model family and its place in the landscape — 4 October 2026
 
@@ -2844,7 +2844,7 @@ Prepared AWS8K comparisons remain unrun here, with AWS admission/results unobser
 
 Best generic controls: 0.558669 AUROC at N=256 and 0.727233 at N=512. The fixed P32/D4/H2/U2 recipe uses two passes over 10,000 clean FIT runs; selection uses validation-clean NLL only. Test: 2,000 clean and 2,000 faulty runs. Seeds7/8 score artifacts each reproduce all 18 aggregate/type/prefix AUROCs exactly and retain the selected weights.
 
-FAS v1 replication, not sealed v2 confirmation. Generic-control comparison uses saved references; stronger neural benchmarks are pending. FIFO/timing de-interleaving trained on hidden item identities remain oracle-assisted diagnostics, excluded here. Original seed6 has aggregate scores, not the new per-run artifact; paired multi-seed bootstrap cannot be reconstructed from those aggregates. Current frozen dependency hashes are checked; historical unrecorded dependency identity is not independently verified.
+FAS v1 replication, not sealed v2 confirmation. Generic-control comparison uses saved references; the completed FAS v2 neural-reference comparison is reported separately. FIFO/timing de-interleaving trained on hidden item identities remain oracle-assisted diagnostics, excluded here. Original seed6 has aggregate scores, not the new per-run artifact; paired multi-seed bootstrap cannot be reconstructed from those aggregates. Current frozen dependency hashes are checked; historical unrecorded dependency identity is not independently verified.
 
 ## Appendix. Public benchmarks: NeuroBench and SHD (status from completed result files)
 
@@ -4070,4 +4070,99 @@ The frozen-teacher coordinate-credit prototype did not produce useful calibratio
 
 Pilot: 128 TRAIN sequences, disjoint DEV seeds, no TEST; 2272 scored-target presentations with 4544 full/local teacher-gradient targets, 157.43 supported MFLOPs, 65.42 s, 513.8 MiB peak RSS. All teacher and assessment work included.
 
-Next gate: state-sized addressed key cotangents with exact forward elapsed-time transport, then learned credit tails and asynchronous credit clocks. Causal streams use actual timestamps and versioned pending records. Credit structure and optimizer parameters may adapt across regimes; frozen teachers isolate calibration capacity and do not assume stationary deployment. See CREDIT_GENERALIZATION.md and RECIPROCAL_EVENT_LEARNING.md. No delayed-generalization/grokking result is claimed.
+The state-sized addressed key cotangent contract passes at depths 2/4/8 (maximum error 1.39e-17). Next: learned credit tails and asynchronous credit clocks. Causal streams use actual timestamps and versioned pending records. Credit structure and optimizer parameters may adapt across regimes; frozen teachers isolate calibration capacity and do not assume stationary deployment. See CREDIT_GENERALIZATION.md and RECIPROCAL_EVENT_LEARNING.md. No delayed-generalization/grokking result is claimed.
+
+## Appendix. R1 future-directed credit: connected critic and candidate pools
+
+A shared critic learns the future loss consequences of controlled interventions in an addressed key write. Both isolated and connected critics acquire TRAIN structure and select beneficial held-out interventions in three seeded pilots. Connected transfer is weaker than isolated transfer in this small-data regime; the connected variant uses 7,361 parameters versus 7,297 for isolated. Zero-prediction relative MSE is 1.0. Future advantage is realized continuation loss minus no-op loss, in nats per future target; negative is better.
+
+| Seed | Critic | TRAIN MSE | DEV MSE | DEV advantage |
+| --- | --- | --- | --- | --- |
+| 170 | isolated | 0.376 | 0.952 | -0.01514 |
+| 170 | connected | 0.338 | 0.999 | -0.01149 |
+| 171 | isolated | 0.444 | 0.798 | -0.01776 |
+| 171 | connected | 0.452 | 0.911 | -0.00989 |
+| 172 | isolated | 0.418 | 0.950 | -0.00573 |
+| 172 | connected | 0.327 | 0.998 | -0.00478 |
+
+Each seed uses a frozen initialized depth-two native temporal actor, 16 TRAIN and 16 DEV contexts, 128 critic steps and fixed final checkpoints. Inputs include only revealed prefix information. Future branch outcomes supervise fitting and assess DEV choices, without entering those choices. Nine basis/no-op interventions are enumerated. These are state-intervention dynamics, not trained forward-weight adaptation, hard-routing or efficiency wins.
+
+A bounded proposal trained through the connected critic adds one candidate to the retained pool. Its realized coverage improvement is near zero. Separate coverage and selection-regret measurements expose whether the proposer finds useful alternatives and whether the critic ranks them correctly.
+
+| Seed | Coverage gain | Selection regret | Pool advantage |
+| --- | --- | --- | --- |
+| 170 | 0.000056 | 0.01007 | -0.01228 |
+| 171 | 0.000000 | 0.01246 | -0.01333 |
+| 172 | 0.000000 | 0.02219 | -0.00519 |
+
+The exact native receiver cotangent contract passes at depths 2, 4 and 8 with maximum error 1.39e-17. The future-intervention contract passes prefix causality, zero-action parity, unchanged earlier losses and directional finite differences, maximum error 1.39e-10.
+
+| Seed | Teacher targets | Whole work MF | MF/teacher target | Wall s | RSS MiB |
+| --- | --- | --- | --- | --- | --- |
+| 170 | 2560 | 869.20 | 0.3395 | 16.42 | 328.2 |
+| 171 | 2560 | 869.20 | 0.3395 | 16.94 | 328.1 |
+| 172 | 2560 | 869.20 | 0.3395 | 16.71 | 328.3 |
+
+Each work row covers shared TRAIN/DEV branch generation, both critic fits and proposal fitting/evaluation. The denominator is all teacher scored-target presentations, including context and branch recomputation; it is not unique training data. Supported PyTorch FLOPs exclude special/unsupported operations; wall includes profiling. Inference service work is not separately measured.
+
+Next diagnostic is admitted: 128 TRAIN and 64 DEV contexts, same actor and critic mathematics, three seeds, and a TRAIN-fitted mean-advantage reference that chooses one fixed action in every context. This distinguishes conditional credit from global action preference. A small-data isolated advantage is a testable sample-efficiency hypothesis; redundant history and recurrent optimization are competing explanations. Coupled forward learning, regime adaptation and depth/work scaling follow a useful replicated signal.
+
+## Appendix. R1 conditional future credit: larger-data diagnostic
+
+128 TRAIN and 64 DEV contexts per fixed native teacher, three seeds, same critic architecture. The reference fits one mean-advantage vector on TRAIN and chooses one fixed action for every DEV context. Positive future-loss reduction means the critic improves on that action; MSE is relative to zero prediction.
+
+| Seed | Critic | DEV MSE | Constant MSE | Future-loss reduction |
+| --- | --- | --- | --- | --- |
+| 170 | isolated | 0.771 | 0.845 | 0.00071 |
+| 170 | connected | 0.754 | 0.845 | 0.00313 |
+| 171 | isolated | 0.638 | 0.605 | -0.00104 |
+| 171 | connected | 0.715 | 0.605 | -0.00292 |
+| 172 | isolated | 0.788 | 0.887 | 0.00210 |
+| 172 | connected | 0.930 | 0.887 | 0.00141 |
+
+isolated: diagnose conditional transfer or selection. connected: diagnose conditional transfer or selection.
+
+Frozen initialized native teachers; state interventions. Positive point improvements must repeat across all three seeds. Context bootstrap is conditional on each teacher/model, not a simultaneous or seed-level guarantee. Passing advances to coupled design, not automatic deep training.
+
+| Seed | Teacher targets | Whole work MF | MF/teacher target | Wall s | RSS MiB |
+| --- | --- | --- | --- | --- | --- |
+| 170 | 14912 | 13450.52 | 0.9020 | 77.69 | 368.1 |
+| 171 | 14912 | 13450.52 | 0.9020 | 78.67 | 367.1 |
+| 172 | 14912 | 13450.52 | 0.9020 | 78.53 | 354.4 |
+
+Whole supported work includes paired native branches, both critic fits and proposal training/evaluation. Teacher-target presentations are the common denominator; unsupported/special operation arithmetic is excluded. Passing the conditional gate enables a coupled-learning design, not an efficiency or benchmark claim.
+
+## Appendix. R1 conditional credit: signal, noise and cached response
+
+Exact cached key-write intervention values match complete native branch replay at depths 2/4/8 to 6.7e-16. This reuse applies because the intervention changes addressed mark scores while factual future hidden states, queries and timing clocks stay unchanged on fixed external inputs. General internal routing that alters those states requires a different calculation.
+
+Each teacher uses 16 independently generated prefixes and two independent groups of eight legitimate continuations per prefix. Cross-products of the two group means estimate conditional mean energy; cross-prefix products estimate global mean energy. Their difference measures signal beyond a constant predictor. Sample covariance measures unpredictable continuation noise. Finite signal estimates are reported without clipping; full-prefix conditioning does not prove current packet sufficiency.
+
+| Seed | Context signal | Continuation noise | Signal/raw energy |
+| --- | --- | --- | --- |
+| 170 | 0.00086935 | 0.00136916 | 0.292 |
+| 171 | 0.000972443 | 0.000950508 | 0.296 |
+| 172 | 0.000964102 | 0.000866433 | 0.427 |
+
+| Seed | Actor calls | Teacher targets | Whole MF | MF/target | Wall s |
+| --- | --- | --- | --- | --- | --- |
+| 170 | 528 | 2608 | 8.99 | 0.0034 | 14.93 |
+| 171 | 528 | 2608 | 8.99 | 0.0034 | 15.19 |
+| 172 | 528 | 2608 | 8.99 | 0.0034 | 14.90 |
+
+Non-fitting synthetic diagnostic, no TEST. Actor calls include all causal-prefix checks; supported work includes all native calls and analytic candidate responses, with special/unsupported operation arithmetic excluded. No complete-learning efficiency or benchmark win is claimed.
+
+## Appendix. R1/B10 exact CPU temporal execution
+
+Compiled complex recurrence and its first-order adjoint preserve native depths 2/4/8 with maximum parameter-gradient error 0. Explicit initial state and chunked carry preserve both numerical state and gradients. Projections, gates, physical decay/rotation, norms, feedforward network, addressed mark memory and race heads are unchanged.
+
+| Batch | Length | Modes | Reference s | Scan s | Time ratio |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 128 | 16 | 0.0253 | 0.0011 | 23.76 |
+| 8 | 1024 | 16 | 0.9093 | 0.0092 | 98.40 |
+
+One bounded forward/backward observation per shape; warm cached compilation, exact recurrence kernel only. Native model projections, clocks, mark memory, optimizer and credit-model work are excluded. Whole training speedup unmeasured.
+
+Kernel arithmetic is 8 scalar FLOPs per mode/event forward and 14 backward. Source coefficient arrays use 4 batch × length × modes values and the stored state trajectory 2. Array traffic, native projections, heads, mark-memory gradients, credit learning and optimizer work must be included before any complete-fit advantage is claimed.
+
+Contract wall including compilation 10.7 s; parent peak RSS 263.1 MiB; maximum individual compiler-child RSS 883.3 MiB. Runner guards the whole process group. One compiler worker; CPU float64. Higher-order backward/meta-Hessians are unsupported by this backend and keep the established differentiable reference. No fitting run has adopted it.
