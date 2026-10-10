@@ -111,7 +111,7 @@ Machine-checked lemmas: `experiments/lean/credit_theory/CreditTheory/Basic.lean`
 | Mutually trained feedback started at B = W reproduces the exact learner (9 per-event AdamW updates) | difference 0.0 |
 
 Measured learning (Taxi DEV log-likelihood per event, 3 seeds, 20 passes over TRAIN; theory note 160 §§7, 11):
-- per-event trace learner (e) 0.4805 vs BPTT 0.4557 at 20 passes; BPTT run to 100 passes reaches 0.4774 (best 0.4808), i.e. the trace learner matches converged BPTT with one fifth of the data passes; the traces add +0.0077 over per-event learning without them, on every seed;
+- per-event trace learner (e) 0.4805 vs BPTT 0.4557 at 20 passes; BPTT run to 100 passes reaches 0.4774 (best 0.4808), i.e. on Taxi the trace learner matches converged BPTT with one fifth of the data passes; on StackOverflow and Amazon it leads (+0.046) or is level (+0.002) at 20 passes, but BPTT at 100 passes ends ahead (−2.140 vs −2.182; 0.635 vs 0.610); the traces add +0.0077 over per-event learning without them, on every seed;
 - exact cross-depth traces (e), two memory layers: 0.4770 (SE 0.0009) vs layer-local 0.4708 vs no traces 0.4565 vs BPTT 0.4418;
 - unshared feedback trained by the forward updates (f) 0.4715 vs shared exact transposes 0.4736, with alignment cosine
   1.000 on every feedback matrix; fixed random feedback 0.1699 (cosines 0.01–0.28).

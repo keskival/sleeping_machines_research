@@ -41,8 +41,10 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Learning without a backward sweep or weight transport:** a race-of-clocks event model learns from each event as it
   arrives, with exact memory credit carried forward (no stored history). On Taxi development data at the same 20 data
-  passes it scores 0.4805 nats/event vs 0.4557 for backpropagation through time (3 seeds), and it matches
-  backpropagation run to convergence (0.4774 after 100 passes) with one fifth of the data passes. Separate backward weights
+  passes it scores 0.4805 nats/event vs 0.4557 for backpropagation through time (3 seeds).
+  On Taxi it matches backpropagation run to convergence (0.4774 after 100 passes) with one fifth of
+  the data passes. Across three datasets it leads at equal passes on Taxi (+0.025) and StackOverflow (+0.046) and is level
+  on Amazon (+0.002), while backpropagation run to 100 passes ends ahead on StackOverflow and Amazon. Separate backward weights
   trained by the forward pass's own updates align to the exact dual (cosine 1.000) and learn as well as shared weights
   (0.4715 vs 0.4736); fixed random feedback fails (0.17). This is the learning half of clockless hardware.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,

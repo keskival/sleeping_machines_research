@@ -235,6 +235,21 @@ Wall time reflects a Python per-event loop, not the method's arithmetic.
 **matches converged BPTT quality with one fifth of the data passes**, in 3.1 min against 5.0 min. Scope: one memory layer,
 Taxi DEV, 3 seeds; complete-work accounting beyond wall time (MACs, trace state) is in §12 for depth 2.
 
+**Generality (`online4_*`, 10 Oct; DEV log-likelihood per event, higher is better; 3 seeds each):**
+
+| Dataset | BPTT 20 passes | online_trace 20 passes | BPTT 100 passes |
+|---|---|---|---|
+| Taxi | 0.4557 | **0.4805** | 0.4774 |
+| StackOverflow | −2.2280 | −2.1819 | **−2.1400** |
+| Amazon | 0.6077 | 0.6097 | **0.6354** |
+
+- **At equal passes** the per-event learner leads on Taxi and StackOverflow and is level on Amazon.
+- **Against converged BPTT**, the fifth-of-the-passes result holds on Taxi only. BPTT run to 100 passes ends ahead on
+  StackOverflow (by 0.042) and Amazon (by 0.026).
+- **Likely limiter:** the per-event learner's constant step size. Its best epochs sit above its final ones (StackOverflow
+  seed 0: −2.178 vs −2.212), which points at noise rather than bias.
+- **Next test:** per-event learning with a decaying step size and more passes, against converged BPTT.
+
 
 ## 8. Finite-proposal feedback and full learner cost (9 Oct, AWS autonomous continuation)
 
