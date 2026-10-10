@@ -1,0 +1,48 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (online learning, theory note 160 prediction 4)",
+ "tag": "online2_smoke_fa",
+ "args": {
+  "tag": "online2_smoke_fa",
+  "dataset": "taxi",
+  "arm": "online_fa",
+  "d": 32,
+  "modes": 16,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 1,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 0,
+  "contract": false,
+  "wd": 0.1,
+  "kp_contract": false,
+  "K": 10
+ },
+ "scale": 0.14583333333333337,
+ "best_dev_ll": 0.24996280228369072,
+ "final_dev_ll": 0.24996280228369072,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_ll": 0.24996280228369072,
+   "dev_time_ll": 0.5935424042480326,
+   "dev_mark_ll": -0.3435796019643419,
+   "updates": 3172,
+   "epoch_s": 9.593714237213135,
+   "feedback_cosine": {
+    "R": 0.11216871410322087,
+    "P": 0.0366674154462025,
+    "H": 0.09114161171505361,
+    "Mk": 0.026012708510864294
+   }
+  }
+ ],
+ "wall_s": 10.2165207862854,
+ "parameters": 9028,
+ "feedback_parameters": 6784,
+ "source_sha256": {
+  "experiments/credit/online_race_v2.py": "4882dcb80dc3cc5856c20e251072eb27badc925ea2d8035797bb1195d4cf64ad",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
