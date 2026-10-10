@@ -48,7 +48,7 @@ def responses(model,t,m,index,receivers,actions):
     return torch.stack(values,1)
 
 def relabel(model,permutation):
-    new=deepcopy(model);old=model.state_dict();state=new.state_dict();d=model.embed.embedding_dim;dv=model.marks.dv
+    new=actor(len(model.layers),0);old=model.state_dict();new.load_state_dict(old);state=new.state_dict();d=model.embed.embedding_dim;dv=model.marks.dv
     state['embed.weight'][permutation]=old['embed.weight'];state['mark_ctx.weight'].view(model.M,model.K,d)[:,permutation]=old['mark_ctx.weight'].view(model.M,model.K,d);state['mark_ctx.bias'].view(model.M,model.K)[:,permutation]=old['mark_ctx.bias'].view(model.M,model.K)
     state['clock.weight'][:,d:].view(-1,model.K,dv)[:,permutation]=old['clock.weight'][:,d:].reshape(-1,model.K,dv);new.load_state_dict(state);return new
 
