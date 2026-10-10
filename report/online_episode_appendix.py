@@ -71,7 +71,7 @@ def unseen_receiver_pages():
     if not path.exists():return []
     d=json.loads(path.read_text());assert d['status']=='completed';rows=[]
     for a in d['metrics']['arms']:
-        z=a['calibration']['unseen_inactive'];u=a['utility']
+        z=a['scopes']['unseen_inactive'];u=a['utility']
         rows.append([a['arm'],f"{z['relative_mse_vs_zero']:.4f}",f"{z['role_constant_relative_mse']:.4f}",f"{u['gain_from_expanding_counterfactual_pool']:+.6f}",str(u['unseen_inactive_selected'])])
     return [[('h2','Shared credit for never-labelled receiver addresses'),
         ('p','A route-conditioned connected critic learns only from receiver addresses0–5, then predicts optional native key-write effects at addresses6–7. Receiver descriptors contain observed state and token role, without raw receiver identity or future feedback. The comparison uses nearly matched structured-response and free heads.'),
