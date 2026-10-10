@@ -14,6 +14,23 @@ Concrete failure: local mode detaches continuous key/query producer paths, while
 
 At depth, place each producer cut explicitly and avoid double-counting overlapping cuts. Freeze credit predictions within each audited update. Sample residual audits with recorded positive inclusion probabilities; preserve their conditional gradient mean for the declared causal replay horizon. An unbiased sampled audit must be compared with the exact objective for that horizon; truncation versus full persistent credit is a separate measured bias. Charge predictor fitting, discovery, losing routes, replay, state transport and all optimizer updates. Derive variance/work allocation before admitting long fits. If full support makes audits expensive or variance grows with depth, report that failure and revise the learner.
 
+## Reciprocal inference and persistent credit state
+
+User direction, 10 October: inference trains the credit-assignment functions, which train the forward weights; investigate carrying credit activations into subsequent forward events. Represent forward state s, persistent credit state c, forward weights theta and credit weights psi separately. A causal event cycle is:
+
+    (prediction_t, s_next, packet_t) = F_theta(s_t, input_t, c_t)
+    (credit_t, c_next) = C_psi(c_t, packet_t, observed_outcome_t)
+    theta_next = update(theta_t, credit_t)
+    psi_next = train_credit(psi_t, forward_evidence_t, sparse_audits_t)
+
+The observed outcome enters after its prediction. Credit state may affect subsequent forward events; it cannot enter the prediction it evaluates. Predictions and audits bind the forward/credit parameter versions, state versions and causal horizon. Simultaneous unversioned updates would change the target while it is being evaluated.
+
+Forward packets should expose sampled causes, local eligibility information, addressed writes, elapsed time and learned compact messages useful for credit. Known causes in generated samples supervise attribution, but selected factual causes alone do not certify responsibility for observed data or counterfactual improvement. Use the existing closed-credit real-data correction and sparse audited derivatives/effects to train those distinct outputs. Note 160 sections 3–6 already develop this reciprocal mechanism; reuse the matched AWS pipelines rather than duplicating them. Continuous cotangents, discrete attribution and finite update utility have distinct targets and must not be conflated.
+
+Credit activations become a persistent addressed numerical state, updated on informative events and transported through time. This is a proposed extension, not a mathematical requirement to retain every backward activation. Compact state may summarize useful learning history; exact full-history gradients require sufficient sensitivities or replay, whose cost remains charged. Merely caching the previous error or aligning backward weights does not establish that the state is sufficient for deep credit.
+
+Measure the reciprocal loop against frozen-credit, credit-state-reset, no-forward-access-to-credit-state, and no-forward-supervision controls using the same sparse execution and complete accounting. Freeze/reset arms distinguish a learned credit function from useful persistent credit memory and from inference improvements caused by that memory. Include credit-state updates and slow credit-model training in learning cost, and any use of credit state in serving cost. If forward parameters or credit parameters change, record whether stored state is reused, corrected or invalidated; quantify drift rather than assuming exactness. The intended outcome is sparse forward activity teaching sparse persistent credit activity, which improves future forward learning.
+
 ## Bounded progression
 
 1. Complete the already-admitted native continuous-producer contract. Generalize the numerical witness to depths 2 and 4, then 8, with small dimensions: every parameter, factual paths, delayed writes, silence, overlapping cuts and causal suffix checks. Fixed-weight exactness and changing-weight drift are separate checks.
