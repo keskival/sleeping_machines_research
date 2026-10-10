@@ -85,7 +85,7 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages + sparse_receiver_pages() + shared_receiver_pages()
+    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages()
 
 
 def sparse_receiver_pages():
@@ -102,3 +102,11 @@ def shared_receiver_pages():
     d=json.loads(p.read_text());assert d['status']=='completed'
     rows=[[r['arm'].replace('_',' '),str(r['parameters']),f"{r['unseen_inactive_relative_mse']:.4f}",f"{r['gain_vs_fixed']:+.6f}",f"{r['query_supported_flops']/1e6:.2f}"] for r in d['rows']]
     return [[('h2','Sharing forward context across receiver-credit queries'),('p','The new critic encodes the common forward prefix once, then combines it with a seven-dimensional receiver-specific recurrent representation. Versioned context activation can be reused across queried addresses. Sparse/batched values and accumulated parameter gradients match the repeated-context reference; stale versions are rejected.'),('table',(['Critic','Parameters','Inactive error / zero','Gain / target','Query MFLOPs'],rows,[50,25,35,32,25])),('small',d['scope']),('small',f"One seed170;128 TRAIN prefixes with8 continuations,64 DEV prefixes with16 continuations,256 steps. Whole64-prefix query work is in the same units for both arms; descriptors are precomputed for this query comparison. New fit{d['fit_wall_s']:.2f}s/{d['fit_supported_flops']/1e9:.3f}supportedGFLOPs; teacher{d['teacher_supported_flops']/1e9:.3f}GFLOPs; complete new phase{d['whole_wall_s']:.2f}s, RSS{d['peak_rss_kb']/1024:.1f}MiB. Fitting graphs, receiver state, optimizer and source packets are additional to the retained context output.")]]
+
+
+def shared_receiver_confirmation_pages():
+    p=ROOT/'experiments/results/credit/curie_shared_receiver_confirm_20261010T2320Z_decision.json'
+    if not p.exists():return []
+    d=json.loads(p.read_text());assert d['status']=='completed'
+    rows=[[str(r['seed']),f"{r['gain_retained']*100:.1f}%",f"{r['query_work_ratio']:.3f}",f"{r['shared']['unseen_inactive_relative_mse']:.4f}"] for r in d['rows']]
+    return [[('h2','Shared prefix: seeded development gate'),('table',(['Seed','Gain retained','Query work ratio','Inactive error / zero'],rows,[22,43,48,54])),('p',f"Gate passes: {d['confirmation_gate']}. "+d['gate_scope']),('small',d['scope'])]]
