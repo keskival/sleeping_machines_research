@@ -93,7 +93,10 @@ def figure(r, path):
     fig.suptitle(f"Paired two-layer Taxi execution · {r['training_speedup']:.2f}× faster TRAIN", fontsize=12)
     fig.tight_layout()
     folder = ROOT/'report/figures'
-    for ext in ('png', 'svg'): fig.savefig(folder/f'aws_deep_credit_blocks.{ext}', dpi=170, bbox_inches='tight')
+    with matplotlib.rc_context({'svg.hashsalt': 'aws-deep-credit-blocks-v1'}):
+        for ext in ('png', 'svg'):
+            metadata={'Date': None} if ext=='svg' else None
+            fig.savefig(folder/f'aws_deep_credit_blocks.{ext}', dpi=170, bbox_inches='tight', metadata=metadata)
     plt.close(fig)
     (folder/'aws_deep_credit_blocks.inputs.json').write_text(json.dumps(dict(
         result=PREFIX, sha256=hashlib.sha256(path.read_bytes()).hexdigest(), scope=r['scope']), indent=2)+'\n')
