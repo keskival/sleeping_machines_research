@@ -4356,13 +4356,59 @@ Selected phase setup and its executed arms: 71.70 s; peak RSS 328.1 MiB. Predict
 | --- | --- | --- |
 | 181 | +0.004853 | +0.032721 |
 | 182 | -0.028742 | +0.012417 |
-| 183 | +2630745333395.070312 | -25809154614239.945312 |
+| 183 | unstable | unstable |
 
-Positive gains mean lower future prediction NLL from calibrated online learned credit. All-seed point gate: False.
+Positive gains mean lower future prediction NLL from calibrated online learned credit. All-seed point gate: False. Seed182 favors untrained audits; seed183 suffers catastrophic loss in every arm, so its raw difference is not a useful learning gain.
 
 Three initializations and audit seeds on same real TRAIN fragment. No optimized efficiency, domain-generalization or sealed TEST claim.
 
-Forward and credit weights adapt during the episode. Paid audits train a connected state-credit predictor; causal trust and recency-weighted replay support learning. Local derivatives remain exact and the current implementation retains dense local work. The next test varies fresh chronological fragments and depth with optimized, complete learning-cost accounting.
+Forward and credit weights adapt during the episode. Paid audits train a connected state-credit predictor; causal trust and recency-weighted replay support learning. Local derivatives remain exact and the current implementation retains dense local work. Observer-only seed183 replay reproduces the original scores and locates clock log-rate44–45 at an ordinary6.022ms gap. The next integrated variant compresses positive-slot inputs at the clock readout, retaining state, races and scoring; contracts and a matched three-arm pilot precede wider/deeper tests.
+
+### Integrated clock-read repair: positive memory compression
+
+The original seed183 episode becomes catastrophic in all learners at ordinary gaps. Affine clock outputs read unbounded positive addressed values. The new variant applies log1p at the clock head only: stored values, decay/write law, temporal layers, races, mark readout and recording-cell scoring remain. This is a changed native model shared by all three learner arms.
+
+| Arm | NLL/event | Audits | Critic steps | Wall s |
+| --- | --- | --- | --- | --- |
+| bptt | 12.794579 | 256 | 0 | 43.62 |
+| untrained audit | 12.795328 | 47 | 0 | 33.95 |
+| calibrated audit | 12.795615 | 47 | 376 | 34.41 |
+
+Calibrated learned credit gain over matched untrained audits: -0.000287 nats/event. These are completed seed183 development results on8192 TRAIN targets; lower NLL is better. Original pathological result files remain preserved.
+
+Full-stream score parity2.9e-10 and parameter-gradient parity3.1e-11; split all-audit BPTT parity2.2e-16. Complete phase 112.83s; peak RSS326.3MiB. All local derivatives, audits, replay and optimizer work charged. Common unused predictor scaffolding remains in controls; no optimized efficiency, depth scaling or sealed TEST claim.
+
+### Persistent credit learns from revealed forward errors
+
+A connected GRU critic consumes produced temporal/value states, revealed gaps/marks and issued prediction errors. Its64-dimensional credit state evolves with learned elapsed-time decay and persists across update windows. It predicts the88-dimensional cotangent after feedback but before the independent exact audit. No audit target enters the current prediction.
+
+| Arm | NLL/event | Audits | Critic steps | Wall s |
+| --- | --- | --- | --- | --- |
+| bptt | 12.794579 | 256 | 0 | 43.62 |
+| untrained audit | 12.795328 | 47 | 0 | 33.95 |
+| calibrated audit | 12.795615 | 47 | 376 | 34.41 |
+| feedback calibrated credit | 12.796736 | 47 | 376 | 43.20 |
+
+Feedback-conditioned credit gain over untrained audits: -0.001408 nats/event. On its own audited packets, calibrated prediction MSE0.000744082 versus zero0.000810363; the matched-label error comparison uses the same actor path, while utility comparisons follow different evolving actors.
+
+One seed183,8192 real TRAIN targets, stable log-compressed clock model, update groups32, audit probability0.25. Saved controls are reused unchanged. Credit predictor42,760parameters, credit state64values; replay/retained records and all actor/credit optimizers charged. Entire new-arm phase44.04s, RSS332.0MiB. Dense local derivatives and audited producer credit remain; no full backward replacement, hard-route alternative credit, optimized efficiency or TEST claim.
+
+### Producer-weighted feedback credit
+
+The critic now trains against the squared parameter-gradient error induced by its cotangent, rather than coordinate error alone. Each audited packet supplies the exact producer Gram at its pre-update actor version; replay retains that metric and the credit-state creator version. Past producer-weighted audit moments calibrate trust.
+
+| Completed measurement | Value |
+| --- | --- |
+| NLL/event | 12.795142 |
+| Gain over untrained audits | +0.000186 |
+| Gain over BPTT | -0.000563 |
+| Gain over unweighted feedback | +0.001594 |
+| Audited producer-error / zero | 0.9965 |
+| Exact metric construction s | 5.09 |
+
+One real TRAIN fragment; matched model and causal audit draws. Exact producer metric construction and all replay/local/optimizer work charged. No replicated utility or optimized efficiency claim.
+
+The88x88 metric comes from an88x18164 producer Jacobian and is a paid diagnostic, not the final economical implementation. Its quadratic form matches the actual parameter VJP norm to3.6e-15. A stochastic projection needs its own variance/utility comparison. Route-conditioned credit beyond the active pool is specified separately: shared descriptors support predictions, and positive-support exploration supplies corrections without evaluating every dormant route.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
@@ -4380,3 +4426,18 @@ Layer-1 state cannot depend on downstream parameters; its trace omits those colu
 One CPU thread, float64, seed 0; 2,272 scored TRAIN events, 142 updates per arm. Whole train steps include forward, exact credit transport, local backward and Adam. Trace storage is a tensor-element count, not total RSS. Larger-width synthetic batches give 3.05× speed, at depth two. These are execution measurements on a dense-write diagnostic member; no hard-routing, arbitrary-depth, whole-fit FLOP, energy or new benchmark-quality claim.
 
 Same-incoming-state audit at batch 54 gives gradient error 5.4e-15, parameter error 1.1e-16, zero mean-likelihood difference. Independent floating-point trajectories later crossed both absolute-gradient and per-target-likelihood identity guards. Both stopped logs are preserved; no completed paired epoch is claimed. A three-seed 20-pass final-DEV comparison uses the original model and recipe. Its predeclared adoption rule allows at most 0.002 mean quality loss and 0.005 on any seed. TEST remains untouched.
+
+## Appendix. B1 block-credit adoption: three-seed full-fit quality
+
+The fixed-recipe 20-pass quality preservation gate passes: mean final DEV 0.475946 versus saved dense traces 0.476956. Adopt economical exact reference for further integration.
+
+| Seed | Backend | Final DEV nats/event | Whole-fit minutes |
+| --- | --- | --- | --- |
+| 0 | blocks | 0.476852 | 39.77 |
+| 0 | saved dense | 0.476722 | 87.83 |
+| 1 | blocks | 0.476658 | 40.31 |
+| 1 | saved dense | 0.478539 | 87.26 |
+| 2 | blocks | 0.474326 | 32.90 |
+| 2 | saved dense | 0.475606 | 81.25 |
+
+Same model/recipe, 20 passes, three seeds, DEV only. Numerical trajectories may diverge; completed paired prefix is speed evidence; saved full-fit walls are historical. No TEST. Full-fit wall includes loading, evaluation and checkpoint work. The saved walls are historical; controlled speed comes from the paired prefix above. All parameter/Adam/RNG final checkpoints are published. Inference, FLOPs and energy are unchanged or unmeasured; this adoption gate is not a leaderboard result.
