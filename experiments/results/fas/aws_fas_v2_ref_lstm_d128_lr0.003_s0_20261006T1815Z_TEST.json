@@ -1,0 +1,51 @@
+{
+  "kind": "lstm",
+  "seed": 0,
+  "data": "fas_v2_K2_drop0.02_delta0_20261005",
+  "original_fit_data_manifest_sha256": "a5200d2b84fb192b1947de65a1ac151b02596c0719631d68d20a908b6c5fa463",
+  "payload_identity_sha256": "e35cae954d7185ac38da4356e8c0d55ff794613a95f6c91dd53f916785447322",
+  "data_manifest_sha256": "355c03a0565b98a5f0175614b00715964b9ae6a5291f6da7e070ca911cdee77b",
+  "config_sha256": "a3e75e831c1aefb2ad67dc1ece3a24c4c4e37753c94f37656fddce4fb960bf5c",
+  "checkpoint_sha256": "8734bb68ec593791dcae16f41525cf2310da1e33ebe03351ec3773a82f73b6f1",
+  "admission_sha256": "f64c86c9943bc85d09122037824bc58ee2ac8196d8288da1981846a99e76042f",
+  "source_sha256": {
+    "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+    "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+    "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+    "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+    "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+    "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+  },
+  "reason": "Registered Stage 4 first and only scoring",
+  "work_scope": {
+    "neural_fitting_events": 0,
+    "classical_fitting_events": 0,
+    "convention": "Wall time includes reconstruction, validation, scoring and publication; no FLOP claim"
+  },
+  "status": "completed",
+  "battle": "B3",
+  "tag": "curie_b3_sealed_v4_20261010T0220Z_lstm_s0",
+  "trained_tag": "aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z",
+  "identity": "2989df26ea4195e2d83ab37577294551307b5c06cbe261fffcde7516a0e710c0",
+  "validation_reconstruction": {
+    "metric": "clean_nll",
+    "value": 2.5903297191378107
+  },
+  "prefixes": [
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "primary_rule": "total",
+  "per_run_scores": {
+    "path": "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z_TEST_scores.npz",
+    "sha256": "8e773e894d56adc4b0cd552eca05564d7bbedb1b5e54fd577d98249c25c2e7ec"
+  },
+  "wall_s": 105.86838446900038
+}

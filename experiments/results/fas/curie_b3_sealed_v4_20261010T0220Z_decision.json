@@ -1,0 +1,145 @@
+{
+  "native_seed_aucs": [
+    0.70204225,
+    0.695568,
+    0.713359
+  ],
+  "native_mean": 0.7036564166666667,
+  "strongest_baseline": "transformer",
+  "strongest_auroc": 0.7043200000000001,
+  "difference": -0.000663583333333384,
+  "bootstrap_95": [
+    -0.008339140624999988,
+    0.007468734375000006
+  ],
+  "criteria": {
+    "margin_ge_0_02": false,
+    "bootstrap_lower_gt_0": false,
+    "every_seed_above": false
+  },
+  "verdict": "tie",
+  "baselines": {
+    "lstm": {
+      "auroc": 0.6737388333333333,
+      "seeds": 3,
+      "seed_aucs": [
+        0.671727,
+        0.67457075,
+        0.67491875
+      ]
+    },
+    "transformer": {
+      "auroc": 0.7043200000000001,
+      "seeds": 3,
+      "seed_aucs": [
+        0.7090805,
+        0.700122,
+        0.7037575
+      ]
+    },
+    "elapsed": {
+      "auroc": 0.57915725,
+      "seeds": 1,
+      "seed_aucs": [
+        0.57915725
+      ]
+    },
+    "tick_count": {
+      "auroc": 0.559452875,
+      "seeds": 1,
+      "seed_aucs": [
+        0.559452875
+      ]
+    },
+    "gap_z": {
+      "auroc": 0.66644275,
+      "seeds": 1,
+      "seed_aucs": [
+        0.66644275
+      ]
+    },
+    "ngram3": {
+      "auroc": 0.6763065,
+      "seeds": 1,
+      "seed_aucs": [
+        0.6763065
+      ]
+    },
+    "gap_quantile": {
+      "auroc": 0.50272325,
+      "seeds": 1,
+      "seed_aucs": [
+        0.50272325
+      ]
+    },
+    "gap_cusum": {
+      "auroc": 0.51917875,
+      "seeds": 1,
+      "seed_aucs": [
+        0.51917875
+      ]
+    },
+    "gap_robust_z": {
+      "auroc": 0.45943225,
+      "seeds": 1,
+      "seed_aucs": [
+        0.45943225
+      ]
+    },
+    "order3": {
+      "auroc": 0.6822255,
+      "seeds": 1,
+      "seed_aucs": [
+        0.6822255
+      ]
+    },
+    "timed_ngram": {
+      "auroc": 0.67899,
+      "seeds": 1,
+      "seed_aucs": [
+        0.67899
+      ]
+    }
+  },
+  "eligible_samples": {
+    "clean": 2000,
+    "faulty": 2000,
+    "excluded_short_clean": 0,
+    "excluded_short_faulty": 0
+  },
+  "bootstrap_estimand": "Paired clean/faulty resamples of seed-averaged ranks on BOTH sides; family selection and margin use arithmetic means of per-seed AUROC",
+  "status": "completed",
+  "battle": "B3",
+  "tag": "curie_b3_sealed_v4_20261010T0220Z_decision",
+  "primary_rule": "total",
+  "merged_prefix": 1024,
+  "per_line_prefix": 512,
+  "input_sha256": {
+    "experiments/results/fas/fas_v2_test_ledger.jsonl": "ba28b980f20c8ffb2fccf3ef333248a91bc0ea02f759e3e10f398154e8087ebe",
+    "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z_TEST.json": "8dbc90e733fe1a9aba2e3ac9de1050a0ce224482602550a0ebfed2a89b37db25",
+    "experiments/results/fas/curie_b3_stage4_c10_s6_20261009T0600Z_TEST_scores.npz": "4f36dc937602ede9c0659bc9d75fa9594a7dbdf077453b2871c9221d9bb8ae5d",
+    "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z_TEST.json": "44bae560b6bbfd6f6db68a04ba5f02279910bcfce1a1972f67b5ef1fe3aab0a0",
+    "experiments/results/fas/curie_b3_stage4_c10_s7_20261009T0600Z_TEST_scores.npz": "c9bdeb714820eafb00ce105ebf0cefb2ea2000ee9bb86d3731b54af84f629b7a",
+    "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z_TEST.json": "34ce5b13b3e1a4ec1b5f17e07eebab084cb74948911e69514c2ecbf9dbb70b68",
+    "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z_TEST_scores.npz": "2f932c7d78b485c2094705113843f1e1975a7fb51113222431ad5d8b1a4e0100",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z_TEST.json": "1c765660be9cef597e6a9b4d2c7481eb9367f8ebe39e2db324b8001f794b6bf4",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z_TEST_scores.npz": "8e773e894d56adc4b0cd552eca05564d7bbedb1b5e54fd577d98249c25c2e7ec",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z_TEST.json": "f0598cf2b70bd9e717e1fa50159364cc31eb010706352ef93784e908170cd671",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z_TEST_scores.npz": "c70ed6fac01edf7c877eac2cad3aa1a24d02f54098bdb3c931fb32cd2ca211a3",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z_TEST.json": "e17cf4238cd4c985353fa630cb0866a54ceab032bc024de85db2f6b3c710a5d2",
+    "experiments/results/fas/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z_TEST_scores.npz": "14ffecaebd486fe75ecc582b70befef0fdaa6660c3b91afcf0f16c0c713088c0",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z_TEST.json": "ca0a83beb8157b607a819921ad773ce32dd8e5608f3bff921caefc4654116ba4",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z_TEST_scores.npz": "798385b2845f94837cfa9b92305b4abcb8661ac41c29549061e17604b92ffae7",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z_TEST.json": "5df82ed3610496f8f8888924e30d9f6832c20554e0878ec36790c36d697a7178",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z_TEST_scores.npz": "866a2f2d64b817389d48f3136e870b5e1e89bf5a28a43d38dfa54c23a74d8f2d",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z_TEST.json": "52c37e64171fae23811bcda4842cb8537a1a19500d9a127a67782a76a671ec6e",
+    "experiments/results/fas/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z_TEST_scores.npz": "4e173d8614faf3a17b641a812f51f3735b55d9760ea25feeb3c4505294e83a34",
+    "experiments/results/fas/curie_b3_sealed_v4_20261010T0220Z_classical_TEST.json": "ab4ba0b705d3ed24d7b5265627a771eeefd79485c78996469cd5aa2be1e0ead6",
+    "experiments/results/fas/curie_b3_sealed_v4_20261010T0220Z_classical_TEST_scores.npz": "7656ce29665b3db61a7c7b8091aac49abfc1041e490ccafd6efec98c172f2733"
+  },
+  "source_sha256": {
+    "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+    "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+    "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "native",
+  "seed": 8,
+  "data": "fas_v2_K2_drop0.02_delta0_20261005",
+  "original_fit_data_manifest_sha256": null,
+  "payload_identity_sha256": null,
+  "data_manifest_sha256": "355c03a0565b98a5f0175614b00715964b9ae6a5291f6da7e070ca911cdee77b",
+  "config_sha256": "677f465e26d139f6db3d9aff869e57b5c888f696591ad52aaa1c82bc0c9ed643",
+  "checkpoint_sha256": "203e4f2cbd700acf5b763b8533c6ced7d0ec07a9b2d8a43cff00d424a203eeb1",
+  "admission_sha256": "3acf6cc64a6fbed6e762029c3bdaf9898f5cab226a97d7fc1e47a3ccffb7be6a",
+  "source_sha256": {
+    "experiments/fas/score_sealed_v3.py": "cfe01588527a3c04a65e5155566ab5182005f13b1c5e9d2e3e0b47c2cfffcab6",
+    "experiments/fas/sealed_registry.py": "5f27d1ae97a30fd29772fd5523f896ca0b65988cd9fa5c1342be0a486c6bed39",
+    "experiments/fas/stage5_decision_v2.py": "6a6cf9d4c15ec74c5c0955c30ed9935a427959cd13c1c77cf735907bb46a6fee",
+    "experiments/fas/stage5_statistics_v2.py": "a1abb5bc209392fe5fdcb063a30941320429b9959416d5b18d9af3c14cfbb2e2",
+    "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+    "experiments/fas/payload_identity.py": "dcbb2941282f81302c1c6d359ac541cba355d60c102f44db57f96a2f7fe79d2b",
+    "experiments/FAS_V2_CONFIRMATORY_PROTOCOL.md": "e2320c0d07d8e40d9e8221127f795902307019341e813bc3ba8cda5ddc0a81c0",
+    "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+    "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+    "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+  },
+  "reason": "Registered Stage 4 first and only scoring",
+  "work_scope": {
+    "neural_fitting_events": 0,
+    "classical_fitting_events": 0,
+    "convention": "Wall time includes reconstruction, validation, scoring and publication; no FLOP claim"
+  },
+  "status": "completed",
+  "battle": "B3",
+  "tag": "curie_b3_sealed_v4_20261010T0220Z_native_s8",
+  "trained_tag": "curie_b3_stage4_c10_s8_20261009T0600Z",
+  "identity": "1f1f0b0f306579ccabf544c7f1e92816eac7629ea474f6bb0a4347e505aa3ae4",
+  "validation_reconstruction": {
+    "metric": "clean_nll",
+    "value": 1.0206813283955205
+  },
+  "prefixes": [
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "primary_rule": "total",
+  "per_run_scores": {
+    "path": "experiments/results/fas/curie_b3_stage4_c10_s8_20261009T0600Z_TEST_scores.npz",
+    "sha256": "2f932c7d78b485c2094705113843f1e1975a7fb51113222431ad5d8b1a4e0100"
+  },
+  "wall_s": 365.387801457
+}
