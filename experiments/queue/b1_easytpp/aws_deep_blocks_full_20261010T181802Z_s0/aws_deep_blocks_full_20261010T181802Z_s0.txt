@@ -1,0 +1,2 @@
+# B1: B1/R1 final-quality preservation of mathematically exact block credit under numerical trajectory drift; 20-pass seeds0/1/2 original recipe, checkpointed, mean drop<=.002 and each seed<=.005; no TEST
+aws_deep_blocks_full_20261010T181802Z_s0 experiments/credit/online_deep_blocks_train.py --tag aws_deep_blocks_full_20261010T181802Z_s0 --gate experiments/results/credit/aws_deep_blocks_diagnosis_20261010T181802Z.json --reference experiments/results/credit/online3_taxi_online_deep_s0_r2.json --seed 0

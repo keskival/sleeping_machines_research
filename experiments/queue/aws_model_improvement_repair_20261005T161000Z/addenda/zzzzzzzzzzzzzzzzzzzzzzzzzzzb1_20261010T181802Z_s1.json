@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1/R1 publish the identical-state numerical diagnosis and frozen three-seed quality gate; no fitting",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_deep_blocks_diagnosis_20261010T181802Z",
+        "queue": "experiments/queue/b1_easytpp/aws_deep_blocks_diagnosis_20261010T181802Z/aws_deep_blocks_diagnosis_20261010T181802Z.txt",
+        "queue_sha256": "ecab4eb9c6135038410d6c508d49f9b2f024a1c814b7d31e2e1411add9c3fa76",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/analyze_deep_blocks.py": "89b6c0bec3cb735756fc4e021aece1fb4a64531d3da66c8b766fc8be97f42a4c",
+          "experiments/queue/logs/aws_deep_blocks_roundoff_20261010T180851Z.log": "f06a882d2182a1eea0aa8d74f2afe3303b78481ed876afca3b4dd5f25c87d981"
+        },
+        "result": "experiments/results/credit/aws_deep_blocks_diagnosis_20261010T181802Z.json",
+        "timeout_s": 120,
+        "rss_kb": 300000,
+        "vms_kb": 1000000
+      }
+    ]
+  }
+}

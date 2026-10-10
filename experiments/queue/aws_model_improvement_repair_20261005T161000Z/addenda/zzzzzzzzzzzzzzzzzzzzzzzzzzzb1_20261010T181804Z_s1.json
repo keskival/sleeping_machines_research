@@ -1,0 +1,61 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "B1/R1 decide adoption using all three completed fixed-recipe 20-pass DEV fits and frozen quality margin; no automatic fitting or TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_deep_blocks_full_20261010T181802Z_decision",
+        "queue": "experiments/queue/b1_easytpp/aws_deep_blocks_full_20261010T181802Z_decision/aws_deep_blocks_full_20261010T181802Z_decision.txt",
+        "queue_sha256": "ba0ddd76d516ac8a21758609b0391310f7df9c6512f09ab13894e52652b76099",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/analyze_deep_blocks.py": "89b6c0bec3cb735756fc4e021aece1fb4a64531d3da66c8b766fc8be97f42a4c"
+        },
+        "result": "experiments/results/credit/aws_deep_blocks_full_20261010T181802Z_decision.json",
+        "timeout_s": 120,
+        "rss_kb": 300000,
+        "vms_kb": 1000000,
+        "requires": [
+          {
+            "result": "experiments/results/credit/aws_deep_blocks_full_20261010T181802Z_s0.json",
+            "source_sha256": {
+              "experiments/credit/online_deep_blocks_train.py": "7f3b6db70e2bd7fb0a2e95a460bd1de4afe8e1f1fc181398deaffd91f744adb0",
+              "experiments/credit/online_deep_blocks_fit_v2.py": "babbe08b1520ccd4c66babde8d5ec991cf165852291fb355cd85a3368957b35c",
+              "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+              "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+              "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+              "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+            },
+            "stage": "full_fit"
+          },
+          {
+            "result": "experiments/results/credit/aws_deep_blocks_full_20261010T181802Z_s1.json",
+            "source_sha256": {
+              "experiments/credit/online_deep_blocks_train.py": "7f3b6db70e2bd7fb0a2e95a460bd1de4afe8e1f1fc181398deaffd91f744adb0",
+              "experiments/credit/online_deep_blocks_fit_v2.py": "babbe08b1520ccd4c66babde8d5ec991cf165852291fb355cd85a3368957b35c",
+              "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+              "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+              "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+              "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+            },
+            "stage": "full_fit"
+          },
+          {
+            "result": "experiments/results/credit/aws_deep_blocks_full_20261010T181802Z_s2.json",
+            "source_sha256": {
+              "experiments/credit/online_deep_blocks_train.py": "7f3b6db70e2bd7fb0a2e95a460bd1de4afe8e1f1fc181398deaffd91f744adb0",
+              "experiments/credit/online_deep_blocks_fit_v2.py": "babbe08b1520ccd4c66babde8d5ec991cf165852291fb355cd85a3368957b35c",
+              "experiments/credit/online_deep_blocks_fit.py": "ed5dd4414f14bba212df519efd2dc03efeb161c623c53df23d7cc59e66dec7f8",
+              "experiments/credit/online_deep_blocks.py": "f2f13a69c459a6adb2325f0aaaf1b46a60db2dd4b12497e994f4876d6f711667",
+              "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+              "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+            },
+            "stage": "full_fit"
+          }
+        ]
+      }
+    ]
+  }
+}
