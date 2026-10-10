@@ -105,7 +105,7 @@ Use one native temporal actor and exact tiny continuation branches. Keep its ini
 
 First require fixed-packet learning, then disjoint continuation/action generalization. Measure advantage calibration, intervention ranking, directional derivative error, positive/negative transfer, future loss and full work. On controlled regime changes test whether a past-loss-descent action becomes inferior to a forward-looking action. Compare state adaptation, parameter adaptation and both. Assessment remains prequential: each action precedes its outcome; no hidden regime label enters unless legitimately supplied as input. Small teacher/audit work is charged.
 
-The mathematical witnesses establish what accuracy would make the approach useful. They do not establish learnability of a particular feature interface, global stability, grokking or superiority at scale. Current Curie coarse-coordinate probes have not shown the required small-scale learning signal. The next already-admitted exact state-key contract stays unchanged; this note defines the subsequent shared-critic design and comparison, with no new job or architectural substitution admitted.
+The mathematical witnesses establish what accuracy would make the approach useful. They do not establish learnability of a particular feature interface, global stability, grokking or superiority at scale. Current Curie coarse-coordinate probes have not shown the required small-scale learning signal. The next already-admitted exact state-key contract stays unchanged; the subsequent shared-critic design and comparison are admitted as the bounded probe in section 8, without substituting the native forward architecture.
 
 ## 7. Collaborative candidate pools
 
