@@ -18,7 +18,7 @@ The proof does not show $x\le y$ universally. It shows that whenever this hypoth
 \item \texttt{intro} brings a quantified variable or implication hypothesis into the context; \texttt{exact} supplies a term with precisely the current goal's type.
 \item \texttt{rw} rewrites using an equality; \texttt{simp} applies a controlled collection of simplification lemmas.
 \item \texttt{ring} normalizes polynomial identities. It does not prove an analytic theorem about an integral or logarithm.
-\item \texttt{field\_simp} clears denominators. Nonzero-denominator obligations must still be justified.
+\item \texttt{field\_\allowbreak{}simp} clears denominators. Nonzero-denominator obligations must still be justified.
 \item \texttt{linarith} combines linear equalities/inequalities; \texttt{nlinarith} also preprocesses polynomial facts.
 \item \texttt{positivity} proves suitable sign facts from known hypotheses and the structure of an expression.
 \end{itemize}
@@ -31,13 +31,13 @@ example (x : Real) (hx : 0 < x) : x / x = 1 := by
 The positive-denominator hypothesis supplies $x\ne0$. For $x=0$, Lean's field division gives $0/0=0$, so the unrestricted statement would be false.
 \end{example}
 \section{Walk through the project}
-The project is \texttt{experiments/lean/credit\_theory}. Its \texttt{lean-toolchain} and Lake manifest pin Lean and Mathlib. The current pin is Lean 4.35.0-rc4 with the matching Mathlib revision. Use the pinned project environment rather than silently upgrading it.
-\paragraph{Basic.lean.} \texttt{var\_eq\_half\_pairwise} proves the finite weighted-variance identity given weights summing to one. The algebraic identity does not itself require nonnegative weights; \texttt{sampled\_credit\_variance\_bound} adds nonnegativity and bounded scores to obtain the probability interpretation and bound. \texttt{geom\_tail\_le} proves a finite transported-tail bound for $0\le\rho<1$. \texttt{info\_from\_waiting} proves a logarithmic ratio equals $2r\tau$; identifying that ratio with complex Gaussian information is a separate statistical argument.
-\paragraph{Scaling.lean.} \texttt{count\_above\_level\_le} bounds the number of components above a threshold by total mass divided by the threshold. \texttt{powerlaw\_rate\_le} bounds a finite logarithmic sum; \texttt{powerlaw\_tail\_le} needs $\alpha>1$. These are implications from a spectrum model, not proofs that our measured spectra have that model.
-\paragraph{Coupled.lean.} \texttt{coupled\_contraction} takes nonnegative comparison coefficients, $a,d<1$ and $bc<(1-a)(1-d)$, then constructs $w>0$ and $q\in[0,1)$ so $x'+we'\le q(x+we)$. Its finite-dimensional proof does not infer those coefficients from neural training. \texttt{coupled\_converges} turns a supplied one-step potential bound into a geometric bound by induction.
-\paragraph{Surprise.lean.} \texttt{audit\_cost\_lower\_bound} applies Cauchy--Schwarz to show
+The project is \texttt{experiments/lean/credit\_\allowbreak{}theory}. Its \texttt{lean-toolchain} and Lake manifest pin Lean and Mathlib. The current pin is Lean 4.35.0-rc4 with the matching Mathlib revision. Use the pinned project environment rather than silently upgrading it.
+\paragraph{Basic.lean.} \texttt{var\_\allowbreak{}eq\_\allowbreak{}half\_\allowbreak{}pairwise} proves the finite weighted-variance identity given weights summing to one. The algebraic identity does not itself require nonnegative weights; \texttt{sampled\_\allowbreak{}credit\_\allowbreak{}variance\_\allowbreak{}bound} adds nonnegativity and bounded scores to obtain the probability interpretation and bound. \texttt{geom\_\allowbreak{}tail\_\allowbreak{}le} proves a finite transported-tail bound for $0\le\rho<1$. \texttt{info\_\allowbreak{}from\_\allowbreak{}waiting} proves a logarithmic ratio equals $2r\tau$; identifying that ratio with complex Gaussian information is a separate statistical argument.
+\paragraph{Scaling.lean.} \texttt{count\_\allowbreak{}above\_\allowbreak{}level\_\allowbreak{}le} bounds the number of components above a threshold by total mass divided by the threshold. \texttt{powerlaw\_\allowbreak{}rate\_\allowbreak{}le} bounds a finite logarithmic sum; \texttt{powerlaw\_\allowbreak{}tail\_\allowbreak{}le} needs $\alpha>1$. These are implications from a spectrum model, not proofs that our measured spectra have that model.
+\paragraph{Coupled.lean.} \texttt{coupled\_\allowbreak{}contraction} takes nonnegative comparison coefficients, $a,d<1$ and $bc<(1-a)(1-d)$, then constructs $w>0$ and $q\in[0,1)$ so $x'+we'\le q(x+we)$. Its finite-dimensional proof does not infer those coefficients from neural training. \texttt{coupled\_\allowbreak{}converges} turns a supplied one-step potential bound into a geometric bound by induction.
+\paragraph{Surprise.lean.} \texttt{audit\_\allowbreak{}cost\_\allowbreak{}lower\_\allowbreak{}bound} applies Cauchy--Schwarz to show
 $(\sum_i|r_i|\sqrt{c_i})^2/V\le\sum_ic_ip_i$, assuming positive $p_i,V$ and $\sum_ir_i^2/p_i\le V$. The actual residual-audit variance is $\sum_i(1/p_i-1)r_i^2$: the formal theorem uses the larger uncentered budget $\sum_ir_i^2/p_i$. Keeping these denominators distinct avoids claiming the wrong constant.
-\paragraph{RaceFisher.lean.} \texttt{race\_fisher\_offdiag} and \texttt{race\_fisher\_diag} check rational identities after the exponential-race moments have been supplied. They do not derive the moments, establish martingale integrability, or prove a shared neural parameter Fisher is diagonal.
+\paragraph{RaceFisher.lean.} \texttt{race\_\allowbreak{}fisher\_\allowbreak{}offdiag} and \texttt{race\_\allowbreak{}fisher\_\allowbreak{}diag} check rational identities after the exponential-race moments have been supplied. They do not derive the moments, establish martingale integrability, or prove a shared neural parameter Fisher is diagonal.
 \section{Reproduce and inspect}
 With Elan and the pinned toolchain installed, run from the project directory:
 \begin{verbatim}
@@ -63,7 +63,7 @@ Review the statement, imported axioms, and connection to the implementation. Ker
 \begin{solution}From falsehood any proposition follows. Unless the assumptions are satisfiable in the scientific setting, the checked implication carries no useful stability guarantee.\end{solution}
 \begin{exercise}An audit theorem assumes $p_i>0$. Can deterministic omission of a block use it?\end{exercise}
 \begin{solution}No: omission has $p_i=0$ and removes residual-correction support. Prove a separate approximation bound or restore positive inclusion probability.\end{solution}
-\begin{exercise}Which extra checks connect \texttt{race\_fisher\_diag} to a training method?\end{exercise}
+\begin{exercise}Which extra checks connect \texttt{race\_\allowbreak{}fisher\_\allowbreak{}diag} to a training method?\end{exercise}
 \begin{solution}Verify the observation law and stated moments, account for censoring and hidden causes, map log-scales to shared weights, and check the implementation's score/gradient. The rational identity supplies only one link in that chain.\end{solution}
 \begin{inourmodels}
 The Lean project accompanies notes 164--168. Numerical contracts separately check native temporal transport, state carry, full parameter gradients and changing-weight versions. Experiment result files supply quality and cost evidence. The Gaussian coding, renewal and neural calibration assumptions must be justified outside the finite algebra proved here.
