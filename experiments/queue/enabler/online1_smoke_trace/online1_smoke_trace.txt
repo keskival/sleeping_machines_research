@@ -1,0 +1,2 @@
+# ENABLER: Shared enabler, theory note 160 prediction 4: per-event learning with exact forward eligibility traces (no BPTT, no stored history) vs full BPTT vs traces dropped, same race TPP model, Taxi DEV. Decides whether asynchronous on-substrate learning keeps BPTT quality
+online1_smoke_trace experiments/credit/online_race.py --tag online1_smoke_trace --tag online1_smoke_trace --arm online_trace --epochs 1
