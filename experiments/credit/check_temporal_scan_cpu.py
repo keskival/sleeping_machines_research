@@ -98,6 +98,8 @@ def main():
         decision='Can exact compiled recurrence/adjoint preserve native deep learning contracts and reduce execution overhead?',
         wall_s=time.monotonic()-start,peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         source_sha256={s:hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in SOURCES},
+        peak_child_rss_kb=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss,
+        rss_scope='Parent and maximum individual child RSS reported separately; run_safe guards whole process group.',
         compiler_threads=1,torch_version=torch.__version__)
     temporary=out.with_suffix('.tmp');temporary.write_text(json.dumps(record,indent=2)+'\n');temporary.replace(out)
     print('RESULT',json.dumps(record),flush=True)

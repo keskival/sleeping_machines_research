@@ -17,7 +17,7 @@ def extension():
     global _EXTENSION
     if _EXTENSION is None:
         from torch.utils.cpp_extension import load
-        os.environ.setdefault('MAX_JOBS','1')
+        os.environ['MAX_JOBS']='1'
         source=Path(__file__).with_suffix('.cpp')
         tag=hashlib.sha256(source.read_bytes()).hexdigest()[:12]
         directory=ROOT/'.git/temporal-scan-build'/tag;directory.mkdir(parents=True,exist_ok=True)

@@ -1,0 +1,63 @@
+{
+  "tag": "curie_cpu_scan_v1_20261010T1510Z",
+  "host": "curie",
+  "battle": "R1/B10",
+  "jobs": [
+    {
+      "tag": "curie_cpu_scan_v1_20261010T1510Z_contract",
+      "driver": "experiments/credit/check_temporal_scan_cpu.py",
+      "queue": "experiments/queue/enabler/curie_cpu_scan_v1_20261010T1510Z/curie_cpu_scan_v1_20261010T1510Z_contract.txt",
+      "queue_sha256": "5c5ef676316cb6d14bf95e6ac369b6cd106fad52247b3b7fefe06aa2de98faff",
+      "sources": {
+        "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+        "experiments/tpp/temporal_scan_cpu.py": "7b19bfb13e136baadd423d596f75fb6597361f66083fb8d64db57c4d3d895077",
+        "experiments/tpp/temporal_scan_cpu.cpp": "090e68c6d9acea412ee0db1e2c9d462df00bef8d972e584636fd21f3a8b059bd",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+        "experiments/tpp/temporal_scan_cpu.py": "7b19bfb13e136baadd423d596f75fb6597361f66083fb8d64db57c4d3d895077",
+        "experiments/tpp/temporal_scan_cpu.cpp": "090e68c6d9acea412ee0db1e2c9d462df00bef8d972e584636fd21f3a8b059bd",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_cpu_scan_v1_20261010T1510Z_contract.json",
+      "rss_kb": 2500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": []
+    },
+    {
+      "tag": "curie_cpu_scan_v1_20261010T1510Z_smoke",
+      "driver": "experiments/credit/check_temporal_scan_cpu.py",
+      "queue": "experiments/queue/enabler/curie_cpu_scan_v1_20261010T1510Z/curie_cpu_scan_v1_20261010T1510Z_smoke.txt",
+      "queue_sha256": "cf4f851faf03f83aa13360fd15e123a93498337132198a53234bc384fd10c56e",
+      "sources": {
+        "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+        "experiments/tpp/temporal_scan_cpu.py": "7b19bfb13e136baadd423d596f75fb6597361f66083fb8d64db57c4d3d895077",
+        "experiments/tpp/temporal_scan_cpu.cpp": "090e68c6d9acea412ee0db1e2c9d462df00bef8d972e584636fd21f3a8b059bd",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_temporal_scan_cpu.py": "c3b278c23af5f6c56a593df89a2a368634b0a5744416e421ed091e072a8dc145",
+        "experiments/tpp/temporal_scan_cpu.py": "7b19bfb13e136baadd423d596f75fb6597361f66083fb8d64db57c4d3d895077",
+        "experiments/tpp/temporal_scan_cpu.cpp": "090e68c6d9acea412ee0db1e2c9d462df00bef8d972e584636fd21f3a8b059bd",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_cpu_scan_v1_20261010T1510Z_smoke.json",
+      "rss_kb": 2500000,
+      "vms_kb": 8000000,
+      "timeout_s": 300,
+      "requires": [
+        "curie_cpu_scan_v1_20261010T1510Z_contract"
+      ]
+    }
+  ]
+}
