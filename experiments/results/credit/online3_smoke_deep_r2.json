@@ -1,0 +1,41 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (deep online learning, theory note 160 sect. 12)",
+ "tag": "online3_smoke_deep_r2",
+ "args": {
+  "tag": "online3_smoke_deep_r2",
+  "dataset": "taxi",
+  "arm": "online_deep",
+  "d": 32,
+  "modes": 16,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 1,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 0,
+  "contract": false,
+  "K": 10
+ },
+ "scale": 0.14583333333333337,
+ "best_dev_ll": 0.42034895435731184,
+ "final_dev_ll": 0.42034895435731184,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_ll": 0.42034895435731184,
+   "dev_time_ll": 0.6800592520327241,
+   "dev_mark_ll": -0.25971029767541226,
+   "updates": 3172,
+   "epoch_s": 279.37309312820435
+  }
+ ],
+ "wall_s": 280.03740525245667,
+ "parameters": 11700,
+ "memory_path_parameters": 4704,
+ "trace_floats_per_stream": 301056,
+ "source_sha256": {
+  "experiments/credit/online_deep.py": "9230cad780fad90059a92fbc4c31dcf72d1e0b68f5ddfda95212225feb730d25",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
