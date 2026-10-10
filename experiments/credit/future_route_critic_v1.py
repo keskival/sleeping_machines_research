@@ -78,6 +78,7 @@ def actions(radius=.25):
 class Critic(nn.Module):
     def __init__(self,connected):
         super().__init__();self.connected=connected
+        self.register_buffer('output_scale',torch.tensor(1.,dtype=torch.float64))
         self.encoder=nn.GRU(30,32,batch_first=True) if connected else nn.Sequential(nn.Linear(30,96),nn.Tanh(),nn.Linear(96,32))
         self.head=nn.Sequential(nn.Linear(36,32),nn.Tanh(),nn.Linear(32,1))
     def context(self,x):
@@ -86,7 +87,7 @@ class Critic(nn.Module):
     def values(self,x,a):
         c=self.context(x);N,K,_=a.shape
         c=c[:,None,:].expand(-1,K,-1)
-        return (self.head(torch.cat((c,a),-1))-self.head(torch.cat((c,torch.zeros_like(a)),-1))).squeeze(-1)
+        return self.output_scale*(self.head(torch.cat((c,a),-1))-self.head(torch.cat((c,torch.zeros_like(a)),-1))).squeeze(-1)
 
 
 def collect(model,start,count,pairs):
@@ -127,7 +128,8 @@ def fit(model,seed,a):
     rows=[];histories={};candidates=actions()[None,:,:].expand(len(x),-1,-1)
     scale=float(y.square().mean().sqrt().clamp_min(1e-8))
     for connected in (False,True):
-        torch.manual_seed(seed);critic=Critic(connected).double();initial=deepcopy(critic)
+        torch.manual_seed(seed);critic=Critic(connected).double()
+        critic.output_scale.fill_(scale);initial=deepcopy(critic)
         opt=torch.optim.AdamW(critic.parameters(),lr=.003,weight_decay=.001)
         history=[]
         for step in range(a.steps):

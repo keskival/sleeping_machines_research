@@ -106,3 +106,23 @@ Use one native temporal actor and exact tiny continuation branches. Keep its ini
 First require fixed-packet learning, then disjoint continuation/action generalization. Measure advantage calibration, intervention ranking, directional derivative error, positive/negative transfer, future loss and full work. On controlled regime changes test whether a past-loss-descent action becomes inferior to a forward-looking action. Compare state adaptation, parameter adaptation and both. Assessment remains prequential: each action precedes its outcome; no hidden regime label enters unless legitimately supplied as input. Small teacher/audit work is charged.
 
 The mathematical witnesses establish what accuracy would make the approach useful. They do not establish learnability of a particular feature interface, global stability, grokking or superiority at scale. Current Curie coarse-coordinate probes have not shown the required small-scale learning signal. The next already-admitted exact state-key contract stays unchanged; this note defines the subsequent shared-critic design and comparison, with no new job or architectural substitution admitted.
+
+## 7. Collaborative candidate pools
+
+A forward proposal policy builds an admitted intervention/route set R_phi(H_t,X_t). The critic ranks its members; audits reveal consequences for selected and sampled unselected alternatives. Both proposal parameters phi and critic parameters psi learn from future outcomes. Condition on a common feasible action space and a fixed budget. If
+
+    delta_pool = min_{a in R_phi} A(a) - min_{a feasible} A(a),
+
+and the critic has uniform error at most epsilon on the pool, the selected action satisfies
+
+    A(a_hat) - min_{a feasible} A(a) <= delta_pool + 2 epsilon.
+
+This follows from the finite-action bound. Proposal learning addresses coverage error; critic learning addresses ranking error. Charge pool construction and all candidate scoring, and include no-op. Exploration/audit support and diverse retained alternatives prevent unsupported self-confirming elimination. Optimizing a proposal through an uncalibrated critic can exploit critic errors: held-out realized interventions test that failure explicitly. Continuous proposals can differentiate a frozen critic; discrete proposals require controlled counterfactual or score-function signals. Predicted value alone does not certify pool improvement.
+
+## 8. Admitted first native dynamics probe
+
+`experiments/queue/enabler/curie_future_credit_v1_20261010T1140Z/manifest.json` admits exactly five sequential jobs: new intervention/causality/derivative contract, one two-step smoke, then fixed 128-step pilots at seeds 170/171/172. Each pilot fits isolated and connected shared critics on identical packets and future branches, followed by 32 proposal steps through the frozen connected critic. Dense supervised future loss supplies targets; DEV branch outcomes are withheld from selection. One bounded learned key-write candidate supplements nine retained basis/no-op candidates. Held-out evaluation separates realized proposal quality, pool coverage improvement and critic selection regret. Teacher, proposal and candidate work are charged.
+
+Scope: initialized frozen depth-two native actor, 16 TRAIN and 16 DEV contexts per seed; current-state key-write interventions, not forward-weight adaptation, full deep counterfactual routing, regime adaptation or asynchronous execution. Critic parameter counts differ, so this first probe is a fit/transfer/dynamics gate, not an isolated connectivity win. Fixed checkpoints, no TEST, no efficiency claim. Zero/frozen predictors, uniform selection and enumerated within-pool oracle are references. Candidate target scaling uses TRAIN only. The depth-2/4/8 contract verifies native loss parity, causal feature packets, unchanged earlier losses and directional finite differences.
+
+Decision: first establish acquired small-scale structure and held-out beneficial interventions. If TRAIN fails, diagnose representation/optimization. If only TRAIN succeeds, diagnose generalization. If proposals improve predicted values but worsen realized future costs, diagnose critic exploitation. Only a selected learner with a replicated signal proceeds to fully coupled forward-weight learning, controlled regime changes and depth/work scaling. The prior state-key contract must complete first. These jobs join Curie's guarded continuation after PAM, without changing AWS or the sealed benchmark fits.
