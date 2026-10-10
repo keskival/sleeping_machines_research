@@ -1,0 +1,183 @@
+{
+ "C1_bellman": {
+  "final_max_abs_err": 0.0,
+  "max_contraction_ratio_first40": 0.999855919572514,
+  "bound_max_abs_a": 0.9999931289930865,
+  "passed": true
+ },
+ "C1b_conditioning": {
+  "by_mode": {
+   "1": {
+    "decay_r": 0.05,
+    "window": 12,
+    "learned_raw_window_err": 2.984949499070651,
+    "shared_transport_err": 1.764265686323353,
+    "mean_abs_lam": 3.415391044419052
+   },
+   "4": {
+    "decay_r": 1.0,
+    "window": 12,
+    "learned_raw_window_err": 0.5825965405006345,
+    "shared_transport_err": 0.0002163374684905239,
+    "mean_abs_lam": 1.5793332846024064
+   }
+  },
+  "passed": true
+ },
+ "C2_mode_horizon": {
+  "decay_r": [
+   0.02,
+   0.05,
+   0.2,
+   0.5,
+   1.0,
+   3.0
+  ],
+  "max_abs_a": [
+   1.0,
+   1.0,
+   0.9999,
+   0.9998,
+   0.9997,
+   0.999
+  ],
+  "by_H": {
+   "2": {
+    "err_by_mode": [
+     16.254932,
+     7.947448,
+     5.292451,
+     2.615717,
+     1.505118,
+     0.361605
+    ],
+    "bound_by_mode": [
+     494382.174366,
+     195937.396593,
+     53037.266955,
+     19370.879449,
+     9511.563594,
+     3350.051153
+    ],
+    "holds": true
+   },
+   "8": {
+    "err_by_mode": [
+     13.919766,
+     4.956419,
+     1.749107,
+     0.398659,
+     0.028761,
+     3.5e-05
+    ],
+    "bound_by_mode": [
+     494361.793296,
+     195917.203256,
+     53015.406221,
+     19350.925048,
+     9491.977514,
+     3329.398603
+    ],
+    "holds": true
+   },
+   "32": {
+    "err_by_mode": [
+     7.292571,
+     1.953187,
+     0.026153,
+     1.3e-05,
+     0.0,
+     0.0
+    ],
+    "bound_by_mode": [
+     494280.277418,
+     195836.450718,
+     52928.053352,
+     19271.312788,
+     9414.035679,
+     3248.053774
+    ],
+    "holds": true
+   }
+  },
+  "passed": true
+ },
+ "C3_delayed_packets": {
+  "packets": 20100,
+  "max_abs_err": 1.1200054012449448e-14,
+  "passed": true
+ },
+ "C4_send_on_delta": {
+  "by_kappa": {
+   "0.0": {
+    "messages": 1200,
+    "of": 1200,
+    "max_abs_err": 0.0,
+    "bound": 0.0,
+    "holds": true
+   },
+   "1.0": {
+    "messages": 952,
+    "of": 1200,
+    "max_abs_err": 0.12425115055795466,
+    "bound": 1.0,
+    "holds": true
+   },
+   "3.0": {
+    "messages": 528,
+    "of": 1200,
+    "max_abs_err": 0.3133174639436902,
+    "bound": 3.0,
+    "holds": true
+   },
+   "10.0": {
+    "messages": 145,
+    "of": 1200,
+    "max_abs_err": 7.863991841565813,
+    "bound": 10.0,
+    "holds": true
+   }
+  },
+  "passed": true
+ },
+ "C5_optimal_delay": {
+  "decay_r": [
+   0.02,
+   0.05,
+   0.2,
+   0.5,
+   1.0,
+   3.0
+  ],
+  "d_star": [
+   40.1453,
+   28.6089,
+   12.6568,
+   6.6262,
+   3.9219,
+   1.6361
+  ],
+  "grid_argmin": [
+   40.145,
+   28.609,
+   12.657,
+   6.626,
+   3.922,
+   1.6360000000000001
+  ],
+  "d_times_r": [
+   0.803,
+   1.43,
+   2.531,
+   3.313,
+   3.922,
+   4.908
+  ],
+  "passed": true
+ },
+ "all_passed": true,
+ "source_sha256": {
+  "experiments/credit/sftc_math.py": "f14d0d37d113f27945523ea6bb84fddc9271cd536d18a0b3e6f9e5822abcdc21"
+ },
+ "scope": "Analytic/numerical witnesses for note 164; synthetic complex diagonal memory; no fitting, no data"
+}
