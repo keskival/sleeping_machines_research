@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_logspread_decision_20261010T2004Z",
+  "battle": "B4 development",
+  "stage": "logspread_update_decision",
+  "recovered_update_gate": true,
+  "epochs_run": 5,
+  "skipped_updates": 0,
+  "val": {
+    "L_T": -166.50778071792388,
+    "L_M": 89.78317690039074,
+    "total": -76.72460381753315,
+    "sequences": 34
+  },
+  "wall_s": 225.29579091072083,
+  "decision": "Recovered updates in five-pass pilot; next requires completed development quality fit.",
+  "scope": "One fresh seed, five-pass TRAIN/DEV numerical development; frozen B4 benchmark unchanged.",
+  "input": {
+    "path": "experiments/results/tpp_b4/aws_b4_logspread_pilot_20261010T2003Z.json",
+    "sha256": "9e8a1c42509a96489abefad94eb6a16b4f216a6aed84c6e207155f062284f8ca"
+  },
+  "source_sha256": {
+    "experiments/tpp/summarize_b4_logspread.py": "d946bf002bf7704df4f1f3d5300d4dd16746b274700bf17c18c23b6e88b3167d"
+  }
+}
