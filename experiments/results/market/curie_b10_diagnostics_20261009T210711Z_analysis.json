@@ -1,0 +1,525 @@
+{
+  "status": "completed",
+  "tag": "curie_b10_diagnostics_20261009T210711Z_analysis",
+  "battle": "B10",
+  "evidence_level": "first-pass development diagnostics",
+  "rows": {
+    "poisson": {
+      "tag": "curie_b10_poisson_dev_s0_20261009T1800Z",
+      "groups": {
+        "all": {
+          "targets": 677376,
+          "time_ll": -12.353985897283842,
+          "mark_ll": -1.349672792101589,
+          "total_ll": -13.70365868938543
+        },
+        "gap:zero": {
+          "targets": 323867,
+          "time_ll": -11.735481799006084,
+          "mark_ll": -1.0776468461632966,
+          "total_ll": -12.813128645169382
+        },
+        "gap:positive_lt_10us": {
+          "targets": 3907,
+          "time_ll": -11.73551936817813,
+          "mark_ll": -1.7948257698712842,
+          "total_ll": -13.530345138049414
+        },
+        "gap:10us_to_1ms": {
+          "targets": 57392,
+          "time_ll": -11.73790555243415,
+          "mark_ll": -1.7372894874455196,
+          "total_ll": -13.47519503987967
+        },
+        "gap:1ms_to_100ms": {
+          "targets": 171383,
+          "time_ll": -11.938798985286402,
+          "mark_ll": -1.621304896606825,
+          "total_ll": -13.560103881893227
+        },
+        "gap:100ms_or_longer": {
+          "targets": 120827,
+          "time_ll": -14.913376407820468,
+          "mark_ll": -1.495019378571921,
+          "total_ll": -16.40839578639239
+        },
+        "mark:0": {
+          "targets": 224573,
+          "time_ll": -12.198284390067313,
+          "mark_ll": -1.0507445012482628,
+          "total_ll": -13.249028891315577
+        },
+        "mark:1": {
+          "targets": 118022,
+          "time_ll": -12.806163668622416,
+          "mark_ll": -1.7335290055197385,
+          "total_ll": -14.539692674142156
+        },
+        "mark:2": {
+          "targets": 1536,
+          "time_ll": -12.132397420004265,
+          "mark_ll": -5.7917977153714775,
+          "total_ll": -17.924195135375744
+        },
+        "mark:3": {
+          "targets": 1918,
+          "time_ll": -12.215851303940049,
+          "mark_ll": -5.818430182519133,
+          "total_ll": -18.034281486459182
+        },
+        "mark:4": {
+          "targets": 98451,
+          "time_ll": -12.653182843701835,
+          "mark_ll": -2.028079284554735,
+          "total_ll": -14.68126212825657
+        },
+        "mark:5": {
+          "targets": 232876,
+          "time_ll": -12.151081747137637,
+          "mark_ll": -1.0904952336425766,
+          "total_ll": -13.241576980780215
+        },
+        "same_side": {
+          "targets": 576213,
+          "time_ll": -12.120540646864239,
+          "mark_ll": -1.3842873620550047,
+          "total_ll": -13.504828008919242
+        },
+        "changed_side": {
+          "targets": 101163,
+          "time_ll": -13.683663626098031,
+          "mark_ll": -1.1525121187667975,
+          "total_ll": -14.836175744864828
+        }
+      },
+      "days": {
+        "2026-08-25": {
+          "targets": 142464,
+          "time_ll": -12.16305305841883,
+          "mark_ll": -1.313979598327476,
+          "total_ll": -13.477032656746307
+        },
+        "2026-08-26": {
+          "targets": 97664,
+          "time_ll": -12.343850658773743,
+          "mark_ll": -1.3191797579125941,
+          "total_ll": -13.663030416686336
+        },
+        "2026-08-27": {
+          "targets": 105728,
+          "time_ll": -12.26055773174757,
+          "mark_ll": -1.3561977340316083,
+          "total_ll": -13.616755465779177
+        },
+        "2026-08-28": {
+          "targets": 112000,
+          "time_ll": -12.294395879040934,
+          "mark_ll": -1.3400895728517996,
+          "total_ll": -13.634485451892733
+        },
+        "2026-08-29": {
+          "targets": 49280,
+          "time_ll": -12.881377011223611,
+          "mark_ll": -1.4000610160260059,
+          "total_ll": -14.281438027249617
+        },
+        "2026-08-30": {
+          "targets": 64512,
+          "time_ll": -12.699929410592178,
+          "mark_ll": -1.3831148657823265,
+          "total_ll": -14.083044276374505
+        },
+        "2026-08-31": {
+          "targets": 105728,
+          "time_ll": -12.32027313428293,
+          "mark_ll": -1.3856705562906546,
+          "total_ll": -13.705943690573585
+        }
+      },
+      "saved_validation_reproduction_error": 0.0
+    },
+    "hawkes": {
+      "tag": "curie_b10_hawkes_dev_s0_20261009T1800Z",
+      "groups": {
+        "all": {
+          "targets": 677376,
+          "time_ll": -8.396730927103457,
+          "mark_ll": -0.7203883651677715,
+          "total_ll": -9.117119292271228
+        },
+        "gap:zero": {
+          "targets": 323867,
+          "time_ll": -3.6298311756768022,
+          "mark_ll": -0.15430655576556163,
+          "total_ll": -3.784137731442364
+        },
+        "gap:positive_lt_10us": {
+          "targets": 3907,
+          "time_ll": -4.756065543737719,
+          "mark_ll": -1.4150863287315014,
+          "total_ll": -6.1711518724692205
+        },
+        "gap:10us_to_1ms": {
+          "targets": 57392,
+          "time_ll": -8.263222456570656,
+          "mark_ll": -1.2706473834403882,
+          "total_ll": -9.533869840011043
+        },
+        "gap:1ms_to_100ms": {
+          "targets": 171383,
+          "time_ll": -12.776043177484427,
+          "mark_ll": -1.126415148810589,
+          "total_ll": -13.902458326295017
+        },
+        "gap:100ms_or_longer": {
+          "targets": 120827,
+          "time_ll": -15.143470051486945,
+          "mark_ll": -1.3779771374145624,
+          "total_ll": -16.521447188901508
+        },
+        "mark:0": {
+          "targets": 224573,
+          "time_ll": -6.771920561066599,
+          "mark_ll": -0.5553691773388857,
+          "total_ll": -7.327289738405486
+        },
+        "mark:1": {
+          "targets": 118022,
+          "time_ll": -12.108097878170145,
+          "mark_ll": -0.9568937231994833,
+          "total_ll": -13.06499160136963
+        },
+        "mark:2": {
+          "targets": 1536,
+          "time_ll": -15.459995092713248,
+          "mark_ll": -3.998300791745695,
+          "total_ll": -19.458295884458945
+        },
+        "mark:3": {
+          "targets": 1918,
+          "time_ll": -14.781588731768924,
+          "mark_ll": -4.086869417635217,
+          "total_ll": -18.868458149404145
+        },
+        "mark:4": {
+          "targets": 98451,
+          "time_ll": -12.01683468158933,
+          "mark_ll": -1.1439955522699496,
+          "total_ll": -13.16083023385928
+        },
+        "mark:5": {
+          "targets": 232876,
+          "time_ll": -6.453067442126858,
+          "mark_ll": -0.5312305446084389,
+          "total_ll": -6.984297986735296
+        },
+        "same_side": {
+          "targets": 576213,
+          "time_ll": -7.389205279431176,
+          "mark_ll": -0.5434449376422614,
+          "total_ll": -7.932650217073438
+        },
+        "changed_side": {
+          "targets": 101163,
+          "time_ll": -14.135483000709305,
+          "mark_ll": -1.728238104744067,
+          "total_ll": -15.863721105453374
+        }
+      },
+      "days": {
+        "2026-08-25": {
+          "targets": 142464,
+          "time_ll": -7.674319408896094,
+          "mark_ll": -0.6507629896224585,
+          "total_ll": -8.325082398518553
+        },
+        "2026-08-26": {
+          "targets": 97664,
+          "time_ll": -7.856023472878502,
+          "mark_ll": -0.6332791914139967,
+          "total_ll": -8.489302664292499
+        },
+        "2026-08-27": {
+          "targets": 105728,
+          "time_ll": -8.21918692753982,
+          "mark_ll": -0.6863952913038562,
+          "total_ll": -8.905582218843676
+        },
+        "2026-08-28": {
+          "targets": 112000,
+          "time_ll": -8.117836494967754,
+          "mark_ll": -0.6806700735412988,
+          "total_ll": -8.798506568509055
+        },
+        "2026-08-29": {
+          "targets": 49280,
+          "time_ll": -10.929376298112722,
+          "mark_ll": -1.042775988555398,
+          "total_ll": -11.972152286668118
+        },
+        "2026-08-30": {
+          "targets": 64512,
+          "time_ll": -9.052646233690137,
+          "mark_ll": -0.7894874744114728,
+          "total_ll": -9.842133708101612
+        },
+        "2026-08-31": {
+          "targets": 105728,
+          "time_ll": -8.761910099910347,
+          "mark_ll": -0.7783108115088845,
+          "total_ll": -9.540220911419231
+        }
+      },
+      "saved_validation_reproduction_error": 1.2434497875801753e-14
+    },
+    "race": {
+      "tag": "curie_b10_race_dev_s0_20261009T1800Z",
+      "groups": {
+        "all": {
+          "targets": 677376,
+          "time_ll": -6.5018424861393775,
+          "mark_ll": -0.38040204128363897,
+          "total_ll": -6.882244527423016
+        },
+        "gap:zero": {
+          "targets": 323867,
+          "time_ll": -0.3909073903163069,
+          "mark_ll": -0.03514253834732362,
+          "total_ll": -0.4260499286636305
+        },
+        "gap:positive_lt_10us": {
+          "targets": 3907,
+          "time_ll": -6.493702482011814,
+          "mark_ll": -0.8042651144828431,
+          "total_ll": -7.297967596494658
+        },
+        "gap:10us_to_1ms": {
+          "targets": 57392,
+          "time_ll": -8.313357191782593,
+          "mark_ll": -0.4879953398440843,
+          "total_ll": -8.801352531626677
+        },
+        "gap:1ms_to_100ms": {
+          "targets": 171383,
+          "time_ll": -11.895971020915173,
+          "mark_ll": -0.7353948246586567,
+          "total_ll": -12.63136584557383
+        },
+        "gap:100ms_or_longer": {
+          "targets": 120827,
+          "time_ll": -14.370395351089279,
+          "mark_ll": -0.7375027193303059,
+          "total_ll": -15.107898070419585
+        },
+        "mark:0": {
+          "targets": 224573,
+          "time_ll": -4.227881570014237,
+          "mark_ll": -0.2724364659847003,
+          "total_ll": -4.500318035998937
+        },
+        "mark:1": {
+          "targets": 118022,
+          "time_ll": -11.684127821864267,
+          "mark_ll": -0.45243282895559156,
+          "total_ll": -12.13656065081986
+        },
+        "mark:2": {
+          "targets": 1536,
+          "time_ll": -12.049760652183272,
+          "mark_ll": -3.496679670783589,
+          "total_ll": -15.546440322966859
+        },
+        "mark:3": {
+          "targets": 1918,
+          "time_ll": -12.18174999371374,
+          "mark_ll": -3.567259932824777,
+          "total_ll": -15.749009926538518
+        },
+        "mark:4": {
+          "targets": 98451,
+          "time_ll": -11.434880371063544,
+          "mark_ll": -0.6515706917501051,
+          "total_ll": -12.08645106281365
+        },
+        "mark:5": {
+          "targets": 232876,
+          "time_ll": -3.8994633968936365,
+          "mark_ll": -0.2865714826903425,
+          "total_ll": -4.186034879583979
+        },
+        "same_side": {
+          "targets": 576213,
+          "time_ll": -5.294956963921661,
+          "mark_ll": -0.2670185111360772,
+          "total_ll": -5.561975475057738
+        },
+        "changed_side": {
+          "targets": 101163,
+          "time_ll": -13.376125844814378,
+          "mark_ll": -1.0262217980812522,
+          "total_ll": -14.402347642895629
+        }
+      },
+      "days": {
+        "2026-08-25": {
+          "targets": 142464,
+          "time_ll": -5.556532105341299,
+          "mark_ll": -0.3475041651964028,
+          "total_ll": -5.904036270537702
+        },
+        "2026-08-26": {
+          "targets": 97664,
+          "time_ll": -5.8010377408357074,
+          "mark_ll": -0.3281879341968352,
+          "total_ll": -6.129225675032542
+        },
+        "2026-08-27": {
+          "targets": 105728,
+          "time_ll": -6.262307176684361,
+          "mark_ll": -0.3634918840846611,
+          "total_ll": -6.625799060769022
+        },
+        "2026-08-28": {
+          "targets": 112000,
+          "time_ll": -6.164705132334749,
+          "mark_ll": -0.3604741211361444,
+          "total_ll": -6.525179253470893
+        },
+        "2026-08-29": {
+          "targets": 49280,
+          "time_ll": -9.60695220117091,
+          "mark_ll": -0.5336899530721569,
+          "total_ll": -10.140642154243068
+        },
+        "2026-08-30": {
+          "targets": 64512,
+          "time_ll": -7.410920428891537,
+          "mark_ll": -0.40665544540843157,
+          "total_ll": -7.817575874299969
+        },
+        "2026-08-31": {
+          "targets": 105728,
+          "time_ll": -7.017645514286631,
+          "mark_ll": -0.4235156708844425,
+          "total_ll": -7.441161185171073
+        }
+      },
+      "saved_validation_reproduction_error": 8.881784197001252e-16
+    }
+  },
+  "race_minus_hawkes": {
+    "all": {
+      "targets": 677376,
+      "time_delta": 1.8948884409640794,
+      "mark_delta": 0.3399863238841325,
+      "total_delta": 2.234874764848212
+    },
+    "gap:zero": {
+      "targets": 323867,
+      "time_delta": 3.2389237853604955,
+      "mark_delta": 0.11916401741823801,
+      "total_delta": 3.3580878027787335
+    },
+    "gap:positive_lt_10us": {
+      "targets": 3907,
+      "time_delta": -1.737636938274095,
+      "mark_delta": 0.6108212142486583,
+      "total_delta": -1.1268157240254375
+    },
+    "gap:10us_to_1ms": {
+      "targets": 57392,
+      "time_delta": -0.05013473521193745,
+      "mark_delta": 0.7826520435963039,
+      "total_delta": 0.7325173083843666
+    },
+    "gap:1ms_to_100ms": {
+      "targets": 171383,
+      "time_delta": 0.8800721565692537,
+      "mark_delta": 0.3910203241519322,
+      "total_delta": 1.2710924807211867
+    },
+    "gap:100ms_or_longer": {
+      "targets": 120827,
+      "time_delta": 0.7730747003976663,
+      "mark_delta": 0.6404744180842565,
+      "total_delta": 1.4135491184819227
+    },
+    "mark:0": {
+      "targets": 224573,
+      "time_delta": 2.5440389910523624,
+      "mark_delta": 0.2829327113541854,
+      "total_delta": 2.8269717024065484
+    },
+    "mark:1": {
+      "targets": 118022,
+      "time_delta": 0.4239700563058779,
+      "mark_delta": 0.5044608942438917,
+      "total_delta": 0.928430950549771
+    },
+    "mark:2": {
+      "targets": 1536,
+      "time_delta": 3.410234440529976,
+      "mark_delta": 0.5016211209621062,
+      "total_delta": 3.911855561492086
+    },
+    "mark:3": {
+      "targets": 1918,
+      "time_delta": 2.5998387380551833,
+      "mark_delta": 0.5196094848104402,
+      "total_delta": 3.1194482228656266
+    },
+    "mark:4": {
+      "targets": 98451,
+      "time_delta": 0.5819543105257861,
+      "mark_delta": 0.4924248605198446,
+      "total_delta": 1.0743791710456296
+    },
+    "mark:5": {
+      "targets": 232876,
+      "time_delta": 2.553604045233221,
+      "mark_delta": 0.2446590619180964,
+      "total_delta": 2.7982631071513167
+    },
+    "same_side": {
+      "targets": 576213,
+      "time_delta": 2.0942483155095157,
+      "mark_delta": 0.2764264265061842,
+      "total_delta": 2.3706747420156997
+    },
+    "changed_side": {
+      "targets": 101163,
+      "time_delta": 0.7593571558949268,
+      "mark_delta": 0.7020163066628147,
+      "total_delta": 1.461373462557745
+    }
+  },
+  "inputs": {
+    "experiments/results/market/curie_b10_poisson_dev_s0_20261009T1800Z.json": "2cca3b73fdebdb5b6a1bc5fc4ab608e52623470e9ce6acfd5f4d61ce4c655019",
+    "experiments/results/market/curie_b10_hawkes_dev_s0_20261009T1800Z.json": "e377a1e8ef04cd121890cf3fff8fd8a566db451806369eef051afdb8032e2e60",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_poisson_dev_s0_20261009T1800Z.pt": "1193aee6dc68c43c85bba2c124497848fc986c8494abc5e2c40fa23793c3cddd",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486",
+    "data/binance/npz/2026-08-26.npz": "c64f95ce42f779e899a04b30e0959147b0af14c863b512b952a5a01ce272a782",
+    "data/binance/npz/2026-08-27.npz": "6c86da1135ebd86fc46964e5ccfd7750d2ad829dc2166548de1e52ea30f2bba3",
+    "data/binance/npz/2026-08-28.npz": "9b58a23f5bf4a6d5f5965eb2ae16a3af064e074dbe48afafcedf9050e086fc1c",
+    "data/binance/npz/2026-08-29.npz": "2f964b324584f1bec20b36bb5f415f4eb3a0cc6725bb869118b6e44cfcb577b3",
+    "data/binance/npz/2026-08-30.npz": "487477492fbbc2d5cdd2d861c8cc1b2b7da87ffe646388b9676817258508a4e0",
+    "data/binance/npz/2026-08-31.npz": "93e23db32350d2bff938a4f412c4652d642fbeb6ba38aaeb6b2c4f089e25a734",
+    "experiments/results/market/curie_b10_hawkes_dev_s0_20261009T1800Z.pt": "8dd0caa49b2742ece40b110b5367b889885b3502886576a3af5ee2c496a09647",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a"
+  },
+  "scoring": "exact registered validation windows; 896 scored targets/window; nats/scored target",
+  "test": "sealed; no test data accessed",
+  "wall_s": 17.768381357192993,
+  "max_rss_kb": 389276,
+  "hardware": {
+    "host": "curie",
+    "threads": 1
+  },
+  "source_sha256": {
+    "experiments/market/analyze_b10_dev.py": "2e9cda8c186011f688ce249061c5180a46591f6bdeed69ea5e4c0ca59586a18b",
+    "experiments/market/b10_components.py": "5e94775c7fe16e1a1188dc28f4e8ae654c6601fffc2e7c21686159bdb171b908",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
