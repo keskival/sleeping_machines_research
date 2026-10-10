@@ -40,6 +40,11 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   at 4× the data 5.510 vs 6.100, so the lead grows with data.
 - **Binding and recall:** associative recall across irregular gaps 97.5% (3 seeds) vs a 14% baseline, 91.6% at twice the
   training length; **learning through the race alone** (no backpropagation into the network) reaches 77%.
+- **Learning without a backward sweep or weight transport:** a race-of-clocks event model learns from each event as it
+  arrives, with exact memory credit carried forward (no stored history). On Taxi development data at the same 20 data
+  passes it scores 0.4805 nats/event vs 0.4557 for backpropagation through time (3 seeds). Separate backward weights
+  trained by the forward pass's own updates align to the exact dual (cosine 1.000) and learn as well as shared weights
+  (0.4715 vs 0.4736); fixed random feedback fails (0.17). This is the learning half of clockless hardware.
 - **Generative mode:** the same race-of-clocks model samples realistic event streams exactly (no rejection), for simulation,
   what-if analysis and synthetic data; taxi streams match real timing (gap KS 0.014 vs 0.063 naive) and event-to-event
   structure (0.024 vs 0.53).
@@ -138,7 +143,7 @@ measures whether the advantage widens with scale.
 | Persistent deep event representations | Maintain context across observations and compute from incoming messages plus stored state | Integrated language/event models learn; latest language scores use segment resets, not demonstrated indefinite memory |
 | Capacity beyond selected activity | More useful state or skills at bounded selected work | Doubling p32 receiver slots improves quality at eight writes per input; key scoring, learning and storage grow |
 | Counterfactual route credit | Train sparse hard choices and deepen useful computation without dense inference | Alternative-value credit improves completed depth-4 and depth-8 language fits; training alternatives still cost work |
-| Event-driven, globally clockless, memory-local hardware | Energy from sparse local memory access (data movement dominates AI-chip energy) plus no clock tree and leakage-only idle capacity; average-case latency; thermal headroom for memory-on-logic stacking; a competitive model for the existing neuromorphic chip class ([hardware thesis](HARDWARE_THESIS.md)) | Mechanisms and energy accounting derived; no fabricated Sleeping Machines chip or measured joule advantage; local on-chip learning rule open |
+| Event-driven, globally clockless, memory-local hardware | Energy from sparse local memory access (data movement dominates AI-chip energy) plus no clock tree and leakage-only idle capacity; average-case latency; thermal headroom for memory-on-logic stacking; a competitive model for the existing neuromorphic chip class ([hardware thesis](HARDWARE_THESIS.md)) | Mechanisms and energy accounting derived; no fabricated Sleeping Machines chip or measured joule advantage; a fully local learning rule (per-event traces + mutually trained feedback) works in software on Taxi development data, on-chip execution open |
 | Online learning | Adapt to users, environments and drift near the point of use | Causal full-backbone CPU pilot improves predictions; stable continual learning and on-chip optimizer execution remain open |
 | Computation during silence | Preserve relevant temporal evolution without periodic scans; reason about absence when needed | Temporal algebra and silence-aware supervision are part of the research; deadlines, readouts and physical retention are paid |
 | Models and substrate developed together | Align learning, memory, execution and physical implementation rather than optimize one cost in isolation | Shared theory, implementations, contracts and audited results exist; an integrated commercial stack is still to be delivered |
