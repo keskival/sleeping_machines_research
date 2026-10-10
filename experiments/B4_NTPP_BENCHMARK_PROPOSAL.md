@@ -241,6 +241,8 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 
 **Reading.** The per-event mark memory is a robust gain (≈ 5.5 nats per sequence over the window, 3.9 of it in marks and 1.5 in time). Statistics on top of it (+0.17) and width 48 (+0.3) are within selection noise; doubling the delayed clocks does nothing for MOOC time (−306.27 vs −306.34), consistent with the LNM audit's finding that the remaining MOOC time gap is recording-grid scoring rather than missing temporal capacity. Leading developed configuration: `--mark-mem 1` (simplest); the LastFM stats arms decide whether `--mark-stats` is added. Future arm comparisons use windowed means or more than one seed.
 
+**v21 `ln32` + mark memory + statistics (10 Oct 06:00, MOOC split 0, VALIDATION).** Best epoch 28 of 59 (early patience stop), 134,355 parameters: −307.79 / 70.05 / −237.75, no better than `--mark-mem 1` alone (best −238.57). With the `ln16` null result, more delayed clocks do not move MOOC time with or without the mark pathways. MOOC development arms are complete: `--mark-mem 1` is the developed mark configuration; the LastFM stats arms remain.
+
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
 A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
