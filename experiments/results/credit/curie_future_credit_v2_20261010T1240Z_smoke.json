@@ -1,0 +1,214 @@
+{
+  "status": "completed",
+  "tag": "curie_future_credit_v2_20261010T1240Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_future_credit_v2_20261010T1240Z_smoke",
+    "mode": "smoke",
+    "seed": 170,
+    "depth": 2,
+    "pairs": 2,
+    "steps": 2,
+    "proposal_steps": 2,
+    "train_packets": 2,
+    "dev_packets": 2
+  },
+  "training": true,
+  "decision": "Does increased TRAIN diversity yield conditional future credit beyond a TRAIN-fitted constant action, before deep coupled learning?",
+  "metrics": {
+    "arms": [
+      {
+        "arm": "isolated",
+        "critic_parameters": 7297,
+        "train": {
+          "relative_mse": 0.9989876639247764,
+          "frozen_relative_mse": 1.0096402237795603,
+          "zero_prediction_relative_mse": 1.0,
+          "selected_future_advantage": -0.0015202048357844944,
+          "oracle_in_fixed_pool": -0.01874513869507649,
+          "uniform_pool_future_advantage": 0.00032682866559570326,
+          "chosen_advantages": [
+            0.00656083736620694,
+            -0.009601247037775928
+          ],
+          "squared_error_by_packet": [
+            0.0003961732253222928,
+            2.2720717638055846e-05
+          ]
+        },
+        "dev": {
+          "relative_mse": 1.0003961146572689,
+          "frozen_relative_mse": 1.0037002095398284,
+          "zero_prediction_relative_mse": 1.0,
+          "selected_future_advantage": 0.00011186577251003083,
+          "oracle_in_fixed_pool": -0.021445241113123334,
+          "uniform_pool_future_advantage": 0.0005791081889755007,
+          "chosen_advantages": [
+            -0.022465916928852553,
+            0.022689648473872615
+          ],
+          "squared_error_by_packet": [
+            0.00015869446530131071,
+            0.00014950181248259644
+          ],
+          "versus_context_free": {
+            "mean_squared_error_reduction": 4.955847949060013e-05,
+            "mse_reduction_bootstrap95": [
+              3.0376558921363437e-05,
+              6.874040005983682e-05
+            ],
+            "mean_future_loss_reduction": -0.003664151108548175,
+            "future_loss_reduction_bootstrap95": [
+              -0.03438544135187338,
+              0.02705713913477703
+            ],
+            "scope": "Paired DEV-context bootstrap conditional on this fixed teacher, fitted models and TRAIN reference; not seed uncertainty."
+          }
+        }
+      },
+      {
+        "arm": "connected",
+        "critic_parameters": 7361,
+        "train": {
+          "relative_mse": 0.9897837808635879,
+          "frozen_relative_mse": 0.9971530497377084,
+          "zero_prediction_relative_mse": 1.0,
+          "selected_future_advantage": -0.007322565146865911,
+          "oracle_in_fixed_pool": -0.01874513869507649,
+          "uniform_pool_future_advantage": 0.00032682866559570326,
+          "chosen_advantages": [
+            -0.0150551961449652,
+            0.0004100658512333766
+          ],
+          "squared_error_by_packet": [
+            0.0003925289827292674,
+            2.2505602397872174e-05
+          ]
+        },
+        "dev": {
+          "relative_mse": 0.9956882641567033,
+          "frozen_relative_mse": 0.9984690804623727,
+          "zero_prediction_relative_mse": 1.0,
+          "selected_future_advantage": -0.0020511853933202623,
+          "oracle_in_fixed_pool": -0.021445241113123334,
+          "uniform_pool_future_advantage": 0.0005791081889755007,
+          "chosen_advantages": [
+            -0.00832785019051488,
+            0.004225479403874355
+          ],
+          "squared_error_by_packet": [
+            0.00015994724432322394,
+            0.0001467986659718666
+          ],
+          "versus_context_free": {
+            "mean_squared_error_reduction": 5.028366323500844e-05,
+            "mse_reduction_bootstrap95": [
+              2.912377989945021e-05,
+              7.144354657056667e-05
+            ],
+            "mean_future_loss_reduction": -0.0015010999427178817,
+            "future_loss_reduction_bootstrap95": [
+              -0.01592127228187512,
+              0.012919072396439357
+            ],
+            "scope": "Paired DEV-context bootstrap conditional on this fixed teacher, fitted models and TRAIN reference; not seed uncertainty."
+          }
+        },
+        "learned_pool": {
+          "proposal_parameters": 1188,
+          "radius": 0.25,
+          "fixed_candidates": 9,
+          "augmented_candidates": 10,
+          "proposal_realized_advantages": [
+            -0.0012776166202781852,
+            -0.001123167218324339
+          ],
+          "selected_future_advantage": -0.0020511853933202623,
+          "chosen_advantages": [
+            -0.00832785019051488,
+            0.004225479403874355
+          ],
+          "mean_pool_coverage_improvement": 0.0,
+          "mean_selection_regret": 0.01939405571980307,
+          "scope": "Bounded critic-trained proposal; actual held-out branches check critic exploitation. Basis candidates retained. Extra discovery/evaluation charged."
+        }
+      }
+    ],
+    "training_histories": {
+      "isolated": [
+        1.0096402237795603,
+        1.0045653138750417
+      ],
+      "connected": [
+        0.9971530497377084,
+        0.9934733811615268
+      ]
+    },
+    "target_scale_train_only": 0.014479613843922651,
+    "teacher_scored_targets": 320,
+    "train_packets": 2,
+    "dev_packets": 2,
+    "immediate_vs_future_best_action_disagreement": 1.0,
+    "scope": "Frozen initialized native actor; interventions in one addressed key write, not parameter learning or asynchronous scheduling. Connected/isolation parameter counts differ; no isolated connectivity or efficiency claim. Future labels supervise fitting only; DEV candidates selected before branch labels are consulted.",
+    "context_free_reference": {
+      "selected_action": 3,
+      "train_mean_values": [
+        0.0,
+        -0.012134246546684435,
+        0.0026866460708256656,
+        -0.015529176773446424,
+        -0.007322565146865911,
+        0.012571829290413866,
+        -0.0015202048357844944,
+        0.016603199849105493,
+        0.007585976082797569
+      ],
+      "dev_relative_mse": 1.3221268681057587,
+      "selected_future_advantage": -0.003552285336038144,
+      "chosen_advantages": [
+        0.004591222205924478,
+        -0.011695792878000766
+      ],
+      "scope": "One TRAIN-fitted mean advantage vector, same fixed action for every DEV context. No DEV tuning."
+    },
+    "train_seed_start": 270000,
+    "dev_seed_start": 370000,
+    "dev_branch_advantages": [
+      [
+        0.0,
+        -0.008599518937730796,
+        0.02463762815215302,
+        0.004591222205924478,
+        -0.00832785019051488,
+        0.010458795908144067,
+        -0.022465916928852553,
+        -0.002306628775842104,
+        0.008415956508222203
+      ],
+      [
+        0.0,
+        0.0042709631542445226,
+        -0.020424565297394115,
+        -0.011695792878000766,
+        0.004225479403874355,
+        -0.004158840581783729,
+        0.022689648473872615,
+        0.013139386495724048,
+        -0.004026019310481355
+      ]
+    ],
+    "registered_gate": "Report each seed: critic DEV MSE below TRAIN-mean reference and selected future loss below its fixed action. Three seeded replicates; bootstrap is context uncertainty only. No automatic scaling from TRAIN fit."
+  },
+  "wall_s": 2.4361401749993092,
+  "peak_rss_kb": 318728,
+  "supported_flops": 4436224,
+  "flop_scope": "Supported PyTorch formulas; excludes special/unsupported operations. All branch, critic and proposal work included; wall includes profiling.",
+  "source_sha256": {
+    "experiments/credit/future_route_critic_v2.py": "53268689d538e8effc22ead43f6f35978ab02729ce2079a2c30e8e313aa5cb2a",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}

@@ -1,0 +1,65 @@
+{
+ "status": "completed",
+ "battle": "B10",
+ "tag": "curie_b10_poisson_dev_s0_20261009T1800Z",
+ "model": "poisson",
+ "args": {
+  "tag": "curie_b10_poisson_dev_s0_20261009T1800Z",
+  "model": "poisson",
+  "seed": 0,
+  "epochs": 30,
+  "patience": 5,
+  "lr": 0.003,
+  "bs": 16,
+  "d": 32,
+  "n_ln": 8,
+  "train_every": 20,
+  "max_wall_s": 18000,
+  "score_test": false
+ },
+ "parameters": 6,
+ "train_windows": 801,
+ "val_windows": 756,
+ "best_val_ll_per_event": -13.70365868938543,
+ "history": [
+  {
+   "epoch": 0,
+   "train_ll": -14.094509102831905,
+   "val_ll": -13.70365868938543,
+   "elapsed_s": 4.563934564590454
+  },
+  {
+   "epoch": 1,
+   "train_ll": -14.094236661756298,
+   "val_ll": -13.705704897726486,
+   "elapsed_s": 4.656556844711304
+  },
+  {
+   "epoch": 2,
+   "train_ll": -14.094118494368667,
+   "val_ll": -13.707328103459952,
+   "elapsed_s": 4.752943515777588
+  },
+  {
+   "epoch": 3,
+   "train_ll": -14.094094364183848,
+   "val_ll": -13.709130014699848,
+   "elapsed_s": 4.842888355255127
+  },
+  {
+   "epoch": 4,
+   "train_ll": -14.094073769760852,
+   "val_ll": -13.70701106959139,
+   "elapsed_s": 4.933499574661255
+  },
+  {
+   "epoch": 5,
+   "train_ll": -14.094125955789375,
+   "val_ll": -13.709449474072548,
+   "elapsed_s": 5.023638725280762
+  }
+ ],
+ "test": "not scored (development run)",
+ "source_sha256": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+ "wall_s": 5.023936986923218
+}

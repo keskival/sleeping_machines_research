@@ -1,0 +1,193 @@
+{
+  "status": "completed",
+  "tag": "curie_future_credit_v2_20261010T1240Z_decision",
+  "battle": "R1/B1",
+  "training": false,
+  "decision": "Select the next development diagnosis from the registered conditional-credit gate; never declare an efficiency win",
+  "rows": [
+    {
+      "seed": 170,
+      "arm": "isolated",
+      "train_relative_mse": 0.2893335504790329,
+      "dev_relative_mse": 0.771171369703584,
+      "constant_relative_mse": 0.8453051762900893,
+      "dev_future_advantage": -0.015099304372338775,
+      "constant_future_advantage": -0.014388694872782559,
+      "mse_reduction": 2.4850393123577742e-05,
+      "loss_reduction": 0.0007106094995562189,
+      "mse_ci": [
+        -2.1463273799475016e-05,
+        7.059128688262275e-05
+      ],
+      "loss_ci": [
+        -0.003172615083020446,
+        0.004145709288432643
+      ],
+      "fitted": true,
+      "context_specific_point_signal": true,
+      "context_specific_context_ci_signal": false
+    },
+    {
+      "seed": 170,
+      "arm": "connected",
+      "train_relative_mse": 0.1516981872661226,
+      "dev_relative_mse": 0.7536534978348741,
+      "constant_relative_mse": 0.8453051762900893,
+      "dev_future_advantage": -0.017514902973623223,
+      "constant_future_advantage": -0.014388694872782559,
+      "mse_reduction": 3.072255890961396e-05,
+      "loss_reduction": 0.0031262081008406662,
+      "mse_ci": [
+        -5.1025635453065805e-05,
+        0.00010885998268767369
+      ],
+      "loss_ci": [
+        -0.0013086764986683767,
+        0.007808851659409002
+      ],
+      "fitted": true,
+      "context_specific_point_signal": true,
+      "context_specific_context_ci_signal": false
+    },
+    {
+      "seed": 171,
+      "arm": "isolated",
+      "train_relative_mse": 0.2894552850757137,
+      "dev_relative_mse": 0.637563905203515,
+      "constant_relative_mse": 0.6049247603739552,
+      "dev_future_advantage": -0.0226879578810516,
+      "constant_future_advantage": -0.023727506131052456,
+      "mse_reduction": -1.094698971356302e-05,
+      "loss_reduction": -0.0010395482500008503,
+      "mse_ci": [
+        -5.5842021168409275e-05,
+        3.6836939580640075e-05
+      ],
+      "loss_ci": [
+        -0.002912872108654733,
+        0.00038532560397613376
+      ],
+      "fitted": true,
+      "context_specific_point_signal": false,
+      "context_specific_context_ci_signal": false
+    },
+    {
+      "seed": 171,
+      "arm": "connected",
+      "train_relative_mse": 0.12816742364122968,
+      "dev_relative_mse": 0.7154938734270633,
+      "constant_relative_mse": 0.6049247603739552,
+      "dev_future_advantage": -0.02080553941627646,
+      "constant_future_advantage": -0.023727506131052456,
+      "mse_reduction": -3.7084272567519986e-05,
+      "loss_reduction": -0.0029219667147759943,
+      "mse_ci": [
+        -9.14972224372482e-05,
+        1.2707932962972752e-05
+      ],
+      "loss_ci": [
+        -0.005486038176839103,
+        -0.0007659935745004524
+      ],
+      "fitted": true,
+      "context_specific_point_signal": false,
+      "context_specific_context_ci_signal": false
+    },
+    {
+      "seed": 172,
+      "arm": "isolated",
+      "train_relative_mse": 0.3016979916654519,
+      "dev_relative_mse": 0.788128849603316,
+      "constant_relative_mse": 0.8872335484931875,
+      "dev_future_advantage": -0.010223919144929608,
+      "constant_future_advantage": -0.008124154125767623,
+      "mse_reduction": 2.101425447706731e-05,
+      "loss_reduction": 0.002099765019161985,
+      "mse_ci": [
+        -1.7251822279288924e-05,
+        5.941624935854886e-05
+      ],
+      "loss_ci": [
+        -0.0026863976859457022,
+        0.007080188302454846
+      ],
+      "fitted": true,
+      "context_specific_point_signal": true,
+      "context_specific_context_ci_signal": false
+    },
+    {
+      "seed": 172,
+      "arm": "connected",
+      "train_relative_mse": 0.19007555134931878,
+      "dev_relative_mse": 0.9295805462535031,
+      "constant_relative_mse": 0.8872335484931875,
+      "dev_future_advantage": -0.009531905402254306,
+      "constant_future_advantage": -0.008124154125767623,
+      "mse_reduction": -8.979297624060629e-06,
+      "loss_reduction": 0.0014077512764866828,
+      "mse_ci": [
+        -5.660365255896028e-05,
+        3.722332645349255e-05
+      ],
+      "loss_ci": [
+        -0.004180320123388997,
+        0.007071779518098416
+      ],
+      "fitted": true,
+      "context_specific_point_signal": false,
+      "context_specific_context_ci_signal": false
+    }
+  ],
+  "verdicts": [
+    {
+      "arm": "isolated",
+      "replicated_point_signal": false,
+      "all_context_intervals_positive": false,
+      "mean_mse_reduction": 1.163921929569401e-05,
+      "mean_loss_reduction": 0.0005902754229057845,
+      "decision": "diagnose_conditional_transfer_or_selection"
+    },
+    {
+      "arm": "connected",
+      "replicated_point_signal": false,
+      "all_context_intervals_positive": false,
+      "mean_mse_reduction": -5.113670427322218e-06,
+      "mean_loss_reduction": 0.0005373308875171182,
+      "decision": "diagnose_conditional_transfer_or_selection"
+    }
+  ],
+  "work": [
+    {
+      "seed": 170,
+      "whole_supported_flops": 13450518528,
+      "teacher_scored_target_presentations": 14912,
+      "wall_s": 77.68650799199895,
+      "peak_rss_kb": 376952
+    },
+    {
+      "seed": 171,
+      "whole_supported_flops": 13450518528,
+      "teacher_scored_target_presentations": 14912,
+      "wall_s": 78.67349718900005,
+      "peak_rss_kb": 375924
+    },
+    {
+      "seed": 172,
+      "whole_supported_flops": 13450518528,
+      "teacher_scored_target_presentations": 14912,
+      "wall_s": 78.53337236999869,
+      "peak_rss_kb": 362944
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/credit/curie_future_credit_v2_20261010T1240Z_pilot_s170.json": "f1f687b344ca72137a7f55e36074b83714b2fe26a0fd0f5aa7f9a45ce2efa0e1",
+    "experiments/results/credit/curie_future_credit_v2_20261010T1240Z_pilot_s171.json": "5a07b318408aac5b7041b8d2542823b31e5100cbb66b378b2efa6fb9352cdb0d",
+    "experiments/results/credit/curie_future_credit_v2_20261010T1240Z_pilot_s172.json": "ea282df7c3b75ca797b8d3183f01d74eb99d0cf6955646df6f5be543e5a01db4"
+  },
+  "source_sha256": {
+    "experiments/credit/summarize_future_credit.py": "de5abde7ddcb6ba15bc3fc3ea30788e8a5d8aee94bddc084829ec6c46ee10e8b"
+  },
+  "manifest_sha256": "94b8a4338a3cc780fefc426a7e54d62c4815efa5cf22bde8eb83646ba418adba",
+  "scope": "Frozen initialized native teachers; state interventions. Positive point improvements must repeat across all three seeds. Context bootstrap is conditional on each teacher/model, not a simultaneous or seed-level guarantee. Passing advances to coupled design, not automatic deep training.",
+  "completed_utc": "2026-10-10T14:27:40Z"
+}
