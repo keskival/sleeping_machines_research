@@ -1,0 +1,12 @@
+/workspace/experiments/credit/reciprocal_update_v1.py:243: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  plus=float(outer())
+{
+  "all_parameter_posterior_gradient_error": 6.938893903907228e-17,
+  "outer_meta_gradient_finite_difference_error": 7.35483202118914e-12,
+  "causal_target_independence": true,
+  "transport_semigroup_error": 1.1123893155135927e-16,
+  "elapsed_time_effect": 0.030329303590027334,
+  "selected_value_path_error": 0.0,
+  "future_evidence_meta_signal_difference": 0.074959044550254
+}
