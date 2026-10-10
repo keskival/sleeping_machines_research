@@ -1,0 +1,139 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (route credit, theory note 160)",
+ "tag": "aws_credit6_20261009T191619Z_dense",
+ "args": {
+  "tag": "aws_credit6_20261009T191619Z_dense",
+  "arm": "dense",
+  "depth": 2,
+  "K": 8,
+  "K2": 4,
+  "d": 16,
+  "C": 10,
+  "n_train": 20000,
+  "n_test": 5000,
+  "epochs": 10,
+  "batch": 64,
+  "lr": 0.003,
+  "sleep": 1,
+  "msg_dim": 4,
+  "dense_frac": 0.1,
+  "proposals": 2,
+  "credit_hidden": 64,
+  "snap": 50,
+  "q_every": 8,
+  "seed": 0,
+  "data_seed": 1234
+ },
+ "teacher_dev_marginal_ll": -1.5394467115402222,
+ "final_dev_marginal_ll": -2.038346767425537,
+ "final_route_purity": 0.1850000023841858,
+ "best_dev_marginal_ll": -2.0341758728027344,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_marginal_ll": -2.166980028152466,
+   "route_purity": 0.14839999377727509,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 1,
+   "dev_marginal_ll": -2.103799343109131,
+   "route_purity": 0.16859999299049377,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 2,
+   "dev_marginal_ll": -2.0712292194366455,
+   "route_purity": 0.17800000309944153,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 3,
+   "dev_marginal_ll": -2.0549800395965576,
+   "route_purity": 0.1826000064611435,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 4,
+   "dev_marginal_ll": -2.044811964035034,
+   "route_purity": 0.18400000035762787,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 5,
+   "dev_marginal_ll": -2.0388855934143066,
+   "route_purity": 0.1842000037431717,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 6,
+   "dev_marginal_ll": -2.036564350128174,
+   "route_purity": 0.18379999697208405,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 7,
+   "dev_marginal_ll": -2.035215139389038,
+   "route_purity": 0.18440000712871552,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 8,
+   "dev_marginal_ll": -2.0341758728027344,
+   "route_purity": 0.18379999697208405,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  },
+  {
+   "epoch": 9,
+   "dev_marginal_ll": -2.038346767425537,
+   "route_purity": 0.1850000023841858,
+   "expert_evals_per_example": 32.0,
+   "macs_per_example": 17280.0,
+   "optimizer_parameter_visits_per_example": 95.778
+  }
+ ],
+ "selection": "fixed final epoch for cross-arm comparison; best DEV is diagnostic only",
+ "final_credit_kl": null,
+ "final_credit_tv": null,
+ "expert_evals_per_example": 32.0,
+ "macs_per_example": 17280.0,
+ "whole_fit_linear_macs": 3456000000.0,
+ "wall_s": 4.365252256393433,
+ "data_sha256": "d5982a522c933f65c76d0ec57f7b3653e6516f78db6b18c12ff2278f5d0a7e16",
+ "evaluation_split": "synthetic development; no sealed benchmark test",
+ "mechanism_scope": "hard-route credit diagnostic; no temporal memory or integrated benchmark claim",
+ "work_convention": "leading-linear MAC estimate (3x for differentiated operations); nonlinear, sampling, bias and optimizer FLOPs excluded",
+ "optimizer_parameter_visits": 19155600,
+ "optimizer_parameter_visits_per_example": 95.778,
+ "evaluation_linear_macs": 288000000,
+ "evaluation_work_convention": "model marginal once, plus posterior and q once for credit arms; excludes teacher data generation and route-purity mapping",
+ "max_rss_kb": 414080,
+ "hardware": {
+  "host": "ip-172-31-47-132",
+  "cpu": "",
+  "threads": 1,
+  "torch": "2.14.0+cpu"
+ },
+ "source_sha256": {
+  "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+ }
+}
