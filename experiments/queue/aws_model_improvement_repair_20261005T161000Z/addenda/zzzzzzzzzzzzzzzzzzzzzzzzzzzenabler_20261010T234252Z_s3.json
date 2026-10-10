@@ -1,0 +1,150 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared learning enabler (note 160 sect. 7 generality): per-event trace learning with a linearly decaying step size vs BPTT with the same decay, 20/100 passes, amazon DEV, 3 seeds. Decides whether constant-step noise is why converged BPTT ends ahead on amazon",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "online5_amazon_smoke",
+        "queue": "experiments/queue/enabler/online5_amazon_smoke/online5_amazon_smoke.txt",
+        "queue_sha256": "9f0a204a6a2f3689ed41c66a25a5237f994ba1ca7c64cc489b6b803c603b8703",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_smoke.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e20_s0",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e20_s0/online5_amazon_trace_decay_e20_s0.txt",
+        "queue_sha256": "faffeda37163598156499b2c85c1837f54d36962d7724d0f70d6315130190e3c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e20_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_bptt_decay_e100_s0",
+        "queue": "experiments/queue/enabler/online5_amazon_bptt_decay_e100_s0/online5_amazon_bptt_decay_e100_s0.txt",
+        "queue_sha256": "7f89ca23c6a680e952440be245f132367336665fed9b67c7ffaf957defcc3af8",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_bptt_decay_e100_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e100_s0",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e100_s0/online5_amazon_trace_decay_e100_s0.txt",
+        "queue_sha256": "72ece699cfa95bfdd2d91786c831015b29b579fdc85f305b645f4625fbdca32a",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e100_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e20_s1",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e20_s1/online5_amazon_trace_decay_e20_s1.txt",
+        "queue_sha256": "e370262f5fff4f2563886d2297e638816006d5cc6c1ea39fccf193e33301db7f",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e20_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_bptt_decay_e100_s1",
+        "queue": "experiments/queue/enabler/online5_amazon_bptt_decay_e100_s1/online5_amazon_bptt_decay_e100_s1.txt",
+        "queue_sha256": "3d05d7aef64f1b644184011c303996b00c8d3ef4cdfe9c271cfc9b0a59706631",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_bptt_decay_e100_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e100_s1",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e100_s1/online5_amazon_trace_decay_e100_s1.txt",
+        "queue_sha256": "19138db634d6e4f18d25427bd3f2fc60d0548294fa82cbc7f2d6e99e6e036160",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e100_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e20_s2",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e20_s2/online5_amazon_trace_decay_e20_s2.txt",
+        "queue_sha256": "0b6cd58cd390712964cacb90669fdcd89222e89de979ac84d37a544cda83467d",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e20_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_bptt_decay_e100_s2",
+        "queue": "experiments/queue/enabler/online5_amazon_bptt_decay_e100_s2/online5_amazon_bptt_decay_e100_s2.txt",
+        "queue_sha256": "45d26fa34ed90770ddfc693b520a9978af83dfbd4aecc0a1bde9eef1777b6d8b",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_bptt_decay_e100_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_amazon_trace_decay_e100_s2",
+        "queue": "experiments/queue/enabler/online5_amazon_trace_decay_e100_s2/online5_amazon_trace_decay_e100_s2.txt",
+        "queue_sha256": "0ee7624716e814bfa0dbe2f6f049f80d2ac75c9afdea548b1596bb127581028a",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_amazon_trace_decay_e100_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

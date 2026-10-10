@@ -1,0 +1,150 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "ENABLER",
+  "purpose": "Shared learning enabler (note 160 sect. 7 generality): per-event trace learning with a linearly decaying step size vs BPTT with the same decay, 20/100 passes, stackoverflow DEV, 3 seeds. Decides whether constant-step noise is why converged BPTT ends ahead on stackoverflow",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "online5_stackoverflow_smoke",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_smoke/online5_stackoverflow_smoke.txt",
+        "queue_sha256": "a4097fabc63b65bebce8efc24c86162f45996f4690c063a92bc37ede4bd46a2f",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_smoke.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e20_s0",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e20_s0/online5_stackoverflow_trace_decay_e20_s0.txt",
+        "queue_sha256": "989e31bf77bc96d7c2492732b975da4bea2ad3a4035747bd7e97a443da640224",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e20_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_bptt_decay_e100_s0",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_bptt_decay_e100_s0/online5_stackoverflow_bptt_decay_e100_s0.txt",
+        "queue_sha256": "c143aea43de3042b70d02ec5aad47fbf84f24e9dee42bba562a311606e13a533",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_bptt_decay_e100_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e100_s0",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e100_s0/online5_stackoverflow_trace_decay_e100_s0.txt",
+        "queue_sha256": "a87612cdc315a8946289bacd69da3735176e033a1573982cf16f955b7c89a39c",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e100_s0.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e20_s1",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e20_s1/online5_stackoverflow_trace_decay_e20_s1.txt",
+        "queue_sha256": "2fa08cd375be19b18cd8c004ebe0d8f087c4881d6967cb18175c0fd01ea17bea",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e20_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_bptt_decay_e100_s1",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_bptt_decay_e100_s1/online5_stackoverflow_bptt_decay_e100_s1.txt",
+        "queue_sha256": "645dddd7d343dbae4577f40df26b630d2d2d5361916f43dbf24dd88fb450f71f",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_bptt_decay_e100_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e100_s1",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e100_s1/online5_stackoverflow_trace_decay_e100_s1.txt",
+        "queue_sha256": "9cc83fbde501ebc67168fe3640e1f6af7b35631a87cf44f597d515862271aabc",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e100_s1.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e20_s2",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e20_s2/online5_stackoverflow_trace_decay_e20_s2.txt",
+        "queue_sha256": "2baea3b8d8fe5131ab92e8e11f2d451033bc0811f61ec70d3854f6f770f36d24",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e20_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_bptt_decay_e100_s2",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_bptt_decay_e100_s2/online5_stackoverflow_bptt_decay_e100_s2.txt",
+        "queue_sha256": "48c03851c52c64cd61fadc37964901bfdc6014f5290e88fc2a14b663f63eecff",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_bptt_decay_e100_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      },
+      {
+        "name": "online5_stackoverflow_trace_decay_e100_s2",
+        "queue": "experiments/queue/enabler/online5_stackoverflow_trace_decay_e100_s2/online5_stackoverflow_trace_decay_e100_s2.txt",
+        "queue_sha256": "cd1b3dcaaabe1268e7285d2eddb286430e3c5a3b61bb081e0138602d33bf76a4",
+        "kind": "enabler_job",
+        "source_sha256": {
+          "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+          "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+        },
+        "result": "experiments/results/credit/online5_stackoverflow_trace_decay_e100_s2.json",
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
