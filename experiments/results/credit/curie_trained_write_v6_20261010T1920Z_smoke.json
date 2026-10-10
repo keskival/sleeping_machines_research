@@ -1,0 +1,78 @@
+{
+  "status": "completed",
+  "tag": "curie_trained_write_v6_20261010T1920Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_trained_write_v6_20261010T1920Z_smoke",
+    "seed": 170,
+    "mode": "smoke",
+    "prefixes": 4,
+    "rollouts": 2
+  },
+  "metrics": {
+    "arms": [
+      {
+        "arm": "free_gradient",
+        "mean_future_advantage": -0.017579372800129507,
+        "gain_vs_fixed_train_action": 0.013595924562076218,
+        "gain_vs_fixed_bootstrap95": [
+          -0.001202264654802416,
+          0.02839411377895485
+        ],
+        "gain_vs_noop": 0.017579372800129507,
+        "per_prefix_advantages": [
+          -0.010224027663569609,
+          -0.007397620653380399,
+          -0.010147909339815206,
+          -0.04254793354375282
+        ]
+      },
+      {
+        "arm": "structured_cotangent",
+        "mean_future_advantage": -0.02502848792945292,
+        "gain_vs_fixed_train_action": 0.021045039691399627,
+        "gain_vs_fixed_bootstrap95": [
+          0.0012660079518673033,
+          0.04082407143093195
+        ],
+        "gain_vs_noop": 0.02502848792945292,
+        "per_prefix_advantages": [
+          -0.028838785407988683,
+          -0.01093917684472401,
+          -0.016393066899350335,
+          -0.043942922565748645
+        ]
+      }
+    ],
+    "structured_gain_vs_free": 0.0074491151293234106,
+    "structured_gain_vs_free_bootstrap95": [
+      0.0024682726066697193,
+      0.01484645735615021
+    ],
+    "native_selected_write_parity_error": 3.2959746043559335e-16,
+    "retained_response_activation_elements": 112,
+    "proposal_dimension": 4,
+    "train_fixed_action": 5,
+    "reference_generation_actor_calls": 1152,
+    "fresh_evaluation_actor_calls": 24,
+    "teacher_target_presentations": 7704,
+    "checkpoint_sha256": "96e3fd53cf0add49be906d7791b817b2d7a6e8235c3109db63fbfcdc6034db0c",
+    "prior_training_supported_flops": 20999642368,
+    "scope": "Saved critics and frozen native actor; fresh independent prefixes/continuations, single bounded proposal per critic. TRAIN reference regenerated and charged; all 25 reference directions plus two proposals evaluated through exact local responses. Four actual writes per critic checked by native replay. Prefix bootstrap conditional on fitted seed, not seed uncertainty. Proposals have no certified population-gradient error bound. Forward weights and credit weights do not update; this measures state-write utility, not online actor learning, async scheduling or hardware savings."
+  },
+  "wall_s": 50.47861361000105,
+  "peak_rss_kb": 322780,
+  "supported_flops": 40167288,
+  "flop_scope": "All reference regeneration, cotangent/proposal inference, fresh response evaluation and selected native writes; excludes special/unsupported arithmetic. Prior fitting work reported separately; no amortized savings claim.",
+  "source_sha256": {
+    "experiments/credit/evaluate_trained_response_writes.py": "aa744bda41a270912ea567ae7d011c2bea2dbda9a9392d83940302dd4cb19c5d",
+    "experiments/credit/response_credit_policy.py": "fe66bba97e04aca709579109f0d862bb0c2fd2541052214c6e654ca06f443148",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
