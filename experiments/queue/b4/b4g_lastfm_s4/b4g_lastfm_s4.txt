@@ -1,0 +1,2 @@
+# B4: B4 protocol repair (rule of 9 Oct 22:45, training-only trigger): LastFM split 4 reached NaN parameters at epoch 39 (last finite epoch 38). Guarded driver b4g (skips non-finite updates, otherwise bitwise identical; contract b4g_contract), TEST once; the original run stays beside it. Decides LastFM split 4 of the five-split verdict
+b4g_lastfm_s4 experiments/tpp/race_tpp_b4g.py --tag b4g_lastfm_s4 --dataset lastfm_filtered --split 4 --score-test

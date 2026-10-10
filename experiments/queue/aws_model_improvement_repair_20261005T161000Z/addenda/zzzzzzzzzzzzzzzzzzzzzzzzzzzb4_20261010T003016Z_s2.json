@@ -1,0 +1,29 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 protocol repair (rule of 9 Oct 22:45, training-only trigger): LastFM split 4 reached NaN parameters at epoch 39 (last finite epoch 38). Guarded driver b4g (skips non-finite updates, otherwise bitwise identical; contract b4g_contract), TEST once; the original run stays beside it. Decides LastFM split 4 of the five-split verdict",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "b4g_lastfm_s4",
+        "queue": "experiments/queue/b4/b4g_lastfm_s4/b4g_lastfm_s4.txt",
+        "queue_sha256": "2293f8c3bdedd606f3b34cad9563c84b7d33b1b8152b6f2ea0b65e93c9b37ffc",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/b4g_lastfm_s4.json",
+        "timeout_s": 28800,
+        "rss_kb": 9000000,
+        "vms_kb": 16000000,
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/b4g_contract.json"
+          }
+        ]
+      }
+    ]
+  }
+}
