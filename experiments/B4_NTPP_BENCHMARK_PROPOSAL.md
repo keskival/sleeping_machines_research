@@ -185,6 +185,15 @@ pattern: MOOC (no zero gaps) is within 4 nats of the best published L_T, Retweet
 
 **Reading.** The published model class earns **16.86 nats per sequence on MOOC from the one-second recording grid alone**: its time NLL is 11.6 nats better than ours as recorded and about 5 nats worse once each gap is placed uniformly inside its recording cell. Our model, whose clocks may not resolve time below one cell, moves by 0.14 on validation. The MOOC time-component gap in the verdict table (−298.6 vs −310.6) is therefore of the size the grid supplies to this model class, and on the total this LNM run is behind ours even as recorded. Scope: one split, one seed, the README LNM configuration (the published best L_T is from the LNM+ variant, 2025); our dequantized TEST value is inferred from the validation shift, not rescored. The pre-registered MOOC verdict (loss) stands as defined. Retweets audit (`b4audit_lnm_retweets_s0`, 3.9% zero gaps) running.
 
+**Retweets audit (`b4audit_lnm_retweets_s0`, 10 Oct 10:45 UTC; same instrument, split 0 TEST; 1-s grid with 3.9% zero gaps, zero gaps dequantized uniformly on [0, cell/2]):**
+
+| Retweets split 0, TEST, nats per sequence (lower is better) | L_T recorded | L_T dequantized | L_M | Total recorded | Total dequantized |
+|---|---|---|---|---|---|
+| LNM, authors' code (6,811 parameters, 8.05 h) | **−645.37** | −532.36 | 83.52 | **−561.85** | −448.82 |
+| Ours, frozen B4 (`b4_retweets_s0`) | −596.69 | ≈ −596.3 (validation shift 0.42) | 83.12 | −513.57 | ≈ −513.2 |
+
+**Reading.** On Retweets the published model class earns **113.0 nats per sequence from the recording grid and its zero gaps**, about seven times the MOOC amount (16.9). Trained with the authors' own code it scores −561.85 as recorded, below the composite bar (−538.70) and every published Retweets number; with the rounding removed it scores −448.82, about 64 nats per sequence behind our model, with the mark components level (83.52 vs 83.12). The Retweets time-component gap of the verdict (−598.81 vs −621.33) is therefore smaller than the grid's contribution to the published model class. Scope as for MOOC: one split, one seed, the README configuration; our dequantized TEST value is inferred from the validation shift. The pre-registered Retweets verdict (loss) stands as defined.
+
 ## Secondary comparison (reported beside the pre-registered verdict, never replacing it)
 
 Best total of a single published model (its own L_T + L_M), mean over five splits, lower is better. 2025: Table 1 of
