@@ -457,6 +457,34 @@ The cosine between each W and its B is logged every epoch.
 
 A mutual arm no better than the static one would mean the backward direction's learning adds nothing at this scale.
 
+**Result (10 Oct 07:10 UTC; Taxi DEV log-likelihood per scored event, higher is better; 3 seeds; identical decay on the
+four readout/head matrices in every arm; `experiments/results/credit/online2_*`):**
+
+| Backward matrices | Final DEV LL (SE) | Seeds | Final cosine(W, B): R / P / H / Mk |
+|---|---|---|---|
+| shared, exact transposes (`online_trace`) | 0.4736 (0.0027) | 0.4735 / 0.4689 / 0.4784 | — |
+| **unshared, trained by the forward's local updates (`online_kp`)** | **0.4715 (0.0013)** | 0.4698 / 0.4705 / 0.4741 | 0.99998 / 0.99998 / 1.0000 / 1.0000 |
+| unshared, fixed random (`online_fa`) | 0.1699 (0.0862) | 0.0392 / 0.3326 / 0.1381 | 0.21 / 0.28 / 0.05 / 0.01 |
+
+**PASS** on all three predictions:
+- **Mutual training learns duality.** The readout cosine on seed 0 rises from 0.40 to 0.82 to 0.98 to 1.00 over the
+  first epochs.
+- **It matches exact credit.** Mutual feedback is −0.0021 against exact transposes, within the 0.02 criterion.
+- **Static unshared feedback fails.** It is 0.30 nats/event worse, and the forward weights barely align to it (cosines
+  0.01–0.28).
+
+The two directions need not share weights, but they must train each other. Learned that way, the backward path becomes
+the exact dual and learning matches backpropagation. Left static, it does not, and learning fails in this recurrent
+event model.
+
+Combined with §7 (memory credit runs forward through traces), the learner is fully local at this scale:
+- no weight transport;
+- no stored history;
+- no backward sweep.
+
+It reaches 0.4715, against 0.4557 for BPTT at the same 20 data passes. Decay on the readout/head (wd = 0.1, needed for
+the mutual contraction) costs the exact learner 0.007 relative to §7's run without it (0.4736 vs 0.4805).
+
 ## 12. Exact per-event learning across depth (9 Oct)
 
 One diagonal memory layer has diagonal traces: each mode depends only on its own parameters, so the trace costs no more
