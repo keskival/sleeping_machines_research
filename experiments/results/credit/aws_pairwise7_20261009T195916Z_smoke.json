@@ -1,0 +1,77 @@
+{
+  "status": "completed",
+  "tag": "aws_pairwise7_20261009T195916Z_smoke",
+  "battle": "B1/R1 shared route-credit enabler",
+  "args": {
+    "tag": "aws_pairwise7_20261009T195916Z_smoke",
+    "arm": "pairwise_persistent",
+    "depth": 2,
+    "K": 8,
+    "K2": 4,
+    "d": 16,
+    "C": 10,
+    "n_train": 1024,
+    "n_test": 256,
+    "epochs": 2,
+    "batch": 64,
+    "credit_hidden": 8,
+    "seed": 0,
+    "data_seed": 1234,
+    "lr": 0.003,
+    "explore": 0.1
+  },
+  "data_sha256": "4a12cecf44380fe0ccd9746c8ab7f70e88376a3700082c62e2d515f2cda2f2c6",
+  "history": [
+    {
+      "epoch": 0,
+      "dev_marginal_ll": -2.3050947189331055,
+      "route_purity": 0.21875,
+      "credit_kl": 0.3252291679382324,
+      "credit_tv": 0.31363749504089355,
+      "mh_acceptance": 0.7392578125,
+      "distinct_pair_fraction": 0.9794921875,
+      "move_fraction": 0.71875,
+      "pair_bce": 0.7026374563574791,
+      "macs_per_example": 4064.0
+    },
+    {
+      "epoch": 1,
+      "dev_marginal_ll": -2.3018367290496826,
+      "route_purity": 0.21484375,
+      "credit_kl": 0.2953815460205078,
+      "credit_tv": 0.3004741072654724,
+      "mh_acceptance": 0.6484375,
+      "distinct_pair_fraction": 0.9775390625,
+      "move_fraction": 0.6259765625,
+      "pair_bce": 0.7007716670632362,
+      "macs_per_example": 4064.0
+    }
+  ],
+  "teacher_dev_marginal_ll": -1.5793824195861816,
+  "final_dev_marginal_ll": -2.3018367290496826,
+  "final_credit_kl": 0.2953815460205078,
+  "final_credit_tv": 0.3004741072654724,
+  "final_route_purity": 0.21484375,
+  "macs_per_example": 4064.0,
+  "whole_fit_linear_macs": 8323072,
+  "expert_evals_per_example": 3,
+  "optimizer_parameter_visits": 214272,
+  "optimizer_parameter_visits_per_example": 104.625,
+  "evaluation_linear_macs": 6127616,
+  "work_convention": "leading-linear MAC estimate; 3 router + 5 expert + 3 credit; nonlinear, bias, sampling and optimizer FLOPs excluded",
+  "selection": "fixed final epoch on synthetic DEV; no benchmark test",
+  "mechanism_scope": "hard-route credit diagnostic; no integrated persistent temporal memory",
+  "posterior_scope": "fixed-model MH invariant posterior; finite-step/moving-target bias remains",
+  "cause_storage_bytes": 8192,
+  "wall_s": 0.6906039714813232,
+  "max_rss_kb": 395080,
+  "hardware": {
+    "host": "ip-172-31-47-132",
+    "threads": 1,
+    "torch": "2.14.0+cpu"
+  },
+  "source_sha256": {
+    "experiments/credit/pairwise_race_v7.py": "780375a4f48fa8b7dc716008d60460b2df7ecdaf6d13ce55bb5cfa3c7c7c7311",
+    "experiments/credit/hindsight_race_v6.py": "322cb68607c8f38a7c0f6b6a1f0f8c9fb433e88e668fcceda10baab06106f351"
+  }
+}
