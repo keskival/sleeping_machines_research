@@ -25,7 +25,7 @@ def response(model,t,m,index):
 def decode(u,p,logw,b,actions):
     beta=torch.einsum('brd,bad->bra',u,actions)
     norm=torch.log1p(p[:,:,:,None]*torch.expm1(beta)[:,:,None,:])
-    return -beta*b[:,:,None]-torch.logsumexp(logw[:,:,:,None]-norm,2)
+    return -beta*b[:,:,None]+torch.logsumexp(logw,2)[:,:,None]-torch.logsumexp(logw[:,:,:,None]-norm,2)
 
 def bound(model):
     norm=model.layers[-1].norm2

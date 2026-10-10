@@ -1,0 +1,160 @@
+{
+  "tag": "curie_structured_credit_v5b_20261010T1845Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_structured_credit_v5b_20261010T1845Z_contract",
+      "driver": "experiments/credit/structured_future_credit_v5.py",
+      "queue": "experiments/queue/enabler/curie_structured_credit_v5b_20261010T1845Z/curie_structured_credit_v5b_20261010T1845Z_contract.txt",
+      "queue_sha256": "aeba9e4354617b507240b38b2068782b4b402d1de99734cb5b4912732bdfcd06",
+      "sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_contract.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 180,
+      "requires": []
+    },
+    {
+      "tag": "curie_structured_credit_v5b_20261010T1845Z_smoke",
+      "driver": "experiments/credit/structured_future_credit_v5.py",
+      "queue": "experiments/queue/enabler/curie_structured_credit_v5b_20261010T1845Z/curie_structured_credit_v5b_20261010T1845Z_smoke.txt",
+      "queue_sha256": "376077a191310befb1da4a81628aa54bd71475e5cea26c8e71475aa2e90b6a68",
+      "sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_smoke.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_structured_credit_v5b_20261010T1845Z_contract"
+      ]
+    },
+    {
+      "tag": "curie_structured_credit_v5b_20261010T1845Z_pilot_s170",
+      "driver": "experiments/credit/structured_future_credit_v5.py",
+      "queue": "experiments/queue/enabler/curie_structured_credit_v5b_20261010T1845Z/curie_structured_credit_v5b_20261010T1845Z_pilot_s170.txt",
+      "queue_sha256": "4b99d45fa3f1c88d5ec30ed231a4084216a89c260498022ff47912592ee94d7e",
+      "sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_pilot_s170.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_structured_credit_v5b_20261010T1845Z_smoke"
+      ]
+    },
+    {
+      "tag": "curie_structured_credit_v5b_20261010T1845Z_pilot_s171",
+      "driver": "experiments/credit/structured_future_credit_v5.py",
+      "queue": "experiments/queue/enabler/curie_structured_credit_v5b_20261010T1845Z/curie_structured_credit_v5b_20261010T1845Z_pilot_s171.txt",
+      "queue_sha256": "5bcc46ff487582b9de279e8a11b40a4f972cb7f575160fb49086724140e35cd4",
+      "sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_pilot_s171.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_structured_credit_v5b_20261010T1845Z_smoke"
+      ]
+    },
+    {
+      "tag": "curie_structured_credit_v5b_20261010T1845Z_pilot_s172",
+      "driver": "experiments/credit/structured_future_credit_v5.py",
+      "queue": "experiments/queue/enabler/curie_structured_credit_v5b_20261010T1845Z/curie_structured_credit_v5b_20261010T1845Z_pilot_s172.txt",
+      "queue_sha256": "502bdbf84dab97ebacaa4b610638214e5e116268d12c5070744d4ab12de69e21",
+      "sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+        "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+        "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+        "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_structured_credit_v5b_20261010T1845Z_pilot_s172.json",
+      "rss_kb": 1500000,
+      "vms_kb": 8000000,
+      "timeout_s": 900,
+      "requires": [
+        "curie_structured_credit_v5b_20261010T1845Z_smoke"
+      ]
+    }
+  ]
+}
