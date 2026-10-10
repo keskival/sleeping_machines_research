@@ -1,0 +1,24 @@
+{"epoch": 0, "train_loss": 2.7626390945862522, "val_mrr": 0.3071733723972304, "val_queries": 730784, "train_wall_s": 345.0332884788513, "remaining_history_replay_wall_s": 3.337860107421875e-06, "val_wall_s": 138.88726925849915, "epoch_s": 483.9778413772583, "query_profile": {"repeat_pair": {"queries": 1256, "mrr": 0.565940560853948}, "new_pair_known_source": {"queries": 663980, "mrr": 0.28962550383450125}, "new_source": {"queries": 65548, "mrr": 0.47996921940368825}}}
+{
+  "status": "completed",
+  "dataset": "tgbl-review",
+  "nodes": 352637,
+  "parameters": 11642367,
+  "val_mrr": 0.3071733723972304,
+  "best_epoch": 0,
+  "checkpoint": "experiments/results/tgb/aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z.pt",
+  "trained_events": 3413837,
+  "competitors_per_train_query": 20,
+  "protocol": "Per-query features from events strictly earlier than query timestamp; pending ties carried across batches and splits; official validation negatives/Evaluator; no TEST",
+  "evidence_level": "first-pass v2 development repair; bounded prefixes are diagnostics, not full validation claims",
+  "tag": "aws_b5_review_v6_D_noid_popres_hard_logq_20261010T1500Z",
+  "battle": "B5 tgbl-review development",
+  "wall_s": 489.20643877983093,
+  "max_rss_kb": 3157484,
+  "source_sha256": {
+    "experiments/tgb/race_link_review_v2.py": "1a9a058028e514e887b2c48ba665d9dec06203ea351b49e069f527867faf7eee",
+    "experiments/tgb/race_link_review.py": "1e27b99b101bd5b24adffd300706ab73e65a7cc0d893ea0f3d83b831852f14eb",
+    "experiments/tgb/safe_tgb.py": "5c586cc92d5e8227ae5eff7185157d3ccc893a237f33bf4df21e585f7bf1f9ac"
+  }
+}
+V3 {} completed
