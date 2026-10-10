@@ -1,0 +1,26 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Correct contract fixture uses positive window endpoints; checks same-likelihood gradients and finite full backward on failing TRAIN batch",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b4_logspread_check_v2_20261010T2002Z",
+        "queue": "experiments/queue/b4/aws_b4_logspread_check_v2_20261010T2002Z/aws_b4_logspread_check_v2_20261010T2002Z.txt",
+        "queue_sha256": "ce1fede0e4c0c8b6dcd3a72ceec5bafa4c7b52cf0bd0816815c2bd5204b3971f",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/check_b4_logspread_v2.py": "d6958fca906c6d6ee60da08080c33b271bd2e294fb0a8c7bec47cef9b3483a0c",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_logspread_check_v2_20261010T2002Z.json",
+        "timeout_s": 900,
+        "rss_kb": 4000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
