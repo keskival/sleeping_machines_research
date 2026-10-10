@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Completed-file DEV diagnosis compares recovered fit with saved guarded quality and common-pass curves; decides next development step, no TEST or fitting",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_b4_logspread_develop_decision_20261010T2113Z",
+        "queue": "experiments/queue/b4/aws_b4_logspread_develop_decision_20261010T2113Z/aws_b4_logspread_develop_decision_20261010T2113Z.txt",
+        "queue_sha256": "95d0abc9b81ad42d9910466dde3140010bcce2d5b3a18686c1c878f97aadf3ac",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/summarize_b4_development.py": "76557daae8ddabb63a380756d66939fc4bec0030c368369d453b25d90cf6e7f3",
+          "experiments/tpp/b4_logspread_develop.py": "d1466cb480fe13bb808fcf3a38293baae8e804643ee4cdfa985b79fdda8f8420",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_logspread_develop_decision_20261010T2113Z.json",
+        "timeout_s": 60,
+        "rss_kb": 1000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
