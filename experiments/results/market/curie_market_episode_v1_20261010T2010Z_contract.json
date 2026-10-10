@@ -1,0 +1,65 @@
+{
+  "status": "completed",
+  "tag": "curie_market_episode_v1_20261010T2010Z_contract",
+  "battle": "B10/R1",
+  "synthetic": [
+    {
+      "score_error": 4.997389169147937e-10,
+      "gradient_error": 6.01870775440716e-11,
+      "persistent_state_elements": 72,
+      "depth": 2,
+      "keyed": false
+    },
+    {
+      "score_error": 4.546620857581729e-10,
+      "gradient_error": 8.680778318392868e-11,
+      "persistent_state_elements": 120,
+      "depth": 2,
+      "keyed": true
+    },
+    {
+      "score_error": 2.3444002295036626e-10,
+      "gradient_error": 5.12297287924568e-11,
+      "persistent_state_elements": 96,
+      "depth": 4,
+      "keyed": false
+    },
+    {
+      "score_error": 4.2011549794551684e-10,
+      "gradient_error": 6.953518316699103e-11,
+      "persistent_state_elements": 144,
+      "depth": 4,
+      "keyed": true
+    },
+    {
+      "score_error": 3.814832894022402e-10,
+      "gradient_error": 1.2509215885359026e-10,
+      "persistent_state_elements": 144,
+      "depth": 8,
+      "keyed": false
+    },
+    {
+      "score_error": 3.6279956816542835e-10,
+      "gradient_error": 4.849409762641699e-11,
+      "persistent_state_elements": 192,
+      "depth": 8,
+      "keyed": true
+    }
+  ],
+  "market": {
+    "score_error": 1.893045720180453e-10,
+    "gradient_error": 0.0,
+    "persistent_state_elements": 88
+  },
+  "forecast_parameter_version_preserved": true,
+  "checkpoint_sha256": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+  "wall_s": 3.5197238239998114,
+  "source_sha256": {
+    "experiments/market/check_episode_state.py": "fa6adbc1deb18d30939c6d85f65559a56bd87bd2eef166eaee62d9662537a0eb",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f"
+  },
+  "scope": "Explicit persistent temporal/mark/key state, exact first-order factual credit when graph retained; detachment preserves numeric state but truncates credit. Frozen-parameter parity and cached forecast version check, not changing-weight full-history gradient correctness. Real data uses TRAIN only, no VAL or TEST; serial CPU event execution is not asynchronous hardware."
+}

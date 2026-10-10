@@ -377,3 +377,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 ## Structured future response and derivative certificate
 
 [Structured response credit](theory/STRUCTURED_RESPONSE_CREDIT.md) derives the exact native key-write response, bounded sensitivity/curvature and a conditional value-to-gradient certificate. Source-pinned v5b pilots test held-out update directions and applied native state writes under R1/B1.
+
+## Real causal episode learning
+
+[Online episode learning](ONLINE_EPISODE_LEARNING.md) defines joint model/credit/optimizer development on market events and proper-token language, with within-episode adaptation and total counterfactual effects across changing weights distinguished from fixed-path response.
