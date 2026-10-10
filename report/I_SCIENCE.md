@@ -43,7 +43,8 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   training length (seed 0; three-seed mean 90.2 ± 1.2%); **learning through the race alone** (no backpropagation into the network) reaches 77%.
 - **Learning without a backward sweep or weight transport:** a race-of-clocks event model learns from each event as it
   arrives, with exact memory credit carried forward. On Taxi development data, at the same 20 data passes, it scores
-  0.4805 nats/event against 0.4557 for backpropagation through time (3 seeds). Its backward weights can be separate
+  0.4805 nats/event against 0.4557 for backpropagation through time (3 seeds). With two memory layers, exact
+  per-event traces score 0.4770 (seed spread 0.0009) against 0.4418 for backpropagation through time, at 66× its wall time. Its backward weights can be separate
   from the forward ones when trained by the forward pass's own updates: they align to the exact dual (cosine 1.000) and
   learn as well as shared weights (0.4715 vs 0.4736), where fixed random feedback fails (0.17). This is a fully local
   learner, the learning half of clockless hardware. ([theory note 160](../experiments/theory/160_forward_backward_duality_and_credit.md))

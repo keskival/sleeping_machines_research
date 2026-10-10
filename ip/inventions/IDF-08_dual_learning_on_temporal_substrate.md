@@ -112,6 +112,7 @@ Machine-checked lemmas: `experiments/lean/credit_theory/CreditTheory/Basic.lean`
 
 Measured learning (Taxi DEV log-likelihood per event, 3 seeds, 20 passes over TRAIN; theory note 160 §§7, 11):
 - per-event trace learner (e) 0.4805 vs BPTT 0.4557; the traces add +0.0077 over per-event learning without them, on every seed;
+- exact cross-depth traces (e), two memory layers: 0.4770 (SE 0.0009) vs layer-local 0.4708 vs no traces 0.4565 vs BPTT 0.4418;
 - unshared feedback trained by the forward updates (f) 0.4715 vs shared exact transposes 0.4736, with alignment cosine
   1.000 on every feedback matrix; fixed random feedback 0.1699 (cosines 0.01–0.28).
 
