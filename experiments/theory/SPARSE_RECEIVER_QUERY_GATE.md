@@ -5,3 +5,17 @@ Use the saved three-seed receiver critics without refitting. Concrete failure ad
 Fresh32 prefixes per fitted seed,8 independent continuations, paired candidate budgets and bootstrap across prefixes. All9 message actions are evaluated per queried receiver; no-op gets exact zero in both heads. Compare actual expected future loss with TRAIN-fixed action and dense8 selection, and measure supported policy FLOPs/wall including discovery, native prefix extraction and descriptors. Teacher diagnostics, native selected-write replay and prior fitting work remain separate and charged. Evidence is frozen synthetic mechanism economics, not full training efficiency. No actor redesign, external fit or TEST.
 
 Decision: which query budget retains useful generalization at lower measured policy work? Use that diagnosis before integrating learned task-valued acquisition into causal changing-weight episodes. Finite within-prefix variance also supplies a response-level innovation estimate, not a producer-gradient certificate. One smoke precedes the measurement.
+
+## Selection risk changes with query budget
+
+Let V_i be the conditional future-loss intervention value of route/action i, and C_i its prediction. For a causally chosen queried set Q, predicted minimizer ihat and true minimizer istar in that same set,
+
+    V_ihat - V_istar <= 2 max_{i in Q} |C_i-V_i|.
+
+Proof: insert C_ihat and C_istar, using C_ihat<=C_istar. Hence expected within-pool regret is at most2 sqrt(sum_{i in Q} E[(C_i-V_i)^2]) by max absolute error<=Euclidean error and Jensen. For adaptive queried sets use the error moments under their actual selected-set law; marginal evaluation errors from a different distribution do not automatically suffice. Routes and their message actions both count in the selection universe.
+
+A larger pool offers better true options, but its actual predicted choice need not improve: an erroneous low score can displace a good incumbent. This is selection risk, distinct from omitted-route discovery. Lower mean regression error alone therefore does not settle the useful query budget. The three-seed curve measures actual loss and selection risk together. It does not turn finite continuation means into uniform certificates.
+
+If exact beneficial utilities v_i>=0 were known, F(Q)=max(0,max_{i in Q} v_i) is monotone submodular: adding route i has marginal max(0,v_i-F(Q)), which decreases as Q grows. This is an oracle set-function property, not a guarantee for noisy learned selection or a Bayesian adaptive policy with correlated evidence. For the present implicit sampler, if the best route is not the fixed anchor, budget b includes it with probability(b-1)/7. Such simple discovery economics supplies a baseline for a learned acquisition model to beat at the same complete work.
+
+The reciprocal actor–critic should learn acquisition from *later realized task utility of additional queries*, including displacement of the incumbent, charged query cost and any time delay. A proxy rewarding only additional candidate count or critic loss reduction would miss this distinction. Current measurement uses uniform proposals, so it diagnoses the opportunity and cost without claiming trained acquisition.
