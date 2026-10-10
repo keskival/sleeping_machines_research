@@ -1,0 +1,14 @@
+{"batch": 0, "timings": {"dense": 3.019416063092649, "blocks": 1.20634286000859}, "errors": {"parameters": 2.220446049250313e-16, "gradients": 3.774758283725532e-15, "adam": 1.7763568394002505e-15, "likelihood_sum": 2.2737367544323206e-13}}
+{"batch": 10, "timings": {"dense": 33.26080791524146, "blocks": 13.364029366755858}, "errors": {"parameters": 8.881784197001252e-16, "gradients": 2.708944180085382e-14, "adam": 3.774758283725532e-15, "likelihood_sum": 2.2737367544323206e-13}}
+{"batch": 20, "timings": {"dense": 63.19884340430144, "blocks": 25.240369050530717}, "errors": {"parameters": 3.8632291810003494e-15, "gradients": 2.2215562722749382e-13, "adam": 8.304468224196171e-14, "likelihood_sum": 1.0231815394945443e-12}}
+{"batch": 30, "timings": {"dense": 95.0597826524172, "blocks": 37.87965619447641}, "errors": {"parameters": 9.892052454940625e-13, "gradients": 1.4018297633811017e-10, "adam": 1.262634441445698e-11, "likelihood_sum": 8.242295734817162e-11}}
+{"batch": 40, "timings": {"dense": 125.42266201949678, "blocks": 49.96475403942168}, "errors": {"parameters": 2.3251296721316095e-12, "gradients": 1.4018297633811017e-10, "adam": 1.262634441445698e-11, "likelihood_sum": 1.1016254575224593e-10}}
+{"batch": 50, "timings": {"dense": 156.3451973675983, "blocks": 62.06703191518318}, "errors": {"parameters": 1.3847216775997317e-11, "gradients": 1.4172041318261108e-10, "adam": 3.5502850659341334e-11, "likelihood_sum": 2.7495161702972837e-10}}
+Traceback (most recent call last):
+  File "/workspace/experiments/credit/online_deep_blocks_fit.py", line 122, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/experiments/credit/online_deep_blocks_fit.py", line 89, in main
+    assert all(math.isfinite(v) and v < 1e-9 for v in maxerr.values()), maxerr
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'parameters': 1.4424342276164737e-10, 'gradients': 8.249562755135997e-09, 'adam': 8.298197129441576e-10, 'likelihood_sum': 1.96698124454997e-09}

@@ -1,0 +1,17 @@
+{"batch": 0, "timings": {"dense": 3.0917002470232546, "blocks": 1.2158263040473685}, "errors": {"parameters": 2.220446049250313e-16, "gradients": 3.774758283725532e-15, "adam": 1.7763568394002505e-15, "likelihood_sum": 2.2737367544323206e-13}}
+{"batch": 10, "timings": {"dense": 34.41609150287695, "blocks": 13.764983348897658}, "errors": {"parameters": 8.881784197001252e-16, "gradients": 2.708944180085382e-14, "adam": 3.774758283725532e-15, "likelihood_sum": 2.2737367544323206e-13}}
+{"batch": 20, "timings": {"dense": 64.41863745299634, "blocks": 25.851722527877428}, "errors": {"parameters": 3.8632291810003494e-15, "gradients": 2.2215562722749382e-13, "adam": 8.304468224196171e-14, "likelihood_sum": 1.0231815394945443e-12}}
+{"batch": 30, "timings": {"dense": 96.00766548910178, "blocks": 38.55427552072797}, "errors": {"parameters": 9.892052454940625e-13, "gradients": 1.4018297633811017e-10, "adam": 1.262634441445698e-11, "likelihood_sum": 8.242295734817162e-11}}
+{"batch": 40, "timings": {"dense": 126.11645519488957, "blocks": 50.87662242481019}, "errors": {"parameters": 2.3251296721316095e-12, "gradients": 1.4018297633811017e-10, "adam": 1.262634441445698e-11, "likelihood_sum": 1.1016254575224593e-10}}
+{"batch": 50, "timings": {"dense": 156.40939369169064, "blocks": 63.16107995400671}, "errors": {"parameters": 1.3847216775997317e-11, "gradients": 1.4172041318261108e-10, "adam": 3.5502850659341334e-11, "likelihood_sum": 2.7495161702972837e-10}}
+{"roundoff_audit": {"batch": 54, "independent_errors": {"parameters": 1.4424342276164737e-10, "gradients": 8.249562755135997e-09, "adam": 8.298197129441576e-10, "likelihood_sum": 1.96698124454997e-09}, "same_incoming_state_errors": {"parameters": 1.1102230246251565e-16, "gradients": 5.384581669432009e-15, "adam": 5.551115123125783e-16}, "controlled_gradient_scaled_error": 1.598367778196479e-15, "controlled_mean_likelihood_error": 0.0, "cause": "Same-input block replay passes; earlier floating-point perturbations are amplified by online updates"}}
+{"batch": 60, "timings": {"dense": 185.75044761260506, "blocks": 75.26417813368607}, "errors": {"parameters": 3.151755841469123e-08, "gradients": 1.553473287785323e-07, "adam": 4.6047007429272924e-08, "likelihood_sum": 1.0805774763866793e-06}}
+{"batch": 70, "timings": {"dense": 215.57421901274938, "blocks": 87.42460218584165}, "errors": {"parameters": 1.3482498727643809e-06, "gradients": 6.930602718213663e-05, "adam": 5.324047545485211e-05, "likelihood_sum": 7.697876276324678e-05}}
+Traceback (most recent call last):
+  File "/workspace/experiments/credit/online_deep_blocks_fit_v2.py", line 156, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/experiments/credit/online_deep_blocks_fit_v2.py", line 119, in main
+    assert mean_error < 1e-6, 'Per-target training likelihood drift exceeded registered tolerance'
+           ^^^^^^^^^^^^^^^^^
+AssertionError: Per-target training likelihood drift exceeded registered tolerance
