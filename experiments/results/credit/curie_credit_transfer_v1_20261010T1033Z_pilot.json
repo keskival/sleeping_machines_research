@@ -1,0 +1,553 @@
+{
+  "status": "completed",
+  "tag": "curie_credit_transfer_v1_20261010T1033Z_pilot",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_credit_transfer_v1_20261010T1033Z_pilot",
+    "steps": 64,
+    "dev_batches": 4
+  },
+  "training": true,
+  "metrics": {
+    "history": [
+      {
+        "step": 1,
+        "train_relative_mse": 1.005712571653361
+      },
+      {
+        "step": 2,
+        "train_relative_mse": 1.1535731425018578
+      },
+      {
+        "step": 3,
+        "train_relative_mse": 1.0238827502048242
+      },
+      {
+        "step": 4,
+        "train_relative_mse": 1.0604813255913494
+      },
+      {
+        "step": 5,
+        "train_relative_mse": 1.0049470344055478
+      },
+      {
+        "step": 6,
+        "train_relative_mse": 1.037716005807772
+      },
+      {
+        "step": 7,
+        "train_relative_mse": 1.018059123670966
+      },
+      {
+        "step": 8,
+        "train_relative_mse": 1.0308251660518382
+      },
+      {
+        "step": 9,
+        "train_relative_mse": 1.0438953830644273
+      },
+      {
+        "step": 10,
+        "train_relative_mse": 1.0083312005267469
+      },
+      {
+        "step": 11,
+        "train_relative_mse": 1.0001413878188012
+      },
+      {
+        "step": 12,
+        "train_relative_mse": 0.9989389411887458
+      },
+      {
+        "step": 13,
+        "train_relative_mse": 1.039216652371029
+      },
+      {
+        "step": 14,
+        "train_relative_mse": 1.0693314469640083
+      },
+      {
+        "step": 15,
+        "train_relative_mse": 1.0105936473469186
+      },
+      {
+        "step": 16,
+        "train_relative_mse": 1.003802756031986
+      },
+      {
+        "step": 17,
+        "train_relative_mse": 1.001351906834866
+      },
+      {
+        "step": 18,
+        "train_relative_mse": 1.0306661763509686
+      },
+      {
+        "step": 19,
+        "train_relative_mse": 1.0175402315466935
+      },
+      {
+        "step": 20,
+        "train_relative_mse": 1.0009069607634098
+      },
+      {
+        "step": 21,
+        "train_relative_mse": 1.0032966195874549
+      },
+      {
+        "step": 22,
+        "train_relative_mse": 1.0018759388138203
+      },
+      {
+        "step": 23,
+        "train_relative_mse": 1.2756716346305357
+      },
+      {
+        "step": 24,
+        "train_relative_mse": 1.015843926980609
+      },
+      {
+        "step": 25,
+        "train_relative_mse": 1.0031335597365327
+      },
+      {
+        "step": 26,
+        "train_relative_mse": 1.030519492099594
+      },
+      {
+        "step": 27,
+        "train_relative_mse": 1.0397457620248254
+      },
+      {
+        "step": 28,
+        "train_relative_mse": 1.0033876824579884
+      },
+      {
+        "step": 29,
+        "train_relative_mse": 1.0859371138616718
+      },
+      {
+        "step": 30,
+        "train_relative_mse": 1.01155996849805
+      },
+      {
+        "step": 31,
+        "train_relative_mse": 1.9238951943310874
+      },
+      {
+        "step": 32,
+        "train_relative_mse": 1.0159313318861876
+      },
+      {
+        "step": 33,
+        "train_relative_mse": 1.014975112043519
+      },
+      {
+        "step": 34,
+        "train_relative_mse": 1.0046794579312703
+      },
+      {
+        "step": 35,
+        "train_relative_mse": 1.0219005630350746
+      },
+      {
+        "step": 36,
+        "train_relative_mse": 1.0884510894018418
+      },
+      {
+        "step": 37,
+        "train_relative_mse": 1.034262195932968
+      },
+      {
+        "step": 38,
+        "train_relative_mse": 1.5482591569865904
+      },
+      {
+        "step": 39,
+        "train_relative_mse": 1.0630458192120176
+      },
+      {
+        "step": 40,
+        "train_relative_mse": 1.106651914957816
+      },
+      {
+        "step": 41,
+        "train_relative_mse": 1.003918410783708
+      },
+      {
+        "step": 42,
+        "train_relative_mse": 1.0286589745661987
+      },
+      {
+        "step": 43,
+        "train_relative_mse": 1.0308758790225987
+      },
+      {
+        "step": 44,
+        "train_relative_mse": 1.0016180459253452
+      },
+      {
+        "step": 45,
+        "train_relative_mse": 0.9993697510089897
+      },
+      {
+        "step": 46,
+        "train_relative_mse": 1.005223292900753
+      },
+      {
+        "step": 47,
+        "train_relative_mse": 1.0026228663108794
+      },
+      {
+        "step": 48,
+        "train_relative_mse": 1.031054301180245
+      },
+      {
+        "step": 49,
+        "train_relative_mse": 1.0039731806660894
+      },
+      {
+        "step": 50,
+        "train_relative_mse": 1.429402804493663
+      },
+      {
+        "step": 51,
+        "train_relative_mse": 1.0563464574298975
+      },
+      {
+        "step": 52,
+        "train_relative_mse": 1.0006875728769462
+      },
+      {
+        "step": 53,
+        "train_relative_mse": 1.2956825828166183
+      },
+      {
+        "step": 54,
+        "train_relative_mse": 1.0442217422292157
+      },
+      {
+        "step": 55,
+        "train_relative_mse": 1.0113938373413265
+      },
+      {
+        "step": 56,
+        "train_relative_mse": 1.0019617979422906
+      },
+      {
+        "step": 57,
+        "train_relative_mse": 1.000150648389526
+      },
+      {
+        "step": 58,
+        "train_relative_mse": 1.0011297280168372
+      },
+      {
+        "step": 59,
+        "train_relative_mse": 1.0299551374852707
+      },
+      {
+        "step": 60,
+        "train_relative_mse": 1.0492058260013253
+      },
+      {
+        "step": 61,
+        "train_relative_mse": 1.0435618939797255
+      },
+      {
+        "step": 62,
+        "train_relative_mse": 1.0128270442278038
+      },
+      {
+        "step": 63,
+        "train_relative_mse": 1.0122944766175057
+      },
+      {
+        "step": 64,
+        "train_relative_mse": 1.0181170604228293
+      }
+    ],
+    "checkpoints": [
+      {
+        "step": 0,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.366331544370661,
+            "relative_missing_credit_mse": 1.000305022067512,
+            "frozen_relative_mse": 1.000305022067512,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9882393428559372,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.6174003280709335,
+            "relative_missing_credit_mse": 0.9982284090301975,
+            "frozen_relative_mse": 0.9982284090301975,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9924202953543995,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 1.4711770187102027,
+            "relative_missing_credit_mse": 1.0013712788287632,
+            "frozen_relative_mse": 1.0013712788287632,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9973224817831378,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 8.749445081692919,
+            "relative_missing_credit_mse": 0.9998416818821823,
+            "frozen_relative_mse": 0.9998416818821823,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9336984107892764,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 5.687983786319434,
+            "relative_missing_credit_mse": 1.0007285024904697,
+            "frozen_relative_mse": 1.0007285024904697,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9817341372574803,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      },
+      {
+        "step": 16,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.366331544370661,
+            "relative_missing_credit_mse": 1.0050691705194745,
+            "frozen_relative_mse": 1.000305022067512,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9882016295363107,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.6174003280709335,
+            "relative_missing_credit_mse": 0.9966972530416218,
+            "frozen_relative_mse": 0.9982284090301975,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9924388247824834,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 1.4711770187102027,
+            "relative_missing_credit_mse": 1.012415205729556,
+            "frozen_relative_mse": 1.0013712788287632,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9972965709146875,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 8.749445081692919,
+            "relative_missing_credit_mse": 1.0005411242869366,
+            "frozen_relative_mse": 0.9998416818821823,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.933686994768285,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 5.687983786319434,
+            "relative_missing_credit_mse": 1.001117199423633,
+            "frozen_relative_mse": 1.0007285024904697,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9817009703345723,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      },
+      {
+        "step": 32,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.366331544370661,
+            "relative_missing_credit_mse": 1.0318507671402686,
+            "frozen_relative_mse": 1.000305022067512,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9880305065090773,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.6174003280709335,
+            "relative_missing_credit_mse": 1.3615921624206362,
+            "frozen_relative_mse": 0.9982284090301975,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9920596177409379,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 1.4711770187102027,
+            "relative_missing_credit_mse": 1.1751369161062581,
+            "frozen_relative_mse": 1.0013712788287632,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9971155946622001,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 8.749445081692919,
+            "relative_missing_credit_mse": 1.0157700002246899,
+            "frozen_relative_mse": 0.9998416818821823,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9336055483297818,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 5.687983786319434,
+            "relative_missing_credit_mse": 1.0232720683910932,
+            "frozen_relative_mse": 1.0007285024904697,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9814871391049319,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      },
+      {
+        "step": 64,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.366331544370661,
+            "relative_missing_credit_mse": 1.0050489290532667,
+            "frozen_relative_mse": 1.000305022067512,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9881712620964811,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.6174003280709335,
+            "relative_missing_credit_mse": 1.0408817392919805,
+            "frozen_relative_mse": 0.9982284090301975,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9923143718018466,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 1.4711770187102027,
+            "relative_missing_credit_mse": 1.021676499861994,
+            "frozen_relative_mse": 1.0013712788287632,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9972789705942724,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 8.749445081692919,
+            "relative_missing_credit_mse": 1.0096687200295789,
+            "frozen_relative_mse": 0.9998416818821823,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.933590869368988,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 5.687983786319434,
+            "relative_missing_credit_mse": 0.9974462254554701,
+            "frozen_relative_mse": 1.0007285024904697,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9816554240686126,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      }
+    ],
+    "teacher_gradient_targets": 4544,
+    "original_scored_targets": 2272,
+    "train_sequences": 128,
+    "credit_parameters": 149,
+    "fixed_forward_teacher": true,
+    "final_step_fixed": true,
+    "credit_state_gradient_horizon": "one previous observed learner transition; no full-history gradient",
+    "scope": "Frozen native initialized teachers; short bounded DEV probe. MSE transfer evidence only. All exact teacher derivative work charged; no sparse-runtime/grokking/actor-quality claim"
+  },
+  "decision": "Whether learned native credit transfers to unseen sequences, histories and depths before state-cotangent integration",
+  "supported_flops": 157430336,
+  "flop_scope": "Supported PyTorch operation formulas only; special/unsupported work not included in this number",
+  "wall_s": 65.42448294699989,
+  "peak_rss_kb": 526144,
+  "source_sha256": {
+    "experiments/credit/credit_transfer_probe.py": "dfa893f61a6f2849acc932c226ed2124b85d08491fd781beb67618128786bd08",
+    "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}

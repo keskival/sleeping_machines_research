@@ -1,0 +1,244 @@
+{
+  "status": "completed",
+  "tag": "curie_credit_transfer_v1_20261010T1033Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_credit_transfer_v1_20261010T1033Z_smoke",
+    "steps": 3,
+    "dev_batches": 1
+  },
+  "training": true,
+  "metrics": {
+    "history": [
+      {
+        "step": 1,
+        "train_relative_mse": 1.005712571653361
+      },
+      {
+        "step": 2,
+        "train_relative_mse": 1.1535731425018578
+      },
+      {
+        "step": 3,
+        "train_relative_mse": 1.0238827502048242
+      }
+    ],
+    "checkpoints": [
+      {
+        "step": 0,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 0.3028266607695088,
+            "relative_missing_credit_mse": 0.9997449279535529,
+            "frozen_relative_mse": 0.9997449279535529,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9821693186943738,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 1.4341475884611834,
+            "relative_missing_credit_mse": 0.9976706451575075,
+            "frozen_relative_mse": 0.9976706451575075,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9985541934660171,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 0.49001867893305195,
+            "relative_missing_credit_mse": 1.002081343462226,
+            "frozen_relative_mse": 1.002081343462226,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9933473464613983,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 6.20187506006957,
+            "relative_missing_credit_mse": 0.9998549564153458,
+            "frozen_relative_mse": 0.9998549564153458,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.7436962597724017,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.359725032895049,
+            "relative_missing_credit_mse": 1.0004293216930185,
+            "frozen_relative_mse": 1.0004293216930185,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9575378752794426,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      },
+      {
+        "step": 1,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 0.3028266607695088,
+            "relative_missing_credit_mse": 1.0305752041390606,
+            "frozen_relative_mse": 0.9997449279535529,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9815876702380095,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 1.4341475884611834,
+            "relative_missing_credit_mse": 1.8375344097092112,
+            "frozen_relative_mse": 0.9976706451575075,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9973872882588419,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 0.49001867893305195,
+            "relative_missing_credit_mse": 1.084558092167364,
+            "frozen_relative_mse": 1.002081343462226,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9929616639383732,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 6.20187506006957,
+            "relative_missing_credit_mse": 0.9988802475393498,
+            "frozen_relative_mse": 0.9998549564153458,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.7432343651591502,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.359725032895049,
+            "relative_missing_credit_mse": 1.0201555032884915,
+            "frozen_relative_mse": 1.0004293216930185,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9568067778093741,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "assessment": [
+          {
+            "case": "same_depth",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 0.3028266607695088,
+            "relative_missing_credit_mse": 1.0039822044464626,
+            "frozen_relative_mse": 0.9997449279535529,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9820639701922914,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "long_history",
+            "depth": 2,
+            "pairs": 4,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 1.4341475884611834,
+            "relative_missing_credit_mse": 1.2760736905936652,
+            "frozen_relative_mse": 0.9976706451575075,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9982374797976513,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_weights",
+            "depth": 2,
+            "pairs": 2,
+            "teacher_seed": 168,
+            "missing_credit_squared_norm": 0.49001867893305195,
+            "relative_missing_credit_mse": 1.05599178643897,
+            "frozen_relative_mse": 1.002081343462226,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9932976209248979,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth4",
+            "depth": 4,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 6.20187506006957,
+            "relative_missing_credit_mse": 0.9949136543283419,
+            "frozen_relative_mse": 0.9998549564153458,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.7436626636480683,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          },
+          {
+            "case": "unseen_depth8",
+            "depth": 8,
+            "pairs": 2,
+            "teacher_seed": 167,
+            "missing_credit_squared_norm": 2.359725032895049,
+            "relative_missing_credit_mse": 1.01751318482157,
+            "frozen_relative_mse": 1.0004293216930185,
+            "zero_missing_credit_relative_mse": 1.0,
+            "reconstructed_full_gradient_cosine": 0.9573768794868921,
+            "assessment_credit_state": "reset; no prior teacher labels"
+          }
+        ]
+      }
+    ],
+    "teacher_gradient_targets": 600,
+    "original_scored_targets": 300,
+    "train_sequences": 6,
+    "credit_parameters": 149,
+    "fixed_forward_teacher": true,
+    "final_step_fixed": true,
+    "credit_state_gradient_horizon": "one previous observed learner transition; no full-history gradient",
+    "scope": "Frozen native initialized teachers; short bounded DEV probe. MSE transfer evidence only. All exact teacher derivative work charged; no sparse-runtime/grokking/actor-quality claim"
+  },
+  "decision": "Whether learned native credit transfers to unseen sequences, histories and depths before state-cotangent integration",
+  "supported_flops": 20328144,
+  "flop_scope": "Supported PyTorch operation formulas only; special/unsupported work not included in this number",
+  "wall_s": 9.444866323000497,
+  "peak_rss_kb": 347976,
+  "source_sha256": {
+    "experiments/credit/credit_transfer_probe.py": "dfa893f61a6f2849acc932c226ed2124b85d08491fd781beb67618128786bd08",
+    "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}

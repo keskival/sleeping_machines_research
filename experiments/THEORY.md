@@ -351,6 +351,9 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 - [Credit-window token gather](theory/chunk_token_gather_20261006.md) — repeated lexical backward buffers in the executed64K ledger; state-independent lookup hoist, retained causal event operations and all-gradient/update/count/timing contracts. Isolated implementation only, numerical execution pending.
 
 
+- [Reciprocal event learning](theory/RECIPROCAL_EVENT_LEARNING.md) — augmented prediction/credit/update machine with persistent causal state, versioned records, sparse corrections and learned optimizer parameters. Native depth-2/4/8 gradients and one-step future derivatives pass; dense local work remains charged.
+- [Learned credit transfer and nonstationary structure](theory/CREDIT_GENERALIZATION.md) — credit-transfer and learning-transfer operators, task symmetries, information sufficiency, frozen-teacher and causal regime-shift protocols. Version-bound symmetry guards pass. First coordinate-credit pilot did not improve usable transfer; state-cotangent interface is the next integration gate. No grokking or efficiency claim.
+
 ## Typed semantics and temporal composition — 6 October 2026
 
 [Typed semantics, legal composition and temporal learning](theory/TYPED_SEMANTICS_AND_RACE_COMPOSITION_20261006.md) derives the restricted nominal raw-affine obstruction, typed-interface/core composition invariance and additional training-equivalence conditions. It retains joint winner/time credit and separates fixed predicate evidence from learned discovery. Thirty-nine stdlib mathematical/interface contracts pass, maximum finite-difference error1.94e-10; no new model fit or kernel substitution. Trees, typed neural baselines and established hybrid precedents remain controls.

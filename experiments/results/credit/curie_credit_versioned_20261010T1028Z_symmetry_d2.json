@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "tag": "curie_credit_versioned_20261010T1028Z_symmetry_d2",
+  "battle": "R1/B1",
+  "training": false,
+  "metrics": {
+    "native_relabeling": [
+      {
+        "depth": 2,
+        "forward_loss_equivariance_error": 0.0,
+        "full_gradient_equivariance_error": 1.1102230246251565e-16,
+        "local_gradient_equivariance_error": 1.1102230246251565e-16,
+        "learned_credit_function_equivariance_error": 1.3010426069826053e-18,
+        "learned_optimizer_update_equivariance_error": 1.3552527156068805e-20
+      },
+      {
+        "depth": 4,
+        "forward_loss_equivariance_error": 0.0,
+        "full_gradient_equivariance_error": 4.996003610813204e-16,
+        "local_gradient_equivariance_error": 4.440892098500626e-16,
+        "learned_credit_function_equivariance_error": 1.3010426069826053e-18,
+        "learned_optimizer_update_equivariance_error": 1.0164395367051604e-20
+      },
+      {
+        "depth": 8,
+        "forward_loss_equivariance_error": 0.0,
+        "full_gradient_equivariance_error": 4.440892098500626e-16,
+        "local_gradient_equivariance_error": 4.440892098500626e-16,
+        "learned_credit_function_equivariance_error": 2.6020852139652106e-18,
+        "learned_optimizer_update_equivariance_error": 8.673617379884035e-19
+      }
+    ],
+    "information_witness": {
+      "without_cause_bit_minimum_mse": 1.0,
+      "with_cause_bit_minimum_mse": 0.0
+    },
+    "scope": "Task-preserving key/value relabeling with corresponding parameter action; exact structure contract, no trained transfer or grokking claim"
+  },
+  "wall_s": 0.5770639760003178,
+  "decision": "Whether task symmetries are respected before fitting a transferable credit learner",
+  "source_sha256": {
+    "experiments/credit/check_credit_equivariance_v2.py": "ef33d42dea9f422ae4d03b36ad6c6c683ab8924bdc2d60db719b43abf8a89ef1",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}

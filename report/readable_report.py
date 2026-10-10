@@ -5481,6 +5481,8 @@ def build(M):
          'not a language leaderboard claim. The forward-supported residual estimator has eight '
          'finite mathematical tests; its initialized native forced-write contract is queued, '
          'and an integrated learning comparison follows only after that gate passes.')])
+    from report.reciprocal_native_appendix import pages as reciprocal_native_pages
+    pages.extend(reciprocal_native_pages())
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')

@@ -1,0 +1,57 @@
+{
+  "status": "completed",
+  "tag": "curie_reciprocal_native_v1_20261010T1008Z_smoke",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_reciprocal_native_v1_20261010T1008Z_smoke",
+    "mode": "smoke",
+    "steps": 3
+  },
+  "decision": "Whether persistent reciprocal credit and learned optimizer admit a bounded native DEV pilot",
+  "training": true,
+  "metrics": {
+    "history": [
+      {
+        "step": 0,
+        "future_nll": 3.619185658784373,
+        "calibration_mse": 0.00017801405870577643,
+        "credit_parameter_gradient_norm": 0.035909607529701064,
+        "optimizer_parameter_gradient_norm": 0.06829952982913953,
+        "selected_audit_blocks": 9,
+        "total_audit_blocks": 12
+      },
+      {
+        "step": 1,
+        "future_nll": 5.0785119880572,
+        "calibration_mse": 8.28297312260875e-08,
+        "credit_parameter_gradient_norm": 0.0647221815959,
+        "optimizer_parameter_gradient_norm": 0.13904972028834128,
+        "selected_audit_blocks": 3,
+        "total_audit_blocks": 12
+      },
+      {
+        "step": 2,
+        "future_nll": 4.098582308439675,
+        "calibration_mse": 0.0008653906208149224,
+        "credit_parameter_gradient_norm": 0.05213003658605225,
+        "optimizer_parameter_gradient_norm": 0.08817921074123855,
+        "selected_audit_blocks": 5,
+        "total_audit_blocks": 12
+      }
+    ],
+    "actor_support_and_future_sequences": 18,
+    "teacher_full_and_local_gradient_calls": 12,
+    "independent_future_loss_calls": 3,
+    "actual_sparse_teacher_savings": false,
+    "scope": "Fixed initialized native actor, one adapted step per independent task, shared credit/update parameters learn; no full actor fit or quality claim"
+  },
+  "wall_s": 1.1065964520003035,
+  "peak_rss_kb": 319428,
+  "host": "curie",
+  "source_sha256": {
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Native keyed temporal model, small synthetic development sequences; dense exact teachers charged; no TEST or efficiency claim"
+}

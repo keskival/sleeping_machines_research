@@ -1,0 +1,92 @@
+{
+  "status": "completed",
+  "tag": "curie_reciprocal_native_v1_20261010T1008Z_contract",
+  "battle": "R1/B1",
+  "args": {
+    "tag": "curie_reciprocal_native_v1_20261010T1008Z_contract",
+    "mode": "contract",
+    "steps": 3
+  },
+  "decision": "Whether persistent reciprocal credit and learned optimizer admit a bounded native DEV pilot",
+  "training": false,
+  "metrics": [
+    {
+      "depth": 2,
+      "parameters": 1723,
+      "audit_blocks": 12,
+      "mean_error": 5.551115123125783e-17,
+      "variance_identity_error": 1.0842021724855044e-18,
+      "full_audit_update_error": 1.0842021724855044e-19,
+      "temporal_semigroup_error": 1.1102230246251565e-16,
+      "one_step_future_meta_derivatives": {
+        "credit": {
+          "analytical": -0.019879486273051715,
+          "finite_difference": -0.019879486279350544,
+          "absolute_error": 6.298829513529114e-12
+        },
+        "optimizer": {
+          "analytical": -0.06649625228965157,
+          "finite_difference": -0.06649625228227762,
+          "absolute_error": 7.373948673894404e-12
+        }
+      },
+      "persistent_credit_state_elements": 24,
+      "optimizer_state_elements": 3446
+    },
+    {
+      "depth": 4,
+      "parameters": 2633,
+      "audit_blocks": 14,
+      "mean_error": 4.440892098500626e-16,
+      "variance_identity_error": 1.3877787807814457e-17,
+      "full_audit_update_error": 1.734723475976807e-18,
+      "temporal_semigroup_error": 1.1102230246251565e-16,
+      "one_step_future_meta_derivatives": {
+        "credit": {
+          "analytical": 0.04332290919577798,
+          "finite_difference": 0.04332290917119507,
+          "absolute_error": 2.458290515594541e-11
+        },
+        "optimizer": {
+          "analytical": -0.377341308847357,
+          "finite_difference": -0.3773413088659083,
+          "absolute_error": 1.8551271629974053e-11
+        }
+      },
+      "persistent_credit_state_elements": 28,
+      "optimizer_state_elements": 5266
+    },
+    {
+      "depth": 8,
+      "parameters": 4453,
+      "audit_blocks": 18,
+      "mean_error": 2.220446049250313e-16,
+      "variance_identity_error": 6.661338147750939e-16,
+      "full_audit_update_error": 6.938893903907228e-18,
+      "temporal_semigroup_error": 1.1102230246251565e-16,
+      "one_step_future_meta_derivatives": {
+        "credit": {
+          "analytical": 0.03775974431770606,
+          "finite_difference": 0.03775974435349383,
+          "absolute_error": 3.578776858192967e-11
+        },
+        "optimizer": {
+          "analytical": -0.4404004373965296,
+          "finite_difference": -0.4404004372293712,
+          "absolute_error": 1.6715839823433498e-10
+        }
+      },
+      "persistent_credit_state_elements": 36,
+      "optimizer_state_elements": 8906
+    }
+  ],
+  "wall_s": 1.481610284999988,
+  "peak_rss_kb": 289732,
+  "host": "curie",
+  "source_sha256": {
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Native keyed temporal model, small synthetic development sequences; dense exact teachers charged; no TEST or efficiency claim"
+}

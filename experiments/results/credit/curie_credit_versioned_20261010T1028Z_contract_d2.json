@@ -1,0 +1,439 @@
+{
+  "status": "completed",
+  "battle": "R1/B1",
+  "tag": "curie_credit_versioned_20261010T1028Z_contract_d2",
+  "args": {
+    "tag": "curie_credit_versioned_20261010T1028Z_contract_d2",
+    "mode": "contract",
+    "depth": 2,
+    "steps": 3
+  },
+  "metrics": [
+    {
+      "depth": 2,
+      "selected_teacher_parity_error": 0.0,
+      "local_gradient_parity_error": 0.0,
+      "zero_missing_path_certificate_error": 0.0,
+      "lazy_credit_transport_error": 0.0,
+      "total_parameters": 1723,
+      "ledger": {
+        "actor_local_forward_calls": 1,
+        "actor_local_scored_targets": 22,
+        "actor_local_backward_calls": 1,
+        "actor_local_gradient_parameter_elements": 1723,
+        "teacher_full_forward_calls": 1,
+        "teacher_full_scored_targets": 22,
+        "teacher_selected_backward_calls": 1,
+        "teacher_selected_parameter_elements": 519
+      }
+    },
+    {
+      "depth": 4,
+      "selected_teacher_parity_error": 0.0,
+      "local_gradient_parity_error": 0.0,
+      "zero_missing_path_certificate_error": 0.0,
+      "lazy_credit_transport_error": 0.0,
+      "total_parameters": 2633,
+      "ledger": {
+        "actor_local_forward_calls": 1,
+        "actor_local_scored_targets": 22,
+        "actor_local_backward_calls": 1,
+        "actor_local_gradient_parameter_elements": 2633,
+        "teacher_full_forward_calls": 1,
+        "teacher_full_scored_targets": 22,
+        "teacher_selected_backward_calls": 1,
+        "teacher_selected_parameter_elements": 974
+      }
+    },
+    {
+      "depth": 8,
+      "selected_teacher_parity_error": 0.0,
+      "local_gradient_parity_error": 0.0,
+      "zero_missing_path_certificate_error": 0.0,
+      "lazy_credit_transport_error": 0.0,
+      "total_parameters": 4453,
+      "ledger": {
+        "actor_local_forward_calls": 1,
+        "actor_local_scored_targets": 22,
+        "actor_local_backward_calls": 1,
+        "actor_local_gradient_parameter_elements": 4453,
+        "teacher_full_forward_calls": 1,
+        "teacher_full_scored_targets": 22,
+        "teacher_selected_backward_calls": 1,
+        "teacher_selected_parameter_elements": 1884
+      }
+    }
+  ],
+  "decision": "Whether selective teacher/credit/update gates pass under bounded memory across depth",
+  "training": false,
+  "wall_s": 4.7380789669996375,
+  "host": "curie",
+  "peak_rss_kb": 337136,
+  "supported_flops": 4960416,
+  "operator_ledger": {
+    "aten.empty.memory_format": {
+      "calls": 494,
+      "output_elements": 17801
+    },
+    "aten.normal_.default": {
+      "calls": 6,
+      "output_elements": 384
+    },
+    "aten.uniform_.default": {
+      "calls": 376,
+      "output_elements": 16521
+    },
+    "aten.logspace.default": {
+      "calls": 40,
+      "output_elements": 120
+    },
+    "aten.log.default": {
+      "calls": 64,
+      "output_elements": 912
+    },
+    "aten.randn.default": {
+      "calls": 28,
+      "output_elements": 84
+    },
+    "aten.mul.Tensor": {
+      "calls": 11236,
+      "output_elements": 212680
+    },
+    "aten.fill_.Scalar": {
+      "calls": 56,
+      "output_elements": 448
+    },
+    "aten.zero_.default": {
+      "calls": 59,
+      "output_elements": 451
+    },
+    "aten.zeros.default": {
+      "calls": 263,
+      "output_elements": 5122
+    },
+    "aten.lift_fresh.default": {
+      "calls": 66,
+      "output_elements": 636
+    },
+    "aten.slice.Tensor": {
+      "calls": 1900,
+      "output_elements": 52968
+    },
+    "aten.fill_.Tensor": {
+      "calls": 18,
+      "output_elements": 36
+    },
+    "aten.sub.Tensor": {
+      "calls": 1248,
+      "output_elements": 32623
+    },
+    "aten.copy_.default": {
+      "calls": 281,
+      "output_elements": 8821
+    },
+    "aten.detach.default": {
+      "calls": 3026,
+      "output_elements": 162271
+    },
+    "aten.clone.default": {
+      "calls": 341,
+      "output_elements": 33145
+    },
+    "aten.ones_like.default": {
+      "calls": 257,
+      "output_elements": 6934
+    },
+    "aten.cat.default": {
+      "calls": 774,
+      "output_elements": 42722
+    },
+    "aten.clamp_min.default": {
+      "calls": 48,
+      "output_elements": 1104
+    },
+    "aten.div.Tensor": {
+      "calls": 516,
+      "output_elements": 19059
+    },
+    "aten.embedding.default": {
+      "calls": 36,
+      "output_elements": 6720
+    },
+    "aten.log1p.default": {
+      "calls": 24,
+      "output_elements": 816
+    },
+    "aten.gt.Scalar": {
+      "calls": 24,
+      "output_elements": 552
+    },
+    "aten._to_copy.default": {
+      "calls": 36,
+      "output_elements": 4896
+    },
+    "aten.stack.default": {
+      "calls": 325,
+      "output_elements": 75536
+    },
+    "aten.view.default": {
+      "calls": 2809,
+      "output_elements": 519885
+    },
+    "aten.t.default": {
+      "calls": 2043,
+      "output_elements": 184008
+    },
+    "aten.addmm.default": {
+      "calls": 806,
+      "output_elements": 123162
+    },
+    "aten.add.Tensor": {
+      "calls": 10429,
+      "output_elements": 483536
+    },
+    "aten.exp.default": {
+      "calls": 752,
+      "output_elements": 12272
+    },
+    "aten.sigmoid.default": {
+      "calls": 56,
+      "output_elements": 4032
+    },
+    "aten.neg.default": {
+      "calls": 1301,
+      "output_elements": 15343
+    },
+    "aten.unsqueeze.default": {
+      "calls": 1204,
+      "output_elements": 22752
+    },
+    "aten.cos.default": {
+      "calls": 105,
+      "output_elements": 7560
+    },
+    "aten.sin.default": {
+      "calls": 105,
+      "output_elements": 7560
+    },
+    "aten.new_zeros.default": {
+      "calls": 148,
+      "output_elements": 10272
+    },
+    "aten.select.int": {
+      "calls": 6340,
+      "output_elements": 54646
+    },
+    "aten.native_layer_norm.default": {
+      "calls": 112,
+      "output_elements": 26880
+    },
+    "aten.gelu.default": {
+      "calls": 56,
+      "output_elements": 21504
+    },
+    "aten.softplus.default": {
+      "calls": 24,
+      "output_elements": 1104
+    },
+    "aten.aminmax.default": {
+      "calls": 24,
+      "output_elements": 48
+    },
+    "aten._local_scalar_dense.default": {
+      "calls": 516,
+      "output_elements": 0
+    },
+    "aten.scatter_.value": {
+      "calls": 24,
+      "output_elements": 4608
+    },
+    "aten.zeros_like.default": {
+      "calls": 33,
+      "output_elements": 729
+    },
+    "aten._log_softmax.default": {
+      "calls": 36,
+      "output_elements": 17952
+    },
+    "aten.log_sigmoid_forward.default": {
+      "calls": 12,
+      "output_elements": 1056
+    },
+    "aten._unsafe_view.default": {
+      "calls": 78,
+      "output_elements": 32784
+    },
+    "aten.mm.default": {
+      "calls": 639,
+      "output_elements": 108952
+    },
+    "aten.permute.default": {
+      "calls": 234,
+      "output_elements": 76368
+    },
+    "aten.bmm.default": {
+      "calls": 69,
+      "output_elements": 24360
+    },
+    "aten.expand.default": {
+      "calls": 526,
+      "output_elements": 16436
+    },
+    "aten.clamp_max.default": {
+      "calls": 12,
+      "output_elements": 528
+    },
+    "aten.special_log_ndtr.default": {
+      "calls": 12,
+      "output_elements": 528
+    },
+    "aten.pow.Tensor_Scalar": {
+      "calls": 269,
+      "output_elements": 8218
+    },
+    "aten.logaddexp.default": {
+      "calls": 12,
+      "output_elements": 528
+    },
+    "aten.full_like.default": {
+      "calls": 711,
+      "output_elements": 20430
+    },
+    "aten.where.self": {
+      "calls": 60,
+      "output_elements": 2640
+    },
+    "aten.logsumexp.default": {
+      "calls": 24,
+      "output_elements": 528
+    },
+    "aten.gather.default": {
+      "calls": 12,
+      "output_elements": 1056
+    },
+    "aten.squeeze.dim": {
+      "calls": 812,
+      "output_elements": 18322
+    },
+    "aten.sum.dim_IntList": {
+      "calls": 943,
+      "output_elements": 8315
+    },
+    "aten.sum.default": {
+      "calls": 36,
+      "output_elements": 36
+    },
+    "aten.scatter_add.default": {
+      "calls": 12,
+      "output_elements": 8448
+    },
+    "aten.scalar_tensor.default": {
+      "calls": 36,
+      "output_elements": 36
+    },
+    "aten.add.Scalar": {
+      "calls": 36,
+      "output_elements": 1584
+    },
+    "aten.mul.Scalar": {
+      "calls": 36,
+      "output_elements": 1584
+    },
+    "aten.lt.Scalar": {
+      "calls": 12,
+      "output_elements": 528
+    },
+    "aten.slice_backward.default": {
+      "calls": 268,
+      "output_elements": 53472
+    },
+    "aten._log_softmax_backward_data.default": {
+      "calls": 36,
+      "output_elements": 17952
+    },
+    "aten.transpose.int": {
+      "calls": 45,
+      "output_elements": 12768
+    },
+    "aten.log_sigmoid_backward.default": {
+      "calls": 12,
+      "output_elements": 528
+    },
+    "aten.softplus_backward.default": {
+      "calls": 24,
+      "output_elements": 1104
+    },
+    "aten.select_backward.default": {
+      "calls": 4200,
+      "output_elements": 302400
+    },
+    "aten.native_layer_norm_backward.default": {
+      "calls": 112,
+      "output_elements": 23072
+    },
+    "aten.gelu_backward.default": {
+      "calls": 56,
+      "output_elements": 21504
+    },
+    "aten.sigmoid_backward.default": {
+      "calls": 56,
+      "output_elements": 4032
+    },
+    "aten.embedding_dense_backward.default": {
+      "calls": 18,
+      "output_elements": 1152
+    },
+    "aten.mean.default": {
+      "calls": 251,
+      "output_elements": 251
+    },
+    "aten.std.correction": {
+      "calls": 9,
+      "output_elements": 9
+    },
+    "aten.allclose.default": {
+      "calls": 3,
+      "output_elements": 0
+    },
+    "aten.abs.default": {
+      "calls": 438,
+      "output_elements": 23176
+    },
+    "aten.max.default": {
+      "calls": 163,
+      "output_elements": 163
+    },
+    "aten.mul_.Tensor": {
+      "calls": 3,
+      "output_elements": 24
+    },
+    "aten.sqrt.default": {
+      "calls": 233,
+      "output_elements": 233
+    },
+    "aten.tanh.default": {
+      "calls": 466,
+      "output_elements": 59706
+    },
+    "aten.ne.Scalar": {
+      "calls": 275,
+      "output_elements": 8809
+    },
+    "aten.eq.Tensor": {
+      "calls": 275,
+      "output_elements": 8809
+    },
+    "aten.all.default": {
+      "calls": 275,
+      "output_elements": 275
+    }
+  },
+  "counting_scope": "Streaming PyTorch supported arithmetic plus all dispatched operator calls/output elements; special and unsupported arithmetic require separate cost formulas. Wall includes instrumentation. No total-FLOP efficiency claim.",
+  "source_sha256": {
+    "experiments/credit/reciprocal_native_v5.py": "082a5d3d2b0c391dccccba10ad7ec2afb5303caa8ed22b0c86f8154ecc596ea8",
+    "experiments/credit/reciprocal_native_v4.py": "1ec4d680008d1c4ab51f71dc9cff5eecb10b3ca3ee774774bb1b665523cdc899",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  }
+}
