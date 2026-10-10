@@ -1,0 +1,29 @@
+{
+  "tag": "curie_credit_symmetry_20261010T1025Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_credit_symmetry_20261010T1025Z",
+      "driver": "experiments/credit/check_credit_equivariance.py",
+      "queue": "experiments/queue/enabler/curie_credit_symmetry_20261010T1025Z/curie_credit_symmetry_20261010T1025Z.txt",
+      "queue_sha256": "a500b5ede9ee262527c417ca35f0047a28125f1f27e93893d76a8173a2dc2116",
+      "sources": {
+        "experiments/credit/check_credit_equivariance.py": "3150b81b28acd5e7c19d1769006a9cad29468c7d20b4cbf949c750967b36be67",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result_sources": {
+        "experiments/credit/check_credit_equivariance.py": "3150b81b28acd5e7c19d1769006a9cad29468c7d20b4cbf949c750967b36be67",
+        "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+        "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+        "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+      },
+      "result": "experiments/results/credit/curie_credit_symmetry_20261010T1025Z.json",
+      "timeout_s": 180,
+      "rss_kb": 1500000,
+      "vms_kb": 8000000
+    }
+  ]
+}
