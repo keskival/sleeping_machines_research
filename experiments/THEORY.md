@@ -369,3 +369,7 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 - [Conditions for useful learned credit](theory/CREDIT_LEARNING_CERTIFICATES.md) — producer-weighted calibration, informative-feature regression witness, exact residual-audit variance, overhead break-even condition and conditional smooth-descent benefit; small-scale fit/transfer/utility gates before depth scaling.
 
 - [Connected credit critic for future-directed learning](theory/CONNECTED_CREDIT_CRITIC.md) — intervention advantage on augmented causal history, finite-horizon RL recursion, connected persistent credit architecture, local adjoint boundary interpretation and sufficient finite/continuous action-improvement bounds.
+
+## Event-driven credit economics (10 October 2026)
+
+[Economical event credit](theory/ECONOMICAL_EVENT_CREDIT.md) specifies causal addressed credit state, calibrated residual audits, cost allocation, event emission, versioned asynchronous updates and complete work-to-quality gates under R1/B1.

@@ -1,0 +1,26 @@
+{
+  "tag": "curie_event_credit_v1_20261010T1650Z",
+  "host": "curie",
+  "battle": "R1/B1",
+  "jobs": [
+    {
+      "tag": "curie_event_credit_v1_20261010T1650Z_contract",
+      "driver": "experiments/credit/check_event_credit.py",
+      "queue": "experiments/queue/enabler/curie_event_credit_v1_20261010T1650Z/curie_event_credit_v1_20261010T1650Z_contract.txt",
+      "queue_sha256": "189c7bc90908a77be98021695602bbb16ee2ecd473fd64e13f875bc134d14b9d",
+      "sources": {
+        "experiments/credit/event_credit.py": "23a5029ecddf907fba52e4917efff0b3f47325084884a45de575d956f2ae73ba",
+        "experiments/credit/check_event_credit.py": "45a7125a17c6c1f806b14f5d3aaadd4dd44f67cecdee7ab3ac12da12367dda1e"
+      },
+      "result_sources": {
+        "experiments/credit/event_credit.py": "23a5029ecddf907fba52e4917efff0b3f47325084884a45de575d956f2ae73ba",
+        "experiments/credit/check_event_credit.py": "45a7125a17c6c1f806b14f5d3aaadd4dd44f67cecdee7ab3ac12da12367dda1e"
+      },
+      "result": "experiments/results/credit/curie_event_credit_v1_20261010T1650Z_contract.json",
+      "rss_kb": 200000,
+      "vms_kb": 1000000,
+      "timeout_s": 60,
+      "requires": []
+    }
+  ]
+}
