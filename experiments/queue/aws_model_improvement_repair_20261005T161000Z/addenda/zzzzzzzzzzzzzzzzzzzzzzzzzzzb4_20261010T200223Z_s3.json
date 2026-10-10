@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Result-only source-bound five-pass update gate: zero skips and all five epochs completed; no automatic fitting or TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b4_logspread_decision_20261010T2004Z",
+        "queue": "experiments/queue/b4/aws_b4_logspread_decision_20261010T2004Z/aws_b4_logspread_decision_20261010T2004Z.txt",
+        "queue_sha256": "fdb7102f9b03ed4e8a94a8655e9f3ec8e4e08c4a70b82879bb21f3827734e987",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/summarize_b4_logspread.py": "d946bf002bf7704df4f1f3d5300d4dd16746b274700bf17c18c23b6e88b3167d",
+          "experiments/tpp/b4_logspread_pilot.py": "0b6291e5203d480f1260b493bc31efb2a9a9541132e01514769a7e707ead1682",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_logspread_decision_20261010T2004Z.json",
+        "timeout_s": 60,
+        "rss_kb": 1000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
