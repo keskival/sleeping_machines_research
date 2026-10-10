@@ -74,13 +74,11 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   −240.42 ± 43.31 SE vs the bar −122.62 (best published time + best published mark NLL), 4 of 5 splits below it. The win
   is in the marks, 28.49 vs 144.79. Our addressed mark memory copies pages never seen in training (10–27% of test edits),
   which per-mark embeddings cannot do; the best published GRU model scores marks as if uniform. **MOOC lost:** −226.85 ±
-  2.83 SE vs −239.7; timing carries the gap, and it is the recording grid: the authors' own log-normal-mixture model,
-  trained with their code, gains 16.9 nats per sequence on MOOC from timestamp rounding and falls about 5 nats behind
-  our time NLL once gaps are spread within the recording cell (ours moves ≤ 0.4). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
+  2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
   published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
   2.42; its mark path overfits ~100-sequence training sets). **Github has no valid verdict yet:** its −198.5 (bar −272.9)
   comes from four of five splits whose weights went NaN by epoch 8 after one non-finite update, leaving epoch 2–3
-  checkpoints; guarded protocol reruns (TEST once, configuration unchanged) are queued, as for Wikipedia split 0. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps; the authors' own model gains 113 nats per sequence on Retweets from that rounding and trails ours by about 65 nats once gaps are spread within the recording cell (ours moves ≤ 0.4). LastFM is pending. These are
+  checkpoints; guarded protocol reruns (TEST once, configuration unchanged) are queued, as for Wikipedia split 0. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). LastFM is pending. These are
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
