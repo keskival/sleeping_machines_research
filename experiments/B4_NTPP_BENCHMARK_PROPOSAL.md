@@ -228,6 +228,19 @@ chosen there is pre-registered separately as a developed attempt on all seven da
 
 **v20 development result 4 (10 Oct 04:35, MOOC split 0, VALIDATION only): `--mark-mem 1 --mark-stats --d 48`.** Best epoch 76 of 107, all finite, 106,123 parameters, 50 min: L_T −308.95 / L_M 69.71 / total **−239.24**, the best MOOC validation total so far (d32 with the same pathways −238.63; mark memory alone −238.57; frozen −233.88). Width adds 0.6 nats per sequence, mostly in time (−308.95 vs −308.53), at 1.5× the parameters; the mark gain stays with the memory. The v21 delayed-clock arms (ln16; ln32 with memory and statistics) test the time component next.
 
+**v20/v21 development summary and selection noise (10 Oct 05:15, MOOC split 0, VALIDATION only, seed 0).** Four arms selected the same epoch (76 of 107): no learning-rate schedule exists, but every arm shares seed 0 and therefore the same per-epoch batch order, and epoch 76 is a shared validation dip of 0.4–1.0 nats against its neighbours. Best-epoch totals therefore carry up to ~1 nat of common selection luck, and arm differences below that are not resolved. Mean over epochs 60–100 (total / L_T / L_M):
+
+| Arm | Mean ep 60–100 | Best epoch total |
+|---|---|---|
+| frozen v19 | −232.29 / −306.34 / 74.06 | −233.88 |
+| `--mark-stats` | −234.26 / −306.63 / 72.38 | −234.78 |
+| **`--mark-mem 1`** | **−237.76 / −307.87 / 70.11** | −238.57 |
+| `--mark-mem 1 --mark-stats` | −237.93 / −308.13 / 70.20 | −238.63 |
+| `--mark-mem 1 --mark-stats --d 48` | −238.22 / −308.46 / 70.23 | −239.24 |
+| v21 `ln16` (16 delayed clocks, no mark pathways) | −232.51 / −306.27 / 73.76 | −233.59 |
+
+**Reading.** The per-event mark memory is a robust gain (≈ 5.5 nats per sequence over the window, 3.9 of it in marks and 1.5 in time). Statistics on top of it (+0.17) and width 48 (+0.3) are within selection noise; doubling the delayed clocks does nothing for MOOC time (−306.27 vs −306.34), consistent with the LNM audit's finding that the remaining MOOC time gap is recording-grid scoring rather than missing temporal capacity. Leading developed configuration: `--mark-mem 1` (simplest); the LastFM stats arms decide whether `--mark-stats` is added. Future arm comparisons use windowed means or more than one seed.
+
 ## Understanding the losses: the time metric on gridded data (9 Oct, validation, evaluation only)
 
 A **context-free** log-normal mixture (32 components, fitted to TRAIN log-gaps, no history, no training of any external
