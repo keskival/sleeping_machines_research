@@ -64,6 +64,14 @@ def temporal_packet_blocks():
             ('p',f"One layer at4/8/32 events with real Taxi TRAIN gaps: JVP error {max(x['jvp_error'] for x in r['rows']):.2e}, VJP {max(x['vjp_error'] for x in r['rows']):.2e}, joint reciprocity {max(x['reciprocity_error'] for x in r['rows']):.2e}. Zero time directions exactly preserve input-only responses; clock changes invalidate issued packets. Cache280/560/2240 floats, excluding shared/query/graph storage."),
             ('p','Elapsed intervals use layer-scaled time; upstream physical-time/delay producers need their chain rule. Eval/no-dropout first-order contract, no hard-route/parameter/higher-order packet or learned-credit utility/speed/quality claim. Active fits unchanged. Evidence: '+tag+'.')]
 
+def timed_producer_blocks():
+    tag='aws_timed_producer_actor_20261011_v1';path=ROOT/'experiments/results/credit'/f'{tag}.json'
+    if not path.exists():return []
+    r=json.loads(path.read_text());assert r['status']=='completed'
+    for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+    h=r['history']
+    return [('p',f"Joint content/time packet reconnects a diagnostic positive internal-tempo producer on a real four-event Taxi TRAIN prefix across four Adam updates. Maximum gradient error {max(x['gradient_error'] for x in h):.2e}, Adam-state error {max(x['adam_error'] for x in h):.2e}, parameter error {max(x['parameter_error'] for x in h):.2e}; temporal producer gradients are nonzero. Native layer/head parameter graph retained; physical race/addressed-memory clocks unchanged."),('p','Exact producer-credit execution contract, no active architecture substitution or learned-credit quality/speed claim. Evidence: '+tag+'.')]
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -92,4 +100,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks()]

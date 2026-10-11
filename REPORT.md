@@ -4984,6 +4984,10 @@ One layer at4/8/32 events with real Taxi TRAIN gaps: JVP error 3.33e-15, VJP 1.7
 
 Elapsed intervals use layer-scaled time; upstream physical-time/delay producers need their chain rule. Eval/no-dropout first-order contract, no hard-route/parameter/higher-order packet or learned-credit utility/speed/quality claim. Active fits unchanged. Evidence: aws_native_temporal_teaching_packet_20261011_v1.
 
+Joint content/time packet reconnects a diagnostic positive internal-tempo producer on a real four-event Taxi TRAIN prefix across four Adam updates. Maximum gradient error 4.16e-17, Adam-state error 5.64e-18, parameter error 8.67e-19; temporal producer gradients are nonzero. Native layer/head parameter graph retained; physical race/addressed-memory clocks unchanged.
+
+Exact producer-credit execution contract, no active architecture substitution or learned-credit quality/speed claim. Evidence: aws_timed_producer_actor_20261011_v1.
+
 ## Appendix. B4 repaired learning and mark-memory development
 
 The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.

@@ -15,3 +15,9 @@ Version/context/parameter checks include clock changes. Time coordinates are the
 aws_native_temporal_teaching_packet_20261011_v1: one native layer, random content and real Taxi TRAIN gap patterns,4/8/32 events with the initial zero gap. Maximum JVP error3.33e-15, VJP1.78e-15, reciprocity1.25e-14; zero time directions reproduce input-only responses exactly. Updated clock frequency invalidates the packet. Cache280/560/2240 floats. No learned-credit utility, model quality, whole-fit or speed claim.
 
 Timing sensitivity is now an explicit teaching target rather than an assumption of fixed clocks. Active B4 models remain unchanged. Next integration belongs with the compact-credit owner; preserve exact local derivatives as the reference and charge capture, added state, queries and audits.
+
+## Producer training integration
+
+The fixed-time teaching boundary omitted upstream delay-producer credit. A diagnostic positive internal-tempo producer checks the chain rule through both packet outputs while retaining the native layer parameter graph. Physical addressed-memory aging and race-density time remain unchanged; this fixture is not an active architectural substitution.
+
+aws_timed_producer_actor_20261011_v1 passes four Adam updates on a real four-event Taxi TRAIN prefix. Maximum gradient difference4.17e-17, Adam-state difference5.64e-18 and parameter difference8.68e-19; nonzero tempo gradients range0.0632–0.0677. All producer/layer/head gradients agree with ordinary autodiff. Whole numerical gate0.619s/387MiB. This validates exact temporal credit delivery, not learned-backward quality or efficiency. Next: connect content/time teaching targets to compact-credit integration and evaluate future loss per charged work.
