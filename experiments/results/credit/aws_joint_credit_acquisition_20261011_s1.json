@@ -1,0 +1,191 @@
+{
+  "status": "completed",
+  "tag": "aws_joint_credit_acquisition_20261011_s1",
+  "seed": 1,
+  "battle": "B1 local joint-credit acquisition",
+  "config": {
+    "depths": [
+      2,
+      4,
+      8
+    ],
+    "receivers": 512,
+    "queries": 4,
+    "steps": 400,
+    "lr": 0.01,
+    "heldout_receivers": 64,
+    "initialization": "zero linear field"
+  },
+  "rows": [
+    {
+      "depth": 2,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 0.40372238816543365,
+      "learned_credit_error": 3.7675997234069645e-14,
+      "residual_energy_reduction": 0.9999999999999066,
+      "paired_receiver_gain": 0.403722388165396,
+      "paired_receiver_ci95": [
+        0.36820245276005653,
+        0.4392423235707355
+      ],
+      "zero_probe_mse": 0.41379881427688825,
+      "learned_probe_mse": 4.320304743006683e-14,
+      "primal_s": 0.003018041141331196,
+      "forward_label_s": 0.00635051098652184,
+      "estimator_fitting_s": 0.16099629900418222,
+      "forward_validation_s": 0.0013631379697471857,
+      "reverse_validation_s": 0.000940266065299511,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.04420158010760644
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.004698209497983436
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 1.0166123118212308e-05
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 3.387723477602228e-14
+        }
+      ],
+      "packet_cached_floats": 560
+    },
+    {
+      "depth": 4,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 1.7127876586575002,
+      "learned_credit_error": 0.0024704976728234214,
+      "residual_energy_reduction": 0.998557615907415,
+      "paired_receiver_gain": 1.7103171609846768,
+      "paired_receiver_ci95": [
+        1.5403319741824584,
+        1.8803023477868952
+      ],
+      "zero_probe_mse": 1.8134673047811365,
+      "learned_probe_mse": 0.00239260903625959,
+      "primal_s": 0.0034965130034834146,
+      "forward_label_s": 0.010081806918606162,
+      "estimator_fitting_s": 0.16004852601327002,
+      "forward_validation_s": 0.002225792035460472,
+      "reverse_validation_s": 0.0015702620148658752,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.12254337528077189
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.047155725894957874
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 0.008521768015383442
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 0.00022910766717950315
+        }
+      ],
+      "packet_cached_floats": 1120
+    },
+    {
+      "depth": 8,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 0.45564399127834493,
+      "learned_credit_error": 3.512019698332136e-12,
+      "residual_energy_reduction": 0.9999999999922922,
+      "paired_receiver_gain": 0.45564399127483296,
+      "paired_receiver_ci95": [
+        0.40636488698564327,
+        0.5049230955640227
+      ],
+      "zero_probe_mse": 0.406523797505708,
+      "learned_probe_mse": 3.6319006916909165e-12,
+      "primal_s": 0.005462374072521925,
+      "forward_label_s": 0.016439744969829917,
+      "estimator_fitting_s": 0.16959990095347166,
+      "forward_validation_s": 0.003972098929807544,
+      "reverse_validation_s": 0.0028707159217447042,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.030919734250854616
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.0026915867036267573
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 8.257635193001916e-06
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 1.030028850696208e-12
+        }
+      ],
+      "packet_cached_floats": 2240
+    }
+  ],
+  "gate": "experiments/results/credit/aws_joint_credit_training_20261011_v1.json",
+  "input_sha256": {
+    "experiments/results/credit/aws_joint_credit_training_20261011_v1.json": "06fe1c77a28d8d180d2cd618d6570b89fc4df78c73377940eabdd4906856ef5a"
+  },
+  "source_sha256": {
+    "experiments/credit/fit_joint_credit_acquisition.py": "843cc3bfcb5168d92f95b98cf386ad54208a15c7d8d7642492a3c690fc8b266f",
+    "experiments/credit/check_joint_forward_risk.py": "9ed52098bc896f1f646bb9930111fbead2e092aab75b79c2deb4de876f856e7c",
+    "experiments/credit/joint_forward_residual_risk.py": "70f84ca0032fd42f1724b8caf36d746beadc589e4885c8dfa6436cd500b3cd9b",
+    "experiments/credit/check_deep_temporal_packet.py": "72adc553a154380a053ca90f434798f1bce7c82a7e60405fff5d18d8bd8cf856",
+    "experiments/credit/native_fused_temporal_packet.py": "d84455e74f6f629b0aa886e6fad10f3bead5ebfa7fdd8a9db98bc1ec0b3f7b38",
+    "experiments/credit/native_deep_temporal_packet.py": "4ac12ee90d01eb5375e549ff02ea24c2e3c16b5508ecb30a71120f4fd00403f8",
+    "experiments/credit/native_temporal_teaching_packet.py": "af41285f2601f57ff7151ca81128031d3336fc37f42319b0b6a4a29a86deff46",
+    "experiments/credit/native_training_temporal_packet.py": "c9b4741744b315c915f033443336c64c2287f3b609bc59ae628593dca731f2ae",
+    "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+    "experiments/credit/predictable_audit_allocation_v2.py": "f37c61d1e4bbba600ca985a38bd6e605022d20fbc30f4fe26fa8cd1578c562c3",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "wall_s": 1.1518792710267007,
+  "max_rss_kb": 405348,
+  "scope": "Fixed TRAIN-prefix frozen actor and artificial terminal cotangents; 3unique task targets per depth, not512 new data examples. Forward-only probe labels fit a1152parameter linear local credit map. Fresh receiver/probe calibration, final reverse reference charged separately. No cross-context/version transfer, future task learning, hard-route, full-learning efficiency or Transformer claim; this is a local acquisition certificate."
+}
