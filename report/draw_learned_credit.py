@@ -51,7 +51,7 @@ def arrow(ax, points, color=BLUE, dashed=False, lw=1.8):
 
 def comparison():
     fig, ax = canvas('Same goal. A different way to assign learning credit.',
-                     'Ordinary synchronous Transformer training vs the proposed temporal, sparse, learned-credit substrate')
+                     'Ordinary synchronous Transformer training vs the proposed temporal, sparse, learned-credit substrate\nCredit tells each component how to change to reduce the prediction loss.')
     ax.text(4.55, 10.15, 'STANDARD TRANSFORMER', ha='center', color=BLUE, weight='bold', fontsize=13)
     ax.text(13.15, 10.15, 'OUR LEARNED-CREDIT CYCLE', ha='center', color=TEAL, weight='bold', fontsize=13)
     ax.plot([8.8, 8.8], [1.4, 10.25], color='#dbe3ee', lw=1)
@@ -87,7 +87,7 @@ def comparison():
 
 def closure():
     fig, ax = canvas('How the forward pass teaches the credit estimator',
-                     'One local credit boundary; measured responses and observed outcomes close the training loop')
+                     'One local credit boundary; measured responses and observed outcomes close the training loop\nv is an input direction; Jv its forward response; c the observed loss’s local output credit.')
     box(ax, 3.2, 9.15, 4.5, 1.0, 'Forward model θ', 'Produces the next prediction', color=TEAL, fill='#e9f7f4')
     box(ax, 8.5, 9.15, 3.6, 1., 'Prediction', 'Before observing the outcome', color=TEAL, fill='#e9f7f4', size=12)
     box(ax, 14, 9.15, 4.7, 1., 'Observe outcome → loss', 'Get local output credit c', size=12)
