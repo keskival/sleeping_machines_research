@@ -115,6 +115,21 @@ def split2_development_blocks():
         else:blocks.append(('p','Full split2 repaired fit fails its finite/no-skip completion gate; current compact readout and benchmark scores retained. Evidence: '+full_tag+'.'))
     return blocks
 
+def split2_marks_blocks():
+    tag='aws_b4_split2_marks_decision_20261011';path=ROOT/'experiments/results/tpp_b4'/f'{tag}.json'
+    if not path.exists():return []
+    d=bound(tag)
+    for path,digest in d['input_sha256'].items():
+        verify_artifact(path,digest);record=json.loads((ROOT/path).read_text())
+        for source,sha in record['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+    if not d['fits_completed_without_skips']:return [('p','Split2 mark fit fails finite/no-skip completion; repaired core and current compact readout retained. No family-loss or benchmark verdict. Evidence: '+tag+'.')]
+    rows=[[label,f"{r['L_T']:.3f}",f"{r['L_M']:.3f}",f"{r['total']:.3f}"] for label,r in [('Repaired core',d['selected_repaired']),('Mark memory',d['selected_marks'])]]
+    work=[[r['arm'],str(r['epochs']),f"{r['targets']:,}",f"{r['fit_s']:.1f}",f"{r['fit_s']/r['targets']*1000:.3f}",f"{r['inference']['seconds_per_target']*1e6:.2f}"] for r in d['accounting']]
+    return [('p',f"Prospective split2 mark-memory gate {'passes' if d['gate'] else 'fails'}: last20 common-epoch mean mark gain {d['last20_common_mark_gain']:.3f}, required1.000. Selected mark gain {d['selected_mark_gain']:.3f}, selected total gain {d['selected_total_gain']:.3f}. Selected-checkpoint improvement does not override the stability gate."),
+            ('table',(['Model','Time loss','Mark loss','Total loss'],rows,[49,33,33,33])),
+            ('table',(['Arm','Passes','TRAIN targets','Fit seconds','Fit ms/target','DEV us/target'],work,[36,17,32,26,30,31])),
+            ('p',f"Same Github cohort/split2/seed0, original100pass/30patience/lr0.003/batch32, no TEST. Core21,768/mark29,057 parameters; auxiliary temporal memory updates densely, all clocks scored. Shared pilot {d['paid_pilot_wall_s']:.2f}s and DEV evaluation remain additional. Full fitting FLOPs unmeasured; no sparse-credit, matched-quality efficiency, independent-dataset or benchmark claim. Both complete predictors remain evidence for a separately registered TRAIN-only calibration/readout decision. Evidence: "+tag+'.')]
+
 def pages():
     path=ROOT/'experiments/results/tpp_b4/aws_b4_marks_diagnosis_20261011T0303Z.json'
     if not path.exists():return []
@@ -146,4 +161,4 @@ def pages():
         ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
         ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
         ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
-        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks() + readout_curve_blocks() + split2_development_blocks()]
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks() + readout_curve_blocks() + split2_development_blocks() + split2_marks_blocks()]

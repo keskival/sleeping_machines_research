@@ -61,3 +61,9 @@ Pilot v2 completes5 passes/223.35s with zero skips; early paired scores match gu
 ## Current split2 full-fit decision
 
 Full Github split2 seed0 repaired fit completes 70 passes, zero skips; selected DEV total -196.121 vs guarded -187.807, gain 8.314. Registered selected-gain>=0.5 gate passes. Fitting 3110.03s, DEV evaluation 17.54s, paid pilot 223.35s; peak RSS 2563.6MiB. Same Github cohort/new partition, one seed; no new TEST or benchmark replacement. Next mark/readout development uses this completed decision; no mark fit is automatically admitted.
+
+## Prospective split2 mark-teacher admission
+
+The repaired core completes70 passes with zero skips and gains8.314 selected total DEV nats/sequence over guarded split2, passing the registered0.5 gate. Reuse the established per-event mark-memory recipe on split2, fresh seed0, original100-pass/30-patience/lr0.003/batch32. First require zero-branch time/mark parity, established v20 branch parity, time-gradient isolation and finite full backward on short split2 TRAIN prefixes at the newly completed repaired checkpoint. Once it passes, the bounded full mark fit is admitted. Core/mark fits, the prior five-pass pilot, and downstream teacher preparation remain charged. No split1 predictions or checkpoints validate split2.
+
+Compare selected DEV time/mark/total and the last20 common epochs against the completed repaired core. The unchanged joint stability gate requires mean common-window mark gain>=1.0 with zero skipped updates; failure does not relax that gate. A complete predictor can still be used as a diagnostic teacher, but a new TRAIN-only calibration/readout decision needs its own registration after the results. No TEST, benchmark replacement or family verdict. Same Github cohort/new partition, one seed; not independent-dataset confirmation.
