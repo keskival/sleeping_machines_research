@@ -63,6 +63,23 @@ def observation_anchor_blocks():
         blocks.append(('p','Anchored teacher-free bundle restoration passes all three seeds: score/time parity0, normalized mark probabilities<=4.45e-16 error and first-target suffix-mark error0. Bundle source/checkpoint hashes are verified; no teacher/TRAIN loaded to restore.'))
     return blocks
 
+def readout_curve_blocks():
+    tag='aws_readout_curve_decision_20261011'
+    if not (ROOT/'experiments/results/tpp_b4'/f'{tag}.json').exists():return []
+    decision=bound(tag)
+    for path,digest in decision['input_sha256'].items():
+        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+        record=json.loads((ROOT/path).read_text())
+        for source,sha in record['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+    rows=[]
+    for r in decision['rows']:
+        t=r['arms']['teacher']['first_scheduled_point'];a=r['arms']['anchor']['first_scheduled_point']
+        rows.append([str(r['seed']),f"{r['target']:.3f}",str(t['passes']) if t else 'unreached',str(a['passes']) if a else 'unreached',f"{r['incremental_work_ratio']:.3f}",f"{r['complete_supported_training_work_ratio']:.6f}"])
+    return [('p','Fixed-target readout learning curves confirm earlier scheduled attainment in two seeds and equal attainment in the third. Targets come from completed teacher-only compact students before new runs; snapshots0/5/10/20/35/50, no early stopping or DEV selection. Both final arms reproduce their saved50-pass scores within1e-9.'),
+            ('table',(['Seed','Target marks','Teacher passes','Anchor passes','Incremental fit ratio','Inherited-fit ratio'],rows,[14,28,30,29,34,39])),
+            ('p','Ratios are anchor/teacher training wall at the first scheduled target. Incremental fitting includes teacher preparation, linear fitting and residual updates; inherited ratio also charges original core training and both earlier readout-development rounds. Those large prerequisites make the complete supported training ratio near1: this is an incremental readout-learning improvement, not whole-pipeline/depth/sparse-credit supremacy. DEV evaluation is separately charged in the curve records; inherited core evaluation, failed initial pilots and other diagnostic overhead are additional costs, not zero.'),
+            ('p',f"All six curve diagnostics charge {decision['whole_six_fit_diagnostic_wall_s']:.2f}s wall; mean final mark gain remains {decision['mean_final_gain']:.3f} nats/sequence. Same frozen native core, identical TRAIN order/initialization/optimizer, three seeds on one Github DEV split; no TEST. Driver legacy human-readable rule string says90/10 for both arms; actual observed_train_weight fields and executed source are0/0.1, verified by saved-score reproduction. Evidence: "+tag+'.')]
+
 def pages():
     path=ROOT/'experiments/results/tpp_b4/aws_b4_marks_diagnosis_20261011T0303Z.json'
     if not path.exists():return []
@@ -94,4 +111,4 @@ def pages():
         ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
         ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
         ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
-        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks()]
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks() + readout_curve_blocks()]
