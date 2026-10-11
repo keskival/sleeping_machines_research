@@ -85,7 +85,7 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages() + optimizer_aware_pages() + task_valued_pages() + combined_task_pages() + paired_audit_pages()
+    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages() + optimizer_aware_pages() + task_valued_pages() + combined_task_pages() + paired_audit_pages() + connected_paired_pages()
 
 
 def sparse_receiver_pages():
@@ -142,6 +142,42 @@ def combined_task_pages():
     assert d['status']==a['status']==f['status']=='completed'
     rows=[[r['policy'].replace('_',' '),f"{r['gain_over_baseline']:+.6f}",f"[{r['bootstrap95'][0]:+.6f}, {r['bootstrap95'][1]:+.6f}]",f"{r['query_supported_flops']/1e6:.3f}"] for r in d['metrics']['rows']]
     return [[('h2','Combined route credit trained for future task value'),('p','Paid-packet diagnosis finds baseline static-response error larger than the learning-mediated effect. Even exact empirical effect addition can worsen route choices through error cancellation. The new combined correction uses expected future loss under a soft policy plus a frozen-prior KL penalty; matched MSE has the same2817 parameters, initialization, TRAIN data and256 updates. Fourfold TRAIN utility selection retains the baseline.'),('table',(['Fresh policy','Gain vs baseline','Prefix bootstrap95%','Extra query MFLOPs'],rows,[49,32,60,26])),('small',d['scope']),('small',f"Fresh32-prefix/8-continuation phase{d['whole_wall_s']:.2f}s, teacher{d['metrics']['teacher_supported_flops']/1e9:.3f}supportedGFLOPs; cross-fit/refit{f['whole_wall_s']:.2f}s/{sum(x['supported_flops'] for x in f['metrics']['fit_work'])/1e9:.3f}GFLOPs. Each query cell is whole32-prefix work; prior baseline fitting/teacher costs remain additional."),('p','Task-valued fitting has a positive fresh diagnostic point gain, while MSE loses utility. The task interval crosses zero and the primary locked policy is unchanged; no adopted or replicated utility win.'),('h2','Sparse utility audits expose a second learning objective'),('p',f"Issued policy-difference residual audits reconstruct native utility within{a['metrics']['native_exhaustive_mean_error']:.2g}. Only two actions require support on each of12 changed prefixes; unchanged policies require no comparison audit. Current learned residual prediction raises conditional action-sampling variance0.000810 versus zero-predictor0.000231. No efficiency promotion."),('small',a['scope']),('p','Theory derives a common-mode residual calibration that leaves route choices and unbiased gain unchanged but minimizes this audit variance. The next integrated learner must train both task contrasts and economical residual transport, issuing its prediction/calibration before future feedback.')]]
+
+
+def connected_paired_pages():
+    folder=ROOT/'experiments/results/credit'
+    prefix='curie_sparse_paired_ac_v2_20261011T0930Z'
+    stages=[]
+    for stage in ['acquire','reuse']:
+        path=folder/f'{prefix}_{stage}.json'
+        analysis=folder/f'{prefix}_analyze_{stage}.json'
+        if path.exists() and analysis.exists():
+            d=json.loads(path.read_text()); a=json.loads(analysis.read_text())
+            assert d['status']==a['status']=='completed'
+            stages.append((stage,d,a))
+    if not stages:return []
+    stage,d,a=stages[-1]; m=d['metrics']; e=m['evaluation']
+    rows=[[r['arm'].replace('sparse_','').replace('_',' '),f"{r['gain_vs_baseline']:+.6f}",f"{r['heldout_pair_error_over_zero']:.3f}",f"{r['whole_fit_gflops']:.3f}",f"{r['fit_mflops_per_target']:.3f}",f"{r['whole_fit_s']:.1f}"] for r in a['rows']]
+    curve=[]
+    for name,data,diagnostic in stages:
+        f={r['arm']:r for r in diagnostic['rows']}
+        pair=diagnostic['comparisons']['sparse_learned_over_sparse_fixed']
+        curve.append([str(f['sparse_learned']['policy_updates']),f"{pair['gain']:+.6f}",f"{diagnostic['learned_probe_error_ratio_vs_fixed']:.3f}",f"{f['sparse_learned']['work_ratio_vs_full']:.3f}"])
+    comparisons=[]
+    for key,pair in a['comparisons'].items():
+        lo,hi=pair['bootstrap95']
+        comparisons.append([key.replace('sparse_','').replace('_',' '),f"{pair['gain']:+.6f}",f"[{lo:+.6f}, {hi:+.6f}]"])
+    phase=sum(data['whole_wall_s'] for _,data,_ in stages)
+    teacher=sum(data['metrics']['evaluation']['supported_flops'] for _,data,_ in stages)/1e9
+    return [[('h2','Connected paired credit: acquisition and reuse'),
+        ('p','A10584-parameter connected route controller and an equally sized recurrent critic learn together. A fixed native depth4 timed/keyed carrier executes one selected optional hard write; every episode scores four factual future forecasts before independent readout Adam updates. A positive-probability audit adds a reference world and trains credit from learner-aware loss contrasts. No backpropagated-gradient labels train this critic.'),
+        ('table',(['Arm','Gain / target','Pair error / zero','Fit GFLOPs','MFLOPs / target','Fit seconds'],rows,[30,29,30,26,28,24])),
+        ('small',f"Latest completed stage: {stage}; one seed,32 common DEV prefixes/eight paired futures, including receivers6/7 never TRAIN-labelled. Gains compare with the saved baseline route; arithmetic and wall use the same whole-fit boundary in every row, per-target work divides by unique factual targets. Fitting includes acquisition for frozen-reuse/reset clones. Supported FLOPs omit unsupported pointwise/scalar/special and optimizer arithmetic; full wall includes those operations. Inherited source-model pretraining remains additional."),
+        ('table',(['Episodes','Learned over fixed gain','Pair MSE learned / fixed','Learned / full fit work'],curve,[25,47,47,48])),
+        ('table',(['Paired utility comparison','Gain / target','Prefix bootstrap95'],comparisons,[65,35,67])),
+        ('p','The experience ladder admits further acquisition after finite/resource checks, rather than requiring an immediate small-scale utility advantage. At128 episodes learned credit has5.10x the frozen critic’s held-out contrast error and2.95x full-audit supported fitting work. The512-episode stage separates ongoing learning from acquired-frozen/reset credit at identical acquired controller initialization. Only completed rows appear here; these comparisons diagnose the variant and its paid investment.'),
+        ('small',f"Completed phases{phase:.2f}s; shared DEV verification{teacher:.3f}supportedGFLOPs is additional, with all requested action/probe worlds counted. Peak RSS{max(data['peak_rss_kb'] for _,data,_ in stages)/1024:.1f}MiB. Per-arm factual target/policy/critic/readout-update and extra-world counts are retained in source JSON/PT. Carrier is fixed; readouts reset per episode. This is synthetic route-learning development, not all-carrier, real-market, matched-quality or depth-scaling evidence."),
+        ('p','The next economy test follows sensitivity-weighted gradient residuals and actual audit cost. A predictable positive audit propensity can preserve the raw mean while allocating work; critic training must amortize its own query, storage and update cost. Gradient clipping and Adam do not preserve raw-gradient unbiasedness as a parameter-update identity.')]]
 
 
 def paired_audit_pages():
