@@ -52,7 +52,7 @@ def prefix_predictions(actor, critic, head, t, m):
     return base.flatten(), pred.flatten()
 
 
-def measure(smoke):
+def measure(smoke, stream_seed=None, audit_seed=492):
     oldresult, saved = load(SOURCE)
     selected, fitted = load(f'experiments/results/credit/{PREFIX}_select.json')
     _, prior = load(oldresult['prior_result'])
@@ -65,12 +65,12 @@ def measure(smoke):
         initial, train_changed = train_offset(saved['train_tensors'], head)
     online = CausalOffset(initial, rate=.125)
     count, futures = (2, 1) if smoke else (32, 8)
-    stream_seed = 772 if smoke else 472
+    stream_seed = (772 if smoke else 472) if stream_seed is None else stream_seed
     methods = ['zero_predictor', 'raw_task', 'train_centered', 'causal_centered']
     records = []
     policy_flops = teacher_flops = 0
     policy_wall = teacher_wall = 0.
-    sampled_rng = np.random.default_rng(492)
+    sampled_rng = np.random.default_rng(audit_seed)
     for i in range(count):
         # New namespace; only the prefix exists before policies and receipts are issued.
         t, m = native.base.batch(4100000+stream_seed*1000+i, size=1, pairs=2)
@@ -136,7 +136,7 @@ def measure(smoke):
                          variance_saving_vs_zero=float(saving.mean()),
                          variance_saving_bootstrap95=np.quantile(saving[bootstrap].mean(1), [.025, .975]).tolist(),
                          realized_mean_error=float(errors.mean()), realized_squared_error=float(np.mean(errors**2))))
-    metrics = dict(rows=rows, prefixes=count, continuations=futures, stream_seed=stream_seed,
+    metrics = dict(rows=rows, prefixes=count, continuations=futures, stream_seed=stream_seed, audit_seed=audit_seed,
                 changed_prefixes=sum(r['old'] != r['new'] for r in records),
                 train_changed_prefixes=train_changed, initial_train_offset=initial,
                 final_offset=online.value, calibration_feedback_updates=online.version,
@@ -154,7 +154,11 @@ def measure(smoke):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--tag', required=True)
-    ap.add_argument('--mode', choices=['smoke', 'measure'], required=True); args = ap.parse_args()
+    ap.add_argument('--mode', choices=['smoke', 'measure'], required=True)
+    ap.add_argument('--stream-seed', type=int)
+    ap.add_argument('--audit-seed', type=int, default=492)
+    ap.add_argument('--smoke-result', default=f'experiments/results/credit/{TAG}_smoke.json')
+    args = ap.parse_args()
     torch.set_default_dtype(torch.float64); torch.set_num_threads(1)
     out = ROOT/'experiments/results/credit'/f'{args.tag}.json'; assert not out.exists(); start = time.monotonic()
     contract = json.loads((ROOT/f'experiments/results/credit/{TAG}_contract.json').read_text())
@@ -162,11 +166,11 @@ def main():
     for path, digest in contract['source_sha256'].items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == digest, path
     if args.mode == 'measure':
-        smoke = json.loads((ROOT/f'experiments/results/credit/{TAG}_smoke.json').read_text())
+        smoke = json.loads((ROOT/args.smoke_result).read_text())
         assert smoke['status'] == 'completed'
         for path, digest in smoke['source_sha256'].items():
             assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == digest, path
-    metrics, payload = measure(args.mode == 'smoke')
+    metrics, payload = measure(args.mode == 'smoke', args.stream_seed, args.audit_seed)
     checkpoint = out.with_suffix('.pt'); torch.save(payload, checkpoint)
     result = dict(status='completed', battle='B1/R1', tag=args.tag, mode=args.mode, metrics=metrics,
                   whole_wall_s=time.monotonic()-start, peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
