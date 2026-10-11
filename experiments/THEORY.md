@@ -403,3 +403,5 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 [Unified predictive world and reciprocal credit](theory/SHARED_WORLD_MODEL_AND_RECIPROCAL_CREDIT.md) connects shared policy/loss/credit representations, learner-inclusive state, Bellman model-error bounds and paired learning-effect supervision. Known world-model and meta-gradient primitives are attributed; prototype intervention values remain scoped to the declared readout learning policy.
 
 Task-valued trust and exact shared-context correction execution: [TASK_VALUED_CREDIT_GATES](theory/TASK_VALUED_CREDIT_GATES.md). TRAIN-only selection, fresh utility and preserved optimizer semantics are now measured.
+
+Causal audit variance, drifting residual bias and delayed receipts: [CAUSAL_AUDIT_VARIANCE_AND_DRIFT](theory/CAUSAL_AUDIT_VARIANCE_AND_DRIFT.md). Separates route contrasts from economical residual levels, with conditional tracking bound.
