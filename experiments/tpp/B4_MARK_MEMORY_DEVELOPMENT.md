@@ -136,3 +136,13 @@ selected DEV number with the calibration diagnostic.
 Next decision: independently confirm scalar calibration before engineering
 one integrated mark readout. No blind extra residual/private-input fit is
 admitted. All completed failures/checkpoints remain evidence; TEST untouched.
+
+## Fixed-recipe calibration confirmation pipeline — 11 October
+
+After completing the saved-curve scale audit and preserving Amazon seed2, AWS admits two independent training seeds (1,2), not a tuning grid. Github split1, existing repaired and joint-mark architectures, original learning rate/dropout/patience, maximum100 passes; CPU one thread, 3GB RSS cap per fit,9000s queue timeout,8GiB available floor. Each seed trains its two prerequisite predictors and then fits one global coefficient using TRAIN only. No TEST loading. Seed0 remains exploratory selection evidence; seeds1/2 prospectively check the selected recipe on the same DEV split, not independent datasets.
+
+Registered confirmation gate: mean DEV mark improvement at least1nat/sequence across seeds0/1/2 and strictly positive improvement in each seed, with repaired time density unchanged. Initial seed0 single-run gate and failed joint/residual stability gates stay distinct; no gate is relaxed. Report every completed seed and charged predictor fits, including failures. A passing calibration gate is reproducibility of this diagnostic, not a benchmark win or an integrated sparse-learning result.
+
+Immutable queued tags: `aws_b4_repair_confirm_20261011_s{1,2}`, `aws_b4_marks_confirm_20261011_s{1,2}`, `aws_b4_calibration_confirm_20261011_s{1,2}`. Versioned drivers add only explicit seed/input selection, preserving original drivers. Slots1/2 remain governed by the existing AWS scheduler. Checkpoints preserve Adam/RNG and epoch history.
+
+`tmux aws_calibration_confirmation` runs `scripts/continue_aws_calibration_confirmation.py`: await completed prerequisites, submit `aws_b4_calibration_confirmation_20261011_decision` through run_safe, then three saved-predictor DEV serving/per-sequence diagnostic queues. Both passing and failing calibration gates receive these diagnostics; no additional fitting is automatic. Failures or the bounded continuation deadline stop with state in `.git/aws_b4_calibration_confirmation_20261011.continuation.json`. The next engineering choice uses that measured evidence: integrate a compact readout if the benefit is reproducible, otherwise diagnose before spending more compute.

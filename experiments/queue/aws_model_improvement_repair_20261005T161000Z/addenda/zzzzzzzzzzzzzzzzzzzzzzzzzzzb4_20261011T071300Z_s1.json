@@ -1,0 +1,28 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Confirm fixed TRAIN-only conditional-mark calibration on independent training seeds; selected recipe unchanged, no TEST or tuning",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b4_repair_confirm_20261011_s1",
+        "queue": "experiments/queue/b4/aws_b4_repair_confirm_20261011_s1/aws_b4_repair_confirm_20261011_s1.txt",
+        "queue_sha256": "bb638499a2e74c5216d88a9d4059e1fb7b09cb114648d3457f8a951f3ffde3c5",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/b4_logspread_seed_confirmation.py": "037d9b9945b34d111a7c2719568dd88af260fa344a688cfde327e09d8f8e1da8",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_repair_confirm_20261011_s1.json",
+        "timeout_s": 9000,
+        "rss_kb": 3000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
