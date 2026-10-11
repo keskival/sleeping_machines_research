@@ -1,0 +1,168 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_spectral_transport_fresh_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 6.643523338507223e-09,
+      "conditional_logit_variance": 6.4391910814683744e-09
+    },
+    {
+      "arm": "first8_exact_no_tail",
+      "mse": 2.430393359158454e-09,
+      "conditional_logit_variance": 2.3556158713062007e-09
+    },
+    {
+      "arm": "static_full",
+      "mse": 7.007661853174303e-10,
+      "conditional_logit_variance": 6.792052454748403e-10
+    },
+    {
+      "arm": "reference_full",
+      "mse": 7.499636088106629e-10,
+      "conditional_logit_variance": 7.268888589676556e-10
+    },
+    {
+      "arm": "transport_diagonal",
+      "mse": 1.992157235347555e-12,
+      "conditional_logit_variance": 1.9308606974806822e-12
+    },
+    {
+      "arm": "transport_spectral",
+      "mse": 5.492360430245745e-13,
+      "conditional_logit_variance": 5.323364724791467e-13
+    }
+  ],
+  "comparisons": {
+    "spectral_over_transport_diagonal": {
+      "mse_gain": 1.4429211923229807e-12,
+      "paired_prefix_bootstrap95": [
+        1.4429211923229807e-12,
+        1.4429211923229807e-12
+      ],
+      "per_prefix_gain": [
+        1.4429211923229807e-12
+      ]
+    },
+    "spectral_over_static_full": {
+      "mse_gain": 7.002169492744057e-10,
+      "paired_prefix_bootstrap95": [
+        7.002169492744057e-10,
+        7.002169492744057e-10
+      ],
+      "per_prefix_gain": [
+        7.002169492744057e-10
+      ]
+    },
+    "spectral_over_reference_full": {
+      "mse_gain": 7.494143727676383e-10,
+      "paired_prefix_bootstrap95": [
+        7.494143727676383e-10,
+        7.494143727676383e-10
+      ],
+      "per_prefix_gain": [
+        7.494143727676383e-10
+      ]
+    }
+  },
+  "basis_work": {
+    "wall_s": 0.8117306110070786,
+    "supported_flops": 463168512,
+    "rank": 8,
+    "cached_floats": 804632,
+    "eigenvalues": [
+      0.07874865936084938,
+      0.08889254720513766,
+      0.09226415826693683,
+      0.09875995086979741,
+      0.1041212293565462,
+      0.12108051093345695,
+      0.1501745216654433,
+      0.8586234053236539
+    ]
+  },
+  "accuracy_gate": true,
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "transport_spectral",
+      "mse": 5.492360430245745e-13,
+      "conditional_logit_variance": 5.323364724791467e-13
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "mse": 1.992157235347555e-12,
+      "conditional_logit_variance": 1.9308606974806822e-12
+    },
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "mse": 6.643523338507223e-09,
+      "conditional_logit_variance": 6.4391910814683744e-09
+    },
+    {
+      "prefix": 0,
+      "arm": "first8_exact_no_tail",
+      "mse": 2.430393359158454e-09,
+      "conditional_logit_variance": 2.3556158713062007e-09
+    },
+    {
+      "prefix": 0,
+      "arm": "static_full",
+      "mse": 7.007661853174303e-10,
+      "conditional_logit_variance": 6.792052454748403e-10
+    },
+    {
+      "prefix": 0,
+      "arm": "reference_full",
+      "mse": 7.499636088106629e-10,
+      "conditional_logit_variance": 7.268888589676556e-10
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "routes": 65,
+      "carrier_supported_flops": 939223808,
+      "carrier_wall_s": 1.3786396979994606,
+      "teacher_supported_flops": 13380556800,
+      "teacher_wall_s": 1.682732733010198,
+      "reference_supported_flops": 205985792,
+      "reference_wall_s": 0.27405743599229027,
+      "transport_supported_flops": 308912128,
+      "transport_wall_s": 0.3256600480090128,
+      "spectral_supported_flops": 338903552,
+      "spectral_wall_s": 0.3775615120102884,
+      "first8_oracle_route": 31,
+      "full_oracle_route": 31,
+      "first8_choice_full_regret": 0.0,
+      "true_future_tail_rms": 4.929901986001805e-05
+    }
+  ],
+  "context": 64,
+  "targets_per_prefix": 16,
+  "train_offset": 4788224,
+  "actual_worlds": 68,
+  "readout_updates": 1088,
+  "whole_wall_s": 5.018568369996501,
+  "peak_rss_kb": 464776,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "checkpoint": "experiments/results/credit/curie_spectral_transport_fresh_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "c496bf54595934004eef7f31ca4558ef5346ab59f084ce699f5e028125053435",
+  "source_sha256": {
+    "experiments/credit/measure_spectral_transport_fresh.py": "db890941643e52e59785dd8289c258c75d0fe18aea5f428ee910e279b981da8b",
+    "experiments/credit/token_optimizer_transport_spectral.py": "f9afc9f93b90e2f30b46b7ad97da80ed463bfb320dfe3326e876ed8cfc908576",
+    "experiments/credit/token_spectral_curvature.py": "82589f0a240d5867503b087d9e57cc9973d04ce2c32a6887eab73902fc81eb24",
+    "experiments/credit/token_optimizer_transport.py": "c46d5c575464178457c2e18df573c15ba9140ca8d851d4597c015b470f0eeebc",
+    "experiments/credit/SPECTRAL_TRANSPORT_PROTOCOL.md": "e022cafacfe021180d1246d74d9ab4d4aa6dfe0d573d768afb1eb752c6b34e44",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Eight NEW properly tokenized TRAIN prefixes/48futuretargets/64context; fixedrank8 forward-derived spectral basis, PSD/exactdiagonal conditional curvature; basis construction/application/cache charged. No newly fitted critic/neural-parameter claim; disjoint smoke prefix. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection and fixed diagonal/spectral optimizer-transport rules. Rank8 fixed before these labels, spectral basis from forward embedding only; no fitting/tuning or actor utility claim. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+}

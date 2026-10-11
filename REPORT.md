@@ -4880,6 +4880,68 @@ Static and transport select the same actual action in all 32 training windows, d
 
 Completed source-bound result: experiments/results/credit/curie_route48_transport_20261011_v1_fit.json. No new Transformer/LSTM control, public scoring or energy claim.
 
+### Connected prefix-only future credit: development result
+
+Fresh route-contrast MSE: zero 6.456e-07, corrected 7.571e-07, uncorrected 7.567e-07. Corrected prediction is 17.3% worse than zero; MSE improvement interval [-1.643e-07, -5.587e-08] is negative. This first predictor fails its predictive gate. Corrected versus uncorrected is inconclusive.
+
+| Stage | Seconds | GFLOPs | MFLOPs / observed target |
+| --- | --- | --- | --- |
+| acquisition | 126.219 | 105.768 | 68.860 |
+| fitting | 5.160 | 2.891 | 1.882 |
+| scoring | 48.970 | 300.822 | 783.391 |
+
+Acquisition/fitting denominator1,536 observed TRAIN targets (32 prefixes x48); scoring denominator384 targets (8 new prefixes x48). Both critic fits share acquisition/scoring. Ten fixed fitting passes, 320 updates per arm, 54,081 parameters; properly tokenized FineWeb/source native two-layer fixed. Supported work omits unsupported arithmetic included in wall; source pretraining/contracts/smokes additional.
+
+Training approximate-label error falls33.5% below zero, while mean training/fresh cosine alignment is +0.538/-0.112. This diagnoses a generalization gap. Shared forward labels and an exact observed-route residual train an unbiased squared-risk gradient; the contract checks this algebra, not future predictability.
+
+Earlier post-observation transport calibration and this prefix-only foresight task are distinct. The next registered data stage reuses32 paid records, adds96 new training prefixes and scores16 fresh prefixes with the model and training rule unchanged. The completed result is reported in the next section.
+
+### Warm learner state does not resolve route utility
+
+Eight reused private scoring prefixes: warm lexical/Adam transport-over-static gain -1.032e-7 nats/target, paired95%[-8.407e-7,+5.365e-7]. Ordinary warm lexical adaptation improves initial-policy mean NLL0.009412; this is not learned-credit utility. Cost111.234s/372.085GF, 595.3MiB peak, same native64-context forward path. No fitting/public scoring/independent confirmation.
+
+Completed records: curie_forward_credit_predictor_20261011_v1_fit; curie_forward_credit_predictor_diagnosis_20261011_v1; curie_route48_warm_20261011_v1_measure. Next-stage protocol: FORWARD_CREDIT_SCALING_PROTOCOL.md. Depth direction: joint consequence learning, multiscale consistency/anchors, amplification-aware sparse corrections.
+
+### Completed unchanged-model future-credit data stage
+
+128 training prefixes /16 new exact-scored private prefixes, same54,081-parameter model, initial seed, learning rate and10fitting passes. Fresh corrected MSE 6.004e-07 versus zero 5.440e-07; corrected-over-zero MSE gain -5.642e-08, paired95%[-1.236810885594799e-07, 2.049914610830684e-08]. Predictive gate: False. This is private development evidence; the32/128 cohorts differ, so their comparison is unpaired.
+
+32 acquisition records are reused and96 newly acquired. Report incremental plus inherited acquisition work; earlier critic fitting/diagnostics, source pretraining/contracts/smokes are additional. Final checkpoint only, no held-out selection. Native source frozen/two-layer, cold lexical state, no actor or full-native training.
+
+| Stage | Seconds | GFLOPs | MFLOPs / observed target |
+| --- | --- | --- | --- |
+| acquisition | 374.428 | 317.926 | 51.746 |
+| fitting | 20.012 | 11.563 | 1.882 |
+| scoring | 101.884 | 660.937 | 860.595 |
+
+Inherited acquisition: 126.219s/105.768GFLOPs, additional to table incremental work. Whole new stage 496.566s; peak RSS 558.9MiB. Acquisition/fitting denominator6,144 observed TRAIN targets, scoring768; supported arithmetic convention unchanged.
+
+### Depth learning: forward probes and joint error structure
+
+Forward responses supply backward-projection teaching targets by reciprocity. Isotropic probe risk equals cotangent squared error; residual projection correction has the exact mean, but one Rademacher probe in n dimensions has variance(n-1) times residual squared norm. Connected predictors and amplification-aware sparse audits must reduce this burden. Joint depth learning should also reduce transported coherent bias and harmful cross-layer error covariance; local MSE alone does not optimize those terms.
+
+Completed data-stage result: curie_forward_credit_scaling_20261011_v1_fit.json. Theory: DEPTH_CREDIT_FROM_FORWARD_PROBES and LEARNED_DEPTH_CREDIT_REPRESENTATIONS. Data scaling is not depth scaling or prediction-quality-per-work superiority.
+
+Native depths2/4/8 forward-probe contract completes: content/time reciprocity, cotangent-risk gradient, unbiased correction mean and(n-1)variance agree within6.44e-15 over1,024directions in a10-dimensional cut. Synthetic two-event inputs, actual native temporal layers. This validates identities, not learned credit/task efficiency.
+
+### Forward-observed boundary credit: completed development
+
+Observe eight targets, then predict the remaining40-target route learning effect. Corrected tail-contrast MSE 8.180e-07, zero 6.999e-07, uncorrected 7.989e-07. Corrected-over-zero gain -1.181e-07, paired95%[-3.429971343627413e-07, 1.0157654634010049e-07]; predictive gate False.
+
+| Stage | Seconds | GFLOPs | MFLOPs / observed target |
+| --- | --- | --- | --- |
+| acquisition | 233.444 | 163.439 | 159.608 |
+| scoring_acquisition | 38.205 | 124.218 | 970.457 |
+| fitting | 22.779 | 1.055 | 1.030 |
+
+Acquisition/fitting denominator1,024 new observed TRAIN targets (128 prefixes x8); scoring acquisition denominator128 (16 prefixes x8). Fitting10passes/two shared-sensitivity fields. Future labels refer to40remaining targets. Full48-target inherited acquisition/scoring is additional and reported in the preceding data stage. Supported operations convention unchanged.
+
+Whole boundary stage 294.802s, peakRSS 513.6MiB. Source native two-layer model fixed; same128TRAIN/16privateDEV trajectories reused, so this is development rather than fresh confirmation. Native boundary geometry, reference lexical parameters/Adam state and branch parameter/moment differences are available after eight targets; no remaining40target enters the feature packet.
+
+First-order connected state-sensitivity field predicts tail consequences. Physical remaining-route effects are omitted from predictor features but included in labels; the recorded endpoint tests this restricted representation. Exact sampled/no-op residuals correct approximate-label risk gradients. No actor/full-native update, public scoring, standalone inference-work or depth-efficiency result is claimed.
+
+Completed result: curie_boundary_credit_20261011_v1_fit.json. Protocol: BOUNDARY_CREDIT_PROTOCOL.md. Progression distinguishes issuance foresight, after-observation learning influence and exact first-order depth teaching; none substitutes for measured prediction per total learning work.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
