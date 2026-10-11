@@ -1,0 +1,60 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_vectorized_transport_20261011_v1_contract",
+  "gate": true,
+  "contracts": [
+    {
+      "kind": "small2",
+      "vocabulary": 23,
+      "errors": {
+        "forecasts": 0.0,
+        "gradients": 0.0,
+        "layers": 0.0,
+        "keys": 0.0
+      }
+    },
+    {
+      "kind": "small4",
+      "vocabulary": 23,
+      "errors": {
+        "forecasts": 0.0,
+        "gradients": 2.710505431213761e-20,
+        "layers": 0.0,
+        "keys": 0.0
+      }
+    },
+    {
+      "kind": "small8",
+      "vocabulary": 23,
+      "errors": {
+        "forecasts": 0.0,
+        "gradients": 0.0,
+        "layers": 0.0,
+        "keys": 0.0
+      }
+    },
+    {
+      "kind": "proper_gpt2",
+      "vocabulary": 50257,
+      "errors": {
+        "forecasts": 0.0,
+        "gradients": 5.421010862427522e-20,
+        "layers": 0.0,
+        "keys": 0.0
+      }
+    }
+  ],
+  "whole_wall_s": 0.9047380370029714,
+  "peak_rss_kb": 385396,
+  "source_sha256": {
+    "experiments/credit/check_token_vectorized_transport.py": "d0d16c4541818f2424524c79d2bf283ef38b950eb543d6b79326ac437fda650f",
+    "experiments/credit/token_episode_state_vectorized.py": "34bcdb4d048c18234bb3fc8efc6b7ef576e4490d31c469fd514dfc137a2fd173",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Same fixed parameter version/dropout-off native temporal/token/key equations, vectorized exp/transport over active lazy key slots. Full normalized predictions/state and all used native parameter gradients, including producer/key rates and EOS, contracted at small depth2/4/8 and actual50257 vocabulary. All active keys still scored and dense vocabulary output retained. No fit/quality/hardware or changing-key-rate lazy-semantics claim."
+}
