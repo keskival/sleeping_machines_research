@@ -72,6 +72,23 @@ def timed_producer_blocks():
     h=r['history']
     return [('p',f"Joint content/time packet reconnects a diagnostic positive internal-tempo producer on a real four-event Taxi TRAIN prefix across four Adam updates. Maximum gradient error {max(x['gradient_error'] for x in h):.2e}, Adam-state error {max(x['adam_error'] for x in h):.2e}, parameter error {max(x['parameter_error'] for x in h):.2e}; temporal producer gradients are nonzero. Native layer/head parameter graph retained; physical race/addressed-memory clocks unchanged."),('p','Exact producer-credit execution contract, no active architecture substitution or learned-credit quality/speed claim. Evidence: '+tag+'.')]
 
+def deep_joint_blocks():
+    tags=['aws_deep_temporal_packet_20261011_v1','aws_fused_deep_temporal_packet_20261011_v1',
+          'aws_fused_deep_temporal_teaching_cost_20261011_v1','aws_joint_forward_risk_20261011_v1']
+    records=[]
+    for tag in tags:
+        path=ROOT/'experiments/results/credit'/f'{tag}.json'
+        if not path.exists():return []
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        records.append(r)
+    exact,fused,cost,risk=records
+    rows=cost['rows'];teaching=[x for x in rows if x['teaching_directions']];ordinary=[x for x in rows if not x['teaching_directions']]
+    return [('p','Shared elapsed-time credit across depth sums each layer contribution once: v_l=A_l v_(l-1)+B_l w, c_(l-1)=A_l^T c_l, g_time=sum_l B_l^T c_l. Native depths2/4/8 at4/32 events pass joint transport, suffix causality and stale intermediate-clock rejection. Four real eight-event Taxi TRAIN Adam updates per depth reconnect all content/time producers, layer and head parameters; maximum gradient error '+format(max(x['gradient_error'] for x in exact['actor_rows']),'.2e')+'.'),
+      ('p',f"Fused joint transport shares recurrence/normalization/readout work. Complete actor/loss/backward/Adam plus1/16 joint teaching queries at depths2/4/8/32 is {min(x['whole_step_speedup'] for x in teaching):.2f}–{max(x['whole_step_speedup'] for x in teaching):.2f}x faster than native joint forward AD. Five timed steps after three warmups, alternating order, same batches/updates, exact gradient/Adam/response parity. Whole gate {cost['wall_s']:.2f}s/{cost['max_rss_kb']/1024:.1f}MiB. Retained cache grows70,144 to1,122,304floats; shared weights/graph additional."),
+      ('p',f"Zero-query speed ratio {min(x['whole_step_speedup'] for x in ordinary):.3f}–{max(x['whole_step_speedup'] for x in ordinary):.3f}: capture is slower for ordinary fitting. Enable it for needed teaching. Native dense-write diagnostic, physical race/addressed-memory clocks retained; no critic fitting/use, task quality, full-learning or Transformer efficiency claim."),
+      ('p',f"Forward-only joint residual labels retain shared-producer content/time cross terms at depths2/4/8. Combined producer-risk error {max(x['producer_risk_error'] for x in risk['rows']):.2e}, conditional risk-training gradient error {max(x['risk_training_gradient_error'] for x in risk['rows']):.2e}. Separate reverse validation paid; exhaustive orthogonal probes and diagnostic positive internal tempo. No learned calibration/audit utility claim. Evidence: "+', '.join(tags)+'.')]
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -100,4 +117,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks() + deep_joint_blocks()]
