@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Validate bounded matrix-free reciprocal adjoint iteration, warm credit carry and exact residual certificate before native integration; no TEST or training",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_fixed_point_credit_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_fixed_point_credit_20261011_v1/aws_fixed_point_credit_20261011_v1.txt",
+        "queue_sha256": "c8108889b73e3f8df976d6a1cc0bf948669a5d6a4291fc7b53968174eb8e56b6",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/check_fixed_point_credit.py": "4f1f482328b76ee47991fd2c8795dae5ead1254b760982e9ca6ff26f668ead01",
+          "experiments/credit/fixed_point_credit.py": "c8b0c3903f0bc2c4783b42095c639c028434fc43e8263fb5f6f06e483de2267e"
+        },
+        "result": "experiments/results/credit/aws_fixed_point_credit_20261011_v1.json",
+        "timeout_s": 120,
+        "rss_kb": 500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
