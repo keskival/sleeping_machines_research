@@ -1,0 +1,83 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_calibration_confirm_20261011_s2",
+  "battle": "B4 development",
+  "stage": "conditional_mark_confidence_diagnostic",
+  "seed": 2,
+  "input_records": {
+    "aws_b4_repair_confirm_20261011_s2": "e40014aadd162b739922cb8c2a4de1f63688e1ec1d3abc9f3b6beadc0dc56e8d",
+    "aws_b4_marks_confirm_20261011_s2": "47fd3fa8aa93dee91457b7a9f0c28747027b02d1e7d8ba5439d453e3a43833fc"
+  },
+  "alpha_train_locked": 0.8184372537603282,
+  "optimization": {
+    "candidates": [
+      0.0,
+      1.0,
+      0.8184372537603282
+    ],
+    "train_nll": [
+      15334.983231273614,
+      14765.656926192918,
+      14731.412980750909
+    ],
+    "numerical_interval": [
+      1e-08,
+      0.99999999
+    ]
+  },
+  "dev": {
+    "L_T": -180.59741110666178,
+    "L_M": 65.18298829495807,
+    "total": -115.41442281170372,
+    "sequences": 34
+  },
+  "baseline_dev": {
+    "L_T": -180.59741110666178,
+    "L_M": 67.67003311963518,
+    "total": -112.9273779870266,
+    "sequences": 34
+  },
+  "joint_marks_repaired_time_dev": {
+    "L_T": -180.59741110666178,
+    "L_M": 65.3291040331785,
+    "total": -115.26830707348329,
+    "sequences": 34
+  },
+  "train": {
+    "L_T": -583.4135227646436,
+    "L_M": 143.02342699758165,
+    "total": -440.390095767062,
+    "sequences": 103
+  },
+  "dev_mark_gain": 2.4870448246771133,
+  "diagnostic_gate": true,
+  "rule": "One TRAIN-fitted global probability-mixture coefficient; DEV mark gain>=1nat/sequence with repaired timing fixed. Diagnostic only.",
+  "cached_scored_targets": {
+    "train": 13307,
+    "dev": 2094
+  },
+  "predictor_forward_s": 2.921859954018146,
+  "scalar_fit_s": 0.014798065996728837,
+  "prerequisite_fitting_s": 5808.231852224795,
+  "parameters": 50826,
+  "source_sha256": {
+    "experiments/tpp/confirm_mark_calibration.py": "4b3673c0bf298adc620b080d665446c919d1de3152ffe0eeca7eeb942d370039",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+  },
+  "checkpoint_sha256": {
+    "experiments/results/tpp_b4/aws_b4_repair_confirm_20261011_s2.pt": "d49cebeec1755697c94a4acb7c017a60c666d51bb04d6910f17c001676f0419d",
+    "experiments/results/tpp_b4/aws_b4_marks_confirm_20261011_s2.pt": "aadb2b43906e7c0f2747d42a54f54acb751cd54c945db178f26eba072dbaa6f2"
+  },
+  "data_sha256": {
+    "train": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f",
+    "val": "95efbde7d7c0252c5d6f93ddb3efcd8bf89b3fe142147e95dc2d8b8b309665ef"
+  },
+  "wall_s": 2.974082454922609,
+  "max_rss_kb": 486160,
+  "decision": "Use diagnostic to investigate conditional calibration; no adoption, automatic fit or sealed scoring.",
+  "scope": "Saved native two-predictor diagnostic,TRAIN-only scalar fitting,34 DEV sequences. Same alpha for every candidate mark and history; no target-dependent inference selection. Both full predictors and prerequisite fits charged. No integrated-substrate,efficiency or TEST win."
+}

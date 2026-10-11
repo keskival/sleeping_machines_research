@@ -1,0 +1,2 @@
+# B4: Confirm fixed TRAIN-only conditional-mark calibration on independent training seeds; selected recipe unchanged, no TEST or tuning
+aws_b4_calibration_confirm_20261011_s2 experiments/tpp/confirm_mark_calibration.py --tag aws_b4_calibration_confirm_20261011_s2 --baseline aws_b4_repair_confirm_20261011_s2 --marks aws_b4_marks_confirm_20261011_s2
