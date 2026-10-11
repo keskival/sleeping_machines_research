@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "tag": "aws_budgeted_audit_policy_20261011_v1",
+  "battle": "B1 directly trained audit policy",
+  "rows": [
+    {
+      "contexts": 4,
+      "budget": 0.5,
+      "finite_difference_error": 5.2232440594934815e-11,
+      "shared_shift_error": 8.326672684688674e-17,
+      "budget_error": 0.0,
+      "forward_label_gradient_mean_error": 1.1102230246251565e-16,
+      "gradient_sum": 1.6653345369377348e-16
+    },
+    {
+      "contexts": 32,
+      "budget": 4.0,
+      "finite_difference_error": 2.352408476347101e-10,
+      "shared_shift_error": 3.3306690738754696e-16,
+      "budget_error": 0.0,
+      "forward_label_gradient_mean_error": 5.551115123125783e-17,
+      "gradient_sum": -1.2212453270876722e-15
+    },
+    {
+      "contexts": 128,
+      "budget": 16.0,
+      "finite_difference_error": 3.3712096308979866e-10,
+      "shared_shift_error": 3.885780586188048e-16,
+      "budget_error": 7.105427357601002e-15,
+      "forward_label_gradient_mean_error": 2.7755575615628914e-17,
+      "gradient_sum": -7.771561172376096e-16
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/check_budgeted_audit_policy.py": "efb30fdba1af4f5c145216b226137d2238eb4bb530fca4154ff18006d787ff19",
+    "experiments/credit/budgeted_audit_policy.py": "92bb7839e9471214f791a0ff3a19fc737f75db52a0413a4a7a86fe9dd4b572f4"
+  },
+  "wall_s": 0.25192921003326774,
+  "max_rss_kb": 292400,
+  "scope": "Analytic implicit first-order budget-policy credit vs numerical derivatives, positive support/conservation/common-shift invariance and frozen-label gradient mean. No native fit/task utility/higher-order or full-learning efficiency claim."
+}
