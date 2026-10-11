@@ -213,7 +213,7 @@ the fixed point is
 
 $$\lambda_F=(I-\gamma^2A^TB^T)^{-1}(b_F+\gamma A^Tb_C)$$
 
-when the corresponding Neumann series converges. This is a local solver identity. A relaxation can change iteration behavior while preserving the fixed point; changing the transport discount changes its target unless that discount belongs to the declared objective. The stable-error and future-value mechanisms above address transfer and learning beyond this local algebra.
+when $\rho(\gamma^2A^TB^T)<1$, so the corresponding Neumann series converges. This is a local solver identity. A relaxation can change iteration behavior while preserving the fixed point; changing the transport discount changes its target unless that discount belongs to the declared objective. The stable-error and future-value mechanisms above address transfer and learning beyond this local algebra.
 
 ### Current implementation anchors and next decisive contracts
 

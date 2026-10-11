@@ -9,6 +9,24 @@ RESULTS=['aws_reciprocal_tracking_20261010T2157Z','aws_reciprocal_cut_contract_2
          'aws_reciprocal_projection_20261010T2204Z']
 
 
+def direct_policy_blocks():
+    tags=[f'aws_direct_audit_policy_20261011_s{s}' for s in range(3)]
+    if not all((ROOT/'experiments/results/credit'/f'{t}.json').exists() for t in tags):return []
+    records=[json.loads((ROOT/'experiments/results/credit'/f'{t}.json').read_text()) for t in tags]
+    rows=[]
+    for record in records:
+        assert record['status']=='completed'
+        for source,sha in record['source_sha256'].items():
+            assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        for r in record['rows']:
+            rows.append([str(record['seed']),str(r['depth']),str(r['train_contexts']),f"{100*r['reduction_vs_uniform']:.1f}%",f"{100*r['reduction_vs_cotangent_norm']:.1f}%",f"{100*r['reduction_vs_mse']:.1f}%"])
+    return [('p','Direct learned audit allocation wins the conditional correction-variance component against uniform and credit-magnitude allocation in all27 seed/depth/data-size cases. The policy trains the allocation fitness from saved forward-response labels; the scalar budget threshold supplies its analytic implicit gradient, closing policy credit without an additional learned trainer.'),
+            ('table',(['Seed','Depth','Fit contexts','vs uniform','vs magnitude','vs risk-MSE'],rows,[15,18,28,30,30,32])),
+            ('p','Protocol: three seeds, depths2/4/8,64/256/1024 acquisition contexts; fresh128 private TRAIN contexts per case,16 expected audits, positive support.13 policy parameters,300 Adam steps. Native actor and acquired credit fields are frozen. All methods in a row use the same contexts and budget. The endpoint is analytically measured conditional raw-gradient variance; actor backward, forward probes and exact evaluation work are charged in the preserved records. No sampled learner-update or future task-quality endpoint is reported here. Direct policy and risk-MSE use different probability parameterizations.'),
+            ('p','Constructive transfer/stability/future-learning theory: experiments/theory/RECIPROCAL_CREDIT_TRANSFER_STABILITY_FUTURE_LEARNING.md and report/reciprocal_credit_theory.pdf. Current-state packet geometry transports reusable influence; audits contract credit-tracking error without erasing forward memory; future-demand-weighted information gain selects useful exploration. For a quadratic future loss with predictable update geometry, weighted correction-variance reduction gives an exact expected future-loss improvement. These sufficient conditions define the next native integration.'),
+            ('p','Evidence: '+', '.join(tags)+'.')]
+
+
 def packet_blocks():
     tags=['aws_native_cached_jvp_20261011_v2','aws_native_cached_linearization_20261011_v1','aws_native_packet_actor_update_20261011_v1','aws_packet_actor_step_20261011_v1','aws_packet_actor_teaching_step_20261011_v1']
     if not all((ROOT/'experiments/results/credit'/f'{t}.json').exists() for t in tags):return []
@@ -153,4 +171,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks() + deep_joint_blocks() + learned_joint_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks() + deep_joint_blocks() + learned_joint_blocks() + direct_policy_blocks()]

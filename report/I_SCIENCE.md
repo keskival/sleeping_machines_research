@@ -451,3 +451,9 @@ High-fidelity route credit (exact forced-lane credit at small pools, then a low-
 - [Part III — Experiment record](III_RECORD.md): every experiment entry, wins and losses, and the earlier narrative chapters as published.
 - [Model family overview](model_family_overview.md) → [formal core](model_family_specification.md) → [design rationale](model_family_design.md) → [composition rules](model_family_composition.md); [visual atlas](architecture_atlas.html); [claims and evidence map](architecture_evidence.md).
 - [THEORY.md](../experiments/THEORY.md) and its numbered notes; [FINDINGS.md](../experiments/FINDINGS.md) for the dated results log; [WIN_CRITERIA.md](../experiments/WIN_CRITERIA.md) for win definitions.
+
+### Constructive learned-credit integration
+
+Direct forward-taught audit allocation reduces conditional correction variance in all27 seed/depth/data-size cases against uniform and credit-magnitude allocation:52.4–84.2% and31.6–66.1%, respectively. Three seeds; frozen native actor and learned fields; fresh128 private TRAIN contexts per case and16 expected audits. This is a measured allocation-component win. The next integrated endpoint is future prediction loss per complete learning work.
+
+The [constructive theory](../experiments/theory/RECIPROCAL_CREDIT_TRANSFER_STABILITY_FUTURE_LEARNING.md) ([PDF](reciprocal_credit_theory.pdf)) supplies the design: transport reusable influence through current forward geometry; preserve intervention effects in the representation; stabilize credit error with audits while retaining forward memory; allocate observations by future-demand-weighted information gain. Metric-weighted noise reduction gives exact expected future-loss improvement for the declared quadratic learning model. Native integration will use measured future curvature and paired intervention outcomes to train the expensive influence and demand estimates.
