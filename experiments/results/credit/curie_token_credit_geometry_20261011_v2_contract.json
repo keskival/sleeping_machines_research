@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_credit_geometry_20261011_v2_contract",
+  "gate": true,
+  "checks": [
+    {
+      "vocabulary": 23,
+      "gradient_error": 2.172741153660951e-16,
+      "label_independent": true
+    },
+    {
+      "vocabulary": 50257,
+      "gradient_error": 1.6205789366170737e-14,
+      "label_independent": true
+    }
+  ],
+  "whole_wall_s": 0.12678830699587706,
+  "source_sha256": {
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/check_token_credit_geometry.py": "586c12ea5b4eec9300346a74fe4a7372d1e575f8bb458c610cbd32cdeb25f23e"
+  },
+  "scope": "Independent full-vocabulary supervised gradients before/after single-address route tilt match prefix-only feature mean shift at23/50257 words and two labels, including no-op. This supplies a causal inductive feature, not future-label prediction or learned optimizer evidence."
+}

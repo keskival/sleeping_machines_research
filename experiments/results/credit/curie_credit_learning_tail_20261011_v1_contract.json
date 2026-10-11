@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "battle": "R1/B1",
+  "tag": "curie_credit_learning_tail_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "rho": 0.5,
+      "learning_gain": 0.7,
+      "recurrence_error": 6.938893903907228e-18,
+      "addressed_tail": 3.733809166716685e-61,
+      "learning_tail": 4.4836449819918137e-32,
+      "discounted_tail": 0.020120738940609804,
+      "bound": 0.030254190773389842,
+      "transition_spectral_norm": 0.7496976092671316
+    },
+    {
+      "rho": 0.5,
+      "learning_gain": 1.0,
+      "recurrence_error": 1.3877787807814457e-17,
+      "addressed_tail": 3.733809166716685e-61,
+      "learning_tail": 0.11999999999999998,
+      "discounted_tail": 0.517110964347993,
+      "bound": 0.9488464253919013,
+      "transition_spectral_norm": 1.025895537877803
+    },
+    {
+      "rho": 0.5,
+      "learning_gain": 0.5,
+      "recurrence_error": 2.168404344971009e-19,
+      "addressed_tail": 3.733809166716685e-61,
+      "learning_tail": 2.972112096706484e-59,
+      "discounted_tail": 0.004152363195635332,
+      "bound": 0.005302223249136579,
+      "transition_spectral_norm": 0.6099019513592785
+    }
+  ],
+  "whole_wall_s": 0.007189754003775306,
+  "source_sha256": {
+    "experiments/credit/check_credit_learning_tail.py": "b4e78d881ae214636dd545efe79a05a080a0bcf96c408147aef3268c3ef13229",
+    "experiments/theory/CAUSAL_CREDIT_HORIZON_ECONOMICS.md": "c28b6632ab7f535a043126c5bf8d74c9fe4f8549db0640e75a488a750c3ebbc9"
+  },
+  "scope": "Exact linear two-channel recurrence and spectral-norm discounted-tail bound. Neutral learning state retains influence after physical state decays. No native/Adam contraction or model-quality claim."
+}

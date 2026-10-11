@@ -1,0 +1,2044 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_continuous_token_route_dev_20261011_v1_fit",
+  "mode": "fit",
+  "gate": true,
+  "config": {
+    "seed": 98410,
+    "context": 64,
+    "windows": 64,
+    "dev_prefixes": 8,
+    "actor_lr": 0.0001,
+    "fast_lr": 0.01,
+    "exploration": 0.1,
+    "amplitude": 0.25,
+    "train_offset": 4227072,
+    "private_dev_offset": 4259840
+  },
+  "fitting": [
+    {
+      "arm": "zero",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 9.824432210218397,
+          "gradient_norm": 5.1300081525879574e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 6.8576785612238895,
+          "gradient_norm": 0.037679526864215274,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.7898560458271575,
+          "gradient_norm": 1.0677161218881137e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 21,
+          "nll": 5.749025506857113,
+          "gradient_norm": 0.00021139665235295627,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 4,
+          "routes": 65,
+          "action": 15,
+          "nll": 6.260852230013173,
+          "gradient_norm": 0.0033210147819536006,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 5,
+          "routes": 65,
+          "action": 6,
+          "nll": 7.132525246607962,
+          "gradient_norm": 6.156299033428159e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 6,
+          "routes": 65,
+          "action": 43,
+          "nll": 8.68590725485209,
+          "gradient_norm": 0.00013158342791133603,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 7,
+          "routes": 65,
+          "action": 17,
+          "nll": 7.19992459986928,
+          "gradient_norm": 5.453446035739298e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 8,
+          "routes": 65,
+          "action": 32,
+          "nll": 4.618781180817221,
+          "gradient_norm": 4.121787470771117e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 9,
+          "routes": 65,
+          "action": 55,
+          "nll": 4.405061605214327,
+          "gradient_norm": 0.0002605753503741503,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 10,
+          "routes": 65,
+          "action": 52,
+          "nll": 5.212270906998636,
+          "gradient_norm": 2.653363335352365e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 11,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.100124609305891,
+          "gradient_norm": 0.00016217660775044636,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 12,
+          "routes": 65,
+          "action": 30,
+          "nll": 6.020406590748319,
+          "gradient_norm": 0.0008602342505137622,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 13,
+          "routes": 65,
+          "action": 48,
+          "nll": 4.185502352313258,
+          "gradient_norm": 0.00011354662741439789,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 14,
+          "routes": 65,
+          "action": 20,
+          "nll": 5.727434999827622,
+          "gradient_norm": 6.755952647804797e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 15,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.801422336565176,
+          "gradient_norm": 0.00249683940497085,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 16,
+          "routes": 65,
+          "action": 19,
+          "nll": 3.4863057493790466,
+          "gradient_norm": 0.00017120996803196017,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 17,
+          "routes": 65,
+          "action": 55,
+          "nll": 3.3429160864353116,
+          "gradient_norm": 5.920564045662053e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 18,
+          "routes": 65,
+          "action": 45,
+          "nll": 3.8473365596166524,
+          "gradient_norm": 6.604400488758854e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 19,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.6357028101209785,
+          "gradient_norm": 0.00022987655281248034,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 20,
+          "routes": 65,
+          "action": 57,
+          "nll": 5.786078485749906,
+          "gradient_norm": 8.554400588127141e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 21,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.628917586638963,
+          "gradient_norm": 0.0018862706946383063,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 22,
+          "routes": 65,
+          "action": 50,
+          "nll": 5.120731210703675,
+          "gradient_norm": 2.8750543616368035e-08,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 23,
+          "routes": 65,
+          "action": 36,
+          "nll": 4.761161020049118,
+          "gradient_norm": 0.01922707169363059,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 24,
+          "routes": 65,
+          "action": 20,
+          "nll": 4.149124933874317,
+          "gradient_norm": 1.4732551344174045e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 25,
+          "routes": 65,
+          "action": 42,
+          "nll": 3.3721311597488905,
+          "gradient_norm": 4.287049283592417e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 26,
+          "routes": 65,
+          "action": 13,
+          "nll": 4.256492512291724,
+          "gradient_norm": 0.0026036950581216204,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 27,
+          "routes": 65,
+          "action": 54,
+          "nll": 4.099653763767719,
+          "gradient_norm": 6.57297975316781e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 28,
+          "routes": 65,
+          "action": 34,
+          "nll": 7.114968163431728,
+          "gradient_norm": 1.6278820731934355e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 29,
+          "routes": 65,
+          "action": 38,
+          "nll": 8.651086134861412,
+          "gradient_norm": 4.195982524923488e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 30,
+          "routes": 65,
+          "action": 50,
+          "nll": 7.232829150746416,
+          "gradient_norm": 8.788348135761363e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 31,
+          "routes": 65,
+          "action": 44,
+          "nll": 7.505674714764317,
+          "gradient_norm": 0.02730633871116631,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 32,
+          "routes": 65,
+          "action": 12,
+          "nll": 5.82502607830841,
+          "gradient_norm": 9.669658529496025e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 33,
+          "routes": 65,
+          "action": 38,
+          "nll": 5.166830400034099,
+          "gradient_norm": 6.531300455314127e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 34,
+          "routes": 65,
+          "action": 53,
+          "nll": 5.125034841466152,
+          "gradient_norm": 6.555067487999958e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 35,
+          "routes": 65,
+          "action": 45,
+          "nll": 7.220838939486823,
+          "gradient_norm": 7.733208607430373e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 36,
+          "routes": 65,
+          "action": 30,
+          "nll": 8.807349334640616,
+          "gradient_norm": 0.009398357206482957,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 37,
+          "routes": 65,
+          "action": 57,
+          "nll": 6.755594108382748,
+          "gradient_norm": 0.0007248510176580626,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 38,
+          "routes": 65,
+          "action": 16,
+          "nll": 4.291095290203611,
+          "gradient_norm": 0.0036520790675923756,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 39,
+          "routes": 65,
+          "action": 40,
+          "nll": 6.663391405578352,
+          "gradient_norm": 1.7326151546188955e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 40,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.556612034946409,
+          "gradient_norm": 2.531767644041672e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 41,
+          "routes": 65,
+          "action": 8,
+          "nll": 7.62888192126192,
+          "gradient_norm": 3.5342163888797442e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 42,
+          "routes": 65,
+          "action": 57,
+          "nll": 7.866362926188961,
+          "gradient_norm": 5.3212199799214484e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 43,
+          "routes": 65,
+          "action": 45,
+          "nll": 6.946389571806951,
+          "gradient_norm": 1.474405035000543e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 44,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.509764658371234,
+          "gradient_norm": 5.537456523443434e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 45,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.446010167345635,
+          "gradient_norm": 0.00022460718918116453,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 46,
+          "routes": 65,
+          "action": 6,
+          "nll": 4.842706383962315,
+          "gradient_norm": 0.0001243394587847084,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 47,
+          "routes": 65,
+          "action": 16,
+          "nll": 6.677826755653317,
+          "gradient_norm": 1.3226938126437752e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 48,
+          "routes": 65,
+          "action": 33,
+          "nll": 6.8866905538881635,
+          "gradient_norm": 2.69493102724224e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 49,
+          "routes": 65,
+          "action": 61,
+          "nll": 5.038005830430349,
+          "gradient_norm": 1.1594842871590888e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 50,
+          "routes": 65,
+          "action": 33,
+          "nll": 4.060435963487365,
+          "gradient_norm": 5.073946266566801e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 51,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.714861212774016,
+          "gradient_norm": 2.8608312030481576e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 52,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.969421052126242,
+          "gradient_norm": 0.010355055915424648,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 53,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.638371647560676,
+          "gradient_norm": 0.00029815119333926395,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 54,
+          "routes": 65,
+          "action": 45,
+          "nll": 4.1921940329339655,
+          "gradient_norm": 0.0002777062705506636,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 55,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.2922070900149616,
+          "gradient_norm": 3.4892045323170446e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 56,
+          "routes": 65,
+          "action": 31,
+          "nll": 5.305663217354724,
+          "gradient_norm": 0.0007732149599055788,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 57,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.888177135174366,
+          "gradient_norm": 0.0007229915929535755,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 58,
+          "routes": 65,
+          "action": 56,
+          "nll": 5.788323870400844,
+          "gradient_norm": 2.701998280378454e-07,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 59,
+          "routes": 65,
+          "action": 12,
+          "nll": 9.350744507972486,
+          "gradient_norm": 8.714878631833869e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 60,
+          "routes": 65,
+          "action": 26,
+          "nll": 7.77249929923622,
+          "gradient_norm": 3.272276613971881e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 61,
+          "routes": 65,
+          "action": 44,
+          "nll": 5.017436819928297,
+          "gradient_norm": 0.003097603385050575,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 62,
+          "routes": 65,
+          "action": 2,
+          "nll": 4.287809950989222,
+          "gradient_norm": 1.908805136593253e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 63,
+          "routes": 65,
+          "action": 46,
+          "nll": 5.0518838946674,
+          "gradient_norm": 4.9436169220946286e-06,
+          "worlds": 2,
+          "updates": 16
+        }
+      ],
+      "wall_s": 24.72149020098732,
+      "supported_flops": 18014050816,
+      "actor_parameters": 29057,
+      "actual_worlds": 128,
+      "readout_updates": 1024
+    },
+    {
+      "arm": "static",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 9.824432210218397,
+          "gradient_norm": 3.7954313898242525e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 6.8576785612238895,
+          "gradient_norm": 0.00036531404305536477,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.7898560458271575,
+          "gradient_norm": 0.0001153960445084291,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 21,
+          "nll": 5.749025506857113,
+          "gradient_norm": 3.6419169992778966e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 4,
+          "routes": 65,
+          "action": 15,
+          "nll": 6.260852230013173,
+          "gradient_norm": 0.00014776637063471624,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 5,
+          "routes": 65,
+          "action": 61,
+          "nll": 7.132508324971192,
+          "gradient_norm": 1.935493896813005e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 6,
+          "routes": 65,
+          "action": 43,
+          "nll": 8.685903674573645,
+          "gradient_norm": 1.8769237063280472e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 7,
+          "routes": 65,
+          "action": 17,
+          "nll": 7.19992122339023,
+          "gradient_norm": 1.4045997709949319e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 8,
+          "routes": 65,
+          "action": 32,
+          "nll": 4.618760597417523,
+          "gradient_norm": 0.00027315696194876645,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 9,
+          "routes": 65,
+          "action": 55,
+          "nll": 4.4050596571370795,
+          "gradient_norm": 0.00028569889913067055,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 10,
+          "routes": 65,
+          "action": 52,
+          "nll": 5.212272353110279,
+          "gradient_norm": 1.2026242466551409e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 11,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.10012248480172,
+          "gradient_norm": 0.00013730079563073252,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 12,
+          "routes": 65,
+          "action": 30,
+          "nll": 6.020405941739668,
+          "gradient_norm": 6.273187930011433e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 13,
+          "routes": 65,
+          "action": 48,
+          "nll": 4.185498718670517,
+          "gradient_norm": 7.264152210082844e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 14,
+          "routes": 65,
+          "action": 20,
+          "nll": 5.727437112721941,
+          "gradient_norm": 5.300542883728704e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 15,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.801422352420744,
+          "gradient_norm": 0.00012956389475612666,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 16,
+          "routes": 65,
+          "action": 19,
+          "nll": 3.4863023200831686,
+          "gradient_norm": 0.00013935870351683397,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 17,
+          "routes": 65,
+          "action": 55,
+          "nll": 3.3429168866341517,
+          "gradient_norm": 6.935558819064528e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 18,
+          "routes": 65,
+          "action": 45,
+          "nll": 3.847334916533078,
+          "gradient_norm": 1.4412079509220375e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 19,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.635703922304465,
+          "gradient_norm": 0.00010011246944803907,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 20,
+          "routes": 65,
+          "action": 57,
+          "nll": 5.78607974014513,
+          "gradient_norm": 9.68956326639855e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 21,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.628915647803514,
+          "gradient_norm": 8.039299661734529e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 22,
+          "routes": 65,
+          "action": 50,
+          "nll": 5.1207329555903645,
+          "gradient_norm": 8.835932306910325e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 23,
+          "routes": 65,
+          "action": 36,
+          "nll": 4.761159696753941,
+          "gradient_norm": 0.0014486531973773144,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 24,
+          "routes": 65,
+          "action": 20,
+          "nll": 4.1491253354137,
+          "gradient_norm": 3.745138584818602e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 25,
+          "routes": 65,
+          "action": 42,
+          "nll": 3.3721312352352055,
+          "gradient_norm": 7.507045581783229e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 26,
+          "routes": 65,
+          "action": 13,
+          "nll": 4.256492648271269,
+          "gradient_norm": 1.1849918609279036e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 27,
+          "routes": 65,
+          "action": 54,
+          "nll": 4.0996522862743765,
+          "gradient_norm": 1.4178295944280091e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 28,
+          "routes": 65,
+          "action": 34,
+          "nll": 7.114969424857122,
+          "gradient_norm": 0.00014898704589448827,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 29,
+          "routes": 65,
+          "action": 38,
+          "nll": 8.651084710089663,
+          "gradient_norm": 0.00014893002594781803,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 30,
+          "routes": 65,
+          "action": 50,
+          "nll": 7.232829371749807,
+          "gradient_norm": 4.355317625594298e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 31,
+          "routes": 65,
+          "action": 44,
+          "nll": 7.505675895330908,
+          "gradient_norm": 0.0025244714198543626,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 32,
+          "routes": 65,
+          "action": 12,
+          "nll": 5.825026626610235,
+          "gradient_norm": 3.503581799121993e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 33,
+          "routes": 65,
+          "action": 38,
+          "nll": 5.166830026554383,
+          "gradient_norm": 4.895541483396841e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 34,
+          "routes": 65,
+          "action": 53,
+          "nll": 5.125035464040323,
+          "gradient_norm": 1.1642010901707573e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 35,
+          "routes": 65,
+          "action": 45,
+          "nll": 7.220839075385083,
+          "gradient_norm": 4.558194048899974e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 36,
+          "routes": 65,
+          "action": 30,
+          "nll": 8.807350307467708,
+          "gradient_norm": 0.00021365962811600435,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 37,
+          "routes": 65,
+          "action": 54,
+          "nll": 6.755840417546389,
+          "gradient_norm": 0.00010369353298453342,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 38,
+          "routes": 65,
+          "action": 57,
+          "nll": 4.290640653806737,
+          "gradient_norm": 4.363815141396689e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 39,
+          "routes": 65,
+          "action": 40,
+          "nll": 6.6634141234544195,
+          "gradient_norm": 0.00015769578679585559,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 40,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.556764558334844,
+          "gradient_norm": 0.000822699555847993,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 41,
+          "routes": 65,
+          "action": 8,
+          "nll": 7.628971201520299,
+          "gradient_norm": 0.0002227345468521019,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 42,
+          "routes": 65,
+          "action": 57,
+          "nll": 7.866531262181875,
+          "gradient_norm": 0.0004285814472485782,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 43,
+          "routes": 65,
+          "action": 45,
+          "nll": 6.946404688146315,
+          "gradient_norm": 0.00011595576274021613,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 44,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.509833924847966,
+          "gradient_norm": 4.657288137953139e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 45,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.446173619892356,
+          "gradient_norm": 2.5675037810664878e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 46,
+          "routes": 65,
+          "action": 6,
+          "nll": 4.841256122821883,
+          "gradient_norm": 0.0001432643979989391,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 47,
+          "routes": 65,
+          "action": 16,
+          "nll": 6.677849515433349,
+          "gradient_norm": 1.3825944397611333e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 48,
+          "routes": 65,
+          "action": 33,
+          "nll": 6.886710687029826,
+          "gradient_norm": 3.844888885827345e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 49,
+          "routes": 65,
+          "action": 61,
+          "nll": 5.037969793440077,
+          "gradient_norm": 0.00010455079178694102,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 50,
+          "routes": 65,
+          "action": 33,
+          "nll": 4.060483615793711,
+          "gradient_norm": 1.8413857818627835e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 51,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.7148706969026435,
+          "gradient_norm": 6.414586244788153e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 52,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.969398218276233,
+          "gradient_norm": 0.0005086708187644459,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 53,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.638394418961867,
+          "gradient_norm": 2.6414709503817956e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 54,
+          "routes": 65,
+          "action": 8,
+          "nll": 4.192280459142243,
+          "gradient_norm": 3.4734548297959644e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 55,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.2922031283903554,
+          "gradient_norm": 1.8643459646748734e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 56,
+          "routes": 65,
+          "action": 31,
+          "nll": 5.305649621850326,
+          "gradient_norm": 3.230012174474572e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 57,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.888188031785898,
+          "gradient_norm": 1.3012028660016577e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 58,
+          "routes": 65,
+          "action": 56,
+          "nll": 5.78835618554747,
+          "gradient_norm": 4.712115144823031e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 59,
+          "routes": 65,
+          "action": 12,
+          "nll": 9.350771352257327,
+          "gradient_norm": 2.55984246120421e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 60,
+          "routes": 65,
+          "action": 26,
+          "nll": 7.7724864459257255,
+          "gradient_norm": 4.1232403187220556e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 61,
+          "routes": 65,
+          "action": 44,
+          "nll": 5.017414399067777,
+          "gradient_norm": 3.42086684320129e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 62,
+          "routes": 65,
+          "action": 2,
+          "nll": 4.287768176238072,
+          "gradient_norm": 5.291671667165229e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 63,
+          "routes": 65,
+          "action": 46,
+          "nll": 5.051899040678563,
+          "gradient_norm": 3.7104509529270395e-05,
+          "worlds": 2,
+          "updates": 16
+        }
+      ],
+      "wall_s": 26.745417591999285,
+      "supported_flops": 18430016000,
+      "actor_parameters": 29057,
+      "actual_worlds": 128,
+      "readout_updates": 1024
+    },
+    {
+      "arm": "reference",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 9.824432210218397,
+          "gradient_norm": 3.69510891173743e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 6.8576785612238895,
+          "gradient_norm": 0.00034477379036057905,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.7898560458271575,
+          "gradient_norm": 0.000116264760384373,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 21,
+          "nll": 5.749025506857113,
+          "gradient_norm": 2.912403710186462e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 4,
+          "routes": 65,
+          "action": 15,
+          "nll": 6.260852230013173,
+          "gradient_norm": 0.0001338383543258733,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 5,
+          "routes": 65,
+          "action": 6,
+          "nll": 7.132525246607962,
+          "gradient_norm": 2.075739944863666e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 6,
+          "routes": 65,
+          "action": 43,
+          "nll": 8.68590725485209,
+          "gradient_norm": 4.749144670280418e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 7,
+          "routes": 65,
+          "action": 17,
+          "nll": 7.19992459986928,
+          "gradient_norm": 1.3408277718168772e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 8,
+          "routes": 65,
+          "action": 32,
+          "nll": 4.618781180817221,
+          "gradient_norm": 0.00027658215641590897,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 9,
+          "routes": 65,
+          "action": 55,
+          "nll": 4.405061605214327,
+          "gradient_norm": 0.00028882874521454576,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 10,
+          "routes": 65,
+          "action": 52,
+          "nll": 5.212270906998636,
+          "gradient_norm": 1.2197173332252016e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 11,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.100124609305891,
+          "gradient_norm": 0.00014228005917511327,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 12,
+          "routes": 65,
+          "action": 30,
+          "nll": 6.020406590748319,
+          "gradient_norm": 6.672933097402158e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 13,
+          "routes": 65,
+          "action": 48,
+          "nll": 4.185502352313258,
+          "gradient_norm": 7.446535628845256e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 14,
+          "routes": 65,
+          "action": 20,
+          "nll": 5.727434999827622,
+          "gradient_norm": 5.349529684398498e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 15,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.801422336565176,
+          "gradient_norm": 0.00012422384348984358,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 16,
+          "routes": 65,
+          "action": 19,
+          "nll": 3.4863057493790466,
+          "gradient_norm": 0.00014245111170431895,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 17,
+          "routes": 65,
+          "action": 55,
+          "nll": 3.3429160864353116,
+          "gradient_norm": 6.788319168255178e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 18,
+          "routes": 65,
+          "action": 45,
+          "nll": 3.8473365596166524,
+          "gradient_norm": 1.5147178054215194e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 19,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.6357028101209785,
+          "gradient_norm": 0.00010212316943613268,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 20,
+          "routes": 65,
+          "action": 57,
+          "nll": 5.786078485749906,
+          "gradient_norm": 9.834820502841749e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 21,
+          "routes": 65,
+          "action": 43,
+          "nll": 5.628917586638963,
+          "gradient_norm": 3.894170114920751e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 22,
+          "routes": 65,
+          "action": 50,
+          "nll": 5.120731210703675,
+          "gradient_norm": 9.143604881569419e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 23,
+          "routes": 65,
+          "action": 36,
+          "nll": 4.761161020049118,
+          "gradient_norm": 6.649064137828555e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 24,
+          "routes": 65,
+          "action": 20,
+          "nll": 4.149124933874317,
+          "gradient_norm": 3.7445221392931445e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 25,
+          "routes": 65,
+          "action": 42,
+          "nll": 3.3721311597488905,
+          "gradient_norm": 7.593259000900311e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 26,
+          "routes": 65,
+          "action": 13,
+          "nll": 4.256492512291724,
+          "gradient_norm": 2.8653795335502774e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 27,
+          "routes": 65,
+          "action": 54,
+          "nll": 4.099653763767719,
+          "gradient_norm": 1.4351327388260043e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 28,
+          "routes": 65,
+          "action": 34,
+          "nll": 7.114968163431728,
+          "gradient_norm": 0.00015189179513194396,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 29,
+          "routes": 65,
+          "action": 38,
+          "nll": 8.651086134861412,
+          "gradient_norm": 0.00015135166648918026,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 30,
+          "routes": 65,
+          "action": 50,
+          "nll": 7.232829150746416,
+          "gradient_norm": 4.468811048598761e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 31,
+          "routes": 65,
+          "action": 44,
+          "nll": 7.505674714764317,
+          "gradient_norm": 0.0006496251816942506,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 32,
+          "routes": 65,
+          "action": 12,
+          "nll": 5.82502607830841,
+          "gradient_norm": 3.619519797694506e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 33,
+          "routes": 65,
+          "action": 38,
+          "nll": 5.166830400034099,
+          "gradient_norm": 4.9728166286938155e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 34,
+          "routes": 65,
+          "action": 53,
+          "nll": 5.125034841466152,
+          "gradient_norm": 1.1707833606311815e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 35,
+          "routes": 65,
+          "action": 45,
+          "nll": 7.220838939486823,
+          "gradient_norm": 3.680593811678113e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 36,
+          "routes": 65,
+          "action": 30,
+          "nll": 8.807349334640616,
+          "gradient_norm": 0.00011610234506522313,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 37,
+          "routes": 65,
+          "action": 54,
+          "nll": 6.755840530977726,
+          "gradient_norm": 0.00010653093877219683,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 38,
+          "routes": 65,
+          "action": 16,
+          "nll": 4.291333732065735,
+          "gradient_norm": 0.00011074330178172616,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 39,
+          "routes": 65,
+          "action": 40,
+          "nll": 6.663506520290639,
+          "gradient_norm": 0.00015768738640599587,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 40,
+          "routes": 65,
+          "action": 61,
+          "nll": 6.556652963486342,
+          "gradient_norm": 0.0008201335929394769,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 41,
+          "routes": 65,
+          "action": 8,
+          "nll": 7.6288652136896875,
+          "gradient_norm": 0.00021949749965926435,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 42,
+          "routes": 65,
+          "action": 57,
+          "nll": 7.866320358208991,
+          "gradient_norm": 0.0004251756436220128,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 43,
+          "routes": 65,
+          "action": 45,
+          "nll": 6.9463979535491625,
+          "gradient_norm": 0.00011925445577200679,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 44,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.509762670773842,
+          "gradient_norm": 4.8336329159586936e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 45,
+          "routes": 65,
+          "action": 7,
+          "nll": 6.446031255590016,
+          "gradient_norm": 1.965948548392918e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 46,
+          "routes": 65,
+          "action": 6,
+          "nll": 4.841248216517552,
+          "gradient_norm": 0.00014457242584209098,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 47,
+          "routes": 65,
+          "action": 16,
+          "nll": 6.677839064270781,
+          "gradient_norm": 1.4314208457347633e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 48,
+          "routes": 65,
+          "action": 33,
+          "nll": 6.886703162597508,
+          "gradient_norm": 3.9839285489603735e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 49,
+          "routes": 65,
+          "action": 61,
+          "nll": 5.038003442926222,
+          "gradient_norm": 0.00010373803626248638,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 50,
+          "routes": 65,
+          "action": 33,
+          "nll": 4.060475210687181,
+          "gradient_norm": 1.8635335058971654e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 51,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.714848689022578,
+          "gradient_norm": 6.568302192001065e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 52,
+          "routes": 65,
+          "action": 12,
+          "nll": 4.969393784692231,
+          "gradient_norm": 3.605657766263854e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 53,
+          "routes": 65,
+          "action": 64,
+          "nll": 4.638386744222238,
+          "gradient_norm": 2.6860921551625165e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 54,
+          "routes": 65,
+          "action": 8,
+          "nll": 4.192303791749207,
+          "gradient_norm": 3.445646304288423e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 55,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.292220508621783,
+          "gradient_norm": 1.8746565084294498e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 56,
+          "routes": 65,
+          "action": 31,
+          "nll": 5.305625197127798,
+          "gradient_norm": 3.314879863950566e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 57,
+          "routes": 65,
+          "action": 63,
+          "nll": 3.8881877473777453,
+          "gradient_norm": 1.4103082388910693e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 58,
+          "routes": 65,
+          "action": 56,
+          "nll": 5.788354597120846,
+          "gradient_norm": 4.698252001304653e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 59,
+          "routes": 65,
+          "action": 12,
+          "nll": 9.350770476967035,
+          "gradient_norm": 2.427581890445515e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 60,
+          "routes": 65,
+          "action": 26,
+          "nll": 7.772491437725244,
+          "gradient_norm": 3.9372717352284116e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 61,
+          "routes": 65,
+          "action": 44,
+          "nll": 5.017411142937835,
+          "gradient_norm": 3.849284954662203e-05,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 62,
+          "routes": 65,
+          "action": 2,
+          "nll": 4.287783351928365,
+          "gradient_norm": 5.394962210660009e-06,
+          "worlds": 2,
+          "updates": 16
+        },
+        {
+          "window": 63,
+          "routes": 65,
+          "action": 46,
+          "nll": 5.0518825694344285,
+          "gradient_norm": 3.807386463564562e-05,
+          "worlds": 2,
+          "updates": 16
+        }
+      ],
+      "wall_s": 23.777702453997335,
+      "supported_flops": 18014050816,
+      "actor_parameters": 29057,
+      "actual_worlds": 128,
+      "readout_updates": 1024
+    }
+  ],
+  "dev": [
+    {
+      "prefix": 0,
+      "expected_nll": {
+        "zero": 6.806741143168036,
+        "static": 6.806740712857373,
+        "reference": 6.806740730616376,
+        "initial": 6.806741040032893
+      },
+      "greedy_nll": {
+        "zero": 6.806739752399481,
+        "static": 6.806739752399481,
+        "reference": 6.806739752399481,
+        "initial": 6.806739752399481
+      },
+      "noop_nll": 6.80673695883475,
+      "uniform_nll": 6.806741599310927,
+      "oracle_nll": 6.796665179028342,
+      "routes": 65
+    },
+    {
+      "prefix": 1,
+      "expected_nll": {
+        "zero": 6.036599224147029,
+        "static": 6.0365990523799695,
+        "reference": 6.03659895515837,
+        "initial": 6.036599203799799
+      },
+      "greedy_nll": {
+        "zero": 6.037791625171105,
+        "static": 6.036394517674272,
+        "reference": 6.036394517674272,
+        "initial": 6.037791625171105
+      },
+      "noop_nll": 6.036584344958972,
+      "uniform_nll": 6.036597234861228,
+      "oracle_nll": 6.029538734598376,
+      "routes": 65
+    },
+    {
+      "prefix": 2,
+      "expected_nll": {
+        "zero": 8.70590167825058,
+        "static": 8.705900891169811,
+        "reference": 8.705901047239868,
+        "initial": 8.70590137864922
+      },
+      "greedy_nll": {
+        "zero": 8.70611765060308,
+        "static": 8.705892869591091,
+        "reference": 8.705892869591091,
+        "initial": 8.70611765060308
+      },
+      "noop_nll": 8.705892858099725,
+      "uniform_nll": 8.70590115633291,
+      "oracle_nll": 8.703793297544587,
+      "routes": 65
+    },
+    {
+      "prefix": 3,
+      "expected_nll": {
+        "zero": 7.350277562775648,
+        "static": 7.350276593960455,
+        "reference": 7.350276611961101,
+        "initial": 7.350277193727262
+      },
+      "greedy_nll": {
+        "zero": 7.350274216133222,
+        "static": 7.350274216133222,
+        "reference": 7.350274216133222,
+        "initial": 7.350274216133222
+      },
+      "noop_nll": 7.35026610270719,
+      "uniform_nll": 7.350277986091792,
+      "oracle_nll": 7.346898541244878,
+      "routes": 65
+    },
+    {
+      "prefix": 4,
+      "expected_nll": {
+        "zero": 6.003543227566736,
+        "static": 6.003542431641638,
+        "reference": 6.003542277392874,
+        "initial": 6.003542975884036
+      },
+      "greedy_nll": {
+        "zero": 6.003526953049165,
+        "static": 6.003526036717508,
+        "reference": 6.003526036717508,
+        "initial": 6.003526953049165
+      },
+      "noop_nll": 6.003525893633075,
+      "uniform_nll": 6.003542288934214,
+      "oracle_nll": 6.000599341868152,
+      "routes": 65
+    },
+    {
+      "prefix": 5,
+      "expected_nll": {
+        "zero": 3.7771722977884936,
+        "static": 3.7771753955839498,
+        "reference": 3.7771755958062583,
+        "initial": 3.777173469941074
+      },
+      "greedy_nll": {
+        "zero": 3.7780332495915934,
+        "static": 3.777211665326067,
+        "reference": 3.777211665326067,
+        "initial": 3.7780332495915934
+      },
+      "noop_nll": 3.7771929172848466,
+      "uniform_nll": 3.7771752904244935,
+      "oracle_nll": 3.775651580252773,
+      "routes": 65
+    },
+    {
+      "prefix": 6,
+      "expected_nll": {
+        "zero": 2.7807433802506534,
+        "static": 2.7807426218124056,
+        "reference": 2.780742781661133,
+        "initial": 2.780742759689648
+      },
+      "greedy_nll": {
+        "zero": 2.7807385452018836,
+        "static": 2.780738464773491,
+        "reference": 2.780738464773491,
+        "initial": 2.7807385452018836
+      },
+      "noop_nll": 2.780738463648545,
+      "uniform_nll": 2.780745102063743,
+      "oracle_nll": 2.770966797160609,
+      "routes": 65
+    },
+    {
+      "prefix": 7,
+      "expected_nll": {
+        "zero": 5.449598556568277,
+        "static": 5.449597313606551,
+        "reference": 5.449597279432359,
+        "initial": 5.4495980542943325
+      },
+      "greedy_nll": {
+        "zero": 5.449754050671788,
+        "static": 5.449754050671788,
+        "reference": 5.449754050671788,
+        "initial": 5.449754050671788
+      },
+      "noop_nll": 5.449591054344882,
+      "uniform_nll": 5.449598187646299,
+      "oracle_nll": 5.438921827197696,
+      "routes": 65
+    }
+  ],
+  "scoring": {
+    "wall_s": 17.016244735001237,
+    "supported_flops": 60668302720,
+    "worlds": 520,
+    "readout_updates": 4160
+  },
+  "comparisons": {
+    "reference_over_zero": {
+      "gain": 2.2390588905185638e-07,
+      "paired_prefix_bootstrap95": [
+        -8.57394108785825e-07,
+        9.033882899522894e-07
+      ],
+      "per_prefix": [
+        4.1255166038922653e-07,
+        2.6898865890245816e-07,
+        6.310107121265673e-07,
+        9.508145462078232e-07,
+        9.501738613693078e-07,
+        -3.298017764663541e-06,
+        5.985895201732205e-07,
+        1.2771359179097885e-06
+      ]
+    },
+    "reference_over_static": {
+      "gain": -3.328202324848206e-08,
+      "paired_prefix_bootstrap95": [
+        -1.1524448486066596e-07,
+        5.060084101449201e-08
+      ],
+      "per_prefix": [
+        -1.7759003156925246e-08,
+        9.722159965974697e-08,
+        -1.5607005643403227e-07,
+        -1.800064630685938e-08,
+        1.5424876398384413e-07,
+        -2.0022230851068912e-07,
+        -1.598487275877858e-07,
+        3.41741923648442e-08
+      ]
+    },
+    "reference_over_initial": {
+      "gain": 9.959374058787773e-08,
+      "paired_prefix_bootstrap95": [
+        -5.911250729628836e-07,
+        5.524595573236368e-07
+      ],
+      "per_prefix": [
+        3.094165172967678e-07,
+        2.486414292235395e-07,
+        3.3140935151720896e-07,
+        5.817661605789226e-07,
+        6.984911617990974e-07,
+        -2.1258651843325538e-06,
+        -2.197148507576685e-08,
+        7.748619736958062e-07
+      ]
+    },
+    "static_over_zero": {
+      "gain": 2.5718791230033844e-07,
+      "paired_prefix_bootstrap95": [
+        -7.721218046041756e-07,
+        8.994202816275941e-07
+      ],
+      "per_prefix": [
+        4.3031066354615177e-07,
+        1.7176705924271118e-07,
+        7.870807685605996e-07,
+        9.688151925146826e-07,
+        7.959250973854637e-07,
+        -3.097795456152852e-06,
+        7.584382477610063e-07,
+        1.2429617255449443e-06
+      ]
+    },
+    "zero_over_initial": {
+      "gain": -1.2431214846397864e-07,
+      "paired_prefix_bootstrap95": [
+        -4.125455394465849e-07,
+        2.9051192074192045e-07
+      ],
+      "per_prefix": [
+        -1.0313514309245875e-07,
+        -2.0347229678918666e-08,
+        -2.996013606093584e-07,
+        -3.6904838562890063e-07,
+        -2.516826995702104e-07,
+        1.1721525803309873e-06,
+        -6.205610052489874e-07,
+        -5.022739442139823e-07
+      ]
+    }
+  },
+  "whole_wall_s": 92.43560346899903,
+  "peak_rss_kb": 497064,
+  "checkpoint": "experiments/results/credit/curie_continuous_token_route_dev_20261011_v1_fit.pt",
+  "checkpoint_sha256": "4e238ac8a2d407a4b56160f8eb4b2487c58d847cc939dc9dce9595eb7c3145af",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/fit_continuous_token_routes.py": "32b0adbcc9b2bb96662e5fa593e303c6821585116276d025908ed1522392c158",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_static_carried_credit.py": "a898f2ab3d3e0dfd708fa76dbe32876412a21f2e92f0d11e58e974e177c0719d",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/route_policy_credit.py": "9312c8695811f3718294601d46d73bc65e51c7dfa6efe8c3f57a5d24acb82723",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734",
+    "experiments/credit/CONTINUOUS_TOKEN_ROUTE_DEV_PROTOCOL.md": "30366d729429c34e5edc427c936612f09bb24d8f0927f211ead544690123a185"
+  },
+  "train_tokens_sha256": "eeaca2c10c8bef3828861a13b00a71f6e86bf84567898b7f57c0ed2ce06644a9",
+  "scope": "One development initialization/fixed64window online route fit; fixed native2layer pretrained model,64dim adaptive lexical learner, connected29057param controller. Exact expected stochastic eight-target costs on fresh private held-out TRAIN-tail prefixes, not public DEV/TEST. DEV episode lexical/key state starts fresh after64context; train carries continuous state. No recurrent actor state/full-carrier learning. All exhaustive scoring worlds/reference/projection/discovery/copies/duplicate issuance charged; supported FLOPs omit unsupported scalar/optimizer work included in wall. Source pretraining and gates additional. Endpoint checks are engineering evidence, not a family verdict or benchmark claim."
+}
