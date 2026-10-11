@@ -55,6 +55,15 @@ def forward_risk_blocks():
             ('p',f"Native four-event Taxi TRAIN/one-layer contract, actual observed-loss cotangent: {r['input_probe_count']} cut and {r['producer_probe_count']} producer directions/{r['producer_parameter_count']} producer parameters. Mean input-risk error {r['input_risk_error']:.2e}, producer-risk error {r['producer_risk_error']:.2e}; issued softplus risk-training gradient error {r['risk_training_gradient_error']:.2e}. Label acquisition {r['label_s']*1000:.3f}ms, separate reverse validation {r['reverse_validation_s']*1000:.3f}ms, whole gate {r['wall_s']:.3f}s."),
             ('p','Exhaustive orthogonal probes validate the expectation identities; predicted_credit=0.5c is a diagnostic. No learned-risk calibration, sparse-audit utility, quality or efficiency win. Existing teaching responses can be reused, but fresh risk validation, producer directions and label reductions are paid. Predictor/actor versions are frozen before observation; no reuse of fit probes as independent validation. Theory: FORWARD_OBSERVED_CREDIT_RISK. Evidence: '+tag+'.')]
 
+def temporal_packet_blocks():
+    tag='aws_native_temporal_teaching_packet_20261011_v1';path=ROOT/'experiments/results/credit'/f'{tag}.json'
+    if not path.exists():return []
+    r=json.loads(path.read_text());assert r['status']=='completed'
+    for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+    return [('p','Joint content/elapsed-time teaching extends the shared native packet: exact tangent responses and both input/time cotangents from existing primal caches, with2*B*L*n additional forcing floats. Native autodiff already supports time; this exposes its derivative through the reusable teaching interface, without another forward capture.'),
+            ('p',f"One layer at4/8/32 events with real Taxi TRAIN gaps: JVP error {max(x['jvp_error'] for x in r['rows']):.2e}, VJP {max(x['vjp_error'] for x in r['rows']):.2e}, joint reciprocity {max(x['reciprocity_error'] for x in r['rows']):.2e}. Zero time directions exactly preserve input-only responses; clock changes invalidate issued packets. Cache280/560/2240 floats, excluding shared/query/graph storage."),
+            ('p','Elapsed intervals use layer-scaled time; upstream physical-time/delay producers need their chain rule. Eval/no-dropout first-order contract, no hard-route/parameter/higher-order packet or learned-credit utility/speed/quality claim. Active fits unchanged. Evidence: '+tag+'.')]
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -83,4 +92,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks()]

@@ -130,6 +130,30 @@ def split2_marks_blocks():
             ('table',(['Arm','Passes','TRAIN targets','Fit seconds','Fit ms/target','DEV us/target'],work,[36,17,32,26,30,31])),
             ('p',f"Same Github cohort/split2/seed0, original100pass/30patience/lr0.003/batch32, no TEST. Core21,768/mark29,057 parameters; auxiliary temporal memory updates densely, all clocks scored. Shared pilot {d['paid_pilot_wall_s']:.2f}s and DEV evaluation remain additional. Full fitting FLOPs unmeasured; no sparse-credit, matched-quality efficiency, independent-dataset or benchmark claim. Both complete predictors remain evidence for a separately registered TRAIN-only calibration/readout decision. Evidence: "+tag+'.')]
 
+def split2_readout_blocks():
+    tags=['aws_b4_split2_mark_confidence_20261011','aws_b4_split2_observation_readout_20261011']
+    if not all((ROOT/'experiments/results/tpp_b4'/f'{t}.json').exists() for t in tags):return []
+    teacher,student=[bound(t) for t in tags]
+    for record in (teacher,student):
+        for path,digest in record['input_sha256'].items():verify_artifact(path,digest)
+    rows=[[label,f"{r['L_T']:.3f}",f"{r['L_M']:.3f}",f"{r['total']:.3f}"] for label,r in [('Repaired core',student['baseline_dev']),('Calibrated pair',student['teacher_dev']),('Anchored one-core',student['student_dev'])]]
+    blocks=[('p',f"Split2 TRAIN-only global confidence alpha {teacher['alpha_train_locked']:.6f} improves DEV marks {teacher['dev_mark_gain']:.3f} over repaired core/time fixed. Fixed split1 compact recipe {'passes' if student['gate'] else 'fails'} unchanged mark gain>=1 and teacher-retention>=80% gate on this new partition."),
+            ('table',(['Model','Time loss','Mark loss','Total loss'],rows,[49,33,33,33])),
+            ('p',f"Compact readout gain {student['mark_gain']:.3f} nats per sequence versus repaired core; gain over calibrated pair {student['teacher_dev']['L_M']-student['student_dev']['L_M']:.3f}, teacher-gain ratio {100*student['retained_teacher_gain']:.1f}%. Student {student['parameters']:,} versus pair {student['teacher_parameters']:,} parameters. Warm one-core/pair-predictor forward {student['warm_single_dev_s']:.3f}/{student['warm_pair_dev_s']:.3f}s ({student['warm_pair_dev_s']/student['warm_single_dev_s']:.2f}x) on2,778 DEV targets/34 sequences; final scalar-mixture reduction excluded from this conservative pair-forward measurement."),
+            ('p',f"One seed0/new partition of same Github cohort, fixed144 features/64-wide residual/50 passes and90% teacher/10% observed TRAIN targets. No DEV tuning, new TEST or independent-dataset/general training claim. Teacher fits {student['prerequisite_fitting_s']:.2f}s, teacher preparation {student['teacher_preparation_s']:.3f}s, linear fit {student['readout_fit_s']:.3f}s and residual fit {student['nonlinear_fit_s']:.3f}s; pilot/validation/failed investigations are additional. Native core/time fixed, outputs normalized; observed labels enter TRAIN loss only. Full fitting FLOPs unmeasured. Evidence: "+', '.join(tags)+'.')]
+    serving_path=ROOT/'experiments/results/tpp_b4/aws_b4_split2_observation_serving_20261011.json'
+    if serving_path.exists():
+        serving=bound('aws_b4_split2_observation_serving_20261011')
+        for path,digest in serving['input_sha256'].items():verify_artifact(path,digest)
+        for row in serving['rows']:verify_artifact(row['bundle'],row['bundle_sha256'])
+        blocks.append(('p','Teacher-free split2 portable bundle reproduces score/time exactly, normalized mark probabilities and first-target suffix invariance. One core/readout metadata, no teacher or TRAIN loaded for restoration.'))
+    tradeoff_path=ROOT/'experiments/results/tpp_b4/aws_b4_split2_serving_tradeoff_20261011.json'
+    if tradeoff_path.exists():
+        tradeoff=bound('aws_b4_split2_serving_tradeoff_20261011')
+        for path,digest in tradeoff['input_sha256'].items():verify_artifact(path,digest)
+        blocks.append(('p',f"Full normalized mixture/scoring boundary: student {tradeoff['student_median_s']:.3f}s vs pair {tradeoff['pair_median_s']:.3f}s, {tradeoff['speedup']:.2f}x faster; five warmed CPU timings with alternating order. Includes scalar-mixture reduction and reproduces both saved scores within1e-9. Student35.2% fewer parameters and0.158 lower DEV mark loss than this calibrated pair, with identical time density. Development quality/serving point against our own teacher, not Transformer or total-training superiority."))
+    return blocks
+
 def pages():
     path=ROOT/'experiments/results/tpp_b4/aws_b4_marks_diagnosis_20261011T0303Z.json'
     if not path.exists():return []
@@ -161,4 +185,4 @@ def pages():
         ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
         ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
         ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
-        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks() + readout_curve_blocks() + split2_development_blocks() + split2_marks_blocks()]
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks() + readout_curve_blocks() + split2_development_blocks() + split2_marks_blocks() + split2_readout_blocks()]
