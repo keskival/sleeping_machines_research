@@ -15,7 +15,7 @@ from task_valued_route_credit import ROOT, SOURCE, load, native
 from shared_prefix_receiver_credit import SharedPrefixCredit
 from paired_native_replay import replay_pairs
 
-TAG = 'curie_sparse_paired_ac_20261011T0910Z'
+TAG = 'curie_sparse_paired_ac_v2_20261011T0930Z'
 SOURCES = ['experiments/credit/sparse_paired_actor_critic.py',
            'experiments/credit/shared_prefix_receiver_credit.py',
            'experiments/credit/paired_native_replay.py',
@@ -195,6 +195,7 @@ def train(state, carrier, baseline, tau, scale, end, learn_credit, preview):
 def evaluate(states, carrier, baseline, count, futures, epoch):
     names = list(states); gains = {name: [] for name in names}; choices = {name: [] for name in names}
     references = []
+    probe_predictions = {name: [] for name in names}; probe_truth = []; probe_unseen = []
     start = time.monotonic(); teacher_worlds = 0
     with FlopCounterMode(display=False) as counter:
         for i in range(count):
@@ -204,8 +205,12 @@ def evaluate(states, carrier, baseline, count, futures, epoch):
                 reference = int(scores(baseline, x, 0).flatten().argmin())
                 selected = {name: int(scores(states[name]['actor'], x, epoch).flatten().argmin()) for name in names}
                 references.append(reference)
+                probe = int(np.random.default_rng(79000000+i).integers(72))
+                if probe == reference or probe%9 == reference%9 == 0: probe = (probe+1)%72
+                for name in names:
+                    probe_predictions[name].append(float(contrasts(states[name]['critic'], x, [probe], [reference], states[name]['critic_version'])[0]))
             # Shared verification worlds; all requested actions are paid, no min-result selection.
-            ids = list(dict.fromkeys([reference, *selected.values()])); position = {a: j for j, a in enumerate(ids)}
+            ids = list(dict.fromkeys([reference, *selected.values(), probe])); position = {a: j for j, a in enumerate(ids)}
             rng = np.random.default_rng(77000000+i)
             response = []
             for _ in range(futures):
@@ -213,6 +218,8 @@ def evaluate(states, carrier, baseline, count, futures, epoch):
                 losses, _ = replay_pairs(carrier, ft, fm, [a//9 for a in ids], native.base.actions()[[a%9 for a in ids]], .05)
                 response.append(losses.mean(1)); teacher_worlds += len(ids)
             response = torch.stack(response).mean(0)
+            probe_truth.append(float(response[position[probe]]-response[position[reference]]))
+            probe_unseen.append(probe//9 >= 6 or reference//9 >= 6)
             for name in names:
                 gains[name].append(float(response[position[reference]]-response[position[selected[name]]]))
                 choices[name].append(selected[name])
@@ -220,15 +227,21 @@ def evaluate(states, carrier, baseline, count, futures, epoch):
     rows = []
     for name in names:
         values = np.array(gains[name])
+        error = (np.array(probe_predictions[name])-np.array(probe_truth))**2
+        denominator = np.sum(np.array(probe_truth)**2)
+        unseen = np.array(probe_unseen)
         rows.append(dict(arm=name, gain_vs_baseline=float(values.mean()), bootstrap95=np.quantile(values[indices].mean(1), [.025, .975]).tolist(),
+                         common_probe_mse=float(error.mean()), common_probe_error_over_zero=float(error.sum()/denominator) if denominator else None,
+                         unseen_probe_mse=float(error[unseen].mean()) if unseen.any() else None,
                          changed_prefixes=sum(a != b for a, b in zip(choices[name], references)), choices=choices[name]))
     comparisons = {}
-    for first, second in [('sparse_learned', 'sparse_fixed'), ('sparse_learned', 'full_fixed'), ('sparse_learned', 'sparse_reset')]:
+    for first, second in [('sparse_learned', 'sparse_fixed'), ('sparse_learned', 'full_fixed'), ('sparse_reuse', 'sparse_reset'), ('sparse_learned', 'sparse_reuse')]:
         if first in gains and second in gains:
             delta = np.array(gains[first])-np.array(gains[second])
             comparisons[f'{first}_over_{second}'] = dict(gain=float(delta.mean()), bootstrap95=np.quantile(delta[indices].mean(1), [.025, .975]).tolist())
     return dict(rows=rows, comparisons=comparisons, prefixes=count, continuations=futures,
-                teacher_worlds=teacher_worlds, supported_flops=counter.get_total_flops(), wall_s=time.monotonic()-start)
+                teacher_worlds=teacher_worlds, probe_truth=probe_truth, probe_predictions=probe_predictions,
+                supported_flops=counter.get_total_flops(), wall_s=time.monotonic()-start)
 
 
 def run(mode, tag):
@@ -241,14 +254,17 @@ def run(mode, tag):
         reset = unpack(cp['states']['sparse_learned'], baseline); reset['arm'] = 'sparse_reset'
         reset['critic'].load_state_dict(baseline.state_dict()); reset['buffer'] = []; reset['critic_version'] = 0
         states['sparse_reset'] = reset; end = 512
+        reused = unpack(cp['states']['sparse_learned'], baseline); reused['arm'] = 'sparse_reuse'
+        states['sparse_reuse'] = reused
         prior_fits = {r['arm']: r for r in previous['metrics']['fits']}
         prior_fits['sparse_reset'] = prior_fits['sparse_learned']
+        prior_fits['sparse_reuse'] = prior_fits['sparse_learned']
     else:
         states = {name: create_state(baseline, name) for name in ['full_fixed', 'sparse_fixed', 'sparse_learned']}
         end = 4 if mode == 'smoke' else 128
     fits = []
     for name, state in states.items():
-        fits.append(train(state, carrier, baseline, tau, scale, end, mode != 'reuse' and name == 'sparse_learned',
+        fits.append(train(state, carrier, baseline, tau, scale, end, name == 'sparse_learned',
                           ROOT/'.git/sparse-paired-ac-preview'/tag/name))
     evaluation = evaluate(states, carrier, baseline, 2 if mode == 'smoke' else 32, 1 if mode == 'smoke' else 8, end)
     cumulative = []
