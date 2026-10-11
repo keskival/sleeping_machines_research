@@ -72,3 +72,22 @@ with direct-only and independently learning continuations, on development data.
 Measure which channel persists before paying for uniformly longer windows.
 The current fixed-window result remains evidence about its stated objective;
 no theorem here supplies a whole-model scaling or Adam contraction claim.
+
+## Completed native influence diagnostic
+
+Four fresh TRAIN prefixes, fixed trained two-layer GPT-2-token source and
+48target independent factual/no-op continuations. A prefix-only native feature-
+mean-shift norm selects the issued hard-write route. Direct-only final-window
+loss differences are zero within1.4e-16. Independent lexical Adam trajectories
+retain final-window mean loss differences8.31e-6,4.60e-4,2.38e-5,2.77e-4 in
+absolute value, with final lexical-state distances1.28e-4–1.70e-3. In three of
+four prefixes the later40target cumulative contrast opposes the first8target
+contrast; prefix1 later-0.003744 offsets30.1% of first+0.012438. These are signed
+intervention consequences, not policy improvements. Full diagnostic33.79s,
+23.282 supportedGFLOPs; source pretraining/contracts/smoke additional.
+
+Completed results: curie_token_credit_tail_20261011_v2_measure.json. Selection
+uses no future label; this four-prefix diagnostic supports the two-channel
+mechanism but supplies neither a uniform contraction bound nor an advantage
+for a learned boundary critic. Full all-route48-target credit calibration is
+the next gate before longer-horizon controller development.

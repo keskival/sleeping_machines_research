@@ -84,3 +84,13 @@ work are charged. This checks the learning cycle only. Register longer TRAIN
 and fresh private DEV offsets before quality development; no DEV selection or
 utility result has been measured. Recurrent controller state, full-carrier
 learning and economical vocabulary normalization require further implementation.
+
+## Delayed influence direction
+
+The completed48-target native diagnostic shows learner-state and loss effects
+after direct key-output effects vanish, with one measured later-return sign
+reversal. STATE_INFLUENCE_BOUNDARY_CRITIC.md defines a connected history/version-
+conditioned downstream critic and the full factual-return correction needed
+for a longer objective. The next admission pins controller versions over the
+return horizon before general asynchronous delayed updates. A bootstrap alone
+does not correct an eight-target objective into a full-return objective.

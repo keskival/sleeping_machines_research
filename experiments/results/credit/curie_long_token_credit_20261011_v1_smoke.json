@@ -1,0 +1,89 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_long_token_credit_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 4.972417827991128e-06,
+      "conditional_logit_variance": 4.819438941566392e-06
+    },
+    {
+      "arm": "first8_exact_no_tail",
+      "mse": 4.576849176566153e-07,
+      "conditional_logit_variance": 4.4364790687107424e-07
+    },
+    {
+      "arm": "static_full",
+      "mse": 3.3983875860982195e-07,
+      "conditional_logit_variance": 3.2938450544099107e-07
+    },
+    {
+      "arm": "reference_full",
+      "mse": 4.3269924098813704e-07,
+      "conditional_logit_variance": 4.1938744045309606e-07
+    }
+  ],
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "mse": 4.972417827991128e-06,
+      "conditional_logit_variance": 4.819438941566392e-06
+    },
+    {
+      "prefix": 0,
+      "arm": "first8_exact_no_tail",
+      "mse": 4.576849176566153e-07,
+      "conditional_logit_variance": 4.4364790687107424e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "static_full",
+      "mse": 3.3983875860982195e-07,
+      "conditional_logit_variance": 3.2938450544099107e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "reference_full",
+      "mse": 4.3269924098813704e-07,
+      "conditional_logit_variance": 4.1938744045309606e-07
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "routes": 65,
+      "carrier_supported_flops": 939022208,
+      "carrier_wall_s": 2.191815714002587,
+      "teacher_supported_flops": 13380556800,
+      "teacher_wall_s": 1.6780003769963514,
+      "reference_supported_flops": 205985792,
+      "reference_wall_s": 0.27463232599257026,
+      "first8_oracle_route": 11,
+      "full_oracle_route": 11,
+      "first8_choice_full_regret": 0.0,
+      "true_future_tail_rms": 0.0006765241441786208
+    }
+  ],
+  "context": 64,
+  "targets_per_prefix": 16,
+  "train_offset": 4325376,
+  "actual_worlds": 66,
+  "readout_updates": 1056,
+  "whole_wall_s": 4.302790550005739,
+  "peak_rss_kb": 455056,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "checkpoint": "experiments/results/credit/curie_long_token_credit_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "36299d0b7d30f6150f7f8947a12b5477fb7272e94a7881da60095c1ddca57472",
+  "source_sha256": {
+    "experiments/credit/measure_long_token_credit.py": "5fc735b9f7189df9844c6dbfa05cd51b2a6fafabcb9f5cf6df9db0827a55c7e1",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Four fresh properly tokenized TRAIN prefixes/48futuretargets/64context in measurement. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+}

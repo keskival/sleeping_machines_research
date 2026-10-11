@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_credit_tail_20261011_v2_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "prefix": 0,
+      "lr": 0.0,
+      "receiver": 329,
+      "issued_beta": 0.2919251693050512,
+      "windows": [
+        {
+          "window": 0,
+          "mean_loss_contrast": 0.00013953185152681957,
+          "learning_state_distance": 0.0
+        },
+        {
+          "window": 1,
+          "mean_loss_contrast": -3.483913435520236e-10,
+          "learning_state_distance": 0.0
+        }
+      ],
+      "first8_sum": 0.0011162548122145566,
+      "later_sum": -2.787130748416189e-09
+    },
+    {
+      "prefix": 0,
+      "lr": 0.01,
+      "receiver": 329,
+      "issued_beta": 0.2919251693050512,
+      "windows": [
+        {
+          "window": 0,
+          "mean_loss_contrast": 0.00015883072666023068,
+          "learning_state_distance": 0.00010600376035032804
+        },
+        {
+          "window": 1,
+          "mean_loss_contrast": 4.076760184990036e-06,
+          "learning_state_distance": 0.0001271140523605992
+        }
+      ],
+      "first8_sum": 0.0012706458132818454,
+      "later_sum": 3.261408147992029e-05
+    }
+  ],
+  "train_offset": 4292608,
+  "context": 64,
+  "targets_per_world": 16,
+  "actual_worlds": 4,
+  "readout_updates": 64,
+  "supported_flops": 3332189696,
+  "whole_wall_s": 5.68586846900871,
+  "peak_rss_kb": 351500,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/measure_token_credit_tail_v2.py": "48734841412a3d1b26abfa7efafa89e8db93f53b4ff6a6083c53e4197e8bbcee",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Four fresh TRAIN prefixes, prefix-only maximum native feature-gradient mean-shift norm selects issued route. Independent factual/no-op trajectories across48targets; fixed-readout/direct-only vs independent lexical Adam(.01), same source carrier. Measures tail of this selected diagnostic, not policy utility or a native contraction certificate. Full acquisition/state/normalized output/readout/projection work paid; lr0 optimizer calls counted. No DEV/TEST."
+}
