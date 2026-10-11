@@ -1,0 +1,56 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_world_readouts_20261011_v1_contract",
+  "gate": true,
+  "contracts": [
+    {
+      "kind": "small",
+      "vocabulary": 23,
+      "errors": {
+        "scores0": 1.7763568394002505e-15,
+        "z0": 3.469446951953614e-18,
+        "gradients0": 4.440892098500626e-16,
+        "adam0": 5.551115123125783e-17,
+        "scores1": 0.0,
+        "z1": 3.469446951953614e-18,
+        "gradients1": 4.440892098500626e-16,
+        "adam1": 5.551115123125783e-17,
+        "scores2": 0.0,
+        "z2": 3.469446951953614e-18,
+        "gradients2": 4.440892098500626e-16,
+        "adam2": 5.551115123125783e-17
+      }
+    },
+    {
+      "kind": "proper_gpt2",
+      "vocabulary": 50257,
+      "errors": {
+        "scores0": 2.220446049250313e-16,
+        "z0": 2.220446049250313e-16,
+        "gradients0": 1.1324274851176597e-14,
+        "adam0": 1.1900203045200897e-15,
+        "scores1": 1.7763568394002505e-15,
+        "z1": 4.683753385137379e-16,
+        "gradients1": 8.43769498715119e-15,
+        "adam1": 6.730727086790012e-16,
+        "scores2": 4.440892098500626e-16,
+        "z2": 3.9942008034365983e-16,
+        "gradients2": 1.0103029524088925e-14,
+        "adam2": 9.575673587391975e-16
+      }
+    }
+  ],
+  "whole_wall_s": 1.2033652870013611,
+  "peak_rss_kb": 352096,
+  "source_sha256": {
+    "experiments/credit/check_token_exact_world_readouts.py": "b8c3edf181829bf4aac7ea9fcaf4b8d502db077c0ba07cff3c4ecea81d24973c",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/credit/check_token_forward_credit.py": "92315ca7b6acd9118d8866862f9aa785b0b2de5e43a980c03599f39e75fa542e",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Three actual independently adapting readouts share a native carrier; summed losses retain per-world gradients and independent Adam coordinates. Native separate-world scores/gradients/final vectors/moments including EOS reset contracted for23 and50257 token vocabularies. No policy fit/public scoring/TEST; original pretrained source and all verification work charged separately."
+}
