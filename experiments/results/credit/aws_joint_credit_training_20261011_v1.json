@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "tag": "aws_joint_credit_training_20261011_v1",
+  "battle": "B1 joint forward-taught credit",
+  "rows": [
+    {
+      "depth": 2,
+      "estimator_parameters": 1716,
+      "cut_probe_count": 64,
+      "producer_probe_count": 128,
+      "producer_parameters": 116,
+      "cut_gradient_error": 3.3306690738754696e-16,
+      "producer_gradient_error": 1.7763568394002505e-15,
+      "initial_in_sample_credit_error": 1.0763637850577061,
+      "final_in_sample_credit_error": 0.905574435022326,
+      "forward_label_s": 0.001498477067798376,
+      "reverse_validation_s": 0.0007086168043315411
+    },
+    {
+      "depth": 4,
+      "estimator_parameters": 1716,
+      "cut_probe_count": 64,
+      "producer_probe_count": 128,
+      "producer_parameters": 116,
+      "cut_gradient_error": 3.3306690738754696e-16,
+      "producer_gradient_error": 3.552713678800501e-15,
+      "initial_in_sample_credit_error": 1.2296726880336284,
+      "final_in_sample_credit_error": 1.0030134604843108,
+      "forward_label_s": 0.0027096529956907034,
+      "reverse_validation_s": 0.001249128021299839
+    },
+    {
+      "depth": 8,
+      "estimator_parameters": 1716,
+      "cut_probe_count": 64,
+      "producer_probe_count": 128,
+      "producer_parameters": 116,
+      "cut_gradient_error": 2.220446049250313e-16,
+      "producer_gradient_error": 1.7763568394002505e-15,
+      "initial_in_sample_credit_error": 1.8152140878907201,
+      "final_in_sample_credit_error": 1.461969799833759,
+      "forward_label_s": 0.004986032843589783,
+      "reverse_validation_s": 0.002429498126730323
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/check_joint_credit_training.py": "7442aeb6be4419d86b37c856c74f8b8efcb51e3d56296e4b252c1f400be40238",
+    "experiments/credit/joint_forward_credit.py": "721e5a3acdd6156cb7d1f51b36aa8a2d660cbae04b14eff298a4fcdbf46e9992",
+    "experiments/credit/check_joint_forward_risk.py": "9ed52098bc896f1f646bb9930111fbead2e092aab75b79c2deb4de876f856e7c",
+    "experiments/credit/joint_forward_residual_risk.py": "70f84ca0032fd42f1724b8caf36d746beadc589e4885c8dfa6436cd500b3cd9b",
+    "experiments/credit/check_deep_temporal_packet.py": "72adc553a154380a053ca90f434798f1bce7c82a7e60405fff5d18d8bd8cf856",
+    "experiments/credit/native_fused_temporal_packet.py": "d84455e74f6f629b0aa886e6fad10f3bead5ebfa7fdd8a9db98bc1ec0b3f7b38",
+    "experiments/credit/native_deep_temporal_packet.py": "4ac12ee90d01eb5375e549ff02ea24c2e3c16b5508ecb30a71120f4fd00403f8",
+    "experiments/credit/native_temporal_teaching_packet.py": "af41285f2601f57ff7151ca81128031d3336fc37f42319b0b6a4a29a86deff46",
+    "experiments/credit/native_training_temporal_packet.py": "c9b4741744b315c915f033443336c64c2287f3b609bc59ae628593dca731f2ae",
+    "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+    "experiments/credit/predictable_audit_allocation_v2.py": "f37c61d1e4bbba600ca985a38bd6e605022d20fbc30f4fe26fa8cd1578c562c3",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "wall_s": 0.6305257370695472,
+  "max_rss_kb": 399280,
+  "scope": "One four-event Taxi TRAIN prefix per depth2/4/8, frozen native dense-write model, diagnostic shared content/time producer. Neural estimator gradient matches exact cut and shared-producer regression objectives using exhaustive forward probe labels; four in-sample SGD steps only. Reverse teacher is validation only. No acquired held-out credit structure, future task utility, hard-route, active model substitution or whole-fitting efficiency claim."
+}
