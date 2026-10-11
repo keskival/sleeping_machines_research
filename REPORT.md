@@ -4651,7 +4651,38 @@ At72 worlds the exact shared-carrier replay uses0.331 versus2.917 supportedMFLOP
 
 Reference diagnostic23.50s,72 projected routes per future,1024 reference readout updates,16.040supportedMFLOPs. Existing512 teacher worlds and prior acquisition/pretraining additional. Reference fast weights reset each episode; no persistent cross-episode new critic parameters, TEST, general internal-route or scaling claim.
 
-Next decisive test: matched actual route-controller learning from the same acquired controller/optimizer checkpoint. Full residual correction p=1 costs no additional audit world once factual and reference learners have run; thinning would discard known feedback. Charge all learner worlds and projected routes. No pending score is a result.
+### Matched forward-derived route-controller continuation
+
+| Credit | DEV gain / target | Fit GFLOPs | MFLOPs / target | Fit seconds |
+| --- | --- | --- | --- | --- |
+| prefix | -0.001328 | 0.296 | 0.145 | 124.5 |
+| forward static | -0.000606 | 0.296 | 0.145 | 124.0 |
+| reference learner | -0.000227 | 0.296 | 0.145 | 126.6 |
+
+All arms start from the same valid128 full-audit controller/Adam checkpoint and continue384 episodes with identical data, sampling draws and update recipe. Future information enters only credit after observations arrive; inference remains prefix-only. Full residual correction uses the already paid factual/reference losses. Per-arm costs include original128 acquisition; shared fresh64-prefix/eight-future DEV verification and prior diagnostic/pretraining costs are additional.
+
+| Paired utility comparison | Gain / target | Prefix bootstrap95 |
+| --- | --- | --- |
+| forward static over prefix | +0.000722 | [-0.000100, +0.001655] |
+| reference learner over prefix | +0.001101 | [-0.000033, +0.002309] |
+| reference learner over static | +0.000378 | [-0.000453, +0.001401] |
+
+Reference-learning over prefix gain+0.001101 nats/target has paired95% interval−0.000033–+0.002309, crossingzero; the utility gate fails. All three trained controllers are below the saved baseline point estimate. Reference cumulative wall is1.65% higher than prefix. Next diagnostic separates fixed-policy action-sampling noise from future-gradient variation.
+
+One-seed synthetic development; fixed native carrier and four independently adapting readout steps per episode. This measures actual route utility, not all-carrier learning, market continuity, hardware or depth scaling. Completed source JSON/PT retain projections, actual worlds and optimizer updates.
+
+### Fixed-policy route-controller gradient variance
+
+| Credit | Action variance | Future variance | Estimated total |
+| --- | --- | --- | --- |
+| zero | 0.124684 | 0.005950 | 0.130634 |
+| prefix | 0.096772 | 0.005950 | 0.102722 |
+| forward static | 0.001752 | 0.005950 | 0.007702 |
+| reference learner | 0.000073 | 0.005950 | 0.006023 |
+
+Reference-learning credit reduces action-sampling gradient variance99.92% versus prefix and95.84% versus static. Estimated total variance falls94.14% versus prefix; future variation is98.79% of the remaining reference variance. Full corrected means match exact policy autograd within5.6e-17. This moves the bottleneck toward future-gradient noise and the controller update rule.
+
+Fixed10584-parameter acquired128 controller,12 TRAIN-domain prefixes/16 futures each,54 exact routes plus one paid projected-reference learner per future. Conditional action covariance trace is exact on finite route support; future covariance is a16-future sample estimate. No fitting/DEV/TEST. All10560teacher worlds/42240readout updates paid,51.61s/0.218968supportedGFLOPs; inherited work additional. Parameter gradients belong to the route controller, not the fixed native carrier.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
@@ -4747,3 +4778,15 @@ Checkpoint swaps show that the joint branch transfers poorly to the repaired cor
 A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient 0.613305, retaining the repaired timing density. DEV mark loss 65.203 versus baseline 67.237, gain 2.034; total loss -116.178. One coefficient is used for every candidate mark; there is no target-dependent inference selection.
 
 Scalar fitting 18.53ms after 2.941s of predictor evaluation. Both native models remain necessary: 50,826 parameters and 7040.78s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. Independent confirmation precedes engineering a single integrated readout.
+
+Fixed-recipe three-seed calibration confirmation passes: mean DEV mark gain 1.979 nats per sequence, sample SD 0.537. Registered gate: mean gain >=1.000 and every seed positive; TRAIN-only global coefficients, repaired timing unchanged.
+
+| Seed | Baseline marks | Calibrated marks | Gain | Prerequisite fit min |
+| --- | --- | --- | --- | --- |
+| 0 | 67.237 | 65.203 | 2.034 | 117.3 |
+| 1 | 66.922 | 65.505 | 1.417 | 99.4 |
+| 2 | 67.670 | 65.183 | 2.487 | 96.8 |
+
+Warm sequential DEV serving through both complete predictors: seed0 199.70 microseconds/target; helps 28/34 sequences, seed1 201.98 microseconds/target; helps 24/34 sequences, seed2 201.22 microseconds/target; helps 30/34 sequences. Query, scalar-fit and prerequisite work are separate; both predictors remain necessary.
+
+Scope: one Github split1; seed0 selected the diagnostic and seeds1/2 confirm its fixed recipe on the same DEV split. No new TEST scoring, independent-dataset generalization, efficiency or integrated sparse-learning win. Failed joint/residual gates remain failed. Serving and per-sequence errors determine the next single-readout engineering decision.
