@@ -89,6 +89,42 @@ def deep_joint_blocks():
       ('p',f"Zero-query speed ratio {min(x['whole_step_speedup'] for x in ordinary):.3f}–{max(x['whole_step_speedup'] for x in ordinary):.3f}: capture is slower for ordinary fitting. Enable it for needed teaching. Native dense-write diagnostic, physical race/addressed-memory clocks retained; no critic fitting/use, task quality, full-learning or Transformer efficiency claim."),
       ('p',f"Forward-only joint residual labels retain shared-producer content/time cross terms at depths2/4/8. Combined producer-risk error {max(x['producer_risk_error'] for x in risk['rows']):.2e}, conditional risk-training gradient error {max(x['risk_training_gradient_error'] for x in risk['rows']):.2e}. Separate reverse validation paid; exhaustive orthogonal probes and diagnostic positive internal tempo. No learned calibration/audit utility claim. Evidence: "+', '.join(tags)+'.')]
 
+def learned_joint_blocks():
+    tags=['aws_joint_credit_training_20261011_v1','aws_joint_credit_identity_20261011_v1']
+    tags += [f'aws_joint_credit_acquisition_20261011_s{seed}' for seed in range(3)]
+    tags += [f'aws_native_joint_audit_risk_20261011_s{seed}' for seed in range(3)]
+    records=[]
+    for tag in tags:
+        path=ROOT/'experiments/results/credit'/f'{tag}.json'
+        if not path.exists():return []
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        records.append(r)
+    contract,identity=records[:2];acquired=records[2:5];risk=records[5:]
+    rows=[row for record in acquired for row in record['rows']]
+    out=[('p','Forward responses now train the joint credit estimator directly: squared mismatch between predicted input/time directional credit and the observed-loss response c^T Jv. Actor responses, probes and terminal cotangent are frozen for each issued observation; only estimator predictions receive local training gradients. At depths2/4/8, all1716parameter neural-estimator gradients match exact cut regression and shared-producer regression (including cross terms) within '+format(max(x['producer_gradient_error'] for x in contract['rows']),'.2e')+'. Four local SGD steps decrease in-sample error; no held-out utility is inferred from that contract.'),
+      ('p',f"Local acquisition certificate: three seeds, depths2/4/8,512 artificial terminal cotangents with four fresh full-support probes each,400Adam updates,1152parameter linear credit map.64fresh cotangents and probes after fit. Joint-field residual energy versus zero falls {100*min(x['residual_energy_reduction'] for x in rows):.3f}–{100*max(x['residual_energy_reduction'] for x in rows):.3f}%. One frozen four-event Taxi TRAIN context/three unique task targets per actor, not512new task examples. Forward-only fit labels; reverse validation separate. All acquisition/fitting investment charged; no whole-learning or state-transfer claim."),
+      ('p','Portable fields/actors restored without refitting, actual observed-loss cotangents: learned shared-producer credit beats identity transport in9/9same-context cases and9/9one-Adam model-update cases;16/18new-context cases improve and2worsen. At depth8/seed1, both new contexts lose to zero/identity. This diagnoses missing state conditioning; it is not a depth/family task-loss verdict. The actor predictions are identical across credit evaluations. Expired maps require revalidation/audits.'),
+      ('p','First native conditional audit-risk fit:13parameter positive model,12pre-label state/clock/normalization features,64four-event TRAIN contexts,8forward shared-producer probes per context,300Adam updates.32new TRAIN contexts, expected4audits/floor0.01. Metric is conditional raw-gradient trace sum R(1/pi-1), analytic at identical expected audit budget; full actor backward used to obtain observed-loss cotangent and charged. No sampled sparse updates or future task learning measured.'),
+      ('table',['seed','depth','reduction vs uniform %','reduction vs cotangent norm %'],
+       [[str(r['seed']),str(x['depth']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in risk for x in r['rows']]),
+      ('p','The64-context pilot is mixed, including a depth8 deterioration; preserve every row. Next registered64/256/1024-context acquisition ladder keeps the estimator/configuration fixed, reuses forward labels and reserves a new128-context private TRAIN tail. All sizes reported, no best-size selection. Evidence: '+', '.join(tags)+'.')]
+    return out + audit_ladder_blocks()
+
+
+def audit_ladder_blocks():
+    records=[]
+    for seed in range(3):
+        path=ROOT/'experiments/results/credit'/f'aws_native_joint_audit_risk_ladder_20261011_s{seed}.json'
+        if not path.exists():return []
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        records.append(r)
+    return [('p','Registered acquisition-scale ladder completed: unchanged13parameter risk model/features/300steps at64/256/1024contexts; shared8-probe forward labels,128new private TRAIN tail contexts, expected16audits/12.5% with floor0.01. Earlier exploratory validation explicitly enters acquisition. Every size retained; exact references are neither fitting targets nor features. Full raw records and shared/per-size standalone work retained. Metric is analytic conditional raw-gradient trace, not future task loss or complete fitting efficiency.'),
+      ('table',['seed','depth','TRAIN contexts','vs uniform %','vs cotangent norm %'],
+       [[str(r['seed']),str(x['depth']),str(x['train_contexts']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in records for x in r['rows']]),
+      ('p','Measured whole ladder wall/RSS: '+', '.join(f"seed{r['seed']} {r['wall_s']:.2f}s/{r['max_rss_kb']/1024:.1f}MiB" for r in records)+'. Earlier local-field fits,64-context pilots and publication are additional. No Transformer/task-quality/whole-learning claim. Evidence: '+', '.join(r['tag'] for r in records)+'.')]
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -117,4 +153,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks() + deep_joint_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks() + forward_risk_blocks() + temporal_packet_blocks() + timed_producer_blocks() + deep_joint_blocks() + learned_joint_blocks()]
