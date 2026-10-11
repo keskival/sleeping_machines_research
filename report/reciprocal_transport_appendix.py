@@ -29,6 +29,22 @@ def packet_blocks():
             ('p','Shared-packet evidence: '+', '.join(tags)+'.')]
 
 
+def crossover_blocks():
+    tags=['aws_packet_teaching_crossover_20261011_v1','aws_connected_teaching_crossover_20261011_v1','aws_connected_teaching_zero_query_20261011_v1','aws_connected_deep_teaching_20261011_v1']
+    if not all((ROOT/'experiments/results/credit'/f'{t}.json').exists() for t in tags):return []
+    records=[]
+    for tag in tags:
+        r=json.loads((ROOT/'experiments/results/credit'/f'{tag}.json').read_text());assert r['status']=='completed'
+        for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        records.append(r)
+    rows=[]
+    for a,b in zip(*[r['rows'] for r in records[:2]]):
+        rows.append([f"B{a['batch']}/L{a['events']}",str(a['teaching_directions']),f"{a['whole_step_speedup']:.2f}x",f"{b['whole_step_speedup']:.2f}x"])
+    return [('p','Teaching-only actor execution now keeps the native producer graph connected while capturing the forward packet. This removes manual producer reconnection; all parameter gradients and Adam moments match the native reference exactly in the connected sweep.'),
+            ('table',(['Shape','Queries','Detached packet speed','Connected packet speed'],rows,[29,20,49,50])),
+            ('p','Composed native packets at depths2/4/8: '+', '.join(f"depth{x['depth']},queries{x['teaching_directions']}: {x['whole_step_speedup']:.2f}x" for x in records[3]['rows'])+'. All parameter gradients and Adam moments match exactly; full composed tangent responses are checked against native forward autodiff. B4/L32/d32/n16, complete actor-update and teaching-label boundary, not learned-credit or task-quality scaling.'),
+            ('p','Complete actor/update plus1–32 teaching directions, five warmed CPU timings, real Taxi TRAIN and one dense-write layer. Captured packet, retained graph and symmetric response copies are charged; connected timing additionally charges symmetric gradient copies. No critic fitting, task-quality or whole-fit learning-efficiency endpoint. Zero-query capture runs5–7% slower than native, while1/16-query confirmations run2.40–3.89x faster. Enable capture for teaching work, keep native execution for ordinary updates. Evidence: '+', '.join(tags)+'.')]
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -57,4 +73,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks()]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks() + crossover_blocks()]

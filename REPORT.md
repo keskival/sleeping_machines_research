@@ -4785,6 +4785,27 @@ Complete actor update plus16 forward teaching responses: B1,L4: 7.687/3.402ms re
 
 Shared-packet evidence: aws_native_cached_jvp_20261011_v2, aws_native_cached_linearization_20261011_v1, aws_native_packet_actor_update_20261011_v1, aws_packet_actor_step_20261011_v1, aws_packet_actor_teaching_step_20261011_v1.
 
+Teaching-only actor execution now keeps the native producer graph connected while capturing the forward packet. This removes manual producer reconnection; all parameter gradients and Adam moments match the native reference exactly in the connected sweep.
+
+| Shape | Queries | Detached packet speed | Connected packet speed |
+| --- | --- | --- | --- |
+| B1/L4 | 1 | 2.14x | 2.42x |
+| B1/L4 | 2 | 2.20x | 2.47x |
+| B1/L4 | 4 | 2.24x | 2.46x |
+| B1/L4 | 8 | 2.25x | 2.46x |
+| B1/L4 | 16 | 2.22x | 2.50x |
+| B1/L4 | 32 | 2.22x | 2.45x |
+| B4/L32 | 1 | 3.29x | 3.92x |
+| B4/L32 | 2 | 3.52x | 4.15x |
+| B4/L32 | 4 | 3.42x | 3.99x |
+| B4/L32 | 8 | 3.24x | 3.94x |
+| B4/L32 | 16 | 3.22x | 3.68x |
+| B4/L32 | 32 | 3.02x | 3.48x |
+
+Composed native packets at depths2/4/8: depth2,queries1: 4.79x, depth2,queries16: 4.35x, depth4,queries1: 5.21x, depth4,queries16: 4.63x, depth8,queries1: 5.29x, depth8,queries16: 4.72x. All parameter gradients and Adam moments match exactly; full composed tangent responses are checked against native forward autodiff. B4/L32/d32/n16, complete actor-update and teaching-label boundary, not learned-credit or task-quality scaling.
+
+Complete actor/update plus1–32 teaching directions, five warmed CPU timings, real Taxi TRAIN and one dense-write layer. Captured packet, retained graph and symmetric response copies are charged; connected timing additionally charges symmetric gradient copies. No critic fitting, task-quality or whole-fit learning-efficiency endpoint. Zero-query capture runs5–7% slower than native, while1/16-query confirmations run2.40–3.89x faster. Enable capture for teaching work, keep native execution for ordinary updates. Evidence: aws_packet_teaching_crossover_20261011_v1, aws_connected_teaching_crossover_20261011_v1, aws_connected_teaching_zero_query_20261011_v1, aws_connected_deep_teaching_20261011_v1.
+
 ## Appendix. B4 repaired learning and mark-memory development
 
 The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.
