@@ -1,0 +1,163 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_continuous_token_route_20261011_v2_smoke",
+  "gate": true,
+  "rows": [
+    {
+      "arm": "zero",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 3,
+          "factual_nll": 7.164535050311432,
+          "gradient_norm": 0.00023478906471132178,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 47,
+          "factual_nll": 3.9888186557143928,
+          "gradient_norm": 8.103507373363366e-05,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 10,
+          "factual_nll": 7.3846757540098285,
+          "gradient_norm": 0.0032296889658675484,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 40,
+          "factual_nll": 5.276191936988525,
+          "gradient_norm": 7.377755184947029e-06,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        }
+      ],
+      "wall_s": 2.5252097939956,
+      "supported_flops": 1270396288,
+      "actor_parameters": 29057,
+      "final_fast_norm": 0.4112950849498632,
+      "final_active_keys": 39
+    },
+    {
+      "arm": "static",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 3,
+          "factual_nll": 7.164535050311432,
+          "gradient_norm": 0.00011154570231331603,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 47,
+          "factual_nll": 3.9888186557143928,
+          "gradient_norm": 3.352844598485416e-05,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 10,
+          "factual_nll": 7.3846757540098285,
+          "gradient_norm": 0.0003774900816213407,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 40,
+          "factual_nll": 5.276191936988525,
+          "gradient_norm": 4.270128600054365e-06,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        }
+      ],
+      "wall_s": 1.9079568550077965,
+      "supported_flops": 1296394112,
+      "actor_parameters": 29057,
+      "final_fast_norm": 0.4112950849498632,
+      "final_active_keys": 39
+    },
+    {
+      "arm": "reference",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 3,
+          "factual_nll": 7.164535050311432,
+          "gradient_norm": 0.00011510153304437774,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 47,
+          "factual_nll": 3.9888186557143928,
+          "gradient_norm": 3.3585737732788695e-05,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 2,
+          "routes": 65,
+          "action": 10,
+          "factual_nll": 7.3846757540098285,
+          "gradient_norm": 0.0003228961289072676,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        },
+        {
+          "window": 3,
+          "routes": 65,
+          "action": 40,
+          "factual_nll": 5.276191936988525,
+          "gradient_norm": 4.2897657113013496e-06,
+          "actual_worlds": 2,
+          "readout_updates": 16
+        }
+      ],
+      "wall_s": 1.830374174998724,
+      "supported_flops": 1270396288,
+      "actor_parameters": 29057,
+      "final_fast_norm": 0.4112950849498632,
+      "final_active_keys": 39
+    }
+  ],
+  "train_token_offset": 4214784,
+  "context_tokens": 16,
+  "scored_targets_per_arm": 32,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/smoke_continuous_token_route_learning_v2.py": "81ce343f377b33fad5d9b9b1134f041b1015afdd96b63a8d9b84e26e91bcb323",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8",
+    "experiments/credit/route_policy_credit.py": "9312c8695811f3718294601d46d73bc65e51c7dfa6efe8c3f57a5d24acb82723",
+    "experiments/credit/token_static_carried_credit.py": "a898f2ab3d3e0dfd708fa76dbe32876412a21f2e92f0d11e58e974e177c0719d",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "whole_wall_s": 6.461888585996348,
+  "peak_rss_kb": 368444,
+  "scope": "Integration smoke only: four8-target windows/three learned-route arms, proper GPT-2 TRAIN, fixed native2layer carrier, adaptive64dim lexical Adam and connected actor. Every window retains up8 observed document addresses in the pool; no recurrent actor state. Duplicate issued-prefix acquisition and unused reference/frozen projections charged; not efficient final implementation. No DEV/TEST, utility/variance/depth/whole-fit claim. Source pretraining/contracts additional. Actual/reference learner and key state carry with EOS reset, actor updated only after window, issued features prefix-only."
+}

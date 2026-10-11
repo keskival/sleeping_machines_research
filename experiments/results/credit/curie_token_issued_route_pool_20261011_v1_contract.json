@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_issued_route_pool_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "routes": 33,
+      "errors": {
+        "context": 0.0,
+        "descriptors": 0.0,
+        "probabilities": 0.0
+      }
+    },
+    {
+      "depth": 4,
+      "routes": 33,
+      "errors": {
+        "context": 0.0,
+        "descriptors": 0.0,
+        "probabilities": 0.0
+      }
+    },
+    {
+      "depth": 8,
+      "routes": 33,
+      "errors": {
+        "context": 0.0,
+        "descriptors": 0.0,
+        "probabilities": 0.0
+      }
+    }
+  ],
+  "whole_wall_s": 0.15285213600145653,
+  "source_sha256": {
+    "experiments/credit/check_token_issued_route_pool.py": "df1dbbd1c52e067ba61c451fe115940da404294e4b57be1bbd3dc1b97cb26093",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8"
+  },
+  "scope": "Same observed history/candidate directions/transported descriptors/actor probabilities for full-prefix and carried-event issuance at depths2/4/8. Prefix-only API, no future inputs. GPT-2 EOS pool protocol; no task fitting/quality claim."
+}

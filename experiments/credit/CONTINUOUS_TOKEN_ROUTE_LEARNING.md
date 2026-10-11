@@ -74,10 +74,13 @@ constitute an implemented metric learner or a scaling result.
 
 ## Completed bounded integration
 
-The v1 smoke completes four eight-target windows per zero/static/reference arm
+The v2 smoke completes four eight-target windows per zero/static/reference arm
 on32 proper TRAIN targets after16 context tokens, source checkpoint unchanged.
 Connected router29,057 parameters, all gradients finite; factual key/fast
-vector/Adam carry;5.82s total and360MiB peak. Initial pool65 routes; subsequent
-windows use nine current-address routes. Duplicate issuance is charged. This
-checks the learning cycle only. Retain full observed-document pool before
-quality development; no DEV selection or utility result has been measured.
+vector/Adam carry;6.46s total and360MiB peak. Every window retains65 routes
+from up to8 observed document addresses. Full-prefix and carried-event route
+features/probabilities agree at depths2/4/8. Duplicate issuance and all reference
+work are charged. This checks the learning cycle only. Register longer TRAIN
+and fresh private DEV offsets before quality development; no DEV selection or
+utility result has been measured. Recurrent controller state, full-carrier
+learning and economical vocabulary normalization require further implementation.
