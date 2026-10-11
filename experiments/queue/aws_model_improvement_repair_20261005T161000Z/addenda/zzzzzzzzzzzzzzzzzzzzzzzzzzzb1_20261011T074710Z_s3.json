@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Measure complete batched forward transport teaching plus repeated-query costs versus sequential teaching and cached exact reverse; native local credit only, no TEST or fits",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_bulk_reciprocal_transport_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_bulk_reciprocal_transport_20261011_v1/aws_bulk_reciprocal_transport_20261011_v1.txt",
+        "queue_sha256": "c971f651e9c044a4004749f3bb1db6b4f7ead0a1d2ae1bda41746acc5c5893bf",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/measure_bulk_reciprocal_transport.py": "a47d80c58dcd20f9332521c6b61a87f4865df6a33966f8c2174e15a60a52c262",
+          "experiments/credit/bulk_reciprocal_transport.py": "8d31a3d00af56d1d27aa1a9567262d920fc82abea2e051df09fd9b8cbe06543c",
+          "experiments/credit/reciprocal_transport.py": "c76d4560bfc4ea8f8c9bd378e4820fa8c165a877795bc44c6769c4e451191bca",
+          "experiments/credit/reciprocal_transport_projection.py": "4c8f559dc7a3e94c7f529300bf75123622adc743a4db3ec1fd2c5f46d1553919",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_bulk_reciprocal_transport_20261011_v1.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -31,3 +31,15 @@ Next investigate selective teaching and repeated-query amortization at issued ve
 ## Shared-parameter flips
 
 For u=F_w(x), y=C_w(u), and loss L(y), the shared parameter gradient is (partial_w C)^T grad_y L + (partial_w F)^T (partial_u C)^T grad_y L. A single connected reverse pass accumulates both contributions. Reusing parameters does not make these standalone gradients: the early use is weighted by downstream sensitivity. In repeated updates, detach and ordinary optimizer operations can truncate this chain. At a fixed point z=T_w(z), implicit differentiation gives grad_w L=partial_w L+(partial_w T)^T lambda, with lambda=grad_z L+(partial_z T)^T lambda. Sharing closes parameter identity but does not itself prove stable dynamics, useful credit or contraction.
+
+## Orthogonal block teaching and complete acquisition accounting
+
+`credit/bulk_reciprocal_transport.py` batches orthonormal probe rows Q and their forward responses Z. The local update is B_next=B+alpha Qᵀ(Z−QB). For D=B−Jᵀ and exact responses Z=QJᵀ, D_next=(I−alpha QᵀQ)D, so
+
+    ||D_next||_F² = ||D||_F² − alpha(2−alpha)||QD||_F².
+
+This is the existing rank-one teaching rule applied to an orthogonal block. Unobserved directions are unchanged; a complete basis recovers the frozen dense transpose. Vectorizing the forward JVPs removes dispatch overhead but still computes all16 probes and stores256 transport floats in this witness. It is not sparse learning or a reduction in mathematical teaching work.
+
+Completed `aws_bulk_reciprocal_transport_20261011_v2`: same two-event native cut, warmed5-repeat medians. Forward acquisition51.546ms sequential versus3.897ms bulk (13.23x faster); cached exact reverse acquisition1.088ms. With128 batched credit sources, complete acquisition+norm+solve51.933/4.216/1.395ms respectively, equal tolerance and solution parity≤8.88e−16. Acquisition is charged once per fixed issued operator. All arms reuse dense caches; the reverse reference is a local execution baseline, not an external-architecture fit. Cached reverse is the economical exact reference here; do not declare forward teaching superior at this cut.
+
+Version1 included first-use SVD initialization in its first norm timing; its result remains preserved, and version2 warms and repeats norm measurements for every method. The current comparison uses version2. Next practical target is partial, context-conditioned teaching from already available forward evidence, with positive-support residual audits—not exhaustive cache reconstruction at every event. Curie retains the connected-critic integration.

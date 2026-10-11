@@ -12,6 +12,21 @@ def bound(tag):
     return r
 
 
+
+def confirmation_blocks():
+    tag='aws_b4_calibration_confirmation_20261011'
+    tags=[tag+'_decision']+[tag+f'_serving_s{s}' for s in range(3)]
+    if not all((ROOT/'experiments/results/tpp_b4'/f'{t}.json').exists() for t in tags):return []
+    decision=bound(tags[0]);serving=[bound(t) for t in tags[1:]]
+    for path,digest in decision['input_sha256'].items():
+        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+    rows=[[str(r['seed']),f"{r['baseline']['L_M']:.3f}",f"{r['calibrated']['L_M']:.3f}",f"{r['gain']:.3f}",f"{r['prerequisite_fitting_s']/60:.1f}"] for r in decision['rows']]
+    verdict='passes' if decision['gate'] else 'fails'
+    return [('p',f"Fixed-recipe three-seed calibration confirmation {verdict}: mean DEV mark gain {decision['mean_mark_gain']:.3f} nats per sequence, sample SD {decision['sample_sd']:.3f}. Registered gate: mean gain >=1.000 and every seed positive; TRAIN-only global coefficients, repaired timing unchanged."),
+            ('table',(['Seed','Baseline marks','Calibrated marks','Gain','Prerequisite fit min'],rows,[16,35,35,25,37])),
+            ('p','Warm sequential DEV serving through both complete predictors: '+', '.join(f"seed{r['seed']} {r['dev_seconds_per_target']*1e6:.2f} microseconds/target; helps {sum(g>0 for g in r['sequence_mark_gains'])}/34 sequences" for r in serving)+'. Query, scalar-fit and prerequisite work are separate; both predictors remain necessary.'),
+            ('p','Scope: one Github split1; seed0 selected the diagnostic and seeds1/2 confirm its fixed recipe on the same DEV split. No new TEST scoring, independent-dataset generalization, efficiency or integrated sparse-learning win. Failed joint/residual gates remain failed. Serving and per-sequence errors determine the next single-readout engineering decision.')]
+
 def pages():
     path=ROOT/'experiments/results/tpp_b4/aws_b4_marks_diagnosis_20261011T0303Z.json'
     if not path.exists():return []
@@ -43,4 +58,4 @@ def pages():
         ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
         ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
         ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
-        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. Next: independent confirmation of calibration before engineering a single integrated readout.")]]
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. Independent confirmation precedes engineering a single integrated readout.")] + confirmation_blocks()]
