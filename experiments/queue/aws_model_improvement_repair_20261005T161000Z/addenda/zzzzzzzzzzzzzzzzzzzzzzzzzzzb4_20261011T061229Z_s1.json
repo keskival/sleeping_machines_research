@@ -1,0 +1,29 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 transfer diagnosis: preserve saved joint mark input representation privately while keeping repaired timing/core; no fitting or TEST, evaluates representation mismatch hypothesis",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b4_private_inputs_20261011T0615Z",
+        "queue": "experiments/queue/b4/aws_b4_private_inputs_20261011T0615Z/aws_b4_private_inputs_20261011T0615Z.txt",
+        "queue_sha256": "199ed7e31afbb4d878e9059ff85552234914b8ddf5b40e94190dce448d4a0fc8",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/diagnose_private_mark_inputs.py": "497074fd9978970872cf8ce01eb0e9ed8c51a9a56d6434539f50d3b3efbffa01",
+          "experiments/tpp/race_tpp_private_mark_inputs.py": "514e5e1e0b2b915d5413db2d0c205af7786dadf5a4cdf76680cc7c130e37c20b",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_private_inputs_20261011T0615Z.json",
+        "timeout_s": 600,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
