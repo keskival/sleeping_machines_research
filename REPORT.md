@@ -5169,7 +5169,13 @@ Direct learned audit allocation wins the conditional correction-variance compone
 
 Protocol: three seeds, depths2/4/8,64/256/1024 acquisition contexts; fresh128 private TRAIN contexts per case,16 expected audits, positive support.13 policy parameters,300 Adam steps. Native actor and acquired credit fields are frozen. All methods in a row use the same contexts and budget. The endpoint is analytically measured conditional raw-gradient variance; actor backward, forward probes and exact evaluation work are charged in the preserved records. No sampled learner-update or future task-quality endpoint is reported here. Direct policy and risk-MSE use different probability parameterizations.
 
+Same-policy-family loss diagnostic: all27 seed/depth/size cases favor direct fitness over regression to forward-label-optimal allocation, with0.65–35.45% lower measured variance. Identical sigmoid-budget linear family, inputs, initialization, support,300 Adam updates and regularizer; evaluation contexts explicitly reused. Evidence aws_audit_objective_ablation_20261011_s0/s1/s2.
+
+Constructive numerical gate aws_constructive_credit_theory_20261011_v1 passes posterior query gain to4.55e-13, credit-reset contraction to1.78e-15 and enumerated expected quadratic future-loss gain to5.90e-16. These are exact finite model contracts, separate from native prediction quality.
+
 Constructive transfer/stability/future-learning theory: experiments/theory/RECIPROCAL_CREDIT_TRANSFER_STABILITY_FUTURE_LEARNING.md and report/reciprocal_credit_theory.pdf. Current-state packet geometry transports reusable influence; audits contract credit-tracking error without erasing forward memory; future-demand-weighted information gain selects useful exploration. For a quadratic future loss with predictable update geometry, weighted correction-variance reduction gives an exact expected future-loss improvement. These sufficient conditions define the next native integration.
+
+Native future-loss diagnosis (aws_native_audit_future_loss_20261011_s0): raw trace falls at all three depths, but future NLL improves in only1/9 depth/step cases. At step0.01, gains vs uniform are -1.415e-5/-1.226e-6/+5.150e-6 nats/target atdepth2/4/8. New private TRAIN contexts, producer-only one-step updates, exact audit enumeration; all reference/scoring work paid. Curvature instrument aws_native_audit_curvature_20261011_v1 explains the depth2/4 small-step losses: correction directions have negative future-NLL curvature. Stop raw-variance proxy experiments; next endpoint is causal future-loss learning and complete matched-quality work.
 
 Evidence: aws_direct_audit_policy_20261011_s0, aws_direct_audit_policy_20261011_s1, aws_direct_audit_policy_20261011_s2.
 
