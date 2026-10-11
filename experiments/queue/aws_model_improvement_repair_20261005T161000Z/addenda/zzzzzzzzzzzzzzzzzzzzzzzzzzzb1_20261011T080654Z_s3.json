@@ -1,0 +1,25 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Validate cached native input tangent transport and full primal-plus-teaching cost at longer histories; preserve temporal computation and fixed-point evidence, no model fit or TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_native_cached_jvp_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_native_cached_jvp_20261011_v1/aws_native_cached_jvp_20261011_v1.txt",
+        "queue_sha256": "9fb697e6698c58a145a0abf45a28cf046a81a941a85917f617c77323cdd9ef2f",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/measure_native_cached_jvp.py": "aa1bd76efe136eb5cd5abaf5467582b42c68d598070b50c4e77f17c6f2bbcb95",
+          "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_native_cached_jvp_20261011_v1.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

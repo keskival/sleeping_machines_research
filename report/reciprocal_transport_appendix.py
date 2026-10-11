@@ -9,6 +9,24 @@ RESULTS=['aws_reciprocal_tracking_20261010T2157Z','aws_reciprocal_cut_contract_2
          'aws_reciprocal_projection_20261010T2204Z']
 
 
+def packet_blocks():
+    tags=['aws_native_cached_jvp_20261011_v2','aws_native_cached_linearization_20261011_v1','aws_native_packet_actor_update_20261011_v1']
+    if not all((ROOT/'experiments/results/credit'/f'{t}.json').exists() for t in tags):return []
+    records=[]
+    for tag in tags:
+        r=json.loads((ROOT/'experiments/results/credit'/f'{tag}.json').read_text());assert r['status']=='completed'
+        for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
+        records.append(r)
+    jvp,vjp,actor=records
+    rows=[[str(f['events']),str(f['input_dimension']),f"{f['whole_speedup']:.2f}x",f"{b['whole_reverse_speedup']:.2f}x",str(b['cached_floats'])] for f,b in zip(jvp['rows'],vjp['rows'])]
+    return [('p','A shared native primal packet now supports exact input tangents for forward teaching and exact input cotangents for producer credit, without constructing the dense cut Jacobian. Temporal decay/rotation, gated writes, key-independent local memory and normalization derivatives are retained. This is an economical exact local reference, not a learned or hard-route credit result.'),
+            ('table',(['Events','Cut dimension','Forward probe speed','Reverse speed','Cached floats'],rows,[21,29,35,31,37])),
+            ('p','Speed is measured whole capture plus16 batched directions/cotangents versus native batched autodiff (forward reference disables unnecessary reverse-graph recording), warmed5-repeat CPU medians. At32 events the cache contains7,744 floats; a dense1,024-dimensional Jacobian would contain1,048,576. Cache counts exclude shared model, input/dt and query buffers; autograd memory is unmeasured.'),
+            ('p',f"Real Taxi TRAIN actor integration: four updates on one four-event prefix, all parameter gradients agree within {max(h['gradient_error'] for h in actor['history']):.2e} normalized error, Adam within {max(h['adam_error'] for h in actor['history']):.2e}. One tracked forward capture retains the layer/head parameter graph; its packet cotangent reconnects embedding/gap producers. No extra forward probe sweep. Gate wall {actor['wall_s']:.3f}s, peak RSS {actor['max_rss_kb']/1024:.1f}MiB; graph and packet work are charged."),
+            ('p','Scope: dense-write native layer, fixed elapsed times, input derivatives only. Four actor updates score12 TRAIN target presentations per arm; no DEV/TEST quality endpoint, full fitting FLOPs, per-target fitting work or serving-work measurement. Parameter derivatives remain exact autodiff, with its graph retained. No whole-fit/depth/sparse-learning efficiency claim. Stale parameter versions are rejected. Next: use this exact packet reference for measured compact-credit teaching/audit integration.'),
+            ('p','Shared-packet evidence: '+', '.join(tags)+'.')]
+
+
 def pages():
     records=[]
     for tag in RESULTS:
@@ -37,4 +55,4 @@ def pages():
              ('p','Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. '
               'Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. '
               'Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.'),
-             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')]]
+             ('p','Evidence: '+', '.join(RESULTS)+'. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.')] + packet_blocks()]

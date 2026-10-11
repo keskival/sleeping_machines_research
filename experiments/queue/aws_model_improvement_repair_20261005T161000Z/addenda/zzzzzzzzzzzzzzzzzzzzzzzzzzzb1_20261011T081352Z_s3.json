@@ -1,0 +1,25 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Check shared-primal teaching gain against optimized no-grad forward-AD reference; no unnecessary reverse tape in reference, same native tangent target and timing boundary",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_native_cached_jvp_20261011_v2",
+        "queue": "experiments/queue/b1_easytpp/aws_native_cached_jvp_20261011_v2/aws_native_cached_jvp_20261011_v2.txt",
+        "queue_sha256": "d2207c05d6961dd610acb10702ac6f5fd8789363585d9a5d9d55d4a3f70d4016",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/measure_native_cached_jvp_v2.py": "32b6688bdf32a67fe29bb6bc1bfc7758ddca480ec0f1076e72ad1cafc214db84",
+          "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_native_cached_jvp_20261011_v2.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
