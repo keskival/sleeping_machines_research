@@ -1,0 +1,19 @@
+# B1 whole-native future-taught updates
+
+Current development protocol,11 October2026. AWS owns this full-native actor experiment; Curie retains compact/deep credit and lexical-update implementation. This tests future-value training with all native parameters adapting, rather than duplicating a frozen-body lexical experiment. It does not substitute a controller for hard-route credit.
+
+## Failure and construction
+
+Raw correction variance reduced but native future loss usually worsened. Future-loss curvature explains the gap. Learn the update decision from the actual next revealed loss. Preserve the forward temporal decay/rotation, addressed mark memory, separate addressing/content and silence-aware racing likelihood. Current native19 driver uses dense writes and resets state between independent event sequences; it is a development component, not the full sparse architectural claim.
+
+For current observed gradient g and carried Adam moments m,v, compute the existing Adam direction d. A180-parameter controller uses current loss, phase and four group gradient norms to issue bounded multipliers alpha in[0.25,4], initialized exactly at1. Groups: embedding/gap, temporal layers, clock head, addressed marks/readout. Commit theta'=theta−0.001 alpha d before observing the following TRAIN batch. That following prediction loss trains the issued controller graph; gradient/moments/incoming theta are detached. This is one-step causal meta credit with a finite measured forward teacher, not full-horizon differentiation. Regularize squared log multipliers at0.001; controller Adam0.001; controller gradient cap1; actor gradient cap10 for both arms.
+
+## Registered acquisition and decision
+
+Fixed Adam and future-taught arms have identical actor initial weights, sequence order, gradient clipping, moments, learning rate, architecture and actor update count. CPU float64, batch8, d16,modes8,2 exponential/4 lognormal clocks,dv4, depths2/4/8,seed0. First2048 eligible Taxi TRAIN sequences, each32events, three passes:190464 actor target presentations per arm/depth. Learned arm pays an additional following-batch forward/backward per eligible update. First128 eligible DEV sequences,32events each; score only after each pass. No TEST, dense external model or published benchmark replacement.
+
+Primary development endpoint: fixed Adam's final three-pass DEV NLL at each depth. Find the first learned scheduled pass reaching that target, and compare cumulative fitting wall/support-counted FLOPs plus separately reported validation/selection costs. Report both end-of-three-pass quality and work-to-quality. Charge all extra feedback presentations/controller work and paid smoke; supported FLOPs exclude unsupported operations and are not complete analytic FLOPs. A quality gain alone is a quality result; efficiency requires lower complete work. Do not select learning rates/depths from TEST.
+
+Admission: smoke aws_native_future_update_20261011_smoke completed0.810s,402412KiB peak, finite all-parameter updates. Two updates per arm; one controller update, changed scales and native DEV score. Fit expected runtime scaled from measured workload;3600s cap/RSS1.5GB/one thread/8GiB host floor. One-job AWS slot3 queue through run_safe; fixed source SHA/data digests and final actor/controller/moment states retained.
+
+Next: analyze completed per-depth quality/work and multiplier drift. If useful, reuse the same fixed version on independent seeds; if costly, remove paid replay by training from retained next-batch graphs and measure that implementation. If unstable, diagnose drift against fixed-scale trajectories before changing controller parameterization. Every next fit must resolve native prediction-quality/learning-work, not another variance endpoint. A short acquisition failure cannot decide the architecture; larger horizons follow a written error-driven development plan.
