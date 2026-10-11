@@ -144,3 +144,39 @@ comparison is independent local predictors versus this connected composition
 at equal total work, across depth, with future prediction quality and correction
 rates measured. The current two-layer lexical experiment is the precursor, not
 that depth comparison.
+
+## Expected error, coherent bias and learned cancellation
+
+The worst-case recurrence is not the only useful depth criterion. For linear
+issued transports, write B_j=T_hat_0 ... T_hat_(j-1) and the local discrepancy
+xi_j=(T_hat_j-T_j)c_(j+1), including the terminal term as another contribution.
+At the issued packet/version,
+
+    e_0 = sum_j B_j xi_j.
+
+When B_j are fixed under the stated conditional distribution, with local means
+m_j and covariance blocks Gamma_(i,j),
+
+    E||e_0||^2 = ||sum_j B_j m_j||^2
+                 + sum_(i,j) tr(B_i Gamma_(i,j) B_j^T).
+
+Condition on all B_j before using this expression; unconditional multiplication
+of marginal covariances is invalid when transports and errors are correlated.
+For nonlinear credit functions, the local linearization adds its declared
+remainder and does not give a globally exact matrix identity.
+
+With bounded B_j, zero conditional bias and independent errors, squared error
+can grow linearly with depth (RMS as sqrt(depth)), even though a norm worst-case
+bound grows linearly. Coherent bias can instead yield squared-depth growth.
+Joint downstream learning can reduce aligned bias and cross-layer covariance,
+or learn cancellation of local errors. Independent local MSE training does
+not optimize these transported cross terms. The relevant training target is
+end-to-end consequence risk plus calibrated multiscale anchors, not forcing
+every local error to look small in an arbitrary coordinate system.
+
+Cancellation is useful only if it generalizes to issued future packets. A
+consistent but unanchored network may manufacture cancellation on training
+packets. Measure local errors, amplification, end-to-end bias/covariance and
+fresh prediction/work together. This is a second mathematical route to better
+depth scaling, in addition to learning compatible stable coordinates; neither
+route is established by the current two-layer lexical experiments.

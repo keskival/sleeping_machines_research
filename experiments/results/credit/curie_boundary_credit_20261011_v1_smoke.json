@@ -1,0 +1,145 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_boundary_credit_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "predictive_gate": false,
+  "config": {
+    "train_prefixes": 2,
+    "dev_prefixes": 1,
+    "observed_targets": 8,
+    "future_targets": 40,
+    "fit_passes": 10
+  },
+  "stages": {
+    "acquisition": {
+      "wall_s": 4.460802085988689,
+      "supported_flops": 2558409472,
+      "actual_worlds": 6,
+      "actual_updates": 48,
+      "transported_updates": 1040
+    },
+    "scoring_acquisition": {
+      "wall_s": 2.3849178140080767,
+      "supported_flops": 7763642624,
+      "actual_worlds": 66,
+      "actual_updates": 528,
+      "transported_updates": 520
+    },
+    "fitting": {
+      "wall_s": 0.3554499139863765,
+      "supported_flops": 16486400,
+      "arms": [
+        {
+          "arm": "uncorrected",
+          "updates": 20,
+          "parameters": 95168
+        },
+        {
+          "arm": "corrected",
+          "updates": 20,
+          "parameters": 95168
+        }
+      ]
+    }
+  },
+  "rows": [
+    {
+      "prefix": 0,
+      "mse": {
+        "uncorrected": 1.0840322719661404e-07,
+        "corrected": 1.0840322974267545e-07,
+        "zero": 6.243913322370356e-08
+      },
+      "tail_rms": 0.00024987823679485085,
+      "prediction_rms": {
+        "uncorrected": 0.00011354495595310266,
+        "corrected": 0.00011354496169830005,
+        "zero": 0.0
+      }
+    }
+  ],
+  "comparisons": {
+    "corrected_over_zero": {
+      "mean_gain": -4.596409651897189e-08,
+      "paired_prefix_bootstrap95": [
+        -4.596409651897189e-08,
+        -4.596409651897189e-08
+      ],
+      "per_prefix": [
+        -4.596409651897189e-08
+      ]
+    },
+    "corrected_over_uncorrected": {
+      "mean_gain": -2.546061409277517e-15,
+      "paired_prefix_bootstrap95": [
+        -2.546061409277517e-15,
+        -2.546061409277517e-15
+      ],
+      "per_prefix": [
+        -2.546061409277517e-15
+      ]
+    },
+    "uncorrected_over_zero": {
+      "mean_gain": -4.596409397291048e-08,
+      "paired_prefix_bootstrap95": [
+        -4.596409397291048e-08,
+        -4.596409397291048e-08
+      ],
+      "per_prefix": [
+        -4.596409397291048e-08
+      ]
+    }
+  },
+  "wall_s": 7.537954483996145,
+  "peak_rss_kb": 482960,
+  "inherited_parent": "curie_forward_credit_scaling_20261011_v1_fit",
+  "inherited_parent_sha256": "eea8fcb1811a21f7770de87aaf718b5cd8d0a32e52fbc3f09f13d43a871fb018",
+  "inherited_full48_stages": {
+    "acquisition": {
+      "wall_s": 374.4277141689963,
+      "supported_flops": 317925722240,
+      "inherited_wall_s": 126.2186832830048,
+      "inherited_supported_flops": 105768291968,
+      "actual_worlds": 381,
+      "actual_updates": 18288,
+      "transported_updates": 399360
+    },
+    "fitting": {
+      "wall_s": 20.01229197999055,
+      "supported_flops": 11562844160,
+      "arms": [
+        {
+          "arm": "uncorrected",
+          "updates": 1280,
+          "first_loss": 0.048507441175989534,
+          "last_loss": 0.4389806332564999,
+          "parameters": 54081
+        },
+        {
+          "arm": "corrected",
+          "updates": 1280,
+          "first_loss": 0.0485110417607019,
+          "last_loss": 0.5180590499013258,
+          "parameters": 54081
+        }
+      ]
+    },
+    "scoring": {
+      "wall_s": 101.8840699440043,
+      "supported_flops": 660936728192,
+      "actual_worlds": 1040,
+      "actual_updates": 49920
+    }
+  },
+  "checkpoint": "experiments/results/credit/curie_boundary_credit_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "553d795739540b52b13e221a28a3ab1b749e17cd3315b87f2558800fe336a85b",
+  "source_sha256": {
+    "experiments/credit/fit_boundary_credit.py": "e42b9d08e484c25313a4ff40a53b477b858877cdf1433a76c3bafc166db94bb4",
+    "experiments/credit/token_boundary_credit.py": "802b8ed16d9b1e0189ae39d67f53c30568752405821a4bd62885b6d5bd883ce4",
+    "experiments/credit/BOUNDARY_CREDIT_PROTOCOL.md": "d0c2319b2e5f52bf3bf781489996157660f05114790621af006bb8ea41eaf84a",
+    "experiments/credit/token_learner_state_features.py": "960b96538876659ad6b09c21f4ef49f009ed093831f136f7c89ef5ba1867274e"
+  },
+  "scope": "Reuse128TRAIN/16privateDEV trajectories; after8causalobservedtargets predict40futurelearner-state effects, not issuance foresight. Fixednative2layer/GPT2tokens, shared parameter/moment sensitivity field, approximate labels plus exact sampled residual training, exact reconstructed DEVtail. Currentphysical routeeffect omitted from predictorfeatures but included in tail labels. Inherited48target labels/scoring charged separately; no actor/fullnative learning, public scoring, confirmation or depth-efficiency claim. Unsupported arithmetic included in wall; standalone scoring predictor inference work not separately measured."
+}

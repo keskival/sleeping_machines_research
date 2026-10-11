@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "battle": "R1/B1",
+  "tag": "curie_forward_probe_credit_risk_20261011_v1_contract",
+  "gate": true,
+  "rows": [
+    {
+      "depth": 2,
+      "cut_dimension": 10,
+      "enumerated_directions": 1024,
+      "errors": {
+        "reciprocity": 1.7763568394002505e-15,
+        "risk": 4.85722573273506e-17,
+        "gradient": 4.163336342344337e-16,
+        "corrected_mean": 2.220446049250313e-16,
+        "variance": 3.885780586188048e-16
+      },
+      "correction_variance": 0.296205997965438,
+      "residual_squared_norm": 0.03291177755171538,
+      "cached_floats": 172
+    },
+    {
+      "depth": 4,
+      "cut_dimension": 10,
+      "enumerated_directions": 1024,
+      "errors": {
+        "reciprocity": 6.217248937900877e-15,
+        "risk": 2.7755575615628914e-16,
+        "gradient": 1.2212453270876722e-15,
+        "corrected_mean": 8.881784197001252e-16,
+        "variance": 2.4424906541753444e-15
+      },
+      "correction_variance": 1.5064613968381981,
+      "residual_squared_norm": 0.1673845996486884,
+      "cached_floats": 344
+    },
+    {
+      "depth": 8,
+      "cut_dimension": 10,
+      "enumerated_directions": 1024,
+      "errors": {
+        "reciprocity": 6.439293542825908e-15,
+        "risk": 2.220446049250313e-16,
+        "gradient": 1.519617764955683e-15,
+        "corrected_mean": 6.661338147750939e-16,
+        "variance": 2.1094237467877974e-15
+      },
+      "correction_variance": 0.9519160161757358,
+      "residual_squared_norm": 0.10576844624174819,
+      "cached_floats": 688
+    }
+  ],
+  "wall_s": 0.060954743006732315,
+  "source_sha256": {
+    "experiments/credit/check_forward_probe_credit_risk.py": "8b043c60c87ba5c21b7fbb52296e2b87306e19fa3b89d76ae41fb3cc4a0c23db",
+    "experiments/credit/native_deep_temporal_packet.py": "4ac12ee90d01eb5375e549ff02ea24c2e3c16b5508ecb30a71120f4fd00403f8",
+    "experiments/credit/native_temporal_teaching_packet.py": "af41285f2601f57ff7151ca81128031d3336fc37f42319b0b6a4a29a86deff46",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "scope": "Real native temporal memory layers/depth2/4/8, synthetic2eventcontent/time cut, exact enumeration1024Rademacher directions. Validates forward-supervised cotangent risk, parameter-of-output gradient and mean/variance correction identities. No learned-critic fit, task quality, cost advantage or genericdepth stability claim."
+}

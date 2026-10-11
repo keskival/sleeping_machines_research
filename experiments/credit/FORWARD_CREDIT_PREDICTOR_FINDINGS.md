@@ -25,3 +25,18 @@ scaling reuses32records and adds96; same initialization/model/lr/10passes,
 No validation/checkpoint selection. This stage tests more data, not largerdepth.
 If it fails, examine conditional future variance and representation/target
 sufficiency; do not call post-observation transport accuracy prefix foresight.
+
+
+## Completed128-prefix data stage
+
+Same54,081parameters/initialization/learningrule/10passes,32paid records reused
+and96newacquisitions.16new exact-scored prefixes. CorrectedMSE6.004e-7 versus
+zero5.440e-7 (10.4% worse); improvement -5.642e-8, paired95%[-1.237e-7,+2.050e-8].
+No confirmed predictive benefit. Different32/128scoring cohorts mean the
+numerical error ratios are unpaired; do not claim a learning curve win.
+New acquisition374.428s/317.926GF plus inherited126.219s/105.768GF; fitting
+20.012s/11.563GF; scoring101.884s/660.937GF. Whole new stage496.566s/558.9MiB.
+Further scaling of this prefixprior is deferred pending a representation/target
+change. Next registeredboundarycritic observes8targets before predicting40
+remaining learningeffects. Reuse128TRAIN/16DEV paid full48contrasts; source
+andnativearchitecture unchanged. ReusedDEV marks development, not confirmation.

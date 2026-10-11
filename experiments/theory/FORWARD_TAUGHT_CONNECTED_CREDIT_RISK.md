@@ -61,3 +61,53 @@ no held-out selection. Then integrate issued predictions into online route
 learning and measure held-out prediction per total work. Tiny32-update utility
 fits are not a depth-scaling result; the new objective is a defined route
 consequence learner that can subsequently be tested across data and depth.
+
+## Separate unpredictable futures from failed representation learning
+
+For fixed issued X and route a, squared consequence risk decomposes as
+
+    E[(h_a-C_a)^2|X] = (h_a-E[C_a|X])^2 + Var(C_a|X).
+
+A post-observation teacher can estimate the realized C_a accurately even when
+its prefix-only conditional mean is near zero. Lower teacher error therefore
+does not prove that a prefix critic can explain future variation. Compare
+fresh predictor risk with zero and declared simple priors; repeated independent
+futures per context or a justified conditional noise model are needed to
+separate the irreducible floor empirically. Different natural prefixes with
+one future each do not estimate within-context variance by themselves.
+
+The32-prefix connected critic reduces training error but increases fresh error.
+The registered128-prefix test keeps the model/rule fixed to investigate data
+support. Its future cohorts differ, so a32-versus128 learning-curve comparison
+must state that it is unpaired. If conditional means are weak or changing,
+carry causal regime/credit state and train it from subsequent observations;
+do not infer a stationary inductive bias or a guaranteed benefit from more data.
+
+
+## Prior consequences versus conditional learning transport
+
+There are two different functions to learn. A prefix critic h(X,a) forecasts
+uncertain future consequences before their observations. A conditional transport
+critic receives subsequently observed forward geometry and predicts how an
+alternative learner would have reacted. It can be useful even when a prefix
+prior is nearzero. Retain the distinction in inference, targets and resource
+claims; a precise retrospective estimator is not evidence of foresight.
+
+The current transport uses an explicit softmax feature mean/covariance and
+hand-selected diagonal curvature. A future learned joint transport should
+condition on forward representation, incoming parameter/moment state, proposed
+update and elapsed time. PSD diagonal-plus-low-rank curvature provides one
+stable representational option, with explicit legitimate gain. Learning a
+curvature representation is different from learning arbitrary future labels:
+forward probabilities/features supply dense conditional geometry, while
+observed branch responses or exact sampled residuals train its discrepancy.
+
+For softmax lexical features, H=Cov_p(E). A rank-r approximation has residual
+operator error governed by the remaining spectrum only if it approximates this
+actual conditional covariance in the declared metric. Learning/acquiring the
+basis costs work; extracting a fullVD^2 covariance to advertise a cheapWd r
+application hides acquisition. Shared forward directional responses or charged
+feature sampling can teach a connected compressed operator. Full native depth
+requires analogous state/time response transport plus its nonlinear remainders,
+version changes and correction uncertainty. This is a design option, not an
+admitted replacement fit or an established efficiency gain.
