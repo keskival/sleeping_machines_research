@@ -5059,3 +5059,17 @@ One seed0/new partition of the same Github cohort; not an independent dataset or
 Completed pilot justified the fresh100-pass/30-pass-patience fit at original lr0.003/batch32; duplicated pilot work is charged. Registered zero-skip/finite completion and selected DEV gain>=0.5 gates are evaluated below. Frozen TEST unchanged.
 
 Full split2 repaired fit completes 70 passes with zero skips: selected DEV total -196.121, gain 8.314 versus guarded. Registered quality gate passes. Fitting 3110.03s, DEV evaluation 17.54s, paid pilot 223.35s; peak fit RSS 2563.6MiB. One seed/split development, no new TEST.
+
+Prospective split2 mark-memory gate passes: last20 common-epoch mean mark gain 2.456, required1.000. Selected mark gain 3.502, selected total gain 3.048. Selected-checkpoint improvement does not override the stability gate.
+
+| Model | Time loss | Mark loss | Total loss |
+| --- | --- | --- | --- |
+| Repaired core | -293.385 | 97.264 | -196.121 |
+| Mark memory | -292.930 | 93.761 | -199.169 |
+
+| Arm | Passes | TRAIN targets | Fit seconds | Fit ms/target | DEV us/target |
+| --- | --- | --- | --- | --- | --- |
+| repaired core | 70 | 1,096,480 | 3110.0 | 2.836 | 91.87 |
+| mark memory | 54 | 845,856 | 3137.7 | 3.710 | 102.35 |
+
+Same Github cohort/split2/seed0, original100pass/30patience/lr0.003/batch32, no TEST. Core21,768/mark29,057 parameters; auxiliary temporal memory updates densely, all clocks scored. Shared pilot 223.35s and DEV evaluation remain additional. Full fitting FLOPs unmeasured; no sparse-credit, matched-quality efficiency, independent-dataset or benchmark claim. Both complete predictors remain evidence for a separately registered TRAIN-only calibration/readout decision. Evidence: aws_b4_split2_marks_decision_20261011.
