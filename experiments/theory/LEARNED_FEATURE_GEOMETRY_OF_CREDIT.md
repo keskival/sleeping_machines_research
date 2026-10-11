@@ -46,7 +46,7 @@ For a smooth future loss, the scalar first-order remainder is bounded by (L/2)||
 
 ## Coordinate symmetry and a stable restricted update
 
-Hold the carrier logits fixed and change the fast-feature coordinates by e'_v=e_v Q, z'=Q⁻¹z. Predictions are unchanged. Set P'=Q⁻¹P Q⁻ᵀ; then K_(P')(e'_v,e'_r)=K_P(e_v,e_r), and the preconditioned update transforms covariantly. Euclidean SGD preserves only orthogonal coordinate changes unless its metric is transformed too. This is a fast-readout coordinate statement, not a claim that arbitrary coordinate changes preserve every layer-normalized carrier.
+Hold the carrier logits fixed and change the fast-feature coordinates by e'_v=Qᵀe_v, z'=Q⁻¹z. Predictions are unchanged. Set P'=Q⁻¹P Q⁻ᵀ; then K_(P')(e'_v,e'_r)=K_P(e_v,e_r), and the preconditioned update transforms covariantly. Euclidean SGD preserves only orthogonal coordinate changes unless its metric is transformed too. This is a fast-readout coordinate statement, not a claim that arbitrary coordinate changes preserve every layer-normalized carrier.
 
 For fixed P within an issued learning interval, the update Jacobian I−ηP Cov(e) is nonexpansive in the P⁻¹ norm when η λ_max(P)R²≤1. Proof: conjugate by P⁻¹/², obtaining I−ηP¹/²Cov(e)P¹/² with eigenvalues in[0,1]. There need not be a strict contraction: feature/softmax gauge directions can havezero curvature. Changing P each event changes the norm and requires additional inter-metric comparison factors; arbitrary changing-state Adam is not covered by this bound.
 
