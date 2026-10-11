@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_revealed_future_20261011T0733Z_contract",
+  "rows": [
+    {
+      "arm": "prefix_mean",
+      "expected_gradient_error": 4.336808689942018e-19,
+      "conditional_gradient_errors": [
+        8.673617379884035e-19,
+        8.673617379884035e-19
+      ],
+      "trace_variance": 0.00029644800000000005
+    },
+    {
+      "arm": "revealed_exact",
+      "expected_gradient_error": 8.673617379884035e-19,
+      "conditional_gradient_errors": [
+        8.673617379884035e-19,
+        0.0
+      ],
+      "trace_variance": 2.7955199999999986e-05
+    },
+    {
+      "arm": "revealed_imperfect",
+      "expected_gradient_error": 4.336808689942018e-19,
+      "conditional_gradient_errors": [
+        8.673617379884035e-19,
+        8.673617379884035e-19
+      ],
+      "trace_variance": 3.4919399999999996e-05
+    }
+  ],
+  "irreducible_future_gradient_variance": 2.79552e-05,
+  "exact_future_over_prefix_variance": 0.09430051813471496,
+  "route_dependent_input_counterexample": {
+    "true_gradient": 0.5,
+    "invalid_estimator_mean": 0.25
+  },
+  "wall_s": 0.0005405090050771832,
+  "peak_rss_kb": 32640,
+  "source_sha256": {
+    "experiments/credit/check_revealed_future_credit.py": "0ca95dcbe40a65632d2d795a42cc0a4e4c13b3d67937c084a59184d43e624e80"
+  },
+  "scope": "Finite three-route/two-future enumeration with independent raw future observations and positive action-dependent audits. Exact and imperfect future credit preserve raw gradient; exact future prediction leaves future-gradient variance. Explicit chosen-route-loss counterexample rejects treating endogenous feedback as shared exogenous input. No learned-fit, actor-quality, inference-lookahead or depth-scaling claim."
+}

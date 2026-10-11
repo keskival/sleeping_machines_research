@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/workspace/experiments/credit/fit_revealed_future_credit.py", line 170, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/experiments/credit/fit_revealed_future_credit.py", line 159, in main
+    else:metrics,payload=run(a.mode,carrier,baseline,tau,scale,source,checkpoint)
+                         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/experiments/credit/fit_revealed_future_credit.py", line 70, in run
+    loss,_=replay_pairs(carrier,ft,fm,[h['action']//9,h['reference']//9],native.base.actions()[[h['action']%9,h['reference']%9]],.05)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/experiments/credit/cached_paired_native_replay.py", line 33, in replay_pairs
+    current.sum().backward()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/torch/_tensor.py", line 623, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/torch/autograd/__init__.py", line 395, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/torch/autograd/graph.py", line 1072, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
