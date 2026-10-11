@@ -1,0 +1,165 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_carried_execution_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "rows": [
+    {
+      "nll": 5.764153287725891,
+      "targets": 16,
+      "wall_s": 1.6069002260046545,
+      "supported_flops": 615381120,
+      "actual_worlds": 4,
+      "readout_updates": 32,
+      "projected_route_targets": 1040,
+      "scores": [
+        10.644964759932819,
+        1.2778927308627777,
+        9.002650422755657,
+        0.091856367079857,
+        5.606561134772297,
+        3.0765105828668577,
+        6.811874629540203,
+        3.0459209065305934,
+        9.673172382387989,
+        8.88289959499929,
+        6.011552895934151,
+        6.737245023486554,
+        7.256648862601111,
+        2.512325760956276,
+        5.2014111126848555,
+        6.392965436222974
+      ],
+      "reference_scores": [
+        10.64495332436655,
+        1.2762060054970492,
+        9.002674457170723,
+        0.09186069455543779,
+        5.605556773881233,
+        3.0760521896782316,
+        6.810720578600291,
+        3.0458210675367594,
+        9.673172602123387,
+        8.882923774481444,
+        6.01195636218382,
+        6.737279484640556,
+        7.256646641727857,
+        2.512311648549628,
+        5.201491200279485,
+        6.393037469443016
+      ],
+      "choices": [
+        51,
+        4
+      ],
+      "windows": [
+        {
+          "window": 0,
+          "candidates": 65,
+          "action": 51,
+          "live_key_slots": 21,
+          "actual_worlds": 2
+        },
+        {
+          "window": 1,
+          "candidates": 65,
+          "action": 4,
+          "live_key_slots": 28,
+          "actual_worlds": 2
+        }
+      ],
+      "arm": "legacy"
+    },
+    {
+      "nll": 5.764153287725891,
+      "targets": 16,
+      "wall_s": 0.7169825180026237,
+      "supported_flops": 615381120,
+      "actual_worlds": 4,
+      "readout_updates": 32,
+      "projected_route_targets": 1040,
+      "scores": [
+        10.644964759932819,
+        1.2778927308627777,
+        9.002650422755657,
+        0.091856367079857,
+        5.606561134772297,
+        3.0765105828668577,
+        6.811874629540203,
+        3.0459209065305934,
+        9.673172382387989,
+        8.88289959499929,
+        6.011552895934151,
+        6.737245023486554,
+        7.256648862601111,
+        2.512325760956276,
+        5.2014111126848555,
+        6.392965436222974
+      ],
+      "reference_scores": [
+        10.64495332436655,
+        1.2762060054970492,
+        9.002674457170723,
+        0.09186069455543779,
+        5.605556773881233,
+        3.0760521896782316,
+        6.810720578600291,
+        3.0458210675367594,
+        9.673172602123387,
+        8.882923774481444,
+        6.01195636218382,
+        6.737279484640556,
+        7.256646641727857,
+        2.512311648549628,
+        5.201491200279485,
+        6.393037469443016
+      ],
+      "choices": [
+        51,
+        4
+      ],
+      "windows": [
+        {
+          "window": 0,
+          "candidates": 65,
+          "action": 51,
+          "live_key_slots": 21,
+          "actual_worlds": 2
+        },
+        {
+          "window": 1,
+          "candidates": 65,
+          "action": 4,
+          "live_key_slots": 28,
+          "actual_worlds": 2
+        }
+      ],
+      "arm": "vectorized"
+    }
+  ],
+  "errors": {
+    "factual_scores": 0.0,
+    "reference_scores": 0.0,
+    "final_z": 0.0
+  },
+  "whole_execution_speedup": 2.2411986145508425,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "train_token_offset": 4210688,
+  "context": 16,
+  "whole_wall_s": 2.5154969389986945,
+  "peak_rss_kb": 363776,
+  "source_sha256": {
+    "experiments/credit/measure_token_carried_execution.py": "9668ca85b099cc6991e0af874ca343c3c32fc06d8d25f6cebcb01a653fd7227b",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_episode_state_vectorized.py": "34bcdb4d048c18234bb3fc8efc6b7ef576e4490d31c469fd514dfc137a2fd173",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734",
+    "experiments/credit/measure_token_forward_credit.py": "df29fd838f7585aa1c594ac9caf4d8b0ffaa505aaa051504ad447d101e50dc3f",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "One contiguous proper GPT-2 TRAIN stream, same pretrained2layer model, one initial256-token context, eight-target credit windows with numerical/key/actual fast-vector/Adam carry and EOS reset. Identical positive-support uniform hard-write probes; no actor fitting. Complete current pipeline boundary includes source carrier/full normalized output, all active-key scores, reference/counterfactual projections, actual learner Adam updates, state/copy/metadata and incoming snapshot cloning. No context replay after initial context. Both arms include unused zero-fast-state frozen projections equally; those are not current-state static controls. Custom2VD mv counts included; unsupported scalar/special/optimizer arithmetic omitted from supported FLOPs and included in wall. One execution observation, not learned-credit quality/whole-model/depth/hardware efficiency claim; source pretraining/numerical gates/calibration additional."
+}
