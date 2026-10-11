@@ -1,0 +1,193 @@
+{
+ "status": "completed",
+ "battle": "ENABLER (online learning, theory note 160 prediction 4)",
+ "tag": "online5_amazon_trace_decay_e20_s2",
+ "args": {
+  "tag": "online5_amazon_trace_decay_e20_s2",
+  "dataset": "amazon",
+  "arm": "online_trace",
+  "d": 32,
+  "modes": 16,
+  "n_exp": 4,
+  "n_ln": 8,
+  "epochs": 20,
+  "lr": 0.001,
+  "batch": 16,
+  "seed": 2,
+  "contract": false,
+  "decay": "linear",
+  "lr_final": 1e-05,
+  "K": 16
+ },
+ "scale": 0.7274546722242992,
+ "best_dev_ll": 0.6363761398215221,
+ "final_dev_ll": 0.6363761398215221,
+ "history": [
+  {
+   "epoch": 0,
+   "dev_ll": 0.5216106644284648,
+   "dev_time_ll": 2.4867914910440247,
+   "dev_mark_ll": -1.9651808266155602,
+   "updates": 17709,
+   "epoch_s": 58.87870383262634
+  },
+  {
+   "epoch": 1,
+   "dev_ll": 0.5806105175569414,
+   "dev_time_ll": 2.517027490518638,
+   "dev_mark_ll": -1.9364169729616965,
+   "updates": 35418,
+   "epoch_s": 58.857970237731934
+  },
+  {
+   "epoch": 2,
+   "dev_ll": 0.5699593015360416,
+   "dev_time_ll": 2.4972566232033926,
+   "dev_mark_ll": -1.927297321667351,
+   "updates": 53127,
+   "epoch_s": 58.732617139816284
+  },
+  {
+   "epoch": 3,
+   "dev_ll": 0.5904643793498743,
+   "dev_time_ll": 2.514857683533045,
+   "dev_mark_ll": -1.9243933041831707,
+   "updates": 70836,
+   "epoch_s": 58.73877930641174
+  },
+  {
+   "epoch": 4,
+   "dev_ll": 0.5996557698993177,
+   "dev_time_ll": 2.518671858604546,
+   "dev_mark_ll": -1.9190160887052286,
+   "updates": 88545,
+   "epoch_s": 58.75573945045471
+  },
+  {
+   "epoch": 5,
+   "dev_ll": 0.6022869860544139,
+   "dev_time_ll": 2.5200057224644037,
+   "dev_mark_ll": -1.91771873640999,
+   "updates": 106254,
+   "epoch_s": 58.729506492614746
+  },
+  {
+   "epoch": 6,
+   "dev_ll": 0.6097665572638058,
+   "dev_time_ll": 2.5239460912864353,
+   "dev_mark_ll": -1.9141795340226293,
+   "updates": 123963,
+   "epoch_s": 58.83583402633667
+  },
+  {
+   "epoch": 7,
+   "dev_ll": 0.6084897336909946,
+   "dev_time_ll": 2.522838396691745,
+   "dev_mark_ll": -1.9143486630007505,
+   "updates": 141672,
+   "epoch_s": 58.855568408966064
+  },
+  {
+   "epoch": 8,
+   "dev_ll": 0.6116611730747217,
+   "dev_time_ll": 2.5224946752306296,
+   "dev_mark_ll": -1.9108335021559082,
+   "updates": 159381,
+   "epoch_s": 58.748098373413086
+  },
+  {
+   "epoch": 9,
+   "dev_ll": 0.6116951571128524,
+   "dev_time_ll": 2.5235063696681537,
+   "dev_mark_ll": -1.9118112125553013,
+   "updates": 177090,
+   "epoch_s": 58.7823703289032
+  },
+  {
+   "epoch": 10,
+   "dev_ll": 0.6198073209244667,
+   "dev_time_ll": 2.5281673615666,
+   "dev_mark_ll": -1.9083600406421335,
+   "updates": 194799,
+   "epoch_s": 58.80469822883606
+  },
+  {
+   "epoch": 11,
+   "dev_ll": 0.6178970550186875,
+   "dev_time_ll": 2.5252907123294417,
+   "dev_mark_ll": -1.9073936573107542,
+   "updates": 212508,
+   "epoch_s": 58.75507640838623
+  },
+  {
+   "epoch": 12,
+   "dev_ll": 0.6255068665965757,
+   "dev_time_ll": 2.5310930046171487,
+   "dev_mark_ll": -1.905586138020573,
+   "updates": 230217,
+   "epoch_s": 58.7901656627655
+  },
+  {
+   "epoch": 13,
+   "dev_ll": 0.6256028322545931,
+   "dev_time_ll": 2.528932387470114,
+   "dev_mark_ll": -1.9033295552155207,
+   "updates": 247926,
+   "epoch_s": 58.76516151428223
+  },
+  {
+   "epoch": 14,
+   "dev_ll": 0.6293306022247165,
+   "dev_time_ll": 2.531719059722219,
+   "dev_mark_ll": -1.9023884574975025,
+   "updates": 265635,
+   "epoch_s": 58.806421995162964
+  },
+  {
+   "epoch": 15,
+   "dev_ll": 0.6296491415571894,
+   "dev_time_ll": 2.531903911419581,
+   "dev_mark_ll": -1.9022547698623917,
+   "updates": 283344,
+   "epoch_s": 58.6793737411499
+  },
+  {
+   "epoch": 16,
+   "dev_ll": 0.6319021335597844,
+   "dev_time_ll": 2.5333641334832184,
+   "dev_mark_ll": -1.9014619999234341,
+   "updates": 301053,
+   "epoch_s": 58.63032603263855
+  },
+  {
+   "epoch": 17,
+   "dev_ll": 0.6326704358610031,
+   "dev_time_ll": 2.533820985734591,
+   "dev_mark_ll": -1.901150549873588,
+   "updates": 318762,
+   "epoch_s": 58.62498068809509
+  },
+  {
+   "epoch": 18,
+   "dev_ll": 0.6349691511589994,
+   "dev_time_ll": 2.534245788929806,
+   "dev_mark_ll": -1.8992766377708064,
+   "updates": 336471,
+   "epoch_s": 58.630372285842896
+  },
+  {
+   "epoch": 19,
+   "dev_ll": 0.6363761398215221,
+   "dev_time_ll": 2.5352973295128556,
+   "dev_mark_ll": -1.8989211896913334,
+   "updates": 354180,
+   "epoch_s": 58.647424936294556
+  }
+ ],
+ "wall_s": 1175.8458416461945,
+ "parameters": 11596,
+ "source_sha256": {
+  "experiments/credit/online_race_v3.py": "2cf5d81d2dd96ebdf9af2fd762d0054f36dcc5a1cdb4e6bc6eb60242ca29a163",
+  "experiments/tpp/race_tpp_v8.py": "f5e038f36bc851f2e2639c00dd4efd2c721c7d1c20b476327f722eab348c1ec2"
+ }
+}
