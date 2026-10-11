@@ -2,7 +2,7 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 10 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 11 October 2026
 
 ## Public benchmark record — 9 October 2026
 
@@ -4508,7 +4508,34 @@ Seed170 bounded synthetic development. Branch-local288-parameter readout Adam ad
 
 One-seed development revision on previously examined synthetic DEV packets. Same2817-parameter correction, paired learning-effect target and TRAIN-only effect scaling; baseline/representation preserved. All original teacher/baseline/fitting work remains charged; new fit has no new replay. No independent confirmation, online critic co-adaptation, full actor learning, efficiency or TEST claim.
 
-Whole initial phase93.91s, teacher2.149supportedGFLOPs; both fits19.705GFLOPs. Paired refit3.51s/9.852GFLOPs, reusing those paid packets; saved baseline pretraining remains additional. Largest peak RSS393.1MiB. Next: task-valued confidence/selection calibration and independent fresh confirmation.
+Whole initial phase93.91s, teacher2.149supportedGFLOPs; both fits19.705GFLOPs. Paired refit3.51s/9.852GFLOPs, reusing those paid packets; saved baseline pretraining remains additional. Largest peak RSS393.1MiB. TRAIN-only trust and fresh confirmation follow below.
+
+### Task-valued credit trust: fresh locked evaluation
+
+Fourfold TRAIN-only utility selection chose zero correction before generating fresh episodes. The trusted policy preserves the established baseline. Full correction changes one action and trails baseline by0.000324 nats/target; its bootstrap interval includes zero. No learned-correction utility win.
+
+| Policy | Trust | Evaluated prefixes | Gain / target | Extra MFLOPs |
+| --- | --- | --- | --- | --- |
+| preserved baseline | 0.0 | 0 | +0.012159 | 0.000 |
+| crossfit trust | 0.0 | 0 | +0.012159 | 0.000 |
+| ungated paired | 1.0 | 31 | +0.011835 | 24.570 |
+
+One actor seed170, synthetic readout-only learning worlds. Trust uses TRAIN cross-fitting only; fresh stream seed470 generated after locked selection. No receiver6/7 TRAIN labels. Guard bootstrap is exploratory with overlapping folds. Fresh baseline descriptors/teacher replay and all earlier fitting remain charged; residual query work separated. No online critic co-adaptation, full actor learning, matched-quality efficiency, hardware or TEST claim.
+
+Complete fresh phase89.49s, supported2.475GFLOPs, peak RSS415.5MiB. Extra correction work is whole32-prefix work; prior fitting/teacher work remains charged. Norm/SVD bound preparation is not counted by supported FLOP operators.
+
+### Exact shared-context correction execution
+
+| Execution | 20 forwards MFLOPs | 1 forward/backward MFLOPs |
+| --- | --- | --- |
+| repeated context | 253.624 | 25.657 |
+| cached context | 27.197 | 2.867 |
+
+Context reuse cuts supported forward arithmetic89.3% and forward/backward arithmetic88.8% for the same learned head. Value and parameter gradients agree, and16 AdamW steps differ by less than5e-16, including nonzero-bias decay.
+
+Both rows use the same16 prefixes,8 receivers and9 actions. Instrumented forward wall0.0513→0.0340s; forward/backward0.00691→0.00467s. These are paired kernel measurements, excluding teacher, baseline, discovery and prior fitting.
+
+Same learned correction and packets, operator/value/gradient/short optimizer witnesses. No teacher/actor refit. Instrumented paired kernel work includes context projection; excludes common actor/baseline/discovery/prior fitting. No whole-fit or deployment speed claim.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
