@@ -1,0 +1,204 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_route_policy_credit_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "routes": 3,
+      "exploration": 0.0,
+      "predictor": "zero",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.2962412229808786
+    },
+    {
+      "routes": 3,
+      "exploration": 0.0,
+      "predictor": "arbitrary",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 0.27206144940667515
+    },
+    {
+      "routes": 3,
+      "exploration": 0.0,
+      "predictor": "perfect",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 3,
+      "exploration": 0.1,
+      "predictor": "zero",
+      "gradient_error": 6.938893903907228e-18,
+      "conditional_variance": 0.16509963837363756
+    },
+    {
+      "routes": 3,
+      "exploration": 0.1,
+      "predictor": "arbitrary",
+      "gradient_error": 4.163336342344337e-17,
+      "conditional_variance": 0.16062238634857756
+    },
+    {
+      "routes": 3,
+      "exploration": 0.1,
+      "predictor": "perfect",
+      "gradient_error": 1.3877787807814457e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 3,
+      "exploration": 1.0,
+      "predictor": "zero",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 3,
+      "exploration": 1.0,
+      "predictor": "arbitrary",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 3,
+      "exploration": 1.0,
+      "predictor": "perfect",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 17,
+      "exploration": 0.0,
+      "predictor": "zero",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 1.0488802065828502
+    },
+    {
+      "routes": 17,
+      "exploration": 0.0,
+      "predictor": "arbitrary",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 1.9627247105447152
+    },
+    {
+      "routes": 17,
+      "exploration": 0.0,
+      "predictor": "perfect",
+      "gradient_error": 1.3877787807814457e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 17,
+      "exploration": 0.1,
+      "predictor": "zero",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 0.8254416134015621
+    },
+    {
+      "routes": 17,
+      "exploration": 0.1,
+      "predictor": "arbitrary",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 1.5800740192377138
+    },
+    {
+      "routes": 17,
+      "exploration": 0.1,
+      "predictor": "perfect",
+      "gradient_error": 1.3877787807814457e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 17,
+      "exploration": 1.0,
+      "predictor": "zero",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 17,
+      "exploration": 1.0,
+      "predictor": "arbitrary",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 17,
+      "exploration": 1.0,
+      "predictor": "perfect",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 65,
+      "exploration": 0.0,
+      "predictor": "zero",
+      "gradient_error": 1.1102230246251565e-16,
+      "conditional_variance": 1.0587389718623346
+    },
+    {
+      "routes": 65,
+      "exploration": 0.0,
+      "predictor": "arbitrary",
+      "gradient_error": 1.1102230246251565e-16,
+      "conditional_variance": 1.975899317003567
+    },
+    {
+      "routes": 65,
+      "exploration": 0.0,
+      "predictor": "perfect",
+      "gradient_error": 5.551115123125783e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 65,
+      "exploration": 0.1,
+      "predictor": "zero",
+      "gradient_error": 5.551115123125783e-17,
+      "conditional_variance": 0.8760498846021129
+    },
+    {
+      "routes": 65,
+      "exploration": 0.1,
+      "predictor": "arbitrary",
+      "gradient_error": 2.7755575615628914e-17,
+      "conditional_variance": 1.6178637891451146
+    },
+    {
+      "routes": 65,
+      "exploration": 0.1,
+      "predictor": "perfect",
+      "gradient_error": 4.163336342344337e-17,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 65,
+      "exploration": 1.0,
+      "predictor": "zero",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 65,
+      "exploration": 1.0,
+      "predictor": "arbitrary",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    },
+    {
+      "routes": 65,
+      "exploration": 1.0,
+      "predictor": "perfect",
+      "gradient_error": 0.0,
+      "conditional_variance": 0.0
+    }
+  ],
+  "whole_wall_s": 0.1439306379907066,
+  "peak_rss_kb": 231572,
+  "source_sha256": {
+    "experiments/credit/route_policy_credit.py": "9312c8695811f3718294601d46d73bc65e51c7dfa6efe8c3f57a5d24acb82723",
+    "experiments/credit/check_route_policy_credit.py": "dc2b9c66bc1508050943d2f01abfb6aff4694ee636547651f5fb7ab35e01fb35"
+  },
+  "scope": "Exhaustive3/17/65-route issued-logit gradients, zero/arbitrary/perfect predictors and0/.1/1 uniform-mixture exploration. Predictor detached; exact conditional expected-cost gradient and perfect-model action-noise removal. No task fit or native-parameter credit claim."
+}
