@@ -1,0 +1,2 @@
+# B4: Automatically assess completed fixed-seed calibration confirmation, then measure serving cost and sequence errors; no new fit or TEST
+aws_b4_calibration_confirmation_20261011_serving_s0 experiments/tpp/diagnose_calibration_serving.py --tag aws_b4_calibration_confirmation_20261011_serving_s0 --baseline aws_b4_logspread_develop_20261010T2112Z --marks aws_b4_marks_develop_20261010T2300Z
