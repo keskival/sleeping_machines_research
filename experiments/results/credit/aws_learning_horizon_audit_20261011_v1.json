@@ -1,0 +1,1357 @@
+{
+  "status": "completed",
+  "battle": "B1 learning-horizon audit",
+  "tag": "aws_learning_horizon_audit_20261011_v1",
+  "source_sha256": {
+    "experiments/credit/audit_learning_horizons.py": "d0ab01e7e6fa09d8fc35f07ae6832073650f8f93c6978870e004185de03377af"
+  },
+  "input_sha256": {
+    "experiments/results/credit/online3_taxi_bptt_s0_r2.json": "8057d9cae53a6630129ac2830d98417c63f8d482924a24c08eba2ca3ea65b990",
+    "experiments/results/credit/online3_taxi_online_deep_s0_r2.json": "4158319a0b8ea2078538bc168810ea6746c51218762336b569a0a289b0b43a55",
+    "experiments/results/credit/online3_taxi_online_local_s0_r2.json": "7f258ca6c255ea783e36e24e7b6830f2de2b58ff80376a153bd454bab3a4cd83",
+    "experiments/results/credit/online3_taxi_bptt_s1_r2.json": "f75f9d71e87f18cee4eac75bc6ff085a9ee16490a3b847c19e1c44fd2d615638",
+    "experiments/results/credit/online3_taxi_online_deep_s1_r2.json": "4dec97b258ac346a75ff5d06357c5fa530f53aa81db20dd7461265895f56b665",
+    "experiments/results/credit/online3_taxi_online_local_s1_r2.json": "da06bbc7f5cf78e16239e6559f1ff4729579ed4cf75c3e5576e741c329754b19",
+    "experiments/results/credit/online3_taxi_bptt_s2_r2.json": "6cbc1e854779c4ed667a74d9fe422bedfd2358223038328b415871d7c71968ad",
+    "experiments/results/credit/online3_taxi_online_deep_s2_r2.json": "5db6ace25c9665aa1fa6052e51af0431f044a5fecd05d28ad2ded03aaddc0e55",
+    "experiments/results/credit/online3_taxi_online_local_s2_r2.json": "a99390683b5b51078bef815da72ecfc8dc8fc308d69bd9a88e3b80824f8246ff",
+    "experiments/results/credit/online5_amazon_bptt_decay_e100_s0.json": "85b144253d1757720916e03987736aa2e65c9398c56dab8e35d35ef3dc972f7c",
+    "experiments/results/credit/online5_amazon_trace_decay_e100_s0.json": "e2c219036e5d5f813d62216c1e6b33aef20e7f0b2618a365d58f85c0418e6591",
+    "experiments/results/credit/online5_amazon_bptt_decay_e100_s1.json": "0982d8bb97a86a5b534df2553b7865cf0fb7c6a8db931381cf164b8782b0cb56",
+    "experiments/results/credit/online5_amazon_trace_decay_e100_s1.json": "dd93b8ded2b66e7855f0fc0b95099bac1dab310b6d2fcb187bf19d35adecfce8",
+    "experiments/results/credit/online5_amazon_bptt_decay_e100_s2.json": "c7a5d22606ef4b5206543dda3fbb79cfc6a64a042938e3668addec96a1eabad8"
+  },
+  "rows": [
+    {
+      "dataset": "taxi",
+      "seed": 0,
+      "reference_target_posthoc": 0.44950111067874937,
+      "arms": {
+        "bptt": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.44950111067874937,
+          "first_reference_final_quality": {
+            "passes": 20,
+            "dev_ll": 0.44950111067874937,
+            "epoch_wall_cumulative_s": 82.65460324287415,
+            "updates": 1760
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.44950111067874937,
+            "epoch_wall_cumulative_s": 82.65460324287415,
+            "updates": 1760
+          },
+          "final_epoch_wall_s": 82.65460324287415,
+          "final_updates": 1760
+        },
+        "online_deep": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.47672237407157175,
+          "first_reference_final_quality": {
+            "passes": 2,
+            "dev_ll": 0.4510164009318451,
+            "epoch_wall_cumulative_s": 531.649163722992,
+            "updates": 6344
+          },
+          "quality_at_reference_epoch_wall": null,
+          "final_epoch_wall_s": 5269.319990158081,
+          "final_updates": 63440
+        },
+        "online_local": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.45601743602503053,
+          "first_reference_final_quality": {
+            "passes": 8,
+            "dev_ll": 0.4557974132810931,
+            "epoch_wall_cumulative_s": 30.319745779037476,
+            "updates": 25376
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.45601743602503053,
+            "epoch_wall_cumulative_s": 75.55175018310547,
+            "updates": 63440
+          },
+          "final_epoch_wall_s": 75.55175018310547,
+          "final_updates": 63440
+        }
+      },
+      "paired_pass_gains": [
+        {
+          "passes": 1,
+          "gain": 0.8416944698967197
+        },
+        {
+          "passes": 2,
+          "gain": 0.26645826120065663
+        },
+        {
+          "passes": 3,
+          "gain": 0.2084817521110282
+        },
+        {
+          "passes": 4,
+          "gain": 0.20507080132002153
+        },
+        {
+          "passes": 5,
+          "gain": 0.2018576902834015
+        },
+        {
+          "passes": 6,
+          "gain": 0.20189356894301258
+        },
+        {
+          "passes": 7,
+          "gain": 0.18253572396503182
+        },
+        {
+          "passes": 8,
+          "gain": 0.13670630753468221
+        },
+        {
+          "passes": 9,
+          "gain": 0.09239047145802198
+        },
+        {
+          "passes": 10,
+          "gain": 0.10418420948168272
+        },
+        {
+          "passes": 11,
+          "gain": 0.09462826082849601
+        },
+        {
+          "passes": 12,
+          "gain": 0.09103204301011131
+        },
+        {
+          "passes": 13,
+          "gain": 0.09035089074782143
+        },
+        {
+          "passes": 14,
+          "gain": 0.07177635135905325
+        },
+        {
+          "passes": 15,
+          "gain": 0.03913431072412887
+        },
+        {
+          "passes": 16,
+          "gain": 0.043589019471413915
+        },
+        {
+          "passes": 17,
+          "gain": 0.03170095880617624
+        },
+        {
+          "passes": 18,
+          "gain": 0.03354082247812007
+        },
+        {
+          "passes": 19,
+          "gain": 0.028855333712333953
+        },
+        {
+          "passes": 20,
+          "gain": 0.02722126339282238
+        }
+      ]
+    },
+    {
+      "dataset": "taxi",
+      "seed": 1,
+      "reference_target_posthoc": 0.4590696156043842,
+      "arms": {
+        "bptt": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.4590696156043842,
+          "first_reference_final_quality": {
+            "passes": 19,
+            "dev_ll": 0.4614610663298261,
+            "epoch_wall_cumulative_s": 75.883216381073,
+            "updates": 1672
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.4590696156043842,
+            "epoch_wall_cumulative_s": 79.78622531890869,
+            "updates": 1760
+          },
+          "final_epoch_wall_s": 79.78622531890869,
+          "final_updates": 1760
+        },
+        "online_deep": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.47853883498724026,
+          "first_reference_final_quality": {
+            "passes": 4,
+            "dev_ll": 0.4593960998073099,
+            "epoch_wall_cumulative_s": 1016.076274394989,
+            "updates": 12688
+          },
+          "quality_at_reference_epoch_wall": null,
+          "final_epoch_wall_s": 5235.241362571716,
+          "final_updates": 63440
+        },
+        "online_local": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.452052355122341,
+          "first_reference_final_quality": {
+            "passes": 9,
+            "dev_ll": 0.46161459980715874,
+            "epoch_wall_cumulative_s": 33.29977083206177,
+            "updates": 28548
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.452052355122341,
+            "epoch_wall_cumulative_s": 73.71824765205383,
+            "updates": 63440
+          },
+          "final_epoch_wall_s": 73.71824765205383,
+          "final_updates": 63440
+        }
+      },
+      "paired_pass_gains": [
+        {
+          "passes": 1,
+          "gain": 0.5245781936575767
+        },
+        {
+          "passes": 2,
+          "gain": 0.20392048357212167
+        },
+        {
+          "passes": 3,
+          "gain": 0.15935628355526638
+        },
+        {
+          "passes": 4,
+          "gain": 0.13008165034099928
+        },
+        {
+          "passes": 5,
+          "gain": 0.11649868987634376
+        },
+        {
+          "passes": 6,
+          "gain": 0.07541704518574144
+        },
+        {
+          "passes": 7,
+          "gain": 0.04915815486553926
+        },
+        {
+          "passes": 8,
+          "gain": 0.02640300685849195
+        },
+        {
+          "passes": 9,
+          "gain": 0.022302592538060606
+        },
+        {
+          "passes": 10,
+          "gain": 0.02976180221351088
+        },
+        {
+          "passes": 11,
+          "gain": 0.026321111528124552
+        },
+        {
+          "passes": 12,
+          "gain": 0.021410450358854527
+        },
+        {
+          "passes": 13,
+          "gain": 0.024857486170346665
+        },
+        {
+          "passes": 14,
+          "gain": 0.02108564959978282
+        },
+        {
+          "passes": 15,
+          "gain": 0.01987675339326378
+        },
+        {
+          "passes": 16,
+          "gain": 0.01984844623223242
+        },
+        {
+          "passes": 17,
+          "gain": 0.029668943544348514
+        },
+        {
+          "passes": 18,
+          "gain": 0.023024354759971832
+        },
+        {
+          "passes": 19,
+          "gain": 0.008894568630571698
+        },
+        {
+          "passes": 20,
+          "gain": 0.019469219382856062
+        }
+      ]
+    },
+    {
+      "dataset": "taxi",
+      "seed": 2,
+      "reference_target_posthoc": 0.4166940145855991,
+      "arms": {
+        "bptt": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.4166940145855991,
+          "first_reference_final_quality": {
+            "passes": 20,
+            "dev_ll": 0.4166940145855991,
+            "epoch_wall_cumulative_s": 77.04067063331604,
+            "updates": 1760
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.4166940145855991,
+            "epoch_wall_cumulative_s": 77.04067063331604,
+            "updates": 1760
+          },
+          "final_epoch_wall_s": 77.04067063331604,
+          "final_updates": 1760
+        },
+        "online_deep": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.47560597472936633,
+          "first_reference_final_quality": {
+            "passes": 2,
+            "dev_ll": 0.44370554495359904,
+            "epoch_wall_cumulative_s": 500.24795722961426,
+            "updates": 6344
+          },
+          "quality_at_reference_epoch_wall": null,
+          "final_epoch_wall_s": 4874.399439096451,
+          "final_updates": 63440
+        },
+        "online_local": {
+          "completed_passes": 20,
+          "final_dev_ll": 0.46153241787601523,
+          "first_reference_final_quality": {
+            "passes": 2,
+            "dev_ll": 0.42415988726370635,
+            "epoch_wall_cumulative_s": 7.545359373092651,
+            "updates": 6344
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 20,
+            "dev_ll": 0.46153241787601523,
+            "epoch_wall_cumulative_s": 74.66477537155151,
+            "updates": 63440
+          },
+          "final_epoch_wall_s": 74.66477537155151,
+          "final_updates": 63440
+        }
+      },
+      "paired_pass_gains": [
+        {
+          "passes": 1,
+          "gain": 0.6541986816642753
+        },
+        {
+          "passes": 2,
+          "gain": 0.2777508791674007
+        },
+        {
+          "passes": 3,
+          "gain": 0.21982441904682287
+        },
+        {
+          "passes": 4,
+          "gain": 0.19125603030574048
+        },
+        {
+          "passes": 5,
+          "gain": 0.18536005743778877
+        },
+        {
+          "passes": 6,
+          "gain": 0.1779974353094133
+        },
+        {
+          "passes": 7,
+          "gain": 0.18048564212063994
+        },
+        {
+          "passes": 8,
+          "gain": 0.14683213225666225
+        },
+        {
+          "passes": 9,
+          "gain": 0.09523153794262479
+        },
+        {
+          "passes": 10,
+          "gain": 0.07818568167544981
+        },
+        {
+          "passes": 11,
+          "gain": 0.08399957868561131
+        },
+        {
+          "passes": 12,
+          "gain": 0.08100581303667015
+        },
+        {
+          "passes": 13,
+          "gain": 0.08236049190729594
+        },
+        {
+          "passes": 14,
+          "gain": 0.0736843779481215
+        },
+        {
+          "passes": 15,
+          "gain": 0.0633283523404039
+        },
+        {
+          "passes": 16,
+          "gain": 0.06329207481384441
+        },
+        {
+          "passes": 17,
+          "gain": 0.06429041603602365
+        },
+        {
+          "passes": 18,
+          "gain": 0.06644642157202213
+        },
+        {
+          "passes": 19,
+          "gain": 0.06182189211822192
+        },
+        {
+          "passes": 20,
+          "gain": 0.058911960143767206
+        }
+      ]
+    },
+    {
+      "dataset": "amazon",
+      "seed": 0,
+      "reference_target_posthoc": 0.6377570133540933,
+      "arms": {
+        "bptt": {
+          "completed_passes": 100,
+          "final_dev_ll": 0.6377570133540933,
+          "first_reference_final_quality": {
+            "passes": 100,
+            "dev_ll": 0.6377570133540933,
+            "epoch_wall_cumulative_s": 1511.8445098400116,
+            "updates": 40400
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 100,
+            "dev_ll": 0.6377570133540933,
+            "epoch_wall_cumulative_s": 1511.8445098400116,
+            "updates": 40400
+          },
+          "final_epoch_wall_s": 1511.8445098400116,
+          "final_updates": 40400
+        },
+        "trace": {
+          "completed_passes": 100,
+          "final_dev_ll": 0.6491336449064575,
+          "first_reference_final_quality": {
+            "passes": 67,
+            "dev_ll": 0.6379899931609823,
+            "epoch_wall_cumulative_s": 3942.357054233551,
+            "updates": 1186503
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 25,
+            "dev_ll": 0.620296043269895,
+            "epoch_wall_cumulative_s": 1472.7659451961517,
+            "updates": 442725
+          },
+          "final_epoch_wall_s": 5881.5039529800415,
+          "final_updates": 1770900
+        }
+      },
+      "paired_pass_gains": [
+        {
+          "passes": 1,
+          "gain": 0.1238556559688132
+        },
+        {
+          "passes": 2,
+          "gain": 0.06699362771710377
+        },
+        {
+          "passes": 3,
+          "gain": 0.04937781877615366
+        },
+        {
+          "passes": 4,
+          "gain": 0.05165131619568908
+        },
+        {
+          "passes": 5,
+          "gain": 0.04033120786234734
+        },
+        {
+          "passes": 6,
+          "gain": 0.038297101251992594
+        },
+        {
+          "passes": 7,
+          "gain": 0.033369998619204866
+        },
+        {
+          "passes": 8,
+          "gain": 0.026397802445739305
+        },
+        {
+          "passes": 9,
+          "gain": 0.0275540614561538
+        },
+        {
+          "passes": 10,
+          "gain": 0.024031568260075575
+        },
+        {
+          "passes": 11,
+          "gain": 0.03491222601714006
+        },
+        {
+          "passes": 12,
+          "gain": 0.013251221497293297
+        },
+        {
+          "passes": 13,
+          "gain": 0.030417986308632794
+        },
+        {
+          "passes": 14,
+          "gain": 0.019347922434174603
+        },
+        {
+          "passes": 15,
+          "gain": 0.010943401627265481
+        },
+        {
+          "passes": 16,
+          "gain": 0.02429611977468038
+        },
+        {
+          "passes": 17,
+          "gain": 0.005320452427929223
+        },
+        {
+          "passes": 18,
+          "gain": 0.03441597035069832
+        },
+        {
+          "passes": 19,
+          "gain": 0.0022910038693657597
+        },
+        {
+          "passes": 20,
+          "gain": 0.004757483269456353
+        },
+        {
+          "passes": 21,
+          "gain": 0.02222003688831231
+        },
+        {
+          "passes": 22,
+          "gain": -0.0017060368710367646
+        },
+        {
+          "passes": 23,
+          "gain": 0.002881894501693405
+        },
+        {
+          "passes": 24,
+          "gain": 0.003452741500451606
+        },
+        {
+          "passes": 25,
+          "gain": 0.0026808214690484666
+        },
+        {
+          "passes": 26,
+          "gain": 0.0009930087895848594
+        },
+        {
+          "passes": 27,
+          "gain": 0.003249537812781922
+        },
+        {
+          "passes": 28,
+          "gain": -0.0004644884414166661
+        },
+        {
+          "passes": 29,
+          "gain": 0.0008190040778386365
+        },
+        {
+          "passes": 30,
+          "gain": 0.0029189447342946595
+        },
+        {
+          "passes": 31,
+          "gain": -0.0008482520532921978
+        },
+        {
+          "passes": 32,
+          "gain": 0.0016146427669030405
+        },
+        {
+          "passes": 33,
+          "gain": -0.001984224915031585
+        },
+        {
+          "passes": 34,
+          "gain": 0.0003517589342705296
+        },
+        {
+          "passes": 35,
+          "gain": 0.005383436466337099
+        },
+        {
+          "passes": 36,
+          "gain": -0.000982095993488863
+        },
+        {
+          "passes": 37,
+          "gain": 0.006724131899197849
+        },
+        {
+          "passes": 38,
+          "gain": 0.0026728819082378896
+        },
+        {
+          "passes": 39,
+          "gain": -0.0009985895352969676
+        },
+        {
+          "passes": 40,
+          "gain": -0.0009362357689669532
+        },
+        {
+          "passes": 41,
+          "gain": -0.0004791734143695381
+        },
+        {
+          "passes": 42,
+          "gain": 0.0007631939008880817
+        },
+        {
+          "passes": 43,
+          "gain": -0.00010398388058019403
+        },
+        {
+          "passes": 44,
+          "gain": 0.00308931727994588
+        },
+        {
+          "passes": 45,
+          "gain": 0.007185331695357178
+        },
+        {
+          "passes": 46,
+          "gain": 0.003213776392856471
+        },
+        {
+          "passes": 47,
+          "gain": 0.0044600042802189765
+        },
+        {
+          "passes": 48,
+          "gain": 2.8516301198933114e-05
+        },
+        {
+          "passes": 49,
+          "gain": 0.006429892792693792
+        },
+        {
+          "passes": 50,
+          "gain": 0.005303075643364297
+        },
+        {
+          "passes": 51,
+          "gain": 0.00939172946586242
+        },
+        {
+          "passes": 52,
+          "gain": -0.0023846896715852273
+        },
+        {
+          "passes": 53,
+          "gain": 0.006917776358241978
+        },
+        {
+          "passes": 54,
+          "gain": -0.006643654634416851
+        },
+        {
+          "passes": 55,
+          "gain": 0.0015258826964401617
+        },
+        {
+          "passes": 56,
+          "gain": 0.0032550718392823086
+        },
+        {
+          "passes": 57,
+          "gain": 0.003759982340156287
+        },
+        {
+          "passes": 58,
+          "gain": 0.0031779511626419676
+        },
+        {
+          "passes": 59,
+          "gain": 0.00561716020200731
+        },
+        {
+          "passes": 60,
+          "gain": 0.0027459897789988696
+        },
+        {
+          "passes": 61,
+          "gain": 0.00019981018298964592
+        },
+        {
+          "passes": 62,
+          "gain": 0.0074962682784032175
+        },
+        {
+          "passes": 63,
+          "gain": 0.002931479481650512
+        },
+        {
+          "passes": 64,
+          "gain": 0.005346427651306662
+        },
+        {
+          "passes": 65,
+          "gain": -0.012296816533273192
+        },
+        {
+          "passes": 66,
+          "gain": 0.006103342356938102
+        },
+        {
+          "passes": 67,
+          "gain": 0.006031416362206721
+        },
+        {
+          "passes": 68,
+          "gain": 0.0018114120289294267
+        },
+        {
+          "passes": 69,
+          "gain": 0.004873772016836253
+        },
+        {
+          "passes": 70,
+          "gain": 0.005377712319495909
+        },
+        {
+          "passes": 71,
+          "gain": 0.0062599175921281835
+        },
+        {
+          "passes": 72,
+          "gain": 0.00774837711370524
+        },
+        {
+          "passes": 73,
+          "gain": 0.0065452987779457406
+        },
+        {
+          "passes": 74,
+          "gain": 0.008791593640752882
+        },
+        {
+          "passes": 75,
+          "gain": 0.010214436377146807
+        },
+        {
+          "passes": 76,
+          "gain": 0.005431113080376471
+        },
+        {
+          "passes": 77,
+          "gain": 0.006378908722702636
+        },
+        {
+          "passes": 78,
+          "gain": 0.00550552886540745
+        },
+        {
+          "passes": 79,
+          "gain": 0.009604731684059953
+        },
+        {
+          "passes": 80,
+          "gain": 0.010005032043871709
+        },
+        {
+          "passes": 81,
+          "gain": 0.012379025806673827
+        },
+        {
+          "passes": 82,
+          "gain": 0.009811955959672436
+        },
+        {
+          "passes": 83,
+          "gain": 0.00838670715623957
+        },
+        {
+          "passes": 84,
+          "gain": 0.008910795134236982
+        },
+        {
+          "passes": 85,
+          "gain": 0.007886830954806578
+        },
+        {
+          "passes": 86,
+          "gain": 0.01078244129614725
+        },
+        {
+          "passes": 87,
+          "gain": 0.007821754725220731
+        },
+        {
+          "passes": 88,
+          "gain": 0.00912801802644958
+        },
+        {
+          "passes": 89,
+          "gain": 0.010694602706396994
+        },
+        {
+          "passes": 90,
+          "gain": 0.010556760867353021
+        },
+        {
+          "passes": 91,
+          "gain": 0.011139241450548343
+        },
+        {
+          "passes": 92,
+          "gain": 0.009950402415488058
+        },
+        {
+          "passes": 93,
+          "gain": 0.011705275030374107
+        },
+        {
+          "passes": 94,
+          "gain": 0.011103770119682776
+        },
+        {
+          "passes": 95,
+          "gain": 0.012072602322168668
+        },
+        {
+          "passes": 96,
+          "gain": 0.010722234185625568
+        },
+        {
+          "passes": 97,
+          "gain": 0.011103945734313947
+        },
+        {
+          "passes": 98,
+          "gain": 0.010914884687205806
+        },
+        {
+          "passes": 99,
+          "gain": 0.011458190837363436
+        },
+        {
+          "passes": 100,
+          "gain": 0.011376631552364236
+        }
+      ]
+    },
+    {
+      "dataset": "amazon",
+      "seed": 1,
+      "reference_target_posthoc": 0.6389247185178978,
+      "arms": {
+        "bptt": {
+          "completed_passes": 100,
+          "final_dev_ll": 0.6389247185178978,
+          "first_reference_final_quality": {
+            "passes": 95,
+            "dev_ll": 0.6389508969638352,
+            "epoch_wall_cumulative_s": 1411.9059743881226,
+            "updates": 38380
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 100,
+            "dev_ll": 0.6389247185178978,
+            "epoch_wall_cumulative_s": 1485.037990808487,
+            "updates": 40400
+          },
+          "final_epoch_wall_s": 1485.037990808487,
+          "final_updates": 40400
+        },
+        "trace": {
+          "completed_passes": 100,
+          "final_dev_ll": 0.6420248184762798,
+          "first_reference_final_quality": {
+            "passes": 81,
+            "dev_ll": 0.6395769524109665,
+            "epoch_wall_cumulative_s": 4850.737407207489,
+            "updates": 1434429
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 25,
+            "dev_ll": 0.613838808878861,
+            "epoch_wall_cumulative_s": 1481.8522489070892,
+            "updates": 442725
+          },
+          "final_epoch_wall_s": 5994.177447080612,
+          "final_updates": 1770900
+        }
+      },
+      "paired_pass_gains": [
+        {
+          "passes": 1,
+          "gain": 0.1600538914891652
+        },
+        {
+          "passes": 2,
+          "gain": 0.08010706300316489
+        },
+        {
+          "passes": 3,
+          "gain": 0.06473348458393557
+        },
+        {
+          "passes": 4,
+          "gain": 0.041308030155490894
+        },
+        {
+          "passes": 5,
+          "gain": 0.026824096071561332
+        },
+        {
+          "passes": 6,
+          "gain": 0.021982586515481906
+        },
+        {
+          "passes": 7,
+          "gain": 0.02236145700629688
+        },
+        {
+          "passes": 8,
+          "gain": 0.020724494760030354
+        },
+        {
+          "passes": 9,
+          "gain": 0.01904812805781686
+        },
+        {
+          "passes": 10,
+          "gain": 0.005830806873818317
+        },
+        {
+          "passes": 11,
+          "gain": 0.018209617759515906
+        },
+        {
+          "passes": 12,
+          "gain": 0.02383458066023547
+        },
+        {
+          "passes": 13,
+          "gain": 0.002499658565791041
+        },
+        {
+          "passes": 14,
+          "gain": 0.019535004344150564
+        },
+        {
+          "passes": 15,
+          "gain": 0.0021125766203601293
+        },
+        {
+          "passes": 16,
+          "gain": -0.0037697871392691207
+        },
+        {
+          "passes": 17,
+          "gain": 0.00350987596350516
+        },
+        {
+          "passes": 18,
+          "gain": 0.010712183972297784
+        },
+        {
+          "passes": 19,
+          "gain": 0.0026234849914765768
+        },
+        {
+          "passes": 20,
+          "gain": 0.0003268656043675655
+        },
+        {
+          "passes": 21,
+          "gain": 0.0040633023803666735
+        },
+        {
+          "passes": 22,
+          "gain": 0.002458802810515359
+        },
+        {
+          "passes": 23,
+          "gain": -0.002140951918803591
+        },
+        {
+          "passes": 24,
+          "gain": -0.008877540007497964
+        },
+        {
+          "passes": 25,
+          "gain": -0.0016133660748550716
+        },
+        {
+          "passes": 26,
+          "gain": -0.0006242203082998943
+        },
+        {
+          "passes": 27,
+          "gain": 0.0020579567700522716
+        },
+        {
+          "passes": 28,
+          "gain": -0.0018213673896156912
+        },
+        {
+          "passes": 29,
+          "gain": 0.005616220440851971
+        },
+        {
+          "passes": 30,
+          "gain": -0.0036345023358277384
+        },
+        {
+          "passes": 31,
+          "gain": -0.00284481823074878
+        },
+        {
+          "passes": 32,
+          "gain": -0.0029395322436926996
+        },
+        {
+          "passes": 33,
+          "gain": 0.00027356800975752993
+        },
+        {
+          "passes": 34,
+          "gain": -0.007668967025083462
+        },
+        {
+          "passes": 35,
+          "gain": -0.014016203778004055
+        },
+        {
+          "passes": 36,
+          "gain": 0.0008710804060996225
+        },
+        {
+          "passes": 37,
+          "gain": -0.003758016775772477
+        },
+        {
+          "passes": 38,
+          "gain": -0.010831936306172518
+        },
+        {
+          "passes": 39,
+          "gain": -0.008822854483214404
+        },
+        {
+          "passes": 40,
+          "gain": -0.006098224249968309
+        },
+        {
+          "passes": 41,
+          "gain": -0.002937808012318688
+        },
+        {
+          "passes": 42,
+          "gain": 0.002467420659794217
+        },
+        {
+          "passes": 43,
+          "gain": -0.00481534045589338
+        },
+        {
+          "passes": 44,
+          "gain": 0.0013378301886102228
+        },
+        {
+          "passes": 45,
+          "gain": -0.004500835533085112
+        },
+        {
+          "passes": 46,
+          "gain": -0.002717079479366613
+        },
+        {
+          "passes": 47,
+          "gain": -0.0036965877984461715
+        },
+        {
+          "passes": 48,
+          "gain": -0.002765393333995836
+        },
+        {
+          "passes": 49,
+          "gain": -0.0038632285988692283
+        },
+        {
+          "passes": 50,
+          "gain": -0.002767788167808094
+        },
+        {
+          "passes": 51,
+          "gain": -0.0016322040157905615
+        },
+        {
+          "passes": 52,
+          "gain": -0.0008243349604548644
+        },
+        {
+          "passes": 53,
+          "gain": 0.00048299856457578727
+        },
+        {
+          "passes": 54,
+          "gain": -0.003081014262001691
+        },
+        {
+          "passes": 55,
+          "gain": -0.006808310429726849
+        },
+        {
+          "passes": 56,
+          "gain": -0.004681542826280638
+        },
+        {
+          "passes": 57,
+          "gain": -0.0024037396008028677
+        },
+        {
+          "passes": 58,
+          "gain": 0.0007744016934072562
+        },
+        {
+          "passes": 59,
+          "gain": -0.001672912882759614
+        },
+        {
+          "passes": 60,
+          "gain": -0.0038867907086352904
+        },
+        {
+          "passes": 61,
+          "gain": -0.002827092895400951
+        },
+        {
+          "passes": 62,
+          "gain": -0.004063040489382774
+        },
+        {
+          "passes": 63,
+          "gain": -0.0010949804284290376
+        },
+        {
+          "passes": 64,
+          "gain": 0.002319338034251106
+        },
+        {
+          "passes": 65,
+          "gain": -0.0007842057573572703
+        },
+        {
+          "passes": 66,
+          "gain": 0.0017230047185400332
+        },
+        {
+          "passes": 67,
+          "gain": 0.0011016010653969177
+        },
+        {
+          "passes": 68,
+          "gain": -0.0019540247321671034
+        },
+        {
+          "passes": 69,
+          "gain": -0.0011433786657194522
+        },
+        {
+          "passes": 70,
+          "gain": -0.0021052533982901522
+        },
+        {
+          "passes": 71,
+          "gain": -0.0017759985612892937
+        },
+        {
+          "passes": 72,
+          "gain": 0.002391430077670953
+        },
+        {
+          "passes": 73,
+          "gain": -0.0013095011151470493
+        },
+        {
+          "passes": 74,
+          "gain": 0.0002894929807101265
+        },
+        {
+          "passes": 75,
+          "gain": 0.0036693838017310965
+        },
+        {
+          "passes": 76,
+          "gain": 0.0003372362879628943
+        },
+        {
+          "passes": 77,
+          "gain": -2.2822062155203326e-05
+        },
+        {
+          "passes": 78,
+          "gain": -0.0036644145270396944
+        },
+        {
+          "passes": 79,
+          "gain": 0.0028267443926300873
+        },
+        {
+          "passes": 80,
+          "gain": 0.0029538375815388873
+        },
+        {
+          "passes": 81,
+          "gain": 0.0020822169278433833
+        },
+        {
+          "passes": 82,
+          "gain": 0.00035857604436417834
+        },
+        {
+          "passes": 83,
+          "gain": 0.0004241479111984914
+        },
+        {
+          "passes": 84,
+          "gain": 0.002327084452638184
+        },
+        {
+          "passes": 85,
+          "gain": 0.0022624016865786523
+        },
+        {
+          "passes": 86,
+          "gain": 0.0022356261388685184
+        },
+        {
+          "passes": 87,
+          "gain": 0.0013596366358475942
+        },
+        {
+          "passes": 88,
+          "gain": 0.002028649688597617
+        },
+        {
+          "passes": 89,
+          "gain": 0.0024251320592396652
+        },
+        {
+          "passes": 90,
+          "gain": 0.0036241433289400105
+        },
+        {
+          "passes": 91,
+          "gain": 0.0017894358778753894
+        },
+        {
+          "passes": 92,
+          "gain": 0.002070104719875454
+        },
+        {
+          "passes": 93,
+          "gain": 0.00336819489007123
+        },
+        {
+          "passes": 94,
+          "gain": 0.00233878247396202
+        },
+        {
+          "passes": 95,
+          "gain": 0.0021561184095533203
+        },
+        {
+          "passes": 96,
+          "gain": 0.0034750875655269464
+        },
+        {
+          "passes": 97,
+          "gain": 0.0031445636879163796
+        },
+        {
+          "passes": 98,
+          "gain": 0.002806852278661509
+        },
+        {
+          "passes": 99,
+          "gain": 0.002820358663268463
+        },
+        {
+          "passes": 100,
+          "gain": 0.0031000999583820077
+        }
+      ]
+    },
+    {
+      "dataset": "amazon",
+      "seed": 2,
+      "reference_target_posthoc": 0.638342094848647,
+      "arms": {
+        "bptt": {
+          "completed_passes": 100,
+          "final_dev_ll": 0.638342094848647,
+          "first_reference_final_quality": {
+            "passes": 99,
+            "dev_ll": 0.638648701028311,
+            "epoch_wall_cumulative_s": 1469.4702603816986,
+            "updates": 39996
+          },
+          "quality_at_reference_epoch_wall": {
+            "passes": 100,
+            "dev_ll": 0.638342094848647,
+            "epoch_wall_cumulative_s": 1484.403263092041,
+            "updates": 40400
+          },
+          "final_epoch_wall_s": 1484.403263092041,
+          "final_updates": 40400
+        }
+      },
+      "paired_pass_gains": []
+    }
+  ],
+  "scope": "Post-hoc descriptive DEV audit of completed native controls. Epoch wall includes only recorded epoch time, not setup/pretraining. Passes repeat fixed TRAIN, not unique-data scaling. Update counts differ. No learned-critic or classical-reference scaling claim; pending files excluded."
+}

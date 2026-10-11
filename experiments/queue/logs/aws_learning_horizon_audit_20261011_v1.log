@@ -1,0 +1,275 @@
+[
+  {
+    "dataset": "taxi",
+    "seed": 0,
+    "arms": {
+      "bptt": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.44950111067874937,
+        "first_reference_final_quality": {
+          "passes": 20,
+          "dev_ll": 0.44950111067874937,
+          "epoch_wall_cumulative_s": 82.65460324287415,
+          "updates": 1760
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.44950111067874937,
+          "epoch_wall_cumulative_s": 82.65460324287415,
+          "updates": 1760
+        },
+        "final_epoch_wall_s": 82.65460324287415,
+        "final_updates": 1760
+      },
+      "online_deep": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.47672237407157175,
+        "first_reference_final_quality": {
+          "passes": 2,
+          "dev_ll": 0.4510164009318451,
+          "epoch_wall_cumulative_s": 531.649163722992,
+          "updates": 6344
+        },
+        "quality_at_reference_epoch_wall": null,
+        "final_epoch_wall_s": 5269.319990158081,
+        "final_updates": 63440
+      },
+      "online_local": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.45601743602503053,
+        "first_reference_final_quality": {
+          "passes": 8,
+          "dev_ll": 0.4557974132810931,
+          "epoch_wall_cumulative_s": 30.319745779037476,
+          "updates": 25376
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.45601743602503053,
+          "epoch_wall_cumulative_s": 75.55175018310547,
+          "updates": 63440
+        },
+        "final_epoch_wall_s": 75.55175018310547,
+        "final_updates": 63440
+      }
+    }
+  },
+  {
+    "dataset": "taxi",
+    "seed": 1,
+    "arms": {
+      "bptt": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.4590696156043842,
+        "first_reference_final_quality": {
+          "passes": 19,
+          "dev_ll": 0.4614610663298261,
+          "epoch_wall_cumulative_s": 75.883216381073,
+          "updates": 1672
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.4590696156043842,
+          "epoch_wall_cumulative_s": 79.78622531890869,
+          "updates": 1760
+        },
+        "final_epoch_wall_s": 79.78622531890869,
+        "final_updates": 1760
+      },
+      "online_deep": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.47853883498724026,
+        "first_reference_final_quality": {
+          "passes": 4,
+          "dev_ll": 0.4593960998073099,
+          "epoch_wall_cumulative_s": 1016.076274394989,
+          "updates": 12688
+        },
+        "quality_at_reference_epoch_wall": null,
+        "final_epoch_wall_s": 5235.241362571716,
+        "final_updates": 63440
+      },
+      "online_local": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.452052355122341,
+        "first_reference_final_quality": {
+          "passes": 9,
+          "dev_ll": 0.46161459980715874,
+          "epoch_wall_cumulative_s": 33.29977083206177,
+          "updates": 28548
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.452052355122341,
+          "epoch_wall_cumulative_s": 73.71824765205383,
+          "updates": 63440
+        },
+        "final_epoch_wall_s": 73.71824765205383,
+        "final_updates": 63440
+      }
+    }
+  },
+  {
+    "dataset": "taxi",
+    "seed": 2,
+    "arms": {
+      "bptt": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.4166940145855991,
+        "first_reference_final_quality": {
+          "passes": 20,
+          "dev_ll": 0.4166940145855991,
+          "epoch_wall_cumulative_s": 77.04067063331604,
+          "updates": 1760
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.4166940145855991,
+          "epoch_wall_cumulative_s": 77.04067063331604,
+          "updates": 1760
+        },
+        "final_epoch_wall_s": 77.04067063331604,
+        "final_updates": 1760
+      },
+      "online_deep": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.47560597472936633,
+        "first_reference_final_quality": {
+          "passes": 2,
+          "dev_ll": 0.44370554495359904,
+          "epoch_wall_cumulative_s": 500.24795722961426,
+          "updates": 6344
+        },
+        "quality_at_reference_epoch_wall": null,
+        "final_epoch_wall_s": 4874.399439096451,
+        "final_updates": 63440
+      },
+      "online_local": {
+        "completed_passes": 20,
+        "final_dev_ll": 0.46153241787601523,
+        "first_reference_final_quality": {
+          "passes": 2,
+          "dev_ll": 0.42415988726370635,
+          "epoch_wall_cumulative_s": 7.545359373092651,
+          "updates": 6344
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 20,
+          "dev_ll": 0.46153241787601523,
+          "epoch_wall_cumulative_s": 74.66477537155151,
+          "updates": 63440
+        },
+        "final_epoch_wall_s": 74.66477537155151,
+        "final_updates": 63440
+      }
+    }
+  },
+  {
+    "dataset": "amazon",
+    "seed": 0,
+    "arms": {
+      "bptt": {
+        "completed_passes": 100,
+        "final_dev_ll": 0.6377570133540933,
+        "first_reference_final_quality": {
+          "passes": 100,
+          "dev_ll": 0.6377570133540933,
+          "epoch_wall_cumulative_s": 1511.8445098400116,
+          "updates": 40400
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 100,
+          "dev_ll": 0.6377570133540933,
+          "epoch_wall_cumulative_s": 1511.8445098400116,
+          "updates": 40400
+        },
+        "final_epoch_wall_s": 1511.8445098400116,
+        "final_updates": 40400
+      },
+      "trace": {
+        "completed_passes": 100,
+        "final_dev_ll": 0.6491336449064575,
+        "first_reference_final_quality": {
+          "passes": 67,
+          "dev_ll": 0.6379899931609823,
+          "epoch_wall_cumulative_s": 3942.357054233551,
+          "updates": 1186503
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 25,
+          "dev_ll": 0.620296043269895,
+          "epoch_wall_cumulative_s": 1472.7659451961517,
+          "updates": 442725
+        },
+        "final_epoch_wall_s": 5881.5039529800415,
+        "final_updates": 1770900
+      }
+    }
+  },
+  {
+    "dataset": "amazon",
+    "seed": 1,
+    "arms": {
+      "bptt": {
+        "completed_passes": 100,
+        "final_dev_ll": 0.6389247185178978,
+        "first_reference_final_quality": {
+          "passes": 95,
+          "dev_ll": 0.6389508969638352,
+          "epoch_wall_cumulative_s": 1411.9059743881226,
+          "updates": 38380
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 100,
+          "dev_ll": 0.6389247185178978,
+          "epoch_wall_cumulative_s": 1485.037990808487,
+          "updates": 40400
+        },
+        "final_epoch_wall_s": 1485.037990808487,
+        "final_updates": 40400
+      },
+      "trace": {
+        "completed_passes": 100,
+        "final_dev_ll": 0.6420248184762798,
+        "first_reference_final_quality": {
+          "passes": 81,
+          "dev_ll": 0.6395769524109665,
+          "epoch_wall_cumulative_s": 4850.737407207489,
+          "updates": 1434429
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 25,
+          "dev_ll": 0.613838808878861,
+          "epoch_wall_cumulative_s": 1481.8522489070892,
+          "updates": 442725
+        },
+        "final_epoch_wall_s": 5994.177447080612,
+        "final_updates": 1770900
+      }
+    }
+  },
+  {
+    "dataset": "amazon",
+    "seed": 2,
+    "arms": {
+      "bptt": {
+        "completed_passes": 100,
+        "final_dev_ll": 0.638342094848647,
+        "first_reference_final_quality": {
+          "passes": 99,
+          "dev_ll": 0.638648701028311,
+          "epoch_wall_cumulative_s": 1469.4702603816986,
+          "updates": 39996
+        },
+        "quality_at_reference_epoch_wall": {
+          "passes": 100,
+          "dev_ll": 0.638342094848647,
+          "epoch_wall_cumulative_s": 1484.403263092041,
+          "updates": 40400
+        },
+        "final_epoch_wall_s": 1484.403263092041,
+        "final_updates": 40400
+      }
+    }
+  }
+]
