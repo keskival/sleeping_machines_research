@@ -1,0 +1,50 @@
+{
+  "status": "completed",
+  "tag": "aws_native_packet_actor_update_20261011_v1",
+  "battle": "B1 integrated exact packet credit",
+  "history": [
+    {
+      "version": 0,
+      "loss": 1.1030894821477275,
+      "gradient_error": 3.842017335086967e-17,
+      "parameter_error": 0.0,
+      "adam_error": 4.336808689942018e-18,
+      "cached_floats": 248
+    },
+    {
+      "version": 1,
+      "loss": 1.0589988150962275,
+      "gradient_error": 2.5293396712290883e-17,
+      "parameter_error": 1.734723475976807e-18,
+      "adam_error": 5.204170427930421e-18,
+      "cached_floats": 248
+    },
+    {
+      "version": 2,
+      "loss": 1.0149791337139744,
+      "gradient_error": 1.931628431135306e-17,
+      "parameter_error": 1.734723475976807e-18,
+      "adam_error": 3.469446951953614e-18,
+      "cached_floats": 248
+    },
+    {
+      "version": 3,
+      "loss": 0.9710697394598037,
+      "gradient_error": 4.5078704730937766e-17,
+      "parameter_error": 6.938893903907228e-18,
+      "adam_error": 1.0408340855860843e-17,
+      "cached_floats": 248
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/check_native_packet_actor_update.py": "5fc1fb34882a7a87f42825f5ee7785c758934609fde0b752692fbf917d66c94f",
+    "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "wall_s": 0.6478359270840883,
+  "max_rss_kb": 396464,
+  "scope": "One four-event real Taxi TRAIN prefix, one native layer,4 Adam updates. One tracked forward capture retains exact layer/head parameter graph; packet VJP reconnects detached embedding/gap producers. No dense Jacobian/probe sweep. All actor gradients/Adam checked. Graph plus packet storage remains charged; no whole-fit speed, learned-credit generalization, TEST or quality claim."
+}
