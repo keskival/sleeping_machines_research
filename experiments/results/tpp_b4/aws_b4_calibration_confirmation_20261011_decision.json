@@ -1,0 +1,80 @@
+{
+  "status": "completed",
+  "battle": "B4 development",
+  "tag": "aws_b4_calibration_confirmation_20261011_decision",
+  "rows": [
+    {
+      "seed": 0,
+      "gain": 2.033991581365271,
+      "alpha": 0.6133046661601038,
+      "baseline": {
+        "L_T": -181.38119970753303,
+        "L_M": 67.23675775817573,
+        "total": -114.1444419493573,
+        "sequences": 34
+      },
+      "calibrated": {
+        "L_T": -181.38119970753303,
+        "L_M": 65.20276617681046,
+        "total": -116.17843353072257,
+        "sequences": 34
+      },
+      "prerequisite_fitting_s": 7040.783048818354,
+      "predictor_forward_s": 2.9408746220869943,
+      "scalar_fit_s": 0.018530245986767113
+    },
+    {
+      "seed": 1,
+      "gain": 1.4174464042762196,
+      "alpha": 0.5899295088720307,
+      "baseline": {
+        "L_T": -181.48747187937548,
+        "L_M": 66.92200045205095,
+        "total": -114.56547142732452,
+        "sequences": 34
+      },
+      "calibrated": {
+        "L_T": -181.48747187937548,
+        "L_M": 65.50455404777473,
+        "total": -115.98291783160074,
+        "sequences": 34
+      },
+      "prerequisite_fitting_s": 5965.23807929107,
+      "predictor_forward_s": 2.9197756348876283,
+      "scalar_fit_s": 0.01869933190755546
+    },
+    {
+      "seed": 2,
+      "gain": 2.4870448246771133,
+      "alpha": 0.8184372537603282,
+      "baseline": {
+        "L_T": -180.59741110666178,
+        "L_M": 67.67003311963518,
+        "total": -112.9273779870266,
+        "sequences": 34
+      },
+      "calibrated": {
+        "L_T": -180.59741110666178,
+        "L_M": 65.18298829495807,
+        "total": -115.41442281170372,
+        "sequences": 34
+      },
+      "prerequisite_fitting_s": 5808.231852224795,
+      "predictor_forward_s": 2.921859954018146,
+      "scalar_fit_s": 0.014798065996728837
+    }
+  ],
+  "mean_mark_gain": 1.9794942701062013,
+  "sample_sd": 0.5368776982999691,
+  "gate": true,
+  "rule": "Registered before new seeds: mean DEV mark gain>=1 nat/sequence, positive gain in each of seeds0/1/2; TRAIN-only global coefficient, repaired timing fixed. Separate from the failed joint-mark stability gate.",
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_b4_mark_confidence_20261011T0619Z.json": "c2c241abbad5c928e2e3c823131425414a16949a9fb8ef97702346d4ba62e6ea",
+    "experiments/results/tpp_b4/aws_b4_calibration_confirm_20261011_s1.json": "1b71a94d985e198c4cf02d50c9c73542eceed2f58c9513d35d59778d56c28386",
+    "experiments/results/tpp_b4/aws_b4_calibration_confirm_20261011_s2.json": "50db7669971bf072fb46913a99a734a72b6fe66be6476ff1cc44ce55d4694c1a"
+  },
+  "source_sha256": {
+    "experiments/tpp/decide_calibration_confirmation.py": "3214bee12f73597257f71e1f0a86b3cd812f50b43d9755911291d645578b0670"
+  },
+  "next_decision": "If gate passes, measure both-predictor serving cost before developing a single integrated readout; if it fails, diagnose per-sequence errors without further blind fitting. No TEST, leading-total replacement, or efficiency claim."
+}
