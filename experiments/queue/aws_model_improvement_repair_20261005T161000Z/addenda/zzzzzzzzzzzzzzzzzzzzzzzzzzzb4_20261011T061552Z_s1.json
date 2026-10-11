@@ -1,0 +1,28 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 calibration diagnostic after failed transfer and residual fits: TRAIN-fitted scalar conditional mark confidence from saved causal predictors, repaired timing fixed, both models charged; no TEST or architecture promotion",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b4_mark_confidence_20261011T0619Z",
+        "queue": "experiments/queue/b4/aws_b4_mark_confidence_20261011T0619Z/aws_b4_mark_confidence_20261011T0619Z.txt",
+        "queue_sha256": "869cb428d3f43c4261087c195eec392c1e0e359cd76bbbe12d86a70ac7152e0f",
+        "kind": "b4_job",
+        "source_sha256": {
+          "experiments/tpp/calibrate_mark_predictors.py": "97792a15327abce10d9d642fc730ca4c31f25dd346f0494ecf57164119978b8d",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4_mark_confidence_20261011T0619Z.json",
+        "timeout_s": 600,
+        "rss_kb": 2000000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
