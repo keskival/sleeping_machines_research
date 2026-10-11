@@ -6,7 +6,7 @@ from torch.utils.flop_counter import FlopCounterMode
 from check_token_forward_credit import ROOT,SOURCE,KeyedTokenLM,load
 from token_forward_credit import packet,joint_replay
 from token_exact_world_readouts import replay
-TAG='curie_token_forward_credit_calibration_20261011_v1'
+TAG='curie_token_forward_credit_calibration_20261011_v2'
 SOURCES=['experiments/credit/measure_token_forward_credit.py','experiments/credit/token_exact_world_readouts.py','experiments/credit/token_forward_credit.py','experiments/credit/token_episode_state.py','experiments/r1_token_keyed_lm.py','experiments/tpp/race_tpp_v5.py']
 
 def verify(name):
@@ -70,7 +70,13 @@ def main():
         print(json.dumps(work[-1]),flush=True)
     summaries=[]
     for name in ['zero','forward_static','reference_learner']:
-        subset=[r for r in rows if r['arm']==name];mse=float(np.mean([r['mse'] for r in subset]));energy=float(np.mean([r['contrast_energy'] for r in subset]));summaries.append(dict(arm=name,mse=mse,error_over_zero=mse/energy if energy else None,mean_conditional_policy_logit_variance=float(np.mean([r['conditional_policy_logit_variance'] for r in subset])) )
+        subset=[r for r in rows if r['arm']==name]
+        mse=float(np.mean([r['mse'] for r in subset]))
+        energy=float(np.mean([r['contrast_energy'] for r in subset]))
+        variance=float(np.mean([r['conditional_policy_logit_variance'] for r in subset]))
+        summaries.append(dict(arm=name,mse=mse,error_over_zero=mse/energy if energy else None,
+                              mean_conditional_policy_logit_variance=variance))
+
     checkpoint=out.with_suffix('.pt');torch.save(dict(windows=saved),checkpoint)
     result=dict(status='completed',battle='R1',tag=a.tag,mode=a.mode,rows=summaries,per_window=rows,work=work,source_model_result=SOURCE,source_checkpoint_sha256=cp_sha,train_token_offset=offset,context_tokens=context,scored_targets=count*targets,teacher_worlds=total_worlds,readout_updates=readout_updates,whole_wall_s=time.monotonic()-start,peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,checkpoint=str(checkpoint.relative_to(ROOT)),checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCES},scope='Proper GPT-2 vocabulary50257/native pretrained2-layer source, fresh contiguous TRAIN targets with256 preceding context in measurement; no public/TEST scoring. Up to8 observed current-document token addresses, one global no-op and8 nonzero messages per address; messages use normalized produced prefix key-write direction in each of4heads, independent of future targets. Exact all-world learner costs, static/reference projections, independent64-dimensional lexical readout/Adam state per world. All carrier/context replay, full normalized outputs/scans, independent learners and additional duplicate reference learning charged; source4M pretraining and numerical gates additional. Fast/native state reset per measurement window and observed EOS: this is calibration/headroom, not persistent online or actor-policy training. Uniform issued policy-logit covariance, not native/carrier parameter variance; one observed continuation per context, no independent-future variance claim. Supported FLOPs omit unsupported scalar/special/optimizer arithmetic, included in wall. Saved paid TRAIN labels may support later declared fitting; no benchmark/depth/hardware claim.')
     out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2),flush=True)
