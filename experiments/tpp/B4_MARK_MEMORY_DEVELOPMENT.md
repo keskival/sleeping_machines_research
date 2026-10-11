@@ -97,3 +97,42 @@ Admitted aws_b4_frozen_marks_20261011T0307Z:100-pass cap,30-pass total-DEV patie
 slot1. Gate: selected and last20 mean mark/total gain>=1nat/sequence,zero skips,
 unchanged timing/core. Warm-start3345.70s and all residual work are charged.
 No TEST or automatic next fit. Labels/models remain first-stage development.
+
+## Current residual and transfer diagnosis
+
+Frozen-core residual fit completes43 passes with zero skips, unchanged timing
+and bitwise frozen existing parameters. Best mark gain0.169, last20 mean−0.536:
+the registered gate fails. Additional fitting646.58s; cumulative fitting with
+repaired warm start3992.29s. Late residual TRAIN mark loss141.49->140.33 improves
+while DEV67.07->68.41 worsens. No replication or larger fit follows this failure.
+
+Saved-checkpoint factorial evaluation shows joint branch transfers poorly:
+repaired core plus joint branch DEV marks71.615 versus baseline67.237. Keeping
+joint input embedding/gap privately changes71.615->71.592 only. This rules out
+a large direct input-weight correction in this swap diagnostic, not all
+representation hypotheses. The matching joint core/branch stays65.417.
+
+The next measured control fits one global confidence coefficient on TRAIN,
+using two complete conditional-mark distributions rather than transferring a
+relative logit correction into another core. With p_a=(1-a)p0+a p1, the sum of
+negative log probabilities is convex in a: derivative−sum((p1-p0)/p_a), second
+derivative sum((p1-p0)^2/p_a^2)>=0. Existing predictor forward values provide
+both terms; one scalar primitive solve closes this local fitting problem.
+It is not a future-learning acquisition objective. Coefficient a is fixed
+before DEV scoring and is identical for every candidate mark and history.
+Repaired timing density times p_a remains a normalized marked distribution.
+No target-dependent or word-keyed inference mixture is restored.
+
+Completed aws_b4_mark_confidence_20261011T0619Z:TRAIN coefficient0.613305;
+DEV marks65.203,total−116.178,timing unchanged,baseline marks67.237. Mark gain
+2.034; incremental mark gain0.214 versus joint predictor alone. The one-seed
+>=1 mark-nat diagnostic gate passes; this is not adoption or a benchmark win.
+Scalar fit18.53ms after predictor evaluation2.941s. Both native predictors
+(50,826 parameters including coefficient) and prerequisite fits7040.78s are
+charged. The calibrated total is worse than the joint fit's selected total
+−116.337 because it retains baseline timing. Do not replace that leading
+selected DEV number with the calibration diagnostic.
+
+Next decision: independently confirm scalar calibration before engineering
+one integrated mark readout. No blind extra residual/private-input fit is
+admitted. All completed failures/checkpoints remain evidence; TEST untouched.

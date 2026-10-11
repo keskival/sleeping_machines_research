@@ -17,6 +17,10 @@ def pages():
     if not path.exists():return []
     repair=bound('aws_b4_logspread_develop_decision_20261010T2113Z')
     mark=bound('aws_b4_marks_decision_20261010T2301Z');diag=bound('aws_b4_marks_diagnosis_20261011T0303Z')
+    frozen=bound('aws_b4_frozen_marks_20261011T0307Z')
+    transfer=bound('aws_b4_mark_transfer_20261011T0442Z')
+    private=bound('aws_b4_private_inputs_20261011T0615Z')
+    confidence=bound('aws_b4_mark_confidence_20261011T0619Z')
     b=mark['selected_repaired_baseline'];m=mark['selected_mark_memory']
     rows=[[label,f"{x['L_T']:.3f}",f"{x['L_M']:.3f}",f"{x['total']:.3f}"] for label,x in [('Repaired baseline',b),('Plus mark memory',m)]]
     work=[]
@@ -35,5 +39,8 @@ def pages():
         ('p','Parameters: 21,768 baseline, 29,057 mark variant. Both score every clock; the auxiliary temporal memory updates densely. '
              'Whole fitting FLOPs are unmeasured. Saved DEV likelihood-forward latency is 73.03 versus 86.41 microseconds per target; no matched-compute or energy claim.'),
         ('p','Scope: one Github split1 seed0 TRAIN/DEV development comparison, original core recipe and validation patience. '
-             'Frozen B4 TEST verdicts remain unchanged. Next diagnostic fit freezes the repaired core and trains only a fresh residual mark memory, '
-             'charging baseline pretraining and requiring unchanged timing plus sustained mark/total gain.')]]
+             'Frozen B4 TEST verdicts remain unchanged.'),
+        ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
+        ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
+        ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. Next: independent confirmation of calibration before engineering a single integrated readout.")]]
