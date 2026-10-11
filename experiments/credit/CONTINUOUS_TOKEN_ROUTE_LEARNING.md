@@ -71,3 +71,13 @@ Forward-derived feature geometry suggests teaching an optimizer metric through
 later losses. Keep its parameter/version fixed within each issued credit window
 and retain prior gradient/metric activations. Existing finite identities do not
 constitute an implemented metric learner or a scaling result.
+
+## Completed bounded integration
+
+The v1 smoke completes four eight-target windows per zero/static/reference arm
+on32 proper TRAIN targets after16 context tokens, source checkpoint unchanged.
+Connected router29,057 parameters, all gradients finite; factual key/fast
+vector/Adam carry;5.82s total and360MiB peak. Initial pool65 routes; subsequent
+windows use nine current-address routes. Duplicate issuance is charged. This
+checks the learning cycle only. Retain full observed-document pool before
+quality development; no DEV selection or utility result has been measured.

@@ -12,16 +12,17 @@ def issue(model, observed_tokens, initial_state=None, fast_state=None, eos=50256
              model.query_w.register_forward_hook(lambda m,a,r: captured.update(q=r.detach())),
              model.key_w.register_forward_hook(lambda m,a,r: captured.update(w=r.detach()))]
     state = initial_state
+    reset_fast = False
     try:
         with torch.no_grad():
             for token in observed_tokens:
-                if int(token) == eos: state = None
+                if int(token) == eos: state = None; reset_fast = True
                 forecast,state = consume(model, token.reshape(1), state)
     finally:
         for hook in hooks: hook.remove()
     receivers, actions = candidates(observed_tokens, captured['w'], model.heads, model.dk)
     with torch.no_grad():
-        z = torch.zeros_like(captured['h'][0]) if fast_state is None else fast_state.detach()
+        z = torch.zeros_like(captured['h'][0]) if fast_state is None or reset_fast else fast_state.detach()
         # h, q, produced message and lexical state are common issued context.
         context = torch.cat([captured['h'].flatten(), captured['q'].flatten(),
                              captured['w'].flatten(), z])

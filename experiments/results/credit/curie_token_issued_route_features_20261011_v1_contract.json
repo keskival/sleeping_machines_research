@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_issued_route_features_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "context_error": 0.0,
+      "routes": 17,
+      "actor_parameters": 3969
+    },
+    {
+      "depth": 4,
+      "context_error": 0.0,
+      "routes": 17,
+      "actor_parameters": 3969
+    },
+    {
+      "depth": 8,
+      "context_error": 0.0,
+      "routes": 17,
+      "actor_parameters": 3969
+    }
+  ],
+  "whole_wall_s": 0.12942356799612753,
+  "source_sha256": {
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8",
+    "experiments/credit/check_token_issued_route_features.py": "c99e06d9379bddf257f3ecbcc9b4776de6d188b0c4b7195d77b674121610ed32"
+  },
+  "scope": "Prefix-only API; depth2/4/8 issued context parity with continuous native state, finite connected actor gradients, detached source features. Candidate discovery must retain observed document history in integration. No fitting or full actor suffix-invariance claim."
+}
