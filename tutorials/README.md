@@ -1,6 +1,6 @@
 # Formal-analysis tutorials (internal training material, confidential)
 
-All eight planned tutorials are complete. Each is three pages.
+All eight planned tutorials and the forward-credit extension are complete. Each is three pages.
 
 Introductory tutorials to the mathematics needed to read our theory notes (`experiments/theory/160`–`168`) and the
 machine-checked lemmas (`experiments/lean/credit_theory`). One topic per file; each has derivations, exercises with
@@ -17,6 +17,7 @@ Post-boundary material: internal only until the priority filing (see `ip/`).
 | 6 | [Counting-process martingales, Fisher information and natural gradients](06_counting_processes_fisher_natural_gradients.pdf) · [source](06_counting_processes_fisher_natural_gradients.tex) | done (3 pp.) |
 | 7 | [Spectra, scaling and queues](07_spectra_scaling_and_queues.pdf) · [source](07_spectra_scaling_and_queues.tex) | done (3 pp.) |
 | 8 | [Formal verification with Lean 4](08_formal_verification_with_lean4.pdf) · [source](08_formal_verification_with_lean4.tex) | done (3 pp.) |
+| 9 | [Forward computation teaches credit](09_forward_teaches_credit.pdf) · [source](09_forward_teaches_credit.tex) | done (3 pp.) |
 
 ## Coverage and reading path
 
