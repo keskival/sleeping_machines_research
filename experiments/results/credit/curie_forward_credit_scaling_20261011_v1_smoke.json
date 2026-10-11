@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_forward_credit_scaling_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "predictive_gate": false,
+  "config": {
+    "train_prefixes": 34,
+    "scoring_prefixes": 1,
+    "context": 64,
+    "horizon": 48,
+    "fit_passes": 10,
+    "lr": 0.001,
+    "output_scale": 0.001,
+    "train_offset": 4587520,
+    "scoring_offset": 4722688
+  },
+  "stages": {
+    "acquisition": {
+      "wall_s": 8.575912277010502,
+      "supported_flops": 6649362816,
+      "inherited_wall_s": 126.2186832830048,
+      "inherited_supported_flops": 105768291968,
+      "actual_worlds": 101,
+      "actual_updates": 4848,
+      "transported_updates": 106080
+    },
+    "fitting": {
+      "wall_s": 5.104972089000512,
+      "supported_flops": 3071380480,
+      "arms": [
+        {
+          "arm": "uncorrected",
+          "updates": 340,
+          "first_loss": 0.10098089545332786,
+          "last_loss": 0.010842132174883518,
+          "parameters": 54081
+        },
+        {
+          "arm": "corrected",
+          "updates": 340,
+          "first_loss": 0.1029730121331279,
+          "last_loss": 0.012167158530580691,
+          "parameters": 54081
+        }
+      ]
+    },
+    "scoring": {
+      "wall_s": 6.665082284001983,
+      "supported_flops": 41308596224,
+      "actual_worlds": 65,
+      "actual_updates": 3120
+    }
+  },
+  "rows": [
+    {
+      "prefix": 0,
+      "mse": {
+        "uncorrected": 1.533708289883048e-07,
+        "corrected": 1.7966187169307332e-07,
+        "zero": 1.1996872316913962e-07
+      },
+      "contrast_rms": 0.0003463650143550004,
+      "greedy_regret": {
+        "uncorrected": 0.0013699469551120558,
+        "corrected": 0.0013699469551120558,
+        "zero": 0.0011832042840111967
+      },
+      "prediction_rms": {
+        "uncorrected": 0.00030690244870845674,
+        "corrected": 0.0003545553559025899,
+        "zero": 0.0
+      },
+      "routes": 65
+    }
+  ],
+  "comparisons": {
+    "corrected_over_zero": {
+      "mean_gain": -5.96931485239337e-08,
+      "paired_prefix_bootstrap95": [
+        -5.96931485239337e-08,
+        -5.96931485239337e-08
+      ],
+      "per_prefix": [
+        -5.96931485239337e-08
+      ]
+    },
+    "corrected_over_uncorrected": {
+      "mean_gain": -2.6291042704768523e-08,
+      "paired_prefix_bootstrap95": [
+        -2.6291042704768523e-08,
+        -2.6291042704768523e-08
+      ],
+      "per_prefix": [
+        -2.6291042704768523e-08
+      ]
+    },
+    "uncorrected_over_zero": {
+      "mean_gain": -3.3402105819165173e-08,
+      "paired_prefix_bootstrap95": [
+        -3.3402105819165173e-08,
+        -3.3402105819165173e-08
+      ],
+      "per_prefix": [
+        -3.3402105819165173e-08
+      ]
+    }
+  },
+  "wall_s": 20.56298499699915,
+  "peak_rss_kb": 499716,
+  "checkpoint": "experiments/results/credit/curie_forward_credit_scaling_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "cb18cc8738913a6a758520b2477c8390baf90931368b4fc69a3a9a4208bfd108",
+  "inherited_parent": "curie_forward_credit_predictor_20261011_v1_fit",
+  "inherited_parent_sha256": "7f25b8479c341e6b20bc4de7229a52f378ab6440049c75fc7266e42b68e8ed4a",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/fit_forward_credit_predictor_scaling.py": "6611d0e5f113fecf1a548fcc8f09a05a499784a25299850b90e888c22dd37281",
+    "experiments/credit/token_learner_state_features.py": "960b96538876659ad6b09c21f4ef49f009ed093831f136f7c89ef5ba1867274e",
+    "experiments/credit/connected_credit_risk.py": "492232511814c107eeca3b59ac9914996d904d96c0722613c64f7cffd3cdea8c",
+    "experiments/credit/FORWARD_CREDIT_SCALING_PROTOCOL.md": "76a79c9c36ab86d15db62d39a77c0b47d04a2b97110ffaad85ffcdbc9000846b",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/token_optimizer_transport_carried.py": "7585e164cfe7b86ea4d2546e080b39c5b7e6d0ff0e03aae0895e273cf96bde39",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8"
+  },
+  "scope": "Connected prefix-only48target route-consequence predictor, one development initialization. Cold lexical state, fixed native2layer pretrained model/proper50257GPT2vocabulary. 32 paid TRAIN records reused plus96 new TRAIN records and16 new scoring prefixes in full fit; explicit inherited acquisition charge, no public DEV/TEST or actor/fullnative learning. Approximate transported labels and exact sampled/no-op correction paid; all exact scoring/discovery/copies paid. Source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Final10pass checkpoint, no scoring selection. Adam feature interface present but constant during this cold-state fit; its utility not measured."
+}
