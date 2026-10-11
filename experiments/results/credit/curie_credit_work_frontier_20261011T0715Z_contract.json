@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_credit_work_frontier_20261011T0715Z_contract",
+  "metrics": {
+    "enumerated_mean_variance_errors": [
+      1.734723475976807e-18,
+      1.734723475976807e-18,
+      2.168404344971009e-18
+    ],
+    "perfect_critic_future_noise_trace": 0.0008508169773399014,
+    "allocated_propensities": [
+      0.08,
+      0.08,
+      0.22360679774997896
+    ],
+    "allocated_incremental_cost": 0.30601990449164634,
+    "second_moment_budget": 2.1997157115831305,
+    "lagrange_gap_to_random_candidates": 0.027209484983290566,
+    "feasible_random_candidates": 8480,
+    "positive_support_floor": 0.08,
+    "reference_geometry_errors": [
+      4.440892098500626e-16,
+      2.220446049250313e-16,
+      2.220446049250313e-16
+    ],
+    "reference_gradient_variances": [
+      1.3845348035467981,
+      0.583757266034483,
+      0.6076164664285713
+    ],
+    "lowest_mean_loss_route": 0,
+    "lowest_variance_reference": 1
+  },
+  "wall_s": 0.008684001004439779,
+  "peak_rss_kb": 37264,
+  "source_sha256": {
+    "experiments/credit/check_credit_audit_work_frontier.py": "dbe8624def7dcae108bc4b74a03abaefdbd6b0e5179cf54814d717e741169e66"
+  },
+  "scope": "Finite three-route/two-future algebra contracts. Action-dependent positive audit support preserves raw expected gradient, exact trace covariance includes score sensitivity, and a clipped allocation minimizes its Lagrangian. No learned residual-risk calibration, optimizer-step, native-quality or hardware efficiency result."
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/experiments/credit/diagnose_sparse_paired_actor_critic.py", line 75, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/experiments/credit/diagnose_sparse_paired_actor_critic.py", line 59, in main
+    assert len(h1)==len(h2)
+           ^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_cached_pair_replay_20261011T0723Z_contract",
+  "contracts": [
+    {
+      "depth": 2,
+      "worlds": 1,
+      "lr": 0.0,
+      "score_error": 4.440892098500626e-16,
+      "weight_error": 0.0,
+      "gradient_error": 1.6653345369377348e-16,
+      "adam_state_error": 1.3877787807814457e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 400
+    },
+    {
+      "depth": 2,
+      "worlds": 2,
+      "lr": 0.05,
+      "score_error": 0.0,
+      "weight_error": 1.1102230246251565e-16,
+      "gradient_error": 4.440892098500626e-16,
+      "adam_state_error": 4.163336342344337e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 800
+    },
+    {
+      "depth": 4,
+      "worlds": 1,
+      "lr": 0.0,
+      "score_error": 0.0,
+      "weight_error": 0.0,
+      "gradient_error": 4.440892098500626e-16,
+      "adam_state_error": 4.163336342344337e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 400
+    },
+    {
+      "depth": 4,
+      "worlds": 2,
+      "lr": 0.05,
+      "score_error": 8.881784197001252e-16,
+      "weight_error": 2.6367796834847468e-15,
+      "gradient_error": 8.881784197001252e-16,
+      "adam_state_error": 8.326672684688674e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 800
+    },
+    {
+      "depth": 8,
+      "worlds": 1,
+      "lr": 0.0,
+      "score_error": 2.220446049250313e-16,
+      "weight_error": 0.0,
+      "gradient_error": 2.7755575615628914e-16,
+      "adam_state_error": 1.3877787807814457e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 400
+    },
+    {
+      "depth": 8,
+      "worlds": 2,
+      "lr": 0.05,
+      "score_error": 2.220446049250313e-16,
+      "weight_error": 1.3877787807814457e-16,
+      "gradient_error": 2.7755575615628914e-16,
+      "adam_state_error": 2.7755575615628914e-17,
+      "future_suffix_first_score_error": 0.0,
+      "retained_carrier_values": 800
+    }
+  ],
+  "timing": [
+    {
+      "arm": "original",
+      "iterations": 5,
+      "worlds_per_iteration": 2,
+      "forecasts_per_world": 4,
+      "median_wall_s": 0.2655636859999504,
+      "supported_flops_per_iteration": 264192,
+      "all_wall_s": [
+        0.2655636859999504,
+        0.2702542299957713,
+        0.26231482200091705,
+        0.26370489900000393,
+        0.2763641430065036
+      ]
+    },
+    {
+      "arm": "cached",
+      "iterations": 5,
+      "worlds_per_iteration": 2,
+      "forecasts_per_world": 4,
+      "median_wall_s": 0.07952694900450297,
+      "supported_flops_per_iteration": 81024,
+      "all_wall_s": [
+        0.07695057601085864,
+        0.08133636799175292,
+        0.07952694900450297,
+        0.07651632600754965,
+        0.1802870280080242
+      ]
+    }
+  ],
+  "median_speedup": 3.339291766177446,
+  "arithmetic_ratio": 0.3066860465116279,
+  "kernel_admission": true,
+  "whole_wall_s": 3.0984706320014084,
+  "peak_rss_kb": 320328,
+  "source_sha256": {
+    "experiments/credit/check_cached_paired_native_replay.py": "230ba2f44d5b03c89c7c6f6b896013bc6fc01c7c75f68a56ddc17ed8cc3e014e",
+    "experiments/credit/cached_paired_native_replay.py": "19808ca86d30b2216e2ce91f948434c943fc37c88b58e6600f9c129eba4a7b8d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Exact fixed-carrier branch replay at depths2/4/8; independent causal readout Adam, all forecast/gradient/moment/weight checks. Depth4 uses saved trained carrier. Both timing rows are whole two-world/four-forecast replay with setup/copy/readout updates and FlopCounter; unsupported arithmetic omitted from FLOPs, included in wall. Future carrier features computed in one offline causal pass; suffix contract checks first forecast. This is kernel work, not full fit, learned-credit utility, changing-carrier or clockless hardware efficiency."
+}

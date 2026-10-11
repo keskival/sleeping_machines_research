@@ -14,13 +14,14 @@ from sparse_paired_actor_critic import ROOT, TAG, initial, unpack, contrasts
 
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--tag',required=True); a=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('--tag',required=True)
+    ap.add_argument('--reuse-result',default=f'experiments/results/credit/{TAG}_reuse.json'); a=ap.parse_args()
     torch.set_num_threads(1); torch.set_default_dtype(torch.float64)
     out=ROOT/f'experiments/results/credit/{a.tag}.json'; assert not out.exists()
     start=time.monotonic(); _,baseline,_,_,_=initial(); stages=[]; sources={}
     with torch.no_grad(), FlopCounterMode(display=False) as counter:
         for stage in ['acquire','reuse']:
-            path=ROOT/f'experiments/results/credit/{TAG}_{stage}.json'
+            path=ROOT/a.reuse_result if stage=='reuse' else ROOT/f'experiments/results/credit/{TAG}_{stage}.json'
             d=json.loads(path.read_text()); assert d['status']=='completed'
             for name,digest in d['source_sha256'].items():
                 assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
@@ -29,6 +30,7 @@ def main():
             rows=[]; histories={}
             for name,packed in payload['states'].items():
                 state=unpack(packed,baseline); history=state['history']; histories[name]=history
+                assert len(history)==state['cursor'],f'{name}: aliased history or cursor mismatch'
                 blocks=[]
                 for first in range(0,state['cursor'],128):
                     h=history[first:first+128]; paid=[v for v in h if v['extra_world']]

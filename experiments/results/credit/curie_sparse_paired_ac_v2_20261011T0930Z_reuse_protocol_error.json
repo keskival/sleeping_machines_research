@@ -1,0 +1,16 @@
+{
+  "status": "protocol_error",
+  "battle": "B1/R1",
+  "source_result": "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_reuse.json",
+  "source_result_sha256": "1920888d3c3cb309a669f96052b645ec0a30a2b9ff192102d62c770f89c4a27a",
+  "reason": "unpack assigns history/buffer lists and optimizer tensors without independent cloning; learned/reset/reuse share history identity and optimizer exp_avg storage",
+  "observed_history_lengths": {
+    "full_fixed": 512,
+    "sparse_fixed": 512,
+    "sparse_learned": 1280,
+    "sparse_reset": 1280,
+    "sparse_reuse": 1280
+  },
+  "cursor": 512,
+  "scope": "Acquisition128 valid and unchanged. Controlled frozen-versus-reset reuse interpretation invalid; full512 publication withheld pending independent-state rerun. Original completed files/checkpoints/logs preserved as protocol-error evidence, not treated as a research loss or win."
+}

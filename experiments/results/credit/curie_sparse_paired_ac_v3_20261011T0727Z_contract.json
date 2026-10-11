@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_sparse_paired_ac_v3_20261011T0727Z_contract",
+  "mode": "contract",
+  "metrics": {
+    "optimizer_storage_checks": 30,
+    "history_buffer_independent": true,
+    "original_acquisition_unchanged": true,
+    "acquired_cursor": 128,
+    "source_checkpoint_sha256": "e2866e72f8f58369aabf7ca6d7685b6518fd81ad6bac4c60a6977d3b9d191a89"
+  },
+  "whole_wall_s": 0.9323495330027072,
+  "peak_rss_kb": 311560,
+  "source_sha256": {
+    "experiments/credit/independent_sparse_paired_actor_critic.py": "e837c1c4c31892877616e9385b2f96de335ce0c44c482657b7c36825d688f0b4",
+    "experiments/credit/cached_paired_native_replay.py": "19808ca86d30b2216e2ce91f948434c943fc37c88b58e6600f9c129eba4a7b8d",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "acquisition_source": "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_acquire.json",
+  "reuse_protocol_repair": "Independent deep copies of every acquired payload, including history/buffer/optimizer tensors; source128 acquisition preserved. Cached replay passes scores/gradients/Adam/weights and suffix contracts at depths2/4/8.",
+  "scope": "One-seed synthetic connected route-learning development. Fixed native temporal/keyed depth4 carrier, optional hard writes, factual feedback/four causal branch-local readout Adam updates per episode. Same controller/critic initialization/data/update recipe as v2;512 controls now independently cloned. Acquisition full-prefix replay cost plus continuation cached replay cost charged in each cumulative fit. Whole wall includes unsupported/scalar/optimizer work; supported FLOPs alone are not complete arithmetic. Shared DEV verification and original source pretraining additional. No TEST/all-carrier/depth-scaling claim."
+}

@@ -151,6 +151,13 @@ def connected_paired_pages():
     for stage in ['acquire','reuse']:
         path=folder/f'{prefix}_{stage}.json'
         analysis=folder/f'{prefix}_analyze_{stage}.json'
+        if stage=='reuse':
+            repaired=folder/'curie_sparse_paired_ac_v3_20261011T0727Z_reuse.json'
+            repaired_analysis=folder/'curie_sparse_paired_ac_v3_20261011T0727Z_analysis.json'
+            if repaired.exists() and repaired_analysis.exists():
+                path,analysis=repaired,repaired_analysis
+            elif (folder/f'{prefix}_reuse_protocol_error.json').exists():
+                continue
         if path.exists() and analysis.exists():
             d=json.loads(path.read_text()); a=json.loads(analysis.read_text())
             assert d['status']==a['status']=='completed'
@@ -175,7 +182,7 @@ def connected_paired_pages():
         ('small',f"Latest completed stage: {stage}; one seed,32 common DEV prefixes/eight paired futures, including receivers6/7 never TRAIN-labelled. Gains compare with the saved baseline route; arithmetic and wall use the same whole-fit boundary in every row, per-target work divides by unique factual targets. Fitting includes acquisition for frozen-reuse/reset clones. Supported FLOPs omit unsupported pointwise/scalar/special and optimizer arithmetic; full wall includes those operations. Inherited source-model pretraining remains additional."),
         ('table',(['Episodes','Learned over fixed gain','Pair MSE learned / fixed','Learned / full fit work'],curve,[25,47,47,48])),
         ('table',(['Paired utility comparison','Gain / target','Prefix bootstrap95'],comparisons,[65,35,67])),
-        ('p','The experience ladder admits further acquisition after finite/resource checks, rather than requiring an immediate small-scale utility advantage. At128 episodes learned credit has5.10x the frozen critic’s held-out contrast error and2.95x full-audit supported fitting work. The512-episode stage separates ongoing learning from acquired-frozen/reset credit at identical acquired controller initialization. Only completed rows appear here; these comparisons diagnose the variant and its paid investment.'),
+        ('p','The experience ladder admits further acquisition after finite/resource checks, rather than requiring an immediate small-scale utility advantage. At128 episodes learned credit has5.10x the frozen critic’s held-out contrast error and2.95x full-audit supported fitting work. Original512 clones shared optimizer/history storage: its reuse comparison is invalid and excluded. The repaired512 stage uses independent clones of the intact128 checkpoint and validated cached replay. Only completed valid rows appear here; these comparisons diagnose the variant and its paid investment.'),
         ('small',f"Completed phases{phase:.2f}s; shared DEV verification{teacher:.3f}supportedGFLOPs is additional, with all requested action/probe worlds counted. Peak RSS{max(data['peak_rss_kb'] for _,data,_ in stages)/1024:.1f}MiB. Per-arm factual target/policy/critic/readout-update and extra-world counts are retained in source JSON/PT. Carrier is fixed; readouts reset per episode. This is synthetic route-learning development, not all-carrier, real-market, matched-quality or depth-scaling evidence."),
         ('p','The next economy test follows sensitivity-weighted gradient residuals and actual audit cost. A predictable positive audit propensity can preserve the raw mean while allocating work; critic training must amortize its own query, storage and update cost. Gradient clipping and Adam do not preserve raw-gradient unbiasedness as a parameter-update identity.')]]
 

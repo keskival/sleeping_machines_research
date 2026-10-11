@@ -1,0 +1,113 @@
+{
+  "status": "completed",
+  "tag": "curie_sparse_paired_ac_v2_20261011T0930Z_analyze_reuse",
+  "battle": "B1/R1",
+  "stage": "reuse",
+  "rows": [
+    {
+      "arm": "full_fixed",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 0,
+      "extra_worlds": 364,
+      "whole_fit_gflops": 0.40893952,
+      "fit_mflops_per_target": 0.1996775,
+      "whole_fit_s": 194.81811583899253,
+      "work_ratio_vs_full": 1.0,
+      "gain_vs_baseline": -0.0025745417293998596,
+      "heldout_pair_error_over_zero": 0.24426854982168983
+    },
+    {
+      "arm": "sparse_fixed",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 0,
+      "extra_worlds": 79,
+      "whole_fit_gflops": 0.37129216,
+      "fit_mflops_per_target": 0.181295,
+      "whole_fit_s": 193.67264401199645,
+      "work_ratio_vs_full": 0.9079390517209,
+      "gain_vs_baseline": -0.001758355683826457,
+      "heldout_pair_error_over_zero": 0.24426854982168983
+    },
+    {
+      "arm": "sparse_learned",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 332,
+      "extra_worlds": 83,
+      "whole_fit_gflops": 1.19924256,
+      "fit_mflops_per_target": 0.58556765625,
+      "whole_fit_s": 204.35581570699287,
+      "work_ratio_vs_full": 2.932567045611048,
+      "gain_vs_baseline": -0.006175890994507813,
+      "heldout_pair_error_over_zero": 1.1289826582533313
+    },
+    {
+      "arm": "sparse_reset",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 108,
+      "extra_worlds": 77,
+      "whole_fit_gflops": 0.584732992,
+      "fit_mflops_per_target": 0.28551415625,
+      "whole_fit_s": 197.12358527099423,
+      "work_ratio_vs_full": 1.4298764570369722,
+      "gain_vs_baseline": -0.001818258267595907,
+      "heldout_pair_error_over_zero": 0.24426854982168983
+    },
+    {
+      "arm": "sparse_reuse",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 108,
+      "extra_worlds": 78,
+      "whole_fit_gflops": 0.584865088,
+      "fit_mflops_per_target": 0.28557865625,
+      "whole_fit_s": 197.27206870599184,
+      "work_ratio_vs_full": 1.4301994779081268,
+      "gain_vs_baseline": -0.0036146128893126683,
+      "heldout_pair_error_over_zero": 1.246265065101864
+    }
+  ],
+  "comparisons": {
+    "sparse_learned_over_sparse_fixed": {
+      "gain": -0.004417535310681356,
+      "bootstrap95": [
+        -0.006999472307301842,
+        -0.0019144384169302434
+      ]
+    },
+    "sparse_learned_over_full_fixed": {
+      "gain": -0.003601349265107953,
+      "bootstrap95": [
+        -0.006916222807617216,
+        -0.0003387027444455052
+      ]
+    },
+    "sparse_reuse_over_sparse_reset": {
+      "gain": -0.0017963546217167614,
+      "bootstrap95": [
+        -0.004658450587863195,
+        0.0008883973096609284
+      ]
+    },
+    "sparse_learned_over_sparse_reuse": {
+      "gain": -0.0025612781051951444,
+      "bootstrap95": [
+        -0.005669502492147164,
+        0.0003787776430513633
+      ]
+    }
+  },
+  "continue_registered_ladder": false,
+  "resource_finite_gate": true,
+  "learned_probe_error_ratio_vs_fixed": 4.62189118933838,
+  "source_result": "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_reuse.json",
+  "source_result_sha256": "1920888d3c3cb309a669f96052b645ec0a30a2b9ff192102d62c770f89c4a27a",
+  "source_checkpoint_sha256": "1a8052830e2a1b33dd455e19fbcd9a8a367bc6f70a6060219cbf0bb37b205bc5",
+  "source_sha256": {
+    "experiments/credit/analyze_sparse_paired_actor_critic.py": "f04f321067f861d15ffed7e0e6339e7c2c66cf7336f8ae230f4097db29c0afeb"
+  },
+  "scope": "Completed one-seed synthetic connected route-learning development stage. Raw carrier fixed; readout adapts within each episode; controller and critic weights persist across episodes. Reuse admission follows registered finite/resource gate, not immediate utility. Cumulative work includes128-step acquisition for continuation and reset/reuse clones; inherited model pretraining and shared DEV diagnostics remain additional. No benchmark, matched-quality/depth or independent-confirmation claim."
+}
