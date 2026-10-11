@@ -4641,6 +4641,7 @@ The future-input recurrent critic fails its generalization gate: per-future DEV 
 | Learning-side predictor | Contrast MSE | Logit residual moment |
 | --- | --- | --- |
 | prefix prior | 0.000385219 | 3.052250 |
+| revealed | 0.001109808 | 3.122940 |
 | forward static | 0.000005317 | 0.017387 |
 | reference learner | 0.000000252 | 0.001404 |
 
