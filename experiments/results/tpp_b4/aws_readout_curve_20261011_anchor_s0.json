@@ -1,0 +1,397 @@
+{
+  "status": "completed",
+  "tag": "aws_readout_curve_20261011_anchor_s0",
+  "battle": "B4 development",
+  "seed": 0,
+  "stage": "registered_readout_learning_curve",
+  "observed_train_weight": 0.1,
+  "learning_curve": [
+    {
+      "passes": 0,
+      "optimizer_updates": 0,
+      "unique_train_targets": 13307,
+      "target_presentations": 0,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.82268826552854,
+        "total": -115.55851144200446,
+        "wall_s": 0.19128648203331977,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 1.1652555980253965,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 3.6386235509999096,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": false
+    },
+    {
+      "passes": 5,
+      "optimizer_updates": 130,
+      "unique_train_targets": 13307,
+      "target_presentations": 66535,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.78902970543086,
+        "total": -115.59217000210214,
+        "wall_s": 0.19551764207426459,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 1.310784848057665,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 3.784152801032178,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": false
+    },
+    {
+      "passes": 10,
+      "optimizer_updates": 260,
+      "unique_train_targets": 13307,
+      "target_presentations": 133070,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.77499022557079,
+        "total": -115.60620948196221,
+        "wall_s": 0.19315868301782757,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 1.4601583591429517,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 3.933526312117465,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": false
+    },
+    {
+      "passes": 20,
+      "optimizer_updates": 520,
+      "unique_train_targets": 13307,
+      "target_presentations": 266140,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.50322698352929,
+        "total": -115.87797272400371,
+        "wall_s": 0.1934465520316735,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 1.7474591959035024,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 4.220827148878016,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": false
+    },
+    {
+      "passes": 35,
+      "optimizer_updates": 910,
+      "unique_train_targets": 13307,
+      "target_presentations": 465745,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.47029838672209,
+        "total": -115.91090132081091,
+        "wall_s": 0.19415919505991042,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 2.177752044633962,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 4.651119997608475,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": true
+    },
+    {
+      "passes": 50,
+      "optimizer_updates": 1300,
+      "unique_train_targets": 13307,
+      "target_presentations": 665350,
+      "dev": {
+        "L_T": -181.381199707533,
+        "L_M": 65.39330992743173,
+        "total": -115.98788978010127,
+        "wall_s": 0.19115141406655312,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "readout_fitting_s": 2.6087935006944463,
+      "teacher_preparation_s": 2.473367952974513,
+      "cumulative_work_wall_s": 5.082161453668959,
+      "prerequisite_fitting_s": 7040.783048818354,
+      "reached": true
+    }
+  ],
+  "curve_evaluation_s": 1.158719968283549,
+  "registered_target_mark_loss": 65.5018295065737,
+  "nonlinear_fit_s": 1.4435379026690498,
+  "training_history": [
+    {
+      "epoch": 0,
+      "teacher_crossentropy": 1.1156551878583878
+    },
+    {
+      "epoch": 1,
+      "teacher_crossentropy": 1.1155870490018878
+    },
+    {
+      "epoch": 2,
+      "teacher_crossentropy": 1.115531961870502
+    },
+    {
+      "epoch": 3,
+      "teacher_crossentropy": 1.1154718598478608
+    },
+    {
+      "epoch": 4,
+      "teacher_crossentropy": 1.1153520707070608
+    },
+    {
+      "epoch": 5,
+      "teacher_crossentropy": 1.1152363784436148
+    },
+    {
+      "epoch": 6,
+      "teacher_crossentropy": 1.1151097308583988
+    },
+    {
+      "epoch": 7,
+      "teacher_crossentropy": 1.1149307800049308
+    },
+    {
+      "epoch": 8,
+      "teacher_crossentropy": 1.1148427525588762
+    },
+    {
+      "epoch": 9,
+      "teacher_crossentropy": 1.1146470378616609
+    },
+    {
+      "epoch": 10,
+      "teacher_crossentropy": 1.1144406555831547
+    },
+    {
+      "epoch": 11,
+      "teacher_crossentropy": 1.1142894128493996
+    },
+    {
+      "epoch": 12,
+      "teacher_crossentropy": 1.114091796784677
+    },
+    {
+      "epoch": 13,
+      "teacher_crossentropy": 1.1138913893074944
+    },
+    {
+      "epoch": 14,
+      "teacher_crossentropy": 1.1137491802115522
+    },
+    {
+      "epoch": 15,
+      "teacher_crossentropy": 1.1136838154519526
+    },
+    {
+      "epoch": 16,
+      "teacher_crossentropy": 1.113457730595135
+    },
+    {
+      "epoch": 17,
+      "teacher_crossentropy": 1.1133821089957094
+    },
+    {
+      "epoch": 18,
+      "teacher_crossentropy": 1.1132539984168492
+    },
+    {
+      "epoch": 19,
+      "teacher_crossentropy": 1.1130036379197696
+    },
+    {
+      "epoch": 20,
+      "teacher_crossentropy": 1.1129004431402016
+    },
+    {
+      "epoch": 21,
+      "teacher_crossentropy": 1.1128068815478482
+    },
+    {
+      "epoch": 22,
+      "teacher_crossentropy": 1.112724013465471
+    },
+    {
+      "epoch": 23,
+      "teacher_crossentropy": 1.1125824451496393
+    },
+    {
+      "epoch": 24,
+      "teacher_crossentropy": 1.112571053342067
+    },
+    {
+      "epoch": 25,
+      "teacher_crossentropy": 1.1125062808778992
+    },
+    {
+      "epoch": 26,
+      "teacher_crossentropy": 1.1124576173649463
+    },
+    {
+      "epoch": 27,
+      "teacher_crossentropy": 1.1123389905826733
+    },
+    {
+      "epoch": 28,
+      "teacher_crossentropy": 1.1122043470818583
+    },
+    {
+      "epoch": 29,
+      "teacher_crossentropy": 1.1120114198076636
+    },
+    {
+      "epoch": 30,
+      "teacher_crossentropy": 1.1119160143561557
+    },
+    {
+      "epoch": 31,
+      "teacher_crossentropy": 1.1118065637820456
+    },
+    {
+      "epoch": 32,
+      "teacher_crossentropy": 1.1118391964729755
+    },
+    {
+      "epoch": 33,
+      "teacher_crossentropy": 1.1118879237038648
+    },
+    {
+      "epoch": 34,
+      "teacher_crossentropy": 1.111728372144513
+    },
+    {
+      "epoch": 35,
+      "teacher_crossentropy": 1.1116154582685276
+    },
+    {
+      "epoch": 36,
+      "teacher_crossentropy": 1.1115640637933126
+    },
+    {
+      "epoch": 37,
+      "teacher_crossentropy": 1.1116418929409242
+    },
+    {
+      "epoch": 38,
+      "teacher_crossentropy": 1.1114517851588133
+    },
+    {
+      "epoch": 39,
+      "teacher_crossentropy": 1.1113719416608248
+    },
+    {
+      "epoch": 40,
+      "teacher_crossentropy": 1.1113131201560829
+    },
+    {
+      "epoch": 41,
+      "teacher_crossentropy": 1.1113143829194467
+    },
+    {
+      "epoch": 42,
+      "teacher_crossentropy": 1.1111640681710817
+    },
+    {
+      "epoch": 43,
+      "teacher_crossentropy": 1.1112187170403451
+    },
+    {
+      "epoch": 44,
+      "teacher_crossentropy": 1.111251263662863
+    },
+    {
+      "epoch": 45,
+      "teacher_crossentropy": 1.1111373754697988
+    },
+    {
+      "epoch": 46,
+      "teacher_crossentropy": 1.1110984351535098
+    },
+    {
+      "epoch": 47,
+      "teacher_crossentropy": 1.1110392345372988
+    },
+    {
+      "epoch": 48,
+      "teacher_crossentropy": 1.110928547213857
+    },
+    {
+      "epoch": 49,
+      "teacher_crossentropy": 1.1109542971695763
+    }
+  ],
+  "optimizer_updates": 1300,
+  "nonlinear_target_presentations": 665350,
+  "closure_calls": 107,
+  "initial_objective": 1.1172092041122592,
+  "final_objective": 1.1155964324510173,
+  "maximum_objective_gradient": 0.00010631704055947365,
+  "baseline_dev": {
+    "L_T": -181.381199707533,
+    "L_M": 67.23675775817573,
+    "total": -114.14444194935727,
+    "wall_s": 0.18839224509429187,
+    "targets": 2094,
+    "sequences": 34
+  },
+  "student_dev": {
+    "L_T": -181.381199707533,
+    "L_M": 65.39330992743173,
+    "total": -115.98788978010127,
+    "wall_s": 0.19154472707305104,
+    "targets": 2094,
+    "sequences": 34
+  },
+  "teacher_dev": {
+    "L_T": -181.38119970753303,
+    "L_M": 65.20276617681046,
+    "total": -116.17843353072257,
+    "sequences": 34
+  },
+  "mark_gain": 1.8434478307439974,
+  "teacher_gain": 2.033991581365271,
+  "retained_teacher_gain": 0.9063202855080771,
+  "gate": true,
+  "rule": "Fixed TRAIN90% teacher/10% observed-label probability target, KL linear initialization plus64-wide Tanh residual, AdamW0.003/weight_decay1e-4,50 passes/batch512; no DEV selection; gate DEV mark gain>=1 and >=80% of confirmed teacher gain; timing/core exactly fixed, no DEV tuning.",
+  "feature_dimension": 144,
+  "training_targets": 13307,
+  "teacher_preparation_s": 2.473367952974513,
+  "readout_fit_s": 1.1652555980253965,
+  "prerequisite_fitting_s": 7040.783048818354,
+  "parameters": 32938,
+  "teacher_parameters": 50826,
+  "warm_single_dev_s": 0.1901416820473969,
+  "warm_pair_dev_s": 0.41681174701079726,
+  "first_target_suffix_mark_error": 0.0,
+  "source_sha256": {
+    "experiments/tpp/nonlinear_single_mark_readout.py": "b9c44d710962fe998ac01f9d088d3be20409b91b642c5911b0010c6278decd1f",
+    "experiments/tpp/measure_observation_readout_learning_curve.py": "cf375410f945cebe210643bd9128f31210e32bc5876ddfb5e19244bcdd592f75",
+    "experiments/tpp/single_mark_readout.py": "4066957c61cd4281909c78d4c263ae0e5b3a88e19d690a2844551d34cede614f",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+  },
+  "checkpoint": "experiments/results/tpp_b4/aws_readout_curve_20261011_anchor_s0.pt",
+  "checkpoint_sha256": "1b665d95b6891754126e196a9d30cfdf81bd762ecdf48d4c82e09a326e4061e6",
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_single_readout_decision_20261011.json": "d3c16bbfa5c136c687f7f4e261b95d62076882967763c1ea7aa3351d08b15a3a",
+    "experiments/results/tpp_b4/aws_b4_calibration_confirmation_20261011_decision.json": "e15af3c750fcf1059073d38f70f7931a872502637cb83521f96270ecf55e7412",
+    "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.pt": "0bc4370e313d3a86bc4bce7ffd8a4005a3e2020e291e578312983b65cb52f7bc",
+    "experiments/results/tpp_b4/aws_b4_marks_develop_20261010T2300Z.pt": "343794cf8902970bf32268341f7123d3c298af0f5f1e42086edb9c2d51124622"
+  },
+  "data_sha256": {
+    "train": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f",
+    "val": "95efbde7d7c0252c5d6f93ddb3efcd8bf89b3fe142147e95dc2d8b8b309665ef"
+  },
+  "wall_s": 8.520578674972057,
+  "max_rss_kb": 527544,
+  "scope": "One fixed Github split/seed distillation diagnostic. Student uses baseline causal history representations and candidate elapsed time; no target-mark feature or teacher at serving. Both teacher fits/full mark distributions/preparation charged. No TEST, sparse-route or matched-quality efficiency win unless gate plus work protocol demonstrated."
+}
