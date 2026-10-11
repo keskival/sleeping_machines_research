@@ -21,7 +21,13 @@ Proof: g_h is deterministic conditional on H, and the corrected random term has 
 
 credit should resolve errors where the current policy has large score sensitivity. Uniform prediction error treats cheap/insensitive and expensive/sensitive routes equally. The conditional future noise term survives a perfect conditional-mean critic. Paired outcomes remove shared nuisance fluctuations but do not remove unpredictable futures.
 
-For uniform p, perfect h=q attains V=sum pi ||s||^2 Var(D|H,a)/p. For general h, optimizing prediction MSE is sufficient to reduce an upper bound on V, not a guarantee of the globally smallest gradient variance. A route-independent shift also changes this variance while leaving g_h unchanged because sum pi s=0. The paired critic anchors h(b)=0; that constraint can preclude the best score-weighted baseline. Account for an additional causal baseline separately if one is implemented.
+Write e(a)=q(a)-h(a). An equivalent nonnegative decomposition is
+
+    V = sum pi ||s||^2 Var(D|H,a)/p(a)
+        + Var_A[e(A)s(A)]
+        + sum pi (1/p(a)-1) e(a)^2 ||s(a)||^2.
+
+Thus perfect h=q attains the irreducible floor for any fixed positive propensity schedule. For a restricted critic class, minimizing unweighted prediction MSE need not minimize the last two terms. A route-independent shift also changes this variance while leaving g_h unchanged because sum pi s=0. The paired critic anchors h(b)=0, which is consistent with the exact contrast target; with imperfect predictions that constraint can preclude the best additional score-weighted baseline. Account for such causal baseline work separately if one is implemented.
 
 ## Predictable audit allocation
 

@@ -407,3 +407,5 @@ Task-valued trust and exact shared-context correction execution: [TASK_VALUED_CR
 Causal audit variance, drifting residual bias and delayed receipts: [CAUSAL_AUDIT_VARIANCE_AND_DRIFT](theory/CAUSAL_AUDIT_VARIANCE_AND_DRIFT.md). Separates route contrasts from economical residual levels, with conditional tracking bound.
 
 Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRED_ACTOR_CRITIC](theory/SPARSE_PAIRED_ACTOR_CRITIC.md). Raw model-plus-supported-residual gradient, equally sized connected networks, factual feedback every episode and completed-cost continuation protocol.
+
+[Credit audit work frontier](theory/CREDIT_AUDIT_WORK_FRONTIER.md): exact conditional policy-gradient covariance, irreducible future-noise floor, predictable action-dependent audit allocation and paid critic investment break-even. Fixed-carrier route-gradient scope; no measured depth-scaling claim.
