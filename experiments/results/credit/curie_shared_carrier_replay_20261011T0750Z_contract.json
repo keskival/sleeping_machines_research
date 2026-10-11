@@ -1,0 +1,208 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_shared_carrier_replay_20261011T0750Z_contract",
+  "contracts": [
+    {
+      "depth": 2,
+      "worlds": 2,
+      "errors": {
+        "scores": 4.440892098500626e-16,
+        "weights": 5.551115123125783e-17,
+        "gradients": 1.3877787807814457e-16,
+        "moments": 1.3877787807814457e-17,
+        "frozen_scores": 4.440892098500626e-16,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 560
+    },
+    {
+      "depth": 2,
+      "worlds": 18,
+      "errors": {
+        "scores": 4.440892098500626e-16,
+        "weights": 1.1102230246251565e-16,
+        "gradients": 4.440892098500626e-16,
+        "moments": 5.551115123125783e-17,
+        "frozen_scores": 4.440892098500626e-16,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 5040
+    },
+    {
+      "depth": 4,
+      "worlds": 2,
+      "errors": {
+        "scores": 2.220446049250313e-16,
+        "weights": 5.551115123125783e-17,
+        "gradients": 2.220446049250313e-16,
+        "moments": 2.7755575615628914e-17,
+        "frozen_scores": 4.440892098500626e-16,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 560
+    },
+    {
+      "depth": 4,
+      "worlds": 18,
+      "errors": {
+        "scores": 6.661338147750939e-16,
+        "weights": 1.6653345369377348e-16,
+        "gradients": 4.440892098500626e-16,
+        "moments": 5.551115123125783e-17,
+        "frozen_scores": 8.881784197001252e-16,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 5040
+    },
+    {
+      "depth": 4,
+      "worlds": 72,
+      "errors": {
+        "scores": 8.881784197001252e-16,
+        "weights": 1.6653345369377348e-16,
+        "gradients": 6.661338147750939e-16,
+        "moments": 8.326672684688674e-17,
+        "frozen_scores": 8.881784197001252e-16,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 20160
+    },
+    {
+      "depth": 8,
+      "worlds": 2,
+      "errors": {
+        "scores": 2.220446049250313e-16,
+        "weights": 8.326672684688674e-17,
+        "gradients": 3.3306690738754696e-16,
+        "moments": 2.7755575615628914e-17,
+        "frozen_scores": 1.7763568394002505e-15,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 560
+    },
+    {
+      "depth": 8,
+      "worlds": 18,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "weights": 1.1102230246251565e-16,
+        "gradients": 5.551115123125783e-16,
+        "moments": 5.551115123125783e-17,
+        "frozen_scores": 1.7763568394002505e-15,
+        "suffix_first_score": 0.0
+      },
+      "shared_carrier_values": 344,
+      "route_specific_values": 5040
+    }
+  ],
+  "timing": [
+    {
+      "worlds": 2,
+      "arm": "per_world_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.07810506600071676,
+      "supported_flops_per_iteration": 81024,
+      "all_wall_s": [
+        0.07932285100105219,
+        0.07950336899375543,
+        0.07810506600071676,
+        0.07732803699036594,
+        0.0776671380008338
+      ]
+    },
+    {
+      "worlds": 2,
+      "arm": "shared_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.07353757500823122,
+      "supported_flops_per_iteration": 44608,
+      "all_wall_s": [
+        0.07353757500823122,
+        0.07340496699907817,
+        0.0800101680069929,
+        0.07400044800306205,
+        0.07328527100617066
+      ]
+    },
+    {
+      "worlds": 18,
+      "arm": "per_world_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.07809280199580826,
+      "supported_flops_per_iteration": 729216,
+      "all_wall_s": [
+        0.07839346800756175,
+        0.07809280199580826,
+        0.07827565299521666,
+        0.07767568199778907,
+        0.07741884999268223
+      ]
+    },
+    {
+      "worlds": 18,
+      "arm": "shared_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.07367717199667823,
+      "supported_flops_per_iteration": 110144,
+      "all_wall_s": [
+        0.07368301699170843,
+        0.17642482300288975,
+        0.07333223600289784,
+        0.07367717199667823,
+        0.07338247000006959
+      ]
+    },
+    {
+      "worlds": 72,
+      "arm": "per_world_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.08171907399082556,
+      "supported_flops_per_iteration": 2916864,
+      "all_wall_s": [
+        0.08154098599334247,
+        0.08268293300352525,
+        0.08400904599693604,
+        0.08171907399082556,
+        0.08156750700436532
+      ]
+    },
+    {
+      "worlds": 72,
+      "arm": "shared_carrier",
+      "iterations": 5,
+      "median_wall_s": 0.07624217700504232,
+      "supported_flops_per_iteration": 331328,
+      "all_wall_s": [
+        0.07612038400839083,
+        0.07708158099558204,
+        0.07501321600284427,
+        0.07624217700504232,
+        0.0781208309927024
+      ]
+    }
+  ],
+  "mathematical_gate": true,
+  "whole_wall_s": 3.6283178000012413,
+  "peak_rss_kb": 322656,
+  "source_sha256": {
+    "experiments/credit/check_shared_carrier_paired_replay.py": "b54b9ddaf4b904d28a789525bdbf71d1d7a7c4cafba8170496f6a175c94f846e",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/cached_paired_native_replay.py": "19808ca86d30b2216e2ce91f948434c943fc37c88b58e6600f9c129eba4a7b8d",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Fixed native timed/keyed carrier; optional key writes affect keyed output logits only. One causal carrier pass shared across specified counterfactuals; every world retains separate288-parameter readout/Adam coordinates and four supervised forecasts/updates. Scores/gradients/moments/weights/static response/suffix causality contracted at depths2/4/8. Same whole setup/cache/readout-learning boundary and five repetitions within each world-count timing comparison; supported arithmetic omits scalar/special/unsupported optimizer operations, inside wall. Carrier state does not scale with world count; route-specific bonuses/mark probabilities/readout state do. All eight marks are scored. Not changing-carrier, general internal-route, full-fit, learned-credit or clockless hardware evidence."
+}

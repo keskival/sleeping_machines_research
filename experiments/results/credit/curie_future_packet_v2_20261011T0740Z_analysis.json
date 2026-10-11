@@ -1,0 +1,73 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_future_packet_v2_20261011T0740Z_analysis",
+  "information_path_gate": false,
+  "checks": {
+    "finite": true,
+    "revealed_mse_below_zero_future": true,
+    "revealed_mse_below_prefix_prior": false,
+    "positive_paired_prefix_interval": false,
+    "sensitivity_second_moment_below_both": false,
+    "resource": true
+  },
+  "dev_rows": [
+    {
+      "arm": "prefix_prior",
+      "mse": 0.00038521858243021235,
+      "error_over_zero": 0.6084213578192346,
+      "unseen_probe_mse": 0.000521136681519087,
+      "policy_logit_residual_second_moment": 3.052250070927248
+    },
+    {
+      "arm": "revealed",
+      "mse": 0.0011098082110024897,
+      "error_over_zero": 1.7528516262047087,
+      "unseen_probe_mse": 0.0014197283303674184,
+      "policy_logit_residual_second_moment": 3.122939517071526
+    },
+    {
+      "arm": "zero_future",
+      "mse": 0.0011229333538872502,
+      "error_over_zero": 1.7735817197664963,
+      "unseen_probe_mse": 0.001414248928655999,
+      "policy_logit_residual_second_moment": 2.760232177663954
+    }
+  ],
+  "chronological_holdout": [
+    {
+      "arm": "prefix_prior",
+      "train_mse": 0.0004650648355436555,
+      "chronological_holdout_mse": 0.0001802921174214063
+    },
+    {
+      "arm": "revealed",
+      "train_mse": 5.149544951651482e-06,
+      "chronological_holdout_mse": 0.00102561420293852
+    },
+    {
+      "arm": "zero_future",
+      "train_mse": 1.3675751420876683e-05,
+      "chronological_holdout_mse": 0.0010597608478884264
+    }
+  ],
+  "revealed_mse_ratio_vs_zero_future": 0.9883117347620628,
+  "revealed_mse_ratio_vs_prior": 2.880983061619429,
+  "revealed_logit_residual_ratio_vs_prior": 1.0231597819646552,
+  "paired_mse_improvement": 1.3125142884760556e-05,
+  "prefix_bootstrap95": [
+    -0.0001516940929838138,
+    0.0001726256096077562
+  ],
+  "new_fitting_supported_gflops": 1.843970048,
+  "preparation_supported_gflops": 0.003472768,
+  "dev_verification_supported_gflops": 0.11228416,
+  "whole_wall_s": 69.36475120700197,
+  "source_result": "experiments/results/credit/curie_future_packet_v2_20261011T0740Z_measure.json",
+  "source_result_sha256": "69d75b40220ec93f7939fd7e156d0826cbe11ccf99ad350d3bc4a55a1de70a99",
+  "source_checkpoint_sha256": "78c2eb77bbed3a6b34d4a04bfaf0c1d8c357600e9377824b87c0d35e0bd6cf5d",
+  "source_sha256": {
+    "experiments/credit/analyze_revealed_future_credit.py": "f90243dd5f299312c767bd9fa5ec292acb496a7a4c0a6ced8eac2fee9c8dc896"
+  },
+  "scope": "One-seed connected credit information-path development gate registered before full result. Per-future MSE and policy-logit residual second moment, not native-parameter gradient variance, forward utility or matched-quality work. Raw exogenous observations on learning side only; causal actor unchanged. Original512 acquisition, prior-model pretraining and failed-protocol development costs are additional. Gate admits design of coupled causal acquisition, not an automatic larger run."
+}

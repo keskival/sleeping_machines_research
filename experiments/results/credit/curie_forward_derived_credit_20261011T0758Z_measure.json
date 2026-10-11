@@ -1,0 +1,138 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_forward_derived_credit_20261011T0758Z_measure",
+  "contracts": [
+    {
+      "depth": 2,
+      "errors": {
+        "reference_score": 0.0,
+        "reference_weight": 8.326672684688674e-17,
+        "reference_gradient": 2.220446049250313e-16,
+        "reference_adam": 2.7755575615628914e-17,
+        "zero_lr_static": 2.220446049250313e-16,
+        "causal_first_score": 0.0
+      },
+      "alternative_projection_error": 0.005872984617012911
+    },
+    {
+      "depth": 4,
+      "errors": {
+        "reference_score": 0.0,
+        "reference_weight": 1.1102230246251565e-16,
+        "reference_gradient": 1.1102230246251565e-16,
+        "reference_adam": 1.3877787807814457e-17,
+        "zero_lr_static": 8.881784197001252e-16,
+        "causal_first_score": 0.0
+      },
+      "alternative_projection_error": 0.0008443483343918423
+    },
+    {
+      "depth": 8,
+      "errors": {
+        "reference_score": 0.0,
+        "reference_weight": 1.1102230246251565e-16,
+        "reference_gradient": 2.220446049250313e-16,
+        "reference_adam": 2.7755575615628914e-17,
+        "zero_lr_static": 4.440892098500626e-16,
+        "causal_first_score": 0.0
+      },
+      "alternative_projection_error": 0.013376430076889934
+    }
+  ],
+  "rows": [
+    {
+      "arm": "prefix_prior",
+      "mse": 0.00038521858243021235,
+      "error_over_zero": 0.6084213578192346,
+      "unseen_probe_mse": 0.000521136681519087,
+      "policy_logit_residual_second_moment": 3.052250070927248
+    },
+    {
+      "arm": "revealed",
+      "mse": 0.0011098082110024897,
+      "error_over_zero": 1.7528516262047087,
+      "unseen_probe_mse": 0.0014197283303674184,
+      "policy_logit_residual_second_moment": 3.122939517071526
+    },
+    {
+      "arm": "zero_future",
+      "mse": 0.0011229333538872502,
+      "error_over_zero": 1.7735817197664963,
+      "unseen_probe_mse": 0.001414248928655999,
+      "policy_logit_residual_second_moment": 2.760232177663954
+    },
+    {
+      "arm": "forward_static",
+      "mse": 5.3169781341369895e-06,
+      "error_over_zero": 0.008397733659312413,
+      "unseen_probe_mse": 6.08981221181695e-06,
+      "policy_logit_residual_second_moment": 0.01738655216806196
+    },
+    {
+      "arm": "reference_learner",
+      "mse": 2.5204550368846084e-07,
+      "error_over_zero": 0.0003980853327971209,
+      "unseen_probe_mse": 3.6223256017104904e-07,
+      "policy_logit_residual_second_moment": 0.0014044860216723496
+    },
+    {
+      "arm": "shuffled_static",
+      "mse": 0.0006936740444489745,
+      "error_over_zero": 1.0956016227074523,
+      "unseen_probe_mse": 0.0009026927212745668,
+      "policy_logit_residual_second_moment": 6.319615238232899
+    }
+  ],
+  "comparisons": {
+    "forward_static_over_prefix_prior": {
+      "mse_gain": 0.00037990160429607534,
+      "prefix_bootstrap95": [
+        0.0002795713658738694,
+        0.0005172257473269279
+      ]
+    },
+    "reference_learner_over_prefix_prior": {
+      "mse_gain": 0.00038496653692652384,
+      "prefix_bootstrap95": [
+        0.0002838999007864316,
+        0.0005223482831807784
+      ]
+    },
+    "reference_learner_over_forward_static": {
+      "mse_gain": 5.064932630448529e-06,
+      "prefix_bootstrap95": [
+        3.378045352412345e-06,
+        6.881079969237792e-06
+      ]
+    }
+  },
+  "candidate_predictor": "reference_learner",
+  "forward_information_gate": true,
+  "dev_prefixes": 32,
+  "futures_per_prefix": 8,
+  "projections_per_future": 72,
+  "reference_readout_updates": 1024,
+  "new_dev_label_teacher_worlds": 0,
+  "diagnostic_supported_flops": 16040192,
+  "diagnostic_wall_s": 22.499064348012325,
+  "whole_wall_s": 23.503780605999054,
+  "peak_rss_kb": 325928,
+  "source_result": "experiments/results/credit/curie_future_packet_v2_20261011T0740Z_measure.json",
+  "source_result_sha256": "69d75b40220ec93f7939fd7e156d0826cbe11ccf99ad350d3bc4a55a1de70a99",
+  "source_checkpoint_sha256": "78c2eb77bbed3a6b34d4a04bfaf0c1d8c357600e9377824b87c0d35e0bd6cf5d",
+  "source_sha256": {
+    "experiments/credit/check_forward_derived_credit.py": "e4749e8da891cb2dddcb9201a0421a2ec6ca08c6c6d2843098f37139fe53a189",
+    "experiments/credit/reference_learner_route_credit.py": "f95735f8c87b64d7692ba71c5a16ad97f6d10f427157182db425436ac2356f5f",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Fixed native depth4 carrier, one saved actor seed170, same256 fresh per-future learning-aware contrast labels reused from completed future pilot. Learning-side predictors use revealed exogenous observations; actor not fitted and never receives future inputs. Exact frozen response and reference-learning projection, not learned persistent across-episode credit parameters. Shadow reference alone learns288 readout parameters from dense causal feedback; alternatives project its trajectory and need audit repair. All72 projected outputs and1024reference updates charged, inherited512 acquisition/earlier512teacherworlds/pretraining additional. Logit residual second moment is not native-parameter gradient variance or actor quality. Shuffled future response is a correspondence diagnostic. Contracts paid separately inside whole phase; diagnostic arithmetic omits unsupported/scalar/optimizer operations, inside wall. No TEST/general internal-route/depth-scaling or hardware claim."
+}
