@@ -1,0 +1,23 @@
+/workspace/experiments/credit/online_race_v3.py:281: UserWarning: Seems like `optimizer.step()` has been overridden after learning rate scheduler initialization. Please, make sure to call `optimizer.step()` before `lr_scheduler.step()`. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  r = _step(*args, **kw); sched.step(); return r
+{"epoch": 0, "dev_ll": -2.293373764701895, "dev_time_ll": -0.7255494657632897, "dev_mark_ll": -1.567824298938605, "updates": 5638, "epoch_s": 23.095256328582764}
+{"epoch": 1, "dev_ll": -2.3093281955105676, "dev_time_ll": -0.7333670010053525, "dev_mark_ll": -1.5759611945052154, "updates": 11276, "epoch_s": 23.553423166275024}
+{"epoch": 2, "dev_ll": -2.371739650023408, "dev_time_ll": -0.8141382300889127, "dev_mark_ll": -1.5576014199344952, "updates": 16914, "epoch_s": 23.512407064437866}
+{"epoch": 3, "dev_ll": -2.300543189619858, "dev_time_ll": -0.7527522093328765, "dev_mark_ll": -1.5477909802869814, "updates": 22552, "epoch_s": 23.4756920337677}
+{"epoch": 4, "dev_ll": -2.232987182869804, "dev_time_ll": -0.690822425130236, "dev_mark_ll": -1.5421647577395678, "updates": 28190, "epoch_s": 23.57027554512024}
+{"epoch": 5, "dev_ll": -2.241515863599566, "dev_time_ll": -0.7105618891558511, "dev_mark_ll": -1.5309539744437148, "updates": 33828, "epoch_s": 23.51379132270813}
+{"epoch": 6, "dev_ll": -2.1882711039443277, "dev_time_ll": -0.6835051328225171, "dev_mark_ll": -1.5047659711218104, "updates": 39466, "epoch_s": 23.50596809387207}
+{"epoch": 7, "dev_ll": -2.1877685522087336, "dev_time_ll": -0.6820586901450498, "dev_mark_ll": -1.505709862063684, "updates": 45104, "epoch_s": 23.53646183013916}
+{"epoch": 8, "dev_ll": -2.202814322219035, "dev_time_ll": -0.701678977208055, "dev_mark_ll": -1.5011353450109797, "updates": 50742, "epoch_s": 23.5099778175354}
+{"epoch": 9, "dev_ll": -2.2794545771551067, "dev_time_ll": -0.7672974255536429, "dev_mark_ll": -1.512157151601464, "updates": 56380, "epoch_s": 23.53512692451477}
+{"epoch": 10, "dev_ll": -2.1719122831283015, "dev_time_ll": -0.6832833246790452, "dev_mark_ll": -1.4886289584492562, "updates": 62018, "epoch_s": 23.46940779685974}
+{"epoch": 11, "dev_ll": -2.1605932943010075, "dev_time_ll": -0.6761695182813166, "dev_mark_ll": -1.484423776019691, "updates": 67656, "epoch_s": 23.449016094207764}
+{"epoch": 12, "dev_ll": -2.147120571318389, "dev_time_ll": -0.665550519631031, "dev_mark_ll": -1.4815700516873578, "updates": 73294, "epoch_s": 23.482604503631592}
+{"epoch": 13, "dev_ll": -2.185836398664713, "dev_time_ll": -0.6941658889013409, "dev_mark_ll": -1.491670509763372, "updates": 78932, "epoch_s": 23.495363473892212}
+{"epoch": 14, "dev_ll": -2.1434618250647826, "dev_time_ll": -0.6641583400357609, "dev_mark_ll": -1.4793034850290212, "updates": 84570, "epoch_s": 23.440590858459473}
+{"epoch": 15, "dev_ll": -2.1363017693153834, "dev_time_ll": -0.6621015483732429, "dev_mark_ll": -1.4742002209421405, "updates": 90208, "epoch_s": 23.426849842071533}
+{"epoch": 16, "dev_ll": -2.131969893595772, "dev_time_ll": -0.6572733983010031, "dev_mark_ll": -1.4746964952947688, "updates": 95846, "epoch_s": 23.469763040542603}
+{"epoch": 17, "dev_ll": -2.1267141852487166, "dev_time_ll": -0.6544029416062073, "dev_mark_ll": -1.4723112436425092, "updates": 101484, "epoch_s": 23.54665470123291}
+{"epoch": 18, "dev_ll": -2.126251399982436, "dev_time_ll": -0.6568753593878369, "dev_mark_ll": -1.4693760405945993, "updates": 107122, "epoch_s": 23.568100452423096}
+{"epoch": 19, "dev_ll": -2.121550981622755, "dev_time_ll": -0.6530150469292194, "dev_mark_ll": -1.4685359346935356, "updates": 112760, "epoch_s": 23.477612495422363}
+RESULT {"best_dev_ll": -2.121550981622755, "final_dev_ll": -2.121550981622755, "wall_s": 470.259361743927}
