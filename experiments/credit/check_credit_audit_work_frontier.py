@@ -51,10 +51,30 @@ def main():
     variance_budget=pi@(v/allocated);allocated_cost=pi@(cost*allocated)
     feasible=(v/alternatives)@pi<=variance_budget+1e-14
     if feasible.any():assert float((alternatives@ (pi*cost))[feasible].min())>=allocated_cost-1e-14
+    # A low-loss route need not be the low-variance teaching reference.
+    worlds=np.array([[-1.,1.],[2.99,3.01],[4.01,3.99]])
+    mass=np.full(2,.5);levels=worlds@mass;p=np.full(3,.25)
+    residual=worlds-levels[:,None];weights=pi*(score**2).sum(1)/p
+    center=(weights@residual)/weights.sum();constant=(weights[:,None]*(residual-center)**2)@mass
+    references=[];medoid_errors=[];expected=(pi*levels)@score
+    for b in range(3):
+        risk=float(weights@((residual-residual[b])**2@mass))
+        medoid=float(constant.sum()+weights.sum()*((residual[b]-center)**2@mass))
+        mean=np.zeros(3);second=0.
+        for route in range(3):
+            for j in range(2):
+                for audit,coin in [(0,1-p[route]),(1,p[route])]:
+                    grad=expected+audit/p[route]*(residual[route,j]-residual[b,j])*score[route]
+                    prob=pi[route]*mass[j]*coin;mean+=prob*grad;second+=prob*grad@grad
+        error=max(abs(risk-medoid),float(abs(mean-expected).max()),abs(second-mean@mean-risk))
+        assert error<1e-12;medoid_errors.append(error);references.append(risk)
+    assert int(np.argmin(references))!=int(np.argmin(levels))
     metric=dict(enumerated_mean_variance_errors=errors,perfect_critic_future_noise_trace=float(exact_noise),
                 allocated_propensities=allocated.tolist(),allocated_incremental_cost=float(allocated_cost),
                 second_moment_budget=float(variance_budget),lagrange_gap_to_random_candidates=float(other.min()-optimum),
-                feasible_random_candidates=int(feasible.sum()),positive_support_floor=pmin)
+                feasible_random_candidates=int(feasible.sum()),positive_support_floor=pmin,
+                reference_geometry_errors=medoid_errors,reference_gradient_variances=references,
+                lowest_mean_loss_route=int(np.argmin(levels)),lowest_variance_reference=int(np.argmin(references)))
     result=dict(status='completed',battle='B1/R1',tag=a.tag,metrics=metric,wall_s=time.monotonic()-start,
                 peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                 source_sha256={str(Path(__file__).relative_to(ROOT)):hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},

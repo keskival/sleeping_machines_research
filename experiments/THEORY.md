@@ -409,3 +409,5 @@ Causal audit variance, drifting residual bias and delayed receipts: [CAUSAL_AUDI
 Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRED_ACTOR_CRITIC](theory/SPARSE_PAIRED_ACTOR_CRITIC.md). Raw model-plus-supported-residual gradient, equally sized connected networks, factual feedback every episode and completed-cost continuation protocol.
 
 [Credit audit work frontier](theory/CREDIT_AUDIT_WORK_FRONTIER.md): exact conditional policy-gradient covariance, irreducible future-noise floor, predictable action-dependent audit allocation and paid critic investment break-even. Fixed-carrier route-gradient scope; no measured depth-scaling claim.
+
+[Counterfactual reference geometry](theory/COUNTERFACTUAL_REFERENCE_GEOMETRY.md): forward futures can teach covariance between route residuals; economical teaching-reference selection is a sensitivity-weighted L2 medoid, distinct from choosing the lowest task loss. Positive-support issued reference and real discovery/replay cost remain explicit.
