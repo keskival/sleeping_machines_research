@@ -1,0 +1,402 @@
+{
+  "status": "completed",
+  "tag": "aws_native_future_update_reuse_20261011_s0",
+  "battle": "B1 whole-native future-taught learning",
+  "stage": "fit",
+  "rows": [
+    {
+      "depth": 2,
+      "arm": "fixed_adam",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.3245241573215515,
+          "time_nll": -0.6889007449626535,
+          "mark_nll": 0.3643765876411021,
+          "targets": 3968.0,
+          "fit_wall_s": 13.228173134848475,
+          "supported_fit_flops": 1524499200,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.45342758891282864,
+          "time_nll": -0.7180971317198127,
+          "mark_nll": 0.2646695428069841,
+          "targets": 3968.0,
+          "fit_wall_s": 26.399185102898628,
+          "supported_fit_flops": 3048998400,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4831250178693069,
+          "time_nll": -0.725159023091072,
+          "mark_nll": 0.24203400522176516,
+          "targets": 3968.0,
+          "fit_wall_s": 39.58146964479238,
+          "supported_fit_flops": 4573497600,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "fit_wall_s": 39.58146964479238,
+      "evaluation_wall_s": 0.13348875800147653,
+      "supported_fit_flops": 4573497600,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 0,
+      "controller_updates": 0,
+      "actor_parameters": 6144,
+      "controller_parameters": 180
+    },
+    {
+      "depth": 2,
+      "arm": "future_taught",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.3570306458288001,
+          "time_nll": -0.6963649933020153,
+          "mark_nll": 0.33933434747321517,
+          "targets": 3968.0,
+          "fit_wall_s": 14.47987563489005,
+          "supported_fit_flops": 1524633152,
+          "factors": [
+            1.1603477457993947,
+            1.190229446171271,
+            1.2381089950657544,
+            1.3182111655303022
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.4667096975283748,
+          "time_nll": -0.7206250806386737,
+          "mark_nll": 0.25391538311029893,
+          "targets": 3968.0,
+          "fit_wall_s": 28.88996286992915,
+          "supported_fit_flops": 3049266304,
+          "factors": [
+            1.0445129657965073,
+            1.1680002585057352,
+            1.2089154730163976,
+            1.3361771621202991
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4890962742809833,
+          "time_nll": -0.7263240565759154,
+          "mark_nll": 0.23722778229493208,
+          "targets": 3968.0,
+          "fit_wall_s": 43.54950251383707,
+          "supported_fit_flops": 4573899456,
+          "factors": [
+            1.0000764279877528,
+            1.1136160781729196,
+            1.135708219908337,
+            1.2614478015221289
+          ]
+        }
+      ],
+      "fit_wall_s": 43.54950251383707,
+      "evaluation_wall_s": 0.13690989091992378,
+      "supported_fit_flops": 4573899456,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 129456,
+      "controller_updates": 522,
+      "actor_parameters": 6144,
+      "controller_parameters": 180
+    },
+    {
+      "depth": 4,
+      "arm": "fixed_adam",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.3653200372810684,
+          "time_nll": -0.6948673002271528,
+          "mark_nll": 0.32954726294608444,
+          "targets": 3968.0,
+          "fit_wall_s": 22.980908883037046,
+          "supported_fit_flops": 2419065600,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.45058581414085835,
+          "time_nll": -0.7120410822404567,
+          "mark_nll": 0.26145526809959835,
+          "targets": 3968.0,
+          "fit_wall_s": 45.673129429109395,
+          "supported_fit_flops": 4838131200,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4767539511241226,
+          "time_nll": -0.7173464340530123,
+          "mark_nll": 0.24059248292888974,
+          "targets": 3968.0,
+          "fit_wall_s": 68.4019806291908,
+          "supported_fit_flops": 7257196800,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "fit_wall_s": 68.4019806291908,
+      "evaluation_wall_s": 0.20887775416485965,
+      "supported_fit_flops": 7257196800,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 0,
+      "controller_updates": 0,
+      "actor_parameters": 9808,
+      "controller_parameters": 180
+    },
+    {
+      "depth": 4,
+      "arm": "future_taught",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.38333502846371675,
+          "time_nll": -0.6980481256455819,
+          "mark_nll": 0.31471309718186524,
+          "targets": 3968.0,
+          "fit_wall_s": 24.64050916186534,
+          "supported_fit_flops": 2419199552,
+          "factors": [
+            1.1023354467664794,
+            1.112216763002444,
+            1.131727331404364,
+            1.229160382085451
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.4572322760441246,
+          "time_nll": -0.7128999128979567,
+          "mark_nll": 0.25566763685383215,
+          "targets": 3968.0,
+          "fit_wall_s": 49.26036210078746,
+          "supported_fit_flops": 4838399104,
+          "factors": [
+            1.0142901611677675,
+            1.0893469530091708,
+            1.103549121087952,
+            1.238560720004954
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4805225313758662,
+          "time_nll": -0.7183216935964817,
+          "mark_nll": 0.23779916222061545,
+          "targets": 3968.0,
+          "fit_wall_s": 73.88585353572853,
+          "supported_fit_flops": 7257598656,
+          "factors": [
+            0.9880839642860282,
+            1.045172217951658,
+            1.0447262072941723,
+            1.185285025162171
+          ]
+        }
+      ],
+      "fit_wall_s": 73.88585353572853,
+      "evaluation_wall_s": 0.21625051298178732,
+      "supported_fit_flops": 7257598656,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 129456,
+      "controller_updates": 522,
+      "actor_parameters": 9808,
+      "controller_parameters": 180
+    },
+    {
+      "depth": 8,
+      "arm": "fixed_adam",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.37767231603470514,
+          "time_nll": -0.6958825515611233,
+          "mark_nll": 0.3182102355264182,
+          "targets": 3968.0,
+          "fit_wall_s": 42.23755350802094,
+          "supported_fit_flops": 4208198400,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.4563951214770054,
+          "time_nll": -0.7139057581045011,
+          "mark_nll": 0.2575106366274956,
+          "targets": 3968.0,
+          "fit_wall_s": 84.33623627899215,
+          "supported_fit_flops": 8416396800,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4840540161354589,
+          "time_nll": -0.7211049501019247,
+          "mark_nll": 0.2370509339664658,
+          "targets": 3968.0,
+          "fit_wall_s": 126.5543968109414,
+          "supported_fit_flops": 12624595200,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "fit_wall_s": 126.5543968109414,
+      "evaluation_wall_s": 0.36567993671633303,
+      "supported_fit_flops": 12624595200,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 0,
+      "controller_updates": 0,
+      "actor_parameters": 17136,
+      "controller_parameters": 180
+    },
+    {
+      "depth": 8,
+      "arm": "future_taught",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": -0.40190112602370004,
+          "time_nll": -0.6978107964715363,
+          "mark_nll": 0.2959096704478363,
+          "targets": 3968.0,
+          "fit_wall_s": 45.32264643115923,
+          "supported_fit_flops": 4208332352,
+          "factors": [
+            1.066302145250065,
+            1.1274347005561889,
+            1.2171137180036746,
+            1.4029622868979865
+          ]
+        },
+        {
+          "epoch": 2,
+          "nll": -0.46525861173084815,
+          "time_nll": -0.7155529982085824,
+          "mark_nll": 0.2502943864777342,
+          "targets": 3968.0,
+          "fit_wall_s": 90.7542354753241,
+          "supported_fit_flops": 8416664704,
+          "factors": [
+            1.011052111805507,
+            1.1075072092055338,
+            1.185368350374873,
+            1.380236526105061
+          ]
+        },
+        {
+          "epoch": 3,
+          "nll": -0.4898950317028195,
+          "time_nll": -0.7222158933765822,
+          "mark_nll": 0.2323208616737627,
+          "targets": 3968.0,
+          "fit_wall_s": 136.16744522424415,
+          "supported_fit_flops": 12624997056,
+          "factors": [
+            0.9951938402685397,
+            1.0643889371101651,
+            1.1167894932867508,
+            1.2763105107630137
+          ]
+        }
+      ],
+      "fit_wall_s": 136.16744522424415,
+      "evaluation_wall_s": 0.37991759018041193,
+      "supported_fit_flops": 12624997056,
+      "updates": 525,
+      "train_target_presentations": 130200,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 129456,
+      "controller_updates": 522,
+      "actor_parameters": 17136,
+      "controller_parameters": 180
+    }
+  ],
+  "args": {
+    "tag": "aws_native_future_update_reuse_20261011_s0",
+    "seed": 0,
+    "gate": "experiments/results/credit/aws_native_future_update_reuse_20261011_smoke.json",
+    "stage": "fit",
+    "epochs": 3
+  },
+  "train_sequences": 1400,
+  "events_per_sequence": 32,
+  "dev_sequences": 128,
+  "final_weights": "experiments/results/credit/aws_native_future_update_reuse_20261011_s0.pt",
+  "checkpoint_sha256": "bec86914c8ab3c8d6f8a0f829ed2c79eae9e30d38a9fbb52ceef9f2600082c48",
+  "source_sha256": {
+    "experiments/credit/train_native_future_update_reuse_full.py": "e044918419c6686998e6ec833d5eb1737039dfd2c116ccb523d907c7fe1c5978",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12",
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "input_sha256": {
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_smoke.json": "fa502426db15467fed4669b4aebaf9f1745ffd9f0a3787d5842724c76186b408"
+  },
+  "data_sha256": {
+    "train": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+    "dev": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf"
+  },
+  "wall_s": 490.3707520600874,
+  "max_rss_kb": 993756,
+  "scope": "Matched native full-parameter learning; depths2/4/8,all1400TRAIN sequences cropped32events,threepasses. Future-taught group scales reuse actual next actor gradient,zero extra forward replay. All controller/optimizer work counted in fit wall and supported FLOPs; unsupported operations are excluded from FLOP count. Dense writes/state reset across sequences; DEV only,one-seed development stage,no hard-route/full-horizon/Transformer or benchmark supremacy claim."
+}
