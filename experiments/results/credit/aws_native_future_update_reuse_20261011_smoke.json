@@ -1,0 +1,97 @@
+{
+  "status": "completed",
+  "tag": "aws_native_future_update_reuse_20261011_smoke",
+  "battle": "B1 native future-taught learning",
+  "stage": "smoke",
+  "rows": [
+    {
+      "depth": 2,
+      "arm": "fixed_adam",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": 2.2842428582369005,
+          "time_nll": 0.002601740010820887,
+          "mark_nll": 2.2816411182260796,
+          "targets": 56.0,
+          "fit_wall_s": 0.08068935293704271,
+          "supported_fit_flops": 4188672,
+          "factors": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "fit_wall_s": 0.08068935293704271,
+      "evaluation_wall_s": 0.0014160568825900555,
+      "supported_fit_flops": 4188672,
+      "updates": 2,
+      "train_target_presentations": 112,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 0,
+      "controller_updates": 0,
+      "actor_parameters": 6144,
+      "controller_parameters": 180,
+      "retained_replay_parameter_parity": 0.0
+    },
+    {
+      "depth": 2,
+      "arm": "future_taught",
+      "history": [
+        {
+          "epoch": 1,
+          "nll": 2.284069962456378,
+          "time_nll": 0.0025526929764516015,
+          "mark_nll": 2.2815172694799264,
+          "targets": 56.0,
+          "fit_wall_s": 0.08364721504040062,
+          "supported_fit_flops": 4189760,
+          "factors": [
+            1.0026624537861637,
+            1.0026625257343307,
+            1.0026625219514749,
+            1.0026625229796746
+          ]
+        }
+      ],
+      "fit_wall_s": 0.08364721504040062,
+      "evaluation_wall_s": 0.0014578239060938358,
+      "supported_fit_flops": 4189760,
+      "updates": 2,
+      "train_target_presentations": 112,
+      "extra_lookahead_targets": 0,
+      "controller_feedback_targets": 56,
+      "controller_updates": 1,
+      "actor_parameters": 6144,
+      "controller_parameters": 180,
+      "retained_replay_parameter_parity": 0.0
+    }
+  ],
+  "args": {
+    "tag": "aws_native_future_update_reuse_20261011_smoke",
+    "stage": "smoke",
+    "seed": 0,
+    "gate": null,
+    "epochs": 1
+  },
+  "train_sequences": 16,
+  "events_per_sequence": 8,
+  "dev_sequences": 8,
+  "final_weights": "experiments/results/credit/aws_native_future_update_reuse_20261011_smoke.pt",
+  "checkpoint_sha256": "a30d7553dbac12299bc4642e6d9b73b4d6acc8e91a5964116708528cc3d3dbc2",
+  "source_sha256": {
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12"
+  },
+  "input_sha256": {},
+  "data_sha256": {
+    "train": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+    "dev": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf"
+  },
+  "wall_s": 0.8122027930803597,
+  "max_rss_kb": 398320,
+  "scope": "Matched native models/all parameters updated, fixed Adam versus future-taught bounded group scales. Independent sequences carry temporal/addressed state within32events; dense writes, no hard-route or cross-sequence carried learner credit. Every extra TRAIN feedback pass/controller backward/moment update charged; supported FLOPs omit uncounted operations. DEV only, three-pass acquisition stage, no Transformer/benchmark supremacy claim."
+}
