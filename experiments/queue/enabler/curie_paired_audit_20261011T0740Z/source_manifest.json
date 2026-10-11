@@ -1,0 +1,16 @@
+{
+  "battle": "B1/R1",
+  "decision": "Does prospective paired native route comparison retain conditional mean with lower variance at equal two-world replay work?",
+  "host": "curie",
+  "cpu_only": true,
+  "threads": 1,
+  "min_available_mb": 9216,
+  "rss_cap_kb": 1500000,
+  "timeout_s": 600,
+  "source_sha256": {
+    "experiments/credit/paired_policy_audit.py": "86885bb87b652e4dc2bd144da46626640de3fee031e15b87271e28d3f34d9dd5",
+    "experiments/credit/measure_causal_audit_offset.py": "4687fdf3ac407c65fcd3832ccd337ec9c4d6001ccb9ffbbfd094ca89f97b870c",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa"
+  },
+  "command": "MEM_CAP_KB=8000000 MEM_CAP_RSS_KB=1500000 MIN_AVAIL_MB=9216 CGROUP_RESERVE_MB=2048 JOB_TIMEOUT_S=600 WAIT=1 bash experiments/queue/run_safe.sh experiments/queue/enabler/curie_paired_audit_20261011T0740Z/measure.txt"
+}

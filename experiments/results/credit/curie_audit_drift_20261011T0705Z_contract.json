@@ -1,0 +1,57 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_audit_drift_20261011T0705Z_contract",
+  "rows": [
+    {
+      "eta": 0.125,
+      "sigma": 0.02,
+      "delta": 0.001,
+      "initial": 0.05,
+      "noise_paths": 256,
+      "final_rms": 0.022949809235367484,
+      "steady_bound": 0.013163977794943223,
+      "minimum_bound_slack": 1.5923570526044095e-06,
+      "stationary_mean_square_identity_error": 0.0
+    },
+    {
+      "eta": 0.75,
+      "sigma": 0.02,
+      "delta": 0.002,
+      "initial": 0.0,
+      "noise_paths": 256,
+      "final_rms": 0.01755752450076299,
+      "steady_bound": 0.018158600051496335,
+      "minimum_bound_slack": 0.0,
+      "stationary_mean_square_identity_error": 0.0
+    },
+    {
+      "eta": 1.0,
+      "sigma": 0.02,
+      "delta": 0.002,
+      "initial": 0.1,
+      "noise_paths": 256,
+      "final_rms": 0.022,
+      "steady_bound": 0.022,
+      "minimum_bound_slack": 0.0,
+      "stationary_mean_square_identity_error": 0.0
+    },
+    {
+      "eta": 0.125,
+      "sigma": 0.02,
+      "delta": 0.0,
+      "initial": 0.0,
+      "noise_paths": 256,
+      "final_rms": 0.004849557816210329,
+      "steady_bound": 0.005163977794943222,
+      "minimum_bound_slack": -4.336808689942018e-19,
+      "stationary_mean_square_identity_error": 6.776263578034403e-21
+    }
+  ],
+  "whole_wall_s": 0.0004454629961401224,
+  "peak_rss_kb": 17424,
+  "source_sha256": {
+    "experiments/credit/check_audit_drift_bound.py": "003989f90f4d3c7bd85334286ad1d154b53012df7d9cfc52b49f17e2e7cab4d3"
+  },
+  "scope": "Eight-step finite noise trees including adversarial noise-dependent drift and eta1 edge case. Conditional drift/noise constants are assumptions, not estimates for the native pilot; no stationarity, real-domain performance or efficiency claim."
+}
