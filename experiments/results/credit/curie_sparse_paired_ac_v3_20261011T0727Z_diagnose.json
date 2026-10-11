@@ -1,0 +1,365 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_sparse_paired_ac_v3_20261011T0727Z_diagnose",
+  "stages": [
+    {
+      "stage": "acquire",
+      "rows": [
+        {
+          "arm": "full_fixed",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.8486835574764466,
+              "extra_worlds": 105,
+              "issued_paid_mse": 0.0003675113166591085,
+              "paid_zero_mse": 0.0004759622444447246
+            }
+          ],
+          "history_factual_mean": 3.8486835574764466,
+          "parameter_distance_from_prior": 0.0
+        },
+        {
+          "arm": "sparse_fixed",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.8489656567577537,
+              "extra_worlds": 26,
+              "issued_paid_mse": 0.0004179208462640737,
+              "paid_zero_mse": 0.0005901204054555361
+            }
+          ],
+          "history_factual_mean": 3.8489656567577537,
+          "parameter_distance_from_prior": 0.0
+        },
+        {
+          "arm": "sparse_learned",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.849269109788684,
+              "extra_worlds": 27,
+              "issued_paid_mse": 0.00048117673908794383,
+              "paid_zero_mse": 0.0005708207143630925
+            }
+          ],
+          "history_factual_mean": 3.849269109788684,
+          "parameter_distance_from_prior": 2.271343393553035,
+          "retained_training_packets": {
+            "count": 27,
+            "current_mse": 7.318537207421715e-05,
+            "prior_mse": 0.0004238473761558371,
+            "zero_mse": 0.0005708207143630925,
+            "target_mean": 0.007801527425661676,
+            "target_std": 0.02258222496101173,
+            "current_rms": 0.024763340265487686,
+            "prior_rms": 0.009994823803981777
+          }
+        }
+      ],
+      "paired_factual_blocks": [
+        {
+          "comparison": "sparse_learned_over_sparse_fixed",
+          "first_prefix": 0,
+          "episodes": 128,
+          "sampled_factual_gain": -0.00030345303093076877,
+          "same_sampled_actions": 95
+        }
+      ]
+    },
+    {
+      "stage": "reuse",
+      "rows": [
+        {
+          "arm": "full_fixed",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.8486835574764466,
+              "extra_worlds": 105,
+              "issued_paid_mse": 0.0003675113166591085,
+              "paid_zero_mse": 0.0004759622444447246
+            },
+            {
+              "first_prefix": 128,
+              "episodes": 128,
+              "factual_loss": 4.110470040758573,
+              "extra_worlds": 82,
+              "issued_paid_mse": 0.00045686605574410004,
+              "paid_zero_mse": 0.00048498094211340767
+            },
+            {
+              "first_prefix": 256,
+              "episodes": 128,
+              "factual_loss": 3.953257528071365,
+              "extra_worlds": 85,
+              "issued_paid_mse": 0.0004562657608744659,
+              "paid_zero_mse": 0.00044996267898913926
+            },
+            {
+              "first_prefix": 384,
+              "episodes": 128,
+              "factual_loss": 3.838672256755955,
+              "extra_worlds": 92,
+              "issued_paid_mse": 0.00036558398201664004,
+              "paid_zero_mse": 0.0004180475493308203
+            }
+          ],
+          "history_factual_mean": 3.937770845765585,
+          "parameter_distance_from_prior": 0.0
+        },
+        {
+          "arm": "sparse_fixed",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.8489656567577537,
+              "extra_worlds": 26,
+              "issued_paid_mse": 0.0004179208462640737,
+              "paid_zero_mse": 0.0005901204054555361
+            },
+            {
+              "first_prefix": 128,
+              "episodes": 128,
+              "factual_loss": 4.1111328476061875,
+              "extra_worlds": 16,
+              "issued_paid_mse": 0.00044969649645670444,
+              "paid_zero_mse": 0.0004325169932069052
+            },
+            {
+              "first_prefix": 256,
+              "episodes": 128,
+              "factual_loss": 3.9541205034190887,
+              "extra_worlds": 19,
+              "issued_paid_mse": 0.0004821652928515201,
+              "paid_zero_mse": 0.00031963780872057093
+            },
+            {
+              "first_prefix": 384,
+              "episodes": 128,
+              "factual_loss": 3.8395123241390614,
+              "extra_worlds": 18,
+              "issued_paid_mse": 0.00016809053412965207,
+              "paid_zero_mse": 0.000165190085407815
+            }
+          ],
+          "history_factual_mean": 3.938432832980523,
+          "parameter_distance_from_prior": 0.0
+        },
+        {
+          "arm": "sparse_learned",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.849269109788684,
+              "extra_worlds": 27,
+              "issued_paid_mse": 0.00048117673908794383,
+              "paid_zero_mse": 0.0005708207143630925
+            },
+            {
+              "first_prefix": 128,
+              "episodes": 128,
+              "factual_loss": 4.111159723542071,
+              "extra_worlds": 17,
+              "issued_paid_mse": 0.0006624451104992548,
+              "paid_zero_mse": 0.0003232843981065935
+            },
+            {
+              "first_prefix": 256,
+              "episodes": 128,
+              "factual_loss": 3.9548795792603872,
+              "extra_worlds": 17,
+              "issued_paid_mse": 0.0004211014389040867,
+              "paid_zero_mse": 0.00031106033748808516
+            },
+            {
+              "first_prefix": 384,
+              "episodes": 128,
+              "factual_loss": 3.8419844573392385,
+              "extra_worlds": 22,
+              "issued_paid_mse": 0.00047673629962002883,
+              "paid_zero_mse": 0.0001676299328999648
+            }
+          ],
+          "history_factual_mean": 3.9393232174825954,
+          "parameter_distance_from_prior": 4.979049678504587,
+          "retained_training_packets": {
+            "count": 83,
+            "current_mse": 5.197434656745442e-05,
+            "prior_mse": 0.0003930139068621224,
+            "zero_mse": 0.0003600467267073766,
+            "target_mean": 0.0030383562874334545,
+            "target_std": 0.018730059203803662,
+            "current_rms": 0.016768574479174327,
+            "prior_rms": 0.011079760852552849
+          }
+        },
+        {
+          "arm": "sparse_reset",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.849269109788684,
+              "extra_worlds": 27,
+              "issued_paid_mse": 0.00048117673908794383,
+              "paid_zero_mse": 0.0005708207143630925
+            },
+            {
+              "first_prefix": 128,
+              "episodes": 128,
+              "factual_loss": 4.110520349580048,
+              "extra_worlds": 16,
+              "issued_paid_mse": 0.0006170270348011628,
+              "paid_zero_mse": 0.0004851641414427809
+            },
+            {
+              "first_prefix": 256,
+              "episodes": 128,
+              "factual_loss": 3.9556330702705025,
+              "extra_worlds": 16,
+              "issued_paid_mse": 0.0005425488604012514,
+              "paid_zero_mse": 0.0002477669496069819
+            },
+            {
+              "first_prefix": 384,
+              "episodes": 128,
+              "factual_loss": 3.8385437087105263,
+              "extra_worlds": 17,
+              "issued_paid_mse": 0.00020791235554842402,
+              "paid_zero_mse": 0.00019845654471082694
+            }
+          ],
+          "history_factual_mean": 3.9384915595874403,
+          "parameter_distance_from_prior": 0.0
+        },
+        {
+          "arm": "sparse_reuse",
+          "blocks": [
+            {
+              "first_prefix": 0,
+              "episodes": 128,
+              "factual_loss": 3.849269109788684,
+              "extra_worlds": 27,
+              "issued_paid_mse": 0.00048117673908794383,
+              "paid_zero_mse": 0.0005708207143630925
+            },
+            {
+              "first_prefix": 128,
+              "episodes": 128,
+              "factual_loss": 4.110467640129421,
+              "extra_worlds": 17,
+              "issued_paid_mse": 0.0007266733701228867,
+              "paid_zero_mse": 0.0003192231209476073
+            },
+            {
+              "first_prefix": 256,
+              "episodes": 128,
+              "factual_loss": 3.95496726355371,
+              "extra_worlds": 15,
+              "issued_paid_mse": 0.00043077761341171495,
+              "paid_zero_mse": 0.00031920402329746006
+            },
+            {
+              "first_prefix": 384,
+              "episodes": 128,
+              "factual_loss": 3.8403864248037536,
+              "extra_worlds": 18,
+              "issued_paid_mse": 0.0005445096520172636,
+              "paid_zero_mse": 0.0002390964863344913
+            }
+          ],
+          "history_factual_mean": 3.9387726095688924,
+          "parameter_distance_from_prior": 2.271343393553035,
+          "retained_training_packets": {
+            "count": 27,
+            "current_mse": 7.318537207421715e-05,
+            "prior_mse": 0.0004238473761558371,
+            "zero_mse": 0.0005708207143630925,
+            "target_mean": 0.007801527425661676,
+            "target_std": 0.02258222496101173,
+            "current_rms": 0.024763340265487686,
+            "prior_rms": 0.009994823803981777
+          }
+        }
+      ],
+      "paired_factual_blocks": [
+        {
+          "comparison": "sparse_learned_over_sparse_fixed",
+          "first_prefix": 0,
+          "episodes": 128,
+          "sampled_factual_gain": -0.00030345303093076877,
+          "same_sampled_actions": 95
+        },
+        {
+          "comparison": "sparse_learned_over_sparse_fixed",
+          "first_prefix": 128,
+          "episodes": 128,
+          "sampled_factual_gain": -2.6875935883335228e-05,
+          "same_sampled_actions": 86
+        },
+        {
+          "comparison": "sparse_learned_over_sparse_fixed",
+          "first_prefix": 256,
+          "episodes": 128,
+          "sampled_factual_gain": -0.0007590758412980673,
+          "same_sampled_actions": 76
+        },
+        {
+          "comparison": "sparse_learned_over_sparse_fixed",
+          "first_prefix": 384,
+          "episodes": 128,
+          "sampled_factual_gain": -0.0024721332001765434,
+          "same_sampled_actions": 61
+        },
+        {
+          "comparison": "sparse_reuse_over_sparse_reset",
+          "first_prefix": 0,
+          "episodes": 128,
+          "sampled_factual_gain": 0.0,
+          "same_sampled_actions": 128
+        },
+        {
+          "comparison": "sparse_reuse_over_sparse_reset",
+          "first_prefix": 128,
+          "episodes": 128,
+          "sampled_factual_gain": 5.270945062760615e-05,
+          "same_sampled_actions": 108
+        },
+        {
+          "comparison": "sparse_reuse_over_sparse_reset",
+          "first_prefix": 256,
+          "episodes": 128,
+          "sampled_factual_gain": 0.0006658067167922294,
+          "same_sampled_actions": 97
+        },
+        {
+          "comparison": "sparse_reuse_over_sparse_reset",
+          "first_prefix": 384,
+          "episodes": 128,
+          "sampled_factual_gain": -0.0018427160932276195,
+          "same_sampled_actions": 81
+        }
+      ]
+    }
+  ],
+  "diagnostic_supported_flops": 18515824,
+  "wall_s": 1.1621114529989427,
+  "peak_rss_kb": 319424,
+  "source_result_sha256": {
+    "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_acquire.json": "19d1aa09a25e3746918a6ce5df7c3bf8ceb667aed253d20bce41f7d30898d6b0",
+    "experiments/results/credit/curie_sparse_paired_ac_v3_20261011T0727Z_reuse.json": "dfa464a16cfdf4564bdb6c56b3f7f2d8e6f2837ac454da4bf92578e666e3a528"
+  },
+  "source_sha256": {
+    "experiments/credit/diagnose_sparse_paired_actor_critic.py": "dd49bbb2cfc66f39dee0188a9a2d23e7d55cf1774a5ed7174ae7dffa704cad6c"
+  },
+  "scope": "Read-only completed acquisition/reuse checkpoints. Retained-buffer error is in-sample on noisy single continuations; shared held-out probe uses eight-continuation averages and is not a like-for-like error level. Factual blocks use training-time sampled actions and common prefix/future streams, not greedy DEV policy evaluation. Cumulative factual means recomputed from histories because cumulative_fits loss fields retain continuation-stage means. No fitting, parameter change or TEST scoring."
+}

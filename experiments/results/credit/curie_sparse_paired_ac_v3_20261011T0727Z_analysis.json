@@ -1,0 +1,115 @@
+{
+  "status": "completed",
+  "tag": "curie_sparse_paired_ac_v3_20261011T0727Z_analysis",
+  "battle": "B1/R1",
+  "stage": "reuse",
+  "rows": [
+    {
+      "arm": "full_fixed",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 0,
+      "extra_worlds": 364,
+      "whole_fit_gflops": 0.350051008,
+      "fit_mflops_per_target": 0.17092334375,
+      "whole_fit_s": 123.37106322898762,
+      "work_ratio_vs_full": 1.0,
+      "gain_vs_baseline": -0.0025745417293998735,
+      "heldout_pair_error_over_zero": 0.2442685498216923
+    },
+    {
+      "arm": "sparse_fixed",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 0,
+      "extra_worlds": 79,
+      "whole_fit_gflops": 0.331269952,
+      "fit_mflops_per_target": 0.16175290625,
+      "whole_fit_s": 121.83516757799953,
+      "work_ratio_vs_full": 0.9463476591388646,
+      "gain_vs_baseline": -0.0017583556838264291,
+      "heldout_pair_error_over_zero": 0.2442685498216923
+    },
+    {
+      "arm": "sparse_learned",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 332,
+      "extra_worlds": 83,
+      "whole_fit_gflops": 1.1589456,
+      "fit_mflops_per_target": 0.56589140625,
+      "whole_fit_s": 132.97146897799394,
+      "work_ratio_vs_full": 3.3107906376890077,
+      "gain_vs_baseline": -0.006175890994507813,
+      "heldout_pair_error_over_zero": 1.128982658253329
+    },
+    {
+      "arm": "sparse_reset",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 108,
+      "extra_worlds": 76,
+      "whole_fit_gflops": 0.544945024,
+      "fit_mflops_per_target": 0.2660864375,
+      "whole_fit_s": 126.26660185099172,
+      "work_ratio_vs_full": 1.5567589052621726,
+      "gain_vs_baseline": -0.0033237426868542586,
+      "heldout_pair_error_over_zero": 0.2442685498216923
+    },
+    {
+      "arm": "sparse_reuse",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "credit_updates": 108,
+      "extra_worlds": 77,
+      "whole_fit_gflops": 0.544985536,
+      "fit_mflops_per_target": 0.26610621875,
+      "whole_fit_s": 126.53537439499632,
+      "work_ratio_vs_full": 1.556874636967193,
+      "gain_vs_baseline": -0.0032362121831954055,
+      "heldout_pair_error_over_zero": 1.2462650651018743
+    }
+  ],
+  "comparisons": {
+    "sparse_learned_over_sparse_fixed": {
+      "gain": -0.004417535310681384,
+      "bootstrap95": [
+        -0.006999472307301977,
+        -0.0019144384169302844
+      ]
+    },
+    "sparse_learned_over_full_fixed": {
+      "gain": -0.0036013492651079393,
+      "bootstrap95": [
+        -0.006916222807617162,
+        -0.00033870274444550554
+      ]
+    },
+    "sparse_reuse_over_sparse_reset": {
+      "gain": 8.753050365885306e-05,
+      "bootstrap95": [
+        -0.003738482816321377,
+        0.0035110312514266464
+      ]
+    },
+    "sparse_learned_over_sparse_reuse": {
+      "gain": -0.0029396788113124073,
+      "bootstrap95": [
+        -0.0056254760206159125,
+        -0.0002961653473237043
+      ]
+    }
+  },
+  "continue_registered_ladder": false,
+  "resource_finite_gate": true,
+  "learned_probe_error_ratio_vs_fixed": 4.621891189338324,
+  "source_result": "experiments/results/credit/curie_sparse_paired_ac_v3_20261011T0727Z_reuse.json",
+  "source_result_sha256": "dfa464a16cfdf4564bdb6c56b3f7f2d8e6f2837ac454da4bf92578e666e3a528",
+  "source_checkpoint_sha256": "5cdf9fc5f47895227af8127d6fb865c144edccad300f7ad0f6a0cd636c8cdd06",
+  "source_sha256": {
+    "experiments/credit/analyze_sparse_paired_actor_critic.py": "f04f321067f861d15ffed7e0e6339e7c2c66cf7336f8ae230f4097db29c0afeb",
+    "experiments/credit/analyze_independent_sparse_paired_actor_critic.py": "08aae19bed7a638b2fb9c9127868a5a69a95e78c70c7f8617066117935ccb56b"
+  },
+  "scope": "Completed one-seed synthetic connected route-learning development stage. Raw carrier fixed; readout adapts within each episode; controller and critic weights persist across episodes. Reuse admission follows registered finite/resource gate, not immediate utility. Cumulative work includes128-step acquisition for continuation and reset/reuse clones; inherited model pretraining and shared DEV diagnostics remain additional. No benchmark, matched-quality/depth or independent-confirmation claim.",
+  "protocol_repair": "Independent cloned histories/buffers/optimizer states, with validated exact cached continuation replay; original128 acquisition cost retained."
+}

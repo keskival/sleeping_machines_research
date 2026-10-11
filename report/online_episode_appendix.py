@@ -176,6 +176,18 @@ def connected_paired_pages():
         comparisons.append([key.replace('sparse_','').replace('_',' '),f"{pair['gain']:+.6f}",f"[{lo:+.6f}, {hi:+.6f}]"])
     phase=sum(data['whole_wall_s'] for _,data,_ in stages)
     teacher=sum(data['metrics']['evaluation']['supported_flops'] for _,data,_ in stages)/1e9
+    invalid_path=folder/f'{prefix}_reuse_protocol_error.json'
+    expenditure=''
+    if invalid_path.exists():
+        original=json.loads((folder/f'{prefix}_reuse.json').read_text())
+        expenditure=f" Original invalid512 phase{original['whole_wall_s']:.2f}s/{original['metrics']['total_training_supported_flops']/1e9:.3f}supported trainingGFLOPs plus its DEV verification was paid and remains additional development expenditure."
+    conclusion='Corrected512 analysis is pending.'
+    if stage=='reuse':
+        pair=a['comparisons']['sparse_learned_over_sparse_fixed'];lo,hi=pair['bootstrap95']
+        reuse=a['comparisons']['sparse_reuse_over_sparse_reset']
+        conclusion=f"At512, continuing learned credit trails fixed sparse credit by{-pair['gain']:.6f}nats/target (signed gain interval{lo:+.6f}to{hi:+.6f}); held-out pair MSE is{a['learned_probe_error_ratio_vs_fixed']:.3f}x fixed. Acquired-frozen versus reset gain{reuse['gain']:+.6f}has an interval crossingzero. This prefix-only variant has no acquired-credit utility/economy win; the next integration tests revealed exogenous observations on the learning side."
+    cache=json.loads((folder/'curie_cached_pair_replay_20261011T0723Z_contract.json').read_text())
+    cache_rows=[[r['arm'],f"{r['supported_flops_per_iteration']/1e6:.6f}",f"{r['median_wall_s']*1000:.2f}"] for r in cache['timing']]
     return [[('h2','Connected paired credit: acquisition and reuse'),
         ('p','A10584-parameter connected route controller and an equally sized recurrent critic learn together. A fixed native depth4 timed/keyed carrier executes one selected optional hard write; every episode scores four factual future forecasts before independent readout Adam updates. A positive-probability audit adds a reference world and trains credit from learner-aware loss contrasts. No backpropagated-gradient labels train this critic.'),
         ('table',(['Arm','Gain / target','Pair error / zero','Fit GFLOPs','MFLOPs / target','Fit seconds'],rows,[30,29,30,26,28,24])),
@@ -183,8 +195,12 @@ def connected_paired_pages():
         ('table',(['Episodes','Learned over fixed gain','Pair MSE learned / fixed','Learned / full fit work'],curve,[25,47,47,48])),
         ('table',(['Paired utility comparison','Gain / target','Prefix bootstrap95'],comparisons,[65,35,67])),
         ('p','The experience ladder admits further acquisition after finite/resource checks, rather than requiring an immediate small-scale utility advantage. At128 episodes learned credit has5.10x the frozen critic’s held-out contrast error and2.95x full-audit supported fitting work. Original512 clones shared optimizer/history storage: its reuse comparison is invalid and excluded. The repaired512 stage uses independent clones of the intact128 checkpoint and validated cached replay. Only completed valid rows appear here; these comparisons diagnose the variant and its paid investment.'),
-        ('small',f"Completed phases{phase:.2f}s; shared DEV verification{teacher:.3f}supportedGFLOPs is additional, with all requested action/probe worlds counted. Peak RSS{max(data['peak_rss_kb'] for _,data,_ in stages)/1024:.1f}MiB. Per-arm factual target/policy/critic/readout-update and extra-world counts are retained in source JSON/PT. Carrier is fixed; readouts reset per episode. This is synthetic route-learning development, not all-carrier, real-market, matched-quality or depth-scaling evidence."),
-        ('p','The next economy test follows sensitivity-weighted gradient residuals and actual audit cost. A predictable positive audit propensity can preserve the raw mean while allocating work; critic training must amortize its own query, storage and update cost. Gradient clipping and Adam do not preserve raw-gradient unbiasedness as a parameter-update identity.')]]
+        ('p',conclusion),
+        ('small',f"Completed valid phases{phase:.2f}s; shared DEV verification{teacher:.3f}supportedGFLOPs is additional, with all requested action/probe worlds counted. Peak RSS{max(data['peak_rss_kb'] for _,data,_ in stages)/1024:.1f}MiB. Per-arm factual target/policy/critic/readout-update and extra-world counts are retained in source JSON/PT. Carrier is fixed; readouts reset per episode. This is synthetic route-learning development, not all-carrier, real-market, matched-quality or depth-scaling evidence."+expenditure),
+        ('h2','Exact fixed-carrier paired replay caching'),
+        ('table',(['Two-world replay','MFLOPs / iteration','Median ms / iteration'],cache_rows,[60,50,57])),
+        ('p',f"Same two worlds/four forecasts per world, five repetitions: cached replay is{cache['median_speedup']:.2f}x faster with{(1-cache['arithmetic_ratio'])*100:.1f}% fewer supported kernelFLOPs. Scores/gradients/final weights/Adam states match within3e-15 at depths2/4/8; changing future suffix does not change the first forecast. Fixed carrier features/hazards/key bonuses are reused, while all readout updates remain causal and independent. Retained carrier outputs400values/world exclude weights, optimizer and whole temporary state. Kernel speed is separate from complete fitting or changing-carrier learning."),
+        ('p','The next economy test follows sensitivity-weighted gradient residuals and actual audit cost. A predictable positive audit propensity can preserve the raw mean while allocating work; critic training must amortize its own query, storage and update cost. Gradient clipping and Adam do not preserve raw-gradient unbiasedness as a parameter-update identity. Revealed raw future observations can enter learning-side credit when the internal route does not change the external sequence, while forecasts remain prefix-only; finite conditional-mean/variance and endogenous-input rejection contracts pass.')]]
 
 
 def paired_audit_pages():

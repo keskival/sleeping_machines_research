@@ -411,3 +411,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Credit audit work frontier](theory/CREDIT_AUDIT_WORK_FRONTIER.md): exact conditional policy-gradient covariance, irreducible future-noise floor, predictable action-dependent audit allocation and paid critic investment break-even. Fixed-carrier route-gradient scope; no measured depth-scaling claim.
 
 [Counterfactual reference geometry](theory/COUNTERFACTUAL_REFERENCE_GEOMETRY.md): forward futures can teach covariance between route residuals; economical teaching-reference selection is a sensitivity-weighted L2 medoid, distinct from choosing the lowest task loss. Positive-support issued reference and real discovery/replay cost remain explicit.
+
+[Revealed future credit](theory/REVEALED_FUTURE_CREDIT.md): actor forecasts remain causal; learning-side credit may condition on arrived exogenous observations. Conditional raw-gradient identity, future-gradient noise floor and explicit rejection of route-dependent feedback treated as common input. Next connected native implementation after the512 prefix-only generalization failure.
