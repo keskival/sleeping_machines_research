@@ -1,0 +1,102 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_joint_forward_credit_confirmation_20261011_v1_r2",
+  "mode": "fit",
+  "replicate": 2,
+  "fits": [
+    {
+      "arm": "prefix",
+      "start_prefix": 128,
+      "end_prefix": 512,
+      "policy_updates": 384,
+      "factual_targets": 1536,
+      "actual_worlds": 646,
+      "readout_updates": 2584,
+      "projected_route_targets": 0,
+      "supported_flops": 192375040,
+      "wall_s": 76.48446475999663,
+      "mean_factual_loss": 4.021703467383197,
+      "mean_sampled_residual_square": 0.00029721802411547294
+    },
+    {
+      "arm": "forward_static",
+      "start_prefix": 128,
+      "end_prefix": 512,
+      "policy_updates": 384,
+      "factual_targets": 1536,
+      "actual_worlds": 643,
+      "readout_updates": 2572,
+      "projected_route_targets": 0,
+      "supported_flops": 192362752,
+      "wall_s": 75.9067908970028,
+      "mean_factual_loss": 4.02190716045761,
+      "mean_sampled_residual_square": 5.549184172851096e-06
+    },
+    {
+      "arm": "reference_learner",
+      "start_prefix": 128,
+      "end_prefix": 512,
+      "policy_updates": 384,
+      "factual_targets": 1536,
+      "actual_worlds": 642,
+      "readout_updates": 2568,
+      "projected_route_targets": 82944,
+      "supported_flops": 192358656,
+      "wall_s": 77.4785076650005,
+      "mean_factual_loss": 4.021824840534183,
+      "mean_sampled_residual_square": 1.1469719467582312e-07
+    }
+  ],
+  "cumulative_fits": [
+    {
+      "arm": "prefix",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "supported_flops": 296459264,
+      "wall_s": 125.47711155399156
+    },
+    {
+      "arm": "forward_static",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "supported_flops": 296446976,
+      "wall_s": 124.89943769099773
+    },
+    {
+      "arm": "reference_learner",
+      "factual_targets": 2048,
+      "policy_updates": 512,
+      "supported_flops": 296442880,
+      "wall_s": 126.47115445899544
+    }
+  ],
+  "evaluation": null,
+  "tau": 0.007422685957715026,
+  "source_acquisition": "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_acquire.json",
+  "source_checkpoint_sha256": "e2866e72f8f58369aabf7ca6d7685b6518fd81ad6bac4c60a6977d3b9d191a89",
+  "checkpoint": "experiments/results/credit/curie_joint_forward_credit_confirmation_20261011_v1_r2.pt",
+  "checkpoint_sha256": "d705ec961dfb78011e369aab2101e37c357ccfc5620e4da1192a236e5598eeaa",
+  "whole_wall_s": 230.74887477399898,
+  "peak_rss_kb": 369636,
+  "source_sha256": {
+    "experiments/credit/confirm_joint_forward_credit.py": "124acdac7e6c98368f7b1a114acb32177a590d85fe7cd0af7cb377ff5d1c15bd",
+    "experiments/credit/joint_forward_credit_episode.py": "a9495b89d2d700952f3e6cd5d2227cf86482c8e6a9ad1d76ce04f8f6c878488c",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "One-seed synthetic route-policy development. Identical valid128 full_fixed controller/Adam acquisition,384 continued causal episodes, same data/draws/rates. Fixed depth4 temporal/keyed carrier; independent288-parameter readout learners adapt4 times per episode. Prefix-only inference; static/reference credit sees arrived exogenous data only during learning. Full raw residual correction p1, nonlinear Adam/clipping not unbiased updates. All actual worlds/projected outputs/optimizer/copy costs in wall; supported FLOPs omit unsupported scalar/special/optimizer arithmetic. Original128 acquisition included per arm; source pretraining, diagnostic gates and fresh confirmation DEV is evaluated separately and charged; same128 acquisition is shared across optimization streams, not three actor initializations. No TEST/all-carrier/market continuity/hardware/depth-scaling claim."
+}

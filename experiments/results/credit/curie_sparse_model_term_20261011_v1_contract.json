@@ -1,0 +1,59 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_sparse_model_term_20261011_v1_contract",
+  "gate": true,
+  "contracts": [
+    {
+      "predictor": "imperfect",
+      "queries": 1,
+      "mean_error": 1.734723475976807e-18,
+      "covariance_error": 1.0842021724855044e-19,
+      "covariance_trace": 0.0005606632828206652
+    },
+    {
+      "predictor": "imperfect",
+      "queries": 2,
+      "mean_error": 1.2468324983583301e-18,
+      "covariance_error": 1.0842021724855044e-19,
+      "covariance_trace": 0.0005140888136751214
+    },
+    {
+      "predictor": "imperfect",
+      "queries": 4,
+      "mean_error": 2.6020852139652106e-18,
+      "covariance_error": 0.0,
+      "covariance_trace": 0.0004908015791023494
+    },
+    {
+      "predictor": "perfect",
+      "queries": 1,
+      "mean_error": 1.7889335846010823e-18,
+      "covariance_error": 0.0,
+      "covariance_trace": 0.0002539664939547164
+    },
+    {
+      "predictor": "perfect",
+      "queries": 2,
+      "mean_error": 1.734723475976807e-18,
+      "covariance_error": 2.710505431213761e-20,
+      "covariance_trace": 0.00012698324697735822
+    },
+    {
+      "predictor": "perfect",
+      "queries": 4,
+      "mean_error": 7.806255641895632e-18,
+      "covariance_error": 2.710505431213761e-20,
+      "covariance_trace": 6.349162348867912e-05
+    }
+  ],
+  "coupled_query_cancellation": true,
+  "budget_stationary_point": 40.0,
+  "budget_derivative_error": 2.710505431213761e-20,
+  "whole_wall_s": 0.019592672993894666,
+  "source_sha256": {
+    "experiments/credit/check_sparse_model_term.py": "11d1d3da98b59cbb0ee147c6f2c2634bc82c3c9b789539c9428bfe371bf7194c",
+    "experiments/theory/SPARSE_MODEL_TERM_CREDIT_ECONOMICS.md": "91bb6e175aad4c9b31d1c4189c6b00cfd954024584fbb73ec8661c93bfe73c65"
+  },
+  "scope": "Exhaustive finite three-action independent proposal/actual-action enumeration,1/2/4 queries and exact policy-autograd mean. Sparse-model covariance decomposition, perfect/imperfect predictor, coupled cancellation and continuous iid work-variance optimum. No native model fitting, hardware/depth or measured economical query budget claim."
+}

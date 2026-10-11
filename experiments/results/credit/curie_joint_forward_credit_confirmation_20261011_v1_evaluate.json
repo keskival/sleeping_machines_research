@@ -1,0 +1,4819 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_joint_forward_credit_confirmation_20261011_v1_evaluate",
+  "confirmation_gate": true,
+  "rows": [
+    {
+      "replicate": 0,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015106160669030163,
+      "stochastic_gain_vs_baseline": 0.00509328691546069,
+      "greedy_gain_vs_baseline": -0.0015865515056543433,
+      "whole_fit_s": 124.53919763598242,
+      "whole_fit_supported_gflops": 0.296446976,
+      "fit_supported_mflops_per_target": 0.1447495
+    },
+    {
+      "replicate": 1,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016399656407862138,
+      "stochastic_gain_vs_baseline": 0.005222636489343877,
+      "greedy_gain_vs_baseline": -0.0006061114532526363,
+      "whole_fit_s": 125.14280924998457,
+      "whole_fit_supported_gflops": 0.296520704,
+      "fit_supported_mflops_per_target": 0.1447855
+    },
+    {
+      "replicate": 2,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002151988956055551,
+      "stochastic_gain_vs_baseline": 0.005734659804613221,
+      "greedy_gain_vs_baseline": -0.001288400169358439,
+      "whole_fit_s": 125.47711155399156,
+      "whole_fit_supported_gflops": 0.296459264,
+      "fit_supported_mflops_per_target": 0.1447555
+    },
+    {
+      "replicate": 0,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0023778242425867664,
+      "stochastic_gain_vs_baseline": 0.005960495091144436,
+      "greedy_gain_vs_baseline": -0.0004374750517710385,
+      "whole_fit_s": 124.00907352399372,
+      "whole_fit_supported_gflops": 0.296414208,
+      "fit_supported_mflops_per_target": 0.1447335
+    },
+    {
+      "replicate": 1,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002453495848422321,
+      "stochastic_gain_vs_baseline": 0.006036166696980053,
+      "greedy_gain_vs_baseline": -0.0003708773432975765,
+      "whole_fit_s": 124.55008931799966,
+      "whole_fit_supported_gflops": 0.296385536,
+      "fit_supported_mflops_per_target": 0.1447195
+    },
+    {
+      "replicate": 2,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0025177613055914483,
+      "stochastic_gain_vs_baseline": 0.006100432154149125,
+      "greedy_gain_vs_baseline": -0.000846590970477068,
+      "whole_fit_s": 124.89943769099773,
+      "whole_fit_supported_gflops": 0.296446976,
+      "fit_supported_mflops_per_target": 0.1447495
+    },
+    {
+      "replicate": 0,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0024819540748304532,
+      "stochastic_gain_vs_baseline": 0.006064624923388096,
+      "greedy_gain_vs_baseline": -0.0006359256352024417,
+      "whole_fit_s": 126.59664150798926,
+      "whole_fit_supported_gflops": 0.296385536,
+      "fit_supported_mflops_per_target": 0.1447195
+    },
+    {
+      "replicate": 1,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002500228461919621,
+      "stochastic_gain_vs_baseline": 0.006082899310477347,
+      "greedy_gain_vs_baseline": -0.0005832312049144431,
+      "whole_fit_s": 126.182257389999,
+      "whole_fit_supported_gflops": 0.296393728,
+      "fit_supported_mflops_per_target": 0.1447235
+    },
+    {
+      "replicate": 2,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002510077027735656,
+      "stochastic_gain_vs_baseline": 0.0060927478762932835,
+      "greedy_gain_vs_baseline": -0.000846590970477068,
+      "whole_fit_s": 126.47115445899544,
+      "whole_fit_supported_gflops": 0.29644288,
+      "fit_supported_mflops_per_target": 0.1447475
+    }
+  ],
+  "comparisons": {
+    "reference_learner_over_prefix_stochastic_gain_vs_baseline": {
+      "gain": 0.00072989630024698,
+      "per_stream_gain": [
+        0.000971338007927407,
+        0.0008602628211334697,
+        0.0003580880716800635
+      ],
+      "hierarchical_bootstrap95": [
+        0.00031726173670290576,
+        0.0012170675814036187
+      ]
+    },
+    "reference_learner_over_prefix_greedy_gain_vs_baseline": {
+      "gain": 0.0004717717725571553,
+      "per_stream_gain": [
+        0.0009506258704519016,
+        2.2880248338193188e-05,
+        0.00044180919888137105
+      ],
+      "hierarchical_bootstrap95": [
+        -0.0003933323191087311,
+        0.001565863799903613
+      ]
+    },
+    "forward_static_over_prefix_stochastic_gain_vs_baseline": {
+      "gain": 0.0006821702442852757,
+      "per_stream_gain": [
+        0.0008672081756837466,
+        0.0008135302076361761,
+        0.00036577234953590445
+      ],
+      "hierarchical_bootstrap95": [
+        0.0003032504361662354,
+        0.0011224193222976909
+      ]
+    },
+    "forward_static_over_prefix_greedy_gain_vs_baseline": {
+      "gain": 0.0006087065875732452,
+      "per_stream_gain": [
+        0.0011490764538833048,
+        0.00023523410995505978,
+        0.00044180919888137105
+      ],
+      "hierarchical_bootstrap95": [
+        -0.00023559651473129911,
+        0.0017234237087681067
+      ]
+    },
+    "reference_learner_over_forward_static_stochastic_gain_vs_baseline": {
+      "gain": 4.772605596170434e-05,
+      "per_stream_gain": [
+        0.00010412983224366039,
+        4.6732613497293615e-05,
+        -7.684277855840973e-06
+      ],
+      "hierarchical_bootstrap95": [
+        -3.7884412251579084e-05,
+        0.00014478363748699922
+      ]
+    },
+    "reference_learner_over_forward_static_greedy_gain_vs_baseline": {
+      "gain": -0.00013693481501608992,
+      "per_stream_gain": [
+        -0.0001984505834314032,
+        -0.0002123538616168666,
+        0.0
+      ],
+      "hierarchical_bootstrap95": [
+        -0.00048672525008894096,
+        3.771027912061187e-05
+      ]
+    }
+  },
+  "per_prefix": [
+    {
+      "replicate": 0,
+      "prefix": 0,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0034630720723322073,
+      "stochastic_gain_vs_baseline": 0.007132560646465613,
+      "greedy_gain_vs_baseline": 0.013844989876640845
+    },
+    {
+      "replicate": 0,
+      "prefix": 0,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028957684994942168,
+      "stochastic_gain_vs_baseline": 0.006565257073627873,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 0,
+      "prefix": 0,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002985394238505412,
+      "stochastic_gain_vs_baseline": 0.006654882812638929,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 1,
+      "prefix": 0,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002536750241277419,
+      "stochastic_gain_vs_baseline": 0.006206238815410714,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 1,
+      "prefix": 0,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0035336212421034907,
+      "stochastic_gain_vs_baseline": 0.007203109816237063,
+      "greedy_gain_vs_baseline": 0.013844989876640845
+    },
+    {
+      "replicate": 1,
+      "prefix": 0,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0033121222756642976,
+      "stochastic_gain_vs_baseline": 0.006981610849797981,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 2,
+      "prefix": 0,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0017322840873440493,
+      "stochastic_gain_vs_baseline": 0.005401772661477233,
+      "greedy_gain_vs_baseline": 0.002676842083445319
+    },
+    {
+      "replicate": 2,
+      "prefix": 0,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0031770400958596734,
+      "stochastic_gain_vs_baseline": 0.006846528669993246,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 2,
+      "prefix": 0,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002868934379785304,
+      "stochastic_gain_vs_baseline": 0.006538422953918932,
+      "greedy_gain_vs_baseline": 0.011094674550568229
+    },
+    {
+      "replicate": 0,
+      "prefix": 1,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011776845741671704,
+      "stochastic_gain_vs_baseline": 0.0036540949233259123,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 1,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0014899423117873956,
+      "stochastic_gain_vs_baseline": 0.0039663526609460265,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 1,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0015473061109966824,
+      "stochastic_gain_vs_baseline": 0.004023716460155646,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 1,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0019048831159870772,
+      "stochastic_gain_vs_baseline": 0.004381293465145625,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 1,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016086867396789273,
+      "stochastic_gain_vs_baseline": 0.004085097088837419,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 1,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017506373810565745,
+      "stochastic_gain_vs_baseline": 0.0042270477302154275,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 1,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002237291458211277,
+      "stochastic_gain_vs_baseline": 0.0047137018073701575,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 1,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001518599130522047,
+      "stochastic_gain_vs_baseline": 0.003995009479680345,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 1,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001701148792137397,
+      "stochastic_gain_vs_baseline": 0.004177559141295695,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 2,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002466649129242826,
+      "stochastic_gain_vs_baseline": 0.004440730748521415,
+      "greedy_gain_vs_baseline": 0.011207322459989122
+    },
+    {
+      "replicate": 0,
+      "prefix": 2,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0007442365540403784,
+      "stochastic_gain_vs_baseline": 0.00271831817331869,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 2,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0005108457728181248,
+      "stochastic_gain_vs_baseline": 0.0024849273920968806,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 2,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.000478060934423985,
+      "stochastic_gain_vs_baseline": 0.0024521425537025743,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 2,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017083580360543749,
+      "stochastic_gain_vs_baseline": 0.0036824396553327143,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 2,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00135397256586052,
+      "stochastic_gain_vs_baseline": 0.003328054185139012,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 2,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011705157091952412,
+      "stochastic_gain_vs_baseline": 0.0031445973284735806,
+      "greedy_gain_vs_baseline": 0.006965326181116005
+    },
+    {
+      "replicate": 2,
+      "prefix": 2,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000857133487994377,
+      "stochastic_gain_vs_baseline": 0.002831215107273022,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 2,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0006616803026589513,
+      "stochastic_gain_vs_baseline": 0.002635761921937263,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 3,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0045631327294825,
+      "stochastic_gain_vs_baseline": 0.010402402759902118,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 3,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.005511362104490103,
+      "stochastic_gain_vs_baseline": 0.011350632134910166,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 3,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.005745186839686278,
+      "stochastic_gain_vs_baseline": 0.011584456870105786,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 3,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.005724471207580739,
+      "stochastic_gain_vs_baseline": 0.011563741238000413,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 3,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.005305386650673705,
+      "stochastic_gain_vs_baseline": 0.011144656681093212,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 3,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.005562648225318767,
+      "stochastic_gain_vs_baseline": 0.011401918255738663,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 3,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.005893353856496586,
+      "stochastic_gain_vs_baseline": 0.011732623886916316,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 3,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.005787175116360899,
+      "stochastic_gain_vs_baseline": 0.011626445146781128,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 3,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.005955713556409614,
+      "stochastic_gain_vs_baseline": 0.011794983586829066,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 4,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0018416405839551953,
+      "stochastic_gain_vs_baseline": 0.00647472944747618,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 4,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002585070899953773,
+      "stochastic_gain_vs_baseline": 0.007218159763474841,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 4,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002785449670203388,
+      "stochastic_gain_vs_baseline": 0.007418538533724761,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 4,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0025913373982948684,
+      "stochastic_gain_vs_baseline": 0.007224426261815853,
+      "greedy_gain_vs_baseline": -0.011668835241609443
+    },
+    {
+      "replicate": 1,
+      "prefix": 4,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003022012486356751,
+      "stochastic_gain_vs_baseline": 0.007655101349877125,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 4,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0030934921294504814,
+      "stochastic_gain_vs_baseline": 0.007726580992970966,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 4,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0029918466494786577,
+      "stochastic_gain_vs_baseline": 0.007624935512999587,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 4,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003143418229875461,
+      "stochastic_gain_vs_baseline": 0.007776507093396168,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 4,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0031103965268952094,
+      "stochastic_gain_vs_baseline": 0.007743485390415472,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 5,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0003598573405808603,
+      "stochastic_gain_vs_baseline": 0.00552215611336726,
+      "greedy_gain_vs_baseline": -0.013344911808626847
+    },
+    {
+      "replicate": 0,
+      "prefix": 5,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0038553125671693667,
+      "stochastic_gain_vs_baseline": 0.009737326021117987,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 5,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004376423611941127,
+      "stochastic_gain_vs_baseline": 0.010258437065889359,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 5,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00396953973131331,
+      "stochastic_gain_vs_baseline": 0.00985155318526143,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 1,
+      "prefix": 5,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0024895718639400544,
+      "stochastic_gain_vs_baseline": 0.008371585317888286,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 1,
+      "prefix": 5,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0033557409774312985,
+      "stochastic_gain_vs_baseline": 0.009237754431380196,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 2,
+      "prefix": 5,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0041350425354036435,
+      "stochastic_gain_vs_baseline": 0.010017055989351986,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 2,
+      "prefix": 5,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004161494831864343,
+      "stochastic_gain_vs_baseline": 0.010043508285812797,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 2,
+      "prefix": 5,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004448192696607456,
+      "stochastic_gain_vs_baseline": 0.010330206150556132,
+      "greedy_gain_vs_baseline": -0.006380298816914376
+    },
+    {
+      "replicate": 0,
+      "prefix": 6,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004558287887149626,
+      "stochastic_gain_vs_baseline": 0.009848457022898272,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 0,
+      "prefix": 6,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003992635195653016,
+      "stochastic_gain_vs_baseline": 0.009282804331401828,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 0,
+      "prefix": 6,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0044087544693769964,
+      "stochastic_gain_vs_baseline": 0.009698923605125698,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 1,
+      "prefix": 6,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015641743696162835,
+      "stochastic_gain_vs_baseline": 0.0068543435053647905,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 1,
+      "prefix": 6,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003048376260668839,
+      "stochastic_gain_vs_baseline": 0.008338545396417651,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 1,
+      "prefix": 6,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0028320965293612207,
+      "stochastic_gain_vs_baseline": 0.008122265665109762,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 2,
+      "prefix": 6,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0027557098128487417,
+      "stochastic_gain_vs_baseline": 0.00804587894859754,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 2,
+      "prefix": 6,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004440064605306493,
+      "stochastic_gain_vs_baseline": 0.009730233741055194,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 2,
+      "prefix": 6,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0037139374174442463,
+      "stochastic_gain_vs_baseline": 0.00900410655319328,
+      "greedy_gain_vs_baseline": -0.031176553426919718
+    },
+    {
+      "replicate": 0,
+      "prefix": 7,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004276926744173348,
+      "stochastic_gain_vs_baseline": 0.010655681134261408,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 7,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00503107868610575,
+      "stochastic_gain_vs_baseline": 0.011409833076193365,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 7,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004926408397576576,
+      "stochastic_gain_vs_baseline": 0.011305162787664358,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 7,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.000672177909909713,
+      "stochastic_gain_vs_baseline": 0.007050932299997648,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 7,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004558424543219808,
+      "stochastic_gain_vs_baseline": 0.010937178933307368,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 7,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004528476327440412,
+      "stochastic_gain_vs_baseline": 0.010907230717528749,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 7,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00395190211620533,
+      "stochastic_gain_vs_baseline": 0.010330656506293168,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 7,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0043830019266900555,
+      "stochastic_gain_vs_baseline": 0.01076175631677756,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 7,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004468811720616361,
+      "stochastic_gain_vs_baseline": 0.010847566110704143,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 8,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0016200639614568635,
+      "stochastic_gain_vs_baseline": 0.0016685737099012554,
+      "greedy_gain_vs_baseline": -0.011444606086274511
+    },
+    {
+      "replicate": 0,
+      "prefix": 8,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017373284977541537,
+      "stochastic_gain_vs_baseline": 0.0050259661691122726,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 8,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0032971746012063763,
+      "stochastic_gain_vs_baseline": 0.006585812272564384,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 8,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004146089416391552,
+      "stochastic_gain_vs_baseline": 0.007434727087749615,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 8,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0032805795386672484,
+      "stochastic_gain_vs_baseline": 0.0065692172100251245,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 8,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0037991480361420638,
+      "stochastic_gain_vs_baseline": 0.007087785707500072,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 8,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.005742488177740146,
+      "stochastic_gain_vs_baseline": 0.009031125849098709,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 8,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004453660281846461,
+      "stochastic_gain_vs_baseline": 0.00774229795320458,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 8,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00477185045555123,
+      "stochastic_gain_vs_baseline": 0.008060488126909293,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 9,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002705455564364828,
+      "stochastic_gain_vs_baseline": 0.005771172883141884,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 9,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0036216653451216496,
+      "stochastic_gain_vs_baseline": 0.006687382663899011,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 9,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00354727901741847,
+      "stochastic_gain_vs_baseline": 0.00661299633619572,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 9,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0007137841822179025,
+      "stochastic_gain_vs_baseline": 0.0037795015009953192,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 9,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003503273269618856,
+      "stochastic_gain_vs_baseline": 0.006568990588396106,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 9,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0035270673588860824,
+      "stochastic_gain_vs_baseline": 0.0065927846776633325,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 9,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0028367581442425294,
+      "stochastic_gain_vs_baseline": 0.005902475463019419,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 9,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0032693534485905007,
+      "stochastic_gain_vs_baseline": 0.006335070767368167,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 9,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003342787686125448,
+      "stochastic_gain_vs_baseline": 0.0064085050049023096,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 10,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0005020955631824253,
+      "stochastic_gain_vs_baseline": 0.0017263771516606435,
+      "greedy_gain_vs_baseline": -0.0004934059192409634
+    },
+    {
+      "replicate": 0,
+      "prefix": 10,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": -0.000404407192279993,
+      "stochastic_gain_vs_baseline": 0.0008198743961982391,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 10,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": -0.0006411925334993684,
+      "stochastic_gain_vs_baseline": 0.0005830890549790579,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 10,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0001502585389159261,
+      "stochastic_gain_vs_baseline": 0.0010740230495626113,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 10,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 6.589238552150156e-05,
+      "stochastic_gain_vs_baseline": 0.0012901739740001084,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 10,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": -8.848077074863347e-05,
+      "stochastic_gain_vs_baseline": 0.001135800817729793,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 10,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00017825004725752214,
+      "stochastic_gain_vs_baseline": 0.001402531635736115,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 10,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": -0.0007020610102375369,
+      "stochastic_gain_vs_baseline": 0.0005222205782408063,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 10,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": -0.0006575507190212937,
+      "stochastic_gain_vs_baseline": 0.0005667308694567996,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 11,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0004439786882551311,
+      "stochastic_gain_vs_baseline": 0.0010567097869391973,
+      "greedy_gain_vs_baseline": 0.000738431788597893
+    },
+    {
+      "replicate": 0,
+      "prefix": 11,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001444595765997203,
+      "stochastic_gain_vs_baseline": 0.0020573268646814635,
+      "greedy_gain_vs_baseline": 0.007421531344223187
+    },
+    {
+      "replicate": 0,
+      "prefix": 11,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0009971361848734317,
+      "stochastic_gain_vs_baseline": 0.0016098672835574424,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 1,
+      "prefix": 11,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00013550724296068628,
+      "stochastic_gain_vs_baseline": 0.0007482383416449467,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 1,
+      "prefix": 11,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000574391986125522,
+      "stochastic_gain_vs_baseline": 0.001187123084809727,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 1,
+      "prefix": 11,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0005168962134861899,
+      "stochastic_gain_vs_baseline": 0.0011296273121702005,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 2,
+      "prefix": 11,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 9.380515843848691e-05,
+      "stochastic_gain_vs_baseline": 0.0007065362571224698,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 2,
+      "prefix": 11,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0006437950969079564,
+      "stochastic_gain_vs_baseline": 0.0012565261955923557,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 2,
+      "prefix": 11,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0006808753874584239,
+      "stochastic_gain_vs_baseline": 0.0012936064861426844,
+      "greedy_gain_vs_baseline": -0.005279305995386618
+    },
+    {
+      "replicate": 0,
+      "prefix": 12,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.002166250741964637,
+      "stochastic_gain_vs_baseline": 0.0021768919641478313,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 12,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0031348058322384353,
+      "stochastic_gain_vs_baseline": 0.007477948538350543,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 0,
+      "prefix": 12,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004021589762114863,
+      "stochastic_gain_vs_baseline": 0.008364732468226416,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 1,
+      "prefix": 12,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004668105879071849,
+      "stochastic_gain_vs_baseline": 0.009011248585183346,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 1,
+      "prefix": 12,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018525644346086834,
+      "stochastic_gain_vs_baseline": 0.006195707140720819,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 1,
+      "prefix": 12,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0030794021637232383,
+      "stochastic_gain_vs_baseline": 0.0074225448698350405,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 2,
+      "prefix": 12,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004376002304599946,
+      "stochastic_gain_vs_baseline": 0.00871914501071222,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 2,
+      "prefix": 12,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004246602714252368,
+      "stochastic_gain_vs_baseline": 0.00858974542036417,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 2,
+      "prefix": 12,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.005032161994108386,
+      "stochastic_gain_vs_baseline": 0.009375304700220244,
+      "greedy_gain_vs_baseline": 0.02846853060550103
+    },
+    {
+      "replicate": 0,
+      "prefix": 13,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0033777628927093573,
+      "stochastic_gain_vs_baseline": 0.011214971803587992,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 13,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0032078752220798257,
+      "stochastic_gain_vs_baseline": 0.011045084132958571,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 13,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0034049577691457333,
+      "stochastic_gain_vs_baseline": 0.011242166680024313,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 13,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001799316613787627,
+      "stochastic_gain_vs_baseline": 0.009636525524666872,
+      "greedy_gain_vs_baseline": -0.012914345689150508
+    },
+    {
+      "replicate": 1,
+      "prefix": 13,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028431628410287638,
+      "stochastic_gain_vs_baseline": 0.010680371751907836,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 13,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0027193301524127515,
+      "stochastic_gain_vs_baseline": 0.010556539063291515,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 13,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0025280343361424734,
+      "stochastic_gain_vs_baseline": 0.010365243247021372,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 13,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0034772255790677664,
+      "stochastic_gain_vs_baseline": 0.011314434489946734,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 13,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0031470478455521422,
+      "stochastic_gain_vs_baseline": 0.010984256756430777,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 14,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0013690779301711586,
+      "stochastic_gain_vs_baseline": 0.006223912990737546,
+      "greedy_gain_vs_baseline": -0.004854856069161695
+    },
+    {
+      "replicate": 0,
+      "prefix": 14,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0003420650217678192,
+      "stochastic_gain_vs_baseline": 0.00519690008233431,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 14,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00027926126924156247,
+      "stochastic_gain_vs_baseline": 0.005134096329807991,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 14,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0010520441943130399,
+      "stochastic_gain_vs_baseline": 0.005906879254879538,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 14,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0006004223506074491,
+      "stochastic_gain_vs_baseline": 0.005455257411173975,
+      "greedy_gain_vs_baseline": -0.004854856069161695
+    },
+    {
+      "replicate": 1,
+      "prefix": 14,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0007692169964435627,
+      "stochastic_gain_vs_baseline": 0.005624052057009832,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 14,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0020919327751239836,
+      "stochastic_gain_vs_baseline": 0.006946767835690412,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 14,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00013252242603900566,
+      "stochastic_gain_vs_baseline": 0.004987357486605032,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 14,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0002355338342535651,
+      "stochastic_gain_vs_baseline": 0.005090368894820202,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 15,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0018298178109319996,
+      "stochastic_gain_vs_baseline": 0.003825366923752571,
+      "greedy_gain_vs_baseline": 0.013270605794364787
+    },
+    {
+      "replicate": 0,
+      "prefix": 15,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00429845422673919,
+      "stochastic_gain_vs_baseline": 0.006294003339559651,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 0,
+      "prefix": 15,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0036197350202884504,
+      "stochastic_gain_vs_baseline": 0.0056152841331094105,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 1,
+      "prefix": 15,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0013392580767471185,
+      "stochastic_gain_vs_baseline": 0.003334807189568023,
+      "greedy_gain_vs_baseline": 0.013270605794364787
+    },
+    {
+      "replicate": 1,
+      "prefix": 15,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003094678957118485,
+      "stochastic_gain_vs_baseline": 0.005090228069939529,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 1,
+      "prefix": 15,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0030112575817244636,
+      "stochastic_gain_vs_baseline": 0.005006806694545285,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 2,
+      "prefix": 15,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0024518683287628185,
+      "stochastic_gain_vs_baseline": 0.0044474174415833345,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 2,
+      "prefix": 15,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002586148293763163,
+      "stochastic_gain_vs_baseline": 0.004581697406583873,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 2,
+      "prefix": 15,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0028067313352418966,
+      "stochastic_gain_vs_baseline": 0.004802280448062801,
+      "greedy_gain_vs_baseline": 0.005682125279622419
+    },
+    {
+      "replicate": 0,
+      "prefix": 16,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003908098749749511,
+      "stochastic_gain_vs_baseline": 0.005729876313869786,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 16,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001808555335922446,
+      "stochastic_gain_vs_baseline": 0.0036303329000431095,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 16,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017254419984855662,
+      "stochastic_gain_vs_baseline": 0.003547219562606313,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 16,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001325325395525101,
+      "stochastic_gain_vs_baseline": 0.003147102959645945,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 16,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0030891750945692964,
+      "stochastic_gain_vs_baseline": 0.004910952658690126,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 16,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0026094103236616872,
+      "stochastic_gain_vs_baseline": 0.004431187887782184,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 16,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00037110391080408256,
+      "stochastic_gain_vs_baseline": 0.0014506736533169695,
+      "greedy_gain_vs_baseline": -0.0037931769819299355
+    },
+    {
+      "replicate": 2,
+      "prefix": 16,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001739346634962391,
+      "stochastic_gain_vs_baseline": 0.0035611241990831932,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 16,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0012697768574542745,
+      "stochastic_gain_vs_baseline": 0.003091554421574813,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 17,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002047170435039991,
+      "stochastic_gain_vs_baseline": 0.0041253057889749645,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 17,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0026044497464187133,
+      "stochastic_gain_vs_baseline": 0.004682585100353243,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 17,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002607918412128707,
+      "stochastic_gain_vs_baseline": 0.004686053766063458,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 17,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015638827483058365,
+      "stochastic_gain_vs_baseline": 0.0036420181022405185,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 17,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028786822372568466,
+      "stochastic_gain_vs_baseline": 0.004956817591191598,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 17,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0028946571394692366,
+      "stochastic_gain_vs_baseline": 0.004972792493403988,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 17,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003219358522947746,
+      "stochastic_gain_vs_baseline": 0.0052974938768823865,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 17,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0027985742076577225,
+      "stochastic_gain_vs_baseline": 0.004876709561592585,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 17,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0028317273487721284,
+      "stochastic_gain_vs_baseline": 0.004909862702707435,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 18,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0026708836424804705,
+      "stochastic_gain_vs_baseline": 0.0045274810679933886,
+      "greedy_gain_vs_baseline": 0.009451642800741844
+    },
+    {
+      "replicate": 0,
+      "prefix": 18,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0010356038306177373,
+      "stochastic_gain_vs_baseline": 0.0028922012561308774,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 0,
+      "prefix": 18,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0011636499867814232,
+      "stochastic_gain_vs_baseline": 0.0030202474122946743,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 1,
+      "prefix": 18,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002013520132649438,
+      "stochastic_gain_vs_baseline": 0.0038701175581628,
+      "greedy_gain_vs_baseline": 0.009451642800741844
+    },
+    {
+      "replicate": 1,
+      "prefix": 18,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015091406864728985,
+      "stochastic_gain_vs_baseline": 0.0033657381119861496,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 1,
+      "prefix": 18,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0014727739345545277,
+      "stochastic_gain_vs_baseline": 0.0033293713600676123,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 2,
+      "prefix": 18,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011365420620123856,
+      "stochastic_gain_vs_baseline": 0.0029931394875253314,
+      "greedy_gain_vs_baseline": -0.0040574503841175336
+    },
+    {
+      "replicate": 2,
+      "prefix": 18,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015622986895021396,
+      "stochastic_gain_vs_baseline": 0.003418896115015335,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 2,
+      "prefix": 18,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013550557335938185,
+      "stochastic_gain_vs_baseline": 0.0032116531591069863,
+      "greedy_gain_vs_baseline": -0.00033676395914605806
+    },
+    {
+      "replicate": 0,
+      "prefix": 19,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.011628194492971422,
+      "stochastic_gain_vs_baseline": -0.0032201449468792775,
+      "greedy_gain_vs_baseline": -0.0200091649919516
+    },
+    {
+      "replicate": 0,
+      "prefix": 19,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00013889242910045813,
+      "stochastic_gain_vs_baseline": 0.008546941975193068,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 19,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0011036125059558852,
+      "stochastic_gain_vs_baseline": 0.009511662052048564,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 19,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015010957455952045,
+      "stochastic_gain_vs_baseline": 0.00990914529168796,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 19,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0006615236460022211,
+      "stochastic_gain_vs_baseline": 0.009069573192095004,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 19,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001113129226624085,
+      "stochastic_gain_vs_baseline": 0.00952117877271702,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 19,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001924012927172869,
+      "stochastic_gain_vs_baseline": 0.01033206247326568,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 19,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001534558334243083,
+      "stochastic_gain_vs_baseline": 0.009942607880335741,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 19,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017206127209483113,
+      "stochastic_gain_vs_baseline": 0.010128662267040678,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 20,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0023287356151970307,
+      "stochastic_gain_vs_baseline": 0.007865172067707427,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 20,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002465450033626193,
+      "stochastic_gain_vs_baseline": 0.008001886486136645,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 20,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0025877079568676353,
+      "stochastic_gain_vs_baseline": 0.008124144409378031,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 20,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014203391357409667,
+      "stochastic_gain_vs_baseline": 0.006956775588251585,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 20,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019738758408212043,
+      "stochastic_gain_vs_baseline": 0.007510312293331545,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 20,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0019413931523212802,
+      "stochastic_gain_vs_baseline": 0.007477829604831676,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 20,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001139252956206982,
+      "stochastic_gain_vs_baseline": 0.0066756894087174334,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 20,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002564134861962164,
+      "stochastic_gain_vs_baseline": 0.008100571314472838,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 20,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00222709906646984,
+      "stochastic_gain_vs_baseline": 0.007763535518980458,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 21,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003199645037930743,
+      "stochastic_gain_vs_baseline": 0.008153335628112268,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 21,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004080468067940046,
+      "stochastic_gain_vs_baseline": 0.00903415865812196,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 21,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004330141853354452,
+      "stochastic_gain_vs_baseline": 0.009283832443536033,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 21,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003674266073448784,
+      "stochastic_gain_vs_baseline": 0.008627956663630032,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 21,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003793013366558906,
+      "stochastic_gain_vs_baseline": 0.008746703956740598,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 21,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003968306212815964,
+      "stochastic_gain_vs_baseline": 0.008921996802997878,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 21,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004268556919462929,
+      "stochastic_gain_vs_baseline": 0.009222247509644621,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 21,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004364985558175549,
+      "stochastic_gain_vs_baseline": 0.009318676148356575,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 21,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004447207462741631,
+      "stochastic_gain_vs_baseline": 0.00940089805292299,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 22,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00045173256243427606,
+      "stochastic_gain_vs_baseline": 0.005654909705053113,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 22,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018057755072240708,
+      "stochastic_gain_vs_baseline": 0.0070089526498429144,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 22,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0019580815231122206,
+      "stochastic_gain_vs_baseline": 0.007161258665730863,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 22,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0018593840183497579,
+      "stochastic_gain_vs_baseline": 0.0070625611609687056,
+      "greedy_gain_vs_baseline": -0.0022440619223185188
+    },
+    {
+      "replicate": 1,
+      "prefix": 22,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018356098638130508,
+      "stochastic_gain_vs_baseline": 0.007038787006432012,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 22,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0019937442280260065,
+      "stochastic_gain_vs_baseline": 0.007196921370644704,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 22,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0021130530410980175,
+      "stochastic_gain_vs_baseline": 0.007316230183717187,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 22,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0020414526709688317,
+      "stochastic_gain_vs_baseline": 0.007244629813587755,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 22,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0020946556115096354,
+      "stochastic_gain_vs_baseline": 0.007297832754128153,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 23,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00218670378500041,
+      "stochastic_gain_vs_baseline": 0.0037716983870757503,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 0,
+      "prefix": 23,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002969251423615593,
+      "stochastic_gain_vs_baseline": 0.004554246025690878,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 0,
+      "prefix": 23,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0029059015519107834,
+      "stochastic_gain_vs_baseline": 0.004490896153986235,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 1,
+      "prefix": 23,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0007210973509833019,
+      "stochastic_gain_vs_baseline": 0.0023060919530584756,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 1,
+      "prefix": 23,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028800212085604016,
+      "stochastic_gain_vs_baseline": 0.004465015810635742,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 1,
+      "prefix": 23,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002841853668002381,
+      "stochastic_gain_vs_baseline": 0.004426848270077555,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 2,
+      "prefix": 23,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0024429050665462637,
+      "stochastic_gain_vs_baseline": 0.004027899668621382,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 2,
+      "prefix": 23,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002746558915610653,
+      "stochastic_gain_vs_baseline": 0.004331553517686215,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 2,
+      "prefix": 23,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002819975325102919,
+      "stochastic_gain_vs_baseline": 0.004404969927177871,
+      "greedy_gain_vs_baseline": -0.0033833366694033806
+    },
+    {
+      "replicate": 0,
+      "prefix": 24,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0034939660310617793,
+      "stochastic_gain_vs_baseline": 0.006165551711720008,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 0,
+      "prefix": 24,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00430323119205267,
+      "stochastic_gain_vs_baseline": 0.006974816872710177,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 0,
+      "prefix": 24,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0041301838005788905,
+      "stochastic_gain_vs_baseline": 0.006801769481236508,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 1,
+      "prefix": 24,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.000250579801908124,
+      "stochastic_gain_vs_baseline": 0.002922165482566186,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 24,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004099519892600045,
+      "stochastic_gain_vs_baseline": 0.006771105573257996,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 1,
+      "prefix": 24,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0040178176820056255,
+      "stochastic_gain_vs_baseline": 0.006689403362663493,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 2,
+      "prefix": 24,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002880922169564065,
+      "stochastic_gain_vs_baseline": 0.005552507850221711,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 2,
+      "prefix": 24,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003620014911832198,
+      "stochastic_gain_vs_baseline": 0.006291600592490121,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 2,
+      "prefix": 24,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00375854032889561,
+      "stochastic_gain_vs_baseline": 0.0064301260095528945,
+      "greedy_gain_vs_baseline": 0.007242590828222095
+    },
+    {
+      "replicate": 0,
+      "prefix": 25,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00040584259149500923,
+      "stochastic_gain_vs_baseline": 0.003566272443672469,
+      "greedy_gain_vs_baseline": -0.003228109403113244
+    },
+    {
+      "replicate": 0,
+      "prefix": 25,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001595377471713219,
+      "stochastic_gain_vs_baseline": 0.004755807323890138,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 25,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018520973409011793,
+      "stochastic_gain_vs_baseline": 0.0050125271930787085,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 25,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001430963465646723,
+      "stochastic_gain_vs_baseline": 0.0045913933178238775,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 25,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0010762578669643585,
+      "stochastic_gain_vs_baseline": 0.004236687719141763,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 25,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013946238411669393,
+      "stochastic_gain_vs_baseline": 0.004555053693343969,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 25,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015609752739816907,
+      "stochastic_gain_vs_baseline": 0.004721405126159595,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 25,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018444629756193404,
+      "stochastic_gain_vs_baseline": 0.005004892827796592,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 25,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018208597983015648,
+      "stochastic_gain_vs_baseline": 0.004981289650478726,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 26,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00020944387741639314,
+      "stochastic_gain_vs_baseline": 0.009746427750817133,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 26,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003258590777371062,
+      "stochastic_gain_vs_baseline": 0.013214462405604754,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 26,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0034983035300621135,
+      "stochastic_gain_vs_baseline": 0.013454175158295667,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 26,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002389175458846232,
+      "stochastic_gain_vs_baseline": 0.012345047087079675,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 26,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0037876501812351693,
+      "stochastic_gain_vs_baseline": 0.013743521809468973,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 26,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0037892167048156344,
+      "stochastic_gain_vs_baseline": 0.013745088333048883,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 26,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0031301644754237468,
+      "stochastic_gain_vs_baseline": 0.013086036103657328,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 26,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003842472563672622,
+      "stochastic_gain_vs_baseline": 0.013798344191906342,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 26,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0038963806071949103,
+      "stochastic_gain_vs_baseline": 0.01385225223542863,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 27,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009958571737350153,
+      "stochastic_gain_vs_baseline": 0.004951858505069157,
+      "greedy_gain_vs_baseline": -0.001648532375921885
+    },
+    {
+      "replicate": 0,
+      "prefix": 27,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017673623936382,
+      "stochastic_gain_vs_baseline": 0.005723363724972175,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 27,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0019856009768413896,
+      "stochastic_gain_vs_baseline": 0.005941602308175586,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 27,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001616216235927781,
+      "stochastic_gain_vs_baseline": 0.0055722175672618945,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 27,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001679721896518549,
+      "stochastic_gain_vs_baseline": 0.0056357232278528985,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 27,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001911502367967919,
+      "stochastic_gain_vs_baseline": 0.005867503699302112,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 27,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002280572251068147,
+      "stochastic_gain_vs_baseline": 0.006236573582401983,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 27,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002032906016785154,
+      "stochastic_gain_vs_baseline": 0.005988907348119382,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 27,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0021152972573347667,
+      "stochastic_gain_vs_baseline": 0.006071298588668839,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 28,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0028327905439615164,
+      "stochastic_gain_vs_baseline": 0.007984404775784534,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 28,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0024674321620864192,
+      "stochastic_gain_vs_baseline": 0.007619046393909035,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 28,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0026600520255827126,
+      "stochastic_gain_vs_baseline": 0.007811666257405259,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 28,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00028007483006223244,
+      "stochastic_gain_vs_baseline": 0.005431689061884903,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 28,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015081120584330213,
+      "stochastic_gain_vs_baseline": 0.006659726290256018,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 28,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00109207111305544,
+      "stochastic_gain_vs_baseline": 0.00624368534487818,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 28,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0009494370258114615,
+      "stochastic_gain_vs_baseline": 0.004202177206011237,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 28,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0025090933482539435,
+      "stochastic_gain_vs_baseline": 0.007660707580077031,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 28,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0016386965646143087,
+      "stochastic_gain_vs_baseline": 0.006790310796436938,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 29,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003691841563758236,
+      "stochastic_gain_vs_baseline": 0.006158343472175032,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 29,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0045439602961079295,
+      "stochastic_gain_vs_baseline": 0.007010462204525059,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 29,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004407816684182109,
+      "stochastic_gain_vs_baseline": 0.006874318592599016,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 29,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 4.024349666353899e-05,
+      "stochastic_gain_vs_baseline": 0.0025067454050805016,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 29,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0044394307316786286,
+      "stochastic_gain_vs_baseline": 0.00690593264009598,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 29,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004354418726135512,
+      "stochastic_gain_vs_baseline": 0.006820920634553085,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 29,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0035499467986782607,
+      "stochastic_gain_vs_baseline": 0.006016448707095279,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 29,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00428586615652482,
+      "stochastic_gain_vs_baseline": 0.006752368064942171,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 29,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004365742451353238,
+      "stochastic_gain_vs_baseline": 0.0068322443597703675,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 30,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0034347158618131535,
+      "stochastic_gain_vs_baseline": 0.005054963335948348,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 30,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018500354921298715,
+      "stochastic_gain_vs_baseline": 0.0034702829662652257,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 30,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0019520494306310976,
+      "stochastic_gain_vs_baseline": 0.0035722969047665143,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 30,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0019311227818573362,
+      "stochastic_gain_vs_baseline": 0.003551370255992614,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 30,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00292539753446891,
+      "stochastic_gain_vs_baseline": 0.0045456450086043265,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 30,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00274393873328746,
+      "stochastic_gain_vs_baseline": 0.004364186207422904,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 30,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0007105500440007378,
+      "stochastic_gain_vs_baseline": 0.002330797518135891,
+      "greedy_gain_vs_baseline": -0.010476917462945767
+    },
+    {
+      "replicate": 2,
+      "prefix": 30,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00265635301881767,
+      "stochastic_gain_vs_baseline": 0.004276600492952698,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 30,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0022574994070232723,
+      "stochastic_gain_vs_baseline": 0.0038777468811583837,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 31,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009677008909899643,
+      "stochastic_gain_vs_baseline": 0.0024660302748598095,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 0,
+      "prefix": 31,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001834602622985626,
+      "stochastic_gain_vs_baseline": 0.0033329320068555823,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 0,
+      "prefix": 31,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018247315766770633,
+      "stochastic_gain_vs_baseline": 0.0033230609605470196,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 1,
+      "prefix": 31,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014820974587431701,
+      "stochastic_gain_vs_baseline": 0.002980426842613404,
+      "greedy_gain_vs_baseline": 0.005426041329170683
+    },
+    {
+      "replicate": 1,
+      "prefix": 31,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017575041250372792,
+      "stochastic_gain_vs_baseline": 0.0032558335089072354,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 1,
+      "prefix": 31,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017834519738166854,
+      "stochastic_gain_vs_baseline": 0.003281781357687308,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 2,
+      "prefix": 31,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001994614343406531,
+      "stochastic_gain_vs_baseline": 0.0034929437272765984,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 2,
+      "prefix": 31,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001805593911886616,
+      "stochastic_gain_vs_baseline": 0.0033039232957565723,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 2,
+      "prefix": 31,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018129617799973463,
+      "stochastic_gain_vs_baseline": 0.0033112911638677467,
+      "greedy_gain_vs_baseline": -0.0030239702914918176
+    },
+    {
+      "replicate": 0,
+      "prefix": 32,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0023864091623520545,
+      "stochastic_gain_vs_baseline": 0.008039872588294195,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 32,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003420148671275214,
+      "stochastic_gain_vs_baseline": 0.009073612097217354,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 32,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003490190446265695,
+      "stochastic_gain_vs_baseline": 0.00914365387220828,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 32,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00012784222850220628,
+      "stochastic_gain_vs_baseline": 0.005525621197439823,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 32,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004095490813150471,
+      "stochastic_gain_vs_baseline": 0.0097489542390925,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 32,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0042140511489402455,
+      "stochastic_gain_vs_baseline": 0.009867514574882219,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 32,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004091144610650077,
+      "stochastic_gain_vs_baseline": 0.009744608036592384,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 32,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004013276791721809,
+      "stochastic_gain_vs_baseline": 0.009666740217663394,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 32,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004022918946643028,
+      "stochastic_gain_vs_baseline": 0.009676382372585002,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 33,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009042077033151741,
+      "stochastic_gain_vs_baseline": 0.004385415930458492,
+      "greedy_gain_vs_baseline": 0.0018451867677562461
+    },
+    {
+      "replicate": 0,
+      "prefix": 33,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004035548262501187,
+      "stochastic_gain_vs_baseline": 0.007516756489644338,
+      "greedy_gain_vs_baseline": 0.0018451867677562461
+    },
+    {
+      "replicate": 0,
+      "prefix": 33,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003816368487404853,
+      "stochastic_gain_vs_baseline": 0.007297576714548337,
+      "greedy_gain_vs_baseline": 0.0018451867677562461
+    },
+    {
+      "replicate": 1,
+      "prefix": 33,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0003580465846367842,
+      "stochastic_gain_vs_baseline": 0.003123161642506537,
+      "greedy_gain_vs_baseline": 0.003111272591226566
+    },
+    {
+      "replicate": 1,
+      "prefix": 33,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003679701064515095,
+      "stochastic_gain_vs_baseline": 0.007160909291658912,
+      "greedy_gain_vs_baseline": -0.0009265185784350649
+    },
+    {
+      "replicate": 1,
+      "prefix": 33,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003656337899995865,
+      "stochastic_gain_vs_baseline": 0.007137546127139682,
+      "greedy_gain_vs_baseline": -0.0009265185784350649
+    },
+    {
+      "replicate": 2,
+      "prefix": 33,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0031771368653557286,
+      "stochastic_gain_vs_baseline": 0.006658345092498852,
+      "greedy_gain_vs_baseline": -0.0009265185784350649
+    },
+    {
+      "replicate": 2,
+      "prefix": 33,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0033674566034096465,
+      "stochastic_gain_vs_baseline": 0.0068486648305529085,
+      "greedy_gain_vs_baseline": -0.0009265185784350649
+    },
+    {
+      "replicate": 2,
+      "prefix": 33,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003514351726115028,
+      "stochastic_gain_vs_baseline": 0.006995559953258179,
+      "greedy_gain_vs_baseline": -0.0009265185784350649
+    },
+    {
+      "replicate": 0,
+      "prefix": 34,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.000792915694272478,
+      "stochastic_gain_vs_baseline": 0.0019740787380514435,
+      "greedy_gain_vs_baseline": -0.028918268065623032
+    },
+    {
+      "replicate": 0,
+      "prefix": 34,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003004967962837335,
+      "stochastic_gain_vs_baseline": 0.004186131006616245,
+      "greedy_gain_vs_baseline": -0.01338634741079181
+    },
+    {
+      "replicate": 0,
+      "prefix": 34,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00251457385708892,
+      "stochastic_gain_vs_baseline": 0.0036957369008679963,
+      "greedy_gain_vs_baseline": -0.01338634741079181
+    },
+    {
+      "replicate": 1,
+      "prefix": 34,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0013175645689242899,
+      "stochastic_gain_vs_baseline": 0.002498727612703311,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 1,
+      "prefix": 34,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002193517290999092,
+      "stochastic_gain_vs_baseline": 0.0033746803347781684,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 1,
+      "prefix": 34,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0022860564314384213,
+      "stochastic_gain_vs_baseline": 0.0034672194752175534,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 2,
+      "prefix": 34,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014773801497955652,
+      "stochastic_gain_vs_baseline": 0.002658543193574392,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 2,
+      "prefix": 34,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019627003755517958,
+      "stochastic_gain_vs_baseline": 0.0031438634193304837,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 2,
+      "prefix": 34,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0021987067732116006,
+      "stochastic_gain_vs_baseline": 0.0033798698169905106,
+      "greedy_gain_vs_baseline": -0.017716924705262205
+    },
+    {
+      "replicate": 0,
+      "prefix": 35,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 4.6278390093468236e-05,
+      "stochastic_gain_vs_baseline": 0.00246598687651578,
+      "greedy_gain_vs_baseline": 0.002134255826035325
+    },
+    {
+      "replicate": 0,
+      "prefix": 35,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0006784113270180449,
+      "stochastic_gain_vs_baseline": 0.0030981198134405474,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 35,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0008146861544927331,
+      "stochastic_gain_vs_baseline": 0.003234394640914906,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 35,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0012002670311438424,
+      "stochastic_gain_vs_baseline": 0.003619975517565932,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 35,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0006446688651837451,
+      "stochastic_gain_vs_baseline": 0.0030643773516061956,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 35,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0008427013907927328,
+      "stochastic_gain_vs_baseline": 0.003262409877214989,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 35,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016932194614245055,
+      "stochastic_gain_vs_baseline": 0.0041129279478466785,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 35,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0007320650086399261,
+      "stochastic_gain_vs_baseline": 0.0031517734950624043,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 35,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.000901563593600066,
+      "stochastic_gain_vs_baseline": 0.003321272080022253,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 36,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016664338629512887,
+      "stochastic_gain_vs_baseline": 0.004415500900836755,
+      "greedy_gain_vs_baseline": -0.00028097677890670525
+    },
+    {
+      "replicate": 0,
+      "prefix": 36,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016082080633884055,
+      "stochastic_gain_vs_baseline": 0.00435727510127365,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 36,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002057606938488471,
+      "stochastic_gain_vs_baseline": 0.00480667397637391,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 36,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00238184014823406,
+      "stochastic_gain_vs_baseline": 0.0051309071861195266,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 36,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019461044263910932,
+      "stochastic_gain_vs_baseline": 0.004695171464276671,
+      "greedy_gain_vs_baseline": -0.00028097677890670525
+    },
+    {
+      "replicate": 1,
+      "prefix": 36,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002138648047353142,
+      "stochastic_gain_vs_baseline": 0.004887715085238276,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 36,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00214116598218847,
+      "stochastic_gain_vs_baseline": 0.004890233020073881,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 36,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0023564252486853454,
+      "stochastic_gain_vs_baseline": 0.005105492286570756,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 36,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0023677612914162205,
+      "stochastic_gain_vs_baseline": 0.005116828329301548,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 37,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0027849281176870744,
+      "stochastic_gain_vs_baseline": 0.0028054513591674046,
+      "greedy_gain_vs_baseline": -0.010968702062240876
+    },
+    {
+      "replicate": 0,
+      "prefix": 37,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002519968260639438,
+      "stochastic_gain_vs_baseline": 0.00811034773749364,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 37,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0032150349687417035,
+      "stochastic_gain_vs_baseline": 0.008805414445596349,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 37,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0033868996682644426,
+      "stochastic_gain_vs_baseline": 0.0089772791451187,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 37,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015305674391263846,
+      "stochastic_gain_vs_baseline": 0.007120946915981141,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 37,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002416876284147551,
+      "stochastic_gain_vs_baseline": 0.008007255761001808,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 37,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0038992546408194717,
+      "stochastic_gain_vs_baseline": 0.00948963411767384,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 37,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00334248989320024,
+      "stochastic_gain_vs_baseline": 0.00893286937005422,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 37,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003687700134883287,
+      "stochastic_gain_vs_baseline": 0.009278079611737988,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 38,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0018857960717804656,
+      "stochastic_gain_vs_baseline": 0.005015759158812028,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 38,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0033590965632862013,
+      "stochastic_gain_vs_baseline": 0.006489059650317319,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 38,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002957778593807303,
+      "stochastic_gain_vs_baseline": 0.0060877416808384766,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 38,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009317338603637842,
+      "stochastic_gain_vs_baseline": 0.00406169694739511,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 38,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002282479059421638,
+      "stochastic_gain_vs_baseline": 0.005412442146453311,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 38,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0021661332791221566,
+      "stochastic_gain_vs_baseline": 0.005296096366153469,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 38,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002072442601257468,
+      "stochastic_gain_vs_baseline": 0.00520240568828878,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 38,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019076461240800091,
+      "stochastic_gain_vs_baseline": 0.0050376092111111825,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 38,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0021289492187976933,
+      "stochastic_gain_vs_baseline": 0.005258912305829089,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 39,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.000935069121456078,
+      "stochastic_gain_vs_baseline": 0.005221507371115153,
+      "greedy_gain_vs_baseline": -0.012553002204612973
+    },
+    {
+      "replicate": 0,
+      "prefix": 39,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0012685825813664175,
+      "stochastic_gain_vs_baseline": 0.005555020831025437,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 39,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0027322146236997136,
+      "stochastic_gain_vs_baseline": 0.007018652873358233,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 39,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003590286991921543,
+      "stochastic_gain_vs_baseline": 0.007876725241580229,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 39,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0031535125297106337,
+      "stochastic_gain_vs_baseline": 0.007439950779369431,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 39,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0038917515911838785,
+      "stochastic_gain_vs_baseline": 0.008178189840843064,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 39,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004685235624516948,
+      "stochastic_gain_vs_baseline": 0.008971673874175301,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 39,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004342960256595585,
+      "stochastic_gain_vs_baseline": 0.00862939850625466,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 39,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004643729390738038,
+      "stochastic_gain_vs_baseline": 0.008930167640396336,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 40,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015825436896769185,
+      "stochastic_gain_vs_baseline": 0.002619521515918377,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 40,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017336092799105085,
+      "stochastic_gain_vs_baseline": 0.0027705871061527443,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 40,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001632210944183865,
+      "stochastic_gain_vs_baseline": 0.0026691887704254347,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 40,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00037148813032213124,
+      "stochastic_gain_vs_baseline": 0.0006654896959198409,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 40,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017014590933430718,
+      "stochastic_gain_vs_baseline": 0.0027384369195850855,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 40,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001645532607729372,
+      "stochastic_gain_vs_baseline": 0.0026825104339711636,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 40,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0012857920728029382,
+      "stochastic_gain_vs_baseline": 0.0023227698990445633,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 40,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001572315075427988,
+      "stochastic_gain_vs_baseline": 0.0026092929016698907,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 40,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0016467848755249426,
+      "stochastic_gain_vs_baseline": 0.0026837627017666232,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 41,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0028389841853337927,
+      "stochastic_gain_vs_baseline": 0.004774947978656741,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 41,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0018745844857808724,
+      "stochastic_gain_vs_baseline": 0.0038105482791040562,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 41,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0022641668428508566,
+      "stochastic_gain_vs_baseline": 0.004200130636173874,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 41,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0025980198726499315,
+      "stochastic_gain_vs_baseline": 0.004533983665972852,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 41,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028772895099111184,
+      "stochastic_gain_vs_baseline": 0.004813253303233955,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 41,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002741492259628886,
+      "stochastic_gain_vs_baseline": 0.004677456052952,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 41,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002616100068059457,
+      "stochastic_gain_vs_baseline": 0.004552063861382183,
+      "greedy_gain_vs_baseline": -0.0031761089475557114
+    },
+    {
+      "replicate": 2,
+      "prefix": 41,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0030433179580463543,
+      "stochastic_gain_vs_baseline": 0.004979281751369163,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 41,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002869556047286656,
+      "stochastic_gain_vs_baseline": 0.004805519840609368,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 42,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0024299224460169744,
+      "stochastic_gain_vs_baseline": 0.004280204126181797,
+      "greedy_gain_vs_baseline": 0.003085399729330973
+    },
+    {
+      "replicate": 0,
+      "prefix": 42,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0012828809475304292,
+      "stochastic_gain_vs_baseline": 0.0031331626276951408,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 42,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0014193078359507894,
+      "stochastic_gain_vs_baseline": 0.0032695895161155564,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 42,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015890257422526421,
+      "stochastic_gain_vs_baseline": 0.0034393074224172704,
+      "greedy_gain_vs_baseline": 0.002340613757674692
+    },
+    {
+      "replicate": 1,
+      "prefix": 42,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019601441849624313,
+      "stochastic_gain_vs_baseline": 0.0038104258651270317,
+      "greedy_gain_vs_baseline": 0.003085399729330973
+    },
+    {
+      "replicate": 1,
+      "prefix": 42,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018089301924083534,
+      "stochastic_gain_vs_baseline": 0.003659211872573398,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 42,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001791156788804149,
+      "stochastic_gain_vs_baseline": 0.0036414384689686385,
+      "greedy_gain_vs_baseline": 0.002340613757674692
+    },
+    {
+      "replicate": 2,
+      "prefix": 42,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016395080547841334,
+      "stochastic_gain_vs_baseline": 0.0034897897349490115,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 42,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0015054865166805043,
+      "stochastic_gain_vs_baseline": 0.0033557681968452435,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 43,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003028845638555655,
+      "stochastic_gain_vs_baseline": 0.004864352847186115,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 0,
+      "prefix": 43,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0035332860575346126,
+      "stochastic_gain_vs_baseline": 0.005368793266164573,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 0,
+      "prefix": 43,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003301557555246526,
+      "stochastic_gain_vs_baseline": 0.005137064763876598,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 1,
+      "prefix": 43,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0008341053727976,
+      "stochastic_gain_vs_baseline": 0.0010014018358324162,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 43,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003298303331918273,
+      "stochastic_gain_vs_baseline": 0.005133810540548622,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 1,
+      "prefix": 43,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003179270699926351,
+      "stochastic_gain_vs_baseline": 0.005014777908557255,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 2,
+      "prefix": 43,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002266470947977939,
+      "stochastic_gain_vs_baseline": 0.004101978156607844,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 2,
+      "prefix": 43,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002729905925124454,
+      "stochastic_gain_vs_baseline": 0.004565413133754581,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 2,
+      "prefix": 43,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0029290955163307486,
+      "stochastic_gain_vs_baseline": 0.00476460272496021,
+      "greedy_gain_vs_baseline": 0.006128151009474614
+    },
+    {
+      "replicate": 0,
+      "prefix": 44,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0035970242125282215,
+      "stochastic_gain_vs_baseline": 0.006550378169908888,
+      "greedy_gain_vs_baseline": 0.003913019179210053
+    },
+    {
+      "replicate": 0,
+      "prefix": 44,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0017997360966767462,
+      "stochastic_gain_vs_baseline": 0.004753090054057774,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 44,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013363082965302808,
+      "stochastic_gain_vs_baseline": 0.004289662253911253,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 44,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011525057941292605,
+      "stochastic_gain_vs_baseline": 0.004105859751510121,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 44,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0027035335816522343,
+      "stochastic_gain_vs_baseline": 0.005656887539033262,
+      "greedy_gain_vs_baseline": 0.003913019179210053
+    },
+    {
+      "replicate": 1,
+      "prefix": 44,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0021347767335170853,
+      "stochastic_gain_vs_baseline": 0.005088130690897974,
+      "greedy_gain_vs_baseline": 0.003913019179210053
+    },
+    {
+      "replicate": 2,
+      "prefix": 44,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 2.7657558259341908e-05,
+      "stochastic_gain_vs_baseline": 0.0029810115156406747,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 44,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0014598569170860554,
+      "stochastic_gain_vs_baseline": 0.004413210874467222,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 44,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.000996381384972489,
+      "stochastic_gain_vs_baseline": 0.003949735342353655,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 45,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0037443882768170567,
+      "stochastic_gain_vs_baseline": 0.0007761208109349216,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 45,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0005191374856101938,
+      "stochastic_gain_vs_baseline": 0.005039646573362477,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 45,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0007459017701889475,
+      "stochastic_gain_vs_baseline": 0.00526641085794094,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 45,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0007735461596705545,
+      "stochastic_gain_vs_baseline": 0.005294055247422769,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 45,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0007629835348752223,
+      "stochastic_gain_vs_baseline": 0.005283492622627006,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 45,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0008577364254961084,
+      "stochastic_gain_vs_baseline": 0.00537824551324817,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 45,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009096934680731666,
+      "stochastic_gain_vs_baseline": 0.005430202555825048,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 45,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0008823992701627592,
+      "stochastic_gain_vs_baseline": 0.005402908357914626,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 45,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0009172992837264415,
+      "stochastic_gain_vs_baseline": 0.005437808371478392,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 46,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00016683573065423563,
+      "stochastic_gain_vs_baseline": 0.0007526534253141648,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 0,
+      "prefix": 46,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00036150111605742774,
+      "stochastic_gain_vs_baseline": 0.0012809902720262722,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 0,
+      "prefix": 46,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0005565737445824004,
+      "stochastic_gain_vs_baseline": 0.0014760629005510228,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 1,
+      "prefix": 46,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016917235429602107,
+      "stochastic_gain_vs_baseline": 0.002611212698928833,
+      "greedy_gain_vs_baseline": -0.0031346431843104483
+    },
+    {
+      "replicate": 1,
+      "prefix": 46,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0007322774200214655,
+      "stochastic_gain_vs_baseline": 0.0016517665759898659,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 1,
+      "prefix": 46,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0009281449177157564,
+      "stochastic_gain_vs_baseline": 0.0018476340736846009,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 2,
+      "prefix": 46,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001863505379010394,
+      "stochastic_gain_vs_baseline": 0.0027829945349789192,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 2,
+      "prefix": 46,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000781823348375621,
+      "stochastic_gain_vs_baseline": 0.001701312504344521,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 2,
+      "prefix": 46,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0006182034469373043,
+      "stochastic_gain_vs_baseline": 0.0015376926029060378,
+      "greedy_gain_vs_baseline": -0.006391150331455542
+    },
+    {
+      "replicate": 0,
+      "prefix": 47,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.005313668840665531,
+      "stochastic_gain_vs_baseline": 0.007568917247952722,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 47,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0026600862705552786,
+      "stochastic_gain_vs_baseline": 0.004915334677842664,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 47,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003084960275010429,
+      "stochastic_gain_vs_baseline": 0.005340208682297565,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 47,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0038401264707113025,
+      "stochastic_gain_vs_baseline": 0.006095374877998716,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 47,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00434375778338153,
+      "stochastic_gain_vs_baseline": 0.006599006190668555,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 47,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004205911523540162,
+      "stochastic_gain_vs_baseline": 0.006461159930827298,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 47,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00043010175098097403,
+      "stochastic_gain_vs_baseline": 0.0018251466563063423,
+      "greedy_gain_vs_baseline": -0.0038198829251445687
+    },
+    {
+      "replicate": 2,
+      "prefix": 47,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004361463877130212,
+      "stochastic_gain_vs_baseline": 0.006616712284417181,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 47,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0036128510669806158,
+      "stochastic_gain_vs_baseline": 0.005868099474268029,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 48,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002699563607809652,
+      "stochastic_gain_vs_baseline": 0.008710498589115545,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 48,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0029988106039562368,
+      "stochastic_gain_vs_baseline": 0.009009745585261797,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 48,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002956829438626518,
+      "stochastic_gain_vs_baseline": 0.008967764419932411,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 48,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0007219601995687441,
+      "stochastic_gain_vs_baseline": 0.0067328951808743875,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 48,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002939603605829455,
+      "stochastic_gain_vs_baseline": 0.008950538587135348,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 48,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0029121141175587617,
+      "stochastic_gain_vs_baseline": 0.008923049098864766,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 48,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002781541271504151,
+      "stochastic_gain_vs_baseline": 0.008792476252809989,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 48,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0028380391705510877,
+      "stochastic_gain_vs_baseline": 0.008848974151856703,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 48,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002873125775401386,
+      "stochastic_gain_vs_baseline": 0.008884060756707113,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 49,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0031527010649262943,
+      "stochastic_gain_vs_baseline": 0.006065885007109334,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 49,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00368818738847794,
+      "stochastic_gain_vs_baseline": 0.006601371330661063,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 49,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003954454680402508,
+      "stochastic_gain_vs_baseline": 0.006867638622585506,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 49,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004020856493964553,
+      "stochastic_gain_vs_baseline": 0.0069340404361476204,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 49,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0035107649003871394,
+      "stochastic_gain_vs_baseline": 0.006423948842570221,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 49,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003750209847852501,
+      "stochastic_gain_vs_baseline": 0.006663393790035749,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 49,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004352574608013082,
+      "stochastic_gain_vs_baseline": 0.007265758550196233,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 49,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.003999672466649173,
+      "stochastic_gain_vs_baseline": 0.006912856408832324,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 49,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004328601577876845,
+      "stochastic_gain_vs_baseline": 0.00724178552005994,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 50,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00521498789102226,
+      "stochastic_gain_vs_baseline": 0.005798565085587182,
+      "greedy_gain_vs_baseline": -0.0020645674123027646
+    },
+    {
+      "replicate": 0,
+      "prefix": 50,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016346066054472586,
+      "stochastic_gain_vs_baseline": 0.0022181838000118193,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 0,
+      "prefix": 50,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0004926992600979979,
+      "stochastic_gain_vs_baseline": 0.001076276454662295,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 1,
+      "prefix": 50,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 3.748038620310715e-05,
+      "stochastic_gain_vs_baseline": 0.000621057580767484,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 1,
+      "prefix": 50,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002529200483419397,
+      "stochastic_gain_vs_baseline": 0.003112777677983708,
+      "greedy_gain_vs_baseline": -0.0020645674123027646
+    },
+    {
+      "replicate": 1,
+      "prefix": 50,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018106337531020034,
+      "stochastic_gain_vs_baseline": 0.002394210947666439,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 2,
+      "prefix": 50,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.004374562094682455,
+      "stochastic_gain_vs_baseline": -0.0037909849001175333,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 2,
+      "prefix": 50,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": -5.816499533424502e-05,
+      "stochastic_gain_vs_baseline": 0.0005254121992303296,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 2,
+      "prefix": 50,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": -0.0005743522380058097,
+      "stochastic_gain_vs_baseline": 9.224956558639974e-06,
+      "greedy_gain_vs_baseline": -0.014955332348447037
+    },
+    {
+      "replicate": 0,
+      "prefix": 51,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0017611239384964783,
+      "stochastic_gain_vs_baseline": 0.0029685066794286064,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 0,
+      "prefix": 51,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0031412113781289497,
+      "stochastic_gain_vs_baseline": 0.004348594119060856,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 0,
+      "prefix": 51,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002715408452110879,
+      "stochastic_gain_vs_baseline": 0.003922791193043396,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 1,
+      "prefix": 51,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0008404598599811852,
+      "stochastic_gain_vs_baseline": 0.002047842600913341,
+      "greedy_gain_vs_baseline": 0.0030738054754699817
+    },
+    {
+      "replicate": 1,
+      "prefix": 51,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0019122266257529663,
+      "stochastic_gain_vs_baseline": 0.0031196093666852054,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 1,
+      "prefix": 51,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017819944073334537,
+      "stochastic_gain_vs_baseline": 0.0029893771482656373,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 2,
+      "prefix": 51,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001385420218241229,
+      "stochastic_gain_vs_baseline": 0.0025928029591737456,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 2,
+      "prefix": 51,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015195141702034065,
+      "stochastic_gain_vs_baseline": 0.002726896911135812,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 2,
+      "prefix": 51,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017025531318414222,
+      "stochastic_gain_vs_baseline": 0.0029099358727739943,
+      "greedy_gain_vs_baseline": -0.008456572652475902
+    },
+    {
+      "replicate": 0,
+      "prefix": 52,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.004782545976939168,
+      "stochastic_gain_vs_baseline": 0.006205019806612699,
+      "greedy_gain_vs_baseline": 0.007468755233785096
+    },
+    {
+      "replicate": 0,
+      "prefix": 52,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002451300750345678,
+      "stochastic_gain_vs_baseline": 0.003873774580019085,
+      "greedy_gain_vs_baseline": 0.0020135059436219294
+    },
+    {
+      "replicate": 0,
+      "prefix": 52,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0024002511608557514,
+      "stochastic_gain_vs_baseline": 0.0038227249905288807,
+      "greedy_gain_vs_baseline": 0.0020135059436219294
+    },
+    {
+      "replicate": 1,
+      "prefix": 52,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0020141362578636746,
+      "stochastic_gain_vs_baseline": 0.0034366100875370398,
+      "greedy_gain_vs_baseline": 0.007468755233785096
+    },
+    {
+      "replicate": 1,
+      "prefix": 52,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0036232675603664055,
+      "stochastic_gain_vs_baseline": 0.005045741390039771,
+      "greedy_gain_vs_baseline": 0.007468755233785096
+    },
+    {
+      "replicate": 1,
+      "prefix": 52,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003187819684170312,
+      "stochastic_gain_vs_baseline": 0.004610293513843622,
+      "greedy_gain_vs_baseline": 0.007468755233785096
+    },
+    {
+      "replicate": 2,
+      "prefix": 52,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.0008657450960995045,
+      "stochastic_gain_vs_baseline": 0.0005567287335736526,
+      "greedy_gain_vs_baseline": -0.0021636175139061464
+    },
+    {
+      "replicate": 2,
+      "prefix": 52,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.00265797277005142,
+      "stochastic_gain_vs_baseline": 0.004080446599724397,
+      "greedy_gain_vs_baseline": 0.0020135059436219294
+    },
+    {
+      "replicate": 2,
+      "prefix": 52,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.00205303658599644,
+      "stochastic_gain_vs_baseline": 0.0034755104156694583,
+      "greedy_gain_vs_baseline": 0.0020135059436219294
+    },
+    {
+      "replicate": 0,
+      "prefix": 53,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.00455748449277199,
+      "stochastic_gain_vs_baseline": 0.008466141886690037,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 53,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0038812783515156796,
+      "stochastic_gain_vs_baseline": 0.007789935745433518,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 0,
+      "prefix": 53,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004300067429201637,
+      "stochastic_gain_vs_baseline": 0.008208724823119184,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 1,
+      "prefix": 53,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0037314654133340786,
+      "stochastic_gain_vs_baseline": 0.0076401228072521254,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 1,
+      "prefix": 53,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004500412650100871,
+      "stochastic_gain_vs_baseline": 0.008409070044018946,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 53,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004431420656742097,
+      "stochastic_gain_vs_baseline": 0.008340078050659977,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 53,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0036478949447592557,
+      "stochastic_gain_vs_baseline": 0.007556552338676692,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 2,
+      "prefix": 53,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004482019421561956,
+      "stochastic_gain_vs_baseline": 0.008390676815479642,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 2,
+      "prefix": 53,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004408916051430373,
+      "stochastic_gain_vs_baseline": 0.008317573445348059,
+      "greedy_gain_vs_baseline": -0.007486756526634775
+    },
+    {
+      "replicate": 0,
+      "prefix": 54,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0003523825429599531,
+      "stochastic_gain_vs_baseline": 0.005139330767006789,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 0,
+      "prefix": 54,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0008995409414998684,
+      "stochastic_gain_vs_baseline": 0.005686489165546815,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 0,
+      "prefix": 54,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0009251335898317059,
+      "stochastic_gain_vs_baseline": 0.005712081813878278,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 1,
+      "prefix": 54,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009941517570102587,
+      "stochastic_gain_vs_baseline": 0.005781099981057025,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 1,
+      "prefix": 54,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000671709628746131,
+      "stochastic_gain_vs_baseline": 0.00545865785279287,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 1,
+      "prefix": 54,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0008137414125246323,
+      "stochastic_gain_vs_baseline": 0.005600689636571454,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 2,
+      "prefix": 54,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0009380352593545416,
+      "stochastic_gain_vs_baseline": 0.005724983483401114,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 2,
+      "prefix": 54,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000804418862618228,
+      "stochastic_gain_vs_baseline": 0.005591367086665078,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 2,
+      "prefix": 54,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0008499604086465717,
+      "stochastic_gain_vs_baseline": 0.005636908632693394,
+      "greedy_gain_vs_baseline": -0.007448848738972558
+    },
+    {
+      "replicate": 0,
+      "prefix": 55,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.004507046815872218,
+      "stochastic_gain_vs_baseline": 0.002493322654567809,
+      "greedy_gain_vs_baseline": -0.011308269523427672
+    },
+    {
+      "replicate": 0,
+      "prefix": 55,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0023826084340607956,
+      "stochastic_gain_vs_baseline": 0.009382977904500045,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 55,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0027179317070180065,
+      "stochastic_gain_vs_baseline": 0.009718301177457478,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 55,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0022121452368617234,
+      "stochastic_gain_vs_baseline": 0.009212514707301278,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 55,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.002358083983638126,
+      "stochastic_gain_vs_baseline": 0.009358453454078153,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 55,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.002806105441592377,
+      "stochastic_gain_vs_baseline": 0.009806474912031904,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 55,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002556149435527455,
+      "stochastic_gain_vs_baseline": 0.009556518905966815,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 55,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0029846107268353683,
+      "stochastic_gain_vs_baseline": 0.009984980197275117,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 55,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0031438795158553745,
+      "stochastic_gain_vs_baseline": 0.010144248986295845,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 56,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014369648044840755,
+      "stochastic_gain_vs_baseline": 0.00450721268224008,
+      "greedy_gain_vs_baseline": -0.00033297437485924064
+    },
+    {
+      "replicate": 0,
+      "prefix": 56,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015736553462219402,
+      "stochastic_gain_vs_baseline": 0.004643903223977397,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 56,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017410229632823238,
+      "stochastic_gain_vs_baseline": 0.004811270841037996,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 56,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0012204557510787223,
+      "stochastic_gain_vs_baseline": 0.004290703628834214,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 56,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016901499923204222,
+      "stochastic_gain_vs_baseline": 0.004760397870076094,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 56,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0017100067974248623,
+      "stochastic_gain_vs_baseline": 0.004780254675180673,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 56,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016820903039687363,
+      "stochastic_gain_vs_baseline": 0.00475233818172438,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 56,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001926409269591603,
+      "stochastic_gain_vs_baseline": 0.004996657147346983,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 56,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0018383713460469464,
+      "stochastic_gain_vs_baseline": 0.0049086192238021464,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 57,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0024516586919575145,
+      "stochastic_gain_vs_baseline": 0.004416936903997581,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 0,
+      "prefix": 57,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0036134393489467564,
+      "stochastic_gain_vs_baseline": 0.005578717560986934,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 0,
+      "prefix": 57,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003619613317520587,
+      "stochastic_gain_vs_baseline": 0.005584891529560099,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 1,
+      "prefix": 57,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0018863532767657842,
+      "stochastic_gain_vs_baseline": 0.003851631488806573,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 57,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0036564837042726284,
+      "stochastic_gain_vs_baseline": 0.0056217619163135835,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 1,
+      "prefix": 57,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0036012868728395597,
+      "stochastic_gain_vs_baseline": 0.005566565084880404,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 2,
+      "prefix": 57,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.003465904826155608,
+      "stochastic_gain_vs_baseline": 0.0054311830381958415,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 2,
+      "prefix": 57,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0036232790083521316,
+      "stochastic_gain_vs_baseline": 0.005588557220392865,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 2,
+      "prefix": 57,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003646125814426804,
+      "stochastic_gain_vs_baseline": 0.005611404026467648,
+      "greedy_gain_vs_baseline": -0.0031412354052555713
+    },
+    {
+      "replicate": 0,
+      "prefix": 58,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0013733517327664257,
+      "stochastic_gain_vs_baseline": 0.0060533341323913414,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 58,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0011509554632375789,
+      "stochastic_gain_vs_baseline": 0.005830937862862651,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 0,
+      "prefix": 58,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001186307772071845,
+      "stochastic_gain_vs_baseline": 0.00586629017169682,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 1,
+      "prefix": 58,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001033949012039459,
+      "stochastic_gain_vs_baseline": 0.005713931411664763,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 1,
+      "prefix": 58,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0014070898374836938,
+      "stochastic_gain_vs_baseline": 0.006087072237108582,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 1,
+      "prefix": 58,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013907909539818686,
+      "stochastic_gain_vs_baseline": 0.006070773353606729,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 2,
+      "prefix": 58,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0015348416764585648,
+      "stochastic_gain_vs_baseline": 0.00621482407608398,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 2,
+      "prefix": 58,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0013322644160844513,
+      "stochastic_gain_vs_baseline": 0.006012246815709554,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 2,
+      "prefix": 58,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013918300034020947,
+      "stochastic_gain_vs_baseline": 0.0060718124030273435,
+      "greedy_gain_vs_baseline": 0.0012921681186579548
+    },
+    {
+      "replicate": 0,
+      "prefix": 59,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0031181017906939945,
+      "stochastic_gain_vs_baseline": 0.006845987900373385,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 59,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004267307882523608,
+      "stochastic_gain_vs_baseline": 0.00799519399220272,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 59,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.004149782928909551,
+      "stochastic_gain_vs_baseline": 0.007877669038588886,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 59,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011937660766645625,
+      "stochastic_gain_vs_baseline": 0.004921652186343883,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 59,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.004023329697662725,
+      "stochastic_gain_vs_baseline": 0.007751215807342282,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 59,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003974911449117102,
+      "stochastic_gain_vs_baseline": 0.007702797558796215,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 59,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0036859680007201856,
+      "stochastic_gain_vs_baseline": 0.007413854110399409,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 59,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0038196781634396437,
+      "stochastic_gain_vs_baseline": 0.0075475642731190895,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 59,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.003901117094353812,
+      "stochastic_gain_vs_baseline": 0.007629003204032925,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 60,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.001591956833392305,
+      "stochastic_gain_vs_baseline": 0.005114959309610256,
+      "greedy_gain_vs_baseline": -0.00153005976241527
+    },
+    {
+      "replicate": 0,
+      "prefix": 60,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0014446634425224758,
+      "stochastic_gain_vs_baseline": 0.004967665918741093,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 60,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0014732586489671906,
+      "stochastic_gain_vs_baseline": 0.0049962611251855304,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 60,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0016899208337704183,
+      "stochastic_gain_vs_baseline": 0.00521292330998846,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 60,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0014567994606147217,
+      "stochastic_gain_vs_baseline": 0.004979801936832895,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 60,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0015714149940452005,
+      "stochastic_gain_vs_baseline": 0.005094417470263624,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 60,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0022359007201956105,
+      "stochastic_gain_vs_baseline": 0.005758903196414228,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 60,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001296267481952669,
+      "stochastic_gain_vs_baseline": 0.004819269958170835,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 60,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0015010153152035938,
+      "stochastic_gain_vs_baseline": 0.005024017791421642,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 61,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.00021440179020104644,
+      "stochastic_gain_vs_baseline": 0.002710876191675704,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 61,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.000997122459878222,
+      "stochastic_gain_vs_baseline": 0.0039224004417548475,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 61,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0012030274638180627,
+      "stochastic_gain_vs_baseline": 0.004128305445694536,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 61,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014853562833871958,
+      "stochastic_gain_vs_baseline": 0.004410634265263225,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 61,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0007159257404314168,
+      "stochastic_gain_vs_baseline": 0.0036412037223080285,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 61,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.001083408546699749,
+      "stochastic_gain_vs_baseline": 0.004008686528576111,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 61,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002206501001230432,
+      "stochastic_gain_vs_baseline": 0.005131778983106905,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 61,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0011122626310273998,
+      "stochastic_gain_vs_baseline": 0.004037540612903956,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 61,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0015042759152886775,
+      "stochastic_gain_vs_baseline": 0.0044295538971655946,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 62,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.002413867720619467,
+      "stochastic_gain_vs_baseline": 0.005314986269903177,
+      "greedy_gain_vs_baseline": 0.004132426698626901
+    },
+    {
+      "replicate": 0,
+      "prefix": 62,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0012815097502258954,
+      "stochastic_gain_vs_baseline": 0.004182628299509661,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 62,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0011685873199464014,
+      "stochastic_gain_vs_baseline": 0.004069705869229834,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 62,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0011710796016393132,
+      "stochastic_gain_vs_baseline": 0.004072198150922857,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 62,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0016207621652974957,
+      "stochastic_gain_vs_baseline": 0.004521880714581039,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 62,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0014263631962990186,
+      "stochastic_gain_vs_baseline": 0.0043274817455825065,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 62,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0012535326813803982,
+      "stochastic_gain_vs_baseline": 0.004154651230664497,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 62,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0011837009166817403,
+      "stochastic_gain_vs_baseline": 0.004084819465965506,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 62,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0011536510274727796,
+      "stochastic_gain_vs_baseline": 0.004054769576756323,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 63,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": -0.003425217335187712,
+      "stochastic_gain_vs_baseline": 0.00415185338582863,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 63,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0010979716259333083,
+      "stochastic_gain_vs_baseline": 0.008675042346949713,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 0,
+      "prefix": 63,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0013962419660072112,
+      "stochastic_gain_vs_baseline": 0.008973312687023727,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 63,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0012975809299869898,
+      "stochastic_gain_vs_baseline": 0.008874651651003485,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 63,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.0015180945171582166,
+      "stochastic_gain_vs_baseline": 0.00909516523817494,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 1,
+      "prefix": 63,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0016027148272565184,
+      "stochastic_gain_vs_baseline": 0.00917978554827309,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 63,
+      "arm": "prefix",
+      "stochastic_gain_vs_acquired": 0.0014760195503670873,
+      "stochastic_gain_vs_baseline": 0.009053090271383624,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 63,
+      "arm": "forward_static",
+      "stochastic_gain_vs_acquired": 0.001595321318386786,
+      "stochastic_gain_vs_baseline": 0.009172392039403288,
+      "greedy_gain_vs_baseline": 0.0
+    },
+    {
+      "replicate": 2,
+      "prefix": 63,
+      "arm": "reference_learner",
+      "stochastic_gain_vs_acquired": 0.0016411417028681236,
+      "stochastic_gain_vs_baseline": 0.009218212423884653,
+      "greedy_gain_vs_baseline": 0.0
+    }
+  ],
+  "reference_gain_vs_acquired": 0.0024974198548285767,
+  "reference_gain_vs_acquired_hierarchical95": [
+    0.002195138622417864,
+    0.0028154612887101014
+  ],
+  "teacher_worlds": 36864,
+  "readout_updates": 147456,
+  "supported_flops": 269456896,
+  "whole_wall_s": 53.07134211699304,
+  "peak_rss_kb": 352208,
+  "source_results": {
+    "experiments/results/credit/curie_joint_forward_credit_20261011_v1_fit.json": "183c4d8500a66dc95c97f81fceaf96eb3fd835d784eb49d5d344226c8e0b864c",
+    "experiments/results/credit/curie_joint_forward_credit_confirmation_20261011_v1_r1.json": "8734b7596c68c7bef9e2532dc7de4ac526796f32d2264ed1ce084e7ea58cd14a",
+    "experiments/results/credit/curie_joint_forward_credit_confirmation_20261011_v1_r2.json": "aff180739a9209e5b1868974d1ed1efd3066ff6566a9b8810365cc9d808ab8d2"
+  },
+  "checkpoint": "experiments/results/credit/curie_joint_forward_credit_confirmation_20261011_v1_evaluate.pt",
+  "checkpoint_sha256": "8b83050dbe542c7fb56c7ba1bb3c2c299ec51e233fcefba343f88dea28493654",
+  "source_sha256": {
+    "experiments/credit/evaluate_joint_credit_confirmation.py": "d51a3e8b3e97152f207c6751c9552adff269c47c9ed512fe10afe926daa1f6a7",
+    "experiments/credit/JOINT_FORWARD_CREDIT_CONFIRMATION.md": "01106682fbd1c9e1840a9ff98d4333009057934c696811504cca0812546620ed",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Prospective fresh64-prefix/eight-future DEV, fixed registered scoring/endpoint/settings. Three continuation streams share actor seed170 and valid128 acquisition; r0 reused, r1/2 new data/draws/futures. Not three native model initializations. Exact full72-route independent learner scores, paired stream/context bootstrap. All teacher worlds/readout updates charged; per-arm whole fit includes inherited acquisition. Prior diagnostics and shared verification additional. Supported FLOPs omit unsupported/scalar/special/optimizer arithmetic, included in wall. DEV labels retained as evidence, prohibited as TRAIN. One synthetic development confirmation, no TEST/public benchmark/depth/hardware claim."
+}
