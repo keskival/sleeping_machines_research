@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_split2_marks_check_20261011",
+  "battle": "B4 development",
+  "stage": "logspread_marks_contract",
+  "zero_branch_loss_error": 0.0,
+  "v20_mark_path_loss_error": 0.0,
+  "time_gradient_norm": 0,
+  "mark_gradient_norm": 62.46003575821711,
+  "full_gradient_finite": true,
+  "train_targets": 33,
+  "parameters": 29057,
+  "base_parameters": 21768,
+  "source_sha256": {
+    "experiments/tpp/check_split2_logspread_marks.py": "9b4072c1825352e72cda584f038174acf5dd0dc72dbc723321274d4e01014115",
+    "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+  },
+  "checkpoint_sha256": "6400958b71cd4372cd95a14d8a8788ea4ae1836373e597220cb80e4865dc4314",
+  "data_sha256": "90c4a9d5f3e561816cd255bac25ab5898643f02795d452127f897d5fcfcdf03b",
+  "wall_s": 0.08172216801904142,
+  "max_rss_kb": 332888,
+  "scope": "Two short TRAIN sequences, saved repaired checkpoint; zero-init timing/mark parity and established v20 branch parity. No TEST or quality claim.",
+  "decision": "Passing admits fixed mark-memory TRAIN/DEV development fit; timing invariance is a contract, not a promised training outcome."
+}
