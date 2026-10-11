@@ -1,0 +1,185 @@
+{
+  "status": "completed",
+  "tag": "aws_deep_temporal_packet_20261011_v1",
+  "battle": "B1 deep joint temporal credit",
+  "rows": [
+    {
+      "depth": 2,
+      "events": 4,
+      "jvp_error": 1.3322676295501878e-15,
+      "vjp_error": 1.3322676295501878e-15,
+      "reciprocity_error": 1.8318679906315083e-15,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 560
+    },
+    {
+      "depth": 2,
+      "events": 32,
+      "jvp_error": 2.6645352591003757e-15,
+      "vjp_error": 1.7763568394002505e-15,
+      "reciprocity_error": 2.220446049250313e-15,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 4480
+    },
+    {
+      "depth": 4,
+      "events": 4,
+      "jvp_error": 1.3322676295501878e-15,
+      "vjp_error": 1.5543122344752192e-15,
+      "reciprocity_error": 2.7755575615628914e-15,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 1120
+    },
+    {
+      "depth": 4,
+      "events": 32,
+      "jvp_error": 3.1086244689504383e-15,
+      "vjp_error": 3.552713678800501e-15,
+      "reciprocity_error": 1.0658141036401503e-14,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 8960
+    },
+    {
+      "depth": 8,
+      "events": 4,
+      "jvp_error": 5.773159728050814e-15,
+      "vjp_error": 3.552713678800501e-15,
+      "reciprocity_error": 3.1086244689504383e-15,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 2240
+    },
+    {
+      "depth": 8,
+      "events": 32,
+      "jvp_error": 5.329070518200751e-15,
+      "vjp_error": 6.661338147750939e-15,
+      "reciprocity_error": 3.019806626980426e-14,
+      "causal_suffix_error": 0.0,
+      "cached_floats": 17920
+    }
+  ],
+  "actor_rows": [
+    {
+      "depth": 2,
+      "version": 0,
+      "loss": 2.833692842657321,
+      "gradient_error": 2.7755575615628914e-17,
+      "parameter_error": 0.0,
+      "adam_error": 2.6020852139652106e-18,
+      "tempo_gradient_norm": 0.1305093663045518
+    },
+    {
+      "depth": 2,
+      "version": 1,
+      "loss": 2.765189683616684,
+      "gradient_error": 2.7755575615628914e-17,
+      "parameter_error": 0.0,
+      "adam_error": 5.204170427930421e-18,
+      "tempo_gradient_norm": 0.13502280924185456
+    },
+    {
+      "depth": 2,
+      "version": 2,
+      "loss": 2.699289292353106,
+      "gradient_error": 2.7755575615628914e-17,
+      "parameter_error": 0.0,
+      "adam_error": 3.469446951953614e-18,
+      "tempo_gradient_norm": 0.13841154112105006
+    },
+    {
+      "depth": 2,
+      "version": 3,
+      "loss": 2.6359678647765716,
+      "gradient_error": 2.7755575615628914e-17,
+      "parameter_error": 3.469446951953614e-18,
+      "adam_error": 6.938893903907228e-18,
+      "tempo_gradient_norm": 0.14070302133969773
+    },
+    {
+      "depth": 4,
+      "version": 0,
+      "loss": 2.7345073069788675,
+      "gradient_error": 9.71445146547012e-17,
+      "parameter_error": 2.168404344971009e-19,
+      "adam_error": 1.0408340855860843e-17,
+      "tempo_gradient_norm": 0.3341510047255986
+    },
+    {
+      "depth": 4,
+      "version": 1,
+      "loss": 2.6379711606038114,
+      "gradient_error": 1.249000902703301e-16,
+      "parameter_error": 4.336808689942018e-19,
+      "adam_error": 1.734723475976807e-17,
+      "tempo_gradient_norm": 0.3308249693856145
+    },
+    {
+      "depth": 4,
+      "version": 2,
+      "loss": 2.543144622919897,
+      "gradient_error": 5.551115123125783e-17,
+      "parameter_error": 2.7755575615628914e-17,
+      "adam_error": 1.3877787807814457e-17,
+      "tempo_gradient_norm": 0.3303192173448988
+    },
+    {
+      "depth": 4,
+      "version": 3,
+      "loss": 2.450976805648927,
+      "gradient_error": 2.220446049250313e-16,
+      "parameter_error": 5.551115123125783e-17,
+      "adam_error": 5.551115123125783e-17,
+      "tempo_gradient_norm": 0.3329799810482206
+    },
+    {
+      "depth": 8,
+      "version": 0,
+      "loss": 2.1514550766676166,
+      "gradient_error": 1.942890293094024e-16,
+      "parameter_error": 0.0,
+      "adam_error": 2.0816681711721685e-17,
+      "tempo_gradient_norm": 0.5366310600583333
+    },
+    {
+      "depth": 8,
+      "version": 1,
+      "loss": 1.9777072309526083,
+      "gradient_error": 5.551115123125783e-17,
+      "parameter_error": 4.336808689942018e-19,
+      "adam_error": 2.0816681711721685e-17,
+      "tempo_gradient_norm": 0.5401002860771709
+    },
+    {
+      "depth": 8,
+      "version": 2,
+      "loss": 1.82289894453122,
+      "gradient_error": 4.440892098500626e-16,
+      "parameter_error": 5.551115123125783e-17,
+      "adam_error": 5.551115123125783e-17,
+      "tempo_gradient_norm": 0.5144373610845459
+    },
+    {
+      "depth": 8,
+      "version": 3,
+      "loss": 1.69340493316324,
+      "gradient_error": 2.4424906541753444e-15,
+      "parameter_error": 1.1102230246251565e-16,
+      "adam_error": 3.3306690738754696e-16,
+      "tempo_gradient_norm": 0.46658420654401267
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/check_deep_temporal_packet.py": "72adc553a154380a053ca90f434798f1bce7c82a7e60405fff5d18d8bd8cf856",
+    "experiments/credit/native_deep_temporal_packet.py": "4ac12ee90d01eb5375e549ff02ea24c2e3c16b5508ecb30a71120f4fd00403f8",
+    "experiments/credit/native_temporal_teaching_packet.py": "af41285f2601f57ff7151ca81128031d3336fc37f42319b0b6a4a29a86deff46",
+    "experiments/credit/native_training_temporal_packet.py": "c9b4741744b315c915f033443336c64c2287f3b609bc59ae628593dca731f2ae",
+    "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "wall_s": 1.3429043150972575,
+  "max_rss_kb": 420548,
+  "scope": "Native dense-write execution diagnostic; depths2/4/8, shared scaled elapsed time, real Taxi TRAIN gaps. Exact content/time transport, intermediate-clock invalidation, causal suffix and all-parameter Adam parity. No learned-credit, task-quality, hard-route, full-fit or efficiency claim; active architecture unchanged."
+}
