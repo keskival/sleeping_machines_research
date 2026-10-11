@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_optimizer_transport_fresh_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 5.528611645346457e-06,
+      "conditional_logit_variance": 5.358514126113595e-06
+    },
+    {
+      "arm": "first8_exact_no_tail",
+      "mse": 1.973315582854456e-06,
+      "conditional_logit_variance": 1.912602092864422e-06
+    },
+    {
+      "arm": "static_full",
+      "mse": 2.965443064349793e-07,
+      "conditional_logit_variance": 2.8743170530227495e-07
+    },
+    {
+      "arm": "reference_full",
+      "mse": 2.017558793704697e-07,
+      "conditional_logit_variance": 1.9555889521020713e-07
+    },
+    {
+      "arm": "transport_diagonal",
+      "mse": 6.07810365227471e-11,
+      "conditional_logit_variance": 5.894386540998815e-11
+    }
+  ],
+  "comparisons": {
+    "transport_over_static_full": {
+      "mse_gain": 2.964835253984566e-07,
+      "paired_prefix_bootstrap95": [
+        2.964835253984566e-07,
+        2.964835253984566e-07
+      ],
+      "per_prefix_gain": [
+        2.964835253984566e-07
+      ]
+    },
+    "transport_over_reference_full": {
+      "mse_gain": 2.0169509833394694e-07,
+      "paired_prefix_bootstrap95": [
+        2.0169509833394694e-07,
+        2.0169509833394694e-07
+      ],
+      "per_prefix_gain": [
+        2.0169509833394694e-07
+      ]
+    }
+  },
+  "accuracy_gate": true,
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "mse": 6.07810365227471e-11,
+      "conditional_logit_variance": 5.894386540998815e-11
+    },
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "mse": 5.528611645346457e-06,
+      "conditional_logit_variance": 5.358514126113595e-06
+    },
+    {
+      "prefix": 0,
+      "arm": "first8_exact_no_tail",
+      "mse": 1.973315582854456e-06,
+      "conditional_logit_variance": 1.912602092864422e-06
+    },
+    {
+      "prefix": 0,
+      "arm": "static_full",
+      "mse": 2.965443064349793e-07,
+      "conditional_logit_variance": 2.8743170530227495e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "reference_full",
+      "mse": 2.017558793704697e-07,
+      "conditional_logit_variance": 1.9555889521020713e-07
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "routes": 65,
+      "carrier_supported_flops": 939190016,
+      "carrier_wall_s": 2.233075349009596,
+      "teacher_supported_flops": 13380556800,
+      "teacher_wall_s": 1.6446495540003525,
+      "reference_supported_flops": 205985792,
+      "reference_wall_s": 0.2741775110043818,
+      "transport_supported_flops": 308912128,
+      "transport_wall_s": 0.32346423699345905,
+      "first8_oracle_route": 59,
+      "full_oracle_route": 59,
+      "first8_choice_full_regret": 0.0,
+      "true_future_tail_rms": 0.0014047475156961325
+    }
+  ],
+  "context": 64,
+  "targets_per_prefix": 16,
+  "train_offset": 4399104,
+  "actual_worlds": 67,
+  "readout_updates": 1072,
+  "whole_wall_s": 4.6427342999959365,
+  "peak_rss_kb": 455380,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "checkpoint": "experiments/results/credit/curie_optimizer_transport_fresh_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "bd5d13f3bd000463d801f728ea88cdea08872f8405180b79c04adc7c45b7059f",
+  "source_sha256": {
+    "experiments/credit/measure_optimizer_transport_fresh.py": "0c1ed7dcdb64a2609cbed865fb62632a4b24c0fe2326587ef00c5f90e97f4d1a",
+    "experiments/credit/token_optimizer_transport.py": "c46d5c575464178457c2e18df573c15ba9140ca8d851d4597c015b470f0eeebc",
+    "experiments/credit/OPTIMIZER_TRANSPORT_FRESH_PROTOCOL.md": "b056207b5595dcbfb5dfc9e2c822501e67473fc02da2ba243d3dcebc75877eb8",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Eight prospective fresh properly tokenized TRAIN prefixes/48futuretargets/64context in measurement; disjoint smoke prefix. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection and frozen diagonal optimizer-transport rule. Method fixed from previous four-prefix calibration before these labels; no fitting/tuning or actor utility claim. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+}

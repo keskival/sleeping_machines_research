@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_transport_execution_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "rows": [
+    {
+      "prefix": 0,
+      "repeat": 0,
+      "arm": "exact",
+      "action": 25,
+      "wall_s": 1.6975896829972044,
+      "supported_flops": 13380556800,
+      "actual_worlds": 65,
+      "actual_score_error": 0.0
+    },
+    {
+      "prefix": 0,
+      "repeat": 0,
+      "arm": "transport_corrected",
+      "action": 25,
+      "wall_s": 0.43907146400306374,
+      "supported_flops": 514766848,
+      "actual_worlds": 2,
+      "actual_score_error": 1.7763568394002505e-15
+    }
+  ],
+  "common": [
+    {
+      "prefix": 0,
+      "wall_s": 2.202525254993816,
+      "supported_flops": 939022208
+    }
+  ],
+  "summaries": [
+    {
+      "arm": "exact",
+      "median_stage_wall_s": 1.6975896829972044,
+      "median_stage_supported_flops": 13380556800.0,
+      "whole_pipeline_wall_s": 3.9001149379910203,
+      "whole_pipeline_supported_flops": 14319579008.0
+    },
+    {
+      "arm": "transport_corrected",
+      "median_stage_wall_s": 0.43907146400306374,
+      "median_stage_supported_flops": 514766848.0,
+      "whole_pipeline_wall_s": 2.6415967189968796,
+      "whole_pipeline_supported_flops": 1453789056.0
+    }
+  ],
+  "whole_pipeline_speedup": 1.4764232972972688,
+  "supported_work_ratio": 0.10152456683173461,
+  "whole_wall_s": 4.508587345000706,
+  "peak_rss_kb": 455440,
+  "source_labels_sha256": "3566eaf35e04d74fe5afdad18f67d086dfc12a97d1307e43ab8a88f2f2ad3563",
+  "source_sha256": {
+    "experiments/credit/measure_transport_execution.py": "be60d42f4c816888f7dbdf3c86aed62a1b4e3b3e9098c8b5797b4391f282681b",
+    "experiments/credit/token_optimizer_transport.py": "c46d5c575464178457c2e18df573c15ba9140ca8d851d4597c015b470f0eeebc",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Matched fixed carrier/prefix candidate acquisition and proper-token route universe, three rotated repeats per prefix in measurement. Exact computes all independent learner costs; approximation transports all Adam worlds plus executes selected factual learner and real reference, full residual issued-uniform logit update paid. Actual/reference losses exact, predictor approximate (accuracy recorded separately). Whole current acquisition pipeline includes shared source context/normalization/keys/candidate discovery. No task fitting/whole-model/depth/energy or matched-quality learning-speed claim. All repeated execution work and oracle/source pretraining additional; supported FLOPs omit unsupported work included in wall. No DEV/TEST."
+}
