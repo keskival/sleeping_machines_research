@@ -39,3 +39,9 @@ One four-event Taxi TRAIN prefix, native temporal layer and actual observed-loss
 ## Completed numerical evidence
 
 aws_native_forward_residual_risk_20261011_v1 completes:32 cut probes/128 producer probes for112 producer parameters. Exact cut risk0.0146475782, producer risk0.0780145134; errors5.20e-18/0 and conditional risk-training gradient error5.55e-17. Label acquisition0.956ms, separate reverse verification0.658ms, whole gate0.049s/305.9MiB. Reverse validation is cheaper here; exhaustive forward labels are not an efficiency win. They provide the observation needed to teach risk from existing teaching packets. Sparse probe variance and learned-risk allocation require the next owned integration experiment.
+
+## Joint content/time and shared-producer correction
+
+For deep output h=F(x,tau), issued terminal cotangent c and predicted fields (g_x,g_tau), a joint forward observation is delta=c^T(J_x v+J_tau w)-g_x^T v-g_tau^T w. Independent isotropic cut directions estimate ||J_x^T c-g_x||^2+||J_tau^T c-g_tau||^2. A shared producer requires v=A_x xi,w=A_tau xi using the **same** parameter-space direction xi. Its squared observation estimates ||A_x^T r_x+A_tau^T r_tau||^2, including2< A_x^T r_x,A_tau^T r_tau >. Adding separately estimated output risks omits this term and can misallocate audits.
+
+B1 registered numerical gate: native depths2/4/8, actual Taxi TRAIN loss cotangent, four events; diagnostic positive internal tempo shares content parameters via0.1mean(content). This exposes cross terms without changing active fits, physical addressed-memory or race clocks. Exhaustive orthogonal directions validate both cut and producer identities and the issued positive risk learner's expected gradient. Forward responses generate labels; separate reverse validation and all preparation are paid. This is a calibration-target contract, not a fitted-risk/audit-utility claim.
