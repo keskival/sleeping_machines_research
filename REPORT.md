@@ -4591,6 +4591,49 @@ Whole fresh diagnostic30.60s, RSS317.1MiB. Policy9.034MFLOPs; teacher41.214MFLOP
 
 Next: paired forward/learner evidence trains the connected contrast critic; supported Bernoulli residual audits preserve the declared future-effect mean while prediction quality controls audit work. Test actual causal forward utility and complete fitting cost before a scaling claim.
 
+### Connected paired credit: acquisition and reuse
+
+A10584-parameter connected route controller and an equally sized recurrent critic learn together. A fixed native depth4 timed/keyed carrier executes one selected optional hard write; every episode scores four factual future forecasts before independent readout Adam updates. A positive-probability audit adds a reference world and trains credit from learner-aware loss contrasts. No backpropagated-gradient labels train this critic.
+
+| Arm | Gain / target | Pair error / zero | Fit GFLOPs | MFLOPs / target | Fit seconds |
+| --- | --- | --- | --- | --- | --- |
+| full fixed | -0.002575 | 0.244 | 0.350 | 0.171 | 123.4 |
+| fixed | -0.001758 | 0.244 | 0.331 | 0.162 | 121.8 |
+| learned | -0.006176 | 1.129 | 1.159 | 0.566 | 133.0 |
+| reset | -0.003324 | 0.244 | 0.545 | 0.266 | 126.3 |
+| reuse | -0.003236 | 1.246 | 0.545 | 0.266 | 126.5 |
+
+Latest completed stage: reuse; one seed,32 common DEV prefixes/eight paired futures, including receivers6/7 never TRAIN-labelled. Gains compare with the saved baseline route; arithmetic and wall use the same whole-fit boundary in every row, per-target work divides by unique factual targets. Fitting includes acquisition for frozen-reuse/reset clones. Supported FLOPs omit unsupported pointwise/scalar/special and optimizer arithmetic; full wall includes those operations. Inherited source-model pretraining remains additional.
+
+| Episodes | Learned over fixed gain | Pair MSE learned / fixed | Learned / full fit work |
+| --- | --- | --- | --- |
+| 128 | -0.000182 | 5.102 | 2.954 |
+| 512 | -0.004418 | 4.622 | 3.311 |
+
+| Paired utility comparison | Gain / target | Prefix bootstrap95 |
+| --- | --- | --- |
+| learned over fixed | -0.004418 | [-0.006999, -0.001914] |
+| learned over full fixed | -0.003601 | [-0.006916, -0.000339] |
+| reuse over reset | +0.000088 | [-0.003738, +0.003511] |
+| learned over reuse | -0.002940 | [-0.005625, -0.000296] |
+
+The experience ladder admits further acquisition after finite/resource checks, rather than requiring an immediate small-scale utility advantage. At128 episodes learned credit has5.10x the frozen critic’s held-out contrast error and2.95x full-audit supported fitting work. Original512 clones shared optimizer/history storage: its reuse comparison is invalid and excluded. The repaired512 stage uses independent clones of the intact128 checkpoint and validated cached replay. Only completed valid rows appear here; these comparisons diagnose the variant and its paid investment.
+
+At512, continuing learned credit trails fixed sparse credit by0.004418nats/target (signed gain interval-0.006999to-0.001914); held-out pair MSE is4.622x fixed. Acquired-frozen versus reset gain+0.000088has an interval crossingzero. This prefix-only variant has no acquired-credit utility/economy win; the next integration tests revealed exogenous observations on the learning side.
+
+Completed valid phases626.29s; shared DEV verification0.199supportedGFLOPs is additional, with all requested action/probe worlds counted. Peak RSS377.6MiB. Per-arm factual target/policy/critic/readout-update and extra-world counts are retained in source JSON/PT. Carrier is fixed; readouts reset per episode. This is synthetic route-learning development, not all-carrier, real-market, matched-quality or depth-scaling evidence. Original invalid512 phase807.44s/2.029supported trainingGFLOPs plus its DEV verification was paid and remains additional development expenditure.
+
+### Exact fixed-carrier paired replay caching
+
+| Two-world replay | MFLOPs / iteration | Median ms / iteration |
+| --- | --- | --- |
+| original | 0.264192 | 265.56 |
+| cached | 0.081024 | 79.53 |
+
+Same two worlds/four forecasts per world, five repetitions: cached replay is3.34x faster with69.3% fewer supported kernelFLOPs. Scores/gradients/final weights/Adam states match within3e-15 at depths2/4/8; changing future suffix does not change the first forecast. Fixed carrier features/hazards/key bonuses are reused, while all readout updates remain causal and independent. Retained carrier outputs400values/world exclude weights, optimizer and whole temporary state. Kernel speed is separate from complete fitting or changing-carrier learning.
+
+The next economy test follows sensitivity-weighted gradient residuals and actual audit cost. A predictable positive audit propensity can preserve the raw mean while allocating work; critic training must amortize its own query, storage and update cost. Gradient clipping and Adam do not preserve raw-gradient unbiasedness as a parameter-update identity. Revealed raw future observations can enter learning-side credit when the internal route does not change the external sequence, while forecasts remain prefix-only; finite conditional-mean/variance and endogenous-input rejection contracts pass.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
