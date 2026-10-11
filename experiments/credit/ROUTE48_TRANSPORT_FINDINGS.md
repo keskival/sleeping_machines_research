@@ -35,3 +35,25 @@ Preserve existing credit accuracy and execution evidence independently of this
 utility endpoint. Joint depth composition/anchors/future-loss objectives are
 specified in LEARNED_DEPTH_CREDIT_REPRESENTATIONS.md; they need integrated
 implementation and complete work-to-quality comparisons.
+
+
+## Completed follow-up: policy movement and warm lexical state
+
+Saved policies move: mean total variation from initial .01788 zero/.02226
+static/.02408 transport. Thus lack of movement is not the measured explanation.
+The paired warm-state follow-up reuses8 private prefixes and keeps native64
+context fixed.191 causal lexical/Adam updates before each future; exact
+independent carried-world scoring. Transport-over-static -1.032e-7 nats/target,
+95%[-8.407e-7,+5.365e-7]; over initial+1.517e-7, interval crosseszero.
+Warm-up changes initial-policy mean NLL by +.009412 improvement, which is
+ordinary lexical adaptation, not a benefit of learned credit. Replacing cold
+learner state does not establish route-policy utility. Cost111.234s/372.085GF,
+609548KB peak; no new fitting/public scoring. Source-bound result
+curie_route48_warm_20261011_v1_measure.json, not independent confirmation.
+
+The next registered iteration learns an explicit connected prefix-only future
+consequence predictor from shared forward transport plus exact sampled residual
+correction. Its corrected squared-risk loss and connected parameter gradients
+match exact enumeration at depths2/4/8. See FORWARD_CREDIT_PREDICTOR_PROTOCOL.md
+and theory/FORWARD_TAUGHT_CONNECTED_CREDIT_RISK.md. This is a new capability
+test with new acquisition/scoring prefixes, not another actor learning-rate retry.

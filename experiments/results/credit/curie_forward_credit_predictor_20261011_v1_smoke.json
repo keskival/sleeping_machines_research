@@ -1,0 +1,123 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_forward_credit_predictor_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "predictive_gate": false,
+  "config": {
+    "train_prefixes": 2,
+    "scoring_prefixes": 1,
+    "context": 64,
+    "horizon": 48,
+    "fit_passes": 10,
+    "lr": 0.001,
+    "output_scale": 0.001,
+    "train_offset": 4587520,
+    "scoring_offset": 4657152
+  },
+  "stages": {
+    "acquisition": {
+      "wall_s": 8.739275747007923,
+      "supported_flops": 6648978944,
+      "actual_worlds": 6,
+      "actual_updates": 288,
+      "transported_updates": 6240
+    },
+    "fitting": {
+      "wall_s": 0.3124146350019146,
+      "supported_flops": 180669440,
+      "arms": [
+        {
+          "arm": "uncorrected",
+          "updates": 20,
+          "first_loss": 0.20214963248939505,
+          "last_loss": 0.8603486155517197,
+          "parameters": 54081
+        },
+        {
+          "arm": "corrected",
+          "updates": 20,
+          "first_loss": 0.20214958736683225,
+          "last_loss": 0.860346917767023,
+          "parameters": 54081
+        }
+      ]
+    },
+    "scoring": {
+      "wall_s": 6.592724738002289,
+      "supported_flops": 41308589824,
+      "actual_worlds": 65,
+      "actual_updates": 3120
+    }
+  },
+  "rows": [
+    {
+      "prefix": 0,
+      "mse": {
+        "uncorrected": 1.5085717713359636e-07,
+        "corrected": 1.5085889266366386e-07,
+        "zero": 1.2398295801738205e-07
+      },
+      "contrast_rms": 0.0003521121384124411,
+      "greedy_regret": {
+        "uncorrected": 0.0008521215258392445,
+        "corrected": 0.0008521215258392445,
+        "zero": 0.0012312028289320764
+      },
+      "prediction_rms": {
+        "uncorrected": 0.00019255548218833065,
+        "corrected": 0.00019255862236344605,
+        "zero": 0.0
+      },
+      "routes": 65
+    }
+  ],
+  "comparisons": {
+    "corrected_over_zero": {
+      "mean_gain": -2.6875934646281805e-08,
+      "paired_prefix_bootstrap95": [
+        -2.6875934646281805e-08,
+        -2.6875934646281805e-08
+      ],
+      "per_prefix": [
+        -2.6875934646281805e-08
+      ]
+    },
+    "corrected_over_uncorrected": {
+      "mean_gain": -1.7155300675016729e-12,
+      "paired_prefix_bootstrap95": [
+        -1.7155300675016729e-12,
+        -1.7155300675016729e-12
+      ],
+      "per_prefix": [
+        -1.7155300675016729e-12
+      ]
+    },
+    "uncorrected_over_zero": {
+      "mean_gain": -2.6874219116214303e-08,
+      "paired_prefix_bootstrap95": [
+        -2.6874219116214303e-08,
+        -2.6874219116214303e-08
+      ],
+      "per_prefix": [
+        -2.6874219116214303e-08
+      ]
+    }
+  },
+  "wall_s": 15.811731259003864,
+  "peak_rss_kb": 537688,
+  "checkpoint": "experiments/results/credit/curie_forward_credit_predictor_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "dabf59e18013d2e15cbcda6512b1651ca2be12e5b8822e6f61446e2e9812784d",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/fit_forward_credit_predictor.py": "fb0855f99832b2c62d067e627b98252a41e9df580fa08d7f357994a1395a2ba8",
+    "experiments/credit/token_learner_state_features.py": "960b96538876659ad6b09c21f4ef49f009ed093831f136f7c89ef5ba1867274e",
+    "experiments/credit/connected_credit_risk.py": "492232511814c107eeca3b59ac9914996d904d96c0722613c64f7cffd3cdea8c",
+    "experiments/credit/FORWARD_CREDIT_PREDICTOR_PROTOCOL.md": "538869083f1fe355848d9103a98aaee245702894d3dca9fb014c5f5f75c16ef5",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/token_optimizer_transport_carried.py": "7585e164cfe7b86ea4d2546e080b39c5b7e6d0ff0e03aae0895e273cf96bde39",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8"
+  },
+  "scope": "Connected prefix-only48target route-consequence predictor, one development initialization. Cold lexical state, fixed native2layer pretrained model/proper50257GPT2vocabulary. New private TRAIN-tail acquisition/scoring cohorts, no public DEV/TEST or actor/fullnative learning. Approximate transported labels and exact sampled/no-op correction paid; all exact scoring/discovery/copies paid. Source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Final10pass checkpoint, no scoring selection. Adam feature interface present but constant during this cold-state fit; its utility not measured."
+}

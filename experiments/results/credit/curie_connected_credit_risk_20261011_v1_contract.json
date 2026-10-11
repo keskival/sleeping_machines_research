@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_connected_credit_risk_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "max_error": 1.3322676295501878e-15
+    },
+    {
+      "depth": 4,
+      "max_error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 8,
+      "max_error": 3.552713678800501e-15
+    }
+  ],
+  "wall_s": 0.013846683999872766,
+  "source_sha256": {
+    "experiments/credit/connected_credit_risk.py": "492232511814c107eeca3b59ac9914996d904d96c0722613c64f7cffd3cdea8c",
+    "experiments/credit/check_connected_credit_risk.py": "f5e4ad2728874bac22bdd1b91dd092b37acfe1063bd6e915ce19ddfe1ef99b08"
+  }
+}

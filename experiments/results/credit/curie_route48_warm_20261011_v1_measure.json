@@ -1,0 +1,264 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_route48_warm_20261011_v1_measure",
+  "mode": "measure",
+  "gate": true,
+  "parent": "curie_route48_transport_20261011_v1_fit",
+  "parent_sha256": "da32afdd26c6fbcebd98c783c19872b8f2cfc0424b627e81be4f7109f472c42c",
+  "rows": [
+    {
+      "prefix": 0,
+      "expected_nll": {
+        "initial": 5.337691479616543,
+        "zero": 5.3376929588692885,
+        "static": 5.337695229216072,
+        "transport": 5.33769621945504
+      },
+      "cold_expected_nll": {
+        "zero": 5.358429941346174,
+        "static": 5.358432017050591,
+        "transport": 5.358432792856448,
+        "initial": 5.358429080049904
+      },
+      "uniform_nll": 5.337681128657665,
+      "oracle_nll": 5.336954332764155,
+      "noop_nll": 5.3376788324503055,
+      "warm_lexical_norm": 0.7137578763985447,
+      "routes": 65
+    },
+    {
+      "prefix": 1,
+      "expected_nll": {
+        "initial": 5.376667143743447,
+        "zero": 5.376665004687091,
+        "static": 5.376663739314411,
+        "transport": 5.376662795114505
+      },
+      "cold_expected_nll": {
+        "zero": 5.379190414520135,
+        "static": 5.379194162283291,
+        "transport": 5.379193632487153,
+        "initial": 5.3791931035969425
+      },
+      "uniform_nll": 5.376679517891746,
+      "oracle_nll": 5.37568330829706,
+      "noop_nll": 5.3766766359735705,
+      "warm_lexical_norm": 0.9748548577825866,
+      "routes": 65
+    },
+    {
+      "prefix": 2,
+      "expected_nll": {
+        "initial": 6.358045455895195,
+        "zero": 6.358047337947216,
+        "static": 6.358044610456968,
+        "transport": 6.3580450564188125
+      },
+      "cold_expected_nll": {
+        "zero": 6.346000722919539,
+        "static": 6.3459982096965275,
+        "transport": 6.345998666865834,
+        "initial": 6.34599890460167
+      },
+      "uniform_nll": 6.3580533451117915,
+      "oracle_nll": 6.357155574892609,
+      "noop_nll": 6.358051169949959,
+      "warm_lexical_norm": 0.9081936957444232,
+      "routes": 65
+    },
+    {
+      "prefix": 3,
+      "expected_nll": {
+        "initial": 5.342525990200456,
+        "zero": 5.342522860103373,
+        "static": 5.3425215460404205,
+        "transport": 5.342521112187257
+      },
+      "cold_expected_nll": {
+        "zero": 5.33799402522047,
+        "static": 5.337992969026091,
+        "transport": 5.337992532795173,
+        "initial": 5.337996908448085
+      },
+      "uniform_nll": 5.342542591168677,
+      "oracle_nll": 5.34012500098227,
+      "noop_nll": 5.342528248321339,
+      "warm_lexical_norm": 0.7862785828323146,
+      "routes": 65
+    },
+    {
+      "prefix": 4,
+      "expected_nll": {
+        "initial": 6.117986461891765,
+        "zero": 6.117981046959852,
+        "static": 6.117980442004431,
+        "transport": 6.117979465278122
+      },
+      "cold_expected_nll": {
+        "zero": 6.066470166155961,
+        "static": 6.06647016593708,
+        "transport": 6.066469902606197,
+        "initial": 6.066473256486353
+      },
+      "uniform_nll": 6.118002494477871,
+      "oracle_nll": 6.116877201324368,
+      "noop_nll": 6.117985915866217,
+      "warm_lexical_norm": 1.382972663073641,
+      "routes": 65
+    },
+    {
+      "prefix": 5,
+      "expected_nll": {
+        "initial": 5.605427085983494,
+        "zero": 5.605427296051362,
+        "static": 5.605436920527362,
+        "transport": 5.605439095827268
+      },
+      "cold_expected_nll": {
+        "zero": 5.682888283585246,
+        "static": 5.682902967952003,
+        "transport": 5.682905463160248,
+        "initial": 5.6828887085769635
+      },
+      "uniform_nll": 5.605429121368531,
+      "oracle_nll": 5.6009149898367205,
+      "noop_nll": 5.605394794444739,
+      "warm_lexical_norm": 1.1244625683573979,
+      "routes": 65
+    },
+    {
+      "prefix": 6,
+      "expected_nll": {
+        "initial": 5.132749877477277,
+        "zero": 5.132749206198557,
+        "static": 5.132750718275279,
+        "transport": 5.13275049817004
+      },
+      "cold_expected_nll": {
+        "zero": 5.1564772058988435,
+        "static": 5.156479515446277,
+        "transport": 5.156479522938004,
+        "initial": 5.156477917877858
+      },
+      "uniform_nll": 5.132748199130195,
+      "oracle_nll": 5.131771182843647,
+      "noop_nll": 5.132745324127716,
+      "warm_lexical_norm": 0.9851958516165907,
+      "routes": 65
+    },
+    {
+      "prefix": 7,
+      "expected_nll": {
+        "initial": 5.21900276578772,
+        "zero": 5.219002352597505,
+        "static": 5.219001015169879,
+        "transport": 5.219000804239808
+      },
+      "cold_expected_nll": {
+        "zero": 5.237932167514238,
+        "static": 5.237930531358421,
+        "transport": 5.237930202641008,
+        "initial": 5.237932740475081
+      },
+      "uniform_nll": 5.219001118647465,
+      "oracle_nll": 5.218347786307829,
+      "noop_nll": 5.218997128740816,
+      "warm_lexical_norm": 1.0549712094595507,
+      "routes": 65
+    }
+  ],
+  "comparisons": {
+    "transport_over_static": {
+      "gain": -1.0321075394337242e-07,
+      "paired_prefix_bootstrap95": [
+        -8.407050855252506e-07,
+        5.364876852764766e-07
+      ],
+      "per_prefix": [
+        -9.902389681570867e-07,
+        9.441999058168449e-07,
+        -4.4596184434197994e-07,
+        4.338531631731257e-07,
+        9.76726308721254e-07,
+        -2.1752999064261758e-06,
+        2.2010523892390665e-07,
+        2.1093007074313164e-07
+      ]
+    },
+    "transport_over_zero": {
+      "gain": -8.729095761772498e-07,
+      "paired_prefix_bootstrap95": [
+        -4.359400511597111e-06,
+        1.6496137491744929e-06
+      ],
+      "per_prefix": [
+        -3.2605857516188053e-06,
+        2.209572585343267e-06,
+        2.281528403536015e-06,
+        1.7479161158462375e-06,
+        1.5816817304781239e-06,
+        -1.1799775906595755e-05,
+        -1.2919714826864492e-06,
+        1.5483576962793677e-06
+      ]
+    },
+    "transport_over_initial": {
+      "gain": 1.5173813039393025e-07,
+      "paired_prefix_bootstrap95": [
+        -4.104191856671435e-06,
+        3.791124880581087e-06
+      ],
+      "per_prefix": [
+        -4.7398384968033724e-06,
+        4.348628941386323e-06,
+        3.9947638263981844e-07,
+        4.878013198705844e-06,
+        6.996613643117655e-06,
+        -1.200984377458525e-05,
+        -6.206927629648362e-07,
+        1.9615479116552592e-06
+      ]
+    },
+    "static_over_initial": {
+      "gain": 2.5494888433730267e-07,
+      "paired_prefix_bootstrap95": [
+        -3.2918174406315615e-06,
+        3.291371915317697e-06
+      ],
+      "per_prefix": [
+        -3.7495995286462858e-06,
+        3.4044290355694784e-06,
+        8.454382269817984e-07,
+        4.444160035532718e-06,
+        6.019887334396401e-06,
+        -9.834543868159074e-06,
+        -8.407980018887429e-07,
+        1.7506178409121276e-06
+      ]
+    }
+  },
+  "reference_errors": [
+    2.6645352591003757e-15,
+    1.7763568394002505e-15,
+    3.552713678800501e-15,
+    2.6645352591003757e-15,
+    2.6645352591003757e-15,
+    3.552713678800501e-15,
+    3.552713678800501e-15,
+    3.552713678800501e-15
+  ],
+  "worlds": 536,
+  "readout_updates": 26880,
+  "supported_flops": 372085111296,
+  "wall_s": 111.23431382000854,
+  "peak_rss_kb": 609548,
+  "checkpoint": "experiments/results/credit/curie_route48_warm_20261011_v1_measure.pt",
+  "checkpoint_sha256": "79ecb073a84747f585003f1cdc39f2b1cdc00ddfc684735e26212dd03d2462e9",
+  "source_sha256": {
+    "experiments/credit/diagnose_route48_warm.py": "8ed2df41b45d50c081d87c9c46c949812e9f79c516588de06e3466fd8ae970a4",
+    "experiments/credit/token_exact_world_readouts_carried.py": "4236c49ae1d2aa7c15d7eaea0b96f47a3a13a7157d5ef7d37e6777b7d631b9bd",
+    "experiments/credit/WARM_POLICY_DIAGNOSIS_PROTOCOL.md": "d027a65435d45ac9e997b4d170abdc68da9d6cbe2f3a6417157b93212e2466bf"
+  },
+  "scope": "Reused private development prefixes/selected final policies, no fitting/public scoring. Only lexical/Adam state warm; native64context same as previous cold scoring. Warm causal191updates and all exact worlds/reference paid. Measure includes smoke-prefix reuse. Not a confirmation or whole-native online/depth result."
+}
