@@ -1,0 +1,144 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_native_sparse_model_queries_20261011_v1",
+  "rows": [
+    {
+      "arm": "sampled_1",
+      "queries": 1,
+      "median_wall_s": 0.1814689000020735,
+      "supported_flops_per_iteration": 498182.0,
+      "distinct_projected_routes": [
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "repetitions": 5,
+      "total_gradient_variance_estimate": 0.26232436049279484,
+      "iid_wall_variance_product": 0.04760371314237487
+    },
+    {
+      "arm": "sampled_2",
+      "queries": 2,
+      "median_wall_s": 0.1859855999937281,
+      "supported_flops_per_iteration": 498182.0,
+      "distinct_projected_routes": [
+        3,
+        2,
+        2,
+        2,
+        1
+      ],
+      "repetitions": 5,
+      "total_gradient_variance_estimate": 0.1404819485545343,
+      "iid_wall_variance_product": 0.026127619490203105
+    },
+    {
+      "arm": "sampled_4",
+      "queries": 4,
+      "median_wall_s": 0.19167344699962996,
+      "supported_flops_per_iteration": 498182.0,
+      "distinct_projected_routes": [
+        3,
+        3,
+        2,
+        4,
+        3
+      ],
+      "repetitions": 5,
+      "total_gradient_variance_estimate": 0.07956074258540405,
+      "iid_wall_variance_product": 0.015249681777194645
+    },
+    {
+      "arm": "sampled_8",
+      "queries": 8,
+      "median_wall_s": 0.18709915300132707,
+      "supported_flops_per_iteration": 498182.0,
+      "distinct_projected_routes": [
+        5,
+        4,
+        4,
+        5,
+        4
+      ],
+      "repetitions": 5,
+      "total_gradient_variance_estimate": 0.04910013960083892,
+      "iid_wall_variance_product": 0.009186594531563879
+    },
+    {
+      "arm": "exact_all_routes",
+      "queries": null,
+      "median_wall_s": 0.18433400499634445,
+      "supported_flops_per_iteration": 498182.0,
+      "distinct_projected_routes": [
+        54,
+        54,
+        54,
+        54,
+        54
+      ],
+      "repetitions": 5,
+      "total_gradient_variance_estimate": 0.018639536616273787,
+      "iid_wall_variance_product": 0.0034359004357537577
+    }
+  ],
+  "calibration": [
+    {
+      "prefix": 0,
+      "future_variance": 0.002407110285181354,
+      "model_query_variance": 0.06451554549806213,
+      "residual_variance": 1.1348228172740854e-05
+    },
+    {
+      "prefix": 1,
+      "future_variance": 0.00028093836780278524,
+      "model_query_variance": 0.04532463075853409,
+      "residual_variance": 3.497726364441632e-05
+    },
+    {
+      "prefix": 2,
+      "future_variance": 0.02338826536426673,
+      "model_query_variance": 0.29384098944087483,
+      "residual_variance": 7.065341284352026e-05
+    },
+    {
+      "prefix": 3,
+      "future_variance": 0.04813807328505888,
+      "model_query_variance": 0.5710581298086131,
+      "residual_variance": 0.000226780258124715
+    }
+  ],
+  "train_prefixes": 4,
+  "futures_per_prefix": 8,
+  "calibration_supported_flops": 51373392,
+  "calibration_teacher_worlds": 1760,
+  "measured_worlds_excluding_warmups": 1785,
+  "readout_updates_excluding_warmups": 7140,
+  "projection_parity_error": 0.0,
+  "preferred_measured_budget": "exact_all_routes",
+  "whole_wall_s": 14.654675300989766,
+  "peak_rss_kb": 348144,
+  "source_checkpoint_sha256": "e2866e72f8f58369aabf7ca6d7685b6518fd81ad6bac4c60a6977d3b9d191a89",
+  "source_sha256": {
+    "experiments/credit/measure_native_sparse_model_queries.py": "05fb8e6d6305c9c55da68f31a1b07b6a5b9f3ea7b8c9babd4eff6ed2f6b47ae6",
+    "experiments/credit/joint_forward_credit_episode.py": "a9495b89d2d700952f3e6cd5d2227cf86482c8e6a9ad1d76ce04f8f6c878488c",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Fixed acquired128 controller/native depth4 carrier, TRAIN-only4prefixes/8futures. Full54-route independently learning losses plus reference projections calibrate conditional residual/model sampling variance; future covariance sample estimate. Operational comparison includes prefix discovery/all54 policy normalization, factual/reference head copies/four causal Adam updates, candidate projection and actor backward; actor optimizer step omitted equally because weights stay fixed. Independent model queries use issued pi, with replacement; duplicates reuse projections. Five warmups additional to counted operational worlds, included in whole wall. Exact all-route contraction is distinct from iid54-query sampling. IID wall-times-variance product is a small calibration criterion, not Adam convergence, nonstationary causal throughput or hardware/depth claim. Complete wall includes unsupported/scalar/special/optimizer arithmetic; supported FLOPs do not. No DEV/TEST/fitting."
+}
