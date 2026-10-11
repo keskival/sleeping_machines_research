@@ -4537,6 +4537,31 @@ Both rows use the same16 prefixes,8 receivers and9 actions. Instrumented forward
 
 Same learned correction and packets, operator/value/gradient/short optimizer witnesses. No teacher/actor refit. Instrumented paired kernel work includes context projection; excludes common actor/baseline/discovery/prior fitting. No whole-fit or deployment speed claim.
 
+### Combined route credit trained for future task value
+
+Paid-packet diagnosis finds baseline static-response error larger than the learning-mediated effect. Even exact empirical effect addition can worsen route choices through error cancellation. The new combined correction uses expected future loss under a soft policy plus a frozen-prior KL penalty; matched MSE has the same2817 parameters, initialization, TRAIN data and256 updates. Fourfold TRAIN utility selection retains the baseline.
+
+| Fresh policy | Gain vs baseline | Prefix bootstrap95% | Extra query MFLOPs |
+| --- | --- | --- | --- |
+| baseline | +0.000000 | [+0.000000, +0.000000] | 0.000 |
+| locked | +0.000000 | [+0.000000, +0.000000] | 0.000 |
+| mse full diagnostic | -0.001869 | [-0.004030, -0.000089] | 2.720 |
+| task full diagnostic | +0.000694 | [-0.001498, +0.003006] | 2.720 |
+
+One synthetic actor seed170; native depth4 timed/keyed actor with optional hard writes, readout-only causal Adam. TRAIN selection uses32 paid prefixes/receivers0–5; fresh stream471 generated after locked selection. Fold bootstrap is exploratory, with overlapping training folds. Same2817 correction parameters/initialization/256 steps; known softmax/KL primitives. All prior teacher/baseline work remains charged; new fitting and replay recorded. No TEST, online critic co-adaptation or whole-fit/depth efficiency claim.
+
+Fresh32-prefix/8-continuation phase87.88s, teacher2.451supportedGFLOPs; cross-fit/refit20.32s/8.808GFLOPs. Each query cell is whole32-prefix work; prior baseline fitting/teacher costs remain additional.
+
+Task-valued fitting has a positive fresh diagnostic point gain, while MSE loses utility. The task interval crosses zero and the primary locked policy is unchanged; no adopted or replicated utility win.
+
+### Sparse utility audits expose a second learning objective
+
+Issued policy-difference residual audits reconstruct native utility within3.5e-18. Only two actions require support on each of12 changed prefixes; unchanged policies require no comparison audit. Current learned residual prediction raises conditional action-sampling variance0.000810 versus zero-predictor0.000231. No efficiency promotion.
+
+Already-paid fresh native synthetic response tables now examined for development. Exhaustive route-sampling witness conditional on empirical eight-continuation means, not future-innovation variance or live sampled-audit performance. Policy/prediction discovery, teacher and prior fitting remain charged. Diagnostic task-versus-MSE comparison, not the locked primary policy, replicated utility or whole-fit efficiency.
+
+Theory derives a common-mode residual calibration that leaves route choices and unbiased gain unchanged but minimizes this audit variance. The next integrated learner must train both task contrasts and economical residual transport, issuing its prediction/calibration before future feedback.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
