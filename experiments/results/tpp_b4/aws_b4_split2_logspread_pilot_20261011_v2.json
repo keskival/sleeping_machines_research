@@ -1,0 +1,97 @@
+{
+  "status": "completed",
+  "battle": "B4",
+  "tag": "aws_b4_split2_logspread_pilot_20261011_v2",
+  "dataset": "github_filtered",
+  "split": 2,
+  "args": {
+    "dataset": "github_filtered",
+    "split": 2,
+    "tag": "aws_b4_split2_logspread_pilot_20261011_v2",
+    "seed": 0,
+    "epochs": 5,
+    "patience": 30,
+    "max_wall_s": 1800.0,
+    "score_test": false,
+    "contract": false
+  },
+  "config": {
+    "d": 32,
+    "modes": 16,
+    "layers": 2,
+    "n_exp": 2,
+    "n_lognormal": 8,
+    "dv": 4,
+    "dropout": 0.3,
+    "lr": 0.003,
+    "batch": 32,
+    "state_modes": 16
+  },
+  "K": 8,
+  "recording_cell": 3.1717072346282293e-07,
+  "gap_components": 1,
+  "n_window": 0,
+  "scale": 0.0018535457197312866,
+  "parameters": 21768,
+  "best_epoch": 4,
+  "epochs_run": 5,
+  "skipped_updates": 0,
+  "skipped_first": [],
+  "wall_s": 223.35001301765442,
+  "val": {
+    "L_T": -268.8208080918789,
+    "L_M": 126.15684769637632,
+    "total": -142.66396039550256,
+    "sequences": 34
+  },
+  "history": [
+    {
+      "epoch": 0,
+      "val_L_T": -7.771519589943877,
+      "val_L_M": 182.23554192764308,
+      "val_total": 174.46402233769922,
+      "epoch_s": 44.91511869430542
+    },
+    {
+      "epoch": 1,
+      "val_L_T": -178.671867480622,
+      "val_L_M": 167.96453953729002,
+      "val_total": -10.707327943331995,
+      "epoch_s": 44.60089039802551
+    },
+    {
+      "epoch": 2,
+      "val_L_T": -234.8533605227053,
+      "val_L_M": 152.93974861513675,
+      "val_total": -81.91361190756852,
+      "epoch_s": 44.50252556800842
+    },
+    {
+      "epoch": 3,
+      "val_L_T": -257.2151707676614,
+      "val_L_M": 138.66823752618234,
+      "val_total": -118.54693324147902,
+      "epoch_s": 44.74403405189514
+    },
+    {
+      "epoch": 4,
+      "val_L_T": -268.8208080918789,
+      "val_L_M": 126.15684769637632,
+      "val_total": -142.66396039550256,
+      "epoch_s": 44.57078433036804
+    }
+  ],
+  "checkpoint": "experiments/results/tpp_b4/aws_b4_split2_logspread_pilot_20261011_v2.pt",
+  "source_sha256": {
+    "experiments/tpp/b4_logspread_split2_pilot.py": "a9176956a961640e34c045718a5f071c6916738a1d6a4c2131029f4874795355",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "stage": "logspread_development_pilot",
+  "scope": "Five-pass fresh Github split2 seed-0 TRAIN/DEV numerical-repair pilot; no TEST and no frozen benchmark replacement.",
+  "gate": {
+    "path": "experiments/results/tpp_b4/aws_b4_split2_logspread_check_20261011_v2.json",
+    "sha256": "bdacaaa9a7a95afca7740c1c8dfb38ea05a5091cb5904481b72c00a0bb8e5549"
+  }
+}
