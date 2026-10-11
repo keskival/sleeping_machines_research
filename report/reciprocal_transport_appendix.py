@@ -106,8 +106,8 @@ def learned_joint_blocks():
       ('p',f"Local acquisition certificate: three seeds, depths2/4/8,512 artificial terminal cotangents with four fresh full-support probes each,400Adam updates,1152parameter linear credit map.64fresh cotangents and probes after fit. Joint-field residual energy versus zero falls {100*min(x['residual_energy_reduction'] for x in rows):.3f}–{100*max(x['residual_energy_reduction'] for x in rows):.3f}%. One frozen four-event Taxi TRAIN context/three unique task targets per actor, not512new task examples. Forward-only fit labels; reverse validation separate. All acquisition/fitting investment charged; no whole-learning or state-transfer claim."),
       ('p','Portable fields/actors restored without refitting, actual observed-loss cotangents: learned shared-producer credit beats identity transport in9/9same-context cases and9/9one-Adam model-update cases;16/18new-context cases improve and2worsen. At depth8/seed1, both new contexts lose to zero/identity. This diagnoses missing state conditioning; it is not a depth/family task-loss verdict. The actor predictions are identical across credit evaluations. Expired maps require revalidation/audits.'),
       ('p','First native conditional audit-risk fit:13parameter positive model,12pre-label state/clock/normalization features,64four-event TRAIN contexts,8forward shared-producer probes per context,300Adam updates.32new TRAIN contexts, expected4audits/floor0.01. Metric is conditional raw-gradient trace sum R(1/pi-1), analytic at identical expected audit budget; full actor backward used to obtain observed-loss cotangent and charged. No sampled sparse updates or future task learning measured.'),
-      ('table',['seed','depth','reduction vs uniform %','reduction vs cotangent norm %'],
-       [[str(r['seed']),str(x['depth']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in risk for x in r['rows']]),
+      ('table',(['seed','depth','reduction vs uniform %','reduction vs cotangent norm %'],
+       [[str(r['seed']),str(x['depth']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in risk for x in r['rows']],[20,20,54,64])),
       ('p','The64-context pilot is mixed, including a depth8 deterioration; preserve every row. Next registered64/256/1024-context acquisition ladder keeps the estimator/configuration fixed, reuses forward labels and reserves a new128-context private TRAIN tail. All sizes reported, no best-size selection. Evidence: '+', '.join(tags)+'.')]
     return out + audit_ladder_blocks()
 
@@ -121,8 +121,8 @@ def audit_ladder_blocks():
         for source,sha in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==sha
         records.append(r)
     return [('p','Registered acquisition-scale ladder completed: unchanged13parameter risk model/features/300steps at64/256/1024contexts; shared8-probe forward labels,128new private TRAIN tail contexts, expected16audits/12.5% with floor0.01. Earlier exploratory validation explicitly enters acquisition. Every size retained; exact references are neither fitting targets nor features. Full raw records and shared/per-size standalone work retained. Metric is analytic conditional raw-gradient trace, not future task loss or complete fitting efficiency.'),
-      ('table',['seed','depth','TRAIN contexts','vs uniform %','vs cotangent norm %'],
-       [[str(r['seed']),str(x['depth']),str(x['train_contexts']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in records for x in r['rows']]),
+      ('table',(['seed','depth','TRAIN contexts','vs uniform %','vs cotangent norm %'],
+       [[str(r['seed']),str(x['depth']),str(x['train_contexts']),f"{100*x['reduction_vs_uniform']:.2f}",f"{100*x['reduction_vs_cotangent_norm']:.2f}"] for r in records for x in r['rows']],[16,16,34,38,54])),
       ('p','Measured whole ladder wall/RSS: '+', '.join(f"seed{r['seed']} {r['wall_s']:.2f}s/{r['max_rss_kb']/1024:.1f}MiB" for r in records)+'. Earlier local-field fits,64-context pilots and publication are additional. No Transformer/task-quality/whole-learning claim. Evidence: '+', '.join(r['tag'] for r in records)+'.')]
 
 def pages():
