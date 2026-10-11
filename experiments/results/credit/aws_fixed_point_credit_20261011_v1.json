@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 reciprocal fixed-point credit",
+  "tag": "aws_fixed_point_credit_20261011_v1",
+  "dimension": 32,
+  "cold_calls": 18,
+  "warm_calls": 12,
+  "fresh_calls": 18,
+  "exact_error": 4.5740052474287216e-11,
+  "residual_norm": 4.7639113526316136e-11,
+  "certified_error_bound": 8.661657004784752e-11,
+  "cold_solve_s": 0.0001683930167928338,
+  "source_sha256": {
+    "experiments/credit/fixed_point_credit.py": "c8b0c3903f0bc2c4783b42095c639c028434fc43e8263fb5f6f06e483de2267e",
+    "experiments/credit/check_fixed_point_credit.py": "4f1f482328b76ee47991fd2c8795dae5ead1254b760982e9ca6ff26f668ead01"
+  },
+  "scope": "Frozen synthetic linear contraction; bound supplied from measured matrix norm. Transport callback hides no charged work: one dense matvec per call here. No native actor/critic integration, coupled learning convergence, quality or end-to-end efficiency claim."
+}
