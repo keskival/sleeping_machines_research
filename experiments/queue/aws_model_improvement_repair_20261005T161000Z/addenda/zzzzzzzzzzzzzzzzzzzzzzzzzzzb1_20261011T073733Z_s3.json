@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Test forward-taught fixed-point local credit against native VJP transport across changing layer versions, counting teaching/norm/solve work; no TEST or larger fit",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_native_reciprocal_fixed_point_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_native_reciprocal_fixed_point_20261011_v1/aws_native_reciprocal_fixed_point_20261011_v1.txt",
+        "queue_sha256": "54a1f37112c301104dfa7df85d2445b3d61668c1e8b815a2de8e555bc566b47c",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/native_reciprocal_fixed_point.py": "56264840586c72b3c523b80477630636dc9f3aabbd4b26c9590c64184a959ba4",
+          "experiments/credit/fixed_point_credit.py": "c8b0c3903f0bc2c4783b42095c639c028434fc43e8263fb5f6f06e483de2267e",
+          "experiments/credit/reciprocal_transport.py": "c76d4560bfc4ea8f8c9bd378e4820fa8c165a877795bc44c6769c4e451191bca",
+          "experiments/credit/reciprocal_transport_projection.py": "4c8f559dc7a3e94c7f529300bf75123622adc743a4db3ec1fd2c5f46d1553919",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_native_reciprocal_fixed_point_20261011_v1.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

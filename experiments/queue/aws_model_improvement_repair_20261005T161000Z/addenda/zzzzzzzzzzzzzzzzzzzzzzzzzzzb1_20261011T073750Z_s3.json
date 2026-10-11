@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Repair projection-class import then compare native VJP and forward-taught local fixed-point credit across changing versions, counting full work; v1 failed log retained",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_native_reciprocal_fixed_point_20261011_v2",
+        "queue": "experiments/queue/b1_easytpp/aws_native_reciprocal_fixed_point_20261011_v2/aws_native_reciprocal_fixed_point_20261011_v2.txt",
+        "queue_sha256": "e67d0bc2a0acdc1caff57d56d9167ff08cef6f8109ddb9901c7d990dd2530aba",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/native_reciprocal_fixed_point_v2.py": "6589c2494700a3a71d0f8fe180f3d7ffa13519e890b3c4f57608c0264698a9c7",
+          "experiments/credit/fixed_point_credit.py": "c8b0c3903f0bc2c4783b42095c639c028434fc43e8263fb5f6f06e483de2267e",
+          "experiments/credit/reciprocal_transport.py": "c76d4560bfc4ea8f8c9bd378e4820fa8c165a877795bc44c6769c4e451191bca",
+          "experiments/credit/reciprocal_transport_projection.py": "4c8f559dc7a3e94c7f529300bf75123622adc743a4db3ec1fd2c5f46d1553919",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/credit/aws_native_reciprocal_fixed_point_20261011_v2.json",
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
