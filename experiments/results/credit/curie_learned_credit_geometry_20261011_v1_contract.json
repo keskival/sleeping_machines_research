@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_learned_credit_geometry_20261011_v1_contract",
+  "gate": true,
+  "errors": {
+    "hessian_covariance": 4.163336342344337e-17,
+    "route_mean_shift": 7.632783294297951e-17,
+    "future_loss_optimizer_derivative": 8.673617379884035e-19,
+    "coordinate_prediction": 1.3877787807814457e-17,
+    "coordinate_update": 1.3877787807814457e-17,
+    "coordinate_kernel": 5.551115123125783e-17,
+    "learning_mediated_kernel": 1.1655173354219173e-18
+  },
+  "weighted_update_norm": 0.9995060060249156,
+  "future_loss_remainder": 3.42644255469629e-08,
+  "feature_bound": 2.2077501467246278e-07,
+  "whole_wall_s": 0.0112363490043208,
+  "source_sha256": {
+    "experiments/credit/check_learned_credit_geometry.py": "ba906f6e2b5db40ab8d4d17a26eebfa74b31e45fefd64246020b86ba27840025",
+    "experiments/theory/LEARNED_FEATURE_GEOMETRY_OF_CREDIT.md": "fe0b28071a46adc9866ba34acd0c0883f7a6bc093721c670974097d952c93a38"
+  },
+  "scope": "Finite fixed-feature head: Hessian/covariance, intervention mean shift, issued-snapshot next-loss derivative for preconditioner, nonorthogonal coordinate/kernel/update invariance, fixed-metric nonexpansion and learning-mediated Taylor remainder. No Adam stability/general semantic-grokking/optimizer fitting or native language-quality claim; dense-feedback meta-learning contracts only."
+}
