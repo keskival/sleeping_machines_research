@@ -1,0 +1,67 @@
+{
+  "status": "completed",
+  "tag": "aws_single_mark_readout_20261011_s0_v2",
+  "battle": "B4 development",
+  "seed": 0,
+  "stage": "single_core_ridge_distillation_diagnostic",
+  "baseline_dev": {
+    "L_T": -181.381199707533,
+    "L_M": 67.23675775817573,
+    "total": -114.14444194935727,
+    "wall_s": 0.19021076196804643,
+    "targets": 2094,
+    "sequences": 34
+  },
+  "student_dev": {
+    "L_T": -181.381199707533,
+    "L_M": 66.01435492382446,
+    "total": -115.36684478370854,
+    "wall_s": 0.18925004894845188,
+    "targets": 2094,
+    "sequences": 34
+  },
+  "teacher_dev": {
+    "L_T": -181.38119970753303,
+    "L_M": 65.20276617681046,
+    "total": -116.17843353072257,
+    "sequences": 34
+  },
+  "mark_gain": 1.2224028343512714,
+  "teacher_gain": 2.033991581365271,
+  "retained_teacher_gain": 0.6009871651144009,
+  "gate": false,
+  "rule": "Fixed ridge lambda1 on TRAIN centered teacher logit residuals; gate DEV mark gain>=1 and >=80% of confirmed teacher gain; timing/core exactly fixed, no DEV tuning.",
+  "feature_dimension": 144,
+  "training_targets": 13307,
+  "teacher_preparation_s": 2.5526106549659744,
+  "readout_fit_s": 0.00874023896176368,
+  "prerequisite_fitting_s": 7040.783048818354,
+  "parameters": 23073,
+  "teacher_parameters": 50826,
+  "warm_single_dev_s": 0.1913677720585838,
+  "warm_pair_dev_s": 0.4318766350625083,
+  "first_target_suffix_mark_error": 0.0,
+  "source_sha256": {
+    "experiments/tpp/fit_single_mark_readout_v2.py": "dab14db20bfe1c9f4738ae2a7bc192c9b107d3e6dc42c6bda67bde6b2ff174f4",
+    "experiments/tpp/single_mark_readout.py": "4066957c61cd4281909c78d4c263ae0e5b3a88e19d690a2844551d34cede614f",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694"
+  },
+  "checkpoint": "experiments/results/tpp_b4/aws_single_mark_readout_20261011_s0_v2.pt",
+  "checkpoint_sha256": "6bf5d0dc8a248a0703ac2ed81b2c937f4a4008230e8d9412ee5c00cd5ad70a5c",
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_b4_calibration_confirmation_20261011_decision.json": "e15af3c750fcf1059073d38f70f7931a872502637cb83521f96270ecf55e7412",
+    "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.pt": "0bc4370e313d3a86bc4bce7ffd8a4005a3e2020e291e578312983b65cb52f7bc",
+    "experiments/results/tpp_b4/aws_b4_marks_develop_20261010T2300Z.pt": "343794cf8902970bf32268341f7123d3c298af0f5f1e42086edb9c2d51124622"
+  },
+  "data_sha256": {
+    "train": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f",
+    "val": "95efbde7d7c0252c5d6f93ddb3efcd8bf89b3fe142147e95dc2d8b8b309665ef"
+  },
+  "wall_s": 4.869688643957488,
+  "max_rss_kb": 509032,
+  "scope": "One fixed Github split/seed distillation diagnostic. Student uses baseline causal history representations and candidate elapsed time; no target-mark feature or teacher at serving. Both teacher fits/full mark distributions/preparation charged. No TEST, sparse-route or matched-quality efficiency win unless gate plus work protocol demonstrated."
+}
