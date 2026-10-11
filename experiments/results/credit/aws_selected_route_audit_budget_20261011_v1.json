@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "battle": "B1/R1 selected-route audit budget",
+  "tag": "aws_selected_route_audit_budget_20261011_v1",
+  "oracle_price": 13.387377490925568,
+  "local_oracle_probability_error": 1.1102230246251565e-16,
+  "conditional_dual_mean_at_budget": 1.1102230246251565e-16,
+  "underpriced_expected_work": 1.978465524840154,
+  "overpriced_expected_work": 0.7281790952172524,
+  "controller_state_scalars": 4,
+  "source_sha256": {
+    "experiments/credit/check_online_audit_budget.py": "10cc73ad982d90a271fbae34a40550e7d517b2a968f58d2a2e13e508cd27d835",
+    "experiments/credit/online_audit_budget.py": "bd5295893e7daa331f35e99c517bc5c61e11cfadd7699cf2ec7e79c2e7d23140",
+    "experiments/credit/predictable_audit_allocation_v2.py": "f37c61d1e4bbba600ca985a38bd6e605022d20fbc30f4fe26fa8cd1578c562c3"
+  },
+  "scope": "Finite oracle-risk contract: selected-route local rates equal global constrained optimum. Dual drift has corrective sign; no convergence proof under learned/nonstationary risks, native calibration, hard event budget, quality or full sparse-learning win."
+}
