@@ -43,3 +43,7 @@ Together, credit errors teach risk; audit expenditure teaches price; risk/price 
 `aws_selected_route_audit_budget_20261011_v1` also completes: local/global propensity difference1.11e−16; expected budget drift1.11e−16 at the oracle price. Underpricing/overpricing gives expected work1.9785/0.7282 around budget1.2, the corrective direction. This tests issued-coordinate algebra, not online learned-risk convergence.
 
 Next: integrate with *completed* native audit histories under the existing compact-credit owner. Fit risk on causally earlier packets and assess later sensitivity-weighted residual/work; do not use future residuals to choose the audit that reveals them. Compare learned risk against constant risk at the same measured expenditure, including controller/feature/fitting costs. No new dense references or TEST scoring. Preserve active actor/critic sources and the B4 confirmation pipeline.
+
+## Forward-only residual observations
+
+[Forward-observed credit risk](FORWARD_OBSERVED_CREDIT_RISK.md) adds delta=c^T Jv−predicted_credit^T v, with E[delta^2]=||residual||^2 under issued isotropic probes. Producer-tangent directions estimate ||A^T residual||^2 instead. This lets existing forward teaching responses train risk without reverse residual labels; exact correction still uses the declared audit mechanism. Native finite covariance and risk-gradient contracts pass, not learned-risk allocation or future utility.

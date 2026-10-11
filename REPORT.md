@@ -4749,6 +4749,47 @@ Same initial256-token context and128 subsequent targets; hard writes, active key
 
 One real TRAIN execution observation; includes carrier/full normalized vocabulary, all active-key scores, reference projections, actual readout updates and snapshot/state copying. No actor fit or learned-credit quality/whole-model/depth/hardware efficiency claim. Custom dense-mv counts included; unsupported arithmetic stays in wall. Zero-fast-state projections are charged equally and are not current-state static controls. Source pretraining/calibration/verification additional.
 
+### Continuous proper-token route learning: development
+
+Connected controllers train hard addressed writes while factual key state,64-dimensional lexical parameters and Adam moments persist. Zero, current-state static and online reference credit use the same source and data. Final64 actor updates/512 TRAIN targets are scored by exact all-route expected stochastic cost on eight held-out TRAIN-tail prefixes.
+
+| Variant | Comparison | Gain nats/target | Paired prefix95% |
+| --- | --- | --- | --- |
+| Raw issued features | reference over zero | +0.000000224 | [-0.000000857,+0.000000903] |
+| Raw issued features | reference over static | -0.000000033 | [-0.000000115,+0.000000051] |
+| Raw issued features | reference over initial | +0.000000100 | [-0.000000591,+0.000000552] |
+| Forward geometry | reference over zero | +0.000003731 | [-0.000015349,+0.000024921] |
+| Forward geometry | reference over static | -0.000001936 | [-0.000004979,+0.000000448] |
+| Forward geometry | reference over initial | -0.000002026 | [-0.000009274,+0.000004348] |
+
+Neither variant confirms a reference-credit policy advantage over zero/static or its initial controller on these prefixes. Candidate best-route headroom0.00152–0.01068 nats/target identifies useful responses, but these controllers capture little of that gap. Geometry adds causal native-feature mean shifts and vector normalization, with independent full-vocabulary gradient contracts.
+
+| Variant | Credit | Fit GFLOPs | Fit MFLOPs/target | Fit s |
+| --- | --- | --- | --- | --- |
+| Raw issued features | zero | 18.014 | 35.184 | 24.72 |
+| Raw issued features | static | 18.430 | 35.996 | 26.75 |
+| Raw issued features | reference | 18.014 | 35.184 | 23.78 |
+| Forward geometry | zero | 18.909 | 36.931 | 25.09 |
+| Forward geometry | static | 19.325 | 37.744 | 27.27 |
+| Forward geometry | reference | 18.909 | 36.931 | 24.25 |
+
+One initialization, same fixed native two-layer pretrained source. Raw controller29,057 parameters; geometry controller37,377. Same disclosed private development cohort across iterations; no public DEV/TEST. Complete exhaustive scoring additional; source pretraining/contracts/smokes additional. Supported arithmetic omits unsupported scalar/optimizer operations, included in wall. Finite eight-target credit; no recurrent controller or all-carrier learning claim.
+
+### Influence beyond the issued eight-target window
+
+| Prefix | Readout | First8 sum | Later40 sum | Final learner gap |
+| --- | --- | --- | --- | --- |
+| 0 | fixed | -0.0000006 | -0.0000003 | 0.000e+00 |
+| 0 | learning | -0.0000006 | +0.0000011 | 6.937e-07 |
+| 1 | fixed | -0.0000258 | -0.0000000 | 0.000e+00 |
+| 1 | learning | -0.0000260 | -0.0000022 | 3.088e-06 |
+| 2 | fixed | -0.0001023 | -0.0000001 | 0.000e+00 |
+| 2 | learning | -0.0001046 | -0.0000046 | 1.004e-05 |
+| 3 | fixed | -0.0000065 | -0.0000000 | 0.000e+00 |
+| 3 | learning | -0.0000065 | -0.0000028 | 1.309e-06 |
+
+Four fresh TRAIN prefixes, causal maximum-absolute prefix logit perturbation selects the route; independent factual/no-op continuations. Signed cumulative contrasts, not policy improvements. Whole33.52s,23.230supportedGFLOPs,16worlds/768updates. Learning-state discrepancy can persist beyond key effect; measured values are not a uniform contraction certificate.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
@@ -4840,6 +4881,12 @@ Composed native packets at depths2/4/8/16/32: depth2,queries1: 4.79x, depth2,que
 Larger d64/n32/B4/L32 models: depth8,224,016 parameters,1 queries: 4.64x, depth8,224,016 parameters,16 queries: 3.82x, depth32,879,120 parameters,1 queries: 4.48x, depth32,879,120 parameters,16 queries: 3.75x. Recorded gradient/Adam/parameter differences0; maximum teaching response error9.77e-15. Whole diagnostic31.60s, peak RSS617.4MiB. Initial64-event fixture failed before fitting because Taxi TRAIN ends at38 events; corrected v2 holds length32. This measures model width/memory/depth scaling of label production, not sequence-length scaling.
 
 Complete actor/update plus1–32 teaching directions, five warmed CPU timings, real Taxi TRAIN and one dense-write layer. Captured packet, retained graph and symmetric response copies are charged; connected timing additionally charges symmetric gradient copies. No critic fitting, task-quality or whole-fit learning-efficiency endpoint. Zero-query capture runs5–7% slower than native, while1/16-query confirmations run2.40–3.89x faster. Enable capture for teaching work, keep native execution for ordinary updates. Evidence: aws_packet_teaching_crossover_20261011_v1, aws_connected_teaching_crossover_20261011_v1, aws_connected_teaching_zero_query_20261011_v1, aws_connected_deep_teaching_20261011_v1, aws_connected_deep_teaching_scale_20261011_v1, aws_connected_teaching_size_scale_20261011_v2.
+
+Forward teaching now supplies credit-risk observations: delta=c^T(Jv)-predicted_credit^T v. Isotropic probe squared delta estimates cut residual energy; producer-tangent probes v=A xi estimate the actual producer correction energy ||A^T residual||^2 without storing A. The same observations train conditional audit risk; no reverse teacher is used in label construction.
+
+Native four-event Taxi TRAIN/one-layer contract, actual observed-loss cotangent: 32 cut and 128 producer directions/112 producer parameters. Mean input-risk error 5.20e-18, producer-risk error 0.00e+00; issued softplus risk-training gradient error 5.55e-17. Label acquisition 0.956ms, separate reverse validation 0.658ms, whole gate 0.049s.
+
+Exhaustive orthogonal probes validate the expectation identities; predicted_credit=0.5c is a diagnostic. No learned-risk calibration, sparse-audit utility, quality or efficiency win. Existing teaching responses can be reused, but fresh risk validation, producer directions and label reductions are paid. Predictor/actor versions are frozen before observation; no reuse of fit probes as independent validation. Theory: FORWARD_OBSERVED_CREDIT_RISK. Evidence: aws_native_forward_residual_risk_20261011_v1.
 
 ## Appendix. B4 repaired learning and mark-memory development
 
