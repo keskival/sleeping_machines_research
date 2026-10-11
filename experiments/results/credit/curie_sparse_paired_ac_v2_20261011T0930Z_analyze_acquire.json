@@ -1,0 +1,73 @@
+{
+  "status": "completed",
+  "tag": "curie_sparse_paired_ac_v2_20261011T0930Z_analyze_acquire",
+  "battle": "B1/R1",
+  "stage": "acquire",
+  "rows": [
+    {
+      "arm": "full_fixed",
+      "factual_targets": 512,
+      "policy_updates": 128,
+      "credit_updates": 0,
+      "extra_worlds": 105,
+      "whole_fit_gflops": 0.104084224,
+      "fit_mflops_per_target": 0.2032895,
+      "whole_fit_s": 48.992646793994936,
+      "work_ratio_vs_full": 1.0,
+      "gain_vs_baseline": -0.00019361454793655197,
+      "heldout_pair_error_over_zero": 0.2442685498216918
+    },
+    {
+      "arm": "sparse_fixed",
+      "factual_targets": 512,
+      "policy_updates": 128,
+      "credit_updates": 0,
+      "extra_worlds": 26,
+      "whole_fit_gflops": 0.09364864,
+      "fit_mflops_per_target": 0.1829075,
+      "whole_fit_s": 48.327361335002934,
+      "work_ratio_vs_full": 0.8997390421049783,
+      "gain_vs_baseline": -0.0019030749932476276,
+      "heldout_pair_error_over_zero": 0.2442685498216918
+    },
+    {
+      "arm": "sparse_learned",
+      "factual_targets": 512,
+      "policy_updates": 128,
+      "credit_updates": 108,
+      "extra_worlds": 27,
+      "whole_fit_gflops": 0.30748576,
+      "fit_mflops_per_target": 0.600558125,
+      "whole_fit_s": 52.1241430779919,
+      "work_ratio_vs_full": 2.954201397514382,
+      "gain_vs_baseline": -0.002085289004618518,
+      "heldout_pair_error_over_zero": 1.2462650651018607
+    }
+  ],
+  "comparisons": {
+    "sparse_learned_over_sparse_fixed": {
+      "gain": -0.00018221401137089033,
+      "bootstrap95": [
+        -0.0013816562476187406,
+        0.0010044395265609851
+      ]
+    },
+    "sparse_learned_over_full_fixed": {
+      "gain": -0.001891674456681966,
+      "bootstrap95": [
+        -0.003856980475686775,
+        -7.504400382738552e-05
+      ]
+    }
+  },
+  "continue_registered_ladder": true,
+  "resource_finite_gate": true,
+  "learned_probe_error_ratio_vs_fixed": 5.102028345489398,
+  "source_result": "experiments/results/credit/curie_sparse_paired_ac_v2_20261011T0930Z_acquire.json",
+  "source_result_sha256": "19d1aa09a25e3746918a6ce5df7c3bf8ceb667aed253d20bce41f7d30898d6b0",
+  "source_checkpoint_sha256": "e2866e72f8f58369aabf7ca6d7685b6518fd81ad6bac4c60a6977d3b9d191a89",
+  "source_sha256": {
+    "experiments/credit/analyze_sparse_paired_actor_critic.py": "f04f321067f861d15ffed7e0e6339e7c2c66cf7336f8ae230f4097db29c0afeb"
+  },
+  "scope": "Completed one-seed synthetic connected route-learning development stage. Raw carrier fixed; readout adapts within each episode; controller and critic weights persist across episodes. Reuse admission follows registered finite/resource gate, not immediate utility. Cumulative work includes128-step acquisition for continuation and reset/reuse clones; inherited model pretraining and shared DEV diagnostics remain additional. No benchmark, matched-quality/depth or independent-confirmation claim."
+}
