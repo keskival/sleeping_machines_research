@@ -5135,6 +5135,44 @@ Registered acquisition-scale ladder completed: unchanged13parameter risk model/f
 
 Measured whole ladder wall/RSS: seed0 34.10s/396.5MiB, seed1 33.97s/396.6MiB, seed2 33.86s/396.5MiB. Earlier local-field fits,64-context pilots and publication are additional. No Transformer/task-quality/whole-learning claim. Evidence: aws_native_joint_audit_risk_ladder_20261011_s0, aws_native_joint_audit_risk_ladder_20261011_s1, aws_native_joint_audit_risk_ladder_20261011_s2.
 
+Direct learned audit allocation wins the conditional correction-variance component against uniform and credit-magnitude allocation in all27 seed/depth/data-size cases. The policy trains the allocation fitness from saved forward-response labels; the scalar budget threshold supplies its analytic implicit gradient, closing policy credit without an additional learned trainer.
+
+| Seed | Depth | Fit contexts | vs uniform | vs magnitude | vs risk-MSE |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 2 | 64 | 69.8% | 59.4% | 26.3% |
+| 0 | 2 | 256 | 72.6% | 63.1% | 35.6% |
+| 0 | 2 | 1024 | 72.8% | 63.3% | 42.1% |
+| 0 | 4 | 64 | 52.4% | 31.6% | 26.0% |
+| 0 | 4 | 256 | 53.3% | 32.9% | 44.4% |
+| 0 | 4 | 1024 | 57.8% | 39.3% | 33.2% |
+| 0 | 8 | 64 | 63.2% | 53.2% | 25.1% |
+| 0 | 8 | 256 | 68.3% | 59.7% | 11.3% |
+| 0 | 8 | 1024 | 67.7% | 59.0% | 21.1% |
+| 1 | 2 | 64 | 76.8% | 55.3% | 61.6% |
+| 1 | 2 | 256 | 78.0% | 57.7% | 11.4% |
+| 1 | 2 | 1024 | 79.8% | 61.1% | -0.7% |
+| 1 | 4 | 64 | 80.0% | 61.8% | 52.7% |
+| 1 | 4 | 256 | 81.1% | 63.9% | 42.9% |
+| 1 | 4 | 1024 | 82.2% | 66.1% | 18.5% |
+| 1 | 8 | 64 | 83.5% | 48.3% | 63.8% |
+| 1 | 8 | 256 | 84.2% | 50.6% | 10.3% |
+| 1 | 8 | 1024 | 84.0% | 49.9% | 40.7% |
+| 2 | 2 | 64 | 78.3% | 38.4% | 38.5% |
+| 2 | 2 | 256 | 80.6% | 44.8% | 3.3% |
+| 2 | 2 | 1024 | 80.8% | 45.4% | 23.3% |
+| 2 | 4 | 64 | 81.0% | 47.8% | 52.3% |
+| 2 | 4 | 256 | 81.2% | 48.5% | 26.8% |
+| 2 | 4 | 1024 | 81.5% | 49.3% | 30.1% |
+| 2 | 8 | 64 | 64.3% | 33.7% | 1.5% |
+| 2 | 8 | 256 | 67.1% | 38.9% | -0.3% |
+| 2 | 8 | 1024 | 67.0% | 38.7% | 1.9% |
+
+Protocol: three seeds, depths2/4/8,64/256/1024 acquisition contexts; fresh128 private TRAIN contexts per case,16 expected audits, positive support.13 policy parameters,300 Adam steps. Native actor and acquired credit fields are frozen. All methods in a row use the same contexts and budget. The endpoint is analytically measured conditional raw-gradient variance; actor backward, forward probes and exact evaluation work are charged in the preserved records. No sampled learner-update or future task-quality endpoint is reported here. Direct policy and risk-MSE use different probability parameterizations.
+
+Constructive transfer/stability/future-learning theory: experiments/theory/RECIPROCAL_CREDIT_TRANSFER_STABILITY_FUTURE_LEARNING.md and report/reciprocal_credit_theory.pdf. Current-state packet geometry transports reusable influence; audits contract credit-tracking error without erasing forward memory; future-demand-weighted information gain selects useful exploration. For a quadratic future loss with predictable update geometry, weighted correction-variance reduction gives an exact expected future-loss improvement. These sufficient conditions define the next native integration.
+
+Evidence: aws_direct_audit_policy_20261011_s0, aws_direct_audit_policy_20261011_s1, aws_direct_audit_policy_20261011_s2.
+
 ## Appendix. B4 repaired learning and mark-memory development
 
 The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.
