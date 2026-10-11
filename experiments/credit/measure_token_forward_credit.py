@@ -2,12 +2,12 @@
 import argparse,hashlib,json,resource,time
 import numpy as np
 import torch
-from torch.utils.flop_counter import FlopCounterMode
+from token_flop_accounting import TokenFlopCounter as FlopCounterMode
 from check_token_forward_credit import ROOT,SOURCE,KeyedTokenLM,load
 from token_forward_credit import packet,joint_replay
 from token_exact_world_readouts import replay
-TAG='curie_token_forward_credit_calibration_20261011_v2'
-SOURCES=['experiments/credit/measure_token_forward_credit.py','experiments/credit/token_exact_world_readouts.py','experiments/credit/token_forward_credit.py','experiments/credit/token_episode_state.py','experiments/r1_token_keyed_lm.py','experiments/tpp/race_tpp_v5.py']
+TAG='curie_token_forward_credit_calibration_20261011_v3'
+SOURCES=['experiments/credit/token_flop_accounting.py','experiments/credit/measure_token_forward_credit.py','experiments/credit/token_exact_world_readouts.py','experiments/credit/token_forward_credit.py','experiments/credit/token_episode_state.py','experiments/r1_token_keyed_lm.py','experiments/tpp/race_tpp_v5.py']
 
 def verify(name):
     d=json.loads((ROOT/f'experiments/results/credit/{name}.json').read_text());assert d['status']=='completed'
@@ -34,6 +34,7 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--tag',required=True);ap.add_argument('--mode',choices=['smoke','measure'],required=True);a=ap.parse_args()
     torch.set_num_threads(1);torch.set_default_dtype(torch.float64);start=time.monotonic()
     out=ROOT/f'experiments/results/credit/{a.tag}.json';assert not out.exists()
+    assert verify('curie_token_flop_accounting_20261011_v1_contract')['gate']
     for name in ['curie_token_forward_credit_20261011_v1_contract','curie_token_world_readouts_20261011_v1_contract']:assert verify(name)['gate']
     if a.mode=='measure':verify(TAG+'_smoke')
     source=json.loads((ROOT/SOURCE).read_text());c=source['args'];checkpoint=ROOT/source['checkpoint'];cp_sha=hashlib.sha256(checkpoint.read_bytes()).hexdigest()
@@ -78,6 +79,6 @@ def main():
                               mean_conditional_policy_logit_variance=variance))
 
     checkpoint=out.with_suffix('.pt');torch.save(dict(windows=saved),checkpoint)
-    result=dict(status='completed',battle='R1',tag=a.tag,mode=a.mode,rows=summaries,per_window=rows,work=work,source_model_result=SOURCE,source_checkpoint_sha256=cp_sha,train_token_offset=offset,context_tokens=context,scored_targets=count*targets,teacher_worlds=total_worlds,readout_updates=readout_updates,whole_wall_s=time.monotonic()-start,peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,checkpoint=str(checkpoint.relative_to(ROOT)),checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCES},scope='Proper GPT-2 vocabulary50257/native pretrained2-layer source, fresh contiguous TRAIN targets with256 preceding context in measurement; no public/TEST scoring. Up to8 observed current-document token addresses, one global no-op and8 nonzero messages per address; messages use normalized produced prefix key-write direction in each of4heads, independent of future targets. Exact all-world learner costs, static/reference projections, independent64-dimensional lexical readout/Adam state per world. All carrier/context replay, full normalized outputs/scans, independent learners and additional duplicate reference learning charged; source4M pretraining and numerical gates additional. Fast/native state reset per measurement window and observed EOS: this is calibration/headroom, not persistent online or actor-policy training. Uniform issued policy-logit covariance, not native/carrier parameter variance; one observed continuation per context, no independent-future variance claim. Supported FLOPs omit unsupported scalar/special/optimizer arithmetic, included in wall. Saved paid TRAIN labels may support later declared fitting; no benchmark/depth/hardware claim.')
+    result=dict(status='completed',battle='R1',tag=a.tag,mode=a.mode,rows=summaries,per_window=rows,work=work,source_model_result=SOURCE,source_checkpoint_sha256=cp_sha,train_token_offset=offset,context_tokens=context,scored_targets=count*targets,teacher_worlds=total_worlds,readout_updates=readout_updates,whole_wall_s=time.monotonic()-start,peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,checkpoint=str(checkpoint.relative_to(ROOT)),checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCES},scope='Proper GPT-2 vocabulary50257/native pretrained2-layer source, fresh contiguous TRAIN targets with256 preceding context in measurement; no public/TEST scoring. Up to8 observed current-document token addresses, one global no-op and8 nonzero messages per address; messages use normalized produced prefix key-write direction in each of4heads, independent of future targets. Exact all-world learner costs, static/reference projections, independent64-dimensional lexical readout/Adam state per world. All carrier/context replay, full normalized outputs/scans, independent learners and additional duplicate reference learning charged; source4M pretraining and numerical gates additional. Fast/native state reset per measurement window and observed EOS: this is calibration/headroom, not persistent online or actor-policy training. Uniform issued policy-logit covariance, not native/carrier parameter variance; one observed continuation per context, no independent-future variance claim. Supported FLOPs include custom2VD dense matrix-vector forward/backward counts; unsupported scalar/special/optimizer arithmetic stays omitted and included in wall. Saved paid TRAIN labels may support later declared fitting; no benchmark/depth/hardware claim.')
     out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2),flush=True)
 if __name__=='__main__':main()

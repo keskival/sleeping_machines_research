@@ -1,0 +1,87 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_forward_credit_calibration_20261011_v2_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 1.1565318240091296e-06,
+      "error_over_zero": 1.0,
+      "mean_conditional_policy_logit_variance": 1.1209774541589738e-06
+    },
+    {
+      "arm": "forward_static",
+      "mse": 4.8501955500134035e-09,
+      "error_over_zero": 0.004193741537695132,
+      "mean_conditional_policy_logit_variance": 4.7009647294627355e-09
+    },
+    {
+      "arm": "reference_learner",
+      "mse": 2.4737483691827584e-09,
+      "error_over_zero": 0.0021389367052672046,
+      "mean_conditional_policy_logit_variance": 2.3976622965649386e-09
+    }
+  ],
+  "per_window": [
+    {
+      "window": 0,
+      "arm": "zero",
+      "mse": 1.1565318240091296e-06,
+      "contrast_energy": 1.1565318240091296e-06,
+      "conditional_policy_logit_variance": 1.1209774541589738e-06
+    },
+    {
+      "window": 0,
+      "arm": "forward_static",
+      "mse": 4.8501955500134035e-09,
+      "contrast_energy": 1.1565318240091296e-06,
+      "conditional_policy_logit_variance": 4.7009647294627355e-09
+    },
+    {
+      "window": 0,
+      "arm": "reference_learner",
+      "mse": 2.4737483691827584e-09,
+      "contrast_energy": 1.1565318240091296e-06,
+      "conditional_policy_logit_variance": 2.3976622965649386e-09
+    }
+  ],
+  "work": [
+    {
+      "window": 0,
+      "candidate_routes": 65,
+      "context": 16,
+      "targets": 4,
+      "carrier_supported_flops": 124738944,
+      "carrier_wall_s": 1.0075868379935855,
+      "teacher_supported_flops": 3345139200,
+      "teacher_wall_s": 0.4107612850057194,
+      "reference_supported_flops": 33280,
+      "reference_wall_s": 0.07033362099900842,
+      "frozen_baseline_nll": 8.15316261161755,
+      "adaptive_baseline_nll": 8.152224690155291,
+      "reference_parity_error": 0.0,
+      "eos_in_targets": 0
+    }
+  ],
+  "source_model_result": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.json",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "train_token_offset": 4202496,
+  "context_tokens": 16,
+  "scored_targets": 4,
+  "teacher_worlds": 66,
+  "readout_updates": 264,
+  "whole_wall_s": 1.6994570469978498,
+  "peak_rss_kb": 496012,
+  "checkpoint": "experiments/results/credit/curie_token_forward_credit_calibration_20261011_v2_smoke.pt",
+  "checkpoint_sha256": "bc79a533b6f58751f288507363eaa4ab620ef0d32e6129c3eccddd5856ee8a92",
+  "source_sha256": {
+    "experiments/credit/measure_token_forward_credit.py": "cbb315fa24b4ba0ba5b0e1c1f54f8b69b13a0084a3622ce84879b9a886850eca",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Proper GPT-2 vocabulary50257/native pretrained2-layer source, fresh contiguous TRAIN targets with256 preceding context in measurement; no public/TEST scoring. Up to8 observed current-document token addresses, one global no-op and8 nonzero messages per address; messages use normalized produced prefix key-write direction in each of4heads, independent of future targets. Exact all-world learner costs, static/reference projections, independent64-dimensional lexical readout/Adam state per world. All carrier/context replay, full normalized outputs/scans, independent learners and additional duplicate reference learning charged; source4M pretraining and numerical gates additional. Fast/native state reset per measurement window and observed EOS: this is calibration/headroom, not persistent online or actor-policy training. Uniform issued policy-logit covariance, not native/carrier parameter variance; one observed continuation per context, no independent-future variance claim. Supported FLOPs omit unsupported scalar/special/optimizer arithmetic, included in wall. Saved paid TRAIN labels may support later declared fitting; no benchmark/depth/hardware claim."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_flop_accounting_20261011_v1_contract",
+  "gate": true,
+  "mv_forward_backward_flops": 308,
+  "mm_forward_backward_flops": 308,
+  "expected": 308,
+  "gradient_error": 0.0,
+  "source_sha256": {
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734",
+    "experiments/credit/check_token_flop_accounting.py": "cc93cc4d7a8f58d86ea014dd52e775b0ff84fac6b760a761bcec77ec0acd352d"
+  },
+  "scope": "Exact dense matrix-vector2VD operation convention and backward accounting; other unsupported scalar/special/optimizer operations stay omitted from supported FLOPs and included in wall. No training or quality claim."
+}
