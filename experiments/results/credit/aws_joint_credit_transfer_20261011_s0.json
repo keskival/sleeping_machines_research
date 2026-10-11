@@ -1,0 +1,322 @@
+{
+  "status": "completed",
+  "tag": "aws_joint_credit_transfer_20261011_s0",
+  "seed": 0,
+  "battle": "B1 local joint-credit acquisition",
+  "config": {
+    "depths": [
+      2,
+      4,
+      8
+    ],
+    "receivers": 512,
+    "queries": 4,
+    "steps": 400,
+    "lr": 0.01,
+    "heldout_receivers": 64,
+    "initialization": "zero linear field"
+  },
+  "rows": [
+    {
+      "depth": 2,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 0.19933035974880298,
+      "learned_credit_error": 2.109528979919412e-09,
+      "residual_energy_reduction": 0.9999999894169208,
+      "paired_receiver_gain": 0.19933035763927398,
+      "paired_receiver_ci95": [
+        0.179666232825893,
+        0.21899448245265496
+      ],
+      "zero_probe_mse": 0.22423616395147405,
+      "learned_probe_mse": 2.3732664040502643e-09,
+      "primal_s": 0.0029753020498901606,
+      "forward_label_s": 0.006577698979526758,
+      "estimator_fitting_s": 0.16579726501367986,
+      "forward_validation_s": 0.0013107731938362122,
+      "reverse_validation_s": 0.0009243518579751253,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.03227102525746517
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.0034568756473638113
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 2.117709670414026e-05
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 1.0579756799746183e-08
+        }
+      ],
+      "same_context_observed_credit": {
+        "scope": "same actor/context, actual observed loss",
+        "observed_loss": 1.4539915447734988,
+        "joint_credit_error": 5.788460785398773e-10,
+        "zero_credit_error": 0.052289489746037546,
+        "residual_energy_reduction": 0.9999999889299727,
+        "producer_credit_error": 1.9837413115175504e-09,
+        "producer_zero_error": 0.11474248885501837,
+        "producer_energy_reduction": 0.9999999827113624
+      },
+      "new_context_observed_credit": [
+        {
+          "scope": "new TRAIN context 1, same weights",
+          "observed_loss": 2.199732211140729,
+          "joint_credit_error": 0.004214898458864285,
+          "zero_credit_error": 0.047017122942384866,
+          "residual_energy_reduction": 0.9103539690416775,
+          "producer_credit_error": 0.10648512868801183,
+          "producer_zero_error": 0.5095161058989225,
+          "producer_energy_reduction": 0.7910073352830651
+        },
+        {
+          "scope": "new TRAIN context 2, same weights",
+          "observed_loss": 3.0621526976937763,
+          "joint_credit_error": 0.01274424166161731,
+          "zero_credit_error": 0.06005303579431903,
+          "residual_energy_reduction": 0.7877835567669519,
+          "producer_credit_error": 0.10839572960982854,
+          "producer_zero_error": 0.3064709268565986,
+          "producer_energy_reduction": 0.6463099103017096
+        }
+      ],
+      "changed_weights_observed_credit": {
+        "scope": "same context, after one Adam model update, expired credit map tested diagnostically",
+        "observed_loss": 1.3860526772006718,
+        "joint_credit_error": 9.91516496633815e-06,
+        "zero_credit_error": 0.05076843883756778,
+        "residual_energy_reduction": 0.9998046982496731,
+        "producer_credit_error": 3.811671595850145e-05,
+        "producer_zero_error": 0.11132219816054434,
+        "producer_energy_reduction": 0.999657600042145
+      },
+      "transfer_diagnostic_s": 0.024828424910083413,
+      "packet_cached_floats": 560
+    },
+    {
+      "depth": 4,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 0.6813645840464854,
+      "learned_credit_error": 2.0988467664222254e-09,
+      "residual_energy_reduction": 0.9999999969196421,
+      "paired_receiver_gain": 0.6813645819476386,
+      "paired_receiver_ci95": [
+        0.6196162416573571,
+        0.7431129222379201
+      ],
+      "zero_probe_mse": 0.8375280226761135,
+      "learned_probe_mse": 2.2964490796874654e-09,
+      "primal_s": 0.0028305919840931892,
+      "forward_label_s": 0.010869282996281981,
+      "estimator_fitting_s": 0.16080186306498945,
+      "forward_validation_s": 0.0022298390977084637,
+      "reverse_validation_s": 0.0016388059593737125,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.054209867207379955
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.009518570386893651
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 0.00014669687182516353
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 4.870524690673952e-10
+        }
+      ],
+      "same_context_observed_credit": {
+        "scope": "same actor/context, actual observed loss",
+        "observed_loss": 1.426532666252989,
+        "joint_credit_error": 2.062781201286902e-10,
+        "zero_credit_error": 0.052356185267380166,
+        "residual_energy_reduction": 0.9999999960601003,
+        "producer_credit_error": 1.0885058147018403e-09,
+        "producer_zero_error": 0.17327861729708702,
+        "producer_energy_reduction": 0.9999999937181758
+      },
+      "new_context_observed_credit": [
+        {
+          "scope": "new TRAIN context 1, same weights",
+          "observed_loss": 2.4562566798851955,
+          "joint_credit_error": 0.00392092715241952,
+          "zero_credit_error": 0.04967207168340092,
+          "residual_energy_reduction": 0.9210637483088955,
+          "producer_credit_error": 0.05127508693095794,
+          "producer_zero_error": 0.24819468253080065,
+          "producer_energy_reduction": 0.7934077942036701
+        },
+        {
+          "scope": "new TRAIN context 2, same weights",
+          "observed_loss": 3.343809295053837,
+          "joint_credit_error": 0.02378096393781963,
+          "zero_credit_error": 0.13996498728577542,
+          "residual_energy_reduction": 0.8300934798124582,
+          "producer_credit_error": 0.0618216850456977,
+          "producer_zero_error": 0.4106564337893337,
+          "producer_energy_reduction": 0.8494564313159838
+        }
+      ],
+      "changed_weights_observed_credit": {
+        "scope": "same context, after one Adam model update, expired credit map tested diagnostically",
+        "observed_loss": 1.342582650318158,
+        "joint_credit_error": 6.931805925496903e-05,
+        "zero_credit_error": 0.05205038233562911,
+        "residual_energy_reduction": 0.9986682507189285,
+        "producer_credit_error": 0.0003043895737810444,
+        "producer_zero_error": 0.16653912958444816,
+        "producer_energy_reduction": 0.9981722639325631
+      },
+      "transfer_diagnostic_s": 0.03779750014655292,
+      "packet_cached_floats": 1120
+    },
+    {
+      "depth": 8,
+      "unique_actor_targets": 3,
+      "frozen_prefix_events": 4,
+      "estimator_parameters": 1152,
+      "training_receivers": 512,
+      "probes_per_receiver": 4,
+      "optimizer_updates": 400,
+      "heldout_receivers": 64,
+      "heldout_probe_count": 256,
+      "zero_credit_error": 0.2131486352922668,
+      "learned_credit_error": 9.252502872087237e-12,
+      "residual_energy_reduction": 0.9999999999565913,
+      "paired_receiver_gain": 0.21314863528301425,
+      "paired_receiver_ci95": [
+        0.18548667675640765,
+        0.24081059380962086
+      ],
+      "zero_probe_mse": 0.21549625204050102,
+      "learned_probe_mse": 8.934233993395462e-12,
+      "primal_s": 0.004954072879627347,
+      "forward_label_s": 0.017973070964217186,
+      "estimator_fitting_s": 0.16099099698476493,
+      "forward_validation_s": 0.004016995895653963,
+      "reverse_validation_s": 0.003005433827638626,
+      "teaching_snapshots": [
+        {
+          "step": 1,
+          "normalized_training_loss": 1.0
+        },
+        {
+          "step": 50,
+          "normalized_training_loss": 0.018090246359898393
+        },
+        {
+          "step": 100,
+          "normalized_training_loss": 0.0004390034807589464
+        },
+        {
+          "step": 200,
+          "normalized_training_loss": 7.7102281970783e-09
+        },
+        {
+          "step": 400,
+          "normalized_training_loss": 1.522821770056066e-11
+        }
+      ],
+      "same_context_observed_credit": {
+        "scope": "same actor/context, actual observed loss",
+        "observed_loss": 1.4153357036890333,
+        "joint_credit_error": 5.865907702442563e-13,
+        "zero_credit_error": 0.029219205837774764,
+        "residual_energy_reduction": 0.9999999999799245,
+        "producer_credit_error": 3.750314311858126e-12,
+        "producer_zero_error": 0.15471027229685266,
+        "producer_energy_reduction": 0.9999999999757591
+      },
+      "new_context_observed_credit": [
+        {
+          "scope": "new TRAIN context 1, same weights",
+          "observed_loss": 2.079560178523655,
+          "joint_credit_error": 0.0005299228515143526,
+          "zero_credit_error": 0.04279365508964372,
+          "residual_energy_reduction": 0.9876167892084872,
+          "producer_credit_error": 0.0026497759763579026,
+          "producer_zero_error": 0.10737667871072822,
+          "producer_energy_reduction": 0.9753226118727664
+        },
+        {
+          "scope": "new TRAIN context 2, same weights",
+          "observed_loss": 2.7749254559334067,
+          "joint_credit_error": 0.008641512389345685,
+          "zero_credit_error": 0.01693852979031605,
+          "residual_energy_reduction": 0.4898310245151184,
+          "producer_credit_error": 0.015505155306257129,
+          "producer_zero_error": 0.07094285513587453,
+          "producer_energy_reduction": 0.7814416226051148
+        }
+      ],
+      "changed_weights_observed_credit": {
+        "scope": "same context, after one Adam model update, expired credit map tested diagnostically",
+        "observed_loss": 1.2736717048833912,
+        "joint_credit_error": 0.00010531072723684944,
+        "zero_credit_error": 0.025682514003619088,
+        "residual_energy_reduction": 0.9958995164094134,
+        "producer_credit_error": 0.0005992798552669105,
+        "producer_zero_error": 0.1457958382470427,
+        "producer_energy_reduction": 0.9958895955983911
+      },
+      "transfer_diagnostic_s": 0.06428858800791204,
+      "packet_cached_floats": 2240
+    }
+  ],
+  "final_weights": "experiments/results/credit/aws_joint_credit_transfer_20261011_s0.pt",
+  "checkpoint_sha256": "068e1c63d482539d4c52f9bd4e359e8e7aa98f53d37182cc77cee64c6575a644",
+  "gate": "experiments/results/credit/aws_joint_credit_training_20261011_v1.json",
+  "input_sha256": {
+    "experiments/results/credit/aws_joint_credit_training_20261011_v1.json": "06fe1c77a28d8d180d2cd618d6570b89fc4df78c73377940eabdd4906856ef5a"
+  },
+  "source_sha256": {
+    "experiments/credit/fit_joint_credit_transfer.py": "603a3556e7bbbba338c88b0f56f25ce8997c833eb9b585f2c82ee3594fe55b49",
+    "experiments/credit/check_joint_forward_risk.py": "9ed52098bc896f1f646bb9930111fbead2e092aab75b79c2deb4de876f856e7c",
+    "experiments/credit/joint_forward_residual_risk.py": "70f84ca0032fd42f1724b8caf36d746beadc589e4885c8dfa6436cd500b3cd9b",
+    "experiments/credit/check_deep_temporal_packet.py": "72adc553a154380a053ca90f434798f1bce7c82a7e60405fff5d18d8bd8cf856",
+    "experiments/credit/native_fused_temporal_packet.py": "d84455e74f6f629b0aa886e6fad10f3bead5ebfa7fdd8a9db98bc1ec0b3f7b38",
+    "experiments/credit/native_deep_temporal_packet.py": "4ac12ee90d01eb5375e549ff02ea24c2e3c16b5508ecb30a71120f4fd00403f8",
+    "experiments/credit/native_temporal_teaching_packet.py": "af41285f2601f57ff7151ca81128031d3336fc37f42319b0b6a4a29a86deff46",
+    "experiments/credit/native_training_temporal_packet.py": "c9b4741744b315c915f033443336c64c2287f3b609bc59ae628593dca731f2ae",
+    "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550",
+    "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965",
+    "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658",
+    "experiments/credit/predictable_audit_allocation_v2.py": "f37c61d1e4bbba600ca985a38bd6e605022d20fbc30f4fe26fa8cd1578c562c3",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "wall_s": 1.271186311962083,
+  "max_rss_kb": 408352,
+  "scope": "Local map acquired on frozen TRAIN-prefix/artificial cotangents; separate real observed-loss credit diagnostics on same/new contexts and one Adam-changed actor, no estimator refitting; saved credit fields are expired approximations outside their registered context/version. Acquisition uses 3unique task targets per depth, not512 new data examples. Forward-only probe labels fit a1152parameter linear local credit map. Fresh receiver/probe calibration, final reverse reference charged separately. Cross-context/version drift measured, not assumed. No future task learning, hard-route, full-learning efficiency or Transformer claim; this is a local acquisition certificate."
+}
