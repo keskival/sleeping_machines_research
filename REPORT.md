@@ -4779,16 +4779,27 @@ One initialization, same fixed native two-layer pretrained source. Raw controlle
 
 | Prefix | Readout | First8 sum | Later40 sum | Final learner gap |
 | --- | --- | --- | --- | --- |
-| 0 | fixed | -0.0000006 | -0.0000003 | 0.000e+00 |
-| 0 | learning | -0.0000006 | +0.0000011 | 6.937e-07 |
-| 1 | fixed | -0.0000258 | -0.0000000 | 0.000e+00 |
-| 1 | learning | -0.0000260 | -0.0000022 | 3.088e-06 |
-| 2 | fixed | -0.0001023 | -0.0000001 | 0.000e+00 |
-| 2 | learning | -0.0001046 | -0.0000046 | 1.004e-05 |
-| 3 | fixed | -0.0000065 | -0.0000000 | 0.000e+00 |
-| 3 | learning | -0.0000065 | -0.0000028 | 1.309e-06 |
+| 0 | fixed | +0.0011163 | -0.0000000 | 0.000e+00 |
+| 0 | learning | +0.0012706 | -0.0003108 | 1.281e-04 |
+| 1 | fixed | +0.0100895 | +0.0000000 | 0.000e+00 |
+| 1 | learning | +0.0124385 | -0.0037439 | 1.703e-03 |
+| 2 | fixed | +0.0090036 | +0.0000000 | 0.000e+00 |
+| 2 | learning | +0.0088860 | +0.0000019 | 2.949e-04 |
+| 3 | fixed | +0.0065166 | +0.0000153 | 0.000e+00 |
+| 3 | learning | +0.0057662 | -0.0007481 | 1.129e-03 |
 
-Four fresh TRAIN prefixes, causal maximum-absolute prefix logit perturbation selects the route; independent factual/no-op continuations. Signed cumulative contrasts, not policy improvements. Whole33.52s,23.230supportedGFLOPs,16worlds/768updates. Learning-state discrepancy can persist beyond key effect; measured values are not a uniform contraction certificate.
+Four fresh TRAIN prefixes, causal maximum native feature-gradient mean shift selects the route; independent factual/no-op continuations. Signed cumulative contrasts, not policy improvements. Whole33.79s,23.282supportedGFLOPs,16worlds/768updates. Learning-state discrepancy can persist beyond key effect; measured values are not a uniform contraction certificate.
+
+### Full48-target route-credit calibration
+
+| Credit predictor | Contrast MSE | Conditional logit variance |
+| --- | --- | --- |
+| zero | 4.871571895e-07 | 4.721735366e-07 |
+| first8 exact no tail | 1.974481228e-07 | 1.913771375e-07 |
+| static full | 4.901162851e-08 | 4.750371273e-08 |
+| reference full | 6.241347555e-08 | 6.049320409e-08 |
+
+Four new TRAIN prefixes,64 context/48targets, exact independent lexical Adam worlds over all issued routes; one observed future each. First8 exact/no-tail contrast is divided by48, same units as full-horizon contrasts. All264worlds/12672updates paid,30.58s. Uniform issued-logit variance, not controller/native parameter variance or task utility. Source pretraining/contracts/smoke additional; no public DEV/TEST.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
@@ -4984,4 +4995,6 @@ Prospective Github split2 numerical-repair pilot passes: five fresh TRAIN passes
 
 One seed0/new partition of the same Github cohort; not an independent dataset or additional unique-data result. Original2GB full-backward gate stopped at2.36GB RSS before pilot fitting; measured demand justified an explicit4GB cap on~29GB available host memory with8GiB reserve. Gate passed under the amended cap. Frozen TEST scores remain unchanged.
 
-The completed pilot admits one fresh100-pass/30-pass-patience fit at the original lr0.003/batch32. Pilot restart work is charged. Require zero skips/finite completed fit and selected DEV gain>=0.5 over saved guarded split2 before further mark fitting. Pending scores are not evidence. Source-bound evidence: aws_b4_split2_logspread_decision_20261011_v2.
+Completed pilot justified the fresh100-pass/30-pass-patience fit at original lr0.003/batch32; duplicated pilot work is charged. Registered zero-skip/finite completion and selected DEV gain>=0.5 gates are evaluated below. Frozen TEST unchanged.
+
+Full split2 repaired fit completes 70 passes with zero skips: selected DEV total -196.121, gain 8.314 versus guarded. Registered quality gate passes. Fitting 3110.03s, DEV evaluation 17.54s, paid pilot 223.35s; peak fit RSS 2563.6MiB. One seed/split development, no new TEST.

@@ -57,3 +57,7 @@ Split2 backward check v1 stopped by RSS watchdog at2,363,516KB against2,000,000K
 ## Split2 full-fit admission after completed pilot
 
 Pilot v2 completes5 passes/223.35s with zero skips; early paired scores match guarded epochs0–3 within3.3e-13, then total DEV improves5.346 at epoch4 when the guarded run skips its longest batch. Full-backward repair gate passed under explicit4GB cap. Admit one fresh seed0 fit with original100-pass maximum/30-pass DEV patience/lr0.003/batch32, no tuning or TEST. Fresh restart preserves the established optimizer schedule; duplicate5-pass pilot work is charged separately, not reused as a free warm start. The full result must retain zero skips and finite metrics; compare selected DEV and common epochs against the completed guarded split2 result before further mark/readout fitting. A weak partition result is evidence about this configuration. No family or benchmark verdict changes.
+
+## Current split2 full-fit decision
+
+Full Github split2 seed0 repaired fit completes 70 passes, zero skips; selected DEV total -196.121 vs guarded -187.807, gain 8.314. Registered selected-gain>=0.5 gate passes. Fitting 3110.03s, DEV evaluation 17.54s, paid pilot 223.35s; peak RSS 2563.6MiB. Same Github cohort/new partition, one seed; no new TEST or benchmark replacement. Next mark/readout development uses this completed decision; no mark fit is automatically admitted.
