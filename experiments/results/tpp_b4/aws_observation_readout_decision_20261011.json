@@ -1,0 +1,101 @@
+{
+  "status": "completed",
+  "tag": "aws_observation_readout_decision_20261011",
+  "battle": "B4",
+  "gate": true,
+  "mean_gain_over_prior_student": 0.36683445635282413,
+  "sample_sd": 0.25308380675361214,
+  "rows": [
+    {
+      "seed": 0,
+      "student": {
+        "L_T": -181.381199707533,
+        "L_M": 65.39330992743173,
+        "total": -115.98788978010127,
+        "wall_s": 0.19490845198743045,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "prior_student": {
+        "L_T": -181.381199707533,
+        "L_M": 65.5018295065737,
+        "total": -115.8793702009593,
+        "wall_s": 0.19298523699399084,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "gain_over_prior_student": 0.1085195791419693,
+      "baseline_gain": 1.8434478307439974,
+      "teacher_retention": 0.9063202855080771,
+      "original_gate": true,
+      "fit_s": 2.6217641049297526,
+      "teacher_preparation_s": 2.5836033850209787,
+      "prerequisite_fitting_s": 7040.783048818354
+    },
+    {
+      "seed": 1,
+      "student": {
+        "L_T": -181.4874718793754,
+        "L_M": 65.06830285408293,
+        "total": -116.41916902529246,
+        "wall_s": 0.1923778960481286,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "prior_student": {
+        "L_T": -181.4874718793754,
+        "L_M": 65.68264373044599,
+        "total": -115.8048281489294,
+        "wall_s": 0.19982639397494495,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "gain_over_prior_student": 0.6143408763630589,
+      "baseline_gain": 1.8536975979680506,
+      "teacher_retention": 1.3077726200974709,
+      "original_gate": true,
+      "fit_s": 2.6083469840232283,
+      "teacher_preparation_s": 2.5788295220118016,
+      "prerequisite_fitting_s": 5965.23807929107
+    },
+    {
+      "seed": 2,
+      "student": {
+        "L_T": -180.5974111066618,
+        "L_M": 64.90143269257419,
+        "total": -115.69597841408762,
+        "wall_s": 0.19145269691944122,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "prior_student": {
+        "L_T": -180.5974111066618,
+        "L_M": 65.27907560612763,
+        "total": -115.31833550053418,
+        "wall_s": 0.19084456097334623,
+        "targets": 2094,
+        "sequences": 34
+      },
+      "gain_over_prior_student": 0.37764291355344426,
+      "baseline_gain": 2.7686004270609743,
+      "teacher_retention": 1.1132088973991108,
+      "original_gate": true,
+      "fit_s": 2.6029965369962156,
+      "teacher_preparation_s": 2.606599877937697,
+      "prerequisite_fitting_s": 5808.231852224795
+    }
+  ],
+  "source_sha256": {
+    "experiments/tpp/decide_observation_anchored_readout.py": "44e6e598367e70691471f93ad02ad83d43a45d73ca49802c6fc81d2d48306037"
+  },
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_single_readout_decision_20261011.json": "d3c16bbfa5c136c687f7f4e261b95d62076882967763c1ea7aa3351d08b15a3a",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s0.json": "f72d825c91eefd61132a605bcd44a6e779597af9b1b1e0d69e92c6bea4dec6d1",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s1.json": "4104c565d574d25d0f4b78625ad892ffe047a05f8d96c672323df5b637949a14",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s2.json": "a5c4d2aa1832e9306cecd9fbd32690de4b74ff9dd106d2d134dc13c6af23f6d2"
+  },
+  "wall_s": 0.0009826000314205885,
+  "max_rss_kb": 21692,
+  "rule": "Registered before all3scores: mean DEV gain>=0.1 against saved one-core student, each gain>=-0.25 and unchanged baseline/80% teacher-retention gate all pass. Fixed TRAIN label weight0.1, no DEV grid.",
+  "scope": "Same Github split1 DEV, three fixed training seeds; no TEST or independent-dataset confirmation. Teacher fits and prior/current readout development are paid. No future-intervention or sparse-learning claim."
+}
