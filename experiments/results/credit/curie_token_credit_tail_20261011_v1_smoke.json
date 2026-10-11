@@ -1,0 +1,65 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_credit_tail_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "prefix": 0,
+      "lr": 0.0,
+      "receiver": 373,
+      "issued_beta": -0.2919251693050512,
+      "windows": [
+        {
+          "window": 0,
+          "mean_loss_contrast": -8.098165860115358e-08,
+          "learning_state_distance": 0.0
+        },
+        {
+          "window": 1,
+          "mean_loss_contrast": -3.367328740844222e-08,
+          "learning_state_distance": 0.0
+        }
+      ],
+      "first8_sum": -6.478532688092287e-07,
+      "later_sum": -2.6938629926753777e-07
+    },
+    {
+      "prefix": 0,
+      "lr": 0.01,
+      "receiver": 373,
+      "issued_beta": -0.2919251693050512,
+      "windows": [
+        {
+          "window": 0,
+          "mean_loss_contrast": -7.088544856648227e-08,
+          "learning_state_distance": 6.358349002233482e-07
+        },
+        {
+          "window": 1,
+          "mean_loss_contrast": -6.194493751277008e-08,
+          "learning_state_distance": 7.071352290748029e-07
+        }
+      ],
+      "first8_sum": -5.670835885318581e-07,
+      "later_sum": -4.955595001021607e-07
+    }
+  ],
+  "train_offset": 4292608,
+  "context": 64,
+  "targets_per_world": 16,
+  "actual_worlds": 4,
+  "readout_updates": 64,
+  "supported_flops": 3319323904,
+  "whole_wall_s": 5.686671346993535,
+  "peak_rss_kb": 350840,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/measure_token_credit_tail.py": "34a86d2eac14d4bcc3b1b5d4b861afc63ba26d2df96dfb73b412b75d699d68d3",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Four fresh TRAIN prefixes, prefix-only maximum absolute immediate-logit perturbation selects issued route. Independent factual/no-op trajectories across48targets; fixed-readout/direct-only vs independent lexical Adam(.01), same source carrier. Measures tail of this selected diagnostic, not policy utility or a native contraction certificate. Full acquisition/state/normalized output/readout/projection work paid; lr0 optimizer calls counted. No DEV/TEST."
+}

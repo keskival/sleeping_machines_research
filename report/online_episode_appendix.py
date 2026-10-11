@@ -85,7 +85,7 @@ def unseen_receiver_pages():
         c=json.loads(confirmation.read_text());assert c['status']=='completed'
         rs=[[str(r['seed']),r['arm'],f"{r['inactive']['relative_mse_vs_zero']:.4f}",f"{r['utility']['gain_from_expanding_counterfactual_pool']:+.6f}"] for r in c['rows']]
         result_pages.append([('h2','Three-seed receiver-generalization confirmation'),('table',(['Seed','Critic','Inactive error / zero','Expanded-pool gain'],rs,[22,33,55,57])),('p',f"All structured pool gains positive: {c['all_structured_pool_gains_positive']}. All structured inactive errors below TRAIN-role mean: {c['all_structured_inactive_better_than_role_mean']}."),('small',c['scope'])])
-    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages() + optimizer_aware_pages() + task_valued_pages() + combined_task_pages() + paired_audit_pages() + connected_paired_pages() + forward_derived_pages() + token_forward_credit_pages()
+    return result_pages + sparse_receiver_pages() + shared_receiver_pages() + shared_receiver_confirmation_pages() + optimizer_aware_pages() + task_valued_pages() + combined_task_pages() + paired_audit_pages() + connected_paired_pages() + forward_derived_pages() + token_forward_credit_pages() + continuous_token_policy_pages()
 
 
 def sparse_receiver_pages():
@@ -272,4 +272,32 @@ def token_forward_credit_pages():
         e=json.loads(execution.read_text());assert e['status']=='completed'
         table=[[r['arm'],f"{r['nll']:.6f}",f"{r['wall_s']:.2f}",f"{r['supported_flops']/1e9:.3f}",str(r['actual_worlds']),str(r['readout_updates'])] for r in e['rows']]
         page += [('h2','Continuous carried token execution'),('table',(['Backend','NLL/target','Whole s','Supported GFLOPs','Worlds','Updates'],table,[36,30,25,34,21,21])),('p',f"Same initial256-token context and128 subsequent targets; hard writes, active keys, factual fast state and Adam survive credit windows, with observed EOS reset. Vectorized transport gives{e['whole_execution_speedup']:.2f}x whole current-pipeline speed; prediction parity{e['errors']['factual_scores']:.2e}. Native all-parameter gradient contracts also pass within5.5e-20."),('small','One real TRAIN execution observation; includes carrier/full normalized vocabulary, all active-key scores, reference projections, actual readout updates and snapshot/state copying. No actor fit or learned-credit quality/whole-model/depth/hardware efficiency claim. Custom dense-mv counts included; unsupported arithmetic stays in wall. Zero-fast-state projections are charged equally and are not current-state static controls. Source pretraining/calibration/verification additional.')]
+    return [page]
+
+
+def continuous_token_policy_pages():
+    folder=ROOT/'experiments/results/credit'
+    quality=[];work=[]
+    for version,label in [('v1','Raw issued features'),('v2','Forward geometry')]:
+        path=folder/f'curie_continuous_token_route_dev_20261011_{version}_fit.json'
+        if not path.exists():continue
+        d=json.loads(path.read_text());assert d['status']=='completed'
+        for name in ['reference_over_zero','reference_over_static','reference_over_initial']:
+            c=d['comparisons'][name];lo,hi=c['paired_prefix_bootstrap95']
+            quality.append([label,name.replace('_',' '),f"{c['gain']:+.9f}",f"[{lo:+.9f},{hi:+.9f}]"])
+        targets=d['config']['windows']*8
+        for r in d['fitting']:
+            work.append([label,r['arm'],f"{r['supported_flops']/1e9:.3f}",f"{r['supported_flops']/targets/1e6:.3f}",f"{r['wall_s']:.2f}"])
+    if not quality:return []
+    page=[('h2','Continuous proper-token route learning: development'),
+          ('p','Connected controllers train hard addressed writes while factual key state,64-dimensional lexical parameters and Adam moments persist. Zero, current-state static and online reference credit use the same source and data. Final64 actor updates/512 TRAIN targets are scored by exact all-route expected stochastic cost on eight held-out TRAIN-tail prefixes.'),
+          ('table',(['Variant','Comparison','Gain nats/target','Paired prefix95%'],quality,[34,48,33,52])),
+          ('p','Neither variant confirms a reference-credit policy advantage over zero/static or its initial controller on these prefixes. Candidate best-route headroom0.00152–0.01068 nats/target identifies useful responses, but these controllers capture little of that gap. Geometry adds causal native-feature mean shifts and vector normalization, with independent full-vocabulary gradient contracts.'),
+          ('table',(['Variant','Credit','Fit GFLOPs','Fit MFLOPs/target','Fit s'],work,[37,24,31,43,32])),
+          ('small','One initialization, same fixed native two-layer pretrained source. Raw controller29,057 parameters; geometry controller37,377. Same disclosed private development cohort across iterations; no public DEV/TEST. Complete exhaustive scoring additional; source pretraining/contracts/smokes additional. Supported arithmetic omits unsupported scalar/optimizer operations, included in wall. Finite eight-target credit; no recurrent controller or all-carrier learning claim.')]
+    path=folder/'curie_token_credit_tail_20261011_v1_measure.json'
+    if path.exists():
+        d=json.loads(path.read_text());assert d['status']=='completed'
+        rows=[[str(r['prefix']),'fixed' if r['lr']==0 else 'learning',f"{r['first8_sum']:+.7f}",f"{r['later_sum']:+.7f}",f"{r['windows'][-1]['learning_state_distance']:.3e}"] for r in d['rows']]
+        page += [('h2','Influence beyond the issued eight-target window'),('table',(['Prefix','Readout','First8 sum','Later40 sum','Final learner gap'],rows,[20,28,41,41,37])),('small',f"Four fresh TRAIN prefixes, causal maximum-absolute prefix logit perturbation selects the route; independent factual/no-op continuations. Signed cumulative contrasts, not policy improvements. Whole{d['whole_wall_s']:.2f}s,{d['supported_flops']/1e9:.3f}supportedGFLOPs,{d['actual_worlds']}worlds/{d['readout_updates']}updates. Learning-state discrepancy can persist beyond key effect; measured values are not a uniform contraction certificate.")]
     return [page]
