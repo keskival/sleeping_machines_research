@@ -1,0 +1,78 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_mark_confidence_20261011T0619Z",
+  "battle": "B4 development",
+  "stage": "conditional_mark_confidence_diagnostic",
+  "alpha_train_locked": 0.6133046661601038,
+  "optimization": {
+    "candidates": [
+      0.0,
+      1.0,
+      0.6133046661601038
+    ],
+    "train_nll": [
+      14688.673361758945,
+      14534.0493949735,
+      14430.565534172507
+    ],
+    "numerical_interval": [
+      1e-08,
+      0.99999999
+    ]
+  },
+  "dev": {
+    "L_T": -181.38119970753303,
+    "L_M": 65.20276617681046,
+    "total": -116.17843353072257,
+    "sequences": 34
+  },
+  "baseline_dev": {
+    "L_T": -181.38119970753303,
+    "L_M": 67.23675775817573,
+    "total": -114.1444419493573,
+    "sequences": 34
+  },
+  "joint_marks_repaired_time_dev": {
+    "L_T": -181.38119970753303,
+    "L_M": 65.41702433816764,
+    "total": -115.96417536936539,
+    "sequences": 34
+  },
+  "train": {
+    "L_T": -583.706800986466,
+    "L_M": 140.10257800167483,
+    "total": -443.60422298479114,
+    "sequences": 103
+  },
+  "dev_mark_gain": 2.033991581365271,
+  "diagnostic_gate": true,
+  "rule": "One TRAIN-fitted global probability-mixture coefficient; DEV mark gain>=1nat/sequence with repaired timing fixed. Diagnostic only.",
+  "cached_scored_targets": {
+    "train": 13307,
+    "dev": 2094
+  },
+  "predictor_forward_s": 2.9408746220869943,
+  "scalar_fit_s": 0.018530245986767113,
+  "prerequisite_fitting_s": 7040.783048818354,
+  "parameters": 50826,
+  "source_sha256": {
+    "experiments/tpp/calibrate_mark_predictors.py": "97792a15327abce10d9d642fc730ca4c31f25dd346f0494ecf57164119978b8d",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+  },
+  "checkpoint_sha256": {
+    "experiments/results/tpp_b4/aws_b4_logspread_develop_20261010T2112Z.pt": "0bc4370e313d3a86bc4bce7ffd8a4005a3e2020e291e578312983b65cb52f7bc",
+    "experiments/results/tpp_b4/aws_b4_marks_develop_20261010T2300Z.pt": "343794cf8902970bf32268341f7123d3c298af0f5f1e42086edb9c2d51124622"
+  },
+  "data_sha256": {
+    "train": "1953de387dfd7df71b38faffb5642d482e77bf12f1cd6254e129beb98a41572f",
+    "val": "95efbde7d7c0252c5d6f93ddb3efcd8bf89b3fe142147e95dc2d8b8b309665ef"
+  },
+  "wall_s": 2.997591439052485,
+  "max_rss_kb": 486548,
+  "decision": "Use diagnostic to investigate conditional calibration; no adoption, automatic fit or sealed scoring.",
+  "scope": "Saved native two-predictor diagnostic,TRAIN-only scalar fitting,34 DEV sequences. Same alpha for every candidate mark and history; no target-dependent inference selection. Both full predictors and prerequisite fits charged. No integrated-substrate,efficiency or TEST win."
+}
