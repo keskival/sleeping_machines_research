@@ -39,9 +39,11 @@ Measure the reciprocal loop against frozen-credit, credit-state-reset, no-forwar
 4. On R1, require an actual depth dependence: ablate intermediate-layer state/message paths and test delayed binding at 8/16/32 pairs. On Taxi DEV, report time and mark likelihood separately. If the task is solved equally well by the shallow model, use it only for resource scaling and select a harder R1 development regime before claiming deep learning advantage.
 5. Select the compact learner using DEV only, then confirm the selected depth/size trend on three seeds. Keep benchmark TEST sealed. Resource failures stop admission; they are recorded, not retried with silently changed caps.
 
-## Small-scale learning gate before scaling
+## Acquisition evidence and delayed-payoff scaling
 
-A learned credit system must first show acquired structure, even when its overhead does not yet pay. Use the [credit-learning certificates](theory/CREDIT_LEARNING_CERTIFICATES.md): fixed-packet fitting, disjoint held-out producer-weighted calibration and audit-variance reduction, then later-forward-loss utility under fixed updating. Match persistent/reset state availability between fitting and assessment; prefix-assisted adaptation and zero-shot transfer are separate tasks. Confirm the selected small-scale signal across three seeds before scaling it. Include all pretraining and teacher work. Larger scale is an amortization hypothesis, not a substitute for a learning signal.
+User direction, 11 October: acquired exploration and credit may learn more slowly at small data and pay back at scale. Immediate small-scale task utility is therefore not a universal admission gate. Keep causal numerical contracts, finite updates and measured resource bounds. Use the [credit-learning certificates](theory/CREDIT_LEARNING_CERTIFICATES.md) to identify acquired structure, held-out producer calibration and audit variance, without equating those signals with a task-quality win. A bounded acquisition stage may investigate a slower learning timescale; an early quality deficit alone does not stop a registered ladder.
+
+The [investment and scale protocol](theory/LEARNING_INVESTMENT_AND_SCALE.md) separates unique targets, repeated presentations, optimizer counts and complete work; includes initial teacher/critic investment; and tests later reuse against frozen/reset credit. Register budgets and checkpoints before scaling, report unreached targets, and confirm a selected trend across three seeds. Longer horizon is a hypothesis to measure, not an automatic explanation for weak results. No new dense control training is admitted.
 
 ## Required evidence and pass criterion
 

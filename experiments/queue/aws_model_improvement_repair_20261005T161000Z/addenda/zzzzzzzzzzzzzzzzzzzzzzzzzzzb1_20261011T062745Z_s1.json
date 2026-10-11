@@ -1,0 +1,23 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Distinguish observed learning horizons from untested unique-data and learned-credit amortization; decide the next scaling protocol without duplicate fits",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_learning_horizon_audit_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_learning_horizon_audit_20261011_v1/aws_learning_horizon_audit_20261011_v1.txt",
+        "queue_sha256": "a7615aa654799b6b54f808f9578d0345869251bd784b0bb05cb40b2600fd7cd1",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/audit_learning_horizons.py": "d0ab01e7e6fa09d8fc35f07ae6832073650f8f93c6978870e004185de03377af"
+        },
+        "result": "experiments/results/credit/aws_learning_horizon_audit_20261011_v1.json",
+        "timeout_s": 120,
+        "rss_kb": 500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
