@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_static_carried_credit_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "reset": false,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 2,
+      "reset": true,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 4,
+      "reset": false,
+      "error": 8.881784197001252e-16
+    },
+    {
+      "depth": 4,
+      "reset": true,
+      "error": 8.881784197001252e-16
+    },
+    {
+      "depth": 8,
+      "reset": false,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 8,
+      "reset": true,
+      "error": 1.7763568394002505e-15
+    }
+  ],
+  "whole_wall_s": 0.21009932400193065,
+  "peak_rss_kb": 241176,
+  "source_sha256": {
+    "experiments/credit/check_token_static_carried_credit.py": "ac51321ea82dfe5639a174284f23a70202cde1fba2a2bb79ab9250be021568cf",
+    "experiments/credit/token_static_carried_credit.py": "a898f2ab3d3e0dfd708fa76dbe32876412a21f2e92f0d11e58e974e177c0719d",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68"
+  },
+  "scope": "Nonzero issued fast-state snapshot, independent full-vocabulary CE oracle, no-op and two hard writes, depths2/4/8 with causal EOS reset. Incoming state unmodified; no actor fitting or quality claim."
+}
