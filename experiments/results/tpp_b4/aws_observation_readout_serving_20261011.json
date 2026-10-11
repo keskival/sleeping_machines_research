@@ -1,0 +1,75 @@
+{
+  "status": "completed",
+  "tag": "aws_observation_readout_serving_20261011",
+  "battle": "B4 one-core serving contract",
+  "rows": [
+    {
+      "seed": 0,
+      "score": {
+        "L_T": -181.381199707533,
+        "L_M": 65.39330992743173,
+        "total": -115.98788978010127,
+        "normalization_error": 4.440892098500626e-16,
+        "wall_s": 0.21693366102408618
+      },
+      "serialized_score_error": 0.0,
+      "causal_error": 0.0,
+      "bundle": "experiments/results/tpp_b4/aws_observation_readout_serving_20261011.s0.bundle.pt",
+      "bundle_sha256": "578e0783f5a0a64343aaaa3104c5d84b47aaf57b62518bc15e3678a4cfddab36",
+      "bundle_bytes": 290173,
+      "parameters": 32938
+    },
+    {
+      "seed": 1,
+      "score": {
+        "L_T": -181.4874718793754,
+        "L_M": 65.06830285408293,
+        "total": -116.41916902529246,
+        "normalization_error": 4.440892098500626e-16,
+        "wall_s": 0.21063504298217595
+      },
+      "serialized_score_error": 0.0,
+      "causal_error": 0.0,
+      "bundle": "experiments/results/tpp_b4/aws_observation_readout_serving_20261011.s1.bundle.pt",
+      "bundle_sha256": "67f0387eeeb9bf5b873a230612ac9bdaa09f186b67ff736037b7b48feb4d7f9e",
+      "bundle_bytes": 290173,
+      "parameters": 32938
+    },
+    {
+      "seed": 2,
+      "score": {
+        "L_T": -180.5974111066618,
+        "L_M": 64.90143269257419,
+        "total": -115.69597841408762,
+        "normalization_error": 4.440892098500626e-16,
+        "wall_s": 0.21025122702121735
+      },
+      "serialized_score_error": 0.0,
+      "causal_error": 0.0,
+      "bundle": "experiments/results/tpp_b4/aws_observation_readout_serving_20261011.s2.bundle.pt",
+      "bundle_sha256": "0da3e8005d1993a7576698218487f7d06f817096e7c93e393f2e604df8c36b19",
+      "bundle_bytes": 290173,
+      "parameters": 32938
+    }
+  ],
+  "source_sha256": {
+    "experiments/tpp/check_observation_readout_serving.py": "5acbf1bb15f4d814f861d4f163ec3cbd12346f47eb23bd91c3baab771150b5e5",
+    "experiments/tpp/nonlinear_single_mark_readout.py": "b9c44d710962fe998ac01f9d088d3be20409b91b642c5911b0010c6278decd1f",
+    "experiments/tpp/single_mark_readout.py": "4066957c61cd4281909c78d4c263ae0e5b3a88e19d690a2844551d34cede614f",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+  },
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_observation_readout_decision_20261011.json": "42253b08bef4a74405a63c26159c8b76abc547e872a399d1b24a2d4e4a178f9a",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s0.pt": "119c8f64adfd6e86d0e32aaa47a84e71648f76ee45dfb9df53a2968de86632a0",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s1.pt": "a2974f61497c2439de7cf2430d8af6c6bbbad73fc58f4ab22b30afcf268983ad",
+    "experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s2.pt": "9b47f7af01bfc165d7ed9c84e27778260c2ab7dc8bc428d996e9526471fd6f34"
+  },
+  "data_sha256": {
+    "val": "95efbde7d7c0252c5d6f93ddb3efcd8bf89b3fe142147e95dc2d8b8b309665ef"
+  },
+  "wall_s": 0.6881764599820599,
+  "max_rss_kb": 316824,
+  "scope": "Three fixed Github split1 DEV seeds; CPU float64. Serving bundle contains one core and normalization/readout metadata; no teacher checkpoints loaded and no TRAIN loaded to restore. Normalized all-mark probabilities, time/score parity and first-target suffix invariance. No TEST or deployment to external service."
+}
