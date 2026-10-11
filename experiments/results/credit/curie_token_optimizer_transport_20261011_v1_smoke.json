@@ -1,0 +1,94 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_optimizer_transport_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "static",
+      "mse": 3.3983875860982195e-07
+    },
+    {
+      "arm": "reference",
+      "mse": 4.3269924098813704e-07
+    },
+    {
+      "arm": "transport_zero",
+      "mse": 1.9264853824102005e-08
+    },
+    {
+      "arm": "transport_diagonal",
+      "mse": 1.7047271155357798e-08
+    }
+  ],
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "static",
+      "mse": 3.3983875860982195e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "reference",
+      "mse": 4.3269924098813704e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_zero",
+      "mse": 1.9264853824102005e-08,
+      "conditional_logit_variance": 1.868057040406592e-08
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "mse": 1.7047271155357798e-08,
+      "conditional_logit_variance": 1.65306582015531e-08
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "arm": "carrier_replay",
+      "wall_s": 1.526952790998621,
+      "supported_flops": 518783360
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_zero",
+      "wall_s": 0.21343904800596647,
+      "supported_flops": 205985792,
+      "reference_parity_error": 8.881784197001252e-16,
+      "actual_worlds": 1,
+      "transported_worlds": 65,
+      "reference_updates": 16,
+      "transported_updates": 1040
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "wall_s": 0.3423537619964918,
+      "supported_flops": 308912128,
+      "reference_parity_error": 8.881784197001252e-16,
+      "actual_worlds": 1,
+      "transported_worlds": 65,
+      "reference_updates": 16,
+      "transported_updates": 1040
+    }
+  ],
+  "source_result": "curie_long_token_credit_20261011_v1_measure",
+  "source_labels_sha256": "3566eaf35e04d74fe5afdad18f67d086dfc12a97d1307e43ab8a88f2f2ad3563",
+  "targets_per_prefix": 16,
+  "prefixes": 1,
+  "whole_wall_s": 2.278365685007884,
+  "peak_rss_kb": 376292,
+  "checkpoint": "experiments/results/credit/curie_token_optimizer_transport_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "43e41ae9c52fd1276c4d76b54e35ff751144cdf100d6964a148362f0f1d79afe",
+  "source_sha256": {
+    "experiments/credit/measure_token_optimizer_transport.py": "3bf9df94721c3f668cfaf5184ba745c50a6f47244c9648203466fe135e040cdf",
+    "experiments/credit/token_optimizer_transport.py": "c46d5c575464178457c2e18df573c15ba9140ca8d851d4597c015b470f0eeebc",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Reuses paid all-route exact48-target TRAIN learner labels; no new independent oracle fit. Common native carrier replay plus one real reference lexical Adam and all alternative optimizer-state transport/prediction paid separately. Zero/diagonal curvature are declared approximations, reference score parity enforced at real50257 vocabulary. Arithmetic is supported FLOPs, unsupported work included in wall. Oracle acquisition/source pretraining/contracts/smoke additional; no controller fitting/DEV/TEST or task/depth/whole-model learning-efficiency claim."
+}
