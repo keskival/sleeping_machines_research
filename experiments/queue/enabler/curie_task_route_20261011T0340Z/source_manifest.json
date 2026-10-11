@@ -1,0 +1,18 @@
+{
+  "battle": "B1/R1",
+  "decision": "Does task-valued combined-response fitting improve locked fresh route utility enough to merit moving-actor integration?",
+  "cpu_only": true,
+  "threads": 1,
+  "precision": "float64",
+  "host": "curie",
+  "host_memory_available_mb": 12138,
+  "cgroup_limit_bytes": 10737418240,
+  "rss_cap_kb": 1500000,
+  "min_available_mb": 9216,
+  "timeout_s": 600,
+  "source_sha256": {
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/cached_learning_effect.py": "987b3985c5e05945d687757f4067358549b487be7ba734bdcd3209a95f8b07cd"
+  },
+  "command": "tmux new-session -d -s curie-task-route bash experiments/queue/enabler/curie_task_route_20261011T0340Z/continue.sh"
+}
