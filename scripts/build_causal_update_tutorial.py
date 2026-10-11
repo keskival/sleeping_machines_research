@@ -17,7 +17,7 @@ def main():
         assert subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()=='main'
         assert not subprocess.check_output(['git','diff','--name-only','--diff-filter=U'],cwd=ROOT,text=True).strip()
         target=ROOT/'tutorials'/pdf.name;shutil.copy(pdf,target)
-        readme=ROOT/'tutorials/README.md';text=readme.read_text().replace('All eight planned tutorials are complete. Each is three pages.','All eight planned tutorials and both learning extensions are complete. Each is three pages.')
+        readme=ROOT/'tutorials/README.md';text=readme.read_text().replace('All eight planned tutorials and the forward-credit extension are complete. Each is three pages.','All eight planned tutorials and both learning extensions are complete. Each is three pages.')
         entry='| 10 | [Forward feedback trains update functions](10_causal_update_functions.pdf) · [source](10_causal_update_functions.tex) | done (3 pp.) |'
         if '| 10 |' not in text:
             lines=text.splitlines();position=next(i for i,l in enumerate(lines) if l.startswith('| 9 |'));lines.insert(position+1,entry);text='\n'.join(lines)+'\n'

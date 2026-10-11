@@ -1,0 +1,168 @@
+{
+  "inherited_pretraining_result": "experiments/results/credit/curie_online_geometric_update_20261011_v2_fit.json",
+  "inherited_pretraining_sha256": "713e5c6e74eca0825ceb8eb6177b9c3a5943217cc4be39bca044e6fbc6b6f818",
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_online_geometric_update_20261011_v3_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "utility_gate": false,
+  "config": {
+    "train_targets": 1024,
+    "episodes": 2,
+    "targets": 32,
+    "context": 64,
+    "meta_lr": 0.001,
+    "feedback_batch": 16,
+    "train_offset": 4915200,
+    "private_dev_offset": 5124096
+  },
+  "basis": {
+    "wall_s": 0.8524992089951411,
+    "supported_flops": 463168512,
+    "cached_bytes": 17695200
+  },
+  "pretraining": {
+    "wall_s": 38.18044508699677,
+    "supported_flops": 38915426560,
+    "common_native_wall_s": 10.866583014605567,
+    "common_native_supported_flops": 7170813184,
+    "arm_wall_s": {
+      "online": 27.116698287340114
+    },
+    "arm_supported_flops": {
+      "online": 31744613376
+    },
+    "scored_targets": 1024,
+    "meta_updates": 64,
+    "meta_feedbacks": 1023,
+    "mean_nll": {
+      "online": 4.903068879606931
+    },
+    "max_scored_keys": 438,
+    "mean_scored_keys": 271.37890625,
+    "selected_native_address_writes": 1087,
+    "lexical_capacity": 64,
+    "native_available_vocabulary": 50257,
+    "update_function_parameters": 25027
+  },
+  "rows": [
+    {
+      "wall_s": 3.112628366012359,
+      "supported_flops": 4005912192,
+      "common_native_wall_s": 0.8684298781154212,
+      "common_native_supported_flops": 624062848,
+      "arm_wall_s": {
+        "adam": 0.1932694390125107,
+        "fixed": 0.5576562150090467,
+        "frozen": 0.6470560660236515,
+        "online": 0.8329389680875465
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991954688
+      },
+      "scored_targets": 32,
+      "meta_updates": 2,
+      "meta_feedbacks": 31,
+      "mean_nll": {
+        "adam": 5.823087353202979,
+        "fixed": 5.843435589808606,
+        "frozen": 5.847426738006547,
+        "online": 5.847454449463504
+      },
+      "max_scored_keys": 70,
+      "mean_scored_keys": 62.34375,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 0
+    },
+    {
+      "wall_s": 3.1649531419971026,
+      "supported_flops": 4005902592,
+      "common_native_wall_s": 0.9570667909283657,
+      "common_native_supported_flops": 624053248,
+      "arm_wall_s": {
+        "adam": 0.18956428300589323,
+        "fixed": 0.5520597739960067,
+        "frozen": 0.6410284418670926,
+        "online": 0.8121961740253028
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991954688
+      },
+      "scored_targets": 32,
+      "meta_updates": 2,
+      "meta_feedbacks": 31,
+      "mean_nll": {
+        "adam": 5.249052672961598,
+        "fixed": 5.242699208019363,
+        "frozen": 5.24308368608542,
+        "online": 5.243052673504854
+      },
+      "max_scored_keys": 69,
+      "mean_scored_keys": 60.40625,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 1
+    }
+  ],
+  "comparisons": {
+    "online_over_frozen": {
+      "gain": 1.650561804567019e-06,
+      "paired_episode_bootstrap95": [
+        -2.7711456956680536e-05,
+        3.1012580565814574e-05
+      ],
+      "per_episode": [
+        -2.7711456956680536e-05,
+        3.1012580565814574e-05
+      ]
+    },
+    "online_over_fixed": {
+      "gain": -0.0021861625701946608,
+      "paired_episode_bootstrap95": [
+        -0.004018859654897788,
+        -0.0003534654854915331
+      ],
+      "per_episode": [
+        -0.004018859654897788,
+        -0.0003534654854915331
+      ]
+    },
+    "online_over_adam": {
+      "gain": -0.009183548401890285,
+      "paired_episode_bootstrap95": [
+        -0.02436709626052469,
+        0.005999999456744121
+      ],
+      "per_episode": [
+        -0.02436709626052469,
+        0.005999999456744121
+      ]
+    }
+  },
+  "whole_wall_s": 7.341831677011214,
+  "peak_rss_kb": 397980,
+  "checkpoint": "experiments/results/credit/curie_online_geometric_update_20261011_v3_smoke.pt",
+  "checkpoint_sha256": "bd242ef7ddd91010647a580e23a0e5b564a40875fed9df75aa15ce0e378c638e",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/run_online_geometric_update_confirmation.py": "8a5bcbffb4c4ec63419923aff972049e15eab41c7ac4333a22c8bbf86485e6ac",
+    "experiments/credit/online_geometric_update_accumulated.py": "02b1790bfd3d7fb99580d8c8376778f445d4d28a9b2c18080b0694004cdd85cc",
+    "experiments/credit/ONLINE_GEOMETRIC_UPDATE_CONFIRMATION_PROTOCOL.md": "ab0a0dc6bf5d0aa4ff4cf601d956b65edbbb46fe8d362031acc73757f9479227",
+    "experiments/credit/token_block_curvature.py": "f8b10b1024ead9c45971aee6121f6d8bdffe3835a719ea619df91e750309f711",
+    "experiments/credit/token_spectral_curvature.py": "82589f0a240d5867503b087d9e57cc9973d04ce2c32a6887eab73902fc81eb24",
+    "experiments/credit/token_episode_state_vectorized.py": "34bcdb4d048c18234bb3fc8efc6b7ef576e4490d31c469fd514dfc137a2fd173"
+  },
+  "scope": "ProperGPT2 native2layer keyedsource,64dimensional forwardlexical learner; nativeparameters fixed. Learned connected updatefunction eta/damping/momentum trained by exact one-step futureloss through retained issued graph; mean of sixteen feedback gradients with fixed parameter version, partial final batch flushed; frozen-vs-online same inherited function/metaAdamstate. Fresh private episodes; unchanged sixteen-feedback rule, paid pretraining checkpoint reused rather than refitted. Streaming causal prequential privateTRAINtail; no publicDEV/TEST. No optionalcounterfactual route/actor learning added in this diagnostic; retains source temporal/addressedkey inference. Charge sharednative plus eacharm updates/geometry/function/solver/optimizer, basis/metapretraining additional to everyprimaryarm; unsupported solver/eigensolver/scalar work included in wall but omitted from supportedFLOPs. No equaltrainingclaim vsAdam/fullnativelearning/depth or hardwareefficiencyclaim."
+}

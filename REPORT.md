@@ -4876,7 +4876,7 @@ One initialization, 32 consecutive 48-target windows (1,536 targets), shared ini
 
 Shared exhaustive scoring: 51.627s, 330.503 GFLOPs, 860.686 MFLOPs per scored target, 520 independent worlds / 24,960 updates. Whole experiment 259.259s, peak RSS 512.4 MiB; source pretraining and admission checks additional. Standalone inference work was not measured in this development fit.
 
-Static and transport select the same actual action in all 32 training windows, despite different gradients. Exact uniform-to-best route headroom on scoring prefixes is 0.000575–0.004898 nats/target. Both train on carried learner state and score on fresh episode state. Next diagnose this state mismatch and policy movement before another fit; expand to jointly learned multiscale credit only with a causal observed-consequence target.
+Static and transport select the same actual action in all 32 training windows, despite different gradients. Exact uniform-to-best route headroom on scoring prefixes is 0.000575–0.004898 nats/target. Both train on carried learner state and score on fresh episode state. Warm-state and policy-movement diagnostics below do not resolve the missing utility. Connected future-consequence learning and forward-conditioned transport are tested separately.
 
 Completed source-bound result: experiments/results/credit/curie_route48_transport_20261011_v1_fit.json. No new Transformer/LSTM control, public scoring or energy claim.
 
@@ -4941,6 +4941,27 @@ Whole boundary stage 294.802s, peakRSS 513.6MiB. Source native two-layer model f
 First-order connected state-sensitivity field predicts tail consequences. Physical remaining-route effects are omitted from predictor features but included in labels; the recorded endpoint tests this restricted representation. Exact sampled/no-op residuals correct approximate-label risk gradients. No actor/full-native update, public scoring, standalone inference-work or depth-efficiency result is claimed.
 
 Completed result: curie_boundary_credit_20261011_v1_fit.json. Protocol: BOUNDARY_CREDIT_PROTOCOL.md. Progression distinguishes issuance foresight, after-observation learning influence and exact first-order depth teaching; none substitutes for measured prediction per total learning work.
+
+### Forward-conditioned block curvature: accuracy gate passes
+
+Rank-eight full projected covariance gives route-contrast MSE 1.883e-11 versus diagonal 9.539e-11: 80.3% lower. Eight new prefixes, seven improve; paired95% MSE-gain interval [1.581107205460867e-11, 1.4861755579443462e-10]. Additional improvement over independent spectral directions is inconclusive.
+
+The 48-target block kernel costs1.178GFLOPs versus diagonal0.927GFLOPs, or24.537 versus19.307MFLOPs/target;27.1% extra supported kernel work. Block basis0.056s/0.463GFLOPs/16.88MiB. Common native forward, exhaustive oracle acquisition and all comparison arms additionally charged; whole experiment85.521s. Conditional post-observation compression from learned forward embeddings, not newly fitted critic or task-quality evidence.
+
+### Actual online update-function learning: first attempt fails
+
+A25,027-parameter function selects step size, damping and momentum; the next revealed target differentiates its retained issued update. Online-over-frozen gain -0.031139 nats/target, paired episode95%[-0.0770013275201693, 0.00657037136831784]. One of four episodes improves; utility gate false.
+
+| Arm | Mean NLL | Seconds | GFLOPs | MFLOPs/target |
+| --- | --- | --- | --- | --- |
+| adam | 5.771313 | 33.580 | 41.488 | 20.258 |
+| fixed | 5.804083 | 56.636 | 78.390 | 38.276 |
+| frozen | 5.786438 | 62.348 | 78.492 | 38.326 |
+| online | 5.817578 | 79.219 | 78.627 | 38.392 |
+
+Each arm table includes identical allocated native execution plus its own prediction/update work, over2,048 scored targets. Native execution was actually shared. Learned-function arms additionally inherit1024-target pretraining39.909s/38.915GFLOPs and basis acquisition; source pretraining/contracts/smokes additional. Unsupported solver/eigensolver/scalar/optimizer work is included in wall, omitted from supported FLOPs. Standalone inference work was not isolated. Whole four-arm experiment208.403s.
+
+ProperGPT2 FineWeb TRAIN-tail, frozen native two-layer temporal/keyed source and64-dimensional lexical adaptation, four independent512-target private episodes. No optional-route learning or public scoring. A prospective next test averages sixteen causal feedback gradients at a fixed function version, trading update noise against response delay. The complete learning-quality/work gate decides integration.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
@@ -5057,6 +5078,62 @@ Fused joint transport shares recurrence/normalization/readout work. Complete act
 Zero-query speed ratio 0.731–0.810: capture is slower for ordinary fitting. Enable it for needed teaching. Native dense-write diagnostic, physical race/addressed-memory clocks retained; no critic fitting/use, task quality, full-learning or Transformer efficiency claim.
 
 Forward-only joint residual labels retain shared-producer content/time cross terms at depths2/4/8. Combined producer-risk error 1.11e-16, conditional risk-training gradient error 5.55e-17. Separate reverse validation paid; exhaustive orthogonal probes and diagnostic positive internal tempo. No learned calibration/audit utility claim. Evidence: aws_deep_temporal_packet_20261011_v1, aws_fused_deep_temporal_packet_20261011_v1, aws_fused_deep_temporal_teaching_cost_20261011_v1, aws_joint_forward_risk_20261011_v1.
+
+Forward responses now train the joint credit estimator directly: squared mismatch between predicted input/time directional credit and the observed-loss response c^T Jv. Actor responses, probes and terminal cotangent are frozen for each issued observation; only estimator predictions receive local training gradients. At depths2/4/8, all1716parameter neural-estimator gradients match exact cut regression and shared-producer regression (including cross terms) within 3.55e-15. Four local SGD steps decrease in-sample error; no held-out utility is inferred from that contract.
+
+Local acquisition certificate: three seeds, depths2/4/8,512 artificial terminal cotangents with four fresh full-support probes each,400Adam updates,1152parameter linear credit map.64fresh cotangents and probes after fit. Joint-field residual energy versus zero falls 99.856–100.000%. One frozen four-event Taxi TRAIN context/three unique task targets per actor, not512new task examples. Forward-only fit labels; reverse validation separate. All acquisition/fitting investment charged; no whole-learning or state-transfer claim.
+
+Portable fields/actors restored without refitting, actual observed-loss cotangents: learned shared-producer credit beats identity transport in9/9same-context cases and9/9one-Adam model-update cases;16/18new-context cases improve and2worsen. At depth8/seed1, both new contexts lose to zero/identity. This diagnoses missing state conditioning; it is not a depth/family task-loss verdict. The actor predictions are identical across credit evaluations. Expired maps require revalidation/audits.
+
+First native conditional audit-risk fit:13parameter positive model,12pre-label state/clock/normalization features,64four-event TRAIN contexts,8forward shared-producer probes per context,300Adam updates.32new TRAIN contexts, expected4audits/floor0.01. Metric is conditional raw-gradient trace sum R(1/pi-1), analytic at identical expected audit budget; full actor backward used to obtain observed-loss cotangent and charged. No sampled sparse updates or future task learning measured.
+
+| seed | depth | reduction vs uniform % | reduction vs cotangent norm % |
+| --- | --- | --- | --- |
+| 0 | 2 | 68.17 | 59.93 |
+| 0 | 4 | 9.91 | -16.99 |
+| 0 | 8 | 25.84 | 18.01 |
+| 1 | 2 | 25.31 | 10.69 |
+| 1 | 4 | -1.21 | -89.42 |
+| 1 | 8 | -293.16 | -327.07 |
+| 2 | 2 | 23.08 | -27.42 |
+| 2 | 4 | 61.82 | 26.99 |
+| 2 | 8 | 27.09 | 19.03 |
+
+The64-context pilot is mixed, including a depth8 deterioration; preserve every row. Next registered64/256/1024-context acquisition ladder keeps the estimator/configuration fixed, reuses forward labels and reserves a new128-context private TRAIN tail. All sizes reported, no best-size selection. Evidence: aws_joint_credit_training_20261011_v1, aws_joint_credit_identity_20261011_v1, aws_joint_credit_acquisition_20261011_s0, aws_joint_credit_acquisition_20261011_s1, aws_joint_credit_acquisition_20261011_s2, aws_native_joint_audit_risk_20261011_s0, aws_native_joint_audit_risk_20261011_s1, aws_native_joint_audit_risk_20261011_s2.
+
+Registered acquisition-scale ladder completed: unchanged13parameter risk model/features/300steps at64/256/1024contexts; shared8-probe forward labels,128new private TRAIN tail contexts, expected16audits/12.5% with floor0.01. Earlier exploratory validation explicitly enters acquisition. Every size retained; exact references are neither fitting targets nor features. Full raw records and shared/per-size standalone work retained. Metric is analytic conditional raw-gradient trace, not future task loss or complete fitting efficiency.
+
+| seed | depth | TRAIN contexts | vs uniform % | vs cotangent norm % |
+| --- | --- | --- | --- | --- |
+| 0 | 2 | 64 | 71.80 | 56.51 |
+| 0 | 2 | 256 | 73.01 | 58.38 |
+| 0 | 2 | 1024 | 75.55 | 62.29 |
+| 0 | 4 | 64 | 39.39 | 6.16 |
+| 0 | 4 | 256 | -6.27 | -64.54 |
+| 0 | 4 | 1024 | 35.43 | 0.03 |
+| 0 | 8 | 64 | 42.93 | 28.97 |
+| 0 | 8 | 256 | 53.68 | 42.35 |
+| 0 | 8 | 1024 | 54.14 | 42.93 |
+| 1 | 2 | 64 | 62.73 | 22.37 |
+| 1 | 2 | 256 | 82.69 | 63.94 |
+| 1 | 2 | 1024 | 85.27 | 69.33 |
+| 1 | 4 | 64 | 42.55 | -41.31 |
+| 1 | 4 | 256 | 52.25 | -17.46 |
+| 1 | 4 | 1024 | 79.27 | 49.01 |
+| 1 | 8 | 64 | -20.74 | -154.28 |
+| 1 | 8 | 256 | 73.67 | 44.55 |
+| 1 | 8 | 1024 | 32.46 | -42.24 |
+| 2 | 2 | 64 | 42.18 | -31.83 |
+| 2 | 2 | 256 | 70.48 | 32.70 |
+| 2 | 2 | 1024 | 60.26 | 9.40 |
+| 2 | 4 | 64 | 67.11 | -19.49 |
+| 2 | 4 | 256 | 76.93 | 16.17 |
+| 2 | 4 | 1024 | 81.77 | 33.74 |
+| 2 | 8 | 64 | 61.89 | 41.47 |
+| 2 | 8 | 256 | 62.59 | 42.54 |
+| 2 | 8 | 1024 | 62.72 | 42.74 |
+
+Measured whole ladder wall/RSS: seed0 34.10s/396.5MiB, seed1 33.97s/396.6MiB, seed2 33.86s/396.5MiB. Earlier local-field fits,64-context pilots and publication are additional. No Transformer/task-quality/whole-learning claim. Evidence: aws_native_joint_audit_risk_ladder_20261011_s0, aws_native_joint_audit_risk_ladder_20261011_s1, aws_native_joint_audit_risk_ladder_20261011_s2.
 
 ## Appendix. B4 repaired learning and mark-memory development
 

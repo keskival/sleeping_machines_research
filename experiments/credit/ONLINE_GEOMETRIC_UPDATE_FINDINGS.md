@@ -9,3 +9,9 @@ This is a failed first implementation of online update-function learning, not an
 Completed evidence: experiments/results/credit/curie_online_geometric_update_20261011_v1_fit.json.
 
 Saved hyperparameter traces: in episodes0/3, the final64-target mean online step sizes are0.04628/0.04885 versus frozen0.00546/0.00405. Mean lexical-state norms are1.91486/3.58259 versus1.05415/0.69490. These are the two largest regressions. Episode2 improves while its online step size falls toward0.0012; this supports a drift diagnostic, not a causal variance conclusion. Formal local-objective/version analysis: experiments/theory/CAUSAL_UPDATE_FUNCTION_FEEDBACK.md.
+
+## Sixteen-feedback stage
+
+Completed207.918s. Online-over-frozen mean gain +0.005824 nats/target, paired95%[-0.010836,+0.025485]; threeof four episodes improve, utility gatefalse. Online-over-fixed +0.002698 is also inconclusive. Online-over-Adam −0.014055,95%[-0.026802,−0.002339]. Meta pretraining uses64 optimizer commits for1023 observed feedbacks; each512-target episode uses32 commits for509–511 feedbacks. The new scoring cohort differs from the first stage, so their point estimates are not a paired aggregation benefit.
+
+An unchanged-rule extension reuses the exact paid pretraining checkpoint and tests eight new private episodes. The earlier four evaluation functions are never reused. Report its paired interval separately; no tuning or combined selective-cohort claim. Completed evidence: curie_online_geometric_update_20261011_v2_fit.json.
