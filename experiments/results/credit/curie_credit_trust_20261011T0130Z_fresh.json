@@ -1,0 +1,476 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_credit_trust_20261011T0130Z_fresh",
+  "mode": "fresh",
+  "metrics": {
+    "chosen_alpha": 0.0,
+    "rows": [
+      {
+        "arm": "preserved_baseline",
+        "alpha": 0.0,
+        "correction_prefixes": 0,
+        "correction_supported_flops": 0,
+        "gain_vs_train_fixed": 0.012158811561537891,
+        "gain_bootstrap95": [
+          0.008601837280598656,
+          0.016146561617297165
+        ],
+        "gain_vs_noop": 0.012777902591396757,
+        "chosen_receiver_action": [
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ]
+      },
+      {
+        "arm": "crossfit_trust",
+        "alpha": 0.0,
+        "correction_prefixes": 0,
+        "correction_supported_flops": 0,
+        "gain_vs_train_fixed": 0.012158811561537891,
+        "gain_bootstrap95": [
+          0.008601837280598656,
+          0.016146561617297165
+        ],
+        "gain_vs_noop": 0.012777902591396757,
+        "chosen_receiver_action": [
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ]
+      },
+      {
+        "arm": "ungated_paired",
+        "alpha": 1.0,
+        "correction_prefixes": 31,
+        "correction_supported_flops": 24569856,
+        "gain_vs_train_fixed": 0.011835045797340526,
+        "gain_bootstrap95": [
+          0.008402774767504223,
+          0.015639724798414363
+        ],
+        "gain_vs_noop": 0.012454136827199393,
+        "chosen_receiver_action": [
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ]
+      }
+    ],
+    "gain_trusted_over_baseline": 0.0,
+    "gain_bootstrap95": [
+      0.0,
+      0.0
+    ],
+    "gain_ungated_over_baseline": -0.0003237657641973644,
+    "ungated_bootstrap95": [
+      -0.0010064429516028787,
+      3.514565901078549e-05
+    ],
+    "bound_preparation_supported_flops": 0,
+    "correction_bound": 0.00770681247053032,
+    "fresh_prefixes": 32,
+    "future_rollouts": 8,
+    "stream_seed": 470,
+    "actor_seed": 170,
+    "selection_checkpoint_sha256": "ca28852b3e3664d0b76777e86682f3319ee2ff501bd297e73f5f1ddb08aaa2ab"
+  },
+  "whole_wall_s": 89.48716313800105,
+  "peak_rss_kb": 425516,
+  "supported_flops": 2475245824,
+  "checkpoint": "experiments/results/credit/curie_credit_trust_20261011T0130Z_fresh.pt",
+  "checkpoint_sha256": "a87957ac2ec20461498e47aa69286ca936cfb9fdd2021554106f992681b62ca2",
+  "source_checkpoint_sha256": "f66aa54327143b904460ff7c81fad33f30952928f20c6a5a4045bc1ccce1457c",
+  "source_sha256": {
+    "experiments/credit/crossfit_credit_trust.py": "7598da24f1eaf5a37631ce5909deab56f818badfd9990cd0715e1b3fe04c6b39",
+    "experiments/credit/gated_learning_effect.py": "9fb3d6297b2b56a5bb4aa5fb85896ee97a4cc293a40753c29403f356dda2818e",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "One actor seed170, synthetic readout-only learning worlds. Trust uses TRAIN cross-fitting only; fresh stream seed470 generated after locked selection. No receiver6/7 TRAIN labels. Guard bootstrap is exploratory with overlapping folds. Fresh baseline descriptors/teacher replay and all earlier fitting remain charged; residual query work separated. No online critic co-adaptation, full actor learning, matched-quality efficiency, hardware or TEST claim."
+}

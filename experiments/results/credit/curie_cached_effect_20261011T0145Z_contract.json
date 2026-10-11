@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_cached_effect_20261011T0145Z_contract",
+  "metrics": {
+    "value_error": 3.415236843329339e-18,
+    "parameter_vjp_error": 7.115076756936123e-20,
+    "adam16_step_parameter_error": 4.996003610813204e-16,
+    "nonzero_bias_decay_preserved": true,
+    "work": [
+      {
+        "arm": "repeated_context",
+        "forward_iterations": 20,
+        "forward_supported_flops": 253624320,
+        "forward_instrumented_wall_s": 0.05127950599853648,
+        "one_forward_backward_supported_flops": 25657344,
+        "backward_instrumented_wall_s": 0.006907533002959099
+      },
+      {
+        "arm": "cached_context",
+        "forward_iterations": 20,
+        "forward_supported_flops": 27197440,
+        "forward_instrumented_wall_s": 0.03403197399893543,
+        "one_forward_backward_supported_flops": 2867200,
+        "backward_instrumented_wall_s": 0.004671777998737525
+      }
+    ],
+    "prefixes": 16,
+    "receivers": 8,
+    "actions": 9
+  },
+  "whole_wall_s": 0.9754964460007614,
+  "peak_rss_kb": 316044,
+  "source_sha256": {
+    "experiments/credit/check_cached_learning_effect.py": "533d632bc88e5474cadda21d9a3e30345fa000e2e12609949bc08870ed52680b",
+    "experiments/credit/cached_learning_effect.py": "987b3985c5e05945d687757f4067358549b487be7ba734bdcd3209a95f8b07cd",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Same learned correction and packets, operator/value/gradient/short optimizer witnesses. No teacher/actor refit. Instrumented paired kernel work includes context projection; excludes common actor/baseline/discovery/prior fitting. No whole-fit or deployment speed claim."
+}
