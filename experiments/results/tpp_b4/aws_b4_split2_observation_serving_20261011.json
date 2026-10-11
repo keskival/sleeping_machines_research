@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_split2_observation_serving_20261011",
+  "battle": "B4 one-core serving contract",
+  "rows": [
+    {
+      "seed": 0,
+      "score": {
+        "L_T": -293.38477880161327,
+        "L_M": 93.83847609025594,
+        "total": -199.54630271135733,
+        "normalization_error": 4.440892098500626e-16,
+        "wall_s": 0.2541593548376113
+      },
+      "serialized_score_error": 0.0,
+      "causal_error": 0.0,
+      "bundle": "experiments/results/tpp_b4/aws_b4_split2_observation_serving_20261011.s0.bundle.pt",
+      "bundle_sha256": "6e6504eaf9734bd67c30b8999627bcd650d7c560d467e40d89ea473885be9c15",
+      "bundle_bytes": 290311,
+      "parameters": 32938
+    }
+  ],
+  "source_sha256": {
+    "experiments/tpp/check_split2_observation_serving.py": "559beac052a76a5075daa83b36062e2148d35ac2c9ffc4850dfac5950e205dba",
+    "experiments/tpp/nonlinear_single_mark_readout.py": "b9c44d710962fe998ac01f9d088d3be20409b91b642c5911b0010c6278decd1f",
+    "experiments/tpp/single_mark_readout.py": "4066957c61cd4281909c78d4c263ae0e5b3a88e19d690a2844551d34cede614f",
+    "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1"
+  },
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_b4_split2_observation_readout_20261011.json": "4b53326af5511661b9e77e661e03d758f84e4e1050613af8945a7a95c411a10a",
+    "experiments/results/tpp_b4/aws_b4_split2_observation_readout_20261011.pt": "1896cebd04e05c38edef19267132ec442ceab7247bd72cd02ab44764e2aea6b6"
+  },
+  "data_sha256": {
+    "val": "70fe9e7fee042d2533911947f17adb486298c5d8a686fdedb49ac5283d58617f"
+  },
+  "wall_s": 0.2753449180163443,
+  "max_rss_kb": 343720,
+  "scope": "One fixed Github split2 DEV seed; CPU float64. Serving bundle contains one core and normalization/readout metadata; no teacher checkpoints loaded and no TRAIN loaded to restore. Normalized all-mark probabilities, time/score parity and first-target suffix invariance. No TEST or deployment to external service."
+}
