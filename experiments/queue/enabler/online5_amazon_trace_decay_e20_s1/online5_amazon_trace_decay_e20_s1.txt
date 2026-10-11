@@ -1,0 +1,2 @@
+# ENABLER: Shared learning enabler (note 160 sect. 7 generality): per-event trace learning with a linearly decaying step size vs BPTT with the same decay, 20/100 passes, amazon DEV, 3 seeds. Decides whether constant-step noise is why converged BPTT ends ahead on amazon
+online5_amazon_trace_decay_e20_s1 experiments/credit/online_race_v3.py --tag online5_amazon_trace_decay_e20_s1 --tag online5_amazon_trace_decay_e20_s1 --dataset amazon --arm online_trace --decay linear --epochs 20 --seed 1
