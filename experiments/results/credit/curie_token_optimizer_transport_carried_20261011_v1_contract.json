@@ -1,0 +1,158 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_optimizer_transport_carried_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "reset": false,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 1.1796119636642288e-16,
+        "first_alternative_update": 1.734723475976807e-18
+      }
+    },
+    {
+      "depth": 2,
+      "reset": false,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 1.1796119636642288e-16,
+        "first_alternative_update": 1.734723475976807e-18
+      }
+    },
+    {
+      "depth": 2,
+      "reset": true,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 9.540979117872439e-18,
+        "noop_state": 0.0,
+        "moments": 1.6653345369377348e-16,
+        "first_alternative_update": 1.734723475976807e-18
+      }
+    },
+    {
+      "depth": 2,
+      "reset": true,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 9.540979117872439e-18,
+        "noop_state": 0.0,
+        "moments": 1.6653345369377348e-16,
+        "first_alternative_update": 1.734723475976807e-18
+      }
+    },
+    {
+      "depth": 4,
+      "reset": false,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 3.469446951953614e-18,
+        "noop_state": 0.0,
+        "moments": 1.1102230246251565e-16,
+        "first_alternative_update": 6.938893903907228e-18
+      }
+    },
+    {
+      "depth": 4,
+      "reset": false,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 3.469446951953614e-18,
+        "noop_state": 0.0,
+        "moments": 1.1102230246251565e-16,
+        "first_alternative_update": 6.938893903907228e-18
+      }
+    },
+    {
+      "depth": 4,
+      "reset": true,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 1.0061396160665481e-16,
+        "first_alternative_update": 6.938893903907228e-18
+      }
+    },
+    {
+      "depth": 4,
+      "reset": true,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 1.0061396160665481e-16,
+        "first_alternative_update": 6.938893903907228e-18
+      }
+    },
+    {
+      "depth": 8,
+      "reset": false,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 2.220446049250313e-16,
+        "first_alternative_update": 3.469446951953614e-18
+      }
+    },
+    {
+      "depth": 8,
+      "reset": false,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 2.220446049250313e-16,
+        "first_alternative_update": 3.469446951953614e-18
+      }
+    },
+    {
+      "depth": 8,
+      "reset": true,
+      "curvature": "zero",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 8.326672684688674e-17,
+        "first_alternative_update": 3.469446951953614e-18
+      }
+    },
+    {
+      "depth": 8,
+      "reset": true,
+      "curvature": "diagonal",
+      "errors": {
+        "scores": 0.0,
+        "reference_state": 6.938893903907228e-18,
+        "noop_state": 0.0,
+        "moments": 8.326672684688674e-17,
+        "first_alternative_update": 3.469446951953614e-18
+      }
+    }
+  ],
+  "whole_wall_s": 1.240504941000836,
+  "source_sha256": {
+    "experiments/credit/token_optimizer_transport_carried.py": "7585e164cfe7b86ea4d2546e080b39c5b7e6d0ff0e03aae0895e273cf96bde39",
+    "experiments/credit/check_token_optimizer_transport_carried.py": "52f38b51aca225bd7c88e15e3ce9b258ed4af4fb6478b37e0eca839519304a26"
+  },
+  "scope": "After8 real fast-head Adam updates and selected hard write, carried reference/no-op moments/state/scores and first independent alternative update agree at small native depths2/4/8, with causal EOS reset. Incoming snapshots unchanged. Longer alternative trajectories remain approximations; no task/depth-quality claim."
+}

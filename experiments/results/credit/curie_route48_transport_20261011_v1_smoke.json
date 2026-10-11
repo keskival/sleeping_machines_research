@@ -1,0 +1,216 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_route48_transport_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "config": {
+    "seed": 98410,
+    "context": 64,
+    "horizon": 48,
+    "windows": 2,
+    "dev_prefixes": 1,
+    "actor_lr": 0.0001,
+    "fast_lr": 0.01,
+    "exploration": 0.1,
+    "amplitude": 0.25,
+    "train_offset": 4227072,
+    "private_dev_offset": 4464640
+  },
+  "fitting": [
+    {
+      "arm": "zero",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 6.936966230855482,
+          "gradient_norm": 2.3164988959802384e-05,
+          "worlds": 2,
+          "updates": 96
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.870029372538217,
+          "gradient_norm": 4.129871346209833e-06,
+          "worlds": 2,
+          "updates": 96
+        }
+      ],
+      "wall_s": 5.497521409008186,
+      "supported_flops": 3977503616,
+      "actor_parameters": 37377,
+      "actual_worlds": 4,
+      "readout_updates": 192,
+      "additional_transport_reference_worlds": 0,
+      "additional_transport_reference_updates": 0,
+      "transported_updates": 0
+    },
+    {
+      "arm": "static",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 6.936966230855482,
+          "gradient_norm": 0.00035354361297356573,
+          "worlds": 2,
+          "updates": 96
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.870029372538217,
+          "gradient_norm": 8.957053563739304e-06,
+          "worlds": 2,
+          "updates": 96
+        }
+      ],
+      "wall_s": 5.134936745002051,
+      "supported_flops": 3991168128,
+      "actor_parameters": 37377,
+      "actual_worlds": 4,
+      "readout_updates": 192,
+      "additional_transport_reference_worlds": 0,
+      "additional_transport_reference_updates": 0,
+      "transported_updates": 0
+    },
+    {
+      "arm": "transport",
+      "windows": [
+        {
+          "window": 0,
+          "routes": 65,
+          "action": 22,
+          "nll": 6.936966230855482,
+          "gradient_norm": 0.0003392303163937605,
+          "worlds": 2,
+          "updates": 96
+        },
+        {
+          "window": 1,
+          "routes": 65,
+          "action": 11,
+          "nll": 5.870029372538217,
+          "gradient_norm": 9.398825798048045e-06,
+          "worlds": 2,
+          "updates": 96
+        }
+      ],
+      "wall_s": 6.518295213012607,
+      "supported_flops": 5830976384,
+      "actor_parameters": 37377,
+      "actual_worlds": 4,
+      "readout_updates": 192,
+      "additional_transport_reference_worlds": 2,
+      "additional_transport_reference_updates": 96,
+      "transported_updates": 6240
+    }
+  ],
+  "dev": [
+    {
+      "prefix": 0,
+      "expected_nll": {
+        "zero": 5.076116147919285,
+        "static": 5.0761161949836655,
+        "transport": 5.07611619502421,
+        "initial": 5.076116185903066
+      },
+      "greedy_nll": {
+        "zero": 5.0761386643785,
+        "static": 5.0761386643785,
+        "transport": 5.0761386643785,
+        "initial": 5.0761386643785
+      },
+      "noop_nll": 5.0761198737227975,
+      "uniform_nll": 5.076121444648717,
+      "oracle_nll": 5.075148535429055,
+      "routes": 65
+    }
+  ],
+  "scoring": {
+    "wall_s": 6.540150090993848,
+    "supported_flops": 41312943744,
+    "worlds": 65,
+    "readout_updates": 3120
+  },
+  "comparisons": {
+    "transport_over_zero": {
+      "gain": -4.710492529369503e-08,
+      "paired_prefix_bootstrap95": [
+        -4.710492529369503e-08,
+        -4.710492529369503e-08
+      ],
+      "per_prefix": [
+        -4.710492529369503e-08
+      ]
+    },
+    "transport_over_static": {
+      "gain": -4.0544456680891017e-11,
+      "paired_prefix_bootstrap95": [
+        -4.0544456680891017e-11,
+        -4.0544456680891017e-11
+      ],
+      "per_prefix": [
+        -4.0544456680891017e-11
+      ]
+    },
+    "transport_over_initial": {
+      "gain": -9.121143840218338e-09,
+      "paired_prefix_bootstrap95": [
+        -9.121143840218338e-09,
+        -9.121143840218338e-09
+      ],
+      "per_prefix": [
+        -9.121143840218338e-09
+      ]
+    },
+    "static_over_zero": {
+      "gain": -4.706438083701414e-08,
+      "paired_prefix_bootstrap95": [
+        -4.706438083701414e-08,
+        -4.706438083701414e-08
+      ],
+      "per_prefix": [
+        -4.706438083701414e-08
+      ]
+    },
+    "zero_over_initial": {
+      "gain": 3.7983781453476695e-08,
+      "paired_prefix_bootstrap95": [
+        3.7983781453476695e-08,
+        3.7983781453476695e-08
+      ],
+      "per_prefix": [
+        3.7983781453476695e-08
+      ]
+    }
+  },
+  "whole_wall_s": 23.870779284989112,
+  "peak_rss_kb": 487252,
+  "checkpoint": "experiments/results/credit/curie_route48_transport_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "a67cc3f122fcae79a7617951f49bb2f37639df60d78cb4d47fdad1805e23f5da",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/fit_route48_transport.py": "4a30863dcc06d57840604957558b088fb8df48da6b20f02499a1630b6b2d1976",
+    "experiments/credit/token_optimizer_transport_carried.py": "7585e164cfe7b86ea4d2546e080b39c5b7e6d0ff0e03aae0895e273cf96bde39",
+    "experiments/credit/ROUTE48_TRANSPORT_PROTOCOL.md": "893a3a5527000ad5282a6d592273434a4781b925c17461b36b92d961c6b288b7",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/TOKEN_ROUTE_GEOMETRY_DESIGN.md": "d28c42f5b82e686beb4d08791dad21cba212e37a59ed15c95c69281258246e7b",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_static_carried_credit.py": "a898f2ab3d3e0dfd708fa76dbe32876412a21f2e92f0d11e58e974e177c0719d",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/route_policy_credit.py": "9312c8695811f3718294601d46d73bc65e51c7dfa6efe8c3f57a5d24acb82723",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734",
+    "experiments/credit/CONTINUOUS_TOKEN_ROUTE_DEV_PROTOCOL.md": "30366d729429c34e5edc427c936612f09bb24d8f0927f211ead544690123a185"
+  },
+  "train_tokens_sha256": "7e14588f6c81425829735e6e13c60c3a8ed914aa6e9a49b1bd208251bd4b0400",
+  "scope": "One development initialization/fixed32window online route fit; fixed native2layer pretrained model,64dim adaptive lexical learner, connected normalized/forward-geometry controller. Exact expected stochastic48-target costs on fresh private held-out TRAIN-tail prefixes, not public DEV/TEST. DEV episode lexical/key state starts fresh after64context; train carries continuous state. No recurrent actor state/full-carrier learning. All exhaustive scoring worlds/reference/projection/discovery/copies/duplicate issuance charged; supported FLOPs omit unsupported scalar/optimizer work included in wall. Source pretraining and gates additional. Endpoint checks are engineering evidence, not a family verdict or benchmark claim."
+}

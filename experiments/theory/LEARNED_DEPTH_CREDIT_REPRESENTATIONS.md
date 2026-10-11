@@ -93,3 +93,54 @@ frequency, task quality and total work together. Compare independently learned
 local transport with shared/joint connected transport and long-range anchors.
 Keep capacity, selected activity, candidate discovery and learning work separate.
 Numerical contracts at depths2/4/8 check identity, not useful deep-model learning.
+
+
+## A concrete joint-learning objective across depth
+
+At an issued parameter/state version, let K_(i,j) be a connected learned
+transport from a downstream cut j to an upstream cut i. Retain the forward
+packet X and the credit-query activation u_j. Use the same issued X/version
+for local compositions and longer-range anchors. For i<k<j, train
+
+    L_comp = E[||K_(i,j)(u_j;X)
+                - K_(i,k)(K_(k,j)(u_j;X);X)||^2_Mi].
+
+For nonlinear transports this is function composition, not multiplication of
+constant matrices. Composition alone permits the all-zero solution and can
+learn mutually consistent wrong credit. It must be paired with an observed
+consequence objective and nonzero anchors, for example
+
+    L_anchor = E[||K_(i,j)(u_j;X)-v_i||^2_Mi],
+    L_future = E[loss_after_issued_update on subsequent causal observations].
+
+Here v_i is a paid exact local/long-range response or an independently audited
+response estimate for the declared objective. The future loss is measured
+under the issued update; identifying its derivative needs differentiation
+through the update, randomized interventions, or a declared estimator. Merely
+regressing that loss does not produce a correct meta-gradient. Charge anchor
+acquisition and all optimizer/representation learning.
+
+Train shared parameters jointly with L_future + lambda L_comp + beta L_anchor,
+then test whether long-range discrepancy falls as depth increases. Pairwise
+consistency supplies a learning signal for errors that isolated local fitting
+cannot see. It does not by itself prove a contraction or task-quality gain.
+
+A stronger economical design represents normalized direction plus explicit
+gain, and learns when to stop composition and request a longer-range anchor.
+For a local error budget epsilon_j and amplification estimates kappa_l, the
+upstream contribution is bounded by
+
+    B_j = epsilon_j product_(l<j) kappa_l.
+
+Allocate extra credit work to large B_j per unit acquisition cost, provided the
+estimates are calibrated. Under positive-probability correction sampling,
+record inclusion probabilities and bind corrections to issued versions. Do
+not treat a confidence score as a rigorous bound without validation.
+
+This gives a specific possible learning advantage: jointly learned coordinates
+and multiscale anchors reduce epsilon_j and the amplification of representation
+errors, while retaining actual task sensitivity as explicit gain. The decisive
+comparison is independent local predictors versus this connected composition
+at equal total work, across depth, with future prediction quality and correction
+rates measured. The current two-layer lexical experiment is the precursor, not
+that depth comparison.
