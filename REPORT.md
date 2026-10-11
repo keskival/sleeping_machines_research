@@ -4562,6 +4562,35 @@ Already-paid fresh native synthetic response tables now examined for development
 
 Theory derives a common-mode residual calibration that leaves route choices and unbiased gain unchanged but minimizes this audit variance. The next integrated learner must train both task contrasts and economical residual transport, issuing its prediction/calibration before future feedback.
 
+### Causal calibration: independent-history gate
+
+| History | Causal / zero variance | Fixed / zero variance | Phase seconds |
+| --- | --- | --- | --- |
+| 472 | 0.685 | 1.021 | 35.20 |
+| 473 | 0.888 | 0.776 | 35.29 |
+| 474 | 1.066 | 0.845 | 38.91 |
+
+Confirmation gate passes: False. History474 increases variance6.6%; retain zero prediction for single-route audits. Eight per-sample updates give a different learning clock from one update per issued prefix. New packet-normalized additive updates pass replica/order/version contracts; no performance gain is inferred.
+
+One fixed native actor/critic/proposal with independent synthetic episode and audit histories, not three fitted model seeds. Causal calibration learns from prior sampled feedback. Prefix intervals are descriptive under adaptive history. Variance is conditional on each finite generated continuation table and does not itself establish quality, total training efficiency, population significance, real-sequence nonstationarity or depth scaling. All diagnostic replay, discovery, calibration/preparation and prior fitting costs remain charged.
+
+### Paired route credit removes the common no-op branch
+
+Compare future losses of the two alternatives directly. Their common no-op reference cancels, including its independent learning trajectory. Paired and single-route-plus-no-op audits both need two native worlds. For fixed comparisons under the same joint future, paired variance is no greater than the optimally centered uniform single-route estimator; future noise and nonstationarity are allowed.
+
+| Audit | Fresh variance | 10 replays MFLOPs | 10 replays seconds |
+| --- | --- | --- | --- |
+| single route + no-op | 0.000621066 | 2.641920 | 2.717 |
+| paired alternatives | 0.000243887 | 2.641920 | 2.643 |
+
+Fresh paired variance is60.7% lower at equal measured replay arithmetic. Native score/Adam/no-op cancellation matches within9e-16. This is an estimator-economy result; no model-quality or whole-learning win.
+
+Variance:32 fresh prefixes,8 continuations each,13 changed comparisons; one fixed native actor seed170 with four causal readout Adam updates per continuation. Work/wall columns:10 paired kernel repetitions,2 worlds each, same denominator for both rows. FLOPs count supported operators; scalar/special/unsupported optimizer operations remain outside that arithmetic count but inside wall.
+
+Whole fresh diagnostic30.60s, RSS317.1MiB. Policy9.034MFLOPs; teacher41.214MFLOPs/312worlds; TRAIN preparation2.040MFLOPs. Operational pair208worlds is a count: third diagnostic worlds and legacy calibration work were paid here. Earlier teacher/critic/actor fits remain additional.
+
+Next: paired forward/learner evidence trains the connected contrast critic; supported Bernoulli residual audits preserve the declared future-effect mean while prediction quality controls audit work. Test actual causal forward utility and complete fitting cost before a scaling claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
