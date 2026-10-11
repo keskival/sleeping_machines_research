@@ -4862,6 +4862,24 @@ Depth errors obey a local amplification-plus-residual recurrence. Connected cred
 
 Evidence and formulas: investment/forward_credit_evidence_20261011.json. Theory: OPTIMIZER_STATE_TRANSPORT_CREDIT, STATE_INFLUENCE_BOUNDARY_CRITIC and LEARNED_DEPTH_CREDIT_REPRESENTATIONS. No pending cell is presented as a result.
 
+### Completed carried 48-target route-learning development
+
+Transport-over-static stochastic expected NLL gain -2.722e-07 nats/target; paired-prefix 95% interval [-1.009e-06, +2.722e-07]. No confirmed utility gain. This diagnoses the fixed 32-update variant; it is not a model-family benchmark verdict.
+
+| Arm | Fit seconds | Fit GFLOPs | Fit MFLOPs / target |
+| --- | --- | --- | --- |
+| zero | 56.667 | 51.280 | 33.386 |
+| static | 63.799 | 51.499 | 33.528 |
+| transport | 86.973 | 80.936 | 52.693 |
+
+One initialization, 32 consecutive 48-target windows (1,536 targets), shared initial controller, 37,377 parameters; source native two-layer model fixed. Key/lexical/Adam state carries during training. Eight fresh private TRAIN-tail scoring prefixes, 64 context / 48 future targets, exact expected issued-route NLL. Public DEV/TEST untouched. Supported FLOPs omit unsupported arithmetic included in wall.
+
+Shared exhaustive scoring: 51.627s, 330.503 GFLOPs, 860.686 MFLOPs per scored target, 520 independent worlds / 24,960 updates. Whole experiment 259.259s, peak RSS 512.4 MiB; source pretraining and admission checks additional. Standalone inference work was not measured in this development fit.
+
+Static and transport select the same actual action in all 32 training windows, despite different gradients. Exact uniform-to-best route headroom on scoring prefixes is 0.000575–0.004898 nats/target. Both train on carried learner state and score on fresh episode state. Next diagnose this state mismatch and policy movement before another fit; expand to jointly learned multiscale credit only with a causal observed-consequence target.
+
+Completed source-bound result: experiments/results/credit/curie_route48_transport_20261011_v1_fit.json. No new Transformer/LSTM control, public scoring or energy claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

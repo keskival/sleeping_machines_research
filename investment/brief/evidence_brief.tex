@@ -21,7 +21,7 @@
 
 \pagestyle{fancy}\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\footnotesize\color{muted}Sleeping Machines \textbullet{} Evidence brief \textbullet{} 9 October 2026 \textbullet{} Confidential, private review}
+\fancyfoot[L]{\footnotesize\color{muted}Sleeping Machines \textbullet{} Evidence brief \textbullet{} 11 October 2026 \textbullet{} Confidential, private review}
 \fancyfoot[R]{\footnotesize\color{muted}\thepage}
 
 \newcommand{\sect}[2]{\vspace{2pt}{\color{ours}\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{-3pt}{\LARGE\bfseries #2}\par\vspace{2pt}}
@@ -59,7 +59,7 @@
 {\bfseries 40 of 41 independent runs ahead of the best published result}\par\vspace{-1mm}
 \includegraphics[width=\linewidth]{runs.pdf}\par
 \vspace{2mm}
-{\small\color{muted}All results in this brief are completed runs on official benchmark data, scored once on sealed test sets. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
+{\small\color{muted}The benchmark wins use completed runs on official data, scored once on sealed test sets. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
 
 \newpage
 % ---------------------------------------------------------------- ambition
@@ -286,7 +286,7 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \textbf{\faLock\ Sealed tests, rules fixed in advance.} Every win uses the benchmark's official data splits. The reporting rule is written down before the test set is touched, and each model is scored on the test set exactly once.
 \end{tile}
 \begin{tile}[height=31mm]
-\textbf{\faRedo\ Independent runs.} Every reported result is the average of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with its spread: 40 of 41 runs are ahead of the best published result.
+\textbf{\faRedo\ Independent runs.} Benchmark headline results are averages of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with its spread: 40 of 41 runs are ahead of the best published result.
 \end{tile}
 \begin{tile}[height=31mm]
 \textbf{\faServer\ Reproduced on separate hardware.} The Taxi win was reproduced independently on a separate desktop computer with separately downloaded data: 0.5252 vs 0.5250 nats per event \up, every run above S2P2. One-command kits let third parties rerun the EasyTPP and both TGB wins.
@@ -305,6 +305,64 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \end{minipage}
 
 \newpage
+% ---------------------------------------------------------------- forward learning
+\sect{A new learning result}{Forward computation teaches more economical credit}
+
+Ordinary learning uses error signals to train prediction. Our reciprocal design
+also uses information produced by prediction to improve credit assignment:
+which routes and learning updates will help on subsequent observations.
+Credit includes the evolving learner state, because an intervention can change
+future learning even after its direct effect has disappeared.
+
+\begin{minipage}[t]{.32\linewidth}\stat{98.4\%}{lower counterfactual-credit error on eight fresh language prefixes}\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}\stat{2.09$\times$}{faster complete corrected-credit acquisition on the measured pipeline}\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}\stat{77.8\%}{less conditional gradient noise in a connected route controller}\end{minipage}
+
+\vspace{4mm}
+\textbf{What was measured (11 October).}
+\begin{itemize}
+\item \textbf{Fresh-prefix accuracy.} On eight new 48-target language prefixes,
+65 candidate routes, diagonal optimizer-state transport gives contrast
+mean-squared error $1.927\times10^{-10}$ versus $1.172\times10^{-8}$ for static
+credit. All eight improve; the paired-prefix 95\% improvement interval is
+positive. Error is 97.4\% lower than reference-only adaptive credit.
+\item \textbf{Complete acquisition work.} Four prefixes, three rotated timing
+repeats: exhaustive independent learners take 26.933 seconds versus 12.893
+seconds for transport plus exact factual correction. Both pay context and
+candidate discovery. Supported work falls from 165.164 to 10.775 GFLOPs
+(93.5\% fewer); unsupported scalar/optimizer arithmetic remains included in wall time.
+\item \textbf{Connected-controller noise.} For a fixed 37,377-parameter controller
+on four earlier prefixes, conditional route-sampling gradient variance falls
+77.8\% versus static credit. Mean-gradient agreement is within $1.1\times10^{-19}$.
+\end{itemize}
+
+\begin{callout}
+\textbf{Status: a working research prototype.} These are component results from
+a fixed pretrained two-layer native model, proper GPT-2 tokens and 64-dimensional
+adaptive lexical Adam learners. They measure credit accuracy, acquisition work
+and conditional sampling noise. Completed short- and 48-target route fits have no
+confirmed prediction-utility gain. The next gate is improved future prediction
+per total learning cost, followed by increasing depth and capacity.
+\end{callout}
+
+\textbf{If this scales.} More economical online adaptation could support models
+that track changing language, equipment, markets and user behaviour; local
+industrial learning; and sparse asynchronous hardware. The commercial test is
+better held-out prediction at lower complete learning cost. Deployment,
+whole-model speed, measured energy and economic impact require their own evidence.
+
+\textbf{How depth could benefit.} Train connected credit functions jointly across
+layers, with shared forward information and longer-range consequence anchors.
+This could reduce compounding transport error; it must preserve useful credit
+gains rather than simply shrink signals. Measure prediction, error amplification,
+correction frequency and total work together as depth increases.
+
+{\footnotesize\color{muted}Source-bound completed results:
+\texttt{investment/forward\_credit\_evidence\_20261011.json}.
+Single development initialization; private TRAIN-tail observations, no public
+DEV/TEST scoring. A 64-dimensional state is not a 64-bit representation.}
+
+\newpage
 % ---------------------------------------------------------------- frontier
 \sect{The frontier}{Not ahead yet, or pending, and the next test}
 
@@ -315,8 +373,8 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 Front & Current result & Next test \\
 \midrule
 P12 mortality & AUROC 0.871 vs 0.880 \up{} (behind); AUPRC level, 0.585 vs 0.586 \up & Ensemble of five runs, still far smaller than the leader (in progress) \\
-Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs); at 4M tokens 5.510 vs 6.100, so the lead grows with data; recall across irregular gaps solved (97.5\%) & Further data scaling (16M tokens); a published small Transformer under the same protocol \\
-Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Race attention at scale on GPU \\
+Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs); at 4M tokens 5.510 vs 6.100, so the lead grows with data; recall across irregular gaps solved (97.5\%) & Owned-model scaling and published-reference comparison under matching tokenizer, data and scoring \\
+Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Integrated token-native temporal learning on CPU \\
 Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
 Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
 FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
@@ -328,14 +386,14 @@ Second TPP benchmark (nats per sequence \down) & All seven verdicts behind (page
 \sect{What comes next}{From proof to platform}
 \begin{itemize}
 \item \textbf{Publish} the complete event-leaderboard results, after the IP filing decision.
-\item \textbf{Scale language}: race attention against competent Transformers at scale on GPUs.
+\item \textbf{Scale language and learning}: integrated properly tokenized models on CPUs, compared with matching published references; test connected credit across depth.
 \item \textbf{Transfer}: show that skill learned on one kind of data helps on another.
 \item \textbf{First commercial vertical}: event-native models for interleaved, timestamped logs (industry, IoT, IT operations, security, finance) on existing CPUs and GPUs, the shortest path to revenue.
 \item \textbf{Hardware}: feasibility on FPGA and neuromorphic silicon for clockless, learning-capable event processors.
 \end{itemize}
 
 \begin{callout}
-\textbf{The bottom line.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller; on a second event benchmark the same frozen model, untuned, predicts Wikipedia page types far better than any published model, while its totals still trail. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
+\textbf{The investment case.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller; on a second event benchmark the same frozen model, untuned, predicts Wikipedia page types far better than any published model, while its totals still trail. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
 \end{callout}
 
 \end{document}
