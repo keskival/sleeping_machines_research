@@ -1,0 +1,24 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Validate observation-anchored risk learner and predictable sensitivity-weighted audit allocation before integration into B1 learned credit; no fits or TEST",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_predictable_audit_allocation_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_predictable_audit_allocation_20261011_v1/aws_predictable_audit_allocation_20261011_v1.txt",
+        "queue_sha256": "79f8b1edea195d276a2916efdef8aef05490732028bf87c2c7a8ac89722922e6",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/check_predictable_audit_allocation.py": "a0d508e5b46da35f6545f7c1304bc6fd14e3e446a62287fbb8077c3d588ed0dd",
+          "experiments/credit/predictable_audit_allocation.py": "8496aee4a194b0fbf59cf1d579f59370dcdc83a3b46cbcf2a099782d9aae69aa"
+        },
+        "result": "experiments/results/credit/aws_predictable_audit_allocation_20261011_v1.json",
+        "timeout_s": 120,
+        "rss_kb": 500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

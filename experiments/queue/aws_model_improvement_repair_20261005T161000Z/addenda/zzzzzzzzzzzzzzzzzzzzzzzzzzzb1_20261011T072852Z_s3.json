@@ -1,0 +1,25 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B1",
+  "purpose": "Test selected-route scalar audit-price controller against global allocation and measured-cost dual feedback; avoid candidate-wide scans in future B1 credit integration",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_selected_route_audit_budget_20261011_v1",
+        "queue": "experiments/queue/b1_easytpp/aws_selected_route_audit_budget_20261011_v1/aws_selected_route_audit_budget_20261011_v1.txt",
+        "queue_sha256": "809fec138ca388e33f5c9fdc0a79bd621d2f0cac352399b321a164fe5121b62c",
+        "kind": "b1_job",
+        "source_sha256": {
+          "experiments/credit/check_online_audit_budget.py": "10cc73ad982d90a271fbae34a40550e7d517b2a968f58d2a2e13e508cd27d835",
+          "experiments/credit/online_audit_budget.py": "bd5295893e7daa331f35e99c517bc5c61e11cfadd7699cf2ec7e79c2e7d23140",
+          "experiments/credit/predictable_audit_allocation_v2.py": "f37c61d1e4bbba600ca985a38bd6e605022d20fbc30f4fe26fa8cd1578c562c3"
+        },
+        "result": "experiments/results/credit/aws_selected_route_audit_budget_20261011_v1.json",
+        "timeout_s": 120,
+        "rss_kb": 500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
