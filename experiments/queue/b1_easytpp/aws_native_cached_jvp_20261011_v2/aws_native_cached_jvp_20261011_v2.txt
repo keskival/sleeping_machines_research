@@ -1,0 +1,2 @@
+# B1: Check shared-primal teaching gain against optimized no-grad forward-AD reference; no unnecessary reverse tape in reference, same native tangent target and timing boundary
+aws_native_cached_jvp_20261011_v2 experiments/credit/measure_native_cached_jvp_v2.py --tag aws_native_cached_jvp_20261011_v2 
