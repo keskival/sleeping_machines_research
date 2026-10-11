@@ -1,0 +1,249 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_forward_credit_20261011_v1_contract",
+  "gate": true,
+  "contracts": [
+    {
+      "mode": "ordinary",
+      "vocabulary": 23,
+      "depth": 2,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 0.0,
+        "z1": 3.469446951953614e-18,
+        "gradients1": 4.440892098500626e-16,
+        "adam1": 5.551115123125783e-17,
+        "reference_projection": 4.440892098500626e-16,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "cross_eos",
+      "vocabulary": 23,
+      "depth": 2,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 0.0,
+        "z1": 0.0,
+        "gradients1": 0.0,
+        "adam1": 0.0,
+        "reference_projection": 4.440892098500626e-16,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "final_eos",
+      "vocabulary": 23,
+      "depth": 2,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 2.220446049250313e-16,
+        "z1": 0.0,
+        "gradients1": 3.3306690738754696e-16,
+        "adam1": 0.0,
+        "reference_projection": 4.440892098500626e-16,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "ordinary",
+      "vocabulary": 23,
+      "depth": 4,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 1.7763568394002505e-15,
+        "z1": 0.0,
+        "gradients1": 2.7755575615628914e-17,
+        "adam1": 0.0,
+        "reference_projection": 0.0,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "cross_eos",
+      "vocabulary": 23,
+      "depth": 4,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 0.0,
+        "z1": 0.0,
+        "gradients1": 6.938893903907228e-18,
+        "adam1": 0.0,
+        "reference_projection": 0.0,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "final_eos",
+      "vocabulary": 23,
+      "depth": 4,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 1.7763568394002505e-15,
+        "z1": 0.0,
+        "gradients1": 2.7755575615628914e-17,
+        "adam1": 0.0,
+        "reference_projection": 0.0,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "ordinary",
+      "vocabulary": 23,
+      "depth": 8,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 8.881784197001252e-16,
+        "z1": 3.469446951953614e-18,
+        "gradients1": 6.661338147750939e-16,
+        "adam1": 5.551115123125783e-17,
+        "reference_projection": 4.440892098500626e-16,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "cross_eos",
+      "vocabulary": 23,
+      "depth": 8,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 8.881784197001252e-16,
+        "z1": 0.0,
+        "gradients1": 2.220446049250313e-16,
+        "adam1": 0.0,
+        "reference_projection": 0.0,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "final_eos",
+      "vocabulary": 23,
+      "depth": 8,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 8.881784197001252e-16,
+        "z1": 0.0,
+        "gradients1": 6.661338147750939e-16,
+        "adam1": 0.0,
+        "reference_projection": 8.881784197001252e-16,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    },
+    {
+      "mode": "proper_gpt2_train",
+      "vocabulary": 50257,
+      "depth": 2,
+      "targets": 4,
+      "errors": {
+        "scores0": 0.0,
+        "z0": 0.0,
+        "gradients0": 0.0,
+        "adam0": 0.0,
+        "scores1": 8.881784197001252e-16,
+        "z1": 1.0408340855860843e-17,
+        "gradients1": 2.220446049250313e-16,
+        "adam1": 2.7755575615628914e-17,
+        "reference_projection": 5.329070518200751e-15,
+        "zero_rate_static": 0.0,
+        "causal_first_loss": 0.0,
+        "no_op_identity": 0.0
+      },
+      "actual_worlds": 2,
+      "readout_updates": 8
+    }
+  ],
+  "extreme_normalizer_errors": [
+    3.552713678800501e-15,
+    0.0,
+    1.0658141036401503e-14,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_model_result": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.json",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "train_token_offset": 4198400,
+  "whole_wall_s": 1.92728619700938,
+  "peak_rss_kb": 351440,
+  "source_sha256": {
+    "experiments/credit/check_token_forward_credit.py": "92315ca7b6acd9118d8866862f9aa785b0b2de5e43a980c03599f39e75fa542e",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Native temporal/keyed carrier fixed, independent lexical fast vector and Adam states. Small23-vocabulary source-world parity at depths2/4/8 with ordinary/cross-EOS/final-EOS paths; actual pretrained50257 GPT-2 vocabulary two-layer source, fresh TRAIN suffix. Full normalized forecasts, readout gradients/final vectors/Adam, projected reference, zero-step static, suffix causality, no-op and extreme logits contracted. Context four tokens, four forecast/readout updates; resets carried numerical/key/readout state on observed EOS. No policy fit/public validation/TEST, persistent-across-credit-window or all-carrier/depth-quality claim. Full source pretraining inherited, all independent contract worlds/readout updates paid inside whole wall."
+}
