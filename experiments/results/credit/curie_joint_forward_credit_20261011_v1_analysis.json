@@ -1,0 +1,85 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_joint_forward_credit_20261011_v1_analysis",
+  "source_result": "experiments/results/credit/curie_joint_forward_credit_20261011_v1_fit.json",
+  "source_result_sha256": "183c4d8500a66dc95c97f81fceaf96eb3fd835d784eb49d5d344226c8e0b864c",
+  "rows": [
+    {
+      "arm": "prefix",
+      "gain_vs_baseline": -0.0013280604486190575,
+      "bootstrap95": [
+        -0.0031579698989912365,
+        0.00056024521058419
+      ],
+      "whole_fit_gflops": 0.296446976,
+      "fit_mflops_per_target": 0.1447495,
+      "whole_fit_s": 124.53919763598242,
+      "sampled_residual_mse": 0.0002861440952887415,
+      "actual_worlds": 643,
+      "readout_updates": 2572,
+      "reference_projection_targets": 0,
+      "frozen_projection_targets": 3072
+    },
+    {
+      "arm": "forward_static",
+      "gain_vs_baseline": -0.0006056628413169951,
+      "bootstrap95": [
+        -0.0023033101967057535,
+        0.0011730336248572974
+      ],
+      "whole_fit_gflops": 0.296414208,
+      "fit_mflops_per_target": 0.1447335,
+      "whole_fit_s": 124.00907352399372,
+      "sampled_residual_mse": 4.427991528707054e-06,
+      "actual_worlds": 635,
+      "readout_updates": 2540,
+      "reference_projection_targets": 0,
+      "frozen_projection_targets": 82944
+    },
+    {
+      "arm": "reference_learner",
+      "gain_vs_baseline": -0.00022735347625241903,
+      "bootstrap95": [
+        -0.0016244939246636426,
+        0.0013379818374364728
+      ],
+      "whole_fit_gflops": 0.296385536,
+      "fit_mflops_per_target": 0.1447195,
+      "whole_fit_s": 126.59664150798926,
+      "sampled_residual_mse": 1.1235692739251522e-07,
+      "actual_worlds": 628,
+      "readout_updates": 2512,
+      "reference_projection_targets": 82944,
+      "frozen_projection_targets": 82944
+    }
+  ],
+  "comparisons": {
+    "forward_static_over_prefix": {
+      "gain": 0.0007223976073020624,
+      "bootstrap95": [
+        -9.961161601365238e-05,
+        0.0016549904322909655
+      ]
+    },
+    "reference_learner_over_prefix": {
+      "gain": 0.0011007069723666385,
+      "bootstrap95": [
+        -3.316072194287175e-05,
+        0.0023088508908591927
+      ]
+    },
+    "reference_learner_over_static": {
+      "gain": 0.0003783093650645761,
+      "bootstrap95": [
+        -0.0004530127060836475,
+        0.0014007939836363657
+      ]
+    }
+  },
+  "verdict": "Reference-learning credit does not clear the positive paired utility gate.",
+  "residual_mse_ratio_reference_over_prefix": 0.0003926585564491149,
+  "fit_wall_ratio_reference_over_prefix": 1.0165204522837907,
+  "gate": false,
+  "scope": "One controller initialization, fresh64-prefix/eight-future synthetic DEV. Sampled residual MSE follows different learned action distributions; it is not a paired fixed-policy variance comparison. Whole-fit includes inherited128 acquisition. Supported FLOPs omit unsupported scalar/special/optimizer operations. The source projected_route_targets counter covers evolving-reference projections only; frozen output projections are counted separately here, including two addressed outputs in prefix replay. No TEST/depth/hardware claim."
+}
