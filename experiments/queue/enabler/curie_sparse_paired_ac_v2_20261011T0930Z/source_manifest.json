@@ -1,0 +1,20 @@
+{
+  "battle": "B1/R1",
+  "decision": "Does connected acquired paired credit improve causal route learning and later reuse, including total fitting cost?",
+  "host": "curie",
+  "cpu_only": true,
+  "threads": 1,
+  "cgroup_limit_bytes": 10737418240,
+  "mem_available_mb": 12234,
+  "min_available_mb": 9216,
+  "rss_cap_kb": 1500000,
+  "acquisition_timeout_s": 1200,
+  "reuse_timeout_s": 1800,
+  "smoke_wall_s": 6.525865792995319,
+  "smoke_peak_rss_kb": 324756,
+  "command": "tmux new-session -d -s curie-sparse-paired-ac bash experiments/queue/enabler/curie_sparse_paired_ac_v2_20261011T0930Z/continue.sh",
+  "source_sha256": {
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/analyze_sparse_paired_actor_critic.py": "f04f321067f861d15ffed7e0e6339e7c2c66cf7336f8ae230f4097db29c0afeb"
+  }
+}

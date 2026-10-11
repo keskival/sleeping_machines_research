@@ -405,3 +405,5 @@ Read §0 for the prior-work boundary and the synthesis above for the project's w
 Task-valued trust and exact shared-context correction execution: [TASK_VALUED_CREDIT_GATES](theory/TASK_VALUED_CREDIT_GATES.md). TRAIN-only selection, fresh utility and preserved optimizer semantics are now measured.
 
 Causal audit variance, drifting residual bias and delayed receipts: [CAUSAL_AUDIT_VARIANCE_AND_DRIFT](theory/CAUSAL_AUDIT_VARIANCE_AND_DRIFT.md). Separates route contrasts from economical residual levels, with conditional tracking bound.
+
+Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRED_ACTOR_CRITIC](theory/SPARSE_PAIRED_ACTOR_CRITIC.md). Raw model-plus-supported-residual gradient, equally sized connected networks, factual feedback every episode and completed-cost continuation protocol.
