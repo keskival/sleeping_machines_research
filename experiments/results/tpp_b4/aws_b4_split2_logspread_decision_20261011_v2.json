@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "tag": "aws_b4_split2_logspread_decision_20261011_v2",
+  "battle": "B4 prospective split2 development",
+  "numerical_pilot_gate": true,
+  "epochs": 5,
+  "skipped_updates": 0,
+  "validation": {
+    "L_T": -268.8208080918789,
+    "L_M": 126.15684769637632,
+    "total": -142.66396039550256,
+    "sequences": 34
+  },
+  "paired_epoch_comparison": [
+    {
+      "epoch": 0,
+      "repair_total": 174.46402233769922,
+      "guarded_total": 174.46402233769925,
+      "gain": 2.842170943040401e-14
+    },
+    {
+      "epoch": 1,
+      "repair_total": -10.707327943331995,
+      "guarded_total": -10.707327943332048,
+      "gain": -5.3290705182007514e-14
+    },
+    {
+      "epoch": 2,
+      "repair_total": -81.91361190756852,
+      "guarded_total": -81.91361190756876,
+      "gain": -2.4158453015843406e-13
+    },
+    {
+      "epoch": 3,
+      "repair_total": -118.54693324147902,
+      "guarded_total": -118.54693324147935,
+      "gain": -3.268496584496461e-13
+    },
+    {
+      "epoch": 4,
+      "repair_total": -142.66396039550256,
+      "guarded_total": -137.31778120092082,
+      "gain": 5.346179194581737
+    }
+  ],
+  "pilot_wall_s": 223.35001301765442,
+  "mean_common_epoch_gain": 1.0692358389162286,
+  "source_sha256": {
+    "experiments/tpp/summarize_split2_logspread_pilot_v2.py": "822a2a83079c58128b5a98efd6c7f0fc5d48015cac1931450c81e5fbc1539fe4"
+  },
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_b4_split2_logspread_pilot_20261011_v2.json": "bdf141a60e828814a100fa02d8487a448401ed9dcbb22d3f945fd37388930ca6",
+    "experiments/results/tpp_b4/b4g_github_s2.json": "b98145442b32aa2708d452ee32cc4c12a55c4d6488e387014437536553ada675"
+  },
+  "wall_s": 0.0005068129394203424,
+  "max_rss_kb": 20308,
+  "scope": "Fresh Github split2 seed0, five TRAIN/DEV passes after full-gradient gate; unchanged numeric repair and original data-derived clock settings. Same cohort/new partition, not independent dataset or extra unique data. Read existing saved score metadata only, no new TEST. Pilot wall includes validation, RSS watchdog cap4GB; pilot peak RSS not supplied by adapter. Longer fitting not automatically admitted; numerical gate and early quality inform its next plan."
+}
