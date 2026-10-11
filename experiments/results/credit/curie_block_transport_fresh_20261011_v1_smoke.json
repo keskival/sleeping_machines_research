@@ -1,0 +1,199 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_block_transport_fresh_20261011_v1_smoke",
+  "mode": "smoke",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 6.853626213503684e-07,
+      "conditional_logit_variance": 6.642749547338727e-07
+    },
+    {
+      "arm": "first8_exact_no_tail",
+      "mse": 2.9361473647402443e-07,
+      "conditional_logit_variance": 2.845804542670077e-07
+    },
+    {
+      "arm": "static_full",
+      "mse": 6.832105212276352e-10,
+      "conditional_logit_variance": 6.621899453832182e-10
+    },
+    {
+      "arm": "reference_full",
+      "mse": 5.430126351964044e-10,
+      "conditional_logit_variance": 5.263058656146939e-10
+    },
+    {
+      "arm": "transport_diagonal",
+      "mse": 4.423445708463775e-13,
+      "conditional_logit_variance": 4.287378540404528e-13
+    },
+    {
+      "arm": "transport_spectral",
+      "mse": 2.782466796018529e-13,
+      "conditional_logit_variance": 2.696875694696656e-13
+    },
+    {
+      "arm": "transport_block",
+      "mse": 2.097607414536906e-13,
+      "conditional_logit_variance": 2.033082361208453e-13
+    }
+  ],
+  "comparisons": {
+    "block_over_transport_diagonal": {
+      "mse_gain": 2.325838293926869e-13,
+      "paired_prefix_bootstrap95": [
+        2.325838293926869e-13,
+        2.325838293926869e-13
+      ],
+      "per_prefix_gain": [
+        2.325838293926869e-13
+      ]
+    },
+    "block_over_transport_spectral": {
+      "mse_gain": 6.848593814816227e-14,
+      "paired_prefix_bootstrap95": [
+        6.848593814816227e-14,
+        6.848593814816227e-14
+      ],
+      "per_prefix_gain": [
+        6.848593814816227e-14
+      ]
+    },
+    "block_over_static_full": {
+      "mse_gain": 6.830007604861815e-10,
+      "paired_prefix_bootstrap95": [
+        6.830007604861815e-10,
+        6.830007604861815e-10
+      ],
+      "per_prefix_gain": [
+        6.830007604861815e-10
+      ]
+    },
+    "block_over_reference_full": {
+      "mse_gain": 5.428028744549508e-10,
+      "paired_prefix_bootstrap95": [
+        5.428028744549508e-10,
+        5.428028744549508e-10
+      ],
+      "per_prefix_gain": [
+        5.428028744549508e-10
+      ]
+    }
+  },
+  "basis_work": {
+    "wall_s": 0.7890747459896374,
+    "supported_flops": 463168512,
+    "rank": 8,
+    "cached_floats": 804632,
+    "eigenvalues": [
+      0.07874865936084938,
+      0.08889254720513766,
+      0.09226415826693683,
+      0.09875995086979741,
+      0.1041212293565462,
+      0.12108051093345695,
+      0.1501745216654433,
+      0.8586234053236539
+    ]
+  },
+  "block_basis_work": {
+    "wall_s": 0.05646437100949697,
+    "supported_flops": 463168512,
+    "rank": 8,
+    "cached_bytes": 17695200
+  },
+  "accuracy_gate": true,
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "transport_block",
+      "mse": 2.097607414536906e-13,
+      "conditional_logit_variance": 2.033082361208453e-13
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_spectral",
+      "mse": 2.782466796018529e-13,
+      "conditional_logit_variance": 2.696875694696656e-13
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "mse": 4.423445708463775e-13,
+      "conditional_logit_variance": 4.287378540404528e-13
+    },
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "mse": 6.853626213503684e-07,
+      "conditional_logit_variance": 6.642749547338727e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "first8_exact_no_tail",
+      "mse": 2.9361473647402443e-07,
+      "conditional_logit_variance": 2.845804542670077e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "static_full",
+      "mse": 6.832105212276352e-10,
+      "conditional_logit_variance": 6.621899453832182e-10
+    },
+    {
+      "prefix": 0,
+      "arm": "reference_full",
+      "mse": 5.430126351964044e-10,
+      "conditional_logit_variance": 5.263058656146939e-10
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "routes": 65,
+      "carrier_supported_flops": 939152256,
+      "carrier_wall_s": 1.350691628002096,
+      "teacher_supported_flops": 13380556800,
+      "teacher_wall_s": 1.6418647420068737,
+      "reference_supported_flops": 205985792,
+      "reference_wall_s": 0.27749220401165076,
+      "transport_supported_flops": 308912128,
+      "transport_wall_s": 0.3171459709992632,
+      "spectral_supported_flops": 338903552,
+      "spectral_wall_s": 0.37893634199281223,
+      "block_supported_flops": 392586624,
+      "block_wall_s": 0.41919244499877095,
+      "first8_oracle_route": 6,
+      "full_oracle_route": 3,
+      "first8_choice_full_regret": 0.0005706342186968527,
+      "true_future_tail_rms": 0.000541862285524675
+    }
+  ],
+  "context": 64,
+  "targets_per_prefix": 16,
+  "train_offset": 4853760,
+  "actual_worlds": 69,
+  "readout_updates": 1104,
+  "whole_wall_s": 5.396767083992017,
+  "peak_rss_kb": 482260,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "checkpoint": "experiments/results/credit/curie_block_transport_fresh_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "2206fb3fe9fad7ae6903b0bb3154c33c79e2af560478f280378149ad88452cbd",
+  "source_sha256": {
+    "experiments/credit/measure_block_transport_fresh.py": "42a7911a6254309ccb2fb350e471affdcf3c80676b12af1a111d3a4e923542e1",
+    "experiments/credit/token_optimizer_transport_block.py": "13d7e8fa8115f5cd8966fb3a946e8a14651bc613d91910a4a57c951894a5e633",
+    "experiments/credit/token_block_curvature.py": "f8b10b1024ead9c45971aee6121f6d8bdffe3835a719ea619df91e750309f711",
+    "experiments/credit/token_optimizer_transport_spectral.py": "f9afc9f93b90e2f30b46b7ad97da80ed463bfb320dfe3326e876ed8cfc908576",
+    "experiments/credit/token_spectral_curvature.py": "82589f0a240d5867503b087d9e57cc9973d04ce2c32a6887eab73902fc81eb24",
+    "experiments/credit/token_optimizer_transport.py": "c46d5c575464178457c2e18df573c15ba9140ca8d851d4597c015b470f0eeebc",
+    "experiments/credit/BLOCK_TRANSPORT_PROTOCOL.md": "be72bc90dea845c8ad56eb3c6c52c327ee1ad875873dcc4336e8336b8c9e8a10",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Eight NEW properly tokenized TRAIN prefixes/48futuretargets/64context; fixedrank8 forward-derived fullblock projected covariance, PSD/exactdiagonal conditional curvature; basis construction/application/cache charged. No newly fitted critic/neural-parameter claim; disjoint smoke prefix. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection and fixed diagonal/spectral optimizer-transport rules. Rank8 fixed before these labels, spectral basis from forward embedding only; no fitting/tuning or actor utility claim. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+}
