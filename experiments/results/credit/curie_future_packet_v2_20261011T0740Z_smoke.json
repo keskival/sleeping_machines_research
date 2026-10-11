@@ -1,0 +1,212 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_future_packet_v2_20261011T0740Z_smoke",
+  "mode": "smoke",
+  "metrics": {
+    "preparation": {
+      "packets": 8,
+      "train_packets": 6,
+      "chronological_holdout_packets": 2,
+      "supported_flops": 554368,
+      "wall_s": 1.5935812280076789,
+      "first_three_reconstructed_label_errors": [
+        5.551115123125783e-17,
+        2.7755575615628914e-16,
+        2.8449465006019636e-16
+      ]
+    },
+    "fit_work": [
+      {
+        "arm": "revealed",
+        "parameters": 14054,
+        "updates": 4,
+        "supported_flops": 5402256,
+        "wall_s": 0.1765469679958187
+      },
+      {
+        "arm": "zero_future",
+        "parameters": 14054,
+        "updates": 4,
+        "supported_flops": 5402256,
+        "wall_s": 0.17688192400964908
+      }
+    ],
+    "chronological_holdout": [
+      {
+        "arm": "prefix_prior",
+        "train_mse": 8.465584308729295e-05,
+        "chronological_holdout_mse": 0.00036545289191377065
+      },
+      {
+        "arm": "revealed",
+        "train_mse": 1.5753823812652786e-05,
+        "chronological_holdout_mse": 0.0006839015646795594
+      },
+      {
+        "arm": "zero_future",
+        "train_mse": 1.5854798467818347e-05,
+        "chronological_holdout_mse": 0.0006872948152420876
+      }
+    ],
+    "dev_rows": [
+      {
+        "arm": "prefix_prior",
+        "mse": 0.00032011213508581547,
+        "error_over_zero": 2.8625471384259367,
+        "unseen_probe_mse": null,
+        "policy_logit_residual_second_moment": 9.26796998573423e-05
+      },
+      {
+        "arm": "revealed",
+        "mse": 0.00015725087962895873,
+        "error_over_zero": 1.4061886637823475,
+        "unseen_probe_mse": null,
+        "policy_logit_residual_second_moment": 4.59821348889325e-05
+      },
+      {
+        "arm": "zero_future",
+        "mse": 0.00015560907343168567,
+        "error_over_zero": 1.3915070971788381,
+        "unseen_probe_mse": null,
+        "policy_logit_residual_second_moment": 4.630490887318656e-05
+      }
+    ],
+    "revealed_over_zero_future_mse_gain": -1.6418061972730652e-06,
+    "prefix_bootstrap95": [
+      -4.2443801724102986e-06,
+      9.60767777864168e-07
+    ],
+    "dev_prefixes": 2,
+    "futures_per_prefix": 1,
+    "paid_teacher_worlds": 4,
+    "evaluation_wall_s": 0.48773263100883923,
+    "evaluation_supported_flops": 1429184,
+    "evaluation_teacher_supported_flops": 162048,
+    "validation_supported_flops": 3255040,
+    "steps": 4,
+    "critic_scale": 0.006361049465999575,
+    "tau": 0.007422685957715026,
+    "inherited_source_fit_costs": [
+      {
+        "arm": "full_fixed",
+        "start_prefix": 0,
+        "end_prefix": 512,
+        "unique_factual_targets": 2048,
+        "prefix_presentations": 512,
+        "policy_updates": 512,
+        "credit_updates": 0,
+        "audit_draws": 512,
+        "extra_worlds": 364,
+        "factual_worlds": 512,
+        "total_readout_updates": 3504,
+        "supported_flops": 350051008,
+        "supported_flops_per_factual_target": 170923.34375,
+        "wall_s": 123.37106322898762,
+        "mean_factual_prequential_loss": 3.9674666085286314,
+        "issued_audited_contrast_mse": 0.00042424452737790225,
+        "critic_training_enabled": false
+      },
+      {
+        "arm": "sparse_fixed",
+        "start_prefix": 0,
+        "end_prefix": 512,
+        "unique_factual_targets": 2048,
+        "prefix_presentations": 512,
+        "policy_updates": 512,
+        "credit_updates": 0,
+        "audit_draws": 124,
+        "extra_worlds": 79,
+        "factual_worlds": 512,
+        "total_readout_updates": 2364,
+        "supported_flops": 331269952,
+        "supported_flops_per_factual_target": 161752.90625,
+        "wall_s": 121.83516757799953,
+        "mean_factual_prequential_loss": 3.9682552250547793,
+        "issued_audited_contrast_mse": 0.0003656964928645263,
+        "critic_training_enabled": false
+      },
+      {
+        "arm": "sparse_learned",
+        "start_prefix": 0,
+        "end_prefix": 512,
+        "unique_factual_targets": 2048,
+        "prefix_presentations": 512,
+        "policy_updates": 512,
+        "credit_updates": 332,
+        "audit_draws": 124,
+        "extra_worlds": 83,
+        "factual_worlds": 512,
+        "total_readout_updates": 2380,
+        "supported_flops": 1158945600,
+        "supported_flops_per_factual_target": 565891.40625,
+        "wall_s": 132.97146897799394,
+        "mean_factual_prequential_loss": 3.969341253380566,
+        "issued_audited_contrast_mse": 0.0005162230344910258,
+        "critic_training_enabled": true
+      },
+      {
+        "arm": "sparse_reset",
+        "start_prefix": 0,
+        "end_prefix": 512,
+        "unique_factual_targets": 2048,
+        "prefix_presentations": 512,
+        "policy_updates": 512,
+        "credit_updates": 108,
+        "audit_draws": 124,
+        "extra_worlds": 76,
+        "factual_worlds": 512,
+        "total_readout_updates": 2352,
+        "supported_flops": 544945024,
+        "supported_flops_per_factual_target": 266086.4375,
+        "wall_s": 126.26660185099172,
+        "mean_factual_prequential_loss": 3.9682323761870255,
+        "issued_audited_contrast_mse": 0.0004507698850522824,
+        "critic_training_enabled": false
+      },
+      {
+        "arm": "sparse_reuse",
+        "start_prefix": 0,
+        "end_prefix": 512,
+        "unique_factual_targets": 2048,
+        "prefix_presentations": 512,
+        "policy_updates": 512,
+        "credit_updates": 108,
+        "audit_draws": 124,
+        "extra_worlds": 77,
+        "factual_worlds": 512,
+        "total_readout_updates": 2356,
+        "supported_flops": 544985536,
+        "supported_flops_per_factual_target": 266106.21875,
+        "wall_s": 126.53537439499632,
+        "mean_factual_prequential_loss": 3.9686071094956286,
+        "issued_audited_contrast_mse": 0.0005723257045915107,
+        "critic_training_enabled": false
+      }
+    ],
+    "inherited_source_whole_wall_s": 403.6288864590024
+  },
+  "whole_wall_s": 2.5491404369968222,
+  "peak_rss_kb": 327904,
+  "source_result": "experiments/results/credit/curie_sparse_paired_ac_v3_20261011T0727Z_reuse.json",
+  "source_result_sha256": "dfa464a16cfdf4564bdb6c56b3f7f2d8e6f2837ac454da4bf92578e666e3a528",
+  "source_checkpoint_sha256": "5cdf9fc5f47895227af8127d6fb865c144edccad300f7ad0f6a0cd636c8cdd06",
+  "source_sha256": {
+    "experiments/credit/fit_revealed_future_credit.py": "4472137728c6204546b3bfc1d1d424c49bc5ea2d668b1e93b71907bd02bd3343",
+    "experiments/credit/revealed_future_route_credit.py": "727da35b6fac2ca968b446b4c4088b623c53ffa004348d859a6aa2c4371950e6",
+    "experiments/credit/cached_paired_native_replay.py": "19808ca86d30b2216e2ce91f948434c943fc37c88b58e6600f9c129eba4a7b8d",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Connected learning-side future encoder and whole-response critic, capacity-matched zero-future control, same initialization/paid TRAIN labels/fit updates. Last25% paid TRAIN packets chronologically held out; fresh32-prefix/eight-future DEV contrasts use per-future labels. Raw observed marks/gaps are exogenous to internal writes; actor never receives future inputs and is not fitted here. All72 critic values queried per DEV future to charge a supported model-gradient term; random uniform paired probes measure residuals. Policy-logit second moment uses saved fixed sparse512 controller and importance weights, not complete native-parameter gradient variance. Fixed temporal/keyed depth4 carrier and four readout Adam updates; full fitting, reconstruction and teacher work separately recorded, inherited source acquisition additional. Supported FLOPs exclude unsupported/scalar/optimizer arithmetic; wall includes it. No actor utility, benchmark, TEST, all-carrier, changing-regime or depth-scaling claim.",
+  "checkpoint": "experiments/results/credit/curie_future_packet_v2_20261011T0740Z_smoke.pt",
+  "checkpoint_sha256": "35a9f15280c9e8e1f9b95e51d984c534cfa5512e59c1e41f24c449c657cec09a"
+}

@@ -15,7 +15,7 @@ from revealed_future_route_credit import RevealedFutureCredit,observed_future,sc
 
 ROOT=Path(__file__).resolve().parents[2]
 SOURCE='experiments/results/credit/curie_sparse_paired_ac_v3_20261011T0727Z_reuse.json'
-TAG='curie_future_packet_20261011T0739Z'
+TAG='curie_future_packet_v2_20261011T0740Z'
 SOURCES=['experiments/credit/fit_revealed_future_credit.py','experiments/credit/revealed_future_route_credit.py',
          'experiments/credit/cached_paired_native_replay.py','experiments/credit/shared_prefix_receiver_credit.py',
          'experiments/credit/sparse_paired_actor_critic.py',*native.SOURCES]
@@ -67,7 +67,8 @@ def run(mode,carrier,baseline,tau,scale,source,checkpoint):
             xs.append(native.prefix(carrier,t,m,3,list(range(6))));us.append(observed_future(ft,fm))
             acts.append(h['action']);refs.append(h['reference']);ys.append(h['observed_contrast'])
             if n<3:
-                loss,_=replay_pairs(carrier,ft,fm,[h['action']//9,h['reference']//9],native.base.actions()[[h['action']%9,h['reference']%9]],.05)
+                with torch.enable_grad():
+                    loss,_=replay_pairs(carrier,ft,fm,[h['action']//9,h['reference']//9],native.base.actions()[[h['action']%9,h['reference']%9]],.05)
                 error=abs(float((loss[0]-loss[1]).mean())-h['observed_contrast']);assert error<1e-11
                 reconstruction_errors.append(error)
     x=torch.cat(xs);u=torch.cat(us);y=torch.tensor(ys);split=int(.75*len(data));assert split>=4 and split<len(data)
@@ -119,7 +120,7 @@ def run(mode,carrier,baseline,tau,scale,source,checkpoint):
                 for name,model in models.items():
                     all_values=scores(model,px,uf if name=='revealed' else torch.zeros_like(uf),steps).flatten()
                     guesses[name].append(float(all_values[probe]-all_values[reference]))
-                with FlopCounterMode(display=False) as teacher:
+                with torch.enable_grad(),FlopCounterMode(display=False) as teacher:
                     losses,_=replay_pairs(carrier,ft,fm,[probe//9,reference//9],native.base.actions()[[probe%9,reference%9]],.05)
                 teacher_work+=teacher.get_total_flops();actual.append(float((losses[0]-losses[1]).mean()))
             truth.append(actual)
