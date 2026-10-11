@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_exact_worlds_carried_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "depth": 2,
+      "reset": false,
+      "max_error": 1.249000902703301e-16
+    },
+    {
+      "depth": 2,
+      "reset": true,
+      "max_error": 1.457167719820518e-16
+    },
+    {
+      "depth": 4,
+      "reset": false,
+      "max_error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 4,
+      "reset": true,
+      "max_error": 1.7763568394002505e-15
+    },
+    {
+      "depth": 8,
+      "reset": false,
+      "max_error": 2.220446049250313e-16
+    },
+    {
+      "depth": 8,
+      "reset": true,
+      "max_error": 4.163336342344337e-17
+    }
+  ],
+  "wall_s": 1.0496483219903894,
+  "source_sha256": {
+    "experiments/credit/check_exact_worlds_carried.py": "96be65399c61c693c401c6d0ca016a65a69c312413cef0733a6353e330a14214",
+    "experiments/credit/token_exact_world_readouts_carried.py": "4236c49ae1d2aa7c15d7eaea0b96f47a3a13a7157d5ef7d37e6777b7d631b9bd",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714"
+  }
+}

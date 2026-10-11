@@ -1,0 +1,89 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_route48_warm_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "parent": "curie_route48_transport_20261011_v1_fit",
+  "parent_sha256": "da32afdd26c6fbcebd98c783c19872b8f2cfc0424b627e81be4f7109f472c42c",
+  "rows": [
+    {
+      "prefix": 0,
+      "expected_nll": {
+        "initial": 5.337691479616543,
+        "zero": 5.3376929588692885,
+        "static": 5.337695229216072,
+        "transport": 5.33769621945504
+      },
+      "cold_expected_nll": {
+        "zero": 5.358429941346174,
+        "static": 5.358432017050591,
+        "transport": 5.358432792856448,
+        "initial": 5.358429080049904
+      },
+      "uniform_nll": 5.337681128657665,
+      "oracle_nll": 5.336954332764155,
+      "noop_nll": 5.3376788324503055,
+      "warm_lexical_norm": 0.7137578763985447,
+      "routes": 65
+    }
+  ],
+  "comparisons": {
+    "transport_over_static": {
+      "gain": -9.902389681570867e-07,
+      "paired_prefix_bootstrap95": [
+        -9.902389681570867e-07,
+        -9.902389681570867e-07
+      ],
+      "per_prefix": [
+        -9.902389681570867e-07
+      ]
+    },
+    "transport_over_zero": {
+      "gain": -3.2605857516188053e-06,
+      "paired_prefix_bootstrap95": [
+        -3.2605857516188053e-06,
+        -3.2605857516188053e-06
+      ],
+      "per_prefix": [
+        -3.2605857516188053e-06
+      ]
+    },
+    "transport_over_initial": {
+      "gain": -4.7398384968033724e-06,
+      "paired_prefix_bootstrap95": [
+        -4.7398384968033724e-06,
+        -4.7398384968033724e-06
+      ],
+      "per_prefix": [
+        -4.7398384968033724e-06
+      ]
+    },
+    "static_over_initial": {
+      "gain": -3.7495995286462858e-06,
+      "paired_prefix_bootstrap95": [
+        -3.7495995286462858e-06,
+        -3.7495995286462858e-06
+      ],
+      "per_prefix": [
+        -3.7495995286462858e-06
+      ]
+    }
+  },
+  "reference_errors": [
+    2.6645352591003757e-15
+  ],
+  "worlds": 67,
+  "readout_updates": 3360,
+  "supported_flops": 46509730432,
+  "wall_s": 14.863860009005293,
+  "peak_rss_kb": 556944,
+  "checkpoint": "experiments/results/credit/curie_route48_warm_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "db36d06cda28fd1e2ea7e5225b2ccee6ee0129ee4e5ba341fcedc0af3318579d",
+  "source_sha256": {
+    "experiments/credit/diagnose_route48_warm.py": "8ed2df41b45d50c081d87c9c46c949812e9f79c516588de06e3466fd8ae970a4",
+    "experiments/credit/token_exact_world_readouts_carried.py": "4236c49ae1d2aa7c15d7eaea0b96f47a3a13a7157d5ef7d37e6777b7d631b9bd",
+    "experiments/credit/WARM_POLICY_DIAGNOSIS_PROTOCOL.md": "d027a65435d45ac9e997b4d170abdc68da9d6cbe2f3a6417157b93212e2466bf"
+  },
+  "scope": "Reused private development prefixes/selected final policies, no fitting/public scoring. Only lexical/Adam state warm; native64context same as previous cold scoring. Warm causal191updates and all exact worlds/reference paid. Measure includes smoke-prefix reuse. Not a confirmation or whole-native online/depth result."
+}
