@@ -1,0 +1,172 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_joint_policy_objective_20261011_v1",
+  "rows": [
+    {
+      "arm": "baseline",
+      "greedy_gain_vs_baseline": 0.0,
+      "greedy_gain_vs_baseline_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "stochastic_gain_vs_baseline": 0.0,
+      "stochastic_gain_vs_baseline_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "stochastic_gain_vs_acquired": -0.0036003474606103097,
+      "stochastic_gain_vs_acquired_bootstrap95": [
+        -0.004056888829934645,
+        -0.003174855832440728
+      ],
+      "entropy": 3.9626560069785164,
+      "kl_vs_acquired": 0.5310496880884845,
+      "unseen_route_probability": 0.2357648962602265
+    },
+    {
+      "arm": "acquired128",
+      "greedy_gain_vs_baseline": 4.450619962161756e-05,
+      "greedy_gain_vs_baseline_bootstrap95": [
+        -0.0011683043617186993,
+        0.0014168226427657034
+      ],
+      "stochastic_gain_vs_baseline": 0.0036003474606102967,
+      "stochastic_gain_vs_baseline_bootstrap95": [
+        0.003174855832440684,
+        0.004056888829934637
+      ],
+      "stochastic_gain_vs_acquired": 0.0,
+      "stochastic_gain_vs_acquired_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "entropy": 2.9880831613048437,
+      "kl_vs_acquired": 0.0,
+      "unseen_route_probability": 0.16452466846420383
+    },
+    {
+      "arm": "prefix",
+      "greedy_gain_vs_baseline": -0.001328060448619127,
+      "greedy_gain_vs_baseline_bootstrap95": [
+        -0.0031787074870442975,
+        0.0005778243443767839
+      ],
+      "stochastic_gain_vs_baseline": 0.00498508424911169,
+      "stochastic_gain_vs_baseline_bootstrap95": [
+        0.004387168212548339,
+        0.005603116755869978
+      ],
+      "stochastic_gain_vs_acquired": 0.0013847367885013457,
+      "stochastic_gain_vs_acquired_bootstrap95": [
+        0.0006399323989458676,
+        0.0020872283733702037
+      ],
+      "entropy": 2.272319908833351,
+      "kl_vs_acquired": 0.4902034174759611,
+      "unseen_route_probability": 0.09258865324056363
+    },
+    {
+      "arm": "forward_static",
+      "greedy_gain_vs_baseline": -0.0006056628413169951,
+      "greedy_gain_vs_baseline_bootstrap95": [
+        -0.002262566304265276,
+        0.0011415948096592462
+      ],
+      "stochastic_gain_vs_baseline": 0.0057809601265871036,
+      "stochastic_gain_vs_baseline_bootstrap95": [
+        0.005245165120596722,
+        0.00633105770825571
+      ],
+      "stochastic_gain_vs_acquired": 0.0021806126659767878,
+      "stochastic_gain_vs_acquired_bootstrap95": [
+        0.0015201342968779634,
+        0.00276125928413228
+      ],
+      "entropy": 2.1127984954405195,
+      "kl_vs_acquired": 0.29052836628669954,
+      "unseen_route_probability": 0.09896729710327326
+    },
+    {
+      "arm": "reference_learner",
+      "greedy_gain_vs_baseline": -0.0002273534762524676,
+      "greedy_gain_vs_baseline_bootstrap95": [
+        -0.001615725842287962,
+        0.001279073576656692
+      ],
+      "stochastic_gain_vs_baseline": 0.0059821471739682636,
+      "stochastic_gain_vs_baseline_bootstrap95": [
+        0.00544100358715601,
+        0.0065470661570272365
+      ],
+      "stochastic_gain_vs_acquired": 0.0023817997133579877,
+      "stochastic_gain_vs_acquired_bootstrap95": [
+        0.0018121075970525052,
+        0.0028938954231877362
+      ],
+      "entropy": 2.0926385352922274,
+      "kl_vs_acquired": 0.240286865347424,
+      "unseen_route_probability": 0.10896680759532598
+    }
+  ],
+  "comparisons": {
+    "forward_static_over_prefix_greedy_gain_vs_baseline": {
+      "gain": 0.0007223976073021318,
+      "bootstrap95": [
+        -0.00012911267906223572,
+        0.0016710558913572253
+      ]
+    },
+    "forward_static_over_prefix_stochastic_gain_vs_baseline": {
+      "gain": 0.0007958758774754132,
+      "bootstrap95": [
+        0.00029559975413065204,
+        0.0013028115981759197
+      ]
+    },
+    "reference_learner_over_prefix_greedy_gain_vs_baseline": {
+      "gain": 0.0011007069723666593,
+      "bootstrap95": [
+        -6.053136534583529e-05,
+        0.002357746121021069
+      ]
+    },
+    "reference_learner_over_prefix_stochastic_gain_vs_baseline": {
+      "gain": 0.0009970629248565732,
+      "bootstrap95": [
+        0.0004306195308478256,
+        0.0015585505549663653
+      ]
+    }
+  },
+  "source_result": "experiments/results/credit/curie_joint_forward_credit_20261011_v1_fit.json",
+  "source_result_sha256": "183c4d8500a66dc95c97f81fceaf96eb3fd835d784eb49d5d344226c8e0b864c",
+  "source_checkpoint_sha256": "5a2df27400caab6ae7ffed4d32e3ac9cea2ce684958fae4c83366434d9d26273",
+  "checkpoint": "experiments/results/credit/curie_joint_policy_objective_20261011_v1.pt",
+  "checkpoint_sha256": "d9452872c6794af205a4ccb80c59a6cc44650903e4476881543c46fe23ec8f13",
+  "greedy_replay_error": 3.552713678800501e-15,
+  "teacher_worlds": 36864,
+  "readout_updates": 147456,
+  "supported_flops": 216369664,
+  "whole_wall_s": 49.31646047899267,
+  "peak_rss_kb": 345772,
+  "source_sha256": {
+    "experiments/credit/diagnose_joint_policy_objective.py": "242f929d24c36e41ea205410761d85b2b667d8be37c43fd144fc48697e363728",
+    "experiments/credit/shared_carrier_paired_replay.py": "2b50d8b523c74550d610944e682144b01eae98f55abce70e940cd7accee16906",
+    "experiments/credit/sparse_paired_actor_critic.py": "b6985d1dc6b410a1b32feb7b8e0357e3f2534db919967b6bf98765681b48637a",
+    "experiments/credit/shared_prefix_receiver_credit.py": "16108a90d6c8654592d90b7bdf18afa59be4abf5b59f9eb5f970e0c8e26c380d",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa",
+    "experiments/credit/optimizer_aware_route_credit.py": "c266edfd645f71e2c2e4b39f6bfc1703212387cd57296fb8aec00881d1930687",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a",
+    "experiments/credit/fit_optimizer_aware_credit.py": "dca99fde11213abb7cd8576286754ab2fa9fd48c61d316955ae2833bea468024",
+    "experiments/credit/unseen_receiver_credit.py": "d5f1605c5554bb6795ae54c972c23d9f1894cff91195ab2c9eac5fb7609a215d",
+    "experiments/credit/structured_future_credit_v5.py": "b7d4fa5ef91aba52bcb5e989f6527dc16bca1e330534311f15b3b43357ac770f",
+    "experiments/credit/conditional_credit_noise.py": "7dbef2c43ab0821e89d5dcd431c334a273c8f074275f244d28188546863c7508",
+    "experiments/credit/future_route_critic_v1.py": "cc9b624f309fee7b892ec561b7b1d533ed180f7705ac8db68cbf8853b35a659a",
+    "experiments/credit/native_key_credit.py": "64982f24d3f569f1b1f763f82ad8af094ff725cb2da1741b24b40d05c9f7a9a6",
+    "experiments/credit/reciprocal_native_v1.py": "afebd7f2aac79deaf2bab40cea47985be45a00b748b05848a87b675953c43ea3",
+    "experiments/tpp/recall_tpp_v4.py": "aac9feed5bc42a896f97d44cd6f4eafe533658c040fee9567d0b352cd2c8ae3f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Read-only error analysis of one saved training comparison on its same64 DEV prefixes/eight futures. All72 true independently adapting route worlds paid; no fit/tuning/TEST. Exact inference-policy expected utility uses saved0.9softmax+0.1uniform law; greedy utility independently reproduced. Baseline and acquired128 serve separately as references. Saved full per-future losses are DEV evidence, prohibited as future TRAIN labels. Shared source pretraining/acquisition/fit/earlier verification additional. Supported FLOPs omit unsupported/scalar/special/optimizer arithmetic, in wall."
+}
