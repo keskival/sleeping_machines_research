@@ -1,0 +1,9 @@
+# Forward-trained geometric updates: completed first attempt
+
+R1 restricted diagnostic, proper GPT2 FineWeb TRAIN-tail; native two-layer temporal/keyed source frozen, 64-dimensional lexical adaptation. The connected 25,027-parameter update function learns step size, damping and momentum from the next revealed target through its retained issued update graph. Four independent 512-target private episodes follow 1,024-target pretraining. No public scoring or optional-route learning.
+
+Online-minus-frozen loss is +0.031139 nats/target; paired episode gain 95% interval [-0.077001, +0.006570]. One of four episodes improves. Online-minus-Adam loss is +0.046264, with gain interval [-0.084488, -0.008041]. The online utility gate fails. Whole execution is 208.403 seconds; shared native execution and arm-specific costs are recorded separately in the completed result. Pretraining and basis acquisition are additional costs for both learned-function arms; Adam does not receive that pretraining.
+
+This is a failed first implementation of online update-function learning, not an architecture verdict. A prospective second stage averages sixteen local next-target gradients while keeping their function parameter version fixed. This tests update-frequency and feedback aggregation together. Gradient variance is K^-2 times the sum of all pairwise covariances; correlated causal feedback need not give an independent-sample 1/K reduction. Delayed adaptation can also hurt. Retain one issued graph at a time, detach incoming fast state, and flush partial batches at phase end. No claim of full-horizon meta-gradients or asynchronous hardware efficiency.
+
+Completed evidence: experiments/results/credit/curie_online_geometric_update_20261011_v1_fit.json.
