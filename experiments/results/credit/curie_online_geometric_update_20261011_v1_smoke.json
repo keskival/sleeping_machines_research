@@ -1,0 +1,162 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_online_geometric_update_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "utility_gate": false,
+  "config": {
+    "train_targets": 64,
+    "episodes": 2,
+    "targets": 32,
+    "context": 64,
+    "meta_lr": 0.001,
+    "train_offset": 4915200,
+    "private_dev_offset": 4986880
+  },
+  "basis": {
+    "wall_s": 0.872277768998174,
+    "supported_flops": 463168512,
+    "cached_bytes": 17695200
+  },
+  "pretraining": {
+    "wall_s": 3.0233422570163384,
+    "supported_flops": 2818415616,
+    "common_native_wall_s": 1.2360134018526878,
+    "common_native_supported_flops": 834439680,
+    "arm_wall_s": {
+      "online": 1.7702731980534736
+    },
+    "arm_supported_flops": {
+      "online": 1983975936
+    },
+    "scored_targets": 64,
+    "meta_updates": 63,
+    "mean_nll": {
+      "online": 4.960393323245051
+    },
+    "max_scored_keys": 96,
+    "mean_scored_keys": 73.96875,
+    "selected_native_address_writes": 127,
+    "lexical_capacity": 64,
+    "native_available_vocabulary": 50257,
+    "update_function_parameters": 25027
+  },
+  "rows": [
+    {
+      "wall_s": 3.0968201540235896,
+      "supported_flops": 4005865600,
+      "common_native_wall_s": 0.8456848018977325,
+      "common_native_supported_flops": 624016256,
+      "arm_wall_s": {
+        "adam": 0.1841885010653641,
+        "fixed": 0.5408006950456183,
+        "frozen": 0.6318306060275063,
+        "online": 0.8819815369206481
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991954688
+      },
+      "scored_targets": 32,
+      "meta_updates": 31,
+      "mean_nll": {
+        "adam": 5.102669192072359,
+        "fixed": 5.1050500887266175,
+        "frozen": 5.10452663448138,
+        "online": 5.10581316330082
+      },
+      "max_scored_keys": 68,
+      "mean_scored_keys": 57.28125,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 0
+    },
+    {
+      "wall_s": 3.087922256003367,
+      "supported_flops": 4005677952,
+      "common_native_wall_s": 0.8530546330439392,
+      "common_native_supported_flops": 623895168,
+      "arm_wall_s": {
+        "adam": 0.18395704895374365,
+        "fixed": 0.5381277150299866,
+        "frozen": 0.6289682670030743,
+        "online": 0.8709413628967013
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991888128
+      },
+      "scored_targets": 32,
+      "meta_updates": 30,
+      "mean_nll": {
+        "adam": 4.2828918859282705,
+        "fixed": 4.300899784232323,
+        "frozen": 4.300887611987017,
+        "online": 4.304004933196974
+      },
+      "max_scored_keys": 56,
+      "mean_scored_keys": 27.34375,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 1
+    }
+  ],
+  "comparisons": {
+    "online_over_frozen": {
+      "gain": -0.0022019250146985136,
+      "paired_episode_bootstrap95": [
+        -0.0031173212099568914,
+        -0.0012865288194401359
+      ],
+      "per_episode": [
+        -0.0012865288194401359,
+        -0.0031173212099568914
+      ]
+    },
+    "online_over_fixed": {
+      "gain": -0.0019341117694269272,
+      "paired_episode_bootstrap95": [
+        -0.0031051489646509722,
+        -0.0007630745742028822
+      ],
+      "per_episode": [
+        -0.0007630745742028822,
+        -0.0031051489646509722
+      ]
+    },
+    "online_over_adam": {
+      "gain": -0.012128509248582553,
+      "paired_episode_bootstrap95": [
+        -0.021113047268703333,
+        -0.0031439712284617727
+      ],
+      "per_episode": [
+        -0.0031439712284617727,
+        -0.021113047268703333
+      ]
+    }
+  },
+  "whole_wall_s": 10.287141590000829,
+  "peak_rss_kb": 422036,
+  "checkpoint": "experiments/results/credit/curie_online_geometric_update_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "7deeb4ac86dc8d97a5c98b7b4d9a87efa1c554e93b76f3e5a7518d6f1e1bbf18",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/run_online_geometric_update.py": "e80c61838e321ede767bc90b10eb44143757b493d314e967c2ea1ad0698a7d7e",
+    "experiments/credit/online_geometric_update.py": "d3925d2168ad49fe3f42d69a7f3a9c9dfa2779d3e1ccfd61a0d03f743812ba5e",
+    "experiments/credit/ONLINE_GEOMETRIC_UPDATE_PROTOCOL.md": "2f2276822880bfffbda4c424fb551ba50d6973d94457137eb5aaf0b7cfe1fc56",
+    "experiments/credit/token_block_curvature.py": "f8b10b1024ead9c45971aee6121f6d8bdffe3835a719ea619df91e750309f711",
+    "experiments/credit/token_spectral_curvature.py": "82589f0a240d5867503b087d9e57cc9973d04ce2c32a6887eab73902fc81eb24",
+    "experiments/credit/token_episode_state_vectorized.py": "34bcdb4d048c18234bb3fc8efc6b7ef576e4490d31c469fd514dfc137a2fd173"
+  },
+  "scope": "ProperGPT2 native2layer keyedsource,64dimensional forwardlexical learner; nativeparameters fixed. Learned connected updatefunction eta/damping/momentum trained by exact one-step futureloss through retained issued graph; frozen-vs-online same inherited function/metaAdamstate. Streaming causal prequential privateTRAINtail; no publicDEV/TEST. No optionalcounterfactual route/actor learning added in this diagnostic; retains source temporal/addressedkey inference. Charge sharednative plus eacharm updates/geometry/function/solver/optimizer, basis/metapretraining additional to everyprimaryarm; unsupported solver/eigensolver/scalar work included in wall but omitted from supportedFLOPs. No equaltrainingclaim vsAdam/fullnativelearning/depth or hardwareefficiencyclaim."
+}

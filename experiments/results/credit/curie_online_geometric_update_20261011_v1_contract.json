@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_online_geometric_update_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "magnitude": 0.01,
+      "errors": {
+        "analytic": 2.710505431213761e-20,
+        "finite_difference": 1.1701956848723764e-10
+      }
+    },
+    {
+      "magnitude": 10.0,
+      "errors": {
+        "analytic": 1.3877787807814457e-17,
+        "finite_difference": 1.4598751374439445e-10
+      }
+    }
+  ],
+  "wall_s": 0.8137145139917266,
+  "source_sha256": {
+    "experiments/credit/check_online_geometric_update.py": "8b5d53eca3938be3595cf34992231ea7ccf3273586a6c6fc21828ffda974c244",
+    "experiments/credit/online_geometric_update.py": "d3925d2168ad49fe3f42d69a7f3a9c9dfa2779d3e1ccfd61a0d03f743812ba5e"
+  },
+  "scope": "One-step futureCE meta-gradient, active/inactive normcap, retainedgraph/update/reset/version; synthetic23class8dimensional readout, no quality/depthclaim."
+}
