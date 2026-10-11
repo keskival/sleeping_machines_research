@@ -1,0 +1,79 @@
+{
+  "status": "completed",
+  "tag": "aws_native_future_update_reuse_20261011_s1_decision",
+  "battle": "B1 native learning quality/work decision",
+  "rows": [
+    {
+      "depth": 2,
+      "final_fixed_nll": -0.4744196958832363,
+      "final_learned_nll": -0.48602932835009616,
+      "final_quality_gain": 0.011609632466859865,
+      "fixed_full_fit_and_validation_s": 39.52518440946005,
+      "learned_full_fit_and_validation_s": 42.76540389051661,
+      "first_matched_quality_epoch": 3,
+      "matched_quality_fit_and_validation_s": 42.76540389051661,
+      "fixed_over_learned_matched_work": 0.9242326931051132,
+      "supported_flops_ratio_at_matched_quality": 0.9999121414880529,
+      "final_group_scales": [
+        1.0130895660928037,
+        1.114952586389804,
+        1.099809527977933,
+        1.2997573853165612
+      ]
+    },
+    {
+      "depth": 4,
+      "final_fixed_nll": -0.4821290425948925,
+      "final_learned_nll": -0.49098571127729634,
+      "final_quality_gain": 0.008856668682403868,
+      "fixed_full_fit_and_validation_s": 67.85127450712025,
+      "learned_full_fit_and_validation_s": 73.67004900216125,
+      "first_matched_quality_epoch": 3,
+      "matched_quality_fit_and_validation_s": 73.67004900216125,
+      "fixed_over_learned_matched_work": 0.9210157374149393,
+      "supported_flops_ratio_at_matched_quality": 0.9999446296193758,
+      "final_group_scales": [
+        0.9956888870559996,
+        1.0737276524804868,
+        1.1173963555716389,
+        1.2393553425184765
+      ]
+    },
+    {
+      "depth": 8,
+      "final_fixed_nll": -0.47735428302277133,
+      "final_learned_nll": -0.4830833065117954,
+      "final_quality_gain": 0.005729023489024043,
+      "fixed_full_fit_and_validation_s": 126.11799109680578,
+      "learned_full_fit_and_validation_s": 135.46286238729954,
+      "first_matched_quality_epoch": 3,
+      "matched_quality_fit_and_validation_s": 135.46286238729954,
+      "fixed_over_learned_matched_work": 0.9310152529940199,
+      "supported_flops_ratio_at_matched_quality": 0.9999681698143598,
+      "final_group_scales": [
+        0.9886053698462062,
+        0.9886494536975668,
+        0.9997482885913136,
+        1.188555821606208
+      ]
+    }
+  ],
+  "positive_development_quality_gate": true,
+  "continuation": [
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzb1_20261011T224017Z_s3.json\n  aws_native_future_update_reuse_20261011_s2 -> experiments/results/credit/aws_native_future_update_reuse_20261011_s2.json",
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzb1_20261011T224018Z_s3.json\n  aws_native_future_update_reuse_20261011_s2_decision -> experiments/results/credit/aws_native_future_update_reuse_20261011_s2_decision.json"
+  ],
+  "paid_parent_wall_s": 486.1802160621155,
+  "wall_s": 1.1804786920547485,
+  "source_sha256": {
+    "experiments/credit/analyze_native_future_update.py": "3691259e3521c2abd1afd67824c24e4872e5d3ebf42cbb51d42a9c833a9fe57d",
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12",
+    "experiments/credit/train_native_future_update_reuse_full.py": "e044918419c6686998e6ec833d5eb1737039dfd2c116ccb523d907c7fe1c5978",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "input_sha256": {
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s1.json": "713ea1b7855e481c11055dde248407d1095769b8ca8a591524838528e8bd78fd"
+  },
+  "scope": "Scheduled DEV checkpoints,one-seed development gate; fixed final quality target registered before fit. Complete measured fitting wall and all validation retained; paid smoke/failed admission additionally recorded in protocol, hardware energy unmeasured. Supported FLOPs are partial counters. Conditional unchanged-version replication through seed2; no test/Transformer/supremacy claim."
+}
