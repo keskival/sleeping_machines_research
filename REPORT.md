@@ -4684,6 +4684,38 @@ Reference-learning credit reduces action-sampling gradient variance99.92% versus
 
 Fixed10584-parameter acquired128 controller,12 TRAIN-domain prefixes/16 futures each,54 exact routes plus one paid projected-reference learner per future. Conditional action covariance trace is exact on finite route support; future covariance is a16-future sample estimate. No fitting/DEV/TEST. All10560teacher worlds/42240readout updates paid,51.61s/0.218968supportedGFLOPs; inherited work additional. Parameter gradients belong to the route controller, not the fixed native carrier.
 
+### The stochastic training objective and greedy scoring differ
+
+| Policy | Greedy gain | Stochastic gain | Stochastic vs128 |
+| --- | --- | --- | --- |
+| baseline | +0.000000 | +0.000000 | -0.003600 |
+| acquired128 | +0.000045 | +0.003600 | +0.000000 |
+| prefix | -0.001328 | +0.004985 | +0.001385 |
+| forward static | -0.000606 | +0.005781 | +0.002181 |
+| reference learner | -0.000227 | +0.005982 | +0.002382 |
+
+Full72-route read-only analysis on the same DEV cohort finds reference over prefix stochastic gain+0.000997 nats/target, paired95%0.000431–0.001559. Static over prefix+0.000796 also has a positive interval. Both compare exactly the0.9softmax+0.1uniform policy optimized during training. The original greedy gate still fails; this diagnostic is exploratory, not a retroactive change to that endpoint.
+
+All36864independent learner worlds paid,49.32s. Greedy scores reproduce original verification within3.55e-15. Saved all-route DEV labels are evidence, prohibited as TRAIN. A fixed fresh-cohort three-continuation-stream confirmation is registered; shared actor seed170/128 acquisition, no independent native initializations or TEST.
+
+### Fresh-cohort fixed continuation confirmation
+
+| Stream | Credit | Stochastic vs128 | Greedy gain | Fit seconds |
+| --- | --- | --- | --- | --- |
+| 0 | prefix | +0.001511 | -0.001587 | 124.5 |
+| 1 | prefix | +0.001640 | -0.000606 | 125.1 |
+| 2 | prefix | +0.002152 | -0.001288 | 125.5 |
+| 0 | forward static | +0.002378 | -0.000437 | 124.0 |
+| 1 | forward static | +0.002453 | -0.000371 | 124.6 |
+| 2 | forward static | +0.002518 | -0.000847 | 124.9 |
+| 0 | reference learner | +0.002482 | -0.000636 | 126.6 |
+| 1 | reference learner | +0.002500 | -0.000583 | 126.2 |
+| 2 | reference learner | +0.002510 | -0.000847 | 126.5 |
+
+Registered stochastic confirmation gate passes: reference over prefix mean+0.000730nats/target, paired stream/context95%[+0.000317,+0.001217]; per-stream gains+0.000971, +0.000860, +0.000358. Greedy utility remains a separate endpoint.
+
+Fresh64-prefix/eight-future DEV, fixed parameters and scoring. Three continuation streams share actor seed170 and valid128 acquisition; original controllers reused. All36864verification worlds/147456readout updates paid,53.07s. Per-arm fitting includes128 acquisition. One synthetic development confirmation; no TEST/public benchmark/depth/hardware claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
