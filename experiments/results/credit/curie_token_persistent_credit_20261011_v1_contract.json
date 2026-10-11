@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_persistent_credit_20261011_v1_contract",
+  "gate": true,
+  "contracts": [
+    {
+      "reset": false,
+      "vocabulary": 23,
+      "depth": 2,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "fast_state": 2.0816681711721685e-17,
+        "adam": 2.7755575615628914e-17,
+        "layers": 0.0,
+        "keys": 4.440892098500626e-16
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": true,
+      "vocabulary": 23,
+      "depth": 2,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "fast_state": 0.0,
+        "adam": 0.0
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": false,
+      "vocabulary": 23,
+      "depth": 4,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "fast_state": 2.7755575615628914e-17,
+        "adam": 5.551115123125783e-17,
+        "layers": 0.0,
+        "keys": 0.0
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": true,
+      "vocabulary": 23,
+      "depth": 4,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "fast_state": 0.0,
+        "adam": 0.0
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": false,
+      "vocabulary": 23,
+      "depth": 8,
+      "errors": {
+        "scores": 8.881784197001252e-16,
+        "fast_state": 2.0816681711721685e-17,
+        "adam": 1.1102230246251565e-16,
+        "layers": 0.0,
+        "keys": 5.551115123125783e-17
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": true,
+      "vocabulary": 23,
+      "depth": 8,
+      "errors": {
+        "scores": 1.7763568394002505e-15,
+        "fast_state": 0.0,
+        "adam": 0.0
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    },
+    {
+      "reset": "observed_gpt2",
+      "vocabulary": 50257,
+      "depth": 2,
+      "errors": {
+        "scores": 8.881784197001252e-16,
+        "fast_state": 4.163336342344337e-17,
+        "adam": 2.949029909160572e-17,
+        "layers": 0.0,
+        "keys": 4.440892098500626e-16
+      },
+      "incoming_snapshot_checks": 8,
+      "targets": 24,
+      "credit_windows": 3
+    }
+  ],
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "whole_wall_s": 2.350084104007692,
+  "peak_rss_kb": 364860,
+  "source_sha256": {
+    "experiments/credit/check_token_persistent_credit.py": "9e54357ddde3a31c0e39d77e642ec8896c51fb28a49be081664ecbcb6074fecf",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_forward_credit.py": "018ba322dd5ef56481de94fe1d78e95c742d9f212bb309229c5a8a2ac846eb68",
+    "experiments/credit/token_episode_state.py": "73e8ddf8218033df02e856f819a40759c8ff5ab33ef933c649e58786c7a8dd07",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Three8-target credit windows with3 selected hard writes, same continuous native state and independent actual readout/Adam carry. Full source episode scores/final fast state/optimizer/layers/lazy keys agree; incoming snapshots unmodified. Small vocab depth2/4/8 with middle/final EOS and actual pretrained50257 vocabulary2layer fresh TRAIN. No actor fitting/TEST/depth-quality or continuous full-carrier-gradient claim."
+}
