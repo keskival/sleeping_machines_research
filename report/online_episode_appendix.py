@@ -222,7 +222,7 @@ def forward_derived_pages():
     path=folder/'curie_forward_derived_credit_20261011T0758Z_measure.json'
     if not path.exists():return []
     d=json.loads(path.read_text());assert d['status']=='completed'
-    rows=[[r['arm'].replace('_',' '),f"{r['mse']:.9f}",f"{r['policy_logit_residual_second_moment']:.6f}"] for r in d['rows'] if r['arm'] in ['prefix_prior','revealed_future','forward_static','reference_learner']]
+    rows=[[r['arm'].replace('_',' '),f"{r['mse']:.9f}",f"{r['policy_logit_residual_second_moment']:.6f}"] for r in d['rows'] if r['arm'] in ['prefix_prior','revealed','forward_static','reference_learner']]
     page=[('h2','Forward computation teaches learner-aware route credit'),
         ('p','The future-input recurrent critic fails its generalization gate: per-future DEV MSE0.001110 versus saved prefix prior0.000385. Exact native forward structure supplies a stronger predictor. One fixed temporal carrier serves all addressed key writes; a causal reference readout learns from four dense supervised observations and projects alternative-route losses through its evolving weights.'),
         ('table',(['Learning-side predictor','Contrast MSE','Logit residual moment'],rows,[65,45,57])),
