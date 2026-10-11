@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage{tutorial}
+\begin{document}
+\tutorialtitle{9}{Forward Computation Teaches Credit}{Causal reference learning, corrected gradients and sparse work budgets}
+\section*{Why this tutorial}
+A forward model produces more than a forecast: it exposes causal state, route effects and supervised observations that can teach a credit function. The useful question is which part of a future learning effect must still be estimated after reusing that structure. We derive a corrected route-policy gradient and separate its statistical and computational costs.
+\section{Issue the action before the observations}
+Let $H$ denote information available when a route is chosen. The actor samples $A\sim\pi_\theta(\cdot\mid H)$, and a reference $b=b(H)$ is fixed independently of that sample. An exogenous recorded continuation $U$ arrives afterward. Assume $U\perp A\mid H$: selecting an internal computational route does not change the data stream. This assumption fails when actions change the environment and its future observations.
+
+Define $L(U,a)$ as the episode loss under route $a$, including subsequent causal parameter and optimizer updates. Credit concerns the contrast $D_a=L(U,a)-L(U,b)$, rather than only a frozen-model loss. Let $s_a=\nabla_\theta\log\pi_\theta(a\mid H)$ and $g_D(U)=\sum_a\pi_aD_as_a$. Since $\sum_a\pi_as_a=0$, subtracting a reference independent of $a$ leaves the policy gradient unchanged. This gradient covers route-policy parameters with the forward model snapshot fixed.
+\section{Use a predictor and repair its error}
+A learning-side predictor $h_a=h(H,U,a)$ can use already arrived $U$, although the actor could not use it when acting. Detach $h$ from the current actor update. Write
+\[
+ g_h=\sum_a\pi_ah_as_a,\qquad
+ G=g_h+(D_A-h_A)s_A.
+\]
+Conditioning on $H,U$ gives
+\[
+ \E[G\mid H,U]=g_h+\sum_a\pi_a(D_a-h_a)s_a=g_D(U).
+\]
+No prediction-accuracy assumption is needed for this mean identity. If a recorded positive-probability audit $I$ reveals the contrast with probability $p_a$, use $I(D_A-h_A)s_A/p_A$ instead. Conditional audit selection must obey its declared propensity law.
+\begin{keyidea}
+Future observations can teach credit after the action without leaking future information into inference. Route-dependent factual hidden state is not automatically a common exogenous observation. A valid issued reference and residual correction keep those distinctions explicit.
+\end{keyidea}
+\newpage
+\section{One reference learner carries shared adaptation}
+Suppose an addressed key write changes output logits while leaving a fixed deep carrier common to all routes. Let $w_j^a$ be the readout state before target $j$ in independently learning world $a$. Each target is scored before its own feedback update. Project route $a$ through the reference learner's trajectory:
+\[
+ h_B(a)=\frac1J\sum_j\big[C_j(a,w_j^b)-C_j(b,w_j^b)\big].
+\]
+The second term is the true reference loss. Exact cancellation yields
+\[
+ D_a-h_B(a)=\frac1J\sum_j\big[C_j(a,w_j^a)-C_j(a,w_j^b)\big].
+\]
+The reference has learned from dense supervised observations; credit now needs only the route-induced difference between learner trajectories. Its projected alternative is not the actual independently learning alternative. That discrepancy is repaired by the factual/reference contrast.
+
+\paragraph{Count actual work.} One carrier may serve many route projections in this factorization. Every actual learner still owns its weights and optimizer moments. If the predictor already executes reference world $b$ and factual world $A$ executes normally, both losses are known. Set $p=1$: discarding an audit cannot save a world already required by the predictor. Physically identical interventions may share one learner; distinct branches must not alias optimizer state.
+\section{Bound the remaining learner difference}
+Let $z_j^a$ include weights and optimizer moments. Locally suppose the update map has state sensitivity $\alpha_j$ and route discrepancy $\beta_j(a,b)$ at the reference state. Then
+\[
+ \delta_{j+1}\le\alpha_j\delta_j+\beta_j,
+ \quad\delta_0=0,\quad
+ \delta_j\le\sum_{k<j}\beta_k\prod_{k<\ell<j}\alpha_\ell.
+\]
+If target loss is $L_j$-Lipschitz in complete learner state,
+\[
+ |D_a-h_B(a)|\le\frac1J\sum_jL_j\sum_{k<j}\beta_k
+                                  \prod_{k<\ell<j}\alpha_\ell.
+\]
+This finite-episode bound separates route-induced update differences from optimizer amplification. Uniform $\alpha<1$ gives a geometric bound; $\alpha=1$ permits linear growth; $\alpha>1$ permits expansion. Adam is not assumed globally contractive.
+\begin{keyidea}
+A strong credit model can learn how interventions change learning, while forward/reference computation supplies the shared response. Cross-episode residual learning and general internal routes still require their own causal, information and cost tests.
+\end{keyidea}
+\newpage
+\section{Which noise remains?}
+The total covariance decomposes into
+\[
+ \Cov(G\mid H)=\E[\Cov(G\mid H,U)\mid H]
+                +\Cov(g_D(U)\mid H).
+\]
+Perfect realized credit removes action-sampling noise when $g_h$ is evaluated exactly, but not variation of the true gradient between futures. Lower raw variance does not by itself guarantee better clipped or Adam updates.
+\section{Sparse queries have their own variance}
+Instead of summing every model route, draw $Q$ independent candidates $C_q\sim\rho$ independently of $A$, conditional on $H,U$, with recorded positive support. Use
+\[
+ Z_C=\frac{\pi_C}{\rho_C}h_Cs_C,\qquad
+ G_Q=\frac1Q\sum_q Z_{C_q}+(D_A-h_A)s_A.
+\]
+Its mean is still $g_D$, but its conditional covariance is
+\[
+ \Cov(G_Q\mid H,U)=\frac{\Cov(Z_C\mid H,U)}Q
+                         +\Cov((D_A-h_A)s_A\mid H,U).
+\]
+With $h=D$, $\rho=\pi$ and $Q=1$, ordinary one-sample policy noise returns. Cheap model queries can buy variance reduction, but discovery, normalization and score transport must be paid. If measured work is $C_0+Qc$ and iid gradient variance is $V_0+V_1/Q$, the continuous optimum of their product is $Q^*=\sqrt{C_0V_1/(cV_0)}$. Online drift and correlations need additional analysis.
+\section*{Exercises}
+\begin{exercise}Why cannot an action-dependent reference be subtracted without changing the proof?\end{exercise}
+\begin{solution}Its loss can vary with sampled $a$, so the discarded sum $\sum_a\pi_a L_b s_a$ need not be zero. A reference issued independently of $A$ avoids this extra term.\end{solution}
+\begin{exercise}The predictor executes both learner worlds. Does reducing its audit probability to one quarter save reference work?\end{exercise}
+\begin{solution}No. The reference loss is already paid and available; thinning discards information. Save that world only by redesigning how its trajectory is obtained, then audit the new approximation.\end{solution}
+\begin{exercise}Suppose future noise forms $99\%$ of remaining variance. What can perfect residual prediction remove?\end{exercise}
+\begin{solution}At most the remaining $1\%$ in this decomposition, provided the model contraction stays exact. It cannot eliminate genuine future-gradient variation.\end{solution}
+\begin{inourmodels}
+The fixed-policy native diagnostic contracts the corrected mean against exact route-controller autograd. It reduces conditional action-gradient variance by99.92\% versus prefix credit, with future variation making98.79\% of remaining estimated total variance (12 TRAIN prefixes,16 futures). Carrier weights are fixed. The stochastic utility diagnostic is exploratory; fresh continuation confirmation is scored separately. See the forward-derived learner, reference-residual and sparse-model-term theory notes for full costs and scope.
+\end{inourmodels}
+\end{document}
