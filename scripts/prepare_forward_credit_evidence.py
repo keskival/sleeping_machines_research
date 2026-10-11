@@ -23,6 +23,22 @@ def main():
       status_text='Working proper-token hard-route/online lexical learner prototype; prospective credit accuracy and measured acquisition economy. Early512-target controller fits have no confirmed held-out utility improvement.',
       next_gate='Better held-out prediction per total learning cost, then larger data/model and online application confirmation.',
       potential='If the advantage scales: economical continual adaptation, more capable local machines, broader access to specialized learning, and a sparse asynchronous hardware path. Conditional platform opportunity, not measured industry impact or energy savings.')
+    block_path=ROOT/'experiments/results/credit/curie_block_transport_fresh_20261011_v1_measure.json'
+    if block_path.exists():
+        block=json.loads(block_path.read_text());assert block['status']=='completed'
+        for name,digest in block['source_sha256'].items():assert sha(ROOT/name)==digest,name
+        parents[str(block_path.relative_to(ROOT))]=sha(block_path)
+        means={arm:sum(row['mse'] for row in block['per_prefix'] if row['arm']==arm)/8 for arm in ['transport_block','transport_diagonal']}
+        metrics['credit_block_diagonal_reduction_pct']=100*(1-means['transport_block']/means['transport_diagonal'])
+        packet['block']=dict(mse=means,accuracy_gate=block['accuracy_gate'],comparison=block['comparisons']['block_over_transport_diagonal'],basis=block['block_basis_work'],scope=block['scope'])
+    update_path=ROOT/'experiments/results/credit/curie_online_geometric_update_20261011_v3_fit.json'
+    if not update_path.exists():update_path=ROOT/'experiments/results/credit/curie_online_geometric_update_20261011_v2_fit.json'
+    if update_path.exists():
+        update=json.loads(update_path.read_text());assert update['status']=='completed'
+        for name,digest in update['source_sha256'].items():assert sha(ROOT/name)==digest,name
+        parents[str(update_path.relative_to(ROOT))]=sha(update_path)
+        packet['online_update']=dict(tag=update['tag'],comparison=update['comparisons']['online_over_frozen'],utility_gate=update['utility_gate'],config=update['config'],rows=update['rows'],pretraining=update['pretraining'],whole_wall_s=update['whole_wall_s'],scope=update['scope'])
+        packet['status_text']='Working native temporal/keyed inference and lexical learning prototype; conditional credit accuracy/acquisition economy demonstrated. Actual online update-function learning is reported separately with its completed episode-level utility gate; no full-native task-learning win.'
     assert f['accuracy_gate'] and all(x>0 for x in f['comparisons']['transport_over_static_full']['per_prefix_gain'])
     (ROOT/'investment/forward_credit_evidence_20261011.json').write_text(json.dumps(packet,indent=2)+'\n')
     print(json.dumps(metrics))
