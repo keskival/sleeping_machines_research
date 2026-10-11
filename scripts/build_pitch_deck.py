@@ -134,7 +134,7 @@ def write_notes():
              '\nProposed raise: €3M. Bullish negotiating case: €50M priced pre-money; €100M stretch scenario.',
              '\nThe current valuation rationale is VALUATION_RATIONALE.md. The €50M proposal prices the platform ambition and execution case, not benchmark scores or a sum of application markets.',
              '\nAll financial outcomes, budgets and milestone timelines are assumptions. No customer interest has been reported. Repository is private by founder instruction on 3 October 2026. This deck is a private review artifact; distribution and any future publication require a considered disclosure decision.',
-            '\nNumerical benchmark/financial ledger: frozen 3 October 2026. The protocol notes separately scope the report\'s completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.',
+            '\nBenchmark/financial ledger: frozen 3 October 2026; current public wins are scoped on their slides. Forward-credit component evidence:11 October2026, source-bound in forward_credit_evidence_20261011.json. The protocol notes separately scope the report\'s completed 90M result. Opportunity and valuation rationale updated 4 October; no pending training scores enter the deck.',
             f"\nReading guide: slides 1–{content.get('main_slide_count', len(content['slides']))} form the investor pitch; the remaining slides are optional technical and financial diligence."]
     for i, slide in enumerate(content['slides'], 1):
         notes.extend([f"\n## {i}. {slide['title'].format_map(metrics)}", slide.get('subtitle', '').format_map(metrics),
@@ -144,7 +144,7 @@ def write_notes():
             notes.append(f"- [{source}: {s['label']}]({s['url']}) — {s['scope']}")
     notes.extend(['\n## Reproduce and inspect',
                   'The editable slide narrative is PITCH_DECK.json. The frozen parent hashes, exact derived metrics and assumptions are in pitch_deck_evidence_20261003.json. CSV exports use identical column units for every model. Run the preparation only when deliberately updating the evidence cut-off; use a fresh publication tag to render. This build imports no numerical model runtime.',
-                  '\nOpen diligence: company/jurisdiction, cap table and option pool; founder availability; contribution and IP chain of title (including credited co-author Karoliina Salminen); employer invention assignments; intended software/model licenses; budget quotes; three-seed modern controls; trained sparse-backend parity; measured system energy/traffic; design-partner willingness to pay. No contacts have been made by this work.'])
+                  '\nOpen diligence: company/jurisdiction, cap table and option pool; founder availability; contribution and IP chain of title (including credited co-author Karoliina Salminen); employer invention assignments; intended software/model licenses; budget quotes; fresh held-out prediction per total learning cost; trained sparse-backend parity; measured system energy/traffic; design-partner willingness to pay. No contacts have been made by this work.'])
     (INV / 'PITCH_DECK_NOTES.md').write_text('\n\n'.join(notes) + '\n')
 
 
@@ -156,6 +156,12 @@ def verify():
     data = json.loads(EVIDENCE.read_text())
     for name, digest in data['completed_evidence_sha256'].items():
         if sha(ROOT / name) != digest: raise ValueError('Changed frozen parent: ' + name)
+    packet_path=INV/'forward_credit_evidence_20261011.json'
+    if packet_path.exists():
+        packet=json.loads(packet_path.read_text());assert packet['status']=='completed'
+        for name,digest in packet['completed_evidence_sha256'].items():
+            if sha(ROOT/name)!=digest:raise ValueError('Changed forward-credit evidence: '+name)
+        data['metrics'].update(packet['metrics'])
     return data
 
 
@@ -513,7 +519,7 @@ def publish(tag):
     if stage.exists() or record.exists(): raise ValueError('Fresh tag required; old artifacts preserved')
     if available()<8192*1024: raise ValueError('Less than 8GiB available')
     verify()
-    inputs=[CONTENT,EVIDENCE,Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
+    inputs=[CONTENT,EVIDENCE,INV/'forward_credit_evidence_20261011.json',Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
             INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
             ROOT/'report/I_SCIENCE.md',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',

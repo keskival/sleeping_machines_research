@@ -4801,6 +4801,67 @@ Four fresh TRAIN prefixes, causal maximum native feature-gradient mean shift sel
 
 Four new TRAIN prefixes,64 context/48targets, exact independent lexical Adam worlds over all issued routes; one observed future each. First8 exact/no-tail contrast is divided by48, same units as full-horizon contrasts. All264worlds/12672updates paid,30.58s. Uniform issued-logit variance, not controller/native parameter variance or task utility. Source pretraining/contracts/smoke additional; no public DEV/TEST.
 
+## Appendix. Forward-taught optimizer transport
+
+One shared native forward response supplies feature geometry and supervised feedback for many candidate routes. The credit model transports their alternative lexical parameters and Adam moments instead of fitting every alternative independently. Full factual correction preserves the issued route-gradient expectation.
+
+### Prospective fresh-prefix accuracy
+
+| Credit predictor | Contrast MSE |
+| --- | --- |
+| static full | 1.172445150e-08 |
+| reference full | 7.407036505e-09 |
+| transport diagonal | 1.926933017e-10 |
+
+Fixed diagonal transport reduces error by 98.4% versus static credit and 97.4% versus reference-only credit. All eight fresh prefixes improve; registered paired-prefix bootstrap 95% improvement intervals are positive.
+
+Eight new FineWeb TRAIN-tail prefixes, 64 context / 48 future targets, 65 issued hard-write candidates. Source fixed native two-layer model, 50,257 GPT-2 token classes; 64-dimensional online lexical Adam learners. One observed future per prefix, disjoint smoke, rule frozen before new labels. Prospective component calibration, no public DEV/TEST or native-carrier quality claim.
+
+### A connected controller receives a better signal
+
+In a fixed 37,377-parameter route controller, transport reduces conditional action-gradient noise by 77.8% versus static credit. Expected parameter gradients match the exact route objective within 1.08e-19. Four earlier prefixes; this measures action noise, not variation across future sequences or optimization speed.
+
+The working prototype already carries selected keys, lexical parameters and optimizer state between route-learning windows. Early 512-target controller fits have no confirmed held-out task gain. The next decisive test is better held-out prediction per total learning cost.
+
+### Matched corrected-credit acquisition
+
+| Method | Whole seconds | Whole GFLOPs | MFLOPs / target |
+| --- | --- | --- | --- |
+| exact | 26.933 | 165.164 | 860.231 |
+| transport corrected | 12.893 | 10.775 | 56.119 |
+
+Transport plus exact factual correction runs 2.09x faster with 93.5% fewer supported operations than exhaustive independent alternative learning. Both include the same native context, candidate discovery and normalized outputs. Transport predicts the alternatives approximately; observed factual/reference losses are exact.
+
+Four earlier prefixes, 48 targets each, three rotated timing repeats. Median execution per prefix plus common acquisition; 192 scored targets per representative pipeline. All keys/vocabulary work, optimizer state, selected actual learner, copies and correction paid. Unsupported scalar/special/optimizer arithmetic omitted from supported FLOPs and included in wall. Repeated measurements, exact-oracle acquisition, source pretraining and contracts/smokes additional. Acquisition economy, not matched-quality task-learning speed or hardware energy.
+
+### Future learning changes the right route
+
+In the native 48-target probe, direct addressed-output effects vanish while learner-state effects persist. Three of four prefixes have later cumulative effects opposing the first eight targets; one offsets 30.1% of the initial loss increase. The best route changes between 8- and 48-target objectives in three of four all-route calibration prefixes.
+
+Credit must carry learning influence as well as physical message decay. Optimizer transport and a connected downstream critic provide complementary ways to represent that influence.
+
+### Conditional platform potential
+
+- Economical continual adaptation as language, processes and environments change.
+- Local industrial and embodied systems with constrained learning-state budgets.
+- Reusable credit across routes and modalities, with a sparse asynchronous hardware path.
+
+These are conditional application and economic implications. Customer adoption requires useful quality, reliability and measured complete deployment cost. Hardware energy, traffic and depth scaling require their own measurements.
+
+### Compression and depth: the next formal target
+
+Compress task-relevant influence on future learning/loss, with weights, moments, activations and precision charged. Low-dimensional state does not imply a few-bit or optimal representation. For the restricted head, independent alternatives cost O(WVd), shared reference plus transport O(Vd+Wd). Full-carrier learning has additional cross-layer work.
+
+Depth errors obey a local amplification-plus-residual recurrence. Connected credit geometry, joint downstream-loss training, long-range anchors and adaptive exact corrections can reduce amplification and local error. Legitimate signal gains must be retained; stability cannot be obtained by discarding useful credit.
+
+### Promotion gates
+
+- Better held-out prediction per total learning work on the token protocol.
+- Quality/work curves across data, depth, width and candidate capacity.
+- Reproducible online application evaluation, then measured target-hardware memory, latency, traffic and energy.
+
+Evidence and formulas: investment/forward_credit_evidence_20261011.json. Theory: OPTIMIZER_STATE_TRANSPORT_CREDIT, STATE_INFLUENCE_BOUNDARY_CRITIC and LEARNED_DEPTH_CREDIT_REPRESENTATIONS. No pending cell is presented as a result.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-11",
   "classification": "Private review draft; no external distribution by this work",
   "source_accessed_date": "2026-10-03",
   "sources": {
@@ -196,6 +196,12 @@
       "short": "P19 results",
       "url": "../experiments/B2_IRREGULAR_TS.md",
       "scope": "Raindrop P19 official splits; pre-registered protocol; validation selection; TEST once per split; published references from MTM (arXiv 2509.17809)."
+    },
+    "RLC": {
+      "label": "Completed forward-credit and optimizer-transport evidence (11 October2026)",
+      "short": "Forward credit",
+      "url": "forward_credit_evidence_20261011.json",
+      "scope": "Eight fresh TRAIN-prefix accuracy, four-prefix three-repeat corrected acquisition and fixed connected-controller conditional variance; component evidence, no task-learning-speed or hardware-energy claim."
     }
   },
   "slides": [
@@ -1215,6 +1221,62 @@
       "banner": "Implemented and trained today in ordinary software (CPU); no special hardware needed to run it."
     },
     {
+      "kind": "cards",
+      "section": "Learning advance",
+      "title": "Forward computation teaches more economical credit.",
+      "subtitle": "Real tokenized language: prospective credit accuracy and measured acquisition cost.",
+      "sources": [
+        "RLC"
+      ],
+      "cards": [
+        {
+          "label": "FRESH-DATA CREDIT",
+          "metric": "{credit_error_static_reduction_pct:.1f}% lower error",
+          "body": "Eight new language prefixes; all eight improve over static credit. Fixed two-layer source and an adaptive lexical learner."
+        },
+        {
+          "label": "MATCHED ACQUISITION",
+          "metric": "{credit_pipeline_speedup:.2f}× faster",
+          "body": "Versus exhaustive alternative learning. Context, route discovery, actual losses and factual correction included; {credit_supported_work_reduction_pct:.1f}% fewer supported operations."
+        },
+        {
+          "label": "CONNECTED CONTROLLER",
+          "metric": "{credit_controller_variance_reduction_pct:.1f}% less noise",
+          "body": "Conditional gradient noise versus static credit in a connected controller with 37,377 parameters. Full factual correction preserves the exact mean gradient."
+        }
+      ],
+      "banner": "Working online route-learning prototype. Next gate: better held-out prediction per total learning cost.",
+      "notes": "Accuracy: frozen diagonal optimizer-state transport,8 fresh TRAIN-tail prefixes/64context/48targets/65routes, source50257 GPT-2 vocabulary/native2layers,64dim lexical learner; MSE1.927e-10 vsstatic1.172e-8 andreference7.407e-9, paired95% improvements positive, all8prefixes improve. Acquisition: separate4prefixes/3rotated repeats,26.933s exact vs12.893s transported+factual;165.164 vs10.775 supportedGFLOPs, approximate predictor/exact actual correction. Controller: fixed37,377parameters/four originalprefixes,conditional action-noise variance2.463e-6 static vs5.470e-7 transport; mean error<=1.1e-19. Source pretraining/oracle labels/gates extra; all-key/vocabulary work retained. Early small route-controller fits have no confirmed held-out task utility gain. These are scoped component advances, not a language benchmark or matched-quality whole-fit scaling win."
+    },
+    {
+      "kind": "cards",
+      "section": "Platform potential",
+      "title": "If this scales, adaptation becomes a routine capability.",
+      "subtitle": "Conditional economic and industrial opportunity; the proof path is explicit.",
+      "sources": [
+        "RLC"
+      ],
+      "cards": [
+        {
+          "label": "ADAPT AS DATA CHANGES",
+          "metric": "Continual learning",
+          "body": "Useful models could adapt more often as processes, language and environments change. Prove quality and complete cost on an online workload."
+        },
+        {
+          "label": "LEARN LOCALLY",
+          "metric": "Machines + devices",
+          "body": "Smaller learning-state budgets could support industrial sensing, logistics and embodied systems. Measure memory, latency and energy on target hardware."
+        },
+        {
+          "label": "BUILD A BROADER PLATFORM",
+          "metric": "Software + hardware",
+          "body": "Reusable learned credit could serve many routes and modalities, with a sparse asynchronous execution path. Verify deeper-model scaling and cross-domain transfer."
+        }
+      ],
+      "banner": "Investment case: make useful adaptation economical, then turn demonstrated savings into a deployable runtime.",
+      "notes": "These are contingent implications, not customer demand, product readiness, revenue, energy savings or economy-wide forecasts. One shared forward response can teach many alternative optimizer trajectories; connected credit functions may generalize from learned representations and adapt to causal regime changes. Require equal/better held-out prediction per total learning work, larger-model/data replication, whole-system energy/traffic measurement and application evaluation. Retain the general-purpose ambition across language/reasoning, multimodal world models, embodiment, analytics, continual learning, communication, self-design and hardware."
+    },
+    {
       "kind": "table",
       "section": "Replicated and integrated platform evidence",
       "title": "One family wins across different kinds of data.",
@@ -1337,7 +1399,7 @@
       "section": "First product hypothesis",
       "title": "Start with low-batch language inference on existing hardware.",
       "subtitle": "Product hypothesis for local and on-premise text applications; no customer interest reported yet.",
-      "notes": "This is a product hypothesis chosen to make the research investable and testable, not a confirmed customer need. The present character-language fits do not establish a production-quality token model, application task performance or persistent cross-request serving. Low-batch inference is a proposed test venue for stateful sparse execution, not a measured region of advantage. Tune recurrent, modern Transformer/MoE and selective-state controls; include setup, memory, warmup, traffic, latency and energy. The ≥20% threshold is a proposed economic screen, not a forecast. No customer interest has been reported; demand interviews and evaluation partners remain future work.",
+      "notes": "This is a product hypothesis chosen to make the research investable and testable, not a confirmed customer need. The present character-language fits do not establish a production-quality token model, application task performance or persistent cross-request serving. Low-batch inference is a proposed test venue for stateful sparse execution, not a measured region of advantage. Use protocol-matched published references and saved checkpoints; spend new fitting on integrated native models; include setup, memory, warmup, traffic, latency and energy. The ≥20% threshold is a proposed economic screen, not a forecast. No customer interest has been reported; demand interviews and evaluation partners remain future work.",
       "sources": [
         "R3"
       ],
@@ -2198,7 +2260,8 @@
         "P3",
         "P4",
         "P5"
-      ]
+      ],
+      "notes": ""
     },
     {
       "kind": "cards",
@@ -2229,6 +2292,6 @@
       "banner": "Single runs on one dataset. The next proof is repeated runs plus a measured cost advantage."
     }
   ],
-  "editorial_revision": "Cross-domain headline evidence and typed-semantics composition theory, with measured and proposed mechanisms distinguished.",
-  "main_slide_count": 26
+  "editorial_revision": "11 October2026: prospective forward-credit status, component economy and conditional industry potential",
+  "main_slide_count": 28
 }

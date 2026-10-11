@@ -1,0 +1,118 @@
+{
+  "status": "completed",
+  "date": "2026-10-11",
+  "battle": "R1",
+  "completed_evidence_sha256": {
+    "experiments/results/credit/curie_optimizer_transport_fresh_20261011_v1_measure.json": "40694e9219961d896db3459bd2658c6ae1b0f26ed47cb5e7ba7789af074076df",
+    "experiments/results/credit/curie_transport_execution_20261011_v1_measure.json": "d39a404542f56b3b78713d0cd26e39e00dcc5d35c463aa8ca772609e40c186b7",
+    "experiments/results/credit/curie_token_controller_transport_variance_20261011_v1_measure.json": "142bb04986e4e216a35417fbf68405594d780c214f276dbd05bd3de6ff300b70",
+    "experiments/results/credit/curie_token_optimizer_transport_20261011_v1_measure.json": "246110cca856f051d0bd813c55780201b8a4b63068334a340c679de3b3e5ef73",
+    "experiments/results/credit/curie_token_credit_tail_20261011_v2_measure.json": "4beceb631eba51a7a266332b2097b938383b309ec6ac4d7958906c7c92494a36"
+  },
+  "metrics": {
+    "credit_error_static_reduction_pct": 98.35648344199768,
+    "credit_error_reference_reduction_pct": 97.39851016577265,
+    "credit_pipeline_speedup": 2.088933820454161,
+    "credit_supported_work_reduction_pct": 93.47630120827559,
+    "credit_controller_variance_reduction_pct": 77.7915150056034
+  },
+  "fresh": {
+    "prefixes": 8,
+    "targets_per_prefix": 48,
+    "context": 64,
+    "route_count": 65,
+    "mse": {
+      "zero": 4.7599580130493905e-07,
+      "first8_exact_no_tail": 2.387600960337062e-07,
+      "static_full": 1.1724451497396513e-08,
+      "reference_full": 7.407036504983816e-09,
+      "transport_diagonal": 1.926933016946621e-10
+    },
+    "gate": true,
+    "comparisons": {
+      "transport_over_static_full": {
+        "mse_gain": 1.153175819570185e-08,
+        "paired_prefix_bootstrap95": [
+          4.012573843173205e-09,
+          2.0365992321554604e-08
+        ],
+        "per_prefix_gain": [
+          5.974486108105336e-10,
+          1.5603805261255762e-09,
+          2.0366690590187898e-08,
+          4.857225081992493e-09,
+          1.8214143320878087e-09,
+          3.296154548451624e-08,
+          2.6313947722744355e-08,
+          3.775413217149903e-09
+        ]
+      },
+      "transport_over_reference_full": {
+        "mse_gain": 7.214343203289154e-09,
+        "paired_prefix_bootstrap95": [
+          1.4019109777860118e-09,
+          1.4153543486223337e-08
+        ],
+        "per_prefix_gain": [
+          3.622803569407119e-10,
+          2.6822889582376576e-10,
+          5.953555305838458e-09,
+          3.2263709086333223e-09,
+          1.983079357556776e-09,
+          1.9892162251078478e-08,
+          2.5994513254634594e-08,
+          3.455529580712857e-11
+        ]
+      }
+    },
+    "scope": "Prospective fixed-rule credit calibration on eight new TRAIN-tail prefixes; separate smoke. One observed future per prefix, source fixed two-layer model/50,257 GPT-2 token classes and64-dimensional lexical learner."
+  },
+  "execution": {
+    "prefixes": 4,
+    "repeats": 3,
+    "summaries": [
+      {
+        "arm": "exact",
+        "median_stage_wall_s": 19.2276464359893,
+        "median_stage_supported_flops": 160566681600.0,
+        "whole_pipeline_wall_s": 26.933229562986526,
+        "whole_pipeline_supported_flops": 165164300928.0
+      },
+      {
+        "arm": "transport_corrected",
+        "median_stage_wall_s": 5.187706885000807,
+        "median_stage_supported_flops": 6177202176.0,
+        "whole_pipeline_wall_s": 12.893290011998033,
+        "whole_pipeline_supported_flops": 10774821504.0
+      }
+    ],
+    "scope": "Same common carrier/candidate acquisition; exact all-route independent learners vs approximate transported credit plus exact factual/reference losses and full residual. Approximate predictor, exact conditional mean. Supported arithmetic omits unsupported operations included in wall."
+  },
+  "controller": {
+    "parameters": 37377,
+    "prefixes": 4,
+    "rows": [
+      {
+        "arm": "zero",
+        "mean_conditional_parameter_gradient_variance": 2.2728810873157038e-05
+      },
+      {
+        "arm": "static",
+        "mean_conditional_parameter_gradient_variance": 2.4629119893104117e-06
+      },
+      {
+        "arm": "reference",
+        "mean_conditional_parameter_gradient_variance": 3.1730670284568265e-06
+      },
+      {
+        "arm": "transport_diagonal",
+        "mean_conditional_parameter_gradient_variance": 5.469754395711974e-07
+      }
+    ],
+    "max_mean_error": 1.0842021724855044e-19,
+    "scope": "Fixed connected controller, exact conditional action-noise covariance trace; no future-distribution/native-carrier variance or optimization-speed result."
+  },
+  "status_text": "Working proper-token hard-route/online lexical learner prototype; prospective credit accuracy and measured acquisition economy. Early512-target controller fits have no confirmed held-out utility improvement.",
+  "next_gate": "Better held-out prediction per total learning cost, then larger data/model and online application confirmation.",
+  "potential": "If the advantage scales: economical continual adaptation, more capable local machines, broader access to specialized learning, and a sparse asynchronous hardware path. Conditional platform opportunity, not measured industry impact or energy savings."
+}

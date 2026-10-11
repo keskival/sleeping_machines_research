@@ -1,0 +1,134 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_token_controller_transport_variance_20261011_v1_measure",
+  "gate": true,
+  "rows": [
+    {
+      "arm": "zero",
+      "mean_conditional_parameter_gradient_variance": 2.2728810873157038e-05
+    },
+    {
+      "arm": "static",
+      "mean_conditional_parameter_gradient_variance": 2.4629119893104117e-06
+    },
+    {
+      "arm": "reference",
+      "mean_conditional_parameter_gradient_variance": 3.1730670284568265e-06
+    },
+    {
+      "arm": "transport_diagonal",
+      "mean_conditional_parameter_gradient_variance": 5.469754395711974e-07
+    }
+  ],
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "conditional_parameter_gradient_variance": 4.0745227819830956e-05,
+      "mean_gradient_error": 8.131516293641283e-20
+    },
+    {
+      "prefix": 0,
+      "arm": "static",
+      "conditional_parameter_gradient_variance": 7.235011390788816e-06,
+      "mean_gradient_error": 6.776263578034403e-20
+    },
+    {
+      "prefix": 0,
+      "arm": "reference",
+      "conditional_parameter_gradient_variance": 8.113120534139295e-06,
+      "mean_gradient_error": 8.131516293641283e-20
+    },
+    {
+      "prefix": 0,
+      "arm": "transport_diagonal",
+      "conditional_parameter_gradient_variance": 1.4262364136176677e-06,
+      "mean_gradient_error": 1.0842021724855044e-19
+    },
+    {
+      "prefix": 1,
+      "arm": "zero",
+      "conditional_parameter_gradient_variance": 7.114832966919933e-06,
+      "mean_gradient_error": 3.049318610115481e-20
+    },
+    {
+      "prefix": 1,
+      "arm": "static",
+      "conditional_parameter_gradient_variance": 8.58762813455319e-08,
+      "mean_gradient_error": 4.0657581468206416e-20
+    },
+    {
+      "prefix": 1,
+      "arm": "reference",
+      "conditional_parameter_gradient_variance": 1.0369652711396332e-08,
+      "mean_gradient_error": 5.421010862427522e-20
+    },
+    {
+      "prefix": 1,
+      "arm": "transport_diagonal",
+      "conditional_parameter_gradient_variance": 1.7369486051341284e-10,
+      "mean_gradient_error": 2.371692252312041e-20
+    },
+    {
+      "prefix": 2,
+      "arm": "zero",
+      "conditional_parameter_gradient_variance": 1.8520903181946772e-05,
+      "mean_gradient_error": 3.218725199566341e-20
+    },
+    {
+      "prefix": 2,
+      "arm": "static",
+      "conditional_parameter_gradient_variance": 1.4543461123726915e-06,
+      "mean_gradient_error": 2.371692252312041e-20
+    },
+    {
+      "prefix": 2,
+      "arm": "reference",
+      "conditional_parameter_gradient_variance": 3.8912232717541655e-06,
+      "mean_gradient_error": 3.049318610115481e-20
+    },
+    {
+      "prefix": 2,
+      "arm": "transport_diagonal",
+      "conditional_parameter_gradient_variance": 7.591502348298163e-07,
+      "mean_gradient_error": 1.8634724839594607e-20
+    },
+    {
+      "prefix": 3,
+      "arm": "zero",
+      "conditional_parameter_gradient_variance": 2.453427952393048e-05,
+      "mean_gradient_error": 6.098637220230962e-20
+    },
+    {
+      "prefix": 3,
+      "arm": "static",
+      "conditional_parameter_gradient_variance": 1.076414172734607e-06,
+      "mean_gradient_error": 6.776263578034403e-20
+    },
+    {
+      "prefix": 3,
+      "arm": "reference",
+      "conditional_parameter_gradient_variance": 6.775546552224492e-07,
+      "mean_gradient_error": 5.421010862427522e-20
+    },
+    {
+      "prefix": 3,
+      "arm": "transport_diagonal",
+      "conditional_parameter_gradient_variance": 2.3414149767921902e-09,
+      "mean_gradient_error": 5.421010862427522e-20
+    }
+  ],
+  "controller_parameters": 37377,
+  "source_controller_result": "curie_continuous_token_route_dev_20261011_v2_fit",
+  "source_labels_sha256": "3566eaf35e04d74fe5afdad18f67d086dfc12a97d1307e43ab8a88f2f2ad3563",
+  "source_transport_sha256": "2bea08b53732235f9d8b10375ccfdaa9d042ea489124613c25ceee80dad9c550",
+  "whole_wall_s": 1.6997944949980592,
+  "peak_rss_kb": 384160,
+  "source_sha256": {
+    "experiments/credit/measure_token_controller_transport_variance.py": "4e166a8bd600497dc3318a68f211d57be57f16b4b9bddbbb603d78850555c743",
+    "experiments/credit/token_issued_credit_geometry.py": "4b92f88cfe1280f9b9701f298b4b30136b4115107f9b8ab28899d5d833bfc1ea",
+    "experiments/credit/token_issued_route_features.py": "ac017ca4146b5452ae0ffa3c4c9b7349f424deee98189a89570172122be5c9a8"
+  },
+  "scope": "One fixed trained connected37,377parameter controller, actual native50257word prefixes, four paid48target all-route world cost arrays. Exact enumeration of issued0.9softmax+0.1uniform mean and conditional controller-parameter covariance trace, full factual residual. No actor update/future-distribution variance/native-carrier gradient or learning-utility claim; controller fitting/source acquisition/pretraining additional."
+}

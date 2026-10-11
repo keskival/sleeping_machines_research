@@ -5493,6 +5493,8 @@ def build(M):
     pages.extend(future_credit_pages())
     from report.online_episode_appendix import pages as online_episode_pages
     pages.extend(online_episode_pages())
+    from report.optimizer_transport_appendix import pages as optimizer_transport_pages
+    pages.extend(optimizer_transport_pages())
 
     from report.deep_credit_blocks_appendix import pages as deep_credit_blocks_pages
     pages.extend(deep_credit_blocks_pages())

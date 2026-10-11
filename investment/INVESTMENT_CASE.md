@@ -13,6 +13,34 @@ Current terms: **€3M raise at €50M priced pre-money**, with €100M as a sep
 stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
 and [application opportunity register](../report/model_family_opportunities.md).
 
+## Forward computation teaches credit — current status and potential
+
+Prospective real-token calibration reduces credit error **98.4% versus static
+credit and 97.4% versus reference-only credit**, improving all eight fresh
+TRAIN-tail prefixes. Shared forward-derived geometry tracks alternative
+parameter and Adam-moment trajectories. A separate matched four-prefix,
+three-repeat acquisition pipeline is **2.09x faster** than exhaustive alternative
+learning, with **93.5% fewer supported arithmetic operations**, including context,
+route discovery and exact factual/reference losses. In a fixed connected
+37,377-parameter controller, conditional action-gradient noise is **77.8% lower**
+than static credit, with exact mean-gradient parity.
+
+Scope: component evidence on a fixed two-layer pretrained native model,
+50,257 GPT-2 token classes,64-dimensional lexical learners and65 candidate
+routes. Accuracy uses eight new48-target prefixes; execution and controller
+noise use four earlier prefixes. Source pretraining, oracle acquisition and
+numerical gates are additional. Supported arithmetic omits unsupported work
+included in wall. Early small route-policy fits have no confirmed held-out
+prediction gain. [Completed evidence and formulas](forward_credit_evidence_20261011.json).
+
+The opportunity is to make continual adaptation economical: models that learn
+as data changes, capable local machines and industrial event systems, and
+reusable learned credit across the general-purpose substrate. The sparse
+asynchronous hardware path targets memory, communication and energy budgets.
+These are conditional platform implications, not measured customer demand or
+industry-wide savings. The next gate is **better held-out prediction per total
+learning cost**, followed by larger data/depth and online application confirmation.
+
 ## Wins and advances at a glance (9 October 2026)
 
 **Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent

@@ -39,13 +39,41 @@ This is an execution plan, not a prediction of investor acceptance.
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
 
+## Forward computation teaches credit — current status and potential
+
+Prospective real-token calibration reduces credit error **98.4% versus static
+credit and 97.4% versus reference-only credit**, improving all eight fresh
+TRAIN-tail prefixes. Shared forward-derived geometry tracks alternative
+parameter and Adam-moment trajectories. A separate matched four-prefix,
+three-repeat acquisition pipeline is **2.09x faster** than exhaustive alternative
+learning, with **93.5% fewer supported arithmetic operations**, including context,
+route discovery and exact factual/reference losses. In a fixed connected
+37,377-parameter controller, conditional action-gradient noise is **77.8% lower**
+than static credit, with exact mean-gradient parity.
+
+Scope: component evidence on a fixed two-layer pretrained native model,
+50,257 GPT-2 token classes,64-dimensional lexical learners and65 candidate
+routes. Accuracy uses eight new48-target prefixes; execution and controller
+noise use four earlier prefixes. Source pretraining, oracle acquisition and
+numerical gates are additional. Supported arithmetic omits unsupported work
+included in wall. Early small route-policy fits have no confirmed held-out
+prediction gain. [Completed evidence and formulas](forward_credit_evidence_20261011.json).
+
+The opportunity is to make continual adaptation economical: models that learn
+as data changes, capable local machines and industrial event systems, and
+reusable learned credit across the general-purpose substrate. The sparse
+asynchronous hardware path targets memory, communication and energy budgets.
+These are conditional platform implications, not measured customer demand or
+industry-wide savings. The next gate is **better held-out prediction per total
+learning cost**, followed by larger data/depth and online application confirmation.
+
 ## 1. What we have, and what would change the investment decision
 
 | Investor question | Present evidence | Next decision-changing artifact |
 | --- | --- | --- |
 | Does the distinctive mechanism learn? | Matched timing-only versus value-credit language result: 2.506386 → 2.371491 BPC, with about 0.30% more estimated fitting work; exploratory single seed | Independent seeds with the same data, update budget, evaluation and complete-work accounting; report every arm and uncertainty |
 | Can useful capacity exceed selected activity? | 16 → 32 available receivers, eight selected writes; 2.371491 → 2.345157 BPC, with 1.650× fitting work and more untied parameters | A quality–work frontier separating available state, key discovery, writes, deliveries and learning; compare matched budgets and tied/untied capacity explicitly |
-| Does it scale beyond the small fit? | Completed 90M-character fit: 1.857306 BPC on the restricted test[95M:96M] window, one seed; width and training data also change | Locked larger-data evaluation against tuned controls on the same full test protocol, followed by replication; no conversion of this restricted score into a public leaderboard claim |
+| Does it scale beyond the small fit? | Completed 90M-character fit: 1.857306 BPC on the restricted test[95M:96M] window, one seed; width and training data also change | Locked properly tokenized larger-data evaluation against matching published references/checkpoints, followed by replication; new fitting reserved for native models; no conversion of this restricted score into a public leaderboard claim |
 | Will sparse execution save system resources? | Reference numerical contracts and arithmetic estimates; trained FP32 sparse-backend parity remains open | Checkpoint-bound parity, then measured latency, throughput, residency, traffic and energy on a fixed serving workload |
 | Is the platform broader than language? | Defined family, causal contracts, earlier costed online adaptation, application hypotheses | One independently useful event workload first; later a bounded codec or bidirectional embodied-transfer proof, with dense/event incumbents |
 | Can this become a defensible company? | Relevant founder record and substantial research artifacts; sole founder Tero Keski-Valkama | Verified contribution/employer/license chain, founder availability, complementary team, budget quotes and reproducible evaluator package; retain Karoliina Salminen's research credit |

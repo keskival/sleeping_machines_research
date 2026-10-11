@@ -1,5 +1,14 @@
 # Private investment materials
 
+Sleeping Machines aims at a general-purpose substrate spanning language and reasoning,
+multimodal world models, embodiment, event-native analytics, continual learning,
+communication, self-design and hardware.
+
+The current deck includes11October forward-credit accuracy, corrected execution,
+connected-controller noise and conditional industry potential. The
+[source-bound packet](forward_credit_evidence_20261011.json) links every number
+to completed results. Prediction per total learning cost is the next gate.
+
 **Patent hold (7 October 2026):** the inventions behind the benchmark wins are unpublished and not yet filed. Share the
 evidence brief, papers and technical slides only under NDA until the priority filing exists; see [`ip/`](../ip/README.md).
 
@@ -33,28 +42,16 @@ part of IP diligence.
 - [Frozen evidence hashes, derived metrics, budget and financial assumptions](pitch_deck_evidence_20261003.json)
 - [Complete same-unit benchmark ledger](pitch_deck_benchmarks.csv)
 - [Valuation sensitivity calculations](pitch_deck_financial_sensitivity.csv)
-- [Detailed research status report](../report/sleeping_machines_status.pdf)
-- [Private diligence bundle: both PDFs, notes, family specification, diagrams, report and completed parents](sleeping_machines_private_diligence_20261004T175000Z.zip)
+- [Current reader-facing evidence report](../report/I_SCIENCE.pdf) and [complete experiment record](../report/III_RECORD.pdf)
 
-The 4 October revision leads with the whole model family and its landscape.
-Slides 3/4 explain its common temporal/state interface, relationships to existing
-families, heterogeneous regions and same-structure learning. The language
-fits then illustrate one branch. Slide 5 now diagrams the AGI opportunity:
-sensing/action and language/reasoning exchange experience through shared
-persistent state and learning. Bidirectional held-out transfer and retention
-are its proof requirements. PaLM-E and
-RT-2 are attributed joint-learning precedents. The proof plan prioritizes
-replication, trained sparse execution and delayed memory credit, with owner
-queue links and promotion gates. The report adds a visual family chapter with
-the three review axes at every level, compatibility and preservation rules,
-and complete illustrative member specifications. A further opportunity slide summarizes irregular ingestion, asynchronous
-codecs, memory meta-learning and embodied transfer. The report has a 13-page
-family chapter with a proposed codec diagram. Architecture/editorial
-coverage is updated; the deck's numerical benchmark/financial ledger remains frozen at
-3 October. The protocol appendix separately notes the report's completed
-90M result and its restricted single-seed scope; the old pending-status wording
-is corrected. Adaptive computation keeps scored queries/fallbacks and full work
-explicit. No pending result or hypothetical member is presented as evidence.
+The current presentation leads with the general-purpose model family and public
+benchmark evidence. Main slides13–14 present the completed forward-credit
+accuracy, corrected acquisition cost and connected-controller signal, followed
+by conditional industry and hardware potential. The deck has28 main slides;
+the rest are optional diligence. The scientific report includes the exact
+protocol scopes, full-work boundary, earlier controller outcomes and the next
+prediction/depth gates. Existing benchmark and financial inputs retain their
+stated frozen scopes; new learning numbers come from the11October packet.
 
 The current memo, one-page pitch and deck use the €3M/€50M proposal, with
 €100M as a stretch scenario. The prior $10M versions are preserved in the
@@ -97,8 +94,9 @@ For an editorial-only change, use `--notes` and a fresh rendering tag; skip
 `--prepare` so the research/financial ledger remains untouched. The family
 chapter can be refreshed independently with bounded vector rendering:
 `.venv-docker/bin/python report/family_report.py --tag UNIQUE_REPORT_TAG`.
-It preserves every other report page and archives the prior PDF. Future full
-report rebuilds include the same chapter and Markdown entry automatically.
+Regenerate the current report with `report/make_pdf.py`, then
+`report/split_report.py`, through the bounded queue runner. Earlier document
+versions live in git history; publication receipts stay under `.git`.
 
 ## Non-dilutive funding
 
