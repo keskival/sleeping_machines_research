@@ -1,0 +1,203 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_long_token_credit_20261011_v1_measure",
+  "mode": "measure",
+  "rows": [
+    {
+      "arm": "zero",
+      "mse": 4.871571894914193e-07,
+      "conditional_logit_variance": 4.7217353657463053e-07
+    },
+    {
+      "arm": "first8_exact_no_tail",
+      "mse": 1.9744812283504418e-07,
+      "conditional_logit_variance": 1.9137713749181915e-07
+    },
+    {
+      "arm": "static_full",
+      "mse": 4.9011628506585004e-08,
+      "conditional_logit_variance": 4.750371273422712e-08
+    },
+    {
+      "arm": "reference_full",
+      "mse": 6.241347554940989e-08,
+      "conditional_logit_variance": 6.049320408902336e-08
+    }
+  ],
+  "per_prefix": [
+    {
+      "prefix": 0,
+      "arm": "zero",
+      "mse": 8.132882346200186e-07,
+      "conditional_logit_variance": 7.882736298432394e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "first8_exact_no_tail",
+      "mse": 1.4842885295055382e-07,
+      "conditional_logit_variance": 1.438771791083722e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "static_full",
+      "mse": 1.376533151678423e-07,
+      "conditional_logit_variance": 1.3341833563492315e-07
+    },
+    {
+      "prefix": 0,
+      "arm": "reference_full",
+      "mse": 1.5873956654579033e-07,
+      "conditional_logit_variance": 1.5385583441588958e-07
+    },
+    {
+      "prefix": 1,
+      "arm": "zero",
+      "mse": 1.624592519112285e-07,
+      "conditional_logit_variance": 1.5746171149544653e-07
+    },
+    {
+      "prefix": 1,
+      "arm": "first8_exact_no_tail",
+      "mse": 1.369797463119552e-07,
+      "conditional_logit_variance": 1.3276577578419606e-07
+    },
+    {
+      "prefix": 1,
+      "arm": "static_full",
+      "mse": 2.0922470568248207e-09,
+      "conditional_logit_variance": 2.027877630507709e-09
+    },
+    {
+      "prefix": 1,
+      "arm": "reference_full",
+      "mse": 2.4852978482094517e-10,
+      "conditional_logit_variance": 2.408829445136834e-10
+    },
+    {
+      "prefix": 2,
+      "arm": "zero",
+      "mse": 4.349338086926684e-07,
+      "conditional_logit_variance": 4.215623341032671e-07
+    },
+    {
+      "prefix": 2,
+      "arm": "first8_exact_no_tail",
+      "mse": 2.4017844675617564e-07,
+      "conditional_logit_variance": 2.3278910699022466e-07
+    },
+    {
+      "prefix": 2,
+      "arm": "static_full",
+      "mse": 3.344889210874102e-08,
+      "conditional_logit_variance": 3.2419715003909626e-08
+    },
+    {
+      "prefix": 2,
+      "arm": "reference_full",
+      "mse": 7.617543492060372e-08,
+      "conditional_logit_variance": 7.383158360698583e-08
+    },
+    {
+      "prefix": 3,
+      "arm": "zero",
+      "mse": 5.379474627417617e-07,
+      "conditional_logit_variance": 5.213964708565692e-07
+    },
+    {
+      "prefix": 3,
+      "arm": "first8_exact_no_tail",
+      "mse": 2.642054453214921e-07,
+      "conditional_logit_variance": 2.560764880844838e-07
+    },
+    {
+      "prefix": 3,
+      "arm": "static_full",
+      "mse": 2.2852059692931867e-08,
+      "conditional_logit_variance": 2.2148922667567974e-08
+    },
+    {
+      "prefix": 3,
+      "arm": "reference_full",
+      "mse": 1.4490370946424546e-08,
+      "conditional_logit_variance": 1.404451538870432e-08
+    }
+  ],
+  "work": [
+    {
+      "prefix": 0,
+      "routes": 65,
+      "carrier_supported_flops": 1149325568,
+      "carrier_wall_s": 2.4847650279989466,
+      "teacher_supported_flops": 40141670400,
+      "teacher_wall_s": 5.010026218005805,
+      "reference_supported_flops": 617957376,
+      "reference_wall_s": 0.8151807570102392,
+      "first8_oracle_route": 11,
+      "full_oracle_route": 39,
+      "first8_choice_full_regret": 0.0005530576890198091,
+      "true_future_tail_rms": 0.0003852646531289288
+    },
+    {
+      "prefix": 1,
+      "routes": 65,
+      "carrier_supported_flops": 1149182976,
+      "carrier_wall_s": 1.7840048300131457,
+      "teacher_supported_flops": 40141670400,
+      "teacher_wall_s": 4.824180309995427,
+      "reference_supported_flops": 617957376,
+      "reference_wall_s": 0.8429666929878294,
+      "first8_oracle_route": 36,
+      "full_oracle_route": 36,
+      "first8_choice_full_regret": 0.0,
+      "true_future_tail_rms": 0.00037010774959726956
+    },
+    {
+      "prefix": 2,
+      "routes": 65,
+      "carrier_supported_flops": 1149552896,
+      "carrier_wall_s": 1.6821358849992976,
+      "teacher_supported_flops": 40141670400,
+      "teacher_wall_s": 4.811061632994097,
+      "reference_supported_flops": 617957376,
+      "reference_wall_s": 0.8171743639977649,
+      "first8_oracle_route": 52,
+      "full_oracle_route": 59,
+      "first8_choice_full_regret": 0.0031340463753792847,
+      "true_future_tail_rms": 0.0004900800411730472
+    },
+    {
+      "prefix": 3,
+      "routes": 65,
+      "carrier_supported_flops": 1149557888,
+      "carrier_wall_s": 1.6891991209995467,
+      "teacher_supported_flops": 40141670400,
+      "teacher_wall_s": 4.8174181200010935,
+      "reference_supported_flops": 617957376,
+      "reference_wall_s": 0.8393337919987971,
+      "first8_oracle_route": 22,
+      "full_oracle_route": 19,
+      "first8_choice_full_regret": 0.0014692679563070854,
+      "true_future_tail_rms": 0.0005140091879738066
+    }
+  ],
+  "context": 64,
+  "targets_per_prefix": 48,
+  "train_offset": 4325376,
+  "actual_worlds": 264,
+  "readout_updates": 12672,
+  "whole_wall_s": 30.579899824995664,
+  "peak_rss_kb": 536076,
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "checkpoint": "experiments/results/credit/curie_long_token_credit_20261011_v1_measure.pt",
+  "checkpoint_sha256": "3566eaf35e04d74fe5afdad18f67d086dfc12a97d1307e43ab8a88f2f2ad3563",
+  "source_sha256": {
+    "experiments/credit/measure_long_token_credit.py": "5fc735b9f7189df9844c6dbfa05cd51b2a6fafabcb9f5cf6df9db0827a55c7e1",
+    "experiments/credit/token_issued_route_pool.py": "b195c43b0ace8df779858def148fa20bb33173b43e4a59901e36bf847ebf23da",
+    "experiments/credit/token_persistent_credit.py": "44bcd358cd3e99e91ebe52591b19e9c3da51984d627ec95d5a7afc060f520714",
+    "experiments/credit/token_exact_world_readouts.py": "a5bc376df5c915c4bcc7245c46aab6a58fff540e851e7ba10c729942b1a1d9d8",
+    "experiments/credit/token_forward_credit_vectorized.py": "5116efba40cad9d1c2ed0ec25a91a320dc2880458712fdd95afe312731e10e23",
+    "experiments/credit/token_flop_accounting.py": "2b49fd554bdcf594359074672f808f7fa80cb28d5ab011ed5d2bc92acfe25734"
+  },
+  "scope": "Four fresh properly tokenized TRAIN prefixes/48futuretargets/64context in measurement. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+}
