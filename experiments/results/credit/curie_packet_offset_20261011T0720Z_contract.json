@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "tag": "curie_packet_offset_20261011T0720Z_contract",
+  "battle": "B1/R1",
+  "metrics": {
+    "batch_step_replication_order_error": 1.1102230246251565e-16,
+    "issued_estimator_error": 0.0,
+    "sample_repetitions": [
+      1,
+      2,
+      8
+    ],
+    "arrival_orders": 6,
+    "invalid_rejections": 3,
+    "unchanged_batch_no_pending": true
+  },
+  "whole_wall_s": 0.001699829997960478,
+  "peak_rss_kb": 19164,
+  "source_sha256": {
+    "experiments/credit/check_packet_normalized_offset.py": "568e87e6d8a10b929d98b318fab3b15eeb8721e0de5080795c95be62f5d3d619",
+    "experiments/credit/packet_normalized_offset.py": "4d8e06d09d68eb0b722bf466eb6610d25dc275e640bc06ad17ca023c18ecc3a8",
+    "experiments/credit/policy_difference_audit.py": "add273376e365e625ce176b07cd14f5bd96fbed91958de07f68b7d668dd2768e"
+  },
+  "scope": "Exact additive scalar SGD at issued coordinates, normalized to one causal packet. Complete batches, frozen prediction/target versions; partial/missing feedback and interleaved stale-gradient stability require separate accounting. Finite algebra contracts only, no variance/utility or native online deployment claim."
+}

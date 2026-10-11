@@ -45,3 +45,28 @@ Since calibration-induced excess audit variance is L^2 e_t^2, bounded L<=2 gives
 The main task proposal and shared-prefix response remain fixed in this stage; four readout Adam updates occur within each synthetic continuation. Causal calibration then learns across episode prefixes from sampled earlier feedback. First fresh stream472 gives31.5% lower full route-plus-continuation audit variance than zero prediction (0.000491 versus0.000717), while fixed TRAIN calibration does not improve. This is one frozen-actor history. Two fresh independent histories473/474 are admitted with unchanged eta1/8 and TRAIN initialization, with a predeclared10%-reduction gate. No real nonstationary-market, deep actor co-adaptation or whole-fit scaling claim.
 
 Addressed native replay scores only specified worlds and agrees with selected72-world outputs/Adam updates within7.3e−16. The72-versus3 kernel work ratio is24, with different output coverage; it is not a24x full learning speed claim. Operational sampled comparisons need two worlds (chosen action and common no-op); this research stage pays three to measure variance. Native eight-receiver policy discovery remains charged.
+
+
+## Confirmation and packet clock correction
+
+Confirmation gate fails. Causal/zero variance ratios are0.685/0.888/1.066 for histories472/473/474; the new474 history worsens6.6%. Fixed TRAIN ratios1.021/0.776/0.845. Retain zero prediction for single-route auditing. Scalar tracking algebra remains valid, but the existing eta1/8 update acts eight times per issued prefix. For identical residuals its effective prefix rate is1−(1−eta)^8≈0.656 rather than0.125. This is a learning-clock choice, not extra information. Packet-normalized asynchronous updates carry mass eta/n and issued coordinate c_issue, giving additive increments eta/n*(R_j−c_issue). Once a complete packet arrives, the sum equals one SGD step eta*(mean R−c_issue), independently of replica count and arrival order. Interleaved/stale gradients and missing feedback require separate stability/inclusion handling. The component and finite replication/order/version contract are implemented; no variance gain is inferred from that contract.
+
+## A stronger observation design: paired alternatives need no no-op world
+
+For two deterministic route alternatives, let Y_old and Y_new be their future-loss effects relative to the same no-op future. Then
+
+    D=Y_old−Y_new=Loss_old−Loss_new.
+
+The no-op branch cancels, including its own readout learning trajectory, because each branch owns independent optimizer state. Two addressed alternative worlds therefore suffice. They use exactly the same branch count as one sampled alternative plus no-op. Preserve the same continuation random draw and independent branch-local Adam; task proposal/baseline/native carrier remain unchanged. This changes the credit observation design, not the actor architecture or the learning target.
+
+Write mu_old,mu_new for effect means, S=Var(Y_old)+Var(Y_new), C=Cov(Y_old,Y_new). The paired estimator has variance S−2C. The uniform single-route residual estimator, with prediction sum h=qhat_old+qhat_new, returns2Y_old−h or h−2Y_new and has variance
+
+    V_single=2S+(mu_old+mu_new−h)^2.
+
+Cauchy–Schwarz gives C>=−S/2, hence V_pair<=2S<=V_single for every h, under this common joint future law. This includes future noise and arbitrary prediction calibration. Equal two-world count is not automatically equal wall time; verify full replay work and label parity. Paired finite-data variance is a descriptive measurement; this inequality is an algebraic conditional guarantee. No stationarity assumption is used. Fixed actor/proposal here; selecting the pair after seeing these same futures would invalidate the comparison's causal interpretation.
+
+For general policy differences d, m=sum d_positive=L/2, sample a positive and negative route under a coupling with marginals d_positive/m and d_negative/m. Then m*(Y_positive−Y_negative) is unbiased for sum d q. Coupling chooses which counterfactuals share a future; its creation/route discovery cost remains paid. For identical policies m0, no comparison audit is required. Losing/unchosen routes remain represented by supported interventions; this is not a dense scan made free.
+
+A learned contrast critic still matters when paired audits are sparse. With prediction ghat and an independent Bernoulli audit I of probability p>0, return ghat+I/p*(D−ghat). Conditional variance is Var(D)/p+(1/p−1)*(E[D]−ghat)^2. At p1 the critic cancels from this exact comparison; at p<1 better contrast prediction can reduce expensive audit frequency. Thus paired forward evidence should train the connected contrast critic, which can then price/allocate its next audits. This connects the useful decision function to economical residual correction without training irrelevant cost common mode. Sparse-audit depth/whole-model integration is the next stage, not demonstrated by pair replay alone.
+
+Admission: contract two-world score/Adam/cost-difference parity against three-world no-op reference and finite variance dominance; fresh stream475,32 prefixes×8 continuations with unchanged models/proposals. Generate three worlds for the diagnostic comparison only; operational paired comparison uses the two alternatives. Report all three-world diagnostic work and actual two-world kernel measurement, no projected total-fit win. Earlier histories are development analysis; new475 is a prospectively declared execution/variance measurement, not an official benchmark.
