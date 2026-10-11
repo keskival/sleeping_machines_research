@@ -1,0 +1,114 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "tag": "curie_route_decision_20261011T0320Z_diagnosis",
+  "metrics": {
+    "train": {
+      "prefixes": 32,
+      "receivers": 6,
+      "rows": [
+        {
+          "arm": "baseline",
+          "mean_oracle_regret": 0.008076147893378016,
+          "gain_over_baseline": 0.0,
+          "changed_prefixes": 0
+        },
+        {
+          "arm": "learned_effect",
+          "mean_oracle_regret": 0.00785492136546427,
+          "gain_over_baseline": 0.00022122652791374542,
+          "changed_prefixes": 3
+        },
+        {
+          "arm": "oracle_effect",
+          "mean_oracle_regret": 0.00789094855615359,
+          "gain_over_baseline": 0.00018519933722442594,
+          "changed_prefixes": 4
+        },
+        {
+          "arm": "oracle_static_repair",
+          "mean_oracle_regret": 5.472002928598278e-05,
+          "gain_over_baseline": 0.008021427864092033,
+          "changed_prefixes": 18
+        },
+        {
+          "arm": "oracle_total",
+          "mean_oracle_regret": 0.0,
+          "gain_over_baseline": 0.008076147893378016,
+          "changed_prefixes": 17
+        }
+      ],
+      "baseline_margin_quantiles": [
+        0.00014472781972581054,
+        0.0010124678545745933,
+        0.002623936222724218,
+        0.004094256435095835,
+        0.028181678891975974
+      ],
+      "effect_rms": 0.0006838212184231394,
+      "static_baseline_error_rms": 0.004683930500375613,
+      "decision_pair_error_mean": -0.010225959162329585,
+      "learning_effect_relative_mse": 0.3267759129063336
+    },
+    "fresh_examined_development": {
+      "prefixes": 32,
+      "receivers": 8,
+      "rows": [
+        {
+          "arm": "baseline",
+          "mean_oracle_regret": 0.004494220999377989,
+          "gain_over_baseline": 0.0,
+          "changed_prefixes": 0
+        },
+        {
+          "arm": "learned_effect",
+          "mean_oracle_regret": 0.004817986763575354,
+          "gain_over_baseline": -0.0003237657641973644,
+          "changed_prefixes": 2
+        },
+        {
+          "arm": "oracle_effect",
+          "mean_oracle_regret": 0.006386255887027752,
+          "gain_over_baseline": -0.0018920348876497626,
+          "changed_prefixes": 8
+        },
+        {
+          "arm": "oracle_static_repair",
+          "mean_oracle_regret": 2.9285255302586785e-05,
+          "gain_over_baseline": 0.004464935744075403,
+          "changed_prefixes": 16
+        },
+        {
+          "arm": "oracle_total",
+          "mean_oracle_regret": 0.0,
+          "gain_over_baseline": 0.004494220999377989,
+          "changed_prefixes": 18
+        }
+      ],
+      "baseline_margin_quantiles": [
+        3.161004164099236e-05,
+        0.00034533892598630515,
+        0.001942174271860408,
+        0.005246129709220738,
+        0.018791186863811038
+      ],
+      "effect_rms": 0.0005560176442971245,
+      "static_baseline_error_rms": 0.003718516175234375,
+      "decision_pair_error_mean": -0.0074962134033100675,
+      "learning_effect_relative_mse": 0.7414370630853225
+    }
+  },
+  "whole_wall_s": 0.8312531480041798,
+  "peak_rss_kb": 315428,
+  "supported_flops": 4759552,
+  "source_sha256": {
+    "experiments/credit/diagnose_route_decisions.py": "e593d6bcb78944b2d101d89753aee5ca1c379124188d4c4679471649e918892c",
+    "experiments/credit/cached_learning_effect.py": "987b3985c5e05945d687757f4067358549b487be7ba734bdcd3209a95f8b07cd"
+  },
+  "packet_checkpoint_sha256": [
+    "f66aa54327143b904460ff7c81fad33f30952928f20c6a5a4045bc1ccce1457c",
+    "ca28852b3e3664d0b76777e86682f3319ee2ff501bd297e73f5f1ddb08aaa2ab",
+    "a87957ac2ec20461498e47aa69286ca936cfb9fdd2021554106f992681b62ca2"
+  ],
+  "scope": "Saved packets only; no fit or new teacher. Oracle effect/static/total use future labels and are diagnostic ceilings, not deployable policies. Fresh packets now examined for development; future confirmation must use a new namespace. One synthetic actor seed170, readout-only causal Adam."
+}
