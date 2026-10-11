@@ -1,0 +1,19 @@
+{
+  "battle": "B1/R1",
+  "decision": "Does TRAIN/earlier-feedback centering reduce complete route-and-future audit variance while preserving decisions and mean?",
+  "host": "curie",
+  "precision": "float64",
+  "threads": 1,
+  "cpu_only": true,
+  "cgroup_limit_bytes": 10737418240,
+  "min_available_mb": 9216,
+  "rss_cap_kb": 1500000,
+  "timeout_s": 600,
+  "smoke_scope": "Two prefixes have unchanged proposals; discovery/no-op path checked. Native feedback/list-world/Adam/delayed-estimator path separately checked by finite contract.",
+  "source_sha256": {
+    "experiments/credit/measure_causal_audit_offset.py": "897a5fa0db08b89d87ff3c6128ad5acc031ec03c8c54a328a98c760cf858c02c",
+    "experiments/credit/causal_audit_offset.py": "2447689abe5080df84a187211aee6df56e9a58c928d15044161551acdac4c12b",
+    "experiments/credit/paired_native_replay.py": "42b7491a769e6b159fadaccb0a1ecbf76317c6d479b71aaf7d3aefb64e543baa"
+  },
+  "command": "MEM_CAP_KB=8000000 MEM_CAP_RSS_KB=1500000 MIN_AVAIL_MB=9216 CGROUP_RESERVE_MB=2048 JOB_TIMEOUT_S=600 WAIT=1 bash experiments/queue/run_safe.sh experiments/queue/enabler/curie_causal_offset_20261011T0630Z/measure.txt"
+}
