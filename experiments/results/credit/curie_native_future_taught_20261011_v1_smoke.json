@@ -1,0 +1,390 @@
+{
+  "status": "completed",
+  "battle": "B1",
+  "tag": "curie_native_future_taught_20261011_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "rows": [
+    {
+      "depth": 4,
+      "arms": {
+        "online": {
+          "wall_s": 0.15545476498664357,
+          "scored_targets": 128,
+          "mean_nll": 1.9945760097451397,
+          "meta_updates": 2,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 2.1372816924531084,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0004863973340294336,
+              "wall_s": 0.012108062015613541
+            },
+            {
+              "block": 1,
+              "nll": 2.4981186849013866,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0005730064374147563,
+              "wall_s": 0.012200029013911262
+            },
+            {
+              "block": 2,
+              "nll": 2.0714936093510965,
+              "targets": 16,
+              "teacher": true,
+              "deep_parameter_change": 0.0009302497451556913,
+              "wall_s": 0.040268298995215446
+            },
+            {
+              "block": 3,
+              "nll": 2.441946101122358,
+              "targets": 16,
+              "teacher": true,
+              "deep_parameter_change": 0.0009135057992855339,
+              "wall_s": 0.04037652598344721
+            },
+            {
+              "block": 4,
+              "nll": 1.5382666551430744,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00030577984943426127,
+              "wall_s": 0.014171740011079237
+            },
+            {
+              "block": 5,
+              "nll": 1.6441034099472025,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0011777318420518853,
+              "wall_s": 0.011938570998609066
+            },
+            {
+              "block": 6,
+              "nll": 2.170718697250138,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0007585848667641208,
+              "wall_s": 0.01193747200886719
+            },
+            {
+              "block": 7,
+              "nll": 1.4546792277927536,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0003717067445837409,
+              "wall_s": 0.012293514999328181
+            }
+          ],
+          "acquisition": {
+            "wall_s": 0.08863682899391279,
+            "scored_targets": 64,
+            "mean_nll": 2.0636324981208376,
+            "meta_updates": 1,
+            "deep_updates": 2,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 2.171083271653333,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.01398117799544707
+              },
+              {
+                "block": 1,
+                "nll": 1.6354113698648591,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.01232782198349014
+              },
+              {
+                "block": 2,
+                "nll": 2.9330327905588574,
+                "targets": 16,
+                "teacher": true,
+                "deep_parameter_change": 0.0006110522093862478,
+                "wall_s": 0.04809260499314405
+              },
+              {
+                "block": 3,
+                "nll": 1.5150025604063007,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0004710546654421722,
+                "wall_s": 0.014038958994206041
+              }
+            ]
+          },
+          "whole_learning_wall_s": 0.24409159398055635,
+          "native_parameters": 3056,
+          "credit_parameters": 144704
+        },
+        "frozen": {
+          "wall_s": 0.09698097399086691,
+          "scored_targets": 128,
+          "mean_nll": 1.9950492293868374,
+          "meta_updates": 0,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 2.1372816924531084,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0004863973340294336,
+              "wall_s": 0.011371324013452977
+            },
+            {
+              "block": 1,
+              "nll": 2.4981186849013866,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0005730064374147563,
+              "wall_s": 0.011835630983114243
+            },
+            {
+              "block": 2,
+              "nll": 2.0714936093510965,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0005291504304062663,
+              "wall_s": 0.012448742985725403
+            },
+            {
+              "block": 3,
+              "nll": 2.4419696221335365,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00046330061960684797,
+              "wall_s": 0.011487610987387598
+            },
+            {
+              "block": 4,
+              "nll": 1.5392668641063951,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00015572554122105447,
+              "wall_s": 0.0124540840042755
+            },
+            {
+              "block": 5,
+              "nll": 1.6445518718571086,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0005831123426101493,
+              "wall_s": 0.012350468983640894
+            },
+            {
+              "block": 6,
+              "nll": 2.1722147522647144,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00038701166058600396,
+              "wall_s": 0.011644759011687711
+            },
+            {
+              "block": 7,
+              "nll": 1.4554967380273514,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0001849081651754019,
+              "wall_s": 0.01333774600061588
+            }
+          ],
+          "acquisition": {
+            "wall_s": 0.08863682899391279,
+            "scored_targets": 64,
+            "mean_nll": 2.0636324981208376,
+            "meta_updates": 1,
+            "deep_updates": 2,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 2.171083271653333,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.01398117799544707
+              },
+              {
+                "block": 1,
+                "nll": 1.6354113698648591,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.01232782198349014
+              },
+              {
+                "block": 2,
+                "nll": 2.9330327905588574,
+                "targets": 16,
+                "teacher": true,
+                "deep_parameter_change": 0.0006110522093862478,
+                "wall_s": 0.04809260499314405
+              },
+              {
+                "block": 3,
+                "nll": 1.5150025604063007,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0004710546654421722,
+                "wall_s": 0.014038958994206041
+              }
+            ]
+          },
+          "whole_learning_wall_s": 0.1856178029847797,
+          "native_parameters": 3056,
+          "credit_parameters": 144704
+        },
+        "bp": {
+          "wall_s": 0.24063287500757724,
+          "scored_targets": 128,
+          "mean_nll": 1.9986597709782918,
+          "meta_updates": 0,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 2.140308166604911,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.001969953052356007,
+              "wall_s": 0.030869360984070227
+            },
+            {
+              "block": 1,
+              "nll": 2.4979329510426482,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0022409848829456156,
+              "wall_s": 0.029806335020111874
+            },
+            {
+              "block": 2,
+              "nll": 2.070620302744441,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0024772909232660656,
+              "wall_s": 0.02924365201033652
+            },
+            {
+              "block": 3,
+              "nll": 2.4333819505883776,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0037724826660359354,
+              "wall_s": 0.029454546980559826
+            },
+            {
+              "block": 4,
+              "nll": 1.5539368052325417,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0025195810135024738,
+              "wall_s": 0.030351323017384857
+            },
+            {
+              "block": 5,
+              "nll": 1.6372685978380783,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.004066727339504275,
+              "wall_s": 0.029647245013620704
+            },
+            {
+              "block": 6,
+              "nll": 2.1493786900143403,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00353310081609028,
+              "wall_s": 0.030774683982599527
+            },
+            {
+              "block": 7,
+              "nll": 1.506450703760997,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.002963808987948806,
+              "wall_s": 0.030444531003013253
+            }
+          ],
+          "acquisition": {
+            "wall_s": 0.12342397798784077,
+            "scored_targets": 64,
+            "mean_nll": 2.0679766713005368,
+            "meta_updates": 0,
+            "deep_updates": 4,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 2.171083271653333,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.004474840930397988,
+                "wall_s": 0.030567161011276767
+              },
+              {
+                "block": 1,
+                "nll": 1.6501063325171001,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0032006442853639238,
+                "wall_s": 0.03004648900241591
+              },
+              {
+                "block": 2,
+                "nll": 2.9357384799412296,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0017727901182202196,
+                "wall_s": 0.03058411699021235
+              },
+              {
+                "block": 3,
+                "nll": 1.5149786010904847,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.001889085922385801,
+                "wall_s": 0.03219861799152568
+              }
+            ]
+          },
+          "whole_learning_wall_s": 0.364056852995418,
+          "native_parameters": 3056,
+          "credit_parameters": 0
+        }
+      },
+      "online_gain_vs_frozen": 0.00047321964169766417,
+      "online_gain_vs_bp": 0.004083761233152128
+    }
+  ],
+  "config": {
+    "seed": 99910,
+    "offset": 256,
+    "acquisition_blocks": 4,
+    "scored_blocks": 8,
+    "targets_per_block": 16,
+    "history_per_block": 16,
+    "teacher_probability": 0.25,
+    "actor_sgd_lr": 0.001,
+    "credit_adam_lr": 0.001,
+    "gradient_cap": 5
+  },
+  "wall_s": 1.6616002630034927,
+  "peak_rss_kb": 335104,
+  "source_sha256": {
+    "experiments/credit/run_native_future_taught_learning.py": "99bba07ccac266d81619b16808a8e21cf9bf7700f002f53c66605be6750105db",
+    "experiments/credit/NATIVE_FUTURE_TAUGHT_LEARNING_PROTOCOL.md": "316e44db5206b3839d155aa99c88d473002f3bddba3c14e7ca0c61068b729fcb",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "checkpoint": "experiments/results/credit/curie_native_future_taught_20261011_v1_smoke.pt",
+  "checkpoint_sha256": "a28a015fa48a7f36bfd56a2c53dc14c2355b28ce9a5d2b20c917d411752addb4",
+  "scope": "First-pass native deep-parameter learning intervention, actual temporal likelihood and all model parameters adaptive, connected credit proposes all core gradients; next-block future likelihood teaches finite updates at audited p=.25. Exact local head gradients; native BP same actor/update frequency, common learned acquisition charged online/frozen. Private TRAIN sequences only, not chronological markets or official test. Dense internal temporal writes and deterministic mark addressing remain: no optional-route/counterfactual learning, full sparse substrate or supremacy claim. CPU wall includes acquisition, forward, local backward, teacher and optimizer; supported FLOPs not measured in this first diagnostic. Same scored data but acquisition updates differ across BP/learned arms."
+}
