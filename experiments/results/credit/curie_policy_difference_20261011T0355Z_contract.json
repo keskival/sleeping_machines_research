@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "tag": "curie_policy_difference_20261011T0355Z_contract",
+  "battle": "B1/R1",
+  "metrics": {
+    "exhaustive_mean_error": 5.551115123125783e-17,
+    "exhaustive_variance_error": 3.0184188481996443e-16,
+    "common_offset_error": 5.773159728050814e-15,
+    "invalid_rejections": 4,
+    "changed_support": 2,
+    "sparse_union": 3,
+    "unchanged_requires_no_prediction": true,
+    "noop_comparison_requires_no_audit": true,
+    "gain_error_bound_slack": 0.11999999999999988
+  },
+  "whole_wall_s": 0.00012756999058183283,
+  "peak_rss_kb": 19556,
+  "source_sha256": {
+    "experiments/credit/policy_difference_audit.py": "add273376e365e625ce176b07cd14f5bd96fbed91958de07f68b7d668dd2768e",
+    "experiments/credit/check_policy_difference_audit.py": "919bb68205a9ea2c5a211b096333185f20f0f2ef939fd9535a1206c52e6ef2c2"
+  },
+  "scope": "Finite exhaustive algebra, sparse map implementation; unbiasedness requires frozen issued policies and conditionally unbiased future cost observations. No fitted critic/actor, measured hardware scaling or utility win. Candidate discovery and issued predictions remain additional paid work."
+}

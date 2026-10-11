@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "tag": "curie_native_policy_audit_20261011T0405Z_contract",
+  "battle": "B1/R1",
+  "metrics": {
+    "native_exhaustive_mean_error": 3.469446951953614e-18,
+    "prefixes": 32,
+    "changed_prefixes": 12,
+    "max_audit_support": 2,
+    "task_over_mse_gain": 0.0025624587745388143,
+    "task_over_mse_bootstrap95": [
+      -0.0001472343160729742,
+      0.005466712564300767
+    ],
+    "mean_residual_action_sampling_variance": 0.000809993085409825,
+    "mean_zero_predictor_action_sampling_variance": 0.0002314082773049524,
+    "prediction_supported_flops": 2719744
+  },
+  "whole_wall_s": 0.8606967619998613,
+  "peak_rss_kb": 311008,
+  "source_sha256": {
+    "experiments/credit/check_native_policy_audit.py": "50dd78891d55eb5f24528ba1ca60a268f4b2f8ab7b06425ce4417b2f4094ffd6",
+    "experiments/credit/policy_difference_audit.py": "add273376e365e625ce176b07cd14f5bd96fbed91958de07f68b7d668dd2768e",
+    "experiments/credit/cached_learning_effect.py": "987b3985c5e05945d687757f4067358549b487be7ba734bdcd3209a95f8b07cd",
+    "experiments/credit/task_valued_route_credit.py": "26def3aae34e41d20cedf4edab0cc1d1b41f1b181a54e2ade33d01a10ef9609a"
+  },
+  "checkpoint_sha256": [
+    "b353cdf57d774aab11dd9bb9cf8caec63d5ca37cf1a59a23bca4ce82a49d41f8",
+    "050da7ff113e39262335c813aa6324edd02a8b1c56db002396b77f4a2a049cdb"
+  ],
+  "scope": "Already-paid fresh native synthetic response tables now examined for development. Exhaustive route-sampling witness conditional on empirical eight-continuation means, not future-innovation variance or live sampled-audit performance. Policy/prediction discovery, teacher and prior fitting remain charged. Diagnostic task-versus-MSE comparison, not the locked primary policy, replicated utility or whole-fit efficiency."
+}
