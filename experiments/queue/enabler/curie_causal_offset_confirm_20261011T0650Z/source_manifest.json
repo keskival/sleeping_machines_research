@@ -1,0 +1,15 @@
+{
+  "battle": "B1/R1",
+  "host": "curie",
+  "threads": 1,
+  "cpu_only": true,
+  "mem_available_mb": 12272,
+  "min_available_mb": 9216,
+  "rss_cap_kb": 1500000,
+  "timeout_s": 600,
+  "command": "tmux new-session -d -s curie-offset-confirm bash experiments/queue/enabler/curie_causal_offset_confirm_20261011T0650Z/continue.sh",
+  "source_sha256": {
+    "experiments/credit/measure_causal_audit_offset.py": "4687fdf3ac407c65fcd3832ccd337ec9c4d6001ccb9ffbbfd094ca89f97b870c",
+    "experiments/credit/summarize_causal_offset_confirmation.py": "7d55196468034841de953bccb8275273c67c32895a365f862d5898e9b19dd117"
+  }
+}
