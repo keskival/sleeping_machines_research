@@ -4738,6 +4738,17 @@ Eight chronological TRAIN windows,256 preceding tokens/eight scored targets each
 
 Independent native forecast/gradient/Adam/final-state parity passes at the actual vocabulary and small depth2/4/8, including EOS and extreme logits. Causal carried factual keys/readout/optimizer subsequently match a complete native episode across three credit windows. Learned-feature geometry and future-loss preconditioner teaching identities pass finite contracts; they are not an implemented learned-optimizer result.
 
+### Continuous carried token execution
+
+| Backend | NLL/target | Whole s | Supported GFLOPs | Worlds | Updates |
+| --- | --- | --- | --- | --- | --- |
+| legacy | 7.071429 | 15.98 | 5.815 | 32 | 256 |
+| vectorized | 7.071429 | 6.90 | 5.815 | 32 | 256 |
+
+Same initial256-token context and128 subsequent targets; hard writes, active keys, factual fast state and Adam survive credit windows, with observed EOS reset. Vectorized transport gives2.32x whole current-pipeline speed; prediction parity0.00e+00. Native all-parameter gradient contracts also pass within5.5e-20.
+
+One real TRAIN execution observation; includes carrier/full normalized vocabulary, all active-key scores, reference projections, actual readout updates and snapshot/state copying. No actor fit or learned-credit quality/whole-model/depth/hardware efficiency claim. Custom dense-mv counts included; unsupported arithmetic stays in wall. Zero-fast-state projections are charged equally and are not current-state static controls. Source pretraining/calibration/verification additional.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
@@ -4883,6 +4894,8 @@ One-core conditional mark readout passes the unchanged gain>=1 and retention>=80
 TRAIN soft targets reuse the confirmed native pair. Linear ridge and linear KL pilots retained only60.1/60.3% and failed. A fixed64-wide Tanh residual on144 frozen native features fits50 passes,665,350 cached target presentations and1,300 updates; seed0 selected, seeds1/2 fixed before DEV scoring. Student32,938 versus pair50,826 parameters. One Github split1,34 DEV sequences/2,094 targets, CPU float64 full conditional-density interface. Teacher quality remains higher; this is a scoped quality/work tradeoff.
 
 Teacher-free serialized bundles reproduce all three scores exactly, normalization error <=4.45e-16, first-target suffix-mark error0, original time density unchanged. Each bundle290,035 bytes contains one native core and readout metadata; no teacher or TRAIN loaded for restoration. Prerequisite fits97–117 minutes per seed are charged, plus~2.53s teacher preparation,~1.18s linear fitting and~1.43s residual fitting. No TEST, deployment, full-fit efficiency or integrated sparse-learning claim. Leading joint-model DEV total and frozen benchmark verdicts stay current.
+
+Reports verify mandatory completed JSON/source evidence on every host and available raw binary hashes; checkpoint/bundle digests remain recorded when binaries reside only on the experiment host.
 
 Evidence: aws_single_readout_decision_20261011, aws_single_readout_serving_20261011_v1, aws_nonlinear_mark_readout_20261011_s0/s1/s2. Next: sequence-level residual diagnosis before broader-domain development.
 
