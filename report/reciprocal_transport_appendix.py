@@ -30,7 +30,7 @@ def packet_blocks():
 
 
 def crossover_blocks():
-    tags=['aws_packet_teaching_crossover_20261011_v1','aws_connected_teaching_crossover_20261011_v1','aws_connected_teaching_zero_query_20261011_v1','aws_connected_deep_teaching_20261011_v1','aws_connected_deep_teaching_scale_20261011_v1']
+    tags=['aws_packet_teaching_crossover_20261011_v1','aws_connected_teaching_crossover_20261011_v1','aws_connected_teaching_zero_query_20261011_v1','aws_connected_deep_teaching_20261011_v1','aws_connected_deep_teaching_scale_20261011_v1','aws_connected_teaching_size_scale_20261011_v2']
     if not all((ROOT/'experiments/results/credit'/f'{t}.json').exists() for t in tags):return []
     records=[]
     for tag in tags:
@@ -43,6 +43,7 @@ def crossover_blocks():
     return [('p','Teaching-only actor execution now keeps the native producer graph connected while capturing the forward packet. This removes manual producer reconnection; all parameter gradients and Adam moments match the native reference exactly in the connected sweep.'),
             ('table',(['Shape','Queries','Detached packet speed','Connected packet speed'],rows,[29,20,49,50])),
             ('p','Composed native packets at depths2/4/8/16/32: '+', '.join(f"depth{x['depth']},queries{x['teaching_directions']}: {x['whole_step_speedup']:.2f}x" for x in records[3]['rows']+records[4]['rows'])+'. All parameter gradients and Adam moments match exactly; full composed tangent responses are checked against native forward autodiff. B4/L32/d32/n16, complete actor-update and teaching-label boundary, not learned-credit or task-quality scaling.'),
+            ('p','Larger d64/n32/B4/L32 models: '+', '.join(f"depth{x['depth']},{x['parameters']:,} parameters,{x['teaching_directions']} queries: {x['whole_step_speedup']:.2f}x" for x in records[5]['rows'])+'. Recorded gradient/Adam/parameter differences0; maximum teaching response error9.77e-15. Whole diagnostic31.60s, peak RSS617.4MiB. Initial64-event fixture failed before fitting because Taxi TRAIN ends at38 events; corrected v2 holds length32. This measures model width/memory/depth scaling of label production, not sequence-length scaling.'),
             ('p','Complete actor/update plus1–32 teaching directions, five warmed CPU timings, real Taxi TRAIN and one dense-write layer. Captured packet, retained graph and symmetric response copies are charged; connected timing additionally charges symmetric gradient copies. No critic fitting, task-quality or whole-fit learning-efficiency endpoint. Zero-query capture runs5–7% slower than native, while1/16-query confirmations run2.40–3.89x faster. Enable capture for teaching work, keep native execution for ordinary updates. Evidence: '+', '.join(tags)+'.')]
 
 def pages():

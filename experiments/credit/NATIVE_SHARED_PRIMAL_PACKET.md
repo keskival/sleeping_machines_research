@@ -49,3 +49,5 @@ Completed aws_connected_deep_teaching_20261011_v1: composing packets through dep
 Completed aws_connected_deep_teaching_scale_20261011_v1: depth16/32 one-query5.15/4.98x and16-query4.81/4.64x speed; all gradient/Adam parity checks pass. Whole diagnostic33.28s, peak RSS498.5MiB. Speed stays positive through32 layers; this is the complete actor-plus-teaching-label boundary, excluding critic learning and task quality. Next queued size-scale measurement doubles d/modes/sequence length to64/32/64 at depths8/32, rather than inferring larger-model behavior from depth alone.
 
 Size-scale v1 stopped at the input-length assertion before fitting; Taxi TRAIN cannot supply four64-event prefixes. Failure log/source retained. Corrected v2 holds sequence length32 and doubles only d/modes64/32 at depth8/32. No sequence-length scaling claim follows.
+
+Larger-model v2 completed: depths8/32,224,016/879,120 parameters; one-query4.64/4.48x and16-query3.82/3.75x complete-step speed. Recorded gradient/Adam/parameter differences0, maximum probe error9.77e-15,31.60s/617.4MiB. Positive teaching-label work gap survives doubled dimensions/modes; no whole-fit learning or quality claim.

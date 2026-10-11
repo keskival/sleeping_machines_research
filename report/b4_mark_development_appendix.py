@@ -43,6 +43,26 @@ def single_readout_blocks():
             ('p','Teacher-free serialized bundles reproduce all three scores exactly, normalization error <=4.45e-16, first-target suffix-mark error0, original time density unchanged. Each bundle290,035 bytes contains one native core and readout metadata; no teacher or TRAIN loaded for restoration. Prerequisite fits97–117 minutes per seed are charged, plus~2.53s teacher preparation,~1.18s linear fitting and~1.43s residual fitting. No TEST, deployment, full-fit efficiency or integrated sparse-learning claim. Leading joint-model DEV total and frozen benchmark verdicts stay current.'),
             ('p','Evidence: '+', '.join(tags)+', aws_nonlinear_mark_readout_20261011_s0/s1/s2. Next: sequence-level residual diagnosis before broader-domain development.')]
 
+def observation_anchor_blocks():
+    tag='aws_observation_readout_decision_20261011'
+    if not (ROOT/'experiments/results/tpp_b4'/f'{tag}.json').exists():return []
+    decision=bound(tag)
+    for path,digest in decision['input_sha256'].items():
+        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+    for seed in range(3):bound(f'aws_observation_anchored_readout_20261011_s{seed}')
+    rows=[[str(r['seed']),f"{r['student']['L_M']:.3f}",f"{r['gain_over_prior_student']:.3f}",f"{r['baseline_gain']:.3f}",f"{100*r['teacher_retention']:.1f}%"] for r in decision['rows']]
+    blocks=[('p',f"Observation-anchored one-core readout {'passes' if decision['gate'] else 'fails'} its preregistered gate: mean DEV improvement over the previous compact student {decision['mean_gain_over_prior_student']:.3f} nats per sequence, sample SD {decision['sample_sd']:.3f}. All three seeds improve. TRAIN target90% teacher probability plus10% actual observed-mark one-hot; coefficient fixed before new DEV scores, no DEV selection or early stopping."),
+            ('table',(['Seed','Anchored marks','Gain over student','Baseline gain','Teacher-gain ratio'],rows,[16,35,36,29,32])),
+            ('p','Same one-core32,938-parameter readout,144 frozen features/64-wide residual/50 passes. Observed target marks enter TRAIN loss only; normalized serving probabilities use causal history and candidate time. Two seeds exceed teacher DEV mark quality. Fitting2.60–2.62s after2.58–2.61s teacher preparation per seed, plus original97–117-minute core fits and prior readout development. One Github split1 DEV; no TEST, independent-dataset, future-intervention or sparse-learning claim. Leading selected joint-model seed0 DEV total is unchanged.'),
+            ('p','Registered adoption gate: mean gain>=0.1 over saved student, each seed gain>=-0.25 and original baseline gain>=1/teacher-retention>=80% gates all pass. Evidence: '+tag+'.')]
+    serving_path=ROOT/'experiments/results/tpp_b4/aws_observation_readout_serving_20261011.json'
+    if serving_path.exists():
+        serving=bound('aws_observation_readout_serving_20261011')
+        for path,digest in serving['input_sha256'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest
+        for r in serving['rows']:assert hashlib.sha256((ROOT/r['bundle']).read_bytes()).hexdigest()==r['bundle_sha256']
+        blocks.append(('p','Anchored teacher-free bundle restoration passes all three seeds: score/time parity0, normalized mark probabilities<=4.45e-16 error and first-target suffix-mark error0. Bundle source/checkpoint hashes are verified; no teacher/TRAIN loaded to restore.'))
+    return blocks
+
 def pages():
     path=ROOT/'experiments/results/tpp_b4/aws_b4_marks_diagnosis_20261011T0303Z.json'
     if not path.exists():return []
@@ -74,4 +94,4 @@ def pages():
         ('p',f"Frozen-core residual fitting completes {frozen['epochs']} passes, with zero skips and unchanged timing, but fails its development gate: selected mark gain {frozen['selected']['mark_gain']:.3f}; last-20 mean {frozen['mean_last20_mark_gain']:.3f}. Residual fitting {frozen['residual_fit_s']:.2f}s; cumulative fitting including the repaired warm start {frozen['cumulative_fit_s']:.2f}s."),
         ('p','Checkpoint swaps show that the joint branch transfers poorly to the repaired core. Preserving its original mark-input embedding/gap weights changes transferred DEV mark loss only 71.615 to 71.592, versus repaired baseline 67.237. The input-representation hypothesis is not supported by this diagnostic. Late residual training improves TRAIN loss while worsening DEV loss.'),
         ('p',f"A TRAIN-only scalar confidence fit combines the two complete native conditional-mark predictors with coefficient {confidence['alpha_train_locked']:.6f}, retaining the repaired timing density. DEV mark loss {confidence['dev']['L_M']:.3f} versus baseline {confidence['baseline_dev']['L_M']:.3f}, gain {confidence['dev_mark_gain']:.3f}; total loss {confidence['dev']['total']:.3f}. One coefficient is used for every candidate mark; there is no target-dependent inference selection."),
-        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks()]
+        ('p',f"Scalar fitting {confidence['scalar_fit_s']*1000:.2f}ms after {confidence['predictor_forward_s']:.3f}s of predictor evaluation. Both native models remain necessary: {confidence['parameters']:,} parameters and {confidence['prerequisite_fitting_s']:.2f}s of prerequisite fits are charged. This is a saved-predictor calibration diagnostic, not an integrated sparse-substrate or efficiency win. Neither failed mark-fit gate is relaxed. The completed confirmation and single-readout results follow.")] + confirmation_blocks() + single_readout_blocks() + observation_anchor_blocks()]
