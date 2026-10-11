@@ -5499,6 +5499,9 @@ def build(M):
 
     from report.reciprocal_transport_appendix import pages as reciprocal_transport_pages
     pages.extend(reciprocal_transport_pages())
+
+    from report.b4_mark_development_appendix import pages as b4_mark_development_pages
+    pages.extend(b4_mark_development_pages())
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')

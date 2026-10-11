@@ -91,6 +91,8 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   events) is skipped in most epochs; the model trained mainly on the shorter sequences. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). **LastFM lost:** −774.64 ± 48.38 SE vs −849.65, below every single published model's total (−697.5, LNM++) and ahead on time (−1380.05 vs −1363.78); marks carry the gap (605.41 vs 514.13). These are
   frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
 
+**B4 development:** Github split 1, seed 0 numerical repair completes 75 TRAIN passes with zero skips and improves selected DEV total loss by 2.607 nats per sequence. Added per-event mark memory improves selected marks by 1.820 and total by 2.193, but fails its registered stability gate: common-window mark gain 0.687 versus required 1.000. Frozen-checkpoint read ablation shows 13.822 mark nats per sequence of direct benefit on 28 of 34 DEV sequences, with timing unchanged. The next fit freezes the repaired core and learns only a residual mark branch. These are development results; frozen TEST verdicts are unchanged.
+
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
 characters, P12 mortality AUROC, real-world tables, FAS v2 (sealed-test tie: native 0.70366 vs time-encoded Transformer 0.70432 AUROC, three seeds; mean AUROC difference −0.00066; native ahead of the best classical detector's 0.68223).
 

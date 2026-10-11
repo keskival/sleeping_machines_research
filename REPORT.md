@@ -4585,3 +4585,25 @@ Accounting: projection gate forward teaching 0.655s; both actor/reference arms a
 Scope: one four-event Taxi TRAIN prefix, one temporal layer. Cut credit trains embedding/gap producers; layer/head derivatives remain exact local operations. Every cut direction is refreshed in the actor-parity gate. This is a reciprocal-update contract, not a DEV-quality, sparse-learning, efficiency or benchmark win. Next: context-conditioned transport, cheaper probes and task-valued acquisition under moving weights.
 
 Evidence: aws_reciprocal_tracking_20261010T2157Z, aws_reciprocal_cut_contract_20261010T2200Z, aws_reciprocal_projection_20261010T2204Z. Sources, data hashes, timings and all gate inputs are retained in completed JSON records.
+
+## Appendix. B4 repaired learning and mark-memory development
+
+The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.
+
+| Model | Time loss | Mark loss | Total loss |
+| --- | --- | --- | --- |
+| Repaired baseline | -181.381 | 67.237 | -114.144 |
+| Plus mark memory | -181.754 | 65.417 | -116.337 |
+
+The mark-memory variant improves selected mark loss by 1.820 and total loss by 2.193. Its registered stability gate fails: the last 20 common epochs improve marks by 0.687, below the required 1.000; total gain is 1.061. No adoption or family-loss verdict follows.
+
+At the selected mark checkpoint, disabling only its mark read raises mark loss from 65.417 to 79.239. The direct read helps 28 of 34 sequences and gains 13.822 nats per sequence, with timing unchanged. The residual cross-fit difference includes shared learning and RNG changes; it is not a separately identified causal effect.
+
+| Arm | Passes | Scored TRAIN targets | Fit minutes | ms / target |
+| --- | --- | --- | --- | --- |
+| mark_memory | 64 | 851,648 | 61.58 | 4.339 |
+| repaired_baseline | 75 | 998,025 | 55.76 | 3.352 |
+
+Parameters: 21,768 baseline, 29,057 mark variant. Both score every clock; the auxiliary temporal memory updates densely. Whole fitting FLOPs are unmeasured. Saved DEV likelihood-forward latency is 73.03 versus 86.41 microseconds per target; no matched-compute or energy claim.
+
+Scope: one Github split1 seed0 TRAIN/DEV development comparison, original core recipe and validation patience. Frozen B4 TEST verdicts remain unchanged. Next diagnostic fit freezes the repaired core and trains only a fresh residual mark memory, charging baseline pretraining and requiring unchanged timing plus sustained mark/total gain.

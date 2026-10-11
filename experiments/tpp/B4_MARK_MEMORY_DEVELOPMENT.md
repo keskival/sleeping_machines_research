@@ -3,8 +3,8 @@
 The frozen seven-dataset B4 record is complete and unchanged. Mark prediction
 causes the total-loss gap on Github and LastFM despite strong timing scores.
 The guarded Github fit also skipped a padded batch containing most TRAIN
-events. The log-domain repair recovers those gradients; its full development
-fit is running. This comparison isolates the next mark-path change against
+events. The log-domain repair completes75 passes with zero skipped updates and
+improves selected DEV loss by2.607 nats/sequence versus the guarded record. This comparison isolates the next mark-path change against
 that repaired model, rather than attributing numerical recovery to mark memory.
 
 ## Design and retained mechanisms
@@ -74,3 +74,26 @@ The repaired full-backward diagnostic measured2.95GB; the extra mark layer
 motivates the larger cap. At admission the host had over26GiB available, with
 the repaired fit and Amazon confirmation in the other slots. No active sources
 or prior queues were replaced. All result/checkpoint names are unique.
+
+## Current completed result and diagnostic next step
+
+The joint-memory fit completes64 passes with zero skips; its selected mark/total
+loss is65.417/-116.337 versus67.237/-114.144 for the repaired baseline. The
+registered gate fails: last20 common-epoch mark gain0.687 is below1.000; total
+gain1.061 passes. The gate is not relaxed and this variant is not adopted.
+
+Frozen selected-checkpoint mark-read ablation finds direct mark gain13.822
+nats/sequence, helps28/34 DEV sequences, and changes timing by0. The disabled
+branch checkpoint has mark loss79.239 versus67.237 in the independently fitted
+repaired baseline. That cross-fit difference includes joint-learning effects
+and changed RNG; it is not an identified causal interference effect.
+
+This supports testing a fresh residual branch on the repaired checkpoint with
+all existing parameters bitwise frozen. Core dropout stays in evaluation mode;
+only mark layers/read train with the existing0.003 AdamW recipe. Time loss is
+asserted unchanged after every pass; core parameters/buffers are checked exactly.
+Admitted aws_b4_frozen_marks_20261011T0307Z:100-pass cap,30-pass total-DEV patience,
+4GB RSS/8GB VMS,10,800s queue timeout,7,200s between-pass budget,one-thread AWS
+slot1. Gate: selected and last20 mean mark/total gain>=1nat/sequence,zero skips,
+unchanged timing/core. Warm-start3345.70s and all residual work are charged.
+No TEST or automatic next fit. Labels/models remain first-stage development.
