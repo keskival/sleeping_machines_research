@@ -1,0 +1,13 @@
+# Fixed confirmation of native memory credit
+
+Registered 12 October before confirmation scoring. B5/R1 development, not a public benchmark.
+
+The selected unchanged v1 native credit arm scores0.613521 versus exact0.617196, same25%-audit zero0.622797 and reset-memory0.616164 on actorseed194/four selection graphs2000–2003. It wins each selection graph against exact/zero; three against reset. Fitting159.354s versus134.972/137.251/159.571s. Its contrast estimator has high error despite useful actor learning; no estimate-quality or efficiency claim.
+
+Confirm with actorseeds195/196 unchanged, same eightTRAIN graphs1000–1007/two neural passes and512target confidence acquisition. Use previously unscored native development graphs2004–2007 for all confirmation models. Their persistence scores already existed but did not select this native rule; no new hidden labels are available. Evaluate saved seed194 exact/credit/zero/reset checkpoints on these same fresh graphs without parameter fitting. The numerical actor/credit/relationship state starts fresh for each evaluation episode and receives only causal public events/feedback. DEV uses fixed parameters; training memory and credited actor changes determine generalization. This stage does not yet evaluate target-domain weight adaptation.
+
+Four matched arms per fresh seed: exact sampled nonwinner teaching, learned native memory credit with25% audits,25%-audit zero estimator, and learned native credit with numerical memory reset at each request. Same initial actor/credit parameters and source/teaching noise schedule. Actor and credit clipping remain separate. No hyperparameter, dataset, model size, early stop or source changes after reading results. Both declared seeds complete regardless of the first outcome.
+
+Gate: learned credit has lower mean four-graph NLL than all three controls on both fresh seeds; cohort mean paired quality gains over exact/zero/reset are positive, including saved seed194 on fresh graphs. Report each seed and graph and full acquisition-inclusive fitting cost. This gate confirms a private learned-credit quality advantage only. Efficiency requires appropriate quality/work evidence; no low-audit or selected-state count can substitute for whole fitting time. If the gate fails, diagnose the relevant mechanism; do not repeat a seed or narrow the scored graphs.
+
+Separate baseline-relative-teacher contract remains a numerical development check; no centered quality variant is used here. Broader nonlinear factor/depth/interleaving transfer follows useful confirmation, preserving the native architecture and charging acquisition.

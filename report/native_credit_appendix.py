@@ -35,4 +35,23 @@ def pages():
  if r is not None:
   reference=read('curie_causal_race_credit_20261012_v1_fit');learned=next(x for x in reference['rows'] if x['arm']=='credit');rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"] for x in r['rows']];rows.append(['Native learned credit',f"{learned['mean_dev_nll']:.6f}",f"{learned['whole_fit_wall_s']:.3f}"])
   result.append([('h2','Matched audit rate and native credit-memory attribution'),('table',(['Learner','DEV NLL','Full fitting seconds'],rows,[77,45,45])),('small',r['scope']),('p','; '.join(f"Native learned credit versus {name}: quality gain {x['learned_quality_gain']:+.6f}, time ratio {x['learned_time_ratio']:.3f}x" for name,x in r['comparisons'].items())+'. These controls determine the interpretation of the preceding first quality gain.')])
+ confirmed=[]
+ for seed in [194,195,196]:
+  r=read(f'curie_causal_race_credit_confirm_20261012_v1_s{seed}')
+  if r is not None:confirmed.append(r)
+ if confirmed:
+  rows=[]
+  for r in confirmed:
+   for x in r['rows']:rows.append([str(r['seed']),x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"])
+  verdict='Fixed cohort still running; completed cells only.'
+  decision=read('curie_causal_race_credit_confirm_20261012_v1_decision')
+  if decision is not None:verdict='Confirmation gate '+('passes' if decision['confirmation_gate'] else 'fails')+'; mean quality gains '+', '.join(f"{k} {v:+.6f}" for k,v in decision['mean_quality_gains'].items())+'. Exact comparison wins two of three; learning/memory controls improve in all three.'
+  result.append([('h2','Fixed native-credit confirmation on new causal graphs'),('table',(['Actor seed','Learner','Fresh DEV NLL','Full fitting seconds'],rows,[23,54,42,48])),('p',verdict),('small','Same unchanged architecture/data/learning rule; new graphs2004–2007, fixedactors194/195/196. Seed194 reuses saved training;195/196 fit unchanged source recipe. Four private graphs256targets per actor/learner; no target-domain weight adaptation. Full fitting includes512-target confidence acquisition and1024neural presentations; no public benchmark or efficiency claim.')])
+ r=read('curie_causal_centered_credit_20261012_v3_pilot')
+ if r is not None:
+  rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"] for x in r['rows']]
+  original=read('curie_causal_race_credit_20261012_v1_fit');control=read('curie_causal_race_credit_20261012_v1_controls')
+  for label,parent in [('exact',original),('credit',original),('zero25',control)]:
+   x=next(x for x in parent['rows'] if x['arm']==label);rows.append([label+' (saved)',f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"])
+  result.append([('h2','Native credit teacher: common-outcome control variate'),('table',(['Learner','Selection DEV NLL','Full fitting seconds'],rows,[77,45,45])),('small',r['scope']),('p','Both route targets subtract the same issued baseline BCE, preserving their actual contrast. For binary outcome probabilityp, conditional target variance becomes p(1-p)*(z-z0)^2. The predictor remains native temporal/race memory with a linear readout. This is a diagnosed teacher repair, not a replacement dense controller; fresh-graph confirmation scores are separate.')])
  return result

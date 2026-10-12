@@ -37,6 +37,12 @@ def main():
     losing=[x['arm'] for x in c['rows'] if learned['mean_dev_nll']>=x['mean_dev_nll']]
     text+='Learned credit trails '+', '.join(losing)+'; the gain over exact teaching is not an attributed learning advantage. ' if losing else 'Learned memory credit improves both attribution controls in this development run. '
    else:text+='Audit-rate and credit-memory attribution controls are running; no attributed learning claim. '
+   decision=ROOT/'experiments/results/causal_induction/curie_causal_race_credit_confirm_20261012_v1_decision.json'
+   if decision.exists():
+    d=json.loads(decision.read_text());assert d['status']=='completed';text+='Unchanged three-actor/four-new-graph cohort: learned credit beats zero-estimate and reset-memory controls on all three actors, mean gains '+f"{d['mean_quality_gains']['zero25']:.6f}/{d['mean_quality_gains']['reset_memory']:.6f}. "+f"Against exact teaching, mean gain {d['mean_quality_gains']['exact']:.6f}, two of three actors better. "+('Registered transfer gate passes. ' if d['confirmation_gate'] else 'Strict transfer gate fails; larger nonlinear transfer is deferred. ')
+   centered=ROOT/'experiments/results/causal_induction/curie_causal_centered_credit_20261012_v3_pilot.json'
+   if centered.exists():
+    c=json.loads(centered.read_text());assert c['status']=='completed';text+='Native baseline-relative teacher pilot: '+', '.join(f"{x['arm']} DEV {x['mean_dev_nll']:.6f}/{x['whole_fit_wall_s']:.3f}s" for x in c['rows'])+'. Original selection graphs, separate from unchanged confirmation. '
    text+='Private four-root affine diagnostic, eight TRAIN graphs/two neural passes plus charged confidence acquisition; hidden graph labels never teach it. Broader nonlinear factor/depth/interleaving data are prepared. Source-read routing is integrated; inter-node forward delivery and deep boundary-credit replacement are next mechanisms. Earlier65,536-target dense boundary-critic learning trails native BPTT. Next decisive test is useful native credit with matched audit/memory controls, fixed confirmation and full work, then broader acquired-structure transfer.'
   p=ROOT/'report/I_SCIENCE.md';s=p.read_text();marker='**Forward-taught credit and native learning (12 October):**';start=s.index(marker);end=s.index('\n',start);p.write_text(s[:start]+text+s[end:])
 if __name__=='__main__':main()

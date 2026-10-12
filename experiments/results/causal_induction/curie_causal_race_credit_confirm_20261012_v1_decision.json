@@ -1,0 +1,116 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_causal_race_credit_confirm_20261012_v1_decision",
+  "rows": [
+    {
+      "seed": 194,
+      "gains": {
+        "exact": 0.0026792388240896026,
+        "zero25": 0.00324355004090926,
+        "reset_memory": 0.00045705210650492933
+      },
+      "all_positive": true,
+      "arms": [
+        {
+          "arm": "exact",
+          "mean_dev_nll": 0.6908656229992387,
+          "whole_fit_wall_s": 134.97247017800692
+        },
+        {
+          "arm": "credit",
+          "mean_dev_nll": 0.6881863841751491,
+          "whole_fit_wall_s": 159.3538865359733
+        },
+        {
+          "arm": "zero25",
+          "mean_dev_nll": 0.6914299342160584,
+          "whole_fit_wall_s": 137.2513077959302
+        },
+        {
+          "arm": "reset_memory",
+          "mean_dev_nll": 0.688643436281654,
+          "whole_fit_wall_s": 159.57052884201403
+        }
+      ]
+    },
+    {
+      "seed": 195,
+      "gains": {
+        "exact": -0.00046785152968831234,
+        "zero25": 0.002860084563270915,
+        "reset_memory": 0.001431600177374981
+      },
+      "all_positive": false,
+      "arms": [
+        {
+          "arm": "exact",
+          "mean_dev_nll": 0.6845317627217682,
+          "whole_fit_wall_s": 132.9708485409792
+        },
+        {
+          "arm": "credit",
+          "mean_dev_nll": 0.6849996142514565,
+          "whole_fit_wall_s": 157.13174143698416
+        },
+        {
+          "arm": "zero25",
+          "mean_dev_nll": 0.6878596988147274,
+          "whole_fit_wall_s": 131.05279879100272
+        },
+        {
+          "arm": "reset_memory",
+          "mean_dev_nll": 0.6864312144288315,
+          "whole_fit_wall_s": 153.39430827397155
+        }
+      ]
+    },
+    {
+      "seed": 196,
+      "gains": {
+        "exact": 0.0034729646409765724,
+        "zero25": 0.0034365254821218105,
+        "reset_memory": 0.005638870648216221
+      },
+      "all_positive": true,
+      "arms": [
+        {
+          "arm": "exact",
+          "mean_dev_nll": 0.6867126083818565,
+          "whole_fit_wall_s": 135.40514333397732
+        },
+        {
+          "arm": "credit",
+          "mean_dev_nll": 0.68323964374088,
+          "whole_fit_wall_s": 161.34083803999238
+        },
+        {
+          "arm": "zero25",
+          "mean_dev_nll": 0.6866761692230018,
+          "whole_fit_wall_s": 136.67674862002605
+        },
+        {
+          "arm": "reset_memory",
+          "mean_dev_nll": 0.6888785143890962,
+          "whole_fit_wall_s": 159.7943112499488
+        }
+      ]
+    }
+  ],
+  "mean_quality_gains": {
+    "exact": 0.0018947839784592875,
+    "zero25": 0.003180053362100662,
+    "reset_memory": 0.0025091743106987105
+  },
+  "confirmation_gate": false,
+  "next_decision": "hold broader transfer; diagnose native teacher with completed centered contract, preserve fixed cohort",
+  "parent_sha256": {
+    "experiments/results/causal_induction/curie_causal_race_credit_confirm_20261012_v1_s194.json": "4415ca94146fd15d66535022ae46140056d957dcb6587e77d7d4e2e36492832c",
+    "experiments/results/causal_induction/curie_causal_race_credit_confirm_20261012_v1_s195.json": "7e27b3cbd5f3b143b36bc6187ed60576fe33b476c1db39240617702db6b191f7",
+    "experiments/results/causal_induction/curie_causal_race_credit_confirm_20261012_v1_s196.json": "0c78bd7d24661716de37821d84b2f836f41d4e30adc411385e7d4a9444dcdd5f"
+  },
+  "source_sha256": {
+    "experiments/causal_induction/confirmation_decision.py": "34ce100caa0783454a26c80b55446275d82e467e1838d4b6c9e130c2c03bf57a"
+  },
+  "scope": "Private four fresh graphs with three actors, fixed confirmation rule. Per-seed/mean quality and whole fitting CPU; no public benchmark/efficiency or neural-depth claim. Original selection scores excluded from cohort decision."
+}
