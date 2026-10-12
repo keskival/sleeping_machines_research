@@ -47,7 +47,7 @@ def blocks():
             ('p',f"Seed6 full DEV curve maximum error{q['max_dev_curve_error']:.3g}; ordinary/batched training{q['ordinary_over_batched_training_wall']:.3f}x. Against saved float32 ordinary: quality gain{q['versus_fp32']['quality_gain']:+.6f}, training ratio{q['versus_fp32']['ordinary_over_batched_training_wall']:.3f}x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Full-curve parity criterion1e-8. Useful retained-quality/work gate: {'passed' if q['useful_quality_work_gate_passed'] else 'failed; original float32 retained'}."),
             ('p','Confirmations: '+('; '.join(confirmations) if confirmations else 'no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.'))])
     paths=[ROOT/'experiments/results/token_language'/f'aws_integrated_p24_unique_stream_decision_20261012_s{seed}_v1.json' for seed in (6,7,8)]
-    paths.append(ROOT/'experiments/results/token_language/aws_integrated_p24_unique_512k_decision_20261012_s6_v1.json')
+    paths.append(ROOT/'experiments/results/token_language/aws_integrated_p24_unique_512k_decision_20261012_s6_v2.json')
     for unique in paths:
         if not unique.exists():continue
         u=json.loads(unique.read_text());assert u['status']=='completed'

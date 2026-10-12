@@ -49,7 +49,7 @@ def publish(text):
         command('git','pull','--rebase');command('git','push','origin','main')
 
 
-def submit_larger():
+def submit_larger(version="v1"):
     deps={'experiments/horizon_token_language_engine.py','experiments/batched_token_episodes.py'}
     for n in ast.walk(ast.parse((ROOT/'experiments/horizon_token_language_engine.py').read_text())):
         if isinstance(n,ast.Constant) and isinstance(n.value,str) and n.value.startswith('sleeping_machines/') and n.value.endswith('.py'):deps.add(n.value)
@@ -57,10 +57,12 @@ def submit_larger():
     for dep in sorted(deps):cmd.extend(['--dep',dep])
     for arm,n in [('repeated',262144),('unique',524280)]:
         args=f'--train-tokens {n} --dev-tokens 2048 --steps 1024 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 4 --lanes 8 --eval-lanes 8 --eval-every 256 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6'
-        cmd.extend(['--job',f'aws_integrated_p24_{arm}_512k_budget_20261012_s6_v1|{args}'])
+        cmd.extend(['--job',f'aws_integrated_p24_{arm}_512k_budget_20261012_s6_{version}|{args}'])
     receipt=command(*cmd)
-    cmd=[str(ROOT/'.venv-docker/bin/python'),'experiments/tpp/submit.py','--slot','2','--battle','R1','--source','experiments/analyze_unique_token_stream_v2.py','--result-dir','experiments/results/token_language','--timeout','180','--rss-kb','1200000','--purpose','R1: larger fixed-target quality/work/context decision; actual larger evidence only, no extrapolated score','--job','aws_integrated_p24_unique_512k_decision_20261012_s6_v1|--reference aws_integrated_p24_repeated_512k_budget_20261012_s6_v1 --candidate aws_integrated_p24_unique_512k_budget_20261012_s6_v1']
+    cmd=[str(ROOT/'.venv-docker/bin/python'),'experiments/tpp/submit.py','--slot','2','--battle','R1','--source','experiments/analyze_unique_token_stream_v2.py','--result-dir','experiments/results/token_language','--timeout','180','--rss-kb','1200000','--purpose','R1: larger fixed-target quality/work/context decision; actual larger evidence only, no extrapolated score','--job',f'aws_integrated_p24_unique_512k_decision_20261012_s6_{version}|--reference aws_integrated_p24_repeated_512k_budget_20261012_s6_{version} --candidate aws_integrated_p24_unique_512k_budget_20261012_s6_{version}']
     for dep in sorted((deps-{'experiments/batched_token_episodes.py'})|{'experiments/profile_integrated_language_v2.py'}):cmd.extend(['--dep',dep])
+    for arm in ('repeated','unique'):
+        cmd.extend(['--requires-result',f'experiments/results/token_language/aws_integrated_p24_{arm}_512k_budget_20261012_s6_{version}.json'])
     return receipt+command(*cmd)
 
 
