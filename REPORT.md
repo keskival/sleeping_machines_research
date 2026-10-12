@@ -5802,6 +5802,21 @@ Registered four-control confirmation gate passes; learned gains exact: +0.000264
 
 Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions.
 
+### Direct route-score credit: depth bounds and delayed utility contracts
+
+| Numerical contract | Maximum absolute error |
+| --- | --- |
+| Route-score identity | 1.527e-16 |
+| Producer covariance identity | 1.839e-16 |
+| Pair-conditioned mean identity | 1.032e-16 |
+| Actual clipped Adam update | 0.000e+00 |
+| Delayed utility identity | 8.674e-19 |
+| Utility finite difference | 2.796e-10 |
+
+For a common issued binary-outcome belief independent of the route draw, score-gradient error has L1 bound |belief error| times logit range/2, with no candidate-count or neural-depth factor. Parameter-update error additionally depends on measured producer response geometry. Pair-conditioned response beliefs have a different bound and need their own consistency accounting. For a held finite optimizer transition, its future cotangent projects into one scalar teaching signal per issued credit control; both clipping and optimizer moments are retained. These conditional identities specify mechanisms to test, rather than a learned depth-efficiency result.
+
+Small float64 algebra/executable operator contracts, scores2/4/8/32 and clipped/unclipped actual Adam. Supports conditional score bounds and delayed scalar teaching, not calibrated world accuracy, sparse hardware cost, a new trained optimizer or neural-depth scaling. Original native confirmation unchanged; dummy optimizer steps are numerical fixtures, no benchmark fitting. Completed32score cases and both clipping regimes; 1.252s, peakRSS314868KB. Theory: experiments/theory/DIRECT_ROUTE_CREDIT_DEPTH_AND_DELAYED_UTILITY.md.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
