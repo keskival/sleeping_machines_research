@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_causal_native_20261012_v1_contract",
+  "mode": "contract",
+  "checks": {
+    "address_relabel_equal_nll": true,
+    "query_before_feedback": true,
+    "causal_optimizer_boundaries": true,
+    "temporal_unit_parameter_change": 0.006451904773712158,
+    "training": {
+      "nll": 0.6864178788629449,
+      "targets": 64,
+      "wall_s": 6.448988587013446,
+      "optimizer_updates": 8,
+      "peak_occupied_nodes": 20,
+      "events": 483,
+      "queries": 64,
+      "candidate_keys": 501,
+      "value_reads": 128,
+      "sensor_decodes": 128,
+      "selected_updates": 1932,
+      "counterfactual_unit_values": 3864
+    }
+  },
+  "rows": [],
+  "whole_pipeline_wall_s": 10.06307728801039,
+  "peak_rss_kb": 375804,
+  "parent_sha256": "072e340b3c8aa6e41cf097b472ed2a26a11bc48730964764ef0238f5bf60a1cd",
+  "source_sha256": {
+    "experiments/causal_induction/native_pipeline.py": "8d658c084238cccbb1b4bb44a8659a25738e4cbb50ad4398801a3415b1166588",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+  },
+  "scope": "Integrated sensor interface: shared two-layer/two-head/two-receiver temporal core, addressed persistent node states; all receiver proposals during training, winner-only inference; up to8 recent source keys per query and one paid nonwinner sensor decode for conditional route teaching. Sources are selected only at sensor reads; inter-node event delivery and connected learned critic not yet implemented. No hidden graph/gate/oracle access. Eight TRAIN graphs/two passes, four separate development graphs. No depth advantage, credit replacement, public TEST or Transformer claim. Counts are executed operations, not full FLOP/energy estimates. Computational source contexts read at max physical/computational arrival without any future observed data."
+}
