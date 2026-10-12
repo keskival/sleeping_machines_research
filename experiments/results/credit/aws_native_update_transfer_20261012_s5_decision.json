@@ -1,0 +1,71 @@
+{
+  "status": "completed",
+  "tag": "aws_native_update_transfer_20261012_s5_decision",
+  "battle": "B1 acquired native update transfer",
+  "seed": 5,
+  "rows": [
+    {
+      "depth": 2,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.4903206758124708,
+      "final_quality_gain": 0.008275004190596014,
+      "match_pass": 2.7542857142857144,
+      "matched_fit_and_all_validation_s": 37.022918654140085,
+      "baseline_fit_and_validation_s": 40.49099374935031,
+      "baseline_over_matched_work": 1.0936737356556951,
+      "quality_gain_vs_static": 0.0005355175658798284,
+      "incremental_matched_work_saving": 3.4680750952102244,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": 142,
+      "static_final_quality_gain": 0.007739486624716185,
+      "static_work_ratio": 1.1158437002121926
+    },
+    {
+      "depth": 4,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.47358366557934867,
+      "final_quality_gain": 0.018954724346782637,
+      "match_pass": 2.7542857142857144,
+      "matched_fit_and_all_validation_s": 63.67460012785159,
+      "baseline_fit_and_validation_s": 67.96043780795299,
+      "baseline_over_matched_work": 1.067308434941027,
+      "quality_gain_vs_static": 0.0003940022987126701,
+      "incremental_matched_work_saving": 4.285837680101395,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": 115,
+      "static_final_quality_gain": 0.018560722048069966,
+      "static_work_ratio": 1.0926666043907167
+    },
+    {
+      "depth": 8,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.4892685845192981,
+      "final_quality_gain": 0.009271735923902347,
+      "match_pass": 2.5028571428571427,
+      "matched_fit_and_all_validation_s": 107.21943455492146,
+      "baseline_fit_and_validation_s": 125.78317199787125,
+      "baseline_over_matched_work": 1.1731378039812437,
+      "quality_gain_vs_static": 0.0009968944510332922,
+      "incremental_matched_work_saving": 18.563737442949787,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": 27,
+      "static_final_quality_gain": 0.008274841472869054,
+      "static_work_ratio": 1.1997679435597632
+    }
+  ],
+  "useful_conditional_quality_and_incremental_work_gate": true,
+  "continuation": [],
+  "source_sha256": {
+    "experiments/credit/analyze_native_update_transfer.py": "54e11e2ae16df981a9fafd306df46edc452e85d5d83bee2d7b6f7eb42cac90f7",
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12",
+    "experiments/credit/train_native_future_update_reuse_full.py": "e044918419c6686998e6ec833d5eb1737039dfd2c116ccb523d907c7fe1c5978",
+    "experiments/credit/train_native_update_transfer.py": "a026edee3666a3759441732b1f0768f0fd2f4d8006c2b3dde04b74fdaea83c02",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "input_sha256": {
+    "experiments/results/credit/aws_native_update_transfer_20261012_s5.json": "1869ec1d1cd3d80164910112a4660cdc5c678b00eaec61c5955ae142d3e96d1e"
+  },
+  "wall_s": 0.0007347660139203072,
+  "scope": "Whole-native fresh-initialization development comparison on same corpus/DEV. Conditional policy vs TRAIN-acquired static scales; work includes complete fitting and all scheduled validation. Acquisition charged separately, conservative break-even model explicitly repeated equivalent fits, not measured deployment saving. Confirmation requires conditional quality over static and positive incremental work saving at>=2depths; no TEST/Transformer claim."
+}
