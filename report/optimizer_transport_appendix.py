@@ -88,4 +88,40 @@ def pages():
                 ladder_rows.append([str(budget),str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",crossing])
     if ladder_rows:
         current.append([('h2','Native acquisition and reuse: measured quality/work'),('table',(['Acquire blocks','Depth','Learner','Final DEV NLL','Whole seconds','Seconds to target'],ladder_rows,[25,15,31,32,32,32])),('p','Depth4 online credit finishes with better DEV quality and less CPU learning time than native SGD/backpropagation at both acquisition horizons. Depth8 online credit reaches the original fixed quality target sooner, but final quality stays behind native SGD. Continued online credit improves final quality versus freezing at both depths/horizons.'),('small','Single initialization, same d8/modes4 native model,16history/16scored targets per block. Acquisition128/512 plus512reuse blocks gives10,240/16,384 fitting targets per arm. Fixed first32TaxiDEV sequences,512targets; evaluations every32blocks. Fixed targets from completed prior nativeBP: depth4 NLL0.979619, depth8 1.403099. First measured crossing is an upper bound; original targets are weaker than the final BP endpoints. All acquisition/teacher/optimizer/scheduled evaluation work included. No official TEST, independent confirmation or operation-FLOP measurement.'),('p','The credit networks have144,704/276,752 parameters versus native actors3,056/5,056. All2,112/4,112 deep/input parameters are proposed each update; inference still computes all temporal modes and layers, with one addressed mark write per input. This is connected finite-update credit learning, not sparse parameter activity or hardware efficiency.'),('p','A stronger comparison uses the parity-validated compiled temporal scan for every arm, exact local AdamW head updates for learned credit, and native BP AdamW alongside SGD. It checks whether the advantage survives optimized backward execution and stronger conventional optimization before further scaling.')])
+    optimized=[]
+    for suffix in ['','_s1','_s2']:
+        path=ROOT/f'experiments/results/credit/curie_native_optimized_credit_20261011_v1{suffix}_fit.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        for row in record['rows']:
+            for arm in ['online','frozen','bp_adam']:
+                v=row['arms'][arm];optimized.append([suffix or 'seed0',str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}"])
+    if optimized:
+        current.append([('h2','Optimized native learning: three initializations'),('table',(['Seed','Depth','Learner','Final DEV NLL','Whole seconds'],optimized,[27,20,39,40,41])),('p','Continued future teaching improves final development quality versus frozen credit in all six seed/depth cases. Superiority to optimized native AdamW is not confirmed: each depth wins one of three initializations. Prequential training loss favours AdamW.'),('small','Depth4/8, width8, modes4; 128 acquisition plus512reuse blocks,10,240 fitting targets per arm. Reused32TaxiDEV sequences/512targets, one compiled native temporal backend for every arm. Whole CPU time includes acquisition, teacher, optimizer and scheduled scoring; no FLOP or hardware-energy claim. Same data, independent initialization repeats; development evidence, not sealed benchmark confirmation.')])
+    width_rows=[]
+    for width,field in [(16,'flat'),(16,'structured'),(32,'structured')]:
+        path=ROOT/f'experiments/results/credit/curie_native_structured_credit_20261011_v1_d{width}_{field}_fit.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        for row in record['rows']:
+            for arm in ['online','frozen','bp_adam']:
+                v=row['arms'][arm];width_rows.append([f'{width}/{row["depth"]}',field,arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",f"{v['credit_parameters']:,}"])
+    if width_rows:
+        current.append([('h2','Connected credit representation and width'),('table',(['Width/depth','Field','Learner','DEV NLL','Whole seconds','Credit params'],width_rows,[25,32,29,28,27,26])),('p','Rank-two forward-derived fields reduce credit parameter storage by about69% at width16, but decoding is slower and quality worsens versus flat credit. Width32 online teaching worsens quality versus freezing and trails native AdamW. Storage compression is not work reduction.'),('small','One initialization; same128acquisition/512reuse blocks and reused DEV protocol as the optimized stage. Compiled native scan/local AdamW heads, generated core step.001, normcap5 and teacher probability.25. All basis hooks, decoder, optimizer and scoring work charged. Matrix updates are low rank per step, numerical core writes remain dense; no sparse hardware claim.')])
+    heads_path=ROOT/'experiments/results/credit/curie_native_head_only_20261011_v1_measure.json'
+    if heads_path.exists():
+        h=json.loads(heads_path.read_text());assert h['status']=='completed'
+        current.append([('h2','Does deep adaptation help beyond local heads?'),('p','Freezing the identical acquired deep/input weights while continuing local-head AdamW isolates deep-learning benefit. Width16 credit improves final DEV NLL by0.00893/0.01738 atdepth4/8; width32 credit worsens it by0.02048/0.00729. Acquisition replay matches the completed parent and core weights stay bitwise fixed.'),('small','Same512reuse blocks and32DEV sequences, one initialization. Heads include addressed-memory values/rates and output clocks. This compares deep-core adaptation, not absence of all memory learning. Different compiled startup allocation prevents a matched-wall claim for this diagnostic.'),('p','Next representation retains event/error covariance instead of mean/RMS summaries, shares typed decoders across depth, and learns four full-support event queries from actual next-block likelihood. Its continuous finite-update gradient and discrete score gradient are checked against exact native enumeration before fitting. This is the width32 failure-repair test; no pending quality value is promoted.')])
+    for width in [32,16]:
+        path=ROOT/f'experiments/results/credit/curie_native_event_credit_20261012_v1_d{width}_fit.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[]
+        for row in record['rows']:
+            for arm in ['online','frozen','bp_adam']:
+                v=row['arms'][arm];rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",f"{v['credit_parameters']:,}"])
+        current.append([('h2',f'Event-conditioned native credit: width{width}'),('table',(['Depth','Learner','DEV NLL','Whole seconds','Credit params'],rows,[20,38,38,38,33])),('p','The connected reverse-time temporal critic retains event cotangents and native module inputs. Four hard event queries train jointly with shared typed responsibilities and input transports. Actual next-block likelihood teaches continuous updates and the query policy, with a same-head/no-core-update counterfactual baseline.'),('small','One initialization; same128acquisition/512reuse and reused32sequence512targetDEV protocol. Full-support query policy, teacher probability.25; complete packet, scan, reference replay, actor/meta optimizers and evaluation time charged. All core numerical parameters may change, forward internal writes remain dense. No public TEST or sparse hardware claim.')])
     return current

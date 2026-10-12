@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "battle": "B1",
+  "tag": "curie_native_event_credit_20261012_v1_contract",
+  "gate": true,
+  "max_gradient_error": 3.002426866155483e-16,
+  "future_loss_contrast": 0.00036626633649960993,
+  "query_gradient_norm": 0.000309412074195687,
+  "probability_sum": 1.0,
+  "wall_s": 0.2661723950004671,
+  "peak_rss_kb": 257812,
+  "source_sha256": {
+    "experiments/credit/check_event_credit_gradient.py": "b08fc03a9cd313da632a6b16cfdfa13afa4aaf2ffbe4cefd072689229294c337",
+    "experiments/credit/event_parameter_credit.py": "28cbfdee8f90f9f5cc65a3c2327480d26967f1ffe30bc20da87de30a4feafe16",
+    "experiments/credit/run_native_event_credit.py": "fda8424a0bc244caaf3e03c9d6ca66e15855d80886a9a97389e8077bd2a7f2fe",
+    "experiments/credit/NATIVE_EVENT_CREDIT_PROTOCOL.md": "6ca0671989f510e6792a2b61ce429774f7c84a2bbecef34bd117aa094bf0840f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a"
+  },
+  "scope": "Real native depth4,width8 Taxi TRAIN; two enumerated single-event query actions, local finite update expectation only. Algebra check, no learning utility claim."
+}

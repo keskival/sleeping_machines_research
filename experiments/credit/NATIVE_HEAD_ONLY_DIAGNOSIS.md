@@ -1,0 +1,7 @@
+# B1 essential core-plasticity control
+
+The generated core update has a global norm cap0.005, whereas AdamW's actual parameter step can be larger. Improvement over a frozen credit function could reflect avoiding harmful core drift rather than useful deep learning. Before treating the native results as credit-specific capability, compare against a frozen-core/head-learning control.
+
+Replay and verify the exact128-block acquired actor/credit/head optimizer from the completed structured width16/32,depth4/8 stages. Freeze all core weights thereafter; continue the same local headAdamW.003 for512reuse blocks. Same32DEV sequences and evaluation cadence. Check every core parameter is bitwise unchanged, retain per-sequence final likelihood and complete acquisition/reuse time. This is reused development data and a necessary task-capability control, not a fresh benchmark or new architecture verdict. Actual compiled startup allocation differs from the parent; do not claim a matched-time win from that difference.
+
+If frozen-core heads match or beat the credit learner, revise the diagnosis: the task/interface has insufficient demonstrated benefit from deep adaptation. Develop a task with delayed binding/long-horizon consequences or improve credit's intervention objective and representation. Do not call saved per-parameter movement proof of useful depth. One unique B1 diagnostic queue/run_safe,1thread/RSS1.5GB/9GiBfloor/240s; no variance grid or public TEST.
