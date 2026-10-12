@@ -20,6 +20,19 @@ def sha(p):
     return hashlib.sha256((ROOT / p).read_bytes()).hexdigest()
 
 
+def write_packet(directory, battle, slot, stamp, packet):
+    """Publish immutable packets without replacing a same-second submission."""
+    for _ in range(100):
+        out = directory / f'zzzzzzzzzzzzzzzzzzzzzzzzzzz{battle.lower()}_{stamp}_{time.time_ns()}_s{slot}.json'
+        try:
+            with out.open('x') as stream:
+                stream.write(json.dumps(packet, indent=2) + '\n')
+            return out
+        except FileExistsError:
+            continue
+    raise RuntimeError('Unable to allocate an immutable addendum name')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--slot', required=True, choices=['1', '2', '3'])
@@ -31,6 +44,7 @@ def main():
     ap.add_argument('--dep', action='append', default=[], help='additional pinned source files')
     ap.add_argument('--battle', default='B1')
     ap.add_argument('--result-dir', default='experiments/results/tpp')
+    ap.add_argument('--requires-result', action='append', default=[], help='completed predecessor JSON required before launching any job in this packet')
     a = ap.parse_args()
     stamp = time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())
     jobs = []
@@ -47,11 +61,12 @@ def main():
                          source_sha256={s: sha(s) for s in [a.source] + a.dep},
                          result=f'{a.result_dir}/{tag}.json', timeout_s=a.timeout,
                          rss_kb=a.rss_kb, vms_kb=8000000))
+        if a.requires_result:
+            jobs[-1]['requires'] = [{'result': path} for path in a.requires_result]
     packet = dict(host='ip-172-31-47-132', battle=a.battle, purpose=a.purpose,
                   parent_manifest_sha256=sha(str((COORD / 'manifest.json').relative_to(ROOT))),
                   slots={a.slot: jobs})
-    out = COORD / 'addenda' / f'zzzzzzzzzzzzzzzzzzzzzzzzzzz{a.battle.lower()}_{stamp}_s{a.slot}.json'
-    out.write_text(json.dumps(packet, indent=2) + '\n')
+    out = write_packet(COORD / 'addenda', a.battle, a.slot, stamp, packet)
     print(out.relative_to(ROOT))
     for j in jobs:
         print(' ', j['name'], '->', j['result'])
