@@ -96,7 +96,7 @@ def main():
             native_credit[name]=dict(result=relative,scope='Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result.')
     packet['native_shared_world_credit']=native_credit
     market_runs=[]
-    for tag in ['curie_b10_native_ttt_20261012_v3_fit','curie_b10_exact_future_20261012_v1_fit','curie_b10_longer_native_20261012_v1_fit','curie_b10_native_optimizer_20261012_v1_fit','curie_b10_regularized_optimizer_20261012_v1_fit']:
+    for tag in ['curie_b10_native_ttt_20261012_v3_fit','curie_b10_exact_future_20261012_v1_fit','curie_b10_longer_native_20261012_v1_fit','curie_b10_native_optimizer_20261012_v1_fit','curie_b10_regularized_optimizer_20261012_v1_fit','curie_b10_forecast_response_20261012_v1_fit']:
         path=ROOT/f'experiments/results/market/{tag}.json'
         if not path.exists():continue
         record=json.loads(path.read_text());assert record['status']=='completed'
