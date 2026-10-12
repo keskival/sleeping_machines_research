@@ -124,4 +124,14 @@ def pages():
             for arm in ['online','frozen','bp_adam']:
                 v=row['arms'][arm];rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",f"{v['credit_parameters']:,}"])
         current.append([('h2',f'Event-conditioned native credit: width{width}'),('table',(['Depth','Learner','DEV NLL','Whole seconds','Credit params'],rows,[20,38,38,38,33])),('p','The connected reverse-time temporal critic retains event cotangents and native module inputs. Four hard event queries train jointly with shared typed responsibilities and input transports. Actual next-block likelihood teaches continuous updates and the query policy, with a same-head/no-core-update counterfactual baseline.'),('small','One initialization; same128acquisition/512reuse and reused32sequence512targetDEV protocol. Full-support query policy, teacher probability.25; complete packet, scan, reference replay, actor/meta optimizers and evaluation time charged. All core numerical parameters may change, forward internal writes remain dense. No public TEST or sparse hardware claim.')])
+    for width in [32,16]:
+        path=ROOT/f'experiments/results/credit/curie_native_event_optimizer_20261012_v1_d{width}_fit.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[]
+        for row in record['rows']:
+            for arm in ['online','frozen','bp_adam']:
+                v=row['arms'][arm];mean_step=sum(x['deep_parameter_change'] for x in v['rows'])/len(v['rows']);rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",f"{mean_step:.5f}"])
+        current.append([('h2',f'Future-trained native credit optimizer: width{width}'),('table',(['Depth','Learner','DEV NLL','Whole seconds','Mean core step'],rows,[20,38,38,38,33])),('p','The previous query field saturates its fixed0.005 core-step norm on every reuse block; nativeAdamW mean steps are8–15 times larger atwidth32. This variant learns bounded shared typed step sizes and momentum from actual future likelihood, retaining event-conditioned hard queries and shared deep responsibilities.'),('small','Same128acquisition/512reuse, one initialization/reused DEV. Maximum typed step0.003, initial0.001, initialmomentum0.9, globalactualstepnormcap0.2. Incoming momentum is detached for local conditional teaching and shared after acquisition for online/frozen. Necessary native joint gradient check passes3.38e-16; arithmetic correctness does not replace quality/work evidence. All teacher/reference/optimizer/packet/evaluation work included; dense numerical writes and independent sequence resets remain.')])
     return current

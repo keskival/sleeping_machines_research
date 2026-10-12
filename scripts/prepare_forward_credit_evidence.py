@@ -39,6 +39,25 @@ def main():
         parents[str(update_path.relative_to(ROOT))]=sha(update_path)
         packet['online_update']=dict(tag=update['tag'],comparison=update['comparisons']['online_over_frozen'],utility_gate=update['utility_gate'],config=update['config'],rows=update['rows'],pretraining=update['pretraining'],whole_wall_s=update['whole_wall_s'],scope=update['scope'])
         packet['status_text']='Working native temporal/keyed inference and lexical learning prototype; conditional credit accuracy/acquisition economy demonstrated. Actual online update-function learning is reported separately with its completed episode-level utility gate; no full-native task-learning win.'
+    native_runs=[]
+    for seed in range(3):
+        path=ROOT/f'experiments/results/credit/aws_native_future_update_reuse_20261011_s{seed}.json'
+        if not path.exists():continue
+        native=json.loads(path.read_text());assert native['status']=='completed'
+        for name,digest in native['source_sha256'].items():assert sha(ROOT/name)==digest,name
+        parents[str(path.relative_to(ROOT))]=sha(path)
+        for depth in [2,4,8]:
+            arms={row['arm']:row for row in native['rows'] if row['depth']==depth};baseline=arms['fixed_adam'];learned=arms['future_taught']
+            native_runs.append(dict(seed=seed,depth=depth,dev_gain=baseline['history'][-1]['nll']-learned['history'][-1]['nll'],fixed_fit_wall_s=baseline['fit_wall_s'],learned_fit_wall_s=learned['fit_wall_s'],train_target_presentations=learned['train_target_presentations']))
+    if len(native_runs)==9:
+        packet['native_optimizer_learning']=dict(rows=native_runs,positive_cases=sum(r['dev_gain']>0 for r in native_runs),mean_gain_by_depth={str(depth):sum(r['dev_gain'] for r in native_runs if r['depth']==depth)/3 for depth in [2,4,8]},scope='Three initializations, whole native depth2/4/8 width16,1400TaxiTRAIN sequences cropped32events/three passes,128reused DEV sequences. Future-trained180parameter group-scale controller retains exact actor backprop. All nine quality comparisons improve; complete CPU learning time increases. No efficient learned-core-credit or hardware claim.')
+        packet['status_text']='Future-trained native optimizer improves development quality in nine of nine seed/depth cases; acquired-policy reuse is the next complete-work test. Generated deep credit improves versus frozen on six width8 cases but does not confirm superiority to nativeAdamW.'
+        packet['date']='2026-10-12'
+    for tag in ['curie_native_optimized_credit_20261011_v1_fit','curie_native_optimized_credit_20261011_v1_s1_fit','curie_native_optimized_credit_20261011_v1_s2_fit','curie_native_head_only_20261011_v1_measure','curie_native_event_credit_20261012_v1_d32_fit','curie_native_event_credit_20261012_v1_d16_fit']:
+        path=ROOT/f'experiments/results/credit/{tag}.json'
+        if path.exists():
+            record=json.loads(path.read_text());assert record['status']=='completed';parents[str(path.relative_to(ROOT))]=sha(path)
+    packet['generated_credit_status']='Optimized width8 online/frozen finalDEV gain6/6, superiority to own-nativeAdamW unconfirmed. Width16 deep credit improves versus head-only, width32 harms. Event-conditioned query field repairs online-versus-frozen atwidth32 but remains worse than head-only and nativeAdamW. Learned amplitude/momentum comparison running; no pending score promoted.'
     assert f['accuracy_gate'] and all(x>0 for x in f['comparisons']['transport_over_static_full']['per_prefix_gain'])
     (ROOT/'investment/forward_credit_evidence_20261011.json').write_text(json.dumps(packet,indent=2)+'\n')
     print(json.dumps(metrics))

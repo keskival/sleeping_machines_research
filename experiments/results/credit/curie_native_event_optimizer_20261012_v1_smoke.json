@@ -1,0 +1,622 @@
+{
+  "strong_reference_result_sha256": "4c5878ba5fc76bd0db4b04c4032db4148375f697b0776265c532a07e026b11e4",
+  "backend": "compiled_exact_native_temporal_scan",
+  "backend_startup_wall_s": 0.12483737198635936,
+  "parent_result_sha256": "278151b02692de444231e695874245c91f37cf1400a0a95a7067dec91f8302c4",
+  "reference_checkpoint_sha256": "cbeff9cdb0cefbe935993de1f16fbd33f83857264228bed3cfab71029e3707d1",
+  "validation_data_sha256": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf",
+  "status": "completed",
+  "battle": "B1",
+  "tag": "curie_native_event_optimizer_20261012_v1_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "rows": [
+    {
+      "depth": 4,
+      "arms": {
+        "online": {
+          "wall_s": 0.3091313879995141,
+          "scored_targets": 128,
+          "mean_nll": 1.831478214862087,
+          "meta_updates": 2,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 1.541612760610202,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00129041406781282,
+              "wall_s": 0.01962635398376733
+            },
+            {
+              "block": 1,
+              "nll": 1.5898539633949569,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0015380906380270476,
+              "wall_s": 0.02187466502073221
+            },
+            {
+              "block": 2,
+              "nll": 2.226868114065765,
+              "targets": 16,
+              "teacher": true,
+              "deep_parameter_change": 0.0018762903807055132,
+              "wall_s": 0.0509517680038698
+            },
+            {
+              "block": 3,
+              "nll": 1.8507579798854787,
+              "targets": 16,
+              "teacher": true,
+              "deep_parameter_change": 0.0022659376974791747,
+              "wall_s": 0.05093432398280129
+            },
+            {
+              "block": 4,
+              "nll": 1.738346652630579,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0026099413280026833,
+              "wall_s": 0.021840881992829964
+            },
+            {
+              "block": 5,
+              "nll": 2.5797052894890147,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.002804742752856988,
+              "wall_s": 0.020811752998270094
+            },
+            {
+              "block": 6,
+              "nll": 0.9004742917014759,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.003203542452695105,
+              "wall_s": 0.020414722996065393
+            },
+            {
+              "block": 7,
+              "nll": 2.2242066671192235,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0034215963851256716,
+              "wall_s": 0.021054698998341337
+            }
+          ],
+          "evaluations": [
+            {
+              "dev_nll": 1.4459348929646567,
+              "evaluation_wall_s": 0.08050267098587938,
+              "scored_dev_targets": 512,
+              "block": 8,
+              "scored_targets": 128,
+              "elapsed_learning_s": 0.30804793402785435
+            }
+          ],
+          "acquisition_dev": {
+            "dev_nll": 1.814691663330207,
+            "evaluation_wall_s": 0.07589462099713273,
+            "scored_dev_targets": 512
+          },
+          "reference_target": {
+            "dev_nll": -0.39076881062982094,
+            "source": "completed_d8_optimized_AdamW",
+            "scored_dev_targets": 512
+          },
+          "work_to_reference_s": null,
+          "final_dev_nll": 1.4459348929646567,
+          "reference_quality_reached": false,
+          "acquisition": {
+            "wall_s": 0.13210170398815535,
+            "scored_targets": 64,
+            "mean_nll": 1.8250976485911559,
+            "meta_updates": 1,
+            "deep_updates": 2,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 1.9998217394397018,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.027307850978104398
+              },
+              {
+                "block": 1,
+                "nll": 1.9476857744800535,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.023322976019699126
+              },
+              {
+                "block": 2,
+                "nll": 1.945086612416144,
+                "targets": 16,
+                "teacher": true,
+                "deep_parameter_change": 0.0004534849498015104,
+                "wall_s": 0.05810481798835099
+              },
+              {
+                "block": 3,
+                "nll": 1.4077964680287243,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0008607919490193976,
+                "wall_s": 0.022182977001648396
+              }
+            ],
+            "evaluations": []
+          },
+          "whole_learning_wall_s": 0.5660704639740288,
+          "native_parameters": 3056,
+          "credit_parameters": 43718
+        },
+        "frozen": {
+          "wall_s": 0.2258344799920451,
+          "scored_targets": 128,
+          "mean_nll": 1.8020038676417536,
+          "meta_updates": 0,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 1.541612760610202,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00129041406781282,
+              "wall_s": 0.016948363016126677
+            },
+            {
+              "block": 1,
+              "nll": 1.5704886716119697,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0015367450926280495,
+              "wall_s": 0.018066418007947505
+            },
+            {
+              "block": 2,
+              "nll": 2.1797416391074735,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0018029175093621744,
+              "wall_s": 0.018164128006901592
+            },
+            {
+              "block": 3,
+              "nll": 1.8485662518572745,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.002103339623442698,
+              "wall_s": 0.018447837996063754
+            },
+            {
+              "block": 4,
+              "nll": 1.760458121184467,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0022093596899711186,
+              "wall_s": 0.017744122014846653
+            },
+            {
+              "block": 5,
+              "nll": 2.5002869774015632,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.002298795778161503,
+              "wall_s": 0.017568732000654563
+            },
+            {
+              "block": 6,
+              "nll": 0.8187131610290872,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0024679796924633496,
+              "wall_s": 0.01800855901092291
+            },
+            {
+              "block": 7,
+              "nll": 2.1961633583319915,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0026199619366792603,
+              "wall_s": 0.017480943992268294
+            }
+          ],
+          "evaluations": [
+            {
+              "dev_nll": 1.4481683538891383,
+              "evaluation_wall_s": 0.08330981098697521,
+              "scored_dev_targets": 512,
+              "block": 8,
+              "scored_targets": 128,
+              "elapsed_learning_s": 0.22577189101139084
+            }
+          ],
+          "acquisition_dev": {
+            "dev_nll": 1.814691663330207,
+            "evaluation_wall_s": 0.07758353700046428,
+            "scored_dev_targets": 512
+          },
+          "reference_target": {
+            "dev_nll": -0.39076881062982094,
+            "source": "completed_d8_optimized_AdamW",
+            "scored_dev_targets": 512
+          },
+          "work_to_reference_s": null,
+          "final_dev_nll": 1.4481683538891383,
+          "reference_quality_reached": false,
+          "acquisition": {
+            "wall_s": 0.13210170398815535,
+            "scored_targets": 64,
+            "mean_nll": 1.8250976485911559,
+            "meta_updates": 1,
+            "deep_updates": 2,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 1.9998217394397018,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.027307850978104398
+              },
+              {
+                "block": 1,
+                "nll": 1.9476857744800535,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0,
+                "wall_s": 0.023322976019699126
+              },
+              {
+                "block": 2,
+                "nll": 1.945086612416144,
+                "targets": 16,
+                "teacher": true,
+                "deep_parameter_change": 0.0004534849498015104,
+                "wall_s": 0.05810481798835099
+              },
+              {
+                "block": 3,
+                "nll": 1.4077964680287243,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0008607919490193976,
+                "wall_s": 0.022182977001648396
+              }
+            ],
+            "evaluations": []
+          },
+          "whole_learning_wall_s": 0.4827735559665598,
+          "native_parameters": 3056,
+          "credit_parameters": 43718
+        },
+        "bp": {
+          "wall_s": 0.15762433898635209,
+          "scored_targets": 128,
+          "mean_nll": 2.1507939096408277,
+          "meta_updates": 0,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 1.963581430108071,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0020545774791426107,
+              "wall_s": 0.009871696995105594
+            },
+            {
+              "block": 1,
+              "nll": 1.8709805309151875,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0019705687692825554,
+              "wall_s": 0.009577074000844732
+            },
+            {
+              "block": 2,
+              "nll": 2.4175950375554938,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.00370573898478787,
+              "wall_s": 0.009448846016312018
+            },
+            {
+              "block": 3,
+              "nll": 2.1886703466900976,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0017186805803504057,
+              "wall_s": 0.010286275995895267
+            },
+            {
+              "block": 4,
+              "nll": 2.123084358563449,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0026446567794131013,
+              "wall_s": 0.009484682988841087
+            },
+            {
+              "block": 5,
+              "nll": 2.820608785239126,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.004025508958106917,
+              "wall_s": 0.01122251499327831
+            },
+            {
+              "block": 6,
+              "nll": 1.0766296299951885,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.003078137460559598,
+              "wall_s": 0.011477966007078066
+            },
+            {
+              "block": 7,
+              "nll": 2.7452011580600097,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0032465694226802015,
+              "wall_s": 0.011647011997411028
+            }
+          ],
+          "evaluations": [
+            {
+              "dev_nll": 1.9231583174336495,
+              "evaluation_wall_s": 0.07455273499363102,
+              "scored_dev_targets": 512,
+              "block": 8,
+              "scored_targets": 128,
+              "elapsed_learning_s": 0.15761524299159646
+            }
+          ],
+          "acquisition_dev": {
+            "dev_nll": 1.986475793682067,
+            "evaluation_wall_s": 0.07659533899277449,
+            "scored_dev_targets": 512
+          },
+          "reference_target": {
+            "dev_nll": -0.39076881062982094,
+            "source": "completed_d8_optimized_AdamW",
+            "scored_dev_targets": 512
+          },
+          "work_to_reference_s": null,
+          "final_dev_nll": 1.9231583174336495,
+          "reference_quality_reached": false,
+          "acquisition": {
+            "wall_s": 0.040159901982406154,
+            "scored_targets": 64,
+            "mean_nll": 1.8942472100448688,
+            "meta_updates": 0,
+            "deep_updates": 4,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 1.9998217394397018,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.004504874712097003,
+                "wall_s": 0.010692846990423277
+              },
+              {
+                "block": 1,
+                "nll": 2.0588876222459,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.003149069408674599,
+                "wall_s": 0.009879103017738089
+              },
+              {
+                "block": 2,
+                "nll": 2.052102106962632,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0018341911254606351,
+                "wall_s": 0.009513964992947876
+              },
+              {
+                "block": 3,
+                "nll": 1.4661773715312414,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.0025647769820933797,
+                "wall_s": 0.010048194992123172
+              }
+            ],
+            "evaluations": []
+          },
+          "whole_learning_wall_s": 0.3226216129551176,
+          "native_parameters": 3056,
+          "credit_parameters": 0
+        },
+        "bp_adam": {
+          "wall_s": 0.17170419002650306,
+          "scored_targets": 128,
+          "mean_nll": 1.6377482263711398,
+          "meta_updates": 0,
+          "deep_updates": 8,
+          "rows": [
+            {
+              "block": 0,
+              "nll": 1.3461881463706327,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0797089724917057,
+              "wall_s": 0.011497811996378005
+            },
+            {
+              "block": 1,
+              "nll": 1.7162618588087273,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.07339364799483332,
+              "wall_s": 0.012084637011867017
+            },
+            {
+              "block": 2,
+              "nll": 2.0544223740715157,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.07164431291882707,
+              "wall_s": 0.011547121976036578
+            },
+            {
+              "block": 3,
+              "nll": 1.6417189681821807,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.06855594226761792,
+              "wall_s": 0.011270966002484784
+            },
+            {
+              "block": 4,
+              "nll": 1.1079856557112824,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0682532196381235,
+              "wall_s": 0.011614421004196629
+            },
+            {
+              "block": 5,
+              "nll": 2.533026942804686,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.06696808525535389,
+              "wall_s": 0.012175709998700768
+            },
+            {
+              "block": 6,
+              "nll": 0.754615912094329,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.0619767916976217,
+              "wall_s": 0.01141433700104244
+            },
+            {
+              "block": 7,
+              "nll": 1.9477659529257652,
+              "targets": 16,
+              "teacher": false,
+              "deep_parameter_change": 0.06179231650858036,
+              "wall_s": 0.012437172001227736
+            }
+          ],
+          "evaluations": [
+            {
+              "dev_nll": 1.1380240904777,
+              "evaluation_wall_s": 0.0776229519979097,
+              "scored_dev_targets": 512,
+              "block": 8,
+              "scored_targets": 128,
+              "elapsed_learning_s": 0.17169464399921708
+            }
+          ],
+          "acquisition_dev": {
+            "dev_nll": 1.6893293526962907,
+            "evaluation_wall_s": 0.07433891101391055,
+            "scored_dev_targets": 512
+          },
+          "reference_target": {
+            "dev_nll": -0.39076881062982094,
+            "source": "completed_d8_optimized_AdamW",
+            "scored_dev_targets": 512
+          },
+          "work_to_reference_s": null,
+          "final_dev_nll": 1.1380240904777,
+          "reference_quality_reached": false,
+          "acquisition": {
+            "wall_s": 0.053371250978671014,
+            "scored_targets": 64,
+            "mean_nll": 1.6910558396758124,
+            "meta_updates": 0,
+            "deep_updates": 4,
+            "rows": [
+              {
+                "block": 0,
+                "nll": 1.9998217394397018,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.13602807886930723,
+                "wall_s": 0.01727086101891473
+              },
+              {
+                "block": 1,
+                "nll": 1.7299712594995054,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.11014280238214173,
+                "wall_s": 0.01249662900227122
+              },
+              {
+                "block": 2,
+                "nll": 1.840936044672818,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.09988633955633325,
+                "wall_s": 0.011314563016640022
+              },
+              {
+                "block": 3,
+                "nll": 1.1934943150912245,
+                "targets": 16,
+                "teacher": false,
+                "deep_parameter_change": 0.09425447502484008,
+                "wall_s": 0.012269586994079873
+              }
+            ],
+            "evaluations": []
+          },
+          "whole_learning_wall_s": 0.34991281299153343,
+          "native_parameters": 3056,
+          "credit_parameters": 0
+        }
+      },
+      "online_gain_vs_frozen": -0.029474347220333375,
+      "online_gain_vs_bp": 0.3193156947787408
+    }
+  ],
+  "config": {
+    "width": 8,
+    "modes": 4,
+    "field": "event",
+    "queries": 4,
+    "seed": 99910,
+    "offset": 1328,
+    "acquisition_blocks": 4,
+    "scored_blocks": 8,
+    "targets_per_block": 16,
+    "history_per_block": 16,
+    "teacher_probability": 0.25,
+    "core_step_max": 0.003,
+    "global_step_norm_cap": 0.2,
+    "momentum_initial": 0.9,
+    "core_step_initial": 0.001,
+    "credit_adam_lr": 0.001,
+    "gradient_cap": 5
+  },
+  "wall_s": 2.5595291670178995,
+  "peak_rss_kb": 345784,
+  "source_sha256": {
+    "experiments/credit/event_parameter_credit.py": "28cbfdee8f90f9f5cc65a3c2327480d26967f1ffe30bc20da87de30a4feafe16",
+    "experiments/credit/run_native_event_credit.py": "fda8424a0bc244caaf3e03c9d6ca66e15855d80886a9a97389e8077bd2a7f2fe",
+    "experiments/credit/event_optimizer_credit.py": "2a5672c5eb97a65f76113184af0257c634a99b104af456837872e095f35f948d",
+    "experiments/credit/run_native_event_optimizer.py": "121222839852d4c68efe71aa614335e39203f210ad894dbcf6003e4f14a7cbe5",
+    "experiments/credit/NATIVE_EVENT_OPTIMIZER_PROTOCOL.md": "9b71e27fc6c3aa052087571b7fa066216a8a76b4605346bad722fddf22f5e2b8",
+    "experiments/credit/NATIVE_EVENT_CREDIT_PROTOCOL.md": "6ca0671989f510e6792a2b61ce429774f7c84a2bbecef34bd117aa094bf0840f",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "data_sha256": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989",
+  "checkpoint": "experiments/results/credit/curie_native_event_optimizer_20261012_v1_smoke.pt",
+  "checkpoint_sha256": "89dcc09a2e2cf81abd4b99f23c6f95342d844b2c0922c3fd45a058881b3af089",
+  "scope": "First-pass native deep-parameter learning intervention, actual temporal likelihood and all model parameters adaptive, connected credit proposes all core gradients; next-block future likelihood teaches finite updates at audited p=.25. Exact local head gradients; native BP same actor/update frequency, common learned acquisition charged online/frozen. Private TRAIN sequences only, not chronological markets or official test. Dense internal temporal writes and deterministic mark addressing remain: no optional-route/counterfactual learning, full sparse substrate or supremacy claim. Fixed32sequence512targetTaxiDEV scoring, target chosen from completed native BP reference before new fits; recorded checkpoint wall-to-target is an upper bound on crossing time, unreached remains None. Acquisition horizons128/512 registered together,512scoring blocks; reused DEV selections are development only. CPU wall includes acquisition, forward, local backward, teacher, optimizer and repeated scoring; supported FLOPs not measured in this first diagnostic. Width scaling16/32 with same native construction, modes=width/2. Connected temporal field retains event cotangents and native module inputs; four full-support hard event queries decode shared typed responsibilities and learned input transports. Direct finite-update derivative plus policy score term uses actual next-block likelihood minus a same-head/no-core-update reference. Query scan, reference replay, packet copies and optimizer are charged. All core parameters still numerically updated, not sparse writes or few-bit compression. Forward-basis collection/decoding/optimizer work charged. All arms use the parity-validated compiled native temporal scan, first-order derivative only. Learned arms use exact local head AdamW.003 with inherited head optimizer state; Deep updates use future-trained shared typed step sizes bounded0..0.003 and shared momentum0..1; carried momentum state is detached at issuance and shared online/frozen after acquisition. Global actual step norm cap0.2. This is a local conditional optimizer derivative, not full-history meta differentiation. Native BP_SGD isolates old algorithm and BP_AdamW.003/wd0 is the stronger standard-native reference. All per-arm budgets allocate identical backend startup; teacher uses only first-order actor gradients, no actor Hessian. Same scored data but acquisition updates differ across BP/learned arms."
+}

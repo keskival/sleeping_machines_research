@@ -1,20 +1,32 @@
 {
   "status": "completed",
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "battle": "R1",
   "completed_evidence_sha256": {
     "experiments/results/credit/curie_optimizer_transport_fresh_20261011_v1_measure.json": "40694e9219961d896db3459bd2658c6ae1b0f26ed47cb5e7ba7789af074076df",
     "experiments/results/credit/curie_transport_execution_20261011_v1_measure.json": "d39a404542f56b3b78713d0cd26e39e00dcc5d35c463aa8ca772609e40c186b7",
     "experiments/results/credit/curie_token_controller_transport_variance_20261011_v1_measure.json": "142bb04986e4e216a35417fbf68405594d780c214f276dbd05bd3de6ff300b70",
     "experiments/results/credit/curie_token_optimizer_transport_20261011_v1_measure.json": "246110cca856f051d0bd813c55780201b8a4b63068334a340c679de3b3e5ef73",
-    "experiments/results/credit/curie_token_credit_tail_20261011_v2_measure.json": "4beceb631eba51a7a266332b2097b938383b309ec6ac4d7958906c7c92494a36"
+    "experiments/results/credit/curie_token_credit_tail_20261011_v2_measure.json": "4beceb631eba51a7a266332b2097b938383b309ec6ac4d7958906c7c92494a36",
+    "experiments/results/credit/curie_block_transport_fresh_20261011_v1_measure.json": "dca83f12b42350c620bda053df1b2439ad1d13bc9ff7b7128bf72e7b171ac31c",
+    "experiments/results/credit/curie_online_geometric_update_20261011_v3_fit.json": "606f5ced15db61e40af4313b3f437be29efd1b8a61da7c566b36971f3f8c5490",
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s0.json": "ba7cea545098cbce9650c771bdb6d5f5f235bfb21abbbd93d95d999393190a5b",
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s1.json": "713ea1b7855e481c11055dde248407d1095769b8ca8a591524838528e8bd78fd",
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s2.json": "f954652414ec1b9cfe3a0132066d3d3c82f9b405c6308f519e2dc14cfffba814",
+    "experiments/results/credit/curie_native_optimized_credit_20261011_v1_fit.json": "4c5878ba5fc76bd0db4b04c4032db4148375f697b0776265c532a07e026b11e4",
+    "experiments/results/credit/curie_native_optimized_credit_20261011_v1_s1_fit.json": "df6f125e4a5a50964ae8a98c4adeb32ca3b7a973feef77cf6186570b36a4a6bb",
+    "experiments/results/credit/curie_native_optimized_credit_20261011_v1_s2_fit.json": "b116816aa55bf48e2a3397abfe64ba4c1cb7fdd7beb53e4a09db5edae3fafae8",
+    "experiments/results/credit/curie_native_head_only_20261011_v1_measure.json": "617cb1f259d9fd3fbb314f8345518a6c3481199f54b412f1c63444f577f48edf",
+    "experiments/results/credit/curie_native_event_credit_20261012_v1_d32_fit.json": "688b3a2b0910e93fb3d90d0f56430318ff604abc09e82b3ef74a10a837e479b2",
+    "experiments/results/credit/curie_native_event_credit_20261012_v1_d16_fit.json": "628f8e5cc90742935b3f93c7074177194b216041d272df5d3b32fceb56c0779f"
   },
   "metrics": {
     "credit_error_static_reduction_pct": 98.35648344199768,
     "credit_error_reference_reduction_pct": 97.39851016577265,
     "credit_pipeline_speedup": 2.088933820454161,
     "credit_supported_work_reduction_pct": 93.47630120827559,
-    "credit_controller_variance_reduction_pct": 77.7915150056034
+    "credit_controller_variance_reduction_pct": 77.7915150056034,
+    "credit_block_diagonal_reduction_pct": 80.26170184036833
   },
   "fresh": {
     "prefixes": 8,
@@ -112,7 +124,453 @@
     "max_mean_error": 1.0842021724855044e-19,
     "scope": "Fixed connected controller, exact conditional action-noise covariance trace; no future-distribution/native-carrier variance or optimization-speed result."
   },
-  "status_text": "Working proper-token hard-route/online lexical learner prototype; prospective credit accuracy and measured acquisition economy. Early512-target controller fits have no confirmed held-out utility improvement.",
+  "status_text": "Future-trained native optimizer improves development quality in nine of nine seed/depth cases; acquired-policy reuse is the next complete-work test. Generated deep credit improves versus frozen on six width8 cases but does not confirm superiority to nativeAdamW.",
   "next_gate": "Better held-out prediction per total learning cost, then larger data/model and online application confirmation.",
-  "potential": "If the advantage scales: economical continual adaptation, more capable local machines, broader access to specialized learning, and a sparse asynchronous hardware path. Conditional platform opportunity, not measured industry impact or energy savings."
+  "potential": "If the advantage scales: economical continual adaptation, more capable local machines, broader access to specialized learning, and a sparse asynchronous hardware path. Conditional platform opportunity, not measured industry impact or energy savings.",
+  "block": {
+    "mse": {
+      "transport_block": 1.882784906067007e-11,
+      "transport_diagonal": 9.538739818601171e-11
+    },
+    "accuracy_gate": true,
+    "comparison": {
+      "mse_gain": 7.655954912534164e-11,
+      "paired_prefix_bootstrap95": [
+        1.581107205460867e-11,
+        1.4861755579443462e-10
+      ],
+      "per_prefix_gain": [
+        1.9211772099529306e-10,
+        2.6366374534757974e-11,
+        3.0702962583382253e-13,
+        9.720573302827438e-11,
+        2.8367131604824195e-11,
+        2.6811136701159106e-10,
+        -6.413275889350233e-15,
+        7.449478048027968e-15
+      ]
+    },
+    "basis": {
+      "wall_s": 0.056425766000756994,
+      "supported_flops": 463168512,
+      "rank": 8,
+      "cached_bytes": 17695200
+    },
+    "scope": "Eight NEW properly tokenized TRAIN prefixes/48futuretargets/64context; fixedrank8 forward-derived fullblock projected covariance, PSD/exactdiagonal conditional curvature; basis construction/application/cache charged. No newly fitted critic/neural-parameter claim; disjoint smoke prefix. Exact independent online lexical Adam worlds for all prefix-issued hard writes; shared no-op reference projection and fixed diagonal/spectral optimizer-transport rules. Rank8 fixed before these labels, spectral basis from forward embedding only; no fitting/tuning or actor utility claim. Early8 exact contrast divided by full target count supplies zero-tail diagnostic, same cost units as full-horizon contrasts. Uniform issued-logit variance, one observed future per prefix; no future-distribution/controller-parameter variance or utility/benchmark claim. Full carrier/projection/scoring/readout work charged, source pretraining/contracts/smokes additional; unsupported arithmetic included in wall but omitted from supported FLOPs. Saved TRAIN labels may support later registered boundary-critic fitting, no public DEV/TEST."
+  },
+  "online_update": {
+    "tag": "curie_online_geometric_update_20261011_v3_fit",
+    "comparison": {
+      "gain": 0.008656190020292498,
+      "paired_episode_bootstrap95": [
+        0.0022868400115791197,
+        0.01453585055394535
+      ],
+      "per_episode": [
+        0.01651515296340733,
+        -0.0028026378837360255,
+        0.0026115665740409355,
+        0.019159456789865636,
+        0.015234564634724279,
+        0.015990505210621286,
+        0.00769142021489877,
+        -0.0051505083414822295
+      ]
+    },
+    "utility_gate": true,
+    "config": {
+      "train_targets": 1024,
+      "episodes": 8,
+      "targets": 512,
+      "context": 64,
+      "meta_lr": 0.001,
+      "feedback_batch": 16,
+      "train_offset": 4915200,
+      "private_dev_offset": 5111808
+    },
+    "rows": [
+      {
+        "wall_s": 41.4301021900028,
+        "supported_flops": 57896900736,
+        "common_native_wall_s": 5.657518957712455,
+        "common_native_supported_flops": 3786312832,
+        "arm_wall_s": {
+          "adam": 3.069001988886157,
+          "fixed": 8.944980464264518,
+          "frozen": 10.359626039513387,
+          "online": 13.29320494280546
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872273408
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 511,
+        "mean_nll": {
+          "adam": 5.183530156625176,
+          "fixed": 5.231225202700044,
+          "frozen": 5.235396832632523,
+          "online": 5.218881679669115
+        },
+        "max_scored_keys": 294,
+        "mean_scored_keys": 180.259765625,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 0
+      },
+      {
+        "wall_s": 41.80910768400645,
+        "supported_flops": 57895118208,
+        "common_native_wall_s": 5.591311462980229,
+        "common_native_supported_flops": 3784530304,
+        "arm_wall_s": {
+          "adam": 3.0907577968318947,
+          "fixed": 9.067347729840549,
+          "frozen": 10.517806451069191,
+          "online": 13.433041959273396
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872273408
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 511,
+        "mean_nll": {
+          "adam": 5.435488184619427,
+          "fixed": 5.465976222316726,
+          "frozen": 5.4658668891838715,
+          "online": 5.468669527067608
+        },
+        "max_scored_keys": 256,
+        "mean_scored_keys": 154.474609375,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 1
+      },
+      {
+        "wall_s": 41.13228943099966,
+        "supported_flops": 57897112704,
+        "common_native_wall_s": 5.518531964742579,
+        "common_native_supported_flops": 3786524800,
+        "arm_wall_s": {
+          "adam": 3.0589126087143086,
+          "fixed": 8.866297544300323,
+          "frozen": 10.315912336227484,
+          "online": 13.264321743772598
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872273408
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 511,
+        "mean_nll": {
+          "adam": 5.047821658773071,
+          "fixed": 5.0776844022138965,
+          "frozen": 5.078856967309923,
+          "online": 5.076245400735882
+        },
+        "max_scored_keys": 298,
+        "mean_scored_keys": 183.42578125,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 2
+      },
+      {
+        "wall_s": 41.375446567020845,
+        "supported_flops": 57896749312,
+        "common_native_wall_s": 5.554427889146609,
+        "common_native_supported_flops": 3786161408,
+        "arm_wall_s": {
+          "adam": 3.0745848858496174,
+          "fixed": 8.900089594972087,
+          "frozen": 10.345153513801051,
+          "online": 13.394050090573728
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872273408
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 511,
+        "mean_nll": {
+          "adam": 5.298722631962596,
+          "fixed": 5.335108128611615,
+          "frozen": 5.337252905096209,
+          "online": 5.318093448306343
+        },
+        "max_scored_keys": 309,
+        "mean_scored_keys": 177.986328125,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 3
+      },
+      {
+        "wall_s": 41.07356619898928,
+        "supported_flops": 57894192000,
+        "common_native_wall_s": 5.381360981991747,
+        "common_native_supported_flops": 3783670656,
+        "arm_wall_s": {
+          "adam": 3.0657032209273893,
+          "fixed": 8.870410460192943,
+          "frozen": 10.303351128735812,
+          "online": 13.343804092844948
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872206848
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 510,
+        "mean_nll": {
+          "adam": 5.275442456868051,
+          "fixed": 5.2965389788371455,
+          "frozen": 5.297873705122348,
+          "online": 5.282639140487624
+        },
+        "max_scored_keys": 255,
+        "mean_scored_keys": 139.7578125,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 4
+      },
+      {
+        "wall_s": 41.1900445939973,
+        "supported_flops": 57896888064,
+        "common_native_wall_s": 5.426228972122772,
+        "common_native_supported_flops": 3786300160,
+        "arm_wall_s": {
+          "adam": 3.0592346889316104,
+          "fixed": 8.879723369143903,
+          "frozen": 10.449529534118483,
+          "online": 13.264050983067136
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872273408
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 511,
+        "mean_nll": {
+          "adam": 5.181586730949396,
+          "fixed": 5.196966780650382,
+          "frozen": 5.1988974840695645,
+          "online": 5.182906978858943
+        },
+        "max_scored_keys": 274,
+        "mean_scored_keys": 180.16015625,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 5
+      },
+      {
+        "wall_s": 41.154086346010445,
+        "supported_flops": 57893699712,
+        "common_native_wall_s": 5.466631929972209,
+        "common_native_supported_flops": 3783178368,
+        "arm_wall_s": {
+          "adam": 3.05009864011663,
+          "fixed": 8.879949884081725,
+          "frozen": 10.303592718701111,
+          "online": 13.34756772450055
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872206848
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 510,
+        "mean_nll": {
+          "adam": 5.8148966562071145,
+          "fixed": 5.851545455817279,
+          "frozen": 5.855260609327491,
+          "online": 5.847569189112592
+        },
+        "max_scored_keys": 255,
+        "mean_scored_keys": 132.404296875,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 6
+      },
+      {
+        "wall_s": 40.93780006602174,
+        "supported_flops": 57891067520,
+        "common_native_wall_s": 5.466527434648015,
+        "common_native_supported_flops": 3780546176,
+        "arm_wall_s": {
+          "adam": 3.061603592679603,
+          "fixed": 8.82803244329989,
+          "frozen": 10.285043670563027,
+          "online": 13.188368370407261
+        },
+        "arm_supported_flops": {
+          "adam": 6587285504,
+          "fixed": 15812767744,
+          "frozen": 15838261248,
+          "online": 15872206848
+        },
+        "scored_targets": 512,
+        "meta_updates": 32,
+        "meta_feedbacks": 510,
+        "mean_nll": {
+          "adam": 5.317622745612447,
+          "fixed": 5.345978235043585,
+          "frozen": 5.349762634774094,
+          "online": 5.354913143115576
+        },
+        "max_scored_keys": 182,
+        "mean_scored_keys": 92.84765625,
+        "selected_native_address_writes": 575,
+        "lexical_capacity": 64,
+        "native_available_vocabulary": 50257,
+        "update_function_parameters": 25027,
+        "episode": 7
+      }
+    ],
+    "pretraining": {
+      "wall_s": 38.18044508699677,
+      "supported_flops": 38915426560,
+      "common_native_wall_s": 10.866583014605567,
+      "common_native_supported_flops": 7170813184,
+      "arm_wall_s": {
+        "online": 27.116698287340114
+      },
+      "arm_supported_flops": {
+        "online": 31744613376
+      },
+      "scored_targets": 1024,
+      "meta_updates": 64,
+      "meta_feedbacks": 1023,
+      "mean_nll": {
+        "online": 4.903068879606931
+      },
+      "max_scored_keys": 438,
+      "mean_scored_keys": 271.37890625,
+      "selected_native_address_writes": 1087,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027
+    },
+    "whole_wall_s": 331.25975416999427,
+    "scope": "ProperGPT2 native2layer keyedsource,64dimensional forwardlexical learner; nativeparameters fixed. Learned connected updatefunction eta/damping/momentum trained by exact one-step futureloss through retained issued graph; mean of sixteen feedback gradients with fixed parameter version, partial final batch flushed; frozen-vs-online same inherited function/metaAdamstate. Fresh private episodes; unchanged sixteen-feedback rule, paid pretraining checkpoint reused rather than refitted. Streaming causal prequential privateTRAINtail; no publicDEV/TEST. No optionalcounterfactual route/actor learning added in this diagnostic; retains source temporal/addressedkey inference. Charge sharednative plus eacharm updates/geometry/function/solver/optimizer, basis/metapretraining additional to everyprimaryarm; unsupported solver/eigensolver/scalar work included in wall but omitted from supportedFLOPs. No equaltrainingclaim vsAdam/fullnativelearning/depth or hardwareefficiencyclaim."
+  },
+  "native_optimizer_learning": {
+    "rows": [
+      {
+        "seed": 0,
+        "depth": 2,
+        "dev_gain": 0.0059712564116763955,
+        "fixed_fit_wall_s": 39.58146964479238,
+        "learned_fit_wall_s": 43.54950251383707,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 0,
+        "depth": 4,
+        "dev_gain": 0.003768580251743592,
+        "fixed_fit_wall_s": 68.4019806291908,
+        "learned_fit_wall_s": 73.88585353572853,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 0,
+        "depth": 8,
+        "dev_gain": 0.005841015567360608,
+        "fixed_fit_wall_s": 126.5543968109414,
+        "learned_fit_wall_s": 136.16744522424415,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 1,
+        "depth": 2,
+        "dev_gain": 0.011609632466859865,
+        "fixed_fit_wall_s": 39.39276515925303,
+        "learned_fit_wall_s": 42.63007890130393,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 1,
+        "depth": 4,
+        "dev_gain": 0.008856668682403868,
+        "fixed_fit_wall_s": 67.64090574416332,
+        "learned_fit_wall_s": 73.45783034688793,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 1,
+        "depth": 8,
+        "dev_gain": 0.005729023489024043,
+        "fixed_fit_wall_s": 125.75046908878721,
+        "learned_fit_wall_s": 135.08178847422823,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 2,
+        "depth": 2,
+        "dev_gain": 0.018826159941443155,
+        "fixed_fit_wall_s": 40.624210350681096,
+        "learned_fit_wall_s": 43.77431024285033,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 2,
+        "depth": 4,
+        "dev_gain": 0.010268898206149069,
+        "fixed_fit_wall_s": 69.09262880007736,
+        "learned_fit_wall_s": 75.00119131687097,
+        "train_target_presentations": 130200
+      },
+      {
+        "seed": 2,
+        "depth": 8,
+        "dev_gain": 0.004204744563227947,
+        "fixed_fit_wall_s": 128.75815115892328,
+        "learned_fit_wall_s": 138.20517353178002,
+        "train_target_presentations": 130200
+      }
+    ],
+    "positive_cases": 9,
+    "mean_gain_by_depth": {
+      "2": 0.012135682939993139,
+      "4": 0.007631382380098843,
+      "8": 0.005258261206537533
+    },
+    "scope": "Three initializations, whole native depth2/4/8 width16,1400TaxiTRAIN sequences cropped32events/three passes,128reused DEV sequences. Future-trained180parameter group-scale controller retains exact actor backprop. All nine quality comparisons improve; complete CPU learning time increases. No efficient learned-core-credit or hardware claim."
+  },
+  "generated_credit_status": "Optimized width8 online/frozen finalDEV gain6/6, superiority to own-nativeAdamW unconfirmed. Width16 deep credit improves versus head-only, width32 harms. Event-conditioned query field repairs online-versus-frozen atwidth32 but remains worse than head-only and nativeAdamW. Learned amplitude/momentum comparison running; no pending score promoted."
 }
