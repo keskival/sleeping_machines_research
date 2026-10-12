@@ -71,6 +71,15 @@ def blocks():
             ('table',(['Exposure','Unique tokens','Fit targets','Initial NLL','Selected NLL','Context gain','Train seconds'],ur,[25,28,28,30,30,30,30])),
             ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
+    scaling=ROOT/'experiments/results/diagnostics/aws_common_prior_two_scale_20261012_v1.json'
+    if scaling.exists():
+        s=json.loads(scaling.read_text());assert s['status']=='completed'
+        for name,digest in {**s['source_sha256'],**s['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        result.append(('p','Fixed-final-endpoint future-learning comparison across two exposure scales. '+s['scope']))
+        for level in s['levels']:
+            replay=level['final_fresh_over_replay'];stop=level['final_fresh_over_stop'];work=level['fresh_replay_training_ratio']
+            result.append(('p',f"At {level['fitting_targets']} fitting targets: final fresh-over-replay gain {replay['mean']:.6f} ± {replay['sample_sd']:.6f} NLL; final fresh-over-stop gain {stop['mean']:.6f} ± {stop['sample_sd']:.6f}; fresh/replay training-wall ratio {work['mean']:.3f} ± {work['sample_sd']:.3f}. Mean ± sample SD across three seeds."))
     common_paths=[(str(seed),f'aws_integrated_common_prior_decision_20261012_s{seed}_v1') for seed in (6,7,8)]
     common_paths.extend((f'{seed} / larger',f'aws_integrated_common_prior_512k_decision_20261012_s{seed}_v1') for seed in (6,7,8))
     common_cohort=ROOT/'experiments/results/diagnostics/aws_common_prior_cohort_20261012_v1.json'
