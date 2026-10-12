@@ -14,7 +14,7 @@ def pages():
  for tag,title in [('curie_causal_native_20261012_v1_fit','Native future-sensor interface'),('curie_causal_structural_20261012_v2_fit','Observation-acquired relationships and sensor repair'),('curie_causal_race_credit_20261012_v1_fit','Native temporal race memory for credit itself')]:
   r=read(tag)
   if r is None:continue
-  rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",str(sum(t['targets'] for t in x['train'])+r.get('prior_acquisition_targets',r.get('prior_acquisition',{}).get('targets',0))))] for x in r['rows']]
+  rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",str(sum(t['targets'] for t in x['train'])+r.get('prior_acquisition_targets',r.get('prior_acquisition',{}).get('targets',0)))] for x in r['rows']]
   if 'mean_persistence_dev_nll' in r:rows.append(['Acquired persistence',f"{r['mean_persistence_dev_nll']:.6f}",f"{r['prior_acquisition']['wall_s']:.3f}",str(r['prior_acquisition']['targets'])])
   block=[('h2',title),('table',(['Learner','DEV NLL','Full fitting seconds','Target presentations'],rows,[61,34,40,32])),('small',r['scope'])]
   if tag=='curie_causal_native_20261012_v1_fit':block.append(('p','First-pass routed actor loses to self-only0.666639 and acquired persistence0.618503. Its selected value-read counter excludes discovery traffic: every request also reads/transports candidate_keys+1 contexts. This result diagnoses the sensor interface, not the full model family.'))
