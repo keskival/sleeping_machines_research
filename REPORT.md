@@ -2911,6 +2911,12 @@ Single-seed private DEV; same CPU model/updates/fitting-target count. Data diver
 
 Evidence aws_integrated_p24_unique_512k_decision_20261012_s6_v2.
 
+Fixed-final-endpoint future-learning comparison across two exposure scales. Three seeds per exposure level, common acquired state within every pair, shared private 2040-target DEV. Fixed final endpoint, no best-checkpoint selection. Intermediate horizons preserve signs of future-learning returns. Seeds are learner replications, not independent policy-training contexts. Replay/fresh targets match; stopping uses fewer updates. Two scales do not identify a scaling exponent or crossover. Full training CPU wall is measured; future policy acquisition and audit costs are not implied by these fits.
+
+At 131056 fitting targets: final fresh-over-replay gain 0.783930 ± 0.084506 NLL; final fresh-over-stop gain 0.500948 ± 0.063782; fresh/replay training-wall ratio 1.002 ± 0.003. Mean ± sample SD across three seeds.
+
+At 524272 fitting targets: final fresh-over-replay gain 0.662622 ± 0.019985 NLL; final fresh-over-stop gain 0.472784 ± 0.006677; fresh/replay training-wall ratio 1.003 ± 0.012. Mean ± sample SD across three seeds.
+
 Confirmed common-acquired-state future-learning benefit: fresh versus stopping at the shared branch0.500948±0.063782NLL; fresh versus best post-branch replay0.618278±0.049410; selected fresh NLL7.574443±0.013927. Three-seed within-family development evidence, mean±sampleSD. Identical prior and acquired-state fingerprint within each pair; same131056targets/256updates and private2040-target DEV. Stop refers to the actual branch state after128updates; selected-model comparison allows all scheduled checkpoints. Extra fresh learning costs128updates relative to stopping; replay/fresh totals have equal targets. No trained allocation policy or external-architecture claim.
 
 Resource scope:3,164,842total parameters; core16receivers,4selected writes and16scored keys per target. Complete fitting includes alternative replay, readout, all gradient/optimizer work and diagnostics. New fitting GFLOPs, fitting MFLOPs/target and inference MFLOPs/target are untraced; no older arithmetic ledger is copied into these rows. CPU wall is measured for every arm.
@@ -2966,6 +2972,32 @@ Fresh-versus-replay future-learning gain+0.640761NLL; fresh-versus-stopping at t
 Single-seed private DEV, same first262144tokens/prior/first512updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second512updates use repeated versus fresh262144tokens. Same524272fitting targets,1024updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
 
 Evidence aws_integrated_common_prior_512k_decision_20261012_s6_v1.
+
+Common-prior, common-acquired-state intervention seed7 / larger: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 262144 | 7.755541 | 7.820364 | 7.755541 | 608.974 |
+| fresh | 524288 | 7.755541 | 7.275658 | 7.275658 | 604.046 |
+
+Fresh-versus-replay future-learning gain+0.544706NLL; fresh-versus-stopping at the shared branch+0.479883. Full acquired-state SHA256 0f692c0c37cee530c371d2c1fe7a63cb72620c424f2819177977cbeaab96723c.
+
+Single-seed private DEV, same first262144tokens/prior/first512updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second512updates use repeated versus fresh262144tokens. Same524272fitting targets,1024updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_512k_decision_20261012_s7_v1.
+
+Common-prior, common-acquired-state intervention seed8 / larger: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 262144 | 7.759264 | 7.846007 | 7.746333 | 599.560 |
+| fresh | 524288 | 7.759264 | 7.292635 | 7.292635 | 600.521 |
+
+Fresh-versus-replay future-learning gain+0.553372NLL; fresh-versus-stopping at the shared branch+0.466629. Full acquired-state SHA256 6de945297d614e5f84871ac7c99cb59e08841ddf969dabf2e4bbcfbfb6190bb9.
+
+Single-seed private DEV, same first262144tokens/prior/first512updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second512updates use repeated versus fresh262144tokens. Same524272fitting targets,1024updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_512k_decision_20261012_s8_v1.
 
 ## FAS native frozen-recipe replication
 
@@ -5514,17 +5546,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
-
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
 
 ### Longer-data complete native learning
 
