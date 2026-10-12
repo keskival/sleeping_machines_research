@@ -5802,6 +5802,19 @@ Registered four-control confirmation gate passes; learned gains exact: +0.000264
 
 Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions.
 
+### Native world-credit fresh-system confirmation: seed195
+
+| Credit | Actor NLL | World NLL | Full seconds | Full ms/presentation |
+| --- | --- | --- | --- | --- |
+| exact | 0.421718 | 0.512929 | 1395.628 | 272.584 |
+| learned | 0.421739 | 0.513359 | 1383.481 | 270.211 |
+| prior | 0.421722 | 0.513261 | 1398.818 | 273.207 |
+| persistence | 0.421714 | 0.513692 | 1403.796 | 274.179 |
+
+Registered four-control confirmation gate fails; learned gains exact: -0.000021, prior: -0.000017, persistence: -0.000025. Generating-depth gains 4/exact: +0.000040, 4/prior: +0.000004, 4/persistence: -0.000005, 8/exact: -0.000082, 8/prior: -0.000039, 8/persistence: -0.000045. Next: stop repeat acquisitions; diagnose learned outcome information versus generic smoothing and native forward-response correction.
+
+Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions.
+
 ### Direct route-score credit: depth bounds and delayed utility contracts
 
 | Numerical contract | Maximum absolute error |

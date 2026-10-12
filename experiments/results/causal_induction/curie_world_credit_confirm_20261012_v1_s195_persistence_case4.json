@@ -1,0 +1,2039 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_world_credit_confirm_20261012_v1_s195_persistence_case4",
+  "seed": 195,
+  "arm": "persistence",
+  "case": 4,
+  "rows": [
+    {
+      "nll": 0.5489116626848102,
+      "targets": 128,
+      "first_half_nll": 0.5678508701154787,
+      "second_half_nll": 0.5299724552541416,
+      "world_nll": 0.5786114059353097,
+      "world_brier": 0.19174212556104764,
+      "world_first_half_nll": 0.541961077120169,
+      "world_second_half_nll": 0.6152617347504504,
+      "positive_fraction": 0.40625,
+      "wall_s": 140.4058559370169,
+      "optimizer_updates": 16,
+      "peak_persistent_tensor_bytes": 66120,
+      "peak_occupied_nodes": 72,
+      "peak_world_addresses": 58,
+      "issued_trace": [
+        {
+          "issued_time": 0.005,
+          "feedback_time": 0.3017871577506122,
+          "query_id": 0,
+          "probability": 0.17018210887908936,
+          "world_probability": 0.2906405031681061,
+          "target": 0
+        },
+        {
+          "issued_time": 1.085,
+          "feedback_time": 1.1098333167702812,
+          "query_id": 1,
+          "probability": 0.1653013527393341,
+          "world_probability": 0.2842651903629303,
+          "target": 0
+        },
+        {
+          "issued_time": 2.165,
+          "feedback_time": 2.4570735836711295,
+          "query_id": 2,
+          "probability": 0.17049860954284668,
+          "world_probability": 0.303053617477417,
+          "target": 0
+        },
+        {
+          "issued_time": 3.245,
+          "feedback_time": 3.2684541630807558,
+          "query_id": 3,
+          "probability": 0.1745234578847885,
+          "world_probability": 0.3133983016014099,
+          "target": 0
+        },
+        {
+          "issued_time": 4.325,
+          "feedback_time": 4.580240019308672,
+          "query_id": 4,
+          "probability": 0.8207831382751465,
+          "world_probability": 0.6712642312049866,
+          "target": 1
+        },
+        {
+          "issued_time": 5.405,
+          "feedback_time": 5.542002654031297,
+          "query_id": 5,
+          "probability": 0.169826477766037,
+          "world_probability": 0.2765331268310547,
+          "target": 0
+        },
+        {
+          "issued_time": 6.485,
+          "feedback_time": 6.6854362355917525,
+          "query_id": 6,
+          "probability": 0.1996791809797287,
+          "world_probability": 0.5150600075721741,
+          "target": 0
+        },
+        {
+          "issued_time": 7.565,
+          "feedback_time": 7.598081358746065,
+          "query_id": 7,
+          "probability": 0.7995392680168152,
+          "world_probability": 0.6713746786117554,
+          "target": 1
+        },
+        {
+          "issued_time": 8.645000000000001,
+          "feedback_time": 8.91306043481028,
+          "query_id": 8,
+          "probability": 0.7856597900390625,
+          "world_probability": 0.6701760292053223,
+          "target": 0
+        },
+        {
+          "issued_time": 9.725000000000001,
+          "feedback_time": 10.031024180320866,
+          "query_id": 9,
+          "probability": 0.7976176142692566,
+          "world_probability": 0.5780714154243469,
+          "target": 1
+        },
+        {
+          "issued_time": 10.805000000000001,
+          "feedback_time": 10.848833555818324,
+          "query_id": 10,
+          "probability": 0.8191136121749878,
+          "world_probability": 0.729141354560852,
+          "target": 1
+        },
+        {
+          "issued_time": 11.885000000000002,
+          "feedback_time": 12.089803068482986,
+          "query_id": 11,
+          "probability": 0.8006019592285156,
+          "world_probability": 0.6541204452514648,
+          "target": 1
+        },
+        {
+          "issued_time": 12.965000000000002,
+          "feedback_time": 13.016646708496818,
+          "query_id": 12,
+          "probability": 0.18204742670059204,
+          "world_probability": 0.263036847114563,
+          "target": 0
+        },
+        {
+          "issued_time": 14.045000000000002,
+          "feedback_time": 14.244950814003277,
+          "query_id": 13,
+          "probability": 0.8045604825019836,
+          "world_probability": 0.7119700908660889,
+          "target": 1
+        },
+        {
+          "issued_time": 15.125000000000002,
+          "feedback_time": 15.391183209310194,
+          "query_id": 14,
+          "probability": 0.792007327079773,
+          "world_probability": 0.6308793425559998,
+          "target": 1
+        },
+        {
+          "issued_time": 16.205000000000002,
+          "feedback_time": 16.310404573100907,
+          "query_id": 15,
+          "probability": 0.8446319103240967,
+          "world_probability": 0.7227423191070557,
+          "target": 0
+        },
+        {
+          "issued_time": 17.285,
+          "feedback_time": 17.323445307738513,
+          "query_id": 16,
+          "probability": 0.16014550626277924,
+          "world_probability": 0.10025210678577423,
+          "target": 0
+        },
+        {
+          "issued_time": 18.365,
+          "feedback_time": 18.764570883381836,
+          "query_id": 17,
+          "probability": 0.8117008805274963,
+          "world_probability": 0.6802942752838135,
+          "target": 0
+        },
+        {
+          "issued_time": 19.445,
+          "feedback_time": 19.612296100133758,
+          "query_id": 18,
+          "probability": 0.8078188300132751,
+          "world_probability": 0.7065979838371277,
+          "target": 1
+        },
+        {
+          "issued_time": 20.525000000000002,
+          "feedback_time": 20.753516765046005,
+          "query_id": 19,
+          "probability": 0.20616090297698975,
+          "world_probability": 0.3503058850765228,
+          "target": 1
+        },
+        {
+          "issued_time": 21.605,
+          "feedback_time": 21.682143211913218,
+          "query_id": 20,
+          "probability": 0.20689040422439575,
+          "world_probability": 0.3316764533519745,
+          "target": 0
+        },
+        {
+          "issued_time": 22.685,
+          "feedback_time": 22.79588468809444,
+          "query_id": 21,
+          "probability": 0.20645473897457123,
+          "world_probability": 0.23715269565582275,
+          "target": 1
+        },
+        {
+          "issued_time": 23.765,
+          "feedback_time": 24.06839992717632,
+          "query_id": 22,
+          "probability": 0.16369283199310303,
+          "world_probability": 0.20473124086856842,
+          "target": 0
+        },
+        {
+          "issued_time": 24.845000000000002,
+          "feedback_time": 25.093303909980946,
+          "query_id": 23,
+          "probability": 0.19478726387023926,
+          "world_probability": 0.2933972477912903,
+          "target": 0
+        },
+        {
+          "issued_time": 25.925,
+          "feedback_time": 26.223031064771185,
+          "query_id": 24,
+          "probability": 0.12979842722415924,
+          "world_probability": 0.3113251328468323,
+          "target": 0
+        },
+        {
+          "issued_time": 27.005,
+          "feedback_time": 27.23397519124447,
+          "query_id": 25,
+          "probability": 0.18227027356624603,
+          "world_probability": 0.3454446494579315,
+          "target": 0
+        },
+        {
+          "issued_time": 28.085,
+          "feedback_time": 28.439381543699547,
+          "query_id": 26,
+          "probability": 0.8471687436103821,
+          "world_probability": 0.674296498298645,
+          "target": 1
+        },
+        {
+          "issued_time": 29.165000000000003,
+          "feedback_time": 29.232910649131703,
+          "query_id": 27,
+          "probability": 0.14769956469535828,
+          "world_probability": 0.2858729660511017,
+          "target": 0
+        },
+        {
+          "issued_time": 30.245,
+          "feedback_time": 30.298338289784873,
+          "query_id": 28,
+          "probability": 0.8297649025917053,
+          "world_probability": 0.7720874547958374,
+          "target": 0
+        },
+        {
+          "issued_time": 31.325,
+          "feedback_time": 31.44317381007801,
+          "query_id": 29,
+          "probability": 0.8579146265983582,
+          "world_probability": 0.5576954483985901,
+          "target": 1
+        },
+        {
+          "issued_time": 32.40500000000001,
+          "feedback_time": 32.561809513700695,
+          "query_id": 30,
+          "probability": 0.1536356508731842,
+          "world_probability": 0.2589056193828583,
+          "target": 0
+        },
+        {
+          "issued_time": 33.48500000000001,
+          "feedback_time": 33.57408296828614,
+          "query_id": 31,
+          "probability": 0.8400052189826965,
+          "world_probability": 0.6422934532165527,
+          "target": 1
+        },
+        {
+          "issued_time": 34.565000000000005,
+          "feedback_time": 34.625995509328476,
+          "query_id": 32,
+          "probability": 0.813556432723999,
+          "world_probability": 0.8343815207481384,
+          "target": 1
+        },
+        {
+          "issued_time": 35.645,
+          "feedback_time": 36.001778620841314,
+          "query_id": 33,
+          "probability": 0.17497089505195618,
+          "world_probability": 0.24274419248104095,
+          "target": 0
+        },
+        {
+          "issued_time": 36.725,
+          "feedback_time": 36.857591198098895,
+          "query_id": 34,
+          "probability": 0.8384715914726257,
+          "world_probability": 0.5760110020637512,
+          "target": 1
+        },
+        {
+          "issued_time": 37.80500000000001,
+          "feedback_time": 37.820881163339,
+          "query_id": 35,
+          "probability": 0.18129396438598633,
+          "world_probability": 0.5990932583808899,
+          "target": 0
+        },
+        {
+          "issued_time": 38.885000000000005,
+          "feedback_time": 39.05356702650735,
+          "query_id": 36,
+          "probability": 0.1704881489276886,
+          "world_probability": 0.39417240023612976,
+          "target": 0
+        },
+        {
+          "issued_time": 39.965,
+          "feedback_time": 39.97599886636493,
+          "query_id": 37,
+          "probability": 0.1688847839832306,
+          "world_probability": 0.30881640315055847,
+          "target": 0
+        },
+        {
+          "issued_time": 41.04500000000001,
+          "feedback_time": 41.27607917574278,
+          "query_id": 38,
+          "probability": 0.19339300692081451,
+          "world_probability": 0.3190145790576935,
+          "target": 0
+        },
+        {
+          "issued_time": 42.12500000000001,
+          "feedback_time": 42.366747061561085,
+          "query_id": 39,
+          "probability": 0.8316236734390259,
+          "world_probability": 0.7198556065559387,
+          "target": 1
+        },
+        {
+          "issued_time": 43.205000000000005,
+          "feedback_time": 43.40067554996297,
+          "query_id": 40,
+          "probability": 0.8500373363494873,
+          "world_probability": 0.6434182524681091,
+          "target": 0
+        },
+        {
+          "issued_time": 44.285000000000004,
+          "feedback_time": 44.64025649508516,
+          "query_id": 41,
+          "probability": 0.8277518153190613,
+          "world_probability": 0.771820604801178,
+          "target": 0
+        },
+        {
+          "issued_time": 45.365,
+          "feedback_time": 45.499299330984684,
+          "query_id": 42,
+          "probability": 0.16298796236515045,
+          "world_probability": 0.7337431311607361,
+          "target": 1
+        },
+        {
+          "issued_time": 46.44500000000001,
+          "feedback_time": 46.48444159313478,
+          "query_id": 43,
+          "probability": 0.8420440554618835,
+          "world_probability": 0.5364139676094055,
+          "target": 1
+        },
+        {
+          "issued_time": 47.525000000000006,
+          "feedback_time": 47.76971777908029,
+          "query_id": 44,
+          "probability": 0.8237065672874451,
+          "world_probability": 0.6784828901290894,
+          "target": 1
+        },
+        {
+          "issued_time": 48.605000000000004,
+          "feedback_time": 48.88948922228235,
+          "query_id": 45,
+          "probability": 0.18762022256851196,
+          "world_probability": 0.08147599548101425,
+          "target": 0
+        },
+        {
+          "issued_time": 49.68500000000001,
+          "feedback_time": 49.750710402148265,
+          "query_id": 46,
+          "probability": 0.1975644826889038,
+          "world_probability": 0.27050113677978516,
+          "target": 0
+        },
+        {
+          "issued_time": 50.76500000000001,
+          "feedback_time": 50.864170315705564,
+          "query_id": 47,
+          "probability": 0.8616886734962463,
+          "world_probability": 0.35642009973526,
+          "target": 0
+        },
+        {
+          "issued_time": 51.845000000000006,
+          "feedback_time": 52.24458847615126,
+          "query_id": 48,
+          "probability": 0.1813923865556717,
+          "world_probability": 0.11469689756631851,
+          "target": 0
+        },
+        {
+          "issued_time": 52.925000000000004,
+          "feedback_time": 53.1605371237223,
+          "query_id": 49,
+          "probability": 0.16562268137931824,
+          "world_probability": 0.43980932235717773,
+          "target": 0
+        },
+        {
+          "issued_time": 54.005,
+          "feedback_time": 54.34572645054043,
+          "query_id": 50,
+          "probability": 0.8333151936531067,
+          "world_probability": 0.25027281045913696,
+          "target": 0
+        },
+        {
+          "issued_time": 55.08500000000001,
+          "feedback_time": 55.417388153654564,
+          "query_id": 51,
+          "probability": 0.8106833696365356,
+          "world_probability": 0.8807681798934937,
+          "target": 1
+        },
+        {
+          "issued_time": 56.165000000000006,
+          "feedback_time": 56.2440822962825,
+          "query_id": 52,
+          "probability": 0.20177721977233887,
+          "world_probability": 0.4227180778980255,
+          "target": 0
+        },
+        {
+          "issued_time": 57.245000000000005,
+          "feedback_time": 57.42080283742967,
+          "query_id": 53,
+          "probability": 0.1348838210105896,
+          "world_probability": 0.34719571471214294,
+          "target": 1
+        },
+        {
+          "issued_time": 58.32500000000001,
+          "feedback_time": 58.42883570191517,
+          "query_id": 54,
+          "probability": 0.8088556528091431,
+          "world_probability": 0.7018187642097473,
+          "target": 1
+        },
+        {
+          "issued_time": 59.40500000000001,
+          "feedback_time": 59.79838579050811,
+          "query_id": 55,
+          "probability": 0.15442578494548798,
+          "world_probability": 0.2505389451980591,
+          "target": 1
+        },
+        {
+          "issued_time": 60.48500000000001,
+          "feedback_time": 60.81841349279198,
+          "query_id": 56,
+          "probability": 0.862216055393219,
+          "world_probability": 0.6112910509109497,
+          "target": 0
+        },
+        {
+          "issued_time": 61.565000000000005,
+          "feedback_time": 61.63495207030592,
+          "query_id": 57,
+          "probability": 0.18526753783226013,
+          "world_probability": 0.18932917714118958,
+          "target": 0
+        },
+        {
+          "issued_time": 62.645,
+          "feedback_time": 62.97694549655129,
+          "query_id": 58,
+          "probability": 0.8423795700073242,
+          "world_probability": 0.34965837001800537,
+          "target": 1
+        },
+        {
+          "issued_time": 63.72500000000001,
+          "feedback_time": 63.752252054218715,
+          "query_id": 59,
+          "probability": 0.19185592234134674,
+          "world_probability": 0.18512512743473053,
+          "target": 0
+        },
+        {
+          "issued_time": 64.805,
+          "feedback_time": 64.95529207120333,
+          "query_id": 60,
+          "probability": 0.8116068243980408,
+          "world_probability": 0.6890061497688293,
+          "target": 1
+        },
+        {
+          "issued_time": 65.885,
+          "feedback_time": 65.92992703377348,
+          "query_id": 61,
+          "probability": 0.7869337797164917,
+          "world_probability": 0.6527880430221558,
+          "target": 1
+        },
+        {
+          "issued_time": 66.965,
+          "feedback_time": 67.35491182672594,
+          "query_id": 62,
+          "probability": 0.8594777584075928,
+          "world_probability": 0.5944536924362183,
+          "target": 1
+        },
+        {
+          "issued_time": 68.045,
+          "feedback_time": 68.3693316349025,
+          "query_id": 63,
+          "probability": 0.8061772584915161,
+          "world_probability": 0.5840452313423157,
+          "target": 0
+        },
+        {
+          "issued_time": 69.125,
+          "feedback_time": 69.35461292715375,
+          "query_id": 64,
+          "probability": 0.19937735795974731,
+          "world_probability": 0.17575661838054657,
+          "target": 0
+        },
+        {
+          "issued_time": 70.205,
+          "feedback_time": 70.58154535442632,
+          "query_id": 65,
+          "probability": 0.2037467211484909,
+          "world_probability": 0.16700080037117004,
+          "target": 0
+        },
+        {
+          "issued_time": 71.285,
+          "feedback_time": 71.29769594239458,
+          "query_id": 66,
+          "probability": 0.836409866809845,
+          "world_probability": 0.6115666627883911,
+          "target": 1
+        },
+        {
+          "issued_time": 72.365,
+          "feedback_time": 72.664477377986,
+          "query_id": 67,
+          "probability": 0.1582556515932083,
+          "world_probability": 0.3857147991657257,
+          "target": 0
+        },
+        {
+          "issued_time": 73.445,
+          "feedback_time": 73.54593297449432,
+          "query_id": 68,
+          "probability": 0.8335931301116943,
+          "world_probability": 0.8920419216156006,
+          "target": 0
+        },
+        {
+          "issued_time": 74.525,
+          "feedback_time": 74.82301137730838,
+          "query_id": 69,
+          "probability": 0.8402057886123657,
+          "world_probability": 0.7239816784858704,
+          "target": 1
+        },
+        {
+          "issued_time": 75.605,
+          "feedback_time": 75.93763464061992,
+          "query_id": 70,
+          "probability": 0.834290087223053,
+          "world_probability": 0.7488856911659241,
+          "target": 1
+        },
+        {
+          "issued_time": 76.685,
+          "feedback_time": 76.86814719881917,
+          "query_id": 71,
+          "probability": 0.7995946407318115,
+          "world_probability": 0.5764465928077698,
+          "target": 1
+        },
+        {
+          "issued_time": 77.765,
+          "feedback_time": 77.89682345524533,
+          "query_id": 72,
+          "probability": 0.19457469880580902,
+          "world_probability": 0.2213812917470932,
+          "target": 0
+        },
+        {
+          "issued_time": 78.845,
+          "feedback_time": 78.92948411466615,
+          "query_id": 73,
+          "probability": 0.8166467547416687,
+          "world_probability": 0.41833916306495667,
+          "target": 1
+        },
+        {
+          "issued_time": 79.925,
+          "feedback_time": 80.02842600577156,
+          "query_id": 74,
+          "probability": 0.21241655945777893,
+          "world_probability": 0.2304009199142456,
+          "target": 0
+        },
+        {
+          "issued_time": 81.005,
+          "feedback_time": 81.32967783673408,
+          "query_id": 75,
+          "probability": 0.18429693579673767,
+          "world_probability": 0.13849391043186188,
+          "target": 0
+        },
+        {
+          "issued_time": 82.08500000000001,
+          "feedback_time": 82.17980502167788,
+          "query_id": 76,
+          "probability": 0.19218680262565613,
+          "world_probability": 0.21217788755893707,
+          "target": 0
+        },
+        {
+          "issued_time": 83.165,
+          "feedback_time": 83.41516973705855,
+          "query_id": 77,
+          "probability": 0.16950461268424988,
+          "world_probability": 0.0695546418428421,
+          "target": 0
+        },
+        {
+          "issued_time": 84.245,
+          "feedback_time": 84.4971108411289,
+          "query_id": 78,
+          "probability": 0.18842972815036774,
+          "world_probability": 0.2809204161167145,
+          "target": 0
+        },
+        {
+          "issued_time": 85.325,
+          "feedback_time": 85.50498681853907,
+          "query_id": 79,
+          "probability": 0.18489645421504974,
+          "world_probability": 0.24871264398097992,
+          "target": 0
+        },
+        {
+          "issued_time": 86.405,
+          "feedback_time": 86.64350541745918,
+          "query_id": 80,
+          "probability": 0.8318924307823181,
+          "world_probability": 0.8825745582580566,
+          "target": 1
+        },
+        {
+          "issued_time": 87.485,
+          "feedback_time": 87.77707430944065,
+          "query_id": 81,
+          "probability": 0.1671304702758789,
+          "world_probability": 0.2270517796278,
+          "target": 0
+        },
+        {
+          "issued_time": 88.565,
+          "feedback_time": 88.60470652591252,
+          "query_id": 82,
+          "probability": 0.17390680313110352,
+          "world_probability": 0.3352920114994049,
+          "target": 0
+        },
+        {
+          "issued_time": 89.645,
+          "feedback_time": 89.7188436475435,
+          "query_id": 83,
+          "probability": 0.19912907481193542,
+          "world_probability": 0.1446525752544403,
+          "target": 0
+        },
+        {
+          "issued_time": 90.725,
+          "feedback_time": 90.8467183567595,
+          "query_id": 84,
+          "probability": 0.8316441178321838,
+          "world_probability": 0.28713157773017883,
+          "target": 0
+        },
+        {
+          "issued_time": 91.805,
+          "feedback_time": 91.85083811973357,
+          "query_id": 85,
+          "probability": 0.18665139377117157,
+          "world_probability": 0.21297910809516907,
+          "target": 0
+        },
+        {
+          "issued_time": 92.885,
+          "feedback_time": 92.99974049857707,
+          "query_id": 86,
+          "probability": 0.1863875538110733,
+          "world_probability": 0.2007039338350296,
+          "target": 0
+        },
+        {
+          "issued_time": 93.965,
+          "feedback_time": 94.03909019336035,
+          "query_id": 87,
+          "probability": 0.793237566947937,
+          "world_probability": 0.3343370258808136,
+          "target": 0
+        },
+        {
+          "issued_time": 95.045,
+          "feedback_time": 95.25032361160271,
+          "query_id": 88,
+          "probability": 0.20944862067699432,
+          "world_probability": 0.1852312535047531,
+          "target": 0
+        },
+        {
+          "issued_time": 96.125,
+          "feedback_time": 96.13973248817096,
+          "query_id": 89,
+          "probability": 0.8018233180046082,
+          "world_probability": 0.8862277269363403,
+          "target": 1
+        },
+        {
+          "issued_time": 97.205,
+          "feedback_time": 97.50418635143431,
+          "query_id": 90,
+          "probability": 0.7913626432418823,
+          "world_probability": 0.4043004512786865,
+          "target": 0
+        },
+        {
+          "issued_time": 98.285,
+          "feedback_time": 98.54120944948963,
+          "query_id": 91,
+          "probability": 0.7950798869132996,
+          "world_probability": 0.3548336923122406,
+          "target": 1
+        },
+        {
+          "issued_time": 99.36500000000001,
+          "feedback_time": 99.58955889795344,
+          "query_id": 92,
+          "probability": 0.18640963733196259,
+          "world_probability": 0.08363012224435806,
+          "target": 0
+        },
+        {
+          "issued_time": 100.44500000000001,
+          "feedback_time": 100.71831999171559,
+          "query_id": 93,
+          "probability": 0.1418263465166092,
+          "world_probability": 0.34119054675102234,
+          "target": 0
+        },
+        {
+          "issued_time": 101.525,
+          "feedback_time": 101.70500283239812,
+          "query_id": 94,
+          "probability": 0.1784353256225586,
+          "world_probability": 0.20320019125938416,
+          "target": 1
+        },
+        {
+          "issued_time": 102.605,
+          "feedback_time": 102.98775668612437,
+          "query_id": 95,
+          "probability": 0.8316776156425476,
+          "world_probability": 0.8790777325630188,
+          "target": 1
+        },
+        {
+          "issued_time": 103.685,
+          "feedback_time": 103.97229412736282,
+          "query_id": 96,
+          "probability": 0.14605776965618134,
+          "world_probability": 0.22912457585334778,
+          "target": 0
+        },
+        {
+          "issued_time": 104.765,
+          "feedback_time": 104.99796279774182,
+          "query_id": 97,
+          "probability": 0.7889942526817322,
+          "world_probability": 0.8812475800514221,
+          "target": 0
+        },
+        {
+          "issued_time": 105.845,
+          "feedback_time": 106.10934957356552,
+          "query_id": 98,
+          "probability": 0.8113017678260803,
+          "world_probability": 0.6033068895339966,
+          "target": 1
+        },
+        {
+          "issued_time": 106.925,
+          "feedback_time": 107.12625850361083,
+          "query_id": 99,
+          "probability": 0.1509198397397995,
+          "world_probability": 0.20174047350883484,
+          "target": 0
+        },
+        {
+          "issued_time": 108.005,
+          "feedback_time": 108.19530128424849,
+          "query_id": 100,
+          "probability": 0.16353823244571686,
+          "world_probability": 0.10017619282007217,
+          "target": 0
+        },
+        {
+          "issued_time": 109.08500000000001,
+          "feedback_time": 109.22219036152588,
+          "query_id": 101,
+          "probability": 0.7926522493362427,
+          "world_probability": 0.7341428995132446,
+          "target": 0
+        },
+        {
+          "issued_time": 110.165,
+          "feedback_time": 110.22450271346717,
+          "query_id": 102,
+          "probability": 0.8016043305397034,
+          "world_probability": 0.20219765603542328,
+          "target": 1
+        },
+        {
+          "issued_time": 111.245,
+          "feedback_time": 111.62666899309984,
+          "query_id": 103,
+          "probability": 0.13438771665096283,
+          "world_probability": 0.278949499130249,
+          "target": 1
+        },
+        {
+          "issued_time": 112.325,
+          "feedback_time": 112.54644400007639,
+          "query_id": 104,
+          "probability": 0.8430700898170471,
+          "world_probability": 0.7883093357086182,
+          "target": 1
+        },
+        {
+          "issued_time": 113.405,
+          "feedback_time": 113.56132102780612,
+          "query_id": 105,
+          "probability": 0.8066742420196533,
+          "world_probability": 0.8133152723312378,
+          "target": 0
+        },
+        {
+          "issued_time": 114.485,
+          "feedback_time": 114.75910239832655,
+          "query_id": 106,
+          "probability": 0.16901567578315735,
+          "world_probability": 0.09420493245124817,
+          "target": 0
+        },
+        {
+          "issued_time": 115.565,
+          "feedback_time": 115.6262716199444,
+          "query_id": 107,
+          "probability": 0.8014686703681946,
+          "world_probability": 0.6286228895187378,
+          "target": 1
+        },
+        {
+          "issued_time": 116.64500000000001,
+          "feedback_time": 116.73264105932918,
+          "query_id": 108,
+          "probability": 0.185416117310524,
+          "world_probability": 0.3441826403141022,
+          "target": 0
+        },
+        {
+          "issued_time": 117.72500000000001,
+          "feedback_time": 117.83946265077509,
+          "query_id": 109,
+          "probability": 0.17454779148101807,
+          "world_probability": 0.06941737979650497,
+          "target": 1
+        },
+        {
+          "issued_time": 118.805,
+          "feedback_time": 119.0801088098907,
+          "query_id": 110,
+          "probability": 0.19210386276245117,
+          "world_probability": 0.11135277152061462,
+          "target": 0
+        },
+        {
+          "issued_time": 119.885,
+          "feedback_time": 119.97360190375342,
+          "query_id": 111,
+          "probability": 0.79240882396698,
+          "world_probability": 0.5481032133102417,
+          "target": 1
+        },
+        {
+          "issued_time": 120.965,
+          "feedback_time": 121.32716985934654,
+          "query_id": 112,
+          "probability": 0.2099701464176178,
+          "world_probability": 0.24644368886947632,
+          "target": 0
+        },
+        {
+          "issued_time": 122.045,
+          "feedback_time": 122.08749042628047,
+          "query_id": 113,
+          "probability": 0.8469948172569275,
+          "world_probability": 0.2873556911945343,
+          "target": 0
+        },
+        {
+          "issued_time": 123.125,
+          "feedback_time": 123.16212977283342,
+          "query_id": 114,
+          "probability": 0.18571557104587555,
+          "world_probability": 0.09407089650630951,
+          "target": 0
+        },
+        {
+          "issued_time": 124.205,
+          "feedback_time": 124.2392493804355,
+          "query_id": 115,
+          "probability": 0.195212721824646,
+          "world_probability": 0.08914510905742645,
+          "target": 0
+        },
+        {
+          "issued_time": 125.285,
+          "feedback_time": 125.67971517563552,
+          "query_id": 116,
+          "probability": 0.7927014827728271,
+          "world_probability": 0.8743162751197815,
+          "target": 0
+        },
+        {
+          "issued_time": 126.36500000000001,
+          "feedback_time": 126.489126986189,
+          "query_id": 117,
+          "probability": 0.1688970923423767,
+          "world_probability": 0.07722069323062897,
+          "target": 1
+        },
+        {
+          "issued_time": 127.44500000000001,
+          "feedback_time": 127.67494331621397,
+          "query_id": 118,
+          "probability": 0.18174944818019867,
+          "world_probability": 0.1864447146654129,
+          "target": 0
+        },
+        {
+          "issued_time": 128.525,
+          "feedback_time": 128.7126982656313,
+          "query_id": 119,
+          "probability": 0.8588929176330566,
+          "world_probability": 0.31340742111206055,
+          "target": 1
+        },
+        {
+          "issued_time": 129.60500000000002,
+          "feedback_time": 129.7448692409623,
+          "query_id": 120,
+          "probability": 0.1676250547170639,
+          "world_probability": 0.17327532172203064,
+          "target": 0
+        },
+        {
+          "issued_time": 130.685,
+          "feedback_time": 130.78586510235723,
+          "query_id": 121,
+          "probability": 0.8062669634819031,
+          "world_probability": 0.4524560272693634,
+          "target": 1
+        },
+        {
+          "issued_time": 131.76500000000001,
+          "feedback_time": 131.95880713620534,
+          "query_id": 122,
+          "probability": 0.184554785490036,
+          "world_probability": 0.09648372232913971,
+          "target": 0
+        },
+        {
+          "issued_time": 132.845,
+          "feedback_time": 132.90277851108067,
+          "query_id": 123,
+          "probability": 0.8340580463409424,
+          "world_probability": 0.6192454099655151,
+          "target": 1
+        },
+        {
+          "issued_time": 133.925,
+          "feedback_time": 134.15911124194102,
+          "query_id": 124,
+          "probability": 0.1915367990732193,
+          "world_probability": 0.18366578221321106,
+          "target": 1
+        },
+        {
+          "issued_time": 135.005,
+          "feedback_time": 135.05322018240224,
+          "query_id": 125,
+          "probability": 0.8154377341270447,
+          "world_probability": 0.27763596177101135,
+          "target": 1
+        },
+        {
+          "issued_time": 136.085,
+          "feedback_time": 136.21694531480523,
+          "query_id": 126,
+          "probability": 0.7969673871994019,
+          "world_probability": 0.4899911880493164,
+          "target": 1
+        },
+        {
+          "issued_time": 137.165,
+          "feedback_time": 137.3400951803653,
+          "query_id": 127,
+          "probability": 0.8115419149398804,
+          "world_probability": 0.8813403248786926,
+          "target": 1
+        }
+      ],
+      "events": 9307,
+      "queries": 128,
+      "candidate_keys": 1018,
+      "value_reads": 256,
+      "sensor_decodes": 256,
+      "selected_updates": 37228,
+      "counterfactual_unit_values": 74456,
+      "discovery_context_reads": 1146,
+      "relationship_candidate_updates": 69864,
+      "relationship_reads": 1018,
+      "credit_events": 256,
+      "credit_candidate_keys": 2048,
+      "credit_selected_updates": 1024,
+      "credit_counterfactual_values": 2048,
+      "credit_state_reads": 0,
+      "critic_targets": 128,
+      "exact_alternative_audits": 128,
+      "critic_contrast_squared_error": 0.0,
+      "audited_contrast_squared_magnitude": 0.0,
+      "bank_scored_keys": 22192,
+      "bank_value_reads": 1398,
+      "bank_discovery_records": 23897,
+      "bank_context_reads": 22192,
+      "bank_writes": 9563,
+      "bank_counterfactual_values": 22192,
+      "forward_credit_reads": 90,
+      "critic_forward_reads": 236,
+      "bank_peak_records": 260,
+      "world_queries": 128,
+      "world_feedback": 128,
+      "world_nll_sum": 74.06225846707821,
+      "world_brier_sum": 24.542992071814105,
+      "route_logit_gap_squared": 0.3537646341927996,
+      "route_contrast_residual_squared": 0.016773198834638008,
+      "route_label_noise_proxy": 0.05067748226362476,
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case4_9700_base.npz",
+      "depth": 8,
+      "width": 8,
+      "variant": "base",
+      "incoming_learner_fingerprint": "e4ab29b590a94f782b7a39a3579ff12cb2808a00e824a1dd1097c867e4651fed",
+      "persistence_credit_receipts": [
+        {
+          "query_id": 0,
+          "issued_time": 0.005,
+          "probability": 0.17219512195121955,
+          "correct_before": 1697,
+          "total_before": 2050.0
+        },
+        {
+          "query_id": 1,
+          "issued_time": 1.085,
+          "probability": 0.17211116528522674,
+          "correct_before": 1698,
+          "total_before": 2051.0
+        },
+        {
+          "query_id": 2,
+          "issued_time": 2.165,
+          "probability": 0.17202729044834308,
+          "correct_before": 1699,
+          "total_before": 2052.0
+        },
+        {
+          "query_id": 3,
+          "issued_time": 3.245,
+          "probability": 0.17194349732099368,
+          "correct_before": 1700,
+          "total_before": 2053.0
+        },
+        {
+          "query_id": 4,
+          "issued_time": 4.325,
+          "probability": 0.8281402142161636,
+          "correct_before": 1701,
+          "total_before": 2054.0
+        },
+        {
+          "query_id": 5,
+          "issued_time": 5.405,
+          "probability": 0.1717761557177615,
+          "correct_before": 1702,
+          "total_before": 2055.0
+        },
+        {
+          "query_id": 6,
+          "issued_time": 6.485,
+          "probability": 0.171692607003891,
+          "correct_before": 1703,
+          "total_before": 2056.0
+        },
+        {
+          "query_id": 7,
+          "issued_time": 7.565,
+          "probability": 0.828390860476422,
+          "correct_before": 1704,
+          "total_before": 2057.0
+        },
+        {
+          "query_id": 8,
+          "issued_time": 8.645000000000001,
+          "probability": 0.8284742468415938,
+          "correct_before": 1705,
+          "total_before": 2058.0
+        },
+        {
+          "query_id": 9,
+          "issued_time": 9.725000000000001,
+          "probability": 0.8280718795531812,
+          "correct_before": 1705,
+          "total_before": 2059.0
+        },
+        {
+          "query_id": 10,
+          "issued_time": 10.805000000000001,
+          "probability": 0.8281553398058252,
+          "correct_before": 1706,
+          "total_before": 2060.0
+        },
+        {
+          "query_id": 11,
+          "issued_time": 11.885000000000002,
+          "probability": 0.8282387190684134,
+          "correct_before": 1707,
+          "total_before": 2061.0
+        },
+        {
+          "query_id": 12,
+          "issued_time": 12.965000000000002,
+          "probability": 0.17167798254122213,
+          "correct_before": 1708,
+          "total_before": 2062.0
+        },
+        {
+          "query_id": 13,
+          "issued_time": 14.045000000000002,
+          "probability": 0.8284052350945226,
+          "correct_before": 1709,
+          "total_before": 2063.0
+        },
+        {
+          "query_id": 14,
+          "issued_time": 15.125000000000002,
+          "probability": 0.8284883720930233,
+          "correct_before": 1710,
+          "total_before": 2064.0
+        },
+        {
+          "query_id": 15,
+          "issued_time": 16.205000000000002,
+          "probability": 0.8285714285714286,
+          "correct_before": 1711,
+          "total_before": 2065.0
+        },
+        {
+          "query_id": 16,
+          "issued_time": 17.285,
+          "probability": 0.1718296224588577,
+          "correct_before": 1711,
+          "total_before": 2066.0
+        },
+        {
+          "query_id": 17,
+          "issued_time": 18.365,
+          "probability": 0.8282535074987906,
+          "correct_before": 1712,
+          "total_before": 2067.0
+        },
+        {
+          "query_id": 18,
+          "issued_time": 19.445,
+          "probability": 0.8278529980657641,
+          "correct_before": 1712,
+          "total_before": 2068.0
+        },
+        {
+          "query_id": 19,
+          "issued_time": 20.525000000000002,
+          "probability": 0.17206379893668444,
+          "correct_before": 1713,
+          "total_before": 2069.0
+        },
+        {
+          "query_id": 20,
+          "issued_time": 21.605,
+          "probability": 0.172463768115942,
+          "correct_before": 1713,
+          "total_before": 2070.0
+        },
+        {
+          "query_id": 21,
+          "issued_time": 22.685,
+          "probability": 0.17238049251569287,
+          "correct_before": 1714,
+          "total_before": 2071.0
+        },
+        {
+          "query_id": 22,
+          "issued_time": 23.765,
+          "probability": 0.17277992277992282,
+          "correct_before": 1714,
+          "total_before": 2072.0
+        },
+        {
+          "query_id": 23,
+          "issued_time": 24.845000000000002,
+          "probability": 0.17269657501205982,
+          "correct_before": 1715,
+          "total_before": 2073.0
+        },
+        {
+          "query_id": 24,
+          "issued_time": 25.925,
+          "probability": 0.1726133076181292,
+          "correct_before": 1716,
+          "total_before": 2074.0
+        },
+        {
+          "query_id": 25,
+          "issued_time": 27.005,
+          "probability": 0.17253012048192773,
+          "correct_before": 1717,
+          "total_before": 2075.0
+        },
+        {
+          "query_id": 26,
+          "issued_time": 28.085,
+          "probability": 0.8275529865125241,
+          "correct_before": 1718,
+          "total_before": 2076.0
+        },
+        {
+          "query_id": 27,
+          "issued_time": 29.165000000000003,
+          "probability": 0.17236398651901785,
+          "correct_before": 1719,
+          "total_before": 2077.0
+        },
+        {
+          "query_id": 28,
+          "issued_time": 30.245,
+          "probability": 0.8277189605389798,
+          "correct_before": 1720,
+          "total_before": 2078.0
+        },
+        {
+          "query_id": 29,
+          "issued_time": 31.325,
+          "probability": 0.8273208273208273,
+          "correct_before": 1720,
+          "total_before": 2079.0
+        },
+        {
+          "query_id": 30,
+          "issued_time": 32.40500000000001,
+          "probability": 0.1725961538461539,
+          "correct_before": 1721,
+          "total_before": 2080.0
+        },
+        {
+          "query_id": 31,
+          "issued_time": 33.48500000000001,
+          "probability": 0.8274867851994233,
+          "correct_before": 1722,
+          "total_before": 2081.0
+        },
+        {
+          "query_id": 32,
+          "issued_time": 34.565000000000005,
+          "probability": 0.8275696445725265,
+          "correct_before": 1723,
+          "total_before": 2082.0
+        },
+        {
+          "query_id": 33,
+          "issued_time": 35.645,
+          "probability": 0.1723475756120979,
+          "correct_before": 1724,
+          "total_before": 2083.0
+        },
+        {
+          "query_id": 34,
+          "issued_time": 36.725,
+          "probability": 0.8277351247600768,
+          "correct_before": 1725,
+          "total_before": 2084.0
+        },
+        {
+          "query_id": 35,
+          "issued_time": 37.80500000000001,
+          "probability": 0.17218225419664268,
+          "correct_before": 1726,
+          "total_before": 2085.0
+        },
+        {
+          "query_id": 36,
+          "issued_time": 38.885000000000005,
+          "probability": 0.1720997123681688,
+          "correct_before": 1727,
+          "total_before": 2086.0
+        },
+        {
+          "query_id": 37,
+          "issued_time": 39.965,
+          "probability": 0.17201724964063247,
+          "correct_before": 1728,
+          "total_before": 2087.0
+        },
+        {
+          "query_id": 38,
+          "issued_time": 41.04500000000001,
+          "probability": 0.1719348659003831,
+          "correct_before": 1729,
+          "total_before": 2088.0
+        },
+        {
+          "query_id": 39,
+          "issued_time": 42.12500000000001,
+          "probability": 0.8281474389660124,
+          "correct_before": 1730,
+          "total_before": 2089.0
+        },
+        {
+          "query_id": 40,
+          "issued_time": 43.205000000000005,
+          "probability": 0.8282296650717703,
+          "correct_before": 1731,
+          "total_before": 2090.0
+        },
+        {
+          "query_id": 41,
+          "issued_time": 44.285000000000004,
+          "probability": 0.8278335724533716,
+          "correct_before": 1731,
+          "total_before": 2091.0
+        },
+        {
+          "query_id": 42,
+          "issued_time": 45.365,
+          "probability": 0.17256214149139582,
+          "correct_before": 1731,
+          "total_before": 2092.0
+        },
+        {
+          "query_id": 43,
+          "issued_time": 46.44500000000001,
+          "probability": 0.8270425226946966,
+          "correct_before": 1731,
+          "total_before": 2093.0
+        },
+        {
+          "query_id": 44,
+          "issued_time": 47.525000000000006,
+          "probability": 0.8271251193887297,
+          "correct_before": 1732,
+          "total_before": 2094.0
+        },
+        {
+          "query_id": 45,
+          "issued_time": 48.605000000000004,
+          "probability": 0.1727923627684964,
+          "correct_before": 1733,
+          "total_before": 2095.0
+        },
+        {
+          "query_id": 46,
+          "issued_time": 49.68500000000001,
+          "probability": 0.1727099236641222,
+          "correct_before": 1734,
+          "total_before": 2096.0
+        },
+        {
+          "query_id": 47,
+          "issued_time": 50.76500000000001,
+          "probability": 0.8273724368144969,
+          "correct_before": 1735,
+          "total_before": 2097.0
+        },
+        {
+          "query_id": 48,
+          "issued_time": 51.845000000000006,
+          "probability": 0.17302192564346996,
+          "correct_before": 1735,
+          "total_before": 2098.0
+        },
+        {
+          "query_id": 49,
+          "issued_time": 52.925000000000004,
+          "probability": 0.17293949499761796,
+          "correct_before": 1736,
+          "total_before": 2099.0
+        },
+        {
+          "query_id": 50,
+          "issued_time": 54.005,
+          "probability": 0.8271428571428572,
+          "correct_before": 1737,
+          "total_before": 2100.0
+        },
+        {
+          "query_id": 51,
+          "issued_time": 55.08500000000001,
+          "probability": 0.8267491670633031,
+          "correct_before": 1737,
+          "total_before": 2101.0
+        },
+        {
+          "query_id": 52,
+          "issued_time": 56.165000000000006,
+          "probability": 0.17316841103710756,
+          "correct_before": 1738,
+          "total_before": 2102.0
+        },
+        {
+          "query_id": 53,
+          "issued_time": 57.245000000000005,
+          "probability": 0.17308606752258682,
+          "correct_before": 1739,
+          "total_before": 2103.0
+        },
+        {
+          "query_id": 54,
+          "issued_time": 58.32500000000001,
+          "probability": 0.8265209125475285,
+          "correct_before": 1739,
+          "total_before": 2104.0
+        },
+        {
+          "query_id": 55,
+          "issued_time": 59.40500000000001,
+          "probability": 0.17339667458432306,
+          "correct_before": 1740,
+          "total_before": 2105.0
+        },
+        {
+          "query_id": 56,
+          "issued_time": 60.48500000000001,
+          "probability": 0.8262108262108262,
+          "correct_before": 1740,
+          "total_before": 2106.0
+        },
+        {
+          "query_id": 57,
+          "issued_time": 61.565000000000005,
+          "probability": 0.17418130042714763,
+          "correct_before": 1740,
+          "total_before": 2107.0
+        },
+        {
+          "query_id": 58,
+          "issued_time": 62.645,
+          "probability": 0.8259013282732448,
+          "correct_before": 1741,
+          "total_before": 2108.0
+        },
+        {
+          "query_id": 59,
+          "issued_time": 63.72500000000001,
+          "probability": 0.17401612138454248,
+          "correct_before": 1742,
+          "total_before": 2109.0
+        },
+        {
+          "query_id": 60,
+          "issued_time": 64.805,
+          "probability": 0.8260663507109005,
+          "correct_before": 1743,
+          "total_before": 2110.0
+        },
+        {
+          "query_id": 61,
+          "issued_time": 65.885,
+          "probability": 0.8261487446707722,
+          "correct_before": 1744,
+          "total_before": 2111.0
+        },
+        {
+          "query_id": 62,
+          "issued_time": 66.965,
+          "probability": 0.8262310606060606,
+          "correct_before": 1745,
+          "total_before": 2112.0
+        },
+        {
+          "query_id": 63,
+          "issued_time": 68.045,
+          "probability": 0.8263132986275438,
+          "correct_before": 1746,
+          "total_before": 2113.0
+        },
+        {
+          "query_id": 64,
+          "issued_time": 69.125,
+          "probability": 0.17407757805108803,
+          "correct_before": 1746,
+          "total_before": 2114.0
+        },
+        {
+          "query_id": 65,
+          "issued_time": 70.205,
+          "probability": 0.17399527186761232,
+          "correct_before": 1747,
+          "total_before": 2115.0
+        },
+        {
+          "query_id": 66,
+          "issued_time": 71.285,
+          "probability": 0.8260869565217391,
+          "correct_before": 1748,
+          "total_before": 2116.0
+        },
+        {
+          "query_id": 67,
+          "issued_time": 72.365,
+          "probability": 0.17383089277279173,
+          "correct_before": 1749,
+          "total_before": 2117.0
+        },
+        {
+          "query_id": 68,
+          "issued_time": 73.445,
+          "probability": 0.826251180358829,
+          "correct_before": 1750,
+          "total_before": 2118.0
+        },
+        {
+          "query_id": 69,
+          "issued_time": 74.525,
+          "probability": 0.825861255309108,
+          "correct_before": 1750,
+          "total_before": 2119.0
+        },
+        {
+          "query_id": 70,
+          "issued_time": 75.605,
+          "probability": 0.8259433962264151,
+          "correct_before": 1751,
+          "total_before": 2120.0
+        },
+        {
+          "query_id": 71,
+          "issued_time": 76.685,
+          "probability": 0.826025459688826,
+          "correct_before": 1752,
+          "total_before": 2121.0
+        },
+        {
+          "query_id": 72,
+          "issued_time": 77.765,
+          "probability": 0.1738925541941565,
+          "correct_before": 1753,
+          "total_before": 2122.0
+        },
+        {
+          "query_id": 73,
+          "issued_time": 78.845,
+          "probability": 0.826189354686764,
+          "correct_before": 1754,
+          "total_before": 2123.0
+        },
+        {
+          "query_id": 74,
+          "issued_time": 79.925,
+          "probability": 0.17372881355932202,
+          "correct_before": 1755,
+          "total_before": 2124.0
+        },
+        {
+          "query_id": 75,
+          "issued_time": 81.005,
+          "probability": 0.17364705882352938,
+          "correct_before": 1756,
+          "total_before": 2125.0
+        },
+        {
+          "query_id": 76,
+          "issued_time": 82.08500000000001,
+          "probability": 0.17356538099717778,
+          "correct_before": 1757,
+          "total_before": 2126.0
+        },
+        {
+          "query_id": 77,
+          "issued_time": 83.165,
+          "probability": 0.1734837799717912,
+          "correct_before": 1758,
+          "total_before": 2127.0
+        },
+        {
+          "query_id": 78,
+          "issued_time": 84.245,
+          "probability": 0.17340225563909772,
+          "correct_before": 1759,
+          "total_before": 2128.0
+        },
+        {
+          "query_id": 79,
+          "issued_time": 85.325,
+          "probability": 0.17332080789102866,
+          "correct_before": 1760,
+          "total_before": 2129.0
+        },
+        {
+          "query_id": 80,
+          "issued_time": 86.405,
+          "probability": 0.8267605633802817,
+          "correct_before": 1761,
+          "total_before": 2130.0
+        },
+        {
+          "query_id": 81,
+          "issued_time": 87.485,
+          "probability": 0.17315814171750354,
+          "correct_before": 1762,
+          "total_before": 2131.0
+        },
+        {
+          "query_id": 82,
+          "issued_time": 88.565,
+          "probability": 0.17307692307692313,
+          "correct_before": 1763,
+          "total_before": 2132.0
+        },
+        {
+          "query_id": 83,
+          "issued_time": 89.645,
+          "probability": 0.1729957805907173,
+          "correct_before": 1764,
+          "total_before": 2133.0
+        },
+        {
+          "query_id": 84,
+          "issued_time": 90.725,
+          "probability": 0.8270852858481724,
+          "correct_before": 1765,
+          "total_before": 2134.0
+        },
+        {
+          "query_id": 85,
+          "issued_time": 91.805,
+          "probability": 0.1733021077283372,
+          "correct_before": 1765,
+          "total_before": 2135.0
+        },
+        {
+          "query_id": 86,
+          "issued_time": 92.885,
+          "probability": 0.17322097378277157,
+          "correct_before": 1766,
+          "total_before": 2136.0
+        },
+        {
+          "query_id": 87,
+          "issued_time": 93.965,
+          "probability": 0.8268600842302293,
+          "correct_before": 1767,
+          "total_before": 2137.0
+        },
+        {
+          "query_id": 88,
+          "issued_time": 95.045,
+          "probability": 0.17352666043030873,
+          "correct_before": 1767,
+          "total_before": 2138.0
+        },
+        {
+          "query_id": 89,
+          "issued_time": 96.125,
+          "probability": 0.8265544647031323,
+          "correct_before": 1768,
+          "total_before": 2139.0
+        },
+        {
+          "query_id": 90,
+          "issued_time": 97.205,
+          "probability": 0.8266355140186916,
+          "correct_before": 1769,
+          "total_before": 2140.0
+        },
+        {
+          "query_id": 91,
+          "issued_time": 98.285,
+          "probability": 0.8262494161606726,
+          "correct_before": 1769,
+          "total_before": 2141.0
+        },
+        {
+          "query_id": 92,
+          "issued_time": 99.36500000000001,
+          "probability": 0.1736694677871149,
+          "correct_before": 1770,
+          "total_before": 2142.0
+        },
+        {
+          "query_id": 93,
+          "issued_time": 100.44500000000001,
+          "probability": 0.17358842743817082,
+          "correct_before": 1771,
+          "total_before": 2143.0
+        },
+        {
+          "query_id": 94,
+          "issued_time": 101.525,
+          "probability": 0.17350746268656714,
+          "correct_before": 1772,
+          "total_before": 2144.0
+        },
+        {
+          "query_id": 95,
+          "issued_time": 102.605,
+          "probability": 0.8261072261072261,
+          "correct_before": 1772,
+          "total_before": 2145.0
+        },
+        {
+          "query_id": 96,
+          "issued_time": 103.685,
+          "probability": 0.17381174277725997,
+          "correct_before": 1773,
+          "total_before": 2146.0
+        },
+        {
+          "query_id": 97,
+          "issued_time": 104.765,
+          "probability": 0.8262692128551468,
+          "correct_before": 1774,
+          "total_before": 2147.0
+        },
+        {
+          "query_id": 98,
+          "issued_time": 105.845,
+          "probability": 0.8258845437616388,
+          "correct_before": 1774,
+          "total_before": 2148.0
+        },
+        {
+          "query_id": 99,
+          "issued_time": 106.925,
+          "probability": 0.17403443462075385,
+          "correct_before": 1775,
+          "total_before": 2149.0
+        },
+        {
+          "query_id": 100,
+          "issued_time": 108.005,
+          "probability": 0.173953488372093,
+          "correct_before": 1776,
+          "total_before": 2150.0
+        },
+        {
+          "query_id": 101,
+          "issued_time": 109.08500000000001,
+          "probability": 0.8261273826127382,
+          "correct_before": 1777,
+          "total_before": 2151.0
+        },
+        {
+          "query_id": 102,
+          "issued_time": 110.165,
+          "probability": 0.8257434944237918,
+          "correct_before": 1777,
+          "total_before": 2152.0
+        },
+        {
+          "query_id": 103,
+          "issued_time": 111.245,
+          "probability": 0.17417556897352526,
+          "correct_before": 1778,
+          "total_before": 2153.0
+        },
+        {
+          "query_id": 104,
+          "issued_time": 112.325,
+          "probability": 0.8254410399257196,
+          "correct_before": 1778,
+          "total_before": 2154.0
+        },
+        {
+          "query_id": 105,
+          "issued_time": 113.405,
+          "probability": 0.8255220417633411,
+          "correct_before": 1779,
+          "total_before": 2155.0
+        },
+        {
+          "query_id": 106,
+          "issued_time": 114.485,
+          "probability": 0.17486085343228197,
+          "correct_before": 1779,
+          "total_before": 2156.0
+        },
+        {
+          "query_id": 107,
+          "issued_time": 115.565,
+          "probability": 0.8252202132591563,
+          "correct_before": 1780,
+          "total_before": 2157.0
+        },
+        {
+          "query_id": 108,
+          "issued_time": 116.64500000000001,
+          "probability": 0.17469879518072284,
+          "correct_before": 1781,
+          "total_before": 2158.0
+        },
+        {
+          "query_id": 109,
+          "issued_time": 117.72500000000001,
+          "probability": 0.17461787864752198,
+          "correct_before": 1782,
+          "total_before": 2159.0
+        },
+        {
+          "query_id": 110,
+          "issued_time": 118.805,
+          "probability": 0.17500000000000004,
+          "correct_before": 1782,
+          "total_before": 2160.0
+        },
+        {
+          "query_id": 111,
+          "issued_time": 119.885,
+          "probability": 0.8250809810273022,
+          "correct_before": 1783,
+          "total_before": 2161.0
+        },
+        {
+          "query_id": 112,
+          "issued_time": 120.965,
+          "probability": 0.1748381128584644,
+          "correct_before": 1784,
+          "total_before": 2162.0
+        },
+        {
+          "query_id": 113,
+          "issued_time": 122.045,
+          "probability": 0.8252427184466019,
+          "correct_before": 1785,
+          "total_before": 2163.0
+        },
+        {
+          "query_id": 114,
+          "issued_time": 123.125,
+          "probability": 0.1751386321626618,
+          "correct_before": 1785,
+          "total_before": 2164.0
+        },
+        {
+          "query_id": 115,
+          "issued_time": 124.205,
+          "probability": 0.17505773672055425,
+          "correct_before": 1786,
+          "total_before": 2165.0
+        },
+        {
+          "query_id": 116,
+          "issued_time": 125.285,
+          "probability": 0.8250230840258541,
+          "correct_before": 1787,
+          "total_before": 2166.0
+        },
+        {
+          "query_id": 117,
+          "issued_time": 126.36500000000001,
+          "probability": 0.17535763728657128,
+          "correct_before": 1787,
+          "total_before": 2167.0
+        },
+        {
+          "query_id": 118,
+          "issued_time": 127.44500000000001,
+          "probability": 0.17573800738007384,
+          "correct_before": 1787,
+          "total_before": 2168.0
+        },
+        {
+          "query_id": 119,
+          "issued_time": 128.525,
+          "probability": 0.8243430152143845,
+          "correct_before": 1788,
+          "total_before": 2169.0
+        },
+        {
+          "query_id": 120,
+          "issued_time": 129.60500000000002,
+          "probability": 0.17557603686635948,
+          "correct_before": 1789,
+          "total_before": 2170.0
+        },
+        {
+          "query_id": 121,
+          "issued_time": 130.685,
+          "probability": 0.8245048364808844,
+          "correct_before": 1790,
+          "total_before": 2171.0
+        },
+        {
+          "query_id": 122,
+          "issued_time": 131.76500000000001,
+          "probability": 0.175414364640884,
+          "correct_before": 1791,
+          "total_before": 2172.0
+        },
+        {
+          "query_id": 123,
+          "issued_time": 132.845,
+          "probability": 0.8246663598711459,
+          "correct_before": 1792,
+          "total_before": 2173.0
+        },
+        {
+          "query_id": 124,
+          "issued_time": 133.925,
+          "probability": 0.17525298988040483,
+          "correct_before": 1793,
+          "total_before": 2174.0
+        },
+        {
+          "query_id": 125,
+          "issued_time": 135.005,
+          "probability": 0.824367816091954,
+          "correct_before": 1793,
+          "total_before": 2175.0
+        },
+        {
+          "query_id": 126,
+          "issued_time": 136.085,
+          "probability": 0.8244485294117647,
+          "correct_before": 1794,
+          "total_before": 2176.0
+        },
+        {
+          "query_id": 127,
+          "issued_time": 137.165,
+          "probability": 0.8245291685806155,
+          "correct_before": 1795,
+          "total_before": 2177.0
+        }
+      ],
+      "persistence_prediction_parity_error": 0.0
+    }
+  ],
+  "targets": 128,
+  "source_sha256": {
+    "experiments/causal_induction/world_credit_pipeline.py": "d0a016168a464abf580ab412521ab9f82bfb2e44dc168fa2d9ccd71bffb7442d",
+    "experiments/causal_induction/world_credit_sensor.py": "18feb454a5dc53a3aa96a55e6a4cb14bd2e0ea9e142bfdac49b212187bc1c681",
+    "experiments/causal_induction/world_credit_run.py": "c8c4f2fbadcdc475a49566f4b9bf33f75484587d4e0e6fe403c85a1737da2b16",
+    "experiments/causal_induction/WORLD_CREDIT_PROTOCOL.md": "2ba842a8c5c2b5ccf0cb49c9661cc8d7f2c003a0a8d0f9f39bf9be8b90f001f1",
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/task_taught_run.py": "29603884d2df59fbfe98abf2dbb62683feed66d9baf1a50e701106eb2553bdb0",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/causal_induction/world_credit_confirmation_acquire.py": "a8464a2af2cd1643f515635b7d3338be431008cb1c5f0fbe8cbd0fe7bde92ccc",
+    "experiments/causal_induction/world_credit_confirmation_verify.py": "5b8263ce9f7e3d4a92d1f8f9e53267fd50ff7e62d929c3ce772aab0a0b0c81f4",
+    "experiments/causal_induction/WORLD_CREDIT_CONFIRMATION_PROTOCOL.md": "765165643ddb31e075b929418ff0a066e77bda0f3adba2c6cb00ee48717f2323",
+    "experiments/causal_induction/nonlinear_generate.py": "dceceb5b0c6905e33dfa3a3e690bc3a5b7150cabed49e26586219c919caa2044",
+    "experiments/causal_induction/world_credit_confirmation_prepare.py": "623f9b427e2b320eb6b28097e1dfeb094fd663a6a159a79c554eb1efa0772af3",
+    "experiments/causal_induction/persistence_world_credit.py": "c8be6f1d666b5b2a94f8f505c2e8df0760f56e6b410a6624819c323e0e967cbe",
+    "experiments/causal_induction/world_credit_confirmation_case.py": "09d101c0e8c20a8f1c0eb14891b3153d280efe8fbbc6d396e5c3433753116eb7"
+  },
+  "source_checkpoint_sha256": "f3481aa6c7dda7f39f33130a0b3508381ee570ddbed8a41b0722bb29369bed52",
+  "data_records": [
+    {
+      "case": 4,
+      "seed": 9700,
+      "depth": 8,
+      "width": 8,
+      "variant": "base",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case4_9700_base.npz",
+      "sha256": "81dbf136c85c1ed4d7578bcb6a520acb50937c0c95406969f42354340ff70d87",
+      "targets": 128,
+      "events": 9307
+    }
+  ],
+  "parent_sha256": {
+    "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_acquisition.json": "adcf96a3c9dec6924bb987c88026d88df21aba397f6670144f798d6551616081",
+    "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_prepare.json": "1aec28aa1cd89c1c0cf7ffa2c6e34ac0dc03524b96f7102df9a41b5fa4aff931"
+  },
+  "whole_pipeline_wall_s": 141.45168140498572,
+  "peak_rss_kb": 1299412,
+  "scope": "Unchanged native world-credit learning on registered fresh public systems; all four controls retain native outcome learning/shared memory. Same within-seed incoming actor/world/Adam source. Fresh numeric episode state and causal8-feedback policy. All target work charged; generating depth, not neural depth."
+}
