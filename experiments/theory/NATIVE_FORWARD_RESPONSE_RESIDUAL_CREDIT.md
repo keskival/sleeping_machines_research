@@ -1,0 +1,27 @@
+# Native forward-response-conditioned outcome credit
+
+12 October2026. Proposed B5/R1 next member, conditional on the completed strong-control diagnosis. No fit is admitted by this note. The completed strong-control gate passed, so unchanged confirmation takes priority and this member is deferred. Separate response_world_credit_sensor.py does not modify Curie's frozen WorldCreditSensor or AWS's independent history-conditioned child.
+
+## Failure and rationale
+
+Current actor NLL0.418781 versus world0.525718 shows the native world omits useful predictive information or does not learn to use it. Learned source-choice credit beats neutral smoothing by only0.000034 overall and loses at generating depth8. The pooled critic input omits actual issued route responses. FORWARD_RESPONSE_SUFFICIENCY_FOR_CREDIT.md proves that even the optimal summary-only outcome predictor can produce wrong mean route credit when the output gap carries additional information.
+
+A forward forecast is an already learned causal compression, not a target oracle. Supply the actual factual logit z_F and the already evaluated sampled alternative z_A, with z_A-z_F, before feedback. All remain charged by the parent decoder counters. The48-parameter adapter belongs to the critic parameter group, so existing actor/native-body/readout clipping budgets remain separated. A bounded3-to16 projection injects this stopped typed response into native world content after the observational detach boundary. No dense recurrent critic or address embedding is introduced. The native world retains independent temporal races/reads/writes, deep persistent state, separate keys/values and shared bank access; actual later outcomes train its native body and read policy. Future actor task loss continues teaching critic memory.
+
+## Reference plus learned correction
+
+Define q_hat=sigmoid(stop(z_F)+r_phi(S,z_F,z_A,z_A-z_F)). Proper BCE gives derivative q_hat-Y into r_phi. Initialize only the outcome readout to zero, giving q_hat=sigmoid(z_F) initially. This is a residual parameterization, not an assertion of independent probabilistic evidence. The information set includes the issued decision and sampled response. The projected contrasts all use that one issued belief, conditional on this paid information. No unsupported route response is inferred for free.
+
+Zero readout makes the first auxiliary gradient into the native body zero; the first update teaches the readout and later nonzero readout enables body/adapter gradients. Shared-memory future-task teaching of the native body remains available independently of the readout. Verify both paths, rather than silently interpreting zero initialization as full-body outcome learning at the first step.
+
+Record each issued response token independently and replay it at outcome delivery. Intervening observations, parameter edits and later queries must not rewrite the issued token. Never recompute the teacher logit at delivery. Stop the reference/response gradients to the actor in the auxiliary outcome objective; the actual factual actor loss still uses observed Y. This source-choice-only experiment does not claim to remove actor backpropagation or the joint-noise issue derived in COHERENT_WORLD_CREDIT_AND_SHARED_PRODUCER_NOISE.md.
+
+## Required matched comparison and state transport
+
+If learned world credit does not beat cheap persistence credit, use a new common source acquisition for this response-conditioned member with the already declared source and target datasets, actor seeds, updates and charges. New outcome-head initialization and added projection parameters are an architectural change: do not silently load the parent Adam state or call it unchanged acquired-world transport. A fresh common acquisition is simplest and charged in full. Keep all future reuse arms' model/optimizer incoming fingerprints equal.
+
+Compare observed-label source-choice credit, issued forward-belief half blend, and native corrected-belief half blend. Each arm trains the same corrected native world and exposes identical shared-memory capability. The forward-belief control changes only the stopped belief in the route contrast. Improvement over the forward belief isolates learned corrections rather than supplying a better cheap prior. A disabled-response member with the same adapter/storage work is a follow-up only if the first acquired correction is useful.
+
+Before fitting, verify initial actor/RNG parity, initial world equals issued actor reference, response-token independence under overlapping queries and intervening observations, nonzero corrected-outcome gradients after one finite head update, actual forward-task teaching into the native body, and no auxiliary gradient into actor parameters. Reuse existing causal/public-address/native-math contracts; add only checks for the changed paths. One guarded integrated16-target fit supplies RSS/wall admission. Report complete acquisition/reuse, candidate discovery, decoded alternatives, native events, response projections, optimizer, storage and all unsuccessful development work.
+
+Decision: corrected credit must beat observed-label and forward-belief credit overall and at both generating depths before fixed independent actor/system confirmation. This is an information-conditioned native credit experiment, not a neural-depth scaling or public benchmark win. Follow acquisition/reuse evidence toward the owned proper-token/deep-credit integration; do not expand a standalone variant grid.

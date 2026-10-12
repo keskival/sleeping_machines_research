@@ -1,0 +1,108 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_world_credit_confirm_20261012_v1_prepare",
+  "contracts": {
+    "nonlinear_local_gates_present": true,
+    "rename_scale_capacity_target_invariance": true,
+    "foreign_independent_events_preserve_queries_and_targets": true,
+    "future_rewire_prefix_causality": true,
+    "strict_delayed_feedback": true
+  },
+  "records": [
+    {
+      "case": 0,
+      "seed": 9500,
+      "depth": 4,
+      "width": 8,
+      "variant": "base",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case0_9500_base.npz",
+      "sha256": "59bc089889b4975634359381dc034cf9c8f88e3b3b24a79404d25cbf1d7ada86",
+      "targets": 128,
+      "events": 1474
+    },
+    {
+      "case": 1,
+      "seed": 9501,
+      "depth": 4,
+      "width": 8,
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case1_9501_rewire.npz",
+      "sha256": "5b0fae1572f55f2042aee32e1eaeb1496b436037fe26b6b4102655eea805f27c",
+      "targets": 128,
+      "events": 1403
+    },
+    {
+      "case": 2,
+      "seed": 9600,
+      "depth": 4,
+      "width": 16,
+      "variant": "base",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case2_9600_base.npz",
+      "sha256": "97f22a1a5108af610073948abab508395894d7164709d819e1aeac3cd9d7dce1",
+      "targets": 128,
+      "events": 1669
+    },
+    {
+      "case": 3,
+      "seed": 9601,
+      "depth": 4,
+      "width": 16,
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case3_9601_rewire.npz",
+      "sha256": "731a35d0eec2d7bfac5d1b41fa927350505be657c6138721d219388750797ea2",
+      "targets": 128,
+      "events": 1556
+    },
+    {
+      "case": 4,
+      "seed": 9700,
+      "depth": 8,
+      "width": 8,
+      "variant": "base",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case4_9700_base.npz",
+      "sha256": "81dbf136c85c1ed4d7578bcb6a520acb50937c0c95406969f42354340ff70d87",
+      "targets": 128,
+      "events": 9307
+    },
+    {
+      "case": 5,
+      "seed": 9701,
+      "depth": 8,
+      "width": 8,
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case5_9701_rewire.npz",
+      "sha256": "529b048afdd98890b97d73bef83dc17706beaf7c4775d23ecebfabbf2ac43363",
+      "targets": 128,
+      "events": 9447
+    },
+    {
+      "case": 6,
+      "seed": 9800,
+      "depth": 8,
+      "width": 16,
+      "variant": "base",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case6_9800_base.npz",
+      "sha256": "d7720087d68ac1fefcc2274f78f7d7e832f382a54e13df9ea328af1499fe574d",
+      "targets": 128,
+      "events": 7570
+    },
+    {
+      "case": 7,
+      "seed": 9801,
+      "depth": 8,
+      "width": 16,
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_world_credit_confirm_20261012_v1_prepare/case7_9801_rewire.npz",
+      "sha256": "d86f151c28e998fc68351fd51cb24c099b1c810494a7c3fb7303e3db2099ae60",
+      "targets": 128,
+      "events": 12049
+    }
+  ],
+  "source_sha256": {
+    "experiments/causal_induction/nonlinear_generate.py": "dceceb5b0c6905e33dfa3a3e690bc3a5b7150cabed49e26586219c919caa2044",
+    "experiments/causal_induction/world_credit_confirmation_prepare.py": "623f9b427e2b320eb6b28097e1dfeb094fd663a6a159a79c554eb1efa0772af3",
+    "experiments/causal_induction/WORLD_CREDIT_CONFIRMATION_PROTOCOL.md": "765165643ddb31e075b929418ff0a066e77bda0f3adba2c6cb00ee48717f2323"
+  },
+  "scope": "Fixed fresh public systems only; no model fit or score. Private generating structure discarded and never supplied to learners."
+}

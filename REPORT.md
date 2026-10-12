@@ -5776,6 +5776,19 @@ Primary development gate fails; pooled quality gains exact +0.000538, prior +0.0
 
 One exploratory actor seed, all8declared nonlinear cases/1024issued-before-feedback targets per arm. Common native world acquisition and complete charged work; exact and prior retain world learning/shared memory. Generating depth4/8 and factors8/16, not neural-depth scaling. Cheap prequential frequency/persistence diagnostics use public source/target observations only. No publicTEST, new dense reference, calibrated uncertainty/causal-response embedding or quality-matched efficiency claim.
 
+### Native credit against a strong causal persistence posterior
+
+| Credit | Actor NLL | Full seconds | Full ms/presentation |
+| --- | --- | --- | --- |
+| exact | 0.419319 | 1302.631 | 254.420 |
+| learned | 0.418781 | 1301.831 | 254.264 |
+| prior | 0.418815 | 1306.388 | 255.154 |
+| persistence credit | 0.419187 | 1311.828 | 256.216 |
+
+Additional strong-control gate passes; learned gain versus persistence credit +0.000406. By generating depth: 4: +0.000212, 8: +0.000600. The original primary gate stays failed. Persistence beliefs match the independent causal public reference exactly; all native world learning, memory and alternative work are retained. Next: unchanged fresh-actor/new-system confirmation against the strong control.
+
+Additional pre-registered strong causal credit control, eight independent matched source deployments/one actor seed. Positive gains mean the named arm improves on persistence credit. Original v2 primary gate stays failed. All native critic/alternative/optimizer work retained and charged; no minimal-cost baseline, public test, family-level or neural-depth claim. Complete denominator5120presentations:4096source plus1024target. This is an information-matched intervention, not the cheapest execution of persistence.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
