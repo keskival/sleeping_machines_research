@@ -1,6 +1,6 @@
 # Learn the outcome law; project it into credit
 
-Curie, 12 October2026. B1/R1 shared enabler, motivated by completed B5/R1 native shared-memory development. Proposed next construction; no fit is admitted here. Extends [the shared-memory reciprocal machine](SHARED_MEMORY_RECIPROCAL_EVENT_MACHINE.md).
+Curie, 12 October2026. B1/R1 shared enabler, motivated by completed B5/R1 native shared-memory development. Construction implemented in the registered WORLD_CREDIT_PROTOCOL.md acquisition/reuse pipeline; measured decisions live in its completed results. Extends [the shared-memory reciprocal machine](SHARED_MEMORY_RECIPROCAL_EVENT_MACHINE.md).
 
 ## What the completed integration teaches us
 
@@ -83,9 +83,9 @@ For an exponential-family loss A(z)-z dot T(Y), a conditional sufficient-statist
 
 Categorical hidden-state credit can sometimes use a projected target-embedding mean, while classifier-weight credit may need per-class probabilities. The projection depends on the current producer weights/version. Do not use the low-dimensional hidden-state identity to claim every parameter gradient is available for free. Time/type likelihoods require the appropriate conditional distribution or sufficient functionals.
 
-## Next owned implementation decision
+## Current construction and next decision
 
-Build one native target-addressed world query and one delivered-outcome update per forecast, rather than an independent absolute-loss query/update per route. A linear probability head and native memory body learn actual outcomes; route losses use the actor's known current logits and common posterior. Both roles retain independently selected reads/writes over common memory. Actual actor probability, outcome, producer/version and horizon are explicit available side-information.
+The world_credit_sensor.py integration now uses one native target-addressed world query and one delivered-outcome update per forecast, rather than an independent absolute-loss query/update per route. A linear probability head and native memory body learn actual outcomes; route losses use the actor's known current logits and common posterior. Both roles retain independently selected reads/writes over common memory. Actual actor probability, outcome, producer/version and horizon are explicit available side-information.
 
 Potential economy: a common query shares work across alternatives and reduces duplicate world-state updates. Candidate discovery, counterfactual logits/derivatives, native proposals, optimizer and all serving accesses remain paid. Useful posterior learning and sparse activity must survive an integrated fit before larger acquisition or neural-depth tests.
 
@@ -96,3 +96,7 @@ The proposal is a rich learned causal world model with economical, coherent cred
 ## Which routes should share credit
 
 [Route similarity and credit generalization](ROUTE_SIMILARITY_AND_CREDIT_GENERALIZATION.md) defines similarity through future causal response, derives conditional transfer bounds, and specializes uncertainty geometry to coherent outcome-law projections. This determines which route projections can reuse the same learned world evidence, which need action-conditioned response, and where paid new observations are necessary.
+
+## Coherence includes shared producer noise
+
+[Coherent world credit and shared producer noise](COHERENT_WORLD_CREDIT_AND_SHARED_PRODUCER_NOISE.md) proves why improving a scalar route contrast can worsen the complete update: factual and route channels share outcome noise and may cancel. It derives the joint projection covariance and exact quadratic future-utility terms, distinguishing posterior calibration, shared transport and optimizer effects. This guides diagnosis of the fixed current fit, not a post-result change to its teaching rule.
