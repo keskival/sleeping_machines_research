@@ -72,7 +72,7 @@ def blocks():
             ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
     common_paths=[(str(seed),f'aws_integrated_common_prior_decision_20261012_s{seed}_v1') for seed in (6,7,8)]
-    common_paths.append(('6 / larger','aws_integrated_common_prior_512k_decision_20261012_s6_v1'))
+    common_paths.extend((f'{seed} / larger',f'aws_integrated_common_prior_512k_decision_20261012_s{seed}_v1') for seed in (6,7,8))
     common_cohort=ROOT/'experiments/results/diagnostics/aws_common_prior_cohort_20261012_v1.json'
     if common_cohort.exists():
         c=json.loads(common_cohort.read_text());assert c['status']=='completed'
