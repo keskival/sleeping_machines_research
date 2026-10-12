@@ -24,4 +24,5 @@ def main():
  python=str(ROOT/'.venv-docker/bin/python')
  subprocess.run([python,'scripts/update_curie_learning_status.py'],cwd=ROOT,check=True)
  subprocess.run([python,'scripts/build_credit_report_parts.py','--tag',a.tag],cwd=ROOT,check=True)
+ subprocess.run([python,'scripts/commit_world_credit_confirmation.py','--tag',a.tag,'--seed',str(a.seed)],cwd=ROOT,check=True)
 if __name__=='__main__':main()
