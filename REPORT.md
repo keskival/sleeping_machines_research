@@ -5506,6 +5506,8 @@ All1400targetTRAIN sequences cropped32events,threepasses,128DEV. Gain is referen
 
 Evidence: aws_native_update_domain_20261012_s6_decision.
 
+Long changing-stream learning admitted:12800distinct Retweet TRAIN sequences/396800scored targets,onepass,depth4/8. Original,timingx8,markrelabeling and gap-dependent mark regimes; no change labels given to learners. FixedAdam/static acquired/frozen/online acquired controls, pre-feedback scoring, carried actor/optimizer/controller state. Quality/adaptation/work results pending; acquisition charged. Protocol experiments/credit/NATIVE_SHIFTING_STREAM_PLAN.md.
+
 Native future-loss diagnosis (aws_native_audit_future_loss_20261011_s0): raw trace falls at all three depths, but future NLL improves in only1/9 depth/step cases. At step0.01, gains vs uniform are -1.415e-5/-1.226e-6/+5.150e-6 nats/target atdepth2/4/8. New private TRAIN contexts, producer-only one-step updates, exact audit enumeration; all reference/scoring work paid. Curvature instrument aws_native_audit_curvature_20261011_v1 explains the depth2/4 small-step losses: correction directions have negative future-NLL curvature. Stop raw-variance proxy experiments; next endpoint is causal future-loss learning and complete matched-quality work.
 
 Evidence: aws_direct_audit_policy_20261011_s0, aws_direct_audit_policy_20261011_s1, aws_direct_audit_policy_20261011_s2.
