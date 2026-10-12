@@ -1,0 +1,442 @@
+{
+  "status": "completed",
+  "tag": "aws_native_shifting_stream_20261012_smoke",
+  "battle": "B1/G4 changing-stream learning",
+  "stage": "smoke",
+  "args": {
+    "tag": "aws_native_shifting_stream_20261012_smoke",
+    "stage": "smoke",
+    "seed": 9,
+    "gate": null
+  },
+  "rows": [
+    {
+      "depth": 4,
+      "arm": "fixed_adam",
+      "cumulative_nll": 5.422200212116663,
+      "targets": 112,
+      "updates": 4,
+      "controller_updates": 0,
+      "fit_wall_s": 0.7949386527761817,
+      "supported_fit_flops": 5803776,
+      "history": [
+        {
+          "updates": 1,
+          "targets": 28,
+          "cumulative_nll": 4.539228703005685,
+          "fit_wall_s": 0.6134209840092808,
+          "supported_fit_flops": 1450944,
+          "scales": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "updates": 2,
+          "targets": 56,
+          "cumulative_nll": 6.018260541983109,
+          "fit_wall_s": 0.6738834718707949,
+          "supported_fit_flops": 2901888,
+          "scales": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "updates": 3,
+          "targets": 84,
+          "cumulative_nll": 5.657490529743218,
+          "fit_wall_s": 0.7342892847955227,
+          "supported_fit_flops": 4352832,
+          "scales": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "updates": 4,
+          "targets": 112,
+          "cumulative_nll": 5.422200212116663,
+          "fit_wall_s": 0.7949386527761817,
+          "supported_fit_flops": 5803776,
+          "scales": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "regimes": [
+        {
+          "regime": 0,
+          "mean_nll": 4.539228703005685,
+          "first_window_nll": 4.539228703005685,
+          "last_window_nll": 4.539228703005685,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 1,
+          "mean_nll": 7.497292380960532,
+          "first_window_nll": 7.497292380960532,
+          "last_window_nll": 7.497292380960532,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 2,
+          "mean_nll": 4.935950505263439,
+          "first_window_nll": 4.935950505263439,
+          "last_window_nll": 4.935950505263439,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 3,
+          "mean_nll": 4.7163292592369945,
+          "first_window_nll": 4.7163292592369945,
+          "last_window_nll": 4.7163292592369945,
+          "adaptation_window_updates": 1
+        }
+      ],
+      "batch_prequential_nll": [
+        4.539228703005685,
+        7.497292380960532,
+        4.935950505263439,
+        4.7163292592369945
+      ]
+    },
+    {
+      "depth": 4,
+      "arm": "static_acquired_groups",
+      "cumulative_nll": 5.418266012187449,
+      "targets": 112,
+      "updates": 4,
+      "controller_updates": 0,
+      "fit_wall_s": 0.24404258700087667,
+      "supported_fit_flops": 5803776,
+      "history": [
+        {
+          "updates": 1,
+          "targets": 28,
+          "cumulative_nll": 4.539228703005685,
+          "fit_wall_s": 0.061002798145636916,
+          "supported_fit_flops": 1450944,
+          "scales": [
+            0.9880839642860282,
+            1.045172217951658,
+            1.0447262072941723,
+            1.185285025162171
+          ]
+        },
+        {
+          "updates": 2,
+          "targets": 56,
+          "cumulative_nll": 6.015498675521199,
+          "fit_wall_s": 0.12246275413781404,
+          "supported_fit_flops": 2901888,
+          "scales": [
+            0.9880839642860282,
+            1.045172217951658,
+            1.0447262072941723,
+            1.185285025162171
+          ]
+        },
+        {
+          "updates": 3,
+          "targets": 84,
+          "cumulative_nll": 5.655263524779299,
+          "fit_wall_s": 0.18338530114851892,
+          "supported_fit_flops": 4352832,
+          "scales": [
+            0.9880839642860282,
+            1.045172217951658,
+            1.0447262072941723,
+            1.185285025162171
+          ]
+        },
+        {
+          "updates": 4,
+          "targets": 112,
+          "cumulative_nll": 5.418266012187449,
+          "fit_wall_s": 0.24404258700087667,
+          "supported_fit_flops": 5803776,
+          "scales": [
+            0.9880839642860282,
+            1.045172217951658,
+            1.0447262072941723,
+            1.185285025162171
+          ]
+        }
+      ],
+      "regimes": [
+        {
+          "regime": 0,
+          "mean_nll": 4.539228703005685,
+          "first_window_nll": 4.539228703005685,
+          "last_window_nll": 4.539228703005685,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 1,
+          "mean_nll": 7.491768648036713,
+          "first_window_nll": 7.491768648036713,
+          "last_window_nll": 7.491768648036713,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 2,
+          "mean_nll": 4.934793223295499,
+          "first_window_nll": 4.934793223295499,
+          "last_window_nll": 4.934793223295499,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 3,
+          "mean_nll": 4.7072734744119,
+          "first_window_nll": 4.7072734744119,
+          "last_window_nll": 4.7072734744119,
+          "adaptation_window_updates": 1
+        }
+      ],
+      "batch_prequential_nll": [
+        4.539228703005685,
+        7.491768648036713,
+        4.934793223295499,
+        4.7072734744119
+      ]
+    },
+    {
+      "depth": 4,
+      "arm": "frozen_acquired_policy",
+      "cumulative_nll": 5.416359898881252,
+      "targets": 112,
+      "updates": 4,
+      "controller_updates": 0,
+      "fit_wall_s": 0.25275349128060043,
+      "supported_fit_flops": 5805056,
+      "history": [
+        {
+          "updates": 1,
+          "targets": 28,
+          "cumulative_nll": 4.539228703005685,
+          "fit_wall_s": 0.06349715800024569,
+          "supported_fit_flops": 1451264,
+          "scales": [
+            1.0147991102599219,
+            1.0692153650786809,
+            1.0759644484408237,
+            1.21365199864807
+          ]
+        },
+        {
+          "updates": 2,
+          "targets": 56,
+          "cumulative_nll": 6.014158948111584,
+          "fit_wall_s": 0.12652787007391453,
+          "supported_fit_flops": 2902528,
+          "scales": [
+            1.0106884097958138,
+            1.076223459098061,
+            1.081787793985003,
+            1.247136511414101
+          ]
+        },
+        {
+          "updates": 3,
+          "targets": 84,
+          "cumulative_nll": 5.654117818077934,
+          "fit_wall_s": 0.18956746417097747,
+          "supported_fit_flops": 4353792,
+          "scales": [
+            0.9969566156601685,
+            1.0573844809991126,
+            1.0593083836680706,
+            1.2097544324229221
+          ]
+        },
+        {
+          "updates": 4,
+          "targets": 112,
+          "cumulative_nll": 5.416359898881252,
+          "fit_wall_s": 0.25275349128060043,
+          "supported_fit_flops": 5805056,
+          "scales": [
+            0.9876672874614706,
+            1.0492483201937792,
+            1.048666167895826,
+            1.2007188211210058
+          ]
+        }
+      ],
+      "regimes": [
+        {
+          "regime": 0,
+          "mean_nll": 4.539228703005685,
+          "first_window_nll": 4.539228703005685,
+          "last_window_nll": 4.539228703005685,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 1,
+          "mean_nll": 7.489089193217481,
+          "first_window_nll": 7.489089193217481,
+          "last_window_nll": 7.489089193217481,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 2,
+          "mean_nll": 4.934035558010634,
+          "first_window_nll": 4.934035558010634,
+          "last_window_nll": 4.934035558010634,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 3,
+          "mean_nll": 4.703086141291203,
+          "first_window_nll": 4.703086141291203,
+          "last_window_nll": 4.703086141291203,
+          "adaptation_window_updates": 1
+        }
+      ],
+      "batch_prequential_nll": [
+        4.539228703005685,
+        7.489089193217481,
+        4.934035558010634,
+        4.703086141291203
+      ]
+    },
+    {
+      "depth": 4,
+      "arm": "online_acquired_policy",
+      "cumulative_nll": 5.416187916639616,
+      "targets": 112,
+      "updates": 4,
+      "controller_updates": 3,
+      "fit_wall_s": 0.288906984962523,
+      "supported_fit_flops": 5806400,
+      "history": [
+        {
+          "updates": 1,
+          "targets": 28,
+          "cumulative_nll": 4.539228703005685,
+          "fit_wall_s": 0.06294119404628873,
+          "supported_fit_flops": 1451264,
+          "scales": [
+            1.0147991102599219,
+            1.0692153650786809,
+            1.0759644484408237,
+            1.21365199864807
+          ]
+        },
+        {
+          "updates": 2,
+          "targets": 56,
+          "cumulative_nll": 6.014158948111584,
+          "fit_wall_s": 0.1383166341111064,
+          "supported_fit_flops": 2902976,
+          "scales": [
+            1.0146187659574832,
+            1.0805697507031389,
+            1.0862225424505834,
+            1.2526261160365417
+          ]
+        },
+        {
+          "updates": 3,
+          "targets": 84,
+          "cumulative_nll": 5.654088452113539,
+          "fit_wall_s": 0.21322442195378244,
+          "supported_fit_flops": 4354688,
+          "scales": [
+            1.003005575284505,
+            1.0643801679571392,
+            1.0665293801691593,
+            1.2181289809525597
+          ]
+        },
+        {
+          "updates": 4,
+          "targets": 112,
+          "cumulative_nll": 5.416187916639616,
+          "fit_wall_s": 0.288906984962523,
+          "supported_fit_flops": 5806400,
+          "scales": [
+            0.996432459943386,
+            1.0596859459597456,
+            1.0593073645142732,
+            1.213102307454471
+          ]
+        }
+      ],
+      "regimes": [
+        {
+          "regime": 0,
+          "mean_nll": 4.539228703005685,
+          "first_window_nll": 4.539228703005685,
+          "last_window_nll": 4.539228703005685,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 1,
+          "mean_nll": 7.489089193217481,
+          "first_window_nll": 7.489089193217481,
+          "last_window_nll": 7.489089193217481,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 2,
+          "mean_nll": 4.9339474601174516,
+          "first_window_nll": 4.9339474601174516,
+          "last_window_nll": 4.9339474601174516,
+          "adaptation_window_updates": 1
+        },
+        {
+          "regime": 3,
+          "mean_nll": 4.702486310217844,
+          "first_window_nll": 4.702486310217844,
+          "last_window_nll": 4.702486310217844,
+          "adaptation_window_updates": 1
+        }
+      ],
+      "batch_prequential_nll": [
+        4.539228703005685,
+        7.489089193217481,
+        4.9339474601174516,
+        4.702486310217844
+      ]
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12",
+    "experiments/credit/train_native_future_update_reuse_full.py": "e044918419c6686998e6ec833d5eb1737039dfd2c116ccb523d907c7fe1c5978",
+    "experiments/credit/train_native_shifting_stream.py": "b2f51c4a93cbdd3aaf20c6d403a76627539ae9dd7ba1b414795cd06c9881ec64",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "input_sha256": {
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s0.json": "ba7cea545098cbce9650c771bdb6d5f5f235bfb21abbbd93d95d999393190a5b",
+    "experiments/results/credit/aws_native_future_update_reuse_20261011_s0.pt": "bec86914c8ab3c8d6f8a0f829ed2c79eae9e30d38a9fbb52ceef9f2600082c48",
+    "data/easytpp/taxi/train.json": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989"
+  },
+  "data_sha256": "20f2358e346997e228c058ecaf76c09a3353863e0099816472a8bf80655b4e3c",
+  "final_weights": "experiments/results/credit/aws_native_shifting_stream_20261012_smoke.pt",
+  "checkpoint_sha256": "c393279dc9588d5af62d7d951f950d9fa711cd16d25d3c0d065f39158cdea132",
+  "inherited_acquisition_wall_s": 490.3707520600874,
+  "stream_sequences": 16,
+  "events_per_sequence": 8,
+  "distinct_calibration_sequences": 256,
+  "regime_description": [
+    "original",
+    "time scale x8",
+    "cyclic mark relabeling",
+    "gap-dependent mark mapping"
+  ],
+  "wall_s": 2.4985787922050804,
+  "max_rss_kb": 525024,
+  "scope": "Constructed ordered regimes over distinct real Retweet TRAIN sequences, not natural chronological distribution drift. Batch-prequential scoring before feedback; actor and Adam/controller states carried across regime boundaries; internal forward state reset between independent sequences. First256earlier sequences calibrate vocabulary/time only. Dense native writes; no source actor transfer, no target future/change labels supplied. Exact actor backprop retained; acquired update function taught from actual next gradient without replay. All work measured, acquisition separate; no TEST/Transformer supremacy or large-data asymptotic claim."
+}
