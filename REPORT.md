@@ -2833,6 +2833,19 @@ The public reference target reuses the modded-nanoGPT2025-01-26log:3.2774NLL,695
 
 Prepared AWS8K comparisons remain unrun here, with AWS admission/results unobserved. Completed local paired8Kfits retained credit16 and narrower tails; the64Kcapacity comparison selected P24, followed by the completed256Kfit. Measured-data visualization and source-bound whole-fit costs appear above. The next language fit tests lower learning rate after repeated second-pass deterioration; fixed-recipe scaling and recipe repair stay separate.
 
+Integrated R1 execution: batching vocabulary gathers inside the existing credit windows removes repeated dense embedding-gradient accumulation. All temporal events, hard races, separate keys/values, persistent numerical state, state-gradient boundaries, counterfactual suffix teaching and optimizer updates are retained.
+
+| Lookup | Selected NLL | Final NLL | Train seconds | Engine seconds | Process seconds | RSS MiB |
+| --- | --- | --- | --- | --- | --- | --- |
+| ordinary | 8.045605 | 8.274423 | 149.695 | 152.406 | 153.888 | 565.5 |
+| batched | 8.132647 | 8.279827 | 131.433 | 134.053 | 135.533 | 565.2 |
+
+Selected quality gain -0.087041 nats; ordinary/batched training wall 1.139x. Registered development gate (quality retained and at least5% training-wall saving): failed.
+
+One seed; same CPU host/data/updates/selection opportunities and integrated mechanisms. Initial-inclusive quality. Complete measured training wall includes core, alternative replay, head, backward, clipping, diagnostics and optimizer; evaluation/serialization separately in engine wall. Process wall includes acquisition/hash preparation. No fitting-FLOP, energy, Transformer or asymptotic-exponent claim. Exact real-arithmetic lookup equivalence; changed floating-point accumulation can change long hard-route trajectories.
+
+Numerical integration gate: three AdamW updates with carried state, repeated token IDs, EOS resets and two credit windows; maximum forward/state error9.54e-7, gradient error1.20e-7, parameter error1.06e-7, optimizer error7.46e-9; RNG states equal. Evidence aws_integrated_lookup_parity_20261012_v1 and aws_integrated_p24_64k_lookup_decision_20261012_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5358,6 +5371,28 @@ Controlled conditional reversal: synthetic symmetric side transition .95 -> .05 
 | market | bptt | 12.011610 | 24.218 |
 
 Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.428305768989958 seconds.
+
+### Revealed-future descent constrained credit
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 12.110555 | 53.690 |
+| market | frozen | 12.089423 | 20.046 |
+| market | zero | 12.012806 | 19.987 |
+| market | bptt | 12.011631 | 24.903 |
+
+Backtracking critic updates must reduce the previously issued one-step next-window objective on already revealed data; future continuation alone measures generalization. All saved-version actor/optimizer copies, candidate producer replays and up to five teacher replays charged. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 25.562334293994354 seconds.
+
+### Operator-informed functional future credit
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 11.938115 | 41.777 |
+| market | frozen | 11.945621 | 20.144 |
+| market | zero | 11.949538 | 19.264 |
+| market | bptt | 11.947784 | 24.402 |
+
+Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
