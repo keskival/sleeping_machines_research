@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_future_shift_20261012_v1_decision",
+  "rows": [
+    {
+      "seed": 184,
+      "gain_vs_frozen": 0.00016112157363856738,
+      "gain_vs_zero": -0.0002941417616781905,
+      "gain_vs_bptt": 0.00015631021938133927,
+      "online_whole_s": 37.078631046024384,
+      "bptt_whole_s": 35.61691411898937
+    },
+    {
+      "seed": 185,
+      "gain_vs_frozen": 0.0,
+      "gain_vs_zero": 0.0,
+      "gain_vs_bptt": -0.0015473973426445298,
+      "online_whole_s": 37.509006071981275,
+      "bptt_whole_s": 35.50044574998901
+    },
+    {
+      "seed": 186,
+      "gain_vs_frozen": -0.00028279579522028087,
+      "gain_vs_zero": -0.00016980297341362416,
+      "gain_vs_bptt": -0.0005118899416132194,
+      "online_whole_s": 36.68214990699198,
+      "bptt_whole_s": 35.47396137600299
+    }
+  ],
+  "decision": "Adaptive intervention effect sign-inconsistent; retire scalar policy without further tuning.",
+  "mean_gain_vs_frozen": -4.055807386057116e-05,
+  "mean_gain_vs_zero": -0.0001546482450306049,
+  "parent_sha256": {
+    "experiments/results/credit/curie_market_future_shift_20261012_v1_fit.json": "d8e7847506f658b20d92f13cedbda2fed4b902175b902362c0ff0082f362f849",
+    "experiments/results/credit/curie_market_future_shift_20261012_v1_s185_fit.json": "074bf849e351e2ae3db10859a2362dc749a6a9a9eb0ffaae74926a0f853bedeb",
+    "experiments/results/credit/curie_market_future_shift_20261012_v1_s186_fit.json": "df989c79525b3ccdc49a15cb694fe18c72071d22e2bfcc148e83c2b4c5c5e580"
+  },
+  "scope": "Three fixed synthetic conditional-change seeds; Gaussian innovations unpaired across arms. Shared acquisition charged. No real-market, changing-bias supremacy or clockless hardware claim."
+}
