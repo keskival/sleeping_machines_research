@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_direct_future_20261012_v2_resolution",
+  "rows": [
+    {
+      "audit": false,
+      "analytic": -0.00020624130342012824,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": -7.685780456512248e-05,
+          "error": 0.00012938349885500576
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": -7.481578023771362e-05,
+          "error": 0.0001314255231824146
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": -7.430411841369278e-05,
+          "error": 0.00013193718500643546
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": -6.867750812489248e-05,
+          "error": 0.00013756379529523575
+        }
+      ]
+    },
+    {
+      "audit": true,
+      "analytic": 0.0023274887690553792,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": 0.0017046385654140295,
+          "error": 0.0006228502036413498
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": 0.00172591392733068,
+          "error": 0.0006015748417246992
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": 0.0017259401019487084,
+          "error": 0.0006015486671066708
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": 0.001715910080690719,
+          "error": 0.0006115786883646602
+        }
+      ]
+    }
+  ],
+  "whole_wall_s": 2.681062665011268,
+  "peak_rss_kb": 330196,
+  "source_sha256": {
+    "experiments/credit/check_market_direct_future_resolution.py": "0fc7c63f63c3d7b4a0a7e0009e74bec228a4a04758e3a4ba8915750a57c5c99e",
+    "experiments/credit/market_direct_future_credit_v2.py": "2df0bacab6ab2565e657c65edba4ad12941fa9dba1b7ca2d634f9c106ee88e8b"
+  },
+  "scope": "Actual native producer VJP, clipped Adam with fixed prior moments, next-window loss; both residual audit branches. Boundary-vector derivative, not all-history derivative."
+}

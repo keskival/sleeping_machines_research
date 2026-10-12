@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_direct_future_20261012_v3_contract",
+  "rows": [
+    {
+      "audit": false,
+      "analytic": -7.46709164178396e-05,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": -7.685780456512248e-05,
+          "error": 2.186888147282873e-06
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": -7.481578023771362e-05,
+          "error": 1.4486381987401965e-07
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": -7.430411841369278e-05,
+          "error": 3.667980041468285e-07
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": -6.867750812489248e-05,
+          "error": 5.993408292947122e-06
+        }
+      ]
+    },
+    {
+      "audit": true,
+      "analytic": 0.0017261994996279374,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": 0.0017046385654140295,
+          "error": 2.156093421390795e-05
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": 0.00172591392733068,
+          "error": 2.855722972573693e-07
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": 0.0017259401019487084,
+          "error": 2.5939767922902347e-07
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": 0.001715910080690719,
+          "error": 1.0289418937218381e-05
+        }
+      ]
+    }
+  ],
+  "whole_wall_s": 2.679986272007227,
+  "peak_rss_kb": 330080,
+  "source_sha256": {
+    "experiments/credit/check_market_direct_future_v3.py": "91fdc57b287fc17cfe74c926aeabb7362080fe034a25323f4a16ef70ff46e844",
+    "experiments/credit/market_direct_future_credit_v3.py": "5df465d86207738056b76a94474b166b4de03fcfba8d4fa161b187d5df0e91ac"
+  },
+  "scope": "Actual native producer VJP, clipped Adam with fixed prior moments, next-window loss; both residual audit branches. Boundary-vector derivative, not all-history derivative."
+}

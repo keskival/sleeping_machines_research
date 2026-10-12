@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_direct_future_20261012_v3_smoke",
+  "args": {
+    "tag": "curie_market_direct_future_20261012_v3_smoke",
+    "mode": "smoke",
+    "seed": 187
+  },
+  "acquisition": {
+    "arm": "online",
+    "nll": 13.293889655846185,
+    "targets": 32,
+    "audits": 2,
+    "future_teachers": 3,
+    "adam_proposal_error": 6.68895494548849e-13,
+    "wall_s": 0.3305670180125162,
+    "block_nll": [
+      10.469042957765875,
+      14.687481372154462,
+      13.965604659425313,
+      14.053429634039087
+    ]
+  },
+  "rows": [
+    {
+      "arm": "online",
+      "nll": 14.911917632786668,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 7,
+      "adam_proposal_error": 2.615963001773025e-13,
+      "wall_s": 0.6898877930070739,
+      "block_nll": [
+        14.188408572538503,
+        11.47214534221337,
+        13.520735547974567,
+        12.391494960706751,
+        18.0410135296653,
+        17.774509592881408,
+        16.240016599437254,
+        15.667016916876188
+      ]
+    },
+    {
+      "arm": "frozen",
+      "nll": 14.911859727345288,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.606387328185633e-13,
+      "wall_s": 0.3439775469887536,
+      "block_nll": [
+        14.188408572538503,
+        11.47214534221337,
+        13.52071300118405,
+        12.391232866646185,
+        18.04172231369536,
+        17.774692912572217,
+        16.23940768652032,
+        15.666555123392296
+      ]
+    },
+    {
+      "arm": "zero",
+      "nll": 14.911615585211356,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.588207426157396e-13,
+      "wall_s": 0.34218637901358306,
+      "block_nll": [
+        14.188408572538503,
+        11.472020566250066,
+        13.520700258680144,
+        12.390867787467247,
+        18.042028450262116,
+        17.774865050676,
+        16.238888649679694,
+        15.665145346137086
+      ]
+    },
+    {
+      "arm": "bptt",
+      "nll": 14.911562091288433,
+      "targets": 64,
+      "audits": 8,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.665992426820196e-13,
+      "wall_s": 0.42229972800123505,
+      "block_nll": [
+        14.188408572538503,
+        11.47205551227161,
+        13.52033152190538,
+        12.388896294328394,
+        18.04249132112568,
+        17.776887970405404,
+        16.239008351562386,
+        15.66441718617012
+      ]
+    }
+  ],
+  "online_gain": {
+    "frozen": -5.790544138051246e-05,
+    "zero": -0.00030204757531215876,
+    "bptt": -0.00035554149823546766
+  },
+  "whole_wall_s": 3.00537825198262,
+  "peak_rss_kb": 328928,
+  "source_sha256": {
+    "experiments/credit/market_direct_future_credit_v3.py": "5df465d86207738056b76a94474b166b4de03fcfba8d4fa161b187d5df0e91ac",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim."
+}

@@ -1,0 +1,7 @@
+# Current direct-future teacher protocol
+
+v1 smoke stops on an in-place producer graph mutation. v2 protects that graph and exactly matches the applied Adam update, but its teacher uses a split window with a detached first produced state. The subsequent finite-difference check fails at multiple perturbation sizes. Its completed NLLs (online12.098229, frozen12.076652, zero12.010478, nativeBPTT12.009315) describe that erroneous teacher; they are not evidence about the corrected future-utility method. Preserve source and result; do not use them in positive claims or as a developed-family verdict.
+
+v3 changes only the next-window teacher to fully connected native causal consumption. It passes both residual-audit derivative branches before smoke/fit. Absolute derivative errors at1e-4 perturbation are1.45e-7 and2.86e-7; smaller steps expose recording-cell subtraction noise, reported explicitly. The critic derivative truncates history at the incoming numerical state and prior optimizer moments. All current within-window factual teacher paths remain connected. The actual-step parity check remains below1e-10.
+
+Run the unchanged shared acquisition and matched online/frozen/zero-audit/native-BPTT arms. If quality improves against zero and BPTT, prioritize economical producer-JVP teaching; if it fails, diagnose actual future utility and actor/critic coupling before any scaling or confirmation. The chain rule and lower-retention path are documented in theory/FUTURE_CREDIT_ADAM_PULLBACK.md. No TEST, benchmark or sparse-hardware claim.
