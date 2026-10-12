@@ -17,6 +17,9 @@ def main():
    p=ROOT/f'experiments/results/credit/{tag}.json'
    if p.exists():
     r=json.loads(p.read_text());assert r['status']=='completed';text+=label+': '+', '.join(f"{x['arm']} NLL {x['nll']:.6f} / {x['wall_s']:.3f}s" for x in r['rows'])+'. Shared acquisition is charged separately; Gaussian innovations are not paired, one-seed development. '
+  p=ROOT/'experiments/results/credit/curie_market_future_shift_20261012_v1_decision.json'
+  if p.exists():
+   r=json.loads(p.read_text());assert r['status']=='completed';text+=f"Fixed three-seed hidden-change confirmation: mean gain versus frozen {r['mean_gain_vs_frozen']:+.6f}, versus zero {r['mean_gain_vs_zero']:+.6f}. "+r['decision']+' '
   text+='Next decisive test trains interventions for future predictive utility rather than cotangent imitation, retaining causal state and matched frozen-credit/ordinary-online controls. The current native local/audit work is dense; these results make no sparse hardware or sealed TEST claim.'
   p=ROOT/'report/I_SCIENCE.md';s=p.read_text();marker='**Forward-taught credit and native learning (12 October):**';start=s.index(marker);end=s.index('\n',start);p.write_text(s[:start]+text+s[end:])
 if __name__=='__main__':main()
