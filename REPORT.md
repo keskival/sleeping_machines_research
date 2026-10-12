@@ -2898,6 +2898,19 @@ Single-seed private DEV; same CPU model/updates/131056 fitting targets. Data div
 
 Evidence aws_integrated_p24_unique_stream_decision_20261012_s8_v1.
 
+Distinct natural experience at fixed learning-event budget: 524272fitting targets/1024updates. Same original float32 integrated model; numeric state persists across the longer stream.
+
+| Exposure | Unique tokens | Fit targets | Initial NLL | Selected NLL | Context gain | Train seconds |
+| --- | --- | --- | --- | --- | --- | --- |
+| repeated | 262144 | 524272 | 8.078815 | 7.734949 | 0.529312 | 596.281 |
+| distinct | 524280 | 524272 | 8.029702 | 7.425191 | 0.700973 | 600.645 |
+
+Distinct-experience quality gain+0.309757; initial frequency-prior gain+0.049113; change in post-initialization learning gain+0.260644; change in contextual gain+0.171661.
+
+Single-seed private DEV; same CPU model/updates/fitting-target count. Data diversity, lane partition and corpus-wrap resets differ intentionally. TRAIN-only frequency prior uses each admitted prefix and is included in process cost. Initial-prior and learned gains separated. Context comparator is the same fixed readout on the mean causal feature from an8192-token TRAIN probe, not a refitted unigram or isolated memory ablation. No iso-data, training-FLOP, Transformer or nonstationary-stream claim.
+
+Evidence aws_integrated_p24_unique_512k_decision_20261012_s6_v2.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
