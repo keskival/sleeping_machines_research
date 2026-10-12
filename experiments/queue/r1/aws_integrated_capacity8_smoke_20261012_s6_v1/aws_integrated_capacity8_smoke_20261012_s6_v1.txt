@@ -1,0 +1,2 @@
+# R1: exact cached replay; decision retain learning and reduce complete training time at two acquired-data sizes
+aws_integrated_capacity8_smoke_20261012_s6_v1 experiments/window_replay_token_language.py --tag aws_integrated_capacity8_smoke_20261012_s6_v1 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 8 --lanes 8 --eval-lanes 8 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6 --exposure fresh --train-tokens 65536 --steps 16 --eval-every 8 --dev-tokens 2048
