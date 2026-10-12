@@ -165,4 +165,15 @@ def blocks():
                     f"{r['training_s']:.3f}",f"{r['training_ms_per_target']:.4f}",str(r['selected_writes_per_target']),str(r['scored_keys_per_target'])])
         result.extend([('p','Capacity-clock calibration. '+c['scope']),
             ('table',(['Variant','Fit targets','Selected NLL','Final NLL','Train seconds','ms/target','Writes/target','Keys/target'],rows,[38,24,24,24,24,24,24,24]))])
+    for stage in ('2m','8m'):
+        packet=ROOT/f'experiments/results/diagnostics/aws_fresh_scaling_{stage}_decision_20261012_v1.json'
+        if not packet.exists():continue
+        c=json.loads(packet.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[str(r['pool']),str(r['targets']),f"{r['selected_nll']:.6f}",f"{r['final_nll']:.6f}",
+            f"{r['training_s']:.3f}",f"{r['ms_per_target']:.4f}",str(r['selected_writes_per_target']),str(r['scored_keys_per_target'])] for r in c['rows']]
+        result.extend([('p','Fixed-prior fresh-acquisition scaling. '+c['scope']),
+            ('table',(['Pool','Fit targets','Selected NLL','Final NLL','Train seconds','ms/target','Writes/target','Keys/target'],rows,[12,28,28,28,28,24,24,24])),
+            ('p','Evidence '+packet.stem+'.')])
     return result

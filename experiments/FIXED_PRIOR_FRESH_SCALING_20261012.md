@@ -1,0 +1,13 @@
+# R1 fixed-prior fresh-acquisition scaling
+
+Decision: does larger acquired experience improve this integrated member, and does doubled addressed capacity become useful at the larger acquisition point?
+
+Clock calibration improves pool8 versus raw pool8 at both completed sizes, but at524272targets calibrated8's7.281989 trails pool4's7.263107. Pool4 is the incumbent. First-pass seed6 capacity behavior is not a family verdict.
+
+The next stage extends the existing immutable cached pool4 and calibrated pool8 drivers to4096updates, eight fresh262144-token blocks (approximately2M targets). Both arms complete regardless of the smaller capacity ordering. Their TRAIN frequency prior stays fixed to the first262144tokens, as in the saved1024-update acquisition. Payload24/depth2/heads2, hard temporal races, persistent numerical memory, key/value separation, selected4writes, factual BP, sampled actual forced-write suffix teacher and credit16 are retained. All16/32keys are scored. No new architecture or training estimator is introduced.
+
+Use the same seed6, GPT2 FineWeb shard, anonymous causal inputs, optimizer, lane layout, fresh-block resets and DEV2048 interval. Public validation and reserved4M are untouched. DEV every256updates stays fixed. Analysis requires the earlier1024-update recorded acquisition trajectory to agree exactly within each member (excluding elapsed time and the mid-run fingerprint field); this detects accidental changes in the learning experiment. Final NLL measures the acquisition curve. Selected NLL is also reported, with the increased selection opportunities at larger acquisition. No exponent is fitted to these few points.
+
+Pool8 advances only if both final and selected NLL beat pool4 and complete training costs at most5% more. Otherwise retain pool4. If the selected member improves final NLL by more than0.05 over its524272-target point, with complete training below1.5ms/target, admit16384updates/32freshblocks (approximately8Mtargets). Compare its4096-update prefix exactly with the completed2M point. This is a bounded development ladder, not a public benchmark verdict or evidence that natural distribution shifts were measured.
+
+Host ip-172-31-47-132: one R1 CPU job in bounded slot2 through run_safe, one thread, RSS1.5GB, VMS8GB, >=8GiB MemAvailable. Completed512k fits measured~560s and~590MiB RSS. Projected2M training~38minutes/arm (5400s watchdog);8M~2.5hours (14400s watchdog). Estimates admit resources; only completed measured times enter results. Preserve raw JSONs, checkpoints, source hashes and scheduler logs. Controller timeout8hours. Curie retains native compact/deep learned-credit ownership.
