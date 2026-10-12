@@ -431,3 +431,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Decision value and discovered options](theory/DECISION_VALUE_AND_DISCOVERED_OPTIONS.md): separates learning what to do from making new interventions executable; derives Bayesian decision-value and discovery decomposition, action-ranking regret, and reuse/drift amortization. Defines the changing-dependency acquisition endpoint without admitting a new fit or replacing the current owner pipeline.
 
 [Learned route similarity and activation-distribution memory](theory/LEARNED_ROUTE_SIMILARITY_MEMORY.md): defines demand-conditioned L2 route-effect geometry, causal distribution-memory updates, paired forward-observed teaching, propensity-aware receipts and current-operator conditioning. Specifies a history-summary integration comparison; mathematical construction, not a fitted model claim.
+
+[Exact cached credit-window replay](theory/EXACT_CREDIT_WINDOW_REPLAY.md): retained integrated execution skips unchanged teacher prefixes from cloned numerical/RNG boundaries; exact depth2/4 update contract passes, full-fit quality/time comparison registered.

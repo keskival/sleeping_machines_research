@@ -1,0 +1,9 @@
+# Exact cached credit-window replay
+
+The depth4 pilot increased complete training time by about1.7x and worsened DEV loss at both acquired-data sizes. Retain P24D2H2U4. Its bounded alternative teacher currently recomputes the prefix before the forced write. That prefix has no changed intervention and supplies an already-computed numerical state.
+
+For a forced site t in credit window beginning b, factual state s_b and RNG state g_b are captured before that window. The unchanged prefix obeys the same transition map, so replay F(x[b:e],s_b,g_b; forced site t-b) equals the suffix of full-prefix replay. This is an execution change: temporal races, keys/values, hard writes, persistent state, factual differentiation, alternative utility, inclusion weights, gradient clipping and AdamW all remain. Boundary snapshots are detached copies, not a new gradient truncation. EOS and reset-mode semantics are explicit.
+
+The guarded float32 contract aws_window_replay_contract_20261012_v2 passes depth2/4 and carry/reset over three AdamW updates each: exact suffix features, physical state, utility, RNG, every gradient and parameter. The first checker failed before fitting due indexing a flattened loss as a matrix; both driver and checker now explicitly reshape losses. Failed logs remain.
+
+Registered fit: reuse seed6 fresh common-prior P24D2H2U4,65536 prior tokens,256 updates,131056 scored TRAIN targets and the same2040-target DEV slice. Require identical observed learning/teacher curves except replay counters and time, and lower complete training wall time than the saved149.399s baseline before extending to the524272-target point. Source hashes and full work are retained. A full-fit speed result is pending. No new dense controls, public validation or reserved4M scoring.
