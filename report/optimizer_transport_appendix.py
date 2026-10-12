@@ -161,4 +161,13 @@ def pages():
             for arm in ['online','frozen','heads','bp_adam']:
                 v=row['arms'][arm];rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['mean_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}"])
         current.append([('h2',f'Complete native cohort/depth learning: seed{seed}'),('table',(['Depth','Learner','DEV NLL','Prequential NLL','Whole seconds'],rows,[20,35,36,39,37])),('small','All1400TaxiTRAIN sequences/threepasses,67200fittingtargets per arm;256acquisition3944reuse. Fresh actor seed, selected unchanged local recipe; depths8/16/32,width32,modes16. Reused first128DEV sequences/2048targets,128block scoring cadence; per-sequence final losses retained. All acquisition, teacher/reference, packet/query, optimizer/scoring charged. CPUwall only; independent sequences reset, dense numerical core writes/no optional forward-route credit. Own-native references, no TEST/public benchmark claim.')])
+    path=ROOT/'experiments/results/credit/curie_native_operator_event_20261012_v1_fit.json'
+    if path.exists():
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[]
+        for row in record['rows']:
+            for arm in ['online','frozen','heads','bp_adam']:
+                v=row['arms'][arm];rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['mean_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}"])
+        current.append([('h2','Current-operator recursive credit: actual native development'),('table',(['Depth','Learner','DEV NLL','Prequential NLL','Whole seconds'],rows,[20,35,36,39,37])),('p','A weight-blind packet can hide different native sensitivities. This conditional repair supplies current operators and an explicit reverse-depth message: exact current-event adjoints with incoming temporal state held fixed, plus future-trained connected temporal/nonlinear corrections. No gradient-imitation target; actual finite future likelihood still teaches both continuous updates and four hard queries.'),('small','Freshseed99916,width32,modes16,depth8/16,128acquisition512reuse,10240fittingtargets per arm. Same128DEV2048targets and exact matched acquired-core/head-only/frozen/own-nativeAdamW controls. WholeCPU includes dense operator copies, all known local adjoints, learned queries, teacher/reference, optimizer and scoring. Local adjoints omit incoming-state parameter history and are not full BPTT; learned nonuniform query scaling does not claim unbiased current backprop. First-pass construction, no TEST/hardware/family verdict.')])
     return current
