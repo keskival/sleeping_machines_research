@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "checks": {
+    "state_credit_zero_for_clock_readout": true,
+    "readout_parameters": 3756,
+    "actor_parameters": 18164,
+    "readout_current_loss_gradient_squared_norm": 9.398730828183883,
+    "readout_names": [
+      "mark_slot",
+      "clock.weight",
+      "clock.bias",
+      "mark_ctx.weight",
+      "mark_ctx.bias"
+    ],
+    "actual_adam_proposal_error": 6.381284389789244e-13,
+    "optimizer_control_utility_derivative": 0.020472948527019308,
+    "utility_identity_error": 0.0,
+    "utility_finite_difference_error": 3.806408632733849e-09,
+    "finite_difference_curve": [
+      {
+        "epsilon": 0.01,
+        "derivative": 0.0204729524487135,
+        "error": 3.921694191610925e-09
+      },
+      {
+        "epsilon": 0.003,
+        "derivative": 0.02047295233342794,
+        "error": 3.806408632733849e-09
+      },
+      {
+        "epsilon": 0.001,
+        "derivative": 0.020472914353142357,
+        "error": 3.4173876950482907e-08
+      }
+    ]
+  },
+  "source_sha256": {
+    "experiments/credit/market_credit_reachability_contract_v2.py": "ba49ff96c53498a2e337cb9f4a44999be4e3a1212d0c6dbd0ca8a0684822e0c3",
+    "experiments/credit/market_native_test_time.py": "e5d4c0581110d587f95f980fd9490b877a38c4207968f882ee3dde32cc204f6e",
+    "experiments/credit/market_exact_anchor_future.py": "c548ea5a2a95e5e36c6663e77dce0b507f4ba0155fd669359a83cbc34aa051ef",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "whole_wall_s": 1.2976747229986358,
+  "peak_rss_kb": 383272,
+  "scope": "Existing full market actor on16revealed TRAIN targets; complete exact current gradients, one actual Adam proposal parity and next-window scalar learning-rate utility derivative. Parameter groups used only for diagnosis. No trained optimizer controller, market-quality win or sparse hardware claim."
+}

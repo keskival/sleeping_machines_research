@@ -1,0 +1,285 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_b10_native_optimizer_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_b10_native_optimizer_20261012_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "learning_rate_multipliers": [
+      1.0,
+      0.9951782373320771
+    ],
+    "prospective_credit_rms": [
+      0.0,
+      0.0003364876778046237
+    ],
+    "calibration_credit_rms": [
+      0.0,
+      0.0
+    ],
+    "predicted_credit_rms": [
+      0.0,
+      0.0
+    ],
+    "first_event_credit_rms": [
+      0.0036118297387959662,
+      0.061913293267255275
+    ],
+    "local_update_response_rms": [
+      0.0024462512097749778,
+      0.003534580954152401
+    ],
+    "arm": "online",
+    "nll": 10.56759797395078,
+    "targets": 16,
+    "audits": 2,
+    "future_teachers": 1,
+    "adam_proposal_error": 6.381284389789244e-13,
+    "wall_s": 0.2798508039850276,
+    "block_nll": [
+      10.042609971876699,
+      11.092585976024864
+    ]
+  },
+  "rows": [
+    {
+      "arm": "fully_frozen",
+      "nll": 5.709725646068053,
+      "targets": 16,
+      "wall_s": 0.020099069020943716,
+      "block_nll": [
+        4.197742715368987,
+        7.221708576767119
+      ],
+      "audits": 0,
+      "future_teachers": 0
+    },
+    {
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "bptt",
+      "nll": 5.710766229585927,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.1000896294486324e-13,
+      "wall_s": 0.7885539820126723,
+      "block_nll": [
+        4.197742715368987,
+        7.2237897438028655
+      ],
+      "critic_parameter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0005995469428912159,
+      "native_credit_events": 18,
+      "native_selected_updates": 72,
+      "native_candidate_scores": 144,
+      "native_counterfactual_values": 144
+    },
+    {
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "zero",
+      "nll": 5.710788507613023,
+      "targets": 16,
+      "audits": 0,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.160709541316642e-13,
+      "wall_s": 0.8834062519890722,
+      "block_nll": [
+        4.197742715368987,
+        7.223834299857059
+      ],
+      "critic_parameter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0006000282959079395,
+      "native_credit_events": 18,
+      "native_selected_updates": 72,
+      "native_candidate_scores": 144,
+      "native_counterfactual_values": 144
+    },
+    {
+      "learning_rate_multipliers": [
+        0.9863598302913608,
+        0.9864529299372357
+      ],
+      "prospective_credit_rms": [
+        0.0010988220394685612,
+        5.0272828569503674e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979361080948902,
+        0.0036773739579251965
+      ],
+      "local_update_response_rms": [
+        0.001869998599166736,
+        0.0010747187838163763
+      ],
+      "arm": "frozen",
+      "nll": 5.710776121740999,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.0597703190582415e-13,
+      "wall_s": 0.8704303050180897,
+      "block_nll": [
+        4.197742715368987,
+        7.223809528113009
+      ],
+      "critic_parameter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0005912369072214319,
+      "native_credit_events": 36,
+      "native_selected_updates": 144,
+      "native_candidate_scores": 288,
+      "native_counterfactual_values": 288
+    },
+    {
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [
+        0.0010988220394685612,
+        7.376551990872092e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979361080948902,
+        0.00367729049673232
+      ],
+      "local_update_response_rms": [
+        0.001869998599166736,
+        0.0010745782058854726
+      ],
+      "arm": "field_only",
+      "nll": 5.71079145584995,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.1020888982546957e-13,
+      "wall_s": 0.3057607859955169,
+      "block_nll": [
+        4.197742715368987,
+        7.223840196330913
+      ],
+      "critic_parameter_max_change": 0.0009975915852599715,
+      "actor_parameter_max_change": 0.0005993823790070851,
+      "native_credit_events": 36,
+      "native_selected_updates": 144,
+      "native_candidate_scores": 288,
+      "native_counterfactual_values": 288
+    },
+    {
+      "learning_rate_multipliers": [
+        0.9863598302913608,
+        0.9787926067284352
+      ],
+      "prospective_credit_rms": [
+        0.0010988220394685612,
+        7.394774714693582e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979361080948902,
+        0.0036773739579251965
+      ],
+      "local_update_response_rms": [
+        0.001869998599166736,
+        0.0010747187838163763
+      ],
+      "arm": "online",
+      "nll": 5.710776121740999,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.0597703190582415e-13,
+      "wall_s": 0.2984469750081189,
+      "block_nll": [
+        4.197742715368987,
+        7.223809528113009
+      ],
+      "critic_parameter_max_change": 0.001000737523379659,
+      "actor_parameter_max_change": 0.0005889332751585208,
+      "native_credit_events": 36,
+      "native_selected_updates": 144,
+      "native_candidate_scores": 288,
+      "native_counterfactual_values": 288
+    }
+  ],
+  "online_gain": {
+    "fully_frozen": -0.0010504756729456943,
+    "bptt": -9.892155071966613e-06,
+    "zero": 1.2385872024012201e-05,
+    "frozen": 0.0,
+    "field_only": 1.5334108951492453e-05
+  },
+  "quality_gate": false,
+  "source_sha256": {
+    "experiments/credit/market_optimizer_native_test_time.py": "9fe2d53b7cb28be1dc3f9eabe912c75c69a72a402ffa5b7b9bd7c2986fa72d6a",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/native_prospective_market_credit.py": "0f4001cb47fe3da1c407873e7bf94424110b52b91362bc591d3643a4a1743176",
+    "experiments/credit/market_exact_anchor_future.py": "c548ea5a2a95e5e36c6663e77dce0b507f4ba0155fd669359a83cbc34aa051ef",
+    "experiments/credit/market_optimizer_future.py": "4191c11869fd1ae08f6f33112d79f768a435707208ba9d380cecd2311964df61",
+    "experiments/credit/native_optimizer_market_credit.py": "8314a46aa8548836a2dad5163cd75758fef3a1051be59c331bf0d7f4a9e95675",
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/route_activation_memory.py": "a56487e5cdcc15babb2efdd5c6edb8713ec6eeaca564a09dc3b026d8cae90809",
+    "experiments/market/NATIVE_OPTIMIZER_FUTURE_PROTOCOL.md": "6c080492f9bb72368567cfe6e7afd9c8ef00019d7341c2460a8cdd24b53576b1"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "whole_wall_s": 8.638231777003966,
+  "peak_rss_kb": 396700,
+  "critic_parameters": 33249,
+  "actor_parameters": 18164,
+  "scope": "Existing full18,164parameter market predictor/checkpoint retained; new native hard-race prospective critic jointly learns a bounded positive Adam step multiplier across all actor parameters, exact full boundary anchors, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. No sampled residual credit; zero is genuine local-only learning. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution."
+}
