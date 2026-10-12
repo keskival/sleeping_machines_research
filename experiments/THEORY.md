@@ -435,3 +435,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Exact cached credit-window replay](theory/EXACT_CREDIT_WINDOW_REPLAY.md): retained integrated execution skips unchanged teacher prefixes from cloned numerical/RNG boundaries; exact depth2/4 update contract passes; first proper-token full fit retains the recorded learning curve at7.26% lower complete training time, two-size/three-seed confirmation running.
 
 [Addressed capacity under fresh acquisition](theory/TOKEN_CAPACITY_ACQUISITION_20261012.md): registered pool4→8 integrated comparison holds selected writes fixed while charging doubled discovery; two acquisition sizes follow the current exact-replay cohort, with no small-quality veto of the larger point.
+
+[Capacity-clock conservation](theory/CAPACITY_CLOCK_CONSERVATION.md): derives the capacity/total-hazard coupling and a cardinality-normalized clock prior; factorized common-time and conditional branch credit explain fixed-clock alternative writes. Registered calibrated integrated test follows the completed raw pool8 two-size comparison.
