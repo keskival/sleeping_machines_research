@@ -19,7 +19,7 @@ def blocks():
         ('p',f"Selected quality gain {d['quality_gain']:+.6f} nats; ordinary/batched training wall {d['ordinary_over_batched_training_wall']:.3f}x. Registered development gate (quality retained and at least5% training-wall saving): {'passed' if d['development_gate_passed'] else 'failed'}."),
         ('p',d['scope']),
         ('p','Numerical integration gate: three AdamW updates with carried state, repeated token IDs, EOS resets and two credit windows; maximum forward/state error9.54e-7, gradient error1.20e-7, parameter error1.06e-7, optimizer error7.46e-9; RNG states equal. Evidence aws_integrated_lookup_parity_20261012_v1 and '+path.stem+'.')]
-    precision=ROOT/'experiments/results/token_language/aws_integrated_p24_64k_double_decision_20261012_v1.json'
+    precision=ROOT/'experiments/results/token_language/aws_integrated_p24_64k_double_decision_20261012_v2.json'
     if precision.exists():
         q=json.loads(precision.read_text());assert q['status']=='completed'
         for name,digest in {**q['source_sha256'],**q['input_sha256']}.items():
@@ -44,6 +44,21 @@ def blocks():
                 pr.append([str(seed),arm,f"{min(x['dev_nll'] for x in r['curve']):.6f}",f"{r['train_wall_s_total']:.3f}",f"{r['wall_s']:.3f}"])
         result.extend([('p','Precision-stabilized integrated execution: float64 retains the same model and learning operations. The32-update diagnosis agrees within2.3e-14NLL. Full64K measurements below include all factual/alternative learning and optimizer work.'),
             ('table',(['Seed','Lookup','Selected NLL','Training seconds','Engine seconds'],pr,[18,30,38,40,40])),
-            ('p',f"Seed6 full DEV curve maximum error{q['max_dev_curve_error']:.3g}; ordinary/batched training{q['ordinary_over_batched_training_wall']:.3f}x. Against saved float32 ordinary: quality gain{q['versus_fp32']['quality_gain']:+.6f}, training ratio{q['versus_fp32']['ordinary_over_batched_training_wall']:.3f}x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Gate tolerance1e-8 was registered before full fits completed."),
-            ('p','Confirmations: '+('; '.join(confirmations) if confirmations else 'completed seed6; bounded seed7/8 confirmation gated on full-curve parity and training-work saving.'))])
+            ('p',f"Seed6 full DEV curve maximum error{q['max_dev_curve_error']:.3g}; ordinary/batched training{q['ordinary_over_batched_training_wall']:.3f}x. Against saved float32 ordinary: quality gain{q['versus_fp32']['quality_gain']:+.6f}, training ratio{q['versus_fp32']['ordinary_over_batched_training_wall']:.3f}x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Full-curve parity criterion1e-8. Useful retained-quality/work gate: {'passed' if q['useful_quality_work_gate_passed'] else 'failed; original float32 retained'}."),
+            ('p','Confirmations: '+('; '.join(confirmations) if confirmations else 'no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.'))])
+    unique=ROOT/'experiments/results/token_language/aws_integrated_p24_unique_stream_decision_20261012_s6_v1.json'
+    if unique.exists():
+        u=json.loads(unique.read_text());assert u['status']=='completed'
+        for name,digest in {**u['source_sha256'],**u['input_sha256']}.items():
+            p=ROOT/name
+            # Checkpoints are host-local; the completed evaluator pins their hashes.
+            if p.suffix=='.pt' and not p.exists():continue
+            assert hashlib.sha256(p.read_bytes()).hexdigest()==digest,name
+        ur=[[r['arm'],str(r['unique_tokens']),str(r['fitting_targets']),
+             f"{r['initial_dev_nll']:.6f}",f"{r['selected_dev_nll']:.6f}",
+             f"{r['context_gain']:.6f}",f"{r['training_wall_s']:.3f}"] for r in u['rows']]
+        result.extend([('p','Distinct natural experience at fixed learning-event budget: replace two passes over65536tokens with one pass over131064tokens. Same original float32 integrated model,256updates and131056fitting targets; numeric state persists across the longer stream.'),
+            ('table',(['Exposure','Unique tokens','Fit targets','Initial NLL','Selected NLL','Context gain','Train seconds'],ur,[25,28,28,30,30,30,30])),
+            ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
+            ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
     return result
