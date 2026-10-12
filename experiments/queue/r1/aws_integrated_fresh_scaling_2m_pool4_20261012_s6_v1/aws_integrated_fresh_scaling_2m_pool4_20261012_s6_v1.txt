@@ -1,0 +1,2 @@
+# R1: fixed-prior fresh-acquisition scaling; decision select useful addressed capacity and larger learning frontier
+aws_integrated_fresh_scaling_2m_pool4_20261012_s6_v1 experiments/window_replay_token_language.py --tag aws_integrated_fresh_scaling_2m_pool4_20261012_s6_v1 --exposure fresh --train-tokens 262144 --dev-tokens 2048 --steps 4096 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 4 --lanes 8 --eval-lanes 8 --eval-every 256 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6
