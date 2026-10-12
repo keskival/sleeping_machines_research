@@ -31,4 +31,8 @@ def pages():
     costs.append([x['arm'],str(summed('discovery_context_reads')),str(summed('relationship_candidate_updates')),str(summed('credit_selected_updates')),str(summed('credit_counterfactual_values')),str(summed('exact_alternative_audits'))])
    block.append(('table',(['Learner','Discovery reads','Pair writes','Credit writes','Credit alternatives','Exact audits'],costs,[27,32,27,27,30,24])))
   result.append(block)
+ r=read('curie_causal_race_credit_20261012_v1_controls')
+ if r is not None:
+  reference=read('curie_causal_race_credit_20261012_v1_fit');learned=next(x for x in reference['rows'] if x['arm']=='credit');rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"] for x in r['rows']];rows.append(['Native learned credit',f"{learned['mean_dev_nll']:.6f}",f"{learned['whole_fit_wall_s']:.3f}"])
+  result.append([('h2','Matched audit rate and native credit-memory attribution'),('table',(['Learner','DEV NLL','Full fitting seconds'],rows,[77,45,45])),('small',r['scope']),('p','; '.join(f"Native learned credit versus {name}: quality gain {x['learned_quality_gain']:+.6f}, time ratio {x['learned_time_ratio']:.3f}x" for name,x in r['comparisons'].items())+'. These controls determine the interpretation of the preceding first quality gain.')])
  return result

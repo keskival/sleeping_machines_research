@@ -1,0 +1,20 @@
+"""B5/R1 native credit teacher variance identity and integrated retained actor."""
+import argparse,hashlib,json,resource,time
+from pathlib import Path
+import torch
+from torch.nn import functional as F
+from native_sensor import ROOT
+from credit_run import run
+from centered_race_credit import CenteredRaceCredit
+from race_credit_sensor import RaceCreditSensor
+from public_stream import persistence
+
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--tag',required=True);a=ap.parse_args();torch.set_num_threads(1);out=ROOT/f'experiments/results/causal_induction/{a.tag}.json';assert not out.exists();start=time.monotonic();prob=.37;z0=torch.tensor(.8,dtype=torch.float64);z=torch.tensor(.83,dtype=torch.float64);y=torch.tensor([0.,1.],dtype=torch.float64);raw=F.binary_cross_entropy_with_logits(z.expand(2),y,reduction='none');anchor=F.binary_cross_entropy_with_logits(z0.expand(2),y,reduction='none');weights=torch.tensor([1-prob,prob]);var=lambda x:float((weights*(x-(weights*x).sum()).square()).sum());assert abs(var(raw-anchor)-prob*(1-prob)*float((z-z0).square()))<1e-14
+ parent=ROOT/'experiments/results/causal_induction/curie_causal_induction_20261012_v1_prepare.json';data=json.loads(parent.read_text());train=[x for x in data['records'] if x['split']=='train'][:8];prior=(1.,2.)
+ for x in train:
+  p=ROOT/x['path'];assert hashlib.sha256(p.read_bytes()).hexdigest()==x['sha256'];_,prior=persistence(p,prior,True)
+ torch.manual_seed(194);original=RaceCreditSensor(prior[0]/prior[1]);initial=original.state_dict();candidate=CenteredRaceCredit(prior[0]/prior[1]);candidate.load_state_dict(initial);p=ROOT/train[0]['path'];ordinary=run(original,p,'exact',torch.optim.Adam(original.parameters(),lr=.001),seed=194);retained=run(candidate,p,'exact',torch.optim.Adam(candidate.parameters(),lr=.001),seed=194);assert abs(ordinary['nll']-retained['nll'])<1e-12;error=max(float((v-candidate.state_dict()[k]).abs().max()) for k,v in original.state_dict().items());assert error<1e-12
+ candidate.load_state_dict(initial);before=candidate.critic.units[0][0][0][0].input.weight.detach().clone();fit=run(candidate,p,'credit',torch.optim.Adam(candidate.parameters(),lr=.001),seed=194);change=float((before-candidate.critic.units[0][0][0][0].input.weight).abs().max());assert change>0
+ sources=[Path(__file__),ROOT/'experiments/causal_induction/centered_race_credit.py',ROOT/'experiments/causal_induction/race_credit_sensor.py',ROOT/'experiments/causal_induction/structural_sensor.py',ROOT/'experiments/causal_induction/native_sensor.py',ROOT/'experiments/causal_induction/credit_run.py',ROOT/'experiments/causal_induction/public_stream.py',ROOT/'sleeping_machines/addressed_event_heads.py',ROOT/'sleeping_machines/paired_route_credit.py',ROOT/'sleeping_machines/parallel_head_race_language.py',ROOT/'sleeping_machines/sparse_race_language.py'];out.write_text(json.dumps(dict(status='completed',battle='B5/R1',tag=a.tag,checks=dict(binary_contrast_variance_identity=True,raw_loss_variance=var(raw),relative_loss_variance=var(raw-anchor),retained_exact_parameter_error=error,native_credit_unit_change=change),fit=fit,whole_pipeline_wall_s=time.monotonic()-start,peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,parent_sha256=hashlib.sha256(parent.read_bytes()).hexdigest(),source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},scope='Contract only, no quality advantage. For binary outcome probabilityp, route loss relative to baseline has conditional variancep(1-p)*(z_route-z_anchor)^2 versus raw p(1-p)*z_route^2. Improvement requires logits near shared baseline; not universal. Same baseline subtracts from both route labels, leaving their actual loss contrast unchanged. Known actor-critic control-variate principle applied to native credit tokens; no novelty claim for centering. Issued anchor fixed before feedback.'),indent=2)+'\n');print(json.dumps(dict(error=error,unit_change=change,raw_variance=var(raw),relative_variance=var(raw-anchor))),flush=True)
+if __name__=='__main__':main()
