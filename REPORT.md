@@ -5959,6 +5959,21 @@ Existing18164parameter actor; native critic35841parameters. Aug24TRAIN continuat
 
 The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
 
+### Measured native credit replacement budget
+
+| CPU phase | Exact BP s | Learned s |
+| --- | --- | --- |
+| future teacher | 0.000 | 4.015 |
+| local forward backward | 2.025 | 2.325 |
+| credit response inference | 0.002 | 2.944 |
+| boundary transport proposals | 0.780 | 1.005 |
+| optimizer state | 0.050 | 0.052 |
+| setup and verification | 0.729 | 0.022 |
+
+The learned response/inference phase alone exceeds the entire exact boundary transport/proposal phase. Fewer exact audits cannot make this implementation economical at the same number of update opportunities; critic activity and future teaching must earn a smaller budget.
+
+512 Aug25 DEV cost targets after common2048TRAIN acquisition43.002s; original5750.687s predictor fitting additionally charged. Complete arm wall BPTT3.585s/online10.362s. Response/inference includes local cotangent and factual/candidate forecast probes, not native inference in isolation. Transport/proposals includes optimizer proposals, so deleting the whole phase is only an optimistic upper bound on savings. Frozen critic verification overhead separately charged. Loop accounting residual below0.0002s. Numerical parity passes; this profile does not replace the4096target quality comparison or claim hardware efficiency.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

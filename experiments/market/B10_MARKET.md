@@ -118,3 +118,6 @@ Completed TRAIN-only interface contract `curie_b10_forecast_response_20261012_v1
 | field_only | 6.964706 | 88.455 |
 | response_masked | 6.964757 | 88.811 |
 | online | 6.964872 | 88.396 |
+
+
+**Native credit replacement budget (12 October, measured):** Same2048TRAIN acquisition and512DEV cost profile. BPTT boundary transport/proposals0.780s; native response/inference2.944s, future teacher4.015s. Even deleting all exact transport/proposal work cannot pay the current response/inference phase; fewer audits alone cannot yield a same-opportunity wall advantage. Local differentiation2.025/2.325s for BPTT/online. Arm wall3.585/10.362s includes setup/verification0.729/0.022s. Shared acquisition43.002s and original5750.687s predictor fitting are additional. Phase residuals<0.0002s; proposal parity passes. Small profile is cost diagnosis, not a new quality confirmation. Prioritize shared-leg credit reuse, sparse event/teacher admission and cheaper native execution before another replacement fit. V1 smoke timing guard stopped; v2 charges omitted setup/verification.
