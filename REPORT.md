@@ -5494,7 +5494,17 @@ Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Qual
 
 Evidence: aws_native_update_transfer_20261012_s3_decision, aws_native_update_transfer_20261012_s4_decision, aws_native_update_transfer_20261012_s5_decision.
 
-Cross-domain learning transfer is admitted: Taxi seed0 controller frozen on StackOverflow, depths2/4/8,full1400TRAIN/128DEV,threepasses. Compared with fixedAdam and source-acquired static groups; source/target time-density units canonicalized from TRAIN medians. No target controller fit; completed quality/work decision pending. Protocol experiments/credit/NATIVE_UPDATE_DOMAIN_PLAN.md.
+Taxi-to-StackOverflow update-policy transfer, without target policy refitting. Same native family and full-parameter learning; conditioning uses current observed loss/gradient norms and TRAIN-derived density-unit canonicalization.
+
+| Seed | Depth | Gain vs Adam | Gain vs static | Static/matched work |
+| --- | --- | --- | --- | --- |
+| 6 | 2 | +0.013982 | +0.001901 | 0.975x |
+| 6 | 4 | +0.016768 | +0.001538 | 0.976x |
+| 6 | 8 | +0.010474 | +0.001865 | 0.978x |
+
+All1400targetTRAIN sequences cropped32events,threepasses,128DEV. Gain is reference minus frozen NLL; lower NLL better. Stronger work ratio is static fit+allvalidation divided by frozen fit to first scheduled static-quality match+allvalidation. Acquisition remains separately charged; incremental reuse ratios do not represent whole-pipeline advantage. Dense writes/sequence reset; no TEST/Transformer claim.
+
+Evidence: aws_native_update_domain_20261012_s6_decision.
 
 Native future-loss diagnosis (aws_native_audit_future_loss_20261011_s0): raw trace falls at all three depths, but future NLL improves in only1/9 depth/step cases. At step0.01, gains vs uniform are -1.415e-5/-1.226e-6/+5.150e-6 nats/target atdepth2/4/8. New private TRAIN contexts, producer-only one-step updates, exact audit enumeration; all reference/scoring work paid. Curvature instrument aws_native_audit_curvature_20261011_v1 explains the depth2/4 small-step losses: correction directions have negative future-NLL curvature. Stop raw-variance proxy experiments; next endpoint is causal future-loss learning and complete matched-quality work.
 
