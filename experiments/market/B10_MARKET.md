@@ -74,3 +74,15 @@ Completed first integration uses the full18164parameter saved market predictor, 
 The exact-anchor revision retains full actor credit and trains only a prospective native adjustment. Its quality gate passes: online6.964593 versus BPTT6.964682 (+0.000089), frozen guidance6.964646 (+0.000052), genuine local-only6.964755 (+0.000162), fully frozen6.985292 (+0.020699). Native critic33232parameters; common acquisition41.459s, reuse online81.364s/BPTT24.158s, original saved-model development5750.687s shared by all arms. Prediction-quality advance, with higher learning cost. Both BPTT and frozen guidance lead online in the second half, so the whole-cohort gain is not uniform over time. Preserve every completed result and frozen protocol. See [exact future protocol](NATIVE_EXACT_FUTURE_PROTOCOL.md), [initial integration protocol](NATIVE_TEST_TIME_PROTOCOL.md), and [shared-history theory](../theory/MARKET_POLICY_CLASSES_AND_ADAPTIVE_CREDIT.md).
 
 Development decision: extend the chronological horizon before repeating acquisitions or claiming regime adaptation. Keep the current complete actor, native critic, exact anchor and genuine local-only/frozen/online-BPTT controls. Report early/late quality and cumulative work together; a small first-cohort gain is not investor evidence for profitability or efficient full-model learning.
+
+### Completed longer chronological stage (12 October)
+
+**Longer real-market online credit (12 October):** Unchanged native prospective guidance on16384Aug25DEV forecasts fails the five-control quality gate. Online NLL5.740795, BPTT5.738457, frozen guidance5.742597, local-only5.738483, fully-frozen5.752864; learned gains BPTT-0.002338/frozen+0.001801nats/event. All first4096forecast losses replay within8.88e-16. Complete online continuation395.636s, BPTT137.554s, plus shared5750.687s original predictor development. One initialization/reused development stream, no sealedTEST, profitability, measured regime shift or hardware claim. The completed4096target small quality win remains scoped to that prefix; the longer result measures its persistence.
+
+| Rule | First4096 | Second4096 | Third4096 | Last4096 |
+|---|---:|---:|---:|---:|
+| fully_frozen | 6.985292 | 5.729460 | 5.214713 | 5.081991 |
+| bptt | 6.964682 | 5.710385 | 5.202207 | 5.076555 |
+| zero | 6.964755 | 5.710347 | 5.202198 | 5.076631 |
+| frozen | 6.964646 | 5.718637 | 5.210710 | 5.076393 |
+| online | 6.964593 | 5.713671 | 5.203230 | 5.081687 |

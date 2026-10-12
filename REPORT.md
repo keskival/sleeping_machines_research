@@ -2999,6 +2999,24 @@ Single-seed private DEV, same first262144tokens/prior/first512updates and bit-id
 
 Evidence aws_integrated_common_prior_512k_decision_20261012_s8_v1.
 
+Integrated proper-token depth/exposure development. First-pass single-seed depth4 member at two registered exposure levels versus completed depth2. Same GPT2 tokens, prior, presentations, optimizer count and validation opportunities; topology and initialization differ. Depth4 doubles selected core writes and available receivers; complete CPU training wall measured, no FLOP or iso-compute claim. Core temporal/key-value/hard-route/counterfactual mechanisms retained; full factual backprop unchanged. No trained-credit efficiency, family verdict, public scoring or inferred scaling exponent.
+
+| Depth | Params | Targets | Best NLL | Final NLL | Train s | ms/target | Core/active |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | 3164842 | 131056 | 7.587435 | 7.587435 | 149.399 | 1.140 | 16/4 |
+| 4 | 3212986 | 131056 | 7.622248 | 7.622248 | 256.173 | 1.955 | 32/8 |
+
+Exposure 128k: depth4 selected-quality gain -0.034813; final-quality gain -0.034813; depth4/depth2 training-wall ratio 1.715. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed.
+
+| Depth | Params | Targets | Best NLL | Final NLL | Train s | ms/target | Core/active |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | 3164842 | 524272 | 7.263107 | 7.263107 | 607.069 | 1.158 | 16/4 |
+| 4 | 3212986 | 524272 | 7.410791 | 7.410791 | 1024.438 | 1.954 | 32/8 |
+
+Exposure 512k: depth4 selected-quality gain -0.147684; final-quality gain -0.147684; depth4/depth2 training-wall ratio 1.688. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed.
+
+Evidence aws_integrated_depth_exposure_20261012_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5859,6 +5877,22 @@ The original zero arm is a zero-predictor residual-audit control (32/128 audits)
 Online gains versus fully_frozen:+0.020699, bptt:+0.000089, zero:+0.000162, frozen:+0.000052 nats/event.
 
 Existing18164parameter actor; native critic33232parameters. Aug24TRAIN continuation2048targets, Aug25DEV4096prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition41.459s; Full additionally charges original checkpoint development5750.687s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim.
+
+The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
+
+### Longer chronological native prospective teaching
+
+| Learner | NLL | Reuse s | Continue s | Full s |
+| --- | --- | --- | --- | --- |
+| fully_frozen | 5.752864 | 20.108 | 62.487 | 5813.174 |
+| bptt | 5.738457 | 95.174 | 137.554 | 5888.241 |
+| local only | 5.738483 | 71.593 | 113.972 | 5864.660 |
+| frozen | 5.742597 | 158.087 | 200.467 | 5951.154 |
+| online | 5.740795 | 353.257 | 395.636 | 6146.323 |
+
+Online gains versus fully_frozen:+0.012069, bptt:-0.002338, zero:-0.002313, frozen:+0.001801 nats/event.
+
+Existing18164parameter actor; native critic33232parameters. Aug24TRAIN continuation2048targets, Aug25DEV16384prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition42.379s; Full additionally charges original checkpoint development5750.687s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim.
 
 The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
 
