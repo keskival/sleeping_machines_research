@@ -22,3 +22,29 @@ def blocks():
             ('table',(['Seed','Depth','Adam NLL','Learned NLL','Quality gain','Match pass','Work ratio'],rows,[13,17,29,29,29,18,28])),
             ('p','Protocol: all1400TaxiTRAIN sequences cropped32events,threepasses/130200actor targets per arm/depth;128DEV sequences. Same native initialization/order/update counts, CPUfloat64,d16,modes8. Lower NLL is better; gain is Adam minus learned. Match pass is first scheduled learned pass reaching fixedAdam final quality. Work ratio is Adam total fit+allvalidation divided by learned cumulative fit to match+allvalidation. Ratios>1 favor learned work; smoke/failed admission are separately paid overhead. All controller/Adam work is included in fit wall; supported FLOPs exclude unsupported operations. Dense writes and state reset across sequences; development results, no publicTEST/hard-route/Transformer supremacy claim.'),
             ('p','Evidence: '+', '.join(f'aws_native_future_update_reuse_20261011_s{s}_decision' for s,_ in records)+'.')]
+
+
+def transfer_blocks():
+    records=[]
+    for seed in [3,4,5]:
+        path=ROOT/'experiments/results/credit'/f'aws_native_update_transfer_20261012_s{seed}_decision.json'
+        if not path.exists():continue
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for source,digest in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==digest
+        records.append(r)
+    if not records:return [('p','Acquired-policy reuse study aws_native_update_transfer_20261012_s3 is admitted: frozen seed0 controller vs fixedAdam and TRAIN-acquired constant group scales, fresh actor seed3, full1400TaxiTRAIN/128DEV, depths2/4/8. Fine checkpoints resolve incremental work to quality; inherited acquisition remains charged. Results pending. Protocol experiments/credit/NATIVE_UPDATE_TRANSFER_PLAN.md.')]
+    rows=[]
+    for record in records:
+        for r in record['rows']:
+            ratio=r['baseline_over_matched_work']
+            rows.append([str(record['seed']),str(r['depth']),f"{r['final_quality_gain']:+.6f}",f"{r['quality_gain_vs_static']:+.6f}",f"{ratio:.3f}x" if ratio else '-',str(r['conservative_break_even_fit_count'] or '-')])
+    return [('p','Acquired native update transfer: source seed0 controller frozen before fresh-model fitting. No controller optimizer/replay. Comparison with TRAIN-acquired static group scales isolates conditioning from fixed step-size changes.'),
+            ('table',(['Seed','Depth','Gain vs Adam','Gain vs static','Incremental work ratio','Source break-even fits'],rows,[13,17,33,33,34,33])),
+            ('p','Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Quality gain is reference minus frozen. Work ratio is fixedAdam fit+allvalidation divided by frozen fit to first scheduled quality match+allvalidation. Ratios>1 favor incremental reuse. The source acquisition experiment is additionally charged; break-even fits is the calculated repeated-fit count paying that source cost, not measured deployment saving. Other smoke/selection costs remain additional protocol charges. Dense writes/state reset; model-seed transfer on same corpus, not domain/publicTEST/Transformer supremacy.'),
+            ('p','Evidence: '+', '.join(r['tag'] for r in records)+'.')]
+
+
+native_learning_blocks=blocks
+
+def blocks():
+    return native_learning_blocks()+transfer_blocks()
