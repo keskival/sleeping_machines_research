@@ -1,0 +1,60 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "group": 8,
+      "parameter_gradient_max_error": 0.0,
+      "boundary_cotangent_max_error": 0.0,
+      "separate_backward_wall_s": [
+        0.02411056699929759,
+        0.024004940001759678,
+        0.024758719984674826,
+        0.024110475002089515,
+        0.023912721022497863
+      ],
+      "joint_backward_wall_s": [
+        0.015340944984927773,
+        0.015096938994247466,
+        0.0154386019858066,
+        0.014468170003965497,
+        0.014921536989277229
+      ]
+    },
+    {
+      "group": 32,
+      "parameter_gradient_max_error": 0.0,
+      "boundary_cotangent_max_error": 0.0,
+      "separate_backward_wall_s": [
+        0.11187537899240851,
+        0.11927347598248161,
+        0.11616975298966281,
+        0.11092617700342089,
+        0.11300884000957012
+      ],
+      "joint_backward_wall_s": [
+        0.07297947001643479,
+        0.06398048301343806,
+        0.07082760302000679,
+        0.06514570498256944,
+        0.06681979200220667
+      ]
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/market_joint_gradient_contract.py": "20adde82aa99b90119cb8be91fd276e867ec1c9a1c581a273db228f24447627f",
+    "experiments/credit/market_native_test_time.py": "e5d4c0581110d587f95f980fd9490b877a38c4207968f882ee3dde32cc204f6e",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "whole_wall_s": 1.7432044710149057,
+  "peak_rss_kb": 382868,
+  "scope": "TRAIN-only reused-graph gradient equality and diagnostic backward timing. No model fit or whole-learning speed claim. Same exact boundary cotangent may be extracted with parameter gradients in one backward pass, tightening the actual credit-replacement opportunity. Reused graphs/warm timing are not independent full fits."
+}
