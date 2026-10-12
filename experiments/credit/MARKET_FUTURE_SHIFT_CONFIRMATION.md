@@ -1,0 +1,5 @@
+# B10 future-utility policy: fixed independent-seed diagnostic
+
+Seed184 improves hidden-shift NLL by0.000161 against frozen policy and0.000156 against native BPTT, while trailing zero-prediction audits by0.000294 and costing more CPU. The real TRAIN test shows the same ordering. This is not a learning-efficiency win. The first run's Gaussian innovations are unpaired, so the very small policy effect needs independent starts before being used as evidence of adaptive utility.
+
+Admit exactly two unchanged hidden-shift starts, seeds185/186, with source/config unchanged and every acquisition/ref replay charged. Endpoint: per-seed online-minus-frozen and online-minus-zero NLL, exact native-BPTT comparison, and complete cost. No tuning or selection. A sign-inconsistent online/frozen effect retires the scalar policy; a consistent effect establishes only learned intervention utility versus frozen policy, with the zero control reported beside it. No further scalar sweeps or broader superiority claim. Next model engineering must teach the connected credit direction for actual future utility, not just suppress an inaccurate cotangent.
