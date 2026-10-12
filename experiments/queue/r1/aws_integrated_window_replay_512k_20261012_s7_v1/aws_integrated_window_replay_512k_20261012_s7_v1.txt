@@ -1,0 +1,2 @@
+# R1: exact cached replay; decision retain learning and reduce complete training time at two acquired-data sizes
+aws_integrated_window_replay_512k_20261012_s7_v1 experiments/window_replay_token_language.py --tag aws_integrated_window_replay_512k_20261012_s7_v1 --exposure fresh --train-tokens 262144 --dev-tokens 2048 --steps 1024 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 4 --lanes 8 --eval-lanes 8 --eval-every 256 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 7
