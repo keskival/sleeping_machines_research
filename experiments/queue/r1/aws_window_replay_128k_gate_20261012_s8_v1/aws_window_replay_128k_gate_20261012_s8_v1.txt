@@ -1,0 +1,2 @@
+# R1: exact cached replay; decision retain learning and reduce complete training time at two acquired-data sizes
+aws_window_replay_128k_gate_20261012_s8_v1 experiments/analyze_window_replay.py --tag aws_window_replay_128k_gate_20261012_s8_v1 --reference aws_integrated_common_prior_fresh_20261012_s8_v1 --candidate aws_integrated_window_replay_128k_20261012_s8_v1
