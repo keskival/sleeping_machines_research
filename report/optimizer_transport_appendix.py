@@ -196,4 +196,17 @@ def pages():
         current.append([('h2','Longer-data complete native learning'),('table',(['Learner','Whole prequential NLL','Whole CPU seconds'],rows,[77,47,43])),('small',r['scope']+' Every row uses65,536targets and includes acquisition; initial-context/setup is outside arm time. Shared-acquisition controls isolate continuation; the independent-from-initialization reference compares whole native learning.')])
     from report.native_credit_appendix import pages as native_credit_pages
     current.extend(native_credit_pages())
+    for tag,label in [('curie_b10_native_ttt_20261012_v3_fit','Native event-credit test-time learning'),('curie_b10_exact_future_20261012_v1_fit','Exact actor credit plus native prospective teaching'),('curie_b10_longer_native_20261012_v1_fit','Longer chronological native prospective teaching')]:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        acquisition=record['acquisition']['wall_s'];prerequisite=json.loads((ROOT/'experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json').read_text())['wall_s']
+        table=[]
+        for r in record['rows']:
+            arm=r['arm']
+            if arm=='zero':arm='zero predictor + audits' if 'native_ttt' in tag else 'local only'
+            table.append([arm,f"{r['nll']:.6f}",f"{r['wall_s']:.3f}",f"{acquisition+r['wall_s']:.3f}",f"{prerequisite+acquisition+r['wall_s']:.3f}"])
+        gains=record['online_gain'];verdict='Online gains versus '+', '.join(f'{k}:{v:+.6f}' for k,v in gains.items())+' nats/event.'
+        current.append([('h2',label),('table',(['Learner','NLL','Reuse s','Continue s','Full s'],table,[52,27,27,29,31])),('p',verdict),('small',f"Existing18164parameter actor; native critic{record['critic_parameters']}parameters. Aug24TRAIN continuation2048targets, Aug25DEV{record['rows'][0]['targets']}prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition{acquisition:.3f}s; Full additionally charges original checkpoint development{prerequisite:.3f}s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim."),('small','The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.')])
     return current

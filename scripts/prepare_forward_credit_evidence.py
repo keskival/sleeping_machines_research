@@ -95,6 +95,15 @@ def main():
         else:
             native_credit[name]=dict(result=relative,scope='Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result.')
     packet['native_shared_world_credit']=native_credit
+    market_runs=[]
+    for tag in ['curie_b10_native_ttt_20261012_v3_fit','curie_b10_exact_future_20261012_v1_fit','curie_b10_longer_native_20261012_v1_fit']:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for source,digest in record['source_sha256'].items():assert sha(ROOT/source)==digest,source
+        parents[str(path.relative_to(ROOT))]=sha(path)
+        market_runs.append(dict(tag=tag,rows=[{k:v for k,v in row.items() if k in ['arm','nll','targets','wall_s','audits','future_teachers','critic_parameter_max_change']} for row in record['rows']],online_gain=record['online_gain'],acquisition_wall_s=record['acquisition']['wall_s'],scope=record['scope'],zero_arm_interpretation='Zero predictor with residual audits, not local-only' if 'native_ttt' in tag else 'Genuine local-only'))
+    packet['native_market_online_learning']=market_runs
     repeated=ROOT/'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json'
     if repeated.exists():
         record=json.loads(repeated.read_text());assert record['status']=='completed'

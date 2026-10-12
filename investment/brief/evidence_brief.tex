@@ -365,66 +365,66 @@ propagation. Detailed methods and completed result hashes are in
 
 \newpage
 % ---------------------------------------------------------- native credit
-\sect{Learning from experience}{The prediction model and its teacher share memory}
+\sect{Learning while the model is in use}{An initial learning advantage on real market data}
 
-Our architecture also makes the learning machinery a model in its own right.
-One part predicts what will happen. Another uses experience to guide which
-internal routes should be reinforced. Both use our temporal races and memory,
-rather than attaching a separate conventional recurrent network.
-
-\begin{center}
-\begin{tikzpicture}[node distance=13mm,
- b/.style={rounded corners=3pt,fill=soft,text=ink,text width=43mm,
- minimum height=16mm,align=center,font=\small\bfseries}]
-\node[b] (prediction) {Prediction model\\What will happen?};
-\node[b,right=of prediction] (memory) {Shared memory\\What have we learned?};
-\node[b,right=of memory] (teacher) {Learning model\\Which routes should improve?};
-\draw[<->,thick,ours] (prediction)--(memory);
-\draw[<->,thick,ours] (memory)--(teacher);
-\end{tikzpicture}
-\end{center}
-
-The two models choose their own memory reads and writes. Actual outcomes teach
-the learning model; later prediction errors also teach how it uses shared
-memory. We have implemented this interaction with delayed feedback and checked
-that predictions use only information available at the time.
+Markets produce a stream of transactions, with information in both their timing
+and their type. A useful model has to keep learning as that stream arrives.
+Our aim is to improve not only its forecasts, but also \emph{how it learns from
+new experience}.
 
 \begin{callout}
-\textbf{What we have achieved.} A learning model trained on one set of simulated
-event systems was carried into eight fresh systems. Its guidance produced
-slightly better probability predictions than all three comparison rules:
-using the observed error directly, using a fixed belief, or using a belief
-based on the latest observed state. The improvement appeared at both tested
-levels of system complexity.
+\textbf{What we tested.} We took our existing crypto-market predictor and added
+an event-based learning model. It uses its own persistent memory, information
+from the predictor, and subsequent outcomes to learn adjustments to the
+predictor's updates. The predictor keeps its complete ordinary learning signal.
 \end{callout}
 
-\textbf{How large is the improvement?} About 0.05\% in prediction loss relative
-to the latest-state learning rule: 0.420688 versus 0.420899, with lower better.
-This is one trained-model transfer result, across 1,024 predictions per rule.
-The original cohort had mixed results against the simpler comparisons; this
-fresh-system result is a completed positive result with that scope. A repeat
-with a freshly trained model slightly trails all three rules (by about
-0.00002 in prediction loss). The transfer benefit is therefore mixed across
-the two trained models.
+The experiment used real Bitcoin trades from Binance. Each forecast predicts
+the next transaction's timing and one of six event types. It is scored before
+the outcome is used for learning. All comparison rules start from the same
+acquired model and learning state.
 
-\textbf{What improved in the predictions?} Their confidence, rather than their
-yes/no answers. All four rules gave the same answers as repeating the last
-observed state: 870 of 1,024 correct. The learned rule assigned probabilities
-that better matched what happened. This matters for probabilistic forecasting,
-where uncertainty is part of the prediction, although the measured gain is small.
+\vspace{3mm}
+{\small\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{Y r}
+\toprule
+Learning during use & Prediction loss $\downarrow$ \\
+\midrule
+\textbf{Ordinary learning + online learned guidance} & \textbf{6.964593} \\
+Ordinary learning + previously learned, fixed guidance & 6.964646 \\
+Ordinary online backpropagation & 6.964682 \\
+Local updates without longer-range credit & 6.964755 \\
+Fixed model weights; observed memory still updates & 6.985292 \\
+\bottomrule
+\end{tabularx}}
 
-\textbf{Why this matters.} We have moved from an architectural idea to a working
-interaction between prediction, learned teaching and shared memory, and measured
-an initial transfer benefit. That is progress toward models which adapt their
-learning as experience accumulates. It is early evidence about this mechanism,
-separate from the public benchmark wins on the preceding pages.
+\vspace{3mm}
+\textbf{What we achieved.} Over 4,096 forecasts, the new system has the lowest
+prediction loss of all five rules. It improves over ordinary online learning
+by 0.000089 nats per transaction and over fixed learning guidance by 0.000052.
+These are small measured gains. The second comparison isolates the benefit of
+continuing to learn the guidance itself while the model is in use.
 
-{\footnotesize\color{muted}Private development simulations with hidden connections
-and delayed outcomes; the model sees observations, not the hidden connections.
-System complexity here is the depth of the simulated process, not model depth.
-All learning costs are recorded; this comparison makes no training-speed or
-hardware-energy claim. Sources: the completed fresh-system comparison and causal
-answer audit, with detailed methods and completed result hashes in:\par
+\textbf{Why it matters.} This is a real-data example of a model learning both
+\emph{the prediction task} and \emph{how to update its predictor}. It connects our
+learning architecture to an application where new observations arrive
+continuously and useful patterns can change. Most of the gain over fixed weights
+comes from ordinary online learning; the added guidance supplies the smaller
+additional improvement shown above.
+
+\textbf{The measured scope.} One development stream and one learning-model
+initialization. The advantage is concentrated in the first half; ordinary
+backpropagation leads in the second half. Learning with the new guidance takes
+81.4 seconds, versus 24.2 seconds for ordinary online backpropagation, after
+shared preparation. This is a small prediction-quality advantage, with a higher
+learning cost. It measures transaction forecasting, not trading profits.
+
+{\footnotesize\color{muted}The existing 18,164-parameter predictor is retained;
+the native learning model has 33,232 parameters. Acquisition uses earlier
+24 August observations; adaptation uses 25 August development data, previously
+used in model development. Shared acquisition costs 41.5 seconds; the original
+predictor fit costs 5,750.7 seconds, shared by every rule. Detailed methods,
+costs and completed result hashes:\par
 \texttt{investment/forward\_credit\_evidence\_20261011.json}.}
 
 \newpage
@@ -447,8 +447,8 @@ advantage on specific tasks, using existing computers.
 \begin{tile}
 \textbf{A practical route to improving learning.} We have measured more accurate
 and faster evaluation of learning alternatives, better predictions from learned
-update rules, and a small confidence benefit from a memory-sharing learning model
-on fresh systems. Together they show working pieces of a machine that learns how
+update rules, and a small real-market prediction advantage from learning guidance
+that adapts during use. Together they show working pieces of a machine that learns how
 to learn. Each result has its own scope; the pieces are not one combined speedup.
 \end{tile}
 
