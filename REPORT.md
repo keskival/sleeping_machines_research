@@ -5227,6 +5227,25 @@ Same128acquisition512reuse/reused32DEV512targets, one initialization. Heads incl
 
 Local variant development stops here. The registered next test selects the better of the two declared width32depth8 recipes, starts a fresh actor, uses all1400TRAIN sequences/threepasses, and compares depths8/16/32 with identical acquired-core heads/frozen and exact nativeAdamW. Complete acquisition-inclusive CPU work and final/prequential quality decide whether the construction scales.
 
+### Complete native cohort/depth learning: seed99913
+
+| Depth | Learner | DEV NLL | Prequential NLL | Whole seconds |
+| --- | --- | --- | --- | --- |
+| 8 | online | -0.344033 | -0.376350 | 205.618 |
+| 8 | frozen | -0.369054 | -0.365299 | 129.305 |
+| 8 | heads | -0.389041 | -0.406811 | 56.766 |
+| 8 | bp_adam | -0.424073 | -0.416803 | 100.807 |
+| 16 | online | -0.398025 | -0.386307 | 347.544 |
+| 16 | frozen | -0.371602 | -0.375417 | 213.100 |
+| 16 | heads | -0.398255 | -0.414422 | 84.822 |
+| 16 | bp_adam | -0.421143 | -0.387471 | 168.250 |
+| 32 | online | -0.309699 | -0.279262 | 654.648 |
+| 32 | frozen | -0.269428 | -0.270046 | 394.018 |
+| 32 | heads | -0.307189 | -0.304800 | 140.905 |
+| 32 | bp_adam | -0.426829 | -0.394849 | 313.853 |
+
+All1400TaxiTRAIN sequences/threepasses,67200fittingtargets per arm;256acquisition3944reuse. Fresh actor seed, selected unchanged local recipe; depths8/16/32,width32,modes16. Reused first128DEV sequences/2048targets,128block scoring cadence; per-sequence final losses retained. All acquisition, teacher/reference, packet/query, optimizer/scoring charged. CPUwall only; independent sequences reset, dense numerical core writes/no optional forward-route credit. Own-native references, no TEST/public benchmark claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

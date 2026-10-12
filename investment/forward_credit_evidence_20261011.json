@@ -19,7 +19,8 @@
     "experiments/results/credit/curie_native_head_only_20261011_v1_measure.json": "617cb1f259d9fd3fbb314f8345518a6c3481199f54b412f1c63444f577f48edf",
     "experiments/results/credit/curie_native_event_credit_20261012_v1_d32_fit.json": "688b3a2b0910e93fb3d90d0f56430318ff604abc09e82b3ef74a10a837e479b2",
     "experiments/results/credit/curie_native_event_credit_20261012_v1_d16_fit.json": "628f8e5cc90742935b3f93c7074177194b216041d272df5d3b32fceb56c0779f",
-    "experiments/results/credit/curie_native_event_heads_20261012_v1_measure.json": "d76390ead9a569827f3259e5878bbaf90d4978c60b367440cecf73df118e9720"
+    "experiments/results/credit/curie_native_event_heads_20261012_v1_measure.json": "d76390ead9a569827f3259e5878bbaf90d4978c60b367440cecf73df118e9720",
+    "experiments/results/credit/curie_native_cohort_event_20261012_v1_s99913_fit.json": "03772be549f06121c1df8b9208d0c9b18a57f706e755612c34c2f72fe2b0b98d"
   },
   "metrics": {
     "credit_error_static_reduction_pct": 98.35648344199768,
@@ -573,7 +574,7 @@
     },
     "scope": "Three initializations, whole native depth2/4/8 width16,1400TaxiTRAIN sequences cropped32events/three passes,128reused DEV sequences. Future-trained180parameter group-scale controller retains exact actor backprop. All nine quality comparisons improve; complete CPU learning time increases. No efficient learned-core-credit or hardware claim."
   },
-  "generated_credit_status": "Actual matched acquired-core/head controls: new event optimizer loses7/8; previous cross-configuration depth8 deep-benefit interpretation corrected. Local variants stop; full1400TaxiTRAIN threepasses/depth8/16/32 fresh-actor quality/work test running. Dense internal writes and episode resets remain.",
+  "generated_credit_status": "Complete native cohort/depth stage finished; source-bound seed/depth quality and complete matched-quality CPU comparisons recorded, exact matched heads/frozen/own-nativeAdamW. No public TEST or hardware claim.",
   "matched_event_deep_utility": {
     "rows": [
       {
@@ -642,5 +643,57 @@
       }
     ],
     "scope": "Exact new-variant acquisition replay/meanNLL+DEV parity; same acquired core/head optimizer, then512reuse heads only/corebitwisefrozen. Reused32DEV512targets, one initialization. Earlier structured acquired-core control is a cross-configuration comparison, not a matched deep-benefit claim for these variants; no startup-matched timing claim."
-  }
+  },
+  "native_cohort_learning": [
+    {
+      "seed": 99913,
+      "config": {
+        "seed": 99913,
+        "width": 32,
+        "modes": 16,
+        "depths": [
+          8,
+          16,
+          32
+        ],
+        "train_sequences": 1400,
+        "dev_sequences": 128,
+        "targets_per_block": 16,
+        "history_per_block": 16,
+        "acquisition_blocks": 256,
+        "reuse_blocks": 3944,
+        "train_passes": 3,
+        "meta_commit_blocks": 1,
+        "teacher_probability": 0.25,
+        "head_AdamW_lr": 0.003,
+        "credit_Adam_lr": 0.001,
+        "core_step_max": 0.003,
+        "core_norm_cap": 0.2
+      },
+      "comparisons": [
+        {
+          "depth": 8,
+          "online_gain_vs_frozen": -0.02502069406022428,
+          "online_gain_vs_matched_heads": -0.04500751762396843,
+          "online_gain_vs_adam": -0.08003941901562817,
+          "matched_quality_wall_ratio": 0.7016540668373823
+        },
+        {
+          "depth": 16,
+          "online_gain_vs_frozen": 0.026423502082522532,
+          "online_gain_vs_matched_heads": -0.00022943804807556978,
+          "online_gain_vs_adam": -0.023117402163918332,
+          "matched_quality_wall_ratio": 1.7799049657708887
+        },
+        {
+          "depth": 32,
+          "online_gain_vs_frozen": 0.040270875966348374,
+          "online_gain_vs_matched_heads": 0.0025104238838654647,
+          "online_gain_vs_adam": -0.11712992361454216,
+          "matched_quality_wall_ratio": null
+        }
+      ],
+      "scope": "Selected two registered local update recipes using reused DEV, then fresh actor initialization full1400TaxiTRAIN/threepasses/depth8/16/32. 128DEV sequences,2048scoredtargets; no TEST. Allarms67200fittingtargets; same acquired core/head/velocity for online/frozen/heads, heads bitwisecorefreeze. NativeAdamW separate exact training on identical schedule. No further tuning. Firstcheckpoint cost to prespecified-comparator finalquality is an upperbound, unreachedNone. CompleteCPU wall includes acquisition, teacher/reference/metaoptimizer/packet/query/scoring; no FLOP/energy claim. Dense internal numerical writes, independent sequence resets, no optional forward-route credit. Not identical to AWS all31target scoring, so no direct NLL comparison."
+    }
+  ]
 }
