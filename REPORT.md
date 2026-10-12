@@ -5789,6 +5789,19 @@ Additional strong-control gate passes; learned gain versus persistence credit +0
 
 Additional pre-registered strong causal credit control, eight independent matched source deployments/one actor seed. Positive gains mean the named arm improves on persistence credit. Original v2 primary gate stays failed. All native critic/alternative/optimizer work retained and charged; no minimal-cost baseline, public test, family-level or neural-depth claim. Complete denominator5120presentations:4096source plus1024target. This is an information-matched intervention, not the cheapest execution of persistence.
 
+### Native world-credit fresh-system confirmation: seed194
+
+| Credit | Actor NLL | World NLL | Full seconds | Full ms/presentation |
+| --- | --- | --- | --- | --- |
+| exact | 0.420952 | 0.525402 | 1372.029 | 267.974 |
+| learned | 0.420688 | 0.524951 | 1368.514 | 267.288 |
+| prior | 0.420826 | 0.524792 | 1374.430 | 268.443 |
+| persistence | 0.420899 | 0.524557 | 1380.053 | 269.542 |
+
+Registered four-control confirmation gate passes; learned gains exact: +0.000264, prior: +0.000139, persistence: +0.000212. Generating-depth gains 4/exact: +0.000086, 4/prior: +0.000179, 4/persistence: +0.000072, 8/exact: +0.000443, 8/prior: +0.000098, 8/persistence: +0.000351. Next: unchanged fresh-source seed195.
+
+Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
