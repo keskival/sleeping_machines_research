@@ -1,0 +1,316 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "rows": [
+    {
+      "arm": "learned",
+      "targets": 1024,
+      "answer_changes": 0,
+      "beneficial_changes": 0,
+      "harmful_changes": 0,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 117,
+          "actor_correct": 117
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 102,
+          "actor_correct": 102
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 113,
+          "actor_correct": 113
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 106,
+          "actor_correct": 106
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 100,
+          "actor_correct": 100
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 103,
+          "actor_correct": 103
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 110,
+          "actor_correct": 110
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 122,
+          "actor_correct": 122
+        }
+      ]
+    },
+    {
+      "arm": "prior",
+      "targets": 1024,
+      "answer_changes": 0,
+      "beneficial_changes": 0,
+      "harmful_changes": 0,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 117,
+          "actor_correct": 117
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 102,
+          "actor_correct": 102
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 113,
+          "actor_correct": 113
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 106,
+          "actor_correct": 106
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 100,
+          "actor_correct": 100
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 103,
+          "actor_correct": 103
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 110,
+          "actor_correct": 110
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 122,
+          "actor_correct": 122
+        }
+      ]
+    },
+    {
+      "arm": "exact",
+      "targets": 1024,
+      "answer_changes": 0,
+      "beneficial_changes": 0,
+      "harmful_changes": 0,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 117,
+          "actor_correct": 117
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 102,
+          "actor_correct": 102
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 113,
+          "actor_correct": 113
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 106,
+          "actor_correct": 106
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 100,
+          "actor_correct": 100
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 103,
+          "actor_correct": 103
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 110,
+          "actor_correct": 110
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "targets": 128,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 122,
+          "actor_correct": 122
+        }
+      ]
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/causal_induction/curie_causal_nonlinear_20261012_v2_prepare.json": "94f4c23b6a768c449557c090d4c63a45f2a888d81c1a1020744ea9a2517b498a",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_learned_reuse.json": "412f0dcfb27450265083c6f7e60e81f23ce22a0181eab4b247c09ec6d32dc9b2",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz": "8a382e36bd1e145a790e01672a5a75ac5f187ef92a0b3eb5daf379c4b1ef01a7",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz": "e937bf29ad4b93666e8fbbb4f7877977a5f88f5dcfba332d7d32aa8fc48b4c90",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz": "55004af6e3c3b61bf584a109f168c35c919e2c1edf2142f86949af38a25310d5",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz": "0d8935566049f4973abc89bc629784dc72af87febfa5328016a1273d449f2f84",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz": "d665d7cf4518048475ebf38bb8b2469f9f743fac8d3103eb929e1eb8fc3e03ba",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz": "875291751c764c606735e7f77747b23d329242d76e76c59c905ceb7314af2794",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz": "68ada54b40856399917abb1c73c268eeea778e54122a5c1ecdf0104224d17d09",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz": "e821309b383a56e81afec600df7644c18761334220c0d8b13c532f5a54293808",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_prior_reuse.json": "3cd29260f3016ddcafe295d31cae323d19a7b0936d5e97bac0fb3a6f14721ac8",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_exact_reuse.json": "92fe9ff31a51d6b46164b9a8688ce8301c93545d376a50c319566be68f801d12"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_world_answer_changes.py": "b5abbd310bdd76f0dc1c5e7a5480375d15c569e587a31e167e4b420f18355ea1",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637"
+  },
+  "scope": "Read-only replay of byte-matched public observations with saved issued forecasts. Last observed target bit is captured at query time, never reconstructed from later events. Counts describe factual answer changes relative to persistence; they do not identify unexecuted route effects or full future learning. No new fit or oracle access."
+}
