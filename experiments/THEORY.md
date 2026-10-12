@@ -433,3 +433,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Learned route similarity and activation-distribution memory](theory/LEARNED_ROUTE_SIMILARITY_MEMORY.md): defines demand-conditioned L2 route-effect geometry, causal distribution-memory updates, paired forward-observed teaching, propensity-aware receipts and current-operator conditioning. Specifies a history-summary integration comparison; mathematical construction, not a fitted model claim.
 
 [Exact cached credit-window replay](theory/EXACT_CREDIT_WINDOW_REPLAY.md): retained integrated execution skips unchanged teacher prefixes from cloned numerical/RNG boundaries; exact depth2/4 update contract passes; first proper-token full fit retains the recorded learning curve at7.26% lower complete training time, two-size/three-seed confirmation running.
+
+[Addressed capacity under fresh acquisition](theory/TOKEN_CAPACITY_ACQUISITION_20261012.md): registered pool4→8 integrated comparison holds selected writes fixed while charging doubled discovery; two acquisition sizes follow the current exact-replay cohort, with no small-quality veto of the larger point.
