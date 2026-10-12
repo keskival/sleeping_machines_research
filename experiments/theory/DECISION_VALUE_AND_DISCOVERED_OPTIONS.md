@@ -58,6 +58,19 @@ For constant rho and delta, and permanent invalidation hazard h, s_k=(1-h)^k. Wi
 
 Consequently, many new tokens can still provide little amortization if the relation never recurs. A smaller stream can expose substantial amortization if a learned dependency recurs many times across distinct targets. Constructed large-domain emulation should vary distinct target count, number of underlying relations, recurrence horizon, discovery burden and drift separately. Repeating identical examples changes a different axis. The existing fresh/replay result establishes exposure value under its fixed protocol; it does not isolate these axes.
 
+## A conditional family-scaling heuristic
+
+Let N count distinct future targets and K(N)=c N^beta count useful relations that must be acquired, with 0<=beta<=1. Suppose acquisition costs a per relation, serving/learning selected work costs w per target, and each target's discovery costs d K(N)^delta. A declared work model is
+
+    W(N) = w N + a K(N) + d N K(N)^delta,
+    W(N)/N = w + a c N^(beta-1) + d c^delta N^(beta delta).
+
+This is resource algebra, not a quality scaling law. When beta<1, reusable acquisition tax per target falls with data. But scanning every relation (delta=1) can overwhelm that advantage. Bounded discovery (delta=0), or a separately charged logarithmic index, is consequently a concrete structural requirement for the desired regime. Available capacity alone does not give favorable scaling. Acquiring new relations independently at every target gives beta=1 and no falling acquisition tax.
+
+With drift, replace K by the number of relation acquisitions and repairs actually paid. Frequent repairs can restore a linear tax even when the number of stored relations grows sublinearly. If a learned credit operator transfers across many relations, its acquisition may instead be charged once per reusable operation class; discovering that transfer is the mechanism that changes the work model. Test whether the acquired operator generalizes, not merely whether the same episode is replayed.
+
+This supplies an economical emulation target: vary relation count and recurrence independently, preserve distinct task targets, and measure acquisition/repair/discovery separately. Choose a family member that reduces these measured terms while retaining prospective task quality. It does not predict a Transformer crossover or authorize an unmeasured FLOP claim.
+
 ## Closing the training loop
 
 A finite paired future rollout gives the net value target for an issued query or discovery operation. Copy the complete learner state, including optimizer and numerical memory; charge both the discovery and the continuation; permit subsequent decisions to use acquired information/options only in the intervention world. Compare with the no-acquisition world under coupled exogenous futures where possible. The target terminates in observed task loss and resource use, not a higher learned trainer.
