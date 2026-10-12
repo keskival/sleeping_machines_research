@@ -1,0 +1,2 @@
+# R1: R1: conclude full-fit precision diagnosis; stop automatic replication unless candidate retains saved FP32 quality and saves at least5 percent complete training time as well as FP64 curve parity
+aws_integrated_p24_64k_double_decision_20261012_v2 experiments/analyze_integrated_lookup_precision_v2.py --tag aws_integrated_p24_64k_double_decision_20261012_v2 --ordinary aws_integrated_p24_64k_double_ordinary_20261012_v1 --batched aws_integrated_p24_64k_double_batched_20261012_v1 --fp32-reference aws_integrated_p24_64k_ordinary_20261012_v1 --continue-seeds
