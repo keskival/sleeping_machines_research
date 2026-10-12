@@ -31,3 +31,29 @@ Unchanged prefixes reuse physical state and RNG exactly; branch continuations ne
 First pass the pool4 identity, pool8 clock-law/common-intensity derivative and calibrated cached/full-prefix gradient/Adam contracts. Then bounded P24D2H2U8 resource fit followed by both131056and524272fresh-target seed6 points; same data/prior/update/DEV counts as the completed raw pool8 and cached pool4 members. No small-quality veto of the larger point. Charge complete training/process wall and all32scored keys/target; retain4selected writes. Select on completed larger quality/work. No public/reserved4M scoring, new dense controls or Curie shared-leg implementation duplication.
 
 Numerical gate completed: aws_capacity_clock_contract_20261012_v2 has zero clock-law error, common-intensity derivative FD error9.91e-13, and exact cached/full-prefix features/state/utility/RNG/gradients/parameters for24paired Adam updates across pools4/8,depth2/4,carry/reset. V1 checker omitted initial read keys in its expected-delay formula; it failed before fitting and its logs stay. Actual-score formula is corrected. Quality fits follow this gate.
+
+## Forward-known local geometry closes one expensive-estimation loop
+
+For the conditional latent race observation (J,T), log-density is s_J-Lambda*T. Its score is e_J-pi*Lambda*T. The factorized law gives E[Lambda*T]=1 and E[(Lambda*T)^2]=2, hence its Fisher matrix in per-route log-rate coordinates is exactly
+
+    F_s = diag(pi).
+
+In total-rate beta=log(Lambda) and categorical coordinates, the clock/choice Fisher blocks are1 and diag(pi)-pi*pi^T, with zero cross block. This is the conditional race-sampling metric, not the language-head likelihood Fisher or the full actor-parameter metric. The forward pass already provides it; no learned estimator of that local metric or dense U-by-U matrix is needed.
+
+Let a paid alternative supply delta=L_a(T)-L_w(T), with q_a the issued proposal. The source score-gradient sample is g=(pi_a*delta/q_a)*(e_a-pi). Its local natural direction is
+
+    v = F_s^(-1)*g = (delta/q_a)*(e_a-pi_a*1),
+
+so pi^T*v=0 for every sample. Thus this local route direction leaves total intensity unchanged to first order; its conditional mean is L-E_pi[L]. An exact finite score-step preserving total intensity is s_plus=s-eta*v-c*1, where c=logsumexp(s-eta*v)-logsumexp(s). These are output-coordinate update identities, not an implemented actor update. When scores share encoder/producer parameters, the actor metric is J_s^T*diag(pi)*J_s; injecting v as a cotangent does not equal its natural gradient. Realizing the output change requires a compatible actor update/learned control and actual future-loss testing.
+
+For epsilon>0, define D=diag(pi+epsilon). The clock-neutral damped direction solves min_v .5*v^T*D*v-g^T*v subject to pi^T*v=0:
+
+    v = D^(-1)*g - D^(-1)*pi*(pi^T*D^(-1)*g)/(pi^T*D^(-1)*pi).
+
+This takes linear work and storage in U, is clock-neutral and obeys g^T*v=v^T*D*v>=0. A learned damping/update-control policy can be taught by actual finite forward outcomes, while these exact local identities anchor its credit. Undamped inverse probabilities can amplify rare-branch noise: the cheap local inverse is not itself a cost/quality result.
+
+The existing proposal q_a=.9*pi_a/(1-pi_w)+.1/(U-1) implies pi_a/q_a<=(1-pi_w)/.9. For bounded issued contrasts |delta|<=D_loss, the Euclidean score-gradient sample has norm at most sqrt(2)*D_loss*(1-pi_w)/.9, independently of U. This does not bound private-value acquisition error or the actor Jacobian norm. It prevents attributing the pool8 loss to an inevitable linear inverse-propensity score-gradient blowup without measuring the right quantity.
+
+These exact forward-law anchors supply a finite stopping point for metric/credit estimation. Branch-dependent task cotangents and future optimizer utility still use real forward evidence and paid residual corrections; shared primal legs do not justify copying a downstream cotangent across incompatible contexts.
+
+Smaller calibrated fit completed:131056targets seed6 selects7.560355 versus raw8's7.568964 and pool4's7.587435; complete training139.220versus139.567and138.557s. One-seed development improvement, same4selected writes/target; inference latency remains unmeasured. The524272-target calibrated point runs next and determines promotion.
