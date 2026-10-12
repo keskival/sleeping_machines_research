@@ -116,4 +116,14 @@ def pages():
    rows=[]
    for x in decision['cases']:rows.append([str(x['depth']),str(x['width']),x['variant'],f"{x['gains']['exact']:+.6f}",f"{x['gains']['prior']:+.6f}"])
    result.append([('h2','Native outcome-law credit: causal reuse decision'),('table',(['Generating depth','Factors','Variant','Gain vs exact','Gain vs prior'],rows,[31,22,32,41,41])),('p','Primary development gate '+('passes' if decision['development_gate'] else 'fails')+'; pooled quality gains '+', '.join(f"{k} {v:+.6f}" for k,v in decision['quality_gains'].items())+f". Learned world gain versus causal global frequency {decision['learned_world_gain_vs_frequency']:+.6f}; learned actor gain versus source-calibrated causal persistence {decision['learned_actor_gain_vs_persistence']:+.6f}. These diagnostics distinguish dependencies from marginal imbalance. Next: "+('unchanged fresh-actor/fresh-system confirmation before scaling.' if decision['development_gate'] else 'diagnose outcome sufficiency, credit sensitivity and causal information; no patch grid or scale-up.')),('small',decision['scope'])])
+ strong=read('curie_persistence_credit_20261012_v1_decision')
+ if strong is not None:
+  rows=[]
+  for arm in ['exact','learned','prior']:
+   ref=read(f'curie_world_credit_20261012_v2_{arm}_reuse')
+   full=acquired['whole_pipeline_wall_s']+ref['whole_pipeline_wall_s']
+   rows.append([arm,f"{ref['pooled_nll']:.6f}",f"{full:.3f}",f"{1000*full/5120:.3f}"])
+  full=strong['complete_acquisition_and_reuse_stage_wall_s']
+  rows.append(['persistence credit',f"{strong['persistence_credit_nll']:.6f}",f"{full:.3f}",f"{1000*full/5120:.3f}"])
+  result.append([('h2','Native credit against a strong causal persistence posterior'),('table',(['Credit','Actor NLL','Full seconds','Full ms/presentation'],rows,[52,35,40,40])),('p','Additional strong-control gate '+('passes' if strong['strong_control_gate'] else 'fails')+f"; learned gain versus persistence credit {strong['quality_gains_vs_persistence']['learned']:+.6f}. By generating depth: "+', '.join(f"{d}: {g:+.6f}" for d,g in strong['learned_depth_gains_vs_persistence'].items())+'. The original primary gate stays failed. Persistence beliefs match the independent causal public reference exactly; all native world learning, memory and alternative work are retained. Next: '+('unchanged fresh-actor/new-system confirmation against the strong control.' if strong['strong_control_gate'] else 'condition native outcome credit on issued forward/counterfactual responses and compare with forward-belief credit.')),('small',strong['scope']+' Complete denominator5120presentations:4096source plus1024target. This is an information-matched intervention, not the cheapest execution of persistence.')])
  return result
