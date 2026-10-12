@@ -1,0 +1,453 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_b10_bounded_feedback_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_b10_bounded_feedback_20261012_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "teacher_interval": 1,
+    "feedback_events_per_update": 1,
+    "phase_wall_s": {
+      "future_teacher": 0.05293939198600128,
+      "local_forward_backward": 0.06279899599030614,
+      "credit_response_inference": 0.027945339999860153,
+      "boundary_transport_proposals": 0.034133748966269195,
+      "optimizer_state": 0.006859529006760567,
+      "setup_and_verification": 0.021702816971810535
+    },
+    "forecast_response_enabled": true,
+    "forecast_response_rms": [
+      0.011397309956117655,
+      0.009970595813564343
+    ],
+    "relative_parameter_step_deviation": [
+      0.0
+    ],
+    "learning_rate_multipliers": [
+      1.0,
+      0.996662453004309
+    ],
+    "prospective_credit_rms": [
+      0.0,
+      0.00024616553116529584
+    ],
+    "calibration_credit_rms": [
+      0.0,
+      0.0
+    ],
+    "predicted_credit_rms": [
+      0.0,
+      0.0
+    ],
+    "first_event_credit_rms": [
+      0.0036118297387959662,
+      0.061913293267255275
+    ],
+    "local_update_response_rms": [
+      0.0024462512097749778,
+      0.003534580954152401
+    ],
+    "arm": "online",
+    "nll": 10.56759797395078,
+    "targets": 16,
+    "audits": 2,
+    "future_teachers": 1,
+    "adam_proposal_error": 6.381284389789244e-13,
+    "wall_s": 0.20645444199908525,
+    "block_nll": [
+      10.042609971876699,
+      11.092585976024864
+    ]
+  },
+  "rows": [
+    {
+      "arm": "fully_frozen",
+      "nll": 5.709725988214556,
+      "targets": 16,
+      "wall_s": 0.02002685601473786,
+      "block_nll": [
+        4.197746062126318,
+        7.221705914302794
+      ],
+      "audits": 0,
+      "future_teachers": 0
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 1.8639839254319668e-06,
+        "local_forward_backward": 0.06064883802901022,
+        "credit_response_inference": 0.00012395100202411413,
+        "boundary_transport_proposals": 0.027140399004565552,
+        "optimizer_state": 0.005428345000836998,
+        "setup_and_verification": 0.02460854800301604
+      },
+      "forecast_response_enabled": true,
+      "forecast_response_rms": [],
+      "relative_parameter_step_deviation": [],
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "bptt",
+      "nll": 5.710766475650242,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.100358511587409e-13,
+      "wall_s": 0.11801470897626132,
+      "block_nll": [
+        4.197746062126318,
+        7.223786889174168
+      ],
+      "critic_parameter_max_change": 0.0,
+      "forecast_adapter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0005995537293008169,
+      "native_credit_events": 4,
+      "native_selected_updates": 16,
+      "native_candidate_scores": 32,
+      "native_counterfactual_values": 32
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 1.707026967778802e-06,
+        "local_forward_backward": 0.05999002099270001,
+        "credit_response_inference": 9.172799764201045e-05,
+        "boundary_transport_proposals": 0.008376010984648019,
+        "optimizer_state": 0.0055745460267644376,
+        "setup_and_verification": 0.12736961399787106
+      },
+      "forecast_response_enabled": true,
+      "forecast_response_rms": [],
+      "relative_parameter_step_deviation": [],
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "zero",
+      "nll": 5.710788743763507,
+      "targets": 16,
+      "audits": 0,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.1609827602641083e-13,
+      "wall_s": 0.20147040399024263,
+      "block_nll": [
+        4.197746062126318,
+        7.223831425400695
+      ],
+      "critic_parameter_max_change": 0.0,
+      "forecast_adapter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0006000358540100281,
+      "native_credit_events": 4,
+      "native_selected_updates": 16,
+      "native_candidate_scores": 32,
+      "native_counterfactual_values": 32
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 1.9030121620744467e-06,
+        "local_forward_backward": 0.05863429300370626,
+        "credit_response_inference": 0.026185545983025804,
+        "boundary_transport_proposals": 0.026984417985659093,
+        "optimizer_state": 0.005565467989072204,
+        "setup_and_verification": 0.02435830800095573
+      },
+      "forecast_response_enabled": true,
+      "forecast_response_rms": [
+        0.0034914489252933574,
+        0.0038598657091834603
+      ],
+      "relative_parameter_step_deviation": [],
+      "learning_rate_multipliers": [
+        0.9846368693366958,
+        0.9908933436405227
+      ],
+      "prospective_credit_rms": [
+        0.0012469990631743335,
+        3.361478607530118e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979365652029381,
+        0.0036773778684325536
+      ],
+      "local_update_response_rms": [
+        0.0018700817765304805,
+        0.0010744178367287952
+      ],
+      "arm": "frozen",
+      "nll": 5.71077714593363,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.0549217669428863e-13,
+      "wall_s": 0.14178788400022313,
+      "block_nll": [
+        4.197746062126318,
+        7.223808229740943
+      ],
+      "critic_parameter_max_change": 0.0,
+      "forecast_adapter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0005925220926270847,
+      "native_credit_events": 8,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 0.04886550799710676,
+        "local_forward_backward": 0.06089598097605631,
+        "credit_response_inference": 0.02929985200171359,
+        "boundary_transport_proposals": 0.033749887050362304,
+        "optimizer_state": 0.005811975977849215,
+        "setup_and_verification": 0.02190248598344624
+      },
+      "forecast_response_enabled": true,
+      "forecast_response_rms": [
+        0.0034914489252933574,
+        0.003860165516553014
+      ],
+      "relative_parameter_step_deviation": [
+        0.0018103097592857336
+      ],
+      "learning_rate_multipliers": [
+        1.0,
+        1.0
+      ],
+      "prospective_credit_rms": [
+        0.0012469990631743335,
+        6.251933268285176e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979365652029381,
+        0.003677283820700271
+      ],
+      "local_update_response_rms": [
+        0.0018700817765304805,
+        0.0010742597478522239
+      ],
+      "arm": "field_only",
+      "nll": 5.710794455742586,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.102591968062729e-13,
+      "wall_s": 0.20058895499096252,
+      "block_nll": [
+        4.197746062126318,
+        7.223842849358854
+      ],
+      "critic_parameter_max_change": 0.0009987205292827928,
+      "forecast_adapter_max_change": 0.0007440760398538834,
+      "actor_parameter_max_change": 0.0005998549195646297,
+      "native_credit_events": 8,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 0.05102400900796056,
+        "local_forward_backward": 0.062104946991894394,
+        "credit_response_inference": 0.02839482799754478,
+        "boundary_transport_proposals": 0.03523272500024177,
+        "optimizer_state": 0.005964239011518657,
+        "setup_and_verification": 0.021483821008587256
+      },
+      "forecast_response_enabled": false,
+      "forecast_response_rms": [
+        0.0034914489252933574,
+        0.0038598657091834603
+      ],
+      "relative_parameter_step_deviation": [
+        0.0020106042037040576
+      ],
+      "learning_rate_multipliers": [
+        0.9846368693366958,
+        0.9852402465514198
+      ],
+      "prospective_credit_rms": [
+        0.0012469990631743335,
+        6.2185741796992e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979365652029381,
+        0.0036773778684325536
+      ],
+      "local_update_response_rms": [
+        0.0018700817765304805,
+        0.0010744178367287952
+      ],
+      "arm": "response_masked",
+      "nll": 5.71077714593363,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.0549217669428863e-13,
+      "wall_s": 0.20426335898810066,
+      "block_nll": [
+        4.197746062126318,
+        7.223808229740943
+      ],
+      "critic_parameter_max_change": 0.0009986263589826239,
+      "forecast_adapter_max_change": 0.0,
+      "actor_parameter_max_change": 0.0005908203846592963,
+      "native_credit_events": 8,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "teacher_interval": 1,
+      "feedback_events_per_update": 1,
+      "phase_wall_s": {
+        "future_teacher": 0.05377223901450634,
+        "local_forward_backward": 0.06231458598631434,
+        "credit_response_inference": 0.029115342971635982,
+        "boundary_transport_proposals": 0.038464207987999544,
+        "optimizer_state": 0.005867867992492393,
+        "setup_and_verification": 0.021498605026863515
+      },
+      "forecast_response_enabled": true,
+      "forecast_response_rms": [
+        0.0034914489252933574,
+        0.0038598657091834603
+      ],
+      "relative_parameter_step_deviation": [
+        0.0020106042037040576
+      ],
+      "learning_rate_multipliers": [
+        0.9846368693366958,
+        0.9873653862380927
+      ],
+      "prospective_credit_rms": [
+        0.0012469990631743335,
+        6.2661400551755e-05
+      ],
+      "calibration_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "predicted_credit_rms": [
+        0.0,
+        0.0
+      ],
+      "first_event_credit_rms": [
+        0.07979365652029381,
+        0.0036773778684325536
+      ],
+      "local_update_response_rms": [
+        0.0018700817765304805,
+        0.0010744178367287952
+      ],
+      "arm": "online",
+      "nll": 5.71077714593363,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.0549217669428863e-13,
+      "wall_s": 0.21108705599908717,
+      "block_nll": [
+        4.197746062126318,
+        7.223808229740943
+      ],
+      "critic_parameter_max_change": 0.0009986263589826239,
+      "forecast_adapter_max_change": 0.0007440716173166964,
+      "actor_parameter_max_change": 0.0005914592752885306,
+      "native_credit_events": 8,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    }
+  ],
+  "online_gain": {
+    "fully_frozen": -0.0010511577190737142,
+    "bptt": -1.067028338752607e-05,
+    "zero": 1.1597829876919263e-05,
+    "frozen": 0.0,
+    "field_only": 1.7309808955978667e-05,
+    "response_masked": 0.0
+  },
+  "quality_gate": false,
+  "source_sha256": {
+    "experiments/credit/market_bounded_feedback_test_time.py": "f85cbc3bd158efbdd6b70dd1a88a446be664862e7c388c593b89babcc6ca4f35",
+    "experiments/credit/market_bounded_feedback_future.py": "6ad874a485af6fd7b561580e36fc4a0137bfd72389d8594f3df60e0649a24ca8",
+    "experiments/credit/market_forecast_optimizer_future.py": "e6457f32386a39ce6c7208fe1056605c55f9384c18cb2defff1c67988ee395f5",
+    "experiments/credit/native_forecast_market_credit.py": "d0fff570c354a4783537424c9b35026175ecda6ee3998f790827fe07f74c8ca0",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/native_prospective_market_credit.py": "0f4001cb47fe3da1c407873e7bf94424110b52b91362bc591d3643a4a1743176",
+    "experiments/credit/market_exact_anchor_future.py": "c548ea5a2a95e5e36c6663e77dce0b507f4ba0155fd669359a83cbc34aa051ef",
+    "experiments/credit/market_optimizer_future.py": "4191c11869fd1ae08f6f33112d79f768a435707208ba9d380cecd2311964df61",
+    "experiments/credit/market_regularized_optimizer_future.py": "4e9ecb9a7e9d4c11a70474f2085c3e2e55d1f0ad3d60167525fe1be83e901d4e",
+    "experiments/credit/native_optimizer_market_credit.py": "8314a46aa8548836a2dad5163cd75758fef3a1051be59c331bf0d7f4a9e95675",
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/route_activation_memory.py": "a56487e5cdcc15babb2efdd5c6edb8713ec6eeaca564a09dc3b026d8cae90809",
+    "experiments/market/NATIVE_BOUNDED_FEEDBACK_PROTOCOL.md": "1fc4f3f76aae4427b9f39347764540c89981c8752c44cc95ccf8c58024585e48"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "whole_wall_s": 7.484368855017237,
+  "peak_rss_kb": 389628,
+  "critic_parameters": 35841,
+  "actor_parameters": 18164,
+  "scope": "Bounded schedule: one aggregate causal receipt per32target actor update, full elapsed time/mark frequencies/mean observed loss retained, within-group ordering omitted. Native critic has two events (start plus receipt); future teaching every16updates during deployment, every update in TRAIN acquisition. Exact actor anchors retained: budget feasibility, not learned-credit replacement or efficiency win. Frozen-state verification uses one dictionary snapshot for every arm. Forecast factual law plus normalized counterfactual law response (162 scalars) added through zero-initialized 16-dimensional adapter to the same native hard-race critic. Extra factual replay and candidate replay charged. response_masked is a common-acquisition deployment-input ablation, not independently acquired state-only control. Existing full18,164parameter market predictor/checkpoint retained; new native hard-race prospective critic jointly learns a bounded positive Adam step multiplier across all actor parameters with future NLL plus0.05normalized exact-step deviation regularization, exact full boundary anchors, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. No sampled residual credit; zero is genuine local-only learning. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution."
+}
