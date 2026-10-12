@@ -1,0 +1,237 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "rows": [
+    {
+      "arm": "learned",
+      "actor_nll": 0.41878102253071575,
+      "outcome_brier": 0.17053828313306474,
+      "route_sensitivity_weighted_brier": 0.1598665203390011,
+      "route_logit_rms": 0.10237419467718506,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.15826724086082294,
+          "route_logit_rms": 0.09826399326985055,
+          "actor_nll": 0.3268627533836207
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.14707221354326278,
+          "route_logit_rms": 0.109600109304487,
+          "actor_nll": 0.5002367855346478
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.15543843641345353,
+          "route_logit_rms": 0.11496331622061258,
+          "actor_nll": 0.37805883042551863
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.14593995884938346,
+          "route_logit_rms": 0.11125663006930947,
+          "actor_nll": 0.4603856269001757
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.19184376431702863,
+          "route_logit_rms": 0.09341430231196969,
+          "actor_nll": 0.5332504326729304
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.22056059077188606,
+          "route_logit_rms": 0.08518929101033872,
+          "actor_nll": 0.49648013819645176
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.1604178203327366,
+          "route_logit_rms": 0.11530220297821248,
+          "actor_nll": 0.40041413610532617
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.11511842334186939,
+          "route_logit_rms": 0.08545854288366879,
+          "actor_nll": 0.25455947702705495
+        }
+      ]
+    },
+    {
+      "arm": "prior",
+      "actor_nll": 0.4188150118340417,
+      "outcome_brier": 0.17062470254415213,
+      "route_sensitivity_weighted_brier": 0.25,
+      "route_logit_rms": 0.1015978071573811,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.09837688559095835,
+          "actor_nll": 0.32708760551174865
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.10970373219945068,
+          "actor_nll": 0.5002754467651096
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.11487148258447073,
+          "actor_nll": 0.378015760985504
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.11116975705443259,
+          "actor_nll": 0.4605094680677981
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.09313917736604843,
+          "actor_nll": 0.5332420837809511
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.08560166488433277,
+          "actor_nll": 0.49631095227145455
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.11097508868389024,
+          "actor_nll": 0.4002934454930975
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.25,
+          "route_logit_rms": 0.08361698859654554,
+          "actor_nll": 0.2547853317966701
+        }
+      ]
+    },
+    {
+      "arm": "exact",
+      "actor_nll": 0.4193186809135527,
+      "outcome_brier": 0.17078463444501712,
+      "route_sensitivity_weighted_brier": 0.0,
+      "route_logit_rms": 0.10352879180479956,
+      "cases": [
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.09890012801001483,
+          "actor_nll": 0.32688415482813293
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.11023356882204668,
+          "actor_nll": 0.5001121562492351
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+          "depth": 4,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.11587970592212524,
+          "actor_nll": 0.3787898761197007
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+          "depth": 4,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.11103979127204978,
+          "actor_nll": 0.460514534401663
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.0960114539572273,
+          "actor_nll": 0.5341561647766818
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.08532938226289667,
+          "actor_nll": 0.4966247937003111
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+          "depth": 8,
+          "variant": "base",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.11556152110377435,
+          "actor_nll": 0.40300957048358416
+        },
+        {
+          "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+          "depth": 8,
+          "variant": "rewire",
+          "route_sensitivity_weighted_brier": 0.0,
+          "route_logit_rms": 0.09056103702114397,
+          "actor_nll": 0.2544581967491127
+        }
+      ]
+    }
+  ],
+  "weighted_error_reduction_vs_prior": 0.36053391864399564,
+  "actor_gain_vs_prior": 3.3989303325931974e-05,
+  "input_sha256": {
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_learned_reuse.json": "412f0dcfb27450265083c6f7e60e81f23ce22a0181eab4b247c09ec6d32dc9b2",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_prior_reuse.json": "3cd29260f3016ddcafe295d31cae323d19a7b0936d5e97bac0fb3a6f14721ac8",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_exact_reuse.json": "92fe9ff31a51d6b46164b9a8688ce8301c93545d376a50c319566be68f801d12"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_world_credit_sensitivity.py": "4fde0c4c69f9061ef9f158971a072ad023460df2ef29bdf7dc47acab4338c685"
+  },
+  "derivation": "BCE contrast is softplus(z_alt)-softplus(z_factual)-q*(z_alt-z_factual). Halfblend uses .5*y+.5*q, so residual squared is .25*(q-y)^2*(z_alt-z_factual)^2. Therefore 4*sum(residual squared)/sum(logit gap squared) reconstructs sensitivity-weighted Brier. Exact arm uses y, hence zero teaching residual does not imply perfect issued outcome prediction.",
+  "scope": "Completed exploratory eight-case cohort. Arms share incoming learner but diverge during adaptation; weighted errors use each arm own routes, not paired fixed-route causal effects. Logit-gap weighting is immediate loss sensitivity, not optimizer/future-learning sensitivity. No new fit, task advantage, audit saving or efficiency claim."
+}
