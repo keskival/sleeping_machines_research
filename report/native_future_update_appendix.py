@@ -37,10 +37,16 @@ def transfer_blocks():
     for record in records:
         for r in record['rows']:
             ratio=r['baseline_over_matched_work']
-            rows.append([str(record['seed']),str(r['depth']),f"{r['final_quality_gain']:+.6f}",f"{r['quality_gain_vs_static']:+.6f}",f"{ratio:.3f}x" if ratio else '-',str(r['conservative_break_even_fit_count'] or '-')])
+            parent_path=next(iter(record['input_sha256']))
+            raw=json.loads((ROOT/parent_path).read_text())
+            static=next(x for x in raw['rows'] if x['depth']==r['depth'] and x['arm']=='static_acquired_groups')
+            frozen=next(x for x in raw['rows'] if x['depth']==r['depth'] and x['arm']=='frozen_acquired_policy')
+            match=next((h for h in frozen['history'] if h['nll']<=static['history'][-1]['nll']),None)
+            strong=(static['fit_wall_s']+static['evaluation_wall_s'])/(match['fit_wall_s']+frozen['evaluation_wall_s']) if match else None
+            rows.append([str(record['seed']),str(r['depth']),f"{r['final_quality_gain']:+.6f}",f"{r['quality_gain_vs_static']:+.6f}",f"{ratio:.3f}x" if ratio else '-',f"{strong:.3f}x" if strong else '-',str(r['conservative_break_even_fit_count'] or '-')])
     return [('p','Acquired native update transfer: source seed0 controller frozen before fresh-model fitting. No controller optimizer/replay. Comparison with TRAIN-acquired static group scales isolates conditioning from fixed step-size changes.'),
-            ('table',(['Seed','Depth','Gain vs Adam','Gain vs static','Incremental work ratio','Source break-even fits'],rows,[13,17,33,33,34,33])),
-            ('p','Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Quality gain is reference minus frozen. Work ratio is fixedAdam fit+allvalidation divided by frozen fit to first scheduled quality match+allvalidation. Ratios>1 favor incremental reuse. The source acquisition experiment is additionally charged; break-even fits is the calculated repeated-fit count paying that source cost, not measured deployment saving. Other smoke/selection costs remain additional protocol charges. Dense writes/state reset; model-seed transfer on same corpus, not domain/publicTEST/Transformer supremacy.'),
+            ('table',(['Seed','Depth','Gain vs Adam','Gain vs static','Adam/work','Static/work','Source break-even fits'],rows,[10,13,28,27,29,29,27])),
+            ('p','Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Quality gain is reference minus frozen. Work ratio is fixedAdam fit+allvalidation divided by frozen fit to first scheduled quality match+allvalidation. Ratios>1 favor incremental reuse. Static/work separately uses static final quality as the target. Across completed seeds3/4/5 it saves work1/9; eight cases cost1.6–2.7%more. The source acquisition experiment is additionally charged; break-even fits is the calculated repeated-fit count paying that source cost, not measured deployment saving. Other smoke/selection costs remain additional protocol charges. Dense writes/state reset; model-seed transfer on same corpus, not domain/publicTEST/Transformer supremacy.'),
             ('p','Evidence: '+', '.join(r['tag'] for r in records)+'.')]
 
 
