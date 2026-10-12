@@ -101,7 +101,7 @@ def pages():
   result.append([('h2','Native outcome-law credit: common nonlinear acquisition'),('table',(['Targets','Presentations','Source fit seconds','Later world NLL'],[[str(acquired['targets']),'4096',f"{acquired['whole_learning_wall_s']:.3f}",f"{tail:.6f}"]],[30,35,51,51])),('p','One target-addressed native outcome query and feedback update replaces unrelated route-wise loss predictions. Revealed outcome supervision trains the native body/read policy; forward losses also teach shared critic memory. Known proper-loss algebra projects one common outcome belief into coherent route contrasts. Source acquisition gate '+('passes' if checks['acquisition_gate'] else 'fails')+'. Acquisition uses16nonlinear TRAIN graphs with2048unique outcomes, one neural pass plus2048confidence presentations. The scalar output does not imply a tiny or disconnected world model.'),('small',acquired['scope'])])
   reuse=[]
   for arm in ['exact','learned','prior']:
-   r=read(f'curie_world_credit_20261012_v1_{arm}_reuse')
+   r=read(f'curie_world_credit_20261012_v2_{arm}_reuse')
    if r is not None:reuse.append(r)
   if reuse:
    rows=[];costs=[]
@@ -111,7 +111,7 @@ def pages():
     summed=lambda k:sum(x.get(k,0) for x in r['rows'])
     costs.append([r['arm'],str(summed('world_queries')),str(summed('bank_context_reads')),str(summed('sensor_decodes')),str(summed('credit_selected_updates')),f"{1000*r['fitting_wall_s']/1024:.3f}"])
    result.append([('h2','Native world credit reused on fresh nonlinear causal systems'),('table',(['Credit','Actor NLL','World NLL','Full seconds','Full ms/presentation'],rows,[25,31,31,37,43])),('table',(['Credit','World queries','Bank payload reads','Actor decodes','World writes','Reuse ms/target'],costs,[21,29,38,25,27,27])),('small','Completed arms only.16source systems/4096charged presentations plus8independent target deployments/1024prequential targets per arm: full denominator5120presentations. Full seconds include source/reuse driver preprocessing and model/optimizer copies; reuse ms/target uses actual training loops. Source acquisition charged once per deployment cohort. Fresh8/16factor4/8generating-depth systems, base/hidden-rewire. Actor/world learn causally in8feedback windows; common incoming actor/world/Adam fingerprints and identical shared-bank/outcome training. Learned and prior use deliberate half blends; exact uses observed-label contrast. All sampled alternative logits are decoded and charged. Generating depth is not neural-depth scaling; no publicTEST or efficiency claim.')])
-  decision=read('curie_world_credit_20261012_v1_decision')
+  decision=read('curie_world_credit_20261012_v2_decision')
   if decision is not None:
    rows=[]
    for x in decision['cases']:rows.append([str(x['depth']),str(x['width']),x['variant'],f"{x['gains']['exact']:+.6f}",f"{x['gains']['prior']:+.6f}"])

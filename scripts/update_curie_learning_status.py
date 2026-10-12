@@ -45,7 +45,7 @@ def main():
     else:text+='Raw native credit retains the leading selection quality. '
     break
    text+='Shared memory permits independently chosen native reads and receiver writes. Later forward task loss teaches critic content/read operations; auxiliary revealed-loss regression trains its readout. Active relabeling and completion-visibility contracts pass for public relative-address keys. Private four-root affine development: eight TRAIN graphs/two passes plus charged confidence acquisition, fixed DEV weights and causal numerical memory. Teaching gradients cover eight-feedback windows. No efficiency or neural-depth scaling win. Next: useful shared-memory learning versus matched controls with complete work, fixed attribution confirmation, then deeper/larger acquired-structure tests; global destination learning and deep boundary-credit replacement are integration gaps.'
-  world=ROOT/'experiments/results/causal_induction/curie_world_credit_20261012_v1_decision.json'
+  world=ROOT/'experiments/results/causal_induction/curie_world_credit_20261012_v2_decision.json'
   if world.exists():
    w=json.loads(world.read_text());assert w['status']=='completed';v={r['arm']:r for r in w['rows']}
    text='**Forward-taught credit and native learning (12 October):** Native outcome-law credit uses one connected temporal world query and revealed-outcome update, independently selected shared-memory access, and coherent loss projections across alternative routes. '

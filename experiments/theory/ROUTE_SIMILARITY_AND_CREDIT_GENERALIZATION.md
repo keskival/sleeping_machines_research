@@ -88,6 +88,18 @@ For BCE, d=1 and f_a=z_a. The outcome belief supplies all present route-risk con
 
 When new routes, horizons or regimes expand V_X, old compressed messages may be insufficient. Keep richer persistent evidence or pay for new observations; do not treat yesterday's quotient as a stationary inductive bias. At deep producer boundaries, known local maps still project output credit into parameter effects, or a separately learned and validated response map must replace them. Outcome compression does not erase that transport cost.
 
+## Teach the world in the directions credit actually uses
+
+For an issued exogenous binary target, route-logit gap v=z_a-z_b and shared forecast q_hat, the squared error between projected and realized contrast is v^2*(q_hat-Y)^2. If the issued v is independent of the future target conditional on the declared full history H (including route randomness), then
+
+    E[v^2*(q_hat-Y)^2 | H] = v^2*((q_hat-q_H)^2+q_H*(1-q_H)).
+
+Thus actual contrast teaching induces a sensitivity-weighted proper forecast objective. With issued v detached, it fits the shared world belief most strongly where an error would change route credit. It does not require unrelated per-route regression heads or backpropagation-gradient targets. Shared producer/update maps give the analogous metric-weighted sensitivity; changing optimizer and future curvature requires the actual augmented response rather than assuming a positive quadratic metric.
+
+Nonnegative predictable weighting of a proper outcome loss retains its conditional Bayes target wherever weight is positive. Preserve a positive base weight or exploration support: initially all route logits can coincide, making v=0 and otherwise eliminating the very observations needed to discover useful differences. If weights depend on a revealed outcome, the conditional target generally changes; if they depend on trainable q, stop their selection path or account for the resulting objective. A sampled pair identifies its supported sensitivity direction, not all routes.
+
+This makes a concrete next design choice conditional on the integrated result: distinguish poor world calibration from poor calibration in credit-sensitive directions. Global world NLL alone can improve while useful route teaching worsens. The current v1 fit uses ordinary outcome BCE, not this weighted revision; its completed parameters/protocol remain immutable. Any revision needs a diagnosed sensitivity failure and a matched future-quality comparison, not an automatic new grid.
+
 ## Implemented first step (12 October)
 
 The registered WORLD_CREDIT_PROTOCOL.md implements one native target-addressed outcome query and revealed-outcome update, shared forward/critic memory and coherent BCE route projections. Its common-acquisition exact/learned/fixed-prior branches isolate outcome-based source-choice teaching with the same memory capability. Contracts pass actual native outcome/read gradients, future task memory gradients, causal timing and public relabeling. The acquired q and risk algebra are the first quotient implementation, not a learned general causal-response distance or depth replacement. The broader geometry comparison remains the next test after useful causal credit reuse.

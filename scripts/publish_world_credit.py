@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--tag', required=True); a = ap.parse_args()
     python = str(ROOT/'.venv-docker/bin/python')
-    decision = ROOT/'experiments/results/causal_induction/curie_world_credit_20261012_v1_decision.json'
+    decision = ROOT/'experiments/results/causal_induction/curie_world_credit_20261012_v2_decision.json'
     data = json.loads(decision.read_text()); assert data['status'] == 'completed'
     for group in ['source_sha256', 'parent_sha256']:
         for name, digest in data[group].items():
