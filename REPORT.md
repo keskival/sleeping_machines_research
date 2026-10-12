@@ -3022,6 +3022,9 @@ Exact cached credit-window replay: own-model execution comparison. All recorded 
 | Evidence | Fit targets | Full-prefix NLL | Cached NLL | Full-prefix seconds | Cached seconds | Time saved | Gate |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | aws_window_replay_fit_gate_20261012_v1 | 131056 | 7.587435 | 7.587435 | 149.399 | 138.557 | 7.26% | PASS |
+| aws_window_replay_128k_gate_20261012_s7_v1 | 131056 | 7.576156 | 7.576156 | 149.432 | 138.502 | 7.31% | PASS |
+| aws_window_replay_512k_gate_20261012_s6_v1 | 524272 | 7.263107 | 7.263107 | 607.069 | 559.974 | 7.76% | PASS |
+| aws_window_replay_512k_gate_20261012_s7_v1 | 524272 | 7.275658 | 7.275658 | 604.046 | 558.720 | 7.50% | PASS |
 
 ## FAS native frozen-recipe replication
 
