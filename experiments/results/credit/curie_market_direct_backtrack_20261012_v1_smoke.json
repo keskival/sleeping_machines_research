@@ -1,0 +1,163 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_direct_backtrack_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_market_direct_backtrack_20261012_v1_smoke",
+    "mode": "smoke",
+    "seed": 187
+  },
+  "acquisition": {
+    "accepted_meta_updates": 3,
+    "rejected_meta_updates": 0,
+    "candidate_teacher_loss_changes": [
+      0.001078418457600705,
+      -0.00016455585842933829,
+      -0.00041309442327630563
+    ],
+    "accepted_teacher_loss_changes": [
+      -0.00019220635133976316,
+      -0.00016455585842933829,
+      -0.00041309442327630563
+    ],
+    "arm": "online",
+    "nll": 13.293847509023374,
+    "targets": 32,
+    "audits": 2,
+    "future_teachers": 3,
+    "adam_proposal_error": 6.68895494548849e-13,
+    "wall_s": 0.48224997697980143,
+    "block_nll": [
+      10.469042957765875,
+      14.687481372154462,
+      13.96547626770278,
+      14.053389438470376
+    ]
+  },
+  "rows": [
+    {
+      "accepted_meta_updates": 7,
+      "rejected_meta_updates": 0,
+      "candidate_teacher_loss_changes": [
+        -0.0003380484834956121,
+        -0.00038989474161432724,
+        -0.00038603827719541073,
+        -5.517229729434803e-05,
+        -0.00027751214724602846,
+        -0.0004379831197951489,
+        -9.8398782657938e-05
+      ],
+      "accepted_teacher_loss_changes": [
+        -0.0003380484834956121,
+        -0.00038989474161432724,
+        -0.00038603827719541073,
+        -5.517229729434803e-05,
+        -0.00027751214724602846,
+        -0.0004379831197951489,
+        -9.8398782657938e-05
+      ],
+      "arm": "online",
+      "nll": 14.911763269395252,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 7,
+      "adam_proposal_error": 2.576341917581715e-13,
+      "wall_s": 0.8735597470076755,
+      "block_nll": [
+        14.188619713544695,
+        11.474838670197954,
+        13.522205465991156,
+        12.394390850452302,
+        18.04009166937285,
+        17.77134104876414,
+        16.238224391038955,
+        15.664394345799966
+      ]
+    },
+    {
+      "accepted_meta_updates": 0,
+      "rejected_meta_updates": 0,
+      "candidate_teacher_loss_changes": [],
+      "accepted_teacher_loss_changes": [],
+      "arm": "frozen",
+      "nll": 14.911979516689252,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.526728826168778e-13,
+      "wall_s": 0.3423368810035754,
+      "block_nll": [
+        14.188619713544695,
+        11.474838670197954,
+        13.52218728903841,
+        12.394097658686675,
+        18.041082813382168,
+        17.771993930517624,
+        16.238207722324418,
+        15.664808335822073
+      ]
+    },
+    {
+      "accepted_meta_updates": 0,
+      "rejected_meta_updates": 0,
+      "candidate_teacher_loss_changes": [],
+      "accepted_teacher_loss_changes": [],
+      "arm": "zero",
+      "nll": 14.912516403522696,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.4484581029327046e-13,
+      "wall_s": 0.33968942100182176,
+      "block_nll": [
+        14.188619713544695,
+        11.474740930369029,
+        13.522170252778373,
+        12.393828719163487,
+        18.042013799897692,
+        17.773208928566767,
+        16.23928581699839,
+        15.666263066863134
+      ]
+    },
+    {
+      "accepted_meta_updates": 0,
+      "rejected_meta_updates": 0,
+      "candidate_teacher_loss_changes": [],
+      "accepted_teacher_loss_changes": [],
+      "arm": "bptt",
+      "nll": 14.912460216252022,
+      "targets": 64,
+      "audits": 8,
+      "future_teachers": 0,
+      "adam_proposal_error": 2.526798215107817e-13,
+      "wall_s": 0.37929537799209356,
+      "block_nll": [
+        14.188619713544695,
+        11.4747652737046,
+        13.521799203530072,
+        12.39184182285835,
+        18.042514233648173,
+        17.77513717420016,
+        16.239408925097543,
+        15.66559538343257
+      ]
+    }
+  ],
+  "online_gain": {
+    "frozen": 0.00021624729400038234,
+    "zero": 0.0007531341274447101,
+    "bptt": 0.000696946856770353
+  },
+  "whole_wall_s": 3.3076142700156197,
+  "peak_rss_kb": 332076,
+  "source_sha256": {
+    "experiments/credit/market_direct_future_credit_backtrack.py": "398672dec4286faa46a80989fff10fa56fb96a177393194bd0be5998a777e8ec",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Backtracking critic updates must reduce the previously issued one-step next-window objective on already revealed data; future continuation alone measures generalization. All saved-version actor/optimizer copies, candidate producer replays and up to five teacher replays charged. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim."
+}

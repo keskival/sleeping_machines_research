@@ -1,25 +1,20 @@
-"""Refresh Curie's current science paragraph from completed causal/native stages."""
+"""Publish a short current Curie verdict, retaining detailed source-bound appendices."""
 import fcntl,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
  with open('/tmp/aws-language-publication.lock','a') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX)
-  text='**Forward-taught credit and native learning (12 October):** The generated-credit full-cohort depth8/16/32 stage trails native AdamW. Operator-aware updates and bounded actual-step corrections retain exact current-event adjoints; bounded online credit beats frozen credit at depths8/16 but trails reset credit at both and uses more CPU. These are development results on reused Taxi DEV, with complete acquisition/teacher/optimizer/scoring CPU charged. '
-  p=ROOT/'experiments/results/credit/curie_market_credit_20261012_v1_fit.json'
-  if p.exists():
-   r=json.loads(p.read_text());assert r['status']=='completed';v={x['arm']:x for x in r['rows']}
-   text+=f"Chronological market TRAIN continuation over {v['online']['targets']} targets records online-credit NLL {v['online']['nll']:.6f}, frozen-credit {v['frozen']['nll']:.6f}, zero-audit {v['zero']['nll']:.6f}, native BPTT {v['bptt']['nll']:.6f}. Online credit loses to all three; reuse CPU is {v['online']['wall_s']:.3f}s versus BPTT {v['bptt']['wall_s']:.3f}s, with shared acquisition {r['acquisition']['wall_s']:.3f}s. "
-  p=ROOT/'experiments/results/credit/curie_market_hidden_shift_20261012_v1_fit.json'
-  if p.exists():
-   r=json.loads(p.read_text());assert r['status']=='completed';text+='Hidden dependency reversal with identical population marginals: '+', '.join(f"{x['arm']} NLL {x['nll']:.6f}" for x in r['rows'])+'. Synthetic marks on TRAIN timestamps make this a mechanism diagnostic. '
-  for tag,label in [('curie_market_future_credit_20261012_v1_fit','Future-loss interventions on real TRAIN'),('curie_market_future_shift_20261012_v1_fit','Future-loss interventions under hidden conditional reversal')]:
+  text='**Forward-taught credit and native learning (12 October):** Generated-credit full-cohort depth8/16/32 trails native AdamW. The fixed three-seed hidden-bias scalar intervention effect changes sign and is retired. The connected critic now trains its credit vector through the actual clipped-Adam update and complete next-window factual loss; both audit branches pass finite differences. The earlier detached-teacher v2 fit is a protocol error, preserved as data and excluded from method claims. '
+  paths=[('curie_market_direct_backtrack_20261012_v1_fit','Revealed-future descent constrained critic'),('curie_market_direct_future_20261012_v3_fit','Corrected direct future critic')]
+  for tag,label in paths:
    p=ROOT/f'experiments/results/credit/{tag}.json'
    if p.exists():
-    r=json.loads(p.read_text());assert r['status']=='completed';text+=label+': '+', '.join(f"{x['arm']} NLL {x['nll']:.6f} / {x['wall_s']:.3f}s" for x in r['rows'])+'. Shared acquisition is charged separately; Gaussian innovations are not paired, one-seed development. '
-  p=ROOT/'experiments/results/credit/curie_market_future_shift_20261012_v1_decision.json'
-  if p.exists():
-   r=json.loads(p.read_text());assert r['status']=='completed';text+=f"Fixed three-seed hidden-change confirmation: mean gain versus frozen {r['mean_gain_vs_frozen']:+.6f}, versus zero {r['mean_gain_vs_zero']:+.6f}. "+r['decision']+' '
-  text+='Next decisive test trains interventions for future predictive utility rather than cotangent imitation, retaining causal state and matched frozen-credit/ordinary-online controls. The current native local/audit work is dense; these results make no sparse hardware or sealed TEST claim.'
+    r=json.loads(p.read_text());assert r['status']=='completed';v={x['arm']:x for x in r['rows']}
+    text+=label+': '+', '.join(f"{x['arm']} NLL {x['nll']:.6f}, reuse {x['wall_s']:.3f}s" for x in r['rows'])+f"; shared acquisition {r['acquisition']['wall_s']:.3f}s. "
+    losses=[a for a in ['frozen','zero','bptt'] if v['online']['nll']>=v[a]['nll']]
+    text+='Online trails '+', '.join(losses)+'. ' if losses else 'Online improves quality versus all three controls in this development run. '
+    break
+  text+='Chronological Aug1 TRAIN only, one seed and 4,096 continuation targets; all producer copies, audits, teacher/candidate replays and optimizer work are charged. Dense v5 temporal/mark-memory boundary integration; no sealed TEST, optional-route or hardware claim. Next development is decided by future quality against zero/native BPTT and complete cost, not cotangent MSE or theory alone.'
   p=ROOT/'report/I_SCIENCE.md';s=p.read_text();marker='**Forward-taught credit and native learning (12 October):**';start=s.index(marker);end=s.index('\n',start);p.write_text(s[:start]+text+s[end:])
 if __name__=='__main__':main()
