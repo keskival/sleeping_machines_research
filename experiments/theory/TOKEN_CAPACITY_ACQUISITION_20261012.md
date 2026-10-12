@@ -9,3 +9,21 @@ Hypothesis: more addressable state admits context specialization without forcing
 Registered pipeline after all six replay gates pass: pool8 exact cached/full-prefix depth2/4 contract; actual P24D2H2U8 16-update bounded fit for memory/finite-learning admission; then131056and524272-target seed6 fits matched to completed cached pool4 data/prior/updates/DEV checks. Reuse existing driver unchanged. Small-fit quality is diagnostic and does not veto the reserved larger acquisition point; numerical/resource failure stops admission. Neither first-pass point is a family verdict.
 
 The decision uses selected/final DEV and complete measured training/fit wall at both sizes, alongside all-key scoring, receivers, selected writes, route use and gradient support. Select a candidate quality improvement directly; call a quality/time Pareto improvement only when both measures improve against the completed incumbent. Otherwise retain pool4 and diagnose receiver specialization/learning before deciding the next family member. No public validation or reserved4M, external-model fitting, Curie credit duplication or new benchmark.
+
+## Conditional acquisition model and decision thresholds
+
+To reason before an exhaustive scaling grid, posit—not infer from the current fits—the risk model
+
+    R(U,N_eff) = R_floor + a U^(-alpha) + b U/N_eff + D(U),
+
+with a,b,alpha positive. The first term assumes addressable capacity reduces unresolved context interference; the second assumes approximately balanced private learning with finite effective experience; D includes tracking/credit error. They are testable assumptions, not a scaling law for this family. For fixed D, differentiating gives U_star = (alpha*a*N_eff/b)^(1/(alpha+1)). Larger effective experience therefore changes the preferred capacity even when selected activity is fixed. With correlated or decayed evidence, N_eff = (sum_i w_i)^2 / sum_i w_i^2; raw token count alone is insufficient. Unequal route demand requires route-specific effective counts and errors rather than the balanced U/N_eff approximation.
+
+Under this model, pool8 improves pool4 exactly when
+
+    a*(4^(-alpha)-8^(-alpha)) > 4*b/N_eff + D(8)-D(4).
+
+This gives the acquisition threshold that a small-data verdict can miss. If the left side is no larger than the tracking-error difference, additional data alone does not repair that member. The two registered sizes test the direction of the difference; they cannot identify these coefficients or certify an asymptotic exponent.
+
+Compute must be included separately: with linear all-key discovery, W/N contains a term proportional to U, although selected writes stay fixed. A growing U_star then raises discovery work per target. Asymptotic capacity beyond activity needs learned/bounded candidate discovery, amortized reusable credit or another measured sublinear discovery mechanism. Pool8 currently scores all32keys/target: this experiment tests useful capacity, not bounded discovery. The winning region is a joint quality/work condition, not capacity alone.
+
+Capacity-choice estimators can eventually learn continuation advantage Q(state,U,budget) from source-addressed paired acquisitions, with the actual future task loss supplying the terminal teacher. These fresh pool4/8 fits change initialization and do not supply a same-learner expansion intervention. Packed bank tensors change shape: the existing strict optimizer-expansion helper intentionally rejects that transport. A future warm-start expansion needs explicit slice/moment/state mapping and a retained-route contract before it can supply those causal policy targets. This finite observed-loss teaching endpoint closes the estimation loop without adding a trainer of the trainer.
