@@ -71,8 +71,10 @@ def blocks():
             ('table',(['Exposure','Unique tokens','Fit targets','Initial NLL','Selected NLL','Context gain','Train seconds'],ur,[25,28,28,30,30,30,30])),
             ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
-    for seed in (6,7,8):
-        path=ROOT/'experiments/results/token_language'/f'aws_integrated_common_prior_decision_20261012_s{seed}_v1.json'
+    common_paths=[(str(seed),f'aws_integrated_common_prior_decision_20261012_s{seed}_v1') for seed in (6,7,8)]
+    common_paths.append(('6 / larger','aws_integrated_common_prior_512k_decision_20261012_s6_v1'))
+    for seed,tag in common_paths:
+        path=ROOT/'experiments/results/token_language'/f'{tag}.json'
         if not path.exists():continue
         d=json.loads(path.read_text());assert d['status']=='completed'
         for name,digest in {**d['source_sha256'],**d['input_sha256']}.items():
