@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_direct_route_depth_20261012_v1_contract",
+  "checks": {
+    "score_cases": 32,
+    "score_bias_identity_error": 1.5265566588595902e-16,
+    "producer_covariance_identity_error": 1.8388068845354155e-16,
+    "fixed_belief_bound_min_margin": 0.0012586687899850159,
+    "pair_conditioned_bias_identity_error": 1.0321604682062002e-16,
+    "pair_bound_min_margin": 0.010911529617929246,
+    "actual_clipped_Adam_proposal_error": 0.0,
+    "delayed_utility_identity_error": 8.673617379884035e-19,
+    "utility_finite_difference_error": 2.7957453366256324e-10,
+    "clipping_cases": [
+      false,
+      true
+    ]
+  },
+  "source_sha256": {
+    "experiments/causal_induction/direct_route_depth_contract.py": "b9cfcc6f82192eb603dc87ea99cd693688dd83988a4708571058076edd5baefa",
+    "experiments/theory/DIRECT_ROUTE_CREDIT_DEPTH_AND_DELAYED_UTILITY.md": "74503a0a2661800b233bbbc6475174cabc424948f5b305046519812cde6fda0a",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "experiments/causal_induction/world_credit_confirmation_verify.py": "5b8263ce9f7e3d4a92d1f8f9e53267fd50ff7e62d929c3ce772aab0a0b0c81f4"
+  },
+  "parent_sha256": {
+    "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json": "f7d5bff10ba3317b655e5398b9d35815f6fb4b3218e0f7ccb665a1edb6038ea5"
+  },
+  "torch_version": "2.14.1+cpu",
+  "whole_pipeline_wall_s": 1.252327291003894,
+  "peak_rss_kb": 314868,
+  "scope": "Small float64 algebra/executable operator contracts, scores2/4/8/32 and clipped/unclipped actual Adam. Supports conditional score bounds and delayed scalar teaching, not calibrated world accuracy, sparse hardware cost, a new trained optimizer or neural-depth scaling. Original native confirmation unchanged; dummy optimizer steps are numerical fixtures, no benchmark fitting."
+}
