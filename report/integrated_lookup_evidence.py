@@ -144,4 +144,13 @@ def blocks():
         result.extend([('p','Addressed capacity under fresh acquisition. '+d['scope']),
             ('table',(['Pool','Fit targets','Parameters','Selected NLL','Final NLL','Train seconds','ms/target','Writes/target','Keys/target'],rows,[12,24,24,24,24,24,24,24,24])),
             ('p','Evidence '+capacity.stem+'.')])
+    cohort=ROOT/'experiments/results/diagnostics/aws_capacity_confirmation_20261012_v1.json'
+    if cohort.exists():
+        c=json.loads(cohort.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[str(r['seed']),f"{r['reference_nll']:.6f}",f"{r['candidate_nll']:.6f}",f"{r['paired_quality_gain']:+.6f}",
+            f"{r['reference_training_s']:.3f}",f"{r['candidate_training_s']:.3f}",f"{r['training_wall_ratio']:.4f}"] for r in c['rows']]
+        result.extend([('p',f"Larger-point capacity confirmation: paired selected-NLL gain{c['paired_quality_gain_mean']:.6f}±{c['paired_quality_gain_sd']:.6f} (sample SD). "+c['scope']),
+            ('table',(['Seed','Pool4 NLL','Pool8 NLL','Gain','Pool4 seconds','Pool8 seconds','Time ratio'],rows,[12,28,28,28,28,28,24]))])
     return result

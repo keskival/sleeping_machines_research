@@ -17,6 +17,14 @@ def main():
             f"complete training{r['complete_training_s']:.3f}/{c['complete_training_s']:.3f}s. ")
     text+='Selected writes stay4/target, scored keys16→32 and available receivers16→32. '+d['scope']
     text+=' Use quality/work and receiver specialization to select the next member; no first-pass family verdict.'
+    cohort=ROOT/'experiments/results/diagnostics/aws_capacity_confirmation_20261012_v1.json'
+    if cohort.exists():
+        c=json.loads(cohort.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        text+=(f" Larger-point three-seed confirmation: paired selected-NLL gain{c['paired_quality_gain_mean']:.6f}±{c['paired_quality_gain_sd']:.6f} "
+            f"(sample SD); improved seeds{sum(r['paired_quality_gain']>0 for r in c['rows'])}/3; "
+            f"mean training-wall ratio{c['training_wall_ratio_mean']:.4f}. "+c['scope'])
     with open('/tmp/aws-language-publication.lock','a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
         if command('git','status','--porcelain','--untracked-files=no').strip():raise RuntimeError('Preserve tracked edits; defer publication')
