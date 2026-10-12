@@ -1,0 +1,357 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_persistence_credit_20261012_v1_smoke",
+  "arm": "persistence",
+  "case": 7,
+  "rows": [
+    {
+      "nll": 0.2868180453871371,
+      "targets": 16,
+      "first_half_nll": 0.1846172580785906,
+      "second_half_nll": 0.3890188326956836,
+      "world_nll": 0.47111824379046163,
+      "world_brier": 0.14335088031933652,
+      "world_first_half_nll": 0.3890726882977268,
+      "world_second_half_nll": 0.5531637992831965,
+      "positive_fraction": 0.1875,
+      "wall_s": 4.470061159983743,
+      "optimizer_updates": 2,
+      "peak_persistent_tensor_bytes": 47448,
+      "peak_occupied_nodes": 101,
+      "peak_world_addresses": 15,
+      "issued_trace": [
+        {
+          "issued_time": 0.005,
+          "feedback_time": 0.21654547457290482,
+          "query_id": 0,
+          "probability": 0.17016442120075226,
+          "world_probability": 0.3030359447002411,
+          "target": 0
+        },
+        {
+          "issued_time": 1.085,
+          "feedback_time": 1.3243436497086947,
+          "query_id": 1,
+          "probability": 0.1652471274137497,
+          "world_probability": 0.31159988045692444,
+          "target": 0
+        },
+        {
+          "issued_time": 2.165,
+          "feedback_time": 2.315605947954336,
+          "query_id": 2,
+          "probability": 0.174385666847229,
+          "world_probability": 0.32681965827941895,
+          "target": 0
+        },
+        {
+          "issued_time": 3.245,
+          "feedback_time": 3.4911581638904683,
+          "query_id": 3,
+          "probability": 0.16204988956451416,
+          "world_probability": 0.3311231732368469,
+          "target": 0
+        },
+        {
+          "issued_time": 4.325,
+          "feedback_time": 4.663046291778662,
+          "query_id": 4,
+          "probability": 0.16287027299404144,
+          "world_probability": 0.3139577805995941,
+          "target": 0
+        },
+        {
+          "issued_time": 5.405,
+          "feedback_time": 5.460543499010202,
+          "query_id": 5,
+          "probability": 0.1598386913537979,
+          "world_probability": 0.3318150043487549,
+          "target": 0
+        },
+        {
+          "issued_time": 6.485,
+          "feedback_time": 6.631256430269144,
+          "query_id": 6,
+          "probability": 0.18368178606033325,
+          "world_probability": 0.34174105525016785,
+          "target": 0
+        },
+        {
+          "issued_time": 7.565,
+          "feedback_time": 7.605278840131273,
+          "query_id": 7,
+          "probability": 0.1701231300830841,
+          "world_probability": 0.3175830543041229,
+          "target": 0
+        },
+        {
+          "issued_time": 8.645000000000001,
+          "feedback_time": 8.681477497883714,
+          "query_id": 8,
+          "probability": 0.17092718183994293,
+          "world_probability": 0.31660252809524536,
+          "target": 0
+        },
+        {
+          "issued_time": 9.725000000000001,
+          "feedback_time": 9.86049176826272,
+          "query_id": 9,
+          "probability": 0.18303877115249634,
+          "world_probability": 0.3388446271419525,
+          "target": 0
+        },
+        {
+          "issued_time": 10.805000000000001,
+          "feedback_time": 10.943182047008092,
+          "query_id": 10,
+          "probability": 0.17762307822704315,
+          "world_probability": 0.3624289035797119,
+          "target": 0
+        },
+        {
+          "issued_time": 11.885000000000002,
+          "feedback_time": 12.042723586159566,
+          "query_id": 11,
+          "probability": 0.17579242587089539,
+          "world_probability": 0.3600340783596039,
+          "target": 1
+        },
+        {
+          "issued_time": 12.965000000000002,
+          "feedback_time": 13.204623786511057,
+          "query_id": 12,
+          "probability": 0.8164913654327393,
+          "world_probability": 0.4009988605976105,
+          "target": 1
+        },
+        {
+          "issued_time": 14.045000000000002,
+          "feedback_time": 14.383978579848202,
+          "query_id": 13,
+          "probability": 0.1728319227695465,
+          "world_probability": 0.34989896416664124,
+          "target": 0
+        },
+        {
+          "issued_time": 15.125000000000002,
+          "feedback_time": 15.413708544349092,
+          "query_id": 14,
+          "probability": 0.8171845078468323,
+          "world_probability": 0.6379536390304565,
+          "target": 1
+        },
+        {
+          "issued_time": 16.205000000000002,
+          "feedback_time": 16.471873863754336,
+          "query_id": 15,
+          "probability": 0.17646993696689606,
+          "world_probability": 0.30601534247398376,
+          "target": 0
+        }
+      ],
+      "events": 221,
+      "queries": 16,
+      "candidate_keys": 121,
+      "value_reads": 32,
+      "sensor_decodes": 32,
+      "selected_updates": 884,
+      "counterfactual_unit_values": 1768,
+      "discovery_context_reads": 137,
+      "relationship_candidate_updates": 1701,
+      "relationship_reads": 121,
+      "credit_events": 32,
+      "credit_candidate_keys": 256,
+      "credit_selected_updates": 128,
+      "credit_counterfactual_values": 256,
+      "credit_state_reads": 0,
+      "critic_targets": 16,
+      "exact_alternative_audits": 16,
+      "critic_contrast_squared_error": 0.0,
+      "audited_contrast_squared_magnitude": 0.0,
+      "bank_scored_keys": 2419,
+      "bank_value_reads": 165,
+      "bank_discovery_records": 2672,
+      "bank_context_reads": 2419,
+      "bank_writes": 253,
+      "bank_counterfactual_values": 2419,
+      "forward_credit_reads": 21,
+      "critic_forward_reads": 26,
+      "bank_peak_records": 192,
+      "world_queries": 16,
+      "world_feedback": 16,
+      "world_nll_sum": 7.537891834974289,
+      "world_brier_sum": 2.2936140851093842,
+      "route_logit_gap_squared": 0.12589302639025846,
+      "route_contrast_residual_squared": 0.0009297549266875649,
+      "route_label_noise_proxy": 0.017903493040973238,
+      "persistence_credit_receipts": [
+        {
+          "query_id": 0,
+          "issued_time": 0.005,
+          "probability": 0.17219512195121955,
+          "correct_before": 1697,
+          "total_before": 2050.0
+        },
+        {
+          "query_id": 1,
+          "issued_time": 1.085,
+          "probability": 0.17211116528522674,
+          "correct_before": 1698,
+          "total_before": 2051.0
+        },
+        {
+          "query_id": 2,
+          "issued_time": 2.165,
+          "probability": 0.17202729044834308,
+          "correct_before": 1699,
+          "total_before": 2052.0
+        },
+        {
+          "query_id": 3,
+          "issued_time": 3.245,
+          "probability": 0.17194349732099368,
+          "correct_before": 1700,
+          "total_before": 2053.0
+        },
+        {
+          "query_id": 4,
+          "issued_time": 4.325,
+          "probability": 0.17185978578383643,
+          "correct_before": 1701,
+          "total_before": 2054.0
+        },
+        {
+          "query_id": 5,
+          "issued_time": 5.405,
+          "probability": 0.1717761557177615,
+          "correct_before": 1702,
+          "total_before": 2055.0
+        },
+        {
+          "query_id": 6,
+          "issued_time": 6.485,
+          "probability": 0.171692607003891,
+          "correct_before": 1703,
+          "total_before": 2056.0
+        },
+        {
+          "query_id": 7,
+          "issued_time": 7.565,
+          "probability": 0.17160913952357804,
+          "correct_before": 1704,
+          "total_before": 2057.0
+        },
+        {
+          "query_id": 8,
+          "issued_time": 8.645000000000001,
+          "probability": 0.17152575315840624,
+          "correct_before": 1705,
+          "total_before": 2058.0
+        },
+        {
+          "query_id": 9,
+          "issued_time": 9.725000000000001,
+          "probability": 0.17144244779018947,
+          "correct_before": 1706,
+          "total_before": 2059.0
+        },
+        {
+          "query_id": 10,
+          "issued_time": 10.805000000000001,
+          "probability": 0.17135922330097086,
+          "correct_before": 1707,
+          "total_before": 2060.0
+        },
+        {
+          "query_id": 11,
+          "issued_time": 11.885000000000002,
+          "probability": 0.17127607957302282,
+          "correct_before": 1708,
+          "total_before": 2061.0
+        },
+        {
+          "query_id": 12,
+          "issued_time": 12.965000000000002,
+          "probability": 0.8283220174587779,
+          "correct_before": 1708,
+          "total_before": 2062.0
+        },
+        {
+          "query_id": 13,
+          "issued_time": 14.045000000000002,
+          "probability": 0.17159476490547743,
+          "correct_before": 1709,
+          "total_before": 2063.0
+        },
+        {
+          "query_id": 14,
+          "issued_time": 15.125000000000002,
+          "probability": 0.8284883720930233,
+          "correct_before": 1710,
+          "total_before": 2064.0
+        },
+        {
+          "query_id": 15,
+          "issued_time": 16.205000000000002,
+          "probability": 0.17142857142857137,
+          "correct_before": 1711,
+          "total_before": 2065.0
+        }
+      ],
+      "persistence_prediction_parity_error": 0.0,
+      "split": "heldout_factors_depth",
+      "variant": "rewire",
+      "depth": 8,
+      "width": 16,
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+      "incoming_learner_fingerprint": "1f796e655faf6b013f40f3295e761f0a91a53da24b6a2ce6d3b958a1c05c94e2"
+    }
+  ],
+  "targets": 16,
+  "smoke": true,
+  "source_sha256": {
+    "experiments/causal_induction/world_credit_pipeline.py": "d0a016168a464abf580ab412521ab9f82bfb2e44dc168fa2d9ccd71bffb7442d",
+    "experiments/causal_induction/world_credit_sensor.py": "18feb454a5dc53a3aa96a55e6a4cb14bd2e0ea9e142bfdac49b212187bc1c681",
+    "experiments/causal_induction/world_credit_run.py": "c8c4f2fbadcdc475a49566f4b9bf33f75484587d4e0e6fe403c85a1737da2b16",
+    "experiments/causal_induction/WORLD_CREDIT_PROTOCOL.md": "2ba842a8c5c2b5ccf0cb49c9661cc8d7f2c003a0a8d0f9f39bf9be8b90f001f1",
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/task_taught_run.py": "29603884d2df59fbfe98abf2dbb62683feed66d9baf1a50e701106eb2553bdb0",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/causal_induction/world_credit_case.py": "23325849d4060250e0dfc26e8f5b941f521d7cb6606b7f8f3846cd7b36ec6507",
+    "experiments/causal_induction/WORLD_CREDIT_RESOURCE_REPAIR.md": "48441f58717c26efbd16447f94d70cf2bd50f52e2777ae27907b67064913c5ea",
+    "experiments/causal_induction/persistence_world_credit.py": "c8be6f1d666b5b2a94f8f505c2e8df0760f56e6b410a6624819c323e0e967cbe",
+    "experiments/causal_induction/persistence_credit_case.py": "9537bb215708d7e9f4ed0e3159e3695e95cd440631a382ed8f739e342ca3c3f4",
+    "experiments/causal_induction/PERSISTENCE_CREDIT_PROTOCOL.md": "f36606293593a670c731a074d5ebc7dd0641425d58483860483b1816f3546c16"
+  },
+  "parent_sha256": "94f4c23b6a768c449557c090d4c63a45f2a888d81c1a1020744ea9a2517b498a",
+  "data_records": [
+    {
+      "split": "heldout_factors_depth",
+      "variant": "rewire",
+      "width": 16,
+      "depth": 8,
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+      "sha256": "e821309b383a56e81afec600df7644c18761334220c0d8b13c532f5a54293808",
+      "events": 7727,
+      "queries": 128,
+      "capacity": 144,
+      "positive_fraction": 0.46875
+    }
+  ],
+  "acquisition_result_sha256": "ff8b5a90463f540861d51277f1b636e62532920a815ea711ef902368ea6346c0",
+  "source_checkpoint_sha256": "91472f263cf703cf7758139ba377a628c300fd622db0606da231d94ba0a58814",
+  "whole_pipeline_wall_s": 5.409420222975314,
+  "peak_rss_kb": 524376,
+  "scope": "Independent single-case process repair; unchanged v1 native world/actor math, source checkpoint, optimizer, seeds, causal8-feedback update policy and all8declared cases. Completed system evidence persisted immediately. RSS2.2GB/9GiBhostfloor/cgroup2GiB. Failed v1 whole-arm logs retained as execution overhead, not model quality."
+}
