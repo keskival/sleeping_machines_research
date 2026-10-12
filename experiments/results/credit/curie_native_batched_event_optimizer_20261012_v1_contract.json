@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "battle": "B1",
+  "tag": "curie_native_batched_event_optimizer_20261012_v1_contract",
+  "gate": true,
+  "errors": {
+    "direction": 3.3306690738754696e-16,
+    "parameter_gradient": 1.3877787807814457e-17
+  },
+  "unreplicated_kernel_wall_s": {
+    "reference": 0.06486186900292523,
+    "batched": 0.05320498498622328
+  },
+  "wall_s": 0.3126238260010723,
+  "peak_rss_kb": 268164,
+  "source_sha256": {
+    "experiments/credit/check_batched_event_credit.py": "81caecbfd63c14bd028d81fbaf2a85e4080851c451028a99ad8e42460c137dad",
+    "experiments/credit/batched_event_parameter_credit.py": "fb0125e30592017a367b8666661865f4f6b2998d0bf470496d4f38a1c2a60266",
+    "experiments/credit/event_parameter_credit.py": "28cbfdee8f90f9f5cc65a3c2327480d26967f1ffe30bc20da87de30a4feafe16",
+    "experiments/credit/event_optimizer_credit.py": "2a5672c5eb97a65f76113184af0257c634a99b104af456837872e095f35f948d",
+    "experiments/credit/run_native_batched_event_optimizer.py": "c9f1b01ab10c9bfcc6e03fadf62a65f02622f284754bc0f951d690cbc37900ac",
+    "experiments/credit/NATIVE_BATCHED_EVENT_OPTIMIZER_PROTOCOL.md": "3ad8cb042b9dfe4afcc2911e1b74de12e2e411040b7867cfce44a0daa3628caf"
+  },
+  "scope": "Unchanged width32depth8 event credit: forced query output and full proposal-plus-policy parameter gradient parity. One timing is diagnostic only; complete native fits decide efficiency."
+}

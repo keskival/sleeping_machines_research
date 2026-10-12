@@ -134,4 +134,15 @@ def pages():
             for arm in ['online','frozen','bp_adam']:
                 v=row['arms'][arm];mean_step=sum(x['deep_parameter_change'] for x in v['rows'])/len(v['rows']);rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",f"{mean_step:.5f}"])
         current.append([('h2',f'Future-trained native credit optimizer: width{width}'),('table',(['Depth','Learner','DEV NLL','Whole seconds','Mean core step'],rows,[20,38,38,38,33])),('p','The previous query field saturates its fixed0.005 core-step norm on every reuse block; nativeAdamW mean steps are8–15 times larger atwidth32. This variant learns bounded shared typed step sizes and momentum from actual future likelihood, retaining event-conditioned hard queries and shared deep responsibilities.'),('small','Same128acquisition/512reuse, one initialization/reused DEV. Maximum typed step0.003, initial0.001, initialmomentum0.9, globalactualstepnormcap0.2. Incoming momentum is detached for local conditional teaching and shared after acquisition for online/frozen. Necessary native joint gradient check passes3.38e-16; arithmetic correctness does not replace quality/work evidence. All teacher/reference/optimizer/packet/evaluation work included; dense numerical writes and independent sequence resets remain.')])
+    for variant,label in [('batched','Batched depth execution'),('stable','Held-version averaged future teaching')]:
+        for width in [32,16]:
+            path=ROOT/f'experiments/results/credit/curie_native_{variant}_event_optimizer_20261012_v1_d{width}_fit.json'
+            if not path.exists():continue
+            record=json.loads(path.read_text());assert record['status']=='completed'
+            for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+            rows=[]
+            for row in record['rows']:
+                for arm in ['online','frozen','bp_adam']:
+                    v=row['arms'][arm];rows.append([str(row['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}",str(v.get('optimizer_updates',v['meta_updates']))])
+            current.append([('h2',f'{label}: width{width}'),('table',(['Depth','Learner','DEV NLL','Whole seconds','Meta commits'],rows,[20,38,38,38,33])),('p','Batched depth execution preserves the event-credit update/query objective, with nonzero native output/parameter-gradient parity checked before fitting. Held-version teaching averages arrived conditional gradients over16blocks before changing the credit function, while actor updates remain per-block. It records teacher receipts separately from optimizer commits.'),('small','Registered unchanged128acquisition/512reuse, reused32TaxiDEV512targets, one initialization. Same strong nativeAdamW andSGD/frozencredit references; compare acquired-core/head-only from the completed diagnosis. CompleteCPU work paid, no public TEST/FLOP/hardware claim. Dense internal writes and reset between independent sequences remain.')])
     return current
