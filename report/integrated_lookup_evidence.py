@@ -116,4 +116,18 @@ def blocks():
             result.extend([('table',(['Depth','Params','Targets','Best NLL','Final NLL','Train s','ms/target','Core/active'],rows,[18,28,28,28,28,26,26,26])),
                            ('p',f"Exposure {level['exposure']}: depth4 selected-quality gain {level['selected_depth4_gain']:+.6f}; final-quality gain {level['final_depth4_gain']:+.6f}; depth4/depth2 training-wall ratio {level['training_wall_ratio']:.3f}. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed." )])
         result.append(('p','Evidence '+depth_packet.stem+'.'))
+    replay_packets=[ROOT/'experiments/results/diagnostics/aws_window_replay_fit_gate_20261012_v1.json',
+        *sorted((ROOT/'experiments/results/diagnostics').glob('aws_window_replay_*_gate_20261012_s*_v1.json'))]
+    replay_rows=[]
+    for path in replay_packets:
+        if not path.exists():continue
+        d=json.loads(path.read_text());assert d['status']=='completed'
+        for name,digest in {**d['source_sha256'],**d['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        replay_rows.append([path.stem,str(d['targets']),f"{d['reference_nll']:.6f}",f"{d['candidate_nll']:.6f}",
+            f"{d['reference_training_s']:.3f}",f"{d['candidate_training_s']:.3f}",
+            f"{d['training_time_reduction_percent']:.2f}%",d['gate']])
+    if replay_rows:
+        result.extend([('p','Exact cached credit-window replay: own-model execution comparison. All recorded learning/teacher/gradient curves agree exactly except replay-work counters and elapsed time. Complete CPU training includes factual learning, counterfactual replay, clipping and optimizer. Completed points only; same seed/data/settings against saved full-prefix runs. No external-model, FLOP, energy or learned-estimator efficiency claim.'),
+            ('table',(['Evidence','Fit targets','Full-prefix NLL','Cached NLL','Full-prefix seconds','Cached seconds','Time saved','Gate'],replay_rows,[65,22,24,24,24,24,20,12]))])
     return result
