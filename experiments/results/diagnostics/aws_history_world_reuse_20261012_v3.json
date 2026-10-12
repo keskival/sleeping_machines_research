@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "optimizer_expansion": {
+      "retained_updates": 10,
+      "exact_parameter_error": 0.0,
+      "added_parameter_initial_step": 1
+    },
+    "delayed_receipts": {
+      "overlapping_queries": 2,
+      "feedback_token_error": 0.0,
+      "history_updates": 2
+    }
+  },
+  "source_sha256": {
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/history_world_credit_sensor.py": "84bcb80b7e4ac57209928cbd7974a10af4e0bfacb8bd8a077f34d396130f6af3",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/world_credit_sensor.py": "18feb454a5dc53a3aa96a55e6a4cb14bd2e0ea9e142bfdac49b212187bc1c681",
+    "experiments/credit/check_history_world_reuse.py": "74bb0c3c6befbd7b39806040277e9d50c84fbe98e1d66f070e5604505849c8af",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/optimizer_expansion.py": "338945491f719e70f6074247f43634819cbbddb88980fd4aa0fe834f6e9c39ed",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/route_activation_memory.py": "a56487e5cdcc15babb2efdd5c6edb8713ec6eeaca564a09dc3b026d8cae90809",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708"
+  },
+  "scope": "Numerical AdamW expansion with acquired moments and reordered parameters; real native two-outstanding-query receipt check. No task fitting, learned geometry, transfer or efficiency claim."
+}
