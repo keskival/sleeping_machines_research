@@ -5576,6 +5576,17 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
+### Connected prospective mean-credit intervention
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 10.571007 | 166.303 |
+| market | frozen | 10.576801 | 80.597 |
+| market | zero | 10.548777 | 75.552 |
+| market | bptt | 10.546759 | 93.907 |
+
+Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
+
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -5927,6 +5938,24 @@ The original zero arm is a zero-predictor residual-audit control (32/128 audits)
 Online gains versus fully_frozen:+0.019514, bptt:-0.000408, zero:-0.000323, frozen:-0.000585, field_only:+0.000040 nats/event.
 
 Existing18164parameter actor; native critic33249parameters. Aug24TRAIN continuation2048targets, Aug25DEV4096prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition42.778s; Full additionally charges original checkpoint development5750.687s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim.
+
+The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
+
+### Predictive-law-conditioned native online credit
+
+| Learner | NLL | Reuse s | Continue s | Full s |
+| --- | --- | --- | --- | --- |
+| fully_frozen | 6.984596 | 5.134 | 49.098 | 5799.786 |
+| bptt | 6.964484 | 25.184 | 69.148 | 5819.836 |
+| local only | 6.964562 | 19.241 | 63.205 | 5813.892 |
+| frozen | 6.964257 | 41.958 | 85.923 | 5836.610 |
+| field_only | 6.964706 | 88.455 | 132.419 | 5883.107 |
+| response_masked | 6.964757 | 88.811 | 132.776 | 5883.463 |
+| online | 6.964872 | 88.396 | 132.360 | 5883.047 |
+
+Online gains versus fully_frozen:+0.019724, bptt:-0.000388, zero:-0.000310, frozen:-0.000615, field_only:-0.000166, response_masked:-0.000115 nats/event.
+
+Existing18164parameter actor; native critic35841parameters. Aug24TRAIN continuation2048targets, Aug25DEV4096prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition43.964s; Full additionally charges original checkpoint development5750.687s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim.
 
 The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
 

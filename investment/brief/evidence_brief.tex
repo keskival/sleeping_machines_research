@@ -419,9 +419,10 @@ backpropagation leads in the second half. Learning with the new guidance takes
 shared preparation. This is a small prediction-quality advantage, with a higher
 learning cost. A completed extension to 16,384 forecasts gives learned guidance
 -0.002338 nats per transaction versus ordinary online learning
-(positive means better). A subsequent optimizer-control experiment corrected
-unstable update sizes, but its learned guidance still trails ordinary online
-learning by 0.000408 nats per transaction. It measures transaction forecasting,
+(positive means better). The latest forecast-response-conditioned guidance trails
+ordinary online learning by 0.000388 nats per transaction
+on 4,096 development forecasts. It still runs exact backprop and adds learning
+work; this measures prediction quality, not a learning-efficiency gain. It measures transaction forecasting,
 not trading profits.
 
 {\footnotesize\color{muted}The existing 18,164-parameter predictor is retained;

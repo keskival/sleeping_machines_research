@@ -104,3 +104,17 @@ Source-bound results: `curie_b10_native_optimizer_20261012_v1_fit.json` and `cur
 
 
 Completed TRAIN-only interface contract `curie_b10_forecast_response_20261012_v1_contract`: clock.bias +0.01 gives persistent-state response 0.0, predictive-clock response 306.605; state/forecast widths 88/80. This confirms a missing explicit response channel, not insufficiency of the complete existing critic information or a quality gain. Source and input hashes preserved.
+
+### Predictive-law input comparison (12 October)
+
+**Predictive-law-conditioned native credit (12 October, completed):** Added factual/counterfactual clock-law inputs to the same native event critic through a zero-initialized162-to16 adapter. On4096Aug25development forecasts the seven-arm quality gate fails: online NLL6.964872, ordinary BPTT6.964484, frozen guidance6.964257, online field-only6.964706, response-masked online6.964757. Online gains BPTT-0.000388/frozen-0.000615/masked-0.000115nats/event. Mean Adam multiplier1.0060; adapter parameter change0.030955. Online reuse88.396s versus BPTT25.184s; shared acquisition43.964s plus original5750.687s fitting charged to every arm. Full exact32-event actor credit retained: information/quality experiment, not backprop replacement or efficiency win. Common acquired state/capacity; masked arm tests deployment-input usefulness, not independent acquisition. One initialization/reused DEV; sealedTEST untouched.
+
+| Rule | NLL | Reuse seconds |
+|---|---:|---:|
+| fully_frozen | 6.984596 | 5.134 |
+| bptt | 6.964484 | 25.184 |
+| zero | 6.964562 | 19.241 |
+| frozen | 6.964257 | 41.958 |
+| field_only | 6.964706 | 88.455 |
+| response_masked | 6.964757 | 88.811 |
+| online | 6.964872 | 88.396 |

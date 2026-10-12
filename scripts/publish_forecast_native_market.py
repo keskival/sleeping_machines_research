@@ -34,6 +34,7 @@ def main():
   paths=[result,'experiments/HANDOFF.md','experiments/market/B10_MARKET.md','investment/brief/evidence_brief.tex','investment/forward_credit_evidence_20261011.json','investment/sleeping_machines_evidence_brief.pdf','report/sleeping_machines_status.pdf','report/sleeping_machines_model_family.pdf']
   for p,h in report['artifact_sha256'].items():assert sha(ROOT/p)==h,p;paths.append(p)
   assert sha(ROOT/brief['artifact'])==brief['sha256']
+  paths=[p for p in paths if (ROOT/p).exists()]
   subprocess.run(['git','add','--',*paths],cwd=ROOT,check=True);subprocess.run(['git','commit','--only','-m','Publish native forecast-response market comparison and complete cost','--',*paths],cwd=ROOT,check=True)
  print(paragraph,flush=True)
 if __name__=='__main__':main()
