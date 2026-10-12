@@ -3039,6 +3039,17 @@ Addressed capacity under fresh acquisition. First-pass own-model pool8 developme
 
 Evidence aws_capacity_acquisition_20261012_v1.
 
+Capacity-clock calibration. First-pass seed6 own-model development at two acquired-data sizes. Same proper-token data, TRAIN priors, updates, credit16 and DEV opportunities. Raw8/calibrated8 initialize the same model parameters; calibrated8 changes computational clocks using reference pool4. Pool4 initialization differs with topology. Selected writes4/target, scored keys16or32. Complete measured CPU training wall; no external-model, iso-compute, FLOP, energy or family verdict. Small quality did not veto the registered larger point.
+
+| Variant | Fit targets | Selected NLL | Final NLL | Train seconds | ms/target | Writes/target | Keys/target |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| window_replay | 131056 | 7.587435 | 7.587435 | 138.557 | 1.0572 | 4 | 16 |
+| capacity8 | 131056 | 7.568964 | 7.568964 | 139.567 | 1.0649 | 4 | 32 |
+| clock_capacity8 | 131056 | 7.560355 | 7.560355 | 139.220 | 1.0623 | 4 | 32 |
+| window_replay | 524272 | 7.263107 | 7.263107 | 559.974 | 1.0681 | 4 | 16 |
+| capacity8 | 524272 | 7.293910 | 7.293910 | 564.826 | 1.0774 | 4 | 32 |
+| clock_capacity8 | 524272 | 7.281989 | 7.281989 | 564.324 | 1.0764 | 4 | 32 |
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
