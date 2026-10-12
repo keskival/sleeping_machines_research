@@ -2857,6 +2857,8 @@ Seed6 full DEV curve maximum error2.25e-10; ordinary/batched training1.234x. Aga
 
 Confirmations: no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.
 
+Confirmed three-seed exposure-policy improvement within the integrated family: selected DEV8.059940±0.023997→7.785188±0.016932; paired gain0.274752±0.038816NLL, all3seeds positive. Mean training149.248→149.222s. Three-seed development comparison within the integrated family; identical131056fitting targets/256updates/private2040-target DEV. Distinct data, lane partition, corpus-wrap resets and TRAIN-frequency initialization differ. Mean±sampleSD; contextual comparator fixed from causal TRAIN features. Measured CPU training wall, not audited fitting FLOPs or an incumbent comparison.
+
 Distinct natural experience at fixed learning-event budget: 131056fitting targets/256updates. Same original float32 integrated model; numeric state persists across the longer stream.
 
 | Exposure | Unique tokens | Fit targets | Initial NLL | Selected NLL | Context gain | Train seconds |
