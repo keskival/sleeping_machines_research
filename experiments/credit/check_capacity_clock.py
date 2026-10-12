@@ -37,22 +37,27 @@ def clock_law():
     scaled=clocks.calibrated_layer(*values,reference_pool=4,**options)
     for i in (2,3,4,5,6,8,9):assert torch.equal(base[i],scaled[i]),i
     noise=values[7];bias=values[14].reshape(2,8)
-    time=2*(noise/bias.exp()).min(-1).values
+    mixed=torch.nn.functional.linear(values[0],values[9],values[10])
+    features=torch.nn.functional.layer_norm(mixed,(8,))
+    query=torch.einsum('hpd,ld->lhp',values[11],features)
+    scores=(query[:,:,None,:]*values[5]).sum(-1)/2+bias
+    assert bool((scores.abs()<11).all())
+    time=2*(noise[None]/scores.exp()).min(-1).values
     expected=values[1][:,None]+.001+.010*time/(1+time)
-    error=float((scaled[7]-expected).abs().max())
+    error=float((scaled[7]-expected).abs().max().detach())
     assert error<1e-14
     gradient=torch.autograd.grad(scaled[7].sum(),values[14])[0].sum()
-    analytic=(-.010*time/(1+time).square()).sum()*values[0].shape[0]
-    assert float((gradient-analytic).abs())<1e-13
+    analytic=(-.010*time/(1+time).square()).sum()
+    assert float((gradient-analytic).abs().detach())<1e-13
     losses=[]
     for sign in (-1,1):
         shifted=list(values);shifted[14]=values[14].detach()+sign*1e-6
         losses.append(clocks.calibrated_layer(*shifted,reference_pool=4,**options)[7].sum())
     finite_difference=(losses[1]-losses[0])/2e-6
-    fd_error=float((gradient-finite_difference).abs())
+    fd_error=float((gradient-finite_difference).abs().detach())
     assert fd_error<1e-8
     return dict(pool=8,reference_pool=4,clock_scale=2,clock_law_error=error,
-        common_clock_gradient=float(gradient),finite_difference_error=fd_error,
+        common_clock_gradient=float(gradient.detach()),finite_difference_error=fd_error,
         same_single_layer_probabilities_winners_values_and_writes=True)
 
 
