@@ -354,7 +354,7 @@ def main():
             replay_length=int(positions[-1])+1
             with torch.no_grad():
                 shadow,_,_ = model(buf[:,window_begin:replay_length],window['state'],shadow_gen,a)
-                difference = suffix_difference(model.readout,shadow,buf[:,window_begin+1:],token_nll[:,window_begin:],positions-window_begin)
+                difference = suffix_difference(model.readout,shadow,buf[:,window_begin+1:],token_nll.reshape(a.lanes,n)[:,window_begin:],positions-window_begin)
             model.shadow_mode=False
             credit_weight=inverse_site_probability*(credit_end-token)/n
             future_term = credit_weight*paired_route_credit(pi, alt, q, difference)

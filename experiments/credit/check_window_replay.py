@@ -62,7 +62,7 @@ def check(depth, mode):
             gen.set_state(before[i] if i==0 else model.replay_window['rng'])
             with torch.no_grad():
                 shadow,shadow_state,_=model(buf[:,offset:length],initial[i] if i==0 else model.replay_window['state'],gen,args)
-                delta=reference.suffix_difference(model.readout,shadow,buf[:,offset+1:],losses[i][:,offset:],positions-offset)
+                delta=reference.suffix_difference(model.readout,shadow,buf[:,offset+1:],losses[i].reshape(2,n)[:,offset:],positions-offset)
             if i==0:full_shadow,full_state=shadow,shadow_state
             else:
                 assert torch.equal(full_shadow[:,begin:],shadow);equal_state(full_state,shadow_state)
@@ -88,7 +88,6 @@ def check(depth, mode):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);a=p.parse_args();torch.set_num_threads(1)
     rows=[check(depth,mode) for depth in (2,4) for mode in ('carry','reset')]
-    names=set(reference.sha.__module__ for _ in ())
     sources={}
     for module in list(sys.modules.values()):
         file=getattr(module,'__file__',None)
