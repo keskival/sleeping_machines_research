@@ -194,4 +194,6 @@ def pages():
             else:nll=(acq['nll']*acq['targets']+v['nll']*v['targets'])/(acq['targets']+v['targets']);wall=acq['wall_s']+v['wall_s'];label=v['arm']+' (shared acquisition)'
             rows.append([label,f"{nll:.6f}",f"{wall:.3f}"])
         current.append([('h2','Longer-data complete native learning'),('table',(['Learner','Whole prequential NLL','Whole CPU seconds'],rows,[77,47,43])),('small',r['scope']+' Every row uses65,536targets and includes acquisition; initial-context/setup is outside arm time. Shared-acquisition controls isolate continuation; the independent-from-initialization reference compares whole native learning.')])
+    from report.native_credit_appendix import pages as native_credit_pages
+    current.extend(native_credit_pages())
     return current

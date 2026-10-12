@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_causal_learned_20261012_v1_contract",
+  "mode": "contract",
+  "checks": {
+    "zero_critic_preserves_initial_policy": true,
+    "residual_expected_credit_identity": true,
+    "critic_parameter_change": 0.007985438220202923,
+    "causal_fit": {
+      "nll": 0.7133506986516693,
+      "targets": 64,
+      "wall_s": 7.673574254993582,
+      "optimizer_updates": 8,
+      "peak_occupied_nodes": 20,
+      "events": 702,
+      "queries": 64,
+      "candidate_keys": 479,
+      "value_reads": 82,
+      "sensor_decodes": 82,
+      "selected_updates": 2808,
+      "counterfactual_unit_values": 5616,
+      "discovery_context_reads": 543,
+      "critic_candidates": 479,
+      "critic_targets": 82,
+      "exact_alternative_audits": 18
+    }
+  },
+  "rows": [],
+  "whole_pipeline_wall_s": 12.325999096996384,
+  "peak_rss_kb": 422000,
+  "parent_sha256": "072e340b3c8aa6e41cf097b472ed2a26a11bc48730964764ef0238f5bf60a1cd",
+  "source_sha256": {
+    "experiments/causal_induction/learned_pipeline.py": "c189e5ca8c2f39472e003ac5e9958ed14dd65edcde333923ecf4b36b7ca7b2f7",
+    "experiments/causal_induction/learned_sensor.py": "91e670640d2ff846d99b532fe77337b7d88d7a438424c8dd31bc31050af99bfb",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/native_pipeline.py": "8d658c084238cccbb1b4bb44a8659a25738e4cbb50ad4398801a3415b1166588",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+  },
+  "scope": "Same integrated actor: exact paid nonwinner route credit versus connected forward-loss critic with25% alternative audits; joint additionally uses learned loss predictions to shape source-selection probabilities. Critic trained on revealed factual/audited counterfactual BCE, not backprop targets. Counterfactual route gradient anchored in expectation, local temporal receiver surrogate unchanged. Private affine4-root development; no acquired graph/depth/Transformer/efficiency conclusion. Training cost includes critic and optimizer; source-discovery context reads explicitly charged. No hidden labels. Prior dataset/actor acquisition not amortized away."
+}
