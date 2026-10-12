@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "levels": [
+    {
+      "exposure": "128k",
+      "rows": [
+        {
+          "variant": "window_replay",
+          "pool": 4,
+          "targets": 131056,
+          "selected_nll": 7.587434895833334,
+          "final_nll": 7.587434895833334,
+          "training_s": 138.5568891162984,
+          "training_ms_per_target": 1.0572342290036199,
+          "parameters": 3164842,
+          "scored_keys_per_target": 16,
+          "selected_writes_per_target": 4
+        },
+        {
+          "variant": "capacity8",
+          "pool": 8,
+          "targets": 131056,
+          "selected_nll": 7.568964460784314,
+          "final_nll": 7.568964460784314,
+          "training_s": 139.56700619100593,
+          "training_ms_per_target": 1.0649417515490014,
+          "parameters": 3203674,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4
+        },
+        {
+          "variant": "clock_capacity8",
+          "pool": 8,
+          "targets": 131056,
+          "selected_nll": 7.560354674096201,
+          "final_nll": 7.560354674096201,
+          "training_s": 139.22000293899328,
+          "training_ms_per_target": 1.0622940036243536,
+          "parameters": 3203674,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4
+        }
+      ],
+      "calibrated_gain_over_pool4": 0.027080221737132426,
+      "calibrated_gain_over_raw8": 0.008609786688112742,
+      "training_ratio_to_pool4": 1.004785859634437
+    },
+    {
+      "exposure": "512k",
+      "rows": [
+        {
+          "variant": "window_replay",
+          "pool": 4,
+          "targets": 524272,
+          "selected_nll": 7.263107239966299,
+          "final_nll": 7.263107239966299,
+          "training_s": 559.9742305113468,
+          "training_ms_per_target": 1.0680986787609235,
+          "parameters": 3164842,
+          "scored_keys_per_target": 16,
+          "selected_writes_per_target": 4
+        },
+        {
+          "variant": "capacity8",
+          "pool": 8,
+          "targets": 524272,
+          "selected_nll": 7.293910366881128,
+          "final_nll": 7.293910366881128,
+          "training_s": 564.8256198596209,
+          "training_ms_per_target": 1.0773522519982393,
+          "parameters": 3203674,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4
+        },
+        {
+          "variant": "clock_capacity8",
+          "pool": 8,
+          "targets": 524272,
+          "selected_nll": 7.281989482804841,
+          "final_nll": 7.281989482804841,
+          "training_s": 564.324192906497,
+          "training_ms_per_target": 1.0763958267969624,
+          "parameters": 3203674,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4
+        }
+      ],
+      "calibrated_gain_over_pool4": -0.018882242838541785,
+      "calibrated_gain_over_raw8": 0.011920884076286775,
+      "training_ratio_to_pool4": 1.0077681474577465
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_window_replay_128k_20261012_s6_v1.json": "2f2b176cbda006f2ad492e87185ef72e3f10f3e830fe660b397ee38b9993aff9",
+    "experiments/results/token_language/aws_integrated_capacity8_128k_20261012_s6_v1.json": "dcceeda92ced6a178567207958374f2faf88df09c382bb125dce61983fbec4be",
+    "experiments/results/token_language/aws_integrated_clock_capacity8_128k_20261012_s6_v1.json": "3b0214a042d038d31eb36702c4b1abe39c21796a40ef478e87d28eb9463fb4a2",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s6_v1.json": "e7317479d1a590529e5b3762ec6287863e5d1aeb46f47d8105c4537525edf785",
+    "experiments/results/token_language/aws_integrated_capacity8_512k_20261012_s6_v1.json": "d6f532f80b57710bb3ffbc828bf721581e164e89ca1036638301dbde04690607",
+    "experiments/results/token_language/aws_integrated_clock_capacity8_512k_20261012_s6_v1.json": "4d4409dbd827bf6e4d822b90ae2d13d89889e32cd6d58ca520dd244a6f0c1852"
+  },
+  "source_sha256": {
+    "experiments/window_replay_token_language.py": "c0d0764435f781332f35572fa15f79ab15ca1b4fcfd6e9981b3ea8b6c076fe4c",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/capacity_clock_token_language.py": "057709942d6ac02be3a95349f924cc9ce3cf1b64425a64f27af2558b2d0eeadb",
+    "sleeping_machines/capacity_clock_episodes.py": "065740279e6bcb5c868cb2c7aa946704926740d6415358a2d6715756c176a504",
+    "experiments/analyze_capacity_clock.py": "eedf4f1fcfdf78d756f2a0e273db5f9612a591ccc70e6fba85f3ed6f5ad0e82a"
+  },
+  "scope": "First-pass seed6 own-model development at two acquired-data sizes. Same proper-token data, TRAIN priors, updates, credit16 and DEV opportunities. Raw8/calibrated8 initialize the same model parameters; calibrated8 changes computational clocks using reference pool4. Pool4 initialization differs with topology. Selected writes4/target, scored keys16or32. Complete measured CPU training wall; no external-model, iso-compute, FLOP, energy or family verdict. Small quality did not veto the registered larger point."
+}
