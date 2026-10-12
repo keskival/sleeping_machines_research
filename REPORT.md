@@ -5478,21 +5478,23 @@ Evidence: aws_native_future_update_reuse_20261011_s0_decision, aws_native_future
 
 Acquired native update transfer: source seed0 controller frozen before fresh-model fitting. No controller optimizer/replay. Comparison with TRAIN-acquired static group scales isolates conditioning from fixed step-size changes.
 
-| Seed | Depth | Gain vs Adam | Gain vs static | Incremental work ratio | Source break-even fits |
-| --- | --- | --- | --- | --- | --- |
-| 3 | 2 | +0.009907 | +0.000589 | 1.072x | 188 |
-| 3 | 4 | +0.003716 | +0.000501 | 1.174x | 51 |
-| 3 | 8 | +0.011518 | +0.001226 | 1.069x | 63 |
-| 4 | 2 | +0.006608 | +0.000616 | 0.996x | - |
-| 4 | 4 | +0.067951 | +0.001069 | 1.295x | 32 |
-| 4 | 8 | +0.007000 | +0.003799 | 1.453x | 13 |
-| 5 | 2 | +0.008275 | +0.000536 | 1.094x | 142 |
-| 5 | 4 | +0.018955 | +0.000394 | 1.067x | 115 |
-| 5 | 8 | +0.009272 | +0.000997 | 1.173x | 27 |
+| Seed | Depth | Gain vs Adam | Gain vs static | Adam/work | Static/work | Source break-even fits |
+| --- | --- | --- | --- | --- | --- | --- |
+| 3 | 2 | +0.009907 | +0.000589 | 1.072x | 0.973x | 188 |
+| 3 | 4 | +0.003716 | +0.000501 | 1.174x | 0.984x | 51 |
+| 3 | 8 | +0.011518 | +0.001226 | 1.069x | 0.984x | 63 |
+| 4 | 2 | +0.006608 | +0.000616 | 0.996x | 0.976x | - |
+| 4 | 4 | +0.067951 | +0.001069 | 1.295x | 0.976x | 32 |
+| 4 | 8 | +0.007000 | +0.003799 | 1.453x | 1.458x | 13 |
+| 5 | 2 | +0.008275 | +0.000536 | 1.094x | 0.981x | 142 |
+| 5 | 4 | +0.018955 | +0.000394 | 1.067x | 0.977x | 115 |
+| 5 | 8 | +0.009272 | +0.000997 | 1.173x | 0.978x | 27 |
 
-Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Quality gain is reference minus frozen. Work ratio is fixedAdam fit+allvalidation divided by frozen fit to first scheduled quality match+allvalidation. Ratios>1 favor incremental reuse. The source acquisition experiment is additionally charged; break-even fits is the calculated repeated-fit count paying that source cost, not measured deployment saving. Other smoke/selection costs remain additional protocol charges. Dense writes/state reset; model-seed transfer on same corpus, not domain/publicTEST/Transformer supremacy.
+Same1400TaxiTRAIN/128DEV,32events,threepasses,d16,modes8; lower NLL better. Quality gain is reference minus frozen. Work ratio is fixedAdam fit+allvalidation divided by frozen fit to first scheduled quality match+allvalidation. Ratios>1 favor incremental reuse. Static/work separately uses static final quality as the target. Across completed seeds3/4/5 it saves work1/9; eight cases cost1.6–2.7%more. The source acquisition experiment is additionally charged; break-even fits is the calculated repeated-fit count paying that source cost, not measured deployment saving. Other smoke/selection costs remain additional protocol charges. Dense writes/state reset; model-seed transfer on same corpus, not domain/publicTEST/Transformer supremacy.
 
 Evidence: aws_native_update_transfer_20261012_s3_decision, aws_native_update_transfer_20261012_s4_decision, aws_native_update_transfer_20261012_s5_decision.
+
+Cross-domain learning transfer is admitted: Taxi seed0 controller frozen on StackOverflow, depths2/4/8,full1400TRAIN/128DEV,threepasses. Compared with fixedAdam and source-acquired static groups; source/target time-density units canonicalized from TRAIN medians. No target controller fit; completed quality/work decision pending. Protocol experiments/credit/NATIVE_UPDATE_DOMAIN_PLAN.md.
 
 Native future-loss diagnosis (aws_native_audit_future_loss_20261011_s0): raw trace falls at all three depths, but future NLL improves in only1/9 depth/step cases. At step0.01, gains vs uniform are -1.415e-5/-1.226e-6/+5.150e-6 nats/target atdepth2/4/8. New private TRAIN contexts, producer-only one-step updates, exact audit enumeration; all reference/scoring work paid. Curvature instrument aws_native_audit_curvature_20261011_v1 explains the depth2/4 small-step losses: correction directions have negative future-NLL curvature. Stop raw-variance proxy experiments; next endpoint is causal future-loss learning and complete matched-quality work.
 
