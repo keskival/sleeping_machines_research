@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "arm": "repeated",
+      "unique_tokens": 65536,
+      "fitting_targets": 131056,
+      "updates": 256,
+      "initial_dev_nll": 8.162283504710478,
+      "selected_dev_nll": 8.045605659484863,
+      "selected_step": 128,
+      "constant_train_feature_nll": 8.273350715637207,
+      "context_gain": 0.22774505615234375,
+      "learning_gain": 0.11667784522561497,
+      "training_wall_s": 149.6949951054994,
+      "engine_wall_s": 152.40590003994294,
+      "process_wall_s": 153.88848838605918
+    },
+    {
+      "arm": "distinct",
+      "unique_tokens": 131064,
+      "fitting_targets": 131056,
+      "updates": 256,
+      "initial_dev_nll": 8.076123764935662,
+      "selected_dev_nll": 7.803404808044434,
+      "selected_step": 192,
+      "constant_train_feature_nll": 8.211199760437012,
+      "context_gain": 0.4077949523925781,
+      "learning_gain": 0.2727189568912287,
+      "training_wall_s": 149.41038932325318,
+      "engine_wall_s": 152.06309394794516,
+      "process_wall_s": 153.5525045010727
+    }
+  ],
+  "quality_gain": 0.2422008514404297,
+  "initial_prior_gain": 0.08615973977481595,
+  "learning_gain_change": 0.15604111166561374,
+  "context_gain_change": 0.18004989624023438,
+  "development_gate_passed": true,
+  "wall_s": 4.310561979888007,
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_p24_64k_ordinary_20261012_v1.json": "33839d20b56aeec883f7457466a57ac6144082b332cf4fc4bdc0f455a5782ad1",
+    "experiments/results/token_language/aws_integrated_p24_64k_ordinary_20261012_v1.best_step00000128.pt": "74e6f563e0cb6750a4e12a78aa98cd8cfa7e76be268d9940f7766eb98518632c",
+    "experiments/results/token_language/aws_integrated_p24_unique_stream_20261012_s6_v1.json": "f9dd951b18ced3fd3d9f91b17ab9e5bac88d80142514fc728b1186aaae547fc1",
+    "experiments/results/token_language/aws_integrated_p24_unique_stream_20261012_s6_v1.best_step00000192.pt": "b412eee22abe79bbed9a95cf17e73fc0511a57288285a59d6d81aa4ac37fab03"
+  },
+  "source_sha256": {
+    "experiments/analyze_unique_token_stream.py": "fe51178f1e762788cdf90f80d88d02ccb7d2efa209dc08bbfc2d66ab8f24e796",
+    "experiments/horizon_token_language_engine.py": "39b11a75915266f609ca968c14a8953d7aba4403646aa5dcc1812afa9e5cf5f8",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/profile_integrated_language_v2.py": "26034a642701dc950d069d6e689c777605e3b8ac384b40c352da3f5fb8480d26"
+  },
+  "scope": "Single-seed private DEV; same CPU model/updates/131056 fitting targets. Data diversity, lane partition and corpus-wrap resets differ intentionally. TRAIN-only frequency prior uses each admitted prefix and is included in process cost. Initial-prior and learned gains separated. Context comparator is the same fixed readout on the mean causal feature from an8192-token TRAIN probe, not a refitted unigram or isolated memory ablation. No iso-data, training-FLOP, Transformer or nonstationary-stream claim."
+}
