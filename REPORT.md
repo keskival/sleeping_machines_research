@@ -2954,6 +2954,19 @@ Single-seed private DEV, same first65536tokens/prior/first128updates and bit-ide
 
 Evidence aws_integrated_common_prior_decision_20261012_s8_v1.
 
+Common-prior, common-acquired-state intervention seed6 / larger: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 262144 | 7.734948 | 7.903868 | 7.734948 | 597.989 |
+| fresh | 524288 | 7.734948 | 7.263107 | 7.263107 | 607.069 |
+
+Fresh-versus-replay future-learning gain+0.640761NLL; fresh-versus-stopping at the shared branch+0.471841. Full acquired-state SHA256 3b95ec3b9f14f382ad7c0db528bbb30497cf0c3b285c88fd884ac98e73704dd8.
+
+Single-seed private DEV, same first262144tokens/prior/first512updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second512updates use repeated versus fresh262144tokens. Same524272fitting targets,1024updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_512k_decision_20261012_s6_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
