@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "battle": "B1",
+  "tag": "curie_native_operator_event_20261012_v1_contract",
+  "gate": true,
+  "max_gradient_error": 2.7021028643769984e-16,
+  "local_adjoint_max_error": 6.938893903907228e-18,
+  "future_loss_contrast": 0.0037045013421370676,
+  "query_gradient_norm": 0.0031294643539595502,
+  "probability_sum": 1.0,
+  "wall_s": 0.3121476989763323,
+  "peak_rss_kb": 260824,
+  "source_sha256": {
+    "experiments/credit/check_operator_event_credit.py": "e524372684a10fcfbb948ef666bcc9d3981ca4bc607b21215168ebdc0bdcbbe7",
+    "experiments/credit/operator_event_credit.py": "6a26e4a8d4a8e8c4c4becd47d50f655a9cdc25d57e9defbdbcdc6def020a821c",
+    "experiments/credit/batched_event_parameter_credit.py": "fb0125e30592017a367b8666661865f4f6b2998d0bf470496d4f38a1c2a60266",
+    "experiments/credit/run_native_operator_event_credit.py": "30dd89ff37978c6c8967e39b1ef52828c831fb285856ee9dadad5a10634cd09e",
+    "experiments/credit/NATIVE_OPERATOR_EVENT_CREDIT_PROTOCOL.md": "caf9756458241e99a2467d62f5a78e259a627e7508092707c9994861ccbcc1d9",
+    "experiments/credit/event_optimizer_credit.py": "2a5672c5eb97a65f76113184af0257c634a99b104af456837872e095f35f948d",
+    "experiments/credit/run_native_event_optimizer.py": "121222839852d4c68efe71aa614335e39203f210ad894dbcf6003e4f14a7cbe5",
+    "experiments/credit/NATIVE_EVENT_OPTIMIZER_PROTOCOL.md": "9b71e27fc6c3aa052087571b7fa066216a8a76b4605346bad722fddf22f5e2b8",
+    "experiments/credit/event_parameter_credit.py": "28cbfdee8f90f9f5cc65a3c2327480d26967f1ffe30bc20da87de30a4feafe16",
+    "experiments/credit/run_native_event_credit.py": "fda8424a0bc244caaf3e03c9d6ca66e15855d80886a9a97389e8077bd2a7f2fe",
+    "experiments/credit/NATIVE_EVENT_CREDIT_PROTOCOL.md": "6ca0671989f510e6792a2b61ce429774f7c84a2bbecef34bd117aa094bf0840f",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+    "experiments/tpp/temporal_scan_cpu.py": "c3a9f9d0294c55f11a16fd0bacda383ea9c6e39f8c774ef99db702736c8f8d82",
+    "experiments/tpp/temporal_scan_cpu.cpp": "f8ad527f3c0d986e78272fab50a87f9f8f8ce2c2cf6531c99059c43b39e6454a"
+  },
+  "scope": "Real native depth4,width8 Taxi TRAIN; two enumerated single-event query actions, local finite update expectation only. Algebra check, no learning utility claim."
+}

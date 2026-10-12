@@ -1,0 +1,7 @@
+# B1 operator-credit continuation after empty audit smoke
+
+Full1400TaxiTRAIN/threepasses/depth8/16/32 generated credit is worse and about2x slower than strong own-nativeAdamW. Current-operator recursive credit passed primitive adjoints6.94e-18 and combined future/query gradients2.70e-16. The first eight-reuse-block smoke ran finite actual actor updates but its predictable p=.25 audit tape (seed99918) contained no teaching event, so the required meta-update assertion stopped admission. This is an integration-gate coverage failure, not completed utility evidence.
+
+Preserve original source/protocol/contract and failed log. New uniquely tagged smoke uses four acquisition plus32reuse blocks atTRAIN1328:1364, same seed99916 and predictable teacher probability.25; no forced audits or changed learner. Actual fitting stays128acquisition512reuse,seed99916,width32,modes16,depth8/16,128DEV sequences2048targets and the same matched frozen/untrained-anchor/head-only/nativeAdamW arms. New driver is an exact parent copy except smoke length/output gate/source bookkeeping. No new mathematics; existing source-bound gradient contract is revalidated before the pipeline.
+
+One-jobqueues/run_safe/oneCPU/RSS1.5GB/9GiBfloor/600s. Stop on numerical/resource failure. Smoke checks nonzero receipts and finite deep/credit updates, never a quality claim. Completed fit determines the next development decision; no TEST/PAM/externaldense or varianceproxy runs. All current-operator copies/known partial adjoints/teacher/reference/learning/query/scoring costs paid.
