@@ -1,0 +1,270 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_world_credit_20261012_v2_decision",
+  "development_gate": false,
+  "rows": [
+    {
+      "arm": "exact",
+      "pooled_nll": 0.4193186809135527,
+      "world_nll": 0.5261283290579376,
+      "acquisition_wall_s": 690.0021324859699,
+      "reuse_wall_s": 603.6613634279638,
+      "whole_learning_wall_s": 1293.6634959139337,
+      "complete_acquisition_and_reuse_stage_wall_s": 1302.6307596429542,
+      "acquisition_target_presentations": 4096,
+      "reuse_target_presentations": 1024,
+      "whole_ms_per_presentation": 254.4200702427645,
+      "reuse_ms_per_target": 589.5130502226209,
+      "average_single_deployment_wall_s": 767.7133606016105
+    },
+    {
+      "arm": "learned",
+      "pooled_nll": 0.41878102253071575,
+      "world_nll": 0.5257179664925418,
+      "acquisition_wall_s": 690.0021324859699,
+      "reuse_wall_s": 602.9730605919322,
+      "whole_learning_wall_s": 1292.975193077902,
+      "complete_acquisition_and_reuse_stage_wall_s": 1301.830529694067,
+      "acquisition_target_presentations": 4096,
+      "reuse_target_presentations": 1024,
+      "whole_ms_per_presentation": 254.26377533087248,
+      "reuse_ms_per_target": 588.8408794843087,
+      "average_single_deployment_wall_s": 767.6133318579996
+    },
+    {
+      "arm": "prior",
+      "pooled_nll": 0.4188150118340417,
+      "world_nll": 0.5260222477229718,
+      "acquisition_wall_s": 690.0021324859699,
+      "reuse_wall_s": 607.4929521570448,
+      "whole_learning_wall_s": 1297.4950846430147,
+      "complete_acquisition_and_reuse_stage_wall_s": 1306.387994356046,
+      "acquisition_target_presentations": 4096,
+      "reuse_target_presentations": 1024,
+      "whole_ms_per_presentation": 255.15390514766523,
+      "reuse_ms_per_target": 593.254836090864,
+      "average_single_deployment_wall_s": 768.183014940747
+    }
+  ],
+  "quality_gains": {
+    "exact": 0.0005376583828369252,
+    "prior": 3.3989303325931974e-05
+  },
+  "depth_quality_gains": {
+    "4": {
+      "exact": 0.00018918133869222364,
+      "prior": 8.607127154935945e-05
+    },
+    "8": {
+      "exact": 0.0008861354269815713,
+      "prior": -1.8092664897495503e-05
+    }
+  },
+  "cases": [
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+      "depth": 4,
+      "width": 8,
+      "variant": "base",
+      "gains": {
+        "exact": 2.14014445122368e-05,
+        "prior": 0.0002248521281279503
+      },
+      "second_half_gains": {
+        "exact": 0.00019673354390659092,
+        "prior": 0.0004130661834146343
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+      "depth": 4,
+      "width": 8,
+      "variant": "rewire",
+      "gains": {
+        "exact": -0.0001246292854126807,
+        "prior": 3.866123046181169e-05
+      },
+      "second_half_gains": {
+        "exact": -0.00030489036643444045,
+        "prior": 5.971127107273766e-05
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+      "depth": 4,
+      "width": 16,
+      "variant": "base",
+      "gains": {
+        "exact": 0.0007310456941820864,
+        "prior": -4.3069440014642524e-05
+      },
+      "second_half_gains": {
+        "exact": 0.0014151889161095332,
+        "prior": -8.152072858552684e-05
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+      "depth": 4,
+      "width": 16,
+      "variant": "rewire",
+      "gains": {
+        "exact": 0.00012890750148730756,
+        "prior": 0.00012384116762237385
+      },
+      "second_half_gains": {
+        "exact": 0.0002317309297645842,
+        "prior": 0.0002559600619336244
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+      "depth": 8,
+      "width": 8,
+      "variant": "base",
+      "gains": {
+        "exact": 0.0009057321037514443,
+        "prior": -8.348891979315098e-06
+      },
+      "second_half_gains": {
+        "exact": 4.4223974150492396e-05,
+        "prior": -0.00011327164515284593
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+      "depth": 8,
+      "width": 8,
+      "variant": "rewire",
+      "gains": {
+        "exact": 0.00014465550385933668,
+        "prior": -0.00016918592499720608
+      },
+      "second_half_gains": {
+        "exact": 0.0003733284533665726,
+        "prior": -0.00015954209662516483
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+      "depth": 8,
+      "width": 16,
+      "variant": "base",
+      "gains": {
+        "exact": 0.002595434378257988,
+        "prior": -0.00012069061222869104
+      },
+      "second_half_gains": {
+        "exact": 0.005065554643298165,
+        "prior": -0.00016032672208793342
+      }
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+      "depth": 8,
+      "width": 16,
+      "variant": "rewire",
+      "gains": {
+        "exact": -0.00010128027794226169,
+        "prior": 0.0002258547696151747
+      },
+      "second_half_gains": {
+        "exact": 0.0002725486080884798,
+        "prior": 0.0005125100305321817
+      }
+    }
+  ],
+  "causal_count_diagnostics": [
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5000_base.npz",
+      "persistence_nll": 0.322510373877137,
+      "online_global_frequency_nll": 0.6880931418117672,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_graph_5001_rewire.npz",
+      "persistence_nll": 0.5079868536372918,
+      "online_global_frequency_nll": 0.6835303625938823,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6000_base.npz",
+      "persistence_nll": 0.3725306463523393,
+      "online_global_frequency_nll": 0.692295923780434,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_6001_rewire.npz",
+      "persistence_nll": 0.45908354575642346,
+      "online_global_frequency_nll": 0.6906579989116485,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7000_base.npz",
+      "persistence_nll": 0.5322883899186375,
+      "online_global_frequency_nll": 0.7002757093174923,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_depth_7001_rewire.npz",
+      "persistence_nll": 0.49579863458783113,
+      "online_global_frequency_nll": 0.6906579989116484,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8000_base.npz",
+      "persistence_nll": 0.4097771051733699,
+      "online_global_frequency_nll": 0.6914841583902245,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    },
+    {
+      "path": "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/heldout_factors_depth_8001_rewire.npz",
+      "persistence_nll": 0.2594040859450516,
+      "online_global_frequency_nll": 0.6914841583902245,
+      "neutral_nll": 0.6931471805599453,
+      "targets": 128
+    }
+  ],
+  "learned_world_gain_vs_frequency": 0.1653419650208734,
+  "learned_actor_gain_vs_persistence": 0.001141431875294474,
+  "parent_sha256": {
+    "experiments/results/causal_induction/curie_world_credit_20261012_v1_acquisition.json": "ff8b5a90463f540861d51277f1b636e62532920a815ea711ef902368ea6346c0",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_exact_reuse.json": "92fe9ff31a51d6b46164b9a8688ce8301c93545d376a50c319566be68f801d12",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_learned_reuse.json": "412f0dcfb27450265083c6f7e60e81f23ce22a0181eab4b247c09ec6d32dc9b2",
+    "experiments/results/causal_induction/curie_world_credit_20261012_v2_prior_reuse.json": "3cd29260f3016ddcafe295d31cae323d19a7b0936d5e97bac0fb3a6f14721ac8",
+    "experiments/causal_induction/WORLD_CREDIT_DECISION.md": "74752b40bac3cab251df91b88401978d7e1665b22f45fc3c54b4c8c7583b3d76"
+  },
+  "source_sha256": {
+    "experiments/causal_induction/world_credit_decision_v2.py": "274718664705026348913858f46a2eaf343e08c054c766b86e47aed7c4efe0e0",
+    "experiments/causal_induction/world_credit_pipeline.py": "d0a016168a464abf580ab412521ab9f82bfb2e44dc168fa2d9ccd71bffb7442d",
+    "experiments/causal_induction/world_credit_sensor.py": "18feb454a5dc53a3aa96a55e6a4cb14bd2e0ea9e142bfdac49b212187bc1c681",
+    "experiments/causal_induction/world_credit_run.py": "c8c4f2fbadcdc475a49566f4b9bf33f75484587d4e0e6fe403c85a1737da2b16",
+    "experiments/causal_induction/WORLD_CREDIT_PROTOCOL.md": "2ba842a8c5c2b5ccf0cb49c9661cc8d7f2c003a0a8d0f9f39bf9be8b90f001f1",
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/task_taught_run.py": "29603884d2df59fbfe98abf2dbb62683feed66d9baf1a50e701106eb2553bdb0",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/causal_induction/world_credit_case.py": "23325849d4060250e0dfc26e8f5b941f521d7cb6606b7f8f3846cd7b36ec6507",
+    "experiments/causal_induction/WORLD_CREDIT_RESOURCE_REPAIR.md": "48441f58717c26efbd16447f94d70cf2bd50f52e2777ae27907b67064913c5ea",
+    "experiments/causal_induction/world_credit_aggregate.py": "6c69463876849bdfe5106eee4a691cfcfe8002dea9083b7324922c88a16776ac"
+  },
+  "whole_analysis_wall_s": 0.32341939001344144,
+  "scope": "One exploratory actor seed, all8declared nonlinear cases/1024issued-before-feedback targets per arm. Common native world acquisition and complete charged work; exact and prior retain world learning/shared memory. Generating depth4/8 and factors8/16, not neural-depth scaling. Cheap prequential frequency/persistence diagnostics use public source/target observations only. No publicTEST, new dense reference, calibrated uncertainty/causal-response embedding or quality-matched efficiency claim."
+}

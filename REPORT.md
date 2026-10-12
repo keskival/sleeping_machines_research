@@ -5733,6 +5733,49 @@ Reciprocal quality gain versus matched untaught -0.001371. Delivered target repl
 
 Outcome-preserving credit feedback: redundant audit slot replaced by observed target only after delivery, preserving binary supervision at ambiguous forecasts with no added dimensions/parameters. Public relative-address native sharing: per-node/relationship indexed discovery, learned equality/role keys, no identity parameter table or hidden edges. Diagnosed native shared-bank teacher separation. Forward task loss trains critic memory/read policy; auxiliary revealed-loss regression trains the identical linear readout on detached native features. Separate actor/native-memory/readout clipping, matched native architecture/initialization/audit schedule and shared-bank bounds. Two matched untaught/reciprocal arms, same8TRAINgraphs/twopasses/512prior plus1024neural presentations and originalfour selectionDEV. Numeric memory persists, task gradients use eight-feedback windows. No external dense controller, global destination learning, full optimizer meta-gradient, publicTEST, confirmation or efficiency claim.
 
+### Native outcome-law credit: common nonlinear acquisition
+
+| Targets | Presentations | Source fit seconds | Later world NLL |
+| --- | --- | --- | --- |
+| 2048 | 4096 | 690.002 | 0.615061 |
+
+One target-addressed native outcome query and feedback update replaces unrelated route-wise loss predictions. Revealed outcome supervision trains the native body/read policy; forward losses also teach shared critic memory. Known proper-loss algebra projects one common outcome belief into coherent route contrasts. Source acquisition gate passes. Acquisition uses16nonlinear TRAIN graphs with2048unique outcomes, one neural pass plus2048confidence presentations. The scalar output does not imply a tiny or disconnected world model.
+
+Exploratory common-acquisition native outcome-law credit on public nonlinear event systems. Source16graphs/2048unique targets and4096charged presentations. Reuse8independent source-checkpoint clones,1024causal targets per arm; numerical state fresh, actor/world online updates every8feedbacks. Identical shared-memory/outcome training and sampled alternative decoding; exact vs learned/prior differs source-choice teaching only. Learned/prior half blends intentionally change conditional teaching mean; no per-example unbiasedness, low-audit economy, calibrated response geometry, full optimizer meta-gradient, neural-depth replacement, publicTEST or efficiency claim.
+
+### Native world credit reused on fresh nonlinear causal systems
+
+| Credit | Actor NLL | World NLL | Full seconds | Full ms/presentation |
+| --- | --- | --- | --- | --- |
+| exact | 0.419319 | 0.526128 | 1302.631 | 254.420 |
+| learned | 0.418781 | 0.525718 | 1301.831 | 254.264 |
+| prior | 0.418815 | 0.526022 | 1306.388 | 255.154 |
+
+| Credit | World queries | Bank payload reads | Actor decodes | World writes | Reuse ms/target |
+| --- | --- | --- | --- | --- | --- |
+| exact | 1024 | 177746 | 2048 | 8192 | 589.513 |
+| learned | 1024 | 177746 | 2048 | 8192 | 588.841 |
+| prior | 1024 | 177746 | 2048 | 8192 | 593.255 |
+
+Completed arms only.16source systems/4096charged presentations plus8independent target deployments/1024prequential targets per arm: full denominator5120presentations. Full seconds include source/reuse driver preprocessing and model/optimizer copies; reuse ms/target uses actual training loops. Source acquisition charged once per deployment cohort. Fresh8/16factor4/8generating-depth systems, base/hidden-rewire. Actor/world learn causally in8feedback windows; common incoming actor/world/Adam fingerprints and identical shared-bank/outcome training. Learned and prior use deliberate half blends; exact uses observed-label contrast. All sampled alternative logits are decoded and charged. Generating depth is not neural-depth scaling; no publicTEST or efficiency claim.
+
+### Native outcome-law credit: causal reuse decision
+
+| Generating depth | Factors | Variant | Gain vs exact | Gain vs prior |
+| --- | --- | --- | --- | --- |
+| 4 | 8 | base | +0.000021 | +0.000225 |
+| 4 | 8 | rewire | -0.000125 | +0.000039 |
+| 4 | 16 | base | +0.000731 | -0.000043 |
+| 4 | 16 | rewire | +0.000129 | +0.000124 |
+| 8 | 8 | base | +0.000906 | -0.000008 |
+| 8 | 8 | rewire | +0.000145 | -0.000169 |
+| 8 | 16 | base | +0.002595 | -0.000121 |
+| 8 | 16 | rewire | -0.000101 | +0.000226 |
+
+Primary development gate fails; pooled quality gains exact +0.000538, prior +0.000034. Learned world gain versus causal global frequency +0.165342; learned actor gain versus source-calibrated causal persistence +0.001141. These diagnostics distinguish dependencies from marginal imbalance. Next: diagnose outcome sufficiency, credit sensitivity and causal information; no patch grid or scale-up.
+
+One exploratory actor seed, all8declared nonlinear cases/1024issued-before-feedback targets per arm. Common native world acquisition and complete charged work; exact and prior retain world learning/shared memory. Generating depth4/8 and factors8/16, not neural-depth scaling. Cheap prequential frequency/persistence diagnostics use public source/target observations only. No publicTEST, new dense reference, calibrated uncertainty/causal-response embedding or quality-matched efficiency claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
