@@ -2,7 +2,7 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 11 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 12 October 2026
 
 ## Public benchmark record — 9 October 2026
 
@@ -5253,6 +5253,8 @@ Whole-native future-taught learning: actor and controller learn from the same ac
 Protocol: all1400TaxiTRAIN sequences cropped32events,threepasses/130200actor targets per arm/depth;128DEV sequences. Same native initialization/order/update counts, CPUfloat64,d16,modes8. Lower NLL is better; gain is Adam minus learned. Match pass is first scheduled learned pass reaching fixedAdam final quality. Work ratio is Adam total fit+allvalidation divided by learned cumulative fit to match+allvalidation. Ratios>1 favor learned work; smoke/failed admission are separately paid overhead. All controller/Adam work is included in fit wall; supported FLOPs exclude unsupported operations. Dense writes and state reset across sequences; development results, no publicTEST/hard-route/Transformer supremacy claim.
 
 Evidence: aws_native_future_update_reuse_20261011_s0_decision, aws_native_future_update_reuse_20261011_s1_decision, aws_native_future_update_reuse_20261011_s2_decision.
+
+Acquired-policy reuse study aws_native_update_transfer_20261012_s3 is admitted: frozen seed0 controller vs fixedAdam and TRAIN-acquired constant group scales, fresh actor seed3, full1400TaxiTRAIN/128DEV, depths2/4/8. Fine checkpoints resolve incremental work to quality; inherited acquisition remains charged. Results pending. Protocol experiments/credit/NATIVE_UPDATE_TRANSFER_PLAN.md.
 
 Native future-loss diagnosis (aws_native_audit_future_loss_20261011_s0): raw trace falls at all three depths, but future NLL improves in only1/9 depth/step cases. At step0.01, gains vs uniform are -1.415e-5/-1.226e-6/+5.150e-6 nats/target atdepth2/4/8. New private TRAIN contexts, producer-only one-step updates, exact audit enumeration; all reference/scoring work paid. Curvature instrument aws_native_audit_curvature_20261011_v1 explains the depth2/4 small-step losses: correction directions have negative future-NLL curvature. Stop raw-variance proxy experiments; next endpoint is causal future-loss learning and complete matched-quality work.
 
