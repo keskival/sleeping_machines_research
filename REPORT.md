@@ -3028,6 +3028,17 @@ Exact cached credit-window replay: own-model execution comparison. All recorded 
 | aws_window_replay_512k_gate_20261012_s7_v1 | 524272 | 7.275658 | 7.275658 | 604.046 | 558.720 | 7.50% | PASS |
 | aws_window_replay_512k_gate_20261012_s8_v1 | 524272 | 7.292635 | 7.292635 | 600.521 | 560.072 | 6.74% | PASS |
 
+Addressed capacity under fresh acquisition. First-pass own-model pool8 development at two acquired-data sizes, seed6. Same proper tokens, TRAIN prior, updates and DEV opportunities; architecture-dependent initialization differs. Selected writes unchanged, scored keys and core receivers doubled. Full factual BP and sampled actual alternative replay retained. Complete CPU training/process wall, no FLOP/energy/external-model or family verdict. Small quality deficit did not veto the reserved larger point.
+
+| Pool | Fit targets | Parameters | Selected NLL | Final NLL | Train seconds | ms/target | Writes/target | Keys/target |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 4 | 131056 | 3164842 | 7.587435 | 7.587435 | 138.557 | 1.0572 | 4 | 16 |
+| 8 | 131056 | 3203674 | 7.568964 | 7.568964 | 139.567 | 1.0649 | 4 | 32 |
+| 4 | 524272 | 3164842 | 7.263107 | 7.263107 | 559.974 | 1.0681 | 4 | 16 |
+| 8 | 524272 | 3203674 | 7.293910 | 7.293910 | 564.826 | 1.0774 | 4 | 32 |
+
+Evidence aws_capacity_acquisition_20261012_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5575,17 +5586,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
-
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
 
 ### Longer-data complete native learning
 
