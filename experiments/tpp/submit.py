@@ -8,7 +8,9 @@ Repeat --job to put several jobs on one slot in order. Every job is battle B1; t
 import argparse
 import hashlib
 import json
+import os
 import shlex
+import tempfile
 import time
 from pathlib import Path
 
@@ -22,15 +24,22 @@ def sha(p):
 
 def write_packet(directory, battle, slot, stamp, packet):
     """Publish immutable packets without replacing a same-second submission."""
-    for _ in range(100):
-        out = directory / f'zzzzzzzzzzzzzzzzzzzzzzzzzzz{battle.lower()}_{stamp}_{time.time_ns()}_s{slot}.json'
-        try:
-            with out.open('x') as stream:
-                stream.write(json.dumps(packet, indent=2) + '\n')
-            return out
-        except FileExistsError:
-            continue
-    raise RuntimeError('Unable to allocate an immutable addendum name')
+    with tempfile.NamedTemporaryFile(mode='w', dir=directory, suffix='.pending', delete=False) as stream:
+        pending = Path(stream.name)
+        stream.write(json.dumps(packet, indent=2) + '\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    try:
+        for _ in range(100):
+            out = directory / f'zzzzzzzzzzzzzzzzzzzzzzzzzzz{battle.lower()}_{stamp}_{time.time_ns()}_s{slot}.json'
+            try:
+                os.link(pending, out)  # atomic visibility, exclusive destination
+                return out
+            except FileExistsError:
+                continue
+        raise RuntimeError('Unable to allocate an immutable addendum name')
+    finally:
+        pending.unlink()
 
 
 def main():
