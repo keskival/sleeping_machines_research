@@ -1,0 +1,2 @@
+# R1: R1: decide FP64 integrated full-curve stability and complete-work saving, compare saved FP32 fit; gate unchanged seed7/8 confirmation on curve error<=1e-8 and at least5 percent saving
+aws_integrated_p24_64k_double_decision_20261012_v1 experiments/analyze_integrated_lookup_precision.py --tag aws_integrated_p24_64k_double_decision_20261012_v1 --ordinary aws_integrated_p24_64k_double_ordinary_20261012_v1 --batched aws_integrated_p24_64k_double_batched_20261012_v1 --fp32-reference aws_integrated_p24_64k_ordinary_20261012_v1 --continue-seeds
