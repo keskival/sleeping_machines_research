@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,12 +47,23 @@ def main():
             assert before['identity'][key] == current['identity'][key]
         prefix = [r for r in current['curve'] if r['step'] <= before['args']['steps']]
         assert [canonical(r) for r in prefix] == [canonical(r) for r in before['curve']], 'Acquisition prefix changed'
+        def targets_at(step):
+            # Fixed eight-lane262144-token blocks:511 full64-token
+            # chunks plus one63-token chunk; one unscored lane boundary.
+            blocks, remainder = divmod(step, 512)
+            return blocks*262136 + remainder*512
+        acquisition_curve = [dict(step=r['step'], targets=targets_at(r['step']), dev_nll=r['dev_nll'])
+                             for r in current['curve']]
+        assert acquisition_curve[-1]['targets'] == current['presentations_total']
+        gain = before['curve'][-1]['dev_nll']-current['curve'][-1]['dev_nll']
+        ratio = current['presentations_total']/before['presentations_total']
         rows.append(dict(pool=pool, targets=current['presentations_total'],
             unique_admitted_tokens=current['exposure_protocol']['unique_admitted_tokens'],
             prior_tokens=262144, parameters=current['parameters'],
             selected_nll=current['best_dev_nll'], final_nll=current['curve'][-1]['dev_nll'],
             previous_final_nll=before['curve'][-1]['dev_nll'],
-            final_learning_gain=before['curve'][-1]['dev_nll']-current['curve'][-1]['dev_nll'],
+            final_learning_gain=gain, acquisition_curve=acquisition_curve,
+            measured_nll_gain_per_data_doubling=gain/math.log2(ratio),
             training_s=current['train_wall_s_total'],
             ms_per_target=1000*current['train_wall_s_total']/current['presentations_total'],
             max_rss_kb=current['max_rss_kb'], exact_recorded_acquisition_prefix=True,
@@ -65,6 +77,7 @@ def main():
         'credit16, lane/block boundaries and DEV interval; every256 updates evaluated. '
         'Recorded earlier acquisition prefixes must agree exactly within each member. '
         'Final NLL is the acquisition-curve measure; selected NLL also shown with its increasing selection opportunities. '
+        'NLL gain per data doubling is the measured interval slope, not a power-law exponent or an extrapolation. '
         'Pool-dependent initialization differs between members. Complete measured CPU fitting wall, '
         'all-key scoring and optimizer included. Public validation/reserved4M untouched; no fitted exponent or external-model comparison.')
     source = str(Path(__file__).relative_to(ROOT)); sources[source] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
