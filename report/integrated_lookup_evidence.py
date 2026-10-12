@@ -71,4 +71,17 @@ def blocks():
             ('table',(['Exposure','Unique tokens','Fit targets','Initial NLL','Selected NLL','Context gain','Train seconds'],ur,[25,28,28,30,30,30,30])),
             ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
+    for seed in (6,7,8):
+        path=ROOT/'experiments/results/token_language'/f'aws_integrated_common_prior_decision_20261012_s{seed}_v1.json'
+        if not path.exists():continue
+        d=json.loads(path.read_text());assert d['status']=='completed'
+        for name,digest in {**d['source_sha256'],**d['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[r['exposure'],str(r['unique_tokens']),f"{r['branch_dev_nll']:.6f}",
+               f"{r['post_branch_dev_nll']:.6f}",f"{r['selected_dev_nll']:.6f}",f"{r['training_wall_s']:.3f}"] for r in d['rows']]
+        r,c=d['rows'];stop_gain=c['branch_dev_nll']-c['post_branch_dev_nll']
+        result.extend([('p',f'Common-prior, common-acquired-state intervention seed{seed}: exact first-phase curve and complete learner fingerprint equality required before later data change.'),
+            ('table',(['Exposure','Unique tokens','Branch NLL','Post-branch NLL','Selected NLL','Training seconds'],rows,[25,29,35,40,35,35])),
+            ('p',f"Fresh-versus-replay future-learning gain{d['post_branch_quality_gain']:+.6f}NLL; fresh-versus-stopping at the shared branch{stop_gain:+.6f}. Full acquired-state SHA256 {d['shared_learner_fingerprint']}."),
+            ('p',d['scope']),('p','Evidence '+path.stem+'.')])
     return result
