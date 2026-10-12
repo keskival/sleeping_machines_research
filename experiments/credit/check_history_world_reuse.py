@@ -86,7 +86,10 @@ def main():
         filename = getattr(module, '__file__', None)
         if filename:
             path = Path(filename).resolve()
-            if path.is_relative_to(ROOT) and path.suffix == '.py': sources.add(str(path.relative_to(ROOT)))
+            if path.is_file() and path.is_relative_to(ROOT) and path.suffix == '.py':
+                relative = path.relative_to(ROOT)
+                if relative.parts[0] in ('experiments', 'sleeping_machines'):
+                    sources.add(str(relative))
     result = dict(status='completed', battle='R1', checks=checks,
                   source_sha256={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(sources)},
                   scope='Numerical AdamW expansion with acquired moments and reordered parameters; real native two-outstanding-query receipt check. No task fitting, learned geometry, transfer or efficiency claim.')
