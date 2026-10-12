@@ -11,7 +11,7 @@ The current world learner sees current target/context activations and causal out
 * Causal numerical summary gate completed: aws_route_activation_memory_20261012_v1.
 * Native gradient/initial-parity gate completed: aws_history_world_credit_20261012_v2. Initial forecasts/RNG equal the parent; history adapter learns from native outcome loss.
 * Overlapping issued-history and acquired optimizer-expansion gate completed: aws_history_world_reuse_20261012_v3 (zero retained-parameter and issued-token error). Source moments must survive the architectural extension; fresh moment acquisition applies only to added parameters.
-* Current Curie v2 world-credit decision completes and is reviewed. A failed parent quality gate requires a diagnosis before this child is fitted, rather than automatic expansion of a losing recipe.
+* Current Curie v2 decision is complete: primary gate FAIL at generating depth 8 versus prior. Source-bound route-sensitive analysis finds a 36.1% immediate teaching-error reduction without material actor gain. History fitting stays deferred while the owner completes the stronger persistence-posterior control and diagnoses task-update coupling. Obtain the source-matched public NPZ files on AWS before any deployment; they are absent on this checkout.
 
 ## Matched members and state
 
