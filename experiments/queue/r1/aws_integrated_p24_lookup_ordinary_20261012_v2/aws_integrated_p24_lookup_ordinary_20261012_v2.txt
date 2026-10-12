@@ -1,0 +1,2 @@
+# R1: R1: choose batched token lookup only with integrated quality parity and measured complete-step savings; three-update state gradient Adam and RNG gate passed
+aws_integrated_p24_lookup_ordinary_20261012_v2 experiments/profile_integrated_language_v2.py --tag aws_integrated_p24_lookup_ordinary_20261012_v2 --train-tokens 65536 --dev-tokens 2048 --steps 32 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 4 --lanes 8 --eval-lanes 8 --eval-every 16 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6
