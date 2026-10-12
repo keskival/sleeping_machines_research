@@ -1,0 +1,33 @@
+# Native outcome-law credit: acquisition and causal reuse
+
+Registered 12 October 2026, B5/R1 shared learning enabler. Implements the construction in theory/NATIVE_OUTCOME_LAW_CREDIT.md. This is a new native learning design; the old raw-credit TRANSFER.md gate remains failed and its queued transfer is not reopened. It replaces per-route loss regression with a conditional outcome query, rather than patch-fitting another shared-loss regressor on the previous 512 distinct targets.
+
+## Design and teaching target
+
+Retain both two-layer native temporal actors, hard receiver/read races, keys/values, public addressed state, versioned shared bank, independent F/C access, and forward task gradients into critic-produced memory within eight-feedback windows. Replace the local detached loss readout with a trainable binary outcome head. Revealed outcomes teach its native body and read policy; detached incoming F features prevent auxiliary outcome regression from training the actor by proxy. One query and one outcome event per issued target replace separate route-loss events. World state is target-addressed, with no node-ID parameter table or private generating graph.
+
+The world query sees target context, a bounded mean of already discovered candidate contexts, public timing/bit and relationship features, and its own independently selected bank read. This pool summary is an initial engineering interface, not proven sufficient for causal response. Request tokens contain no outcome. Feedback carries the revealed target; the issued prediction is supervised, not a recomputed post-outcome prediction. Only causal completed bank records can be read.
+
+For issued route logits zw,zj, Delta(q)=softplus(zj)-softplus(zw)-q*(zj-zw). Exact credit uses observed y. Learned credit uses mean_target=(y+q_issued)/2; prior credit uses (y+0.5)/2. All three calculate the same sampled alternative logit, run the same world model and outcome training, and use the same shared memory. The latter two deliberately change the conditional route-teaching mean when q is imperfect; no per-example unbiasedness or low-audit saving is claimed. Known local actor and native route surrogates remain; this is source-choice teaching, not full BPTT replacement.
+
+The fixed half blend is a first theory-directed comparison, not a tuned grid. Relative to the true conditional contrast, its MSE is Delta_z^2*(epsilon^2+q*(1-q))/4. It beats realized-label MSE when epsilon^2<3*q*(1-q). We do not know that premise on new nonlinear regimes; causal posterior calibration and future actor loss decide utility. No uncertainty calibration or full route-response embedding is claimed in this first integration.
+
+## Common acquisition and reuse
+
+Use immutable nonlinear data prepare curie_causal_nonlinear_20261012_v2_prepare.json. Common acquisition uses all16TRAIN graphs4000–4015, each128targets, once in fixed order. Confidence acquisition reads those same2048targets once, with the existing persistence statistic; both exposure counts are charged, 4096presentations/2048unique outcomes. Adam0.001, seed194, eight-feedback updates, separate actor/native-world/head norm caps1. Common acquisition uses exact observed-label route credit while training the outcome model. Save actor/world parameters, Adam state, all RNG receipts and source/data/protocol hashes.
+
+Reuse cases: base first seed and hidden-rewire second seed from each of heldout_graph, heldout_factors, heldout_depth and heldout_factors_depth (5000base/5001rewire,6000base/6001rewire,7000base/7001rewire,8000base/8001rewire). Eight public systems,128targets each. Every case/arm independently restores identical common acquired actor, world and optimizer state, then starts fresh address-specific numerical memories. Actor/world weights learn causally within each episode. Score every issued actor/world forecast before feedback; record both halves, every system and pooled NLL. Actual target timestamps do not precede issue timestamps. No oracle, publicTEST, target tuning or early stopping.
+
+Three arms exact/learned/prior. Exact and prior learn the same outcome model and expose the actor to the same shared-bank capability. Learned versus exact isolates the changed source-choice credit rule; learned versus prior isolates acquired world belief within the same blend family. Diverging actor learning can subsequently change their numerical trajectories; do not call them identical-state gradients after updates.
+
+Acquisition is charged once per deployed cohort of eight independent checkpoint clones, alongside all target fitting, decoding, bank discovery/transport, native counterfactuals and optimizer work. Report acquisition separately and also per single deployment. No quality-matched efficiency claim from fewer world events alone.
+
+## Gates and execution
+
+Contract through run_safe: exact BCE contrast/cycle identities; unchanged pre-feedback predictions under opposite future labels and outcome-state separation after delivery; one world query/update per target; chosen-route-independent issued world query; auxiliary gradients into the actual native world body; real shared-memory future-task gradient versus untaught control; causal visibility; active public relabel parity;16-target TRAIN and16-target largest-system smoke with measured wall/RSS.
+
+Acquisition follows a finite/source-bound contract with smoke wall<90s per16targets and peakRSS<800MB. Reuse requires finite source/checkpoint hashes and mean world NLL on the last eight source TRAIN episodes below log(2), showing a learned signal versus the neutral starting head. This is an acquisition gate, not a generalization claim. Do not vary the recipe if it fails.
+
+Primary development gate: learned pooled prequential actor NLL lower than exact and prior; learned gains against both at each generating depth; learned world NLL better than neutral log(2) on pooled targets. Report all cases regardless of gate. Generating depth is not neural depth. Single-seed exploratory evidence; replication and proper-token/native-depth integration follow only a useful result. A failure triggers response/information diagnosis rather than another small-source patch grid.
+
+Curie CPU-only1thread, one uniquely named job queue per contract/acquisition/reuse arm through queue/run_safe.sh, tmux. RSS cap1.5GB, host availability9GiB, cgroup reserve2GiB. Start contract at300s; derive acquisition and per-arm timeout from measured actual largest-system/source smoke, with bounded admission ceilings1800s/1200s. Never launch a parallel job. Publish completed results only, preserve checkpoint/trace evidence and source-bound implementations.
