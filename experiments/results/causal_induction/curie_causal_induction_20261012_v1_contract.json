@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "battle": "B5/R1 causal structural induction development",
+  "tag": "curie_causal_induction_20261012_v1_contract",
+  "mode": "contract",
+  "contracts": {
+    "relabel_target_parity": true,
+    "time_rescale_target_parity": true,
+    "inactive_capacity_target_parity": true,
+    "future_rewire_prefix_causality": true,
+    "oracle_not_in_public_fields": true
+  },
+  "records": [],
+  "source_sha256": {
+    "experiments/causal_induction/generate.py": "89e146c92d631e0d266ab35efbff94c01ada119368261608062578ee0ba7f2b0"
+  },
+  "scope": "Data/semantics only; no learned-bias, Transformer, task-quality or hardware claim. Hidden parent/gate labels are private evaluation diagnostics and forbidden as fitting or selection inputs. Public feedback is delivered after request issuance. Root flips are observed interventions, not parent labels."
+}

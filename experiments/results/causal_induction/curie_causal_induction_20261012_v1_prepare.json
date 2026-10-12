@@ -1,0 +1,1027 @@
+{
+  "status": "completed",
+  "battle": "B5/R1 causal structural induction development",
+  "tag": "curie_causal_induction_20261012_v1_prepare",
+  "mode": "prepare",
+  "contracts": {
+    "relabel_target_parity": true,
+    "time_rescale_target_parity": true,
+    "inactive_capacity_target_parity": true,
+    "future_rewire_prefix_causality": true,
+    "oracle_not_in_public_fields": true
+  },
+  "records": [
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1000_base.npz",
+      "sha256": "08fe99963d15ec58a78a6359e6bd68f6ad8b62d38ffbc240ebfa683e0a5b38e1",
+      "events": 702,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1001_base.npz",
+      "sha256": "8f15576ba136eccedffde7af5c808bebac405b776963da1f156eb8044e932b2e",
+      "events": 311,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1002_base.npz",
+      "sha256": "597af85a2cff50cd21da1a5721f46497a8415093798ea6c7c1fdee4722e5318f",
+      "events": 987,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1003_base.npz",
+      "sha256": "d9c08d8709b206e6fea78e1ea34350741bc89d5f6a53346f735d40c8313aedb0",
+      "events": 625,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1004_base.npz",
+      "sha256": "43836b5321fe0f1fabbd2f2a193b01b1d868c008b4b686196cecbdd3ff7afbe5",
+      "events": 696,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1005_base.npz",
+      "sha256": "e9f65d5ee042a9604a55606abfe99c4da816151d8ebd54d5a6142d2531fd57ca",
+      "events": 623,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1006_base.npz",
+      "sha256": "94ae58a89bfadf028a2e082fc707fb05a1dae7a4d9e784c243f6e626d8951ed7",
+      "events": 1039,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1007_base.npz",
+      "sha256": "ebf43fc5c86b05cbcbae11769c126486fe2bde09c60549b1e6a74aaf60a661b0",
+      "events": 806,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1008_base.npz",
+      "sha256": "2c582d30030eb71c9cfbe4d18d2e205d43f7913b8f7e86af1d155cc3867aab58",
+      "events": 651,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1009_base.npz",
+      "sha256": "f3b089fed7efa9aa1e8d59833e947d30894dc0a005c66ab378499809116c81e0",
+      "events": 448,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1010_base.npz",
+      "sha256": "b304f0a10dde9c241fb58c7387b06d60324c95b511c399a0c346abb7ba8d3ce0",
+      "events": 1005,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1011_base.npz",
+      "sha256": "0385cd8b7a287664628b0b1cff30a14e64a8c4dc19b3ba9b99ca2b54a1ae9777",
+      "events": 898,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1012_base.npz",
+      "sha256": "757081e2bd92a7792d7606883079c2c66f329c8ea3cc2f6f72a0f2e63001a612",
+      "events": 671,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1013_base.npz",
+      "sha256": "1955960cca2c58ea7a00e745ac45216f264c71a9adcf25010019cdcdff39bc64",
+      "events": 942,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1014_base.npz",
+      "sha256": "7f74977d2f3995094567a4047cd77e48bcffdd7736d8fad20c5929d6ffa3ba54",
+      "events": 484,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1015_base.npz",
+      "sha256": "3df9ab211a21cc366632ccf57865baa35bbc34b01176c577adf026a6036d0baf",
+      "events": 1195,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1016_base.npz",
+      "sha256": "ab3d986e458c46141a82ca88a3358192203d38ce88969d354eef7f7c39e8a9aa",
+      "events": 1088,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1017_base.npz",
+      "sha256": "7c045a160f55c2f9f2bbd2a9060f3264ad2766ad9c110b133de1209ca6b8b6e7",
+      "events": 1149,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1018_base.npz",
+      "sha256": "9e999bf814225cfcb1d8f6be61036d20b4743b97c732cb019b2c18c7365d78c0",
+      "events": 846,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1019_base.npz",
+      "sha256": "630581b491c5f444ec6e311d2d43a3ed38a412e79e355533348c012a16038bbc",
+      "events": 529,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1020_base.npz",
+      "sha256": "ec16feed8d76aaab35fc783c02f46bc97279f648ceb5901ed9a9d50c3945062c",
+      "events": 946,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1021_base.npz",
+      "sha256": "42aff2e9d7c835d387fbaca8a94723886c394eebb4219eff1d804c3ba9df75e2",
+      "events": 855,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1022_base.npz",
+      "sha256": "97710ba5268ca756e8efdc299d8a872d6c6edae08e0cfe5d4592de8838d25a87",
+      "events": 686,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1023_base.npz",
+      "sha256": "81c83c6f96f83ac491fe6bca1042a69dd580ecfba3596a83379dfa9e63103091",
+      "events": 1129,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1024_base.npz",
+      "sha256": "dba5bd6e377145b98779f21772a802631970e84285b1d1e2b3f4b01013c06766",
+      "events": 814,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1025_base.npz",
+      "sha256": "02c4505d3749713b8b63c9f8332b67c69d6c5b30f9830ab68597a8e16aa5c6f4",
+      "events": 713,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1026_base.npz",
+      "sha256": "607a4b44c51d740c70e4c6eb0544975f23e3835620087a774951aff618bf649c",
+      "events": 622,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1027_base.npz",
+      "sha256": "c9c6d81e950279ae61133ac7c62e39c5e6eecebf426dc074b99aa1654192a42f",
+      "events": 1379,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1028_base.npz",
+      "sha256": "95ab863c4f9d544eecec165c104dc71f7d3d76dbac92b0830bce8aa0ed373ad3",
+      "events": 985,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1029_base.npz",
+      "sha256": "1b6a9c8811ddd2ee1725eb0d6fc3f67f136fa5a7fd64645c7d4e67d1c5166d55",
+      "events": 961,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1030_base.npz",
+      "sha256": "197db7ccd32f40cc1239d940569066393d8ed506119b671bcae0e2160ee0b781",
+      "events": 349,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "train",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/train_1031_base.npz",
+      "sha256": "d064c513c412bf43621f1c191dc15ae1c3644b80cb57feda945b973e1d111ec5",
+      "events": 696,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2000_base.npz",
+      "sha256": "d6c9067d3f51b9c6cdb1713d69a4a2d5edb5085e148c9a06dfbaae7f0215568e",
+      "events": 483,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2000_relabel.npz",
+      "sha256": "3f8e38120f5509eba8ea1a7ec3fa7050f8d33d0aec9c5e186cb3bcf0198d6633",
+      "events": 483,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2000_rescale.npz",
+      "sha256": "a5f73dbb87599226ef813ba6ffdce8718c0f2e8b4e90328b855dcab08c6a9710",
+      "events": 483,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2000_capacity.npz",
+      "sha256": "fb703a1fd4aaa5b7b56eefda12705d8164af42c4193f855d0e7434da05989332",
+      "events": 483,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2000_rewire.npz",
+      "sha256": "faf1e8a7ab26f37cc89099058775a8897b5cdcf4d1982e38fd47eece5981aaba",
+      "events": 588,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2001_base.npz",
+      "sha256": "a8c74c463aa1f87eb53725d3315b3f853d7b1f1ac3406b491c4dc8d28b3ac2f0",
+      "events": 681,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2001_relabel.npz",
+      "sha256": "aa57bc2915f789ee59ea20facc4592b98d6f782e2237a096d83941f4530e5ebe",
+      "events": 681,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2001_rescale.npz",
+      "sha256": "1bfc37a9f1ab5a87091a921000dfa830f4eb3fef4326de4a7f1942dce57f95d7",
+      "events": 681,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2001_capacity.npz",
+      "sha256": "85cc6dd9984cfca47ffbbeff0382eb358144de67c7bc7074e096a37755e3329c",
+      "events": 681,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2001_rewire.npz",
+      "sha256": "02a7f8a65d5f961cf52b63767fc058a7de66df53d690633b317da94bbdbea1b1",
+      "events": 591,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2002_base.npz",
+      "sha256": "2a7b965e23d3295cce8808e81b71786e94ac844c72a26bea38c42fa6660f86da",
+      "events": 791,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2002_relabel.npz",
+      "sha256": "6b73747036ad5d4845a4ce346e266fef1dcb74f1ea25ba5ce1ce95564f87e0cc",
+      "events": 791,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2002_rescale.npz",
+      "sha256": "d5e1cc0a3b13e8a48122ff65d395b3a4e7475b69d12f215719cc6fc3d2137e40",
+      "events": 791,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2002_capacity.npz",
+      "sha256": "01d8e24ff1f938dbae9a658b71e41503d1d32691628fc4413311dedd2791104c",
+      "events": 791,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2002_rewire.npz",
+      "sha256": "b5ae245a6f90c2c3495eb660b248c7404521847a416e8c62e9b91a49080f14a6",
+      "events": 828,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2003_base.npz",
+      "sha256": "cd1c0573e7cc81324a53b2ea62c69745168bf512ced41df54a6711c51ae83a49",
+      "events": 560,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2003_relabel.npz",
+      "sha256": "5deff9f6c4bb92e4cbceb4f335616efb062eabd898bcd1742b51df009d8fd5ec",
+      "events": 560,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2003_rescale.npz",
+      "sha256": "7d3f5dfd1c47e6c9405cad048877e8deb317f16d727567a4e6bec2bfdcf57ae8",
+      "events": 560,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2003_capacity.npz",
+      "sha256": "e1f6e771a8c80d910ebf94d3b1fc953e9e66145645ebbd4f919125d1950018da",
+      "events": 560,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2003_rewire.npz",
+      "sha256": "414ee42cdffa54c47e5b4dab2062961fdb25934be4269f50a301d8d80f732502",
+      "events": 646,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2004_base.npz",
+      "sha256": "e2641856b48869daec0fa31d40037e8757bf2312895e76ff1be34aaea497b884",
+      "events": 965,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2004_relabel.npz",
+      "sha256": "739df0d80d1a942b189a7d93d5130681be37ded8312da6a1874a25e34f05490b",
+      "events": 965,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2004_rescale.npz",
+      "sha256": "0130ad2da30807df0d8fbb58cf966bf8ee8152ad5df0aa0765793fa0fd461bae",
+      "events": 965,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2004_capacity.npz",
+      "sha256": "82cda51e557a4690ad311afc8d98c88340e7b570c13b3a683dbd4ef8a2ca032f",
+      "events": 965,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2004_rewire.npz",
+      "sha256": "7abf9fa47dfcb84e3e966ad6ead6c3b19c0dc0284b8da62d0f04e035dea15cd1",
+      "events": 792,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2005_base.npz",
+      "sha256": "269c2c9ac8b9326a6240fb79e02043fc1dcac06b788898390bfc92f79bd38166",
+      "events": 634,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2005_relabel.npz",
+      "sha256": "83c304662bf96c5e19dbc80750d00bc22e3158ca478f3f01e2afc662a043c5e5",
+      "events": 634,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2005_rescale.npz",
+      "sha256": "e3e12ed8e920137808458da9b5d34193f0406d11873b6e1ebdf4bbee8b49d485",
+      "events": 634,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2005_capacity.npz",
+      "sha256": "1ae9f765752204812517bf828e396d4094d7906495d71a26a9fbcdebeb421846",
+      "events": 634,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2005_rewire.npz",
+      "sha256": "5e19e14d32d1e2d96ee9fb48ad75a12f8bbd07f7bdf4ad31c4850ad817cde764",
+      "events": 904,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2006_base.npz",
+      "sha256": "ef12adbc3d9149161c0cb4636105074befa949b5b4623acca4826b41d657c8c6",
+      "events": 994,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2006_relabel.npz",
+      "sha256": "28ec5837840210ed503ff97bad23ebe8eff4951935294802328c227559170dd0",
+      "events": 994,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2006_rescale.npz",
+      "sha256": "85d2a0eebc5a11cf29b94ffb0e17a4eb46be990aeab4382b068f1e2b00bab47d",
+      "events": 994,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2006_capacity.npz",
+      "sha256": "c84019573ed33ee14f238c931e07b09f1f9ab368a81b2812941c61ef207f17c4",
+      "events": 994,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2006_rewire.npz",
+      "sha256": "1630af67ce875e932d2027e74f7bc9f24bad88020120a6daffe68a30baa77c36",
+      "events": 1164,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2007_base.npz",
+      "sha256": "021fa6cdd572610eabaeb324fc924ff0f19d312e5f17a1c94c7203b103916f56",
+      "events": 597,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2007_relabel.npz",
+      "sha256": "2a51c32d3d436db587afbaeab5dfd608cebf0929a8c09484198eaf090e9fa975",
+      "events": 597,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2007_rescale.npz",
+      "sha256": "3f540ffe831980ada091df76fbde5da460c5c62bcf56f9eda14daa571ee65d3c",
+      "events": 597,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2007_capacity.npz",
+      "sha256": "306fbc8b571e86c49aa0611b0b0dee4c603cc237afab6c1a321d4d3f3605ec0c",
+      "events": 597,
+      "queries": 64,
+      "capacity": 148
+    },
+    {
+      "split": "heldout_graph",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_graph_2007_rewire.npz",
+      "sha256": "87ceb6aa3aad619110c0e23fc153b341ba5c36959a7123073018d4104717b807",
+      "events": 746,
+      "queries": 64,
+      "capacity": 20
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3000_base.npz",
+      "sha256": "f27c0e9e961e6c90178eb1e6b6f9736466e6089dea76c1aa98429127b14f3ca7",
+      "events": 2346,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3000_relabel.npz",
+      "sha256": "c81cfd978d8258d3181e4e32dab20762d5a0a6e207ff2b57f2f878268c61dd56",
+      "events": 2346,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3000_rescale.npz",
+      "sha256": "a99500d219e4cefb5e791d87ae0be29e7f3a417c596d20638c1dd63151ab4014",
+      "events": 2346,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3000_capacity.npz",
+      "sha256": "db5e82ccfe7f2cfad275cdc3b75057fb078541a4fb773ac16de488a39742b0a0",
+      "events": 2346,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3000_rewire.npz",
+      "sha256": "0f0b40cb667ddd392924bf81a120a23e7b716c058c09d3b1240c3a1b7610337a",
+      "events": 5310,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3001_base.npz",
+      "sha256": "d1ab0c839fa3c1400b57397a9a5d7cc56cbff2046bfe85f5fda86d6d6a10e5d8",
+      "events": 3193,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3001_relabel.npz",
+      "sha256": "f34567042a4b845de4435779f21272c4351bab8751a82f866776762d239eaad7",
+      "events": 3193,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3001_rescale.npz",
+      "sha256": "5c3c8baf4d2ce7beee05d3fadbd45b5bfeb0427953349ac201510d26ae69ec55",
+      "events": 3193,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3001_capacity.npz",
+      "sha256": "3f48f8bb50c08e49d7966a2e6e6c939aa392fefe7522a6216051a50a748bcc3d",
+      "events": 3193,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3001_rewire.npz",
+      "sha256": "f9c229289ab9c396a2ea0cb5b3626e41718a4d8482dbd98bdbb6e5ae76089596",
+      "events": 2185,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3002_base.npz",
+      "sha256": "ca4c03712f2865feaa7770778d87e4384837af24f27b5a15bf8d8f6ee640a6c5",
+      "events": 2466,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3002_relabel.npz",
+      "sha256": "0046b9cbc7cb7ab071e18e208215e326b3ea0ed49d8a8578a4d1394fa859e96c",
+      "events": 2466,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3002_rescale.npz",
+      "sha256": "bf41c62aa538b7ec814589793d7414c93a7b2d14c8db4e818c0662a8e7d13a96",
+      "events": 2466,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3002_capacity.npz",
+      "sha256": "66920c8713dd9e59548858a8d2919fe925d5a7567520c980050b6da1c07a47bb",
+      "events": 2466,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3002_rewire.npz",
+      "sha256": "6da8310990670849f97d0c0327f2ac7528483f3f7de54d2848a6e247aa7b73b8",
+      "events": 3181,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3003_base.npz",
+      "sha256": "201067835647655f70f827dbac5a82aab0dde56c3b17e1c0e7faf13334af3f40",
+      "events": 3246,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3003_relabel.npz",
+      "sha256": "4840a74214f12d419a770f526702346317ece5b46bc74e7a0585acf779c38511",
+      "events": 3246,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3003_rescale.npz",
+      "sha256": "e2243fabcf2abd400331421c21f5560847d156a8cfc2acc3636a2068998c20ae",
+      "events": 3246,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3003_capacity.npz",
+      "sha256": "dea6beb1a961e1864cbb1d2eba9bda8b0561d9c4694d5ad727507143320cb30d",
+      "events": 3246,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3003_rewire.npz",
+      "sha256": "b2da026e02a219b24a17f66a91f96e97e48d41a54cc4e784cb11bd47fd80f0d3",
+      "events": 2295,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3004_base.npz",
+      "sha256": "501c3b6d5bbcc176cfd6c26554005054e3a05deff72fc2c8575516cc72f28fcd",
+      "events": 6927,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3004_relabel.npz",
+      "sha256": "a5e9cd0c3e40474f166c74da8648c75ab596b10474e575f015bb74dee26de785",
+      "events": 6927,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3004_rescale.npz",
+      "sha256": "e69778c12da8833eb0fbe1cc1544fba0587383f65c436bc4f75df4cca8548f50",
+      "events": 6927,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3004_capacity.npz",
+      "sha256": "77c553d548faa73bd7cbbfb567f51ab5faa07feafecdfbf366d0ff618c5397bb",
+      "events": 6927,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3004_rewire.npz",
+      "sha256": "d451b40bf18ef9fd3c35f38a1be4a937e99bc540ef0ce0410eff6abd7662a594",
+      "events": 5844,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3005_base.npz",
+      "sha256": "e278bb8e2d395a53ed1a1c61c857cc4b0dac54fcfb7ff2a82938a75ea39c2465",
+      "events": 5094,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3005_relabel.npz",
+      "sha256": "afdaf1dd6eb08348da57cbeed8d59dac051813a17fda1bd5d8e32d1576fc3848",
+      "events": 5094,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3005_rescale.npz",
+      "sha256": "0f0fafe07a593ea3aceef83b8ac9fe51b5f4ba01145e71c64c4043d4ad72b7ed",
+      "events": 5094,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3005_capacity.npz",
+      "sha256": "7338f0514606f3e082f95b1943141050073cff845bde70dda95a0c53ba88fa09",
+      "events": 5094,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3005_rewire.npz",
+      "sha256": "b51bf1b2337494df0702771c5d74de817db3ffd5fd88c405f18ecf0e1add5564",
+      "events": 2956,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3006_base.npz",
+      "sha256": "ea675fadb0da2c4420280f464e45f2cc2d4c5837296fbc31bf68d852b35430af",
+      "events": 5366,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3006_relabel.npz",
+      "sha256": "d0e70c6a753e2327ff4d909f90c5aae9a1d09a0b6dc475f4075ccc6954f8af65",
+      "events": 5366,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3006_rescale.npz",
+      "sha256": "8e4ca152832470b41da684c36ce4f45d77191465cc9e3062b91cad3cf72ac751",
+      "events": 5366,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3006_capacity.npz",
+      "sha256": "1707e53edfef2bdf7f2bc815bb454e42e9c74a13c60eec463f24be7692e286c5",
+      "events": 5366,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3006_rewire.npz",
+      "sha256": "04da13e9bda0f257e1950657fcc8d8585e90a55f683feae628e28548ff2dd37c",
+      "events": 4804,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "base",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3007_base.npz",
+      "sha256": "3483e20a8ea4126e97690845d236706c737cafd7f20477a10aea51fe89f3d907",
+      "events": 3229,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "relabel",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3007_relabel.npz",
+      "sha256": "2a019c5232d4536e9ac22d7cfcb47d51e385ed135b82c0a03a059f8610f84618",
+      "events": 3229,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rescale",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3007_rescale.npz",
+      "sha256": "9564668a00d4dcc73c26c4ec58f3ce6ff0e8a3080cbd33e516d84afdad7dbbd5",
+      "events": 3229,
+      "queries": 64,
+      "capacity": 36
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "capacity",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3007_capacity.npz",
+      "sha256": "d76ee0556405656e5f4f454b1f79d86bb3af9a8dd19197ebf920757fd50c6c0e",
+      "events": 3229,
+      "queries": 64,
+      "capacity": 164
+    },
+    {
+      "split": "heldout_depth",
+      "variant": "rewire",
+      "path": "data/causal_induction/curie_causal_induction_20261012_v1_prepare/heldout_depth_3007_rewire.npz",
+      "sha256": "c751292b86c8b5cf8a2de3b8f952c5cc2e49e19ea211681015ab8a93dbcaf658",
+      "events": 3207,
+      "queries": 64,
+      "capacity": 36
+    }
+  ],
+  "source_sha256": {
+    "experiments/causal_induction/generate.py": "89e146c92d631e0d266ab35efbff94c01ada119368261608062578ee0ba7f2b0"
+  },
+  "scope": "Data/semantics only; no learned-bias, Transformer, task-quality or hardware claim. Hidden parent/gate labels are private evaluation diagnostics and forbidden as fitting or selection inputs. Public feedback is delivered after request issuance. Root flips are observed interventions, not parent labels."
+}

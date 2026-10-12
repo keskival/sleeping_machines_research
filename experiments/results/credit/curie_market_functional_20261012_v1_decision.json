@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_functional_20261012_v1_decision",
+  "rows": [
+    {
+      "seed": 187,
+      "gain_vs_frozen": 0.007506141626524965,
+      "gain_vs_zero": 0.011423405679638066,
+      "gain_vs_bptt": 0.009669373796091563,
+      "online_whole_s": 62.748787001968594,
+      "bptt_shared_whole_s": 45.374081275978824
+    },
+    {
+      "seed": 188,
+      "gain_vs_frozen": -0.00877354473257519,
+      "gain_vs_zero": -0.02670850194837726,
+      "gain_vs_bptt": -0.03066343127692761,
+      "online_whole_s": 62.320177838002564,
+      "bptt_shared_whole_s": 43.97016239000368
+    },
+    {
+      "seed": 189,
+      "gain_vs_frozen": -0.0024342694857342195,
+      "gain_vs_zero": -0.008758564097048449,
+      "gain_vs_bptt": -0.008487544607472586,
+      "online_whole_s": 61.1668920989905,
+      "bptt_shared_whole_s": 43.4840273919981
+    }
+  ],
+  "consistent_quality": false,
+  "mean_gain_vs_frozen": -0.001233890863928148,
+  "mean_gain_vs_zero": -0.008014553455262549,
+  "mean_gain_vs_bptt": -0.009827200696102878,
+  "decision": "First-seed development quality win fails fixed confirmation; stop short-fragment tuning. Longer-data whole-learning test is separately registered.",
+  "parent_sha256": {
+    "experiments/results/credit/curie_market_functional_future_20261012_v1_fit.json": "030f4ce2f3d4d4565b198b121eb3f2d2efef19e9f6251c3de118a416af8ede5f",
+    "experiments/results/credit/curie_market_functional_future_20261012_v1_s188_fit.json": "17d5fb7bdba7e9f284c4fd2886d6dfade758f616f1805d6d1147860f156cf6f6",
+    "experiments/results/credit/curie_market_functional_future_20261012_v1_s189_fit.json": "5c79bdc53b63dc78b830f761a9a87f929c222a21b15f151971fd3730f942cc77"
+  },
+  "scope": "Three independent actor/critic starts on identical chronological Aug1 TRAIN fragment, not independent market episodes or sealed benchmark. Shared acquisition controls credit utility, not a baseline from original initialization."
+}

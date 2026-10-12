@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_prospective_bias_20261012_v1_contract",
+  "rows": [
+    {
+      "audit": false,
+      "analytic": -0.0012757394739445298,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": -0.0012756945402259134,
+          "error": 4.493371861635613e-08
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": -0.0012756183753737105,
+          "error": 1.2109857081932067e-07
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": -0.0012750778211056968,
+          "error": 6.616528388330139e-07
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": -0.001287265405380822,
+          "error": 1.1525931436292105e-05
+        }
+      ]
+    },
+    {
+      "audit": true,
+      "analytic": 0.0038248155051996916,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": 0.0038404559292715135,
+          "error": 1.5640424071821854e-05
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": 0.0038248844269617166,
+          "error": 6.892176202498435e-08
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": 0.0038239931221539787,
+          "error": 8.22383045712919e-07
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": 0.0038254457379593987,
+          "error": 6.302327597070695e-07
+        }
+      ]
+    }
+  ],
+  "whole_wall_s": 2.7014676310063805,
+  "peak_rss_kb": 330472,
+  "source_sha256": {
+    "experiments/credit/check_market_prospective_bias.py": "ef48dabc29e7d73c734b282e65427a3913dca18dbdc64ec2068ad732251b09f6",
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289"
+  },
+  "scope": "Actual native producer VJP, clipped Adam with fixed prior moments, next-window loss; both residual audit branches. Boundary-vector derivative, not all-history derivative."
+}

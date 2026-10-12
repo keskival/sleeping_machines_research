@@ -1,0 +1,261 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_prospective_bias_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_market_prospective_bias_20261012_v1_smoke",
+    "mode": "smoke",
+    "seed": 190
+  },
+  "acquisition": {
+    "prospective_credit_rms": [
+      0.0,
+      0.001880026422099368,
+      0.002700750731546713,
+      0.002975392759066312
+    ],
+    "calibration_credit_rms": [
+      0.0,
+      0.001880026422099368,
+      0.002700750731546713,
+      0.002975392759066312
+    ],
+    "predicted_credit_rms": [
+      0.0,
+      0.001880026422099368,
+      0.002700750731546713,
+      0.002975392759066312
+    ],
+    "first_event_credit_rms": [
+      0.08453715546809813,
+      0.056430998235703814,
+      0.059479285763839894,
+      0.0598429836647489
+    ],
+    "local_update_response_rms": [
+      0.0035931454848242045,
+      0.0029694484956316746,
+      0.002359822894953554,
+      0.0022833450600691415
+    ],
+    "arm": "online",
+    "nll": 14.393291790908652,
+    "targets": 32,
+    "audits": 0,
+    "future_teachers": 3,
+    "adam_proposal_error": 6.721012635324541e-13,
+    "wall_s": 0.33354310601134785,
+    "block_nll": [
+      11.046511779480504,
+      15.66972641676686,
+      15.325026391599696,
+      15.531902575787553
+    ]
+  },
+  "rows": [
+    {
+      "prospective_credit_rms": [
+        0.001010496741489216,
+        0.0016846601859187762,
+        0.008569818300577469,
+        0.005780792039614148,
+        0.006370657396591367,
+        0.0026497259241769493,
+        0.0014848350805698905,
+        0.004047331515896264
+      ],
+      "calibration_credit_rms": [
+        0.001010496741489216,
+        0.0016846601859187762,
+        0.008569818300577469,
+        0.005487585197104513,
+        0.005748235534372185,
+        0.0024849077863629966,
+        0.0015688153861902771,
+        0.003583548976767775
+      ],
+      "predicted_credit_rms": [
+        0.001010496741489216,
+        0.0016846601859187762,
+        0.008569818300577469,
+        0.005487585197104513,
+        0.005748235534372185,
+        0.0024849077863629966,
+        0.0015688153861902771,
+        0.003583548976767775
+      ],
+      "first_event_credit_rms": [
+        0.058780120714756225,
+        0.04719438103663695,
+        0.14764368979581388,
+        0.05568381740916661,
+        0.10017218655276353,
+        0.05128432859004765,
+        0.06434084195061869,
+        0.08897984127767006
+      ],
+      "local_update_response_rms": [
+        0.002089942336788641,
+        0.0013396979131997284,
+        0.0011868760238037141,
+        0.00144911693791611,
+        0.0014524996530523762,
+        0.0012670015135588808,
+        0.0019396445829548083,
+        0.0011793433825226093
+      ],
+      "arm": "online",
+      "nll": 15.64163341165575,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 7,
+      "adam_proposal_error": 4.08006961549745e-15,
+      "wall_s": 0.7617398770235013,
+      "block_nll": [
+        16.280897845321746,
+        10.88105880912487,
+        16.449863961987475,
+        16.513340646904584,
+        18.016709984183954,
+        16.439129050884954,
+        15.314247498623617,
+        15.23781949621479
+      ]
+    },
+    {
+      "prospective_credit_rms": [
+        0.001010496741489216,
+        0.001315943763760299,
+        0.005742786661844546,
+        0.0030371666116742937,
+        0.0027634047102390734,
+        0.0013214818566402208,
+        0.0008352000579932196,
+        0.0020267721739657537
+      ],
+      "calibration_credit_rms": [
+        0.001010496741489216,
+        0.001315943763760299,
+        0.005742786661844546,
+        0.0030371666116742937,
+        0.0027634047102390734,
+        0.0013214818566402208,
+        0.0008352000579932196,
+        0.0020267721739657537
+      ],
+      "predicted_credit_rms": [
+        0.001010496741489216,
+        0.001315943763760299,
+        0.005742786661844546,
+        0.0030371666116742937,
+        0.0027634047102390734,
+        0.0013214818566402208,
+        0.0008352000579932196,
+        0.0020267721739657537
+      ],
+      "first_event_credit_rms": [
+        0.058780120714756225,
+        0.04719438103663695,
+        0.14764409377631474,
+        0.05568388910065661,
+        0.10017324719969953,
+        0.05128848853888727,
+        0.06436971741304592,
+        0.08897616961767081
+      ],
+      "local_update_response_rms": [
+        0.002089942336788641,
+        0.0013396979131997284,
+        0.001186147587422345,
+        0.0014545244494844859,
+        0.0014724222426846152,
+        0.001272483424367012,
+        0.001950952509353119,
+        0.0011572928191171002
+      ],
+      "arm": "frozen",
+      "nll": 15.641691035681582,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 4.08006961549745e-15,
+      "wall_s": 0.3903144310170319,
+      "block_nll": [
+        16.280897845321746,
+        10.88105880912487,
+        16.449852306747424,
+        16.51329414530846,
+        18.01672646053208,
+        16.439063728191147,
+        15.314409277916207,
+        15.238225712310712
+      ]
+    },
+    {
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "zero",
+      "nll": 15.64171228819518,
+      "targets": 64,
+      "audits": 4,
+      "future_teachers": 0,
+      "adam_proposal_error": 4.093947403305265e-15,
+      "wall_s": 0.3432410940004047,
+      "block_nll": [
+        16.280897845321746,
+        10.881066387117476,
+        16.44981800321317,
+        16.513271031983166,
+        18.016775911068784,
+        16.438634122252306,
+        15.31516907091996,
+        15.238065933684823
+      ]
+    },
+    {
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "bptt",
+      "nll": 15.642235429995583,
+      "targets": 64,
+      "audits": 8,
+      "future_teachers": 0,
+      "adam_proposal_error": 4.0245584642661925e-15,
+      "wall_s": 0.385838190006325,
+      "block_nll": [
+        16.280897845321746,
+        10.88104327015417,
+        16.449834117972564,
+        16.513071545318176,
+        18.016970833951213,
+        16.44031418922157,
+        15.315408161523145,
+        15.240343476502085
+      ]
+    }
+  ],
+  "online_gain": {
+    "frozen": 5.762402583187054e-05,
+    "zero": 7.887653942972861e-05,
+    "bptt": 0.0006020183398334211
+  },
+  "whole_wall_s": 3.1233220900176093,
+  "peak_rss_kb": 335264,
+  "source_sha256": {
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289",
+    "experiments/credit/market_functional_future_credit.py": "a0c2e17627a9cef7494376dc2fcbefad53feab710d06ea73087775d4b5c4c2c0",
+    "experiments/credit/market_direct_future_credit_v3.py": "5df465d86207738056b76a94474b166b4de03fcfba8d4fa161b187d5df0e91ac",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim."
+}
