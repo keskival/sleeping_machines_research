@@ -1,0 +1,112 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "pool": 4,
+      "depth": 2,
+      "state_mode": "carry",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 4,
+      "depth": 2,
+      "state_mode": "reset",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 4,
+      "depth": 4,
+      "state_mode": "carry",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 4,
+      "depth": 4,
+      "state_mode": "reset",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 8,
+      "depth": 2,
+      "state_mode": "carry",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 8,
+      "depth": 2,
+      "state_mode": "reset",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 8,
+      "depth": 4,
+      "state_mode": "carry",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    },
+    {
+      "pool": 8,
+      "depth": 4,
+      "state_mode": "reset",
+      "updates": 3,
+      "skipped_prefix_events_per_lane": 24,
+      "feature_teacher_gradient_parameter_error": 0.0
+    }
+  ],
+  "clock_law": {
+    "pool": 8,
+    "reference_pool": 4,
+    "clock_scale": 2,
+    "clock_law_error": 0.0,
+    "common_clock_gradient": -0.0035561819000464916,
+    "finite_difference_error": 9.91188901788842e-13,
+    "same_single_layer_probabilities_winners_values_and_writes": true
+  },
+  "source_sha256": {
+    "experiments/credit/check_capacity_clock.py": "a0f81c88fb46834d0549f57a72736fa2679d107574a0a4ea24973fd0f50efd79",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/native_stream_language.py": "e344b6f3d421800d08c15cbbd8c67a4b7fd04d7d281669514c2d7690f2a1cfd9",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "experiments/common_prior_token_language.py": "2ab4eddae8862c1a650e60dc2276bedc6139b706dc9be97a256f4a959abf9498",
+    "experiments/window_replay_token_language.py": "c0d0764435f781332f35572fa15f79ab15ca1b4fcfd6e9981b3ea8b6c076fe4c",
+    "experiments/credit/check_window_replay.py": "25e126ea6f5d3a8c3fb34008970a307869c1e4479b1fcf2d4bdf419b97aa76d6",
+    "experiments/credit/check_capacity_window_replay.py": "5645787c26ae5b3ba79e01e748c8ffdd5a648eae7f740d4114c1d09ae4641240",
+    "sleeping_machines/capacity_clock_episodes.py": "065740279e6bcb5c868cb2c7aa946704926740d6415358a2d6715756c176a504",
+    "experiments/capacity_clock_token_language.py": "057709942d6ac02be3a95349f924cc9ce3cf1b64425a64f27af2558b2d0eeadb"
+  },
+  "scope": "Numerical gate: pool4 unchanged execution; pool8 declared clock law, same one-layer route probabilities/winners/values/writes, float64 common-intensity derivative and finite difference. Full-prefix/cached calibrated replay matches states, utility, RNG, gradients and Adam parameters across depth2/4,carry/reset. Longer network trajectories change with clocks. No quality, efficient learning or transfer claim."
+}
