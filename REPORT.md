@@ -2911,6 +2911,10 @@ Single-seed private DEV; same CPU model/updates/fitting-target count. Data diver
 
 Evidence aws_integrated_p24_unique_512k_decision_20261012_s6_v2.
 
+Confirmed common-acquired-state future-learning benefit: fresh versus stopping at the shared branch0.500948±0.063782NLL; fresh versus best post-branch replay0.618278±0.049410; selected fresh NLL7.574443±0.013927. Three-seed within-family development evidence, mean±sampleSD. Identical prior and acquired-state fingerprint within each pair; same131056targets/256updates and private2040-target DEV. Stop refers to the actual branch state after128updates; selected-model comparison allows all scheduled checkpoints. Extra fresh learning costs128updates relative to stopping; replay/fresh totals have equal targets. No trained allocation policy or external-architecture claim.
+
+Resource scope:3,164,842total parameters; core16receivers,4selected writes and16scored keys per target. Complete fitting includes alternative replay, readout, all gradient/optimizer work and diagnostics. New fitting GFLOPs, fitting MFLOPs/target and inference MFLOPs/target are untraced; no older arithmetic ledger is copied into these rows. CPU wall is measured for every arm.
+
 Common-prior, common-acquired-state intervention seed6: exact first-phase curve and complete learner fingerprint equality required before later data change.
 
 | Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
@@ -5551,6 +5555,53 @@ credit: quality gain versus exact +0.003675, fitting-time ratio 1.181x; joint: q
 | exact | 8946 | 89062 | 0 | 0 | 1024 |
 | credit | 8946 | 89062 | 13440 | 26880 | 288 |
 | joint | 8946 | 89062 | 13440 | 26880 | 288 |
+
+### Matched audit rate and native credit-memory attribution
+
+| Learner | DEV NLL | Full fitting seconds |
+| --- | --- | --- |
+| zero25 | 0.622797 | 137.251 |
+| reset_memory | 0.616164 | 159.571 |
+| Native learned credit | 0.613521 | 159.354 |
+
+Exact same seed194 actor/credit initialization, TRAIN exposure, native learning/clipping, factual race and teaching RNG,25% audit schedule. zero25 uses zero contrast prediction plus unbiased exact residual without native credit event computation; reset_memory still learns native credit parameters but erases numerical credit history before each request. These distinguish audit-rate/noise and persistent-memory effects from the saved credit arm. Four private DEV graphs, one actor seed; no independent confirmation or efficiency claim.
+
+Native learned credit versus zero25: quality gain +0.009276, time ratio 1.161x; Native learned credit versus reset_memory: quality gain +0.002643, time ratio 0.999x. These controls determine the interpretation of the preceding first quality gain.
+
+### Fixed native-credit confirmation on new causal graphs
+
+| Actor seed | Learner | Fresh DEV NLL | Full fitting seconds |
+| --- | --- | --- | --- |
+| 194 | exact | 0.690866 | 134.972 |
+| 194 | credit | 0.688186 | 159.354 |
+| 194 | zero25 | 0.691430 | 137.251 |
+| 194 | reset_memory | 0.688643 | 159.571 |
+| 195 | exact | 0.684532 | 132.971 |
+| 195 | credit | 0.685000 | 157.132 |
+| 195 | zero25 | 0.687860 | 131.053 |
+| 195 | reset_memory | 0.686431 | 153.394 |
+| 196 | exact | 0.686713 | 135.405 |
+| 196 | credit | 0.683240 | 161.341 |
+| 196 | zero25 | 0.686676 | 136.677 |
+| 196 | reset_memory | 0.688879 | 159.794 |
+
+Confirmation gate fails; mean quality gains exact +0.001895, zero25 +0.003180, reset_memory +0.002509. Exact comparison wins two of three; learning/memory controls improve in all three.
+
+Same unchanged architecture/data/learning rule; new graphs2004–2007, fixedactors194/195/196. Seed194 reuses saved training;195/196 fit unchanged source recipe. Four private graphs256targets per actor/learner; no target-domain weight adaptation. Full fitting includes512-target confidence acquisition and1024neural presentations; no public benchmark or efficiency claim.
+
+### Native credit teacher: common-outcome control variate
+
+| Learner | Selection DEV NLL | Full fitting seconds |
+| --- | --- | --- |
+| centered_credit | 0.621341 | 162.571 |
+| centered_reset | 0.621660 | 158.110 |
+| exact (saved) | 0.617196 | 134.972 |
+| credit (saved) | 0.613521 | 159.354 |
+| zero25 (saved) | 0.622797 | 137.251 |
+
+Diagnosed native temporal critic teacher: route loss minus same issued persistence baseline. Forecast actor/credit architecture,194initialization,8TRAIN graphs/two passes/prior acquisition/audit and noise schedules unchanged. Saved exact/zero25 controls retained; centered teacher exact-actor parity contract0.0. Original four selection graphs, not a confirmation. No dense controller, hidden labels, publicTEST or efficiency claim.
+
+Both route targets subtract the same issued baseline BCE, preserving their actual contrast. For binary outcome probabilityp, conditional target variance becomes p(1-p)*(z-z0)^2. The predictor remains native temporal/race memory with a linear readout. This is a diagnosed teacher repair, not a replacement dense controller; fresh-graph confirmation scores are separate.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
