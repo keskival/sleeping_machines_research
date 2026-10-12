@@ -2870,6 +2870,19 @@ Single-seed private DEV; same CPU model/updates/131056 fitting targets. Data div
 
 Evidence aws_integrated_p24_unique_stream_decision_20261012_s6_v1.
 
+Distinct natural experience at fixed learning-event budget: 131056fitting targets/256updates. Same original float32 integrated model; numeric state persists across the longer stream.
+
+| Exposure | Unique tokens | Fit targets | Initial NLL | Selected NLL | Context gain | Train seconds |
+| --- | --- | --- | --- | --- | --- | --- |
+| repeated | 65536 | 131056 | 8.162284 | 8.046572 | 0.233499 | 149.210 |
+| distinct | 131064 | 131056 | 8.076124 | 7.782228 | 0.394678 | 149.688 |
+
+Distinct-experience quality gain+0.264344; initial frequency-prior gain+0.086160; change in post-initialization learning gain+0.178184; change in contextual gain+0.161180.
+
+Single-seed private DEV; same CPU model/updates/131056 fitting targets. Data diversity, lane partition and corpus-wrap resets differ intentionally. TRAIN-only frequency prior uses each admitted prefix and is included in process cost. Initial-prior and learned gains separated. Context comparator is the same fixed readout on the mean causal feature from an8192-token TRAIN probe, not a refitted unigram or isolated memory ablation. No iso-data, training-FLOP, Transformer or nonstationary-stream claim.
+
+Evidence aws_integrated_p24_unique_stream_decision_20261012_s7_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5417,6 +5430,18 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
+
+### Longer-data complete native learning
+
+| Learner | Whole prequential NLL | Whole CPU seconds |
+| --- | --- | --- |
+| online (shared acquisition) | 10.892065 | 702.784 |
+| frozen (shared acquisition) | 10.890601 | 521.598 |
+| zero (shared acquisition) | 10.888917 | 510.495 |
+| bptt (shared acquisition) | 10.889114 | 548.009 |
+| bptt_from_initialization | 10.882954 | 399.366 |
+
+Long chronological Aug1 TRAIN test:1024 acquisition+1024 reuse groups,32targets each. Native BPTT also runs independently from original initialization; compare whole prequential NLL and whole CPU rather than warm-start row alone. Acquired state/critic/optimizer checkpoint preserved. Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Every row uses65,536targets and includes acquisition; initial-context/setup is outside arm time. Shared-acquisition controls isolate continuation; the independent-from-initialization reference compares whole native learning.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
