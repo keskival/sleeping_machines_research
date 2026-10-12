@@ -5515,6 +5515,17 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
+### Connected prospective mean-credit intervention
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 10.571007 | 166.303 |
+| market | frozen | 10.576801 | 80.597 |
+| market | zero | 10.548777 | 75.552 |
+| market | bptt | 10.546759 | 93.907 |
+
+Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
+
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -5615,6 +5626,47 @@ Same unchanged architecture/data/learning rule; new graphs2004–2007, fixedacto
 Diagnosed native temporal critic teacher: route loss minus same issued persistence baseline. Forecast actor/credit architecture,194initialization,8TRAIN graphs/two passes/prior acquisition/audit and noise schedules unchanged. Saved exact/zero25 controls retained; centered teacher exact-actor parity contract0.0. Original four selection graphs, not a confirmation. No dense controller, hidden labels, publicTEST or efficiency claim.
 
 Both route targets subtract the same issued baseline BCE, preserving their actual contrast. For binary outcome probabilityp, conditional target variance becomes p(1-p)*(z-z0)^2. The predictor remains native temporal/race memory with a linear readout. This is a diagnosed teacher repair, not a replacement dense controller; fresh-graph confirmation scores are separate.
+
+### Independent native shared-memory reciprocal teaching
+
+| Learner | Selection DEV NLL | Full fitting seconds |
+| --- | --- | --- |
+| separate | 0.615585 | 237.261 |
+| read_only | 0.617031 | 238.706 |
+| untaught | 0.616819 | 319.411 |
+| reciprocal | 0.616480 | 346.113 |
+
+Reciprocal quality gain versus separate: -0.000895; Reciprocal quality gain versus read_only: +0.000551; Reciprocal quality gain versus untaught: +0.000340. Single-seed development; compare the saved unshared native credit0.613521/159.354s for practical quality/work. Suppressed sharing controls execute diagnostic bank overhead; their timing is not the economical separate-bank implementation.
+
+| Learner | Discovery scans | Payload reads | Bank writes | F reads C | C reads F |
+| --- | --- | --- | --- | --- | --- |
+| separate | 193810 | 192469 | 14938 | 2100 | 2615 |
+| read_only | 193810 | 192469 | 14938 | 2123 | 2720 |
+| untaught | 193813 | 192469 | 14938 | 1981 | 2741 |
+| reciprocal | 193811 | 192469 | 14938 | 2023 | 2736 |
+
+Private affine development. Independent native hard-race shared reads; critic native receiver writes exposed as versioned relational records. Subsequent task loss teaches critic memory/read parameters through shared records within eight-feedback graph windows; numeric state persists. Bank destinations remain role/node or role/pair, not globally learned. Local native route derivative is a declared counterfactual surrogate, not exact expected hard-route gradient. All candidate payload transports/scans charged. No publicTEST, neural-depth scaling, full-future intervention teaching, optimizer meta-gradient or efficiency claim.
+
+Independent native read races and selected receiver writes share versioned records. Later forward task loss trains critic memory content and its read policy within retained gradient windows; the untaught control stops only critic record gradients and keeps the actor reader trainable. Physical completion gates visibility. Bank discovery uses bounded recency, and global write destinations are not learned.
+
+### Native shared-memory critic: actual future-update diagnosis
+
+| TRAIN graph | Critic update | Next NLL | Gain vs coast | Branch seconds |
+| --- | --- | --- | --- | --- |
+| 0 | none | 0.515013 | -0.000000 | 1.361 |
+| 0 | coast | 0.515013 | +0.000000 | 1.378 |
+| 0 | task | 0.515013 | +0.000000 | 1.375 |
+| 0 | regression | 0.515014 | -0.000001 | 1.370 |
+| 0 | combined | 0.515014 | -0.000001 | 1.369 |
+| 1 | none | 0.387123 | -0.000000 | 1.081 |
+| 1 | coast | 0.387123 | +0.000000 | 1.114 |
+| 1 | task | 0.387123 | +0.000000 | 1.091 |
+| 1 | regression | 0.387123 | -0.000000 | 1.089 |
+| 1 | combined | 0.387123 | -0.000000 | 1.099 |
+
+Component task/regression gradient cosines: -0.009619, -0.011601. Source acquisition 346.113s; complete diagnosis 18.141s including prefixes and every branch.
+
+TRAIN-only post-fit diagnosis, first two source graphs. Same16-feedback acquired state/RNG, five actual critic-only Adam interventions using copied acquired moments; actor weights/moments unchanged. Zero-gradient coast separates momentum carry from new-gradient effects. Next16feedback forecasts scored before labels, numeric shared memory continues, future weights fixed. Task-memory gradient versus loss-regression gradient and their sum, one existing0.001step, no tuning. No full optimizer meta-gradient, actor-learning continuation, heldout quality or efficiency claim. All prefix/branch work measured and source acquisition separately charged.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 

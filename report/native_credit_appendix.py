@@ -70,4 +70,13 @@ def pages():
   for episode,x in enumerate(r['rows']):
    for v in x['variants']:rows.append([str(episode),v['update'],f"{v['future_nll']:.6f}",f"{v['gain_vs_momentum_coast']:+.6f}",f"{v['wall_s']:.3f}"])
   result.append([('h2','Native shared-memory critic: actual future-update diagnosis'),('table',(['TRAIN graph','Critic update','Next NLL','Gain vs coast','Branch seconds'],rows,[23,42,32,39,31])),('p','Component task/regression gradient cosines: '+', '.join(f"{x['gradient_cosine']:+.6f}" for x in r['rows'])+f". Source acquisition {r['source_acquisition_wall_s']:.3f}s; complete diagnosis {r['whole_pipeline_wall_s']:.3f}s including prefixes and every branch."),('small',r['scope'])])
+ r=read('curie_task_taught_bank_20261012_v1_fit')
+ if r is not None:
+  rows=[]
+  for x in r['rows']:
+   targets=r['prior_acquisition_targets']+sum(t['targets'] for t in x['train'])
+   dev_targets=sum(t['targets'] for t in x['dev'])
+   rows.append([x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",f"{1000*x['whole_fit_wall_s']/targets:.3f}",f"{1000*sum(t['wall_s'] for t in x['dev'])/dev_targets:.3f}"])
+  v={x['arm']:x for x in r['rows']};gain=v['untaught']['mean_dev_nll']-v['reciprocal']['mean_dev_nll']
+  result.append([('h2','Native shared-bank memory taught by forward task loss'),('table',(['Learner','DEV NLL','Full fit seconds','Fit ms/target','DEV ms/target'],rows,[30,32,35,35,35])),('p',f"Reciprocal versus matched untaught quality gain {gain:+.6f}. Auxiliary regression now trains only the identical linear readout; future task losses train native critic memory/access parameters, with separate actor/memory/readout clipping. Saved raw native credit0.613521/159.354s remains the practical quality/work reference. Fitting denominator includes512confidence plus1024neural presentations; DEV256targets, fixed weights and causal numerical state."),('small',r['scope'])])
  return result
