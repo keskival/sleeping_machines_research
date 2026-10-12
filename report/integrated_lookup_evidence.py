@@ -130,4 +130,18 @@ def blocks():
     if replay_rows:
         result.extend([('p','Exact cached credit-window replay: own-model execution comparison. All recorded learning/teacher/gradient curves agree exactly except replay-work counters and elapsed time. Complete CPU training includes factual learning, counterfactual replay, clipping and optimizer. Completed points only; same seed/data/settings against saved full-prefix runs. No external-model, FLOP, energy or learned-estimator efficiency claim.'),
             ('table',(['Evidence','Fit targets','Full-prefix NLL','Cached NLL','Full-prefix seconds','Cached seconds','Time saved','Gate'],replay_rows,[65,22,24,24,24,24,20,12]))])
+    capacity=ROOT/'experiments/results/diagnostics/aws_capacity_acquisition_20261012_v1.json'
+    if capacity.exists():
+        d=json.loads(capacity.read_text());assert d['status']=='completed'
+        for name,digest in {**d['source_sha256'],**d['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[]
+        for level in d['levels']:
+            for r in level['rows']:
+                rows.append([str(r['pool']),str(r['targets']),str(r['parameters']),
+                    f"{r['selected_nll']:.6f}",f"{r['final_nll']:.6f}",f"{r['complete_training_s']:.3f}",
+                    f"{r['training_ms_per_target']:.4f}",str(r['selected_writes_per_target']),str(r['scored_keys_per_target'])])
+        result.extend([('p','Addressed capacity under fresh acquisition. '+d['scope']),
+            ('table',(['Pool','Fit targets','Parameters','Selected NLL','Final NLL','Train seconds','ms/target','Writes/target','Keys/target'],rows,[12,24,24,24,24,24,24,24,24])),
+            ('p','Evidence '+capacity.stem+'.')])
     return result
