@@ -1,0 +1,141 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_hidden_shift_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_market_hidden_shift_20261012_v1_smoke",
+    "mode": "smoke",
+    "seed": 184
+  },
+  "acquisition": {
+    "arm": "online",
+    "nll": 14.351794557231637,
+    "targets": 32,
+    "audits": 1,
+    "critic_updates": 1,
+    "wall_s": 0.1579535609926097,
+    "block_nll": [
+      10.63137667168045,
+      15.800780620524844,
+      15.716708794429458,
+      15.258312142291796
+    ],
+    "audited_mse": [
+      0.006784315841361368
+    ],
+    "audited_zero_mse": [
+      0.006784315841361368
+    ]
+  },
+  "rows": [
+    {
+      "arm": "online",
+      "nll": 15.245788728074373,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 2,
+      "wall_s": 0.29956592599046417,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.121496828856468,
+        15.1749078827892,
+        16.727746330950076,
+        16.788596276770004,
+        15.468914995140137,
+        14.916418594618026
+      ],
+      "audited_mse": [
+        0.00039911696708182844,
+        0.0006197921489854719
+      ],
+      "audited_zero_mse": [
+        0.00039911696708182844,
+        0.0006247894629614541
+      ]
+    },
+    {
+      "arm": "frozen",
+      "nll": 15.245788020793047,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.2893781409948133,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.12149246388747,
+        15.174906601648239,
+        16.72772758117385,
+        16.78860898625494,
+        15.468960428215151,
+        14.91637918969367
+      ],
+      "audited_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ],
+      "audited_zero_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ]
+    },
+    {
+      "arm": "zero",
+      "nll": 15.245788020793047,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.290188079001382,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.12149246388747,
+        15.174906601648239,
+        16.72772758117385,
+        16.78860898625494,
+        15.468960428215151,
+        14.91637918969367
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    },
+    {
+      "arm": "bptt",
+      "nll": 15.246248384363371,
+      "targets": 64,
+      "audits": 8,
+      "critic_updates": 0,
+      "wall_s": 0.35517262999201193,
+      "block_nll": [
+        15.289060083174437,
+        12.479128924944733,
+        15.121615488125745,
+        15.175905863684271,
+        16.728442213304376,
+        16.789891844025497,
+        15.468560146916328,
+        14.91738251073157
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    }
+  ],
+  "online_nll_gain": {
+    "frozen": -7.072813268393929e-07,
+    "zero": -7.072813268393929e-07,
+    "bptt": 0.0004596562889975786
+  },
+  "whole_wall_s": 2.2772080760041717,
+  "peak_rss_kb": 325172,
+  "source_sha256": {
+    "experiments/credit/market_credit_hidden_shift.py": "122964bc4d4ac054abebecef07638d96b3c67359c96a1ba6b249aa1bb6d8020f",
+    "experiments/credit/market_credit_continuation.py": "f7e7c741d30284a8fe94deab3754ab45ccae180f0b58809fe147fde1f279a234",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Controlled hidden conditional-change diagnostic: synthetic six-category marks on Aug1 TRAIN timestamps, uniform stationary mark marginals in both regimes, side persistence .95 before acquisition boundary and .05 after. Neither learner receives regime identity. Finite sample marginal frequencies need not match exactly. Not real-market quality evidence. Identical acquired actor/optimizer/critic/state; frozen critic also freezes trust calibration. Persistent credit activations still evolve. Online trains only after revealed audited credit; local gradients exact, boundary residual audits unbiased before nonlinear optimizer/clipping. All initialization/acquisition/critic/audit/optimizer/scoring CPU charged. No TEST, changing-bias attribution, sparse hardware or benchmark win."
+}
