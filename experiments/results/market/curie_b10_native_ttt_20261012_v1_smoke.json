@@ -1,0 +1,193 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_b10_native_ttt_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_b10_native_ttt_20261012_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "prospective_credit_rms": [
+      0.0,
+      0.00035141937866677177
+    ],
+    "calibration_credit_rms": [
+      0.0,
+      0.00035141937866677177
+    ],
+    "predicted_credit_rms": [
+      0.0,
+      0.00035141937866677177
+    ],
+    "first_event_credit_rms": [
+      0.0036118297387959662,
+      0.06191185165885589
+    ],
+    "local_update_response_rms": [
+      0.0024462512097749778,
+      0.0035547749564173617
+    ],
+    "arm": "online",
+    "nll": 10.567684774924391,
+    "targets": 16,
+    "audits": 0,
+    "future_teachers": 1,
+    "adam_proposal_error": 6.372125049836086e-13,
+    "wall_s": 0.2617683419957757,
+    "block_nll": [
+      10.042609971876699,
+      11.092759577972082
+    ]
+  },
+  "rows": [
+    {
+      "arm": "fully_frozen",
+      "nll": 5.709834692408567,
+      "targets": 16,
+      "wall_s": 0.01874399700318463,
+      "block_nll": [
+        4.1978531008742905,
+        7.221816283942843
+      ],
+      "audits": 0,
+      "future_teachers": 0
+    },
+    {
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "bptt",
+      "nll": 5.710856263519868,
+      "targets": 16,
+      "audits": 2,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.1222247010020965e-13,
+      "wall_s": 0.7927389719989151,
+      "block_nll": [
+        4.1978531008742905,
+        7.223859426165446
+      ]
+    },
+    {
+      "prospective_credit_rms": [],
+      "calibration_credit_rms": [],
+      "predicted_credit_rms": [],
+      "first_event_credit_rms": [],
+      "local_update_response_rms": [],
+      "arm": "zero",
+      "nll": 5.710876578970683,
+      "targets": 16,
+      "audits": 0,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.182831602444036e-13,
+      "wall_s": 0.8817672519944608,
+      "block_nll": [
+        4.1978531008742905,
+        7.223900057067076
+      ]
+    },
+    {
+      "prospective_credit_rms": [
+        0.001199531901465987,
+        5.410809244733553e-05
+      ],
+      "calibration_credit_rms": [
+        0.001199531901465987,
+        5.410809244733553e-05
+      ],
+      "predicted_credit_rms": [
+        0.001199531901465987,
+        5.410809244733553e-05
+      ],
+      "first_event_credit_rms": [
+        0.07985300720623031,
+        0.00367732245313364
+      ],
+      "local_update_response_rms": [
+        0.0019190821529636777,
+        0.0011409130456183495
+      ],
+      "arm": "frozen",
+      "nll": 5.710848013348672,
+      "targets": 16,
+      "audits": 0,
+      "future_teachers": 0,
+      "adam_proposal_error": 3.1732515920479543e-13,
+      "wall_s": 0.8429937699984293,
+      "block_nll": [
+        4.1978531008742905,
+        7.223842925823053
+      ]
+    },
+    {
+      "prospective_credit_rms": [
+        0.001199531901465987,
+        0.0001031683432697457
+      ],
+      "calibration_credit_rms": [
+        0.001199531901465987,
+        0.0001031683432697457
+      ],
+      "predicted_credit_rms": [
+        0.001199531901465987,
+        0.0001031683432697457
+      ],
+      "first_event_credit_rms": [
+        0.07985300720623031,
+        0.00367732245313364
+      ],
+      "local_update_response_rms": [
+        0.0019190821529636777,
+        0.0011409130456183495
+      ],
+      "arm": "online",
+      "nll": 5.710848013348672,
+      "targets": 16,
+      "audits": 0,
+      "future_teachers": 1,
+      "adam_proposal_error": 3.1732515920479543e-13,
+      "wall_s": 0.28383422098704614,
+      "block_nll": [
+        4.1978531008742905,
+        7.223842925823053
+      ]
+    }
+  ],
+  "online_gain": {
+    "fully_frozen": -0.001013320940105089,
+    "bptt": 8.250171195989253e-06,
+    "zero": 2.8565622010923164e-05,
+    "frozen": 0.0
+  },
+  "quality_gate": false,
+  "source_sha256": {
+    "experiments/credit/market_native_test_time.py": "e5d4c0581110d587f95f980fd9490b877a38c4207968f882ee3dde32cc204f6e",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/credit/real_online_episode_bridge.py": "5d243ad99f10a731a108d4454eb3c984bf2e737b1342e18fc719a37588c9c1cf",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/route_activation_memory.py": "a56487e5cdcc15babb2efdd5c6edb8713ec6eeaca564a09dc3b026d8cae90809",
+    "experiments/market/NATIVE_TEST_TIME_PROTOCOL.md": "d82a348bad12dd5b914f9cd140a713b691991d078822653880afe0b5e2ee6ded"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "whole_wall_s": 7.286789232020965,
+  "peak_rss_kb": 396472,
+  "critic_parameters": 34728,
+  "actor_parameters": 18164,
+  "scope": "Existing full18,164parameter market predictor/checkpoint retained; new native hard-race critic, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution."
+}

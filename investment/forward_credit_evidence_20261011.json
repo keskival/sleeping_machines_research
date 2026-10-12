@@ -24,7 +24,8 @@
     "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json": "f7d5bff10ba3317b655e5398b9d35815f6fb4b3218e0f7ccb665a1edb6038ea5",
     "experiments/results/diagnostics/aws_world_answer_changes_20261012_v1.json": "bb9adbba8a58796782345ca4ec76b34752d5091dc3ddf9f705fc61f9e5c70df8",
     "experiments/results/diagnostics/curie_fresh_world_answers_20261012_v1.json": "7ee6ab9cbdce8c0f512e7b522621d123d1660531df5c9b83dc7931f1b29755f1",
-    "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json": "7bbb2fd4f02500af787ed2d6f64671945eda0f1965bc60257120349e62c13837"
+    "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json": "7bbb2fd4f02500af787ed2d6f64671945eda0f1965bc60257120349e62c13837",
+    "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json": "37135cddfe74ff26bdd1a6a8b7d392c52227cd801574f26d0a092764e385a7ee"
   },
   "metrics": {
     "credit_error_static_reduction_pct": 98.35648344199768,
@@ -831,6 +832,28 @@
     "depth_utility_contract": {
       "result": "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json",
       "scope": "Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result."
+    },
+    "fresh_acquisition_repeat": {
+      "seed": 195,
+      "confirmation_gate": false,
+      "quality_gains": {
+        "exact": -2.0880576850901278e-05,
+        "prior": -1.7367558069636413e-05,
+        "persistence": -2.5060732165904653e-05
+      },
+      "depth_quality_gains": {
+        "4": {
+          "exact": 3.989276766511174e-05,
+          "prior": 4.209155349085836e-06,
+          "persistence": -5.078894460899819e-06
+        },
+        "8": {
+          "exact": -8.165392136694205e-05,
+          "prior": -3.894427148838642e-05,
+          "persistence": -4.504256987088173e-05
+        }
+      },
+      "scope": "Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions."
     }
   }
 }

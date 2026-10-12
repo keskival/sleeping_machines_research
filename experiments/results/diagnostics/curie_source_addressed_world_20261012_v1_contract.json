@@ -1,0 +1,225 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "checks": {
+    "parameter_schema_preserved": true,
+    "overlapping_issue_source_binding": true,
+    "earlier_forecast_unchanged": true,
+    "finite_native_actor_world_training": true,
+    "actor_gradient_squared_norm": 0.05833594684551337,
+    "critic_gradient_squared_norm": 0.5345499885967544
+  },
+  "rows": [
+    {
+      "nll": 0.4833960578988863,
+      "targets": 16,
+      "first_half_nll": 0.39643034086626067,
+      "second_half_nll": 0.5703617749315119,
+      "world_nll": 0.6929581361095748,
+      "world_brier": 0.24990548205967872,
+      "world_first_half_nll": 0.6931471805599453,
+      "world_second_half_nll": 0.6927690916592043,
+      "positive_fraction": 0.625,
+      "wall_s": 5.117770261014812,
+      "optimizer_updates": 2,
+      "peak_persistent_tensor_bytes": 23112,
+      "peak_occupied_nodes": 35,
+      "peak_world_addresses": 15,
+      "issued_trace": [
+        {
+          "issued_time": 0.005,
+          "feedback_time": 0.10643690775970041,
+          "query_id": 0,
+          "probability": 0.20000000298023224,
+          "world_probability": 0.5,
+          "target": 0
+        },
+        {
+          "issued_time": 0.605,
+          "feedback_time": 0.7389084212696115,
+          "query_id": 1,
+          "probability": 0.800000011920929,
+          "world_probability": 0.5,
+          "target": 1
+        },
+        {
+          "issued_time": 1.2049999999999998,
+          "feedback_time": 1.219399104500785,
+          "query_id": 2,
+          "probability": 0.20000000298023224,
+          "world_probability": 0.5,
+          "target": 0
+        },
+        {
+          "issued_time": 1.8049999999999997,
+          "feedback_time": 1.9944888266498908,
+          "query_id": 3,
+          "probability": 0.20000000298023224,
+          "world_probability": 0.5,
+          "target": 1
+        },
+        {
+          "issued_time": 2.405,
+          "feedback_time": 2.4432085105533945,
+          "query_id": 4,
+          "probability": 0.800000011920929,
+          "world_probability": 0.5,
+          "target": 1
+        },
+        {
+          "issued_time": 3.005,
+          "feedback_time": 3.184888411203486,
+          "query_id": 5,
+          "probability": 0.20000000298023224,
+          "world_probability": 0.5,
+          "target": 0
+        },
+        {
+          "issued_time": 3.6049999999999995,
+          "feedback_time": 3.765569430798456,
+          "query_id": 6,
+          "probability": 0.800000011920929,
+          "world_probability": 0.5,
+          "target": 1
+        },
+        {
+          "issued_time": 4.205,
+          "feedback_time": 4.331762814560981,
+          "query_id": 7,
+          "probability": 0.20000000298023224,
+          "world_probability": 0.5,
+          "target": 0
+        },
+        {
+          "issued_time": 4.805,
+          "feedback_time": 4.930403392932397,
+          "query_id": 8,
+          "probability": 0.19861850142478943,
+          "world_probability": 0.5002427697181702,
+          "target": 0
+        },
+        {
+          "issued_time": 5.404999999999999,
+          "feedback_time": 5.489436877534313,
+          "query_id": 9,
+          "probability": 0.8008446097373962,
+          "world_probability": 0.4999316334724426,
+          "target": 1
+        },
+        {
+          "issued_time": 6.005,
+          "feedback_time": 6.141269484813951,
+          "query_id": 10,
+          "probability": 0.8009713888168335,
+          "world_probability": 0.5032743811607361,
+          "target": 1
+        },
+        {
+          "issued_time": 6.6049999999999995,
+          "feedback_time": 6.671440838715267,
+          "query_id": 11,
+          "probability": 0.19833439588546753,
+          "world_probability": 0.49822357296943665,
+          "target": 1
+        },
+        {
+          "issued_time": 7.204999999999999,
+          "feedback_time": 7.346925667626897,
+          "query_id": 12,
+          "probability": 0.198476642370224,
+          "world_probability": 0.5031733512878418,
+          "target": 1
+        },
+        {
+          "issued_time": 7.805,
+          "feedback_time": 7.954383619250865,
+          "query_id": 13,
+          "probability": 0.1980089545249939,
+          "world_probability": 0.5021024346351624,
+          "target": 0
+        },
+        {
+          "issued_time": 8.405000000000001,
+          "feedback_time": 8.432527230783515,
+          "query_id": 14,
+          "probability": 0.8019310832023621,
+          "world_probability": 0.49999678134918213,
+          "target": 1
+        },
+        {
+          "issued_time": 9.005,
+          "feedback_time": 9.145012965159772,
+          "query_id": 15,
+          "probability": 0.8015703558921814,
+          "world_probability": 0.4992867112159729,
+          "target": 1
+        }
+      ],
+      "events": 208,
+      "queries": 16,
+      "candidate_keys": 122,
+      "value_reads": 32,
+      "sensor_decodes": 32,
+      "selected_updates": 832,
+      "counterfactual_unit_values": 1664,
+      "discovery_context_reads": 138,
+      "relationship_candidate_updates": 1563,
+      "relationship_reads": 122,
+      "credit_events": 32,
+      "credit_candidate_keys": 256,
+      "credit_selected_updates": 128,
+      "credit_counterfactual_values": 256,
+      "credit_state_reads": 0,
+      "critic_targets": 16,
+      "exact_alternative_audits": 16,
+      "critic_contrast_squared_error": 0.0,
+      "audited_contrast_squared_magnitude": 0.0,
+      "bank_scored_keys": 2507,
+      "bank_value_reads": 166,
+      "bank_discovery_records": 2774,
+      "bank_context_reads": 2507,
+      "bank_writes": 240,
+      "bank_counterfactual_values": 2507,
+      "forward_credit_reads": 15,
+      "critic_forward_reads": 25,
+      "bank_peak_records": 93,
+      "world_queries": 16,
+      "world_feedback": 16,
+      "world_nll_sum": 11.087330162525177,
+      "world_brier_sum": 3.9984877129548595,
+      "route_logit_gap_squared": 4.915445146025377e-05,
+      "route_contrast_residual_squared": 3.079160460828234e-06,
+      "route_label_noise_proxy": 1.2288423524961573e-05,
+      "source_addressed_world_events": 32
+    }
+  ],
+  "source_sha256": {
+    "experiments/causal_induction/world_credit_pipeline.py": "d0a016168a464abf580ab412521ab9f82bfb2e44dc168fa2d9ccd71bffb7442d",
+    "experiments/causal_induction/world_credit_sensor.py": "18feb454a5dc53a3aa96a55e6a4cb14bd2e0ea9e142bfdac49b212187bc1c681",
+    "experiments/causal_induction/world_credit_run.py": "c8c4f2fbadcdc475a49566f4b9bf33f75484587d4e0e6fe403c85a1737da2b16",
+    "experiments/causal_induction/WORLD_CREDIT_PROTOCOL.md": "2ba842a8c5c2b5ccf0cb49c9661cc8d7f2c003a0a8d0f9f39bf9be8b90f001f1",
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/task_taught_run.py": "29603884d2df59fbfe98abf2dbb62683feed66d9baf1a50e701106eb2553bdb0",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/causal_induction/source_addressed_world_credit.py": "4c57118122218484eab9eb8eaa29e8554e4f7ec414347eee70f32b92f13da4cb",
+    "experiments/causal_induction/SOURCE_ADDRESSED_WORLD_PROTOCOL.md": "cd216d75ec1697e88bc364f4b05a2330fefa1d989f7d535ca83ab624f70937ca",
+    "experiments/credit/source_addressed_world_contract.py": "366792f405c3f317e73d4dbf5665d36f01d33bae8414e3b71525ba240433912a"
+  },
+  "input_sha256": {
+    "experiments/results/causal_induction/curie_world_credit_20261012_v1_acquisition.json": "ff8b5a90463f540861d51277f1b636e62532920a815ea711ef902368ea6346c0",
+    "data/causal_induction/curie_causal_nonlinear_20261012_v2_prepare/train_4000_base.npz": "1073750c9a96ea46ba751777072652e7a0e909d52e9d34069244b0c49efce20c"
+  },
+  "whole_wall_s": 6.0117957050097175,
+  "peak_rss_kb": 501016,
+  "scope": "Native child receipt/parameter contract and16target source integrated smoke; no utility comparison or long acquisition/deployment admission."
+}

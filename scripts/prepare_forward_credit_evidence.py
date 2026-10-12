@@ -95,6 +95,13 @@ def main():
         else:
             native_credit[name]=dict(result=relative,scope='Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result.')
     packet['native_shared_world_credit']=native_credit
+    repeated=ROOT/'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json'
+    if repeated.exists():
+        record=json.loads(repeated.read_text());assert record['status']=='completed'
+        for group in ['source_sha256','parent_sha256']:
+            for source,digest in record[group].items():assert sha(ROOT/source)==digest,source
+        parents[str(repeated.relative_to(ROOT))]=sha(repeated)
+        native_credit['fresh_acquisition_repeat']=dict(seed=record['seed'],confirmation_gate=record['confirmation_gate'],quality_gains=record['quality_gains'],depth_quality_gains=record['depth_quality_gains'],scope=record['scope'])
     assert f['accuracy_gate'] and all(x>0 for x in f['comparisons']['transport_over_static_full']['per_prefix_gain'])
     (ROOT/'investment/forward_credit_evidence_20261011.json').write_text(json.dumps(packet,indent=2)+'\n')
     print(json.dumps(metrics))
