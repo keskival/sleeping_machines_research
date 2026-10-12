@@ -58,6 +58,21 @@ def main():
         if path.exists():
             record=json.loads(path.read_text());assert record['status']=='completed';parents[str(path.relative_to(ROOT))]=sha(path)
     packet['generated_credit_status']='Optimized width8 online/frozen finalDEV gain6/6, superiority to own-nativeAdamW unconfirmed. Width16 deep credit improves versus head-only, width32 harms. Event-conditioned query field repairs online-versus-frozen atwidth32 but remains worse than head-only and nativeAdamW. Learned amplitude/momentum comparison running; no pending score promoted.'
+    heads_path=ROOT/'experiments/results/credit/curie_native_event_heads_20261012_v1_measure.json'
+    if heads_path.exists():
+        heads=json.loads(heads_path.read_text());assert heads['status']=='completed';parents[str(heads_path.relative_to(ROOT))]=sha(heads_path)
+        packet['matched_event_deep_utility']=dict(rows=[{k:r[k] for k in ['variant','width','depth','head_only_final_dev_nll','online_final_dev_nll','online_gain_vs_matched_heads']} for r in heads['rows']],scope=heads['scope'])
+        packet['generated_credit_status']='Actual matched acquired-core/head controls: new event optimizer loses7/8; previous cross-configuration depth8 deep-benefit interpretation corrected. Local variants stop; full1400TaxiTRAIN threepasses/depth8/16/32 fresh-actor quality/work test running. Dense internal writes and episode resets remain.'
+    cohort=[]
+    for seed in [99913,99914,99915]:
+        path=ROOT/f'experiments/results/credit/curie_native_cohort_event_20261012_v1_s{seed}_fit.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert sha(ROOT/name)==digest,name
+        parents[str(path.relative_to(ROOT))]=sha(path)
+        cohort.append(dict(seed=seed,config=record['config'],comparisons=[{k:r[k] for k in ['depth','online_gain_vs_frozen','online_gain_vs_matched_heads','online_gain_vs_adam','matched_quality_wall_ratio']} for r in record['rows']],scope=record['scope']))
+    if cohort:
+        packet['native_cohort_learning']=cohort;packet['generated_credit_status']='Complete native cohort/depth stage finished; source-bound seed/depth quality and complete matched-quality CPU comparisons recorded, exact matched heads/frozen/own-nativeAdamW. No public TEST or hardware claim.'
     assert f['accuracy_gate'] and all(x>0 for x in f['comparisons']['transport_over_static_full']['per_prefix_gain'])
     (ROOT/'investment/forward_credit_evidence_20261011.json').write_text(json.dumps(packet,indent=2)+'\n')
     print(json.dumps(metrics))

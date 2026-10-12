@@ -1,0 +1,7 @@
+# B1 actual matched acquired-core controls for event optimizers
+
+Correction: the earlier structured field's head-only DEV values −0.34401/−0.25264 atwidth32 have a different acquired core from event/momentum variants. Comparing those values is cross-configuration quality only; it does not isolate the new variants' deep-adaptation contribution. The batched-execution protocol's provisional deep-benefit wording is superseded by this correction, recorded beside current results. Preserve immutable parent protocols/results.
+
+Replay each new batched and held-version stable optimizer's exact128-block acquisition atwidth32/16,depth4/8. Assert mean acquisition NLL and starting DEV match parent to1e-10. Freeze core bitwise, inherit same headAdamW state and learn identical512reuse blocks with same32DEV512targets/every32scoring cadence. Record exact matched online/head-only differences, head-only prequential loss and per-sequence likelihood. No source/weight changes to parent, no TEST or new model grid. This is a required causal capability control for current variants, not a timing-supremacy claim or confirmation.
+
+One unique one-jobrun_safequeue/oneCPU/RSS1.5GB/9GiBfloor/600s. Parent sourcehashes validated. Run after both stable fits finish; current report and next scale choice use only this matched control. No reuse of structured head-only numbers as a matched control for new acquisition policies.

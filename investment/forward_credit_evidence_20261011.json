@@ -18,7 +18,8 @@
     "experiments/results/credit/curie_native_optimized_credit_20261011_v1_s2_fit.json": "b116816aa55bf48e2a3397abfe64ba4c1cb7fdd7beb53e4a09db5edae3fafae8",
     "experiments/results/credit/curie_native_head_only_20261011_v1_measure.json": "617cb1f259d9fd3fbb314f8345518a6c3481199f54b412f1c63444f577f48edf",
     "experiments/results/credit/curie_native_event_credit_20261012_v1_d32_fit.json": "688b3a2b0910e93fb3d90d0f56430318ff604abc09e82b3ef74a10a837e479b2",
-    "experiments/results/credit/curie_native_event_credit_20261012_v1_d16_fit.json": "628f8e5cc90742935b3f93c7074177194b216041d272df5d3b32fceb56c0779f"
+    "experiments/results/credit/curie_native_event_credit_20261012_v1_d16_fit.json": "628f8e5cc90742935b3f93c7074177194b216041d272df5d3b32fceb56c0779f",
+    "experiments/results/credit/curie_native_event_heads_20261012_v1_measure.json": "d76390ead9a569827f3259e5878bbaf90d4978c60b367440cecf73df118e9720"
   },
   "metrics": {
     "credit_error_static_reduction_pct": 98.35648344199768,
@@ -572,5 +573,74 @@
     },
     "scope": "Three initializations, whole native depth2/4/8 width16,1400TaxiTRAIN sequences cropped32events/three passes,128reused DEV sequences. Future-trained180parameter group-scale controller retains exact actor backprop. All nine quality comparisons improve; complete CPU learning time increases. No efficient learned-core-credit or hardware claim."
   },
-  "generated_credit_status": "Optimized width8 online/frozen finalDEV gain6/6, superiority to own-nativeAdamW unconfirmed. Width16 deep credit improves versus head-only, width32 harms. Event-conditioned query field repairs online-versus-frozen atwidth32 but remains worse than head-only and nativeAdamW. Learned amplitude/momentum comparison running; no pending score promoted."
+  "generated_credit_status": "Actual matched acquired-core/head controls: new event optimizer loses7/8; previous cross-configuration depth8 deep-benefit interpretation corrected. Local variants stop; full1400TaxiTRAIN threepasses/depth8/16/32 fresh-actor quality/work test running. Dense internal writes and episode resets remain.",
+  "matched_event_deep_utility": {
+    "rows": [
+      {
+        "variant": "batched",
+        "width": 32,
+        "depth": 4,
+        "head_only_final_dev_nll": -0.339654448297943,
+        "online_final_dev_nll": -0.292412852252003,
+        "online_gain_vs_matched_heads": -0.047241596045940026
+      },
+      {
+        "variant": "batched",
+        "width": 32,
+        "depth": 8,
+        "head_only_final_dev_nll": -0.2867158707565689,
+        "online_final_dev_nll": -0.27482831580138467,
+        "online_gain_vs_matched_heads": -0.011887554955184232
+      },
+      {
+        "variant": "batched",
+        "width": 16,
+        "depth": 4,
+        "head_only_final_dev_nll": -0.31062187286303267,
+        "online_final_dev_nll": -0.27721497781914034,
+        "online_gain_vs_matched_heads": -0.033406895043892326
+      },
+      {
+        "variant": "batched",
+        "width": 16,
+        "depth": 8,
+        "head_only_final_dev_nll": -0.23501067471746453,
+        "online_final_dev_nll": -0.1954353795172165,
+        "online_gain_vs_matched_heads": -0.03957529520024802
+      },
+      {
+        "variant": "stable",
+        "width": 32,
+        "depth": 4,
+        "head_only_final_dev_nll": -0.31939736554445747,
+        "online_final_dev_nll": -0.3016342893183132,
+        "online_gain_vs_matched_heads": -0.01776307622614426
+      },
+      {
+        "variant": "stable",
+        "width": 32,
+        "depth": 8,
+        "head_only_final_dev_nll": -0.24404491906399026,
+        "online_final_dev_nll": -0.14553900544007797,
+        "online_gain_vs_matched_heads": -0.09850591362391228
+      },
+      {
+        "variant": "stable",
+        "width": 16,
+        "depth": 4,
+        "head_only_final_dev_nll": -0.3135686944105302,
+        "online_final_dev_nll": -0.3154596436854239,
+        "online_gain_vs_matched_heads": 0.001890949274893694
+      },
+      {
+        "variant": "stable",
+        "width": 16,
+        "depth": 8,
+        "head_only_final_dev_nll": -0.29308013458970794,
+        "online_final_dev_nll": -0.27885131317260575,
+        "online_gain_vs_matched_heads": -0.014228821417102189
+      }
+    ],
+    "scope": "Exact new-variant acquisition replay/meanNLL+DEV parity; same acquired core/head optimizer, then512reuse heads only/corebitwisefrozen. Reused32DEV512targets, one initialization. Earlier structured acquired-core control is a cross-configuration comparison, not a matched deep-benefit claim for these variants; no startup-matched timing claim."
+  }
 }

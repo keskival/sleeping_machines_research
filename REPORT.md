@@ -5022,7 +5022,7 @@ Single initialization, same d8/modes4 native model,16history/16scored targets pe
 
 The credit networks have144,704/276,752 parameters versus native actors3,056/5,056. All2,112/4,112 deep/input parameters are proposed each update; inference still computes all temporal modes and layers, with one addressed mark write per input. This is connected finite-update credit learning, not sparse parameter activity or hardware efficiency.
 
-A stronger comparison uses the parity-validated compiled temporal scan for every arm, exact local AdamW head updates for learned credit, and native BP AdamW alongside SGD. It checks whether the advantage survives optimized backward execution and stronger conventional optimization before further scaling.
+The completed stronger comparison below uses the same parity-validated compiled temporal scan and nativeAdamW; its three-seed result does not confirm the weak-SGD advantage. All completed data remain evidence.
 
 ### Optimized native learning: three initializations
 
@@ -5145,6 +5145,87 @@ Same128acquisition/512reuse, one initialization/reused DEV. Maximum typed step0.
 The previous query field saturates its fixed0.005 core-step norm on every reuse block; nativeAdamW mean steps are8–15 times larger atwidth32. This variant learns bounded shared typed step sizes and momentum from actual future likelihood, retaining event-conditioned hard queries and shared deep responsibilities.
 
 Same128acquisition/512reuse, one initialization/reused DEV. Maximum typed step0.003, initial0.001, initialmomentum0.9, globalactualstepnormcap0.2. Incoming momentum is detached for local conditional teaching and shared after acquisition for online/frozen. Necessary native joint gradient check passes3.38e-16; arithmetic correctness does not replace quality/work evidence. All teacher/reference/optimizer/packet/evaluation work included; dense numerical writes and independent sequence resets remain.
+
+### Batched depth execution: width32
+
+| Depth | Learner | DEV NLL | Whole seconds | Meta commits |
+| --- | --- | --- | --- | --- |
+| 4 | online | -0.292413 | 19.127 | 118 |
+| 4 | frozen | -0.208889 | 13.957 | 0 |
+| 4 | bp_adam | -0.366616 | 9.524 | 0 |
+| 8 | online | -0.274828 | 29.698 | 118 |
+| 8 | frozen | -0.225445 | 20.653 | 0 |
+| 8 | bp_adam | -0.302766 | 14.773 | 0 |
+
+Batched depth execution preserves the event-credit update/query objective, with nonzero native output/parameter-gradient parity checked before fitting. Held-version teaching averages arrived conditional gradients over16blocks before changing the credit function, while actor updates remain per-block. It records teacher receipts separately from optimizer commits.
+
+Registered unchanged128acquisition/512reuse, reused32TaxiDEV512targets, one initialization. Same strong nativeAdamW andSGD/frozencredit references; compare acquired-core/head-only from the completed diagnosis. CompleteCPU work paid, no public TEST/FLOP/hardware claim. Dense internal writes and reset between independent sequences remain.
+
+### Batched depth execution: width16
+
+| Depth | Learner | DEV NLL | Whole seconds | Meta commits |
+| --- | --- | --- | --- | --- |
+| 4 | online | -0.277215 | 18.436 | 118 |
+| 4 | frozen | -0.334223 | 13.361 | 0 |
+| 4 | bp_adam | -0.352962 | 9.165 | 0 |
+| 8 | online | -0.195435 | 28.937 | 118 |
+| 8 | frozen | -0.235147 | 20.336 | 0 |
+| 8 | bp_adam | -0.240308 | 14.076 | 0 |
+
+Batched depth execution preserves the event-credit update/query objective, with nonzero native output/parameter-gradient parity checked before fitting. Held-version teaching averages arrived conditional gradients over16blocks before changing the credit function, while actor updates remain per-block. It records teacher receipts separately from optimizer commits.
+
+Registered unchanged128acquisition/512reuse, reused32TaxiDEV512targets, one initialization. Same strong nativeAdamW andSGD/frozencredit references; compare acquired-core/head-only from the completed diagnosis. CompleteCPU work paid, no public TEST/FLOP/hardware claim. Dense internal writes and reset between independent sequences remain.
+
+### Held-version averaged future teaching: width32
+
+| Depth | Learner | DEV NLL | Whole seconds | Meta commits |
+| --- | --- | --- | --- | --- |
+| 4 | online | -0.301634 | 19.230 | 32 |
+| 4 | frozen | -0.284324 | 14.037 | 0 |
+| 4 | bp_adam | -0.366616 | 9.660 | 0 |
+| 8 | online | -0.145539 | 30.128 | 32 |
+| 8 | frozen | -0.028531 | 21.397 | 0 |
+| 8 | bp_adam | -0.302766 | 15.572 | 0 |
+
+Batched depth execution preserves the event-credit update/query objective, with nonzero native output/parameter-gradient parity checked before fitting. Held-version teaching averages arrived conditional gradients over16blocks before changing the credit function, while actor updates remain per-block. It records teacher receipts separately from optimizer commits.
+
+Registered unchanged128acquisition/512reuse, reused32TaxiDEV512targets, one initialization. Same strong nativeAdamW andSGD/frozencredit references; compare acquired-core/head-only from the completed diagnosis. CompleteCPU work paid, no public TEST/FLOP/hardware claim. Dense internal writes and reset between independent sequences remain.
+
+### Held-version averaged future teaching: width16
+
+| Depth | Learner | DEV NLL | Whole seconds | Meta commits |
+| --- | --- | --- | --- | --- |
+| 4 | online | -0.315460 | 17.807 | 32 |
+| 4 | frozen | -0.326603 | 12.849 | 0 |
+| 4 | bp_adam | -0.352962 | 8.986 | 0 |
+| 8 | online | -0.278851 | 27.821 | 32 |
+| 8 | frozen | -0.278909 | 19.675 | 0 |
+| 8 | bp_adam | -0.240308 | 13.855 | 0 |
+
+Batched depth execution preserves the event-credit update/query objective, with nonzero native output/parameter-gradient parity checked before fitting. Held-version teaching averages arrived conditional gradients over16blocks before changing the credit function, while actor updates remain per-block. It records teacher receipts separately from optimizer commits.
+
+Registered unchanged128acquisition/512reuse, reused32TaxiDEV512targets, one initialization. Same strong nativeAdamW andSGD/frozencredit references; compare acquired-core/head-only from the completed diagnosis. CompleteCPU work paid, no public TEST/FLOP/hardware claim. Dense internal writes and reset between independent sequences remain.
+
+### Matched acquired-core correction and deep utility
+
+| Rule | Width/depth | Heads DEV NLL | Online DEV NLL | Online gain |
+| --- | --- | --- | --- | --- |
+| batched | 32/4 | -0.339654 | -0.292413 | -0.047242 |
+| batched | 32/8 | -0.286716 | -0.274828 | -0.011888 |
+| batched | 16/4 | -0.310622 | -0.277215 | -0.033407 |
+| batched | 16/8 | -0.235011 | -0.195435 | -0.039575 |
+| stable | 32/4 | -0.319397 | -0.301634 | -0.017763 |
+| stable | 32/8 | -0.244045 | -0.145539 | -0.098506 |
+| stable | 16/4 | -0.313569 | -0.315460 | +0.001891 |
+| stable | 16/8 | -0.293080 | -0.278851 | -0.014229 |
+
+New event optimizer variants lose to their identical acquired-core/head-only controls in seven of eight cases. Held-version width16depth4 gains0.001891; other cases lose0.01189–0.09851. Core weights stay bitwise fixed and replay matches starting acquisition likelihood/DEV.
+
+Correction: comparing event width32depth8 NLL−0.27483 with the earlier structured head-only−0.25264 does not isolate deep-learning benefit, because the acquired cores differ. The matched event head-only value is−0.28672, so this variant loses by0.01189. The provisional deep-benefit interpretation in its immutable batching protocol is superseded by this matched control.
+
+Same128acquisition512reuse/reused32DEV512targets, one initialization. Heads include addressed-memory values/rates and output clocks. This is a matched capability control, not a startup-matched timing comparison. No TEST, new architecture or family verdict.
+
+Local variant development stops here. The registered next test selects the better of the two declared width32depth8 recipes, starts a fresh actor, uses all1400TRAIN sequences/threepasses, and compares depths8/16/32 with identical acquired-core heads/frozen and exact nativeAdamW. Complete acquisition-inclusive CPU work and final/prequential quality decide whether the construction scales.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
