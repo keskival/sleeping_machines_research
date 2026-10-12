@@ -2911,6 +2911,19 @@ Single-seed private DEV; same CPU model/updates/fitting-target count. Data diver
 
 Evidence aws_integrated_p24_unique_512k_decision_20261012_s6_v2.
 
+Common-prior, common-acquired-state intervention seed6: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 65536 | 8.045605 | 8.156233 | 8.045605 | 149.398 |
+| fresh | 131072 | 8.045605 | 7.587435 | 7.587435 | 149.399 |
+
+Fresh-versus-replay future-learning gain+0.568798NLL; fresh-versus-stopping at the shared branch+0.458171. Full acquired-state SHA256 3f56124d5f9da4607166013c06e8474ec1e44a2502d8f30fa4e22f6524c65fd7.
+
+Single-seed private DEV, same first65536tokens/prior/first128updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second128updates use repeated versus fresh65536tokens. Same131056fitting targets,256updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_decision_20261012_s6_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5470,6 +5483,30 @@ Functional anchors condition critic on exact first-event state cotangent and cou
 | bptt_from_initialization | 10.882954 | 399.366 |
 
 Long chronological Aug1 TRAIN test:1024 acquisition+1024 reuse groups,32targets each. Native BPTT also runs independently from original initialization; compare whole prequential NLL and whole CPU rather than warm-start row alone. Acquired state/critic/optimizer checkpoint preserved. Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Every row uses65,536targets and includes acquisition; initial-context/setup is outside arm time. Shared-acquisition controls isolate continuation; the independent-from-initialization reference compares whole native learning.
+
+### Native future-sensor interface
+
+| Learner | DEV NLL | Full fitting seconds | Target presentations |
+| --- | --- | --- | --- |
+| self | 0.666639 | 81.423 | 1024 |
+| routed | 0.675044 | 133.808 | 1024 |
+
+Integrated sensor interface: shared two-layer/two-head/two-receiver temporal core, addressed persistent node states; all receiver proposals during training, winner-only inference; up to8 recent source keys per query and one paid nonwinner sensor decode for conditional route teaching. Sources are selected only at sensor reads; inter-node event delivery and connected learned critic not yet implemented. No hidden graph/gate/oracle access. Eight TRAIN graphs/two passes, four separate development graphs. No depth advantage, credit replacement, public TEST or Transformer claim. Counts are executed operations, not full FLOP/energy estimates. Computational source contexts read at max physical/computational arrival without any future observed data.
+
+First-pass routed actor loses to self-only0.666639 and acquired persistence0.618503. Its selected value-read counter excludes discovery traffic: every request also reads/transports candidate_keys+1 contexts. This result diagnoses the sensor interface, not the full model family.
+
+### Observation-acquired relationships and sensor repair
+
+| Learner | DEV NLL | Full fitting seconds | Target presentations |
+| --- | --- | --- | --- |
+| residual_self | 0.615994 | 82.359 | 1536 |
+| residual_routed | 0.620672 | 136.889 | 1536 |
+| structural_routed | 0.617000 | 136.501 | 1536 |
+| Acquired persistence | 0.618997 | 0.015 | 512 |
+
+Three native arms diagnose persistence-based sensor output versus additional publicly acquired sparse temporal co-transition evidence. Same8TRAIN graphs/two passes plus charged512-target calibration acquisition; same4DEV graphs. Shared core/actual hard source routes and exact paid nonwinner credit retained. Edge statistics are generic causal evidence, not proven parent edges; their scoring/utility learned, statistic update kernel prescribed. No learned connected credit claim, depth/Transformer/public TEST/efficiency claim.
+
+Sparse observed relationship evidence improves routed NLL0.620672→0.617000. Self-only still leads0.615994; acquired persistence is0.618997 on the same four development graphs. No native routing/credit advantage declared.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
