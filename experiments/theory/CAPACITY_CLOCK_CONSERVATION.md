@@ -29,3 +29,5 @@ Unchanged prefixes reuse physical state and RNG exactly; branch continuations ne
 ## Registered next test
 
 First pass the pool4 identity, pool8 clock-law/common-intensity derivative and calibrated cached/full-prefix gradient/Adam contracts. Then bounded P24D2H2U8 resource fit followed by both131056and524272fresh-target seed6 points; same data/prior/update/DEV counts as the completed raw pool8 and cached pool4 members. No small-quality veto of the larger point. Charge complete training/process wall and all32scored keys/target; retain4selected writes. Select on completed larger quality/work. No public/reserved4M scoring, new dense controls or Curie shared-leg implementation duplication.
+
+Numerical gate completed: aws_capacity_clock_contract_20261012_v2 has zero clock-law error, common-intensity derivative FD error9.91e-13, and exact cached/full-prefix features/state/utility/RNG/gradients/parameters for24paired Adam updates across pools4/8,depth2/4,carry/reset. V1 checker omitted initial read keys in its expected-delay formula; it failed before fitting and its logs stay. Actual-score formula is corrected. Quality fits follow this gate.
