@@ -2846,6 +2846,30 @@ One seed; same CPU host/data/updates/selection opportunities and integrated mech
 
 Numerical integration gate: three AdamW updates with carried state, repeated token IDs, EOS resets and two credit windows; maximum forward/state error9.54e-7, gradient error1.20e-7, parameter error1.06e-7, optimizer error7.46e-9; RNG states equal. Evidence aws_integrated_lookup_parity_20261012_v1 and aws_integrated_p24_64k_lookup_decision_20261012_v1.
 
+Precision-stabilized integrated execution: float64 retains the same model and learning operations. The32-update diagnosis agrees within2.3e-14NLL. Full64K measurements below include all factual/alternative learning and optimizer work.
+
+| Seed | Lookup | Selected NLL | Training seconds | Engine seconds |
+| --- | --- | --- | --- | --- |
+| 6 | ordinary | 8.105794 | 173.704 | 176.595 |
+| 6 | batched | 8.105794 | 140.719 | 143.518 |
+
+Seed6 full DEV curve maximum error2.25e-10; ordinary/batched training1.234x. Against saved float32 ordinary: quality gain-0.060189, training ratio1.064x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Full-curve parity criterion1e-8. Useful retained-quality/work gate: failed; original float32 retained.
+
+Confirmations: no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.
+
+Distinct natural experience at fixed learning-event budget: 131056fitting targets/256updates. Same original float32 integrated model; numeric state persists across the longer stream.
+
+| Exposure | Unique tokens | Fit targets | Initial NLL | Selected NLL | Context gain | Train seconds |
+| --- | --- | --- | --- | --- | --- | --- |
+| repeated | 65536 | 131056 | 8.162284 | 8.045606 | 0.227745 | 149.695 |
+| distinct | 131064 | 131056 | 8.076124 | 7.803405 | 0.407795 | 149.410 |
+
+Distinct-experience quality gain+0.242201; initial frequency-prior gain+0.086160; change in post-initialization learning gain+0.156041; change in contextual gain+0.180050.
+
+Single-seed private DEV; same CPU model/updates/131056 fitting targets. Data diversity, lane partition and corpus-wrap resets differ intentionally. TRAIN-only frequency prior uses each admitted prefix and is included in process cost. Initial-prior and learned gains separated. Context comparator is the same fixed readout on the mean causal feature from an8192-token TRAIN probe, not a refitted unigram or isolated memory ablation. No iso-data, training-FLOP, Transformer or nonstationary-stream claim.
+
+Evidence aws_integrated_p24_unique_stream_decision_20261012_s6_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
