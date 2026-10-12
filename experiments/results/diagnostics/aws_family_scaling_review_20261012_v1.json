@@ -1,0 +1,217 @@
+{
+  "status": "completed_analysis",
+  "battle": "R1",
+  "evidence": "single-seed development",
+  "decision": "Retain measured width winner; do not infer a universal capacity exponent or Transformer crossover.",
+  "rows": [
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p16_s6_20261005_v1.json",
+      "sha256": "6087c2835024422985cbd79c7400f74b6abdfd9936bc8f7e8ebaefde2c96bda2",
+      "width": 16,
+      "unique_tokens": 65536,
+      "nll": 8.099439912683824,
+      "parameters": 2115464,
+      "fitting_targets": 131056,
+      "train_wall_s": 319.8057901156135,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+      "width": 24,
+      "unique_tokens": 65536,
+      "nll": 8.033310714422488,
+      "parameters": 3164842,
+      "fitting_targets": 131056,
+      "train_wall_s": 349.60510019247886,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p32_s6_20261005_v1.json",
+      "sha256": "efbbbdeb781c6924310747d2013fc47ede9ae7843a8bc130a204e311a558a02e",
+      "width": 32,
+      "unique_tokens": 65536,
+      "nll": 8.090418677236519,
+      "parameters": 4225420,
+      "fitting_targets": 131056,
+      "train_wall_s": 381.05191264051246,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p16_s6_20261005_v1.json",
+      "sha256": "ef6ba4d0b5d5fb5e1638987c6ec73a669c3b0b7dc78e9d3b731877e87f0b2097",
+      "width": 16,
+      "unique_tokens": 262144,
+      "nll": 7.744328637216605,
+      "parameters": 2115464,
+      "fitting_targets": 524272,
+      "train_wall_s": 950.1834085995215,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "ef179a1290d14664397bedb8c721a84e40d9e3dd1211f3f464b2a6dfb5b58686",
+      "width": 24,
+      "unique_tokens": 262144,
+      "nll": 7.741714417700674,
+      "parameters": 3164842,
+      "fitting_targets": 524272,
+      "train_wall_s": 1362.9447549048346,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p32_s6_20261005_v1.json",
+      "sha256": "1bf99ff89a8ba8783e039a3764afb59ec1d8b95c8d461d852ed0ea8dd9891e2e",
+      "width": 32,
+      "unique_tokens": 262144,
+      "nll": 7.753460454005821,
+      "parameters": 4225420,
+      "fitting_targets": 524272,
+      "train_wall_s": 1169.3427329952247,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p16_s6_20261006_v1.json",
+      "sha256": "2391459cbfa1bd5f50b663466b5179e9d1f674474e7ed9209e2d49f27a59fbdd",
+      "width": 16,
+      "unique_tokens": 1048576,
+      "nll": 7.262162990196078,
+      "parameters": 2115464,
+      "fitting_targets": 2097136,
+      "train_wall_s": 3814.2726847158046,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "2e406e1d02e8a60a6aa65697e6041d54f79af28278ce8f1c42669a2c154b127d",
+      "width": 24,
+      "unique_tokens": 1048576,
+      "nll": 7.251503259995404,
+      "parameters": 3164842,
+      "fitting_targets": 2097136,
+      "train_wall_s": 4370.162024419056,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p32_s6_20261005_v1.json",
+      "sha256": "d18452c2609b2f1e3d13ba77264ea01d4db8a788bad912813f52c7a40c875c2a",
+      "width": 32,
+      "unique_tokens": 1048576,
+      "nll": 7.263761153875612,
+      "parameters": 4225420,
+      "fitting_targets": 2097136,
+      "train_wall_s": 4680.451458097901,
+      "host": "curie"
+    }
+  ],
+  "measured_quality_envelope": [
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_64k_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "a65077fe52297d01543a0365f9daf7395448f9b983715277010b62695b6d6e5f",
+      "width": 24,
+      "unique_tokens": 65536,
+      "nll": 8.033310714422488,
+      "parameters": 3164842,
+      "fitting_targets": 131056,
+      "train_wall_s": 349.60510019247886,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_256k_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "ef179a1290d14664397bedb8c721a84e40d9e3dd1211f3f464b2a6dfb5b58686",
+      "width": 24,
+      "unique_tokens": 262144,
+      "nll": 7.741714417700674,
+      "parameters": 3164842,
+      "fitting_targets": 524272,
+      "train_wall_s": 1362.9447549048346,
+      "host": "curie"
+    },
+    {
+      "source": "experiments/results/token_language/curie_data_growth_tokens_1m_b64_c16_p24_s6_20261005_v1.json",
+      "sha256": "2e406e1d02e8a60a6aa65697e6041d54f79af28278ce8f1c42669a2c154b127d",
+      "width": 24,
+      "unique_tokens": 1048576,
+      "nll": 7.251503259995404,
+      "parameters": 3164842,
+      "fitting_targets": 2097136,
+      "train_wall_s": 4370.162024419056,
+      "host": "curie"
+    }
+  ],
+  "floor_sensitivity": [
+    {
+      "width": 16,
+      "assumed_floor_nll": 0.0,
+      "local_data_exponent": 0.046370432958755946,
+      "conditional_4m_nll": 6.8100172095910185
+    },
+    {
+      "width": 16,
+      "assumed_floor_nll": 3.0,
+      "local_data_exponent": 0.07730909176893427,
+      "conditional_4m_nll": 6.828999789874334
+    },
+    {
+      "width": 16,
+      "assumed_floor_nll": 5.0,
+      "local_data_exponent": 0.13937518825227302,
+      "conditional_4m_nll": 6.864711581847242
+    },
+    {
+      "width": 16,
+      "assumed_floor_nll": 6.0,
+      "local_data_exponent": 0.23338682425977736,
+      "conditional_4m_nll": 6.913277108356551
+    },
+    {
+      "width": 24,
+      "assumed_floor_nll": 0.0,
+      "local_data_exponent": 0.047186493953849155,
+      "conditional_4m_nll": 6.7923326401055455
+    },
+    {
+      "width": 24,
+      "assumed_floor_nll": 3.0,
+      "local_data_exponent": 0.07871786558500656,
+      "conditional_4m_nll": 6.811971446925839
+    },
+    {
+      "width": 24,
+      "assumed_floor_nll": 5.0,
+      "local_data_exponent": 0.14209486921885595,
+      "conditional_4m_nll": 6.848940537731589
+    },
+    {
+      "width": 24,
+      "assumed_floor_nll": 6.0,
+      "local_data_exponent": 0.23842302052269398,
+      "conditional_4m_nll": 6.899263618571192
+    },
+    {
+      "width": 32,
+      "assumed_floor_nll": 0.0,
+      "local_data_exponent": 0.04706178988674047,
+      "conditional_4m_nll": 6.804990676555627
+    },
+    {
+      "width": 32,
+      "assumed_floor_nll": 3.0,
+      "local_data_exponent": 0.07842576711264791,
+      "conditional_4m_nll": 6.824510449430244
+    },
+    {
+      "width": 32,
+      "assumed_floor_nll": 5.0,
+      "local_data_exponent": 0.14126206933831195,
+      "conditional_4m_nll": 6.861154226617199
+    },
+    {
+      "width": 32,
+      "assumed_floor_nll": 6.0,
+      "local_data_exponent": 0.23624053418607505,
+      "conditional_4m_nll": 6.9108230815222695
+    }
+  ],
+  "scope": "Same seed, inputs, source identities and non-axis settings. Two passes; initial-inclusive DEV selection. Wall is observed training time, not audited arithmetic or cross-host normalized work. Forecasts are conditional scenarios, not measurements or intervals."
+}
