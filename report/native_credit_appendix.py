@@ -54,4 +54,14 @@ def pages():
   for label,parent in [('exact',original),('credit',original),('zero25',control)]:
    x=next(x for x in parent['rows'] if x['arm']==label);rows.append([label+' (saved)',f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"])
   result.append([('h2','Native credit teacher: common-outcome control variate'),('table',(['Learner','Selection DEV NLL','Full fitting seconds'],rows,[77,45,45])),('small',r['scope']),('p','Both route targets subtract the same issued baseline BCE, preserving their actual contrast. For binary outcome probabilityp, conditional target variance becomes p(1-p)*(z-z0)^2. The predictor remains native temporal/race memory with a linear readout. This is a diagnosed teacher repair, not a replacement dense controller; fresh-graph confirmation scores are separate.')])
+ r=read('curie_shared_bank_20261012_v2_fit')
+ if r is not None:
+  rows=[[x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}"] for x in r['rows']]
+  v={x['arm']:x for x in r['rows']};reciprocal=v['reciprocal']
+  verdict='; '.join(f"Reciprocal quality gain versus {name}: {v[name]['mean_dev_nll']-reciprocal['mean_dev_nll']:+.6f}" for name in ['separate','read_only','untaught'])
+  costs=[]
+  for x in r['rows']:
+   total=lambda key:sum(t.get(key,0) for t in x['train'])
+   costs.append([x['arm'],str(total('bank_discovery_records')),str(total('bank_context_reads')),str(total('bank_writes')),str(total('forward_credit_reads')),str(total('critic_forward_reads'))])
+  result.append([('h2','Independent native shared-memory reciprocal teaching'),('table',(['Learner','Selection DEV NLL','Full fitting seconds'],rows,[77,45,45])),('p',verdict+'. Single-seed development; compare the saved unshared native credit0.613521/159.354s for practical quality/work. Suppressed sharing controls execute diagnostic bank overhead; their timing is not the economical separate-bank implementation.'),('table',(['Learner','Discovery scans','Payload reads','Bank writes','F reads C','C reads F'],costs,[28,32,31,26,25,25])),('small',r['scope']),('p','Independent native read races and selected receiver writes share versioned records. Later forward task loss trains critic memory content and its read policy within retained gradient windows; the untaught control stops only critic record gradients and keeps the actor reader trainable. Physical completion gates visibility. Bank discovery uses bounded recency, and global write destinations are not learned.')])
  return result

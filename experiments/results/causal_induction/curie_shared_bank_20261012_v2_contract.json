@@ -1,0 +1,914 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_shared_bank_20261012_v2_contract",
+  "mode": "contract",
+  "rows": [],
+  "checks": {
+    "task_loss_teaches_native_critic_reads_and_writes": {
+      "logit": [
+        -0.22830331325531006,
+        0.1928291916847229,
+        -0.3838619589805603,
+        0.12896913290023804,
+        -0.2576931118965149,
+        0.2431507706642151,
+        -0.30428600311279297,
+        0.2881881594657898
+      ],
+      "critic_write_gradient": 0.0001345942437183112,
+      "critic_read_gradient": 1.5836603779462166e-05,
+      "actor_read_gradient": 0.001473196898587048,
+      "counts": {
+        "events": 2,
+        "queries": 8,
+        "candidate_keys": 16,
+        "value_reads": 8,
+        "sensor_decodes": 8,
+        "selected_updates": 8,
+        "counterfactual_unit_values": 16,
+        "discovery_context_reads": 24,
+        "relationship_candidate_updates": 1,
+        "relationship_reads": 16,
+        "credit_events": 9,
+        "credit_candidate_keys": 72,
+        "credit_selected_updates": 36,
+        "credit_counterfactual_values": 72,
+        "credit_state_reads": 0,
+        "critic_targets": 0,
+        "exact_alternative_audits": 0,
+        "critic_contrast_squared_error": 0.0,
+        "audited_contrast_squared_magnitude": 0.0,
+        "bank_scored_keys": 158,
+        "bank_value_reads": 33,
+        "bank_discovery_records": 158,
+        "bank_context_reads": 158,
+        "bank_writes": 11,
+        "bank_counterfactual_values": 158,
+        "forward_credit_reads": 13,
+        "critic_forward_reads": 6,
+        "bank_peak_records": 10
+      },
+      "read_log": [
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          0.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.0,
+          0.4116591562668349
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.1,
+          2.008214872716325
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.1,
+          0.4116591562668349
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.2,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.110149674866446
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.2,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.3,
+          0.010259835682229101
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.3,
+          2.008214872716325
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.4,
+          2.3070426346198945
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.4,
+          2.2127413387929864
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.5,
+          2.3070426346198945
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          8,
+          2.6,
+          2.4101226835943743
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.6,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          10,
+          2.7,
+          2.6094253312141227
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ]
+      ]
+    },
+    "matched_untaught_control": {
+      "logit": [
+        -0.22830331325531006,
+        0.1928291916847229,
+        -0.3838619589805603,
+        0.12896913290023804,
+        -0.2576931118965149,
+        0.2431507706642151,
+        -0.30428600311279297,
+        0.2881881594657898
+      ],
+      "critic_write_gradient": 0.0,
+      "critic_read_gradient": 0.0,
+      "actor_read_gradient": 0.0,
+      "counts": {
+        "events": 2,
+        "queries": 8,
+        "candidate_keys": 16,
+        "value_reads": 8,
+        "sensor_decodes": 8,
+        "selected_updates": 8,
+        "counterfactual_unit_values": 16,
+        "discovery_context_reads": 24,
+        "relationship_candidate_updates": 1,
+        "relationship_reads": 16,
+        "credit_events": 9,
+        "credit_candidate_keys": 72,
+        "credit_selected_updates": 36,
+        "credit_counterfactual_values": 72,
+        "credit_state_reads": 0,
+        "critic_targets": 0,
+        "exact_alternative_audits": 0,
+        "critic_contrast_squared_error": 0.0,
+        "audited_contrast_squared_magnitude": 0.0,
+        "bank_scored_keys": 158,
+        "bank_value_reads": 33,
+        "bank_discovery_records": 158,
+        "bank_context_reads": 158,
+        "bank_writes": 11,
+        "bank_counterfactual_values": 158,
+        "forward_credit_reads": 13,
+        "critic_forward_reads": 6,
+        "bank_peak_records": 10
+      },
+      "read_log": [
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          0.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.0,
+          0.4116591562668349
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.1,
+          2.008214872716325
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.1,
+          0.4116591562668349
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.2,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.110149674866446
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.2,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.110149674866446
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.3,
+          0.010259835682229101
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.3,
+          2.008214872716325
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.4,
+          2.3070426346198945
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.4,
+          2.2127413387929864
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.5,
+          2.3070426346198945
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          8,
+          2.6,
+          2.4101226835943743
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.6,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          10,
+          2.7,
+          2.6094253312141227
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.7,
+          2.3070426346198945
+        ]
+      ]
+    },
+    "future_record_invisible": true,
+    "issued_prediction_parity": true,
+    "smoke": {
+      "nll": 0.6516999324120436,
+      "targets": 64,
+      "wall_s": 20.88227719400311,
+      "optimizer_updates": 8,
+      "peak_occupied_nodes": 20,
+      "events": 702,
+      "queries": 64,
+      "candidate_keys": 479,
+      "value_reads": 82,
+      "sensor_decodes": 82,
+      "selected_updates": 2808,
+      "counterfactual_unit_values": 5616,
+      "discovery_context_reads": 543,
+      "relationship_candidate_updates": 5378,
+      "relationship_reads": 479,
+      "credit_events": 210,
+      "credit_candidate_keys": 1680,
+      "credit_selected_updates": 840,
+      "credit_counterfactual_values": 1680,
+      "credit_state_reads": 0,
+      "critic_targets": 82,
+      "exact_alternative_audits": 18,
+      "critic_contrast_squared_error": 0.0016843989503527723,
+      "audited_contrast_squared_magnitude": 0.0002469274038396918,
+      "bank_scored_keys": 11653,
+      "bank_value_reads": 748,
+      "bank_discovery_records": 11733,
+      "bank_context_reads": 11653,
+      "bank_writes": 912,
+      "bank_counterfactual_values": 11653,
+      "forward_credit_reads": 118,
+      "critic_forward_reads": 175,
+      "bank_peak_records": 206
+    }
+  },
+  "prior_acquisition_targets": 512,
+  "whole_pipeline_wall_s": 22.18901373699191,
+  "peak_rss_kb": 518620,
+  "parent_sha256": "072e340b3c8aa6e41cf097b472ed2a26a11bc48730964764ef0238f5bf60a1cd",
+  "source_sha256": {
+    "experiments/causal_induction/shared_bank_pipeline.py": "343367558fcb30efd006ca3f72b5d98e7800d9b5387fc0e53cb6ee80478c2f83",
+    "experiments/causal_induction/shared_bank_sensor.py": "a4a94320c884e486c78499a1bae1950e9c28b489ff2b7a02f1e109f37307477a",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+  },
+  "scope": "Private affine development. Independent native hard-race shared reads; critic native receiver writes exposed as versioned relational records. Subsequent task loss teaches critic memory/read parameters through shared records within eight-feedback graph windows; numeric state persists. Bank destinations remain role/node or role/pair, not globally learned. Local native route derivative is a declared counterfactual surrogate, not exact expected hard-route gradient. All candidate payload transports/scans charged. No publicTEST, neural-depth scaling, full-future intervention teaching, optimizer meta-gradient or efficiency claim."
+}
