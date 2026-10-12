@@ -306,156 +306,175 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 
 \newpage
 % ---------------------------------------------------------------- forward learning
-\sect{A new learning result}{Forward computation teaches more economical credit}
+\sect{Learning more economically}{Teaching the model how to learn}
 
-Ordinary learning uses error signals to train prediction. Our reciprocal design
-also uses information produced by prediction to improve credit assignment:
-which routes and learning updates will help on subsequent observations.
-Credit includes the evolving learner state, because an intervention can change
-future learning even after its direct effect has disappeared.
+The earlier pages show that our models can make strong predictions with small
+models. We are also tackling the cost of \emph{learning}: deciding which parts
+of a model should change when new information arrives.
 
-\begin{minipage}[t]{.32\linewidth}\stat{98.4\%}{lower counterfactual-credit error on eight fresh language prefixes}\end{minipage}\hfill
-\begin{minipage}[t]{.32\linewidth}\stat{2.09$\times$}{faster complete corrected-credit acquisition on the measured pipeline}\end{minipage}\hfill
-\begin{minipage}[t]{.32\linewidth}\stat{77.8\%}{less conditional gradient noise in a connected route controller}\end{minipage}
+A sparse model takes only a few routes through its available memory and
+computation. To improve, it needs to learn from those choices, including
+alternatives it did not take. Trying every alternative can make training
+expensive even when prediction is cheap.
 
-\vspace{4mm}
-\textbf{What was measured (11 October).}
+\begin{callout}
+\textbf{Our approach.} Use what the model discovers while making predictions
+to help it evaluate alternatives and choose better learning updates. The
+ambition is a model that learns both \emph{what to predict} and \emph{how to
+improve}, using the same event-based architecture.
+\end{callout}
+
+\vspace{3mm}
+\begin{minipage}[t]{.32\linewidth}\stat{98.4\%}{less error when estimating the value of alternative learning routes}\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}\stat{2.09$\times$}{faster evaluation of alternatives in the measured experiment}\end{minipage}\hfill
+\begin{minipage}[t]{.32\linewidth}\stat{77.8\%}{less randomness in the route controller's learning signal}\end{minipage}
+
+\vspace{3mm}
+\textbf{What these results mean.}
 \begin{itemize}
-\item \textbf{Fresh-prefix accuracy.} On eight new 48-target language prefixes,
-65 candidate routes, diagonal optimizer-state transport gives contrast
-mean-squared error $1.927\times10^{-10}$ versus $1.172\times10^{-8}$ for static
-credit. All eight improve; the paired-prefix 95\% improvement interval is
-positive. Error is 97.4\% lower than reference-only adaptive credit.
-\item \textbf{Complete acquisition work.} Four prefixes, three rotated timing
-repeats: exhaustive independent learners take 26.933 seconds versus 12.893
-seconds for transport plus exact factual correction. Both pay context and
-candidate discovery. Supported work falls from 165.164 to 10.775 GFLOPs
-(93.5\% fewer); unsupported scalar/optimizer arithmetic remains included in wall time.
-\item \textbf{Connected-controller noise.} For a fixed 37,377-parameter controller
-on four earlier prefixes, conditional route-sampling gradient variance falls
-77.8\% versus static credit. Mean-gradient agreement is within $1.1\times10^{-19}$.
+\item \textbf{More accurate guidance.} On eight new language samples, information
+from the model and its learning state estimated the relative value of alternative
+routes more accurately than a fixed estimate. Every sample improved.
+\item \textbf{Less repeated work.} Reusing this information, with an exact
+correction, took 12.9 seconds instead of 26.9 seconds for separately evaluating
+all alternatives. Both measurements include discovering the alternatives.
+\item \textbf{A steadier learning signal.} Random route selection introduces noise
+into learning. In a separate controller experiment, the corrected signal reduced
+that source of noise while preserving its average direction.
 \end{itemize}
 
-\begin{callout}
-\textbf{Status: a working research prototype.} These are component results from
-a fixed pretrained two-layer native model, proper GPT-2 tokens and 64-dimensional
-adaptive lexical learners. A separate eight-prefix block-geometry test gives
-80.3\% lower credit error than diagonal transport, with 27.1\% more kernel work.
-Online update-function learning beats its frozen twin by 0.00866 nats/token
-on eight fresh episodes (paired 95\% interval positive, one initialization).
-Ordinary lexical Adam leads. Whole-native future-trained optimizer learning
-then improves DEV quality in all nine seed/depth cases (three seeds, depths2/4/8).
-It retains exact actor backprop and costs more CPU time; acquired-policy reuse
-is the next complete-work gate.
-\end{callout}
+\textbf{Significance.} These experiments demonstrate that information already
+produced by a model can make an expensive part of learning more accurate and
+more economical. They give a concrete engineering basis for our learning
+architecture. The measured speedup applies to evaluating learning alternatives,
+not to training an entire model.
 
-\textbf{If this scales.} More economical online adaptation could support models
-that track changing language, equipment, markets and user behaviour; local
-industrial learning; and sparse asynchronous hardware. The commercial test is
-better held-out prediction at lower complete learning cost. Deployment,
-whole-model speed, measured energy and economic impact require their own evidence.
+\textbf{Learning rules can themselves improve.} In a separate event-prediction
+experiment, a trained controller adjusted the model's learning updates and
+improved prediction quality in all nine tested combinations of model depth and
+initialization. Those fits used more CPU time. This shows that learned update
+rules can improve quality within our model family.
 
-\textbf{How depth could benefit.} Train connected credit functions jointly across
-layers, with shared forward information and longer-range consequence anchors.
-This could reduce compounding transport error; it must preserve useful credit
-gains rather than simply shrink signals. Measure prediction, error amplification,
-correction frequency and total work together as depth increases.
-
-{\footnotesize\color{muted}Source-bound completed results:
-\texttt{investment/forward\_credit\_evidence\_20261011.json}.
-Transport metrics: one initialization, private TRAIN-tail observations.
-Native optimizer: three seeds on Taxi TRAIN/DEV, no TEST. A 64-dimensional
-state is not a 64-bit representation.}
-
-\newpage
-% ---------------------------------------------------------- native credit
-\sect{Learning to assign credit}{Native shared-world learning: a fresh-system advance}
-
-\textbf{Completed on 12 October.} Our prediction model and credit model use
-native temporal races and independently read and write a shared memory bank.
-Observed outcomes train the credit model; subsequent prediction losses also
-teach its shared-memory operations. This tests our own event architecture in
-the learning machinery.
-
-\vspace{3mm}
-{\small\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\linewidth}{Y r r}
-\toprule
-Credit rule & Prediction NLL $\downarrow$ & Complete stage (CPU seconds) \\
-\midrule
-\textbf{Learned outcome belief} & \textbf{0.420688} & 1368.5 \\
-Exact observed-outcome credit & 0.420952 & 1372.0 \\
-Fixed-prior credit & 0.420826 & 1374.4 \\
-Conditional persistence credit & 0.420899 & 1380.1 \\
-\bottomrule
-\end{tabularx}}
-
-\vspace{3mm}
-\textbf{What improved.} One acquired model transferred to eight fixed fresh
-systems, with 1,024 prequential targets per arm. Learned credit improves NLL
-over all three controls, both overall and at each generating depth (4 and 8).
-The gain over persistence credit is 0.000212 nats/target. Complete stage time
-includes common acquisition and all eight deployments; timing differences here
-are not an efficiency claim. The registered three-stage confirmation continues
-with two fresh acquisitions. This first stage is one acquired-model result.
-
-\begin{callout}
-\textbf{What the diagnosis says.} On the original, separate 1,024-target cohort,
-learned, exact and fixed-prior arms all kept the last-observed-bit binary answer:
-zero answer changes. Those NLL gains improve confidence/calibration. The
-original primary gate failed at generating depth 8; the additional persistence
-credit control passed. The fresh-system pass above does not replace those results.
-Its causal replay also finds zero answer changes in all four arms: each scores
-870/1,024 correct.
-The next substantive capability test must measure useful answer changes from
-transferred information, alongside predictive loss and complete learning cost.
-\end{callout}
-
-\textbf{Analytical advance.} Direct route-score credit has a conditional error
-bound set by belief error and route-output spread, without a product of local
-estimator errors through depth. Numerical contracts verify this identity and
-the actual clipped/unclipped Adam response to delayed utility. Learning accurate
-beliefs and paying for deep responses remain necessary. These are mathematical
-and numerical results, not a demonstrated neural-depth scaling advantage.
-
-{\footnotesize\color{muted}Private B5/R1 development systems; public observations,
-no hidden-graph access. Generating depth is not neural depth. Source acquisition:
-4,096 presentations; deployment: 1,024 targets. No public TEST or hardware-energy
-claim. Completed result hashes and full scope:
+{\footnotesize\color{muted}Status: a working research prototype. The 98.4\% result
+uses eight private language samples; speed uses four samples and three timing
+repeats; noise uses four samples and a fixed controller. These are separate
+component measurements. The update-controller result uses three initializations
+at depths 2/4/8 on Taxi training/development data and retains ordinary error
+propagation. Detailed methods and completed result hashes are in
 \texttt{investment/forward\_credit\_evidence\_20261011.json}.}
 
 \newpage
-% ---------------------------------------------------------------- frontier
-\sect{The frontier}{Not ahead yet, or pending, and the next test}
+% ---------------------------------------------------------- native credit
+\sect{Learning from experience}{The prediction model and its teacher share memory}
 
-\renewcommand{\arraystretch}{1.35}
-{\small
-\begin{tabularx}{\linewidth}{>{\bfseries}P{30mm} Y Y}
-\toprule
-Front & Current result & Next test \\
-\midrule
-P12 mortality & AUROC 0.871 vs 0.880 \up{} (behind); AUPRC level, 0.585 vs 0.586 \up & Ensemble of five runs, still far smaller than the leader (in progress) \\
-Tokenised language (GPT-2 tokens, FineWeb) & Ahead of the classic count model: 6.009 vs 6.537 nats per token \down{} at 1M training tokens (3 runs); at 4M tokens 5.510 vs 6.100, so the lead grows with data; recall across irregular gaps solved (97.5\%) & Owned-model scaling and published-reference comparison under matching tokenizer, data and scoring \\
-Large-scale language & At 90M characters a tuned Transformer-192$\times$4 leads: 1.704 vs our 1.783 bits per character \down & Integrated token-native temporal learning on CPU \\
-Small-scale language & Tuned small LSTMs lead by 0.04--0.06 bits per character \down{} at 10M characters & Same programme as above \\
-Real-world tables & Decision trees lead on the banknote dataset & Learned comparison discovery on real tables \\
-FAS v2 (our anonymous-log benchmark) & Level on validation with a time-encoded Transformer reference: 0.702 vs 0.704 AUROC \up{} at about 1/7 of its parameters & Sealed test once the reference seeds finish; a tie is expected under the 0.02 rule \\
-Second TPP benchmark (nats per sequence \down) & All seven verdicts behind (page 5); type predictions far ahead on Wikipedia, time ahead on Stack Overflow, Github and LastFM & Remaining verdicts and guarded reruns; a developed attempt with per-sequence type statistics \\
-\bottomrule
-\end{tabularx}}
+Our architecture also makes the learning machinery a model in its own right.
+One part predicts what will happen. Another uses experience to guide which
+internal routes should be reinforced. Both use our temporal races and memory,
+rather than attaching a separate conventional recurrent network.
 
-\vspace{4mm}
-\sect{What comes next}{From proof to platform}
-\begin{itemize}
-\item \textbf{Publish} the complete event-leaderboard results, after the IP filing decision.
-\item \textbf{Scale language and learning}: integrated properly tokenized models on CPUs, compared with matching published references; test connected credit across depth.
-\item \textbf{Transfer}: show that skill learned on one kind of data helps on another.
-\item \textbf{First commercial vertical}: event-native models for interleaved, timestamped logs (industry, IoT, IT operations, security, finance) on existing CPUs and GPUs, the shortest path to revenue.
-\item \textbf{Hardware}: feasibility on FPGA and neuromorphic silicon for clockless, learning-capable event processors.
-\end{itemize}
+\begin{center}
+\begin{tikzpicture}[node distance=13mm,
+ b/.style={rounded corners=3pt,fill=soft,text=ink,text width=43mm,
+ minimum height=16mm,align=center,font=\small\bfseries}]
+\node[b] (prediction) {Prediction model\\What will happen?};
+\node[b,right=of prediction] (memory) {Shared memory\\What have we learned?};
+\node[b,right=of memory] (teacher) {Learning model\\Which routes should improve?};
+\draw[<->,thick,ours] (prediction)--(memory);
+\draw[<->,thick,ours] (memory)--(teacher);
+\end{tikzpicture}
+\end{center}
+
+The two models choose their own memory reads and writes. Actual outcomes teach
+the learning model; later prediction errors also teach how it uses shared
+memory. We have implemented this interaction with delayed feedback and checked
+that predictions use only information available at the time.
 
 \begin{callout}
-\textbf{The investment case.} A new model family, designed from first principles around time and sparse events, is already ahead of the best published models on nine public benchmarks across four kinds of data, including every dataset of the field's standard event benchmark, with models up to 15 times smaller; on a second event benchmark the same frozen model, untuned, predicts Wikipedia page types far better than any published model, while its totals still trail. Its mathematics contains today's dominant architectures. The remaining work is scale, transfer and hardware, and each has a concrete, measurable next step.
+\textbf{What we have achieved.} A learning model trained on one set of simulated
+event systems was carried into eight fresh systems. Its guidance produced
+slightly better probability predictions than all three comparison rules:
+using the observed error directly, using a fixed belief, or using a belief
+based on the latest observed state. The improvement appeared at both tested
+levels of system complexity.
+\end{callout}
+
+\textbf{How large is the improvement?} About 0.05\% in prediction loss relative
+to the latest-state learning rule: 0.420688 versus 0.420899, with lower better.
+This is one trained-model transfer result, across 1,024 predictions per rule.
+The original cohort had mixed results against the simpler comparisons; this
+fresh-system result is a completed positive result with that scope.
+
+\textbf{What improved in the predictions?} Their confidence, rather than their
+yes/no answers. All four rules gave the same answers as repeating the last
+observed state: 870 of 1,024 correct. The learned rule assigned probabilities
+that better matched what happened. This matters for probabilistic forecasting,
+where uncertainty is part of the prediction, although the measured gain is small.
+
+\textbf{Why this matters.} We have moved from an architectural idea to a working
+interaction between prediction, learned teaching and shared memory, and measured
+an initial transfer benefit. That is progress toward models which adapt their
+learning as experience accumulates. It is early evidence about this mechanism,
+separate from the public benchmark wins on the preceding pages.
+
+{\footnotesize\color{muted}Private development simulations with hidden connections
+and delayed outcomes; the model sees observations, not the hidden connections.
+System complexity here is the depth of the simulated process, not model depth.
+All learning costs are recorded; this comparison makes no training-speed or
+hardware-energy claim. Sources: the completed fresh-system comparison and causal
+answer audit, with detailed methods and completed result hashes in:\par
+\texttt{investment/forward\_credit\_evidence\_20261011.json}.}
+
+\newpage
+% ---------------------------------------------------------------- significance
+\sect{What the evidence adds up to}{A proven prediction engine and a developing learning engine}
+
+Sleeping Machines aims to be a general-purpose substrate for language and
+reasoning, multimodal world models, embodiment, continual learning,
+communication, self-design and hardware. Its evidence already spans several
+parts of that ambition.
+
+\begin{tile}
+\textbf{Strong prediction with small models.} The public benchmark results lead
+this brief because they are the strongest evidence: nine benchmark wins across
+four kinds of data, including all five datasets of the standard event benchmark,
+with models up to 15 times smaller. That gives the model family a measured
+advantage on specific tasks, using existing computers.
+\end{tile}
+
+\begin{tile}
+\textbf{A practical route to improving learning.} We have measured more accurate
+and faster evaluation of learning alternatives, better predictions from learned
+update rules, and a small confidence benefit from a memory-sharing learning model
+on fresh systems. Together they show working pieces of a machine that learns how
+to learn. Each result has its own scope; the pieces are not one combined speedup.
+\end{tile}
+
+\begin{tile}
+\textbf{A mathematical foundation.} We have derived and numerically checked how
+route-level learning errors depend on prediction uncertainty and differences
+between alternatives. The direct route formulation can avoid multiplying local
+estimation errors through successive layers. This explains why the design is
+worth pursuing; it is an analytical result, separate from measured scaling.
+\end{tile}
+
+\vspace{3mm}
+\textbf{Where the evidence is mixed.} The family leads on the public benchmarks
+shown earlier, but does not lead everywhere. On P12 mortality it scores 0.871
+versus 0.880 AUROC. On a second event benchmark, all seven overall results trail
+the published leaders, despite strong individual prediction components.
+Saved conventional language models also lead our character-level models;
+properly tokenized language development has beaten a classic count model.
+These are results for distinct tasks, not a single universal ranking.
+
+\begin{callout}
+\textbf{The commercial significance.} The public wins support the value of small,
+accurate models for timestamped data in industry, IT operations, security and
+finance. The learning work addresses a further source of cost: keeping models
+useful as new information arrives. If the measured component advantages carry
+through to complete applications, they could make continual adaptation more
+affordable on local machines and support sparse, clockless learning hardware.
+That broader opportunity is the significance of the design, rather than a
+measured revenue, energy or whole-model training claim.
 \end{callout}
 
 \end{document}
