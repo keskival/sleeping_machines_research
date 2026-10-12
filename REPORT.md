@@ -2924,6 +2924,32 @@ Single-seed private DEV, same first65536tokens/prior/first128updates and bit-ide
 
 Evidence aws_integrated_common_prior_decision_20261012_s6_v1.
 
+Common-prior, common-acquired-state intervention seed7: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 65536 | 8.046572 | 8.194576 | 8.046572 | 149.238 |
+| fresh | 131072 | 8.046572 | 7.576156 | 7.576156 | 149.432 |
+
+Fresh-versus-replay future-learning gain+0.618420NLL; fresh-versus-stopping at the shared branch+0.470416. Full acquired-state SHA256 867a0285f86a2378c21392f09c48501478b963c627e4a21c165b9aef9b654e60.
+
+Single-seed private DEV, same first65536tokens/prior/first128updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second128updates use repeated versus fresh65536tokens. Same131056fitting targets,256updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_decision_20261012_s7_v1.
+
+Common-prior, common-acquired-state intervention seed8: exact first-phase curve and complete learner fingerprint equality required before later data change.
+
+| Exposure | Unique tokens | Branch NLL | Post-branch NLL | Selected NLL | Training seconds |
+| --- | --- | --- | --- | --- | --- |
+| repeated | 65536 | 8.133996 | 8.227356 | 8.087644 | 147.663 |
+| fresh | 131072 | 8.133996 | 7.559739 | 7.559739 | 148.467 |
+
+Fresh-versus-replay future-learning gain+0.667617NLL; fresh-versus-stopping at the shared branch+0.574258. Full acquired-state SHA256 d11129c3ede4a725a30a74fbf962115de2a6d78618c7609159b61e6a0bd1a010.
+
+Single-seed private DEV, same first65536tokens/prior/first128updates and bit-identical full acquired-state fingerprint (model, AdamW, numeric state, all generators and cursor). Both reset forward state at the same block boundary; actor/optimizer/RNG continue. Second128updates use repeated versus fresh65536tokens. Same131056fitting targets,256updates and selection opportunities. This isolates post-acquisition exposure under this lane/block protocol; no learned exploration-policy or Transformer claim.
+
+Evidence aws_integrated_common_prior_decision_20261012_s8_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5507,6 +5533,24 @@ First-pass routed actor loses to self-only0.666639 and acquired persistence0.618
 Three native arms diagnose persistence-based sensor output versus additional publicly acquired sparse temporal co-transition evidence. Same8TRAIN graphs/two passes plus charged512-target calibration acquisition; same4DEV graphs. Shared core/actual hard source routes and exact paid nonwinner credit retained. Edge statistics are generic causal evidence, not proven parent edges; their scoring/utility learned, statistic update kernel prescribed. No learned connected credit claim, depth/Transformer/public TEST/efficiency claim.
 
 Sparse observed relationship evidence improves routed NLL0.620672→0.617000. Self-only still leads0.615994; acquired persistence is0.618997 on the same four development graphs. No native routing/credit advantage declared.
+
+### Native temporal race memory for credit itself
+
+| Learner | DEV NLL | Full fitting seconds | Target presentations |
+| --- | --- | --- | --- |
+| exact | 0.617196 | 134.972 | 1536 |
+| credit | 0.613521 | 159.354 | 1536 |
+| joint | 0.615916 | 160.182 | 1536 |
+
+Credit predictor itself uses shared two-layer/two-head hard temporal race units with relationship-addressed persistent state; learned credit-token projection, keys/clocks/gates/decay/rotation/message maps and linear future-loss readout. Query tokens only selected/sampled relationships; feedback updates only observed/audited relationships. No dense GRU/MLP credit controller. Exact versus25%-audit native credit and joint cached-credit route prior. Own credit noise and separate actor/credit clipping; numerical memory carries through truncation. Credit predicts future proper forecast loss, not backprop gradients. Private affine diagnostic, no depth/public benchmark/efficiency claim; decoder counterfactuals cheap here, so no presumed economy.
+
+credit: quality gain versus exact +0.003675, fitting-time ratio 1.181x; joint: quality gain versus exact +0.001280, fitting-time ratio 1.187x. Single-seed private diagnostic; strongest saved self-only and persistence results remain the practical quality references.
+
+| Learner | Discovery reads | Pair writes | Credit writes | Credit alternatives | Exact audits |
+| --- | --- | --- | --- | --- | --- |
+| exact | 8946 | 89062 | 0 | 0 | 1024 |
+| credit | 8946 | 89062 | 13440 | 26880 | 288 |
+| joint | 8946 | 89062 | 13440 | 26880 | 288 |
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
