@@ -86,3 +86,21 @@ Development decision: extend the chronological horizon before repeating acquisit
 | zero | 6.964755 | 5.710347 | 5.202198 | 5.076631 |
 | frozen | 6.964646 | 5.718637 | 5.210710 | 5.076393 |
 | online | 6.964593 | 5.713671 | 5.203230 | 5.081687 |
+
+### Completed optimizer-control diagnosis (12 October)
+
+**Native market optimizer teaching (12 October, completed):** Regularizing next-window utility with 0.05 normalized deviation from the exact Adam step removes the uncontrolled amplification: online multiplier mean 1.007, range 0.977–1.050, versus unregularized mean 2.249. On 4096 prequential Aug25 development forecasts, regularized online NLL 6.964974, ordinary BPTT 6.964566, frozen guidance 6.964389, online field-only 6.965015. Online trails BPTT by 0.000408 and frozen guidance by 0.000585 nats/event; the quality gate fails. Online reuse 85.498s versus BPTT 24.239s; shared acquisition and original predictor fitting are additionally charged. Stability improved; prediction advantage did not. Full actor and native event critic retained, actual Adam parity <=2.23e-16. One initialization, development stream; sealed test untouched. Next diagnosis is whether producer-state-only counterfactual inputs expose the forecast-head responses needed by optimizer control, before further fitting.
+
+| Rule | Regularized NLL | Reuse seconds |
+|---|---:|---:|
+| fully_frozen | 6.984488 | 5.047 |
+| bptt | 6.964566 | 24.239 |
+| zero | 6.964651 | 18.576 |
+| frozen | 6.964389 | 40.476 |
+| field_only | 6.965015 | 86.065 |
+| online | 6.964974 | 85.498 |
+
+Source-bound results: `curie_b10_native_optimizer_20261012_v1_fit.json` and `curie_b10_regularized_optimizer_20261012_v1_fit.json`. These separately acquired bundles compare controls within each experiment; absolute cross-experiment NLL differences do not isolate the penalty.
+
+
+Completed TRAIN-only interface contract `curie_b10_forecast_response_20261012_v1_contract`: clock.bias +0.01 gives persistent-state response 0.0, predictive-clock response 306.605; state/forecast widths 88/80. This confirms a missing explicit response channel, not insufficiency of the complete existing critic information or a quality gain. Source and input hashes preserved.

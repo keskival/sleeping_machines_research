@@ -28,6 +28,8 @@
     "experiments/results/market/curie_b10_native_ttt_20261012_v3_fit.json": "af05be84cfc3e3cad41479787c5f39bdd3db03fc35dcd089fa73b614049ee511",
     "experiments/results/market/curie_b10_exact_future_20261012_v1_fit.json": "f19ebaa42521fc562b4c41ecc0bca79ff452f63bef92744b0817cf1babbfaa88",
     "experiments/results/market/curie_b10_longer_native_20261012_v1_fit.json": "13e896d2b4468ca3f43c927b215a1cb43edbeaba034a9136136939da66f8b9cc",
+    "experiments/results/market/curie_b10_native_optimizer_20261012_v1_fit.json": "9a5bf6de0bbfd507e8063a912cee6e06ac55666c7302fe82301238724711090b",
+    "experiments/results/market/curie_b10_regularized_optimizer_20261012_v1_fit.json": "5c49f376dd8b0d7ddb0dc646800e888725266819e8f2040228155d23be439eac",
     "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json": "37135cddfe74ff26bdd1a6a8b7d392c52227cd801574f26d0a092764e385a7ee"
   },
   "metrics": {
@@ -1032,6 +1034,142 @@
       },
       "acquisition_wall_s": 42.379239944013534,
       "scope": "Existing full18,164parameter market predictor/checkpoint retained; new native hard-race prospective critic, exact full boundary anchors, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. No sampled residual credit; zero is genuine local-only learning. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV16384targets/fourquarters prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution.",
+      "zero_arm_interpretation": "Genuine local-only"
+    },
+    {
+      "tag": "curie_b10_native_optimizer_20261012_v1_fit",
+      "rows": [
+        {
+          "arm": "fully_frozen",
+          "nll": 6.986620640039499,
+          "targets": 4096,
+          "wall_s": 5.09495776402764,
+          "audits": 0,
+          "future_teachers": 0
+        },
+        {
+          "arm": "bptt",
+          "nll": 6.965036587099949,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 0,
+          "wall_s": 23.973236096004257,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "zero",
+          "nll": 6.965111061190304,
+          "targets": 4096,
+          "audits": 0,
+          "future_teachers": 0,
+          "wall_s": 18.300784073013347,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "frozen",
+          "nll": 6.9649680024326335,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 0,
+          "wall_s": 39.02462466200814,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "field_only",
+          "nll": 6.964980339422523,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 127,
+          "wall_s": 82.83446880898555,
+          "critic_parameter_max_change": 0.03921868903009245
+        },
+        {
+          "arm": "online",
+          "nll": 6.980571490314475,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 127,
+          "wall_s": 83.86311925100745,
+          "critic_parameter_max_change": 0.057537722044602224
+        }
+      ],
+      "online_gain": {
+        "fully_frozen": 0.00604914972502435,
+        "bptt": -0.015534903214525997,
+        "zero": -0.015460429124170894,
+        "frozen": -0.015603487881841183,
+        "field_only": -0.015591150891951955
+      },
+      "acquisition_wall_s": 42.22849152798881,
+      "scope": "Existing full18,164parameter market predictor/checkpoint retained; new native hard-race prospective critic jointly learns a bounded positive Adam step multiplier across all actor parameters, exact full boundary anchors, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. No sampled residual credit; zero is genuine local-only learning. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution.",
+      "zero_arm_interpretation": "Genuine local-only"
+    },
+    {
+      "tag": "curie_b10_regularized_optimizer_20261012_v1_fit",
+      "rows": [
+        {
+          "arm": "fully_frozen",
+          "nll": 6.984487905360393,
+          "targets": 4096,
+          "wall_s": 5.04737915401347,
+          "audits": 0,
+          "future_teachers": 0
+        },
+        {
+          "arm": "bptt",
+          "nll": 6.9645662762546285,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 0,
+          "wall_s": 24.23923388699768,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "zero",
+          "nll": 6.964651495333042,
+          "targets": 4096,
+          "audits": 0,
+          "future_teachers": 0,
+          "wall_s": 18.575938147987472,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "frozen",
+          "nll": 6.964388861313098,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 0,
+          "wall_s": 40.476071170007344,
+          "critic_parameter_max_change": 0.0
+        },
+        {
+          "arm": "field_only",
+          "nll": 6.96501479318857,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 127,
+          "wall_s": 86.06475483899703,
+          "critic_parameter_max_change": 0.044165143173539256
+        },
+        {
+          "arm": "online",
+          "nll": 6.964974330171973,
+          "targets": 4096,
+          "audits": 128,
+          "future_teachers": 127,
+          "wall_s": 85.49764406698523,
+          "critic_parameter_max_change": 0.04388307508146583
+        }
+      ],
+      "online_gain": {
+        "fully_frozen": 0.01951357518842034,
+        "bptt": -0.000408053917344553,
+        "zero": -0.0003228348389310298,
+        "frozen": -0.0005854688588753376,
+        "field_only": 4.046301659688112e-05
+      },
+      "acquisition_wall_s": 42.777791242988314,
+      "scope": "Existing full18,164parameter market predictor/checkpoint retained; new native hard-race prospective critic jointly learns a bounded positive Adam step multiplier across all actor parameters with future NLL plus0.05normalized exact-step deviation regularization, exact full boundary anchors, causal per-mark activation memory and forward-response-conditioned actual future-Adam teaching. No sampled residual credit; zero is genuine local-only learning. Common acquired actor/critic/optimizer state in all arms; Aug24 TRAIN acquisition, Aug25 DEV prequential adaptation with score before update. Full six-mark plus1us recording-cell timing objective. Dense temporal actor retained; native critic does not implement shared actor/critic bank reads or outcome-law posterior projection. No sealed TEST, cross-day/full-month, trading-profit, sparse hardware or benchmark win. Frozen critic still evolves numerical memory; fully_frozen freezes actor parameters too. All teacher/discovery/alternative/optimizer work included in measured execution.",
       "zero_arm_interpretation": "Genuine local-only"
     }
   ]

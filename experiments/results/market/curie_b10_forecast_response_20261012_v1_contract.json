@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "checks": {
+    "state_response_max": 0.0,
+    "forecast_response_max": 306.60509434372216,
+    "state_width": 88,
+    "forecast_width": 80,
+    "perturbed_parameter": "model.clock.bias",
+    "perturbation": 0.01,
+    "observed_events": 129
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_forecast_response_contract.py": "bd821a8484f120e029c8348036c3dc4d9957f370576cc13ae0691efb4e52b9a8",
+    "experiments/credit/market_native_test_time.py": "e5d4c0581110d587f95f980fd9490b877a38c4207968f882ee3dde32cc204f6e",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "whole_wall_s": 0.3526315769995563,
+  "peak_rss_kb": 383048,
+  "scope": "Causal TRAIN-only information diagnosis on restored full actor. Clock-head perturbation changes predictive law while persistent-state response is zero. No critic training, quality improvement or proof that all existing critic inputs are insufficient."
+}
