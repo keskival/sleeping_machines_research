@@ -1,0 +1,210 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_future_shift_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_market_future_shift_20261012_v1_smoke",
+    "mode": "smoke",
+    "seed": 184
+  },
+  "acquisition": {
+    "policy_updates": 3,
+    "intervention_multipliers": [
+      0.8748753995731592,
+      0.9203440231998531,
+      0.6755451597883124,
+      0.6744419475766417
+    ],
+    "future_loss_contrasts": [
+      -0.035129962830474426,
+      -0.05534190391537663,
+      -0.03553816174933644
+    ],
+    "arm": "online",
+    "nll": 14.351794557231637,
+    "targets": 32,
+    "audits": 1,
+    "critic_updates": 1,
+    "wall_s": 0.19881537501350977,
+    "block_nll": [
+      10.63137667168045,
+      15.800780620524844,
+      15.716708794429458,
+      15.258312142291796
+    ],
+    "audited_mse": [
+      0.006784315841361368
+    ],
+    "audited_zero_mse": [
+      0.006784315841361368
+    ]
+  },
+  "rows": [
+    {
+      "policy_updates": 7,
+      "intervention_multipliers": [
+        0.864483152756998,
+        0.8291072869110883,
+        1.3299577590193121,
+        0.45554909011238554,
+        0.8178752083168517,
+        1.2943520274293459,
+        0.7104012883487114,
+        0.493081020251028
+      ],
+      "future_loss_contrasts": [
+        -0.00887880538233432,
+        -0.014950910070627543,
+        -0.03789266267481928,
+        -0.0015319173087711135,
+        0.002352629545860907,
+        -0.0006183002997595111,
+        -0.003966486372055655
+      ],
+      "arm": "online",
+      "nll": 15.245788020793047,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.3961230299901217,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.12149246388747,
+        15.174906601648239,
+        16.72772758117385,
+        16.78860898625494,
+        15.468960428215151,
+        14.91637918969367
+      ],
+      "audited_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ],
+      "audited_zero_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ]
+    },
+    {
+      "policy_updates": 0,
+      "intervention_multipliers": [
+        0.8145390728820895,
+        0.9425561840813814,
+        0.9693422528010606,
+        1.051152145016777,
+        0.9632214644329161,
+        0.6348455808396914,
+        0.6030157791089931,
+        0.8079391331038184
+      ],
+      "future_loss_contrasts": [],
+      "arm": "frozen",
+      "nll": 15.245788020793047,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.2929700629902072,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.12149246388747,
+        15.174906601648239,
+        16.72772758117385,
+        16.78860898625494,
+        15.468960428215151,
+        14.91637918969367
+      ],
+      "audited_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ],
+      "audited_zero_mse": [
+        0.00039911696708182844,
+        0.000624789648780813
+      ]
+    },
+    {
+      "policy_updates": 0,
+      "intervention_multipliers": [
+        0.7933332658250416,
+        1.5118452919535956,
+        1.2803572201933615,
+        1.143096832110934,
+        1.2874312569627404,
+        0.585906344959359,
+        1.1487415586031986,
+        0.9428320484029812
+      ],
+      "future_loss_contrasts": [],
+      "arm": "zero",
+      "nll": 15.245788020793047,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.3010015230101999,
+      "block_nll": [
+        15.289060083174437,
+        12.479168832296628,
+        15.12149246388747,
+        15.174906601648239,
+        16.72772758117385,
+        16.78860898625494,
+        15.468960428215151,
+        14.91637918969367
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    },
+    {
+      "policy_updates": 0,
+      "intervention_multipliers": [
+        0.6349357122307037,
+        0.6250006549715573,
+        1.3036861193855005,
+        1.1367380105149936,
+        0.7495774999619713,
+        0.9469540480477093,
+        0.8379994734831206,
+        0.7846105389997172
+      ],
+      "future_loss_contrasts": [],
+      "arm": "bptt",
+      "nll": 15.246248384363371,
+      "targets": 64,
+      "audits": 8,
+      "critic_updates": 0,
+      "wall_s": 0.3480280229996424,
+      "block_nll": [
+        15.289060083174437,
+        12.479128924944733,
+        15.121615488125745,
+        15.175905863684271,
+        16.728442213304376,
+        16.789891844025497,
+        15.468560146916328,
+        14.91738251073157
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    }
+  ],
+  "online_nll_gain": {
+    "frozen": 0.0,
+    "zero": 0.0,
+    "bptt": 0.000460363570324418
+  },
+  "whole_wall_s": 2.429974673985271,
+  "peak_rss_kb": 325680,
+  "source_sha256": {
+    "experiments/credit/market_future_hidden_shift.py": "d4d31f12cee5ad25e4dac1207dcd91b4fa9af845f6fa166ebef886d68fa94e30",
+    "experiments/credit/market_future_credit_intervention.py": "96278944c2e39123752272d9c92abc4838bade60e3a58499e4906aad342b20c5",
+    "experiments/credit/market_credit_continuation.py": "f7e7c741d30284a8fe94deab3754ab45ccae180f0b58809fe147fde1f279a234",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Controlled conditional reversal: synthetic symmetric side transition .95 -> .05 on Aug1 TRAIN timestamps, equal population marginals and hidden regime identity. Future-loss intervention policy; not real-market benchmark evidence. Base critic and trust calibration frozen during reuse; online alone trains intervention policy from actual next-window loss minus no-update parameter replay at identical carried numerical state. Stochastic scalar multiplier changes boundary prediction before independent residual audit; actor clipping/Adam can make utility depend on it. Score-function estimator, not exact pathwise gradient. Reference clones/replays charged; no audit-variance or task win assumed. Identical acquired actor/optimizer/critic/state; frozen critic also freezes trust calibration. Persistent credit activations still evolve. Online trains only after revealed audited credit; local gradients exact, boundary residual audits unbiased before nonlinear optimizer/clipping. All initialization/acquisition/critic/audit/optimizer/scoring CPU charged. No TEST, changing-bias attribution, sparse hardware or benchmark win."
+}
