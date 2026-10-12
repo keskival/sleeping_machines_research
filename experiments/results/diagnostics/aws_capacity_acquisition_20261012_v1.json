@@ -1,0 +1,341 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "levels": [
+    {
+      "exposure": "128k",
+      "rows": [
+        {
+          "pool": 4,
+          "targets": 131056,
+          "parameters": 3164842,
+          "selected_nll": 7.587434895833334,
+          "final_nll": 7.587434895833334,
+          "complete_training_s": 138.5568891162984,
+          "complete_process_s": 142.6824313690886,
+          "training_ms_per_target": 1.0572342290036199,
+          "scored_keys_per_target": 16,
+          "selected_writes_per_target": 4,
+          "final_routing": {
+            "write_counts": [
+              [
+                [
+                  42710,
+                  31147,
+                  35039,
+                  22160
+                ],
+                [
+                  38976,
+                  28286,
+                  30521,
+                  33273
+                ]
+              ],
+              [
+                [
+                  33822,
+                  38109,
+                  29820,
+                  29305
+                ],
+                [
+                  32986,
+                  29195,
+                  31284,
+                  37591
+                ]
+              ]
+            ],
+            "used_fraction": 1.0,
+            "effective_receivers": [
+              [
+                3.896585278631687,
+                3.9708561225665115
+              ],
+              [
+                3.9769701482744386,
+                3.982463115673285
+              ]
+            ],
+            "max_write_share": [
+              [
+                0.32589122207300697,
+                0.29739958491026736
+              ],
+              [
+                0.2907840922964229,
+                0.2868315834452448
+              ]
+            ]
+          }
+        },
+        {
+          "pool": 8,
+          "targets": 131056,
+          "parameters": 3203674,
+          "selected_nll": 7.568964460784314,
+          "final_nll": 7.568964460784314,
+          "complete_training_s": 139.56700619100593,
+          "complete_process_s": 143.6808388591744,
+          "training_ms_per_target": 1.0649417515490014,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4,
+          "final_routing": {
+            "write_counts": [
+              [
+                [
+                  10915,
+                  13615,
+                  11393,
+                  13430,
+                  11370,
+                  12221,
+                  12503,
+                  45609
+                ],
+                [
+                  13726,
+                  16163,
+                  16339,
+                  14931,
+                  16008,
+                  18376,
+                  19839,
+                  15674
+                ]
+              ],
+              [
+                [
+                  15099,
+                  19450,
+                  13897,
+                  19664,
+                  14423,
+                  13365,
+                  15923,
+                  19235
+                ],
+                [
+                  12020,
+                  10902,
+                  10765,
+                  11230,
+                  52035,
+                  11310,
+                  12885,
+                  9909
+                ]
+              ]
+            ],
+            "used_fraction": 1.0,
+            "effective_receivers": [
+              [
+                6.772456965181354,
+                7.952904242212934
+              ],
+              [
+                7.909536263904516,
+                6.317193175960934
+              ]
+            ],
+            "max_write_share": [
+              [
+                0.3480115370528629,
+                0.15137803686973508
+              ],
+              [
+                0.15004272982541814,
+                0.39704401172018067
+              ]
+            ]
+          }
+        }
+      ],
+      "pool8_selected_gain": 0.018470435049019684,
+      "training_wall_ratio": 1.0072902695863768,
+      "quality_time_pareto_improvement": false
+    },
+    {
+      "exposure": "512k",
+      "rows": [
+        {
+          "pool": 4,
+          "targets": 524272,
+          "parameters": 3164842,
+          "selected_nll": 7.263107239966299,
+          "final_nll": 7.263107239966299,
+          "complete_training_s": 559.9742305113468,
+          "complete_process_s": 564.1005529568065,
+          "training_ms_per_target": 1.0680986787609235,
+          "scored_keys_per_target": 16,
+          "selected_writes_per_target": 4,
+          "final_routing": {
+            "write_counts": [
+              [
+                [
+                  156790,
+                  131146,
+                  131067,
+                  105269
+                ],
+                [
+                  79721,
+                  78889,
+                  66818,
+                  298844
+                ]
+              ],
+              [
+                [
+                  122122,
+                  129980,
+                  166259,
+                  105911
+                ],
+                [
+                  169126,
+                  118098,
+                  113163,
+                  123885
+                ]
+              ]
+            ],
+            "used_fraction": 1.0,
+            "effective_receivers": [
+              [
+                3.9612948557079504,
+                3.171943879815453
+              ],
+              [
+                3.9450430220975563,
+                3.9454100427200336
+              ]
+            ],
+            "max_write_share": [
+              [
+                0.29906231879635,
+                0.5700170903653066
+              ],
+              [
+                0.31712355418561355,
+                0.3225920896023438
+              ]
+            ]
+          }
+        },
+        {
+          "pool": 8,
+          "targets": 524272,
+          "parameters": 3203674,
+          "selected_nll": 7.293910366881128,
+          "final_nll": 7.293910366881128,
+          "complete_training_s": 564.8256198596209,
+          "complete_process_s": 569.04225300299,
+          "training_ms_per_target": 1.0773522519982393,
+          "scored_keys_per_target": 32,
+          "selected_writes_per_target": 4,
+          "final_routing": {
+            "write_counts": [
+              [
+                [
+                  56305,
+                  65481,
+                  64174,
+                  69806,
+                  81323,
+                  77158,
+                  53018,
+                  57007
+                ],
+                [
+                  53095,
+                  44450,
+                  62235,
+                  51459,
+                  33283,
+                  35744,
+                  204139,
+                  39867
+                ]
+              ],
+              [
+                [
+                  74188,
+                  133634,
+                  40446,
+                  48127,
+                  66271,
+                  52398,
+                  58402,
+                  50806
+                ],
+                [
+                  80175,
+                  45517,
+                  77928,
+                  45757,
+                  65196,
+                  72350,
+                  64527,
+                  72822
+                ]
+              ]
+            ],
+            "used_fraction": 1.0,
+            "effective_receivers": [
+              [
+                7.917517834932217,
+                6.317029064041518
+              ],
+              [
+                7.420804497712419,
+                7.846768156295054
+              ]
+            ],
+            "max_write_share": [
+              [
+                0.15511604663228248,
+                0.3893761253700369
+              ],
+              [
+                0.2548944059572131,
+                0.1529263435773797
+              ]
+            ]
+          }
+        }
+      ],
+      "pool8_selected_gain": -0.03080312691482856,
+      "training_wall_ratio": 1.0086635939368924,
+      "quality_time_pareto_improvement": false
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_window_replay_128k_20261012_s6_v1.json": "2f2b176cbda006f2ad492e87185ef72e3f10f3e830fe660b397ee38b9993aff9",
+    "experiments/results/token_language/aws_integrated_capacity8_128k_20261012_s6_v1.json": "dcceeda92ced6a178567207958374f2faf88df09c382bb125dce61983fbec4be",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s6_v1.json": "e7317479d1a590529e5b3762ec6287863e5d1aeb46f47d8105c4537525edf785",
+    "experiments/results/token_language/aws_integrated_capacity8_512k_20261012_s6_v1.json": "d6f532f80b57710bb3ffbc828bf721581e164e89ca1036638301dbde04690607"
+  },
+  "source_sha256": {
+    "experiments/window_replay_token_language.py": "c0d0764435f781332f35572fa15f79ab15ca1b4fcfd6e9981b3ea8b6c076fe4c",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/analyze_capacity_acquisition.py": "da75d35cf8a3f25c45ea51bf858d83c6a70cd5320adf4111be8710801c504365"
+  },
+  "scope": "First-pass own-model pool8 development at two acquired-data sizes, seed6. Same proper tokens, TRAIN prior, updates and DEV opportunities; architecture-dependent initialization differs. Selected writes unchanged, scored keys and core receivers doubled. Full factual BP and sampled actual alternative replay retained. Complete CPU training/process wall, no FLOP/energy/external-model or family verdict. Small quality deficit did not veto the reserved larger point."
+}
