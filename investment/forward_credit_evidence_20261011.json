@@ -20,7 +20,10 @@
     "experiments/results/credit/curie_native_event_credit_20261012_v1_d32_fit.json": "688b3a2b0910e93fb3d90d0f56430318ff604abc09e82b3ef74a10a837e479b2",
     "experiments/results/credit/curie_native_event_credit_20261012_v1_d16_fit.json": "628f8e5cc90742935b3f93c7074177194b216041d272df5d3b32fceb56c0779f",
     "experiments/results/credit/curie_native_event_heads_20261012_v1_measure.json": "d76390ead9a569827f3259e5878bbaf90d4978c60b367440cecf73df118e9720",
-    "experiments/results/credit/curie_native_cohort_event_20261012_v1_s99913_fit.json": "03772be549f06121c1df8b9208d0c9b18a57f706e755612c34c2f72fe2b0b98d"
+    "experiments/results/credit/curie_native_cohort_event_20261012_v1_s99913_fit.json": "03772be549f06121c1df8b9208d0c9b18a57f706e755612c34c2f72fe2b0b98d",
+    "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json": "f7d5bff10ba3317b655e5398b9d35815f6fb4b3218e0f7ccb665a1edb6038ea5",
+    "experiments/results/diagnostics/aws_world_answer_changes_20261012_v1.json": "bb9adbba8a58796782345ca4ec76b34752d5091dc3ddf9f705fc61f9e5c70df8",
+    "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json": "7bbb2fd4f02500af787ed2d6f64671945eda0f1965bc60257120349e62c13837"
   },
   "metrics": {
     "credit_error_static_reduction_pct": 98.35648344199768,
@@ -695,5 +698,97 @@
       ],
       "scope": "Selected two registered local update recipes using reused DEV, then fresh actor initialization full1400TaxiTRAIN/threepasses/depth8/16/32. 128DEV sequences,2048scoredtargets; no TEST. Allarms67200fittingtargets; same acquired core/head/velocity for online/frozen/heads, heads bitwisecorefreeze. NativeAdamW separate exact training on identical schedule. No further tuning. Firstcheckpoint cost to prespecified-comparator finalquality is an upperbound, unreachedNone. CompleteCPU wall includes acquisition, teacher/reference/metaoptimizer/packet/query/scoring; no FLOP/energy claim. Dense internal numerical writes, independent sequence resets, no optional forward-route credit. Not identical to AWS all31target scoring, so no direct NLL comparison."
     }
-  ]
+  ],
+  "native_shared_world_credit": {
+    "fresh_system_confirmation": {
+      "seed": 194,
+      "confirmation_gate": true,
+      "quality_gains": {
+        "exact": 0.0002644512039201019,
+        "prior": 0.00013861307120077715,
+        "persistence": 0.00021150445298945275
+      },
+      "depth_quality_gains": {
+        "4": {
+          "exact": 8.61833012863189e-05,
+          "prior": 0.00017895640728034234,
+          "persistence": 7.237864245104864e-05
+        },
+        "8": {
+          "exact": 0.00044271910655387103,
+          "prior": 9.826973512128134e-05,
+          "persistence": 0.000350630263527843
+        }
+      },
+      "rows": [
+        {
+          "arm": "exact",
+          "pooled_nll": 0.42095233803881693,
+          "world_nll": 0.5254018850738578,
+          "complete_acquisition_and_reuse_stage_wall_s": 1372.02869379599,
+          "whole_learning_wall_s": 1362.980482680956,
+          "reuse_ms_per_target": 657.205420112291,
+          "peak_rss_kb": 1420548
+        },
+        {
+          "arm": "learned",
+          "pooled_nll": 0.42068788683489683,
+          "world_nll": 0.5249512964384454,
+          "complete_acquisition_and_reuse_stage_wall_s": 1368.5135094219586,
+          "whole_learning_wall_s": 1359.6391988219402,
+          "reuse_ms_per_target": 653.942447593721,
+          "peak_rss_kb": 1420580
+        },
+        {
+          "arm": "prior",
+          "pooled_nll": 0.4208264999060976,
+          "world_nll": 0.524792218906676,
+          "complete_acquisition_and_reuse_stage_wall_s": 1374.4302008279774,
+          "whole_learning_wall_s": 1365.4129120949365,
+          "reuse_ms_per_target": 659.5808394618814,
+          "peak_rss_kb": 1421100
+        },
+        {
+          "arm": "persistence",
+          "pooled_nll": 0.4208993912878863,
+          "world_nll": 0.5245568936919895,
+          "complete_acquisition_and_reuse_stage_wall_s": 1380.0527467899956,
+          "whole_learning_wall_s": 1371.0084147989692,
+          "reuse_ms_per_target": 665.0451975712883,
+          "peak_rss_kb": 1420824
+        }
+      ],
+      "scope": "Fixed fresh-system four-arm confirmation stage; all8systems/1024prequential targets per arm, generating depths4/8 and factors8/16. Same source model/Adam fingerprint within each stage. Source acquisition charged once per8deployment cohort, whole denominator5120presentations. No case/actor selection, publicTEST, neural-depth or efficiency claim. All three registered stages must pass for confirmation; an early failure stops later acquisitions."
+    },
+    "original_answer_diagnosis": {
+      "rows": [
+        {
+          "arm": "learned",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0
+        },
+        {
+          "arm": "prior",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0
+        },
+        {
+          "arm": "exact",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0
+        }
+      ],
+      "scope": "Read-only replay of byte-matched public observations with saved issued forecasts. Last observed target bit is captured at query time, never reconstructed from later events. Counts describe factual answer changes relative to persistence; they do not identify unexecuted route effects or full future learning. No new fit or oracle access."
+    },
+    "depth_utility_contract": {
+      "result": "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json",
+      "scope": "Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result."
+    }
+  }
 }

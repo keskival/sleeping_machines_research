@@ -73,6 +73,27 @@ def main():
         cohort.append(dict(seed=seed,config=record['config'],comparisons=[{k:r[k] for k in ['depth','online_gain_vs_frozen','online_gain_vs_matched_heads','online_gain_vs_adam','matched_quality_wall_ratio']} for r in record['rows']],scope=record['scope']))
     if cohort:
         packet['native_cohort_learning']=cohort;packet['generated_credit_status']='Complete native cohort/depth stage finished; source-bound seed/depth quality and complete matched-quality CPU comparisons recorded, exact matched heads/frozen/own-nativeAdamW. No public TEST or hardware claim.'
+    # Native shared-world credit is a separate task-learning result, not a
+    # replacement for the language component's accuracy/work measurements.
+    native_credit={}
+    for name,relative in {
+        'fresh_system_confirmation':'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json',
+        'original_answer_diagnosis':'experiments/results/diagnostics/aws_world_answer_changes_20261012_v1.json',
+        'depth_utility_contract':'experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json',
+    }.items():
+        path=ROOT/relative
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for group in ['source_sha256','parent_sha256']:
+            for source,digest in record.get(group,{}).items():assert sha(ROOT/source)==digest,source
+        parents[relative]=sha(path)
+        if name=='fresh_system_confirmation':
+            native_credit[name]=dict(seed=record['seed'],confirmation_gate=record['confirmation_gate'],quality_gains=record['quality_gains'],depth_quality_gains=record['depth_quality_gains'],rows=[{k:v for k,v in row.items() if k!='rows'} for row in record['rows']],scope=record['scope'])
+        elif name=='original_answer_diagnosis':
+            native_credit[name]=dict(rows=[{k:v for k,v in row.items() if k!='cases'} for row in record['rows']],scope=record['scope'])
+        else:
+            native_credit[name]=dict(result=relative,scope='Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result.')
+    packet['native_shared_world_credit']=native_credit
     assert f['accuracy_gate'] and all(x>0 for x in f['comparisons']['transport_over_static_full']['per_prefix_gain'])
     (ROOT/'investment/forward_credit_evidence_20261011.json').write_text(json.dumps(packet,indent=2)+'\n')
     print(json.dumps(metrics))

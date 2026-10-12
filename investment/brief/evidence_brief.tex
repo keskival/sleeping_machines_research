@@ -368,6 +368,61 @@ Native optimizer: three seeds on Taxi TRAIN/DEV, no TEST. A 64-dimensional
 state is not a 64-bit representation.}
 
 \newpage
+% ---------------------------------------------------------- native credit
+\sect{Learning to assign credit}{Native shared-world learning: a fresh-system advance}
+
+\textbf{Completed on 12 October.} Our prediction model and credit model use
+native temporal races and independently read and write a shared memory bank.
+Observed outcomes train the credit model; subsequent prediction losses also
+teach its shared-memory operations. This tests our own event architecture in
+the learning machinery.
+
+\vspace{3mm}
+{\small\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{Y r r}
+\toprule
+Credit rule & Prediction NLL $\downarrow$ & Complete stage (CPU seconds) \\
+\midrule
+\textbf{Learned outcome belief} & \textbf{0.420688} & 1368.5 \\
+Exact observed-outcome credit & 0.420952 & 1372.0 \\
+Fixed-prior credit & 0.420826 & 1374.4 \\
+Conditional persistence credit & 0.420899 & 1380.1 \\
+\bottomrule
+\end{tabularx}}
+
+\vspace{3mm}
+\textbf{What improved.} One acquired model transferred to eight fixed fresh
+systems, with 1,024 prequential targets per arm. Learned credit improves NLL
+over all three controls, both overall and at each generating depth (4 and 8).
+The gain over persistence credit is 0.000212 nats/target. Complete stage time
+includes common acquisition and all eight deployments; timing differences here
+are not an efficiency claim. The registered three-stage confirmation continues
+with two fresh acquisitions. This first stage is one acquired-model result.
+
+\begin{callout}
+\textbf{What the diagnosis says.} On the original, separate 1,024-target cohort,
+learned, exact and fixed-prior arms all kept the last-observed-bit binary answer:
+zero answer changes. Those NLL gains improve confidence/calibration. The
+original primary gate failed at generating depth 8; the additional persistence
+credit control passed. The fresh-system pass above does not replace those results.
+The next substantive capability test must measure useful answer changes from
+transferred information, alongside predictive loss and complete learning cost.
+\end{callout}
+
+\textbf{Analytical advance.} Direct route-score credit has a conditional error
+bound set by belief error and route-output spread, without a product of local
+estimator errors through depth. Numerical contracts verify this identity and
+the actual clipped/unclipped Adam response to delayed utility. Learning accurate
+beliefs and paying for deep responses remain necessary. These are mathematical
+and numerical results, not a demonstrated neural-depth scaling advantage.
+
+{\footnotesize\color{muted}Private B5/R1 development systems; public observations,
+no hidden-graph access. Generating depth is not neural depth. Source acquisition:
+4,096 presentations; deployment: 1,024 targets. No public TEST or hardware-energy
+claim. Completed result hashes and full scope:
+\texttt{investment/forward\_credit\_evidence\_20261011.json}.}
+
+\newpage
 % ---------------------------------------------------------------- frontier
 \sect{The frontier}{Not ahead yet, or pending, and the next test}
 
