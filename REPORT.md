@@ -2999,6 +2999,24 @@ Single-seed private DEV, same first262144tokens/prior/first512updates and bit-id
 
 Evidence aws_integrated_common_prior_512k_decision_20261012_s8_v1.
 
+Integrated proper-token depth/exposure development. First-pass single-seed depth4 member at two registered exposure levels versus completed depth2. Same GPT2 tokens, prior, presentations, optimizer count and validation opportunities; topology and initialization differ. Depth4 doubles selected core writes and available receivers; complete CPU training wall measured, no FLOP or iso-compute claim. Core temporal/key-value/hard-route/counterfactual mechanisms retained; full factual backprop unchanged. No trained-credit efficiency, family verdict, public scoring or inferred scaling exponent.
+
+| Depth | Params | Targets | Best NLL | Final NLL | Train s | ms/target | Core/active |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | 3164842 | 131056 | 7.587435 | 7.587435 | 149.399 | 1.140 | 16/4 |
+| 4 | 3212986 | 131056 | 7.622248 | 7.622248 | 256.173 | 1.955 | 32/8 |
+
+Exposure 128k: depth4 selected-quality gain -0.034813; final-quality gain -0.034813; depth4/depth2 training-wall ratio 1.715. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed.
+
+| Depth | Params | Targets | Best NLL | Final NLL | Train s | ms/target | Core/active |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | 3164842 | 524272 | 7.263107 | 7.263107 | 607.069 | 1.158 | 16/4 |
+| 4 | 3212986 | 524272 | 7.410791 | 7.410791 | 1024.438 | 1.954 | 32/8 |
+
+Exposure 512k: depth4 selected-quality gain -0.147684; final-quality gain -0.147684; depth4/depth2 training-wall ratio 1.688. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed.
+
+Evidence aws_integrated_depth_exposure_20261012_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5546,17 +5564,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
-
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
 
 ### Longer-data complete native learning
 
