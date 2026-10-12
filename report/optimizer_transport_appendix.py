@@ -184,4 +184,14 @@ def pages():
                 for arm,v in r['arms'].items():rows.append([str(r['depth']),arm,f"{v['final_dev_nll']:.6f}",f"{v['whole_learning_wall_s']:.3f}"])
             scope='Single-seed reused Taxi DEV. Trust bounds actual parameter-step deviation; it does not bound query-policy drift. Online beats frozen credit at both depths, trails reset credit at both, and uses more CPU. All acquisition, anchor, critic, teacher/reference and optimizer work charged.'
         current.append([('h2',label),('table',(['Depth/domain','Learner','NLL','CPU seconds'],rows,[34,45,45,43])),('small',scope)])
+    path=ROOT/'experiments/results/credit/curie_market_functional_large_20261012_v1_fit.json'
+    if path.exists():
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for name,digest in r['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[];acq=r['acquisition']
+        for v in r['rows']:
+            if v['arm']=='bptt_from_initialization':nll=v['nll'];wall=v['wall_s'];label=v['arm']
+            else:nll=(acq['nll']*acq['targets']+v['nll']*v['targets'])/(acq['targets']+v['targets']);wall=acq['wall_s']+v['wall_s'];label=v['arm']+' (shared acquisition)'
+            rows.append([label,f"{nll:.6f}",f"{wall:.3f}"])
+        current.append([('h2','Longer-data complete native learning'),('table',(['Learner','Whole prequential NLL','Whole CPU seconds'],rows,[77,47,43])),('small',r['scope']+' Every row uses65,536targets and includes acquisition; initial-context/setup is outside arm time. Shared-acquisition controls isolate continuation; the independent-from-initialization reference compares whole native learning.')])
     return current
