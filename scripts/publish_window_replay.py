@@ -2,6 +2,7 @@
 import fcntl
 import hashlib
 import json
+import statistics
 from continue_unique_language import ROOT, command
 
 
@@ -17,12 +18,17 @@ def main():
         records.append(d)
     assert records
     first=records[0]
+    summary=''
+    for targets in sorted({r['targets'] for r in records}):
+        values=[r['training_time_reduction_percent'] for r in records if r['targets']==targets]
+        deviation=statistics.stdev(values) if len(values)>1 else 0.
+        summary+=f"At{targets}targets, mean training-time reduction{statistics.mean(values):.2f}%±{deviation:.2f}percentage points across{len(values)}seeds. "
     text=(f"Exact cached credit-window replay completes {len(records)} source-bound quality/work comparisons. "
         f"At131056targets seed6, complete training {first['reference_training_s']:.3f}→{first['candidate_training_s']:.3f}s "
         f"({first['training_time_reduction_percent']:.2f}% reduction), DEV NLL unchanged{first['candidate_nll']:.6f}. "
         f"Exact recorded learning/teacher/gradient curves: {sum(d['exact_learning_curve'] for d in records)}/{len(records)}; "
         f"quality/time gates PASS: {sum(d['gate']=='PASS' for d in records)}/{len(records)}. "
-        'Retains temporal races, key/value separation, persistent state, hard writes, factual BP and counterfactual objective; replay begins at cloned factual window state/RNG. '
+        +summary+'Retains temporal races, key/value separation, persistent state, hard writes, factual BP and counterfactual objective; replay begins at cloned factual window state/RNG. '
         'Same data/settings against saved full-prefix fits; CPU wall measurements, no new dense controls, public/reserved scoring or external-model claim. '
         'Bounded continuation covers seeds6/7/8 at131056and524272targets, admits the next fit only after exact-learning/lower-time gate PASS; pending points are absent from the evidence table. '
         'Curie retains native learned-credit ownership; this is an exact own-model execution improvement.')

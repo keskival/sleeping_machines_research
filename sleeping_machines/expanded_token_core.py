@@ -49,7 +49,19 @@ class ExpandedTokenCore(PackedTokenCore):
                 else:
                     value=torch.cat((value,self.extension_banks[name][depth]),dim=1)
                 bank[name]=value.reshape(self.heads*self.pool,*value.shape[2:])
-            bank['rate']=F.softplus(bank.pop('raw_rate'))+1e-6
+            # Retain the original nonlinear kernel shape for original rates;
+            # a wider vectorized softplus need not be bitwise identical.
+            bank.pop('raw_rate')
+            raw=self.banks['raw_rate'][depth]
+            if self.tied['raw_rate']:raw=raw.expand(self.heads,self.original_pool,*raw.shape[2:])
+            old_rate=(F.softplus(raw.reshape(self.heads*self.original_pool,*raw.shape[2:]))+1e-6).reshape_as(raw)
+            if self.tied['raw_rate']:
+                index=torch.arange(self.pool-self.original_pool,device=raw.device)%self.original_pool
+                new_rate=old_rate.index_select(1,index)
+            else:
+                extra=self.extension_banks['raw_rate'][depth]
+                new_rate=(F.softplus(extra.reshape(self.heads*(self.pool-self.original_pool),*extra.shape[2:]))+1e-6).reshape_as(extra)
+            bank['rate']=torch.cat((old_rate,new_rate),dim=1).reshape(self.heads*self.pool,*raw.shape[2:])
             bank['frequency']=bank['frequency'].to(torch.float64)
             bank['query']=self.banks['query'][depth]
             bank['gain']=self.gain
