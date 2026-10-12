@@ -3026,6 +3026,7 @@ Exact cached credit-window replay: own-model execution comparison. All recorded 
 | aws_window_replay_128k_gate_20261012_s8_v1 | 131056 | 7.559739 | 7.559739 | 148.467 | 139.086 | 6.32% | PASS |
 | aws_window_replay_512k_gate_20261012_s6_v1 | 524272 | 7.263107 | 7.263107 | 607.069 | 559.974 | 7.76% | PASS |
 | aws_window_replay_512k_gate_20261012_s7_v1 | 524272 | 7.275658 | 7.275658 | 604.046 | 558.720 | 7.50% | PASS |
+| aws_window_replay_512k_gate_20261012_s8_v1 | 524272 | 7.292635 | 7.292635 | 600.521 | 560.072 | 6.74% | PASS |
 
 ## FAS native frozen-recipe replication
 
@@ -5574,17 +5575,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
-
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
 
 ### Longer-data complete native learning
 
