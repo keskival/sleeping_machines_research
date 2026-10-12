@@ -1,0 +1,1042 @@
+{
+  "status": "completed",
+  "evidence": "development single seed",
+  "args": {
+    "exposure": "fresh",
+    "tag": "aws_integrated_common_prior_smoke_20261012_s6_v1",
+    "train_file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "dev_file": "data/fineweb_gpt2/fineweb_val_000000.bin",
+    "train_tokens": 512,
+    "dev_offset": 20971520,
+    "dev_tokens": 256,
+    "steps": 2,
+    "chunk": 64,
+    "eval_lanes": 8,
+    "lanes": 8,
+    "credit_window": 16,
+    "minimum_tail_width": 0,
+    "payload": 24,
+    "heads": 2,
+    "depth": 2,
+    "pool": 4,
+    "lr": 0.003,
+    "weight_decay": 0.01,
+    "route_credit": "sampled",
+    "compiled": false,
+    "future_site": "uniform",
+    "future_score_positions": 4,
+    "future_every": 1,
+    "future_scale": 1.0,
+    "readout_init": "frequency",
+    "input_init": "balanced",
+    "state_mode": "carry",
+    "readout": "adaptive",
+    "free_bias": 0.0,
+    "temperature": 1.0,
+    "balance": 0.0,
+    "tie_pools": false,
+    "deterministic_eval": false,
+    "seed": 6,
+    "eval_every": 1,
+    "resume": null,
+    "stop_after_step": null
+  },
+  "identity": {
+    "train_sha256": "771fa4a99b9fe0946ffb6e848b4ba5c6a9b0fe87860ebf03bc2c1c7e45f8178e",
+    "dev_sha256": "5b95c8e0966f0861685b307b23dc5ae42b228ef74b28cb499784ae021f201640",
+    "source_sha256": {
+      "experiments/common_prior_token_language.py": "2ab4eddae8862c1a650e60dc2276bedc6139b706dc9be97a256f4a959abf9498",
+      "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+      "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+      "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+      "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+      "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+      "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+      "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+      "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+      "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+      "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+      "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+      "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+      "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+      "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+      "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+      "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+    }
+  },
+  "parameters": 3164842,
+  "core_bank_sharing": {
+    "key": false,
+    "key_read": false,
+    "clock_bias": false,
+    "input": false,
+    "output": false,
+    "gate_w": false,
+    "gate_b": false,
+    "control_w": false,
+    "control_b": false,
+    "raw_rate": false,
+    "frequency": false
+  },
+  "source_sha256": {
+    "experiments/common_prior_token_language.py": "2ab4eddae8862c1a650e60dc2276bedc6139b706dc9be97a256f4a959abf9498",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+  },
+  "process_wall_s": 2.4896081029437482,
+  "exposure_protocol": {
+    "policy": "fresh",
+    "prior_tokens": 512,
+    "unique_admitted_tokens": 1024,
+    "blocks": 2,
+    "completed_block": 1,
+    "shared_boundary_reset": true
+  },
+  "core_parameters": 2462880,
+  "readout_parameters": 701962,
+  "decoder_tail_widths": [
+    24,
+    12,
+    6
+  ],
+  "best_dev_nll": 9.50900170110887,
+  "curve": [
+    {
+      "step": 0,
+      "train_nll": 7.497122143942212,
+      "dev_nll": 9.528672741305444
+    },
+    {
+      "step": 1,
+      "batch_nll": 7.497122287750244,
+      "gradient_norm": 1.3837172985076904,
+      "train_nll": 7.366169278583829,
+      "dev_nll": 9.522177419354838,
+      "future_write_teacher": {
+        "site": [
+          20,
+          0,
+          1
+        ],
+        "inverse_site_probability": 252,
+        "utility_weight": 48.0,
+        "credit_end": 32,
+        "winner": [
+          2,
+          2,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "alternative": [
+          3,
+          3,
+          2,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "scoring_positions": [
+          22,
+          24,
+          25,
+          27
+        ],
+        "replay_length": 28,
+        "proposal_probability": [
+          0.40739477808119107,
+          0.28895974939022095,
+          0.2805927799167729,
+          0.33037873144448304,
+          0.3952773150943375,
+          0.44774366136504123,
+          0.45986251803670447,
+          0.304123829222622
+        ],
+        "mean_suffix_loss_delta": 0.0
+      },
+      "route_entropy": 1.346540927886963,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              146,
+              137,
+              75,
+              146
+            ],
+            [
+              113,
+              140,
+              107,
+              144
+            ]
+          ],
+          [
+            [
+              127,
+              94,
+              153,
+              130
+            ],
+            [
+              108,
+              147,
+              125,
+              124
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            3.878271266184079,
+            3.9669273090870725
+          ],
+          [
+            3.9430140367509994,
+            3.976010219847221
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.2896825396825397,
+            0.2857142857142857
+          ],
+          [
+            0.30357142857142855,
+            0.2916666666666667
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "banks.query": 0.0
+      },
+      "memory_effective_rank": [
+        [
+          14.245670569942039,
+          12.160872963989688
+        ],
+        [
+          11.266457669077033,
+          13.147180977623764
+        ]
+      ],
+      "wall_s": 0.6467514368705451,
+      "learner_fingerprint": "aae4334ba139b6b5f1dea4a4a04a1844330b1c2cd4c656a0837b52764e06ae1f"
+    },
+    {
+      "step": 2,
+      "batch_nll": 8.667619705200195,
+      "gradient_norm": 1.2030973434448242,
+      "train_nll": 7.25054447234623,
+      "dev_nll": 9.50900170110887,
+      "future_write_teacher": {
+        "site": [
+          12,
+          1,
+          1
+        ],
+        "inverse_site_probability": 252,
+        "utility_weight": 16.0,
+        "credit_end": 16,
+        "winner": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "alternative": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          0
+        ],
+        "scoring_positions": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "replay_length": 16,
+        "proposal_probability": [
+          0.3069812772882422,
+          0.33586007819692615,
+          0.30392690183833476,
+          0.3381491384870596,
+          0.3222755555894545,
+          0.308915151699429,
+          0.33685653387808195,
+          0.3054304277831399
+        ],
+        "mean_suffix_loss_delta": 2.8014183044433594e-05
+      },
+      "route_entropy": 1.3462306261062622,
+      "routing": {
+        "write_counts": [
+          [
+            [
+              240,
+              266,
+              214,
+              288
+            ],
+            [
+              231,
+              271,
+              227,
+              279
+            ]
+          ],
+          [
+            [
+              236,
+              240,
+              292,
+              240
+            ],
+            [
+              229,
+              263,
+              286,
+              230
+            ]
+          ]
+        ],
+        "used_fraction": 1.0,
+        "effective_receivers": [
+          [
+            3.975668254049226,
+            3.9830522254616576
+          ],
+          [
+            3.983689775183572,
+            3.98215805341658
+          ]
+        ],
+        "max_write_share": [
+          [
+            0.2857142857142857,
+            0.2767857142857143
+          ],
+          [
+            0.2896825396825397,
+            0.2837301587301587
+          ]
+        ]
+      },
+      "receiver_gradient_norms": {
+        "banks.key": [
+          [
+            [
+              6.348116698973172e-07,
+              6.827102083661885e-07,
+              8.955887551564956e-07,
+              6.268612082749314e-07
+            ],
+            [
+              5.540252345781482e-07,
+              4.987721808902279e-07,
+              5.140401526659844e-07,
+              5.169628707335505e-07
+            ]
+          ],
+          [
+            [
+              3.204036431725399e-07,
+              4.401051683089463e-07,
+              3.7388602436294605e-07,
+              3.1248376330950123e-07
+            ],
+            [
+              0.0010470859706401825,
+              0.0012851894134655595,
+              0.0005595171824097633,
+              0.00046566087985411286
+            ]
+          ]
+        ],
+        "banks.key_read": [
+          [
+            [
+              2.183445531045436e-06,
+              1.744760538713308e-06,
+              3.6317539979791036e-06,
+              1.9150656953570433e-06
+            ],
+            [
+              1.421118327016302e-06,
+              1.5345552810686058e-06,
+              1.8523477365306462e-06,
+              1.9406311366765294e-06
+            ]
+          ],
+          [
+            [
+              1.5235735872920486e-06,
+              2.6009104203694733e-06,
+              1.968981905520195e-06,
+              1.460913836126565e-06
+            ],
+            [
+              0.006371837109327316,
+              0.003545317566022277,
+              0.002289016032591462,
+              0.002314029261469841
+            ]
+          ]
+        ],
+        "banks.clock_bias": [
+          [
+            [
+              4.197878240574937e-07,
+              4.3610006628114206e-07,
+              3.772154855141707e-07,
+              4.5497125711335684e-07
+            ],
+            [
+              4.941264819535718e-07,
+              4.521514824773476e-07,
+              8.327263572027732e-07,
+              1.1834949731337474e-07
+            ]
+          ],
+          [
+            [
+              6.460404051722435e-07,
+              1.076247144737863e-06,
+              1.0943489314740873e-06,
+              8.244163609560928e-07
+            ],
+            [
+              0.0014690429670736194,
+              0.0020999275147914886,
+              0.0005220904131419957,
+              0.00011144010932184756
+            ]
+          ]
+        ],
+        "banks.input": [
+          [
+            [
+              0.000807286414783448,
+              0.0010018979664891958,
+              0.000769381585996598,
+              0.0008883094997145236
+            ],
+            [
+              0.0006961743929423392,
+              0.0007725906907580793,
+              0.0010925070382654667,
+              0.0008125528111122549
+            ]
+          ],
+          [
+            [
+              0.0006362815038301051,
+              0.0007101540104486048,
+              0.0007964892429299653,
+              0.0006097255391068757
+            ],
+            [
+              0.00669730082154274,
+              0.0035411990247666836,
+              0.002599127357825637,
+              0.0027845031581819057
+            ]
+          ]
+        ],
+        "banks.output": [
+          [
+            [
+              0.0007820692262612283,
+              0.0008957490790635347,
+              0.000863066699821502,
+              0.0010230910265818238
+            ],
+            [
+              0.0007959726499393582,
+              0.0007894249283708632,
+              0.0009567338856868446,
+              0.0009302187245339155
+            ]
+          ],
+          [
+            [
+              0.0007335713016800582,
+              0.0009844633750617504,
+              0.0010226110462099314,
+              0.0005321388598531485
+            ],
+            [
+              0.000745120516512543,
+              0.0005786620313301682,
+              0.0007492378354072571,
+              0.000549383694306016
+            ]
+          ]
+        ],
+        "banks.gate_w": [
+          [
+            [
+              0.000365611573215574,
+              0.0005210881936363876,
+              0.000379748031264171,
+              0.000471462873974815
+            ],
+            [
+              0.0004150138411205262,
+              0.0004143502446822822,
+              0.0004536486812867224,
+              0.0004110288282390684
+            ]
+          ],
+          [
+            [
+              0.0003397941472940147,
+              0.0004108926223125309,
+              0.0004015935701318085,
+              0.0003341834235470742
+            ],
+            [
+              0.00037919587339274585,
+              0.00028155246400274336,
+              0.0003591562563087791,
+              0.00031244303681887686
+            ]
+          ]
+        ],
+        "banks.gate_b": [
+          [
+            [
+              0.00014620165165979415,
+              0.00018233653099741787,
+              0.00015722181706223637,
+              0.00020513159688562155
+            ],
+            [
+              0.00014070604811422527,
+              0.00011357549374224618,
+              0.00011679267481667921,
+              0.00013369222870096564
+            ]
+          ],
+          [
+            [
+              0.00013035636220593005,
+              0.00018241711950395256,
+              0.00017067276348825544,
+              0.0001261379075003788
+            ],
+            [
+              0.00010198010568274185,
+              9.261942614102736e-05,
+              0.00012105872883694246,
+              9.418441186426207e-05
+            ]
+          ]
+        ],
+        "banks.control_w": [
+          [
+            [
+              0.0002044847497018054,
+              0.00031953331199474633,
+              0.00012962000619154423,
+              0.00018777033255901188
+            ],
+            [
+              0.00014666754577774554,
+              0.00021808424207847565,
+              0.00027737655909731984,
+              0.0002693973947316408
+            ]
+          ],
+          [
+            [
+              0.00011605034524109215,
+              0.00018722214736044407,
+              0.00017213942192029208,
+              0.00017567380564287305
+            ],
+            [
+              0.002787949051707983,
+              0.0006523376214317977,
+              0.0005686544463969767,
+              0.0005783741362392902
+            ]
+          ]
+        ],
+        "banks.control_b": [
+          [
+            [
+              1.1410931620048359e-05,
+              2.1570416720351204e-05,
+              3.844807724817656e-05,
+              1.8670914869289845e-05
+            ],
+            [
+              2.6623727535479702e-05,
+              3.308013401692733e-05,
+              6.000751454848796e-05,
+              6.955819117138162e-05
+            ]
+          ],
+          [
+            [
+              8.543408512196038e-06,
+              1.4223105608834885e-05,
+              4.968359644408338e-05,
+              4.1930477891582996e-05
+            ],
+            [
+              0.00041808810783550143,
+              3.2623636798234656e-05,
+              2.5467499654041603e-05,
+              0.0001285774924326688
+            ]
+          ]
+        ],
+        "banks.raw_rate": [
+          [
+            [
+              1.3741469956585206e-05,
+              2.047424095508177e-05,
+              2.2010792235960253e-05,
+              2.215528002125211e-05
+            ],
+            [
+              1.570023232488893e-05,
+              1.850623266363982e-05,
+              2.2576368792215362e-05,
+              2.7302758098812774e-05
+            ]
+          ],
+          [
+            [
+              1.3797650353808422e-05,
+              2.0675834093708545e-05,
+              1.850378430390265e-05,
+              1.273640646104468e-05
+            ],
+            [
+              0.00032442648080177605,
+              5.6524200772400945e-05,
+              3.089025994995609e-05,
+              6.793762440793216e-05
+            ]
+          ]
+        ],
+        "banks.frequency": [
+          [
+            [
+              0.000539884902536869,
+              0.0004316758131608367,
+              0.00036970237852074206,
+              0.0005947130266577005
+            ],
+            [
+              0.0002566510811448097,
+              0.00039648357778787613,
+              0.0003214971802663058,
+              0.0004764083423651755
+            ]
+          ],
+          [
+            [
+              0.00037369938218034804,
+              0.0003964021452702582,
+              0.0002012327458942309,
+              0.0003497202415019274
+            ],
+            [
+              0.00411579106003046,
+              0.0004275800019968301,
+              0.0004894151934422553,
+              0.0012288750149309635
+            ]
+          ]
+        ],
+        "banks.query": 0.010853024199604988
+      },
+      "memory_effective_rank": [
+        [
+          13.54008701213669,
+          12.993313218153215
+        ],
+        [
+          11.926773524497147,
+          13.625708416526543
+        ]
+      ],
+      "wall_s": 1.3625373849645257
+    }
+  ],
+  "presentations_total": 1008,
+  "train_wall_s_total": 1.0190710548777133,
+  "best_checkpoint": "/workspace/experiments/results/token_language/aws_integrated_common_prior_smoke_20261012_s6_v1.best_step00000002.pt",
+  "presentations_this_invocation": 1008,
+  "train_wall_s_this_invocation": 1.0190710548777133,
+  "train_tokens_per_second": 989.1361305723261,
+  "wall_s": 1.4427717609796673,
+  "max_rss_kb": 559396,
+  "host": "ip-172-31-47-132",
+  "resource_scope": "Measured CPU wall/RSS includes core, all-key scoring, winner/sampled-value proposals, winner-only suffix replay, readout, backward and AdamW; FLOPs not yet traced",
+  "protocol": "Packed parameter banks; winner+sampled-value factual learning and winner-only suffix replay; uniform event-site credit (local value surrogate disabled) or first-site control; uniformly sampled causal suffix utility with winner-only replay through the last scored position; bounded per-chunk alternative-write suffix teacher with fixed site first-time/common future noise; contiguous lane streams; numeric state carried; credit truncated per configured window inside the optimizer chunk; EOS reset; separate development interval; public validation untouched"
+}
