@@ -73,6 +73,14 @@ def blocks():
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
     common_paths=[(str(seed),f'aws_integrated_common_prior_decision_20261012_s{seed}_v1') for seed in (6,7,8)]
     common_paths.append(('6 / larger','aws_integrated_common_prior_512k_decision_20261012_s6_v1'))
+    common_cohort=ROOT/'experiments/results/diagnostics/aws_common_prior_cohort_20261012_v1.json'
+    if common_cohort.exists():
+        c=json.loads(common_cohort.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        stop=c['fresh_over_shared_branch_stop'];replay=c['fresh_over_post_branch_replay'];selected=c['selected_fresh_nll']
+        result.extend([('p',f"Confirmed common-acquired-state future-learning benefit: fresh versus stopping at the shared branch{stop['mean']:.6f}±{stop['sample_sd']:.6f}NLL; fresh versus best post-branch replay{replay['mean']:.6f}±{replay['sample_sd']:.6f}; selected fresh NLL{selected['mean']:.6f}±{selected['sample_sd']:.6f}. "+c['scope']),
+            ('p','Resource scope:3,164,842total parameters; core16receivers,4selected writes and16scored keys per target. Complete fitting includes alternative replay, readout, all gradient/optimizer work and diagnostics. New fitting GFLOPs, fitting MFLOPs/target and inference MFLOPs/target are untraced; no older arithmetic ledger is copied into these rows. CPU wall is measured for every arm.')])
     for seed,tag in common_paths:
         path=ROOT/'experiments/results/token_language'/f'{tag}.json'
         if not path.exists():continue
