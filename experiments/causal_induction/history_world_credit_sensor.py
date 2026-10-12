@@ -81,5 +81,13 @@ class HistoryWorldCreditSensor(WorldCreditSensor):
             token = torch.zeros_like(token)
         p = self.core.total_payload
         extra = .1*self.history_content(token).tanh()
-        conditioned = torch.cat((features[:p]+extra, features[p:]))
-        return super().world_event(node, t, conditioned, kind, outcome, st)
+        # Parent intentionally detaches observational tokens. Inject only after
+        # that boundary, preserving actor isolation and the native read policy.
+        def condition_content(module, inputs):
+            content = inputs[0]
+            return (torch.cat((content[:p]+extra, content[p:])),)
+        handle = self.critic.content.register_forward_pre_hook(condition_content)
+        try:
+            return super().world_event(node, t, features, kind, outcome, st)
+        finally:
+            handle.remove()
