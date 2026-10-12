@@ -47,6 +47,13 @@ def blocks():
             ('p',f"Seed6 full DEV curve maximum error{q['max_dev_curve_error']:.3g}; ordinary/batched training{q['ordinary_over_batched_training_wall']:.3f}x. Against saved float32 ordinary: quality gain{q['versus_fp32']['quality_gain']:+.6f}, training ratio{q['versus_fp32']['ordinary_over_batched_training_wall']:.3f}x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Full-curve parity criterion1e-8. Useful retained-quality/work gate: {'passed' if q['useful_quality_work_gate_passed'] else 'failed; original float32 retained'}."),
             ('p','Confirmations: '+('; '.join(confirmations) if confirmations else 'no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.'))])
     paths=[ROOT/'experiments/results/token_language'/f'aws_integrated_p24_unique_stream_decision_20261012_s{seed}_v1.json' for seed in (6,7,8)]
+    cohort=ROOT/'experiments/results/diagnostics/aws_unique_experience_cohort_20261012_v1.json'
+    if cohort.exists():
+        c=json.loads(cohort.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        gain=c['paired_quality_gain']; repeated=c['selected_nll']['repeated']; distinct=c['selected_nll']['distinct']
+        result.append(('p',f"Confirmed three-seed exposure-policy improvement within the integrated family: selected DEV{repeated['mean']:.6f}±{repeated['sample_sd']:.6f}→{distinct['mean']:.6f}±{distinct['sample_sd']:.6f}; paired gain{gain['mean']:.6f}±{gain['sample_sd']:.6f}NLL, all3seeds positive. Mean training{c['training_wall_s']['repeated']['mean']:.3f}→{c['training_wall_s']['distinct']['mean']:.3f}s. "+c['scope']))
     paths.append(ROOT/'experiments/results/token_language/aws_integrated_p24_unique_512k_decision_20261012_s6_v2.json')
     for unique in paths:
         if not unique.exists():continue

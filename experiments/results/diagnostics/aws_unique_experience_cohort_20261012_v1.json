@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "seeds": [
+    6,
+    7,
+    8
+  ],
+  "selected_nll": {
+    "repeated": {
+      "mean": 8.059940338134766,
+      "sample_sd": 0.02399661085840756
+    },
+    "distinct": {
+      "mean": 7.7851881980896,
+      "sample_sd": 0.016931536492563123
+    }
+  },
+  "paired_quality_gain": {
+    "mean": 0.274752140045166,
+    "sample_sd": 0.03881626778194246
+  },
+  "paired_learning_gain_change": {
+    "mean": 0.18859240027035007,
+    "sample_sd": 0.03881626778194246
+  },
+  "paired_context_gain_change": {
+    "mean": 0.20192797978719076,
+    "sample_sd": 0.05505073471010472
+  },
+  "training_wall_s": {
+    "repeated": {
+      "mean": 149.2475092393191,
+      "sample_sd": 0.43002571236245
+    },
+    "distinct": {
+      "mean": 149.22190179823278,
+      "sample_sd": 0.5840589593025601
+    }
+  },
+  "positive_quality_seeds": 3,
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_p24_unique_stream_decision_20261012_s6_v1.json": "c2328a4f39e7833e31d84a043240487efff40d3ad4cdb38d3e06bff752db44ed",
+    "experiments/results/token_language/aws_integrated_p24_unique_stream_decision_20261012_s7_v1.json": "8637c9f4d77bad06d82db77409a5bba32bbeb4b9df992ed10bf628f9522f8320",
+    "experiments/results/token_language/aws_integrated_p24_unique_stream_decision_20261012_s8_v1.json": "4bb2d7b49018330275dff7edc8b520e8ff907153e8e3c6e847754ccf52f7c7b0"
+  },
+  "source_sha256": {
+    "experiments/summarize_unique_experience.py": "acef83ef828327b96beaec9ffdcc0faba52baf1ec5ed5c63bc5da38b3a20b11b"
+  },
+  "scope": "Three-seed development comparison within the integrated family; identical131056fitting targets/256updates/private2040-target DEV. Distinct data, lane partition, corpus-wrap resets and TRAIN-frequency initialization differ. Mean\u00b1sampleSD; contextual comparator fixed from causal TRAIN features. Measured CPU training wall, not audited fitting FLOPs or an incumbent comparison."
+}
