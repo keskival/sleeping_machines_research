@@ -48,3 +48,29 @@ native_learning_blocks=blocks
 
 def blocks():
     return native_learning_blocks()+transfer_blocks()
+
+
+def domain_blocks():
+    records=[]
+    for seed in [6,7,8]:
+        path=ROOT/'experiments/results/credit'/f'aws_native_update_domain_20261012_s{seed}_decision.json'
+        if not path.exists():continue
+        r=json.loads(path.read_text());assert r['status']=='completed'
+        for source,digest in r['source_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==digest
+        records.append(r)
+    if not records:return [('p','Cross-domain learning transfer is admitted: Taxi seed0 controller frozen on StackOverflow, depths2/4/8,full1400TRAIN/128DEV,threepasses. Compared with fixedAdam and source-acquired static groups; source/target time-density units canonicalized from TRAIN medians. No target controller fit; completed quality/work decision pending. Protocol experiments/credit/NATIVE_UPDATE_DOMAIN_PLAN.md.')]
+    rows=[]
+    for record in records:
+        for r in record['rows']:
+            ratio=r['static_over_frozen_matched_work']
+            rows.append([str(record['seed']),str(r['depth']),f"{r['final_quality_gain']:+.6f}",f"{r['quality_gain_vs_static']:+.6f}",f"{ratio:.3f}x" if ratio else '-'])
+    return [('p','Taxi-to-StackOverflow update-policy transfer, without target policy refitting. Same native family and full-parameter learning; conditioning uses current observed loss/gradient norms and TRAIN-derived density-unit canonicalization.'),
+            ('table',(['Seed','Depth','Gain vs Adam','Gain vs static','Static/matched work'],rows,[17,23,38,38,47])),
+            ('p','All1400targetTRAIN sequences cropped32events,threepasses,128DEV. Gain is reference minus frozen NLL; lower NLL better. Stronger work ratio is static fit+allvalidation divided by frozen fit to first scheduled static-quality match+allvalidation. Acquisition remains separately charged; incremental reuse ratios do not represent whole-pipeline advantage. Dense writes/sequence reset; no TEST/Transformer claim.'),
+            ('p','Evidence: '+', '.join(r['tag'] for r in records)+'.')]
+
+
+seed_transfer_blocks=blocks
+
+def blocks():
+    return seed_transfer_blocks()+domain_blocks()
