@@ -46,8 +46,10 @@ def blocks():
             ('table',(['Seed','Lookup','Selected NLL','Training seconds','Engine seconds'],pr,[18,30,38,40,40])),
             ('p',f"Seed6 full DEV curve maximum error{q['max_dev_curve_error']:.3g}; ordinary/batched training{q['ordinary_over_batched_training_wall']:.3f}x. Against saved float32 ordinary: quality gain{q['versus_fp32']['quality_gain']:+.6f}, training ratio{q['versus_fp32']['ordinary_over_batched_training_wall']:.3f}x. Precision comparison changes arithmetic precision; same-precision comparison isolates execution. Full-curve parity criterion1e-8. Useful retained-quality/work gate: {'passed' if q['useful_quality_work_gate_passed'] else 'failed; original float32 retained'}."),
             ('p','Confirmations: '+('; '.join(confirmations) if confirmations else 'no further paired confirmation admitted after the retained-quality loss. An already-started seed7 ordinary fit completed; unstarted confirmation queues retired.'))])
-    unique=ROOT/'experiments/results/token_language/aws_integrated_p24_unique_stream_decision_20261012_s6_v1.json'
-    if unique.exists():
+    paths=[ROOT/'experiments/results/token_language'/f'aws_integrated_p24_unique_stream_decision_20261012_s{seed}_v1.json' for seed in (6,7,8)]
+    paths.append(ROOT/'experiments/results/token_language/aws_integrated_p24_unique_512k_decision_20261012_s6_v1.json')
+    for unique in paths:
+        if not unique.exists():continue
         u=json.loads(unique.read_text());assert u['status']=='completed'
         for name,digest in {**u['source_sha256'],**u['input_sha256']}.items():
             p=ROOT/name
@@ -57,7 +59,8 @@ def blocks():
         ur=[[r['arm'],str(r['unique_tokens']),str(r['fitting_targets']),
              f"{r['initial_dev_nll']:.6f}",f"{r['selected_dev_nll']:.6f}",
              f"{r['context_gain']:.6f}",f"{r['training_wall_s']:.3f}"] for r in u['rows']]
-        result.extend([('p','Distinct natural experience at fixed learning-event budget: replace two passes over65536tokens with one pass over131064tokens. Same original float32 integrated model,256updates and131056fitting targets; numeric state persists across the longer stream.'),
+        targets=u['rows'][0]['fitting_targets']; updates=u['rows'][0]['updates']
+        result.extend([('p',f'Distinct natural experience at fixed learning-event budget: {targets}fitting targets/{updates}updates. Same original float32 integrated model; numeric state persists across the longer stream.'),
             ('table',(['Exposure','Unique tokens','Fit targets','Initial NLL','Selected NLL','Context gain','Train seconds'],ur,[25,28,28,30,30,30,30])),
             ('p',f"Distinct-experience quality gain{u['quality_gain']:+.6f}; initial frequency-prior gain{u['initial_prior_gain']:+.6f}; change in post-initialization learning gain{u['learning_gain_change']:+.6f}; change in contextual gain{u['context_gain_change']:+.6f}."),
             ('p',u['scope']),('p','Evidence '+unique.stem+'.')])
