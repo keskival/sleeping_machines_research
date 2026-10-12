@@ -11,7 +11,7 @@ def main():
    arms=row['arms'];comparisons.append(f"depth{row['depth']}: online DEV{arms['online']['final_dev_nll']:.6f}, heads{arms['heads']['final_dev_nll']:.6f}, nativeAdamW{arms['bp_adam']['final_dev_nll']:.6f}; wholeCPU{arms['online']['whole_learning_wall_s']:.3f}/{arms['bp_adam']['whole_learning_wall_s']:.3f}s")
   loss_depths=[row['depth'] for row in r['rows'] if row['online_gain_vs_adam']<=0];win_depths=[row['depth'] for row in r['rows'] if row['online_gain_vs_adam']>0]
   verdict=(' Online trails nativeAdamW at depths'+str(loss_depths)+'.' if loss_depths else '')+(' Single-seed development quality wins versus nativeAdamW at depths'+str(win_depths)+'.' if win_depths else '')
-  text='The completed '+label+' records '+ '; '.join(comparisons)+'.'+verdict+' Exact acquired-core/head and frozen-credit controls are retained; full per-arm acquisition/teacher/optimizer/scoring work is charged. The appendix states each depth result. Reused TaxiDEV is development evidence; no TEST or hardware claim.'
+  text='The completed '+label+' records '+ '; '.join(comparisons)+'.'+verdict+' Exact acquired-core/head and frozen-credit controls are retained; full per-arm acquisition/teacher/optimizer/scoring work is charged. The appendix states each depth result and retains the matched controls. Reused TaxiDEV is development evidence; no TEST or hardware claim.'
   p=ROOT/'report/I_SCIENCE.md';s=p.read_text();start=s.index('**Forward-taught credit and native learning (12 October):**');end=s.index('\n',start);para=s[start:end];begin=para.find('Local variants stop;')
   if begin>=0:
    finish=para.find(' These native comparisons',begin);finish=len(para) if finish<0 else finish;para=para[:begin]+text+para[finish:]
