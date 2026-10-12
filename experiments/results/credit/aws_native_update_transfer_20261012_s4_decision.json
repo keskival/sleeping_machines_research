@@ -1,0 +1,74 @@
+{
+  "status": "completed",
+  "tag": "aws_native_update_transfer_20261012_s4_decision",
+  "battle": "B1 acquired native update transfer",
+  "seed": 4,
+  "rows": [
+    {
+      "depth": 2,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.4904098476371371,
+      "final_quality_gain": 0.006607658794584748,
+      "match_pass": 3.0,
+      "matched_fit_and_all_validation_s": 40.26096579176374,
+      "baseline_fit_and_validation_s": 40.107034949585795,
+      "baseline_over_matched_work": 0.9961766728852433,
+      "quality_gain_vs_static": 0.0006157485980252675,
+      "incremental_matched_work_saving": -0.1539308421779424,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": null,
+      "static_final_quality_gain": 0.00599191019655948,
+      "static_work_ratio": 1.0201742297296683
+    },
+    {
+      "depth": 4,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.4781949486566935,
+      "final_quality_gain": 0.06795119654064213,
+      "match_pass": 2.2514285714285713,
+      "matched_fit_and_all_validation_s": 52.3138898673933,
+      "baseline_fit_and_validation_s": 67.7573722160887,
+      "baseline_over_matched_work": 1.2952080678351765,
+      "quality_gain_vs_static": 0.0010691400327050293,
+      "incremental_matched_work_saving": 15.443482348695397,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": 32,
+      "static_final_quality_gain": 0.0668820565079371,
+      "static_work_ratio": 1.1965806780341866
+    },
+    {
+      "depth": 8,
+      "arm": "frozen_acquired_policy",
+      "final_nll": -0.4070081092219751,
+      "final_quality_gain": 0.007000478360600526,
+      "match_pass": 2.0,
+      "matched_fit_and_all_validation_s": 86.31348508200608,
+      "baseline_fit_and_validation_s": 125.38614369858988,
+      "baseline_over_matched_work": 1.452683130329647,
+      "quality_gain_vs_static": 0.0037988994987224745,
+      "incremental_matched_work_saving": 39.072658616583794,
+      "conservative_acquisition_wall_s": 490.3707520600874,
+      "conservative_break_even_fit_count": 13,
+      "static_final_quality_gain": 0.0032015788618780516,
+      "static_work_ratio": 1.4899812173013036
+    }
+  ],
+  "useful_conditional_quality_and_incremental_work_gate": true,
+  "continuation": [
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzb1_20261012T014833Z_s3.json\n  aws_native_update_transfer_20261012_s5 -> experiments/results/credit/aws_native_update_transfer_20261012_s5.json",
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzb1_20261012T014834Z_s3.json\n  aws_native_update_transfer_20261012_s5_decision -> experiments/results/credit/aws_native_update_transfer_20261012_s5_decision.json"
+  ],
+  "source_sha256": {
+    "experiments/credit/analyze_native_update_transfer.py": "54e11e2ae16df981a9fafd306df46edc452e85d5d83bee2d7b6f7eb42cac90f7",
+    "experiments/credit/train_native_future_update.py": "f044832922bc43b455097fbbc835239bc5fd3b66e31b673351607cbd27b3e7a1",
+    "experiments/credit/train_native_future_update_reuse.py": "98b4fc869fc3b6a43cd45a37c8740e4db3de2c730b69dd7f9aaf4cc500842c12",
+    "experiments/credit/train_native_future_update_reuse_full.py": "e044918419c6686998e6ec833d5eb1737039dfd2c116ccb523d907c7fe1c5978",
+    "experiments/credit/train_native_update_transfer.py": "a026edee3666a3759441732b1f0768f0fd2f4d8006c2b3dde04b74fdaea83c02",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "input_sha256": {
+    "experiments/results/credit/aws_native_update_transfer_20261012_s4.json": "15fcb173505eb62fb464c2263627cf026fa48ea7eed42f3c07c5a2760af2ea95"
+  },
+  "wall_s": 1.1812103020492941,
+  "scope": "Whole-native fresh-initialization development comparison on same corpus/DEV. Conditional policy vs TRAIN-acquired static scales; work includes complete fitting and all scheduled validation. Acquisition charged separately, conservative break-even model explicitly repeated equivalent fits, not measured deployment saving. Confirmation requires conditional quality over static and positive incremental work saving at>=2depths; no TEST/Transformer claim."
+}
