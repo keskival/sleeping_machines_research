@@ -76,6 +76,22 @@ This explains amplification, not automatic depth advantage. Learn signatures for
 
 Adaptive reset/transport of credit memory must preserve forward memory and carry version/context information. Old response evidence is reusable only when its predicted response changes remain within the calibrated transfer budget. Unknown drift cannot be wished away by encoding time.
 
+## Credit compression has a precise task quotient
+
+Suppose, at a fixed issued state, route risks have the sufficient-statistic form R(a)=A_a-mu_X^T f_a. Fix a reference a0 and let V_X=span{f_a-f_a0: a in the declared route pool}. All pairwise credits depend on mu_X only through its orthogonal projection P_V mu_X. Two world beliefs mu and mu' produce identical credits for the entire pool exactly when mu-mu' lies in V_X's orthogonal complement. This is a functional quotient induced by interventions and loss, rather than an arbitrary low-dimensional bottleneck.
+
+Proof: pairwise risk equality requires (mu-mu')^T(f_a-f_a0)=0 for every a, which is precisely orthogonality to the span. In a linear representation, the required number of independent coordinates is rank V_X, provided the possible beliefs vary in those directions. No universal bit bound follows: precision, uncertainty, additional objectives and future route pools can enlarge the requirement. The map f_a may itself need costly causal computation.
+
+This yields a constructive architectural decision: learn a rich connected native world state, but expose credit through the task's currently relevant response directions. Capacity of the state and size of the emitted message need not match. A small message can encode a projection from a large learned causal model; small isolated estimators are not required.
+
+For BCE, d=1 and f_a=z_a. The outcome belief supplies all present route-risk contrasts; their outcome-induced covariance is q(1-q) v v^T with v_a=z_a-z_a0, rank at most one. Independent route-loss heads can waste effort fitting correlated noise. Coherent projection represents this shared direction exactly, while prediction errors in q also correlate all route credits. Shared structure is an opportunity and a failure mode, so calibration must be measured.
+
+When new routes, horizons or regimes expand V_X, old compressed messages may be insufficient. Keep richer persistent evidence or pay for new observations; do not treat yesterday's quotient as a stationary inductive bias. At deep producer boundaries, known local maps still project output credit into parameter effects, or a separately learned and validated response map must replace them. Outcome compression does not erase that transport cost.
+
+## Implemented first step (12 October)
+
+The registered WORLD_CREDIT_PROTOCOL.md implements one native target-addressed outcome query and revealed-outcome update, shared forward/critic memory and coherent BCE route projections. Its common-acquisition exact/learned/fixed-prior branches isolate outcome-based source-choice teaching with the same memory capability. Contracts pass actual native outcome/read gradients, future task memory gradients, causal timing and public relabeling. The acquired q and risk algebra are the first quotient implementation, not a learned general causal-response distance or depth replacement. The broader geometry comparison remains the next test after useful causal credit reuse.
+
 ## Decisions this formalism changes
 
 1. Preserve public relational addresses as candidate-discovery features. Learn response geometry from outcomes and supported interventions; do not call address overlap the similarity target.

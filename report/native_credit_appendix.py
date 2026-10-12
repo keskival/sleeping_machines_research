@@ -95,4 +95,25 @@ def pages():
    rows.append([x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",f"{1000*x['whole_fit_wall_s']/n:.3f}"])
   v={x['arm']:x for x in r['rows']};gain=v['untaught']['mean_dev_nll']-v['reciprocal']['mean_dev_nll']
   result.append([('h2','Outcome-preserving native credit feedback'),('table',(['Learner','DEV NLL','Full fit seconds','Fit ms/target'],rows,[42,40,43,42])),('p',f"Reciprocal quality gain versus matched untaught {gain:+.6f}. Delivered target replaces a redundant audit flag, with unchanged native payload dimension/parameter names. Scalar BCE at forecast0.5 erases target information; this token preserves it after feedback. Independent public-address races, native receiver writes and future task memory teaching remain. Raw-credit0.613521/159.354s is the retained practical reference until a completed comparable improvement."),('small',r['scope'])])
+ acquired=read('curie_world_credit_20261012_v1_acquisition')
+ if acquired is not None:
+  checks=acquired['checks'];tail=checks['last_eight_world_nll']
+  result.append([('h2','Native outcome-law credit: common nonlinear acquisition'),('table',(['Targets','Presentations','Source fit seconds','Later world NLL'],[[str(acquired['targets']),'4096',f"{acquired['whole_learning_wall_s']:.3f}",f"{tail:.6f}"]],[30,35,51,51])),('p','One target-addressed native outcome query and feedback update replaces unrelated route-wise loss predictions. Revealed outcome supervision trains the native body/read policy; forward losses also teach shared critic memory. Known proper-loss algebra projects one common outcome belief into coherent route contrasts. Source acquisition gate '+('passes' if checks['acquisition_gate'] else 'fails')+'. Acquisition uses16nonlinear TRAIN graphs with2048unique outcomes, one neural pass plus2048confidence presentations. The scalar output does not imply a tiny or disconnected world model.'),('small',acquired['scope'])])
+  reuse=[]
+  for arm in ['exact','learned','prior']:
+   r=read(f'curie_world_credit_20261012_v1_{arm}_reuse')
+   if r is not None:reuse.append(r)
+  if reuse:
+   rows=[];costs=[]
+   for r in reuse:
+    fullwall=acquired['whole_pipeline_wall_s']+r['whole_pipeline_wall_s']
+    rows.append([r['arm'],f"{r['pooled_nll']:.6f}",f"{r['pooled_world_nll']:.6f}",f"{fullwall:.3f}",f"{1000*fullwall/5120:.3f}"])
+    summed=lambda k:sum(x.get(k,0) for x in r['rows'])
+    costs.append([r['arm'],str(summed('world_queries')),str(summed('bank_context_reads')),str(summed('sensor_decodes')),str(summed('credit_selected_updates')),f"{1000*r['fitting_wall_s']/1024:.3f}"])
+   result.append([('h2','Native world credit reused on fresh nonlinear causal systems'),('table',(['Credit','Actor NLL','World NLL','Full seconds','Full ms/presentation'],rows,[25,31,31,37,43])),('table',(['Credit','World queries','Bank payload reads','Actor decodes','World writes','Reuse ms/target'],costs,[21,29,38,25,27,27])),('small','Completed arms only.16source systems/4096charged presentations plus8independent target deployments/1024prequential targets per arm: full denominator5120presentations. Full seconds include source/reuse driver preprocessing and model/optimizer copies; reuse ms/target uses actual training loops. Source acquisition charged once per deployment cohort. Fresh8/16factor4/8generating-depth systems, base/hidden-rewire. Actor/world learn causally in8feedback windows; common incoming actor/world/Adam fingerprints and identical shared-bank/outcome training. Learned and prior use deliberate half blends; exact uses observed-label contrast. All sampled alternative logits are decoded and charged. Generating depth is not neural-depth scaling; no publicTEST or efficiency claim.')])
+  decision=read('curie_world_credit_20261012_v1_decision')
+  if decision is not None:
+   rows=[]
+   for x in decision['cases']:rows.append([str(x['depth']),str(x['width']),x['variant'],f"{x['gains']['exact']:+.6f}",f"{x['gains']['prior']:+.6f}"])
+   result.append([('h2','Native outcome-law credit: causal reuse decision'),('table',(['Generating depth','Factors','Variant','Gain vs exact','Gain vs prior'],rows,[31,22,32,41,41])),('p','Primary development gate '+('passes' if decision['development_gate'] else 'fails')+'; pooled quality gains '+', '.join(f"{k} {v:+.6f}" for k,v in decision['quality_gains'].items())+f". Learned world gain versus causal global frequency {decision['learned_world_gain_vs_frequency']:+.6f}; learned actor gain versus source-calibrated causal persistence {decision['learned_actor_gain_vs_persistence']:+.6f}. These diagnostics distinguish dependencies from marginal imbalance. Next: "+('unchanged fresh-actor/fresh-system confirmation before scaling.' if decision['development_gate'] else 'diagnose outcome sufficiency, credit sensitivity and causal information; no patch grid or scale-up.')),('small',decision['scope'])])
  return result
