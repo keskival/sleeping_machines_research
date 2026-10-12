@@ -1,0 +1,140 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_credit_20261012_v1_smoke",
+  "args": {
+    "tag": "curie_market_credit_20261012_v1_smoke",
+    "mode": "smoke",
+    "seed": 184
+  },
+  "acquisition": {
+    "arm": "online",
+    "nll": 13.4487435547447,
+    "targets": 32,
+    "audits": 1,
+    "critic_updates": 1,
+    "wall_s": 0.1600598450168036,
+    "block_nll": [
+      9.79602382404205,
+      14.674287248409417,
+      14.677587626137218,
+      14.647075520390114
+    ],
+    "audited_mse": [
+      0.0016979366163116236
+    ],
+    "audited_zero_mse": [
+      0.0016979366163116236
+    ]
+  },
+  "rows": [
+    {
+      "arm": "online",
+      "nll": 15.34538850339649,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 2,
+      "wall_s": 0.3089551299926825,
+      "block_nll": [
+        15.056962934280426,
+        12.230635413356307,
+        14.897109117167098,
+        15.360061690320318,
+        17.21479248174478,
+        17.46063007633341,
+        15.660593919033689,
+        14.882322394935905
+      ],
+      "audited_mse": [
+        0.0011639964143264345,
+        0.0016646298959284123
+      ],
+      "audited_zero_mse": [
+        0.0011639964143264345,
+        0.0017152676151684005
+      ]
+    },
+    {
+      "arm": "frozen",
+      "nll": 15.345402147648695,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.30099616400548257,
+      "block_nll": [
+        15.056962934280426,
+        12.230635413356307,
+        14.897112402603288,
+        15.360061193933436,
+        17.21476134312907,
+        17.460670542264776,
+        15.660637228834414,
+        14.882376122787846
+      ],
+      "audited_mse": [
+        0.0011639964143264345,
+        0.0017152634605763018
+      ],
+      "audited_zero_mse": [
+        0.0011639964143264345,
+        0.0017152634605763018
+      ]
+    },
+    {
+      "arm": "zero",
+      "nll": 15.345402147648695,
+      "targets": 64,
+      "audits": 2,
+      "critic_updates": 0,
+      "wall_s": 0.29307905602036044,
+      "block_nll": [
+        15.056962934280426,
+        12.230635413356307,
+        14.897112402603288,
+        15.360061193933436,
+        17.21476134312907,
+        17.460670542264776,
+        15.660637228834414,
+        14.882376122787846
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    },
+    {
+      "arm": "bptt",
+      "nll": 15.345332401128118,
+      "targets": 64,
+      "audits": 8,
+      "critic_updates": 0,
+      "wall_s": 0.3572927869972773,
+      "block_nll": [
+        15.056962934280426,
+        12.230633737057591,
+        14.897371502111662,
+        15.361366609371213,
+        17.214670979036,
+        17.4597641487446,
+        15.659808829564488,
+        14.882080468858959
+      ],
+      "audited_mse": [],
+      "audited_zero_mse": []
+    }
+  ],
+  "online_nll_gain": {
+    "frozen": 1.3644252204514373e-05,
+    "zero": 1.3644252204514373e-05,
+    "bptt": -5.610226837227117e-05
+  },
+  "whole_wall_s": 2.3335128650069237,
+  "peak_rss_kb": 324576,
+  "source_sha256": {
+    "experiments/credit/market_credit_continuation.py": "f7e7c741d30284a8fe94deab3754ab45ccae180f0b58809fe147fde1f279a234",
+    "experiments/credit/real_feedback_credit_metric_v2.py": "b7460d9c10abec267ae3318e1262c1fb956110734203887813c9d7ea868d750d",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/credit/real_learned_boundary_v2.py": "dc82a9e74a57047b82b2aa6d256b33824e6aeef168889835e4b4227c2655b167",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "scope": "Single chronological Aug1 TRAIN fragment. Identical acquired actor/optimizer/critic/state; frozen critic also freezes trust calibration. Persistent credit activations still evolve. Online trains only after revealed audited credit; local gradients exact, boundary residual audits unbiased before nonlinear optimizer/clipping. All initialization/acquisition/critic/audit/optimizer/scoring CPU charged. No TEST, changing-bias attribution, sparse hardware or benchmark win."
+}
