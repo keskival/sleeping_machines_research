@@ -103,4 +103,17 @@ def blocks():
             ('table',(['Exposure','Unique tokens','Branch NLL','Post-branch NLL','Selected NLL','Training seconds'],rows,[25,29,35,40,35,35])),
             ('p',f"Fresh-versus-replay future-learning gain{d['post_branch_quality_gain']:+.6f}NLL; fresh-versus-stopping at the shared branch{stop_gain:+.6f}. Full acquired-state SHA256 {d['shared_learner_fingerprint']}."),
             ('p',d['scope']),('p','Evidence '+path.stem+'.')])
+    depth_packet=ROOT/'experiments/results/diagnostics/aws_integrated_depth_exposure_20261012_v1.json'
+    if depth_packet.exists():
+        d=json.loads(depth_packet.read_text());assert d['status']=='completed'
+        for name,digest in {**d['source_sha256'],**d['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        result.append(('p','Integrated proper-token depth/exposure development. '+d['scope']))
+        for level in d['levels']:
+            rows=[[str(r['depth']),str(r['parameters']),str(r['targets']),f"{r['selected_nll']:.6f}",
+                   f"{r['final_nll']:.6f}",f"{r['training_s']:.3f}",f"{r['training_ms_per_target']:.3f}",
+                   f"{r['available_receivers']}/{r['selected_writes_per_target']}"] for r in level['rows']]
+            result.extend([('table',(['Depth','Params','Targets','Best NLL','Final NLL','Train s','ms/target','Core/active'],rows,[18,28,28,28,28,26,26,26])),
+                           ('p',f"Exposure {level['exposure']}: depth4 selected-quality gain {level['selected_depth4_gain']:+.6f}; final-quality gain {level['final_depth4_gain']:+.6f}; depth4/depth2 training-wall ratio {level['training_wall_ratio']:.3f}. Fitting and inference FLOPs remain untraced for both depths; no older ledger imputed." )])
+        result.append(('p','Evidence '+depth_packet.stem+'.'))
     return result

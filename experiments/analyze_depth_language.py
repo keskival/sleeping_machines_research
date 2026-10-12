@@ -26,6 +26,7 @@ def main():
         assert {k:v for k,v in r['args'].items() if k not in ('tag','depth')} == {k:v for k,v in c['args'].items() if k not in ('tag','depth')}
         assert r['identity'] == c['identity'] and r['presentations_total'] == c['presentations_total']
         rows = [dict(depth=d['args']['depth'], targets=d['presentations_total'],
+                     parameters=d['parameters'],
                      initial_nll=d['curve'][0]['dev_nll'], selected_nll=d['best_dev_nll'],
                      final_nll=d['curve'][-1]['dev_nll'], training_s=d['train_wall_s_total'],
                      training_ms_per_target=1000*d['train_wall_s_total']/d['presentations_total'],
