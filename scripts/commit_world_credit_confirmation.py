@@ -22,6 +22,10 @@ def main():
    p=ROOT/name
    if hashlib.sha256(p.read_bytes()).hexdigest()==digest:matched.append(p)
   paths+=matched
+  if len(matched)==len(receipt['artifact_sha256']):
+   for name in ['report/sleeping_machines_status.pdf','report/sleeping_machines_status.family.text.pdf','report/figures/current_native_language_status.svg','report/figures/latest_native_language_fitting.svg']:
+    p=ROOT/name
+    if p.exists():paths.append(p)
   for name in ['experiments/HANDOFF.md','experiments/causal_induction/NATIVE_SENSOR.md']:
    p=ROOT/name
    if f'stage{a.seed} complete' in p.read_text():paths.append(p)
