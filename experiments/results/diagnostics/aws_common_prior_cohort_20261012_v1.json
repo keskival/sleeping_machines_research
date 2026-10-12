@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "seeds": [
+    6,
+    7,
+    8
+  ],
+  "fresh_over_shared_branch_stop": {
+    "mean": 0.5009480395348241,
+    "sample_sd": 0.06378242916970388
+  },
+  "fresh_over_post_branch_replay": {
+    "mean": 0.6182783139297383,
+    "sample_sd": 0.049409727091832
+  },
+  "selected_model_gain": {
+    "mean": 0.4854972091375614,
+    "sample_sd": 0.03723312313791476
+  },
+  "selected_fresh_nll": {
+    "mean": 7.574443183849061,
+    "sample_sd": 0.013927171801164316
+  },
+  "training_wall_s": {
+    "replayed": {
+      "mean": 148.76616256559888,
+      "sample_sd": 0.9586986548198848
+    },
+    "fresh": {
+      "mean": 149.0993645651421,
+      "sample_sd": 0.5480105648784291
+    }
+  },
+  "acquired_state_sha256": [
+    "3f56124d5f9da4607166013c06e8474ec1e44a2502d8f30fa4e22f6524c65fd7",
+    "867a0285f86a2378c21392f09c48501478b963c627e4a21c165b9aef9b654e60",
+    "d11129c3ede4a725a30a74fbf962115de2a6d78618c7609159b61e6a0bd1a010"
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_common_prior_decision_20261012_s6_v1.json": "ec65ccf4a9f1298f9ccca5d5db06bbc5094eba7575be6acc42d574835d581ea5",
+    "experiments/results/token_language/aws_integrated_common_prior_decision_20261012_s7_v1.json": "92a7cbbe149c7ccf6038db0f48c7256dc8e13118466cf585a5094875486ac2f8",
+    "experiments/results/token_language/aws_integrated_common_prior_decision_20261012_s8_v1.json": "782d967a193e6d74393eeefe418ffe43faa1c4f7e0fd5a1994635ac74415ca22"
+  },
+  "source_sha256": {
+    "experiments/summarize_common_prior.py": "d21ff765dd606b3d19bcfc30c7452d81b70f2cb20efded674c5162b2d923d000"
+  },
+  "scope": "Three-seed within-family development evidence, mean\u00b1sampleSD. Identical prior and acquired-state fingerprint within each pair; same131056targets/256updates and private2040-target DEV. Stop refers to the actual branch state after128updates; selected-model comparison allows all scheduled checkpoints. Extra fresh learning costs128updates relative to stopping; replay/fresh totals have equal targets. No trained allocation policy or external-architecture claim."
+}
