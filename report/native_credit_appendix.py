@@ -64,4 +64,10 @@ def pages():
    total=lambda key:sum(t.get(key,0) for t in x['train'])
    costs.append([x['arm'],str(total('bank_discovery_records')),str(total('bank_context_reads')),str(total('bank_writes')),str(total('forward_credit_reads')),str(total('critic_forward_reads'))])
   result.append([('h2','Independent native shared-memory reciprocal teaching'),('table',(['Learner','Selection DEV NLL','Full fitting seconds'],rows,[77,45,45])),('p',verdict+'. Single-seed development; compare the saved unshared native credit0.613521/159.354s for practical quality/work. Suppressed sharing controls execute diagnostic bank overhead; their timing is not the economical separate-bank implementation.'),('table',(['Learner','Discovery scans','Payload reads','Bank writes','F reads C','C reads F'],costs,[28,32,31,26,25,25])),('small',r['scope']),('p','Independent native read races and selected receiver writes share versioned records. Later forward task loss trains critic memory content and its read policy within retained gradient windows; the untaught control stops only critic record gradients and keeps the actor reader trainable. Physical completion gates visibility. Bank discovery uses bounded recency, and global write destinations are not learned.')])
+ r=read('curie_shared_bank_20261012_v1_future_diagnosis')
+ if r is not None:
+  rows=[]
+  for episode,x in enumerate(r['rows']):
+   for v in x['variants']:rows.append([str(episode),v['update'],f"{v['future_nll']:.6f}",f"{v['gain_vs_momentum_coast']:+.6f}",f"{v['wall_s']:.3f}"])
+  result.append([('h2','Native shared-memory critic: actual future-update diagnosis'),('table',(['TRAIN graph','Critic update','Next NLL','Gain vs coast','Branch seconds'],rows,[23,42,32,39,31])),('p','Component task/regression gradient cosines: '+', '.join(f"{x['gradient_cosine']:+.6f}" for x in r['rows'])+f". Source acquisition {r['source_acquisition_wall_s']:.3f}s; complete diagnosis {r['whole_pipeline_wall_s']:.3f}s including prefixes and every branch."),('small',r['scope'])])
  return result
