@@ -4,6 +4,7 @@ Existing parameters must be numerically identical. Added parameters start with
 no optimizer state; retained moments and group settings are copied exactly.
 """
 import copy
+import inspect
 import torch
 
 
@@ -39,7 +40,15 @@ def optimizer_for_expanded_model(source_model, source_optimizer, target_model, n
     added = [parameter for name, parameter in target.items()
              if name not in source and parameter.requires_grad]
     replacements[new_group]['params'].extend(added)
-    optimizer = type(source_optimizer)(replacements, **copy.deepcopy(source_optimizer.defaults))
+    # Some PyTorch optimizers retain internal defaults absent from their public
+    # constructor (AdamW's decoupled_weight_decay, for example). Group options
+    # remain copied; pass only supported constructor keywords.
+    signature = inspect.signature(type(source_optimizer).__init__)
+    accepts_kwargs = any(p.kind == inspect.Parameter.VAR_KEYWORD
+                         for p in signature.parameters.values())
+    defaults = {key: copy.deepcopy(value) for key, value in source_optimizer.defaults.items()
+                if accepts_kwargs or key in signature.parameters}
+    optimizer = type(source_optimizer)(replacements, **defaults)
     for original, replacement in transferred:
         if original in source_optimizer.state:
             optimizer.state[replacement] = copy.deepcopy(source_optimizer.state[original])
