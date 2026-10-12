@@ -79,6 +79,7 @@ def main():
     for name,relative in {
         'fresh_system_confirmation':'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json',
         'original_answer_diagnosis':'experiments/results/diagnostics/aws_world_answer_changes_20261012_v1.json',
+        'fresh_answer_diagnosis':'experiments/results/diagnostics/curie_fresh_world_answers_20261012_v1.json',
         'depth_utility_contract':'experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json',
     }.items():
         path=ROOT/relative
@@ -89,7 +90,7 @@ def main():
         parents[relative]=sha(path)
         if name=='fresh_system_confirmation':
             native_credit[name]=dict(seed=record['seed'],confirmation_gate=record['confirmation_gate'],quality_gains=record['quality_gains'],depth_quality_gains=record['depth_quality_gains'],rows=[{k:v for k,v in row.items() if k!='rows'} for row in record['rows']],scope=record['scope'])
-        elif name=='original_answer_diagnosis':
+        elif name in ('original_answer_diagnosis','fresh_answer_diagnosis'):
             native_credit[name]=dict(rows=[{k:v for k,v in row.items() if k!='cases'} for row in record['rows']],scope=record['scope'])
         else:
             native_credit[name]=dict(result=relative,scope='Numerical identities and conditional error bounds; no learned optimizer or neural-depth scaling result.')

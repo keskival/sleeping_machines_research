@@ -23,6 +23,7 @@
     "experiments/results/credit/curie_native_cohort_event_20261012_v1_s99913_fit.json": "03772be549f06121c1df8b9208d0c9b18a57f706e755612c34c2f72fe2b0b98d",
     "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s194_decision.json": "f7d5bff10ba3317b655e5398b9d35815f6fb4b3218e0f7ccb665a1edb6038ea5",
     "experiments/results/diagnostics/aws_world_answer_changes_20261012_v1.json": "bb9adbba8a58796782345ca4ec76b34752d5091dc3ddf9f705fc61f9e5c70df8",
+    "experiments/results/diagnostics/curie_fresh_world_answers_20261012_v1.json": "7ee6ab9cbdce8c0f512e7b522621d123d1660531df5c9b83dc7931f1b29755f1",
     "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json": "7bbb2fd4f02500af787ed2d6f64671945eda0f1965bc60257120349e62c13837"
   },
   "metrics": {
@@ -785,6 +786,47 @@
         }
       ],
       "scope": "Read-only replay of byte-matched public observations with saved issued forecasts. Last observed target bit is captured at query time, never reconstructed from later events. Counts describe factual answer changes relative to persistence; they do not identify unexecuted route effects or full future learning. No new fit or oracle access."
+    },
+    "fresh_answer_diagnosis": {
+      "rows": [
+        {
+          "arm": "exact",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 870,
+          "actor_correct": 870
+        },
+        {
+          "arm": "learned",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 870,
+          "actor_correct": 870
+        },
+        {
+          "arm": "prior",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 870,
+          "actor_correct": 870
+        },
+        {
+          "arm": "persistence",
+          "targets": 1024,
+          "answer_changes": 0,
+          "beneficial_changes": 0,
+          "harmful_changes": 0,
+          "persistence_correct": 870,
+          "actor_correct": 870
+        }
+      ],
+      "scope": "Completed fresh-system forecasts replayed against issue-time public last-observed bits; exact source/data/trace identity required. Binary answer changes identify confidence-only outcomes but not unexecuted route effects. No fit, hidden graph or public test scoring."
     },
     "depth_utility_contract": {
       "result": "experiments/results/causal_induction/curie_direct_route_depth_20261012_v1_contract.json",
