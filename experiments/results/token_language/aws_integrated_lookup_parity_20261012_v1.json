@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "update": 0,
+      "forward_state_error": 0.0,
+      "gradient_error": 0.0,
+      "parameter_error": 0.0,
+      "optimizer_error": 0.0,
+      "rng_equal": true
+    },
+    {
+      "update": 1,
+      "forward_state_error": 0.0,
+      "gradient_error": 3.725290298461914e-09,
+      "parameter_error": 1.4901161193847656e-08,
+      "optimizer_error": 1.1641532182693481e-10,
+      "rng_equal": true
+    },
+    {
+      "update": 2,
+      "forward_state_error": 9.5367431640625e-07,
+      "gradient_error": 1.1920928955078125e-07,
+      "parameter_error": 1.0523945093154907e-07,
+      "optimizer_error": 7.450580596923828e-09,
+      "rng_equal": true
+    }
+  ],
+  "wall_s": 2.2554985070601106,
+  "source_sha256": {
+    "experiments/check_batched_token_lookup.py": "58d646f6c8cd160b7da039bfbd2525b857b7786f02940f4028f38a08cf650058",
+    "experiments/batched_token_episodes.py": "c9195272c4dc46fd70e0d8335ab189f6b16ae1b4469d61dfe4c6ed2bbfc04f1a",
+    "experiments/horizon_token_language_engine.py": "39b11a75915266f609ca968c14a8953d7aba4403646aa5dcc1812afa9e5cf5f8",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8"
+  },
+  "scope": "Three integrated AdamW updates; carried state, repeated tokens, EOS, two credit windows and sampled local alternative credit. Future suffix replay measured separately in whole-step profile."
+}
