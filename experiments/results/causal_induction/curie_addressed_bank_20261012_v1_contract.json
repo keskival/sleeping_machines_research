@@ -1,0 +1,930 @@
+{
+  "status": "completed",
+  "battle": "B5/R1",
+  "tag": "curie_addressed_bank_20261012_v1_contract",
+  "mode": "contract",
+  "checks": {
+    "auxiliary_teacher_updates_only_loss_readout": true,
+    "task_teacher_retains_native_memory_access_gradients": {
+      "logit": [
+        -0.2203546166419983,
+        0.21291625499725342,
+        -0.39078623056411743,
+        0.1352672576904297,
+        -0.26156264543533325,
+        0.2431507706642151,
+        -0.33690446615219116,
+        0.32981860637664795
+      ],
+      "critic_write_gradient": 0.00012697724741883576,
+      "critic_read_gradient": 2.272917117807083e-05,
+      "actor_read_gradient": 0.0010487785330042243,
+      "counts": {
+        "events": 2,
+        "queries": 8,
+        "candidate_keys": 16,
+        "value_reads": 8,
+        "sensor_decodes": 8,
+        "selected_updates": 8,
+        "counterfactual_unit_values": 16,
+        "discovery_context_reads": 24,
+        "relationship_candidate_updates": 1,
+        "relationship_reads": 16,
+        "credit_events": 9,
+        "credit_candidate_keys": 72,
+        "credit_selected_updates": 36,
+        "credit_counterfactual_values": 72,
+        "credit_state_reads": 0,
+        "critic_targets": 0,
+        "exact_alternative_audits": 0,
+        "critic_contrast_squared_error": 0.0,
+        "audited_contrast_squared_magnitude": 0.0,
+        "bank_scored_keys": 158,
+        "bank_value_reads": 33,
+        "bank_discovery_records": 292,
+        "bank_context_reads": 158,
+        "bank_writes": 11,
+        "bank_counterfactual_values": 158,
+        "forward_credit_reads": 14,
+        "critic_forward_reads": 6,
+        "bank_peak_records": 10
+      },
+      "read_log": [
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          0.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.0,
+          0.41165304231305055
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.1,
+          0.41165304231305055
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.1,
+          0.010259835682229101
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.1,
+          2.008221163432701
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.2,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.1101461523713474
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.2,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.3,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.3,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.4,
+          2.307046164263973
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.4,
+          2.2127324505996193
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.5,
+          2.307046164263973
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              1
+            ]
+          ],
+          9,
+          2.6,
+          2.50599049335251
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.6,
+          2.307046164263973
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          8,
+          2.6,
+          2.410100713867704
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              1
+            ]
+          ],
+          9,
+          2.7,
+          2.50599049335251
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ]
+      ]
+    },
+    "matched_untaught": {
+      "logit": [
+        -0.2203546166419983,
+        0.21291625499725342,
+        -0.39078623056411743,
+        0.1352672576904297,
+        -0.26156264543533325,
+        0.2431507706642151,
+        -0.33690446615219116,
+        0.32981860637664795
+      ],
+      "critic_write_gradient": 0.0,
+      "critic_read_gradient": 0.0,
+      "actor_read_gradient": 0.0010487785330042243,
+      "counts": {
+        "events": 2,
+        "queries": 8,
+        "candidate_keys": 16,
+        "value_reads": 8,
+        "sensor_decodes": 8,
+        "selected_updates": 8,
+        "counterfactual_unit_values": 16,
+        "discovery_context_reads": 24,
+        "relationship_candidate_updates": 1,
+        "relationship_reads": 16,
+        "credit_events": 9,
+        "credit_candidate_keys": 72,
+        "credit_selected_updates": 36,
+        "credit_counterfactual_values": 72,
+        "credit_state_reads": 0,
+        "critic_targets": 0,
+        "exact_alternative_audits": 0,
+        "critic_contrast_squared_error": 0.0,
+        "audited_contrast_squared_magnitude": 0.0,
+        "bank_scored_keys": 158,
+        "bank_value_reads": 33,
+        "bank_discovery_records": 292,
+        "bank_context_reads": 158,
+        "bank_writes": 11,
+        "bank_counterfactual_values": 158,
+        "forward_credit_reads": 14,
+        "critic_forward_reads": 6,
+        "bank_peak_records": 10
+      },
+      "read_log": [
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          0.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.0,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.0,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.0,
+          0.41165304231305055
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          3,
+          2.1,
+          0.41165304231305055
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.1,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.1,
+          0.010259835682229101
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          4,
+          2.1,
+          2.008221163432701
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.2,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.2,
+          2.1101461523713474
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.2,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          5,
+          2.3,
+          2.1101461523713474
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.3,
+          0.2102365904727039
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.3,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.4,
+          2.307046164263973
+        ],
+        [
+          "F",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.4,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.4,
+          2.2127324505996193
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.4,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.5,
+          2.307046164263973
+        ],
+        [
+          "C",
+          [
+            "F",
+            0
+          ],
+          1,
+          2.5,
+          0.010259835682229101
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              1
+            ]
+          ],
+          9,
+          2.6,
+          2.50599049335251
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              0
+            ]
+          ],
+          7,
+          2.6,
+          2.307046164263973
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              0
+            ]
+          ],
+          8,
+          2.6,
+          2.410100713867704
+        ],
+        [
+          "C",
+          [
+            "F",
+            1
+          ],
+          2,
+          2.6,
+          0.2102365904727039
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              1,
+              1
+            ]
+          ],
+          9,
+          2.7,
+          2.50599049335251
+        ],
+        [
+          "F",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ],
+        [
+          "C",
+          [
+            "C",
+            [
+              0,
+              1
+            ]
+          ],
+          6,
+          2.7,
+          2.2127324505996193
+        ]
+      ]
+    },
+    "relative_address_gradient": 2.2141113731777295e-05,
+    "addressed_discovery": true,
+    "relabel_forecast_parity": true,
+    "future_record_invisible": true,
+    "smoke": {
+      "nll": 0.6516523725893634,
+      "targets": 64,
+      "wall_s": 21.223804516979726,
+      "optimizer_updates": 8,
+      "peak_occupied_nodes": 20,
+      "events": 702,
+      "queries": 64,
+      "candidate_keys": 479,
+      "value_reads": 82,
+      "sensor_decodes": 82,
+      "selected_updates": 2808,
+      "counterfactual_unit_values": 5616,
+      "discovery_context_reads": 543,
+      "relationship_candidate_updates": 5378,
+      "relationship_reads": 479,
+      "credit_events": 210,
+      "credit_candidate_keys": 1680,
+      "credit_selected_updates": 840,
+      "credit_counterfactual_values": 1680,
+      "credit_state_reads": 0,
+      "critic_targets": 82,
+      "exact_alternative_audits": 18,
+      "critic_contrast_squared_error": 0.0019106222828213504,
+      "audited_contrast_squared_magnitude": 0.00022910134630649281,
+      "bank_scored_keys": 11653,
+      "bank_value_reads": 748,
+      "bank_discovery_records": 12780,
+      "bank_context_reads": 11653,
+      "bank_writes": 912,
+      "bank_counterfactual_values": 11653,
+      "forward_credit_reads": 290,
+      "critic_forward_reads": 78,
+      "bank_peak_records": 206
+    }
+  },
+  "rows": [],
+  "parent_sha256": "072e340b3c8aa6e41cf097b472ed2a26a11bc48730964764ef0238f5bf60a1cd",
+  "diagnosis_sha256": "a10e3bd761a5f8225791273b76157c04080cab55abf6d4627d3e8f4566521489",
+  "prior_acquisition_targets": 512,
+  "whole_pipeline_wall_s": 32.45818166498793,
+  "peak_rss_kb": 514996,
+  "source_sha256": {
+    "experiments/causal_induction/addressed_bank_pipeline.py": "50a24ca8c57eab56b9ef1e7d889487ae2d22430fa317aa31eeb5998e9ba58f48",
+    "experiments/causal_induction/addressed_shared_bank.py": "dceb4f0c69d96d49d693a2999732a86fff4e2f23f3f955d292468ec775ea2e32",
+    "experiments/causal_induction/task_taught_shared_bank.py": "f7df5fbeaa6f5284ddcb6e6f20e2f064b55e2e2642b27c02001c23dcfbd83c65",
+    "experiments/causal_induction/task_taught_run.py": "29603884d2df59fbfe98abf2dbb62683feed66d9baf1a50e701106eb2553bdb0",
+    "experiments/causal_induction/task_taught_pipeline.py": "d45b536f817c95a5838e357e47ae7f6eda1d6d05b20ebcb0ad7a8cea41d22b07",
+    "experiments/causal_induction/shared_bank_future_diagnosis.py": "d8d268a344858297511cd897d35efc1a82c46c87d739c8c85c45cb56ef1ecc91",
+    "experiments/causal_induction/shared_bank_sensor_v2.py": "c067225f0aec6226948bbd1e443410025760df28aff17ef704e4db836e13030c",
+    "experiments/causal_induction/public_stream.py": "0a1fef293a8fc6d2301bb875a51ea0c10a5fb2f25d59bb532ec249b03ac94637",
+    "experiments/causal_induction/shared_bank_pipeline_v2.py": "2d92f68609bf221dc8327d3af2e8d7f6cf79b40423811c2ccaa945e7a820f165",
+    "experiments/causal_induction/race_credit_sensor.py": "493264d52f5345bb9b62e0651b7353cacf444ea94648f2953f685d7cec3b8d05",
+    "experiments/causal_induction/structural_sensor.py": "dd57384680076ea0373b4d1e4a9fbab4b644dd77c66b6023d664437f26e3ab3f",
+    "experiments/causal_induction/native_sensor.py": "af1457071a8af7c2f4764fcd186f0c5a7443b677bb02402dd5643700eacf53db",
+    "experiments/causal_induction/credit_run.py": "52bad9fe778a167a59168ee8a8fe8a837edc064e77ce89dbf79f93bb603ee827",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a"
+  },
+  "scope": "Public relative-address native sharing: per-node/relationship indexed discovery, learned equality/role keys, no identity parameter table or hidden edges. Diagnosed native shared-bank teacher separation. Forward task loss trains critic memory/read policy; auxiliary revealed-loss regression trains the identical linear readout on detached native features. Separate actor/native-memory/readout clipping, matched native architecture/initialization/audit schedule and shared-bank bounds. Two matched untaught/reciprocal arms, same8TRAINgraphs/twopasses/512prior plus1024neural presentations and originalfour selectionDEV. Numeric memory persists, task gradients use eight-feedback windows. No external dense controller, global destination learning, full optimizer meta-gradient, publicTEST, confirmation or efficiency claim."
+}

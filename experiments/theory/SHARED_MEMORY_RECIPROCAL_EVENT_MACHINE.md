@@ -114,3 +114,36 @@ This is a new mechanism test inside B5/R1, not the deferred broad transfer of th
 6. After resource smoke, one bounded development fit. Evaluate prequential task loss and complete CPU work, plus measured critic-write intervention utility. Require useful coupling before selecting a neural-depth4/8 comparison and fixed-seed confirmation. No automatic large-data transfer or publicTEST.
 
 The central hypothesis is a learned causal memory system whose computation and learning share representations, while each independently acquires the information it needs. Its potential advantage is reusable, task-valued credit structure and sparse teaching across time and depth. Shared banks are the enabling path; demonstrated future learning per complete work is the win criterion.
+
+## Implemented reciprocal path and diagnosed teaching split
+
+SharedBankSensor v2 now implements independent native hard-race reads and receiver writes, with both roles reading common observation/credit records. Later factual forward losses give nonzero gradients to earlier native critic write parameters and its read policy. Completion-time filtering and a matched untaught control pass; the control retains actor-reader learning. Bank destinations remain public relational addresses, visibility binds numeric record versions, and gradients cover eight-feedback windows. This is the memory pathway above, not a complete optimizer-aware historical derivative.
+
+Completed first four-arm selection NLL: separate0.615585, critic-read-only0.617031, shared-untaught0.616819, reciprocal0.616480. Reciprocal improves untaught but does not beat separate;346.113 versus237.261s fitting. Retain the raw native-credit incumbent0.613521/159.354s. The result tests this first shared-bank construction, not the family.
+
+Paid future-update diagnostics on twoTRAIN prefixes find auxiliary total gradient norms600–1200times task-memory norms, slight negative component cosines and tiny next-loss effects. Norms include the utility readout, so they do not certify per-coordinate optimizer dominance. Regression updates worsen next16forecast loss; task updates barely change it relative to momentum coast. Source-bound evidence is curie_shared_bank_20261012_v1_future_diagnosis.
+
+The diagnosed construction splits phi=(psi,omega): native memory/access parameters psi receive factual task teaching through shared records; the same linear utility readout omega receives revealed-loss regression on detached z_psi. This retains one native representation rather than adding a separate dense controller:
+
+    memory teaching: grad_psi J_task through subsequent shared-memory use,
+    readout teaching: grad_omega (c_omega(stop_gradient(z_psi))-revealed_loss)^2.
+
+Separate clipping budgets prevent the readout norm directly rescaling actor/memory gradients. This block teaching rule is not asserted to be gradient descent on one global potential, and its future-loss/credit-utility performance must be measured. The task-taught fit is an owned diagnosed engineering comparison, not a new mathematical convergence claim.
+
+An inference gain from additional critic memory and a gain from improved learning credit are distinct endpoints. Fixed-weight serving with acquired memory, memory-reset/read-disabled controls and unchanged-memory credit-output controls should separate them in confirmation. Shared representation is intended to support both; evidence for one pathway cannot silently establish the other.
+
+## Public address semantics repair a content-alias obstruction
+
+Task-taught sharing completes at reciprocal0.616242 versus untaught0.615281; no adoption. A separate representational gap is now identified: the global bank read law is pi(a | q(z_node), visible_content), without the node address relative to record endpoints. If two distinct nodes have identical z_node and the same visible bank, their read laws are identical. When the useful stored evidence differs by node, that policy class cannot retrieve different evidence for those two queries. Enlarging its content-only projection does not remove the missing input.
+
+Public node/relationship equality repairs the gap without a learned identity table. AddressedSharedBank discovers records indexed by the reader's known endpoints, then global fallback. Its learned relative score adds role and target/source-equality features. Under a bijective public address relabeling, equality, numerical state correspondence and insertion order are preserved; the entire read/write policy is equivariant under matched randomness. These syntactic operation semantics are prescribed. Which relationship/role is useful remains learned; no hidden generating parents or gates enter the model.
+
+Active-readout relabel parity, future-write invisibility, retrieval outside global recency and nonzero task teaching of relative critic key weights pass the integrated contract. The bounded matched addressed fit is in development. This is the next specific native construction, not evidence of acquired unknown graph structure or a scaling win.
+
+## Preserve outcome information in credit messages
+
+The addressed fit completes at reciprocal0.615836 versus untaught0.615548. Correct access semantics alone does not earn adoption. Inspection identifies another information bottleneck: delivered credit tokens encode(kind,loss,auditflag), with the flag duplicating kind. Binary loss alone is not an outcome-preserving message. At p=1/2, either target produces BCE=log2; target information is completely erased by that scalar.
+
+OutcomeAddressedBank replaces the redundant flag with the actual revealed target, using the same payload dimension and parameters. For0<p<1, the pair(loss,y) reconstructs p as exp(-loss) wheny=1 or1-exp(-loss) wheny=0. It retains the outcome and signed-error information without requiring the critic to infer the actor's changing output from upstream features alone. Requests contain no target; delivery/completion still gates shared visibility. The contract exhibits different native credit states for opposite labels at exactly the same0.5forecast/loss, with unchanged issued forecast and parameter schema. Numerical state difference0.220187 is a channel witness, not a prediction-quality gain.
+
+The bounded matched fit tests this final diagnosed construction in the current integration round. A next-stage credit-output learning target must distinguish factual immediate-loss prediction from the actual future learning value of a route/update. The memory path implemented here does not differentiate through optimizer history. Delayed paid continuation contrasts, with source states/versions and actual moment updates bound, are the appropriate target for that separate pathway; retain source-matched controls and charge replay. Additional memory serving capacity alone is not evidence of cheaper deep learning.

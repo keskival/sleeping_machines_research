@@ -79,4 +79,20 @@ def pages():
    rows.append([x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",f"{1000*x['whole_fit_wall_s']/targets:.3f}",f"{1000*sum(t['wall_s'] for t in x['dev'])/dev_targets:.3f}"])
   v={x['arm']:x for x in r['rows']};gain=v['untaught']['mean_dev_nll']-v['reciprocal']['mean_dev_nll']
   result.append([('h2','Native shared-bank memory taught by forward task loss'),('table',(['Learner','DEV NLL','Full fit seconds','Fit ms/target','DEV ms/target'],rows,[30,32,35,35,35])),('p',f"Reciprocal versus matched untaught quality gain {gain:+.6f}. Auxiliary regression now trains only the identical linear readout; future task losses train native critic memory/access parameters, with separate actor/memory/readout clipping. Saved raw native credit0.613521/159.354s remains the practical quality/work reference. Fitting denominator includes512confidence plus1024neural presentations; DEV256targets, fixed weights and causal numerical state."),('small',r['scope'])])
+ r=read('curie_addressed_bank_20261012_v1_fit')
+ if r is not None:
+  rows=[]
+  for x in r['rows']:
+   n=r['prior_acquisition_targets']+sum(t['targets'] for t in x['train'])
+   rows.append([x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",f"{1000*x['whole_fit_wall_s']/n:.3f}"])
+  v={x['arm']:x for x in r['rows']};gain=v['untaught']['mean_dev_nll']-v['reciprocal']['mean_dev_nll']
+  result.append([('h2','Public relative-address semantics in native shared memory'),('table',(['Learner','DEV NLL','Full fit seconds','Fit ms/target'],rows,[42,40,43,42])),('p',f"Reciprocal quality gain versus matched untaught {gain:+.6f}. Discovery uses public reader endpoints plus global recency fallback; independent learned relative-role/equality scores disambiguate identical-content queries. Active relabeling parity and causal completion visibility pass. Equality is prescribed public operation semantics; useful relationship weights are learned. No hidden parent/gate input or identity parameter table."),('small',r['scope'])])
+ r=read('curie_outcome_bank_20261012_v1_fit')
+ if r is not None:
+  rows=[]
+  for x in r['rows']:
+   n=r['prior_acquisition_targets']+sum(t['targets'] for t in x['train'])
+   rows.append([x['arm'],f"{x['mean_dev_nll']:.6f}",f"{x['whole_fit_wall_s']:.3f}",f"{1000*x['whole_fit_wall_s']/n:.3f}"])
+  v={x['arm']:x for x in r['rows']};gain=v['untaught']['mean_dev_nll']-v['reciprocal']['mean_dev_nll']
+  result.append([('h2','Outcome-preserving native credit feedback'),('table',(['Learner','DEV NLL','Full fit seconds','Fit ms/target'],rows,[42,40,43,42])),('p',f"Reciprocal quality gain versus matched untaught {gain:+.6f}. Delivered target replaces a redundant audit flag, with unchanged native payload dimension/parameter names. Scalar BCE at forecast0.5 erases target information; this token preserves it after feedback. Independent public-address races, native receiver writes and future task memory teaching remain. Raw-credit0.613521/159.354s is the retained practical reference until a completed comparable improvement."),('small',r['scope'])])
  return result
