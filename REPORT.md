@@ -5607,6 +5607,17 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
+### Connected prospective mean-credit intervention
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 10.571007 | 166.303 |
+| market | frozen | 10.576801 | 80.597 |
+| market | zero | 10.548777 | 75.552 |
+| market | bptt | 10.546759 | 93.907 |
+
+Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
+
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -5979,6 +5990,24 @@ Existing18164parameter actor; native critic35841parameters. Aug24TRAIN continuat
 
 The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
 
+### Bounded native feedback and future teaching
+
+| Learner | NLL | Reuse s | Continue s | Full s |
+| --- | --- | --- | --- | --- |
+| fully_frozen | 6.984363 | 5.047 | 28.477 | 5779.164 |
+| bptt | 6.964428 | 23.197 | 46.628 | 5797.315 |
+| local only | 6.964502 | 17.469 | 40.899 | 5791.586 |
+| frozen | 6.964501 | 25.338 | 48.768 | 5799.456 |
+| field_only | 6.964509 | 26.432 | 49.862 | 5800.549 |
+| response_masked | 6.964451 | 26.340 | 49.770 | 5800.457 |
+| online | 6.964475 | 26.475 | 49.905 | 5800.593 |
+
+Online gains versus fully_frozen:+0.019888, bptt:-0.000047, zero:+0.000027, frozen:+0.000026, field_only:+0.000034, response_masked:-0.000024 nats/event.
+
+Existing18164parameter actor; native critic35841parameters. Aug24TRAIN continuation2048targets, Aug25DEV4096prequential targets, one acquisition/initialization. Every forecast precedes target consumption; actor/critic/optimizer/history common within comparison. Continue includes shared continuation acquisition23.430s; Full additionally charges original checkpoint development5750.687s. Loading/reconstruction/publication are separate whole-analysis work; original checkpoint DEV reused. All native discovery/counterfactual/teacher/optimizer execution charged in wall; fitting/inference FLOPs and energy unmeasured. Dense temporal actor retained; no shared actor-bank/outcome-law posterior integration or sealed TEST/profit claim.
+
+The original zero arm is a zero-predictor residual-audit control (32/128 audits), not local-only. The exact-anchor revision has genuine zero-boundary local-only learning. A first integrated development result is evidence about the variant; quality/work against own online BPTT determines further engineering.
+
 ### Measured native credit replacement budget
 
 | CPU phase | Exact BP s | Learned s |
@@ -5993,6 +6022,44 @@ The original zero arm is a zero-predictor residual-audit control (32/128 audits)
 The learned response/inference phase alone exceeds the entire exact boundary transport/proposal phase. Fewer exact audits cannot make this implementation economical at the same number of update opportunities; critic activity and future teaching must earn a smaller budget.
 
 512 Aug25 DEV cost targets after common2048TRAIN acquisition43.002s; original5750.687s predictor fitting additionally charged. Complete arm wall BPTT3.585s/online10.362s. Response/inference includes local cotangent and factual/candidate forecast probes, not native inference in isolation. Transport/proposals includes optimizer proposals, so deleting the whole phase is only an optimistic upper bound on savings. Frozen critic verification overhead separately charged. Loop accounting residual below0.0002s. Numerical parity passes; this profile does not replace the4096target quality comparison or claim hardware efficiency.
+
+### Exact joint extraction tightens the credit budget
+
+| Learner | NLL | Reuse s | Continue s | Full s |
+| --- | --- | --- | --- | --- |
+| bptt separate | 6.090214 | 2.937 | 26.792 | 5777.479 |
+| online separate | 6.090178 | 3.306 | 27.161 | 5777.848 |
+| bptt joint | 6.090214 | 2.142 | 22.603 | 5773.290 |
+| online joint | 6.090178 | 2.563 | 23.024 | 5773.711 |
+
+Every source/512-target block score replays exactly. Joint backward reduces exact/learned reuse wall27.1%/22.5%. The remaining transport/proposal phase is0.071s versus added learned loop work0.425s; the repaired replacement budget fails.
+
+Same model, gradients, Adam, aggregate receipts and sparse teaching. Continue charges2048TRAIN acquisition; Full additionally charges original5750.687s predictor fitting for all rows. Whole-fit savings are smaller than reuse savings. Single-seed CPU implementation improvement, not learned-credit efficiency. First512DEV cost profile does not replace4096-target quality result. Cotangent extraction shares local backward; local derivatives and producer VJP are still paid.
+
+### Exact local clock eligibility without temporal graph retention
+
+| Events | Own parameters | Trace floats | Gradient error |
+| --- | --- | --- | --- |
+| 8 | 44 | 88 | 3.47e-17 |
+| 32 | 44 | 88 | 1.39e-16 |
+| 128 | 44 | 88 | 5.55e-16 |
+
+A factorized complex-clock leg keeps two sensitivities per own parameter, independent of sequence length; streaming own gradients match full unrolled BPTT through128events, including zero gaps.
+
+Primitive fixed-parameter, fixed-input temporal-leg own-gradient equality against full unrolled BPTT. Trace size independent of event count; local nonlinear readout cotangents stay exact. No cross-leg/input-producer credit, changing-parameter trace transport, native hard-routing integration, market fit or performance claim. Next native integration must keep cross-leg/embedding/readout and alternative-route credit explicit. Constant trace size is analytical storage support, not measured whole-model memory or learning speed.
+
+### Integrated market local-leg eligibility
+
+| Events | Score error | Own/readout error | Remote gap |
+| --- | --- | --- | --- |
+| 1 | 0.0e+00 | 0.00e+00 | 0.000000 |
+| 8 | 0.0e+00 | 2.22e-16 | 0.043339 |
+| 32 | 0.0e+00 | 1.11e-16 | 0.227606 |
+| 128 | 0.0e+00 | 9.71e-17 | 0.109242 |
+
+The restored full18,164-parameter actor preserves every scored forecast through128TRAIN events. Streaming event-local derivatives plus factorized traces recover exact addressed-memory/readout gradients; cross-leg historical effects remain an explicit target for learned credit.
+
+7280 own-eligibility floats plus7280 history-projection workspace floats, fixed across these sequence lengths. Parameter snapshots, gradients, numerical state and current frame are additional. Every parameter gradient matches at1event; remote graph cuts produce the reported complete-gradient differences at longer histories. Serial NumPy observer correctness prototype, no trained-quality, whole-model-exactness, timing or measured RSS advantage claim.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 

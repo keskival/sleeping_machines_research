@@ -1,0 +1,21 @@
+# Exact local clock traces; learned cross-leg credit
+
+12 October 2026. B10 diagnosis-led direction after exact joint extraction reduced the remaining boundary/proposal budget to0.071s per512forecasts, while bounded learned credit adds0.425s. Replacing only a window-boundary cotangent cannot earn its cost in this driver; move the learning interface inside temporal history and depth. This is a proposed integration, not a market architecture substitution or measured speed win.
+
+For a complex temporal leg i with incoming features x fixed with respect to its own parameters,
+
+    z_i(t)=M_i(dt) z_i(t-1)+sigmoid(G_i x_t) [Wri x_t, Wii x_t],
+    M_i=exp(-exp(ell_i)*dt) rotation(omega_i*dt).
+
+Its own-parameter eligibility E_i(t)=d z_i(t)/d theta_i obeys E_i=M_i E_i(previous)+B_i(current). B has sparse columns for the two write rows, gate row and two clock parameters. Each leg stores two sensitivities per own parameter, independent of event-history length. Local nonlinear readout provides a current cotangent c_i; E_i^T c_i yields the exact contribution through that leg's own recurrent state under fixed parameters/inputs. This is factorized forward sensitivity/eligibility, an established idea. The implementation and numerical contract address this model's oscillatory clocks and gates.
+
+The primitive contract compares full unrolled BPTT with streaming own-parameter gradients at8/32/128events, including zero gaps and nonlinear coupled readouts. It does not include cross-leg gradients or changing-parameter trace transport. Reset/version traces after optimizer changes according to the declared truncation contract; retaining numerical state does not make an old derivative exact for new parameters.
+
+In the present feedforward depth stack, a leg's input can depend on lower legs while being independent of its own write parameters. The local recurrence identity still applies to its own state. Its parameters also affect upper-leg historical writes: those cross-leg paths are additional contributions, not captured by the local trace alone. Input embeddings, readout/norm/MLP parameters and counterfactual unexecuted routes need their own local/remote credit accounting. Do not report the primitive as exact whole-model RTRL or quietly remove these paths.
+
+The shared-leg critic should address the missing remote effects at message/branch interfaces, reuse representations for common causal producers and refine branch residuals when needed. Local clock transport stays exact and does not need a learned imitation target. Forward responses and delayed actual loss teach the critic's remote utility. Retain native computational delays, sparse state and losing-route teaching when integrating this construction; the current primitive does not implement route selection.
+
+Before a long run, define the actual graph cuts and changed derivatives, preserve numerical forward trajectories, test native integrated local/exact contracts, and compare local-trace-only, frozen/online shared-leg credit and exact learning on the same data/work. Trace maintenance, local derivatives, native inference, alternative discovery and teaching all count. Constant history storage for a fixed leg does not establish lower FLOPs, cheap growth with parameter size, or a deep-model quality advantage.
+
+
+**Integrated market leg eligibility (12 October, contract complete):** Restored full18164-parameter actor scores and numerical forward unchanged through128TRAIN forecasts. Streaming event-local backward plus own traces reproduces addressed mark-memory and clock/mark readout gradients to2.22e-16; every parameter gradient exact at1event. Own eligibility7280floats plus separate7280float historical projection workspace, independent of history length; parameters/gradient buffers/current-frame storage additional. Cross-leg/embedding/layer remote histories omitted: complete gradient maxdifference0.227606 at32events, explicitly requiring learned/exact remote credit. CPU NumPy correctness prototype, no fit/speed/whole-model-exactness claim. Source-bound curie_b10_leg_eligibility_20261012_v1_contract; native family forward retained. Next implementation uses shared producer-leg credit to recover useful remote effects while current local/clock derivatives stay exact.

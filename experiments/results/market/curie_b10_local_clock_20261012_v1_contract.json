@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "events": 8,
+      "own_parameters": 44,
+      "trace_floats": 88,
+      "state_floats": 8,
+      "gradient_max_error_by_parameter": {
+        "wr": 3.469446951953614e-17,
+        "wi": 2.7755575615628914e-17,
+        "gate": 1.3877787807814457e-17,
+        "log_rate": 4.336808689942018e-19,
+        "frequency": 2.6020852139652106e-18
+      },
+      "final_state_max_error": 5.551115123125783e-17,
+      "zero_gap_events": 2
+    },
+    {
+      "events": 32,
+      "own_parameters": 44,
+      "trace_floats": 88,
+      "state_floats": 8,
+      "gradient_max_error_by_parameter": {
+        "wr": 1.1102230246251565e-16,
+        "wi": 9.71445146547012e-17,
+        "gate": 5.551115123125783e-17,
+        "log_rate": 1.3877787807814457e-17,
+        "frequency": 1.3877787807814457e-16
+      },
+      "final_state_max_error": 1.1102230246251565e-16,
+      "zero_gap_events": 7
+    },
+    {
+      "events": 128,
+      "own_parameters": 44,
+      "trace_floats": 88,
+      "state_floats": 8,
+      "gradient_max_error_by_parameter": {
+        "wr": 1.1102230246251565e-16,
+        "wi": 5.551115123125783e-16,
+        "gate": 2.498001805406602e-16,
+        "log_rate": 2.7755575615628914e-17,
+        "frequency": 1.3877787807814457e-16
+      },
+      "final_state_max_error": 8.326672684688674e-17,
+      "zero_gap_events": 26
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/local_clock_eligibility.py": "6f22f3b2bfa17152f7f888eae4bfd97246493ae94628e50cd5f8fa4b6fff315f",
+    "experiments/credit/local_clock_eligibility_contract.py": "37e5e5ac2f1adaca9091476d6176868d51423b397443014c42ff08c0005ab09b"
+  },
+  "whole_wall_s": 0.1322831720171962,
+  "peak_rss_kb": 242092,
+  "scope": "Primitive fixed-parameter, fixed-input temporal-leg own-gradient equality against full unrolled BPTT. Trace size independent of event count; local nonlinear readout cotangents stay exact. No cross-leg/input-producer credit, changing-parameter trace transport, native hard-routing integration, market fit or performance claim."
+}

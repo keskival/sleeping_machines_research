@@ -121,3 +121,20 @@ Completed TRAIN-only interface contract `curie_b10_forecast_response_20261012_v1
 
 
 **Native credit replacement budget (12 October, measured):** Same2048TRAIN acquisition and512DEV cost profile. BPTT boundary transport/proposals0.780s; native response/inference2.944s, future teacher4.015s. Even deleting all exact transport/proposal work cannot pay the current response/inference phase; fewer audits alone cannot yield a same-opportunity wall advantage. Local differentiation2.025/2.325s for BPTT/online. Arm wall3.585/10.362s includes setup/verification0.729/0.022s. Shared acquisition43.002s and original5750.687s predictor fitting are additional. Phase residuals<0.0002s; proposal parity passes. Small profile is cost diagnosis, not a new quality confirmation. Prioritize shared-leg credit reuse, sparse event/teacher admission and cheaper native execution before another replacement fit. V1 smoke timing guard stopped; v2 charges omitted setup/verification.
+
+### Bounded credit and exact execution repair (12 October)
+
+**Bounded native market credit (12 October, completed):** One aggregate timed receipt per32-target update plus future teaching every16updates reduces deployment overhead. On4096Aug25DEV forecasts online NLL6.964475, ordinary BPTT6.964428, frozen guidance6.964501, local-only6.964502, input-masked online6.964451. Online gains BPTT-0.000047/frozen+0.000026/masked-0.000024nats/event; seven-arm quality gate fails. Reuse online26.475s/BPTT23.197s, common acquisition23.430s plus original5750.687s predictor fitting. Exact actor credit retained; one reused DEV stream/initialization, TEST untouched. Original512-target optimistic cost gate passed0.373<0.807s. Exact joint parameter/cotangent extraction then reproduces all source/512block scores with0error, reduces BP/learned reuse wall27.1%/22.5%, and tightens the remaining transport/proposal budget to0.071s against added learned work0.425s: replacement budget fails. This is an exact implementation improvement, not a learned-credit efficiency win. Next integration targets inside-history graph work using exact local-clock eligibility plus learned cross-leg credit.
+
+| Rule | NLL | Reuse seconds |
+|---|---:|---:|
+| fully_frozen | 6.984363 | 5.047 |
+| bptt | 6.964428 | 23.197 |
+| zero | 6.964502 | 17.469 |
+| frozen | 6.964501 | 25.338 |
+| field_only | 6.964509 | 26.432 |
+| response_masked | 6.964451 | 26.340 |
+| online | 6.964475 | 26.475 |
+
+
+**Integrated market leg eligibility (12 October, contract complete):** Restored full18164-parameter actor scores and numerical forward unchanged through128TRAIN forecasts. Streaming event-local backward plus own traces reproduces addressed mark-memory and clock/mark readout gradients to2.22e-16; every parameter gradient exact at1event. Own eligibility7280floats plus separate7280float historical projection workspace, independent of history length; parameters/gradient buffers/current-frame storage additional. Cross-leg/embedding/layer remote histories omitted: complete gradient maxdifference0.227606 at32events, explicitly requiring learned/exact remote credit. CPU NumPy correctness prototype, no fit/speed/whole-model-exactness claim. Source-bound curie_b10_leg_eligibility_20261012_v1_contract; native family forward retained. Next implementation uses shared producer-leg credit to recover useful remote effects while current local/clock derivatives stay exact.

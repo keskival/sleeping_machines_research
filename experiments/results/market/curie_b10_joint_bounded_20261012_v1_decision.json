@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "block_score_max_error": 0.0,
+  "acquisition_score_error": 0.0,
+  "incremental_loop_s": 0.4249608850223012,
+  "remaining_transport_proposal_s": 0.07115617298404686,
+  "budget_gate": false,
+  "parents": {
+    "experiments/results/market/curie_b10_bounded_feedback_20261012_v1_cost.json": "257e177dde6ea50f8e0e429f64ebf818b59e42593e331662704ec640e826b5ec",
+    "experiments/results/market/curie_b10_joint_bounded_20261012_v1_cost.json": "00a6e004275c31108167f9d5b2cfc0f290929672a869a69b9297dee0b11a0913"
+  },
+  "scope": "512DEV exact trajectory replay and tighter cost accounting. Cotangent extraction shares local backward; residual producer VJP/proposals still needed by predicted credit. Not learned-credit efficiency."
+}
