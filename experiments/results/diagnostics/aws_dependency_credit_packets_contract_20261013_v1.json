@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "parameter_dependency_rejected": true,
+  "state_dependency_rejected": true,
+  "unrelated_bank_and_state_progress_allowed": true,
+  "replay_rejected": true,
+  "projected_metadata_bytes": 72,
+  "gradient_payload_bytes": 8,
+  "source_sha256": {
+    "experiments/credit/check_dependency_credit_packets.py": "e8cd3d756e24536203793e7493d7972bb5f93dc78325e0f09ba41922ade8b4b2",
+    "sleeping_machines/learning/dependency_credit_packets.py": "b0e6c78acb306d53d1ab5dfb82192833e0e1744360a4f269f4ba13d014357188",
+    "sleeping_machines/learning/local_credit_banks.py": "8a6ed1edff0f675f61e9451fe380a9a501dc43c1d4c1e58c104990b07c3184af"
+  },
+  "scope": "Serialized event-delivery metadata contract, not distributed atomic validation: reject moved declared parameter/state dependencies even when target bank unchanged; unrelated declared-independent updates do not block delivery. No global epoch, no stale-gradient transport. Read-set completeness must be established by actual credit generation; this fixture declares it and is not an integrated model or quality proof. Metadata assumes32-bit bank/state addresses,64-bit versions/event IDs; framing/routing/handshake additional. Extra dependency checks and bytes are charged, not free locality."
+}
