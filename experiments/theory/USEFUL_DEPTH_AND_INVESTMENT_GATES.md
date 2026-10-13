@@ -30,6 +30,18 @@ The existing D8/D16 final-stage heads are not a nested (Z,U) comparison: their i
 
 These are conditional engineering decisions, not claims that current measurements identify a unique cause. The existing audit allocation, persistent numerical state, temporal races, private addresses, key/value separation and counterfactual alternatives stay intact during the acquisition ladder.
 
+## What paired interventions estimate
+
+For fixed checkpoint and data window X, let xi be the issued race-noise tape. The factual loss is f(X,xi) and the incoming-content-cut loss is g(X,xi). Using the same marginal noise law in both gives
+
+    E_xi[g(X,xi)-f(X,xi)] = E_xi[g(X,xi)]-E_xi[f(X,xi)].
+
+The difference variance is Var(g)+Var(f)-2 Cov(g,f). Common noise preserves this mean; it reduces variance only when the induced covariance is positive. Route changes can weaken or reverse that covariance. One paired tape is a reproducible intervention, not a measured noise expectation.
+
+The cut zeros a stage's incoming projection weights, retaining its bias, clock parameters, private bank and arrival mechanism. Realized clock values, route winners and downstream state can change because their input changed. Its total loss effect includes those consequences; it does not isolate content while fixing the realized temporal path. Independent window deltas describe where this total effect occurs in the saved slice. Adjacent text windows and shared parameters do not justify treating eight deltas as eight independent experiments.
+
+The versioned diagnostic preserves the original scorer's accumulation and checks exact factual-score parity, records all eight paired deltas, restores weights in a finally block and replays the factual score exactly. Additional reference replay is charged as 8,192 scored targets. These checks run after each completed acquisition through its existing guarded R1 pipeline.
+
 ## Translate quality into a resource decision
 
 For deployment workload N, define total charged cost C(N)=C_acquisition+N*C_prediction, in one common unit and boundary. If a candidate has higher acquisition cost by delta_A but lower per-prediction cost by delta_I>0, its cost crossover is N>=delta_A/delta_I. State separately the quality of both members under the same scoring protocol. Lower total cost at worse quality is an efficiency point; cost crossover alone is not a quality win. CPU time, arithmetic, traffic and physical energy require separate measurements.
