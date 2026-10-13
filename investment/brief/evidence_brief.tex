@@ -365,33 +365,35 @@ propagation. Detailed methods and completed result hashes are in
 
 \newpage
 % ---------------------------------------------------------- native credit
-\sect{Learning while the model is in use}{Better online forecasts from temporal credit}
+\sect{Learning while the model is in use}{Learned guidance improves online forecasts}
 
 Markets produce a stream of transactions. A useful model has to learn as that
 stream arrives. Our aim is to improve both its predictions and the machinery
 that decides how new experience changes the model.
 
 \begin{callout}
-\textbf{What we tested.} Our existing Bitcoin-market predictor learned from
-new trades using several credit rules. The best rule carries the effects of
-past events in persistent temporal traces, releasing each event's computation
-graph after use. It keeps useful temporal credit without storing the full
-history graph.
+\textbf{What we tested.} We trained an event-based credit model on earlier
+Bitcoin trades. It uses its own persistent memory and observed errors to decide
+when to apply credit across the predictor's layers. Its training signal is the
+forecast quality of actual updates on subsequent observations.
 \end{callout}
 
 The experiment used real Binance trades. Each forecast predicts the next
-transaction's timing and type, and is scored before the outcome is used for
-learning. Every rule starts from the same acquired predictor and optimizer
-state. The comparison covers 16,384 transactions.
+transaction's timing and type, and is scored before learning from the outcome.
+All rules start from the same acquired predictor and optimizer state. The
+comparison covers 16,384 transactions.
 
 \vspace{3mm}
-{\small\renewcommand{\arraystretch}{1.4}
+{\small\renewcommand{\arraystretch}{1.3}
 \begin{tabularx}{\linewidth}{Y r}
 \toprule
 Learning during use & Prediction loss $\downarrow$ \\
 \midrule
-\textbf{Our temporal traces} & \textbf{5.737492} \\
-Our temporal traces + selected effects across layers & 5.737697 \\
+\textbf{Our temporal traces + previously trained guidance} & \textbf{5.737391} \\
+Our temporal traces alone & 5.737492 \\
+Random guidance, same number of credit adjustments (mean) & 5.737596 \\
+Our temporal traces + guidance with online weight updates & 5.737637 \\
+Our temporal traces + always-on effects across layers & 5.737697 \\
 Local updates without temporal credit & 5.737748 \\
 Ordinary online backpropagation & 5.738462 \\
 Fixed model weights; observed memory still updates & 5.752528 \\
@@ -399,36 +401,36 @@ Fixed model weights; observed memory still updates & 5.752528 \\
 \end{tabularx}}
 \vspace{4mm}
 
-\textbf{What we achieved.} Temporal traces win prediction quality by 0.000970
-nats per transaction over ordinary online backpropagation. The advantage
-survives the longer replay: every first 4,096-transaction block reproduces
-its shorter run exactly. Selected effects across layers also beat
-backpropagation, while the simpler trace rule wins overall.
+\textbf{What we achieved.} Previously trained guidance wins prediction quality
+by 0.000101 nats per transaction over temporal traces alone, and by 0.001071
+over ordinary backpropagation. It beats all three random schedules using the
+same 57 credit adjustments; the mean gap is 0.000205 nats per transaction.
+These are small, measured gains in development forecasting.
 
-\textbf{Why it matters.} This is a real-data example where changing the
-credit machinery improves how the same predictor learns during use.
-The forward model and data stay the same. The result supports temporal
-credit as a useful learning mechanism, alongside our event-native inference
-architecture.
+\textbf{Why it matters.} A learning function trained on earlier data transferred
+a useful credit policy to later observations. The forward model stays the same;
+the learned guidance changes how it learns. The random comparison supports
+useful selection timing beyond occasionally applying extra credit.
 
-\textbf{Measured cost.} The trace prototype takes 79.7 seconds to learn across
-the stream, versus 63.0 seconds for backpropagation. It wins quality and is
-slower. Constant trace storage is a property of this implementation; this
-experiment does not claim a measured memory or energy advantage.
+\textbf{How it adapts.} Guidance weights stay fixed in the winning run, while
+its event-based memory continues to evolve. It applies extra credit on
+37, 9, 7 and 4 updates in the four successive stream segments. Updating its
+weights online produced worse forecasts in this experiment.
 
-\textbf{Learning to learn.} The separate native guidance network uses persistent
-memory and later outcomes to learn adjustments to the predictor's updates.
-It achieved a small quality win on 4,096 forecasts; ordinary backpropagation
-led its longer 16,384-forecast comparison. The stronger current result above
-comes from the temporal trace rule and uses no learned guidance network.
+\textbf{Measured cost.} The guidance prototype takes 105.4 seconds, versus
+79.7 for standalone temporal traces and 63.0 for backpropagation. It wins
+quality and is slower. Remote sensitivities are still computed before deciding
+whether to use them; this is not a saved-compute or energy result.
 
-{\footnotesize\color{muted}One restored 18,164-parameter predictor and one reused
-25 August development stream; sealed test data untouched. Common preparation
-uses 2,048 earlier 24 August targets and costs 7.9 seconds; original predictor
-fitting costs 5,750.7 seconds, charged equally to every table row. Parameters
-update every 32 targets; numerical memory persists and derivative traces reset
-after updates. These are forecasting results, not trading profits. Completed
-methods, costs and result hashes:\par
+{\footnotesize\color{muted}One restored 18,164-parameter predictor and one
+31,753-parameter guidance initialization on reused 25 August development data;
+sealed test untouched. Earlier 24 August acquisition preserves the same actor
+and optimizer trajectory. Guidance preparation costs 28.3 seconds; original
+predictor fitting costs 5,750.7 seconds. Random schedules use three predeclared
+seeds, with activity calibrated from this development run (mean5.737596,
+sampleSD0.000069). Actor updates every32targets; guidance is trained by delayed
+actual-update utility, not gradient imitation. Forecasting, not trading profits.
+Completed methods, costs and hashes:\par
 \texttt{investment/forward\_credit\_evidence\_20261011.json}.}
 
 \newpage

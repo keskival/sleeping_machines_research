@@ -122,6 +122,25 @@ def main():
         parents[str(path.relative_to(ROOT))]=sha(path)
         streaming.append(dict(tag=tag,rows=[{k:v for k,v in row.items() if k not in ['block_nll','step_norms']} for row in record['rows']],projected_gain=record['projected_gain'],acquisition_wall_s=record['acquisition']['wall_s'],scope=record['scope']))
     packet['native_market_streaming_credit_updates']=streaming
+    admission=[]
+    for tag in ['curie_b10_native_admission_20261013_v1_fit','curie_b10_native_admission_longer_20261013_v2_fit']:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for source,digest in record['source_sha256'].items():assert sha(ROOT/source)==digest,source
+        parents[str(path.relative_to(ROOT))]=sha(path)
+        admission.append(dict(tag=tag,rows=[{k:v for k,v in row.items() if k not in ['block_nll','admission','teacher_labels']} for row in record['rows']],online_gain=record['online_gain'],acquisition_wall_s=record['acquisition']['wall_s'],scope=record['scope']))
+    packet['native_remote_admission']=admission
+    native_audits={}
+    for tag in ['curie_b10_native_admission_longer_20261013_v2_decision','curie_b10_random_admission_20261013_v1_fit','curie_b10_native_inference_20261013_v1_contract','curie_b10_native_selected_20261013_v1_fit']:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for group in ['source_sha256','parent_sha256']:
+            for source,digest in record.get(group,{}).items():assert sha(ROOT/source)==digest,source
+        parents[str(path.relative_to(ROOT))]=sha(path)
+        native_audits[tag]=record
+    packet['native_remote_admission_audits']=native_audits
     repeated=ROOT/'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json'
     if repeated.exists():
         record=json.loads(repeated.read_text());assert record['status']=='completed'
