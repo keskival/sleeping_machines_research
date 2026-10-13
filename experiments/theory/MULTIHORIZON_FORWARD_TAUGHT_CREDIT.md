@@ -79,3 +79,59 @@ Current native teacher work and forward packets provide potential inputs, but no
 Keep D8/D16 and32M running. Inspect whether deeper-stage information and longer acquired histories improve language quality. The next forward-taught compact-credit integration should register a finite horizon ladder, retain a terminal anchor and supported draws, then audit the telescoping mean/variance and endpoint gradient inside that battle's pipeline before fitting.
 
 Select by actual later quality and complete learning work. A better local MSE, a smaller teacher count or a short-prefix gain is insufficient when later utility reverses. Conversely, an early deficit is not an automatic rejection when the registered longer-horizon target and acquisition stage remain valid. This construction makes the delayed benefit measurable and trainable rather than asserting it will appear.
+
+## 7. A resource cutoff is part of the estimator
+
+The intuition is to predict the complete delayed consequence and occasionally pay
+to repair one missing time block. The importance correction pays for rare blocks
+in their statistical weight. It does not make an abandoned block disappear.
+
+Suppose level j is selected with q_j, but its rollout completes only when A_j=1.
+Returning the terminal prediction on aborted audits yields
+
+    E[Vhat_abort | issued cut] = b_K + sum_j E[A_j R_j | issued cut].
+
+Its bias relative to E[V_HK] is -sum_j E[(1-A_j) R_j]. Thus timeout, RSS failure
+or stopping an unfavorable prefix can select precisely the missing delayed
+effects. A recorded completed-audit fraction alone cannot repair this bias.
+
+If completion is a genuinely randomized, predictable admission with known
+positive probability s_j, independent of the unseen residual conditional on
+the admission information, A_j R_j/(q_j s_j) restores the mean. A deterministic
+resource kill with zero completion probability in some worlds does not meet
+that condition. Preserve failed receipts and repair execution or register a
+different finite objective prospectively; do not quietly drop them.
+
+For a deterministic registered truncation H_m < H_K, omitting all later
+corrections while keeping b_K gives expected target
+
+    E[V_Hm] + b_K - b_m,
+
+with bias -sum_(j>m) E[R_j]. If TRAIN-only evidence supplies valid bounds
+E[R_j^2] <= u_j, Cauchy-Schwarz gives absolute bias <= sum_(j>m) sqrt(u_j).
+These are population bounds only when u_j are justified population bounds;
+empirical residual means are estimates. Replacing b_K by b_m produces the
+exact shorter objective instead, which must be reported as a changed horizon.
+
+This gives two distinct engineering options: preserve the long target with
+supported paid audits, or explicitly shorten the target with a quantified
+missing-tail bound. A shorter wall time by itself does not identify better
+learning efficiency.
+
+## 8. Executable receipt boundary and next integration gate
+
+`experiments/credit/finite_horizon_receipt.py` implements only the finite issued
+receipt and scalar correction. Immutable tuple snapshots retain predictions
+and full-support probabilities; objective/world/learner identifiers reject
+mixed receipts; level zero enforces the zero-horizon anchor. It returns a
+stopped scalar target and deliberately has no actor-gradient or replay engine.
+Identifiers do not prove that replay is faithful. The caller must retain paired
+RNG/state, optimizer versions, cumulative weights and complete audit costs.
+
+The next R1 pipeline contract must enumerate a finite ladder with nonuniform
+probabilities and signed increments, checking the exact terminal mean, the
+variance formula and the endpoint raw-gradient mean. Include an early negative
+advantage with a positive terminal advantage, container mutation, mismatched
+world/version rejection and the aborted-audit bias above. Those numerical
+contracts and native learner rollout integration are pending. No new fit is
+admitted; current D8/D16/32M source-frozen drivers remain the acquisition test.
