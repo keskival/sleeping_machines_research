@@ -1,0 +1,9 @@
+# B10 streaming clock credit: actual optimizer continuation
+
+13 October 2026. Decision: whether exact own-leg plus four shared-path clock projections improve online learning over event-local and own-leg-only credit, and how far they trail exact BPTT in quality/work. This is development of the saved integrated actor, not a family verdict. The native remote-residual critic is a subsequent integration.
+
+Restore the unchanged 18,164-parameter market checkpoint. Common acquisition: 2,048 August 24 TRAIN targets, exact BPTT, Adam lr0.0003, global gradient clip1, 32 targets/update, 128-event warm numerical state. Copy resulting actor AND optimizer state to every arm. Rewarm numerical state on August 25; score 4,096 DEV targets before each 32-target update. Fully frozen, exact BPTT, event-local, own-leg traces, and own traces plus four projected shared-path clock directions. No tuning or sealed TEST access.
+
+Every window starts from detached persistent numerical state and zero derivative traces. Parameters are fixed within its32events; after actual Adam update reconstruct observers from new parameters. Charge trace construction/maintenance, local backwards, tangent transport, optimizer and setup in measured arm wall. Charge common acquisition and original5750.687s fitting equally in whole-fit comparisons. CPU NumPy prototype, no energy or clockless execution claim.
+
+Before the4096comparison, one-event smoke uses identical actual updates to require score, final parameter and every Adam first/second moment/step parity across all updating arms <1e-10. This validates resets/optimizer integration, not approximation accuracy at longer windows. For the fit, report every arm, full block trajectory, signed projected gains, and measured resource use. Quality gate: projected lower NLL than all four other arms. Efficiency requires matched quality and complete work, not constant trace storage alone.

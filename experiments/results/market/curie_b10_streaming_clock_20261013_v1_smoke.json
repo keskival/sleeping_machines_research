@@ -1,0 +1,176 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_streaming_clock_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "rows": [
+    {
+      "arm": "fully_frozen",
+      "nll": 10.773573978088521,
+      "targets": 3,
+      "wall_s": 0.004017875995486975,
+      "block_nll": [
+        15.309389039038045,
+        14.585572385995858,
+        2.4257605092316608
+      ],
+      "audits": 0,
+      "future_teachers": 0
+    },
+    {
+      "arm": "bptt",
+      "nll": 10.811020108673993,
+      "targets": 3,
+      "updates": 3,
+      "wall_s": 0.020181032974505797,
+      "phase_wall_s": {
+        "window_credit": 0.01123488397570327,
+        "optimizer": 0.007487143971957266
+      },
+      "block_nll": [
+        15.309389039038045,
+        14.58460812937312,
+        2.539063157610815
+      ],
+      "step_norms": [
+        0.026729073678040338,
+        0.022234885361748793,
+        0.01907906296035293
+      ]
+    },
+    {
+      "arm": "local",
+      "nll": 10.811020108673993,
+      "targets": 3,
+      "updates": 3,
+      "wall_s": 0.02198342001065612,
+      "phase_wall_s": {
+        "window_credit": 0.012841471994761378,
+        "optimizer": 0.007617016002768651
+      },
+      "block_nll": [
+        15.309389039038045,
+        14.58460812937312,
+        2.539063157610815
+      ],
+      "step_norms": [
+        0.026729073678040338,
+        0.022234885361748793,
+        0.01907906296035293
+      ]
+    },
+    {
+      "arm": "own",
+      "nll": 10.811020108673993,
+      "targets": 3,
+      "updates": 3,
+      "wall_s": 0.02550598100060597,
+      "phase_wall_s": {
+        "window_credit": 0.01614335598424077,
+        "optimizer": 0.007825597014743835
+      },
+      "block_nll": [
+        15.309389039038045,
+        14.58460812937312,
+        2.539063157610815
+      ],
+      "step_norms": [
+        0.026729073678040338,
+        0.022234885361748793,
+        0.01907906296035293
+      ]
+    },
+    {
+      "arm": "projected",
+      "nll": 10.811020108673993,
+      "targets": 3,
+      "updates": 3,
+      "wall_s": 0.029494461021386087,
+      "phase_wall_s": {
+        "window_credit": 0.019690729008289054,
+        "optimizer": 0.008323389978613704
+      },
+      "block_nll": [
+        15.309389039038045,
+        14.58460812937312,
+        2.539063157610815
+      ],
+      "step_norms": [
+        0.026729073678040338,
+        0.022234885361748793,
+        0.01907906296035293
+      ]
+    }
+  ],
+  "acquisition": {
+    "arm": "bptt",
+    "nll": 0.2023944098267525,
+    "targets": 2,
+    "updates": 2,
+    "wall_s": 0.015435035020345822,
+    "phase_wall_s": {
+      "window_credit": 0.008267952973255888,
+      "optimizer": 0.006067231995984912
+    },
+    "block_nll": [
+      0.21314377983006771,
+      0.19164503982343728
+    ],
+    "step_norms": [
+      0.03792640390032694,
+      0.036808987859652496
+    ]
+  },
+  "projected_gain": {
+    "fully_frozen": -0.037446130585472304,
+    "bptt": 0.0,
+    "local": 0.0,
+    "own": 0.0
+  },
+  "one_event_adam_parity": {
+    "bptt": {
+      "parameter_max_error": 0.0,
+      "adam_state_max_error": 0.0,
+      "score_max_error": 0.0
+    },
+    "local": {
+      "parameter_max_error": 0.0,
+      "adam_state_max_error": 0.0,
+      "score_max_error": 0.0
+    },
+    "own": {
+      "parameter_max_error": 0.0,
+      "adam_state_max_error": 0.0,
+      "score_max_error": 0.0
+    },
+    "projected": {
+      "parameter_max_error": 0.0,
+      "adam_state_max_error": 0.0,
+      "score_max_error": 0.0
+    }
+  },
+  "quality_gate": false,
+  "source_sha256": {
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+    "experiments/credit/local_clock_eligibility.py": "6f22f3b2bfa17152f7f888eae4bfd97246493ae94628e50cd5f8fa4b6fff315f",
+    "experiments/credit/market_native_test_time.py": "e5d4c0581110d587f95f980fd9490b877a38c4207968f882ee3dde32cc204f6e",
+    "experiments/credit/real_boundary_stable.py": "242c18bae5d8629745b1244a70b2eeb0241fb8bf29d55be2962b2802d4ee4d45",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_tpp.py": "c226f721b5b4bf91fdb1e48386e4cfc0e73a401d01b59fdce7354b53974639b9",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/market/STREAMING_CLOCK_UPDATES_PROTOCOL.md": "758178da482917b03b4eeda327399d05eea0fdb18c6ef76f14904e8a37aed657"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "whole_wall_s": 1.5003728380252142,
+  "peak_rss_kb": 382888,
+  "scope": "One restored market actor; common exact2048TRAIN acquisition in fit,4096Aug25DEV score-before-update forecasts; 32event fixed-parameter windows with numerical state persistence and traces reset after actual Adam updates. Fully frozen, exact BPTT, event-local, own traces and four shared-path clock projections. No native critic/residual teacher yet. NumPy correctness backend, includes trace/optimizer work; original5750.687s fitting additionally charged to every arm. Reused development stream, no sealed TEST or trading-profit claim. Smoke uses one-event windows to check actual parameters/Adam moments/scores across updates; longer-window projected gradients remain approximate."
+}
