@@ -76,10 +76,13 @@ def check(depth, mode):
             opt.zero_grad();(losses[i].mean()+term).backward()
         for (name,p),(_,q) in zip(old.named_parameters(),new.named_parameters()):
             assert (p.grad is None)==(q.grad is None),name
-            if p.grad is not None:assert torch.equal(p.grad,q.grad),name
+            if p.grad is not None and not torch.equal(p.grad,q.grad):
+                raise AssertionError(dict(stage='gradient',parameter=name,update=step+1,max_error=float((p.grad-q.grad).abs().max())))
         for model,opt in zip((old,new),optimizers):
             torch.nn.utils.clip_grad_norm_(model.parameters(),1.);opt.step()
-        for (name,p),(_,q) in zip(old.named_parameters(),new.named_parameters()):assert torch.equal(p,q),name
+        for (name,p),(_,q) in zip(old.named_parameters(),new.named_parameters()):
+            if not torch.equal(p,q):
+                raise AssertionError(dict(stage='parameter',parameter=name,update=step+1,max_error=float((p-q).abs().max())))
         states=[reference.detach(s) for s in states]
     return dict(depth=depth,state_mode=mode,updates=3,skipped_prefix_events_per_lane=skipped,
                 feature_teacher_gradient_parameter_error=0.)
@@ -87,7 +90,14 @@ def check(depth, mode):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);a=p.parse_args();torch.set_num_threads(1)
-    rows=[check(depth,mode) for depth in (2,4) for mode in ('carry','reset')]
+    rows=[]
+    for depth in (2,4):
+        for mode in ('carry','reset'):
+            try:rows.append(dict(gate='PASS',**check(depth,mode)))
+            except (AssertionError,ValueError,RuntimeError) as error:
+                rows.append(dict(depth=depth,state_mode=mode,gate='FAIL',
+                    feature_teacher_gradient_parameter_error=None,error_type=type(error).__name__,
+                    failure=error.args[0] if error.args and isinstance(error.args[0],dict) else str(error)))
     sources={}
     for module in list(sys.modules.values()):
         file=getattr(module,'__file__',None)
@@ -96,8 +106,9 @@ def main():
             if path.is_file() and path.is_relative_to(ROOT) and path.suffix=='.py':
                 relative=path.relative_to(ROOT)
                 if relative.parts[0] in ('experiments','sleeping_machines'):sources[str(relative)]=hashlib.sha256(path.read_bytes()).hexdigest()
-    result=dict(status='completed',battle='R1',rows=rows,source_sha256=sources,
-        scope='CPU float32 integrated numerical witness, depth2/4 and carry/reset, EOS before/after credit cuts and three clipped AdamW updates. Incumbent and ordered-content execution agree exactly on suffix features, physical state, suffix utility, RNG, all parameter gradients and parameters. Diagnostic replay counters differ because prefix work is skipped. No full-fit quality or efficiency claim.')
+    passed=all(r['gate']=='PASS' for r in rows)
+    result=dict(status='completed',battle='R1',rows=rows,gate='PASS' if passed else 'FAIL',source_sha256=sources,
+        scope='CPU float32 numerical gate at depth2/4,carry/reset with EOS and three clipped AdamW updates. PASS requires exact incumbent/ordered suffix features, numerical state, utility, RNG, every gradient and parameter. FAIL rows retain the first mismatch or implementation error for diagnosis and block fitting. A failed row is not a quality result; no complete-fit or efficiency claim.')
     out=ROOT/f'experiments/results/diagnostics/{a.tag}.json'
     with out.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
     print(json.dumps(rows),flush=True)
