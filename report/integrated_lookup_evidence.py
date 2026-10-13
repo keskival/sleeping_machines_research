@@ -194,4 +194,23 @@ def blocks():
         rows=[[str(r['seed']),r['acquisition'],str(r['scored_targets']),f"{r['transfer_nll']:.6f}",f"{r['zero_feature_nll']:.6f}",f"{r['feature_conditioned_gain']:+.6f}"] for r in c['rows']]
         result.extend([('p',f"Frozen acquired-learning transfer: paired gain{c['paired_gain_mean']:+.6f}±{c['paired_gain_sd']:.6f}. "+c['scope']),
             ('table',(['Seed','Acquisition','Scored targets','New DEV NLL','Zero-feature NLL','Feature gain'],rows,[16,28,32,32,32,32]))])
+    native=ROOT/'experiments/results/diagnostics/aws_native_work_accounting_20261013_v2.json'
+    if native.exists():
+        c=json.loads(native.read_text());assert c['status']=='completed' and c['exact_instrumented_learning_curve']
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        a=c['accounting'];rows=[]
+        for phase,ops in a['operations_by_phase'].items():
+            payload=a['logical_payload_by_phase'].get(phase,{})
+            rows.append([phase,str(sum(ops.values())),f"{a['registered_flops_by_phase'].get(phase,0)/1e9:.6f}",
+                f"{payload.get('input_tensor_payload_bytes',0)/1e9:.6f}",f"{payload.get('output_tensor_payload_bytes',0)/1e9:.6f}"])
+        result.extend([('p','Native training execution ledger:8192-target probe, exact learning/fingerprint parity. '+a['boundary']),
+            ('table',(['Phase','Torch calls','Registered GFLOPs','Operand payload GB','Output payload GB'],rows,[42,24,34,36,36]))])
+    bank=ROOT/'experiments/results/diagnostics/aws_receiver_credit_banks_contract_20261013_v1.json'
+    if bank.exists():
+        c=json.loads(bank.read_text());assert c['status']=='completed' and c['parameter_error']==0
+        for name,digest in c['source_sha256'].items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        result.extend([('p','Native receiver update placement contract: three exact un-clipped Adam updates, independent delivery order, disjoint backing storage, isolated receiver update and stale-credit rejection. '+c['scope']),
+            ('p','Bank storage '+str(c['storage'])+'.')])
     return result
