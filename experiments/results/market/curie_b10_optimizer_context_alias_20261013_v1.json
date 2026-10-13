@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 1,
+      "context_error": 4.336808689942018e-19,
+      "future_loss": 11.492876322050456,
+      "alias_future_loss": 11.492461357301107,
+      "demand": [
+        5.366705143562849e-05,
+        0.0003817651678200255,
+        -1.0591099478051638e-05,
+        -0.00013513135200697555
+      ],
+      "alias_demand": [
+        -1.5286502390380445e-05,
+        0.0012156724324320284,
+        0.00020277659423965588,
+        -0.07280450414204108
+      ],
+      "demand_max_difference": 0.0726693727900341,
+      "loss_difference": -0.0004149647493498776,
+      "pooled_clock_coordinates": 64
+    },
+    {
+      "block": 2,
+      "context_error": 1.0842021724855044e-19,
+      "future_loss": 14.91546339446249,
+      "alias_future_loss": 14.915419005086155,
+      "demand": [
+        -8.404091017124538e-05,
+        0.00010238133383072333,
+        -9.695961312808635e-05,
+        -0.0001007199696745376
+      ],
+      "alias_demand": [
+        2.2547672874793433e-05,
+        9.953460177454451e-05,
+        -6.266135839397203e-05,
+        8.775916719657708e-05
+      ],
+      "demand_max_difference": 0.00018847913687111467,
+      "loss_difference": -4.4389376334663666e-05,
+      "pooled_clock_coordinates": 64
+    },
+    {
+      "block": 3,
+      "context_error": 6.505213034913027e-19,
+      "future_loss": 10.323622946183052,
+      "alias_future_loss": 10.32357516981745,
+      "demand": [
+        -0.00013665759336271594,
+        8.787254649784791e-05,
+        7.206840410404485e-05,
+        -0.00021158560220629186
+      ],
+      "alias_demand": [
+        -4.8483597054496734e-05,
+        0.0015465738008418983,
+        2.077270067952728e-05,
+        -0.0023078943448661686
+      ],
+      "demand_max_difference": 0.0020963087426598766,
+      "loss_difference": -4.77763656014929e-05,
+      "pooled_clock_coordinates": 64
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_optimizer_context_alias.py": "6ad0e2b65253e48f9d12a14b71ff80791f2eed5bf175016ad418dfeb38e47636",
+    "experiments/credit/market_actual_utility_fit_v2.py": "a07b59e0768f00aaf4c527af360f8f8267043b5afce00492b55a294cf952c227",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc"
+  },
+  "wall_s": 1.9093648220296018,
+  "scope": "Fixed native actor/issued gradients/incoming state/current observations, two optimizer cuts differing only by a common permutation of per-mode clock first/second moments. Pooled19context equal; future functional actualAdam/refresh demand may differ. Permuted cuts valid moment tensors but not proven reachable under identical observed history. Current critic carry held conceptualconstant; no claim of observed TRAIN/DEV alias frequency or cause of earlier losses. Diagnostic identifies descriptor insufficiency over allowed optimizer cuts, not impossibility of memory-based inference or trained quality."
+}

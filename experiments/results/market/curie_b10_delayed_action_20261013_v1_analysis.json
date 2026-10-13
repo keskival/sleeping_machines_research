@@ -1,0 +1,56 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "curve": [
+    {
+      "tag": "curie_b10_delayed_action_20261013_v1_fit",
+      "train_utility_events": 2048,
+      "nll": 5.703311292602827,
+      "parent_nll": 5.703270447703627,
+      "gain": -4.0844899199754536e-05,
+      "accepted": 26,
+      "preference_reversals": 23
+    },
+    {
+      "tag": "curie_b10_delayed_action_20261013_v2_weighted",
+      "train_utility_events": 2048,
+      "nll": 5.7032935035233905,
+      "parent_nll": 5.703270447703627,
+      "gain": -2.3055819763584395e-05,
+      "accepted": 26,
+      "preference_reversals": 23
+    },
+    {
+      "tag": "curie_b10_delayed_action_20261013_v3_large",
+      "train_utility_events": 8192,
+      "nll": 5.703224095709137,
+      "parent_nll": 5.703270447703627,
+      "gain": 4.6351994489768344e-05,
+      "accepted": 119,
+      "preference_reversals": 100
+    }
+  ],
+  "full_nll": 5.756621144495533,
+  "full_parent_nll": 5.756599086649787,
+  "full_gain": -2.205784574549341e-05,
+  "source_prefix_parity": true,
+  "dev_prefix_parity": 0.0,
+  "ablation": {
+    "probes": 8,
+    "mean_absolute_moment_effect": 3.0444693416287194e-06,
+    "max_absolute_moment_effect": 9.068467612394215e-06,
+    "learning_preference_reversals": 0,
+    "moment_preference_reversals": 0,
+    "early_moment_swap_parity": 0.0
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_delayed_action_20261013_v1_smoke.json": "fcca66aefc1ca7161769566dd77ff87f709155baf74ad9bbaabe0309710b9269",
+    "experiments/results/market/curie_b10_delayed_action_20261013_v1_fit.json": "512e956c8cf749df33d467ecd76ce15bb606408bd4f1a75b4da8e6981e944ff5",
+    "experiments/results/market/curie_b10_delayed_action_20261013_v2_weighted.json": "ce7c944a182030bc81cb22e0b50881109d8b8a8e7b5715725b3782b938f1c269",
+    "experiments/results/market/curie_b10_delayed_action_20261013_v3_large.json": "aa855eb9548a518951b836a83d9fe52a0a9eaf27c7a62a115e2bee423d69341c",
+    "experiments/results/market/curie_b10_delayed_action_20261013_v3_full.json": "97afe6b634789240919f56de5fdbbb12c9d9833feff49f325187d6294b49872c",
+    "experiments/results/market/curie_b10_delayed_action_20261013_v1_ablation.json": "e4b69652fffd48db8e1c644b200c7b8fa31bff80cf83635ac238ed89464466b8"
+  },
+  "decision": "Retain established parent critic; delayed teacher is implemented but neither small fit nor larger full deployment improves parent utility. Gain weighting and extra data improve prefix, not full trajectory.",
+  "scope": "One critic/actor, reusedTRAIN/DEV. Teacherlearns finite actuallearnerconsequences, source256frames8192events; extra256alternativeworlds6144scoredtargets+4096refresh,2048own-gradienttargets subsetofscoredtargets. Existingactor/parentacquisition/native/optimizerfittingwork additional. No TEST/fullwork/scaling/publicbenchmarkwin."
+}

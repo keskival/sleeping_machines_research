@@ -1,0 +1,101 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "full_gain": 8.77396910201611e-05,
+      "held_future_learning_gain": 3.2792492113742355e-05,
+      "swapped_moment_gain": 8.053950120512354e-05,
+      "moment_effect": -7.200189815037561e-06,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 1,
+      "full_gain": -4.364874801154883e-06,
+      "held_future_learning_gain": -2.3033300777797194e-07,
+      "swapped_moment_gain": -1.5509269957192373e-07,
+      "moment_effect": 4.2097821015829595e-06,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 2,
+      "full_gain": -1.8616320725861613e-05,
+      "held_future_learning_gain": -2.7887565107853618e-05,
+      "swapped_moment_gain": -2.7684788338255828e-05,
+      "moment_effect": -9.068467612394215e-06,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 3,
+      "full_gain": -4.934101204057129e-06,
+      "held_future_learning_gain": -3.857567930865002e-06,
+      "swapped_moment_gain": -3.816607359041768e-06,
+      "moment_effect": 1.1174938450153604e-06,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 4,
+      "full_gain": -4.196793503830065e-06,
+      "held_future_learning_gain": -2.655031932974339e-06,
+      "swapped_moment_gain": -2.5525828952766005e-06,
+      "moment_effect": 1.6442106085534647e-06,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 5,
+      "full_gain": 1.2756849763206901e-06,
+      "held_future_learning_gain": 1.3531955715961885e-06,
+      "swapped_moment_gain": 1.3767058995028947e-06,
+      "moment_effect": 1.0102092318220457e-07,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 6,
+      "full_gain": -3.807671973277138e-07,
+      "held_future_learning_gain": -2.2888101192108934e-07,
+      "swapped_moment_gain": -2.052323235801623e-07,
+      "moment_effect": 1.755348737475515e-07,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    },
+    {
+      "block": 7,
+      "full_gain": -1.7694677296731243e-06,
+      "held_future_learning_gain": -9.269180765159035e-07,
+      "swapped_moment_gain": -9.30412776156686e-07,
+      "moment_effect": 8.390549535164382e-07,
+      "early_moment_swap_parity": 0.0,
+      "learning_preference_reversal": false,
+      "moment_preference_reversal": false
+    }
+  ],
+  "learning_preference_reversals": 0,
+  "moment_preference_reversals": 0,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_delayed_learner_ablation.py": "a5f2f0affbdb52d8686e835ccc26c6d1a560ff99b5d70cd3138054d2f40b9d40",
+    "experiments/credit/market_delayed_action_teacher.py": "c8d3acd1e912e3765254d2fa143187f18ddaebede7c436cb8d3d20cae3d6df00",
+    "experiments/credit/market_actual_utility_fit_v2.py": "a07b59e0768f00aaf4c527af360f8f8267043b5afce00492b55a294cf952c227"
+  },
+  "wall_s": 6.6576497220085,
+  "scope": "EightTRAINreceipts, same24targethorizon/sharedfuture observations. Freeze only next actor update to isolate futurelearning; swap alternative postfirstupdateAdam m/v to factual cut while retaining alternativeparameters/state to isolate optimizer-memory effects. Firstfuture forecasts must be identical undermoment swap. Native parentweightsfrozen; no fittedcritic/DEVquality/publicclaim. Fiveworlds/receipt incl factual, allnative/ownlearning/refresh work additional."
+}

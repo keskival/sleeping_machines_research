@@ -6369,6 +6369,22 @@ Full refreshed-future parameter demand transported through AWS actual clip/Adam 
 
 Reused DEV, one shared actor/data stream;36,820parameter conditioned critics versus31,804parents, additional2048teacher replay targets/128backwards plus1024source refresh targets perfit. Original forward-teacher acquisition and actor prefit also charged. Seed19124 used functional JVP metric;19129/19130 used contracted sparse formula. No TEST/profit/ASICenergy/full-work claim. Established32targetheadline unchanged.
 
+### Delayed learner-consequence credit and input identifiability
+
+| Teacher | TRAIN utility events | DEV prefix NLL |
+| --- | --- | --- |
+| Finite preference | 2048 | 5.703311293 |
+| Gain weighted | 2048 | 5.703293504 |
+| Gain weighted, more data | 8192 | 5.703224096 |
+
+Native teacher recomputes future own gradients, Adam moments and native decisions in factual/alternative worlds. Gain weighting aligns the leading finite-probe signal with expected utility rather than probability of improvement. More data improves the2048DEVprefix, but unchanged frozen16384DEV scores5.756621144versus parent5.756599087: loss0.000022058. Retain the parent recipe. First64source receipts and full DEVprefix reproduce exactly.
+
+Eight same-horizon probes isolate optimizer-memory effect: mean absolute utility change0.000003044nats/event, firstfutureforecasts identical. No preference reversals in those eight. This separates memory effects from longer scoring history; immediate/delayed preference differences are not attributed to moments.
+
+Concrete input repair: jointly permuted per-mode clock moments preserve pooled19context≤6.51e-19 yet future demands change up to0.072669and reverse signs. Fixed-cut diagnostic, not observed acquisition alias frequency. Next use typed native mode/route response receipts instead of hiding associations inside pooled statistics.
+
+One actor/critic, reusedTRAIN/DEV; source8192events/256additional alternative worlds,6144scoredtargets+4096refresh targets;2048own-gradient targets are within scored targets. Originalactor/parentacquisition, native/optimizer/teacherfitting work additional. No TEST/scaling/wholework/hardwareclaim. Existing three-critic quality and32target marketheadline unchanged.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
