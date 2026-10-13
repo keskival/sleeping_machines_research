@@ -1,0 +1,248 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "2m",
+  "rows": [
+    {
+      "pool": 4,
+      "targets": 2097088,
+      "unique_admitted_tokens": 2097152,
+      "prior_tokens": 262144,
+      "parameters": 3164842,
+      "selected_nll": 7.052153104894302,
+      "final_nll": 7.105850997625613,
+      "previous_final_nll": 7.263107239966299,
+      "final_learning_gain": 0.15725624234068647,
+      "acquisition_curve": [
+        {
+          "step": 0,
+          "targets": 0,
+          "dev_nll": 8.078814936619178
+        },
+        {
+          "step": 256,
+          "targets": 131072,
+          "dev_nll": 7.813235533471201
+        },
+        {
+          "step": 512,
+          "targets": 262136,
+          "dev_nll": 7.734948012408088
+        },
+        {
+          "step": 768,
+          "targets": 393208,
+          "dev_nll": 7.4322212967218135
+        },
+        {
+          "step": 1024,
+          "targets": 524272,
+          "dev_nll": 7.263107239966299
+        },
+        {
+          "step": 1280,
+          "targets": 655344,
+          "dev_nll": 7.346746108111213
+        },
+        {
+          "step": 1536,
+          "targets": 786408,
+          "dev_nll": 7.339194742838542
+        },
+        {
+          "step": 1792,
+          "targets": 917480,
+          "dev_nll": 7.199180453431373
+        },
+        {
+          "step": 2048,
+          "targets": 1048544,
+          "dev_nll": 7.165181836894914
+        },
+        {
+          "step": 2304,
+          "targets": 1179616,
+          "dev_nll": 7.113654043160233
+        },
+        {
+          "step": 2560,
+          "targets": 1310680,
+          "dev_nll": 7.1213998831954655
+        },
+        {
+          "step": 2816,
+          "targets": 1441752,
+          "dev_nll": 7.099662272135417
+        },
+        {
+          "step": 3072,
+          "targets": 1572816,
+          "dev_nll": 7.090279612821691
+        },
+        {
+          "step": 3328,
+          "targets": 1703888,
+          "dev_nll": 7.101107728247549
+        },
+        {
+          "step": 3584,
+          "targets": 1834952,
+          "dev_nll": 7.06648463828891
+        },
+        {
+          "step": 3840,
+          "targets": 1966024,
+          "dev_nll": 7.052153104894302
+        },
+        {
+          "step": 4096,
+          "targets": 2097088,
+          "dev_nll": 7.105850997625613
+        }
+      ],
+      "measured_nll_gain_per_data_doubling": 0.07862812117034323,
+      "training_s": 2295.023864287883,
+      "ms_per_target": 1.0943860554673353,
+      "max_rss_kb": 592956,
+      "exact_recorded_acquisition_prefix": true,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16
+    },
+    {
+      "pool": 8,
+      "targets": 2097088,
+      "unique_admitted_tokens": 2097152,
+      "prior_tokens": 262144,
+      "parameters": 3203674,
+      "selected_nll": 7.071015840418198,
+      "final_nll": 7.124350753484988,
+      "previous_final_nll": 7.281989482804841,
+      "final_learning_gain": 0.1576387293198529,
+      "acquisition_curve": [
+        {
+          "step": 0,
+          "targets": 0,
+          "dev_nll": 8.078814936619178
+        },
+        {
+          "step": 256,
+          "targets": 131072,
+          "dev_nll": 7.7732602586933215
+        },
+        {
+          "step": 512,
+          "targets": 262136,
+          "dev_nll": 7.742569388595282
+        },
+        {
+          "step": 768,
+          "targets": 393208,
+          "dev_nll": 7.387132711971508
+        },
+        {
+          "step": 1024,
+          "targets": 524272,
+          "dev_nll": 7.281989482804841
+        },
+        {
+          "step": 1280,
+          "targets": 655344,
+          "dev_nll": 7.327450262331495
+        },
+        {
+          "step": 1536,
+          "targets": 786408,
+          "dev_nll": 7.319082701439951
+        },
+        {
+          "step": 1792,
+          "targets": 917480,
+          "dev_nll": 7.232661467907476
+        },
+        {
+          "step": 2048,
+          "targets": 1048544,
+          "dev_nll": 7.207506247127758
+        },
+        {
+          "step": 2304,
+          "targets": 1179616,
+          "dev_nll": 7.163542504404106
+        },
+        {
+          "step": 2560,
+          "targets": 1310680,
+          "dev_nll": 7.175241507735907
+        },
+        {
+          "step": 2816,
+          "targets": 1441752,
+          "dev_nll": 7.115289186963848
+        },
+        {
+          "step": 3072,
+          "targets": 1572816,
+          "dev_nll": 7.088449036841299
+        },
+        {
+          "step": 3328,
+          "targets": 1703888,
+          "dev_nll": 7.115035950903799
+        },
+        {
+          "step": 3584,
+          "targets": 1834952,
+          "dev_nll": 7.104861031326593
+        },
+        {
+          "step": 3840,
+          "targets": 1966024,
+          "dev_nll": 7.071015840418198
+        },
+        {
+          "step": 4096,
+          "targets": 2097088,
+          "dev_nll": 7.124350753484988
+        }
+      ],
+      "measured_nll_gain_per_data_doubling": 0.07881936465992645,
+      "training_s": 2296.147438983666,
+      "ms_per_target": 1.0949218339829638,
+      "max_rss_kb": 597252,
+      "exact_recorded_acquisition_prefix": true,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 32
+    }
+  ],
+  "selected_pool": 4,
+  "continue_larger": true,
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s6_v1.json": "e7317479d1a590529e5b3762ec6287863e5d1aeb46f47d8105c4537525edf785",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_2m_pool4_20261012_s6_v1.json": "639ce59173165441b5a421a6efdaf66982936692ead1a81a33c64158500d38a0",
+    "experiments/results/token_language/aws_integrated_clock_capacity8_512k_20261012_s6_v1.json": "4d4409dbd827bf6e4d822b90ae2d13d89889e32cd6d58ca520dd244a6f0c1852",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_2m_pool8_20261012_s6_v1.json": "fcb47a3d108050cd1b422652f1b0da167809974e5445c4c05cea636b23a85026"
+  },
+  "source_sha256": {
+    "experiments/window_replay_token_language.py": "c0d0764435f781332f35572fa15f79ab15ca1b4fcfd6e9981b3ea8b6c076fe4c",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/capacity_clock_token_language.py": "057709942d6ac02be3a95349f924cc9ce3cf1b64425a64f27af2558b2d0eeadb",
+    "sleeping_machines/capacity_clock_episodes.py": "065740279e6bcb5c868cb2c7aa946704926740d6415358a2d6715756c176a504",
+    "experiments/analyze_fresh_scaling.py": "b63f3a9557c5d833a48bdcaf627edc7d47814bde5aae26bd12a774712acf0e57"
+  },
+  "scope": "Seed6 fixed-prior GPT2 FineWeb fresh-acquisition development. Same initial TRAIN262144-token prior, credit16, lane/block boundaries and DEV interval; every256 updates evaluated. Recorded earlier acquisition prefixes must agree exactly within each member. Final NLL is the acquisition-curve measure; selected NLL also shown with its increasing selection opportunities. NLL gain per data doubling is the measured interval slope, not a power-law exponent or an extrapolation. Pool-dependent initialization differs between members. Complete measured CPU fitting wall, all-key scoring and optimizer included. Public validation/reserved4M untouched; no fitted exponent or external-model comparison."
+}
