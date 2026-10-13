@@ -3104,6 +3104,20 @@ Native receiver update placement contract: three exact un-clipped Adam updates, 
 
 Bank storage {'parameter_bytes': 2249588, 'optimizer_bytes': 3699564, 'local_version_counters': 199, 'banks_by_placement': {'shared_interface_or_readout': 19, 'receiver_private': 176, 'head_shared': 4}}.
 
+Ordered token-gradient execution: whole-fit gatePASS, recorded learning curves exact, training time reduction12.88%. Single-seed same-source-core/data/settings own-model execution comparison. Entire recorded learning/teacher/gradient curves must match exactly except replay-work counters and wall time. Complete training wall includes factual learning, teacher replay, clipping and optimizer; no FLOP, energy, external-model or learned-estimator efficiency claim.
+
+| Implementation | Fit targets | Selected DEV NLL | Complete training seconds |
+| --- | --- | --- | --- |
+| Cached ordinary lookup | 131056 | 7.587435 | 138.557 |
+| Ordered gradient lookup | 131056 | 7.587435 | 120.705 |
+
+Same-learning ordered-gradient native-work comparison. Same8192-target integrated numerical trajectory/learner fingerprints, two instrumented implementations. Known scalar algorithms and registered matrix FLOPs have separate coverage and unknown operators remain explicit. Logical operand/output tensor exposures are not DRAM/ASIC wire traffic. Global clip/window backprop/dense Adam retained, same optimizer storage. Probe values are not extrapolated measured8M totals. Changed execution work is not a learned-credit replacement or silicon energy measurement.
+
+| Implementation | Targets | Registered GFLOPs | Declared scalar Gops | BP operand GB | BP output GB |
+| --- | --- | --- | --- | --- | --- |
+| original_lookup | 8192 | 8.067129 | 3.543396 | 23.051382 | 21.689106 |
+| ordered_lookup | 8192 | 8.067129 | 1.112144 | 22.901808 | 11.812904 |
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -6243,7 +6257,7 @@ Hardware-oriented arithmetic subtotal, two FLOPs/MAC; logical bank read/update-w
 
 An actual512-target prefix ledger charges own and remote temporal derivatives, native guidance, delayed future-utility teachers, actual Adam proposals, actor updates and global clipping. Every instrumented forecast/request matches uninstrumented replay and the saved longer-run prefix within1e-12. NumPy trace arithmetic is counted alongside Torch operators, rather than silently omitted.
 
-Continue combines measured required preparation with saved unchanged512-target deployment arithmetic; standalone controls omit controller preparation. Latest compact preparation is used when completed; TRAIN warmup normalized separately. Original5750.687s prefit/day warmup/setup outside boundary. Same32-target windows/actor/data; one reusedDEV prefix. Arithmetic uses explicit scalar/fused formula conventions; special-function evaluations, random sampling and scalar Python/math internals remain separate/unpriced. Logical operands/outputs are not physical traffic or energy.512-target whole probe is not multiplied into a measured16384/full-prefit total. Global clipping/window Adam remain; no complete ASIC supremacy from this ledger.
+Continue combines measured required preparation with saved512-target deployment arithmetic; standalone controls omit controller preparation. Latest compact preparation is used when completed; TRAIN warmup normalized separately. Online deployment here is the pre-factual-replay-reuse reference; the later teacher execution repair is reported separately. Original5750.687s prefit/day warmup/setup outside boundary. Same32-target windows/actor/data; one reusedDEV prefix. Arithmetic uses explicit scalar/fused formula conventions; special-function evaluations, random sampling and scalar Python/math internals remain separate/unpriced. Logical operands/outputs are not physical traffic or energy.512-target whole probe is not multiplied into a measured16384/full-prefit total. Global clipping/window Adam remain; no complete ASIC supremacy from this ledger.
 
 ### Eligibility credit feeds versioned local optimizer banks
 
@@ -6273,6 +6287,12 @@ Source-preparation contract only, not integrated whole-run savings: unaudited co
 Complete2048-target guidance preparation uses22.33%less declared arithmetic, saving228.223MFLOPs. Every16384deployment forecast and request is unchanged; actor parameters/Adam state match exactly, controller parameters within8.9e-16. Unaudited source windows use128own-clock trace floats instead of7280own-parameter floats; full endpoint gradients remain on audited windows.
 
 Executed Torch+NumPy arithmetic under unchanged before/after conventions, explicit frequency products included. Special functions and Python/math/random internals separately unpriced; logical access is not physical ASIC traffic. Exact actor BPTT remains during acquisition. This is a preparation-stage arithmetic saving at preserved learning/forecast quality, not a total-lifetime compute or hardware-energy win.
+
+### Observed forecasts teach native credit without factual replay
+
+All16384online forecasts/requests are preserved. 32teaching windows reuse the selected proposal's actual observed forecasts; future-world replays fall64to32, halving replayed targets2048to1024. Remaining alternate replay uses39.176MFLOPs under the declared conventions.
+
+Exact selected-proposal parameter and pre-window state identity checked before reuse. Acquisition still pays both future worlds because its actor uses exactBPTT instead of either endpoint. Native gradient teaching/proposals/optimizers and actor derivatives remain charged. This is online-teacher execution reuse, not whole-fitting or hardware-energy supremacy; nonlinear functions separate.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
