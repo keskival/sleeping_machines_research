@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/experiments/credit/check_native_token_future_world.py", line 80, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/experiments/credit/check_native_token_future_world.py", line 60, in main
+    moment_gap=sum(float((full.optimizer.state[p]['exp_avg']-alt.optimizer.state[q]['exp_avg']).square().sum())
+               ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   for p,q in zip(full.model.parameters(),alt.model.parameters()))**.5
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/experiments/credit/check_native_token_future_world.py", line 60, in <genexpr>
+    moment_gap=sum(float((full.optimizer.state[p]['exp_avg']-alt.optimizer.state[q]['exp_avg']).square().sum())
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'exp_avg'
