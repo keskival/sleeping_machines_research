@@ -3075,6 +3075,17 @@ Independent-seed fixed-prior acquisition confirmation. Independent seeds, same f
 | 7 | 7.275658 | 7.101752 | 6.620167 | +0.481585 | 9195.620 | 1.0962 |
 | 8 | 7.292635 | 7.160314 | 6.657107 | +0.503207 | 9333.730 | 1.1127 |
 
+Frozen acquired-learning transfer: paired gain+0.721743±0.008665. Frozen final weights, three seeds, unseen development interval at25165824,16contiguous2048-token panels. Each panel uses eight lanes and the original inference protocol/reset/RNG policy. Same panels within each acquired-state pair; original final DEV must reproduce exactly. Analytic TRAIN unigram uses smoothing0.1. Frozen-head zero-feature intervention diagnoses feature-dependent prediction, not persistent-history contribution alone; current content and history are both in the factual features. Acquisition gain decomposes exactly into zero-feature gain and increased feature-conditioned gain. Diagnostic wall includes factual inference and additional readout scoring, not inference-only latency. Panels are contiguous, not independent replicates; sample SD is across seeds. No fitting or checkpoint selection on the new interval. Public validation and reserved scaling protocol remain untouched; within-family acquired-data transfer, no external-model claim.
+
+| Seed | Acquisition | Scored targets | New DEV NLL | Zero-feature NLL | Feature gain |
+| --- | --- | --- | --- | --- | --- |
+| 6 | 512k | 32640 | 6.961008 | 7.879651 | +0.918643 |
+| 6 | 8m | 32640 | 6.233914 | 7.905452 | +1.671538 |
+| 7 | 512k | 32640 | 6.951467 | 7.881463 | +0.929996 |
+| 7 | 8m | 32640 | 6.239721 | 7.931188 | +1.691467 |
+| 8 | 512k | 32640 | 6.967604 | 7.883813 | +0.916210 |
+| 8 | 8m | 32640 | 6.241215 | 7.956859 | +1.715644 |
+
 Native training execution ledger:8192-target probe, exact learning/fingerprint parity. Complete operation ledger for the probe; other_unclassified includes setup and unwrapped learning/protocol operations, so declared fitting-phase FLOPs are a subtotal. Evaluation is separately labelled. Registry FLOPs omit unsupported elementwise/transcendental/indexing/optimizer work; never a complete FLOP total. Tensor input/output payload exposures are logical upper-style operand accounting, not measured memory reads, DRAM traffic or energy. Saved storage includes parameters and reused backing storage; it is referenced graph storage, not allocator peak. Semantic value/arrival bytes are declared float32/64 event payloads before placement/fanout/handshake costs; not measured wire traffic. Dense state masking/materialization remains in the operation ledger. Global clipping, batch Adam and reverse-mode graph remain; this is not clockless learning. Probe profiling overhead invalidates wall-speed comparisons.
 
 | Phase | Torch calls | Registered GFLOPs | Operand payload GB | Output payload GB |
