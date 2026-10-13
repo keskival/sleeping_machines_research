@@ -1,0 +1,167 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "acquisition": "512k",
+      "scored": {
+        "nll": 6.813951231374858,
+        "loss_sum": 55819.88848742284,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 28892.994344199076,
+          "zero_feature_loss_sum": 36142.690445661545,
+          "nll": 4.986709413910783,
+          "feature_gain": 1.2512419919679787,
+          "total_nll_contribution": 3.526976848657114,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 13174.067642331123,
+          "zero_feature_loss_sum": 13624.708322525024,
+          "nll": 9.957723085662225,
+          "feature_gain": 0.3406203176068791,
+          "total_nll_contribution": 1.6081625539954985,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 9859.013640403748,
+          "zero_feature_loss_sum": 10119.97853755951,
+          "nll": 12.60743432276694,
+          "feature_gain": 0.3337147022452196,
+          "total_nll_contribution": 1.203492876025848,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3893.8128604888916,
+          "zero_feature_loss_sum": 4278.850604057312,
+          "nll": 13.289463687675397,
+          "feature_gain": 1.3141219917010936,
+          "total_nll_contribution": 0.4753189526963979,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 1.554083338007331
+    },
+    {
+      "acquisition": "8m",
+      "scored": {
+        "nll": 6.160182666892041,
+        "loss_sum": 50464.2164071796,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 26497.938585877186,
+          "zero_feature_loss_sum": 39198.80069255829,
+          "nll": 4.573341143575628,
+          "feature_gain": 2.1920714716398177,
+          "total_nll_contribution": 3.234611643783836,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 11857.58931684494,
+          "zero_feature_loss_sum": 12968.410696029663,
+          "nll": 8.962652544856342,
+          "feature_gain": 0.8396231135183091,
+          "total_nll_contribution": 1.4474596334039234,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 8461.53164935112,
+          "zero_feature_loss_sum": 9205.522805213928,
+          "nll": 10.820372953134424,
+          "feature_gain": 0.9513953399780156,
+          "total_nll_contribution": 1.0329018126649316,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3647.1568551063538,
+          "zero_feature_loss_sum": 3859.118229866028,
+          "nll": 12.447634317769126,
+          "feature_gain": 0.723417661295816,
+          "total_nll_contribution": 0.4452095770393498,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 1.5608482279349118
+    }
+  ],
+  "source_sha256": {
+    "experiments/bernoulli_teacher_token_language.py": "85b82441775b74573db2ad86459443fca9d0fc0e3e40ac205a2c5fd652db8b45",
+    "sleeping_machines/ordered_token_lookup.py": "1e1e6039718336fc6bede77be5441cca08718a7e6a0ad58158f4eedbb6103ead",
+    "sleeping_machines/ordered_token_episodes.py": "5cf794f7c3fc5f45787f78d5a683ed733de18ddb58093b5780f19d00d99a2cff",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/check_language_error_buckets.py": "44e1d9efe9c39088d659ce25b23f88ab84ebdd5d2624754a806e2e8db5cc08c2",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "input_sha256": {
+    "experiments/results/diagnostics/aws_bernoulli_teacher_8m_20261013_s6_v2_quality_priority_v2.json": "b641a3ab012262300256b2c1ce4d5826c3335aadbd9b2dc80e0e74c8b987639b",
+    "experiments/results/token_language/aws_bernoulli_teacher_512k_20261013_s6_v1.json": "d102a54fadca8b974028288d75ef9a72de39da4a2dd1dbebc2120a095d5a0fec",
+    "experiments/results/token_language/aws_bernoulli_teacher_512k_20261013_s6_v1.pt": "dd26664386f924b45f7695d45e67ba1490ce0709043c8bb004310b05717e00ea",
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json": "61894367ac4da6efd50e8c65bc51e7adbd889e050d7c44a1489cd9f4199e48d6",
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.pt": "98c87cb8dcebc506ac0e967f9d899a791386507c27ed03cc923ab0784587eea5"
+  },
+  "scope": "Frozen final weights, seed6, same8192 previously used transfer-DEV tokens scored with disjoint1024-token histories and all shifted targets; no EOS reset, no public validation or checkpoint selection. Rank bins fitted from fixed initial TRAIN prior. Zero-feature intervention distinguishes readout intercepts from all factual input/state features, not persistent history alone. Tail widths are implementation capacity, not proof of a bottleneck. Diagnostic wall includes extra readout scoring; candidate repair requires integrated fitting comparison."
+}
