@@ -5,7 +5,7 @@ from continue_unique_language import ROOT,command
 from continue_window_replay import sha
 
 def main():
- queue.DEADLINE=time.monotonic()+4*3600;rows=[]
+ queue.DEADLINE=time.monotonic()+12*3600;rows=[]
  for name in ('off','128k','512k'):
   path=ROOT/f'experiments/results/diagnostics/aws_residual_credit_{name}_20261013_s6_v1_gate.json'
   d=queue.wait_result(path)
