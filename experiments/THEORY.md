@@ -444,3 +444,5 @@ Native update dependency validity: [local credit read sets and version stamps](t
 
 [Acquired history and data scaling](theory/ACQUIRED_HISTORY_AND_DATA_SCALING.md) derives the exact acquisition/history interaction and the conditional-information/excess-risk decomposition. Frozen-state R1 diagnostic distinguishes acquired input prediction from persistent-history reliance before extending the learning horizon.
 [Collapsed temporal credit transport](theory/COLLAPSED_TEMPORAL_CREDIT_TRANSPORT.md): fixed-version native clock adjoints collapse irregular elapsed histories without dense transition matrices; exact 2/8/32/128-event native derivative contracts pass. Direct state path only; endpoint VJPs, cross-layer writes and learner-state effects remain charged.
+
+[Causal teacher admission](theory/CAUSAL_TEACHER_ADMISSION.md) derives conditional unbiased admission, a cost/variance frontier and learned residual closure. R1 bounded probability1 parity then probability0.25 quality/work pipeline retains history, races and actual alternative-write teaching.
