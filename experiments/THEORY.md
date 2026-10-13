@@ -453,3 +453,5 @@ Native update dependency validity: [local credit read sets and version stamps](t
 [State refresh and actual update credit](theory/STATE_REFRESH_AND_ACTUAL_UPDATE_CREDIT.md): realized state paths distinguish prospective component MSE from useful clipped-Adam updates. Three initialized native critics improve matched-data online forecasts over exact eight-event factual BP; quality gains spend extra work. Full direct-parameter/optimizer/state teaching derivative specifies the next objective.
 
 [Random-ray forward credit teaching](theory/RANDOM_RAY_FORWARD_CREDIT_TEACHING.md): two-world conditional gradient identity and variance bound; one/two-ray acquisition fails to retain quality. Fixed-label reuse improves credit prediction, while actual-update utility selects the one-pass recipe.
+
+[Actual optimizer credit geometry](theory/ACTUAL_OPTIMIZER_CREDIT_GEOMETRY.md) derives stabilized global clipping plus diagonal Adam/moment cotangent transport and update-space credit risk. Reusable R1 numerical integration gate, retaining complete-vector synchronization and whole-learner future demands; no new critic fit.
