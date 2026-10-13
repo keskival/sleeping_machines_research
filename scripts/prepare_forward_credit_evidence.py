@@ -149,6 +149,14 @@ def main():
         for source,digest in record['source_sha256'].items():assert sha(ROOT/source)==digest,source
         parents[str(path.relative_to(ROOT))]=sha(path);early_credit[tag]=record
     packet['native_early_credit_activity']=early_credit
+    executed_credit={}
+    for tag in ['curie_b10_complete_work_20261013_v2_probe','curie_b10_actor_boundary_20261013_v1','curie_b10_local_banks_20261013_v1_contract','curie_b10_clock_context_20261013_v1_contract']:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for source,digest in record['source_sha256'].items():assert sha(ROOT/source)==digest,source
+        parents[str(path.relative_to(ROOT))]=sha(path);executed_credit[tag]=record
+    packet['native_executed_learning_work']=executed_credit
     repeated=ROOT/'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json'
     if repeated.exists():
         record=json.loads(repeated.read_text());assert record['status']=='completed'

@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "exact_actor_gradient_max_error": 0.0,
+      "own_clock_projection_max_error": 5.551115123125783e-17,
+      "forecast_max_error": 0.0
+    },
+    {
+      "block": 1,
+      "exact_actor_gradient_max_error": 0.0,
+      "own_clock_projection_max_error": 5.204170427930421e-17,
+      "forecast_max_error": 0.0
+    },
+    {
+      "block": 2,
+      "exact_actor_gradient_max_error": 0.0,
+      "own_clock_projection_max_error": 2.3418766925686896e-17,
+      "forecast_max_error": 0.0
+    }
+  ],
+  "clock_context_trace_floats": 128,
+  "original_own_trace_floats": 7280,
+  "targets": 96,
+  "actual_actor_updates": 3,
+  "source_sha256": {
+    "experiments/credit/market_clock_context_contract.py": "87e543cafb9e3555c6491b273b632d6828819275d4b4ee49b0436b3b083f055d",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+    "experiments/credit/local_clock_eligibility.py": "6f22f3b2bfa17152f7f888eae4bfd97246493ae94628e50cd5f8fa4b6fff315f"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "scope": "Exact actor BPTT acquisition plus128float factorized own-clock context traces replaces need for7280float own-parameter bank on unaudited source windows only. Current-event state cotangents retain factual graph; actual32target updates and four ownclock projections compared with frozen implementations. Source BPTT graph is still retained; proposed teacher/source execution repair, not deployment replacement, complete-work saving or new forecast-quality claim. Audited proposal windows still need full own/projected endpoints."
+}

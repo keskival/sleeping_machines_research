@@ -1,0 +1,59 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "credit": "own",
+      "updates": 3,
+      "parameter_max_errors": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bank_packets": 129,
+      "gradient_payload_bytes": 435936,
+      "stale_packet_rejected": true,
+      "storage": {
+        "parameter_bytes": 145312,
+        "optimizer_bytes": 290968,
+        "local_version_counters": 43
+      },
+      "global_clip_calls": 3,
+      "within_window_history_backprop": false,
+      "bank_application_order": "reverse named parameter order"
+    },
+    {
+      "credit": "projected",
+      "updates": 3,
+      "parameter_max_errors": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bank_packets": 129,
+      "gradient_payload_bytes": 435936,
+      "stale_packet_rejected": true,
+      "storage": {
+        "parameter_bytes": 145312,
+        "optimizer_bytes": 290968,
+        "local_version_counters": 43
+      },
+      "global_clip_calls": 3,
+      "within_window_history_backprop": false,
+      "bank_application_order": "reverse named parameter order"
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_local_bank_contract.py": "9136b4a0d3e0ff70a1b93c973465efbffe65cdd72002bbd0f26ac014f689bf79",
+    "sleeping_machines/learning/local_credit_banks.py": "8a6ed1edff0f675f61e9451fe380a9a501dc43c1d4c1e58c104990b07c3184af",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f"
+  },
+  "scope": "Real TRAIN market actor gradients from own/projected temporal eligibility, no window-history graph. Three8target updates per endpoint, fresh Adam states; AdamW bank weight_decay0. Global norm clipping and common parameter/window issuance remain. Reordered bank application matches ordinary Adam after all packets delivered; strict stale rejection. Forecast still waits for completed parameter version. This is credit/update compatibility, not a fully asynchronous optimizer, local clipping policy, quality or hardware efficiency win."
+}

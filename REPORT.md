@@ -5622,6 +5622,17 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
+### Connected prospective mean-credit intervention
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 10.571007 | 166.303 |
+| market | frozen | 10.576801 | 80.597 |
+| market | zero | 10.548777 | 75.552 |
+| market | bptt | 10.546759 | 93.907 |
+
+Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
+
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -6201,6 +6212,36 @@ Common exact2048TRAIN actor acquisition plus alternating native utility audits: 
 Early online native guidance improves forecasts over own traces (5.737456vs5.737492) and always-on projected credit (5.737697), computing257of512remote banks. Remote matrix work falls49.8%:1.762to0.884GFLOPs, with at least5.745million fewer bank read/write scalar accesses. The completed post-window controller5.737391remains the quality leader.
 
 Hardware-oriented arithmetic subtotal, two FLOPs/MAC; logical bank read/update-write lower bound, not DRAM traffic.352current/352previous remote floats, in addition to own traces. Common acquisition remote-matrix work0.148GFLOPs additionally charged to every arm. Native8192key scores/4352online value proposals and32future utility teachers are added work. Actor/own traces, native arithmetic/history, elementwise/special functions, optimizer/proposals and physical cache traffic are outside this subtotal; no total-work or energy win. Native races require local arrival joins, not a global periodic clock; prototype learning still has32-target gradient/norm/Adam boundaries. Current controller key_read runs per candidate; the separately validated cached-key evaluator cannot be credited here without integration.
+
+### Executed market-learning work: Torch and NumPy together
+
+| Rule | NLL | Reuse MFLOPs | kFLOPs/target | Continue MFLOPs | Banks |
+| --- | --- | --- | --- | --- | --- |
+| own | 6.091852190 | 112.939 | 220.583 | 401.911 | 0 |
+| projected | 6.091841356 | 184.578 | 360.504 | 473.551 | 16 |
+| frozen | 6.091851915 | 131.700 | 257.226 | 1153.577 | 4 |
+| online | 6.091851979 | 148.441 | 289.924 | 1170.319 | 7 |
+
+An actual512-target prefix ledger charges own and remote temporal derivatives, native guidance, delayed future-utility teachers, actual Adam proposals, actor updates and global clipping. Every instrumented forecast/request matches uninstrumented replay and the saved longer-run prefix within1e-12. NumPy trace arithmetic is counted alongside Torch operators, rather than silently omitted.
+
+Continue charges actor-only preparation to standalone controls and actor-plus-guidance preparation to native arms; TRAIN warmup normalized separately. Original5750.687s prefit/day warmup/setup outside boundary. Same32-target windows/actor/data; one reusedDEV prefix. Arithmetic uses explicit scalar/fused formula conventions; special-function evaluations, random sampling and scalar Python/math internals remain separate/unpriced. Logical operands/outputs are not physical traffic or energy.512-target whole probe is not multiplied into a measured16384/full-prefit total. Global clipping/window Adam remain; no complete ASIC supremacy from this ledger.
+
+### Eligibility credit feeds versioned local optimizer banks
+
+| Credit | Updates | Parameter error | Packets | Gradient bytes | Stale rejected |
+| --- | --- | --- | --- | --- | --- |
+| own | 3 | 0.00e+00 | 129 | 435936 | True |
+| projected | 3 | 0.00e+00 | 129 | 435936 | True |
+
+Actual market own/projected eligibility gradients feed the shared local-bank implementation. Reversing final-credit packet delivery preserves ordinary Adam endpoints while stale packets are rejected. Historical event graphs are released by the credit generator; each bank owns its moments and version.
+
+Three8-target TRAIN updates per endpoint, fresh moments, AdamW bank weight_decay0. Global norm clipping and common window/parameter issuance remain; prediction waits for all version packets. Update-application compatibility, not local-clipping quality or fully clockless learning. Shared leaves require canonical ownership and aggregation.
+
+### Compact own-clock context preserves exact acquisition
+
+128own-clock trace floats reproduce the four context summaries previously extracted from7280own-parameter trace floats. Across three32-target actual actor updates, forecasts and exact actor gradients have0error; maximum context projection discrepancy5.551e-17.
+
+Source-preparation contract only, not integrated whole-run savings: unaudited controller frames need four summaries, while audited proposal frames retain full own/projected endpoints. Current-event state cotangents and exact actor BPTT graph remain. This reduces a trace bank on eligible source windows, not peak full-model memory or deployment quality.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
