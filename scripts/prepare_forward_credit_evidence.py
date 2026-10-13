@@ -105,7 +105,7 @@ def main():
         market_runs.append(dict(tag=tag,rows=[{k:v for k,v in row.items() if k in ['arm','nll','targets','wall_s','audits','future_teachers','critic_parameter_max_change']} for row in record['rows']],online_gain=record['online_gain'],acquisition_wall_s=record['acquisition']['wall_s'],scope=record['scope'],zero_arm_interpretation='Zero predictor with residual audits, not local-only' if 'native_ttt' in tag else 'Genuine local-only'))
     packet['native_market_online_learning']=market_runs
     eligibility=[]
-    for tag in ['curie_b10_local_clock_20261012_v1_contract','curie_b10_leg_eligibility_20261012_v1_contract']:
+    for tag in ['curie_b10_local_clock_20261012_v1_contract','curie_b10_leg_eligibility_20261012_v1_contract','curie_b10_projected_clock_20261013_v1_contract']:
         path=ROOT/f'experiments/results/market/{tag}.json'
         if not path.exists():continue
         record=json.loads(path.read_text());assert record['status']=='completed'

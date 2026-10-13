@@ -3059,6 +3059,14 @@ Fixed-prior fresh-acquisition scaling. Seed6 fixed-prior GPT2 FineWeb fresh-acqu
 
 Evidence aws_fresh_scaling_2m_decision_20261012_v1.
 
+Fixed-prior fresh-acquisition scaling. Seed6 fixed-prior GPT2 FineWeb fresh-acquisition development. Same initial TRAIN262144-token prior, credit16, lane/block boundaries and DEV interval; every256 updates evaluated. Recorded earlier acquisition prefixes must agree exactly within each member. Final NLL is the acquisition-curve measure; selected NLL also shown with its increasing selection opportunities. NLL gain per data doubling is the measured interval slope, not a power-law exponent or an extrapolation. Pool-dependent initialization differs between members. Complete measured CPU fitting wall, all-key scoring and optimizer included. Public validation/reserved4M untouched; no fitted exponent or external-model comparison.
+
+| Pool | Fit targets | Selected NLL | Final NLL | Train seconds | ms/target | Writes/target | Keys/target |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 4 | 8388352 | 6.620663 | 6.620663 | 9128.563 | 1.0882 | 4 | 16 |
+
+Evidence aws_fresh_scaling_8m_decision_20261012_v1.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -6060,6 +6068,19 @@ Primitive fixed-parameter, fixed-input temporal-leg own-gradient equality agains
 The restored full18,164-parameter actor preserves every scored forecast through128TRAIN events. Streaming event-local derivatives plus factorized traces recover exact addressed-memory/readout gradients; cross-leg historical effects remain an explicit target for learned credit.
 
 7280 own-eligibility floats plus7280 history-projection workspace floats, fixed across these sequence lengths. Parameter snapshots, gradients, numerical state and current frame are additional. Every parameter gradient matches at1event; remote graph cuts produce the reported complete-gradient differences at longer histories. Serial NumPy observer correctness prototype, no trained-quality, whole-model-exactness, timing or measured RSS advantage claim.
+
+### Exact shared-path clock projections
+
+| Events | Score error | Projection error | Residual gap |
+| --- | --- | --- | --- |
+| 1 | 0.0e+00 | 0.00e+00 | 0.000000 |
+| 8 | 0.0e+00 | 3.47e-18 | 0.043339 |
+| 32 | 0.0e+00 | 1.67e-16 | 0.212687 |
+| 128 | 0.0e+00 | 2.08e-17 | 0.103806 |
+
+Four clock directions carry sensitivities through both temporal layers and addressed memory. Their gradient projections match full BPTT through128TRAIN events while all forecasts remain identical; historical event graphs are released.
+
+352 projected trace floats plus352 previous-sensitivity snapshot floats and operator workspace, in addition to existing7280 own and7280 historical trace floats. Fixed parameters/basis within each window; no trained direction selection, Adam-step parity, speed or quality claim. Remaining gradient components are approximate; raw projected gradient equality does not imply equality after coordinatewise Adam.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
