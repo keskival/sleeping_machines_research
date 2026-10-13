@@ -191,7 +191,7 @@ def blocks():
         c=json.loads(transfer.read_text());assert c['status']=='completed'
         for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
             assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
-        rows=[[str(r['seed']),r['acquisition'],str(r['scored_targets']),f"{r['transfer_nll']:.6f}",f"{r['inference_s']:.3f}"] for r in c['rows']]
+        rows=[[str(r['seed']),r['acquisition'],str(r['scored_targets']),f"{r['transfer_nll']:.6f}",f"{r['zero_feature_nll']:.6f}",f"{r['feature_conditioned_gain']:+.6f}"] for r in c['rows']]
         result.extend([('p',f"Frozen acquired-learning transfer: paired gain{c['paired_gain_mean']:+.6f}±{c['paired_gain_sd']:.6f}. "+c['scope']),
-            ('table',(['Seed','Acquisition','Scored targets','New DEV NLL','Inference seconds'],rows,[16,32,40,40,40]))])
+            ('table',(['Seed','Acquisition','Scored targets','New DEV NLL','Zero-feature NLL','Feature gain'],rows,[16,28,32,32,32,32]))])
     return result

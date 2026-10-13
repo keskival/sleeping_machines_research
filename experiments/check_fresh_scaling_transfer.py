@@ -44,21 +44,45 @@ def main():
             original=driver.evaluate(model,driver.interval_tensor(dev,args.dev_offset,args.dev_tokens,args.eval_lanes),args)
             assert original==r['curve'][-1]['dev_nll'],'Saved final-weight DEV does not reproduce'
             start=time.monotonic()
-            scores=[driver.evaluate(model,driver.interval_tensor(dev,offset+i*tokens,tokens,args.eval_lanes),args) for i in range(panels)]
+            scores=[];bias_scores=[];prior_scores=[]
+            log_prior=(counts.double()+.1).log()-(counts.double().sum()+.1*len(counts)).log()
+            for i in range(panels):
+                data=driver.interval_tensor(dev,offset+i*tokens,tokens,args.eval_lanes)
+                # Same factual pass, frozen head; intervening at its input adds
+                # no route RNG draws and does not change the factual features.
+                real_nll=model.readout.nll;bias_losses=[]
+                def audited_nll(features,targets):
+                    bias_losses.append(float(real_nll(torch.zeros_like(features),targets).sum()))
+                    return real_nll(features,targets)
+                model.readout.nll=audited_nll
+                try:scores.append(driver.evaluate(model,data,args))
+                finally:model.readout.nll=real_nll
+                scored=data.shape[0]*(data.shape[1]-1)
+                bias_scores.append(sum(bias_losses)/scored)
+                prior_scores.append(float(-log_prior[data[:,1:]].mean()))
             values.append(scores)
             rows.append(dict(seed=seed,acquisition=size,targets=r['presentations_total'],final_original_dev_nll=original,
-                transfer_nll=statistics.mean(scores),panel_nll=scores,inference_s=time.monotonic()-start,
+                transfer_nll=statistics.mean(scores),panel_nll=scores,
+                zero_feature_nll=statistics.mean(bias_scores),panel_zero_feature_nll=bias_scores,
+                analytic_train_unigram_nll=statistics.mean(prior_scores),
+                feature_conditioned_gain=statistics.mean(bias_scores)-statistics.mean(scores),
+                inference_and_readout_diagnostics_s=time.monotonic()-start,
                 scored_targets=panels*(tokens-args.eval_lanes),training_s=r['train_wall_s_total']))
         gains=[x-y for x,y in zip(*values)]
         print(json.dumps(dict(seed=seed,paired_transfer_gain=statistics.mean(gains))),flush=True)
     paired=[dict(seed=seed,gain=next(r['transfer_nll'] for r in rows if r['seed']==seed and r['acquisition']=='512k')-
         next(r['transfer_nll'] for r in rows if r['seed']==seed and r['acquisition']=='8m')) for seed in (6,7,8)]
+    for pair in paired:
+        before,after=[next(r for r in rows if r['seed']==pair['seed'] and r['acquisition']==size) for size in ('512k','8m')]
+        pair['zero_feature_gain']=before['zero_feature_nll']-after['zero_feature_nll']
+        pair['feature_gain_increase']=after['feature_conditioned_gain']-before['feature_conditioned_gain']
+        assert abs(pair['gain']-pair['zero_feature_gain']-pair['feature_gain_increase'])<1e-12
     source=str(Path(__file__).relative_to(ROOT));sources[source]=driver.sha(Path(__file__))
     result=dict(status='completed',battle='R1',rows=rows,paired_gains=paired,
         paired_gain_mean=statistics.mean(r['gain'] for r in paired),paired_gain_sd=statistics.stdev(r['gain'] for r in paired),
         interval=dict(offset=offset,tokens=panels*tokens,panels=panels,scored_targets=panels*(tokens-8)),
         source_sha256=sources,input_sha256=inputs,
-        scope='Frozen final weights, three seeds, unseen development interval at25165824,16contiguous2048-token panels. Each panel uses eight lanes and the original inference protocol/reset/RNG policy. Same panels within each acquired-state pair; original final DEV must reproduce exactly. Panels are contiguous, not independent replicates; sample SD is across seeds. No fitting or checkpoint selection on the new interval. Public validation and reserved scaling protocol remain untouched; within-family acquired-data transfer, no external-model claim.')
+        scope='Frozen final weights, three seeds, unseen development interval at25165824,16contiguous2048-token panels. Each panel uses eight lanes and the original inference protocol/reset/RNG policy. Same panels within each acquired-state pair; original final DEV must reproduce exactly. Analytic TRAIN unigram uses smoothing0.1. Frozen-head zero-feature intervention diagnoses feature-dependent prediction, not persistent-history contribution alone; current content and history are both in the factual features. Acquisition gain decomposes exactly into zero-feature gain and increased feature-conditioned gain. Diagnostic wall includes factual inference and additional readout scoring, not inference-only latency. Panels are contiguous, not independent replicates; sample SD is across seeds. No fitting or checkpoint selection on the new interval. Public validation and reserved scaling protocol remain untouched; within-family acquired-data transfer, no external-model claim.')
     with (ROOT/f'experiments/results/diagnostics/{a.tag}.json').open('x') as f:json.dump(result,f,indent=2);f.write('\n')
 
 
