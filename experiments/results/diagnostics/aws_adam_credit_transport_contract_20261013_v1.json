@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "gate": "PASS",
+  "rows": [
+    {
+      "size": 4,
+      "amplitude": 0.01,
+      "step": 1,
+      "clipped": false,
+      "maximum_error": 1.0408340855860843e-17
+    },
+    {
+      "size": 4,
+      "amplitude": 0.01,
+      "step": 13,
+      "clipped": false,
+      "maximum_error": 1.0408340855860843e-17
+    },
+    {
+      "size": 4,
+      "amplitude": 3.0,
+      "step": 1,
+      "clipped": true,
+      "maximum_error": 8.673617379884035e-19
+    },
+    {
+      "size": 4,
+      "amplitude": 3.0,
+      "step": 13,
+      "clipped": true,
+      "maximum_error": 1.734723475976807e-18
+    },
+    {
+      "size": 17,
+      "amplitude": 0.01,
+      "step": 1,
+      "clipped": false,
+      "maximum_error": 1.0408340855860843e-17
+    },
+    {
+      "size": 17,
+      "amplitude": 0.01,
+      "step": 13,
+      "clipped": false,
+      "maximum_error": 1.0408340855860843e-17
+    },
+    {
+      "size": 17,
+      "amplitude": 3.0,
+      "step": 1,
+      "clipped": true,
+      "maximum_error": 8.673617379884035e-19
+    },
+    {
+      "size": 17,
+      "amplitude": 3.0,
+      "step": 13,
+      "clipped": true,
+      "maximum_error": 1.3010426069826053e-18
+    }
+  ],
+  "untouched_coordinate_limit": true,
+  "source_sha256": {
+    "experiments/credit/check_adam_credit_transport.py": "43da443273c6f0307c75b917fc07f1e3c901d7aab7437fa135e205d3169e7281",
+    "sleeping_machines/learning/adam_credit_transport.py": "1381918e3f93269b4b6f5bdce7926833e3d584308b67c8a6c1193a1a0c87ff85",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scope": "Float64 fixed-version clip/AdamW gradient cotangent, with parameter and first/second-moment future demands. Dense autograd proposal audit includes clipping on/off and steps1/13; weight decay has zero derivative wrt gradient at fixed parameter. No fitted critic, forecast-quality or whole-work claim. Global clip needs a complete-vector contraction; subsequent optimizer/state paths require their own cotangents."
+}
