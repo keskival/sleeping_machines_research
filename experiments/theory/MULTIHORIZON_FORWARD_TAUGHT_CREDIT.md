@@ -186,3 +186,52 @@ The updated receipt helper accepts a known supported completion probability.
 The finite R1 contract enumerates completed and uncompleted outcomes rather
 than claiming unbiasedness from a sample average. This algebra gate cannot
 certify real resource-kill propensities or native rollout coupling.
+
+## 10. Preserve the objective while changing the audit resolution
+
+`credit/nested_horizon_audit.py` records caller-produced paired prequential
+losses in one contiguous stream. It freezes the terminal weights at issue,
+checks common observation and issued-world/version identity, captures the lower
+boundary and accumulates to the selected upper boundary with compensated sums.
+Incomplete streams cannot return completed corrections. Rejected observations
+leave the ledger unchanged. The ledger retains constant scalar accumulation
+state plus O(H_K) explicit objective weights, not a trajectory of activations.
+Actor, optimizer and native-memory snapshots are separate paid storage. This
+component records outcomes; it does not recompute native gradients or prove
+that the supplied worlds follow their declared learning policy.
+
+Audit resolution and the learning objective are different choices. For any
+partition 0=H_-1<H_0<...<H_K with the same terminal outcome and weights,
+telescoping still gives V_HK. Merging adjacent residual blocks replaces R_j and
+R_(j+1) by their sum; the terminal mean is unchanged while variance and audit
+cost change. For random worlds,
+
+    E[(R_j+R_(j+1))^2] = v_j + v_(j+1) + 2 E[R_j R_(j+1)].
+
+Thus positively correlated errors can make a merged block expensive; opposite
+errors can cancel. Earlier TRAIN receipts can inform a future partition, but
+the current unseen residual must not choose its own partition without a new
+selection correction. Coarsening the ladder is not the same as shortening the
+terminal horizon, discounting late outcomes more heavily, or replacing weighted
+sums with per-horizon means. Those changes alter what the learner values.
+
+For implementation error analysis, suppose supplied paired differences differ
+from the declared learner-world differences by epsilon_k. Then
+
+    |V_tilde_H - V_H| <= sum_(k<=H) w_k |epsilon_k|.
+
+The sampled-block correction amplifies its local label error by1/(q_j s_j).
+Perfect receipt algebra cannot repair a frozen-gradient alternative world,
+mispaired corpus slice or changed objective. The next native integration gate
+must compare each world's own gradients/moments/state evolution to an explicit
+uncached replay, then test nested prefix equality under shared observations
+and paired RNG. It must charge both worlds' complete learning work. This is
+the concrete boundary between a correct recording interface and actual
+forward-taught long-horizon learning.
+
+The source-bound R1 nested-stream contract completed through guarded AWS slot3
+(`results/credit/aws_nested_horizon_audit_contract_20261013_v1.json`): terminal
+mean error4.44e-16, six invalid-stream checksPASS, peakRSS20,476KB. Its fixed
+paired losses give nested advantages-2.5,-0.5,+3.5, demonstrating that the ledger
+retains a sign-reversing consequence rather than selecting on the early prefix.
+This is a recording/algebra contract, not a native learner rollout or quality win.
