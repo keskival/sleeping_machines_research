@@ -18,11 +18,11 @@ Our development scores use2040 targets from offset20971520, eight lane streams a
 
 ## Registered larger-data promotion
 
-The probability0.25 importance-weighted teacher pilot improves final development NLL by0.076848 at131056 targets, with3.60% less complete CPU training time. Before promotion, complete unchanged seeds6/7/8 at131056 and524272 targets. Each quality/work gate requires final DEV degradation≤0.01nats and less complete training time. Mean final quality must improve at both sizes.
+The probability0.25 importance-weighted teacher pilot improves final development NLL by0.076848 at131056 targets, with3.60% less complete CPU training time. Before promotion, complete unchanged seeds6/7/8 at131056 and524272 targets. Original strict-wall gates stopped at seed8, whose128k fit improves0.055871nats while taking0.03% more time. User13October accepts this tradeoff. Revised promotion requires≥0.01nats finalDEV improvement with≤1% extra complete CPU time; negative time savings are reported as time increases. Complete missing512kseed8, then2M→8M through the revised gates. Original raw strict receipts are preserved.
 
 Only then admit the same retained P24D2H2U4/credit16 member at2097088 targets (4096 updates), seed6, against the saved full-teaching2M result. Admit8388352 targets (16384 updates) only after that larger gate passes. Use immutable `bernoulli_teacher_token_language.py`, probability0.25, identical fixed TRAIN prior and fresh-data blocks, proper GPT2 tokens, the same evaluation cadence and the same final-checkpoint rule. Preserve all raw results; record actual teacher calls, replayed tokens and suffix scored targets alongside whole-fit training time. Full factual windowBP and denseAdam remain charged.
 
-This tests whether the new quality/work improvement survives increased acquisition. It is not a substitute for the public score. If the gate fails, diagnose teacher variance, clipping and optimizer response before another fit; do not blindly enlarge data or tune on public validation. Controller `scripts/continue_bernoulli_scaling.py`, one R1 CPU job in AWS slot2, run_safe, one thread, RSS1.5GB,≥8GiB MemAvailable, 5400s2M/14400s8M timeout, bounded10h continuation. No new dense controls.
+This tests whether the new quality/work improvement survives increased acquisition. It is not a substitute for the public score. If the gate fails, diagnose teacher variance, clipping and optimizer response before another fit; do not blindly enlarge data or tune on public validation. Controller `scripts/continue_teacher_quality_priority.py`, one R1 CPU job in AWS slot2, run_safe, one thread, RSS1.5GB,≥8GiB MemAvailable, 5400s2M/14400s8M timeout, bounded10h continuation. No new dense controls.
 
 ## Implemented scoring boundary
 
