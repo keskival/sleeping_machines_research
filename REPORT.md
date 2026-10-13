@@ -2,7 +2,7 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 12 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 13 October 2026
 
 ## Public benchmark record — 9 October 2026
 
@@ -3049,6 +3049,15 @@ Capacity-clock calibration. First-pass seed6 own-model development at two acquir
 | window_replay | 524272 | 7.263107 | 7.263107 | 559.974 | 1.0681 | 4 | 16 |
 | capacity8 | 524272 | 7.293910 | 7.293910 | 564.826 | 1.0774 | 4 | 32 |
 | clock_capacity8 | 524272 | 7.281989 | 7.281989 | 564.324 | 1.0764 | 4 | 32 |
+
+Fixed-prior fresh-acquisition scaling. Seed6 fixed-prior GPT2 FineWeb fresh-acquisition development. Same initial TRAIN262144-token prior, credit16, lane/block boundaries and DEV interval; every256 updates evaluated. Recorded earlier acquisition prefixes must agree exactly within each member. Final NLL is the acquisition-curve measure; selected NLL also shown with its increasing selection opportunities. NLL gain per data doubling is the measured interval slope, not a power-law exponent or an extrapolation. Pool-dependent initialization differs between members. Complete measured CPU fitting wall, all-key scoring and optimizer included. Public validation/reserved4M untouched; no fitted exponent or external-model comparison.
+
+| Pool | Fit targets | Selected NLL | Final NLL | Train seconds | ms/target | Writes/target | Keys/target |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 4 | 2097088 | 7.052153 | 7.105851 | 2295.024 | 1.0944 | 4 | 16 |
+| 8 | 2097088 | 7.071016 | 7.124351 | 2296.147 | 1.0949 | 4 | 32 |
+
+Evidence aws_fresh_scaling_2m_decision_20261012_v1.
 
 ## FAS native frozen-recipe replication
 
