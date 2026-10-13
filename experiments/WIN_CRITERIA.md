@@ -49,7 +49,7 @@ banknote: fixed selection opportunities. All three are first-pass variants).
 ## Maturity gate (added 6 October; VALUE_PLAN.md)
 
 No official, public or investor-table comparison is run until validation (development) evidence predicts a win with
-margin, on the same protocol and at matched compute. Draft-stage results are development notes, not win/loss
+margin, on the same data/scoring protocol. Quality and data-efficiency comparisons may spend more compute (user direction13October); charge it and reserve matched-compute language for the audited matched boundary. Draft-stage results are development notes, not win/loss
 verdicts. Official one-shot protocols (repeat sets, held-out sessions, test files) are scarce assets: spend them only
 on a configuration expected to win.
 

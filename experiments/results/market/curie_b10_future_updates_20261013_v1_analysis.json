@@ -1,0 +1,117 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "quality": [
+    {
+      "arm": "own_carry",
+      "targets": 16384,
+      "updates": 1024,
+      "nll": 5.75686288549069,
+      "future_nll": 5.830021473127241,
+      "causal_refresh_targets": 0,
+      "wall_s": 55.722635108977556
+    },
+    {
+      "arm": "own_refresh",
+      "targets": 16384,
+      "updates": 1024,
+      "nll": 5.756963280530174,
+      "future_nll": 5.830228927288358,
+      "causal_refresh_targets": 8192,
+      "wall_s": 60.88786379399244
+    },
+    {
+      "arm": "learned_refresh",
+      "targets": 16384,
+      "updates": 1024,
+      "nll": 5.756599086649787,
+      "future_nll": 5.82988376183716,
+      "causal_refresh_targets": 8192,
+      "wall_s": 65.8414823730127
+    }
+  ],
+  "learned_gain_vs_matched": 0.0003641938803866651,
+  "learned_future_gain_vs_matched": 0.000345165451197893,
+  "additional_controls": [
+    {
+      "arm": "train_mean_refresh",
+      "nll": 5.756874829942109,
+      "future_nll": 5.830071087276108,
+      "causal_refresh_targets": 8192,
+      "wall_s": 57.94997907301877
+    },
+    {
+      "arm": "signed_native_refresh",
+      "nll": 5.7568188724026035,
+      "future_nll": 5.830036857044307,
+      "causal_refresh_targets": 8192,
+      "wall_s": 63.61490142502589
+    }
+  ],
+  "learned_gains_vs_controls": {
+    "train_mean_refresh": 0.00027574329232127326,
+    "signed_native_refresh": 0.00021978575281611512
+  },
+  "prefix_exact_error": {
+    "own_carry": 0.0,
+    "own_refresh": 0.0,
+    "learned_refresh": 0.0
+  },
+  "chronological_quarters": [
+    {
+      "start_frame": 0,
+      "end_frame": 256,
+      "learned_nll": 6.979243857016262,
+      "matched_nll": 6.979238513849851,
+      "matched_minus_learned": -5.343166410654021e-06
+    },
+    {
+      "start_frame": 256,
+      "end_frame": 512,
+      "learned_nll": 5.724128028900395,
+      "matched_nll": 5.724231729811462,
+      "matched_minus_learned": 0.00010370091106715051
+    },
+    {
+      "start_frame": 512,
+      "end_frame": 768,
+      "learned_nll": 5.217054477982025,
+      "matched_nll": 5.217136587756572,
+      "matched_minus_learned": 8.210977454758961e-05
+    },
+    {
+      "start_frame": 768,
+      "end_frame": 1024,
+      "learned_nll": 5.105969982700467,
+      "matched_nll": 5.107246290702811,
+      "matched_minus_learned": 0.0012763080023443507
+    }
+  ],
+  "work512": [
+    {
+      "arm": "own_carry",
+      "covered_arithmetic_flops": 77604555,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "own_refresh",
+      "covered_arithmetic_flops": 87284427,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "learned_refresh",
+      "covered_arithmetic_flops": 88998519,
+      "saved512target_parity_error": 0.0
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit.json": "5c755c165af9d31d4fb865f3bf2207630afce2f2bad7667dfcea636137c510cf",
+    "experiments/results/market/curie_b10_future_updates_20261013_v2_long.json": "7028098cec3ab96febb165232f4a47a22cd837a6863e1f2137229b19210cf00e",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_work.json": "437b2798dd096d3c30fd1c417353eed242dadb75000ab160cc50a293372d7cc7",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_controls.json": "b64103a2381be34bbc9d13f01fb103be27b47960908b1278b95aef72050cd5be"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_market_future_updates.py": "a9b9a9d67945e47186deec9b3748aaa300c5aaccf8e31452858bf98364d011cf"
+  },
+  "scope": "One acquired critic/actor initialization, reused16384chronological DEVtargets, new producer8/future8 protocol. Compared against matched own-refresh/carry controls; source and512work additionally paid. Work512includes warmup/declared covered kernels, is not a full16384measurement or acquisition/energy total. Current market32target headline unchanged; no sealedTEST/public benchmark/profit claim."
+}

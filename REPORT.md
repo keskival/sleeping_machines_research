@@ -5666,6 +5666,17 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
+### Connected prospective mean-credit intervention
+
+| Depth/domain | Learner | NLL | CPU seconds |
+| --- | --- | --- | --- |
+| market | online | 10.571007 | 166.303 |
+| market | frozen | 10.576801 | 80.597 |
+| market | zero | 10.548777 | 75.552 |
+| market | bptt | 10.546759 | 93.907 |
+
+Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
+
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -6293,6 +6304,52 @@ Executed Torch+NumPy arithmetic under unchanged before/after conventions, explic
 All16384online forecasts/requests are preserved. 32teaching windows reuse the selected proposal's actual observed forecasts; future-world replays fall64to32, halving replayed targets2048to1024. Remaining alternate replay uses39.176MFLOPs under the declared conventions.
 
 Exact selected-proposal parameter and pre-window state identity checked before reuse. Acquisition still pays both future worlds because its actor uses exactBPTT instead of either endpoint. Native gradient teaching/proposals/optimizers and actor derivatives remain charged. This is online-teacher execution reuse, not whole-fitting or hardware-energy supremacy; nonlinear functions separate.
+
+### Native forward-taught credit improves actual online updates
+
+| Learning rule | NLL / event |
+| --- | --- |
+| Native future credit, three critic fits | 5.756301502 ± 0.000289253 |
+| own carry | 5.756862885 |
+| own refresh | 5.756963281 |
+| train mean refresh | 5.756874830 |
+| signed native refresh | 5.756818872 |
+| bptt carry | 5.758146736 |
+| bptt refresh | 5.758367769 |
+| four pass learned refresh | 5.756771896 |
+
+Win across three critic initializations: mean gain0.001845nats/event over exact eight-event factual BPTT and0.000662over matched own-refresh. Every critic beats both controls and TRAIN-mean credit. Credit is taught from forward forecast contrasts; no BP fit labels. Native private memory evolves causally while its weights remain frozen during deployment.
+
+Three independently initialized31,804parameter critics, one shared restored18,164parameter actor,128TRAIN receipts and16384reusedAug25DEV events. Producer8/future8, clip1/Adam.0003; refresh replays eight already observed events under updated weights. SampleSD across critic fits, not actor/data replications. The original signed-native control is for seed19124. New schedule/source acquisition; established32target5.737391headline unchanged. No sealedTEST/public leaderboard/profit claim.
+
+### Extra work is charged alongside the quality gain
+
+| Rule | Whole prefix MFLOPs | kFLOPs / target |
+| --- | --- | --- |
+| own carry | 77.605 | 151.571 |
+| own refresh | 87.284 | 170.477 |
+| learned refresh | 88.999 | 173.825 |
+| bptt carry | 56.380 | 110.117 |
+| bptt refresh | 66.060 | 129.023 |
+
+Executed512DEVtarget/32update probes include127daywarmup events; all saved prefix forecasts reproduce exactly. Native future credit uses more arithmetic than exact factual BP. Original actor fitting and8192source forward-teacher targets, acquisition/critic learning and diagnostic trials are additional.
+
+Same units/denominator within columns. Torch mathematical formula and NumPy trace-kernel work; nonlinear functions/Pythonmath/random and uninstrumented native-history scalar operations remain separate. No16384work extrapolation, physical traffic or ASIC energy claim. User13October priority permits more compute for quality or data efficiency; matched compute is one evidence class, not a promotion requirement.
+
+### More learning compute at fixed credit data
+
+| Native passes over128receipts | Frozen DEV credit MSE |
+| --- | --- |
+| 1 | 0.001133650 |
+| 2 | 0.001101737 |
+| 3 | 0.001062135 |
+| 4 | 0.001058803 |
+
+Four passes improve fixed-actor credit error11.60%below zero, versus5.35%after one pass, using the same128TRAIN receipts and no new teacher worlds. Actual-update NLL worsens5.756599to5.756772: retain one-pass actor utility rather than the MSE winner. With64receipts, two passes reach0.001119539MSE versus0.001133650with128receipts/onepass; later passes overfit. This is an exploratory additional-credit-data point with shared actor pretraining and multiple DEV checkpoints, not half-data learning for the whole model.
+
+Random-ray teachers buy75%/50%fewer training worlds but give DEV MSE0.001343988/0.001246334 versus zero0.001197747; neither retained. Conditional gradient identity passes the native interface audit, but sampling variance defeats this128frame acquisition. Keep useful fitting compute and improve the actual-update teaching objective.
+
+Exact two-layer/addressed state interface:88coordinates,352eligibility floats/four directions; E^Tfuturecotangent matches full-history minus future-direct derivative2.22e-16. Delayed forward teacher activations remain native hard-race computation. Globalclip/Adam boundaries retained. Theory STATE_REFRESH_AND_ACTUAL_UPDATE_CREDIT.md derives the full optimizer/direct-parameter/refreshed-state teaching derivative.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 

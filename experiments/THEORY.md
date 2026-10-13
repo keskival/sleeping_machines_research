@@ -449,3 +449,7 @@ Native update dependency validity: [local credit read sets and version stamps](t
 
 [Predictable route-credit residuals](theory/PREDICTABLE_ROUTE_CREDIT_RESIDUAL.md) derives a learned mean plus importance-corrected residual in the existing backward call, supervised receipt closure, residual-based admission/proposal laws and clipping distortion/break-even bounds. Next R1 design after unchanged acquisition confirmations; no new fit admitted.
 [Forward-taught state-interface credit](theory/FORWARD_TAUGHT_STATE_INTERFACE_CREDIT.md): complete two-layer/addressed rank4 eligibility contracts to future state cotangents exactly; native forward-only credit acquisition lowers paired DEV prediction MSE5.35%vszero after per-direction scaling. Geometry/receipt ablation does not improve it; fixed actor, one seed, teacher worlds paid.
+
+[State refresh and actual update credit](theory/STATE_REFRESH_AND_ACTUAL_UPDATE_CREDIT.md): realized state paths distinguish prospective component MSE from useful clipped-Adam updates. Three initialized native critics improve matched-data online forecasts over exact eight-event factual BP; quality gains spend extra work. Full direct-parameter/optimizer/state teaching derivative specifies the next objective.
+
+[Random-ray forward credit teaching](theory/RANDOM_RAY_FORWARD_CREDIT_TEACHING.md): two-world conditional gradient identity and variance bound; one/two-ray acquisition fails to retain quality. Fixed-label reuse improves credit prediction, while actual-update utility selects the one-pass recipe.

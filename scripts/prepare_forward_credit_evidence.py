@@ -150,7 +150,7 @@ def main():
         parents[str(path.relative_to(ROOT))]=sha(path);early_credit[tag]=record
     packet['native_early_credit_activity']=early_credit
     executed_credit={}
-    for tag in ['curie_b10_complete_work_20261013_v2_probe','curie_b10_actor_boundary_20261013_v1','curie_b10_local_banks_20261013_v1_contract','curie_b10_clock_context_20261013_v1_contract','curie_b10_compact_acquisition_20261013_v1_fit','curie_b10_compact_preparation_20261013_v1_work','curie_b10_factual_teacher_20261013_v1_fit']:
+    for tag in ['curie_b10_complete_work_20261013_v2_probe','curie_b10_actor_boundary_20261013_v1','curie_b10_local_banks_20261013_v1_contract','curie_b10_clock_context_20261013_v1_contract','curie_b10_compact_acquisition_20261013_v1_fit','curie_b10_compact_preparation_20261013_v1_work','curie_b10_factual_teacher_20261013_v1_fit','curie_b10_future_credit_evidence_20261013_v1','curie_b10_future_credit_confirmation_20261013_v1']:
         path=ROOT/f'experiments/results/market/{tag}.json'
         if not path.exists():continue
         record=json.loads(path.read_text());assert record['status']=='completed'

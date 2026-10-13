@@ -357,4 +357,6 @@ def pages():
         for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
         row=record['rows'][0];assert record['deployment_parity']['online']<1e-12
         current.append([('h2','Observed forecasts teach native credit without factual replay'),('p',f"All16384online forecasts/requests are preserved. {row['reused_factual_windows']}teaching windows reuse the selected proposal's actual observed forecasts; future-world replays fall64to{row['teacher_replays']}, halving replayed targets2048to1024. Remaining alternate replay uses{row['teacher_replay_arithmetic_flops']/1e6:.3f}MFLOPs under the declared conventions."),('small','Exact selected-proposal parameter and pre-window state identity checked before reuse. Acquisition still pays both future worlds because its actor uses exactBPTT instead of either endpoint. Native gradient teaching/proposals/optimizers and actor derivatives remain charged. This is online-teacher execution reuse, not whole-fitting or hardware-energy supremacy; nonlinear functions separate.')])
+    from report.market_future_credit_appendix import pages as market_future_pages
+    current.extend(market_future_pages())
     return current

@@ -1,0 +1,200 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "retained_update": "one_pass_learned_refresh",
+  "quality": [
+    {
+      "arm": "own_carry",
+      "nll": 5.75686288549069,
+      "future_nll": 5.830021473127241,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 0
+    },
+    {
+      "arm": "own_refresh",
+      "nll": 5.756963280530174,
+      "future_nll": 5.830228927288358,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    },
+    {
+      "arm": "learned_refresh",
+      "nll": 5.756599086649787,
+      "future_nll": 5.82988376183716,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    },
+    {
+      "arm": "train_mean_refresh",
+      "nll": 5.756874829942109,
+      "future_nll": 5.830071087276108,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    },
+    {
+      "arm": "signed_native_refresh",
+      "nll": 5.7568188724026035,
+      "future_nll": 5.830036857044307,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    },
+    {
+      "arm": "bptt_carry",
+      "nll": 5.758146735759185,
+      "future_nll": 5.831793480648779,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 0
+    },
+    {
+      "arm": "bptt_refresh",
+      "nll": 5.7583677685158365,
+      "future_nll": 5.832098150830916,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    },
+    {
+      "arm": "four_pass_learned_refresh",
+      "nll": 5.756771896410968,
+      "future_nll": 5.830063001635179,
+      "targets": 16384,
+      "updates": 1024,
+      "causal_refresh_targets": 8192
+    }
+  ],
+  "leader_gain": {
+    "own_carry": 0.0002637988409022185,
+    "own_refresh": 0.0003641938803866651,
+    "train_mean_refresh": 0.00027574329232127326,
+    "signed_native_refresh": 0.00021978575281611512,
+    "bptt_carry": 0.001547649109397753,
+    "bptt_refresh": 0.001768681866049171,
+    "four_pass_learned_refresh": 0.00017280976118083657
+  },
+  "work512": [
+    {
+      "arm": "own_carry",
+      "covered_arithmetic_flops": 77604555,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "own_refresh",
+      "covered_arithmetic_flops": 87284427,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "learned_refresh",
+      "covered_arithmetic_flops": 88998519,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "bptt_carry",
+      "covered_arithmetic_flops": 56379723,
+      "saved512target_parity_error": 0.0
+    },
+    {
+      "arm": "bptt_refresh",
+      "covered_arithmetic_flops": 66059595,
+      "saved512target_parity_error": 0.0
+    }
+  ],
+  "fixed_data_curve": [
+    {
+      "passes": 1,
+      "unique_credit_train_frames": 128,
+      "dev_credit_mse": 0.0011336502830880375
+    },
+    {
+      "passes": 2,
+      "unique_credit_train_frames": 128,
+      "dev_credit_mse": 0.0011017370617324817
+    },
+    {
+      "passes": 3,
+      "unique_credit_train_frames": 128,
+      "dev_credit_mse": 0.0010621346288888897
+    },
+    {
+      "passes": 4,
+      "unique_credit_train_frames": 128,
+      "dev_credit_mse": 0.0010588027025984384
+    }
+  ],
+  "half_credit_data_curve": [
+    {
+      "passes": 1,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0012297659667003978
+    },
+    {
+      "passes": 2,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0011195394424941747
+    },
+    {
+      "passes": 3,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0011264241862129335
+    },
+    {
+      "passes": 4,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0012019475279807133
+    },
+    {
+      "passes": 5,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0013286980521474542
+    },
+    {
+      "passes": 6,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.001407345456060554
+    },
+    {
+      "passes": 7,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0012569875340931627
+    },
+    {
+      "passes": 8,
+      "unique_credit_train_frames": 64,
+      "dev_credit_mse": 0.0013447428592936795
+    }
+  ],
+  "cheap_teacher": [
+    {
+      "variant": "ray",
+      "dev_credit_mse": 0.001343988462772899,
+      "train_teacher_targets": 2048
+    },
+    {
+      "variant": "two_rays",
+      "dev_credit_mse": 0.0012463338568110811,
+      "train_teacher_targets": 4096
+    }
+  ],
+  "original_acquisition_teacher_targets": 8192,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_future_updates_20261013_v2_long.json": "7028098cec3ab96febb165232f4a47a22cd837a6863e1f2137229b19210cf00e",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_controls.json": "b64103a2381be34bbc9d13f01fb103be27b47960908b1278b95aef72050cd5be",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_bptt.json": "b0d6b65165873d4cd48b964302eb6aa90f3807a8c5587d2ae737aeab72e0d0d1",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_work.json": "437b2798dd096d3c30fd1c417353eed242dadb75000ab160cc50a293372d7cc7",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_bptt_work.json": "d59dac10a959aa391e173e9dd19bfba2453a66f260fb89f36c4abcb614a78b40",
+    "experiments/results/market/curie_b10_future_credit_reuse_20261013_v1_fit.json": "7b04cdff5e38116c8208ec7581de1767837f3f3dc263c9cee227a6f7b7124df8",
+    "experiments/results/market/curie_b10_future_credit_reuse_20261013_v1_updates.json": "fb0139b2a5d0d19f75532c78929bd93896105525a00aad17dc86503050979e08",
+    "experiments/results/market/curie_b10_future_credit_data_20261013_v1_fit.json": "b172ae9a4e455273ef3ff45c863e9bae80e395556d8a3b3efe2b50609516fb2d",
+    "experiments/results/market/curie_b10_future_rays_20261013_v1_fit.json": "82583ed8b7f96e270c0cbda8cec0030f71ca2dad808fbd44fe3814c77c99094e",
+    "experiments/results/market/curie_b10_future_two_rays_20261013_v1_fit.json": "45b4a9eeb5e8eab1f3592597de21807f71415e7f46f278b620e0e4b6aa7b7ab1"
+  },
+  "source_sha256": {
+    "experiments/credit/publish_market_future_credit_evidence.py": "e914d50088a10b2b75db314615d633f93df43ffe976cb809616ca67a0875210f"
+  },
+  "scope": "Development quality win: one actor/critic initialization,16384reusedchronologicalDEVtargets,matcheddata/scoring/update schedule. One-pass native credit beats own-carry/refresh,TRAINmean/signed-native and exact8event own-modelBP. Work512is separate covered prefix arithmetic incl127warmup events; no wholefit/energy/matched-compute win. Morecompute is allowed for quality/data efficiency. Credit prediction curves concern additionalcredit data with shared actor prefit: fourpasses128receipts improveMSE but worsenactualactorutility;64receiptsat2passes outperform128at1, laterpassesoverfit. Multipledevelopmentcheckpoints, no sealedTEST/profit/generaldata-efficiency claim."
+}

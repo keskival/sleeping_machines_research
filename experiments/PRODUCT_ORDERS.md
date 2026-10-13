@@ -6,6 +6,8 @@
 
 **PAM decision, user direction 10 October:** retain the original sealed v7 five-split result (accuracy 0.9775 ± 0.0074, F1 0.9803 ± 0.0080). Stop further v8/v9 replacement runs; preserve completed results/checkpoints. Proceed on other fronts before returning to PAM development. No new PAM fitting or TEST scoring is admitted.
 
+**Quality/data priority, user direction13October:** increased compute is allowed when it improves quality at fixed data or reduces the data needed to reach useful quality. Matched compute is a comparison class, not an admission requirement. Report complete work separately and retain resource guards; test actual update utility rather than choosing a credit model on MSE alone.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
