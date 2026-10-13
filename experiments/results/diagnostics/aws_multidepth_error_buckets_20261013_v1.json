@@ -1,0 +1,307 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "acquisition": "512k",
+      "variant": "baseline",
+      "scored": {
+        "nll": 6.813951231374858,
+        "loss_sum": 55819.88848742284,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 28892.994344199076,
+          "zero_feature_loss_sum": 36142.690445661545,
+          "nll": 4.986709413910783,
+          "feature_gain": 1.2512419919679787,
+          "total_nll_contribution": 3.526976848657114,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 13174.067642331123,
+          "zero_feature_loss_sum": 13624.708322525024,
+          "nll": 9.957723085662225,
+          "feature_gain": 0.3406203176068791,
+          "total_nll_contribution": 1.6081625539954985,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 9859.013640403748,
+          "zero_feature_loss_sum": 10119.97853755951,
+          "nll": 12.60743432276694,
+          "feature_gain": 0.3337147022452196,
+          "total_nll_contribution": 1.203492876025848,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3893.8128604888916,
+          "zero_feature_loss_sum": 4278.850604057312,
+          "nll": 13.289463687675397,
+          "feature_gain": 1.3141219917010936,
+          "total_nll_contribution": 0.4753189526963979,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 1.5606828150339425
+    },
+    {
+      "acquisition": "512k",
+      "variant": "multidepth",
+      "scored": {
+        "nll": 6.814034777525421,
+        "loss_sum": 55820.57289748825,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 28875.702986294404,
+          "zero_feature_loss_sum": 36225.155539512634,
+          "nll": 4.983725058041837,
+          "feature_gain": 1.268459191097382,
+          "total_nll_contribution": 3.524866087194141,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 13221.472856998444,
+          "zero_feature_loss_sum": 13585.678745269775,
+          "nll": 9.9935546916088,
+          "feature_gain": 0.27528789740841403,
+          "total_nll_contribution": 1.6139493233640678,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 9834.678414821625,
+          "zero_feature_loss_sum": 10112.550711631775,
+          "nll": 12.57631510846755,
+          "feature_gain": 0.35533541791579304,
+          "total_nll_contribution": 1.2005222674342804,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3888.7186393737793,
+          "zero_feature_loss_sum": 4294.322298049927,
+          "nll": 13.272077267487301,
+          "feature_gain": 1.3843128282462371,
+          "total_nll_contribution": 0.47469709953293204,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        48,
+        24,
+        12
+      ],
+      "diagnostic_s": 1.7286444080527872
+    },
+    {
+      "acquisition": "2m",
+      "variant": "baseline",
+      "scored": {
+        "nll": 6.440695674329987,
+        "loss_sum": 52762.178964111255,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 27374.58825204079,
+          "zero_feature_loss_sum": 37151.84237122536,
+          "nll": 4.72464415810162,
+          "feature_gain": 1.687479136897578,
+          "total_nll_contribution": 3.341624542485448,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 12554.120529651642,
+          "zero_feature_loss_sum": 13275.521618843079,
+          "nll": 9.489131163757854,
+          "feature_gain": 0.5452767114069816,
+          "total_nll_contribution": 1.5324854162172414,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 9051.362454414368,
+          "zero_feature_loss_sum": 9741.793414115906,
+          "nll": 11.574632294647529,
+          "feature_gain": 0.8829040405390512,
+          "total_nll_contribution": 1.1049026433611289,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3782.1077280044556,
+          "zero_feature_loss_sum": 4087.9266719818115,
+          "nll": 12.90821750172169,
+          "feature_gain": 1.0437506620387575,
+          "total_nll_contribution": 0.4616830722661689,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 1.5812358711846173
+    },
+    {
+      "acquisition": "2m",
+      "variant": "multidepth",
+      "scored": {
+        "nll": 6.455753049207615,
+        "loss_sum": 52885.528979108785,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 27271.316952333902,
+          "zero_feature_loss_sum": 37094.171657562256,
+          "nll": 4.706820323150484,
+          "feature_gain": 1.6953494486068956,
+          "total_nll_contribution": 3.329018182657947,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 12675.83157724142,
+          "zero_feature_loss_sum": 13274.386631965637,
+          "nll": 9.581127420439472,
+          "feature_gain": 0.45242256592911295,
+          "total_nll_contribution": 1.5473427218312281,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 9147.636987924576,
+          "zero_feature_loss_sum": 9780.670053482056,
+          "nll": 11.697745508854956,
+          "feature_gain": 0.8095051989226085,
+          "total_nll_contribution": 1.1166549057525117,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3790.7434616088867,
+          "zero_feature_loss_sum": 4117.969298362732,
+          "nll": 12.937690995252174,
+          "feature_gain": 1.116811729535308,
+          "total_nll_contribution": 0.46273723896592855,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "tail_widths": [
+        48,
+        24,
+        12
+      ],
+      "diagnostic_s": 1.723299679812044
+    }
+  ],
+  "source_sha256": {
+    "experiments/bernoulli_teacher_token_language.py": "85b82441775b74573db2ad86459443fca9d0fc0e3e40ac205a2c5fd652db8b45",
+    "sleeping_machines/ordered_token_lookup.py": "1e1e6039718336fc6bede77be5441cca08718a7e6a0ad58158f4eedbb6103ead",
+    "sleeping_machines/ordered_token_episodes.py": "5cf794f7c3fc5f45787f78d5a683ed733de18ddb58093b5780f19d00d99a2cff",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+    "sleeping_machines/multidepth_counterfactual_episodes.py": "b7366a918f72a975a78e0972a7c5c18c09ba4057fdd38917d9b3e6969bbc5950",
+    "sleeping_machines/multidepth_ordered_episodes.py": "d298bca54ee2263d4308100b76d6446f67555bb522636853da3ee9718f00e4fe",
+    "experiments/check_multidepth_error_buckets.py": "9dbd97fc7e79b0be56a1e21a84d111f3d96df568235e6fc0a0adea2017eb83ad",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_bernoulli_teacher_512k_20261013_s6_v1.json": "d102a54fadca8b974028288d75ef9a72de39da4a2dd1dbebc2120a095d5a0fec",
+    "experiments/results/token_language/aws_bernoulli_teacher_512k_20261013_s6_v1.pt": "dd26664386f924b45f7695d45e67ba1490ce0709043c8bb004310b05717e00ea",
+    "experiments/results/token_language/aws_multidepth_readout_512k_20261013_s6_v1.json": "485e8504235679c00391a310736234d93f28bd85feb9b8ec62f78197b03399b6",
+    "experiments/results/token_language/aws_multidepth_readout_512k_20261013_s6_v1.pt": "12df60b7e556477355da095a62cad15f3f60999b336b1b672e3cd568b87a55ec",
+    "experiments/results/token_language/aws_bernoulli_teacher_2m_20261013_s6_v2.json": "6f80b2eafaa27c84ae3cf206bb4a51ef1a2a35a341036bffa1f50453772901a0",
+    "experiments/results/token_language/aws_bernoulli_teacher_2m_20261013_s6_v2.pt": "6ceb60b8a5586c32ceed105c2fe80cfc656336808425a771c6697270c5d50f8a",
+    "experiments/results/token_language/aws_multidepth_readout_2m_20261013_s6_v1.json": "9ead1f778fc2a3e8a4497764be8bd22d4ea74f0b68a651421650f59a967e3175",
+    "experiments/results/token_language/aws_multidepth_readout_2m_20261013_s6_v1.pt": "08b465e58646188d5cdfce8b1883873a679b59760cf5dcf421788ff375b14e83"
+  },
+  "scope": "Paired baseline/multidepth final weights at512k/2M, seed6, same8192 previously used transfer-DEV tokens scored with disjoint1024-token histories and all shifted targets; no EOS reset, no public validation or checkpoint selection. Rank bins fitted from fixed initial TRAIN prior. Zero-feature intervention distinguishes readout intercepts from all factual input/state features, not persistent history alone. Tail widths are implementation capacity, not proof of a bottleneck. Diagnostic wall includes extra readout scoring; candidate repair requires integrated fitting comparison."
+}
