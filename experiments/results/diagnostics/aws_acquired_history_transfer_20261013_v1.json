@@ -1,0 +1,278 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "seed": 6,
+      "acquisition": "512k",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          6.5041070676317405,
+          6.723793299057904,
+          7.2516861261106005,
+          7.131960999731924
+        ],
+        "16": [
+          6.527440927542892,
+          6.749574429381127,
+          7.301135612936581,
+          7.178238573261336
+        ],
+        "64": [
+          6.508007692823223,
+          6.723766850490196,
+          7.263608565984987,
+          7.1417905321308215
+        ]
+      },
+      "nll": {
+        "0": 6.902886873133042,
+        "16": 6.939097385780483,
+        "64": 6.909293410357307
+      },
+      "wall_s": 4.511789459036663
+    },
+    {
+      "seed": 6,
+      "acquisition": "8m",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          5.874722589231005,
+          6.049561982996323,
+          6.480069986979166,
+          6.464877139820772
+        ],
+        "16": [
+          5.906535189759498,
+          6.081002628102022,
+          6.524610452090992,
+          6.511313524433211
+        ],
+        "64": [
+          5.8765869140625,
+          6.053894641352635,
+          6.484893918504902,
+          6.4690576889935665
+        ]
+      },
+      "nll": {
+        "0": 6.217307924756817,
+        "16": 6.255865448596431,
+        "64": 6.2211082907284005
+      },
+      "wall_s": 4.480550596956164
+    },
+    {
+      "seed": 7,
+      "acquisition": "512k",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          6.469283758425245,
+          6.6943537693397674,
+          7.236168476179534,
+          7.130738501455269
+        ],
+        "16": [
+          6.50160737879136,
+          6.728862208946079,
+          7.269080427581189,
+          7.162334247663909
+        ],
+        "64": [
+          6.4755019244025736,
+          6.700794893152573,
+          7.241184369255515,
+          7.134572107651654
+        ]
+      },
+      "nll": {
+        "0": 6.882636126349954,
+        "16": 6.915471065745634,
+        "64": 6.888013323615579
+      },
+      "wall_s": 4.438471768051386
+    },
+    {
+      "seed": 7,
+      "acquisition": "8m",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          5.914061183555454,
+          6.0575232412300855,
+          6.480316640816483,
+          6.450298713235294
+        ],
+        "16": [
+          5.947265505323223,
+          6.090228630514706,
+          6.528443100873162,
+          6.496762144799326
+        ],
+        "64": [
+          5.922510723039216,
+          6.0593590829886645,
+          6.487177231732537,
+          6.454935709635417
+        ]
+      },
+      "nll": {
+        "0": 6.2255499447093285,
+        "16": 6.265674845377604,
+        "64": 6.230995686848958
+      },
+      "wall_s": 4.4869738179259
+    },
+    {
+      "seed": 8,
+      "acquisition": "512k",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          6.516089106541054,
+          6.727432191138174,
+          7.2369512819776345,
+          7.120303404564951
+        ],
+        "16": [
+          6.538628312653186,
+          6.7507009468826595,
+          7.281833304610907,
+          7.160101438036152
+        ],
+        "64": [
+          6.519920079848346,
+          6.729750330307905,
+          7.246754844515931,
+          7.125702622357537
+        ]
+      },
+      "nll": {
+        "0": 6.900193996055453,
+        "16": 6.932816000545726,
+        "64": 6.90553196925743
+      },
+      "wall_s": 4.474073111079633
+    },
+    {
+      "seed": 8,
+      "acquisition": "8m",
+      "scored_targets": 8160,
+      "panel_nll": {
+        "0": [
+          5.891221469056372,
+          6.081302538105086,
+          6.514582375919118,
+          6.471532365387561
+        ],
+        "16": [
+          5.943819771560968,
+          6.113757802925858,
+          6.565523155062807,
+          6.516154210707721
+        ],
+        "64": [
+          5.905021876914828,
+          6.085800948797488,
+          6.522628245634191,
+          6.477031991996017
+        ]
+      },
+      "nll": {
+        "0": 6.239659687117034,
+        "16": 6.284813735064338,
+        "64": 6.247620765835631
+      },
+      "wall_s": 4.466007804032415
+    }
+  ],
+  "paired": [
+    {
+      "seed": 6,
+      "acquisition_gain": {
+        "0": 0.6855789483762251,
+        "16": 0.6832319371840523,
+        "64": 0.6881851196289066
+      },
+      "history_value_before": {
+        "16": 0.03621051264744146,
+        "64": 0.0064065372242652074
+      },
+      "history_value_after": {
+        "16": 0.038557523839614305,
+        "64": 0.00380036597158373
+      }
+    },
+    {
+      "seed": 7,
+      "acquisition_gain": {
+        "0": 0.6570861816406257,
+        "16": 0.6497962203680299,
+        "64": 0.6570176367666205
+      },
+      "history_value_before": {
+        "16": 0.03283493939567972,
+        "64": 0.005377197265624467
+      },
+      "history_value_after": {
+        "16": 0.040124900668275565,
+        "64": 0.005445742139629672
+      }
+    },
+    {
+      "seed": 8,
+      "acquisition_gain": {
+        "0": 0.660534308938419,
+        "16": 0.648002265481388,
+        "64": 0.6579112034217989
+      },
+      "history_value_before": {
+        "16": 0.03262200449027297,
+        "64": 0.005337973201976709
+      },
+      "history_value_after": {
+        "16": 0.045154047947304043,
+        "64": 0.007961078718596859
+      }
+    }
+  ],
+  "source_sha256": {
+    "experiments/window_replay_token_language.py": "c0d0764435f781332f35572fa15f79ab15ca1b4fcfd6e9981b3ea8b6c076fe4c",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/check_acquired_history_transfer.py": "6cc788637a481d3a6d4cae247d15e99df3c4703e8a1dad609471f81c7b974f61"
+  },
+  "input_sha256": {
+    "experiments/results/diagnostics/aws_fresh_scaling_transfer_20261013_v1.json": "3b971f8a41f90ee87635a178debdabec1c9e9a8e2c0abcb5827f3bdba4532a34",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s6_v1.json": "e7317479d1a590529e5b3762ec6287863e5d1aeb46f47d8105c4537525edf785",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s6_v1.pt": "6ecec5af293d37f9c460ccbccc364fdc515ba607df5a9656487fbc4e78bb4ad1",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.json": "e6368e37590ea284425fabe39715b2e89597894b334ea21a62207474283eba38",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.pt": "8f3ecf51cd3762aea7a97eee3d230ad661c80116119994a4fb3e84aed3a78b57",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s7_v1.json": "a2f781c9e339e64184f484db325d0bb4346d56462cd574f6294af83104afe18b",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s7_v1.pt": "fa0d899491ff511c708dcc9195776803f84512472976ecac19ca900e324323e4",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261013_s7_v1.json": "b3a6597ff5cd53495d14aa112dd78158f1b1a060d11931b2354bd935c600bcef",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261013_s7_v1.pt": "b238bc4f908d9ed40fc4fbc6296f49fd94ae32b4d84cda883e8ab79250b395d5",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s8_v1.json": "77d067829896855393b934ea7fcb815402ac6a37d10161f900acf571e67257a7",
+    "experiments/results/token_language/aws_integrated_window_replay_512k_20261012_s8_v1.pt": "1c7dcf10316767f8d5a922770dfba1744ffb759e25ae9902cdc10efc96baf659",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261013_s8_v1.json": "956cf0a9ab852719e9f4ac704c08252ff35c75416b408a9b192a76c0a02fb331",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261013_s8_v1.pt": "8e684c81ba75a4f97ede95d3efdb61bd220002f9b35e2d1d3a5d7c0a899e8220"
+  },
+  "scope": "Three seeds, frozen 512k/8M weights, same first four existing transfer DEV panels (8160 targets). Reset complete stored receiver/content/arrival/context state every16 or64 observed tokens, retain stream position and same explicit route RNG. Full-history factual panels must reproduce exactly. Reset is a distribution intervention, not an independently trained short-history control; signed loss differences measure reliance on this history under the intervention, not isolated memory capacity or a scaling exponent. Public validation sealed; no fitting or selection."
+}
