@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "battle": "B1/R1",
+  "input_width": 8,
+  "state_interface_width": 4,
+  "delayed_rank": 4,
+  "singular_values": [
+    0.3954736626261534,
+    0.21071343191276312,
+    0.005554832414509061,
+    0.0028337865313849014,
+    2.4823125834389997e-17,
+    6.589681552945402e-18,
+    3.052310429782451e-18,
+    7.757271895412289e-19
+  ],
+  "forward_error": 4.440892098500626e-16,
+  "factor_error": 6.938893903907228e-17,
+  "credit_error": 5.551115123125783e-17,
+  "forward_adjoint_bilinear_error": 1.1102230246251565e-16,
+  "factor_tensor_scalars": 80,
+  "dense_delayed_matrix_scalars": 64,
+  "factor_matvec_multiply_add_flops": 160,
+  "dense_matvec_multiply_add_flops": 128,
+  "wall_s": 0.5640720101073384,
+  "source_sha256": {
+    "experiments/credit/check_state_interface_credit.py": "67b514b2bae195be1287ae1454441de2b6ff311a859b4bbbd2522ff2f4c80a38",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "scope": "Fixed-parameter native two-event temporal layer; exact local endpoint derivatives plus decay/rotation factor delayed credit through four real state coordinates. Full reverse/JVP audit paid, not a task fit. Dense transport64floats versus unfused factors80floats: this short witness does not itself save storage/work. Learning/reuse across longer histories and whole learner-state cuts requires integrated quality/full accounting. No hard-route alternative credit or future-cotangent estimator trained here."
+}
