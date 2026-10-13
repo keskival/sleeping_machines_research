@@ -1,0 +1,173 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_addressed_clock_20261013_confirm_smoke_v1_addressed",
+    "parent_seed": 19129,
+    "member": "addressed",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "frames": 3,
+    "targets": 96,
+    "updates": 6,
+    "critic_updates": 3,
+    "accepted": 3,
+    "sign_reversals": 1,
+    "rows": [
+      {
+        "frame": 0,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -1.3100397211474046e-08,
+        "gain_weight": -0.2713172744961412,
+        "antithetic_contrast": -3.3914659312017648e-06,
+        "plus_nll": 10.778849562238989,
+        "minus_nll": 10.77885295370492,
+        "predictable_gain_scale": 0.0001,
+        "accepted": true,
+        "gain": 2.2770857484033513e-06,
+        "short_gain": 2.7578757055835013e-09,
+        "sign_reversal": false,
+        "early_nll": 11.093554177631855,
+        "late_nll": 10.62150067017118,
+        "selected_clock_coordinates": 4,
+        "available_clock_coordinates": 64,
+        "source_nll": 10.594791372462728,
+        "critic_grad_norm": 1.2723789053415395,
+        "future_moment_distance": 0.00021348663152311658,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 1,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -1.4126406711056916e-09,
+        "gain_weight": -1.2639249619607693,
+        "antithetic_contrast": -1.5035899913584672e-05,
+        "plus_nll": 12.972779814241397,
+        "minus_nll": 12.97279485014131,
+        "predictable_gain_scale": 9.51695732965601e-05,
+        "accepted": true,
+        "gain": 1.899060045218448e-06,
+        "short_gain": 1.553419046729232e-07,
+        "sign_reversal": false,
+        "early_nll": 14.915461696183922,
+        "late_nll": 12.001441721860203,
+        "selected_clock_coordinates": 4,
+        "available_clock_coordinates": 64,
+        "source_nll": 13.22734897053323,
+        "critic_grad_norm": 6.039116515893957,
+        "future_moment_distance": 0.00029555184873602256,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 2,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": 9.152085045371905e-08,
+        "gain_weight": 0.0008922518140456646,
+        "antithetic_contrast": 1.0167531705462807e-08,
+        "plus_nll": 7.946972680449515,
+        "minus_nll": 7.946972670281983,
+        "predictable_gain_scale": 9.116288962741132e-05,
+        "accepted": true,
+        "gain": 1.338821675744839e-08,
+        "short_gain": -1.4371064338547512e-07,
+        "sign_reversal": true,
+        "early_nll": 7.361145550779433,
+        "late_nll": 8.23988626536688,
+        "selected_clock_coordinates": 4,
+        "available_clock_coordinates": 64,
+        "source_nll": 6.767033596392205,
+        "critic_grad_norm": 0.003974018661002484,
+        "future_moment_distance": 0.0004289494471834187,
+        "first_future_parity": 0.0
+      }
+    ],
+    "counterfactual_worlds": 6,
+    "counterfactual_scored_targets": 144,
+    "counterfactual_refresh_targets": 96,
+    "counterfactual_own_gradient_targets": 48,
+    "factual_refresh_targets": 48,
+    "wall_s": 4.813906785973813
+  },
+  "dev": {
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765155471836235,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.232611926759342
+      },
+      {
+        "producer_nll": 5.688234081920655,
+        "future_nll": 7.1755733450185515
+      },
+      {
+        "producer_nll": 15.064471918635261,
+        "future_nll": 7.236827086184894
+      }
+    ],
+    "training": false,
+    "teacher_future_loss_max_error": 0.0,
+    "teacher_frames": 0,
+    "teacher_replayed_targets": 0,
+    "refresh_targets": 24,
+    "critic_gradient_norm_mean": 0.0,
+    "trust_ratio_mean": 0.0,
+    "wall_s": 0.458164788025897
+  },
+  "reference": {
+    "arm": "learned_refresh",
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765155455913089,
+    "future_nll": 7.215004088795449,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.232611926775391
+      },
+      {
+        "producer_nll": 5.688234081901101,
+        "future_nll": 7.175573345494017
+      },
+      {
+        "producer_nll": 15.06447191469238,
+        "future_nll": 7.236826994116936
+      }
+    ],
+    "causal_refresh_targets": 24,
+    "teacher_worlds": 0,
+    "critic_prediction_norm_mean": 0.010280229312523967,
+    "wall_s": 0.18889361596666276,
+    "phase_wall_s": {
+      "own_credit": 0.11990370601415634,
+      "critic": 0.013886800035834312,
+      "refresh": 0.01739762001670897,
+      "future": 0.029509316955227405,
+      "optimizer": 0.006852324993815273
+    }
+  },
+  "dev_gain": -1.5923146357010864e-08,
+  "reference_saved_error": null,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_credit_confirm_20261013_s19129_v1_critic.pt": "195ed38e67407a0720da8972b3f1e2c704881420e1aa97a90c8604284c1add83",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486",
+    "experiments/results/market/curie_b10_future_credit_confirmation_20261013_v1.json": "c2882fd201fdb1ca10a53c095d3e9699a9b0cdf3be17f5cd0b4e77d3544b93bb"
+  },
+  "source_sha256": {
+    "experiments/credit/market_addressed_credit_confirmation.py": "a308d1f7a598956c1ae951365a03f1bdca9a1261b6f5064ec7c2e41703ae06a8",
+    "experiments/credit/market_addressed_clock_credit_acquisition.py": "01f46065d668a75963d416e4c946fdbd7d0aff7b9fdb02ee95dbd9b5339839f8",
+    "experiments/credit/market_energy_matched_uniform_fit.py": "847c0f7b89f518be6b1103a8dd5ae2d92e08d6222a3ae4f52546fb4ed66ef6fe",
+    "experiments/credit/native_addressed_clock_credit.py": "83079feda7f740cc17f17fe621b6fc4fd2eacce6177d9d5b5361be27eeb350fb",
+    "experiments/credit/energy_matched_uniform_credit.py": "75b561f637ebee0eb3c8e5a1daeda7e5598c784640df4b738ad40c81738fd0dd",
+    "experiments/credit/native_optimizer_receipts.py": "41cd661ad8b4541871530e2c1245bf3b66630d0eeec10bf269e26ebc76bc162f",
+    "experiments/credit/native_receipt_evaluation.py": "f8eee2c85fe13db4414924239a4d15ff65efffff3c71fea47c7be34700b372da",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc"
+  },
+  "wall_s": 7.122109604009893,
+  "scope": "Fixed256receipts8192TRAIN/16384reusedDEV member, saved independently initialized parent critic, same restoredactor and causal score-before-update protocol. Uniform0.125 matches addressed0.5 selected-mode maximum residual L2bound; actualsteps/headparameter counts differ. Two extra forward worlds/receipt, native/privatebank and actor/optimizer costs charged. Criticweightsfrozen onDEV; no TEST/independentactor/data replication/fullwork claim."
+}
