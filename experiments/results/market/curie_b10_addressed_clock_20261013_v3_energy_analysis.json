@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "parent_nll": 5.756599086649787,
+  "addressed_nll": 5.756418648346672,
+  "uniform_nll": 5.756526671871539,
+  "addressed_parent_gain": 0.00018043830311498255,
+  "uniform_parent_gain": 7.24147782484863e-05,
+  "addressed_gain_over_uniform": 0.00010802352486649625,
+  "parent_forecast_parity": true,
+  "uniform_bound": 0.125,
+  "addressed_bound": 0.5,
+  "maximum_residual_l2_bound_equal": true,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v2_acquisition.json": "54ac7a1f1b6c44b353d6a674f78ba02bb53f0860d85b6927a8dac7af8ae711e3",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v3_energy_fit.json": "bac9797660d4d52863bcd17efd55022dd5a7ab1bb322fc3c27a202cd6be4f33a",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v3_energy_smoke.json": "f3d04ba50eb0cd41fbbbf4280e02ece9a87e30130fd02684403b89e4abbc7de7",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v3_energy_analysis_portable.json": "a15092f8b6ee15fc1b072f580e5bca093a7d7d220be6ce6f71f9e56dc6a681ee"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_addressed_energy_control.py": "8300c6a93ecb5b90de907c087fc23fa8a304860b124b61e2d36293a86f731db0"
+  },
+  "scope": "Same actor/parent8192TRAIN256receipts/16384reusedDEV, seeds, paired teacher/radius/optimizer. Matches upper L2 residual bound for equal parent leg scales, not realized updates/Adamstep metric/totalwork. Native uniform critic63608total/31804trainable vs addressed64628/32824; fixed addressed support, not learned selection. Source/teacher/native/optimizer work additional; no TEST/independent confirmation or hardwarewin."
+}

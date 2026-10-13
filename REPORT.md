@@ -6409,6 +6409,37 @@ Richer native receipts expose individual modes, but four uniform clock correctio
 
 Sensitivity percentages describe three local eight-future-target clock-action gradients after actualAdam/refresh. They are not total actor-gradient coverage, a forecast improvement percentage, population evidence or a benchmark claim. Existing quality winners remain. Selected support, target discovery, losing-value credit, actor/critic optimizer and globalclip work must all be charged in the next integrated comparison.
 
+### Addressed native credit: acquisition and complete trajectory
+
+| TRAIN receipts | Labels per mode | 2048DEV NLL | Parent gain |
+| --- | --- | --- | --- |
+| 64 | 4 | 5.703270707 | -0.000000259 |
+| 256 | 16 | 5.703270028 | +0.000000420 |
+
+Unchanged256receipt member on16384DEV scores5.756418648 versus its parent5.756599087; gain+0.000180438nats/event. Development quality improvement over this parent. First64source receipts and parent DEVprefix agree exactly.64available bounded residual coordinates,4selected by fixed causal rotating support; native races/private banks/typed mode receipts retained.
+
+One restored actor/parent, reusedTRAIN/DEV;64,628total/32,824trainable critic parameters.256receipts8192TRAIN,512extra worlds12288score+8192refresh targets,4096own-gradient targets within scoring; original actor/parent acquisition additionally charged. Parent and own gradients still cover allclock coordinates; all64outputs computed in the acquisition. Smaller residual energy requires amplitude-aware control before attributing improvement to addressing. No independent confirmation/TEST/publicbenchmark/hardwarewin.
+
+### Capacity beyond selected credit readout
+
+Fitted native readout keeps64available output rows and computes4selected rows. Four decisions/136readout calls: dense287,232 versus selected17,952FLOPs; logical weight/bias scalar operands147,968 versus9,248.16times less readout-component arithmetic/operands.
+
+Maximum output difference0, maximum parameter-VJP difference0; global/private RNGparity. This is an implementation parity result, not additional model quality.
+
+Multiply-add2FLOPs plusbias; residual readout only. Gather/scatter,64output allocation/nonlinear operations, native core/history/actor/optimizer and teachers remain outside these component counts. Logical operands are not measured physicaltraffic or energy; no full-fit resource claim.
+
+### Addressed credit versus the smaller uniform correction
+
+| Rule | 16384DEV NLL | Gain over parent |
+| --- | --- | --- |
+| Retained parent | 5.756599087 | — |
+| Uniform residual,0.125bound | 5.756526672 | +0.000072415 |
+| Addressed residual,0.5bound | 5.756418648 | +0.000180438 |
+
+Addressed gain over the native uniform energy-bound control+0.000108024nats/event. Same8192TRAIN/256receipts,16384reusedDEV, actor/parent/seeds/radius/critic optimizer and exact parent forecast rows. The matched bound rules out a simple maximum-residual-energy mismatch; it does not equalize realized updates or Adam parameter-step geometry.
+
+Native head4uniform31,804trainable parameters versus head64addressed32,824; shared native body/race/private-bank receipt construction. Fixed support, no learned target admission. Source/teacher acquisition and complete work additional. One initialization, no sealedTEST or whole-hardware claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.
