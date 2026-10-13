@@ -1,0 +1,82 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "acquisition": "512k",
+      "paired_gain": -8.354615056305192e-05,
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "target_fraction": 0.707275390625,
+          "paired_nll_gain": 0.002984355868946409,
+          "weighted_gain": 0.0021107614629727323
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "target_fraction": 0.1614990234375,
+          "paired_nll_gain": -0.03583160594657464,
+          "weighted_gain": -0.005786769368569367
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "target_fraction": 0.095458984375,
+          "paired_nll_gain": 0.031119214299389242,
+          "weighted_gain": 0.002970608591567725
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "target_fraction": 0.0357666015625,
+          "paired_nll_gain": 0.017386420188095997,
+          "weighted_gain": 0.0006218531634658575
+        }
+      ]
+    },
+    {
+      "acquisition": "2m",
+      "paired_gain": -0.015057374877628149,
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "target_fraction": 0.707275390625,
+          "paired_nll_gain": 0.017823834951136597,
+          "weighted_gain": 0.012606359827501024
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "target_fraction": 0.1614990234375,
+          "paired_nll_gain": -0.09199625668161815,
+          "weighted_gain": -0.014857305613986682
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "target_fraction": 0.095458984375,
+          "paired_nll_gain": -0.12311321420742694,
+          "weighted_gain": -0.011752262391382828
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "target_fraction": 0.0357666015625,
+          "paired_nll_gain": -0.029473493530483452,
+          "weighted_gain": -0.0010541666997596622
+        }
+      ]
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/diagnostics/aws_multidepth_error_buckets_20261013_v1.json": "069393eb4374c42c402e049a231ec8e13d6fddc8e66347537b706aa6c2d8f517"
+  },
+  "source_sha256": {
+    "experiments/analyze_multidepth_vocabulary_tradeoff.py": "a86d3b4b3981e790c8a48887f6d5e74f88d4a48cae441ae537b1a08384ee6f05"
+  },
+  "decision": "Keep reserved8M acquisition. Do not promote at2M: frequent-token benefit is outweighed by other buckets. If the8M loss persists, investigate a baseline-preserving extra-depth interface before further widening.",
+  "scope": "One seed,8192existing DEV targets,1024history. Exact loss decomposition, not causal attribution to head width, optimization or depth."
+}
