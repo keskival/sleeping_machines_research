@@ -17,11 +17,13 @@ def pages():
     if not (ROOT/'experiments/results/market/curie_b10_future_credit_confirmation_20261013_v1.json').exists():return []
     d=load('curie_b10_future_credit_evidence_20261013_v1')
     c=load('curie_b10_future_credit_confirmation_20261013_v1')
+    action_path=ROOT/'experiments/results/market/curie_b10_action_geometry_20261013_v1_cohort.json'
+    action=load('curie_b10_action_geometry_20261013_v1_cohort') if action_path.exists() else None
     quality=[[r['arm'].replace('_',' '),f"{r['nll']:.9f}"] for r in d['quality'] if r['arm']!='learned_refresh']
     quality.insert(0,['Native future credit, three critic fits',f"{c['mean_nll']:.9f} ± {c['sample_sd_nll']:.9f}"])
     work=[[r['arm'].replace('_',' '),f"{r['covered_arithmetic_flops']/1e6:.3f}",f"{r['covered_arithmetic_flops']/512/1e3:.3f}"] for r in d['work512']]
     curve=[[str(r['passes']),f"{r['dev_credit_mse']:.9f}"] for r in d['fixed_data_curve']]
-    return [
+    current = [
       [('h2','Native forward-taught credit improves actual online updates'),
        ('table',(['Learning rule','NLL / event'],quality,[100,100])),
        ('p',f"Win across three critic initializations: mean gain{c['mean_gain']['bptt_carry']:.6f}nats/event over exact eight-event factual BPTT and{c['mean_gain']['own_refresh']:.6f}over matched own-refresh. Every critic beats both controls and TRAIN-mean credit. Credit is taught from forward forecast contrasts; no BP fit labels. Native private memory evolves causally while its weights remain frozen during deployment."),
@@ -38,3 +40,11 @@ def pages():
        ('small','Online result/checkpoint were saved before a final-print KeyError (queue exit1). Completed rows/source hashes/numerical parity verified in curie_b10_actual_utility_20261013_v1_validation.json; no training rerun or evidence overwrite.'),
        ('small','Exact two-layer/addressed state interface:88coordinates,352eligibility floats/four directions; E^Tfuturecotangent matches full-history minus future-direct derivative2.22e-16. Delayed forward teacher activations remain native hard-race computation. Globalclip/Adam boundaries retained. Theory STATE_REFRESH_AND_ACTUAL_UPDATE_CREDIT.md derives the full optimizer/direct-parameter/refreshed-state teaching derivative.')]
     ]
+
+    if action:
+        current.append([('h2','Optimizer-conditioned credit: paired native development'),
+          ('table',(['Critic initialization','Parent NLL','Conditioned NLL','Gain'],[[str(r['seed']),f"{r['parent_nll']:.9f}",f"{r['nll']:.9f}",f"{r['gain']:+.9f}"] for r in action['rows']],[39,48,54,44])),
+          ('p',f"Three independently initialized parent critics, same restored actor and128additional TRAIN utility frames, frozen16384DEV forecasts. Mean conditioned NLL{action['mean_nll']:.9f}; mean paired gain{action['mean_parent_gain']:+.9f}nats/event. Report each paired outcome; the original three-critic recipe remains retained while this conditioning rule is developed."),
+          ('p','Full refreshed-future parameter demand transported through AWS actual clip/Adam matches functional action derivatives≤2.22e-18. Sparse diagonal-plus-rank-one parameter-step metric matches four actual-proposal JVPs≤3.62e-18 on three native learner versions:64clock support entries,18,164actor parameters. Sparse metric avoids materializing an18,164by4tangent; full scalar clipping/moment contractions remain. Parameter-step metric is not forecast curvature.'),
+          ('small','Reused DEV, one shared actor/data stream;36,820parameter conditioned critics versus31,804parents, additional2048teacher replay targets/128backwards plus1024source refresh targets perfit. Original forward-teacher acquisition and actor prefit also charged. Seed19124 used functional JVP metric;19129/19130 used contracted sparse formula. No TEST/profit/ASICenergy/full-work claim. Established32targetheadline unchanged.')])
+    return current

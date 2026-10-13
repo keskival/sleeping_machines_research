@@ -6355,6 +6355,20 @@ Online result/checkpoint were saved before a final-print KeyError (queue exit1).
 
 Exact two-layer/addressed state interface:88coordinates,352eligibility floats/four directions; E^Tfuturecotangent matches full-history minus future-direct derivative2.22e-16. Delayed forward teacher activations remain native hard-race computation. Globalclip/Adam boundaries retained. Theory STATE_REFRESH_AND_ACTUAL_UPDATE_CREDIT.md derives the full optimizer/direct-parameter/refreshed-state teaching derivative.
 
+### Optimizer-conditioned credit: paired native development
+
+| Critic initialization | Parent NLL | Conditioned NLL | Gain |
+| --- | --- | --- | --- |
+| 19124 | 5.756599087 | 5.756213055 | +0.000386032 |
+| 19129 | 5.756284049 | 5.756480879 | -0.000196830 |
+| 19130 | 5.756021371 | 5.756750849 | -0.000729478 |
+
+Three independently initialized parent critics, same restored actor and128additional TRAIN utility frames, frozen16384DEV forecasts. Mean conditioned NLL5.756481594; mean paired gain-0.000180092nats/event. Report each paired outcome; the original three-critic recipe remains retained while this conditioning rule is developed.
+
+Full refreshed-future parameter demand transported through AWS actual clip/Adam matches functional action derivatives≤2.22e-18. Sparse diagonal-plus-rank-one parameter-step metric matches four actual-proposal JVPs≤3.62e-18 on three native learner versions:64clock support entries,18,164actor parameters. Sparse metric avoids materializing an18,164by4tangent; full scalar clipping/moment contractions remain. Parameter-step metric is not forecast curvature.
+
+Reused DEV, one shared actor/data stream;36,820parameter conditioned critics versus31,804parents, additional2048teacher replay targets/128backwards plus1024source refresh targets perfit. Original forward-teacher acquisition and actor prefit also charged. Seed19124 used functional JVP metric;19129/19130 used contracted sparse formula. No TEST/profit/ASICenergy/full-work claim. Established32targetheadline unchanged.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

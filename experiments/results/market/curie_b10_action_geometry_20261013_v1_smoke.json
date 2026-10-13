@@ -1,0 +1,112 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_action_geometry_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "targets": 48,
+    "updates": 3,
+    "nll": 11.8809458844082,
+    "rows": [
+      {
+        "producer_nll": 10.042609971876699,
+        "future_nll": 11.093554149797868
+      },
+      {
+        "producer_nll": 9.75010245595427,
+        "future_nll": 11.492898968026125
+      },
+      {
+        "producer_nll": 13.991048846725226,
+        "future_nll": 14.915460914069017
+      }
+    ],
+    "action_target_norm_mean": 0.10000000000000002,
+    "training": true,
+    "teacher_future_loss_max_error": 3.879740972934087e-11,
+    "teacher_frames": 3,
+    "teacher_replayed_targets": 48,
+    "refresh_targets": 24,
+    "critic_gradient_norm_mean": 0.5304396958660952,
+    "trust_ratio_mean": 1.1697913755955384e-06,
+    "wall_s": 1.5530025009647943
+  },
+  "dev": {
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765171744190046,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.2326235326417905
+      },
+      {
+        "producer_nll": 5.688248660840027,
+        "future_nll": 7.17559193042829
+      },
+      {
+        "producer_nll": 15.064479891088231,
+        "future_nll": 7.236871977643238
+      }
+    ],
+    "action_target_norm_mean": 0.0,
+    "training": false,
+    "teacher_future_loss_max_error": 0.0,
+    "teacher_frames": 0,
+    "teacher_replayed_targets": 0,
+    "refresh_targets": 24,
+    "critic_gradient_norm_mean": 0.0,
+    "trust_ratio_mean": 0.0,
+    "wall_s": 0.20745281199924648
+  },
+  "reference": {
+    "arm": "learned_refresh",
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765171818468832,
+    "future_nll": 7.215029349174479,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.2326237762511205
+      },
+      {
+        "producer_nll": 5.688248820911406,
+        "future_nll": 7.175591900758231
+      },
+      {
+        "producer_nll": 15.064479569879438,
+        "future_nll": 7.236872370514083
+      }
+    ],
+    "causal_refresh_targets": 24,
+    "teacher_worlds": 0,
+    "critic_prediction_norm_mean": 0.00676732597317341,
+    "wall_s": 0.18923379899933934,
+    "phase_wall_s": {
+      "own_credit": 0.1198897049180232,
+      "critic": 0.013989871018566191,
+      "refresh": 0.01778792403638363,
+      "future": 0.029434898926410824,
+      "optimizer": 0.0068914060248062015
+    }
+  },
+  "dev_gain": 7.427878578880609e-08,
+  "parameters": 36820,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "source_sha256": {
+    "experiments/credit/market_action_geometry_fit.py": "eb418e49be2fe709db035187c6a71802d903660bc8780b8a8ee59d28a47ab45f",
+    "experiments/credit/market_action_geometry.py": "476767b7146aed37316c835298dc2cbdb185879573327c52d68d8331f5f64b33",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc"
+  },
+  "wall_s": 3.7643231169786304,
+  "scope": "Native temporal critic plus19coordinate causal operator embedding. Actual future loss supplies issued four-action demand; four functional Adam JVPs supply parameter-step metric, damping1percent spectral max/floor1e-12, normalized output target radius0.1. Source128TRAINpairs then frozen2048DEV, same restored actor/reference/RNG. Target stopgrad; current native activations trained with MSE plus original actual-step trust.001. Four JVPs and full future teacher paid; no forecast-curvature/full learner-state/hardware claim."
+}

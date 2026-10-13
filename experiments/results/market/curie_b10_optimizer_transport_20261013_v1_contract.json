@@ -1,0 +1,192 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "transport_error": 2.214144124122741e-18,
+      "credit_derivative": [
+        -1.3623616744953584e-07,
+        1.3382427337268152e-08,
+        1.5063854669091629e-05,
+        -4.975438227612676e-07
+      ],
+      "parameter_step_metric": [
+        [
+          3.0211572039010344e-10,
+          -1.4794540694284818e-12,
+          -6.879131419850508e-13,
+          -3.25651787711443e-12
+        ],
+        [
+          -1.4794540694284818e-12,
+          2.88937124619026e-11,
+          1.1619940796499004e-11,
+          5.513026229182862e-11
+        ],
+        [
+          -6.879131419850508e-13,
+          1.1619940796499004e-11,
+          3.260342118347302e-05,
+          2.5576776162903386e-11
+        ],
+        [
+          -3.25651787711443e-12,
+          5.513026229182862e-11,
+          2.5576776162903386e-11,
+          5.074842968014808e-10
+        ]
+      ],
+      "metric_eigenvalues": [
+        2.2620850671730878e-11,
+        3.020653676687541e-10,
+        5.138074870906475e-10,
+        3.260342118349722e-05
+      ],
+      "proposals": [
+        {
+          "radius": 0.001,
+          "future_loss": 11.093577818801526,
+          "gain": 1.5820828291879252e-06,
+          "linear_predicted_gain": 4.6840508995780995e-09
+        },
+        {
+          "radius": 0.00025,
+          "future_loss": 11.0935793940377,
+          "gain": 6.846654798664531e-09,
+          "linear_predicted_gain": 1.1710127248945249e-09
+        }
+      ],
+      "gradient_coordinates": 18164,
+      "clipped": true
+    },
+    {
+      "block": 1,
+      "transport_error": 2.168404344971009e-19,
+      "credit_derivative": [
+        5.366705143562849e-05,
+        0.0003817651678200255,
+        -1.0591099478051638e-05,
+        -0.00013513135200697555
+      ],
+      "parameter_step_metric": [
+        [
+          0.004815199539306902,
+          -2.380703443717927e-09,
+          4.377573340624512e-10,
+          7.351898283571768e-09
+        ],
+        [
+          -2.380703443717927e-09,
+          0.00032570163687739513,
+          -1.5921857675092463e-09,
+          -1.3622038304631736e-09
+        ],
+        [
+          4.377573340624512e-10,
+          -1.5921857675092463e-09,
+          0.003971959327177047,
+          4.114379274248832e-09
+        ],
+        [
+          7.351898283571768e-09,
+          -1.3622038304631736e-09,
+          4.114379274248832e-09,
+          0.0015124427940645276
+        ]
+      ],
+      "metric_eigenvalues": [
+        0.000325701636873874,
+        0.0015124427940428438,
+        0.003971959327184399,
+        0.004815199539324758
+      ],
+      "proposals": [
+        {
+          "radius": 0.001,
+          "future_loss": 11.492875931796302,
+          "gain": 3.902541543254756e-07,
+          "linear_predicted_gain": 3.923985483580641e-07
+        },
+        {
+          "radius": 0.00025,
+          "future_loss": 11.492876224108507,
+          "gain": 9.79419496616174e-08,
+          "linear_predicted_gain": 9.809963708951602e-08
+        }
+      ],
+      "gradient_coordinates": 18164,
+      "clipped": true
+    },
+    {
+      "block": 2,
+      "transport_error": 8.131516293641283e-20,
+      "credit_derivative": [
+        -8.404091017124538e-05,
+        0.00010238133383072333,
+        -9.695961312808635e-05,
+        -0.0001007199696745376
+      ],
+      "parameter_step_metric": [
+        [
+          0.0010815102171687508,
+          1.9251539391380677e-08,
+          -3.333186741071724e-09,
+          -2.131861201043939e-09
+        ],
+        [
+          1.9251539391380677e-08,
+          0.00020447730059913274,
+          -2.008215315571986e-08,
+          1.0672049605638151e-08
+        ],
+        [
+          -3.333186741071724e-09,
+          -2.008215315571986e-08,
+          0.0019765364016497058,
+          1.4889510221479568e-09
+        ],
+        [
+          -2.131861201043939e-09,
+          1.0672049605638151e-08,
+          1.4889510221479568e-09,
+          0.0002617143998036495
+        ]
+      ],
+      "metric_eigenvalues": [
+        0.00020447729795910108,
+        0.0002617144017866774,
+        0.0010815102175844632,
+        0.0019765364018909967
+      ],
+      "proposals": [
+        {
+          "radius": 0.001,
+          "future_loss": 14.91546323449637,
+          "gain": 1.599661203499636e-07,
+          "linear_predicted_gain": 1.5995254008361613e-07
+        },
+        {
+          "radius": 0.00025,
+          "future_loss": 14.915463354409741,
+          "gain": 4.005274867324715e-08,
+          "linear_predicted_gain": 3.998813502090403e-08
+        }
+      ],
+      "gradient_coordinates": 18164,
+      "clipped": true
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_optimizer_transport.py": "76f29372ff9dffd702f7270b14456b686403b8de5c58ee06a0499770c61ccd1d",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc",
+    "sleeping_machines/learning/adam_credit_transport.py": "1381918e3f93269b4b6f5bdce7926833e3d584308b67c8a6c1193a1a0c87ff85"
+  },
+  "wall_s": 2.8719107010401785,
+  "scope": "Three TRAIN learner versions; exact native future parameter/state demand transported through AWS actual clip/Adam to four clock actions, compared with functional derivative. Parameter-step pullback uses four exact JVPs, not forecast curvature. Damped proposals inspect already revealed TRAIN future labels: oracle teacher diagnostic only, no deployable quality win. Own gradients/incoming state/old moments issued constants. O(n) transport and global contraction paid; no clockless/full-work claim."
+}

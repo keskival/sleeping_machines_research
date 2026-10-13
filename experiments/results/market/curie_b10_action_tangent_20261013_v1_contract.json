@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "parameter_metric_error": 3.611748487092337e-18,
+      "gradient_coordinates": 18164,
+      "action_columns": 4
+    },
+    {
+      "block": 1,
+      "parameter_metric_error": 3.469446951953614e-18,
+      "gradient_coordinates": 18164,
+      "action_columns": 4
+    },
+    {
+      "block": 2,
+      "parameter_metric_error": 2.710505431213761e-19,
+      "gradient_coordinates": 18164,
+      "action_columns": 4
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/check_market_adam_action_tangent.py": "d3429c571c1363fe7ad0ff8877672b896451a3c209e61fc0ac99cc4c78225bb5",
+    "experiments/credit/market_adam_action_tangent.py": "1d5d02601a7f30063f523ee8fd0355667f685a43eb4bea5615a250c9a30376f9",
+    "experiments/credit/market_optimizer_transport.py": "76f29372ff9dffd702f7270b14456b686403b8de5c58ee06a0499770c61ccd1d",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc"
+  },
+  "wall_s": 2.691838161961641,
+  "scope": "Analytic O(n*4) action tangent Gram matches four functional actual-proposal JVPs on three real native actorAdam states. Global clipping and moment versions retained; removes need for four dual proposal traversals, no measured whole-fit FLOP/quality claim."
+}

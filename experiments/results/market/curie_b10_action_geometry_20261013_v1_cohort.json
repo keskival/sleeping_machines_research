@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "seed": 19124,
+      "nll": 5.756213055078899,
+      "parent_nll": 5.756599086649787,
+      "gain": 0.0003860315708887896
+    },
+    {
+      "seed": 19129,
+      "nll": 5.756480879084658,
+      "parent_nll": 5.756284049073683,
+      "gain": -0.00019683001097536845
+    },
+    {
+      "seed": 19130,
+      "nll": 5.756750848856273,
+      "parent_nll": 5.7560213713251525,
+      "gain": -0.0007294775311201818
+    }
+  ],
+  "mean_nll": 5.756481594339943,
+  "sd_nll": 0.0002688976021428188,
+  "mean_parent_gain": -0.00018009199040225354,
+  "sd_parent_gain": 0.0005579428825298741,
+  "all_improve": false,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_action_geometry_20261013_v1_full.json": "2f3f7aa9d19d100bfa201b41212b51c0a0807c6256ba1cd67cc362535bcf0130",
+    "experiments/results/market/curie_b10_action_geometry_20261013_s19129_v1.json": "b076c7e9f4e20cd63c06d498c792f6c1f857648d938e9bc822511e1656eb3d15",
+    "experiments/results/market/curie_b10_action_geometry_20261013_s19130_v1.json": "4a4f80e5f06e17db6efcbf007cde9cf734100a7f21e5da6aefda842f6fc5ab19",
+    "experiments/results/market/curie_b10_optimizer_transport_20261013_v1_contract.json": "d0c171f2b0b2ad7d9459b1f0668ca5e7dfbe0a42aa8b8880d2f7c1ece7ca1aa5",
+    "experiments/results/market/curie_b10_action_tangent_20261013_v1_contract.json": "d7af83c1d7de7f874ed98409560e7efae8bec9696f58ff53e4bbfacdd280f0f6",
+    "experiments/results/market/curie_b10_sparse_action_metric_20261013_v1_contract.json": "d3362c2c52aac718427977d2d5c646cfb087e15754df0c1d6b5db7ee17e12f48",
+    "experiments/results/market/curie_b10_action_geometry_20261013_v1_fit.json": "392466dc5e99dffe22784826d9a422f5532b83bdbf1e0a2e32bc7be406d3b0f6"
+  },
+  "scope": "Three independent acquired critic initializations; one common actor and reusedTRAIN/DEV8+8protocol. Each critic receives128additional causal actualfuture teacher frames then frozen16384DEV,36,820parameters versus31,804parents. Extra teacher/backward/optimizer geometry work charged separately; no TEST/fullwork/energy claim. First seed uses exact four JVP metric, confirmations contracted sparse metric with native parity contracts. Do not pool with different32targetleadingmarketprotocol."
+}
