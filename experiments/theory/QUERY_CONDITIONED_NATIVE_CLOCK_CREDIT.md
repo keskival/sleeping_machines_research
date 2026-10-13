@@ -2,10 +2,13 @@
 
 B10, 13 October 2026. Development design and implementation, not fitted evidence.
 The fixed three-parent addressed/uniform confirmation completes unchanged.
-The second addressed fit has completed: parent19129 DEV loss0.000037807
-relative to its retained parent. This already rules out an all-parent win for
-the current addressed member; the paired uniform arm and third parent still
-complete without a quality veto. The earlier parent19124 gain remains valid.
+The second pair has completed: parent19129 addressed DEV5.756321856 loses
+0.000037807 relative to its retained parent, but beats the energy-bound uniform
+member5.756482488 by0.000160632. Both completed pairs favor addressed over
+uniform; only19124 improves its parent. This rules out an all-parent win for
+the current addressed member; the third pair completes without a quality veto.
+The earlier parent19124 gain remains valid. This is reused-data development,
+not evidence for population-wide improvement or a causal attribution to rank.
 
 ## Concrete failure and proposed substitution
 
