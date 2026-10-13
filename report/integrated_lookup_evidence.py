@@ -176,4 +176,14 @@ def blocks():
         result.extend([('p','Fixed-prior fresh-acquisition scaling. '+c['scope']),
             ('table',(['Pool','Fit targets','Selected NLL','Final NLL','Train seconds','ms/target','Writes/target','Keys/target'],rows,[12,28,28,28,28,24,24,24])),
             ('p','Evidence '+packet.stem+'.')])
+    packets=[ROOT/f'experiments/results/diagnostics/aws_fresh_scaling_8m_confirmation_20261013_s{seed}_v1.json' for seed in (8,7)]
+    completed=next((p for p in packets if p.exists()),None)
+    if completed:
+        c=json.loads(completed.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[str(r['seed']),f"{r['nll_at_512k']:.6f}",f"{r['nll_at_2m']:.6f}",f"{r['final_nll']:.6f}",
+               f"{r['gain_2m_to_8m']:+.6f}",f"{r['training_s']:.3f}",f"{r['ms_per_target']:.4f}"] for r in c['rows']]
+        result.extend([('p','Independent-seed fixed-prior acquisition confirmation. '+c['scope']),
+            ('table',(['Seed','512k final NLL','2M final NLL','8M final NLL','2M to8M gain','Train seconds','ms/target'],rows,[12,30,30,30,30,30,24]))])
     return result
