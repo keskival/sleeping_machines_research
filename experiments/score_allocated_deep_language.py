@@ -9,6 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'experiments'))
 import allocated_depth_token_language as driver
 from public_token_scoring import score
+from sleeping_machines.connected_depth_risk import check_cross_audit_contract
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
     parser.add_argument('--tag',required=True)
     parser.add_argument('--run',required=True)
     a=parser.parse_args();driver.torch.set_num_threads(1);begin=time.monotonic()
+    check_cross_audit_contract()
     base=ROOT/f'experiments/results/token_language/{a.run}'
     packet=json.loads(base.with_suffix('.json').read_text())
     assert packet['status']=='completed'
@@ -54,6 +56,7 @@ def main():
                 parameters=packet['parameters'],targets=packet['presentations_total'],
                 final_development_nll=replay,long_history_dev=long_history,
                 incoming_content_path_cuts=paths,restored_score_parity=True,
+                cross_audit_risk_math_contract='passed depth8/16 finite-sum and parameter-gradient parity; no integrated credit fit',
                 checkpoint_replay_targets=args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
                 long_history_diagnostic_scored_targets=8192*(args.depth+2),
                 diagnostic_scored_targets=8192*(args.depth+2)+args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
@@ -63,7 +66,7 @@ def main():
                 scored_keys_per_target=args.depth*args.heads*args.pool,
                 teacher_work=packet['teacher_work'],allocation=packet['depth_credit_allocation'],
                 input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in (base.with_suffix('.json'),base.with_suffix('.pt'))},
-                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language.py','experiments/public_token_scoring.py')},
+                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py')},
                 wall_s=time.monotonic()-begin,
                 scope='Single seed, frozen final checkpoint, exact replay and8192 reusedDEV targets with1024 disjoint histories. '
                       'Per-stage frozen incoming-content cuts retain bias/clocks/banks/arrival inputs and share issued random tapes; '
