@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "mode": "training_values",
+      "wall_s": 0.04846638499293476,
+      "values": [
+        -0.8533101343099466,
+        -1.06922300330392,
+        -1.25357658940549,
+        -1.3730490173303012,
+        -0.20420338214824213,
+        -0.804263886760898,
+        -0.31224090837919827,
+        -0.6670019744349446
+      ],
+      "selected_updates": 64,
+      "candidate_scores": 128,
+      "counterfactual_values": 128,
+      "rng_sha256": "0b6cb4b4726e0ee7da3b06d1f465b31532e671719b2d2c96767802c78b4bc4dc"
+    },
+    {
+      "mode": "selected_values",
+      "wall_s": 0.03599717598990537,
+      "values": [
+        -0.8533101343099466,
+        -1.06922300330392,
+        -1.25357658940549,
+        -1.3730490173303012,
+        -0.20420338214824213,
+        -0.804263886760898,
+        -0.31224090837919827,
+        -0.6670019744349446
+      ],
+      "selected_updates": 64,
+      "candidate_scores": 128,
+      "counterfactual_values": 0,
+      "rng_sha256": "0b6cb4b4726e0ee7da3b06d1f465b31532e671719b2d2c96767802c78b4bc4dc"
+    }
+  ],
+  "output_max_error": 0.0,
+  "numerical_state_max_error": 0.0,
+  "source_sha256": {
+    "experiments/credit/native_admission_inference_contract.py": "0800c7c212c824c7737a8acc7a79b34ccde272fb083a5f17f96a111fbb0f47d4",
+    "experiments/credit/market_native_remote_admission.py": "5c1cb9f9051174d5fd565d303165b8f36619878abda2e1a4820171d2276ba3a4",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/market/NATIVE_INFERENCE_ADMISSION_CONTRACT.md": "be5b0bd4a377504c05788c36c8dd35687793ff23a236de5657ea0654249e1ebf"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "whole_wall_s": 0.9765957190247718,
+  "peak_rss_kb": 382684,
+  "scope": "Actual market-derived paired-credit receipts and native admission body with nonzero diagnostic head. Frozen parameters/no-gradient forward; same stochastic draw stream. Selected-only values preserve outputs/memories/arrivals/contexts and RNG, while keys still scored. Eight receipt correctness/operation-count contract; not trained-controller trajectory, whole-market learning latency or hardware energy benchmark."
+}
