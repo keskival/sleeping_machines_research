@@ -1,5 +1,5 @@
 """R1 bounded frozen-state history diagnostic after exact ordered confirmations."""
-import time
+import time,subprocess
 import continue_window_replay as queue
 from continue_fresh_scaling import admit
 ROOT=queue.ROOT
@@ -15,6 +15,7 @@ def main():
     tag='aws_acquired_history_transfer_20261013_v1';result=f'experiments/results/diagnostics/{tag}.json'
     admit(tag,driver,f'--tag {tag}',result,sources,[],True)
     queue.wait_result(ROOT/result)
-    print('Frozen history intervention complete; inspect signed history value before reporting',flush=True)
+    subprocess.run([str(ROOT/'.venv-docker/bin/python'),str(ROOT/'scripts/publish_acquired_history_transfer.py')],cwd=ROOT,check=True)
+    print('Frozen history intervention complete and signed results published',flush=True)
 
 if __name__=='__main__':main()
