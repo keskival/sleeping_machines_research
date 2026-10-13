@@ -417,10 +417,13 @@ its event-based memory continues to evolve. It applies extra credit on
 37, 9, 7 and 4 updates in the four successive stream segments. Updating its
 weights online produced worse forecasts in this experiment.
 
-\textbf{Measured cost.} The guidance prototype takes 105.4 seconds, versus
-79.7 for standalone temporal traces and 63.0 for backpropagation. It wins
-quality and is slower. Remote sensitivities are still computed before deciding
-whether to use them; this is not a saved-compute or energy result.
+\textbf{Asynchronous-chip relevance.} A separate early-request version improves
+forecasts over our temporal traces (5.737456 vs 5.737492), while computing remote
+credit in 257 of 512 windows. Remote matrix work falls \textbf{49.8\%}, from 1.762 to 0.884 billion
+FLOPs, avoiding at least 5.745 million credit-state read/write scalar accesses.
+This counts one component; guidance, teaching and optimizer work are additional.
+Native races use local readiness joins; learning retains 32-target update boundaries.
+CPU timing describes the prototype, not asynchronous-chip advantage.
 
 {\footnotesize\color{muted}One restored 18,164-parameter predictor and one
 31,753-parameter guidance initialization on reused 25 August development data;

@@ -1,0 +1,162 @@
+{
+  "status": "completed_logical_accounting",
+  "battle": "B10",
+  "rows": [
+    {
+      "arm": "own",
+      "nll": 5.737491979714852,
+      "scored_targets": 16384,
+      "remote_events": 0,
+      "remote_matrix_flops": 0,
+      "remote_matrix_flops_per_scored_target": 0.0,
+      "remote_bank_read_write_values_lower_bound": 0,
+      "numpy_bank_access_values": 0,
+      "native_scored_keys": 0,
+      "native_selected_writes": 0,
+      "native_value_proposals": 0,
+      "extra_future_teacher_scored_targets": 0,
+      "actor_adam_updates": 512,
+      "native_adam_updates": 0
+    },
+    {
+      "arm": "projected",
+      "nll": 5.73769735637646,
+      "scored_targets": 16384,
+      "remote_events": 16384,
+      "remote_matrix_flops": 1761607680,
+      "remote_matrix_flops_per_scored_target": 107520.0,
+      "remote_bank_read_write_values_lower_bound": 11534336,
+      "numpy_bank_access_values": 28835840,
+      "native_scored_keys": 0,
+      "native_selected_writes": 0,
+      "native_value_proposals": 0,
+      "extra_future_teacher_scored_targets": 0,
+      "actor_adam_updates": 512,
+      "native_adam_updates": 0
+    },
+    {
+      "arm": "frozen",
+      "nll": 5.737476597684075,
+      "scored_targets": 16384,
+      "remote_events": 7744,
+      "remote_matrix_flops": 832634880,
+      "remote_matrix_flops_per_scored_target": 50820.0,
+      "remote_bank_read_write_values_lower_bound": 5451776,
+      "numpy_bank_access_values": 13629440,
+      "native_scored_keys": 8192,
+      "native_selected_writes": 4096,
+      "native_value_proposals": 4096,
+      "extra_future_teacher_scored_targets": 0,
+      "actor_adam_updates": 512,
+      "native_adam_updates": 0
+    },
+    {
+      "arm": "online",
+      "nll": 5.737455908886321,
+      "scored_targets": 16384,
+      "remote_events": 8224,
+      "remote_matrix_flops": 884244480,
+      "remote_matrix_flops_per_scored_target": 53970.0,
+      "remote_bank_read_write_values_lower_bound": 5789696,
+      "numpy_bank_access_values": 14474240,
+      "native_scored_keys": 8192,
+      "native_selected_writes": 4096,
+      "native_value_proposals": 4352,
+      "extra_future_teacher_scored_targets": 2048,
+      "actor_adam_updates": 512,
+      "native_adam_updates": 32
+    }
+  ],
+  "rank": 4,
+  "remote_bank_values": 352,
+  "previous_bank_values": 352,
+  "matrix_maps": [
+    {
+      "name": "layer0.write",
+      "rows": 32,
+      "columns": 32
+    },
+    {
+      "name": "layer0.gate",
+      "rows": 16,
+      "columns": 32
+    },
+    {
+      "name": "layer0.read",
+      "rows": 32,
+      "columns": 32
+    },
+    {
+      "name": "layer0.mlp0",
+      "rows": 64,
+      "columns": 32
+    },
+    {
+      "name": "layer0.mlp2",
+      "rows": 32,
+      "columns": 64
+    },
+    {
+      "name": "layer1.write",
+      "rows": 32,
+      "columns": 32
+    },
+    {
+      "name": "layer1.gate",
+      "rows": 16,
+      "columns": 32
+    },
+    {
+      "name": "layer1.read",
+      "rows": 32,
+      "columns": 32
+    },
+    {
+      "name": "layer1.mlp0",
+      "rows": 64,
+      "columns": 32
+    },
+    {
+      "name": "layer1.mlp2",
+      "rows": 32,
+      "columns": 64
+    },
+    {
+      "name": "marks.value",
+      "rows": 4,
+      "columns": 32
+    }
+  ],
+  "matrix_macs_per_remote_event": 53760,
+  "common_acquisition_remote_matrix_flops": 147947520,
+  "scalar_bytes_conventions": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "synchronization": {
+    "global_periodic_clock_required": false,
+    "native_local_joins": "Head arrivals joined per layer; prior source context readiness joined locally.",
+    "current_optimizer_barrier": "32-target mean gradient, global norm clipping and shared Adam parameter-version boundary.",
+    "implication": "Remote bank activity is conditional and localizable; prototype still has window-level reductions. An entirely clockless distributed optimizer is not implemented."
+  },
+  "exclusions": [
+    "own-trace and actor arithmetic",
+    "native controller arithmetic and history-access traffic",
+    "remote elementwise arithmetic, reductions and special functions",
+    "additional old-state cotangent arithmetic",
+    "proposal and future-teacher arithmetic",
+    "parameter reads and cache hierarchy",
+    "optimizer arithmetic and traffic"
+  ],
+  "scope": "Exact shape/call-count remote-matrix arithmetic subtotal, two FLOPs/MAC. NumPy accesses count copying sensitivity to previous (2S), reading previous for advance (S), writing new (S), reading previous for historical projection (S); excludes temporaries. Fused lower bound2S read/update-write values, not DRAM measurements. Multiply logical values by declared scalar bytes, not assumed hardware precision. All-key scoring remains charged; current AddressedEventHeads evaluates key_read for each scored candidate and does not use the other evaluator cached-key optimization. No complete-work, energy, ASIC-speed or fully clockless training win follows from this subtotal.",
+  "input_sha256": {
+    "experiments/results/market/curie_b10_early_request_20261013_v1_fit.json": "82c193bbdf7787d768326810644da3ec1a66ce94d70b5107e89e9816683ad286"
+  },
+  "source_sha256": {
+    "experiments/credit/market_early_hardware_accounting.py": "cc3eb40228d512762e9fa36c05cbdbabd8248d1dac70b54dd37f162d1da2c864",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3"
+  }
+}

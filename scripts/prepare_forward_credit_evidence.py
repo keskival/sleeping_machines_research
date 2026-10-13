@@ -141,6 +141,14 @@ def main():
         parents[str(path.relative_to(ROOT))]=sha(path)
         native_audits[tag]=record
     packet['native_remote_admission_audits']=native_audits
+    early_credit={}
+    for tag in ['curie_b10_early_request_20261013_v1_fit','curie_b10_early_request_20261013_v1_contract','curie_b10_early_hardware_20261013_v1']:
+        path=ROOT/f'experiments/results/market/{tag}.json'
+        if not path.exists():continue
+        record=json.loads(path.read_text());assert record['status'] in ['completed','completed_logical_accounting']
+        for source,digest in record['source_sha256'].items():assert sha(ROOT/source)==digest,source
+        parents[str(path.relative_to(ROOT))]=sha(path);early_credit[tag]=record
+    packet['native_early_credit_activity']=early_credit
     repeated=ROOT/'experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json'
     if repeated.exists():
         record=json.loads(repeated.read_text());assert record['status']=='completed'
