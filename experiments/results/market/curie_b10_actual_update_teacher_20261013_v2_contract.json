@@ -1,0 +1,108 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "parameter_error": 2.7755575615628914e-17,
+      "moment_error": 2.710505431213761e-20,
+      "future_loss_error": 8.881784197001252e-15,
+      "credit_derivative": [
+        -1.3623616744953584e-07,
+        1.3382427337268152e-08,
+        1.5063854669091629e-05,
+        -4.975438227612676e-07
+      ],
+      "directional_derivative": 6.05358694162982e-06,
+      "finite_difference": [
+        {
+          "epsilon": 0.001,
+          "derivative": 0.0007915396436075639,
+          "error": 0.000785486056665934
+        },
+        {
+          "epsilon": 0.0001,
+          "derivative": 7.564953108385453e-06,
+          "error": 1.511366166755633e-06
+        },
+        {
+          "epsilon": 1e-05,
+          "derivative": 4.268940756446682e-06,
+          "error": 1.7846461851831378e-06
+        }
+      ]
+    },
+    {
+      "block": 1,
+      "parameter_error": 1.3877787807814457e-17,
+      "moment_error": 1.6940658945086007e-21,
+      "future_loss_error": 3.540101545240759e-11,
+      "credit_derivative": [
+        5.366705143562849e-05,
+        0.0003817651678200255,
+        -1.0591099478051638e-05,
+        -0.00013513135200697555
+      ],
+      "directional_derivative": -4.5817935627017674e-05,
+      "finite_difference": [
+        {
+          "epsilon": 0.001,
+          "derivative": -4.605762171649985e-05,
+          "error": 2.3968608948217885e-07
+        },
+        {
+          "epsilon": 0.0001,
+          "derivative": -4.635115402606971e-05,
+          "error": 5.332183990520338e-07
+        },
+        {
+          "epsilon": 1e-05,
+          "derivative": -4.324052227389074e-05,
+          "error": 2.5774133531269335e-06
+        }
+      ]
+    },
+    {
+      "block": 2,
+      "parameter_error": 2.7755575615628914e-17,
+      "moment_error": 1.3552527156068805e-20,
+      "future_loss_error": 2.6473045977581933e-11,
+      "credit_derivative": [
+        -8.404091017124538e-05,
+        0.00010238133383072333,
+        -9.695961312808635e-05,
+        -0.0001007199696745376
+      ],
+      "directional_derivative": -8.625563985963054e-05,
+      "finite_difference": [
+        {
+          "epsilon": 0.001,
+          "derivative": -8.653375616063386e-05,
+          "error": 2.781163010033192e-07
+        },
+        {
+          "epsilon": 0.0001,
+          "derivative": -8.636223292057821e-05,
+          "error": 1.065930609476704e-07
+        },
+        {
+          "epsilon": 1e-05,
+          "derivative": -9.093250596947654e-05,
+          "error": 4.676866109846e-06
+        }
+      ]
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc",
+    "experiments/credit/market_future_credit_updates.py": "c6a0b33ad1bf9b7292298a2f934ddd6e8b1479090ee08a392b94de33f3263e7f",
+    "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0"
+  },
+  "wall_s": 2.096776752965525,
+  "scope": "Three real actorAdamversions, own gradients treated as issued constants; exact functional clip1/Adam.0003, refreshed8observedproducer events and8futurelosses. Full teacher differentiates future-direct parameters, refreshed state and optimizer. Finite differences use actual ordinaryAdam worlds, including moments. Factual differentiable action only; native hard-route alternative estimator remains separate. Paid contract, no fitted critic/quality/data-efficiency/hardware claim."
+}

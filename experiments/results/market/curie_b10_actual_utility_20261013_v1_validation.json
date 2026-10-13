@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "input_sha256": {
+    "experiments/results/market/curie_b10_actual_update_teacher_20261013_v2_contract.json": "8eba8e53096fc08eec45b0895465134971752ec15e7b91c28c9e1129540cbacd",
+    "experiments/results/market/curie_b10_actual_utility_20261013_v1_smoke.json": "3891e92bce74d1c26dd6a3c13d9a229bc357067251d78cbc1326aa3dcc1f4f0c",
+    "experiments/results/market/curie_b10_actual_utility_20261013_v2_fit.json": "e1d66fae19330e3ae490728612afc9c064e0e1ec43fc153d8c6d596abaa3e281",
+    "experiments/results/market/curie_b10_actual_utility_20261013_v3_fit.json": "765cca56946affccad0ebf792bdebe9b06357f14e69039519f73d5db11edf59b",
+    "experiments/results/market/curie_b10_actual_utility_20261013_v1_online.json": "104fb2de77d2d61f2c08efb185bf7e5b70467f45c6bdb16f96818494b8f7f177"
+  },
+  "results": [
+    {
+      "tag": "curie_b10_actual_utility_20261013_v1_smoke",
+      "targets": 48,
+      "nll": 7.765171466118358,
+      "reference_nll": 7.765171818468832,
+      "gain": 3.52350474130958e-07,
+      "teacher_parity": 0.0
+    },
+    {
+      "tag": "curie_b10_actual_utility_20261013_v2_fit",
+      "targets": 2048,
+      "nll": 5.703270648331354,
+      "reference_nll": 5.703270447703627,
+      "gain": -2.0062772687623465e-07,
+      "teacher_parity": 0.0
+    },
+    {
+      "tag": "curie_b10_actual_utility_20261013_v3_fit",
+      "targets": 2048,
+      "nll": 5.703272409107204,
+      "reference_nll": 5.703270447703627,
+      "gain": -1.9614035773329874e-06,
+      "teacher_parity": 0.0
+    },
+    {
+      "tag": "curie_b10_actual_utility_20261013_v1_online",
+      "targets": 16384,
+      "nll": 5.756685230808716,
+      "reference_nll": 5.756599086649787,
+      "gain": -8.614415892882477e-05,
+      "teacher_parity": 1.4264145420384011e-11
+    }
+  ],
+  "decision": "Retain original one-pass critic; neither offline actual-utility fit nor online utility adaptation improves its actual forecast NLL.",
+  "execution_note": "Online run completed 1024 update/forecast frames and saved JSON/checkpoint before a final print KeyError. Queue exit1 is a logging failure; validated completed numerical artifacts retained. Failed original derivative contract is preserved in queue logs.",
+  "scope": "Reused DEV, one actor/critic initialization; functional actual Adam derivative with issued own gradients/state/moments, current critic activations only. No total-work advantage or new investor quality headline."
+}

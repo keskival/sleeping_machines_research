@@ -455,3 +455,7 @@ Native update dependency validity: [local credit read sets and version stamps](t
 [Random-ray forward credit teaching](theory/RANDOM_RAY_FORWARD_CREDIT_TEACHING.md): two-world conditional gradient identity and variance bound; one/two-ray acquisition fails to retain quality. Fixed-label reuse improves credit prediction, while actual-update utility selects the one-pass recipe.
 
 [Actual optimizer credit geometry](theory/ACTUAL_OPTIMIZER_CREDIT_GEOMETRY.md) derives stabilized global clipping plus diagonal Adam/moment cotangent transport and update-space credit risk. Reusable R1 numerical integration gate, retaining complete-vector synchronization and whole-learner future demands; no new critic fit.
+
+[Actual future utility implementation](market/ACTUAL_FUTURE_UTILITY_PROTOCOL.md): exact functional clip/Adam plus refreshed-state/direct-future paths pass forward parity; two offline fits and full16384event causal online adaptation slightly worsen retained critic utility. Prioritize optimizer-aligned action geometry and temporal learner credit, retaining strongest completed forecasts.
+
+[Causal action-space credit](theory/CAUSAL_ACTION_SPACE_CREDIT.md) separates parameter-step trust from forecast-curvature geometry and derives future learner-state cotangents, including optimizer moments. Next integration gate compares AWS matrix-free transport to the functional actual-update teacher; all synchronization/teacher work charged.
