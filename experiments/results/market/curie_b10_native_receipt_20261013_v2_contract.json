@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "null_forecast_error": 0.0,
+  "null_factual_rng_parity": true,
+  "alias_rows": [
+    {
+      "block": 1,
+      "token_max_difference": 0.8244008139161605,
+      "node_tokens": 32
+    },
+    {
+      "block": 2,
+      "token_max_difference": 0.37299685451799336,
+      "node_tokens": 32
+    }
+  ],
+  "total_parameters": 63608,
+  "trainable_parameters": 31804,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "source_sha256": {
+    "experiments/credit/check_native_optimizer_receipts.py": "529951ae41b5ff4b5916060f18bef7c797c50ceeca4d2a04ee9a054205948d3f",
+    "experiments/credit/native_optimizer_receipts.py": "41cd661ad8b4541871530e2c1245bf3b66630d0eeec10bf269e26ebc76bc162f",
+    "experiments/credit/native_receipt_evaluation.py": "f8eee2c85fe13db4414924239a4d15ff65efffff3c71fea47c7be34700b372da"
+  },
+  "wall_s": 2.6038522589951754,
+  "scope": "Three48DEVtarget null-path updates and two momentpermutation cuts. Zero residual reproduces parent forecasts/factualrace RNG exactly;32mode tokens distinguish former pooled-context aliases. No fittedquality/hardwarewin. Private native clocks/newbanks/parentcapacity paid; macroglobalclip retained."
+}

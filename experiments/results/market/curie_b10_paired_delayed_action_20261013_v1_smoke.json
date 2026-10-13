@@ -1,0 +1,150 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_paired_delayed_action_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "frames": 3,
+    "targets": 96,
+    "updates": 6,
+    "critic_updates": 3,
+    "accepted": 1,
+    "sign_reversals": 1,
+    "rows": [
+      {
+        "frame": 0,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -3.2232527757969365e-09,
+        "gain_weight": 0.8779410707049351,
+        "predictable_gain_scale": 0.0001,
+        "accepted": true,
+        "gain": 8.779410707049351e-05,
+        "short_gain": 0.00017356362448950335,
+        "sign_reversal": false,
+        "early_nll": 11.093554149797868,
+        "late_nll": 10.621500726940535,
+        "source_nll": 10.594791393888908,
+        "critic_grad_norm": 2.6178262730604946,
+        "future_moment_distance": 0.003449157623850948,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 1,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -5.029722593974384e-08,
+        "gain_weight": 0.0,
+        "predictable_gain_scale": 9.938970535352469e-05,
+        "accepted": false,
+        "gain": -4.53140918033057e-06,
+        "short_gain": 1.982890167617768e-05,
+        "sign_reversal": true,
+        "early_nll": 14.915461142353049,
+        "late_nll": 12.001428934984645,
+        "source_nll": 13.227341896483608,
+        "critic_grad_norm": 0.0,
+        "future_moment_distance": 0.004773683119450822,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 2,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -1.7009768971121275e-07,
+        "gain_weight": 0.0,
+        "predictable_gain_scale": 9.464679054486498e-05,
+        "accepted": false,
+        "gain": -1.8411690250630386e-05,
+        "short_gain": -9.905385365893693e-05,
+        "sign_reversal": false,
+        "early_nll": 7.361154663682891,
+        "late_nll": 8.239900222283055,
+        "source_nll": 6.767044113755615,
+        "critic_grad_norm": 0.0,
+        "future_moment_distance": 0.006922119012061343,
+        "first_future_parity": 0.0
+      }
+    ],
+    "counterfactual_worlds": 3,
+    "counterfactual_scored_targets": 72,
+    "counterfactual_refresh_targets": 48,
+    "counterfactual_own_gradient_targets": 24,
+    "factual_refresh_targets": 48,
+    "wall_s": 1.7844054399756715
+  },
+  "dev": {
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765170808678447,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.232623825755688
+      },
+      {
+        "producer_nll": 5.68824885352423,
+        "future_nll": 7.175591333829386
+      },
+      {
+        "producer_nll": 15.064477999311979,
+        "future_nll": 7.236868367150694
+      }
+    ],
+    "training": false,
+    "teacher_future_loss_max_error": 0.0,
+    "teacher_frames": 0,
+    "teacher_replayed_targets": 0,
+    "refresh_targets": 24,
+    "critic_gradient_norm_mean": 0.0,
+    "trust_ratio_mean": 0.0,
+    "wall_s": 0.20155977096874267
+  },
+  "reference": {
+    "arm": "learned_refresh",
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765171818468832,
+    "future_nll": 7.215029349174479,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.2326237762511205
+      },
+      {
+        "producer_nll": 5.688248820911406,
+        "future_nll": 7.175591900758231
+      },
+      {
+        "producer_nll": 15.064479569879438,
+        "future_nll": 7.236872370514083
+      }
+    ],
+    "causal_refresh_targets": 24,
+    "teacher_worlds": 0,
+    "critic_prediction_norm_mean": 0.00676732597317341,
+    "wall_s": 0.18426185403950512,
+    "phase_wall_s": {
+      "own_credit": 0.11631351499818265,
+      "critic": 0.013569406990427524,
+      "refresh": 0.017679399985354394,
+      "future": 0.029134971962776035,
+      "optimizer": 0.006348567025270313
+    }
+  },
+  "dev_gain": 1.0097903846428835e-06,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "source_sha256": {
+    "experiments/credit/market_delayed_action_teacher_paired.py": "b152518711ecea75780247cb80aeaf62a34bbda1aa6fe2a5cb179b5321164387",
+    "experiments/credit/market_actual_utility_fit_v2.py": "a07b59e0768f00aaf4c527af360f8f8267043b5afce00492b55a294cf952c227",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc",
+    "experiments/credit/market_future_credit_updates.py": "c6a0b33ad1bf9b7292298a2f934ddd6e8b1479090ee08a392b94de33f3263e7f"
+  },
+  "wall_s": 3.892391777015291,
+  "scope": "Native temporal critic plus causal operator context, original actor. One finite spherical radius0.5 normalized-action alternative per32TRAINevents; two actual actorAdamupdates recomputed in each world with pairedfuture native race randomness; global RNG restored to factual nextstate, teacherbranches do not advance it, subsequent native policy responds. Score24postaction targets before current critic learns accepted action target, weighted by positive measured utilitygain divided by predictable past gain EMA(floorinitial1e-4,decay0.95). Factual source trajectory retained regardless of teacher choice, stopgrad delayed label. No exact-BP imitation/learner-unroll derivative/TEST.64sourceframes/2048events, frozen2048DEV, singlecritic; counterfactual own learning/refresh/native work additionally charged. Unknown biases and scaling not inferred from one development fit."
+}
