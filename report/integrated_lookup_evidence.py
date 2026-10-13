@@ -186,4 +186,12 @@ def blocks():
                f"{r['gain_2m_to_8m']:+.6f}",f"{r['training_s']:.3f}",f"{r['ms_per_target']:.4f}"] for r in c['rows']]
         result.extend([('p','Independent-seed fixed-prior acquisition confirmation. '+c['scope']),
             ('table',(['Seed','512k final NLL','2M final NLL','8M final NLL','2M to8M gain','Train seconds','ms/target'],rows,[12,30,30,30,30,30,24]))])
+    transfer=ROOT/'experiments/results/diagnostics/aws_fresh_scaling_transfer_20261013_v1.json'
+    if transfer.exists():
+        c=json.loads(transfer.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[str(r['seed']),r['acquisition'],str(r['scored_targets']),f"{r['transfer_nll']:.6f}",f"{r['inference_s']:.3f}"] for r in c['rows']]
+        result.extend([('p',f"Frozen acquired-learning transfer: paired gain{c['paired_gain_mean']:+.6f}±{c['paired_gain_sd']:.6f}. "+c['scope']),
+            ('table',(['Seed','Acquisition','Scored targets','New DEV NLL','Inference seconds'],rows,[16,32,40,40,40]))])
     return result
