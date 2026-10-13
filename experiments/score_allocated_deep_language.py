@@ -33,9 +33,30 @@ def main():
     replay=driver.evaluate(model,driver.interval_tensor(dev,args.dev_offset,args.dev_tokens,args.eval_lanes),args)
     assert replay==packet['curve'][-1]['dev_nll']
     long_history=score(model,dev,args,driver,25165824,8192,1024,8)
+    # Each cut removes only the incoming content projection at this stage.
+    # Keep its bias, clocks, private bank and arrival inputs. This is not a
+    # layer deletion or a shallower trained-model comparator.
+    paths=[]
+    for layer,mix in enumerate(model.core.channel_mix):
+        original=mix.weight.detach().clone()
+        try:
+            with driver.torch.no_grad():mix.weight.zero_()
+            cut=score(model,dev,args,driver,25165824,8192,1024,8)
+        finally:
+            with driver.torch.no_grad():mix.weight.copy_(original)
+        assert cut['targets']==long_history['targets']
+        paths.append(dict(layer=layer,cut_nll=cut['nll'],
+                          nll_increase=cut['nll']-long_history['nll'],
+                          removed_projection_weight_norm=float(original.norm())))
+    restored=score(model,dev,args,driver,25165824,8192,1024,8)
+    assert restored==long_history,'Depth-path diagnostic failed to restore exact model/tape'
     result=dict(status='completed',battle='R1',run=a.run,depth=args.depth,
                 parameters=packet['parameters'],targets=packet['presentations_total'],
                 final_development_nll=replay,long_history_dev=long_history,
+                incoming_content_path_cuts=paths,restored_score_parity=True,
+                checkpoint_replay_targets=args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
+                long_history_diagnostic_scored_targets=8192*(args.depth+2),
+                diagnostic_scored_targets=8192*(args.depth+2)+args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
                 full_training_s=packet['train_wall_s_total'],
                 training_s_per_target=packet['train_wall_s_total']/packet['presentations_total'],
                 selected_writes_per_target=args.depth*args.heads,
@@ -45,6 +66,8 @@ def main():
                 source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language.py','experiments/public_token_scoring.py')},
                 wall_s=time.monotonic()-begin,
                 scope='Single seed, frozen final checkpoint, exact replay and8192 reusedDEV targets with1024 disjoint histories. '
+                      'Per-stage frozen incoming-content cuts retain bias/clocks/banks/arrival inputs and share issued random tapes; '
+                      'they measure dependence under intervention, not a trained shallower comparison or proof of optimal depth. '
                       'No public validation or external score. Full factual windowBP/Adam/allocator/teacher work paid; no ASIC energy claim.')
     path=ROOT/f'experiments/results/diagnostics/{a.tag}.json';path.parent.mkdir(exist_ok=True)
     with path.open('x') as handle:json.dump(result,handle,indent=2);handle.write('\n')

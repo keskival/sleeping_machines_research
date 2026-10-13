@@ -76,6 +76,17 @@ reported. CPU time is not ASIC energy or a complete FLOP ledger.
 
 The next quality result must include the same8192target/1024history development
 score used by AWS and the pinned public scorer after final model selection.
+The completion evaluator also zeros each stage's incoming channel-mix weight
+separately on those same targets, retaining its bias, temporal arrivals, keys,
+private bank and all other parameters. Every replay starts from the same seeded
+race tape and1024window resets. Exact restoration must reproduce the factual
+score. Positive loss change measures useful incoming-content dependence under
+this intervention; it does not prove that adding the stage beats a separately
+trained shallower model. Timing and persistent memory remain information paths,
+so this is explicitly a content-path test, not complete stage removal. All
+D+2long-history passes are charged as diagnostic work, not training work or
+newly acquired data. These tests are attached to completed large fits, not a
+separate small-model campaign or a quality veto on acquisition.
 Internal DEV NLL cannot be compared numerically with the published3.3406 record
 until the exact external scoring boundary is used. The historical reference is
 a first Transformer milestone; it is not a current state-of-the-art claim.
