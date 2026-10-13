@@ -11,6 +11,7 @@ import allocated_depth_token_language as driver
 from public_token_scoring import score as reference_score, windows, reference_forward
 from sleeping_machines.connected_depth_risk import check_cross_audit_contract
 from sleeping_machines.acquisition_work_ledger import acquisition_work
+from check_deep_forward_horizon import check as check_forward_horizon
 
 
 @driver.torch.no_grad()
@@ -83,27 +84,43 @@ def main():
                           removed_projection_weight_norm=float(original.norm())))
     restored=score(model,dev,args,driver,25165824,8192,1024,8)
     assert restored==long_history,'Depth-path diagnostic failed to restore exact model/tape'
+    horizon_contract=check_forward_horizon(model,args,driver,train)
+    # Selection is fixed by the training short-DEV criterion, not this score.
+    best_path=Path(packet['best_checkpoint'])
+    model.load_state_dict(driver.torch.load(best_path,map_location='cpu',weights_only=False))
+    best_replay=driver.evaluate(model,driver.interval_tensor(dev,args.dev_offset,args.dev_tokens,args.eval_lanes),args)
+    assert best_replay==packet['best_dev_nll'],'Selected checkpoint replay mismatch'
+    selected_history=score(model,dev,args,driver,25165824,8192,1024,8)
     result=dict(status='completed',battle='R1',run=a.run,depth=args.depth,
                 parameters=packet['parameters'],targets=packet['presentations_total'],
                 final_development_nll=replay,long_history_dev=long_history,
+                development_selected_checkpoint=str(best_path),
+                selection_rule='Minimum logged training short-DEV NLL; fixed before long-history scoring',
+                selected_short_dev_nll=best_replay,selected_long_history_dev=selected_history,
                 incoming_content_path_cuts=paths,restored_score_parity=True,
                 cross_audit_risk_math_contract='passed depth8/16 finite-sum and parameter-gradient parity; no integrated credit fit',
                 checkpoint_replay_targets=args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
-                long_history_diagnostic_scored_targets=8192*(args.depth+3),
-                diagnostic_scored_targets=8192*(args.depth+3)+args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
+                long_history_diagnostic_scored_targets=8192*(args.depth+4),
+                diagnostic_scored_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
                 successful_trajectory_training_s=packet['train_wall_s_total'],
                 successful_trajectory_training_s_per_target=packet['train_wall_s_total']/packet['presentations_total'],
                 **acquisition_work(packet),
                 reference_scorer_parity=True,
+                forward_horizon_contract=horizon_contract,
+                additional_train_contract_scored_targets=horizon_contract['scored_targets'],
+                additional_train_contract_forward_targets=horizon_contract['forward_targets'],
                 selected_writes_per_target=args.depth*args.heads,
                 scored_keys_per_target=args.depth*args.heads*args.pool,
                 teacher_work=packet['teacher_work'],allocation=packet['depth_credit_allocation'],
+                training_profile=packet.get('profile'),
+                selected_checkpoint_sha256=driver.sha(best_path),
                 input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in (base.with_suffix('.json'),base.with_suffix('.pt'))},
-                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py')},
+                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py','experiments/check_deep_forward_horizon.py')},
                 wall_s=time.monotonic()-begin,
                 scope='Single seed, frozen final checkpoint, exact replay and8192 reusedDEV targets with1024 disjoint histories. '
                       'Per-stage frozen incoming-content cuts retain bias/clock parameters/banks/arrival mechanisms and share issued random tapes; realized routes and times can change. '
                       'Paired eight-window deltas describe this fixed slice, not independent seeds or confidence intervals. '
+                      'Final and short-DEV-selected long-history scores both retained; content cuts use final weights. '
                       'they measure dependence under intervention, not a trained shallower comparison or proof of optimal depth. '
                       'No public validation or external score. Full factual windowBP/Adam/allocator/teacher work paid; no ASIC energy claim.')
     path=ROOT/f'experiments/results/diagnostics/{a.tag}.json';path.parent.mkdir(exist_ok=True)
