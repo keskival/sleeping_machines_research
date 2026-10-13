@@ -1,6 +1,6 @@
 # Efficient learning across depth and capacity
 
-User direction, 10 October 2026: the valuable learning result is improved scaling with depth and model size. This is the next shared learning-enabler objective inside B1 and R1. Completed benchmark confirmations remain protected. Curie owns the compact-credit implementation and resource measurements; AWS retains its admitted online3 two-layer grid. No AWS job is moved or duplicated by this plan.
+User direction, 13 October 2026: actual depth and winning Transformer language benchmarks take priority. AWS owns native depth8/16 uniform-teacher fits at8M targets and reserved depth8/32M. Curie owns [allocated native depth credit](theory/DEPTH_ALLOCATED_NATIVE_LANGUAGE_CREDIT.md): a distinct depth8/16 language implementation, same8M/32M acquisition ladder, and complete work measurements. No new two-layer fit or market query follow-up is admitted. Completed evidence and running confirmations remain protected. The earlier two-layer grid is supporting evidence, not the scaling endpoint.
 
 ## Decision and current evidence
 

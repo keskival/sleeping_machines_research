@@ -2,6 +2,8 @@
 
 **These orders supersede every order below.** The text below this section is the historical record.
 
+**Depth-first priority, user direction13October:** winning the Transformer language benchmarks is the immediate objective. Two-layer learning-rule follow-ups do not displace actual deep language acquisition. AWS owns the admitted native depth8/16 uniform-teacher program; Curie owns the distinct depth8/16 allocated-credit implementation and8M/32M acquisition under R1. Finish already-running market evidence, withdraw its waiting query follow-up, then use Curie's single training slot for this deep program. Short smokes are numerical/resource gates only, not quality-selection campaigns. Compare exact GPT2/FineWeb public scoring after development selection; no new Transformer training.
+
 **Learning priority, user direction 10 October:** demonstrate efficient learning as depth and model size grow, with complete work to reach matched quality. Curie owns the compact-credit/depth implementation under B1/R1; preserve AWS's admitted two-layer online3 comparison and completed confirmations. [Execution and evidence gates](DEEP_LEARNING_SCALING.md). One-layer gains per pass are supporting evidence, not the scaling claim.
 
 **PAM decision, user direction 10 October:** retain the original sealed v7 five-split result (accuracy 0.9775 ± 0.0074, F1 0.9803 ± 0.0080). Stop further v8/v9 replacement runs; preserve completed results/checkpoints. Proceed on other fronts before returning to PAM development. No new PAM fitting or TEST scoring is admitted.

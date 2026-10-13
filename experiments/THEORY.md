@@ -1,5 +1,7 @@
 # Theory note — collapsing futures, and the gradient through a collapse
 
+[Depth-first allocated native language credit](theory/DEPTH_ALLOCATED_NATIVE_LANGUAGE_CREDIT.md) implements predictable full-support TRAIN audit allocation at actual depth8/16, preserving the raw conditional importance-weighted teacher mean. Allocation uses a local score-gradient second-moment proxy, not full parameter-gradient variance; global clip/Adam and factual windowBP remain charged. Curie reserves8M at both depths and32M atD8; numerical/resource smokes do not veto larger acquisition on quality. The objective is exact GPT2/FineWeb Transformer benchmark quality after development selection, not another two-layer confirmation.
+
 Written 2026-09-25. A working note: every claim marked **(test Mk)** is checked
 numerically (table at the end) before later experiments rely on it.
 

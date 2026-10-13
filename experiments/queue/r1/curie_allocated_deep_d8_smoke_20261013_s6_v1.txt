@@ -1,0 +1,2 @@
+# R1: actual deep GPT2 language; decision useful layer credit and benchmark quality as depth/acquisition grow
+curie_allocated_deep_d8_smoke_20261013_s6_v1 experiments/allocated_depth_token_language.py --tag curie_allocated_deep_d8_smoke_20261013_s6_v1 --exposure fresh --train-tokens 262144 --dev-tokens 2048 --chunk 64 --credit-window 16 --payload 24 --heads 2 --pool 4 --lanes 8 --eval-lanes 8 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6 --teacher-probability 0.25 --depth 8 --steps 64 --eval-every 64
