@@ -1,0 +1,3 @@
+# B10 native remote admission:16384forecast continuation
+
+13 October 2026. Extend the completed4096comparison unchanged: same actor/exact source acquisition/native utility acquisition, critic and actor optimizer states, native seed, inputs, teacher every16windows, all four arms. No tuning. Require every shorter-run block score within1e-12 and every admission decision identical overfirst4096targets. Report four4096target segments and gate frequencies; decision is whether causal native admission handles the regime in which always-on correction lost to own credit. No TEST; complete native, proposal and future-teacher cost charged.
