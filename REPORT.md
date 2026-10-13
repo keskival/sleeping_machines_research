@@ -6219,12 +6219,12 @@ Hardware-oriented arithmetic subtotal, two FLOPs/MAC; logical bank read/update-w
 | --- | --- | --- | --- | --- | --- |
 | own | 6.091852190 | 112.939 | 220.583 | 401.911 | 0 |
 | projected | 6.091841356 | 184.578 | 360.504 | 473.551 | 16 |
-| frozen | 6.091851915 | 131.700 | 257.226 | 1153.577 | 4 |
-| online | 6.091851979 | 148.441 | 289.924 | 1170.319 | 7 |
+| frozen | 6.091851915 | 131.700 | 257.226 | 925.354 | 4 |
+| online | 6.091851979 | 148.441 | 289.924 | 942.096 | 7 |
 
 An actual512-target prefix ledger charges own and remote temporal derivatives, native guidance, delayed future-utility teachers, actual Adam proposals, actor updates and global clipping. Every instrumented forecast/request matches uninstrumented replay and the saved longer-run prefix within1e-12. NumPy trace arithmetic is counted alongside Torch operators, rather than silently omitted.
 
-Continue charges actor-only preparation to standalone controls and actor-plus-guidance preparation to native arms; TRAIN warmup normalized separately. Original5750.687s prefit/day warmup/setup outside boundary. Same32-target windows/actor/data; one reusedDEV prefix. Arithmetic uses explicit scalar/fused formula conventions; special-function evaluations, random sampling and scalar Python/math internals remain separate/unpriced. Logical operands/outputs are not physical traffic or energy.512-target whole probe is not multiplied into a measured16384/full-prefit total. Global clipping/window Adam remain; no complete ASIC supremacy from this ledger.
+Continue combines measured required preparation with saved unchanged512-target deployment arithmetic; standalone controls omit controller preparation. Latest compact preparation is used when completed; TRAIN warmup normalized separately. Original5750.687s prefit/day warmup/setup outside boundary. Same32-target windows/actor/data; one reusedDEV prefix. Arithmetic uses explicit scalar/fused formula conventions; special-function evaluations, random sampling and scalar Python/math internals remain separate/unpriced. Logical operands/outputs are not physical traffic or energy.512-target whole probe is not multiplied into a measured16384/full-prefit total. Global clipping/window Adam remain; no complete ASIC supremacy from this ledger.
 
 ### Eligibility credit feeds versioned local optimizer banks
 
@@ -6242,6 +6242,18 @@ Three8-target TRAIN updates per endpoint, fresh moments, AdamW bank weight_decay
 128own-clock trace floats reproduce the four context summaries previously extracted from7280own-parameter trace floats. Across three32-target actual actor updates, forecasts and exact actor gradients have0error; maximum context projection discrepancy5.551e-17.
 
 Source-preparation contract only, not integrated whole-run savings: unaudited controller frames need four summaries, while audited proposal frames retain full own/projected endpoints. Current-event state cotangents and exact actor BPTT graph remain. This reduces a trace bank on eligible source windows, not peak full-model memory or deployment quality.
+
+### Same native guidance with compact preparation
+
+| Preparation | Arithmetic MFLOPs |
+| --- | --- |
+| Original | 1021.878 |
+| Compact | 793.655 |
+| Actor only | 288.973 |
+
+Complete2048-target guidance preparation uses22.33%less declared arithmetic, saving228.223MFLOPs. Every16384deployment forecast and request is unchanged; actor parameters/Adam state match exactly, controller parameters within8.9e-16. Unaudited source windows use128own-clock trace floats instead of7280own-parameter floats; full endpoint gradients remain on audited windows.
+
+Executed Torch+NumPy arithmetic under unchanged before/after conventions, explicit frequency products included. Special functions and Python/math/random internals separately unpriced; logical access is not physical ASIC traffic. Exact actor BPTT remains during acquisition. This is a preparation-stage arithmetic saving at preserved learning/forecast quality, not a total-lifetime compute or hardware-energy win.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
