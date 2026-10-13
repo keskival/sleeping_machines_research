@@ -29,6 +29,15 @@ def main():
             assert boundary in text;text=text.replace(boundary,'\n'+chapter.strip()+'\n'+boundary,1)
         master.write_text(text)
         missing=[f'experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s{s}.json' for s in range(3) if not (ROOT/f'experiments/results/tpp_b4/aws_observation_anchored_readout_20261011_s{s}.json').exists()]
+        # New AWS transfer packets also bind checkpoint binaries used only for
+        # provenance verification by the graphical builder. Preserve its latest
+        # valid AWS rendering when those binaries are not replicated here;
+        # authored credit chapter and all canonical parts still regenerate.
+        transfer=ROOT/'experiments/results/diagnostics/aws_fresh_scaling_transfer_20261013_v1.json'
+        if transfer.exists():
+            packet=json.loads(transfer.read_text())
+            missing.extend(name for name in packet.get('input_sha256',{})
+                           if name.endswith('.pt') and not (ROOT/name).exists())
         python=str(ROOT/'.venv-docker/bin/python')
         if not missing:subprocess.run([python,'report/make_pdf.py'],cwd=ROOT,check=True)
         with (receipt.parent/'split.log').open('w') as log:
