@@ -35,6 +35,7 @@ from sleeping_machines.sampled_suffix_utility import sample_positions, suffix_di
 from sleeping_machines.event_credit_sites import utility_weight
 from sleeping_machines.depth_credit_allocator import check_weight_contract
 from sleeping_machines.route_credit_horizon import HorizonDepthCreditAllocator as DepthCreditAllocator, credit_endpoint
+from sleeping_machines.credit_update_diagnostics import CreditUpdateDiagnostics
 
 
 def sha(path):
@@ -305,13 +306,14 @@ def main():
     teacher_calls=teacher_replay_tokens=teacher_scored_targets=0
     state = None; cursor = 0; start_step = 0; elapsed = 0.; curve = []; best = math.inf
     total_presentations=0; total_train_s=0.; best_path=None
+    credit_diagnostics=CreditUpdateDiagnostics()
     writes = torch.zeros(a.depth,a.heads,a.pool,dtype=torch.long)
     identity = dict(train_sha256=sha(a.train_file), dev_sha256=sha(a.dev_file),
          source_sha256={str(f):sha(ROOT/f) for f in (str(Path(__file__).resolve().relative_to(ROOT)),
          'sleeping_machines/ordered_token_lookup.py','sleeping_machines/ordered_token_episodes.py',
          'sleeping_machines/sparse_counterfactual_episodes.py','sleeping_machines/sparse_counterfactual_layer.py',
          'sleeping_machines/sparse_training.py','sleeping_machines/packed_token_core.py','sleeping_machines/token_readout.py','sleeping_machines/frequency_token_readout.py',
-         'sleeping_machines/depth_credit_allocator.py','sleeping_machines/route_credit_horizon.py','sleeping_machines/paired_route_credit.py','sleeping_machines/sampled_suffix_utility.py','sleeping_machines/event_credit_sites.py','sleeping_machines/capacity_token_readout.py',
+         'sleeping_machines/depth_credit_allocator.py','sleeping_machines/route_credit_horizon.py','sleeping_machines/credit_update_diagnostics.py','sleeping_machines/paired_route_credit.py','sleeping_machines/sampled_suffix_utility.py','sleeping_machines/event_credit_sites.py','sleeping_machines/capacity_token_readout.py',
          'sleeping_machines/recruit_layer.py','sleeping_machines/compiled_episodes.py',
          'sleeping_machines/fast_native_core.py','sleeping_machines/addressed_event_heads.py',
          'sleeping_machines/parallel_stream_language.py','sleeping_machines/sparse_race_language.py')})
@@ -321,6 +323,7 @@ def main():
         if ck['identity'] != identity or ck['settings'] != settings:
             raise ValueError('Exact resume requires identical data, source and settings')
         allocator.load_state_dict(ck['depth_credit_allocator'])
+        credit_diagnostics.load_state_dict(ck['credit_update_diagnostics'])
         teacher_gen.set_state(ck['teacher_generator'])
         teacher_calls,teacher_replay_tokens,teacher_scored_targets=ck['teacher_work']
         train.block=ck['training_block']
@@ -397,6 +400,11 @@ def main():
         grad = float(torch.nn.utils.clip_grad_norm_(model.parameters(),1.))
         if not math.isfinite(grad):
             raise FloatingPointError('Nonfinite gradient')
+        teacher_score_norm=None
+        if use_future:
+            proxy=allocator.rows[-1]['score_gradient_proxy_square']
+            teacher_score_norm=math.sqrt(proxy)*inverse_site_probability/a.teacher_probability
+        credit_diagnostics.observe(grad,teacher_score_norm)
         receiver_grad = {}
         if step % a.eval_every == 0 or step == end_step:
             for name, param in model.core.named_parameters():
@@ -419,16 +427,17 @@ def main():
                 row['learner_fingerprint']=learner_fingerprint(dict(model=model.state_dict(),optimizer=opt.state_dict(),state=state,
                     generator=gen.get_state(),site=model.site_generator.get_state(),position=model.position_generator.get_state(),
                     local=model.local_generator.get_state(),alternative=model.alternative_generator.get_state(),torch_rng=torch.get_rng_state(),cursor=cursor))
+            row['credit_update_diagnostics']=credit_diagnostics.packet()
             curve.append(row); print(json.dumps(row),flush=True)
             if row['dev_nll'] < best:
                 best=row['dev_nll']; best_path=str(out.with_suffix(f'.best_step{step:08d}.pt'))
                 torch.save(model.state_dict(),best_path)
-            ck = dict(depth_credit_allocator=allocator.state_dict(),teacher_generator=teacher_gen.get_state(),teacher_work=[teacher_calls,teacher_replay_tokens,teacher_scored_targets],training_block=train.block,model=model.state_dict(),optimizer=opt.state_dict(),state=state,cursor=cursor,step=step,
+            ck = dict(credit_update_diagnostics=credit_diagnostics.state_dict(),depth_credit_allocator=allocator.state_dict(),teacher_generator=teacher_gen.get_state(),teacher_work=[teacher_calls,teacher_replay_tokens,teacher_scored_targets],training_block=train.block,model=model.state_dict(),optimizer=opt.state_dict(),state=state,cursor=cursor,step=step,
                  site_generator=model.site_generator.get_state(),position_generator=model.position_generator.get_state(),local_generator=model.local_generator.get_state(),alternative_generator=model.alternative_generator.get_state(),generator=gen.get_state(),torch_rng=torch.get_rng_state(),elapsed=row['wall_s'],curve=curve,
                  best=best,writes=writes,identity=identity,settings=settings,
                  total_presentations=total_presentations,total_train_s=total_train_s,best_path=best_path)
             tmp=out.with_suffix('.pt.tmp'); torch.save(ck,tmp); tmp.replace(out.with_suffix('.pt'))
-    result = dict(depth_credit_allocation=allocator.packet(),teacher_work=dict(admitted_calls=teacher_calls,offered_calls=end_step,replayed_tokens=teacher_replay_tokens,scored_targets=teacher_scored_targets,probability=a.teacher_probability),status='completed' if end_step==a.steps else 'checkpointed',evidence='development single seed',args=vars(a),identity=identity,
+    result = dict(credit_update_diagnostics=credit_diagnostics.packet(),depth_credit_allocation=allocator.packet(),teacher_work=dict(admitted_calls=teacher_calls,offered_calls=end_step,replayed_tokens=teacher_replay_tokens,scored_targets=teacher_scored_targets,probability=a.teacher_probability),status='completed' if end_step==a.steps else 'checkpointed',evidence='development single seed',args=vars(a),identity=identity,
          parameters=sum(p.numel() for p in model.parameters()),core_bank_sharing=model.core.tied,
          source_sha256=identity['source_sha256'],process_wall_s=time.monotonic()-process_started,
          exposure_protocol=dict(policy=a.exposure,prior_tokens=a.train_tokens,unique_admitted_tokens=train.admitted,blocks=train.blocks,completed_block=train.block,shared_boundary_reset=True),

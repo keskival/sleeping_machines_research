@@ -29,7 +29,8 @@ def main():
         raise RuntimeError('No measured cross-window feature effect; diagnose before extending credit')
     print('Completed native ladder and cross-window gates passed; admit one horizon candidate',flush=True)
     stable_host();original.run(SMOKE,5400)
-    smoke=json.loads((ROOT/f'experiments/results/token_language/{SMOKE}.json').read_text())
+    smoke_path=ROOT/f'experiments/results/token_language/{SMOKE}.partial.json'
+    smoke=json.loads(smoke_path.read_text())
     assert smoke['status']=='checkpointed' and smoke['max_rss_kb']<2500000
     assert all(math.isfinite(row['dev_nll']) for row in smoke['curve'])
     norms=smoke['curve'][-1]['receiver_gradient_norms']['banks.input']
@@ -41,7 +42,7 @@ def main():
     # Source/setting identity and exact state/RNG restore are checked by driver.
     candidate['whole_fit_process_wall_s']=smoke['process_wall_s']+candidate['process_wall_s']
     candidate['whole_fit_work_scope']='Smoke process plus exact-resume process; successful-trajectory timer already carries smoke steps. No interruption tail in this ledger.'
-    candidate['smoke_acquisition_sha256']=hashlib.sha256((ROOT/f'experiments/results/token_language/{SMOKE}.json').read_bytes()).hexdigest()
+    candidate['smoke_acquisition_sha256']=hashlib.sha256(smoke_path.read_bytes()).hexdigest()
     path=ROOT/f'experiments/results/token_language/{FIT}.json';tmp=path.with_suffix('.work.tmp')
     tmp.write_text(json.dumps(candidate,indent=2)+'\n');tmp.replace(path)
     original.run(FIT+'_quality',5400);scored=original.load(FIT+'_quality','diagnostics')
@@ -50,10 +51,11 @@ def main():
         final_long_history_dev_gain=baseline['long_history_dev']['nll']-scored['long_history_dev']['nll'],
         selected_long_history_dev_gain=baseline['selected_long_history_dev']['nll']-scored['selected_long_history_dev']['nll'],
         baseline_work_precision=baseline['process_work_precision'],candidate_work_precision=scored['process_work_precision'],
+        candidate_credit_update_diagnostics=candidate['credit_update_diagnostics'],
         scope='Single-seed development comparison, identical data/depth/short-DEV selection criterion and long-history targets. Candidate adds the resource-smoke step64 DEV evaluation to regular cadence; report this selection opportunity. Longer conditional first-time-held route horizon; no public validation or matched-total-work win. Baseline wall is lower-bound when its interruption tail is unknown.')
     out=ROOT/f'experiments/results/diagnostics/{FIT}_decision.json'
     with out.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
-    paths=[f'experiments/results/token_language/{SMOKE}.json',str(path.relative_to(ROOT)),
+    paths=[str(smoke_path.relative_to(ROOT)),str(path.relative_to(ROOT)),
            f'experiments/results/diagnostics/{FIT}_quality.json',str(out.relative_to(ROOT))]
     subprocess.run(['git','add',*paths],cwd=ROOT,check=True)
     subprocess.run(['git','commit','-m','Complete R1 cross-window native credit acquisition comparison'],cwd=ROOT,check=True)

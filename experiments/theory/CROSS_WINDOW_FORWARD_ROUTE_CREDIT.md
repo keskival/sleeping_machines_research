@@ -22,6 +22,18 @@ The allocation proxy previously used the short suffix weight. The new allocator 
 
 Replay reaches the last sampled loss position. Scoring four sampled targets keeps readout scoring bounded but does not make intermediate state evolution free. Charge all replayed tokens, key discovery, memory updates, factual backpropagation, clipping and dense Adam. The instrumented reserved fits separate core, readout, backward and optimizer CPU time; CPU timing is not physical energy.
 
+## Raw credit quality is separate from optimizer actuation
+
+An unbiased raw estimator can be harmful after clipping. For a scalar gradient g=1, consider an estimator equal to100 with probability1/50 and -50/49 with probability49/50. Its expectation is1. Clipping each draw to[-1,1] instead gives mean -24/25. At theta=0 in F(theta)=(theta+1)^2/2, the clipped step theta'=-eta*clip(g_hat) has exact expected loss increase
+
+    E[F(theta')-F(0)] = (24/25) eta + eta^2/2 > 0.
+
+This is a mathematical witness, not a measurement of our native training. It shows why the raw importance-weighted mean alone cannot justify good actual updates. More distant signed consequences and inverse site/proposal weights may change tail magnitude; they can also improve useful signal. Measure both before choosing a variance or optimizer repair.
+
+The horizon candidate records the raw route-logit-space teacher norm, including suffix/site/proposal/admission weighting, and the actual full-parameter preclip gradient norm. It accumulates clipping frequency at the existing threshold1 over every step. These counters restore from the smoke checkpoint and persist in logged curves and completed results. They do not estimate parameter-space teacher variance, clipped-gradient direction or Adam-step utility. The baseline has no equivalent whole-trajectory counters, so a candidate clipping fraction is not a measured increase relative to it.
+
+If the completed horizon comparison loses and clipping is frequent, the next test should separate credit variance, update geometry and clipping behavior under a matched protocol. Frequency alone does not identify the loss cause. If the horizon improves prediction, its additional replay and optimizer demand still enter the quality/work frontier. Neither outcome justifies silently removing the current clipping safeguard.
+
 ## Native integration and acquisition gate
 
 The pending deep diagnostics run a frozen TRAIN-only null-winner replay check: exact features, full numerical state and race-tape consumption; an alternative intervention must preserve the prefix before its issued site. They record finite post-boundary loss differences and feature effects on the native D8/D16 member. These are dependencies under intervention, not quality gains. Diagnostic forward and scoring targets are recorded separately from acquisition.

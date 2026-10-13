@@ -113,6 +113,7 @@ def main():
                 scored_keys_per_target=args.depth*args.heads*args.pool,
                 teacher_work=packet['teacher_work'],allocation=packet['depth_credit_allocation'],
                 training_profile=packet.get('profile'),
+                credit_update_diagnostics=packet.get('credit_update_diagnostics'),
                 selected_checkpoint_sha256=driver.sha(best_path),
                 input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in (base.with_suffix('.json'),base.with_suffix('.pt'))},
                 source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py','experiments/check_deep_forward_horizon.py')},
