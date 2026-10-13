@@ -42,7 +42,7 @@ def main():
     for depth,size,steps in ((8,'8m',16384),(16,'8m',16384),(8,'32m',65536)):
         tag=f'{PREFIX}_d{depth}_{size}_20261013_s6_v1'
         timeout=math.ceil(2*rates[depth]*steps*512+3600)
-        if timeout>172800:raise RuntimeError('Measured deep fit exceeds48h envelope; optimize execution without shrinking depth')
+        if timeout>604800:raise RuntimeError('Measured deep fit exceeds7day envelope; optimize execution without shrinking depth')
         run(tag,max(timeout,5400));packet=load(tag)
         print(f'Completed {tag}: finalDEV {packet["curve"][-1]["dev_nll"]}; full training {packet["train_wall_s_total"]}s',flush=True)
         quality=tag+'_quality';run(quality,5400);load(quality,'diagnostics')
