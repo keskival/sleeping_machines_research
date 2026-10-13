@@ -1,0 +1,19 @@
+# Admit remote work before computing it
+
+13 October 2026. B10 execution direction after the native admission prototype. Current admission learns which actual update to use, but computes all shared-path sensitivities first. It therefore tests information utility, not activity savings. Preserve the verified own-leg derivative and native race controller; change scheduling only after the information experiment.
+
+At a parameter-version/window boundary, choose a remote-work request q in{0,1} from past/current cheap context: native controller memory, numerical actor state, previously observed errors and earlier update information. If q=0, run own-leg traces without remote tangents. If q=1, initialize and propagate the four-direction bank through the new window; a later refinement may decide how much of the recovered correction to use. Sensitivity initialization is exact because both methods already reset after actual parameter updates. A newly admitted bank cannot recover derivatives for an already skipped window without explicitly charged replay.
+
+Separate two learned questions: whether computing remote information is worth its cost before a window, and whether the completed information supports a better update after its outcomes are observed. They may share the native event/race memory and typed context representations, but they have different information sets and labels. The earlier work request must not use the later correction it is deciding whether to compute.
+
+If conditional next-window improvement is b(context) and incremental work is c(context), an ideal cost-aware request satisfies b>lambda*c. This is an objective specification, not an assumed oracle. Native inference, exploration, delayed teacher/proposals and optimizer costs enter c. Rejecting remote credit only after calculating it cannot remove its tangent cost.
+
+With mean remote-computation cost C_remote, request probability p, mandatory native request/refinement cost C_native and average teacher/exploration cost C_teach, a simplified same-opportunity wall budget is
+
+    C_native + C_teach < (1-p)*C_remote.
+
+Measure each quantity in the integrated execution; changes in actor quality or admission information must be reported alongside it. The current 4096information run spends0.996s on native admission and0.855s on proposal/future teaching across128updates. Online requests remote credit123times; that observed activity cannot save much work. Frozen admission uses37times, but has different quality and does not implement pre-window requests. These are measured components, not proof that a cheaper scheduler will retain the quality.
+
+When a window's remote information is skipped, its exact counterfactual utility is also missing. Maintain a declared full-support audit probability using only earlier context; charge its sensitivity/replay and future scoring work. Importance weighting can correct selection for a conditional supervised target when the propensity is known and the required conditional sampling assumption holds. It does not repair changed intervention semantics, nonstationary drift, missing future outcomes or high estimator variance. Native controller feedback must distinguish uncomputed information from a computed numerical zero.
+
+Numerical contract: own-only windows reproduce saved own trajectories; admitted windows reproduce the fixed-parameter projected sensitivity contract; trace resets/versioning remain correct; changing later observations cannot alter an earlier request. Integrated comparison: own-only, always-requested, acquired-frozen request/refinement and online native request/refinement with the same data, initialization and update opportunities. Charge discovery, inactive-route learning and audits, retain the stronger own baseline and compare complete work at achieved quality.
