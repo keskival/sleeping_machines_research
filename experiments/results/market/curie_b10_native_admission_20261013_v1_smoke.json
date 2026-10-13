@@ -1,0 +1,232 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_native_admission_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "arm": "online",
+    "nll": 10.5808520928231,
+    "targets": 32,
+    "wall_s": 0.5304305969912093,
+    "phase_wall_s": {
+      "actor_credit": 0.3195677399635315,
+      "native_admission": 0.0327751389995683,
+      "proposal": 0.04494541001622565,
+      "future_teacher": 0.08844979500281624,
+      "optimizer": 0.010344861977500841
+    },
+    "block_nll": [
+      10.042609971876699,
+      11.092585976024864,
+      9.77278801150677,
+      11.415424411884072
+    ],
+    "admission": [
+      0.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "teacher_labels": [
+      {
+        "observed_block": 1,
+        "decision_block": 0,
+        "own_minus_projected_future_nll": 2.378592988350192e-06,
+        "target": 0.002378592988350192
+      },
+      {
+        "observed_block": 2,
+        "decision_block": 1,
+        "own_minus_projected_future_nll": 1.47819189777465e-06,
+        "target": 0.0015557967025455277
+      },
+      {
+        "observed_block": 3,
+        "decision_block": 2,
+        "own_minus_projected_future_nll": -5.181243796670287e-06,
+        "target": -0.005739801738804361
+      }
+    ],
+    "teachers": 3,
+    "native_selected_updates": 32,
+    "native_candidate_scores": 64,
+    "native_counterfactual_values": 64
+  },
+  "rows": [
+    {
+      "arm": "own",
+      "nll": 6.0672720062657195,
+      "targets": 32,
+      "wall_s": 0.2752509879937861,
+      "phase_wall_s": {
+        "actor_credit": 0.21299810498021543,
+        "native_admission": 0.0,
+        "proposal": 0.0,
+        "future_teacher": 0.0,
+        "optimizer": 0.009016138996230438
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196491208437354,
+        5.67155498819046,
+        7.178534268829225
+      ],
+      "admission": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_labels": [],
+      "teachers": 0,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "arm": "projected",
+      "nll": 6.067272230123821,
+      "targets": 32,
+      "wall_s": 0.258719197998289,
+      "phase_wall_s": {
+        "actor_credit": 0.19974651499069296,
+        "native_admission": 0.0,
+        "proposal": 0.0,
+        "future_teacher": 0.0,
+        "optimizer": 0.008774475019890815
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556329919837,
+        7.178534030634459
+      ],
+      "admission": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "teacher_labels": [],
+      "teachers": 0,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "arm": "frozen",
+      "nll": 6.067272230123821,
+      "targets": 32,
+      "wall_s": 0.288077984994743,
+      "phase_wall_s": {
+        "actor_credit": 0.20067723697866313,
+        "native_admission": 0.02739931401447393,
+        "proposal": 0.0,
+        "future_teacher": 0.0,
+        "optimizer": 0.008587281015934423
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556329919837,
+        7.178534030634459
+      ],
+      "admission": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "teacher_labels": [],
+      "teachers": 0,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    },
+    {
+      "arm": "online",
+      "nll": 6.067272035037421,
+      "targets": 32,
+      "wall_s": 0.5463001969910692,
+      "phase_wall_s": {
+        "actor_credit": 0.2062775010126643,
+        "native_admission": 0.03391727095004171,
+        "proposal": 0.05098145199008286,
+        "future_teacher": 0.0902217099792324,
+        "optimizer": 0.008318207022966817
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556104134769,
+        7.178533476073925
+      ],
+      "admission": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_labels": [
+        {
+          "observed_block": 1,
+          "decision_block": 0,
+          "own_minus_projected_future_nll": 2.081022039135405e-07,
+          "target": 0.00024259662775777513
+        },
+        {
+          "observed_block": 2,
+          "decision_block": 1,
+          "own_minus_projected_future_nll": -2.2578506797543696e-07,
+          "target": -0.0002770602020044797
+        },
+        {
+          "observed_block": 3,
+          "decision_block": 2,
+          "own_minus_projected_future_nll": -1.9534982254043598e-07,
+          "target": -0.0002523260054067618
+        }
+      ],
+      "teachers": 3,
+      "native_selected_updates": 32,
+      "native_candidate_scores": 64,
+      "native_counterfactual_values": 64
+    }
+  ],
+  "online_gain": {
+    "own": -2.877170146575736e-08,
+    "projected": 1.9508640036747238e-07,
+    "frozen": 1.9508640036747238e-07
+  },
+  "quality_gate": false,
+  "paired_gradient_max_error": {
+    "own": 0.0,
+    "projected": 0.0
+  },
+  "source_sha256": {
+    "experiments/credit/market_native_remote_admission.py": "5c1cb9f9051174d5fd565d303165b8f36619878abda2e1a4820171d2276ba3a4",
+    "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+    "experiments/credit/local_clock_eligibility.py": "6f22f3b2bfa17152f7f888eae4bfd97246493ae94628e50cd5f8fa4b6fff315f",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/route_activation_memory.py": "a56487e5cdcc15babb2efdd5c6edb8713ec6eeaca564a09dc3b026d8cae90809",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/market/NATIVE_REMOTE_ADMISSION_PROTOCOL.md": "c191edb45c285642e55a83e9cf70936806984a747e8900627ccab039170e59ac"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "whole_wall_s": 3.4414203750202432,
+  "peak_rss_kb": 393744,
+  "critic_parameters": 31753,
+  "scope": "Native hard-race scalar admission between own-leg and four-direction remote correction. Actor has no boundary BPTT during deployment; event-local own/projected gradients computed together. Actual endpoint Adam proposals taught by next observed32target recording-cell losses, not BPTT imitation; native banks reset at day boundary, learned weights/moments transfer. Common exact2048TRAIN actor acquisition plus native utility acquisition;4096Aug25DEV, one reused stream/actor. Always compute tangents before admission: information test, no admission compute saving. Proposal/teacher/native/optimizer costs included; original5750.687s fitting shared. No TEST, full-month, learned-basis, trading-profit or hardware claim; future gradient components approximate."
+}
