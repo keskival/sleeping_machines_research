@@ -1,5 +1,5 @@
 """Publish quality/resource decisions after user-revised promotion, preserving strict receipts."""
-import fcntl,json,statistics,time
+import fcntl,json,statistics,time,sys
 import continue_window_replay as queue
 from continue_unique_language import ROOT,command
 from continue_window_replay import sha
@@ -11,7 +11,7 @@ def publish(rows,stage):
   if not values:continue
   gains=[-x['final_nll_delta'] for x in values];times=[100*(1-x['training_wall_ratio']) for x in values]
   lines.append(f"{size},{len(values)}seeds: mean finalDEV gain{statistics.mean(gains):+.6f}"+(f"±{statistics.stdev(gains):.6f}" if len(values)>1 else '')+f"nats/target; mean complete time reduction{statistics.mean(times):+.2f}%, range{min(times):+.2f}–{max(times):+.2f}%; teacher{sum(x['teacher_work']['admitted_calls'] for x in values)}/{sum(x['teacher_work']['offered_calls'] for x in values)}updates.")
- text=' '.join(lines)+' User13October quality-priority rule: accept≥0.01nats improvement with≤1% extra complete time. Negative time reduction means a measured time increase, not an efficiency win. Original strict-wall receipts preserved. Same acquisition/optimizer/evaluation budgets, fixedprobability0.25 importance-weighted actual alternative teaching, native persistent/race model, sampleSD acrossseeds. CPU time, not ASIC energy or full-FLOP claim; public validation sealed. Current completed stage: '+stage+'.'
+ text=' '.join(lines)+' The128k/512k reference already uses ordered aggregation;2M/8M references use saved cached full teaching, so larger-point time savings combine both repairs. User13October quality-priority rule: accept≥0.01nats improvement with≤1% extra complete time. Negative time reduction means a measured time increase, not an efficiency win. Original strict-wall receipts preserved. Same acquisition/optimizer/evaluation budgets, fixedprobability0.25 importance-weighted actual alternative teaching, native persistent/race model, sampleSD acrossseeds. CPU time, not ASIC energy or full-FLOP claim; public validation sealed. Current completed stage: '+stage+'.'
  with open('/tmp/aws-language-publication.lock','a') as f:
   fcntl.flock(f,fcntl.LOCK_EX)
   if command('git','status','--porcelain','--untracked-files=no').strip():raise RuntimeError('Preserve tracked edits; defer publication')
@@ -36,5 +36,5 @@ def main():
   for source,digest in {**gate['source_sha256'],**gate['input_sha256']}.items():assert sha(ROOT/source)==digest,source
   rows.append(dict(size=size,seed=seed,gate=gate))
   if not receipt['accepted']:publish(rows,'stopped');return
-  if (size=='512k' and seed==8) or size in ('2m','8m'):publish(rows,size)
+  if ((size=='512k' and seed==8) or size in ('2m','8m')) and ('--only-8m' not in sys.argv or size=='8m'):publish(rows,size)
 if __name__=='__main__':main()
