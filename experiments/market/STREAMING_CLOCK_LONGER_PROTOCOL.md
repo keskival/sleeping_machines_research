@@ -1,0 +1,3 @@
+# B10 streaming shared-path credit: longer online replay
+
+13 October 2026. Extend the completed4096forecast comparison unchanged to16384Aug25DEV forecasts. Same saved actor, common2048TRAIN exact acquisition, Adam/moments, context,32event windows, four directions and all five arms. No tuning or new model. Require every first128block score of every arm to agree with completed parent within1e-12. Report cumulative and four4096target segments to distinguish sustained advantage from a favorable prefix. SealedTEST untouched. Exact work and trace/optimizer costs included; original5750.687s prefit common. No learned native critic yet; development quality result only.
