@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "gate": "PASS",
+  "rows": [
+    {
+      "probability": 0.25,
+      "shared_parameters": false,
+      "conditional_credit_gradient_error": 5.551115123125783e-17,
+      "conditional_prediction_gradient_error": 4.440892098500626e-16
+    },
+    {
+      "probability": 0.25,
+      "shared_parameters": true,
+      "conditional_credit_gradient_error": 1.6653345369377348e-16,
+      "conditional_prediction_gradient_error": null
+    },
+    {
+      "probability": 1.0,
+      "shared_parameters": false,
+      "conditional_credit_gradient_error": 1.0408340855860843e-17,
+      "conditional_prediction_gradient_error": 4.440892098500626e-16
+    },
+    {
+      "probability": 1.0,
+      "shared_parameters": true,
+      "conditional_credit_gradient_error": 1.6653345369377348e-16,
+      "conditional_prediction_gradient_error": null
+    }
+  ],
+  "zero_prediction_reproduces_existing_credit": true,
+  "source_sha256": {
+    "experiments/credit/check_predictable_route_credit.py": "b0387f0939b9defaf0e59f60aae4130206408a41cdef76c5007fff90baa2d100",
+    "sleeping_machines/predictable_route_credit.py": "b5a0c4325ea21de3632aaa13268853a1581e97d586dc61a46494e4b143157834",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scope": "Exhaustive three-route float64 numerical contract, probabilities0.25/1, arbitrary prediction and shared/separate leaves. No model fit, quality/work result or optimal admission claim. Admitted weighted prediction loss reproduces full-alternative supervised risk gradient; actor predictions detached."
+}
