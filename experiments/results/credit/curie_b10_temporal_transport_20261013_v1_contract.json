@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "battle": "B1/B10",
+  "rows": [
+    {
+      "horizon": 2,
+      "input_credit_error": 3.3306690738754696e-16,
+      "collapsed_vs_sequential_error": 0.0
+    },
+    {
+      "horizon": 8,
+      "input_credit_error": 1.3877787807814457e-16,
+      "collapsed_vs_sequential_error": 2.220446049250313e-16
+    },
+    {
+      "horizon": 32,
+      "input_credit_error": 2.0816681711721685e-16,
+      "collapsed_vs_sequential_error": 5.551115123125783e-16
+    },
+    {
+      "horizon": 128,
+      "input_credit_error": 2.7755575615628914e-17,
+      "collapsed_vs_sequential_error": 1.942890293094024e-16
+    }
+  ],
+  "state_packet_floats": 32,
+  "dense_transition_floats": 1024,
+  "rotation_contraction_flops": 96,
+  "dense_contraction_flops": 2048,
+  "scope": "Fixed-version single native temporal layer; endpoint derivatives remain exact and paid. Direct state-path transport only, not full stacked actor/learner credit or measured total-work reduction. Clock construction nonlinear work and endpoint VJPs excluded from contraction counts.",
+  "wall_s": 0.394224633986596,
+  "source_sha256": {
+    "experiments/credit/check_temporal_credit_transport.py": "d5fdd4d29fc6dd0632afdc7c3dbe645b328387cb73a5f4d2a515e21c266da470",
+    "sleeping_machines/learning/temporal_credit_transport.py": "9d1a85aaaecb143bac55c2f60c2b3a7a96d75a1d3cbc587d2fcc75e176f4603a",
+    "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  }
+}
