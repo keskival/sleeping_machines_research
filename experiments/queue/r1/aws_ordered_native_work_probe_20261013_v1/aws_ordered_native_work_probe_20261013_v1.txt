@@ -1,0 +1,2 @@
+# R1: fixed-prior fresh-acquisition scaling; decision select useful addressed capacity and larger learning frontier
+aws_ordered_native_work_probe_20261013_v1 experiments/profile_ordered_native_work.py --tag aws_ordered_native_work_probe_20261013_v1 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 2 --pool 4 --lanes 8 --eval-lanes 8 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6 --exposure fresh --train-tokens 65536 --steps 16 --eval-every 8 --dev-tokens 2048
