@@ -6393,6 +6393,14 @@ Zero-residual contract reproduces48forecasts and factual race randomness exactly
 
 One actor/critic and reused DEV; additional32receipt events per decision and source counterfactual worlds are paid. No sealed TEST or ASIC efficiency claim. Earlier actual-utility, optimizer-conditioned and delayed-fit helpers evaluated an unused anchor that consumed extra race draws: their executed forecast scores remain, but small differences are not isolated under identical random trajectories. The new null contract and evaluator repair this pairing.
 
+### Signed future-consequence teaching: optimizer calibration
+
+Paired positive/negative bounded actions teach the native residual critic from24future targets with recomputed later gradients, moments and decisions. Same native architecture/private race banks; raw contrast estimates a ball-smoothed decision gradient rather than fitting backpropagated targets.
+
+64TRAINreceipts/2048events score2048DEV5.703285203 vs parent5.703270448: loss0.000014756nats/event. Retain parent. Zero-action/actual-first-update smoke errors0.39of64critic gradients exceed norm1, mean3.859927/max36.468283; prior teacher mean0.097392. Clipping changes raw-estimator expectation; calibration is a concrete next diagnosis, not established cause of the loss.
+
+One reused actor/data stream/initialization.128extra counterfactual worlds3072score targets+2048refresh targets,1024own-gradient targets within scoring; actor/parent acquisition and32extra native receipt events perdecision additionally paid. No full continuation, sealedTEST, investor quality or ASIC efficiency claim. Exact portable fitted tensors and source-bound analysis retained.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

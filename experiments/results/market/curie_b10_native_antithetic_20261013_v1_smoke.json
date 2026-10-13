@@ -1,0 +1,161 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_native_antithetic_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "frames": 3,
+    "targets": 96,
+    "updates": 6,
+    "critic_updates": 3,
+    "accepted": 3,
+    "sign_reversals": 1,
+    "rows": [
+      {
+        "frame": 0,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -5.907470068677867e-10,
+        "gain_weight": -8.545024632695686,
+        "antithetic_contrast": -0.00010681280790869607,
+        "plus_nll": 10.778770536157714,
+        "minus_nll": 10.778877348965622,
+        "predictable_gain_scale": 0.0001,
+        "accepted": true,
+        "gain": 9.075635971456109e-05,
+        "short_gain": 0.00017393065854243162,
+        "sign_reversal": false,
+        "early_nll": 11.093557243854997,
+        "late_nll": 10.621513316848647,
+        "source_nll": 10.594798462357247,
+        "critic_grad_norm": 36.46828264361839,
+        "future_moment_distance": 0.0009117202964985492,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 1,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -7.149668590500369e-08,
+        "gain_weight": -0.533827698613065,
+        "antithetic_contrast": -6.695576642457013e-06,
+        "plus_nll": 12.972773917315743,
+        "minus_nll": 12.972780612892386,
+        "predictable_gain_scale": 0.0001003406403954348,
+        "accepted": true,
+        "gain": 2.9982900056069184e-06,
+        "short_gain": 5.969109777126391e-06,
+        "sign_reversal": false,
+        "early_nll": 14.915452533720082,
+        "late_nll": 12.001439106548581,
+        "source_nll": 13.22734406654956,
+        "critic_grad_norm": 2.508231407900366,
+        "future_moment_distance": 0.0011829292210215098,
+        "first_future_parity": 0.0
+      },
+      {
+        "frame": 2,
+        "paired_zero_action_parity": 0.0,
+        "independent_zero_noise": -1.5739110814649848e-07,
+        "gain_weight": -0.884189946095714,
+        "antithetic_contrast": -1.0572523028606895e-05,
+        "plus_nll": 7.9469837702536665,
+        "minus_nll": 7.946994342776695,
+        "predictable_gain_scale": 9.56583872077859e-05,
+        "accepted": true,
+        "gain": 7.782286859381315e-07,
+        "short_gain": -2.4514735835090562e-05,
+        "sign_reversal": true,
+        "early_nll": 7.36115220277183,
+        "late_nll": 8.239900721337614,
+        "source_nll": 6.767044954182698,
+        "critic_grad_norm": 3.6850648726516937,
+        "future_moment_distance": 0.0017163462755620637,
+        "first_future_parity": 0.0
+      }
+    ],
+    "counterfactual_worlds": 6,
+    "counterfactual_scored_targets": 144,
+    "counterfactual_refresh_targets": 96,
+    "counterfactual_own_gradient_targets": 48,
+    "factual_refresh_targets": 48,
+    "wall_s": 4.7932387899491005
+  },
+  "dev": {
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765172141497485,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.232623732485274
+      },
+      {
+        "producer_nll": 5.688248792132943,
+        "future_nll": 7.175592026208903
+      },
+      {
+        "producer_nll": 15.064479999886535,
+        "future_nll": 7.23687382577255
+      }
+    ],
+    "training": false,
+    "teacher_future_loss_max_error": 0.0,
+    "teacher_frames": 0,
+    "teacher_replayed_targets": 0,
+    "refresh_targets": 24,
+    "critic_gradient_norm_mean": 0.0,
+    "trust_ratio_mean": 0.0,
+    "wall_s": 0.45242521399632096
+  },
+  "reference": {
+    "arm": "learned_refresh",
+    "targets": 48,
+    "updates": 3,
+    "nll": 7.765171818468832,
+    "future_nll": 7.215029349174479,
+    "rows": [
+      {
+        "producer_nll": 4.193214472498704,
+        "future_nll": 7.2326237762511205
+      },
+      {
+        "producer_nll": 5.688248820911406,
+        "future_nll": 7.175591900758231
+      },
+      {
+        "producer_nll": 15.064479569879438,
+        "future_nll": 7.236872370514083
+      }
+    ],
+    "causal_refresh_targets": 24,
+    "teacher_worlds": 0,
+    "critic_prediction_norm_mean": 0.00676732597317341,
+    "wall_s": 0.1872164579690434,
+    "phase_wall_s": {
+      "own_credit": 0.11995191703317687,
+      "critic": 0.013730629987549037,
+      "refresh": 0.016883057018276304,
+      "future": 0.02902206702856347,
+      "optimizer": 0.006492626096587628
+    }
+  },
+  "dev_gain": -3.2302865271560677e-07,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "source_sha256": {
+    "experiments/credit/market_native_receipt_antithetic.py": "87bf926228a4b3409766fe0869f1b771ae31b3284346e5281bf363105ff57d50",
+    "experiments/credit/native_optimizer_receipts.py": "41cd661ad8b4541871530e2c1245bf3b66630d0eeec10bf269e26ebc76bc162f",
+    "experiments/credit/native_receipt_evaluation.py": "f8eee2c85fe13db4414924239a4d15ff65efffff3c71fea47c7be34700b372da",
+    "experiments/credit/market_actual_utility_fit_v2.py": "a07b59e0768f00aaf4c527af360f8f8267043b5afce00492b55a294cf952c227",
+    "experiments/credit/market_actual_update_teacher.py": "7d8c6d7447bb7c9365e4c6bd8dd3a14410a8540344fff4a64ed24cd0ecdc0fdc",
+    "experiments/credit/market_future_credit_updates.py": "c6a0b33ad1bf9b7292298a2f934ddd6e8b1479090ee08a392b94de33f3263e7f"
+  },
+  "wall_s": 7.133874140970875,
+  "scope": "Frozen native parent plus zero-head bounded native receipt residual,63608total/31804trainableparameters.32causal mode-token events perdecision, typed localtheta/g/m/v/signedAdam/state; private persistent banks/clocktape. Pairedfuture native races/factual globaltape preserved.64TRAINreceipts2048events, paired antithetic bounded-latent decision gradient with predictable scale; two extra worlds per receipt; two actualfutureupdates. Frozen2048DEV pairedparent. Parent acquisition/extra receipt events/keyscoring/nativework/counterfactual learning additionally paid; no TEST/hardwareclaim"
+}

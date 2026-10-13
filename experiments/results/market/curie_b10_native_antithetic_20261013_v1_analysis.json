@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "nll": 5.70328520327134,
+  "parent_nll": 5.703270447703627,
+  "gain": -1.4755567713464757e-05,
+  "previous_nll": 5.7032780973817605,
+  "teacher_improvement": -7.1058895798614685e-06,
+  "zero_action_error": 0,
+  "first_update_error": 0,
+  "source": {
+    "frames": 64,
+    "targets": 2048,
+    "counterfactual_worlds": 128,
+    "counterfactual_scored_targets": 3072,
+    "counterfactual_refresh_targets": 2048,
+    "counterfactual_own_gradient_targets": 1024
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v1_smoke.json": "5b9cd5ef17cad1e4f47d1abb5650f0dbd52284820e573f96e24e9a6e33481cce",
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v1_fit.json": "a29e5577206bcb87d1d0dcc8378a9091ae8c3c456ef0db9e33db008a4c2d652a",
+    "experiments/results/market/curie_b10_native_receipt_20261013_v2_fit.json": "fae25a12ab0751b588d0a85c977649cfd25e282725fb399ce2f291c0940fde70",
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v1_analysis_portable.json": "5c631f160448890c6277fe908e3c46e3cd5dc069692077576f7424e205e1bba9"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_native_antithetic.py": "d1f82df3505864c136f63a43cad027a2c19089f58c212032577c87027fc12b64"
+  },
+  "decision": "Retain parent unless full prequential trajectory confirms improvement; no sealedTEST or hardware result.",
+  "scope": "Same restored actor, parent,64TRAIN receipts, native residual architecture, exact DEV reference rows. Signed teacher changes source trajectory; paired worlds within each receipt. One reused DEV/initialization, extra teacher work charged."
+}
