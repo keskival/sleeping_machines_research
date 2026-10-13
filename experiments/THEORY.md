@@ -439,3 +439,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Capacity-clock conservation](theory/CAPACITY_CLOCK_CONSERVATION.md): derives the capacity/total-hazard coupling and a cardinality-normalized clock prior; factorized common-time and conditional branch credit explain fixed-clock alternative writes. Registered calibrated integrated test follows the completed raw pool8 two-size comparison.
 
 Native update dependency validity: [local credit read sets and version stamps](theory/LOCAL_CREDIT_DEPENDENCY_VALIDITY.md) distinguish receiving-bank age from producer/state movement, price metadata, and state the serialized-vs-concurrent coherence boundary.
+
+[State-interface rank and future-facing credit](theory/STATE_INTERFACE_CREDIT_RANK.md) derives adjoint factorization, distinguishes neuronal/whole-learner cuts, and identifies the optimal rank in an update/cotangent-weighted metric. Native two-event contract queued; no whole-system efficiency claim.
