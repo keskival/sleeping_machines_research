@@ -2,7 +2,7 @@
 import json,time
 import continue_window_replay as queue
 from continue_fresh_scaling import admit
-ROOT=queue.ROOT;queue.DEADLINE=time.monotonic()+7*86400
+ROOT=queue.ROOT;queue.DEADLINE=time.monotonic()+14*86400
 
 def main():
  for depth,size in ((8,'8m'),(16,'8m'),(8,'32m')):

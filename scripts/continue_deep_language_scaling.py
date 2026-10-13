@@ -1,13 +1,18 @@
 """R1 native temporal depth8/16 and acquisition8M/32M, host-guarded."""
 import json,math,time
 import continue_window_replay as queue
-ROOT=queue.ROOT;queue.DEADLINE=time.monotonic()+7*86400
+ROOT=queue.ROOT;queue.DEADLINE=time.monotonic()+14*86400
 DRIVER='experiments/bernoulli_teacher_token_language.py'
 
 
 def admit(tag,args,sources,timeout):
- path=ROOT/f'experiments/queue/r1/{tag}/{tag}.txt';path.parent.mkdir(exist_ok=False)
- path.write_text('# R1: temporal depth and acquisition scaling; decision useful deep prediction versus complete learning work\n'+tag+' '+DRIVER+' '+args+'\n')
+ path=ROOT/f'experiments/queue/r1/{tag}/{tag}.txt'
+ text='# R1: temporal depth and acquisition scaling; decision useful deep prediction versus complete learning work\n'+tag+' '+DRIVER+' '+args+'\n'
+ if path.exists():
+  assert path.read_text()==text,'Never change or duplicate admitted settings'
+  print('reuse admitted '+tag,flush=True)
+  return queue.wait_result(ROOT/f'experiments/results/token_language/{tag}.json')
+ path.parent.mkdir(exist_ok=False);path.write_text(text)
  result=f'experiments/results/token_language/{tag}.json'
  job=dict(name=tag,queue=str(path.relative_to(ROOT)),queue_sha256=queue.sha(path),kind='r1_job',source_sha256=sources,result=result,requires=[],timeout_s=timeout,rss_kb=3000000,vms_kb=12000000)
  packet=dict(host='ip-172-31-47-132',battle='R1',purpose='User-directed native temporal depth8/16 and acquisition8M/32M; no small-quality veto',parent_manifest_sha256=queue.sha(queue.PLAN/'manifest.json'),slots={'2':[job]})
@@ -41,7 +46,7 @@ def main():
   args=template.replace(reference,tag).replace('--depth 2',f'--depth {depth}').replace('--steps 16384',f'--steps {steps}').replace('--eval-every 256','--eval-every 1024')
   # Measured smoke throughput plus evaluation/headroom; long runs retain RSS watchdog.
   timeout=math.ceil(2*smokes[depth]*steps*512+3600)
-  if timeout>172800:raise RuntimeError('Measured fit exceeds48h envelope; optimize deep execution without shrinking depth')
+  if timeout>7*86400:raise RuntimeError('Measured fit exceeds7day envelope; optimize deep execution without shrinking depth')
   r=admit(tag,args,sources,max(timeout,5400));assert finite(r['curve'])
   print('Completed '+tag+'; finalDEV '+str(r['curve'][-1]['dev_nll'])+'; training_s '+str(r['train_wall_s_total']),flush=True)
  print('Depth8/16 and32M acquisition complete; compare quality/work and long-history DEV, publicvalidation sealed',flush=True)
