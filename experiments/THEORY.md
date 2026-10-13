@@ -437,3 +437,5 @@ Connected sparse paired route-policy and critic acquisition/reuse: [SPARSE_PAIRE
 [Addressed capacity under fresh acquisition](theory/TOKEN_CAPACITY_ACQUISITION_20261012.md): registered pool4→8 integrated comparison holds selected writes fixed while charging doubled discovery; two acquisition sizes follow the current exact-replay cohort, with no small-quality veto of the larger point.
 
 [Capacity-clock conservation](theory/CAPACITY_CLOCK_CONSERVATION.md): derives the capacity/total-hazard coupling and a cardinality-normalized clock prior; factorized common-time and conditional branch credit explain fixed-clock alternative writes. Registered calibrated integrated test follows the completed raw pool8 two-size comparison.
+
+Native update dependency validity: [local credit read sets and version stamps](theory/LOCAL_CREDIT_DEPENDENCY_VALIDITY.md) distinguish receiving-bank age from producer/state movement, price metadata, and state the serialized-vs-concurrent coherence boundary.
