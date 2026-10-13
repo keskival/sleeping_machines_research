@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "critic_update": "clip1",
+      "nll": 5.70328520327134,
+      "parent_gain": -1.4755567713464757e-05,
+      "mean_gradient_norm": 3.8599265356680577,
+      "above_norm1": 39,
+      "quarter_gains": [
+        3.517745118959345e-06,
+        -2.5760118829761675e-05,
+        2.5361472272625307e-07,
+        -3.7033511862795757e-05
+      ]
+    },
+    {
+      "critic_update": "unclipped",
+      "nll": 5.703277417457883,
+      "parent_gain": -6.969754256402894e-06,
+      "mean_gradient_norm": 3.8781689584272705,
+      "above_norm1": 39,
+      "quarter_gains": [
+        4.802719894626481e-06,
+        -1.3676270693865553e-05,
+        -5.994285211760944e-06,
+        -1.301118101259581e-05
+      ]
+    }
+  ],
+  "unclipped_gain_over_clipped": 7.785813457061863e-06,
+  "initial_contrast_parity": true,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v1_fit.json": "a29e5577206bcb87d1d0dcc8378a9091ae8c3c456ef0db9e33db008a4c2d652a",
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v2_unclipped_fit.json": "2fcb6f74fc1632f32de9b4d525eb6abb525f9f528f5ee009d08c1b5c17a91a78",
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v2_unclipped_smoke.json": "7f61c81ddf78698650c5f33063517fdc3b8200b816504a034afa040642e58342",
+    "experiments/results/market/curie_b10_native_antithetic_20261013_v2_calibration_analysis_portable.json": "c1624f4ac1ab6138dd929b4a3d9ad760f128b92407f6ea05c2ba01b6806f324e"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_native_antithetic_calibration.py": "5e5e6b3fb7005a25541d372566049f16231ced09b478ec19cb6179666c5934c0"
+  },
+  "scope": "One64receipt source/2048TRAIN and2048reusedDEV perarm; only critic gradient clipping changes. Actor clip1, native race/state/receipt architecture, action bound, seeds/data/reference fixed. No sealedTEST/fulltrajectory/hardwareclaim. Additional128worlds perarm and parent/actor acquisition/native work charged."
+}
