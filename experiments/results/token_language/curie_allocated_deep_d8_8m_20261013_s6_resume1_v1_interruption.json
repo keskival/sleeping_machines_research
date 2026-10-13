@@ -1,0 +1,18 @@
+{
+  "status": "interrupted",
+  "battle": "R1",
+  "old_run": "curie_allocated_deep_d8_8m_20261013_s6_resume1_v1",
+  "recovery_run": "curie_allocated_deep_d8_8m_20261013_s6_resume2_v1",
+  "reason": "Session ended; no trainer or tmux remains. Runner log has no terminal exit marker; cause unclassified.",
+  "checkpoint_sha256": "025fe66e9776fa22443f868bb3847fe7a061182c024c4838ff69dec23809b888",
+  "checkpoint_step": 2048,
+  "checkpoint_targets": 1048544,
+  "checkpoint_successful_training_s": 5307.363499809755,
+  "prior_runner_observed_interval_lower_bound_s": 5003,
+  "prior_runner_start_utc": "19:42:09",
+  "prior_runner_last_heartbeat_utc": "21:05:32",
+  "input_sha256": {
+    "experiments/queue/r1/runner_curie_allocated_deep_d8_8m_20261013_s6_resume1_v1.out": "19392d99b9bfc4c6958ed7838220bcdae3bd1ebcaee1881378ae7a82f0d0f1ba"
+  },
+  "scope": "Observed runner interval is a lower bound, not an exact interruption duration; unobserved tail remains unknown. Preserve original first-interruption receipt and all checkpoint/log files."
+}
