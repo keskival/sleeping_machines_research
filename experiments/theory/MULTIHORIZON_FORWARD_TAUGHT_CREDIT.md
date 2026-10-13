@@ -235,3 +235,55 @@ mean error4.44e-16, six invalid-stream checksPASS, peakRSS20,476KB. Its fixed
 paired losses give nested advantages-2.5,-0.5,+3.5, demonstrating that the ledger
 retains a sign-reversing consequence rather than selecting on the early prefix.
 This is a recording/algebra contract, not a native learner rollout or quality win.
+
+## 11. Native replay must name the future learning policy
+
+`credit/native_token_future_world.py` implements a cloned native token learner
+with its own factual-gradient, norm1-clipped AdamW updates. Cloning model and
+optimizer jointly preserves parameter bindings. Numerical persistent state and
+race RNG are copied; the source learner is not advanced by either replay.
+Both worlds score the same legal token observations before their own update.
+An initial addressed route intervention is cleared before subsequent steps.
+
+This is a declared diagnostic future policy, not the production probability0.25
+importance-corrected alternative-teacher policy. Hard races, addressed state,
+key/value separation and actual optimizer moments are retained; future
+alternative-write teacher work is omitted in this diagnostic. A gate for this
+policy cannot establish the production learner's delayed utility. The next
+integration must replay the actual future teaching policy with its own private
+teacher/admission RNG and recomputed alternative-world teaching labels.
+
+Formally let z contain the complete learner state, including optimizer and
+private memories. For shared exogenous inputs/random tape let production and
+diagnostic updates be T_k and S_k. On a region where T_k is L_k-Lipschitz and
+delta_k bounds ||T_k(z_tilde_k)-S_k(z_tilde_k)||, their trajectory error satisfies
+
+    e_(k+1) <= L_k e_k + delta_k,
+    e_k <= sum_(i<k) delta_i product_(i<j<k) L_j,  when e_0=0.
+
+If the queried prequential loss is C_k-Lipschitz there, objective discrepancy
+is bounded by sum_k w_k C_k e_k. An intervention contrast has one such bound
+for each world. This follows by adding/subtracting T_k(z_tilde_k) at every
+step; it is conditional finite-trajectory perturbation algebra, not global
+Adam stability. Hard route changes can invalidate the local Lipschitz region.
+Those route boundaries require explicit replay observations or separately
+justified probabilistic bounds rather than inventing small L_k.
+
+The practical conclusion is precise: a clean cloning/replay gate removes
+implementation ambiguity, while matching the declared learning policy removes
+target ambiguity. Shared random tapes pair uncertainty; they do not force
+the worlds to choose the same future routes or acquire the same moments.
+
+The native D8 contract completed in guarded AWS slot3:
+`results/credit/aws_native_token_future_world_contract_20261013_v2.json`. Three
+prefix loss errors are0 and the final actor/optimizer/state/RNG fingerprint
+agrees exactly after resuming from a cloned prefix. Source and global RNG are
+unchanged; paired race RNG agrees. Own moment L2distance is0.004764623. Across
+three four-target blocks the intervention has summed advantages+0.003373146,
+-0.003073692,-0.003390312: the initial benefit reverses to cumulative-0.003090858.
+This is a synthetic legal-token/D8payload8 numerical witness under the declared
+factual-gradient policy, not population utility or corpus quality. All nine
+executed updates and36 scored/own-gradient targets are charged;1.338s and
+423268KBpeakRSS. v1 failed in moment inspection because inactive parameters
+lack Adam state; corrected v2 preserves the actual learner execution. The
+production alternative-teacher policy remains the next replay gate.
