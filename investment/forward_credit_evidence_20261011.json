@@ -35,6 +35,8 @@
     "experiments/results/market/curie_b10_local_clock_20261012_v1_contract.json": "3b3d1ee6cba7ca1140190e1d283cd02b986522a2dd8bcf3f3df6f3d346ac70ac",
     "experiments/results/market/curie_b10_leg_eligibility_20261012_v1_contract.json": "ef938c748c2bc7dcdd19896e4f08ad70511744cefe17b577cd22d3f9fdef26ee",
     "experiments/results/market/curie_b10_projected_clock_20261013_v1_contract.json": "ef8f9c7d94c1e22bc4d9772631697c668f53b4cabd4939f5f615cc6673fb6bff",
+    "experiments/results/market/curie_b10_streaming_clock_20261013_v1_fit.json": "a55979e4e43cd5f0ded9e55a24031bced0bf12e91dbced0a0d7132b02319f311",
+    "experiments/results/market/curie_b10_streaming_clock_longer_20261013_v1_fit.json": "2ff0e95e0cbf25375ae647a2c67a9709b291ed098e09d8da51e49f72e0f8435e",
     "experiments/results/causal_induction/curie_world_credit_confirm_20261012_v1_s195_decision.json": "37135cddfe74ff26bdd1a6a8b7d392c52227cd801574f26d0a092764e385a7ee"
   },
   "metrics": {
@@ -1941,6 +1943,138 @@
         }
       ],
       "scope": "Four exact shared-path clock gradient projections, fixed parameters per window, 352 additional trace floats plus separate historical snapshot/workspaces. Raw-gradient correctness, not Adam update projection or speed/quality. Remaining full gradients approximate. Restored full18164parameter market actor on128TRAIN forecasts; unchanged physical forward and normalized recording-cell scores. Streaming one-event local backward plus own eligibility has exact addressed mark-memory/readout gradients and all gradients at1event. Cross-leg histories exact in four clock directions only; remaining histories omitted and measured, not whole-model exactness or learned-credit quality/efficiency. NumPy serial observer is correctness prototype; every graph is released after its observed event."
+    }
+  ],
+  "native_market_streaming_credit_updates": [
+    {
+      "tag": "curie_b10_streaming_clock_20261013_v1_fit",
+      "rows": [
+        {
+          "arm": "fully_frozen",
+          "nll": 6.984690276933144,
+          "targets": 4096,
+          "wall_s": 5.117690912011312,
+          "audits": 0,
+          "future_teachers": 0
+        },
+        {
+          "arm": "bptt",
+          "nll": 6.964450412549272,
+          "targets": 4096,
+          "updates": 128,
+          "wall_s": 16.092998420994263,
+          "phase_wall_s": {
+            "window_credit": 15.612728826934472,
+            "optimizer": 0.3802863741002511
+          }
+        },
+        {
+          "arm": "local",
+          "nll": 6.963888813196473,
+          "targets": 4096,
+          "updates": 128,
+          "wall_s": 16.32076541800052,
+          "phase_wall_s": {
+            "window_credit": 15.896668938104995,
+            "optimizer": 0.3535022189898882
+          }
+        },
+        {
+          "arm": "own",
+          "nll": 6.963408396442265,
+          "targets": 4096,
+          "updates": 128,
+          "wall_s": 20.208803974994225,
+          "phase_wall_s": {
+            "window_credit": 19.781265249912394,
+            "optimizer": 0.36069751874310896
+          }
+        },
+        {
+          "arm": "projected",
+          "nll": 6.963384357383365,
+          "targets": 4096,
+          "updates": 128,
+          "wall_s": 25.736238647979917,
+          "phase_wall_s": {
+            "window_credit": 25.303659997996874,
+            "optimizer": 0.3650278750574216
+          }
+        }
+      ],
+      "projected_gain": {
+        "fully_frozen": 0.02130591954977845,
+        "bptt": 0.001066055165907187,
+        "local": 0.0005044558131075405,
+        "own": 2.40390588999162e-05
+      },
+      "acquisition_wall_s": 8.2242068949854,
+      "scope": "One restored market actor; common exact2048TRAIN acquisition in fit,4096Aug25DEV score-before-update forecasts; 32event fixed-parameter windows with numerical state persistence and traces reset after actual Adam updates. Fully frozen, exact BPTT, event-local, own traces and four shared-path clock projections. No native critic/residual teacher yet. NumPy correctness backend, includes trace/optimizer work; original5750.687s fitting additionally charged to every arm. Reused development stream, no sealed TEST or trading-profit claim. Smoke uses one-event windows to check actual parameters/Adam moments/scores across updates; longer-window projected gradients remain approximate."
+    },
+    {
+      "tag": "curie_b10_streaming_clock_longer_20261013_v1_fit",
+      "rows": [
+        {
+          "arm": "fully_frozen",
+          "nll": 5.752527505638844,
+          "targets": 16384,
+          "wall_s": 19.74273824301781,
+          "audits": 0,
+          "future_teachers": 0
+        },
+        {
+          "arm": "bptt",
+          "nll": 5.738461619073057,
+          "targets": 16384,
+          "updates": 512,
+          "wall_s": 62.95001418198808,
+          "phase_wall_s": {
+            "window_credit": 61.12428791698767,
+            "optimizer": 1.4721275805786718
+          }
+        },
+        {
+          "arm": "local",
+          "nll": 5.737748382483528,
+          "targets": 16384,
+          "updates": 512,
+          "wall_s": 64.26244431399391,
+          "phase_wall_s": {
+            "window_credit": 62.57137104685535,
+            "optimizer": 1.4217626900644973
+          }
+        },
+        {
+          "arm": "own",
+          "nll": 5.737491979714852,
+          "targets": 16384,
+          "updates": 512,
+          "wall_s": 79.71188808599254,
+          "phase_wall_s": {
+            "window_credit": 78.04757975990651,
+            "optimizer": 1.4143126230046619
+          }
+        },
+        {
+          "arm": "projected",
+          "nll": 5.73769735637646,
+          "targets": 16384,
+          "updates": 512,
+          "wall_s": 100.64043420300004,
+          "phase_wall_s": {
+            "window_credit": 98.96552640513983,
+            "optimizer": 1.4219393761595711
+          }
+        }
+      ],
+      "projected_gain": {
+        "fully_frozen": 0.014830149262384573,
+        "bptt": 0.0007642626965971289,
+        "local": 5.102610706853028e-05,
+        "own": -0.00020537666160791446
+      },
+      "acquisition_wall_s": 7.903726998978527,
+      "scope": "One restored market actor; common exact2048TRAIN acquisition in fit,16384Aug25DEV score-before-update forecasts; 32event fixed-parameter windows with numerical state persistence and traces reset after actual Adam updates. Fully frozen, exact BPTT, event-local, own traces and four shared-path clock projections. No native critic/residual teacher yet. NumPy correctness backend, includes trace/optimizer work; original5750.687s fitting additionally charged to every arm. Reused development stream, no sealed TEST or trading-profit claim. Smoke uses one-event windows to check actual parameters/Adam moments/scores across updates; longer-window projected gradients remain approximate."
     }
   ]
 }

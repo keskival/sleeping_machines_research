@@ -247,4 +247,23 @@ def pages():
         for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
         table=[[str(row['events']),f"{row['score_max_error']:.1e}",f"{row['clock_projection_max_error']:.2e}",f"{row['full_gradient_max_difference']:.6f}"] for row in record['rows']]
         current.append([('h2','Exact shared-path clock projections'),('table',(['Events','Score error','Projection error','Residual gap'],table,[31,38,50,48])),('p','Four clock directions carry sensitivities through both temporal layers and addressed memory. Their gradient projections match full BPTT through128TRAIN events while all forecasts remain identical; historical event graphs are released.'),('small','352 projected trace floats plus352 previous-sensitivity snapshot floats and operator workspace, in addition to existing7280 own and7280 historical trace floats. Fixed parameters/basis within each window; no trained direction selection, Adam-step parity, speed or quality claim. Remaining gradient components are approximate; raw projected gradient equality does not imply equality after coordinatewise Adam.')])
+    path=ROOT/'experiments/results/market/curie_b10_streaming_clock_20261013_v1_fit.json'
+    if path.exists():
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        table=[]
+        for row in record['rows']:
+            continuation=record['acquisition']['wall_s']+row['wall_s'];table.append([row['arm'],f"{row['nll']:.6f}",f"{row['wall_s']:.3f}",f"{continuation:.3f}",f"{5750.68726682663+continuation:.3f}"])
+        current.append([('h2','Streaming credit: actual online market updates'),('table',(['Credit','NLL','Reuse s','Continue s','Full s'],table,[43,30,28,32,33])),('p','Exploratory five-arm quality win: shared-path credit gains0.001066nats/event over exact BPTT and0.000024 over own-leg traces across4096online forecasts. Event-local/own credit also beats BPTT. The projected learner is slower:25.736s versus16.093s. This isolates the unlearned credit rule before native residual-critic integration.'),('small','One restored actor, common2048TRAIN exact acquisition/Adam state;4096Aug25DEV scores before32-target updates. Traces reset after updates, numerical state persists. One-event actual parameters/moments/scores parity passes. Continue includes acquisition; Full includes original5750.687s fitting identically for every row. CPU NumPy prototype; reusedDEV, no TEST, efficiency, market-profit, trained-direction or learned-critic claim.')])
+    path=ROOT/'experiments/results/market/curie_b10_streaming_clock_longer_20261013_v1_fit.json'
+    if path.exists():
+        record=json.loads(path.read_text());assert record['status']=='completed'
+        for name,digest in record['source_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        assert max(record['prefix4096_block_score_max_error'].values())<1e-12
+        table=[]
+        for row in record['rows']:
+            segments=[sum(row['block_nll'][j:j+128])/128 for j in range(0,512,128)]
+            table.append([row['arm'],f"{row['nll']:.6f}",*[f"{value:.6f}" for value in segments]])
+        by={row['arm']:row for row in record['rows']};projected=by['projected'];bp=by['bptt']
+        current.append([('h2','Streaming credit across16384online forecasts'),('table',(['Credit','Overall','First4096','Second','Third','Fourth'],table,[35,26,26,26,26,26])),('p',f"Own-leg credit wins quality over exact BPTT by{bp['nll']-by['own']['nll']:.6f}nats/event and is the best completed rule here. Projected gain over exact BPTT{record['projected_gain']['bptt']:+.6f}nats/event; five-arm quality gate{'PASS' if record['quality_gate'] else 'FAIL'}. Every first4096forecast block reproduces its completed shorter run within1e-12. Reuse projected{projected['wall_s']:.3f}s/exact{bp['wall_s']:.3f}s."),('small',f"Same common2048TRAIN acquisition{record['acquisition']['wall_s']:.3f}s plus original5750.687s prefit charged to every arm. One restored actor/reused Aug25DEV,32event windows with actualAdam and version resets. This is an unlearned transport rule; no native critic, learned basis, TEST, efficiency, profit or benchmark claim. Segment denominators identical4096targets per cell; no pending scores.")])
     return current

@@ -21,7 +21,7 @@ def main():
             subprocess.run(['latexmk','-pdf','-interaction=nonstopmode','-halt-on-error','evidence_brief.tex'],cwd=build,env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
         pdf=build/'evidence_brief.pdf'
         text=subprocess.check_output(['pdftotext',str(pdf),'-'],text=True)
-        for expected in ['98.4','2.09','77.8','12 October 2026','working research prototype']:
+        for expected in ['98.4','2.09','77.8','13 October 2026','working research prototype']:
             assert expected in text,expected
         (preview/'text.txt').write_text(text)
         output=ROOT/'investment/sleeping_machines_evidence_brief.pdf';shutil.copyfile(pdf,output)
