@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "endpoint_errors": {
+    "own": {
+      "score": 0.0,
+      "parameters": 0.0,
+      "state": 0.0,
+      "remote_windows": 0
+    },
+    "projected": {
+      "score": 0.0,
+      "parameters": 0.0,
+      "state": 0.0,
+      "remote_windows": 3
+    }
+  },
+  "source_sha256": {
+    "experiments/credit/market_native_early_contract.py": "930df232a30fe68624cbd6ad3fd6f35a89d48cbd67e9bc2fcbb2bfd38ee907e8",
+    "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917"
+  },
+  "scope": "Three actual8target Adam updates per endpoint on TRAIN. Own endpoint raises if paired remote routine is called. Native request features accept only actor state and previously observed receipt; no target sequence argument."
+}

@@ -1,0 +1,221 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_early_request_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "arm": "online",
+    "nll": 10.5808520928231,
+    "targets": 32,
+    "wall_s": 0.4548622639849782,
+    "phase_wall_s": {
+      "request": 0.029907189978985116,
+      "credit": 0.32112890301505104,
+      "teacher": 0.06532698101364076,
+      "proposal": 0.02835097099887207,
+      "optimizer": 0.008635597012471408
+    },
+    "block_nll": [
+      10.042609971876699,
+      11.092585976024864,
+      9.77278801150677,
+      11.415424411884072
+    ],
+    "requests": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "remote_computed": [
+      true,
+      false,
+      true,
+      true
+    ],
+    "remote_windows": 3,
+    "requested_windows": 2.0,
+    "teachers": 2,
+    "teacher_labels": [
+      {
+        "decision_block": 0,
+        "observed_block": 1,
+        "delta": 2.378592988350192e-06
+      },
+      {
+        "decision_block": 2,
+        "observed_block": 3,
+        "delta": -5.181243796670287e-06
+      }
+    ]
+  },
+  "rows": [
+    {
+      "arm": "own",
+      "nll": 6.0672720062657195,
+      "targets": 32,
+      "wall_s": 0.19478155998513103,
+      "phase_wall_s": {
+        "request": 6.018992280587554e-06,
+        "credit": 0.18373590198461898,
+        "teacher": 0.0,
+        "proposal": 0.0,
+        "optimizer": 0.0093283650057856
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196491208437354,
+        5.67155498819046,
+        7.178534268829225
+      ],
+      "requests": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "remote_computed": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "remote_windows": 0,
+      "requested_windows": 0.0,
+      "teachers": 0,
+      "teacher_labels": []
+    },
+    {
+      "arm": "projected",
+      "nll": 6.067272230123821,
+      "targets": 32,
+      "wall_s": 0.21669743399252184,
+      "phase_wall_s": {
+        "request": 4.164990969002247e-06,
+        "credit": 0.20612203600467183,
+        "teacher": 0.0,
+        "proposal": 0.0,
+        "optimizer": 0.009150655008852482
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556329919837,
+        7.178534030634459
+      ],
+      "requests": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "remote_computed": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "remote_windows": 4,
+      "requested_windows": 4.0,
+      "teachers": 0,
+      "teacher_labels": []
+    },
+    {
+      "arm": "frozen",
+      "nll": 6.067272035037421,
+      "targets": 32,
+      "wall_s": 0.20698570800595917,
+      "phase_wall_s": {
+        "request": 0.022653400956187397,
+        "credit": 0.17375416500726715,
+        "teacher": 0.0,
+        "proposal": 0.0,
+        "optimizer": 0.009034455957589671
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556104134769,
+        7.178533476073925
+      ],
+      "requests": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "remote_computed": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "remote_windows": 1,
+      "requested_windows": 1.0,
+      "teachers": 0,
+      "teacher_labels": []
+    },
+    {
+      "arm": "online",
+      "nll": 6.067272035037421,
+      "targets": 32,
+      "wall_s": 0.258539128000848,
+      "phase_wall_s": {
+        "request": 0.024778731021797284,
+        "credit": 0.17656862997682765,
+        "teacher": 0.029270997998537496,
+        "proposal": 0.017206411983352154,
+        "optimizer": 0.009127301018452272
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556104134769,
+        7.178533476073925
+      ],
+      "requests": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "remote_computed": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "remote_windows": 1,
+      "requested_windows": 1.0,
+      "teachers": 1,
+      "teacher_labels": [
+        {
+          "decision_block": 0,
+          "observed_block": 1,
+          "delta": 2.081022039135405e-07
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917",
+    "experiments/market/NATIVE_EARLY_REQUEST_PROTOCOL.md": "71c34bea96e4dac5aa7717323e14612323d1e6cb26d67ccbe05f103db9668c4e",
+    "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "wall_s": 3.017233842983842,
+  "peak_rss_kb": 383144,
+  "scope": "Pre-window requests from prior observed context only. Deterministic full-support source audits every2windows; online deployment audits every16windows, not a propensity-corrected random risk estimator. Frozen deployment has no audits. Common2048TRAIN exact actor acquisition; reused Aug25DEV; no TEST or efficiency/benchmark claim inferred from one run. Native private banks and current-frame counterfactual learning retained."
+}
