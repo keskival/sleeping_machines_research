@@ -34,6 +34,19 @@ with additional action-policy derivatives when actions depend on z. A detached/r
 
 The interface rank bound must now apply to the complete learner-state cut, not merely neuronal memory: changing parameters/moments may carry delayed effects too. Sparse local ownership and admitted cross-bank packets determine its useful width. This is precisely why dense Adam/global clipping boundaries and packet dependency lineage are part of the research accounting.
 
+```mermaid
+flowchart LR
+  E[Observed event] --> S[Local persistent state]
+  S --> F[Future forecasts and losses]
+  F --> V[Future-value and credit estimate]
+  V --> C[Interface cotangent packet]
+  C --> L[Exact local eligibility]
+  L --> B[Versioned parameter bank]
+  B --> S
+  S --> P[Forward response receipts]
+  P --> V
+```
+
 Finite horizon closes at the observed terminal loss or an explicitly learned terminal value. A discounted Bellman value operator contracts under its usual bounded-value/Markov-state assumptions; derivative transport additionally requires gamma times the relevant Jacobian norm<1 for a simple gradient contraction. Do not infer the latter from the former. Outcome labels, forward probes, local eligibility and paid residual audits supply finite supervision; the future objective does not introduce a mandatory hierarchy of trainers.
 
 ## Train rank where future updates need it

@@ -213,4 +213,23 @@ def blocks():
             assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
         result.extend([('p','Native receiver update placement contract: three exact un-clipped Adam updates, independent delivery order, disjoint backing storage, isolated receiver update and stale-credit rejection. '+c['scope']),
             ('p','Bank storage '+str(c['storage'])+'.')])
+    ordered=ROOT/'experiments/results/diagnostics/aws_ordered_token_lookup_fit_gate_20261013_v2.json'
+    if ordered.exists():
+        c=json.loads(ordered.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[['Cached ordinary lookup',str(c['targets']),f"{c['reference_nll']:.6f}",f"{c['reference_training_s']:.3f}"],
+              ['Ordered gradient lookup',str(c['targets']),f"{c['candidate_nll']:.6f}",f"{c['candidate_training_s']:.3f}"]]
+        result.extend([('p',f"Ordered token-gradient execution: whole-fit gate{c['gate']}, recorded learning curves exact, training time reduction{c['training_time_reduction_percent']:.2f}%. "+c['scope']),
+            ('table',(['Implementation','Fit targets','Selected DEV NLL','Complete training seconds'],rows,[56,36,44,48]))])
+    work=ROOT/'experiments/results/diagnostics/aws_ordered_native_work_decision_20261013_v1.json'
+    if work.exists():
+        c=json.loads(work.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        rows=[[r['implementation'],str(r['targets']),f"{r['registered_fit_flops_subtotal']/1e9:.6f}",
+               f"{r['declared_fit_scalar_arithmetic']/1e9:.6f}",f"{r['backward_operand_payload_bytes']/1e9:.6f}",
+               f"{r['backward_output_payload_bytes']/1e9:.6f}"] for r in c['rows']]
+        result.extend([('p','Same-learning ordered-gradient native-work comparison. '+c['scope']),
+            ('table',(['Implementation','Targets','Registered GFLOPs','Declared scalar Gops','BP operand GB','BP output GB'],rows,[40,24,32,32,32,32]))])
     return result
