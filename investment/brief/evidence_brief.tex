@@ -378,6 +378,15 @@ when to apply credit across the predictor's layers. Its training signal is the
 forecast quality of actual updates on subsequent observations.
 \end{callout}
 
+\textbf{What is the baseline?} Every row below uses the same restored
+18,164-parameter event predictor, not a different Transformer or LSTM.
+Ordinary online backpropagation differentiates forecast loss through the
+32-event window and updates that predictor. It assigns credit to past
+computations for the observed prediction error; it does not train a separate
+policy for the value of future learning updates. Our guidance is trained on
+that subsequent forecast utility and changes which cross-layer credit is
+applied. Its preparation and teaching are additional learning work.
+
 The experiment used real Binance trades. Each forecast predicts the next
 transaction's timing and type, and is scored before learning from the outcome.
 All rules start from the same acquired predictor and optimizer state. The
@@ -421,7 +430,9 @@ weights online produced worse forecasts in this experiment.
 forecasts over our temporal traces (5.737456 vs 5.737492), while computing remote
 credit in 257 of 512 windows. Remote matrix work falls \textbf{49.8\%}, from 1.762 to 0.884 billion
 FLOPs, avoiding at least 5.745 million credit-state read/write scalar accesses.
-This counts one component; guidance, teaching and optimizer work are additional.
+The 49.8\% reduction compares early-request remote credit with always-computed
+remote credit within our own predictor, not with a dense model or the complete
+BPTT training cost. Guidance, teaching and optimizer work are additional.
 Native races use local readiness joins; learning retains 32-target update boundaries.
 CPU timing describes the prototype, not asynchronous-chip advantage.
 
