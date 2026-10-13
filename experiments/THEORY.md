@@ -1,5 +1,7 @@
 # Theory note — collapsing futures, and the gradient through a collapse
 
+[Anchored connected depth credit](theory/ANCHORED_DEPTH_CREDIT_DEFECTS.md) derives the exact fixed-path identity e0=P_D eD+sum P_(d-1)r_d for directly queried layer cotangents. Terminal anchoring plus composed-response audits exposes correlated bias without multiplying learned backward operators. Actor conditioning still governs transport; contraction can also erase the useful upstream signal. Supported categorical/Bernoulli audits have explicit variance and cost-constrained rates, with prefix transport/discovery/optimizer work charged. This guides the next native compact-credit integration while the actual D8/D16 language acquisitions continue unchanged; no new fit or scaling claim.
+
 [Depth-first allocated native language credit](theory/DEPTH_ALLOCATED_NATIVE_LANGUAGE_CREDIT.md) implements predictable full-support TRAIN audit allocation at actual depth8/16, preserving the raw conditional importance-weighted teacher mean. Allocation uses a local score-gradient second-moment proxy, not full parameter-gradient variance; global clip/Adam and factual windowBP remain charged. Curie reserves8M at both depths and32M atD8; numerical/resource smokes do not veto larger acquisition on quality. The objective is exact GPT2/FineWeb Transformer benchmark quality after development selection, not another two-layer confirmation.
 
 Written 2026-09-25. A working note: every claim marked **(test Mk)** is checked
