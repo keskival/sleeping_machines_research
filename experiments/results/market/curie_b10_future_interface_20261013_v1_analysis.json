@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "variant": "unscaled",
+      "dev_mse": 0.0012111821043047733,
+      "zero_relative_reduction": -0.011216684820458456,
+      "parameters": 31804,
+      "train_teacher_targets": 8192,
+      "dev_teacher_targets": 2048,
+      "wall_s": 23.016013732005376
+    },
+    {
+      "variant": "scaled",
+      "dev_mse": 0.0011336502830880375,
+      "zero_relative_reduction": 0.05351468046328067,
+      "parameters": 31804,
+      "train_teacher_targets": 8192,
+      "dev_teacher_targets": 2048,
+      "wall_s": 23.50691179500427
+    },
+    {
+      "variant": "geometry",
+      "dev_mse": 0.0011448683640494668,
+      "zero_relative_reduction": 0.044148697759651245,
+      "parameters": 31804,
+      "train_teacher_targets": 8192,
+      "dev_teacher_targets": 2048,
+      "wall_s": 23.968832762970123
+    }
+  ],
+  "zero_mse": 0.0011977473497876657,
+  "train_mean_mse": 0.0012391541008430957,
+  "causal_previous_mse": 0.0020590634322963947,
+  "retained_variant": "scaled",
+  "input_sha256": {
+    "experiments/results/market/curie_b10_future_interface_20261013_v1_fit.json": "90c87944bb0702a3827a8c24e46f13c8e5a28ff9319c3ea35d9fe9fa16e2f583",
+    "experiments/results/market/curie_b10_future_interface_scaled_20261013_v1_fit.json": "b7404ec4fe528fd5fe6645c1b1e90261157a53fe51a8bcd877f0e056bf69fc93",
+    "experiments/results/market/curie_b10_future_interface_geometry_20261013_v1_fit.json": "77a68940e891e23d2bf50ae21b6585abd6262f5527be1e27d0328744ca75163d"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_market_future_interface.py": "72502ec65439d557c84cc66b91db4053e4225127d9f11205ba0cf5b8fd5d6b2d"
+  },
+  "scope": "One seed,32 paired DEV decision frames/four coordinates, fixed restored actor. Exact same labels across variants. Native prospective-credit prediction diagnostic; no actor-update quality, total-work or hardware advantage. Source128 TRAIN frames,8192 forward teacher targets; DEV2048 teacher targets used only for scoring. Contract derivative/finite-difference audits additionally paid."
+}

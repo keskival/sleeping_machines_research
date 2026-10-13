@@ -6702,3 +6702,22 @@ One seed0/new partition of same Github cohort, fixed144 features/64-wide residua
 Teacher-free split2 portable bundle reproduces score/time exactly, normalized mark probabilities and first-target suffix invariance. One core/readout metadata, no teacher or TRAIN loaded for restoration.
 
 Full normalized mixture/scoring boundary: student 0.256s vs pair 0.555s, 2.17x faster; five warmed CPU timings with alternating order. Includes scalar-mixture reduction and reproduces both saved scores within1e-9. Student35.2% fewer parameters and0.158 lower DEV mark loss than this calibrated pair, with identical time density. Development quality/serving point against our own teacher, not Transformer or total-training superiority.
+
+## Appendix. B10 forward-taught prospective state-interface credit
+
+The native temporal race critic predicts future-useful credit coordinates from forward responses. Complete two-layer and addressed-memory state sensitivity has88coordinates and four admitted clock-parameter directions;352eligibility floats. The exact boundary contraction agrees with full-history credit minus future-only parameter derivatives to2.22e-16. Independent finite differences teach the fit; BP supplies only the numerical audit.
+
+| Native readout | Frozen DEV credit MSE | Reduction vs zero | Parameters |
+| --- | --- | --- | --- |
+| Original common-scale readout | 0.001211182 | -1.12% | 31,804 |
+| Per-direction scaled readout (retained) | 0.001133650 | 5.35% | 31,804 |
+| Geometry/receipt plus per-direction scale | 0.001144868 | 4.41% | 31,804 |
+| Zero credit | 0.001197747 | — | 0 |
+| TRAIN mean | 0.001239154 | — | 4 stored values |
+| Previous revealed credit | 0.002059063 | — | 4 stored values |
+
+One seed19124,128chronological TRAIN pairs and32DEV pairs,8producer/8future targets each; fixed restored market actor, same128DEV coordinate labels across variants. Native persistent private banks, hard races and current decision activations retained; no GRU. DEV weights frozen and bank state evolves causally. Per-direction scaling improves acquisition; the tested geometry/receipt summaries do not improve on scaling alone.
+
+Each fit pays1024TRAIN teacher worlds/8192forward targets,256DEV teacher worlds/2048targets for evaluation, factual processing, critic learning and the original actor fit; numerical contracts additionally paid. Variant whole diagnostic execution23.016/23.507/23.969s for unscaled/scaled/geometry respectively; CPU timings are observational, not ASIC work. Full fitting arithmetic, inference traffic and energy unmeasured for this diagnostic. No actor update is applied: future directional prediction is the completed endpoint, actual clipped-Adam forecast utility is the next integration. Strongest market forecasting evidence is unchanged.
+
+Evidence: curie_b10_future_interface_20261013_v1_analysis.json and its three source-bound fit parents. Theory: FORWARD_TAUGHT_STATE_INTERFACE_CREDIT.md; protocol: FUTURE_STATE_INTERFACE_PROTOCOL.md.
