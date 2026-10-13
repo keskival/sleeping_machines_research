@@ -442,6 +442,9 @@ requests while reducing preparation arithmetic \textbf{22.3\%}, from 1.022 to
 0.794 billion FLOPs. Guidance now adds 504.7 million beyond actor preparation,
 so total continuation work is higher on this short prefix. Special functions
 are counted separately; these are arithmetic conventions, not chip measurements.
+Online guidance also reuses the predictor's observed outcomes to teach credit,
+halving future-world replay from 2,048 to 1,024 forecasts with unchanged utility
+labels and all 16,384 predictions preserved.
 
 {\footnotesize\color{muted}One restored 18,164-parameter predictor and one
 31,753-parameter guidance initialization on reused 25 August development data;

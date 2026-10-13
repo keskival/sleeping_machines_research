@@ -1,0 +1,137 @@
+{
+  "source_parity": {
+    "actor": 0.0,
+    "critic": 0.0,
+    "actor_moments": 0.0
+  },
+  "deployment_parity": {
+    "online": 0.0
+  },
+  "original_source_wall_s": 0.4477187570009846,
+  "status": "completed",
+  "battle": "B10",
+  "args": {
+    "tag": "curie_b10_factual_teacher_20261013_v1_smoke",
+    "mode": "smoke"
+  },
+  "acquisition": {
+    "teacher_replays": 4,
+    "teacher_replay_arithmetic_flops": 0,
+    "reused_factual_windows": 0,
+    "arm": "online",
+    "nll": 10.5808520928231,
+    "targets": 32,
+    "wall_s": 0.3828385389933828,
+    "phase_wall_s": {
+      "request": 0.029740938975010067,
+      "credit": 0.25006641598884016,
+      "teacher": 0.06368013998144306,
+      "proposal": 0.028884154016850516,
+      "optimizer": 0.009100559982471168
+    },
+    "block_nll": [
+      10.042609971876699,
+      11.092585976024864,
+      9.77278801150677,
+      11.415424411884072
+    ],
+    "requests": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "remote_computed": [
+      true,
+      false,
+      true,
+      false
+    ],
+    "remote_windows": 2,
+    "requested_windows": 2.0,
+    "teachers": 2,
+    "teacher_labels": [
+      {
+        "decision_block": 0,
+        "observed_block": 1,
+        "delta": 2.378592988350192e-06
+      },
+      {
+        "decision_block": 2,
+        "observed_block": 3,
+        "delta": -5.181243796670287e-06
+      }
+    ]
+  },
+  "rows": [
+    {
+      "teacher_replays": 1,
+      "teacher_replay_arithmetic_flops": 306064,
+      "reused_factual_windows": 1,
+      "arm": "online",
+      "nll": 6.067272035037421,
+      "targets": 32,
+      "wall_s": 0.4884941980126314,
+      "phase_wall_s": {
+        "request": 0.024308143998496234,
+        "credit": 0.1679738740203902,
+        "teacher": 0.26971319000585936,
+        "proposal": 0.01667907999944873,
+        "optimizer": 0.008406626002397388
+      },
+      "block_nll": [
+        4.199349647199458,
+        7.2196489127415315,
+        5.671556104134769,
+        7.178533476073925
+      ],
+      "requests": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "remote_computed": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "remote_windows": 1,
+      "requested_windows": 1.0,
+      "teachers": 1,
+      "teacher_labels": [
+        {
+          "decision_block": 0,
+          "observed_block": 1,
+          "delta": 2.081022039135405e-07
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/market_native_factual_teacher_reuse.py": "03f94e41b31c7e8c87337c85bb7335ae540d414a458b10ec6508b25c761a3226",
+    "experiments/credit/market_complete_work_probe_v2.py": "b3bee77621148d32a8763e3bda2b3307ebc98f79711dfdaff36502fe238a82db",
+    "sleeping_machines/operation_audit.py": "2c75019b7350bc19433b0ba55d759d807f87b9a0989567dca425dcadfd37278b",
+    "experiments/credit/market_native_compact_acquisition.py": "27a93df0ed0f5a94507f756af7285cb9e42287222c0498b1cddda5c3705237a9",
+    "experiments/credit/market_clock_context_contract.py": "87e543cafb9e3555c6491b273b632d6828819275d4b4ee49b0436b3b083f055d",
+    "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917",
+    "experiments/market/NATIVE_EARLY_REQUEST_PROTOCOL.md": "71c34bea96e4dac5aa7717323e14612323d1e6cb26d67ccbe05f103db9668c4e",
+    "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3"
+  },
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486",
+    "experiments/results/market/curie_b10_early_request_20261013_v1_smoke.json": "bb95c2b0f6fe4e7474cdcca1d45b7870ccb75a604576c3dc819becf35a583fba"
+  },
+  "wall_s": 2.860884425987024,
+  "peak_rss_kb": 395636,
+  "scope": "Online teaching reuses the just-observed selected-proposal forecasts instead of replaying that world; actual actor parameters and pre-window numerical state must match selected proposal exactly. Only alternative world is replayed, with executed arithmetic audited. Acquisition actor uses exactBPTT and cannot reuse selected-proposal factuals: both teacher worlds remain there. Compact source preparation on unaudited frames:128float ownclock context plus retained exact actor acquisition graph; audited own/projected endpoints unchanged. Source actor/Adam/critic and deployment forecasts/requests must match saved original within1e-12. Preparation arithmetic saving requires executed ledger, not walltime. Pre-window requests from prior observed context only. Deterministic full-support source audits every2windows; online deployment audits every16windows, not a propensity-corrected random risk estimator. Frozen deployment has no audits. Common2048TRAIN exact actor acquisition; reused Aug25DEV; no TEST or efficiency/benchmark claim inferred from one run. Native private banks and current-frame counterfactual learning retained."
+}
