@@ -38,11 +38,15 @@ class HorizonReceipt:
 
     def corrected_target(self, level: int, lower_value: float, upper_value: float,
                          *, objective_id: str, world_id: str,
-                         learner_version: str) -> float:
+                         learner_version: str,
+                         completion_probability: float = 1.) -> float:
         """Stopped scalar target for the terminal head, using one nested audit.
 
         Values are cumulative weighted advantages, never per-horizon averages.
         IDs guard accidental receipt mixing; they do not validate replay fidelity.
+        Optional completion propensity must be known and predictable before the
+        unseen residual. Aborted receipts contribute the issued terminal baseline.
+        An empirical success fraction is not a valid replacement propensity.
         """
         if type(level) is not int or not 0 <= level < len(self.horizons):
             raise ValueError("Audit level outside registered ladder")
@@ -51,12 +55,15 @@ class HorizonReceipt:
             raise ValueError("Audit does not match issued objective/world/version")
         if not all(math.isfinite(v) for v in (lower_value, upper_value)):
             raise ValueError("Audit labels must be finite")
+        if not math.isfinite(completion_probability) or not 0 < completion_probability <= 1:
+            raise ValueError("Completion propensity must be positive and at most one")
         if level == 0 and lower_value != 0.:
             raise ValueError("The zero-horizon advantage must be zero")
         lower_prediction = self.predictions[level - 1] if level else 0.
         residual = (upper_value - lower_value) - (
             self.predictions[level] - lower_prediction)
-        target = self.predictions[-1] + residual / self.probabilities[level]
+        target = self.predictions[-1] + residual / (
+            self.probabilities[level] * completion_probability)
         if not math.isfinite(target):
             raise ValueError("Importance correction overflow; preserve raw receipt")
         return target

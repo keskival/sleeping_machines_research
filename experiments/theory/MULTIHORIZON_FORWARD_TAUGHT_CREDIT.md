@@ -132,6 +132,57 @@ The next R1 pipeline contract must enumerate a finite ladder with nonuniform
 probabilities and signed increments, checking the exact terminal mean, the
 variance formula and the endpoint raw-gradient mean. Include an early negative
 advantage with a positive terminal advantage, container mutation, mismatched
-world/version rejection and the aborted-audit bias above. Those numerical
-contracts and native learner rollout integration are pending. No new fit is
+world/version rejection and the aborted-audit bias above. The source-bound R1 scalar contract completed through guarded AWS slot3:
+`results/credit/aws_finite_horizon_receipt_contract_20261013_v1.json`. Terminal
+mean, raw-gradient mean, supported completion mean and abort-bias errors are
+zero; variance error is1.42e-14. Eight invalid-receipt checks pass; peakRSS20,988KB.
+This is finite scalar enumeration, not native learner coupling or a fitted
+credit model. Native learner rollout integration remains pending. No new fit is
 admitted; current D8/D16/32M source-frozen drivers remain the acquisition test.
+
+## 9. Horizon reach and audit frequency share one work budget
+
+Predictable optional admission can spend no rollout on some issued cuts while
+preserving the finite target. Let pi_j=q_j s_j be the probability of receiving
+one completed residual audit at level j; the remaining probability returns b_K.
+For a fixed paired world, the corrected target has
+
+    Var(Vhat) = sum_j R_j^2/pi_j - (sum_j R_j)^2.
+
+For random paired worlds replace R_j^2 by conditional second moments v_j for
+the first term and include the appropriate target-world variation. The relevant
+work is complete marginal audit cost c_j, including the alternative world's
+own future learning and snapshot storage. Under a predictable randomized
+admission made before starting that work, expected audit cost is sum pi_j c_j.
+Failed attempts that already consume rollout work require an additional cost
+term; treating those costs as zero would invalidate the economics.
+
+For a fixed expected audit budget B, minimizing sum v_j/pi_j with
+sum pi_j c_j=B gives, when all v_j,c_j>0 and no support/categorical constraint
+is active,
+
+    S = sum_j sqrt(v_j c_j),
+    pi_j = B sqrt(v_j/c_j) / S,
+    minimum second moment = S^2/B.
+
+This follows from Cauchy-Schwarz, or from -v_j/pi_j^2+lambda c_j=0.
+It is feasible for the one-audit-or-none construction only when sum pi_j<=1.
+At larger budgets that constraint is active and the solution becomes
+pi_j=sqrt(v_j/(lambda c_j+mu)), with nonnegative mu and constraints solved
+together. Enforced coverage floors introduce their own active constraints.
+Conditional risk estimates and costs must be learned from earlier TRAIN
+receipts, not the unseen current residual. Zero estimated risk does not justify
+zero support while the long target remains registered.
+
+This connects useful depth to a concrete teaching objective: acquire a predictor
+that reduces long-block residual risk enough to afford long consequences. A
+small completion probability restores the mean through a large importance
+weight, but raises variance; unbiasedness alone is not efficient learning.
+Global clipping and Adam may then change actual update utility, so select the
+eventual integration by later language quality and full work, as the current
+depth/acquisition program does. No separate trainer for each horizon is needed.
+
+The updated receipt helper accepts a known supported completion probability.
+The finite R1 contract enumerates completed and uncompleted outcomes rather
+than claiming unbiasedness from a sample average. This algebra gate cannot
+certify real resource-kill propensities or native rollout coupling.
