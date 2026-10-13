@@ -3073,6 +3073,7 @@ Independent-seed fixed-prior acquisition confirmation. Independent seeds, same f
 | --- | --- | --- | --- | --- | --- | --- |
 | 6 | 7.263107 | 7.105851 | 6.620663 | +0.485188 | 9128.563 | 1.0882 |
 | 7 | 7.275658 | 7.101752 | 6.620167 | +0.481585 | 9195.620 | 1.0962 |
+| 8 | 7.292635 | 7.160314 | 6.657107 | +0.503207 | 9333.730 | 1.1127 |
 
 Native training execution ledger:8192-target probe, exact learning/fingerprint parity. Complete operation ledger for the probe; other_unclassified includes setup and unwrapped learning/protocol operations, so declared fitting-phase FLOPs are a subtotal. Evaluation is separately labelled. Registry FLOPs omit unsupported elementwise/transcendental/indexing/optimizer work; never a complete FLOP total. Tensor input/output payload exposures are logical upper-style operand accounting, not measured memory reads, DRAM traffic or energy. Saved storage includes parameters and reused backing storage; it is referenced graph storage, not allocator peak. Semantic value/arrival bytes are declared float32/64 event payloads before placement/fanout/handshake costs; not measured wire traffic. Dense state masking/materialization remains in the operation ledger. Global clipping, batch Adam and reverse-mode graph remain; this is not clockless learning. Probe profiling overhead invalidates wall-speed comparisons.
 
