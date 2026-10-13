@@ -1,0 +1,76 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "block": 0,
+      "output_error": 0.0,
+      "gradient_error": 0.0,
+      "factual_rng_parity": true,
+      "selected_indices": [
+        0,
+        16,
+        32,
+        48
+      ]
+    },
+    {
+      "block": 1,
+      "output_error": 0.0,
+      "gradient_error": 0.0,
+      "factual_rng_parity": true,
+      "selected_indices": [
+        0,
+        16,
+        32,
+        48
+      ]
+    },
+    {
+      "block": 2,
+      "output_error": 0.0,
+      "gradient_error": 0.0,
+      "factual_rng_parity": true,
+      "selected_indices": [
+        1,
+        17,
+        33,
+        49
+      ]
+    },
+    {
+      "block": 3,
+      "output_error": 0.0,
+      "gradient_error": 0.0,
+      "factual_rng_parity": true,
+      "selected_indices": [
+        1,
+        17,
+        33,
+        49
+      ]
+    }
+  ],
+  "readout_calls": 136,
+  "dense_rows": 64,
+  "selected_rows": 4,
+  "readout_width": 16,
+  "dense_readout_flops": 287232,
+  "selected_readout_flops": 17952,
+  "dense_weight_bias_scalar_reads": 147968,
+  "selected_weight_bias_scalar_reads": 9248,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt": "012ad8901379ad8909fb6e7afbfce8fcce9ab79621a7471737a4444e207d801a",
+    "experiments/results/market/curie_b10_future_updates_20261013_v1_fit_critic.pt": "e04bbd16a14e48b536520c70b2afcf75048a70d7255adb2d162085539e376bf7",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v2_acquisition_critic.pt": "a588e4056b187781a244e17b961afe4c8653b8f3fe2daa235a1f124b5cb74f93",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade"
+  },
+  "source_sha256": {
+    "experiments/credit/selected_clock_readout.py": "1d7a4d840d16cf1e71bb1517b5fff2b74cc92e41666d2b2208cb955797bfb875",
+    "experiments/credit/check_selected_clock_readout.py": "2e0e837fa9a39ed538bbff14caab38dba1b88cea222324cf2c5d759ae14d6a7b",
+    "experiments/credit/native_addressed_clock_credit.py": "83079feda7f740cc17f17fe621b6fc4fd2eacce6177d9d5b5361be27eeb350fb"
+  },
+  "wall_s": 4.110590754018631,
+  "scope": "Four actual native receipt decisions with fitted256receipt critic, output/VJP and pairedglobalRNG checks. Matmul2MAC plusbias convention, logical weight/bias operands only:16x lower readout component work/reads. Gather/scatter/64output allocation, nonlinear/core/memory/history/actor/optimizer/teacher work excluded; no full-fit physicaltraffic/energy/qualitywin."
+}

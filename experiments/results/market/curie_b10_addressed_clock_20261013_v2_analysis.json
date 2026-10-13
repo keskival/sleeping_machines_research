@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "curve": [
+    {
+      "tag": "curie_b10_addressed_clock_20261013_v1_fit",
+      "receipts": 64,
+      "train_events": 2048,
+      "supervised_decisions_per_mode": 4,
+      "prefix_nll": 5.7032707068385715,
+      "prefix_parent_nll": 5.703270447703627,
+      "prefix_gain": -2.5913494461349273e-07
+    },
+    {
+      "tag": "curie_b10_addressed_clock_20261013_v2_acquisition",
+      "receipts": 256,
+      "train_events": 8192,
+      "supervised_decisions_per_mode": 16,
+      "prefix_nll": 5.703270027880675,
+      "prefix_parent_nll": 5.703270447703627,
+      "prefix_gain": 4.1982295151399285e-07
+    }
+  ],
+  "source_prefix_parity": true,
+  "parent_prefix_parity": true,
+  "full_targets": 16384,
+  "full_nll": 5.756418648346672,
+  "full_parent_nll": 5.756599086649787,
+  "full_gain": 0.00018043830311498255,
+  "quarter_gains": [
+    -1.104991651955465e-06,
+    -1.3548296758806276e-05,
+    0.00023261353723031428,
+    0.0005037929636405483
+  ],
+  "input_sha256": {
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v1_contract.json": "8666dc7d572b38ad73a2d12ea1d0f032f39458664eac686ca92cead4fd0c681d",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v1_smoke.json": "e7efdf2c845abc1ff3d901531355aa4669604341f8842b824252fe950360f7ec",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v1_fit.json": "7361580411bc3de84023cca20a649de2a59ec8dbd71d8aa1165a4c0831bdeef6",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v2_acquisition.json": "54ac7a1f1b6c44b353d6a674f78ba02bb53f0860d85b6927a8dac7af8ae711e3",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v1_fit_portable.json": "fd375b93be7c051d3f1872ebaeaf32cbac6405613d766245a6203d036976f947",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v2_acquisition_portable.json": "4109ed2240e76fecb488c0b3431c35cda05b3d9700acc7a0865ae02877b2339b"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_addressed_clock_credit.py": "1c44e94f65439b3396c3f3dd619173042238eeed87bd22566211260dea487f09"
+  },
+  "decision": "Retain parent unless completed full trajectory improves; improvement remains one-actor development evidence.",
+  "scope": "64/256receipts2048/8192TRAIN; unchanged member, exact first64source and parent DEV prefixes. Large model scored16384reusedDEV, native weights frozen/causal private memory. Four residual targets per decision,64available and all64readout values computed; old parent/own gradients still cover all clock coordinates.512extra worlds12288score/8192refresh targets,4096own-gradient targets within scoring; parent/actor acquisition/native work additional. No TEST/ASIC claim."
+}
