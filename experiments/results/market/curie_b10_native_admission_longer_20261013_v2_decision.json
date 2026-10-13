@@ -1,0 +1,78 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "frozen_native_quality_gate": true,
+  "frozen_native_gain": {
+    "own": 0.00010087790201929181,
+    "projected": 0.0003062545632932512,
+    "online": 0.0002457496482985988
+  },
+  "frozen_native_gain_saved_bptt": 0.0010705172602243351,
+  "endpoint_trajectory_max_error": {
+    "own": 0.0,
+    "projected": 6.222222737051197e-11
+  },
+  "quarters": {
+    "own": {
+      "admissions": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "nll": [
+        6.963408396442264,
+        5.711567627282456,
+        5.200781733578532,
+        5.074210161556156
+      ]
+    },
+    "projected": {
+      "admissions": [
+        128.0,
+        128.0,
+        128.0,
+        128.0
+      ],
+      "nll": [
+        6.963384357383365,
+        5.7114589784410805,
+        5.20159678467187,
+        5.074349305008188
+      ]
+    },
+    "frozen": {
+      "admissions": [
+        37.0,
+        9.0,
+        7.0,
+        4.0
+      ],
+      "nll": [
+        6.9633941784390965,
+        5.711285415240866,
+        5.200666538491384,
+        5.074218275079983
+      ]
+    },
+    "online": {
+      "admissions": [
+        123.0,
+        34.0,
+        56.0,
+        108.0
+      ],
+      "nll": [
+        6.963385606124914,
+        5.711396672165828,
+        5.201435972053979,
+        5.0743291554998065
+      ]
+    }
+  },
+  "parent_sha256": {
+    "experiments/results/market/curie_b10_native_admission_longer_20261013_v2_fit.json": "cfe2cdef8d80af1e8c0ca6323511484601da2c2f2fcbca118725fcd91457c8bc",
+    "experiments/results/market/curie_b10_streaming_clock_longer_20261013_v1_fit.json": "2ff0e95e0cbf25375ae647a2c67a9709b291ed098e09d8da51e49f72e0f8435e"
+  },
+  "scope": "First-pass learned credit-function transfer from Aug24TRAIN to reused Aug25DEV. Frozen controller parameters, evolving native numerical state. Own endpoint trajectory exact; projected discrepancy below1e-10 due equivalent gradient arithmetic. Saved BPTT quality reference matches actor/data/Adam acquisition via exact own trajectory. Native guidance slower than saved standalone own/BPTT; no efficiency, online-controller-weight advantage, TEST, profit or benchmark claim."
+}
