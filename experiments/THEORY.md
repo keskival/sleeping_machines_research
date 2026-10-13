@@ -446,3 +446,5 @@ Native update dependency validity: [local credit read sets and version stamps](t
 [Collapsed temporal credit transport](theory/COLLAPSED_TEMPORAL_CREDIT_TRANSPORT.md): fixed-version native clock adjoints collapse irregular elapsed histories without dense transition matrices; exact 2/8/32/128-event native derivative contracts pass. Direct state path only; endpoint VJPs, cross-layer writes and learner-state effects remain charged.
 
 [Causal teacher admission](theory/CAUSAL_TEACHER_ADMISSION.md) derives conditional unbiased admission, a cost/variance frontier and learned residual closure. R1 bounded probability1 parity then probability0.25 quality/work pipeline retains history, races and actual alternative-write teaching.
+
+[Predictable route-credit residuals](theory/PREDICTABLE_ROUTE_CREDIT_RESIDUAL.md) derives a learned mean plus importance-corrected residual in the existing backward call, supervised receipt closure, residual-based admission/proposal laws and clipping distortion/break-even bounds. Next R1 design after unchanged acquisition confirmations; no new fit admitted.
