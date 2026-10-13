@@ -117,3 +117,16 @@ Record depth, capacity, selected writes, scored keys, acquisition and complete f
 At fixed 8M acquisition, D8 versus D16 tests the additional native stages. D8 at8M versus32M tests whether their benefit develops with acquisition. Same recipe and final-stage decoder, no direct early-layer readout bypass. A larger model's early deficit does not cancel reserved acquisition. If gradients collapse, repair depth conditioning while retaining temporal computation; if gradients arrive but quality stalls, investigate representation and credit horizon. Compact-credit integration then measures producer/update-weighted residual risk, full teacher cost and work to matched quality, with original saved references retained.
 
 No Transformer superiority or asymptotic scaling exponent follows from this derivation. The next concrete competitive result is the selected deeper checkpoint under the pinned public scoring protocol. These propositions identify how to build and evaluate that checkpoint rather than replacing its evidence.
+
+## 8. Preserve deep learning signal instead of stabilizing it away
+
+A sufficient conditioning design for a square continuous cut map is J_d=T_d(I+E_d), where native decay/rotation gives singular values of T_d between exp(-gamma_d,max) and exp(-gamma_d,min), and ||E_d||<=epsilon_d<1. Product inequalities give
+
+    sigma_min(J_D...J_1) >= exp(-sum gamma_d,max) product_d(1-epsilon_d),
+    sigma_max(J_D...J_1) <= exp(-sum gamma_d,min) product_d(1+epsilon_d).
+
+If epsilon_d<=epsilon_bar<1, sum epsilon_d<=C and sum gamma_d,max<=G independently of D, then the lower bound is at least exp[-G-C/(1-epsilon_bar)] and the upper bound is at most exp(C). Thus depth need not force exponential signal loss when total attenuation and distortion remain controlled. Proof: singular-value product bounds, log(1+x)<=x and log(1-x)>=-x/(1-epsilon_bar). This is a sufficient condition on actual Jacobians; current native layers are not asserted to satisfy it. Cross-state and clock paths must be included, not silently frozen.
+
+This differs from demanding a fixed contraction at every stage, which can make upstream task signal exponentially small. Depth-scaled residual transformations and norm-preserving temporal rotations are possible engineering ingredients. Shrinking per-stage transformations also shrinks their parameter-learning response; rescaling updates can increase noise. There is no free depth improvement from writing an identity path. Native delays, races and persistent writes must still perform computation, with any added message and timing transport paid and contract-tested. No such architecture substitution is admitted by this note.
+
+The first AWS D8/64update smoke completed13October:3,309,274parameters,32,768targets,99.498548trainingseconds, peakRSS813,480KB. Final-batch input-bank gradient norms by stage are0.008915/0.006738/0.005774/0.005314/0.005087/0.004550/0.004083/0.004038; every stage receives a finite signal. These are observed post-clipping parameter gradients in one short native fit, not Jacobian singular values, a relative-credit certificate or a quality/scaling win. They justify proceeding with acquisition rather than preemptively replacing the deep construction. Source-bound result: experiments/results/token_language/aws_native_deep_d8_smoke_20261013_s6_v1.json.
