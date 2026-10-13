@@ -1,0 +1,2 @@
+# R1: temporal depth and acquisition scaling; decision useful deep prediction versus complete learning work
+aws_native_deep_d8_smoke_20261013_s6_v1 experiments/bernoulli_teacher_token_language.py --tag aws_native_deep_d8_smoke_20261013_s6_v1 --exposure fresh --train-tokens 262144 --dev-tokens 2048 --steps 64 --chunk 64 --credit-window 16 --payload 24 --heads 2 --depth 8 --pool 4 --lanes 8 --eval-lanes 8 --eval-every 64 --readout-init frequency --input-init balanced --future-score-positions 4 --seed 6 --teacher-probability 0.25
