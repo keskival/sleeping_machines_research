@@ -3074,6 +3074,24 @@ Independent-seed fixed-prior acquisition confirmation. Independent seeds, same f
 | 6 | 7.263107 | 7.105851 | 6.620663 | +0.485188 | 9128.563 | 1.0882 |
 | 7 | 7.275658 | 7.101752 | 6.620167 | +0.481585 | 9195.620 | 1.0962 |
 
+Native training execution ledger:8192-target probe, exact learning/fingerprint parity. Complete operation ledger for the probe; other_unclassified includes setup and unwrapped learning/protocol operations, so declared fitting-phase FLOPs are a subtotal. Evaluation is separately labelled. Registry FLOPs omit unsupported elementwise/transcendental/indexing/optimizer work; never a complete FLOP total. Tensor input/output payload exposures are logical upper-style operand accounting, not measured memory reads, DRAM traffic or energy. Saved storage includes parameters and reused backing storage; it is referenced graph storage, not allocator peak. Semantic value/arrival bytes are declared float32/64 event payloads before placement/fanout/handshake costs; not measured wire traffic. Dense state masking/materialization remains in the operation ledger. Global clipping, batch Adam and reverse-mode graph remain; this is not clockless learning. Probe profiling overhead invalidates wall-speed comparisons.
+
+| Phase | Torch calls | Registered GFLOPs | Operand payload GB | Output payload GB |
+| --- | --- | --- | --- | --- |
+| other_unclassified | 3265 | 0.000000 | 0.047456 | 0.060059 |
+| evaluation_core | 806721 | 0.395357 | 12.060917 | 0.630719 |
+| evaluation_readout | 1308 | 2.825512 | 0.493700 | 0.430090 |
+| factual_core | 718873 | 0.352322 | 10.748578 | 0.561993 |
+| training_readout | 1876 | 2.395490 | 0.352034 | 0.272308 |
+| alternative_core | 168526 | 0.082723 | 2.519122 | 0.131611 |
+| backward | 1258544 | 5.236594 | 23.051382 | 21.689106 |
+| global_clip | 128 | 0.000000 | 0.386917 | 0.000004 |
+| optimizer | 4564 | 0.000000 | 2.539118 | 1.571835 |
+
+Native receiver update placement contract: three exact un-clipped Adam updates, independent delivery order, disjoint backing storage, isolated receiver update and stale-credit rejection. Actual integrated token gradients with full factual BP,depth2/payload4. Private receiver/head-shared bank Adam matches un-clipped global Adam exactly for three updates with reordered packet delivery. No global clipping/gradient synchronization inside bank application; credit generation still uses window BP. Shared leaves require one canonical bank; multiple same-version contributions must be aggregated before this final-gradient packet. Stale packets rejected, not transported. Local clipping demonstrated separately and changes the learning rule. Private receiver rows have distinct update banks and versions; tied fields and queries retain shared head ownership. Shared interfaces/readout remain whole leaves. No future-credit replacement, changed-rule quality or hardware win claim.
+
+Bank storage {'parameter_bytes': 2249588, 'optimizer_bytes': 3699564, 'local_version_counters': 199, 'banks_by_placement': {'shared_interface_or_readout': 19, 'receiver_private': 176, 'head_shared': 4}}.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5621,17 +5639,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 | market | bptt | 11.947784 | 24.402 |
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
-
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
 
 ### Longer-data complete native learning
 
