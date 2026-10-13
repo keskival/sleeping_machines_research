@@ -8,7 +8,7 @@ builder.main()
 paths=['REPORT.md','experiments/HANDOFF.md','experiments/THEORY.md','experiments/PRODUCT_ORDERS.md',
  'experiments/WIN_CRITERIA.md','report/I_SCIENCE.md','report/II_METHODS.md','report/III_RECORD.md',
  'report/I_SCIENCE.pdf','report/II_METHODS.pdf','report/III_RECORD.pdf',
- 'report/optimizer_transport_appendix.py','report/market_future_credit_appendix.py',
+ 'report/optimizer_transport_appendix.py','report/market_future_credit_appendix.py','report/split_manifest.json',
  'investment/brief/evidence_brief.tex','investment/forward_credit_evidence_20261011.json',
  'investment/sleeping_machines_evidence_brief.pdf','scripts/prepare_forward_credit_evidence.py',
  'scripts/finalize_market_future_credit_stage.py',
