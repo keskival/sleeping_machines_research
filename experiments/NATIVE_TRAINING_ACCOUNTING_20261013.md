@@ -1,0 +1,17 @@
+# R1 native training work and local update banks
+
+User priority13October: judge the asynchronous ASIC learning advantage by arithmetic, local storage/access, credit/message traffic and synchronization, not CPU wall alone. Current fits remain intact. Every learning component must be charged: factual forward, all-key discovery, actual alternative-write teacher/readout, reverse differentiation, global clipping and Adam. Capacity is not selected activity; selected activity is not all learning work.
+
+## Current executable ledger
+
+`native_training_work.py` instruments the unchanged cached integrated token driver. Capture every Torch operation by phase and its logical operand/output tensor payload exposures, registered arithmetic FLOPs, saved backward storage references, actual optimizer/gradient storage, semantic key scores/selected receiver updates/value and arrival payloads, and global clipping/backward/optimizer boundaries. Startup and otherwise unwrapped learning work stays visible in `other_unclassified`, never silently omitted. Registry FLOPs are a covered subtotal; unsupported elementwise, transcendental, indexing and optimizer operations remain named in the ledger. It is not a complete fitting-FLOP number.
+
+Logical operands are not physical memory traffic: caching, fusion, sparsity and placement change that. Selected float32 values/float64 arrival payloads are semantic deliveries before fanout, addresses, handshakes and layout. Dense masking of dormant memory in the current tensor backend remains charged in its operation ledger. No energy or clockless-silicon claim follows from this probe. Source-bound matching uninstrumented/instrumented16-update curves must agree exactly; profiling wall is not a speed comparison. Distinguish one target, one complete probe and a whole fit: a probe is not multiplied into a supposedly measured8M cost.
+
+## Native update prototype
+
+`LocalCreditBanks` owns independent Adam state and version counters per canonical parameter leaf. A final-gradient packet names its bank, issued version and source event. Application validates shape/type/finiteness/version, optionally clips locally and updates only that bank. Cross-bank delivery can be reordered without global update synchronization. Stale credit is rejected; no unearned stale-gradient transport is assumed. Multiple contributions to one version require aggregation before a final packet. Shared parameters have a canonical bank; packed receiver rows are not yet physically separate banks.
+
+The first integrated witness uses actual token-model factual gradients and shows three un-clipped packet Adam updates equal ordinary Adam, with reordered bank delivery. Separate local clipping shows an inactive bank/version stays unchanged; this is a changed learning rule. Credit generation still uses window backprop, so this validates only the bank-application stage. It does not demonstrate fully local training, improved quality, fewer total FLOPs or ASIC advantage. The next native integration must replace remote history credit with eligibility/shared-path residual packets and charge their teaching, correction and transport work; Curie owns that native credit integration.
+
+Queued bounded R1slot2:16-step ordinary/acounted probe and source-bound numerical curve gate, then local-bank integrated contract. One job at a time after the currently running fit, through run_safe, RSS1.5GB and>=8GiB MemAvailable. Results precede any promotion or longer changed-optimizer fit.
