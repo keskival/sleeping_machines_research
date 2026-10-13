@@ -6440,6 +6440,18 @@ Addressed gain over the native uniform energy-bound control+0.000108024nats/even
 
 Native head4uniform31,804trainable parameters versus head64addressed32,824; shared native body/race/private-bank receipt construction. Fixed support, no learned target admission. Source/teacher acquisition and complete work additional. One initialization, no sealedTEST or whole-hardware claim.
 
+### Addressed credit across three saved critic parents
+
+| Parent seed | Parent NLL | Uniform bound NLL | Addressed NLL |
+| --- | --- | --- | --- |
+| 19124 | 5.756599087 | 5.756526672 | 5.756418648 |
+| 19129 | 5.756284049 | 5.756482488 | 5.756321856 |
+| 19130 | 5.756021371 | 5.756312764 | 5.756487150 |
+
+Mean addressed NLL5.756409218 ± 0.000083050; mean gain over own parent-0.000107716 and uniform energy-bound control+0.000031423nats/event. Mixed cohort outcomes; retain per-parent findings and do not promote a universal winner.
+
+Three saved independently initialized critics, one shared restoredactor/TRAIN/reusedDEV. Fixed residual trainingseed, radius,256receipts8192TRAIN/16384DEV, no tuning between parents or quality veto. SampleSD across critic parents. Each fit pays512extra worlds12288score+8192refresh,4096own-gradient targets within scoring; original actor/parent acquisition additional. Maximum residual L2bound matched, not realized updates/totalwork; addressed head adds1020parameters. No TEST/independentactor or datareplication/full-ASIC claim.
+
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 
 Removing structural-zero sensitivity blocks accelerates four complete Taxi TRAIN batches by 2.50× and reduces stored traces by 44.5%. The same two-layer forward model, initialized weights, shuffled batches and per-event Adam recipe are used in both arms.

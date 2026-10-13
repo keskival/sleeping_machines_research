@@ -1,0 +1,52 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "parent_seed": 19124,
+      "parent_nll": 5.756599086649787,
+      "addressed_nll": 5.756418648346672,
+      "uniform_nll": 5.756526671871539,
+      "parent_gain": 0.00018043830311498255,
+      "uniform_gain": 0.00010802352486649625
+    },
+    {
+      "parent_seed": 19129,
+      "parent_nll": 5.756284049073683,
+      "addressed_nll": 5.756321855635565,
+      "uniform_nll": 5.756482487855422,
+      "parent_gain": -3.780656188201448e-05,
+      "uniform_gain": 0.00016063221985707088
+    },
+    {
+      "parent_seed": 19130,
+      "parent_nll": 5.7560213713251525,
+      "addressed_nll": 5.756487150170899,
+      "uniform_nll": 5.756312763605582,
+      "parent_gain": -0.0004657788457462786,
+      "uniform_gain": -0.00017438656531698626
+    }
+  ],
+  "mean_nll": 5.756409218051045,
+  "sample_sd_nll": 8.304979656519523e-05,
+  "mean_parent_gain": -0.00010771570150443684,
+  "mean_uniform_gain": 3.142305980219362e-05,
+  "all_parent_wins": false,
+  "all_uniform_wins": false,
+  "input_sha256": {
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v2_acquisition.json": "54ac7a1f1b6c44b353d6a674f78ba02bb53f0860d85b6927a8dac7af8ae711e3",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_v3_energy_fit.json": "bac9797660d4d52863bcd17efd55022dd5a7ab1bb322fc3c27a202cd6be4f33a",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19129_v1_addressed.json": "0d323cf4e4cb963eaf902dc0cd4263f973253cf3c230c268932707b84263c04f",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19129_v1_uniform.json": "cce4cec32269849798dbb3b0b69c751b8027995e5814b82dec308d41ba0b208c",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19129_v1_addressed_portable.json": "08bf8d2eab9124c38e69fddfcd7e4555b0e5c97075eac2e95995e97f767c81df",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19129_v1_uniform_portable.json": "e6fe9f038013955889e323d55a9fc61b8af9a082ed029fffad6eae26b7f727db",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19130_v1_addressed.json": "02dbe68925b8e8b983446749790543978629fec4ed8a32ecbc408076161a8372",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19130_v1_uniform.json": "27537bd3ebee5b20099abaa405d7c1f61782db22686bfbcfdd974ca2c88cfad8",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19130_v1_addressed_portable.json": "3365acd6d2501e491cc57bdb0c14025e82dd3f99f126a419e1fd3f13a82b6d45",
+    "experiments/results/market/curie_b10_addressed_clock_20261013_confirm_s19130_v1_uniform_portable.json": "4cbd07d797290906d21564a317de0eede40a5782ca67a62c639efb94c2fe5aa7"
+  },
+  "source_sha256": {
+    "experiments/credit/analyze_addressed_credit_confirmation.py": "5c647755281cc94b3fb7c08e0f1329de0d6f73ed934eb63506b1b84c8b49f98a"
+  },
+  "scope": "Three saved independently initialized native parents, one sharedactor/TRAIN/DEV, one fixedresidual trainingseed/radius. Paired maximum-energy-bound controls, no tuning between members/parents. Eachmember8192TRAIN/16384DEV with512extra worlds12288score+8192refresh;4096own-gradient targets within scoring. Headparameter counts and realized updates differ. No TEST/independentactor/data replication/totalwork/ASICenergy claim."
+}
