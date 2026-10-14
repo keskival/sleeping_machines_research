@@ -45,6 +45,10 @@
   depth theory and compute-allocation reasoning. Integrate new findings with
   their evidence and scope instead of replacing these principles ad hoc.
 
+# Newly provisioned disposable workers (user clarification,14October2026)
+
+The existing shared-host memory reserves protect those hosts and remain in force. Do not impose the8GiB reserve as a universal minimum on new disposable experiment workers. Size their reserve, RSS and virtual-memory caps from the intended workload's measured peak, OS/runtime needs and uncertainty margin; retain watchdogs and exact resumable checkpoints. Model/data sizes must scale toward the objective rather than fit an arbitrarily small instance. One training job per new host remains the default; the named AWS gym exception is unchanged. See experiments/runbooks/README.md for scaling procedures. Runbooks do not admit purchases or withdrawn experiments.
+
 # Own-model focus: no new dense controls (user direction, 6 October 2026)
 
 - From 6 October 2026, spend compute on improving our own integrated models. Do not queue or launch new

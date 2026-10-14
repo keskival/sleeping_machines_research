@@ -1,0 +1,13 @@
+# Current admitted-fleet planning estimate —14October2026
+
+Inventory basis: AWS bounded coordinator status/admission packets inspected locally; Curie status from the merged handoff and continue_market_depth_v2.py, not a live remote process inspection. Old queue files, withdrawn prototypes and completed results are excluded. This is a hypothetical replacement fleet, not incremental pricing for existing AWS/Curie machines or an admission to migrate running jobs.
+
+Three AWS fits are active: nativeD16/8M, integrated bankD8/8M and localclipD8/8M. Curie reports one active allocatedD16/8M. AWS reserves oneD8/32M follow-up. Curie reserves B10depth8 smoke→fullfit afterD16 completion/quality, then stops. Thus four active fit streams, up to six model/acquisition fit streams across the admitted plan. Smoke and fit are predecessor stages, not independent jobs. Evaluations depend on finished checkpoints and can reuse freed workers.
+
+Four workers suffice for the current active frontier under onejob/host. Six workers would cover all six fits if the two reserved streams are explicitly made independent after their resource gates. Under the current sequential admission, the extra two would initially be idle; more hosts do not remove dependencies. No GPUs required under current orders.
+
+Conservative planning profiles, not measured procurement requirements: four x86 dedicatedCPU8GiB workers and two16GiB workers for unmeasured larger/replay cases. Existing job RSS guards are3,000,000KiB; disposable worker floor is sized separately. A4GiB profile could be cheaper but needs representative peaks/OS margin, especially checkpoint/replay/evaluation. Do not apply existing shared-host8GiB reserve to new workers.
+
+Published Hetzner EU new-order rates, retrieved14October from https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/ : CCX13 €0.0689/hour, CCX23 €0.1378/hour, excludingVAT/IPv4. FourCCX13+twoCCX23=€0.5512/hour compute. FourCCX13 for currentactivefrontier=€0.2756/hour. These are published-rate estimates, not verified capacity or account-specific quotes. Six8GiBCCX13 would be€0.4134/hour if measurements support the smallerprofile for everyfit.
+
+SharedCPU cheap candidate: publishedCX33 €0.0136/hour; sixworkers=€0.0816/hour compute if8GiB fits and sustained performance is suitable. Contention/bursting can increase completioncost; this price does not prove useful-throughput superiority. Storage/addresses/controlplane/data transfer and interruptions add cost. Monthlycaps/utilization affect sustainedfleet billing. Query livecatalog and benchmark intended native shape before selecting cheapestcapacity.
