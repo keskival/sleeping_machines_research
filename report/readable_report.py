@@ -5504,6 +5504,8 @@ def build(M):
 
     from report.b4_mark_development_appendix import pages as b4_mark_development_pages
     pages.extend(b4_mark_development_pages())
+    from report.successor_progress_evidence import pages as successor_progress_pages
+    pages.extend(successor_progress_pages())
     from family_report import markdown_frontmatter, build_chapter, integrate
     report_markdown=markdown(pages)
     boundary=report_markdown.find('\n## Appendix A')

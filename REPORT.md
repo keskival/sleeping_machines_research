@@ -6871,3 +6871,26 @@ One seed0/new partition of same Github cohort, fixed144 features/64-wide residua
 Teacher-free split2 portable bundle reproduces score/time exactly, normalized mark probabilities and first-target suffix invariance. One core/readout metadata, no teacher or TRAIN loaded for restoration.
 
 Full normalized mixture/scoring boundary: student 0.256s vs pair 0.555s, 2.17x faster; five warmed CPU timings with alternating order. Includes scalar-mixture reduction and reproduces both saved scores within1e-9. Student35.2% fewer parameters and0.158 lower DEV mark loss than this calibrated pair, with identical time density. Development quality/serving point against our own teacher, not Transformer or total-training superiority.
+
+## Appendix B. Successor progress: direct quality and work comparisons
+
+Taxi seed2 exploratory successor: TEST gain over saved parent+0.002725nats/event; over ordinary continuation+0.000196. Published reference0.522; original parent0.521049. Both20epoch arms were fixed before fitting, selected on DEV including unchanged parent, and frozen before TEST scoring. This revisits a known losing seed and does not revise the original24/25 record.
+
+| Model | Selected DEV LL | TEST LL | Extra fit seconds | Whole fit seconds |
+| --- | --- | --- | --- | --- |
+| Saved unified parent | 0.488586 | 0.521049 | — | 141.823 |
+| continued parent | 0.490597 | 0.523577 | 60.098 | 201.921 |
+| preserved depth successor | 0.491146 | 0.523773 | 70.842 | 212.664 |
+
+| Model | Time LL | Mark LL | RMSE | Accuracy |
+| --- | --- | --- | --- | --- |
+| continued parent | 0.732879 | -0.209301 | 0.279885 | 0.930513 |
+| preserved depth successor | 0.732968 | -0.209195 | 0.279914 | 0.930097 |
+
+Parent prediction error0, original-gradient error0. Retained delayed clocks, state clock, temporal decay/rotation, addressed mark memory, recording-cell rule and silence likelihood. Added one zero-output temporal residual stage with exact cached primal packet. Whole work includes inherited parent fitting; repeated benchmark scoring and contracts are additional.
+
+Integration scope: compatible prediction-preserving temporal depth and exact native packet execution. Shared horizon critic is not fitted yet; token-specific kernels and market action heads are not transferred. Loss here is about this variant and data scale; larger-acquisition advantage remains a separate test, and numerical failures must be audited before interpreting quality.
+
+Saved language development:8M probability0.25 teacher improves final DEV by0.092792nats/token while reducing full training time15.27% (9128.563 to7734.249s). One seed at8M;3seeds at128k/512k. Larger-point time savings combine ordered aggregation and teacher admission. Public validation sealed; no external Transformer win.
+
+Saved market development: three critic initializations mean16384DEV NLL5.756301502; gain over factual eight-event BP0.001845, over matched own-refresh0.000662nats/event. All three improve those controls; shared actor/data, extra teacher/critic/refresh work. Later addressed-action cohort is mixed and not promoted. No public benchmark or profit claim.
