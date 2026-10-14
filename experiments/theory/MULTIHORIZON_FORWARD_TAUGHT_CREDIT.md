@@ -341,3 +341,46 @@ teacher replay/scoring is additional. Wall3.500seconds/peakRSS423312KB.
 Synthetic legalGPT2 IDs,D8payload8,balance0: this verifies replay of the declared
 source-extracted production step, not full corpus scheduling, acquired quality
 or the usefulness of a fitted horizon critic. Original fit driver is unchanged.
+
+## 13. Native outcomes now enter the finite credit receipt
+
+14 October2026. `credit/native_horizon_credit_audit.py` connects disposable
+paired production-policy worlds to the nested weighted ledger and finite
+importance correction. It requires matching future policies and step counters,
+uses the original contiguous shifted token windows, and rejects a selected
+horizon that would split an original update window. The initial intervention
+is issued once; all subsequent updates recompute each world's own factual and
+alternative-teacher gradients, state and moments.
+
+For multiple fixed lanes, the objective outcome at position k is the mean
+prequential loss over lanes. The horizon therefore counts observed time
+positions per lane, while charged factual scoring and own-gradient work count
+positions times lanes, in both worlds. This denominator is declared rather
+than mixing a per-lane quality target with a whole-job work total. Teacher
+calls, suffix replay targets and teacher-scored targets are additional and
+recorded separately. Full fitting FLOPs, snapshot/storage and critic work are
+not supplied by these counters.
+
+One horizon audit returns its lower/upper cumulative actual learner advantage,
+the terminal corrected credit target and executed work. This is the first
+end-to-end connection between these native futures and the earlier scalar
+receipt algebra. It does not yet train a horizon-conditioned critic. Issued
+worlds must be disposable clones; the API cannot infer whether a caller has
+incorrectly passed its live training actor. The same replay and ledger retain
+RNG and objective identity, rather than reusing factual-world gradients as
+alternative-world learning.
+
+The guarded native integration contract completed:
+`results/credit/aws_native_horizon_credit_audit_contract_20261014_v1.json`.
+Actual16/32/48position cumulative advantages0.005703926/0.078459740/0.190877914
+match full replay. With issued probabilities0.2/0.3/0.5, the three corrected
+terminal targets have weighted mean0.190877914, error0. The first corrected
+target is negative although its observed prefix advantage is positive: residual
+importance correction is not a rule for clamping labels or selecting actors
+on each noisy receipt. Mean closure does not guarantee an efficient optimizer.
+
+Three horizon audits charge48updates/192factual scored and own-gradient targets,
+plus16teacher calls/64replay targets/40teacher-scored targets. Full/resumed
+comparison raises executed totals to84updates/336factualtargets;7.373seconds,
+461484KBpeakRSS. Synthetic legal-token/nativeD8payload8 numerical witness,
+not a fitted critic, corpus-quality gain, acquisition law or public win.
