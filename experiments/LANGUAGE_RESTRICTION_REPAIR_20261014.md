@@ -1,0 +1,16 @@
+# R1 winning-path restriction repair
+
+User direction14October: remove implementation handicaps and pursue material language wins. Core native races, keys/values, private persistent memory, sampled alternative credit and allocated teaching remain. Completed and running source-bound experiments are preserved.
+
+Implemented in the new `unrestricted_receiver_token_language.py`:
+- Creditwindow0 means the full optimizer chunk; the admitted first repaired arm uses256 rather than16. Window and chunk have no architecture-imposed numeric ceiling. Longer credit increases factual backward and alternative replay work; resource gates measure both.
+- EOS reset is an explicit boolean, default off. The selected public reference also permits history across EOS; document-specific resets can be selected when a protocol requires them.
+- Fresh acquisition defaults to contiguous independent lane intervals covering the full acquisition, avoiding artificial block resets. The initial TRAIN prefix still supplies the fixed frequency prior. Lane order differs from the old block layout and is disclosed; simply carrying old state across noncontiguous blocks would be incorrect.
+- Depth, payload, bank pool, adaptive tail width and acquisition remain configurable. None is treated as a family capacity ceiling. Larger banks still pay key discovery/optimizer costs.
+- `continuous_token_scoring.py` scores a declared target interval with explicit warmup and carried state, without periodic1024-token resets. It is a new development protocol; reference-window scores remain separate.
+
+Execution: slot1 contract `aws_unrestricted_language_contract_20261014_v1` then D8/256credit smoke `aws_unrestricted_d8_credit256_smoke_20261014_s6_v1`, behind existing admitted jobs. Contract verifies uninterrupted/chunked numeric parity across EOS, legacy-policy compatibility, finite32-token backward and genuinely contiguous lanes/fixed prior. Pending until completed result. Controller `continue_unrestricted_language.py` waits for PASS and measuredRSS/gradient gates, then admits8,388,608targets (4096updates×256tokens×8lanes) with timeout from measured complete throughput, run_safe and watchdog. This differs by256targets and presentation layout from the old8,388,352-target fit. No small-quality veto and no public validation selection.
+
+Unfinished mechanisms are explicit: factual credit still truncates at parameter updates; cross-update consequences require version-safe replay/shared horizon credit. Inbox contracts alone do not implement native asynchronous fragment production. Large banks/payload and optional stage execution need integrated cost/quality tests. Bounded clocks/clamped score saturation must be measured before changing temporal mathematics. None is assumed solved by this driver, and no Transformer quality win is inferred from code.
+
+Decision endpoint: completed prediction quality and full learning work against both savedD2frontier points and the bankedD8reference, using identical scored targets/history. Then carried-state warmup comparisons to measure longer-range benefit; exact pinned public scoring only after development selection. Advance the useful repair, diagnose a loss; do not generalize first-member outcomes to the family.
