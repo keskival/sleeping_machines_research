@@ -1,3 +1,5 @@
+**Current admission decision,14October:** optional component/diagnostic jobs described below are withdrawn. The automatic256credit acquisition controller is stopped. Source implementations remain available for an answer-changing integrated repair after completed depth/localclip quality. Active fits and reserved32M continue; Curie owns the selected longer-horizon repair. No extra admission follows from these prototypes.
+
 # R1 training locality and efficiency execution — 14 October2026
 
 User directs removal of implementation handicaps and pursuit of suitable asynchronous family advantages. Preserve the active deep acquisition comparisons. Measure useful prediction per complete learning work; do not equate software placement with hardware efficiency.

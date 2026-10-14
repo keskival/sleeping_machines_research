@@ -1,3 +1,5 @@
+**Current admission decision,14October:** optional component/diagnostic jobs described below are withdrawn. The automatic256credit acquisition controller is stopped. Source implementations remain available for an answer-changing integrated repair after completed depth/localclip quality. Active fits and reserved32M continue; Curie owns the selected longer-horizon repair. No extra admission follows from these prototypes.
+
 # R1 winning-path restriction repair
 
 User direction14October: remove implementation handicaps and pursue material language wins. Core native races, keys/values, private persistent memory, sampled alternative credit and allocated teaching remain. Completed and running source-bound experiments are preserved.

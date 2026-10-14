@@ -1,3 +1,5 @@
+**Current admission decision,14October:** optional component/diagnostic jobs described below are withdrawn. The automatic256credit acquisition controller is stopped. Source implementations remain available for an answer-changing integrated repair after completed depth/localclip quality. Active fits and reserved32M continue; Curie owns the selected longer-horizon repair. No extra admission follows from these prototypes.
+
 # R1 useful depth: diagnose, repair, win
 
 Depth should add transformations that retain useful incoming information, integrate persistent memory and earn their discovery, teaching and update work. More stages are valuable only when their trained composition predicts better. Nonzero gradients alone answer none of those questions.
