@@ -16,6 +16,8 @@
 
 **AWS scaling-frontier integration, latest userdirection:** one conditional integrated local/deferred-consequence R1 pipeline via continue_locality_frontier.py. Wait completed globalbank/localclip8M paired quality; if local degradation exceeds0.01nats stop for update-rule diagnosis. Otherwise local-law continuation/horizon endpoint gate→nativeD8continuous/noEOSreset16factual/upto64consequence resource smoke→one8M acquisition→sameprotocol quality/fullwork against bothdeep arms and richerD2. This is the single combined AWS repair, not restoration of withdrawn component queues or automaticlargerbudget ladder. No smallqualityveto, no newdensecontrols/publicvalidationselection. ActiveD16/reserved32M and CurieB10 preserved.
 
+**Calibratedlocal clipping priority, latestuserdirection:** user rejects cap1 as meaningfulcalibration and authorizes progress towardscalingfrontier. AWSslots4/5 own one matchedglobal/calibrated pair from completedbankD8learner: sameparent/moments/state/RNG/freshdata, manualcap/globalproduction numericalchecks+64update resource smoke, then4096updates (~2Madditionaltargets) and same8192DEV/1024history scoring. Calibratedcap fitcost/exposure and bothsmokes chargedseparately. No horizon/reset/depthchange in thispair. Noautomaticbeyondpair; results choose usefullocalupdatepolicy fordepth/consequencework. Existingdepth/reserved32M and CurieB10 preserved.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
