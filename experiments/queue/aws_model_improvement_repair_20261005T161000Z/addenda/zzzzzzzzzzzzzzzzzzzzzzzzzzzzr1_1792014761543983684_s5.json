@@ -1,0 +1,33 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Strongestacquired native language parent plus true native temporalhierarchy; numerical/resource gates, no easy hyperparameter sweep",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_protected_depth_strong_parent_pilot_20261014_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_protected_depth_strong_parent_pilot_20261014_v1/aws_protected_depth_strong_parent_pilot_20261014_v1.txt",
+        "queue_sha256": "0fc780545093a67cef4ac45259275d0889fab7909e8b2127b5a7b8c0c0e6235c",
+        "source_sha256": {
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+          "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+          "sleeping_machines/learning/dense_to_receiver_moments.py": "7bb2cf41854b503b7963c83d92989460025a0274275ff807f0cac9953e2773a3",
+          "sleeping_machines/optional_temporal_depth.py": "301f34e94d5bf9b628e9e5fe94588d8aa76fac53820ca4d78b14db58900ea640",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+        },
+        "result": "experiments/results/diagnostics/aws_protected_depth_strong_parent_pilot_20261014_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_protected_temporal_branch_contract_20261014_v2.json"
+          }
+        ],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
