@@ -18,6 +18,8 @@
 
 **Calibratedlocal clipping priority, latestuserdirection:** user rejects cap1 as meaningfulcalibration and authorizes progress towardscalingfrontier. AWSslots4/5 own one matchedglobal/calibrated pair from completedbankD8learner: sameparent/moments/state/RNG/freshdata, manualcap/globalproduction numericalchecks+64update resource smoke, then4096updates (~2Madditionaltargets) and same8192DEV/1024history scoring. Calibratedcap fitcost/exposure and bothsmokes chargedseparately. No horizon/reset/depthchange in thispair. Noautomaticbeyondpair; results choose usefullocalupdatepolicy fordepth/consequencework. Existingdepth/reserved32M and CurieB10 preserved.
 
+**AWS spare-slot native repairs, latestexplicituserdirection:** skip Curie-checkpoint jobs; runthree localartifact comparisons inslots1/3/6 sharing the admitted2Mglobal continuation control. Horizon4/factual16; factual64/teacher16; containedfinalstage decoder96 withparentmomentmigration.64update numerical/resourcesmokes→4096update continuations→identicalpairedDEVscoring. No clipping/reset/depthchange mixture, no newexternaltraining/publicselection, no automaticextension. SCALING_REPAIR_COMPARISONS_20261014.md records decisions and work. This supersedes idle-only/prototype-only admission for these three exact arms.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
