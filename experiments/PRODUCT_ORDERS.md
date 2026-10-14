@@ -14,6 +14,8 @@
 
 **Asynchronous market/depth priority, user direction14October:** finish activeD16 language fit, then one prediction-preserving nativeeight-layer B10 growth smoke/fullfit. Coordinator continue_market_depth_v2.py stops afterward, including on recorded market failure. Saved two-layer parent, chronological recording-cell likelihood and measured costs retained. No automatic32M continuation or credit-only grid. [Depth protocol](market/B10_DEPTH_SCALING.md).
 
+**AWS scaling-frontier integration, latest userdirection:** one conditional integrated local/deferred-consequence R1 pipeline via continue_locality_frontier.py. Wait completed globalbank/localclip8M paired quality; if local degradation exceeds0.01nats stop for update-rule diagnosis. Otherwise local-law continuation/horizon endpoint gate→nativeD8continuous/noEOSreset16factual/upto64consequence resource smoke→one8M acquisition→sameprotocol quality/fullwork against bothdeep arms and richerD2. This is the single combined AWS repair, not restoration of withdrawn component queues or automaticlargerbudget ladder. No smallqualityveto, no newdensecontrols/publicvalidationselection. ActiveD16/reserved32M and CurieB10 preserved.
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential

@@ -26,6 +26,10 @@ def main():
   for lhs,rhs in zip(original.state.values(),candidate.state.values()):
    for k,v in lhs.items():
     if isinstance(v,torch.Tensor):assert torch.equal(v,rhs[k])
- names=['experiments/credit/check_local_learner_clone.py','sleeping_machines/learning/clone_local_receiver_learner.py','experiments/local_clip_receiver_token_language.py']
+ from sleeping_machines.route_credit_horizon import credit_endpoint
+ assert credit_endpoint(3,64,16,1)==16
+ assert credit_endpoint(3,64,16,4)==64
+ assert credit_endpoint(63,64,16,4)==64
+ names=['experiments/credit/check_local_learner_clone.py','sleeping_machines/learning/clone_local_receiver_learner.py','experiments/local_clip_receiver_token_language.py','sleeping_machines/route_credit_horizon.py']
  with (ROOT/f'experiments/results/credit/{tag}.json').open('x') as f:json.dump(dict(status='completed',battle='R1',gate='PASS',parameter_error=error,local_clip=.25,source_sha256={n:driver.sha(ROOT/n) for n in names},scope='Native D8 factual local-clipped AdamW continuation; no horizoncritic fit or speed claim.'),f,indent=2)
 if __name__=='__main__':main()
