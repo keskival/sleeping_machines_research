@@ -34,7 +34,7 @@ def main():
     admission=json.loads((ROOT/a.admission).read_text())
     assert admission['status']=='completed' and admission['training_admitted']
     assert all(sha(ROOT/name)==digest for name,digest in admission['source_sha256'].items())
-    data,receipt=prepare();assert admission['data_receipt_sha256']==sha(ROOT/'experiments/results/market/aws_b10_matched_data_20261014_v1.json')
+    data,receipt=prepare();assert admission['data_receipt_sha256']==sha(ROOT/'experiments/results/market/aws_b10_train_dev_sources_20261014_v1.json')
     gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0]
     # Attach actual calendar days, avoiding a uniform windows-per-day assumption.
     dev=[(t,m,identity['day']) for (t,m),identity in zip(data['dev'],receipt['identities']['dev'])]

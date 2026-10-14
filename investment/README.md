@@ -6,7 +6,7 @@ communication, self-design and hardware.
 
 The current deck includes a measured language learning quality/time win: **0.09279nats/token better development prediction at15.27% less complete CPU training time**, at the same8.39M GPT2 FineWeb targets. The [source-bound language packet](language_learning_evidence.json) records this within-family comparison. The [forward-credit packet](forward_credit_evidence_20261011.json) separately records component accuracy, acquisition cost and controller noise. Larger-scale Transformer quality and asynchronous hardware training remain the next measurement targets.
 
-Private diligence now also includes [scaling/locality engineering evidence](locality_scaling_evidence.json): richer-readout acquisition crossover and same-cut calibrated local gradient control. The latter retains calculated Adam displacement within1.28%ofglobal while removing the runtime globalnorm requirement; fittedlocal-rule quality and physicalhardware efficiency are the next tests.
+Private diligence now also includes [scaling/locality engineering evidence](locality_scaling_evidence.json): richer-readout acquisition crossover and same-cut calibrated local gradient control. The latter retains calculated Adam displacement within1.28%ofglobal while removing the runtime globalnorm requirement; completed paired local/global NLL is6.22624/6.23119 (gain0.00495), with0.41%more charged incremental process/scoring time. One seed; actual asynchronous speed/energy is the next test.
 
 **Patent hold (7 October 2026):** the inventions behind the benchmark wins are unpublished and not yet filed. Share the
 evidence brief, papers and technical slides only under NDA until the priority filing exists; see [`ip/`](../ip/README.md).

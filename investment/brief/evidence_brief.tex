@@ -483,12 +483,19 @@ Importance weights preserve the raw conditional teaching mean. Three-seed
 confirmation exists at smaller 128k/512k acquisition points; this 8M result
 has one seed. At 8M, the time improvement combines execution and teacher changes.
 
-\textbf{Progress toward sparse training.} Approximately 75\% of counterfactual
-teaching calls are avoided. Factual backpropagation, optimizer updates and
-model-wide clipping still coordinate work. Versioned receiver-local AdamW
-has passed exact parameter/state/RNG and resume checks and is entering the
-next integrated fit. Clockless hardware training cost and energy are separate
-measurements, not inferred from these CPU results.
+\textbf{Local clipping improves prediction without a training-time global norm.}
+In a completed paired continuation, calibrated per-bank caps score
+\textbf{6.22624} prediction loss versus \textbf{6.23119} for global clipping:
+a \textbf{0.00495-nat advantage}, with \textbf{0.41\% more} incremental
+process-and-scoring time, including calibration. Both start from the same
+trained eight-layer model and acquire 2.10 million additional targets.
+
+The clipping step uses fixed local caps and needs no model-wide gradient-norm
+reduction during training. Offline calibration uses global information; other
+trainer synchronization remains. Scope: one seed, 8,192 shared development
+targets with 1,024-token history, and 16k additional TRAIN calibration targets
+charged to the local arm. Next: replicated quality and measured asynchronous
+execution benefit. No chip speed or energy gain is inferred.
 
 \textbf{Why this matters.} The learning implementation improves prediction
 and cost together, rather than only passing numerical contracts. The next
@@ -497,7 +504,8 @@ published Transformer protocol. No such Transformer win or public language
 score is claimed by this development result.
 
 {\footnotesize\color{muted}Source-bound completed results and denominator:
-\texttt{investment/language\_learning\_evidence.json}. Same8,388,352 targets,
+\texttt{investment/language\_learning\_evidence.json} and
+\texttt{investment/locality\_scaling\_evidence.json}. Earlier language table: same8,388,352 targets,
 seed6, initial TRAIN prior, update and evaluation budget. Public validation
 sealed. A learned horizon-conditioned critic is not fitted yet.}
 

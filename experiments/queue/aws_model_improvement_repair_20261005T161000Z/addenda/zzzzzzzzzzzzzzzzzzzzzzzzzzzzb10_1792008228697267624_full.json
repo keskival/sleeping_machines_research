@@ -1,0 +1,270 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Founder-authorized full native/LSTM/Transformer three-seed matched-arithmetic references; September sealed",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_b10_matched_native_s0_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s0_20261014_v2/aws_b10_matched_native_s0_20261014_v2.txt",
+        "queue_sha256": "4ec25c692348e8dbcfb47bdd878ec61ace7f7fabde9082a7e67fe7424ab660c6",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_native_s0_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 29946,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_matched_transformer_s1_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_transformer_s1_20261014_v2/aws_b10_matched_transformer_s1_20261014_v2.txt",
+        "queue_sha256": "8148085cc2b7faf7a8cd9e1e34cf158492f2620c87936dcbe07cd8c9c3034003",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_transformer_s1_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 12585,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_b10_matched_lstm_s0_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s0_20261014_v2/aws_b10_matched_lstm_s0_20261014_v2.txt",
+        "queue_sha256": "28a7aa79fa6eb57cea9c96bdb5661a9ac165b4cf9303f55604233bad9c1fa5fa",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_lstm_s0_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 33140,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_matched_native_s2_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s2_20261014_v2/aws_b10_matched_native_s2_20261014_v2.txt",
+        "queue_sha256": "5f21622f1c826ff800bed34157ae7b40c8490b9b91d13435288d77a4371a351f",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_native_s2_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 29946,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_b10_matched_transformer_s0_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_transformer_s0_20261014_v2/aws_b10_matched_transformer_s0_20261014_v2.txt",
+        "queue_sha256": "ad215b3f1c931efe22a4f6e6305c0b5568baef0c37ee5e7eaaf7f2aa720fd5bd",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_transformer_s0_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 12585,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_matched_lstm_s2_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s2_20261014_v2/aws_b10_matched_lstm_s2_20261014_v2.txt",
+        "queue_sha256": "de1198bf145da7a911697ca512de85694efbd428f9ab16f775e5ca2e775f3e11",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_lstm_s2_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 33140,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "1": [
+      {
+        "name": "aws_b10_matched_native_s1_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s1_20261014_v2/aws_b10_matched_native_s1_20261014_v2.txt",
+        "queue_sha256": "b445fcca63aef89c1faa5de7f1b9752de89ab5bd6d18872bffbd4fda0ae5d01c",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_native_s1_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 29946,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_matched_transformer_s2_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_transformer_s2_20261014_v2/aws_b10_matched_transformer_s2_20261014_v2.txt",
+        "queue_sha256": "d1415b95016b45abb169cf870c8869a9f1d4a2e8d3ae33e5653c0d9f86ca412b",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_transformer_s2_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 12585,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_b10_matched_lstm_s1_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s1_20261014_v2/aws_b10_matched_lstm_s1_20261014_v2.txt",
+        "queue_sha256": "3819e880b9e82535e20bab8f06da19f4c7e857f44069689bb5b2b45a37d4a9dd",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_lstm_s1_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_matched_admission_20261014_v5.json"
+          }
+        ],
+        "timeout_s": 33140,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

@@ -37,7 +37,7 @@ def main():
     record=dict(status='completed',battle='B10',training_admitted=False,source_sha256=source_hashes(),rows=[],gates={})
     try:
         record['gates']['closed_form_ledger_witnesses']=numerical_ledger_audit()
-        data,receipt=prepare();record['data_receipt_sha256']=sha(ROOT/'experiments/results/market/aws_b10_matched_data_20261014_v1.json')
+        data,receipt=prepare();record['data_receipt_sha256']=sha(ROOT/'experiments/results/market/aws_b10_train_dev_sources_20261014_v1.json')
         gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0]
         t=torch.tensor(np.stack([x[0] for x in data['train'][:16]]));m=torch.tensor(np.stack([x[1] for x in data['train'][:16]]))
         costs={};overheads={};wall={}
@@ -69,6 +69,11 @@ def main():
             record['rows'].append(dict(family=family,parameters=sum(p.numel() for p in model.parameters()),updates=entries,causality_and_gradients=True,resume_parity=True,family_wall_s=time.monotonic()-family_start))
         B=30*(50*costs['native']['16']+costs['native']['1'])
         # Charge the first real LSTM pilot; its discarded state is not hidden work.
+        # Conservatively charge every earlier admission attempt's executed updates.
+        for previous in (ROOT/'experiments/results/market').glob('aws_b10_matched_admission_20261014_v*.json'):
+            old=json.loads(previous.read_text())
+            for row in old.get('rows',[]):
+                f=row['family'];overheads[f]+=sum(u['ledger']['arithmetic'] for u in row.get('updates',[]))+2*costs[f]['1']
         pilot=ROOT/'experiments/results/market/aws_b10_lstm_reference_admission_20261014_v1.json'
         if pilot.exists():overheads['lstm']+=costs['lstm']['16']
         # All engineering updates are charged to each family's seed budget. This
@@ -76,7 +81,8 @@ def main():
         record.update(training_admitted=True,budget_arithmetic=B,update_arithmetic=costs,overhead_arithmetic=overheads,timeouts_s={f:math.ceil(2*B/costs[f]['16']*wall[f]+7200) for f in costs},accounting_scope='executed training arithmetic under frozen scalar-kernel conventions; specials/comparisons separate; preprocessing and all gate wall/CPU disclosed',seed_list=[0,1,2],lrs=[.001,.003],test_sealed=True)
         record['gates'].update(full_window_updates=True,finite_tied_gap_gradients=True,causal_scores_and_gradients=True,optimizer_resume=True,original_native_likelihood_parity=True,no_unknown_operators=True)
     except Exception as error:
-        record['reason']=type(error).__name__+': '+str(error);record['gate_outcome']='admission_failed';record['training_admitted']=False
+        import traceback
+        record['reason']=type(error).__name__+': '+str(error);record['traceback']=traceback.format_exc();record['gate_outcome']='admission_failed';record['training_admitted']=False
     record.update(wall_s=time.monotonic()-start,cpu_s=time.process_time()-cpu,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     out.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps(record),flush=True)
 if __name__=='__main__':main()

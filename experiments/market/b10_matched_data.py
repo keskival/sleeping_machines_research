@@ -35,7 +35,7 @@ def prepare():
         assert len(sets[split])==want,(split,len(sets[split]),want)
     record=dict(status='completed',battle='B10',source_sha256=sources,identities=identities,
                 train_windows=801,dev_windows=756,dev_targets=677376,september_opened=False)
-    out=ROOT/'experiments/results/market/aws_b10_matched_data_20261014_v1.json'
+    out=ROOT/'experiments/results/market/aws_b10_train_dev_sources_20261014_v1.json'
     if out.exists():assert json.loads(out.read_text())==record
     else:out.write_text(json.dumps(record,indent=2)+'\n')
     return sets,record

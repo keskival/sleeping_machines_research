@@ -32,7 +32,7 @@ class Ledger(TorchDispatchMode):
         elif name in binary:self.flops+=n*(3 if name.startswith('lerp') else 1)
         elif name in specials:self.special+=n
         elif name in comparisons:self.comparisons+=size(args[0])
-        elif name=='where':self.comparisons+=n
+        elif name in ('where','masked_fill','masked_fill_'):self.comparisons+=n
         elif name in ('mm','bmm','addmm'):
             a,b=(args[1],args[2]) if name=='addmm' else args[:2]
             k=a.shape[-1];self.flops+=n*(2*k-1)+(n if name=='addmm' else 0)

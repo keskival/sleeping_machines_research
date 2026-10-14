@@ -1,4 +1,51 @@
 {
+  "local_clipping_fit": {
+    "rows": [
+      {
+        "policy": "global",
+        "nll": 6.231192537876666,
+        "parent": "aws_integrated_receiver_d8_8m_20261014_s6_v1",
+        "added_updates": 4096,
+        "added_targets": 2097088,
+        "total_actor_targets": 10485440,
+        "inherited_training_s": 28533.59827275062,
+        "incremental_training_including_smoke_s": 6130.568854892626,
+        "calibration_s": 0.0,
+        "evaluation_scoring_s": 6.8550573631655425,
+        "incremental_process_and_scoring_proxy_s": 6194.098633561283,
+        "whole_fit_and_auxiliary_proxy_s": 34727.6969063119,
+        "calibration_factual_targets": 0,
+        "max_rss_kb": 762344
+      },
+      {
+        "policy": "calibrated",
+        "nll": 6.226238129328493,
+        "parent": "aws_integrated_receiver_d8_8m_20261014_s6_v1",
+        "added_updates": 4096,
+        "added_targets": 2097088,
+        "total_actor_targets": 10485440,
+        "inherited_training_s": 28533.59827275062,
+        "incremental_training_including_smoke_s": 6103.141651446931,
+        "calibration_s": 47.75944306398742,
+        "evaluation_scoring_s": 6.681120978202671,
+        "incremental_process_and_scoring_proxy_s": 6219.594308836153,
+        "whole_fit_and_auxiliary_proxy_s": 34753.19258158677,
+        "calibration_factual_targets": 16384,
+        "max_rss_kb": 731092
+      }
+    ],
+    "nll_gain": 0.004954408548172751,
+    "incremental_work_ratio": 1.0041161235529454,
+    "protocol": {
+      "targets": 8192,
+      "target_start": 25165825,
+      "target_end_inclusive": 25174016,
+      "window": 1024,
+      "lanes": 8,
+      "eos_state_reset": false
+    },
+    "decision": "Quality retained within0.01; locality engineering point, no competitivequalitywin. Measure useful async execution before more fitting"
+  },
   "status": "completed",
   "audience": "private investor diligence under existing disclosure policy",
   "evidence_level": "one saved learner cut/heldout TRAIN clipping geometry; single-seed readout development",
@@ -81,10 +128,11 @@
   },
   "completed_evidence_sha256": {
     "experiments/results/credit/aws_same_cut_local_clip_calibration_20261014_v1.json": "f345397667aaa415ef66076c4e48e5de70f30ce2bb3402c4408b94cd0da50543",
-    "experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json": "e0437a41c3e96b15aacc1ea3ba7035aeedb8f30b4c60ca2aaf05383106939fec"
+    "experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json": "e0437a41c3e96b15aacc1ea3ba7035aeedb8f30b4c60ca2aaf05383106939fec",
+    "experiments/results/diagnostics/aws_calibrated_clip_pair_verdict_20261014_v1.json": "f4c44d2510ca62b72ae83a22c22cdfccdcef76bd9a4325c665bd032fbcfb8c08"
   },
   "source_sha256": {
-    "scripts/prepare_locality_investor_evidence.py": "6411cc8b165c8dd51825ad9920829991c0bf582b9017d13cf638d3422f8cd3a4"
+    "scripts/prepare_locality_investor_evidence.py": "0aaa6fcd8534baceaa730d2acb1a372b5fe4402ef5a4198b85cb9da42277caac"
   },
-  "scope": "Readout: same8192DEVtargets/1024history/8Mseed6, additionalcapacity/work. Clipping:24TRAINcalibration/8heldout chunks on frozen completedD8actor and moments; same raw credit, calculated one-step Adam displacement. Fixed per-bank caps avoid runtime global norm. Candidate optimizer numericalgate and fitted quality/work comparison pending; no async hardware timing/energy or language benchmark win."
+  "scope": "Readout: same8192DEVtargets/1024history/8Mseed6, additionalcapacity/work. Clipping:24TRAINcalibration/8heldout chunks on frozen completedD8actor and moments; same raw credit, calculated one-step Adam displacement. Fixed per-bank caps avoid runtime global norm. Completed paired2Mcontinuation from identical8MbankedD8actor,seed6: local6.226238/global6.231193 NLL on8192DEVtargets/1024history; calibration16kTRAINtargets and process/scoring costs charged. Fixed caps remove clipping globalnorm during training; offline calibration usesglobalinformation. Fulltrainer hasother coordination; no async hardware timing/energy or public language benchmark win."
 }
