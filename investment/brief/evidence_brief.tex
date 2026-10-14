@@ -476,6 +476,62 @@ Guidance learns delayed update utility. Separate forward-credit test: three
 per update. Forecasting, not profits.}
 
 \newpage
+% ---------------------------------------------------------------- market comparison
+\sect{Market forecasting: ahead of Transformer}{Fixed-weight development quality comparison}
+
+Our native temporal model predicts a real high-frequency trade stream more
+accurately than the completed Transformer reference. Both forecast the next
+trade's timing and type from the same past event information. Weights stay fixed
+during this evaluation; event memory evolves within each 1,024-event window and
+resets between windows.
+
+\begin{tile}
+\textbf{Lower prediction loss is better.}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Model & Prediction loss & Scored events \\
+\midrule
+\textbf{Sleeping Machines native} & \textbf{6.88224} & 677,376 \\
+Time-encoded Transformer & 6.96644 & 677,376 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Native leads by 0.08419 nats per event.} Both fits are complete;
+this is a one-seed result on the same chronological development protocol.
+\end{tile}
+
+\textbf{What this adds.} The native model's existing market result now has a
+completed neural reference beside it. Temporal computation and persistent event
+memory deliver better prediction on this real trade stream than this Transformer
+configuration. This broadens our evidence beyond language, classification and
+standard event benchmarks.
+
+\textbf{A concrete product direction.} Accurate trade-stream forecasts can
+support execution, liquidity and market-risk systems. This result measures
+forecast quality; trading returns require a separate evaluation including costs.
+
+\textbf{Online learning is a separate comparison.} The preceding page measures
+our native predictor adapting its weights during use, against other learning
+rules for that same predictor. It contains no Transformer arm. The fixed-weight
+result here does not measure an online-learning advantage over Transformer.
+
+\textbf{Next decisive confirmation.} The native model and Transformer here used
+different fitting and selection budgets. A separately running three-seed study
+caps each model at the same complete fitting arithmetic. It will determine
+whether the quality lead also holds at matched compute. September test data
+remains sealed.
+
+{\footnotesize\color{muted}Scope: Binance BTCUSDT aggregated trades; TRAIN 1--24 August 2026,
+DEV 25--31 August; 801 training and 756 development windows of 1,024 events,
+first 128 events as context. Same six event types, physical gaps and 1 microsecond
+recording-cell likelihood. Fixed two-layer, width 32 Transformer with causal time
+encoding and the shared temporal race output head; native 18,164 parameters.
+In-development member; a development quality lead, not a sealed-test or
+family-wide verdict. Native fitting arithmetic is unmeasured in the older fit.
+Source-bound completed evidence: \\ \texttt{investment/market\_transformer\_evidence.json}.}
+
+\newpage
 \sect{Language learning improves}{Better prediction with less complete training time}
 
 The same integrated temporal language family now improves on its earlier
@@ -540,55 +596,6 @@ score is claimed by this development result.
 \texttt{investment/locality\_scaling\_evidence.json}. Earlier language table: same8,388,352 targets,
 seed6, initial TRAIN prior, update and evaluation budget. Public validation
 sealed. A learned horizon-conditioned critic is not fitted yet.}
-
-\newpage
-% ---------------------------------------------------------------- market comparison
-\sect{Market forecasting: ahead of Transformer}{Completed development quality comparison}
-
-Our native temporal model predicts a real high-frequency trade stream more
-accurately than the completed Transformer reference. Both forecast the next
-trade's timing and type from the same past event information.
-
-\begin{tile}
-\textbf{Lower prediction loss is better.}
-\begin{center}
-\begin{tabular}{lrr}
-\toprule
-Model & Prediction loss & Scored events \\
-\midrule
-\textbf{Sleeping Machines native} & \textbf{6.88224} & 677,376 \\
-Time-encoded Transformer & 6.96644 & 677,376 \\
-\bottomrule
-\end{tabular}
-\end{center}
-\textbf{Native leads by 0.08419 nats per event.} Both fits are complete;
-this is a one-seed result on the same chronological development protocol.
-\end{tile}
-
-\textbf{What this adds.} The native model's existing market result now has a
-completed neural reference beside it. Temporal computation and persistent event
-memory deliver better prediction on this real trade stream than this Transformer
-configuration. This broadens our evidence beyond language, classification and
-standard event benchmarks.
-
-\textbf{A concrete product direction.} Accurate trade-stream forecasts can
-support execution, liquidity and market-risk systems. This result measures
-forecast quality; trading returns require a separate evaluation including costs.
-
-\textbf{Next decisive confirmation.} The native model and Transformer here used
-different fitting and selection budgets. A separately running three-seed study
-caps each model at the same complete fitting arithmetic. It will determine
-whether the quality lead also holds at matched compute. September test data
-remains sealed.
-
-{\footnotesize\color{muted}Scope: Binance BTCUSDT aggregated trades; TRAIN 1--24 August 2026,
-DEV 25--31 August; 801 training and 756 development windows of 1,024 events,
-first 128 events as context. Same six event types, physical gaps and 1 microsecond
-recording-cell likelihood. Fixed two-layer, width 32 Transformer with causal time
-encoding and the shared temporal race output head; native 18,164 parameters.
-In-development member; a development quality lead, not a sealed-test or
-family-wide verdict. Native fitting arithmetic is unmeasured in the older fit.
-Source-bound completed evidence: \\ \texttt{investment/market\_transformer\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- significance

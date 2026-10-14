@@ -17,12 +17,14 @@
     "seed": 0,
     "inputs": "past six-class marks and physical timestamp gaps",
     "head": "shared normalized temporal race interval/mark head",
+    "evaluation_weight_updates": false,
+    "numerical_state": "updated within each window; reset between windows",
     "test": "September sealed"
   },
   "native_parameters": 18164,
   "transformer_fitting_arithmetic": 7816284519126,
   "native_fitting_arithmetic": null,
-  "scope": "Completed native fit has lower development loss than completed fixed two-layer width32 time-encoded Transformer reference. Different fitting/selection budgets; native arithmetic unmeasured in older driver. Quality lead only; equal-compute three-seed confirmation running separately. Native member is in development, not a family-wide or sealed-test verdict; no profitability, frontier-language or universal Transformer superiority claim.",
+  "scope": "Completed native fit has lower development loss than completed fixed two-layer width32 time-encoded Transformer reference. Different fitting/selection budgets; native arithmetic unmeasured in older driver. Fixed-weight DEV quality lead only, not an online-learning comparison; equal-compute three-seed confirmation running separately. Native member is in development, not a family-wide or sealed-test verdict; no profitability, frontier-language or universal Transformer superiority claim.",
   "input_sha256": {
     "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
     "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json": "dce04fb503c85a091bdcbe67976b17cac8e7870fc5a2c68d027499282a253661"
