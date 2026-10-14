@@ -1,0 +1,32 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Founder correction: every model learns online; persistent native strengths retained",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_b10_online_capability_gate_20261014_v1",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_online_capability_gate_20261014_v1/aws_b10_online_capability_gate_20261014_v1.txt",
+        "queue_sha256": "87ec5de659aca5106ccedbef6c016c369f85087b5b9db555a3bde156a6f27c37",
+        "source_sha256": {
+          "experiments/market/b10_online_comparison.py": "82d09bb87c11804a3824e409d699654f9767de27af8e5f1d2137b8b909bc049f",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/capability_admission.py": "1395ce2a89ad19fd07b7c1e31e44aa365cb54595ab08c69d812c7b1130e5e60a",
+          "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_ONLINE_CAPABILITY_ADMISSION.json": "f3bc13c817bfb6852a5a13c2b51e00fcd1240eb0e697705d05a23f1c241b72ce"
+        },
+        "result": "experiments/results/market/aws_b10_online_capability_gate_20261014_v1.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
