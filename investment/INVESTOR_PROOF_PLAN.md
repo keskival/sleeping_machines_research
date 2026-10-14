@@ -39,6 +39,10 @@ This is an execution plan, not a prediction of investor acceptance.
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
 
+## Completed acquisition evidence
+
+On the same8,192-target/1,024-history development protocol, the temporally aligned wider native interface improves loss **6.160183 → 6.099337 nats/token** at8M targets. It had lagged at512k and2M. Complete training time is7,734.249 →8,657.820seconds (+11.94%); parameters3.165M →3.821M. Scope: one seed, native models, reused DEV; this is a completed development quality gain with added resources. [Source-bound comparison](../experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json).
+
 ## Next decision: useful depth at meaningful acquisition
 
 The current priority is the reserved GPT-2/FineWeb ladder: D8 and D16 at 8M targets, then D8 at 32M. Both Curie depth smokes passed finite-update and every-stage gradient checks. The preserved D8 checkpoint reached 1,048,544 targets with interim DEV loss 7.197624 nats/token; this is single-seed training progress on the short development slice, not completed long-history quality or a public benchmark score. Exact recovery preserves parameters, Adam, numerical memory, audit allocation and RNG. Interrupted resource work is charged; the second interruption's observed interval gives a lower bound because its terminal timestamp is unknown.

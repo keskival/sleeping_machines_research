@@ -1,5 +1,7 @@
 # Theory note — collapsing futures, and the gradient through a collapse
 
+[Contained contextual decoder](theory/CONTAINED_CONTEXTUAL_DECODER.md) prepares a nonlinear frequent-token head over the deepest native feature with exact initial probability/cotangent/RNG containment. A factorized centered-logit spectrum measures contextual variation without a context-by-vocabulary matrix; actual native contracts await the completed deep fits. It preserves the core, does not infer an information or learning-spectrum bound, and admits no new decoder fit.
+
 [Cross-window forward route credit](theory/CROSS_WINDOW_FORWARD_ROUTE_CREDIT.md) implements a separate causal consequence horizon across unchanged factual gradient detach boundaries. One window retains the original endpoint/allocation behavior; four windows charge longer native replay. Frozen native contracts and measured resource smoke gate one reserved D8/8M acquisition after the current ladder; no external fit or public validation.
 
 [Useful depth and investment gates](theory/USEFUL_DEPTH_AND_INVESTMENT_GATES.md) separates additional predictive information from decoder learning error through the conditional log-loss identity. It distinguishes content-cut dependence from achievable shallow loss, connects deployment cost to acquisition/inference crossover, and defines the completed evidence that selects the next R1 integration. The reserved D8/D16/8M/32M program is retained.

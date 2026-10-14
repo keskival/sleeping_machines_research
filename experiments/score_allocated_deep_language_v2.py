@@ -101,13 +101,17 @@ def main():
                 cross_audit_risk_math_contract='passed depth8/16 finite-sum and parameter-gradient parity; no integrated credit fit',
                 checkpoint_replay_targets=args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
                 long_history_diagnostic_scored_targets=8192*(args.depth+4),
-                diagnostic_scored_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
+                diagnostic_scored_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1)
+                    +horizon_contract['scored_targets']+horizon_contract['nonlinear_readout_containment']['scored_targets'],
+                diagnostic_forward_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1)
+                    +horizon_contract['forward_targets'],
                 successful_trajectory_training_s=packet['train_wall_s_total'],
                 successful_trajectory_training_s_per_target=packet['train_wall_s_total']/packet['presentations_total'],
                 **acquisition_work(packet),
                 reference_scorer_parity=True,
                 forward_horizon_contract=horizon_contract,
                 additional_train_contract_scored_targets=horizon_contract['scored_targets'],
+                additional_readout_containment_scored_targets=horizon_contract['nonlinear_readout_containment']['scored_targets'],
                 additional_train_contract_forward_targets=horizon_contract['forward_targets'],
                 selected_writes_per_target=args.depth*args.heads,
                 scored_keys_per_target=args.depth*args.heads*args.pool,
@@ -116,7 +120,7 @@ def main():
                 credit_update_diagnostics=packet.get('credit_update_diagnostics'),
                 selected_checkpoint_sha256=driver.sha(best_path),
                 input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in (base.with_suffix('.json'),base.with_suffix('.pt'))},
-                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py','experiments/check_deep_forward_horizon.py')},
+                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py','experiments/check_deep_forward_horizon.py','sleeping_machines/contextual_logit_spectrum.py','sleeping_machines/contained_nonlinear_readout.py')},
                 wall_s=time.monotonic()-begin,
                 scope='Single seed, frozen final checkpoint, exact replay and8192 reusedDEV targets with1024 disjoint histories. '
                       'Per-stage frozen incoming-content cuts retain bias/clock parameters/banks/arrival mechanisms and share issued random tapes; realized routes and times can change. '

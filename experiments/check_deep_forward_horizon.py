@@ -1,5 +1,7 @@
 """Frozen TRAIN-only integration check for forward route credit across windows."""
 import torch
+from sleeping_machines.contextual_logit_spectrum import adaptive_readout_spectra
+from sleeping_machines.contained_nonlinear_readout import check_native_readout_containment
 
 
 @torch.no_grad()
@@ -39,6 +41,8 @@ def check(model,args,driver,train):
             scored_targets=2*args.lanes*length,after_boundary_targets=after.numel(),
             mean_after_boundary_loss_delta=float(after.mean()),
             maximum_after_boundary_feature_change=float((alternative-factual)[:,args.credit_window:].abs().max()),
+            final_stage_readout_spectra=adaptive_readout_spectra(model.readout,factual),
+            nonlinear_readout_containment=check_native_readout_containment(model.readout,factual,labels),
             scope='Frozen TRAIN prefix, first-time-held forced receiver intervention; actual downstream races and numerical memory replayed across detached factual windows. All future token inputs are observed causal inputs during continuation. No learned credit fit, quality gain or derivative of the full stochastic routing distribution claimed.')
     finally:
         model.force_site,model.suppress_site,model.shadow_mode,model.replay_window=old
