@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "evidence_level": "single-seed completed development quality comparison",
+  "native_nll": 6.882244527423017,
+  "transformer_nll": 6.966435641695363,
+  "native_gain_nats_per_event": 0.08419111427234593,
+  "protocol": {
+    "train": "2026-08-01..24",
+    "dev": "2026-08-25..31",
+    "train_windows": 801,
+    "dev_windows": 756,
+    "events_per_window": 1024,
+    "context_events": 128,
+    "scored_targets": 677376,
+    "recording_cell_seconds": 1e-06,
+    "seed": 0,
+    "inputs": "past six-class marks and physical timestamp gaps",
+    "head": "shared normalized temporal race interval/mark head",
+    "test": "September sealed"
+  },
+  "native_parameters": 18164,
+  "transformer_fitting_arithmetic": 7816284519126,
+  "native_fitting_arithmetic": null,
+  "scope": "Completed native fit has lower development loss than completed fixed two-layer width32 time-encoded Transformer reference. Different fitting/selection budgets; native arithmetic unmeasured in older driver. Quality lead only; equal-compute three-seed confirmation running separately. Native member is in development, not a family-wide or sealed-test verdict; no profitability, frontier-language or universal Transformer superiority claim.",
+  "input_sha256": {
+    "experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json": "771da657bde64280259bb62f98d3a0b0e0d81ee507e5a1628916fde56f4afd97",
+    "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json": "dce04fb503c85a091bdcbe67976b17cac8e7870fc5a2c68d027499282a253661"
+  },
+  "protocol_sha256": {
+    "experiments/market/B10_MARKET.md": "393b53bfd3b11c3ae8488237e609e47459cbb4f59b353dfdc2046d8060146845",
+    "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+  }
+}

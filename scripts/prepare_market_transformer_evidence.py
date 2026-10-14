@@ -1,0 +1,12 @@
+"""Completed B10 development quality evidence; no ongoing scores in headline."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+ paths=[ROOT/'experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.json',ROOT/'experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json'];native,transformer=[json.loads(p.read_text()) for p in paths]
+ assert native['status']==transformer['status']=='completed';assert native['args']['seed']==transformer['seed']==0;assert native['train_windows']==801 and native['val_windows']==756;assert transformer['final_dev']['groups']['all']['targets']==677376;assert not transformer['september_opened'];assert native['test']=='not scored (development run)'
+ n=-native['best_val_ll_per_event'];t=transformer['final_dev']['nll'];assert n<t
+ packet=dict(status='completed',battle='B10',evidence_level='single-seed completed development quality comparison',native_nll=n,transformer_nll=t,native_gain_nats_per_event=t-n,protocol=dict(train='2026-08-01..24',dev='2026-08-25..31',train_windows=801,dev_windows=756,events_per_window=1024,context_events=128,scored_targets=677376,recording_cell_seconds=1e-6,seed=0,inputs='past six-class marks and physical timestamp gaps',head='shared normalized temporal race interval/mark head',test='September sealed'),native_parameters=native['parameters'],transformer_fitting_arithmetic=transformer['fitting_arithmetic'],native_fitting_arithmetic=None,scope='Completed native fit has lower development loss than completed fixed two-layer width32 time-encoded Transformer reference. Different fitting/selection budgets; native arithmetic unmeasured in older driver. Quality lead only; equal-compute three-seed confirmation running separately. Native member is in development, not a family-wide or sealed-test verdict; no profitability, frontier-language or universal Transformer superiority claim.',input_sha256={str(p.relative_to(ROOT)):sha(p) for p in paths},protocol_sha256={n:sha(ROOT/n) for n in ['experiments/market/B10_MARKET.md','experiments/market/B10_AWS_MATCHED_CONTROLS.md']})
+ out=ROOT/'investment/market_transformer_evidence.json';out.write_text(json.dumps(packet,indent=2)+'\n');print(json.dumps({k:packet[k] for k in ['native_nll','transformer_nll','native_gain_nats_per_event']}))
+if __name__=='__main__':main()
