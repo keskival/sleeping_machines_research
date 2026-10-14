@@ -1,3 +1,5 @@
+[Temporal function, composition, geometry and statistics](theory/TEMPORAL_LAYER_FUNCTION_GEOMETRY_STATISTICS.md) defines native stages as state/time/message transducers and their unrolled hierarchy; derives event-sampled cascade kernels, normalization geometry, hidden modal gauge, conditional-information/Fisher usefulness criteria, zero-output XOR deadlock and useful-update audit-budget bounds. Native gauge/SGD-vs-Adam and finite analytical witnesses pass; no fitted language gain.
+
 [Per-stage language residual gains](theory/STAGE_GAIN_LANGUAGE_DEPTH.md) removes uniform-gain packing as a depth-growth restriction while retaining native races/state/clock kernels. Nonuniform sparse forward/state/route/RNG and gradient fixtures pass; future identity growth still needs clock/context/optimizer contracts. No fit or quality gain claimed.
 
 # Theory note — collapsing futures, and the gradient through a collapse
