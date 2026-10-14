@@ -1,3 +1,5 @@
+[Per-stage language residual gains](theory/STAGE_GAIN_LANGUAGE_DEPTH.md) removes uniform-gain packing as a depth-growth restriction while retaining native races/state/clock kernels. Nonuniform sparse forward/state/route/RNG and gradient fixtures pass; future identity growth still needs clock/context/optimizer contracts. No fit or quality gain claimed.
+
 # Theory note — collapsing futures, and the gradient through a collapse
 
 [Learned baselines with exact route audits](theory/LEARNED_BASELINES_WITH_EXACT_ROUTE_AUDITS.md) prepares a forward-taught control variate: sampled alternative residual plus analytic nonwinner baseline correction retains the original raw conditional gradient for any issued predictor. It derives variance/coupling/version/work requirements, includes finite-sum tests and clarifies why the completed full-stream depth cuts collapse identically. Warm populated-bank cuts are prepared but unqueued; no native learned baseline fit or efficiency claim.
