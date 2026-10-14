@@ -16,7 +16,8 @@ BASELINE='curie_allocated_deep_d8_8m_20261013_s6_resume2_v1'
 def main():
     # Bound waiting without changing or duplicating another controller's work.
     deadline=time.monotonic()+14*86400
-    while subprocess.run(['tmux','has-session','-t','curie_deep_recovery_20261013_v2'],capture_output=True).returncode==0:
+    while any(subprocess.run(['tmux','has-session','-t',session],capture_output=True).returncode==0
+              for session in ('curie_deep_recovery_20261013_v2','curie_market_depth_20261014_v1')):
         if time.monotonic()>deadline:raise RuntimeError('Current ladder exceeded controller wait envelope')
         time.sleep(20)
     tags=(BASELINE,'curie_allocated_deep_d16_8m_20261013_s6_v1','curie_allocated_deep_d8_32m_20261013_s6_v1')

@@ -4,6 +4,10 @@ Goal: show that the race-of-clocks family is the better probabilistic model of a
 input to execution, market-making risk and volatility systems. No trading-edge claim is made from this battle unless a
 separate cost-inclusive, multi-month protocol is pre-registered later.
 
+## Current next experiment
+
+User14October prioritizes asynchronous market applications and scalable multilayer models. An eight-stage version of the existing temporal-memory/clock-race member is admitted with the original data/scoring and a representative resource smoke. It follows the current D16 language fit and precedes reserved32M language acquisition. [Full depth protocol](B10_DEPTH_SCALING.md). No new result or sealed score yet; no credit-only grid.
+
 ## History (E17, September 2026)
 
 Preregistered, 21 BTCUSDT days, prequential: direction accuracy on ≥ 1 bp moves race 0.593 vs online logistic regression

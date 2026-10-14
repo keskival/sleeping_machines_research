@@ -12,6 +12,8 @@
 
 **Language competitive-progress correction,14October:** finish the runningD16/8M and reservedD8/32M fits. The longer-horizon route-credit comparison remains the single admitted learning repair because the trained D8 shows consequences beyond its current credit boundary. Withdraw automatic64M acquisition and optional warm-cut diagnostics. Further fitting must follow completed quality/error analysis and target the strongest saved native language member on the same protocol, then the pinned public reference. Numerical/component progress alone is not competitive progress.
 
+**Asynchronous market/depth priority, user direction14October:** finish the activeD16 language fit, then prioritize one full nativeeight-layer B10 market development fit through a numerical/resource smoke. Preserve the reservedD8/32M language stage after it. Match the existing recording-cell/chronological protocol and compare to saved native/Hawkes references; full-model quality and work decide the next repair. No microcredit grid or sealed market score. [Depth protocol](market/B10_DEPTH_SCALING.md).
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
