@@ -287,3 +287,57 @@ executed updates and36 scored/own-gradient targets are charged;1.338s and
 423268KBpeakRSS. v1 failed in moment inspection because inactive parameters
 lack Adam state; corrected v2 preserves the actual learner execution. The
 production alternative-teacher policy remains the next replay gate.
+
+## 12. Longer consequences retain the production update schedule
+
+14 October2026. `credit/native_token_teacher_world.py` binds the replay to the
+frozen production driver's SHA256 and extracts its update body verbatim.
+It includes probability0.25 importance-corrected alternative teaching, own
+factual and counterfactual suffix predictions, model-local site/position/route
+RNG, global norm clipping and the cloned optimizer. A changed driver fails
+closed until reviewed and rebound. Corpus-block resets, evaluation cadence,
+balance coefficient and step numbering are caller-owned policy inputs; they
+must match the registered target. This is a replay component, not a new fit.
+
+A horizon query defines which prequential outcomes are valued, not when the
+learner updates. Consider a fixed production window of B outcomes. Stopping
+at H<B and updating using the H-outcome mean yields a different optimizer
+step from the B-outcome mean. In scalar SGD, the discrepancy is exactly
+eta*(mean_B gradient - mean_H gradient); with clipping and Adam both moments
+and subsequent updates can also differ. Resuming that shortened fit does not
+supply a prefix of the original learner world.
+
+For registered targets ending inside an update window, retain the original
+window policy and score its selected prefix without introducing an earlier
+update. If later outcomes are needed, compute the original complete-window
+update from its own gradients. A cache cut after a scored prefix may therefore
+need a pending window accumulator or the original issued boundary snapshot;
+a loss sum alone is not a complete learner state. The first implementation
+uses horizon boundaries on completed production windows, avoiding implicit
+changes to the learning schedule.
+
+For a full-window implementation the marginal cost to reach horizon H is the
+cost of ceil(H/B) original windows, plus state/snapshot/teacher work, not the
+cost of an invented H-outcome fit. The telescoping target remains the same
+sum of registered outcome weights. Allocation must use these measured costs.
+Equal horizon lengths with different chunk boundaries are different future
+policies, even if both are described as AdamW or use the same learning rate.
+
+The production replay contract compares uninterrupted and cloned-prefix
+execution, including teacher admission RNG and all four model-local RNG
+streams. It also requires actual alternative teaching calls; a seed that
+happens to admit no teacher cannot certify this mechanism. Source extraction
+removes hand-transcription differences; it is not an independent proof that
+the production algorithm is statistically optimal or its credits are useful.
+
+The source-bound production update gate completed in guarded AWS slot3:
+`results/credit/aws_native_token_teacher_world_contract_20261014_v1.json`.
+All12prefix loss errors are0; final resumed actor/optimizer/state and race,
+teacher-admission and four private RNG fingerprints agree exactly. Source
+and global RNG are unchanged. Each factual/alternative full world executed
+four real teacher calls,16replayed tokens and10suffix scored targets. Three
+executed worlds total36updates/144factual scored and own-gradient targets;
+teacher replay/scoring is additional. Wall3.500seconds/peakRSS423312KB.
+Synthetic legalGPT2 IDs,D8payload8,balance0: this verifies replay of the declared
+source-extracted production step, not full corpus scheduling, acquired quality
+or the usefulness of a fitted horizon critic. Original fit driver is unchanged.
