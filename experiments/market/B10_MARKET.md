@@ -6,7 +6,7 @@ separate cost-inclusive, multi-month protocol is pre-registered later.
 
 ## Current next experiment
 
-User14October prioritizes asynchronous market applications and scalable multilayer models. An eight-stage version of the existing temporal-memory/clock-race member is admitted with the original data/scoring and a representative resource smoke. It follows the current D16 language fit and precedes reserved32M language acquisition. [Full depth protocol](B10_DEPTH_SCALING.md). No new result or sealed score yet; no credit-only grid.
+User14October prioritizes asynchronous market applications and scalable multilayer models. An eight-stage version of the existing temporal-memory/clock-race member is admitted with the original data/scoring and a representative resource smoke. It follows the current D16 language fit and ends this Curie training pipeline; unchanged32M and duplicate horizon-only language acquisitions are withdrawn. [Full depth protocol](B10_DEPTH_SCALING.md). No new result or sealed score yet; no credit-only grid.
 
 ## History (E17, September 2026)
 
