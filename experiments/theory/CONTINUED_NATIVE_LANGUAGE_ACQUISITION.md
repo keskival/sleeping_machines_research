@@ -16,7 +16,7 @@ The existing data shard contains100,000,000GPT-2 tokens. The64M plan admits67,10
 
 ## Acquisition and evidence sequence
 
-The admitted sequence is currentD8/8M→D16/8M→D8/32M, then the gated longer-horizonD8/8M comparison, then a budget-only continuation of the completed D8/32M actor to64M. It measures a larger-data point without another cold start. There is no small-data quality veto or extra configuration grid. The64M trajectory retains the baseline credit rule; changing it to the horizon candidate would conflate acquisition with a learning-rule migration and needs a separate decision.
+The admitted sequence is currentD8/8M→D16/8M→D8/32M, then the gated longer-horizonD8/8M comparison. The64M controller/queues are withdrawn under the14October competitive-progress correction. Budget-only migration remains an implemented capability for a future evidence-based acquisition decision. It measures a larger-data point without another cold start. There is no small-data quality veto or extra configuration grid. The64M trajectory retains the baseline credit rule; changing it to the horizon candidate would conflate acquisition with a learning-rule migration and needs a separate decision.
 
 Admission uses completed parent throughput to bound incremental work, with at most7days per fit. The one-thread CPU/run_safe/RSS3GB/host8GiB/cgroup2GiB guards remain. Existing locks are respected. Completed checkpoint, result and selected-weight files are preserved; migration and child artifacts have unique names.
 
