@@ -51,3 +51,28 @@ class StageGainTest(unittest.TestCase):
         new.float();self.assertEqual(new.stage_gains,(.35,.1))
         bad=copy.deepcopy(saved);bad['_extra_state']['stage_gains']=(.1,)
         with self.assertRaises(ValueError):new.load_state_dict(bad)
+
+    def test_completed_packed_conversion_preserves_rng_state_and_gradients(self):
+        old=PackedTokenCore(model((.35,.35)))
+        before=torch.get_rng_state().clone()
+        grown=StageGainTokenCore.from_packed(old)
+        self.assertTrue(torch.equal(before,torch.get_rng_state()))
+        for name,p in old.named_parameters():
+            other=dict(grown.named_parameters())[name]
+            self.assertTrue(torch.equal(p,other),name)
+            self.assertNotEqual(p.data_ptr(),other.data_ptr(),name)
+        ids=torch.tensor([[0,1,2],[3,4,5]])
+        a,sa,_=token_features(old,ids,generator=torch.Generator().manual_seed(11),route_credit='none')
+        b,sb,_=token_features(grown,ids,generator=torch.Generator().manual_seed(11),route_credit='none')
+        self.assertTrue(torch.equal(a,b))
+        for key in sa:
+            if isinstance(sa[key],list):self.assertTrue(all(torch.equal(x,y) for x,y in zip(sa[key],sb[key])),key)
+            else:self.assertTrue(torch.equal(sa[key],sb[key]),key)
+        old.head(a).square().sum().backward();grown.head(b).square().sum().backward()
+        for name,p in old.named_parameters():
+            other=dict(grown.named_parameters())[name]
+            if p.grad is not None:self.assertTrue(torch.equal(p.grad,other.grad),name)
+        restored=StageGainTokenCore.from_packed(old)
+        restored.load_state_dict(grown.state_dict())
+        self.assertEqual(restored.stage_gains,grown.stage_gains)
+        with self.assertRaises(ValueError):StageGainTokenCore.from_packed(grown)

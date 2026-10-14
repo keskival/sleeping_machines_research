@@ -27,6 +27,22 @@ class StageGainTokenCore(PackedTokenCore):
         super().__init__(normalized)
         self.stage_gains=tuple(gains)
 
+    @classmethod
+    def from_packed(cls,source):
+        """Clone a completed packed core without reconstructing its unit graph.
+
+        Parameters/state are storage independent; optimizer state is external
+        and must be transferred explicitly by a future continuation owner.
+        """
+        if type(source) is not PackedTokenCore:
+            raise ValueError('Explicit migration requires an unmodified legacy PackedTokenCore')
+        gains=(float(source.gain),)*source.depth
+        cls._validate(gains,source.depth)
+        result=copy.deepcopy(source)
+        result.__class__=cls
+        result.stage_gains=gains
+        return result
+
     @staticmethod
     def _validate(gains,depth):
         if len(gains)!=depth or any(not math.isfinite(g) or g<0 for g in gains):
