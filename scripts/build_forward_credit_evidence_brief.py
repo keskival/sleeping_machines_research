@@ -16,6 +16,7 @@ def main():
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_forward_credit_evidence.py'],cwd=ROOT,check=True)
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_language_learning_evidence.py'],cwd=ROOT,check=True)
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_market_transformer_evidence.py'],cwd=ROOT,check=True)
+        subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_protected_language_evidence.py'],cwd=ROOT,check=True)
         build=preview/'build';shutil.copytree(ROOT/'investment/brief',build)
         env=os.environ.copy();tex=ROOT/'experiments/.texmf_local'
         if tex.is_dir():

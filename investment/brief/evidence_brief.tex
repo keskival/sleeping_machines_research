@@ -585,6 +585,13 @@ These timing mechanisms are established in asynchronous circuit research
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
 \href{https://www.imm.dtu.dk/courses/02204/}{DTU}).
 
+\textbf{Our strongest token-language result improves again.} Continuing the
+trained richer-readout model with local clipping reduces prediction loss from
+\textbf{6.09934 to 6.06556}, a further \textbf{0.03377-nat gain} after 2.10 million
+additional training targets. Same 8,192 development targets and 1,024-token history,
+one seed; added data and local clipping act together. Added-depth quality is
+being tested against this stronger continued-parent control.
+
 \textbf{Why this matters.} The learning implementation improves prediction
 and cost together, rather than only passing numerical contracts. The next
 competitive milestone is a larger-scale comparison against the matching
@@ -593,7 +600,8 @@ score is claimed by this development result.
 
 {\footnotesize\color{muted}Source-bound completed results and denominator:
 \texttt{investment/language\_learning\_evidence.json} and\\
-\texttt{investment/locality\_scaling\_evidence.json}. Earlier language table: same8,388,352 targets,
+\texttt{investment/locality\_scaling\_evidence.json} and\\
+\texttt{investment/protected\_language\_evidence.json}. Earlier language table: same8,388,352 targets,
 seed6, initial TRAIN prior, update and evaluation budget. Public validation
 sealed. A learned horizon-conditioned critic is not fitted yet.}
 
