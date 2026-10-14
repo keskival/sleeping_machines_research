@@ -36,6 +36,7 @@
     ],
     "nll_gain": 0.004954408548172751,
     "incremental_work_ratio": 1.0041161235529454,
+    "timing_boundary": "single-thread CPU process/scoring proxy including offline calibration; distributed synchronization costs not measured",
     "protocol": {
       "targets": 8192,
       "target_start": 25165825,
@@ -132,7 +133,7 @@
     "experiments/results/diagnostics/aws_calibrated_clip_pair_verdict_20261014_v1.json": "f4c44d2510ca62b72ae83a22c22cdfccdcef76bd9a4325c665bd032fbcfb8c08"
   },
   "source_sha256": {
-    "scripts/prepare_locality_investor_evidence.py": "0aaa6fcd8534baceaa730d2acb1a372b5fe4402ef5a4198b85cb9da42277caac"
+    "scripts/prepare_locality_investor_evidence.py": "4d0f543a36afbf6abf6ad8fab88aaf9a697b09a28bc34b333d99eab237ee1880"
   },
   "scope": "Readout: same8192DEVtargets/1024history/8Mseed6, additionalcapacity/work. Clipping:24TRAINcalibration/8heldout chunks on frozen completedD8actor and moments; same raw credit, calculated one-step Adam displacement. Fixed per-bank caps avoid runtime global norm. Completed paired2Mcontinuation from identical8MbankedD8actor,seed6: local6.226238/global6.231193 NLL on8192DEVtargets/1024history; calibration16kTRAINtargets and process/scoring costs charged. Fixed caps remove clipping globalnorm during training; offline calibration usesglobalinformation. Fulltrainer hasother coordination; no async hardware timing/energy or public language benchmark win."
 }

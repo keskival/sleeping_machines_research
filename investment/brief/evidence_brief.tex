@@ -486,8 +486,9 @@ has one seed. At 8M, the time improvement combines execution and teacher changes
 \textbf{Local clipping improves prediction without a training-time global norm.}
 In a completed paired continuation, calibrated per-bank caps score
 \textbf{6.22624} prediction loss versus \textbf{6.23119} for global clipping:
-a \textbf{0.00495-nat advantage}, with \textbf{0.41\% more} incremental
-process-and-scoring time, including calibration. Both start from the same
+a \textbf{0.00495-nat advantage}. Measured single-thread CPU
+process-and-scoring time, including calibration, differs by just
+\textbf{+0.41\%}; this run does not measure distributed synchronization costs. Both start from the same
 trained eight-layer model and acquire 2.10 million additional targets.
 
 The clipping step uses fixed local caps and needs no model-wide gradient-norm
