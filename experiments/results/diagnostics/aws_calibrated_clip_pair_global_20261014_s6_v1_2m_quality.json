@@ -1,0 +1,205 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "acquisition": 8388352,
+      "variant": "aws_bernoulli_teacher_8m_20261013_s6_v2",
+      "scored": {
+        "nll": 6.160182666892041,
+        "loss_sum": 50464.2164071796,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 26497.938585877186,
+          "zero_feature_loss_sum": 39198.80069255829,
+          "nll": 4.573341143575628,
+          "feature_gain": 2.1920714716398177,
+          "total_nll_contribution": 3.234611643783836,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 11857.58931684494,
+          "zero_feature_loss_sum": 12968.410696029663,
+          "nll": 8.962652544856342,
+          "feature_gain": 0.8396231135183091,
+          "total_nll_contribution": 1.4474596334039234,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 8461.53164935112,
+          "zero_feature_loss_sum": 9205.522805213928,
+          "nll": 10.820372953134424,
+          "feature_gain": 0.9513953399780156,
+          "total_nll_contribution": 1.0329018126649316,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3647.1568551063538,
+          "zero_feature_loss_sum": 3859.118229866028,
+          "nll": 12.447634317769126,
+          "feature_gain": 0.723417661295816,
+          "total_nll_contribution": 0.4452095770393498,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "depth": 2,
+      "parameters": 3164842,
+      "core_parameters": 2462880,
+      "readout_parameters": 701962,
+      "selected_writes_per_target": 4,
+      "scored_keys_per_target": 16,
+      "full_training_s": 7734.249354515225,
+      "training_s_per_target": 0.0009220225086542893,
+      "teacher_work": {
+        "admitted_calls": 4137,
+        "offered_calls": 16384,
+        "replayed_tokens": 498480,
+        "scored_targets": 119600,
+        "probability": 0.25
+      },
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 1.607682878151536
+    },
+    {
+      "acquisition": 10485440,
+      "variant": "aws_calibrated_clip_pair_global_20261014_s6_v1_2m",
+      "scored": {
+        "nll": 6.231192537876666,
+        "loss_sum": 51045.92927028565,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "buckets": [
+        {
+          "rank_low": 0,
+          "rank_high": 2000,
+          "count": 5794,
+          "loss_sum": 26814.338490206283,
+          "zero_feature_loss_sum": 39199.810992240906,
+          "nll": 4.627949342458799,
+          "feature_gain": 2.1376376427398385,
+          "total_nll_contribution": 3.273234678980259,
+          "target_fraction": 0.707275390625
+        },
+        {
+          "rank_low": 2000,
+          "rank_high": 10000,
+          "count": 1323,
+          "loss_sum": 12124.457433521748,
+          "zero_feature_loss_sum": 13068.185499191284,
+          "nll": 9.164366918761713,
+          "feature_gain": 0.7133243126753867,
+          "total_nll_contribution": 1.4800363078029477,
+          "target_fraction": 0.1614990234375
+        },
+        {
+          "rank_low": 10000,
+          "rank_high": 30000,
+          "count": 782,
+          "loss_sum": 8429.723994255066,
+          "zero_feature_loss_sum": 9009.179007530212,
+          "nll": 10.779698202372208,
+          "feature_gain": 0.740991065569241,
+          "total_nll_contribution": 1.029019042267464,
+          "target_fraction": 0.095458984375
+        },
+        {
+          "rank_low": 30000,
+          "rank_high": 50257,
+          "count": 293,
+          "loss_sum": 3677.4093523025513,
+          "zero_feature_loss_sum": 3765.3912830352783,
+          "nll": 12.550885161442155,
+          "feature_gain": 0.30027962707415373,
+          "total_nll_contribution": 0.44890250882599503,
+          "target_fraction": 0.0357666015625
+        }
+      ],
+      "depth": 8,
+      "parameters": 3309274,
+      "core_parameters": 2607312,
+      "readout_parameters": 701962,
+      "selected_writes_per_target": 16,
+      "scored_keys_per_target": 64,
+      "full_training_s": 34570.6537013934,
+      "training_s_per_target": 0.0032970150705543496,
+      "teacher_work": {
+        "admitted_calls": 5203,
+        "replayed_tokens": 625552,
+        "scored_targets": 150752
+      },
+      "tail_widths": [
+        24,
+        12,
+        6
+      ],
+      "diagnostic_s": 5.2473744850140065
+    }
+  ],
+  "source_sha256": {
+    "experiments/bernoulli_teacher_token_language.py": "85b82441775b74573db2ad86459443fca9d0fc0e3e40ac205a2c5fd652db8b45",
+    "sleeping_machines/ordered_token_lookup.py": "1e1e6039718336fc6bede77be5441cca08718a7e6a0ad58158f4eedbb6103ead",
+    "sleeping_machines/ordered_token_episodes.py": "5cf794f7c3fc5f45787f78d5a683ed733de18ddb58093b5780f19d00d99a2cff",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/packed_token_core.py": "9d195112e08ffb3f1e0277fbf9d0f35f6da7869281570e51a3b3dcbc819fef8d",
+    "sleeping_machines/token_readout.py": "504d4befce3e7cc70d44dd312749f0866069f0e380aa512ffb15c3e0780b5af4",
+    "sleeping_machines/frequency_token_readout.py": "b67c71def15f5a4675aeb03a9d9c7d715783b51a8c661c3fbb2a4dedd7ba3b45",
+    "sleeping_machines/paired_route_credit.py": "23aa9cf31fcff662daab836a0746ccd4fc6f6b5bec5f9186232488d97976b98c",
+    "sleeping_machines/sampled_suffix_utility.py": "e34cd6df90898c5bb2142029e6bbf6c8c6a73c7fc6b58d60da5dc62f093599d5",
+    "sleeping_machines/event_credit_sites.py": "3f896a7643d10ec98a75ceaa10c7217070b9e96946f58e03bac46bd45182b523",
+    "sleeping_machines/capacity_token_readout.py": "fa701587411e4642a570ad0794b846f422498cd8e4ac37e100141da5bb25dd50",
+    "sleeping_machines/recruit_layer.py": "261e547693ce6dabf562ef113bae1a463e9118f85e9d18c06554c690586ccca4",
+    "sleeping_machines/compiled_episodes.py": "b87d1e0908229da50e24168e4792e5833c2ed600beda2718ca125421ad2b8d84",
+    "sleeping_machines/fast_native_core.py": "33ed9a6a16d711575aaeac239d575c6c27d4b85dd9bb10d31da4d661b920386a",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "experiments/integrated_receiver_token_language.py": "7fba43c1e021a06b4218f58f4d1408bab93c4fcbd8ba21a0fa7bb734025537e0",
+    "sleeping_machines/learning/receiver_bank_adamw.py": "bc26747c493137009ac01f045e0881c5df80e5d689d07e0433a28426460485e5",
+    "sleeping_machines/learning/receiver_credit_banks.py": "4bdee10ac41769370d50cf9d2a2b9fdbf72773d60c105f0a56d03472e1c33d3a",
+    "sleeping_machines/learning/local_credit_banks.py": "8a6ed1edff0f675f61e9451fe380a9a501dc43c1d4c1e58c104990b07c3184af",
+    "sleeping_machines/depth_credit_allocator.py": "2837f2b192004726481e96bdcdd6d5f56176a68f9f682d8b4dd600b42d7144a1",
+    "experiments/calibrated_clip_continuation.py": "8fbb91f4159fcdd4acf12ab7724dca58bad56ecf178968d1b1a49fed5e879519",
+    "sleeping_machines/learning/calibrated_receiver_adamw.py": "cbc6415ccf44ca2132df2a98a1d679e85b35d6489c695cf915c6379a302e954e",
+    "experiments/credit/receiver_allocated_future_world.py": "5724c91ffecf80bfa37c3058ef37c6d6e5573b80add58c0ab273a38d0b79dc4c",
+    "sleeping_machines/learning/clone_receiver_learner.py": "db8e8c24b10b5c71c559ec5f1c144e75d540e45a015a9a9b9fd5eff8a2854f30",
+    "experiments/check_deep_language_quality.py": "49030802139e13e6acf03a1b05d3900a70e7cec0ac32b5e0349c6df8ce83f1db",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json": "61894367ac4da6efd50e8c65bc51e7adbd889e050d7c44a1489cd9f4199e48d6",
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.pt": "98c87cb8dcebc506ac0e967f9d899a791386507c27ed03cc923ab0784587eea5",
+    "experiments/results/token_language/aws_calibrated_clip_pair_global_20261014_s6_v1_2m.json": "a31f8faeed888c9c0741c4434034592de7b128b4f9e5b2b5f06643e532d183bf",
+    "experiments/results/token_language/aws_calibrated_clip_pair_global_20261014_s6_v1_2m.pt": "1e7e132f2e8f8e2d4c3738d82ff656b0baed9027c68e0cf67299f7b6ee70f45a"
+  },
+  "scope": "Final-stage depth scaling, seed6, reused depth2/8M comparator, different acquisition budgets named per row, same8192 previously used transfer-DEV tokens scored with disjoint1024-token histories and all shifted targets; no EOS reset, no public validation or checkpoint selection. Rank bins fitted from fixed initial TRAIN prior. Zero-feature intervention distinguishes readout intercepts from all factual input/state features, not persistent history alone. Tail widths are implementation capacity, not proof of a bottleneck. Diagnostic wall includes extra readout scoring; candidate repair requires integrated fitting comparison."
+}
