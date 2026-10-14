@@ -243,3 +243,11 @@ before fits and stage the next smallest useful comparison. Escalate spending
 only at the declared gates. Work can continue autonomously within these bounds;
 financing acceptance, third-party reproduction and measured hardware outcomes
 require external events and cannot be promised by this plan.
+
+## Current scaling and training-locality evidence
+
+The stronger completed richer-readout member improves paired development NLL6.160183→6.099337 at8M acquired targets, for11.94%more complete training time. It lagged at smaller acquisitions. This is a single-seed data-dependent crossover, not a fitted scaling law or Transformer victory.
+
+A same-cut TRAIN calibration replaces the uncalibrated cap1 local rule with fixed nonuniform bank caps. On eight held-out TRAIN chunks, global/localcap1/calibratedlocal RMS gradient norms are0.995/3.530/1.116; calculated Adam displacements0.916/1.288/0.928. Calibrated displacement is1.28%aboveglobal and36.46%of bank deliveries are attenuated. The declared aggregate capbudget is1.25; the local rule needs no training-time model-wide gradientnorm reduction. Allreceiver/head/shared banks are included. The47.76second audit fixes actor/moments and charges actual alternative teaching. These are engineering measurements, not continued-training prediction gains or physical asynchronous speed/energy measurements.
+
+[Source-bound packet](locality_scaling_evidence.json). Next decision: numerical optimizer verification and an isolated fitted local-rule quality/fullwork comparison. Existing8M deep members trail the strongerD2 reference; do not market implementation integration as improved deep prediction. The earlier0.09279nats/15.27%language quality/time gain remains the measured training headline.

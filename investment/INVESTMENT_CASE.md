@@ -547,3 +547,6 @@ on 3 October 2026. [Technical milestones](../experiments/DATACENTER_VALUE_MILEST
 validation boundaries. No customer commitments, revenue, patent grants,
 fabricated silicon or current frontier-scale capability are represented as
 existing assets in this case.
+
+
+Training-locality engineering has a reproducible measurement: fixed nonuniform localcaps give heldoutTRAIN RMSgradient1.116 versusglobal0.995, with calculatedAdam displacement0.928 versus0.916 (+1.28%). This removes the runtime globalnorm requirement by construction; fittedquality and actualasyncspeed/energy are the next measurements. The stronger richer-readout member improves paired8MDEV6.160183→6.099337 for11.94%moretrainingtime. Single-seed development and frozen-learner geometry, respectively; [source-bound evidence](locality_scaling_evidence.json).
