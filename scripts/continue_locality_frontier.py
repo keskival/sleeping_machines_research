@@ -36,9 +36,9 @@ def main():
  if not eligible:print('Stopped: local quality needs repair '+str(delta),flush=True);return
  ref='aws_local_clip_receiver_d8_8m_20261014_s6_v1';r=complete(f'experiments/results/token_language/{ref}.json');sources=dict(r['source_sha256']);sources.pop('experiments/local_clip_receiver_token_language.py')
  driver='experiments/local_horizon_receiver_token_language.py'
- for name in [driver,'sleeping_machines/route_credit_horizon.py','sleeping_machines/learning/clone_local_receiver_learner.py','experiments/credit/check_local_learner_clone.py','experiments/local_clip_receiver_token_language.py']:sources[name]=queue.sha(ROOT/name)
+ for name in [driver,'sleeping_machines/route_credit_horizon.py','sleeping_machines/learning/clone_local_receiver_learner.py','experiments/credit/check_local_learner_clone.py','experiments/local_clip_receiver_token_language.py','experiments/credit/local_receiver_future_world.py','experiments/credit/check_local_receiver_future_world.py']:sources[name]=queue.sha(ROOT/name)
  gate=PREFIX+'_law';result=f'experiments/results/credit/{gate}.json'
- checked=admit(gate,'experiments/credit/check_local_learner_clone.py','--tag '+gate,result,sources,1200);assert checked['gate']=='PASS'
+ checked=admit(gate,'experiments/credit/check_local_receiver_future_world.py','--tag '+gate,result,sources,1200);assert checked['gate']=='PASS'
  template=(ROOT/f'experiments/queue/r1/{ref}/{ref}.txt').read_text().splitlines()[1].split('.py ',1)[1]
  smoke=PREFIX+'_smoke';args=template.replace(ref,smoke).replace('--steps 16384','--steps 64').replace('--eval-every 1024','--eval-every 64')+' --consequence-windows 4'
  s=admit(smoke,driver,args,f'experiments/results/token_language/{smoke}.json',sources,5400,[dict(result=result)])
