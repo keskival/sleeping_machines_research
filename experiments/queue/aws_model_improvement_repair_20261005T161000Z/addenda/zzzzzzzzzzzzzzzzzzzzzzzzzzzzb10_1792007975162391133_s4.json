@@ -1,0 +1,34 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Founder-authorized full reference admission",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_b10_matched_admission_20261014_v3",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_admission_20261014_v3/aws_b10_matched_admission_20261014_v3.txt",
+        "queue_sha256": "d9738abb4ccb453f3469698ad823002f1111014e2538377cd06e40b63c568c32",
+        "source_sha256": {
+          "experiments/market/b10_budget_admission.py": "0035b06f173c6f741d7648d84332a7780db2b7f25e20da53b21566625c455f46",
+          "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+          "experiments/market/b10_matched_fit.py": "c4b4b1f1d1b9ca2998d5c17a1dcbc33fd03dbd28fa6dbff76255d4e7c847735c",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_data.py": "364bdab5bc3e1bbbe23a26ec9dd1bc3004fee9b2d265cde07edb6729cf43b6b5",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_operator_ledger_v3.py": "0f60827feb7a6d20214d1cb9ab0f0fb06a5edb3c50c00bd94c31e8478db005a5",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+        },
+        "result": "experiments/results/market/aws_b10_matched_admission_20261014_v3.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

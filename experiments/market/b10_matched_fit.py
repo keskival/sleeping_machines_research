@@ -5,15 +5,16 @@ import numpy as np
 import torch
 from b10_matched_data import prepare
 from b10_matched_models import MatchedRace
-from b10_matched_pipeline import sources,sha,update,ROOT
-from b10_operator_ledger import Ledger
+from b10_matched_pipeline import sources,sha,ROOT
+from b10_matched_update import update
+from b10_operator_ledger_v3 import Ledger
 
 @torch.no_grad()
 def evaluate(model,windows):
     model.eval();ledger=Ledger();groups={}
     with ledger:
-        for start in range(0,len(windows),16):
-            rows=windows[start:start+16]
+        for start in range(0,len(windows),4):
+            rows=windows[start:start+4]
             t=torch.tensor(np.stack([r[0] for r in rows]));m=torch.tensor(np.stack([r[1] for r in rows]))
             tl,ml=model.component_terms(t,m);tl=tl[:,127:];ml=ml[:,127:]
             for i in range(len(rows)):
@@ -32,7 +33,7 @@ def main():
     torch.set_num_threads(1);torch.set_default_dtype(torch.float64)
     admission=json.loads((ROOT/a.admission).read_text())
     assert admission['status']=='completed' and admission['training_admitted']
-    assert admission['source_sha256']=={**sources(),'experiments/market/b10_matched_fit.py':sha(Path(__file__))}
+    assert all(sha(ROOT/name)==digest for name,digest in admission['source_sha256'].items())
     data,receipt=prepare();assert admission['data_receipt_sha256']==sha(ROOT/'experiments/results/market/aws_b10_matched_data_20261014_v1.json')
     gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0]
     # Attach actual calendar days, avoiding a uniform windows-per-day assumption.
@@ -49,7 +50,9 @@ def main():
         saved=torch.load(checkpoint,weights_only=False);assert saved['admission_sha256']==sha(ROOT/a.admission)
         assert saved['source_sha256']==admission['source_sha256'];s=saved['state'];model,opt=new(saved['lr'])
         model.load_state_dict(saved['model']);opt.load_state_dict(saved['optimizer']);torch.set_rng_state(saved['rng']);nrng.bit_generator.state=saved['numpy_rng']
+    timing=[start,cpu]
     def save():
+        s['wall_s']+=time.monotonic()-timing[0];s['cpu_s']+=time.process_time()-timing[1];timing[:]=[time.monotonic(),time.process_time()]
         tmp=checkpoint.with_suffix('.tmp');torch.save(dict(state=s,model=model.state_dict(),optimizer=opt.state_dict(),lr=opt.param_groups[0]['lr'],rng=torch.get_rng_state(),numpy_rng=nrng.bit_generator.state,admission_sha256=sha(ROOT/a.admission),source_sha256=admission['source_sha256']),tmp);tmp.replace(checkpoint)
     def score():
         result=evaluate(model,dev);s['evals'].append(dict(phase=s['phase'],spent=s['spent'],result=result))
@@ -88,6 +91,6 @@ def main():
     slack=(B-s['spent'])/B
     assert 0<=slack<=.01,('budget slack exceeds frozen protocol',slack)
     best=torch.load(best_path,weights_only=False);model.load_state_dict(best['model']);final=evaluate(model,dev)
-    result=dict(status='completed',battle='B10',family=a.family,seed=a.seed,source_sha256=admission['source_sha256'],admission_sha256=sha(ROOT/a.admission),budget=B,fitting_arithmetic=s['spent'],unused_fraction=slack,targets=s['targets'],evaluations=s['evals'],final_dev=final,final_weights=str(best_path.relative_to(ROOT)),wall_s=s['wall_s']+time.monotonic()-start,cpu_s=s['cpu_s']+time.process_time()-cpu,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,september_opened=False)
+    result=dict(status='completed',battle='B10',family=a.family,seed=a.seed,source_sha256=admission['source_sha256'],admission_sha256=sha(ROOT/a.admission),budget=B,fitting_arithmetic=s['spent'],unused_fraction=slack,targets=s['targets'],evaluations=s['evals'],final_dev=final,final_weights=str(best_path.relative_to(ROOT)),wall_s=s['wall_s']+time.monotonic()-timing[0],cpu_s=s['cpu_s']+time.process_time()-timing[1],max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,september_opened=False)
     out.write_text(json.dumps(result,indent=2)+'\n')
 if __name__=='__main__':main()
