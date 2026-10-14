@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "source_sha256": {
+    "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+    "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+    "experiments/market/b10_matched_data.py": "364bdab5bc3e1bbbe23a26ec9dd1bc3004fee9b2d265cde07edb6729cf43b6b5",
+    "experiments/market/b10_operator_ledger.py": "bb256d8fed8843badcdd1952fa155bf480b231a2152ddae114c6d32e322f2a8b",
+    "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+    "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+  },
+  "training_admitted": false,
+  "rows": [],
+  "gates": {
+    "train_dev_window_counts": true
+  },
+  "data_receipt_sha256": "94e757e5e2b09b58d155f0a5bf30434d9b2aa46196b976e510035cc12f02f186",
+  "gate_outcome": "blocked_admission",
+  "reason": "Unaccounted operator: profiler._record_function_enter_new.default",
+  "wall_s": 96.2801401570905,
+  "cpu_s": 22.365314922,
+  "max_rss_kb": 1017392
+}
