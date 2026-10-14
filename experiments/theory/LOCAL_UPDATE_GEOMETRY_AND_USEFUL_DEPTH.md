@@ -40,6 +40,8 @@ For positive V+W*s^2, differentiation gives
 
 The sign need not be positive. If inherited momentum opposes the incoming gradient, the numerator A+B*s can cross zero at s=-A/B. A smaller gradient can then produce a larger step magnitude or a direction reversal. With zero past moments and negligible epsilon, f(s)=B/sqrt(W), independent of positive s: first-step Adam nearly cancels gradient scale. Consistently scaling an entire history also cancels in idealized Adam with epsilon0; changing scales over time breaks that invariance. AdamW decay contributes the same -eta*weight_decay*theta term at an identical issued cut, but later weights differ.
 
+Concrete two-step witness: beta1=0.9,beta2=0.999,epsilon0, previousgradient1 and currentrawgradient10. Prior moments arem=0.1,v=0.001. Atstep2, f(1)=0.807087753 and f(0.2)=0.965182026. Reducing the incoming gradient80% increases adaptive-step magnitude19.59%. This uses attainable Adam moments, not arbitrary coefficients. Positive epsilon changes the numbers continuously; no native-training magnitude is inferred.
+
 Consequences: equal rawgradient norms do not certify equal update geometry; equal Adam norms do not certify equal direction. Per-bank radial clipping preserves rawdirection within each bank, while coordinate-dependent moments can still rotate the actual adaptive update. Global clipping preserves concatenated rawdirection but also changes Adam's response against inherited moments.
 
 ## 4. The better offline cap objective
