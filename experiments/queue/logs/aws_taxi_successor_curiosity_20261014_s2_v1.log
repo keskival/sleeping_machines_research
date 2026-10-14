@@ -1,0 +1,44 @@
+/workspace/experiments/tpp/taxi_successor_curiosity.py:47: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  zero_error=max(float((u-v).abs().max()) for u,v in zip(x[:2],y[:2]));assert zero_error<1e-12
+continued_parent 0 0.48906938296592634
+continued_parent 1 0.48931255286869907
+continued_parent 2 0.4880526212429824
+continued_parent 3 0.4895550576298858
+continued_parent 4 0.48917500434568206
+continued_parent 5 0.4892829382313989
+continued_parent 6 0.4892871076730927
+continued_parent 7 0.48983745282487695
+continued_parent 8 0.4893080866203558
+continued_parent 9 0.49059711943384277
+continued_parent 10 0.48931089266851635
+continued_parent 11 0.48963967627565974
+continued_parent 12 0.4898481745552975
+continued_parent 13 0.48938367956718243
+continued_parent 14 0.4898239496010187
+continued_parent 15 0.4897707556148063
+continued_parent 16 0.48971673375255836
+continued_parent 17 0.4885569821664897
+continued_parent 18 0.4883057278540397
+continued_parent 19 0.489453195932549
+preserved_depth_successor 0 0.4888878978015549
+preserved_depth_successor 1 0.4894052334084829
+preserved_depth_successor 2 0.4878053639779079
+preserved_depth_successor 3 0.48960374677728685
+preserved_depth_successor 4 0.48941727829924875
+preserved_depth_successor 5 0.48963603378980575
+preserved_depth_successor 6 0.48963034943998585
+preserved_depth_successor 7 0.49011295610959754
+preserved_depth_successor 8 0.48961453516942927
+preserved_depth_successor 9 0.4911455218327547
+preserved_depth_successor 10 0.48899361469077834
+preserved_depth_successor 11 0.4902603301523624
+preserved_depth_successor 12 0.49024770462266226
+preserved_depth_successor 13 0.4898270932698862
+preserved_depth_successor 14 0.49027867447826945
+preserved_depth_successor 15 0.49028400721948623
+preserved_depth_successor 16 0.4901487554706638
+preserved_depth_successor 17 0.4890954073839303
+preserved_depth_successor 18 0.48892022882879466
+preserved_depth_successor 19 0.48993401932354447
+{"status": "completed", "battle": "B1", "tag": "aws_taxi_successor_curiosity_20261014_s2_v1", "original_test": {"ll": 0.5210485265794309, "time_ll": 0.7309026675395425, "mark_ll": -0.2098541409601116, "events": 14420, "rmse": 0.28024434366467676, "acc": 0.9296809986130374}, "reference_ll": 0.522, "zero_prediction_error": 0.0, "original_gradient_error": 0.0, "rows": [{"arm": "continued_parent", "dev_ll": 0.49059711943384277, "best_epoch": 9, "fit_targets": 1009080, "updates": 880, "incremental_training_s": 60.09837273485027, "parent_training_s": 141.82279062271118, "whole_training_s": 201.92116335756145, "parameters": 22339, "history": [{"epoch": 0, "dev_ll": 0.48906938296592634}, {"epoch": 1, "dev_ll": 0.48931255286869907}, {"epoch": 2, "dev_ll": 0.4880526212429824}, {"epoch": 3, "dev_ll": 0.4895550576298858}, {"epoch": 4, "dev_ll": 0.48917500434568206}, {"epoch": 5, "dev_ll": 0.4892829382313989}, {"epoch": 6, "dev_ll": 0.4892871076730927}, {"epoch": 7, "dev_ll": 0.48983745282487695}, {"epoch": 8, "dev_ll": 0.4893080866203558}, {"epoch": 9, "dev_ll": 0.49059711943384277}, {"epoch": 10, "dev_ll": 0.48931089266851635}, {"epoch": 11, "dev_ll": 0.48963967627565974}, {"epoch": 12, "dev_ll": 0.4898481745552975}, {"epoch": 13, "dev_ll": 0.48938367956718243}, {"epoch": 14, "dev_ll": 0.4898239496010187}, {"epoch": 15, "dev_ll": 0.4897707556148063}, {"epoch": 16, "dev_ll": 0.48971673375255836}, {"epoch": 17, "dev_ll": 0.4885569821664897}, {"epoch": 18, "dev_ll": 0.4883057278540397}, {"epoch": 19, "dev_ll": 0.489453195932549}], "checkpoint": "experiments/results/tpp/aws_taxi_successor_curiosity_20261014_s2_v1_continued_parent.pt", "test": {"ll": 0.5235771742856102, "time_ll": 0.7328785232532374, "mark_ll": -0.2093013489676272, "events": 14420, "rmse": 0.2798851102658842, "acc": 0.9305131761442441}}, {"arm": "preserved_depth_successor", "dev_ll": 0.4911455218327547, "best_epoch": 9, "fit_targets": 1009080, "updates": 880, "incremental_training_s": 70.84168998314999, "parent_training_s": 141.82279062271118, "whole_training_s": 212.66448060586117, "parameters": 30355, "history": [{"epoch": 0, "dev_ll": 0.4888878978015549}, {"epoch": 1, "dev_ll": 0.4894052334084829}, {"epoch": 2, "dev_ll": 0.4878053639779079}, {"epoch": 3, "dev_ll": 0.48960374677728685}, {"epoch": 4, "dev_ll": 0.48941727829924875}, {"epoch": 5, "dev_ll": 0.48963603378980575}, {"epoch": 6, "dev_ll": 0.48963034943998585}, {"epoch": 7, "dev_ll": 0.49011295610959754}, {"epoch": 8, "dev_ll": 0.48961453516942927}, {"epoch": 9, "dev_ll": 0.4911455218327547}, {"epoch": 10, "dev_ll": 0.48899361469077834}, {"epoch": 11, "dev_ll": 0.4902603301523624}, {"epoch": 12, "dev_ll": 0.49024770462266226}, {"epoch": 13, "dev_ll": 0.4898270932698862}, {"epoch": 14, "dev_ll": 0.49027867447826945}, {"epoch": 15, "dev_ll": 0.49028400721948623}, {"epoch": 16, "dev_ll": 0.4901487554706638}, {"epoch": 17, "dev_ll": 0.4890954073839303}, {"epoch": 18, "dev_ll": 0.48892022882879466}, {"epoch": 19, "dev_ll": 0.48993401932354447}], "checkpoint": "experiments/results/tpp/aws_taxi_successor_curiosity_20261014_s2_v1_preserved_depth_successor.pt", "test": {"ll": 0.5237730430554606, "time_ll": 0.7329683031703292, "mark_ll": -0.20919526011486864, "events": 14420, "rmse": 0.27991394035861666, "acc": 0.9300970873786408}}], "wall_s": 144.97705859411508, "max_rss_kb": 580088, "source_sha256": {"experiments/tpp/taxi_successor_curiosity.py": "2ddd1ea7debcd03cdc46ee5c6ae3183bae409d6341c728b3348e2e8c4d3b2f47", "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8", "experiments/credit/native_cached_jvp.py": "b5ab0ed92ca2e58fc827829c5d4cb365bc125497f79e3f6471b25a299d473658", "experiments/credit/native_cached_linearization.py": "629055dfa700a4998079f60edc18f53e47290644c4612103bd9e7d1261d38965", "experiments/credit/native_training_linearization.py": "46cb93c32aab3342207b793597be3fe7b41993f14b0ad99c3fd93d55e1554550"}, "input_sha256": {"experiments/results/tpp/b1_r26_taxi_v19_rule_s2.json": "b9aa04be6f7fd201b20a25d2d72ec1bbdcc6a00d8e1a66ed7ae52baf42e46030", "experiments/results/tpp/b1_r26_taxi_v19_rule_s2.pt": "f528a28a37e687617b2c21941959b222df760789588413d463bd5a697e481446", "experiments/results/tpp/b1_final_unified_v19_taxi_s2.json": "629e9c3eae78bd6c391226a09cda7db1906b8d4ac68b53295df0535a51655751", "data/easytpp/taxi/train.json": "0c54b53482e792f8cd813195e76e08466a68761b35c34cd503a012b41525d989", "data/easytpp/taxi/dev.json": "9ae91594723cf9cba7333efa18f85d309f5ee76336cc25d5811d0364f05a3ddf", "data/easytpp/taxi/test.json": "dc1e765b6626c2a231ab026606e29864c082807354066e0307494fb738bcc059"}, "scope": "Exploratory revisit of known Taxi seed2 TEST; two fixed20epoch continuations from saved parent, same TRAIN/DEV/order/dequantization/optimizer. Selection includes unchanged parent and uses DEV only. Temporal residual depth and cached exact primal packet integrated. Long-horizon learned critic, token-specific execution and market-only action heads are not fitted or transferred. No independent confirmatory benchmark win."}
