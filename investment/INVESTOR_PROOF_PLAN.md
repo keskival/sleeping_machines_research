@@ -244,6 +244,8 @@ only at the declared gates. Work can continue autonomously within these bounds;
 financing acceptance, third-party reproduction and measured hardware outcomes
 require external events and cannot be promised by this plan.
 
+**Why independent timing matters.** A shared clock makes connected units follow a common timing schedule. Local clocks let fast regions run at a higher frequency than a chip-wide schedule would permit, while slower regions proceed at their own pace. Fully clockless units can advance when their work finishes, without waiting for the next shared tick. This creates three opportunities: less energy distributing a clock across the chip, less waiting for coordination, and faster local progress. Communication, memory and completion-signalling costs determine the resulting system benefit. Our local learning control removes one coordination requirement and slightly improves prediction in the completed software comparison; chip speed and energy gains will be measured on hardware. These are established hardware mechanisms, not proprietary claims about clocking. [ETH Zürich's GALS research](https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html), [DTU's asynchronous circuit course](https://www.imm.dtu.dk/courses/02204/).
+
 ## Current scaling and training-locality evidence
 
 The stronger completed richer-readout member improves paired development NLL6.160183→6.099337 at8M acquired targets, for11.94%more complete training time. It lagged at smaller acquisitions. This is a single-seed data-dependent crossover, not a fitted scaling law or Transformer victory.

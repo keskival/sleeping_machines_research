@@ -11,6 +11,8 @@ Private diligence now also includes [scaling/locality engineering evidence](loca
 **Patent hold (7 October 2026):** the inventions behind the benchmark wins are unpublished and not yet filed. Share the
 evidence brief, papers and technical slides only under NDA until the priority filing exists; see [`ip/`](../ip/README.md).
 
+Independent timing can save coordination energy, reduce waiting and let fast regions advance at their own speed. [The hardware explanation](HARDWARE_THESIS.md#independent-timing-less-energy-less-waiting-faster-local-progress) connects those opportunities to our completed local-learning result.
+
 For a non-technical first read, start with the **[13-page evidence brief](sleeping_machines_evidence_brief.pdf)**:
 every public benchmark win, what each benchmark is and why it matters, units and direction for every comparison,
 and the evidence behind the larger vision (source: `brief/evidence_brief.tex`, figures from completed result files via

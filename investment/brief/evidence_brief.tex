@@ -498,6 +498,17 @@ targets with 1,024-token history, and 16k additional TRAIN calibration targets
 charged to the local arm. Next: replicated quality and measured asynchronous
 execution benefit. No chip speed or energy gain is inferred.
 
+\textbf{Why independent timing can improve hardware.} Local clocks let fast
+regions run at a higher frequency than a shared chip-wide schedule would permit.
+Fully clockless units can proceed when their work finishes, without waiting for
+the next shared tick. Three opportunities follow: \textbf{less clock-distribution
+energy, less waiting, and faster local progress}. Communication and memory still
+determine whole-system throughput. Our local learning control removes one
+coordination requirement; hardware will measure the resulting speed and energy.
+These timing mechanisms are established in asynchronous circuit research
+(\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
+\href{https://www.imm.dtu.dk/courses/02204/}{DTU}).
+
 \textbf{Why this matters.} The learning implementation improves prediction
 and cost together, rather than only passing numerical contracts. The next
 competitive milestone is a larger-scale comparison against the matching
@@ -505,7 +516,7 @@ published Transformer protocol. No such Transformer win or public language
 score is claimed by this development result.
 
 {\footnotesize\color{muted}Source-bound completed results and denominator:
-\texttt{investment/language\_learning\_evidence.json} and
+\texttt{investment/language\_learning\_evidence.json} and\\
 \texttt{investment/locality\_scaling\_evidence.json}. Earlier language table: same8,388,352 targets,
 seed6, initial TRAIN prior, update and evaluation budget. Public validation
 sealed. A learned horizon-conditioned critic is not fitted yet.}
