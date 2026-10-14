@@ -1,5 +1,7 @@
 # Theory note — collapsing futures, and the gradient through a collapse
 
+[Continued native language acquisition](theory/CONTINUED_NATIVE_LANGUAGE_ACQUISITION.md) implements an explicit budget-only checkpoint migration, preserving actor/Adam/state/audits/allRNG and the existing fresh-data prefix. It extends the completed D8/32M trajectory to64M after the current pipelines, with measured incremental timeouts and parent-aware work. Exact-recovery rules remain strict; no architecture or learning-rule change is hidden in migration.
+
 [Contained contextual decoder](theory/CONTAINED_CONTEXTUAL_DECODER.md) prepares a nonlinear frequent-token head over the deepest native feature with exact initial probability/cotangent/RNG containment. A factorized centered-logit spectrum measures contextual variation without a context-by-vocabulary matrix; actual native contracts await the completed deep fits. It preserves the core, does not infer an information or learning-spectrum bound, and admits no new decoder fit.
 
 [Cross-window forward route credit](theory/CROSS_WINDOW_FORWARD_ROUTE_CREDIT.md) implements a separate causal consequence horizon across unchanged factual gradient detach boundaries. One window retains the original endpoint/allocation behavior; four windows charge longer native replay. Frozen native contracts and measured resource smoke gate one reserved D8/8M acquisition after the current ladder; no external fit or public validation.

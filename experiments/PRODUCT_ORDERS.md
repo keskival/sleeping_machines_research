@@ -10,6 +10,8 @@
 
 **Quality/data priority, user direction13October:** increased compute is allowed when it improves quality at fixed data or reduces the data needed to reach useful quality. Matched compute is a comparison class, not an admission requirement. Report complete work separately and retain resource guards; test actual update utility rather than choosing a credit model on MSE alone.
 
+**Large-language acquisition continuation, user direction14October:** after the admitted deep ladder and longer-horizon route-credit comparison, continue the completed D8/32M baseline trajectory to64M using an audited budget-only migration. Preserve actor/Adam/state/audits/allRNG and use the next fresh blocks of the pinned100M-token shard. Measured incremental throughput sets timeout; all guards retained. No extra cold-start fit, configuration grid, external training or public validation. [Protocol and evidence boundary](theory/CONTINUED_NATIVE_LANGUAGE_ACQUISITION.md).
+
 ## The strategy
 
 We pick the battles where our core primitive is the right mathematics, and we develop to win. A race of exponential
