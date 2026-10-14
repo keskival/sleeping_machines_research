@@ -24,10 +24,11 @@ def sources():
     return {n:digest(ROOT/n) for n in names}
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--mode',choices=['gate','online'],required=True);p.add_argument('--admission',required=True);a=p.parse_args();torch.set_num_threads(1);torch.set_default_dtype(torch.float64);began=time.monotonic();cpu=time.process_time();contract=json.loads((ROOT/a.admission).read_text());validate(contract)
+    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--mode',choices=['gate','online'],required=True);p.add_argument('--admission',required=True);p.add_argument('--family',choices=['native','lstm','transformer']);a=p.parse_args();torch.set_num_threads(1);torch.set_default_dtype(torch.float64);began=time.monotonic();cpu=time.process_time();contract=json.loads((ROOT/a.admission).read_text());validate(contract)
     for n,d in contract['source_sha256'].items():assert digest(ROOT/n)==d,n
     data,receipt=prepare();gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0];rows=[];inputs={a.admission:digest(ROOT/a.admission)};context=contract['transformer_context'];chunk=contract['update_targets'];targets=contract['scored_targets']
-    for family in ('native','lstm','transformer'):
+    families=('native','lstm','transformer') if a.mode=='gate' or a.family is None else (a.family,)
+    for family in families:
         torch.manual_seed(0);model=MatchedRace(gaps,family);model.eval() # Dropout off, gradients/Adam ON for every family.
         if a.mode=='gate':
             t=torch.tensor(data['train'][0][0][:65])[None];m=torch.tensor(data['train'][0][1][:65])[None]

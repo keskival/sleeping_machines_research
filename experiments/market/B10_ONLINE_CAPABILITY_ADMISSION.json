@@ -8,7 +8,7 @@
   "update_targets": 32,
   "scored_targets": 16384,
   "online_lr": 0.0001,
-  "gate_result": "experiments/results/market/aws_b10_online_capability_gate_20261014_v1.json",
+  "gate_result": "experiments/results/market/aws_b10_online_capability_gate_20261014_v2.json",
   "arms": {
     "native": {
       "online_weight_updates": true,
@@ -61,7 +61,7 @@
     }
   },
   "source_sha256": {
-    "experiments/market/b10_online_comparison.py": "82d09bb87c11804a3824e409d699654f9767de27af8e5f1d2137b8b909bc049f",
+    "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
     "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
     "experiments/capability_admission.py": "1395ce2a89ad19fd07b7c1e31e44aa365cb54595ab08c69d812c7b1130e5e60a",
     "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
@@ -69,5 +69,6 @@
     "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
     "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
     "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
-  }
+  },
+  "fighter_selection_rationale": "Reuse completed strongest source-bound AWS selected acquisitions for online reference comparison; native learned-guidance integration is a separate capability stage, not silently declared included."
 }
