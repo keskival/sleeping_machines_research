@@ -483,7 +483,7 @@ Importance weights preserve the raw conditional teaching mean. Three-seed
 confirmation exists at smaller 128k/512k acquisition points; this 8M result
 has one seed. At 8M, the time improvement combines execution and teacher changes.
 
-\textbf{Local clipping improves prediction without a training-time global norm.}
+\textbf{Better prediction with independent local learning controls.}
 In a completed paired continuation, calibrated per-bank caps score
 \textbf{6.22624} prediction loss versus \textbf{6.23119} for global clipping:
 a \textbf{0.00495-nat advantage}. Measured single-thread CPU
@@ -491,9 +491,9 @@ process-and-scoring time, including calibration, differs by just
 \textbf{+0.41\%}; this run does not measure distributed synchronization costs. Both start from the same
 trained eight-layer model and acquire 2.10 million additional targets.
 
-The clipping step uses fixed local caps and needs no model-wide gradient-norm
-reduction during training. Offline calibration uses global information; other
-trainer synchronization remains. Scope: one seed, 8,192 shared development
+Each learning unit limits its update locally, without all units stopping to
+coordinate this step. This supports learning without a global clock. Initial
+calibration uses whole-model information; other training steps still coordinate. Scope: one seed, 8,192 shared development
 targets with 1,024-token history, and 16k additional TRAIN calibration targets
 charged to the local arm. Next: replicated quality and measured asynchronous
 execution benefit. No chip speed or energy gain is inferred.
