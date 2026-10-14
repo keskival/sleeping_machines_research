@@ -32,7 +32,7 @@
   ],
   "scheduler": "scripts/run_aws_product_priority_six.py",
   "runner": "experiments/queue/run_safe_aws6.sh",
-  "runtime_addendum": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452130741054.json",
+  "runtime_addendum": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792006337725334369_s5.json",
   "implementation": [
     "experiments/market/b10_matched_models.py",
     "experiments/market/b10_matched_data.py",
@@ -45,7 +45,11 @@
     "experiments/market/B10_AWS_MATCHED_CONTROLS.md"
   ],
   "runtime_addenda": [
-    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452089625441.json",
-    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452130741054.json"
-  ]
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792006337724819277_s4.json",
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792006337725334369_s5.json"
+  ],
+  "slot_assignment": {
+    "synthetic": 4,
+    "data": 5
+  }
 }

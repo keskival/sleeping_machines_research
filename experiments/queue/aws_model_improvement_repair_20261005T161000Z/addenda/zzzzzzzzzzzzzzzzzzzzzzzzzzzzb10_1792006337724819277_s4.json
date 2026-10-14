@@ -1,15 +1,15 @@
 {
   "host": "ip-172-31-47-132",
   "battle": "B10",
-  "purpose": "Founder-authorized native/LSTM/Transformer matched complete-work market comparison",
+  "purpose": "Founder-authorized native/LSTM/Transformer matched complete-work market comparison; use earlier free clipping slot, preserve active jobs",
   "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
   "slots": {
-    "6": [
+    "4": [
       {
-        "name": "aws_b10_matched_data_20261014_v1",
+        "name": "aws_b10_matched_synthetic_20261014_v1",
         "kind": "b10_job",
-        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_data_20261014_v1/aws_b10_matched_data_20261014_v1.txt",
-        "queue_sha256": "fec1dd026240a688ab1848ecb00e6d383a7e86b502a6a8534f6530ecb0d8cfc5",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_synthetic_20261014_v1/aws_b10_matched_synthetic_20261014_v1.txt",
+        "queue_sha256": "43e35b92bdcfa8905ddaeca82d44fe4704f3745d711004b028015e85f9f31b90",
         "source_sha256": {
           "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
           "experiments/market/b10_matched_data.py": "364bdab5bc3e1bbbe23a26ec9dd1bc3004fee9b2d265cde07edb6729cf43b6b5",
@@ -21,9 +21,9 @@
           "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
           "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
         },
-        "result": "experiments/results/market/aws_b10_matched_data_20261014_v1.json",
+        "result": "experiments/results/market/aws_b10_matched_synthetic_20261014_v1.json",
         "requires": [],
-        "timeout_s": 14400,
+        "timeout_s": 1800,
         "rss_kb": 3000000,
         "vms_kb": 12000000
       }

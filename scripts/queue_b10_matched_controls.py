@@ -25,7 +25,7 @@ def main():
         folder=ORDER/name;folder.mkdir(exist_ok=False);q=folder/(name+'.txt')
         q.write_text('# B10: common-input/head matched-arithmetic comparison; decision: admit fair DEV comparison after numerical gates\n'+f'{name} {driver} --tag {name} {args}\n')
         job=dict(name=name,kind='b10_job',queue=str(q.relative_to(ROOT)),queue_sha256=sha(q),source_sha256=sources,result=f'experiments/results/market/{name}.json',requires=[],timeout_s=timeout,rss_kb=3000000,vms_kb=12000000)
-        slot=6 if len(jobs)==1 else index%6+1;slots.setdefault(str(slot),[]).append(job)
+        slot=(4 if a.stage=='synthetic' else 5) if len(jobs)==1 else index%6+1;slots.setdefault(str(slot),[]).append(job)
     packet=dict(host='ip-172-31-47-132',battle='B10',purpose='Founder-authorized native/LSTM/Transformer matched complete-work market comparison',parent_manifest_sha256=sha(PLAN/'manifest.json'),slots=slots)
     addendum=PLAN/'addenda'/f'zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_{time.time_ns()}.json';addendum.write_text(json.dumps(packet,indent=2)+'\n')
     order=json.loads((ORDER/'work_order.json').read_text());order.update(status='engineering_gates_runtime_queued',implementation=[str(p.relative_to(ROOT)) for p in paths],runtime_addendum=str(addendum.relative_to(ROOT)),training_admitted=a.stage=='fits');order.pop('reason_not_runtime_addendum',None)
