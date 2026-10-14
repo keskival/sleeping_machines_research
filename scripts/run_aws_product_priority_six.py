@@ -58,10 +58,15 @@ def main():
             git('add', '-f', '--', *files)
             git('commit', '--only', '-m', message, '--', *files)
             for _ in range(6):
-                git('pull', '--rebase')
+                # A push needs no clean worktree; rebase does and blocked the
+                # previous publisher on unrelated generated-figure edits.
                 if subprocess.run(['git', 'push', 'origin', 'main']).returncode == 0:
                     return
-            raise RuntimeError('Publication retries exhausted')
+                git('fetch','origin')
+                # Preserve shared-host edits. Overlapping edits/conflicts stop
+                # publication and are recorded separately from research failure.
+                git('merge','--no-edit','origin/main')
+            raise RuntimeError('Publication retries exhausted; completed evidence retained')
 
     save()
     with open('/tmp/experiments-runner.lock', 'a') as reservation:
@@ -121,7 +126,12 @@ def main():
                 elif job['kind'] == 'streaming':
                     files.append(str(Path(job['result']).with_suffix('.progress.pt')))
                 files.append(job['result'])
-            publish(files, 'Publish guarded benchmark continuation '+job['name'])
+            try:
+                publish(files, 'Publish guarded benchmark continuation '+job['name'])
+            except Exception as error:
+                with mutex:
+                    state.setdefault('pending_publications',[]).append(dict(job=job['name'],files=files,error=str(error)))
+                    save()
             with mutex:
                 state['completed'].append(job['name'])
                 state['active'].pop(str(slot), None)
