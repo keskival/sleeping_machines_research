@@ -156,7 +156,6 @@ def main():
             for t, m, mask in batches(dv, 64, False, rng):
                 tl, ml, nn_, _ = model.loglik(t, m, mask)
                 s += (tl + ml).item(); n += int(nn_)
-        print(json.dumps(dict(epoch=ep, dev_ll_per_event=s / n, elapsed_s=round(time.time() - started))), flush=True)
         if s / n > best:
             best, best_ep, state = s / n, ep, {k_: v.clone() for k_, v in model.state_dict().items()}
         if ep - best_ep >= a.patience:

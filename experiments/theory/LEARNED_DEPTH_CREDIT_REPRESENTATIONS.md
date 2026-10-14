@@ -17,52 +17,6 @@ representation and work budgets:
     E[(C(A)-h(A,Z))^2 ||s_A||^2] + lambda Bits(Z,versions,state)
         + mu Work(encoding,discovery,projection,learning,correction).
 
-### Distinguish missing information from missing learning
-
-Depth-first extension,13October2026. Let F be all legitimately available
-issued information, Z=f(F) the retained query representation, and G a later
-credit-effect or projected-update label under its declared horizon/learner.
-Let mu=E[G|F] and m=E[mu|Z]=E[G|Z]. For a fixed positive-semidefinite metric M,
-
-    E||G-C(Z)||_M^2
-      = E||G-mu||_M^2
-        + E||mu-m||_M^2
-        + E||m-C(Z)||_M^2.
-
-Conditional expectation makes both cross terms zero. The terms are respectively
-unpredictable feedback under F, information lost in Z, and imperfect learning
-of the best predictor under Z. A larger critic or more labels can reduce the
-third term; it cannot recover information that its input has erased. More
-causal side-information can reduce the second term, but fetching/encoding it
-costs work. Changing the prediction horizon changes the label and all three
-terms. None is a measured number merely because the architecture is expressive.
-
-The same decomposition holds when M is measurable from Z. If the response
-metric depends on information erased by Z, the optimal predictor instead
-satisfies E[M|Z] C*(Z)=E[M G|Z], with appropriate nullspace handling. Substituting
-an ordinary conditional mean then changes the target. This is why supplied
-signed actor responses and actual optimizer geometry can matter even when a
-world forecast is well calibrated.
-
-For the next shared native cut-query critic, retain target identity/coordinates,
-current forward state/forecast, declared time/horizon, optimizer-response
-features and learner-version compatibility information. Treat these as typed
-observations processed by native temporal functions and addressed memory, not
-as a mandate to read every actor parameter on every query. Shared route legs
-suggest compositional reuse, but address/prefix similarity alone does not imply
-small conditional effect distance. Learned consequences must establish transfer.
-Unavailable future labels, hindsight-selected counterfactuals or hidden item
-identities cannot be inserted into F. A supplied version tag also does not
-magically summarize the changed operator.
-
-Use the completed deep language quality/path diagnostics to choose the next
-integration. A capacity intervention diagnoses the third term; a response-input
-intervention diagnoses the second only under a matched learning comparison.
-Current incoming-content cuts measure the actor's predictive dependence, not
-the Bayes information floor of an unimplemented critic. Keep those conclusions
-separate. The actualD8/D16/32M acquisitions continue; this derivation adds no
-standalone fit or small-data quality veto.
-
 Count parameters, moments, retained activations, address identities, clocks and
 precision. A64-dimensional numerical state is not64bits. Model weights may
 encode reusable structure across many messages, but their residency/training
