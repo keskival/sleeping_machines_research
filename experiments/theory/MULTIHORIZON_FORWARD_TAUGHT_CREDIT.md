@@ -384,3 +384,58 @@ plus16teacher calls/64replay targets/40teacher-scored targets. Full/resumed
 comparison raises executed totals to84updates/336factualtargets;7.373seconds,
 461484KBpeakRSS. Synthetic legal-token/nativeD8payload8 numerical witness,
 not a fitted critic, corpus-quality gain, acquisition law or public win.
+
+## 14. A learner cut includes its mutable storage topology
+
+14 October2026. For packed actor parameters theta and receiver extraction maps
+P_b, a receiver's optimizer parameter must remain the view theta_b=P_b theta.
+Copying theta and the numerical values of theta_b into two independent arrays
+preserves equality at issue but breaks this relation after an optimizer write.
+Then Adam can update a detached copy while the actor still predicts with old
+weights. Initial prediction parity is insufficient to detect that failure.
+
+`learning/clone_receiver_learner.py` clones the packed actor, reconstructs all
+receiver views from that actor, and loads independently copied optimizer moments,
+steps and credit versions. It checks backing storage and separation from the
+source. `credit/receiver_allocated_future_world.py` additionally clones the
+actual learned allocation controller, state, step count and all private RNG.
+Its source-extracted kernel is bound to the integrated driver's hash and
+recomputes each world's own allocated teaching rather than freezing the
+reference world's later audit choices or credit gradients.
+
+For a disjoint complete partition, sum_b P_b^T P_b=I. Given one issued complete
+gradient g, apply the SAME global clipping factor to every P_b g. Each bank's
+AdamW transition then acts on its own coordinates/moments. These bank writes
+commute with other disjoint bank writes when all gradients come from the same
+issued cut and no actor reads the mixed partially updated state. This proves
+an ordering property, not unconstrained asynchronous training equivalence.
+Global reductions, producer versions and the completion boundary remain.
+Parameter aliasing, overlapping tied views, missing credit or changed clipping
+invalidate these premises. Credit-version checks cannot repair a gradient
+that was computed from an undeclared mixed actor/state version.
+
+Thus a sufficient finite replay contract needs more than equal arrays: each
+world retains its own storage-incidence relations, distinct mutable parameters,
+optimizer and allocator state, paired observations/random tapes, and the
+original update schedule. Read-only corpus observations can be shared. Dynamic
+allocation must evolve separately in each world from that world's own issued
+score/utility receipts. Sharing the reference allocator would target a different
+future policy even if actor weights were cloned correctly.
+
+This closes a concrete engineering gap in taking local optimizer placement
+into delayed credit. It does not claim fewer active banks: an AdamW update with
+zero gradient still acts through moments and decay. Skipping that bank requires
+another declared learning rule or exact lazy-update construction and its own
+work/quality comparison. Whole-fitting quality of the current8M integrated
+candidate remains the acquisition test; these storage contracts protect the
+meaning of its next future-taught critic labels.
+
+The clone gate and actual integrated future gate completed in guarded AWSslot1:
+`results/credit/aws_clone_receiver_learner_contract_20261014_v1.json` and
+`results/credit/aws_receiver_allocated_future_contract_20261014_v1.json`.
+The latter gives12prefix loss errors0 and exact final actor/optimizer/state,
+allocator and all private RNG fingerprint after resume.16/32/48horizon mean
+error2.78e-17.84executed updates/336factual scored and own-gradient targets,
+plus actual teaching replay/scoring;14.220seconds/475336KBpeakRSS. Synthetic
+legalGPT2/D8payload8 numerical witness. No fitted horizoncritic or corpus gain
+is inferred; main acquired-quality fits remain the decision evidence.

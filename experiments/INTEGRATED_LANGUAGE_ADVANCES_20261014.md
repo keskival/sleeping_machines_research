@@ -30,7 +30,7 @@ Post-fit `scripts/continue_integrated_receiver_quality.py`, separate waiting tmu
 
 AdamW's moments and bias-correction count are per parameter; colocating them with receiver banks removes a placement obstacle. All issued same-version gradient packets are still delivered. A zero gradient can still change weights through prior moments and weight decay: skipping it would change the learning rule. Global norm clipping requires complete aggregation. Different disjoint-bank delivery order can preserve numerical updates without a global physical clock, but mathematical dependencies and version checks remain. No ASIC timing, energy, communication or total sparse-training advantage is inferred from software banking.
 
-Receiver parameters are views into packed backing tensors. Ordinary deep-copy of optimizer views is not automatically a storage-preserving whole-learner clone. Checkpoint restore is contracted; future-world bank cloning needs explicit view reconstruction before long-horizon critic fitting. This obligation is not hidden by the existing ordinary-AdamW future-world contracts.
+Receiver parameters are views into packed backing tensors. Ordinary deep-copy of optimizer views is not automatically a storage-preserving whole-learner clone. Checkpoint restore is contracted; future-world bank cloning now uses explicit view reconstruction with independent moment storage. Its native continuation gate and the actual allocated/banked learner horizon gate both pass. Shared horizon-critic fitting is still pending; ordinary-AdamW contracts were not generalized to this learner without these checks.
 
 ## Investor evidence
 
