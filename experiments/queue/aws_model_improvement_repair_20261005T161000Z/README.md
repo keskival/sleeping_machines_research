@@ -31,3 +31,13 @@ V2 contract publication briefly failed pull due to tracked edits being in
 progress; the contract commit40947335 was subsequently pushed with ece1e643.
 This was a publication error, not a failed numerical contract. No result
 is silently promoted. Complete results/weights publish automatically.
+
+## Current B10 market work order (14 October)
+
+The founder explicitly authorizes LSTM and Transformer market controls at equal
+compute. Implement the source-bound work order in
+`../aws_b10_matched_controls_20261014_v1/work_order.json` under
+`experiments/market/B10_AWS_MATCHED_CONTROLS.md`. This is queued engineering work,
+not a runtime addendum: common likelihood/causality, exact data, full-work ledger
+and resource gates precede executable addenda. Fresh fits require no Curie parent
+checkpoint. Preserve active language jobs; keep September TEST sealed.

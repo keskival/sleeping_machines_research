@@ -1,3 +1,5 @@
+**B10 AWS exception, founder14October:** prepare and execute information-matched LSTM/Transformer/native market comparisons at equal complete fitting arithmetic under [B10_AWS_MATCHED_CONTROLS.md](market/B10_AWS_MATCHED_CONTROLS.md). Work order `queue/aws_b10_matched_controls_20261014_v1/work_order.json` is queued for engineering/accounting gates; no runtime jobs until validated drivers, numerical budget and resource smokes. Fresh models need no Curie checkpoint. Preserve active language acquisitions; no other dense-training exception.
+
 # Product orders — owned battles for headline results (issued 6 October 2026, 15:00 UTC; user-directed)
 
 **These orders supersede every order below.** The text below this section is the historical record.

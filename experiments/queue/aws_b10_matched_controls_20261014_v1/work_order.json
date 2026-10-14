@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "battle": "B10",
+  "host": "ip-172-31-47-132",
+  "name": "aws_b10_matched_controls_20261014_v1",
+  "status": "queued_for_implementation",
+  "training_admitted": false,
+  "authorization": "Explicit founder request14October2026: LSTM and Transformer market benchmarks with equal compute",
+  "decision": "Native vs LSTM vs Transformer full B10 DEV NLL at matched complete fitting arithmetic",
+  "protocol": "experiments/market/B10_AWS_MATCHED_CONTROLS.md",
+  "protocol_sha256": "3a54c5204bdace68ce69fdaeebecaabd7528030016c0628a891224ce2f0851a6",
+  "models": [
+    "native_race_d32_l2",
+    "lstm_d32_l2",
+    "transformer_d32_l2_h4"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "priority": "Next free AWS engineering opportunity; preserve active language acquisitions",
+  "requires_parent_checkpoint": false,
+  "sealed_test_allowed": false,
+  "admission_gates": [
+    "portable_train_dev_source_parity",
+    "common_cell_likelihood_and_causality",
+    "native_saved_score_replay",
+    "validated_complete_training_operator_ledger",
+    "numerical_budget_B_frozen",
+    "resume_and_full_shape_resource_smokes",
+    "host_capacity_and_scheduler_preflight"
+  ],
+  "scheduler": "scripts/run_aws_product_priority_six.py",
+  "runner": "experiments/queue/run_safe_aws6.sh",
+  "runtime_addendum": null,
+  "reason_not_runtime_addendum": "New information-matched encoder drivers and full-work ledger must pass gates before executable jobs exist"
+}
