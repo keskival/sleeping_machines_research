@@ -1,0 +1,136 @@
+"""R1 completed native deep fit: exact checkpoint replay and long-history DEV."""
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+from types import SimpleNamespace
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'experiments'))
+import allocated_depth_token_language as driver
+from public_token_scoring import score as reference_score, windows, reference_forward
+from sleeping_machines.connected_depth_risk import check_cross_audit_contract
+from sleeping_machines.acquisition_work_ledger import acquisition_work
+from check_deep_forward_horizon import check as check_forward_horizon
+
+
+@driver.torch.no_grad()
+def score(model,tokens,args,driver,start,targets,length=1024,lanes=8):
+    """Same reference arithmetic and tape, retaining descriptive window losses."""
+    model.eval();forward=reference_forward(model,driver)
+    gen=driver.torch.Generator().manual_seed(args.seed+100000)
+    total=0.;count=0;blocks=[]
+    for inputs,labels,begin in windows(tokens,start,targets,length,lanes):
+        state=None
+        block_sums=driver.torch.zeros(inputs.shape[0],dtype=driver.torch.float64)
+        for pos in range(0,length,args.chunk):
+            x,state,_=forward(inputs[:,pos:pos+args.chunk],state,gen,args,deterministic=args.deterministic_eval)
+            losses=model.readout.nll(x,labels[:,pos:pos+args.chunk])
+            total+=float(losses.double().sum());count+=losses.numel()
+            block_sums+=losses.double().reshape(inputs.shape[0],-1).sum(dim=1).cpu()
+        blocks.extend(dict(target_start=begin+i*length+1,targets=length,
+                           nll=float(value)/length) for i,value in enumerate(block_sums))
+    assert count==targets
+    return dict(nll=total/count,loss_sum=total,targets=count,target_start=start+1,
+                target_end_inclusive=start+targets,window=length,lanes=lanes,
+                eos_state_reset=False,window_losses=blocks)
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--tag',required=True)
+    parser.add_argument('--run',required=True)
+    a=parser.parse_args();driver.torch.set_num_threads(1);begin=time.monotonic()
+    check_cross_audit_contract()
+    base=ROOT/f'experiments/results/token_language/{a.run}'
+    packet=json.loads(base.with_suffix('.json').read_text())
+    assert packet['status']=='completed'
+    for name,digest in packet['source_sha256'].items():assert driver.sha(ROOT/name)==digest,name
+    args=SimpleNamespace(**packet['args'])
+    assert args.depth>=8
+    train=driver.load_tokens(args.train_file);dev=driver.load_tokens(args.dev_file)
+    counts=driver.LaneTokens(train,0,args.train_tokens,args.lanes).counts()
+    order=driver.torch.argsort(counts,descending=True,stable=True)
+    driver.torch.manual_seed(args.seed)
+    model=driver.Model(args,order,counts)
+    saved=driver.torch.load(base.with_suffix('.pt'),map_location='cpu',weights_only=False)
+    assert saved['step']==args.steps
+    model.load_state_dict(saved['model']);del saved
+    replay=driver.evaluate(model,driver.interval_tensor(dev,args.dev_offset,args.dev_tokens,args.eval_lanes),args)
+    assert replay==packet['curve'][-1]['dev_nll']
+    long_history=score(model,dev,args,driver,25165824,8192,1024,8)
+    reference=reference_score(model,dev,args,driver,25165824,8192,1024,8)
+    assert {k:v for k,v in long_history.items() if k!='window_losses'}==reference
+    # Each cut removes only the incoming content projection at this stage.
+    # Keep its bias, clocks, private bank and arrival inputs. This is not a
+    # layer deletion or a shallower trained-model comparator.
+    paths=[]
+    for layer,mix in enumerate(model.core.channel_mix):
+        original=mix.weight.detach().clone()
+        try:
+            with driver.torch.no_grad():mix.weight.zero_()
+            cut=score(model,dev,args,driver,25165824,8192,1024,8)
+        finally:
+            with driver.torch.no_grad():mix.weight.copy_(original)
+        assert cut['targets']==long_history['targets']
+        deltas=[c['nll']-f['nll'] for c,f in zip(cut['window_losses'],long_history['window_losses'])]
+        assert len(deltas)==8
+        assert abs(sum(deltas)/len(deltas)-(cut['nll']-long_history['nll']))<1e-10
+        paths.append(dict(layer=layer,cut_nll=cut['nll'],
+                          nll_increase=cut['nll']-long_history['nll'],
+                          paired_window_nll_increases=deltas,
+                          windows_with_positive_increase=sum(d>0 for d in deltas),
+                          minimum_window_increase=min(deltas),maximum_window_increase=max(deltas),
+                          removed_projection_weight_norm=float(original.norm())))
+    restored=score(model,dev,args,driver,25165824,8192,1024,8)
+    assert restored==long_history,'Depth-path diagnostic failed to restore exact model/tape'
+    horizon_contract=check_forward_horizon(model,args,driver,train)
+    # Selection is fixed by the training short-DEV criterion, not this score.
+    best_path=Path(packet['best_checkpoint'])
+    model.load_state_dict(driver.torch.load(best_path,map_location='cpu',weights_only=False))
+    best_replay=driver.evaluate(model,driver.interval_tensor(dev,args.dev_offset,args.dev_tokens,args.eval_lanes),args)
+    assert best_replay==packet['best_dev_nll'],'Selected checkpoint replay mismatch'
+    selected_history=score(model,dev,args,driver,25165824,8192,1024,8)
+    result=dict(status='completed',battle='R1',run=a.run,depth=args.depth,
+                parameters=packet['parameters'],targets=packet['presentations_total'],
+                final_development_nll=replay,long_history_dev=long_history,
+                development_selected_checkpoint=str(best_path),
+                selection_rule='Minimum logged training short-DEV NLL; fixed before long-history scoring',
+                selected_short_dev_nll=best_replay,selected_long_history_dev=selected_history,
+                incoming_content_path_cuts=paths,restored_score_parity=True,
+                cross_audit_risk_math_contract='passed depth8/16 finite-sum and parameter-gradient parity; no integrated credit fit',
+                checkpoint_replay_targets=args.eval_lanes*(args.dev_tokens//args.eval_lanes-1),
+                long_history_diagnostic_scored_targets=8192*(args.depth+4),
+                diagnostic_scored_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1)
+                    +horizon_contract['scored_targets']+horizon_contract['nonlinear_readout_containment']['scored_targets'],
+                diagnostic_forward_targets=8192*(args.depth+4)+2*args.eval_lanes*(args.dev_tokens//args.eval_lanes-1)
+                    +horizon_contract['forward_targets'],
+                successful_trajectory_training_s=packet['train_wall_s_total'],
+                successful_trajectory_training_s_per_target=packet['train_wall_s_total']/packet['presentations_total'],
+                **acquisition_work(packet),
+                reference_scorer_parity=True,
+                forward_horizon_contract=horizon_contract,
+                additional_train_contract_scored_targets=horizon_contract['scored_targets'],
+                additional_readout_containment_scored_targets=horizon_contract['nonlinear_readout_containment']['scored_targets'],
+                additional_train_contract_forward_targets=horizon_contract['forward_targets'],
+                selected_writes_per_target=args.depth*args.heads,
+                scored_keys_per_target=args.depth*args.heads*args.pool,
+                teacher_work=packet['teacher_work'],allocation=packet['depth_credit_allocation'],
+                training_profile=packet.get('profile'),
+                credit_update_diagnostics=packet.get('credit_update_diagnostics'),
+                selected_checkpoint_sha256=driver.sha(best_path),
+                input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in (base.with_suffix('.json'),base.with_suffix('.pt'))},
+                source_sha256={name:driver.sha(ROOT/name) for name in ('experiments/score_allocated_deep_language_v2.py','experiments/public_token_scoring.py','sleeping_machines/connected_depth_risk.py','sleeping_machines/acquisition_work_ledger.py','experiments/check_deep_forward_horizon.py','sleeping_machines/contextual_logit_spectrum.py','sleeping_machines/contained_nonlinear_readout.py')},
+                wall_s=time.monotonic()-begin,
+                scope='Single seed, frozen final checkpoint, exact replay and8192 reusedDEV targets with1024 disjoint histories. '
+                      'Per-stage frozen incoming-content cuts retain bias/clock parameters/banks/arrival mechanisms and share issued random tapes; realized routes and times can change. '
+                      'Paired eight-window deltas describe this fixed slice, not independent seeds or confidence intervals. '
+                      'Final and short-DEV-selected long-history scores both retained; content cuts use final weights. '
+                      'they measure dependence under intervention, not a trained shallower comparison or proof of optimal depth. '
+                      'No public validation or external score. Full factual windowBP/Adam/allocator/teacher work paid; no ASIC energy claim.')
+    path=ROOT/f'experiments/results/diagnostics/{a.tag}.json';path.parent.mkdir(exist_ok=True)
+    with path.open('x') as handle:json.dump(result,handle,indent=2);handle.write('\n')
+    print(json.dumps({k:v for k,v in result.items() if k not in ('allocation','input_sha256','source_sha256')}),flush=True)
+
+
+if __name__=='__main__':main()

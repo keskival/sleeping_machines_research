@@ -1,0 +1,17 @@
+{
+  "status": "interrupted",
+  "battle": "R1",
+  "old_run": "curie_allocated_deep_d8_8m_20261013_s6_v1",
+  "recovery_run": "curie_allocated_deep_d8_8m_20261013_s6_resume1_v1",
+  "reason": "Host MemAvailable8189MiB below8192MiB floor; sampled heartbeat jobRSS below800MiB",
+  "runner_interval_s": 3941.0,
+  "runner_timestamp_resolution_s": 1,
+  "checkpoint_step": 1024,
+  "checkpoint_targets": 524272,
+  "checkpoint_successful_training_s": 2642.1008388907067,
+  "checkpoint_sha256": "4233e0736d9574976f577cf0604dff38bb4568fd4f5655491787422f01790e83",
+  "input_sha256": {
+    "experiments/queue/r1/runner_curie_allocated_deep_d8_8m_20261013_s6_v1.out": "8eab55c90c04103b471b3df2319743cd1f49ce1ecb36405091ad1e857f085e82"
+  },
+  "scope": "Resource interruption, not model/numerical failure. Saved actor/optimizer/state/allocation/RNG checkpoint verified; same settings/source identity required. Work after checkpoint is repeated and retained in whole-fit process-wall ledger; no FLOP/energy extrapolation."
+}

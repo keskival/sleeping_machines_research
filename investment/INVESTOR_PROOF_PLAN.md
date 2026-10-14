@@ -1,4 +1,4 @@
-# Investor proof plan — 4 October 2026
+# Investor proof plan — 13 October 2026
 
 The best way to strengthen our €50M pre-money proposal is to turn a promising
 architecture into an asset an investor can verify: repeatable useful quality,
@@ -7,7 +7,7 @@ explains the upside; it does not replace those proofs. The €3M raise and €10
 stretch case remain as described in [the valuation rationale](VALUATION_RATIONALE.md).
 This is an execution plan, not a prediction of investor acceptance.
 
-## Status update, 6 October 2026
+## Current evidence
 
 - **Public event benchmark: achieved.** Confirmed EasyTPP wins on Taobao (+0.081 nats/event over the best published
   model, 0.92× the leading model's compute) and Taxi (5-seed mixture beats every published model at 0.41× S2P2's
@@ -33,11 +33,25 @@ This is an execution plan, not a prediction of investor acceptance.
   affinity (tgbn-trade): test NDCG@10 0.8680 ±
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
 - **New event domains (in development):** tgbl-review (AWS): a training-free state is above TGN/TGAT/TNCN on validation.
-  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs), frozen one-configuration model: all seven verdicts lost (time ahead on Stack Overflow, Github and LastFM; below every single published total on Github and LastFM); Wikipedia lost after a guarded rerun of split 0 (two test sequences with exploding hazards), while its marks lead every published model (27.65 vs 144.79; addressed mark memory copies unseen pages); frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap), Stack Overflow (12.714 vs 11.9; time component ahead), MIMIC2 (7.01 vs 2.42); Github lost by 2.3 nats (−270.62 ± 48.69 vs −272.90), below every single published model's total and ahead on time; marks carry the gap. Retweets lost (−515.16 vs −538.70; marks level, timing behind); LastFM pending.
+  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs), frozen one-configuration model: all seven verdicts lost (time ahead on Stack Overflow, Github and LastFM; below every single published total on Github and LastFM); Wikipedia lost after a guarded rerun of split 0 (two test sequences with exploding hazards), while its marks lead every published model (27.65 vs 144.79; addressed mark memory copies unseen pages); frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap), Stack Overflow (12.714 vs 11.9; time component ahead), MIMIC2 (7.01 vs 2.42); Github lost by 2.3 nats (−270.62 ± 48.69 vs −272.90), below every single published model's total and ahead on time; marks carry the gap. Retweets lost (−515.16 vs −538.70; marks level, timing behind); LastFM lost (−774.64 vs the composite bar −849.65), with time ahead and marks behind.
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
+
+## Completed acquisition evidence
+
+On the same8,192-target/1,024-history development protocol, the temporally aligned wider native interface improves loss **6.160183 → 6.099337 nats/token** at8M targets. It had lagged at512k and2M. Complete training time is7,734.249 →8,657.820seconds (+11.94%); parameters3.165M →3.821M. Scope: one seed, native models, reused DEV; this is a completed development quality gain with added resources. [Source-bound comparison](../experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json).
+
+## Next decision: useful depth at meaningful acquisition
+
+The D8 fit has completed8,388,352targets. Its fixed short-DEV-selected checkpoint scores **6.261858 nats/token** on the8192-target/1024-history slice; final weights score6.289904. Exact replay and native longer-horizon/contained-decoder gates pass. D16/8M is running, followed byD8/32M and the longer-credit comparison. Automatic64M acquisition is withdrawn until completed quality/error analysis justifies it. Successful-trajectory training is42,123.048seconds; whole process work is a lower bound of45,822.127seconds because an interruption tail is unknown. The saved D2 final result is6.160183 on the same slice: this deep member needs acquisition/learning improvements before a competitive-language claim. [Completed source-bound checkpoint diagnostics](../experiments/results/diagnostics/curie_allocated_deep_d8_8m_20261013_s6_resume2_v1_quality.json).
+
+The decision-changing artifact is a completed, checkpoint-bound table on identical 8,192-target/1,024-history DEV scoring: quality, acquisition, depth, available capacity, selected writes, scored keys, teacher work and whole-fit wall-time scope. Per-stage content cuts measure the trained predictor's dependence on incoming content, including resulting route and timing changes. The pending versioned evaluator reports all eight paired window deltas, verifies unchanged factual scoring and preserves interruption-aware cost precision; its four focused unit tests pass. Integrated checkpoint checks execute after the completed fits. They do not estimate the best achievable shallow predictor. The [useful-depth decision theory](../experiments/theory/USEFUL_DEPTH_AND_INVESTMENT_GATES.md) states how these measurements select the next representation or learning repair.
+
+The next capability candidate extends forward route consequences across factual gradient boundaries while retaining bounded backpropagation and the native temporal core. It is admitted after the current ladder and native replay gates, with one measured resource smoke and a reserved D8/8M comparison. Eight focused unit tests pass; integrated gates and quality are pending. This is a concrete engineering path to longer memory credit, not a completed scaling result.
+
+Advance investor claims when completed evidence changes them: useful deep prediction, then a development-selected member against the pinned public language reference, followed by independent replication. Existing official event-domain results support a separate design-partner proof with specified quality, latency and adaptation costs. Customer value and physical energy require their own measurements.
 
 ## Forward computation teaches credit — current status and potential
 

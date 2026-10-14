@@ -1,0 +1,2 @@
+# B10: native8temporal-layer market development; decision: does useful depth improve likelihood over strongest saved native/Hawkes references at measured cost?
+curie_b10_depth8_20261014_s0_v1_smoke experiments/market/b10_depth_tpp_v1.py --tag curie_b10_depth8_20261014_s0_v1_smoke --grow-from experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt --model race --layers 8 --d 32 --n-ln 8 --seed 0 --epochs 30 --patience 5 --lr 0.003 --bs 16 --train-every 20 --max-wall-s 604800 --smoke-updates 2
