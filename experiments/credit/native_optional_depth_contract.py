@@ -1,5 +1,5 @@
 """R1 actual native timing/state containment and live hypothetical depth credit."""
-import argparse,json,resource,sys,time
+import argparse,copy,json,resource,sys,time
 from pathlib import Path
 from types import SimpleNamespace
 import torch
@@ -37,13 +37,21 @@ def main():
    assert torch.allclose(g,h,rtol=1e-6,atol=1e-8),name
  # Activated alternative uses genuinely new temporal stages, not an output
  # shortcut. Its loss supplies internal stage gradients at a neutral actor.
+ # Round-trip the exact optional timing configuration and separate race RNG.
+ saved_optional=copy.deepcopy(core.state_dict());core.new_depth_generator.manual_seed(9);core.execution_depth=core.depth
+ core.load_state_dict(saved_optional);assert core.execution_depth==args.depth
+ assert torch.equal(core.new_depth_generator.get_state(),saved_optional['_extra_state']['new_depth_rng'])
+ # Carried parent context remains exact across a second block.
+ from sleeping_machines.sparse_counterfactual_episodes import detach
+ xp,sp,_=run(parent.core,token_features,gp,detach(st));yp,sq,_=run(core,optional_depth_features,gg,detach(gs))
+ assert torch.equal(xp,yp) and torch.equal(sp['ctx_arr'],sq['ctx_arr']) and torch.equal(gp.get_state(),gg.get_state())
  core.execution_depth=core.depth
  xx,active_state,_=run(core,optional_depth_features,torch.Generator().manual_seed(92))
  probe_loss=parent.readout.nll(xx,targets).mean();grads=torch.autograd.grad(probe_loss,tuple(core.banks.values()),allow_unused=True)
  added={name:float(g[args.depth:].norm()) if g is not None else 0. for name,g in zip(core.banks,grads)}
  assert added['input']>0 and added['output']>0 and added['gate_w']>0 and added['clock_bias']>0,'New stage internal credit missing'
  names=['experiments/credit/native_optional_depth_contract.py','sleeping_machines/optional_temporal_depth.py','sleeping_machines/stage_gain_token_core.py','sleeping_machines/sparse_counterfactual_episodes.py','sleeping_machines/ordered_token_episodes.py','experiments/bernoulli_teacher_token_language.py']
- record=dict(status='completed',battle='R1',parent_depth=args.depth,allocated_depth=core.depth,neutral_feature_state_timing_rng_gradient_parity=True,activated_alternative_internal_gradient_norm=added,parent_loss=float(loss.detach()),alternative_loss=float(probe_loss.detach()),wall_s=time.monotonic()-start,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,source_sha256={n:driver.sha(ROOT/n) for n in names},input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in [base.with_suffix('.json'),base.with_suffix('.pt')]},scope='Acquired actual nativeD8→allocatedD10,128TRAINtargets; no optimizer updates/fit, bank moments/versions not migrated, activation selection/credit policy not integrated. Conditional alternate-path internal gradients prove learnability of that path, not useful depth or asynchronous execution gain.')
+ record=dict(status='completed',battle='R1',parent_depth=args.depth,allocated_depth=core.depth,neutral_feature_state_timing_rng_gradient_parity=True,carried_context_parity=True,optional_checkpoint_rng_parity=True,activated_alternative_internal_gradient_norm=added,parent_loss=float(loss.detach()),alternative_loss=float(probe_loss.detach()),wall_s=time.monotonic()-start,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,source_sha256={n:driver.sha(ROOT/n) for n in names},input_sha256={str(p.relative_to(ROOT)):driver.sha(p) for p in [base.with_suffix('.json'),base.with_suffix('.pt')]},scope='Acquired actual nativeD8→allocatedD10,128TRAINtargets; no optimizer updates/fit, bank moments/versions not migrated, activation selection/credit policy not integrated. Conditional alternate-path internal gradients prove learnability of that path, not useful depth or asynchronous execution gain.')
  out=ROOT/f'experiments/results/diagnostics/{a.tag}.json'
  with out.open('x') as f:json.dump(record,f,indent=2)
  print(json.dumps(record),flush=True)

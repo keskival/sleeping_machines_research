@@ -13,6 +13,19 @@ from . import sparse_counterfactual_episodes as episodes
 from .ordered_token_episodes import ContentFunctions
 
 
+class OptionalTemporalDepthCore(StageGainTokenCore):
+    def get_extra_state(self):
+        saved=super().get_extra_state()
+        saved.update(parent_depth=self.parent_depth,execution_depth=self.execution_depth,new_depth_rng=self.new_depth_generator.get_state())
+        return saved
+    def set_extra_state(self,saved):
+        super().set_extra_state(saved)
+        old=int(saved['parent_depth']);active=int(saved['execution_depth'])
+        if not 0<old<=active<=self.depth:raise ValueError('Invalid optional-depth checkpoint')
+        self.parent_depth=old;self.execution_depth=active
+        self.new_depth_generator=torch.Generator();self.new_depth_generator.set_state(saved['new_depth_rng'])
+
+
 def grow_native_core(parent, fresh):
     """Preserve every acquired old field; initialize only additional stages."""
     if fresh.depth<=parent.depth:raise ValueError('Added temporal depth required')
@@ -30,6 +43,7 @@ def grow_native_core(parent, fresh):
         old=getattr(grown,name);extra=getattr(new,name)[old_depth:]
         setattr(grown,name,torch.nn.Parameter(torch.cat((old.detach(),extra.detach()),0)))
     grown.depth=new.depth;grown.stage_gains=tuple(grown.stage_gains)+tuple(new.stage_gains[old_depth:])
+    grown.__class__=OptionalTemporalDepthCore
     grown.parent_depth=old_depth;grown.execution_depth=old_depth
     grown.new_depth_generator=torch.Generator().manual_seed(70119)
     return grown

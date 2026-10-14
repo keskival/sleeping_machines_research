@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "records": [
+    {
+      "pid": 2972222,
+      "tag": "aws_b10_matched_native_s0_20261014_v2",
+      "cpu_s": 3237.33,
+      "checkpoint": "experiments/results/market/aws_b10_matched_native_s0_20261014_v2.progress.pt",
+      "checkpoint_exists": true,
+      "reason": "Pause shared nonfinite-gradient failure investigation; preserve saved state, no quality verdict"
+    },
+    {
+      "pid": 2993083,
+      "tag": "aws_b10_matched_native_s1_20261014_v2",
+      "cpu_s": 1967.23,
+      "checkpoint": "experiments/results/market/aws_b10_matched_native_s1_20261014_v2.progress.pt",
+      "checkpoint_exists": true,
+      "reason": "Pause shared nonfinite-gradient failure investigation; preserve saved state, no quality verdict"
+    },
+    {
+      "pid": 2993663,
+      "tag": "aws_b10_matched_lstm_s1_20261014_v2",
+      "cpu_s": 1949.25,
+      "checkpoint": "experiments/results/market/aws_b10_matched_lstm_s1_20261014_v2.progress.pt",
+      "checkpoint_exists": true,
+      "reason": "Pause shared nonfinite-gradient failure investigation; preserve saved state, no quality verdict"
+    },
+    {
+      "pid": 3008973,
+      "tag": "aws_b10_matched_lstm_s2_20261014_v2",
+      "cpu_s": 953.35,
+      "checkpoint": "experiments/results/market/aws_b10_matched_lstm_s2_20261014_v2.progress.pt",
+      "checkpoint_exists": true,
+      "reason": "Pause shared nonfinite-gradient failure investigation; preserve saved state, no quality verdict"
+    },
+    {
+      "pid": 3020315,
+      "tag": "aws_b10_matched_native_s2_20261014_v2",
+      "cpu_s": 232.39,
+      "checkpoint": "experiments/results/market/aws_b10_matched_native_s2_20261014_v2.progress.pt",
+      "checkpoint_exists": false,
+      "reason": "Pause shared nonfinite-gradient failure investigation; preserve saved state, no quality verdict"
+    }
+  ],
+  "unix_time": 1792011496.747185,
+  "scope": "Intentional preemption for shared numerical diagnosis; all saved checkpoints retained, discarded post-checkpoint work must be charged on resumption. Not a model quality loss."
+}
