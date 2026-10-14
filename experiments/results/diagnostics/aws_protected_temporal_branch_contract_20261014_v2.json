@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "parent_features_private_state_context_timing_rng_preserved_with_live_branch": true,
+  "old_factual_gradient_parity": true,
+  "new_private_state_evolves": true,
+  "branch_later_availability_mean": [
+    0.009204033536586609,
+    0.004545366281158092
+  ],
+  "branch_service_internal_credit": {
+    "key": 5.9796369896503165e-05,
+    "key_read": 0.00020265273633413017,
+    "clock_bias": 8.314671867992729e-05,
+    "input": 0.05892297625541687,
+    "output": 0.08234036713838577,
+    "gate_w": 0.029751459136605263,
+    "gate_b": 0.009536895900964737,
+    "control_w": 0.017882579937577248,
+    "control_b": 0.003895142348483205,
+    "raw_rate": 0.002243085764348507,
+    "frequency": 0.08722596615552902,
+    "query": 0.00028820164152421057
+  },
+  "source_sha256": {
+    "experiments/credit/protected_temporal_branch_contract.py": "af8b4f75e38d5b9069f7896728232ab786c9d4defd017c24b88198dc70629d21",
+    "sleeping_machines/protected_temporal_branch.py": "821c817f1ef00432904bc5d2ae282301fbcf70852a4466b9092a920c2f631972",
+    "sleeping_machines/optional_temporal_depth.py": "301f34e94d5bf9b628e9e5fe94588d8aa76fac53820ca4d78b14db58900ea640",
+    "sleeping_machines/sparse_counterfactual_episodes.py": "7fd2cbd724ed60843a7a94b8d14ec0baf9bd9cf54af2d8b22620f0931aa824d8",
+    "experiments/bernoulli_teacher_token_language.py": "85b82441775b74573db2ad86459443fca9d0fc0e3e40ac205a2c5fd652db8b45"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_integrated_receiver_d8_8m_20261014_s6_v1.json": "41c7824614b168b72ccc3c6d36a2d2288c2ebc11bf113fc80b98fe6a86103400",
+    "experiments/results/token_language/aws_integrated_receiver_d8_8m_20261014_s6_v1.pt": "cc359f81b5d3c7d41a415f120d478a7220f3dc14b9f30e38878e1eac9386324d"
+  },
+  "wall_s": 1.6846262018661946,
+  "max_rss_kb": 618084,
+  "scope": "AcquiredD8 plus native2stage sidebranch,384TRAIN targets/48history; eagercausal eventtime, no physicalscheduler or fit. Parent features served atparenttime, branch features atlateractualsimulatedavailability, backlog local. Supportedselectionteacher and localcaps pending; no latency/speed/quality claim."
+}
