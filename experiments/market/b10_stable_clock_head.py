@@ -33,6 +33,7 @@ class LogScaleRaceHead(RaceTPP):
         return torch.cat((lh_exp,lh_ln),-1),torch.cat((ls_exp,ls_ln),-1)
 
 def install_log_scale_head(model):
+    if type(model.m) is LogScaleRaceHead:return model
     if type(model.m) is not RaceTPP:raise ValueError('Original native head required')
     # Parameter ownership, names, optimizer state and encoded information stay
     # unchanged. Bound alternative encoders' encode method is preserved.

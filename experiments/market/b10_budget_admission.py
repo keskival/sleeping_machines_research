@@ -11,7 +11,7 @@ from b10_depth_tpp_v1 import Race
 from b10_operator_ledger_v3 import Ledger
 
 def source_hashes():
-    names=['experiments/market/b10_budget_admission.py','experiments/market/b10_matched_update.py','experiments/market/b10_matched_fit.py','experiments/market/b10_matched_models.py','experiments/market/b10_matched_data.py','experiments/market/b10_matched_pipeline.py','experiments/market/b10_operator_ledger_v3.py','experiments/market/b10_depth_tpp_v1.py','experiments/market/prepare.py','experiments/tpp/race_tpp_v5.py','experiments/market/B10_AWS_MATCHED_CONTROLS.md']
+    names=['experiments/market/b10_budget_admission.py','experiments/market/b10_matched_update.py','experiments/market/b10_matched_fit.py','experiments/market/b10_matched_models.py','experiments/market/b10_stable_clock_head.py','experiments/market/b10_matched_data.py','experiments/market/b10_matched_pipeline.py','experiments/market/b10_operator_ledger_v3.py','experiments/market/b10_depth_tpp_v1.py','experiments/market/prepare.py','experiments/tpp/race_tpp_v5.py','experiments/market/B10_AWS_MATCHED_CONTROLS.md']
     return {p:sha(ROOT/p) for p in names}
 def numerical_ledger_audit():
     # Independent closed-form dot-product + reduction witnesses.
@@ -50,7 +50,7 @@ def main():
             assert all((x is None and y is None) or (x is not None and y is not None and torch.allclose(x,y,rtol=1e-10,atol=1e-12)) for x,y in zip(g1,g2)),family+' causal gradient contract'
             # Reuse original head equations and weights with identical features.
             reference=Race(gaps,32,8,2);reference.m.load_state_dict({k:v for k,v in model.m.state_dict().items() if k in reference.m.state_dict()},strict=family=='native') if family=='native' else None
-            if family=='native':reference.eval();assert torch.equal(reference.terms(short,marks),model.terms(short,marks))
+            if family=='native':reference.eval();assert torch.allclose(reference.terms(short,marks),model.terms(short,marks),rtol=1e-11,atol=1e-11)
             entries=[];costs[family]={};overhead=0
             for batch in (16,1):
                 for repeat in (0,1):

@@ -12,7 +12,7 @@ from b10_stable_clock_head import install_log_scale_head
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--tag',required=True);a=ap.parse_args();torch.set_num_threads(1);torch.set_default_dtype(torch.float64);start=time.monotonic();data,_=prepare();gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0]
- torch.manual_seed(4);original=MatchedRace(gaps,'lstm');stable=copy.deepcopy(original);install_log_scale_head(stable)
+ torch.manual_seed(4);original=MatchedRace(gaps,'lstm');from race_tpp_v5 import RaceTPP;original.m.__class__=RaceTPP;stable=copy.deepcopy(original);install_log_scale_head(stable)
  rows=data['train'][:2];t=torch.tensor(np.stack([r[0][:32] for r in rows]));m=torch.tensor(np.stack([r[1][:32] for r in rows]));original.eval();stable.eval()
  x=original.terms(t,m);y=stable.terms(t,m);error=float((x-y).abs().max());assert torch.allclose(x,y,rtol=1e-12,atol=1e-12)
  g=torch.autograd.grad(x.mean(),tuple(original.parameters()),allow_unused=True);h=torch.autograd.grad(y.mean(),tuple(stable.parameters()),allow_unused=True)

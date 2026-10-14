@@ -29,7 +29,7 @@ def evaluate(model,windows):
     return dict(nll=groups['all']['nll'],groups=groups,ledger=ledger.record())
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--family',choices=['native','lstm','transformer'],required=True);p.add_argument('--seed',type=int,choices=[0,1,2],required=True);p.add_argument('--admission',required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--family',choices=['native','lstm','transformer'],required=True);p.add_argument('--seed',type=int,choices=[0,1,2],required=True);p.add_argument('--admission',required=True);p.add_argument('--resume-from');a=p.parse_args()
     torch.set_num_threads(1);torch.set_default_dtype(torch.float64)
     admission=json.loads((ROOT/a.admission).read_text())
     assert admission['status']=='completed' and admission['training_admitted']
@@ -44,8 +44,19 @@ def main():
     def new(lr):
         torch.manual_seed(a.seed);model=MatchedRace(gaps,a.family)
         return model,torch.optim.AdamW(model.parameters(),lr=lr,weight_decay=1e-4,foreach=False)
-    s=dict(phase=0,spent=admission['overhead_arithmetic'][a.family],phase_spent=0,epoch=0,cursor=0,order=[],targets=0,evals=[],candidates=[],best_nll=math.inf,wall_s=0.,cpu_s=0.,next_eval=0)
+    s=dict(phase=0,spent=admission['overhead_arithmetic'][a.family]+admission.get('fresh_interruption_charge',{}).get(a.family+':'+str(a.seed),0),phase_spent=0,epoch=0,cursor=0,order=[],targets=0,evals=[],candidates=[],best_nll=math.inf,wall_s=0.,cpu_s=0.,next_eval=0)
     model,opt=new(.001);nrng=np.random.default_rng(a.seed)
+    migration=None
+    if a.resume_from and not checkpoint.exists():
+        import shutil
+        source=ROOT/a.resume_from;binding=admission['resume_bindings'][a.family+':'+str(a.seed)]
+        assert str(source.relative_to(ROOT))==binding['checkpoint'] and sha(source)==binding['checkpoint_sha256']
+        saved=torch.load(source,weights_only=False);assert saved['admission_sha256']==binding['old_admission_sha256']
+        saved['state']['spent']+=binding['additional_charged_arithmetic']
+        saved['state']['migration']=binding;saved['admission_sha256']=sha(ROOT/a.admission);saved['source_sha256']=admission['source_sha256']
+        torch.save(saved,checkpoint);migration=binding
+        old_best=source.with_name(source.name.replace('.progress.pt','.best.pt'))
+        if old_best.exists():shutil.copyfile(old_best,best_path)
     if checkpoint.exists():
         saved=torch.load(checkpoint,weights_only=False);assert saved['admission_sha256']==sha(ROOT/a.admission)
         assert saved['source_sha256']==admission['source_sha256'];s=saved['state'];model,opt=new(saved['lr'])
@@ -91,6 +102,6 @@ def main():
     slack=(B-s['spent'])/B
     assert 0<=slack<=.01,('budget slack exceeds frozen protocol',slack)
     best=torch.load(best_path,weights_only=False);model.load_state_dict(best['model']);final=evaluate(model,dev)
-    result=dict(status='completed',battle='B10',family=a.family,seed=a.seed,source_sha256=admission['source_sha256'],admission_sha256=sha(ROOT/a.admission),budget=B,fitting_arithmetic=s['spent'],unused_fraction=slack,targets=s['targets'],evaluations=s['evals'],final_dev=final,final_weights=str(best_path.relative_to(ROOT)),wall_s=s['wall_s']+time.monotonic()-timing[0],cpu_s=s['cpu_s']+time.process_time()-timing[1],max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,september_opened=False)
+    result=dict(status='completed',battle='B10',family=a.family,seed=a.seed,source_sha256=admission['source_sha256'],admission_sha256=sha(ROOT/a.admission),migration=s.get('migration'),budget=B,fitting_arithmetic=s['spent'],unused_fraction=slack,targets=s['targets'],evaluations=s['evals'],final_dev=final,final_weights=str(best_path.relative_to(ROOT)),wall_s=s['wall_s']+time.monotonic()-timing[0],cpu_s=s['cpu_s']+time.process_time()-timing[1],max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,september_opened=False)
     out.write_text(json.dumps(result,indent=2)+'\n')
 if __name__=='__main__':main()

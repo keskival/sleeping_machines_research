@@ -23,7 +23,7 @@ class Ledger(TorchDispatchMode):
         self.calls[str(func)]+=1
         metadata={'view','reshape','_unsafe_view','transpose','t','permute','slice','select','unsqueeze','squeeze','expand','detach','alias','clone','copy_','_to_copy','to','empty','empty_like','empty_strided','zeros','zeros_like','ones','ones_like','full','full_like','new_zeros','new_empty','new_empty_strided','cat','stack','split','split_with_sizes','unbind','as_strided','as_strided_','resize_','lift_fresh','index','index_put','index_put_','index_select','gather','scatter','scatter_','slice_scatter','select_scatter','fill_','zero_','arange','scalar_tensor','_local_scalar_dense','embedding','triu','tril','is_same_size','resolve_conj','resolve_neg','contiguous','repeat'}
         unary={'neg','abs','sign','ceil','floor','reciprocal'}
-        binary={'add','add_','sub','sub_','mul','mul_','div','div_','true_divide','lerp','lerp_','remainder'}
+        binary={'add','add_','sub','sub_','rsub','mul','mul_','div','div_','true_divide','lerp','lerp_','remainder'}
         specials={'exp','exp_','expm1','log','log_','log1p','sqrt','sqrt_','rsqrt','sin','cos','tanh','sigmoid','special_log_ndtr','erf','pow','pow_'}
         comparisons={'gt','ge','lt','le','eq','ne','maximum','minimum','clamp','clamp_min','clamp_max','clamp_','clamp_min_','clamp_max_','isfinite','isinf','isnan','logical_and','logical_or','bitwise_and','bitwise_or','any','all','max','min','amin','amax','argmax','aminmax'}
         if str(func).startswith('profiler.'):pass

@@ -3,6 +3,7 @@ import math
 import torch
 from torch import nn
 from b10_depth_tpp_v1 import Race
+from b10_stable_clock_head import install_log_scale_head
 
 class ExplicitLSTM(nn.Module):
     # Explicit gates expose backward arithmetic to the operator ledger.
@@ -36,7 +37,7 @@ class AttentionBlock(nn.Module):
 
 class MatchedRace(Race):
     def __init__(self,gaps,family):
-        super().__init__(gaps,32,8,2); self.family=family
+        super().__init__(gaps,32,8,2);install_log_scale_head(self); self.family=family
         if family=='native':return
         # Remove unused native encoder parameters, retain identical addressed
         # mark memory and all clock/mark output parameters.
