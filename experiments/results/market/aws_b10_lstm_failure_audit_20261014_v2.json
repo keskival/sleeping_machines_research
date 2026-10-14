@@ -1,0 +1,135 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "stage": "numerical_failure_replay",
+  "family": "lstm",
+  "reproduced": true,
+  "failure": {
+    "attempt": 3,
+    "cursor": 48,
+    "windows": [
+      660,
+      436,
+      216,
+      557,
+      752,
+      655,
+      46,
+      104,
+      481,
+      474,
+      757,
+      290,
+      43,
+      413,
+      135,
+      204
+    ],
+    "nonfinite_parameter_credit": [
+      "m.clock.bias",
+      "m.clock.weight",
+      "m.marks.log_rate",
+      "m.marks.value.bias",
+      "m.marks.value.weight",
+      "encoder.hidden.1.weight",
+      "encoder.input.1.bias",
+      "encoder.input.1.weight",
+      "encoder.hidden.0.weight",
+      "encoder.input.0.bias",
+      "encoder.input.0.weight",
+      "m.gap.bias",
+      "m.gap.weight",
+      "m.embed.weight"
+    ],
+    "error": "nonfinite gradients",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/experiments/market/b10_failure_audit_v2.py\", line 29, in main\n    loss=update(model,opt,t,m)\n  File \"/workspace/experiments/market/b10_matched_update.py\", line 15, in update\n    assert all(torch.isfinite(p.grad).all() for p in model.parameters() if p.grad is not None),'nonfinite gradients'\n           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: nonfinite gradients\n",
+    "gap_min": 0.0,
+    "gap_max": 8.001756999999998,
+    "anomaly_error": "Function 'ExpBackward0' returned nan values in its 0th output.",
+    "anomaly_traceback": "Traceback (most recent call last):\n  File \"/workspace/experiments/market/b10_failure_audit_v2.py\", line 29, in main\n    loss=update(model,opt,t,m)\n  File \"/workspace/experiments/market/b10_matched_update.py\", line 15, in update\n    assert all(torch.isfinite(p.grad).all() for p in model.parameters() if p.grad is not None),'nonfinite gradients'\n           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: nonfinite gradients\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/experiments/market/b10_failure_audit_v2.py\", line 35, in main\n    with torch.autograd.detect_anomaly(check_nan=True):update(model,opt,t,m)\n                                                       ~~~~~~^^^^^^^^^^^^^^^\n  File \"/workspace/experiments/market/b10_matched_update.py\", line 14, in update\n    loss.backward();loss_value+=float(loss.detach())\n    ~~~~~~~~~~~~~^^\n  File \"/workspace/.venv-docker/lib/python3.14/site-packages/torch/_tensor.py\", line 623, in backward\n    torch.autograd.backward(\n    ~~~~~~~~~~~~~~~~~~~~~~~^\n        self, gradient, retain_graph, create_graph, inputs=inputs\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/__init__.py\", line 395, in backward\n    _engine_run_backward(\n    ~~~~~~~~~~~~~~~~~~~~^\n        tensors,\n        ^^^^^^^^\n    ...<5 lines>...\n        accumulate_grad=True,\n        ^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspace/.venv-docker/lib/python3.14/site-packages/torch/autograd/graph.py\", line 1072, in _engine_run_backward\n    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        t_outputs, *args, **kwargs\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )  # Calls into the C++ engine to run the backward pass\n    ^\nRuntimeError: Function 'ExpBackward0' returned nan values in its 0th output.\n"
+  },
+  "updates": [
+    {
+      "attempt": 0,
+      "cursor": 0,
+      "windows": [
+        23,
+        516,
+        15,
+        623,
+        762,
+        359,
+        176,
+        507,
+        783,
+        604,
+        645,
+        586,
+        192,
+        244,
+        688,
+        82
+      ],
+      "loss": 7.290577571948465
+    },
+    {
+      "attempt": 1,
+      "cursor": 16,
+      "windows": [
+        136,
+        85,
+        684,
+        606,
+        42,
+        378,
+        723,
+        461,
+        800,
+        157,
+        99,
+        700,
+        609,
+        535,
+        544,
+        506
+      ],
+      "loss": 7.188578966930895
+    },
+    {
+      "attempt": 2,
+      "cursor": 32,
+      "windows": [
+        246,
+        305,
+        339,
+        351,
+        254,
+        598,
+        60,
+        646,
+        674,
+        549,
+        201,
+        782,
+        302,
+        464,
+        490,
+        312
+      ],
+      "loss": 7.2700894558734355
+    }
+  ],
+  "source_sha256": {
+    "experiments/market/b10_failure_audit_v2.py": "16c983489c0ad9b87320b1f86b78c9e2bfe6713c4ec55080067f8a0448a3ed97",
+    "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+    "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+    "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "input_sha256": {
+    "experiments/results/market/aws_b10_matched_lstm_s0_20261014_v2.progress.pt": "8ec13a76615a41e5a56ad49a8520f439e5ad12a403ff18d30e7c25003e5647c7"
+  },
+  "wall_s": 22.934608926065266,
+  "max_rss_kb": 759168,
+  "scope": "Exact failedreference checkpoint replay; diagnostic updates charged separately, no quality result, optimizer change or numerical repair inferred without failure trace."
+}
