@@ -11,7 +11,6 @@ import continue_curie_deep_language as original
 from continue_curie_deep_recovery import stable_host
 ROOT=original.ROOT
 D16='curie_allocated_deep_d16_8m_20261013_s6_v1'
-D32='curie_allocated_deep_d8_32m_20261013_s6_v1'
 SMOKE='curie_b10_depth8_20261014_s0_v1_smoke'
 FIT='curie_b10_depth8_20261014_s0_v1_fit'
 
@@ -59,17 +58,10 @@ def main():
     try:market_stage()
     except Exception as error:
         market_error=repr(error)
-        print(json.dumps({'market_stage':'failed','error':market_error,'next':'preserve reserved32M language stage'}),flush=True)
+        print(json.dumps({'market_stage':'failed','error':market_error,'next':'stop; inspect completed repair evidence'}),flush=True)
         failure=ROOT/f'experiments/results/market/{FIT}_failure.json'
         with failure.open('x') as f:json.dump(dict(status='failed',battle='B10',error=market_error,smoke=SMOKE,fit=FIT),f,indent=2);f.write('\n')
-    # Preserve the reserved larger-data language test after this market fit.
-    packet=original.load('curie_allocated_deep_d8_smoke_20261013_s6_v1')
-    timeout=math.ceil(2*(packet['train_wall_s_total']/packet['presentations_total'])*65536*512+3600)
-    if timeout>604800:raise RuntimeError('Measured language fit exceeds7days')
-    stable_host();original.run(D32,timeout);original.load(D32)
-    original.run(D32+'_quality',5400);original.load(D32+'_quality','diagnostics')
-    publish([f'experiments/results/token_language/{D32}.json',f'experiments/results/diagnostics/{D32}_quality.json'],
-            'Complete reserved32M native language acquisition after market stage')
+    print('Queue complete: no unchanged32M or duplicate horizon fit admitted',flush=True)
 
 
 def market_stage():

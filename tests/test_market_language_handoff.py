@@ -7,11 +7,11 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-import continue_market_depth_then_language as owner
+import continue_market_depth_v2 as owner
 
 
 class HandoffTest(unittest.TestCase):
-    def test_market_failure_preserves_reserved_language_and_signals_only_coordinator(self):
+    def test_market_failure_does_not_launch_withdrawn_language_and_signals_only_coordinator(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);tokens=root/'experiments/results/token_language';tokens.mkdir(parents=True)
             (root/'experiments/results/market').mkdir()
@@ -27,5 +27,5 @@ class HandoffTest(unittest.TestCase):
                  patch('sys.argv',['owner','--previous-controller-pid','123']),patch('builtins.print'):
                 owner.main()
             self.assertEqual([c.args for c in kill.call_args_list],[(123,signal.SIGSTOP),(123,signal.SIGKILL)])
-            self.assertEqual([c.args[0] for c in run.call_args_list],[owner.D16+'_quality',owner.D32,owner.D32+'_quality'])
+            self.assertEqual([c.args[0] for c in run.call_args_list],[owner.D16+'_quality'])
             self.assertTrue((root/f'experiments/results/market/{owner.FIT}_failure.json').exists())
