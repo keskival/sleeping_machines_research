@@ -1,0 +1,1109 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "strong_parent_initial_loss_gradient_context_rng_containment": true,
+  "parent": "aws_multidepth_readout_8m_20261013_s6_v1",
+  "rows": [
+    {
+      "arm": "parent",
+      "updates": 64,
+      "curve": [
+        {
+          "update": 1,
+          "train_nll": 6.293863773345947,
+          "correction_norm": 0.0
+        },
+        {
+          "update": 2,
+          "train_nll": 5.967888832092285,
+          "correction_norm": 0.0
+        },
+        {
+          "update": 64,
+          "train_nll": 5.878182411193848,
+          "correction_norm": 0.0
+        }
+      ],
+      "wall_s": 33.081506956135854,
+      "teacher_work": [
+        {
+          "kind": "old",
+          "site": [
+            6,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333131923218537,
+            0.4833333329762304,
+            0.9333332748015066,
+            0.9332643730856545,
+            0.9333202254882772,
+            0.3333333333333333,
+            0.9333333329081769,
+            0.9244304908305027
+          ],
+          "mean_suffix_loss_delta": -0.010567903518676758,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            53,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333132005905204,
+            0.9228566750941161,
+            0.9333328424955772,
+            0.9333329947180219,
+            0.03333333338478556,
+            0.03333855346478704,
+            0.9333297715632206,
+            0.9326795661524865
+          ],
+          "mean_suffix_loss_delta": 0.01805722713470459,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            13,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333082840939941,
+            0.927302862916551,
+            0.933051819372406,
+            0.9271740040792145,
+            0.9315195064497263,
+            0.9333292941715743,
+            0.9304330787199717,
+            0.5747133373857916
+          ],
+          "mean_suffix_loss_delta": -0.0033416748046875,
+          "replayed_targets": 128,
+          "scored_targets": 24
+        },
+        {
+          "kind": "old",
+          "site": [
+            59,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.923669206970718,
+            0.9326578569638744,
+            0.5274806800329959,
+            0.7157174429083507,
+            0.9319454091181963,
+            0.9331796081668216,
+            0.48333333329313505,
+            0.695837417231412
+          ],
+          "mean_suffix_loss_delta": 0.007754147052764893,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            7,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9171040181467092,
+            0.903505123140939,
+            0.9332433939744784,
+            0.3333333333333333,
+            0.930725247692906,
+            0.5716846721552834,
+            0.932994198778365,
+            0.5514605016794588
+          ],
+          "mean_suffix_loss_delta": 9.819865226745605e-05,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            1,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.6298021030130884,
+            0.8460511338568136,
+            0.8820857285765373,
+            0.9333132327872072,
+            0.912855292493997,
+            0.8839154781435089,
+            0.9332329557012756,
+            0.3333333333333333
+          ],
+          "mean_suffix_loss_delta": 0.003188401460647583,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            2,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9332385245827938,
+            0.8692812108216893,
+            0.9223686549294808,
+            0.9310766675922169,
+            0.9333011627312456,
+            0.033333362616024174,
+            0.7457951834580211,
+            0.9289689694685371
+          ],
+          "mean_suffix_loss_delta": -0.015064835548400879,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            43,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.33333333333333337,
+            0.3333333333333333,
+            0.13499862457615944,
+            0.9333214029227114,
+            0.3333333333333333,
+            0.9332839618721634,
+            0.9333333332653809,
+            0.3174590371404833
+          ],
+          "mean_suffix_loss_delta": -0.009026914834976196,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            46,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.565462718537153,
+            0.9333328060735182,
+            0.9332358050305025,
+            0.03333357323430918,
+            0.2565448121638269,
+            0.9333333311459509,
+            0.8486965886237853,
+            0.9333333332653809
+          ],
+          "mean_suffix_loss_delta": -0.013778150081634521,
+          "replayed_targets": 128,
+          "scored_targets": 16
+        },
+        {
+          "kind": "old",
+          "site": [
+            47,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333333262304462,
+            0.03333333986192827,
+            0.48333333328868255,
+            0.9332983689493972,
+            0.9327193531398406,
+            0.9283999437518761,
+            0.48333333332483924,
+            0.48333333332483924
+          ],
+          "mean_suffix_loss_delta": -0.027586251497268677,
+          "replayed_targets": 128,
+          "scored_targets": 8
+        },
+        {
+          "kind": "old",
+          "site": [
+            36,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333330613993313,
+            0.9323899388090793,
+            0.9333294019489846,
+            0.13221086847827215,
+            0.3333333333333333,
+            0.9238107129892221,
+            0.033333333367309544,
+            0.9333043082068516
+          ],
+          "mean_suffix_loss_delta": 0.02606731653213501,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            42,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.3333333333333333,
+            0.17487397007363323,
+            0.9333330587794076,
+            0.9333241130181436,
+            0.9333333331645038,
+            0.483312647353313,
+            0.9333316704439744,
+            0.9333332477468509
+          ],
+          "mean_suffix_loss_delta": -0.015113115310668945,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            29,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333333085811089,
+            0.9333230436052775,
+            0.9333332967327073,
+            0.7710669737082912,
+            0.2915995009835164,
+            0.9333330616308575,
+            0.9333180092201224,
+            0.08720987692570531
+          ],
+          "mean_suffix_loss_delta": 0.0036079883575439453,
+          "replayed_targets": 128,
+          "scored_targets": 24
+        },
+        {
+          "kind": "old",
+          "site": [
+            35,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9311035477686656,
+            0.9333329986286347,
+            0.8408659551896841,
+            0.9229420988114448,
+            0.9330669972012074,
+            0.8527230128811707,
+            0.9330674582387873,
+            0.8882640510651272
+          ],
+          "mean_suffix_loss_delta": -0.005134999752044678,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            18,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.18282311789246128,
+            0.9317923265235379,
+            0.8596591751030497,
+            0.5055727266070577,
+            0.9205240008224205,
+            0.9332953419158291,
+            0.932194134097375,
+            0.9284517436252653
+          ],
+          "mean_suffix_loss_delta": -0.0023914873600006104,
+          "replayed_targets": 72,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            42,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333225066668404,
+            0.9333331197168175,
+            0.8922748500575883,
+            0.14991413763765085,
+            0.3922046546866884,
+            0.9305826704061246,
+            0.930267345614007,
+            0.9234005662165452
+          ],
+          "mean_suffix_loss_delta": -0.010755866765975952,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            7,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333332766066974,
+            0.9333002614835028,
+            0.8930468078004499,
+            0.9266057856033106,
+            0.10594494815813435,
+            0.5783105750251134,
+            0.47303656894888896,
+            0.48333333332483935
+          ],
+          "mean_suffix_loss_delta": -0.00405806303024292,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            59,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9328853107531713,
+            0.9316906363727416,
+            0.7562754157727901,
+            0.9333327987000934,
+            0.3333333333333333,
+            0.483089334059556,
+            0.9326505937497378,
+            0.9280881219397695
+          ],
+          "mean_suffix_loss_delta": 0.005076229572296143,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        }
+      ],
+      "final_weights": "experiments/results/token_language/aws_protected_depth_strong_parent_pilot_20261014_v1_parent.pt",
+      "parameters": 3820576
+    },
+    {
+      "arm": "grown",
+      "updates": 64,
+      "curve": [
+        {
+          "update": 1,
+          "train_nll": 6.293863773345947,
+          "correction_norm": 0.20363907516002655
+        },
+        {
+          "update": 2,
+          "train_nll": 5.964055061340332,
+          "correction_norm": 0.3182092308998108
+        },
+        {
+          "update": 64,
+          "train_nll": 5.900649070739746,
+          "correction_norm": 1.3377357721328735
+        }
+      ],
+      "wall_s": 57.97327425912954,
+      "teacher_work": [
+        {
+          "kind": "old",
+          "site": [
+            6,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333131104553511,
+            0.48333333297593734,
+            0.9333332746837185,
+            0.9332650214417314,
+            0.933321105737634,
+            0.3333333333333333,
+            0.9333333329076526,
+            0.9238540840402991
+          ],
+          "mean_suffix_loss_delta": -0.010962367057800293,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            53,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333132604270076,
+            0.9261747099662775,
+            0.932973123426445,
+            0.841284617510491,
+            0.03333333337661537,
+            0.03334542219378861,
+            0.9333293350587435,
+            0.9331438411409685
+          ],
+          "mean_suffix_loss_delta": 0.02208012342453003,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            13,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9277434151480413,
+            0.2860908602392988,
+            0.929870109035056,
+            0.4190247291014234,
+            0.9243854846371465,
+            0.9333247416138083,
+            0.9317252837950684,
+            0.6852735452016253
+          ],
+          "mean_suffix_loss_delta": -0.002476900815963745,
+          "replayed_targets": 128,
+          "scored_targets": 24
+        },
+        {
+          "kind": "new",
+          "site": [
+            26,
+            3,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9091035976310596,
+            0.9333045970020182,
+            0.3543584199482643,
+            0.8916796973016957,
+            0.8747631905949356,
+            0.9326799756464818,
+            0.0333364109636361,
+            0.933134559894862
+          ],
+          "mean_suffix_loss_delta": 0.0003600120544433594,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            59,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333320220286282,
+            0.5365315983442971,
+            0.8279377988717574,
+            0.9168725890099868,
+            0.9294808062553436,
+            0.9311803626742524,
+            0.48333333325161604,
+            0.932647472235078
+          ],
+          "mean_suffix_loss_delta": -0.0010492205619812012,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            7,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.03333422221178733,
+            0.1552933408531723,
+            0.9333333272098003,
+            0.9333332650661792,
+            0.9293904279528902,
+            0.9203613045301469,
+            0.9333013847274673,
+            0.48327316140664944
+          ],
+          "mean_suffix_loss_delta": -0.001943826675415039,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            1,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.3333333333333333,
+            0.9330096035964999,
+            0.89347032521633,
+            0.9333189095260825,
+            0.9329003738820179,
+            0.928552832410694,
+            0.9235962511943923,
+            0.9330158537665744
+          ],
+          "mean_suffix_loss_delta": -0.001236259937286377,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            22,
+            2,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9315438197129842,
+            0.3333333333333333,
+            0.9333326568286567,
+            0.6148444734922652,
+            0.9321981140877342,
+            0.9326780051414132,
+            0.9332166974837474,
+            0.7391143366987736
+          ],
+          "mean_suffix_loss_delta": 0.0006026625633239746,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            2,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.8699876018574617,
+            0.43851559607382146,
+            0.48333333332483935,
+            0.9323573651890797,
+            0.9333333069546836,
+            0.041213177855979014,
+            0.9332252919273362,
+            0.9326433762988553
+          ],
+          "mean_suffix_loss_delta": -0.0025254487991333008,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            3,
+            2,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9304077427741128,
+            0.9333333240237877,
+            0.9279664452004751,
+            0.5553482259200604,
+            0.3333333333333333,
+            0.9312019952062529,
+            0.9242727296761242,
+            0.7342613422766218
+          ],
+          "mean_suffix_loss_delta": 0.0003657341003417969,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            37,
+            3,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.6860516933123629,
+            0.3333333333333333,
+            0.9332754539896512,
+            0.899158453151272,
+            0.910663497553765,
+            0.9329872657770403,
+            0.9333329207503528,
+            0.05396091446128326
+          ],
+          "mean_suffix_loss_delta": -0.0007810592651367188,
+          "replayed_targets": 96,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            43,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.928914351004559,
+            0.06605322717596959,
+            0.3333333333333333,
+            0.933290637739807,
+            0.9333333332653809,
+            0.3333333333333333
+          ],
+          "mean_suffix_loss_delta": 0.010524541139602661,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            46,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.8724540931241146,
+            0.9333329301452248,
+            0.03357855706402292,
+            0.5997377768999076,
+            0.9080501885188623,
+            0.8827718707272983,
+            0.8528743518114238,
+            0.9333333332653809
+          ],
+          "mean_suffix_loss_delta": -0.004838883876800537,
+          "replayed_targets": 128,
+          "scored_targets": 16
+        },
+        {
+          "kind": "old",
+          "site": [
+            47,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333333225292408,
+            0.033333333367309544,
+            0.3333333333333333,
+            0.9332756202246355,
+            0.9333092105101133,
+            0.9332041650552164,
+            0.928115051438046,
+            0.932653508715532
+          ],
+          "mean_suffix_loss_delta": -0.025888308882713318,
+          "replayed_targets": 128,
+          "scored_targets": 8
+        },
+        {
+          "kind": "new",
+          "site": [
+            17,
+            3,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.8895939899107728,
+            0.03333432057210306,
+            0.31474674189770546,
+            0.8411338180460587,
+            0.9333333043979198,
+            0.34721949283885173
+          ],
+          "mean_suffix_loss_delta": -0.0004115551710128784,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            36,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9315183731351923,
+            0.9332244767185129,
+            0.9333326867350649,
+            0.9333332805547677,
+            0.9333333054230587,
+            0.4833087963821535,
+            0.033333333367309544,
+            0.9333158232339167
+          ],
+          "mean_suffix_loss_delta": 0.0024803876876831055,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            62,
+            2,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9293816280359082,
+            0.9209228296907483,
+            0.03333348718844825,
+            0.9201657285584244,
+            0.31427841053868405,
+            0.2581902938300155,
+            0.2609690537612094,
+            0.9318034255991081
+          ],
+          "mean_suffix_loss_delta": 0.007796227931976318,
+          "replayed_targets": 128,
+          "scored_targets": 16
+        },
+        {
+          "kind": "old",
+          "site": [
+            42,
+            0,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333294017741972,
+            0.9333332453689295,
+            0.9255980575463911,
+            0.916704567261624,
+            0.8808480793521993,
+            0.3333333333333333,
+            0.920588727906681,
+            0.3333333333333333
+          ],
+          "mean_suffix_loss_delta": -0.01995718479156494,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            29,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9328971132575651,
+            0.9333333303111887,
+            0.933333186514253,
+            0.8704656275456866,
+            0.933278604261722,
+            0.9331813120956333,
+            0.9333329367833694,
+            0.0333333374337306
+          ],
+          "mean_suffix_loss_delta": 0.01569342613220215,
+          "replayed_targets": 128,
+          "scored_targets": 24
+        },
+        {
+          "kind": "new",
+          "site": [
+            25,
+            3,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9313595886520752,
+            0.932509678540236,
+            0.9333332847416035,
+            0.932872995064838,
+            0.9326665259256051,
+            0.9320293947673165,
+            0.033334512659641956,
+            0.9324117913559566
+          ],
+          "mean_suffix_loss_delta": -0.0004323124885559082,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            58,
+            3,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.315050114472945,
+            0.5507276939848901,
+            0.9302056810175642,
+            0.36922618284634423,
+            0.9012129154939297,
+            0.9298878891414152,
+            0.03333364476425148,
+            0.929751759374965
+          ],
+          "mean_suffix_loss_delta": -1.0699033737182617e-05,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            35,
+            1,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.891895978996943,
+            0.9333333065237,
+            0.9303264895598828,
+            0.9333234359703065,
+            0.9332364217767475,
+            0.9153702333928235,
+            0.9333314336099681,
+            0.9333289513537397
+          ],
+          "mean_suffix_loss_delta": 0.016901254653930664,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            18,
+            0,
+            1
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.33333333333333337,
+            0.12624907352854928,
+            0.9323851417066923,
+            0.9298669211416708,
+            0.9328490964770392,
+            0.9063468503563911,
+            0.3179085518270671,
+            0.8349832426316245
+          ],
+          "mean_suffix_loss_delta": -0.002471745014190674,
+          "replayed_targets": 72,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            39,
+            2,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.3380361558115585,
+            0.35244993495397,
+            0.8256884345065055,
+            0.5283115615679311,
+            0.15832678227021507,
+            0.7157186001108619,
+            0.35484650412525076,
+            0.4008475363943944
+          ],
+          "mean_suffix_loss_delta": 1.1414289474487305e-05,
+          "replayed_targets": 104,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            34,
+            3,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.04230609479778133,
+            0.033540788816206125,
+            0.18555933585792975,
+            0.9097747511948906,
+            0.6156971853801761,
+            0.48333333332483935,
+            0.9332671171250595,
+            0.8084475270448509
+          ],
+          "mean_suffix_loss_delta": 1.7315149307250977e-05,
+          "replayed_targets": 120,
+          "scored_targets": 32
+        },
+        {
+          "kind": "new",
+          "site": [
+            52,
+            2,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.2884257093988207,
+            0.3837575634632482,
+            0.9333133014384071,
+            0.5091443666166023,
+            0.6958707672531261,
+            0.7908619911391118,
+            0.3158834118068011,
+            0.2793011486558535
+          ],
+          "mean_suffix_loss_delta": 0.00048404932022094727,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            42,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.8454108190184837,
+            0.933166658099879,
+            0.9332040018569497,
+            0.919775241065417,
+            0.4724428620197739,
+            0.6174159955206726,
+            0.8661752936530269,
+            0.9020839277955938
+          ],
+          "mean_suffix_loss_delta": 0.0068641602993011475,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            7,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.933327945880794,
+            0.8865928997874312,
+            0.9300343530003913,
+            0.9319395004125268,
+            0.03333334538419888,
+            0.9327185929263909,
+            0.9023211650416056,
+            0.9283956946757556
+          ],
+          "mean_suffix_loss_delta": 0.009148955345153809,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        },
+        {
+          "kind": "old",
+          "site": [
+            59,
+            1,
+            0
+          ],
+          "inverse_site_probability": 256,
+          "proposal_probability": [
+            0.9333314615992128,
+            0.8961849874990867,
+            0.8096256579485392,
+            0.03351055185239862,
+            0.9333329146305352,
+            0.3118259047098087,
+            0.33419177548543305,
+            0.933310676929778
+          ],
+          "mean_suffix_loss_delta": -0.0023053884506225586,
+          "replayed_targets": 128,
+          "scored_targets": 32
+        }
+      ],
+      "final_weights": "experiments/results/token_language/aws_protected_depth_strong_parent_pilot_20261014_v1_grown.pt",
+      "parameters": 3873328
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+    "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+    "sleeping_machines/learning/dense_to_receiver_moments.py": "7bb2cf41854b503b7963c83d92989460025a0274275ff807f0cac9953e2773a3",
+    "sleeping_machines/optional_temporal_depth.py": "301f34e94d5bf9b628e9e5fe94588d8aa76fac53820ca4d78b14db58900ea640",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_multidepth_readout_8m_20261013_s6_v1.json": "29278e9890e2b6ad626b1c305e4a965ce4831b4d5cfdef2abef6ef2bc1df70d3",
+    "experiments/results/token_language/aws_multidepth_readout_8m_20261013_s6_v1.pt": "6e3c5de1ba2b1f6ef256e88d1df6a2427793b08d22f3126c18eed4dfc65896e1"
+  },
+  "wall_s": 92.18734321603552,
+  "max_rss_kb": 750276,
+  "scope": "Strongest completed native readout parent, acquired2\u2192protected4stages, same64updateTRAIN continuation numerical/resource pilot. Globalclip1 diagnostic only; calibratedlocal integration and recovery gate before fullfit. Oldperstage teacher opportunity retained and newstream charged; cold newoutputmap has zero internalpredictiongrad initially, learns through live output credit first. No DEVquality win or physical async claim."
+}
