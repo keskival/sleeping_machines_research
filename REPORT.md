@@ -2,7 +2,7 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 13 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 14 October 2026
 
 ## Public benchmark record — 9 October 2026
 
@@ -3118,6 +3118,24 @@ Same-learning ordered-gradient native-work comparison. Same8192-target integrate
 | original_lookup | 8192 | 8.067129 | 3.543396 | 23.051382 | 21.689106 |
 | ordered_lookup | 8192 | 8.067129 | 1.112144 | 22.901808 | 11.812904 |
 
+Actual deep language acquisition, first developed member at8M: D8 is worse than retainedD2 by0.115097nats/target, at3.377x complete training time. In development: best paired8192-target/1024-history DEV6.160183(D2), candidate6.275280(D8). Added depth is not promoted at this acquisition point; reservedD16/8M andD8/32M continue. This result is evidence about this member, not a developed-attempt family verdict.
+
+| Depth | Fit targets | Parameters | Paired DEV NLL | Full fit seconds | Fit ms/target | Writes/keys |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | 8388352 | 3164842 | 6.160183 | 7734.249 | 0.9220 | 4/16 |
+| 8 | 8388352 | 3309274 | 6.275280 | 26115.095 | 3.1133 | 16/64 |
+
+| TRAIN rank bin | DEV targets | D2 NLL | D8 NLL | Weighted gap |
+| --- | --- | --- | --- | --- |
+| 0-2000 | 5794 | 4.573341 | 4.649726 | +0.054025 |
+| 2000-10000 | 1323 | 8.962653 | 9.207416 | +0.039529 |
+| 10000-30000 | 782 | 10.820373 | 11.031864 | +0.020189 |
+| 30000-50257 | 293 | 12.447634 | 12.485494 | +0.001354 |
+
+All four frequency bins worsen. Zero-feature NLL improves7.962873 to7.952018, while feature-conditioned gain falls1.802690 to1.676738; the0.125952 gain deficit outweighs the0.010855 offset improvement. This is a readout intervention decomposition, not a causal bottleneck diagnosis. Identical adaptive tail widths24/12/6 and701962 readout parameters; larger native core and4x selected writes/key discovery are charged. Both use properGPT2 FineWeb, same seed6/acquisition/prior, final-stage prediction and creditwindow16; checkpoint evaluation cadence differs(256 versus1024). D8 training26115.095s versusD2 7734.249s. Zero-feature interventions mix current input and persistent-state contribution and do not isolate memory or identify the causal bottleneck. Final-stage depth scaling, seed6, reused depth2/8M comparator, different acquisition budgets named per row, same8192 previously used transfer-DEV tokens scored with disjoint1024-token histories and all shifted targets; no EOS reset, no public validation or checkpoint selection. Rank bins fitted from fixed initial TRAIN prior. Zero-feature intervention distinguishes readout intercepts from all factual input/state features, not persistent history alone. Tail widths are implementation capacity, not proof of a bottleneck. Diagnostic wall includes extra readout scoring; candidate repair requires integrated fitting comparison.
+
+Next diagnosis: use reserved acquisition results and retained-stage content cuts to distinguish insufficient acquisition, downstream representation disruption and short consequence credit. Nonzero layer gradients are a numerical coverage gate, not proof of useful information or a response rate. Public validation remains sealed.
+
 ## FAS native frozen-recipe replication
 
 **Replicated win against all six anonymous generic controls at 256 events.** Completed native fitting seeds: 6, 7, 8.
@@ -5666,17 +5684,6 @@ Backtracking critic updates must reduce the previously issued one-step next-wind
 
 Functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.97218452297966 seconds.
 
-### Connected prospective mean-credit intervention
-
-| Depth/domain | Learner | NLL | CPU seconds |
-| --- | --- | --- | --- |
-| market | online | 10.571007 | 166.303 |
-| market | frozen | 10.576801 | 80.597 |
-| market | zero | 10.548777 | 75.552 |
-| market | bptt | 10.546759 | 93.907 |
-
-Two connected credit outputs: calibrated c+A/p(g-c), plus deliberately mean-changing prospective b, both trained by actual next-window utility. Calibration remains unbiased before optimizer; total credit does not claim unbiased backprop. Fresh actor seed190;64acquisition512reusegroups; functional anchors condition critic on exact first-event state cotangent and counterfactual current producer response to local-only clipped Adam; output component bounded to twice observed cotangent RMS with1e-6floor. Zero/BPTT bypass unused critic/anchor work. No claim that two functional probes identify all possible actor operators. Connected recurrent credit vector trained through actual one-step clipped Adam and next revealed window NLL; no gradient imitation target. Actor moments and carried numerical state held fixed in the meta derivative, credit activations persist but derivatives truncate. Independent residual audits, exact local derivatives, all teacher replays/optimizers charged. Identical acquisition and Adam state in four arms. Dense v5 boundary diagnostic, no optional-route/TEST/efficiency claim. Shared acquisition wall 20.987489838007605 seconds.
-
 ### Longer-data complete native learning
 
 | Learner | Whole prequential NLL | Whole CPU seconds |
@@ -6451,6 +6458,10 @@ Native head4uniform31,804trainable parameters versus head64addressed32,824; shar
 Mean addressed NLL5.756409218 ± 0.000083050; mean gain over own parent-0.000107716 and uniform energy-bound control+0.000031423nats/event. Mixed cohort outcomes; retain per-parent findings and do not promote a universal winner.
 
 Three saved independently initialized critics, one shared restoredactor/TRAIN/reusedDEV. Fixed residual trainingseed, radius,256receipts8192TRAIN/16384DEV, no tuning between parents or quality veto. SampleSD across critic parents. Each fit pays512extra worlds12288score+8192refresh,4096own-gradient targets within scoring; original actor/parent acquisition additional. Maximum residual L2bound matched, not realized updates/totalwork; addressed head adds1020parameters. No TEST/independentactor or datareplication/full-ASIC claim.
+
+### Local replay artifact availability
+
+Saved completed result JSON and available source/input hashes are checked. 2 referenced checkpoint or dataset files are absent on this report host; their recorded input hashes are retained, but learner replay cannot be independently verified here. Missing replay artifacts: data/binance/npz/2026-08-24.npz, experiments/results/market/curie_b10_race_dev_s0_20261009T1800Z.pt.
 
 ## Appendix. B1 exact deep online credit: structural blocks and real-data execution
 

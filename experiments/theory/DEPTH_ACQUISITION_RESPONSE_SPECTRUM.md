@@ -106,3 +106,54 @@ For a later compact-credit integration, small paid forward probes can estimate r
 The decision record should show: depth and available capacity; selected activity and discovery; acquisition; quality trajectory and long-history score; any measured layer-information dependence; full teacher/optimizer/work resources. Label empirical slopes as finite differences. Do not compare an observed native CPU curve with a published Transformer GPU clock as if they shared a hardware denominator.
 
 The next step remains actual D8/D16 acquisition and32M scaling. This response-spectrum construction tells us how to interpret those results and which conditioning/credit failure to repair. It does not substitute theoretical optimism for the selected checkpoint's public language score.
+
+## Completed D8 acquisition: gradient coverage is not useful information
+
+14 October2026, source: `results/diagnostics/aws_native_deep_d8_8m_quality_20261013_s6_v1.json`.
+At8,388,352 acquired targets, paired8192DEV/1024history: D2 NLL6.160183,
+D8 NLL6.275280, gap+0.115097. Complete training7734.249/26115.095seconds,
+ratio3.376552. One seed, same initial TRAIN prior and adaptive final-stage
+readout size; evaluation cadence differs256/1024. All four frequency bins
+worsen. D8 is not promoted at this point; D16/8M and reservedD8/32M continue.
+This first member result is not a developed-attempt family verdict.
+
+The exact scored intervention decomposition writes L=Z-G, where Z is this
+fitted readout's zero-feature NLL and G=Z-L is factual feature-conditioned gain.
+D2 gives Z7.962873/G1.802690; D8 gives Z7.952018/G1.676738. Therefore
+
+    L8-L2 = (Z8-Z2) - (G8-G2)
+           = -0.010855 + 0.125952 = 0.115097.
+
+The decoder offsets improve slightly while factual feature-conditioned gain
+falls. This intervention includes current content and persistent history;
+it is not mutual information, a pure memory measurement, or a proof that a
+particular transport/readout/credit mechanism caused the deficit.
+
+For population logarithmic loss with representation Z_d and normalized decoder
+q_d, the exact information-theoretic identity is
+
+    R_d = H(Y|Z_d) + E[KL(P(Y|Z_d) || q_d(Y|Z_d))].
+
+Hence the depth gap separates representation information from decoder fitting
+error. This follows by adding and subtracting log P(Y|Z_d). The finite DEV
+scores do not identify either term individually. If an augmented representation
+retains a parent Z and adds U, its optimal prediction improvement is
+H(Y|Z)-H(Y|Z,U)=I(Y;U|Z)>=0. Our D8 final-stage representation is not declared
+to contain the trained D2 parent, so that nested-information guarantee does not
+apply. More layers and nonzero parameter gradients alone cannot supply it.
+
+A constructive witness makes the gradient point explicit. Let every stage
+multiply a scalar input by a nonzero trainable factor. An endpoint squared
+loss can have nonzero derivatives for every factor, while every intermediate
+representation is an invertible scalar rescaling of the same input. Depth
+adds no predictive information and can change optimization conditioning.
+This witness does not describe the native model; it disproves the inference
+that every-layer gradient coverage alone establishes useful acquired depth.
+
+The engineering priority is to measure predictive consequence at stage cuts,
+retain acquisition long enough to test slow learning, and implement faithful
+learning-policy replay for later credit. Forward depth, available route capacity,
+selected activity, information retained and learning response are separate
+quantities. The current completed result makes their separation necessary;
+it does not replace temporal computation or counterfactual learning with a
+dense architectural substitute. No new fit or public selection is admitted.

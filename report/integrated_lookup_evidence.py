@@ -232,4 +232,26 @@ def blocks():
                f"{r['backward_output_payload_bytes']/1e9:.6f}"] for r in c['rows']]
         result.extend([('p','Same-learning ordered-gradient native-work comparison. '+c['scope']),
             ('table',(['Implementation','Targets','Registered GFLOPs','Declared scalar Gops','BP operand GB','BP output GB'],rows,[40,24,32,32,32,32]))])
+    deep=ROOT/'experiments/results/diagnostics/aws_native_deep_d8_8m_quality_20261013_s6_v1.json'
+    if deep.exists():
+        c=json.loads(deep.read_text());assert c['status']=='completed'
+        for name,digest in {**c['source_sha256'],**c['input_sha256']}.items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
+        base,candidate=c['rows'];gap=candidate['scored']['nll']-base['scored']['nll']
+        ratio=candidate['full_training_s']/base['full_training_s']
+        rows=[[str(r['depth']),str(r['acquisition']),str(r['parameters']),
+               f"{r['scored']['nll']:.6f}",f"{r['full_training_s']:.3f}",
+               f"{1000*r['training_s_per_target']:.4f}",
+               str(r['selected_writes_per_target'])+'/'+str(r['scored_keys_per_target'])] for r in c['rows']]
+        buckets=[]
+        for b,d in zip(base['buckets'],candidate['buckets']):
+            assert (b['rank_low'],b['rank_high'],b['count'])==(d['rank_low'],d['rank_high'],d['count'])
+            buckets.append([str(b['rank_low'])+'-'+str(b['rank_high']),str(b['count']),
+                            f"{b['nll']:.6f}",f"{d['nll']:.6f}",
+                            f"{d['total_nll_contribution']-b['total_nll_contribution']:+.6f}"])
+        result.extend([('p',f'Actual deep language acquisition, first developed member at8M: D8 is worse than retainedD2 by{gap:.6f}nats/target, at{ratio:.3f}x complete training time. In development: best paired8192-target/1024-history DEV6.160183(D2), candidate6.275280(D8). Added depth is not promoted at this acquisition point; reservedD16/8M andD8/32M continue. This result is evidence about this member, not a developed-attempt family verdict.'),
+            ('table',(['Depth','Fit targets','Parameters','Paired DEV NLL','Full fit seconds','Fit ms/target','Writes/keys'],rows,[16,30,28,32,32,30,20])),
+            ('table',(['TRAIN rank bin','DEV targets','D2 NLL','D8 NLL','Weighted gap'],buckets,[38,32,36,36,36])),
+            ('p','All four frequency bins worsen. Zero-feature NLL improves7.962873 to7.952018, while feature-conditioned gain falls1.802690 to1.676738; the0.125952 gain deficit outweighs the0.010855 offset improvement. This is a readout intervention decomposition, not a causal bottleneck diagnosis. Identical adaptive tail widths24/12/6 and701962 readout parameters; larger native core and4x selected writes/key discovery are charged. Both use properGPT2 FineWeb, same seed6/acquisition/prior, final-stage prediction and creditwindow16; checkpoint evaluation cadence differs(256 versus1024). D8 training26115.095s versusD2 7734.249s. Zero-feature interventions mix current input and persistent-state contribution and do not isolate memory or identify the causal bottleneck. '+c['scope']),
+            ('p','Next diagnosis: use reserved acquisition results and retained-stage content cuts to distinguish insufficient acquisition, downstream representation disruption and short consequence credit. Nonzero layer gradients are a numerical coverage gate, not proof of useful information or a response rate. Public validation remains sealed.')])
     return result

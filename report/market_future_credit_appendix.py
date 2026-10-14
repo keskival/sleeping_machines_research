@@ -2,6 +2,7 @@
 import hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+UNAVAILABLE_CHECKPOINTS=set()
 
 
 def load(tag):
@@ -9,11 +10,15 @@ def load(tag):
     result=json.loads(path.read_text());assert result['status']=='completed'
     for field in ('source_sha256','input_sha256'):
         for name,digest in result.get(field,{}).items():
+            if field=='input_sha256' and Path(name).suffix in ('.pt','.npz','.npy','.bin') and not (ROOT/name).exists():
+                UNAVAILABLE_CHECKPOINTS.add(name)
+                continue
             assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
     return result
 
 
 def pages():
+    UNAVAILABLE_CHECKPOINTS.clear()
     if not (ROOT/'experiments/results/market/curie_b10_future_credit_confirmation_20261013_v1.json').exists():return []
     d=load('curie_b10_future_credit_evidence_20261013_v1')
     c=load('curie_b10_future_credit_confirmation_20261013_v1')
@@ -103,4 +108,8 @@ def pages():
           ('table',(['Parent seed','Parent NLL','Uniform bound NLL','Addressed NLL'],[[str(r['parent_seed']),f"{r['parent_nll']:.9f}",f"{r['uniform_nll']:.9f}",f"{r['addressed_nll']:.9f}"] for r in c['rows']],[36,47,61,54])),
           ('p',f"Mean addressed NLL{c['mean_nll']:.9f} ± {c['sample_sd_nll']:.9f}; mean gain over own parent{c['mean_parent_gain']:+.9f} and uniform energy-bound control{c['mean_uniform_gain']:+.9f}nats/event. {'Wins both controls for all three parents.' if c['all_parent_wins'] and c['all_uniform_wins'] else 'Mixed cohort outcomes; retain per-parent findings and do not promote a universal winner.'}"),
           ('small','Three saved independently initialized critics, one shared restoredactor/TRAIN/reusedDEV. Fixed residual trainingseed, radius,256receipts8192TRAIN/16384DEV, no tuning between parents or quality veto. SampleSD across critic parents. Each fit pays512extra worlds12288score+8192refresh,4096own-gradient targets within scoring; original actor/parent acquisition additional. Maximum residual L2bound matched, not realized updates/totalwork; addressed head adds1020parameters. No TEST/independentactor or datareplication/full-ASIC claim.')])
+    if UNAVAILABLE_CHECKPOINTS:
+        current.append([('h2','Local replay artifact availability'),
+            ('small','Saved completed result JSON and available source/input hashes are checked. '+
+             str(len(UNAVAILABLE_CHECKPOINTS))+' referenced checkpoint or dataset files are absent on this report host; their recorded input hashes are retained, but learner replay cannot be independently verified here. Missing replay artifacts: '+', '.join(sorted(UNAVAILABLE_CHECKPOINTS))+'.')])
     return current
