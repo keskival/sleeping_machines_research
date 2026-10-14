@@ -92,7 +92,7 @@ amendment before fitting, not a post-result change of denominator.
 2. Contract: future marks/timestamps cannot change earlier scores or gradients;
    zero-gap scores and gradients finite; normalized cell probability and mark law;
    common-head parity from identical hidden features; chunk/reset semantics;
-   exact saved-native score replay (6.882244527423017 NLL within1e-8).
+   direct likelihood parity against the original implementation on identical hidden features and causal inputs. Fresh fits require no original checkpoint.
 3. Validate full training ledger, batch-budget stop and checkpoint-resume parity;
    representative full1024-length update smoke for each model, measured RSS/CPU.
 4. Freeze numerical B, driver hashes, initialized configurations, output paths,
@@ -122,3 +122,7 @@ quality and a single scope statement. Report wins and losses plainly. The frozen
 B10 seven-day/three-seed/volatility rule remains unchanged; September evaluation
 requires the existing sealed-test admission after development selection. No P&L
 claim follows from likelihood alone.
+
+## Admission correction —14 October 2026
+
+Founder removed the saved-native exact-score replay requirement as unnecessary for fresh fits. No original checkpoint or portable old forecasts are required. Preserve the original completed score as separate evidence; certify the new comparison through shared TRAIN/DEV identities, direct common-head parity, causal/finite-gradient contracts and audited work.

@@ -3,12 +3,12 @@
   "battle": "B10",
   "host": "ip-172-31-47-132",
   "name": "aws_b10_matched_controls_20261014_v1",
-  "status": "queued_for_implementation",
+  "status": "implemented_engineering_gates_queued",
   "training_admitted": false,
   "authorization": "Explicit founder request14October2026: LSTM and Transformer market benchmarks with equal compute",
   "decision": "Native vs LSTM vs Transformer full B10 DEV NLL at matched complete fitting arithmetic",
   "protocol": "experiments/market/B10_AWS_MATCHED_CONTROLS.md",
-  "protocol_sha256": "3a54c5204bdace68ce69fdaeebecaabd7528030016c0628a891224ce2f0851a6",
+  "protocol_sha256": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74",
   "models": [
     "native_race_d32_l2",
     "lstm_d32_l2",
@@ -25,7 +25,6 @@
   "admission_gates": [
     "portable_train_dev_source_parity",
     "common_cell_likelihood_and_causality",
-    "native_saved_score_replay",
     "validated_complete_training_operator_ledger",
     "numerical_budget_B_frozen",
     "resume_and_full_shape_resource_smokes",
@@ -33,6 +32,20 @@
   ],
   "scheduler": "scripts/run_aws_product_priority_six.py",
   "runner": "experiments/queue/run_safe_aws6.sh",
-  "runtime_addendum": null,
-  "reason_not_runtime_addendum": "New information-matched encoder drivers and full-work ledger must pass gates before executable jobs exist"
+  "runtime_addendum": "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452130741054.json",
+  "implementation": [
+    "experiments/market/b10_matched_models.py",
+    "experiments/market/b10_matched_data.py",
+    "experiments/market/b10_matched_pipeline.py",
+    "experiments/market/b10_matched_fit.py",
+    "experiments/market/b10_operator_ledger.py",
+    "experiments/market/b10_depth_tpp_v1.py",
+    "experiments/market/prepare.py",
+    "experiments/tpp/race_tpp_v5.py",
+    "experiments/market/B10_AWS_MATCHED_CONTROLS.md"
+  ],
+  "runtime_addenda": [
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452089625441.json",
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/zzzzzzzzzzzzzzzzzzzzzzzzzzzzb10_1792005452130741054.json"
+  ]
 }
