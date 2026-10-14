@@ -1,0 +1,29 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Founder requests LSTM reference work on free slot4; full TRAIN pilot charged to reference, checkpoint retained",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_b10_lstm_reference_admission_20261014_v1",
+        "kind": "b10_job",
+        "queue": "experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_lstm_reference_admission_20261014_v1/aws_b10_lstm_reference_admission_20261014_v1.txt",
+        "queue_sha256": "15f13af0fd77fb09c1fe78d38803972bb3dc8b9851b25a2f11e19becdaa5431d",
+        "source_sha256": {
+          "experiments/market/b10_lstm_reference_admission.py": "15d0f299dc4ee306df91134239ad3cf25047b195d63c36622e2a644c6d48499b",
+          "experiments/market/b10_operator_ledger_v2.py": "a72630899c59911a481d244a4122317fc546ed194017b2750c55bee4e4327599",
+          "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+          "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/market/aws_b10_lstm_reference_admission_20261014_v1.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
