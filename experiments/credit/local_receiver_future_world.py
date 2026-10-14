@@ -5,7 +5,13 @@ import copy,hashlib
 from native_token_teacher_world import native,ROOT
 import local_clip_receiver_token_language as integrated
 from sleeping_machines.depth_credit_allocator import DepthCreditAllocator
-from sleeping_machines.learning.clone_local_receiver_learner import clone_local_receiver_learner as clone_receiver_learner
+from sleeping_machines.learning.clone_local_receiver_learner import clone_local_receiver_learner
+from sleeping_machines.learning.clone_calibrated_receiver_learner import clone_calibrated_receiver_learner
+
+def clone_receiver_learner(model,optimizer):
+    if hasattr(optimizer.receiver.local,'bank_caps'):
+        return clone_calibrated_receiver_learner(model,optimizer)
+    return clone_local_receiver_learner(model,optimizer)
 DRIVER=ROOT/'experiments/local_clip_receiver_token_language.py'
 EXPECTED_SHA256='2e2407f154b0897aa539343cce89579914b0c3ffac80d38b5690f5603202d414'
 
