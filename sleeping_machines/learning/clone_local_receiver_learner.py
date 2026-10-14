@@ -15,6 +15,8 @@ def clone_local_receiver_learner(model,optimizer):
     options={k:groups[0][k] for k in allowed if k in groups[0]}
     if any({k:g[k] for k in allowed if k in g}!=options for g in groups):
         raise ValueError('Heterogeneous bank options need an explicit clone recipe')
+    if hasattr(optimizer.receiver.local,'bank_caps'):
+        raise ValueError('Calibrated bank-cap learner requires an explicit cap-preserving clone recipe')
     cloned=copy.deepcopy(model)
     rebuilt=ReceiverBankAdamW(cloned,local_clip=optimizer.receiver.local.local_clip,**options)
     rebuilt.load_state_dict(copy.deepcopy(optimizer.state_dict()))
