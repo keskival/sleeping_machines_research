@@ -1,0 +1,25 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Per-bank clipping removes global norm dependency; exact local law gate",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_local_clip_independence_contract_20261014_v1",
+        "queue": "experiments/queue/r1/aws_local_clip_independence_contract_20261014_v1/aws_local_clip_independence_contract_20261014_v1.txt",
+        "queue_sha256": "72d1bf22bb727f855a584cd0a008aca3db7e950d46055c5b9e4d59bad4422095",
+        "kind": "r1_job",
+        "source_sha256": {
+          "experiments/credit/check_local_clip_independence.py": "d003a4bb020c6d61ec1dd732af351bbde13735f8ea6451101eaccef0c8486ea2",
+          "sleeping_machines/learning/local_credit_banks.py": "8a6ed1edff0f675f61e9451fe380a9a501dc43c1d4c1e58c104990b07c3184af"
+        },
+        "result": "experiments/results/credit/aws_local_clip_independence_contract_20261014_v1.json",
+        "requires": [],
+        "timeout_s": 180,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Bank-local readiness integration contract; wait for reserved training slot",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_bank_credit_inbox_contract_20261014_v1",
+        "queue": "experiments/queue/r1/aws_bank_credit_inbox_contract_20261014_v1/aws_bank_credit_inbox_contract_20261014_v1.txt",
+        "queue_sha256": "2037bf67a20b9287c25c959322bf01d8f7922eb55fe67ebd1e8860b1058468ba",
+        "kind": "r1_job",
+        "source_sha256": {
+          "experiments/credit/check_bank_credit_inbox.py": "4b6e58ac0ebc41c5d62792b20f004a7856d8f84e011928f91ef6c77e4fc4ecde",
+          "sleeping_machines/learning/bank_credit_inbox.py": "a773948c991f5b2727c2cace10ea4e6cc5fcb28acf449717d86fd54c3d1132bc",
+          "sleeping_machines/learning/local_credit_banks.py": "8a6ed1edff0f675f61e9451fe380a9a501dc43c1d4c1e58c104990b07c3184af"
+        },
+        "result": "experiments/results/credit/aws_bank_credit_inbox_contract_20261014_v1.json",
+        "requires": [],
+        "timeout_s": 120,
+        "rss_kb": 1500000,
+        "vms_kb": 8000000
+      }
+    ]
+  }
+}
