@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "protocol": {
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "rows": [
+    {
+      "tag": "aws_bernoulli_teacher_8m_20261013_s6_v2",
+      "nll": 6.160182666892041,
+      "parameters": 3164842,
+      "acquired_targets": 8388352,
+      "training_s": 7734.249354515225,
+      "training_s_per_target": 0.0009220225086542893,
+      "nll_gain_over_strong_d2": -0.06084562595891896,
+      "process_wall_precision": "per-invocation only",
+      "quality_training_time_frontier": true
+    },
+    {
+      "tag": "aws_multidepth_readout_8m_20261013_s6_v1",
+      "nll": 6.099337040933122,
+      "parameters": 3820576,
+      "acquired_targets": 8388352,
+      "training_s": 8657.82008446171,
+      "training_s_per_target": 0.0010321240792543886,
+      "nll_gain_over_strong_d2": 0.0,
+      "process_wall_precision": "per-invocation only",
+      "quality_training_time_frontier": true
+    },
+    {
+      "tag": "aws_native_deep_d8_8m_20261013_s6_v1",
+      "nll": 6.275279687531054,
+      "parameters": 3309274,
+      "acquired_targets": 8388352,
+      "training_s": 26115.09525091597,
+      "training_s_per_target": 0.0031132569604751885,
+      "nll_gain_over_strong_d2": -0.17594264659793168,
+      "process_wall_precision": "per-invocation only",
+      "quality_training_time_frontier": false
+    },
+    {
+      "tag": "curie_allocated_deep_d8_8m_20261013_s6_resume2_v1",
+      "nll": 6.289903831241759,
+      "parameters": 3309274,
+      "acquired_targets": 8388352,
+      "training_s": 42123.0479027151,
+      "training_s_per_target": 0.005021611861628494,
+      "nll_gain_over_strong_d2": -0.19056679030863677,
+      "process_wall_precision": "lower bound",
+      "quality_training_time_frontier": false
+    }
+  ],
+  "excluded": [],
+  "source_sha256": {
+    "experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json": "e0437a41c3e96b15aacc1ea3ba7035aeedb8f30b4c60ca2aaf05383106939fec",
+    "experiments/results/diagnostics/aws_native_deep_d8_8m_quality_20261013_s6_v1.json": "16bdba8c5efff688445e4fdaa8d121ef7e179db410cca5dba6ce713a85573390",
+    "experiments/results/diagnostics/curie_allocated_deep_d8_8m_20261013_s6_resume2_v1_quality.json": "1355d2ec2c9448bb133bedf7fdf2290665cacb44a48338d8aeafdd8a623e075d",
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json": "61894367ac4da6efd50e8c65bc51e7adbd889e050d7c44a1489cd9f4199e48d6",
+    "experiments/results/token_language/aws_multidepth_readout_8m_20261013_s6_v1.json": "29278e9890e2b6ad626b1c305e4a965ce4831b4d5cfdef2abef6ef2bc1df70d3",
+    "experiments/results/token_language/aws_native_deep_d8_8m_20261013_s6_v1.json": "7d29747fa17f6201ab30d692ca9de0ce18e221333392c5a4dea3f046f2aa0daf",
+    "experiments/results/token_language/curie_allocated_deep_d8_8m_20261013_s6_resume2_v1.json": "a89c273338c31cdd6166e909724cd3e7ff0aeea188c0c990c089a0011f0cfb25"
+  },
+  "scope": "Saved single-seed development evidence; matching targets/history, varying architectures/acquisition/teaching. Training seconds are measured successful-trajectory time, not FLOPs or whole process cost. Frontier is descriptive across hosts, not a matched-compute win. Public validation untouched."
+}
