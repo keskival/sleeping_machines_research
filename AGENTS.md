@@ -6,12 +6,21 @@
   host memory, running jobs, and GPU occupancy. Reuse an existing benchmark
   configuration when possible; prioritize the deferred large Transformer
   comparisons on a provisioned AWS host.
-- AWS exception explicitly authorized by the user on 2026-10-01: on
-  `ip-172-31-47-132`, the AWS gym may run up to three one-thread CPU jobs
-  through the bounded slot scheduler. It reserves the ordinary host lock,
-  keeps per-slot locks/RSS watchdogs and at least 8 GiB MemAvailable, and
-  serializes result publication. Other hosts and GPU jobs retain the
-  one-training-job rule.
+- AWS host-specific exception, expanded by the user on14October2026: on
+  `ip-172-31-47-132` (16vCPUs/8reportedphysicalcores/~31GiBRAM), the bounded
+  gym may run up to six one-thread CPU jobs. Pin slots to six distinct physical
+  cores, leave two physical cores and their SMT siblings for responsiveness,
+  retain per-slot locks/RSS watchdogs and at least8GiB MemAvailable. The six-slot
+  envelope caps each job at3,000,000KiBRSS; larger jobs require a deliberately
+  reduced concurrency reservation. Reserve the ordinary host lock and serialize
+  publication. Use run_safe_aws6.sh only through the six-slot coordinator.
+  Existing trainers finish untouched before scheduler handoff.
+- Curie is a smaller shared host: retain its stricter one-training-job limit,
+  host reserve and cgroup headroom from its active pipeline. Do not copy the
+  larger AWS concurrency policy to Curie, or infer newworker sizing from Curie.
+  Other hosts and GPU jobs keep one-training-job admission unless separately
+  authorized. Disposable-worker memory reserves use intended-workload
+  measurements as clarified below.
 - Run exactly one training job at a time on each host. Put every run in a
   uniquely named one-job queue and invoke `experiments/queue/run_safe.sh`;
   never launch a benchmark directly with Python or bypass its lock. If the
