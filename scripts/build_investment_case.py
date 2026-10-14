@@ -19,7 +19,8 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 INPUTS = ['investment/INVESTMENT_CASE.md', 'investment/PITCH.md',
-          'investment/evidence_20261003.json', 'scripts/build_investment_case.py']
+          'investment/evidence_20261003.json', 'investment/language_learning_evidence.json',
+          'scripts/prepare_language_learning_evidence.py', 'scripts/build_investment_case.py']
 
 
 def sha(path):

@@ -162,6 +162,12 @@ def verify():
         for name,digest in packet['completed_evidence_sha256'].items():
             if sha(ROOT/name)!=digest:raise ValueError('Changed forward-credit evidence: '+name)
         data['metrics'].update(packet['metrics'])
+    language_packet=INV/'language_learning_evidence.json'
+    if language_packet.exists():
+        packet=json.loads(language_packet.read_text());assert packet['status']=='completed'
+        for name,digest in packet['completed_evidence_sha256'].items():
+            if sha(ROOT/name)!=digest:raise ValueError('Changed language learning evidence: '+name)
+        data['metrics'].update(packet['metrics'])
     return data
 
 
@@ -519,7 +525,7 @@ def publish(tag):
     if stage.exists() or record.exists(): raise ValueError('Fresh tag required; old artifacts preserved')
     if available()<8192*1024: raise ValueError('Less than 8GiB available')
     verify()
-    inputs=[CONTENT,EVIDENCE,INV/'forward_credit_evidence_20261011.json',Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
+    inputs=[CONTENT,EVIDENCE,INV/'forward_credit_evidence_20261011.json',INV/'language_learning_evidence.json',Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
             INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
             ROOT/'report/I_SCIENCE.md',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',

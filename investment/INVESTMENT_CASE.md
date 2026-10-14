@@ -6,12 +6,18 @@ The ambition combines distinct design axes: **computation through sleeps and tem
 
 **A learning architecture and computing substrate for intelligence everywhere.**
 
-Prepared 3 October; revised 5 October 2026. Investment thesis and proposed commercial strategy;
+Prepared 3 October; revised 14 October 2026. Investment thesis and proposed commercial strategy;
 completed research evidence is identified separately from product ambitions.
 
 Current terms: **€3M raise at €50M priced pre-money**, with €100M as a separate
 stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
 and [application opportunity register](../report/model_family_opportunities.md).
+
+## Measured language learning progress
+
+The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json).
+
+This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
 
 ## Forward computation teaches credit — current status and potential
 

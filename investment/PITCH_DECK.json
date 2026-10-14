@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-14",
   "classification": "Private review draft; no external distribution by this work",
   "source_accessed_date": "2026-10-03",
   "sources": {
@@ -202,6 +202,12 @@
       "short": "Forward credit",
       "url": "forward_credit_evidence_20261011.json",
       "scope": "Eight fresh TRAIN-prefix accuracy, four-prefix three-repeat corrected acquisition and fixed connected-controller conditional variance; component evidence, no task-learning-speed or hardware-energy claim."
+    },
+    "SLL": {
+      "label": "Completed integrated sparse-teaching language development",
+      "short": "Language learning",
+      "url": "language_learning_evidence.json",
+      "scope": "Same8.39Mtargets/GPT2FineWeb/seed6/DEV; measured quality and completeCPUtime versus earlier own full-teaching model. No scaled Transformer or ASIC claim."
     }
   },
   "slides": [
@@ -1219,6 +1225,34 @@
         }
       ],
       "banner": "Implemented and trained today in ordinary software (CPU); no special hardware needed to run it."
+    },
+    {
+      "kind": "cards",
+      "section": "Measured learning progress",
+      "title": "Better language prediction, less complete training time.",
+      "subtitle": "Integrated sparse teaching improves our earlier model on the same tokenized data.",
+      "sources": [
+        "SLL"
+      ],
+      "cards": [
+        {
+          "label": "PREDICTION QUALITY",
+          "metric": "{language_learning_nll_gain:.4f} nats/token better",
+          "body": "Final development loss {language_learning_old_nll:.5f} to {language_learning_new_nll:.5f}, at the same8.39M acquired GPT2 FineWeb targets."
+        },
+        {
+          "label": "COMPLETE TRAINING",
+          "metric": "{language_learning_time_reduction_pct:.2f}% less CPU time",
+          "body": "9,129 to7,734 seconds. Core, discovery, factual backward, teacher replay and optimizer work are included."
+        },
+        {
+          "label": "SPARSE TEACHING",
+          "metric": "About75% fewer calls",
+          "body": "Actual alternative teaching admitted on25% of updates with importance correction. Three-seed gains at128k/512k; one seed at8M."
+        }
+      ],
+      "banner": "A measured within-family quality/time win. Scaled Transformer comparison is the next competitive milestone.",
+      "notes": "Source-bound completed evidence, same acquisition/prior/updates/evaluation. At8M execution and teaching improvements combine. FactualBP/Adam and model-wide clipping remain charged. Receiver-local banks and delayed-credit replay are verified components, not measured clockless hardware efficiency or a fitted long-horizon critic. Current integration status is reported separately; public validation sealed."
     },
     {
       "kind": "cards",
@@ -2293,5 +2327,5 @@
     }
   ],
   "editorial_revision": "11 October2026: prospective forward-credit status, component economy and conditional industry potential",
-  "main_slide_count": 28
+  "main_slide_count": 29
 }

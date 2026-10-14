@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "evidence_level": "single-seed development at8M; three-seed confirmation at128k/512k",
+  "comparison": "Within-family quality/time win over earlier full-teaching implementation",
+  "rows": [
+    {
+      "tag": "aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1",
+      "acquired_targets": 8388352,
+      "final_dev_nll": 6.620662913602941,
+      "complete_training_s": 9128.562806206755
+    },
+    {
+      "tag": "aws_bernoulli_teacher_8m_20261013_s6_v2",
+      "acquired_targets": 8388352,
+      "final_dev_nll": 6.527870447495404,
+      "complete_training_s": 7734.249354515225
+    }
+  ],
+  "metrics": {
+    "language_learning_nll_gain": 0.09279246610753678,
+    "language_learning_time_reduction_pct": 15.27418369454061,
+    "language_learning_new_nll": 6.527870447495404,
+    "language_learning_old_nll": 6.620662913602941
+  },
+  "teacher_work": {
+    "admitted_calls": 4137,
+    "offered_calls": 16384,
+    "replayed_tokens": 498480,
+    "scored_targets": 119600,
+    "probability": 0.25
+  },
+  "completed_evidence_sha256": {
+    "experiments/results/diagnostics/aws_bernoulli_teacher_8m_20261013_s6_v2_gate.json": "77e36f3fd409eee103a4926ad6e2c75835c0f027f001b69d6145d5756aebc3e9",
+    "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.json": "e6368e37590ea284425fabe39715b2e89597894b334ea21a62207474283eba38",
+    "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json": "61894367ac4da6efd50e8c65bc51e7adbd889e050d7c44a1489cd9f4199e48d6"
+  },
+  "source_sha256": {
+    "scripts/prepare_language_learning_evidence.py": "2d2284bd6bb6c447a91bdaaa75688b1eb757c3a630783c5da2e5c5eb2d7cd795"
+  },
+  "scope": "Proper GPT2 FineWeb, same8,388,352 acquired targets/seed6/prior/update/evaluation budget and DEV scoring. New fit combines ordered token-gradient execution, exact cached suffix replay and0.25 importance-weighted actual counterfactual teaching. At8M time savings combine execution and teacher changes. Factual windowBP, all-key discovery and global clipping remain; Adam updates remain fully charged. No Transformer comparison at this scale, public-validation result, ASIC energy or asynchronous hardware timing claim.",
+  "hardware_status": "Measured sparse teacher work is progress toward event-driven learning. Receiver-local versioned AdamW is a numerical/implementation integration; it does not remove full-gradient generation or global clipping. Clockless execution is compatible with local arithmetic and dependency handshakes; economical full training is a separate engineering/measurement target."
+}

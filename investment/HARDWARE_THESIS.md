@@ -135,3 +135,9 @@ message rates: the activity and locality profiles below provide exactly that num
 - A. Madhavan, T. Sherwood, D. Strukov, "Race logic: a hardware acceleration for dynamic programming algorithms", ISCA 2014.
 - Intel Loihi 2 technology brief (asynchronous neuron cores, on-chip learning), already cited in the deck.
 - Further public precedents to cite when adding numbers: Cerebras/Groq (SRAM-centric dense inference), IBM NorthPole/TrueNorth (memory-local digital inference).
+
+## Current training placement and work evidence — 14 October2026
+
+Sparse teacher admission improves same-data language development by0.092792nats/token with15.274%less complete CPU training time at8M acquisition ([source packet](language_learning_evidence.json)). The new integrated language driver additionally uses versioned receiver-local AdamW; its four-updateD8 parameter/state/RNG and weight-decay/resume contract is exact. Global norm clipping and factual windowBP remain coordinated and charged. Local placement enables addressed optimizer storage/application; it does not establish sparse gradient generation or measured clockless efficiency.
+
+AdamW still updates zero-gradient banks through momentum and weight decay. Missing a gradient packet is different from receiving a zero packet. Delayed receipts must identify the parameter version and complete declared gradient. A global physical clock is unnecessary for dependency-driven arithmetic, but required reductions and ordering remain. Whole-learner cloning must rebuild optimizer views into cloned receiver banks. Inference activity, teacher admission, optimizer locality and complete learning work are separate resource boundaries.

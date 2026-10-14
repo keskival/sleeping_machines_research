@@ -4,21 +4,18 @@ Sleeping Machines aims at a general-purpose substrate spanning language and reas
 multimodal world models, embodiment, event-native analytics, continual learning,
 communication, self-design and hardware.
 
-The current deck includes11October forward-credit accuracy, corrected execution,
-connected-controller noise and conditional industry potential. The
-[source-bound packet](forward_credit_evidence_20261011.json) links every number
-to completed results. Prediction per total learning cost is the next gate.
+The current deck includes a measured language learning quality/time win: **0.09279nats/token better development prediction at15.27% less complete CPU training time**, at the same8.39M GPT2 FineWeb targets. The [source-bound language packet](language_learning_evidence.json) records this within-family comparison. The [forward-credit packet](forward_credit_evidence_20261011.json) separately records component accuracy, acquisition cost and controller noise. Larger-scale Transformer quality and asynchronous hardware training remain the next measurement targets.
 
 **Patent hold (7 October 2026):** the inventions behind the benchmark wins are unpublished and not yet filed. Share the
 evidence brief, papers and technical slides only under NDA until the priority filing exists; see [`ip/`](../ip/README.md).
 
-For a non-technical first read, start with the **[11-page evidence brief](sleeping_machines_evidence_brief.pdf)**:
+For a non-technical first read, start with the **[13-page evidence brief](sleeping_machines_evidence_brief.pdf)**:
 every public benchmark win, what each benchmark is and why it matters, units and direction for every comparison,
 and the evidence behind the larger vision (source: `brief/evidence_brief.tex`, figures from completed result files via
 `brief/make_brief_figures.py`).
 
-Then the **[28-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
-The **[full 48-slide deck](sleeping_machines_pitch_deck.pdf)** adds 20 optional
+Then the **[29-slide investor pitch](sleeping_machines_pitch_deck_main.pdf)**.
+The **[full 49-slide deck](sleeping_machines_pitch_deck.pdf)** adds 20 optional
 technical and financial diligence slides. The current discussion draft proposes
 a **€3M raise**, with **€50M priced pre-money as the bullish negotiating
 case** and €100M as a separate appendix stretch scenario. Neither price is an independent
