@@ -1,0 +1,119 @@
+{
+  "status": "partial",
+  "battle": "R1",
+  "tag": "curie_depth_ladder_1m_interim_20261015_v1",
+  "rows": {
+    "d2_residual": {
+      "tag": "curie_depth_ladder_d2_residual_1m_20261015_v1",
+      "status": "completed",
+      "depth": 2,
+      "residual": true,
+      "long_history_nll": 6.555726734031964,
+      "final_short_dev_nll": 7.0806266036688115,
+      "route_entropy": 0.2799358069896698,
+      "memory_effective_rank": [
+        [
+          12.133464427357541,
+          10.189207995980462
+        ],
+        [
+          10.215114549154823,
+          11.444847112280017
+        ]
+      ],
+      "train_wall_s": 795.4713753546239,
+      "parameters": 3820672,
+      "residual_gain_mean": [
+        0.12945909798145294,
+        -0.10811051726341248
+      ]
+    },
+    "d8_serial": {
+      "tag": "curie_depth_ladder_d8_serial_1m_20261015_v1",
+      "status": "completed",
+      "depth": 8,
+      "residual": false,
+      "long_history_nll": 6.683495936399595,
+      "final_short_dev_nll": 7.176013542624081,
+      "route_entropy": 0.9708095192909241,
+      "memory_effective_rank": [
+        [
+          11.990310819708954,
+          12.53352835459826
+        ],
+        [
+          8.019443920263141,
+          8.409795727504623
+        ],
+        [
+          9.118858971686779,
+          9.106403225359955
+        ],
+        [
+          11.158422400654787,
+          9.95440557228407
+        ],
+        [
+          8.044689962669148,
+          10.02914938499397
+        ],
+        [
+          8.715383871626457,
+          8.667142999568105
+        ],
+        [
+          5.376358061191002,
+          9.342245396237228
+        ],
+        [
+          4.7134387269969595,
+          5.322958978690194
+        ]
+      ],
+      "train_wall_s": 2686.8039047936327,
+      "parameters": 7984084,
+      "residual_gain_mean": null
+    },
+    "d8_residual": {
+      "tag": "curie_depth_ladder_d8_residual_1m_20261015_v1",
+      "status": "missing"
+    },
+    "d16_residual": {
+      "tag": "curie_depth_ladder_d16_residual_1m_20261015_v1",
+      "status": "missing"
+    },
+    "d2_residual_reads": {
+      "tag": "curie_depth_ladder_d2_residual_reads_1m_20261015_v1",
+      "status": "missing"
+    },
+    "d8_residual_reads": {
+      "tag": "curie_depth_ladder_d8_residual_reads_1m_20261015_v1",
+      "status": "missing"
+    },
+    "d16_residual_reads": {
+      "tag": "curie_depth_ladder_d16_residual_reads_1m_20261015_v1",
+      "status": "missing"
+    }
+  },
+  "decision": {
+    "residual_monotone": false,
+    "residual_beats_serial_d8": false,
+    "reads_monotone": false,
+    "reads_gain_by_depth": {},
+    "depth_gain_d16_vs_d2": {}
+  },
+  "protocol": {
+    "targets": 8192,
+    "target_start": 25165825,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "source_sha256": {
+    "analysis/score_depth_ladder.py": "5b69c4752b597945b128e3db7cde7b728a52f34843cc4f4727752028ef8b1b7c",
+    "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e",
+    "sleeping_machines/residual_race_episodes.py": "a38f5212a32434968156ed17a03e0299089958f9af9060420db36f8e0cb1de68"
+  },
+  "process_wall_s": 11.795629815023858,
+  "scope": "Single seed, matched 1M fresh targets and flagship settings per arm; development protocol, no public validation."
+}
