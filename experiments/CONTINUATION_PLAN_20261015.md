@@ -12,6 +12,8 @@ Mechanisms: keyed member retains temporal decaying/rotating memory, addressed wr
 
 Language acquisition is chronological fresh-data learning; reused DEV scoring is fixed-weight and separately labelled. Preserve numerical memory independently of gradient truncation; disclose document boundaries and lane/state lifetime. Public language comparison requires the pinned corpus/tokenizer/target/history protocol after development selection. No new dense controls.
 
+The hierarchy design now follows [multiple depth axes](theory/MULTI_AXIS_TEMPORAL_DEPTH.md): separate semantic composition from rates and local work; allow complementary parallel race groups, per-stream persistence and slow-to-fast queries. Distinguish prediction mixtures, competing hazards and typed feature fusion. Preserve the strongest fast path and validate per-stream carry and causal/credit contracts before any new integrated fit; current jobs remain unchanged.
+
 ## B10: primary target is price
 
 Reuse acquired weights/memory/optimizer state. All nine native/LSTM/Transformer acquisitions are complete: native leads both references at every paired seed (mean DEV 6.8842 vs 6.8996/6.9686). Prioritize reuse of these exact saved learners for online August/October scoring before any further acquisition; no replacement external-model fit is authorized here. Keep the single-seed October trade-event win and its arithmetic advantage prominent. Seed extensions preserve original settings, score-before-update and persistent learner state; the already accessed October day is a replication, not a new prospective test. Declare this extension and its source checkpoints before queue admission. Do not refit completed learners.
