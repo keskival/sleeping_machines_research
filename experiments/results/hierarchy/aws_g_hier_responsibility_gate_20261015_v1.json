@@ -1,0 +1,99 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "responsibility_gate",
+  "parameters": 263923,
+  "paired_update_s": 9.23771875910461,
+  "max_rss_kib": 810724,
+  "samples": [
+    {
+      "prediction_loss": 0.5034455060958862,
+      "auxiliary_loss": 0.9828940629959106,
+      "weights": [
+        0.6323327422142029,
+        0.23262222111225128,
+        0.08557692915201187,
+        0.031481992453336716,
+        0.01158157829195261,
+        0.004260624293237925,
+        0.0015673962188884616,
+        0.0005766128306277096
+      ],
+      "allocation_level": 0.5792921781539917
+    },
+    {
+      "prediction_loss": 0.9270275831222534,
+      "auxiliary_loss": 0.7168408632278442,
+      "weights": [
+        0.6323327422142029,
+        0.23262222111225128,
+        0.08557692915201187,
+        0.031481992453336716,
+        0.01158157829195261,
+        0.004260624293237925,
+        0.0015673962188884616,
+        0.0005766128306277096
+      ],
+      "allocation_level": 0.5792921781539917
+    }
+  ],
+  "content_gradients": [
+    0.15494422614574432,
+    0.09442020952701569,
+    0.01953348144888878,
+    0.018864328041672707,
+    0.006924116052687168,
+    0.019014691933989525,
+    0.0007484749658033252,
+    0.000885237124748528
+  ],
+  "gate_gradient": [
+    0.0517374724149704,
+    -0.035359106957912445,
+    -0.01772407442331314,
+    0.0031940401531755924,
+    -0.0006296355277299881,
+    -0.0011103455908596516,
+    -8.961948333308101e-05,
+    -1.8747021385934204e-05
+  ],
+  "work": {
+    "addressed_objects": 238,
+    "external_observations": 64,
+    "candidate_scores": 9600,
+    "selected_updates": 4800,
+    "counterfactual_value_evaluations": 9600,
+    "timer_candidate_scores": 476,
+    "deliveries": 300,
+    "publications": 300,
+    "indexed_reads": 0,
+    "queries": 0,
+    "timer_emissions": 238,
+    "state_tensor_bytes": 206760,
+    "pixel_native_memories": 64,
+    "frame_bound_comparisons": 124,
+    "frame_coordinate_subtractions": 256,
+    "role_slots": 236,
+    "role_view_tensor_bytes": 32096,
+    "role_projection_madds": 811008,
+    "role_pair_products": 2944,
+    "role_transport_calls": 1248,
+    "carrier_transport_calls": 3032,
+    "carrier_additions": 24256,
+    "carrier_tensor_bytes": 23664,
+    "responsibility_reads": 238,
+    "responsibility_projection_madds": 16384,
+    "responsibility_head_madds": 1152,
+    "responsibility_query_madds": 512
+  },
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1.raw.pt": "3b944821328dfd1331ba2de0c03c5fd564952ca11ca25378932e88b00d359a66"
+  },
+  "source_sha256": {
+    "experiments/hierarchy/responsibility_gate.py": "90355218fa2d0288e5db14efd0d91136afc6d917e0b0e6fdb5b3ba11c794332f",
+    "sleeping_machines/responsibility_readout.py": "b7d8dcf4f1be62dce1f5bd7b48b4928d5bcf919b92c018ef2594d62f5254201d",
+    "sleeping_machines/responsibility_native_composition.py": "51167965d5800fcfda7563234fdbfa4462e819672669d4c65910790a479314f7",
+    "experiments/theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md": "732ba30ec6eaddeef1649133778934515fcea58292ec44ec5a4bf42c11bd51f9"
+  },
+  "scope": "One observed TRAIN pair,whole labels only,one paired AdamW update,full32native stages/eight levels. Output mean summaries are a restricted spatial-access diagnostic. No DEV/TEST,quality,semantic hierarchy or traffic saving claim. All transmissions remain enabled."
+}
