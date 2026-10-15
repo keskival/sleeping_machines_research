@@ -5295,9 +5295,8 @@ Also restored:
 - the rendered outputs (published.pdf, previews) of the token_1m_snapshot, unification_headlines and
   typed_semantics_theory publications, whose archive directories were committed without them. The PDFs are LFS-tracked.
 
-Not restored (kept in dropped_work/):
-- fas_replication_s7 v1–v3: REPORT.md identical to the committed v4; superseded attempts;
-- unified_story_20261005_v1: its render receipt says failed; v2 is committed.
+Not restored, and `dropped_work/` deleted on 15 Oct: its remaining files were superseded fas_replication_s7 v1–v3
+drafts (REPORT.md identical to the committed v4) and the failed unified_story_20261005_v1 render (v2 is committed).
 
 The selected checkpoints these results reference (`*.best_step*.pt`) were not in the dropped work.
 
