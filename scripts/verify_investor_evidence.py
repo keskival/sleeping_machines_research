@@ -32,6 +32,7 @@ def packets():
 
 
 def resolve(spec):
+    if 'constant' in spec: return float(spec['constant'])
     if 'mean' in spec:
         values = [resolve(s) for s in spec['mean']]; return sum(values) / len(values)
     if 'ratio' in spec:

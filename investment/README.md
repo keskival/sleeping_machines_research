@@ -4,7 +4,7 @@ Sleeping Machines aims at a general-purpose substrate spanning language and reas
 multimodal world models, embodiment, event-native analytics, continual learning,
 communication, self-design and hardware.
 
-**Verification.** `python3 scripts/verify_investor_evidence.py` recomputes every registered headline number (`claims_registry.json`) from the committed result files at its displayed precision, checks that it appears in the documents that cite it, and checks every evidence packet's SHA-256 bindings. Current state: 31/31 claims and 149/149 bindings verified.
+**Verification.** `python3 scripts/verify_investor_evidence.py` recomputes every registered headline number (`claims_registry.json`) from the committed result files at its displayed precision, checks that it appears in the documents that cite it, and checks every evidence packet's SHA-256 bindings. Current state: 37/37 claims and 149/149 bindings verified.
 
 **Progress toward deeper reusable representations.** A four-layer keyed language model improves development loss from **5.9572 to 5.8987 nats/token** versus the two-layer construction on the same 65,528-target slice and 1.05M-token training corpus. One seed; six versus five training epochs, so this is a quality gain, not a matched-compute result. Separately, a new 32-cell/eight-level architecture lets higher concepts query retained lower-level memories, combine complementary evidence and refine persistent state. Its 29 numerical contracts pass; learned semantic hierarchy and transfer are the next proof, following the real-data resource/credit gate. [Source-bound evidence](hierarchy_development_evidence.json).
 

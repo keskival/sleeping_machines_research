@@ -240,7 +240,8 @@
       },
       "documents": [
         "report/I_SCIENCE.md",
-        "investment/PITCH.md"
+        "investment/PITCH.md",
+        "README.md"
       ]
     },
     {
@@ -257,7 +258,8 @@
       },
       "documents": [
         "report/I_SCIENCE.md",
-        "investment/PITCH.md"
+        "investment/PITCH.md",
+        "README.md"
       ]
     },
     {
@@ -273,7 +275,8 @@
       },
       "documents": [
         "report/I_SCIENCE.md",
-        "investment/PITCH.md"
+        "investment/PITCH.md",
+        "README.md"
       ]
     },
     {
@@ -350,7 +353,9 @@
         ]
       },
       "documents": [
-        "investment/PITCH.md"
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md",
+        "README.md"
       ]
     },
     {
@@ -380,7 +385,8 @@
         ]
       },
       "documents": [
-        "investment/PITCH.md"
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
     },
     {
@@ -620,6 +626,108 @@
         "investment/PITCH.md",
         "investment/INVESTMENT_CASE.md",
         "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "race_stack_d2_reads_long_history",
+      "display": "6.472",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
+        "path": [
+          "rows",
+          "d2_residual_reads",
+          "long_history_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "race_stack_d16_residual_long_history",
+      "display": "6.690",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
+        "path": [
+          "rows",
+          "d16_residual",
+          "long_history_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "keyed_word_initial_history_beyond_64",
+      "display": "0.023",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
+        "path": [
+          "keyed_context_value_by_role",
+          "64",
+          "word_initial"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "keyed_word_initial_target_fraction_pct",
+      "display": "77.8",
+      "decimals": 1,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
+            "path": [
+              "models",
+              "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+              "word_initial",
+              "fraction"
+            ]
+          },
+          {
+            "constant": 0.01
+          }
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "plan_b_keyed_L4_1M",
+      "display": "5.899",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "plan_b_keyed_L2_1M",
+      "display": "5.957",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
       ]
     }
   ]

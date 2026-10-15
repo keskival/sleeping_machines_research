@@ -124,4 +124,7 @@ stages each add less than a shallow stack gains by spending the same data on two
 
 **Prediction P5c.** A member whose layers all have full-lane credit and a keyed read gains from depth per fresh token.
 Test: one-pass 4M deep keyed L2 vs L8 (`curie_r1_deep_keyed_stream_L{2,8}_4M_s0_20261015_v1`): L8 below L2 on the
-last-quarter prequential loss and on the flagship protocol.
+last-quarter prequential loss and on the flagship protocol. Supporting evidence in the multi-epoch regime (AWS plan-B ladder, same blocks, 1M
+tokens, early stopping, 65,528-target slice): L2 5.957, L4 **5.899** (`aws_r1_deep_keyed_L{2,4}_1M_s0_20261015_v3.json`);
+depth pays once every layer has full-lane credit and its own addressed read, where the race stack's did not. The race
+stack's composition errors and the part-whole construction that follows from the data are in PART_WHOLE_COMPOSITION.md.

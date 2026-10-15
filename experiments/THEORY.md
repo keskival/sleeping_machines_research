@@ -548,3 +548,9 @@ Addressable lower-level composition (15 October):
 formalizes the compression-collision obstruction, direct typed memory reads,
 refinement separate from abstraction, finite-stencil score scaling and controlled
 source interventions.29 contracts pass; real-TRAIN/no-fit preflight queued.
+
+Exact hierarchical suffix replay (15 October):
+[`EXACT_HIERARCHICAL_SUFFIX_REPLAY.md`](theory/EXACT_HIERARCHICAL_SUFFIX_REPLAY.md)
+proves fixed-prefix replay equivalence, records32 numerical contracts and
+connects the cost repair to a source-bound real-input gate and64-update learning
+probe. No new learned quality or hardware claim.

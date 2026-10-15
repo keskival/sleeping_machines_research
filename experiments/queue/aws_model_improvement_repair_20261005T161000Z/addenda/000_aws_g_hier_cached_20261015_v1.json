@@ -1,0 +1,64 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Can the full deep construction learn its FIT recording with exact route credit inside the measured resource envelope? Select learning/variance/transport repair before a larger fit.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_g_hier_cached_20261015_v1_preflight",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_cached_20261015_v1_preflight/aws_g_hier_cached_20261015_v1_preflight.txt",
+        "queue_sha256": "6c3c4c38c6a4f892eb482552601023741a4bab3beb96ef7119a5280bb22a751f",
+        "source_sha256": {
+          "sleeping_machines/cached_parent_hierarchy.py": "6f00dccaa078d55aae16f80ab3b5175f3d286feb48ae8bac9b7d7cfed3b3a015",
+          "sleeping_machines/addressable_parent_hierarchy.py": "40bb08afba481f3a22465bb17f5535fd258be987ea2a6100926094224035fb41",
+          "sleeping_machines/parent_race_hierarchy.py": "20d18571621e916cd0c363fcb3292da2f9877c1ab522108d08b9770aff137dcf",
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/cached_preflight.py": "bd2c02af6948ce271f86c2043f26314e64896aa29ac24c3c8177f4b2396bd111",
+          "experiments/hierarchy/cached_learning_probe.py": "0c8e61585c0255c9541230a3cc92734c0b299680eeafda162d7368680d11d737",
+          "tests/test_cached_parent_hierarchy.py": "698cc7fc4a23e9ad1ffa8dd969850f5edd22b6047f79298743251f9215739bc3",
+          "experiments/theory/EXACT_HIERARCHICAL_SUFFIX_REPLAY.md": "f39c793558131092d6127734b499a95e3d4974b69c2c2e9d35e42dc2cbd58f90",
+          "scripts/admit_cached_hierarchy_pipeline.py": "eaae01059896c5421f573a8c1aa4e7af1c5ed802375d1634f89cd6f1f27a03d6",
+          "experiments/hierarchy/aws_g_hier_cached_20261015_v1_admission.json": "c041591ab385f4450b22b62912d97206fff3bed24e7b8166ad3b227661daf225"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_cached_20261015_v1_preflight.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_g_hier_cached_20261015_v1_probe",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_cached_20261015_v1_probe/aws_g_hier_cached_20261015_v1_probe.txt",
+        "queue_sha256": "f29fb261896343fc95eeeb4401e0b52e5751a4cca7c63eb8e65f4fe291b2bea2",
+        "source_sha256": {
+          "sleeping_machines/cached_parent_hierarchy.py": "6f00dccaa078d55aae16f80ab3b5175f3d286feb48ae8bac9b7d7cfed3b3a015",
+          "sleeping_machines/addressable_parent_hierarchy.py": "40bb08afba481f3a22465bb17f5535fd258be987ea2a6100926094224035fb41",
+          "sleeping_machines/parent_race_hierarchy.py": "20d18571621e916cd0c363fcb3292da2f9877c1ab522108d08b9770aff137dcf",
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/cached_preflight.py": "bd2c02af6948ce271f86c2043f26314e64896aa29ac24c3c8177f4b2396bd111",
+          "experiments/hierarchy/cached_learning_probe.py": "0c8e61585c0255c9541230a3cc92734c0b299680eeafda162d7368680d11d737",
+          "tests/test_cached_parent_hierarchy.py": "698cc7fc4a23e9ad1ffa8dd969850f5edd22b6047f79298743251f9215739bc3",
+          "experiments/theory/EXACT_HIERARCHICAL_SUFFIX_REPLAY.md": "f39c793558131092d6127734b499a95e3d4974b69c2c2e9d35e42dc2cbd58f90",
+          "scripts/admit_cached_hierarchy_pipeline.py": "eaae01059896c5421f573a8c1aa4e7af1c5ed802375d1634f89cd6f1f27a03d6",
+          "experiments/hierarchy/aws_g_hier_cached_20261015_v1_admission.json": "c041591ab385f4450b22b62912d97206fff3bed24e7b8166ad3b227661daf225"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_cached_20261015_v1_probe.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_cached_20261015_v1_preflight.json",
+            "stage": "cached_preflight",
+            "rss_margin": 1.25
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
