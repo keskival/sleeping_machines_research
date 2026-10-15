@@ -6936,3 +6936,16 @@ Scope: two-layer width-32 models, seed 0, fixed 6-mark/1 µs recording-cell like
 Both scored arms run without EOS reset at DEV. Shared lane clocks win DEV by 0.011 with prequential TRAIN tied. Carrying state across unrelated documents during training costs 0.018 DEV and 0.005 prequential at this budget: memory inside a document is useful, but the persistent arm has not learned to forget at the boundary. R1 continuations adopt shared lanes and the corpus-EOS training boundary; a learned EOS gate is the test for returning boundary handling to learning. Stage gains include the added training; arm differences are the attributions.
 
 Protected depth growth: the grown D4 learner (6.095077) trails the continued D2 parent (6.065563) by 0.029514. The frozen attribution splits this into harmful learned correction 0.022399 and own-parent-path excess 0.007115. Erasing the added stage's private history changes NLL by 0.000166, so the grown branch's memory is not used. The next depth step repairs output/branch learning (TRAIN-only parent-safe convex correction, `theory/PARENT_SAFE_CONVEX_TEMPORAL_GROWTH.md`) before any further depth fit. The native deep D8 acquisition at 32M TRAIN tokens continues on AWS.
+
+## Appendix. B3 FAS v2.1: delay-race binding sealed win
+
+Native C10 seeds 6–8, refitted on AWS from the frozen configuration, reproduce validation 0.699/0.693/0.704 and validation-clean NLL 0.914/1.029/1.021; per-event binding diagnostics put 4–6% attention on the true predecessor. Anonymous clean TRAIN logs show sharp per-type-pair log-lag modes (1% step timing noise), so the native delay-race binding member (`experiments/fas/race_delay_binding.py`) learns the delay clocks directly, binds by temporal race and accumulates per-step CUSUM evidence calibrated on a separate clean draw (seed base 520261015). Validation development (1,000 + 1,000 runs, merged prefix 1,024): configuration A (two clocks, no consumption, one-sided, κ 0.5) 0.8004; consumption 0.7995, three clocks 0.7950, 5,000 clock-learning runs 0.7949, two-sided 0.7337. The addressed per-type statistic applied to the Transformer's own surprise scores 0.62–0.66 against its total rule 0.7036.
+
+| Arm (fresh draw seed base 620261016, 2,000 + 2,000 runs) | AUROC, merged prefix 1,024 |
+| --- | --- |
+| **Native delay-race binding**, three fits | **0.8009** (0.7928, 0.8044, 0.8057) |
+| Transformer d128 lr .003, three seeds (total rule, selected on validation) | 0.7044 |
+| LSTM d128 lr .003, three seeds | 0.6672 |
+| Best classical (order-3) | 0.6763 |
+
+Verdict **win** under the frozen B3 Stage 5 rule: difference +0.0965, paired stratified bootstrap 95% [+0.0880, +0.1209], all three criteria met. Scoring job `aws_b3_v21_sealed_20261015_v1` (45 min), ledger entry appended. Identity oracle (not eligible) 0.821 on the earlier test.

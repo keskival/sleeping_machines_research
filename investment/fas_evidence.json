@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "evidence_level": "confirmed win: three native replicates, preregistered sealed fresh draw, frozen B3 Stage 5 rule",
+  "native_auroc": 0.80094575,
+  "native_replicates": [
+    0.79276975,
+    0.80437325,
+    0.80569425
+  ],
+  "transformer_auroc": 0.7044043333333333,
+  "lstm_auroc": 0.6672449166666667,
+  "best_classical": "classical:order3",
+  "best_classical_auroc": 0.67631075,
+  "margin": 0.09654141666666671,
+  "bootstrap_95": [
+    0.08795302812500007,
+    0.12091928437499998
+  ],
+  "per_fault_kind": {
+    "wear_and_tear": 0.7721903923541248,
+    "retry_delay": 0.8293581013916501,
+    "transformer_wear_and_tear": 0.6498661971830986,
+    "transformer_retry_delay": 0.758291915175613
+  },
+  "samples": {
+    "clean": 2000,
+    "faulty": 2000
+  },
+  "previous_sealed": {
+    "native": 0.7036564166666667,
+    "transformer": 0.7043200000000001,
+    "verdict": "tie"
+  },
+  "scope": "FAS v2 interleaved assembly-line logs (2 lines, 30 items each, anonymous events); detection at 512 events per line; fresh 2,000+2,000-run test draw generated after the committed preregistration; no item identities used; weights fixed during scoring.",
+  "input_sha256": {
+    "experiments/results/fas/aws_b3_v21_sealed_20261015_v1.json": "84cb81139881c71240e53f39e996d18fe54b027a8bf3c4c74498832864afd3d5",
+    "experiments/results/fas/curie_b3_sealed_v4_20261010T0220Z_decision.json": "66152caf035e6605f36f1bce7c7345b0b3e3097094b2319a4f806ca5e9be1eac",
+    "experiments/FAS_V21_CONFIRMATION.md": "aa0bde728a40d0da095f788b6e7807b0fb61b30f9c3b924d1c685ba15331ecee"
+  }
+}

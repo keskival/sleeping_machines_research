@@ -18,7 +18,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUTS = ['investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json',
+INPUTS = ['investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json', 'investment/fas_evidence.json',
           'investment/evidence_20261003.json', 'investment/language_learning_evidence.json',
           'scripts/prepare_language_learning_evidence.py', 'scripts/build_investment_case.py']
 

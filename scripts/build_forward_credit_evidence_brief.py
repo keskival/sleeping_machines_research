@@ -18,6 +18,7 @@ def main():
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_market_transformer_evidence.py'],cwd=ROOT,check=True)
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_protected_language_evidence.py'],cwd=ROOT,check=True)
         subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_online_market_evidence.py'],cwd=ROOT,check=True)
+        subprocess.run([str(ROOT/'.venv-docker/bin/python'),'scripts/prepare_fas_evidence.py'],cwd=ROOT,check=True)
         build=preview/'build';shutil.copytree(ROOT/'investment/brief',build)
         env=os.environ.copy();tex=ROOT/'experiments/.texmf_local'
         if tex.is_dir():
@@ -27,7 +28,7 @@ def main():
         pdf=build/'evidence_brief.pdf'
         document=fitz.open(pdf)
         text='\n'.join(page.get_text() for page in document)
-        for expected in ['98.4','2.09','77.8','15 October 2026','working research prototype','0.09279','15.27','5.17588','5.28043','8.07854','8.10271','8.17919','0.02417','0.10066','14.7','5.97839','0.12095']:
+        for expected in ['98.4','2.09','77.8','15 October 2026','working research prototype','0.09279','15.27','5.17588','5.28043','8.07854','8.10271','8.17919','0.02417','0.10066','14.7','5.97839','0.12095','0.801','0.704','0.097']:
             assert expected in text,expected
         (preview/'text.txt').write_text(text)
         output=ROOT/'investment/sleeping_machines_evidence_brief.pdf';shutil.copyfile(pdf,output)

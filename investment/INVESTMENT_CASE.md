@@ -26,6 +26,19 @@ and [application opportunity register](../report/model_family_opportunities.md).
 
 Lower loss is better (nats per trade: next-trade timing, aggressor side and price direction). Our model leads in **all 16 of 16** consecutive 4,096-trade windows of the new month, with **14.7× less arithmetic** than the cached Transformer and **16× less retained state** (0.146 MB of weights plus prediction memory versus 2.334 MB). This is the capability a deployed forecaster needs: keep learning from a changing stream at low cost. Single seed; the sealed September test stays unopened until seed replication. Next: return-distribution forecasts of the price itself (10 s, 1 min, 5 min), now in development. No trading-profit or measured chip-energy claim. [Source-bound evidence](online_market_evidence.json).
 
+## Industrial fault detection: sealed win on interleaved factory logs (15 October 2026)
+
+**Predictive maintenance on anonymous machine logs.** In our FAS benchmark (assembly-line simulator, two interleaved lines of 30 items, no item labels), a failing machine shows only as production steps that slowly take longer. Our model learns each step's duration from normal logs, binds every event to the earlier event it most likely continues through a race of delayed clocks, and keeps a separate running anomaly score per step. The full plan was committed before the test data were generated; each model was scored once.
+
+| Detector (2,000 normal + 2,000 faulty runs) | Fault-detection AUROC |
+| --- | --- |
+| **Sleeping Machines** (three independent fits) | **0.801** |
+| Time-encoded Transformer (three seeds) | 0.704 |
+| Best of nine classical detectors | 0.676 |
+| LSTM (three seeds) | 0.667 |
+
+**Ahead by 0.097 AUROC (95% interval 0.088 to 0.121), every fit above every reference** (wear faults 0.772 vs 0.650; retry faults 0.829 vs 0.758). On 10 October the previous model tied the same Transformer (0.704 vs 0.704). No item identities are used and the model's knowledge is fixed during scoring. [Source-bound evidence](fas_evidence.json).
+
 ## Measured language learning progress
 
 The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
