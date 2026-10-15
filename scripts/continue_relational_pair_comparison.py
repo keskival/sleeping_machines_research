@@ -21,11 +21,11 @@ def submit(paths):
     for path in paths:
         fitted=json.loads(path.read_text());source.update(fitted['source_sha256'])
         source.update([str(path.relative_to(ROOT)),fitted['final_weights'],fitted['feature_packet']['path']])
-    source.update(['experiments/hierarchy/paired_composition_decision.py','tests/test_observed_composition_groups.py',str(Path(__file__).resolve().relative_to(ROOT))])
+    source.update(['experiments/hierarchy/paired_composition_decision.py','tests/test_observed_composition_groups.py','experiments/theory/NATIVE_EMISSION_CHANNEL_AUDIT.md',str(Path(__file__).resolve().relative_to(ROOT))])
     q=ROOT/f'experiments/queue/hierarchy/{TAG}/{TAG}.txt';q.parent.mkdir(parents=True,exist_ok=True)
-    q.write_text('# G-HIER: frozen paired comparison and conditional emitted-content audit;no fitting or TEST.\n'+TAG+' experiments/hierarchy/paired_composition_decision.py --tag '+TAG+'\n')
+    q.write_text('# G-HIER: frozen paired comparison and conditional value/timing audit;no fitting or TEST.\n'+TAG+' experiments/hierarchy/paired_composition_decision.py --tag '+TAG+'\n')
     job=dict(name=TAG,kind='hierarchy',queue=str(q.relative_to(ROOT)),queue_sha256=sha(q),source_sha256={name:sha(ROOT/name) for name in sorted(source)},result=str(RESULT.relative_to(ROOT)),requires=[dict(result=str(p.relative_to(ROOT)),stage='paired_composition_learning') for p in paths],timeout_s=900,rss_kb=3000000,vms_kb=12000000)
-    packet=dict(host='ip-172-31-47-132',battle='G-HIER',purpose='Reuse both native fits/caches;score fixed TRAIN heads and conditional emitted-content intervention. No new fitting/TEST scoring.',parent_manifest_sha256=sha(PLAN/'manifest.json'),slots={'6':[job]})
+    packet=dict(host='ip-172-31-47-132',battle='G-HIER',purpose='Reuse both native fits/caches;score fixed TRAIN heads and conditional value/timing interventions. No new fitting/TEST scoring.',parent_manifest_sha256=sha(PLAN/'manifest.json'),slots={'6':[job]})
     temp=marker.with_suffix('.writing');temp.write_text(json.dumps(packet,indent=2)+'\n');temp.replace(marker)
 
 
