@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "episodic": "curie_episodic_memory_2m_episodic_20261015_v1",
+  "control": "curie_episodic_memory_2m_none_20261015_v1",
+  "parent_nll": 5.978387557528713,
+  "episodic_nll": 5.633531947711532,
+  "control_nll": 6.107893606842836,
+  "episodic_gain_over_control": 0.47436165913130424,
+  "episodic_native_readout_nll": 5.973389563564822,
+  "episodic_prequential": 5.408237152520768,
+  "control_prequential": 5.872779628499057,
+  "training_s": {
+    "episodic": 1883.8677263609716,
+    "control": 1776.5647248370224
+  },
+  "memory_work": {
+    "key_map_macs": 109307756544,
+    "query_macs": 6442450944,
+    "score_macs": 72871837696,
+    "match_comparisons": 4554489856,
+    "selected_reads": 67108864
+  },
+  "smoke_training_s": {
+    "episodic": 41.928175391978584,
+    "none": 32.37303209298989
+  },
+  "rule": "Adopt the episodic store for R1 continuations if it beats the identical-stream control by >=0.03 nats on the scored DEV protocol.",
+  "scope": "Single seed, identical restored learner and fresh-TRAIN stream, 8192 DEV targets/1024 windows; no public validation.",
+  "adopt": true
+}
