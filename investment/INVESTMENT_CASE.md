@@ -12,6 +12,8 @@ completed research evidence is identified separately from product ambitions.
 Current terms: **€3M raise at €50M priced pre-money**, with €100M as a separate
 stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
 and [application opportunity register](../report/model_family_opportunities.md).
+**Progress toward deeper reusable representations.** A four-layer keyed language model improves development loss from **5.9572 to 5.8987 nats/token** versus the two-layer construction on the same 65,528-target slice and 1.05M-token training corpus. One seed; six versus five training epochs, so this is a quality gain, not a matched-compute result. Separately, a new 32-cell/eight-level architecture lets higher concepts query retained lower-level memories, combine complementary evidence and refine persistent state. Its 29 numerical contracts pass; learned semantic hierarchy and transfer are the next proof, following the real-data resource/credit gate. [Source-bound evidence](hierarchy_development_evidence.json).
+
 
 ## Online market forecasting: confirmed on a new month
 

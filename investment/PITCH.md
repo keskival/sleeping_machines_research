@@ -12,6 +12,8 @@ This also connects the learner to its execution. Time performs computation, incl
 
 **A revealing proof of the platform:** mixed-type tables, token sequences and anonymous event streams learned through the same temporal core, followed by measured skill transfer. The program spans small-data usefulness and large-data scaling.
 
+**Progress toward deeper reusable representations.** A four-layer keyed language model improves development loss from **5.9572 to 5.8987 nats/token** versus the two-layer construction on the same 65,528-target slice and 1.05M-token training corpus. One seed; six versus five training epochs, so this is a quality gain, not a matched-compute result. Separately, a new 32-cell/eight-level architecture lets higher concepts query retained lower-level memories, combine complementary evidence and refine persistent state. Its 29 numerical contracts pass; learned semantic hierarchy and transfer are the next proof, following the real-data resource/credit gate. [Source-bound evidence](hierarchy_development_evidence.json).
+
 ## Online market forecasting: confirmed on a new month
 
 **A preregistered out-of-sample win while every model keeps learning.** On Binance BTCUSDT public trades, our native temporal learner, an online LSTM and two online Transformers each adapt their weights after every 32 revealed trades and are scored before any outcome can change them. All model choices were fixed from August evidence and committed before the 1 October data were downloaded; each learner carried its full August memory and optimizer state across the five-week gap.

@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "language_depth": {
+    "evidence_level": "single-seed within-family development",
+    "targets": 65528,
+    "unique_training_tokens": 1048576,
+    "seed": 0,
+    "rows": [
+      {
+        "layers": 2,
+        "nll": 5.957197004673813,
+        "parameters": 3416797,
+        "epochs": 5
+      },
+      {
+        "layers": 4,
+        "nll": 5.898735542842253,
+        "parameters": 3554341,
+        "epochs": 6
+      }
+    ],
+    "nll_improvement": 0.05846146183155998,
+    "scope": "Same scored slice and unique training corpus; different epochs and total work. Quality gain only; no matched-compute or semantic-hierarchy claim."
+  },
+  "hierarchical_memory": {
+    "status": "implemented, untrained",
+    "abstraction_levels": 8,
+    "refinements_per_level": 4,
+    "cells": 32,
+    "passed_contracts": 29,
+    "capability": "Higher parents query retained input and lower-level memories, select complementary child roles, compose relations and refine persistent state.",
+    "scope": "Synthetic numerical contracts, not learned semantic concepts, compositional generalization or measured sparse execution.",
+    "next_gate": "Real-TRAIN resource/credit preflight, then bounded learned composition and controlled read-source evaluation; no current fit result inferred."
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json": "82d874ec20dcd9cc5a3f1e8000da7ffe1a9674a61b4d2061c4e36221acc660dd",
+    "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json": "6200680938ebc0fb1aa658bb3c4dc38bca43eb0662e87365fef6579a878b0691",
+    "experiments/results/diagnostics/addressable_parent_contracts_20261015_v1.json": "5f49368aeb703644492331aac983f37df7af1571bb6043320aabda766bbb5e35",
+    "experiments/theory/ADDRESSABLE_COMPOSITION_MEMORY.md": "826d6dc01f1ff2f1aa1f022447e3ab0d0a0fb1714332d4726fb1b67d3234d416"
+  }
+}

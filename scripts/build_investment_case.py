@@ -18,7 +18,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUTS = ['investment/market_replication_evidence.json', 'scripts/prepare_market_replication_evidence.py', 'investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json', 'investment/fas_evidence.json', 'investment/language_memory_evidence.json',
+INPUTS = ['investment/hierarchy_development_evidence.json', 'scripts/prepare_hierarchy_investor_evidence.py', 'investment/market_replication_evidence.json', 'scripts/prepare_market_replication_evidence.py', 'investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json', 'investment/fas_evidence.json', 'investment/language_memory_evidence.json',
           'investment/evidence_20261003.json', 'investment/language_learning_evidence.json',
           'scripts/prepare_language_learning_evidence.py', 'scripts/build_investment_case.py']
 

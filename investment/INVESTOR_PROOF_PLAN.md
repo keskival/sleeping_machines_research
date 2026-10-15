@@ -7,6 +7,12 @@ explains the upside; it does not replace those proofs. The €3M raise and €10
 stretch case remain as described in [the valuation rationale](VALUATION_RATIONALE.md).
 This is an execution plan, not a prediction of investor acceptance.
 
+## Representational hierarchy: current progress and next gate
+
+**Progress toward deeper reusable representations.** A four-layer keyed language model improves development loss from **5.9572 to 5.8987 nats/token** versus the two-layer construction on the same 65,528-target slice and 1.05M-token training corpus. One seed; six versus five training epochs, so this is a quality gain, not a matched-compute result. Separately, a new 32-cell/eight-level architecture lets higher concepts query retained lower-level memories, combine complementary evidence and refine persistent state. Its 29 numerical contracts pass; learned semantic hierarchy and transfer are the next proof, following the real-data resource/credit gate. [Source-bound evidence](hierarchy_development_evidence.json).
+
+The next quality gate asks whether learned parts support unfamiliar arrangements and whether higher-level memory reads improve prediction beyond direct access to raw inputs. Controlled source interventions preserve candidate and random-tape shapes. Charge discovery, all candidate values, retained state and replay learning work. A gesture-classification score alone is not evidence of learned object-part semantics. Preserve active jobs; use the admitted G-HIER real-TRAIN preflight before a new fit. The implementation and proof obligations are in [the theory note](../experiments/theory/ADDRESSABLE_COMPOSITION_MEMORY.md).
+
 ## Current evidence
 
 - **Public event benchmark: achieved.** Confirmed EasyTPP wins on Taobao (+0.081 nats/event over the best published
