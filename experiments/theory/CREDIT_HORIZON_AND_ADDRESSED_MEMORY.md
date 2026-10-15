@@ -1,0 +1,76 @@
+# Credit horizon bounds learned memory; addressed reads with read-time credit remove the bound
+
+15 October 2026, Curie. R1. Derivation plus the measurements that test it. Read before redesigning language memory.
+
+## 1. Truncated credit does not reward retention beyond the window
+
+Let a recurrent learner update state S_t = U(S_{t-1}, x_t; θ) and predict ℓ_t = −log p(y_t | S_t; θ). Training with a
+state-gradient window W uses
+
+    g_W = Σ_t Σ_{s=t−W+1}^{t} (∂ℓ_t/∂S_t)(Π_{u=s+1}^{t} ∂S_u/∂S_{u−1}) ∂U(S_{s−1}, x_s; θ)/∂θ,
+
+with S_{t−W} treated as a constant. Every term that would reward the write at s < t−W for making S carry information
+needed at t is absent. Information older than W survives only as a by-product of features that pay off within W
+(slowly decaying modes, frequency statistics). The objective never asks the learner to store, protect or address it.
+
+**Prediction P1.** For a learner trained with window W, the cost of resetting all state every N > W tokens is small
+and does not grow with more data, because no gradient ever pays for that reliance.
+
+**Test.** The P24 flagship trains with W = 16. Frozen resets (AWS, three seeds) cost 0.004–0.008 nats at N = 64 and
+0.033–0.045 at N = 16 at both 512k and 8M targets. The value of history older than 64 tokens did not grow with 16x
+data (0.006 → 0.004). Confirmed.
+
+Persistent numerical state is therefore not persistent useful memory. This also explains two other completed results:
+erasing a grown stage's memory changes NLL by 0.0002 (nothing was trained to use it), and raw persistence across
+documents loses to EOS reset (state retained without learned addressing is noise to later documents).
+
+## 2. Opportunity measured on held-out data
+
+For log loss, the best achievable improvement from information in the window beyond what the predictor uses is at least
+the held-out gain of any causal predictor that adds that information. Mixing the frozen flagship with fixed causal
+in-window caches (recency, one-token and two-token induction; weights cross-fitted on alternating windows) gives
+**5.978388 → 5.684537 (0.294 nats)**, concentrated on rare tokens (+0.59/+0.84/+1.19 nats for ranks 2k–10k/10k–30k/30k+).
+51% of targets already occurred earlier in their 1024-token window. At least 0.294 nats are available from addressed
+recall alone, more than three times the gain of the last 4M training targets.
+
+## 3. Read-time credit makes the credit horizon capacity-limited
+
+Store entry j = (k_j = f_j, v_j) once and score it at query t through the current maps:
+s_tj = (W_q f_t)·(W_k sg(f_j))/√d − a(t−j) + b·[boundary] + c·[exact match]. Then
+
+    ∂ℓ_t/∂W_k = Σ_{j ∈ top-k(t)} (∂ℓ_t/∂s_tj) (W_q f_t) sg(f_j)^T /√d,
+
+and similarly for W_q, the clock a, the boundary bias b and the match bonuses c, for every stored j regardless of t−j.
+The learning signal for addressing at lag L is non-zero for all L up to the store capacity C. The horizon is set by C,
+not by W, and no gradient flows through the intervening state evolution.
+
+What read-time credit does NOT provide: it does not train the writer to put lag-L information into f_j when j lies
+outside the current chunk. The stored content must already be retrievable. This is the reason for content that exists
+by construction: token identity and the predecessor message (the token before j). The keyed predecessor read
+(theory/156_predecessor_message_binding.md) and the exact-match bonuses of the episodic store
+(sleeping_machines/episodic_pointer_memory.py) both give the read an address that requires no long-range write credit.
+
+**Prediction P2.** A member with an identity-addressed read relies on long history far more than the P24 flagship.
+
+**Test.** The keyed temporal-memory member (4M tokens) scored on the flagship's protocol: resetting every 64 tokens
+costs **0.117** nats (flagship 0.004–0.008), every 16 tokens **0.290** (flagship ~0.04). It scores 5.624/5.601 (two seeds)
+against the flagship's 5.978 on identical targets. Confirmed.
+
+**Prediction P3.** The keyed member trains on 256-token lanes with full backpropagation (W = 256). By P1 its reliance on
+history older than 256 tokens should be small, and training on 1024-token lanes should raise it. Measured now:
+0.019 nats for history older than 256 tokens. The queued 16.8M fresh-token 1024-lane fit
+(`curie_r1g2_keyed1_16M_fresh_l1024_s0_20261015_v1`) followed by the same reset intervention tests the increase.
+
+**Prediction P4.** Adding the episodic store with read-time credit to the P24 flagship improves it on the scored
+protocol by an amount comparable to the fixed-cache opportunity, and raises its history reliance at N = 64. The queued
+2M pair (`curie_episodic_memory_2m_{episodic,none}_20261015_v1`, then `analysis/history_reliance.py`) tests it.
+
+## 4. Consequences for the architecture
+
+- Separate three things in every language member: persistent numerical state, the credit window, and the addressing
+  path that lets later predictions use earlier events. Only the third turns persistence into capability.
+- Depth on top of a window-limited member does not create long-range memory (P1 applies per stage). The grown-stage
+  and D8/D16 results are consistent with this.
+- The family's mechanisms already include the remedy: sparse addressed writes, separate keys and values, temporal
+  decay clocks and races. The keyed member and the episodic store are two implementations; the next integrated model
+  should carry identity-addressed reads into the race core rather than scale a window-limited core.

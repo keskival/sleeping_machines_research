@@ -24,9 +24,9 @@ def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
 def main():
-    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
+    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--runs', nargs='*', default=list(RUNS)); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
     val = keyed.load(ROOT / 'data/fineweb_gpt2/fineweb_val_000000.bin'); rows = []
-    for run in RUNS:
+    for run in a.runs:
         rec = json.loads((ROOT / f'experiments/results/token_language/{run}.json').read_text()); g = rec['args']
         model = keyed.KeyedTokenLM(g['d'], g['modes'], g['layers'], g['heads'], g['dk'], g['keyed'], g['dropout'])
         model.load_state_dict(torch.load(ROOT / rec['checkpoint'])); model.eval()
