@@ -1,0 +1,239 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "arm": "lstm",
+  "targets": 65536,
+  "nll": 8.10270700365693,
+  "curve": [
+    {
+      "targets": 4096,
+      "nll": 8.18084187203129
+    },
+    {
+      "targets": 8192,
+      "nll": 7.6819635764311895
+    },
+    {
+      "targets": 12288,
+      "nll": 7.617125939289029
+    },
+    {
+      "targets": 16384,
+      "nll": 7.794728586274915
+    },
+    {
+      "targets": 20480,
+      "nll": 7.992614387671904
+    },
+    {
+      "targets": 24576,
+      "nll": 7.9601249009056625
+    },
+    {
+      "targets": 28672,
+      "nll": 7.94575149729921
+    },
+    {
+      "targets": 32768,
+      "nll": 8.001260228863107
+    },
+    {
+      "targets": 36864,
+      "nll": 8.046710035546571
+    },
+    {
+      "targets": 40960,
+      "nll": 8.11688391089027
+    },
+    {
+      "targets": 45056,
+      "nll": 8.062147635605912
+    },
+    {
+      "targets": 49152,
+      "nll": 8.013995963811462
+    },
+    {
+      "targets": 53248,
+      "nll": 7.942330040746355
+    },
+    {
+      "targets": 57344,
+      "nll": 7.95488958718009
+    },
+    {
+      "targets": 61440,
+      "nll": 8.015569335464905
+    },
+    {
+      "targets": 65536,
+      "nll": 8.10270700365693
+    }
+  ],
+  "ledger": {
+    "arithmetic": 9510369280,
+    "special_functions": 101732352,
+    "comparisons": 152500224,
+    "operator_calls": {
+      "aten.slice.Tensor": 67584,
+      "profiler._record_function_enter_new.default": 4096,
+      "profiler._record_function_exit._RecordFunction": 4096,
+      "aten.cat.default": 149504,
+      "aten.sub.Tensor": 61440,
+      "aten.div.Tensor": 63488,
+      "aten.ge.Scalar": 2048,
+      "aten.all.default": 36864,
+      "aten._local_scalar_dense.default": 79872,
+      "aten.embedding.default": 2048,
+      "aten.log1p.default": 8192,
+      "aten.unsqueeze.default": 235520,
+      "aten.view.default": 83968,
+      "aten.t.default": 710656,
+      "aten.addmm.default": 12288,
+      "aten.add.Tensor": 1126400,
+      "aten.select.int": 524288,
+      "aten.mm.default": 411648,
+      "aten.split.Tensor": 131072,
+      "aten.sigmoid.default": 393216,
+      "aten.detach.default": 1444112,
+      "aten.mul.Tensor": 1634304,
+      "aten.tanh.default": 262144,
+      "aten.stack.default": 8192,
+      "aten.new_zeros.default": 4096,
+      "aten.softplus.default": 4096,
+      "aten.exp.default": 55296,
+      "aten.neg.default": 90112,
+      "aten.aminmax.default": 2048,
+      "aten.zeros.default": 2048,
+      "aten.scatter_.value": 2048,
+      "aten._to_copy.default": 2048,
+      "aten.lt.Scalar": 10240,
+      "aten.clamp_min.default": 12288,
+      "aten.log.default": 10240,
+      "aten.where.self": 36864,
+      "aten.rsub.Scalar": 2048,
+      "aten.logaddexp.default": 8192,
+      "aten._log_softmax.default": 4096,
+      "aten.log_sigmoid_forward.default": 2048,
+      "aten.permute.default": 20480,
+      "aten.bmm.default": 6144,
+      "aten.expand.default": 14336,
+      "aten.clamp_max.default": 8192,
+      "aten.gt.Scalar": 10240,
+      "aten.special_log_ndtr.default": 6144,
+      "aten.pow.Tensor_Scalar": 14336,
+      "aten.full_like.default": 6144,
+      "aten.zeros_like.default": 6144,
+      "aten.gather.default": 2048,
+      "aten.squeeze.dim": 141312,
+      "aten.sum.dim_IntList": 149504,
+      "aten.expm1.default": 2048,
+      "aten.logsumexp.default": 4096,
+      "aten.mean.default": 2048,
+      "aten.abs.default": 36864,
+      "aten.ne.Scalar": 36864,
+      "aten.eq.Tensor": 36864,
+      "aten.ones_like.default": 2048,
+      "aten.div.Scalar": 2048,
+      "aten.add.Scalar": 24576,
+      "aten.scalar_tensor.default": 22528,
+      "aten.scatter_add.default": 2048,
+      "aten.mul.Scalar": 14336,
+      "aten.slice_backward.default": 24576,
+      "aten._log_softmax_backward_data.default": 4096,
+      "aten.clone.default": 2048,
+      "aten._unsafe_view.default": 2048,
+      "aten.transpose.int": 4096,
+      "aten.new_empty_strided.default": 2048,
+      "aten.copy_.default": 2048,
+      "aten.log_sigmoid_backward.default": 2048,
+      "aten.softplus_backward.default": 4096,
+      "aten.select_backward.default": 262144,
+      "aten.tanh_backward.default": 262144,
+      "aten.sigmoid_backward.default": 393216,
+      "aten.embedding_dense_backward.default": 2048,
+      "aten.linalg_vector_norm.default": 36864,
+      "aten.reciprocal.default": 2048,
+      "aten.clamp.default": 2048,
+      "aten.mul_.Tensor": 104448,
+      "aten.add_.Tensor": 69632,
+      "aten.lerp_.Scalar": 34816,
+      "aten.addcmul_.default": 34816,
+      "aten.sqrt.default": 34816,
+      "aten.addcdiv_.default": 34816,
+      "aten.sum.default": 2048
+    },
+    "unsupported": {},
+    "validated": true,
+    "convention": "aten_scalar_algorithms_v3"
+  },
+  "context_only_work": {
+    "arithmetic": 5261614,
+    "special_functions": 58678,
+    "comparisons": 14732,
+    "operator_calls": {
+      "aten.slice.Tensor": 12,
+      "aten.cat.default": 3,
+      "aten.sub.Tensor": 2,
+      "aten.div.Tensor": 1,
+      "aten.ge.Scalar": 1,
+      "aten.all.default": 1,
+      "aten._local_scalar_dense.default": 3,
+      "aten.embedding.default": 1,
+      "aten.log1p.default": 1,
+      "aten.unsqueeze.default": 388,
+      "aten.view.default": 18,
+      "aten.t.default": 260,
+      "aten.addmm.default": 6,
+      "aten.add.Tensor": 638,
+      "aten.select.int": 635,
+      "aten.mm.default": 254,
+      "aten.split.Tensor": 254,
+      "aten.sigmoid.default": 762,
+      "aten.mul.Tensor": 1017,
+      "aten.tanh.default": 508,
+      "aten.stack.default": 3,
+      "aten.new_zeros.default": 1,
+      "aten.softplus.default": 2,
+      "aten.exp.default": 2,
+      "aten.neg.default": 1,
+      "aten.aminmax.default": 1,
+      "aten.zeros.default": 1,
+      "aten.scatter_.value": 1,
+      "aten._to_copy.default": 1,
+      "aten.lt.Scalar": 1,
+      "aten.clamp_min.default": 2,
+      "aten.log.default": 1,
+      "aten.where.self": 1,
+      "aten.rsub.Scalar": 1,
+      "aten.logaddexp.default": 1,
+      "aten._log_softmax.default": 2,
+      "aten.log_sigmoid_forward.default": 1,
+      "aten.permute.default": 5,
+      "aten.bmm.default": 1,
+      "aten.detach.default": 6
+    },
+    "unsupported": {},
+    "validated": true,
+    "convention": "aten_scalar_algorithms_v3"
+  },
+  "online_wall_s": 99.8636813389603,
+  "source_sha256": {
+    "experiments/market/b10_shift_online.py": "4f6330517f39bf422279b13720a42e2f89591ff8270d35e1137a259354d7fb41",
+    "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
+    "experiments/market/b10_cached_comparison.py": "ad65eecc654abfab203441c963670475c1afd64155b12bca8b1315a19418077e",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/b10_cached_transformer.py": "8c7c23c47af7fcd7e57f1eadd9ab98cf8229e229f6489620dc8916c8d5663d96"
+  },
+  "input_sha256": {
+    "experiments/market/B10_OCTOBER_CONFIRMATION.json": "7ac08562080ed4b3871c8c37602b1906de6a0fd0e7adad6fde29ccea3325fb84",
+    "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.json": "e2e99e6bad53e342f56ed467384a3805f0ebafd3d45065e70205d10f3e42f7e8",
+    "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.pt": "a6f96a0e15f981357301460aa1b66d514d1c616cb04d9d4c4206dfd393ca45e2",
+    "experiments/results/market/aws_b10_october_data_20261015_v2.json": "9651b31bd8b2585bcbf50538d727b1bad53c19868e828538961814668427c433",
+    "data/binance/npz/2026-10-01.npz": "f0699dc56ae286b0240161462a30074e8be57829ef6fa5d13bf439aa4acabecb"
+  },
+  "final_weights": "experiments/results/market/aws_b10_october_lstm_s0_20261015_v1.pt",
+  "max_rss_kb": 578064,
+  "process_wall_s": 101.63055837689899,
+  "scope": "Predeclared firstOctober confirmation; all initialacquisition/modelselection and prior online adaptation use August observations only. No October tuning. Every arm adapts after32revealed outcomes, retains its complete August learner/memory and observes128new context events before65536forecasttargets. Fixed6-mark/1us likelihood. Source/archive checksumverified. No SeptemberTEST opened, tradingreturns, replicatedseeds or universalfrontier claim."
+}
