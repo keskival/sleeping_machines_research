@@ -11,7 +11,7 @@
   "update_targets": 32,
   "online_lr": 0.0001,
   "seed": 0,
-  "data_receipt": "experiments/results/market/aws_b10_october_data_20261015_v1.json",
+  "data_receipt": "experiments/results/market/aws_b10_october_data_20261015_v2.json",
   "pass_criterion": "Native cumulativeNLL below onlineLSTM and each onlineTransformer policy; native scored arithmetic below cachedTransformer. Report all outcomes and quarter-prefixes without October tuning.",
   "arms": {
     "native": {
@@ -100,7 +100,9 @@
     }
   },
   "source_sha256": {
-    "experiments/market/b10_shift_data.py": "044d36ee80574658e76fb007a2814577d3833de58f5948bcb14a5725d5d0a5f4",
+    "experiments/market/b10_shift_data.py": "524f0a1f7f4abd600fee7aec8eb485cfb3ea5f82e9b5d972aa0f8d13c1b99a86",
     "experiments/market/b10_shift_online.py": "4f6330517f39bf422279b13720a42e2f89591ff8270d35e1137a259354d7fb41"
-  }
+  },
+  "data_endpoint_correction": "Initial preparation failedHTTP404 before anydata acquisition: missingBTCUSDT directory. Corrected to canonical same provider endpoint as verified August driver. Date, models, learning and confirmation criteria unchanged; no October outcomes viewed.",
+  "amended_at_utc": "2026-10-15T02:30:20Z"
 }

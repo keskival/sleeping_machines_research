@@ -5,7 +5,7 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[2];DAY='2026-10-01'
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--tag',required=True);a=p.parse_args();protocol=ROOT/'experiments/market/B10_OCTOBER_CONFIRMATION.json';assert protocol.exists();out=ROOT/f'experiments/results/market/{a.tag}.json';assert not out.exists();raw=ROOT/'data/binance';raw.mkdir(parents=True,exist_ok=True);name=f'BTCUSDT-aggTrades-{DAY}.zip';url='https://data.binance.vision/data/spot/daily/aggTrades/'+name
+ p=argparse.ArgumentParser();p.add_argument('--tag',required=True);a=p.parse_args();protocol=ROOT/'experiments/market/B10_OCTOBER_CONFIRMATION.json';assert protocol.exists();out=ROOT/f'experiments/results/market/{a.tag}.json';assert not out.exists();raw=ROOT/'data/binance';raw.mkdir(parents=True,exist_ok=True);name=f'BTCUSDT-aggTrades-{DAY}.zip';url='https://data.binance.vision/data/spot/daily/aggTrades/BTCUSDT/'+name
  for suffix in ('.CHECKSUM',''):
   path=raw/(name+suffix)
   if not path.exists():
