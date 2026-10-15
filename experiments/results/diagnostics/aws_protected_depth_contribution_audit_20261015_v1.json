@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "mode": "trained_branch",
+      "scored": {
+        "nll": 6.0950767436995665,
+        "loss_sum": 49930.86868438685,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      }
+    },
+    {
+      "mode": "zero_correction",
+      "scored": {
+        "nll": 6.072677415115987,
+        "loss_sum": 49747.37338463016,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      }
+    },
+    {
+      "mode": "parent_feature_substitution",
+      "scored": {
+        "nll": 6.200268525883769,
+        "loss_sum": 50792.599764039835,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      }
+    }
+  ],
+  "input_sha256": {
+    "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.json": "98b7832621513680e0082862155c2c3d8b612a55e077570233a2b0570dab7592",
+    "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.pt": "6887d204efccd48ad9845bfd4c71bd20ea4d2763aadec4142a388b4da478fe22"
+  },
+  "source_sha256": {
+    "experiments/credit/protected_depth_contribution_audit.py": "78d596e0b1f2b9d6cbd0a4d3ad8887edbe9c88f20c35eb22e7776518228148f4",
+    "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+    "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+    "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "wall_s": 10.401304615894333,
+  "scope": "Frozen completed grown actor, identical8192DEVtargets/1024history/paired noise. Zero output correction isolates learned parent/readout drift within grown arm; parent-feature substitution tests distinct new features with same learned projection. No fitting, new public test, latency or heldout selection claim. Continuedparent comparison remains6.065562542; none of these ablations is a retrained model."
+}
