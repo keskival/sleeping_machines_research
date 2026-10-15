@@ -1,0 +1,12 @@
+/workspace/experiments/market/b10p_references.py:40: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  return dict(loc=loc.detach().numpy().tolist(), scale=sc.detach().numpy().tolist(), nu=float(lognu.exp() + 2.0))
+unconditional 10.0 9.217288587932307
+unconditional 60.0 10.047688802860055
+unconditional 300.0 10.830917315659844
+rv_scaled 10.0 9.102492439869527
+rv_scaled 60.0 9.942119939574175
+rv_scaled 300.0 10.726890324316626
+linear_features 10.0 9.049321545274001
+linear_features 60.0 9.92770306842403
+linear_features 300.0 10.722797844895885
