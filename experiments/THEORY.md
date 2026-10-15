@@ -527,3 +527,9 @@ Integrated receiver-local future credit (14 October): explicit cloned storage to
 [Local training operations and clipping geometry](LOCAL_TRAINING_OPERATIONS_20261014.md): user-directed per-bank radial clipping, known global-dependency and norm-budget differences, optional smooth radial saturation and primary prior art. Native local rule contract/resource smoke pass; fullD8/8M quality remains pending. Coordinate-wise clipping is not the chosen native rule.
 
 [Local update geometry and useful temporal depth](theory/LOCAL_UPDATE_GEOMETRY_AND_USEFUL_DEPTH.md): fixedbankcap aggregatebound; exact fixedmomentAdam response derivative and nonmonotonicity; offline update-space capobjective; separate depthgain response and importance-teacher dilution; temporalidentity/context requirements. Prospective outcomes select exactvariants; no newfits/calibrationchanges or qualityclaims.
+
+Deep spatial composition development (15 October):
+[`DOWNSTREAM_REPRESENTATION_CREDIT.md`](theory/DOWNSTREAM_REPRESENTATION_CREDIT.md)
+derives full-continuation categorical credit, states its sampling contract and
+resource cost, and records relational child interactions and the float32 early
+signal failure. Implementation is unfitted; 13 numerical contracts pass.

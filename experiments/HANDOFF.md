@@ -5382,3 +5382,16 @@ files were copied with an `_awsr2` suffix (all internal tags, including C6-GLR's
 - B6/B7/B9: no AWS claim yet; B8 waits for the founder's PhysioNet credentials.
 - Leaderboard submissions (TGB, NLB EvalAI) publish results: score locally with the official evaluators and submit only
   after the patent priority filing (ip/README.md).
+
+### 15 October: downstream-credit spatial development
+
+New unfitted `sleeping_machines/downstream_race_hierarchy.py` retains 32 spatial
+race blocks, adds relative-child pair interactions at scale transitions, and
+replaces immediate local class teachers with importance-corrected final-task
+counterfactual replay. See `experiments/theory/DOWNSTREAM_REPRESENTATION_CREDIT.md`.
+13 original/new numerical contracts pass. Tiny initialization fixture loses the
+first route's loss contrast at float32; float64 resolves it. Next gate is real
+TRAIN per-depth contrast/variance and replay resource measurement, not a long
+fit. Existing v1 queue/source files and active jobs are untouched. V2 is an
+unfitted development construction, missing event-sparse dispatch, persistent
+cross-window state and efficient replay; it is not the integrated flagship.
