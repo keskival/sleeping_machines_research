@@ -1,0 +1,231 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "rows": [
+    {
+      "step": 1,
+      "score_error": 1.9777890111824075,
+      "gradients": [
+        {
+          "name": "layers.1.freq",
+          "max_error": 1.3785949611098611,
+          "scalar_norm": 1.24127023675922,
+          "vector_norm": 0.15355613978375462
+        },
+        {
+          "name": "clock.weight",
+          "max_error": 0.7855207126871134,
+          "scalar_norm": 1.8814157271584595,
+          "vector_norm": 1.4979986494555655
+        },
+        {
+          "name": "layers.1.write.weight",
+          "max_error": 0.40108218738230594,
+          "scalar_norm": 0.9362856247363263,
+          "vector_norm": 0.3871162684169343
+        },
+        {
+          "name": "layers.0.freq",
+          "max_error": 0.21132993215410484,
+          "scalar_norm": 0.07420294070681768,
+          "vector_norm": 0.30745666300798313
+        },
+        {
+          "name": "layers.1.mlp.0.weight",
+          "max_error": 0.20755266917774548,
+          "scalar_norm": 0.6660760465629975,
+          "vector_norm": 0.4204205407124715
+        },
+        {
+          "name": "layers.1.read.weight",
+          "max_error": 0.19877827033326678,
+          "scalar_norm": 0.6299332129472006,
+          "vector_norm": 0.3167010279064334
+        },
+        {
+          "name": "layers.1.write.bias",
+          "max_error": 0.17356612329564292,
+          "scalar_norm": 0.18770899767227797,
+          "vector_norm": 0.07733981483045287
+        },
+        {
+          "name": "layers.1.gate.weight",
+          "max_error": 0.15089219580299856,
+          "scalar_norm": 0.26830100988756694,
+          "vector_norm": 0.143909097246179
+        },
+        {
+          "name": "marks.value.weight",
+          "max_error": 0.1418304251008139,
+          "scalar_norm": 0.620910441446679,
+          "vector_norm": 0.5234092034587233
+        },
+        {
+          "name": "layers.1.norm1.bias",
+          "max_error": 0.12110077026578855,
+          "scalar_norm": 0.23580379197561138,
+          "vector_norm": 0.11691774061715283
+        }
+      ],
+      "parameter_drift": [
+        [
+          "clock.weight",
+          0.0001999999850827187
+        ],
+        [
+          "layers.1.freq",
+          0.00019999998291398043
+        ],
+        [
+          "layers.1.write.weight",
+          0.00019999997069031217
+        ],
+        [
+          "layers.1.mlp.0.weight",
+          0.00019999994259492504
+        ],
+        [
+          "layers.1.write.bias",
+          0.0001999999367816585
+        ],
+        [
+          "layers.1.read.weight",
+          0.00019999992637755037
+        ],
+        [
+          "layers.1.gate.weight",
+          0.00019999992379032827
+        ],
+        [
+          "layers.0.read.weight",
+          0.00019999990816384206
+        ],
+        [
+          "clock.bias",
+          0.00019999989990698852
+        ],
+        [
+          "layers.0.norm1.weight",
+          0.0001999998957576965
+        ]
+      ]
+    },
+    {
+      "step": 2,
+      "score_error": 3.5069298463137875,
+      "gradients": [
+        {
+          "name": "clock.weight",
+          "max_error": 1.4327832765412363,
+          "scalar_norm": 2.8898082236638056,
+          "vector_norm": 2.0529281077001422
+        },
+        {
+          "name": "layers.1.freq",
+          "max_error": 0.7543678969893565,
+          "scalar_norm": 1.6680317426261662,
+          "vector_norm": 0.9173607830202325
+        },
+        {
+          "name": "layers.0.freq",
+          "max_error": 0.5380081711372873,
+          "scalar_norm": 0.1314127840986519,
+          "vector_norm": 0.4962438403749659
+        },
+        {
+          "name": "layers.1.write.weight",
+          "max_error": 0.18294015448551376,
+          "scalar_norm": 0.8664076795837621,
+          "vector_norm": 0.5818869551387139
+        },
+        {
+          "name": "clock.bias",
+          "max_error": 0.17123442909377565,
+          "scalar_norm": 0.2693846182034735,
+          "vector_norm": 0.1851188598099528
+        },
+        {
+          "name": "mark_ctx.weight",
+          "max_error": 0.11301370761875768,
+          "scalar_norm": 0.7463272964476835,
+          "vector_norm": 0.5780597363545544
+        },
+        {
+          "name": "layers.0.write.weight",
+          "max_error": 0.10941235489581261,
+          "scalar_norm": 0.33033472169999506,
+          "vector_norm": 0.34383439479705863
+        },
+        {
+          "name": "layers.1.read.weight",
+          "max_error": 0.10164579877147588,
+          "scalar_norm": 0.7064740493118186,
+          "vector_norm": 0.49148500111248467
+        },
+        {
+          "name": "marks.value.weight",
+          "max_error": 0.10071973156978198,
+          "scalar_norm": 0.3437727733746542,
+          "vector_norm": 0.27524567642853703
+        },
+        {
+          "name": "layers.1.mlp.0.weight",
+          "max_error": 0.10019028520656888,
+          "scalar_norm": 0.6766126297267476,
+          "vector_norm": 0.5066585015302629
+        }
+      ],
+      "parameter_drift": [
+        [
+          "clock.bias",
+          0.0004002116567631414
+        ],
+        [
+          "layers.1.write.weight",
+          0.0004000775961227913
+        ],
+        [
+          "layers.1.mlp.0.weight",
+          0.00040002500279436026
+        ],
+        [
+          "layers.0.mlp.2.weight",
+          0.0004000016805813522
+        ],
+        [
+          "layers.1.mlp.2.weight",
+          0.0003999985624282276
+        ],
+        [
+          "layers.1.read.weight",
+          0.0003999501339754796
+        ],
+        [
+          "marks.log_rate",
+          0.00039980187771382347
+        ],
+        [
+          "clock.weight",
+          0.00039974169713569846
+        ],
+        [
+          "layers.1.gate.weight",
+          0.0003997154732456529
+        ],
+        [
+          "layers.0.read.weight",
+          0.0003996889174679441
+        ]
+      ]
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/aws_market_guidance_parity_audit.py": "a983e7154c77664554ca7bb3489300ebe20d6f55d50beb2872c65314b6d79415",
+    "experiments/credit/aws_market_guided_online.py": "40620bfede18838610c5da74e7de0a3c09cdca2603dbd446d7fc4fd32d691973",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f"
+  },
+  "wall_s": 1.7808474830817431,
+  "scope": "Two same-issuedTRAIN updates; diagnose acquiredactor parity, no qualityselection or model promotion."
+}
