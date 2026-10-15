@@ -32,15 +32,22 @@ class ParallelTemporalMemory(nn.Module):
         self.log_rate = nn.Parameter(torch.logspace(-2, 1, modes).log()); self.freq = nn.Parameter(torch.randn(modes)*0.5)
         self.write = nn.Linear(d, 2*modes); self.gate = nn.Linear(d, modes)
 
+    CHUNK = 256
+
     def forward(self, u):
+        """Exact causal kernel computed in chunks of CHUNK steps with the complex state carried across chunk boundaries."""
         B, L, _ = u.shape; g = torch.sigmoid(self.gate(u)); w = self.write(u); wr, wi = w[..., :self.n]*g, w[..., self.n:]*g
-        k = torch.arange(L, dtype=u.dtype); lag = k[:, None] - k[None, :]; causal = (lag >= 0).to(u.dtype)
-        lagc = lag.clamp_min(0).unsqueeze(-1)                                      # [L, L, 1]
-        mag = torch.exp(-self.log_rate.exp()*lagc)*causal.unsqueeze(-1); ang = self.freq*lagc
-        kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)                            # [L, L, n]: c^(i-j)
-        zr = torch.einsum('ijn,bjn->bin', kr, wr) - torch.einsum('ijn,bjn->bin', ki, wi)
-        zi = torch.einsum('ijn,bjn->bin', kr, wi) + torch.einsum('ijn,bjn->bin', ki, wr)
-        return torch.cat([zr, zi], -1)
+        rate, freq = self.log_rate.exp(), self.freq; C = min(self.CHUNK, L)
+        k = torch.arange(C, dtype=u.dtype); lag = k[:, None] - k[None, :]; causal = (lag >= 0).to(u.dtype); lagc = lag.clamp_min(0).unsqueeze(-1)
+        mag = torch.exp(-rate*lagc)*causal.unsqueeze(-1); ang = freq*lagc; kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)   # [C, C, n]
+        steps = (k + 1).unsqueeze(-1); cr, ci = torch.exp(-rate*steps)*torch.cos(freq*steps), torch.exp(-rate*steps)*torch.sin(freq*steps)  # c^(i+1)
+        sr = u.new_zeros(B, self.n); si = u.new_zeros(B, self.n); outs = []
+        for c0 in range(0, L, C):
+            ar, ai = wr[:, c0:c0 + C], wi[:, c0:c0 + C]; n_ = ar.shape[1]; Kr, Ki = kr[:n_, :n_], ki[:n_, :n_]
+            zr = torch.einsum('ijn,bjn->bin', Kr, ar) - torch.einsum('ijn,bjn->bin', Ki, ai); zi = torch.einsum('ijn,bjn->bin', Kr, ai) + torch.einsum('ijn,bjn->bin', Ki, ar)
+            zr = zr + cr[:n_]*sr.unsqueeze(1) - ci[:n_]*si.unsqueeze(1); zi = zi + cr[:n_]*si.unsqueeze(1) + ci[:n_]*sr.unsqueeze(1)
+            outs.append(torch.cat([zr, zi], -1)); sr, si = zr[:, -1], zi[:, -1]
+        return torch.cat(outs, 1)
 
 
 class KeyedRead(nn.Module):
@@ -53,10 +60,12 @@ class KeyedRead(nn.Module):
     def forward(self, x, e):
         B, L, _ = x.shape; prev = torch.cat([torch.zeros_like(e[:, :1]), e[:, :-1]], 1); kv_in = torch.cat([x, prev], -1)
         q = self.q(x).view(B, L, self.h, self.dk).transpose(1, 2); k = self.k(kv_in).view(B, L, self.h, self.dk).transpose(1, 2); v = self.v(kv_in).view(B, L, self.h, self.dk).transpose(1, 2)
-        dist = (torch.arange(L)[:, None] - torch.arange(L)[None, :]).to(x.dtype)
-        bias = -self.log_rate.exp().view(1, -1, 1, 1)*dist.clamp_min(0); bias = bias.masked_fill(dist < 0, float('-inf'))
-        a = torch.softmax(q @ k.transpose(-1, -2)/math.sqrt(self.dk) + bias, -1)
-        return self.o((a @ v).transpose(1, 2).reshape(B, L, -1))
+        out = []
+        for r0 in range(0, L, 512):                                                 # exact: query rows in blocks, all causal keys
+            rows = torch.arange(r0, min(r0 + 512, L)); dist = (rows[:, None] - torch.arange(L)[None, :]).to(x.dtype)
+            bias = -self.log_rate.exp().view(1, -1, 1, 1)*dist.clamp_min(0); bias = bias.masked_fill(dist < 0, float('-inf'))
+            a = torch.softmax(q[:, :, rows] @ k.transpose(-1, -2)/math.sqrt(self.dk) + bias, -1); out.append(a @ v)
+        return self.o(torch.cat(out, 2).transpose(1, 2).reshape(B, L, -1))
 
 
 class Block(nn.Module):

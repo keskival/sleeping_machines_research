@@ -1,0 +1,114 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 depth plans B and C readmitted after fixing evaluation memory (exact chunked temporal memory 1.4e-5 vs full kernel; exact chunked reads): one 8192-token lane at L8 0.85 GB. Plan C now learns its cadence (learned silence threshold, compute price, floor) and its memory fetches (sparsemax with learned temperature).",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_r1_deep_keyed_L8_1M_s0_20261015_v3",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L8_1M_s0_20261015_v3/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.txt",
+        "queue_sha256": "b817bb61c83d0c6545ea9a3af71f6aafebfa815d49bac15e631b2a1ed5e3a2b9",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
+        "requires": [],
+        "timeout_s": 32400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_r1_deep_keyed_L16_1M_s0_20261015_v3",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L16_1M_s0_20261015_v3/aws_r1_deep_keyed_L16_1M_s0_20261015_v3.txt",
+        "queue_sha256": "ab152edb37dbfc63f0876513885d30f451723e0f401b782d93077b2e6a9ea2bf",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L16_1M_s0_20261015_v3.json",
+        "requires": [],
+        "timeout_s": 43200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "4": [
+      {
+        "name": "aws_r1_deep_keyed_L2_1M_s0_20261015_v3",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L2_1M_s0_20261015_v3/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.txt",
+        "queue_sha256": "106fde4ac5851b71c6dded628609a2b29b127628f0a3b87ec55c5383242d6e9d",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
+        "requires": [],
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_async_hier_b2l3_1M_s0_20261015_v2",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_async_hier_b2l3_1M_s0_20261015_v2/aws_r1_async_hier_b2l3_1M_s0_20261015_v2.txt",
+        "queue_sha256": "1fa6c8a27bd05e2f5f37c3d35aeedf3d8c6bb38b1d07ce4682452d9dcbf345ca",
+        "source_sha256": {
+          "experiments/r1_async_hierarchy_lm.py": "a7d1872fd17839c47976619c21c98b06d50ae33f26925a7a869a0abb17330518",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_async_hier_b2l3_1M_s0_20261015_v2.json",
+        "requires": [],
+        "timeout_s": 28800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_deep_keyed_L4_1M_s0_20261015_v3",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L4_1M_s0_20261015_v3/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.txt",
+        "queue_sha256": "72a18bd3313d375bb7ce6f6eb5f83619e5b5f0dd4b26f1d74dd6296f8671cf9c",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
+        "requires": [],
+        "timeout_s": 25200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_async_hier_b4l4_1M_s0_20261015_v2",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_async_hier_b4l4_1M_s0_20261015_v2/aws_r1_async_hier_b4l4_1M_s0_20261015_v2.txt",
+        "queue_sha256": "7c5fca4068ba55102aff689859990c2f87241dbcd8e63f146a6fa663b2e7cd0a",
+        "source_sha256": {
+          "experiments/r1_async_hierarchy_lm.py": "a7d1872fd17839c47976619c21c98b06d50ae33f26925a7a869a0abb17330518",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_async_hier_b4l4_1M_s0_20261015_v2.json",
+        "requires": [],
+        "timeout_s": 36000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

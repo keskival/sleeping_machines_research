@@ -3,8 +3,11 @@
 
 Token level: `--base` plan-B blocks (pre-norm residual temporal memory + per-layer keyed race read + MLP).
 Levels l = 1..`--levels` form a hierarchy of marked event streams (definition H1-H4):
-- emission race (H1, H2): at each event of the level below, the level emits when its boundary logit beats a running
-  threshold that tracks the level's target cadence (updated from past batches only, so causal; hard, straight-through); emission is possible only at the level below's events (nested segments) and uses only the past.
+- emission race (H1, H2): at each event of the level below, the level emits when its boundary logit beats its learned
+  silence threshold (started alive at the first batch's 0.7-quantile); the cadence is learned against a small compute
+  price with only a floor against dead levels (hard, straight-through);
+- learned memory fetches: a level's race read uses sparsemax with a learned temperature per head, so each read decides how
+  many of its events to fetch (exact zeros elsewhere); fetch counts are logged; emission is possible only at the level below's events (nested segments) and uses only the past.
 - segment integration: an emitted event integrates its whole segment, i.e. every level-below event since this level's
   previous emission (mean of their features) and the histogram of their race outcomes (the lower level's concept
   choices); higher events therefore summarise many lower events and races.
@@ -33,34 +36,47 @@ from r1_token_keyed_lm import load, evaluate as evaluate_keyed, V, KeyedTokenLM 
 from r1_deep_keyed_lm import Block  # noqa: E402
 
 
-def event_memory(tm, u, times, valid, slow):
-    """Exact continuous-time memory over a compressed event sequence: z_i = sum_{j<=i} c^(t_i - t_j) w_j (valid events)."""
+def event_memory(tm, u, times, valid, slow, rows=128):
+    """Exact continuous-time memory over a compressed event sequence: z_i = sum_{j<=i} c^(t_i - t_j) w_j (valid events),
+    computed in blocks of query rows."""
     g = torch.sigmoid(tm.gate(u)); w = tm.write(u); n = tm.n; vm = valid.to(u.dtype).unsqueeze(-1)
-    wr, wi = w[..., :n]*g*vm, w[..., n:]*g*vm
-    lag = times.unsqueeze(-1) - times.unsqueeze(-2)                                   # [B, N, N] elapsed time t_i - t_j
-    causal = ((lag >= 0) & valid.unsqueeze(-1) & valid.unsqueeze(-2)).to(u.dtype)
-    lagc = lag.clamp_min(0).unsqueeze(-1)                                             # [B, N, N, 1]
-    mag = torch.exp(-(tm.log_rate.exp()/slow)*lagc)*causal.unsqueeze(-1); ang = (tm.freq/slow)*lagc
-    kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)
-    zr = torch.einsum('bijn,bjn->bin', kr, wr) - torch.einsum('bijn,bjn->bin', ki, wi); zi = torch.einsum('bijn,bjn->bin', kr, wi) + torch.einsum('bijn,bjn->bin', ki, wr)
-    return torch.cat([zr, zi], -1)
+    wr, wi = w[..., :n]*g*vm, w[..., n:]*g*vm; rate, freq = tm.log_rate.exp()/slow, tm.freq/slow; out = []
+    for r0 in range(0, u.shape[1], rows):
+        ti = times[:, r0:r0 + rows]; lag = ti.unsqueeze(-1) - times.unsqueeze(-2)
+        causal = ((lag >= 0) & valid[:, r0:r0 + rows].unsqueeze(-1) & valid.unsqueeze(-2)).to(u.dtype); lagc = lag.clamp_min(0).unsqueeze(-1)
+        mag = torch.exp(-rate*lagc)*causal.unsqueeze(-1); ang = freq*lagc; kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)
+        zr = torch.einsum('bijn,bjn->bin', kr, wr) - torch.einsum('bijn,bjn->bin', ki, wi); zi = torch.einsum('bijn,bjn->bin', kr, wi) + torch.einsum('bijn,bjn->bin', ki, wr)
+        out.append(torch.cat([zr, zi], -1))
+    return torch.cat(out, 1)
 
 
-def event_read(read, x, times, valid, slow, prev_content):
+def sparsemax(z, mask):
+    """Sparsemax over the last dim with masked entries excluded: exact zeros outside a learned-size support."""
+    z = z.masked_fill(~mask, -1e9); zs, _ = torch.sort(z, -1, descending=True); k = torch.arange(1, z.shape[-1] + 1, dtype=z.dtype)
+    cs = zs.cumsum(-1); support = (1 + k*zs > cs) & (zs > -1e8); kz = support.sum(-1, keepdim=True).clamp_min(1)
+    tau = (torch.gather(cs, -1, kz - 1) - 1)/kz.to(z.dtype); return torch.clamp(z - tau, min=0)*mask
+
+
+def event_read(read, x, times, valid, slow, prev_content, temp, rows=256):
+    """Race read over a level's own events; sparsemax with a learned temperature per head decides how many events are fetched."""
     B, N, _ = x.shape; kv = torch.cat([x, prev_content], -1)
     q = read.q(x).view(B, N, read.h, read.dk).transpose(1, 2); k = read.k(kv).view(B, N, read.h, read.dk).transpose(1, 2); v = read.v(kv).view(B, N, read.h, read.dk).transpose(1, 2)
-    lag = (times.unsqueeze(-1) - times.unsqueeze(-2)).unsqueeze(1)
-    ok = (lag >= 0) & valid.view(B, 1, 1, N) & valid.view(B, 1, N, 1)
-    logits = (q @ k.transpose(-1, -2))/math.sqrt(read.dk) - (read.log_rate.exp().view(1, -1, 1, 1)/slow)*lag.clamp_min(0)
-    a = torch.softmax(logits.masked_fill(~ok, -1e9), -1)*ok.any(-1, keepdim=True)
-    return read.o((a @ v).transpose(1, 2).reshape(B, N, -1))
+    outs = []; fetched = []
+    for r0 in range(0, N, rows):
+        lag = (times[:, r0:r0 + rows].unsqueeze(-1) - times.unsqueeze(-2)).unsqueeze(1)
+        ok = (lag >= 0) & valid.view(B, 1, 1, N) & valid[:, r0:r0 + rows].view(B, 1, -1, 1)
+        logits = ((q[:, :, r0:r0 + rows] @ k.transpose(-1, -2))/math.sqrt(read.dk) - (read.log_rate.exp().view(1, -1, 1, 1)/slow)*lag.clamp_min(0))/F.softplus(temp).view(1, -1, 1, 1)
+        a = sparsemax(logits, ok); outs.append(a @ v); fetched.append(((a > 0).sum(-1).to(x.dtype), ok.any(-1)))
+    nf = torch.cat([f for f, _ in fetched], 2); okq = torch.cat([o for _, o in fetched], 2)
+    return read.o(torch.cat(outs, 2).transpose(1, 2).reshape(B, N, -1)), (nf*okq).sum()/okq.sum().clamp_min(1)
 
 
 class Level(nn.Module):
     def __init__(self, d, modes, heads, dk, dropout, depth, index, concepts):
         super().__init__(); self.block = Block(d, modes, heads, dk, dropout, depth); self.slow = 4.0**index; self.K = concepts
         self.norm_in = nn.LayerNorm(d); self.boundary = nn.Linear(d, 1); nn.init.normal_(self.boundary.weight, std=d**-.5); nn.init.zeros_(self.boundary.bias)
-        self.rate = 0.25; self.register_buffer('threshold', torch.zeros(()))                     # running (1 - rate)-quantile of past boundary logits
+        self.threshold = nn.Parameter(torch.zeros(())); self.register_buffer('initialised', torch.zeros((), dtype=torch.bool))   # learned emission race vs silence
+        self.read_temp = nn.Parameter(torch.zeros(heads))                                          # learned fetch sharpness per head
         self.concept_logits = nn.Linear(d, concepts); self.concepts = nn.Embedding(concepts, d); nn.init.normal_(self.concepts.weight, std=1.0)
         self.summary = nn.Linear(d, d); self.summary_gate = nn.Parameter(torch.tensor(0.0)); self.content_norm = nn.LayerNorm(d)
         self.gate = nn.Parameter(torch.zeros(())); self.top_down = nn.Linear(d, d)                  # ReZero top-down
@@ -72,8 +88,9 @@ class Level(nn.Module):
         below_concepts: [B, N] the lower level's concept race outcomes (None at the token level)."""
         u = self.norm_in(below); logit = self.boundary(u).squeeze(-1); p = torch.sigmoid(logit - self.threshold)
         hard = (logit >= self.threshold) & valid; st = hard.to(u.dtype) + (p - p.detach())*valid.to(u.dtype)   # straight-through emission
-        if self.training and valid.any():                                                         # cadence: threshold from past batches only (causal)
-            with torch.no_grad(): self.threshold.mul_(0.5).add_(0.5*torch.quantile(logit[valid].detach().float(), 1 - self.rate).to(self.threshold.dtype))
+        if self.training and not bool(self.initialised) and valid.any():                         # start alive: threshold at the 0.7-quantile of the first batch
+            with torch.no_grad(): self.threshold.copy_(torch.quantile(logit[valid].detach().float(), 0.7).to(self.threshold.dtype)); self.initialised.fill_(True)
+            p = torch.sigmoid(logit - self.threshold); hard = (logit >= self.threshold) & valid; st = hard.to(u.dtype) + (p - p.detach())*valid.to(u.dtype)
         # segments: lower events since this level's previous emission, closed by the emitting event (causal)
         B, N, d = u.shape; hv = hard.to(u.dtype); seg = (torch.cumsum(hv, 1) - hv).long()        # segment index of each lower event
         member = ((seg.unsqueeze(-1) == seg.unsqueeze(-2)) & (torch.arange(N).view(1, 1, N) <= torch.arange(N).view(1, N, 1)) & valid.unsqueeze(1)).to(u.dtype)
@@ -93,9 +110,9 @@ class Level(nn.Module):
         prev = torch.cat([torch.zeros_like(ev[:, :1]), ev[:, :-1]], 1)
         b = self.block; x = ev
         x = x + b.drop(b.tm_out(event_memory(b.tm, b.n1(x), ev_t, ev_valid, self.slow)))
-        x = x + b.drop(event_read(b.read, b.n2(x), ev_t, ev_valid, self.slow, prev))
+        rd, fetches = event_read(b.read, b.n2(x), ev_t, ev_valid, self.slow, prev, self.read_temp); x = x + b.drop(rd)
         x = x + b.drop(b.mlp(b.n3(x)))
-        return dict(events=x, times=ev_t, valid=ev_valid, concepts=ev_c, order=order, hard=hard, p=p, st=st, concept_soft=soft)
+        return dict(events=x, times=ev_t, valid=ev_valid, concepts=ev_c, order=order, hard=hard, p=p, st=st, concept_soft=soft, fetches=fetches)
 
 
 def hold(events, ev_times, ev_valid, token_times):
@@ -111,7 +128,7 @@ class AsyncHierarchyLM(nn.Module):
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02)
         self.base = nn.ModuleList(Block(d, modes, heads, dk, dropout, depth) for _ in range(base))
         self.levels = nn.ModuleList(Level(d, modes, heads, dk, dropout, depth, i + 1, concepts) for i in range(levels))
-        for lv in self.levels: lv.rate = rate
+        self.price = rate; self.floor = 0.01
         self.out_norm = nn.LayerNorm(d); self.bias = nn.Parameter(torch.zeros(V))
         self.key_w = nn.Linear(2*d, 64); self.query_w = nn.Linear(d, 64); self.log_rate = nn.Parameter(torch.linspace(math.log(1e-3), math.log(0.3), 4))
         self.checkpoint_blocks = False; self._aux = None
@@ -135,7 +152,8 @@ class AsyncHierarchyLM(nn.Module):
     def local_losses(self, x, rate):
         aux = self._aux; haz = torch.zeros(()); conc = torch.zeros(()); rate_loss = torch.zeros(()); ds = []; tok_t = aux['token_times']
         for i, lv in enumerate(aux['levels']):
-            st = lv['st']; vb = lv['below_valid'].to(st.dtype); rate_loss = rate_loss + ((st*vb).sum()/vb.sum().clamp_min(1) - rate)**2
+            st = lv['st']; vb = lv['below_valid'].to(st.dtype); frac = (st*vb).sum()/vb.sum().clamp_min(1)
+            rate_loss = rate_loss + self.price*frac + 10.0*F.relu(self.floor - frac)**2                   # learned cadence: compute price, floor against death
             em = lv['hard'] & lv['below_valid']
             if em.any():                                                                          # concept-usage balance (KL to uniform)
                 marg = lv['concept_soft'][em].mean(0); rate_loss = rate_loss + (marg*(marg.clamp_min(1e-9).log() + math.log(marg.numel()))).sum()
@@ -157,7 +175,7 @@ class AsyncHierarchyLM(nn.Module):
     def stats(self):
         out = []
         for lv in self._aux['levels']:
-            n = float(lv['below_valid'].sum()); out.append(dict(rate=float(lv['hard'].sum())/max(n, 1), events=float(lv['valid'].sum())/lv['valid'].shape[0],
+            n = float(lv['below_valid'].sum()); out.append(dict(rate=float(lv['hard'].sum())/max(n, 1), events=float(lv['valid'].sum())/lv['valid'].shape[0], fetches=round(float(lv['fetches']), 2),
                                                                   concepts_used=int(torch.unique(lv['concepts'][lv['valid']]).numel()) if lv['valid'].any() else 0))
         return out
 
@@ -167,7 +185,7 @@ def main():
     ap.add_argument('--train-tokens', type=int, default=1048576); ap.add_argument('--lane', type=int, default=256); ap.add_argument('--d', type=int, default=64)
     ap.add_argument('--modes', type=int, default=32); ap.add_argument('--base', type=int, default=2); ap.add_argument('--levels', type=int, default=2)
     ap.add_argument('--heads', type=int, default=4); ap.add_argument('--dk', type=int, default=16); ap.add_argument('--dropout', type=float, default=0.1); ap.add_argument('--concepts', type=int, default=32)
-    ap.add_argument('--rate', type=float, default=0.25); ap.add_argument('--w-hazard', type=float, default=0.1); ap.add_argument('--w-concept', type=float, default=0.1)
+    ap.add_argument('--rate', type=float, default=0.02, help='compute price per unit emission rate (learned cadence)'); ap.add_argument('--w-hazard', type=float, default=0.1); ap.add_argument('--w-concept', type=float, default=0.1)
     ap.add_argument('--w-rate', type=float, default=1.0); ap.add_argument('--w-ds', type=float, default=0.3)
     ap.add_argument('--lr', type=float, default=3e-3); ap.add_argument('--wd', type=float, default=0.01); ap.add_argument('--batch', type=int, default=4); ap.add_argument('--epochs', type=int, default=20)
     ap.add_argument('--patience', type=int, default=2); ap.add_argument('--max-wall-s', type=float, default=10800); ap.add_argument('--max-steps', type=int, default=0)

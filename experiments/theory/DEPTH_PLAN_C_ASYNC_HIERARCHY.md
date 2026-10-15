@@ -147,3 +147,35 @@ combining a row's evidence. The cadence hierarchy is built for high-rate, low-in
 cameras (DVS Gesture data is available in `data/dvsgesture`): the token level absorbs raw polarity events, upper levels
 fire rarely, only when integrated change warrants it, and carry gesture-level concepts, so compute and representation
 both follow information rather than the raw event rate.
+
+## 6. One primitive, three kinds of depth: the race graph
+
+**Race node.** A node n holds persistent state S_n. An incoming event e defines a candidate set C_n(e) (addressed memory
+keys, child branches, concept slots, or {emit, silence}); each candidate c has a clock whose law depends on (S_n, e, c);
+the clocks race, and the winner w with its time τ_w becomes the node's output event to its child nodes (silence can win:
+no event). A **race graph** is a directed network of race nodes. The probability of an outcome is the product of race-win
+probabilities along its event path; learning is exact for the winner and counterfactual for losing candidates (the same
+credit rule everywhere); inference is sparse because only winners propagate.
+
+| Special case | Candidate set | Depth along |
+|---|---|---|
+| synchronous layer | one candidate, delay 0 | stack per event (representation depth) |
+| keyed read / race attention | keys of past events | memory selection |
+| decision cascade, tree output | branches of a tree | elimination rounds per event (decision depth) |
+| cadence level (plan C) | {emit, silence} with delays | slower levels across time (temporal depth) |
+| concept routing; tabular split | concept slots; typed comparisons | path through a tree |
+| mixture of experts | experts | conditional compute |
+
+**Composition.** One input event runs a synchronous stack (representation), resolves its output through a narrowing
+race cascade whose rounds may read memory selected by earlier rounds (decision), and contributes to cadence races that
+emit slower concept events (time); slow states return as context for later events. Decision nodes can use the memory
+cadence nodes integrated; tables use typed comparison nodes, split nodes, leaf nodes and additive aggregation of many
+shallow race-trees.
+
+**First instance built: race-tree output cascade** (`experiments/r1_race_tree_lm.py`). The next token is the winner of
+four successive 16-way races down a balanced tree over the GPT-2 vocabulary (16^4 >= 50,257), each round refining the
+query with the branch already chosen; an exact copy race (keyed episodic votes over tokens in the lane) competes with the
+tree through a null route, so the output law stays exactly normalised. Training uses exact path likelihood, so losing
+branches receive their exact gradient (counterfactual credit in closed form); output work per token falls from 50,257
+dot products to 64 plus the refinement steps. Planned next instances: per-token halting race (adaptive decision depth),
+race-forest layers for typed tables, plan C on DVS Gesture.

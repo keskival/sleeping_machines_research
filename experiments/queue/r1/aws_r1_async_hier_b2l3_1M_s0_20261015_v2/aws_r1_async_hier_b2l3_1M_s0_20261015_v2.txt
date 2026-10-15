@@ -1,0 +1,2 @@
+# R1 depth plan C (learned cadence and fetches, chunked exact evaluation): 2 token blocks + 3 event levels, 1M tokens seed 0
+aws_r1_async_hier_b2l3_1M_s0_20261015_v2 experiments/r1_async_hierarchy_lm.py --tag aws_r1_async_hier_b2l3_1M_s0_20261015_v2 --base 2 --levels 3 --train-tokens 1048576 --epochs 20 --patience 2 --max-wall-s 21600 --seed 0 --checkpoint-blocks 0
