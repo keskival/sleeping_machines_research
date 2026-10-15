@@ -1,0 +1,24 @@
+{"epoch": 0, "tape_nll": 6.890697693803996, "tape_targets": 677376, "return_nll": {"10s": 9.403601434528921, "60s": 10.129785140511347, "300s": 10.875972966505483}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 30.40935954154575}
+/workspace/experiments/market/b10p_fit.py:65: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); total += float(loss)*tl.numel(); seen += tl.numel()
+{"epoch": 1, "train_loss": 37.10973589013403, "wall_s": 172.4252082540188}
+{"epoch": 2, "train_loss": 36.617980462923335, "wall_s": 345.6026366050355, "tape_nll": 6.9100155759610455, "tape_targets": 677376, "return_nll": {"10s": 9.029149195786214, "60s": 9.985652477473552, "300s": 10.784100368478606}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.798902041738373}
+{"epoch": 3, "train_loss": 36.33507917310215, "wall_s": 527.5092630810104}
+{"epoch": 4, "train_loss": 36.214771826496694, "wall_s": 700.390594972996, "tape_nll": 6.903824880604988, "tape_targets": 677376, "return_nll": {"10s": 8.95470957035665, "60s": 9.956958291633116, "300s": 10.764097818338037}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.675765680327803}
+{"epoch": 5, "train_loss": 36.16489861487241, "wall_s": 882.8004585220478}
+{"epoch": 6, "train_loss": 36.111214090958285, "wall_s": 1056.0592762799934, "tape_nll": 6.907121620910583, "tape_targets": 677376, "return_nll": {"10s": 8.905403524696274, "60s": 9.952765233702655, "300s": 10.75505609304627}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.6132248514452}
+{"epoch": 7, "train_loss": 36.08665523490891, "wall_s": 1238.5799985900521}
+{"epoch": 8, "train_loss": 36.038512944859676, "wall_s": 1412.3692085009534, "tape_nll": 6.902198452364206, "tape_targets": 677376, "return_nll": {"10s": 8.871604190949013, "60s": 9.941624358016385, "300s": 10.75445599044951}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.567684539414905}
+{"epoch": 9, "train_loss": 36.077844291931584, "wall_s": 1595.1237167790532}
+{"epoch": 10, "train_loss": 36.03961438409915, "wall_s": 1768.2258829949424, "tape_nll": 6.903271728987014, "tape_targets": 677376, "return_nll": {"10s": 8.845670546710265, "60s": 9.943994109676206, "300s": 10.756636299181695}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.546300955568164}
+{"epoch": 11, "train_loss": 36.00980538665072, "wall_s": 1950.6591122651007}
+{"epoch": 12, "train_loss": 35.98386044742613, "wall_s": 2123.7482241280377, "tape_nll": 6.910104759129661, "tape_targets": 677376, "return_nll": {"10s": 8.82415942355155, "60s": 9.946737468012273, "300s": 10.75141669755996}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.522313589123783}
+{"epoch": 13, "train_loss": 35.959432694293746, "wall_s": 2305.5674002389424}
+{"epoch": 14, "train_loss": 35.98519802427991, "wall_s": 2478.0092514830176, "tape_nll": 6.90908755760509, "tape_targets": 677376, "return_nll": {"10s": 9.014323489008792, "60s": 9.95709083700422, "300s": 10.752855771878512}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.724270097891523}
+{"epoch": 15, "train_loss": 36.10399028889387, "wall_s": 2659.5744512809906}
+{"epoch": 16, "train_loss": 35.9947369021, "wall_s": 2832.2275799880736, "tape_nll": 6.907915829748839, "tape_targets": 677376, "return_nll": {"10s": 8.824342468474551, "60s": 9.942080550101245, "300s": 10.742502578682823}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.508925597258617}
+{"epoch": 17, "train_loss": 35.936657100367064, "wall_s": 3014.2994729881175}
+{"epoch": 18, "train_loss": 35.92172408161854, "wall_s": 3187.1663825840224, "tape_nll": 6.902409548457069, "tape_targets": 677376, "return_nll": {"10s": 9.019637945727549, "60s": 9.952024773846746, "300s": 10.756315752014185}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.72797847158848}
+{"epoch": 19, "train_loss": 36.22634207573032, "wall_s": 3369.2346709461417}
+{"epoch": 20, "train_loss": 36.04151340427085, "wall_s": 3542.1677711871453, "tape_nll": 6.907661158514778, "tape_targets": 677376, "return_nll": {"10s": 8.939789227060006, "60s": 9.953081887242618, "300s": 10.762660208797005}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 29.65553132309963}
