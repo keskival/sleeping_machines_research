@@ -533,3 +533,10 @@ Deep spatial composition development (15 October):
 derives full-continuation categorical credit, states its sampling contract and
 resource cost, and records relational child interactions and the float32 early
 signal failure. Implementation is unfitted; 13 numerical contracts pass.
+
+Persistent parent composition (15 October):
+[`PERSISTENT_PARENT_COMPOSITION.md`](theory/PERSISTENT_PARENT_COMPOSITION.md)
+formalizes role binding, relation terms, persistent refinement, delayed feedback
+and cell-balanced exact route audits. A selected-child transport repair improves
+float32 signal visibility from16/32 to32/32 audited cells in one untrained
+synthetic fixture;22 numerical contracts pass. No learned semantic result yet.

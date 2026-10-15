@@ -5395,3 +5395,18 @@ TRAIN per-depth contrast/variance and replay resource measurement, not a long
 fit. Existing v1 queue/source files and active jobs are untouched. V2 is an
 unfitted development construction, missing event-sparse dispatch, persistent
 cross-window state and efficient replay; it is not the integrated flagship.
+
+### 15 October: persistent parent-role composition and transport repair
+
+`parent_race_hierarchy.py` now implements eight abstraction levels with four
+refinements each: complementary child-role races, relative-pose values, pair
+relations, explicit persistent parent states, delayed upper-state queries,
+final-task replay credit and cell-balanced audit sampling. Event-input wrapper
+reuses the fixed-window temporal surface. This is an unfitted dense reference,
+not the flagship. See `theory/PERSISTENT_PARENT_COMPOSITION.md` for retained and
+missing mechanisms, theory, admission gate and source-hashed diagnostic evidence.
+22 combined contracts pass. At one initialization/fixed synthetic input, the
+selected-content/interpolating construction makes final-loss contrasts visible
+at all32 audited cells in float32, versus16/32 for the proposal-only update.
+No training or async execution result is claimed. Next: real TRAIN signal,
+variance and replay-resource admission before fitting; active queues untouched.
