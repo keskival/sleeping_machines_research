@@ -466,6 +466,111 @@
         "investment/INVESTMENT_CASE.md",
         "investment/INVESTOR_PROOF_PLAN.md"
       ]
+    },
+    {
+      "id": "market_acquisition_mean_native",
+      "display": "6.8842",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s1_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s2_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "market_acquisition_mean_lstm",
+      "display": "6.8996",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s1_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s2_20261015_v2.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "market_acquisition_mean_transformer",
+      "display": "6.9686",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s1_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s2_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
     }
   ]
 }

@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "evidence_level": "three-seed development acquisition result",
+  "rows": [
+    {
+      "family": "native",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "dev_nll": [
+        6.8906973234180455,
+        6.879298335732534,
+        6.882719385608669
+      ],
+      "mean_dev_nll": 6.884238348253082
+    },
+    {
+      "family": "lstm",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "dev_nll": [
+        6.900700656713593,
+        6.89818497866206,
+        6.900025672935329
+      ],
+      "mean_dev_nll": 6.899637102770328
+    },
+    {
+      "family": "transformer",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "dev_nll": [
+        6.966435641695363,
+        6.962903227581332,
+        6.976511681827296
+      ],
+      "mean_dev_nll": 6.968616850367997
+    }
+  ],
+  "scope": "Fixed-weight August development evaluation of the acquired tape models under the source-bound stable-head budget admission. Native leads each reference at each paired seed. Different from online October confirmation and price forecasting; no additional test or online confirmation inferred. All inherited, interruption and selection work remains in original receipts.",
+  "next_decision": "Reuse the completed learners for frozen-protocol online August/October replication; no new offline reference fit.",
+  "input_sha256": {
+    "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json": "c0dce6f1203fc0ec8d3122abae7e1bb148e0cd910eabe78ab40db250f53f0163",
+    "experiments/results/market/aws_b10_stable_native_s1_20261014_v1.json": "cbba34c454d697d67df789b5b2d62beabe90bc34180185b1d791ace84ccf3d75",
+    "experiments/results/market/aws_b10_stable_native_s2_20261015_v1.json": "e5b704602eaea08fe4374b8a33a5f5f8d6b45b63346d18dc326e9f5590746365",
+    "experiments/results/market/aws_b10_stable_lstm_s0_20261014_v1.json": "74530d36615313aaceda1ba971930d816bed958923a879972bb5582d4e30f26e",
+    "experiments/results/market/aws_b10_stable_lstm_s1_20261015_v1.json": "77a66dc364ea1d5a275ac7e4df2be1a58dde0de8f47032ccd51a7044e2bb73b5",
+    "experiments/results/market/aws_b10_stable_lstm_s2_20261015_v2.json": "116f97ad41ddd2d01de3fbc2df662f83307a8394d8c9b99a2b943e18592c7ffd",
+    "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json": "dce04fb503c85a091bdcbe67976b17cac8e7870fc5a2c68d027499282a253661",
+    "experiments/results/market/aws_b10_stable_transformer_s1_20261015_v1.json": "470aef4dfd1dfee4c912b17e0b98f31d4a0dd3e9dcc3652b41d4ac7d0d4854f9",
+    "experiments/results/market/aws_b10_stable_transformer_s2_20261015_v1.json": "a9d49686b60bbf8625254dea6b29c35139b558551388e2d95b3a5ef35228a49d"
+  }
+}
