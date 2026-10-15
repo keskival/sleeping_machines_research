@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "serial_equal": true,
+    "zero_value_equal_residual": true,
+    "credit": true,
+    "causal": true,
+    "store": true
+  },
+  "measurements": {
+    "serial_equal": true,
+    "zero_value_equal_residual": true,
+    "store_entries_after_64_tokens": 64,
+    "grad_norms": {
+      "read_query": 0.26765042543411255,
+      "read_key": 0.16757988929748535,
+      "read_value": 1.2021533250808716,
+      "read_age": 0.01712329313158989,
+      "read_boundary": 0.0031123945955187082,
+      "read_null": 0.05163882300257683
+    },
+    "causal_prefix_max_change": 0.0,
+    "suffix_changes": true
+  },
+  "source_sha256": {
+    "experiments/residual_read_contracts.py": "28b2171431ea95dc57d4566abe83fc6a1a502ab1b9323782efc870d987df9878",
+    "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e",
+    "sleeping_machines/residual_race_episodes.py": "a38f5212a32434968156ed17a03e0299089958f9af9060420db36f8e0cb1de68"
+  },
+  "process_wall_s": 5.969943762989715
+}
