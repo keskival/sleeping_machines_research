@@ -1,0 +1,778 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "B4 developed attempt with the strongest assembled fighter (logspread clocks + addressed mark memory + episodic pointer race, finite repair, optional calibrated local clipping), validation-selected per dataset, TEST scored once; decides whether the family wins the Bosser-Ben Taieb benchmark datasets lost by the frozen transfer",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_b4x_wiki_ptr_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptr_20261015_v1_s0/aws_b4x_wiki_ptr_20261015_v1_s0.txt",
+        "queue_sha256": "a7fe425996749bd0bef05bcda1e65c3ee1b3c78db2dcea271af137134c696b47",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptrlc_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptrlc_20261015_v1_s0/aws_b4x_wiki_ptrlc_20261015_v1_s0.txt",
+        "queue_sha256": "3067b290b6eca0bbbd297468cb07769cb594d80238f5c4046a5b529a2fdf07f9",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_marks_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_marks_20261015_v1_s0/aws_b4x_wiki_marks_20261015_v1_s0.txt",
+        "queue_sha256": "0e7f170bc5574426823362369de03dd9b887112f8171bf710e7e95ce330dd132",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptr_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptr_20261015_v1_s1/aws_b4x_wiki_ptr_20261015_v1_s1.txt",
+        "queue_sha256": "350cf40da45f26c71d8e385e47e73b9387717039eb8316056742e8c465293221",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptrlc_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptrlc_20261015_v1_s1/aws_b4x_wiki_ptrlc_20261015_v1_s1.txt",
+        "queue_sha256": "7fd66f0f9626cb45a3a5c3d8200884f76ae7cb1e84b552358cea8db41513a84a",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_marks_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_marks_20261015_v1_s1/aws_b4x_wiki_marks_20261015_v1_s1.txt",
+        "queue_sha256": "ea3c97eeec4d24ce81b92eff56aade3d5a87f9735a3eedb84e73b60cae5d1d69",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptr_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptr_20261015_v1_s2/aws_b4x_wiki_ptr_20261015_v1_s2.txt",
+        "queue_sha256": "0a47742184c8121807ed389e57fbb019bfb0304f3e173e06f6576f8e1380c0ab",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptrlc_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptrlc_20261015_v1_s2/aws_b4x_wiki_ptrlc_20261015_v1_s2.txt",
+        "queue_sha256": "ed2f3a84e3eb5b66609e8819535b5e14fe96b7d1b08ab139647cded9ed369ecf",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_marks_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_marks_20261015_v1_s2/aws_b4x_wiki_marks_20261015_v1_s2.txt",
+        "queue_sha256": "6382000f072bdb34120c70796f6bc3e8b88ff31190cbe9cd2527d4a6c1bd245b",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptr_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptr_20261015_v1_s3/aws_b4x_wiki_ptr_20261015_v1_s3.txt",
+        "queue_sha256": "0480250b0814f855e45e3d5af8fa1e9917cec715ff59a3887ff8f4c286a02b25",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptrlc_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptrlc_20261015_v1_s3/aws_b4x_wiki_ptrlc_20261015_v1_s3.txt",
+        "queue_sha256": "c768f5d690b6a046388c09564c14fe5837c8fe877a21df614e5829db14adb43b",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_marks_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_marks_20261015_v1_s3/aws_b4x_wiki_marks_20261015_v1_s3.txt",
+        "queue_sha256": "6334dfb277bb85dbb0a36ad3545ef1239b06ab4bd0c97ab5e961e413bb30ca62",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptr_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptr_20261015_v1_s4/aws_b4x_wiki_ptr_20261015_v1_s4.txt",
+        "queue_sha256": "b9f3ed62f9c5732002c2168ed321d47d0bbe3c720b44fcd8dc50854abbf8641e",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_ptrlc_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_ptrlc_20261015_v1_s4/aws_b4x_wiki_ptrlc_20261015_v1_s4.txt",
+        "queue_sha256": "ef0461860ff01f2624972fe6ad64ff683665281f3f1531761d3f270888cbf771",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_marks_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_marks_20261015_v1_s4/aws_b4x_wiki_marks_20261015_v1_s4.txt",
+        "queue_sha256": "abb8599f2bf9307604e42e40d82719a9b37b44c377b962de6a7fc28581abf037",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_wiki_test_20261015_v1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_wiki_test_20261015_v1/aws_b4x_wiki_test_20261015_v1.txt",
+        "queue_sha256": "e54a2f20c7db48d7252ab0a710631cea94200884844bb91b2fa2fa79e8a7c53d",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/b4x_score.py": "b056a992b5812fe43d54afd73a0c2b58bfcab4c7a04ec95f946989202d9c5795"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_wiki_test_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s4.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_ptrlc_20261015_v1_s4.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_wiki_marks_20261015_v1_s4.json"
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_b4x_github_ptr_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s0/aws_b4x_github_ptr_20261015_v1_s0.txt",
+        "queue_sha256": "09229718ce30ee64f4228a4ffa8e3023c561243265e50a92e070599f1c7f0a99",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s0/aws_b4x_github_ptrlc_20261015_v1_s0.txt",
+        "queue_sha256": "b78ac77d55551cb0f996d9733561ac48554d7d400ca390cf826577a6f3c22eda",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_marks_20261015_v1_s0",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_marks_20261015_v1_s0/aws_b4x_github_marks_20261015_v1_s0.txt",
+        "queue_sha256": "40944d5b11d8e261f986989a1f353075b59395bc715c746e695900a2742b7660",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s0.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s1/aws_b4x_github_ptr_20261015_v1_s1.txt",
+        "queue_sha256": "80bd3268c9ff063a7a50572fab78c3bc6fdbd63849ba6387e4e6697b9b2ecafb",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s1/aws_b4x_github_ptrlc_20261015_v1_s1.txt",
+        "queue_sha256": "90acba3aeff9038944c2621a9f8c29a0d59625202e9e943baebede4c7121aaef",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_marks_20261015_v1_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_marks_20261015_v1_s1/aws_b4x_github_marks_20261015_v1_s1.txt",
+        "queue_sha256": "2c72a416734bbafd26ed78faf7aed288f7bedd2775866624b662a7b8a1aa0781",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s1.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s2/aws_b4x_github_ptr_20261015_v1_s2.txt",
+        "queue_sha256": "8d667300490eb67716252165da1f2eaa93ff6abebd8f1987c705da622b88d1d0",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s2/aws_b4x_github_ptrlc_20261015_v1_s2.txt",
+        "queue_sha256": "da537e6a13feb3f44109b27a7669b6bb69289b05acc7cf62863a344b9c10fe23",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_marks_20261015_v1_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_marks_20261015_v1_s2/aws_b4x_github_marks_20261015_v1_s2.txt",
+        "queue_sha256": "0a9c5c3877f921fb69fca7d6b1128631df567787ca5ca7e15970835c49fa6c11",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s2.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s3/aws_b4x_github_ptr_20261015_v1_s3.txt",
+        "queue_sha256": "aef06763473a312e4414da3ff833d0fb845e3a689c36725550cef7c582c6e83c",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s3/aws_b4x_github_ptrlc_20261015_v1_s3.txt",
+        "queue_sha256": "6a15b100ea064070922f753866f19080a954b326a5388b87f4444d8eb5ff2aba",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_marks_20261015_v1_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_marks_20261015_v1_s3/aws_b4x_github_marks_20261015_v1_s3.txt",
+        "queue_sha256": "410fb525ae140455802f12f210955e0276b97f2e0aa4095ebe87dbd70a0f150f",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s3.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s4/aws_b4x_github_ptr_20261015_v1_s4.txt",
+        "queue_sha256": "8f9f91dc076561a2715d7aeb3ad77696796e5fa0e6685acfbdf78a563df42f54",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s4/aws_b4x_github_ptrlc_20261015_v1_s4.txt",
+        "queue_sha256": "e41b902fb6cbc59cf0043db7348658e48e5dcd8bb9a387f6065d37ac9e527524",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_marks_20261015_v1_s4",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_marks_20261015_v1_s4/aws_b4x_github_marks_20261015_v1_s4.txt",
+        "queue_sha256": "43fd9326df9f7ae6af2bbc12e4f2f88f21a87cb5c34ce8a0d7486834ca9f512c",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s4.json",
+        "requires": [],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_test_20261015_v1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_test_20261015_v1/aws_b4x_github_test_20261015_v1.txt",
+        "queue_sha256": "9e348e53418f1b9549d6018800e577ab0ed833cd824b1e1894f944c29be11a99",
+        "source_sha256": {
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/b4x_score.py": "b056a992b5812fe43d54afd73a0c2b58bfcab4c7a04ec95f946989202d9c5795"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_test_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s0.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s1.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s2.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s3.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s4.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s4.json"
+          },
+          {
+            "result": "experiments/results/tpp_b4/aws_b4x_github_marks_20261015_v1_s4.json"
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
