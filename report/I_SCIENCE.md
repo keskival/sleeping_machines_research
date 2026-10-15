@@ -311,21 +311,21 @@ At 10M characters the native model beats tuned Transformers at equal or lower co
 
 ### 4.4 Properly tokenized language (FineWeb, GPT-2 BPE)
 
-Fixed P24 integrated model, 3.16M parameters, two passes; DEV is 2,040 next-token targets (8 lanes × 255) from the FineWeb validation shard; count references are fitted on the identical TRAIN prefix and scored on the identical targets ([result](../experiments/results/token_language/aws_token_ngram_reference_20261006T143000Z.json), `experiments/token_ngram_reference.py`).
+Shared development protocol for every member: 8,192 FineWeb validation targets in disjoint 1,024-token windows, nats per token ([placement](../experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json), [episodic store](../experiments/EPISODIC_MEMORY_SCALING_20261015.md)).
 
-| TRAIN tokens | Ours (DEV NLL, nats) | Kneser–Ney bigram | Kneser–Ney trigram | Add-one unigram |
-| --- | --- | --- | --- | --- |
-| 64K | **8.033** | 8.139 | 8.155 | 8.162 |
-| 256K | 7.742 | **7.647** | 7.648 | 7.972 |
-| 1M | 7.252 / 7.264 (seeds 6 / 7) | 7.251 | **7.217** | 7.950 |
+| Member | Training tokens | NLL |
+| --- | --- | --- |
+| **Keyed temporal-memory member** (3.33M parameters, §4.5), seeds 1 / 0 | 4M, repeated epochs | **5.601 / 5.624** |
+| **P24 race core + episodic pointer store** (6,248 memory parameters) | 5.978 parent + 2M fresh | **5.634** |
+| P24 race core (allocated counterfactual credit) | ~15M fresh | 5.978 |
+| Keyed member, 3 seeds | 1M, repeated epochs | 6.112–6.134 |
+| Keyed member without the keyed read | 1M | 6.234 |
 
-![token n-gram calibration](figures/token_ngram_calibration_20261006.png)
+**Addressed memory is the lever.** The P24 core uses almost no history older than 64 tokens (cutting it costs 0.004–0.008 nats, flat with 16× more data): its 16-token credit window never rewards long retention ([theory](../experiments/theory/CREDIT_HORIZON_AND_ADDRESSED_MEMORY.md)). A persistent episodic store read with read-time credit improves the same learner by 0.345 nats and raises the value of history older than 64 tokens to 0.227 nats; on the identical extra data without the store, the value stays at −0.001. The keyed member's identity-addressed read gives it 0.117.
 
-**The native tokenized model currently performs at bigram level.** It beats the count models at 64K tokens, trails them at 256K, and ties the bigram at 1M while the trigram leads by 0.03–0.05 nats. The count models fit in seconds; the native 1M fit took 73 minutes at 480 training tokens/s on one CPU thread. Erasing persistent memory raises native loss by only 0.010 / 0.017 nats (seeds 6 / 7): memory is used, but carries little.
+**Where the prediction problem is** ([measurement](../experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json)): 77.8% of targets start a word and carry 84% of the keyed member's loss. The next-word choice is constrained by clause, sentence and document context, and no member uses it yet: history older than 64 tokens is worth 0.023 nats on those targets.
 
-The 2,040-target DEV slice has a standard error of about 0.09 nats for an unpaired mean and is harder than average: on 65,528 targets from the same offset the bigram scores 6.584 at 1M rather than 7.251. Differences of 0.02 nats on this slice, such as the 256K time-scale pair (+0.018 on seed 6, −0.022 on seed 7), do not separate variants. Native models are next scored on the larger slice.
-
-Two further completed results: credit window 64 lost to credit window 16 by 0.129 nats at 64K tokens (credit 16 retained), and slower memory evolution increased stored-content dependence in both seeds (payload erasure 0.043 / 0.032 versus 0.011 / 0.014) without a replicated quality gain.
+**Depth needs the right composition.** Stacking token-clock race stages does not help: on 1M fresh targets the residual race stack scores 6.556 / 6.590 / 6.690 at depth 2 / 8 / 16, and per-stage reads (6.472 at depth 2) make every stage useful without making depth win; its deep stages add at most 0.001 nats on word-initial targets. With full-lane credit and an addressed read in every layer, depth pays: four keyed-member layers beat two, 5.899 vs 5.957 on the 65,528-target slice at 1M tokens (AWS). The next decisive test builds depth from the data's part-whole structure ([theory](../experiments/theory/PART_WHOLE_COMPOSITION.md)): word, clause and sentence levels on observed boundaries, each composing its parts in order and training on its own future horizon, against its two-layer base on the same 4M fresh tokens.
 
 ### 4.5 Anonymous interleaved processes (FAS v1)
 
