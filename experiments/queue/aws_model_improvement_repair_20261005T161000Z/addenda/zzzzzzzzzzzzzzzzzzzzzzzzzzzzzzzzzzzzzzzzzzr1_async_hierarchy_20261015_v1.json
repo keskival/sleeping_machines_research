@@ -1,0 +1,46 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 depth plan C (theory/DEPTH_PLAN_C_ASYNC_HIERARCHY.md): event-sparse asynchronous concept hierarchy; contracts: exact init identity, exact causality of predictions and emissions, nesting, event memory equals event recurrence (1.3e-6), live geometric cadence on real data (55->12->3->1 events/lane, 29->17->9->3 concepts)",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_r1_async_hier_b2l3_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_async_hier_b2l3_1M_s0_20261015_v1/aws_r1_async_hier_b2l3_1M_s0_20261015_v1.txt",
+        "queue_sha256": "071619141a6b6bb60e34dbd517e831c696518ea14093f8418e543b19eaec3c92",
+        "source_sha256": {
+          "experiments/r1_async_hierarchy_lm.py": "494f23248c74d57d3174a81fcf4541068594fa7f5cb58ca57312b638848c17fc",
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_async_hier_b2l3_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 27000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_async_hier_b4l4_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_async_hier_b4l4_1M_s0_20261015_v1/aws_r1_async_hier_b4l4_1M_s0_20261015_v1.txt",
+        "queue_sha256": "c28013b1e820f53cc75144ff4a40a18c92ef0be8a91bae7c06b429d05f8dffc7",
+        "source_sha256": {
+          "experiments/r1_async_hierarchy_lm.py": "494f23248c74d57d3174a81fcf4541068594fa7f5cb58ca57312b638848c17fc",
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_async_hier_b4l4_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 34200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# R1 depth plan C v2: event-sparse asynchronous concept hierarchy, 2 token blocks + 3 levels (cadence 0.35, 32 concepts, segment integration, local hazard/concept/deep-supervision losses), 1M tokens seed 0; decision: does an asynchronous concept hierarchy add depth value over plan B and the keyed L2 member (6.019)
+aws_r1_async_hier_b2l3_1M_s0_20261015_v1 experiments/r1_async_hierarchy_lm.py --tag aws_r1_async_hier_b2l3_1M_s0_20261015_v1 --base 2 --levels 3 --rate 0.35 --train-tokens 1048576 --epochs 20 --patience 2 --max-wall-s 21600 --seed 0 --checkpoint-blocks 0
