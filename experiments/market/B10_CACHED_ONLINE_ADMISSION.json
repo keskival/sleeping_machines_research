@@ -1,0 +1,75 @@
+{
+  "battle": "B10",
+  "decision": "Does native online prediction beat online Transformer/LSTM with architecture-appropriate persistent history and complete work?",
+  "distribution": "chronological_stream",
+  "forecast_order": "issue_then_reveal_then_update",
+  "resource_boundary": "Inherited fitting plus TRAINwarmup/online forward/backward/optimizer and special functions; same stream/update opportunity, measured work rather than assumed equal adaptation FLOPs",
+  "transformer_context": 2048,
+  "update_targets": 32,
+  "scored_targets": 16384,
+  "online_lr": 0.0001,
+  "gate_result": "experiments/results/market/aws_b10_cached_transformer_gate_20261015_v1.json",
+  "arms": {
+    "native": {
+      "online_weight_updates": true,
+      "state_policy": "Persistent temporal state across all update blocks and TRAIN-to-DEV time gap",
+      "retained_mechanisms": [
+        "temporal modal state",
+        "addressed mark memory",
+        "normalized clock-race head"
+      ],
+      "restrictions": [
+        {
+          "effect": "Gradient detaches every32 observed outcomes; numeric state retained",
+          "reason": "Existing32-event online protocol and bounded graph/RSS; applies to every family"
+        }
+      ]
+    },
+    "lstm": {
+      "online_weight_updates": true,
+      "state_policy": "Persistent recurrent h/c and addressed output state",
+      "retained_mechanisms": [
+        "lstm encoder",
+        "addressed mark memory",
+        "normalized clock-race head"
+      ],
+      "restrictions": [
+        {
+          "effect": "Gradient detaches every32 observed outcomes; numeric state retained",
+          "reason": "Existing32-event online protocol and bounded graph/RSS; applies to every family"
+        }
+      ]
+    },
+    "transformer": {
+      "online_weight_updates": true,
+      "state_policy": "Persistent2048-event KV encoded by producing weight versions, same32-target credit truncation; no full re-encoding afterupdates",
+      "retained_mechanisms": [
+        "transformer encoder",
+        "addressed mark memory",
+        "normalized clock-race head"
+      ],
+      "restrictions": [
+        {
+          "effect": "Gradient detaches every32 observed outcomes; numeric state retained",
+          "reason": "Existing32-event online protocol and bounded graph/RSS; applies to every family"
+        },
+        {
+          "effect": "Rolling raw history2048, plus current causal block",
+          "reason": "Twice acquired training context; actual2048-context gradient/RSS gate required under3GBslot. Native/LSTM memory not truncated to this attention buffer. Larger histories remain explicit resource engineering, not model-family limits."
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/capability_admission.py": "1395ce2a89ad19fd07b7c1e31e44aa365cb54595ab08c69d812c7b1130e5e60a",
+    "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+    "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+    "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+    "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/market/b10_cached_comparison.py": "ad65eecc654abfab203441c963670475c1afd64155b12bca8b1315a19418077e",
+    "experiments/market/b10_cached_transformer.py": "8c7c23c47af7fcd7e57f1eadd9ab98cf8229e229f6489620dc8916c8d5663d96"
+  },
+  "fighter_selection_rationale": "Test a cheaper stateful online Transformer execution policy with the same acquired weights, head and online observations; compare native quality/work against strongest useful online references."
+}

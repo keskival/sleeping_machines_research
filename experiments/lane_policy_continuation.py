@@ -1,0 +1,29 @@
+"""R1 strong acquired learner, persistent fresh streams, one lane-policy contrast."""
+import argparse,copy,json,resource,sys,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'experiments/credit'))
+import torch
+import protected_depth_local_gate as gate
+from sleeping_machines.lane_independent_races import independent_forward
+from public_token_scoring import score
+TOTAL=4096
+
+def main():
+ p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--policy',choices=['shared','independent'],required=True);p.add_argument('--updates',type=int,required=True);p.add_argument('--resume-from');a=p.parse_args();assert 1<=a.updates<=TOTAL;torch.set_num_threads(1);began=time.monotonic();model,_,args,train,_,_=gate.restore_arm('parent');base=ROOT/'experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1';parent=torch.load(base.with_suffix('.pt'),weights_only=False);model.load_state_dict(parent['model'])
+ if a.policy=='independent':model.__class__=type('Independent'+type(model).__name__,(type(model),),{'forward':independent_forward(type(model).forward)})
+ opt=gate.CalibratedReceiverBankAdamW(model,parent['optimizer']['bank_caps'],lr=args.lr,weight_decay=args.weight_decay);ck=parent;offset=0;elapsed=0.;work=dict(calls=0,replayed_targets=0,scored_targets=0);curve=[];loss_sum=0.;count=0;stream_start=(parent['training_block']+1)*args.train_tokens;binding=dict(policy=a.policy,parent_sha256=gate.pilot.driver.sha(base.with_suffix('.pt')),stream_start=stream_start,stream_total_updates=TOTAL,driver_sha256=gate.pilot.driver.sha(Path(__file__)))
+ if a.resume_from:
+  ck=torch.load(ROOT/a.resume_from,weights_only=False);assert ck['binding']==binding;model.load_state_dict(ck['model']);offset=ck['added_updates'];elapsed=ck['training_s'];work=ck['teacher_work'];curve=ck['curve'];loss_sum=ck['loss_sum'];count=ck['targets']
+ opt.load_state_dict(copy.deepcopy(ck['optimizer']))
+ for name,rng in ck['owned_rng'].items():getattr(model,name).set_state(rng)
+ gen=torch.Generator().set_state(ck['generator']);teacher=torch.Generator().set_state(ck['teacher_generator']);torch.set_rng_state(ck['torch_rng']);state=gate.pilot.clone_state(ck['state']);tokens=gate.pilot.driver.LaneTokens(train,stream_start,TOTAL*args.chunk*args.lanes+args.lanes,args.lanes);assert tokens.shape[1]==TOTAL*args.chunk+1;model.train();prefix=ROOT/f'experiments/results/token_language/{a.tag}';segment=time.monotonic();activation_observed=activation_clipped=0
+ for index in range(offset,a.updates):
+  cursor=index*args.chunk;buf=tokens[:,cursor:cursor+args.chunk+1];opt.zero_grad();loss,state,audits=gate.pilot.raw_step(model,state,gen,teacher,args,buf,parent['step']+index+1);loss_sum+=float(loss.double().sum());count+=loss.numel();opt.step();opt.zero_grad()
+  for receipt in opt.receiver.local.receipts:activation_observed+=1;activation_clipped+=int(receipt['scale']<1)
+  for audit in audits:work['calls']+=1;work['replayed_targets']+=audit['replayed_targets'];work['scored_targets']+=audit['scored_targets']
+  if (index+1)%256==0 or index+1==a.updates:
+   training_s=elapsed+time.monotonic()-segment;row=dict(update=index+1,prequential_nll=loss_sum/count,training_s=training_s);curve.append(row);saved=dict(model=model.state_dict(),optimizer=opt.state_dict(),state=state,generator=gen.get_state(),teacher_generator=teacher.get_state(),owned_rng=gate.private_state(model),torch_rng=torch.get_rng_state(),step=parent['step']+index+1,added_updates=index+1,targets=count,loss_sum=loss_sum,teacher_work=work,training_s=training_s,curve=curve,binding=binding);tmp=prefix.with_suffix('.tmp');torch.save(saved,tmp);tmp.replace(prefix.with_suffix('.pt'));print(json.dumps(row),flush=True)
+ # Common pinned scoring backend/clock tape isolates training-policy effect.
+ dev=gate.pilot.driver.load_tokens(args.dev_file);scored=score(model,dev,args,gate.pilot.driver,25165824,8192,1024,8);names=['experiments/lane_policy_continuation.py','sleeping_machines/lane_independent_races.py','experiments/credit/protected_depth_learning_pilot.py','experiments/multidepth_readout_token_language.py'];record=dict(status='completed',battle='R1',policy=a.policy,added_updates=a.updates,added_targets=count,prequential_nll=loss_sum/count,scored=scored,training_s=saved['training_s'],teacher_work=work,local_clip_activation_fraction=activation_clipped/activation_observed,final_weights=str(prefix.with_suffix('.pt').relative_to(ROOT)),source_sha256={n:gate.pilot.driver.sha(ROOT/n) for n in names},input_sha256={str(base.with_suffix('.pt').relative_to(ROOT)):gate.pilot.driver.sha(base.with_suffix('.pt'))},binding=binding,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,process_wall_s=time.monotonic()-began,scope='Single-factor lane-clock-policy comparison from strongest acquired6.06556 native learner. Same old fixedlocalcaps/moments/data/order and supported teacher; full capacity/keys/value/writes retained. Eight independent contiguous freshTRAIN streams continue through2Mtargets without artificial262k-block resets; acquired numeric state carried, gradientwindow16 remains separate. Per-target TRAIN losses scored before each update; final reused8192DEV/1024history uses common pinned shared-lane inference tape. 64-update smoke resumes into4096 total updates on IDENTICAL predeclared2M stream layout, not re-fitting. Smoke scoring/checkpoints paid separately; no public validation, external language fit, physical speed or FLOP claim.')
+ with prefix.with_suffix('.json').open('x') as f:json.dump(record,f,indent=2)
+if __name__=='__main__':main()

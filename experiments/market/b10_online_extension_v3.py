@@ -1,0 +1,31 @@
+"""Continue complete online learners to64k forecasts without repeated acquisition."""
+import argparse,copy,json,resource,sys,time
+from pathlib import Path
+import numpy as np
+import torch
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'experiments'));sys.path.insert(0,str(Path(__file__).parent))
+import b10_online_comparison as online
+from capability_admission import validate
+
+def main():
+ p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--family',choices=['native','lstm','transformer'],required=True);a=p.parse_args();torch.set_num_threads(1);torch.set_default_dtype(torch.float64);began=time.monotonic();contract=json.loads((ROOT/'experiments/market/B10_ONLINE_CAPABILITY_ADMISSION.json').read_text());validate(contract);data,_=online.prepare();gaps=np.concatenate([np.diff(t) for t,m in data['train']]);gaps=gaps[gaps>0];model=online.MatchedRace(gaps,a.family);model.eval();base=ROOT/f'experiments/results/market/aws_b10_online_{a.family}_s0_20261014_v1';r=json.loads(base.with_suffix('.json').read_text());assert r['status']=='completed';weights=ROOT/(f'experiments/results/market/aws_b10_online_{a.family}_s0_20261014_v1_{a.family}.pt');saved=torch.load(weights,weights_only=False);assert saved['scored_targets']==16384;model.load_state_dict(saved['model']);opt=torch.optim.AdamW(model.parameters(),lr=contract['online_lr'],weight_decay=1e-4,foreach=False);opt.load_state_dict(copy.deepcopy(saved['optimizer']));state=online.detach(saved['state']);context=contract['transformer_context'];chunk=32;start=127+16384;end=127+65536;z=np.load(ROOT/'data/binance/npz/2026-08-24.npz');origin=int(z['t'][0]);z=np.load(ROOT/'data/binance/npz/2026-08-25.npz');t=torch.tensor((z['t'][:65536+128]-origin)*1e-6)[None];m=torch.tensor(z['mark'][:65536+128].astype(np.int64))[None];assert torch.equal(state['last_time'],t[:,start-1:start]);prefix=ROOT/f'experiments/results/market/{a.tag}';progress=prefix.with_suffix('.progress.pt');binding=dict(family=a.family,parent_checkpoint_sha256=online.digest(weights),driver_sha256=online.digest(Path(__file__)),context=context,targets=65536);count=16384;total=r['rows'][0]['nll']*count;added_sum=0.;curve=[];ledger=online.Ledger();prior_work=dict(arithmetic=0,special_functions=0,comparisons=0);elapsed=0.
+ if progress.exists():
+  recovery=torch.load(progress,weights_only=False);assert recovery['binding']==binding;model.load_state_dict(recovery['model']);opt.load_state_dict(recovery['optimizer']);state=recovery['state'];count=recovery['targets'];total=recovery['loss_sum'];added_sum=recovery['added_loss_sum'];curve=recovery['curve'];elapsed=recovery['added_wall_s'];prior_work=recovery['ledger'];start=127+count
+ # Exact quiescent resume witness at the actual acquired boundary; both paid.
+ if count==16384:
+  pristine_optimizer=copy.deepcopy(saved['optimizer']);twin=copy.deepcopy(model);other=torch.optim.AdamW(twin.parameters(),lr=contract['online_lr'],weight_decay=1e-4,foreach=False);other.load_state_dict(copy.deepcopy(opt.state_dict()));outputs=[];witness=online.Ledger()
+  for actor,learner in [(model,opt),(twin,other)]:
+   issued_state=online.detach(copy.deepcopy(state))
+   with witness:loss,st=online.apply(actor,learner,t[:,start:start+chunk],m[:,start:start+chunk],t[:,start+1:start+chunk+1],m[:,start+1:start+chunk+1],issued_state,context)
+   outputs.append((loss,st))
+  assert online.equal(saved['optimizer'],pristine_optimizer),'Recovery witness mutated saved parent moments';assert online.equal(outputs[0],outputs[1]) and online.equal(model.state_dict(),twin.state_dict()) and online.equal(opt.state_dict(),other.state_dict());model.load_state_dict(saved['model']);opt.load_state_dict(copy.deepcopy(saved['optimizer']));state=online.detach(saved['state']);resume_witness=witness.record()
+ else:resume_witness=None
+ segment=time.monotonic()
+ with ledger:
+  for cursor in range(start,end,chunk):
+   loss,state=online.apply(model,opt,t[:,cursor:cursor+chunk],m[:,cursor:cursor+chunk],t[:,cursor+1:cursor+chunk+1],m[:,cursor+1:cursor+chunk+1],state,context);value=-float(loss.double().sum());total+=value;added_sum+=value;count+=chunk
+   if count%4096==0:
+    curve.append(dict(targets=count,cumulative_nll=total/count,added_stream_nll=added_sum/(count-16384)));work=ledger.record();work={key:work[key]+prior_work[key] for key in prior_work};recovery=dict(model=model.state_dict(),optimizer=opt.state_dict(),state=state,targets=count,loss_sum=total,added_loss_sum=added_sum,curve=curve,added_wall_s=elapsed+time.monotonic()-segment,ledger=work,binding=binding);tmp=progress.with_suffix('.tmp');torch.save(recovery,tmp);tmp.replace(progress);print(json.dumps(curve[-1]),flush=True)
+ assert count==65536;final=torch.load(progress,weights_only=False);torch.save(final,prefix.with_suffix('.pt'));names=['experiments/market/b10_online_extension_v3.py','experiments/market/b10_online_comparison.py','experiments/market/b10_online_stream.py','experiments/market/b10_operator_ledger_v3.py'];result=dict(status='completed',battle='B10',family=a.family,seed=0,targets=count,nll=total/count,added_targets=49152,added_stream_nll=added_sum/49152,curve=curve,added_ledger=final['ledger'],added_wall_s=final['added_wall_s'],resume_witness=resume_witness,inherited_online_record=str(base.with_suffix('.json').relative_to(ROOT)),input_sha256={str(p.relative_to(ROOT)):online.digest(p) for p in [base.with_suffix('.json'),weights]},source_sha256={n:online.digest(ROOT/n) for n in names},final_weights=str(prefix.with_suffix('.pt').relative_to(ROOT)),max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,process_wall_s=time.monotonic()-began,scope='Causal continuation of saved16k model/Adam/numerical history to64k consecutiveDEVforecasts. No model acquisition or TRAINwarmup repeated. All3 families retain online updates/persistent state; TFhistory2048. Scored-stream ledger plus inherited work and twice-executed32-target recovery witness separate. Single seed/reusedAug25DEV,Septembersealed; stability/scale confirmation, not new untouchedtest or tradingprofits.')
+ with prefix.with_suffix('.json').open('x') as f:json.dump(result,f,indent=2)
+if __name__=='__main__':main()

@@ -15,6 +15,8 @@ from experiments.market.episode_state import initial,detach_state
 from b10_matched_data import prepare,digest
 from b10_matched_models import MatchedRace
 from b10_online_stream import forecast,revealed_terms,detach
+from experiments.market.owned_clock_dispatch import consumer
+guide.control.market_consume=consumer()
 
 def load(day,n,origin):
  p=ROOT/f'data/binance/npz/{day}.npz';z=np.load(p);return torch.tensor((z['t'][:n]-origin)*1e-6),torch.tensor(z['mark'][:n].astype(np.int64)),p
@@ -46,7 +48,7 @@ def main():
  primary=ROOT/'experiments/results/market/aws_b10_online_native_s0_20261014_v1.json';parity=None
  if a.mode=='fit':
   previous=json.loads(primary.read_text());assert previous['status']=='completed';parity=abs(rows[0]['nll']-previous['rows'][0]['nll']);assert parity<1e-8,('Online BPTT stream mismatch',parity)
- names=['experiments/credit/aws_market_guided_online.py','experiments/credit/market_native_early_request.py','experiments/credit/market_native_remote_admission_selected.py','experiments/credit/native_market_credit.py','experiments/credit/market_streaming_clock_updates.py','experiments/market/paired_clock_credit.py','experiments/market/projected_clock_state.py','experiments/market/local_eligibility_state.py','experiments/market/episode_state.py','experiments/market/b10_stable_clock_head.py','experiments/market/b10_online_stream.py']
+ names=['experiments/credit/aws_market_guided_online.py','experiments/credit/market_native_early_request.py','experiments/credit/market_native_remote_admission_selected.py','experiments/credit/native_market_credit.py','experiments/credit/market_streaming_clock_updates.py','experiments/market/paired_clock_credit.py','experiments/market/projected_clock_state.py','experiments/market/local_eligibility_state.py','experiments/market/episode_state.py','experiments/market/b10_stable_clock_head.py','experiments/market/b10_online_stream.py','experiments/market/owned_clock_dispatch.py']
  result=dict(status='completed',battle='B10',mode=a.mode,source_actor_parity_error=error,primary_online_bptt_parity_error=parity,acquisition=source,rows=rows,source_sha256={n:digest(ROOT/n) for n in names},input_sha256={str(p.relative_to(ROOT)):digest(p) for p in [base,weights,path,target]},inherited_fitting_arithmetic=r['fitting_arithmetic'],wall_s=time.monotonic()-began,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,scope='Same acquired AWS native actor, AdamW warmup and chronological targets as online references; native persistent state survives gradient boundaries/day gap. Add demonstrated native hard-race early-request critic with actual future-Adam teaching. Frozen critic weights still evolve event memory and native actor adapts online. Source guidance preparation plus duplicate exact-acquisition/parity work charged; elapsed execution reported, full arithmetic accounting still needed for efficiency claim. Reused DEV,seed0,Septembersealed; development candidate, not complete family verdict.')
  out=ROOT/f'experiments/results/market/{a.tag}.json'
  with out.open('x') as f:json.dump(result,f,indent=2)

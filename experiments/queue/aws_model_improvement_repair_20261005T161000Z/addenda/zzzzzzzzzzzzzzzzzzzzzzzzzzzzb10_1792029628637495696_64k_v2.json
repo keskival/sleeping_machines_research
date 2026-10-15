@@ -1,0 +1,77 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Predeclared4x online stream extension from completelearner checkpoints; tests persistence of quality/work advantage",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_b10_online_64k_native_s0_20261015_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_online_64k_native_s0_20261015_v2/aws_b10_online_64k_native_s0_20261015_v2.txt",
+        "queue_sha256": "892f4a53f8d20e6a205ede7af4b3ec410435b7d830e4262428d080bbe452aefc",
+        "source_sha256": {
+          "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_online_extension_v2.py": "189340a2a86e5a02b5784b89f043d32026ca79a025cdd25ff419bea560f42e75"
+        },
+        "result": "experiments/results/market/aws_b10_online_64k_native_s0_20261015_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_online_native_s0_20261014_v1.json"
+          }
+        ],
+        "timeout_s": 5400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_b10_online_64k_lstm_s0_20261015_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_online_64k_lstm_s0_20261015_v2/aws_b10_online_64k_lstm_s0_20261015_v2.txt",
+        "queue_sha256": "f5d162a80a8d0243374184255c4302510ca11c63f68c63be7815b02c06b4ed9d",
+        "source_sha256": {
+          "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_online_extension_v2.py": "189340a2a86e5a02b5784b89f043d32026ca79a025cdd25ff419bea560f42e75"
+        },
+        "result": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_online_lstm_s0_20261014_v1.json"
+          }
+        ],
+        "timeout_s": 5400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_b10_online_64k_transformer_s0_20261015_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_online_64k_transformer_s0_20261015_v2/aws_b10_online_64k_transformer_s0_20261015_v2.txt",
+        "queue_sha256": "97e67d063a6f9a6db9108498bc162fff36ae31fc3f06705024083fe2062a8c0f",
+        "source_sha256": {
+          "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_online_extension_v2.py": "189340a2a86e5a02b5784b89f043d32026ca79a025cdd25ff419bea560f42e75"
+        },
+        "result": "experiments/results/market/aws_b10_online_64k_transformer_s0_20261015_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_online_transformer_s0_20261014_v1.json"
+          }
+        ],
+        "timeout_s": 5400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

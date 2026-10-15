@@ -1,0 +1,27 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Repair measured old-policy confound before next depth acquisition",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_protected_growth_bank_contract_20261015_v2",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_protected_growth_bank_contract_20261015_v2/aws_protected_growth_bank_contract_20261015_v2.txt",
+        "queue_sha256": "bfc8d4210803dd0e970ae90ffe8adaf0db6c4746503e4fe8e104abf49b7218c6",
+        "source_sha256": {
+          "sleeping_machines/learning/protected_growth_banks.py": "6104232869eb952480ea9165d0a5c8e45fa6c33ebd72861c26c158b0c77cd1c9",
+          "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/credit/protected_growth_bank_contract_v2.py": "2b2dccc1050e21a6adbd0eae51bff8702cb36603c8cf71b3afdc43c67773ec2d"
+        },
+        "result": "experiments/results/credit/aws_protected_growth_bank_contract_20261015_v2.json",
+        "requires": [],
+        "timeout_s": 600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

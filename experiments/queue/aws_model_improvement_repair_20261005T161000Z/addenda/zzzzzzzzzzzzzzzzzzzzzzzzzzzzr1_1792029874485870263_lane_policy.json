@@ -1,0 +1,90 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "One strongestparent singlefactor training-lane-policy comparison; persistent no-reset streams, smoke-to-fit fulllearner resume",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_lane_policy_shared_smoke_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_lane_policy_shared_smoke_20261015_v1/aws_lane_policy_shared_smoke_20261015_v1.txt",
+        "queue_sha256": "d94db265ce2d94cae0bcc171f0853bed24e8b6fe4da2b899246adfe4b820b814",
+        "source_sha256": {
+          "experiments/lane_policy_continuation.py": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794",
+          "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+        },
+        "result": "experiments/results/token_language/aws_lane_policy_shared_smoke_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_lane_policy_shared_2m_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_lane_policy_shared_2m_20261015_v1/aws_lane_policy_shared_2m_20261015_v1.txt",
+        "queue_sha256": "39d9de776c81c6c8ae7042c014212324a2c22a88ae3cc102ff258595b14624c6",
+        "source_sha256": {
+          "experiments/lane_policy_continuation.py": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794",
+          "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+        },
+        "result": "experiments/results/token_language/aws_lane_policy_shared_2m_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/token_language/aws_lane_policy_shared_smoke_20261015_v1.json",
+            "rss_margin": 1.25
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_lane_policy_independent_smoke_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_lane_policy_independent_smoke_20261015_v1/aws_lane_policy_independent_smoke_20261015_v1.txt",
+        "queue_sha256": "424294e6e4afd4d8907597cc73ced0f56df77197efef1c413a15110cc11fc63b",
+        "source_sha256": {
+          "experiments/lane_policy_continuation.py": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794",
+          "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+        },
+        "result": "experiments/results/token_language/aws_lane_policy_independent_smoke_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_lane_policy_independent_2m_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_lane_policy_independent_2m_20261015_v1/aws_lane_policy_independent_2m_20261015_v1.txt",
+        "queue_sha256": "27d3adb54ecad318106110fd06be786308807cdd9695138dcb27d17e180c8b42",
+        "source_sha256": {
+          "experiments/lane_policy_continuation.py": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794",
+          "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+        },
+        "result": "experiments/results/token_language/aws_lane_policy_independent_2m_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/token_language/aws_lane_policy_independent_smoke_20261015_v1.json",
+            "rss_margin": 1.25
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

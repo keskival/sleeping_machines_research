@@ -1,0 +1,64 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Verify hardwarework advantage against a versionedKV online reference that avoids fullhistory recomputation; no new acquisition",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_b10_cached_transformer_gate_20261015_v1",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_cached_transformer_gate_20261015_v1/aws_b10_cached_transformer_gate_20261015_v1.txt",
+        "queue_sha256": "46d6a0e301f6ea297d3b95349260ff60ad4922ac85d5fee3b09577aa4b82ac95",
+        "source_sha256": {
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/capability_admission.py": "1395ce2a89ad19fd07b7c1e31e44aa365cb54595ab08c69d812c7b1130e5e60a",
+          "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/b10_cached_comparison.py": "ad65eecc654abfab203441c963670475c1afd64155b12bca8b1315a19418077e",
+          "experiments/market/b10_cached_transformer.py": "8c7c23c47af7fcd7e57f1eadd9ab98cf8229e229f6489620dc8916c8d5663d96",
+          "experiments/market/B10_CACHED_ONLINE_ADMISSION.json": "c19d9f174d044cec6580a678efbdebb53fe1b895b6cf50b24717e4909f5f4530"
+        },
+        "result": "experiments/results/market/aws_b10_cached_transformer_gate_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_cached_transformer_s0_20261015_v1",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_cached_transformer_s0_20261015_v1/aws_b10_cached_transformer_s0_20261015_v1.txt",
+        "queue_sha256": "a5ac25efda0d002758349a339259105b9c2fc8214743e2f59471f558e2439433",
+        "source_sha256": {
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+          "experiments/capability_admission.py": "1395ce2a89ad19fd07b7c1e31e44aa365cb54595ab08c69d812c7b1130e5e60a",
+          "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/market/b10_cached_comparison.py": "ad65eecc654abfab203441c963670475c1afd64155b12bca8b1315a19418077e",
+          "experiments/market/b10_cached_transformer.py": "8c7c23c47af7fcd7e57f1eadd9ab98cf8229e229f6489620dc8916c8d5663d96",
+          "experiments/market/B10_CACHED_ONLINE_ADMISSION.json": "c19d9f174d044cec6580a678efbdebb53fe1b895b6cf50b24717e4909f5f4530"
+        },
+        "result": "experiments/results/market/aws_b10_cached_transformer_s0_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_cached_transformer_gate_20261015_v1.json",
+            "rss_margin": 1.25
+          },
+          {
+            "result": "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json"
+          }
+        ],
+        "timeout_s": 5400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
