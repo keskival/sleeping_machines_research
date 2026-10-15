@@ -72,7 +72,9 @@ def split_windows(days, stride):
         a = day_arrays(day); n = len(a['t']) // W
         for w in range(0, n, stride):
             s = slice(w * W, (w + 1) * W); tt = a['t'][s]
-            rows.append(dict(day=str(day), window=w, t=tt - tt[0], mark=a['mark'][s], feats=a['feats'][s], lo=a['lo'][s], hi=a['hi'][s]))
+            # Copies, so the full-day arrays are released after each day.
+            rows.append(dict(day=str(day), window=w, t=tt - tt[0], mark=a['mark'][s].copy(), feats=a['feats'][s].copy(), lo=a['lo'][s].copy(), hi=a['hi'][s].copy()))
+        del a
     return rows
 
 
