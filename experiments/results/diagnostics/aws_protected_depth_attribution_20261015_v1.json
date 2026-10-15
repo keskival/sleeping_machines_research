@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "mode": "factual",
+      "scored": {
+        "nll": 6.0950767436995665,
+        "loss_sum": 49930.86868438685,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "without_correction_nll": 6.072677415115987,
+      "parent_feature_sha256": "0ee052036fa4054bcfe18bfc3f654dde44fd478d534280749c7d6e49cb949c1f",
+      "scoring_s": 3.2397891429718584
+    },
+    {
+      "mode": "erase_added_history",
+      "scored": {
+        "nll": 6.095243144918037,
+        "loss_sum": 49932.231843168556,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "without_correction_nll": 6.072677415115987,
+      "parent_feature_sha256": "0ee052036fa4054bcfe18bfc3f654dde44fd478d534280749c7d6e49cb949c1f",
+      "scoring_s": 6.1211959479842335
+    }
+  ],
+  "decomposition": {
+    "total_excess": 0.02951420134484728,
+    "correction_effect": 0.022399328583579958,
+    "fitted_parent_path_excess": 0.007114872761267321,
+    "added_history_erasure_effect": 0.00016640121847011358
+  },
+  "decision": "Correction does not improve its own fitted parent path: diagnose output/branch learning before more depth.",
+  "parameter_sha256": "ad3abc274d8ab83685aeac532de2c725f564e14986da43bb463b93244c3c648f",
+  "source_sha256": {
+    "experiments/analyze_protected_depth_contributions.py": "c59c666055a1037da2a0072b4a80fe7a7104f8fbc9c6032452d00d90bc8ab310",
+    "sleeping_machines/protected_branch_attribution.py": "0e95135e42f83e058c6bf62d3446fd8cc4dd42fb7e3bfd63ba009fa2dbb2d762",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b",
+    "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+    "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+    "sleeping_machines/learning/dense_to_receiver_moments.py": "7bb2cf41854b503b7963c83d92989460025a0274275ff807f0cac9953e2773a3",
+    "sleeping_machines/optional_temporal_depth.py": "301f34e94d5bf9b628e9e5fe94588d8aa76fac53820ca4d78b14db58900ea640",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+    "sleeping_machines/learning/calibrated_receiver_adamw.py": "cbc6415ccf44ca2132df2a98a1d679e85b35d6489c695cf915c6379a302e954e",
+    "sleeping_machines/learning/calibrated_bank_caps.py": "6fe60ec7e10dfe21b7fb834535749e4df973ca8fa369e1e37b8006967d337c01",
+    "experiments/protected_depth_continuation.py": "9752b0ec92e02eb4130b3b2e5b4a35f47e474202fb9a26f9fe7c60d7b8eefbce"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1.json": "d07cdfdcb8798a190163497b762279ec3ee1d3c84e150023d2fe4a49bcab429a",
+    "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.json": "98b7832621513680e0082862155c2c3d8b612a55e077570233a2b0570dab7592",
+    "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.pt": "6887d204efccd48ad9845bfd4c71bd20ea4d2763aadec4142a388b4da478fe22"
+  },
+  "process_wall_s": 10.194901600945741,
+  "max_rss_kb": 493860,
+  "scope": "Frozen same8192 reusedDEVtargets/1024history/noEOSreset, seed6. Two scored passes, no tuning. Removing correction is a readout intervention; erasing only added-stage old memory retains protected parent and clocks random tape, but branch routes/delays can change. Not retrained ablation, isolated training causality, persistent-memory capacity theorem, public benchmark or quality promotion. Parent-path excess includes joint optimization, caps/warmup/teacher interactions; no unique causal attribution."
+}
