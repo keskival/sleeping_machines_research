@@ -24,6 +24,7 @@ from sleeping_machines.sparse_counterfactual_episodes import detach
 from sleeping_machines.event_credit_sites import sample_site
 from sleeping_machines.sampled_suffix_utility import sample_positions, suffix_difference
 from sleeping_machines.paired_route_credit import paired_route_credit
+from sleeping_machines.multidepth_ordered_episodes_compiled import token_features as compiled_capable_features
 
 TOTAL = 4096
 PARENT = ROOT / 'experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1'
@@ -31,8 +32,10 @@ ACQUIRED = ROOT / 'experiments/results/token_language/aws_multidepth_readout_8m_
 driver = gate.pilot.driver
 
 
-def build():
+def build(compiled=False):
     args = SimpleNamespace(**json.loads(ACQUIRED.read_text())['args'])
+    if compiled:  # compiled layer steps; content interception unchanged (analysis/ordered_compiled_equivalence.py)
+        args.compiled = True; driver.token_features = compiled_capable_features
     train = driver.load_tokens(args.train_file)
     counts = driver.LaneTokens(train, 0, args.train_tokens, args.lanes).counts()
     order = torch.argsort(counts, descending=True, stable=True)
@@ -95,9 +98,9 @@ def score_episodic(model, memory, tokens, args, start=25165824, targets=8192, le
 def main():
     p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--memory', choices=['none', 'episodic'], required=True)
     p.add_argument('--updates', type=int, required=True); p.add_argument('--capacity', type=int, default=1024); p.add_argument('--topk', type=int, default=32)
-    p.add_argument('--key-dim', type=int, default=32); p.add_argument('--memory-lr', type=float, default=.003); p.add_argument('--resume-from')
+    p.add_argument('--key-dim', type=int, default=32); p.add_argument('--memory-lr', type=float, default=.003); p.add_argument('--resume-from'); p.add_argument('--compiled', action='store_true')
     a = p.parse_args(); assert 1 <= a.updates <= TOTAL; torch.set_num_threads(1); began = time.monotonic()
-    model, args, train = build(); parent = torch.load(PARENT.with_suffix('.pt'), weights_only=False)
+    model, args, train = build(a.compiled); parent = torch.load(PARENT.with_suffix('.pt'), weights_only=False)
     assert parent['binding']['reset_policy'] == 'corpus_eos' and parent['added_updates'] == TOTAL
     model.load_state_dict(parent['model'])
     opt = gate.CalibratedReceiverBankAdamW(model, parent['optimizer']['bank_caps'], lr=args.lr, weight_decay=args.weight_decay)
@@ -105,11 +108,11 @@ def main():
     memory = EpisodicPointerMemory(d, a.key_dim, a.capacity, a.topk) if a.memory == 'episodic' else None
     mopt = torch.optim.AdamW(memory.parameters(), lr=a.memory_lr, weight_decay=0.) if memory is not None else None
     stream_start = parent['binding']['stream_start'] + TOTAL * args.chunk * args.lanes + args.lanes
-    binding = dict(memory=a.memory, capacity=a.capacity, topk=a.topk, key_dim=a.key_dim, memory_lr=a.memory_lr, parent_sha256=driver.sha(PARENT.with_suffix('.pt')),
+    binding = dict(memory=a.memory, compiled=a.compiled, capacity=a.capacity, topk=a.topk, key_dim=a.key_dim, memory_lr=a.memory_lr, parent_sha256=driver.sha(PARENT.with_suffix('.pt')),
                    stream_start=stream_start, stream_total_updates=TOTAL, driver_sha256=driver.sha(Path(__file__)),
                    memory_sha256=driver.sha(ROOT / 'sleeping_machines/episodic_pointer_memory.py'))
     ck = parent; offset = 0; elapsed = 0.; work = dict(calls=0, replayed_targets=0, scored_targets=0); curve = []; loss_sum = 0.; count = 0
-    mem_state = memory.empty(args.lanes, d) if memory is not None else None; memory_work = dict(key_map_macs=0, query_macs=0, score_macs=0, selected_reads=0)
+    mem_state = memory.empty(args.lanes, d) if memory is not None else None; memory_work = dict(key_map_macs=0, query_macs=0, score_macs=0, match_comparisons=0, selected_reads=0)
     if a.resume_from:
         ck = torch.load(ROOT / a.resume_from, weights_only=False); assert ck['binding'] == binding
         model.load_state_dict(ck['model']); offset = ck['added_updates']; elapsed = ck['training_s']; work = ck['teacher_work']; curve = ck['curve']

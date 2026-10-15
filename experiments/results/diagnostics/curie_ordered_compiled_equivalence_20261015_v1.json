@@ -1,0 +1,74 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_ordered_compiled_equivalence_20261015_v1",
+  "runs": {
+    "eager": {
+      "losses": [
+        5.641432601521501,
+        5.5627416524966975,
+        5.584060092505638,
+        5.4429977102061,
+        5.371729139152876,
+        5.320091749347739,
+        5.6261998579677766,
+        5.718408911747474,
+        5.684834490381036,
+        5.802074061874237
+      ],
+      "seconds": [
+        0.8804030500468798,
+        0.8449462099815719,
+        1.0113730549928732,
+        0.8778613079921342,
+        0.8421747519751079,
+        0.8839534329599701,
+        0.8551210919977166,
+        0.8537479469669051,
+        0.8784615109907463,
+        0.833505141956266
+      ],
+      "weights_sha256": "2aecc57c99e74c39e8485a63caeb0e33c4db091880cee16ed4ad696c113ea986"
+    },
+    "compiled": {
+      "losses": [
+        5.6414325875334725,
+        5.562741677627855,
+        5.584060088532965,
+        5.442997691252231,
+        5.371729093336171,
+        5.320091705366394,
+        5.626199791611043,
+        5.718408868390043,
+        5.68483450475469,
+        5.802073997638445
+      ],
+      "seconds": [
+        4.1174621770041995,
+        0.4181333999731578,
+        0.42117598198819906,
+        1.7827212489792146,
+        0.4140679319971241,
+        0.4387672109878622,
+        0.42073158302810043,
+        0.4355387759860605,
+        0.4492658500093967,
+        0.42664169799536467
+      ],
+      "weights_sha256": "1cdd255da89765dcb9e7db0d0cfd03524fc7ab9725212f66cec3d29ffc25bbf9"
+    }
+  },
+  "max_loss_difference": 6.635673344135284e-08,
+  "eager_steady_s_per_update": 0.858277626488416,
+  "compiled_steady_s_per_update": 0.4280403039956582,
+  "compile_overhead_s": 5.044102817992098,
+  "host": "curie",
+  "max_rss_kb": 649420,
+  "source_sha256": {
+    "analysis/ordered_compiled_equivalence.py": "cb5420990860414a56f69bfb6529f3806a427eb49f5a1a2783742a43c183b247",
+    "sleeping_machines/multidepth_ordered_episodes_compiled.py": "243e52c78cbcf1b94c93a8013cdc2fb003b8d6f0a2414a69b72126772a495610",
+    "sleeping_machines/sparse_counterfactual_layer.py": "41a290063110c8b9a5919c4edf0940890097617a431bbcf8f3f0e8b28ecc1f37"
+  },
+  "scope": "Execution diagnostic on Curie beside a running one-thread training job (both one thread). Steady state excludes the two slowest (compile/recompile) updates. Numerical agreement is float-level, not bitwise.",
+  "steady_speedup": 2.005132737446897
+}

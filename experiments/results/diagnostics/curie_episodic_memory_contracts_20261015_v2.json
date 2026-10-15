@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "normalization": true,
+    "target_consistency": true,
+    "causality": true,
+    "chunk_split": true,
+    "read_time_credit": true,
+    "boundary": true,
+    "capacity": true,
+    "closed_gate_equivalence": true
+  },
+  "measurements": {
+    "normalization_max_error": 2.384185791015625e-07,
+    "target_consistency_max_error": 4.76837158203125e-07,
+    "causality_prefix_max_change": 0.0,
+    "causality_suffix_changes": true,
+    "chunk_split_max_error": 4.76837158203125e-07,
+    "old_entries_detached": true,
+    "read_time_key_gradient_norm": 14.0496244430542,
+    "read_time_query_gradient_norm": 10.026914596557617,
+    "age_clock_gradient": 1.4700212478637695,
+    "first_chunk_feature_gradient_from_second_chunk_loss": 0.0,
+    "boundary_pre_eos_unchanged": 0.0,
+    "capacity_entries": 50,
+    "closed_gate_loss_max_error": 0.0,
+    "closed_gate_weight_max_error": 0.0,
+    "closed_gate_state_equal": true
+  },
+  "source_sha256": {
+    "experiments/episodic_memory_contracts.py": "2d0610476e37992c4eb4a4f31b930320a1d728508a14be94beceea2cb099b518",
+    "experiments/episodic_memory_continuation.py": "1de67b56a7c90871b3bf3ad550f0a3e303a6e6fa1d1db1eeb006e7712907d463",
+    "sleeping_machines/episodic_pointer_memory.py": "c19aea14f99aeb6a5e5944538a46402717bc196d68dc3baeb3cb21c8a6400685"
+  },
+  "process_wall_s": 6.46084144996712
+}
