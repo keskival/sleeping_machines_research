@@ -1,0 +1,169 @@
+{
+ "status": "completed",
+ "battle": "B3",
+ "tag": "aws_b3_v21_sealed_20261015_v1",
+ "preregistration": "experiments/FAS_V21_CONFIRMATION.md",
+ "preregistration_sha256": "aa0bde728a40d0da095f788b6e7807b0fb61b30f9c3b924d1c685ba15331ecee",
+ "spec_sha256": "00ff60977db3252b2fbe96f821ff0205cf330e1156983040d68edcc2bbab05ad",
+ "test_data": "fas_v2_K2_drop0.02_delta0_test21_620261016",
+ "test_manifest_sha256": "80de9ee59c9195f04ec3be2417654d51de5791c11f891ee51b677bda6fb74309",
+ "eligible_samples": {
+  "clean": 2000,
+  "faulty": 2000
+ },
+ "native_seed_aucs": [
+  0.79276975,
+  0.80437325,
+  0.80569425
+ ],
+ "native_mean": 0.80094575,
+ "strongest_baseline": "transformer[total:total]",
+ "strongest_auroc": 0.7044043333333333,
+ "difference": 0.09654141666666671,
+ "bootstrap_95": [
+  0.08795302812500007,
+  0.12091928437499998
+ ],
+ "criteria": {
+  "margin_ge_0_02": true,
+  "bootstrap_lower_gt_0": true,
+  "every_seed_above": true
+ },
+ "verdict": "win",
+ "per_fault_kind": {
+  "1": {
+   "native_delay_race": 0.7721903923541248,
+   "transformer[total:total]": 0.6498661971830986,
+   "lstm[total:total]": 0.6277525150905433,
+   "classical:elapsed": 0.5994139839034205,
+   "classical:tick_count": 0.5819142354124749,
+   "classical:gap_z": 0.6348073440643863,
+   "classical:ngram3": 0.6269034205231389,
+   "classical:gap_quantile": 0.49665492957746477,
+   "classical:gap_cusum": 0.4960543259557344,
+   "classical:gap_robust_z": 0.46323289738430584,
+   "classical:order3": 0.6301730382293762,
+   "classical:timed_ngram": 0.6285870221327968
+  },
+  "2": {
+   "native_delay_race": 0.8293581013916501,
+   "transformer[total:total]": 0.758291915175613,
+   "lstm[total:total]": 0.7062662359178263,
+   "classical:elapsed": 0.5611486083499005,
+   "classical:tick_count": 0.5443663021868788,
+   "classical:gap_z": 0.6856570576540756,
+   "classical:ngram3": 0.7240004970178926,
+   "classical:gap_quantile": 0.49128330019880717,
+   "classical:gap_cusum": 0.49504224652087475,
+   "classical:gap_robust_z": 0.45779671968190855,
+   "classical:order3": 0.721898111332008,
+   "classical:timed_ngram": 0.7180283300198808
+  }
+ },
+ "arms": {
+  "native_delay_race": {
+   "auroc": 0.80094575,
+   "seed_aucs": [
+    0.79276975,
+    0.80437325,
+    0.80569425
+   ],
+   "eligible": false
+  },
+  "transformer[total:total]": {
+   "auroc": 0.7044043333333333,
+   "seed_aucs": [
+    0.706251,
+    0.7009915,
+    0.7059705
+   ],
+   "eligible": true,
+   "val_auroc": 0.7013083333333334,
+   "selected_on_val": true
+  },
+  "lstm[total:total]": {
+   "auroc": 0.6672449166666667,
+   "seed_aucs": [
+    0.6649,
+    0.66893725,
+    0.6678975
+   ],
+   "eligible": true,
+   "val_auroc": 0.6644793333333333,
+   "selected_on_val": true
+  },
+  "classical:elapsed": {
+   "auroc": 0.5801665,
+   "seed_aucs": [
+    0.5801665
+   ],
+   "eligible": true
+  },
+  "classical:tick_count": {
+   "auroc": 0.563027625,
+   "seed_aucs": [
+    0.563027625
+   ],
+   "eligible": true
+  },
+  "classical:gap_z": {
+   "auroc": 0.66038475,
+   "seed_aucs": [
+    0.66038475
+   ],
+   "eligible": true
+  },
+  "classical:ngram3": {
+   "auroc": 0.67574325,
+   "seed_aucs": [
+    0.67574325
+   ],
+   "eligible": true
+  },
+  "classical:gap_quantile": {
+   "auroc": 0.493953,
+   "seed_aucs": [
+    0.493953
+   ],
+   "eligible": true
+  },
+  "classical:gap_cusum": {
+   "auroc": 0.49554525,
+   "seed_aucs": [
+    0.49554525
+   ],
+   "eligible": true
+  },
+  "classical:gap_robust_z": {
+   "auroc": 0.4604985,
+   "seed_aucs": [
+    0.4604985
+   ],
+   "eligible": true
+  },
+  "classical:order3": {
+   "auroc": 0.67631075,
+   "seed_aucs": [
+    0.67631075
+   ],
+   "eligible": true
+  },
+  "classical:timed_ngram": {
+   "auroc": 0.673576,
+   "seed_aucs": [
+    0.673576
+   ],
+   "eligible": true
+  }
+ },
+ "wall_s": 2679.2748374938965,
+ "source_sha256": {
+  "experiments/fas/b3_v21_score.py": "065f8c7a83d8e7c8e9e8255df0db840c2b03a9f90c8997f3476aa0add1860745",
+  "experiments/fas/race_delay_binding.py": "acf8c6bf20d3ea89613b952d7dacfb7550d8dd74dae40263936bb49735002a7f",
+  "experiments/fas/addressed_evidence.py": "556ad13a3e4901eed4609884c120de27070147af93a4283c2358f7b4fbef03bf",
+  "experiments/fas/classical_scores_v2.py": "da2e64be051e796adc25cf99ca101fc425eb6a0d7913d93684aaf8908efaf8fb",
+  "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+  "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+  "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19"
+ }
+}
