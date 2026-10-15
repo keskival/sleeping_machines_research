@@ -1,0 +1,28 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 decision depth: race-tree output cascade (4 x 16-way races down a TRAIN-built vocabulary tree, query refined by each choice, exact copy race; exact normalisation 1 - 4e-7) on the plan-B 2-layer backbone; decides whether decision depth matches or beats the dense 50,257-way head (plan B L2 v3) at about 50x less output work and 2.2x faster training steps",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_r1_race_tree_L2_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_race_tree_L2_1M_s0_20261015_v1/aws_r1_race_tree_L2_1M_s0_20261015_v1.txt",
+        "queue_sha256": "cd734cd02872431c0e2a7e962e9aadeeb24a3c8364af47790227bb4449f65b51",
+        "source_sha256": {
+          "experiments/r1_race_tree_lm.py": "67a69529082758c3df919b9edea71d58ef5d0fc6299cda3bfb1a1a2adcd972b7",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+          "experiments/results/token_language/vocab_race_tree_b16d4_20261015_v1.npz": "b72e2525495cb33602768d95d32d14e304e476cb1652ef293048e1efa2b02c2e"
+        },
+        "result": "experiments/results/token_language/aws_r1_race_tree_L2_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 21600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+ "status": "completed",
+ "tag": "vocab_race_tree_b16d4_20261015_v1",
+ "train_tokens_used": 20000000,
+ "branching": 16,
+ "depth": 4,
+ "vocab": 50257,
+ "unique_paths": 50257,
+ "unseen_tokens": 895,
+ "wall_s": 5.634260177612305,
+ "artifact": "experiments/results/token_language/vocab_race_tree_b16d4_20261015_v1.npz",
+ "artifact_sha256": "b72e2525495cb33602768d95d32d14e304e476cb1652ef293048e1efa2b02c2e",
+ "source_sha256": {
+  "experiments/build_vocab_race_tree.py": "6651eba282c6c658567206fd1b43f8244e8b4470ef38e221ad1228046de4258e",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ },
+ "scope": "TRAIN-only distributional statistics (first train shard tokens); no validation or test tokens."
+}

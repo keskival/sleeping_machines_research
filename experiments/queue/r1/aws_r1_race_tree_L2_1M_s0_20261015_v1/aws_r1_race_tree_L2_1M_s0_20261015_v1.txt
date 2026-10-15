@@ -1,0 +1,2 @@
+# R1 race-tree output cascade, plan-B 2-layer backbone, 1M tokens seed 0
+aws_r1_race_tree_L2_1M_s0_20261015_v1 experiments/r1_race_tree_lm.py --tag aws_r1_race_tree_L2_1M_s0_20261015_v1 --layers 2 --train-tokens 1048576 --epochs 20 --patience 2 --max-wall-s 14400 --seed 0
