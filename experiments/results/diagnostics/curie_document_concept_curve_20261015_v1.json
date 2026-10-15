@@ -1,0 +1,122 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_document_concept_curve_20261015_v1",
+  "runs": [
+    "curie_r1g2_keyed1_1M_s0_20261007T1800Z",
+    "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+    "curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1"
+  ],
+  "rows": {
+    "curie_r1g2_keyed1_1M_s0_20261007T1800Z": {
+      "0-16": {
+        "nll": 7.225101374518999,
+        "word_initial_nll": 7.553354831577758,
+        "document_context_value": 0.0,
+        "word_initial_document_context_value": 0.0
+      },
+      "16-64": {
+        "nll": 6.067500028300382,
+        "word_initial_nll": 6.502177310746897,
+        "document_context_value": -1.5522042910257974e-10,
+        "word_initial_document_context_value": 0.0
+      },
+      "64-256": {
+        "nll": 6.08974370444684,
+        "word_initial_nll": 6.577140070884303,
+        "document_context_value": 0.004675142379858481,
+        "word_initial_document_context_value": -0.011268208992766617
+      },
+      "256-1024": {
+        "nll": 6.085140964035294,
+        "word_initial_nll": 6.585658997432559,
+        "document_context_value": 0.003958361396899275,
+        "word_initial_document_context_value": -0.032481868932855484
+      }
+    },
+    "curie_r1g2_keyed1_4M_s0_20261008T1140Z": {
+      "0-16": {
+        "nll": 6.6209449341330355,
+        "word_initial_nll": 7.00837860084497,
+        "document_context_value": 0.0,
+        "word_initial_document_context_value": 0.0
+      },
+      "16-64": {
+        "nll": 5.545627419997923,
+        "word_initial_nll": 6.057363505523195,
+        "document_context_value": -8.537123600641886e-10,
+        "word_initial_document_context_value": -1.1645667718104741e-09
+      },
+      "64-256": {
+        "nll": 5.5662750408726085,
+        "word_initial_nll": 6.106010350956687,
+        "document_context_value": 0.04018761838712707,
+        "word_initial_document_context_value": 0.03278438100227859
+      },
+      "256-1024": {
+        "nll": 5.549718615444292,
+        "word_initial_nll": 6.092246867104032,
+        "document_context_value": 0.0642306064483738,
+        "word_initial_document_context_value": 0.04040997262004327
+      }
+    },
+    "curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1": {
+      "0-16": {
+        "nll": 6.923153176142478,
+        "word_initial_nll": 7.280252954046402,
+        "document_context_value": 0.0,
+        "word_initial_document_context_value": 0.0
+      },
+      "16-64": {
+        "nll": 5.840659528584145,
+        "word_initial_nll": 6.301290378106847,
+        "document_context_value": -1.319373647371928e-09,
+        "word_initial_document_context_value": -1.3763061848669238e-09
+      },
+      "64-256": {
+        "nll": 5.7864463243561515,
+        "word_initial_nll": 6.30580086950254,
+        "document_context_value": 0.07164962443843415,
+        "word_initial_document_context_value": 0.06331990057573615
+      },
+      "256-1024": {
+        "nll": 5.747080658725007,
+        "word_initial_nll": 6.260764295491081,
+        "document_context_value": 0.1001636156188867,
+        "word_initial_document_context_value": 0.06874794762621401
+      }
+    }
+  },
+  "protocol": {
+    "documents": 32,
+    "search_start": 26000000,
+    "lane": "[EOS] + first 1024 document tokens, fresh state",
+    "history_cut": 64,
+    "buckets": [
+      [
+        0,
+        16
+      ],
+      [
+        16,
+        64
+      ],
+      [
+        64,
+        256
+      ],
+      [
+        256,
+        1024
+      ]
+    ]
+  },
+  "source_sha256": {
+    "analysis/document_concept_curve.py": "a9dcfb6ce0b8b7f8ebcd8501fd5bccfc3aaf5c90639c5233fba598aa6ddfed93",
+    "experiments/r1_part_whole_lm.py": "fcc9a01b68a6d477669ea1e25b0e39962dd017c19343cae730d267093f955eee",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "process_wall_s": 288.138666393992,
+  "scope": "Frozen models; development data; single seeds."
+}
