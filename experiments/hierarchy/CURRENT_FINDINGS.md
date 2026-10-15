@@ -210,18 +210,32 @@ Evidence: `aws_g_hier_nuisance_factorial_20261015_v1.json` and
 `aws_g_hier_frame_preflight_20261015_v1.json` under `experiments/results/hierarchy/`.
 [Derivation and policies](../theory/OBSERVED_FRAME_NATIVE_COMPOSITION.md).
 
-## Current repaired learning queue
+## Completed observed-frame learning and next decision
 
-`aws_g_hier_frame_learning_20261015_v1` fields the observed-frame construction
-for one128-update whole-label TRAIN fit. It reuses the same acquired gesture
-core and fresh two-class head initialization, data/order/optimizer as the failed
-coalesced fit; changing the failed coordinate path is the new intervention.
-All numerical state persists inside a scene, exact checkpoints every8updates.
-Initial/final TRAIN features are cached so later readout diagnosis need not
-rescore native models. TRAIN-only scalar calibration and fixed ridge.01 affine
-head diagnostics score unseen-combination DEV. No DEV-selected hyperparameter,
-part supervision, TEST scoring, external model fit or unchanged depth grid.
-Quality outcome is pending; no gain is inferred from exact translation alone.
+`aws_g_hier_frame_learning_20261015_v1` completes128whole-label TRAIN updates,
+using the same acquired gesture core/fresh2class initialization, data/order and
+optimizer as the failed coalesced fit. Finite checks pass; final raw DEV NLL
+1.297693 versus initial0.716158. TRAIN-only scalar calibration selects gain0
+both before and after training: DEV0.693147/50%accuracy, equal to the prior.
+The fixed TRAIN-ridge.01 affine readout also fails transfer: initial/final DEV
+0.732992/0.743684, accuracy42.19%/46.88%; TRAIN0.666768/0.669694. No emitted-content
+intervention is triggered because the quality gate fails. No TEST model scoring.
+
+The coordinate mechanism repair is demonstrated; learned part-combination
+transfer still requires a representation/credit repair. These short fit outcomes
+are evidence about the current construction and pipeline, not a family verdict.
+No larger unchanged acquisition or depth grid is admitted. Reuse cached initial/
+final TRAIN/DEV root features to diagnose part/role binding and credit, keeping
+coordinate invariance explicit and existing native races/memory intact.
+
+Fitting plus scheduled scoring and readout diagnostics632.316CPU seconds,
+peak743,168KiB RSS,169,378parameters. Training128presentations/4,096raw events:
+614,400native candidate scores,307,200selected updates,614,400counterfactual
+value evaluations,30,464timer scores,19,200deliveries and15,232timer emissions.
+State/object counters summed over scenes are exposures, not peak capacity.
+Full arithmetic/traffic and hardware costs remain unaudited. Exact model/Adam/
+race/order checkpoints every8updates and initial/final feature caches persist.
+Evidence: `experiments/results/hierarchy/aws_g_hier_frame_learning_20261015_v1.json`.
 
 The emission-order boundary audit separately identifies a learning term missing
 from pure interior derivatives. Two deterministic integral witnesses pass; this

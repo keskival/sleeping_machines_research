@@ -513,12 +513,24 @@ requirement: the basis for clockless hardware, where independent units run at th
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
 \href{https://www.imm.dtu.dk/courses/02204/}{DTU}). No chip speed or energy gain is claimed yet.
 
-\textbf{Continuation.} Scale the strongest keyed member on fresh tokens. Compare shallow and deep members with addressed reads in every layer; fund larger depth only when it improves prediction over the strongest shallow member. Unchanged race stacking worsened loss from 6.160 (D2) to 6.290 (D8) to 6.372 (D16). The keyed member uses full backpropagation; hard route races and counterfactual route credit remain a separate integration step.
+\textbf{Depth that earns its work.} A keyed language member improves development loss from
+\textbf{5.9572 to 5.8987 to 5.8741} at two, four and eight layers on the same 65,528-target slice and
+1.05M-token corpus (one seed; five/six/six epochs, different total work). The 16-layer and asynchronous
+hierarchy runs are active. These scores use a different protocol from the 8,192-token table above.
+
+\textbf{Memories compose, then emit.} In a paired 32-event mechanism fixture, composed native memory
+views cut messages \textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}, with more timer work
+(2 to 188 scores). A separate world-pixel/scene-relative construction removes pure-translation drift
+exactly with unchanged parameters. These are mechanism/work results, not equal-quality or energy wins.
+Its completed 128-update composition fit scores \textbf{50\% DEV accuracy}; training-only calibration
+returns the constant prior, and an affine readout does not recover transfer. The next repair targets
+part/role binding and credit with coordinates controlled. TEST is not model-scored.
 
 {\footnotesize\color{muted}Scope: keyed model 3.33M parameters, repeated epochs over 4M training tokens; flagship and
 episodic arm single seed; quality placement, not matched compute. Source-bound results:
 \texttt{investment/language\_memory\_evidence.json}, \texttt{investment/language\_learning\_evidence.json},
-\texttt{investment/locality\_scaling\_evidence.json}.}
+\texttt{investment/locality\_scaling\_evidence.json},
+\texttt{investment/hierarchy\_development\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- significance
@@ -559,12 +571,12 @@ worth pursuing; it is an analytical result, separate from measured scaling.
 \textbf{Where we are behind.} On P12 mortality the family scores 0.871 versus 0.880 AUROC.
 On the second event benchmark (page 5), our current model with addressed episodic memory is in development; its verdicts follow when the test splits are scored.
 
-\textbf{Where scaling stands.} The wins above come from small models on event data. Large-scale
-language is not yet won: our strongest token model scores 5.60 nats per token after 4 million
-training tokens, and a new addressed episodic memory improves the earlier flagship by 0.35 nats,
-but added depth does not yet pay for itself. A two-seed depth ladder is running now; the next
-decisive steps are deeper models that learn their new layers and faster execution than the
-current single-thread CPU training.
+\textbf{Where scaling stands.} Small-model event wins and keyed-memory language progress support
+scaling the family. The strongest token result in this brief is 5.60 nats after 4M training tokens;
+a separate fixed-data keyed construction improves with two, four and eight layers. Native composition
+now separates persistent state from emitted work and controls coordinate nuisance, but two short
+unseen-combination development fits remain at 50\% accuracy. Reusable part representations and useful
+credit across their composition are the next proof; adding depth alone will not supply them.
 
 \begin{callout}
 \textbf{The commercial significance.} The public wins support the value of small,

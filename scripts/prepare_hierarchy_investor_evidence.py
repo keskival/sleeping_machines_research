@@ -49,6 +49,16 @@ def main():
         next_gate='Repaired observed-frame128-update run, TRAIN-only calibration, cached features and unseen-combination DEV; TEST not model-scored.',
         accounting='Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim.')
     packet['input_sha256'].update({prefix+n:hashlib.sha256((ROOT/prefix/n).read_bytes()).hexdigest() for n in engineering_names})
+    repaired_path=prefix+'aws_g_hier_frame_learning_20261015_v1.json'
+    repaired=json.loads((ROOT/repaired_path).read_text());assert repaired['status']=='completed'
+    packet['composition_engineering']['repaired_transfer_attempt']=dict(
+        dev_raw_nll=repaired['final']['dev']['raw_nll'],
+        dev_calibrated_nll=repaired['final']['dev']['calibrated_nll'],
+        accuracy=repaired['final']['dev']['accuracy'],
+        convex_readout_diagnostics=repaired['convex_readout_diagnostics'],
+        scope='128whole-label TRAIN updates,same synthetic splits/order/optimizer,TRAIN-only calibration. No held-out transfer gain; TEST not model-scored.')
+    packet['composition_engineering']['next_gate']='Reuse cached features to diagnose part/role binding and credit with translation controlled. No larger unchanged fit or depth sweep.'
+    packet['input_sha256'][repaired_path]=hashlib.sha256((ROOT/repaired_path).read_bytes()).hexdigest()
     (ROOT/'investment/hierarchy_development_evidence.json').write_text(json.dumps(packet,indent=2)+'\n')
     print('Bound three language depths, five frozen native variants, engineering gates and 76 contracts.')
 if __name__=='__main__':main()

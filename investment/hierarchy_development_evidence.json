@@ -117,7 +117,8 @@
     "experiments/results/hierarchy/aws_g_hier_coalesced_readout_20261015_v1.json": "949efbb096f1fdb8948725afb491e7d0dd125b1329221a8697a2df581ba087eb",
     "experiments/results/hierarchy/aws_g_hier_nuisance_factorial_20261015_v1.json": "2e4dbd38a533779c1ebc2be3c2670f86bd6a655868c54fd2cdd355849426f2a6",
     "experiments/results/hierarchy/aws_g_hier_coalesced_transfer_diagnosis_20261015_v1.json": "70d0e4cc5cc25fccdff8f693bd75c8052c414734f3b6e7ac0779dca322c3a92b",
-    "experiments/results/hierarchy/native_frame_contracts_20261015_v1.json": "4e446124e629d2bc4cf67bda962121f2804b264ede82538e2826758f0369fedb"
+    "experiments/results/hierarchy/native_frame_contracts_20261015_v1.json": "4e446124e629d2bc4cf67bda962121f2804b264ede82538e2826758f0369fedb",
+    "experiments/results/hierarchy/aws_g_hier_frame_learning_20261015_v1.json": "98d4769c178c3db6f9e123e4a4b5c64ab46a0331f5a6ee9b98bfc9196fe382c1"
   },
   "composition_engineering": {
     "status": "measured mechanism and resource progress",
@@ -185,7 +186,41 @@
       "prior_nll": 0.6931471805599453,
       "scope": "First coalesced128-update synthetic whole-label fit failed unseen-combination DEV; frozen affine readout did not recover transfer. Recorded separately from native FIT success."
     },
-    "next_gate": "Repaired observed-frame128-update run, TRAIN-only calibration, cached features and unseen-combination DEV; TEST not model-scored.",
-    "accounting": "Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim."
+    "next_gate": "Reuse cached features to diagnose part/role binding and credit with translation controlled. No larger unchanged fit or depth sweep.",
+    "accounting": "Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim.",
+    "repaired_transfer_attempt": {
+      "dev_raw_nll": 1.2976933717727661,
+      "dev_calibrated_nll": 0.6931471805599453,
+      "accuracy": 0.5,
+      "convex_readout_diagnostics": [
+        {
+          "stage": "initial",
+          "train": {
+            "nll": 0.666767660236101,
+            "accuracy": 0.671875
+          },
+          "dev": {
+            "nll": 0.7329918028249365,
+            "accuracy": 0.421875
+          },
+          "fixed_ridge": 0.01,
+          "train_stationarity": 2.610299129623961e-12
+        },
+        {
+          "stage": "final",
+          "train": {
+            "nll": 0.669693758298963,
+            "accuracy": 0.609375
+          },
+          "dev": {
+            "nll": 0.743684088827284,
+            "accuracy": 0.46875
+          },
+          "fixed_ridge": 0.01,
+          "train_stationarity": 1.8784211599370826e-11
+        }
+      ],
+      "scope": "128whole-label TRAIN updates,same synthetic splits/order/optimizer,TRAIN-only calibration. No held-out transfer gain; TEST not model-scored."
+    }
   }
 }
