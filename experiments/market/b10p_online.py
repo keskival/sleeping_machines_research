@@ -99,6 +99,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--tag', required=True); ap.add_argument('--arm', choices=['native', 'lstm', 'transformer', 'linear_t'], required=True)
     ap.add_argument('--fit', help='phase-1 B10-P result json (neural arms)'); ap.add_argument('--references', default='experiments/results/market/aws_b10p_references_20261015_v2.json')
     ap.add_argument('--day', default='2026-08-25'); ap.add_argument('--warmup-day', default='2026-08-24'); ap.add_argument('--targets', type=int, default=65536)
+    ap.add_argument('--resume-from', help='completed online result whose final learner (weights, Adam, numerical state) continues; no warmup')
     a = ap.parse_args(); torch.set_num_threads(1); torch.set_default_dtype(torch.float64); began = time.monotonic(); inputs = {}; parity = {}
     out = ROOT/f'experiments/results/market/{a.tag}.json'; assert not out.exists()
     if a.arm == 'linear_t':
@@ -159,8 +160,13 @@ def main():
             loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); updates += 1
         if a.arm != 'linear_t': state = detach(state)
 
-    for cursor in range(0, 2048, CHUNK): step(warm, None, cursor, False)
-    pending.update(empty())
+    if a.resume_from:
+        prior = json.loads((ROOT/a.resume_from).read_text()); assert prior['status'] == 'completed' and prior['arm'] == a.arm; inputs[a.resume_from] = sha(ROOT/a.resume_from)
+        ck = torch.load(ROOT/prior['final_learner'], weights_only=False); inputs[prior['final_learner']] = sha(ROOT/prior['final_learner'])
+        model.load_state_dict(ck['model']); opt.load_state_dict(ck['optimizer']); state = ck['state']
+    else:
+        for cursor in range(0, 2048, CHUNK): step(warm, None, cursor, False)
+    pending.update(empty())                                         # labels never cross the warmup/stream or calendar boundary
     if a.arm != 'linear_t':                                         # context events: state only
         with torch.no_grad(): _, _, state = forecast(model, dev['t'][:, :128], dev['m'][:, :128], dev['f'][:, :128], state)
         state = detach(state)
@@ -169,10 +175,11 @@ def main():
         step(dev, None, cursor, True)
         if (k + 1) % 128 == 0:
             curve.append(dict(targets=(k + 1)*CHUNK, tape_nll=tape_sum/max(tape_n, 1), return_nll=dict(zip([f'{int(h)}s' for h in HORIZONS], (ret_sum/ret_n).tolist())))); print(json.dumps(curve[-1]), flush=True)
-    per = (ret_sum/ret_n).tolist()
+    per = (ret_sum/ret_n).tolist(); learner = ROOT/f'experiments/results/market/{a.tag}.pt'
+    torch.save(dict(model=model.state_dict(), optimizer=opt.state_dict(), state=state), learner)
     record = dict(status='completed', battle='B10', task='B10-P price online', arm=a.arm, day=a.day, targets=a.targets, tape_nll=(tape_sum/tape_n if tape_n else None),
                   return_nll=dict(zip([f'{int(h)}s' for h in HORIZONS], per)), return_nll_sum=float(sum(per)), return_targets=ret_n.astype(int).tolist(), curve=curve,
-                  online_updates=updates, online_wall_s=time.monotonic() - started, process_wall_s=time.monotonic() - began, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+                  online_updates=updates, final_learner=str(learner.relative_to(ROOT)), final_weights=str(learner.relative_to(ROOT)), resumed_from=a.resume_from, online_wall_s=time.monotonic() - started, process_wall_s=time.monotonic() - began, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                   source_sha256={n: sha(ROOT/n) for n in SOURCES}, input_sha256=inputs, gates=parity, september_opened=False,
                   scope=f'Continuous {a.day} stream after a 2048-trade {a.warmup_day} warmup and 128 context trades; every arm forecasts with persistent state, is scored at issue, and adapts after every 32 trades on revealed tape terms and on matured horizon labels only. Same inputs/heads as phase 1; seed 0.')
     out.write_text(json.dumps(record, indent=2) + '\n')
