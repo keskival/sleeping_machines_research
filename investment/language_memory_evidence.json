@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "flagship_nll": 5.978387557528713,
+  "keyed_member_4M_nll": [
+    5.6243375688791275,
+    5.601294830441475
+  ],
+  "keyed_member_4M_mean": 5.612816199660301,
+  "keyed_read_ablation_1M": {
+    "with_read": 6.134376689791679,
+    "without_read": 6.2335536032915115
+  },
+  "episodic_nll": 5.633531947711532,
+  "episodic_gain_vs_parent": 0.34485560981718066,
+  "identical_stream_plain_continuation": 6.107893606842836,
+  "scope": "Same 8,192 FineWeb GPT-2 development targets with 1,024-token history. Keyed member: 3.33M parameters, two seeds, repeated epochs over 4M tokens; flagship and episodic arm: single seed. Quality placement, not matched compute.",
+  "input_sha256": {
+    "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json": "13e81bd143d87586c11ca79d6ecbb09d3cb2411022e1f10e4a123acf4a1c0f97",
+    "experiments/results/token_language/curie_episodic_memory_2m_episodic_20261015_v1.json": "674fac5d07024711e693fcdc394eae929e4c94697ea49d65037bae9680b493c8",
+    "experiments/results/token_language/curie_episodic_memory_2m_none_20261015_v1.json": "f4d1b07dc609df9cde53f4912d151e511537dbd388ef2c05e5451a9d48a1bc92"
+  }
+}

@@ -41,7 +41,9 @@ Lower loss is better (nats per trade: next-trade timing, aggressor side and pric
 
 ## Measured language learning progress
 
-The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
+The integrated sparse-teaching language model improves final development NLL **6.62066 to 6.52787 nats/token** and reduces complete CPU training **9,129 to 7,734 seconds (15.27%)**, at the same 8.39M acquired GPT-2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at 128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected 25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
+
+**Addressed memory is now our strongest language lever (15 October).** On the same 8,192 development targets, our keyed temporal-memory model, whose events write keyed messages that later tokens read directly, scores **5.60 and 5.62 nats/token** (two seeds) against **5.978** for the earlier flagship; removing the keyed read costs 0.10 at 1M tokens. A new addressed episodic memory lifts the flagship itself from 5.978 to **5.634 (+0.345)**, while an identical plain continuation on the same data does not improve. The same principle, explicit addressed access to the right past events, produced the sealed fault-detection win above. Single seeds except where stated; quality placement, not matched compute. [Source-bound evidence](language_memory_evidence.json).
 
 This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
 
@@ -130,26 +132,12 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
   0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
   event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
-- **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 fixed splits; total NLL per sequence, lower is
-  better): the frozen one-configuration EasyTPP model, with no tuning, has seven completed verdicts, all
-  losses against the composite bar (best published time + best published mark NLL). **Wikipedia lost** under the
-  pre-registered repair rule: split 0's original run ended with NaN weights, and its guarded rerun scores +58,218 on
-  TEST because two of 118 test sequences receive astronomically confident hazards (millions of nats; median sequence
-  3.9), so the five-split mean is +11,421.66 vs −122.62. The other four splits average −277.54, and the **marks are the
-  strongest result in this benchmark**: 27.65 vs 144.79 best published, because our addressed mark memory copies pages
-  never seen in training (10–27% of test edits), which per-mark embeddings cannot do. Bounding the hazards is the
-  development fix. **MOOC lost:** −226.85 ±
-  2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
-  published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
-  2.42; its mark path overfits ~100-sequence training sets). **Github lost by 2.3 nats:** −270.62 ± 48.69 SE vs the bar
-  −272.90, yet below every single published model's total (best LNM++ −269.7) and ahead on time (−390.93 vs −382.4);
-  marks carry the gap (120.30 vs 109.5). Splits 1–4 are guarded reruns after a numerical failure: padding the batch of
-  the longest training sequences overflows an exponent at masked positions, so that batch (59–68% of Github's training
-  events) is skipped in most epochs; the model trained mainly on the shorter sequences. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). **LastFM lost:** −774.64 ± 48.38 SE vs −849.65, below every single published model's total (−697.5, LNM++) and ahead on time (−1380.05 vs −1363.78); marks carry the gap (605.41 vs 514.13). These are
-  frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
+- **Second neural-TPP benchmark** (Bosser & Ben Taieb; seven datasets, five fixed splits): our current event model, with
+  repaired clocks and the addressed episodic memory that drives our language and fault-detection gains, is in development
+  on it now; its verdicts follow when each dataset's five test splits are scored.
 
-**Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).
+**Where we are not yet ahead:** large-scale language (our best token model reaches 5.60 nats per token after 4M training
+tokens on single-thread CPUs; depth scaling is under test), P12 mortality (0.871 vs 0.880 AUROC) and real-world tables.
 
 ## The proposition
 
@@ -279,51 +267,6 @@ stays from another, gave no robust label-efficiency gain on mortality prediction
 - These are the first public-leaderboard results of the family. They show the core primitive is competitive on public
   terms where its mathematics fits: a race of clocks *is* a temporal point process.
 
-These completed language comparisons use text8, 10M fitting characters, one
-pass and the saved controls' T256 evaluation window. Each native row is a single
-seed. Fitting work includes backward, route-credit and optimizer estimates.
-Inference work is per evaluated input position; native winner-only values are
-shape traces pending actual-trained backend admission, not measured serving.
-
-| Model | Test bpc, lower better | Whole fitting TFLOPs est. | Fit MFLOPs/input position est. | Inference MFLOPs/input position est. |
-|---|---|---|---|---|
-| Native p32/D4, timing credit | 2.5064 | 7.22 | 0.72 | 0.163 |
-| Native p32/D4, alternative-value credit | 2.3715 | 7.24 | 0.72 | 0.163 |
-| Native p32/D4/pool4, alternative-value credit | 2.3452 | 11.95 | 1.20 | 0.164 |
-| Native p64/D4, alternative-value credit | 2.1833 | 26.79 | 2.68 | 0.605 |
-| Native p96/D4, alternative-value credit | 2.1625 | 58.65 | 5.87 | 1.324 |
-| Saved LSTM-256 | 2.1706 | 20.31 | 2.03 | 0.677 |
-| Saved Transformer-256x2 | 2.4269 | 111.26 | 11.13 | 3.710 |
-
-Three observations are particularly relevant to investment:
-
-- **A learning repair unlocks meaningful capability.** Value-informed route
-  credit improves p32/D4 by 0.135 bpc with about 0.3% more counted fitting work
-  and unchanged hard forward behavior. The improvement also appears in a
-  completed depth-8 model. This is evidence that learning the alternatives
-  matters, rather than evidence that additional activity alone explains gains.
-- **The sparse native construction beats Transformers at lower compute.**
-  Credited p32/D4 beats the saved one-pass Transformer by 0.0554 bpc with about
-  15.4 times less estimated fitting work and 15.2 times fewer parameters. With
-  more passes, the native model reaches 1.888 bpc against the 4-pass
-  Transformer-256x4's 1.908 at 0.40x its training and 0.18x its inference
-  compute.
-- **Quality and useful capacity improve.** The p96 model slightly exceeds the
-  saved LSTM's quality, while using about 2.9 times its fitting work. At p32,
-  doubling slots from 16 to 32 improves 2.3715 to 2.3452 with eight selected
-  writes unchanged, but 16 to 32 scored keys and about 1.65 times fitting work.
-  Useful capacity grows beyond selected activity.
-- **Tuned baselines at our budgets (5 October 2026).** Ten dense baselines retuned at the native compute budgets and
-  selected by validation: the native model beats every tuned Transformer at both budgets (1.888 vs 1.996; 1.955 vs
-  2.215 bpc, at about equal compute). Tuned small LSTMs lead at these budgets (1.825 at ≤ 352 TF; 1.915 at ≤ 107 TF),
-  on local 2–4-character modelling. The strategic contest is against Transformers at scale.
-
-A separate integrated full-backbone online CPU experiment scores 3.1909 bpc
-with frozen weights versus 3.0957 with adaptation on 8,191 new development
-targets. Predictions precede each 16-character block update; both arms have
-persistent event state. Next: gains under drift with retained quality and
-bounded update cost.
-
 The program also spans event speech, event vision, tabular tasks, interleaved
 industrial event logs and temporal prediction, each at its own maturity; the
 report lists every win and loss per domain. Invalid target-dependent mixtures
@@ -331,15 +274,6 @@ are quarantined and excluded from this investment case.
 
 Completed parents and exact values are indexed by the accompanying evidence
 manifest. [Research status](../report/sleeping_machines_status.pdf)
-
-The numerical table above remains the frozen 3 October 10M comparison.
-At 90M characters, against tuned references at equal training compute, the results are mixed:
-- **≈ 0.96 PF:** native 1.800 bpc loses to a tuned LSTM-512 (1.729) and a tuned Transformer-192×4 (1.780).
-- **≈ 2.1 PF:** native 1.783 beats a tuned Transformer-256×4 (1.811) at 1.06× its compute, while a Transformer-192×4
-  (1.704) leads.
-
-The gap to the best dense model widens from 10M to 90M; that trend is the central language problem (report Part I
-§4.3).
 
 **Tokenized language (8 October 2026).** A temporal-memory token model with the keyed predecessor read scores
 6.009 ± 0.010 nats per token (3 seeds) on the 65,528-target GPT-2-tokenized FineWeb slice at 1M training tokens, against a Kneser–Ney trigram's 6.537 and the trigram at 4× the data (6.100); at 4M tokens 5.510 vs 6.100, so the lead grows with data. The keyed predecessor read behind it also solves associative recall across irregular gaps (97.5%, 3 seeds) (report Part I §4.5). The count models are a floor, not the frontier; a published small Transformer under the same

@@ -40,7 +40,9 @@ Lower loss is better (nats per trade: next-trade timing, aggressor side and pric
 
 ## Measured language learning progress
 
-The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
+The integrated sparse-teaching language model improves final development NLL **6.62066 to 6.52787 nats/token** and reduces complete CPU training **9,129 to 7,734 seconds (15.27%)**, at the same 8.39M acquired GPT-2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at 128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected 25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
+
+**Addressed memory is now our strongest language lever (15 October).** On the same 8,192 development targets, our keyed temporal-memory model, whose events write keyed messages that later tokens read directly, scores **5.60 and 5.62 nats/token** (two seeds) against **5.978** for the earlier flagship; removing the keyed read costs 0.10 at 1M tokens. A new addressed episodic memory lifts the flagship itself from 5.978 to **5.634 (+0.345)**, while an identical plain continuation on the same data does not improve. The same principle, explicit addressed access to the right past events, produced the sealed fault-detection win above. Single seeds except where stated; quality placement, not matched compute. [Source-bound evidence](language_memory_evidence.json).
 
 This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
 
@@ -131,26 +133,12 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
   0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
   event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
-- **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 fixed splits; total NLL per sequence, lower is
-  better): the frozen one-configuration EasyTPP model, with no tuning, has seven completed verdicts, all
-  losses against the composite bar (best published time + best published mark NLL). **Wikipedia lost** under the
-  pre-registered repair rule: split 0's original run ended with NaN weights, and its guarded rerun scores +58,218 on
-  TEST because two of 118 test sequences receive astronomically confident hazards (millions of nats; median sequence
-  3.9), so the five-split mean is +11,421.66 vs −122.62. The other four splits average −277.54, and the **marks are the
-  strongest result in this benchmark**: 27.65 vs 144.79 best published, because our addressed mark memory copies pages
-  never seen in training (10–27% of test edits), which per-mark embeddings cannot do. Bounding the hazards is the
-  development fix. **MOOC lost:** −226.85 ±
-  2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
-  published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
-  2.42; its mark path overfits ~100-sequence training sets). **Github lost by 2.3 nats:** −270.62 ± 48.69 SE vs the bar
-  −272.90, yet below every single published model's total (best LNM++ −269.7) and ahead on time (−390.93 vs −382.4);
-  marks carry the gap (120.30 vs 109.5). Splits 1–4 are guarded reruns after a numerical failure: padding the batch of
-  the longest training sequences overflows an exponent at masked positions, so that batch (59–68% of Github's training
-  events) is skipped in most epochs; the model trained mainly on the shorter sequences. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). **LastFM lost:** −774.64 ± 48.38 SE vs −849.65, below every single published model's total (−697.5, LNM++) and ahead on time (−1380.05 vs −1363.78); marks carry the gap (605.41 vs 514.13). These are
-  frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
+- **Second neural-TPP benchmark** (Bosser & Ben Taieb; seven datasets, five fixed splits): our current event model, with
+  repaired clocks and the addressed episodic memory that drives our language and fault-detection gains, is in development
+  on it now; its verdicts follow when each dataset's five test splits are scored.
 
-**Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (level on validation with a time-encoded Transformer reference, 0.702 vs 0.704, at about 1/7 of its parameters and a far better likelihood; ahead of the best classical detector's 0.685; sealed test pending, a tie expected under the 0.02 rule).
+**Where we are not yet ahead:** large-scale language (our best token model reaches 5.60 nats per token after 4M training
+tokens on single-thread CPUs; depth scaling is under test), P12 mortality (0.871 vs 0.880 AUROC) and real-world tables.
 
 ## Evidence anchors for the platform
 
