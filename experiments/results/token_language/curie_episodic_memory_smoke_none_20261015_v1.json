@@ -1,0 +1,64 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "memory": "none",
+  "added_updates": 64,
+  "added_targets": 32768,
+  "prequential_nll": 5.993542265517996,
+  "scored": {
+    "nll": 6.010374209247146,
+    "loss_sum": 49236.98552215262,
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "native_readout_scored": {
+    "nll": 6.010374209247146,
+    "loss_sum": 49236.98552215262,
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "training_s": 32.37303209298989,
+  "teacher_work": {
+    "calls": 11,
+    "replayed_targets": 1304,
+    "scored_targets": 288
+  },
+  "memory_work": null,
+  "memory_parameters": 0,
+  "final_weights": "experiments/results/token_language/curie_episodic_memory_smoke_none_20261015_v1.pt",
+  "source_sha256": {
+    "experiments/episodic_memory_continuation.py": "76a481f7cc1f32e6c8c028b929c85c48608f018d4fa59a944ea7cd4f90cab24b",
+    "sleeping_machines/episodic_pointer_memory.py": "c19aea14f99aeb6a5e5944538a46402717bc196d68dc3baeb3cb21c8a6400685",
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.pt": "34cc59e4c3c456730196c63eb087528432c87e45064218b1269ac9e8c9504932"
+  },
+  "binding": {
+    "memory": "none",
+    "compiled": true,
+    "capacity": 1024,
+    "topk": 32,
+    "key_dim": 32,
+    "memory_lr": 0.003,
+    "parent_sha256": "34cc59e4c3c456730196c63eb087528432c87e45064218b1269ac9e8c9504932",
+    "stream_start": 14942224,
+    "stream_total_updates": 4096,
+    "driver_sha256": "76a481f7cc1f32e6c8c028b929c85c48608f018d4fa59a944ea7cd4f90cab24b",
+    "memory_sha256": "c19aea14f99aeb6a5e5944538a46402717bc196d68dc3baeb3cb21c8a6400685"
+  },
+  "max_rss_kb": 626252,
+  "process_wall_s": 35.067882784991525,
+  "host": "curie",
+  "scope": "Single-factor addressed episodic memory versus plain continuation from the strongest native learner 5.978388 (shared lanes, corpus-EOS core boundary). Same restored learner/caps/moments/state/RNG/teacher and identical next fresh-TRAIN 2M stream. Episodic store persists across chunks and documents (learned age clock and boundary bias), top-k sparse read, read-time credit; core counterfactual credit unchanged. Same 8192 DEV/1024-window scoring, store reset per window. Single seed; no public validation."
+}
