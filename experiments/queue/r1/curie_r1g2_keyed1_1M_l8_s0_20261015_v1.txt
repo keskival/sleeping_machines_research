@@ -1,0 +1,2 @@
+# R1 keyed-member depth: 8 temporal-memory layers (residual, full backprop over 256-token lanes) at the exact 1M recipe of the L2 seeds (epochs 20, patience 2, one-cycle schedule); decision: does depth pay when the credit horizon is the lane (theory/CREDIT_HORIZON_AND_ADDRESSED_MEMORY.md) and which depth the keyed 16.8M fit uses
+curie_r1g2_keyed1_1M_l8_s0_20261015_v1 experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_1M_l8_s0_20261015_v1 --train-tokens 1048576 --layers 8 --epochs 20 --patience 2 --max-wall-s 28800 --seed 0
