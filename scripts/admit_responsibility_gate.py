@@ -1,0 +1,18 @@
+"""Admit only a TRAIN numerical/resource gate for multi-level responsibility."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];PLAN=ROOT/'experiments/queue/aws_model_improvement_repair_20261005T161000Z'
+TAG='aws_g_hier_responsibility_gate_20261015_v1'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    pre='experiments/results/hierarchy/aws_g_hier_carried_role_gate_20261015_v1.json'
+    gate=json.loads((ROOT/pre).read_text());assert gate['status']=='completed' and gate['rows'][1]['max_rss_kib']*2<3000000
+    declaration=dict(battle='G-HIER',task_stationarity='Independent stationary sensor scenes;no online benchmark.',strongest_fighter='Acquired carried native hierarchy plus direct multiscale output views and gate-independent per-level whole-support auxiliary credit. Numerical access diagnostic,not flagship promotion;mean spatial pooling is a declared limitation.',adaptation='One paired AdamW update,whole supplied TRAIN labels only,auxiliary weight0.1. No latent IDs,DEV or TEST. Existing source-bound quality fits untouched.',state_history='Full32event scenes,eight abstraction levels,four native stages each;all persistent state retained until independent-scene reset. Output reads published versions at causal common time.',retained=['native receipt/value races','separate keys/values','persistent addressed memory','native local counterfactual credit','time-evolving child role memories','native emission races','carried role interactions'],restrictions='All-level output fusion and reads,not sparse output selection. Mean views may lose spatial bindings. No emission thinning. Allocation depth is not semantic attribution. Full arithmetic not audited.',resources='AWS gym slot4,one thread,RSS3MKiB,VMS12MKiB,8GiB reserve,watchdogs,600s. Native work plus output read/projection/head/query ledgers.',decision='Can direct native multiscale access/direct-credit be trained inside the real resource envelope? No quality fit admitted automatically;wait acquired carried comparison and assess spatial sufficiency.')
+    admission=ROOT/f'experiments/hierarchy/{TAG}_admission.json';admission.write_text(json.dumps(declaration,indent=2)+'\n')
+    sources=set(gate['source_sha256'])|set(json.loads((ROOT/'experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1.json').read_text())['source_sha256'])
+    sources.update(['experiments/hierarchy/responsibility_gate.py','sleeping_machines/responsibility_readout.py','sleeping_machines/responsibility_native_composition.py','experiments/theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md','tests/test_responsibility_readout.py','scripts/admit_responsibility_gate.py',str(admission.relative_to(ROOT)),'experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1.raw.pt',pre])
+    q=ROOT/f'experiments/queue/hierarchy/{TAG}/{TAG}.txt';q.parent.mkdir(parents=True);q.write_text('# G-HIER: '+declaration['decision']+'\n'+TAG+' experiments/hierarchy/responsibility_gate.py --tag '+TAG+'\n')
+    job=dict(name=TAG,kind='hierarchy',queue=str(q.relative_to(ROOT)),queue_sha256=sha(q),source_sha256={f:sha(ROOT/f) for f in sorted(sources)},result=f'experiments/results/hierarchy/{TAG}.json',requires=[dict(result=pre,stage='carried_role_gate')],timeout_s=600,rss_kb=3000000,vms_kb=12000000)
+    marker=PLAN/'addenda'/('000_'+TAG+'.json');marker.write_text(json.dumps(dict(host='ip-172-31-47-132',battle='G-HIER',purpose=declaration['decision'],parent_manifest_sha256=sha(PLAN/'manifest.json'),slots={'4':[job]}),indent=2)+'\n')
+    print(marker.relative_to(ROOT))
+if __name__=='__main__':main()

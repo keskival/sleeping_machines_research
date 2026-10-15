@@ -462,6 +462,8 @@ A new composition construction separates local memory writes from upward transmi
 
 **Carried role-memory result.** Pending.
 
+**G-HIER predictive responsibility,15October:** implemented rate-independent multiscale residual access and gate-independent per-level whole-support credit inside the carried native hierarchy.13contracts pass. Full-resolution one-TRAIN-pair update gate completes:263923parameters,9.238s,810724KiB peak;finite content gradients at all8levels. Initial allocation63.23% to level0,23.26% to level1,8.56% to level2;prediction-loss gate derivatives +0.051737 at0,-0.035359 at1,-0.017724 at2,so descent favors1/2 over0 without a depth schedule. This is one-update learning-path evidence,not semantic transfer. All transmissions remain enabled;238extra output reads/paired update and full output work charged. Mean spatial summaries are a restricted access diagnostic;native role-aware higher composition retained. Common prediction time also contains higher scheduling history,so allocated source level is not evidence provenance. No new quality fit admitted:current matched carried-view fits finish unchanged before selection. [Theory](../experiments/theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md).
+
 ## 5. What the evidence says
 
 **What works.** The temporal mechanisms learn order, timing and retrieval from few examples where Transformers fail; time is used as information. Counterfactual route credit improves language at depth for 0.3% extra work. Stored capacity improves quality at flat inference arithmetic. On anonymous interleaved processes the native model beats every generic control across three seeds. At 10M characters it beats tuned Transformers at equal or lower compute.

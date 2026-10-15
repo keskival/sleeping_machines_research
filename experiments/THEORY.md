@@ -1,3 +1,5 @@
+[Predictive responsibility transfer](theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md) separates useful multiscale access,direct representation credit and earned traffic suppression. Native integrated update and13contracts pass;allocation is not semantic provenance,and no traffic is suppressed.
+
 [Carried role representations](theory/CARRIED_ROLE_REPRESENTATIONS.md) targets the measured vertical sensitivity attenuation while retaining native temporal transformation and generated views. Version-bound carrier transport has a direct local derivative;a real paired-update gate improves local sensitivity2.73x at the lowest parent and9.30x at the root. Matched continuation learning is admitted;quality remains a separate endpoint.
 
 [Native emission-channel audit](theory/NATIVE_EMISSION_CHANNEL_AUDIT.md) extends the frozen paired endpoint attribution before results: emitted values,child delays,and their joint cut are tested separately. Timing is a legitimate native information/computation path; value-only cuts do not define the whole mechanism. The trained actors and primary TRAIN-head/DEV endpoint remain unchanged.
