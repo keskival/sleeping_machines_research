@@ -1,0 +1,171 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "paired_composition_decision",
+  "rows": {
+    "frame": {
+      "nll": 0.7288507223129272,
+      "accuracy": 0.46875,
+      "benefit_over_prior": {
+        "mean": -0.035703498870134354,
+        "bootstrap_95": [
+          -0.10302124433219433,
+          0.0284336461219936
+        ],
+        "groups": 16
+      },
+      "initial_dev_nll": 0.7329918028249365,
+      "parameters": 169378,
+      "process_wall_s": 624.9393609268591,
+      "work_training": {
+        "addressed_objects": 15232,
+        "external_observations": 4096,
+        "candidate_scores": 614400,
+        "selected_updates": 307200,
+        "counterfactual_value_evaluations": 614400,
+        "timer_candidate_scores": 30464,
+        "deliveries": 19200,
+        "publications": 19200,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 15232,
+        "state_tensor_bytes": 13287360,
+        "pixel_native_memories": 4096,
+        "frame_bound_comparisons": 7936,
+        "frame_coordinate_subtractions": 16384
+      },
+      "work_dev": {
+        "addressed_objects": 7616,
+        "external_observations": 2048,
+        "candidate_scores": 307200,
+        "selected_updates": 153600,
+        "counterfactual_value_evaluations": 0,
+        "timer_candidate_scores": 15232,
+        "deliveries": 9600,
+        "publications": 9600,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 7616,
+        "state_tensor_bytes": 6629480,
+        "pixel_native_memories": 2048,
+        "frame_bound_comparisons": 3968,
+        "frame_coordinate_subtractions": 8192
+      }
+    },
+    "relational": {
+      "nll": 0.6942449808120728,
+      "accuracy": 0.515625,
+      "benefit_over_prior": {
+        "mean": -0.0010977685451507568,
+        "bootstrap_95": [
+          -0.04191247960552573,
+          0.03520061951130624
+        ],
+        "groups": 16
+      },
+      "initial_dev_nll": 0.7005363021920048,
+      "parameters": 255394,
+      "process_wall_s": 689.105848677922,
+      "work_training": {
+        "addressed_objects": 15232,
+        "external_observations": 4096,
+        "candidate_scores": 614400,
+        "selected_updates": 307200,
+        "counterfactual_value_evaluations": 614400,
+        "timer_candidate_scores": 30464,
+        "deliveries": 19200,
+        "publications": 19200,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 15232,
+        "state_tensor_bytes": 13295560,
+        "pixel_native_memories": 4096,
+        "frame_bound_comparisons": 7936,
+        "frame_coordinate_subtractions": 16384,
+        "role_slots": 15104,
+        "role_view_tensor_bytes": 2054144,
+        "role_projection_madds": 51904512,
+        "role_pair_products": 188416,
+        "role_transport_calls": 79872
+      },
+      "work_dev": {
+        "addressed_objects": 7616,
+        "external_observations": 2048,
+        "candidate_scores": 307200,
+        "selected_updates": 153600,
+        "counterfactual_value_evaluations": 0,
+        "timer_candidate_scores": 15232,
+        "deliveries": 9600,
+        "publications": 9600,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 7616,
+        "state_tensor_bytes": 6619640,
+        "pixel_native_memories": 2048,
+        "frame_bound_comparisons": 3968,
+        "frame_coordinate_subtractions": 8192,
+        "role_slots": 7552,
+        "role_view_tensor_bytes": 1027072,
+        "role_projection_madds": 25952256,
+        "role_pair_products": 94208,
+        "role_transport_calls": 39936
+      }
+    }
+  },
+  "relational_nll_gain": {
+    "mean": 0.034605734050273895,
+    "bootstrap_95": [
+      -0.05578474272042513,
+      0.12503429986536493
+    ],
+    "groups": 16
+  },
+  "interventions": {},
+  "transfer_positive_arms": [],
+  "qualified_arms": [],
+  "selected_for_confirmation": null,
+  "decision": "No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_paired_frame_20261015_v1.json": "5db27a3af0ba83eeb7cc4dbae15b08e15b2d2577b3e05dc8512409af7ba6f236",
+    "experiments/results/hierarchy/aws_g_hier_paired_frame_20261015_v1_features.npz": "708930b255aa0033edfe5886b123cfd48e8fb8fe2f0aa03e59d52d16fa4c5490",
+    "experiments/results/hierarchy/aws_g_hier_paired_frame_20261015_v1.final.pt": "de6075a1bb4fd1f22d018ae4093a54b2d337cdf27366880b7bf135182d4ae4e8",
+    "experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1.json": "779bb9073e0baa391253f6111a96252b43d717efb8fe6165d58f9f3d3cf553fc",
+    "experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1_features.npz": "b7bb7aee1a9ef5d28479a0827f4f6de8fba0bb446946019a1619e90219a186d9",
+    "experiments/results/hierarchy/aws_g_hier_paired_relational_20261015_v1.final.pt": "4c1b4f48dbe4dd4de84e8a08a4bc1c2f8f26e02c0900284e16380f33432d6792"
+  },
+  "source_sha256": {
+    "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/coalesced_native_composition.py": "f0da49eccaa1fa7718d9dfe9020d6da45d63d08414828d1f5a1da46314f9644e",
+    "sleeping_machines/convex_native_readout.py": "36e7f36509563c75190d97329c3543ddacb875d2ea89e268556e27a7c11d7ca8",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/frame_native_composition.py": "9a2db231ac0838ac92d938c8c9625a926bddbe21d98f46a8d19857e268aeb6ce",
+    "sleeping_machines/frontier_native_composition.py": "33b80094dce3218253122858b54eec6fc7ab4df4cd3adc262b4ddfa2b37ad0d6",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/indexed_temporal_object.py": "2d6c5ac8ef44c10d2852dfae6639f1a0dd9d0fe53ae9b24349fe2dbf76fa533b",
+    "sleeping_machines/native_memory_composition.py": "f3a2b04beed4e37c15afb0e39836dba11811d21ab8fe118c85a4fb86a6cf9883",
+    "sleeping_machines/native_object_hierarchy.py": "9e58e4046c55e7ab815ab2b0dd3563833482a829febef69a61cf8d13ee8514e4",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/prior_centered_readout.py": "a774743d4ca31c5db0effa067cd87214806390e18036be2fdc7cba4c80b57687",
+    "sleeping_machines/pure_race_timer.py": "2531bbdcc0980fbdfb2ad2665d568504cd33f45006ae6c9bec3d2584f0b9fbe7",
+    "sleeping_machines/relational_frame_composition.py": "103105767a4e2761704cd771621fb4156a4b0f2f649537fb08c92cd6dbb4949e",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "sleeping_machines/variance_reduced_native_composition.py": "99dbb62906f478db5861790d764746c6f8fa62f9dbdfd1d9a58e24e3d1439b1d",
+    "experiments/hierarchy/paired_composition_decision.py": "e3a35d6f975e3560429d12c69548e8bd9f8bcd6d245d110379c06f5de3cbbb2e",
+    "experiments/hierarchy/observed_training_pairs.py": "bb568befab27e930fe451ff355ac5591875e797fd33f6755390579befa432a10",
+    "experiments/hierarchy/paired_composition_learning.py": "98b8b367add5aec48ce40cb38338da2047c87c6b9cc94cda988d957f999d7b39",
+    "experiments/hierarchy/frame_learning.py": "a4a047665fe6c3d7dcefa9f89580733423cf34fb7e2c39feaf33e9ad5d4ce4ac",
+    "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540"
+  },
+  "process_wall_s": 0.2992461798712611,
+  "max_rss_kib": 271456,
+  "intervention_scope": "Values cut retains clocks/addresses/availability. Child-delay cut fixes arm-to-emit delay at .011,retains random draws,reads views later and changes transport/scheduling jointly. Root timer unchanged;not a cut of all timing/availability paths.",
+  "scope": "One-seed synthetic DEV comparison,TRAIN-only heads,observed-geometry clusters,common noise tape. Same128presentations;different parameters/arithmetic. Reused DEV is not sealed confirmation. TEST not model-scored."
+}
