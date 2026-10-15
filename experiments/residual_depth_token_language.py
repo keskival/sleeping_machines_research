@@ -153,6 +153,15 @@ class Model(nn.Module):
         if getattr(args, 'residual', False):
             init = args.residual_init if args.residual_init is not None else args.depth ** -.5
             self.core.residual_gain = nn.Parameter(torch.full((args.depth, args.payload * args.heads), float(init)))
+        if getattr(args, 'stage_reads', False):
+            W, dk, D = args.payload * args.heads, args.read_key_dim, args.depth
+            self.core.read_query = nn.Parameter(torch.randn(D, W, dk) * W ** -.5)
+            self.core.read_key = nn.Parameter(torch.randn(D, W, dk) * W ** -.5)
+            self.core.read_value = nn.Parameter(torch.zeros(D, W, W))
+            self.core.read_age = nn.Parameter(torch.full((D,), math.log(math.e ** .5 - 1)))
+            self.core.read_boundary = nn.Parameter(torch.zeros(D))
+            self.core.read_null = nn.Parameter(torch.zeros(D))
+            self.core.read_topk, self.core.read_capacity = args.read_topk, args.read_capacity
         cuts = (2000, 10000, 30000) if args.readout == 'adaptive' else ()
         self.readout = (frequency_readout(self.core.total_payload*self.core.depth,counts,cuts,order,args.minimum_tail_width)
             if args.readout_init == 'frequency' else TokenReadout(self.core.total_payload*self.core.depth,50257,cuts,order))
@@ -251,6 +260,10 @@ def main():
     p.add_argument('--compiled',action='store_true')
     p.add_argument('--residual',action='store_true')
     p.add_argument('--residual-init',type=float)
+    p.add_argument('--stage-reads',action='store_true')
+    p.add_argument('--read-key-dim',type=int,default=16)
+    p.add_argument('--read-topk',type=int,default=16)
+    p.add_argument('--read-capacity',type=int,default=512)
     p.add_argument('--future-site',choices=['first','uniform'],default='uniform')
     p.add_argument('--future-score-positions',type=int,default=0,help='Uniform suffix scoring positions; zero uses the full-score control')
     p.add_argument('--teacher-probability',type=float,default=1.)

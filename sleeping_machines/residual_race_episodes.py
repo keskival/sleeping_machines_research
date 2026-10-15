@@ -6,11 +6,20 @@ without it the function is the original serial composition, bit for bit. Races,
 delays, sparse writes, transport, context and counterfactual credit are unchanged.
 The stream keeps the stage output arrival (fast bypass plus delayed correction).
 
+Optional per-stage addressed reads (core carries `read_query`): after stage d, the
+stream queries a persistent per-lane store of earlier depth-d stream states with a
+sparse top-k race (learned age clock, document-boundary bias from the observed EOS
+token, null route) and adds sum_j a_j W_v f_j. Old entries are detached (read-time
+credit reaches query/value maps, clock, bias and null for any lag); entries written
+inside the current credit window keep their writer gradient. W_v starts at zero, so
+the read stack starts exactly at the residual stack.
+
 Lookup is algebraically identical to the original one-hot content projection.
 Retains temporal transport, hard races, sparse writes, separate keys/values and
 sampled local value credit. Forced-write continuations expose actual suffix
 consequences to the driver's bounded future-write teacher.
 """
+import math
 import torch
 from torch.nn import functional as F
 
@@ -54,6 +63,7 @@ def token_features(model, tokens, state=None, generator=None, route_credit='samp
         raise ValueError('Sampled alternatives need an independent persistent generator')
     pis = []
     residual = getattr(model, 'residual_gain', None)
+    reader = getattr(model, 'read_query', None) is not None
     step = compiled_sparse_counterfactual_layer() if compiled else sparse_counterfactual_layer
     source = 0
     layers = model._stacked(source)
@@ -67,6 +77,14 @@ def token_features(model, tokens, state=None, generator=None, route_credit='samp
     reads = [Lp['key'].view(H,U,P) + torch.einsum('hupq,lhuq->lhup',
              Lp['key_read'].view(H,U,P,P), m) for Lp,m in zip(layers,mem)]
     position = st.get('position', torch.zeros(n, dtype=torch.float64))
+    if reader:
+        W = H * P; dk = model.read_query.shape[-1]
+        store_k = list(st.get('store_k', [torch.zeros(n, 0, dk) for _ in range(D)]))
+        store_f = list(st.get('store_f', [torch.zeros(n, 0, W) for _ in range(D)]))
+        store_t = list(st.get('store_t', [torch.zeros(n, 0, dtype=torch.long) for _ in range(D)]))
+        clock = st.get('store_clock', torch.zeros(n, dtype=torch.long)).clone()
+        last_eos = st.get('store_eos', torch.full((n,), -1, dtype=torch.long)).clone()
+        win_k = [[] for _ in range(D)]; win_f = [[] for _ in range(D)]; win_t = [[] for _ in range(D)]
     active = torch.ones(n, dtype=torch.bool)
     every = []
     winners = []
@@ -89,6 +107,8 @@ def token_features(model, tokens, state=None, generator=None, route_credit='samp
             ctx_arr = torch.where(reset[:, None], torch.zeros_like(ctx_arr), ctx_arr)
             has_ctx = has_ctx & ~reset
             position = torch.where(reset, torch.zeros_like(position), position)
+        if reader:
+            last_eos = torch.where(tokens[:, k] == 50256, clock, last_eos)
         x = model.embedding.weight[source][None] + F.embedding(tokens[:, k], model.content.weight.T)
         arrival = position
         position = position + 1
@@ -124,15 +144,42 @@ def token_features(model, tokens, state=None, generator=None, route_credit='samp
                 model.transport_rate[depth], model.transport_frequency[depth],
                 route_credit == 'sampled',forced_winner=forced,credit_mask=mask,free_bias=free_bias,temperature=temperature)
             if residual is not None: x = stream + residual[depth] * x
+            if reader:
+                f = F.layer_norm(x, (W,)); q = f @ model.read_query[depth]
+                parts_s, parts_t = [], []
+                M = store_k[depth].shape[1]
+                if M: parts_s.append((store_k[depth] @ q[:, :, None]).squeeze(-1)); parts_t.append(store_t[depth])
+                if win_k[depth]:
+                    wk = torch.stack(win_k[depth], 1); parts_s.append((wk @ q[:, :, None]).squeeze(-1)); parts_t.append(torch.stack(win_t[depth], 1))
+                if parts_s:
+                    times = torch.cat(parts_t, 1); age = (clock[:, None] - times).clamp_min(0).to(f.dtype)
+                    sc = torch.cat(parts_s, 1) / math.sqrt(dk) - F.softplus(model.read_age[depth]) * torch.log1p(age)
+                    sc = sc + model.read_boundary[depth] * (times < last_eos[:, None]).to(f.dtype)
+                    kk = min(model.read_topk, sc.shape[1]); top, idx = sc.topk(kk, -1)
+                    wts = torch.softmax(torch.cat([top, model.read_null[depth].expand(n, 1)], -1), -1)[:, :-1]
+                    sel = torch.zeros(n, kk, W, dtype=f.dtype)
+                    if M: sel = torch.where((idx < M)[..., None], store_f[depth].gather(1, idx.clamp_max(M - 1)[..., None].expand(-1, -1, W)), sel)
+                    if win_f[depth]:
+                        wf = torch.stack(win_f[depth], 1)
+                        sel = torch.where((idx >= M)[..., None], wf.gather(1, (idx - M).clamp(0, wf.shape[1] - 1)[..., None].expand(-1, -1, W)), sel)
+                    x = x + ((wts[..., None] * sel).sum(1)) @ model.read_value[depth]
+                win_k[depth].append(f @ model.read_key[depth]); win_f[depth].append(f); win_t[depth].append(clock.clone())
             writes[depth] += ((arr[depth] != old_arr) | (seen[depth] & ~old_seen)).sum(0).detach()
             pis.append((depth, pi))
             winners.append(winner.detach())
             depth_snapshots.append((x,arrival))
         ctx_vals = values.reshape(n, H * P); ctx_arr = arrivals; has_ctx = torch.ones_like(has_ctx)
+        if reader: clock = clock + 1
         output=[]
         for depth,(value,issued_at) in enumerate(depth_snapshots):
             if depth==D-1:output.append(value)
             else:output.append(torch.cat([transport(value[:,h*P:(h+1)*P],arrival-issued_at,depth,h) for h in range(H)],-1))
         every.append(torch.cat(output,-1))
     state = dict(mem=mem, arr=arr, seen=seen, ctx_vals=ctx_vals, ctx_arr=ctx_arr, has_ctx=has_ctx, position=position, last_writes=writes,race_winners=torch.stack(winners).reshape(T,D,n,H))
+    if reader:
+        C = model.read_capacity
+        state.update(store_k=[torch.cat([store_k[d], torch.stack(win_k[d], 1)], 1)[:, -C:] for d in range(D)],
+                     store_f=[torch.cat([store_f[d], torch.stack(win_f[d], 1)], 1)[:, -C:] for d in range(D)],
+                     store_t=[torch.cat([store_t[d], torch.stack(win_t[d], 1)], 1)[:, -C:] for d in range(D)],
+                     store_clock=clock, store_eos=last_eos)
     return torch.stack(every, 1), state, pis

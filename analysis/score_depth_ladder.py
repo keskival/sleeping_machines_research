@@ -2,7 +2,8 @@
 
 Rebuilds each arm from its final checkpoint (settings bound there), scores the recorded
 8192 DEV targets in disjoint 1024-token windows, and records the decision rule:
-depth is useful under residual composition if D16res < D8res < D2res and D8res < D8serial.
+depth is useful under residual composition if D16res < D8res < D2res and D8res < D8serial; the same ordering is
+checked with per-stage addressed reads.
 """
 import argparse, json, sys, time, hashlib
 from pathlib import Path
@@ -13,7 +14,7 @@ import torch
 import residual_depth_token_language as driver
 from public_token_scoring import score
 
-ARMS = ('d2_residual', 'd8_serial', 'd8_residual', 'd16_residual')
+ARMS = ('d2_residual', 'd8_serial', 'd8_residual', 'd16_residual', 'd2_residual_reads', 'd8_residual_reads', 'd16_residual_reads')
 
 
 def main():
@@ -37,9 +38,12 @@ def main():
         print(json.dumps({k: v for k, v in rows[arm].items() if k not in ('memory_effective_rank',)}), flush=True)
     done = all(r['status'] == 'completed' for r in rows.values())
     nll = {k: r.get('long_history_nll') for k, r in rows.items()}
-    decision = dict(residual_monotone=done and nll['d16_residual'] < nll['d8_residual'] < nll['d2_residual'],
-                    residual_beats_serial_d8=done and nll['d8_residual'] < nll['d8_serial'],
-                    d8_residual_gain_over_serial=(nll['d8_serial'] - nll['d8_residual']) if done else None)
+    ok = lambda *ks: all(nll.get(k) is not None for k in ks)
+    decision = dict(residual_monotone=ok('d2_residual', 'd8_residual', 'd16_residual') and nll['d16_residual'] < nll['d8_residual'] < nll['d2_residual'],
+                    residual_beats_serial_d8=ok('d8_residual', 'd8_serial') and nll['d8_residual'] < nll['d8_serial'],
+                    reads_monotone=ok('d2_residual_reads', 'd8_residual_reads', 'd16_residual_reads') and nll['d16_residual_reads'] < nll['d8_residual_reads'] < nll['d2_residual_reads'],
+                    reads_gain_by_depth={d: nll[f'd{d}_residual'] - nll[f'd{d}_residual_reads'] for d in (2, 8, 16) if ok(f'd{d}_residual', f'd{d}_residual_reads')},
+                    depth_gain_d16_vs_d2={k: nll[f'd2_{k}'] - nll[f'd16_{k}'] for k in ('residual', 'residual_reads') if ok(f'd2_{k}', f'd16_{k}')})
     out = dict(status='completed' if done else 'partial', battle='R1', tag=a0.tag, rows=rows, decision=decision,
                protocol=dict(targets=8192, target_start=25165825, window=1024, lanes=8, eos_state_reset=False),
                source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in ('analysis/score_depth_ladder.py', 'experiments/residual_depth_token_language.py', 'sleeping_machines/residual_race_episodes.py')},
