@@ -1,0 +1,83 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth plan B: deep keyed temporal-memory ladder",
+ "tag": "aws_r1_deep_keyed_L2_1M_s0_20261015_v3",
+ "args": {
+  "tag": "aws_r1_deep_keyed_L2_1M_s0_20261015_v3",
+  "seed": 0,
+  "train_tokens": 1048576,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 2,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 14400.0,
+  "max_steps": 0,
+  "score": 1,
+  "checkpoint_blocks": 0
+ },
+ "parameters": 3416797,
+ "best_epoch": 2,
+ "epochs_run": 5,
+ "steps": 5120,
+ "wall_s": 7367.586676359177,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 7.793944811448455,
+   "select_nll": 6.832623838155399,
+   "epoch_s": 1452
+  },
+  {
+   "epoch": 1,
+   "train_nll": 6.170684667304158,
+   "select_nll": 6.379313496420543,
+   "epoch_s": 1474
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.68802575301379,
+   "select_nll": 6.25910289263108,
+   "epoch_s": 1482
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.381628150586039,
+   "select_nll": 6.2733073493126374,
+   "epoch_s": 1479
+  },
+  {
+   "epoch": 4,
+   "train_nll": 5.15092997578904,
+   "select_nll": 6.2785481134739864,
+   "epoch_s": 1481
+  }
+ ],
+ "select": {
+  "nll": 6.25910289263108,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.pt",
+ "reference": {
+  "keyed_L2_1M_score_65528": 6.019141,
+  "keyed_L2_4M_score_65528": 5.521061,
+  "note": "r1_token_keyed_lm seed 0 on the same 65,528-target slice"
+ },
+ "score_65528": {
+  "nll": 5.957197004673813,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}
