@@ -1,0 +1,153 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "mode": "smoke",
+  "source_actor_parity_error": 3.390324479490836e-12,
+  "primary_online_bptt_parity_error": null,
+  "acquisition": {
+    "arm": "online",
+    "nll": 11.881715326944708,
+    "targets": 64,
+    "wall_s": 0.40195338800549507,
+    "phase_wall_s": {
+      "request": 0.007818419951945543,
+      "credit": 0.3431274890899658,
+      "teacher": 0.04156243707984686,
+      "proposal": 0.006136144977062941,
+      "optimizer": 0.0027200081385672092
+    },
+    "block_nll": [
+      12.908574977925017,
+      10.854855675964398
+    ],
+    "requests": [
+      0.0,
+      0.0
+    ],
+    "remote_computed": [
+      true,
+      false
+    ],
+    "remote_windows": 1,
+    "requested_windows": 0.0,
+    "teachers": 1,
+    "teacher_labels": [
+      {
+        "decision_block": 0,
+        "observed_block": 1,
+        "delta": 2.6912868520412303e-06
+      }
+    ]
+  },
+  "rows": [
+    {
+      "arm": "bptt",
+      "nll": 7.510905838693162,
+      "targets": 64,
+      "updates": 2,
+      "wall_s": 0.12913380516692996,
+      "phase_wall_s": {
+        "window_credit": 0.12501516798511147,
+        "optimizer": 0.0033458492252975702
+      },
+      "block_nll": [
+        6.118744988869783,
+        8.903066688516542
+      ],
+      "step_norms": [
+        0.008016450153371235,
+        0.006904715157309694
+      ]
+    },
+    {
+      "arm": "frozen",
+      "nll": 7.5109214425189155,
+      "targets": 64,
+      "wall_s": 0.24995487090200186,
+      "phase_wall_s": {
+        "request": 0.005444283131510019,
+        "credit": 0.24106520134955645,
+        "teacher": 0.0,
+        "proposal": 0.0,
+        "optimizer": 0.002896449062973261
+      },
+      "block_nll": [
+        6.118744988869783,
+        8.903097896168049
+      ],
+      "requests": [
+        1.0,
+        1.0
+      ],
+      "remote_computed": [
+        true,
+        true
+      ],
+      "remote_windows": 2,
+      "requested_windows": 2.0,
+      "teachers": 0,
+      "teacher_labels": [],
+      "learning_policy": "previously trained native guidance"
+    },
+    {
+      "arm": "online",
+      "nll": 7.5109214425189155,
+      "targets": 64,
+      "wall_s": 0.3003861748147756,
+      "phase_wall_s": {
+        "request": 0.006936477264389396,
+        "credit": 0.24015523702837527,
+        "teacher": 0.04170379601418972,
+        "proposal": 0.008648162940517068,
+        "optimizer": 0.002394267823547125
+      },
+      "block_nll": [
+        6.118744988869783,
+        8.903097896168049
+      ],
+      "requests": [
+        1.0,
+        1.0
+      ],
+      "remote_computed": [
+        true,
+        true
+      ],
+      "remote_windows": 2,
+      "requested_windows": 2.0,
+      "teachers": 1,
+      "teacher_labels": [
+        {
+          "decision_block": 0,
+          "observed_block": 1,
+          "delta": -3.2034003893954832e-06
+        }
+      ],
+      "learning_policy": "native guidance also learns online"
+    }
+  ],
+  "source_sha256": {
+    "experiments/credit/aws_market_guided_online.py": "70dd15cfb84c85df214b29bacc115258d972f13a1bcd35c65b85824b34f443d8",
+    "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917",
+    "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0",
+    "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+    "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+    "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+    "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+    "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+    "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+    "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/owned_clock_dispatch.py": "885f36562adab8857b642366cd7165f46b48b11fa2668921866006d1a53ba05d"
+  },
+  "input_sha256": {
+    "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json": "c0dce6f1203fc0ec8d3122abae7e1bb148e0cd910eabe78ab40db250f53f0163",
+    "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.best.pt": "b10a30815637734352c586ef22f668f667290aad9e460ef3f0aec1cb1a2ef07a",
+    "data/binance/npz/2026-08-24.npz": "6ac6725ac4d449c5841cc24e8cf4cee7845782280a92b0a949d82af8aced8ade",
+    "data/binance/npz/2026-08-25.npz": "7e62dabffa9b6e3eff5cfb5f52d18abcf55b02ae1b82334ad3478629c9753486"
+  },
+  "inherited_fitting_arithmetic": 7823235921066,
+  "wall_s": 2.9622000309173018,
+  "max_rss_kb": 629580,
+  "scope": "Same acquired AWS native actor, AdamW warmup and chronological targets as online references; native persistent state survives gradient boundaries/day gap. Add demonstrated native hard-race early-request critic with actual future-Adam teaching. Frozen critic weights still evolve event memory and native actor adapts online. Source guidance preparation plus duplicate exact-acquisition/parity work charged; elapsed execution reported, full arithmetic accounting still needed for efficiency claim. Reused DEV,seed0,Septembersealed; development candidate, not complete family verdict."
+}
