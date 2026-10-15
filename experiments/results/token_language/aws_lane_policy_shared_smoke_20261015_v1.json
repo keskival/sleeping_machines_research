@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "policy": "shared",
+  "added_updates": 64,
+  "added_targets": 32768,
+  "prequential_nll": 6.0179029552075995,
+  "scored": {
+    "nll": 6.051700374768231,
+    "loss_sum": 49575.52947010135,
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "training_s": 31.646793297026306,
+  "teacher_work": {
+    "calls": 16,
+    "replayed_targets": 1896,
+    "scored_targets": 432
+  },
+  "local_clip_activation_fraction": 0.38324434673366836,
+  "final_weights": "experiments/results/token_language/aws_lane_policy_shared_smoke_20261015_v1.pt",
+  "source_sha256": {
+    "experiments/lane_policy_continuation.py": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794",
+    "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1.pt": "b26c60091297accbbf6a9a17057263ecf7c87f32fc197e58d15a1430e3061b58"
+  },
+  "binding": {
+    "policy": "shared",
+    "parent_sha256": "b26c60091297accbbf6a9a17057263ecf7c87f32fc197e58d15a1430e3061b58",
+    "stream_start": 10747904,
+    "stream_total_updates": 4096,
+    "driver_sha256": "4e5aebfc34b91386d735a5093c520625ea34d5c9d416265710dc3f320b229794"
+  },
+  "max_rss_kb": 590436,
+  "process_wall_s": 34.161219452973455,
+  "scope": "Single-factor lane-clock-policy comparison from strongest acquired6.06556 native learner. Same old fixedlocalcaps/moments/data/order and supported teacher; full capacity/keys/value/writes retained. Eight independent contiguous freshTRAIN streams continue through2Mtargets without artificial262k-block resets; acquired numeric state carried, gradientwindow16 remains separate. Per-target TRAIN losses scored before each update; final reused8192DEV/1024history uses common pinned shared-lane inference tape. 64-update smoke resumes into4096 total updates on IDENTICAL predeclared2M stream layout, not re-fitting. Smoke scoring/checkpoints paid separately; no public validation, external language fit, physical speed or FLOP claim."
+}
