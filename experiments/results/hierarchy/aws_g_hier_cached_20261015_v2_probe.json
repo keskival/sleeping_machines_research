@@ -1,0 +1,551 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "bounded_learning_probe",
+  "scope": "64 updates on one official FIT recording; memorization/learnability diagnostic, not held-out quality or semantic hierarchy.",
+  "initial": {
+    "nll": 2.494155466556549,
+    "accuracy": 0.08333333333333333,
+    "episodes": 12
+  },
+  "final": {
+    "nll": 2.520648201306661,
+    "accuracy": 0.08333333333333333,
+    "episodes": 12
+  },
+  "final_without_top_raw_read": {
+    "nll": 2.5200598935286203,
+    "accuracy": 0.08333333333333333,
+    "episodes": 12
+  },
+  "history": [
+    {
+      "step": 1,
+      "nll": 2.268819808959961,
+      "cell": 21,
+      "replays": 37,
+      "suffix_cells": 407,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 2,
+      "nll": 2.478470802307129,
+      "cell": 31,
+      "replays": 9,
+      "suffix_cells": 9,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 3,
+      "nll": 2.4849705696105957,
+      "cell": 9,
+      "replays": 28,
+      "suffix_cells": 644,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 4,
+      "nll": 2.365370035171509,
+      "cell": 11,
+      "replays": 28,
+      "suffix_cells": 588,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 5,
+      "nll": 2.266812324523926,
+      "cell": 25,
+      "replays": 29,
+      "suffix_cells": 203,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 6,
+      "nll": 2.268110752105713,
+      "cell": 30,
+      "replays": 9,
+      "suffix_cells": 18,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 7,
+      "nll": 2.481955051422119,
+      "cell": 16,
+      "replays": 46,
+      "suffix_cells": 736,
+      "full_replay_cells": 1472
+    },
+    {
+      "step": 8,
+      "nll": 2.4725770950317383,
+      "cell": 28,
+      "replays": 9,
+      "suffix_cells": 36,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 9,
+      "nll": 2.3681559562683105,
+      "cell": 0,
+      "replays": 10,
+      "suffix_cells": 320,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 10,
+      "nll": 2.536820411682129,
+      "cell": 7,
+      "replays": 19,
+      "suffix_cells": 475,
+      "full_replay_cells": 608
+    },
+    {
+      "step": 11,
+      "nll": 2.253523588180542,
+      "cell": 13,
+      "replays": 37,
+      "suffix_cells": 703,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 12,
+      "nll": 2.363128185272217,
+      "cell": 1,
+      "replays": 10,
+      "suffix_cells": 310,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 13,
+      "nll": 2.3348169326782227,
+      "cell": 14,
+      "replays": 37,
+      "suffix_cells": 666,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 14,
+      "nll": 2.343803882598877,
+      "cell": 26,
+      "replays": 29,
+      "suffix_cells": 174,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 15,
+      "nll": 2.2794811725616455,
+      "cell": 9,
+      "replays": 28,
+      "suffix_cells": 644,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 16,
+      "nll": 2.4703168869018555,
+      "cell": 3,
+      "replays": 10,
+      "suffix_cells": 290,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 17,
+      "nll": 2.3904552459716797,
+      "cell": 24,
+      "replays": 29,
+      "suffix_cells": 232,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 18,
+      "nll": 2.1660335063934326,
+      "cell": 17,
+      "replays": 46,
+      "suffix_cells": 690,
+      "full_replay_cells": 1472
+    },
+    {
+      "step": 19,
+      "nll": 2.344669818878174,
+      "cell": 21,
+      "replays": 37,
+      "suffix_cells": 407,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 20,
+      "nll": 2.4076485633850098,
+      "cell": 1,
+      "replays": 10,
+      "suffix_cells": 310,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 21,
+      "nll": 2.4199583530426025,
+      "cell": 0,
+      "replays": 10,
+      "suffix_cells": 320,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 22,
+      "nll": 2.3262619972229004,
+      "cell": 23,
+      "replays": 37,
+      "suffix_cells": 333,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 23,
+      "nll": 2.5793282985687256,
+      "cell": 4,
+      "replays": 19,
+      "suffix_cells": 532,
+      "full_replay_cells": 608
+    },
+    {
+      "step": 24,
+      "nll": 2.3539931774139404,
+      "cell": 13,
+      "replays": 37,
+      "suffix_cells": 703,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 25,
+      "nll": 2.513188123703003,
+      "cell": 30,
+      "replays": 9,
+      "suffix_cells": 18,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 26,
+      "nll": 2.375300407409668,
+      "cell": 8,
+      "replays": 28,
+      "suffix_cells": 672,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 27,
+      "nll": 2.4409234523773193,
+      "cell": 29,
+      "replays": 9,
+      "suffix_cells": 27,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 28,
+      "nll": 2.3020756244659424,
+      "cell": 9,
+      "replays": 28,
+      "suffix_cells": 644,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 29,
+      "nll": 2.280808210372925,
+      "cell": 3,
+      "replays": 10,
+      "suffix_cells": 290,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 30,
+      "nll": 2.584737777709961,
+      "cell": 0,
+      "replays": 10,
+      "suffix_cells": 320,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 31,
+      "nll": 2.5775134563446045,
+      "cell": 19,
+      "replays": 46,
+      "suffix_cells": 598,
+      "full_replay_cells": 1472
+    },
+    {
+      "step": 32,
+      "nll": 2.354489326477051,
+      "cell": 28,
+      "replays": 9,
+      "suffix_cells": 36,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 33,
+      "nll": 2.5673389434814453,
+      "cell": 4,
+      "replays": 19,
+      "suffix_cells": 532,
+      "full_replay_cells": 608
+    },
+    {
+      "step": 34,
+      "nll": 2.396094799041748,
+      "cell": 31,
+      "replays": 9,
+      "suffix_cells": 9,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 35,
+      "nll": 2.4463586807250977,
+      "cell": 0,
+      "replays": 10,
+      "suffix_cells": 320,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 36,
+      "nll": 2.298815965652466,
+      "cell": 6,
+      "replays": 19,
+      "suffix_cells": 494,
+      "full_replay_cells": 608
+    },
+    {
+      "step": 37,
+      "nll": 2.475093364715576,
+      "cell": 19,
+      "replays": 46,
+      "suffix_cells": 598,
+      "full_replay_cells": 1472
+    },
+    {
+      "step": 38,
+      "nll": 2.2655320167541504,
+      "cell": 2,
+      "replays": 10,
+      "suffix_cells": 300,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 39,
+      "nll": 2.433135509490967,
+      "cell": 9,
+      "replays": 28,
+      "suffix_cells": 644,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 40,
+      "nll": 2.1256959438323975,
+      "cell": 20,
+      "replays": 25,
+      "suffix_cells": 300,
+      "full_replay_cells": 800
+    },
+    {
+      "step": 41,
+      "nll": 2.495511293411255,
+      "cell": 12,
+      "replays": 37,
+      "suffix_cells": 740,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 42,
+      "nll": 2.3387482166290283,
+      "cell": 2,
+      "replays": 10,
+      "suffix_cells": 300,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 43,
+      "nll": 2.4683077335357666,
+      "cell": 2,
+      "replays": 10,
+      "suffix_cells": 300,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 44,
+      "nll": 2.492715358734131,
+      "cell": 2,
+      "replays": 10,
+      "suffix_cells": 300,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 45,
+      "nll": 2.5349392890930176,
+      "cell": 0,
+      "replays": 10,
+      "suffix_cells": 320,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 46,
+      "nll": 2.5045604705810547,
+      "cell": 18,
+      "replays": 46,
+      "suffix_cells": 644,
+      "full_replay_cells": 1472
+    },
+    {
+      "step": 47,
+      "nll": 2.290933609008789,
+      "cell": 6,
+      "replays": 19,
+      "suffix_cells": 494,
+      "full_replay_cells": 608
+    },
+    {
+      "step": 48,
+      "nll": 2.53413724899292,
+      "cell": 25,
+      "replays": 29,
+      "suffix_cells": 203,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 49,
+      "nll": 2.2706384658813477,
+      "cell": 25,
+      "replays": 29,
+      "suffix_cells": 203,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 50,
+      "nll": 2.2790489196777344,
+      "cell": 28,
+      "replays": 9,
+      "suffix_cells": 36,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 51,
+      "nll": 2.406172513961792,
+      "cell": 29,
+      "replays": 9,
+      "suffix_cells": 27,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 52,
+      "nll": 2.363018035888672,
+      "cell": 8,
+      "replays": 28,
+      "suffix_cells": 672,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 53,
+      "nll": 2.3274898529052734,
+      "cell": 27,
+      "replays": 29,
+      "suffix_cells": 145,
+      "full_replay_cells": 928
+    },
+    {
+      "step": 54,
+      "nll": 2.5192384719848633,
+      "cell": 11,
+      "replays": 28,
+      "suffix_cells": 588,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 55,
+      "nll": 2.393254518508911,
+      "cell": 2,
+      "replays": 10,
+      "suffix_cells": 300,
+      "full_replay_cells": 320
+    },
+    {
+      "step": 56,
+      "nll": 2.289701461791992,
+      "cell": 19,
+      "replays": 21,
+      "suffix_cells": 273,
+      "full_replay_cells": 672
+    },
+    {
+      "step": 57,
+      "nll": 2.2514963150024414,
+      "cell": 29,
+      "replays": 9,
+      "suffix_cells": 27,
+      "full_replay_cells": 288
+    },
+    {
+      "step": 58,
+      "nll": 2.4575929641723633,
+      "cell": 8,
+      "replays": 28,
+      "suffix_cells": 672,
+      "full_replay_cells": 896
+    },
+    {
+      "step": 59,
+      "nll": 2.4685888290405273,
+      "cell": 16,
+      "replays": 31,
+      "suffix_cells": 496,
+      "full_replay_cells": 992
+    },
+    {
+      "step": 60,
+      "nll": 2.4560060501098633,
+      "cell": 12,
+      "replays": 37,
+      "suffix_cells": 740,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 61,
+      "nll": 2.3509535789489746,
+      "cell": 22,
+      "replays": 37,
+      "suffix_cells": 370,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 62,
+      "nll": 2.267385482788086,
+      "cell": 15,
+      "replays": 37,
+      "suffix_cells": 629,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 63,
+      "nll": 2.4578917026519775,
+      "cell": 13,
+      "replays": 37,
+      "suffix_cells": 703,
+      "full_replay_cells": 1184
+    },
+    {
+      "step": 64,
+      "nll": 2.2706973552703857,
+      "cell": 23,
+      "replays": 55,
+      "suffix_cells": 495,
+      "full_replay_cells": 1760
+    }
+  ],
+  "source_sha256": {
+    "sleeping_machines/cached_parent_hierarchy.py": "6f00dccaa078d55aae16f80ab3b5175f3d286feb48ae8bac9b7d7cfed3b3a015",
+    "sleeping_machines/addressable_parent_hierarchy.py": "40bb08afba481f3a22465bb17f5535fd258be987ea2a6100926094224035fb41",
+    "sleeping_machines/parent_race_hierarchy.py": "20d18571621e916cd0c363fcb3292da2f9877c1ab522108d08b9770aff137dcf",
+    "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+    "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+    "experiments/hierarchy/cached_preflight_v2.py": "13deabd63ff207c9476d399173740c0c9cd991c5ccf6c212ced1c4781f5902c0",
+    "experiments/hierarchy/cached_learning_probe_v2.py": "aa5867e7a6ff7b66132336a57c51e446aace31aaaa2a18ca52d825e3a068e1d1"
+  },
+  "data_sha256": "85382542d7fe18dda55d9b591872f75195fc0baa1a7eaead989b75481a2e2ae9",
+  "preflight_sha256": "a0df8f68153c514c446c3cba5cd18aad7d6baa699c863f4843c3704427020357",
+  "fitting_wall_s": 104.54957930208184,
+  "max_rss_kb": 997692,
+  "final_weights": "experiments/results/hierarchy/aws_g_hier_cached_20261015_v2_probe.final.pt",
+  "state_policy": "Independent gesture episodes reset state; persistent all-level states within refinement. No non-stationary stream verdict.",
+  "next_decision": "If learning succeeds, design held-out composition and same-input source-contribution tests. If it fails, diagnose update variance and content transport before a larger fit."
+}
