@@ -84,8 +84,39 @@ fails without learned addressing and succeeds with it.
 
 - Separate three things in every language member: persistent numerical state, the credit window, and the addressing
   path that lets later predictions use earlier events. Only the third turns persistence into capability.
-- Depth on top of a window-limited member does not create long-range memory (P1 applies per stage). The grown-stage
+- Depth on top of a window-limited member does not create long-range memory (P1 applies per stage; §5). The grown-stage
   and D8/D16 results are consistent with this.
 - The family's mechanisms already include the remedy: sparse addressed writes, separate keys and values, temporal
   decay clocks and races. The keyed member and the episodic store are two implementations; the next integrated model
   should carry identity-addressed reads into the race core rather than scale a window-limited core.
+
+## 5. Depth pays when each stage can reach information the stages below did not use
+
+Let stage d read only the stream below it, x_{d-1}, over its credit window W, plus persistent state trained within W.
+Then every stage's output is a function of the same information I_W(t) = (x_{t-W+1..t}, state written under W-credit).
+By data processing, the loss of a readout over stages 1..D is bounded below by H(X_{t+1} | I_W(t)) for every D. Depth can
+only improve the function approximation of that conditional; it adds no information. Once the lower stages capture the
+predictable W-window structure the stream width allows, the unique value of stage d falls towards zero with d, and the
+extra stages cost optimization noise (here: hard routes with sampled credit) without paying it back.
+
+An addressed read with read-time credit (§3) changes the bound: stage d's read adds I(X_{t+1}; x_{<t-W} | I_W(t), lower
+reads) at a credit path of length O(depth) to any stored event. Stacked reads compose: a read whose query is built from the
+result of a lower read implements two-step retrieval (find the earlier occurrence of the current token, then read what
+followed it), which no single read and no W-limited stack can learn. Depth then multiplies the information each stage can
+fetch instead of re-processing the same window.
+
+**Prediction P5a.** In a W-limited race stack, the unique value of stage d (loss increase when its readout input is
+mean-replaced) falls with d to zero, and adding stages does not improve the long-history score.
+
+**Test.** 1M-target ladder (`results/diagnostics/curie_depth_usage_probe_d8_20261015_v1.json`): D8 serial uses stage 0
+only (+0.763 nats; stages 2-7 <= 0); D8 residual +0.029, +0.025, +0.017, +0.012, +0.005, +0.002, +0.001, -0.001. Long-history
+D2 residual 6.556, D8 residual 6.590, D8 serial 6.683. Confirmed; residual composition delays the fall-off (five working
+stages instead of one) without changing the bound.
+
+**Prediction P5b.** Per-stage addressed reads make deep stages' unique value positive and the depth series monotone
+(D16 < D8 < D2) on the same budget. Test: the read arms of the ladder (`curie_depth_ladder_1m_decision_20261015_v1`,
+`curie_depth_usage_probe_ladder_20261015_v1`).
+
+**Prediction P5c.** A member whose layers all have full-lane credit and a keyed read gains from depth per fresh token.
+Test: one-pass 4M deep keyed L2 vs L8 (`curie_r1_deep_keyed_stream_L{2,8}_4M_s0_20261015_v1`): L8 below L2 on the
+last-quarter prequential loss and on the flagship protocol.
