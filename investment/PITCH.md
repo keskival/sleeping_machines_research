@@ -31,6 +31,8 @@ The integrated sparse-teaching language model improves final development NLL **6
 
 This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
 
+**Long-range memory, 15 October.** On the same 8,192 development targets with 1,024-token windows, an addressed episodic memory with read-time credit (6,248 parameters) moves the race-core language learner from **5.978 to 5.634 nats/token** after 2M further training targets; the same weights without the memory score 5.973. The learner's use of history older than 64 tokens rises from 0.004–0.008 to **0.227** nats, and it learns on its own to discount memories from earlier documents. The keyed temporal-memory member scores **5.601 / 5.624** on the same targets from 4M training tokens (two seeds). Single seed for the memory result; development protocol, no public validation.
+
 ## Forward computation teaches credit — current status and potential
 
 Prospective real-token calibration reduces credit error **98.4% versus static
