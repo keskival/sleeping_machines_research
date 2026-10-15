@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_multistep_geometric_update_20261011_v1_contract",
+  "gate": true,
+  "checks": [
+    {
+      "embedding_scale": 1.0,
+      "eligibility_error": 4.336808689942018e-18,
+      "finite_difference_error": 2.350889214200458e-10
+    },
+    {
+      "embedding_scale": 0.1,
+      "eligibility_error": 1.3552527156068805e-18,
+      "finite_difference_error": 2.1325119458921044e-10
+    }
+  ],
+  "wall_s": 0.1973053319961764,
+  "source_sha256": {
+    "experiments/credit/check_multistep_geometric_update.py": "c7aa87d704e20f1aa10075fb8e537c646d227287d33adebcc9c6c93ceb944f0e",
+    "experiments/credit/multistep_geometric_update.py": "227ae5278df11b3f95b43fe82ef5b4d779eb7908ab9244a2db306edc338dca8b",
+    "experiments/credit/online_geometric_update.py": "d3925d2168ad49fe3f42d69a7f3a9c9dfa2779d3e1ccfd61a0d03f743812ba5e"
+  },
+  "scope": "Four-target complete lexical/momentum/product state derivative, feedback/feature/geometry dependence included; forward eligibility matches reverse graph and finite differences. Synthetic13class4dimensional head, no native depth/task quality claim."
+}
