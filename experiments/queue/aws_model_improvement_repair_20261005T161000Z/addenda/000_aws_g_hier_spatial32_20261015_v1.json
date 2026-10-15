@@ -1,0 +1,106 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Does32-block spatial composition learn useful held-out representations, and which stages contribute? Diagnose before any architecture extension; no automatic grid.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_g_hier_spatial32_20261015_v1_contracts",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts/aws_g_hier_spatial32_20261015_v1_contracts.txt",
+        "queue_sha256": "0b4b73cc13d4cc5dcc5744dc5b98915f35250022d6294a89c8f08343f41cfa83",
+        "source_sha256": {
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/contracts.py": "9a3ca8e909d03d17f99f8d8ad703cad1826012d5e0b927c17d17cde07a212526",
+          "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0",
+          "experiments/theory/DEEP_REPRESENTATIONAL_COMPOSITION.md": "af33c69693151784e3a070539b77429a330d70192698776a51b743b1496e0855",
+          "scripts/admit_deep_spatial_hierarchy.py": "6d8c42e2d6fe37ded8adc15836ed2d15af1caea85e649b47ccd66a713cbc797d",
+          "experiments/hierarchy/aws_g_hier_spatial32_20261015_v1_admission.json": "1045655b0335f81de034aa6bbbe7dd1f326da7d6ddd423c4802afe3eac03e6fb"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts.json",
+        "requires": [],
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_g_hier_spatial32_20261015_v1_prepare",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare/aws_g_hier_spatial32_20261015_v1_prepare.txt",
+        "queue_sha256": "15884266b79f48058beef3d2e79ccf1461a8c004669c9da24a01a9121afa2180",
+        "source_sha256": {
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/contracts.py": "9a3ca8e909d03d17f99f8d8ad703cad1826012d5e0b927c17d17cde07a212526",
+          "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0",
+          "experiments/theory/DEEP_REPRESENTATIONAL_COMPOSITION.md": "af33c69693151784e3a070539b77429a330d70192698776a51b743b1496e0855",
+          "scripts/admit_deep_spatial_hierarchy.py": "6d8c42e2d6fe37ded8adc15836ed2d15af1caea85e649b47ccd66a713cbc797d",
+          "experiments/hierarchy/aws_g_hier_spatial32_20261015_v1_admission.json": "1045655b0335f81de034aa6bbbe7dd1f326da7d6ddd423c4802afe3eac03e6fb"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts.json",
+            "stage": "contracts"
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_g_hier_spatial32_20261015_v1_smoke",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_smoke/aws_g_hier_spatial32_20261015_v1_smoke.txt",
+        "queue_sha256": "ec4afa72b59b9660bdabddc30092af5553684fe55976a7122449777abe4b9f2a",
+        "source_sha256": {
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/contracts.py": "9a3ca8e909d03d17f99f8d8ad703cad1826012d5e0b927c17d17cde07a212526",
+          "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0",
+          "experiments/theory/DEEP_REPRESENTATIONAL_COMPOSITION.md": "af33c69693151784e3a070539b77429a330d70192698776a51b743b1496e0855",
+          "scripts/admit_deep_spatial_hierarchy.py": "6d8c42e2d6fe37ded8adc15836ed2d15af1caea85e649b47ccd66a713cbc797d",
+          "experiments/hierarchy/aws_g_hier_spatial32_20261015_v1_admission.json": "1045655b0335f81de034aa6bbbe7dd1f326da7d6ddd423c4802afe3eac03e6fb"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_smoke.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare.json",
+            "stage": "prepare"
+          }
+        ],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_g_hier_spatial32_20261015_v1_fit",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_fit/aws_g_hier_spatial32_20261015_v1_fit.txt",
+        "queue_sha256": "b0854fb1f5a67ee88c5cc5145bcced54fee267983566b7c2ad3e68c5697477ad",
+        "source_sha256": {
+          "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+          "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+          "experiments/hierarchy/contracts.py": "9a3ca8e909d03d17f99f8d8ad703cad1826012d5e0b927c17d17cde07a212526",
+          "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0",
+          "experiments/theory/DEEP_REPRESENTATIONAL_COMPOSITION.md": "af33c69693151784e3a070539b77429a330d70192698776a51b743b1496e0855",
+          "scripts/admit_deep_spatial_hierarchy.py": "6d8c42e2d6fe37ded8adc15836ed2d15af1caea85e649b47ccd66a713cbc797d",
+          "experiments/hierarchy/aws_g_hier_spatial32_20261015_v1_admission.json": "1045655b0335f81de034aa6bbbe7dd1f326da7d6ddd423c4802afe3eac03e6fb"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_fit.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_smoke.json",
+            "stage": "smoke",
+            "rss_margin": 1.25
+          }
+        ],
+        "timeout_s": 16200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

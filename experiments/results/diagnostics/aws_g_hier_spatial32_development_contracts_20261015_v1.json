@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "development_unit_tests",
+  "tests_passed": 8,
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 .venv-docker/bin/python -m pytest tests/test_spatial_race_hierarchy.py -q",
+  "observed_test_wall_s": 1.3,
+  "exit_code": 0,
+  "scope": "Observed development tests on32block small-width fixtures. Full128resolution integration/resource smoke and real-data fit are queued, not completed. No semantic or prediction advantage inferred.",
+  "source_sha256": {
+    "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+    "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0",
+    "experiments/hierarchy/visual_representation.py": "fdd32cfc439fc27a5ccb2d972c9a9d9cad244653eb1a38fad8f9700163103eac",
+    "experiments/hierarchy/contracts.py": "9a3ca8e909d03d17f99f8d8ad703cad1826012d5e0b927c17d17cde07a212526"
+  }
+}

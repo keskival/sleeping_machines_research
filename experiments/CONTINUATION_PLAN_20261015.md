@@ -2,6 +2,10 @@
 
 The next language investment follows addressed memory: keyed temporal memory scores 5.601/5.624 on the flagship protocol; episodic memory improves the former flagship from 5.978388 to 5.633532. The old serial race stack worsens with depth. These completed results select memory access and useful composition as the engineering priority.
 
+## Primary new architecture work: deep representational composition
+
+The latest user direction requires genuinely deep trainable representations, not sequence-length or cadence substitutes. G-HIER implements32spatial composition blocks/eight scales at fixed event-camera evidence; its source-bound contract/data/resource/deep-fit pipeline is queued. [Theory and declaration](theory/DEEP_REPRESENTATIONAL_COMPOSITION.md). Local spatial feature races, learned composition and credit across all stages are the new engineering target. Existing R1/B4 work finishes unchanged. Fixed first1s128resolution observations and gesture-only labels keep the first development fit scoped; object/part semantics require appropriate evidence.
+
 ## R1: strongest member first
 
 Finish active source-bound jobs unchanged. Retain Curie chain v9's one-pass L2/L8 comparison on 4M fresh GPT-2 tokens, then its already admitted keyed 16.8M fresh-token acquisition and B10 stage. AWS's active deep-keyed L8 and admitted ladder cover the repeated-data regime. Compare these regimes separately; repeated-data overfitting cannot decide fresh-data depth scaling. No unchanged P24 depth/data extension without addressed memory is admitted.
