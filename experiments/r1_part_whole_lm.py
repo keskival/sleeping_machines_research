@@ -87,6 +87,39 @@ def event_columns(ev):
     return idx, valid, lag
 
 
+def chunked_scan(wr, wi, rate, freq, C=256):
+    """Unit-step complex-diagonal recurrence Z_k = c Z_{k-1} + w_k over a sequence [B, S, n]: exact chunked kernel with
+    the state carried across chunks (as r1_deep_keyed_lm.ParallelTemporalMemory); memory O(C^2 n)."""
+    B, S, n = wr.shape; C = max(1, min(C, S)); k = torch.arange(C, dtype=wr.dtype); lag = k[:, None] - k[None, :]
+    causal = (lag >= 0).to(wr.dtype); lagc = lag.clamp_min(0).unsqueeze(-1)
+    mag = torch.exp(-rate*lagc)*causal.unsqueeze(-1); ang = freq*lagc; kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)
+    steps = (k + 1).unsqueeze(-1); cr, ci = torch.exp(-rate*steps)*torch.cos(freq*steps), torch.exp(-rate*steps)*torch.sin(freq*steps)
+    sr = wr.new_zeros(B, n); si = wr.new_zeros(B, n); outs = []
+    for c0 in range(0, S, C):
+        ar, ai = wr[:, c0:c0 + C], wi[:, c0:c0 + C]; m = ar.shape[1]; Kr, Ki = kr[:m, :m], ki[:m, :m]
+        zr = torch.einsum('ijn,bjn->bin', Kr, ar) - torch.einsum('ijn,bjn->bin', Ki, ai); zi = torch.einsum('ijn,bjn->bin', Kr, ai) + torch.einsum('ijn,bjn->bin', Ki, ar)
+        zr = zr + cr[:m]*sr.unsqueeze(1) - ci[:m]*si.unsqueeze(1); zi = zi + cr[:m]*si.unsqueeze(1) + ci[:m]*sr.unsqueeze(1)
+        outs.append(torch.cat([zr, zi], -1)); sr, si = zr[:, -1], zi[:, -1]
+    return torch.cat(outs, 1)
+
+
+def band_rows(tm, u, span, part_ev, n, r0, r1, D):
+    """In-span integration for query rows r0:r1 over the previous D tokens (D = longest span: exact)."""
+    B, L = span.shape; t = torch.arange(r0, r1); idx = (t[:, None] - torch.arange(D)[None, :]).expand(B, -1, -1); ok = idx >= 0; idx = idx.clamp_min(0)
+    g = lambda a: a.gather(1, idx.reshape(B, -1)).view(B, r1 - r0, D)
+    valid = ok & (g(span) == span[:, r0:r1, None]) & g(part_ev); lag = n[:, r0:r1, None] - g(n)
+    nm = tm.n; gg = torch.sigmoid(tm.gate(u)); w = tm.write(u); wr, wi = w[..., :nm]*gg, w[..., nm:]*gg
+    return _gathered_rows(wr, wi, idx, valid, lag, tm.log_rate.exp(), tm.freq)
+
+
+def span_integrate(tm, u, span, part_ev, rows=64):
+    B, L = span.shape; D = int(torch.stack([torch.bincount(s, minlength=L + 2).max() for s in span]).max()); n = part_ev.long().cumsum(1); out = []
+    for r0 in range(0, L, rows):
+        args = (tm, u, span, part_ev, n, r0, min(r0 + rows, L), D)
+        out.append(torch.utils.checkpoint.checkpoint(band_rows, *args, use_reentrant=False) if torch.is_grad_enabled() else band_rows(*args))
+    return torch.cat(out, 1)
+
+
 class Memory(nn.Module):
     def __init__(self, d, modes):
         super().__init__(); self.n = modes
@@ -105,8 +138,8 @@ class Level(nn.Module):
         self.future = nn.Linear(d, d); self.reference = False
 
     def forward(self, below, start, below_start, token_level):
-        B, L, d = below.shape; t = torch.arange(L); causal = t[:, None] >= t[None, :]
-        span = start.long().cumsum(1); same = span[:, :, None] == span[:, None, :]
+        B, L, d = below.shape; span = start.long().cumsum(1)
+        if self.reference: t = torch.arange(L); causal = t[:, None] >= t[None, :]; same = span[:, :, None] == span[:, None, :]
         if token_level:     # parts are the span's tokens, each complete when observed
             part_ev = torch.ones_like(start); part_val = below
         else:               # a part completes when the next level-(k-1) unit starts inside the same span
@@ -115,16 +148,31 @@ class Level(nn.Module):
             n = part_ev.long().cumsum(1).to(below.dtype)
             I = masked_memory(self.integ, self.part(part_val), n[:, :, None] - n[:, None, :], causal & same & part_ev[:, None, :])
         else:
-            I = gathered_memory(self.integ, self.part(part_val), *span_band(span, part_ev, part_ev.long().cumsum(1)))
+            I = span_integrate(self.integ, self.part(part_val), span, part_ev)
         b = self.whole(self.n_in(torch.cat([self.integ_out(I), below], -1)))
         # Completed wholes: when a span starts at j > 0, the whole that ended at j-1 becomes a level event at j.
         ev = start.clone(); ev[:, 0] = False; wv = torch.cat([torch.zeros_like(b[:, :1]), b[:, :-1]], 1)
         if self.reference:
             m = ev.long().cumsum(1).to(b.dtype); lag = m[:, :, None] - m[:, None, :]; emask = causal & ev[:, None, :]
             R = self.mem_out(masked_memory(self.mem, wv, lag, emask)); kv = wv
-        else:
-            idx, emask, lag = event_columns(ev)
-            R = self.mem_out(gathered_memory(self.mem, wv, idx, emask, lag)); kv = wv.gather(1, idx[:, 0, :, None].expand(-1, -1, d)); lag = lag.to(b.dtype)
+        else:   # compressed event sequence: level memory is a unit-step scan over its own events; reads in query-row blocks
+            m = ev.long().cumsum(1); E = max(int(m[:, -1].max()), 1); tt = torch.arange(L)
+            pos = torch.where(ev, tt, tt + L).sort(1).values[:, :E]; real = pos < L; pos = torch.where(real, pos, torch.zeros_like(pos))
+            kv = wv.gather(1, pos[..., None].expand(-1, -1, d)) * real[..., None].to(wv.dtype)
+            nm = self.mem.n; gg = torch.sigmoid(self.mem.gate(kv)); w = self.mem.write(kv); rm = real[..., None].to(kv.dtype)
+            Z = chunked_scan(w[..., :nm]*gg*rm, w[..., nm:]*gg*rm, self.mem.log_rate.exp(), self.mem.freq)
+            R = torch.where((m > 0)[..., None], Z.gather(1, (m - 1).clamp_min(0)[..., None].expand(-1, -1, Z.shape[-1])), torch.zeros_like(Z[:, :1]).expand(-1, L, -1))
+            R = self.mem_out(R)
+            k = self.k(kv).view(B, E, self.h, self.dk).transpose(1, 2); v = self.v(kv).view(B, E, self.h, self.dk).transpose(1, 2)
+            q = self.q(self.n_q(b)).view(B, L, self.h, self.dk).transpose(1, 2); reads = []
+            for r0 in range(0, L, 256):
+                r1 = min(r0 + 256, L); mt = m[:, r0:r1]; e = torch.arange(E)
+                valid = (e[None, None, :] < mt[:, :, None]) & real[:, None, :]; lagb = (mt[:, :, None] - (e + 1)[None, None, :]).to(b.dtype)
+                sc = q[:, :, r0:r1] @ k.transpose(-1, -2)/math.sqrt(self.dk) - self.log_rate.exp().view(1, -1, 1, 1)*lagb.unsqueeze(1)
+                sc = sc.masked_fill(~valid.unsqueeze(1), float('-inf')); sc = torch.cat([sc, torch.zeros_like(sc[..., :1])], -1)
+                reads.append((torch.softmax(sc, -1)[..., :-1] @ v).transpose(1, 2).reshape(B, r1 - r0, -1))
+            read = self.o(torch.cat(reads, 1))
+            return b + R + read
         E = kv.shape[1]
         q = self.q(self.n_q(b)).view(B, L, self.h, self.dk).transpose(1, 2); k = self.k(kv).view(B, E, self.h, self.dk).transpose(1, 2); v = self.v(kv).view(B, E, self.h, self.dk).transpose(1, 2)
         sc = q @ k.transpose(-1, -2)/math.sqrt(self.dk) - self.log_rate.exp().view(1, -1, 1, 1)*lag.unsqueeze(1)

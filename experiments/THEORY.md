@@ -561,3 +561,9 @@ consolidates persistent indexed memory and native event generation into one
 primitive. Eight abstraction levels reuse native race/state transport;45
 combined contracts pass, including timing-dependent content and early clock
 credit. No trained semantic result; raw-event preflight is queued.
+
+Native multi-memory composition (15 October):
+[`NATIVE_MULTI_MEMORY_COMPOSITION.md`](theory/NATIVE_MULTI_MEMORY_COMPOSITION.md)
+formalizes one native read round and generated readout, faithful stochastic
+train/eval semantics, float64 scheduling and input-association learning criteria.
+48 contracts and real FIT gate pass;64-update native learning is running.

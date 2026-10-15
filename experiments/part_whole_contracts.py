@@ -54,6 +54,15 @@ def main():
         for lv in m64.levels: lv.reference = True
         ref = m64.logits(*m64.states(x[:, :-1]), x[:, :-1], rows)
     out['fast_vs_reference_max_abs_logit_error'] = float((fast - ref).abs().max()); checks['fast_equals_reference'] = out['fast_vs_reference_max_abs_logit_error'] < 1e-9
+    # 7. Same equality on a 1024-token lane: the word-level event scan crosses chunk boundaries (carried state).
+    xl = torch.from_numpy(np.asarray(tr[7_000_000:7_000_000 + 1025]).astype(np.int64))[None]; rows_l = list(range(1024))
+    with torch.no_grad():
+        for lv in m64.levels: lv.reference = False
+        fast_l = m64.logits(*m64.states(xl[:, :-1]), xl[:, :-1], rows_l); out['word_events_long_lane'] = int(pw.boundaries(xl[:, :-1])[0].sum())
+        for lv in m64.levels: lv.reference = True
+        ref_l = m64.logits(*m64.states(xl[:, :-1]), xl[:, :-1], rows_l)
+    out['long_lane_fast_vs_reference_max_abs_logit_error'] = float((fast_l - ref_l).abs().max()); checks['long_lane_fast_equals_reference'] = out['long_lane_fast_vs_reference_max_abs_logit_error'] < 1e-9
+    del m64, fast_l, ref_l
     # 5. Observed boundary rates on 1M training tokens.
     big = torch.from_numpy(np.asarray(tr[6_000_000:6_000_000 + 4096*256]).astype(np.int64)).reshape(4096, 256)
     out['span_start_rate'] = {name: float(s.double().mean()) for name, s in zip(('word', 'clause', 'sentence'), pw.boundaries(big))}
@@ -62,7 +71,7 @@ def main():
                source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/part_whole_contracts.py', 'experiments/r1_part_whole_lm.py', 'experiments/r1_deep_keyed_lm.py', 'experiments/tables/gpt2_token_roles.json')},
                max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, process_wall_s=time.monotonic() - began)
     with (ROOT/f'experiments/results/diagnostics/{a.tag}.json').open('x') as f: json.dump(rec, f, indent=2); f.write('\n')
-    print(json.dumps(dict(status=rec['status'], checks=checks, **{k: out[k] for k in ('prefix_max_change', 'integration_max_abs_error', 'fast_vs_reference_max_abs_logit_error', 'level_parameters_without_gradient', 'span_start_rate', 'mean_span_tokens')})))
+    print(json.dumps(dict(status=rec['status'], checks=checks, **{k: out[k] for k in ('prefix_max_change', 'integration_max_abs_error', 'fast_vs_reference_max_abs_logit_error', 'long_lane_fast_vs_reference_max_abs_logit_error', 'word_events_long_lane', 'level_parameters_without_gradient', 'span_start_rate', 'mean_span_tokens')})))
 
 
 if __name__ == '__main__':
