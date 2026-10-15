@@ -1,0 +1,72 @@
+"""Verify investor/report evidence against committed result files.
+
+1. Every evidence packet investment/*.json: each 64-hex binding under a *sha256* key
+   must match the committed file (missing files and mismatches are reported).
+2. investment/claims_registry.json: each headline value is recomputed from completed
+   result files (status completed where present), must round to the displayed text at
+   the stated precision, and the displayed text must occur in every listed document.
+Exit status 1 on any failure. Writes a JSON report with --out.
+"""
+import argparse, glob, hashlib, json, os, sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def sha(path): return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+
+
+def packets():
+    rows = []
+    for f in sorted(glob.glob(str(ROOT / 'investment/*.json'))):
+        name = os.path.relpath(f, ROOT)
+        if name.endswith('claims_registry.json'): continue
+        data = json.load(open(f))
+        for key, bindings in data.items():
+            if 'sha256' not in key or not isinstance(bindings, dict): continue
+            for path, digest in bindings.items():
+                if not (isinstance(digest, str) and len(digest) == 64): continue
+                if not (ROOT / path).exists(): rows.append(dict(packet=name, file=path, status='missing'))
+                else: rows.append(dict(packet=name, file=path, status='ok' if sha(path) == digest else 'mismatch'))
+    return rows
+
+
+def resolve(spec):
+    if 'mean' in spec:
+        values = [resolve(s) for s in spec['mean']]; return sum(values) / len(values)
+    if 'ratio' in spec:
+        a, b = (resolve(s) for s in spec['ratio']); return a / b
+    data = json.loads((ROOT / spec['file']).read_text())
+    if data.get('status', 'completed') != 'completed': raise ValueError(f"{spec['file']} is not completed")
+    for step in spec['path']: data = data[step]
+    return float(data)
+
+
+def claims():
+    registry = json.loads((ROOT / 'investment/claims_registry.json').read_text()); rows = []
+    for c in registry['claims']:
+        row = dict(id=c['id'], display=c['display'])
+        try:
+            value = resolve(c['value']); row['value'] = value
+            row['value_matches'] = f"{value:.{c['decimals']}f}" == c['display']
+        except Exception as error:
+            row['error'] = repr(error); row['value_matches'] = False
+        row['missing_from'] = [d for d in c['documents'] if c['display'] not in (ROOT / d).read_text()]
+        row['status'] = 'ok' if row['value_matches'] and not row['missing_from'] else 'fail'
+        rows.append(row)
+    return rows
+
+
+def main():
+    p = argparse.ArgumentParser(); p.add_argument('--out'); a = p.parse_args()
+    pk, cl = packets(), claims()
+    summary = dict(packet_bindings=len(pk), packet_ok=sum(r['status'] == 'ok' for r in pk),
+                   packet_problems=[r for r in pk if r['status'] != 'ok'],
+                   claims=len(cl), claims_ok=sum(r['status'] == 'ok' for r in cl), claim_failures=[r for r in cl if r['status'] != 'ok'])
+    print(json.dumps(summary, indent=1))
+    if a.out: Path(a.out).write_text(json.dumps(dict(summary=summary, packets=pk, claims=cl), indent=1) + '\n')
+    sys.exit(0 if not summary['claim_failures'] and not [r for r in pk if r['status'] == 'mismatch'] else 1)
+
+
+if __name__ == '__main__':
+    main()

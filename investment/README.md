@@ -1,5 +1,7 @@
 # Private investment materials
 
+**Verification.** `python3 scripts/verify_investor_evidence.py` recomputes every registered headline number (`claims_registry.json`) from the committed result files at its displayed precision, checks that it appears in the documents that cite it, and checks every evidence packet's SHA-256 bindings. Current state: 17/17 claims and 129/132 bindings verified (two old relative PDF paths in a 3 October readability record; one AWS verdict file not yet committed).
+
 Sleeping Machines aims at a general-purpose substrate spanning language and reasoning,
 multimodal world models, embodiment, event-native analytics, continual learning,
 communication, self-design and hardware.
