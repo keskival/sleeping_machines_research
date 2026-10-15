@@ -1,0 +1,190 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth plan C v2: event-sparse asynchronous concept hierarchy",
+ "tag": "aws_r1_async_hier_b2l3_1M_s0_20261015_v2",
+ "args": {
+  "tag": "aws_r1_async_hier_b2l3_1M_s0_20261015_v2",
+  "seed": 0,
+  "train_tokens": 1048576,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "base": 2,
+  "levels": 3,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "concepts": 32,
+  "rate": 0.02,
+  "w_hazard": 0.1,
+  "w_concept": 0.1,
+  "w_rate": 1.0,
+  "w_ds": 0.3,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 21600.0,
+  "max_steps": 0,
+  "score": 1,
+  "checkpoint_blocks": 0
+ },
+ "parameters": 3674212,
+ "best_epoch": 2,
+ "epochs_run": 5,
+ "steps": 5120,
+ "wall_s": 18756.770870685577,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 7.617162816226482,
+   "select_nll": 6.7373765089131,
+   "levels": [
+    {
+     "rate": 0.0392156862745098,
+     "events": 10.0,
+     "fetches": 4.7,
+     "concepts_used": 17
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    }
+   ],
+   "epoch_s": 3773
+  },
+  {
+   "epoch": 1,
+   "train_nll": 6.0949014746584,
+   "select_nll": 6.3469834767962645,
+   "levels": [
+    {
+     "rate": 0.00980392156862745,
+     "events": 2.5,
+     "fetches": 4.1,
+     "concepts_used": 9
+    },
+    {
+     "rate": 0.5,
+     "events": 1.25,
+     "fetches": 4.4,
+     "concepts_used": 4
+    },
+    {
+     "rate": 0.8,
+     "events": 1.0,
+     "fetches": 5.0,
+     "concepts_used": 3
+    }
+   ],
+   "epoch_s": 3770
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.6444090865552425,
+   "select_nll": 6.252221752738859,
+   "levels": [
+    {
+     "rate": 0.006862745098039216,
+     "events": 1.75,
+     "fetches": 4.0,
+     "concepts_used": 4
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    }
+   ],
+   "epoch_s": 3757
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.352085544262081,
+   "select_nll": 6.256215269296532,
+   "levels": [
+    {
+     "rate": 0.018627450980392157,
+     "events": 4.75,
+     "fetches": 4.0,
+     "concepts_used": 12
+    },
+    {
+     "rate": 0.7368421052631579,
+     "events": 3.5,
+     "fetches": 6.0,
+     "concepts_used": 9
+    },
+    {
+     "rate": 0.8571428571428571,
+     "events": 3.0,
+     "fetches": 4.08,
+     "concepts_used": 5
+    }
+   ],
+   "epoch_s": 3735
+  },
+  {
+   "epoch": 4,
+   "train_nll": 5.131050958763808,
+   "select_nll": 6.268334713457384,
+   "levels": [
+    {
+     "rate": 0.013725490196078431,
+     "events": 3.5,
+     "fetches": 4.07,
+     "concepts_used": 9
+    },
+    {
+     "rate": 0.21428571428571427,
+     "events": 0.75,
+     "fetches": 4.0,
+     "concepts_used": 3
+    },
+    {
+     "rate": 0.6666666666666666,
+     "events": 0.5,
+     "fetches": 4.0,
+     "concepts_used": 2
+    }
+   ],
+   "epoch_s": 3721
+  }
+ ],
+ "select": {
+  "nll": 6.252221752738859,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_async_hier_b2l3_1M_s0_20261015_v2.pt",
+ "reference": {
+  "keyed_L2_1M_score_65528": 6.019141,
+  "keyed_L2_4M_score_65528": 5.521061
+ },
+ "score_65528": {
+  "nll": 5.939234233749552,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_async_hierarchy_lm.py": "a7d1872fd17839c47976619c21c98b06d50ae33f26925a7a869a0abb17330518",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}
