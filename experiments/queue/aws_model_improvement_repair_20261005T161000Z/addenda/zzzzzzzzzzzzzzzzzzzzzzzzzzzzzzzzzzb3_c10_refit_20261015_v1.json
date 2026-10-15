@@ -1,0 +1,62 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "B3 FAS: native models normal logs at 1.02 vs Transformer 2.01 nats/event yet the sealed mean-surprise detector tied (0.7037 vs 0.7043). Refit frozen C10 seeds 6-8 (checkpoints were Curie-local) to develop an addressed per-event-type evidence accumulator on VAL, then a preregistered fresh sealed TEST draw.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_b3_c10_s6_20261015_v1",
+        "kind": "b3_job",
+        "queue": "experiments/queue/b3/aws_b3_c10_s6_20261015_v1/aws_b3_c10_s6_20261015_v1.txt",
+        "queue_sha256": "e92aed15ccd9dced026e56bb66337c28cc4937cc90ddeb6dc73e92e3a8983d9a",
+        "source_sha256": {
+          "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+          "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+        },
+        "result": "experiments/results/fas/aws_b3_c10_s6_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 16000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "4": [
+      {
+        "name": "aws_b3_c10_s7_20261015_v1",
+        "kind": "b3_job",
+        "queue": "experiments/queue/b3/aws_b3_c10_s7_20261015_v1/aws_b3_c10_s7_20261015_v1.txt",
+        "queue_sha256": "ee518fdc7cf8bd26da1bb9f87919467bee1e2ccbbae15e3acb7d6bfebf9b0371",
+        "source_sha256": {
+          "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+          "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+        },
+        "result": "experiments/results/fas/aws_b3_c10_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 16000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_b3_c10_s8_20261015_v1",
+        "kind": "b3_job",
+        "queue": "experiments/queue/b3/aws_b3_c10_s8_20261015_v1/aws_b3_c10_s8_20261015_v1.txt",
+        "queue_sha256": "bde4fe25c5752060d7cd129dabf03454df51e05d1f27e8533a1b82d563240b5e",
+        "source_sha256": {
+          "experiments/fas/race_tpp_fas_v3.py": "d15be1dcca1287986bfc8d9f37de1f8d5af163f6c4188d49a76248c16d1933ae",
+          "experiments/tpp/race_tpp_v16.py": "17dee6b4cb6bfd23133a68b93b46e4c668f9834686fe91d4250b2676913a165a",
+          "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c"
+        },
+        "result": "experiments/results/fas/aws_b3_c10_s8_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 16000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

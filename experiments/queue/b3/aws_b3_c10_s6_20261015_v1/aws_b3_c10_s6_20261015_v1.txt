@@ -1,0 +1,2 @@
+# B3 FAS v2.1: frozen native C10 refit, seed 6, TRAIN/VAL only; per-event surprise for the addressed per-type evidence detector and seed for a fresh sealed confirmation
+aws_b3_c10_s6_20261015_v1 experiments/fas/race_tpp_fas_v3.py --tag aws_b3_c10_s6_20261015_v1 --keyed 0 --pred-window 64 --batch 16 --eval-batch 8 --seed 6 --max-wall-s 12000
