@@ -1,0 +1,89 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth plan B: deep keyed temporal-memory ladder",
+ "tag": "aws_r1_deep_keyed_L8_1M_s0_20261015_v3",
+ "args": {
+  "tag": "aws_r1_deep_keyed_L8_1M_s0_20261015_v3",
+  "seed": 0,
+  "train_tokens": 1048576,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 8,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 25200.0,
+  "max_steps": 0,
+  "score": 1,
+  "checkpoint_blocks": 1
+ },
+ "parameters": 3829429,
+ "best_epoch": 3,
+ "epochs_run": 6,
+ "steps": 6144,
+ "wall_s": 23498.51943421364,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 7.655548269394785,
+   "select_nll": 6.8064277101040584,
+   "epoch_s": 3866
+  },
+  {
+   "epoch": 1,
+   "train_nll": 6.158162538893521,
+   "select_nll": 6.377402800842792,
+   "epoch_s": 3933
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.68831754475832,
+   "select_nll": 6.247664018788452,
+   "epoch_s": 3944
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.369694440159947,
+   "select_nll": 6.214733248637488,
+   "epoch_s": 3942
+  },
+  {
+   "epoch": 4,
+   "train_nll": 5.129967872519046,
+   "select_nll": 6.216570080345761,
+   "epoch_s": 3921
+  },
+  {
+   "epoch": 5,
+   "train_nll": 4.930394878378138,
+   "select_nll": 6.306614035796001,
+   "epoch_s": 3892
+  }
+ ],
+ "select": {
+  "nll": 6.214733248637488,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.pt",
+ "reference": {
+  "keyed_L2_1M_score_65528": 6.019141,
+  "keyed_L2_4M_score_65528": 5.521061,
+  "note": "r1_token_keyed_lm seed 0 on the same 65,528-target slice"
+ },
+ "score_65528": {
+  "nll": 5.874105834215788,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}
