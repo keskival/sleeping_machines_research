@@ -1,0 +1,2 @@
+# R1: strongest native learner, +64M fresh TRAIN tokens, DEV milestones at 2/4/8/16/32/64M; decision: data-scaling curve and next model-size step
+aws_r1_scaling_64m_20261015_v1 experiments/r1_scaling_continuation.py --tag aws_r1_scaling_64m_20261015_v1 --updates 131072

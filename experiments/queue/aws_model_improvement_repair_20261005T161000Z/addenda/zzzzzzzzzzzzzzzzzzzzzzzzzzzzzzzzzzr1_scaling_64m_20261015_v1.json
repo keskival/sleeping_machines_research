@@ -1,0 +1,50 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 data scaling of the strongest native learner (5.978388): fresh FineWeb TRAIN continuation to +64M tokens with DEV milestones at +2M..+64M; decides whether the native language learner keeps converting data into quality at this size and sets the next model-size step",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_r1_scaling_smoke_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_scaling_smoke_20261015_v1/aws_r1_scaling_smoke_20261015_v1.txt",
+        "queue_sha256": "be81b59e6dcb0ea24747e623869559fe4a17b6f223d2fc1a201425c621dad340",
+        "source_sha256": {
+          "experiments/r1_scaling_continuation.py": "2dbf622ee9d5eef8fee986f4b4dd4cfbac12dd808d48933c5a879793fcddbc58",
+          "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+          "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+        },
+        "result": "experiments/results/token_language/aws_r1_scaling_smoke_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 2400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_scaling_64m_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_scaling_64m_20261015_v1/aws_r1_scaling_64m_20261015_v1.txt",
+        "queue_sha256": "3e2d19e0cfa9800be4145b4d76175b1d068586b2120ad8a28b048340a9e02894",
+        "source_sha256": {
+          "experiments/r1_scaling_continuation.py": "2dbf622ee9d5eef8fee986f4b4dd4cfbac12dd808d48933c5a879793fcddbc58",
+          "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+          "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+        },
+        "result": "experiments/results/token_language/aws_r1_scaling_64m_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/token_language/aws_r1_scaling_smoke_20261015_v1.json"
+          }
+        ],
+        "timeout_s": 110000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
