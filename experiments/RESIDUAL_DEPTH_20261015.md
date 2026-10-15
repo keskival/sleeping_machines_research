@@ -48,3 +48,31 @@ read stack starts exactly at the residual stack. Contracts (`curie_residual_read
 reads/no residual equals the original driver bit for bit; zero value map equals the residual stack bit for bit;
 nonzero gradients for every read parameter across credit windows; exact causality; store growth. Decision fields:
 `reads_monotone`, `reads_gain_by_depth`, `depth_gain_d16_vs_d2`.
+
+## Trained ladder: which stages carry signal (`results/diagnostics/curie_depth_usage_probe_d8_20261015_v1.json`)
+
+`analysis/depth_usage_probe.py` freezes each arm, collects the readout input (every stage's output, concatenated) on the
+long-history protocol and replaces one stage's slice at a time by its DEV mean (loss increase = that stage's unique value).
+
+| Arm, 1M targets | Long-history | Unique value by stage (nats) |
+|---|---|---|
+| D2 residual | 6.556 | +0.429, +0.277 |
+| D8 serial | 6.683 | +0.763, +0.019, -0.006, -0.004, -0.004, -0.003, -0.004, -0.004 |
+| D8 residual | 6.590 | +0.029, +0.025, +0.017, +0.012, +0.005, +0.002, +0.001, -0.001 |
+
+The serial chain is a one-stage model with seven idle stages: 76% of its readout-input energy is stage 0, and keeping
+stages 0-3 only scores 6.678 against 6.683 for all eight. Residual composition puts five stages to work and gains 0.093
+nats at D8 at equal cost, but stages 5-7 still contribute nothing and D8 stays behind D2. This is the predicted failure of
+depth without addressed history: a stage whose credit spans 16 tokens and that reads only the stream below can compute
+functions of what lower stages already extracted from the last 16 tokens, so its unique value falls with depth. Per-stage
+reads give every stage new information (old events) with lag-independent credit; the read arms test whether that makes
+the unique value of deep stages positive and the depth series monotone. The probe runs on every arm with the decision.
+
+## Depth per fresh token in the keyed member (Curie chain v9)
+
+`experiments/r1_deep_keyed_stream.py` trains the plan-B deep keyed member (AWS, `r1_deep_keyed_lm.py`: pre-norm residual
+blocks, per-layer keyed race read, full-lane credit, exact parallel temporal memory) in one pass over 4M fresh tokens, L2
+and L8. Each update's loss on new lanes is held out, so the comparison is prediction per token without the memorization
+that dominates the multi-epoch 1M recipe (keyed L2 there: best epoch 2, train 5.54 vs selection 6.31). Pass: L8 below L2
+on the last-quarter prequential loss and on the flagship protocol. Cost on Curie: L2 1.69 s, L8 4.56 s per 4x256-token
+update (exact activation checkpointing for L8, 1.37 GB).
