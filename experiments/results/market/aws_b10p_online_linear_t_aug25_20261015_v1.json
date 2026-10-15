@@ -1,0 +1,189 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "task": "B10-P price online",
+  "arm": "linear_t",
+  "day": "2026-08-25",
+  "targets": 65536,
+  "tape_nll": null,
+  "return_nll": {
+    "10s": 9.521642277951788,
+    "60s": 10.51814395902093,
+    "300s": 11.422470649559482
+  },
+  "return_nll_sum": 31.462256886532202,
+  "return_targets": [
+    65536,
+    65536,
+    65536
+  ],
+  "curve": [
+    {
+      "targets": 4096,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 8.863933896897958,
+        "60s": 9.393715453387786,
+        "300s": 10.251687952101184
+      }
+    },
+    {
+      "targets": 8192,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.265319108078542,
+        "60s": 10.107755595679148,
+        "300s": 10.310347985045691
+      }
+    },
+    {
+      "targets": 12288,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.241539003910892,
+        "60s": 10.063959632617387,
+        "300s": 10.576716441130474
+      }
+    },
+    {
+      "targets": 16384,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.21543020625975,
+        "60s": 10.16815665724238,
+        "300s": 10.856897990513852
+      }
+    },
+    {
+      "targets": 20480,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.168163265829966,
+        "60s": 10.071455272677674,
+        "300s": 10.77376971745608
+      }
+    },
+    {
+      "targets": 24576,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.143607442207612,
+        "60s": 10.020431038529024,
+        "300s": 10.691996570719512
+      }
+    },
+    {
+      "targets": 28672,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.088849440793167,
+        "60s": 9.963708055073925,
+        "300s": 10.627898304550643
+      }
+    },
+    {
+      "targets": 32768,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.093136376807161,
+        "60s": 9.971198900739028,
+        "300s": 10.699632730118504
+      }
+    },
+    {
+      "targets": 36864,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.175081182411914,
+        "60s": 9.993945596811322,
+        "300s": 11.127952582927765
+      }
+    },
+    {
+      "targets": 40960,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.34637883163758,
+        "60s": 10.246710811542517,
+        "300s": 11.495166836418402
+      }
+    },
+    {
+      "targets": 45056,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.379264087605351,
+        "60s": 10.289650527857676,
+        "300s": 11.543936063660963
+      }
+    },
+    {
+      "targets": 49152,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.411100487774851,
+        "60s": 10.451083108527593,
+        "300s": 11.511223872556934
+      }
+    },
+    {
+      "targets": 53248,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.45404808785577,
+        "60s": 10.473174277280414,
+        "300s": 11.477484151182914
+      }
+    },
+    {
+      "targets": 57344,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.468661500553708,
+        "60s": 10.530386356810437,
+        "300s": 11.441716277659335
+      }
+    },
+    {
+      "targets": 61440,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.49079906016382,
+        "60s": 10.520729591799867,
+        "300s": 11.412703622460235
+      }
+    },
+    {
+      "targets": 65536,
+      "tape_nll": 0.0,
+      "return_nll": {
+        "10s": 9.521642277951788,
+        "60s": 10.51814395902093,
+        "300s": 11.422470649559482
+      }
+    }
+  ],
+  "online_updates": 1649,
+  "final_learner": "experiments/results/market/aws_b10p_online_linear_t_aug25_20261015_v1.pt",
+  "final_weights": "experiments/results/market/aws_b10p_online_linear_t_aug25_20261015_v1.pt",
+  "resumed_from": null,
+  "online_wall_s": 3.1966772489249706,
+  "process_wall_s": 4.066753915976733,
+  "max_rss_kb": 569180,
+  "source_sha256": {
+    "experiments/market/b10p_online.py": "033228e2e0576c62c6d011603978b9e6889a74955a9d5a16b441fee4e41bde7c",
+    "experiments/market/b10p_models.py": "84d992a208180df8e27aff6940758eb9b3f3076be981298480d49c172aba1705",
+    "experiments/market/b10p_data.py": "eea13d807d18931d945cfcfcb154014ee79722554fbaf9e1f8adb4ac41ba13c8",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+    "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+    "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "input_sha256": {
+    "experiments/results/market/aws_b10p_references_20261015_v2.json": "26ecd46850dac75c5a52890ddebffd11a5aff0d963fe8d44b617e3995a70aa93"
+  },
+  "gates": {},
+  "september_opened": false,
+  "scope": "Continuous 2026-08-25 stream after a 2048-trade 2026-08-24 warmup and 128 context trades; every arm forecasts with persistent state, is scored at issue, and adapts after every 32 trades on revealed tape terms and on matured horizon labels only. Same inputs/heads as phase 1; seed 0."
+}
