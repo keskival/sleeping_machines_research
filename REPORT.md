@@ -6970,8 +6970,71 @@ Decision: finish the active matched L2/L4/L8/L16 ladder unchanged; then reuse sa
 
 ## Appendix. G-HIER deep representational composition implementation
 
-The current construction uses indexed native temporal objects as persistent memory and event generators, composing eight abstraction levels with four native race stages each. Indexed reads are side-effect-free model operations; armed races can emit evolved state without a query or fresh observation.45 numerical contracts pass. The raw-native preflight on32 FIT events completes with finite gradients, an indexed lower-memory query and a timer-driven upward emission. It uses169,675 parameters and79 addressed objects with78,520bytes of native state tensors (runtime graphs, queues, input records, published aliases and metadata separate). Charged work:8448 candidate scores,4224 selected updates,8448 counterfactual value evaluations and2 timer scores. Process RSS is1,078,092KiB; software time7.579s is an implementation diagnostic, not hardware latency. No raw-native fit or semantic hierarchy score is claimed.
+### Native multi-memory composition learns a usable FIT signal
 
-The earlier synchronous addressable32-cell diagnostic completes64updates, batch2 (128 sampled training presentations), on12 FIT episodes: argmax NLL2.494155→2.520648, accuracy1/12 unchanged. Across three fixed stochastic race seeds, a frozen replay finds a0.010006NLL improvement instead. This identifies stochastic/argmax policy mismatch as a concrete issue, not proof of zero learning. Root feature variation is nonzero and increases; this statistic does not establish useful class separation. Top raw-read removal slightly improves NLL by0.000588;9/11 selected raw reads are empty. At the final geometry, the fixed raw stencil can only access input pixel(0,0). Do not scale this unchanged candidate-discovery construction or generalize its result to the native family.
+Eight abstraction levels, four native race stages per level, 169,675 parameters.
+Persistent indexed objects integrate child events and query responses from all
+active lower learned memories in their support. The final round has no raw-input
+shortcut. Reads preserve child state; root publication is generated at a native
+race time. Query selection, ownership and arming policies remain explicit.
 
-Scope: one FIT recording, no selection/DEV/official TEST access, no benchmark or generalization verdict. Full fitting FLOPs, per-target fitting arithmetic, complete inference work and traffic are not audited; the counters above are not substitutes. Native model clocks use virtual time, not measured hardware latency. Native local alternative credit and winner-time derivatives are present; exact future event-order credit, learned query/arming/coalescing and object ownership remain missing. Next: native train/evaluation race parity, input identifiability and a bounded learning gate before held-out composition. [Current findings](experiments/hierarchy/CURRENT_FINDINGS.md); [native construction](experiments/theory/INDEXED_TEMPORAL_OBJECTS.md). Completed evidence: `experiments/results/hierarchy/aws_g_hier_native_objects_preflight_20261015_v1.json`, `aws_g_hier_cached_20261015_v2_probe.json` and `aws_g_hier_cached_frozen_diagnosis_20261015_v1.json`.
+On 12 distinct 32-event prefixes from one official FIT recording, 64 batch-one
+updates reduce paired stochastic NLL 2.547975 → 2.482746. Two common noise tapes
+are shared across all episodes, with bitwise train/evaluation forward parity.
+Label association rises −0.013494 → +0.037650; it is positive on both tapes.
+Raw accuracy reaches the majority predictor's 16.67%; raw NLL remains above the
+empirical constant-prior 2.369382. This prompted a frozen readout diagnosis,
+not another unchanged backbone fit.
+
+| Frozen construction | Raw NLL | Prior-centred FIT NLL | FIT accuracy |
+| --- | ---: | ---: | ---: |
+| Initial core and head | 2.547975 | 2.369382 | 16.67% |
+| Trained core and head | 2.482746 | **1.925817** | **37.50%** |
+| Trained, query contents zeroed | 2.452741 | 2.369382 | 16.67% |
+| Initial core, trained head | 2.541522 | 2.369382 | 16.67% |
+| Trained core, initial head | 2.461518 | **1.926302** | **37.50%** |
+
+Scope: one FIT recording, two stochastic tapes, no DEV/TEST access. Prior,
+logit centre and one nonnegative scalar gain are fitted and scored on these same
+FIT logits. These are optimistic learnability results, not generalization or a
+semantic hierarchy win. Swaps measure these fixed decoders, not a basis-invariant
+ranking. They locate a useful learned signal in the native core for this probe;
+removing lower-memory content removes that gain. No per-item noise identifier is
+provided. The calibrated artifact changes only the external linear readout.
+
+The loss identity L = H(p) + mean KL(p || q) − A explains why erasing useful
+query content can improve raw loss: content adds 0.051704 label association and
+0.081709 label-independent penalty. Prior-centred logits expose the signal.
+For q(g)=softmax(log p + g(z−mean z)), convex FIT loss has derivative −A at g=0.
+This guarantees a positive-gain FIT improvement when A>0, not held-out transfer.
+
+### Native learning and execution costs
+
+64 training presentations contain 2,048 raw event presentations; unique input
+contains 384 events. Fitting plus all scheduled scoring took 961.276 CPU seconds,
+peak RSS 2,074,196 KiB. Frozen five-way diagnosis took 164.565 seconds and
+297,376 KiB RSS. These are implementation diagnostics, not hardware estimates.
+For the measured first episode: 79 objects, 78 lower-memory queries, 334 delivered
+messages/publications, 10,688 candidate scores and 5,344 selected native updates.
+Learning evaluates 10,688 counterfactual values; selected-only evaluation does
+not. Two timer candidates are scored. Full fitting FLOPs, per-target arithmetic,
+traffic and hardware energy remain unaudited. State tensor counters exclude
+graphs, input records, queues, aliases, parameters and Python metadata.
+
+### Formal and implementation advances
+
+State-ownership contracts protect lower published states from a changed private
+upper hypothesis. This is inference-state independence, not independence from
+shared parameter learning. Native coupled value/time credit passes an integrated
+expectation identity for affine selected-value losses; nonlinear value losses
+retain a local surrogate. Do not modify its timing derivative in isolation.
+
+`VarianceReducedNativeComposition` preserves native parameters, random draws,
+forward outputs, publication times and event work. Only pure emission-timer
+credit changes: average the winner indicator over its conditional race law,
+removing winner variance from the interior timing gradient. Receipt/value races
+retain their coupled teacher. This does not repair event-order discontinuities
+or establish a training-quality improvement. See the linked mathematical notes.
+
+
+Scope: FIT-only development. No held-out semantic hierarchy or benchmark result. The earlier synchronous stencil result and its restricted top-level access remain in [current findings](experiments/hierarchy/CURRENT_FINDINGS.md), alongside complete source-bound evidence and the next held-out decision.

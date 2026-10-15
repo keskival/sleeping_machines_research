@@ -1,0 +1,48 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Reuse trained native model; conditionally measure incremental query-content value with unchanged messages/tape; otherwise skip and target learning repair. FIT-only frozen diagnostic, no new model training.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_g_hier_native_query_attribution_20261015_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_native_query_attribution_20261015_v1/aws_g_hier_native_query_attribution_20261015_v1.txt",
+        "queue_sha256": "71bf98675a187414a39684e1b3a6fffd721691bb3eddef8c6518e0a6ae459070",
+        "source_sha256": {
+          "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+          "experiments/hierarchy/native_composition_learning.py": "d773f51cfec3e277decefe7e364aed22ee364d7c4f3fbf7c655a5d426e4b18b3",
+          "experiments/hierarchy/native_query_attribution.py": "d0bdd7319dfa106f142a5f8e3cddde8b8f4b9acb9e387c96c6011b41f8d79a9e",
+          "experiments/theory/COMPOSITION_STATE_OWNERSHIP.md": "89c7a404c8a28ae6fa45865f0ebe43e082aaedec31db5503cd151440b2b18045",
+          "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+          "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+          "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+          "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+          "sleeping_machines/indexed_temporal_object.py": "2d6c5ac8ef44c10d2852dfae6639f1a0dd9d0fe53ae9b24349fe2dbf76fa533b",
+          "sleeping_machines/native_memory_composition.py": "f3a2b04beed4e37c15afb0e39836dba11811d21ab8fe118c85a4fb86a6cf9883",
+          "sleeping_machines/native_object_hierarchy.py": "9e58e4046c55e7ab815ab2b0dd3563833482a829febef69a61cf8d13ee8514e4",
+          "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+          "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+          "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+          "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+          "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+          "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+          "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+          "tests/test_native_state_ownership.py": "cda354b3f21f112d2ea4f89f1da79656b341e5fed670cea8bace408c324137d6"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_native_query_attribution_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_native_composition_20261015_v1_learn.json",
+            "stage": "native_composition_learning"
+          }
+        ],
+        "timeout_s": 600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
