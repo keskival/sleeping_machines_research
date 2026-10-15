@@ -1,0 +1,57 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Does learned composition transfer to unfamiliar combinations and depend on emitted content? If not, diagnose binding/credit; short fit is development, not family loss. No automatic grid or TEST scoring.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_g_hier_coalesced_learning_20261015_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_coalesced_learning_20261015_v1/aws_g_hier_coalesced_learning_20261015_v1.txt",
+        "queue_sha256": "9236ea9388a9555e07ebd90e8d1ded01a474148a2ddc854df45bb2c754590f7b",
+        "source_sha256": {
+          "experiments/hierarchy/aws_g_hier_coalesced_learning_20261015_v1_admission.json": "00fd9b7cc1da479b9e6a61631f41c2ac531cad4819903880cf9dcaad27127e5b",
+          "experiments/hierarchy/coalesced_learning.py": "3c390558003b49af525f29f8643214f34d313a705799f4faabc81c232d5373bd",
+          "experiments/hierarchy/frontier_preflight_v2.py": "c9b4a39e3162aa64d4ba28049f4d34d7d47bfe023ccb11395f3f163dad790f72",
+          "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+          "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540",
+          "experiments/results/hierarchy/aws_g_hier_coalesced_preflight_20261015_v2.json": "9832d329e5edcbb82cda57d8f4e285db18da3b5fb3f889d888fde31f985bbc80",
+          "experiments/theory/COALESCED_NATIVE_COMPOSITION.md": "172c4ba0e825ff7e939d6a3adec40c01bdbc848309b863efa2d0dde7b766a7c8",
+          "experiments/theory/COMPOSITION_MESSAGE_SUFFICIENCY.md": "5a2d14c5cfce4beaa2c7c074908af6adfe731637f9bbcdceeee43ceccfc43e83",
+          "scripts/admit_coalesced_composition_learning.py": "89342f1eefee0a3dfd0d5b2cde8b20877edb5dbfc4f1b3be69a700de05d83295",
+          "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+          "sleeping_machines/coalesced_native_composition.py": "f0da49eccaa1fa7718d9dfe9020d6da45d63d08414828d1f5a1da46314f9644e",
+          "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+          "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+          "sleeping_machines/frontier_native_composition.py": "33b80094dce3218253122858b54eec6fc7ab4df4cd3adc262b4ddfa2b37ad0d6",
+          "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+          "sleeping_machines/indexed_temporal_object.py": "2d6c5ac8ef44c10d2852dfae6639f1a0dd9d0fe53ae9b24349fe2dbf76fa533b",
+          "sleeping_machines/native_memory_composition.py": "f3a2b04beed4e37c15afb0e39836dba11811d21ab8fe118c85a4fb86a6cf9883",
+          "sleeping_machines/native_object_hierarchy.py": "9e58e4046c55e7ab815ab2b0dd3563833482a829febef69a61cf8d13ee8514e4",
+          "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+          "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+          "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+          "sleeping_machines/prior_centered_readout.py": "a774743d4ca31c5db0effa067cd87214806390e18036be2fdc7cba4c80b57687",
+          "sleeping_machines/pure_race_timer.py": "2531bbdcc0980fbdfb2ad2665d568504cd33f45006ae6c9bec3d2584f0b9fbe7",
+          "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+          "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+          "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+          "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+          "sleeping_machines/variance_reduced_native_composition.py": "99dbb62906f478db5861790d764746c6f8fa62f9dbdfd1d9a58e24e3d1439b1d"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_coalesced_learning_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_coalesced_preflight_20261015_v2.json",
+            "stage": "coalesced_frontier_preflight"
+          }
+        ],
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

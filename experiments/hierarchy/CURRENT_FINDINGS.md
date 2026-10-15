@@ -87,20 +87,61 @@ other source reads and credit variance require separate diagnosis.
 Sources: `results/hierarchy/aws_g_hier_cached_20261015_v2_probe.json` and
 `results/hierarchy/aws_g_hier_cached_frozen_diagnosis_20261015_v1.json`.
 
-## Decision and next decisive test
+## Coalesced native composition: measured resource advance
 
-Use the native multi-memory core, the calibrated readout as an acquired artifact,
-and the forward-identical pure-timer improvement for subsequent development.
-Do not scale the failed synchronous stencil or repeat the unchanged FIT fit.
-The next gate is held-out part-combination transfer, with calibration frozen on
-training data and memory-content/pose interventions. Its design must distinguish
-part reuse from instance memorization and forbid raw-input shortcuts. See
-`theory/HELD_OUT_NATIVE_COMPOSITION.md`. Native benchmark promotion requires
-that evidence; a tiny prefix fit does not establish gesture recognition quality.
+An eager adjacent-level read-round construction exceeds the3,000,000KiB slot
+limit: watchdog stops at3,202,220KiB. Its intermediate publications repeatedly
+cascade upwards. The new coalesced construction preserves native local writes
+and indexed publication, but separates upward transmission: every active child
+arms a native race and emits one evolved view per explicit composition round.
+Parents integrate those views before becoming the next frontier.
 
-Evidence: `results/hierarchy/aws_g_hier_native_composition_20261015_v1_{data,learn}.json`,
-`aws_g_hier_native_query_attribution_20261015_v1.json`,
-`aws_g_hier_native_frozen_readout_20261015_v1.json`.
-Theory: `theory/COMPOSITION_STATE_OWNERSHIP.md`,
-`theory/NATIVE_RACE_CREDIT_AND_PURE_TIMERS.md`,
-`theory/PRIOR_CENTRED_COMPOSITION_READOUT.md`.
+| Work on the same32-event TRAIN scene/acquired weights | All-level terminal reader | Coalesced child emissions |
+| --- | ---: | ---: |
+| Addressed objects |94|94|
+| Delivered messages / publications |349|125|
+| Native candidate scores |11,168|4,000|
+| Selected native updates |5,584|2,000|
+| Counterfactual value evaluations |11,168|4,000|
+| Timer candidate scores |2|188|
+| Timer emissions |1|94|
+| Indexed query calls |93|0|
+| Native state tensor bytes |93,040|82,760|
+
+Deliveries and native candidate work fall2.792x, with a changed information path
+and more timer work. Both constructions receive the same observations and have
+identical acquired parameters; they need not predict equally well. All eight
+levels have finite nonzero content gradients. No optimizer or task-quality score
+is used in this resource gate; the old11-class gesture head remains solely for
+numerical gradient checks. Software forward/backward time10.286s→4.231s; measured
+process peak RSS rises to1,350,556KiB across the sequential pair and is not an
+isolated per-arm memory comparison. Complete FLOPs/traffic remain unaudited.
+Evidence: `results/hierarchy/aws_g_hier_coalesced_preflight_20261015_v2.json`;
+failed gate: `aws_g_hier_frontier_resource_stop_20261015_v1.json`.
+
+The task generator now implements three genuine nested arrangement levels with
+eight recurring four-event motifs. Each split contains all child codes, balanced
+labels, both relation parities and both root orientations. TRAIN128/DEV64/TEST64
+scenes have disjoint child combinations and nuisance tapes. A single complete
+child plus root orientation is label-balanced; two children plus their relation
+determine the target. Internal identities are audit metadata only. This is a
+controlled composition diagnostic; eight object levels do not imply eight
+verified semantic levels, and a flat expressive model could also solve the task.
+
+## Decision and current learning queue
+
+`aws_g_hier_coalesced_learning_20261015_v1` admits128 whole-label TRAIN updates,
+batch1, AdamW.001, with the acquired native core and a fresh2-class external head.
+Keep all numerical state throughout each scene. Initial/final diagnostics fit
+prior/centre/gain only on64 TRAIN scenes, then freeze calibration for unseen
+DEV combinations and nuisance realizations. TEST is excluded from model scoring.
+If DEV beats its balanced constant prior, measure emitted-content intervention
+with a combination-cluster paired bootstrap. Exact model/Adam/global-race/order
+checkpoints every8updates permit resumption. One short run is development, not a
+family verdict. Outcome chooses part-binding/credit repair versus larger
+composition acquisition; no unchanged depth grid follows automatically.
+
+Full task and mechanism declarations are in the source-bound admission JSON.
+[Architecture](../theory/COALESCED_NATIVE_COMPOSITION.md),
+[frontier and task reasoning](../theory/STABILIZED_COMPOSITION_FRONTIERS.md),
+[message sufficiency](../theory/COMPOSITION_MESSAGE_SUFFICIENCY.md).

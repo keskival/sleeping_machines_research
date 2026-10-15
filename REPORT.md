@@ -7038,3 +7038,9 @@ or establish a training-quality improvement. See the linked mathematical notes.
 
 
 Scope: FIT-only development. No held-out semantic hierarchy or benchmark result. The earlier synchronous stencil result and its restricted top-level access remain in [current findings](experiments/hierarchy/CURRENT_FINDINGS.md), alongside complete source-bound evidence and the next held-out decision.
+
+### Coalesced native composition resource gate
+
+On the same32-event TRAIN scene and acquired weights, separating local publication from upward race-generated child views reduces delivered messages349→125, native candidate scores11,168→4,000 and selected updates5,584→2,000. Timer scores rise2→188 and emissions1→94. All eight levels receive finite nonzero content gradients; native32stage structure and parameters remain. This is changed information flow, not an equal-quality comparison. Process peak RSS across the pair1,350,556KiB, software forward/backward10.286s→4.231s; full arithmetic/traffic and hardware energy are unaudited. Eager adjacent-frontier v1 was stopped by the3GB watchdog at3,202,220KiB.
+
+Controlled composition task audit passes:128TRAIN/64DEV/64TEST scenes, three nested arrangement levels, familiar parts but split-disjoint combinations and nuisance tapes. A single child plus root orientation is label-balanced. Whole-label128update native learning is admitted with exact8update checkpoints, TRAIN-only calibration and unseen-combination DEV; TEST not model-scored. No learned transfer result is entered here. Source: `experiments/results/hierarchy/aws_g_hier_coalesced_preflight_20261015_v2.json`; [current findings](experiments/hierarchy/CURRENT_FINDINGS.md).
