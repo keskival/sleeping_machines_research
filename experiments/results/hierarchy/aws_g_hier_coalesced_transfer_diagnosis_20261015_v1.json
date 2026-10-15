@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "statistics": {
+    "initial": {
+      "train_std_mean": 0.0005253271084194914,
+      "dev_std_mean": 0.03188166783803009,
+      "standardized_dev_mean_shift_rms": 212.77768616341757,
+      "nuisance_pair_distance": 0.4732380832669774,
+      "root_relation_pair_distance": 0.00436331210871722
+    },
+    "final": {
+      "train_std_mean": 0.0005593786393179213,
+      "dev_std_mean": 0.03310640127478665,
+      "standardized_dev_mean_shift_rms": 298.1231246883869,
+      "nuisance_pair_distance": 0.49489157273205536,
+      "root_relation_pair_distance": 0.001402684636314223
+    }
+  },
+  "geometric_occupancy": {
+    "train_nuisance0": {
+      "min_objects": 94,
+      "max_objects": 94
+    },
+    "train_nuisance1": {
+      "min_objects": 94,
+      "max_objects": 94
+    },
+    "dev_nuisance2": {
+      "min_objects": 127,
+      "max_objects": 127
+    },
+    "dev_nuisance3": {
+      "min_objects": 106,
+      "max_objects": 106
+    },
+    "test_nuisance4": {
+      "min_objects": 106,
+      "max_objects": 106
+    },
+    "test_nuisance5": {
+      "min_objects": 110,
+      "max_objects": 113
+    }
+  },
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_coalesced_readout_20261015_v1_features.npz": "7a508723c7565df8d8421057075051e9d304a751ca37f2fc618f10d85b54ede5"
+  },
+  "source_sha256": {
+    "experiments/hierarchy/analyse_coalesced_transfer.py": "7d8dbb8b02e0e793385ed4b12e2c0537028c32d55edce61a0c82ebdc7422bc75",
+    "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540"
+  },
+  "scope": "Cached root features and generator geometry only. No refitting, native execution or TEST model scoring. Distances do not independently identify a causal bottleneck.",
+  "decision": "Repair nuisance/role binding and audit intermediate-state information before any larger fit. Keep measured resource advance separate from failed short-fit transfer."
+}

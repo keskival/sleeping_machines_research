@@ -128,20 +128,101 @@ determine the target. Internal identities are audit metadata only. This is a
 controlled composition diagnostic; eight object levels do not imply eight
 verified semantic levels, and a flat expressive model could also solve the task.
 
-## Decision and current learning queue
+## Completed held-out composition development gate
 
-`aws_g_hier_coalesced_learning_20261015_v1` admits128 whole-label TRAIN updates,
-batch1, AdamW.001, with the acquired native core and a fresh2-class external head.
-Keep all numerical state throughout each scene. Initial/final diagnostics fit
-prior/centre/gain only on64 TRAIN scenes, then freeze calibration for unseen
-DEV combinations and nuisance realizations. TEST is excluded from model scoring.
-If DEV beats its balanced constant prior, measure emitted-content intervention
-with a combination-cluster paired bootstrap. Exact model/Adam/global-race/order
-checkpoints every8updates permit resumption. One short run is development, not a
-family verdict. Outcome chooses part-binding/credit repair versus larger
-composition acquisition; no unchanged depth grid follows automatically.
+The128-update coalesced whole-label fit completes,169,378parameters, with exact
+model/Adam/RNG checkpoints. It fails unseen-combination DEV: raw NLL1.163353,
+TRAIN-fitted scalar-calibrated NLL2.508095, accuracy50%, versus constant prior
+0.693147/50%. Initial raw DEV was0.708274; initial calibration selects gain0 and
+returns the prior. Final TRAIN calibration hits gain cap256, improving TRAIN
+NLL by only0.000025 (0.693122). Its DEV amplification is harmful; no gain from
+this fit is claimed. This is one short development attempt, not a family verdict.
 
-Full task and mechanism declarations are in the source-bound admission JSON.
-[Architecture](../theory/COALESCED_NATIVE_COMPOSITION.md),
-[frontier and task reasoning](../theory/STABILIZED_COMPOSITION_FRONTIERS.md),
-[message sufficiency](../theory/COMPOSITION_MESSAGE_SUFFICIENCY.md).
+A frozen full affine-head audit with fixed TRAIN-standardized ridge.01 does not
+recover transfer: initial/final TRAIN NLL0.615729/0.658176 but DEV551.710/216.153,
+both50%accuracy. This is a severe out-of-distribution readout failure. It does
+not prove absence of all useful information in every native memory. No native
+backbone is changed; feature caches are retained for analysis.
+
+Cached root-feature analysis identifies nuisance domination. Mean per-coordinate
+feature standard deviation is0.000525/0.000559 on TRAIN versus0.031882/0.033106
+on DEV for initial/final cores. Final DEV mean shift is298 TRAIN standard
+deviations RMS (coordinatewise with1e-6scale floor). For paired scenes holding
+arrangement/label fixed, nuisance changes move final root features by0.494892;
+flipping the root relation and label moves them by0.001403, about353x smaller.
+Both timing/order and translation vary in that nuisance pair; this statistic
+alone cannot separate them or identify one causal failure.
+
+Geometric occupancy is94objects on both TRAIN nuisance tapes,127and106 on DEV.
+Small global translations therefore change the number of native emitters and
+state updates despite identical label/part multisets. Combined with changed
+timing, this motivates a frozen factorial audit before architectural repair.
+The task has unseen combinations and nuisance realizations; local motif-shape
+instance transfer is a separate future gate. Eight object levels include upper
+unary consolidation and are not eight verified semantic abstractions.
+
+Fitting plus initial/final scoring545.072CPU seconds, peak RSS684,948KiB.
+Training128presentations/4,096raw events charges512,000native candidate scores,
+256,000selected updates,512,000counterfactual value evaluations,24,064timer
+scores and16,000deliveries. Frozen affine audit145.009seconds. Phase counters
+sum state/object exposures; they are not peak capacity or complete FLOPs.
+No hardware energy/latency or matched-quality efficiency claim follows.
+
+Evidence: `aws_g_hier_coalesced_learning_20261015_v1.json`,
+`aws_g_hier_coalesced_readout_20261015_v1.json`,
+`aws_g_hier_coalesced_transfer_diagnosis_20261015_v1.json` under
+`experiments/results/hierarchy/`.
+
+## Factorial diagnosis and observed-frame repair
+
+The frozen2x2TRAIN audit separates coordinates from timing/order. On four child
+pairs/two root orientations, final root displacement is0.416171 for translation
+only,0.000228 for timing only,0.416184 together; label-changing root relation
+moves0.000562. The coordinate nuisance dominates on this one-tape fixture.
+
+`FrameNativeComposition` keeps every raw world pixel's persistent native memory,
+then commits a scene frame from already revealed pixel bounds at composition
+time. Upper ownership/pose uses coordinates relative to that frame. No sensor
+event is replayed, no future observation/part ID used, and parameter keys/shapes
+are unchanged. Pixel indices remain world-addressed; upper memory uses the
+committed frame. Ordinary coordinate anchoring is a known primitive, not a
+novel geometric claim. Learned moving-object ownership remains future work.
+
+On the same acquired final weights/factorial scenes, pure translation produces
+exactly identical upper features. Timing-only and combined displacement are both
+0.003158; the root-relation displacement is0.001153. Combined nuisance falls
+about132x, while timing sensitivity increases versus the predecessor. This
+removes the measured dominant coordinate failure; it does not prove learned
+semantic transfer or full nuisance invariance. Common-tape sensitivity includes
+changed stochastic schedules.
+
+The one32-event backward uses119native objects,150deliveries/publications,
+4,800candidate scores,2,400selected updates,4,800counterfactual value evaluations,
+238timer scores and119timer emissions;104,320native state tensor bytes. Frame
+work adds62bound comparisons and128coordinate subtractions. All eight levels
+have finite nonzero content gradients. Peak process RSS645,096KiB across the
+gate;21.443seconds including32factorial evaluations and backward.76combined
+contracts pass. Model169,378parameters; no optimizer or quality score in gate.
+Compared with the coalesced predecessor, this adds25deliveries and800native
+candidate scores on the measured scene. Full arithmetic/traffic remain unaudited.
+
+Evidence: `aws_g_hier_nuisance_factorial_20261015_v1.json` and
+`aws_g_hier_frame_preflight_20261015_v1.json` under `experiments/results/hierarchy/`.
+[Derivation and policies](../theory/OBSERVED_FRAME_NATIVE_COMPOSITION.md).
+
+## Current repaired learning queue
+
+`aws_g_hier_frame_learning_20261015_v1` fields the observed-frame construction
+for one128-update whole-label TRAIN fit. It reuses the same acquired gesture
+core and fresh two-class head initialization, data/order/optimizer as the failed
+coalesced fit; changing the failed coordinate path is the new intervention.
+All numerical state persists inside a scene, exact checkpoints every8updates.
+Initial/final TRAIN features are cached so later readout diagnosis need not
+rescore native models. TRAIN-only scalar calibration and fixed ridge.01 affine
+head diagnostics score unseen-combination DEV. No DEV-selected hyperparameter,
+part supervision, TEST scoring, external model fit or unchanged depth grid.
+Quality outcome is pending; no gain is inferred from exact translation alone.
+
+The emission-order boundary audit separately identifies a learning term missing
+from pure interior derivatives. Two deterministic integral witnesses pass; this
+is a teacher-design target, not integrated exact credit. [Derivation](../theory/EMISSION_ORDER_BOUNDARY_CREDIT.md).
