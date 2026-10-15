@@ -1,3 +1,5 @@
+[Local observable grounding](theory/LOCAL_OBSERVABLE_GROUNDING.md) selects training useful local representations over output gate migration or larger carrier gradients. Continue from the better acquired original role actor;fixed sensor-geometry targets train every local memory without changing inference or exposing latent identities.
+
 [Predictive responsibility transfer](theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md) separates useful multiscale access,direct representation credit and earned traffic suppression. Native integrated update and13contracts pass;allocation is not semantic provenance,and no traffic is suppressed.
 
 [Carried role representations](theory/CARRIED_ROLE_REPRESENTATIONS.md) targets the measured vertical sensitivity attenuation while retaining native temporal transformation and generated views. Version-bound carrier transport has a direct local derivative;a real paired-update gate improves local sensitivity2.73x at the lowest parent and9.30x at the root. Matched continuation learning is admitted;quality remains a separate endpoint.
