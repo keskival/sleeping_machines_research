@@ -1,0 +1,34 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B3",
+  "purpose": "FAS v2.1 preregistered sealed confirmation: native delay-race binding versus Transformer, LSTM and classical references, each scored once on the fresh draw (seed base 620261016); decides the B3 win/tie/loss",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_b3_v21_sealed_20261015_v1",
+        "kind": "b3_job",
+        "queue": "experiments/queue/b3/aws_b3_v21_sealed_20261015_v1/aws_b3_v21_sealed_20261015_v1.txt",
+        "queue_sha256": "e4973392222a45e8bd79427d175b49895ab27859ff27bd8ffff22efe2ed82a2c",
+        "source_sha256": {
+          "experiments/fas/b3_v21_score.py": "065f8c7a83d8e7c8e9e8255df0db840c2b03a9f90c8997f3476aa0add1860745",
+          "experiments/fas/race_delay_binding.py": "acf8c6bf20d3ea89613b952d7dacfb7550d8dd74dae40263936bb49735002a7f",
+          "experiments/fas/addressed_evidence.py": "556ad13a3e4901eed4609884c120de27070147af93a4283c2358f7b4fbef03bf",
+          "experiments/fas/classical_scores_v2.py": "da2e64be051e796adc25cf99ca101fc425eb6a0d7913d93684aaf8908efaf8fb",
+          "experiments/fas/baselines.py": "6a94b68c9f4f5dead71e5955554b93ea1056c3ab585df5c57a07c3b1a7e243f9",
+          "experiments/fas/native.py": "2501c34bb33763c042300656dfe2701a3f9bf1293c112b04eda56b0606e3369c",
+          "experiments/fas/dense.py": "749eedda44a14af96dc43b8f509d4be42c97c6cc141bc46bd21350a2153e3c19",
+          "experiments/fas/strong_baselines.py": "d3022e2d3fe35e0de488f18afffb34e3fc6fc7e215b24da75335f2c2c123cfa7",
+          "experiments/fas/timed_ngram.py": "0bd776bc6fe42d47d585ecb9da24e81c65428335be1e7cbf361b86d6f6481227",
+          "experiments/FAS_V21_CONFIRMATION.md": "aa0bde728a40d0da095f788b6e7807b0fb61b30f9c3b924d1c685ba15331ecee",
+          "experiments/fas/FAS_V21_CONFIRMATION.json": "00ff60977db3252b2fbe96f821ff0205cf330e1156983040d68edcc2bbab05ad"
+        },
+        "result": "experiments/results/fas/aws_b3_v21_sealed_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 18000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
