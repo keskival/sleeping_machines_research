@@ -1,0 +1,122 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "task": "B10-P price streaming fine-tune",
+  "family": "native",
+  "smoke": true,
+  "seed": 0,
+  "epochs": 1,
+  "lr": 0.0001,
+  "parent": "experiments/results/market/aws_b10p_native_s1_20261015_v3.json",
+  "initial_dev": {
+    "epoch": 0,
+    "tape_nll": 6.051182600913711,
+    "return_nll": {
+      "10s": 9.210402651605357,
+      "60s": 9.952889117611448,
+      "300s": 10.831468404004344
+    },
+    "return_nll_sum": 29.99476017322115,
+    "return_targets": [
+      30720,
+      30720,
+      30720
+    ]
+  },
+  "best": {
+    "epoch": 0,
+    "tape_nll": 6.051182600913711,
+    "return_nll": {
+      "10s": 9.210402651605357,
+      "60s": 9.952889117611448,
+      "300s": 10.831468404004344
+    },
+    "return_nll_sum": 29.99476017322115,
+    "return_targets": [
+      30720,
+      30720,
+      30720
+    ]
+  },
+  "curve": [
+    {
+      "epoch": 0,
+      "tape_nll": 6.051182600913711,
+      "return_nll": {
+        "10s": 9.210402651605357,
+        "60s": 9.952889117611448,
+        "300s": 10.831468404004344
+      },
+      "return_nll_sum": 29.99476017322115,
+      "return_targets": [
+        30720,
+        30720,
+        30720
+      ]
+    },
+    {
+      "epoch": 1,
+      "wall_s": 15.574035543948412,
+      "tape_nll": 6.05710425042473,
+      "return_nll": {
+        "10s": 9.275295172350702,
+        "60s": 9.965686381883044,
+        "300s": 10.886131908082957
+      },
+      "return_nll_sum": 30.127113462316704,
+      "return_targets": [
+        30720,
+        30720,
+        30720
+      ]
+    }
+  ],
+  "final_weights": "experiments/results/market/aws_b10p_stream_native_s1_smoke_20261015_v1.best.pt",
+  "feature_moments": {
+    "mean": [
+      -6.858786727359222,
+      0.032184260639860976,
+      2.231016164444665,
+      4.210279374400065,
+      6.050815691661162,
+      6.660261112644502,
+      0.0
+    ],
+    "std": [
+      2.3256262793784193,
+      2.058662783844784,
+      3.169520639520263,
+      2.2891413254330675,
+      1.9830721389912,
+      1.160439520979108,
+      1.0
+    ]
+  },
+  "label_scales": [
+    6.892995138840777,
+    12.089625352411053,
+    22.446969338595114
+  ],
+  "wall_s": 15.574035543948412,
+  "process_wall_s": 24.59552801703103,
+  "max_rss_kb": 1119728,
+  "source_sha256": {
+    "experiments/market/b10p_stream_fit.py": "98f860b4a689c8e1211fad0e9b95d9bb932af68f42d741cb4b7e50ac51d6bdb7",
+    "experiments/market/b10p_online_v2.py": "109c8d76fa0ef6eaba64ad193f497a2bff570270a1a49f059bd24c8a859e6cb0",
+    "experiments/market/b10p_online.py": "033228e2e0576c62c6d011603978b9e6889a74955a9d5a16b441fee4e41bde7c",
+    "experiments/market/b10p_models.py": "84d992a208180df8e27aff6940758eb9b3f3076be981298480d49c172aba1705",
+    "experiments/market/b10p_data.py": "eea13d807d18931d945cfcfcb154014ee79722554fbaf9e1f8adb4ac41ba13c8",
+    "experiments/market/b10p_data_v2.py": "83ece7e13b3cda0154ba05b48d1d8ba02f6de1bca03dd8b46a0508385331fd9d",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+    "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+    "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "input_sha256": {
+    "experiments/results/market/aws_b10p_native_s1_20261015_v3.json": "206bb6d517ac0a5e15b547b3223c335641b5977b48d922e5013d1b758cf0742b",
+    "experiments/results/market/aws_b10p_native_s1_20261015_v3.best.pt": "aeb04e4382a2efc16071e7f60cd362bbf42cbda6e57556b5c32ae52b9aaba03b"
+  },
+  "september_opened": false,
+  "scope": "Phase-1 model continued on 4 contiguous 16384-trade segments per TRAIN day with state carried across 1024-trade gradient chunks; DEV: two fixed contiguous segments per Aug 25-31 day, streaming state, positions after the first 1024 trades scored. Look-back features include the previous day. Seed 0."
+}
