@@ -7063,3 +7063,14 @@ Both arms use128presentations/4096raw event presentations. Full fitting/inferenc
 ### Predictive responsibility and direct multiscale access
 
 **G-HIER predictive responsibility,15October:** implemented rate-independent multiscale residual access and gate-independent per-level whole-support credit inside the carried native hierarchy.13contracts pass. Full-resolution one-TRAIN-pair update gate completes:263923parameters,9.238s,810724KiB peak;finite content gradients at all8levels. Initial allocation63.23% to level0,23.26% to level1,8.56% to level2;prediction-loss gate derivatives +0.051737 at0,-0.035359 at1,-0.017724 at2,so descent favors1/2 over0 without a depth schedule. This is one-update learning-path evidence,not semantic transfer. All transmissions remain enabled;238extra output reads/paired update and full output work charged. Mean spatial summaries are a restricted access diagnostic;native role-aware higher composition retained. Common prediction time also contains higher scheduling history,so allocated source level is not evidence provenance. No new quality fit admitted:current matched carried-view fits finish unchanged before selection. [Theory](theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md).
+
+### Paired native carried-role learning
+
+**Carried role-memory result.** continued: NLL0.686609, accuracy54.69%; carried: NLL0.716414, accuracy45.31%. No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep. Scope: one native seed,64paired updates/128scene presentations per arm,TRAIN-only ridge.01 affine head,64reused synthetic DEV scenes and observed-geometry clustered uncertainty;TEST not model-scored. Equal presentations do not mean equal parameters/arithmetic. Source: `experiments/results/hierarchy/aws_g_hier_carried_decision_20261015_v1.json`.
+
+| Native arm | DEV NLL | DEV accuracy | Parameters | Native candidate scores/training scene | Role forward MAdds/training scene | Native inference candidates/scene |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| continued | 0.686609 | 54.69% | 255394 | 4800.0 | 405504.0 | 4800.0 |
+| carried | 0.716414 | 45.31% | 255401 | 4800.0 | 405504.0 | 4800.0 |
+
+Both arms use128presentations/4096raw event presentations. Full fitting/inference FLOPs, special-function work and traffic remain unaudited; candidate scores and role MAdds are separate partial ledgers, not complete arithmetic. Native losing-value work, timer scores, role products/transports and logical state are charged in the bound result files. CPU process totals include fitting/scoring; no hardware latency/energy claim.
