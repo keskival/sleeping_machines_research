@@ -1,0 +1,80 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 depth plan B (user: depth must scale): deep keyed temporal-memory ladder L2/L4/L8/L16 at 1M tokens built on the strongest native language member; contracts: exact parallel temporal memory (1.7e-6 vs recurrence), exact causality, checkpointing gradients identical; L16 peak 1.5 GB",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_r1_deep_keyed_L16_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L16_1M_s0_20261015_v1/aws_r1_deep_keyed_L16_1M_s0_20261015_v1.txt",
+        "queue_sha256": "d8b8ae0edab0581d364013f39d225e1e4bd7b31a1a18fa1c0a2c7c1cf262baac",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L16_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 41400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "1": [
+      {
+        "name": "aws_r1_deep_keyed_L8_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L8_1M_s0_20261015_v1/aws_r1_deep_keyed_L8_1M_s0_20261015_v1.txt",
+        "queue_sha256": "284a7ba8d347b06b856e3ff276fdd8b6882c5dd542713330091a9d788d402637",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 30600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_deep_keyed_L4_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L4_1M_s0_20261015_v1/aws_r1_deep_keyed_L4_1M_s0_20261015_v1.txt",
+        "queue_sha256": "1f344f7dfee7cefeca441407681d354861565339f1d3a22dcb9447ff1d8b2f3a",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 23400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "4": [
+      {
+        "name": "aws_r1_deep_keyed_L2_1M_s0_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_r1_deep_keyed_L2_1M_s0_20261015_v1/aws_r1_deep_keyed_L2_1M_s0_20261015_v1.txt",
+        "queue_sha256": "65895d8034161224bfd68ebadfe6143f5d7659a5fcab71ce2eb2eeb7e84900d6",
+        "source_sha256": {
+          "experiments/r1_deep_keyed_lm.py": "d1d2725ab7762cb1ec38ce08d0fe7f3e9b2d1dcf3d636213addd23c9e495e382",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 19800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

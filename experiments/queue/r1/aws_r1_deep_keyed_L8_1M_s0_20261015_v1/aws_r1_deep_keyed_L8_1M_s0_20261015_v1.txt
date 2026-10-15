@@ -1,0 +1,2 @@
+# R1 depth plan B: deep keyed temporal-memory LM, 8 layers (pre-norm residual, depth-scaled init, per-layer keyed race read, full-lane backprop, exact parallel temporal memory), 1M tokens seed 0; decision: does layer count scale (L16<L8<L4<L2) and beat the keyed L2 member 6.019 on the 65,528-target slice
+aws_r1_deep_keyed_L8_1M_s0_20261015_v1 experiments/r1_deep_keyed_lm.py --tag aws_r1_deep_keyed_L8_1M_s0_20261015_v1 --layers 8 --train-tokens 1048576 --epochs 20 --patience 2 --max-wall-s 25200 --seed 0 --checkpoint-blocks 1
