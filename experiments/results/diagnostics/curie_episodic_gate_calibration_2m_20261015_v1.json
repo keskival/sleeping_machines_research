@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_episodic_gate_calibration_2m_20261015_v1",
+  "run": "curie_episodic_memory_2m_episodic_20261015_v1",
+  "features": [
+    "gate_logit",
+    "native_entropy",
+    "native_max_logp",
+    "agreement",
+    "null"
+  ],
+  "theta": [
+    -1.6824924076407408,
+    0.7995768496174471,
+    0.3724665759028334,
+    0.06639335939685172,
+    0.10886029550448026,
+    -0.09957234688434549
+  ],
+  "feature_mean": [
+    -1.4782548170892995,
+    5.883501431387255,
+    -2.2238013312792084,
+    0.04120477766351376,
+    0.1852697961006065
+  ],
+  "feature_sd": [
+    1.0259966223127657,
+    1.8738747616803457,
+    1.0265263311224992,
+    0.12083960210454858,
+    0.20373644184336914
+  ],
+  "selection": {
+    "target_start": 24117249,
+    "targets": 8192,
+    "native": 6.036381280627264,
+    "learned_gate": 5.578205563627648,
+    "refit_gate": 5.57340289263013,
+    "seen_in_window": {
+      "fraction": 0.52587890625,
+      "native": 4.37928585248111,
+      "learned_gate": 3.328496716406582,
+      "refit_gate": 3.346858025504292
+    },
+    "unseen_in_window": {
+      "fraction": 0.47412109375,
+      "native": 7.874374870857345,
+      "learned_gate": 8.07350569592125,
+      "refit_gate": 8.043010330214605
+    }
+  },
+  "scored": {
+    "target_start": 25165825,
+    "targets": 8192,
+    "native": 5.973389563564822,
+    "learned_gate": 5.633531947711532,
+    "refit_gate": 5.6233501140300985,
+    "seen_in_window": {
+      "fraction": 0.5101318359375,
+      "native": 4.278693419490468,
+      "learned_gate": 3.4349661867380976,
+      "refit_gate": 3.4409911538195583
+    },
+    "unseen_in_window": {
+      "fraction": 0.4898681640625,
+      "native": 7.738187765928822,
+      "learned_gate": 7.9230426168139445,
+      "refit_gate": 7.895983578949073
+    }
+  },
+  "source_sha256": {
+    "analysis/episodic_gate_calibration.py": "b240733c205819e59c1f49bb9cd7fe3c612fb90ebf942770139ed69039e7377c",
+    "analysis/episodic_bucket_gains.py": "671dffa8a802c7135787dc7b9a61d1cb11a96cbc23322e71f92827e672dcf7a2",
+    "experiments/episodic_memory_continuation.py": "76a481f7cc1f32e6c8c028b929c85c48608f018d4fa59a944ea7cd4f90cab24b",
+    "sleeping_machines/episodic_pointer_memory.py": "c19aea14f99aeb6a5e5944538a46402717bc196d68dc3baeb3cb21c8a6400685"
+  },
+  "process_wall_s": 31.491130334034096,
+  "scope": "Frozen episodic arm; 7-parameter gate fitted on a disjoint DEV selection slice, scored once on the recorded protocol."
+}

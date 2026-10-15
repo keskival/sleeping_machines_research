@@ -39,3 +39,14 @@ Work per target (lanes 8, chunk 64, store 1024, key dim 32): about 3.3M key-map 
 - Execution: compiled layer steps in both arms (2.0x steady-state speedup, loss agreement 6.6e-8, `results/diagnostics/curie_ordered_compiled_equivalence_20261015_v1.json`); contracts re-pass on that path (`..._contracts_20261015_v3_compiled.json`).
 - Resources: one Curie training slot, one thread, RSS about 0.7 GB measured in contracts, timeout from measured smoke rate (2x + 1 h, ≤1 day).
 - Decision: adopt the store for R1 continuations if it beats the identical-stream control by ≥0.03 nats; then scale store capacity and acquisition with it. Otherwise diagnose read/gate/credit (pointer hit rate, gate, clock) before any larger fit. The control arm also measures the data-scaling gain per 2M at this point of the curve.
+
+## Gate calibration is not the limit (`results/diagnostics/curie_episodic_gate_calibration_2m_20261015_v1.json`)
+
+The frozen episodic arm loses on targets absent from their window. A seven-parameter logistic gate on causal evidence
+(the learned gate's logit, native entropy, native top log-probability, native mass on the pointer's candidates, null
+weight), fitted on a disjoint DEV selection slice (targets 24,117,249+), scores 5.6234 against the learned gate's 5.6335
+on the recorded protocol (+0.010). Unseen-in-window targets: native 7.738, learned gate 7.923, refit 7.896; seen: native
+4.279, learned 3.435, refit 3.441. The learned gate is close to calibrated; the residual unseen cost is the price of copy
+mass when repetition cannot be predicted, outweighed about five to one by the seen-target gain. The refit puts positive
+weight on native entropy (copy more when the native readout is unsure), a cheap input to add to the trained gate. Larger
+memory gains must come from candidate ranking (which earlier entry to trust) and from the native model.

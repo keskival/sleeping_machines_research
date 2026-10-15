@@ -49,7 +49,7 @@ reads/no residual equals the original driver bit for bit; zero value map equals 
 nonzero gradients for every read parameter across credit windows; exact causality; store growth. Decision fields:
 `reads_monotone`, `reads_gain_by_depth`, `depth_gain_d16_vs_d2`.
 
-## Trained ladder: which stages carry signal (`results/diagnostics/curie_depth_usage_probe_d8_20261015_v1.json`)
+## Trained ladder: which stages carry signal (`results/diagnostics/curie_depth_usage_probe_d{8,16}_20261015_v1.json`)
 
 `analysis/depth_usage_probe.py` freezes each arm, collects the readout input (every stage's output, concatenated) on the
 long-history protocol and replaces one stage's slice at a time by its DEV mean (loss increase = that stage's unique value).
@@ -59,10 +59,12 @@ long-history protocol and replaces one stage's slice at a time by its DEV mean (
 | D2 residual | 6.556 | +0.429, +0.277 |
 | D8 serial | 6.683 | +0.763, +0.019, -0.006, -0.004, -0.004, -0.003, -0.004, -0.004 |
 | D8 residual | 6.590 | +0.029, +0.025, +0.017, +0.012, +0.005, +0.002, +0.001, -0.001 |
+| D16 residual | 6.690 | +0.032, +0.020, +0.010, +0.002, then -0.001 to -0.007 for stages 4-15 |
 
 The serial chain is a one-stage model with seven idle stages: 76% of its readout-input energy is stage 0, and keeping
 stages 0-3 only scores 6.678 against 6.683 for all eight. Residual composition puts five stages to work and gains 0.093
-nats at D8 at equal cost, but stages 5-7 still contribute nothing and D8 stays behind D2. This is the predicted failure of
+nats at D8 at equal cost, but stages 5-7 still contribute nothing and D8 stays behind D2. At D16 three stages work and
+twelve are slightly harmful; the residual series runs backwards (D2 6.556, D8 6.590, D16 6.690; D16 cost 5,557 s vs 795 s). This is the predicted failure of
 depth without addressed history: a stage whose credit spans 16 tokens and that reads only the stream below can compute
 functions of what lower stages already extracted from the last 16 tokens, so its unique value falls with depth. Per-stage
 reads give every stage new information (old events) with lag-independent credit; the read arms test whether that makes
