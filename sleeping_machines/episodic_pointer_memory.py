@@ -3,10 +3,11 @@
 Every observed token event appends one entry to a persistent per-lane store:
 key source = the learner's feature after that token (stored detached once it
 leaves the current credit chunk), value = the token that followed it. A query
-from the current feature scores stored keys with the CURRENT key map, adds a
-learned age clock and a learned document-boundary bias, keeps only the top-k
-candidates (sparse read) and races them against a null route that returns mass
-to the native readout. A learned gate mixes the resulting pointer distribution
+from the current feature scores stored keys with the CURRENT key map, adds
+learned bonuses for exact current-token and two-token-context matches, a learned
+age clock and a learned document-boundary bias, keeps only the top-k candidates
+(sparse read) and races them, each as a next-token (induction) and an own-token
+(recency) vote, against a null route that returns mass to the native readout. A learned gate mixes the resulting pointer distribution
 with the native probabilities, so the output is a normalized distribution.
 
 Learning rule: an entry written long ago receives credit when it is READ.
@@ -25,7 +26,7 @@ EOS = 50256
 
 
 class EpisodicPointerMemory(nn.Module):
-    def __init__(self, feature_dim, key_dim=32, capacity=1024, topk=32, gate_init=0.15):
+    def __init__(self, feature_dim, key_dim=32, capacity=1024, topk=32, gate_init=0.3):
         super().__init__()
         self.capacity, self.topk, self.key_dim = capacity, topk, key_dim
         self.query = nn.Linear(feature_dim, key_dim, bias=False)
@@ -35,12 +36,19 @@ class EpisodicPointerMemory(nn.Module):
         self.age_rate = nn.Parameter(torch.tensor(math.log(math.e ** .5 - 1)))  # softplus -> 0.5
         self.boundary = nn.Parameter(torch.zeros(()))
         self.null = nn.Parameter(torch.zeros(()))
+        # Exact addressed matches: same current token, and same two-token context (induction).
+        self.match1 = nn.Parameter(torch.tensor(2.))
+        self.match2 = nn.Parameter(torch.tensor(2.))
+        # Recency route: a read entry may also vote for its own token (value = observed token).
+        self.recency = nn.Parameter(torch.tensor(-1.))
         self.gate = nn.Linear(feature_dim + 1, 1)
         nn.init.zeros_(self.gate.weight)
         nn.init.constant_(self.gate.bias, math.log(gate_init / (1 - gate_init)))
 
     def empty(self, lanes, feature_dim):
         return dict(feats=torch.zeros(lanes, 0, feature_dim), vals=torch.zeros(lanes, 0, dtype=torch.long),
+                    toks=torch.zeros(lanes, 0, dtype=torch.long), prev=torch.zeros(lanes, 0, dtype=torch.long),
+                    last=torch.full((lanes,), -1, dtype=torch.long),
                     pos=torch.zeros(lanes, 0, dtype=torch.long), eos=torch.full((lanes,), -1, dtype=torch.long),
                     start=torch.zeros(lanes, dtype=torch.long))
 
@@ -54,11 +62,16 @@ class EpisodicPointerMemory(nn.Module):
         positions = memory['start'][:, None] + torch.arange(n)
         feats = torch.cat([memory['feats'], x], 1)
         vals = torch.cat([memory['vals'], targets], 1)
+        prev_ids = torch.cat([memory['last'][:, None], ids[:, :-1]], 1)
+        toks = torch.cat([memory['toks'], ids], 1); prev = torch.cat([memory['prev'], prev_ids], 1)
         pos = torch.cat([memory['pos'], positions], 1)
         keys = self.key(feats); q = self.query(x)
         scores = q @ keys.transpose(1, 2) / math.sqrt(self.key_dim)               # (L,n,M)
         age = (positions[:, :, None] - pos[:, None, :]).clamp_min(0).float()
         scores = scores - F.softplus(self.age_rate) * torch.log1p(age)
+        same1 = toks[:, None, :] == ids[:, :, None]
+        same2 = same1 & (prev[:, None, :] == prev_ids[:, :, None])
+        scores = scores + self.match1 * same1.float() + self.match2 * same2.float()
         eos_seen = torch.where(ids == EOS, positions, torch.full_like(positions, -1))
         last_eos = torch.maximum(torch.cummax(eos_seen, 1).values, memory['eos'][:, None])
         scores = scores + self.boundary * (pos[:, None, :] < last_eos[:, :, None]).float()
@@ -66,14 +79,15 @@ class EpisodicPointerMemory(nn.Module):
         scores = scores.masked_fill(~valid, -math.inf)
         k = min(self.topk, scores.shape[-1])
         top, index = scores.topk(k, -1)
-        logits = torch.cat([top, self.null.expand(L, n, 1)], -1)
+        logits = torch.cat([top, top + self.recency, self.null.expand(L, n, 1)], -1)
         weights = torch.softmax(logits, -1)                                         # -inf -> 0
-        candidate_vals = vals[:, None, :].expand(L, n, -1).gather(2, index)
+        candidate_vals = torch.cat([vals[:, None, :].expand(L, n, -1).gather(2, index),
+                                    toks[:, None, :].expand(L, n, -1).gather(2, index)], -1)
         peak = torch.where(torch.isfinite(top[..., :1]), top[..., :1], torch.zeros_like(top[..., :1]))
         gate = torch.sigmoid(self.gate(torch.cat([x, peak], -1))).squeeze(-1)
         keep = self.capacity
-        new = dict(feats=feats[:, -keep:].detach(), vals=vals[:, -keep:], pos=pos[:, -keep:],
-                   eos=last_eos[:, -1], start=memory['start'] + n)
+        new = dict(feats=feats[:, -keep:].detach(), vals=vals[:, -keep:], toks=toks[:, -keep:], prev=prev[:, -keep:],
+                   last=ids[:, -1], pos=pos[:, -keep:], eos=last_eos[:, -1], start=memory['start'] + n)
         return weights[..., :-1], candidate_vals, weights[..., -1], gate, new
 
     def mixed_nll(self, native_nll, x, ids, targets, memory):
@@ -96,4 +110,5 @@ class EpisodicPointerMemory(nn.Module):
     def work(self, lanes, n, stored, feature_dim):
         m = stored + n
         return dict(key_map_macs=lanes * m * feature_dim * self.key_dim, query_macs=lanes * n * feature_dim * self.key_dim,
-                    score_macs=lanes * n * m * self.key_dim, selected_reads=lanes * n * min(self.topk, m))
+                    score_macs=lanes * n * m * self.key_dim, match_comparisons=2 * lanes * n * m,
+                    selected_reads=lanes * n * min(self.topk, m))

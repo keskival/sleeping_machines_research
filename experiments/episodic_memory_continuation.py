@@ -109,7 +109,7 @@ def main():
                    stream_start=stream_start, stream_total_updates=TOTAL, driver_sha256=driver.sha(Path(__file__)),
                    memory_sha256=driver.sha(ROOT / 'sleeping_machines/episodic_pointer_memory.py'))
     ck = parent; offset = 0; elapsed = 0.; work = dict(calls=0, replayed_targets=0, scored_targets=0); curve = []; loss_sum = 0.; count = 0
-    mem_state = memory.empty(args.lanes, d) if memory is not None else None; memory_work = dict(key_map_macs=0, query_macs=0, score_macs=0, selected_reads=0)
+    mem_state = memory.empty(args.lanes, d) if memory is not None else None; memory_work = dict(key_map_macs=0, query_macs=0, score_macs=0, match_comparisons=0, selected_reads=0)
     if a.resume_from:
         ck = torch.load(ROOT / a.resume_from, weights_only=False); assert ck['binding'] == binding
         model.load_state_dict(ck['model']); offset = ck['added_updates']; elapsed = ck['training_s']; work = ck['teacher_work']; curve = ck['curve']
