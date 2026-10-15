@@ -1,0 +1,92 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_cross_member_language_protocol_20261015_v1",
+  "rows": [
+    {
+      "run": "curie_r1g2_keyed0_1M_s0_20261007T1800Z",
+      "keyed": 0,
+      "train_tokens": 1048576,
+      "seed": 0,
+      "best_epoch": 2,
+      "parameters": 3321425,
+      "flagship_protocol_nll": 6.2335536032915115,
+      "own_slice_nll": 6.193579488294842,
+      "checkpoint_sha256": "512a9e625ffb4126950a773a6d308b104d78933fa16c835f6d3a4aca7bdc869e"
+    },
+    {
+      "run": "curie_r1g2_keyed1_1M_s0_20261007T1800Z",
+      "keyed": 1,
+      "train_tokens": 1048576,
+      "seed": 0,
+      "best_epoch": 2,
+      "parameters": 3333845,
+      "flagship_protocol_nll": 6.134376689791679,
+      "own_slice_nll": 6.019141011732342,
+      "checkpoint_sha256": "c18b6088d7be972389fea1632e4dc9099c6c3600bb87353c6d33fb3f37dbf0ee"
+    },
+    {
+      "run": "curie_r1g2_keyed1_1M_s1_20261007T2055Z",
+      "keyed": 1,
+      "train_tokens": 1048576,
+      "seed": 1,
+      "best_epoch": 2,
+      "parameters": 3333845,
+      "flagship_protocol_nll": 6.127534925937653,
+      "own_slice_nll": 5.999643716310323,
+      "checkpoint_sha256": "f101a2b9ef83d940d153b5f46e7fadbd6ff8542f0337599c51e95f55882a0432"
+    },
+    {
+      "run": "curie_r1g2_keyed1_1M_s2_20261007T2055Z",
+      "keyed": 1,
+      "train_tokens": 1048576,
+      "seed": 2,
+      "best_epoch": 2,
+      "parameters": 3333845,
+      "flagship_protocol_nll": 6.112300530076027,
+      "own_slice_nll": 6.00678861122285,
+      "checkpoint_sha256": "3a7433eb3a6758931c48f138f5b7c3eeb9db46d094cc24a7a673aba194f6e686"
+    },
+    {
+      "run": "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+      "keyed": 1,
+      "train_tokens": 4194304,
+      "seed": 0,
+      "best_epoch": 3,
+      "parameters": 3333845,
+      "flagship_protocol_nll": 5.6243375688791275,
+      "own_slice_nll": 5.5210612011456455,
+      "checkpoint_sha256": "51fe1e810743a7b81c4859897355ace7dd8a4486dda90415101c6c0d4b8a0fc9"
+    },
+    {
+      "run": "curie_r1g2_keyed1_4M_s1_20261008T1840Z",
+      "keyed": 1,
+      "train_tokens": 4194304,
+      "seed": 1,
+      "best_epoch": 3,
+      "parameters": 3333845,
+      "flagship_protocol_nll": 5.601294830441475,
+      "own_slice_nll": 5.49918786767143,
+      "checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237"
+    }
+  ],
+  "flagship_reference": {
+    "run": "aws_memory_policy_corpus_eos_2m_20261015_v1",
+    "nll": 5.978387557528713
+  },
+  "protocol": {
+    "file": "fineweb_val_000000",
+    "target_start": 25165825,
+    "targets": 8192,
+    "window": 1024,
+    "reset": "every window"
+  },
+  "source_sha256": {
+    "analysis/cross_member_language_protocol.py": "ed7c1d4c1d1add554c7cc50a92dde6ce9184f1e512535f81cae12675d13f51f1",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+  },
+  "max_rss_kb": 432776,
+  "process_wall_s": 30.83336688397685,
+  "scope": "Frozen keyed members scored once on the flagship 8192-target/1024-window protocol. Members differ in training data presentation (keyed: repeated epochs over 1M/4M; flagship: ~15M fresh targets), architecture and work; this is a quality placement, not a matched-compute comparison."
+}
