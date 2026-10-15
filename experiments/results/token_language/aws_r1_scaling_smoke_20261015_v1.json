@@ -1,0 +1,75 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "policy": "shared",
+  "reset_policy": "corpus_eos",
+  "parent_dev_nll": 5.978387557528713,
+  "added_updates": 256,
+  "added_targets": 131072,
+  "prequential_nll": 6.018595691114357,
+  "milestones": [
+    {
+      "update": 256,
+      "added_targets": 131072,
+      "scored": {
+        "nll": 5.98783383247676,
+        "loss_sum": 49052.334755649616,
+        "targets": 8192,
+        "target_start": 25165825,
+        "target_end_inclusive": 25174016,
+        "window": 1024,
+        "lanes": 8,
+        "eos_state_reset": false
+      },
+      "training_s": 126.38764600316063,
+      "scoring_s": 1.679968573153019
+    }
+  ],
+  "scored": {
+    "nll": 5.98783383247676,
+    "loss_sum": 49052.334755649616,
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "curve": [
+    {
+      "update": 256,
+      "added_targets": 131072,
+      "prequential_nll": 6.018595691114357,
+      "training_s": 126.38764600316063
+    }
+  ],
+  "training_s": 126.38764600316063,
+  "teacher_work": {
+    "calls": 56,
+    "replayed_targets": 6656,
+    "scored_targets": 1584
+  },
+  "local_clip_activation_fraction": 0.4978015075376884,
+  "final_weights": "experiments/results/token_language/aws_r1_scaling_smoke_20261015_v1.pt",
+  "source_sha256": {
+    "experiments/r1_scaling_continuation.py": "2dbf622ee9d5eef8fee986f4b4dd4cfbac12dd808d48933c5a879793fcddbc58",
+    "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.pt": "34cc59e4c3c456730196c63eb087528432c87e45064218b1269ac9e8c9504932"
+  },
+  "binding": {
+    "policy": "shared",
+    "reset_policy": "corpus_eos",
+    "parent_sha256": "34cc59e4c3c456730196c63eb087528432c87e45064218b1269ac9e8c9504932",
+    "stream_start": 14942224,
+    "stream_total_updates": 256,
+    "driver_sha256": "2dbf622ee9d5eef8fee986f4b4dd4cfbac12dd808d48933c5a879793fcddbc58"
+  },
+  "max_rss_kb": 584816,
+  "process_wall_s": 130.5668464510236,
+  "scope": "Data-scaling continuation of the strongest native R1 learner (shared lane clocks, corpus-EOS training boundary, calibrated local caps, supported teacher, full capacity/keys/values/writes, persistent numerical state, gradient window16). Eight contiguous fresh FineWeb GPT-2 TRAIN streams after the parent stream; scores each target before its update. Milestone DEV uses a deep-copied frozen learner on the same 8192 reused DEV targets/1024 history/no EOS reset as the parent stage; training state and RNG are untouched. Single seed6; no public validation or external fit."
+}
