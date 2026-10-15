@@ -382,6 +382,90 @@
       "documents": [
         "investment/PITCH.md"
       ]
+    },
+    {
+      "id": "price_native_fixed",
+      "display": "29.5089",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_native_s0_20261015_v3.json",
+        "path": [
+          "best",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "price_lstm_fixed",
+      "display": "29.6516",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_lstm_s0_20261015_v3.json",
+        "path": [
+          "best",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "price_native_online",
+      "display": "30.6203",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_online3_native_aug25_20261015_v1.json",
+        "path": [
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "price_linear_online",
+      "display": "30.5936",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_online3_linear_t_aug25_20261015_v1.json",
+        "path": [
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "price_linear_fixed",
+      "display": "29.6998",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_references_20261015_v2.json",
+        "path": [
+          "references",
+          "linear_features",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
     }
   ]
 }

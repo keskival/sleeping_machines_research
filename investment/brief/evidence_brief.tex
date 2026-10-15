@@ -498,7 +498,7 @@ Model & Prediction loss \\
 \midrule
 \textbf{Keyed temporal-memory model} (two seeds) & \textbf{5.60 / 5.62} \\
 Earlier flagship + addressed episodic memory & 5.634 \\
-Earlier flagship (same data, no addressed memory) & 5.978 \\
+Earlier flagship (without addressed memory) & 5.978 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -514,7 +514,7 @@ requirement: the basis for clockless hardware, where independent units run at th
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
 \href{https://www.imm.dtu.dk/courses/02204/}{DTU}). No chip speed or energy gain is claimed yet.
 
-\textbf{Next.} Deeper versions of the keyed model, with addressed reads in every layer, and larger training runs.
+\textbf{Continuation.} Scale the strongest keyed member on fresh tokens. Compare shallow and deep members with addressed reads in every layer; fund larger depth only when it improves prediction over the strongest shallow member. Unchanged race stacking worsened loss from 6.160 (D2) to 6.290 (D8) to 6.372 (D16). The keyed member uses full backpropagation; hard route races and counterfactual route credit remain a separate integration step.
 
 {\footnotesize\color{muted}Scope: keyed model 3.33M parameters, repeated epochs over 4M training tokens; flagship and
 episodic arm single seed; quality placement, not matched compute. Source-bound results:
