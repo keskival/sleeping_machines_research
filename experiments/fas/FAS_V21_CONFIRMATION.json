@@ -1,0 +1,59 @@
+{
+ "battle": "B3",
+ "preregistered": "2026-10-15",
+ "test_data": "fas_v2_K2_drop0.02_delta0_test21_620261016",
+ "test_seed_base": 620261016,
+ "generator": "experiments/fas/generate_v2.py",
+ "generator_args": {
+  "K": 2,
+  "drop": 0.02,
+  "delta": 0.0,
+  "train": 0,
+  "val": 0,
+  "test": 2000
+ },
+ "native": {
+  "driver": "experiments/fas/race_delay_binding.py",
+  "top": 2,
+  "window": 64,
+  "consume": 0,
+  "two_sided": 0,
+  "kappa": 0.5,
+  "clip": 8.0,
+  "train_slices": [
+   [
+    0,
+    1000
+   ],
+   [
+    1000,
+    2000
+   ],
+   [
+    2000,
+    3000
+   ]
+  ],
+  "calibration": "fas_v2_K2_drop0.02_delta0_calib_520261015",
+  "val_auroc_selected": 0.8003855
+ },
+ "references": {
+  "transformer": [
+   "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z/aws_fas_v2_ref_transformer_d128_lr0.003_s0_20261006T1815Z.json",
+   "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z/aws_fas_v2_ref_transformer_d128_lr0.003_s1_20261009T1330Z.json",
+   "experiments/results/aws_20260929/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z/aws_fas_v2_ref_transformer_d128_lr0.003_s2_20261009T1330Z.json"
+  ],
+  "lstm": [
+   "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z/aws_fas_v2_ref_lstm_d128_lr0.003_s0_20261006T1815Z.json",
+   "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z/aws_fas_v2_ref_lstm_d128_lr0.003_s1_20261009T1330Z.json",
+   "experiments/results/aws_20260929/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z/aws_fas_v2_ref_lstm_d128_lr0.003_s2_20261009T1330Z.json"
+  ]
+ },
+ "primary": {
+  "metric": "AUROC",
+  "merged_prefix": 1024,
+  "per_line": 512
+ },
+ "decision": "B3 Stage 5: margin>=0.02, bootstrap 95% lower>0, every native replicate above strongest baseline point estimate",
+ "restriction": "weights/clocks/standardization fixed during scoring; within-run state is the per-step CUSUM evidence"
+}
