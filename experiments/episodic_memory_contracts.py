@@ -55,11 +55,11 @@ def module_contracts():
     return out
 
 
-def equivalence_contract():
+def equivalence_contract(compiled=False):
     """Closed gate: episodic step equals the published raw_step exactly (loss, weights, state)."""
     results = {}
     for arm in ('none', 'episodic'):
-        model, args, train = run.build(); parent = torch.load(run.PARENT.with_suffix('.pt'), weights_only=False); model.load_state_dict(parent['model'])
+        model, args, train = run.build(compiled); parent = torch.load(run.PARENT.with_suffix('.pt'), weights_only=False); model.load_state_dict(parent['model'])
         opt = run.gate.CalibratedReceiverBankAdamW(model, parent['optimizer']['bank_caps'], lr=args.lr, weight_decay=args.weight_decay); opt.load_state_dict(copy.deepcopy(parent['optimizer']))
         for name, rng in parent['owned_rng'].items(): getattr(model, name).set_state(rng)
         gen = torch.Generator().set_state(parent['generator']); teacher = torch.Generator().set_state(parent['teacher_generator']); torch.set_rng_state(parent['torch_rng'])
@@ -82,8 +82,8 @@ def equivalence_contract():
 
 
 def main():
-    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
-    out = module_contracts(); out.update(equivalence_contract())
+    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--compiled', action='store_true'); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
+    out = module_contracts(); out.update(equivalence_contract(a.compiled)); out['compiled'] = a.compiled
     checks = dict(normalization=out['normalization_max_error'] < 1e-5, target_consistency=out['target_consistency_max_error'] < 1e-4,
                   causality=out['causality_prefix_max_change'] == 0 and out['causality_suffix_changes'], chunk_split=out['chunk_split_max_error'] < 1e-5,
                   read_time_credit=out['old_entries_detached'] and out['read_time_key_gradient_norm'] > 0 and out['read_time_query_gradient_norm'] > 0

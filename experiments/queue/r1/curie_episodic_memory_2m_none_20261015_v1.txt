@@ -1,2 +1,2 @@
 # R1: addressed episodic memory vs plain continuation on the identical next 2M fresh-TRAIN stream; decision: does read-time-credited long-range memory remove the measured 64-token history bottleneck (0.294-nat cache opportunity)
-curie_episodic_memory_2m_none_20261015_v1 experiments/episodic_memory_continuation.py --tag curie_episodic_memory_2m_none_20261015_v1 --memory none --updates 4096 --resume-from experiments/results/token_language/curie_episodic_memory_smoke_none_20261015_v1.pt
+curie_episodic_memory_2m_none_20261015_v1 experiments/episodic_memory_continuation.py --tag curie_episodic_memory_2m_none_20261015_v1 --memory none --updates 4096 --resume-from experiments/results/token_language/curie_episodic_memory_smoke_none_20261015_v1.pt --compiled
