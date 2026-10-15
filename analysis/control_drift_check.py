@@ -12,12 +12,12 @@ import episodic_memory_continuation as run
 from public_token_scoring import score
 
 
-def arm(compiled, updates):
+def arm(compiled, updates, offset=0):
     model, args, train = run.build(compiled); ck = torch.load(run.PARENT.with_suffix('.pt'), weights_only=False); model.load_state_dict(ck['model'])
     opt = run.gate.CalibratedReceiverBankAdamW(model, ck['optimizer']['bank_caps'], lr=args.lr, weight_decay=args.weight_decay); opt.load_state_dict(copy.deepcopy(ck['optimizer']))
     for n, r in ck['owned_rng'].items(): getattr(model, n).set_state(r)
     gen = torch.Generator().set_state(ck['generator']); teacher = torch.Generator().set_state(ck['teacher_generator']); torch.set_rng_state(ck['torch_rng'])
-    state = run.gate.pilot.clone_state(ck['state']); start = ck['binding']['stream_start'] + run.TOTAL * args.chunk * args.lanes + args.lanes
+    state = run.gate.pilot.clone_state(ck['state']); start = ck['binding']['stream_start'] + run.TOTAL * args.chunk * args.lanes + args.lanes + offset
     tok = run.driver.LaneTokens(train, start, run.TOTAL * args.chunk * args.lanes + args.lanes, args.lanes); losses = []
     for i in range(updates):
         opt.zero_grad(); loss, state, _ = run.gate.pilot.raw_step(model, state, gen, teacher, args, tok[:, i * args.chunk:(i + 1) * args.chunk + 1], 0); opt.step(); losses.append(float(loss.double().mean()))
@@ -25,12 +25,12 @@ def arm(compiled, updates):
 
 
 def main():
-    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--updates', type=int, default=64); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
-    out = dict(eager=arm(False, a.updates), compiled=arm(True, a.updates))
+    p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--updates', type=int, default=64); p.add_argument('--offsets', type=int, nargs='*'); a = p.parse_args(); torch.set_num_threads(1); began = time.monotonic()
+    out = dict(eager=arm(False, a.updates), compiled=arm(True, a.updates)) if not a.offsets else {f'offset_{o}': arm(True, a.updates, o) for o in a.offsets}
     rec = dict(status='completed', battle='R1', tag=a.tag, updates=a.updates, parent_dev=5.978387557528713, recorded_compiled_smoke_dev=json.loads((ROOT / 'experiments/results/token_language/curie_episodic_memory_smoke_none_20261015_v1.json').read_text())['scored']['nll'], **out,
                source_sha256={n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in ('analysis/control_drift_check.py', 'experiments/episodic_memory_continuation.py')}, process_wall_s=time.monotonic() - began)
     with (ROOT / f'experiments/results/diagnostics/{a.tag}.json').open('x') as f: json.dump(rec, f, indent=2); f.write('\n')
-    print(json.dumps({k: rec[k] for k in ('parent_dev', 'recorded_compiled_smoke_dev', 'eager', 'compiled')}))
+    print(json.dumps({k: v for k, v in rec.items() if k not in ('source_sha256',)}))
 
 
 if __name__ == '__main__':
