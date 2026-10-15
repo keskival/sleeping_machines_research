@@ -7047,6 +7047,11 @@ Controlled composition task audit passes:128TRAIN/64DEV/64TEST scenes, three nes
 
 ### Paired native role-memory composition
 
-New native parents add persistent source-level/role view caches and explicit ordered child interactions, retaining all32native stages,hard races,indexed state and generated emissions. Actual paired update gate: parameters169378→255394;native candidate/selected/losing work9600/4800/9600 and300deliveries per two-scene update in both arms. Extra role forward811008MAdds/2944products/1248transport-vector calls/32096logical view bytes; backward,optimizer and complete FLOPs remain separate unaudited work. CPU7.420→7.912s, cumulative RSS761580KiB. Top pair gradient0.10751; all-level finite gradients. No quality or hardware efficiency result inferred.
+**Paired role-memory result.** frame: NLL0.728851, accuracy46.88%; relational: NLL0.694245, accuracy51.56%. No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep. Scope: one native seed,64paired updates/128scene presentations per arm,TRAIN-only ridge.01 affine head,64reused synthetic DEV scenes and observed-geometry clustered uncertainty;TEST not model-scored. Equal presentations do not mean equal parameters/arithmetic. Source: `experiments/results/hierarchy/aws_g_hier_paired_decision_20261015_v1.json`.
 
-Native frame/role-memory arms run64paired updates/128presentations each. Pairs derive only from anonymous TRAIN sensor transformations and existing whole labels,not hidden generator IDs. Fixed TRAIN-only ridge.01 affine head is primary; unseen DEV,TEST closed. Exact8-update model/optimizer/RNG recovery passes. Guarded continuation waits both endpoints,admits frozen cache/content analysis through run_safe,publishes the decision and stops. Quality pending. [Mechanism and declaration](experiments/theory/ROLE_MEMORY_AND_INTERACTION_DEPTH.md).
+| Native arm | DEV NLL | DEV accuracy | Parameters | Native candidate scores/training scene | Role forward MAdds/training scene | Native inference candidates/scene |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| frame | 0.728851 | 46.88% | 169378 | 4800.0 | 0.0 | 4800.0 |
+| relational | 0.694245 | 51.56% | 255394 | 4800.0 | 405504.0 | 4800.0 |
+
+Both arms use128presentations/4096raw event presentations. Full fitting/inference FLOPs, special-function work and traffic remain unaudited; candidate scores and role MAdds are separate partial ledgers, not complete arithmetic. Native losing-value work, timer scores, role products/transports and logical state are charged in the bound result files. CPU process totals include fitting/scoring; no hardware latency/energy claim.

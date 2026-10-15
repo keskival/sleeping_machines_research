@@ -272,14 +272,10 @@ All eight levels receive finite nonzero native content gradients; top pair-map
 gradient norm0.10751. Completed gate:
 `experiments/results/hierarchy/aws_g_hier_relational_preflight_20261015_v1.json`.
 
-**Paired role-memory result.** Pending. Native frame and role-memory arms each
-run64paired AdamW updates/128scene presentations with the same acquired core,
-initial external head,pair order and common race coupling. Partners are matched
-by observed TRAIN geometry and existing whole labels; no latent part/tree IDs
-enter pairing or fitting. The comparison also tests the paired learning repair
-against completed single-scene fits. TRAIN-only ridge.01 native affine head is
-the primary endpoint; joint/scalar heads remain diagnostics. Features are cached,
-TEST remains unscored,and exact model/Adam/race/order recovery runs every8updates.
-The continuation automatically admits frozen endpoint/content analysis after
-both results,clusters uncertainty by observed geometry,publishes the outcome,
-and stops. No unchanged larger fit or depth grid follows automatically.
+**Paired role-memory result.** frame: NLL0.728851, accuracy46.88%; relational: NLL0.694245, accuracy51.56%. No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep. Scope: one native seed,64paired updates/128scene presentations per arm,TRAIN-only ridge.01 affine head,64reused synthetic DEV scenes and observed-geometry clustered uncertainty;TEST not model-scored. Equal presentations do not mean equal parameters/arithmetic. Source: `experiments/results/hierarchy/aws_g_hier_paired_decision_20261015_v1.json`.
+
+Endpoint attribution includes zero emitted values,fixed lower arm-to-emit delays,
+and both together,under the same native race tape. Addresses/availability and
+internal computational clocks remain; fixed delays also change transport.
+These are frozen diagnostics,not flagship restrictions. The amendment precedes
+both completed endpoints;primary quality/actors are unchanged. [Channel audit](../theory/NATIVE_EMISSION_CHANNEL_AUDIT.md).
