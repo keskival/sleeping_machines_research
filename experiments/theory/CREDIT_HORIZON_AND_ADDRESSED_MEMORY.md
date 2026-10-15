@@ -68,8 +68,11 @@ protocol by an amount comparable to the fixed-cache opportunity, and raises its 
 through the native readout alone: 5.973390), beyond the fixed cache's 5.684537, with 6,248 memory parameters. Frozen
 resets of state and store cost **0.227** nats at N = 64, 0.080 at N = 256 and 0.397 at N = 16
 (`results/diagnostics/curie_history_reliance_episodic_2m_20261015_v1.json`): 30–50x the flagship's reliance on history
-older than 64 tokens and about twice the keyed member's. Confirmed. The identical-stream control arm separates the
-memory's effect from the added data (decision file `curie_episodic_memory_2m_decision_20261015_v1.json`).
+older than 64 tokens and about twice the keyed member's. Confirmed. The identical-stream control arm (plain continuation,
+same 2M targets) scores 6.107894 and its history value is −0.0008 nats at N = 64 and −0.0038 at N = 256
+(`curie_history_reliance_control_2m_20261015_v1.json`): added data without addressed reads yields no long-range use, as P1
+predicts. The control also drifts worse than its parent on this stream (eager and compiled repeats agree,
+`curie_control_drift_check_20261015_v1.json`), so the memory's quality effect is quoted against the parent (+0.345).
 
 **Learned document boundary.** The store's boundary bias, initialized at 0, learns **−4.39**: entries from before the
 latest end-of-document marker are discounted by a factor of about e^4.4 ≈ 80 against same-document entries. The model
