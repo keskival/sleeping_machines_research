@@ -36,7 +36,15 @@ identical). Driver `experiments/residual_depth_token_language.py` (versioned cop
 
 Depth ladder at 1M fresh targets, flagship settings, seed 6, compiled: residual D2, serial D8, residual D8, residual
 D16. Scored on the long-history protocol by `analysis/score_depth_ladder.py` (`curie_depth_ladder_1m_decision_20261015_v1`).
-Pass: D16res < D8res < D2res and D8res < D8serial. If residual composition alone does not make depth monotone, the
-next construction adds per-stage addressed episodic reads (each stage queries its own store with read-time credit), so
-every stage gets lag-independent credit paths: path length from a loss to any earlier event becomes O(depth) instead of
-O(lag), the property that lets attention stacks train deep.
+Pass: D16res < D8res < D2res and D8res < D8serial.
+
+Second construction, run in the same ladder (D2/D8/D16): **per-stage addressed reads**. After stage d the stream queries
+a persistent per-lane store (512 entries) of earlier depth-d stream states with a sparse top-16 race (learned age
+clock, document-boundary bias from the observed EOS token, null route) and adds sum_j a_j W_v f_j. Old entries are
+detached; read-time credit reaches the query and value maps, clock, bias and null for any lag, and in-window entries
+keep their writer gradient. Every stage gets lag-independent credit paths: the path from a loss to any earlier event
+has length O(depth) rather than O(lag), the property that lets attention stacks train deep. W_v starts at zero, so the
+read stack starts exactly at the residual stack. Contracts (`curie_residual_read_contracts_20261015_v1.json`) pass: no
+reads/no residual equals the original driver bit for bit; zero value map equals the residual stack bit for bit;
+nonzero gradients for every read parameter across credit windows; exact causality; store growth. Decision fields:
+`reads_monotone`, `reads_gain_by_depth`, `depth_gain_d16_vs_d2`.
