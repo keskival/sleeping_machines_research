@@ -1,0 +1,97 @@
+{
+  "status": "completed",
+  "evidence_level": "single-seed chronological online development quality win",
+  "rows": [
+    {
+      "family": "native",
+      "nll": 5.733357877780088,
+      "targets": 16384,
+      "online_update_gflops": 2.127156736,
+      "warmup_gflops": 0.265892608,
+      "inherited_fitting_gflops": 7823.235921066,
+      "online_update_wall_s": 32.329397462075576,
+      "quarters_cumulative": [
+        {
+          "targets": 4096,
+          "nll": 6.9653883310722895
+        },
+        {
+          "targets": 8192,
+          "nll": 6.334360933787963
+        },
+        {
+          "targets": 12288,
+          "nll": 5.955671465920498
+        },
+        {
+          "targets": 16384,
+          "nll": 5.733357877780088
+        }
+      ]
+    },
+    {
+      "family": "lstm",
+      "nll": 5.751740531985097,
+      "targets": 16384,
+      "online_update_gflops": 2.37759232,
+      "warmup_gflops": 0.297197056,
+      "inherited_fitting_gflops": 7823.170862286,
+      "online_update_wall_s": 24.29655622295104,
+      "quarters_cumulative": [
+        {
+          "targets": 4096,
+          "nll": 6.982200511523747
+        },
+        {
+          "targets": 8192,
+          "nll": 6.354104201360615
+        },
+        {
+          "targets": 12288,
+          "nll": 5.974115541693378
+        },
+        {
+          "targets": 16384,
+          "nll": 5.751740531985097
+        }
+      ]
+    },
+    {
+      "family": "transformer",
+      "nll": 5.849936032040462,
+      "targets": 16384,
+      "online_update_gflops": 1990.780683776,
+      "warmup_gflops": 85.855588608,
+      "inherited_fitting_gflops": 7816.284519126,
+      "online_update_wall_s": 643.762477325974,
+      "quarters_cumulative": [
+        {
+          "targets": 4096,
+          "nll": 7.130782880137327
+        },
+        {
+          "targets": 8192,
+          "nll": 6.484211761863469
+        },
+        {
+          "targets": 12288,
+          "nll": 6.079629987278053
+        },
+        {
+          "targets": 16384,
+          "nll": 5.849936032040462
+        }
+      ]
+    }
+  ],
+  "gain_over_transformer": 0.11657815426037388,
+  "gain_over_lstm": 0.018382654205008286,
+  "online_wall_speedup_vs_transformer": 19.91260363207041,
+  "online_arithmetic_ratio_transformer_over_native": 935.888103628674,
+  "scope": "Every model learns weights online after each32 revealed targets; scores precede updates. Native/LSTM state persists; Transformer uses2048-event rolling history plus persistent output slots. TRAIN Aug24 warmup2048; DEV Aug25 context128 then16384 adjacent targets; seed0/reusedDEV,Septembersealed. Same acquired fitting budget but different validation-selection costs. Online arithmetic and wall columns cover scored-stream forward/backward/optimizer; inherited fitting and TRAINwarmup listed separately. Context-only warmup and gate costs excluded from these online columns; special functions/comparisons separate in raw ledgers. Earlier native-guidance page11 is a distinct acquired cohort; do not mix its scores. No trading profit, hardware-energy or family-wide frontier claim.",
+  "input_sha256": {
+    "experiments/results/market/aws_b10_online_native_s0_20261014_v1.json": "e4ee927ec2ba39a4dfd80f89c1b8fa31b1b629e8b21fda5a80bb6487d79ef34d",
+    "experiments/results/market/aws_b10_online_lstm_s0_20261014_v1.json": "1d6b8f17ade4edb3f8acee6432a00eea978f4a36ea82b067a744ae8ec58c0c31",
+    "experiments/results/market/aws_b10_online_transformer_s0_20261014_v1.json": "184c1f3cf90ce3b6f13eb447644da0a90d512e07c13a804f1be33594c35069fd"
+  }
+}

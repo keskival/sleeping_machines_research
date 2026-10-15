@@ -1,0 +1,12 @@
+"""Completed all-adaptive market comparison with common scored-stream units."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def main():
+ rows=[];inputs={}
+ for family in ['native','lstm','transformer']:
+  p=ROOT/f'experiments/results/market/aws_b10_online_{family}_s0_20261014_v1.json';r=json.loads(p.read_text());assert r['status']=='completed' and r['mode']=='online' and r['capability_admission_passed'];x=r['rows'][0];assert x['targets']==16384 and x['online_weight_updates']==512 and x['persistent_numeric_state'];inputs[str(p.relative_to(ROOT))]=hashlib.sha256(p.read_bytes()).hexdigest();rows.append(dict(family=family,nll=x['nll'],targets=x['targets'],online_update_gflops=x['online_ledger']['arithmetic']/1e9,warmup_gflops=x['warmup_ledger']['arithmetic']/1e9,inherited_fitting_gflops=x['inherited_fitting_arithmetic']/1e9,online_update_wall_s=x['online_wall_s'],quarters_cumulative=x['curve']))
+ by={x['family']:x for x in rows};packet=dict(status='completed',evidence_level='single-seed chronological online development quality win',rows=rows,gain_over_transformer=by['transformer']['nll']-by['native']['nll'],gain_over_lstm=by['lstm']['nll']-by['native']['nll'],online_wall_speedup_vs_transformer=by['transformer']['online_update_wall_s']/by['native']['online_update_wall_s'],online_arithmetic_ratio_transformer_over_native=by['transformer']['online_update_gflops']/by['native']['online_update_gflops'],scope='Every model learns weights online after each32 revealed targets; scores precede updates. Native/LSTM state persists; Transformer uses2048-event rolling history plus persistent output slots. TRAIN Aug24 warmup2048; DEV Aug25 context128 then16384 adjacent targets; seed0/reusedDEV,Septembersealed. Same acquired fitting budget but different validation-selection costs. Online arithmetic and wall columns cover scored-stream forward/backward/optimizer; inherited fitting and TRAINwarmup listed separately. Context-only warmup and gate costs excluded from these online columns; special functions/comparisons separate in raw ledgers. Earlier native-guidance page11 is a distinct acquired cohort; do not mix its scores. No trading profit, hardware-energy or family-wide frontier claim.',input_sha256=inputs)
+ assert packet['gain_over_transformer']>0 and packet['gain_over_lstm']>0
+ (ROOT/'investment/online_market_evidence.json').write_text(json.dumps(packet,indent=2)+'\n');print(json.dumps({k:v for k,v in packet.items() if k not in ['rows','scope','input_sha256']}))
+if __name__=='__main__':main()

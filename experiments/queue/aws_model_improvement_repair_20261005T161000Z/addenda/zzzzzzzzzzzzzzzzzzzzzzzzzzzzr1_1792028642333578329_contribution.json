@@ -1,0 +1,32 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Resolve completed protecteddepth deficit before next model design",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_protected_depth_contribution_audit_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_protected_depth_contribution_audit_20261015_v1/aws_protected_depth_contribution_audit_20261015_v1.txt",
+        "queue_sha256": "d539e95d6978a62fae6ed835d364b0bbc24834f99b907fcd0703a93c847690eb",
+        "source_sha256": {
+          "experiments/credit/protected_depth_contribution_audit.py": "78d596e0b1f2b9d6cbd0a4d3ad8887edbe9c88f20c35eb22e7776518228148f4",
+          "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+          "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+          "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+          "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b"
+        },
+        "result": "experiments/results/diagnostics/aws_protected_depth_contribution_audit_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.json"
+          }
+        ],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

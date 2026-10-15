@@ -21,7 +21,7 @@
 
 \pagestyle{fancy}\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\footnotesize\color{muted}Sleeping Machines \textbullet{} Evidence brief \textbullet{} 14 October 2026 \textbullet{} Confidential, private review}
+\fancyfoot[L]{\footnotesize\color{muted}Sleeping Machines \textbullet{} Evidence brief \textbullet{} 15 October 2026 \textbullet{} Confidential, private review}
 \fancyfoot[R]{\footnotesize\color{muted}\thepage}
 
 \newcommand{\sect}[2]{\vspace{2pt}{\color{ours}\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{-3pt}{\LARGE\bfseries #2}\par\vspace{2pt}}
@@ -477,59 +477,57 @@ per update. Forecasting, not profits.}
 
 \newpage
 % ---------------------------------------------------------------- market comparison
-\sect{Market forecasting: ahead of Transformer}{Fixed-weight development quality comparison}
+\sect{Online market prediction wins}{Ahead while every model learns during use}
 
-Our native temporal model predicts a real high-frequency trade stream more
-accurately than the completed Transformer reference. Both forecast the next
-trade's timing and type from the same past event information. Weights stay fixed
-during this evaluation; event memory evolves within each 1,024-event window and
-resets between windows.
+Our native model beats both Transformer and LSTM on chronological market
+forecasts while \textbf{all three adapt their weights online}. Each forecast is
+scored before its outcome is used for learning. Useful numerical memory persists
+across learning updates.
 
 \begin{tile}
-\textbf{Lower prediction loss is better.}
+\textbf{Lower prediction loss is better.} Same 16,384 consecutive scored trades.
 \begin{center}
-\begin{tabular}{lrr}
+\begin{tabular}{lrrr}
 \toprule
-Model & Prediction loss & Scored events \\
+Model & Prediction loss & Online GFLOPs & Online seconds \\
 \midrule
-\textbf{Sleeping Machines native} & \textbf{6.88224} & 677,376 \\
-Time-encoded Transformer & 6.96644 & 677,376 \\
+\textbf{Sleeping Machines} & \textbf{5.73336} & \textbf{2.13} & \textbf{32.3} \\
+LSTM & 5.75174 & 2.38 & 24.3 \\
+Transformer & 5.84994 & 1,990.78 & 643.8 \\
 \bottomrule
 \end{tabular}
 \end{center}
-\textbf{Native leads by 0.08419 nats per event.} Both fits are complete;
-this is a one-seed result on the same chronological development protocol.
+\textbf{Native wins by 0.11658 nats/event over Transformer and 0.01838 over LSTM.}
+The online forecasting-and-learning loop is \textbf{19.9 times faster than Transformer}
+on this single-thread CPU implementation.
 \end{tile}
 
-\textbf{What this adds.} The native model's existing market result now has a
-completed neural reference beside it. Temporal computation and persistent event
-memory deliver better prediction on this real trade stream than this Transformer
-configuration. This broadens our evidence beyond language, classification and
-standard event benchmarks.
+\textbf{Why this matters.} This tests a capability the market application needs:
+learning from an evolving stream while making predictions. Native temporal
+memory retains useful history without replaying an attention window at every
+update. The measured result combines better prediction with lower online
+arithmetic and elapsed time than this Transformer reference.
 
-\textbf{A concrete product direction.} Accurate trade-stream forecasts can
-support execution, liquidity and market-risk systems. This result measures
-forecast quality; trading returns require a separate evaluation including costs.
+\textbf{What each model is allowed to do.} All receive the same chronological
+observations and update after 32 revealed outcomes. Native temporal state and
+LSTM recurrent state persist. Transformer uses 2,048 events of rolling history,
+twice its acquisition context, with attention recomputed after weight changes;
+its addressed output memory also persists. Our native memory is not truncated
+to the attention buffer. No artificial memory reset is imposed at update boundaries.
 
-\textbf{Online learning is a separate comparison.} The preceding page measures
-our native predictor adapting its weights during use, against other learning
-rules for that same predictor. It contains no Transformer arm. The fixed-weight
-result here does not measure an online-learning advantage over Transformer.
+\textbf{The next winning candidate.} Add our demonstrated native future-taught
+credit guidance to the same acquired actor and stream. Its source actor and
+ordinary online forecasts must replay before attributing any extra quality gain
+to guidance. The existing page 11 guidance experiment uses a different cohort.
 
-\textbf{Next decisive confirmation.} The native model and Transformer here used
-different fitting and selection budgets. A separately running three-seed study
-caps each model at the same complete fitting arithmetic. It will determine
-whether the quality lead also holds at matched compute. September test data
-remains sealed.
-
-{\footnotesize\color{muted}Scope: Binance BTCUSDT aggregated trades; TRAIN 1--24 August 2026,
-DEV 25--31 August; 801 training and 756 development windows of 1,024 events,
-first 128 events as context. Same six event types, physical gaps and 1 microsecond
-recording-cell likelihood. Fixed two-layer, width 32 Transformer with causal time
-encoding and the shared temporal race output head; native 18,164 parameters.
-In-development member; a development quality lead, not a sealed-test or
-family-wide verdict. Native fitting arithmetic is unmeasured in the older fit.
-Source-bound completed evidence: \\ \texttt{investment/market\_transformer\_evidence.json}.}
+{\footnotesize\color{muted}Scope: one seed; Binance BTCUSDT, 2,048 Aug24 TRAIN warmup targets,
+128 Aug25 context events, then 16,384 adjacent DEV forecasts. September sealed.
+Online columns measure scored-stream forward/backward/optimizer work; original
+fitting, TRAIN warmup, context-only preparation and engineering gates are separate.
+Special functions are separate from arithmetic. Fixed-weight completed development
+comparison also favours native: 6.88224 versus 6.96644; it is a different protocol.
+No trading-return or measured chip-energy claim. Source-bound results and shared
+units: \\ \texttt{investment/online\_market\_evidence.json}.}
 
 \newpage
 \sect{Language learning improves}{Better prediction with less complete training time}
@@ -589,8 +587,8 @@ These timing mechanisms are established in asynchronous circuit research
 trained richer-readout model with local clipping reduces prediction loss from
 \textbf{6.09934 to 6.06556}, a further \textbf{0.03377-nat gain} after 2.10 million
 additional training targets. Same 8,192 development targets and 1,024-token history,
-one seed; added data and local clipping act together. Added-depth quality is
-being tested against this stronger continued-parent control.
+one seed; added data and local clipping act together. The added-depth candidate scores 6.09508; the stronger continued parent at 6.06556
+is the selected model.
 
 \textbf{Why this matters.} The learning implementation improves prediction
 and cost together, rather than only passing numerical contracts. The next

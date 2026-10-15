@@ -1,0 +1,76 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "Carry demonstrated learned native credit into online reference comparison; exact actor/acquisition/stream parity prevents hidden handicaps or extra warmup",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "4": [
+      {
+        "name": "aws_b10_guided_online_smoke_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_guided_online_smoke_20261014_v2/aws_b10_guided_online_smoke_20261014_v2.txt",
+        "queue_sha256": "0b3967fc9d9845981bfa170845a351dfa74c179d0de6fa3e5af904720a1fa7b1",
+        "source_sha256": {
+          "experiments/credit/aws_market_guided_online.py": "40620bfede18838610c5da74e7de0a3c09cdca2603dbd446d7fc4fd32d691973",
+          "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917",
+          "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0",
+          "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+          "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+          "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+          "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+          "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+          "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f"
+        },
+        "result": "experiments/results/market/aws_b10_guided_online_smoke_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json"
+          },
+          {
+            "result": "experiments/results/market/aws_b10_online_native_s0_20261014_v1.json"
+          }
+        ],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10_guided_online_s0_20261014_v2",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_online/aws_b10_guided_online_s0_20261014_v2/aws_b10_guided_online_s0_20261014_v2.txt",
+        "queue_sha256": "5a73bfec301adef8aacf6bfb5f1dc2befebd9ec8115420dc40d0590c1a0a9298",
+        "source_sha256": {
+          "experiments/credit/aws_market_guided_online.py": "40620bfede18838610c5da74e7de0a3c09cdca2603dbd446d7fc4fd32d691973",
+          "experiments/credit/market_native_early_request.py": "bad05ea481d01f09605a78b1a6d9065d369e625ba33390416e1a911f3a576917",
+          "experiments/credit/market_native_remote_admission_selected.py": "51ee4810744847059bef654a7c6edf3f0239fc029233c00cddb45b1447d1f4f0",
+          "experiments/credit/native_market_credit.py": "92ac4e6d92045e9028d56fdd038a4c6030c299ae910937b56c70ece170f8f5c5",
+          "experiments/credit/market_streaming_clock_updates.py": "27615600594d95bbd3ad31cd38a317fa49d040371cffc71a608d041f821dcf1f",
+          "experiments/market/paired_clock_credit.py": "c9785dbae22e2ef854c060986d63ae85dbd6b181ba1afa84122922d096740007",
+          "experiments/market/projected_clock_state.py": "f56e080a9b6086702dc49544ceca8fb6f0ca5fd5e196ce103d792b55a173143f",
+          "experiments/market/local_eligibility_state.py": "2ad44927afa9a3fda2c84e4b9287420a2e55af3922e06faa814c517b2f9cdbc3",
+          "experiments/market/episode_state.py": "768d52ea7616dbd12e05ee1a0e146b6a1e71d11d50e2ccfc6ed1b90efcd4d968",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f"
+        },
+        "result": "experiments/results/market/aws_b10_guided_online_s0_20261014_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json"
+          },
+          {
+            "result": "experiments/results/market/aws_b10_online_native_s0_20261014_v1.json"
+          },
+          {
+            "result": "experiments/results/market/aws_b10_guided_online_smoke_20261014_v2.json",
+            "rss_margin": 1.25
+          }
+        ],
+        "timeout_s": 10800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

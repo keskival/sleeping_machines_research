@@ -24,7 +24,7 @@ def main():
  group=32;acquisition=2 if a.mode=='smoke' else 64;blocks=2 if a.mode=='smoke' else 512
  torch.manual_seed(19101);critic=guide.NativeMarketCredit(264).double();critic.core.head=torch.nn.Linear(critic.core.total_payload,1).double();torch.nn.init.zeros_(critic.core.head.weight);torch.nn.init.zeros_(critic.core.head.bias)
  opt=torch.optim.AdamW(actor.parameters(),lr=.0001,weight_decay=1e-4,foreach=False);cop=torch.optim.Adam(critic.parameters(),lr=.001)
- z=np.load(ROOT/'data/binance/npz/2026-08-24.npz');origin=int(z['t'][0]);t,m,path=load('2026-08-24',acquisition*group+1,origin);state=initial(actor,1);bundle=(actor,opt,state,critic,cop,.001)
+ z=np.load(ROOT/'data/binance/npz/2026-08-24.npz');origin=int(z['t'][0]);t,m,path=load('2026-08-24',acquisition*group+1,origin);state=initial(actor,1);state['last_time']=t[:1].clone();bundle=(actor,opt,state,critic,cop,.001)
  # The source learner uses exact full actor credit during preparation, while
  # separately training native guidance from actual future-update outcomes.
  bundle,source=guide.stream(bundle,t,m,0,acquisition,group,'online',True)
