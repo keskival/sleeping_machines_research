@@ -1,0 +1,114 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "R1 depth-must-scale ladder, seed 7 on AWS in parallel with Curie seed 6 (handoff: AWS runs seeds of ladder arms in spare slots); same 1M fresh targets and flags as Curie arms",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1/aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1.txt",
+        "queue_sha256": "a3205f9039c95bd6de21fd02eadfb1465ba4eec1a46ad7a5c63075b26bfc7958",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 36000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_depth_ladder_d2_residual_reads_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d2_residual_reads_1m_s7_20261015_v1/aws_depth_ladder_d2_residual_reads_1m_s7_20261015_v1.txt",
+        "queue_sha256": "ee6a2f62a45b9b0b2e3719690b60beed96a1251c1c42e08ce668e68ef2eb7ec2",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d2_residual_reads_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_depth_ladder_d16_residual_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d16_residual_1m_s7_20261015_v1/aws_depth_ladder_d16_residual_1m_s7_20261015_v1.txt",
+        "queue_sha256": "7e2de4734684204e91339260459a5452b9c6eecae01b269e3dc1d41c8d257fb1",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d16_residual_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 36000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "4": [
+      {
+        "name": "aws_depth_ladder_d8_residual_reads_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d8_residual_reads_1m_s7_20261015_v1/aws_depth_ladder_d8_residual_reads_1m_s7_20261015_v1.txt",
+        "queue_sha256": "166bcec747f8d8301c4a783f7bff8d890d252bb339e6e3b35f14e5b876ae15a8",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d8_residual_reads_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_depth_ladder_d8_serial_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d8_serial_1m_s7_20261015_v1/aws_depth_ladder_d8_serial_1m_s7_20261015_v1.txt",
+        "queue_sha256": "7a2624f69554deb29ed86243d6ee54825cbf91656da7054545680d7015cdec68",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d8_serial_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_depth_ladder_d8_residual_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d8_residual_1m_s7_20261015_v1/aws_depth_ladder_d8_residual_1m_s7_20261015_v1.txt",
+        "queue_sha256": "7fcc6cfb6634279774195a2e54dd1a25441ff8d910d2c95e7cdf41936b85883f",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d8_residual_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_depth_ladder_d2_residual_1m_s7_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_depth_ladder_d2_residual_1m_s7_20261015_v1/aws_depth_ladder_d2_residual_1m_s7_20261015_v1.txt",
+        "queue_sha256": "f89ad6b5fea4a60bac7c68523cfe8db442279137a6951c02713fa00c09a36dfa",
+        "source_sha256": {
+          "experiments/residual_depth_token_language.py": "d076f13882daa5fcabc332dc88d1b6fc769698d5f78519d49fc8d7e689a84c7e"
+        },
+        "result": "experiments/results/token_language/aws_depth_ladder_d2_residual_1m_s7_20261015_v1.json",
+        "requires": [],
+        "timeout_s": 14400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
