@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_history_reliance_episodic_2m_20261015_v1",
+  "run": "curie_episodic_memory_2m_episodic_20261015_v1",
+  "memory": "episodic",
+  "nll": {
+    "1024": 5.63353194910124,
+    "256": 5.713953270287362,
+    "64": 5.8603420549985685,
+    "16": 6.030050459107798
+  },
+  "history_value": {
+    "256": 0.08042132118612244,
+    "64": 0.22681010589732864,
+    "16": 0.39651851000655824
+  },
+  "source_sha256": {
+    "analysis/history_reliance.py": "cfaec6e0e644bd047346047cbe319d99003395e1a3f6d65729c70c65e32bba95",
+    "experiments/episodic_memory_continuation.py": "76a481f7cc1f32e6c8c028b929c85c48608f018d4fa59a944ea7cd4f90cab24b",
+    "sleeping_machines/episodic_pointer_memory.py": "c19aea14f99aeb6a5e5944538a46402717bc196d68dc3baeb3cb21c8a6400685"
+  },
+  "max_rss_kb": 477860,
+  "process_wall_s": 10.192640246998053,
+  "scope": "Frozen completed arm; state and store reset every N tokens within the recorded DEV windows. Distribution intervention, not a trained short-history control."
+}
