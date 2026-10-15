@@ -62,8 +62,20 @@ history older than 256 tokens should be small, and training on 1024-token lanes 
 (`curie_r1g2_keyed1_16M_fresh_l1024_s0_20261015_v1`) followed by the same reset intervention tests the increase.
 
 **Prediction P4.** Adding the episodic store with read-time credit to the P24 flagship improves it on the scored
-protocol by an amount comparable to the fixed-cache opportunity, and raises its history reliance at N = 64. The queued
-2M pair (`curie_episodic_memory_2m_{episodic,none}_20261015_v1`, then `analysis/history_reliance.py`) tests it.
+protocol by an amount comparable to the fixed-cache opportunity, and raises its history reliance at N = 64.
+
+**Test.** After 2M fresh targets the episodic arm scores **5.633532** against the 5.978388 parent (the same weights
+through the native readout alone: 5.973390), beyond the fixed cache's 5.684537, with 6,248 memory parameters. Frozen
+resets of state and store cost **0.227** nats at N = 64, 0.080 at N = 256 and 0.397 at N = 16
+(`results/diagnostics/curie_history_reliance_episodic_2m_20261015_v1.json`): 30–50x the flagship's reliance on history
+older than 64 tokens and about twice the keyed member's. Confirmed. The identical-stream control arm separates the
+memory's effect from the added data (decision file `curie_episodic_memory_2m_decision_20261015_v1.json`).
+
+**Learned document boundary.** The store's boundary bias, initialized at 0, learns **−4.39**: entries from before the
+latest end-of-document marker are discounted by a factor of about e^4.4 ≈ 80 against same-document entries. The model
+learns the soft document reset that the forced-reset policy imposed, while keeping persistence available where the
+query match warrants it. This resolves the memory-policy result (forced reset 5.978 vs raw persistence 5.996): persistence
+fails without learned addressing and succeeds with it.
 
 ## 4. Consequences for the architecture
 
