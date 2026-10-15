@@ -1,0 +1,73 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "kind": "saved_evidence_decision",
+  "rows": [
+    {
+      "tag": "aws_r1_race_tree_L2_1M_s0_20261015_v1",
+      "status": "completed",
+      "nll": 5.653883466323556,
+      "train_unique_tokens": 1048576,
+      "epochs_run": 5,
+      "best_epoch": 2,
+      "parameters": 8240558,
+      "process_wall_s": 3127.2449429035187,
+      "gain_of_race_nats": 0.0,
+      "scope": "Fixed-weight reused DEV slice, same 65528 targets; architecture/host/acquisition differ unless explicitly paired."
+    },
+    {
+      "tag": "curie_r1g2_keyed1_1M_s0_20261007T1800Z",
+      "status": "completed",
+      "nll": 6.019141011732342,
+      "train_unique_tokens": 1048576,
+      "epochs_run": 5,
+      "best_epoch": 2,
+      "parameters": 3333845,
+      "process_wall_s": 5644.486152172089,
+      "gain_of_race_nats": 0.3652575454087854,
+      "scope": "Fixed-weight reused DEV slice, same 65528 targets; architecture/host/acquisition differ unless explicitly paired."
+    },
+    {
+      "tag": "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+      "status": "completed",
+      "nll": 5.5210612011456455,
+      "train_unique_tokens": 4194304,
+      "epochs_run": 5,
+      "best_epoch": 3,
+      "parameters": 3333845,
+      "process_wall_s": 21012.0615170002,
+      "gain_of_race_nats": -0.13282226517791074,
+      "scope": "Fixed-weight reused DEV slice, same 65528 targets; architecture/host/acquisition differ unless explicitly paired."
+    },
+    {
+      "tag": "aws_r1_deep_keyed_L2_1M_s0_20261015_v3",
+      "status": "pending"
+    }
+  ],
+  "matched_backbone_comparison_ready": false,
+  "race_tree_output_ledger": {
+    "race_tree_child_scores": 64,
+    "race_tree_macs": 4288,
+    "dense_head_macs": 3216448
+  },
+  "accounting_scope": "Recorded tree-path child dot products only: not complete normalized-output or whole-model work. Excluded: copy key/query projections, all stored-key scores, softmax/log operations, gate, LayerNorm, tree construction, backbone, discovery, backward, optimizer, storage and traffic. Do not publish the dense/tree MAC ratio as total inference or training savings.",
+  "mechanism_coverage": {
+    "temporal_memory": true,
+    "keyed_predecessor_reads": true,
+    "hierarchical_output": true,
+    "causal_copy_mixture": true,
+    "full_backprop": true,
+    "hard_hidden_receiver_races": false,
+    "counterfactual_alternative_state_writes": false,
+    "sparse_selected_output_path": true,
+    "all_copy_keys_scored": true
+  },
+  "online_scope": "Offline acquired model and fixed-weight DEV score. Not a chronological online-language win. Training uses reset 256-token lanes; useful persistence is not proven by this score.",
+  "decision": "Complete the paired keyed-L2 endpoint before assigning backbone/head attribution; then use saved checkpoints for tree/copy decomposition and same-protocol history interventions. No new fit or larger race-tree budget is admitted by this packet.",
+  "input_sha256": {
+    "experiments/results/token_language/aws_r1_race_tree_L2_1M_s0_20261015_v1.json": "dce26fdbdbe892c8aabbd12a5f56e41b9fdd8aa019b9cd59ac0324286b0f03e4",
+    "experiments/results/token_language/curie_r1g2_keyed1_1M_s0_20261007T1800Z.json": "64244515f58ea0f6b02b76befbce97600f1f8ea5b1813d7ca83699e58c66fcd7",
+    "experiments/results/token_language/curie_r1g2_keyed1_4M_s0_20261008T1140Z.json": "12dba155f16149bbdd6e6c575d5ed407f058a6a93ad9b47cee8e96b7e567dd62",
+    "experiments/results/token_language/vocab_race_tree_b16d4_20261015_v1.npz": "b72e2525495cb33602768d95d32d14e304e476cb1652ef293048e1efa2b02c2e"
+  }
+}

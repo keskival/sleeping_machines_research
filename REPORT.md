@@ -6949,3 +6949,21 @@ Native C10 seeds 6–8, refitted on AWS from the frozen configuration, reproduce
 | Best classical (order-3) | 0.6763 |
 
 Verdict **win** under the frozen B3 Stage 5 rule: difference +0.0965, paired stratified bootstrap 95% [+0.0880, +0.1209], all three criteria met. Scoring job `aws_b3_v21_sealed_20261015_v1` (45 min), ledger entry appended. Identity oracle (not eligible) 0.821 on the earlier test.
+
+## Appendix. R1 race-tree output candidate at 1M tokens
+
+Completed AWS seed-0 race-tree L2 scores **5.653883 nats/token** on the same 65,528 FineWeb GPT-2 DEV targets (eight 8,192-token windows, offset 20,971,520). Selection uses the separate 16,376-target slice at offset 10,485,760. The result-bound drivers and their selection/scoring slices were checked by `analysis/race_tree_decision.py`.
+
+| Native member | Unique TRAIN tokens | Epochs run / selected epoch (zero-based) | DEV NLL | Parameters | Recorded process seconds |
+| --- | ---: | --- | ---: | ---: | ---: |
+| Earlier keyed L2, seed 0 | 1,048,576 | 5 / 2 | 6.019141 | 3,333,845 | 5,644.5 |
+| Race-tree/copy L2, seed 0 | 1,048,576 | 5 / 2 | **5.653883** | 8,240,558 | 3,127.2 |
+| Earlier keyed L2, seed 0 | 4,194,304 | 5 / 3 | **5.521061** | 3,333,845 | 21,012.1 |
+
+Scope: fixed-weight development placement, single seed each; host/backbone/head and parameter counts differ. The race-tree member improves the earlier 1M member by 0.365258 nats and trails the earlier 4M member by 0.132822. The active matched deep-keyed L2 endpoint is pending; these rows do not isolate head attribution or establish matched-compute or online superiority. Process times are implementation diagnostics, not hardware speed claims.
+
+Mechanisms: temporal decaying/rotating backbone, keyed predecessor reads, path-conditioned hierarchical output, causal copy mixture, full backpropagation. Hard hidden receiver races and alternative persistent-state-write credit are not integrated. Training resets 256-token lanes; this result does not establish chronological online language learning or persistent state across lanes.
+
+The recorded output ledger counts 64 child scores and 4,288 path MACs versus 3,216,448 dense-head MACs. This is a **partial output-path ledger**, excluding copy key/query projections and all stored-key scores, normalization/special functions, query refinement normalization, gate, tree construction, backbone, backward and optimizer work, state and message traffic. Complete fitting FLOPs, per-target fitting work and inference work are unmeasured for this construction; no raw total-work ratio is claimed. Saved-reference complete-work comparison awaits that accounting.
+
+Decision: finish the active matched L2/L4/L8/L16 ladder unchanged; then reuse saved checkpoints to separate tree and copy contributions and measure history dependence before choosing the next scale. No additional training is admitted by this decision. Evidence: `experiments/results/token_language/aws_r1_race_tree_L2_1M_s0_20261015_v1.json`; source-bound decision packet `experiments/results/diagnostics/aws_r1_race_tree_saved_decision_20261015T1533Z.json`.
