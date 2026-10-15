@@ -78,7 +78,7 @@ def main():
                   process_wall_s=time.monotonic()-began, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                   source_sha256={n: sha(ROOT/n) for n in SOURCES}, data_sha256=receipt(list(TRAIN)+list(VAL)), september_opened=False,
                   scope='Fixed-weight development comparison. Same 801 TRAIN/756 DEV windows as B10; DEV scored positions 128..1023, state reset per window. '
-                        'All families receive identical causal inputs (marks, gaps, log size, tick move, past 60/300/1800 s realized variance, past-60 s trade count, 10 s signed-flow imbalance) and the same 3-component Gaussian-mixture return head per horizon, '
+                        'All families receive identical causal inputs (marks, gaps, log size, tick move, past 60/300/1800 s realized variance, past-60 s trade count, 10 s signed-flow imbalance) and the same four-Gaussian-plus-Cauchy mixture return head per horizon, '
                         'scored as the exact 0.01 USDT tick cell of the realized return. Warm start from the acquired seed-0 tape model; new price parameters start prediction-neutral. Selection on DEV return likelihood; September sealed.')
     out.write_text(json.dumps(record, indent=2)+'\n')
 

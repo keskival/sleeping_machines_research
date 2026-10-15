@@ -8,17 +8,26 @@ from b10_matched_models import MatchedRace
 from b10_depth_tpp_v1 import CELL, log_interval
 from b10p_data import NFEAT, HORIZONS
 
-COMPONENTS = 3
+COMPONENTS = 5          # four Gaussian components and one Cauchy component (heavy tails), all scored on exact cells
+
+
+def _log_diff(ly, lx):
+    return ly + torch.log(-torch.expm1((lx - ly).clamp_max(-1e-300)))
 
 
 def log_cell_mixture(lo, hi, logits, mu, log_sigma):
-    """log P(lo < r <= hi) under a Gaussian mixture; stable in both tails. lo/hi: [...]; params: [..., C]."""
+    """log P(lo < r <= hi) under the mixture; the last component is Cauchy, the others Gaussian. Stable in both tails."""
     sigma = F.softplus(log_sigma) + 1e-3
     a = (lo.unsqueeze(-1) - mu) / sigma; b = (hi.unsqueeze(-1) - mu) / sigma
     upper = a > 0                                                     # use survival tails above the mean
-    x = torch.where(upper, -b, a); y = torch.where(upper, -a, b)        # P = Phi(y) - Phi(x), x < y
-    ly, lx = torch.special.log_ndtr(y), torch.special.log_ndtr(x)
-    comp = ly + torch.log(-torch.expm1((lx - ly).clamp_max(-1e-300)))
+    x = torch.where(upper, -b, a); y = torch.where(upper, -a, b)        # P = F(y) - F(x), x < y
+    gauss = _log_diff(torch.special.log_ndtr(y[..., :-1]), torch.special.log_ndtr(x[..., :-1]))
+    # Cauchy: atan(y) - atan(x) = atan((y - x)/(1 + x y)) when x y > -1 (exact, no cancellation); else direct.
+    xc, yc = x[..., -1], y[..., -1]
+    direct = torch.atan(yc) - torch.atan(xc)
+    reduced = torch.atan((yc - xc) / (1 + xc * yc).clamp_min(1e-300))
+    cauchy = torch.log(torch.where(xc * yc > -1, reduced, direct).clamp_min(1e-300)) - math.log(math.pi)
+    comp = torch.cat([gauss, cauchy.unsqueeze(-1)], -1)
     return torch.logsumexp(F.log_softmax(logits, -1) + comp, -1)
 
 
@@ -34,8 +43,9 @@ class PriceRace(MatchedRace):
         with torch.no_grad():                                       # components start at 0.5x/1x/2x TRAIN scale
             b = self.price[-1].bias.view(len(HORIZONS), COMPONENTS, 3)
             for h, s in enumerate(scales):
-                for c, k in enumerate((0.5, 1.0, 2.0)):
+                for c, k in enumerate((0.25, 0.5, 1.0, 2.0, 0.5)):
                     b[h, c, 2] = math.log(math.expm1(s * k))
+                b[h, -1, 0] = -2.0                                  # Cauchy tail component starts with small weight
 
     def _slot_width(self):
         return self.m.K * self.m.marks.dv

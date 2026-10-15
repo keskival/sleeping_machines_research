@@ -6,7 +6,7 @@ projection. The six-mark tape likelihood stays as an auxiliary output; the prima
 ## Targets and scoring
 
 For every trade i and horizon H ∈ {10 s, 60 s, 300 s}: the log-return in basis points from trade i's price to the last
-trade price at or before t_i + H. Each model issues a full predictive distribution (3-component Gaussian mixture for the
+trade price at or before t_i + H. Each model issues a full predictive distribution (four Gaussian components plus one Cauchy tail component for the
 neural models, Student-t for classical references) and is scored by the probability of the exact 0.01 USDT price cell
 that the realized future price falls in: P(1e4 log((P_f − 0.005)/P_i) < r ≤ 1e4 log((P_f + 0.005)/P_i)). This is the
 recording-cell principle of the time term applied to prices: a proper discrete likelihood that cannot reward
