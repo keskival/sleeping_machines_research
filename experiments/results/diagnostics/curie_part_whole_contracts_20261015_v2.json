@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "init_equals_base": true,
+    "causal": true,
+    "integration_exact": true,
+    "level_credit": true,
+    "fast_equals_reference": true,
+    "long_lane_fast_equals_reference": true
+  },
+  "measurements": {
+    "unexpected_keys": [],
+    "prefix_max_change": 0.0,
+    "integration_max_abs_error": 4.440892098500626e-16,
+    "level_parameters_without_gradient": [],
+    "fast_vs_reference_max_abs_logit_error": 3.774758283725532e-15,
+    "word_events_long_lane": 899,
+    "long_lane_fast_vs_reference_max_abs_logit_error": 1.3322676295501878e-14,
+    "span_start_rate": {
+      "word": 0.896763801574707,
+      "clause": 0.11184406280517578,
+      "sentence": 0.0693349838256836
+    },
+    "mean_span_tokens": {
+      "word": 1.1151208358812112,
+      "clause": 8.941019978341874,
+      "sentence": 14.422733587334774
+    }
+  },
+  "source_sha256": {
+    "experiments/part_whole_contracts.py": "c544375bb30866345eefc23c52a526421fd2ede6be3421d308b3d318057e1c0d",
+    "experiments/r1_part_whole_lm.py": "fcc9a01b68a6d477669ea1e25b0e39962dd017c19343cae730d267093f955eee",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/tables/gpt2_token_roles.json": "0f5190ba5c4a6e8828d506a2bd0ee2881866efe8c6bc285e6bfe977df825d8a2"
+  },
+  "max_rss_kb": 2639104,
+  "process_wall_s": 25.50568755401764
+}

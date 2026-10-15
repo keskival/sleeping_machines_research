@@ -85,7 +85,7 @@ def main():
                         P6a=H['flagship_nll'] < B['flagship_nll'] and H['prequential_last_quarter'] < B['prequential_last_quarter'],
                         P6b_word_initial_gain=wi(B) - wi(H), P6b_history64_word_initial=dict(base=B['history_beyond_64_by_role']['word_initial'], hierarchy=H['history_beyond_64_by_role']['word_initial']),
                         P6b=(wi(B) - wi(H)) > (B['flagship_nll'] - H['flagship_nll']) * 0.5 and H['history_beyond_64_by_role']['word_initial'] > max(0.023, B['history_beyond_64_by_role']['word_initial']),
-                        P6c=all(v['word_initial'] > 0 for v in H['level_unique_value_by_role']))
+                        P6c=all(v['word_initial'] > 0 for v in H['level_unique_value_by_role']) if 'level_unique_value_by_role' in H else None)
         if len(a0.runs) > 2 and rows[a0.runs[2]].get('status') == 'completed':
             N = rows[a0.runs[2]]; decision['P6d_history64_word_initial'] = dict(with_future=H['history_beyond_64_by_role']['word_initial'], without=N['history_beyond_64_by_role']['word_initial'])
             decision['P6d'] = H['history_beyond_64_by_role']['word_initial'] > N['history_beyond_64_by_role']['word_initial']
