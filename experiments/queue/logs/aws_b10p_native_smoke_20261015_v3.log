@@ -1,0 +1,6 @@
+{"epoch": 0, "tape_nll": 6.890697693803996, "tape_targets": 677376, "return_nll": {"10s": 9.403601434528921, "60s": 10.129785140511347, "300s": 10.875972966505483}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 30.40935954154575}
+/workspace/experiments/market/b10p_fit.py:65: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); total += float(loss)*tl.numel(); seen += tl.numel()
+{"epoch": 1, "train_loss": 37.80518402087164, "wall_s": 6.716926553053781}
+{"epoch": 2, "train_loss": 37.33860057057032, "wall_s": 13.548872702056542, "tape_nll": 6.882443231775192, "tape_targets": 677376, "return_nll": {"10s": 9.383863109495415, "60s": 10.124818204715483, "300s": 10.87928085300835}, "return_targets": [677376, 677376, 676480], "return_nll_sum": 30.38796216721925}
