@@ -7055,3 +7055,7 @@ Controlled composition task audit passes:128TRAIN/64DEV/64TEST scenes, three nes
 | relational | 0.694245 | 51.56% | 255394 | 4800.0 | 405504.0 | 4800.0 |
 
 Both arms use128presentations/4096raw event presentations. Full fitting/inference FLOPs, special-function work and traffic remain unaudited; candidate scores and role MAdds are separate partial ledgers, not complete arithmetic. Native losing-value work, timer scores, role products/transports and logical state are charged in the bound result files. CPU process totals include fitting/scoring; no hardware latency/energy claim.
+
+### Native carried-role sensitivity repair
+
+**G-HIER interaction-credit repair,15October:** completed16TRAIN-scene audit finds comparable role-value median norms0.915–1.270 but median gradient-times-value norm0.004035 at root versus5.072e-8 at level1 (~79556x). Local first-order sensitivity under acquired joint head/native teacher,not causal attribution. New carried-role actor retains latest ordered child interaction as version-bound persistent state and transports it into indexed/generated views alongside native transformed memory;all32native stages/races retained. Four new contracts/eight combined pass,including exact zero-strength parity and private-future isolation. One guarded paired-update gate compares sensitivity/resources from acquired weights;no DEV/TEST or automatic larger fit. Admission restriction text inherited the16-scene audit count;the gate adaptation,driver and result correctly use one pair/two scenes. [Theory](theory/CARRIED_ROLE_REPRESENTATIONS.md).

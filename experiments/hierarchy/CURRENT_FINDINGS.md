@@ -279,3 +279,6 @@ and both together,under the same native race tape. Addresses/availability and
 internal computational clocks remain; fixed delays also change transport.
 These are frozen diagnostics,not flagship restrictions. The amendment precedes
 both completed endpoints;primary quality/actors are unchanged. [Channel audit](../theory/NATIVE_EMISSION_CHANNEL_AUDIT.md).
+
+
+**G-HIER interaction-credit repair,15October:** completed16TRAIN-scene audit finds comparable role-value median norms0.915–1.270 but median gradient-times-value norm0.004035 at root versus5.072e-8 at level1 (~79556x). Local first-order sensitivity under acquired joint head/native teacher,not causal attribution. New carried-role actor retains latest ordered child interaction as version-bound persistent state and transports it into indexed/generated views alongside native transformed memory;all32native stages/races retained. Four new contracts/eight combined pass,including exact zero-strength parity and private-future isolation. One guarded paired-update gate compares sensitivity/resources from acquired weights;no DEV/TEST or automatic larger fit. Admission restriction text inherited the16-scene audit count;the gate adaptation,driver and result correctly use one pair/two scenes. [Theory](theory/CARRIED_ROLE_REPRESENTATIONS.md).
