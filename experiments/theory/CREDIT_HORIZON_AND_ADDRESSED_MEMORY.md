@@ -110,7 +110,8 @@ mean-replaced) falls with d to zero, and adding stages does not improve the long
 
 **Test.** 1M-target ladder (`results/diagnostics/curie_depth_usage_probe_d8_20261015_v1.json`): D8 serial uses stage 0
 only (+0.763 nats; stages 2-7 <= 0); D8 residual +0.029, +0.025, +0.017, +0.012, +0.005, +0.002, +0.001, -0.001. Long-history
-D2 residual 6.556, D8 residual 6.590, D8 serial 6.683. Confirmed; residual composition delays the fall-off (five working
+D2 residual 6.556, D8 residual 6.590, D16 residual 6.690, D8 serial 6.683; D16 residual uses stages 0-2 (+0.032, +0.020,
++0.010) and its stages 4-15 are slightly harmful (`curie_depth_usage_probe_d16_20261015_v1.json`). Confirmed; residual composition delays the fall-off (five working
 stages instead of one) without changing the bound.
 
 **Prediction P5b.** Per-stage addressed reads make deep stages' unique value positive and the depth series monotone
