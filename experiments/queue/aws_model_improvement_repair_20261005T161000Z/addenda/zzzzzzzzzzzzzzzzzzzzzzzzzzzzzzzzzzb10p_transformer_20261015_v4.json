@@ -1,0 +1,54 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B10",
+  "purpose": "B10-P Transformer reference: same 20-epoch price fit with gradient accumulation (micro-batch 8, identical update to 2e-15) after v3 exceeded the 3 GB slot cap; completes the phase-1 encoder selection",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_b10p_transformer_smoke_20261015_v4",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_price/aws_b10p_transformer_smoke_20261015_v4/aws_b10p_transformer_smoke_20261015_v4.txt",
+        "queue_sha256": "633ef2c820ba5003420c6ea05d70ae65d5139ebd7c6df2bb7cbe15cfabc2edf6",
+        "source_sha256": {
+          "experiments/market/b10p_fit_v2.py": "5e03d685d23fb0876db4492787b76ab2e5232d141b7fce8cc58dceca263f3a98",
+          "experiments/market/b10p_models.py": "84d992a208180df8e27aff6940758eb9b3f3076be981298480d49c172aba1705",
+          "experiments/market/b10p_data.py": "eea13d807d18931d945cfcfcb154014ee79722554fbaf9e1f8adb4ac41ba13c8",
+          "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/market/aws_b10p_transformer_smoke_20261015_v4.json",
+        "requires": [],
+        "timeout_s": 2400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b10p_transformer_s0_20261015_v4",
+        "kind": "b10_job",
+        "queue": "experiments/queue/b10_price/aws_b10p_transformer_s0_20261015_v4/aws_b10p_transformer_s0_20261015_v4.txt",
+        "queue_sha256": "edda7a33f33f3f320e3ab166ce620c13f35153c90a49143d17c6d334f805f4f4",
+        "source_sha256": {
+          "experiments/market/b10p_fit_v2.py": "5e03d685d23fb0876db4492787b76ab2e5232d141b7fce8cc58dceca263f3a98",
+          "experiments/market/b10p_models.py": "84d992a208180df8e27aff6940758eb9b3f3076be981298480d49c172aba1705",
+          "experiments/market/b10p_data.py": "eea13d807d18931d945cfcfcb154014ee79722554fbaf9e1f8adb4ac41ba13c8",
+          "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+          "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+          "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+          "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+        },
+        "result": "experiments/results/market/aws_b10p_transformer_s0_20261015_v4.json",
+        "requires": [
+          {
+            "result": "experiments/results/market/aws_b10p_transformer_smoke_20261015_v4.json"
+          }
+        ],
+        "timeout_s": 30000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
