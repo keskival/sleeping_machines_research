@@ -17,25 +17,98 @@
         "nll": 5.898735542842253,
         "parameters": 3554341,
         "epochs": 6
+      },
+      {
+        "layers": 8,
+        "nll": 5.874105834215788,
+        "parameters": 3829429,
+        "epochs": 6
       }
     ],
-    "nll_improvement": 0.05846146183155998,
+    "nll_improvement": 0.08309117045802505,
     "scope": "Same scored slice and unique training corpus; different epochs and total work. Quality gain only; no matched-compute or semantic-hierarchy claim."
   },
   "hierarchical_memory": {
-    "status": "implemented, untrained",
+    "status": "native FIT learnability demonstrated",
     "abstraction_levels": 8,
     "refinements_per_level": 4,
     "cells": 32,
-    "passed_contracts": 29,
-    "capability": "Higher parents query retained input and lower-level memories, select complementary child roles, compose relations and refine persistent state.",
-    "scope": "Synthetic numerical contracts, not learned semantic concepts, compositional generalization or measured sparse execution.",
-    "next_gate": "Real-TRAIN resource/credit preflight, then bounded learned composition and controlled read-source evaluation; no current fit result inferred."
+    "passed_contracts": 60,
+    "parameters": 169675,
+    "episodes": 12,
+    "raw_events_per_episode": 32,
+    "training_updates": 64,
+    "noise_tapes": 2,
+    "rows": [
+      {
+        "variant": "initial",
+        "raw_nll": 2.5479753017425537,
+        "gain": 0.0,
+        "nll": 2.3693821196946767,
+        "accuracy": 0.16666666666666666,
+        "association": -0.013493688453713223,
+        "calibrated_association": -0.0,
+        "prior_nll": 2.3693821196946763,
+        "gain_at_cap": false
+      },
+      {
+        "variant": "final",
+        "raw_nll": 2.4827463626861572,
+        "gain": 25.64483188532767,
+        "nll": 1.92581733450272,
+        "accuracy": 0.375,
+        "association": 0.03765017856171148,
+        "calibrated_association": 0.9655324996676589,
+        "prior_nll": 2.3693821196946763,
+        "gain_at_cap": false
+      },
+      {
+        "variant": "zero_query_final",
+        "raw_nll": 2.4527409076690674,
+        "gain": 0.0,
+        "nll": 2.3693821196946767,
+        "accuracy": 0.16666666666666666,
+        "association": -0.01405408073009716,
+        "calibrated_association": -0.0,
+        "prior_nll": 2.3693821196946763,
+        "gain_at_cap": false
+      },
+      {
+        "variant": "initial_core_final_head",
+        "raw_nll": 2.5415217876434326,
+        "gain": 0.0,
+        "nll": 2.3693821196946767,
+        "accuracy": 0.16666666666666666,
+        "association": -0.011560427904542947,
+        "calibrated_association": -0.0,
+        "prior_nll": 2.3693821196946763,
+        "gain_at_cap": false
+      },
+      {
+        "variant": "final_core_initial_head",
+        "raw_nll": 2.461517572402954,
+        "gain": 23.818345678939465,
+        "nll": 1.926301724608192,
+        "accuracy": 0.375,
+        "association": 0.04091274982298879,
+        "calibrated_association": 0.9744740179599165,
+        "prior_nll": 2.3693821196946763,
+        "gain_at_cap": false
+      }
+    ],
+    "capability": "Persistent native race objects compose child events and typed responses from lower learned memories, then generate a race-timed readout.",
+    "scope": "One FIT recording. Prior, centre and scalar gain fitted/scored on same FIT logits. No held-out semantic transfer or benchmark claim.",
+    "next_gate": "Held-out combinations of familiar parts, training-only calibration, memory-content and relative-pose interventions.",
+    "timer_credit": "Forward-identical winner-averaged pure-timer interior credit implemented; no measured training-quality gain. Native value-routing credit unchanged."
   },
   "input_sha256": {
     "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json": "82d874ec20dcd9cc5a3f1e8000da7ffe1a9674a61b4d2061c4e36221acc660dd",
     "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json": "6200680938ebc0fb1aa658bb3c4dc38bca43eb0662e87365fef6579a878b0691",
-    "experiments/results/diagnostics/addressable_parent_contracts_20261015_v1.json": "5f49368aeb703644492331aac983f37df7af1571bb6043320aabda766bbb5e35",
-    "experiments/theory/ADDRESSABLE_COMPOSITION_MEMORY.md": "826d6dc01f1ff2f1aa1f022447e3ab0d0a0fb1714332d4726fb1b67d3234d416"
+    "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json": "6dc6cafadfbe34dfa4860433823e27aaa2af503ed8e405d759a0046e4cf4552d",
+    "experiments/results/hierarchy/aws_g_hier_native_composition_20261015_v1_data.json": "5d6a94a1f9c061a2a2cbc163dc5e95eca9be3001bb9181d81f53c305fde726d0",
+    "experiments/results/hierarchy/aws_g_hier_native_composition_20261015_v1_learn.json": "3484a8ca6cdbea4ef22111dd4e72b1341e793b3af3788c4735b2d8769b1b1f38",
+    "experiments/results/hierarchy/aws_g_hier_native_query_attribution_20261015_v1.json": "0bb5f153cb772f84d9e2eb185a9df966428ac2518347d70326d5f8cc778dcea9",
+    "experiments/results/hierarchy/aws_g_hier_native_frozen_readout_20261015_v1.json": "4b21eb1f440db9892efd26c40c3b6218253a65ca1b987d04d375639315988d2a",
+    "experiments/results/hierarchy/native_composition_credit_contracts_20261015_v1.json": "6fff34eccec05599b8beb679b70cd96077ecedf99e9774870246e3ed78febba7"
   }
 }

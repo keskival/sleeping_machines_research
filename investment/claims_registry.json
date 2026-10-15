@@ -614,12 +614,13 @@
     },
     {
       "id": "hierarchy_numerical_contracts",
-      "display": "29",
+      "display": "60",
       "decimals": 0,
       "value": {
-        "file": "experiments/results/diagnostics/addressable_parent_contracts_20261015_v1.json",
+        "file": "investment/hierarchy_development_evidence.json",
         "path": [
-          "tests"
+          "hierarchical_memory",
+          "passed_contracts"
         ]
       },
       "documents": [
@@ -743,6 +744,41 @@
       },
       "documents": [
         "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_keyed_depth_8_1m",
+      "display": "5.8741",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "native_hierarchy_calibrated_fit_nll",
+      "display": "1.9258",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/hierarchy/aws_g_hier_native_frozen_readout_20261015_v1.json",
+        "path": [
+          "rows",
+          1,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
     }
   ]
