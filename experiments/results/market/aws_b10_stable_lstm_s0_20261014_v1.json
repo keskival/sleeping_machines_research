@@ -1,0 +1,1241 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "family": "lstm",
+  "seed": 0,
+  "source_sha256": {
+    "experiments/market/b10_budget_admission.py": "e60043239acdcae7f145dfca839bc405b0a1a58e0149fcc5230b40e44473774f",
+    "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+    "experiments/market/b10_matched_fit.py": "9d78f687901c4c6a8aa878da7aaf5202e28460e508322b948fa09e491891788c",
+    "experiments/market/b10_matched_models.py": "5de974ba5b2e0225fab85da97fc1484267384583347db3034e995476fec71539",
+    "experiments/market/b10_stable_clock_head.py": "7c720cc58601f23d3285da00d70ceb3db185e4a3e3ed7c819823af9f5d88e6b2",
+    "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+    "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+    "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34",
+    "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+    "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+    "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+    "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+  },
+  "admission_sha256": "cba6e126dbc382a5cf7c5dbea431d76089d4227266352a63951032b9f1327b44",
+  "migration": {
+    "checkpoint": "experiments/results/market/aws_b10_matched_lstm_s0_20261014_v2.progress.pt",
+    "checkpoint_sha256": "8ec13a76615a41e5a56ad49a8520f439e5ad12a403ff18d30e7c25003e5647c7",
+    "old_admission_sha256": "378a29342bee9e478a640cc1c63243b8bbc6bc3012f6f8de43926c3eea06844c",
+    "additional_charged_arithmetic": 465647955954,
+    "charge_convention": "conservative one-epoch discarded-update ceiling plus recost-gates and familydiagnostic update ceilings; repeated engineering charge per seed",
+    "old_program_source_sha256": {
+      "experiments/market/b10_budget_admission.py": "a596dc87107de7bedfad93972ef35c8fca52751cc71ee6e5c689f0c4f6e01f0d",
+      "experiments/market/b10_matched_update.py": "9da4720c30c25e634b5b221e085351e3a6c72a5678278e829217e1897790b2ab",
+      "experiments/market/b10_matched_fit.py": "e3d285701b7bbb02dfb746cfed178beaec371521be2587212104950e5b015d82",
+      "experiments/market/b10_matched_models.py": "8a2f19867030b8d957c9d90de171b13d4a54ada5ad6a54dca30025f3295bc9db",
+      "experiments/market/b10_matched_data.py": "e6774f3cd849aba629061e82b6071c72dbc3801e2de17ca625e598e910aee03b",
+      "experiments/market/b10_matched_pipeline.py": "8664f16e83678fc3a30cbce1aa1722863e8ef6a9881884e53b069afaa6a55435",
+      "experiments/market/b10_operator_ledger_v3.py": "a2d1632cee04af641ac7a7c9bc4d8c5577c297bfb0d6a0504377a6209db64b6b",
+      "experiments/market/b10_depth_tpp_v1.py": "e3c1913a92e2695f857268f706a035459bf9042be16e9141737915f0b3e53124",
+      "experiments/market/prepare.py": "86eea01c330461b932971e454cbb570cbbb769187782a0068dd71a916770b6fc",
+      "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+      "experiments/market/B10_AWS_MATCHED_CONTROLS.md": "aaa4eab0c29298fb40b4cf340147892ad1e4b70907fbe654fede6c8f2dd44d74"
+    }
+  },
+  "budget": 7823870010900,
+  "fitting_arithmetic": 7823170862286,
+  "unused_fraction": 8.936097008589936e-05,
+  "targets": 18452874,
+  "evaluations": [
+    {
+      "phase": 0,
+      "spent": 815088312324,
+      "result": {
+        "nll": 7.371491268090041,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4542072.5343893245,
+            "mark_ll": -451198.73482443515,
+            "nll": 7.371491268090041
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -820673.5213160121,
+            "mark_ll": -86931.16781276172,
+            "nll": 6.370765169648289
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -181916.0170104649,
+            "mark_ll": -51435.65940380162,
+            "nll": 0.7205169912781065
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4360156.517378865,
+            "mark_ll": -399763.0754206335,
+            "nll": 13.464776265383621
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -988708.4987253807,
+            "mark_ll": -108259.71591499576,
+            "nll": 4.88468433266856
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1410544.259079338,
+            "mark_ll": -98862.99702533358,
+            "nll": 12.789202488558672
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18635.535229790334,
+            "mark_ll": -6838.3422752839415,
+            "nll": 16.584555667366065
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23956.9243869018,
+            "mark_ll": -8731.883577411838,
+            "nll": 17.043174121122856
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1157172.0651382841,
+            "mark_ll": -107716.76931187515,
+            "nll": 12.847902351933035
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -943055.2518296327,
+            "mark_ll": -120789.02671953442,
+            "nll": 4.568286463822666
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -584175.4669226286,
+            "mark_ll": -56683.5042244716,
+            "nll": 6.561875114137248
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -682130.4363859606,
+            "mark_ll": -67680.54922146286,
+            "nll": 7.091886592079897
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -716031.8551677038,
+            "mark_ll": -70885.04330476493,
+            "nll": 7.026043736361328
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -482903.27159412816,
+            "mark_ll": -46135.942727599664,
+            "nll": 10.735373667242854
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -492302.0007429937,
+            "mark_ll": -46194.26335434353,
+            "nll": 8.347226315992952
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -763855.9822599018,
+            "mark_ll": -76688.26417903061,
+            "nll": 7.950062863564358
+          }
+        },
+        "ledger": {
+          "arithmetic": 32410720214,
+          "special_functions": 499087764,
+          "comparisons": 162421308,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1134,
+            "aten.div.Tensor": 756,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 971082,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550367,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2268,
+            "aten.neg.default": 2835,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.log.default": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.logaddexp.default": 567,
+            "aten.full_like.default": 567,
+            "aten.where.self": 1134,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    },
+    {
+      "phase": 1,
+      "spent": 1595260999576,
+      "result": {
+        "nll": 7.038825438734295,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4475887.208384712,
+            "mark_ll": -292044.2120033694,
+            "nll": 7.038825438734295
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -805701.6222117915,
+            "mark_ll": -58076.175142151435,
+            "nll": 6.063130316107528
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -168371.54376111383,
+            "mark_ll": -18231.236588541495,
+            "nll": 0.5761710218999013
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4307515.664623599,
+            "mark_ll": -273812.9754148279,
+            "nll": 12.959581340329175
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -975198.6613332918,
+            "mark_ll": -70737.59929526817,
+            "nll": 4.657444397271978
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1391899.8652983354,
+            "mark_ll": -61101.59288946782,
+            "nll": 12.311276356847054
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18381.75714551391,
+            "mark_ll": -5945.73875732235,
+            "nll": 15.838213478409024
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23332.227345110456,
+            "mark_ll": -7812.593624343801,
+            "nll": 16.238175687932355
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1138869.636504616,
+            "mark_ll": -67334.65710282295,
+            "nll": 12.251823684954331
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -928205.0607578448,
+            "mark_ll": -79112.03033414428,
+            "nll": 4.325551328140251
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -575955.071450069,
+            "mark_ll": -36911.82577274942,
+            "nll": 6.275259023005594
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -672108.3992105281,
+            "mark_ll": -43790.16685680721,
+            "nll": 6.77113504527973
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -703210.9515080221,
+            "mark_ll": -46327.318404879705,
+            "nll": 6.692305981365195
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -478965.85621175595,
+            "mark_ll": -29145.846972755546,
+            "nll": 10.310708262672717
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -485570.69853071263,
+            "mark_ll": -29001.372725277044,
+            "nll": 7.976377592633768
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -754374.6092618337,
+            "mark_ll": -48791.506128749104,
+            "nll": 7.596531811729937
+          }
+        },
+        "ledger": {
+          "arithmetic": 32410720214,
+          "special_functions": 499087764,
+          "comparisons": 162421308,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1134,
+            "aten.div.Tensor": 756,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 971082,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550367,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2268,
+            "aten.neg.default": 2835,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.log.default": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.logaddexp.default": 567,
+            "aten.full_like.default": 567,
+            "aten.where.self": 1134,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    },
+    {
+      "phase": 2,
+      "spent": 3628321218076,
+      "result": {
+        "nll": 6.936375854809697,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4429789.756760991,
+            "mark_ll": -268744.7742665823,
+            "nll": 6.936375854809697
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -796490.6040640584,
+            "mark_ll": -52515.20869730449,
+            "nll": 5.959441071157365
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -134426.27358014876,
+            "mark_ll": -14584.823618203578,
+            "nll": 0.46009966189316087
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4295363.483180843,
+            "mark_ll": -254159.95064837852,
+            "nll": 12.869611336144828
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -958451.9568328714,
+            "mark_ll": -64412.24742534707,
+            "nll": 4.554706951673703
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1384814.4585963106,
+            "mark_ll": -57476.1947325446,
+            "nll": 12.220523744122751
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18551.52399119328,
+            "mark_ll": -5545.5258799607,
+            "nll": 15.688183509865873
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23496.52488654618,
+            "mark_ll": -7101.0733069548905,
+            "nll": 15.95286662851985
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1130875.0603126052,
+            "mark_ll": -64627.27173024684,
+            "nll": 12.14312025314981
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -913600.2321414653,
+            "mark_ll": -69582.46119152807,
+            "nll": 4.2219150678171795
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -569430.4403855274,
+            "mark_ll": -33514.12855434995,
+            "nll": 6.173662444092781
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -665660.9127729859,
+            "mark_ll": -40221.937592463815,
+            "nll": 6.676404078063046
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -694300.0259626915,
+            "mark_ll": -42063.82331443534,
+            "nll": 6.5746772256886326
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -476160.60302829486,
+            "mark_ll": -27207.993093932746,
+            "nll": 10.214460148584164
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -481013.9558724344,
+            "mark_ll": -27115.781962739493,
+            "nll": 7.876515033407333
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -746733.214675003,
+            "mark_ll": -46105.901051356384,
+            "nll": 7.498856648440898
+          }
+        },
+        "ledger": {
+          "arithmetic": 32435468630,
+          "special_functions": 511461972,
+          "comparisons": 187169724,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1323,
+            "aten.div.Tensor": 189,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 970893,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550745,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2646,
+            "aten.neg.default": 3213,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten.lt.Scalar": 189,
+            "aten.log.default": 945,
+            "aten.where.self": 1323,
+            "aten.rsub.Scalar": 189,
+            "aten.logaddexp.default": 756,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.full_like.default": 567,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    },
+    {
+      "phase": 2,
+      "spent": 5195757099646,
+      "result": {
+        "nll": 6.912624725065144,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4420936.6489580665,
+            "mark_ll": -261509.43680766015,
+            "nll": 6.912624725065144
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -794804.4518675451,
+            "mark_ll": -50404.52234995723,
+            "nll": 5.932789857209557
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -137931.98680221112,
+            "mark_ll": -12140.491654747695,
+            "nll": 0.46337687525113336
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4283004.662155854,
+            "mark_ll": -249368.94515291246,
+            "nll": 12.821098210537118
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -958044.7599957575,
+            "mark_ll": -63657.03347654079,
+            "nll": 4.549530858439342
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1380598.331139556,
+            "mark_ll": -48719.341456712486,
+            "nll": 12.11060372300307
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18375.630239420356,
+            "mark_ll": -5368.931141161885,
+            "nll": 15.45869881548323
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23231.35028678703,
+            "mark_ll": -6876.6525150239995,
+            "nll": 15.697603129202832
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1127659.1505853124,
+            "mark_ll": -61954.35103140532,
+            "nll": 12.083305417077712
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -913027.4267112304,
+            "mark_ll": -74933.12718681565,
+            "nll": 4.2424318259419005
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -568292.2661019452,
+            "mark_ll": -32470.96979912008,
+            "nll": 6.15132736628712
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -664330.9322236632,
+            "mark_ll": -38947.672790095945,
+            "nll": 6.65177252018159
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -692841.8410848761,
+            "mark_ll": -40787.85813414324,
+            "nll": 6.5502651715983875
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -475966.1880306009,
+            "mark_ll": -27046.75656571453,
+            "nll": 10.207243193918739
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -479910.39214150497,
+            "mark_ll": -26617.02651319396,
+            "nll": 7.85167749650761
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -744790.5775079293,
+            "mark_ll": -45234.63065543525,
+            "nll": 7.472242056629886
+          }
+        },
+        "ledger": {
+          "arithmetic": 32435468630,
+          "special_functions": 511461972,
+          "comparisons": 187169724,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1323,
+            "aten.div.Tensor": 189,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 970893,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550745,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2646,
+            "aten.neg.default": 3213,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten.lt.Scalar": 189,
+            "aten.log.default": 945,
+            "aten.where.self": 1323,
+            "aten.rsub.Scalar": 189,
+            "aten.logaddexp.default": 756,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.full_like.default": 567,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    },
+    {
+      "phase": 2,
+      "spent": 6756291229926,
+      "result": {
+        "nll": 6.900700656713593,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4414303.66698129,
+            "mark_ll": -260065.34106073735,
+            "nll": 6.900700656713593
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -793825.9079193062,
+            "mark_ll": -49786.397296951196,
+            "nll": 5.921582331088958
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -131074.62050604005,
+            "mark_ll": -12348.491748516462,
+            "nll": 0.44284571214281326
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4283229.046475251,
+            "mark_ll": -247716.8493122205,
+            "nll": 12.817059525464618
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -952406.1975935916,
+            "mark_ll": -60048.181539111414,
+            "nll": 4.50835309290388
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1380887.6728907246,
+            "mark_ll": -59828.99206542407,
+            "nll": 12.207187346055386
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18495.12706218758,
+            "mark_ll": -5688.349877849177,
+            "nll": 15.744451132836431
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23319.26544453235,
+            "mark_ll": -6806.718642058551,
+            "nll": 15.706978147336235
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1126375.1702920059,
+            "mark_ll": -62609.64370730103,
+            "nll": 12.076919624984072
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -912820.233698253,
+            "mark_ll": -65083.45522899284,
+            "nll": 4.1992463324998965
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -567568.1010975307,
+            "mark_ll": -32279.022187430226,
+            "nll": 6.1419471175147535
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -663542.1506540511,
+            "mark_ll": -38771.515943299004,
+            "nll": 6.642645908343582
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -691890.8171672517,
+            "mark_ll": -40602.4182713218,
+            "nll": 6.540118173558692
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -474620.7419631686,
+            "mark_ll": -26637.336023852313,
+            "nll": 10.171633076035327
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -479004.4983433603,
+            "mark_ll": -26326.37930536881,
+            "nll": 7.8331299238704295
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -743851.449836626,
+            "mark_ll": -45662.27203251378,
+            "nll": 7.467404300366409
+          }
+        },
+        "ledger": {
+          "arithmetic": 32435468630,
+          "special_functions": 511461972,
+          "comparisons": 187169724,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1323,
+            "aten.div.Tensor": 189,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 970893,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550745,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2646,
+            "aten.neg.default": 3213,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten.lt.Scalar": 189,
+            "aten.log.default": 945,
+            "aten.where.self": 1323,
+            "aten.rsub.Scalar": 189,
+            "aten.logaddexp.default": 756,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.full_like.default": 567,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    },
+    {
+      "phase": 2,
+      "spent": 7823170862286,
+      "result": {
+        "nll": 6.906207294191248,
+        "groups": {
+          "all": {
+            "targets": 677376,
+            "time_ll": -4414323.6967340745,
+            "mark_ll": -263775.375376016,
+            "nll": 6.906207294191248
+          },
+          "day:2026-08-25": {
+            "targets": 142464,
+            "time_ll": -794217.2652673393,
+            "mark_ll": -50112.701123505954,
+            "nll": 5.926619822487402
+          },
+          "tied": {
+            "targets": 323867,
+            "time_ll": -126892.78333897624,
+            "mark_ll": -13653.327228153827,
+            "nll": 0.4339624307729101
+          },
+          "positive": {
+            "targets": 353509,
+            "time_ll": -4287430.913395105,
+            "mark_ll": -250122.04814786182,
+            "nll": 12.835749476089624
+          },
+          "mark:0": {
+            "targets": 224573,
+            "time_ll": -951968.5508220757,
+            "mark_ll": -59968.138162907424,
+            "nll": 4.506047873007811
+          },
+          "mark:1": {
+            "targets": 118022,
+            "time_ll": -1381856.7893854594,
+            "mark_ll": -58558.72320947185,
+            "nll": 12.204635683134766
+          },
+          "mark:2": {
+            "targets": 1536,
+            "time_ll": -18489.47577734716,
+            "mark_ll": -5126.759369225184,
+            "nll": 15.37515309021637
+          },
+          "mark:3": {
+            "targets": 1918,
+            "time_ll": -23317.90607224652,
+            "mark_ll": -6631.997236902136,
+            "nll": 15.615173779535274
+          },
+          "mark:4": {
+            "targets": 98451,
+            "time_ll": -1127892.9208063814,
+            "mark_ll": -69439.06349837259,
+            "nll": 12.16170464804577
+          },
+          "mark:5": {
+            "targets": 232876,
+            "time_ll": -910798.0538705667,
+            "mark_ll": -64050.69389913687,
+            "nll": 4.1861280156379514
+          },
+          "day:2026-08-26": {
+            "targets": 97664,
+            "time_ll": -567581.6142590204,
+            "mark_ll": -32667.203490557236,
+            "nll": 6.1460601424227725
+          },
+          "day:2026-08-27": {
+            "targets": 105728,
+            "time_ll": -663530.0277636552,
+            "mark_ll": -39261.12779145645,
+            "nll": 6.647162109896258
+          },
+          "day:2026-08-28": {
+            "targets": 112000,
+            "time_ll": -691895.7557711039,
+            "mark_ll": -40823.01880405557,
+            "nll": 6.542131915849637
+          },
+          "day:2026-08-29": {
+            "targets": 49280,
+            "time_ll": -474394.4568487172,
+            "mark_ll": -26845.602303469797,
+            "nll": 10.171267434094704
+          },
+          "day:2026-08-30": {
+            "targets": 64512,
+            "time_ll": -478813.6426702856,
+            "mark_ll": -26772.31113634632,
+            "nll": 7.837083857369667
+          },
+          "day:2026-08-31": {
+            "targets": 105728,
+            "time_ll": -743890.9341539568,
+            "mark_ll": -47293.41072662461,
+            "nll": 7.483205441137461
+          }
+        },
+        "ledger": {
+          "arithmetic": 32435468630,
+          "special_functions": 511461972,
+          "comparisons": 187169724,
+          "operator_calls": {
+            "aten.lift_fresh.default": 378,
+            "aten._to_copy.default": 567,
+            "aten.ones_like.default": 1701,
+            "aten.slice.Tensor": 13797,
+            "aten.cat.default": 1701,
+            "aten.sub.Tensor": 5292,
+            "aten.clamp_min.default": 1323,
+            "aten.div.Tensor": 189,
+            "aten.embedding.default": 189,
+            "aten.log1p.default": 756,
+            "aten.unsqueeze.default": 582876,
+            "aten.view.default": 2835,
+            "aten.t.default": 388206,
+            "aten.addmm.default": 945,
+            "aten.add.Tensor": 970893,
+            "aten.new_zeros.default": 567,
+            "aten.zeros_like.default": 945,
+            "aten.select.int": 990360,
+            "aten.mm.default": 387261,
+            "aten.split.Tensor": 387072,
+            "aten.sigmoid.default": 1161216,
+            "aten.mul.Tensor": 1550745,
+            "aten.tanh.default": 774144,
+            "aten.stack.default": 567,
+            "aten.softplus.default": 378,
+            "aten.exp.default": 2646,
+            "aten.neg.default": 3213,
+            "aten.aminmax.default": 189,
+            "aten._local_scalar_dense.default": 23058,
+            "aten.zeros.default": 189,
+            "aten.scatter_.value": 189,
+            "aten.lt.Scalar": 189,
+            "aten.log.default": 945,
+            "aten.where.self": 1323,
+            "aten.rsub.Scalar": 189,
+            "aten.logaddexp.default": 756,
+            "aten._log_softmax.default": 378,
+            "aten.log_sigmoid_forward.default": 189,
+            "aten.clone.default": 378,
+            "aten._unsafe_view.default": 567,
+            "aten.permute.default": 945,
+            "aten.bmm.default": 189,
+            "aten.expand.default": 756,
+            "aten.clamp_max.default": 756,
+            "aten.gt.Scalar": 1323,
+            "aten.special_log_ndtr.default": 567,
+            "aten.pow.Tensor_Scalar": 567,
+            "aten.full_like.default": 567,
+            "aten.gather.default": 189,
+            "aten.squeeze.dim": 189,
+            "aten.logsumexp.default": 378,
+            "aten.sum.dim_IntList": 378,
+            "aten.expm1.default": 189,
+            "aten.eq.Scalar": 5292,
+            "aten.sum.default": 22680,
+            "aten.index.Tensor": 15120
+          },
+          "unsupported": {},
+          "validated": true,
+          "convention": "aten_scalar_algorithms_v3"
+        }
+      }
+    }
+  ],
+  "final_dev": {
+    "nll": 6.900700656713593,
+    "groups": {
+      "all": {
+        "targets": 677376,
+        "time_ll": -4414303.66698129,
+        "mark_ll": -260065.34106073735,
+        "nll": 6.900700656713593
+      },
+      "day:2026-08-25": {
+        "targets": 142464,
+        "time_ll": -793825.9079193062,
+        "mark_ll": -49786.397296951196,
+        "nll": 5.921582331088958
+      },
+      "tied": {
+        "targets": 323867,
+        "time_ll": -131074.62050604005,
+        "mark_ll": -12348.491748516462,
+        "nll": 0.44284571214281326
+      },
+      "positive": {
+        "targets": 353509,
+        "time_ll": -4283229.046475251,
+        "mark_ll": -247716.8493122205,
+        "nll": 12.817059525464618
+      },
+      "mark:0": {
+        "targets": 224573,
+        "time_ll": -952406.1975935916,
+        "mark_ll": -60048.181539111414,
+        "nll": 4.50835309290388
+      },
+      "mark:1": {
+        "targets": 118022,
+        "time_ll": -1380887.6728907246,
+        "mark_ll": -59828.99206542407,
+        "nll": 12.207187346055386
+      },
+      "mark:2": {
+        "targets": 1536,
+        "time_ll": -18495.12706218758,
+        "mark_ll": -5688.349877849177,
+        "nll": 15.744451132836431
+      },
+      "mark:3": {
+        "targets": 1918,
+        "time_ll": -23319.26544453235,
+        "mark_ll": -6806.718642058551,
+        "nll": 15.706978147336235
+      },
+      "mark:4": {
+        "targets": 98451,
+        "time_ll": -1126375.1702920059,
+        "mark_ll": -62609.64370730103,
+        "nll": 12.076919624984072
+      },
+      "mark:5": {
+        "targets": 232876,
+        "time_ll": -912820.233698253,
+        "mark_ll": -65083.45522899284,
+        "nll": 4.1992463324998965
+      },
+      "day:2026-08-26": {
+        "targets": 97664,
+        "time_ll": -567568.1010975307,
+        "mark_ll": -32279.022187430226,
+        "nll": 6.1419471175147535
+      },
+      "day:2026-08-27": {
+        "targets": 105728,
+        "time_ll": -663542.1506540511,
+        "mark_ll": -38771.515943299004,
+        "nll": 6.642645908343582
+      },
+      "day:2026-08-28": {
+        "targets": 112000,
+        "time_ll": -691890.8171672517,
+        "mark_ll": -40602.4182713218,
+        "nll": 6.540118173558692
+      },
+      "day:2026-08-29": {
+        "targets": 49280,
+        "time_ll": -474620.7419631686,
+        "mark_ll": -26637.336023852313,
+        "nll": 10.171633076035327
+      },
+      "day:2026-08-30": {
+        "targets": 64512,
+        "time_ll": -479004.4983433603,
+        "mark_ll": -26326.37930536881,
+        "nll": 7.8331299238704295
+      },
+      "day:2026-08-31": {
+        "targets": 105728,
+        "time_ll": -743851.449836626,
+        "mark_ll": -45662.27203251378,
+        "nll": 7.467404300366409
+      }
+    },
+    "ledger": {
+      "arithmetic": 32435468630,
+      "special_functions": 511461972,
+      "comparisons": 187169724,
+      "operator_calls": {
+        "aten.lift_fresh.default": 378,
+        "aten._to_copy.default": 567,
+        "aten.ones_like.default": 1701,
+        "aten.slice.Tensor": 13797,
+        "aten.cat.default": 1701,
+        "aten.sub.Tensor": 5292,
+        "aten.clamp_min.default": 1323,
+        "aten.div.Tensor": 189,
+        "aten.embedding.default": 189,
+        "aten.log1p.default": 756,
+        "aten.unsqueeze.default": 582876,
+        "aten.view.default": 2835,
+        "aten.t.default": 388206,
+        "aten.addmm.default": 945,
+        "aten.add.Tensor": 970893,
+        "aten.new_zeros.default": 567,
+        "aten.zeros_like.default": 945,
+        "aten.select.int": 990360,
+        "aten.mm.default": 387261,
+        "aten.split.Tensor": 387072,
+        "aten.sigmoid.default": 1161216,
+        "aten.mul.Tensor": 1550745,
+        "aten.tanh.default": 774144,
+        "aten.stack.default": 567,
+        "aten.softplus.default": 378,
+        "aten.exp.default": 2646,
+        "aten.neg.default": 3213,
+        "aten.aminmax.default": 189,
+        "aten._local_scalar_dense.default": 23058,
+        "aten.zeros.default": 189,
+        "aten.scatter_.value": 189,
+        "aten.lt.Scalar": 189,
+        "aten.log.default": 945,
+        "aten.where.self": 1323,
+        "aten.rsub.Scalar": 189,
+        "aten.logaddexp.default": 756,
+        "aten._log_softmax.default": 378,
+        "aten.log_sigmoid_forward.default": 189,
+        "aten.clone.default": 378,
+        "aten._unsafe_view.default": 567,
+        "aten.permute.default": 945,
+        "aten.bmm.default": 189,
+        "aten.expand.default": 756,
+        "aten.clamp_max.default": 756,
+        "aten.gt.Scalar": 1323,
+        "aten.special_log_ndtr.default": 567,
+        "aten.pow.Tensor_Scalar": 567,
+        "aten.full_like.default": 567,
+        "aten.gather.default": 189,
+        "aten.squeeze.dim": 189,
+        "aten.logsumexp.default": 378,
+        "aten.sum.dim_IntList": 378,
+        "aten.expm1.default": 189,
+        "aten.eq.Scalar": 5292,
+        "aten.sum.default": 22680,
+        "aten.index.Tensor": 15120
+      },
+      "unsupported": {},
+      "validated": true,
+      "convention": "aten_scalar_algorithms_v3"
+    }
+  },
+  "final_weights": "experiments/results/market/aws_b10_stable_lstm_s0_20261014_v1.best.pt",
+  "wall_s": 12518.093914740486,
+  "cpu_s": 12441.472372966,
+  "max_rss_kb": 694296,
+  "september_opened": false
+}
