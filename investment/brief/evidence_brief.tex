@@ -487,26 +487,27 @@ across learning updates.
 \begin{tile}
 \textbf{Lower prediction loss is better.} Same 16,384 consecutive scored trades.
 \begin{center}
-\begin{tabular}{lrrr}
+\begin{tabular}{lrr}
 \toprule
-Model & Prediction loss & Online GFLOPs & Online seconds \\
+Model & Prediction loss & Online GFLOPs \\
 \midrule
-\textbf{Sleeping Machines} & \textbf{5.73336} & \textbf{2.13} & \textbf{32.3} \\
-LSTM & 5.75174 & 2.38 & 24.3 \\
-Transformer & 5.84994 & 1,990.78 & 643.8 \\
+\textbf{Sleeping Machines} & \textbf{5.73336} & \textbf{2.13} \\
+LSTM & 5.75174 & 2.38 \\
+Transformer & 5.84994 & 1,990.78 \\
 \bottomrule
 \end{tabular}
 \end{center}
 \textbf{Native wins by 0.11658 nats/event over Transformer and 0.01838 over LSTM.}
-The online forecasting-and-learning loop is \textbf{19.9 times faster than Transformer}
-on this single-thread CPU implementation.
+The scored forecasting-and-learning updates use \textbf{936 times less arithmetic
+than Transformer} under the declared operator-count convention.
 \end{tile}
 
 \textbf{Why this matters.} This tests a capability the market application needs:
 learning from an evolving stream while making predictions. Native temporal
 memory retains useful history without replaying an attention window at every
 update. The measured result combines better prediction with lower online
-arithmetic and elapsed time than this Transformer reference.
+arithmetic work than this Transformer reference. CPU wall time is an
+implementation diagnostic; specialised hardware is the deployment target.
 
 \textbf{What each model is allowed to do.} All receive the same chronological
 observations and update after 32 revealed outcomes. Native temporal state and
@@ -522,7 +523,7 @@ to guidance. The existing page 11 guidance experiment uses a different cohort.
 
 {\footnotesize\color{muted}Scope: one seed; Binance BTCUSDT, 2,048 Aug24 TRAIN warmup targets,
 128 Aug25 context events, then 16,384 adjacent DEV forecasts. September sealed.
-Online columns measure scored-stream forward/backward/optimizer work; original
+Online arithmetic measures scored-stream forward/backward/optimizer work; original
 fitting, TRAIN warmup, context-only preparation and engineering gates are separate.
 Special functions are separate from arithmetic. Fixed-weight completed development
 comparison also favours native: 6.88224 versus 6.96644; it is a different protocol.
