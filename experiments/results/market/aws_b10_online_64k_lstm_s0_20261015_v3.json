@@ -1,0 +1,189 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "family": "lstm",
+  "seed": 0,
+  "targets": 65536,
+  "nll": 5.196724608892173,
+  "added_targets": 49152,
+  "added_stream_nll": 5.011719301194538,
+  "curve": [
+    {
+      "targets": 20480,
+      "cumulative_nll": 5.67928627168464,
+      "added_stream_nll": 5.389469230482819
+    },
+    {
+      "targets": 24576,
+      "cumulative_nll": 5.693964776293103,
+      "added_stream_nll": 5.578413264909114
+    },
+    {
+      "targets": 28672,
+      "cumulative_nll": 5.7198509180662365,
+      "added_stream_nll": 5.677331432841093
+    },
+    {
+      "targets": 32768,
+      "cumulative_nll": 5.750948321371197,
+      "added_stream_nll": 5.750156110757298
+    },
+    {
+      "targets": 36864,
+      "cumulative_nll": 5.7008475579124696,
+      "added_stream_nll": 5.660133178654368
+    },
+    {
+      "targets": 40960,
+      "cumulative_nll": 5.506845295066673,
+      "added_stream_nll": 5.343581803787725
+    },
+    {
+      "targets": 45056,
+      "cumulative_nll": 5.476897116171329,
+      "added_stream_nll": 5.31984373570632
+    },
+    {
+      "targets": 49152,
+      "cumulative_nll": 5.387241309877443,
+      "added_stream_nll": 5.204991698823622
+    },
+    {
+      "targets": 53248,
+      "cumulative_nll": 5.3335314925028285,
+      "added_stream_nll": 5.147660808288494
+    },
+    {
+      "targets": 57344,
+      "cumulative_nll": 5.268748271486184,
+      "added_stream_nll": 5.075551367286629
+    },
+    {
+      "targets": 61440,
+      "cumulative_nll": 5.216085147569876,
+      "added_stream_nll": 5.021301371418894
+    },
+    {
+      "targets": 65536,
+      "cumulative_nll": 5.196724608892173,
+      "added_stream_nll": 5.011719301194538
+    }
+  ],
+  "added_ledger": {
+    "arithmetic": 7132776960,
+    "special_functions": 76299264,
+    "comparisons": 114375168
+  },
+  "added_wall_s": 72.27858845400624,
+  "resume_witness": {
+    "arithmetic": 9287408,
+    "special_functions": 99348,
+    "comparisons": 148926,
+    "operator_calls": {
+      "aten.slice.Tensor": 66,
+      "profiler._record_function_enter_new.default": 4,
+      "profiler._record_function_exit._RecordFunction": 4,
+      "aten.cat.default": 146,
+      "aten.sub.Tensor": 60,
+      "aten.div.Tensor": 62,
+      "aten.ge.Scalar": 2,
+      "aten.all.default": 36,
+      "aten._local_scalar_dense.default": 76,
+      "aten.embedding.default": 2,
+      "aten.log1p.default": 8,
+      "aten.unsqueeze.default": 230,
+      "aten.view.default": 82,
+      "aten.t.default": 694,
+      "aten.addmm.default": 12,
+      "aten.add.Tensor": 1100,
+      "aten.select.int": 512,
+      "aten.mm.default": 402,
+      "aten.split.Tensor": 128,
+      "aten.sigmoid.default": 384,
+      "aten.detach.default": 1410,
+      "aten.mul.Tensor": 1596,
+      "aten.tanh.default": 256,
+      "aten.stack.default": 8,
+      "aten.new_zeros.default": 4,
+      "aten.softplus.default": 4,
+      "aten.exp.default": 54,
+      "aten.neg.default": 88,
+      "aten.aminmax.default": 2,
+      "aten.zeros.default": 2,
+      "aten.scatter_.value": 2,
+      "aten._to_copy.default": 2,
+      "aten.lt.Scalar": 10,
+      "aten.clamp_min.default": 12,
+      "aten.log.default": 10,
+      "aten.where.self": 36,
+      "aten.rsub.Scalar": 2,
+      "aten.logaddexp.default": 8,
+      "aten._log_softmax.default": 4,
+      "aten.log_sigmoid_forward.default": 2,
+      "aten.permute.default": 20,
+      "aten.bmm.default": 6,
+      "aten.expand.default": 14,
+      "aten.clamp_max.default": 8,
+      "aten.gt.Scalar": 10,
+      "aten.special_log_ndtr.default": 6,
+      "aten.pow.Tensor_Scalar": 14,
+      "aten.full_like.default": 6,
+      "aten.zeros_like.default": 6,
+      "aten.gather.default": 2,
+      "aten.squeeze.dim": 138,
+      "aten.sum.dim_IntList": 146,
+      "aten.expm1.default": 2,
+      "aten.logsumexp.default": 4,
+      "aten.mean.default": 2,
+      "aten.abs.default": 36,
+      "aten.ne.Scalar": 36,
+      "aten.eq.Tensor": 36,
+      "aten.ones_like.default": 2,
+      "aten.div.Scalar": 2,
+      "aten.add.Scalar": 24,
+      "aten.scalar_tensor.default": 22,
+      "aten.scatter_add.default": 2,
+      "aten.mul.Scalar": 14,
+      "aten.slice_backward.default": 24,
+      "aten._log_softmax_backward_data.default": 4,
+      "aten.clone.default": 2,
+      "aten._unsafe_view.default": 2,
+      "aten.transpose.int": 4,
+      "aten.new_empty_strided.default": 2,
+      "aten.copy_.default": 2,
+      "aten.log_sigmoid_backward.default": 2,
+      "aten.softplus_backward.default": 4,
+      "aten.select_backward.default": 256,
+      "aten.tanh_backward.default": 256,
+      "aten.sigmoid_backward.default": 384,
+      "aten.embedding_dense_backward.default": 2,
+      "aten.linalg_vector_norm.default": 36,
+      "aten.reciprocal.default": 2,
+      "aten.clamp.default": 2,
+      "aten.mul_.Tensor": 102,
+      "aten.add_.Tensor": 68,
+      "aten.lerp_.Scalar": 34,
+      "aten.addcmul_.default": 34,
+      "aten.sqrt.default": 34,
+      "aten.addcdiv_.default": 34
+    },
+    "unsupported": {},
+    "validated": true,
+    "convention": "aten_scalar_algorithms_v3"
+  },
+  "inherited_online_record": "experiments/results/market/aws_b10_online_lstm_s0_20261014_v1.json",
+  "input_sha256": {
+    "experiments/results/market/aws_b10_online_lstm_s0_20261014_v1.json": "1d6b8f17ade4edb3f8acee6432a00eea978f4a36ea82b067a744ae8ec58c0c31",
+    "experiments/results/market/aws_b10_online_lstm_s0_20261014_v1_lstm.pt": "b271ac13e75a0bd132fb5b5d6799f6a660ca146d9bf7fe03ffa2c848d125ad2b"
+  },
+  "source_sha256": {
+    "experiments/market/b10_online_extension_v3.py": "5b563242f7cdeb36ebd006f12d95cc8d4dbb477475ae535390dff1d177e4da42",
+    "experiments/market/b10_online_comparison.py": "daae030b8d90743ed363a693bc74819bd86a8a4ef7540e0cc7818e1c9f2e5af8",
+    "experiments/market/b10_online_stream.py": "caba888b03c3eac0ff6498047bcaa98d6fca5ee5992d26e6497231c7a0d63b1f",
+    "experiments/market/b10_operator_ledger_v3.py": "54a91d6571407404aed733b42b30e874557dbaf7919a2af2732a3c888dfa7d34"
+  },
+  "final_weights": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.pt",
+  "max_rss_kb": 584248,
+  "process_wall_s": 74.01974192098714,
+  "scope": "Causal continuation of saved16k model/Adam/numerical history to64k consecutiveDEVforecasts. No model acquisition or TRAINwarmup repeated. All3 families retain online updates/persistent state; TFhistory2048. Scored-stream ledger plus inherited work and twice-executed32-target recovery witness separate. Single seed/reusedAug25DEV,Septembersealed; stability/scale confirmation, not new untouchedtest or tradingprofits."
+}
