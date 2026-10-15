@@ -1,0 +1,89 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "decision depth: race-tree output cascade",
+ "tag": "aws_r1_race_tree_L2_1M_s0_20261015_v1",
+ "args": {
+  "tag": "aws_r1_race_tree_L2_1M_s0_20261015_v1",
+  "seed": 0,
+  "train_tokens": 1048576,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 2,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 14400.0,
+  "max_steps": 0,
+  "score": 1,
+  "checkpoint_blocks": 0
+ },
+ "parameters": 8240558,
+ "best_epoch": 2,
+ "epochs_run": 5,
+ "steps": 5120,
+ "wall_s": 3127.2449429035187,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 6.857146482914686,
+   "select_nll": 6.337456998093628,
+   "epoch_s": 613
+  },
+  {
+   "epoch": 1,
+   "train_nll": 5.798163472209126,
+   "select_nll": 6.092403655990951,
+   "epoch_s": 626
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.4148708479478955,
+   "select_nll": 6.0473345526847595,
+   "epoch_s": 630
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.128929766826332,
+   "select_nll": 6.107118436052092,
+   "epoch_s": 629
+  },
+  {
+   "epoch": 4,
+   "train_nll": 4.8937723729759455,
+   "select_nll": 6.211472556482715,
+   "epoch_s": 630
+  }
+ ],
+ "select": {
+  "nll": 6.0473345526847595,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_race_tree_L2_1M_s0_20261015_v1.pt",
+ "output_work_per_token": {
+  "race_tree_child_scores": 64,
+  "race_tree_macs": 4288,
+  "dense_head_macs": 3216448
+ },
+ "reference": {
+  "keyed_L2_1M_score_65528": 6.019141,
+  "note": "dense-head plan B with the same backbone: aws_r1_deep_keyed_L{layers}_1M_s0_20261015_v3"
+ },
+ "score_65528": {
+  "nll": 5.653883466323556,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_race_tree_lm.py": "67a69529082758c3df919b9edea71d58ef5d0fc6299cda3bfb1a1a2adcd972b7",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1",
+  "experiments/results/token_language/vocab_race_tree_b16d4_20261015_v1.npz": "b72e2525495cb33602768d95d32d14e304e476cb1652ef293048e1efa2b02c2e"
+ }
+}
