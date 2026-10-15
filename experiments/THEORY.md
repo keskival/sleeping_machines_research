@@ -542,3 +542,9 @@ formalizes role binding, relation terms, persistent refinement, delayed feedback
 and cell-balanced exact route audits. A selected-child transport repair improves
 float32 signal visibility from16/32 to32/32 audited cells in one untrained
 synthetic fixture;22 numerical contracts pass. No learned semantic result yet.
+
+Addressable lower-level composition (15 October):
+[`ADDRESSABLE_COMPOSITION_MEMORY.md`](theory/ADDRESSABLE_COMPOSITION_MEMORY.md)
+formalizes the compression-collision obstruction, direct typed memory reads,
+refinement separate from abstraction, finite-stencil score scaling and controlled
+source interventions.29 contracts pass; real-TRAIN/no-fit preflight queued.

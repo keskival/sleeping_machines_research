@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "development_contracts",
+  "tests": 29,
+  "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv-docker/bin/python -m pytest -q tests/test_addressable_parent_hierarchy.py tests/test_parent_race_hierarchy.py tests/test_downstream_race_hierarchy.py tests/test_spatial_race_hierarchy.py",
+  "scope": "Synthetic numerical development contracts only; no fitting or benchmark quality claim",
+  "source_sha256": {
+    "sleeping_machines/addressable_parent_hierarchy.py": "40bb08afba481f3a22465bb17f5535fd258be987ea2a6100926094224035fb41",
+    "sleeping_machines/parent_race_hierarchy.py": "20d18571621e916cd0c363fcb3292da2f9877c1ab522108d08b9770aff137dcf",
+    "sleeping_machines/downstream_race_hierarchy.py": "f33e006b27a6af22a43fd8a8c3b9cd2016339112fad84c83c129980a0911435e",
+    "sleeping_machines/spatial_race_hierarchy.py": "391be89aaa636dcbe5609f0088fd508eac397afd55dbea292a631dc1eed83639",
+    "tests/test_addressable_parent_hierarchy.py": "944b81ed3127bbec4dce1adcb666461f4f50a76c91bc55a17aab3a60d5c76162",
+    "tests/test_parent_race_hierarchy.py": "def1e091b5741b66d90a8b08b0b63af572ec5ec3272f731ec31b51239c765cf3",
+    "tests/test_downstream_race_hierarchy.py": "8b5eed1a10176972aea8ced270db4f07770a1626f8495fa8289a5dc8df109850",
+    "tests/test_spatial_race_hierarchy.py": "f716c044abf6529dbe01c456ab2dcf5cc792348e01d96eebd9852ac0af1783a0"
+  }
+}
