@@ -422,6 +422,19 @@ The conditional opportunity is economical continual adaptation, more capable loc
 
 The model beats the trigram at equal data by 0.53 nats per token on every seed and the trigram fitted on four times the data by 0.09, and **the margin grows with data**: at 4M tokens the model scores 5.510 ± 0.016 against the trigram's 6.100 (0.590; 2 seeds); the keyed read contributes 0.175 of the margin (seed-0 ablation). The next language reference is a published small Transformer under the same protocol.
 
+### 4.9 Online market forecasting (B10): confirmed on a new month
+
+Markets change, so a forecaster must keep learning while it predicts. On Binance BTCUSDT public trades every model adapts its weights after each 32 revealed outcomes and is scored before an outcome can change it. Native temporal and LSTM state persist; the Transformer keeps 2,048 events of history, cached or re-encoded after each update. All choices were fixed from August evidence and preregistered before the 1 October data were acquired; each learner carries its full August memory and optimizer state across the five-week gap.
+
+| Model (all adapt online) | 1 Oct NLL, 65,536 forecasts | Aug 25 NLL, 65,536 forecasts | Scored-stream arithmetic, GF |
+| --- | --- | --- | --- |
+| **Native temporal learner** | **8.0785** | **5.1759** | **8.51** |
+| LSTM | 8.1027 | 5.1967 | 9.51 |
+| Transformer, cached history | 8.1792 | 5.2804 | 124.68 |
+| Transformer, re-encoded history | 8.1764 | 5.2797 | 7,963.12 |
+
+**Win (single seed), passed the preregistered October confirmation:** native leads in all 16 of 16 consecutive 4,096-trade windows, by 0.024 nats/event over LSTM and 0.10 over the Transformers, with 14.7x less arithmetic than the cached Transformer and 16x fewer retained bytes of weights plus prediction state. Two-layer width-32 models, seed 0; September TEST sealed. Next: seeds 1 and 2 on the same frozen protocol for the three-seed B10 criterion ([packet](../investment/online_market_evidence.json)).
+
 ## 5. What the evidence says
 
 **What works.** The temporal mechanisms learn order, timing and retrieval from few examples where Transformers fail; time is used as information. Counterfactual route credit improves language at depth for 0.3% extra work. Stored capacity improves quality at flat inference arithmetic. On anonymous interleaved processes the native model beats every generic control across three seeds. At 10M characters it beats tuned Transformers at equal or lower compute.
@@ -445,7 +458,8 @@ A race of exponential clocks over memory that decays with elapsed time is a temp
 | **B3** | FAS v2 confirmation, then public release of FAS | Native seed mean ≥ strongest eligible reference + 0.02 AUROC, paired bootstrap lower bound > 0 | **Sealed tie:** native 0.70366 vs time-encoded Transformer 0.70432 (three seeds); mean gap −0.00066; seed-averaged-rank bootstrap 95% [−0.00834, 0.00747]. Future development uses TRAIN/VAL; completed TEST is not reused for tuning |
 | **B4** | Second neural-TPP benchmark (Bosser & Ben Taieb, TMLR 2023/2025): LastFM, MOOC, Github, Stack Overflow, Wikipedia, MIMIC2, Retweets; 5 fixed splits | The frozen one-configuration EasyTPP model, no tuning, below the best published time + mark NLL on a dataset (pre-registered) | Frozen configuration: all six completed verdicts lost (Wikipedia after its guarded split-0 rerun: two test sequences with exploding hazards; marks 27.7 vs 144.8); Github lost by 2.3 (time ahead); Stack Overflow time component ahead; Retweets lost (−515.2 vs −538.7; marks level); LastFM lost (−774.6 vs −849.7; time ahead) |
 | **B5** | Temporal Graph Benchmark: dynamic link prediction (tgbl-wiki-v2, tgbl-review-v2) and node affinity (tgbn-trade, then genre/reddit/token) | Test MRR / NDCG@10 above the leaderboard leader (TPNet 0.827 on wiki; NAVIS 0.863 on trade) on 3 seeds, official loaders and evaluators | **tgbn-trade won** (0.868 ± 0.0005 vs NAVIS 0.863, 3 sealed seeds); **tgbl-wiki won** (0.835 ± 0.0003 vs TPNet 0.827, 3 sealed seeds) |
-| **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met** (6.009 ± 0.010 vs KN trigram 6.537, 3 seeds); next: sparse correction of detached key/query producer credit; published token-matched reference reuse |
+| **R1** | Language research (one slot) | Solve associative recall/induction with irregular gaps; beat KN trigram on the large DEV slice | **Gate 1 met** (3 seeds, §4.5); **gate 2 met** (6.009 ± 0.010 vs KN trigram 6.537, 3 seeds); native deep learner in development: best 5.978 on 8,192 DEV targets (shared lane clocks +0.011, corpus-EOS training boundary +0.018; grown depth −0.030 until branch learning is repaired); D8 32M acquisition running |
+| **B10** | Crypto market event streams, chronological online learning (Binance BTCUSDT) | Better log-likelihood than every reference on a preregistered prequential month, 3 seeds | **Seed 0 passed** the preregistered 1 October confirmation against online LSTM and Transformers (§4.9); seeds 1–2 and Hawkes/neural-TPP references next |
 
 High-fidelity route credit (exact forced-lane credit at small pools, then a low-variance multi-step estimator) is developed inside B1, B3 and R1, where model sizes make it affordable. Parallel-scan training of the linear decay/rotation core follows when a battle's fitting time requires it. Every result reports measured inference work beside quality. New Transformer and LSTM training is retired: comparisons use published scores under the exact matching protocol and the dense results already completed.
 

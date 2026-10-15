@@ -477,58 +477,59 @@ per update. Forecasting, not profits.}
 
 \newpage
 % ---------------------------------------------------------------- market comparison
-\sect{Online market prediction wins}{Ahead while every model learns during use}
+\sect{Online market prediction wins}{Confirmed on a new month, chosen in advance}
 
 Our native model beats both Transformer and LSTM on chronological market
-forecasts while \textbf{all three adapt their weights online}. Each forecast is
-scored before its outcome is used for learning. Useful numerical memory persists
-across learning updates.
+forecasts while \textbf{all models adapt their weights online}. Each forecast is
+scored before its outcome is used for learning. The win held on
+\textbf{1 October data that no model had seen}, with every choice fixed and
+published from August evidence before the October data were acquired.
 
 \begin{tile}
-\textbf{Lower prediction loss is better.} Same 16,384 consecutive scored trades.
+\textbf{Lower prediction loss is better.} 1 October: same 65,536 consecutive scored trades.
 \begin{center}
 \begin{tabular}{lrr}
 \toprule
 Model & Prediction loss & Online GFLOPs \\
 \midrule
-\textbf{Sleeping Machines} & \textbf{5.73336} & \textbf{2.13} \\
-LSTM & 5.75174 & 2.38 \\
-Transformer & 5.84994 & 1,990.78 \\
+\textbf{Sleeping Machines} & \textbf{8.07854} & \textbf{8.51} \\
+LSTM & 8.10271 & 9.51 \\
+Transformer (cached) & 8.17919 & 124.68 \\
+Transformer (re-encoded) & 8.17638 & 7,963.12 \\
 \bottomrule
 \end{tabular}
 \end{center}
-\textbf{Native wins by 0.11658 nats/event over Transformer and 0.01838 over LSTM.}
-The scored forecasting-and-learning updates use \textbf{936 times less arithmetic
-than Transformer} under the declared operator-count convention.
+\textbf{Native wins by 0.02417 nats/event over LSTM and 0.10066 over cached Transformer,
+and leads in all 16 of 16 consecutive 4,096-trade windows.} The scored
+forecasting-and-learning updates use \textbf{14.7 times less arithmetic than the
+cached Transformer} and 936 times less than the re-encoded one.
 \end{tile}
 
-\textbf{Why this matters.} This tests a capability the market application needs:
-learning from an evolving stream while making predictions. Native temporal
-memory retains useful history without replaying an attention window at every
-update. The measured result combines better prediction with lower online
-arithmetic work than this Transformer reference. CPU wall time is an
-implementation diagnostic; specialised hardware is the deployment target.
+\textbf{Why this matters.} Markets change; a forecaster has to keep learning while
+it predicts. This test carries each model's complete August learner, memory and
+optimizer state across a five-week calendar gap and lets it adapt on the new month.
+The ranking and the work advantage both transfer. On the August development stream
+(65,536 forecasts) the same models score 5.17588 native, 5.19672 LSTM, 5.27966
+re-encoded and 5.28043 cached Transformer. Stored weights plus numerical prediction
+state require \textbf{0.146 MB versus 2.334 MB} for the cached Transformer (16 times
+less, logical tensor bytes at reference precision).
 
 \textbf{What each model is allowed to do.} All receive the same chronological
 observations and update after 32 revealed outcomes. Native temporal state and
-LSTM recurrent state persist. Transformer uses 2,048 events of rolling history,
-twice its acquisition context, with attention recomputed after weight changes;
-its addressed output memory also persists. Our native memory is not truncated
-to the attention buffer. No artificial memory reset is imposed at update boundaries.
+LSTM recurrent state persist. The Transformer keeps 2,048 events of history, either
+as cached past-version keys/values or re-encoded with current weights after every
+update, plus persistent addressed output memory. No memory reset is imposed at update
+boundaries or across the calendar gap.
 
-\textbf{The next winning candidate.} Add our demonstrated native future-taught
-credit guidance to the same acquired actor and stream. Its source actor and
-ordinary online forecasts must replay before attributing any extra quality gain
-to guidance. The existing page 11 guidance experiment uses a different cohort.
+\textbf{Next.} Repeat seeds to turn this single-seed win into a confirmed win; the
+sealed September test stays unopened until then.
 
-{\footnotesize\color{muted}Scope: one seed; Binance BTCUSDT, 2,048 Aug24 TRAIN warmup targets,
-128 Aug25 context events, then 16,384 adjacent DEV forecasts. September sealed.
-Online arithmetic measures scored-stream forward/backward/optimizer work; original
-fitting, TRAIN warmup, context-only preparation and engineering gates are separate.
-Special functions are separate from arithmetic. Fixed-weight completed development
-comparison also favours native: 6.88224 versus 6.96644; it is a different protocol.
-No trading-return or measured chip-energy claim. Source-bound results and shared
-units: \\ \texttt{investment/online\_market\_evidence.json}.}
+{\footnotesize\color{muted}Scope: two-layer, width 32 models; seed 0; Binance BTCUSDT public trades. Acquisition on 24 August TRAIN;
+August development stream 25 August. October: preregistration committed before data acquisition, 128 context events
+then 65,536 forecasts, no October tuning. Online arithmetic covers scored-stream forward/backward/optimizer work;
+original fitting, warmup, context-only preparation and gates are separate; special functions separate.
+CPU wall time is an implementation diagnostic. No trading-return or measured chip-energy claim. Source-bound results
+and shared units: \\ \texttt{investment/online\_market\_evidence.json}.}
 
 \newpage
 \sect{Language learning improves}{Better prediction with less complete training time}

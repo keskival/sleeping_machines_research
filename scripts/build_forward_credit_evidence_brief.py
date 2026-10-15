@@ -27,7 +27,7 @@ def main():
         pdf=build/'evidence_brief.pdf'
         document=fitz.open(pdf)
         text='\n'.join(page.get_text() for page in document)
-        for expected in ['98.4','2.09','77.8','15 October 2026','working research prototype','0.09279','15.27','6.88224','6.96644','0.11658','5.73336','5.84994']:
+        for expected in ['98.4','2.09','77.8','15 October 2026','working research prototype','0.09279','15.27','5.17588','5.28043','8.07854','8.10271','8.17919','0.02417','0.10066','14.7']:
             assert expected in text,expected
         (preview/'text.txt').write_text(text)
         output=ROOT/'investment/sleeping_machines_evidence_brief.pdf';shutil.copyfile(pdf,output)

@@ -8,7 +8,7 @@ import copy
 import torch
 from .receiver_bank_adamw import ReceiverBankAdamW
 from .receiver_credit_banks import ReceiverCreditBanks
-from .local_credit_banks import LocalCreditBanks
+from .local_credit_banks import LocalCreditBanks,CreditPacket
 from .calibrated_receiver_adamw import CalibratedLocalCreditBanks
 
 class ProtectedGrowthAdamW(ReceiverBankAdamW):
@@ -25,6 +25,27 @@ class ProtectedGrowthAdamW(ReceiverBankAdamW):
         args={} if bank_caps is None else {'bank_caps':bank_caps}
         self.receiver.local=constructor(views.items(),lr=lr,weight_decay=weight_decay,**args,**options)
         assert sum(p.numel() for p in views.values())==sum(p.numel() for p in model.parameters())
+    def step_separated(self,parent_objective,augmented_objective,parent_banks):
+        """Old banks receive parent credit; new banks receive augmented credit.
+
+        Both gradients are issued before any bank changes. None stays absent,
+        avoiding spurious old Adam/decay steps when only new coordinates learn.
+        Loss/teacher construction is external and must preserve parent semantics.
+        """
+        parent_banks=set(parent_banks)
+        if not parent_banks<=set(self.receiver.mapping):raise ValueError('Unknown acquired bank')
+        names=list(self.receiver.parent_parameters);parameters=tuple(self.receiver.parent_parameters.values())
+        old=torch.autograd.grad(parent_objective,parameters,retain_graph=True,allow_unused=True)
+        new=torch.autograd.grad(augmented_objective,parameters,allow_unused=True)
+        old=dict(zip(names,old));new=dict(zip(names,new));packets=[]
+        for bank,(name,index) in self.receiver.mapping.items():
+            gradient=(old if bank in parent_banks else new)[name]
+            if gradient is None:continue
+            if index is not None:gradient=gradient[index]
+            packets.append(CreditPacket(bank,self.receiver.local.versions[bank],gradient.detach().clone(),f'separated{self.update}'))
+        self.receiver.local.receipts.clear()
+        for packet in packets:self.receiver.apply(packet);self.deliveries+=1
+        self.update+=1
     def state_dict(self):
         value=super().state_dict()
         if hasattr(self.receiver.local,'bank_caps'):value['bank_caps']=dict(self.receiver.local.bank_caps)
