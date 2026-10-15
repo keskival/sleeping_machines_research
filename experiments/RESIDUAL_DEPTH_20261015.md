@@ -105,6 +105,19 @@ while the step-512 model is flat near 7. The failure is a persistent-state feedb
 paths, not signal amplitude. Repair before any deeper read stack: depth-scaled read gains like the stage gains, and
 read outputs normalized before entering the stream.
 
-Verdict for the race stack: stop depth scaling; carry D2 + per-stage reads (and the episodic store) as its construction.
-Depth work moves to the keyed member, whose layers all have full-lane credit and per-layer reads (Curie one-pass L2/L8 at
-4M running now; AWS plan-B 1M ladder) and to AWS's plan-C temporal hierarchy.
+Verdict: this composition does not convert depth into quality; the composition is what must change, not the ambition of
+depth (see the composition diagnosis below). D2 + per-stage reads is the best arm of the current composition.
+
+## Composition diagnosis (user correction: the composition is wrong, not depth)
+
+Two composition errors, both visible in `sleeping_machines/residual_race_episodes.py`:
+1. **Deep-transition recurrence.** The top stage's output (`ctx_vals`) enters the bottom stage of the next token, so every
+   token-to-token transition passes all D stages; credit over k tokens crosses ~k·D hard-routed stages. Working deep
+   sequence models keep depth vertical and give each layer its own horizontal recurrence. The D16 + reads divergence
+   (loss rising with window position) is this loop becoming unstable.
+2. **No part-whole structure.** Every stage runs at the token clock on the same 16-token credit window and 48-wide
+   stream, so no stage can represent a word, clause or sentence as a whole. Measured
+   (`curie_part_whole_structure_20261015_v1.json`): 84% of the loss is the next-word choice; D8 + reads stages 4-7 add
+   ≤0.001 nats each there, their value being on newline/punctuation/continuation tokens.
+
+The replacement is designed from the data: theory/PART_WHOLE_COMPOSITION.md and `experiments/r1_part_whole_lm.py`.
