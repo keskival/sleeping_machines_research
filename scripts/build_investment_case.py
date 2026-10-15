@@ -18,7 +18,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUTS = ['investment/INVESTMENT_CASE.md', 'investment/PITCH.md',
+INPUTS = ['investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json',
           'investment/evidence_20261003.json', 'investment/language_learning_evidence.json',
           'scripts/prepare_language_learning_evidence.py', 'scripts/build_investment_case.py']
 
@@ -68,7 +68,7 @@ def render(stage):
         canvas.saveState()
         canvas.setFont('Inv', 7)
         canvas.setFillColor(colors.HexColor('#666666'))
-        canvas.drawString(18*mm, 12*mm, 'Sleeping Machines | investment thesis | 3 October 2026')
+        canvas.drawString(18*mm, 12*mm, 'Sleeping Machines | investment thesis | 15 October 2026')
         canvas.drawRightString(A4[0]-18*mm, 12*mm, str(doc.page))
         canvas.restoreState()
 

@@ -585,12 +585,15 @@ These timing mechanisms are established in asynchronous circuit research
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
 \href{https://www.imm.dtu.dk/courses/02204/}{DTU}).
 
-\textbf{Our strongest token-language result improves again.} Continuing the
-trained richer-readout model with local clipping reduces prediction loss from
-\textbf{6.09934 to 6.06556}, a further \textbf{0.03377-nat gain} after 2.10 million
-additional training targets. Same 8,192 development targets and 1,024-token history,
-one seed; added data and local clipping act together. The added-depth candidate scores 6.09508; the stronger continued parent at 6.06556
-is the selected model.
+\textbf{Our strongest token-language result improves again.} Three continuation
+stages of the trained richer-readout model reduce prediction loss from
+\textbf{6.09934 to 5.97839}, a \textbf{0.12095-nat gain} over 6.29 million additional
+training targets: local clipping (6.06556), then shared lane clocks (6.01053, ahead of
+independent lanes by 0.011), then clearing memory at document boundaries during training
+(5.97839, ahead of memory carried across unrelated documents by 0.018). Same 8,192
+development targets and 1,024-token history, one seed; each stage adds training data, and
+the paired arm differences isolate each change. The added-depth candidate scores 6.09508
+and is not selected.
 
 \textbf{Why this matters.} The learning implementation improves prediction
 and cost together, rather than only passing numerical contracts. The next

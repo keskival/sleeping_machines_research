@@ -8,9 +8,30 @@
   "calibration_targets": 16384,
   "incremental_training_s": 2033.0570634061005,
   "inherited_training_s": 8657.82008446171,
-  "scope": "Single seed, same8192 reusedDEV targets and1024history. Added acquisition plus calibratedlocal clipping jointly; not clipping-only or added-depth attribution. No publicTransformer or physicalhardware win. Pilot/calibration/scoring costs additionally recorded in source result.",
+  "scope": "Single seed, same8192 reusedDEV targets and1024history. Added acquisition plus calibratedlocal clipping jointly; not clipping-only or added-depth attribution. No publicTransformer or physicalhardware win. Pilot/calibration/scoring costs additionally recorded in source result. Later stages: single-factor 2M continuations of the selected learner, same DEV protocol; stage gains include added training, arm differences are the single-factor attributions.",
   "input_sha256": {
     "experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1.json": "d07cdfdcb8798a190163497b762279ec3ee1d3c84e150023d2fe4a49bcab429a",
-    "experiments/results/diagnostics/aws_language_quality_work_frontier_20261014_v1.json": "870cec8aa61c88a43083e2a0f88cd45582ea3675a3c7c1f38bb30a13f85488e1"
-  }
+    "experiments/results/diagnostics/aws_language_quality_work_frontier_20261014_v1.json": "870cec8aa61c88a43083e2a0f88cd45582ea3675a3c7c1f38bb30a13f85488e1",
+    "experiments/results/token_language/aws_lane_policy_shared_2m_20261015_v1.json": "37282849ccc2771411ab9128171ba03ee541f5f424a2600af176ca06b9a598da",
+    "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.json": "c8df9923905b7ebcd7f2762de8a59f5efc61bc4768b19304e68b3fc08effec9a"
+  },
+  "stages": [
+    {
+      "tag": "aws_lane_policy_shared_2m_20261015_v1",
+      "decision": "shared lane clocks (versus independent 6.021640)",
+      "nll": 6.010525291314643,
+      "added_targets": 2097152,
+      "training_s": 2037.2259202969726
+    },
+    {
+      "tag": "aws_memory_policy_corpus_eos_2m_20261015_v1",
+      "decision": "corpus-EOS training boundary (versus persistent across documents 5.996434)",
+      "nll": 5.978387557528713,
+      "added_targets": 2097152,
+      "training_s": 2038.935649032006
+    }
+  ],
+  "current_nll": 5.978387557528713,
+  "total_gain_nats": 0.12094948340440936,
+  "total_added_targets": 6291456
 }

@@ -13,9 +13,22 @@ Current terms: **€3M raise at €50M priced pre-money**, with €100M as a sep
 stretch scenario. Read the [current valuation rationale](VALUATION_RATIONALE.md)
 and [application opportunity register](../report/model_family_opportunities.md).
 
+## Online market forecasting: confirmed on a new month (15 October 2026)
+
+**A preregistered out-of-sample win while every model keeps learning.** On Binance BTCUSDT public trades, our native temporal learner, an online LSTM and two online Transformers each adapt their weights after every 32 revealed trades and are scored before any outcome can change them. All model choices were fixed from August evidence and committed before the 1 October data were downloaded; each learner carried its full August memory and optimizer state across the five-week gap.
+
+| Model (all learn online) | 1 Oct loss, 65,536 trades | 25 Aug loss, 65,536 trades | Online arithmetic |
+| --- | --- | --- | --- |
+| **Sleeping Machines** | **8.0785** | **5.1759** | **8.5 GFLOPs** |
+| LSTM | 8.1027 | 5.1967 | 9.5 GFLOPs |
+| Transformer, cached history | 8.1792 | 5.2804 | 124.7 GFLOPs (14.7×) |
+| Transformer, re-encoded history | 8.1764 | 5.2797 | 7,963 GFLOPs (936×) |
+
+Lower loss is better (nats per trade: next-trade timing, aggressor side and price direction). Our model leads in **all 16 of 16** consecutive 4,096-trade windows of the new month, with **14.7× less arithmetic** than the cached Transformer and **16× less retained state** (0.146 MB of weights plus prediction memory versus 2.334 MB). This is the capability a deployed forecaster needs: keep learning from a changing stream at low cost. Single seed; the sealed September test stays unopened until seed replication. Next: return-distribution forecasts of the price itself (10 s, 1 min, 5 min), now in development. No trading-profit or measured chip-energy claim. [Source-bound evidence](online_market_evidence.json).
+
 ## Measured language learning progress
 
-The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json).
+The integrated sparse-teaching language model improves final development NLL **6.62066 to6.52787nats/token** and reduces complete CPU training **9,129 to7,734seconds (15.27%)**, at the same8.39M acquired GPT2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
 
 This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
 
