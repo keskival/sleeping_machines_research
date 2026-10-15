@@ -1,0 +1,12 @@
+{"step": 8, "paired_last8": 0.710596339777112}
+{"step": 16, "paired_last8": 0.6986122243106365}
+{"step": 24, "paired_last8": 0.6945631951093674}
+{"step": 32, "paired_last8": 0.694033071398735}
+{"step": 40, "paired_last8": 0.6934592314064503}
+{"step": 48, "paired_last8": 0.6933039762079716}
+{"step": 56, "paired_last8": 0.6936034671962261}
+{"step": 64, "paired_last8": 0.6936934180557728}
+/workspace/experiments/hierarchy/carried_role_learning.py:91: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  final['materialized_train_nll']=float(F.cross_entropy(actual,y));final['materialized_dev_nll']=float(F.cross_entropy(actual_dev,yd))
+{"arm": "carried", "dev_nll": 0.7164096827482667, "dev_accuracy": 0.453125}
