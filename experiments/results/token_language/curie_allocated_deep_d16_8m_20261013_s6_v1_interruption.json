@@ -1,0 +1,19 @@
+{
+  "status": "interrupted",
+  "battle": "R1",
+  "old_run": "curie_allocated_deep_d16_8m_20261013_s6_v1",
+  "recovery_run": "curie_allocated_deep_d16_8m_20261013_s6_resume1_v1",
+  "reason": "Container restart at 2026-10-15 06:19:50 UTC (PID1 start time) ended the trainer, tmux and coordinator; runner log has no terminal exit marker. Not a memory-guard stop.",
+  "checkpoint_sha256": "4a20444dc32d597d42a538c07529bb5ee6ce96423c5a4d31ad7d2e403b8d6d00",
+  "checkpoint_step": 15360,
+  "checkpoint_targets": 7864080,
+  "checkpoint_successful_training_s": 79699.28208801715,
+  "checkpoint_wall_s": 79827.956788034,
+  "prior_runner_observed_interval_lower_bound_s": 81816,
+  "prior_runner_start_utc": "2026-10-14 07:31:29",
+  "prior_runner_last_heartbeat_utc": "2026-10-15 06:15:05",
+  "input_sha256": {
+    "experiments/queue/r1/runner_curie_allocated_deep_d16_8m_20261013_s6_v1.out": "790bb91a7b14206ca1bb9690dc4f8dc6de151c3cf5dac6076644347f0f727b06"
+  },
+  "scope": "Observed runner interval is a lower bound; work after the step-15360 checkpoint (about 33 min) is discarded and charged only through the interval. Preserve checkpoint and log files."
+}
