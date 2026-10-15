@@ -554,3 +554,10 @@ Exact hierarchical suffix replay (15 October):
 proves fixed-prefix replay equivalence, records32 numerical contracts and
 connects the cost repair to a source-bound real-input gate and64-update learning
 probe. No new learned quality or hardware claim.
+
+Indexed temporal objects (15 October):
+[`INDEXED_TEMPORAL_OBJECTS.md`](theory/INDEXED_TEMPORAL_OBJECTS.md)
+consolidates persistent indexed memory and native event generation into one
+primitive. Eight abstraction levels reuse native race/state transport;45
+combined contracts pass, including timing-dependent content and early clock
+credit. No trained semantic result; raw-event preflight is queued.
