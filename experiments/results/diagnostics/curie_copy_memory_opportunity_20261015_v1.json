@@ -1,0 +1,90 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_copy_memory_opportunity_20261015_v1",
+  "learner": "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1",
+  "native_nll": 5.978387536981748,
+  "recorded_nll": 5.978387557528713,
+  "heldout_with_cache_nll": 5.684536867902208,
+  "heldout_gain": 0.2938506690795393,
+  "seen_in_window_fraction": 0.5101318359375,
+  "native_nll_seen": 4.265725458729896,
+  "native_nll_unseen": 7.761894844485981,
+  "cache_nll_seen": 3.549151068102556,
+  "cache_nll_unseen": 7.908254101234564,
+  "buckets": [
+    {
+      "rank_low": 0,
+      "rank_high": 2000,
+      "target_fraction": 0.707275390625,
+      "native_nll": 4.428951996864422,
+      "with_cache_nll": 4.322128610840013,
+      "gain": 0.10682338602440833,
+      "seen_in_window_fraction": 0.6363479461511908
+    },
+    {
+      "rank_low": 2000,
+      "rank_high": 10000,
+      "target_fraction": 0.1614990234375,
+      "native_nll": 8.780331945540954,
+      "with_cache_nll": 8.186632979375398,
+      "gain": 0.5936989661655563,
+      "seen_in_window_fraction": 0.21239606953892667
+    },
+    {
+      "rank_low": 10000,
+      "rank_high": 30000,
+      "target_fraction": 0.095458984375,
+      "native_nll": 10.405288973885119,
+      "with_cache_nll": 9.56782211363006,
+      "gain": 0.8374668602550592,
+      "seen_in_window_fraction": 0.20332480818414322
+    },
+    {
+      "rank_low": 30000,
+      "rank_high": 50257,
+      "target_fraction": 0.0357666015625,
+      "native_nll": 12.151152531034711,
+      "with_cache_nll": 10.963687802305413,
+      "gain": 1.1874647287292976,
+      "seen_in_window_fraction": 0.17747440273037543
+    }
+  ],
+  "crossfit_choices": [
+    {
+      "fold": 0,
+      "decay": 128.0,
+      "unigram": 0.08,
+      "induction1": 0.12,
+      "induction2": 0.16,
+      "fit_nll": 5.650477873489177
+    },
+    {
+      "fold": 1,
+      "decay": 128.0,
+      "unigram": 0.05,
+      "induction1": 0.08,
+      "induction2": 0.16,
+      "fit_nll": 5.711342801400896
+    }
+  ],
+  "protocol": {
+    "targets": 8192,
+    "target_start": 25165825,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false,
+    "folds": "alternating 1024-token windows"
+  },
+  "source_sha256": {
+    "analysis/copy_memory_opportunity.py": "4862d2f1a44f3535eead320114e85b3455b0abb0f58464655451e5191a12ebb9",
+    "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b",
+    "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.pt": "34cc59e4c3c456730196c63eb087528432c87e45064218b1269ac9e8c9504932"
+  },
+  "max_rss_kb": 386288,
+  "process_wall_s": 5.572052946023177,
+  "scope": "Frozen strongest native learner; fixed non-learned causal in-window caches mixed linearly, weights/decay cross-fitted on alternating windows. Measures opportunity for a learned long-range addressed copy memory; not a trained model, public score or quality promotion."
+}
