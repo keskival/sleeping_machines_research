@@ -78,3 +78,33 @@ and L8. Each update's loss on new lanes is held out, so the comparison is predic
 that dominates the multi-epoch 1M recipe (keyed L2 there: best epoch 2, train 5.54 vs selection 6.31). Pass: L8 below L2
 on the last-quarter prequential loss and on the flagship protocol. Cost on Curie: L2 1.69 s, L8 4.56 s per 4x256-token
 update (exact activation checkpointing for L8, 1.37 GB).
+
+## Ladder decision (`results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json`, usage probe `curie_depth_usage_probe_ladder_20261015_v1.json`)
+
+| Arm, 1M targets | Long-history | Train wall s | Unique value by stage (nats) |
+|---|---|---|---|
+| D2 residual | 6.556 | 795 | +0.429, +0.277 |
+| **D2 residual + reads** | **6.472** | 1,174 | +0.605, +0.249 |
+| D8 serial | 6.683 | 2,687 | stage 0 only |
+| D8 residual | 6.590 | 2,682 | stages 0-4; 5-7 idle |
+| D8 residual + reads | 6.563 | 4,310 | +0.106, +0.066, +0.041, +0.023, +0.012, +0.008, +0.006, +0.004 |
+| D16 residual | 6.690 | 5,557 | stages 0-2; 4-15 slightly harmful |
+| D16 residual + reads | 20.434 (diverged) | 8,754 | — |
+
+Pass criterion failed: neither series improves with depth. Residual beats serial at D8 (+0.093). Per-stage reads improve
+every stable depth (+0.084 at D2, +0.027 at D8), and D2 with reads is the best race-stack construction at this budget
+(6.472, 46% more wall time than D2 residual). Reads do what §5 of the credit-horizon theory predicts for each stage: all
+eight D8 stages carry positive unique value, where residual D8 had three idle stages. They do not make the deep stack
+better than the shallow one at 1M targets: the extra stages add 0.004-0.04 nats each, less than the shallow stack gains
+from putting the same budget into two stages.
+
+D16 with reads diverged between updates 512 and 1024 (short DEV 7.851 → 11.272; pre-clip gradient norm 3,112; finished at
+21.36). Weights and per-depth stream magnitudes stay moderate (read value maps 3-5 Frobenius, stream RMS 0.2-1.3); the
+step-1024 model's loss grows with position in the window (7.83, 10.55, 11.68, 12.67 over the first four 64-token chunks)
+while the step-512 model is flat near 7. The failure is a persistent-state feedback loop through sixteen unscaled read
+paths, not signal amplitude. Repair before any deeper read stack: depth-scaled read gains like the stage gains, and
+read outputs normalized before entering the stream.
+
+Verdict for the race stack: stop depth scaling; carry D2 + per-stage reads (and the episodic store) as its construction.
+Depth work moves to the keyed member, whose layers all have full-lane credit and per-layer reads (Curie one-pass L2/L8 at
+4M running now; AWS plan-B 1M ladder) and to AWS's plan-C temporal hierarchy.

@@ -116,7 +116,11 @@ stages instead of one) without changing the bound.
 
 **Prediction P5b.** Per-stage addressed reads make deep stages' unique value positive and the depth series monotone
 (D16 < D8 < D2) on the same budget. Test: the read arms of the ladder (`curie_depth_ladder_1m_decision_20261015_v1`,
-`curie_depth_usage_probe_ladder_20261015_v1`).
+`curie_depth_usage_probe_ladder_20261015_v1`). Result: first half confirmed, second half refuted at 1M targets. All eight D8
+stages carry positive unique value with reads (+0.106 … +0.004; residual D8 had stages 5-7 idle), and reads improve D2 by
+0.084 and D8 by 0.027, but D8 + reads (6.563) stays behind D2 + reads (6.472), and D16 + reads diverged through a
+persistent-state feedback loop. New information per stage is necessary for depth; at this budget the deep stack's
+stages each add less than a shallow stack gains by spending the same data on two stages.
 
 **Prediction P5c.** A member whose layers all have full-lane credit and a keyed read gains from depth per fresh token.
 Test: one-pass 4M deep keyed L2 vs L8 (`curie_r1_deep_keyed_stream_L{2,8}_4M_s0_20261015_v1`): L8 below L2 on the
