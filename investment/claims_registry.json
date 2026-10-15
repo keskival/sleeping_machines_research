@@ -1,0 +1,33 @@
+{
+  "purpose": "Each headline number in investor and report documents bound to completed result files. scripts/verify_investor_evidence.py recomputes every value, checks it at the displayed precision and checks the displayed text occurs in each listed document.",
+  "claims": [
+    {"id": "b10_october_native", "display": "8.0785", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_october_lstm", "display": "8.1027", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_october_lstm_s0_20261015_v1.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_october_transformer_cached", "display": "8.1792", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_october_transformer_reencoded", "display": "8.1764", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_october_transformer_reencoded_s0_20261015_v1.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_august64k_native", "display": "5.1759", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_online_64k_native_s0_20261015_v3.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_august64k_lstm", "display": "5.1967", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_august64k_transformer_reencoded", "display": "5.2797", "decimals": 4, "value": {"file": "experiments/results/market/aws_b10_online_64k_transformer_s0_20261015_v3.json", "path": ["nll"]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "b10_october_arithmetic_ratio_cached", "display": "14.7", "decimals": 1, "value": {"ratio": [{"file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json", "path": ["ledger", "arithmetic"]}, {"file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json", "path": ["ledger", "arithmetic"]}]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "language_teacher_old_nll", "display": "6.62066", "decimals": 5, "value": {"file": "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.json", "path": ["curve", -1, "dev_nll"]}, "documents": ["investment/PITCH.md"]},
+    {"id": "language_teacher_new_nll", "display": "6.52787", "decimals": 5, "value": {"file": "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json", "path": ["curve", -1, "dev_nll"]}, "documents": ["investment/PITCH.md"]},
+    {"id": "keyed_1m_three_seed_mean", "display": "6.009", "decimals": 3, "value": {"mean": [
+      {"file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s0_20261007T1800Z.json", "path": ["score_65528", "nll"]},
+      {"file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s1_20261007T2055Z.json", "path": ["score_65528", "nll"]},
+      {"file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s2_20261007T2055Z.json", "path": ["score_65528", "nll"]}]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "keyed_4m_two_seed_mean", "display": "5.510", "decimals": 3, "value": {"mean": [
+      {"file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s0_20261008T1140Z.json", "path": ["score_65528", "nll"]},
+      {"file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.json", "path": ["score_65528", "nll"]}]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "keyed_4m_flagship_protocol_s1", "display": "5.601", "decimals": 3, "value": {"file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json", "path": ["rows", 5, "flagship_protocol_nll"]}, "documents": ["report/I_SCIENCE.md"]},
+    {"id": "keyed_4m_flagship_protocol_s0", "display": "5.624", "decimals": 3, "value": {"file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json", "path": ["rows", 4, "flagship_protocol_nll"]}, "documents": ["report/I_SCIENCE.md"]},
+    {"id": "p24_flagship_best", "display": "5.978", "decimals": 3, "value": {"file": "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.json", "path": ["scored", "nll"]}, "documents": ["report/I_SCIENCE.md"]},
+    {"id": "tgbn_trade_three_seed_mean", "display": "0.868", "decimals": 3, "value": {"mean": [
+      {"file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s0_20261009T1210Z.json", "path": ["test_ndcg"]},
+      {"file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s1_20261009T1210Z.json", "path": ["test_ndcg"]},
+      {"file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s2_20261009T1210Z.json", "path": ["test_ndcg"]}]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]},
+    {"id": "tgbl_wiki_three_seed_mean", "display": "0.835", "decimals": 3, "value": {"mean": [
+      {"file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s0_20261009T1340Z.json", "path": ["test_mrr"]},
+      {"file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s1_20261009T1340Z.json", "path": ["test_mrr"]},
+      {"file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z.json", "path": ["test_mrr"]}]}, "documents": ["investment/PITCH.md", "report/I_SCIENCE.md"]}
+  ]
+}

@@ -1,0 +1,2 @@
+# R1: resource smoke for the keyed member at 1024-token lanes (262k fresh tokens, one pass); gates the 16.8M fresh fit
+curie_r1g2_keyed1_16M_fresh_l1024_smoke_20261015_v1 experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_16M_fresh_l1024_smoke_20261015_v1 --train-tokens 262144 --lane 1024 --batch 1 --epochs 1 --score 0 --max-wall-s 3000

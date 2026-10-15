@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_keyed_history_reliance_4m_s0_20261015_v1",
+  "run": "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+  "nll": {
+    "1024": 5.6243375688791275,
+    "256": 5.643232703208923,
+    "64": 5.74133800342679,
+    "16": 5.914554070215672
+  },
+  "history_value": {
+    "256": 0.018895134329795837,
+    "64": 0.11700043454766273,
+    "16": 0.29021650133654475
+  },
+  "training_lane": 256,
+  "source_sha256": {
+    "analysis/keyed_history_reliance.py": "0c3f8826c8f9ae974538b3af4f991ef43c187a30297163e69fe6c60482fa7734",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "process_wall_s": 17.583743905997835,
+  "scope": "Frozen keyed member; history restarted every N tokens on the flagship slice. Intervention, not a trained short-history control."
+}

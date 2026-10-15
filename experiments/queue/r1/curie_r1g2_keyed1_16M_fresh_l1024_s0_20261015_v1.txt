@@ -1,0 +1,2 @@
+# R1: strongest native language member (keyed temporal memory, 5.601/5.624 on the flagship protocol at 4M repeated) on 16,777,216 fresh tokens in one pass with 1024-token lanes (same presentations as its best 4M run); decision: R1 scaling vehicle and data-scaling slope with fresh data/protocol-length history
+curie_r1g2_keyed1_16M_fresh_l1024_s0_20261015_v1 experiments/r1_token_keyed_lm.py --tag curie_r1g2_keyed1_16M_fresh_l1024_s0_20261015_v1 --train-tokens 16777216 --lane 1024 --batch 1 --epochs 1 --patience 1 --max-wall-s 43200 --seed 0
