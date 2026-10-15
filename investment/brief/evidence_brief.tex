@@ -692,19 +692,18 @@ worth pursuing; it is an analytical result, separate from measured scaling.
 \end{tile}
 
 \vspace{3mm}
-\textbf{Where the evidence is mixed.} The family leads on the public benchmarks
-shown earlier, but does not lead everywhere. On P12 mortality it scores 0.871
-versus 0.880 AUROC. On a second event benchmark, all seven preregistered verdicts
-against the composite target (best timing plus best type score from different
-published models) are losses, despite strong individual prediction components.
-Saved conventional language models also lead our character-level models;
-properly tokenized language development has beaten a classic count model.
-These are results for distinct tasks, not a single universal ranking.
+\textbf{Where we are behind.} On P12 mortality the family scores 0.871 versus 0.880 AUROC.
+On the second event benchmark (page 5), the same unchanged configuration beats the best
+published single model on Github and LastFM, but trails it on MOOC, Retweets and Stack
+Overflow, and two Wikipedia test sequences with exploding predictions spoil that total. Its
+stricter preregistered target, the best timing score and the best type score of different
+published models combined, is not yet reached on any of these datasets.
 
 \textbf{Where scaling stands.} The wins above come from small models on event data. Large-scale
-language is not yet won: our best token model continues to improve with more data (5.96 nats per
-token after 8M added tokens of a 64M-token run), and added depth does not yet pay for itself. The
-next decisive steps are deeper models that learn their new layers, and faster execution than the
+language is not yet won: our strongest token model scores 5.60 nats per token after 4 million
+training tokens, and a new addressed episodic memory improves the earlier flagship by 0.35 nats,
+but added depth does not yet pay for itself. A two-seed depth ladder is running now; the next
+decisive steps are deeper models that learn their new layers and faster execution than the
 current single-thread CPU training.
 
 \begin{callout}
