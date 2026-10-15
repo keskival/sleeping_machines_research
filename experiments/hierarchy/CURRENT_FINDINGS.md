@@ -240,3 +240,46 @@ Evidence: `experiments/results/hierarchy/aws_g_hier_frame_learning_20261015_v1.j
 The emission-order boundary audit separately identifies a learning term missing
 from pure interior derivatives. Two deterministic integral witnesses pass; this
 is a teacher-design target, not integrated exact credit. [Derivation](../theory/EMISSION_ORDER_BOUNDARY_CREDIT.md).
+
+## Role-memory and interaction-depth construction
+
+The new parent caches the latest child view/time per(source abstraction,quadrant),
+then aligns views with native protected/rotating transport at parent admission.
+Role-conditioned maps preserve which part filled which role; ordered bilinear
+maps expose cross-child interactions. The original native core still consumes
+every accepted message, preserving hard races,separate keys/values,persistent
+state,local counterfactual learning and race-generated views. Sparse occupied
+role/pair maps are evaluated; full optimizer/parameter work remains paid.
+Pixel objects receive no redundant relation module. Ownership is geometric;
+this is not learned arbitrary object discovery or exact future-order credit.
+
+The algebraic contract realizes an eight-way product through three composition
+operators on all256sign assignments, with live derivatives to every input.
+This proves an available interaction path, not a trained native semantic result.
+Nonzero variance-scaled operators are used at every parent; prediction changes
+are explicit. Native checkpoint parameters migrate exactly, and the original
+constructor/race RNG is preserved. [Theory](../theory/ROLE_MEMORY_AND_INTERACTION_DEPTH.md).
+
+One real-size two-scene optimizer gate per arm:169378→255394parameters, unchanged
+9600native candidates/4800selected updates/9600losing-value evaluations and
+300deliveries. The new module adds811008forward projection MAdds,2944pair
+products,1248native transport-vector calls and32096logical role-view tensor
+bytes across the pair. These counters exclude relation backward/optimizer and
+complete native arithmetic; full FLOPs/traffic remain unaudited. Paired process
+update time7.420→7.912s; cumulative process RSS reaches761580KiB. These are
+implementation measurements, not equal-quality or hardware efficiency results.
+All eight levels receive finite nonzero native content gradients; top pair-map
+gradient norm0.10751. Completed gate:
+`experiments/results/hierarchy/aws_g_hier_relational_preflight_20261015_v1.json`.
+
+**Paired role-memory result.** Pending. Native frame and role-memory arms each
+run64paired AdamW updates/128scene presentations with the same acquired core,
+initial external head,pair order and common race coupling. Partners are matched
+by observed TRAIN geometry and existing whole labels; no latent part/tree IDs
+enter pairing or fitting. The comparison also tests the paired learning repair
+against completed single-scene fits. TRAIN-only ridge.01 native affine head is
+the primary endpoint; joint/scalar heads remain diagnostics. Features are cached,
+TEST remains unscored,and exact model/Adam/race/order recovery runs every8updates.
+The continuation automatically admits frozen endpoint/content analysis after
+both results,clusters uncertainty by observed geometry,publishes the outcome,
+and stops. No unchanged larger fit or depth grid follows automatically.
