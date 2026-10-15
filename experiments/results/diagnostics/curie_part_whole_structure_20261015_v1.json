@@ -1,0 +1,236 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_part_whole_structure_20261015_v1",
+  "structure": {
+    "tokens": 2097152,
+    "word_pieces_per_word": 1.178011948540898,
+    "tokens_per_word": 1.3793849191602214,
+    "words_per_sentence": 17.08588157288471,
+    "sentences_per_newline": 1.9132425982067987,
+    "tokens_per_document": 695.5728026533997,
+    "role_fraction": {
+      "word_initial": 0.7063946723937988,
+      "continuation": 0.14761781692504883,
+      "punctuation": 0.1096796989440918,
+      "newline": 0.02217721939086914,
+      "other": 0.014130592346191406
+    }
+  },
+  "models": {
+    "unigram_4M_train": {
+      "word_initial": {
+        "fraction": 0.7783203125,
+        "nll": 7.950010498684417,
+        "loss_share": 0.8086444046226673
+      },
+      "continuation": {
+        "fraction": 0.1053466796875,
+        "nll": 9.205025448214624,
+        "loss_share": 0.12672939584025097
+      },
+      "punctuation": {
+        "fraction": 0.0902099609375,
+        "nll": 4.004274846735432,
+        "loss_share": 0.04720737944278155
+      },
+      "newline": {
+        "fraction": 0.0177001953125,
+        "nll": 3.8465539681847085,
+        "loss_share": 0.008897774756494586
+      },
+      "other": {
+        "fraction": 0.0084228515625,
+        "nll": 7.741091664157599,
+        "loss_share": 0.008521045337805596
+      },
+      "all": 7.651885823165553
+    },
+    "curie_r1g2_keyed1_4M_s0_20261008T1140Z": {
+      "word_initial": {
+        "fraction": 0.7783203125,
+        "nll": 6.083594580750792,
+        "loss_share": 0.8418743075165056
+      },
+      "continuation": {
+        "fraction": 0.1053466796875,
+        "nll": 5.374368956678797,
+        "loss_share": 0.10066464278522977
+      },
+      "punctuation": {
+        "fraction": 0.0902099609375,
+        "nll": 2.7646829639824553,
+        "loss_share": 0.04434334574248631
+      },
+      "newline": {
+        "fraction": 0.0177001953125,
+        "nll": 1.6356071453669976,
+        "loss_share": 0.005147373525303315
+      },
+      "other": {
+        "fraction": 0.0084228515625,
+        "nll": 5.322167673026738,
+        "loss_share": 0.007970330430475047
+      },
+      "all": 5.6243374966285336
+    },
+    "curie_depth_ladder_d2_residual_reads_1m_20261015_v1": {
+      "word_initial": {
+        "fraction": 0.7783203125,
+        "nll": 6.864542635630377,
+        "loss_share": 0.8255354339141009
+      },
+      "continuation": {
+        "fraction": 0.1053466796875,
+        "nll": 7.437894545399329,
+        "loss_share": 0.12107002054972148
+      },
+      "punctuation": {
+        "fraction": 0.0902099609375,
+        "nll": 2.971974012483521,
+        "loss_share": 0.041425260651906
+      },
+      "newline": {
+        "fraction": 0.0177001953125,
+        "nll": 1.5373915483211649,
+        "loss_share": 0.00420463494327149
+      },
+      "other": {
+        "fraction": 0.0084228515625,
+        "nll": 5.966188716283743,
+        "loss_share": 0.00776464994100011
+      },
+      "all": 6.4719365757585905,
+      "stage_unique_value_by_role": [
+        {
+          "word_initial": 0.4697656685894255,
+          "continuation": 1.177554206166288,
+          "punctuation": 0.7173858345542935,
+          "newline": 2.1776470028120896,
+          "other": 1.482132384310598
+        },
+        {
+          "word_initial": 0.20212098308914858,
+          "continuation": 0.46850869727905337,
+          "punctuation": 0.2802802429248419,
+          "newline": 0.6699047631230848,
+          "other": 0.5689258208309395
+        }
+      ]
+    },
+    "curie_depth_ladder_d8_residual_reads_1m_20261015_v1": {
+      "word_initial": {
+        "fraction": 0.7783203125,
+        "nll": 6.965646187433625,
+        "loss_share": 0.8260613584427133
+      },
+      "continuation": {
+        "fraction": 0.1053466796875,
+        "nll": 7.541859874197465,
+        "loss_share": 0.1210575394451581
+      },
+      "punctuation": {
+        "fraction": 0.0902099609375,
+        "nll": 2.9970998489505867,
+        "loss_share": 0.04119535386987831
+      },
+      "newline": {
+        "fraction": 0.0177001953125,
+        "nll": 1.5393393012984045,
+        "loss_share": 0.004151499093968141
+      },
+      "other": {
+        "fraction": 0.0084228515625,
+        "nll": 5.870678525040115,
+        "loss_share": 0.0075342491482820965
+      },
+      "all": 6.56307653415524,
+      "stage_unique_value_by_role": [
+        {
+          "word_initial": 0.08381096037967105,
+          "continuation": 0.2029461924856146,
+          "punctuation": 0.1421270311100557,
+          "newline": 0.2566254223215169,
+          "other": 0.27399635314941406
+        },
+        {
+          "word_initial": 0.04247536505204409,
+          "continuation": 0.13653239003830614,
+          "punctuation": 0.12220364009535523,
+          "newline": 0.30289099195907854,
+          "other": 0.26363558009050897
+        },
+        {
+          "word_initial": 0.021706239576246986,
+          "continuation": 0.08962547721917663,
+          "punctuation": 0.07815357626331353,
+          "newline": 0.32919913468689754,
+          "other": 0.21491902289183243
+        },
+        {
+          "word_initial": 0.008561259166570087,
+          "continuation": 0.053450057290901555,
+          "punctuation": 0.05522175755286249,
+          "newline": 0.24277100460282688,
+          "other": 0.12777130500130032
+        },
+        {
+          "word_initial": 0.0009154770698589992,
+          "continuation": 0.030267004453155416,
+          "punctuation": 0.04780577228017686,
+          "newline": 0.186912176526826,
+          "other": 0.09484731287196063
+        },
+        {
+          "word_initial": -0.001309858896965897,
+          "continuation": 0.01172542650068987,
+          "punctuation": 0.04338385256483687,
+          "newline": 0.16428867167439953,
+          "other": 0.07326739421789197
+        },
+        {
+          "word_initial": -0.001227035322150629,
+          "continuation": 0.0066793266793285086,
+          "punctuation": 0.03577165823828061,
+          "newline": 0.1237285315990448,
+          "other": 0.06141920538916104
+        },
+        {
+          "word_initial": -0.0011371731580792454,
+          "continuation": 0.009979792636570166,
+          "punctuation": 0.010857834837352793,
+          "newline": 0.12584829494870942,
+          "other": 0.04197470692620761
+        }
+      ]
+    }
+  },
+  "keyed_context_value_by_role": {
+    "16": {
+      "word_initial": 0.1715662233224898,
+      "continuation": 0.3337627436406998,
+      "punctuation": -0.03088466167693809,
+      "newline": 0.06308755926017104,
+      "other": -0.028477960623854746,
+      "all": 0.16678496575885504
+    },
+    "64": {
+      "word_initial": 0.023195160527365085,
+      "continuation": 0.05196676272858106,
+      "punctuation": -0.06355740227222982,
+      "newline": 0.11901734789897656,
+      "other": -0.05678268584112326,
+      "all": 0.01942263789067157
+    }
+  },
+  "source_sha256": {
+    "analysis/part_whole_structure.py": "ad0f28ede40897e7b24c70743b01bd8a92e3ba70e13b7f2ef820082452eca27f",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+    "analysis/depth_usage_probe.py": "717aa96f620322c1d6f3fbb64300136384220263cfdcefb64e8460873c2f4f1a"
+  },
+  "vocab": {
+    "source": "https://openaipublic.blob.core.windows.net/gpt-2/models/124M/encoder.json",
+    "sha256": "196139668be63f3b5d6574427317ae82f612a97c5d1cdaf36ed2256dbf636783"
+  },
+  "process_wall_s": 50.70430598198436
+}
