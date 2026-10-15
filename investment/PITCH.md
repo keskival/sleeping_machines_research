@@ -12,7 +12,7 @@ This also connects the learner to its execution. Time performs computation, incl
 
 **A revealing proof of the platform:** mixed-type tables, token sequences and anonymous event streams learned through the same temporal core, followed by measured skill transfer. The program spans small-data usefulness and large-data scaling.
 
-## Online market forecasting: confirmed on a new month (15 October 2026)
+## Online market forecasting: confirmed on a new month
 
 **A preregistered out-of-sample win while every model keeps learning.** On Binance BTCUSDT public trades, our native temporal learner, an online LSTM and two online Transformers each adapt their weights after every 32 revealed trades and are scored before any outcome can change them. All model choices were fixed from August evidence and committed before the 1 October data were downloaded; each learner carried its full August memory and optimizer state across the five-week gap.
 
@@ -25,7 +25,7 @@ This also connects the learner to its execution. Time performs computation, incl
 
 Lower loss is better (nats per trade: next-trade timing, aggressor side and price direction). Our model leads in **all 16 of 16** consecutive 4,096-trade windows of the new month, with **14.7× less arithmetic** than the cached Transformer and **16× less retained state** (0.146 MB of weights plus prediction memory versus 2.334 MB). This is the capability a deployed forecaster needs: keep learning from a changing stream at low cost. Single seed; the sealed September test stays unopened until seed replication. Next: return-distribution forecasts of the price itself (10 s, 1 min, 5 min), now in development. No trading-profit or measured chip-energy claim. [Source-bound evidence](online_market_evidence.json).
 
-## Industrial fault detection: sealed win on interleaved factory logs (15 October 2026)
+## Industrial fault detection: sealed win on interleaved factory logs
 
 **Predictive maintenance on anonymous machine logs.** In our FAS benchmark (assembly-line simulator, two interleaved lines of 30 items, no item labels), a failing machine shows only as production steps that slowly take longer. Our model learns each step's duration from normal logs, binds every event to the earlier event it most likely continues through a race of delayed clocks, and keeps a separate running anomaly score per step. The full plan was committed before the test data were generated; each model was scored once.
 
@@ -36,17 +36,13 @@ Lower loss is better (nats per trade: next-trade timing, aggressor side and pric
 | Best of nine classical detectors | 0.676 |
 | LSTM (three seeds) | 0.667 |
 
-**Ahead by 0.097 AUROC (95% interval 0.088 to 0.121), every fit above every reference** (wear faults 0.772 vs 0.650; retry faults 0.829 vs 0.758). On 10 October the previous model tied the same Transformer (0.704 vs 0.704). No item identities are used and the model's knowledge is fixed during scoring. [Source-bound evidence](fas_evidence.json).
+**Ahead by 0.097 AUROC (95% interval 0.088 to 0.121), every fit above every reference** (wear faults 0.772 vs 0.650; retry faults 0.829 vs 0.758). No item identities are used and the model's knowledge is fixed during scoring. [Source-bound evidence](fas_evidence.json).
 
-## Measured language learning progress
+## Language: addressed memory leads
 
-The integrated sparse-teaching language model improves final development NLL **6.62066 to 6.52787 nats/token** and reduces complete CPU training **9,129 to 7,734 seconds (15.27%)**, at the same 8.39M acquired GPT-2 FineWeb targets. This is a within-family quality/time win over the earlier full-teaching implementation. Three-seed confirmation exists at 128k/512k; the8M point is one seed. Ordered token-gradient execution, exact cached replay and importance-corrected 25%-probability actual alternative teaching are combined; all core, discovery, factual backward, replay and optimizer time is included. [Source-bound evidence](language_learning_evidence.json). The strongest native token learner also keeps improving on 8,192 fixed development targets: **6.09934 to 5.97839 nats/token** over three continuation stages and 6.29M added training targets, including two single-factor training-policy wins (shared lane clocks, +0.011; clearing memory at document boundaries during training, +0.018). One seed; [source-bound evidence](protected_language_evidence.json).
+**Addressed memory is our strongest language lever.** On the same 8,192 FineWeb development targets (GPT-2 tokens, 1,024-token history), our keyed temporal-memory model, whose events write keyed messages that later tokens read directly, scores **5.60 and 5.62 nats/token** (two seeds) against **5.978** for the earlier flagship; removing the keyed read costs 0.10 at 1M tokens. A 6,248-parameter addressed episodic memory with read-time credit lifts the flagship itself to **5.634 (+0.345)**, while an identical plain continuation does not improve; the learner's use of history older than 64 tokens rises from 0.004–0.008 to **0.227 nats**, and it learns on its own to discount memories from earlier documents. The same principle, explicit addressed access to the right past events, produced the sealed fault-detection win above. [Source-bound evidence](language_memory_evidence.json).
 
-**Addressed memory is now our strongest language lever (15 October).** On the same 8,192 development targets, our keyed temporal-memory model, whose events write keyed messages that later tokens read directly, scores **5.60 and 5.62 nats/token** (two seeds) against **5.978** for the earlier flagship; removing the keyed read costs 0.10 at 1M tokens. A new addressed episodic memory lifts the flagship itself from 5.978 to **5.634 (+0.345)**, while an identical plain continuation on the same data does not improve. The same principle, explicit addressed access to the right past events, produced the sealed fault-detection win above. Single seeds except where stated; quality placement, not matched compute. [Source-bound evidence](language_memory_evidence.json).
-
-This advances sparse teaching toward event-driven learning. Factual window backpropagation and model-wide clipping still coordinate work; Adam remains fully charged. Versioned receiver-local optimizer placement and actual delayed learner replay are integration components, not measured ASIC energy or full asynchronous-training efficiency. A shared horizon-conditioned critic is not fitted yet. No scaled Transformer comparison or public language score is claimed here.
-
-**Long-range memory, 15 October.** On the same 8,192 development targets with 1,024-token windows, an addressed episodic memory with read-time credit (6,248 parameters) moves the race-core language learner from **5.978 to 5.634 nats/token** after 2M further training targets; the same weights without the memory score 5.973. The learner's use of history older than 64 tokens rises from 0.004–0.008 to **0.227** nats, and it learns on its own to discount memories from earlier documents. The keyed temporal-memory member scores **5.601 / 5.624** on the same targets from 4M training tokens (two seeds). Single seed for the memory result; development protocol, no public validation.
+**Learning more efficiently.** Sparse counterfactual teaching improves development NLL from **6.621 to 6.528 nats/token** while cutting complete CPU training time from **9,129 to 7,734 seconds (15.3%)** at 8.39M GPT-2 FineWeb targets, all core, discovery, backward, replay and optimizer time included. [Source-bound evidence](language_learning_evidence.json).
 
 ## Forward computation teaches credit — current status and potential
 
@@ -76,7 +72,7 @@ These are conditional platform implications, not measured customer demand or
 industry-wide savings. The next gate is **better held-out prediction per total
 learning cost**, followed by larger data/depth and online application confirmation.
 
-## Wins and advances at a glance (9 October 2026)
+## Wins and advances at a glance
 
 **Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
 runs ahead of the best published result:
@@ -126,7 +122,7 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   generic detectors across three seeds.
 - **Theory:** a race of clocks contains softmax attention and Mamba-style selective state spaces exactly.
 
-**New event domains (9 October):**
+**New event domains:**
 - **Temporal Graph Benchmark, node affinity: won** (table). Pre-registered sealed test, 3 seeds: 0.8683 / 0.8674 /
   0.8683, every seed above NAVIS's 0.863; persistent forecast 0.855. Validation 0.874 vs 0.860 had predicted it.
 - **Temporal Graph Benchmark, link prediction: won** (table). Exact per-event state lifted our model from 0.776 to

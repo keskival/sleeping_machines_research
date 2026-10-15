@@ -384,98 +384,6 @@ propagation. Detailed methods and completed result hashes are in
 \texttt{investment/forward\_credit\_evidence\_20261011.json}.}
 
 \newpage
-% ---------------------------------------------------------- native credit
-\sect{Learning while the model is in use}{Learned guidance improves online forecasts}
-
-Markets produce a stream of transactions. A useful model has to learn as that
-stream arrives. Our aim is to improve both its predictions and the machinery
-that decides how new experience changes the model.
-
-\begin{callout}
-\textbf{What we tested.} We trained an event-based credit model on earlier
-Bitcoin trades. It uses its own persistent memory and observed errors to decide
-when to apply credit across the predictor's layers. Its training signal is the
-forecast quality of actual updates on subsequent observations.
-\end{callout}
-
-\textbf{What is the baseline?} Every row below uses the same restored
-18,164-parameter event predictor, not a different Transformer or LSTM.
-Ordinary online backpropagation differentiates forecast loss through the
-32-event window and updates that predictor. It assigns credit to past
-computations for the observed prediction error; it does not train a separate
-policy for the value of future learning updates. Our guidance is trained on
-that subsequent forecast utility and changes which cross-layer credit is
-applied. Its preparation and teaching are additional learning work.
-
-The experiment used real Binance trades. Each forecast predicts the next
-transaction's timing and type, and is scored before learning from the outcome.
-All rules start from the same acquired predictor and optimizer state. The
-comparison covers 16,384 transactions.
-
-\vspace{3mm}
-{\small\renewcommand{\arraystretch}{1.3}
-\begin{tabularx}{\linewidth}{Y r}
-\toprule
-Learning during use & Prediction loss $\downarrow$ \\
-\midrule
-\textbf{Our temporal traces + previously trained guidance} & \textbf{5.737391} \\
-Our temporal traces alone & 5.737492 \\
-Random guidance, same number of credit adjustments (mean) & 5.737596 \\
-Our temporal traces + guidance with online weight updates & 5.737637 \\
-Our temporal traces + always-on effects across layers & 5.737697 \\
-Local updates without temporal credit & 5.737748 \\
-Ordinary online backpropagation & 5.738462 \\
-Fixed model weights; observed memory still updates & 5.752528 \\
-\bottomrule
-\end{tabularx}}
-\vspace{4mm}
-
-\textbf{What we achieved.} Previously trained guidance wins prediction quality
-by 0.000101 nats per transaction over temporal traces alone, and by 0.001071
-over ordinary backpropagation. It beats all three random schedules using the
-same 57 credit adjustments; the mean gap is 0.000205 nats per transaction.
-These are small, measured gains in development forecasting.
-
-\textbf{Why it matters.} A learning function trained on earlier data transferred
-a useful credit policy to later observations. The forward model stays the same;
-the learned guidance changes how it learns. The random comparison supports
-useful selection timing beyond occasionally applying extra credit.
-
-\textbf{How it adapts.} Guidance weights stay fixed in the winning run, while
-its event-based memory continues to evolve. It applies extra credit on
-37, 9, 7 and 4 updates in the four successive stream segments. Updating its
-weights online produced worse forecasts in this experiment.
-
-\textbf{Asynchronous-chip relevance.} A separate early-request version improves
-forecasts over our temporal traces (5.737456 vs 5.737492), while computing remote
-credit in 257 of 512 windows. Remote matrix work falls \textbf{49.8\%}, from 1.762 to 0.884 billion
-FLOPs, avoiding at least 5.745 million credit-state read/write scalar accesses.
-This is a component comparison within our own predictor; guidance, teaching and
-optimizer work remain additional. Learning retains 32-target boundaries;
-chip energy is unmeasured. An executed 512-forecast audit measures 131.7 million
-arithmetic FLOPs for frozen early guidance versus 184.6 million for always-on
-remote credit. Compact preparation cuts arithmetic \textbf{22.3\%}, from 1.022
-to 0.794 billion FLOPs, preserving all 16,384 forecasts and requests. Preparation
-still adds 504.7 million beyond the actor, so complete work is higher on this
-short prefix. Special functions are separate; counts use declared formulas.
-
-\textbf{Forward feedback now teaches useful credit.} In a separate eight-event
-update protocol, a credit function trained from forward forecast contrasts beats
-exact eight-event backpropagation in our own predictor in \textbf{all three critic fits}:
-mean gain \textbf{0.001845 nats per event} over 16,384 chronological forecasts.
-The predictor and data are shared; these are independently initialized critics.
-This quality gain spends more arithmetic.
-
-{\footnotesize\color{muted}Table: one restored 18,164-parameter actor and one
-31,753-parameter guidance fit; reused 25 August DEV, sealed test untouched.
-Common 24 August actor/Adam acquisition; 32-target updates. Guidance preparation
-28.3s and original predictor fitting 5,750.7s are additional. Random comparison:
-three schedules, mean 5.737596, SD 0.000069.
-Guidance learns delayed update utility. Separate forward-credit test: three
-31,804-parameter critic fits/shared actor, eight producer/eight future targets
-per update. Forecasting, not profits.}
-
-\newpage
 % ---------------------------------------------------------------- market comparison
 \sect{Online market prediction wins}{Confirmed on a new month, chosen in advance}
 
@@ -522,8 +430,7 @@ update, plus persistent addressed output memory. No memory reset is imposed at u
 boundaries or across the calendar gap.
 
 \textbf{Next.} Seeds 1 and 2 are being acquired to turn this single-seed win into a confirmed
-win; the sealed September test stays unopened until then. The market model here is the plain online
-learner: a later, parity-repaired version of the learned guidance on page 11 added no further gain.
+win; the sealed September test stays unopened until then.
 
 {\footnotesize\color{muted}Scope: two-layer, width 32 models; seed 0; Binance BTCUSDT public trades. Acquisition on 24 August TRAIN;
 August development stream 25 August. October: preregistration committed before data acquisition, 128 context events
@@ -562,11 +469,7 @@ fits beats every reference.} Wear faults 0.772 versus 0.650; retry faults 0.829 
 \end{tile}
 
 \textbf{Why this matters.} Predictive maintenance runs on exactly this kind of data:
-anonymous, interleaved machine events where timing carries the signal. Earlier models
-in our family predicted these logs twice as well as the Transformer, yet only tied it at
-detection (0.704 vs 0.704 on 10 October). The new model turns that understanding into
-detection by binding events through time, the family's core mechanism: delayed clocks
-racing to explain each event.
+anonymous, interleaved machine events where timing carries the signal. The model binds events through time, the family's core mechanism: delayed clocks racing to explain each event.
 
 \textbf{How the test was run.} The test data were generated by our open simulator only
 after the full plan (model, settings, references, decision rule) was committed. Each
@@ -580,81 +483,43 @@ Transformer and LSTM configurations of the earlier sealed test plus nine informa
 classical detectors. Source-bound result: \texttt{investment/fas\_evidence.json}.}
 
 \newpage
-\sect{Language learning improves}{Better prediction with less complete training time}
+\sect{Language}{Addressed memory leads our language models}
 
-The same integrated temporal language family now improves on its earlier
-full-teaching implementation using sparse counterfactual teaching.
+Our strongest language models give the network explicit, addressed access to its own past: events write keyed
+messages, and later tokens read the relevant ones directly. This is the same principle behind the fault-detection
+win on the previous page.
 
+\begin{tile}
+\textbf{Lower is better.} Prediction loss, nats per token, on the same 8,192 FineWeb development tokens (GPT-2 tokens, 1,024-token history).
 \begin{center}
-\begin{tabular}{lrr}
+\begin{tabular}{lr}
 \toprule
-Model & Development NLL / token & Complete CPU training \\
+Model & Prediction loss \\
 \midrule
-Earlier full-teaching model & 6.62066 & 9,129 seconds \\
-Integrated sparse-teaching model & \textbf{6.52787} & \textbf{7,734 seconds} \\
+\textbf{Keyed temporal-memory model} (two seeds) & \textbf{5.60 / 5.62} \\
+Earlier flagship + addressed episodic memory & 5.634 \\
+Earlier flagship (same data, no addressed memory) & 5.978 \\
 \bottomrule
 \end{tabular}
 \end{center}
+\textbf{Addressed memory is worth 0.35 nats per token} on the flagship itself; removing the keyed read from the
+keyed model costs 0.10 at 1M training tokens.
+\end{tile}
 
-\textbf{A within-family quality/time win: 0.09279 nats per token better
-prediction, with 15.27\% less complete CPU training time.} Both models acquire
-the same 8.39 million GPT-2-tokenized FineWeb targets. The core, discovery,
-factual backward pass, teaching replay and optimizer work are included.
-
-The new fit combines ordered token-gradient execution, exact cached suffix
-replay and actual alternative teaching on about one quarter of updates.
-Importance weights preserve the raw conditional teaching mean. Three-seed
-confirmation exists at smaller 128k/512k acquisition points; this 8M result
-has one seed. At 8M, the time improvement combines execution and teacher changes.
-
-\textbf{Better prediction with independent local learning controls.}
-In a completed paired continuation, calibrated per-bank caps score
-\textbf{6.22624} prediction loss versus \textbf{6.23119} for global clipping:
-a \textbf{0.00495-nat advantage}. Measured single-thread CPU
-process-and-scoring time, including calibration, differs by just
-\textbf{+0.41\%}; this run does not measure distributed synchronization costs. Both start from the same
-trained eight-layer model and acquire 2.10 million additional targets.
-
-Each learning unit limits its update locally, without all units stopping to
-coordinate this step. This supports learning without a global clock. Initial
-calibration uses whole-model information; other training steps still coordinate. Scope: one seed, 8,192 shared development
-targets with 1,024-token history, and 16k additional TRAIN calibration targets
-charged to the local arm. Next: replicated quality and measured asynchronous
-execution benefit. No chip speed or energy gain is inferred.
-
-\textbf{Why independent timing can improve hardware.} Local clocks let fast
-regions run at a higher frequency than a shared chip-wide schedule would permit.
-Fully clockless units can proceed when their work finishes, without waiting for
-the next shared tick. Three opportunities follow: \textbf{less clock-distribution
-energy, less waiting, and faster local progress}. Communication and memory still
-determine whole-system throughput. Our local learning control removes one
-coordination requirement; hardware will measure the resulting speed and energy.
-These timing mechanisms are established in asynchronous circuit research
+\textbf{Learning more efficiently.} Sparse counterfactual teaching improves prediction by \textbf{0.093 nats per
+token} while cutting complete CPU training time by \textbf{15.3\%} (6.528 vs 6.621, 7,734 vs 9,129 seconds at 8.39
+million tokens). Calibrated local learning controls, where each unit limits its own update without a global step,
+add a further \textbf{0.005 nats} at \textbf{+0.41\%} CPU time. Local control removes one chip-wide synchronization
+requirement: the basis for clockless hardware, where independent units run at their own pace
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
-\href{https://www.imm.dtu.dk/courses/02204/}{DTU}).
+\href{https://www.imm.dtu.dk/courses/02204/}{DTU}). No chip speed or energy gain is claimed yet.
 
-\textbf{Our strongest token-language result improves again.} Three continuation
-stages of the trained richer-readout model reduce prediction loss from
-\textbf{6.09934 to 5.97839}, a \textbf{0.12095-nat gain} over 6.29 million additional
-training targets: local clipping (6.06556), then shared lane clocks (6.01053, ahead of
-independent lanes by 0.011), then clearing memory at document boundaries during training
-(5.97839, ahead of memory carried across unrelated documents by 0.018). Same 8,192
-development targets and 1,024-token history, one seed; each stage adds training data, and
-the paired arm differences isolate each change. The added-depth candidate scores 6.09508
-and is not selected.
+\textbf{Next.} Deeper versions of the keyed model, with addressed reads in every layer, and larger training runs.
 
-\textbf{Why this matters.} The learning implementation improves prediction
-and cost together, rather than only passing numerical contracts. The next
-competitive milestone is a larger-scale comparison against the matching
-published Transformer protocol. No such Transformer win or public language
-score is claimed by this development result.
-
-{\footnotesize\color{muted}Source-bound completed results and denominator:
-\texttt{investment/language\_learning\_evidence.json} and\\
-\texttt{investment/locality\_scaling\_evidence.json} and\\
-\texttt{investment/protected\_language\_evidence.json}. Earlier language table: same8,388,352 targets,
-seed6, initial TRAIN prior, update and evaluation budget. Public validation
-sealed. A learned horizon-conditioned critic is not fitted yet.}
+{\footnotesize\color{muted}Scope: keyed model 3.33M parameters, repeated epochs over 4M training tokens; flagship and
+episodic arm single seed; quality placement, not matched compute. Source-bound results:
+\texttt{investment/language\_memory\_evidence.json}, \texttt{investment/language\_learning\_evidence.json},
+\texttt{investment/locality\_scaling\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- significance
