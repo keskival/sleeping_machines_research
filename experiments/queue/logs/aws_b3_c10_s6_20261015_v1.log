@@ -1,0 +1,28 @@
+/workspace/experiments/fas/race_tpp_fas_v3.py:231: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  tl += float(loss) * int(n); tn += int(n)
+{"epoch": 0, "step": 0, "train_nll": 6.292764690510501, "elapsed_s": 8}
+{"epoch": 0, "step": 50, "train_nll": 2.394083494211573, "elapsed_s": 258}
+{"epoch": 0, "step": 100, "train_nll": 1.4222529564794235, "elapsed_s": 511}
+{"epoch": 0, "step": 150, "train_nll": 0.9457890049550947, "elapsed_s": 762}
+{"epoch": 0, "step": 200, "train_nll": 0.660745540549045, "elapsed_s": 1015}
+{"epoch": 0, "step": 250, "train_nll": 0.4663398368751152, "elapsed_s": 1268}
+{"epoch": 0, "step": 300, "train_nll": 0.3259327635311545, "elapsed_s": 1521}
+{"epoch": 0, "train_nll": 0.2990538649123114, "val_clean_nll": 1.097652164167993, "epoch_s": 1637}
+{"epoch": 1, "step": 0, "train_nll": -0.43072231881350964, "elapsed_s": 1644}
+{"epoch": 1, "step": 50, "train_nll": -0.4339157959071904, "elapsed_s": 1899}
+{"epoch": 1, "step": 100, "train_nll": -0.4522126968408766, "elapsed_s": 2152}
+{"epoch": 1, "step": 150, "train_nll": -0.4652069405900896, "elapsed_s": 2405}
+{"epoch": 1, "step": 200, "train_nll": -0.4784713399802908, "elapsed_s": 2659}
+{"epoch": 1, "step": 250, "train_nll": -0.4895126058129932, "elapsed_s": 2912}
+{"epoch": 1, "step": 300, "train_nll": -0.5007501112931133, "elapsed_s": 3166}
+{"epoch": 1, "train_nll": -0.5031187788798169, "val_clean_nll": 0.947801548408733, "epoch_s": 1643}
+{"epoch": 2, "step": 0, "train_nll": -0.5904234757548935, "elapsed_s": 3287}
+{"epoch": 2, "step": 50, "train_nll": -0.565111123944154, "elapsed_s": 3540}
+{"epoch": 2, "step": 100, "train_nll": -0.5708713894227148, "elapsed_s": 3794}
+{"epoch": 2, "step": 150, "train_nll": -0.5749723616573557, "elapsed_s": 4047}
+{"epoch": 2, "step": 200, "train_nll": -0.5785186739379168, "elapsed_s": 4300}
+{"epoch": 2, "step": 250, "train_nll": -0.5805809007013962, "elapsed_s": 4554}
+{"epoch": 2, "step": 300, "train_nll": -0.5828652893850259, "elapsed_s": 4808}
+{"epoch": 2, "train_nll": -0.5828574538543232, "val_clean_nll": 0.9144220699578866, "epoch_s": 1646}
+RESULT {"val_clean_nll": 0.9144220699578866, "total": {"all": 0.698956, "wear_and_tear": 0.6483075356415479, "retry_delay": 0.7478133595284873}, "type": {"all": 0.711001, "wear_and_tear": 0.6641894093686355, "retry_delay": 0.7561571709233792}}
