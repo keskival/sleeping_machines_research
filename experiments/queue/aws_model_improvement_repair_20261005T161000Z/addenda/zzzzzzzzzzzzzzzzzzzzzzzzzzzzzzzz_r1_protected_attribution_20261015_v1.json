@@ -1,0 +1,46 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Frozen contribution decomposition after grownD4 trails continuedparent; no duplicate fit or unchanged scaling",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_protected_depth_attribution_20261015_v1",
+        "kind": "r1_job",
+        "queue": "experiments/queue/r1/aws_protected_depth_attribution_20261015_v1/aws_protected_depth_attribution_20261015_v1.txt",
+        "queue_sha256": "682b2d496e7cd9a1b1b9aa63f4177285871b04114a1b0dc8105a7faa8503f138",
+        "source_sha256": {
+          "experiments/credit/protected_depth_local_gate.py": "75206020874b31301bdaa578c6be162324ad0c2416dc77321b3b75848be0558d",
+          "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+          "sleeping_machines/protected_depth_language.py": "df88930d88a97f3d372dd1f5132e0ed127bd5d4797c31fdc5b7380e873285ead",
+          "sleeping_machines/protected_temporal_branch.py": "ee788a9739b74ec56a5352b985db07a0dda267b14e84fa901ab4eba7fa70af70",
+          "sleeping_machines/learning/dense_to_receiver_moments.py": "7bb2cf41854b503b7963c83d92989460025a0274275ff807f0cac9953e2773a3",
+          "sleeping_machines/optional_temporal_depth.py": "301f34e94d5bf9b628e9e5fe94588d8aa76fac53820ca4d78b14db58900ea640",
+          "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb",
+          "sleeping_machines/learning/calibrated_receiver_adamw.py": "cbc6415ccf44ca2132df2a98a1d679e85b35d6489c695cf915c6379a302e954e",
+          "sleeping_machines/learning/calibrated_bank_caps.py": "6fe60ec7e10dfe21b7fb834535749e4df973ca8fa369e1e37b8006967d337c01",
+          "experiments/protected_depth_continuation.py": "9752b0ec92e02eb4130b3b2e5b4a35f47e474202fb9a26f9fe7c60d7b8eefbce",
+          "experiments/public_token_scoring.py": "0ddf50f5219633ae2cd1949be3bff01308f721a9c9a3dbd98c68225f02b6ae3b",
+          "experiments/analyze_protected_depth_contributions.py": "c59c666055a1037da2a0072b4a80fe7a7104f8fbc9c6032452d00d90bc8ab310",
+          "sleeping_machines/protected_branch_attribution.py": "0e95135e42f83e058c6bf62d3446fd8cc4dd42fb7e3bfd63ba009fa2dbb2d762",
+          "experiments/PROTECTED_DEPTH_ATTRIBUTION_20261015.md": "96bbf8736b54f3cda1b3355e2d8de8a037cacc61b4be9e592f092a48759cab37",
+          "experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1.json": "d07cdfdcb8798a190163497b762279ec3ee1d3c84e150023d2fe4a49bcab429a",
+          "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.json": "98b7832621513680e0082862155c2c3d8b612a55e077570233a2b0570dab7592"
+        },
+        "result": "experiments/results/diagnostics/aws_protected_depth_attribution_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/token_language/aws_protected_depth_parent_2m_20261014_s6_v1.json"
+          },
+          {
+            "result": "experiments/results/token_language/aws_protected_depth_grown_2m_20261014_s6_v1.json"
+          }
+        ],
+        "timeout_s": 1200,
+        "rss_kb": 1500000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
