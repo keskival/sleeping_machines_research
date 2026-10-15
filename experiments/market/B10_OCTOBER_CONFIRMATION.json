@@ -1,0 +1,106 @@
+{
+  "battle": "B10",
+  "decision": "Does the strongest completed August native online learner retain prediction/work advantage under firstOctober distribution shift?",
+  "distribution": "nonstationary",
+  "forecast_order": "issue_then_reveal_then_update",
+  "resource_boundary": "Whole scored-stream online arithmetic/specials/comparisons; contextwarmup and inherited acquisition/onlinework recorded separately. CPUtime diagnostic only.",
+  "predeclared_at_utc": "2026-10-15T02:24:42Z",
+  "day": "2026-10-01",
+  "scored_targets": 65536,
+  "context_events": 128,
+  "update_targets": 32,
+  "online_lr": 0.0001,
+  "seed": 0,
+  "data_receipt": "experiments/results/market/aws_b10_october_data_20261015_v1.json",
+  "pass_criterion": "Native cumulativeNLL below onlineLSTM and each onlineTransformer policy; native scored arithmetic below cachedTransformer. Report all outcomes and quarter-prefixes without October tuning.",
+  "arms": {
+    "native": {
+      "acquired_record": "experiments/results/market/aws_b10_online_64k_native_s0_20261015_v3.json",
+      "online_weight_updates": true,
+      "state_policy": "Carry complete August recurrent/temporal/KV numericstate, weights and Adam moments acrosscalendar gap. No reset;128observed context events before first scoredtarget.",
+      "retained_mechanisms": [
+        "causal online weight learning",
+        "architecture-appropriate persistent memory",
+        "normalized recording-cell clock/mark likelihood"
+      ],
+      "restrictions": [
+        {
+          "effect": "32-target gradient boundaries; persistent state retained",
+          "reason": "Frozen existing onlinelearner protocol, no October tuning"
+        },
+        {
+          "effect": "Transformer history2048, cached orre-encoded asdeclared",
+          "reason": "Measured hardware-resource reference policies; native/LSTM memory not matcheddown"
+        }
+      ],
+      "fighter_selection_rationale": "Strongest completed applicable nativelearner and all admitted online reference policies chosen on August evidence; no October outcomes used. Native guided variants failed to improve factualbaseline and are not promoted."
+    },
+    "lstm": {
+      "acquired_record": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.json",
+      "online_weight_updates": true,
+      "state_policy": "Carry complete August recurrent/temporal/KV numericstate, weights and Adam moments acrosscalendar gap. No reset;128observed context events before first scoredtarget.",
+      "retained_mechanisms": [
+        "causal online weight learning",
+        "architecture-appropriate persistent memory",
+        "normalized recording-cell clock/mark likelihood"
+      ],
+      "restrictions": [
+        {
+          "effect": "32-target gradient boundaries; persistent state retained",
+          "reason": "Frozen existing onlinelearner protocol, no October tuning"
+        },
+        {
+          "effect": "Transformer history2048, cached orre-encoded asdeclared",
+          "reason": "Measured hardware-resource reference policies; native/LSTM memory not matcheddown"
+        }
+      ],
+      "fighter_selection_rationale": "Strongest completed applicable nativelearner and all admitted online reference policies chosen on August evidence; no October outcomes used. Native guided variants failed to improve factualbaseline and are not promoted."
+    },
+    "transformer_cached": {
+      "acquired_record": "experiments/results/market/aws_b10_cached_online_64k_s0_20261015_v1.json",
+      "online_weight_updates": true,
+      "state_policy": "Carry complete August recurrent/temporal/KV numericstate, weights and Adam moments acrosscalendar gap. No reset;128observed context events before first scoredtarget.",
+      "retained_mechanisms": [
+        "causal online weight learning",
+        "architecture-appropriate persistent memory",
+        "normalized recording-cell clock/mark likelihood"
+      ],
+      "restrictions": [
+        {
+          "effect": "32-target gradient boundaries; persistent state retained",
+          "reason": "Frozen existing onlinelearner protocol, no October tuning"
+        },
+        {
+          "effect": "Transformer history2048, cached orre-encoded asdeclared",
+          "reason": "Measured hardware-resource reference policies; native/LSTM memory not matcheddown"
+        }
+      ],
+      "fighter_selection_rationale": "Strongest completed applicable nativelearner and all admitted online reference policies chosen on August evidence; no October outcomes used. Native guided variants failed to improve factualbaseline and are not promoted."
+    },
+    "transformer_reencoded": {
+      "acquired_record": "experiments/results/market/aws_b10_online_64k_transformer_s0_20261015_v3.json",
+      "online_weight_updates": true,
+      "state_policy": "Carry complete August recurrent/temporal/KV numericstate, weights and Adam moments acrosscalendar gap. No reset;128observed context events before first scoredtarget.",
+      "retained_mechanisms": [
+        "causal online weight learning",
+        "architecture-appropriate persistent memory",
+        "normalized recording-cell clock/mark likelihood"
+      ],
+      "restrictions": [
+        {
+          "effect": "32-target gradient boundaries; persistent state retained",
+          "reason": "Frozen existing onlinelearner protocol, no October tuning"
+        },
+        {
+          "effect": "Transformer history2048, cached orre-encoded asdeclared",
+          "reason": "Measured hardware-resource reference policies; native/LSTM memory not matcheddown"
+        }
+      ],
+      "fighter_selection_rationale": "Strongest completed applicable nativelearner and all admitted online reference policies chosen on August evidence; no October outcomes used. Native guided variants failed to improve factualbaseline and are not promoted."
+    }
+  },
+  "source_sha256": {
+    "experiments/market/b10_shift_data.py": "044d36ee80574658e76fb007a2814577d3833de58f5948bcb14a5725d5d0a5f4",
+    "experiments/market/b10_shift_online.py": "4f6330517f39bf422279b13720a42e2f89591ff8270d35e1137a259354d7fb41"
+  }
+}
