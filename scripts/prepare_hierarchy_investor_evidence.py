@@ -26,6 +26,29 @@ def main():
         next_gate='Held-out combinations of familiar parts, training-only calibration, memory-content and relative-pose interventions.',
         timer_credit='Forward-identical winner-averaged pure-timer interior credit implemented; no measured training-quality gain. Native value-routing credit unchanged.'),
         input_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in [*paths,*[prefix+n for n in names]]})
+    engineering_names=['aws_g_hier_coalesced_preflight_20261015_v2.json',
+        'aws_g_hier_frame_preflight_20261015_v1.json','aws_g_hier_coalesced_learning_20261015_v1.json',
+        'aws_g_hier_coalesced_readout_20261015_v1.json','aws_g_hier_nuisance_factorial_20261015_v1.json',
+        'aws_g_hier_coalesced_transfer_diagnosis_20261015_v1.json','native_frame_contracts_20261015_v1.json']
+    engineering=[json.loads((ROOT/prefix/n).read_text()) for n in engineering_names]
+    assert all(r['status']=='completed' for r in engineering)
+    old,new=engineering[0]['measurements'];frame=engineering[1]
+    assert frame['exact_translation_feature_equality'] and engineering[-1]['tests']==76
+    packet['hierarchical_memory']['passed_contracts']=76
+    packet['hierarchical_memory']['contract_scope']='Combined hierarchy/task/frame/timing/readout suite; original FIT probe had60 contracts.'
+    packet['composition_engineering']=dict(status='measured mechanism and resource progress',
+        coalesced_views=dict(baseline=old['work'],coalesced=new['work'],
+            scope='Same32-event TRAIN scene and acquired parameters; output-square gradient check, not equal-quality comparison.'),
+        observed_frame=dict(parameters=frame['parameters'],translation_feature_displacement=frame['feature_displacement']['translation_only'],
+            combined_nuisance_before=frame['reference_final']['feature_displacement']['both'],
+            combined_nuisance_after=frame['feature_displacement']['both'],work=frame['work_backward'],
+            scope='Same acquired weights/factorial TRAIN scenes. World pixel memories and scene-relative upper ownership; no new parameters or sensor replay. Exact translation contract, not learned semantic transfer.'),
+        completed_transfer_attempt=dict(dev_nll=engineering[2]['final']['dev']['calibrated_nll'],
+            accuracy=engineering[2]['final']['dev']['accuracy'],prior_nll=0.6931471805599453,
+            scope='First coalesced128-update synthetic whole-label fit failed unseen-combination DEV; frozen affine readout did not recover transfer. Recorded separately from native FIT success.'),
+        next_gate='Repaired observed-frame128-update run, TRAIN-only calibration, cached features and unseen-combination DEV; TEST not model-scored.',
+        accounting='Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim.')
+    packet['input_sha256'].update({prefix+n:hashlib.sha256((ROOT/prefix/n).read_bytes()).hexdigest() for n in engineering_names})
     (ROOT/'investment/hierarchy_development_evidence.json').write_text(json.dumps(packet,indent=2)+'\n')
-    print('Bound three language depths, five frozen native variants and 60 contracts.')
+    print('Bound three language depths, five frozen native variants, engineering gates and 76 contracts.')
 if __name__=='__main__':main()

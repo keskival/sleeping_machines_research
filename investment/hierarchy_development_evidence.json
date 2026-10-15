@@ -33,7 +33,7 @@
     "abstraction_levels": 8,
     "refinements_per_level": 4,
     "cells": 32,
-    "passed_contracts": 60,
+    "passed_contracts": 76,
     "parameters": 169675,
     "episodes": 12,
     "raw_events_per_episode": 32,
@@ -99,7 +99,8 @@
     "capability": "Persistent native race objects compose child events and typed responses from lower learned memories, then generate a race-timed readout.",
     "scope": "One FIT recording. Prior, centre and scalar gain fitted/scored on same FIT logits. No held-out semantic transfer or benchmark claim.",
     "next_gate": "Held-out combinations of familiar parts, training-only calibration, memory-content and relative-pose interventions.",
-    "timer_credit": "Forward-identical winner-averaged pure-timer interior credit implemented; no measured training-quality gain. Native value-routing credit unchanged."
+    "timer_credit": "Forward-identical winner-averaged pure-timer interior credit implemented; no measured training-quality gain. Native value-routing credit unchanged.",
+    "contract_scope": "Combined hierarchy/task/frame/timing/readout suite; original FIT probe had60 contracts."
   },
   "input_sha256": {
     "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json": "82d874ec20dcd9cc5a3f1e8000da7ffe1a9674a61b4d2061c4e36221acc660dd",
@@ -109,6 +110,82 @@
     "experiments/results/hierarchy/aws_g_hier_native_composition_20261015_v1_learn.json": "3484a8ca6cdbea4ef22111dd4e72b1341e793b3af3788c4735b2d8769b1b1f38",
     "experiments/results/hierarchy/aws_g_hier_native_query_attribution_20261015_v1.json": "0bb5f153cb772f84d9e2eb185a9df966428ac2518347d70326d5f8cc778dcea9",
     "experiments/results/hierarchy/aws_g_hier_native_frozen_readout_20261015_v1.json": "4b21eb1f440db9892efd26c40c3b6218253a65ca1b987d04d375639315988d2a",
-    "experiments/results/hierarchy/native_composition_credit_contracts_20261015_v1.json": "6fff34eccec05599b8beb679b70cd96077ecedf99e9774870246e3ed78febba7"
+    "experiments/results/hierarchy/native_composition_credit_contracts_20261015_v1.json": "6fff34eccec05599b8beb679b70cd96077ecedf99e9774870246e3ed78febba7",
+    "experiments/results/hierarchy/aws_g_hier_coalesced_preflight_20261015_v2.json": "9832d329e5edcbb82cda57d8f4e285db18da3b5fb3f889d888fde31f985bbc80",
+    "experiments/results/hierarchy/aws_g_hier_frame_preflight_20261015_v1.json": "f352bff64992583f8575dcb0514e489b652aee84c25f444962b50171c846894f",
+    "experiments/results/hierarchy/aws_g_hier_coalesced_learning_20261015_v1.json": "f566f8c0c798936599c994474c75044e1bf3a502a9fa04aed852b9c0cef17991",
+    "experiments/results/hierarchy/aws_g_hier_coalesced_readout_20261015_v1.json": "949efbb096f1fdb8948725afb491e7d0dd125b1329221a8697a2df581ba087eb",
+    "experiments/results/hierarchy/aws_g_hier_nuisance_factorial_20261015_v1.json": "2e4dbd38a533779c1ebc2be3c2670f86bd6a655868c54fd2cdd355849426f2a6",
+    "experiments/results/hierarchy/aws_g_hier_coalesced_transfer_diagnosis_20261015_v1.json": "70d0e4cc5cc25fccdff8f693bd75c8052c414734f3b6e7ac0779dca322c3a92b",
+    "experiments/results/hierarchy/native_frame_contracts_20261015_v1.json": "4e446124e629d2bc4cf67bda962121f2804b264ede82538e2826758f0369fedb"
+  },
+  "composition_engineering": {
+    "status": "measured mechanism and resource progress",
+    "coalesced_views": {
+      "baseline": {
+        "addressed_objects": 94,
+        "external_observations": 32,
+        "candidate_scores": 11168,
+        "selected_updates": 5584,
+        "counterfactual_value_evaluations": 11168,
+        "timer_candidate_scores": 2,
+        "deliveries": 349,
+        "publications": 349,
+        "indexed_reads": 93,
+        "queries": 93,
+        "timer_emissions": 1,
+        "state_tensor_bytes": 93040,
+        "boundary": "Native state tensors only; published aliases, input records, queue, Python metadata, parameters and autograd graphs separate. Operation counts, not complete FLOPs/energy."
+      },
+      "coalesced": {
+        "addressed_objects": 94,
+        "external_observations": 32,
+        "candidate_scores": 4000,
+        "selected_updates": 2000,
+        "counterfactual_value_evaluations": 4000,
+        "timer_candidate_scores": 188,
+        "deliveries": 125,
+        "publications": 125,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 94,
+        "state_tensor_bytes": 82760,
+        "boundary": "Native state tensors only; published aliases, input records, queue, Python metadata, parameters and autograd graphs separate. Operation counts, not complete FLOPs/energy."
+      },
+      "scope": "Same32-event TRAIN scene and acquired parameters; output-square gradient check, not equal-quality comparison."
+    },
+    "observed_frame": {
+      "parameters": 169378,
+      "translation_feature_displacement": 0.0,
+      "combined_nuisance_before": 0.41618436574935913,
+      "combined_nuisance_after": 0.0031582561787217855,
+      "work": {
+        "addressed_objects": 119,
+        "external_observations": 32,
+        "candidate_scores": 4800,
+        "selected_updates": 2400,
+        "counterfactual_value_evaluations": 4800,
+        "timer_candidate_scores": 238,
+        "deliveries": 150,
+        "publications": 150,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 119,
+        "state_tensor_bytes": 104320,
+        "boundary": "Native state tensors only; published aliases, input records, queue, Python metadata, parameters and autograd graphs separate. Operation counts, not complete FLOPs/energy.",
+        "pixel_native_memories": 32,
+        "frame_bound_comparisons": 62,
+        "frame_coordinate_subtractions": 128
+      },
+      "scope": "Same acquired weights/factorial TRAIN scenes. World pixel memories and scene-relative upper ownership; no new parameters or sensor replay. Exact translation contract, not learned semantic transfer."
+    },
+    "completed_transfer_attempt": {
+      "dev_nll": 2.5080945763330176,
+      "accuracy": 0.5,
+      "prior_nll": 0.6931471805599453,
+      "scope": "First coalesced128-update synthetic whole-label fit failed unseen-combination DEV; frozen affine readout did not recover transfer. Recorded separately from native FIT success."
+    },
+    "next_gate": "Repaired observed-frame128-update run, TRAIN-only calibration, cached features and unseen-combination DEV; TEST not model-scored.",
+    "accounting": "Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim."
   }
 }
