@@ -1,0 +1,2 @@
+# R1: remove forceddocument memory clearing and aligntraining with no-reset scoring; strongestacquired parent and other policies heldfixed
+aws_memory_policy_persistent_2m_20261015_v1 experiments/memory_policy_continuation.py --tag aws_memory_policy_persistent_2m_20261015_v1 --policy shared --reset-policy persistent --updates 4096 --resume-from experiments/results/token_language/aws_memory_policy_persistent_smoke_20261015_v1.pt

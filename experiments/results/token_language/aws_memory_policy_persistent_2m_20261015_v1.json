@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "policy": "shared",
+  "reset_policy": "persistent",
+  "added_updates": 4096,
+  "added_targets": 2097152,
+  "prequential_nll": 5.917252966723112,
+  "scored": {
+    "nll": 5.996433751854971,
+    "loss_sum": 49122.78529519592,
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "training_s": 2008.9349122580606,
+  "teacher_work": {
+    "calls": 1026,
+    "replayed_targets": 122880,
+    "scored_targets": 29744
+  },
+  "local_clip_activation_fraction": 0.46130329225492545,
+  "final_weights": "experiments/results/token_language/aws_memory_policy_persistent_2m_20261015_v1.pt",
+  "source_sha256": {
+    "experiments/memory_policy_continuation.py": "502ae48f326454c7646786241c4a0fb089a2ec0cd1ca5da2d1796011b5a40f09",
+    "sleeping_machines/language_memory_policy.py": "3994f7c4e3c02c1e43b127df5ff38c112d5e5b4135d57e57d4bc1dc30308a2c3",
+    "sleeping_machines/lane_independent_races.py": "07401ce09c1b8e2b49131b69acef88f2e4bb5c6c281be77b3e137f9069c91ddb",
+    "experiments/credit/protected_depth_learning_pilot.py": "060622e5c19ffcbe0156e15ee38e3ac49017fdfa4a28f5f209d601f73dd91626",
+    "experiments/multidepth_readout_token_language.py": "0a59d120e4eb62cd5b8f0581e3e61815864ae93119611468069e55ce87b093eb"
+  },
+  "input_sha256": {
+    "experiments/results/token_language/aws_lane_policy_shared_2m_20261015_v1.pt": "29bac5eb8c6e0a9ee7b0a632cc6500734045c62fe6b1653fcfbd1c9873d9fb9b"
+  },
+  "binding": {
+    "policy": "shared",
+    "reset_policy": "persistent",
+    "parent_sha256": "29bac5eb8c6e0a9ee7b0a632cc6500734045c62fe6b1653fcfbd1c9873d9fb9b",
+    "stream_start": 12845064,
+    "stream_total_updates": 4096,
+    "driver_sha256": "502ae48f326454c7646786241c4a0fb089a2ec0cd1ca5da2d1796011b5a40f09"
+  },
+  "max_rss_kb": 636308,
+  "process_wall_s": 1980.2006274408195,
+  "scope": "Single-factor forcedEOS-reset versus persistentmemory comparison from strongest acquired6.01053 native learner; both retain selected shared training tape. Same old fixedlocalcaps/moments/data/order and supported teacher; full capacity/keys/value/writes retained. Eight contiguous freshTRAIN streams continue through2Mtargets without artificial262k-block resets; persistentarm treatsEOS as ordinary observed token and retains memory, control preserves forcedEOSreset; acquired numeric state carried, gradientwindow16 remains separate. Per-target TRAIN losses scored before each update; final reused8192DEV/1024history uses common pinned shared-lane inference tape. 64-update smoke resumes into4096 total updates on IDENTICAL predeclared2M stream layout, not re-fitting. Smoke scoring/checkpoints paid separately; no public validation, external language fit, physical speed or FLOP claim."
+}
