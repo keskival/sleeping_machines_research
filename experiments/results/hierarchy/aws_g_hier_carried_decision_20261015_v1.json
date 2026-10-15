@@ -1,0 +1,290 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "paired_composition_decision",
+  "rows": {
+    "continued": {
+      "nll": 0.6866090297698975,
+      "accuracy": 0.546875,
+      "benefit_over_prior": {
+        "mean": 0.006538153160363436,
+        "bootstrap_95": [
+          -0.025183116644620897,
+          0.03582202652469274
+        ],
+        "groups": 16
+      },
+      "initial_dev_nll": 0.6942445955693017,
+      "parameters": 255394,
+      "process_wall_s": 672.8403457680251,
+      "work_training": {
+        "addressed_objects": 15232,
+        "external_observations": 4096,
+        "candidate_scores": 614400,
+        "selected_updates": 307200,
+        "counterfactual_value_evaluations": 614400,
+        "timer_candidate_scores": 30464,
+        "deliveries": 19200,
+        "publications": 19200,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 15232,
+        "state_tensor_bytes": 13253400,
+        "pixel_native_memories": 4096,
+        "frame_bound_comparisons": 7936,
+        "frame_coordinate_subtractions": 16384,
+        "role_slots": 15104,
+        "role_view_tensor_bytes": 2054144,
+        "role_projection_madds": 51904512,
+        "role_pair_products": 188416,
+        "role_transport_calls": 79872
+      },
+      "work_dev": {
+        "addressed_objects": 7616,
+        "external_observations": 2048,
+        "candidate_scores": 307200,
+        "selected_updates": 153600,
+        "counterfactual_value_evaluations": 0,
+        "timer_candidate_scores": 15232,
+        "deliveries": 9600,
+        "publications": 9600,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 7616,
+        "state_tensor_bytes": 6618920,
+        "pixel_native_memories": 2048,
+        "frame_bound_comparisons": 3968,
+        "frame_coordinate_subtractions": 8192,
+        "role_slots": 7552,
+        "role_view_tensor_bytes": 1027072,
+        "role_projection_madds": 25952256,
+        "role_pair_products": 94208,
+        "role_transport_calls": 39936
+      }
+    },
+    "carried": {
+      "nll": 0.716414213180542,
+      "accuracy": 0.453125,
+      "benefit_over_prior": {
+        "mean": -0.023267056792974472,
+        "bootstrap_95": [
+          -0.06542521230876445,
+          0.010810418683104176
+        ],
+        "groups": 16
+      },
+      "initial_dev_nll": 0.7061956312095253,
+      "parameters": 255401,
+      "process_wall_s": 722.5594738598447,
+      "work_training": {
+        "addressed_objects": 15232,
+        "external_observations": 4096,
+        "candidate_scores": 614400,
+        "selected_updates": 307200,
+        "counterfactual_value_evaluations": 614400,
+        "timer_candidate_scores": 30464,
+        "deliveries": 19200,
+        "publications": 19200,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 15232,
+        "state_tensor_bytes": 13263480,
+        "pixel_native_memories": 4096,
+        "frame_bound_comparisons": 7936,
+        "frame_coordinate_subtractions": 16384,
+        "role_slots": 15104,
+        "role_view_tensor_bytes": 2054144,
+        "role_projection_madds": 51904512,
+        "role_pair_products": 188416,
+        "role_transport_calls": 79872,
+        "carrier_transport_calls": 149504,
+        "carrier_additions": 1196032,
+        "carrier_tensor_bytes": 1514496
+      },
+      "work_dev": {
+        "addressed_objects": 7616,
+        "external_observations": 2048,
+        "candidate_scores": 307200,
+        "selected_updates": 153600,
+        "counterfactual_value_evaluations": 0,
+        "timer_candidate_scores": 15232,
+        "deliveries": 9600,
+        "publications": 9600,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 7616,
+        "state_tensor_bytes": 6661600,
+        "pixel_native_memories": 2048,
+        "frame_bound_comparisons": 3968,
+        "frame_coordinate_subtractions": 8192,
+        "role_slots": 7552,
+        "role_view_tensor_bytes": 1027072,
+        "role_projection_madds": 25952256,
+        "role_pair_products": 94208,
+        "role_transport_calls": 39936,
+        "carrier_transport_calls": 74752,
+        "carrier_additions": 598016,
+        "carrier_tensor_bytes": 757248
+      }
+    }
+  },
+  "relational_nll_gain": {
+    "mean": -0.02980520948767662,
+    "bootstrap_95": [
+      -0.06448771134018898,
+      0.006537904369179156
+    ],
+    "groups": 16
+  },
+  "interventions": {
+    "continued": {
+      "values": {
+        "nll": 285.03515625,
+        "mechanism_benefit": {
+          "mean": 284.3485412597656,
+          "bootstrap_95": [
+            284.31683044433595,
+            284.3778137207031
+          ],
+          "groups": 16
+        },
+        "work": {
+          "addressed_objects": 7616,
+          "external_observations": 2048,
+          "candidate_scores": 307200,
+          "selected_updates": 153600,
+          "counterfactual_value_evaluations": 0,
+          "timer_candidate_scores": 15232,
+          "deliveries": 9600,
+          "publications": 9600,
+          "indexed_reads": 0,
+          "queries": 0,
+          "timer_emissions": 7616,
+          "state_tensor_bytes": 6622520,
+          "pixel_native_memories": 2048,
+          "frame_bound_comparisons": 3968,
+          "frame_coordinate_subtractions": 8192,
+          "role_slots": 7552,
+          "role_view_tensor_bytes": 1027072,
+          "role_projection_madds": 25952256,
+          "role_pair_products": 94208,
+          "role_transport_calls": 39936
+        }
+      },
+      "child_delays": {
+        "nll": 5.092021942138672,
+        "mechanism_benefit": {
+          "mean": 4.4054131507873535,
+          "bootstrap_95": [
+            4.225143086910248,
+            4.594220280647278
+          ],
+          "groups": 16
+        },
+        "work": {
+          "addressed_objects": 7616,
+          "external_observations": 2048,
+          "candidate_scores": 307200,
+          "selected_updates": 153600,
+          "counterfactual_value_evaluations": 0,
+          "timer_candidate_scores": 15232,
+          "deliveries": 9600,
+          "publications": 9600,
+          "indexed_reads": 0,
+          "queries": 0,
+          "timer_emissions": 7616,
+          "state_tensor_bytes": 6620000,
+          "pixel_native_memories": 2048,
+          "frame_bound_comparisons": 3968,
+          "frame_coordinate_subtractions": 8192,
+          "role_slots": 7552,
+          "role_view_tensor_bytes": 1027072,
+          "role_projection_madds": 25952256,
+          "role_pair_products": 94208,
+          "role_transport_calls": 39936
+        }
+      },
+      "values_and_child_delays": {
+        "nll": 283.652587890625,
+        "mechanism_benefit": {
+          "mean": 282.9659729003906,
+          "bootstrap_95": [
+            282.93426208496095,
+            282.9952453613281
+          ],
+          "groups": 16
+        },
+        "work": {
+          "addressed_objects": 7616,
+          "external_observations": 2048,
+          "candidate_scores": 307200,
+          "selected_updates": 153600,
+          "counterfactual_value_evaluations": 0,
+          "timer_candidate_scores": 15232,
+          "deliveries": 9600,
+          "publications": 9600,
+          "indexed_reads": 0,
+          "queries": 0,
+          "timer_emissions": 7616,
+          "state_tensor_bytes": 6624000,
+          "pixel_native_memories": 2048,
+          "frame_bound_comparisons": 3968,
+          "frame_coordinate_subtractions": 8192,
+          "role_slots": 7552,
+          "role_view_tensor_bytes": 1027072,
+          "role_projection_madds": 25952256,
+          "role_pair_products": 94208,
+          "role_transport_calls": 39936
+        }
+      }
+    }
+  },
+  "transfer_positive_arms": [],
+  "qualified_arms": [],
+  "selected_for_confirmation": null,
+  "decision": "No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_carried_continued_20261015_v1.json": "bfb3d800dec34d1a26ddd5760336b8d3581c605f5f92053c37559edeedb095d0",
+    "experiments/results/hierarchy/aws_g_hier_carried_continued_20261015_v1_features.npz": "a7f4491dda245f70af6fd9252e5d5260a80385ed33244379e22a232c5eb8211c",
+    "experiments/results/hierarchy/aws_g_hier_carried_continued_20261015_v1.final.pt": "4661f2561f858ab4e2e019291dbed6765ec6a96423dabf32543b9f24a6364eba",
+    "experiments/results/hierarchy/aws_g_hier_carried_carried_20261015_v1.json": "aed57c42df7cb3799b1c1f22099948397f7d923b28bbdd5b14ecb1746c305180",
+    "experiments/results/hierarchy/aws_g_hier_carried_carried_20261015_v1_features.npz": "95fccf0001398ca8b20d1f0d438823e9ae3a3cb00f3a036659c5102015714184",
+    "experiments/results/hierarchy/aws_g_hier_carried_carried_20261015_v1.final.pt": "8212676ea6cc1e20f7d4a11c0e264e9a4ad6ce06e09a02e3c5133d2450aeb26a"
+  },
+  "source_sha256": {
+    "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/carried_role_composition.py": "33efe34b4a6f48097770519c009e81cc0ebb1bd5db56c9fca8b416e81875db30",
+    "sleeping_machines/coalesced_native_composition.py": "f0da49eccaa1fa7718d9dfe9020d6da45d63d08414828d1f5a1da46314f9644e",
+    "sleeping_machines/convex_native_readout.py": "36e7f36509563c75190d97329c3543ddacb875d2ea89e268556e27a7c11d7ca8",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/frame_native_composition.py": "9a2db231ac0838ac92d938c8c9625a926bddbe21d98f46a8d19857e268aeb6ce",
+    "sleeping_machines/frontier_native_composition.py": "33b80094dce3218253122858b54eec6fc7ab4df4cd3adc262b4ddfa2b37ad0d6",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/indexed_temporal_object.py": "2d6c5ac8ef44c10d2852dfae6639f1a0dd9d0fe53ae9b24349fe2dbf76fa533b",
+    "sleeping_machines/native_memory_composition.py": "f3a2b04beed4e37c15afb0e39836dba11811d21ab8fe118c85a4fb86a6cf9883",
+    "sleeping_machines/native_object_hierarchy.py": "9e58e4046c55e7ab815ab2b0dd3563833482a829febef69a61cf8d13ee8514e4",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/prior_centered_readout.py": "a774743d4ca31c5db0effa067cd87214806390e18036be2fdc7cba4c80b57687",
+    "sleeping_machines/pure_race_timer.py": "2531bbdcc0980fbdfb2ad2665d568504cd33f45006ae6c9bec3d2584f0b9fbe7",
+    "sleeping_machines/relational_frame_composition.py": "103105767a4e2761704cd771621fb4156a4b0f2f649537fb08c92cd6dbb4949e",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "sleeping_machines/variance_reduced_native_composition.py": "99dbb62906f478db5861790d764746c6f8fa62f9dbdfd1d9a58e24e3d1439b1d",
+    "experiments/hierarchy/carried_role_decision.py": "470ed828d1885a194a2cf109c89ed4a1dc2ef056ec7f03c7f1f01da855d9a69c",
+    "experiments/hierarchy/observed_training_pairs.py": "bb568befab27e930fe451ff355ac5591875e797fd33f6755390579befa432a10",
+    "experiments/hierarchy/carried_role_learning.py": "97ad25bb438b3022bdd7825ff2dd1295535803ed71adf5e548a9bcda9bc70f43",
+    "experiments/hierarchy/frame_learning.py": "a4a047665fe6c3d7dcefa9f89580733423cf34fb7e2c39feaf33e9ad5d4ce4ac",
+    "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540"
+  },
+  "process_wall_s": 118.19315200299025,
+  "max_rss_kib": 304552,
+  "intervention_scope": "Values cut retains clocks/addresses/availability. Child-delay cut fixes arm-to-emit delay at .011,retains random draws,reads views later and changes transport/scheduling jointly. Root timer unchanged;not a cut of all timing/availability paths.",
+  "scope": "One-seed synthetic DEV comparison,TRAIN-only heads,observed-geometry clusters,common noise tape. Same128presentations;different parameters/arithmetic. Reused DEV is not sealed confirmation. TEST not model-scored."
+}
