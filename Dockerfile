@@ -58,4 +58,4 @@ RUN echo "node ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/node \
 
 WORKDIR /workspace
 USER node
-ENTRYPOINT ["claude", "--dangerously-skip-permissions", "--effort", "low"]
+ENTRYPOINT ["claude", "--dangerously-skip-permissions"]

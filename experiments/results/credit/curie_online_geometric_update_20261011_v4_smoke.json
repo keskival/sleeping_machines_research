@@ -1,0 +1,167 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_online_geometric_update_20261011_v4_smoke",
+  "mode": "smoke",
+  "gate": true,
+  "utility_gate": true,
+  "config": {
+    "seed": 99712,
+    "train_targets": 64,
+    "episodes": 2,
+    "targets": 32,
+    "context": 64,
+    "meta_lr": 0.001,
+    "feedback_batch": 16,
+    "train_offset": 4915200,
+    "private_dev_offset": 5192704
+  },
+  "basis": {
+    "wall_s": 0.8776821490027942,
+    "supported_flops": 463168512,
+    "cached_bytes": 17695200
+  },
+  "pretraining": {
+    "wall_s": 3.036329916008981,
+    "supported_flops": 2818415616,
+    "common_native_wall_s": 1.311646889866097,
+    "common_native_supported_flops": 834439680,
+    "arm_wall_s": {
+      "online": 1.7052516509429552
+    },
+    "arm_supported_flops": {
+      "online": 1983975936
+    },
+    "scored_targets": 64,
+    "meta_updates": 4,
+    "meta_feedbacks": 63,
+    "mean_nll": {
+      "online": 4.944664973418528
+    },
+    "max_scored_keys": 96,
+    "mean_scored_keys": 73.96875,
+    "selected_native_address_writes": 127,
+    "lexical_capacity": 64,
+    "native_available_vocabulary": 50257,
+    "update_function_parameters": 25027
+  },
+  "rows": [
+    {
+      "wall_s": 3.1580978040001355,
+      "supported_flops": 4005921792,
+      "common_native_wall_s": 0.8846958130598068,
+      "common_native_supported_flops": 624072448,
+      "arm_wall_s": {
+        "adam": 0.19383213308174163,
+        "fixed": 0.5635372260294389,
+        "frozen": 0.6605258870695252,
+        "online": 0.8421051730401814
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991954688
+      },
+      "scored_targets": 32,
+      "meta_updates": 2,
+      "meta_feedbacks": 31,
+      "mean_nll": {
+        "adam": 4.981744566770788,
+        "fixed": 4.980531015145761,
+        "frozen": 4.980545593324605,
+        "online": 4.980493733920052
+      },
+      "max_scored_keys": 72,
+      "mean_scored_keys": 64.90625,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 0
+    },
+    {
+      "wall_s": 3.140329866990214,
+      "supported_flops": 4005870976,
+      "common_native_wall_s": 0.8813386090914719,
+      "common_native_supported_flops": 624021632,
+      "arm_wall_s": {
+        "adam": 0.19316110102226958,
+        "fixed": 0.5574469419661909,
+        "frozen": 0.6551871730189305,
+        "online": 0.8390778730681632
+      },
+      "arm_supported_flops": {
+        "adam": 411705344,
+        "fixed": 988297984,
+        "frozen": 989891328,
+        "online": 991954688
+      },
+      "scored_targets": 32,
+      "meta_updates": 2,
+      "meta_feedbacks": 31,
+      "mean_nll": {
+        "adam": 4.647194403873765,
+        "fixed": 4.642962928853368,
+        "frozen": 4.643413681494195,
+        "online": 4.643410014195973
+      },
+      "max_scored_keys": 64,
+      "mean_scored_keys": 54.78125,
+      "selected_native_address_writes": 95,
+      "lexical_capacity": 64,
+      "native_available_vocabulary": 50257,
+      "update_function_parameters": 25027,
+      "episode": 1
+    }
+  ],
+  "comparisons": {
+    "online_over_frozen": {
+      "gain": 2.7763351387655177e-05,
+      "paired_episode_bootstrap95": [
+        3.667298222431725e-06,
+        5.185940455287863e-05
+      ],
+      "per_episode": [
+        5.185940455287863e-05,
+        3.667298222431725e-06
+      ]
+    },
+    "online_over_fixed": {
+      "gain": -0.0002049020584475869,
+      "paired_episode_bootstrap95": [
+        -0.000447085342604403,
+        3.7281225709229204e-05
+      ],
+      "per_episode": [
+        3.7281225709229204e-05,
+        -0.000447085342604403
+      ]
+    },
+    "online_over_adam": {
+      "gain": 0.002517611264264197,
+      "paired_episode_bootstrap95": [
+        0.0012508328507356836,
+        0.00378438967779271
+      ],
+      "per_episode": [
+        0.0012508328507356836,
+        0.00378438967779271
+      ]
+    }
+  },
+  "whole_wall_s": 10.427141949010547,
+  "peak_rss_kb": 398868,
+  "checkpoint": "experiments/results/credit/curie_online_geometric_update_20261011_v4_smoke.pt",
+  "checkpoint_sha256": "868ba4afdcb74b34566f7a2a55f1cb7119ff904ceb8e9400249fbd2d715eac27",
+  "source_checkpoint_sha256": "dd2cbe2a8d04711ed249a60b5fa8623f3a8d43e6c08e0b90eb5a7224b7236237",
+  "source_sha256": {
+    "experiments/credit/run_online_geometric_update_seed_repeat.py": "328b8923757cc56ec095f8daf40862f8d71a6669fe92ca2c292aa69a477f7970",
+    "experiments/credit/online_geometric_update_accumulated.py": "02b1790bfd3d7fb99580d8c8376778f445d4d28a9b2c18080b0694004cdd85cc",
+    "experiments/credit/ONLINE_GEOMETRIC_UPDATE_SEED_REPEAT_PROTOCOL.md": "e85e8aaafc8e9ce1a5ca03acd7c7833c0e56487ede1a9b4a85c6514b98e43608",
+    "experiments/credit/token_block_curvature.py": "f8b10b1024ead9c45971aee6121f6d8bdffe3835a719ea619df91e750309f711",
+    "experiments/credit/token_spectral_curvature.py": "82589f0a240d5867503b087d9e57cc9973d04ce2c32a6887eab73902fc81eb24",
+    "experiments/credit/token_episode_state_vectorized.py": "34bcdb4d048c18234bb3fc8efc6b7ef576e4490d31c469fd514dfc137a2fd173"
+  },
+  "scope": "ProperGPT2 native2layer keyedsource,64dimensional forwardlexical learner; nativeparameters fixed. Learned connected updatefunction eta/damping/momentum trained by exact one-step futureloss through retained issued graph; mean of sixteen feedback gradients with fixed parameter version, partial final batch flushed; frozen-vs-online same inherited function/metaAdamstate. Independent initialization repeat on the same eight private development episodes; seed99712/99714 fixed prospectively, repeated pretraining fully charged. Streaming causal prequential privateTRAINtail; no publicDEV/TEST. No optionalcounterfactual route/actor learning added in this diagnostic; retains source temporal/addressedkey inference. Charge sharednative plus eacharm updates/geometry/function/solver/optimizer, basis/metapretraining additional to everyprimaryarm; unsupported solver/eigensolver/scalar work included in wall but omitted from supportedFLOPs. No equaltrainingclaim vsAdam/fullnativelearning/depth or hardwareefficiencyclaim."
+}

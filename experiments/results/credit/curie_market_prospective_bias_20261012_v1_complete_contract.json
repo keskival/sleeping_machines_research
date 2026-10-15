@@ -1,0 +1,68 @@
+{
+  "status": "completed",
+  "battle": "B10",
+  "tag": "curie_market_prospective_bias_20261012_v1_complete_contract",
+  "rows": [
+    {
+      "audit": false,
+      "analytic": -0.0005545172005499807,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": -0.0005544744849927952,
+          "error": 4.2715557185563774e-08
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": -0.0005544092029907688,
+          "error": 1.0799755921194268e-07
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": -0.0005560639060320227,
+          "error": 1.5467054820419816e-06
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": -0.0005564224636600557,
+          "error": 1.9052631100749222e-06
+        }
+      ],
+      "prospective_gradient_norm": 0.011191200515733345
+    },
+    {
+      "audit": true,
+      "analytic": 0.0030804326334602067,
+      "checks": [
+        {
+          "eps": 0.001,
+          "finite_difference": 0.0030659876557592725,
+          "error": 1.4444977700934277e-05
+        },
+        {
+          "eps": 0.0001,
+          "finite_difference": 0.0030802771711080368,
+          "error": 1.554623521699515e-07
+        },
+        {
+          "eps": 1e-05,
+          "finite_difference": 0.0030798539718546176,
+          "error": 5.786616055891008e-07
+        },
+        {
+          "eps": 1e-06,
+          "finite_difference": 0.003106646495609766,
+          "error": 2.62138621495594e-05
+        }
+      ],
+      "prospective_gradient_norm": 0.011253047645519276
+    }
+  ],
+  "whole_wall_s": 2.641198049997911,
+  "peak_rss_kb": 330276,
+  "source_sha256": {
+    "experiments/credit/check_market_prospective_bias_complete.py": "9c2c3e6819d0f011c899d83752ad2f3e92b2ad62c492f4ef6165c6f5c71a5214",
+    "experiments/credit/market_prospective_bias_credit.py": "72749236743488c3226e6c6528a7f4217522642916c49de0a1103de8935c8289"
+  },
+  "scope": "Actual native producer VJP, clipped Adam with fixed prior moments, next-window loss; both residual audit branches. Boundary-vector derivative, not all-history derivative."
+}
