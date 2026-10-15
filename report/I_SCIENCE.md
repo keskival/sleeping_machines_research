@@ -448,6 +448,10 @@ FAS interleaves the anonymous events of two assembly lines; a fault is one modul
 
 **Win (confirmed, preregistered):** +0.0965, bootstrap 95% [+0.088, +0.121], every native fit above every reference; wear 0.772 vs 0.650, retry 0.829 vs 0.758. The test draw was generated after the committed preregistration ([FAS_V21_CONFIRMATION.md](../experiments/FAS_V21_CONFIRMATION.md)). Next: put the binding clocks inside the neural native model, so prediction and detection share one learned representation.
 
+### Native representational hierarchy
+
+Indexed temporal objects now combine persistent memory, lazy reads and native race-generated emissions across eight abstraction levels/four native stages each. A32-raw-event FIT preflight passes with finite gradients, indexed queries and timer-driven upward computation:79 objects,78,520bytes of native state tensors, with runtime/graph/queue overhead separate. This is mechanism/resource evidence, not trained semantic hierarchy. The earlier synchronous32-cell probe stays at1/12 FIT accuracy after64updates; frozen stochastic scoring improves slightly while argmax worsens, and the highest raw-read stencil is restricted to pixel(0,0). The next test preserves native stochastic execution and informative child access before bounded learning and held-out composition. [Evidence and decisions](../experiments/hierarchy/CURRENT_FINDINGS.md).
+
 ## 5. What the evidence says
 
 **What works.** The temporal mechanisms learn order, timing and retrieval from few examples where Transformers fail; time is used as information. Counterfactual route credit improves language at depth for 0.3% extra work. Stored capacity improves quality at flat inference arithmetic. On anonymous interleaved processes the native model beats every generic control across three seeds. At 10M characters it beats tuned Transformers at equal or lower compute.

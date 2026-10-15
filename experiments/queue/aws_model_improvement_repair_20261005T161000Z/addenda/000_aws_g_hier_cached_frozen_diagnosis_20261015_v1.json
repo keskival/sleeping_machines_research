@@ -1,0 +1,33 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Frozen FIT-only diagnosis of route/readout versus input-use failure; existing models/data reused; no training",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_g_hier_cached_frozen_diagnosis_20261015_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_cached_frozen_diagnosis_20261015_v1/aws_g_hier_cached_frozen_diagnosis_20261015_v1.txt",
+        "queue_sha256": "c977266895de0b3aeb9af20ab1329ba86b5da22da4fb3fb3bf98965b9437648f",
+        "source_sha256": {
+          "experiments/hierarchy/frozen_cached_diagnosis.py": "0f893e3945a8d624dbdc26e13a0f6094ee12f905bf6c9ef37b5dbd056b21d733",
+          "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sleeping_machines/addressable_parent_hierarchy.py": "40bb08afba481f3a22465bb17f5535fd258be987ea2a6100926094224035fb41",
+          "sleeping_machines/cached_parent_hierarchy.py": "6f00dccaa078d55aae16f80ab3b5175f3d286feb48ae8bac9b7d7cfed3b3a015",
+          "sleeping_machines/parent_race_hierarchy.py": "20d18571621e916cd0c363fcb3292da2f9877c1ab522108d08b9770aff137dcf"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_cached_frozen_diagnosis_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_cached_20261015_v2_probe.json",
+            "stage": "bounded_learning_probe"
+          }
+        ],
+        "timeout_s": 600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
