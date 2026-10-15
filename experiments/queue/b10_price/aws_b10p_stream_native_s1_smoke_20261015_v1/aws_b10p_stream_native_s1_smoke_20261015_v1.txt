@@ -1,0 +1,2 @@
+# B10-P streaming fine-tune smoke (native_s1): 2 segments, 1 epoch
+aws_b10p_stream_native_s1_smoke_20261015_v1 experiments/market/b10p_stream_fit.py --tag aws_b10p_stream_native_s1_smoke_20261015_v1 --fit experiments/results/market/aws_b10p_native_s1_20261015_v3.json --epochs 1 --max-segments 2

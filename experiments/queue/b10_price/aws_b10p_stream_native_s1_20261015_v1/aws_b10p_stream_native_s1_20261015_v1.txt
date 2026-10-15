@@ -1,0 +1,2 @@
+# B10-P streaming fine-tune (native_s1): 96 contiguous 16k-trade TRAIN segments, state carried across chunks, 8 epochs, streaming DEV selection
+aws_b10p_stream_native_s1_20261015_v1 experiments/market/b10p_stream_fit.py --tag aws_b10p_stream_native_s1_20261015_v1 --fit experiments/results/market/aws_b10p_native_s1_20261015_v3.json --epochs 8
