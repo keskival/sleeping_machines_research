@@ -1,0 +1,76 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Does the measured carried-path sensitivity repair improve held-out composition beyond continued training of the acquired native role actor? Conditional frozen emitted-content audit follows a successful DEV gate;no automatic larger fit.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_g_hier_carried_continued_20261015_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_carried_continued_20261015_v1/aws_g_hier_carried_continued_20261015_v1.txt",
+        "queue_sha256": "6168e3a167d90f0db6f3f3f643475ed94d78f077808dd5b0f58e626b5bcfea93",
+        "source_sha256": {
+          "experiments/hierarchy/aws_g_hier_carried_20261015_v1_admission.json": "443359aaf37cfa416e22d5bed6428b8801e5ca20f897651105f4dc05f0fb714f",
+          "experiments/hierarchy/carried_role_decision.py": "470ed828d1885a194a2cf109c89ed4a1dc2ef056ec7f03c7f1f01da855d9a69c",
+          "experiments/hierarchy/carried_role_gate.py": "dff3148fb0fbf5932906d2398ab7b0e1ac3344c4778944d5c3aa6e63e7b42212",
+          "experiments/hierarchy/carried_role_learning.py": "97ad25bb438b3022bdd7825ff2dd1295535803ed71adf5e548a9bcda9bc70f43",
+          "experiments/hierarchy/paired_composition_learning.py": "98b8b367add5aec48ce40cb38338da2047c87c6b9cc94cda988d957f999d7b39",
+          "experiments/results/hierarchy/aws_g_hier_carried_role_gate_20261015_v1.json": "f12dbde7d2c382a6ad1bee5625e43e6115a1e601446adcc0a529b275805358d0",
+          "experiments/theory/CARRIED_ROLE_REPRESENTATIONS.md": "1c934aae882985f90a5bea1800581a634584588113353d29b16930c15da68c08",
+          "experiments/theory/ROLE_MEMORY_AND_INTERACTION_DEPTH.md": "af2dadf8ef3f64475395500a08c86ed13ef797acc478d3a4f22b02e18bd8f654",
+          "scripts/admit_carried_role_comparison.py": "ba9ab01ed66c510c3fe89efaf2cc71678b324769d0da6f72bf52d8315185ec7d",
+          "scripts/continue_carried_role_comparison.py": "b844946556a920cacb318725654114f5febfaf7ad72ca02eff498dade43d93ba",
+          "sleeping_machines/carried_role_composition.py": "33efe34b4a6f48097770519c009e81cc0ebb1bd5db56c9fca8b416e81875db30",
+          "tests/test_observed_training_pairs.py": "4d3b387e60707d55cc02c0f26e1b42270bc8c0ff3a2779ad738d16aa2d8a9b19",
+          "tests/test_paired_composition_recovery.py": "d8af8c0c54d406b2ab8ba490a60f259d4a32e46ede82384303220cfd11375efa",
+          "tests/test_relational_frame_composition.py": "ba9753f2cdfd73a0284a3eb289a0b46d6cc4c0b64cc63d9544cd810d92f68cbc"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_carried_continued_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_carried_role_gate_20261015_v1.json",
+            "stage": "carried_role_gate"
+          }
+        ],
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_g_hier_carried_carried_20261015_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_carried_carried_20261015_v1/aws_g_hier_carried_carried_20261015_v1.txt",
+        "queue_sha256": "7d3fb5444044c7d68dac58e3fcd370bc59cd288168ac3bfd895e01e0256a800a",
+        "source_sha256": {
+          "experiments/hierarchy/aws_g_hier_carried_20261015_v1_admission.json": "443359aaf37cfa416e22d5bed6428b8801e5ca20f897651105f4dc05f0fb714f",
+          "experiments/hierarchy/carried_role_decision.py": "470ed828d1885a194a2cf109c89ed4a1dc2ef056ec7f03c7f1f01da855d9a69c",
+          "experiments/hierarchy/carried_role_gate.py": "dff3148fb0fbf5932906d2398ab7b0e1ac3344c4778944d5c3aa6e63e7b42212",
+          "experiments/hierarchy/carried_role_learning.py": "97ad25bb438b3022bdd7825ff2dd1295535803ed71adf5e548a9bcda9bc70f43",
+          "experiments/hierarchy/paired_composition_learning.py": "98b8b367add5aec48ce40cb38338da2047c87c6b9cc94cda988d957f999d7b39",
+          "experiments/results/hierarchy/aws_g_hier_carried_role_gate_20261015_v1.json": "f12dbde7d2c382a6ad1bee5625e43e6115a1e601446adcc0a529b275805358d0",
+          "experiments/theory/CARRIED_ROLE_REPRESENTATIONS.md": "1c934aae882985f90a5bea1800581a634584588113353d29b16930c15da68c08",
+          "experiments/theory/ROLE_MEMORY_AND_INTERACTION_DEPTH.md": "af2dadf8ef3f64475395500a08c86ed13ef797acc478d3a4f22b02e18bd8f654",
+          "scripts/admit_carried_role_comparison.py": "ba9ab01ed66c510c3fe89efaf2cc71678b324769d0da6f72bf52d8315185ec7d",
+          "scripts/continue_carried_role_comparison.py": "b844946556a920cacb318725654114f5febfaf7ad72ca02eff498dade43d93ba",
+          "sleeping_machines/carried_role_composition.py": "33efe34b4a6f48097770519c009e81cc0ebb1bd5db56c9fca8b416e81875db30",
+          "tests/test_observed_training_pairs.py": "4d3b387e60707d55cc02c0f26e1b42270bc8c0ff3a2779ad738d16aa2d8a9b19",
+          "tests/test_paired_composition_recovery.py": "d8af8c0c54d406b2ab8ba490a60f259d4a32e46ede82384303220cfd11375efa",
+          "tests/test_relational_frame_composition.py": "ba9753f2cdfd73a0284a3eb289a0b46d6cc4c0b64cc63d9544cd810d92f68cbc"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_carried_carried_20261015_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_carried_role_gate_20261015_v1.json",
+            "stage": "carried_role_gate"
+          }
+        ],
+        "timeout_s": 3600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
