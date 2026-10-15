@@ -1,0 +1,2 @@
+# B10-P online v3: native, full Aug 25 day, persistent state, non-overlapping delayed-label adaptation lr 1e-5 (selected on the Aug 25 65k development stream)
+aws_b10p_online3_native_aug25_20261015_v1 experiments/market/b10p_online_v3.py --tag aws_b10p_online3_native_aug25_20261015_v1 --arm native --lr 1e-5 --fit experiments/results/market/aws_b10p_native_s0_20261015_v3.json
