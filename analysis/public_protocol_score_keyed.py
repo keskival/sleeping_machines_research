@@ -6,7 +6,9 @@ Transformer attends across EOS inside its window).
 The public range [0, 10,485,761) is sealed: development slices start at 10,485,760 (selection), 20,971,520 (65,528) and
 25,165,824 (flagship). --mode contract scores development windows only and checks this scorer against the driver's
 flagship() on the same windows (must agree to float rounding), then reports s/window for cost planning. --mode public
-scores the sealed range once for an explicitly selected model; it refuses to overwrite an existing result.
+scores the sealed range once for an explicitly selected model; it refuses to overwrite an existing result. --mode dev
+scores the selection (16,384 targets from 10,485,760) and development (65,536 from 20,971,520) slices in the same
+1024-token windows, the shared metric for native members and the matched-protocol Transformer reference.
 """
 import argparse, hashlib, json, resource, sys, time
 from pathlib import Path
@@ -36,11 +38,15 @@ def score(model, val, start, targets, lanes):
 
 def main():
     p = argparse.ArgumentParser(); p.add_argument('--tag', required=True); p.add_argument('--run', required=True)
-    p.add_argument('--mode', choices=('contract', 'public'), required=True); p.add_argument('--lanes', type=int, default=8); a = p.parse_args()
+    p.add_argument('--mode', choices=('contract', 'dev', 'public'), required=True); p.add_argument('--lanes', type=int, default=8); a = p.parse_args()
     torch.set_num_threads(1); began = time.time()
     rec = json.loads((ROOT/f'experiments/results/token_language/{a.run}.json').read_text()); g = rec['args']; assert rec.get('status', 'completed') == 'completed'
-    model = (KeyedTokenLM(g['d'], g['modes'], g['layers'], g['heads'], g['dk'], g['keyed'], g['dropout']) if 'keyed' in g   # multi-epoch keyed member
-             else DeepKeyedLM(g['d'], g['modes'], g['layers'], g['heads'], g['dk'], g['dropout'])); model.load_state_dict(torch.load(ROOT/rec['checkpoint'])); model.eval()
+    if 'Transformer reference' in rec.get('stage', ''):
+        from r1_reference_transformer_stream import ReferenceGPT; model = ReferenceGPT(g['d'], g['layers'], g['heads'])
+    else:
+        model = (KeyedTokenLM(g['d'], g['modes'], g['layers'], g['heads'], g['dk'], g['keyed'], g['dropout']) if 'keyed' in g   # multi-epoch keyed member
+                 else DeepKeyedLM(g['d'], g['modes'], g['layers'], g['heads'], g['dk'], g['dropout']))
+    model.load_state_dict(torch.load(ROOT/rec['checkpoint'])); model.eval()
     val = load(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin'); out = dict(battle='R1', tag=a.tag, run=a.run, mode=a.mode, parameters=rec['parameters'], presentations=rec.get('presentations'), best_epoch=rec.get('best_epoch'),
                                                                          train_tokens=g['train_tokens'], layers=g['layers'], d=g['d'])
     if a.mode == 'contract':
@@ -49,6 +55,9 @@ def main():
                    public_cost_estimate_h=mine['s_per_window']*(PUBLIC_TARGETS//WINDOW)/3600)
         out['status'] = 'completed' if out['abs_diff'] < 1e-6 and (out['recorded_flagship'] is None or abs(mine['nll'] - out['recorded_flagship']) < 1e-6) else 'failed'
         path = ROOT/f'experiments/results/diagnostics/{a.tag}.json'
+    elif a.mode == 'dev':
+        out.update(select_w1024=score(model, val, 10485760, 16384, a.lanes), dev_w1024=score(model, val, 20971520, 65536, a.lanes)); out['status'] = 'completed'
+        path = ROOT/f'experiments/results/diagnostics/{a.tag}.json'
     else:
         out.update(public=score(model, val, 0, PUBLIC_TARGETS, a.lanes), reference=dict(record='modded-nanogpt 2024-10-29 optimizer record 95a9fd44',
                    local='experiments/results/public_reference/modded_nanogpt_20241029_optimizer_record.txt', final_val_nll=3.3406, tokens_per_step=524288))
@@ -56,7 +65,7 @@ def main():
     out.update(max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, process_wall_s=time.time() - began,
                source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('analysis/public_protocol_score_keyed.py', 'experiments/r1_deep_keyed_lm.py', 'experiments/r1_token_keyed_lm.py')})
     with path.open('x') as f: json.dump(out, f, indent=1); f.write('\n')
-    print(json.dumps({k: out[k] for k in out if k in ('status', 'abs_diff', 'public_cost_estimate_h', 'public', 'max_rss_kb')}), flush=True)
+    print(json.dumps({k: out[k] for k in out if k in ('status', 'abs_diff', 'public_cost_estimate_h', 'public', 'select_w1024', 'dev_w1024', 'max_rss_kb')}), flush=True)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,268 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "protocol": "first 10,485,760 tokens of FineWeb val (GPT-2 tokens), mean next-token NLL; any eval sequence length allowed (modded-NanoGPT rules)",
+ "records": [
+  {
+   "record": "track 1 #89, 2026-07-17 FP8DownProjection (1.23 min on 8xH100)",
+   "url": "https://github.com/KellerJordan/modded-nanogpt/blob/master/records/track_1_short/2026-07-17_FP8DownProjection/this_pr/11cb620c-daaf-4e85-83fc-258a5eb7ba09.txt",
+   "local": "experiments/results/public_reference/modded_nanogpt_20260717_record89_fp8downprojection.txt",
+   "sha256": "c4cad451a4875adef3750a93863e30a051f1b89dd303b24134d066ad6c188ec9",
+   "schedule": "num_scheduled_iterations 1380 in three equal stages of 8/16/24 x 2048 x 8 tokens per step, then 10 extension steps at 24 x 2048 x 8",
+   "curve": [
+    {
+     "step": 0,
+     "train_tokens": 0,
+     "val_nll": 10.8311
+    },
+    {
+     "step": 250,
+     "train_tokens": 32768000,
+     "val_nll": 4.4888
+    },
+    {
+     "step": 500,
+     "train_tokens": 70778880,
+     "val_nll": 4.1451
+    },
+    {
+     "step": 750,
+     "train_tokens": 136314880,
+     "val_nll": 3.7368
+    },
+    {
+     "step": 1000,
+     "train_tokens": 212336640,
+     "val_nll": 3.4625
+    },
+    {
+     "step": 1250,
+     "train_tokens": 310640640,
+     "val_nll": 3.333
+    },
+    {
+     "step": 1390,
+     "train_tokens": 365690880,
+     "val_nll": 3.2775
+    }
+   ]
+  },
+  {
+   "record": "track 1, 2024-10-29 optimizer record 95a9fd44",
+   "local": "experiments/results/public_reference/modded_nanogpt_20241029_optimizer_record.txt",
+   "schedule": "524,288 tokens per step",
+   "curve": [
+    {
+     "step": 0,
+     "train_tokens": 0,
+     "val_nll": 15.9936
+    },
+    {
+     "step": 125,
+     "train_tokens": 65536000,
+     "val_nll": 5.9598
+    },
+    {
+     "step": 250,
+     "train_tokens": 131072000,
+     "val_nll": 5.0586
+    },
+    {
+     "step": 375,
+     "train_tokens": 196608000,
+     "val_nll": 4.4649
+    },
+    {
+     "step": 500,
+     "train_tokens": 262144000,
+     "val_nll": 4.2164
+    },
+    {
+     "step": 625,
+     "train_tokens": 327680000,
+     "val_nll": 4.0617
+    },
+    {
+     "step": 750,
+     "train_tokens": 393216000,
+     "val_nll": 3.9743
+    },
+    {
+     "step": 875,
+     "train_tokens": 458752000,
+     "val_nll": 3.8966
+    },
+    {
+     "step": 1000,
+     "train_tokens": 524288000,
+     "val_nll": 3.843
+    },
+    {
+     "step": 1125,
+     "train_tokens": 589824000,
+     "val_nll": 3.8028
+    },
+    {
+     "step": 1250,
+     "train_tokens": 655360000,
+     "val_nll": 3.7627
+    },
+    {
+     "step": 1375,
+     "train_tokens": 720896000,
+     "val_nll": 3.7408
+    },
+    {
+     "step": 1500,
+     "train_tokens": 786432000,
+     "val_nll": 3.7029
+    },
+    {
+     "step": 1625,
+     "train_tokens": 851968000,
+     "val_nll": 3.6826
+    },
+    {
+     "step": 1750,
+     "train_tokens": 917504000,
+     "val_nll": 3.6573
+    },
+    {
+     "step": 1875,
+     "train_tokens": 983040000,
+     "val_nll": 3.6385
+    },
+    {
+     "step": 2000,
+     "train_tokens": 1048576000,
+     "val_nll": 3.621
+    },
+    {
+     "step": 2125,
+     "train_tokens": 1114112000,
+     "val_nll": 3.6093
+    },
+    {
+     "step": 2250,
+     "train_tokens": 1179648000,
+     "val_nll": 3.5914
+    },
+    {
+     "step": 2375,
+     "train_tokens": 1245184000,
+     "val_nll": 3.5831
+    },
+    {
+     "step": 2500,
+     "train_tokens": 1310720000,
+     "val_nll": 3.5688
+    },
+    {
+     "step": 2625,
+     "train_tokens": 1376256000,
+     "val_nll": 3.5561
+    },
+    {
+     "step": 2750,
+     "train_tokens": 1441792000,
+     "val_nll": 3.5487
+    },
+    {
+     "step": 2875,
+     "train_tokens": 1507328000,
+     "val_nll": 3.5431
+    },
+    {
+     "step": 3000,
+     "train_tokens": 1572864000,
+     "val_nll": 3.5345
+    },
+    {
+     "step": 3125,
+     "train_tokens": 1638400000,
+     "val_nll": 3.5223
+    },
+    {
+     "step": 3250,
+     "train_tokens": 1703936000,
+     "val_nll": 3.5089
+    },
+    {
+     "step": 3375,
+     "train_tokens": 1769472000,
+     "val_nll": 3.508
+    },
+    {
+     "step": 3500,
+     "train_tokens": 1835008000,
+     "val_nll": 3.4935
+    },
+    {
+     "step": 3625,
+     "train_tokens": 1900544000,
+     "val_nll": 3.4964
+    },
+    {
+     "step": 3750,
+     "train_tokens": 1966080000,
+     "val_nll": 3.4849
+    },
+    {
+     "step": 3875,
+     "train_tokens": 2031616000,
+     "val_nll": 3.4663
+    },
+    {
+     "step": 4000,
+     "train_tokens": 2097152000,
+     "val_nll": 3.449
+    },
+    {
+     "step": 4125,
+     "train_tokens": 2162688000,
+     "val_nll": 3.4348
+    },
+    {
+     "step": 4250,
+     "train_tokens": 2228224000,
+     "val_nll": 3.4226
+    },
+    {
+     "step": 4375,
+     "train_tokens": 2293760000,
+     "val_nll": 3.4048
+    },
+    {
+     "step": 4500,
+     "train_tokens": 2359296000,
+     "val_nll": 3.393
+    },
+    {
+     "step": 4625,
+     "train_tokens": 2424832000,
+     "val_nll": 3.3796
+    },
+    {
+     "step": 4750,
+     "train_tokens": 2490368000,
+     "val_nll": 3.3665
+    },
+    {
+     "step": 4875,
+     "train_tokens": 2555904000,
+     "val_nll": 3.3548
+    },
+    {
+     "step": 5000,
+     "train_tokens": 2621440000,
+     "val_nll": 3.3452
+    },
+    {
+     "step": 5100,
+     "train_tokens": 2673868800,
+     "val_nll": 3.3406
+    }
+   ]
+  }
+ ]
+}
