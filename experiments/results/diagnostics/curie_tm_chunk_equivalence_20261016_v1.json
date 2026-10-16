@@ -1,0 +1,19 @@
+{
+ "battle": "R1",
+ "tag": "curie_tm_chunk_equivalence_20261016_v1",
+ "model": "DeepKeyedLM d64 L2, 2x256 lane",
+ "loss_chunk256": 10.846822738647461,
+ "loss_chunk64": 10.846822738647461,
+ "loss_abs_diff": 0.0,
+ "grad_max_rel_diff": 4.993021320842672e-06,
+ "cpu_update_s": {
+  "chunk256": 0.989,
+  "chunk64": 0.299,
+  "note": "batch 1, L2, single thread, min of 3 (fast_cpu_bench)"
+ },
+ "status": "passed",
+ "source_sha256": {
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_deep_keyed_stream_chunked.py": "7443da561b1eea2c88b5b38fbe6278fe4696f2812aa498630e014d4dab9c26f3"
+ }
+}
