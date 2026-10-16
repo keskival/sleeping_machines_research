@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "native_query_migration_gate",
+  "gate": "PASS",
+  "wall_s": 1.0533142720814794,
+  "max_rss_kb": 395052,
+  "source_sha256": {
+    "experiments/native_query_migration.py": "5eddd33f4343c719badd5ba5a880c73675ab3b218ffbb8138c82ab4a17222d62",
+    "tests/test_native_query_migration.py": "f0188af620ee5c78e1bc0cd55d4c32e88552cb04a2710b83f1f5df6b1f542c8a",
+    "sleeping_machines/packed_queryable_local_deep_race.py": "078a9518bfe31b81be5ea4c8afe7be3e5ec7a80e7bd6bd03f976b402a656b18c"
+  },
+  "scope": "Tiny native full-learner contract:shared parameters/Adam states and persistent history preserved;bitwise serialized continuation including query lineage and both clock generators. No quality result or acquisition."
+}
