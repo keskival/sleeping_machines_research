@@ -139,6 +139,8 @@ packet = dict(
 developed_wiki = load('experiments/results/tpp_b4/aws_b4x_wiki_test_20261016_v2.json')
 assert developed_wiki['status'] == 'completed' and developed_wiki['beats_composite_target']
 packet['b4_wikipedia_developed'] = developed_wiki
+packet['b4_github_developed'] = load('experiments/results/tpp_b4/aws_b4x_github_test_20261016_v3.json')
+packet['b4_stackoverflow_developed'] = load('experiments/results/tpp_b4/aws_b4x_so_test_20261016_v2.json')
 packet['date'] = '2026-10-16'
 out = ROOT / 'report/public_wins_headline_evidence_20261010_v4.json'
 out.write_text(json.dumps(packet, indent=1) + '\n')

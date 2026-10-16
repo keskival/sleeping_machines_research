@@ -112,6 +112,92 @@
     "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s2.json": "5e61516c8f04c5dea984508dbb30dbd129c1fffd7e8f6fb43451ee74862f61c5",
     "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s3.json": "5501aab71cb7a03c87c6aa7600bf15fe83a4b4edc770e8e52db9593e3f9dff7d",
     "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s4.json": "ef51699b40f4dc0020345c5067c3acde86a31c11435cb22456e010a779ddc1c9",
-    "experiments/results/hierarchy/aws_g_hier_grounding_diagnosis_20261016_v1.json": "709d7de685863c19a19b1d439106516c19189c6639fc9f18e9e96e9409c42ec0"
+    "experiments/results/hierarchy/aws_g_hier_grounding_diagnosis_20261016_v1.json": "709d7de685863c19a19b1d439106516c19189c6639fc9f18e9e96e9409c42ec0",
+    "experiments/results/tpp_b4/aws_b4x_github_test_20261016_v3.json": "48f267c282591a159f693e8a1c9e52d6907a7a77c5785db47545564ec5eae08c",
+    "experiments/results/tpp_b4/aws_b4x_so_test_20261016_v2.json": "42e741af7b72672d019ddff8acaad5660034b6d1f8ba69698ebde7cdf2460e1d"
+  },
+  "github": {
+    "total": -284.4657651953247,
+    "se": 54.28884276081441,
+    "target": -272.9,
+    "best_single": -269.7,
+    "margin": 11.56576519532473,
+    "beats_composite": true,
+    "splits": [
+      {
+        "L_T": -481.2934909925864,
+        "L_M": 126.55018391514821,
+        "total": -354.74330707743815,
+        "sequences": 36
+      },
+      {
+        "L_T": -609.9386981332395,
+        "L_M": 159.07764534254392,
+        "total": -450.86105279069557,
+        "sequences": 36
+      },
+      {
+        "L_T": -200.30745917170438,
+        "L_M": 60.363721757877265,
+        "total": -139.9437374138271,
+        "sequences": 36
+      },
+      {
+        "L_T": -313.691105603872,
+        "L_M": 99.65995613046215,
+        "total": -214.03114947340987,
+        "sequences": 36
+      },
+      {
+        "L_T": -371.45145103821545,
+        "L_M": 108.7018718169625,
+        "total": -262.74957922125293,
+        "sequences": 36
+      }
+    ],
+    "selected": "ptr",
+    "scope": "Developed attempt,one seed per five official splits;variant selected by aggregate validation only;TEST scored once. Recorded-data density scoring,not a recording-cell/dequantized comparison. Repair follows published frozen-transfer failure;no hardware/matched-compute claim."
+  },
+  "stackoverflow": {
+    "total": 11.995597990477881,
+    "se": 0.6475756891875425,
+    "target": 11.9,
+    "best_single": 12.1,
+    "margin": -0.09559799047788076,
+    "beats_composite": false,
+    "splits": [
+      {
+        "L_T": -95.69206456414756,
+        "L_M": 106.06478261848947,
+        "total": 10.372718054341922,
+        "sequences": 1593
+      },
+      {
+        "L_T": -89.00218139630047,
+        "L_M": 101.60059624447138,
+        "total": 12.5984148481709,
+        "sequences": 1593
+      },
+      {
+        "L_T": -89.51480649985125,
+        "L_M": 103.49448638682487,
+        "total": 13.979679886973639,
+        "sequences": 1593
+      },
+      {
+        "L_T": -93.83699427401923,
+        "L_M": 104.64747870219016,
+        "total": 10.81048442817093,
+        "sequences": 1593
+      },
+      {
+        "L_T": -92.40293957252103,
+        "L_M": 104.61963230725306,
+        "total": 12.216692734732014,
+        "sequences": 1593
+      }
+    ],
+    "selected": "aws_b4x_so_ptr_20261015_v1",
+    "scope": "Developed attempt,one seed per five official splits;variant selected by aggregate validation only;TEST scored once. Recorded-data density scoring,not a recording-cell/dequantized comparison. Repair follows published frozen-transfer failure;no hardware/matched-compute claim."
   }
 }

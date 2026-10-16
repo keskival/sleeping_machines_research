@@ -1,5 +1,7 @@
 # Investor proof plan — 15 October 2026
 
+**Completed developed event results,16October.** Github wins against the stronger composite target:−284.4658±54.2888SE versus−272.90. Wikipedia wins:−258.7609±37.7334SE versus−122.62. Stack Overflow beats the best published single-model total (11.9956 versus12.10),while missing the11.90 composite. Five official splits,aggregate validation selection,TEST once;recorded-data density comparisons. Frozen-transfer results remain separately scoped. Source-bound packet:`investment/b4_developed_evidence.json`.
+
 The best way to strengthen our €50M pre-money proposal is to turn a promising
 architecture into an asset an investor can verify: repeatable useful quality,
 economical execution, and a credible team and ownership path. The AGI ambition

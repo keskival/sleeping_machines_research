@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "native_recursive_race_contracts",
+  "tests": 8,
+  "command": ".venv-docker/bin/python -m pytest -q tests/test_recursive_race_learning.py tests/test_grounded_native_composition.py",
+  "wall_s": 1.29,
+  "source_sha256": {
+    "sleeping_machines/recursive_race_learning.py": "e2bb19459a56af5d7420f5601fa10600fe468e6fa97c4e226233d748e677d7b2",
+    "tests/test_recursive_race_learning.py": "11597596816937b3f283ed5e641d648eab9b415fee76cedeaa55a387f49e5532",
+    "sleeping_machines/race_readout.py": "338313fc259472e5ec9cdf693cc7c9986d2ca90a359bef648c02fad5f48af4b2"
+  },
+  "scope": "Numerical contracts only;five recursive tests and three existing geometry tests. Four-level native integration retains live credit and preserves published actor state. No learned semantic result."
+}

@@ -1,5 +1,7 @@
 # Sleeping Machines — investor pitch
 
+**Completed developed event results,16October.** Github wins against the stronger composite target:−284.4658±54.2888SE versus−272.90. Wikipedia wins:−258.7609±37.7334SE versus−122.62. Stack Overflow beats the best published single-model total (11.9956 versus12.10),while missing the11.90 composite. Five official splits,aggregate validation selection,TEST once;recorded-data density comparisons. Frozen-transfer results remain separately scoped. Source-bound packet:`investment/b4_developed_evidence.json`.
+
 **The next general-purpose substrate for machine intelligence.**
 
 Sleeping Machines aims to make intelligence composable within **one trainable computing substrate**. Language and reasoning, perception and world models, embodied action, typed tables and interleaved process streams become different forms of experience available to the same learner. The ambition extends through continual learning, communication and self-design to the hardware that executes them.

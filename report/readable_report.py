@@ -5432,6 +5432,14 @@ def benchmark_record_page():
             f"{developed['test_mean']['total']:.2f} ± {developed['test_total_se']:.2f} SE",
             f"composite {developed['composite_target']:.2f}; best single {developed['best_single_published']:.2f}",
             'WIN on recorded-data density; five official splits, aggregate DEV variant selection, TEST once; full work not audited'])
+    for key, label in [('b4_github_developed','Github'),('b4_stackoverflow_developed','Stack Overflow')]:
+        if key in e:
+            d=e[key]
+            verdict=('WIN against composite' if d['beats_composite_target'] else 'WIN against best single model; composite target missed')
+            rows.insert(11,['Bosser & Ben Taieb '+label+', developed native',
+                f"{d['test_mean']['total']:.4f} ± {d['test_total_se']:.4f} SE",
+                f"composite {d['composite_target']:.2f}; best single {d['best_single_published']:.2f}",
+                verdict+'; recorded-data density, five splits, aggregate DEV selection, TEST once; full work not audited'])
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),
             ('p', 'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '
                   'Own numbers are computed from the result files in the source-bound packet '

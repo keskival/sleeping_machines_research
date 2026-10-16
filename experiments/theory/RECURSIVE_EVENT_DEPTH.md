@@ -38,7 +38,7 @@ Split competence into what the model class can represent and what it can learn f
 processes: a race of exponential and defective clocks approximates any continuous inter-event density on compact gap
 ranges, and hazard-weighted mark mixtures approximate any continuous time-dependent mark law (theory note 158, §§449-456).
 A derived stream with discrete marks and positive gaps is such a process. So the same class at level k can represent any
-law of the level-(k−1) stream that it can represent for raw input. Nothing is lost by moving the learner up a level.
+law of the level-(k−1) stream that it can represent for raw input. This transfers representational scope for the derived stream under those assumptions; information discarded by emission, finite-data learnability and downstream usefulness do not transfer automatically.
 
 **Identity is the condition that is easy to miss.** The mechanisms that make our shallow models strong are identity
 addressed: per-mark slots and clocks, the predecessor message keyed by the previous mark, exact-match bonuses, sufficient
@@ -57,7 +57,7 @@ the sentence level (~280k events) supports K ~ 10^3-10^4 concepts; the document 
 dozen. Upper levels need more total data than the token level to be equally trained, which is why scaling data matters
 more as depth grows.
 
-**Proposition 4 (usefulness).** Level k improves the base prediction by at most I(Y; S_k | S_<k), the information in its
+**Proposition 4 (usefulness).** For Bayes-optimal unrestricted log-loss decoders in nats, the gain from adding S_k to S_<k equals I(Y; S_k | S_<k), the information in its
 state about the target beyond the lower states (AWS §5). Since S_k is a causal function of the input history, this is
 positive only through history the lower states no longer hold or cannot make accessible to the decoder: older content
 (S_k's receptive field is N × span tokens) or structure that is cheaper to read from S_k. Recursive training (§4) teaches
@@ -146,7 +146,7 @@ every depth with separate parameters. The token layer is L applied to (tokens, e
 **Choosing marks (emission).** In the token layer marks come from the data; above it, the layer chooses them. The rule:
 c' = argmin_c ||W p' − κ_c|| (a race over the lexicon keys with zero noise), keys κ updated as exponential moving
 averages of the wholes assigned to them, dead keys re-seeded from recent wholes. The choice carries no gradient
-(stop-gradient at marks, §4), so no objective can collapse the vocabulary to make itself easy. The value table λ is
+(stop-gradient at marks, §4), so the upper mark-prediction loss cannot directly collapse the lower vocabulary through its label path. Lower training, initialization or EMA dynamics can still collapse assignments and must be measured. The value table λ is
 learned by gradient as the next layer's input embedding: keys choose, values are read, as the token layer's tied output
 and input embeddings. The payload p' (the whole vector) carries gradient to the emitting layer, so marks give identity
 and payloads give detail.
@@ -204,3 +204,5 @@ exactly.
 **Contracts (additivity).** Transport composition Φ(s)Φ(t) = Φ(s+t) to rounding; with g, the corrections and A_k at zero,
 each level's whole equals the linear integration of its parts and the interface input equals the whole exactly (R2, R3);
 the stack at initialisation equals its token-level base.
+
+Implementation qualification: [Native recursive race credit](RECURSIVE_RACE_CREDIT.md) supplies partition-invariant survival accounting, live published-memory integration and the semantic relevance tests. The current categorical length head is a bounded length prediction diagnostic; it is not the native competing-risk/silence implementation.
