@@ -169,9 +169,9 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 
 \newpage
 % ---------------------------------------------------------------- second benchmark
-\sect{Beyond EasyTPP}{The same model wins on two more datasets}
+\sect{Beyond EasyTPP}{Three wins on a second event benchmark}
 
-\textbf{One model configuration won all five EasyTPP datasets.} Applied unchanged to a second event benchmark, it also beats the best published single-model total on \textbf{Github activity and LastFM listening}. These results use the independent neural temporal-point-process benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025): the same configuration, trained on each dataset, with no dataset-specific tuning.
+\textbf{One model configuration won all five EasyTPP datasets.} Applied unchanged to a second event benchmark, it also beats the best published single-model total on \textbf{Github activity and LastFM listening}. These frozen-transfer results use the independent neural temporal-point-process benchmark of Bosser \& Ben Taieb (TMLR 2023, 2025). A developed pointer model now adds a \textbf{Wikipedia win}, after validation-only variant selection, against a composite target stronger than any single published model.
 
 \vspace{2mm}
 {\small
@@ -188,7 +188,7 @@ LastFM listening & $-697.50$ (LNM++) & \textbf{$-774.64$} & \textbf{77.14} \\
 
 \vspace{4mm}
 \begin{tile}
-\textbf{Why this matters.} A model selected on one event benchmark transfers to a second without a dataset-specific search. Github tests software-development activity; LastFM tests listening behaviour. On LastFM the improvement is 77.14 nats per sequence over the strongest published model's total score.
+\textbf{Why this matters.} Github and LastFM demonstrate transfer of a common event model. Wikipedia shows a developed native model turning a frozen-transfer failure into a win, with validation-only variant selection.
 \end{tile}
 
 \vspace{3mm}
@@ -203,7 +203,7 @@ Component {\color{muted}\footnotesize nats/sequence \down} & Best published & Sl
 LastFM: event timing & $-1363.78$ & \textbf{$-1380.05$} & 16.27 lower timing loss \\
 Github: event timing & $-382.40$ & \textbf{$-390.93$} & 8.53 lower timing loss \\
 Stack Overflow: event timing & $-91.10$ & \textbf{$-91.60$} & 0.50 lower timing loss \\
-Wikipedia: event type & 144.79 & \textbf{27.65} & 80.9\% lower type loss \\
+Wikipedia, frozen: event type & 144.79 & \textbf{27.65} & 80.9\% lower type loss \\
 \bottomrule
 \end{tabularx}}
 
