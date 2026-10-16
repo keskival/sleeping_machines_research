@@ -3,7 +3,8 @@
 benchmark's own training split and scored on its standard protocol, frozen and with causal online weight adaptation.
 
 Protocol (experiments/SCALING_SUPREMACY_PROTOCOL.md; references Melis et al. ICLR 2020 Table 1): Mikolov PTB split
-(data/ptb/ptb.{train,valid,test}.txt, 10,000-word vocabulary incl. <unk>), each line's words followed by <eos>, the
+(data/ptb/ptb.{train,valid,test}.txt, 10,000-word vocabulary incl. <unk>) and WikiText-2 (data/wikitext2/wiki.*.tokens,
+33,278 words; --corpus wt2), each line's words followed by <eos> (Merity et al. AWD-LSTM convention), the
 split read as one continuous stream. Every token of a split is a target (82,430 test, 73,760 valid), the first
 conditioned on a start <eos>; perplexity = exp(mean NLL). History crosses sentence boundaries, as in the published
 recurrent and Transformer-XL evaluations. The test split is sealed: development runs score validation only; `--mode
@@ -39,7 +40,9 @@ from r1_deep_keyed_lm import Block  # noqa: E402
 from r1_token_keyed_lm import KeyedTokenLM  # noqa: E402
 
 CORPORA = dict(ptb=dict(files={s: ROOT/f'data/ptb/ptb.{s}.txt' for s in ('train', 'valid', 'test')}, vocab=10000,
-                        counts=dict(train=929589, valid=73760, test=82430)))
+                        counts=dict(train=929589, valid=73760, test=82430)),
+               wt2=dict(files={s: ROOT/f'data/wikitext2/wiki.{s}.tokens' for s in ('train', 'valid', 'test')}, vocab=33278,   # scripts/convert_wikitext2_parquet.py
+                        counts=dict(train=2088628, valid=217646, test=245569)))
 EXECUTION_ONLY = ('max_steps', 'max_wall_s', 'mode', 'run', 'split', 'select_from', 'online_lr', 'online_decay', 'online_stride', 'ms_batches', 'tm_chunk', 'compile_blocks', 'grid_targets')
 
 

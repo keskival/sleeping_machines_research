@@ -1,0 +1,21 @@
+{
+ "battle": "R1",
+ "tag": "curie_wt2_native_contracts_20261016_v1",
+ "corpus": "wt2",
+ "frozen_targets": 300,
+ "frozen_prefix_max_diff": 0.0,
+ "frozen_changed_at_p": true,
+ "frozen_vs_full_context_first_window": 9.5367431640625e-07,
+ "online_targets": 300,
+ "online_prefix_max_diff": 0.0,
+ "online_changed_after_p": 14.017936706542969,
+ "online_first_segment_equals_frozen": 0.0,
+ "online_adapts": 10.572070121765137,
+ "weights_restored": true,
+ "status": "passed",
+ "source_sha256": {
+  "experiments/r1_ptb_native.py": "39bc7f4cdaa29ec38e75525da41a0690c58bf0a922e3b03e0c9626f6bf993628",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}
