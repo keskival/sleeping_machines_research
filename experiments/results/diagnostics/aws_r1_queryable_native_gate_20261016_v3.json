@@ -1,0 +1,164 @@
+{
+  "packed": true,
+  "status": "completed",
+  "battle": "R1",
+  "stage": "queryable_native_language_gate",
+  "gate": "PASS",
+  "targets": 32,
+  "updates": 2,
+  "depth": 8,
+  "parameters": 4297907,
+  "reports": [
+    {
+      "nll": 7.875582695007324,
+      "background_only_nll": 7.884798765182495,
+      "native_cause_gain": 0.009216248989105225,
+      "depth_responsibility": [
+        0.12733495235443115,
+        0.1255091428756714,
+        0.12673650681972504,
+        0.1245725005865097,
+        0.12386934459209442,
+        0.12412920594215393,
+        0.12397121638059616,
+        0.12387710809707642
+      ],
+      "cause_responsibility": [
+        0.22692112624645233,
+        0.7534817457199097,
+        0.0095870615914464,
+        0.010010084137320518
+      ],
+      "delivered_candidates": 122,
+      "bank": {
+        "capacity": 32768,
+        "occupied": 16,
+        "tensor_bytes": 70516736,
+        "index_keys": 830,
+        "index_references": 1040,
+        "keys_examined": 1040,
+        "index_entries_examined": 1350,
+        "delivered_candidates": 122,
+        "writes": 16,
+        "scope": "Reserved numeric bank tensors and explicit index counts;Python index/metadata bytes,parameters and credit work additional."
+      },
+      "persistent_storage": {
+        "occupied_receivers": 334,
+        "receiver_state_and_eligibility_bytes": 2260992,
+        "temporal_graph_entries": 0,
+        "scope": "Numerical native receiver eligibility plus immutable publication inputs/keys/traces and transitive bound parts. Trace bytes may alias current receiver traces;Python metadata,current graphs and credit packets additional. Per-layer root rings bounded;transitive lineage is not constant memory.",
+        "bound_publications": 128,
+        "bound_edges": 217,
+        "publication_tensor_bytes": 103424,
+        "retained_publication_trace_bytes": 2260992
+      },
+      "forward_s": 0.5181088510435075,
+      "learning_scope": "Persistent indexed episodic causes and outcome-matured messages into native receivers. No recurrent BPTT or old episodic writer graph;read-time keys and receiver-local own-write eligibility learn. Parameter-changing history is approximate;optimizer/versioning separate.",
+      "assembler_gradient_norms": [
+        0.02139957621693611,
+        0.022351020947098732,
+        0.020380720496177673,
+        0.024995917454361916,
+        0.02391957864165306,
+        0.024529213085770607,
+        0.02215941622853279
+      ]
+    },
+    {
+      "nll": 6.662352085113525,
+      "background_only_nll": 6.6521652936935425,
+      "native_cause_gain": -0.010186523199081421,
+      "depth_responsibility": [
+        0.12586340308189392,
+        0.12527570128440857,
+        0.12475457787513733,
+        0.12384156137704849,
+        0.12505465745925903,
+        0.1243874803185463,
+        0.12570832669734955,
+        0.12511426210403442
+      ],
+      "cause_responsibility": [
+        0.24131707847118378,
+        0.7536575198173523,
+        0.0011362778022885323,
+        0.0038890510331839323
+      ],
+      "delivered_candidates": 264,
+      "bank": {
+        "capacity": 32768,
+        "occupied": 32,
+        "tensor_bytes": 70516736,
+        "index_keys": 1440,
+        "index_references": 2080,
+        "keys_examined": 2080,
+        "index_entries_examined": 2949,
+        "delivered_candidates": 386,
+        "writes": 32,
+        "scope": "Reserved numeric bank tensors and explicit index counts;Python index/metadata bytes,parameters and credit work additional."
+      },
+      "persistent_storage": {
+        "occupied_receivers": 458,
+        "receiver_state_and_eligibility_bytes": 2260992,
+        "temporal_graph_entries": 0,
+        "scope": "Numerical native receiver eligibility plus immutable publication inputs/keys/traces and transitive bound parts. Trace bytes may alias current receiver traces;Python metadata,current graphs and credit packets additional. Per-layer root rings bounded;transitive lineage is not constant memory.",
+        "bound_publications": 225,
+        "bound_edges": 385,
+        "publication_tensor_bytes": 181800,
+        "retained_publication_trace_bytes": 3974400
+      },
+      "forward_s": 0.5311662729363889,
+      "learning_scope": "Persistent indexed episodic causes and outcome-matured messages into native receivers. No recurrent BPTT or old episodic writer graph;read-time keys and receiver-local own-write eligibility learn. Parameter-changing history is approximate;optimizer/versioning separate.",
+      "assembler_gradient_norms": [
+        0.02293611690402031,
+        0.022315621376037598,
+        0.019844936206936836,
+        0.018407057970762253,
+        0.021230138838291168,
+        0.024431101977825165,
+        0.024370217695832253
+      ]
+    }
+  ],
+  "learning_counts": {
+    "events": 32,
+    "candidate_scores": 16384,
+    "selected_updates": 1024,
+    "alternative_values": 1024,
+    "credit_projections": 12106,
+    "memory_key_scores": 5488,
+    "memory_selected_reads": 441,
+    "memory_alternative_reads": 427,
+    "memory_transport_heads": 5236,
+    "memory_pair_products": 3472,
+    "queried_historical_versions": 392,
+    "memory_gc_removed": 31
+  },
+  "storage": {
+    "occupied_receivers": 458,
+    "receiver_state_and_eligibility_bytes": 2260992,
+    "temporal_graph_entries": 0,
+    "scope": "Numerical native receiver eligibility plus immutable publication inputs/keys/traces and transitive bound parts. Trace bytes may alias current receiver traces;Python metadata,current graphs and credit packets additional. Per-layer root rings bounded;transitive lineage is not constant memory.",
+    "bound_publications": 225,
+    "bound_edges": 385,
+    "publication_tensor_bytes": 181800,
+    "retained_publication_trace_bytes": 3974400
+  },
+  "optimizer_gate_s": 2.7263429849408567,
+  "process_wall_s": 3.967127085896209,
+  "max_rss_kb": 747700,
+  "source_sha256": {
+    "sleeping_machines/queryable_local_deep_race.py": "1d885f9e74237aaa2b6dc89e5e4ccd5b6946cacbd4c2b807c41eb756054fcf47",
+    "sleeping_machines/local_deep_race.py": "f5543755bde8ec08f1ffcd1fabbf39a3ccfe34e4c2f3b6f50cf874d700d287bf",
+    "sleeping_machines/bound_native_composition.py": "f139dd64b0fb5e901329ecad28a3db11caa0bd7df2ece261189c32cb743dcdcb",
+    "sleeping_machines/relational_frame_composition.py": "103105767a4e2761704cd771621fb4156a4b0f2f649537fb08c92cd6dbb4949e",
+    "sleeping_machines/native_receiver_eligibility.py": "5fa91d18290a55901cfb7e1910e8aacca4bad527e929b1247e480d7f040155b8",
+    "experiments/r1_local_native_deep.py": "6af601c576fe967362796833b4d60a1936b6cfe71c8b6df6884ee20a83c85bc4",
+    "experiments/r1_cerl.py": "2b00b3a33d477a8d76a123a0fd371d908f9cb395f245acf98a0a4ee143975fef",
+    "tests/test_queryable_local_deep_race.py": "2da3eb7835b6526c4b887ac0cc0d65f8e04349c264394124e846e91a6195f5f8",
+    "tests/test_packed_queryable_local_deep_race.py": "53b87fa22ff07839e91c51a25167376c242fd038744c6d6002b43c79a6025c21",
+    "experiments/hierarchy/queryable_native_language_gate.py": "f936a2b9cbe0b253d76f88b22213fdcbcc746b15f6499a6efeaa055be0389bcc",
+    "sleeping_machines/packed_queryable_local_deep_race.py": "078a9518bfe31b81be5ea4c8afe7be3e5ec7a80e7bd6bd03f976b402a656b18c"
+  },
+  "scope": "Numerical integration only,32GPT2FineWebTRAINtargets,twooptimizersteps.No DEV/TEST,ablation or quality claim.Native8layerreceiver races and lowerpublication query races,versionedbindings,two-rolejointcomposer,own-write eligibility on historical query reads. Local incoming/route credit and parameter-changing history remain approximate;optimizer synchronous. All publication keys scored,selected and sampled losing values decoded. Bounded root rings do not imply constant transitive lineage."
+}
