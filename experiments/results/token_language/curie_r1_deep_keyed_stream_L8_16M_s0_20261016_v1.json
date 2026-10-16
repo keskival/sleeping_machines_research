@@ -1,0 +1,100 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth per fresh token: plan-B deep keyed member, one pass",
+ "tag": "curie_r1_deep_keyed_stream_L8_16M_s0_20261016_v1",
+ "args": {
+  "tag": "curie_r1_deep_keyed_stream_L8_16M_s0_20261016_v1",
+  "seed": 0,
+  "train_tokens": 16777216,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 8,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "checkpoint_blocks": 0,
+  "checkpoint_every": 256,
+  "compile_blocks": 1,
+  "max_steps": 0
+ },
+ "parameters": 3829429,
+ "steps": 16384,
+ "presentations": 16711680,
+ "train_wall_s": 42329.40326023102,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select_nll": 5.926050153545012,
+   "prequential_segment": 6.460998774855398,
+   "elapsed_s": 10066
+  },
+  {
+   "step": 8192,
+   "tokens": 8388608,
+   "select_nll": 5.61332159224055,
+   "prequential_segment": 5.621829164796509,
+   "elapsed_s": 20234
+  },
+  {
+   "step": 12288,
+   "tokens": 12582912,
+   "select_nll": 5.442868574223521,
+   "prequential_segment": 5.401544017600827,
+   "elapsed_s": 31148
+  },
+  {
+   "step": 16384,
+   "tokens": 16777216,
+   "select_nll": 5.396740956718769,
+   "prequential_segment": 5.29980949673336,
+   "elapsed_s": 42329
+  }
+ ],
+ "prequential_by_eighth": [
+  6.976592640625313,
+  5.945404909085482,
+  5.7002689184155315,
+  5.543389411177486,
+  5.4464613201562315,
+  5.356626715045422,
+  5.314440050395206,
+  5.285178943071514
+ ],
+ "prequential_last_quarter": 5.29980949673336,
+ "select": {
+  "nll": 5.396740956718769,
+  "targets": 16376
+ },
+ "score_65528": {
+  "nll": 5.131476561441889,
+  "targets": 65528
+ },
+ "flagship_protocol": {
+  "nll": 5.21829554438591,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "max_rss_kb": 1672752,
+ "reference": {
+  "keyed_L2_4M_multi_epoch_score_65528": 5.521061,
+  "keyed_L2_4M_flagship": {
+   "s0": 5.624,
+   "s1": 5.601
+  },
+  "p24_flagship": 5.978388
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_16M_s0_20261016_v1.pt",
+ "source_sha256": {
+  "experiments/r1_deep_keyed_stream.py": "c7c018decc6e946ef5ad132ac020e76cf27e3976c9ab02aca1353812877a2ca0",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}
