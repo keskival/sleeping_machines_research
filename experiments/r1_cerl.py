@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiment
 from r1_deep_keyed_lm import ParallelTemporalMemory  # noqa: E402
 
 S_MAX = 512
-EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'mode', 'row_chunk', 'log_every')
+EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'mode', 'row_chunk', 'log_every', 'run', 'split', 'select_from', 'online_stride', 'grid_targets', 'row_chunk_unused')
 
 
 def word_classes(counts, n_classes, s_max=S_MAX):
@@ -63,8 +63,8 @@ def match_lengths(x, cap=8):
 
 
 class CERL(nn.Module):
-    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5):
-        super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore = V, d, dk, units, topk, explore
+    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0):
+        super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore, self.p_drop = V, d, dk, units, topk, explore, dropout
         self.register_buffer('class_of', torch.as_tensor(class_of)); self.register_buffer('class_words', torch.as_tensor(class_words)); C = class_words.shape[0]
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02); self.word_bias = nn.Parameter(torch.zeros(V))
         self.class_emb = nn.Parameter(torch.randn(C, d)*0.02); self.class_bias = nn.Parameter(torch.zeros(C))
@@ -82,10 +82,11 @@ class CERL(nn.Module):
         self.age_rep, self.age_cont = nn.Parameter(torch.tensor(a0)), nn.Parameter(torch.tensor(a0)); self.span = nn.Parameter(torch.tensor(1.0))
 
     def states(self, x):
-        h = self.embed(x)
+        dr = lambda z: F.dropout(z, self.p_drop, self.training) if self.p_drop else z          # small-corpus regularisation (0 on FineWeb)
+        h = dr(self.embed(x))
         for n1, tm, to, n2, mlp in zip(self.n1, self.tm, self.tm_out, self.n2, self.mlp):
-            h = h + to(tm(n1(h))); h = h + mlp(n2(h))
-        return self.out_norm(h)
+            h = h + dr(to(tm(n1(h)))); h = h + dr(mlp(n2(h)))
+        return dr(self.out_norm(h))
 
     def two_level(self, H, y):
         """log p(y) under the two-level word law of each state row in H [N, K, d] for targets y [N]."""
@@ -178,6 +179,108 @@ def fineweb_protocols(model, val, row_chunk, stats=True):
     return dict(select=lanes_nll(model, sel, row_chunk, stats), score_65528=lanes_nll(model, sc, row_chunk, stats), flagship=lanes_nll(model, fl, row_chunk, stats))
 
 
+# ---------------------------------------------------------------- word-level corpora (PTB, WikiText-2): experiments/PTB_WT2_BATTLE.md
+def window_segments(model, stream, ctx, stride, start):
+    """Per-target NLL tensors for consecutive segments of `stride` targets covering every token (the first conditioned on a
+    start <eos>); each segment's window holds up to ctx tokens of history, which the episodic causes race over."""
+    x = np.concatenate([[start], stream]); n = len(stream)
+    for t0 in range(0, n, stride):
+        t1 = min(t0 + stride, n); w0 = max(0, t1 - ctx); inp = torch.from_numpy(x[w0:t1][None]); tgt = torch.from_numpy(x[w0 + 1:t1 + 1][None])
+        yield model.lane_nll(inp, tgt, (t0 - w0, t1 - w0))[0]
+
+
+def frozen_words(model, stream, ctx, stride, start):
+    model.eval()
+    with torch.no_grad(): out = torch.cat(list(window_segments(model, stream, ctx, stride, start))).numpy()
+    model.train(); return out
+
+
+def online_words(model, stream, ctx, stride, start, ms, lr, decay):
+    """Causal online adaptation (dynamic evaluation): score a segment, then one RMS-normalised step on it with decay toward
+    the trained weights; every prediction uses weights adapted only on earlier segments."""
+    model.eval(); ps = [p for p in model.parameters() if p.requires_grad]; th0 = [p.detach().clone() for p in ps]; out = []
+    rms = []
+    for m in ms:
+        r = m.sqrt(); nz = r[r > 0]; rms.append(r.clamp_min(0.5*nz.mean().item() if nz.numel() else 1e-3) + 1e-8)
+    mr = torch.cat([r.flatten() for r in rms]).mean(); dec = [(decay*r/mr).clamp(max=1.0) for r in rms]
+    for nll in window_segments(model, stream, ctx, stride, start):
+        out.append(nll.detach().numpy()); model.zero_grad(); nll.mean().backward()
+        with torch.no_grad():
+            for p, r, d_, t0 in zip(ps, rms, dec, th0):
+                if p.grad is not None: p.add_(-lr*p.grad/r + d_*(t0 - p))
+    with torch.no_grad():
+        for p, t0 in zip(ps, th0): p.copy_(t0)
+    model.train(); return np.concatenate(out)
+
+
+def training_ms(model, train, lane, batches, seed):
+    model.eval(); ps = [p for p in model.parameters() if p.requires_grad]; ms = [torch.zeros_like(p) for p in ps]; rng = np.random.default_rng(seed)
+    for _ in range(batches):
+        i = rng.integers(0, len(train) - lane - 1); w = torch.from_numpy(train[i:i + lane + 1][None]); model.zero_grad(); model.lane_nll(w[:, :-1], w[:, 1:]).mean().backward()
+        for m, p in zip(ms, ps):
+            if p.grad is not None: m += p.grad**2/batches
+    model.zero_grad(); model.train(); return ms
+
+
+def words_main(a, src):
+    from r1_ptb_native import read_corpus, CORPORA
+    ids, vocab, eos = read_corpus(a.corpus); V = CORPORA[a.corpus]['vocab']; out_dir = ROOT/'experiments/results/word_language'; out_dir.mkdir(exist_ok=True)
+    counts = np.bincount(ids['train'], minlength=V).astype(float); cls, words = word_classes(counts, a.classes)
+    model = CERL(V, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, dropout=a.dropout); params = sum(p.numel() for p in model.parameters())
+    if a.mode == 'score':
+        rec = json.loads((out_dir/f'{a.run}.json').read_text()); model.load_state_dict(torch.load(ROOT/rec['checkpoint'])); path = out_dir/f'{a.tag}.json'; assert not path.exists()
+        split = ids[a.split]; res = dict(battle='R1', tag=a.tag, run=a.run, corpus=a.corpus, split=a.split, targets=len(split), parameters=params, ctx=a.ctx, stride=a.stride)
+        fz = frozen_words(model, split, a.ctx, a.stride, eos); res['frozen'] = dict(nll=float(fz.mean()), ppl=math.exp(fz.mean())); print(json.dumps(res['frozen']), flush=True)
+        ms = training_ms(model, ids['train'], a.lane, 32, a.seed)
+        if a.split == 'test':
+            sel = json.loads((out_dir/f'{a.select_from}.json').read_text()); assert sel['split'] == 'valid' and sel['run'] == a.run; grid = [(sel['online']['lr'], sel['online']['decay'])]
+        else:
+            res['online_grid'] = []
+            for lr in (1e-5, 3e-5, 1e-4, 3e-4):
+                for dc in (0.0, 0.002):
+                    o = online_words(model, split[:a.grid_targets], a.ctx, a.online_stride, eos, ms, lr, dc); res['online_grid'].append(dict(lr=lr, decay=dc, nll=float(o.mean())))
+                    print(json.dumps(res['online_grid'][-1]), flush=True)
+            b = min(res['online_grid'], key=lambda r: r['nll'] if math.isfinite(r['nll']) else math.inf); grid = [(b['lr'], b['decay'])]
+        o = online_words(model, split, a.ctx, a.online_stride, eos, ms, *grid[0]); res['online'] = dict(lr=grid[0][0], decay=grid[0][1], stride=a.online_stride, nll=float(o.mean()), ppl=math.exp(o.mean()))
+        res.update(status='completed', source_sha256=src)
+        with path.open('x') as f: json.dump(res, f, indent=1); f.write('\n')
+        print('RESULT', json.dumps(dict(frozen=res['frozen'], online=res['online'])), flush=True); return
+    out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; ckpt = out_dir/f'{a.tag}.pt'; assert a.tag and not out.exists()
+    train = ids['train']; spe = (len(train) - 1)//(a.lane*a.batch); total = spe*a.epochs; warm = max(1, int(0.02*total))
+    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd, betas=(0.9, 0.98))
+    sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s_: min(1.0, (s_ + 1)/warm)*0.5*(1 + math.cos(math.pi*min(1.0, s_/total))))
+    ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; epoch, step, best, best_epoch, hist, wall = 0, 0, math.inf, -1, [], 0.0; rng = np.random.default_rng(a.seed)
+    if state_path.exists():
+        s_ = torch.load(state_path, weights_only=False); assert s_['args'] == ident
+        model.load_state_dict(s_['model']); opt.load_state_dict(s_['opt']); sched.load_state_dict(s_['sched']); torch.set_rng_state(s_['torch_rng']); rng.bit_generator.state = s_['np_rng']
+        epoch, step, best, best_epoch, hist, wall = s_['epoch'], s_['step'], s_['best'], s_['best_epoch'], s_['hist'], s_['wall']
+    t_start = time.time() - wall
+    while epoch < a.epochs:
+        e0 = time.time(); off = int(rng.integers(0, a.lane)); n_l = (len(train) - 1 - off)//a.lane
+        lanes = np.stack([train[off + i*a.lane: off + (i + 1)*a.lane + 1] for i in range(n_l)]); perm = rng.permutation(n_l); tl = 0.0
+        for bi in range(spe):
+            w = torch.from_numpy(lanes[perm[bi*a.batch:(bi + 1)*a.batch]]); nll = model.lane_nll(w[:, :-1], w[:, 1:]); loss = nll.mean()
+            obj = loss + (model.aux.mean() if model.aux is not None else 0.0); opt.zero_grad(); obj.backward(); nn.utils.clip_grad_norm_(model.parameters(), 0.5); opt.step(); sched.step(); step += 1; tl += loss.item()
+            if bi % 50 == 0: print(json.dumps(dict(epoch=epoch, step=bi, of=spe, train_nll=tl/(bi + 1), elapsed_s=round(time.time() - t_start))), flush=True)
+            if a.max_steps and step >= a.max_steps:
+                vn = frozen_words(model, ids['valid'][:4096], a.ctx, a.stride, eos)
+                print(json.dumps(dict(smoke_steps=step, s_per_step=(time.time() - e0)/(bi + 1), smoke_valid4096_nll=float(vn.mean()), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, parameters=params)), flush=True); return
+        vn = float(frozen_words(model, ids['valid'], a.ctx, a.stride, eos).mean()); hist.append(dict(epoch=epoch, train_nll=tl/spe, valid_nll=vn, valid_ppl=math.exp(vn), epoch_s=round(time.time() - e0)))
+        print(json.dumps(hist[-1]), flush=True); epoch += 1
+        if vn < best: best, best_epoch = vn, epoch - 1; torch.save(model.state_dict(), ckpt)
+        tmp = state_path.with_suffix('.tmp'); torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), sched=sched.state_dict(), torch_rng=torch.get_rng_state(), np_rng=rng.bit_generator.state,
+                   epoch=epoch, step=step, best=best, best_epoch=best_epoch, hist=hist, wall=time.time() - t_start, args=ident), tmp); os.replace(tmp, state_path)
+    model.load_state_dict(torch.load(ckpt)); m_eval = frozen_words(model, ids['valid'][:8192], a.ctx, a.stride, eos)
+    model.eval()
+    with torch.no_grad():                                                                          # native share on validation windows
+        x = np.concatenate([[eos], ids['valid'][:4096]]); w = torch.from_numpy(x[None]); _, st = model.lane_nll(w[:, :-1], w[:, 1:], stats=True)
+    result = dict(status='completed', battle='R1', stage=f'native causal event race member (theory 169): {a.corpus} development fit', tag=a.tag, args=vars(a), parameters=params, classes=int(words.shape[0]),
+                  best_epoch=best_epoch, best_valid_nll=best, best_valid_ppl=math.exp(best), history=hist, steps=step, train_wall_s=time.time() - t_start, native_valid4096=st,
+                  checkpoint=str(ckpt.relative_to(ROOT)), test_scored=False, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
+    out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()
+    print('RESULT', json.dumps({k: result[k] for k in ('best_valid_ppl', 'best_epoch', 'parameters', 'native_valid4096')}), flush=True)
+
+
 def contracts():
     """Exact normalisation, causality, row chunking and exploration-free evaluation on a small synthetic model."""
     torch.manual_seed(0); V = 61; counts = np.random.default_rng(0).integers(0, 50, V).astype(float); cls, words = word_classes(counts, 6, s_max=16)
@@ -194,17 +297,27 @@ def contracts():
         res['causal_prefix_max_diff'] = float((m.lane_nll(x2, y2)[0, :p - 1] - full[0, :p - 1]).abs().max())
         res['row_chunk_max_diff'] = float((torch.cat([m.lane_nll(x, y, (r, min(r + 7, 40))) for r in range(0, 40, 7)], 1) - full).abs().max())
         res['repeat_eval_identical'] = bool(torch.equal(m.lane_nll(x, y), full))
-    ok = abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['repeat_eval_identical']
+    # word-level arms: windowed frozen scoring and causal online adaptation never let a later token change an earlier score
+    s1 = np.random.default_rng(1).integers(0, 8, 200); s2 = s1.copy(); q = 120; s2[q] = (s2[q] + 1) % V
+    ms = [torch.full_like(p_, 1e-4) for p_ in m.parameters() if p_.requires_grad]; w0 = [p_.detach().clone() for p_ in m.parameters()]
+    f1, f2 = frozen_words(m, s1, 64, 16, 0), frozen_words(m, s2, 64, 16, 0); o1, o2 = online_words(m, s1, 64, 16, 0, ms, 1e-3, 0.01), online_words(m, s2, 64, 16, 0, ms, 1e-3, 0.01)
+    res.update(window_targets=len(f1), window_prefix_max_diff=float(np.abs(f1[:q] - f2[:q]).max()), online_prefix_max_diff=float(np.abs(o1[:q] - o2[:q]).max()),
+               online_first_segment_equals_frozen=float(np.abs(o1[:16] - f1[:16]).max()), online_adapts=float(np.abs(o1[16:] - f1[16:]).max()),
+               weights_restored=all(torch.equal(a_, b_) for a_, b_ in zip(m.parameters(), w0)))
+    ok = (abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['repeat_eval_identical'] and res['window_targets'] == 200
+          and res['window_prefix_max_diff'] == 0 and res['online_prefix_max_diff'] == 0 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['weights_restored'])
     res['status'] = 'passed' if ok else 'failed'; return res
 
 
 def main():
     ap = argparse.ArgumentParser(); A = ap.add_argument
-    A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
+    A('--mode', choices=('train', 'contract', 'score'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
-    A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
+    A('--row-chunk', type=int, default=512); A('--dropout', type=float, default=0.0); A('--epochs', type=int, default=30); A('--ctx', type=int, default=512); A('--stride', type=int, default=128)
+    A('--run', default=''); A('--split', default='valid'); A('--select-from', default=''); A('--online-stride', type=int, default=32); A('--grid-targets', type=int, default=8192)
+    A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
     src = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl.py', 'experiments/r1_deep_keyed_lm.py')}
     if a.mode == 'contract':
@@ -212,7 +325,7 @@ def main():
         if a.tag:
             with (ROOT/f'experiments/results/diagnostics/{a.tag}.json').open('x') as f: json.dump(res, f, indent=1); f.write('\n')
         return
-    assert a.corpus == 'fineweb', 'word-level corpora: next driver revision'
+    if a.corpus != 'fineweb': return words_main(a, src)
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     counts = np.bincount(train.reshape(-1), minlength=50257).astype(float); cls, words = word_classes(counts, a.classes)
