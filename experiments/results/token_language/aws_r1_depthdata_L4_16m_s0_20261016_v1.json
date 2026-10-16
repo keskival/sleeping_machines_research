@@ -1,0 +1,100 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth per fresh token: plan-B deep keyed member, one pass",
+ "tag": "aws_r1_depthdata_L4_16m_s0_20261016_v1",
+ "args": {
+  "tag": "aws_r1_depthdata_L4_16m_s0_20261016_v1",
+  "seed": 0,
+  "train_tokens": 16777216,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 4,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "checkpoint_blocks": 0,
+  "checkpoint_every": 256,
+  "compile_blocks": 1,
+  "max_steps": 0
+ },
+ "parameters": 3554341,
+ "steps": 16384,
+ "presentations": 16711680,
+ "train_wall_s": 22627.46477007866,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select_nll": 5.930679015666028,
+   "prequential_segment": 6.4638790065655485,
+   "elapsed_s": 5596
+  },
+  {
+   "step": 8192,
+   "tokens": 8388608,
+   "select_nll": 5.641961810061217,
+   "prequential_segment": 5.648663564585149,
+   "elapsed_s": 11280
+  },
+  {
+   "step": 12288,
+   "tokens": 12582912,
+   "select_nll": 5.483057511277937,
+   "prequential_segment": 5.442288687336259,
+   "elapsed_s": 16945
+  },
+  {
+   "step": 16384,
+   "tokens": 16777216,
+   "select_nll": 5.4404242757360235,
+   "prequential_segment": 5.348005843581632,
+   "elapsed_s": 22627
+  }
+ ],
+ "prequential_by_eighth": [
+  6.97514603799209,
+  5.952611975139007,
+  5.722317988751456,
+  5.575009140418842,
+  5.484935214743018,
+  5.399642159929499,
+  5.361018755240366,
+  5.334992931922898
+ ],
+ "prequential_last_quarter": 5.348005843581632,
+ "select": {
+  "nll": 5.4404242757360235,
+  "targets": 16376
+ },
+ "score_65528": {
+  "nll": 5.172637997202174,
+  "targets": 65528
+ },
+ "flagship_protocol": {
+  "nll": 5.26988722383976,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "max_rss_kb": 1564188,
+ "reference": {
+  "keyed_L2_4M_multi_epoch_score_65528": 5.521061,
+  "keyed_L2_4M_flagship": {
+   "s0": 5.624,
+   "s1": 5.601
+  },
+  "p24_flagship": 5.978388
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_depthdata_L4_16m_s0_20261016_v1.pt",
+ "source_sha256": {
+  "experiments/r1_deep_keyed_stream.py": "c7c018decc6e946ef5ad132ac020e76cf27e3976c9ab02aca1353812877a2ca0",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}
