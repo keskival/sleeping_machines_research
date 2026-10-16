@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt, a4 paper]{article}
 \usepackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \usepackage[default]{lato}
 \usepackage[T1]{fontenc}
@@ -6,7 +6,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage{fontawesome5}
 \usepackage[hidelinks]{hyperref}
-\usetikzlibrary{positioning,arrows.meta,shapes.geometric,calc}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, calc}
 \graphicspath{{figures/}}
 
 \definecolor{ink}{HTML}{14213D}\definecolor{muted}{HTML}{5F6B7A}\definecolor{ours}{HTML}{1565C0}
@@ -14,7 +14,7 @@
 \definecolor{good}{HTML}{1B7F4B}\definecolor{line}{HTML}{D5DBE3}
 \color{ink}
 \setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
-\setlist{nosep,leftmargin=1.2em,itemsep=2pt}
+\setlist{nosep, leftmargin=1.2em, itemsep=2pt}
 \renewcommand{\arraystretch}{1.25}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
@@ -25,8 +25,8 @@
 \fancyfoot[R]{\footnotesize\color{muted}\thepage}
 
 \newcommand{\sect}[2]{\vspace{2pt}{\color{ours}\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{-3pt}{\LARGE\bfseries #2}\par\vspace{2pt}}
-\newtcolorbox{tile}[1][]{colback=soft,colframe=soft,arc=3pt,boxrule=0pt,left=7pt,right=7pt,top=6pt,bottom=6pt,before upper=\raggedright,#1}
-\newtcolorbox{callout}[1][]{colback=white,colframe=ours,arc=3pt,boxrule=0pt,leftrule=3pt,left=8pt,right=6pt,top=4pt,bottom=4pt,#1}
+\newtcolorbox{tile}[1][]{colback=soft, colframe=soft, arc=3pt, boxrule=0pt, left=7pt, right=7pt, top=6pt, bottom=6pt, before upper=\raggedright,#1}
+\newtcolorbox{callout}[1][]{colback=white, colframe=ours, arc=3pt, boxrule=0pt, leftrule=3pt, left=8pt, right=6pt, top=4pt, bottom=4pt,#1}
 \newcommand{\stat}[2]{\begin{tile}[height=33mm,valign=center]{\color{ours}\fontsize{21}{23}\selectfont\bfseries #1}\par\vspace{3pt}{\small #2}\end{tile}}
 \newcommand{\up}{\,{\color{good}\faArrowUp}}
 \newcommand{\down}{\,{\color{good}\faArrowDown}}
@@ -59,7 +59,7 @@
 {\bfseries 13 public benchmark wins: 53 of 61 seed/split scores ahead}\par\vspace{-1mm}
 \includegraphics[width=\linewidth]{runs.pdf}\par
 \vspace{2mm}
-{\small\color{muted}The 13 wins compare dataset/protocol means against the best published single-model result. B4 Wikipedia/Github also beat stronger composite targets; Stack Overflow/LastFM miss those composites. The chart shows individual seeds or official splits,not independent trials. B4 uses recorded-density scoring. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
+{\small\color{muted}The 13 wins compare dataset/protocol means against the best published single-model result. B4 Wikipedia/Github also beat stronger composite targets; Stack Overflow/LastFM miss those composites. The chart shows individual seeds or official splits, not independent trials. B4 uses recorded-density scoring. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
 
 \newpage
 % ---------------------------------------------------------------- ambition
@@ -71,7 +71,7 @@ Sleeping Machines builds learning machines in which \textbf{time itself does par
 
 \begin{center}
 \begin{tikzpicture}[node distance=3mm,
-  b/.style={rounded corners=3pt,fill=soft,text=ink,minimum height=9mm,text width=37mm,align=center,font=\small\bfseries}]
+  b/.style={rounded corners=3pt, fill=soft, text=ink, minimum height=9mm, text width=37mm, align=center, font=\small\bfseries}]
 \node[b] (a) {Language and reasoning};
 \node[b,right=of a] (b) {Multimodal world models};
 \node[b,right=of b] (c) {Embodiment and robotics};
@@ -114,7 +114,7 @@ Retweet & Retweet cascades on Twitter, by type of user retweeting & Social media
 Amazon & Product reviews by Amazon customers, by category & Retail behaviour across product lines & log-likelihood, nats per event \up \\
 \midrule
 P19 sepsis & PhysioNet 2019: 38,803 intensive-care stays, 34 vital signs and lab values measured at irregular times & Early warning of sepsis, a leading cause of hospital deaths; every hour of earlier treatment matters & AUPRC and AUROC, 0 to 1 \up \\
-PAM & PAMAP2 physical-activity monitoring: 5,333 recordings from wearable inertial sensors (17 channels), 8 activities & Wearables and health monitoring: recognising what a person is doing from body-worn sensors & accuracy and F1, 0 to 1 \up \\
+PAM & PAMAP 2 physical-activity monitoring: 5,333 recordings from wearable inertial sensors (17 channels), 8 activities & Wearables and health monitoring: recognising what a person is doing from body-worn sensors & accuracy and F1, 0 to 1 \up \\
 P12 mortality & PhysioNet 2012: 11,988 intensive-care stays, 36 irregular measurements & Predicting in-hospital mortality from the first 48 hours & AUROC and AUPRC, 0 to 1 \up \\
 TGB trade & UN trade flows between 255 countries, 1986--2016 & Which partners a country trades with most next year & NDCG@10, 0 to 1 \up \\
 TGB wiki & 157,474 timed Wikipedia edits by 8,227 users on 1,000 pages & Which page a user edits next & MRR, 0 to 1 \up \\
@@ -141,7 +141,7 @@ Neural-TPP benchmark (TMLR 2023/2025) & Seven event datasets (LastFM listening, 
 
 \begin{center}\includegraphics[width=\linewidth]{runs_foundational.pdf}\end{center}
 \vspace{-3mm}
-{\small\color{muted}Nine established results within the 13-win record;four B4 results follow. Blue dots are official seed/split scores;grey lines are best published single-model means. Each panel states its unit and direction. Official splits are not independent trials.}
+{\small\color{muted}Nine established results within the 13-win record; four B4 results follow. Blue dots are official seed/split scores; grey lines are best published single-model means. Each panel states its unit and direction. Official splits are not independent trials.}
 
 {\small
 \begin{tabularx}{\linewidth}{>{\bfseries}l r r r Y}
@@ -250,9 +250,9 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 
 \begin{center}
 \begin{tikzpicture}[
-  core/.style={circle,fill=ours,text=white,minimum size=30mm,align=center,font=\bfseries},
-  leaf/.style={rounded corners=3pt,fill=soft,text width=40mm,align=center,minimum height=13mm,font=\small},
-  ar/.style={-{Stealth[length=2.5mm]},line width=1pt,color=pub}]
+  core/.style={circle, fill=ours, text=white, minimum size=30mm, align=center, font=\bfseries},
+  leaf/.style={rounded corners=3pt, fill=soft, text width=40mm, align=center, minimum height=13mm, font=\small},
+  ar/.style={-{Stealth[length=2.5mm]},line width=1pt, color=pub}]
 \node[core] (c) {One temporal\\memory core};
 \node[leaf,above left=4mm and 14mm of c] (a) {\textbf{Event prediction}\\all 5 EasyTPP datasets won};
 \node[leaf,above right=4mm and 14mm of c] (b) {\textbf{Clinical, wearable, graphs}\\P19, PAM, TGB trade and wiki won};
@@ -278,8 +278,8 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 
 \begin{center}
 \begin{tikzpicture}[x=1mm,y=1mm,
-  step/.style={rounded corners=3pt,text width=#1,align=left,inner sep=5pt,font=\small},
-  lab/.style={font=\footnotesize\bfseries,text=white}]
+  step/.style={rounded corners=3pt, text width=#1, align=left, inner sep=5pt, font=\small},
+  lab/.style={font=\footnotesize\bfseries, text=white}]
 \node[step=150mm,fill=ours!10,anchor=south west] (s1) at (0,0) {\textbf{1. Mathematics: it contains today's leading architectures.} A race of clocks reproduces the attention of Transformers \emph{exactly}, and Mamba-style selective state-space models are exact members of the family (verified numerically to $4\times10^{-13}$). Everything those models can represent, ours can, plus native time and sparsity.};
 \node[step=140mm,fill=ours!20,anchor=south west] (s2) at (10,22) {\textbf{2. The mechanisms work.} Event order learned from 2,000 examples seen once: 99.7\% accuracy vs 33--41\% for Transformers \up. Timing-only discrimination: 95.3\% where any order-only model is capped at 50\% \up. Learning from roads not taken improves language 2.507 $\to$ 2.371 bits per character \down{} for 0.3\% extra training work; more idle capacity improves it further at the same active work.};
 \node[step=130mm,fill=ours!32,anchor=south west] (s3) at (20,48) {\textbf{3. It learns language efficiently.} On 10M characters it beats a Transformer: 1.888 vs 1.908 bits per character \down{} with 0.40$\times$ its training compute. At 90M characters it beats a tuned Transformer-256$\times$4 (1.783 vs 1.811 \down) at 1.06$\times$ its compute.};
@@ -523,13 +523,13 @@ requirement: the basis for clockless hardware, where independent units run at th
 5.8879; two asynchronous hierarchy variants score 5.9392 and 5.8911. Eight layers remain selected.
 This protocol differs from the 8,192-token table above. In one pass over 4M fresh tokens, eight layers also beat two: \textbf{5.8414 versus 5.8648} on that flagship development protocol (equal updates, different parameters/work).
 
-\textbf{Our own race model beats the dense hybrid.} The causal event race model predicts each token through a race among its candidate causes: copying or continuing earlier text, dormant concept units woken by the context, and a background word race. On the same 4M fresh FineWeb tokens, order and schedule it scores \textbf{5.4665} on the flagship development protocol against \textbf{5.8414} for the eight-layer dense hybrid, and \textbf{5.3094} against 5.6955 on the 65,528-target slice: 0.38--0.39 nats better with 3.3 times lower registered main-loss operator count per token (7.7M versus 25.8M FLOPs) and 3.2 times less CPU time. Its race causes deliver 0.45 nats beyond its background route. One seed, development slices; two temporal-memory state layers and one race level, with the compositional hierarchy of races next. Source: \path{experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json}. The saved native operator count omits auxiliary-loss backward and optimizer work; it is a partial training subtotal, not a complete fitting-work advantage.
+\textbf{Our own race model beats the dense hybrid.} The causal event race model predicts each token through a race among its candidate causes: copying or continuing earlier text, dormant concept units woken by the context, and a background word race. On the same 4M fresh FineWeb tokens, order and schedule it scores \textbf{5.4665} on the flagship development protocol against \textbf{5.8414} for the eight-layer dense hybrid, and \textbf{5.3094} against 5.6955 on the 65,528-target slice: 0.38--0.39 nats better while using 3.3 times less training compute per token (7.8M versus 25.9M FLOPs, counting the exploration term and the optimizer) and 3.2 times less CPU time. Its race causes deliver 0.45 nats beyond its background route. One seed, development slices; two temporal-memory state layers and one race level, with the compositional hierarchy of races next. Source: \path{experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json}.
 
 \textbf{Fully native learning.} Eight native layers complete 65,536 chronological training targets: selection NLL improves from \textbf{7.9307 to 6.9981}; final flagship development NLL is \textbf{7.0473} (8,192 targets, 1,024-token windows, one seed). The acquired weights, Adam state and persistent history continue toward 4M cumulative targets with lower-memory queries, joint composition and delayed local producer credit. This member uses no recurrent BPTT or SSM/attention/MLP carrier; its optimizer is synchronous. Learned document-relevance biases pass normalization, gradient and recovery contracts. The fully native deep milestone is still in development. Source: \path{investment/local_native_language_evidence.json}.
 
 \textbf{The next scaling proof: learning compositions.} Higher stages query several persistent lower memories and learn joint refinements. Delayed task credit should teach the actual memory producers, so useful parts can learn to cooperate. Bounded child-credit replay is implemented; its bounded gradient, unchanged-prediction, work-limit and acquired-learner recovery gate passes; the full-depth sampled extension awaits acquired-model validation. The investment milestone is improved held-out prediction and reusable relations from deeper refinement at disclosed total learning work, followed by useful capacity with measured activity, discovery and traffic. These are next proofs, not completed scaling results. The two-page companion, \path{investment/sleeping_machines_composition_demonstration.pdf}, connects the completed language result to this architecture and proof plan.
 
-\textbf{Completed 16M hybrid diagnostic.} Eight layers:\textbf{5.2183};four layers:\textbf{5.2699} flagshipDEVNLL(onepass16Mtokens,oneseed,differentparameters/work). The4Mhybridtargetis5.8414. Sources:\path{investment/depthdata_l8_evidence.json},\path{investment/depthdata_l4_evidence.json}.
+\textbf{Completed 16M hybrid diagnostic.} With 16M fresh tokens the dense hybrid reaches \textbf{5.2183} at eight layers and \textbf{5.2699} at four (flagship development protocol, one pass, one seed). The four-to-eight-layer gain (0.052) is twice the two-to-eight-layer gain at 4M tokens, so depth pays more as data grows. These dense numbers are the targets for our own model at 16M, not wins. Sources: \path{investment/depthdata_l8_evidence.json}, \path{investment/depthdata_l4_evidence.json}.
 
 \textbf{Memories compose, then emit.} On one 32-event fixture, native views reduce messages
 \textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}; timer work rises from 2 to 188 scores.
@@ -563,7 +563,7 @@ pass. This is an implemented information path; stable semantic identities and re
 episodic arm single seed; quality placement, not matched compute. Source-bound results:
 \texttt{investment/language\_memory\_evidence.json}, \texttt{investment/language\_learning\_evidence.json},
 \texttt{investment/locality\_scaling\_evidence.json},
-\texttt{investment/hierarchy\_development\_evidence.json},\texttt{investment/bound\_hierarchy\_evidence.json}.}
+\texttt{investment/hierarchy\_development\_evidence.json}, \texttt{investment/bound\_hierarchy\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- significance

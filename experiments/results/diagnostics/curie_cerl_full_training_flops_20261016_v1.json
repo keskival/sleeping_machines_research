@@ -1,0 +1,18 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "tag": "curie_cerl_full_training_flops_20261016_v1",
+ "run": "curie_r1_cerl_4M_s0_20261016_v1",
+ "main_loss_flops_per_target": 7746304.0,
+ "with_exploration_flops_per_target": 7762688.0,
+ "adamw_flops_per_target_est": 81675.1,
+ "total_training_flops_per_target_est": 7844363.1,
+ "dense_reference": {
+  "run": "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1",
+  "main_loss_flops_per_target": 25847808.0,
+  "adamw_flops_per_target_est": 44876.12109375,
+  "total_est": 25892684.12109375
+ },
+ "method": "torch FlopCounterMode on the trained checkpoint, one 256-token lane, backward of mean NLL plus the exploration objective; AdamW estimated at 12 FLOPs per parameter per update over 1,024 targets per update",
+ "conclusion": "exploration adds 0.2%, the optimizer about 1% for each model: CERL 7.84M vs dense L8 25.89M training FLOPs per target, 3.3x"
+}

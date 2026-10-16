@@ -43,7 +43,7 @@ class CERLH(nn.Module):
     # ---- level-1 attribution: who caused each observed token (posterior argmax; an observation, no gradient)
     @torch.no_grad()
     def attribute(self, x, y, h, chunk=512):
-        B, L = x.shape; out = []
+        B, L = x.shape; out = []; h = h.detach()                                                  # an observation: no graph (also keeps FLOP-counter module hooks valid)
         for r0 in range(0, L, chunk):
             r1 = min(r0 + chunk, L); _, parts, s_sel, sel, *_ = self.L1.race(x, y, h, r0, r1, False); post = torch.softmax(parts, -1); K = s_sel.shape[-1]
             g = torch.cat([post[..., :1], post[..., 1:1 + K], post[..., 1 + K:1 + K + r1].sum(-1, keepdim=True), post[..., 1 + K + r1:].sum(-1, keepdim=True)], -1)
