@@ -1,0 +1,16 @@
+{
+  "status": "checkpoint_handoff",
+  "battle": "R1",
+  "source_job": "aws_r1_queryable_native_4m_s0_20261016_v1",
+  "replacement_job": "aws_r1_native_producer_credit_4m_s0_20261016_v2",
+  "checkpoint_sha256": "bbb8bc6b8d308d01281593e6419e44bce62d380f3a58a6547e3c1d5914514951",
+  "cursor": 73728,
+  "native_events": 73728,
+  "source_wall_s": 715.4663002809975,
+  "source_audit_targets": 32,
+  "discarded_uncheckpointed_target_upper_bound": 4096,
+  "reason": "Explicit source-bound supersession after forward/local-derivative/full-recovery producer-credit contracts pass. Preserve savedlearner and data order;discard only bounded unsaved tail. No predictive loss/family verdict.",
+  "trainer_pid": 214430,
+  "initial_replacement_job": "aws_r1_native_producer_credit_4m_s0_20261016_v1",
+  "startup_correction": "v1 stopped before a training update because migrated checkpoint needed saving before its resume audit;v2 saves it atomically and passes exact recovery."
+}
