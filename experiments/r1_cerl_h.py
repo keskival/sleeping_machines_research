@@ -36,7 +36,7 @@ class CERLH(nn.Module):
     def __init__(self, V, cls, words, l1, l2, k_td=2, alpha=0.5):
         super().__init__(); self.L1 = CERL(V, cls, words, **l1); self.U1 = l1['units']; self.V2 = self.U1 + 3; self.k_td, self.alpha = k_td, alpha
         self.BG, self.REP, self.CONT = self.U1, self.U1 + 1, self.U1 + 2
-        c2, w2 = word_classes(np.ones(self.V2), 32); self.L2 = CERL(self.V2, c2, w2, **l2)
+        c2, w2 = word_classes(np.ones(self.V2), 32, trim=True); self.L2 = CERL(self.V2, c2, w2, **l2)
         self.td_gain = nn.Parameter(torch.tensor(0.0)); self.td_wake = nn.Parameter(torch.tensor(-12.0)); self.stay_a = nn.Parameter(torch.tensor(1.0)); self.stay_b = nn.Parameter(torch.tensor(0.5))
         self._px = None; self.aux = None; self.last = {}
 

@@ -41,7 +41,7 @@ S_MAX = 512
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'mode', 'row_chunk', 'log_every', 'run', 'split', 'select_from', 'online_stride', 'grid_targets', 'row_chunk_unused')
 
 
-def word_classes(counts, n_classes, s_max=S_MAX):
+def word_classes(counts, n_classes, s_max=S_MAX, trim=False):
     """Frequency-mass word classes: words by descending training count; a class closes at 1/n_classes of the mass or at
     s_max words. Returns class_of [V] and class_words [C, s_max] (-1 padded)."""
     V = len(counts); order = np.argsort(-counts, kind='stable'); p = (counts + 0.5)/(counts + 0.5).sum(); cls, cur, mass, out = np.zeros(V, np.int64), [], 0.0, []
@@ -51,6 +51,7 @@ def word_classes(counts, n_classes, s_max=S_MAX):
     if cur: out.append(cur)
     words = np.full((len(out), s_max), -1, np.int64)
     for c, ws in enumerate(out): cls[ws] = c; words[c, :len(ws)] = ws
+    if trim: words = words[:, :max(len(ws) for ws in out)]                                       # drop all-padding columns (small alphabets: higher cause levels)
     return cls, words
 
 
