@@ -38,12 +38,13 @@ import torch.nn.functional as F
 ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiments'), str(ROOT/'experiments/tpp')]
 from r1_deep_keyed_lm import Block  # noqa: E402
 from r1_token_keyed_lm import KeyedTokenLM  # noqa: E402
+from r1_native_stream_scorer import stream_segments  # noqa: E402
 
 CORPORA = dict(ptb=dict(files={s: ROOT/f'data/ptb/ptb.{s}.txt' for s in ('train', 'valid', 'test')}, vocab=10000,
                         counts=dict(train=929589, valid=73760, test=82430)),
                wt2=dict(files={s: ROOT/f'data/wikitext2/wiki.{s}.tokens' for s in ('train', 'valid', 'test')}, vocab=33278,   # scripts/convert_wikitext2_parquet.py
                         counts=dict(train=2088628, valid=217646, test=245569)))
-EXECUTION_ONLY = ('max_steps', 'max_wall_s', 'mode', 'run', 'split', 'select_from', 'online_lr', 'online_decay', 'online_stride', 'ms_batches', 'tm_chunk', 'compile_blocks', 'grid_targets')
+EXECUTION_ONLY = ('max_steps', 'max_wall_s', 'mode', 'run', 'split', 'select_from', 'online_lr', 'online_decay', 'online_stride', 'ms_batches', 'tm_chunk', 'compile_blocks', 'grid_targets', 'stream_online_stride')
 
 
 def read_corpus(name):
@@ -87,9 +88,15 @@ def window_segments(model, stream, ctx, stride, start_token):
         yield F.cross_entropy(model.logits(h, e, inp, list(range(t0 - w0, t1 - w0)))[0], torch.from_numpy(x[t0 + 1:t1 + 1]), reduction='none')
 
 
-def frozen_score(model, stream, ctx, stride, start_token):
+def segments(model, stream, start_token, scorer, ctx, stride, mem):
+    """Segment generator of the chosen scorer: 'window' (recompute up to ctx history per segment of `stride` targets) or
+    'stream' (exact carried state, keyed reads over the last `mem` events; r1_native_stream_scorer.py)."""
+    return window_segments(model, stream, ctx, stride, start_token) if scorer == 'window' else stream_segments(model, stream, stride, start_token, mem)
+
+
+def frozen_score(model, stream, ctx, stride, start_token, scorer='window', mem=2048):
     model.eval()
-    with torch.no_grad(): return torch.cat(list(window_segments(model, stream, ctx, stride, start_token))).numpy()
+    with torch.no_grad(): return torch.cat(list(segments(model, stream, start_token, scorer, ctx, stride, mem))).numpy()
 
 
 def training_ms(model, train, lane, batches, seed):
@@ -102,7 +109,7 @@ def training_ms(model, train, lane, batches, seed):
     return ms
 
 
-def online_score(model, stream, ctx, stride, start_token, ms, lr, decay):
+def online_score(model, stream, ctx, stride, start_token, ms, lr, decay, scorer='window', mem=2048):
     """Dynamic evaluation: score a segment, then theta <- theta - lr*g/(rms+eps) + decay*(rms/mean rms)*(theta0 - theta)."""
     model.eval(); params = list(model.parameters()); theta0 = [p.detach().clone() for p in params]
     rms = []
@@ -110,7 +117,7 @@ def online_score(model, stream, ctx, stride, start_token, ms, lr, decay):
         r = m.sqrt(); nz = r[r > 0]; rms.append(r.clamp_min(0.5*nz.mean().item() if nz.numel() else 1e-3) + 1e-8)
     mean_rms = torch.cat([r.flatten() for r in rms]).mean(); dec = [(decay*r/mean_rms).clamp(max=1.0) for r in rms]
     out = []
-    for nll in window_segments(model, stream, ctx, stride, start_token):
+    for nll in segments(model, stream, start_token, scorer, ctx, stride, mem):
         out.append(nll.detach().numpy()); model.zero_grad(); nll.mean().backward()
         with torch.no_grad():
             for p, r, d_, t0 in zip(params, rms, dec, theta0): p.add_(-lr*p.grad/r + d_*(t0 - p))
@@ -131,8 +138,18 @@ def contracts(a, ids, eos):
     res['online_targets'] = len(o1); res['online_prefix_max_diff'] = float(np.abs(o1[:p] - o2[:p]).max()); res['online_changed_after_p'] = float(np.abs(o1[p:] - o2[p:]).max())
     res['online_first_segment_equals_frozen'] = float(np.abs(o1[:32] - f1[:32]).max()); res['online_adapts'] = float(np.abs(o1[32:] - f1[32:]).max())
     res['weights_restored'] = all(torch.equal(q, r) for q, r in zip(m.parameters(), w0))
+    for blk in m.blocks: blk.tm.CHUNK = 64                               # chunked kernel inside segments and across them
+    st7, st50 = frozen_score(m, s, 0, 7, eos, 'stream', 4096), frozen_score(m, s, 0, 50, eos, 'stream', 4096)
+    res['stream_vs_whole_lane'] = float(np.abs(st50 - full).max()); res['stream_segment_invariance'] = float(np.abs(st7 - st50).max())
+    sm = frozen_score(m, s, 0, 32, eos, 'stream', 64); sm2 = frozen_score(m, s2, 0, 32, eos, 'stream', 64)
+    res['stream_mem64_prefix_max_diff'] = float(np.abs(sm[:p] - sm2[:p]).max()); res['stream_mem64_differs_from_full'] = float(np.abs(sm - st50).max())
+    so1, so2 = online_score(m, s, 0, 32, eos, ms, 1e-3, 0.01, 'stream', 4096), online_score(m, s2, 0, 32, eos, ms, 1e-3, 0.01, 'stream', 4096)
+    res['stream_online_prefix_max_diff'] = float(np.abs(so1[:p] - so2[:p]).max()); res['stream_online_first_segment_equals_frozen'] = float(np.abs(so1[:32] - st50[:32]).max())
+    res['stream_online_adapts'] = float(np.abs(so1[32:] - st50[32:]).max()); res['weights_restored_after_stream'] = all(torch.equal(q, r) for q, r in zip(m.parameters(), w0))
     ok = (res['frozen_targets'] == res['online_targets'] == len(s) and res['frozen_prefix_max_diff'] == 0 and res['frozen_changed_at_p'] and res['frozen_vs_full_context_first_window'] < 1e-5
-          and res['online_prefix_max_diff'] == 0 and res['online_changed_after_p'] > 0 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['weights_restored'])
+          and res['online_prefix_max_diff'] == 0 and res['online_changed_after_p'] > 0 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['weights_restored']
+          and res['stream_vs_whole_lane'] < 1e-4 and res['stream_segment_invariance'] < 1e-4 and res['stream_mem64_prefix_max_diff'] == 0 and res['stream_mem64_differs_from_full'] > 0
+          and res['stream_online_prefix_max_diff'] == 0 and res['stream_online_first_segment_equals_frozen'] < 1e-4 and res['stream_online_adapts'] > 0 and res['weights_restored_after_stream'])
     res['status'] = 'passed' if ok else 'failed'; return res
 
 
@@ -156,12 +173,12 @@ def main():
     ap.add_argument('--run', default=''); ap.add_argument('--split', default='valid'); ap.add_argument('--select-from', default='', help='test: the validation online-score tag whose selected (lr, decay) is used')
     ap.add_argument('--online-lr', default='3e-5,1e-4,3e-4'); ap.add_argument('--online-decay', default='0,0.002'); ap.add_argument('--online-stride', type=int, default=64)
     ap.add_argument('--grid-targets', type=int, default=16384, help='validation: choose (lr, decay) on the first N validation targets, then score the full split once with the choice')
-    ap.add_argument('--ms-batches', type=int, default=64)
+    ap.add_argument('--ms-batches', type=int, default=64); ap.add_argument('--stream-online-stride', type=int, default=32)
     ap.add_argument('--compile-blocks', type=int, default=0, help='train through torch.compile\'d blocks (execution only; scoring runs eager)')
     ap.add_argument('--tm-chunk', type=int, default=64, help='temporal-memory kernel chunk (exact for any value; execution only)')
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed); began = time.time()
     ids, vocab, eos = read_corpus(a.corpus); out_dir = ROOT/'experiments/results/word_language'; out_dir.mkdir(exist_ok=True)
-    src = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_ptb_native.py', 'experiments/r1_deep_keyed_lm.py', 'experiments/r1_token_keyed_lm.py')}
+    src = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_ptb_native.py', 'experiments/r1_native_stream_scorer.py', 'experiments/r1_deep_keyed_lm.py', 'experiments/r1_token_keyed_lm.py')}
     if a.mode == 'contracts':
         res = dict(battle='R1', tag=a.tag, corpus=a.corpus, **contracts(a, ids, eos), source_sha256=src)
         with (ROOT/f'experiments/results/diagnostics/{a.tag}.json').open('x') as f: json.dump(res, f, indent=1); f.write('\n')
@@ -212,27 +229,38 @@ def main():
 
 
 def score(a, ids, eos, out_dir, src, began):
-    """Frozen and online arms of a trained checkpoint on one split; online hyper-parameters are chosen on validation."""
+    """Frozen and online arms of a trained checkpoint on one split. Validation: the frozen scorer (window recompute or exact
+    carried-state stream with keyed memory 512/2048) and the online step (lr, decay) are chosen on validation; test reuses
+    the validation choices once."""
     rec = json.loads((out_dir/f'{a.run}.json').read_text()); g = argparse.Namespace(**rec['args']); model = build(g); model.load_state_dict(torch.load(ROOT/rec['checkpoint']))
-    path = out_dir/f'{a.tag}.json'; assert not path.exists()
+    for b in model.blocks: b.tm.CHUNK = a.tm_chunk
+    path = out_dir/f'{a.tag}.json'; assert not path.exists(); split = ids[a.split]
+    res = dict(battle='R1', tag=a.tag, run=a.run, corpus=g.corpus, split=a.split, targets=len(split), parameters=rec['parameters'])
     if a.split == 'test':
-        sel = json.loads((out_dir/f'{a.select_from}.json').read_text()); assert sel['split'] == 'valid' and sel['run'] == a.run and sel['online']['stride'] == a.online_stride and sel['ctx'] == a.ctx; grid = [(sel['selected']['lr'], sel['selected']['decay'])]
+        sel = json.loads((out_dir/f'{a.select_from}.json').read_text()); assert sel['split'] == 'valid' and sel['run'] == a.run
+        scorers = [sel['frozen_selected']]; grid = [(sel['selected']['lr'], sel['selected']['decay'])]; online_stride = sel['online']['stride']
     else:
-        grid = [(float(l), float(d)) for l in a.online_lr.split(',') for d in a.online_decay.split(',')]
-    res = dict(battle='R1', tag=a.tag, run=a.run, corpus=g.corpus, split=a.split, targets=len(ids[a.split]), parameters=rec['parameters'], ctx=a.ctx, stride=a.stride)
-    fz = frozen_score(model, ids[a.split], a.ctx, a.stride, eos); res['frozen'] = dict(nll=float(fz.mean()), ppl=math.exp(fz.mean()))
-    print(json.dumps(res['frozen']), flush=True)
+        scorers = [dict(scorer='window', ctx=a.ctx, stride=a.stride, mem=0)] + [dict(scorer='stream', ctx=0, stride=64, mem=m_) for m_ in (512, 2048)]
+        grid = [(float(l), float(d)) for l in a.online_lr.split(',') for d in a.online_decay.split(',')]; online_stride = None
+    res['frozen'] = []
+    for sc in scorers:
+        t0 = time.time(); fz = frozen_score(model, split, sc['ctx'], sc['stride'], eos, sc['scorer'], sc['mem'])
+        res['frozen'].append(dict(sc, nll=float(fz.mean()), ppl=math.exp(fz.mean()), wall_s=time.time() - t0)); print(json.dumps(res['frozen'][-1]), flush=True)
+    best = min(res['frozen'], key=lambda r: r['nll']); res['frozen_selected'] = {k: best[k] for k in ('scorer', 'ctx', 'stride', 'mem')}
+    sc = res['frozen_selected']; stride = online_stride or (a.online_stride if sc['scorer'] == 'window' else a.stream_online_stride)
     ms = training_ms(model, ids['train'], g.lane, a.ms_batches, a.seed); res['online_grid'] = []
     if len(grid) > 1:                                                   # validation only: grid on a prefix, then the full split with the choice
         for lr, dec in grid:
-            o = online_score(model, ids[a.split][:a.grid_targets], a.ctx, a.online_stride, eos, ms, lr, dec)
+            o = online_score(model, split[:a.grid_targets], sc['ctx'], stride, eos, ms, lr, dec, sc['scorer'], sc['mem'])
             res['online_grid'].append(dict(lr=lr, decay=dec, targets=a.grid_targets, nll=float(o.mean()), ppl=math.exp(o.mean()))); print(json.dumps(res['online_grid'][-1]), flush=True)
-        best_cfg = min(res['online_grid'], key=lambda r: r['nll'] if math.isfinite(r['nll']) else math.inf)   # a diverged setting is never selected; grid = [(best_cfg['lr'], best_cfg['decay'])]
-    o = online_score(model, ids[a.split], a.ctx, a.online_stride, eos, ms, *grid[0])
-    res['online'] = dict(lr=grid[0][0], decay=grid[0][1], stride=a.online_stride, nll=float(o.mean()), ppl=math.exp(o.mean())); res['selected'] = dict(lr=grid[0][0], decay=grid[0][1])
+        best_cfg = min(res['online_grid'], key=lambda r: r['nll'] if math.isfinite(r['nll']) else math.inf)   # a diverged setting is never selected
+        grid = [(best_cfg['lr'], best_cfg['decay'])]
+    t0 = time.time(); o = online_score(model, split, sc['ctx'], stride, eos, ms, *grid[0], sc['scorer'], sc['mem'])
+    res['online'] = dict(sc, lr=grid[0][0], decay=grid[0][1], stride=stride, nll=float(o.mean()), ppl=math.exp(o.mean()), wall_s=time.time() - t0)
+    res['selected'] = dict(lr=grid[0][0], decay=grid[0][1])
     res.update(status='completed', wall_s=time.time() - began, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     with path.open('x') as f: json.dump(res, f, indent=1); f.write('\n')
-    print('RESULT', json.dumps(dict(frozen=res['frozen'], online=res['online'])), flush=True)
+    print('RESULT', json.dumps(dict(frozen=best, online=res['online'])), flush=True)
 
 
 if __name__ == '__main__':

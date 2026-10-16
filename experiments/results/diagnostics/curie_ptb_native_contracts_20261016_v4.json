@@ -1,0 +1,30 @@
+{
+ "battle": "R1",
+ "tag": "curie_ptb_native_contracts_20261016_v4",
+ "corpus": "ptb",
+ "frozen_targets": 300,
+ "frozen_prefix_max_diff": 0.0,
+ "frozen_changed_at_p": true,
+ "frozen_vs_full_context_first_window": 0.0,
+ "online_targets": 300,
+ "online_prefix_max_diff": 0.0,
+ "online_changed_after_p": 4.223400115966797,
+ "online_first_segment_equals_frozen": 0.0,
+ "online_adapts": 7.335915565490723,
+ "weights_restored": true,
+ "stream_vs_whole_lane": 3.814697265625e-06,
+ "stream_segment_invariance": 1.9073486328125e-06,
+ "stream_mem64_prefix_max_diff": 0.0,
+ "stream_mem64_differs_from_full": 2.6092276573181152,
+ "stream_online_prefix_max_diff": 0.0,
+ "stream_online_first_segment_equals_frozen": 0.0,
+ "stream_online_adapts": 8.913183212280273,
+ "weights_restored_after_stream": true,
+ "status": "passed",
+ "source_sha256": {
+  "experiments/r1_ptb_native.py": "c3d674a298dfe6ce560c8a75eecdf51bcf04a9b7a220e7acc8d06f2131c34c9b",
+  "experiments/r1_native_stream_scorer.py": "8d915aa5f0524666cd81f1b8f54ac9e92218add7f56a034aebfe583bdd7e2627",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}

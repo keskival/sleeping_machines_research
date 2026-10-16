@@ -42,7 +42,7 @@ for the selected configuration.
    word's slot and the query adds decayed slot scores to those words' logits. It is trained end to end with the rest of
    the model. Causal online weight adaptation is a primary capability of the family (AGENTS.md).
 2. **Persistent temporal memory across sentences.** Complex-diagonal decaying and rotating state carries article context
-   at no attention cost; per-layer keyed race reads give addressed access to every earlier event in the window.
+   at no attention cost (the carried-state scorer keeps it through the whole split); per-layer keyed race reads give addressed access to every earlier event in the window.
 3. **Depth pays in this composition.** One pass over 4M FineWeb tokens: L8 beats L2 (flagship 5.8414 vs 5.8648) with the
    gap growing through the pass; the gain sits on word-initial targets and long history (word-level prediction).
 4. **Softmax bottleneck.** d = 256 against 10k words is rank-limited (the reason MoS helps the AWD models); the keyed slot
@@ -59,7 +59,7 @@ for the selected configuration.
 
 Round 2 options, chosen by round 1's curve: overfitting → stronger regularisation (AWS arm 2); underfitting → width d384
 (AWS arm 1) and longer schedules; online gain below dynamic evaluation's 6–7 points → adaptation segment length, decay and
-exact carried-state scoring (no window recompute; unlimited temporal-memory history).
+adaptation through the carried-state stream at shorter segments.
 
 ## Timebox and stop rule
 
