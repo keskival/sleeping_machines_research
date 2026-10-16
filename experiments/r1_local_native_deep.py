@@ -6,7 +6,7 @@ a competing-cause mixture, giving every layer a direct local task cotangent.
 Current-event graphs and bounded episodic write graphs are still charged;
 this is not yet an asynchronous optimizer or exact whole-network RTRL.
 """
-import sys
+import sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT),str(ROOT/'experiments')]
@@ -17,7 +17,9 @@ from sleeping_machines.local_deep_race import LocalDeepRace
 
 
 class NativeEventCauseHead(CERL):
-    def states(self,x):
+    def states(self,x,msg=None):
+        if msg is not None:
+            raise ValueError('cause messages must enter native receiver events,not a hidden carrier')
         if not hasattr(self,'native_views'):
             raise ValueError('native event views required;no alternative backbone exists')
         return self.native_views
@@ -42,11 +44,12 @@ class LocalNativeDeepLM(nn.Module):
     def nll(self,inputs,targets,state,generator,alternative_generator,*,learn=True,stats=False):
         if inputs.ndim!=1 or targets.shape!=inputs.shape or inputs.dtype!=torch.long or not len(inputs):
             raise ValueError('one nonempty contiguous token lane required')
-        features=[];packets=[]
+        features=[];packets=[];started=time.perf_counter()
         for token in inputs:
             h,state,local,_=self.core.consume(self.causes.embed(token),state,generator,alternative_generator,learn=learn)
             features.append(h);packets.extend(local)
         h=torch.stack(features)[None]  # [1,time,depth,width]
+        native_forward_s=time.perf_counter()-started;head_started=time.perf_counter()
         losses=[];aux=[];reports=[];background=[]
         for d in range(self.depth):
             self.causes.native_views=h[:,:,d]
@@ -74,6 +77,7 @@ class LocalNativeDeepLM(nn.Module):
                     work_per_depth_at_history=work_per_target(self.causes,len(inputs)),
                     native_counts={k:v for k,v in state.items() if isinstance(v,int)},
                     persistent_storage=self.core.storage(state),
+                    native_forward_s=native_forward_s,cause_head_forward_s=time.perf_counter()-head_started,
                     learning_scope='Receiver-local own-write traces,local routing surrogate,layer-local message boundaries. No recurrent BPTT. Current-event and bounded episodic-write graphs retained within this credit batch. Changing-parameter history and cross-producer full gradients are not exact.')
         return nll,objective,state,packets,report
 

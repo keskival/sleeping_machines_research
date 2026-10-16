@@ -80,3 +80,20 @@ class ReceiverEligibility:
                     complex_scalars=sum(getattr(self,k).numel() for k in fields),
                     temporal_graph_entries=0,
                     scope='One occupied receiver: numerical state and factored own-write eligibility; parameters, routing credit, metadata and readout work separate.')
+
+    @staticmethod
+    @torch.no_grad()
+    def sum_credit(records):
+        """Batch matured messages for one receiver; same conditional trace law."""
+        if not records:raise ValueError('at least one local credit message required')
+        traces,cotangents=zip(*records)
+        gs=torch.stack(cotangents).reshape(len(records),-1,2)
+        g=torch.complex(gs[...,0],gs[...,1]).conj()
+        def project(name):
+            values=torch.stack([getattr(t,name) for t in traces])
+            shaped=g.reshape(g.shape+(1,)*(values.ndim-2))
+            return (shaped*values).real.sum(0)
+        return {'input.weight':torch.stack((project('input_real'),project('input_imag')),1).flatten(0,1),
+                'control.weight':project('control_weight').sum(0),
+                'control.bias':project('control_bias').sum(0),
+                'raw_rate':project('raw_rate'),'frequency':project('frequency')}

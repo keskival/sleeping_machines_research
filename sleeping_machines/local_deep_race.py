@@ -93,13 +93,16 @@ class LocalDeepRace(nn.Module):
     @torch.no_grad()
     def deliver_credit(packets,state):
         """Apply local state cotangents after local losses mature; no replay."""
+        grouped={}
         for unit,trace,leaf in packets:
-            if leaf.grad is None:continue
-            for name,credit in trace.credit(leaf.grad).items():
+            if leaf.grad is None or trace.timestamp is None:continue
+            grouped.setdefault(unit,[]).append((trace,leaf.grad))
+        for unit,records in grouped.items():
+            for name,credit in ReceiverEligibility.sum_credit(records).items():
                 parameter=dict(unit.named_parameters())[name]
                 if parameter.grad is None:parameter.grad=credit.clone()
                 else:parameter.grad.add_(credit)
-            state['credit_projections']+=1
+            state['credit_projections']+=len(records)
 
     def storage(self,state):
         return dict(occupied_receivers=len(state['receivers']),

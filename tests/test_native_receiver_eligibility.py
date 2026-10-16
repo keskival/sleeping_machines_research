@@ -38,3 +38,14 @@ def test_counterfactual_proposal_does_not_commit_receiver_state():
     assert old.timestamp is None and old.memory().abs().sum()==0
     assert proposal.timestamp==10. and proposal.memory().abs().sum()>0
     with pytest.raises(ValueError):proposal.propose(unit,torch.ones(4),9.)
+
+
+def test_receiver_batched_credit_equals_individual_messages():
+    torch.manual_seed(120);unit=TemporalUnit(8,.2).double();state=ReceiverEligibility.empty(unit);records=[]
+    for t in range(11):
+        state=state.propose(unit,torch.randn(8,dtype=torch.float64),float(t))
+        records.append((state,torch.randn(8,dtype=torch.float64)))
+    batched=ReceiverEligibility.sum_credit(records)
+    individual=[trace.credit(g) for trace,g in records]
+    for name,value in batched.items():
+        assert torch.allclose(value,torch.stack([r[name] for r in individual]).sum(0),atol=1e-12,rtol=1e-12)
