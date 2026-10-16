@@ -1,0 +1,12 @@
+{"step": 8, "paired_last8": 0.6988171599805355}
+{"step": 16, "paired_last8": 0.6958719156682491}
+{"step": 24, "paired_last8": 0.6935086697340012}
+{"step": 32, "paired_last8": 0.6929225064814091}
+{"step": 40, "paired_last8": 0.6949373185634613}
+{"step": 48, "paired_last8": 0.6938443705439568}
+{"step": 56, "paired_last8": 0.6935441382229328}
+{"step": 64, "paired_last8": 0.6933863013982773}
+/workspace/experiments/hierarchy/grounded_composition_learning.py:116: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  final['materialized_train_nll']=float(F.cross_entropy(actual,y));final['materialized_dev_nll']=float(F.cross_entropy(actual_dev,yd))
+{"arm": "continued", "dev_nll": 0.7841094849163521, "dev_accuracy": 0.4375}
