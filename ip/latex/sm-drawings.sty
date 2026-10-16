@@ -1,0 +1,10 @@
+\ProvidesPackage{sm-drawings}[2026/10/16 Editable black-line patent drawings]
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx}
+\RequirePackage[a4paper,top=30mm,left=30mm,right=20mm,bottom=20mm,includehead,headheight=16pt,headsep=10mm]{geometry}
+\RequirePackage{tikz,fancyhdr}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pagestyle{fancy}\fancyhf{}\fancyhead[C]{\thepage/2}\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0pt}
+\tikzset{every node/.style={font=\fontsize{14}{17}\selectfont},block/.style={draw,rectangle,minimum width=38mm,minimum height=15mm,align=center,line width=.8pt},flow/.style={-{Latex[length=3mm]},line width=.8pt}}
+\newcommand{\FigLabel}[1]{\par\bigskip\begin{center}\fontsize{14}{17}\selectfont FIG. #1\end{center}}

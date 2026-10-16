@@ -1,0 +1,28 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=22mm and 14mm]
+\node[block] (a) {100\\Outcome};
+\node[block,below=of a] (b) {110\\Forward model};
+\node[block,below=of b] (c) {120\\Credit model};
+\node[block,below=of c] (d) {130\\Verdict};
+\node[block,below=of d] (e) {140\\Updates};
+\node[block,right=of c] (f) {150\\Messages};
+\draw[flow] (a)--(b);\draw[flow] (b)--(c);\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (c)--(f);\draw[flow] (f)|-(d);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Proposal};
+\node[block,below=of a] (b) {220\\Forward score};
+\node[block,below=of b] (c) {230\\Shared verdict};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

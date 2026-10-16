@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "tool": "Icarus Verilog version 12.0 (stable) ()",
+  "tests": [
+    "PASS sm_race_select",
+    "PASS sm_versioned_state_bank",
+    "PASS sm_temporal_transport",
+    "PASS sm_binding_directory"
+  ],
+  "coverage": {
+    "race_batches": 32,
+    "state_commands": 12,
+    "transport_vectors": 64,
+    "binding_puts": 7,
+    "binding_reads": 5
+  },
+  "source_sha256": {
+    "hardware/rtl/sm_binding_directory.sv": "e2caf2816f55361812ceea8e26c71d6c8b509132b5e3c71309ca79a1b718e614",
+    "hardware/rtl/sm_race_select.sv": "075e169b230faa92def22e6f019c25032d1ddc47c2327caa4f3cf7d39a1e895a",
+    "hardware/rtl/sm_temporal_transport.sv": "a3b73525c269dfde42d654a3b6b0e486bd4a781b59c3fb8a23e6fb09cf282e69",
+    "hardware/rtl/sm_versioned_state_bank.sv": "e96c0bb9d98c3b1c6fbc5295768673c1064ea4527f3515cbe869bfddb419c5f9",
+    "hardware/scripts/verify_rtl.py": "d457d55371b37737715b2ae43f00a3bf91f41f94ee935f513828eeb2ce7b06a2"
+  },
+  "scope": "RTL simulation only,bit-level declared integer interface. No flagship prediction parity,FPGA utilization,physical latency or energy measurement."
+}

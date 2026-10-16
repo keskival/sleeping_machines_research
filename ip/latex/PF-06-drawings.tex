@@ -1,0 +1,28 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=22mm and 14mm]
+\node[block] (a) {100\\Events};
+\node[block,below=of a] (b) {110\\Mode state};
+\node[block,below=of b] (c) {120\\Eligibility};
+\node[block,below=of c] (d) {130\\Contraction};
+\node[block,below=of d] (e) {140\\Update};
+\node[block,right=of c] (f) {150\\Feedback};
+\draw[flow] (a)--(b);\draw[flow] (b)--(c);\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (c)--(f);\draw[flow] (f)|-(d);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Transport};
+\node[block,below=of a] (b) {220\\Local error};
+\node[block,below=of b] (c) {230\\Bank update};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

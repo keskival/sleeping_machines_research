@@ -5,6 +5,9 @@ energy algebra are in [HARDWARE_VALUE_PROPOSITION.md](../experiments/HARDWARE_VA
 Machines chip exists yet. Every advantage below is a **mechanism with a physical basis**, not a measurement. The
 evidence column says which parts the current software already shows.
 
+
+**First digital circuit drafts,16October2026.** Four SystemVerilog blocks now pass executable simulation contracts and Yosys generic synthesis:earliest supplied-clock selection,versioned addressed state,fixed-point complex transport,and immutable parent/child bindings. The acquired hierarchy checkpoint is source-bound in the export profile. These are shared primitives,not a complete flagship accelerator. Clock transforms,coefficient generation,native learned proposals and the full learning/readout path still need integration. No FPGA utilization,physical chip latency or energy measurement is claimed. [Circuit definitions and evidence](../hardware/README.md).
+
 ## The short version
 
 The biggest hardware lever is **not** removing the clock. It is three properties of the model that clockless,

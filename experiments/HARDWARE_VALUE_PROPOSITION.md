@@ -5,8 +5,8 @@ message-triggered modules and limited local coordination. This is an architectur
 target, not a description of the CPU simulator or a completed chip. The current
 parallel-head model has a local latest-arrival read/join and bounded event-block
 scheduling; global clock removal does not remove causal ordering, communication,
-arbitration, handshakes or time references. No FPGA/ASIC implementation or
-Sleeping Machines hardware joule measurement is claimed.
+arbitration, handshakes or time references. No programmed FPGA bitstream,fabricated ASIC or
+Sleeping Machines hardware joule measurement is claimed. Four first SystemVerilog primitives now pass simulation and generic synthesis;[coverage and evidence](../hardware/README.md) separate them from full-model/hardware results.
 
 **Datacenter commercialization priority, 3 October2026.** The target includes
 AI training/inference infrastructure in datacenters. Establish useful quality

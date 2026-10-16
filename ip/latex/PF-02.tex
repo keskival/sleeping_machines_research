@@ -1,0 +1,98 @@
+% !TeX program = pdflatex
+
+% !TeX root = PF-02.tex
+
+% Inventor (per express statement): Tero Keski-Valkama.
+
+% Review route and source support in REVIEW_NOTES.md before filing.
+
+\documentclass[pct]{sm-patent}
+
+% Change pct to us for US Letter text. A4 drawings are separate.
+
+\PatentTitle{Technical-event prediction using heterogeneous defective clocks and clock-specific mark distributions}
+
+\begin{document}
+
+\descriptionstart
+
+\pheading{Technical field}
+
+\pnum Forecasting devices for timestamped machine, sensor and communication events.
+
+\pheading{Background}
+
+\pnum A fixed next-event type distribution can fail to distinguish immediate and delayed event causes. A delay component forced to fire can also assign excessive probability to events that do not occur.
+
+\pheading{Summary}
+
+\pnum A forecasting apparatus maintains temporal state and parameterizes heterogeneous competing clocks, including a clock with a learned probability of never firing. Each clock has a mark distribution, and the apparatus combines clock survivals and marked hazards into a joint event law.
+
+\pheading{Brief description of the drawings}
+
+\pnum FIG. 1 is a block diagram of an implementation. FIG. 2 shows operations of the implementation. Reference signs identify the same functional elements throughout the drawings.
+
+\pheading{Detailed description}
+
+\pnum In FIG. 1, 100 identifies events; 110 identifies temporal state; 120 identifies clock bank; 130 identifies joint law; 140 identifies forecast; 150 identifies learning. In FIG. 2, 210 identifies event / silence, 220 identifies likelihood and 230 identifies clock update.
+
+\pnum Event input 100 supplies a time and type. Temporal encoder 110 updates a persistent state $h$ using only already revealed events. Clock bank 120 maps $h$ to positive scales, delay parameters, firing probabilities and normalized per-clock mark probabilities. Elapsed time $\tau$ is measured from the latest conditioning event.
+
+\pnum Clock $m$ has survival $S_m(\tau\mid h)$, hazard $\lambda_m(\tau\mid h)$ and mark probabilities $p_m(k\mid h,\tau)$. For conditionally independent clock timers, processor 130 evaluates
+\[S(\tau)=\prod_m S_m(\tau),\qquad f_k(\tau)=S(\tau)\sum_m\lambda_m(\tau)p_m(k\mid h,\tau).
+\]
+Thus the relative probability of an event type can change as the likely winning clock changes, even when individual clock mark vectors are held fixed during the interval.
+
+\pnum A defective delay component has firing probability $\pi_m\in[0,1]$ and conditional delay survival $S_{d,m}$. Its survival and hazard are
+\[S_m(\tau)=1-\pi_m+\pi_m S_{d,m}(\tau),\qquad \lambda_m(\tau)=\frac{\pi_m f_{d,m}(\tau)}{S_m(\tau)}.
+\]
+The non-firing mass is maintained in the likelihood rather than discarded by normalization. A log-normal conditional delay is one embodiment. A proper background clock may ensure eventual firing; otherwise the combined law explicitly retains the possibility of no further event.
+
+\pnum A soft-window component uses edges $a<b$ and scale $s>0$. With logistic function $\sigma$, define
+\[d(u)=\sigma((u-a)/s)-\sigma((u-b)/s),\]
+\[F(u)=s\{\operatorname{softplus}((u-a)/s)-\operatorname{softplus}((u-b)/s)\}.
+\]
+For $u\geq0$, $Z=b-a-F(0)$ and $S_w(u)=\{b-a-F(u)\}/Z$. The conditional density is $d(u)/Z$. A defective window adds the non-firing mass as above. Stable log-domain expressions avoid subtracting nearly equal ordinary floating-point values.
+
+\pnum Initial window edges may be placed around components of a training-gap distribution. Positive parameterizations constrain width and edge scale. Bounded offsets keep edges near their training-derived anchors. A training-data rule may enable window components only when the gap distribution contains distinct components. The rule does not consult an unrevealed target.
+
+\pnum A state-clock embodiment reads a positive hazard and normalized marks from $z(\tau)=\exp((-r+\mathrm{i}\omega)\tau)z_0$. Its integrated hazard can be evaluated by deterministic quadrature. Analytically integrated delay and window components do not make the state-clock compensator analytically closed form. A numerical implementation records its quadrature nodes and convergence rule.
+
+\pnum Training processor 150 minimizes negative log marked density on event observations and includes log survival for right-censored intervals. Silent exposure is charged once over its interval. The encoder is updated only after an event becomes available, so the event forecast is scored before its target changes conditioning state.
+
+\pnum Output 140 supplies a next-event time/type distribution, survival probability, machine alarm or communication schedule. One numerical implementation evaluates a background clock, a defective log-normal clock and a window clock in log space. A software clock bank and an event-driven circuit are alternative realizations of the same declared probability law.
+
+\pheading{Hardware implementation}
+
+\pnum A digital implementation may use synthesizable register-transfer logic mapped to an FPGA or to an application-specific integrated circuit. Addressed state uses register banks or SRAM macros; arithmetic uses integer, fixed-point or floating-point datapaths. Ready/valid or request/acknowledge interfaces apply backpressure without accepting a message twice. Synchronous FPGA execution, locally clocked circuits and asynchronous circuits are alternative implementations, each preserving its declared causal ordering and numerical precision.
+
+\pnum Before deployment, a reference trace can check selected addresses, values, timestamps, publication versions and output probabilities against the circuit at the declared numerical precision. Timing quantization, ties, cancellation, overflow and saturation are specified for the implementation. FPGA resource utilization, post-layout timing and measured energy are implementation-dependent quantities; no particular measured hardware result is required by this embodiment.
+
+\claimsstart
+
+\begin{patentclaims}
+
+\item A method of operating a technical-event monitoring apparatus, comprising updating persistent state from observed events; parameterizing multiple competing clocks and a respective event-type distribution for each clock from the state; including a delayed clock having survival equal to a non-firing mass plus a firing probability multiplied by a conditional delay survival; evaluating a joint next-event time and type density from a product of clock survivals and a sum of hazard-weighted type probabilities; and producing a monitoring output from the evaluated density.
+
+\item The method of claim 1, wherein a proper background clock provides eventual firing while the delayed clock retains positive non-firing mass.
+
+\item The method of claim 1, wherein a window clock has a density proportional to a difference of logistic functions and survival evaluated through integrated softplus terms.
+
+\item The method of claim 3, wherein window position and width are anchored to components of a training-gap distribution and constrained to bounded ranges around the anchors.
+
+\item The method of claim 1, wherein a clock hazard is read from memory transported continuously during an interval without events, and a cumulative hazard of that clock is evaluated by deterministic quadrature.
+
+\item The method of claim 1, wherein event-type probabilities vary with elapsed time through changing contributions of competing clocks.
+
+\item A monitoring system comprising an event input, temporal-state storage and a processor configured to perform the method of claim 1.
+
+\item A non-transitory computer-readable storage medium storing instructions that, when executed by a processor, cause the processor to perform the method of claim 1.
+
+\end{patentclaims}
+
+\abstractstart
+
+A forecasting apparatus encodes technical events in persistent temporal state and parameterizes competing clocks with respective event-type distributions. A delayed clock has a learned non-firing probability. A soft-window clock may provide analytically integrated survival. A state-clock variant reads a hazard from memory evolving during silent intervals and evaluates its compensator numerically. The apparatus computes a joint next-event time and type law from competing survivals and hazard-weighted type distributions. Censored intervals contribute survival supervision. The resulting forecast is used for monitoring or scheduling.
+
+\end{document}
+

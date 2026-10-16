@@ -1,0 +1,82 @@
+% !TeX program = pdflatex
+
+% !TeX root = PF-07.tex
+
+% Inventor (per express statement): Tero Keski-Valkama.
+
+% Review route and source support in REVIEW_NOTES.md before filing.
+
+\documentclass[pct]{sm-patent}
+
+% Change pct to us for US Letter text. A4 drawings are separate.
+
+\PatentTitle{Forward-taught posterior credit for event-routed processors}
+
+\begin{document}
+
+\descriptionstart
+
+\pheading{Technical field}
+
+\pnum Learning processors having latent or hard-selected event routes.
+
+\pheading{Background}
+
+\pnum An approximate reverse credit model may propose incorrect causes of an observed outcome. Updating a routed forward model from uncorrected proposals can bias its learning signal.
+
+\pheading{Summary}
+
+\pnum A forward process samples causes to teach a separate credit model, scores proposed causes using an issued forward state, and uses a shared verdict to train the forward and credit processes. A pairwise embodiment supplies corrected cause transitions.
+
+\pheading{Brief description of the drawings}
+
+\pnum FIG. 1 is a block diagram of an implementation. FIG. 2 shows operations of the implementation. Reference signs identify the same functional elements throughout the drawings.
+
+\pheading{Detailed description}
+
+\pnum In FIG. 1, 100 identifies outcome; 110 identifies forward model; 120 identifies credit model; 130 identifies verdict; 140 identifies updates; 150 identifies messages. In FIG. 2, 210 identifies proposal, 220 identifies forward score and 230 identifies shared verdict.
+
+\pnum Forward processor 110 defines a joint probability $p_\theta(y,k\mid x)$ for an outcome $y$ and route cause $k$. A distinct credit processor 120 predicts $q_\phi(k\mid x,y)$. Forward-sampled $(x,k,y)$ records provide cause labels for a supervised credit objective.
+
+\pnum For an observed outcome, the credit model proposes causes $k_s$. Verdict processor 130 evaluates $a_s=p_\theta(y,k_s\mid x)$ from the same issued forward state. Importance ratios $a_s/q_\phi(k_s\mid x,y)$ provide normalized finite-sample weights. The same weighted cause record can update the forward model and credit model. A finite self-normalized estimator is not claimed to be an unbiased exact marginal gradient.
+
+\pnum In a pairwise embodiment, two scored causes $i,j$ provide relative posterior target $a_j/(a_i+a_j)$ where the denominator is nonzero. An independence Metropolis--Hastings transition proposes $j$ from $q$ and accepts with probability $\min(1,a_jq(i)/(a_iq(j)))$. Positive support is required wherever $a_k>0$. Correct invariant probabilities do not imply independent samples or finite-time mixing.
+
+\pnum A forward message head emits a bounded message $m_\psi(x,k)$ to the credit processor. Its parameters are trained through a credit-prediction objective. The message can contain state summaries, sampled-cause information, transported sensitivities or a forward-predicted credit residual. These fields are available at the issued causal cutoff.
+
+\pnum Issued forward and credit versions are recorded with each teacher packet. A slow or asynchronous credit model can consume retained teacher packets, while a validity policy controls their use for current forward updates. Zero-probability proposals, failed forward evaluations and censored outcomes receive explicit handling rather than being silently omitted.
+
+\pnum FIG. 1 shows observations 100, forward sampler 110, credit proposal 120, verdict 130, update 140 and message head 150. FIG. 2 shows proposal 210, forward score 220 and shared update 230. A hardware embodiment sends compact cause identifiers to a forward score engine; it counts proposal, rejection, score and message work separately. Training a posterior model is distinct from a measured reduction in total learning cost.
+
+\pheading{Hardware implementation}
+
+\pnum A digital implementation may use synthesizable register-transfer logic mapped to an FPGA or to an application-specific integrated circuit. Addressed state uses register banks or SRAM macros; arithmetic uses integer, fixed-point or floating-point datapaths. Ready/valid or request/acknowledge interfaces apply backpressure without accepting a message twice. Synchronous FPGA execution, locally clocked circuits and asynchronous circuits are alternative implementations, each preserving its declared causal ordering and numerical precision.
+
+\pnum Before deployment, a reference trace can check selected addresses, values, timestamps, publication versions and output probabilities against the circuit at the declared numerical precision. Timing quantization, ties, cancellation, overflow and saturation are specified for the implementation. FPGA resource utilization, post-layout timing and measured energy are implementation-dependent quantities; no particular measured hardware result is required by this embodiment.
+
+\claimsstart
+
+\begin{patentclaims}
+
+\item A method of training an event-routed processor, comprising generating cause-labelled records by sampling causes and outcomes with a forward model; training a separate credit model from the cause-labelled records; proposing causes for an observed outcome with the credit model; scoring the proposed causes with an issued forward-model state; and using a shared forward-derived verdict to update the forward model and the credit model.
+
+\item The method of claim 1, wherein the verdict comprises normalized importance weights that include proposal probabilities.
+
+\item The method of claim 1, wherein a pair of forward-scored causes supplies a relative-posterior training target.
+
+\item The method of claim 3, wherein proposal transitions are corrected by a Metropolis--Hastings acceptance rule with positive support on admissible causes.
+
+\item The method of claim 1, wherein a forward message head is trained using a credit-prediction objective to emit information consumed by the credit model.
+
+\item A learning apparatus comprising a forward cause sampler, a distinct credit processor and a verdict engine configured to perform the method of claim 1.
+
+\item A non-transitory computer-readable storage medium storing instructions that cause a processor to perform the method of claim 1.
+
+\end{patentclaims}
+
+\abstractstart
+
+A learning processor samples causes with a forward model to produce labelled records for a separate credit model. For an observed outcome, the credit model proposes causes and an issued forward state scores them. A shared verdict trains both models. A pairwise embodiment uses relative forward scores and corrected proposal transitions. A forward message head can be trained to make later credit more inferable. Proposal support, issued versions and scoring work are recorded separately from selected-route execution.
+
+\end{document}
+

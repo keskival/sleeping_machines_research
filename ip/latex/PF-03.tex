@@ -1,0 +1,93 @@
+% !TeX program = pdflatex
+
+% !TeX root = PF-03.tex
+
+% Inventor (per express statement): Tero Keski-Valkama.
+
+% Review route and source support in REVIEW_NOTES.md before filing.
+
+\documentclass[pct]{sm-patent}
+
+% Change pct to us for US Letter text. A4 drawings are separate.
+
+\PatentTitle{Recording-resolution-constrained forecasting of quantized event streams}
+
+\begin{document}
+
+\descriptionstart
+
+\pheading{Technical field}
+
+\pnum Event forecasting from logging and sensing devices having finite timestamp resolution.
+
+\pheading{Background}
+
+\pnum A continuous-time density can sharpen around repeated timestamp-grid locations. A high recorded-point density need not correspond to improved prediction at the physical resolution of the acquisition device.
+
+\pheading{Summary}
+
+\pnum A forecasting processor receives a recording-cell width, holds hazard and mark functions over a sub-cell interval, and integrates the modified hazard consistently. Training may perturb target times within recording cells while retaining recorded conditioning histories.
+
+\pheading{Brief description of the drawings}
+
+\pnum FIG. 1 is a block diagram of an implementation. FIG. 2 shows operations of the implementation. Reference signs identify the same functional elements throughout the drawings.
+
+\pheading{Detailed description}
+
+\pnum In FIG. 1, 100 identifies recorded events; 110 identifies resolution; 120 identifies base law; 130 identifies held law; 140 identifies forecast; 150 identifies target sampler. In FIG. 2, 210 identifies recorded history, 220 identifies perturbed target and 230 identifies training loss.
+
+\pnum Acquisition device 100 records times at resolution $c>0$. Configuration storage 110 supplies $c$, the rounding convention and any declared tied-event ordering convention. The base model 120 supplies an unmodified hazard $h_0(\tau)$, survival $S_0(\tau)$ and mark distribution $p_0(k\mid\tau)$.
+
+\pnum In a first-cell embodiment, processor 130 sets $h_c(\tau)=h_0(c)$ for $0\leq\tau<c$ and $h_c(\tau)=h_0(\tau)$ thereafter. It similarly holds the mark distribution at $p_0(k\mid c)$ in the first interval. The corresponding log survival is
+\[\begin{aligned}\log S_c(\tau)={}&-h_0(c)\min(\tau,c)\\ &+\log S_0(\max(\tau,c))-\log S_0(c).\end{aligned}
+\]
+It equals zero at $\tau=0$ and is continuous at $c$. Differentiating it gives the negative modified hazard on each interval.
+
+\pnum The modified marked density is $S_c(\tau)h_c(\tau)p_c(k\mid\tau)$. If multiple clocks compete, the modification may be applied to each clock before combining survivals and marked hazards. Merely holding a hazard while retaining an inconsistent original survival does not implement this predictive law.
+
+\pnum The first-cell construction constrains the first recording interval. Complementary delay-dispersion floors, window-edge scale floors and limits on temporal decay or rotation can be configured as functions of $c$. These constraints limit modeled variation relative to the acquisition resolution without claiming that the first-cell rule excludes every possible later-cell peak.
+
+\pnum A generalized cell-held embodiment partitions elapsed time into cells $C_j=[jc,(j+1)c)$. For representative times $r_j\in C_j$, set $h_c(\tau)=h_0(r_j)$ and $p_c(k\mid\tau)=p_0(k\mid r_j)$ in $C_j$. Survival integrates the sum of completed cell hazards plus the elapsed portion of the current cell. An implementation may cache prefix sums of the completed contributions.
+
+\pnum Training processor 150 samples a target timestamp within its acquisition cell using a distribution defined by the quantizer. For a rounded timestamp, the cell may extend half a width on each side; for a floor quantizer it extends to the next boundary. A target perturbation is constrained to the declared admissible interval and does not reverse an already fixed ordering. Histories supplied to the encoder retain their recorded times, matching deployment inputs.
+
+\pnum For ties that cannot be represented as strictly ordered positive delays, an implementation uses an explicit ordering convention, an atom, or a cell-integrated observation law. It does not silently score an impossible perturbed history. An interval-observation embodiment scores $\int_{C_j}f_k(u)\,du$ instead of point density; those scores have different units and are identified accordingly.
+
+\pnum A validation processor compares recorded-target and within-cell-perturbed scores under the same conditioning policy. A declared discrepancy threshold gates model selection or triggers review. Output 140 supplies a forecast or device alert from the selected modified law. The score threshold is an implementation criterion, not a universal bound on generalization.
+
+\pheading{Hardware implementation}
+
+\pnum A digital implementation may use synthesizable register-transfer logic mapped to an FPGA or to an application-specific integrated circuit. Addressed state uses register banks or SRAM macros; arithmetic uses integer, fixed-point or floating-point datapaths. Ready/valid or request/acknowledge interfaces apply backpressure without accepting a message twice. Synchronous FPGA execution, locally clocked circuits and asynchronous circuits are alternative implementations, each preserving its declared causal ordering and numerical precision.
+
+\pnum Before deployment, a reference trace can check selected addresses, values, timestamps, publication versions and output probabilities against the circuit at the declared numerical precision. Timing quantization, ties, cancellation, overflow and saturation are specified for the implementation. FPGA resource utilization, post-layout timing and measured energy are implementation-dependent quantities; no particular measured hardware result is required by this embodiment.
+
+\claimsstart
+
+\begin{patentclaims}
+
+\item A computer-implemented method for forecasting events recorded by a device with temporal resolution c, comprising receiving a recording-resolution parameter; modifying a continuous-time hazard to equal its value at c for elapsed times below c; modifying a mark distribution on the same interval; computing survival by integrating the modified hazard; and producing a forecast or monitoring signal using the modified event law.
+
+\item The method of claim 1, wherein log survival is evaluated as \[\begin{aligned}\log S_c(\tau)={}&-h_0(c)\min(\tau,c)\\ &+\log S_0(\max(\tau,c))-\log S_0(c).\end{aligned}\]
+
+\item The method of claim 1, further comprising training with a target delay perturbed within a corresponding recording cell while keeping conditioning event histories in recorded form.
+
+\item The method of claim 3, wherein the perturbation respects a specified quantizer rounding rule and a tied-event ordering convention.
+
+\item The method of claim 1, wherein delayed-clock dispersion or window-edge scale is lower-bounded as a function of c.
+
+\item The method of claim 1, wherein temporal-memory rotation and decay are bounded in relation to c.
+
+\item The method of claim 1, further comprising computing paired recorded-target and within-cell-perturbed validation scores and selecting a deployed model using their difference.
+
+\item A monitoring apparatus comprising timestamped event storage and a processor configured to perform the method of claim 1.
+
+\item A non-transitory computer-readable storage medium storing instructions that, when executed by a processor, cause the processor to perform the method of claim 1.
+
+\end{patentclaims}
+
+\abstractstart
+
+An event-forecasting processor receives a recording-cell width and modifies a continuous-time event law consistently with that width. Hazard and event-type functions are held at a boundary value over a first sub-cell interval. Survival is computed by integrating the modified hazard, preserving normalization and boundary continuity. Training may perturb a target time within its recording cell while leaving the conditioning event history in recorded form. A paired recorded-target and perturbed-target validation score may gate model selection. A cell-integrated observation law is an alternative to point-density scoring. The processor produces a monitoring forecast tied to the temporal resolution of acquisition equipment.
+
+\end{document}
+

@@ -1,0 +1,28 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=22mm and 14mm]
+\node[block] (a) {100\\Recorded events};
+\node[block,below=of a] (b) {110\\Resolution};
+\node[block,below=of b] (c) {120\\Base law};
+\node[block,below=of c] (d) {130\\Held law};
+\node[block,below=of d] (e) {140\\Forecast};
+\node[block,right=of c] (f) {150\\Target sampler};
+\draw[flow] (a)--(b);\draw[flow] (b)--(c);\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (c)--(f);\draw[flow] (f)|-(d);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Recorded history};
+\node[block,below=of a] (b) {220\\Perturbed target};
+\node[block,below=of b] (c) {230\\Training loss};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

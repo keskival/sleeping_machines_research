@@ -1,3 +1,5 @@
+[Implemented identity–role interface](theory/IDENTITY_ROLE_INTERFACE.md) retains distinct child instances within shared geometric roles,teaches actual issued memory versions,and passes22contracts plus a real paired resource gate. One integrated acquisition;all participant/pair work charged.
+
 **Current composition decision:** [Identity–role interface](theory/IDENTITY_ROLE_INTERFACE.md) records the completed12.5%→50.2% part-shape gain and whole-label0.692212 versus acquired0.686609. Next construction preserves distinct child identities within geometric roles and aligns local teaching to actual issued memory versions;existing bilinear operators alone are insufficient evidence of that interface. Correctness contracts precede one integrated candidate;no new ablations or unchanged longer fit.
 
 [Intrinsic part-identity learning](theory/INTRINSIC_PART_IDENTITY_LEARNING.md) supplies TRAIN-observable identity targets to complete native part memories while whole-label credit learns role relations. One integrated acquisition,no new ablation arms;21contracts and actual paired resource gate pass.

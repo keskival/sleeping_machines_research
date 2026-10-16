@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "tool": "Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)",
+  "records": [
+    {
+      "module": "sm_binding_directory",
+      "source_sha256": "e2caf2816f55361812ceea8e26c71d6c8b509132b5e3c71309ca79a1b718e614",
+      "generic_cells": 17645,
+      "generic_cell_types": {
+        "$_AND_": 731,
+        "$_DFFE_PP_": 5120,
+        "$_MUX_": 8278,
+        "$_NOT_": 294,
+        "$_OR_": 1472,
+        "$_SDFFE_PN0P_": 219,
+        "$_XOR_": 1531
+      },
+      "wire_bits": 19822
+    },
+    {
+      "module": "sm_race_select",
+      "source_sha256": "075e169b230faa92def22e6f019c25032d1ddc47c2327caa4f3cf7d39a1e895a",
+      "generic_cells": 822,
+      "generic_cell_types": {
+        "$_AND_": 188,
+        "$_MUX_": 146,
+        "$_NOT_": 68,
+        "$_OR_": 66,
+        "$_SDFFE_PN0P_": 289,
+        "$_SDFF_PN0_": 1,
+        "$_XOR_": 64
+      },
+      "wire_bits": 1028
+    },
+    {
+      "module": "sm_temporal_transport",
+      "source_sha256": "a3b73525c269dfde42d654a3b6b0e486bd4a781b59c3fb8a23e6fb09cf282e69",
+      "generic_cells": 20666,
+      "generic_cell_types": {
+        "$_AND_": 8603,
+        "$_DFF_P_": 3,
+        "$_MUX_": 1724,
+        "$_NOT_": 805,
+        "$_OR_": 3258,
+        "$_SDFFE_PN0P_": 579,
+        "$_XOR_": 5694
+      },
+      "wire_bits": 47735
+    },
+    {
+      "module": "sm_versioned_state_bank",
+      "source_sha256": "e96c0bb9d98c3b1c6fbc5295768673c1064ea4527f3515cbe869bfddb419c5f9",
+      "generic_cells": 48409,
+      "generic_cell_types": {
+        "$_AND_": 502,
+        "$_DFFE_PP_": 22528,
+        "$_MUX_": 24493,
+        "$_NOT_": 142,
+        "$_OR_": 192,
+        "$_SDFFE_PN0P_": 420,
+        "$_XOR_": 132
+      },
+      "wire_bits": 50274
+    }
+  ],
+  "scope": "Yosys generic synthesis with default draft parameters,no ABC technology mapping. Counts are not FPGA LUT/BRAM/DSP utilization,ASIC area,post-route frequency,latency or power. No flagship-model numerical equivalence claim."
+}

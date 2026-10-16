@@ -57,3 +57,34 @@ decision.
 
 Evidence: `experiments/results/hierarchy/aws_g_hier_part_identity_20261016_v1.json`
 and `investment/part_identity_development_evidence.json`.
+
+## Integrated implementation and admission
+
+`identity_role_composition.py` now keys persistent participant views by child
+level/address,with memory version and pose retained separately. Same-role
+children are preserved and refreshed by identity. Symmetric pair products and
+antisymmetric content products multiplied by signed relative pose make pair
+aggregation independent of enumeration while retaining content/pose binding.
+The original native receipt and timer races,protected temporal modes and
+counterfactual receipt learning remain active. All current participants and
+quadratic pair work are charged;this is not sparse partner discovery.
+
+Local shape teaching reads immutable level-one versions actually retained by
+parent publications,at their issue times. Its endpoint differs from the old
+latest-memory classifier;their accuracies are not a matched before/after
+comparison. The acquired learned-identity actor is the starting checkpoint.
+Whole-label DEV and the saved0.686609 reference remain the selection criterion.
+
+Twenty-two combined numerical contracts pass,including same-role identity
+retention,content/pose sensitivity,pair enumeration invariance,deep gradients,
+causal version reads and exact no-grad in-flight checkpoint recovery. Recovery
+rekeys Python envelope identities through stable queue serials. It preserves
+numerical inference state,not an in-progress training credit graph.
+
+The actual paired optimizer gate passes in6.114seconds at804980KiB peak RSS,
+with finite nonzero content gradients at all eight levels. One64paired-update
+integrated acquisition is admitted after that gate,with the same fixed
+whole-label CE+0.25local identity objective,source-bound8update checkpoints,
+TRAIN-only readout and untouched TEST. No ablation/control fit or automatic
+longer continuation is admitted. These are implementation/resource results;
+the completed prediction endpoint decides whether to promote this candidate.

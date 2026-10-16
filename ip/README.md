@@ -1,7 +1,11 @@
 # Patent-support package — CONFIDENTIAL, prepared for patent counsel
 
-7 October 2026 · Private · Not legal advice, not a filing, not a freedom-to-operate opinion. Everything here is input
+16 October 2026 · Private · Not legal advice, not a filing, not a freedom-to-operate opinion. Everything here is input
 for a European/US patent attorney, who decides claim scope, inventorship, jurisdictions and timing.
+
+## Current editable applications
+
+All12 portfolio families now have [LaTeX sources and compiled technical documents](latex/README.md) for Kile,with separate drawing sources. The current [portfolio strategy](PORTFOLIO_STRATEGY.md) and [private review notes](latex/REVIEW_NOTES.md) govern grouping and disclosure-route review. These files do not constitute a completed filing or a novelty finding. The original IDFs below remain source records;their jurisdiction labels are conditional on the current feature-level disclosure audit.
 
 ## What this package contains
 

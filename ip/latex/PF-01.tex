@@ -1,0 +1,93 @@
+% !TeX program = pdflatex
+
+% !TeX root = PF-01.tex
+
+% Inventor (per express statement): Tero Keski-Valkama.
+
+% Review route and source support in REVIEW_NOTES.md before filing.
+
+\documentclass[pct]{sm-patent}
+
+% Change pct to us for US Letter text. A4 drawings are separate.
+
+\PatentTitle{Temporal race processing with sparse addressed state and alternative-route learning}
+
+\begin{document}
+
+\descriptionstart
+
+\pheading{Technical field}
+
+\pnum Event-driven data processors for machine monitoring, communication systems and adaptive computing hardware.
+
+\pheading{Background}
+
+\pnum A processor that updates every state unit for every input can expend state traffic on inactive receivers. Committing only one hard-selected route can reduce activity while leaving unselected routes without a differentiable factual path to the output.
+
+\pheading{Summary}
+
+\pnum An addressed-memory processor separates selection clocks from payload computation, commits selected state writes, and evaluates specified alternative deliveries in a separate learning state. Timestamped transport permits inactive memories to evolve without periodic writes.
+
+\pheading{Brief description of the drawings}
+
+\pnum FIG. 1 is a block diagram of an implementation. FIG. 2 shows operations of the implementation. Reference signs identify the same functional elements throughout the drawings.
+
+\pheading{Detailed description}
+
+\pnum In FIG. 1, 100 identifies events; 110 identifies state; 120 identifies keys / values; 130 identifies clock race; 140 identifies dispatch; 150 identifies credit. In FIG. 2, 210 identifies issued cut, 220 identifies alternative and 230 identifies loss contrast.
+
+\pnum An event record contains a source identifier, an observation time, a payload and a candidate-address set or an identifier from which that set is discovered. Storage 110 contains a state vector $z_i$, a state timestamp $t_i$ and a version for each allocated receiver $i$. The number of allocated receivers may exceed the number of receivers updated by an event. Candidate discovery, key scoring, selected payload delivery and alternative evaluation are distinct operations.
+
+\pnum On an access at time $t\geq t_i$, a mode can be evaluated as
+\[z_i(t)=\exp\!\left[(-r_i+\mathrm{i}\omega_i)(t-t_i)\right]z_i(t_i),\qquad r_i\geq0.
+\]
+A local input map combines the transported value with the incoming payload. Real implementations may store the real and imaginary parts in two coordinates. A zero-frequency mode provides pure decay. The access does not require intermediate periodic writes to other addresses.
+
+\pnum Selection map 120 produces a score or clock parameter from a query and a receiver key. A separate value map supplies content for the selected delivery. For example, for scores $s_i$, let $\lambda_i=\exp(s_i)$ and draw independent $E_i\sim\operatorname{Exp}(1)$. Scheduler 130 chooses an address minimizing $E_i/\lambda_i$. This produces selection probabilities $\lambda_i/\sum_j\lambda_j$. Physical timers or scheduled software events can implement the clocks. The mathematical sampling identity is not dependent on the particular state storage.
+
+\pnum Scheduler 130 commits a bounded selected set of deliveries. Each committed delivery combines content with the selected receiver's transported persistent state and issues a new receiver version. An evaluated alternative is not thereby committed to factual state. If more than one clock has the same represented completion time, a declared tie rule selects a total order or an explicitly simultaneous update.
+
+\pnum Learning processor 150 records a causal receipt comprising the issued state or reproducible state reference, the factual action, a specified alternative action and the parameter versions needed to reproduce the consequence. It evaluates a factual and alternative continuation under coupled future observations and random draws. For a sampled action $a$ and alternative $b$, a loss contrast $L_b-L_a$ can train their relative selection scores, using their sampling or inclusion probabilities under the selected estimator.
+
+\pnum For a finite categorical action set with probabilities $p_a$, an enumerated conditional gradient of expected loss is $\sum_a p_a(L_a-\bar L)\nabla_\theta\log p_a$, where $\bar L=\sum_a p_aL_a$. A sampled estimator records and corrects for its declared action inclusion law. Exact enumeration and sampled approximation are different embodiments. The alternative's proposed value and changed downstream state must be included when those quantities affect the loss target.
+
+\pnum An interval without an observed event may contribute a survival term $-\int_0^T\lambda(u)\,du$ to a log likelihood. Alternatively a deadline clock triggers a read or a query conditioned on elapsed silence. A missing delivery, a censored observation and a deliberately cancelled timer are separately represented so that absence is not mistaken for a newly observed external event.
+
+\pnum In another embodiment, delay-coded payloads are aggregated over a declared complete arrival set. A full-support normalized aggregation requires all contributions or an exact equivalent computation. A winner-only or top-$k$ operation instead implements its declared truncated law. Output 140 may issue a device alert, select a communication destination or schedule subsequent computation.
+
+\pnum The implementation retains candidate counts, selected writes, payload bytes, state accesses and learning evaluations separately. Adding dormant capacity does not imply free discovery or free alternative learning. Modeled race time, observation availability and physical execution time are separate quantities. A software scheduler or a physical timer circuit may implement the same causal operation.
+
+\pheading{Hardware implementation}
+
+\pnum A digital implementation may use synthesizable register-transfer logic mapped to an FPGA or to an application-specific integrated circuit. Addressed state uses register banks or SRAM macros; arithmetic uses integer, fixed-point or floating-point datapaths. Ready/valid or request/acknowledge interfaces apply backpressure without accepting a message twice. Synchronous FPGA execution, locally clocked circuits and asynchronous circuits are alternative implementations, each preserving its declared causal ordering and numerical precision.
+
+\pnum Before deployment, a reference trace can check selected addresses, values, timestamps, publication versions and output probabilities against the circuit at the declared numerical precision. Timing quantization, ties, cancellation, overflow and saturation are specified for the implementation. FPGA resource utilization, post-layout timing and measured energy are implementation-dependent quantities; no particular measured hardware result is required by this embodiment.
+
+\claimsstart
+
+\begin{patentclaims}
+
+\item A computer-implemented method for processing a technical event stream, comprising maintaining timestamped addressed memory units; computing candidate selection clocks through selection paths distinct from payload paths; selecting a bounded subset of candidate deliveries using the clocks; transporting and updating memory at selected addresses using delivered payloads; and training selection parameters using a receipt evaluating a specified unselected delivery while retaining factual committed state separately.
+
+\item The method of claim 1, wherein the candidate selection clocks comprise exponential timers and a first timer selects a committed delivery.
+
+\item The method of claim 1, wherein an allocated receiver count exceeds a number of selected memory writes per input event and candidate-key discovery is performed separately from value delivery.
+
+\item The method of claim 1, wherein the unselected delivery is evaluated from an issued state under coupled exogenous observations and recorded random draws.
+
+\item The method of claim 1, wherein an interval without an observed event contributes survival supervision or triggers a scheduled query.
+
+\item The method of claim 1, wherein timestamped lazy transport replaces periodic writes to unaddressed memory units.
+
+\item A processing system comprising addressed state storage, a timer scheduler, a payload dispatch interface and a learning processor configured to perform the method of claim 1.
+
+\item A non-transitory computer-readable storage medium storing instructions that, when executed by a processor, cause the processor to perform the method of claim 1.
+
+\end{patentclaims}
+
+\abstractstart
+
+A processor maintains addressed state units, separate selection and payload paths, and scheduled deliveries. Candidate clocks determine addressed activity and modeled computation time. Selected payloads update persistent local state. A learning processor evaluates a specified unselected delivery in a separate learning state without committing that delivery to factual state. An absence interval can contribute supervision or trigger a scheduled query. Timestamped transport evaluates an accessed state after elapsed silence without periodic writes to inactive units. Allocated capacity, candidate scoring, committed writes and alternative learning are separately accounted for.
+
+\end{document}
+

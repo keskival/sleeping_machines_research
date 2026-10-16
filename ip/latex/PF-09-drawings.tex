@@ -1,0 +1,28 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=22mm and 14mm]
+\node[block] (a) {100\\Credit packets};
+\node[block,below=of a] (b) {110\\Bank owner};
+\node[block,below=of b] (c) {120\\Dependencies};
+\node[block,below=of c] (d) {130\\Validator};
+\node[block,below=of d] (e) {140\\Optimizer};
+\node[block,right=of c] (f) {150\\Snapshots};
+\draw[flow] (a)--(b);\draw[flow] (b)--(c);\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (c)--(f);\draw[flow] (f)|-(d);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Producer join};
+\node[block,below=of a] (b) {220\\Version check};
+\node[block,below=of b] (c) {230\\Commit once};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

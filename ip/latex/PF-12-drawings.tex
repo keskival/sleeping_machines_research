@@ -1,0 +1,28 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=22mm and 14mm]
+\node[block] (a) {100\\Context};
+\node[block,below=of a] (b) {110\\Tree nodes};
+\node[block,below=of b] (c) {120\\Child scores};
+\node[block,below=of c] (d) {130\\Traversal};
+\node[block,below=of d] (e) {140\\Output};
+\node[block,right=of c] (f) {150\\Copy store};
+\draw[flow] (a)--(b);\draw[flow] (b)--(c);\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (a)-|(f);\draw[flow] (f)|-(d);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Child race};
+\node[block,below=of a] (b) {220\\Query refine};
+\node[block,below=of b] (c) {230\\Next node};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

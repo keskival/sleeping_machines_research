@@ -1,0 +1,84 @@
+% !TeX program = pdflatex
+
+% !TeX root = PF-08.tex
+
+% Inventor (per express statement): Tero Keski-Valkama.
+
+% Review route and source support in REVIEW_NOTES.md before filing.
+
+\documentclass[pct]{sm-patent}
+
+% Change pct to us for US Letter text. A4 drawings are separate.
+
+\PatentTitle{Learner-aware counterfactual credit from issued optimizer-state worlds}
+
+\begin{document}
+
+\descriptionstart
+
+\pheading{Technical field}
+
+\pnum Adaptive event processors in which a routing or write decision changes subsequent learning.
+
+\pheading{Background}
+
+\pnum A route intervention can change later parameters and optimizer moments even after its original memory perturbation vanishes. A frozen-parameter response can therefore target a different consequence from the one experienced by an adapting processor.
+
+\pheading{Summary}
+
+\pnum A teacher issues actor, memory and optimizer state together, evolves factual and alternative learner worlds under coupled observations, and trains a consequence predictor from their prequential loss contrast.
+
+\pheading{Brief description of the drawings}
+
+\pnum FIG. 1 is a block diagram of an implementation. FIG. 2 shows operations of the implementation. Reference signs identify the same functional elements throughout the drawings.
+
+\pheading{Detailed description}
+
+\pnum In FIG. 1, 100 identifies observations; 110 identifies issued cut; 120 identifies predictor; 130 identifies world verdict; 140 identifies factual update; 150 identifies teacher. In FIG. 2, 210 identifies fork cut, 220 identifies own updates and 230 identifies teach contrast.
+
+\pnum An issued cut contains actor parameters, timestamped numerical memory, optimizer moments, update counters, random-stream state and the versions needed to reproduce a chosen intervention. Teacher storage 110 preserves the cut. A factual world and one or more alternative worlds start from that same cut.
+
+\pnum Each world receives the same revealed observations and coupled exogenous random draws, except for an explicitly intervened route or write. Each world owns its subsequent parameter and optimizer updates. Predictions are scored before the corresponding outcome changes that world's weights or memory. An alternative update is not committed to the factual actor merely because it is evaluated.
+
+\pnum For a declared horizon $H$, verdict 130 computes $D_H=H^{-1}\sum_{t=1}^H(\ell'_t-\ell_t)$. A predictor 120 is taught $D_H$ or a residual relative to an existing consequence estimate. Context includes the intervention, issued versions, relevant memory summaries and the declared adaptation policy. Direct state influence and learning-mediated influence may persist for different durations.
+
+\pnum For complete learner state $S_t$ and update function $F_\psi$, a differentiable bounded teacher may propagate $P_{t+1}=J_tP_t+B_t$, where $J_t=\partial F_\psi/\partial S_t$ and $B_t=\partial F_\psi/\partial\psi$. The state includes optimizer moments and counters that affect future updates. A bounded reverse rollout is an alternative teacher. It stores and pays for its realized graph.
+
+\pnum A multi-horizon embodiment uses a finite sequence of horizons with increments $D_{H_j}-D_{H_{j-1}}$. Sampled audits of a predicted increment use a positive declared inclusion probability $p_j$ and residual correction $B_j(X_j-\widehat X_j)/p_j$. Conditional mean preservation requires the audit law and any completion or censoring law to be included. It does not imply unbiased Adam or clipped update displacement.
+
+\pnum FIG. 1 shows observation stream 100, issued cut 110, predictor 120, paired verdict 130, factual update 140 and teacher 150. FIG. 2 shows fork 210, own-update continuation 220 and residual teaching 230. A hardware embodiment stores cut references near local learner banks and schedules bounded replay off the factual dispatch path. Replay, snapshots, optimizer traffic and predictor work are included in resource accounting.
+
+\pheading{Hardware implementation}
+
+\pnum A digital implementation may use synthesizable register-transfer logic mapped to an FPGA or to an application-specific integrated circuit. Addressed state uses register banks or SRAM macros; arithmetic uses integer, fixed-point or floating-point datapaths. Ready/valid or request/acknowledge interfaces apply backpressure without accepting a message twice. Synchronous FPGA execution, locally clocked circuits and asynchronous circuits are alternative implementations, each preserving its declared causal ordering and numerical precision.
+
+\pnum Before deployment, a reference trace can check selected addresses, values, timestamps, publication versions and output probabilities against the circuit at the declared numerical precision. Timing quantization, ties, cancellation, overflow and saturation are specified for the implementation. FPGA resource utilization, post-layout timing and measured energy are implementation-dependent quantities; no particular measured hardware result is required by this embodiment.
+
+\claimsstart
+
+\begin{patentclaims}
+
+\item A method of training an adaptive event processor, comprising preserving an issued cut including actor memory, parameters and optimizer state; creating factual and alternative learner worlds from the cut; applying a specified route or write intervention to the alternative world; scoring future observations before their corresponding updates in each world; applying each world's own subsequent learner updates; and teaching a consequence predictor from a contrast of the scored losses.
+
+\item The method of claim 1, wherein exogenous observations and random draws are coupled between the worlds except for the specified intervention.
+
+\item The method of claim 1, wherein the optimizer state includes moments and update counters that affect later parameter changes.
+
+\item The method of claim 1, wherein a bounded differentiable teacher includes sensitivity through numerical state, optimizer state and subsequent update inputs.
+
+\item The method of claim 1, wherein finite-horizon increments are taught using sampled residual audits corrected by declared inclusion and completion probabilities.
+
+\item The method of claim 1, wherein the consequence predictor learns a residual while an existing prediction component is retained.
+
+\item An adaptive processing system comprising issued-cut storage, a factual learner, an alternative-world teacher and a consequence predictor configured to perform the method of claim 1.
+
+\item A non-transitory computer-readable storage medium storing instructions that cause a processor to perform the method of claim 1.
+
+\end{patentclaims}
+
+\abstractstart
+
+An adaptive event processor preserves an issued actor, memory and optimizer cut. A teacher forks factual and alternative learner worlds, applies an intervention, and evolves each world with its own subsequent updates under coupled observations. Predictions are scored before their outcomes update each world. Their loss contrast teaches a consequence predictor. A bounded differentiable teacher includes optimizer-state influence. Finite-horizon residual audits may use declared inclusion and completion probabilities. Snapshot, replay and teaching work are recorded separately from factual inference.
+
+\end{document}
+

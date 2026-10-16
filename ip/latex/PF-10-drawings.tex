@@ -1,0 +1,30 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{sm-drawings}
+\begin{document}
+\begin{center}
+\begin{tikzpicture}[node distance=26mm and 18mm]
+\node[block] (a) {100\\Events};
+\node[block,below left=of a] (b) {110\\Parent path};
+\node[block,below right=of a] (c) {120\\Private branch};
+\node[block,below=of c] (d) {130\\Bindings};
+\node[block,below=of b] (f) {150\\Learning};
+\node[block,below left=of d] (e) {140\\Output};
+\draw[flow] (a)--(b);\draw[flow] (a)--(c);
+\draw[flow] (b.west)--++(-8mm,0)|-(e.west);
+\draw[flow] (c)--(d);\draw[flow] (d)--(e);
+\draw[flow] (f)--(d);\draw[flow] (f.east)--++(6mm,0)|-(c.west);
+\end{tikzpicture}
+\end{center}
+\FigLabel{1}
+\clearpage
+\begin{center}
+\begin{tikzpicture}[node distance=32mm]
+\node[block] (a) {210\\Child version};
+\node[block,below=of a] (b) {220\\Parent binding};
+\node[block,below=of b] (c) {230\\Later query};
+\draw[flow](a)--(b);\draw[flow](b)--(c);
+\end{tikzpicture}
+\end{center}
+\FigLabel{2}
+\end{document}

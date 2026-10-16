@@ -1,3 +1,5 @@
+**Identity-preserving native composition,16October:** implemented separate child identities within geometric roles and issued-version local teaching.22combined contracts pass;actual paired optimizer gate PASS6.114s/804980KiB with finite credit at all8levels. One64paired-update integrated acquisition admitted,no ablations. Full current participant/pair work is paid;selective partner discovery is missing. Prediction quality pending. [Theory](../theory/IDENTITY_ROLE_INTERFACE.md).
+
 **Current composition decision:** [Identity–role interface](../theory/IDENTITY_ROLE_INTERFACE.md) records the completed12.5%→50.2% part-shape gain and whole-label0.692212 versus acquired0.686609. Next construction preserves distinct child identities within geometric roles and aligns local teaching to actual issued memory versions;existing bilinear operators alone are insufficient evidence of that interface. Correctness contracts precede one integrated candidate;no new ablations or unchanged longer fit.
 
 # G-HIER current findings —16October2026

@@ -454,6 +454,9 @@ The next integrated acquisition is now running:TRAIN-observable intrinsic shape 
 
 **Completed native part-identity acquisition.** Observable shape accuracy on reused DEV changes12.50%→50.20%;whole-label NLL0.692212 versus saved acquired0.686609. Shape learning and whole-label transfer remain separate;the saved acquired actor retains the better whole-label result. One integrated8level/32stage actor,64paired TRAIN updates,TRAIN-only shape targets/ridge.01root head,new combinations/nuisance tapes,TEST excluded. No ablation/control acquisition or public benchmark claim. Source:`investment/part_identity_development_evidence.json`.
 
+
+**First hardware circuit definitions,16October.** Four SystemVerilog primitives pass simulation contracts and generic synthesis:earliest supplied-clock selection,causal versioned state,fixed-point complex transport and immutable identity/role bindings. The source-bound acquired actor profile has255394parameters,8levels×4stages,4heads and8coordinates/head. These are shared blocks,not a complete flagship accelerator. Learned clock transforms/proposals,coefficient generation,full readout/scheduling and on-chip learning still need integration;no FPGA utilization,physical latency or energy result is claimed. [Hardware definitions/evidence](../hardware/README.md).
+
 ## 5. What the evidence says
 
 **What works.** The temporal mechanisms learn order, timing and retrieval from few examples where Transformers fail; time is used as information. Counterfactual route credit improves language at depth for 0.3% extra work. Stored capacity improves quality at flat inference arithmetic. On anonymous interleaved processes the native model beats every generic control across three seeds. At 10M characters it beats tuned Transformers at equal or lower compute.
