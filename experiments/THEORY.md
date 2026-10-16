@@ -606,3 +606,6 @@ train/eval semantics, float64 scheduling and input-association learning criteria
 
 
 Task-facing composition credit(16October): [formal analysis and completed frozen audit](theory/COMPOSITION_TASK_CREDIT_GEOMETRY.md) separates local readability,upper sensitivity and correct joint relations. A local binding-race teacher preserves the complete native actor;five contracts and one actual TRAIN gradient/resource gate pass. No extra acquisition before the unchanged2048update decision.
+
+
+Fully native deep language and local learning(16October): [construction,conditional eligibility proof,contracts and real-token gate](theory/LOCAL_NATIVE_DEEP_LANGUAGE.md). Eight native layers with own horizontal receiver memories replace the hybrid carrier;each depth is a normalized predictive cause. No recurrent BPTT;local write traces and bounded event-map credit have explicit scope. Pack the measured native forward/backward bottleneck before acquisition.

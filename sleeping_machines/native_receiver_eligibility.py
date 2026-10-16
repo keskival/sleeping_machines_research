@@ -42,7 +42,11 @@ class ReceiverEligibility:
         normalized=F.layer_norm(x,(p,));controls=unit.control(normalized)
         forget=F.softplus(controls[0])/math.log(2);sig=controls[1].sigmoid();write=2*sig
         rate=F.softplus(unit.raw_rate)+1e-6
-        rotation=torch.exp(torch.complex(-elapsed*rate*forget,elapsed*unit.frequency))
+        # Match the native unit's float64 clock angles even with float32
+        # payloads. A long dormant interval must not lose its phase precision.
+        magnitude=torch.exp(-elapsed*rate*forget)
+        angle=elapsed*unit.frequency.double()
+        rotation=torch.complex(magnitude*angle.cos().to(x.dtype),magnitude*angle.sin().to(x.dtype))
         transported=rotation*self.value
         projected=unit.input(x).reshape(-1,2);proposal=torch.complex(projected[:,0],projected[:,1])
         dc_forget=transported*(-elapsed*rate*controls[0].sigmoid()/math.log(2))

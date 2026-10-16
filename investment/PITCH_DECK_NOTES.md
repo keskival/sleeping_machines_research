@@ -146,9 +146,13 @@ This construction combines familiar vector operations with temporal computation 
 
 Native leads both market references across three acquired seeds. Addressed memory leads language development; useful depth and online replication are next.
 
-Source-bound completed evidence, same acquisition/prior/updates/evaluation. At8M execution and teaching improvements combine. FactualBP/Adam and model-wide clipping remain charged. Receiver-local banks and delayed-credit replay are verified components, not measured clockless hardware efficiency or a fitted long-horizon critic. Current integration status is reported separately; public validation sealed.
+Source-bound completed evidence, same acquisition/prior/updates/evaluation. At8M execution and teaching improvements combine. FactualBP/Adam and model-wide clipping remain charged. Receiver-local banks and delayed-credit replay are verified components, not measured clockless hardware efficiency or a fitted long-horizon critic. Current integration status is reported separately; public validation sealed. Current16October: the completed16M four-layer dense hybrid diagnostic scores5.2699NLL on8192GPT2FineWebDEV targets/1024windows(one seed),the fully native deep model's target. The8layer4.19Mparameter native receiver-race prototype passes local eligibility and packed event/gradient contracts plus a32target optimizer gate;no recurrentBPTT,zeroSSM/attention/MLP carrier. No native predictive win yet. Sources:depthdata_l4_evidence.json and local_native_language_evidence.json.
 
 - [SLL: Completed integrated sparse-teaching language development](language_learning_evidence.json) — Same8.39Mtargets/GPT2FineWeb/seed6/DEV; measured quality and completeCPUtime versus earlier own full-teaching model. No scaled Transformer or ASIC claim.
+
+- [R1HYBRID: Completed16M hybrid diagnostic](depthdata_l4_evidence.json) — One-seed FineWeb development,not a native-model or public leaderboard win.
+
+- [R1NATIVE: Fully native deep local-learning implementation](local_native_language_evidence.json) — Conditional eligibility,native event/gradient parity and32targetoptimizer gate;no predictive quality claim.
 
 
 ## 14. Forward computation teaches more economical credit.

@@ -75,6 +75,8 @@ The second event benchmark now contributes four wins against published single-mo
 temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney
 trigram's 6.537, and 5.510 against 6.100 at 4M tokens: the lead grows with data.
 
+Current development (16 October): a 16M-token four-layer dense hybrid diagnostic scores 5.2699 NLL on the 8,192-target FineWeb development protocol. It is the target for our fully native deep member. An eight-layer, 4.19M-parameter native receiver-race prototype passes local own-write eligibility and packed event/gradient contracts plus a real-token learning gate, with no recurrent BPTT or SSM/attention/MLP carrier. Competitive quality and fully asynchronous optimizer integration follow; no new language benchmark win is claimed. Sources: `investment/depthdata_l4_evidence.json`, `investment/local_native_language_evidence.json`.
+
 **Anonymous interleaved industrial logs.**
 - Benchmark: FAS, the founder's assembly-line simulator.
 - Result: the model beats every generic detector at early prefixes across three seeds.

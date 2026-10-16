@@ -1,0 +1,35 @@
+{
+  "status": "gate_passed",
+  "battle": "R1",
+  "depth": 8,
+  "parameters": 4190387,
+  "targets": 32,
+  "optimizer_step_s": 0.9186700189020485,
+  "timing": {
+    "forward_s": 0.39878005301579833,
+    "backward_s": 0.40023653605021536,
+    "local_credit_s": 0.06384679698385298,
+    "optimizer_s": 0.042614124016836286
+  },
+  "max_rss_kb": 594420,
+  "persistent_storage": {
+    "occupied_receivers": 458,
+    "receiver_state_and_eligibility_bytes": 2260992,
+    "temporal_graph_entries": 0,
+    "scope": "Dense reserved receiver/trace tensors;old trace snapshots,credit packets,parameters,metadata and timestamps additional."
+  },
+  "learning_counts": {
+    "events": 32,
+    "candidate_scores": 16384,
+    "selected_updates": 1024,
+    "alternative_values": 1024,
+    "credit_projections": 10432
+  },
+  "scope": "One32targetTRAIN optimizer gate only;realGPT2FineWeb,8native layers,zeroSSM/attention/MLP backbone layers,own-writeeligibility and sampled local counterfactualroutecredit.No recurrentBPTT,no DEV/TEST or quality/efficiency claim.Current episodic pointers cover this supplied credit lane;cross-batch indexed history and asynchronous optimizer/versioning remain acquisition gaps.",
+  "decision": "Native packed event/gradient parity passes. Integrate carried indexed episodic history and cause messages;then admit the native deep accuracy comparison. No quality win from the numerical gate.",
+  "input_sha256": {
+    "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v1.json": "03251d685afe9de57613f178ba8f8417880def0fec41e850946c617a550505d0",
+    "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v2.json": "322cf31f7c55cf97653fa7efb05f165960c751f92a401acadea3abfe33b3d0e3",
+    "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v3.json": "3824bcd4ff254a28251339d7794a64eebd1ee91f907557f79641414dc1f9ed58"
+  }
+}

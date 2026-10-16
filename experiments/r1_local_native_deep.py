@@ -14,6 +14,7 @@ import torch
 from torch import nn
 from r1_cerl import CERL,word_classes,work_per_target
 from sleeping_machines.local_deep_race import LocalDeepRace
+from sleeping_machines.packed_local_deep_race import PackedLocalDeepRace
 
 
 class NativeEventCauseHead(CERL):
@@ -27,10 +28,11 @@ class NativeEventCauseHead(CERL):
 
 class LocalNativeDeepLM(nn.Module):
     def __init__(self,vocabulary,class_of,class_words,width=64,depth=8,heads=4,pool=16,
-                 concept_units=4096,topk=4,explore=2,dk=32):
+                 concept_units=4096,topk=4,explore=2,dk=32,packed=False):
         super().__init__()
         self.width,self.depth=width,depth
         self.core=LocalDeepRace(width,depth,heads,pool)
+        if packed:self.core=PackedLocalDeepRace(self.core)
         # layers=0 constructs no SSM/attention/MLP carrier. Only the native
         # cause distributions,word law and token embedding are reused.
         self.causes=NativeEventCauseHead(vocabulary,class_of,class_words,d=width,layers=0,

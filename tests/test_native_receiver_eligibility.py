@@ -49,3 +49,12 @@ def test_receiver_batched_credit_equals_individual_messages():
     individual=[trace.credit(g) for trace,g in records]
     for name,value in batched.items():
         assert torch.allclose(value,torch.stack([r[name] for r in individual]).sum(0),atol=1e-12,rtol=1e-12)
+
+
+def test_dormant_float32_receiver_keeps_native_float64_clock_precision():
+    torch.manual_seed(914);unit=TemporalUnit(4,.2)
+    with torch.no_grad():unit.raw_rate.fill_(-28);unit.frequency.copy_(torch.tensor([1.234567,-.876543]))
+    first=torch.randn(4);second=torch.randn(4);state=ReceiverEligibility.empty(unit).propose(unit,first,0.)
+    _,expected=unit.propose(second,state.memory(),torch.tensor(0.,dtype=torch.float64),torch.tensor(1e6,dtype=torch.float64))
+    actual=state.propose(unit,second,1e6).memory()
+    assert torch.allclose(actual,expected,atol=3e-7,rtol=3e-7)

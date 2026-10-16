@@ -38,7 +38,7 @@ class LocalDeepRace(nn.Module):
         y=F.layer_norm(unit.output(memory)+incoming,(unit.payload,))
         return incoming+unit.gain*y*torch.sigmoid(unit.gate(F.gelu(y)))
 
-    def consume(self,message,state,generator,alternative_generator,*,learn=True):
+    def consume(self,message,state,generator,alternative_generator,*,learn=True,noise=None,alternative_noise=None):
         if message.shape!=(self.width,) or not bool(torch.isfinite(message).all()):
             raise ValueError('finite fixed-width native event message required')
         if message.device.type!='cpu':raise ValueError('initial event kernel is CPU-only')
@@ -60,15 +60,17 @@ class LocalDeepRace(nn.Module):
                     scores.append(q@(unit.key+unit.key_read(m))/math.sqrt(self.payload)+unit.clock_bias)
                     if learn:packets.append((unit,trace,m))
                 scores=torch.stack(scores).clamp(-12,12);rates=scores.double().exp()
-                noise=torch.empty(self.pool,dtype=torch.float64).exponential_(generator=generator)
-                first,winner=(noise/rates.detach()).min(0);u=int(winner);unit=units[u]
+                draws=(torch.empty(self.pool,dtype=torch.float64).exponential_(generator=generator)
+                       if noise is None else noise[d,h])
+                first,winner=(draws/rates.detach()).min(0);u=int(winner);unit=units[u]
                 proposed=old[u].propose(unit,incoming,arrival.detach())
                 memory=proposed.memory().requires_grad_(learn)
                 value=self.value(unit,incoming,memory)
                 if learn:
                     packets.append((unit,proposed,memory))
                     if self.pool>1:
-                        pi=rates/rates.sum();alt_noise=torch.empty(self.pool,dtype=torch.float64).exponential_(generator=alternative_generator)
+                        pi=rates/rates.sum();alt_noise=(torch.empty(self.pool,dtype=torch.float64).exponential_(generator=alternative_generator)
+                            if alternative_noise is None else alternative_noise[d,h])
                         alt_times=alt_noise/pi.detach();alt_times[u]=float('inf');j=int(alt_times.argmin())
                         with torch.no_grad():
                             stamp=None if old[j].timestamp is None else arrival.new_tensor(old[j].timestamp)

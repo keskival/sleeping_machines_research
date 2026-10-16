@@ -36,3 +36,22 @@ Before acquisition: measure a real GPT-2/FineWeb optimizer step, native cause co
 Pin the saved one-pass 4M-token L8 hybrid and its exact tokenizer/corpus/scored targets: flagship development NLL 5.8414, 65,528-target NLL 5.6955014474; use exact source-bound flagship result when admitting training. The stronger repeated-data keyed result 5.6012948304 is a second quality target with its different presentation budget disclosed. Completed 16M diagnostics become additional targets at that data budget; never mix the scored slices.
 
 First acquisition must be a fully native deep member with declared persistent-history policy and local credit. Primary pass: beat the saved hybrid on the identical held-out targets. Report all arithmetic/special functions, discovery, losing-value/eligibility/optimizer work, traffic and causal depth; a quality pass alone is not matched-compute supremacy. Report the posterior share and predictive gain delivered by native causes, plus useful depth. No new ablations or dense fits. Gates decide implementation readiness; completed development evidence selects the next integrated repair or scale increase.
+
+
+## Completed real-token gate and next bottleneck
+
+The 4,190,387-parameter, eight-layer model passes one32target GPT2FineWeb TRAIN optimizer gate with finite credit at every depth. Receiver-batched projection preserves the individual-message algebra to1e-12 in float64;the real gate improves5.410→3.285s(758848KiB RSS). Native forward1.222s and local-map backward1.552s dominate;cause-head forward0.056s,trace projection0.113s,optimizer0.265s. At roughly9.7targets/s this backend needs packing before a large acquisition;this CPU diagnostic is not an architectural latency or hardware-efficiency claim. Numerical receiver state plus eligibility occupies2,022,528bytes across458occupied receivers after32events;current event graphs,packets,parameters and metadata are additional. The raw forward counters were captured before trace delivery,so their zero credit-projection field is not a complete-learning count. Sources are bound in investment/local_native_language_evidence.json.
+
+Curie has now implemented posterior-attributed cause messages in CERL(contractv8). The native prototype must feed such messages into native receiver events,not enable the inherited SSM message path. That integration and persistent indexed episodic history remain required before the first competitive acquisition.
+
+
+## Execution repair: packed local receiver events
+
+The real-token profile identifies native per-receiver Python/tensor dispatch and local backward work as the bottleneck,not the normalized word head. Pack the same independent receiver parameters and factored traces into layer/head/receiver banks and evaluate one native layer across its heads. Keep exactly the same scores,exponential clocks,winner writes,one alternative,local trace algebra and message boundaries. This changes execution/storage only;no SSM,attention carrier,shorter memory or reduced mechanism is introduced. Old and proposed traces remain distinct until their local credit packets mature. Charge snapshot/packet memory and all-key scoring. Contracts must compare values,selected state and every mapped parameter gradient under identical supplied clocks before a real-token resource gate.
+
+
+## Packed native gate and current quality target
+
+Under identical supplied clocks,packed execution matches the reference events,selected receiver states,all eligibility fields and every mapped parameter gradient within2e-10 in float64. Ten earlier contracts plus that packed parity contract pass. The real-token packed gate is0.918670s for32targets,594420KiB RSS,with the same4,190,387parameters and the same7.251118untrained TRAIN NLL as the previous gate. Its5.89×CPU gate improvement is an implementation diagnostic,not a hardware or quality win. Counts:16384key scores,1024selectedwrites,1024sampledalternatives and10432receiver eligibility projections. Reserved receiver/trace tensors use2,260,992bytes;current graphs,snapshots,packets,parameters,metadata and timestamps additional. No mechanism was removed.
+
+The completed16M L4 dense hybrid now scores5.2698872238on the8192target flagship DEV protocol(5.1726379972on the separate65528target slice). It is the native model's target at that data budget;5.8414remains the saved one-pass4M budget target. The prototype has no competitive quality result. Next build persistent indexed episodic history and native cause-attributed messages rather than another hybrid fit.
