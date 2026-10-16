@@ -92,3 +92,7 @@ Update this ledger whenever a language depth/composition result completes.
 - Calibrated/global clipping comparison after 2M additional targets: 6.226238 versus 6.231193 on the paired 8,192-target protocol, incremental work ratio 1.0041. This is a small locality-engineering point, not the language quality breakthrough.
 - Current-source CERL/RMR admission gates pass on AWS. Ordered race prediction, residual-memory K2/K8, product-key capacity and messages take priority over further local-learner extensions. Current source-bound runs finish unchanged.
 - [Cross-host synthesis and winning path](../theory/CURIE_SYNTHESIS_AND_WINNING_PATH_20261016.md).
+
+## Composition credit contract, 16 October
+
+The native historical producer replay previously stopped at saved child views. New bounded actual-child replay reconnects lower composers to delayed upper loss, preserving version/role identity and factual computation. Conditional-DAG gradient, work-cap and acquired optimizer/recovery validation is queued, not completed. No architecture-quality verdict or extra acquisition follows. See [contract](../theory/COMPOSITION_LEARNING_CONTRACT.md).

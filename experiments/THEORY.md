@@ -612,3 +612,6 @@ Fully native deep language and local learning(16October): [construction,conditio
 
 
 Standing-memory decay (16 October): [causal stable factorization and queued long-window numerical admission](theory/STABLE_STANDING_MEMORY_DECAY.md). Repairs an overflow hidden by short training lanes; preserves the RMR2 law and parameters. No measured learning improvement or passed replacement gate yet.
+
+
+Composition learning contract (16 October): [information sufficiency, joint expressivity, assembly/producer credit, stability and full work](theory/COMPOSITION_LEARNING_CONTRACT.md). Native implementation adds bounded delayed content replay through actual version-bound children. Independent conditional-DAG, forward/RNG, work-cap and acquired-learner recovery gates are queued; no new prediction result or automatic acquisition.
