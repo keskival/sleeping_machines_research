@@ -133,3 +133,34 @@ The theorem is conditional. Each hypothesis is an empirical property of a traine
 
 The running two-level CERL-H 4M fit measures (a) at ρ ≈ 0.8. The v2 durable-cause repairs target ρ well below 0.5 before
 3 levels and 16M.
+
+## 7. Residual composition in the race algebra (founder: "Are the representations additive …? Could we do residuals some other way, through memories maybe? How about residual memories?")
+
+A residual stream works because its representation is a vector space: each layer adds a delta, and the identity path keeps
+everything lower layers wrote. Our representations live in three different algebras. Each composes natively, but not by
+vector addition.
+- **Hazards are additive.** Superposing independent point processes adds intensities, and a race is exactly that
+  superposition: λ = Σ_c λ_c, and P(c wins) = λ_c / λ. **Residual races:** every level contributes causes that race
+  directly at the token level, λ_token = λ^(1) + λ^(2) + …. For example, a level-2 "continue the cause pattern that
+  followed event j" proposes tokens itself. The identity path is λ^(k>1) = 0, and exact normalisation holds by
+  competing risks. Top-down log-rate bonuses (§4) are the multiplicative counterpart. Residual races add the additive path,
+  so higher levels predict, not only bias.
+- **Memories are additive or unioned.**
+  - Temporal-memory modes are linear superpositions of writes, z = Σ a^(t−s) w_s.
+  - Episodic stores are append-only unions.
+
+  **Residual memory:** one shared, persistent, addressed store. Every level appends typed entries to it (token events,
+  cause events, level tag, duration, surprise) and every level reads it by racing over keys. Consequences:
+  1. *No information loss upward*: level k can point at token entries as well as at compressed causes (the residual's
+     identity path).
+  2. *Cadence decoupling*: each level writes and reads at its own event rate, with the store as the common time-indexed
+     medium (a blackboard, not a lock-step layer grid).
+  3. *Typed heterogeneity*: entries are records with fields, not one flat alphabet.
+  4. *Cross-level explanation*: a token's cause can be a level-2 entry, such as a recurring phrase.
+  5. *Sparsity preserved*: selected writes and race reads; nothing dense crosses levels.
+- **Events compose by superposition and nesting, not sums.** A dense residual over event embeddings is the wrong algebra,
+  and it is how plan-B became a dense hybrid.
+
+**Composition rule:** each level *adds causes* (additive hazards) and *adds entries* (append-only shared memory), and
+removes nothing. CERL-H v2 implements both. The cause-stream characterisation (`analysis/cause_stream_typing.py`) supplies
+the cadence, meaning and information measurements that size it.
