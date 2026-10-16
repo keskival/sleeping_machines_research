@@ -1,0 +1,12 @@
+{"step": 8, "last8_identity_nll": 2.12832710146904}
+{"step": 16, "last8_identity_nll": 1.9074307307600975}
+{"step": 24, "last8_identity_nll": 1.6334663406014442}
+{"step": 32, "last8_identity_nll": 1.4595814943313599}
+{"step": 40, "last8_identity_nll": 1.2346002534031868}
+{"step": 48, "last8_identity_nll": 0.9960658028721809}
+{"step": 56, "last8_identity_nll": 0.8225474022328854}
+{"step": 64, "last8_identity_nll": 0.7659859508275986}
+/workspace/experiments/hierarchy/part_identity_learning.py:88: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  final['materialized_dev_nll']=float(F.cross_entropy(F.linear(xd,model.head.weight,model.head.bias),yd))
+{"dev_nll": 0.692211925983429, "shape_dev_accuracy": 0.501953125}
