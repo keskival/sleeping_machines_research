@@ -87,6 +87,9 @@ learning cost**, followed by larger data/depth and online application confirmati
 **Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
 runs ahead of the best published result:
 
+
+**Developed B4 Wikipedia win:** total NLL **−258.76 ± 37.73 SE** versus the stronger published composite target **−122.62**, on five official splits. All five native scores beat that target. Validation selected the pointer variant; TEST was scored once. This is a recorded-data density comparison, with training/inference work not yet audited. [Source-bound evidence](b4_developed_evidence.json).
+
 | Benchmark | Ours | Best published | At what cost |
 | --- | --- | --- | --- |
 | EasyTPP Taxi (mobility events) | 0.525 ± 0.001 | 0.522 (S2P2, NeurIPS 2025) | 1/12 of the leader's parameters and compute; **reproduced independently on separate hardware** |

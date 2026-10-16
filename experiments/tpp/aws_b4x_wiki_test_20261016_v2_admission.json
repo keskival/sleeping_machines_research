@@ -1,0 +1,17 @@
+{
+  "task_stationarity": "Official stationary fixed-weight B4 protocol;hierarchy is independent stationary scenes.",
+  "state_history": "B4 retains complete within-sequence causal histories. Hierarchy reuses saved features;no resets or actor changes.",
+  "online_adaptation": "No online adaptation in official frozen-test scoring. Diagnostic optimizer gate uses TRAIN only;no new model acquisition.",
+  "resources": "Named AWSsix-slot coordinator,one thread/physical core,RSS3MKiB,VMS12MKiB,8GiB reserve,watchdogs. No external model or purchase.",
+  "restrictions": "Official fixed-weight comparisons do not imply online wins. Microbatch changes stochastic coupling but preserves dropout/jitter laws;deterministic full-update parity tested with both disabled. No context truncation or per-split test selection.",
+  "battle": "B4",
+  "strongest_fighter": "Select pointer/locally-clipped-pointer/mark-memory variant by the frozen five-split validation mean. All15development fits completed,model sources unchanged.",
+  "mechanisms": "Log-domain clocks,recording-cell rules,persistent addressed mark state,episodic pointer race if validation selects it. Auxiliary dense work included;not a full sparse/counterfactual-learning demonstration.",
+  "decision": "Restore already-authorized once-only developed TEST after original scorer failed its source preflight without execution. No recipe,variant-list,split or selection change.",
+  "validation_means": {
+    "ptr": -200.09678026259246,
+    "ptrlc": -190.85077533777218,
+    "marks": -189.61203994232645
+  },
+  "original_blocker": "Old test job reports b4x_score.py source mismatch;no old execution log or result. Separate frozen scorer preserves unrelated current edits."
+}

@@ -1,0 +1,117 @@
+{
+  "status": "completed",
+  "wikipedia": {
+    "total": -258.7608936838084,
+    "se": 37.73336087383084,
+    "time": -276.950189742587,
+    "marks": 18.189296058778602,
+    "target": -122.62,
+    "best_single": -2.67,
+    "margin": 136.14089368380837,
+    "splits": [
+      {
+        "L_T": -147.72635103048242,
+        "L_M": 18.19265730396738,
+        "total": -129.53369372651505,
+        "sequences": 118
+      },
+      {
+        "L_T": -299.02169960656846,
+        "L_M": 18.19876701199818,
+        "total": -280.82293259457026,
+        "sequences": 118
+      },
+      {
+        "L_T": -334.73764631790334,
+        "L_M": 20.172240464383155,
+        "total": -314.5654058535202,
+        "sequences": 118
+      },
+      {
+        "L_T": -245.69713615065058,
+        "L_M": 19.80771553273287,
+        "total": -225.88942061791772,
+        "sequences": 118
+      },
+      {
+        "L_T": -357.5681156073302,
+        "L_M": 14.57509998081143,
+        "total": -342.99301562651874,
+        "sequences": 118
+      }
+    ],
+    "selected": "aws_b4x_wiki_ptr_20261015_v1",
+    "parameters": [
+      55454,
+      55454,
+      55454,
+      55454,
+      55454
+    ],
+    "scope": "Developed attempt,one seed per five official splits;variant selected by aggregate validation only;TEST scored once. Recorded-data density scoring,not a recording-cell/dequantized comparison. Repair follows published frozen-transfer failure;no hardware/matched-compute claim."
+  },
+  "hierarchy": {
+    "rows": {
+      "joint": {
+        "nll": 0.7321584224700928,
+        "calibrated_root_geometry_mse": 0.026253289672008944,
+        "calibrated_root_geometry_skill": 0.495568855434237,
+        "adam_geometry_skill_by_level": [
+          0.9919807924306951,
+          0.8678801932808409,
+          0.7745741312187618,
+          0.7065070943892595,
+          0.4182765828285816,
+          0.564404657767628,
+          0.14460402161094377,
+          -0.12565145566811742
+        ],
+        "decoder_max_gradient": 3.094746681142624e-15
+      },
+      "continued": {
+        "nll": 0.7839027047157288,
+        "calibrated_root_geometry_mse": 0.03987018663654412,
+        "calibrated_root_geometry_skill": 0.23393357059684805,
+        "adam_geometry_skill_by_level": [
+          -3.846566431224346,
+          -9.456245458619026,
+          -19.169128188175787,
+          -19.677429381436706,
+          -22.778150447032655,
+          -10.943376949250592,
+          -14.668726587835664,
+          -14.398595104158181
+        ],
+        "decoder_max_gradient": 3.094746681142624e-15
+      },
+      "decoder_only": {
+        "nll": 0.6866090297698975,
+        "calibrated_root_geometry_mse": 0.04012151162681446,
+        "calibrated_root_geometry_skill": 0.22910460805219535,
+        "adam_geometry_skill_by_level": [
+          0.4886982012540102,
+          0.004134805371054928,
+          0.049715888986483714,
+          -0.11063574146537802,
+          -0.00747969991990316,
+          0.03303111562009753,
+          -0.022013541865456565,
+          -2.9092772174882153
+        ],
+        "decoder_max_gradient": 3.0531133177191805e-15
+      }
+    },
+    "root_geometry_error_reduction": 0.345655519757061,
+    "decision": "Joint learning improves calibrated root geometry but not class transfer;repair relation-specific learning before scaling.",
+    "scope": "Fixed ridge0.01 existing linear geometry heads on saved TRAIN features;DEV scoring,one native seed,no new actor acquisition or TEST access. Geometry skill is not semantic transfer."
+  },
+  "input_sha256": {
+    "experiments/results/tpp_b4/aws_b4x_wiki_test_20261016_v2.json": "e084c96694bc2d6ea033bd359d332b096c074bee3f5da2e7ffdf5e760870f480",
+    "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s0.json": "efde330a4fd26f58728f9a4a4a18210f00b56422393b5fd162eebad75b393c2c",
+    "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s1.json": "f8c56c9e039704b6cb4aa27c24b9691e4bc9110a1b3faa773402059ce3d00744",
+    "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s2.json": "5e61516c8f04c5dea984508dbb30dbd129c1fffd7e8f6fb43451ee74862f61c5",
+    "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s3.json": "5501aab71cb7a03c87c6aa7600bf15fe83a4b4edc770e8e52db9593e3f9dff7d",
+    "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s4.json": "ef51699b40f4dc0020345c5067c3acde86a31c11435cb22456e010a779ddc1c9",
+    "experiments/results/hierarchy/aws_g_hier_grounding_diagnosis_20261016_v1.json": "709d7de685863c19a19b1d439106516c19189c6639fc9f18e9e96e9409c42ec0"
+  }
+}

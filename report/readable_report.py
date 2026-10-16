@@ -5426,6 +5426,12 @@ def benchmark_record_page():
         ['Bosser & Ben Taieb Retweets (NLL/sequence)', f"{B4R['total']['mean']:.2f} ± {B4R['total']['se']:.2f} SE; time {B4R['L_T']['mean']:.2f}; marks {B4R['L_M']['mean']:.2f}", 'bar −538.70; best single model −536.17; time −621.33; marks 82.63', 'Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps)'],
         ['FAS v2 (anonymous interleaved logs)', 'sealed TEST 0.70366 (3 seeds)', 'time-encoded Transformer 0.70432 (3 seeds)', 'TIE; mean gap -0.00066; seed-averaged-rank bootstrap 95% [-0.00834, 0.00747]'],
     ]
+    if 'b4_wikipedia_developed' in e:
+        developed=e['b4_wikipedia_developed']
+        rows.insert(10,['Bosser & Ben Taieb Wikipedia, developed native pointer',
+            f"{developed['test_mean']['total']:.2f} ± {developed['test_total_se']:.2f} SE",
+            f"composite {developed['composite_target']:.2f}; best single {developed['best_single_published']:.2f}",
+            'WIN on recorded-data density; five official splits, aggregate DEV variant selection, TEST once; full work not audited'])
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),
             ('p', 'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '
                   'Own numbers are computed from the result files in the source-bound packet '

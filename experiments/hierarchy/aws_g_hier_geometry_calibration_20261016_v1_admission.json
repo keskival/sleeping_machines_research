@@ -1,0 +1,11 @@
+{
+  "battle": "G-HIER",
+  "task_stationarity": "Stationary geometry scenes,TRAIN/DEV only.",
+  "strongest_fighter": "Frozen acquired native root features,existing32-output linear auxiliary decoder;no actor fit or substitution.",
+  "adaptation": "Analytic ridge0.01 decoder fit on saved TRAIN features. TRAIN-only means/variances;DEV evaluates only. No search or latent identity supervision.",
+  "state_history": "Reuses saved frozen-native representations;all active native jobs finish unchanged. Static target preprocessing is not a temporal model.",
+  "retained": "Actor mechanisms are retained unchanged in acquired/active native models;this fixed decoder-conditioning diagnostic does not exercise their learning.",
+  "restrictions": "One fixed ridge,root features only,finite static geometry sketch. Reconstruction is not semantic transfer. TEST excluded. Centered native variant remains an untrained candidate.",
+  "resources": "One AWSgym slot3,one thread,RSS3MKiB,VMS12MKiB,300s,8GiB reserve. Saved-feature solve32x32 and fixed sparse teacher statistics;no external network fit.",
+  "decision": "Is the frozen decoder failing from optimization/mean conditioning or unreadable native geometry? Prepare source-bound TRAIN normalization before deciding another native learning comparison."
+}

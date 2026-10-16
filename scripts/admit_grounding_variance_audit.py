@@ -1,0 +1,15 @@
+"""Admit a frozen target-statistics decision,not another model fit."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];PLAN=ROOT/'experiments/queue/aws_model_improvement_repair_20261005T161000Z';TAG='aws_g_hier_grounding_variance_20261016_v1'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    pre='experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json';assert json.loads((ROOT/pre).read_text())['status']=='completed'
+    d=dict(battle='G-HIER',task_stationarity='Stationary geometric scenes,TRAIN/DEV only.',strongest_fighter='No model fit:assess the completed frozen-native decoder arm against matched TRAIN-only constant-target statistics.',adaptation='No actor adaptation. Fit per-level target means analytically on TRAIN,matching equal-scene/equal-object auxiliary weights. DEV evaluates only;TEST excluded.',state_history='Static sensor geometry target statistics;no native state reset or model execution is changed.',retained='Native mechanisms remain in active fits;this is a fixed target/decoder diagnostic and cannot substitute for the flagship.',restrictions='Fourier target is finite-dimensional and static;TRAIN opposite-label separation is not general sufficiency. Reconstruction skill is not semantics or quality transfer.',resources='One AWS gym slot3,one thread,RSS3MKiB,VMS12MKiB,300s,host8GiB reserve. Target visits,merges,phase/trig and logical payload recorded. No total-work hardware claim.',decision='How much decoder reconstruction exceeds constant-target prediction,and does sparse target construction preserve all local observable information? Use to interpret pending joint learning;no new quality fit.')
+    admission=ROOT/f'experiments/hierarchy/{TAG}_admission.json';admission.write_text(json.dumps(d,indent=2)+'\n')
+    sources=['experiments/hierarchy/grounding_variance_audit.py','sleeping_machines/sparse_geometry_teacher.py','sleeping_machines/grounded_native_composition.py','experiments/hierarchy/part_combination_task.py','experiments/hierarchy/native_composition_data.py','tests/test_grounding_variance_audit.py','tests/test_sparse_geometry_teacher.py','experiments/theory/SPARSE_GEOMETRY_GROUNDING.md','scripts/admit_grounding_variance_audit.py',str(admission.relative_to(ROOT)),pre]
+    q=ROOT/f'experiments/queue/hierarchy/{TAG}/{TAG}.txt';q.parent.mkdir(parents=True);q.write_text('# G-HIER: '+d['decision']+'\n'+TAG+' experiments/hierarchy/grounding_variance_audit.py --tag '+TAG+'\n')
+    job=dict(name=TAG,kind='hierarchy',queue=str(q.relative_to(ROOT)),queue_sha256=sha(q),source_sha256={f:sha(ROOT/f) for f in sources},result=f'experiments/results/hierarchy/{TAG}.json',requires=[dict(result=pre,stage='grounded_composition_learning')],timeout_s=300,rss_kb=3000000,vms_kb=12000000)
+    marker=PLAN/'addenda'/('000_'+TAG+'.json');marker.write_text(json.dumps(dict(host='ip-172-31-47-132',battle='G-HIER',purpose=d['decision'],parent_manifest_sha256=sha(PLAN/'manifest.json'),slots={'3':[job]}),indent=2)+'\n')
+    print(marker.relative_to(ROOT))
+if __name__=='__main__':main()

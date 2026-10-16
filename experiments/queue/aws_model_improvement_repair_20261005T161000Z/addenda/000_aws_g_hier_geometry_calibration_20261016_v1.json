@@ -1,0 +1,40 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "Is the frozen decoder failing from optimization/mean conditioning or unreadable native geometry? Prepare source-bound TRAIN normalization before deciding another native learning comparison.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_g_hier_geometry_calibration_20261016_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_geometry_calibration_20261016_v1/aws_g_hier_geometry_calibration_20261016_v1.txt",
+        "queue_sha256": "dc0668da1e5cdd4c258dbb1ebce712622f94c2fa865c886ab0e4b20c2ab1a63b",
+        "source_sha256": {
+          "experiments/hierarchy/grounding_decoder_calibration.py": "7f63279a0c56d54c75e7c632ef1b53f30603bc6059161dcbfaa160ce46ee5327",
+          "sleeping_machines/centered_geometry_grounding.py": "3d3ee562fa9373fcc31e02513e21a40cd3e776a52cd8c527d82ec60f599e46cb",
+          "sleeping_machines/sparse_geometry_teacher.py": "5e6c0d2c4a8bd85e897ed25e9cba4b902547c4fc009e9cbcd33c97d986292588",
+          "sleeping_machines/grounded_native_composition.py": "a7d3466981a6b43c6a8b7a5af2e77a502edd7e80a810076535377bfd95d14a57",
+          "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540",
+          "tests/test_geometry_decoder_calibration.py": "b6011582a822280dccf7cddc36d8820defad5dcce10a222e4baa29fde64c37e6",
+          "tests/test_centered_geometry_grounding.py": "ea9b3bed5e2945a9ea62925bcc2ac7aa4d58454624c136ba00dc6e5bed172b59",
+          "scripts/admit_geometry_decoder_calibration.py": "89fde3c08cecbe2226e84027cde256271a7543cb0f73f19d6e4fbf130815fb30",
+          "experiments/theory/GEOMETRY_INNOVATION_CALIBRATION.md": "d76cfb77a223cb8e31c341a5ea36774ec409974d0178faba46f2d183341b457e",
+          "experiments/hierarchy/aws_g_hier_geometry_calibration_20261016_v1_admission.json": "7a73b9ae2e0540553410465073b453a3aadfeb8f6f7b59c8a6f721878c149207",
+          "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json": "19c38fe6728ff41249b711dc092b2630c421fe6fe2e4a008ae58fd9760a1a0e3",
+          "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1_features.npz": "bffc2a39eeebd4bdd9f9f7fd98710c3b6af14fd548a2a1a81e03cdaa1723c9dd"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_geometry_calibration_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json",
+            "stage": "grounded_composition_learning"
+          }
+        ],
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

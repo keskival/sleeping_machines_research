@@ -1,0 +1,11 @@
+{
+  "task_stationarity": "Official stationary fixed-weight B4 protocol;hierarchy is independent stationary scenes.",
+  "state_history": "B4 retains complete within-sequence causal histories. Hierarchy reuses saved features;no resets or actor changes.",
+  "online_adaptation": "No online adaptation in official frozen-test scoring. Diagnostic optimizer gate uses TRAIN only;no new model acquisition.",
+  "resources": "Named AWSsix-slot coordinator,one thread/physical core,RSS3MKiB,VMS12MKiB,8GiB reserve,watchdogs. No external model or purchase.",
+  "restrictions": "Official fixed-weight comparisons do not imply online wins. Microbatch changes stochastic coupling but preserves dropout/jitter laws;deterministic full-update parity tested with both disabled. No context truncation or per-split test selection.",
+  "battle": "B4",
+  "strongest_fighter": "Existing native logspread/addressed-mark/episodic-pointer actor on actual longest32Github TRAIN sequences;row-microbatch2048padded-event budget.",
+  "mechanisms": "Full sequence state and timing history,mark memory,pointer andsilence likelihood retained. Global clipping after accumulated gradients.",
+  "decision": "Repair measured3.389GB RSS failure at a3MKiB cap without shortening histories. One actual update gate only;no replacement fits automatically admitted."
+}

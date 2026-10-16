@@ -55,6 +55,8 @@ Evaluate unknown part combinations with TRAIN-only calibration. Both completed s
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
 
+**B4 Wikipedia developed WIN,16October:** recorded-data totalNLL−258.760894±37.733361SE versus the stronger composite−122.62;all5official splits beat that target. Pointer selected by aggregate5-split validation,TEST once. Sources/model checkpoints match;causality and mark-normalization contracts pass. Github memory repair passes at1072656KiB without history truncation;only6failed fits are restored on slots5/6,with exact pass recovery and automatic validation-selection/TEST publication. Stack Overflow finishes its admitted split4 fits,then frozen once-only scoring. [Current evidence](../experiments/tpp/B4_DEVELOPED_CURRENT.md);[remaining programme](../experiments/BENCHMARK_CONTINUATION.md).
+
 ## Completed acquisition evidence
 
 On the same8,192-target/1,024-history development protocol, the temporally aligned wider native interface improves loss **6.160183 → 6.099337 nats/token** at8M targets. It had lagged at512k and2M. Complete training time is7,734.249 →8,657.820seconds (+11.94%); parameters3.165M →3.821M. Scope: one seed, native models, reused DEV; this is a completed development quality gain with added resources. [Source-bound comparison](../experiments/results/diagnostics/aws_multidepth_8m_error_buckets_20261013_v1.json).

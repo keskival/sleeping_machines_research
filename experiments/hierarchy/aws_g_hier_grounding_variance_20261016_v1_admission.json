@@ -1,0 +1,11 @@
+{
+  "battle": "G-HIER",
+  "task_stationarity": "Stationary geometric scenes,TRAIN/DEV only.",
+  "strongest_fighter": "No model fit:assess the completed frozen-native decoder arm against matched TRAIN-only constant-target statistics.",
+  "adaptation": "No actor adaptation. Fit per-level target means analytically on TRAIN,matching equal-scene/equal-object auxiliary weights. DEV evaluates only;TEST excluded.",
+  "state_history": "Static sensor geometry target statistics;no native state reset or model execution is changed.",
+  "retained": "Native mechanisms remain in active fits;this is a fixed target/decoder diagnostic and cannot substitute for the flagship.",
+  "restrictions": "Fourier target is finite-dimensional and static;TRAIN opposite-label separation is not general sufficiency. Reconstruction skill is not semantics or quality transfer.",
+  "resources": "One AWS gym slot3,one thread,RSS3MKiB,VMS12MKiB,300s,host8GiB reserve. Target visits,merges,phase/trig and logical payload recorded. No total-work hardware claim.",
+  "decision": "How much decoder reconstruction exceeds constant-target prediction,and does sparse target construction preserve all local observable information? Use to interpret pending joint learning;no new quality fit."
+}

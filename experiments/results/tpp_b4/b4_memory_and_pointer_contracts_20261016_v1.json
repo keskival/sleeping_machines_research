@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "tests": 6,
+  "wall_s": 1.5,
+  "scope": "Numerical contracts only;quality comes from separately completed bound results.",
+  "source_sha256": {
+    "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+    "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7",
+    "tests/test_b4_pointer_causality.py": "a38ff6b89424c25048a2977a9cd9606cbca3072edcc97e5fd95b3d1af5832d9a",
+    "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+    "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+    "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+    "experiments/tpp/b4x_score_frozen_20261016.py": "3c1ed2256f27369c9c82cadd44b17c7f27e549bfa586bb332c20fe18d6bb46b2",
+    "experiments/tpp/b4x_score_stack_frozen_20261016.py": "fc04ebedd579e94bd872a375a0b5c48d1930865f911378e1e518368f884147a6",
+    "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6"
+  }
+}

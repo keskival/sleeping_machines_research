@@ -48,7 +48,7 @@
 \begin{minipage}[t]{.235\linewidth}\stat{5 of 5}{datasets won on the public EasyTPP event-prediction leaderboard}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{0.639}{sepsis early-warning AUPRC vs 0.583 for the best published model\up}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{15$\times$}{smaller and cheaper than the state-of-the-art model on Retweet, while more accurate}\end{minipage}\hfill
-\begin{minipage}[t]{.235\linewidth}\stat{40 / 41}{independent runs ahead of the best published result on the nine benchmarks won}\end{minipage}
+\begin{minipage}[t]{.235\linewidth}\stat{40 / 41}{independent runs ahead of the best published result in the established nine-benchmark record}\end{minipage}
 
 \vspace{8mm}
 \begin{callout}
@@ -56,7 +56,7 @@
 \end{callout}
 
 \vspace{5mm}
-{\bfseries 40 of 41 independent runs ahead of the best published result}\par\vspace{-1mm}
+{\bfseries Established nine-benchmark record: 40 of 41 runs ahead}\par\vspace{-1mm}
 \includegraphics[width=\linewidth]{runs.pdf}\par
 \vspace{2mm}
 {\small\color{muted}The benchmark wins use completed runs on official data, scored once on sealed test sets. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
@@ -177,13 +177,14 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 {\small
 \begin{tabularx}{\linewidth}{>{\bfseries}Y r r r}
 \toprule
-Total prediction loss {\color{muted}\footnotesize nats/sequence \down} & Best published model & Sleeping Machines & Improvement \\
+Total prediction loss {\color{muted}\footnotesize nats/sequence \down} & Published reference & Sleeping Machines & Improvement \\
 \midrule
+Wikipedia, developed & $-122.62$ (composite target) & \textbf{$-258.76$} & \textbf{136.14} \\
 Github activity & $-269.70$ (LNM++) & \textbf{$-270.62$} & \textbf{0.92} \\
 LastFM listening & $-697.50$ (LNM++) & \textbf{$-774.64$} & \textbf{77.14} \\
 \bottomrule
 \end{tabularx}}
-{\footnotesize\color{muted}Five official splits; mean total negative log-likelihood per sequence, lower is better. Standard errors across the five splits: Github 48.69; LastFM 48.38.}
+{\footnotesize\color{muted}Five official splits; mean total negative log-likelihood per sequence, lower is better. Standard errors across the five splits: Wikipedia developed 37.73; Github 48.69; LastFM 48.38.}
 
 \vspace{4mm}
 \begin{tile}
@@ -207,14 +208,14 @@ Wikipedia: event type & 144.79 & \textbf{27.65} & 80.9\% lower type loss \\
 \end{tabularx}}
 
 \begin{tile}
-\textbf{Memory that copies what it has seen.} About 90\% of consecutive Wikipedia edits return to the page just edited, while 10--27\% of test pages never appear in training. Our addressed memory stores pages as they occur and can reuse them later in the sequence. Its type-prediction loss is \textbf{27.65 versus 144.79} for the strongest published type predictor. This is a component achievement; Wikipedia's total failed because two sequences received exploding timing hazards.
+\textbf{Memory that copies what it has seen.} About 90\% of consecutive Wikipedia edits return to the page just edited, while 10--27\% of test pages never appear in training. Our addressed memory stores pages as they occur and can reuse them later in the sequence. Its type-prediction loss is \textbf{27.65 versus 144.79} for the strongest published type predictor. The developed pointer model now wins on total loss: \textbf{$-258.76$ versus the $-122.62$ composite target}, with type loss 18.19. All five official splits beat the target; validation selected the variant, then TEST was scored once. The original frozen-transfer failure motivated the stability repair.
 \end{tile}
 
 \vspace{2mm}
 {\small\bfseries Published models and a separate stretch target}\par
-{\small The pre-registered research target combines the best timing score and best type score from \emph{different} published models. No single published model reaches that composite. Github and LastFM beat the strongest published single-model totals while missing this stricter composite target ($-272.90$ and $-849.65$, respectively). The original composite-target verdicts are unchanged. The other five datasets do not have total-score wins.}
+{\small The pre-registered research target combines the best timing score and best type score from \emph{different} published models. No single published model reaches that composite. Github and LastFM beat the strongest published single-model totals while missing this stricter composite target ($-272.90$ and $-849.65$, respectively). The frozen-transfer verdicts stay separately scoped. The developed Wikipedia attempt now also beats this composite target; MOOC, Stack Overflow, MIMIC2 and Retweets still need total-score wins.}
 
-{\footnotesize\color{muted}\textbf{Protocol and complete record.} Validation selected checkpoints; five fixed test splits; numerical guarded reruns as specified in B4. Github has 1.3\% zero gaps: published log-normal references replace zero by $10^{-20}$; our timing model floors at the recording cell. The comparisons above retain those recorded scoring conventions. Full seven-dataset totals, numerical failures, rerun rules and recording-grid audits: \href{../experiments/B4_NTPP_BENCHMARK_PROPOSAL.md}{\texttt{experiments/B4\_NTPP\_BENCHMARK\_PROPOSAL.md}} and the report's B4 loss analysis.}
+{\footnotesize\color{muted}\textbf{Protocol and complete record.} Validation selected checkpoints; five fixed test splits; numerical guarded reruns as specified in B4. Github has 1.3\% zero gaps: published log-normal references replace zero by $10^{-20}$; our timing model floors at the recording cell. The comparisons above retain those recorded scoring conventions; the developed Wikipedia result is a recorded-density win, not a dequantization or interval-score result. Full seven-dataset totals, numerical failures, rerun rules and recording-grid audits: \href{../experiments/B4_NTPP_BENCHMARK_PROPOSAL.md}{\texttt{experiments/B4\_NTPP\_BENCHMARK\_PROPOSAL.md}} and the report's B4 loss analysis. Developed result: \texttt{investment/b4\_developed\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- efficiency
@@ -523,10 +524,10 @@ This protocol differs from the 8,192-token table above.
 views cut messages \textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}, with more timer work
 (2 to 188 scores). A separate world-pixel/scene-relative construction removes pure-translation drift
 exactly with unchanged parameters. These are mechanism/work results, not equal-quality or energy wins.
-The latest native role-memory comparison scores \textbf{0.68661 DEV loss} versus 0.71641 for a carried-view
-extension (constant prior 0.69315). Neither clears the clustered transfer criterion. A fixed local observation
-teacher now trains every native level without changing inference; its optimizer gate passes. The next test
-separates better representations from decoder-only learning. TEST is not model-scored.
+The acquired native role-memory actor scores \textbf{0.68661 DEV loss} versus 0.71641 for a carried-view
+extension (constant prior 0.69315). Neither clears the clustered transfer criterion. Local grounding then reduces calibrated root-geometry error by \textbf{34.6\%} versus a frozen encoder,
+but does not improve class transfer. This separates learned geometry from the next goal: useful part relations.
+TEST is not model-scored in the hierarchy programme.
 
 
 {\footnotesize\color{muted}Scope: keyed model 3.33M parameters, repeated epochs over 4M training tokens; flagship and

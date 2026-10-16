@@ -16,8 +16,11 @@ The project is therefore a proposal for **a common foundation for learning, repr
 
 ## Wins and advances at a glance (9 October 2026)
 
-**Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
+**Established nine-benchmark record**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
 runs ahead of the best published result:
+
+
+**Developed B4 Wikipedia win:** total NLL **−258.76 ± 37.73 SE** versus the stronger published composite target **−122.62**, on five official splits. All five native scores beat that target. Validation selected the pointer variant; TEST was scored once. This is a recorded-data density comparison, with training/inference work not yet audited. [Source-bound evidence](investment/b4_developed_evidence.json).
 
 | Benchmark | Ours | Best published | At what cost |
 | --- | --- | --- | --- |

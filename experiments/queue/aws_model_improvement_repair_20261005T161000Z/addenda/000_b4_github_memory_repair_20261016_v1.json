@@ -1,0 +1,228 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "B4",
+  "purpose": "Finish the documented strongest native developed attempt,select by five-split validation mean,then one frozen TEST evaluation. No weak memory-failed proxy becomes a family verdict.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_b4x_github_ptr_20261016_v3_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s1/aws_b4x_github_ptr_20261016_v3_s1.txt",
+        "queue_sha256": "5d4087c5b38c2864e34c3d1c70235b4d9d1e0f4608e7be2e23f3c763a1a45f4d",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s1.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261016_v3_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s2/aws_b4x_github_ptr_20261016_v3_s2.txt",
+        "queue_sha256": "72575093b5e259900c56342dcfe4d13510b93ce6f827a263c43989a922d30a83",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s2.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptr_20261016_v3_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s3/aws_b4x_github_ptr_20261016_v3_s3.txt",
+        "queue_sha256": "e6a2ace328390957fd2f4c4f73695e1db12aaeccf5de167ace13cd44e63d6c5a",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s3.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_b4x_github_ptrlc_20261016_v3_s1",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s1/aws_b4x_github_ptrlc_20261016_v3_s1.txt",
+        "queue_sha256": "cf6f8cd326395277c57ea992eb94034b1c3942fbb723576ecd0c8a6073a6109d",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s1.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261016_v3_s2",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s2/aws_b4x_github_ptrlc_20261016_v3_s2.txt",
+        "queue_sha256": "53176fba567d14511e1eabbb6d97e28d60ba201b6a628f0b7de9dc72d80c700f",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s2.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_b4x_github_ptrlc_20261016_v3_s3",
+        "kind": "b4_job",
+        "queue": "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s3/aws_b4x_github_ptrlc_20261016_v3_s3.txt",
+        "queue_sha256": "c94acc9be0a12baadefd570b6fae60c3f2e82c6461b95dd80613118699c5ab7e",
+        "source_sha256": {
+          "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json": "d901244d4e22a114a756b9996fca632b06915248321d0ab2f27ca175e4c3ec12",
+          "experiments/tpp/aws_b4_github_memory_repair_20261016_v1_admission.json": "214ac88b018979e6f126200dd2b68824406fde02ad398e3c000811967545bdf1",
+          "experiments/tpp/b4_microbatch_gate_20261016.py": "12add61939af3097f64c549cadebbd2fca07f9261c30d6753635dd67caec594d",
+          "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+          "experiments/tpp/b4x_resumable_micro.py": "f7a12c8af5cea0d2fef8f22684adbdc63194e863503307cdb056ff8b6a878d28",
+          "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+          "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+          "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+          "experiments/tpp/race_tpp_b4x2.py": "2c9ca63c9005ed2601f440ab71523c073ce658e93c10534373889404f2eca371",
+          "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+          "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+          "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+          "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8",
+          "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+          "scripts/admit_b4_github_memory_repair.py": "541a4aa0f1c65a1c3e26bd0c14cd97da3270f93d51350021990317afbe2cb959",
+          "scripts/continue_b4_github_memory_repair.py": "a4128751b1414f75c6d43512c83e1a65dc3c3fd6d16434e748915b4c09dab32a",
+          "tests/test_b4_microbatch_update.py": "7b744aaf6b6927f6dfb8df461d592b5933bc9b90ff094ce59d06ce085ce5938c",
+          "tests/test_b4_resumable_micro.py": "ec74e6c11dfeb36019692e9bfecf0fdcdb2e39ce35e815f2ef057f510794f4c7"
+        },
+        "result": "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s3.json",
+        "requires": [
+          {
+            "result": "experiments/results/tpp_b4/aws_b4_github_microbatch_gate_20261016_v1.json",
+            "stage": "b4_microbatch_gate"
+          }
+        ],
+        "timeout_s": 12600,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

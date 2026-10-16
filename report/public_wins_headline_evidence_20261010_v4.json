@@ -1,6 +1,6 @@
 {
  "status": "completed",
- "date": "2026-10-09",
+ "date": "2026-10-16",
  "easytpp": {
   "taxi": {
    "ours": {
@@ -863,6 +863,81 @@
   "experiments/B2_IRREGULAR_TS.md": "cf6e15efc44524bbd74441f79e5a7d405cf30e2476c7c9b89193dd8c6bb6141b",
   "experiments/tgb/B5_TGB.md": "72352524dc2d58ebec6ceba03890cfa3a98b9493f086616a934d105b8735502f",
   "experiments/B4_NTPP_BENCHMARK_PROPOSAL.md": "aa3dabd3e7cb1461295288c04e489cd4a415df06da32104ea700e8b47dfe6e57",
-  "experiments/fas/B3_DEVELOPMENT_LOG.md": "eceb4f3577be42b3e7d3217d45d168792a4fad31f2d15db193482dfd82dc340b"
+  "experiments/fas/B3_DEVELOPMENT_LOG.md": "eceb4f3577be42b3e7d3217d45d168792a4fad31f2d15db193482dfd82dc340b",
+  "experiments/results/tpp_b4/aws_b4x_wiki_test_20261016_v2.json": "e084c96694bc2d6ea033bd359d332b096c074bee3f5da2e7ffdf5e760870f480"
+ },
+ "b4_wikipedia_developed": {
+  "status": "completed",
+  "battle": "B4",
+  "attempt": "developed",
+  "dataset": "wikipedia_filtered",
+  "chosen_variant": "aws_b4x_wiki_ptr_20261015_v1",
+  "selection": "lowest five-split mean validation total; TEST unused",
+  "val_means": {
+   "aws_b4x_wiki_ptr_20261015_v1": -200.09678026259243,
+   "aws_b4x_wiki_ptrlc_20261015_v1": -190.8507753377722,
+   "aws_b4x_wiki_marks_20261015_v1": -189.61203994232642
+  },
+  "test_splits": [
+   {
+    "L_T": -147.72635103048242,
+    "L_M": 18.19265730396738,
+    "total": -129.53369372651505,
+    "sequences": 118
+   },
+   {
+    "L_T": -299.02169960656846,
+    "L_M": 18.19876701199818,
+    "total": -280.82293259457026,
+    "sequences": 118
+   },
+   {
+    "L_T": -334.73764631790334,
+    "L_M": 20.172240464383155,
+    "total": -314.5654058535202,
+    "sequences": 118
+   },
+   {
+    "L_T": -245.69713615065058,
+    "L_M": 19.80771553273287,
+    "total": -225.88942061791772,
+    "sequences": 118
+   },
+   {
+    "L_T": -357.5681156073302,
+    "L_M": 14.57509998081143,
+    "total": -342.99301562651874,
+    "sequences": 118
+   }
+  ],
+  "test_mean": {
+   "L_T": -276.950189742587,
+   "L_M": 18.189296058778602,
+   "total": -258.7608936838084
+  },
+  "test_total_se": 37.73336087383084,
+  "composite_target": -122.62,
+  "beats_composite_target": true,
+  "best_single_published": -2.67,
+  "beats_best_single": true,
+  "checkpoints_sha256": {
+   "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s0.pt": "92d96c047ef7ec396d026958b3b44f894e99bf772917a269e954f051fa353055",
+   "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s1.pt": "86b9d2acc132e54f0f2aaf2fc746b4cf8a846628a2a494a3c4271dd40d5a2675",
+   "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s2.pt": "d99d6bcad0742cd53619e13fac5350d57cf3daf821e540ae3c424d070bbb4c5a",
+   "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s3.pt": "c88d0cc2672d6ade3d51b0c3f4fa1cc8777491883e1a1b228aa529302a812765",
+   "experiments/results/tpp_b4/aws_b4x_wiki_ptr_20261015_v1_s4.pt": "1734bc8cf33f9e23f3f4371fd22993f2d1b1510ab7b41f22047f8e264bbcd22d"
+  },
+  "source_sha256": {
+   "experiments/tpp/b4x_score_frozen_20261016.py": "3c1ed2256f27369c9c82cadd44b17c7f27e549bfa586bb332c20fe18d6bb46b2",
+   "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+   "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+   "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+   "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+   "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+   "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+   "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+   "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+  },
+  "utc": "2026-10-16T03:57:12Z"
  }
 }

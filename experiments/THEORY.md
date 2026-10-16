@@ -1,3 +1,5 @@
+[Geometry information versus binding](theory/GEOMETRY_INFORMATION_AND_BINDING.md) records the completed34.6%root reconstruction gain without class transfer;stable part identity/nonadditive binding is the next capability. [Sparse teacher](theory/SPARSE_GEOMETRY_GROUNDING.md) and [innovation calibration](theory/GEOMETRY_INNOVATION_CALIBRATION.md) repair measured target work and mean-conditioning defects,not the semantic objective by themselves.
+
 [Compositional geometry learning](theory/COMPOSITIONAL_GEOMETRY_LEARNING.md) derives the exact role-aware child-to-parent target algebra and admits the three-arm native representation-versus-decoder comparison.12contracts pass;no trained quality result inferred.
 
 [Local observable grounding](theory/LOCAL_OBSERVABLE_GROUNDING.md) selects training useful local representations over output gate migration or larger carrier gradients. Continue from the better acquired original role actor;fixed sensor-geometry targets train every local memory without changing inference or exposing latent identities.

@@ -2,9 +2,9 @@
 
 A universal trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report · 14 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report · 16 October 2026
 
-## Public benchmark record — 9 October 2026
+## Public benchmark record — 16 October 2026
 
 Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. Own numbers are computed from the result files in the source-bound packet [public_wins_headline_evidence_20261010_v4.json](report/public_wins_headline_evidence_20261010_v4.json). The reader-facing account of these results, their mechanisms and theory is [Part I](report/I_SCIENCE.md); the appendices below are the experiment record. Earlier versions of this report are in git history.
 
@@ -20,6 +20,7 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | PAM wearable activity | accuracy 0.978 ± 0.007; F1 0.980 | 0.975 / 0.976 (MTM) | Win, 4 of 5 splits ahead; 46,316 vs 873K parameters |
 | TGB tgbn-trade (node affinity, NDCG@10) | 0.8680 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | Win, 3 of 3 pre-registered seeds; 2,107 parameters |
 | TGB tgbl-wiki (link prediction, MRR) | 0.8353 ± 0.0003 | 0.827 (TPNet) | Win, 3 of 3 pre-registered seeds; 7,995 parameters |
+| Bosser & Ben Taieb Wikipedia, developed native pointer | -258.76 ± 37.73 SE | composite -122.62; best single -2.67 | WIN on recorded-data density; five official splits, aggregate DEV variant selection, TEST once; full work not audited |
 | P12 mortality (ICU records) | AUROC 0.871; AUPRC 0.585 | 0.880 / 0.586 (MTM) | Behind on AUROC, level on AUPRC |
 | Bosser & Ben Taieb Wikipedia (NLL/sequence, lower better) | 11421.66 ± 11699.23 SE; time 11394.01; marks 27.65 | bar −122.62 (best time −267.41 + best marks 144.79); best single model −2.67 | Loss of frozen configuration after the guarded split-0 rerun (two TEST sequences with exploding hazards); splits 1–4 average −277.54; marks far ahead (mark memory copies repeated and unseen pages) |
 | Bosser & Ben Taieb MOOC (NLL/sequence, lower better) | -226.85 ± 2.83 SE | bar −239.7 (pre-registered); best single model −233.8 | Loss of frozen one-configuration model; five fixed splits |
@@ -29,6 +30,7 @@ Sealed tests on the official splits, scored once per run; losses and pending ver
 | Bosser & Ben Taieb LastFM (NLL/sequence) | -774.64 ± 48.38 SE; time -1380.05; marks 605.41 | bar −849.65; best single model −697.5; time −1363.78; marks 514.13 | Loss of frozen configuration; below every single published total; time ahead, marks carry the gap |
 | Bosser & Ben Taieb Retweets (NLL/sequence) | -515.16 ± 3.24 SE; time -598.81; marks 83.65 | bar −538.70; best single model −536.17; time −621.33; marks 82.63 | Loss of frozen configuration; marks level, timing carries the gap (1-s grid, 4% zero gaps) |
 | FAS v2 (anonymous interleaved logs) | sealed TEST 0.70366 (3 seeds) | time-encoded Transformer 0.70432 (3 seeds) | TIE; mean gap -0.00066; seed-averaged-rank bootstrap 95% [-0.00834, 0.00747] |
+
 
 ## The model family and its place in the landscape — 4 October 2026
 
@@ -6754,6 +6756,8 @@ Evidence: aws_direct_audit_policy_20261011_s0, aws_direct_audit_policy_20261011_
 
 ## Appendix. B4 repaired learning and mark-memory development
 
+**B4 Wikipedia developed WIN,16October:** recorded-data totalNLL−258.760894±37.733361SE versus the stronger composite−122.62;all5official splits beat that target. Pointer selected by aggregate5-split validation,TEST once. Sources/model checkpoints match;causality and mark-normalization contracts pass. Github memory repair passes at1072656KiB without history truncation;only6failed fits are restored on slots5/6,with exact pass recovery and automatic validation-selection/TEST publication. Stack Overflow finishes its admitted split4 fits,then frozen once-only scoring. [Current evidence](tpp/B4_DEVELOPED_CURRENT.md);[remaining programme](BENCHMARK_CONTINUATION.md).
+
 The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.
 
 | Model | Time loss | Mark loss | Total loss |
@@ -7090,3 +7094,6 @@ Both arms use128presentations/4096raw event presentations. Full fitting/inferenc
 | decoder_only | 0.686609 | 54.69% | 263842 | 4800.0 | 405504.0 | 4800.0 |
 
 All three arms use128presentations/4096raw event presentations. Joint and decoder-only arms add training-only local targets;continued is CE-only. Decoder-only freezes native state rules and needs no losing-route gradients. Frozen-native feature equality is checked. Teacher trig work and decoder MAdds are separately charged in bound files;equal presentations are not iso-compute. Full fitting/inference FLOPs, special-function work and traffic remain unaudited; candidate scores and role MAdds are separate partial ledgers, not complete arithmetic. Native losing-value work, timer scores, role products/transports and logical state are charged in the bound result files. CPU process totals include fitting/scoring; no hardware latency/energy claim.
+
+
+**G-HIER completed representation diagnosis,16October:** joint local grounding improves calibrated root-geometry DEV MSE0.0401215→0.0262533 versus the frozen encoder(34.6% reduction;constant-reference skills22.91%→49.56%). Same fixed TRAIN ridge.01 linear decoder;encoder features really change. Whole-label NLL0.732158(joint),0.783903(continued),0.686609(frozen acquired);no qualified class transfer. Preserve this geometry gain,do not scale unchanged reconstruction. Root frozen Adam decoder0.203460 was worse than TRAIN constant0.052045,so separate decoder conditioning from information. Exact sparse teacher and centered-innovation native candidate pass15contracts;current actors remain unchanged. Next:stable part identity and nonadditive role binding. [Diagnosis](../experiments/results/hierarchy/aws_g_hier_grounding_diagnosis_20261016_v1.json);[theory](theory/GEOMETRY_INFORMATION_AND_BINDING.md).

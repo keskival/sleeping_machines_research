@@ -2245,4 +2245,9 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    import sys
+    if "--current-record" in sys.argv:
+        from rebuild_current_record import build as build_current
+        build_current()
+    else:
+        build()

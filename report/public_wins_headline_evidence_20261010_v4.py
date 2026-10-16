@@ -136,6 +136,10 @@ packet = dict(
     fas_v2='level on validation with the time-encoded Transformer reference (0.702 vs 0.704) at about 1/7 of its parameters; '
            'all selected reference seeds complete; sealed scoring awaits bound cross-host data identity',
     input_sha256=inputs)
+developed_wiki = load('experiments/results/tpp_b4/aws_b4x_wiki_test_20261016_v2.json')
+assert developed_wiki['status'] == 'completed' and developed_wiki['beats_composite_target']
+packet['b4_wikipedia_developed'] = developed_wiki
+packet['date'] = '2026-10-16'
 out = ROOT / 'report/public_wins_headline_evidence_20261010_v4.json'
 out.write_text(json.dumps(packet, indent=1) + '\n')
 print(json.dumps(dict(easy={d: round(easy[d]['mean'], 4) for d in easy}, seeds_ahead=seeds_ahead, pam=packet['pam']['acc']['mean'],

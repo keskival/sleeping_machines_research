@@ -24,9 +24,21 @@ Reuse acquired weights/memory/optimizer state. All nine native/LSTM/Transformer 
 
 Price forecasting remains in development: native leads fixed-window DEV but linear Student-t leads the corrected full-day online aggregate. Diagnose delayed-label interference using chronological streaming fits and non-overlapping revealed-label updates. Every eligible comparator adapts causally, scores before updating, and retains its architecture-appropriate history. Freeze the price protocol/settings before fresh October acquisition; preserve September TEST. Report 10s/60s/300s separately plus the aggregate, exact price cells, full learning work and state. Trade-event likelihood is auxiliary and cannot stand in for a price win. No profit claim follows from likelihood.
 
-## B4: use completed development evidence before test selection
+## B4: close developed attempts with the strongest native fighters
 
-Wikipedia pointer/local-learning final-split development and Github split 1 development are complete; Github split 2 is active. Complete the admitted split coverage, aggregate per-split quality and stability, and select the variant by development data under the existing B4 protocol before any sealed scoring. No per-split test-driven selection or leaderboard claim follows from validation completions.
+Wikipedia's developed pointer model now wins the recorded-data five-split target:
+-258.760894±37.733361SE versus-122.62. Selectors used five-split validation only;
+TEST scored once after restoring an unexecuted source-bound scorer. Publish this
+win separately from the frozen-transfer record.
+
+Github pointer/global and pointer/localclip fits on splits1–3 failed the RSS cap.
+A real longest32sequence TRAIN update now passes at1072656KiB without history
+truncation. Slots5/6 complete only these six cases with row-microbatch2048,
+exact pass checkpoints and bounded validation. Reuse old completed splits0/4
+and all mark-memory fits;select by all-five-split DEV mean,then TEST once through
+the controller. Stack Overflow's split4 fits finish unchanged before frozen
+selection. Other B4 fronts follow their measured mark/timing gap under the
+current [remaining benchmark programme](BENCHMARK_CONTINUATION.md).
 
 ## B3 and investor evidence
 

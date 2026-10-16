@@ -1,0 +1,39 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "G-HIER",
+  "purpose": "How much decoder reconstruction exceeds constant-target prediction,and does sparse target construction preserve all local observable information? Use to interpret pending joint learning;no new quality fit.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_g_hier_grounding_variance_20261016_v1",
+        "kind": "hierarchy",
+        "queue": "experiments/queue/hierarchy/aws_g_hier_grounding_variance_20261016_v1/aws_g_hier_grounding_variance_20261016_v1.txt",
+        "queue_sha256": "b56855651bee3386835336180e5762c18e32d3d596df905abc321c3d80781472",
+        "source_sha256": {
+          "experiments/hierarchy/grounding_variance_audit.py": "bd443572e7ba3b1b6b175266eda24991b83c6ffec14c74209bda242db8804f4f",
+          "sleeping_machines/sparse_geometry_teacher.py": "5e6c0d2c4a8bd85e897ed25e9cba4b902547c4fc009e9cbcd33c97d986292588",
+          "sleeping_machines/grounded_native_composition.py": "a7d3466981a6b43c6a8b7a5af2e77a502edd7e80a810076535377bfd95d14a57",
+          "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540",
+          "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+          "tests/test_grounding_variance_audit.py": "52421ada1bb3247539e830b48bfb8e0987fad512f28928e557123ca58c33e9a6",
+          "tests/test_sparse_geometry_teacher.py": "c31ad005e6b3d450118bbaa037dc9a60a7f7ada9876313133e3134f464db123a",
+          "experiments/theory/SPARSE_GEOMETRY_GROUNDING.md": "c520bfb5d1a7db7cc07c59395788b81357d365b40ac4f4f01f1d0d9929109285",
+          "scripts/admit_grounding_variance_audit.py": "3dfe6e7b54c6adc98982dd27c42734325556dfce01be557be8f96d791da1d24c",
+          "experiments/hierarchy/aws_g_hier_grounding_variance_20261016_v1_admission.json": "11f44c9e2271830ff2be8fc1b7de32d3f3978e6ba5ef21e2642ed6a759258d53",
+          "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json": "19c38fe6728ff41249b711dc092b2630c421fe6fe2e4a008ae58fd9760a1a0e3"
+        },
+        "result": "experiments/results/hierarchy/aws_g_hier_grounding_variance_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json",
+            "stage": "grounded_composition_learning"
+          }
+        ],
+        "timeout_s": 300,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

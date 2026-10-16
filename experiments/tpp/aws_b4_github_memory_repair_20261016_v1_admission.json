@@ -1,0 +1,11 @@
+{
+  "battle": "B4",
+  "stationarity": "Official stationary fixed-weight benchmark;no online verdict.",
+  "strongest_fighter": "Native log-domain clock,addressed mark-memory and episodic-pointer actor. Complete only the3memory-failed splits for global/local clipping;retain the original two completed pointer splits and all five mark-memory splits.",
+  "adaptation": "Same d32/modes16/two layers,batch32,AdamW.003/wd0,200epoch ceiling/30pass validation patience,seed0. Row-microbatch2048,whole-sequence history retained. Local caps calibrated from32TRAIN batches using unclipped accumulated gradients. Dropout/jitter laws retained,coupling changed.",
+  "state_history": "Complete per-sequence physical-time state;no temporal chunking/context truncation. Exact pass checkpoints save model,optimizer,all RNGs,order,caps and history.",
+  "mechanisms": "Native clock densities,silence likelihood,addressed mark memory,episodic pointer races. Auxiliary dense work retained and charged;no claim of full sparse/counterfactual-learning integration.",
+  "restrictions": "Only numerical/memory repair,no architecture/hyperparameter grid. Validation batch1 computes same per-sequence statistic;deterministic parity and stochastic resume contracts pass. No TEST during fitting. Future variant selection uses all five DEV splits.",
+  "resources": "AWSgym slots5/6,one thread each,RSS3MKiB,VMS12MKiB,12600s each,max fit wall10800s;8GiB host reserve. Real longest32sequence gate1072656KiB. Keep slots1/3/4 available for primary hierarchy/language work.",
+  "decision": "Finish the documented strongest native developed attempt,select by five-split validation mean,then one frozen TEST evaluation. No weak memory-failed proxy becomes a family verdict."
+}
