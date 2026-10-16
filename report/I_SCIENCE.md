@@ -80,7 +80,7 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 **Why the developed models improve.** Persistent addressed mark memory is combined with a causal episodic pointer race that can copy a recent event or its observed successor. Numerically stable clock-spread learning and bounded row microbatches preserve training on complete long histories. Earlier completed Github development evidence isolates13.822mark nats/sequence of direct memory-read benefit on28of34DEV sequences,with timing unchanged. Complete recorded-density wins and this mechanism evidence have different scopes. MOOC,MIMIC2 and Retweets remain development targets. [Current B4 evidence](../experiments/tpp/B4_DEVELOPED_CURRENT.md).
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (sealed-test tie: native 0.70366 vs time-encoded Transformer 0.70432 AUROC, three seeds; mean AUROC difference −0.00066; native ahead of the best classical detector's 0.68223).
+characters, P12 mortality AUROC, and real-world tables. FAS v2.1 now wins its fresh sealed confirmation: native0.8009 versus time-encoded Transformer0.7044 AUROC.
 
 ## 2. The model family
 

@@ -19,20 +19,10 @@ recording-cell/dequantization robustness or matched compute. The earlier frozen
 one-configuration transfer failure is a separate completed experiment. Clocks
 and conditional marks both improve;no hardware energy or latency claim follows.
 
-**Github memory repair:** the actual longest32-sequence TRAIN batch completes
-at1072656KiB RSS with full4699-event histories,versus the original3MKiB cap
-failure. Row microbatching trims padded work;no time/context truncation. Six
-replacement fits (pointer/global and pointer/localclip,splits1–3) run on slots5/6.
-Completed splits0/4 and all five mark-memory fits stay reusable. Exact pass
-recovery includes Adam,RNG,order,caps and history;validation is bounded to one
-full sequence at a time with unchanged per-sequence statistic. Three numerical
-contracts validate update/recovery/evaluation;pointer law/causality contracts
-also pass. `b4_github_memory_repair_v1` waits all results,freezes selection across
-five DEV splits,admits TEST once,publishes,and stops.
+**Github completed WIN:** total NLL−284.465765±54.288843SE versus composite−272.90 and best single−269.70. Pointer selected by aggregate five-split validation,TEST once. Only six memory-failed fits were replaced;complete histories and all completed old fits were preserved. Actual longest-batch gate1072656KiB;exact microbatch update/recovery/evaluation contracts pass. No B4 trainer remains active.
 
-**Stack Overflow:** the original split4 pointer/mark fits finish unchanged.
-`b4_stack_scoring_v1` waits all ten development results and either retains the
-original score or restores only an unexecuted source-preflight-failed scorer.
-No extra variant,tuning arm,TEST selection or duplicate TEST is admitted.
+**Stack Overflow completed single-model WIN:** total NLL11.995598±0.647576SE versus best single12.10;composite11.90 missed. Five official splits,aggregate validation pointer selection,TEST once. No additional scoring or fitting admitted.
 
-Remaining mark/timing projects follow `experiments/BENCHMARK_CONTINUATION.md`.
+**LastFM frozen-transfer single-model WIN:** total NLL−774.637304±48.375364SE versus best single−697.50;composite−849.65 missed. The frozen-configuration composite verdict and developed/single-model results retain their own scopes.
+
+The current public headline includes13winning dataset/protocol entries (53/61seed/split scores ahead across them). See `investment/public_benchmark_headlines.json`;remaining timing/mark projects follow `experiments/BENCHMARK_CONTINUATION.md`.

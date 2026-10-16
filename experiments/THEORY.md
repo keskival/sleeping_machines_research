@@ -1,3 +1,5 @@
+**Current composition decision:** [Identity–role interface](theory/IDENTITY_ROLE_INTERFACE.md) records the completed12.5%→50.2% part-shape gain and whole-label0.692212 versus acquired0.686609. Next construction preserves distinct child identities within geometric roles and aligns local teaching to actual issued memory versions;existing bilinear operators alone are insufficient evidence of that interface. Correctness contracts precede one integrated candidate;no new ablations or unchanged longer fit.
+
 [Intrinsic part-identity learning](theory/INTRINSIC_PART_IDENTITY_LEARNING.md) supplies TRAIN-observable identity targets to complete native part memories while whole-label credit learns role relations. One integrated acquisition,no new ablation arms;21contracts and actual paired resource gate pass.
 
 [Observed part ownership](theory/OBSERVED_PART_OWNERSHIP.md) repairs a measured support mismatch:25%of anonymous observed groups never have a pure complete dyadic support. Static native grouping now yields8complete part memories with all8levels/32stages retained and live credit. Nineteen combined contracts;no semantic score inferred.

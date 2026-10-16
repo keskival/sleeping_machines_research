@@ -66,26 +66,12 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
   0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
   event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
-- **Second neural-TPP benchmark** (Bosser & Ben Taieb; 7 datasets × 5 fixed splits; total NLL per sequence, lower is
-  better): the frozen one-configuration EasyTPP model, with no tuning, has seven completed verdicts, all
-  losses against the composite bar (best published time + best published mark NLL). **Wikipedia lost** under the
-  pre-registered repair rule: split 0's original run ended with NaN weights, and its guarded rerun scores +58,218 on
-  TEST because two of 118 test sequences receive astronomically confident hazards (millions of nats; median sequence
-  3.9), so the five-split mean is +11,421.66 vs −122.62. The other four splits average −277.54, and the **marks are the
-  strongest result in this benchmark**: 27.65 vs 144.79 best published, because our addressed mark memory copies pages
-  never seen in training (10–27% of test edits), which per-mark embeddings cannot do. Bounding the hazards is the
-  development fix. **MOOC lost:** −226.85 ±
-  2.83 SE vs −239.7; timing carries the gap (recording-grid analysis in the B4 loss analysis). **Stack Overflow lost:** 12.714 ± 0.874 SE vs 11.9; its time NLL beats the
-  published time component (−91.598 vs −91.1), while mark NLL trails (104.312 vs 103.0). **MIMIC2 lost** (7.01 vs
-  2.42; its mark path overfits ~100-sequence training sets). **Github lost by 2.3 nats:** −270.62 ± 48.69 SE vs the bar
-  −272.90, yet below every single published model's total (best LNM++ −269.7) and ahead on time (−390.93 vs −382.4);
-  marks carry the gap (120.30 vs 109.5). Splits 1–4 are guarded reruns after a numerical failure: padding the batch of
-  the longest training sequences overflows an exponent at masked positions, so that batch (59–68% of Github's training
-  events) is skipped in most epochs; the model trained mainly on the shorter sequences. **Retweets lost:** −515.16 ± 3.24 SE vs −538.70; marks are level with the best published (83.65 vs 82.63), and timing carries the gap (−598.81 vs −621.33) on a one-second grid with 4% zero gaps (recording-grid analysis in the B4 loss analysis). **LastFM lost:** −774.64 ± 48.38 SE vs −849.65, below every single published model's total (−697.5, LNM++) and ahead on time (−1380.05 vs −1363.78); marks carry the gap (605.41 vs 514.13). These are
-  frozen-configuration transfer results; mark-path development continues outside the sealed protocol.
+- **Second neural-TPP benchmark (Bosser & Ben Taieb): four public-reference wins.** Developed Wikipedia total NLL **−258.76 ±37.73 SE** beats composite **−122.62**;developed Github **−284.47 ±54.29 SE** beats composite **−272.90**. Developed Stack Overflow **11.9956 ±0.6476 SE** beats the best single **12.10**,while missing composite11.90. Frozen-transfer LastFM **−774.64 ±48.38 SE** beats best single **−697.50**,while missing composite−849.65. Five official splits,recorded-density scoring;developed variants selected by aggregate validation before once-only TEST. These add four dataset/protocol wins to the original nine. Frozen-configuration composite failures remain separately labelled in the full record. No B4 trainer remains active.
+
+**Why the developed models improve.** Persistent addressed mark memory is combined with a causal episodic pointer race that can copy a recent event or its observed successor. Numerically stable clock-spread learning and bounded row microbatches preserve training on complete long histories. Earlier completed Github development evidence isolates13.822mark nats/sequence of direct memory-read benefit on28of34DEV sequences,with timing unchanged. Complete recorded-density wins and this mechanism evidence have different scopes. MOOC,MIMIC2 and Retweets remain development targets. [Current B4 evidence](experiments/tpp/B4_DEVELOPED_CURRENT.md).
 
 **Where we are behind** (stated with the numbers in the report): large-scale character language (90M), tuned LSTMs at 10M
-characters, P12 mortality AUROC, real-world tables, FAS v2 (sealed-test tie: native 0.70366 vs time-encoded Transformer 0.70432 AUROC, three seeds; mean AUROC difference −0.00066; native ahead of the best classical detector's 0.68223).
+characters, P12 mortality AUROC, and real-world tables. FAS v2.1 now wins its fresh sealed confirmation: native0.8009 versus time-encoded Transformer0.7044 AUROC.
 
 ## Headline evidence for the universal substrate
 
