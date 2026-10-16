@@ -6,7 +6,7 @@ Tero Keski-Valkama and Karoliina Salminen · Research report · 16 October 2026
 
 ## Public benchmark record — 16 October 2026
 
-Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. Own numbers are computed from the result files in the source-bound packet [public_wins_headline_evidence_20261010_v4.json](report/public_wins_headline_evidence_20261010_v4.json). The reader-facing account of these results, their mechanisms and theory is [Part I](report/I_SCIENCE.md); the appendices below are the experiment record. Earlier versions of this report are in git history.
+13 public benchmark wins against best published single-model means; 53 of 61 seed/split scores ahead across those winning entries. B4 Wikipedia/Github also beat composite targets;Stack Overflow/LastFM beat single-model totals. Official splits are not independent trials. Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. Own numbers are computed from the result files in the source-bound packet [public_wins_headline_evidence_20261010_v4.json](report/public_wins_headline_evidence_20261010_v4.json). The reader-facing account of these results, their mechanisms and theory is [Part I](report/I_SCIENCE.md); the appendices below are the experiment record. Earlier versions of this report are in git history.
 
 | Benchmark | Ours (sealed test) | Best published | Verdict and cost |
 | --- | --- | --- | --- |

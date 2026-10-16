@@ -28,31 +28,34 @@ def save(fig, name):
 
 
 def fig_runs():
-    """Every independent run against the best published result."""
-    p19 = json.loads((ROOT / 'experiments/results/irts/b2_final_p19_v3_summary.json').read_text())
-    panels = [('Shopping\n(Taobao)', seeds('b1_final_taobao_v5'), 1.318, 'IFTPP'),
-              ('Taxi rides\n(Taxi)', seeds('b1_final_taxi_v5'), 0.522, 'S2P2'),
-              ('Q&A activity\n(StackOverflow)', seeds('b1_final_stackoverflow_v12'), -2.163, 'S2P2'),
-              ('Social media\n(Retweet)', seeds('b1_final_retweet_v16'), -6.348, 'NHP'),
-              ('Reviews\n(Amazon)', seeds('b1_final_amazon_v18'), 0.781, 'S2P2'),
-              ('Sepsis\n(P19)', [s['auprc'] for s in p19['per_split']], 0.583, 'MTM'),
-              ('Sensors\n(PAM)', [json.loads((ROOT / f'experiments/results/irts/b2_final_pam_v7ema_split{k}.json').read_text())['test']['acc'] for k in range(5)], 0.975, 'MTM'),
-              ('Trade\n(TGB)', [json.loads((ROOT / f'experiments/results/tgb/curie_b5_trade_affinity_sealed_s{s}_20261009T1210Z.json').read_text())['test_ndcg'] for s in range(3)], 0.863, 'NAVIS'),
-              ('Wiki edits\n(TGB)', [json.loads((ROOT / f'experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s{s}_20261009T1340Z.json').read_text())['test_mrr'] for s in range(3)], 0.827, 'TPNet')]
-    fig, axes = plt.subplots(1, len(panels), figsize=(10.8, 2.6))
-    for ax, (name, ours, ref, refname) in zip(axes, panels):
-        ax.axhline(ref, color=PUB, lw=2.2, zorder=2)
-        ax.scatter(range(len(ours)), ours, color=OURS, s=26, zorder=3, edgecolor='white', linewidth=.8)
-        lo, hi = min(ours + [ref]), max(ours + [ref]); pad = (hi - lo) * .35
-        ax.set_ylim(lo - pad, hi + pad); ax.set_xlim(-.8, len(ours) - .2)
-        ax.text(-.7, ref - pad * .12, f'best published\n({refname})', color=MUTED, fontsize=6.6, va='top')
-        ax.set_xticks([]); ax.set_title(name, fontsize=8.6); ax.tick_params(labelsize=7)
-        ax.set_ylabel('AUPRC, 0–1 ↑' if 'P19' in name else 'accuracy, 0–1 ↑' if 'PAM' in name else ('MRR, 0–1 ↑' if 'Wiki' in name else 'NDCG@10, 0–1 ↑') if 'TGB' in name else 'nats per event ↑', fontsize=7.2)
-        ax.grid(axis='x', visible=False)
-        n_above = sum(o > ref for o in ours)
-        ax.text(.5, -.1, f'{n_above} of {len(ours)} ahead', transform=ax.transAxes, ha='center', va='top',
-                fontsize=7.4, color=OURS, fontweight='bold')
-    fig.tight_layout(w_pad=1.0); save(fig, 'runs')
+    """All current winning protocol entries;individual scores and their means."""
+    packet=json.loads((ROOT/'investment/public_benchmark_headlines.json').read_text())
+    labels={'easytpp_taxi':'Taxi\n(EasyTPP)','easytpp_taobao':'Taobao\n(EasyTPP)','easytpp_stackoverflow':'StackOverflow\n(EasyTPP)','easytpp_retweet':'Retweet\n(EasyTPP)','easytpp_amazon':'Amazon\n(EasyTPP)','p19':'Sepsis\n(P19)','pam':'Sensors\n(PAM)','tgb_trade':'Trade\n(TGB)','tgb_wiki':'Wiki\n(TGB)','b4_wikipedia':'Wikipedia\n(B4 developed)','b4_github':'Github\n(B4 developed)','b4_stackoverflow':'Stack Overflow\n(B4 developed)','b4_lastfm':'LastFM\n(B4 frozen)'}
+    fig,axes=plt.subplots(2,7,figsize=(10.8,3.8))
+    for ax,row in zip(axes.flat,packet['rows']):
+        ours,ref=row['values'],row['reference']
+        ax.axhline(ref,color=PUB,lw=2.2,zorder=2)
+        ax.scatter(range(len(ours)),ours,color=OURS,s=20,zorder=3,edgecolor='white',linewidth=.6)
+        ax.scatter([(len(ours)-1)/2],[row['mean']],marker='D',color=ACCENT,s=23,zorder=4)
+        lo,hi=min(ours+[ref]),max(ours+[ref]);pad=max((hi-lo)*.35,1e-6)
+        ax.set_ylim(lo-pad,hi+pad);ax.set_xlim(-.8,len(ours)-.2)
+        ax.set_xticks([]);ax.set_title(labels[row['key']],fontsize=8.1)
+        ax.tick_params(labelsize=6.5);ax.grid(axis='x',visible=False)
+        ax.set_ylabel(row['metric']+(' ↑' if row['higher_is_better'] else ' ↓'),fontsize=6.6)
+        ax.text(.5,-.1,f"{row['ahead']} of {row['runs']} ahead",transform=ax.transAxes,ha='center',va='top',fontsize=7,color=OURS,fontweight='bold')
+    axes.flat[-1].axis('off')
+    axes.flat[-1].text(.1,.8,'Blue: seed/split\nOrange: mean\nGrey: best published\nsingle model',fontsize=8,va='top',color=MUTED)
+    fig.tight_layout(w_pad=.8,h_pad=1.4);save(fig,'runs')
+    fig,axes=plt.subplots(1,9,figsize=(10.8,2.6))
+    for ax,row in zip(axes,packet['rows'][:9]):
+        values,ref=row['values'],row['reference'];lo,hi=min(values+[ref]),max(values+[ref]);pad=(hi-lo)*.35
+        ax.axhline(ref,color=PUB,lw=2.2);ax.scatter(range(len(values)),values,color=OURS,s=26,edgecolor='white',linewidth=.8)
+        ax.set_ylim(lo-pad,hi+pad);ax.set_xlim(-.8,len(values)-.2);ax.set_xticks([])
+        ax.set_title(labels[row['key']],fontsize=8.6);ax.tick_params(labelsize=7);ax.grid(axis='x',visible=False)
+        ax.set_ylabel(row['metric']+' ↑',fontsize=7.2)
+        ax.text(.5,-.1,f"{row['ahead']} of {row['runs']} ahead",transform=ax.transAxes,ha='center',va='top',fontsize=7.4,color=OURS,fontweight='bold')
+    fig.tight_layout(w_pad=1.0);save(fig,'runs_foundational')
+
 
 
 def fig_size():

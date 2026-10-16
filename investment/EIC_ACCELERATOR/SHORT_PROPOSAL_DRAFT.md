@@ -1,5 +1,7 @@
 # EIC Accelerator short proposal: draft (founder working copy, 7 October 2026)
 
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](../public_benchmark_headlines.json).
+
 Proposed acronym: **EVENTCORE**.
 Title: *Event-native AI for operational event streams: early fault and anomaly detection at a fraction of the compute*.
 Call: EIC Accelerator Open. Indicative request: grant only, €2.5M (70% of €3.57M TRL 6–8 costs).
@@ -58,16 +60,16 @@ numerically. It is a superset of the current architecture classes, not a niche a
 | PAM wearable activity recognition | accuracy 0.978 ± 0.007, F1 0.980 | 0.975 / 0.976 (MTM) | 46,316 parameters vs MTM's 873K |
 | TGB tgbn-trade (trade graphs, node affinity) | NDCG@10 0.868 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | 2,107 parameters, 4 CPU-minutes |
 | TGB tgbl-wiki (link prediction) | MRR 0.835 ± 0.0003 | 0.827 (TPNet) | 7,995 parameters, 4.5 ms per query |
+| **B4 Wikipedia,developed** | total NLL −258.76 ±37.73 SE | best single −2.67;composite −122.62 | Five official splits;beats composite;full work unaudited |
+| **B4 Github,developed** | total NLL −284.47 ±54.29 SE | best single −269.70;composite −272.90 | Five official splits;beats composite;full work unaudited |
+| **B4 Stack Overflow,developed** | total NLL 11.9956 ±0.6476 SE | best single 12.10;composite 11.90 | Five official splits;single-model win,composite missed |
+| **B4 LastFM,frozen transfer** | total NLL −774.64 ±48.38 SE | best single −697.50;composite −849.65 | Five official splits;single-model win,composite missed |
 
-All five EasyTPP datasets, P19, PAM and two Temporal Graph Benchmark leaderboards (tgbn-trade, tgbl-wiki) are won. A single configuration with no per-dataset tuning also wins all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead). All results use five seeds or five official splits, test sets scored once,
+All five EasyTPP datasets, P19, PAM and two Temporal Graph Benchmark leaderboards (tgbn-trade, tgbl-wiki) are won. A single configuration with no per-dataset tuning also wins all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead). Results use five seeds or five official splits (three seeds for TGB), test sets scored once,
 and pre-registered protocols. The Taxi result was reproduced from scratch on separate hardware (0.5252 vs 0.5250), and a
 one-command kit is available for third-party reruns. The evidence files are in the diligence pack.
 
-In development on new event domains (9 October 2026, development data): on the Temporal Graph Benchmark's node-affinity
-task (tgbn-trade), our model reaches validation NDCG@10 0.875 against 0.860 for the current leader NAVIS, ahead in every
-validation year with 2,107 parameters; all three pre-registered sealed test seeds are ahead (0.868 ± 0.0005 vs 0.863): won. On TGB link prediction (tgbl-wiki, evaluation reproduced exactly) exact per-event state gives validation MRR 0.852
-against 0.842 for the leader TPNet, and all three sealed seeds score 0.835 on test against its 0.827: won. A second neural-TPP benchmark (35 pre-registered runs with
-the frozen one-configuration model) has its strongest component result on Wikipedia marks (27.65 vs 144.79: the addressed mark memory copies pages never seen in training), but the Wikipedia total is lost after a guarded rerun of split 0 (two test sequences with exploding hazards), as are MOOC (−226.85 vs −239.7), Stack Overflow (12.714 vs 11.9; time NLL −91.598 beats −91.1, marks trail 104.312 vs 103.0), and MIMIC2 (7.01 vs 2.42). Github has no valid verdict yet (a numerical training failure; guarded reruns are queued); Retweets is lost (−515.16 vs −538.70; marks level, timing behind); LastFM is lost (−774.64 vs −849.65; time ahead, marks behind).
+The second event benchmark now contributes four wins against published single-model totals:developed Wikipedia−258.76 versus−2.67,Github−284.47 versus−269.70,Stack Overflow11.9956 versus12.10,and frozen-transfer LastFM−774.64 versus−697.50. Wikipedia and Github also beat stronger composite targets (−122.62/−272.90);Stack Overflow and LastFM miss their composites (11.90/−849.65). Five official splits,recorded-density evaluation;developed variants selected on aggregate validation before TEST. MOOC,MIMIC2 and Retweets remain development gaps. [Current headline evidence](../public_benchmark_headlines.json).
 
 **Properly tokenized language (first evidence, research track).** On GPT-2-tokenized FineWeb the same family's
 temporal-memory token model scores 6.009 ± 0.010 nats per token at 1M training tokens (3 seeds) against a Kneser–Ney

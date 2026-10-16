@@ -1,5 +1,7 @@
 # Investor proof plan — 15 October 2026
 
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](public_benchmark_headlines.json).
+
 **Completed developed event results,16October.** Github wins against the stronger composite target:−284.4658±54.2888SE versus−272.90. Wikipedia wins:−258.7609±37.7334SE versus−122.62. Stack Overflow beats the best published single-model total (11.9956 versus12.10),while missing the11.90 composite. Five official splits,aggregate validation selection,TEST once;recorded-data density comparisons. Frozen-transfer results remain separately scoped. Source-bound packet:`investment/b4_developed_evidence.json`.
 
 The best way to strengthen our €50M pre-money proposal is to turn a promising

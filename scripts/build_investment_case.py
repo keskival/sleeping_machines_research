@@ -18,7 +18,7 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUTS = ['investment/hierarchy_development_evidence.json', 'scripts/prepare_hierarchy_investor_evidence.py', 'investment/market_replication_evidence.json', 'scripts/prepare_market_replication_evidence.py', 'investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json', 'investment/fas_evidence.json', 'investment/language_memory_evidence.json',
+INPUTS = ['investment/public_benchmark_headlines.json', 'investment/b4_developed_evidence.json', 'investment/hierarchy_development_evidence.json', 'scripts/prepare_hierarchy_investor_evidence.py', 'investment/market_replication_evidence.json', 'scripts/prepare_market_replication_evidence.py', 'investment/INVESTMENT_CASE.md', 'investment/PITCH.md', 'investment/online_market_evidence.json', 'investment/protected_language_evidence.json', 'investment/fas_evidence.json', 'investment/language_memory_evidence.json',
           'investment/evidence_20261003.json', 'investment/language_learning_evidence.json',
           'scripts/prepare_language_learning_evidence.py', 'scripts/build_investment_case.py']
 
@@ -68,7 +68,7 @@ def render(stage):
         canvas.saveState()
         canvas.setFont('Inv', 7)
         canvas.setFillColor(colors.HexColor('#666666'))
-        canvas.drawString(18*mm, 12*mm, 'Sleeping Machines | investment thesis | 15 October 2026')
+        canvas.drawString(18*mm, 12*mm, 'Sleeping Machines | investment thesis | 16 October 2026')
         canvas.drawRightString(A4[0]-18*mm, 12*mm, str(doc.page))
         canvas.restoreState()
 

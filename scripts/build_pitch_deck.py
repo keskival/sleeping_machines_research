@@ -525,7 +525,7 @@ def publish(tag):
     if stage.exists() or record.exists(): raise ValueError('Fresh tag required; old artifacts preserved')
     if available()<8192*1024: raise ValueError('Less than 8GiB available')
     verify()
-    inputs=[CONTENT,EVIDENCE,INV/'hierarchy_development_evidence.json',ROOT/'scripts/prepare_hierarchy_investor_evidence.py',INV/'market_replication_evidence.json',INV/'forward_credit_evidence_20261011.json',INV/'language_learning_evidence.json',Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
+    inputs=[CONTENT,EVIDENCE,INV/'public_benchmark_headlines.json',INV/'b4_developed_evidence.json',INV/'hierarchy_development_evidence.json',ROOT/'scripts/prepare_hierarchy_investor_evidence.py',INV/'market_replication_evidence.json',INV/'forward_credit_evidence_20261011.json',INV/'language_learning_evidence.json',Path(__file__).resolve(),INV/'PITCH_DECK_NOTES.md',
             INV/'pitch_deck_benchmarks.csv',INV/'pitch_deck_financial_sensitivity.csv',
             ROOT/'report/I_SCIENCE.md',ROOT/'report/model_family_specification.md',
             ROOT/'report/model_family_members.md',ROOT/'report/model_family_design.md',

@@ -2,7 +2,7 @@
 
 A trainable computing substrate that computes through time
 
-Tero Keski-Valkama and Karoliina Salminen · Research report, Part I · 6 October 2026
+Tero Keski-Valkama and Karoliina Salminen · Research report, Part I · 16 October 2026
 
 This is the reader-facing report: the ambition, the model family and its theory, what the evidence shows on each front, and the experiments that decide the next step. Two companion parts hold the rest. [Part II — Methods and machinery](II_METHODS.md) collects protocols, metric definitions, compute accounting, numerical contracts and implementation checks. [Part III — Experiment record](III_RECORD.md) preserves every experiment entry and the earlier narrative chapters verbatim. `REPORT.md` remains the complete combined record; Parts II and III are generated from it by `report/split_report.py`.
 
@@ -14,10 +14,9 @@ An observation enters through an interface that respects its meaning: a token, a
 
 Each benchmark below is evidence for one front of this program. None of them defines the project.
 
-### Wins and advances at a glance (9 October 2026)
+### Wins and advances at a glance (16 October 2026)
 
-**Nine public leaderboard wins**, each on the official splits with a sealed test scored once per run, 40 of 41 independent
-runs ahead of the best published result:
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](../investment/public_benchmark_headlines.json).
 
 | Benchmark | Ours | Best published | At what cost |
 | --- | --- | --- | --- |
@@ -30,9 +29,12 @@ runs ahead of the best published result:
 | PAM wearable activity recognition | accuracy 0.978, F1 0.980 | 0.975 / 0.976 (MTM) | 46K parameters vs MTM's 873K |
 | **TGB tgbn-trade** (temporal graph: node affinity, world trade) | NDCG@10 0.868 ± 0.0005 | 0.863 (NAVIS, ICLR 2026) | 2,107 parameters, 4 CPU-minutes; **a new domain**: interaction graphs, where heuristics beat every temporal GNN |
 | **TGB tgbl-wiki** (temporal graph: link prediction, Wikipedia edits) | MRR 0.835 ± 0.0003 | 0.827 (TPNet) | 7,995 parameters; exact per-event state; 4.5 ms per query on one CPU thread |
+| **B4 Wikipedia,developed** | total NLL −258.76 ±37.73 SE | best single −2.67;composite −122.62 | Five official splits;beats composite;full work unaudited |
+| **B4 Github,developed** | total NLL −284.47 ±54.29 SE | best single −269.70;composite −272.90 | Five official splits;beats composite;full work unaudited |
+| **B4 Stack Overflow,developed** | total NLL 11.9956 ±0.6476 SE | best single 12.10;composite 11.90 | Five official splits;single-model win,composite missed |
+| **B4 LastFM,frozen transfer** | total NLL −774.64 ±48.38 SE | best single −697.50;composite −849.65 | Five official splits;single-model win,composite missed |
 
-**Rigor:** pre-registered reporting rules; the benchmark's own scorer agrees; a recording-grid audit every win passes; a
-one-command kit for third-party reproduction. **One configuration wins all five:** a single configuration with no per-dataset tuning is ahead of the best
+**Rigor:** official scorers,validation selection and once-only test scoring;the original nine-entry record has recording-grid audits. B4 results use recorded-density scoring,with composite and single-model targets distinguished. A one-command kit supports third-party reproduction. **One configuration wins all five:** a single configuration with no per-dataset tuning is ahead of the best
 published result on all five EasyTPP datasets under a pre-registered protocol (24 of 25 seeds ahead): Taobao 1.397,
 Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
 

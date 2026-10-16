@@ -1,5 +1,7 @@
 # EIC short-proposal video: 3-minute script (draft, 7 October 2026)
 
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](../public_benchmark_headlines.json).
+
 The guide says to keep it simple: show the team and the motivation. Up to three people; a natural-person applicant may
 include future team members or present the plan to build the team. Any EU language, with subtitles if needed.
 

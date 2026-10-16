@@ -1,5 +1,7 @@
 # EIC Accelerator: eligibility, gap analysis and preparation plan (7 October 2026)
 
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](../public_benchmark_headlines.json).
+
 Private founder working document. Rules are taken from the official *EIC Accelerator Guide for Applicants v6.0
 (19 November 2025, Work Programme 2026)* and the EIC Accelerator web page, both checked 7 October 2026. Re-check them
 before submitting; work programmes change yearly, and the 2027 programme will govern full proposals made in 2027.
@@ -34,7 +36,7 @@ before submitting; work programmes change yearly, and the 2027 programme will go
 | Team | Sole founder, strong record: lead ML roles; inventor on 35 published US/EP patent documents | The criterion asks for team competences, governance, gender balance and a gap-filling plan. Name 1–3 intended hires or advisers (learning research, runtime engineering, commercial lead) and show them in the video; letters of commitment help |
 | Early investor traction | €3M round proposed at €50M pre; no closed investment yet | Any signed term sheet, letter of intent or angel commitment directly supports this criterion **and** grant-only eligibility |
 | Need for Union support | Deep-tech, long horizon, compute-heavy validation | State why private markets alone under-fund it: a new architecture class, long validation cycles, and European sovereignty in efficient AI on existing hardware |
-| Evidence of results | Nine public wins: all five EasyTPP datasets (StackOverflow at matched compute, Retweet at 1/15, Taxi at 1/12 of the leader's compute), P19 (AUPRC 0.639 vs 0.583), PAM (accuracy 0.978 vs 0.975), TGB trade graphs (NDCG@10 0.868 vs 0.863), TGB Wikipedia link prediction (MRR 0.835 vs 0.827); Taxi reproduced on separate hardware | Strong; cite the sealed-test protocols and the compute ratios |
+| Evidence of results | 13 public benchmark wins: all five EasyTPP datasets (StackOverflow at matched compute, Retweet at 1/15, Taxi at 1/12 of the leader's compute), P19 (AUPRC 0.639 vs 0.583), PAM (accuracy 0.978 vs 0.975), TGB trade graphs (NDCG@10 0.868 vs 0.863), TGB Wikipedia link prediction (MRR 0.835 vs 0.827),plus B4 Wikipedia/Github/Stack Overflow/LastFM;Taxi reproduced on separate hardware | Strong; cite the sealed-test protocols and the compute ratios |
 
 **Bottom line.**
 - The rules allow applying now as a natural person.

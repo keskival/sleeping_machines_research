@@ -64,9 +64,16 @@ def main():
     summary = dict(packet_bindings=len(pk), packet_ok=sum(r['status'] == 'ok' for r in pk),
                    packet_problems=[r for r in pk if r['status'] != 'ok'],
                    claims=len(cl), claims_ok=sum(r['status'] == 'ok' for r in cl), claim_failures=[r for r in cl if r['status'] != 'ok'])
+    headline_path=ROOT/'investment/public_benchmark_headlines.json'
+    headlines=[]
+    if headline_path.exists():
+        from public_headline_consistency import check
+        headlines=check(ROOT,json.loads(headline_path.read_text()))
+        summary['headline_documents']=len(headlines)
+        summary['headline_failures']=[r for r in headlines if r['status']!='ok']
     print(json.dumps(summary, indent=1))
-    if a.out: Path(a.out).write_text(json.dumps(dict(summary=summary, packets=pk, claims=cl), indent=1) + '\n')
-    sys.exit(0 if not summary['claim_failures'] and not [r for r in pk if r['status'] == 'mismatch'] else 1)
+    if a.out: Path(a.out).write_text(json.dumps(dict(summary=summary, packets=pk, claims=cl, headlines=headlines), indent=1) + '\n')
+    sys.exit(0 if not summary['claim_failures'] and not summary.get('headline_failures') and not [r for r in pk if r['status'] == 'mismatch'] else 1)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
 # EIC short-proposal pitch deck: 10 slides (content outline, 7 October 2026)
 
+**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](../public_benchmark_headlines.json).
+
 There is no EIC template. The guide recommends 2–4 slides on business model, market and growth. Reuse the visual
 style of `investment/PITCH_DECK.json`; keep each slide to one message.
 
@@ -19,7 +21,7 @@ style of `investment/PITCH_DECK.json`; keep each slide to one message.
    - Table: all five EasyTPP datasets (Taobao, Taxi, StackOverflow at matched compute, Retweet at 1/15, Amazon at 0.29×); P19 sepsis; PAM wearables; TGB trade graphs (0.868 vs 0.863); TGB Wikipedia link prediction (0.835 vs 0.827).
    - Taxi reproduced on separate hardware; third-party kit ready.
    - Each row with the best published result and our compute ratio.
-   - Temporal Graph Benchmark (9 Oct): node affinity won (0.868 vs 0.863, 3 sealed seeds); link prediction won (0.835 vs TPNet 0.827, 3 sealed seeds). In development: a second TPP benchmark (frozen configuration: MOOC and Stack Overflow lost; five dataset verdicts pending).
+   - Temporal Graph Benchmark (9 Oct): node affinity won (0.868 vs 0.863, 3 sealed seeds); link prediction won (0.835 vs TPNet 0.827, 3 sealed seeds). Second TPP benchmark:four single-model wins (Wikipedia,Github,Stack Overflow,LastFM);Wikipedia/Github also beat stronger composite targets. Recorded-density scoring,five splits;full work unaudited.
 5. **Proof of efficiency.**
    - Per-event compute vs the leading models: 1/12 (Taxi single model), 1/15 (Retweet), 0.29× (Amazon), 0.92× (Taobao), matched (StackOverflow); PAM at 1/19 of MTM's parameters.
    - Constant cost vs a Transformer's growing context cost.

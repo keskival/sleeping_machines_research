@@ -48,7 +48,7 @@
 \begin{minipage}[t]{.235\linewidth}\stat{5 of 5}{datasets won on the public EasyTPP event-prediction leaderboard}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{0.639}{sepsis early-warning AUPRC vs 0.583 for the best published model\up}\end{minipage}\hfill
 \begin{minipage}[t]{.235\linewidth}\stat{15$\times$}{smaller and cheaper than the state-of-the-art model on Retweet, while more accurate}\end{minipage}\hfill
-\begin{minipage}[t]{.235\linewidth}\stat{40 / 41}{independent runs ahead of the best published result in the established nine-benchmark record}\end{minipage}
+\begin{minipage}[t]{.235\linewidth}\stat{13 wins}{public dataset/protocol results ahead of the best published single-model means}\end{minipage}
 
 \vspace{8mm}
 \begin{callout}
@@ -56,10 +56,10 @@
 \end{callout}
 
 \vspace{5mm}
-{\bfseries Established nine-benchmark record: 40 of 41 runs ahead}\par\vspace{-1mm}
+{\bfseries 13 public benchmark wins: 53 of 61 seed/split scores ahead}\par\vspace{-1mm}
 \includegraphics[width=\linewidth]{runs.pdf}\par
 \vspace{2mm}
-{\small\color{muted}The benchmark wins use completed runs on official data, scored once on sealed test sets. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
+{\small\color{muted}The 13 wins compare dataset/protocol means against the best published single-model result. B4 Wikipedia/Github also beat stronger composite targets; Stack Overflow/LastFM miss those composites. The chart shows individual seeds or official splits,not independent trials. B4 uses recorded-density scoring. The forward-credit development page reports separate private TRAIN-tail experiments, with its scope stated beside the numbers. Each benchmark's unit, and whether higher or lower is better, is stated beside every comparison (\up{} higher is better, \down{} lower is better). Sources: \texttt{experiments/B1\_EASYTPP.md}, \texttt{experiments/B2\_IRREGULAR\_TS.md}, \texttt{report/I\_SCIENCE.md}.}
 
 \newpage
 % ---------------------------------------------------------------- ambition
@@ -139,9 +139,9 @@ Neural-TPP benchmark (TMLR 2023/2025) & Seven event datasets (LastFM listening, 
 % ---------------------------------------------------------------- wins
 \sect{The wins}{Ahead of the best published models}
 
-\begin{center}\includegraphics[width=\linewidth]{runs.pdf}\end{center}
+\begin{center}\includegraphics[width=\linewidth]{runs_foundational.pdf}\end{center}
 \vspace{-3mm}
-{\small\color{muted}Each blue dot is one independent run (EasyTPP: five training seeds; sepsis and wearables: the five official data splits; temporal graphs: three pre-registered seeds), scored once on the sealed test set. The grey line is the best published result. Higher is better in every panel: log-likelihood in nats per event for the EasyTPP datasets, AUPRC (0 to 1) for sepsis, accuracy (0 to 1) for wearables, NDCG@10 and MRR (0 to 1) for the two temporal-graph benchmarks.}
+{\small\color{muted}Nine established results within the 13-win record;four B4 results follow. Blue dots are official seed/split scores;grey lines are best published single-model means. Each panel states its unit and direction. Official splits are not independent trials.}
 
 {\small
 \begin{tabularx}{\linewidth}{>{\bfseries}l r r r Y}
@@ -162,7 +162,7 @@ Wikipedia edits, TGB tgbl-wiki {\color{muted}\footnotesize MRR \up} & 0.827 (TPN
 {\footnotesize\color{muted}$\pm$ is the standard deviation across the runs (five; three on TGB). Compute is multiply-adds per event, counted from S2P2's released code at its published configuration.}
 
 \begin{tile}
-\textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all nine benchmarks, 40 of 41 independent runs are ahead.
+\textbf{One model for the whole benchmark.} A single configuration of our model, with no per-dataset tuning, is ahead of the best published result on all five EasyTPP datasets: Taobao 1.397 vs 1.318, Taxi 0.526 vs 0.522, StackOverflow $-2.144$ vs $-2.163$, Retweet $-6.324$ vs $-6.348$, Amazon 0.802 vs 0.781 (nats per event \up; 24 of 25 runs ahead; pre-registered protocol), at 0.07$\times$ to 1.03$\times$ the leading model's compute. Across all 13 winning dataset/protocol entries, 53 of 61 seed/split scores are ahead (B4 results on the next page).
 \end{tile}
 
 
@@ -283,7 +283,7 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \node[step=150mm,fill=ours!10,anchor=south west] (s1) at (0,0) {\textbf{1. Mathematics: it contains today's leading architectures.} A race of clocks reproduces the attention of Transformers \emph{exactly}, and Mamba-style selective state-space models are exact members of the family (verified numerically to $4\times10^{-13}$). Everything those models can represent, ours can, plus native time and sparsity.};
 \node[step=140mm,fill=ours!20,anchor=south west] (s2) at (10,22) {\textbf{2. The mechanisms work.} Event order learned from 2,000 examples seen once: 99.7\% accuracy vs 33--41\% for Transformers \up. Timing-only discrimination: 95.3\% where any order-only model is capped at 50\% \up. Learning from roads not taken improves language 2.507 $\to$ 2.371 bits per character \down{} for 0.3\% extra training work; more idle capacity improves it further at the same active work.};
 \node[step=130mm,fill=ours!32,anchor=south west] (s3) at (20,48) {\textbf{3. It learns language efficiently.} On 10M characters it beats a Transformer: 1.888 vs 1.908 bits per character \down{} with 0.40$\times$ its training compute. At 90M characters it beats a tuned Transformer-256$\times$4 (1.783 vs 1.811 \down) at 1.06$\times$ its compute.};
-\node[step=120mm,fill=ours!50,anchor=south west,text=white] (s4) at (30,68) {\textbf{4. It wins public benchmarks.} All 5 EasyTPP datasets, P19 sepsis, PAM wearables and two TGB graph leaderboards, at up to 15$\times$ smaller size; 40 of 41 runs ahead.};
+\node[step=120mm,fill=ours!50,anchor=south west,text=white] (s4) at (30,68) {\textbf{4. It wins public benchmarks.} 13 public benchmark wins: five EasyTPP, P19, PAM, two TGB and four Bosser--Ben Taieb results; 53 of 61 seed/split scores ahead. Models up to 15$\times$ smaller on the established event tasks.};
 \node[step=110mm,fill=ours,anchor=south west,text=white] (s5) at (40,82) {\textbf{5. It generalises.} One shared core across four event domains; one memory layer for events and clinical records.};
 \node[step=100mm,fill=ink,anchor=south west,text=white] (s6) at (50,96) {\textbf{Next: scale and transfer.} Large-scale language on GPUs, skill transfer between data types, clockless hardware.};
 \end{tikzpicture}
@@ -308,7 +308,7 @@ S2P2 is shown on one kind of task. Our family wins on four kinds of data (event 
 \textbf{\faLock\ Sealed tests, rules fixed in advance.} Every win uses the benchmark's official data splits. The reporting rule is written down before the test set is touched, and each model is scored on the test set exactly once.
 \end{tile}
 \begin{tile}[height=31mm]
-\textbf{\faRedo\ Independent runs.} Benchmark headline results are averages of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with its spread: 40 of 41 runs are ahead of the best published result.
+\textbf{\faRedo\ Independent runs.} Benchmark headline results are averages of independent runs (five seeds or official splits; three pre-registered seeds on TGB), with their spread: 53 of 61 seed/split scores are ahead across the 13 winning entries. Split scores are not independent trials; wins compare dataset means.
 \end{tile}
 \begin{tile}[height=31mm]
 \textbf{\faServer\ Reproduced on separate hardware.} The Taxi win was reproduced independently on a separate desktop computer with separately downloaded data: 0.5252 vs 0.5250 nats per event \up, every run above S2P2. One-command kits let third parties rerun the EasyTPP and both TGB wins.
@@ -570,8 +570,8 @@ parts of that ambition.
 
 \begin{tile}
 \textbf{Strong prediction with small models.} The public benchmark results lead
-this brief because they are the strongest evidence: nine benchmark wins across
-four kinds of data, including all five datasets of the standard event benchmark,
+this brief because they are the strongest evidence: 13 public benchmark wins across
+the five EasyTPP datasets, clinical and wearable tasks, two graph protocols and four results on a second event benchmark,
 with models up to 15 times smaller. Two preregistered confirmations add a new
 month of market forecasting while every model learns, and a sealed industrial
 fault-detection test: 0.801 versus 0.704 AUROC for the best Transformer. That gives the model family a measured

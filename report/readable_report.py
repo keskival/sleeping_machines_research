@@ -5440,8 +5440,9 @@ def benchmark_record_page():
                 f"{d['test_mean']['total']:.4f} ± {d['test_total_se']:.4f} SE",
                 f"composite {d['composite_target']:.2f}; best single {d['best_single_published']:.2f}",
                 verdict+'; recorded-data density, five splits, aggregate DEV selection, TEST once; full work not audited'])
+    headline=json.loads((ROOT/'investment/public_benchmark_headlines.json').read_text())
     return [('h1', f"Public benchmark record — {date.fromisoformat(e['date']).strftime('%-d %B %Y')}"),
-            ('p', 'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '
+            ('p', f"{headline['wins']} public benchmark wins against best published single-model means; {headline['ahead']} of {headline['runs']} seed/split scores ahead across those winning entries. B4 Wikipedia/Github also beat composite targets;Stack Overflow/LastFM beat single-model totals. Official splits are not independent trials. "+'Sealed tests on the official splits, scored once per run; losses and pending verdicts in the same table. '
                   'Own numbers are computed from the result files in the source-bound packet '
                   f'<a href="{packet.relative_to(ROOT)}">{packet.name}</a>. The reader-facing account of these results, '
                   'their mechanisms and theory is <a href="report/I_SCIENCE.md">Part I</a>; the appendices below are the '

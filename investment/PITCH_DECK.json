@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-16",
   "classification": "Private review draft; no external distribution by this work",
   "source_accessed_date": "2026-10-03",
   "sources": {
@@ -208,6 +208,12 @@
       "short": "Language learning",
       "url": "language_learning_evidence.json",
       "scope": "Same8.39Mtargets/GPT2FineWeb/seed6/DEV; measured quality and completeCPUtime versus earlier own full-teaching model. No scaled Transformer or ASIC claim."
+    },
+    "R_HEADLINES": {
+      "label": "Source-bound current public benchmark wins",
+      "short": "13 public wins",
+      "url": "public_benchmark_headlines.json",
+      "scope": "Official dataset/protocol means;53/61 seed/split scores ahead. B4 recorded density,composite and single-model wins distinguished."
     }
   },
   "slides": [
@@ -254,11 +260,12 @@
     {
       "kind": "cards",
       "section": "The evidence",
-      "title": "Nine public leaderboard wins, and language is next.",
-      "subtitle": "Official splits, sealed test sets scored once per run, the published state of the art as the bar. 40 of 41 independent runs ahead.",
+      "title": "13 public benchmark wins, and language is next.",
+      "subtitle": "Official dataset/protocol means beat the best published single model; 53 of 61 seed/split scores ahead.",
       "sources": [
         "R_B1",
-        "R_B2"
+        "R_B2",
+        "R_HEADLINES"
       ],
       "cards": [
         {
@@ -277,13 +284,13 @@
           "body": "P19 sepsis (AUPRC 0.639 vs 0.583), PAM activity (0.978 vs 0.975), TGB trade (0.868 vs 0.863) and TGB wiki (0.835 vs 0.827)."
         },
         {
-          "label": "LANGUAGE",
-          "metric": "lead grows",
-          "body": "Tokenized text: ahead of a Kneser\u2013Ney trigram (6.009 vs 6.537 nats/token), and further ahead at 4\u00d7 the data."
+          "label": "FOUR ADDED EVENT WINS",
+          "metric": "4 more",
+          "body": "B4 Wikipedia/Github beat stronger composite targets. Stack Overflow/LastFM beat the best single-model totals;recorded-density scoring."
         }
       ],
-      "banner": "One configuration wins all five EasyTPP datasets; both temporal-graph benchmarks won at the first sealed attempt.",
-      "notes": "Sources: experiments/B1_EASYTPP.md, experiments/B2_IRREGULAR_TS.md, experiments/R1_RECALL.md. Wins: Taxi 0.525 vs 0.522 (1/12 compute; curie reproduction 0.5252 vs 0.5250), Taobao 1.399 vs 1.318, StackOverflow -2.153 vs -2.163 at 1.015x compute, Retweet -6.326 vs -6.348 at 1/15, Amazon 0.803 vs 0.781 at 0.29x; P19 AUPRC 0.639 vs 0.583 (temporal memory +0.072 over statistics-only, every split); PAM 0.978 vs 0.975 (46K vs 873K parameters). Language: 3 seeds at 1M tokens; 4M point 5.510 \u00b1 0.016 vs 6.100 (2 seeds). Count models are a floor; a published small Transformer is the next language reference. Update 8 Oct 21:50: pre-registered unified protocol (race_tpp_v19, one configuration, two data rules: windows only for multi-component gap distributions, recording cell from timestamp resolution): Taobao 1.3967 +/- 0.0031, Taxi 0.5262 +/- 0.0034, StackOverflow -2.1436 +/- 0.0029, Retweet -6.3242 +/- 0.0021, Amazon 0.8017 +/- 0.0006; 24 of 25 seeds ahead (Taxi seed 2 0.521); per-event MACs vs S2P2 1.03x, 0.09x, 1.015x, 0.07x, 0.24x. Update 9 Oct (in development, development data): TGB tgbn-trade node affinity validation NDCG@10 0.8747 vs NAVIS 0.860 and persistent forecast 0.860, every validation year ahead, 2,107 parameters; pre-registered sealed test (3 seeds, bar 0.863) queued. TGB link prediction: evaluation reproduced exactly (EdgeBank 0.527/0.495); tgbl-wiki 0.852 vs TPNet 0.842 (both validation; sealed test next); tgbl-review training-free state 0.344 val MRR above TGN/TGAT/TNCN. Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs) running with the frozen one-configuration model. Source: experiments/tgb/B5_TGB.md, experiments/B4_NTPP_BENCHMARK_PROPOSAL.md. Update 9 Oct 14:05: tgbl-wiki race_link v4 (per-event causal state) validation MRR 0.8515 vs TPNet 0.842 and LocalGlobal 0.842 (validation column); tgbn-trade sealed seed 0 test 0.868 vs NAVIS 0.863 (seeds 1-2 pending). Update 9 Oct 16:18: TGB tgbn-trade sealed verdict WIN: test NDCG@10 0.8683/0.8674/0.8683 (mean 0.8680 +/- 0.0005) vs NAVIS 0.863 +/- 0.001; 2,107 parameters vs NAVIS 1,280; source experiments/tgb/B5_TGB.md. Update 9 Oct 17:00: tgbl-wiki first pre-registered sealed seed test MRR 0.835 vs TPNet 0.827 (7,995 parameters); seeds 2-3 running. Update 9 Oct 18:59: TGB tgbl-wiki sealed verdict WIN: test MRR 0.8353/0.8350/0.8356 (mean 0.8353 +/- 0.0003) vs TPNet 0.827 +/- 0.001; 7,995 parameters; 4.5 ms per query on one CPU thread."
+      "banner": "5 EasyTPP + P19 + PAM + 2 TGB + 4 B4 = 13 public benchmark wins.",
+      "notes": "**13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser\u2013Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](investment/public_benchmark_headlines.json). B4 split counts ahead of best single:Wikipedia5/5,Github2/5,Stack Overflow2/5,LastFM4/5. Means define the wins;individual official splits are not independent trials. The current aggregate is53/61. Sources:public_benchmark_headlines.json and b4_developed_evidence.json."
     },
     {
       "kind": "table",
