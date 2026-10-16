@@ -30,6 +30,48 @@
   "input_sha256": {
     "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v1.json": "03251d685afe9de57613f178ba8f8417880def0fec41e850946c617a550505d0",
     "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v2.json": "322cf31f7c55cf97653fa7efb05f165960c751f92a401acadea3abfe33b3d0e3",
-    "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v3.json": "3824bcd4ff254a28251339d7794a64eebd1ee91f907557f79641414dc1f9ed58"
+    "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v3.json": "3824bcd4ff254a28251339d7794a64eebd1ee91f907557f79641414dc1f9ed58",
+    "experiments/results/diagnostics/aws_r1_queryable_native_gate_20261016_v2.json": "cab0312fc404eb471adc98a7162322ec0151da20cc812bacfb9acfbf1100574c",
+    "experiments/results/diagnostics/aws_r1_queryable_native_gate_20261016_v3.json": "2b7cd93a94ffc542b247ae9788d96efd4018f882478f6c096bd13452da170976",
+    "experiments/results/diagnostics/aws_r1_queryable_native_lifetime_gate_20261016_v1.json": "cdce93bb3bcf2c557b64aa025c14a41f067a87af42a472b32814e7f727451962"
+  },
+  "queryable_lower_memory_integration": {
+    "status": "gate_passed",
+    "depth": 8,
+    "parameters": 4297907,
+    "contracts": 5,
+    "reference_32target_s": 5.768037752015516,
+    "packed_32target_s": 2.7263429849408567,
+    "persistent_lifetime_gate": {
+      "targets": 512,
+      "updates": 32,
+      "optimizer_gate_s": 46.87828676402569,
+      "max_rss_kb": 786400,
+      "counts": {
+        "events": 512,
+        "candidate_scores": 262144,
+        "selected_updates": 16384,
+        "alternative_values": 16384,
+        "credit_projections": 299345,
+        "memory_key_scores": 113008,
+        "memory_selected_reads": 7161,
+        "memory_alternative_reads": 7147,
+        "memory_transport_heads": 85876,
+        "memory_pair_products": 57232,
+        "queried_historical_versions": 6660,
+        "memory_gc_removed": 3714
+      },
+      "storage": {
+        "occupied_receivers": 512,
+        "receiver_state_and_eligibility_bytes": 2260992,
+        "temporal_graph_entries": 0,
+        "scope": "Numerical native receiver eligibility plus immutable publication inputs/keys/traces and transitive bound parts. Trace bytes may alias current receiver traces;Python metadata,current graphs and credit packets additional. Per-layer root rings bounded;transitive lineage is not constant memory.",
+        "bound_publications": 382,
+        "bound_edges": 608,
+        "publication_tensor_bytes": 308656,
+        "retained_publication_trace_bytes": 6747648
+      }
+    },
+    "scope": "Engineering integration only,not learned semantic hierarchy or predictive win. Existing hierarchy binding store and joint composer now operate within native language layers;later reads deliver historical receiver own-write credit without recurrentBPTT. Conditional fixed-parameter derivative;changing-parameter history and routing/cross-producer credit approximate. AdamW remains synchronous. CPU timing is an implementation diagnostic,not hardware latency/energy. Reference and packed values/gradients match under identical supplied clocks."
   }
 }

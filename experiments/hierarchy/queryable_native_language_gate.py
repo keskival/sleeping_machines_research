@@ -11,19 +11,24 @@ from sleeping_machines.queryable_local_deep_race import QueryableLocalDeepRace
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--packed',action='store_true');p.add_argument('--targets',type=int,default=32);a=p.parse_args();assert a.targets>=32 and a.targets%16==0
     torch.set_num_threads(1);torch.manual_seed(161016);began=time.monotonic()
     tests=['tests/test_queryable_local_deep_race.py']
+    if a.packed:tests.append('tests/test_packed_queryable_local_deep_race.py')
     assert pytest.main(['-q',*tests])==0
     data=load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin')
     counts=np.bincount(np.asarray(data[:4194304]).astype(np.int64),minlength=50257)
     classes,words=word_classes(counts,256)
     model=LocalNativeDeepLM(50257,classes,words,width=64,depth=8,heads=4,pool=16,concept_units=4096,topk=4,explore=2,dk=32,packed=False)
     model.core=QueryableLocalDeepRace(width=64,depth=8,heads=4,pool=16,publication_capacity=16)
+    if a.packed:
+        from sleeping_machines.packed_queryable_local_deep_race import PackedQueryableLocalDeepRace
+        model.core=PackedQueryableLocalDeepRace(model.core)
     opt=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.01);state=model.new_state()
     g=torch.Generator().manual_seed(13);alt=torch.Generator().manual_seed(14)
-    tokens=torch.from_numpy(np.asarray(data[:33]).astype(np.int64));reports=[];start=time.monotonic()
-    for b,e in [(0,16),(16,32)]:
+    tokens=torch.from_numpy(np.asarray(data[:a.targets+1]).astype(np.int64));reports=[];start=time.monotonic()
+    for b in range(0,a.targets,16):
+        e=b+16
         opt.zero_grad(set_to_none=True)
         nll,obj,state,packets,report=model.stream_nll(tokens[b:e],tokens[b+1:e+1],state,g,alt,stats=True)
         obj.backward();model.deliver_credit(packets,state)
@@ -31,7 +36,7 @@ def main():
         report['assembler_gradient_norms']=[float(m.pair_weight.grad.norm()) for m in model.core.assemblers]
         assert min(report['assembler_gradient_norms'])>0
         torch.nn.utils.clip_grad_norm_(model.parameters(),1.);opt.step();reports.append(report)
-    assert state['events']==state['cause_bank'].count==32
+    assert state['events']==state['cause_bank'].count==a.targets
     names=['events','candidate_scores','selected_updates','alternative_values','credit_projections',
         'memory_key_scores','memory_selected_reads','memory_alternative_reads','memory_transport_heads',
         'memory_pair_products','queried_historical_versions','memory_gc_removed']
@@ -39,13 +44,14 @@ def main():
         'sleeping_machines/bound_native_composition.py','sleeping_machines/relational_frame_composition.py',
         'sleeping_machines/native_receiver_eligibility.py','experiments/r1_local_native_deep.py',
         'experiments/r1_cerl.py',*tests,'experiments/hierarchy/queryable_native_language_gate.py']
-    result=dict(status='completed',battle='R1',stage='queryable_native_language_gate',gate='PASS',
-        targets=32,updates=2,depth=8,parameters=sum(p.numel() for p in model.parameters()),reports=reports,
+    if a.packed:source.append('sleeping_machines/packed_queryable_local_deep_race.py')
+    result=dict(packed=a.packed,status='completed',battle='R1',stage='queryable_native_language_gate',gate='PASS',
+        targets=a.targets,updates=a.targets//16,depth=8,parameters=sum(p.numel() for p in model.parameters()),reports=reports,
         learning_counts={k:state[k] for k in names},storage=model.core.storage(state),
         optimizer_gate_s=time.monotonic()-start,process_wall_s=time.monotonic()-began,
         max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         source_sha256={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in source},
-        scope='Numerical integration only,32GPT2FineWebTRAINtargets,twooptimizersteps.No DEV/TEST,ablation or quality claim.Native8layerreceiver races and lowerpublication query races,versionedbindings,two-rolejointcomposer,own-write eligibility on historical query reads. Local incoming/route credit and parameter-changing history remain approximate;optimizer synchronous. All publication keys scored,selected and sampled losing values decoded. Bounded root rings do not imply constant transitive lineage.')
+        scope='Numerical integration and numerical-state lifetime/resource gate only,GPT2FineWebTRAINtargets and16targetoptimizersteps as recorded.No DEV/TEST,ablation or quality claim.Native8layerreceiver races and lowerpublication query races,versionedbindings,two-rolejointcomposer,own-write eligibility on historical query reads. Local incoming/route credit and parameter-changing history remain approximate;optimizer synchronous. All publication keys scored,selected and sampled losing values decoded. Bounded root rings do not imply constant transitive lineage.')
     out=ROOT/f'experiments/results/diagnostics/{a.tag}.json';assert not out.exists()
     out.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:result[k] for k in ['gate','optimizer_gate_s','max_rss_kb']}),flush=True)
 if __name__=='__main__':main()
