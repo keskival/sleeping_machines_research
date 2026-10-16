@@ -22,7 +22,7 @@ ROLES = ('word_initial', 'continuation', 'punctuation', 'newline', 'other')
 
 def cerl_rows(m, w):
     """Per-target NLL and winning cause type (0 bg, 1 concept, 2 repeat, 3 continue) for one lane w [L+1]."""
-    x = torch.from_numpy(w[None, :-1].astype(np.int64)); y = torch.from_numpy(w[None, 1:].astype(np.int64)); L = x.shape[1]; nll, kind = [], []
+    x = torch.from_numpy(w[None, :-1].astype(np.int64)); y = torch.from_numpy(w[None, 1:].astype(np.int64)); L = x.shape[1]; nll, kind = [], []   # same x object for every chunk (RMR memory cache)
     for r0 in range(0, L, 512):
         r1 = min(r0 + 512, L); out = m.lane_nll(x, y, (r0, r1), stats=False); nll.append(out[0])
         kind.append(m.last_winner[0])
@@ -42,8 +42,15 @@ def main():
     rc = json.loads((ROOT/f'experiments/results/token_language/{a.cerl}.json').read_text()); g = rc['args']
     tr = C.load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); n = g['train_tokens']//g['lane']*g['lane']
     cls, words = C.word_classes(np.bincount(np.asarray(tr[:n]), minlength=50257).astype(float), g['classes'])
-    cm = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)))
-    cm.load_state_dict(torch.load(ROOT/rc['checkpoint'])); cm.eval(); cm.record_winner = True
+    if 'residual-memory' in rc.get('stage', ''):                                                  # RMR (theory 172): CERL readout over a residual memory; winners recorded by the base race
+        import r1_rmr as RM
+        cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'])
+        cm = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)))
+        cm.load_state_dict(torch.load(ROOT/rc['checkpoint'])); cm.eval(); cm.base.record_winner = True; cm.record_winner = True
+        cm.__class__.last_winner = property(lambda self: self.base.last_winner)
+    else:
+        cm = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)))
+        cm.load_state_dict(torch.load(ROOT/rc['checkpoint'])); cm.eval(); cm.record_winner = True
     rd = json.loads((ROOT/f'experiments/results/token_language/{a.dense}.json').read_text()); gd = rd['args']
     dm = DeepKeyedLM(gd['d'], gd['modes'], gd['layers'], gd['heads'], gd['dk'], gd['dropout']); dm.load_state_dict(torch.load(ROOT/rd['checkpoint'])); dm.eval()
     kind = vocab_roles(a.vocab); val = C.load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin'); out = dict(battle='R1', tag=a.tag, cerl=a.cerl, dense=a.dense)
