@@ -1,0 +1,8 @@
+# Battle R1 (Curie order to AWS slots, 16 Oct 19:00; founder: delegate heavier experiments to AWS). Decision: depth ladder of the residual-memory dense stack: K=2 (with Curie's K=4 and AWS K=8) against CERL K=1 at 4M; does loss fall with levels?
+# Stationarity/online: fixed-weight language protocol on a stationary corpus; one pass over fresh lanes (pre-update loss held out); same lanes, order rule, schedule and seed as the Curie CERL/dense references.
+# Fighter rationale: the native race-of-causes member (CERL beat the dense hybrid 5.4665 vs 5.8414 at 3.3x less training compute per token) and its residual-memory depth extension (theory 172: zero-initialised corrections into one additive memory; next level reads memory + correction).
+# State/history: temporal-memory state over each 256-token lane (labelled); episodic pointers over all earlier events of the lane; residual memory = one event slot per token.
+# Retained: race readout with exact credit, sparse addressed episodic pointers, temporal clocks, capacity beyond activity, counterfactual exploration credit, additive residual memory where present. Not included: asynchronous event stack (RMR-2), carried memory across lanes.
+# Restrictions: none for symmetry. Contracts: curie_cerl_contracts_20261016_v9, curie_rmr_contracts_20261016_v1, experiments/rmr_variant_contracts.py.
+# Resources: one thread; RSS < 1.5 GB; 1.4-2.3 s/update (4M: 1.6-2.6 h; 16M: ~6 h); exact resume every 256 updates.
+aws_r1_rmr_dense_K2_4M_s0_20261016_v1 experiments/r1_rmr.py --tag aws_r1_rmr_dense_K2_4M_s0_20261016_v1 --levels 2 --top-m 0 --read-topk 0 --train-tokens 4194304 --seed 0

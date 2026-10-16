@@ -31,19 +31,22 @@ EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk')
 
 class CorrectionLevel(nn.Module):
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
-    def __init__(self, d, dk, top_m, read_topk=0):
-        super().__init__(); self.dk, self.top_m, self.read_topk = dk, top_m, read_topk
+    def __init__(self, d, dk, top_m, read_topk=0, rezero=True):
+        super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero
         self.nq, self.nr = nn.LayerNorm(d), nn.LayerNorm(d); self.q = nn.Linear(d, dk); self.k = nn.Linear(d, dk, bias=False)
         self.log_rate = nn.Parameter(torch.tensor(0.0)); self.g = nn.Sequential(nn.Linear(2*d, 2*d), nn.GELU(), nn.Linear(2*d, 2*d))
-        nn.init.zeros_(self.g[2].weight); nn.init.zeros_(self.g[2].bias)
+        if rezero:                                                                                 # ReZero (Bachlechner et al. 2020): scalar gates at 0, branch at normal init, so gradients flow at step 0
+            self.alpha_new, self.alpha_old = nn.Parameter(torch.tensor(0.0)), nn.Parameter(torch.tensor(0.0))
+        else:
+            nn.init.zeros_(self.g[2].weight); nn.init.zeros_(self.g[2].bias)
 
 
 class RMR(nn.Module):
     cause_msgs = False
 
-    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0):
+    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True):
         super().__init__(); self.base = CERL(V, cls, words, **cerl); d = cerl['d']; self.d = d; self.chunk = chunk
-        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk) for _ in range(levels - 1)); self.aux = None; self._px = None
+        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero) for _ in range(levels - 1)); self.aux = None; self._px = None
 
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
     @staticmethod
@@ -86,6 +89,7 @@ class RMR(nn.Module):
                 a = torch.softmax(S, -1)                                                           # read race over slots s <= t
                 r = a @ base_prime + self.corr_values(a, wr, rows)
                 dnew, dold = lev.g(torch.cat([u, lev.nr(r)], -1)).chunk(2, -1)
+                if lev.rezero: dnew, dold = lev.alpha_new*dnew, lev.alpha_old*torch.tanh(dold)       # old-slot corrections bounded: they refine keys other readers rely on
                 Wc = torch.zeros(B, c1 - c0, T, device=dv)
                 if lev.top_m:                                                                      # write corrections into the top-m older slots it read (0 = dense-layer-style stack: current slot only)
                     ao = a.masked_fill(dist <= 0, 0.0); top = ao.topk(min(lev.top_m, T), -1); Wc = Wc.scatter(-1, top.indices, top.values)
@@ -148,7 +152,7 @@ def main():
     A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
-    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0)
+    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -162,7 +166,7 @@ def main():
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     cls, words = word_classes(np.bincount(train.reshape(-1), minlength=50257).astype(float), a.classes)
     cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore)
-    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk); params = sum(p.numel() for p in model.parameters())
+    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
