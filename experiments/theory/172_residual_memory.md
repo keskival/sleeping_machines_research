@@ -163,3 +163,30 @@ The composition claimed here is all of the following together:
 2. Per-level credit health: write-gradient norms equal across levels at the same slot (P4 identity); firing rates ρ_k;
    standing-slot purity and lifetime.
 3. Compositional scaling: the gain from K = 2 → 4 at 4M vs 16M.
+
+## 9. The layer interface: two inputs, two outputs
+
+Founder: "So, each layer of ours has two inputs, the async events, and the memory."
+
+    layer k :  ( events from layer k−1 ,  total memory M )  →  ( its own events ,  its refinement W^k into M )
+
+| Channel | Carries | Form | Role |
+| --- | --- | --- | --- |
+| Events in | *when* something happened at the grain below, and *what* | typed records (time, type, slot addresses, a few scalars such as surprise or confidence); no dense vectors | drive the layer's fire/wait clock; the addresses tell it where to look |
+| Memory in | *what is known* | the total additive memory A + B + … | read by a race over slots (content) |
+| Events out | when this layer fired and what it decided | typed records with addresses of the slots it read and wrote | the next layer's clock and pointer into memory |
+| Memory out | this layer's refinement | sparse additive writes into existing or dormant slots | content for every reader at every later time |
+
+Consequences:
+- **Timing and content are separate channels.** A Transformer fuses them into one token stream of fixed length; that
+  forces every layer onto the token clock and makes "what is known" the same object as "what just happened". Here a
+  layer's cadence follows its input events: it fires when its clock wins, for example after enough surprise has
+  accumulated. Its knowledge comes from the persistent memory, so a rarely firing layer still sees everything.
+- **Events stay small and typed because content lives in memory.** An event points at slots (addresses); the reader
+  fetches content from memory. Lower-level detail is never squeezed into the event (the 170 §8 bottleneck), and nothing
+  dense travels between layers.
+- **Cadence composes.** A layer that integrates several input events before firing is coarser in time than its input.
+  Layer k's rate ρ_k is a property of its learned clock and the data, measured per level.
+- **Credit through both channels.** Through memory, by the residual identity (P4). Through events, the addresses select
+  which slots a read starts from: a hard choice with inclusion credit (§5), plus the clock's fire probability (expected-write
+  credit, §5).
