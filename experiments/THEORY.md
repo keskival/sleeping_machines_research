@@ -1,3 +1,5 @@
+[Compositional geometry learning](theory/COMPOSITIONAL_GEOMETRY_LEARNING.md) derives the exact role-aware child-to-parent target algebra and admits the three-arm native representation-versus-decoder comparison.12contracts pass;no trained quality result inferred.
+
 [Local observable grounding](theory/LOCAL_OBSERVABLE_GROUNDING.md) selects training useful local representations over output gate migration or larger carrier gradients. Continue from the better acquired original role actor;fixed sensor-geometry targets train every local memory without changing inference or exposing latent identities.
 
 [Predictive responsibility transfer](theory/PREDICTIVE_RESPONSIBILITY_TRANSFER.md) separates useful multiscale access,direct representation credit and earned traffic suppression. Native integrated update and13contracts pass;allocation is not semantic provenance,and no traffic is suppressed.

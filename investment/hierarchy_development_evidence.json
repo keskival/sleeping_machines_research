@@ -26,7 +26,28 @@
       }
     ],
     "nll_improvement": 0.08309117045802505,
-    "scope": "Same scored slice and unique training corpus; different epochs and total work. Quality gain only; no matched-compute or semantic-hierarchy claim."
+    "scope": "Same scored slice and unique training corpus; different epochs and total work. Quality gain only; no matched-compute or semantic-hierarchy claim.",
+    "completed_extensions": [
+      {
+        "tag": "aws_r1_deep_keyed_L16_1M_s0_20261015_v3",
+        "nll": 5.887895942010834,
+        "parameters": 4379605,
+        "epochs": 6
+      },
+      {
+        "tag": "aws_r1_async_hier_b2l3_1M_s0_20261015_v2",
+        "nll": 5.939234233749552,
+        "parameters": 3674212,
+        "epochs": 5
+      },
+      {
+        "tag": "aws_r1_async_hier_b4l4_1M_s0_20261015_v2",
+        "nll": 5.891115794265071,
+        "parameters": 3897561,
+        "epochs": 6
+      }
+    ],
+    "current_selection": "Eight-layer keyed member remains best on this development slice;16layers and both async hierarchy constructions did not improve its5.874106. One seed,different epoch/work totals,no matched-compute or semantic-hierarchy claim."
   },
   "hierarchical_memory": {
     "status": "native FIT learnability demonstrated",
@@ -118,7 +139,12 @@
     "experiments/results/hierarchy/aws_g_hier_nuisance_factorial_20261015_v1.json": "2e4dbd38a533779c1ebc2be3c2670f86bd6a655868c54fd2cdd355849426f2a6",
     "experiments/results/hierarchy/aws_g_hier_coalesced_transfer_diagnosis_20261015_v1.json": "70d0e4cc5cc25fccdff8f693bd75c8052c414734f3b6e7ac0779dca322c3a92b",
     "experiments/results/hierarchy/native_frame_contracts_20261015_v1.json": "4e446124e629d2bc4cf67bda962121f2804b264ede82538e2826758f0369fedb",
-    "experiments/results/hierarchy/aws_g_hier_frame_learning_20261015_v1.json": "98d4769c178c3db6f9e123e4a4b5c64ab46a0331f5a6ee9b98bfc9196fe382c1"
+    "experiments/results/hierarchy/aws_g_hier_frame_learning_20261015_v1.json": "98d4769c178c3db6f9e123e4a4b5c64ab46a0331f5a6ee9b98bfc9196fe382c1",
+    "experiments/results/token_language/aws_r1_deep_keyed_L16_1M_s0_20261015_v3.json": "eec9d69fdbd3df70f56b98eeb6b6429995e2ead6db0f9998acfe63fb93bbd205",
+    "experiments/results/token_language/aws_r1_async_hier_b2l3_1M_s0_20261015_v2.json": "015868e52a52193267261da69b7acf27cc42d3f7046ac78e5e8f66eb4d4561aa",
+    "experiments/results/token_language/aws_r1_async_hier_b4l4_1M_s0_20261015_v2.json": "b99fe79e686524755220fc406bd2187a17c9b860eceb815eb6994f8046e5346a",
+    "experiments/results/hierarchy/aws_g_hier_carried_decision_20261015_v1.json": "551aa49d321320028d7cbbbb4d4c2ad96a5f8c835fc36af790250083d339da1f",
+    "experiments/results/hierarchy/aws_g_hier_grounding_gate_20261015_v1.json": "5d6998c598bc24bb05b3d67bb717214ee7588c3e22710e6abe41b5c7283f1789"
   },
   "composition_engineering": {
     "status": "measured mechanism and resource progress",
@@ -186,7 +212,7 @@
       "prior_nll": 0.6931471805599453,
       "scope": "First coalesced128-update synthetic whole-label fit failed unseen-combination DEV; frozen affine readout did not recover transfer. Recorded separately from native FIT success."
     },
-    "next_gate": "Reuse cached features to diagnose part/role binding and credit with translation controlled. No larger unchanged fit or depth sweep.",
+    "next_gate": "Audit compositional geometry targets,then compare joint native learning,continued native learning,and frozen-encoder decoder learning. No carrier or output-routing quality follow-up;TEST not model-scored.",
     "accounting": "Native candidate and message counts plus extra timer work; changed information paths, no matched-quality, total-FLOP, hardware energy or latency claim.",
     "repaired_transfer_attempt": {
       "dev_raw_nll": 1.2976933717727661,
@@ -221,6 +247,78 @@
         }
       ],
       "scope": "128whole-label TRAIN updates,same synthetic splits/order/optimizer,TRAIN-only calibration. No held-out transfer gain; TEST not model-scored."
+    },
+    "current_native_comparison": {
+      "rows": {
+        "continued": {
+          "nll": 0.6866090297698975,
+          "accuracy": 0.546875,
+          "benefit_over_prior": {
+            "mean": 0.006538153160363436,
+            "bootstrap_95": [
+              -0.025183116644620897,
+              0.03582202652469274
+            ],
+            "groups": 16
+          },
+          "parameters": 255394
+        },
+        "carried": {
+          "nll": 0.716414213180542,
+          "accuracy": 0.453125,
+          "benefit_over_prior": {
+            "mean": -0.023267056792974472,
+            "bootstrap_95": [
+              -0.06542521230876445,
+              0.010810418683104176
+            ],
+            "groups": 16
+          },
+          "parameters": 255401
+        }
+      },
+      "difference": {
+        "mean": -0.02980520948767662,
+        "bootstrap_95": [
+          -0.06448771134018898,
+          0.006537904369179156
+        ],
+        "groups": 16
+      },
+      "decision": "No arm clears the transfer gate. Reuse cached features and diagnosed interaction/support/credit paths;no unchanged larger fit or depth sweep.",
+      "scope": "One-seed synthetic DEV comparison,TRAIN-only heads,observed-geometry clusters,common noise tape. Same128presentations;different parameters/arithmetic. Reused DEV is not sealed confirmation. TEST not model-scored."
+    },
+    "local_observable_grounding": {
+      "parameters": 263842,
+      "work": {
+        "addressed_objects": 238,
+        "external_observations": 64,
+        "candidate_scores": 9600,
+        "selected_updates": 4800,
+        "counterfactual_value_evaluations": 9600,
+        "timer_candidate_scores": 476,
+        "deliveries": 300,
+        "publications": 300,
+        "indexed_reads": 0,
+        "queries": 0,
+        "timer_emissions": 238,
+        "state_tensor_bytes": 205880,
+        "pixel_native_memories": 64,
+        "frame_bound_comparisons": 124,
+        "frame_coordinate_subtractions": 256,
+        "role_slots": 236,
+        "role_view_tensor_bytes": 32096,
+        "role_projection_madds": 811008,
+        "role_pair_products": 2944,
+        "role_transport_calls": 1248,
+        "grounding_reads": 238,
+        "grounding_decoder_madds": 243712,
+        "grounding_target_phases": 4096,
+        "grounding_target_row_tests": 7616,
+        "grounding_trig_evaluations": 8192
+      },
+      "scope": "One observed TRAIN pair from acquired continued relational actor. Whole CE plus0.1fixed local geometry reconstruction. Two diagnostic autograd traversals plus actual backward per scene;no quality or training-efficiency claim. Native inference unchanged;teacher and decoders are training-only. No hidden IDs,DEV or TEST.",
+      "capability": "Training-only fixed local observation targets give direct native memory credit at every level;native inference unchanged. No semantic transfer result."
     }
   }
 }

@@ -59,6 +59,23 @@ def main():
         scope='128whole-label TRAIN updates,same synthetic splits/order/optimizer,TRAIN-only calibration. No held-out transfer gain; TEST not model-scored.')
     packet['composition_engineering']['next_gate']='Reuse cached features to diagnose part/role binding and credit with translation controlled. No larger unchanged fit or depth sweep.'
     packet['input_sha256'][repaired_path]=hashlib.sha256((ROOT/repaired_path).read_bytes()).hexdigest()
+    extension_names=['aws_r1_deep_keyed_L16_1M_s0_20261015_v3.json','aws_r1_async_hier_b2l3_1M_s0_20261015_v2.json','aws_r1_async_hier_b4l4_1M_s0_20261015_v2.json']
+    extension=[]
+    for name in extension_names:
+        path='experiments/results/token_language/'+name;r=json.loads((ROOT/path).read_text())
+        assert r['status']=='completed' and r['score_65528']['targets']==65528 and r['args']['train_tokens']==1048576
+        extension.append(dict(tag=r['tag'],nll=r['score_65528']['nll'],parameters=r['parameters'],epochs=r['epochs_run']))
+        packet['input_sha256'][path]=hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
+    packet['language_depth']['completed_extensions']=extension
+    packet['language_depth']['current_selection']='Eight-layer keyed member remains best on this development slice;16layers and both async hierarchy constructions did not improve its5.874106. One seed,different epoch/work totals,no matched-compute or semantic-hierarchy claim.'
+    decision_path=prefix+'aws_g_hier_carried_decision_20261015_v1.json'
+    decision=json.loads((ROOT/decision_path).read_text());assert decision['status']=='completed'
+    packet['composition_engineering']['current_native_comparison']=dict(rows={arm:{key:row[key] for key in ['nll','accuracy','benefit_over_prior','parameters']} for arm,row in decision['rows'].items()},difference=decision['relational_nll_gain'],decision=decision['decision'],scope=decision['scope'])
+    packet['input_sha256'][decision_path]=hashlib.sha256((ROOT/decision_path).read_bytes()).hexdigest()
+    local_path=prefix+'aws_g_hier_grounding_gate_20261015_v1.json';local=json.loads((ROOT/local_path).read_text());assert local['status']=='completed'
+    packet['composition_engineering']['local_observable_grounding']=dict(parameters=local['parameters'],work=local['work'],scope=local['scope'],capability='Training-only fixed local observation targets give direct native memory credit at every level;native inference unchanged. No semantic transfer result.')
+    packet['input_sha256'][local_path]=hashlib.sha256((ROOT/local_path).read_bytes()).hexdigest()
+    packet['composition_engineering']['next_gate']='Audit compositional geometry targets,then compare joint native learning,continued native learning,and frozen-encoder decoder learning. No carrier or output-routing quality follow-up;TEST not model-scored.'
     (ROOT/'investment/hierarchy_development_evidence.json').write_text(json.dumps(packet,indent=2)+'\n')
-    print('Bound three language depths, five frozen native variants, engineering gates and 76 contracts.')
+    print('Bound completed language depth/async extensions,native composition comparison and local observable learning gate.')
 if __name__=='__main__':main()
