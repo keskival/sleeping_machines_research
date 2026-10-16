@@ -96,3 +96,7 @@ Update this ledger whenever a language depth/composition result completes.
 ## Composition credit contract, 16 October
 
 The native historical producer replay previously stopped at saved child views. New bounded actual-child replay reconnects lower composers to delayed upper loss, preserving version/role identity and factual computation. Conditional-DAG gradient, work-cap and acquired optimizer/recovery validation is queued, not completed. No architecture-quality verdict or extra acquisition follows. See [contract](../theory/COMPOSITION_LEARNING_CONTRACT.md).
+
+## Empirical composition-credit decision, 16 October
+
+Analytical audit exposes first-order route-loss bias and distinguishes it from exact selected-mixture and soft-read credit. A new inverse-inclusion sampled path carries content VJPs through full available recorded abstraction depth at <=depth-1 extra reads/root. After analytical and acquired-learner gates, two complete native learners reuse one frozen acquired checkpoint for the same65536additionalTRAINtargets and8192causal onlineDEVtargets; canonical frozen8192/1024evaluation is separate. This tests content-credit coverage, not an exact historical route teacher. Gates and comparison are queued; no predictive advantage claimed. [Audit/protocol](../theory/COMPOSITION_CREDIT_ANALYTICAL_AUDIT.md).

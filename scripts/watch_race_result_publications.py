@@ -7,12 +7,12 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];PLAN=ROOT/'experiments/queue/aws_model_improvement_repair_20261005T161000Z'
 def main():
  while True:
-  for packet in ['000_aws_r1_curie_ordered_program_20261016_v1.json','000_aws_r1_curie_rmr2_followup_20261016_v1.json','000_aws_r1_rmr2_stable_decay_20261016_v1.json','000_aws_r1_000_composition_learning_contract_20261016_v1.json']:
+  for packet in ['000_aws_r1_curie_ordered_program_20261016_v1.json','000_aws_r1_curie_rmr2_followup_20261016_v1.json','000_aws_r1_rmr2_stable_decay_20261016_v1.json','000_aws_r1_000_composition_learning_contract_20261016_v1.json','000_aws_r1_0000_credit_analytic_20261016_v1.json','000_aws_r1_0001_sampled_composition_gate_20261016_v1.json','000_aws_r1_001_composition_empirical_20261016_v1.json']:
    admission=PLAN/'addenda'/packet
    if not admission.exists():continue
    for jobs in json.loads(admission.read_text())['slots'].values():
     for j in jobs:
-     result=ROOT/j['result'];receipt=ROOT/f'experiments/results/diagnostics/{j["name"]}.publication_validation.json'
+     result=ROOT/j['result'];receipt=ROOT/f'.git/race-result-validation/{j["name"]}.json'
      if not result.exists() or receipt.exists():continue
      try:
       r=json.loads(result.read_text());assert r['status']=='completed'
@@ -21,8 +21,8 @@ def main():
       with open('/tmp/aws-language-publication.lock','a') as lock:
        fcntl.flock(lock,fcntl.LOCK_EX)
        if receipt.exists():continue
-       receipt.write_text(json.dumps(row,indent=2)+'\n')
-       candidates=[result,receipt,admission,ROOT/j['queue'],ROOT/f'experiments/queue/logs/{j["name"]}.log']
+       receipt.parent.mkdir(parents=True,exist_ok=True);receipt.write_text(json.dumps(row,indent=2)+'\n')
+       candidates=[result,admission,ROOT/j['queue'],ROOT/f'experiments/queue/logs/{j["name"]}.log']
        files=[str(p.relative_to(ROOT)) for p in candidates if p.exists()]
        subprocess.run(['git','add','-f','--',*files],cwd=ROOT,check=True)
        subprocess.run(['git','commit','--only','-m','Preserve completed race result with immutable admission '+j['name'],'--',*files],cwd=ROOT,check=True)

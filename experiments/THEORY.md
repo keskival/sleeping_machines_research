@@ -615,3 +615,6 @@ Standing-memory decay (16 October): [causal stable factorization and queued long
 
 
 Composition learning contract (16 October): [information sufficiency, joint expressivity, assembly/producer credit, stability and full work](theory/COMPOSITION_LEARNING_CONTRACT.md). Native implementation adds bounded delayed content replay through actual version-bound children. Independent conditional-DAG, forward/RNG, work-cap and acquired-learner recovery gates are queued; no new prediction result or automatic acquisition.
+
+
+Analytical credit audit (16 October): [exact mixture/soft-read derivatives, nonlinear hard-choice tangent bias, persistent omitted input credit, and inverse-inclusion full-recorded-depth content VJP with linear work](theory/COMPOSITION_CREDIT_ANALYTICAL_AUDIT.md). Numerical and acquired-native gates precede the user-requested paired empirical continuation; no result is asserted before completion.
