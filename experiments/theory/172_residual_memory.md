@@ -190,3 +190,40 @@ Consequences:
 - **Credit through both channels.** Through memory, by the residual identity (P4). Through events, the addresses select
   which slots a read starts from: a hard choice with inclusion credit (§5), plus the clock's fire probability (expected-write
   credit, §5).
+
+## 10. Two orthogonal stacks: the additive memory and the asynchronous event stack
+
+Founder: "deep layers initially get the same memory from the first input layer, and only in training 'whip' it so that
+the layers start improving the representations. We do also need pooling. And other mechanisms … keep all our methods in
+mind." "The events do still need to go through the stack, in their own way and routing, they are orthogonal to the memory
+decomposition dimension." "The memories could stack like dense layers, maybe even dense attention layers. Let's also test
+that." "So the async stack would natively integrate to the dense domain flowing on its side."
+
+- **Memory dimension (content).** Levels write zero-initialised corrections into one additive memory. At initialisation
+  every level sees exactly level 1's memory; training grows the corrections (contract: zero corrections equal CERL, 0.0).
+  This dimension may be implemented densely, as stacked attention-like refinements of every slot, or sparsely, as top-k
+  reads and corrections of the read slots. RMR-1 tests both.
+- **Event dimension (control, routing).** Events travel through their own stack of race units, each with its own routing
+  (which unit receives an event) and clock (fire or wait). An event at level k triggers level k's read of the memory at its
+  current refinement and level k's correction write. Events decide *when and where* computation happens; memory holds
+  *what is known*. The two are orthogonal. A dense memory refinement can run continuously beside a sparse event stack, or
+  only when events trigger it. That is the native integration of the asynchronous stack with the dense domain.
+- **Pooling.** Abstraction needs aggregation over many slots. In memory space, pooling is a level writing its correction
+  into a *standing* slot that aggregates many event slots (a document-level concept or entity: a race over which standing
+  slot, plus additive pooling of the read). In the event dimension, pooling is a unit that fires once after integrating
+  several input events (cadence coarsening).
+- **Keep every mechanism:**
+  - temporal computation (clocks for firing; decaying and rotating memories);
+  - sparse addressed writes;
+  - races for reads, routing and readout;
+  - counterfactual credit (exact race credit; inclusion credit for selections);
+  - capacity beyond activity (dormant standing slots and concept banks);
+  - online adaptation;
+  - asynchronous cadence per level.
+
+**RMR-1 variants under test** (4M one pass, same data, schedule and seed as CERL):
+1. *Dense memory stack:* dense read, corrections into the current slot only. Stacked attention-like refinement.
+2. *Residual memory:* dense read, plus corrections into the 4 most-read older slots (old memories refined).
+3. *Sparse residual memory:* top-8 read, plus old-slot corrections.
+
+Depth then scales on the winner (K = 2, 4, 8). RMR-2 adds the event stack (firing clocks, routing, standing-slot pooling).

@@ -137,11 +137,13 @@ class CERL(nn.Module):
         S_cont = S_cont.masked_fill(~(j < t), float('-inf'))
         sel, s_sel = self.wake(self.q_unit(hq))                                                      # woken units: the predictive race (train = eval)
         s_bg = self.bg(hq)                                                                           # [B, R, 1]
-        if td is not None:
+        if td is not None and 'unit_bonus' in td:
             if td.get('sel_extra') is not None:                                                      # top-down waking: units the level above expects
                 ex_ = td['sel_extra']; s_ex_ = self.unit_score(self.q_unit(hq), ex_).masked_fill((ex_[..., :, None] == sel[..., None, :]).any(-1), float('-inf'))
                 sel, s_sel = torch.cat([sel, ex_], -1), torch.cat([s_sel, s_ex_], -1)
             s_sel = s_sel + td['unit_bonus'](sel); s_bg = s_bg + td['b_bg']; S_rep = S_rep + td['b_rep']; S_cont = S_cont + td['b_cont']
+        if td is not None and td.get('S_rep_add') is not None:                                      # residual-memory refinements of old event slots (r1_rmr.py)
+            S_rep = S_rep + td['S_rep_add']; S_cont = S_cont + td['S_cont_add']
         logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
         yq = y[:, r0:r1]; H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2)      # [B, R, 1+K, d]
         if explore:
