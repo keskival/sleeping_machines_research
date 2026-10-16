@@ -44,9 +44,11 @@ def main():
         g = gaps[M16]; res['decisions']['P5d'] = dict(gap_16M=g, gap_4M_registered=P5D_4M,
                                                      passed=bool(g['flagship'] > P5D_4M['flagship'] and g['prequential_last_quarter'] > P5D_4M['prequential_last_quarter']))
     slopes = {}
+    sizes = sorted({r['train_tokens'] for r in rs})
     for L in (2, 4, 8, 16):
-        a4, a16 = by.get((64, L, M4)), by.get((64, L, M16))
-        if a4 and a16: slopes[L] = {k: a4[k] - a16[k] for k in ('flagship', 'score_65528', 'select')}
+        for s0, s1 in zip(sizes, sizes[1:]):
+            a0, a1 = by.get((64, L, s0)), by.get((64, L, s1))
+            if a0 and a1: slopes.setdefault(L, {})[f'{s0}->{s1}'] = {k: (a0[k] - a1[k])/math.log(s1/s0, 4) for k in ('flagship', 'score_65528', 'select')}
     res['decisions']['loss_drop_per_4x_tokens'] = slopes
     pts = sorted([r for r in rs if r['train_flops']], key=lambda r: r['train_flops']); frontier, best = [], math.inf
     for r in pts:
