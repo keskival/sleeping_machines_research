@@ -1,3 +1,7 @@
+[Observed part ownership](theory/OBSERVED_PART_OWNERSHIP.md) repairs a measured support mismatch:25%of anonymous observed groups never have a pure complete dyadic support. Static native grouping now yields8complete part memories with all8levels/32stages retained and live credit. Nineteen combined contracts;no semantic score inferred.
+
+[Versioned native part bindings](theory/VERSIONED_PART_BINDINGS.md) separate evolving whole state from recoverable role-bearing part versions. Bitwise acquired-actor/gradient parity and native multi-part race credit pass on the full8level/32stage actor;16combined contracts. Instance/version identity is not learned semantic identity.
+
 [Native recursive race credit](theory/RECURSIVE_RACE_CREDIT.md) connects local competing-risk likelihoods to published hierarchy memories, with exact query-partition invariance and explicit identity/binding relevance gates. Eight combined native/geometry contracts pass; no trained semantic claim.
 
 [Geometry information versus binding](theory/GEOMETRY_INFORMATION_AND_BINDING.md) records the completed34.6%root reconstruction gain without class transfer;stable part identity/nonadditive binding is the next capability. [Sparse teacher](theory/SPARSE_GEOMETRY_GROUNDING.md) and [innovation calibration](theory/GEOMETRY_INNOVATION_CALIBRATION.md) repair measured target work and mean-conditioning defects,not the semantic objective by themselves.

@@ -519,23 +519,45 @@ requirement: the basis for clockless hardware, where independent units run at th
 \textbf{5.9572 to 5.8987 to 5.8741} at two, four and eight layers on the same 65,528-target slice and
 1.05M-token corpus (one seed; five/six/six epochs, different total work). Completed 16-layer loss is
 5.8879; two asynchronous hierarchy variants score 5.9392 and 5.8911. Eight layers remain selected.
-This protocol differs from the 8,192-token table above.
+This protocol differs from the 8,192-token table above. In one pass over 4M fresh tokens, eight layers also beat two: \textbf{5.8414 versus 5.8648} on that flagship development protocol (equal updates, different parameters/work).
 
-\textbf{Memories compose, then emit.} In a paired 32-event mechanism fixture, composed native memory
-views cut messages \textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}, with more timer work
-(2 to 188 scores). A separate world-pixel/scene-relative construction removes pure-translation drift
-exactly with unchanged parameters. These are mechanism/work results, not equal-quality or energy wins.
-The acquired native role-memory actor scores \textbf{0.68661 DEV loss} versus 0.71641 for a carried-view
-extension (constant prior 0.69315). Neither clears the clustered transfer criterion. Local grounding then reduces calibrated root-geometry error by \textbf{34.6\%} versus a frozen encoder,
-but does not improve class transfer. This separates learned geometry from the next goal: useful part relations.
-TEST is not model-scored in the hierarchy programme.
+\textbf{Memories compose, then emit.} On one 32-event fixture, native views reduce messages
+\textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}; timer work rises from 2 to 188 scores.
+These are mechanism/work results, not equal-quality or energy wins. Observed relative frames eliminate
+pure-translation drift. The acquired role-memory actor scores \textbf{0.68661 DEV loss}, versus 0.71641
+for a carried-view extension and a 0.69315 prior; neither clears the transfer criterion. Grounding reduces
+root-geometry error by \textbf{34.6\%} without improving class transfer. Hierarchy TEST is not model-scored.
+
+\textbf{Wholes keep their parts accessible.} A higher memory now retains references to the exact child-memory
+versions it bound, so later lower-memory changes do not rewrite an existing whole. The acquired eight-level,
+32-stage actor preserves outputs, completion times and parameter gradients bit-for-bit, with no added actor
+parameters. An auxiliary native race learner pools both root parts with live lower-memory credit. \textbf{16 numerical checks}
+pass. This is an implemented information path; stable semantic identities and relation transfer are the next test.
+
+\textbf{A measured composition repair.} A label-free support audit finds that \textbf{25\%} of observed spatial
+parts never obtain a complete unmixed memory in the old layout. On one 32-event TRAIN scene, the ownership candidate gives all
+\textbf{8 parts} a complete four-pixel memory before upper composition; all 32 native stages retain live credit.
+\textbf{19 combined checks} pass. This is a static grouping mechanism; learned semantic transfer is the next result.
+
+
+\begin{center}
+\begin{tikzpicture}[font=\small,>=Stealth,box/.style={draw=line,rounded corners=3pt,fill=soft,align=center,minimum height=7mm}]
+\node[box,text width=55mm,minimum height=10mm] (whole) at (-2.6,0) {Higher memory: native state\\+ role-bearing part references};
+\node[box,text width=36mm] (a) at (3,.48) {Part A, version 1};
+\node[box,text width=36mm] (b) at (3,-.48) {Part B, version 3};
+\draw[->,ours] (a.west) -- ([yshift=2mm]whole.east);
+\draw[->,ours] (b.west) -- ([yshift=-2mm]whole.east);
+\node[font=\footnotesize,text=muted,align=center] at (0,-1.08) {Bound versions stay readable while live lower memories evolve.};
+\end{tikzpicture}
+\end{center}
+
 
 
 {\footnotesize\color{muted}Scope: keyed model 3.33M parameters, repeated epochs over 4M training tokens; flagship and
 episodic arm single seed; quality placement, not matched compute. Source-bound results:
 \texttt{investment/language\_memory\_evidence.json}, \texttt{investment/language\_learning\_evidence.json},
 \texttt{investment/locality\_scaling\_evidence.json},
-\texttt{investment/hierarchy\_development\_evidence.json}.}
+\texttt{investment/hierarchy\_development\_evidence.json},\texttt{investment/bound\_hierarchy\_evidence.json}.}
 
 \newpage
 % ---------------------------------------------------------------- significance

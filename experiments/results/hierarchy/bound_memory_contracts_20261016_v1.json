@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "bound_memory_contracts",
+  "tests": 16,
+  "wall_s": 2.68,
+  "command": ".venv-docker/bin/python -m pytest -q tests/test_bound_native_composition.py tests/test_bound_recursive_race_learning.py tests/test_recursive_race_learning.py tests/test_grounded_native_composition.py",
+  "source_sha256": {
+    "sleeping_machines/bound_native_composition.py": "f139dd64b0fb5e901329ecad28a3db11caa0bd7df2ece261189c32cb743dcdcb",
+    "sleeping_machines/bound_recursive_race_learning.py": "bc73641998b9ea5e17ec154cd90df61b5717ee04663a19e418db276b3b39abd4",
+    "tests/test_bound_native_composition.py": "37cdd63ab017cea2928f6aed4e58efbc366a448ab4212402c965ec0d12f3f73a",
+    "tests/test_bound_recursive_race_learning.py": "86bfb2c11d6d3877f25cea08e8fd546458ad1985e595828b63e9e91480fe9714",
+    "sleeping_machines/recursive_race_learning.py": "e2bb19459a56af5d7420f5601fa10600fe468e6fa97c4e226233d748e677d7b2",
+    "tests/test_recursive_race_learning.py": "11597596816937b3f283ed5e641d648eab9b415fee76cedeaa55a387f49e5532",
+    "tests/test_grounded_native_composition.py": "b3a91db121e40268bd64bb19ad7abf0cf39d2ff6ed2d2195148b2919605a792a"
+  },
+  "scope": "Six bound-memory,two bound-race,five recursive-race,three geometry contracts. Includes exact native forward/gradient parity,old-version retention and native query delivery,read causality,GC and live lower-memory race credit. No learned semantic score."
+}
