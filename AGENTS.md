@@ -48,6 +48,10 @@ Our purpose is to win: build the strongest model family and achieve material, re
 
 - Read `experiments/HANDOFF.md` for the current report, publishing and running
   benchmark state before continuing work from a new session.
+- Before designing any experiment, search `experiments/index/` (founder, 16 Oct 2026: experiments had become an unstructured
+  pile): `experiments.csv` lists every result file (date, family, battle, status, tag, headline metrics) and the curated
+  question ledgers (e.g. `LANGUAGE_DEPTH_COMPOSITION_LEDGER.md`) record what was tried, what it showed and what remains open.
+  Rerun `scripts/build_experiment_index.py` after publishing results and update the relevant ledger.
 - Before launching training, inspect the existing queue, result files, report,
   host memory, running jobs, and GPU occupancy. Reuse an existing benchmark
   configuration when possible; prioritize the deferred large Transformer

@@ -1,0 +1,80 @@
+# Ledger: depth and composition in language (what was tried, what it showed, what follows)
+
+Curated 16 October 2026 (Curie) from the result index (`experiments/index/experiments.csv`). One line per attempt family.
+Losses are nats per GPT-2 token on FineWeb development slices unless noted. Protocols changed over time; compare only
+within a row group:
+- **dev**: early P24 slice, `best_dev_nll`;
+- **65k**: 65,528-target slice;
+- **flag**: flagship protocol, 8,192 targets in 1,024-token windows.
+
+Update this ledger whenever a language depth/composition result completes.
+
+## A. Sparse race core with hard routes and counterfactual credit (P24), 5–6 October
+- Token race core, data growth 64k → 256k → 1M tokens: dev 8.03 → 7.74 → 7.25 (`curie_data_growth_tokens_*_p24_*`). Credit
+  window 64 vs 16: 8.21 vs 8.03 at 64k. Private banks and gather variants are level (8.02–8.08 at 64k).
+- **Showed:** the native sparse race learns tokens, but slowly. Its 16-token credit window never rewards history beyond about
+  64 tokens.
+
+## B. Keyed temporal-memory member (addressed token-slot read), 7–9 October
+- 1M: 65k 6.019 / 6.000 / 6.007 (3 seeds); without the keyed read 6.194. 4M (multi-epoch): 65k 5.521 / 5.499, flag
+  5.624 / 5.601 (`curie_r1g2_keyed1_*`).
+- **Showed:** addressed memory is the strongest single lever (+0.175 at 1M). The model was shallow.
+
+## C. Depth on the race core (AWS integrated, protected growth), 12–14 October
+- Integrated depth-4 at 512k: dev 7.41. Multi-depth readout 512k/2M/8M: 7.20 / 6.98 / 6.52. Protected depth growth: grown
+  6.095 vs parent 6.066 (`aws_protected_depth_*`), so depth *lost*.
+- **Showed:** stacking race stages did not compose. Credit and readout, not data, limited depth.
+
+## D. Depth ladder on the race core (residual / serial / per-stage reads), 15 October
+- 1M dev: residual+reads d2 / d8 / d16 = 6.998 / 7.049 / 7.851; plain residual d2 / d8 / d16 = 7.081 / 7.103 / 7.150;
+  serial d8 = 7.176 (`curie_depth_ladder_*`).
+- **Diagnosis** (RESIDUAL_DEPTH_20261015.md):
+  - the serial chain passes only the winner's value; content cuts at any of 16 stages cost the same 1.56 nats;
+  - routes collapse (D16 route entropy 0.33 of 1.39 nats);
+  - deep receiver gradients fall to about 1e-5.
+- **Showed:** passing a dense winner vector up a chain is the wrong interface (theory 170 §2).
+
+## E. Episodic memory on the race learner, 15 October
+- 2M: scored 5.634 vs control 6.108 (+0.474; +0.345 vs the 5.978 parent; `curie_episodic_memory_2m_*`). Gains concentrate on
+  rare tokens.
+- **Showed:** explicit pointers to the sequence's own past are worth more than added depth. This seeded CERL's episodic causes.
+
+## F. Dense keyed hybrid ("plan-B"; now a labelled diagnostic control), 15–16 October
+- 1M multi-epoch, 65k: L2 / L4 / L8 / L16 = 5.957 / 5.899 / 5.874 / 5.888. Async hierarchy b2l3 / b4l4 = 5.939 / 5.891.
+- One pass at 4M, flag: L2 5.865, L8 5.841. Part-whole levels with observed word/clause/sentence boundaries on L2: 5.859.
+- One pass at 16M, flag: L4 5.270, L8 5.218. The depth gain grows with data (4→8 layers: 0.052 at 16M vs 2→8: 0.023 at
+  4M).
+- **Showed:**
+  - Depth pays when units pass dense residual vectors, but that is a Transformer/SSM hybrid (founder: not our model).
+  - Observed-boundary part-whole summaries add almost nothing (0.006).
+
+## G. Native causal event race (CERL, theory 169), 16 October
+- 4M one pass, flag **5.4665** (65k 5.3094) vs dense L8 5.8414, at 3.3× less training compute per token
+  (`curie_r1_cerl_4M_s0_20261016_v1`). The race has **2 temporal-memory state layers and 1 race level, with no depth**.
+- **Error analysis:** the gain is from copying and continuation (copyable targets 3.16 vs 3.75); on novel tokens it is level
+  with dense L8 (7.87 vs 8.02).
+- **Showed:** the race of causes is the right unit. Its gap to win on novel content is compositional depth.
+
+## H. Native depth attempts in progress, 16 October
+- CERL-H, a 2-level hierarchy of races over the compressed cause stream (theory 169 §8, 170): 300-update check 6.53 vs 6.58;
+  top-down gain learned 0 → 0.22; compression only ρ ≈ 0.75–0.83. The full 4M run is on Curie
+  (`curie_r1_cerlh_L2lev_4M_s0_20261016_v1`).
+- AWS fully native 8-layer local learner (receiver races, local eligibility, no recurrent backbone), 64k tokens: flag 7.047
+  (`aws_r1_native_local_stream_64k_s0_20261016_v1`), about 29 tokens/s.
+
+## I. Synthetic compositional binding (G-HIER), 15–16 October
+- Parts recognised 512/512; whole objects at chance (50%, NLL 0.693) even after 32× more training, and training
+  arrangements are not fitted either (`investment/composition_scale_evidence.json`).
+- **Showed:** binding parts into wholes is the unsolved step. More data or training does not fix it.
+
+## What has not been tested yet (the open route, theory 170)
+1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
+   CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).
+2. **Durable cause identities:** continuation pointers keep one identity per copied span; hysteresis in attribution; concept
+   families. Target ρ < 0.5.
+3. **Higher levels as race TPP units with real durations**, predicting which cause comes next and when the current one ends.
+4. **Surprise channel:** unexplained tokens go up (history compression).
+5. **Three or more levels and 16M tokens**, testing gain per level against data.
+6. **Concept capacity at constant work** (product-key bank 4k–262k; ordered on AWS, not yet run).
+7. **Native sparse state inside units** (cause excitations; AWS receiver core) in place of the temporal-memory vector.
+8. **Carried memory across lanes** in training and scoring.
