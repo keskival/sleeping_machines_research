@@ -1,0 +1,8 @@
+# Battle R1, native data scaling and compute frontier (SCALING_SUPREMACY_PROTOCOL.md step 1; founder: compositional scaling, no dense parts). Decision: the native causal event race member at 16M fresh tokens (same lanes/order rule, one pass, one-cycle schedule) against the dense hybrid L8 16M (flagship 5.2183 at 4.34e14 training FLOPs) and its own 4M point (5.4665 at 3.25e13): loss drop per 4x data and the native compute frontier against the dense frontier (two budgets each). Sets the data axis of the native scaling ladder and the GPU plan.
+# Stationarity/online: fixed-weight language protocol on a stationary corpus; one pass over fresh lanes (pre-update loss held out).
+# Fighter rationale: the native race-of-causes member that beat the dense hybrid at 4M (5.4665 vs 5.8414 at 3.3x less training compute per token; curie_r1_cerl_4M_s0_20261016_v1), unchanged.
+# State/history: temporal-memory state over each 256-token lane (labelled); episodic causes over all earlier events of the lane.
+# Retained: race of clocks over causes, sparse addressed episodic memory, separate keys/values, age clocks, capacity beyond activity, counterfactual credit. Nothing dense. Not included: compositional levels (CERL-H is tested separately at 4M), cause messages, carried memory.
+# Restrictions: none for symmetry. Contracts: curie_cerl_contracts_20261016_v9.
+# Resources: 4M run 1.34 s/update, RSS 0.75 GB; 16,384 updates ~6.1 h; exact resume every 256 updates.
+curie_r1_cerl_16M_s0_20261016_v1 experiments/r1_cerl.py --tag curie_r1_cerl_16M_s0_20261016_v1 --train-tokens 16777216 --seed 0
