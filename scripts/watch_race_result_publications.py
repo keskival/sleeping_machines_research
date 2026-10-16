@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];PLAN=ROOT/'experiments/queue/aws_model_improvement_repair_20261005T161000Z'
 def main():
  while True:
-  for packet in ['000_aws_r1_curie_ordered_program_20261016_v1.json','000_aws_r1_curie_rmr2_followup_20261016_v1.json']:
+  for packet in ['000_aws_r1_curie_ordered_program_20261016_v1.json','000_aws_r1_curie_rmr2_followup_20261016_v1.json','000_aws_r1_rmr2_stable_decay_20261016_v1.json']:
    admission=PLAN/'addenda'/packet
    if not admission.exists():continue
    for jobs in json.loads(admission.read_text())['slots'].values():

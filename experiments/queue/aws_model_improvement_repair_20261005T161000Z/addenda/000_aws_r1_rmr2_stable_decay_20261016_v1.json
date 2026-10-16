@@ -1,0 +1,106 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Battle R1, existing PRODUCT_ORDERS firing/standing-memory comparison. Repair arithmetic, not architecture: truncate impossible future standing writes before exponentiation so factors grow by at most one bounded chunk. Same weights, laws, lower carrier, learning recipe and fixed-weight development protocols. Source-bound active jobs untouched. This model uses temporal-memory carrier layers, BPTT, lane-bounded state and soft expected firing during training; not a fully native event-local flagship or sparse-dispatch measurement. All discovery/backward/optimizer/traffic charged. Numerical long-window8192 oracle/finite-gradient gate before acquisition; no extra data, TEST or dense baseline. Original RMR2 v1 admissions withdrawn before execution. Complete structural/regularization arguments now included in checkpoint identity, including standing count and activity cost; checkpoint also binds sources. One thread,3MKiB RSS/12MKiB VMS watchdogs,8GiB reserve. Decision: can useful standing-memory refinements and learned firing improve the completed causal race language result?",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate.txt",
+        "queue_sha256": "ee79857da437a50e5ff50338da94a16858d76e4e792e33d925bdb84f9ec4c006",
+        "source_sha256": {
+          "experiments/hierarchy/rmr2_stable_decay_gate.py": "397445497f7d9e48823411d591ac85d4129346f5d3ef8c3a0cc1f3a8ac471c35",
+          "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+          "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2.txt",
+        "queue_sha256": "0d6f0143ec5d502e1fd5e88d839c2ff1346c4a3b8c5fb967ba801615a09b8821",
+        "source_sha256": {
+          "experiments/hierarchy/rmr2_stable_decay_gate.py": "397445497f7d9e48823411d591ac85d4129346f5d3ef8c3a0cc1f3a8ac471c35",
+          "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+          "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate.json",
+            "stage": "RMR2 stable decay admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_rmr2_act01_K4_4M_s0_20261016_v2_gate",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2_gate/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2_gate.txt",
+        "queue_sha256": "9551ece7dc513272cd80a3b0a821f4807ad288293571ee8cdf5542cbcc20a890",
+        "source_sha256": {
+          "experiments/hierarchy/rmr2_stable_decay_gate.py": "397445497f7d9e48823411d591ac85d4129346f5d3ef8c3a0cc1f3a8ac471c35",
+          "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+          "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2_gate.json",
+        "requires": [],
+        "timeout_s": 1800,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_rmr2_act01_K4_4M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2.txt",
+        "queue_sha256": "aa2ba8893bf9d4d2d9bb5153bbc77779d2e8d6f2496a0634a791a658baa1bc52",
+        "source_sha256": {
+          "experiments/hierarchy/rmr2_stable_decay_gate.py": "397445497f7d9e48823411d591ac85d4129346f5d3ef8c3a0cc1f3a8ac471c35",
+          "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+          "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr2_act01_K4_4M_s0_20261016_v2_gate.json",
+            "stage": "RMR2 stable decay admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

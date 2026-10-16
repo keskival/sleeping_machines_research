@@ -609,3 +609,6 @@ Task-facing composition credit(16October): [formal analysis and completed frozen
 
 
 Fully native deep language and local learning(16October): [construction,conditional eligibility proof,contracts and real-token gate](theory/LOCAL_NATIVE_DEEP_LANGUAGE.md). Eight native layers with own horizontal receiver memories replace the hybrid carrier;each depth is a normalized predictive cause. No recurrent BPTT;local write traces and bounded event-map credit have explicit scope. Pack the measured native forward/backward bottleneck before acquisition.
+
+
+Standing-memory decay (16 October): [causal stable factorization and queued long-window numerical admission](theory/STABLE_STANDING_MEMORY_DECAY.md). Repairs an overflow hidden by short training lanes; preserves the RMR2 law and parameters. No measured learning improvement or passed replacement gate yet.
