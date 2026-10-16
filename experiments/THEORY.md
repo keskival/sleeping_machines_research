@@ -1,3 +1,5 @@
+[Intrinsic part-identity learning](theory/INTRINSIC_PART_IDENTITY_LEARNING.md) supplies TRAIN-observable identity targets to complete native part memories while whole-label credit learns role relations. One integrated acquisition,no new ablation arms;21contracts and actual paired resource gate pass.
+
 [Observed part ownership](theory/OBSERVED_PART_OWNERSHIP.md) repairs a measured support mismatch:25%of anonymous observed groups never have a pure complete dyadic support. Static native grouping now yields8complete part memories with all8levels/32stages retained and live credit. Nineteen combined contracts;no semantic score inferred.
 
 [Versioned native part bindings](theory/VERSIONED_PART_BINDINGS.md) separate evolving whole state from recoverable role-bearing part versions. Bitwise acquired-actor/gradient parity and native multi-part race credit pass on the full8level/32stage actor;16combined contracts. Instance/version identity is not learned semantic identity.
