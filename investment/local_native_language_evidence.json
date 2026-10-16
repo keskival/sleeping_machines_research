@@ -40,7 +40,8 @@
     "experiments/results/diagnostics/aws_r1_native_producer_credit_handoff_20261016_v1.json": "5d66b6db0d21813f6fcf9a1548dfac59a78da1d9ec7231e3e60a1a310cce0378",
     "experiments/results/diagnostics/aws_r1_document_boundary_native_gate_20261016_v1.json": "542399e5298c35bab395dae676f4464652211f3c08e9ed1285a81177b41e336c",
     "experiments/results/diagnostics/aws_r1_coupled_query_credit_gate_20261016_v1.json": "b20ff55fabc122675786a023c633e4ab60ae2991219ed92005531d7cc952857f",
-    "experiments/results/diagnostics/aws_r1_native_document_handoff_20261016_v1.json": "e9a9336c9662469e91a36d89a98e92b8014e7be1ecb0326e82cda5b3d7776fca"
+    "experiments/results/diagnostics/aws_r1_native_document_handoff_20261016_v1.json": "e9a9336c9662469e91a36d89a98e92b8014e7be1ecb0326e82cda5b3d7776fca",
+    "experiments/results/diagnostics/aws_r1_compositional_producer_credit_gate_20261016_v1.json": "97d80106960d0d1ccc51370afd8f3d78f75e9c8fbd0aea65df34fc72c56617c9"
   },
   "queryable_lower_memory_integration": {
     "status": "gate_passed",
@@ -122,5 +123,15 @@
   "coupled_query_credit": {
     "status": "gate_passed_not_admitted_to_continuation",
     "scope": "Joint without-replacement alternative-pair teacher fixes invalid duplicated alternatives. Conditional linearized gradient and factual-path parity contracts pass; prioritize Curie ordered program before another native learner migration. Buggy pending v1 logging corrected in draft and v1 queue withdrawn."
+  },
+  "bounded_child_credit": {
+    "status": "gate_passed",
+    "checkpoint_cursor": 217088,
+    "real_train_targets": 16,
+    "discarded_resume_audit_targets": 8,
+    "contracts": 6,
+    "exact_serialized_resume": true,
+    "max_rss_kb": 1852216,
+    "scope": "Bounded two-edge/six-read actual-child content replay;private acquired8layer integration,no predictive quality claim. Full-depth inverse-inclusion extension has finite-DAG tests in a partly failed analytical gate;corrected analytical and acquired-model gates pending."
   }
 }

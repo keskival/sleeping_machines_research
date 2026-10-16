@@ -39,7 +39,7 @@ def build(r):
  for label,val,color in [('Dense hybrid',p['dense_nll'],muted),('Causal race model',p['race_nll'],green)]:
   c.setFillColor(ink);c.setFont('Helvetica',10);c.drawString(42,y-14,label);c.setFillColor(color);c.roundRect(chartx,y-24,chartw*val/maxv,22,3,fill=1,stroke=0);c.setFillColor(white);c.setFont('Helvetica-Bold',11);c.drawRightString(chartx+chartw*val/maxv-8,y-17,f'{val:.4f}');y-=40
  y=para(f'<b>{p["gain_nats"]:.4f} nats less loss per token.</b> Lower is better. Both models score the same 8,192 development targets in 1,024-token windows; one seed and different model sizes. Bars start at zero.',42,y-3,W-84)-18
- y=para('<b>Why this matters</b><br/>The winning model predicts through competing causes: earlier text, continuing spans, learned concept units and a background route. Its training estimate is 7.74 million FLOPs per target. This is evidence that our prediction law can compete in language.',42,y,W-84)-18
+ y=para('<b>Why this matters</b><br/>The winning model predicts through competing causes: earlier text, continuing spans, learned concept units and a background route. Its registered main-loss operator subtotal is 7.74 million FLOPs per target; auxiliary-loss backward, optimizer and unregistered work are excluded. This is evidence that our prediction law can compete in language.',42,y,W-84)-18
  y=para('<b>Where the advantage comes from</b>',42,y,W-84)-12
  for label,key in [('Tokens already seen in the window','seen_earlier_in_window'),('Tokens new to the window','novel_in_window')]:
   s=r['error_strata'][key];y=para(f'{label}: <b>{s["cerl"]:.2f} versus {s["dense"]:.2f}</b> NLL (race versus dense).',42,y,W-84)-8

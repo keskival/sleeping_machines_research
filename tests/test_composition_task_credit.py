@@ -35,3 +35,10 @@ def test_first_order_loss_teacher_can_point_in_the_wrong_direction():
  tangent=torch.autograd.grad(loss(z),z)[0]*(other-z)
  actual=loss(other)-loss(z)
  assert float(tangent)<0 and float(actual)>0
+
+
+def test_saturated_legal_pair_proposal_normalizes_without_cancellation():
+ s=torch.tensor([[12.,-12.],[12.,-12.]],dtype=torch.float64,requires_grad=True)
+ pi=ordered_pair_probabilities(s);expected=torch.autograd.grad(pi[1,0],s,retain_graph=True)[0]
+ got=torch.autograd.grad(actual_joint_loss_credit(s,(0,1),(1,0),0.,1.),s)[0]
+ torch.testing.assert_close(got,expected,atol=1e-24,rtol=1e-12)

@@ -618,3 +618,6 @@ Composition learning contract (16 October): [information sufficiency, joint expr
 
 
 Analytical credit audit (16 October): [exact mixture/soft-read derivatives, nonlinear hard-choice tangent bias, persistent omitted input credit, and inverse-inclusion full-recorded-depth content VJP with linear work](theory/COMPOSITION_CREDIT_ANALYTICAL_AUDIT.md). Numerical and acquired-native gates precede the user-requested paired empirical continuation; no result is asserted before completion.
+
+
+Composition credit work/variance (16 October): [per-root versus whole-depth cost, geometric event-rate envelope and cotangent-directed deferred replay](theory/COMPOSITION_CREDIT_WORK_AND_VARIANCE.md). Uniform sampled paths remove exponential branch enumeration, but all-layer activation can still give quadratic depth work and inverse inclusion can amplify variance. The paired comparison measures quality, clipping and actual work before stronger scaling claims.

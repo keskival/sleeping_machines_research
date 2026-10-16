@@ -14,7 +14,8 @@ def actual_joint_loss_credit(scores,factual,alternative,factual_loss,alternative
         if len(pair)!=2 or pair[0]==pair[1] or any(not 0<=i<n for i in pair):raise ValueError('legal distinct ordered pair required')
     w=factual[0]*n+factual[1];a=alternative[0]*n+alternative[1]
     if a==w:raise ValueError('nonfactual alternative required')
-    q=(pi[a]/(1-pi[w])).detach() if proposal is None else torch.as_tensor(proposal,dtype=pi.dtype,device=pi.device).detach()
+    remaining=pi.clone();remaining[w]=0
+    q=(pi[a]/remaining.sum()).detach() if proposal is None else torch.as_tensor(proposal,dtype=pi.dtype,device=pi.device).detach()
     if q.ndim or not bool(torch.isfinite(q)) or not 0<float(q)<=1:raise ValueError('actual positive sampling probability required')
     delta=torch.as_tensor(alternative_loss,dtype=pi.dtype,device=pi.device).detach()-torch.as_tensor(factual_loss,dtype=pi.dtype,device=pi.device).detach()
     if delta.ndim or not bool(torch.isfinite(delta)):raise ValueError('finite actual scalar suffix losses required')

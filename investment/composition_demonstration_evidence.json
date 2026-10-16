@@ -48,7 +48,7 @@
   "native_training_flops_per_target": 7744777.035294117,
   "composition_credit": {
     "implementation": "implemented",
-    "numerical_gate": "queued",
+    "numerical_gate": "passed",
     "max_child_edges_per_root": 6,
     "max_child_edges_per_path": 2,
     "new_parameters": 0
@@ -61,13 +61,14 @@
   ],
   "scope": "Completed race-language development win: one seed, same4M-token data/order/schedule and flagship protocol;different model sizes. Winner retains two temporal-memory carrier layers/BPTT. Fully native deep local-learning and residual-memory scaling remain separately labelled development. No public language leaderboard, hardware energy/latency or scaling-supremacy claim.",
   "input_sha256": {
-    "scripts/build_composition_investor_demo.py": "40e6f5b962cfe77131bc9cd7bef7bf0edb51ce6cbfa0d3208bd9a7bf02449a0b",
+    "scripts/build_composition_investor_demo.py": "0fb5612fb6bb72a4cf5692923f943ed29f0e48be10aa7e22835a5f227c7999e2",
     "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json": "55546d723f2c305b386814cf489c74421bdc3431505262ca40399e7b143eb359",
     "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json": "0016b25439db27f4439bae03fadd181e6c7c06a08c5c8436076dbee6e9a357e2",
     "experiments/results/diagnostics/curie_cerl_vs_dense_4M_error_analysis_20261016_v1.json": "e996fe832cfc231e8fec06cdec255368dfb7aa6fe4018d0fee1543e05fd69498",
     "experiments/theory/COMPOSITION_LEARNING_CONTRACT.md": "f805d4c83d4204897368a210de7775613709abc5b92958e64e4ac37055e4954b",
     "sleeping_machines/compositional_producer_credit.py": "9007d0fd4d7e7586800d082fbe303bf7b3937d29d01239ea48f021376bf1d421",
     "tests/test_compositional_producer_credit.py": "b2b134ff566bbd847a8b5832333b6f3ac87b3368fb4cf79ecffcc5cf3dfe31e7",
-    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/000_aws_r1_000_composition_learning_contract_20261016_v1.json": "194d3b633b2388f5a9589629a1a36acda687da1dabc72f8a2acda42e689a2dcf"
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/000_aws_r1_000_composition_learning_contract_20261016_v1.json": "194d3b633b2388f5a9589629a1a36acda687da1dabc72f8a2acda42e689a2dcf",
+    "experiments/results/diagnostics/aws_r1_compositional_producer_credit_gate_20261016_v1.json": "97d80106960d0d1ccc51370afd8f3d78f75e9c8fbd0aea65df34fc72c56617c9"
   }
 }

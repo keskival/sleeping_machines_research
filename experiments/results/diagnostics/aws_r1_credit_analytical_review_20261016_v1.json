@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "credit analytical review and admitted empirical decision",
+  "analytic_v1": {
+    "overall": "failed",
+    "passed_tests": 8,
+    "failed_tests": 1,
+    "reason": "1-P(factual) subtraction caused scalar conditional probability to exceed1 by floating-point roundoff;normalize by remaining positive mass instead."
+  },
+  "bounded_acquired_gate": "PASS",
+  "stable_decay_gate": "PASS",
+  "sampled_acquired_gate": "queued_v2",
+  "paired_comparison": "queued_v2_requires_both_gates",
+  "scope": "Review of completed contracts and failures,not a new predictive result or completed v2gate. V1failedsource retained in git32aebf3ae;fixedsource/new regression belongs to v2 admission.",
+  "input_sha256": {
+    "experiments/queue/logs/aws_r1_composition_credit_analytic_gate_20261016_v1.log": "a5913f36126744dd7a33d564e45bf0d332766360d3f99afc71e144e60ef8170e",
+    "experiments/results/diagnostics/aws_r1_compositional_producer_credit_gate_20261016_v1.json": "97d80106960d0d1ccc51370afd8f3d78f75e9c8fbd0aea65df34fc72c56617c9",
+    "experiments/results/diagnostics/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2_gate.json": "2bf48c3a36c570aecbe102c44e8a1cf0273dc82357f2972d5b7a6efe712cf1d0"
+  }
+}

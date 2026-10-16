@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "completed capacity and residual-memory development",
+  "rows": [
+    {
+      "model": "race_1024",
+      "parameters": 6969611,
+      "units": 1024,
+      "selected_units": 4,
+      "nll": 5.466545760631561,
+      "registered_main_loss_operator_flops_per_target": 7744777.035294117,
+      "registered_main_loss_operator_flops_whole_fit": 32357058871296.0,
+      "source": "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json"
+    },
+    {
+      "model": "race_65536",
+      "parameters": 15177483,
+      "units": 65536,
+      "selected_units": 4,
+      "nll": 5.471553653478622,
+      "registered_main_loss_operator_flops_per_target": 7449865.035294117,
+      "registered_main_loss_operator_flops_whole_fit": 31124940128256.0,
+      "source": "experiments/results/token_language/aws_r1_cerl_pk65536_4M_s0_20261016_v1.json"
+    },
+    {
+      "model": "residual_K2",
+      "parameters": 7118158,
+      "units": 1024,
+      "selected_units": 4,
+      "nll": 5.4678875505924225,
+      "registered_main_loss_operator_flops_per_target": 10961177.035294117,
+      "registered_main_loss_operator_flops_whole_fit": 45794920759296.0,
+      "source": "experiments/results/token_language/aws_r1_rmr_dense_K2_4M_s0_20261016_v1.json"
+    }
+  ],
+  "scope": "Same4MfreshTRAINtokens/one seed,flagship8192targets/1024windows;different architectures/parameters. 64xavailable concept slots with4selected;new larger bank andK2residual do not improve the smaller-bank race score. No learned hierarchy or increased useful-capacity claim.",
+  "accounting": "Saved FlopCounter profiles backpropagate mean predictive NLL while actual acquisition also backpropagates the auxiliary exploration objective. Thus counts are registered main-loss operator subtotals,not complete fitting FLOPs;auxiliary backward,optimizer and unregistered scalar/special-function work are excluded. No total-compute win inferred.",
+  "input_sha256": {
+    "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json": "55546d723f2c305b386814cf489c74421bdc3431505262ca40399e7b143eb359",
+    "experiments/results/token_language/aws_r1_cerl_pk65536_4M_s0_20261016_v1.json": "2aca651de69d274ab66fb3f3d130c6bd252b0e055b7ca10ee9906ab6228c30e2",
+    "experiments/results/token_language/aws_r1_rmr_dense_K2_4M_s0_20261016_v1.json": "2ff04a2bf40ff8acd7528304063385add9436e51cc45cc43fa80d1afc9aea6af"
+  }
+}

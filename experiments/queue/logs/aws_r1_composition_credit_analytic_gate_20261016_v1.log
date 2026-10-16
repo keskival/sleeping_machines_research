@@ -1,0 +1,50 @@
+.F.......                                                                [100%]
+=================================== FAILURES ===================================
+_______ test_joint_nonlinear_suffix_has_real_credit_when_tangent_is_zero _______
+
+    def test_joint_nonlinear_suffix_has_real_credit_when_tangent_is_zero():
+     # Relational suffix: neither local component alone explains their conjunction.
+     z=torch.tensor([0.,0.],dtype=torch.float64,requires_grad=True);other=torch.ones_like(z)
+     factual=F.softplus(-z.prod());alternative=F.softplus(-other.prod())
+     tangent=(torch.autograd.grad(factual,z)[0]*(other-z)).sum()
+     assert float(tangent)==0 and float(alternative-factual)<-.3
+     s=torch.tensor([[.2,-.1],[.3,.4]],dtype=torch.float64,requires_grad=True)
+>    exact=actual_joint_loss_credit(s,(0,1),(1,0),factual,alternative)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_composition_task_credit.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scores = tensor([[ 0.2000, -0.1000],
+        [ 0.3000,  0.4000]], dtype=torch.float64, requires_grad=True)
+factual = (0, 1), alternative = (1, 0)
+factual_loss = tensor(0.6931, dtype=torch.float64, grad_fn=<SoftplusBackward0>)
+alternative_loss = tensor(0.3133, dtype=torch.float64), proposal = None
+
+    def actual_joint_loss_credit(scores,factual,alternative,factual_loss,alternative_loss,proposal=None):
+        pi=ordered_pair_probabilities(scores).flatten();n=scores.shape[1]
+        for pair in [factual,alternative]:
+            if len(pair)!=2 or pair[0]==pair[1] or any(not 0<=i<n for i in pair):raise ValueError('legal distinct ordered pair required')
+        w=factual[0]*n+factual[1];a=alternative[0]*n+alternative[1]
+        if a==w:raise ValueError('nonfactual alternative required')
+        q=(pi[a]/(1-pi[w])).detach() if proposal is None else torch.as_tensor(proposal,dtype=pi.dtype,device=pi.device).detach()
+>       if q.ndim or not bool(torch.isfinite(q)) or not 0<float(q)<=1:raise ValueError('actual positive sampling probability required')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: actual positive sampling probability required
+
+sleeping_machines/composition_task_credit.py:18: ValueError
+=============================== warnings summary ===============================
+tests/test_composition_task_credit.py::test_joint_nonlinear_suffix_has_real_credit_when_tangent_is_zero
+  /workspace/tests/test_composition_task_credit.py:26: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+    assert float(tangent)==0 and float(alternative-factual)<-.3
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_composition_task_credit.py::test_joint_nonlinear_suffix_has_real_credit_when_tangent_is_zero
+1 failed, 8 passed, 1 warning in 0.82s
+Traceback (most recent call last):
+  File "/workspace/experiments/hierarchy/composition_credit_analytic_gate.py", line 7, in <module>
+    assert pytest.main(['-q','tests/test_composition_task_credit.py','tests/test_joint_race_credit.py','tests/test_sampled_compositional_credit.py'])==0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
