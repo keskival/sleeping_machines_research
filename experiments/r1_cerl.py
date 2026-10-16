@@ -54,16 +54,17 @@ def word_classes(counts, n_classes, s_max=S_MAX):
     return cls, words
 
 
-def match_lengths(x, cap=8):
-    """l[b, t, j] = length of the common suffix of x[..t] and x[..j] (capped), for j < t."""
-    eq = (x[:, :, None] == x[:, None, :]); l = eq.long()
+def match_lengths(x, r0, r1, cap=8):
+    """l[b, t, j] for rows t in [r0, r1) and columns j < r1: length of the common suffix of x[..t] and x[..j], capped. Only
+    rows r0-cap+1 .. r1 are formed (uint8), so long evaluation lanes cost O(rows x r1) bytes, not O(r1^2) words."""
+    a = max(0, r0 - cap + 1); eq = (x[:, a:r1, None] == x[:, None, :r1]).to(torch.uint8); l = eq.clone()
     for _ in range(cap - 1):
-        sh = torch.zeros_like(l); sh[:, 1:, 1:] = l[:, :-1, :-1]; l = eq.long()*(1 + sh)
-    return l.clamp_max(cap)
+        sh = torch.zeros_like(l); sh[:, 1:, 1:] = l[:, :-1, :-1]; l = eq*(1 + sh)
+    return l[:, r0 - a:].clamp_max(cap)
 
 
 class CERL(nn.Module):
-    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0):
+    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False):
         super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore, self.p_drop = V, d, dk, units, topk, explore, dropout
         self.register_buffer('class_of', torch.as_tensor(class_of)); self.register_buffer('class_words', torch.as_tensor(class_words)); C = class_words.shape[0]
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02); self.word_bias = nn.Parameter(torch.zeros(V))
@@ -74,7 +75,13 @@ class CERL(nn.Module):
         for t in self.tm: t.CHUNK = tm_chunk
         # race clocks
         self.bg = nn.Linear(d, 1); nn.init.zeros_(self.bg.weight); nn.init.constant_(self.bg.bias, 2.0)
-        self.q_unit = nn.Linear(d, dk); self.unit_key = nn.Parameter(torch.randn(units, dk)/math.sqrt(dk)); self.unit_bias = nn.Parameter(torch.zeros(units))
+        self.q_unit = nn.Linear(d, dk); self.pk = product_keys
+        if product_keys:                                                                             # two-stage race over half-keys: unit (a, b) scores q1.K1[a] + q2.K2[b]
+            n = int(round(math.sqrt(units))); assert n*n == units, 'product keys need a square bank'; self.n_half = n
+            self.key1, self.key2 = nn.Parameter(torch.randn(n, dk//2)/math.sqrt(dk)), nn.Parameter(torch.randn(n, dk//2)/math.sqrt(dk))
+            self.bias1, self.bias2 = nn.Parameter(torch.zeros(n)), nn.Parameter(torch.zeros(n))
+        else:
+            self.unit_key = nn.Parameter(torch.randn(units, dk)/math.sqrt(dk)); self.unit_bias = nn.Parameter(torch.zeros(units))
         self.unit_out = nn.Parameter(torch.zeros(units, d))
         self.q_rep, self.k_rep, self.q_cont, self.k_cont = (nn.Linear(d, dk) for _ in range(4))
         self.b_rep, self.b_cont = nn.Parameter(torch.tensor(-2.0)), nn.Parameter(torch.tensor(-2.0))
@@ -88,6 +95,22 @@ class CERL(nn.Module):
             h = h + dr(to(tm(n1(h)))); h = h + dr(mlp(n2(h)))
         return dr(self.out_norm(h))
 
+    def unit_score(self, q, idx):
+        """Race log-rates of units idx [..., k] for queries q [..., dk]."""
+        if not self.pk: return (q[..., None, :]*self.unit_key[idx]).sum(-1) + self.unit_bias[idx]
+        h2 = self.dk//2; a, b = idx//self.n_half, idx % self.n_half
+        return (q[..., None, :h2]*self.key1[a]).sum(-1) + self.bias1[a] + (q[..., None, h2:]*self.key2[b]).sum(-1) + self.bias2[b]
+
+    def wake(self, q):
+        """Exact top-k units: full scoring for a flat bank; for product keys the top-k of each half then the top-k of the k x k
+        sums (the k best sums always lie in that grid), costing 2 sqrt(U) half-key scores instead of U."""
+        if not self.pk:
+            su = q @ self.unit_key.T + self.unit_bias; sel = su.topk(self.topk, -1).indices; return sel, su.gather(-1, sel)
+        h2, k = self.dk//2, self.topk
+        s1 = q[..., :h2] @ self.key1.T + self.bias1; s2 = q[..., h2:] @ self.key2.T + self.bias2
+        v1, i1 = s1.topk(k, -1); v2, i2 = s2.topk(k, -1); grid = (v1[..., :, None] + v2[..., None, :]).flatten(-2)
+        vs, g = grid.topk(k, -1); sel = i1.gather(-1, g//k)*self.n_half + i2.gather(-1, g % k); return sel, vs
+
     def two_level(self, H, y):
         """log p(y) under the two-level word law of each state row in H [N, K, d] for targets y [N]."""
         lc = torch.log_softmax(H @ self.class_emb.T + self.class_bias, -1)                              # [N, K, C]
@@ -100,14 +123,13 @@ class CERL(nn.Module):
     def lane_nll(self, x, y, rows=None, stats=False):
         """Per-target NLL [B, R] for query rows `rows` of lanes x [B, L] (inputs) with targets y [B, L]."""
         B, L = x.shape; h = self.states(x); r0, r1 = (0, L) if rows is None else rows; R = r1 - r0; hq = h[:, r0:r1]
-        t = torch.arange(r0, r1)[:, None]; j = torch.arange(r1)[None, :]; age = (t - j).clamp_min(0).float()
-        ml = match_lengths(x[:, :r1])[:, r0:r1]                                                      # [B, R, r1]
+        dv = x.device; t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float()
+        ml = match_lengths(x, r0, r1)                                                                # [B, R, r1]
         S_rep = (self.q_rep(hq) @ self.k_rep(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_rep - F.softplus(self.age_rep)*torch.log1p(age)
         S_rep = S_rep.masked_fill(~(j <= t), float('-inf'))
         S_cont = (self.q_cont(hq) @ self.k_cont(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_cont - F.softplus(self.age_cont)*torch.log1p(age) + self.span*torch.log1p(ml.float())
         S_cont = S_cont.masked_fill(~(j < t), float('-inf'))
-        su = self.q_unit(hq) @ self.unit_key.T + self.unit_bias                                      # [B, R, U]
-        sel = su.topk(self.topk, -1).indices; s_sel = su.gather(-1, sel)                               # woken units: the predictive race (train = eval)
+        sel, s_sel = self.wake(self.q_unit(hq))                                                      # woken units: the predictive race (train = eval)
         s_bg = self.bg(hq)                                                                           # [B, R, 1]
         logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
         yq = y[:, r0:r1]; H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2)      # [B, R, 1+K, d]
@@ -116,8 +138,8 @@ class CERL(nn.Module):
             # Paid counterfactual alternatives: random dormant units ask "would including me have raised p(y)?" against the
             # actual race held fixed (detached). Credit reaches only their keys, biases, vectors and the unit query map; they
             # never enter the predictive mixture, so training and evaluation predict with the same race.
-            ex = torch.randint(0, self.U, (B, R, self.explore)); hd = hq.detach()
-            s_ex = (self.q_unit(hd)[:, :, None, :]*self.unit_key[ex]).sum(-1) + self.unit_bias[ex]
+            ex = torch.randint(0, self.U, (B, R, self.explore), device=dv); hd = hq.detach()
+            s_ex = self.unit_score(self.q_unit(hd), ex)
             s_ex = s_ex.masked_fill((ex[..., :, None] == sel[..., None, :]).any(-1), float('-inf'))
             H = torch.cat([H, hd[:, :, None] + self.unit_out[ex]], 2)                                  # one word-law pass for all causes
         Hf, yf = H.reshape(B*R, -1, self.d), yq.reshape(-1); n_ = Hf.shape[0]            # word laws in row chunks under checkpointing: [rows, class words, d] never all at once
@@ -133,6 +155,10 @@ class CERL(nn.Module):
         if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
+        if getattr(self, 'record_winner', False):                                                    # analysis: posterior-winning cause type per target (0 bg, 1 concept, 2 repeat, 3 continue)
+            with torch.no_grad():
+                post = torch.softmax(parts, -1); K_ = s_sel.shape[-1]
+                grp = torch.stack([post[..., 0], post[..., 1:1 + K_].sum(-1), post[..., 1 + K_:1 + K_ + r1].sum(-1), post[..., 1 + K_ + r1:].sum(-1)], -1); self.last_winner = grp.argmax(-1)
         if not stats: return nll
         with torch.no_grad():
             post = torch.softmax(parts, -1); K = s_sel.shape[-1]
@@ -147,7 +173,7 @@ def work_per_target(m, history):
     all U unit keys, the background and k concept two-level laws at mean class size)."""
     d, dk, C = m.d, m.dk, m.class_words.shape[0]; s_mean = float((m.class_words >= 0).sum())/C
     state = sum(p.numel() for n, p in m.named_parameters() if n.startswith(('tm', 'tm_out', 'mlp')))
-    return dict(state_macs=state, episodic_candidates=2*history, episodic_macs=4*d*dk + 2*history*dk, unit_scores=m.U, unit_macs=d*dk + m.U*dk, concepts_woken=m.topk,
+    return dict(state_macs=state, episodic_candidates=2*history, episodic_macs=4*d*dk + 2*history*dk, unit_scores=(2*m.n_half if m.pk else m.U), unit_macs=d*dk + (2*m.n_half*dk//2 + m.topk**2 if m.pk else m.U*dk), concepts_woken=m.topk,
                 proposal_rows=(1 + m.topk)*(C + s_mean), proposal_macs=(1 + m.topk)*(C + s_mean)*d)
 
 
@@ -226,7 +252,7 @@ def words_main(a, src):
     from r1_ptb_native import read_corpus, CORPORA
     ids, vocab, eos = read_corpus(a.corpus); V = CORPORA[a.corpus]['vocab']; out_dir = ROOT/'experiments/results/word_language'; out_dir.mkdir(exist_ok=True)
     counts = np.bincount(ids['train'], minlength=V).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(V, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, dropout=a.dropout); params = sum(p.numel() for p in model.parameters())
+    model = CERL(V, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, dropout=a.dropout, product_keys=bool(getattr(a, 'product_keys', 0))); params = sum(p.numel() for p in model.parameters())
     if a.mode == 'score':
         rec = json.loads((out_dir/f'{a.run}.json').read_text()); model.load_state_dict(torch.load(ROOT/rec['checkpoint'])); path = out_dir/f'{a.tag}.json'; assert not path.exists()
         split = ids[a.split]; res = dict(battle='R1', tag=a.tag, run=a.run, corpus=a.corpus, split=a.split, targets=len(split), parameters=params, ctx=a.ctx, stride=a.stride)
@@ -297,6 +323,11 @@ def contracts():
         res['causal_prefix_max_diff'] = float((m.lane_nll(x2, y2)[0, :p - 1] - full[0, :p - 1]).abs().max())
         res['row_chunk_max_diff'] = float((torch.cat([m.lane_nll(x, y, (r, min(r + 7, 40))) for r in range(0, 40, 7)], 1) - full).abs().max())
         res['repeat_eval_identical'] = bool(torch.equal(m.lane_nll(x, y), full))
+    mp = CERL(V, cls, words, d=32, modes=8, layers=1, dk=16, units=64, topk=3, explore=0, product_keys=True)
+    with torch.no_grad():
+        for p_ in mp.parameters(): p_.add_(torch.randn_like(p_)*0.3)
+        q_ = torch.randn(5, 7, 16); sel, vs = mp.wake(q_); allu = torch.arange(64).expand(5, 7, 64); full = mp.unit_score(q_, allu)
+        res['product_key_topk_max_diff'] = float((vs - full.topk(3, -1).values).abs().max())
     # word-level arms: windowed frozen scoring and causal online adaptation never let a later token change an earlier score
     s1 = np.random.default_rng(1).integers(0, 8, 200); s2 = s1.copy(); q = 120; s2[q] = (s2[q] + 1) % V
     ms = [torch.full_like(p_, 1e-4) for p_ in m.parameters() if p_.requires_grad]; w0 = [p_.detach().clone() for p_ in m.parameters()]
@@ -305,7 +336,7 @@ def contracts():
                online_first_segment_equals_frozen=float(np.abs(o1[:16] - f1[:16]).max()), online_adapts=float(np.abs(o1[16:] - f1[16:]).max()),
                weights_restored=all(torch.equal(a_, b_) for a_, b_ in zip(m.parameters(), w0)))
     ok = (abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['repeat_eval_identical'] and res['window_targets'] == 200
-          and res['window_prefix_max_diff'] == 0 and res['online_prefix_max_diff'] == 0 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['weights_restored'])
+          and res['product_key_topk_max_diff'] < 1e-5 and res['window_prefix_max_diff'] == 0 and res['online_prefix_max_diff'] == 0 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['weights_restored'])
     res['status'] = 'passed' if ok else 'failed'; return res
 
 
@@ -313,7 +344,7 @@ def main():
     ap = argparse.ArgumentParser(); A = ap.add_argument
     A('--mode', choices=('train', 'contract', 'score'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
-    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5)
+    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--dropout', type=float, default=0.0); A('--epochs', type=int, default=30); A('--ctx', type=int, default=512); A('--stride', type=int, default=128)
     A('--run', default=''); A('--split', default='valid'); A('--select-from', default=''); A('--online-stride', type=int, default=32); A('--grid-targets', type=int, default=8192)
@@ -329,7 +360,7 @@ def main():
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     counts = np.bincount(train.reshape(-1), minlength=50257).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope); params = sum(p.numel() for p in model.parameters())
+    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
