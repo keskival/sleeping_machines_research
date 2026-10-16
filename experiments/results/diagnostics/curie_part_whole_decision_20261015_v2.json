@@ -1,0 +1,157 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "tag": "curie_part_whole_decision_20261015_v2",
+  "runs": [
+    "curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1",
+    "curie_r1_part_whole_4M_s0_20261015_v2",
+    "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1"
+  ],
+  "rows": {
+    "curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1": {
+      "status": "completed",
+      "hierarchy": false,
+      "flagship_nll": 5.864816101836057,
+      "prequential_last_quarter": 5.836152118165046,
+      "score_65528": 5.7087925345218595,
+      "train_wall_s": 6558.3021121025085,
+      "parameters": 3416797,
+      "by_role": {
+        "word_initial": {
+          "fraction": 0.7783203125,
+          "nll": 6.298818465081994,
+          "loss_share": 0.8359168081312213
+        },
+        "continuation": {
+          "fraction": 0.1053466796875,
+          "nll": 6.0995881399416465,
+          "loss_share": 0.10956376923786941
+        },
+        "punctuation": {
+          "fraction": 0.0902099609375,
+          "nll": 2.7314487979495308,
+          "loss_share": 0.042013915711469375
+        },
+        "newline": {
+          "fraction": 0.0177001953125,
+          "nll": 1.613117396420446,
+          "loss_share": 0.004868437898623053
+        },
+        "other": {
+          "fraction": 0.0084228515625,
+          "nll": 5.317677158592404,
+          "loss_share": 0.007637069020816951
+        },
+        "all": 5.864816101836057
+      },
+      "history_beyond_64_by_role": {
+        "word_initial": 0.007025230441297524,
+        "continuation": 0.03182512094735274,
+        "punctuation": 0.006308254363022856,
+        "newline": 0.016772438534374896,
+        "other": -0.09148455681144327,
+        "all": 0.008915932350225475
+      }
+    },
+    "curie_r1_part_whole_4M_s0_20261015_v2": {
+      "status": "completed",
+      "hierarchy": true,
+      "flagship_nll": 5.8594317189510985,
+      "prequential_last_quarter": 5.814283381681889,
+      "score_65528": 5.711247552781588,
+      "train_wall_s": 10602.102970838547,
+      "parameters": 3749993,
+      "by_role": {
+        "word_initial": {
+          "fraction": 0.7783203125,
+          "nll": 6.290206518599328,
+          "loss_share": 0.8355410111549464
+        },
+        "continuation": {
+          "fraction": 0.1053466796875,
+          "nll": 6.086139491093832,
+          "loss_share": 0.10942265705188212
+        },
+        "punctuation": {
+          "fraction": 0.0902099609375,
+          "nll": 2.731078352471886,
+          "loss_share": 0.0420468201202699
+        },
+        "newline": {
+          "fraction": 0.0177001953125,
+          "nll": 1.7504524056253763,
+          "loss_share": 0.005287773789494894
+        },
+        "other": {
+          "fraction": 0.0084228515625,
+          "nll": 5.357782564517381,
+          "loss_share": 0.0077017378834066934
+        },
+        "all": 5.8594317189510985
+      },
+      "history_beyond_64_by_role": {
+        "word_initial": 0.02320147093540864,
+        "continuation": 0.01446012697223874,
+        "punctuation": -0.00694801765725619,
+        "newline": -0.1591858134187501,
+        "other": 0.03331960564938145,
+        "all": 0.01641774817585251
+      },
+      "level_unique_value_by_role": [
+        {
+          "word_initial": 0.04922223408228747,
+          "continuation": 0.23100515907674976,
+          "punctuation": 0.044552302105917506,
+          "newline": 0.2852609677561398,
+          "other": 0.2630243305710779,
+          "all": 0.07392994228298555
+        },
+        {
+          "word_initial": 0.013243343447866986,
+          "continuation": 0.027425891579432857,
+          "punctuation": 0.11830341196946638,
+          "newline": 0.01815170378520571,
+          "other": 0.07573126817958942,
+          "all": 0.024828097931559157
+        },
+        {
+          "word_initial": 0.010059026770741891,
+          "continuation": 0.028996548832207755,
+          "punctuation": 0.044054173477134556,
+          "newline": 0.0020153006602977885,
+          "other": 0.061862804751465286,
+          "all": 0.015414692706987587
+        }
+      ]
+    },
+    "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1": {
+      "status": "missing"
+    }
+  },
+  "decision": {
+    "P6a_flagship_gain": 0.005384382884958683,
+    "P6a_prequential_gain": 0.02186873648315668,
+    "P6a": true,
+    "P6b_word_initial_gain": 0.008611946482665722,
+    "P6b_history64_word_initial": {
+      "base": 0.007025230441297524,
+      "hierarchy": 0.02320147093540864
+    },
+    "P6b": true,
+    "P6c": true
+  },
+  "protocol": {
+    "targets": 8192,
+    "target_start": 25165825,
+    "window": 1024,
+    "history_cut": 64,
+    "level_ablation": "u^k mean-replaced in the readout input only"
+  },
+  "source_sha256": {
+    "analysis/part_whole_decision.py": "2aa965dfaf97d835f8d9cf507b4848228909af0c4334e32fae026cc9b6e10dbe",
+    "experiments/r1_part_whole_lm.py": "fcc9a01b68a6d477669ea1e25b0e39962dd017c19343cae730d267093f955eee",
+    "analysis/part_whole_structure.py": "ad0f28ede40897e7b24c70743b01bd8a92e3ba70e13b7f2ef820082452eca27f"
+  },
+  "process_wall_s": 185.79407494305633,
+  "scope": "Single seed, one pass over the same 4M fresh tokens; development protocol."
+}

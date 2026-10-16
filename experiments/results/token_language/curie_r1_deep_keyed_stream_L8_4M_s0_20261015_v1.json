@@ -1,0 +1,99 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth per fresh token: plan-B deep keyed member, one pass",
+ "tag": "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1",
+ "args": {
+  "tag": "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1",
+  "seed": 0,
+  "train_tokens": 4194304,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 8,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "checkpoint_blocks": 1,
+  "checkpoint_every": 256,
+  "max_steps": 0
+ },
+ "parameters": 3829429,
+ "steps": 4096,
+ "presentations": 4177920,
+ "train_wall_s": 17819.950137138367,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 1024,
+   "tokens": 1048576,
+   "select_nll": 6.577870624730456,
+   "prequential_segment": 7.161480005830526,
+   "elapsed_s": 4438
+  },
+  {
+   "step": 2048,
+   "tokens": 2097152,
+   "select_nll": 6.242657689857204,
+   "prequential_segment": 6.1927933120168746,
+   "elapsed_s": 8897
+  },
+  {
+   "step": 3072,
+   "tokens": 3145728,
+   "select_nll": 6.047410362105749,
+   "prequential_segment": 5.922281790990382,
+   "elapsed_s": 13389
+  },
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select_nll": 5.99576491452335,
+   "prequential_segment": 5.809467168990523,
+   "elapsed_s": 17820
+  }
+ ],
+ "prequential_by_eighth": [
+  7.742488082498312,
+  6.580471929162741,
+  6.275640282779932,
+  6.109946341253817,
+  5.975167355500162,
+  5.869396226480603,
+  5.819686925970018,
+  5.799247412011027
+ ],
+ "prequential_last_quarter": 5.809467168990523,
+ "select": {
+  "nll": 5.99576491452335,
+  "targets": 16376
+ },
+ "score_65528": {
+  "nll": 5.695501447437069,
+  "targets": 65528
+ },
+ "flagship_protocol": {
+  "nll": 5.841435983777046,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "max_rss_kb": 1414040,
+ "reference": {
+  "keyed_L2_4M_multi_epoch_score_65528": 5.521061,
+  "keyed_L2_4M_flagship": {
+   "s0": 5.624,
+   "s1": 5.601
+  },
+  "p24_flagship": 5.978388
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.pt",
+ "source_sha256": {
+  "experiments/r1_deep_keyed_stream.py": "1de1ec68fe0b1dc216ba2357f11499d6d20ad9c0feae457a77063cd962014971",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}

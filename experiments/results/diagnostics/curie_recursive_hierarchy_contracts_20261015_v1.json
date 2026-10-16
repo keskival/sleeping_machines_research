@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "init_equals_base": true,
+    "recursive_causal": true,
+    "marks_carry_no_gradient": true,
+    "credit": true
+  },
+  "measurements": {
+    "window_offset": 5000640,
+    "heads": [
+      "2",
+      "3",
+      "4"
+    ],
+    "recursive_causal_max_change_float64": 1.6653345369377348e-15,
+    "causal_cases": 7,
+    "heads_used": 3,
+    "parameters_without_gradient": []
+  },
+  "source_sha256": {
+    "experiments/recursive_hierarchy_contracts.py": "abffd3a83aab3b1ec155f7b3ef523d7b28aa93a89dcf07f41418c3d46361ec10",
+    "experiments/r1_recursive_hierarchy_lm.py": "dc33b3ebe3edf293dc161244350c4eaea20b5b85ec4e4a4f56aa50ae86e06f10",
+    "experiments/r1_concept_hierarchy_lm.py": "b2225fe5a9997cfe77710cdc873d7a87b10959959f140df8a9798538e8f82ab8",
+    "experiments/r1_part_whole_lm.py": "228377e4fae22c5aa3f381e95559a30c3ef246404ba9311384ef7d0e2f13dd53"
+  },
+  "max_rss_kb": 759344,
+  "process_wall_s": 14.083916443982162
+}

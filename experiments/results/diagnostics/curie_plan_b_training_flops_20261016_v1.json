@@ -1,0 +1,53 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "tag": "curie_plan_b_training_flops_20261016_v1",
+ "convention": "measured matmul FLOPs (torch FlopCounterMode), forward+backward, one 1x256 lane (per-target work is batch-independent); elementwise/optimizer work excluded on both sides",
+ "members": [
+  {
+   "d": 64,
+   "layers": 2,
+   "parameters": 3416797,
+   "train_flops_per_target": 21064704.0,
+   "reference_flops_ratio": 38.00780224588012
+  },
+  {
+   "d": 64,
+   "layers": 4,
+   "parameters": 3554341,
+   "train_flops_per_target": 22659072.0,
+   "reference_flops_ratio": 35.33344631236442
+  },
+  {
+   "d": 64,
+   "layers": 8,
+   "parameters": 3829429,
+   "train_flops_per_target": 25847808.0,
+   "reference_flops_ratio": 30.97450677442358
+  },
+  {
+   "d": 64,
+   "layers": 16,
+   "parameters": 4379605,
+   "train_flops_per_target": 32225280.0,
+   "reference_flops_ratio": 24.844566253574833
+  },
+  {
+   "d": 128,
+   "layers": 8,
+   "parameters": 8129909,
+   "train_flops_per_target": 51609984.0,
+   "reference_flops_ratio": 15.512950052454967
+  }
+ ],
+ "reference": {
+  "model": "GPT-2 124M (modded-nanogpt record 95a9fd44)",
+  "parameters": 124000000.0,
+  "train_flops_per_token": 800623104.0,
+  "convention": "6N + 6 n_layer T d (forward+backward matmul)"
+ },
+ "source_sha256": {
+  "analysis/plan_b_training_flops.py": "535d7e69dcab0548e2eb2ceda79538396484af100a1dc6c8596e68d68dc95a2f",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043"
+ }
+}

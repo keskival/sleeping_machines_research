@@ -1,0 +1,114 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "observed part-whole hierarchy on the deep keyed member, one pass",
+ "tag": "curie_r1_part_whole_4M_s0_20261015_v2",
+ "args": {
+  "tag": "curie_r1_part_whole_4M_s0_20261015_v2",
+  "seed": 0,
+  "train_tokens": 4194304,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 2,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "checkpoint_every": 256,
+  "horizons": [
+   4,
+   16,
+   64
+  ],
+  "future_weight": 0.1,
+  "max_steps": 0
+ },
+ "parameters": 3749993,
+ "steps": 4096,
+ "presentations": 4177920,
+ "train_wall_s": 10602.102970838547,
+ "resumes": 1,
+ "milestones": [
+  {
+   "step": 1024,
+   "tokens": 1048576,
+   "select_nll": 6.583783975740031,
+   "prequential_segment": 7.175919023808092,
+   "elapsed_s": 2589
+  },
+  {
+   "step": 2048,
+   "tokens": 2097152,
+   "select_nll": 6.244777506132736,
+   "prequential_segment": 6.189575115218759,
+   "elapsed_s": 5295
+  },
+  {
+   "step": 3072,
+   "tokens": 3145728,
+   "select_nll": 6.0702335598064625,
+   "prequential_segment": 5.928234592080116,
+   "elapsed_s": 7926
+  },
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select_nll": 6.01756840469666,
+   "prequential_segment": 5.814283381681889,
+   "elapsed_s": 10602
+  }
+ ],
+ "prequential_by_eighth": [
+  7.771706147119403,
+  6.580131900496781,
+  6.268010621890426,
+  6.1111396085470915,
+  5.980809647589922,
+  5.875659536570311,
+  5.824835596606135,
+  5.803731166757643
+ ],
+ "prequential_last_quarter": 5.814283381681889,
+ "future_by_eighth": [
+  8.281259781681001,
+  7.684944050386548,
+  7.59615904930979,
+  7.554265388287604,
+  7.517964171245694,
+  7.485280125401914,
+  7.472839201800525,
+  7.45688755530864
+ ],
+ "select": {
+  "nll": 6.01756840469666,
+  "targets": 16376
+ },
+ "score_65528": {
+  "nll": 5.711247552781588,
+  "targets": 65528
+ },
+ "flagship_protocol": {
+  "nll": 5.859431773424149,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "max_rss_kb": 1831432,
+ "reference": {
+  "baseline": "curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1",
+  "keyed_L2_4M_flagship": {
+   "s0": 5.624,
+   "s1": 5.601
+  }
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_part_whole_4M_s0_20261015_v2.pt",
+ "source_sha256": {
+  "experiments/r1_part_whole_lm.py": "fcc9a01b68a6d477669ea1e25b0e39962dd017c19343cae730d267093f955eee",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tables/gpt2_token_roles.json": "0f5190ba5c4a6e8828d506a2bd0ee2881866efe8c6bc285e6bfe977df825d8a2"
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "battle": "R1",
+ "tag": "curie_public_protocol_scorer_contract_L8_4M_20261016_v1",
+ "run": "curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1",
+ "mode": "contract",
+ "parameters": 3829429,
+ "train_tokens": 4194304,
+ "layers": 8,
+ "d": 64,
+ "development": {
+  "nll": 5.84143602848053,
+  "loss_sum": 47853.0439453125,
+  "targets": 8192,
+  "target_start": 25165825,
+  "target_end_inclusive": 25174016,
+  "window": 1024,
+  "eos_state_reset": false,
+  "s_per_window": 2.716004103422165
+ },
+ "driver_flagship": {
+  "nll": 5.841435983777046,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "abs_diff": 4.470348358154297e-08,
+ "recorded_flagship": 5.841435983777046,
+ "public_cost_estimate_h": 7.7255227830674915,
+ "status": "completed",
+ "max_rss_kb": 589620,
+ "process_wall_s": 56.9484646320343,
+ "source_sha256": {
+  "analysis/public_protocol_score_keyed.py": "ecc21991efdc35d347053c488938f040465cfab50274adb782dbd6dffdacc014",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}

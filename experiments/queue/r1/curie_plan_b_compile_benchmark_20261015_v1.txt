@@ -1,0 +1,2 @@
+# Battle R1, throughput for depth scaling (route 15 Oct): plan-B blocks eager vs torch.compile, L8, 4x256 lanes, identical batches (dropout off): loss agreement and steady-state s/update. Decision: adopt compiled blocks for the 16M-64M depth runs if losses agree and the speedup is material. No fit; ~10 min.
+curie_plan_b_compile_benchmark_20261015_v1 analysis/plan_b_compile_benchmark.py --tag curie_plan_b_compile_benchmark_20261015_v1 --layers 8 --updates 12
