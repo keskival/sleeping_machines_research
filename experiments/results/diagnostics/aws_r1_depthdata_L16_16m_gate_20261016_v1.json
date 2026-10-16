@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "depth_data_resource_gate",
+  "gate": "PASS",
+  "layers": 16,
+  "measurement": {
+    "smoke_steps": 32,
+    "s_per_step": 3.196088545024395,
+    "max_rss_kb": 2024860
+  },
+  "command": [
+    "/workspace/.venv-docker/bin/python",
+    "experiments/r1_deep_keyed_stream.py",
+    "--tag",
+    "aws_r1_depthdata_L16_16m_gate_20261016_v1_actor",
+    "--layers",
+    "16",
+    "--train-tokens",
+    "16777216",
+    "--seed",
+    "0",
+    "--compile-blocks",
+    "1",
+    "--max-steps",
+    "32"
+  ],
+  "process_wall_s": 105.58618389000185,
+  "source_sha256": {
+    "experiments/hierarchy/depth_data_resource_gate.py": "fcdef7af6afae50380c3c9ea6a5f7ee1f624202b874cbae370436cc1746f4a5c",
+    "experiments/r1_deep_keyed_stream.py": "c7c018decc6e946ef5ad132ac020e76cf27e3976c9ab02aca1353812877a2ca0",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "decision": "Admit the already ordered one-pass 16M depth fit only with measured RSS margin and bounded update time.",
+  "scope": "32 actual native updates,including compiler startup;no quality selection or public TEST. Resource smoke presentations charged separately from the fit;one CPU thread,pinned gym slot."
+}
