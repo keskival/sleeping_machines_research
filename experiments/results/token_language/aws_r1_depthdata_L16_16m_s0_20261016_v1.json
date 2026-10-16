@@ -1,0 +1,100 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth per fresh token: plan-B deep keyed member, one pass",
+ "tag": "aws_r1_depthdata_L16_16m_s0_20261016_v1",
+ "args": {
+  "tag": "aws_r1_depthdata_L16_16m_s0_20261016_v1",
+  "seed": 0,
+  "train_tokens": 16777216,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "layers": 16,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "checkpoint_blocks": 0,
+  "checkpoint_every": 256,
+  "compile_blocks": 1,
+  "max_steps": 0
+ },
+ "parameters": 4379605,
+ "steps": 16384,
+ "presentations": 16711680,
+ "train_wall_s": 47639.0913040638,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select_nll": 5.941254996414818,
+   "prequential_segment": 6.480491793714464,
+   "elapsed_s": 11878
+  },
+  {
+   "step": 8192,
+   "tokens": 8388608,
+   "select_nll": 5.599078187257648,
+   "prequential_segment": 5.6184461989905685,
+   "elapsed_s": 23810
+  },
+  {
+   "step": 12288,
+   "tokens": 12582912,
+   "select_nll": 5.417555920368413,
+   "prequential_segment": 5.380363660864532,
+   "elapsed_s": 35551
+  },
+  {
+   "step": 16384,
+   "tokens": 16777216,
+   "select_nll": 5.369176077271999,
+   "prequential_segment": 5.270485164714046,
+   "elapsed_s": 47639
+  }
+ ],
+ "prequential_by_eighth": [
+  6.9895119005814195,
+  5.971471686847508,
+  5.7031893422827125,
+  5.533703055698425,
+  5.428657354554161,
+  5.332069967174903,
+  5.285517769865692,
+  5.2554525595624
+ ],
+ "prequential_last_quarter": 5.270485164714046,
+ "select": {
+  "nll": 5.369176077271999,
+  "targets": 16376
+ },
+ "score_65528": {
+  "nll": 5.10387274325658,
+  "targets": 65528
+ },
+ "flagship_protocol": {
+  "nll": 5.2033568769693375,
+  "targets": 8192,
+  "target_start": 25165825,
+  "window": 1024
+ },
+ "max_rss_kb": 2000448,
+ "reference": {
+  "keyed_L2_4M_multi_epoch_score_65528": 5.521061,
+  "keyed_L2_4M_flagship": {
+   "s0": 5.624,
+   "s1": 5.601
+  },
+  "p24_flagship": 5.978388
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_depthdata_L16_16m_s0_20261016_v1.pt",
+ "source_sha256": {
+  "experiments/r1_deep_keyed_stream.py": "c7c018decc6e946ef5ad132ac020e76cf27e3976c9ab02aca1353812877a2ca0",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ }
+}
