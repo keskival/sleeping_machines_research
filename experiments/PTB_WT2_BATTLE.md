@@ -35,6 +35,9 @@ for the selected configuration.
 
 ## Design rationale: why the native family should win here
 
+Fighter: the causal event race member ([theory/169](theory/169_causal_race_language.md)); the driver's plan-B blocks remain only as a diagnostic control.
+
+
 1. **Cache and adaptation are where these leaderboards move.** On WikiText-2, dynamic evaluation takes the best models from
    55–61 to 39–41 (15–20 points, table above); a continuous cache pointer also gives large gains to static models
    (Grave et al. 2017; Merity et al. 2018). Text repeats names and
@@ -55,7 +58,8 @@ for the selected configuration.
 
 | Round | Model | Train | Val static | Val online | Note |
 | --- | --- | --- | --- | --- | --- |
-| 1 (queued, Curie v18) | d256 L8, 9M params, lanes 512 × 4, 16 epochs | — | — | — | first fit; learning curve decides round 2 |
+| 1 (withdrawn 16 Oct) | dense plan-B d256 L8 | — | — | — | withdrawn by founder direction: plan-B is a diagnostic control, not our model |
+| 1 (in design) | causal event race member (theory note 169) | — | — | — | fighter for both corpora; contracts first |
 
 Round 2 options, chosen by round 1's curve: overfitting → stronger regularisation (AWS arm 2); underfitting → width d384
 (AWS arm 1) and longer schedules; online gain below dynamic evaluation's 6–7 points → adaptation segment length, decay and

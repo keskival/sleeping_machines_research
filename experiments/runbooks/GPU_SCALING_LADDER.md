@@ -3,7 +3,7 @@
 16 October 2026 (Curie). Implements step 4 of [SCALING_SUPREMACY_PROTOCOL.md](../SCALING_SUPREMACY_PROTOCOL.md): take the
 strongest native language member to the compute range where the published modded-NanoGPT curves live (5e16–3e17 FLOPs)
 and measure our own compute frontier with enough diagnostics to see where scaling breaks. **Provisioning needs the
-founder's purchase order**; this runbook prepares execution and admits nothing by itself.
+founder's purchase order**; this runbook prepares execution and admits nothing by itself. **On hold (founder direction 16 Oct):** the ladder fields the native causal event race member (theory note 169) once it passes its CPU gates; the plan-B variants below are diagnostic controls only.
 
 GPUs are a training accelerator here, not the target. The deployment target is clockless event hardware. Guardrails:
 the model is defined by DeepKeyedLM's event semantics, and the GPU kernels are an exact parallel rewrite of them (contract:

@@ -23,6 +23,24 @@ Our purpose is to win: build the strongest model family and achieve material, re
 - Official fixed-weight benchmark protocols remain useful as separately labelled comparisons; fixed-weight or reset-state diagnostics cannot substitute for the primary non-stationary/online experiment. Report measured advantages plainly with their actual scope. Do not infer a family loss from a restricted implementation, or an online win from a static score.
 - New experiments should answer a competitive decision or remove a measured implementation bottleneck. Reuse acquired models, data and completed evidence; avoid re-fitting an unchanged model merely because adding the missing online or persistent-state evaluation needs engineering.
 
+# Build our own models: no drift into Transformers or SSMs (user direction, 16 October 2026)
+
+- User: "We really don't want to make our model a Transformer or an SSM model piece by piece, death by a thousand cuts or
+  ablations." "We aren't even building our own models anymore!" The language flagship had drifted into a generic SSM +
+  attention + MLP hybrid (`r1_deep_keyed_lm.py`, plan-B), without the causal race inductive bias that won the event domains.
+  The plan-B member is a labelled diagnostic control from now on and is never fielded as a flagship.
+- Every flagship member predicts through the family's own computation: a race of clocks among candidate causes over
+  persistent addressed memory, with sparse addressed state updates, counterfactual credit, temporal computation and
+  capacity beyond activity (language: experiments/theory/169_causal_race_language.md). Standard primitives (embeddings,
+  normalisation, small local maps) may sit inside a cause's computation; they never replace the race, the addressed memory
+  or the sparse update.
+- When a native mechanism fails, repair it at its cause (credit variance, retrieval, clock calibration, composition). Do not
+  swap in the conventional component that happens to work. Any proposed substitution needs the written analysis of the
+  architectural-continuity rules below before code, and the founder's approval when it removes a core mechanism.
+- Report each member's native share (loss reduction delivered by race causes over the background route) and active work
+  per token (candidates scored, units woken, messages, state bytes moved) beside its loss. A result without them is not a
+  flagship result.
+
 # Experiment host rules
 
 - Read `experiments/HANDOFF.md` for the current report, publishing and running
