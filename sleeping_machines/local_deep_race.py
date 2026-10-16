@@ -38,16 +38,19 @@ class LocalDeepRace(nn.Module):
         y=F.layer_norm(unit.output(memory)+incoming,(unit.payload,))
         return incoming+unit.gain*y*torch.sigmoid(unit.gate(F.gelu(y)))
 
-    def consume(self,message,state,generator,alternative_generator,*,learn=True,noise=None,alternative_noise=None):
+    def consume(self,message,state,generator,alternative_generator,*,learn=True,noise=None,alternative_noise=None,cause_messages=None):
         if message.shape!=(self.width,) or not bool(torch.isfinite(message).all()):
             raise ValueError('finite fixed-width native event message required')
         if message.device.type!='cpu':raise ValueError('initial event kernel is CPU-only')
+        if cause_messages is not None and cause_messages.shape!=(self.depth,self.width):
+            raise ValueError('one cause-message inbox per native depth required')
         x=message;arrival=torch.tensor(float(state['events']),dtype=torch.float64)
         outputs=[];packets=[];winners=[]
         for d in range(self.depth):
             # Explicit local interface: numerical information persists, gradient
             # graphs do not cross a message boundary into a different layer.
             if d:x=x.detach();arrival=arrival.detach()
+            if cause_messages is not None:x=x+cause_messages[d].detach()
             stream=x;mixed=self.mix[d](x);features=F.layer_norm(mixed,(self.width,))
             values=[];times=[];level_winners=[]
             for h in range(self.heads):

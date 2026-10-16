@@ -62,11 +62,14 @@ class PackedLocalDeepRace(nn.Module):
         gate=torch.einsum('hpq,hq->hp',params['gate_w'],F.gelu(y))+params['gate_b']
         return x+self.gain*y*gate.sigmoid()
 
-    def consume(self,message,state,generator,alternative_generator,*,learn=True,noise=None,alternative_noise=None):
+    def consume(self,message,state,generator,alternative_generator,*,learn=True,noise=None,alternative_noise=None,cause_messages=None):
         h,u,p=self.heads,self.pool,self.payload;hi=torch.arange(h);x=message;arrival=torch.tensor(float(state['events']),dtype=torch.float64)
         outputs=[];packets=[];winners=[]
+        if cause_messages is not None and cause_messages.shape!=(self.depth,self.width):
+            raise ValueError('one cause-message inbox per native depth required')
         for d in range(self.depth):
             if d:x=x.detach();arrival=arrival.detach()
+            if cause_messages is not None:x=x+cause_messages[d].detach()
             stream=x;mixed=F.linear(x,self.mix[d]);normal=F.layer_norm(mixed,(self.width,));incoming=mixed.reshape(h,p)
             input_arrival=arrival.detach()
             old=state['layers'][d];b={k:v[d] for k,v in self.banks.items()}
