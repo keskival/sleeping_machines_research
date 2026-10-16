@@ -1,0 +1,215 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "gate": "PASS",
+  "stage": "completed checkpoint compact residual-memory evaluation",
+  "source_sha256": {
+    "experiments/hierarchy/rmr_compact_recovery.py": "5ea632888756128b082e811f8223361f8ac0db8f8d74bc8778829cd16ffc585e",
+    "experiments/r1_rmr_compact.py": "733cba89a919ab6d03917edd966bc1fc7ef1fa3b99a2976c1b6d11613d9546c3",
+    "tests/test_rmr_compact.py": "c1f57108064fd0a6c13c57204fcc417b6cc4544a4da34d6f4999db1558a27bfc",
+    "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+    "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "parent_run": "aws_r1_rmr_dense_K8_4M_s0_20261016_v1",
+  "parent_checkpoint_sha256": "84cacf4c634ea449a01430872479d3d2ff1bcd3f41d15c3059dbeaeea63b627e",
+  "training_loaded_source_sha256": {
+    "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+    "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "training_admission_sha256": "ed112965a33531a86e1054f89871af5e7c35d14ce77b6b1f4c7c5611871afe86",
+  "additional_training_targets": 0,
+  "training": {
+    "steps": 4096,
+    "wall_s": 7630.643093109131,
+    "milestones": [
+      {
+        "step": 1024,
+        "tokens": 1048576,
+        "select": {
+          "nll": 6.2047237215475395,
+          "targets": 16376,
+          "native": {
+            "bg_only_nll": 6.6305423154444245,
+            "resp_bg": 0.27966494655439517,
+            "resp_concept": 0.5455313182905004,
+            "resp_repeat": 0.0368844865715294,
+            "resp_continue": 0.13791924574183556,
+            "level2_new_norm": 1.4972153306007385,
+            "level2_old_norm": 0.0,
+            "level3_new_norm": 0.2659297492355108,
+            "level3_old_norm": 0.0,
+            "level4_new_norm": 0.7801807895302773,
+            "level4_old_norm": 0.0,
+            "level5_new_norm": 0.45710891112685204,
+            "level5_old_norm": 0.0,
+            "level6_new_norm": 0.023858032654970884,
+            "level6_old_norm": 0.0,
+            "level7_new_norm": 0.1993481945246458,
+            "level7_old_norm": 0.0,
+            "level8_new_norm": 1.0565966591238976,
+            "level8_old_norm": 0.0,
+            "native_gain": 0.42581859389688503
+          }
+        },
+        "prequential_segment": 6.5011676689609885,
+        "elapsed_s": 1886
+      },
+      {
+        "step": 2048,
+        "tokens": 2097152,
+        "select": {
+          "nll": 5.886471657503741,
+          "targets": 16376,
+          "native": {
+            "bg_only_nll": 6.318823458249241,
+            "resp_bg": 0.3130340870737331,
+            "resp_concept": 0.4875984573067982,
+            "resp_repeat": 0.08025333793805643,
+            "resp_continue": 0.11911411011481451,
+            "level2_new_norm": 0.680878035724163,
+            "level2_old_norm": 0.0,
+            "level3_new_norm": 0.12594041135162115,
+            "level3_old_norm": 0.0,
+            "level4_new_norm": 0.6455844715237617,
+            "level4_old_norm": 0.0,
+            "level5_new_norm": 0.5283517688512802,
+            "level5_old_norm": 0.0,
+            "level6_new_norm": 0.03551394329406321,
+            "level6_old_norm": 0.0,
+            "level7_new_norm": 0.5153233632445335,
+            "level7_old_norm": 0.0,
+            "level8_new_norm": 0.6393001973628998,
+            "level8_old_norm": 0.0,
+            "native_gain": 0.4323518007455007
+          }
+        },
+        "prequential_segment": 5.814360197633505,
+        "elapsed_s": 3810
+      },
+      {
+        "step": 3072,
+        "tokens": 3145728,
+        "select": {
+          "nll": 5.7210571259245615,
+          "targets": 16376,
+          "native": {
+            "bg_only_nll": 6.147497927641717,
+            "resp_bg": 0.2911540260997978,
+            "resp_concept": 0.49828703539344993,
+            "resp_repeat": 0.10450836009167146,
+            "resp_continue": 0.10605057631494158,
+            "level2_new_norm": 0.5470742844045162,
+            "level2_old_norm": 0.0,
+            "level3_new_norm": 0.2206398881971836,
+            "level3_old_norm": 0.0,
+            "level4_new_norm": 0.6214065253734589,
+            "level4_old_norm": 0.0,
+            "level5_new_norm": 0.6380760073661804,
+            "level5_old_norm": 0.0,
+            "level6_new_norm": 0.07094188826158643,
+            "level6_old_norm": 0.0,
+            "level7_new_norm": 0.5485085174441338,
+            "level7_old_norm": 0.0,
+            "level8_new_norm": 0.8442894890904427,
+            "level8_old_norm": 0.0,
+            "native_gain": 0.42644080171715526
+          }
+        },
+        "prequential_segment": 5.574676615651697,
+        "elapsed_s": 5722
+      },
+      {
+        "step": 4096,
+        "tokens": 4194304,
+        "select": {
+          "nll": 5.679531781336827,
+          "targets": 16376,
+          "native": {
+            "bg_only_nll": 6.104617486654635,
+            "resp_bg": 0.2742280340214357,
+            "resp_concept": 0.515571675312027,
+            "resp_repeat": 0.10465654904868146,
+            "resp_continue": 0.10554374685091511,
+            "level2_new_norm": 0.6115191653370857,
+            "level2_old_norm": 0.0,
+            "level3_new_norm": 0.29903670214116573,
+            "level3_old_norm": 0.0,
+            "level4_new_norm": 0.6481199786067009,
+            "level4_old_norm": 0.0,
+            "level5_new_norm": 0.7760085836052895,
+            "level5_old_norm": 0.0,
+            "level6_new_norm": 0.1083648856729269,
+            "level6_old_norm": 0.0,
+            "level7_new_norm": 0.6243301630020142,
+            "level7_old_norm": 0.0,
+            "level8_new_norm": 0.9766734391450882,
+            "level8_old_norm": 0.0,
+            "native_gain": 0.42508570531780787
+          }
+        },
+        "prequential_segment": 5.464586038608104,
+        "elapsed_s": 7631
+      }
+    ],
+    "targets": 4177920
+  },
+  "flagship": {
+    "nll": 5.471203468739986,
+    "targets": 8192,
+    "native": {
+      "bg_only_nll": 5.9071498811244965,
+      "resp_bg": 0.2738696860615164,
+      "resp_concept": 0.5395602867938578,
+      "resp_repeat": 0.08979175117565319,
+      "resp_continue": 0.09677827515770332,
+      "level2_new_norm": 0.6900231838226318,
+      "level2_old_norm": 0.0,
+      "level3_new_norm": 0.31118836998939514,
+      "level3_old_norm": 0.0,
+      "level4_new_norm": 0.7141522988677025,
+      "level4_old_norm": 0.0,
+      "level5_new_norm": 0.6334297060966492,
+      "level5_old_norm": 0.0,
+      "level6_new_norm": 0.12981716357171535,
+      "level6_old_norm": 0.0,
+      "level7_new_norm": 0.5915202647447586,
+      "level7_old_norm": 0.0,
+      "level8_new_norm": 1.12211012840271,
+      "level8_old_norm": 0.0,
+      "native_gain": 0.43594641238451004
+    }
+  },
+  "score_65528": {
+    "nll": 5.325403629620133,
+    "targets": 65528,
+    "native": {
+      "bg_only_nll": 5.874852280493927,
+      "resp_bg": 0.23135156244946412,
+      "resp_concept": 0.45037757374319876,
+      "resp_repeat": 0.14732318320732868,
+      "resp_continue": 0.1709476792667538,
+      "level2_new_norm": 0.6518985629081726,
+      "level2_old_norm": 0.0,
+      "level3_new_norm": 0.31606377847492695,
+      "level3_old_norm": 0.0,
+      "level4_new_norm": 0.6956045925617218,
+      "level4_old_norm": 0.0,
+      "level5_new_norm": 0.8075488582253456,
+      "level5_old_norm": 0.0,
+      "level6_new_norm": 0.10492581129074097,
+      "level6_old_norm": 0.0,
+      "level7_new_norm": 0.6497954949736595,
+      "level7_old_norm": 0.0,
+      "level8_new_norm": 0.9890818893909454,
+      "level8_old_norm": 0.0,
+      "native_gain": 0.5494486508737948
+    }
+  },
+  "scope": "Same completed weights and scored targets/history. Zero old-write matrices removed; no retraining, TEST, context reduction or new model-quality claim from numerical parity alone.",
+  "elapsed_s": 132.9966021841392,
+  "max_rss_kb": 553564
+}
