@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiment
 from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, fineweb_protocols, work_per_target  # noqa: E402
 
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk')
+STAGE = 'native residual-memory race model (RMR-1, theory 172), one pass'
 
 
 class CorrectionLevel(nn.Module):
@@ -197,7 +198,7 @@ def main():
     with FlopCounterMode(display=False) as fc:
         model.train(); w = torch.from_numpy(train[:1]); model.lane_nll(w[:, :-1], w[:, 1:]).mean().backward()
     model.zero_grad(); fpt = fc.get_total_flops()/(a.lane - 1); seg = max(1, total//8)
-    result = dict(status='completed', battle='R1', stage='native residual-memory race model (RMR-1, theory 172), one pass', tag=a.tag, args=vars(a), parameters=params, steps=step,
+    result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
                   **fineweb_protocols(model, val, a.row_chunk), work_level1_per_target=work_per_target(model.base, 255),
