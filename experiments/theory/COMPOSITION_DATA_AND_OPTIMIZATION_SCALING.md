@@ -1,0 +1,33 @@
+# Compositional scaling: hold the model fixed and resolve data/training adequacy
+
+16 October2026. Current user direction supersedes the earlier recommendation against any unchanged continuation. No new ablations,architecture substitution or regularization sweep.
+
+## What the completed results establish
+
+Geometry teaching improves root reconstruction34.6% without whole-class transfer. Latest-memory identity teaching improves DEV shape recognition12.5%→50.2%,whole-class NLL0.6922 versus saved0.6866. The identity-preserving/issued-version candidate improves its local DEV recognition40.43%→53.12% while legacy TRAIN affine-readout NLL0.6732→0.6145 and DEV0.7076→1.0535. These are short development acquisitions,not evidence of an architecture's asymptotic capacity or learning ceiling. The last candidate has64paired updates/128presentations and does not fit the whole task;we have not observed the classical memorization-then-grokking regime.
+
+Separate unique abstract arrangements A,geometric/timing contexts G,number of presented examples N,and optimization updates U. The prior task has A=64TRAIN arrangements,G=2shared nuisance tapes and128available scenes,with replacement sampling for64paired updates. It does not exhaust available optimization opportunity,and fixed timing tapes can make part identity correlate with nuisance timing within TRAIN. This is an opportunity for broader observational support,not a demonstrated attribution of the failure.
+
+The fixed synthetic task has only128possible binary arrangements.64are TRAIN,32DEV and32TEST. More independent noise tapes do not create additional abstract TRAIN trees. We must disclose that ceiling and preserve the existing structural holdout. Learning a universal rule outside TRAIN support depends on inductive/optimization bias;no amount of repeated nuisance sampling logically identifies a unique extension on every withheld arrangement. Yet broader contexts can teach which variations are irrelevant and improve optimization of the underlying rule. That question deserves a real budget before another redesign.
+
+## The admitted single construction
+
+Keep `IdentityRoleComposition`,all acquired weights and the actual Adam state from the completed64update learner. Keep whole-label CE+0.25issued-view shape CE,lr0.001,weight decay0.01 and gradient cap1. No dropout/equivariance penalty/teacher change is added. Retain8abstraction levels/32native stages,temporal transport,hard receipt/timer races,counterfactual credit,addressed persistent state,separate keys/values,generated views,immutable bindings and identity/role relations. Static ownership/query policy and full current participant/pair reads remain explicit restrictions/costs;no sparse partner selection is claimed.
+
+`composition_scaling_data.py` supplies2048unique TRAIN scenes:the same64abstract arrangements under32new tapes1000..1031. Each tape varies event order/gaps,translation,within-half horizontal spacing,between-half spacing and vertical spacing. Shapes and component count remain unchanged. Spacing stays within the native root support and keeps all eight four-pixel parts separated under the existing TRAIN-fitted ownership threshold. Root-swapped partners retain identical event times and opposite original labels. Pair lookup uses observed arrays/labels only. No latent identity,arrangement code,DEV or TEST target becomes an actor input.
+
+Run2048additional paired updates over1024pairs:two full shuffled epochs without replacement within each epoch. This gives4096presentations,32times the previous update budget and16times the available scene count. Save exact model,Adam,RNG,epoch permutation/cursor,source/input bindings and work every8updates. Across-scene state resets remain correct for independent scenes;within-scene persistence remains native.
+
+## Predeclared endpoints and interpretation
+
+Report128,512and2048additional-update endpoints. Primary comparison uses the original64TRAIN scene affine head,ridge0.01,and original64reused DEV scenes. This retains comparability with acquired0.686609. A second head fits those64TRAIN scenes plus64broader TRAIN contexts covering all64arrangements and all32tapes;its matched initial point is acquired before continuation. That head is separately labelled,not silently compared against an old differently fitted reference.
+
+The final checkpoint alone scores64new DEV scenes on tapes2000/2001 with the original DEV arrangement set and variable geometry. These are fresh inputs,not new abstract heldouts or a public benchmark. TEST is never model-scored. No intermediate result changes loss,learning rate,architecture or the2048update endpoint. No optional stopping based on DEV. Numeric/nonfinite/resource failures stop with the exact checkpoint retained.
+
+A final original-protocol NLL below0.686609 is a within-family development improvement. A strong compositional milestone requires at least80%accuracy and NLL below0.5 on both original and fresh DEV under the original readout protocol. Publish local identity and whole-object results together regardless of outcome. A late recovery would show the short run was an inadequate selection budget,without by itself proving grokking. Persistent poor TRAIN fitting would point toward optimization/credit/capacity work;strong broad TRAIN fitting without withheld-arrangement transfer would make structural generalization the next engineering target. Improvement only from the broader head identifies a readout/data-interface gain with that scope.
+
+All current pair reads/products,teacher reads,native candidate/counterfactual work and evaluation are charged. Parent acquisition is reused and named separately. Resource gate includes an actual broader-data paired update,finite credit at every level and exact optimizer/RNG recovery across a subsequent update. This is a task-suitable native model,not a restricted diagnostic replacing the flagship;no external architecture or new control is trained.
+
+## Relation to published evidence
+
+More data/model training improves compute-optimal language models over wide regimes:[Hoffmann et al.2022](https://arxiv.org/abs/2203.15556). That is evidence to test scaling,not a guarantee for this held-out-combination task. Grokking is delayed generalization on small algorithmic datasets;[Power et al.2022](https://arxiv.org/abs/2201.02177) found weight decay especially effective and showed very long optimization horizons. The original[Transformer](https://arxiv.org/abs/1706.03762) used dropout/label smoothing,and[GPT-3](https://arxiv.org/abs/2005.14165) used weight decay. These findings reject a blanket no-regularization premise. Here we hold existing regularization fixed to resolve the data/training decision economically.

@@ -1,3 +1,5 @@
+Current continuation is governed by [data and optimization scaling](COMPOSITION_DATA_AND_OPTIMIZATION_SCALING.md):the64update result does not justify a capacity verdict,and the user has authorized an adequate fixed-architecture test before further redesign.
+
 # Compositional continuation after native identity acquisition
 
 16 October 2026. No new ablation campaign or automatic fit.
