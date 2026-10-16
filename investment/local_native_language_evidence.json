@@ -33,7 +33,8 @@
     "experiments/results/diagnostics/aws_r1_local_native_deep_gate_20261016_v3.json": "3824bcd4ff254a28251339d7794a64eebd1ee91f907557f79641414dc1f9ed58",
     "experiments/results/diagnostics/aws_r1_queryable_native_gate_20261016_v2.json": "cab0312fc404eb471adc98a7162322ec0151da20cc812bacfb9acfbf1100574c",
     "experiments/results/diagnostics/aws_r1_queryable_native_gate_20261016_v3.json": "2b7cd93a94ffc542b247ae9788d96efd4018f882478f6c096bd13452da170976",
-    "experiments/results/diagnostics/aws_r1_queryable_native_lifetime_gate_20261016_v1.json": "cdce93bb3bcf2c557b64aa025c14a41f067a87af42a472b32814e7f727451962"
+    "experiments/results/diagnostics/aws_r1_queryable_native_lifetime_gate_20261016_v1.json": "cdce93bb3bcf2c557b64aa025c14a41f067a87af42a472b32814e7f727451962",
+    "experiments/results/token_language/aws_r1_native_local_stream_64k_s0_20261016_v1.json": "e01e79044b6351bc3687c1cb62a9537f7be42107bf03c8bf0c586d1c7744ad06"
   },
   "queryable_lower_memory_integration": {
     "status": "gate_passed",
@@ -73,5 +74,16 @@
       }
     },
     "scope": "Engineering integration only,not learned semantic hierarchy or predictive win. Existing hierarchy binding store and joint composer now operate within native language layers;later reads deliver historical receiver own-write credit without recurrentBPTT. Conditional fixed-parameter derivative;changing-parameter history and routing/cross-producer credit approximate. AdamW remains synchronous. CPU timing is an implementation diagnostic,not hardware latency/energy. Reference and packed values/gradients match under identical supplied clocks."
+  },
+  "completed_64k_acquisition": {
+    "status": "completed",
+    "targets": 65536,
+    "initial_selection_nll": 7.930677221156657,
+    "final_selection_nll": 6.998140863135632,
+    "flagship_dev_nll": 7.0472922979570285,
+    "flagship_targets": 8192,
+    "native_cause_gain": 0.41361757663617027,
+    "exact_serialized_resume": true,
+    "scope": "One fixed native8layer chronological development acquisition,no recurrentBPTT,densecarrier,ablation or publicTEST.Full receiver/indexedepisodic/inbox state persists across32targetoptimizerboundaries;own-writeeligibilityconditional and changing-parameterhistoryapproximate. GlobalAdamW/clipping still synchronous. TRAINpre-update loss uses a class map fitted on4MTRAINtokens and is not untouched online evidence. Fixedfinalselection1024targets and flagship8192targets/1024windows;no comparable-data/compute victory inferred against larger saved hybrids. Full arithmetic/special-function/traffic accounting pending."
   }
 }
