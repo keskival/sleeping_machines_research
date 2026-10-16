@@ -1,0 +1,5 @@
+/workspace/experiments/hierarchy/composition_credit_audit.py:74: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  results.append(dict(additional_updates=step,pairs=records,group_means=summary,mean_root_feature_distance=sum(r['root_feature_distance'] for r in records)/len(records),mean_absolute_logit_contrast=sum(abs(r['logit_contrast']) for r in records)/len(records),joint_head_weight_difference=float((model.head.weight[1]-model.head.weight[0]).norm())))
+{"step": 128, "root_feature_distance": 0.03030583845980557, "logit_contrast": 0.004862567409873009, "readout_cancellation": 0.06774484069771218}
+{"step": 512, "root_feature_distance": 1.56450489098457, "logit_contrast": 0.13485916331410408, "readout_cancellation": 0.1799668679979658}

@@ -1,0 +1,3341 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "composition_credit_audit",
+  "rows": [
+    {
+      "additional_updates": 128,
+      "pairs": [
+        {
+          "pair_index": 0,
+          "input_digests": [
+            "fecb61846ab5b3aadb84f3d60627fd0712f785de85b09c477f0c709eb3ff500b",
+            "af0f1d95fb873ed8ee51f8f628302e39a929cf6309ef09c3ffecac5c753d77a8"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            0.13124194741249084,
+            0.13514366745948792
+          ],
+          "logit_contrast": -0.0039017200469970703,
+          "root_feature_distance": 0.026306197891217895,
+          "pair_loss": 0.6943881511688232,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.00019715907988926353,
+              "individual_credit_mean": 0.000354552736404891,
+              "cancellation_ratio": 0.556078291450873,
+              "logit_vjp_norm_mean": 0.0006911017180712733,
+              "odd_vjp_norm": 0.0003578455684452343,
+              "odd_to_total": 0.5177900142455292,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.002255680731197449,
+              "individual_credit_mean": 0.003324377307424551,
+              "cancellation_ratio": 0.678527291760682,
+              "logit_vjp_norm_mean": 0.006566031473697394,
+              "odd_vjp_norm": 0.004371093291003955,
+              "odd_to_total": 0.6657131188776576,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_1_relation": {
+              "credit_norm": 0.005150451277935143,
+              "individual_credit_mean": 0.006122400053480104,
+              "cancellation_ratio": 0.8412470980244938,
+              "logit_vjp_norm_mean": 0.012546618218883268,
+              "odd_vjp_norm": 0.01064473717004694,
+              "odd_to_total": 0.8484148464823847,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.0045542318897521345,
+              "individual_credit_mean": 0.007464269438058537,
+              "cancellation_ratio": 0.6101376601615139,
+              "logit_vjp_norm_mean": 0.015001307629677166,
+              "odd_vjp_norm": 0.009178571516353044,
+              "odd_to_total": 0.611851429417728,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0009274872039652164,
+              "individual_credit_mean": 0.0013151594385019784,
+              "cancellation_ratio": 0.705227957016119,
+              "logit_vjp_norm_mean": 0.0026570059466569213,
+              "odd_vjp_norm": 0.0018867333056613073,
+              "odd_to_total": 0.7100975095803678,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_2_native": {
+              "credit_norm": 0.007484048780793033,
+              "individual_credit_mean": 0.01178490161257521,
+              "cancellation_ratio": 0.6350539891488866,
+              "logit_vjp_norm_mean": 0.023627744199976455,
+              "odd_vjp_norm": 0.014988520910636306,
+              "odd_to_total": 0.6343610623078966,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0003376777186690424,
+              "individual_credit_mean": 0.000619072831819626,
+              "cancellation_ratio": 0.5454571761395414,
+              "logit_vjp_norm_mean": 0.0012338289787656954,
+              "odd_vjp_norm": 0.0006622218775110249,
+              "odd_to_total": 0.5367209628789089,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0018355893025060197,
+              "individual_credit_mean": 0.0032689185390626695,
+              "cancellation_ratio": 0.5615280040084318,
+              "logit_vjp_norm_mean": 0.006486951233664335,
+              "odd_vjp_norm": 0.003553499459912454,
+              "odd_to_total": 0.5477919182545112,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 6.947356896822085e-05,
+              "individual_credit_mean": 0.0005229098824690932,
+              "cancellation_ratio": 0.13285954482286363,
+              "logit_vjp_norm_mean": 0.001055702066139714,
+              "odd_vjp_norm": 0.00018219100293974028,
+              "odd_to_total": 0.17257804903796475,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_4_native": {
+              "credit_norm": 0.00099975127241981,
+              "individual_credit_mean": 0.0061832904954880075,
+              "cancellation_ratio": 0.16168596205359198,
+              "logit_vjp_norm_mean": 0.012321015116119785,
+              "odd_vjp_norm": 0.0013853988687776695,
+              "odd_to_total": 0.11244194213877147,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 2.9564854803989636e-05,
+              "individual_credit_mean": 0.000279551447629156,
+              "cancellation_ratio": 0.10575818889412236,
+              "logit_vjp_norm_mean": 0.0005620847411095141,
+              "odd_vjp_norm": 6.971420854382674e-05,
+              "odd_to_total": 0.12402793288110972,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_native": {
+              "credit_norm": 0.00792925322567236,
+              "individual_credit_mean": 0.07522347379267846,
+              "cancellation_ratio": 0.10540929348099473,
+              "logit_vjp_norm_mean": 0.1502581156825827,
+              "odd_vjp_norm": 0.007167367075943652,
+              "odd_to_total": 0.047700365756513104,
+              "decomposition_abs_error": 3.308722450212111e-24
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0003214600094953576,
+              "individual_credit_mean": 0.004922530528058373,
+              "cancellation_ratio": 0.06530381226953066,
+              "logit_vjp_norm_mean": 0.00985636954576247,
+              "odd_vjp_norm": 0.0001344690977476932,
+              "odd_to_total": 0.013642862833354827,
+              "decomposition_abs_error": 0.0
+            },
+            "level_6_native": {
+              "credit_norm": 0.04049743842574865,
+              "individual_credit_mean": 0.5825282000454188,
+              "cancellation_ratio": 0.06952013382801232,
+              "logit_vjp_norm_mean": 1.1663592237984695,
+              "odd_vjp_norm": 0.030775911797544443,
+              "odd_to_total": 0.02638630635364366,
+              "decomposition_abs_error": 6.162975822039155e-33
+            },
+            "level_7_relation": {
+              "credit_norm": 0.009980673764160009,
+              "individual_credit_mean": 0.1504576606494774,
+              "cancellation_ratio": 0.06633543098488069,
+              "logit_vjp_norm_mean": 0.30122817644695754,
+              "odd_vjp_norm": 0.003084243365786905,
+              "odd_to_total": 0.010238893991146945,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.21755325924694477,
+              "individual_credit_mean": 3.2489292318843583,
+              "cancellation_ratio": 0.06696152600429689,
+              "logit_vjp_norm_mean": 6.504055107364444,
+              "odd_vjp_norm": 0.02663631114501811,
+              "odd_to_total": 0.004095339093123337,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18228360018995168,
+              "individual_credit_mean": 2.7323973002877153,
+              "cancellation_ratio": 0.06671196760835535,
+              "logit_vjp_norm_mean": 5.470083472621592,
+              "odd_vjp_norm": 0.01860129091611543,
+              "odd_to_total": 0.003400549737351736,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "input_digests": [
+            "e6650bde4615b78493cc53c2e25e12a99c772034fadf2df7ed62a55d4574b9f9",
+            "9ed577ad521091904f1f23ca00d53fb4b29355e2fd98d21d896db6b5a4487de3"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            0.13601921498775482,
+            0.1314631700515747
+          ],
+          "logit_contrast": 0.004556044936180115,
+          "root_feature_distance": 0.02933366032918204,
+          "pair_loss": 0.6942429542541504,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0002856676790379551,
+              "individual_credit_mean": 0.00038665056234310437,
+              "cancellation_ratio": 0.7388264931177329,
+              "logit_vjp_norm_mean": 0.0007588563737901959,
+              "odd_vjp_norm": 0.0005499580005940057,
+              "odd_to_total": 0.7247194852527585,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.0021966979389526175,
+              "individual_credit_mean": 0.003103091050083366,
+              "cancellation_ratio": 0.7079063757712176,
+              "logit_vjp_norm_mean": 0.006081419334781798,
+              "odd_vjp_norm": 0.004199857082642344,
+              "odd_to_total": 0.6906047505426683,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_1_relation": {
+              "credit_norm": 0.0035215140053459896,
+              "individual_credit_mean": 0.004789913942353975,
+              "cancellation_ratio": 0.7351935854645777,
+              "logit_vjp_norm_mean": 0.009651581785331763,
+              "odd_vjp_norm": 0.007120299849051272,
+              "odd_to_total": 0.7377339805452956,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_1_native": {
+              "credit_norm": 0.004718257831759751,
+              "individual_credit_mean": 0.007674181260565006,
+              "cancellation_ratio": 0.6148223076258656,
+              "logit_vjp_norm_mean": 0.015481910499046063,
+              "odd_vjp_norm": 0.009600682886766805,
+              "odd_to_total": 0.6201226190629614,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0010371810761245837,
+              "individual_credit_mean": 0.0014642303010310208,
+              "cancellation_ratio": 0.7083455897574751,
+              "logit_vjp_norm_mean": 0.0029774247964389237,
+              "odd_vjp_norm": 0.002136170819287499,
+              "odd_to_total": 0.7174558436681303,
+              "decomposition_abs_error": 0.0
+            },
+            "level_2_native": {
+              "credit_norm": 0.00799303248117762,
+              "individual_credit_mean": 0.012423246349208928,
+              "cancellation_ratio": 0.6433932207813451,
+              "logit_vjp_norm_mean": 0.025064828344581427,
+              "odd_vjp_norm": 0.016248144039460663,
+              "odd_to_total": 0.6482447761495731,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00042639973122866914,
+              "individual_credit_mean": 0.0007414773095633285,
+              "cancellation_ratio": 0.5750678081838875,
+              "logit_vjp_norm_mean": 0.0014971526216709411,
+              "odd_vjp_norm": 0.000871557885808753,
+              "odd_to_total": 0.5821436460071955,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0020403726721366336,
+              "individual_credit_mean": 0.003532292772284064,
+              "cancellation_ratio": 0.5776340761293352,
+              "logit_vjp_norm_mean": 0.007069345654789382,
+              "odd_vjp_norm": 0.00406135497325203,
+              "odd_to_total": 0.5745022483800207,
+              "decomposition_abs_error": 1.3234889800848443e-23
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00010559607097044848,
+              "individual_credit_mean": 0.0005664859940368513,
+              "cancellation_ratio": 0.18640543999677278,
+              "logit_vjp_norm_mean": 0.0011488896006387008,
+              "odd_vjp_norm": 0.00026932352246150426,
+              "odd_to_total": 0.23442071571696668,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.001009094723371409,
+              "individual_credit_mean": 0.006147861220724023,
+              "cancellation_ratio": 0.16413752476549393,
+              "logit_vjp_norm_mean": 0.012253477658622863,
+              "odd_vjp_norm": 0.0014282857382184055,
+              "odd_to_total": 0.11656166339139731,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 4.3407061652175186e-05,
+              "individual_credit_mean": 0.00030150290245221077,
+              "cancellation_ratio": 0.14396896779146381,
+              "logit_vjp_norm_mean": 0.0006092077523651757,
+              "odd_vjp_norm": 0.0001124453581289536,
+              "odd_to_total": 0.1845763743031799,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_native": {
+              "credit_norm": 0.008269574045178819,
+              "individual_credit_mean": 0.0750109115937152,
+              "cancellation_ratio": 0.11024494796130016,
+              "logit_vjp_norm_mean": 0.14982042037918614,
+              "odd_vjp_norm": 0.007913712172570081,
+              "odd_to_total": 0.052821318699687064,
+              "decomposition_abs_error": 0.0
+            },
+            "level_6_relation": {
+              "credit_norm": 0.000345540188179397,
+              "individual_credit_mean": 0.004993026046458231,
+              "cancellation_ratio": 0.06920456351805006,
+              "logit_vjp_norm_mean": 0.009996681968781892,
+              "odd_vjp_norm": 0.00013446797775465376,
+              "odd_to_total": 0.013451260945839497,
+              "decomposition_abs_error": 0.0
+            },
+            "level_6_native": {
+              "credit_norm": 0.041007648226209066,
+              "individual_credit_mean": 0.5827575647817542,
+              "cancellation_ratio": 0.0703682812621517,
+              "logit_vjp_norm_mean": 1.1670595989681523,
+              "odd_vjp_norm": 0.03431449418860659,
+              "odd_to_total": 0.02940252084721767,
+              "decomposition_abs_error": 3.0814879110195774e-33
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010004578291977742,
+              "individual_credit_mean": 0.15045095985194024,
+              "cancellation_ratio": 0.06649727128243856,
+              "logit_vjp_norm_mean": 0.30126986112274723,
+              "odd_vjp_norm": 0.003410399576534149,
+              "odd_to_total": 0.011320082147694954,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.21862708465585762,
+              "individual_credit_mean": 3.2482529418988886,
+              "cancellation_ratio": 0.06730605299723084,
+              "logit_vjp_norm_mean": 6.503748115676674,
+              "odd_vjp_norm": 0.02987186499865537,
+              "odd_to_total": 0.004593023048763535,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18311850196107612,
+              "individual_credit_mean": 2.7322398755173767,
+              "cancellation_ratio": 0.06702138549471276,
+              "logit_vjp_norm_mean": 5.4706581776592875,
+              "odd_vjp_norm": 0.020742030135787435,
+              "odd_to_total": 0.003791505420772288,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "input_digests": [
+            "2a7350eb6d49efbd2b0d09b043ba2864fa545cafb533e15c7daa8cc7ccdea788",
+            "d738cf7e30ec26494de873f72aedfbef0df9954c37c543c105ef3c057928a133"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            0.13683173060417175,
+            0.1307731568813324
+          ],
+          "logit_contrast": 0.0060585737228393555,
+          "root_feature_distance": 0.04044341698725401,
+          "pair_loss": 0.6938699185848236,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0001301505232233954,
+              "individual_credit_mean": 0.00027390411203512353,
+              "cancellation_ratio": 0.4751681975723892,
+              "logit_vjp_norm_mean": 0.0005465580979379006,
+              "odd_vjp_norm": 0.0002542410723689422,
+              "odd_to_total": 0.46516751527086303,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.0010893382290395124,
+              "individual_credit_mean": 0.0022099229074807863,
+              "cancellation_ratio": 0.4929304209445521,
+              "logit_vjp_norm_mean": 0.0044439603979764385,
+              "odd_vjp_norm": 0.0022020418962660614,
+              "odd_to_total": 0.4955133932491305,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_1_relation": {
+              "credit_norm": 0.0030397213045462537,
+              "individual_credit_mean": 0.004307437218019628,
+              "cancellation_ratio": 0.7056913776548982,
+              "logit_vjp_norm_mean": 0.008902961625000847,
+              "odd_vjp_norm": 0.006459540443237086,
+              "odd_to_total": 0.7255496221726634,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.008388407096740026,
+              "individual_credit_mean": 0.010123907306868562,
+              "cancellation_ratio": 0.828574071499935,
+              "logit_vjp_norm_mean": 0.02064917912107824,
+              "odd_vjp_norm": 0.01723102177075867,
+              "odd_to_total": 0.8344652186763982,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0010144219256804413,
+              "individual_credit_mean": 0.0014442118728816042,
+              "cancellation_ratio": 0.7024051974149662,
+              "logit_vjp_norm_mean": 0.002940484178754257,
+              "odd_vjp_norm": 0.0020947137648772867,
+              "odd_to_total": 0.7123703572398464,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.01528312169733039,
+              "individual_credit_mean": 0.01777367248886805,
+              "cancellation_ratio": 0.859874159766501,
+              "logit_vjp_norm_mean": 0.03620619775945015,
+              "odd_vjp_norm": 0.0312904099648124,
+              "odd_to_total": 0.864228002418324,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0007777871190395113,
+              "individual_credit_mean": 0.0009775387424231646,
+              "cancellation_ratio": 0.795658612068407,
+              "logit_vjp_norm_mean": 0.0019778578635959165,
+              "odd_vjp_norm": 0.0015807722468839575,
+              "odd_to_total": 0.7992345031356182,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.003645795509307472,
+              "individual_credit_mean": 0.004607227249680368,
+              "cancellation_ratio": 0.791320964157,
+              "logit_vjp_norm_mean": 0.009316584602801672,
+              "odd_vjp_norm": 0.007404107794114152,
+              "odd_to_total": 0.7947234002348454,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00013012673279721946,
+              "individual_credit_mean": 0.0005510788064537124,
+              "cancellation_ratio": 0.23613089683961452,
+              "logit_vjp_norm_mean": 0.0011199249321832323,
+              "odd_vjp_norm": 0.000313962909014602,
+              "odd_to_total": 0.280342815837262,
+              "decomposition_abs_error": 1.6543612251060553e-24
+            },
+            "level_4_native": {
+              "credit_norm": 0.0013801486806670454,
+              "individual_credit_mean": 0.006200700021013964,
+              "cancellation_ratio": 0.22257949521663165,
+              "logit_vjp_norm_mean": 0.012342357526567378,
+              "odd_vjp_norm": 0.0022488400023272393,
+              "odd_to_total": 0.1822050607014526,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 5.4601522387219075e-05,
+              "individual_credit_mean": 0.00029719594722898263,
+              "cancellation_ratio": 0.1837222980202683,
+              "logit_vjp_norm_mean": 0.0006007026498607159,
+              "odd_vjp_norm": 0.00012998434776212835,
+              "odd_to_total": 0.21638717224281873,
+              "decomposition_abs_error": 3.308722450212111e-24
+            },
+            "level_5_native": {
+              "credit_norm": 0.009695311419998716,
+              "individual_credit_mean": 0.0751968719099162,
+              "cancellation_ratio": 0.12893237675648841,
+              "logit_vjp_norm_mean": 0.15010466876088363,
+              "odd_vjp_norm": 0.011027048870355938,
+              "odd_to_total": 0.07346239768146053,
+              "decomposition_abs_error": 6.617444900424222e-24
+            },
+            "level_6_relation": {
+              "credit_norm": 0.00035102013445352704,
+              "individual_credit_mean": 0.004997104343927682,
+              "cancellation_ratio": 0.07024470779363957,
+              "logit_vjp_norm_mean": 0.010008027559487728,
+              "odd_vjp_norm": 0.0001436348883073826,
+              "odd_to_total": 0.014351967703287852,
+              "decomposition_abs_error": 0.0
+            },
+            "level_6_native": {
+              "credit_norm": 0.04372021286476673,
+              "individual_credit_mean": 0.5822394999427659,
+              "cancellation_ratio": 0.07508974033720561,
+              "logit_vjp_norm_mean": 1.1665425677679244,
+              "odd_vjp_norm": 0.04795683618141078,
+              "odd_to_total": 0.04111023249942085,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010050135623609643,
+              "individual_credit_mean": 0.1504755269898185,
+              "cancellation_ratio": 0.06678917046949207,
+              "logit_vjp_norm_mean": 0.3014451078325364,
+              "odd_vjp_norm": 0.004740792745831556,
+              "odd_to_total": 0.015726885667241404,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.2195698004716326,
+              "individual_credit_mean": 3.2472003083344005,
+              "cancellation_ratio": 0.06761818786111702,
+              "logit_vjp_norm_mean": 6.504024635393873,
+              "odd_vjp_norm": 0.041289238625604976,
+              "odd_to_total": 0.006348259876033598,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18367083350761595,
+              "individual_credit_mean": 2.7312886473175593,
+              "cancellation_ratio": 0.06724695088086055,
+              "logit_vjp_norm_mean": 5.470774344188916,
+              "odd_vjp_norm": 0.028597814406042518,
+              "odd_to_total": 0.005227379637111017,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "input_digests": [
+            "8ca41eeb229b08f989ea5f51e992fae08b5e63848577aa17b0ad299d628fe2a0",
+            "aec96f1c538780ff2efa0c7cb5b2af56ca5ad4ea08cce97621e508d7b196ba95"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            0.1314997673034668,
+            0.13690602779388428
+          ],
+          "logit_contrast": -0.0054062604904174805,
+          "root_feature_distance": 0.03610607763274705,
+          "pair_loss": 0.6967492997646332,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 7.446133594824292e-05,
+              "individual_credit_mean": 0.0002409921482902522,
+              "cancellation_ratio": 0.30897826537718276,
+              "logit_vjp_norm_mean": 0.0004780621248886292,
+              "odd_vjp_norm": 0.0001342920941045127,
+              "odd_to_total": 0.2809092942382704,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_0_native": {
+              "credit_norm": 0.0009056235926717789,
+              "individual_credit_mean": 0.0023171039218540085,
+              "cancellation_ratio": 0.39084288975142417,
+              "logit_vjp_norm_mean": 0.00461191840970362,
+              "odd_vjp_norm": 0.0017440708755695007,
+              "odd_to_total": 0.3781660299757084,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_1_relation": {
+              "credit_norm": 0.002445127572133532,
+              "individual_credit_mean": 0.006470035966667702,
+              "cancellation_ratio": 0.37791560738306984,
+              "logit_vjp_norm_mean": 0.012846877917320386,
+              "odd_vjp_norm": 0.004610110994828045,
+              "odd_to_total": 0.3588506892100697,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.007973227263449493,
+              "individual_credit_mean": 0.010801086536447728,
+              "cancellation_ratio": 0.7381875181301654,
+              "logit_vjp_norm_mean": 0.021159337715533043,
+              "odd_vjp_norm": 0.015328762344333186,
+              "odd_to_total": 0.7244443351873137,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.001110484248862686,
+              "individual_credit_mean": 0.0015816108526797686,
+              "cancellation_ratio": 0.7021222995411044,
+              "logit_vjp_norm_mean": 0.0031232982260423914,
+              "odd_vjp_norm": 0.0021616179154282213,
+              "odd_to_total": 0.6920946252920781,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.014376412108866008,
+              "individual_credit_mean": 0.018501998675215008,
+              "cancellation_ratio": 0.7770194107798974,
+              "logit_vjp_norm_mean": 0.036201383469001897,
+              "odd_vjp_norm": 0.027694636554691853,
+              "odd_to_total": 0.7650159717903018,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0007532152089135943,
+              "individual_credit_mean": 0.00103095238941187,
+              "cancellation_ratio": 0.7306013513808167,
+              "logit_vjp_norm_mean": 0.0020417395186714173,
+              "odd_vjp_norm": 0.0014775028741576808,
+              "odd_to_total": 0.7236490554481252,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0033820182788985146,
+              "individual_credit_mean": 0.004798299202659045,
+              "cancellation_ratio": 0.7048368882508039,
+              "logit_vjp_norm_mean": 0.009470167220923722,
+              "odd_vjp_norm": 0.006577093875025904,
+              "odd_to_total": 0.6945066250249775,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0001569278257702913,
+              "individual_credit_mean": 0.000600574304081411,
+              "cancellation_ratio": 0.26129627042621345,
+              "logit_vjp_norm_mean": 0.0011879220512734288,
+              "odd_vjp_norm": 0.00025394333987855284,
+              "odd_to_total": 0.21377104634629068,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0009046851547504773,
+              "individual_credit_mean": 0.006091409357242096,
+              "cancellation_ratio": 0.14851820025441145,
+              "logit_vjp_norm_mean": 0.012237708726709368,
+              "odd_vjp_norm": 0.002086401860194019,
+              "odd_to_total": 0.17048958320444008,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 6.507873958043264e-05,
+              "individual_credit_mean": 0.00031698579393247086,
+              "cancellation_ratio": 0.20530490900894033,
+              "logit_vjp_norm_mean": 0.000629676963308123,
+              "odd_vjp_norm": 0.00010402551050111117,
+              "odd_to_total": 0.1652045676795831,
+              "decomposition_abs_error": 2.5849394142282115e-26
+            },
+            "level_5_native": {
+              "credit_norm": 0.003780061803974089,
+              "individual_credit_mean": 0.07446233583439613,
+              "cancellation_ratio": 0.05076474920664493,
+              "logit_vjp_norm_mean": 0.149178222244634,
+              "odd_vjp_norm": 0.009640142832333925,
+              "odd_to_total": 0.06462164977757458,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0003351305581669282,
+              "individual_credit_mean": 0.005037001375190623,
+              "cancellation_ratio": 0.06653374363119871,
+              "logit_vjp_norm_mean": 0.010062024368061556,
+              "odd_vjp_norm": 0.00016198457654266729,
+              "odd_to_total": 0.016098607061301874,
+              "decomposition_abs_error": 1.3234889800848443e-23
+            },
+            "level_6_native": {
+              "credit_norm": 0.045920469440789806,
+              "individual_credit_mean": 0.5846205236736766,
+              "cancellation_ratio": 0.07854748094068228,
+              "logit_vjp_norm_mean": 1.1674237327153132,
+              "odd_vjp_norm": 0.04175346797299629,
+              "odd_to_total": 0.03576547812325334,
+              "decomposition_abs_error": 3.2311742677852644e-27
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010628045763940318,
+              "individual_credit_mean": 0.15091364580918953,
+              "cancellation_ratio": 0.07042468364575914,
+              "logit_vjp_norm_mean": 0.3013776749128653,
+              "odd_vjp_norm": 0.004182138806159643,
+              "odd_to_total": 0.013876737244617696,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.2174985778699612,
+              "individual_credit_mean": 3.2560738297918137,
+              "cancellation_ratio": 0.06679780288761683,
+              "logit_vjp_norm_mean": 6.503551612951532,
+              "odd_vjp_norm": 0.03696641071525986,
+              "odd_to_total": 0.005684034342349634,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.1833391949893934,
+              "individual_credit_mean": 2.7391129815993613,
+              "cancellation_ratio": 0.06693378338937378,
+              "logit_vjp_norm_mean": 5.470915920249492,
+              "odd_vjp_norm": 0.025530852336163364,
+              "odd_to_total": 0.004666650467368007,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 18,
+          "input_digests": [
+            "a651bc45eb4c057ba8a7a89c580a82731eede3b82ae5e691988b86b314f23958",
+            "e02d713bb4ca62e058919eaf615ae716899eb7e14ae379cda3a65a6d3db5cdb5"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            0.1394968330860138,
+            0.13589808344841003
+          ],
+          "logit_contrast": 0.0035987496376037598,
+          "root_feature_distance": 0.020649765189474693,
+          "pair_loss": 0.6946160793304443,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.000310657006497953,
+              "individual_credit_mean": 0.0004807554094662357,
+              "cancellation_ratio": 0.6461851502469074,
+              "logit_vjp_norm_mean": 0.0009913033778016552,
+              "odd_vjp_norm": 0.0006638366768842785,
+              "odd_to_total": 0.6696604609140171,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.0027019085329943095,
+              "individual_credit_mean": 0.0037983295102067653,
+              "cancellation_ratio": 0.7113412687692883,
+              "logit_vjp_norm_mean": 0.007845842772733222,
+              "odd_vjp_norm": 0.005732565213164605,
+              "odd_to_total": 0.730650024378143,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_1_relation": {
+              "credit_norm": 0.0042298610037011155,
+              "individual_credit_mean": 0.007395290385909919,
+              "cancellation_ratio": 0.5719668576855582,
+              "logit_vjp_norm_mean": 0.015061477550614617,
+              "odd_vjp_norm": 0.008870649444376356,
+              "odd_to_total": 0.5889627637505173,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.006944395060704353,
+              "individual_credit_mean": 0.00950100331217244,
+              "cancellation_ratio": 0.7309117608460755,
+              "logit_vjp_norm_mean": 0.019154558952615062,
+              "odd_vjp_norm": 0.01405761194304919,
+              "odd_to_total": 0.7339042354264171,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0012692749636644927,
+              "individual_credit_mean": 0.0018242605917375984,
+              "cancellation_ratio": 0.6957750276540893,
+              "logit_vjp_norm_mean": 0.0036500699146054935,
+              "odd_vjp_norm": 0.0025318969938684316,
+              "odd_to_total": 0.6936571224943465,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.011076198626144952,
+              "individual_credit_mean": 0.015183643569646042,
+              "cancellation_ratio": 0.7294822599950664,
+              "logit_vjp_norm_mean": 0.03061443242729292,
+              "odd_vjp_norm": 0.022427006957503614,
+              "odd_to_total": 0.7325632121636142,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0007365874092353438,
+              "individual_credit_mean": 0.0011224100999572848,
+              "cancellation_ratio": 0.6562551506471439,
+              "logit_vjp_norm_mean": 0.0022862714404926765,
+              "odd_vjp_norm": 0.0015294602561839886,
+              "odd_to_total": 0.668975795741209,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_3_native": {
+              "credit_norm": 0.0027586039022495282,
+              "individual_credit_mean": 0.0037041071698834583,
+              "cancellation_ratio": 0.7447419244989938,
+              "logit_vjp_norm_mean": 0.007448023831414586,
+              "odd_vjp_norm": 0.005556141659542666,
+              "odd_to_total": 0.7459887059044762,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_4_relation": {
+              "credit_norm": 8.530435916693592e-05,
+              "individual_credit_mean": 0.0007081695265395365,
+              "cancellation_ratio": 0.12045754013699918,
+              "logit_vjp_norm_mean": 0.0014245031499615607,
+              "odd_vjp_norm": 0.0001983322193642675,
+              "odd_to_total": 0.13922904934932534,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0011229180268888563,
+              "individual_credit_mean": 0.005427132324827024,
+              "cancellation_ratio": 0.2069081716972225,
+              "logit_vjp_norm_mean": 0.010818542962137107,
+              "odd_vjp_norm": 0.001878838958401744,
+              "odd_to_total": 0.17366839185067082,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_5_relation": {
+              "credit_norm": 3.0375878286271696e-05,
+              "individual_credit_mean": 0.0003556460722352751,
+              "cancellation_ratio": 0.0854104140539383,
+              "logit_vjp_norm_mean": 0.0007121442104711861,
+              "odd_vjp_norm": 4.012366143192809e-05,
+              "odd_to_total": 0.05634204539187435,
+              "decomposition_abs_error": 8.271806125530277e-25
+            },
+            "level_5_native": {
+              "credit_norm": 0.006850415779758061,
+              "individual_credit_mean": 0.07039689200665156,
+              "cancellation_ratio": 0.09731133839134247,
+              "logit_vjp_norm_mean": 0.14067574816614248,
+              "odd_vjp_norm": 0.005071659227937096,
+              "odd_to_total": 0.036052121947468214,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_6_relation": {
+              "credit_norm": 0.000306302866742404,
+              "individual_credit_mean": 0.005015721281495134,
+              "cancellation_ratio": 0.06106855814984565,
+              "logit_vjp_norm_mean": 0.010052121658055066,
+              "odd_vjp_norm": 0.00036486432549509307,
+              "odd_to_total": 0.03629724528878104,
+              "decomposition_abs_error": 5.293955920339377e-23
+            },
+            "level_6_native": {
+              "credit_norm": 0.04170881985693196,
+              "individual_credit_mean": 0.5846166075087613,
+              "cancellation_ratio": 0.07134388472928711,
+              "logit_vjp_norm_mean": 1.1702744119111195,
+              "odd_vjp_norm": 0.021783853007790635,
+              "odd_to_total": 0.018614311981936322,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010198221455754412,
+              "individual_credit_mean": 0.1509360795015814,
+              "cancellation_ratio": 0.06756649231536163,
+              "logit_vjp_norm_mean": 0.3021776014897446,
+              "odd_vjp_norm": 0.0023739570906378196,
+              "odd_to_total": 0.007856164980243871,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.22415352870501778,
+              "individual_credit_mean": 3.247559157619925,
+              "cancellation_ratio": 0.06902215412429798,
+              "logit_vjp_norm_mean": 6.500874729654768,
+              "odd_vjp_norm": 0.021164363667903353,
+              "odd_to_total": 0.003255617828068392,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "readout": {
+              "credit_norm": 0.18801319093152716,
+              "individual_credit_mean": 2.732675632818271,
+              "cancellation_ratio": 0.06880186900836996,
+              "logit_vjp_norm_mean": 5.4702689644843865,
+              "odd_vjp_norm": 0.014601588995387469,
+              "odd_to_total": 0.0026692634475906024,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 22,
+          "input_digests": [
+            "fcf67eea6c01525e69f0313114e993899170012e9beada861cdd78ff992f8115",
+            "01bb3b783a94e8ef50150be19568d82c5caeac2738dd49e0ebed7bff8980bb26"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            0.13300937414169312,
+            0.1392594575881958
+          ],
+          "logit_contrast": -0.0062500834465026855,
+          "root_feature_distance": 0.03728060997423226,
+          "pair_loss": 0.6939006447792053,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.00041122320035483163,
+              "individual_credit_mean": 0.0004209547086278479,
+              "cancellation_ratio": 0.9768822914352537,
+              "logit_vjp_norm_mean": 0.0008815822318335536,
+              "odd_vjp_norm": 0.0008628682374589522,
+              "odd_to_total": 0.9787722645728928,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.002906184549232713,
+              "individual_credit_mean": 0.003410272800939051,
+              "cancellation_ratio": 0.8521853584359784,
+              "logit_vjp_norm_mean": 0.007120680226909848,
+              "odd_vjp_norm": 0.006153755003142485,
+              "odd_to_total": 0.8642088686817807,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_1_relation": {
+              "credit_norm": 0.0043781247530932585,
+              "individual_credit_mean": 0.006370707349508002,
+              "cancellation_ratio": 0.6872274165020895,
+              "logit_vjp_norm_mean": 0.0131379682008641,
+              "odd_vjp_norm": 0.00928802069705439,
+              "odd_to_total": 0.7069602053416072,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.007956724006192328,
+              "individual_credit_mean": 0.010692245668456304,
+              "cancellation_ratio": 0.7441583604523635,
+              "logit_vjp_norm_mean": 0.02134669411534127,
+              "odd_vjp_norm": 0.015812453216367213,
+              "odd_to_total": 0.7407448259167796,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0011710902373209774,
+              "individual_credit_mean": 0.0016520949825795154,
+              "cancellation_ratio": 0.7088516396874976,
+              "logit_vjp_norm_mean": 0.0033272338871946265,
+              "odd_vjp_norm": 0.0023656552546399254,
+              "odd_to_total": 0.7109975838321781,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.01364066953367902,
+              "individual_credit_mean": 0.018071815370527627,
+              "cancellation_ratio": 0.7548035022494126,
+              "logit_vjp_norm_mean": 0.03594988382344553,
+              "odd_vjp_norm": 0.026943023096381344,
+              "odd_to_total": 0.7494606443987961,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.000725082959631463,
+              "individual_credit_mean": 0.0011400945632216945,
+              "cancellation_ratio": 0.6359849288137239,
+              "logit_vjp_norm_mean": 0.0023185744917715106,
+              "odd_vjp_norm": 0.0015017973482927356,
+              "odd_to_total": 0.6477244331042756,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_3_native": {
+              "credit_norm": 0.0034863540704615005,
+              "individual_credit_mean": 0.004705912242977377,
+              "cancellation_ratio": 0.7408455343943523,
+              "logit_vjp_norm_mean": 0.009317267658939164,
+              "odd_vjp_norm": 0.006821766061472872,
+              "odd_to_total": 0.7321637964245815,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00012674573707711993,
+              "individual_credit_mean": 0.0006465338716714668,
+              "cancellation_ratio": 0.19603881966686068,
+              "logit_vjp_norm_mean": 0.0013088413167299134,
+              "odd_vjp_norm": 0.0003045971909378831,
+              "odd_to_total": 0.23272278086308182,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0014616819242746417,
+              "individual_credit_mean": 0.0057302617147404495,
+              "cancellation_ratio": 0.25508118076258723,
+              "logit_vjp_norm_mean": 0.01139761242472536,
+              "odd_vjp_norm": 0.0024802797590414132,
+              "odd_to_total": 0.21761397620968662,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_5_relation": {
+              "credit_norm": 4.034589855572042e-05,
+              "individual_credit_mean": 0.00032896485088642675,
+              "cancellation_ratio": 0.12264501343230012,
+              "logit_vjp_norm_mean": 0.0006620398781049675,
+              "odd_vjp_norm": 9.28243031721515e-05,
+              "odd_to_total": 0.14020953456437266,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_5_native": {
+              "credit_norm": 0.008832652525869473,
+              "individual_credit_mean": 0.07200415167551792,
+              "cancellation_ratio": 0.12266865618628844,
+              "logit_vjp_norm_mean": 0.14377664769333948,
+              "odd_vjp_norm": 0.009291584853331225,
+              "odd_to_total": 0.06462513212263234,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0003142902437889358,
+              "individual_credit_mean": 0.004963612073092006,
+              "cancellation_ratio": 0.06331885714693927,
+              "logit_vjp_norm_mean": 0.009951522834205036,
+              "odd_vjp_norm": 0.0003373394712082205,
+              "odd_to_total": 0.03389827635713488,
+              "decomposition_abs_error": 3.308722450212111e-24
+            },
+            "level_6_native": {
+              "credit_norm": 0.04359591539048156,
+              "individual_credit_mean": 0.5832081564943896,
+              "cancellation_ratio": 0.0747518958797363,
+              "logit_vjp_norm_mean": 1.1683519986074609,
+              "odd_vjp_norm": 0.03982957796839015,
+              "odd_to_total": 0.03409039229261589,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010020328272573167,
+              "individual_credit_mean": 0.1506274693492878,
+              "cancellation_ratio": 0.06652391038541036,
+              "logit_vjp_norm_mean": 0.30178505731379646,
+              "odd_vjp_norm": 0.00420962389403731,
+              "odd_to_total": 0.013949079956136258,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.2227334475399361,
+              "individual_credit_mean": 3.246002207597534,
+              "cancellation_ratio": 0.06861777451001426,
+              "logit_vjp_norm_mean": 6.5019844508326265,
+              "odd_vjp_norm": 0.038330844491308004,
+              "odd_to_total": 0.005895253177112637,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18639277350829972,
+              "individual_credit_mean": 2.730826307411054,
+              "cancellation_ratio": 0.06825508198835555,
+              "logit_vjp_norm_mean": 5.470153588408677,
+              "odd_vjp_norm": 0.026361372119550468,
+              "odd_to_total": 0.004819128328573907,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 27,
+          "input_digests": [
+            "2bae1be0a80edc611204a7b2faf47c8727f0159c9a7bd00a1254855ae674a111",
+            "52881993b33e23370569e888c31e56b42d190cc048cf9a51e87d5d7264cdea09"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            0.13551825284957886,
+            0.1388227939605713
+          ],
+          "logit_contrast": -0.0033045411109924316,
+          "root_feature_distance": 0.01829790068204605,
+          "pair_loss": 0.696323812007904,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0006527900083111676,
+              "individual_credit_mean": 0.0006606851242616635,
+              "cancellation_ratio": 0.9880501078947117,
+              "logit_vjp_norm_mean": 0.0013065838283259708,
+              "odd_vjp_norm": 0.0012905636341113142,
+              "odd_to_total": 0.9877388699696505,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.004229258361235015,
+              "individual_credit_mean": 0.004622344708901396,
+              "cancellation_ratio": 0.9149595340846383,
+              "logit_vjp_norm_mean": 0.009116631065731197,
+              "odd_vjp_norm": 0.008315809584286007,
+              "odd_to_total": 0.912158178205168,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_1_relation": {
+              "credit_norm": 0.003958548443723309,
+              "individual_credit_mean": 0.005764220804759586,
+              "cancellation_ratio": 0.6867447618340172,
+              "logit_vjp_norm_mean": 0.011494141297113378,
+              "odd_vjp_norm": 0.007853427415472913,
+              "odd_to_total": 0.6832548176039224,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.0049743833032694345,
+              "individual_credit_mean": 0.008392628092140864,
+              "cancellation_ratio": 0.5927086543877255,
+              "logit_vjp_norm_mean": 0.01650479752109681,
+              "odd_vjp_norm": 0.009438401573261777,
+              "odd_to_total": 0.5718580649776162,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0012198290706048668,
+              "individual_credit_mean": 0.0017302846413814652,
+              "cancellation_ratio": 0.7049875155979833,
+              "logit_vjp_norm_mean": 0.0034506871292416114,
+              "odd_vjp_norm": 0.0024218260974688596,
+              "odd_to_total": 0.7018387952202222,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.007002343671392355,
+              "individual_credit_mean": 0.012056729433237063,
+              "cancellation_ratio": 0.5807830150097616,
+              "logit_vjp_norm_mean": 0.023358226691289605,
+              "odd_vjp_norm": 0.012613587445884105,
+              "odd_to_total": 0.5400062090581462,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0005626509157356693,
+              "individual_credit_mean": 0.0010489503379703686,
+              "cancellation_ratio": 0.5363942365702001,
+              "logit_vjp_norm_mean": 0.002036777920719047,
+              "odd_vjp_norm": 0.0010020027000584816,
+              "odd_to_total": 0.49195481248379935,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.001990110448843412,
+              "individual_credit_mean": 0.0032963724630299916,
+              "cancellation_ratio": 0.6037274219352393,
+              "logit_vjp_norm_mean": 0.00643906741370414,
+              "odd_vjp_norm": 0.003708789861868057,
+              "odd_to_total": 0.5759824557784118,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0001425949477437002,
+              "individual_credit_mean": 0.0006911325837364243,
+              "cancellation_ratio": 0.20632068448111443,
+              "logit_vjp_norm_mean": 0.001370599512871211,
+              "odd_vjp_norm": 0.0002088869714624681,
+              "odd_to_total": 0.1524055491781692,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0006837462790042307,
+              "individual_credit_mean": 0.005436023221421476,
+              "cancellation_ratio": 0.12578060305368538,
+              "logit_vjp_norm_mean": 0.01090134950200972,
+              "odd_vjp_norm": 0.0014672641920171446,
+              "odd_to_total": 0.13459472992280883,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 4.355245921624981e-05,
+              "individual_credit_mean": 0.00034456366919086525,
+              "cancellation_ratio": 0.126398872285414,
+              "logit_vjp_norm_mean": 0.0006864102964181248,
+              "odd_vjp_norm": 4.9224190942746764e-05,
+              "odd_to_total": 0.07171248916225754,
+              "decomposition_abs_error": 1.6543612251060553e-24
+            },
+            "level_5_native": {
+              "credit_norm": 0.003643680970152228,
+              "individual_credit_mean": 0.07066143298866798,
+              "cancellation_ratio": 0.05156534216814663,
+              "logit_vjp_norm_mean": 0.1414205337737991,
+              "odd_vjp_norm": 0.004461055210707337,
+              "odd_to_total": 0.03154460736121076,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_6_relation": {
+              "credit_norm": 0.00045305914370830514,
+              "individual_credit_mean": 0.005007085775311671,
+              "cancellation_ratio": 0.09048359945064133,
+              "logit_vjp_norm_mean": 0.009994218587662309,
+              "odd_vjp_norm": 0.00034370181829009597,
+              "odd_to_total": 0.0343900641431227,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_6_native": {
+              "credit_norm": 0.04118999025338845,
+              "individual_credit_mean": 0.5854582501522616,
+              "cancellation_ratio": 0.07035512821396926,
+              "logit_vjp_norm_mean": 1.1699605973408262,
+              "odd_vjp_norm": 0.0195772287445631,
+              "odd_to_total": 0.016733237674037643,
+              "decomposition_abs_error": 3.308722450212111e-24
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010560190012226332,
+              "individual_credit_mean": 0.15116286068003776,
+              "cancellation_ratio": 0.06985968620016257,
+              "logit_vjp_norm_mean": 0.3020544213705114,
+              "odd_vjp_norm": 0.0020944189636269567,
+              "odd_to_total": 0.0069339126178784285,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.22233657362239453,
+              "individual_credit_mean": 3.253201536159163,
+              "cancellation_ratio": 0.06834392863495706,
+              "logit_vjp_norm_mean": 6.501118835544496,
+              "odd_vjp_norm": 0.01858423924844796,
+              "odd_to_total": 0.0028586216801390696,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18764376817058334,
+              "individual_credit_mean": 2.7372746829509564,
+              "cancellation_ratio": 0.06855131103185136,
+              "logit_vjp_norm_mean": 5.470018099160729,
+              "odd_vjp_norm": 0.012938569653752714,
+              "odd_to_total": 0.0023653613972023043,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 31,
+          "input_digests": [
+            "bda38d1a5af01ff333fc2f37af1f3f87396032ae6fe81d17fd1599ffd726137e",
+            "d3083ed124438a43d1de03890dc7da5ab4500e6bebf0e0d86e7088e46fbd3d79"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            0.13994741439819336,
+            0.1341228485107422
+          ],
+          "logit_contrast": 0.005824565887451172,
+          "root_feature_distance": 0.03402907899229057,
+          "pair_loss": 0.6969498693943024,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0004760518849973562,
+              "individual_credit_mean": 0.0004826341232491754,
+              "cancellation_ratio": 0.9863618465111698,
+              "logit_vjp_norm_mean": 0.000955768629498002,
+              "odd_vjp_norm": 0.0009424476035164371,
+              "odd_to_total": 0.9860624992593015,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.0030502453581469865,
+              "individual_credit_mean": 0.0031977683033532905,
+              "cancellation_ratio": 0.9538669061633995,
+              "logit_vjp_norm_mean": 0.006330008595304139,
+              "odd_vjp_norm": 0.006031213470220261,
+              "odd_to_total": 0.9527970427551178,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_1_relation": {
+              "credit_norm": 0.00391816410236934,
+              "individual_credit_mean": 0.004922826392288175,
+              "cancellation_ratio": 0.7959175867967468,
+              "logit_vjp_norm_mean": 0.009778922173610583,
+              "odd_vjp_norm": 0.007748235584971249,
+              "odd_to_total": 0.792340448917842,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_1_native": {
+              "credit_norm": 0.007618819405810232,
+              "individual_credit_mean": 0.009764693076212753,
+              "cancellation_ratio": 0.7802415648239914,
+              "logit_vjp_norm_mean": 0.01906823798277559,
+              "odd_vjp_norm": 0.014632855655254053,
+              "odd_to_total": 0.7673942221862328,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0013447414449427146,
+              "individual_credit_mean": 0.00192479394684364,
+              "cancellation_ratio": 0.6986417674202892,
+              "logit_vjp_norm_mean": 0.0038166363755080795,
+              "odd_vjp_norm": 0.0026395422878632883,
+              "odd_to_total": 0.6915886210176116,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.013283837849824426,
+              "individual_credit_mean": 0.015903259435560826,
+              "cancellation_ratio": 0.8352902688690856,
+              "logit_vjp_norm_mean": 0.03084544377251397,
+              "odd_vjp_norm": 0.02539848581420714,
+              "odd_to_total": 0.8234112629898179,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0009219456314805109,
+              "individual_credit_mean": 0.00122815360829135,
+              "cancellation_ratio": 0.7506761574907178,
+              "logit_vjp_norm_mean": 0.002382328401483281,
+              "odd_vjp_norm": 0.001742780708296259,
+              "odd_to_total": 0.7315451166225329,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_3_native": {
+              "credit_norm": 0.0032745055504849376,
+              "individual_credit_mean": 0.004130372703638507,
+              "cancellation_ratio": 0.7927869433187897,
+              "logit_vjp_norm_mean": 0.008153477172868953,
+              "odd_vjp_norm": 0.0064096519599212915,
+              "odd_to_total": 0.7861249653399025,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00017657197722589898,
+              "individual_credit_mean": 0.000717361019945778,
+              "cancellation_ratio": 0.24614102567107038,
+              "logit_vjp_norm_mean": 0.0014200602944061881,
+              "odd_vjp_norm": 0.0002817942186141335,
+              "odd_to_total": 0.19843820697202752,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0010344792207588897,
+              "individual_credit_mean": 0.005549628433432936,
+              "cancellation_ratio": 0.1864051320133108,
+              "logit_vjp_norm_mean": 0.01115120633256134,
+              "odd_vjp_norm": 0.0022857259474869033,
+              "odd_to_total": 0.20497566624810995,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_relation": {
+              "credit_norm": 6.612783578670781e-05,
+              "individual_credit_mean": 0.00036503789636204586,
+              "cancellation_ratio": 0.18115334447665674,
+              "logit_vjp_norm_mean": 0.0007253746031070918,
+              "odd_vjp_norm": 9.864265731037825e-05,
+              "odd_to_total": 0.13598857319769575,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_native": {
+              "credit_norm": 0.003439149679817025,
+              "individual_credit_mean": 0.07133984995436318,
+              "cancellation_ratio": 0.048207974673581226,
+              "logit_vjp_norm_mean": 0.14287218950388075,
+              "odd_vjp_norm": 0.008128758241357078,
+              "odd_to_total": 0.056895315103547714,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0004071321675809546,
+              "individual_credit_mean": 0.005070950804552397,
+              "cancellation_ratio": 0.08028714599547201,
+              "logit_vjp_norm_mean": 0.01012047586592293,
+              "odd_vjp_norm": 0.0002161975866208525,
+              "odd_to_total": 0.021362393378044634,
+              "decomposition_abs_error": 0.0
+            },
+            "level_6_native": {
+              "credit_norm": 0.04453932772915273,
+              "individual_credit_mean": 0.5859227783029213,
+              "cancellation_ratio": 0.07601569588770273,
+              "logit_vjp_norm_mean": 1.1700236561523365,
+              "odd_vjp_norm": 0.03514145098757619,
+              "odd_to_total": 0.03003482092245902,
+              "decomposition_abs_error": 1.4693679385278594e-39
+            },
+            "level_7_relation": {
+              "credit_norm": 0.010956421628140842,
+              "individual_credit_mean": 0.1512318737655171,
+              "cancellation_ratio": 0.07244783361693065,
+              "logit_vjp_norm_mean": 0.30196161463250315,
+              "odd_vjp_norm": 0.003803775375997896,
+              "odd_to_total": 0.012596883814610712,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.22224142205720432,
+              "individual_credit_mean": 3.2553688762848694,
+              "cancellation_ratio": 0.06826919790141672,
+              "logit_vjp_norm_mean": 6.501429024168955,
+              "odd_vjp_norm": 0.03516667636450708,
+              "odd_to_total": 0.005409068719165516,
+              "decomposition_abs_error": 0.0
+            },
+            "readout": {
+              "credit_norm": 0.18747041246244303,
+              "individual_credit_mean": 2.739338681081832,
+              "cancellation_ratio": 0.06843637617981811,
+              "logit_vjp_norm_mean": 5.470754297593249,
+              "odd_vjp_norm": 0.02406219251298135,
+              "odd_to_total": 0.0043983317846255756,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        }
+      ],
+      "group_means": {
+        "input_interface": {
+          "credit_norm": 0.0003172700897825207,
+          "individual_credit_mean": 0.0004126411155847867,
+          "cancellation_ratio": 0.7095663304507775,
+          "logit_vjp_norm_mean": 0.0008262270477683975,
+          "odd_vjp_norm": 0.0006320066109354596,
+          "odd_to_total": 0.7013525504654103,
+          "decomposition_abs_error": 1.0587911840678754e-22
+        },
+        "level_0_native": {
+          "credit_norm": 0.0024168671616837975,
+          "individual_credit_mean": 0.003247901313780402,
+          "cancellation_ratio": 0.7128200057101476,
+          "logit_vjp_norm_mean": 0.006514561534604707,
+          "odd_vjp_norm": 0.004843800802036903,
+          "odd_to_total": 0.7112264258331717,
+          "decomposition_abs_error": 1.1117307432712692e-20
+        },
+        "level_1_relation": {
+          "credit_norm": 0.0038301890578559925,
+          "individual_credit_mean": 0.005767854014123387,
+          "cancellation_ratio": 0.6752380364181814,
+          "logit_vjp_norm_mean": 0.011677568596092367,
+          "odd_vjp_norm": 0.007824377699879781,
+          "odd_to_total": 0.6802584217530377,
+          "decomposition_abs_error": 2.1175823681357508e-20
+        },
+        "level_1_native": {
+          "credit_norm": 0.006641055732209719,
+          "individual_credit_mean": 0.009301751836365274,
+          "cancellation_ratio": 0.7049677372409545,
+          "logit_vjp_norm_mean": 0.018545752942145406,
+          "odd_vjp_norm": 0.013160045113267993,
+          "odd_to_total": 0.7005981188564309,
+          "decomposition_abs_error": 4.086933970501999e-20
+        },
+        "level_2_relation": {
+          "credit_norm": 0.0011368137713957474,
+          "individual_credit_mean": 0.001617080828454574,
+          "cancellation_ratio": 0.7032946242611905,
+          "logit_vjp_norm_mean": 0.003242855056805288,
+          "odd_vjp_norm": 0.0022797695548868522,
+          "odd_to_total": 0.7037625572930977,
+          "decomposition_abs_error": 1.1011428314305904e-20
+        },
+        "level_2_native": {
+          "credit_norm": 0.011267458093650975,
+          "individual_credit_mean": 0.015212408366854845,
+          "cancellation_ratio": 0.7269624783249945,
+          "logit_vjp_norm_mean": 0.030233517560943994,
+          "odd_vjp_norm": 0.022200476847947178,
+          "odd_to_total": 0.7196613926595588,
+          "decomposition_abs_error": 2.625802136488331e-20
+        },
+        "level_3_relation": {
+          "credit_norm": 0.0006551683367417255,
+          "individual_credit_mean": 0.000988581235332336,
+          "cancellation_ratio": 0.6532619276618048,
+          "logit_vjp_norm_mean": 0.0019718164046463107,
+          "odd_vjp_norm": 0.0012960119871491102,
+          "odd_to_total": 0.6477435406777081,
+          "decomposition_abs_error": 2.2234614865425384e-21
+        },
+        "level_3_native": {
+          "credit_norm": 0.002801668716861002,
+          "individual_credit_mean": 0.004005437792901935,
+          "cancellation_ratio": 0.6896777195866183,
+          "logit_vjp_norm_mean": 0.007962610598638245,
+          "odd_vjp_norm": 0.005511550705638678,
+          "odd_to_total": 0.6814730144177159,
+          "decomposition_abs_error": 7.135259963882417e-21
+        },
+        "level_4_relation": {
+          "credit_norm": 0.0001241676524649794,
+          "individual_credit_mean": 0.0006255307486167842,
+          "cancellation_ratio": 0.19820627775518862,
+          "logit_vjp_norm_mean": 0.0012545553655254936,
+          "odd_vjp_norm": 0.00025162892183414396,
+          "odd_to_total": 0.202988526662636,
+          "decomposition_abs_error": 3.5155176033503676e-24
+        },
+        "level_4_native": {
+          "credit_norm": 0.00107456316026692,
+          "individual_credit_mean": 0.005845788348611247,
+          "cancellation_ratio": 0.18388703372711687,
+          "logit_vjp_norm_mean": 0.011677908781181615,
+          "odd_vjp_norm": 0.0019076294158080673,
+          "odd_to_total": 0.16406887670841722,
+          "decomposition_abs_error": 4.235164736271502e-22
+        },
+        "level_5_relation": {
+          "credit_norm": 4.663178128359578e-05,
+          "individual_credit_mean": 0.00032368107248967917,
+          "cancellation_ratio": 0.14429525099538798,
+          "logit_vjp_norm_mean": 0.0006484551368431124,
+          "odd_vjp_norm": 8.712302972415306e-05,
+          "odd_to_total": 0.13680608617786147,
+          "decomposition_abs_error": 2.719679381194857e-23
+        },
+        "level_5_native": {
+          "credit_norm": 0.006555012431302597,
+          "individual_credit_mean": 0.07303698996948833,
+          "cancellation_ratio": 0.08938808485309838,
+          "logit_vjp_norm_mean": 0.14601331827555603,
+          "odd_vjp_norm": 0.007837666060567041,
+          "odd_to_total": 0.05346536355626179,
+          "decomposition_abs_error": 4.239714229640543e-21
+        },
+        "level_6_relation": {
+          "credit_norm": 0.0003542419140144762,
+          "individual_credit_mean": 0.005000879028510765,
+          "cancellation_ratio": 0.07080562349441466,
+          "logit_vjp_norm_mean": 0.010005180298492374,
+          "odd_vjp_norm": 0.00022958246774583237,
+          "odd_to_total": 0.022936584713858413,
+          "decomposition_abs_error": 3.5155176033503676e-23
+        },
+        "level_6_native": {
+          "credit_norm": 0.04277247777343362,
+          "individual_credit_mean": 0.5839189476127437,
+          "cancellation_ratio": 0.07324903013484341,
+          "logit_vjp_norm_mean": 1.1682494734077002,
+          "odd_vjp_norm": 0.03389160260610977,
+          "odd_to_total": 0.029017162586823048,
+          "decomposition_abs_error": 1.0270688479662607e-20
+        },
+        "level_7_relation": {
+          "credit_norm": 0.010299824351547807,
+          "individual_credit_mean": 0.15078200957460622,
+          "cancellation_ratio": 0.06830555986255446,
+          "logit_vjp_norm_mean": 0.30166243939020776,
+          "odd_vjp_norm": 0.0034874187273265297,
+          "odd_to_total": 0.011562330052446284,
+          "decomposition_abs_error": 0.0
+        },
+        "level_7_native": {
+          "credit_norm": 0.22058921177111862,
+          "individual_credit_mean": 3.250323511196369,
+          "cancellation_ratio": 0.06786707811511845,
+          "logit_vjp_norm_mean": 6.502598313948421,
+          "odd_vjp_norm": 0.03100124365708809,
+          "odd_to_total": 0.004767402220594465,
+          "decomposition_abs_error": 2.6469779601696886e-23
+        },
+        "readout": {
+          "credit_norm": 0.1852415344651113,
+          "individual_credit_mean": 2.734394263623016,
+          "cancellation_ratio": 0.06774484069771218,
+          "logit_vjp_norm_mean": 5.470453358045791,
+          "odd_vjp_norm": 0.021429463884472595,
+          "odd_to_total": 0.0039172712775744295,
+          "decomposition_abs_error": 0.0
+        },
+        "local_identity_head": {
+          "credit_norm": 0.0,
+          "individual_credit_mean": 0.0,
+          "cancellation_ratio": null,
+          "logit_vjp_norm_mean": 0.0,
+          "odd_vjp_norm": 0.0,
+          "odd_to_total": null,
+          "decomposition_abs_error": 0.0
+        }
+      },
+      "mean_root_feature_distance": 0.03030583845980557,
+      "mean_absolute_logit_contrast": 0.004862567409873009,
+      "joint_head_weight_difference": 0.8340814709663391
+    },
+    {
+      "additional_updates": 512,
+      "pairs": [
+        {
+          "pair_index": 0,
+          "input_digests": [
+            "fecb61846ab5b3aadb84f3d60627fd0712f785de85b09c477f0c709eb3ff500b",
+            "af0f1d95fb873ed8ee51f8f628302e39a929cf6309ef09c3ffecac5c753d77a8"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            -0.1840183138847351,
+            -0.08006513118743896
+          ],
+          "logit_contrast": -0.10395318269729614,
+          "root_feature_distance": 1.290213937962312,
+          "pair_loss": 0.6696728765964508,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.005489098069255752,
+              "individual_credit_mean": 0.005586834028334332,
+              "cancellation_ratio": 0.9825060206580507,
+              "logit_vjp_norm_mean": 0.010859419800123794,
+              "odd_vjp_norm": 0.010646263495185064,
+              "odd_to_total": 0.9803712989402712,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.03960634023995084,
+              "individual_credit_mean": 0.041011165344958266,
+              "cancellation_ratio": 0.9657453014760496,
+              "logit_vjp_norm_mean": 0.07973825134208917,
+              "odd_vjp_norm": 0.07667203300964887,
+              "odd_to_total": 0.9615464563013081,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.08191476150581699,
+              "individual_credit_mean": 0.08438262103201552,
+              "cancellation_ratio": 0.9707539361065568,
+              "logit_vjp_norm_mean": 0.16422782508375192,
+              "odd_vjp_norm": 0.15884862986610213,
+              "odd_to_total": 0.9672455309268905,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.065989245680837,
+              "individual_credit_mean": 0.06938557103680172,
+              "cancellation_ratio": 0.951051417388158,
+              "logit_vjp_norm_mean": 0.13531421585293477,
+              "odd_vjp_norm": 0.1279177315878447,
+              "odd_to_total": 0.9453384537724485,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.007850106771409735,
+              "individual_credit_mean": 0.008695482596389791,
+              "cancellation_ratio": 0.9027798841974521,
+              "logit_vjp_norm_mean": 0.016981294840642716,
+              "odd_vjp_norm": 0.015137153177588436,
+              "odd_to_total": 0.8914015874313338,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.03465870591949205,
+              "individual_credit_mean": 0.03523453919119835,
+              "cancellation_ratio": 0.9836571362951116,
+              "logit_vjp_norm_mean": 0.06880778057815432,
+              "odd_vjp_norm": 0.06755797225998833,
+              "odd_to_total": 0.9818362355584713,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00033433620772473294,
+              "individual_credit_mean": 0.00033601641376914564,
+              "cancellation_ratio": 0.9949996310431221,
+              "logit_vjp_norm_mean": 0.0006596305130321942,
+              "odd_vjp_norm": 0.0006560051878288555,
+              "odd_to_total": 0.9945040062099708,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.004270179532226341,
+              "individual_credit_mean": 0.004354502473982754,
+              "cancellation_ratio": 0.9806354589852171,
+              "logit_vjp_norm_mean": 0.008437018392112933,
+              "odd_vjp_norm": 0.008252490487908371,
+              "odd_to_total": 0.9781287777709408,
+              "decomposition_abs_error": 1.3234889800848443e-23
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0006774845908151788,
+              "individual_credit_mean": 0.0006777991625277942,
+              "cancellation_ratio": 0.9995358924442423,
+              "logit_vjp_norm_mean": 0.0013218413297143628,
+              "odd_vjp_norm": 0.0013211582528599734,
+              "odd_to_total": 0.9994832383894843,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0016087089759196152,
+              "individual_credit_mean": 0.0017597186015341263,
+              "cancellation_ratio": 0.9141853558387911,
+              "logit_vjp_norm_mean": 0.0034417771190339837,
+              "odd_vjp_norm": 0.003113168048211175,
+              "odd_to_total": 0.9045234309317971,
+              "decomposition_abs_error": 1.2924697071141057e-26
+            },
+            "level_5_relation": {
+              "credit_norm": 0.00016515066695583112,
+              "individual_credit_mean": 0.0001652429435511161,
+              "cancellation_ratio": 0.9994415701312145,
+              "logit_vjp_norm_mean": 0.0003228627363654742,
+              "odd_vjp_norm": 0.0003226627379375798,
+              "odd_to_total": 0.9993805465748514,
+              "decomposition_abs_error": 0.0
+            },
+            "level_5_native": {
+              "credit_norm": 0.014022856390732181,
+              "individual_credit_mean": 0.02030646802898814,
+              "cancellation_ratio": 0.690561074959668,
+              "logit_vjp_norm_mean": 0.040999955064720914,
+              "odd_vjp_norm": 0.02770437656278374,
+              "odd_to_total": 0.6757172421055267,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0023377529253682918,
+              "individual_credit_mean": 0.0029630826344913992,
+              "cancellation_ratio": 0.7889597469054579,
+              "logit_vjp_norm_mean": 0.005980255390609078,
+              "odd_vjp_norm": 0.00466117885904617,
+              "odd_to_total": 0.779428060274101,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_6_native": {
+              "credit_norm": 0.1861378220961162,
+              "individual_credit_mean": 0.2949970123156729,
+              "cancellation_ratio": 0.6309820585468584,
+              "logit_vjp_norm_mean": 0.5935577134545899,
+              "odd_vjp_norm": 0.3612718297717222,
+              "odd_to_total": 0.608654932085827,
+              "decomposition_abs_error": 3.469446951953614e-18
+            },
+            "level_7_relation": {
+              "credit_norm": 0.04141483989132524,
+              "individual_credit_mean": 0.06513602569761656,
+              "cancellation_ratio": 0.6358207988247075,
+              "logit_vjp_norm_mean": 0.13186427185619223,
+              "odd_vjp_norm": 0.08176229202373911,
+              "odd_to_total": 0.6200488644331722,
+              "decomposition_abs_error": 0.0
+            },
+            "level_7_native": {
+              "credit_norm": 0.41733720896688437,
+              "individual_credit_mean": 2.9336797797688114,
+              "cancellation_ratio": 0.1422572469718466,
+              "logit_vjp_norm_mean": 6.042854996541964,
+              "odd_vjp_norm": 0.8990500863596309,
+              "odd_to_total": 0.14877902694572584,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "readout": {
+              "credit_norm": 0.37073357158438863,
+              "individual_credit_mean": 3.1416130545279204,
+              "cancellation_ratio": 0.11800739465672277,
+              "logit_vjp_norm_mean": 6.48421874746162,
+              "odd_vjp_norm": 0.9123190247145504,
+              "odd_to_total": 0.14069837250196043,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 4,
+          "input_digests": [
+            "e6650bde4615b78493cc53c2e25e12a99c772034fadf2df7ed62a55d4574b9f9",
+            "9ed577ad521091904f1f23ca00d53fb4b29355e2fd98d21d896db6b5a4487de3"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            -0.10297460854053497,
+            -0.1847514510154724
+          ],
+          "logit_contrast": 0.08177684247493744,
+          "root_feature_distance": 1.1916271458338457,
+          "pair_loss": 0.6754957139492035,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.00390726057777234,
+              "individual_credit_mean": 0.004008677055387522,
+              "cancellation_ratio": 0.9747007613200264,
+              "logit_vjp_norm_mean": 0.0077081968807408315,
+              "odd_vjp_norm": 0.007486809249203577,
+              "odd_to_total": 0.971278933976064,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_0_native": {
+              "credit_norm": 0.02726428239522622,
+              "individual_credit_mean": 0.029063521375733065,
+              "cancellation_ratio": 0.938092877416804,
+              "logit_vjp_norm_mean": 0.056051931159306935,
+              "odd_vjp_norm": 0.0521262470150874,
+              "odd_to_total": 0.9299634452725236,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.05277546724402968,
+              "individual_credit_mean": 0.06272737152529076,
+              "cancellation_ratio": 0.8413467033725681,
+              "logit_vjp_norm_mean": 0.1212834758506304,
+              "odd_vjp_norm": 0.0994638809319962,
+              "odd_to_total": 0.8200942480778943,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.03954983709197383,
+              "individual_credit_mean": 0.04684614206231619,
+              "cancellation_ratio": 0.8442496084173465,
+              "logit_vjp_norm_mean": 0.09100248650673572,
+              "odd_vjp_norm": 0.07510005316807351,
+              "odd_to_total": 0.825252760126668,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.004605808285410276,
+              "individual_credit_mean": 0.005398418570501433,
+              "cancellation_ratio": 0.8531773194797795,
+              "logit_vjp_norm_mean": 0.01054341164179645,
+              "odd_vjp_norm": 0.008828186513547484,
+              "odd_to_total": 0.8373178259066137,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.021159399800980704,
+              "individual_credit_mean": 0.025074511647596883,
+              "cancellation_ratio": 0.8438608934187797,
+              "logit_vjp_norm_mean": 0.048707252521181355,
+              "odd_vjp_norm": 0.04017349151378196,
+              "odd_to_total": 0.8247948597862647,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00029814280954576966,
+              "individual_credit_mean": 0.0003052347660041909,
+              "cancellation_ratio": 0.9767655678569594,
+              "logit_vjp_norm_mean": 0.0005936757311921392,
+              "odd_vjp_norm": 0.0005783771424734857,
+              "odd_to_total": 0.974230732511277,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_3_native": {
+              "credit_norm": 0.002597669708230803,
+              "individual_credit_mean": 0.002942414722375723,
+              "cancellation_ratio": 0.8828360218825404,
+              "logit_vjp_norm_mean": 0.005662069451552758,
+              "odd_vjp_norm": 0.004904685518711837,
+              "odd_to_total": 0.866235492283971,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00038793092206977685,
+              "individual_credit_mean": 0.0005154826750242072,
+              "cancellation_ratio": 0.7525586035487217,
+              "logit_vjp_norm_mean": 0.0010000196442500311,
+              "odd_vjp_norm": 0.0007191555168157923,
+              "odd_to_total": 0.7191413898225228,
+              "decomposition_abs_error": 1.3234889800848443e-23
+            },
+            "level_4_native": {
+              "credit_norm": 0.0010417767808077124,
+              "individual_credit_mean": 0.0013110230434884111,
+              "cancellation_ratio": 0.7946288861832056,
+              "logit_vjp_norm_mean": 0.0025659012623386506,
+              "odd_vjp_norm": 0.0019822659094217384,
+              "odd_to_total": 0.7725417725602711,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_5_relation": {
+              "credit_norm": 9.060668298561509e-05,
+              "individual_credit_mean": 0.0001259302198131176,
+              "cancellation_ratio": 0.7194991251510306,
+              "logit_vjp_norm_mean": 0.0002449595449611785,
+              "odd_vjp_norm": 0.0001671955029778446,
+              "odd_to_total": 0.6825433277333282,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_5_native": {
+              "credit_norm": 0.011433592018356972,
+              "individual_credit_mean": 0.021122194623004527,
+              "cancellation_ratio": 0.5413070101107988,
+              "logit_vjp_norm_mean": 0.042261373208910324,
+              "odd_vjp_norm": 0.021548185381812027,
+              "odd_to_total": 0.509878968562925,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0021149279990707085,
+              "individual_credit_mean": 0.0027027968411504092,
+              "cancellation_ratio": 0.7824961043577799,
+              "logit_vjp_norm_mean": 0.005432053263949379,
+              "odd_vjp_norm": 0.004199943322314573,
+              "odd_to_total": 0.773177860789421,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_6_native": {
+              "credit_norm": 0.11702940815438069,
+              "individual_credit_mean": 0.23218256020616473,
+              "cancellation_ratio": 0.5040404759533417,
+              "logit_vjp_norm_mean": 0.4700796557539568,
+              "odd_vjp_norm": 0.22906686094100964,
+              "odd_to_total": 0.4872937131763578,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.0336216266641122,
+              "individual_credit_mean": 0.0607193945631972,
+              "cancellation_ratio": 0.5537213752867473,
+              "logit_vjp_norm_mean": 0.12261133856086456,
+              "odd_vjp_norm": 0.06573713388171003,
+              "odd_to_total": 0.536142371931434,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.4047985567469744,
+              "individual_credit_mean": 2.9404984303655546,
+              "cancellation_ratio": 0.1376632453079225,
+              "logit_vjp_norm_mean": 6.025424249931268,
+              "odd_vjp_norm": 0.8723266048356176,
+              "odd_to_total": 0.1447743044559175,
+              "decomposition_abs_error": 6.938893903907228e-18
+            },
+            "readout": {
+              "credit_norm": 0.3409296321287229,
+              "individual_credit_mean": 3.175533267239829,
+              "cancellation_ratio": 0.10736137947156783,
+              "logit_vjp_norm_mean": 6.517499501157261,
+              "odd_vjp_norm": 0.8426076354650832,
+              "odd_to_total": 0.1292838818500052,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 9,
+          "input_digests": [
+            "2a7350eb6d49efbd2b0d09b043ba2864fa545cafb533e15c7daa8cc7ccdea788",
+            "d738cf7e30ec26494de873f72aedfbef0df9954c37c543c105ef3c057928a133"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            -0.0940140038728714,
+            -0.1823146641254425
+          ],
+          "logit_contrast": 0.0883006602525711,
+          "root_feature_distance": 1.2689624716497372,
+          "pair_loss": 0.673698753118515,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0024706213806082065,
+              "individual_credit_mean": 0.00335772016132644,
+              "cancellation_ratio": 0.7358032420522524,
+              "logit_vjp_norm_mean": 0.006599294975448712,
+              "odd_vjp_norm": 0.004671406865574442,
+              "odd_to_total": 0.7078645344621552,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.019527936551453774,
+              "individual_credit_mean": 0.024598490579062274,
+              "cancellation_ratio": 0.7938672695663509,
+              "logit_vjp_norm_mean": 0.048104655368356765,
+              "odd_vjp_norm": 0.0370641359764011,
+              "odd_to_total": 0.7704895855211111,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.0295163471927535,
+              "individual_credit_mean": 0.03932369601295589,
+              "cancellation_ratio": 0.750599515951624,
+              "logit_vjp_norm_mean": 0.07738570223445884,
+              "odd_vjp_norm": 0.056135775550378963,
+              "odd_to_total": 0.7254024183989692,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.028876446008142848,
+              "individual_credit_mean": 0.03653367161602196,
+              "cancellation_ratio": 0.7904063492889937,
+              "logit_vjp_norm_mean": 0.07166326853848218,
+              "odd_vjp_norm": 0.055051980821168627,
+              "odd_to_total": 0.7682035991926112,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.003887061729496065,
+              "individual_credit_mean": 0.004636499895778859,
+              "cancellation_ratio": 0.8383612243871517,
+              "logit_vjp_norm_mean": 0.0090956162513994,
+              "odd_vjp_norm": 0.007475604276096622,
+              "odd_to_total": 0.8218909054069281,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_2_native": {
+              "credit_norm": 0.01164342350900183,
+              "individual_credit_mean": 0.017066329623369198,
+              "cancellation_ratio": 0.682245319641448,
+              "logit_vjp_norm_mean": 0.03377472296160033,
+              "odd_vjp_norm": 0.022055186650539307,
+              "odd_to_total": 0.6530086619989341,
+              "decomposition_abs_error": 4.235164736271502e-22
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00012993971767291098,
+              "individual_credit_mean": 0.00014187304891128083,
+              "cancellation_ratio": 0.9158872574463931,
+              "logit_vjp_norm_mean": 0.0002929795160542711,
+              "odd_vjp_norm": 0.00026871058859156396,
+              "odd_to_total": 0.917165104954943,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0022239540425619993,
+              "individual_credit_mean": 0.0026077837907254693,
+              "cancellation_ratio": 0.8528138147309019,
+              "logit_vjp_norm_mean": 0.005046462413072263,
+              "odd_vjp_norm": 0.004203906459994282,
+              "odd_to_total": 0.8330402796827655,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0003298839082773632,
+              "individual_credit_mean": 0.000437006230860443,
+              "cancellation_ratio": 0.7548723221356332,
+              "logit_vjp_norm_mean": 0.0008508181382618758,
+              "odd_vjp_norm": 0.0006153415923686364,
+              "odd_to_total": 0.7232351600139941,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0008930549126567605,
+              "individual_credit_mean": 0.0011704099994808241,
+              "cancellation_ratio": 0.7630274118068933,
+              "logit_vjp_norm_mean": 0.002302341273721942,
+              "odd_vjp_norm": 0.0017016425332582463,
+              "odd_to_total": 0.7390922243718403,
+              "decomposition_abs_error": 1.2924697071141057e-26
+            },
+            "level_5_relation": {
+              "credit_norm": 7.781597334180235e-05,
+              "individual_credit_mean": 0.00010924546164327363,
+              "cancellation_ratio": 0.7123039453657118,
+              "logit_vjp_norm_mean": 0.00021336449864913222,
+              "odd_vjp_norm": 0.00014427897031592406,
+              "odd_to_total": 0.676208887745585,
+              "decomposition_abs_error": 3.308722450212111e-24
+            },
+            "level_5_native": {
+              "credit_norm": 0.011889172033131938,
+              "individual_credit_mean": 0.020964194160758187,
+              "cancellation_ratio": 0.5671180080647544,
+              "logit_vjp_norm_mean": 0.041882424425982265,
+              "odd_vjp_norm": 0.022386595848746808,
+              "odd_to_total": 0.5345105054343275,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_6_relation": {
+              "credit_norm": 0.002157681437476548,
+              "individual_credit_mean": 0.0027326259120207096,
+              "cancellation_ratio": 0.7896000063473728,
+              "logit_vjp_norm_mean": 0.0054880760258691616,
+              "odd_vjp_norm": 0.00427817455031079,
+              "odd_to_total": 0.7795399571989792,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_6_native": {
+              "credit_norm": 0.12726519907239653,
+              "individual_credit_mean": 0.23068234300767154,
+              "cancellation_ratio": 0.5516902482135974,
+              "logit_vjp_norm_mean": 0.4670616114821224,
+              "odd_vjp_norm": 0.25015170312942525,
+              "odd_to_total": 0.5355860918126436,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.03818641016534904,
+              "individual_credit_mean": 0.0628990295566448,
+              "cancellation_ratio": 0.6071065075965856,
+              "logit_vjp_norm_mean": 0.1271520796751069,
+              "odd_vjp_norm": 0.07529441846117492,
+              "odd_to_total": 0.5921603378691386,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.432369021189562,
+              "individual_credit_mean": 2.945561936026374,
+              "cancellation_ratio": 0.14678659983393086,
+              "logit_vjp_norm_mean": 6.045673322750513,
+              "odd_vjp_norm": 0.9342542555437512,
+              "odd_to_total": 0.15453270556780713,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "readout": {
+              "credit_norm": 0.3665836221851028,
+              "individual_credit_mean": 3.1668543641749243,
+              "cancellation_ratio": 0.11575638789458845,
+              "logit_vjp_norm_mean": 6.510598464557747,
+              "odd_vjp_norm": 0.8972919687747712,
+              "odd_to_total": 0.13782019789108937,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 13,
+          "input_digests": [
+            "8ca41eeb229b08f989ea5f51e992fae08b5e63848577aa17b0ad299d628fe2a0",
+            "aec96f1c538780ff2efa0c7cb5b2af56ca5ad4ea08cce97621e508d7b196ba95"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            -0.18475651741027832,
+            -0.09455130994319916
+          ],
+          "logit_contrast": -0.09020520746707916,
+          "root_feature_distance": 1.2154411522918742,
+          "pair_loss": 0.7183874249458313,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.002376613912819229,
+              "individual_credit_mean": 0.002566673107258104,
+              "cancellation_ratio": 0.925951149017995,
+              "logit_vjp_norm_mean": 0.005348750778827668,
+              "odd_vjp_norm": 0.004999742812880733,
+              "odd_to_total": 0.9347496302634929,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_0_native": {
+              "credit_norm": 0.01841374690664921,
+              "individual_credit_mean": 0.019631533523445696,
+              "cancellation_ratio": 0.9379678304121224,
+              "logit_vjp_norm_mean": 0.04093286881645902,
+              "odd_vjp_norm": 0.038696165929318405,
+              "odd_to_total": 0.9453568012256878,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.027223622668041347,
+              "individual_credit_mean": 0.031603266800647734,
+              "cancellation_ratio": 0.8614179932652841,
+              "logit_vjp_norm_mean": 0.0654408768467288,
+              "odd_vjp_norm": 0.05737666216469473,
+              "odd_to_total": 0.8767709867194854,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.026091604226502592,
+              "individual_credit_mean": 0.03164315877035461,
+              "cancellation_ratio": 0.8245575107042385,
+              "logit_vjp_norm_mean": 0.0651990612339401,
+              "odd_vjp_norm": 0.05494341109846187,
+              "odd_to_total": 0.8427024877140479,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.0034819030710280773,
+              "individual_credit_mean": 0.004215149344740694,
+              "cancellation_ratio": 0.8260450072480826,
+              "logit_vjp_norm_mean": 0.008646335618906494,
+              "odd_vjp_norm": 0.007284435445569243,
+              "odd_to_total": 0.8424881668531055,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.010367463011552554,
+              "individual_credit_mean": 0.01410891061097801,
+              "cancellation_ratio": 0.734816691196961,
+              "logit_vjp_norm_mean": 0.02895497345556623,
+              "odd_vjp_norm": 0.02205330968271773,
+              "odd_to_total": 0.7616415092405571,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 8.778024381092662e-05,
+              "individual_credit_mean": 9.693623140046363e-05,
+              "cancellation_ratio": 0.9055462807119896,
+              "logit_vjp_norm_mean": 0.00019477373614411789,
+              "odd_vjp_norm": 0.00017729983947260776,
+              "odd_to_total": 0.9102861760654385,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_3_native": {
+              "credit_norm": 0.0020580076554425394,
+              "individual_credit_mean": 0.0022805519042275796,
+              "cancellation_ratio": 0.9024164947210813,
+              "logit_vjp_norm_mean": 0.004748247711841167,
+              "odd_vjp_norm": 0.00433983679189672,
+              "odd_to_total": 0.9139870232705102,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0002925440852405712,
+              "individual_credit_mean": 0.0003952919750304541,
+              "cancellation_ratio": 0.7400708937185811,
+              "logit_vjp_norm_mean": 0.0008158990147239046,
+              "odd_vjp_norm": 0.0006276991567988964,
+              "odd_to_total": 0.7693343728467499,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_4_native": {
+              "credit_norm": 0.0008303183927066062,
+              "individual_credit_mean": 0.0011541215049174723,
+              "cancellation_ratio": 0.7194375888230067,
+              "logit_vjp_norm_mean": 0.002343335688083407,
+              "odd_vjp_norm": 0.0017381175965859087,
+              "odd_to_total": 0.7417279587490512,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_5_relation": {
+              "credit_norm": 6.892882310546726e-05,
+              "individual_credit_mean": 9.995026114333659e-05,
+              "cancellation_ratio": 0.689631245751503,
+              "logit_vjp_norm_mean": 0.00020561357709991806,
+              "odd_vjp_norm": 0.00014878705661169645,
+              "odd_to_total": 0.7236246687123841,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_5_native": {
+              "credit_norm": 0.010317667339468425,
+              "individual_credit_mean": 0.02157476730413159,
+              "cancellation_ratio": 0.4782284413094264,
+              "logit_vjp_norm_mean": 0.04303682274030964,
+              "odd_vjp_norm": 0.021726294464678348,
+              "odd_to_total": 0.5048303541313429,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0020805272976960635,
+              "individual_credit_mean": 0.0027153268292622484,
+              "cancellation_ratio": 0.7662161605280278,
+              "logit_vjp_norm_mean": 0.005387208219747178,
+              "odd_vjp_norm": 0.0041615692756367725,
+              "odd_to_total": 0.7724908906216502,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_6_native": {
+              "credit_norm": 0.11961733422503645,
+              "individual_credit_mean": 0.24094054403611626,
+              "cancellation_ratio": 0.4964599656880752,
+              "logit_vjp_norm_mean": 0.47522341374768917,
+              "odd_vjp_norm": 0.240157792344236,
+              "odd_to_total": 0.5053576599905139,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.03506901497996844,
+              "individual_credit_mean": 0.06354120673585377,
+              "cancellation_ratio": 0.5519098043849456,
+              "logit_vjp_norm_mean": 0.12577623872136945,
+              "odd_vjp_norm": 0.07089748192343548,
+              "odd_to_total": 0.5636794568208848,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.5526758942806883,
+              "individual_credit_mean": 3.092631005652157,
+              "cancellation_ratio": 0.1787073508836348,
+              "logit_vjp_norm_mean": 6.029160518050167,
+              "odd_vjp_norm": 0.870347908542899,
+              "odd_to_total": 0.14435640018825868,
+              "decomposition_abs_error": 3.469446951953614e-18
+            },
+            "readout": {
+              "credit_norm": 0.5963063412029588,
+              "individual_credit_mean": 3.3422531773311883,
+              "cancellation_ratio": 0.17841447357950108,
+              "logit_vjp_norm_mean": 6.504931308862643,
+              "odd_vjp_norm": 0.8594466809187754,
+              "odd_to_total": 0.1321223299849181,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 18,
+          "input_digests": [
+            "a651bc45eb4c057ba8a7a89c580a82731eede3b82ae5e691988b86b314f23958",
+            "e02d713bb4ca62e058919eaf615ae716899eb7e14ae379cda3a65a6d3db5cdb5"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            -0.1871640384197235,
+            -0.10281071066856384
+          ],
+          "logit_contrast": -0.08435332775115967,
+          "root_feature_distance": 1.0883177179404024,
+          "pair_loss": 0.7170820236206055,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.003337033015060515,
+              "individual_credit_mean": 0.0034816969278752517,
+              "cancellation_ratio": 0.9584501707611237,
+              "logit_vjp_norm_mean": 0.007315991449357356,
+              "odd_vjp_norm": 0.007051198007454549,
+              "odd_to_total": 0.9638062122221225,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_0_native": {
+              "credit_norm": 0.023795095328045905,
+              "individual_credit_mean": 0.024804014008681954,
+              "cancellation_ratio": 0.9593243786960084,
+              "logit_vjp_norm_mean": 0.05209254366327792,
+              "odd_vjp_norm": 0.05024469619386493,
+              "odd_to_total": 0.9645276014671634,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.050595086084995966,
+              "individual_credit_mean": 0.051525459155549985,
+              "cancellation_ratio": 0.981943429795641,
+              "logit_vjp_norm_mean": 0.10823609034319011,
+              "odd_vjp_norm": 0.10652992925223048,
+              "odd_to_total": 0.9842366710997246,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.03645140662698294,
+              "individual_credit_mean": 0.03834498295574283,
+              "cancellation_ratio": 0.9506173641817647,
+              "logit_vjp_norm_mean": 0.08031478710551733,
+              "odd_vjp_norm": 0.07683899363625499,
+              "odd_to_total": 0.9567228701646703,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.004034795485584002,
+              "individual_credit_mean": 0.004307088934222406,
+              "cancellation_ratio": 0.9367801657228693,
+              "logit_vjp_norm_mean": 0.009011012093475117,
+              "odd_vjp_norm": 0.008511056620425821,
+              "odd_to_total": 0.9445172786516052,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.019503267699506947,
+              "individual_credit_mean": 0.020696081673987198,
+              "cancellation_ratio": 0.9423652267482355,
+              "logit_vjp_norm_mean": 0.0432966215344407,
+              "odd_vjp_norm": 0.041105566000257464,
+              "odd_to_total": 0.9493943070721964,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00023213244408592363,
+              "individual_credit_mean": 0.00025241966219817686,
+              "cancellation_ratio": 0.9196290101350125,
+              "logit_vjp_norm_mean": 0.0005280689736339127,
+              "odd_vjp_norm": 0.0004908611802490775,
+              "odd_to_total": 0.9295398986825729,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0024613838703615096,
+              "individual_credit_mean": 0.002494022608747581,
+              "cancellation_ratio": 0.9869132147112085,
+              "logit_vjp_norm_mean": 0.005242602874050281,
+              "odd_vjp_norm": 0.005182770480590934,
+              "odd_to_total": 0.9885872733646289,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0003936801682319361,
+              "individual_credit_mean": 0.0004211339722097757,
+              "cancellation_ratio": 0.9348098092543238,
+              "logit_vjp_norm_mean": 0.0008837431515928315,
+              "odd_vjp_norm": 0.0008335038415301495,
+              "odd_to_total": 0.9431516838663675,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_4_native": {
+              "credit_norm": 0.0009918427348380473,
+              "individual_credit_mean": 0.0012801407114751908,
+              "cancellation_ratio": 0.7747919630609056,
+              "logit_vjp_norm_mean": 0.002610554023014534,
+              "odd_vjp_norm": 0.0020709478613594894,
+              "odd_to_total": 0.7932982206466905,
+              "decomposition_abs_error": 8.470329472543003e-22
+            },
+            "level_5_relation": {
+              "credit_norm": 9.1848252089378e-05,
+              "individual_credit_mean": 0.00010303251260763083,
+              "cancellation_ratio": 0.8914492111742939,
+              "logit_vjp_norm_mean": 0.00021560164769293848,
+              "odd_vjp_norm": 0.00019513592114133276,
+              "odd_to_total": 0.9050762052581659,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_5_native": {
+              "credit_norm": 0.009424432021265746,
+              "individual_credit_mean": 0.02204682744264,
+              "cancellation_ratio": 0.42747338798680307,
+              "logit_vjp_norm_mean": 0.043906067728652874,
+              "odd_vjp_norm": 0.019892177897336882,
+              "odd_to_total": 0.4530621603436226,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_6_relation": {
+              "credit_norm": 0.002137797989463087,
+              "individual_credit_mean": 0.002795364899368904,
+              "cancellation_ratio": 0.7647652690873121,
+              "logit_vjp_norm_mean": 0.005551890216933414,
+              "odd_vjp_norm": 0.004279346878453914,
+              "odd_to_total": 0.7707909759097524,
+              "decomposition_abs_error": 4.235164736271502e-22
+            },
+            "level_6_native": {
+              "credit_norm": 0.10537422530414539,
+              "individual_credit_mean": 0.242439557484159,
+              "cancellation_ratio": 0.43464122108468434,
+              "logit_vjp_norm_mean": 0.478156093478938,
+              "odd_vjp_norm": 0.21159440248222527,
+              "odd_to_total": 0.4425216061615362,
+              "decomposition_abs_error": 1.734723475976807e-18
+            },
+            "level_7_relation": {
+              "credit_norm": 0.02905956026392058,
+              "individual_credit_mean": 0.06068356390227067,
+              "cancellation_ratio": 0.4788703628336704,
+              "logit_vjp_norm_mean": 0.1203479772260627,
+              "odd_vjp_norm": 0.05948270067447113,
+              "odd_to_total": 0.49425592390920126,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_7_native": {
+              "credit_norm": 0.5072471926195504,
+              "individual_credit_mean": 3.064816683541946,
+              "cancellation_ratio": 0.16550653595155165,
+              "logit_vjp_norm_mean": 5.9849692942318615,
+              "odd_vjp_norm": 0.7654103658580397,
+              "odd_to_total": 0.12788877072363927,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "readout": {
+              "credit_norm": 0.5607422588371509,
+              "individual_credit_mean": 3.326787295067894,
+              "cancellation_ratio": 0.16855368531329776,
+              "logit_vjp_norm_mean": 6.485644106972703,
+              "odd_vjp_norm": 0.7695568384411269,
+              "odd_to_total": 0.11865542199791348,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 22,
+          "input_digests": [
+            "fcf67eea6c01525e69f0313114e993899170012e9beada861cdd78ff992f8115",
+            "01bb3b783a94e8ef50150be19568d82c5caeac2738dd49e0ebed7bff8980bb26"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            -0.14712145924568176,
+            0.06565049290657043
+          ],
+          "logit_contrast": -0.2127719521522522,
+          "root_feature_distance": 2.171292165386276,
+          "pair_loss": 0.6415750980377197,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0013861829861900872,
+              "individual_credit_mean": 0.0021923489883941046,
+              "cancellation_ratio": 0.6322820835224168,
+              "logit_vjp_norm_mean": 0.004682368073697244,
+              "odd_vjp_norm": 0.0030079899560924153,
+              "odd_to_total": 0.6424078390995172,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_0_native": {
+              "credit_norm": 0.011447394564848291,
+              "individual_credit_mean": 0.018442166589692312,
+              "cancellation_ratio": 0.6207185315876316,
+              "logit_vjp_norm_mean": 0.03916859767817962,
+              "odd_vjp_norm": 0.024515352037558284,
+              "odd_to_total": 0.6258930237682597,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.020867495663283428,
+              "individual_credit_mean": 0.028143241084815647,
+              "cancellation_ratio": 0.7414745018313559,
+              "logit_vjp_norm_mean": 0.059410648615607395,
+              "odd_vjp_norm": 0.04402277779923633,
+              "odd_to_total": 0.740991368131123,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.023670062065272987,
+              "individual_credit_mean": 0.029447719324677137,
+              "cancellation_ratio": 0.8037994998627115,
+              "logit_vjp_norm_mean": 0.06187220208671235,
+              "odd_vjp_norm": 0.049581778973987425,
+              "odd_to_total": 0.8013579168315328,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.003129151562655128,
+              "individual_credit_mean": 0.004308993505036508,
+              "cancellation_ratio": 0.726190828321663,
+              "logit_vjp_norm_mean": 0.00904585269126182,
+              "odd_vjp_norm": 0.006531228361938263,
+              "odd_to_total": 0.7220135663105975,
+              "decomposition_abs_error": 2.710505431213761e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.014737640312994106,
+              "individual_credit_mean": 0.016275778285529598,
+              "cancellation_ratio": 0.9054952736789851,
+              "logit_vjp_norm_mean": 0.034099522562202327,
+              "odd_vjp_norm": 0.030819763685404684,
+              "odd_to_total": 0.9038180411231594,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_3_relation": {
+              "credit_norm": 0.0001487162778674347,
+              "individual_credit_mean": 0.0001521915276386428,
+              "cancellation_ratio": 0.9771652875483345,
+              "logit_vjp_norm_mean": 0.0003177432806735262,
+              "odd_vjp_norm": 0.00031031150373284945,
+              "odd_to_total": 0.9766107502732285,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0011675007443202761,
+              "individual_credit_mean": 0.0014146508796158963,
+              "cancellation_ratio": 0.8252924881630682,
+              "logit_vjp_norm_mean": 0.0029998369909354588,
+              "odd_vjp_norm": 0.002480028443238842,
+              "odd_to_total": 0.8267210687556321,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00035726278394844426,
+              "individual_credit_mean": 0.0003581668855500164,
+              "cancellation_ratio": 0.9974757532366965,
+              "logit_vjp_norm_mean": 0.0007542817040031193,
+              "odd_vjp_norm": 0.0007523654929760587,
+              "odd_to_total": 0.9974595552074365,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_4_native": {
+              "credit_norm": 0.0007014541636704643,
+              "individual_credit_mean": 0.0008967354022319368,
+              "cancellation_ratio": 0.7822309255601756,
+              "logit_vjp_norm_mean": 0.0018841597155898468,
+              "odd_vjp_norm": 0.0014686833724765033,
+              "odd_to_total": 0.7794898491483371,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_5_relation": {
+              "credit_norm": 8.9643493998465e-05,
+              "individual_credit_mean": 8.973213658925759e-05,
+              "cancellation_ratio": 0.9990121422027612,
+              "logit_vjp_norm_mean": 0.0001888515837757057,
+              "odd_vjp_norm": 0.0001886635905558044,
+              "odd_to_total": 0.9990045451769969,
+              "decomposition_abs_error": 5.293955920339377e-23
+            },
+            "level_5_native": {
+              "credit_norm": 0.014842044841553211,
+              "individual_credit_mean": 0.01677439499217839,
+              "cancellation_ratio": 0.884803585969795,
+              "logit_vjp_norm_mean": 0.03525571247936845,
+              "odd_vjp_norm": 0.031149238782776652,
+              "odd_to_total": 0.8835231680824804,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_6_relation": {
+              "credit_norm": 0.002491111394909167,
+              "individual_credit_mean": 0.003174957633456753,
+              "cancellation_ratio": 0.7846124838513058,
+              "logit_vjp_norm_mean": 0.006657119899400555,
+              "odd_vjp_norm": 0.00519832902690673,
+              "odd_to_total": 0.7808675681768653,
+              "decomposition_abs_error": 1.3552527156068805e-20
+            },
+            "level_6_native": {
+              "credit_norm": 0.16030499333974887,
+              "individual_credit_mean": 0.19995040670105196,
+              "cancellation_ratio": 0.8017237673310793,
+              "logit_vjp_norm_mean": 0.4205491983384385,
+              "odd_vjp_norm": 0.3363220363625478,
+              "odd_to_total": 0.799721025961608,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.05412038974250355,
+              "individual_credit_mean": 0.06970979884459116,
+              "cancellation_ratio": 0.7763670336096916,
+              "logit_vjp_norm_mean": 0.14731299072223503,
+              "odd_vjp_norm": 0.11438835746666214,
+              "odd_to_total": 0.7764987792715871,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.6477464414208342,
+              "individual_credit_mean": 3.030083983927888,
+              "cancellation_ratio": 0.21377177822680762,
+              "logit_vjp_norm_mean": 6.400982311222991,
+              "odd_vjp_norm": 1.365490720025374,
+              "odd_to_total": 0.21332518254756422,
+              "decomposition_abs_error": 1.734723475976807e-18
+            },
+            "readout": {
+              "credit_norm": 0.7002206237664896,
+              "individual_credit_mean": 2.907600021756112,
+              "cancellation_ratio": 0.24082426005196383,
+              "logit_vjp_norm_mean": 6.156574598541041,
+              "odd_vjp_norm": 1.5353354140818585,
+              "odd_to_total": 0.24938143597670298,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 27,
+          "input_digests": [
+            "2bae1be0a80edc611204a7b2faf47c8727f0159c9a7bd00a1254855ae674a111",
+            "52881993b33e23370569e888c31e56b42d190cc048cf9a51e87d5d7264cdea09"
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "log_odds": [
+            -0.14334240555763245,
+            0.06466266512870789
+          ],
+          "logit_contrast": -0.20800507068634033,
+          "root_feature_distance": 2.1429073874287097,
+          "pair_loss": 0.7466928362846375,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0034378151993111066,
+              "individual_credit_mean": 0.004077893549573433,
+              "cancellation_ratio": 0.8430370134773917,
+              "logit_vjp_norm_mean": 0.0077264512298124925,
+              "odd_vjp_norm": 0.006504041282370981,
+              "odd_to_total": 0.841788951863846,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.018935536557690237,
+              "individual_credit_mean": 0.027429571339807113,
+              "cancellation_ratio": 0.6903329375114979,
+              "logit_vjp_norm_mean": 0.05196221207120122,
+              "odd_vjp_norm": 0.03572080959561283,
+              "odd_to_total": 0.687438201181012,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.02962632057270782,
+              "individual_credit_mean": 0.055408205303386145,
+              "cancellation_ratio": 0.5346919361580057,
+              "logit_vjp_norm_mean": 0.10490126751241752,
+              "odd_vjp_norm": 0.055467470177139315,
+              "odd_to_total": 0.5287588176241382,
+              "decomposition_abs_error": 2.168404344971009e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.028255399215851188,
+              "individual_credit_mean": 0.036814663409904906,
+              "cancellation_ratio": 0.767503939972167,
+              "logit_vjp_norm_mean": 0.07015764911636974,
+              "odd_vjp_norm": 0.05392711019844483,
+              "odd_to_total": 0.7686561747386449,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_2_relation": {
+              "credit_norm": 0.003715102549776973,
+              "individual_credit_mean": 0.005241871726685472,
+              "cancellation_ratio": 0.7087358759398903,
+              "logit_vjp_norm_mean": 0.009979657750745372,
+              "odd_vjp_norm": 0.007081195168427522,
+              "odd_to_total": 0.7095629274359267,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_native": {
+              "credit_norm": 0.0153215118173596,
+              "individual_credit_mean": 0.017206451559528463,
+              "cancellation_ratio": 0.8904515707002334,
+              "logit_vjp_norm_mean": 0.03290504494007285,
+              "odd_vjp_norm": 0.029343322223828704,
+              "odd_to_total": 0.8917575489493843,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 0.00012433599159129063,
+              "individual_credit_mean": 0.0001312869135549515,
+              "cancellation_ratio": 0.9470554850026883,
+              "logit_vjp_norm_mean": 0.0002511135537110528,
+              "odd_vjp_norm": 0.0002379768388379227,
+              "odd_to_total": 0.9476861576008516,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0012353893623250236,
+              "individual_credit_mean": 0.0018429187591344348,
+              "cancellation_ratio": 0.6703439075660883,
+              "logit_vjp_norm_mean": 0.0034955972872362092,
+              "odd_vjp_norm": 0.002335938688168533,
+              "odd_to_total": 0.6682516595083643,
+              "decomposition_abs_error": 1.0587911840678754e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.0004219316541071137,
+              "individual_credit_mean": 0.0004220738420261717,
+              "cancellation_ratio": 0.9996631207506833,
+              "logit_vjp_norm_mean": 0.0008036421173618901,
+              "odd_vjp_norm": 0.0008033720811632533,
+              "odd_to_total": 0.9996639845115096,
+              "decomposition_abs_error": 1.3234889800848443e-23
+            },
+            "level_4_native": {
+              "credit_norm": 0.0006477673657930113,
+              "individual_credit_mean": 0.0009113689317223581,
+              "cancellation_ratio": 0.7107630546158983,
+              "logit_vjp_norm_mean": 0.0017354011036688451,
+              "odd_vjp_norm": 0.0012350936058228732,
+              "odd_to_total": 0.7117049788730329,
+              "decomposition_abs_error": 5.293955920339377e-23
+            },
+            "level_5_relation": {
+              "credit_norm": 0.00010629180956886285,
+              "individual_credit_mean": 0.00010633586769306886,
+              "cancellation_ratio": 0.9995856701491055,
+              "logit_vjp_norm_mean": 0.00020256265019465603,
+              "odd_vjp_norm": 0.0002024790167811831,
+              "odd_to_total": 0.999587123226357,
+              "decomposition_abs_error": 5.293955920339377e-23
+            },
+            "level_5_native": {
+              "credit_norm": 0.017006711008516275,
+              "individual_credit_mean": 0.01913157636887707,
+              "cancellation_ratio": 0.8889341202527624,
+              "logit_vjp_norm_mean": 0.036575864311929926,
+              "odd_vjp_norm": 0.032559506330286536,
+              "odd_to_total": 0.8901910301451611,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_6_relation": {
+              "credit_norm": 0.0028410574856499032,
+              "individual_credit_mean": 0.0036167584686709114,
+              "cancellation_ratio": 0.7855259095291306,
+              "logit_vjp_norm_mean": 0.006926736225972566,
+              "odd_vjp_norm": 0.005464952065656596,
+              "odd_to_total": 0.7889649450148183,
+              "decomposition_abs_error": 1.6940658945086007e-21
+            },
+            "level_6_native": {
+              "credit_norm": 0.19263421383063536,
+              "individual_credit_mean": 0.23432256766348297,
+              "cancellation_ratio": 0.8220898898107101,
+              "logit_vjp_norm_mean": 0.44740893786923397,
+              "odd_vjp_norm": 0.3685272502209766,
+              "odd_to_total": 0.8236921952790481,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.06235709575929406,
+              "individual_credit_mean": 0.07980666747208306,
+              "cancellation_ratio": 0.7813519563526069,
+              "logit_vjp_norm_mean": 0.15172957141014132,
+              "odd_vjp_norm": 0.11853924965882015,
+              "odd_to_total": 0.7812534402960636,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.7755726449572974,
+              "individual_credit_mean": 3.3450691878525016,
+              "cancellation_ratio": 0.23185548680839294,
+              "logit_vjp_norm_mean": 6.358512176551235,
+              "odd_vjp_norm": 1.4642718485182344,
+              "odd_to_total": 0.230285294399237,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "readout": {
+              "credit_norm": 0.8275585467644713,
+              "individual_credit_mean": 3.2355714728146596,
+              "cancellation_ratio": 0.255768896999382,
+              "logit_vjp_norm_mean": 6.138049680821544,
+              "odd_vjp_norm": 1.5152643451055887,
+              "odd_to_total": 0.24686413826855488,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        },
+        {
+          "pair_index": 31,
+          "input_digests": [
+            "bda38d1a5af01ff333fc2f37af1f3f87396032ae6fe81d17fd1599ffd726137e",
+            "d3083ed124438a43d1de03890dc7da5ab4500e6bebf0e0d86e7088e46fbd3d79"
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "log_odds": [
+            0.06560355424880981,
+            -0.14390350878238678
+          ],
+          "logit_contrast": 0.2095070630311966,
+          "root_feature_distance": 2.1472771493834037,
+          "pair_loss": 0.7470860183238983,
+          "groups": {
+            "input_interface": {
+              "credit_norm": 0.0013803594907265979,
+              "individual_credit_mean": 0.0016602454447028649,
+              "cancellation_ratio": 0.8314189297315865,
+              "logit_vjp_norm_mean": 0.003114953781657834,
+              "odd_vjp_norm": 0.0025744520723942443,
+              "odd_to_total": 0.8264816279309528,
+              "decomposition_abs_error": 0.0
+            },
+            "level_0_native": {
+              "credit_norm": 0.009777859097534184,
+              "individual_credit_mean": 0.011889766494117533,
+              "cancellation_ratio": 0.8223760409737049,
+              "logit_vjp_norm_mean": 0.022358505708408957,
+              "odd_vjp_norm": 0.018290733145691244,
+              "odd_to_total": 0.8180659917184073,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_relation": {
+              "credit_norm": 0.021095011000765117,
+              "individual_credit_mean": 0.023632938656229265,
+              "cancellation_ratio": 0.892610576603211,
+              "logit_vjp_norm_mean": 0.04475601066914227,
+              "odd_vjp_norm": 0.03991132952701067,
+              "odd_to_total": 0.891753508194781,
+              "decomposition_abs_error": 1.0842021724855044e-19
+            },
+            "level_1_native": {
+              "credit_norm": 0.015159239889769208,
+              "individual_credit_mean": 0.019908435925663583,
+              "cancellation_ratio": 0.7614480588215231,
+              "logit_vjp_norm_mean": 0.03792985286352411,
+              "odd_vjp_norm": 0.028928823172671318,
+              "odd_to_total": 0.7626927337883562,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_2_relation": {
+              "credit_norm": 0.002284539386962736,
+              "individual_credit_mean": 0.0029653606322925944,
+              "cancellation_ratio": 0.7704086181236248,
+              "logit_vjp_norm_mean": 0.005672356803986913,
+              "odd_vjp_norm": 0.004388650903454731,
+              "odd_to_total": 0.7736909110460211,
+              "decomposition_abs_error": 6.776263578034403e-21
+            },
+            "level_2_native": {
+              "credit_norm": 0.007874514870014553,
+              "individual_credit_mean": 0.010789530665122223,
+              "cancellation_ratio": 0.7298292311703023,
+              "logit_vjp_norm_mean": 0.020597031561777664,
+              "odd_vjp_norm": 0.0150878764089419,
+              "odd_to_total": 0.7325267412290993,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_3_relation": {
+              "credit_norm": 3.953893089823088e-05,
+              "individual_credit_mean": 0.0001455897819107208,
+              "cancellation_ratio": 0.2715776504320689,
+              "logit_vjp_norm_mean": 0.00027777764267253595,
+              "odd_vjp_norm": 7.884928817570752e-05,
+              "odd_to_total": 0.28385757549487406,
+              "decomposition_abs_error": 0.0
+            },
+            "level_3_native": {
+              "credit_norm": 0.0007093881864299311,
+              "individual_credit_mean": 0.0008314329995563656,
+              "cancellation_ratio": 0.8532114876465633,
+              "logit_vjp_norm_mean": 0.0015768568194745184,
+              "odd_vjp_norm": 0.0013442356994718468,
+              "odd_to_total": 0.852477969382032,
+              "decomposition_abs_error": 2.117582368135751e-22
+            },
+            "level_4_relation": {
+              "credit_norm": 0.00023637677835162716,
+              "individual_credit_mean": 0.00023948636553009075,
+              "cancellation_ratio": 0.9870155982718236,
+              "logit_vjp_norm_mean": 0.00045750447006473796,
+              "odd_vjp_norm": 0.00045162304059427887,
+              "odd_to_total": 0.9871445420639784,
+              "decomposition_abs_error": 0.0
+            },
+            "level_4_native": {
+              "credit_norm": 0.0005432232867184293,
+              "individual_credit_mean": 0.000676632730855673,
+              "cancellation_ratio": 0.8028332978090884,
+              "logit_vjp_norm_mean": 0.0012964538809187105,
+              "odd_vjp_norm": 0.0010453408759503729,
+              "odd_to_total": 0.8063077995567489,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_5_relation": {
+              "credit_norm": 6.114281301339297e-05,
+              "individual_credit_mean": 6.165815406436429e-05,
+              "cancellation_ratio": 0.9916419643307297,
+              "logit_vjp_norm_mean": 0.00011780205929937553,
+              "odd_vjp_norm": 0.00011682743596219046,
+              "odd_to_total": 0.9917266018694273,
+              "decomposition_abs_error": 2.6469779601696886e-23
+            },
+            "level_5_native": {
+              "credit_norm": 0.01634249483340139,
+              "individual_credit_mean": 0.01848083621669637,
+              "cancellation_ratio": 0.884294121855638,
+              "logit_vjp_norm_mean": 0.035312485323491814,
+              "odd_vjp_norm": 0.03127136943527446,
+              "odd_to_total": 0.8855612724168984,
+              "decomposition_abs_error": 5.421010862427522e-20
+            },
+            "level_6_relation": {
+              "credit_norm": 0.002756625080143676,
+              "individual_credit_mean": 0.0034791108534454724,
+              "cancellation_ratio": 0.7923360870820497,
+              "logit_vjp_norm_mean": 0.006664526123738321,
+              "odd_vjp_norm": 0.005304380447280075,
+              "odd_to_total": 0.7959126198615151,
+              "decomposition_abs_error": 3.3881317890172014e-21
+            },
+            "level_6_native": {
+              "credit_norm": 0.1791083466701283,
+              "individual_credit_mean": 0.2230043206273814,
+              "cancellation_ratio": 0.8031608812162925,
+              "logit_vjp_norm_mean": 0.42519006655198194,
+              "odd_vjp_norm": 0.3420599425062395,
+              "odd_to_total": 0.8044871444907584,
+              "decomposition_abs_error": 8.673617379884035e-19
+            },
+            "level_7_relation": {
+              "credit_norm": 0.06108191474810483,
+              "individual_credit_mean": 0.07656306596406257,
+              "cancellation_ratio": 0.7977987033170232,
+              "logit_vjp_norm_mean": 0.14547408327377806,
+              "odd_vjp_norm": 0.11602923546040092,
+              "odd_to_total": 0.7975938589833711,
+              "decomposition_abs_error": 4.336808689942018e-19
+            },
+            "level_7_native": {
+              "credit_norm": 0.7721521975453515,
+              "individual_credit_mean": 3.3570789584498018,
+              "cancellation_ratio": 0.23000716012408245,
+              "logit_vjp_norm_mean": 6.3800672977492265,
+              "odd_vjp_norm": 1.4615354530731257,
+              "odd_to_total": 0.22907837564483516,
+              "decomposition_abs_error": 1.734723475976807e-18
+            },
+            "readout": {
+              "credit_norm": 0.8280227995562549,
+              "individual_credit_mean": 3.2465311887115185,
+              "cancellation_ratio": 0.2550484660167026,
+              "logit_vjp_norm_mean": 6.157405617763686,
+              "odd_vjp_norm": 1.518354233415924,
+              "odd_to_total": 0.24658993213563482,
+              "decomposition_abs_error": 0.0
+            },
+            "local_identity_head": {
+              "credit_norm": 0.0,
+              "individual_credit_mean": 0.0,
+              "cancellation_ratio": null,
+              "logit_vjp_norm_mean": 0.0,
+              "odd_vjp_norm": 0.0,
+              "odd_to_total": null,
+              "decomposition_abs_error": 0.0
+            }
+          }
+        }
+      ],
+      "group_means": {
+        "input_interface": {
+          "credit_norm": 0.002973123078967979,
+          "individual_credit_mean": 0.0033665111578565065,
+          "cancellation_ratio": 0.8605186713176054,
+          "logit_vjp_norm_mean": 0.006669428371208241,
+          "odd_vjp_norm": 0.005867737967644501,
+          "odd_to_total": 0.8585936285948027,
+          "decomposition_abs_error": 3.7269449679189215e-20
+        },
+        "level_0_native": {
+          "credit_norm": 0.021096023955174834,
+          "individual_credit_mean": 0.024608778656937277,
+          "cancellation_ratio": 0.8410531459550212,
+          "logit_vjp_norm_mean": 0.04880119572590995,
+          "odd_vjp_norm": 0.04166627161289788,
+          "odd_to_total": 0.8379101383069342,
+          "decomposition_abs_error": 1.8973538018496328e-19
+        },
+        "level_1_relation": {
+          "credit_norm": 0.03920176399154923,
+          "individual_credit_mean": 0.04709334994636137,
+          "cancellation_ratio": 0.8218548241355308,
+          "logit_vjp_norm_mean": 0.0932052371444909,
+          "odd_vjp_norm": 0.07721955690859861,
+          "odd_to_total": 0.8169066936466258,
+          "decomposition_abs_error": 2.710505431213761e-19
+        },
+        "level_1_native": {
+          "credit_norm": 0.033005405100666574,
+          "individual_credit_mean": 0.038615543137685365,
+          "cancellation_ratio": 0.8367042185796129,
+          "logit_vjp_norm_mean": 0.07668169041302704,
+          "odd_vjp_norm": 0.0652862353321134,
+          "odd_to_total": 0.8338658745411225,
+          "decomposition_abs_error": 2.371692252312041e-19
+        },
+        "level_2_relation": {
+          "credit_norm": 0.004123558605290374,
+          "individual_credit_mean": 0.0049711081507059695,
+          "cancellation_ratio": 0.8203098654275641,
+          "logit_vjp_norm_mean": 0.009871942211526786,
+          "odd_vjp_norm": 0.008154688808381015,
+          "odd_to_total": 0.8178603961302664,
+          "decomposition_abs_error": 3.049318610115481e-20
+        },
+        "level_2_native": {
+          "credit_norm": 0.016908240867612792,
+          "individual_credit_mean": 0.01955651665716374,
+          "cancellation_ratio": 0.8390901678562571,
+          "logit_vjp_norm_mean": 0.03889286876437447,
+          "odd_vjp_norm": 0.03352456105318251,
+          "odd_to_total": 0.8373472381197583,
+          "decomposition_abs_error": 5.447480642029219e-20
+        },
+        "level_3_relation": {
+          "credit_norm": 0.0001743653278996525,
+          "individual_credit_mean": 0.00019519354317344662,
+          "cancellation_ratio": 0.8635782712720711,
+          "logit_vjp_norm_mean": 0.00038947036838921876,
+          "odd_vjp_norm": 0.00034979894617025875,
+          "odd_to_total": 0.8667350502241445,
+          "decomposition_abs_error": 1.6543612251060553e-23
+        },
+        "level_3_native": {
+          "credit_norm": 0.002090434137737303,
+          "individual_credit_mean": 0.0023460347672957255,
+          "cancellation_ratio": 0.8693078610508336,
+          "logit_vjp_norm_mean": 0.004651086492534449,
+          "odd_vjp_norm": 0.004130486571247671,
+          "odd_to_total": 0.8659286930023556,
+          "decomposition_abs_error": 1.5501364679243739e-21
+        },
+        "level_4_relation": {
+          "credit_norm": 0.0003871368613802514,
+          "individual_credit_mean": 0.00043330513859486913,
+          "cancellation_ratio": 0.8957502491700882,
+          "logit_vjp_norm_mean": 0.0008609686962465942,
+          "odd_vjp_norm": 0.0007655273718883799,
+          "odd_to_total": 0.8923267408402554,
+          "decomposition_abs_error": 5.624828165360588e-23
+        },
+        "level_4_native": {
+          "credit_norm": 0.0009072683266388308,
+          "individual_credit_mean": 0.0011450188657132492,
+          "cancellation_ratio": 0.7827373104622456,
+          "logit_vjp_norm_mean": 0.00227249050829624,
+          "odd_vjp_norm": 0.0017944074753857885,
+          "odd_to_total": 0.7810857793547211,
+          "decomposition_abs_error": 2.0481024278555643e-21
+        },
+        "level_5_relation": {
+          "credit_norm": 9.392856438235183e-05,
+          "individual_credit_mean": 0.00010764094463814569,
+          "cancellation_ratio": 0.8753206092820438,
+          "logit_vjp_norm_mean": 0.00021395228725479734,
+          "odd_vjp_norm": 0.00018575377903544445,
+          "odd_to_total": 0.8721439882871369,
+          "decomposition_abs_error": 5.997059441009451e-23
+        },
+        "level_5_native": {
+          "credit_norm": 0.013159871310803267,
+          "individual_credit_mean": 0.020050157392159283,
+          "cancellation_ratio": 0.6703399688137057,
+          "logit_vjp_norm_mean": 0.03990383816042078,
+          "odd_vjp_norm": 0.026029718087961933,
+          "odd_to_total": 0.6671593376527856,
+          "decomposition_abs_error": 7.962109704190423e-20
+        },
+        "level_6_relation": {
+          "credit_norm": 0.0023646852012221805,
+          "individual_credit_mean": 0.0030225030089833507,
+          "cancellation_ratio": 0.7818139709610545,
+          "logit_vjp_norm_mean": 0.0060109831707774565,
+          "odd_vjp_norm": 0.004693484303200703,
+          "odd_to_total": 0.7801466097308878,
+          "decomposition_abs_error": 4.102815838263017e-21
+        },
+        "level_6_native": {
+          "credit_norm": 0.14843394283657346,
+          "individual_credit_mean": 0.2373149140052126,
+          "cancellation_ratio": 0.6305985634805799,
+          "logit_vjp_norm_mean": 0.4721533363346188,
+          "odd_vjp_norm": 0.29239397721979776,
+          "odd_to_total": 0.6259142961197867,
+          "decomposition_abs_error": 1.2468324983583301e-18
+        },
+        "level_7_relation": {
+          "credit_norm": 0.04436385652682224,
+          "individual_credit_mean": 0.06738234409203997,
+          "cancellation_ratio": 0.6478683177757473,
+          "logit_vjp_norm_mean": 0.13403356893071877,
+          "odd_vjp_norm": 0.08776635869380173,
+          "odd_to_total": 0.6452041291893565,
+          "decomposition_abs_error": 1.9312351197398048e-19
+        },
+        "level_7_native": {
+          "credit_norm": 0.5637373947158928,
+          "individual_credit_mean": 3.0886774956981293,
+          "cancellation_ratio": 0.18081942551352118,
+          "logit_vjp_norm_mean": 6.158455520878653,
+          "odd_vjp_norm": 1.079085905344584,
+          "odd_to_total": 0.1741275075591231,
+          "decomposition_abs_error": 1.9278469879507876e-18
+        },
+        "readout": {
+          "credit_norm": 0.5738871745031925,
+          "individual_credit_mean": 3.1928429802030056,
+          "cancellation_ratio": 0.1799668679979658,
+          "logit_vjp_norm_mean": 6.369365253267281,
+          "odd_vjp_norm": 1.1062720176147098,
+          "odd_to_total": 0.1751769638258474,
+          "decomposition_abs_error": 0.0
+        },
+        "local_identity_head": {
+          "credit_norm": 0.0,
+          "individual_credit_mean": 0.0,
+          "cancellation_ratio": null,
+          "logit_vjp_norm_mean": 0.0,
+          "odd_vjp_norm": 0.0,
+          "odd_to_total": null,
+          "decomposition_abs_error": 0.0
+        }
+      },
+      "mean_root_feature_distance": 1.56450489098457,
+      "mean_absolute_logit_contrast": 0.13485916331410408,
+      "joint_head_weight_difference": 0.6392124891281128
+    }
+  ],
+  "max_scalar_chain_rule_error": 2.384185791015625e-07,
+  "work": {
+    "addressed_objects": 2336,
+    "external_observations": 1024,
+    "candidate_scores": 106496,
+    "selected_updates": 53248,
+    "counterfactual_value_evaluations": 106496,
+    "timer_candidate_scores": 4672,
+    "deliveries": 3328,
+    "publications": 3328,
+    "indexed_reads": 0,
+    "queries": 0,
+    "timer_emissions": 2336,
+    "state_tensor_bytes": 2078160,
+    "pixel_native_memories": 1024,
+    "frame_bound_comparisons": 1984,
+    "frame_coordinate_subtractions": 4096,
+    "role_slots": 0,
+    "role_view_tensor_bytes": 0,
+    "role_projection_madds": 0,
+    "role_pair_products": 0,
+    "role_transport_calls": 16640,
+    "binding_records": 4352,
+    "binding_insertions": 4352,
+    "binding_edges": 5184,
+    "binding_edge_copies": 5184,
+    "binding_reads": 0,
+    "binding_gc_visits": 0,
+    "binding_logical_tensor_bytes": 663552,
+    "ownership_distance_tests": 15872,
+    "ownership_deliveries": 1024,
+    "observed_part_memories": 256,
+    "identity_relation_reads": 4160,
+    "identity_relation_pairs": 3008,
+    "identity_relation_madds": 22020096,
+    "identity_role_slots": 2304,
+    "identity_role_tensor_bytes": 313344
+  },
+  "process_wall_s": 167.16361229284666,
+  "max_rss_kb": 634980,
+  "source_sha256": {
+    "experiments/hierarchy/native_composition_data.py": "a393403dc0fbd78c9e3c20e1c02b4a8cf96a56b185707725092c4b750bbdeb00",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/addressed_event_heads.py": "aa43bad6c8e79e7a4e05752a96d183f05d6e40e22f5a8d2cd97e203056ca76f3",
+    "sleeping_machines/bound_native_composition.py": "f139dd64b0fb5e901329ecad28a3db11caa0bd7df2ece261189c32cb743dcdcb",
+    "sleeping_machines/coalesced_native_composition.py": "f0da49eccaa1fa7718d9dfe9020d6da45d63d08414828d1f5a1da46314f9644e",
+    "sleeping_machines/convex_native_readout.py": "36e7f36509563c75190d97329c3543ddacb875d2ea89e268556e27a7c11d7ca8",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/frame_native_composition.py": "9a2db231ac0838ac92d938c8c9625a926bddbe21d98f46a8d19857e268aeb6ce",
+    "sleeping_machines/frontier_native_composition.py": "33b80094dce3218253122858b54eec6fc7ab4df4cd3adc262b4ddfa2b37ad0d6",
+    "sleeping_machines/grounded_native_composition.py": "a7d3466981a6b43c6a8b7a5af2e77a502edd7e80a810076535377bfd95d14a57",
+    "sleeping_machines/identity_role_composition.py": "00d8f3e9423c46cf49417493c6544eea9e46c3d0c10a61ba973f7637421332a9",
+    "sleeping_machines/indexed_episodic_race_language.py": "484d9aa2fd970691f458540809009ff6a3e8fc2053bdcbd23e46819df9ca1514",
+    "sleeping_machines/indexed_temporal_object.py": "2d6c5ac8ef44c10d2852dfae6639f1a0dd9d0fe53ae9b24349fe2dbf76fa533b",
+    "sleeping_machines/native_memory_composition.py": "f3a2b04beed4e37c15afb0e39836dba11811d21ab8fe118c85a4fb86a6cf9883",
+    "sleeping_machines/native_object_hierarchy.py": "9e58e4046c55e7ab815ab2b0dd3563833482a829febef69a61cf8d13ee8514e4",
+    "sleeping_machines/observed_ownership_composition.py": "6ad9040867243932e75df88a3aa1f2b5e57f33c362e12abf942cf9272c412b8d",
+    "sleeping_machines/packed_episodic_race_language.py": "461fb7964c765b0ac9ce9343a1d7194965be0bcfc4867b32cfc95adbf37843e7",
+    "sleeping_machines/parallel_head_race_language.py": "dc478d9b2b19e4f68f61f81da3f877dc9c6a8eadebb3102824d8860a20d0fdd3",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/part_identity_composition.py": "6437d708d7c78842ca26b6450e1a8b25bcf72ac267c89ae06b0a5adaf49645fa",
+    "sleeping_machines/prior_centered_readout.py": "a774743d4ca31c5db0effa067cd87214806390e18036be2fdc7cba4c80b57687",
+    "sleeping_machines/pure_race_timer.py": "2531bbdcc0980fbdfb2ad2665d568504cd33f45006ae6c9bec3d2584f0b9fbe7",
+    "sleeping_machines/relational_frame_composition.py": "103105767a4e2761704cd771621fb4156a4b0f2f649537fb08c92cd6dbb4949e",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/split_event_heads.py": "335fc63abb61dc18c40bd888d62677165f9f08ef0ae48ef1dbcc6e2afe73c351",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708",
+    "sleeping_machines/variance_reduced_native_composition.py": "99dbb62906f478db5861790d764746c6f8fa62f9dbdfd1d9a58e24e3d1439b1d",
+    "experiments/hierarchy/composition_credit_audit.py": "472135680019ede9d503f237aa8d37d71909a891a7bd619c9466cdb751503097"
+  },
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_ownership_support_20261016_v1.json": "9883715a0155cfae00f6fab3163364bd857733ac51e8339b8a4863a854723a43",
+    "experiments/results/hierarchy/aws_g_hier_composition_scale_20261016_v1.step128.pt": "f2f2c41f313f35cc72b303add443ff82c64c4960b9f68939ece8c28736e4c719",
+    "experiments/results/hierarchy/aws_g_hier_composition_scale_20261016_v1.step512.pt": "9e75373f3a834285cd2d399b74fba1650ebe0f059a6f61f5808b53a51a0697fa"
+  },
+  "scope": "Frozen128/512update snapshots,eight original TRAIN pairs/common race tape113,actual joint head and native counterfactual teacher.No DEV/TEST,no ablation,no optimizer update or fit.Credit VJPs include the implemented local routing surrogate,not exact expected-loss Jacobians;readout VJPs are exact. Paired cancellation and sensitivity are local evidence,not causal proof of a unique failure."
+}
