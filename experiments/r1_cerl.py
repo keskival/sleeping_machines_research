@@ -54,12 +54,13 @@ def word_classes(counts, n_classes, s_max=S_MAX):
     return cls, words
 
 
-def match_lengths(x, cap=8):
-    """l[b, t, j] = length of the common suffix of x[..t] and x[..j] (capped), for j < t."""
-    eq = (x[:, :, None] == x[:, None, :]); l = eq.long()
+def match_lengths(x, r0, r1, cap=8):
+    """l[b, t, j] for rows t in [r0, r1) and columns j < r1: length of the common suffix of x[..t] and x[..j], capped. Only
+    rows r0-cap+1 .. r1 are formed (uint8), so long evaluation lanes cost O(rows x r1) bytes, not O(r1^2) words."""
+    a = max(0, r0 - cap + 1); eq = (x[:, a:r1, None] == x[:, None, :r1]).to(torch.uint8); l = eq.clone()
     for _ in range(cap - 1):
-        sh = torch.zeros_like(l); sh[:, 1:, 1:] = l[:, :-1, :-1]; l = eq.long()*(1 + sh)
-    return l.clamp_max(cap)
+        sh = torch.zeros_like(l); sh[:, 1:, 1:] = l[:, :-1, :-1]; l = eq*(1 + sh)
+    return l[:, r0 - a:].clamp_max(cap)
 
 
 class CERL(nn.Module):
@@ -123,7 +124,7 @@ class CERL(nn.Module):
         """Per-target NLL [B, R] for query rows `rows` of lanes x [B, L] (inputs) with targets y [B, L]."""
         B, L = x.shape; h = self.states(x); r0, r1 = (0, L) if rows is None else rows; R = r1 - r0; hq = h[:, r0:r1]
         dv = x.device; t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float()
-        ml = match_lengths(x[:, :r1])[:, r0:r1]                                                      # [B, R, r1]
+        ml = match_lengths(x, r0, r1)                                                                # [B, R, r1]
         S_rep = (self.q_rep(hq) @ self.k_rep(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_rep - F.softplus(self.age_rep)*torch.log1p(age)
         S_rep = S_rep.masked_fill(~(j <= t), float('-inf'))
         S_cont = (self.q_cont(hq) @ self.k_cont(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_cont - F.softplus(self.age_cont)*torch.log1p(age) + self.span*torch.log1p(ml.float())
@@ -154,6 +155,10 @@ class CERL(nn.Module):
         if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
+        if getattr(self, 'record_winner', False):                                                    # analysis: posterior-winning cause type per target (0 bg, 1 concept, 2 repeat, 3 continue)
+            with torch.no_grad():
+                post = torch.softmax(parts, -1); K_ = s_sel.shape[-1]
+                grp = torch.stack([post[..., 0], post[..., 1:1 + K_].sum(-1), post[..., 1 + K_:1 + K_ + r1].sum(-1), post[..., 1 + K_ + r1:].sum(-1)], -1); self.last_winner = grp.argmax(-1)
         if not stats: return nll
         with torch.no_grad():
             post = torch.softmax(parts, -1); K = s_sel.shape[-1]
