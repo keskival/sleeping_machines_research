@@ -48,6 +48,21 @@ adaptation is a primary capability (AGENTS.md); these are the mechanisms behind 
 the papers before the battle opens; only training-split models enter the main table, pretrained models (GPT-2
 zero-shot) are a separate column.
 
+Verified targets (Melis et al., ICLR 2020, Table 1; local copy `results/public_reference/melis2020_mogrifier_iclr.pdf`),
+test perplexity, static / with dynamic evaluation:
+
+| Dataset | Model | Params | Static test | Dyneval test |
+| --- | --- | --- | --- | --- |
+| PTB | Mogrifier (d2, MC) | 24M | 50.1 | 44.8 |
+| PTB | AWD-LSTM (d3, MoS15) | 22M | 54.4 | 47.7 |
+| PTB | Transformer-XL | 24M | 54.5 | — |
+| WikiText-2 | Mogrifier (d2, MoS2, MC) | 35M | 55.1 | 38.6 |
+| WikiText-2 | FRAGE (d3, MoS15) | 35M | 58.0 | 39.1 |
+| WikiText-2 | AWD-LSTM (d3, MoS15) | 35M | 61.2 | 40.7 |
+
+Our online-adaptation arm (weights adapt only on already-scored text, AGENTS.md) is compared with the dynamic-evaluation
+column; the frozen arm with the static column.
+
 ## Program (in order)
 
 1. **Our scaling laws, now (Curie + AWS, authorized).** One-pass plan-B ladder over data (4M/16M/64M), depth (2/4/8/16)
