@@ -227,3 +227,15 @@ order, one-cycle schedule and seed as the dense diagnostic.
 - Active scoring work per target at 255 tokens of history is about 0.64M multiply-adds: state 0.21M, episodic 0.07M,
   unit keys 0.07M, word laws 0.29M. A dense L8 forward pass is about 4.3M.
 - Selection curve: 6.173 / 5.869 / 5.711 / 5.671 at the four quarters. Dense L8 was 6.578 / 6.243 / 6.047 / 5.996.
+
+- *Where the gain lives* (`curie_cerl_vs_dense_4M_error_analysis_20261016_v1`).
+  - Copyable targets (seen earlier in the window; 51% of flagship targets, 70% of the slice): 3.16 vs 3.75 and 3.72 vs 4.31.
+    Targets won by a continuation cause: 2.99 vs 5.20; by a repeat cause: 4.10 vs 4.94.
+  - Subword continuations: 5.40 vs 6.10. Word-initial targets: 5.91 vs 6.27. Longest history (1024–8192 tokens): 5.30 vs
+    5.69.
+  - Novel-in-window targets: 7.87 vs 8.02 (flagship), 8.98 vs 8.90 (slice). Concept-won targets 5.97 vs 5.96;
+    background-won 6.82 vs 6.69 on the slice.
+  - **Diagnosis:** the race already wins decisively wherever text is explained by its own past. On novel content it is level
+    with the eight-layer dense model. Novel-content prediction is where depth must pay. The next levers, in order, are the
+    compositional hierarchy (§8: concepts predicted from structure-level causes), concept capacity (product-key bank at
+    constant work), and native state depth.

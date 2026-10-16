@@ -497,7 +497,9 @@ win on the previous page.
 \toprule
 Model & Prediction loss \\
 \midrule
-\textbf{Keyed temporal-memory model} (two seeds) & \textbf{5.60 / 5.62} \\
+\textbf{Causal event race model} (one pass over 4M tokens) & \textbf{5.4665} \\
+Keyed temporal-memory model (two seeds, three passes) & 5.60 / 5.62 \\
+Dense hybrid diagnostic, eight layers (one pass over 4M tokens) & 5.8414 \\
 Earlier flagship + addressed episodic memory & 5.634 \\
 Earlier flagship (without addressed memory) & 5.978 \\
 \bottomrule
