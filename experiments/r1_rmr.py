@@ -52,35 +52,40 @@ class RMR(nn.Module):
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
     @staticmethod
     def corr_scores(qv, writes, t_rows, kmap):
-        """sum_j sum_{tau<=t} (qv_t . kmap(dold^j_tau)) W^j[tau, s]  ->  [B, R, T] for rows t_rows (writes: list of (dold [B,T,d], W [B,T,T]))."""
+        """sum_j sum_{tau<=t} (qv_t . kmap(dold^j_tau)) W^j[tau, s]  ->  [B, R, T]. Writes are sparse: (dold [B,T,d], idx [B,T,m]
+        slot addresses, w [B,T,m] magnitudes); memory O(R T m), never [T, T]."""
         out = 0.0
-        for dold, W in writes:
+        for dold, idx, w in writes:
+            B, T, m = idx.shape; R = qv.shape[1]
             proj = qv @ kmap(dold).transpose(1, 2)                                                 # [B, R, T(tau)]
-            mask = (torch.arange(W.shape[1], device=qv.device)[None, :] <= t_rows[:, None]).to(proj.dtype)
-            out = out + (proj*mask) @ W                                                            # [B, R, T(s)]
+            proj = proj*(torch.arange(T, device=qv.device)[None, :] <= t_rows[:, None]).to(proj.dtype)
+            src = (proj[..., None]*w[:, None]).reshape(B, R, T*m)
+            out = out + torch.zeros(B, R, T, device=qv.device, dtype=proj.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), src)
         return out
 
     @staticmethod
     def corr_values(a, writes, t_rows):
-        """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d]."""
+        """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d] with sparse writes (gather of the read weights at the written slots)."""
         out = 0.0
-        for dold, W in writes:
-            c = a @ W.transpose(1, 2)                                                              # [B, R, T(tau)]
-            mask = (torch.arange(W.shape[1], device=a.device)[None, :] <= t_rows[:, None]).to(c.dtype)
-            out = out + (c*mask) @ dold
+        for dold, idx, w in writes:
+            B, T, m = idx.shape; R = a.shape[1]
+            c = (a.gather(2, idx.reshape(B, 1, T*m).expand(-1, R, -1)).reshape(B, R, T, m)*w[:, None]).sum(-1)   # [B, R, T(tau)]
+            c = c*(torch.arange(T, device=a.device)[None, :] <= t_rows[:, None]).to(c.dtype)
+            out = out + c @ dold
         return out
 
     def build_memory(self, x):
         """Run every level over the lane: returns the refined current-slot values base' [B, T, d] and the old-slot writes."""
         A = self.base.states(x); B, T, d = A.shape; dv = A.device; new_total = A; writes = []; stats = []
         for lev in self.levels:
-            own_new = torch.zeros_like(A); own_dold = torch.zeros_like(A); own_W = torch.zeros(B, T, T, device=dv)
+            m_ = max(1, lev.top_m); own_new = torch.zeros_like(A); own_dold = torch.zeros_like(A)
+            own_idx = torch.zeros(B, T, m_, dtype=torch.long, device=dv); own_w = torch.zeros(B, T, m_, device=dv)
             for c0 in range(0, T, self.chunk):
                 c1 = min(c0 + self.chunk, T); rows = torch.arange(c0, c1, device=dv)
                 prev = (torch.arange(T, device=dv) < c0).to(A.dtype)                               # own corrections visible from earlier chunks only
                 base_prime = new_total + own_new*prev[None, :, None]                               # slot values from new-slot corrections
                 cur = new_total[:, c0:c1]                                                          # current slot under M^(<k) (own write at t not yet made)
-                wr = writes + [(own_dold*prev[None, :, None], own_W)]
+                wr = writes + ([(own_dold*prev[None, :, None], own_idx, own_w)] if lev.top_m else [])
                 u = lev.nq(cur); q = lev.q(u)                                                      # [B, R, dk]
                 S = (q @ lev.k(base_prime).transpose(1, 2) + self.corr_scores(q, wr, rows, lev.k))/math.sqrt(lev.dk)
                 dist = (rows[:, None] - torch.arange(T, device=dv)[None, :]).to(A.dtype)
@@ -91,12 +96,11 @@ class RMR(nn.Module):
                 r = a @ base_prime + self.corr_values(a, wr, rows)
                 dnew, dold = lev.g(torch.cat([u, lev.nr(r)], -1)).chunk(2, -1)
                 if lev.rezero: dnew, dold = lev.alpha_new*dnew, lev.alpha_old*torch.tanh(dold)       # old-slot corrections bounded: they refine keys other readers rely on
-                Wc = torch.zeros(B, c1 - c0, T, device=dv)
                 if lev.top_m:                                                                      # write corrections into the top-m older slots it read (0 = dense-layer-style stack: current slot only)
-                    ao = a.masked_fill(dist <= 0, 0.0); top = ao.topk(min(lev.top_m, T), -1); Wc = Wc.scatter(-1, top.indices, top.values)
+                    ao = a.masked_fill(dist <= 0, 0.0); top = ao.topk(min(lev.top_m, T), -1)
+                    own_idx = own_idx.index_copy(1, rows, top.indices); own_w = own_w.index_copy(1, rows, top.values)
                 own_new = own_new.index_copy(1, rows, dnew); own_dold = own_dold.index_copy(1, rows, dold)
-                own_W = own_W.index_copy(1, rows, Wc)
-            new_total = new_total + own_new; writes = writes + [(own_dold, own_W)]
+            new_total = new_total + own_new; writes = writes + ([(own_dold, own_idx, own_w)] if lev.top_m else [])
             stats.append(dict(new_norm=float(own_new.detach().norm(dim=-1).mean()), old_norm=float(own_dold.detach().norm(dim=-1).mean())))
         return new_total, writes, stats
 
@@ -105,9 +109,9 @@ class RMR(nn.Module):
             self._mem = self.build_memory(x); self._px = x; self._ptrain = self.training
         new_total, writes, lst = self._mem; B, L = x.shape; r0, r1 = (0, L) if rows is None else rows; m = self.base
         t_rows = torch.arange(r0, r1, device=x.device); hq = new_total[:, r0:r1]
-        wr = [(dold, W[:, :, :r1]) for dold, W in writes]
-        td = dict(S_rep_add=self.corr_scores(m.q_rep(hq), wr, t_rows, lambda z: z @ m.k_rep.weight.T)/math.sqrt(m.dk),
-                  S_cont_add=self.corr_scores(m.q_cont(hq), wr, t_rows, lambda z: z @ m.k_cont.weight.T)/math.sqrt(m.dk)) if writes else None
+        wr = writes
+        td = dict(S_rep_add=self.corr_scores(m.q_rep(hq), wr, t_rows, lambda z: z @ m.k_rep.weight.T)[:, :, :r1]/math.sqrt(m.dk),
+                  S_cont_add=self.corr_scores(m.q_cont(hq), wr, t_rows, lambda z: z @ m.k_cont.weight.T)[:, :, :r1]/math.sqrt(m.dk)) if writes else None
         nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont = m.race(x, y, new_total, r0, r1, self.training and m.explore > 0, td=td)
         self.aux = m.aux
         if not stats: return nll
@@ -137,13 +141,15 @@ def contracts():
         res['causal_prefix_max_diff'] = float((m.lane_nll(x2, y2)[0, :p - 1] - full[0, :p - 1]).abs().max())
         xc = x.clone(); res['row_chunk_max_diff'] = float((torch.cat([m.lane_nll(xc, y, (r, min(r + 7, 40))) for r in range(0, 40, 7)], 1) - full).abs().max())
         res['corrections_change_law'] = float((full - m.base.lane_nll(x, y)).abs().max())
-    # memory algebra: the matrix-product form equals explicit slot values V_s(t) = sum_{tau<=t} W[tau, s] dold_tau
-    g = torch.Generator().manual_seed(1); B_, T_, d_, k_ = 2, 12, 8, 4
-    dold = torch.randn(B_, T_, d_, generator=g); W = torch.rand(B_, T_, T_, generator=g)*(torch.arange(T_)[:, None] > torch.arange(T_)[None, :]).float()
+    # memory algebra: the sparse-write form equals explicit slot values V_s(t) = sum_{tau<=t} W[tau, s] dold_tau
+    g = torch.Generator().manual_seed(1); B_, T_, d_, k_, m_ = 2, 12, 8, 4, 3
+    dold = torch.randn(B_, T_, d_, generator=g); idx = torch.stack([torch.stack([torch.randperm(max(1, t), generator=g)[:m_] if t >= m_ else torch.arange(m_) % max(1, t) for t in range(T_)]) for _ in range(B_)])
+    w_ = torch.rand(B_, T_, m_, generator=g)*(torch.arange(T_)[None, :, None] >= m_).float()
+    W = torch.zeros(B_, T_, T_).scatter_add(2, idx, w_)
     q_ = torch.randn(B_, T_, k_, generator=g); Km = torch.randn(k_, d_, generator=g); a_ = torch.softmax(torch.randn(B_, T_, T_, generator=g), -1); rows_ = torch.arange(T_)
     Vst = torch.stack([torch.einsum('bts,btd->bsd', W[:, :t + 1], dold[:, :t + 1]) for t in range(T_)], 1)
-    res['algebra_scores_max_diff'] = float((RMR.corr_scores(q_, [(dold, W)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vst)).abs().max())
-    res['algebra_values_max_diff'] = float((RMR.corr_values(a_, [(dold, W)], rows_) - torch.einsum('bts,btsd->btd', a_, Vst)).abs().max())
+    res['algebra_scores_max_diff'] = float((RMR.corr_scores(q_, [(dold, idx, w_)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vst)).abs().max())
+    res['algebra_values_max_diff'] = float((RMR.corr_values(a_, [(dold, idx, w_)], rows_) - torch.einsum('bts,btsd->btd', a_, Vst)).abs().max())
     ok = res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
 
