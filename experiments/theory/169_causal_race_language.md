@@ -205,3 +205,25 @@ only at their events.
   inside recurring cause patterns.
 
 First test: CERL-H with 2 levels against level-1 CERL on identical data, schedule and seed at 4M; then 3 levels, and 16M.
+
+
+**16 Oct, first full fit: the native race beats the dense hybrid (`curie_r1_cerl_4M_s0_20261016_v1`).** Same 4M fresh tokens, lanes,
+order, one-cycle schedule and seed as the dense diagnostic.
+
+| | CERL (2 state layers, 1 race level) | Dense hybrid L8 | Dense hybrid L2 |
+| --- | --- | --- | --- |
+| Flagship (8,192 targets, 1024-token windows) | **5.4665** | 5.8414 | 5.8648 |
+| 65,528-target slice | **5.3094** | 5.6955 | 5.7088 |
+| Selection (8 × 2048) | **5.6705** | 5.9958 | 6.0151 |
+| Last-quarter prequential | **5.4582** | 5.8095 | 5.8362 |
+| Training FLOPs per target | **7.7M** | 25.8M | 21.1M |
+| CPU wall | **5,502 s** | 17,820 s | 6,558 s |
+
+- The gain is 0.375 nats on the flagship, with 3.3 times less training compute per target. The earlier keyed member trained
+  3 epochs on the same 4M tokens scored 5.601, so one pass of the race beats three passes of the dense keyed member.
+- Native share on the flagship: race causes deliver 0.445 nats beyond the background route. Posterior responsibility:
+  concepts 55%, background 26%, repeat 10%, continue 10%. On the 65,528 slice copying is larger (repeat 16%, continue 17%,
+  native gain 0.554).
+- Active scoring work per target at 255 tokens of history is about 0.64M multiply-adds: state 0.21M, episodic 0.07M,
+  unit keys 0.07M, word laws 0.29M. A dense L8 forward pass is about 4.3M.
+- Selection curve: 6.173 / 5.869 / 5.711 / 5.671 at the four quarters. Dense L8 was 6.578 / 6.243 / 6.047 / 5.996.
