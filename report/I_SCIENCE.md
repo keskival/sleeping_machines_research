@@ -470,7 +470,7 @@ A new composition construction separates local memory writes from upward transmi
 
 **Completed AWS keyed depth and async comparison,16October:** D2/D4/D8/D16 score5.957197/5.898736/5.874106/5.887896NLL on the65,528-target FineWeb development slice;D8 remains selected. Async base2/levels3 scores5.939234; base4/levels4 scores5.891116. Same1,048,576unique training tokens,one seed,different epoch/work totals;quality comparison,not matched-compute or semantic hierarchy. Source-bound investor packet and evidence brief now contain all completed extensions.
 
-**Grounded native learning result.** Pending.
+**Grounded native learning result.** joint: NLL0.732158, accuracy45.31%; continued: NLL0.783903, accuracy43.75%; decoder_only: NLL0.686609, accuracy54.69%. Grounding has no qualified transfer gain against continued native learning. Compare reconstruction with frozen-encoder control and feature changes before another fit;no automatic scaling. Scope: one native seed,64paired updates/128scene presentations per arm,TRAIN-only ridge.01 affine head,64reused synthetic DEV scenes and observed-geometry clustered uncertainty;TEST not model-scored. Equal presentations do not mean equal parameters/arithmetic. Source: `experiments/results/hierarchy/aws_g_hier_grounded_decision_20261016_v1.json`.
 
 ## 5. What the evidence says
 
