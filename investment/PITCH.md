@@ -1,5 +1,7 @@
 # Sleeping Machines — investor pitch
 
+**Completed native part-identity acquisition.** Observable shape accuracy on reused DEV changes12.50%→50.20%;whole-label NLL0.692212 versus saved acquired0.686609. Shape learning and whole-label transfer remain separate;the saved acquired actor retains the better whole-label result. One integrated8level/32stage actor,64paired TRAIN updates,TRAIN-only shape targets/ridge.01root head,new combinations/nuisance tapes,TEST excluded. No ablation/control acquisition or public benchmark claim. Source:`investment/part_identity_development_evidence.json`.
+
 **Completed developed event results,16October.** Github wins against the stronger composite target:−284.4658±54.2888SE versus−272.90. Wikipedia wins:−258.7609±37.7334SE versus−122.62. Stack Overflow beats the best published single-model total (11.9956 versus12.10),while missing the11.90 composite. Five official splits,aggregate validation selection,TEST once;recorded-data density comparisons. Frozen-transfer results remain separately scoped. Source-bound packet:`investment/b4_developed_evidence.json`.
 
 **The next general-purpose substrate for machine intelligence.**
@@ -146,9 +148,9 @@ Taxi 0.526, StackOverflow −2.144, Retweet −6.324, Amazon 0.802.
   0.852 validation MRR (theory note 159 predicted at least +0.03); three pre-registered sealed seeds score 0.8353 /
   0.8350 / 0.8356 on test, every one above TPNet's 0.827, with 7,995 parameters. On tgbl-review a training-free decayed
   event state already reaches 0.344 validation MRR, above TGN, TGAT and TNCN (0.313–0.325); GraphMixer leads at 0.428.
-- **Second neural-TPP benchmark** (Bosser & Ben Taieb; seven datasets, five fixed splits): our current event model, with
-  repaired clocks and the addressed episodic memory that drives our language and fault-detection gains, is in development
-  on it now; its verdicts follow when each dataset's five test splits are scored.
+- **Second neural-TPP benchmark (Bosser & Ben Taieb): four public-reference wins.** Developed Wikipedia total NLL **−258.76 ±37.73 SE** beats composite **−122.62**;developed Github **−284.47 ±54.29 SE** beats composite **−272.90**. Developed Stack Overflow **11.9956 ±0.6476 SE** beats the best single **12.10**,while missing composite11.90. Frozen-transfer LastFM **−774.64 ±48.38 SE** beats best single **−697.50**,while missing composite−849.65. Five official splits,recorded-density scoring;developed variants selected by aggregate validation before once-only TEST. These add four dataset/protocol wins to the original nine. Frozen-configuration composite failures remain separately labelled in the full record. No B4 trainer remains active.
+
+**Why the developed models improve.** Persistent addressed mark memory is combined with a causal episodic pointer race that can copy a recent event or its observed successor. Numerically stable clock-spread learning and bounded row microbatches preserve training on complete long histories. Earlier completed Github development evidence isolates13.822mark nats/sequence of direct memory-read benefit on28of34DEV sequences,with timing unchanged. Complete recorded-density wins and this mechanism evidence have different scopes. MOOC,MIMIC2 and Retweets remain development targets. [Current B4 evidence](../experiments/tpp/B4_DEVELOPED_CURRENT.md).
 
 **Where we are not yet ahead:** large-scale language (our best token model reaches 5.60 nats per token after 4M training
 tokens on single-thread CPUs; depth scaling is under test), P12 mortality (0.871 vs 0.880 AUROC) and real-world tables.

@@ -1,5 +1,7 @@
 # Investor proof plan — 15 October 2026
 
+**Completed native part-identity acquisition.** Observable shape accuracy on reused DEV changes12.50%→50.20%;whole-label NLL0.692212 versus saved acquired0.686609. Shape learning and whole-label transfer remain separate;the saved acquired actor retains the better whole-label result. One integrated8level/32stage actor,64paired TRAIN updates,TRAIN-only shape targets/ridge.01root head,new combinations/nuisance tapes,TEST excluded. No ablation/control acquisition or public benchmark claim. Source:`investment/part_identity_development_evidence.json`.
+
 **13 public benchmark wins** against the best published single-model results on official dataset/protocol entries. Across these winning entries,53 of61 seed/split scores are ahead;wins compare dataset means,not every individual run. The four added Bosser–Ben Taieb wins are Wikipedia,Github,Stack Overflow and LastFM. Wikipedia/Github also beat stronger composite targets;Stack Overflow/LastFM beat the best single-model totals. B4 uses recorded-data density scoring;these are quality wins,with complete work unaudited. [Source-bound headline ledger](public_benchmark_headlines.json).
 
 **Completed developed event results,16October.** Github wins against the stronger composite target:−284.4658±54.2888SE versus−272.90. Wikipedia wins:−258.7609±37.7334SE versus−122.62. Stack Overflow beats the best published single-model total (11.9956 versus12.10),while missing the11.90 composite. Five official splits,aggregate validation selection,TEST once;recorded-data density comparisons. Frozen-transfer results remain separately scoped. Source-bound packet:`investment/b4_developed_evidence.json`.
@@ -54,14 +56,17 @@ Evaluate unknown part combinations with TRAIN-only calibration. Both completed s
   MRR 0.8353 ± 0.0003 vs 0.827 for the leader TPNet, all three pre-registered seeds ahead, 7,995 parameters. TGB node
   affinity (tgbn-trade): test NDCG@10 0.8680 ±
   0.0005 vs 0.863 for the leader NAVIS, all three pre-registered sealed seeds ahead, 2,107 parameters.
-- **New event domains (in development):** tgbl-review (AWS): a training-free state is above TGN/TGAT/TNCN on validation.
-  Second neural-TPP benchmark (Bosser & Ben Taieb, 35 pre-registered runs), frozen one-configuration model: all seven verdicts lost (time ahead on Stack Overflow, Github and LastFM; below every single published total on Github and LastFM); Wikipedia lost after a guarded rerun of split 0 (two test sequences with exploding hazards), while its marks lead every published model (27.65 vs 144.79; addressed mark memory copies unseen pages); frozen-configuration losses on MOOC (−226.85 vs −239.7; timing is the gap), Stack Overflow (12.714 vs 11.9; time component ahead), MIMIC2 (7.01 vs 2.42); Github lost by 2.3 nats (−270.62 ± 48.69 vs −272.90), below every single published model's total and ahead on time; marks carry the gap. Retweets lost (−515.16 vs −538.70; marks level, timing behind); LastFM lost (−774.64 vs the composite bar −849.65), with time ahead and marks behind.
+- **tgbl-review (in development):** training-free state exceeds TGN/TGAT/TNCN on validation;stronger reference remains the next target.
+- **Second neural-TPP benchmark (Bosser & Ben Taieb): four public-reference wins.** Developed Wikipedia total NLL **−258.76 ±37.73 SE** beats composite **−122.62**;developed Github **−284.47 ±54.29 SE** beats composite **−272.90**. Developed Stack Overflow **11.9956 ±0.6476 SE** beats the best single **12.10**,while missing composite11.90. Frozen-transfer LastFM **−774.64 ±48.38 SE** beats best single **−697.50**,while missing composite−849.65. Five official splits,recorded-density scoring;developed variants selected by aggregate validation before once-only TEST. These add four dataset/protocol wins to the original nine. Frozen-configuration composite failures remain separately labelled in the full record. No B4 trainer remains active.
+
+**Why the developed models improve.** Persistent addressed mark memory is combined with a causal episodic pointer race that can copy a recent event or its observed successor. Numerically stable clock-spread learning and bounded row microbatches preserve training on complete long histories. Earlier completed Github development evidence isolates13.822mark nats/sequence of direct memory-read benefit on28of34DEV sequences,with timing unchanged. Complete recorded-density wins and this mechanism evidence have different scopes. MOOC,MIMIC2 and Retweets remain development targets. [Current B4 evidence](../experiments/tpp/B4_DEVELOPED_CURRENT.md).
+
 - **Language at 90M:** one near-matched win (Transformer-256×4) and losses to the strongest tuned references.
 - **Tokenized language (R1):** both gates met: associative recall across irregular gaps (97.5%, 3 seeds) and the KN trigram
   beaten on the 65,528-target FineWeb slice (6.009 vs 6.537 at 1M tokens, 3 seeds; 5.510 vs 6.100 at 4M). Next: a
   published small Transformer under the same protocol.
 
-**B4 Wikipedia developed WIN,16October:** recorded-data totalNLL−258.760894±37.733361SE versus the stronger composite−122.62;all5official splits beat that target. Pointer selected by aggregate5-split validation,TEST once. Sources/model checkpoints match;causality and mark-normalization contracts pass. Github memory repair passes at1072656KiB without history truncation;only6failed fits are restored on slots5/6,with exact pass recovery and automatic validation-selection/TEST publication. Stack Overflow finishes its admitted split4 fits,then frozen once-only scoring. [Current evidence](../experiments/tpp/B4_DEVELOPED_CURRENT.md);[remaining programme](../experiments/BENCHMARK_CONTINUATION.md).
+
 
 ## Completed acquisition evidence
 
