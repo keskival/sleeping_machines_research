@@ -1,0 +1,671 @@
+{
+ "battle": "R1",
+ "tag": "curie_cause_stream_typing_cerl4M_20261016_v1",
+ "run": "curie_r1_cerl_4M_s0_20261016_v1",
+ "targets": 65528,
+ "cadence": {
+  "symbol": {
+   "rho": 0.7858625320473691,
+   "mean_duration": 1.272487183470561,
+   "median_duration": 1.0,
+   "p90_duration": 2.0,
+   "longest": 61
+  },
+  "type": {
+   "rho": 0.6329660603100965,
+   "mean_duration": 1.5798635388287485,
+   "median_duration": 1.0,
+   "p90_duration": 3.0,
+   "longest": 61
+  },
+  "family16": {
+   "rho": 0.7836802588206568,
+   "mean_duration": 1.2760306116487838,
+   "median_duration": 1.0,
+   "p90_duration": 2.0,
+   "longest": 61
+  },
+  "family64": {
+   "rho": 0.7751953363447687,
+   "mean_duration": 1.2899974407937476,
+   "median_duration": 1.0,
+   "p90_duration": 2.0,
+   "longest": 61
+  },
+  "span_aware": {
+   "rho": 0.8086772066902698,
+   "mean_duration": 1.2365873450208527,
+   "median_duration": 1.0,
+   "p90_duration": 2.0,
+   "longest": 24
+  },
+  "hysteresis_margin0.2": {
+   "rho": 0.46706751312416067
+  },
+  "hysteresis_margin0.4": {
+   "rho": 0.2782016847759736
+  }
+ },
+ "meaning": {
+  "unigram_entropy_bits": 10.323605018731714,
+  "concept_units_used": 124,
+  "units_with_50plus": 73,
+  "type_share": {
+   "background": 0.2589122207300696,
+   "concept": 0.37850994994506165,
+   "repeat": 0.19776278842632158,
+   "continue": 0.16481504089854718
+  },
+  "mean_winner_posterior": 0.561959445476532,
+  "share_margin_below_0_2": 0.3801581003540471,
+  "concept_token_entropy_bits_weighted": 6.575731278884257,
+  "top_units": [
+   {
+    "unit": 800,
+    "targets": 2600,
+    "token_entropy_bits": 6.324031788649883,
+    "distinct_tokens": 470,
+    "roles": {
+     "word_initial": 0.886,
+     "continuation": 0.004,
+     "punct": 0.11,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " to",
+     " and",
+     " in",
+     ".",
+     ",",
+     " on",
+     " with",
+     " for"
+    ]
+   },
+   {
+    "unit": 150,
+    "targets": 1599,
+    "token_entropy_bits": 8.05160574388265,
+    "distinct_tokens": 670,
+    "roles": {
+     "word_initial": 0.981,
+     "continuation": 0.005,
+     "punct": 0.014,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " a",
+     " been",
+     " to",
+     " the",
+     " not",
+     " in",
+     " just",
+     " only"
+    ]
+   },
+   {
+    "unit": 1006,
+    "targets": 1072,
+    "token_entropy_bits": 7.131301728104106,
+    "distinct_tokens": 325,
+    "roles": {
+     "word_initial": 0.97,
+     "continuation": 0.007,
+     "punct": 0.002,
+     "newline": 0.0,
+     "other": 0.021
+    },
+    "top_tokens": [
+     " have",
+     " am",
+     " think",
+     " don",
+     " do",
+     " was",
+     " know",
+     " want"
+    ]
+   },
+   {
+    "unit": 462,
+    "targets": 998,
+    "token_entropy_bits": 7.198606647410063,
+    "distinct_tokens": 386,
+    "roles": {
+     "word_initial": 0.944,
+     "continuation": 0.009,
+     "punct": 0.022,
+     "newline": 0.0,
+     "other": 0.025
+    },
+    "top_tokens": [
+     " is",
+     " has",
+     " was",
+     "'s",
+     " are",
+     ",",
+     " comes",
+     " said"
+    ]
+   },
+   {
+    "unit": 145,
+    "targets": 984,
+    "token_entropy_bits": 8.888408129944018,
+    "distinct_tokens": 688,
+    "roles": {
+     "word_initial": 0.827,
+     "continuation": 0.081,
+     "punct": 0.066,
+     "newline": 0.019,
+     "other": 0.006
+    },
+    "top_tokens": [
+     " the",
+     " a",
+     "\\n",
+     ",",
+     " to",
+     " is",
+     " on",
+     " with"
+    ]
+   },
+   {
+    "unit": 47,
+    "targets": 875,
+    "token_entropy_bits": 6.408539446388378,
+    "distinct_tokens": 286,
+    "roles": {
+     "word_initial": 0.944,
+     "continuation": 0.007,
+     "punct": 0.021,
+     "newline": 0.0,
+     "other": 0.029
+    },
+    "top_tokens": [
+     " are",
+     " have",
+     " can",
+     " were",
+     " and",
+     " should",
+     " will",
+     "'re"
+    ]
+   },
+   {
+    "unit": 833,
+    "targets": 852,
+    "token_entropy_bits": 6.147287833669036,
+    "distinct_tokens": 252,
+    "roles": {
+     "word_initial": 0.714,
+     "continuation": 0.013,
+     "punct": 0.008,
+     "newline": 0.249,
+     "other": 0.016
+    },
+    "top_tokens": [
+     "\\n",
+     " It",
+     " The",
+     " But",
+     " If",
+     " And",
+     " You",
+     " We"
+    ]
+   },
+   {
+    "unit": 575,
+    "targets": 726,
+    "token_entropy_bits": 7.638765250077642,
+    "distinct_tokens": 340,
+    "roles": {
+     "word_initial": 0.001,
+     "continuation": 0.979,
+     "punct": 0.019,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     "The",
+     "I",
+     "It",
+     "We",
+     "In",
+     "What",
+     "So",
+     "This"
+    ]
+   },
+   {
+    "unit": 51,
+    "targets": 717,
+    "token_entropy_bits": 6.743658838686881,
+    "distinct_tokens": 304,
+    "roles": {
+     "word_initial": 0.979,
+     "continuation": 0.008,
+     "punct": 0.003,
+     "newline": 0.0,
+     "other": 0.01
+    },
+    "top_tokens": [
+     " be",
+     " have",
+     " not",
+     " make",
+     " also",
+     " help",
+     " see",
+     " need"
+    ]
+   },
+   {
+    "unit": 521,
+    "targets": 623,
+    "token_entropy_bits": 6.52613420229738,
+    "distinct_tokens": 253,
+    "roles": {
+     "word_initial": 0.982,
+     "continuation": 0.011,
+     "punct": 0.005,
+     "newline": 0.002,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " to",
+     " by",
+     " in",
+     " with",
+     " a",
+     " as",
+     " out",
+     " an"
+    ]
+   },
+   {
+    "unit": 399,
+    "targets": 598,
+    "token_entropy_bits": 8.5341592716637,
+    "distinct_tokens": 445,
+    "roles": {
+     "word_initial": 0.172,
+     "continuation": 0.786,
+     "punct": 0.04,
+     "newline": 0.0,
+     "other": 0.002
+    },
+    "top_tokens": [
+     " and",
+     "an",
+     "a",
+     "en",
+     "i",
+     "as",
+     "o",
+     "ce"
+    ]
+   },
+   {
+    "unit": 413,
+    "targets": 590,
+    "token_entropy_bits": 7.818196866508315,
+    "distinct_tokens": 346,
+    "roles": {
+     "word_initial": 0.968,
+     "continuation": 0.014,
+     "punct": 0.019,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " a",
+     " good",
+     " like",
+     " the",
+     " much",
+     " important",
+     " to",
+     " very"
+    ]
+   },
+   {
+    "unit": 619,
+    "targets": 500,
+    "token_entropy_bits": 1.3295568122153612,
+    "distinct_tokens": 7,
+    "roles": {
+     "word_initial": 0.0,
+     "continuation": 0.982,
+     "punct": 0.0,
+     "newline": 0.0,
+     "other": 0.018
+    },
+    "top_tokens": [
+     "\u013b",
+     "\u013f",
+     "\u013e",
+     "'t",
+     "\u00e2\u0122",
+     "\u013a",
+     "'s",
+     "The"
+    ]
+   },
+   {
+    "unit": 157,
+    "targets": 457,
+    "token_entropy_bits": 8.141013366598564,
+    "distinct_tokens": 332,
+    "roles": {
+     "word_initial": 0.07,
+     "continuation": 0.906,
+     "punct": 0.024,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     "ed",
+     "ing",
+     "able",
+     ",",
+     "ate",
+     "ant",
+     "es",
+     "ers"
+    ]
+   },
+   {
+    "unit": 75,
+    "targets": 439,
+    "token_entropy_bits": 5.365364297194157,
+    "distinct_tokens": 108,
+    "roles": {
+     "word_initial": 0.97,
+     "continuation": 0.005,
+     "punct": 0.025,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " up",
+     " me",
+     " it",
+     " you",
+     " a",
+     " them",
+     " us",
+     " for"
+    ]
+   },
+   {
+    "unit": 980,
+    "targets": 423,
+    "token_entropy_bits": 2.51325622738672,
+    "distinct_tokens": 68,
+    "roles": {
+     "word_initial": 0.988,
+     "continuation": 0.002,
+     "punct": 0.009,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " of",
+     " that",
+     " about",
+     " to",
+     " in",
+     " there",
+     " when",
+     " if"
+    ]
+   },
+   {
+    "unit": 1022,
+    "targets": 422,
+    "token_entropy_bits": 7.785348061466632,
+    "distinct_tokens": 295,
+    "roles": {
+     "word_initial": 0.967,
+     "continuation": 0.012,
+     "punct": 0.021,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " lot",
+     " few",
+     " good",
+     " very",
+     " new",
+     " great",
+     " long",
+     " big"
+    ]
+   },
+   {
+    "unit": 776,
+    "targets": 405,
+    "token_entropy_bits": 8.225242758286864,
+    "distinct_tokens": 353,
+    "roles": {
+     "word_initial": 0.97,
+     "continuation": 0.007,
+     "punct": 0.022,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " and",
+     "-",
+     " or",
+     " other",
+     " work",
+     " with",
+     " she",
+     " two"
+    ]
+   },
+   {
+    "unit": 376,
+    "targets": 378,
+    "token_entropy_bits": 7.588191276144167,
+    "distinct_tokens": 254,
+    "roles": {
+     "word_initial": 0.995,
+     "continuation": 0.003,
+     "punct": 0.003,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " own",
+     " mind",
+     " life",
+     " mother",
+     " first",
+     " time",
+     " name",
+     " daughter"
+    ]
+   },
+   {
+    "unit": 356,
+    "targets": 374,
+    "token_entropy_bits": 7.070719915703382,
+    "distinct_tokens": 222,
+    "roles": {
+     "word_initial": 0.503,
+     "continuation": 0.358,
+     "punct": 0.134,
+     "newline": 0.0,
+     "other": 0.005
+    },
+    "top_tokens": [
+     " of",
+     "-",
+     "s",
+     ".",
+     " and",
+     ",",
+     " to",
+     " in"
+    ]
+   },
+   {
+    "unit": 804,
+    "targets": 358,
+    "token_entropy_bits": 4.93566432391341,
+    "distinct_tokens": 108,
+    "roles": {
+     "word_initial": 0.86,
+     "continuation": 0.008,
+     "punct": 0.131,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     " to",
+     ",",
+     " for",
+     " at",
+     " much",
+     " do",
+     " when",
+     " many"
+    ]
+   },
+   {
+    "unit": 818,
+    "targets": 356,
+    "token_entropy_bits": 6.6344767956322315,
+    "distinct_tokens": 177,
+    "roles": {
+     "word_initial": 0.716,
+     "continuation": 0.096,
+     "punct": 0.185,
+     "newline": 0.0,
+     "other": 0.003
+    },
+    "top_tokens": [
+     " years",
+     "-",
+     ",",
+     " days",
+     "th",
+     ":",
+     " hours",
+     " months"
+    ]
+   },
+   {
+    "unit": 494,
+    "targets": 299,
+    "token_entropy_bits": 5.551323752666387,
+    "distinct_tokens": 120,
+    "roles": {
+     "word_initial": 0.793,
+     "continuation": 0.033,
+     "punct": 0.074,
+     "newline": 0.0,
+     "other": 0.1
+    },
+    "top_tokens": [
+     " of",
+     "'s",
+     " and",
+     ",",
+     " who",
+     " in",
+     " to",
+     " at"
+    ]
+   },
+   {
+    "unit": 545,
+    "targets": 293,
+    "token_entropy_bits": 7.83967460180345,
+    "distinct_tokens": 249,
+    "roles": {
+     "word_initial": 0.867,
+     "continuation": 0.072,
+     "punct": 0.058,
+     "newline": 0.0,
+     "other": 0.003
+    },
+    "top_tokens": [
+     " and",
+     ",",
+     " L",
+     " said",
+     " K",
+     "-",
+     " is",
+     " Levy"
+    ]
+   },
+   {
+    "unit": 349,
+    "targets": 292,
+    "token_entropy_bits": 7.470664164117785,
+    "distinct_tokens": 220,
+    "roles": {
+     "word_initial": 0.0,
+     "continuation": 0.935,
+     "punct": 0.065,
+     "newline": 0.0,
+     "other": 0.0
+    },
+    "top_tokens": [
+     "The",
+     "A",
+     "S",
+     "2",
+     "In",
+     "\u00e2\u0122",
+     "\"",
+     "|"
+    ]
+   }
+  ],
+  "copy_spans": {
+   "count": 8050,
+   "mean": 2.3414906832298135,
+   "median": 2.0,
+   "p90": 3.0,
+   "longest": 25
+  }
+ },
+ "information": {
+  "symbol": {
+   "alphabet": 127,
+   "unigram_bits_per_event": 4.540626637586868,
+   "bigram_bits_per_event": 3.936571316393098,
+   "bits_per_token_upward": 3.568308346495748,
+   "next_event_top1_from_previous": 0.2973924232676078
+  },
+  "family64": {
+   "alphabet": 19,
+   "unigram_bits_per_event": 3.551516925796522,
+   "bigram_bits_per_event": 3.2266590427613577,
+   "bits_per_token_upward": 2.7531193578269737,
+   "next_event_top1_from_previous": 0.2916826664618693
+  },
+  "span_aware": {
+   "alphabet": 1413,
+   "unigram_bits_per_event": 5.958831341113065,
+   "bigram_bits_per_event": 5.466972936811364,
+   "bits_per_token_upward": 4.8187710840697475,
+   "next_event_top1_from_previous": 0.2801449918627016
+  }
+ },
+ "status": "completed"
+}

@@ -62,6 +62,13 @@ Update this ledger whenever a language depth/composition result completes.
 - AWS fully native 8-layer local learner (receiver races, local eligibility, no recurrent backbone), 64k tokens: flag 7.047
   (`aws_r1_native_local_stream_64k_s0_20261016_v1`), about 29 tokens/s.
 
+## H2. What the level-1 cause stream is (measurement, 16 October)
+- `curie_cause_stream_typing_cerl4M_20261016_v1`: causes change on 79% of tokens (median duration 1; families and span
+  identity do not help). Concept units are syntactic slots (function words, auxiliaries, sentence starters, subword
+  continuations); 124 of 1,024 units are used. 4.5 bits per event, 0.6 bits predictable from the previous event.
+- **Showed:** attribution events are not abstractions. Durable structure lives in memory, so layers must hand over memories
+  as well as events (theory 170 §8, CERL-M).
+
 ## I. Synthetic compositional binding (G-HIER), 15–16 October
 - Parts recognised 512/512; whole objects at chance (50%, NLL 0.693) even after 32× more training, and training
   arrangements are not fitted either (`investment/composition_scale_evidence.json`).

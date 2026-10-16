@@ -164,3 +164,71 @@ vector addition.
 **Composition rule:** each level *adds causes* (additive hazards) and *adds entries* (append-only shared memory), and
 removes nothing. CERL-H v2 implements both. The cause-stream characterisation (`analysis/cause_stream_typing.py`) supplies
 the cadence, meaning and information measurements that size it.
+
+## 8. Measured: the level-1 cause stream is not an abstraction; layers must also hand over memories
+
+Founder: "Are they sparser in cadence? Do they represent similar things?"; "It's not just the event streams the layer
+provides to the next layer. It can also provide memories." Measurement on the trained CERL 4M member, 65,528-target slice
+(`curie_cause_stream_typing_cerl4M_20261016_v1`).
+
+**Cadence: not sparser.**
+- The attributed cause changes on **79%** of tokens. The median event lasts 1 token (p90: 2).
+- Cause type only: 63%. Concept families of 16 or 64 units: 78% / 78%.
+- Span-aware continuation: 81%, because copy spans are short (median 2 tokens, p90 3, longest 25).
+- Hysteresis lowers ρ to 47% (margin 0.2) and 28% (margin 0.4), but only by ignoring uncertain switches: 38% of
+  attributions have a posterior margin below 0.2, and the mean winner posterior is 0.56.
+- So the §5 repairs (families, span identity) do not create durable causes, because the causes are not durable.
+
+**Meaning: syntactic slots, not topics or entities.**
+- Only 124 of 1,024 concept units are ever used, 73 of them for 50 or more tokens.
+- The used units are next-token *category* predictors:
+  - function words (`to and in . , on with`);
+  - auxiliaries (`is has was 's are`; `are have can were should`);
+  - pronoun-following verbs (`have am think do know want`);
+  - sentence starters after a newline (`It The But If And`);
+  - sentence-initial capitals without a space;
+  - subword continuations.
+- Token entropy within a unit is 6.6 bits against 10.3 unigram. Level-1 concepts are a learned part-of-speech/position
+  race, re-chosen every token.
+
+**Information upward.** The cause stream carries 4.5 bits per event. Knowing the previous event saves only 0.6 bits
+(bigram 3.9), and the next event is the top-1 bigram choice 30% of the time. That is about 3.6 bits per token upward, at
+token cadence.
+
+**Consequence.** Attribution events are the right *type* (E[C]) but the wrong *grain*. A level built only on them models
+tag sequences at token rate, a modest gain at full cost. The running CERL-H 4M fit, with a level-2 over attribution
+events, should therefore give a small gain or none. That prediction is registered before its result.
+
+The durable structure in text (entities, topics, discourse frames, the document's own vocabulary) lives in **memory**,
+not in the per-token cause:
+- the episodic store of token events;
+- which past spans keep being re-used;
+- which concept categories keep being filled by which words.
+
+**Layer interface, revised.** A layer hands the next layer two things:
+1. **Events (timing):** when something happened at its grain. These drive the higher layer's clock.
+2. **Memories (content):** its persistent addressed store, read-only to others and written only by its owner (ownership as
+   in COMPOSITION_STATE_OWNERSHIP; addressable lower memories as in ADDRESSABLE_COMPOSITION_MEMORY). The higher layer
+   races over these entries (keys, values, ages, types), so nothing is lost by compression (§7, identity path).
+
+**A higher layer's own state is a slower memory built from lower memories.** Its units are durable records:
+- entity entries refreshed when lower episodic content recurs;
+- topic entries integrating which words fill which lower categories;
+- frame entries tracking which constructions are re-used.
+
+They are written sparsely, only on recurrence or change, so **the higher layer's cadence comes from memory dynamics, not
+from attribution flips.** Its events are memory events: an entity becomes active, a topic shifts. It contributes downward
+through additive hazards: an active entity proposes its name and attributes; an active topic proposes its vocabulary
+within the lower category race. That is where the single-level race is weakest, on novel-in-window content (7.87 vs 8.02
+against dense L8).
+
+**Next construction (CERL-M, memory-composed levels).** Each level owns a persistent addressed store and exposes it. Level
+k ≥ 2:
+- reads level k−1's events and memories;
+- maintains slow typed entries (entities, topics, frames) with sparse writes on recurrence;
+- emits events only when its memory changes;
+- contributes additive hazards and top-down candidates to the level below.
+
+Learning stays local per level, through the likelihood of what each level's memory predicts. Measurements per level:
+write rate, entry lifetime, alphabet and entry purity, information read across levels, additive-hazard responsibility,
+and gain on novel-in-window tokens.
