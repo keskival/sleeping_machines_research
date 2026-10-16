@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "coupled_query_credit_gate",
+  "gate": "PASS",
+  "checkpoint_sha256": "28611e9c9d21189c7fc2e3c27a599bd34af012d0e342eb06eaf817d0d0d43dba",
+  "checkpoint_cursor": 86048,
+  "migration": {
+    "new_parameters": 0,
+    "factual_races": "Same sequential without-replacement draws and times.",
+    "teacher": "Complete legal ordered-pair alternative with correct conditional second clock;conditional linearized joint-assembly teacher,not exact full-sequence credit."
+  },
+  "first": {
+    "nll": 6.163145542144775,
+    "norm": 1.63423490524292,
+    "document_bias": [
+      -0.0018769616726785898,
+      -0.0018187838140875101
+    ]
+  },
+  "second": {
+    "nll": 6.317039489746094,
+    "norm": 1.718927025794983,
+    "document_bias": [
+      -0.002809524070471525,
+      -0.0019718101248145103
+    ]
+  },
+  "document_bias_gradients": [
+    [
+      8.07186370366253e-06,
+      0.015084289945662022
+    ],
+    [
+      9.454272912989836e-06,
+      -0.011157600209116936
+    ],
+    [
+      9.454272912989836e-06,
+      -0.011157600209116936
+    ]
+  ],
+  "coupled_query_audits": 448,
+  "joint_pair_score_entries": 114688,
+  "exact_serialized_resume": true,
+  "wall_s": 23.853579967049882,
+  "max_rss_kb": 2009924,
+  "scope": "Legalorderedpairgradient/without-replacementcoupling/factualforwardcontracts;real64TRAINtargets plus32discardedrecoveryaudit on a privatecheckpoint. No DEV/TEST,ablationorqualityclaim;running source unchanged."
+}

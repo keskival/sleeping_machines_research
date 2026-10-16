@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "document_boundary_native_gate",
+  "gate": "PASS",
+  "checkpoint_sha256": "1aad6636960bc8cbce698e1c325194ff347143e6b57c296fded1d07b147173ed",
+  "checkpoint_cursor": 77824,
+  "migration": {
+    "new_scalars": 2,
+    "initial_bias": [
+      0.0,
+      0.0
+    ],
+    "memory_reset": false,
+    "semantics": "Add learned cross-document log-rate biases to repeat/continuation causes;all states/history and normalized word/cause laws retained."
+  },
+  "first": {
+    "nll": 6.343301773071289,
+    "norm": 1.7530394792556763,
+    "document_bias": [
+      -0.0009991831611841917,
+      0.000999999581836164
+    ]
+  },
+  "second": {
+    "nll": 6.680703163146973,
+    "norm": 1.9713475704193115,
+    "document_bias": [
+      -0.0018910616636276245,
+      0.0015055375406518579
+    ]
+  },
+  "document_bias_gradients": [
+    [
+      2.1445066522574052e-05,
+      -0.05486226826906204
+    ],
+    [
+      9.290453817811795e-06,
+      0.012746582739055157
+    ],
+    [
+      9.290453817811795e-06,
+      0.012746582739055157
+    ]
+  ],
+  "exact_serialized_resume": true,
+  "wall_s": 23.949166384059936,
+  "max_rss_kb": 2003176,
+  "scope": "Zero-biasforward/existing-gradientparity,normalizationandfinite-differencecontracts;real64TRAINtargets plus32discardedrecoveryaudit on a privatecheckpoint. No DEV/TEST,ablationorqualityclaim;running source unchanged."
+}

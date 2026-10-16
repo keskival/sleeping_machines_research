@@ -1,0 +1,1326 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "post-pull queue and completed-evidence reconciliation",
+  "git_head": "ab99bff31fd12a98fd3d71b847e5ded3516389a0",
+  "active": {
+    "2": "aws_r1_depthdata_L16_16m_s0_20261016_v1",
+    "4": "aws_r1_native_document_credit_4m_s0_20261016_v1",
+    "1": "aws_r1_cerl_16M_s0_20261016_v1",
+    "6": "aws_r1_cerl_pk65536_4M_s0_20261016_v1",
+    "3": "aws_r1_rmr_dense_K2_4M_s0_20261016_v1",
+    "5": "aws_r1_rmr_dense_K8_4M_s0_20261016_v1"
+  },
+  "completed_untracked_inventory": [
+    {
+      "file": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_diagnostics_20261007T0010Z/provenance.json",
+      "status": "failed",
+      "battle": null,
+      "keys": [
+        "run_tag",
+        "script",
+        "arguments",
+        "output_redirected",
+        "source_sha256",
+        "git_commit",
+        "limits",
+        "start_utc",
+        "status",
+        "error",
+        "wall_s",
+        "peak_rss_kb"
+      ],
+      "sha256": "cbd18bbfed831e3bf0690518a66f40302520f3ed77790472ec3c55a3d365bf71"
+    },
+    {
+      "file": "experiments/results/aws_20260929/aws_fas_v2_dev_C1_particles_20261007T0010Z/provenance.json",
+      "status": "failed",
+      "battle": null,
+      "keys": [
+        "run_tag",
+        "script",
+        "arguments",
+        "output_redirected",
+        "source_sha256",
+        "git_commit",
+        "limits",
+        "start_utc",
+        "status",
+        "error",
+        "wall_s",
+        "peak_rss_kb"
+      ],
+      "sha256": "c2cddce86630a742f3dbcb9f2a8f2091f85f6517a7608888fe6d2b298fc1ac95"
+    },
+    {
+      "file": "experiments/results/credit/aws_integrated_receiver_language_contract_20261014_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "tag",
+        "gate",
+        "rows",
+        "storage",
+        "wall_s",
+        "max_rss_kb",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "f189c988bfa727dfc5092ef00f792fc1fd0bcecbbc2361b7a415a3a9a13fa85a"
+    },
+    {
+      "file": "experiments/results/credit/aws_native_token_future_world_contract_20261013_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "tag",
+        "gate",
+        "depth",
+        "prefix_loss_errors",
+        "final_replay_fingerprint_equal",
+        "source_and_global_rng_unchanged",
+        "paired_race_rng_equal",
+        "future_own_moment_gap",
+        "paired_loss_differences",
+        "updates_per_full_world",
+        "total_executed_updates",
+        "total_scored_targets",
+        "total_own_gradient_targets",
+        "wall_s",
+        "max_rss_kb",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "d1f1ba4ec62bd2617977612bd844920fe064ca6571f205d2dfa9cfbdfcc210b1"
+    },
+    {
+      "file": "experiments/results/credit/aws_receiver_allocated_future_contract_20261014_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "tag",
+        "gate",
+        "depth",
+        "prefix_loss_errors",
+        "final_replay_fingerprint_equal",
+        "source_and_global_rng_unchanged",
+        "paired_race_rng_equal",
+        "future_own_moment_gap",
+        "paired_loss_differences",
+        "updates_per_full_world",
+        "total_executed_updates",
+        "total_scored_targets",
+        "total_own_gradient_targets",
+        "native_horizon_audits",
+        "terminal_advantage",
+        "corrected_terminal_mean",
+        "horizon_mean_error",
+        "teacher_work_full_world",
+        "teacher_work_alternate_world",
+        "wall_s",
+        "max_rss_kb",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "c156a3dfe5e4288b5e6df006d674776897cdd284c8e04b6f13c92edfcac3b148"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_128k_20261013_s6_v1_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "8262459a046c0e17a5df72698b06829981c44a6d2b6f8db321b50fe80e645ac7"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_128k_20261013_s7_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "d9e0d92c891b0f029c2c0a62860af8a99e997bdac3eb85000d85d439141ff00d"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_128k_20261013_s8_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "863bb2e781b1b41fb3aad0a3d1f08a79ac5ae59e530e27168103ccd03fab2952"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_2m_20261013_s6_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "e9f5ac70025a7c0918ba56958ecf38c38ff4962ac6000610960f2d1367cc38e1"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_512k_20261013_s6_v1_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "92a4fb17d3c617502875dc1aef4d49436dde51c439cb84e9a8b775664c1039ae"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_512k_20261013_s7_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "b1e44198ab5c17d50cfd356a3b21dad65f2f5f7f0c83c1096c37daed62f1813c"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_512k_20261013_s8_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "7dc8cbfe999e7b7a7b4282e4e66311239b1635416f79dbfeb0c0f1bc1a8b319a"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_bernoulli_teacher_8m_20261013_s6_v2_quality_priority_v2.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "accepted",
+        "quality_gain",
+        "training_wall_ratio",
+        "original_gate",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "b641a3ab012262300256b2c1ce4d5826c3335aadbd9b2dc80e0e74c8b987639b"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_calibrated_clip_pair_verdict_20261014_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "rows",
+        "protocol",
+        "nll_gain",
+        "incremental_work_ratio",
+        "decision",
+        "input_sha256",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "f4c44d2510ca62b72ae83a22c22cdfccdcef76bd9a4325c665bd032fbcfb8c08"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_multidepth_acquisition_curve_20261013_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "rows",
+        "slopes",
+        "scope"
+      ],
+      "sha256": "ac10f74594d12870e562ef8350b8f993ca4495133eaa4a6a37aedd614e6111ef"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_native_depth_progress_20261016T1218Z.json",
+      "status": "intermediate",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "rows",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "e15acb9f1af6b6e30541595aaedcd12c8182ccb953dda5e2ac9eab0ad4b2c0e7"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_ordered_token_lookup_contract_20261013_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "rows",
+        "gate",
+        "source_sha256",
+        "scope"
+      ],
+      "sha256": "bae75e1606c979f2f8aa3688703c9b5180347120a6254518ebdc4ed94a88c83c"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_coupled_query_credit_gate_20261016_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "stage",
+        "gate",
+        "checkpoint_sha256",
+        "checkpoint_cursor",
+        "migration",
+        "first",
+        "second",
+        "document_bias_gradients",
+        "coupled_query_audits",
+        "joint_pair_score_entries",
+        "exact_serialized_resume",
+        "wall_s",
+        "max_rss_kb",
+        "scope"
+      ],
+      "sha256": "b20ff55fabc122675786a023c633e4ab60ae2991219ed92005531d7cc952857f"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_curie_cerl_admission_20261016_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "stage",
+        "gate",
+        "checks",
+        "elapsed_s",
+        "max_rss_kb",
+        "source_sha256"
+      ],
+      "sha256": "17e34313585ca4792ac61ea4a3898b2234814084611b0e61666a545000873781"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_document_boundary_native_gate_20261016_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "stage",
+        "gate",
+        "checkpoint_sha256",
+        "checkpoint_cursor",
+        "migration",
+        "first",
+        "second",
+        "document_bias_gradients",
+        "exact_serialized_resume",
+        "wall_s",
+        "max_rss_kb",
+        "scope"
+      ],
+      "sha256": "542399e5298c35bab395dae676f4464652211f3c08e9ed1285a81177b41e336c"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_native_document_handoff_20261016_v1.json",
+      "status": "checkpoint_handoff",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "source_job",
+        "replacement_job",
+        "checkpoint_sha256",
+        "cursor",
+        "native_events",
+        "source_wall_s",
+        "source_audit_targets",
+        "discarded_uncheckpointed_target_upper_bound",
+        "wait_for_new_checkpoint_s",
+        "reason",
+        "trainer_pid"
+      ],
+      "sha256": "e9a9336c9662469e91a36d89a98e92b8014e7be1ecb0326e82cda5b3d7776fca"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_native_live_learning_audit_20261016_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "stage",
+        "checkpoint_sha256",
+        "checkpoint_cursor",
+        "discarded_train_targets",
+        "nll",
+        "objective",
+        "preclip_gradient_norm",
+        "global_clip_multiplier",
+        "groups",
+        "parameters",
+        "query_raw_logits",
+        "query_clamped_fraction",
+        "receiver_forget_controls",
+        "receiver_write_controls",
+        "receiver_write_sigmoid",
+        "causal_read_age",
+        "native_report",
+        "concerns",
+        "storage",
+        "max_rss_kb",
+        "wall_s",
+        "scope"
+      ],
+      "sha256": "71a470017a1e7a3fa55896a09dfc48ba3a82073a99a7a891098ef0c11de99c34"
+    },
+    {
+      "file": "experiments/results/diagnostics/aws_r1_producer_replay_native_gate_20261016_v1.json",
+      "status": "completed",
+      "battle": "R1",
+      "keys": [
+        "status",
+        "battle",
+        "stage",
+        "gate",
+        "checkpoint_sha256",
+        "checkpoint_cursor",
+        "migration",
+        "first",
+        "second",
+        "exact_serialized_resume",
+        "storage",
+        "wall_s",
+        "max_rss_kb",
+        "scope"
+      ],
+      "sha256": "47046f9dc51e71f62f418fd12f5259819cca7d8a9c2b883d6989d5b0f4304a24"
+    },
+    {
+      "file": "experiments/results/hierarchy/aws_g_hier_composition_scale_20261016_v1.partial.json",
+      "status": "running",
+      "battle": null,
+      "keys": [
+        "status",
+        "stage",
+        "settings",
+        "milestones",
+        "baseline",
+        "initial_broad",
+        "source_sha256",
+        "input_sha256"
+      ],
+      "sha256": "afcfe8cd9d5916058c625e2d1e3e92128197b9cce0420d06b0648ef8fef2d8dc"
+    },
+    {
+      "file": "experiments/results/market/aws_b10p_transformer_smoke_20261015_v2.json",
+      "status": "completed",
+      "battle": "B10",
+      "keys": [
+        "status",
+        "battle",
+        "task",
+        "family",
+        "seed",
+        "epochs",
+        "lr",
+        "smoke",
+        "initial_dev",
+        "best",
+        "curve",
+        "final_weights",
+        "acquired_from",
+        "feature_moments",
+        "label_scales",
+        "parameters",
+        "wall_s",
+        "cpu_s",
+        "process_wall_s",
+        "max_rss_kb",
+        "source_sha256",
+        "data_sha256",
+        "september_opened",
+        "scope"
+      ],
+      "sha256": "a95f4f7545dd4921bcd86d9e493123a29cb31fa889fc59b0b606aec1093e83a1"
+    },
+    {
+      "file": "experiments/results/tgb/aws_b5_review_heur_smoke.json",
+      "status": "completed",
+      "battle": "B5",
+      "keys": [
+        "status",
+        "tag",
+        "battle",
+        "dataset",
+        "split",
+        "protocol",
+        "negatives_per_query",
+        "queries",
+        "val_mrr",
+        "top10",
+        "wall_s"
+      ],
+      "sha256": "948356659404eb60bdd3dd3c5b219c8870c48721e44a2bdc1edab3c7dbc260be"
+    },
+    {
+      "file": "experiments/results/token_language/aws_integrated_resume_partial_20261005T181000Z_v1.partial.json",
+      "status": "checkpointed",
+      "battle": null,
+      "keys": [
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "core_parameters",
+        "readout_parameters",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "b7b1e72927c1ec5847c8768b3dd2b8da28223e309b13e412e10b6968a1095d88"
+    },
+    {
+      "file": "experiments/results/token_language/aws_integrated_resume_partial_20261005T190000Z_v1.partial.json",
+      "status": "checkpointed",
+      "battle": null,
+      "keys": [
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "core_parameters",
+        "readout_parameters",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "e7833ea9013c4f003041d73e37f173c4f2f8489dbd2c9cbb51e2921c87878f03"
+    },
+    {
+      "file": "experiments/results/token_language/aws_local_clip_receiver_d8_8m_20261014_s6_v1.json",
+      "status": "completed",
+      "battle": null,
+      "keys": [
+        "receiver_bank_training",
+        "depth_credit_allocation",
+        "teacher_work",
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "source_sha256",
+        "process_wall_s",
+        "exposure_protocol",
+        "core_parameters",
+        "readout_parameters",
+        "decoder_tail_widths",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "79d7d1f2f733269c784dd3cc346f710815e8de2e9704ec3d1c0cba56f8bc8266"
+    },
+    {
+      "file": "experiments/results/token_language/aws_native_deep_d16_8m_20261013_s6_v1.json",
+      "status": "completed",
+      "battle": null,
+      "keys": [
+        "teacher_work",
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "source_sha256",
+        "process_wall_s",
+        "exposure_protocol",
+        "core_parameters",
+        "readout_parameters",
+        "decoder_tail_widths",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "371d8fe9964f7b741a4737d6782d0ecee4129677ad3fab31228a4f7d1204e60f"
+    },
+    {
+      "file": "experiments/results/token_language/aws_private_bank_time_resume_20261006T040042Z_scale0p0625_partial.partial.json",
+      "status": "checkpointed",
+      "battle": null,
+      "keys": [
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "core_parameters",
+        "readout_parameters",
+        "decoder_tail_widths",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "317fb533aa91ecb4e9008912f07eef23d11d8ea7081577493d4cad3b420ffd2c"
+    },
+    {
+      "file": "experiments/results/token_language/aws_private_bank_time_resume_20261006T040042Z_scale0p25_partial.partial.json",
+      "status": "checkpointed",
+      "battle": null,
+      "keys": [
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "core_parameters",
+        "readout_parameters",
+        "decoder_tail_widths",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "053c9200f78d8fd50384af946547e3a151b674fe155529869faea42595996b35"
+    },
+    {
+      "file": "experiments/results/token_language/aws_private_bank_time_resume_20261006T040042Z_scale1p0_partial.partial.json",
+      "status": "checkpointed",
+      "battle": null,
+      "keys": [
+        "status",
+        "evidence",
+        "args",
+        "identity",
+        "parameters",
+        "core_bank_sharing",
+        "core_parameters",
+        "readout_parameters",
+        "decoder_tail_widths",
+        "best_dev_nll",
+        "curve",
+        "presentations_total",
+        "train_wall_s_total",
+        "best_checkpoint",
+        "presentations_this_invocation",
+        "train_wall_s_this_invocation",
+        "train_tokens_per_second",
+        "wall_s",
+        "max_rss_kb",
+        "host",
+        "resource_scope",
+        "protocol"
+      ],
+      "sha256": "7c013e47c86140e90f2d98b613cdd2ddf19633a8a6f85cef191a6ee1fdeac54b"
+    }
+  ],
+  "coordinator_error_count": 50,
+  "pending_publication_count": 16,
+  "decisions": [
+    "Prioritize ordered CERL16M, RMR K2/K8, larger concept banks and messages; current source-bound jobs finish unchanged.",
+    "Producer/document/coupled gate results completed despite missing source_sha256 publication field; preserve result bytes and use immutable admission bindings.",
+    "Native pending joint-credit v1 withdrawn before execution; logging tuple-key bug fixed in draft. No new migration admitted.",
+    "Remote r1_cerl.py changed after active document trainer loaded its module. Preserve old source under .git/source-bound-recovery/<run>/experiments/r1_cerl.py and in git commit2f662dd9a; restart requires explicit old-source recovery or validated migration.",
+    "All completed raw evidence is preserved; no repeated fitting for publication failures."
+  ],
+  "queue_incidents": [
+    {
+      "slot": 6,
+      "job": "aws_b10_matched_transformer_s0_20261014_v2",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_transformer_s0_20261014_v2/aws_b10_matched_transformer_s0_20261014_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10_matched_lstm_s0_20261014_v2",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s0_20261014_v2/aws_b10_matched_lstm_s0_20261014_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b10_matched_lstm_s2_20261014_v2",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s2_20261014_v2/aws_b10_matched_lstm_s2_20261014_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10_matched_native_s0_20261014_v2",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s0_20261014_v2/aws_b10_matched_native_s0_20261014_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_b10_matched_native_s1_20261014_v2",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s1_20261014_v2/aws_b10_matched_native_s1_20261014_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10_matched_lstm_s1_20261014_v2",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_lstm_s1_20261014_v2/aws_b10_matched_lstm_s1_20261014_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10_matched_native_s2_20261014_v2",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_matched_native_s2_20261014_v2/aws_b10_matched_native_s2_20261014_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_protected_temporal_branch_contract_20261014_v1",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_protected_temporal_branch_contract_20261014_v1/aws_protected_temporal_branch_contract_20261014_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b10_stable_lstm_s2_20261014_v1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/aws_b10_matched_controls_20261014_v1/aws_b10_stable_lstm_s2_20261014_v1/aws_b10_stable_lstm_s2_20261014_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10_guided_online_smoke_20261014_v1",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_guided_online_smoke_20261014_v1/aws_b10_guided_online_smoke_20261014_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10_guided_online_smoke_20261014_v2",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_guided_online_smoke_20261014_v2/aws_b10_guided_online_smoke_20261014_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10_online_64k_lstm_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_lstm_s0_20261015_v1/aws_b10_online_64k_lstm_s0_20261015_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b10_online_64k_transformer_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_transformer_s0_20261015_v1/aws_b10_online_64k_transformer_s0_20261015_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_b10_online_64k_native_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_native_s0_20261015_v1/aws_b10_online_64k_native_s0_20261015_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_b10_online_64k_native_s0_20261015_v2",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_native_s0_20261015_v2/aws_b10_online_64k_native_s0_20261015_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10_online_64k_lstm_s0_20261015_v2",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_lstm_s0_20261015_v2/aws_b10_online_64k_lstm_s0_20261015_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b10_online_64k_transformer_s0_20261015_v2",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_online_64k_transformer_s0_20261015_v2/aws_b10_online_64k_transformer_s0_20261015_v2.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_b10_october_data_20261015_v1",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_online/aws_b10_october_data_20261015_v1/aws_b10_october_data_20261015_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10p_lstm_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_lstm_s0_20261015_v1/aws_b10p_lstm_s0_20261015_v1.txt']' returned non-zero exit status 124.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10p_native_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_native_s0_20261015_v1/aws_b10p_native_s0_20261015_v1.txt']' returned non-zero exit status 124.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10p_transformer_smoke_20261015_v1",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_transformer_smoke_20261015_v1/aws_b10p_transformer_smoke_20261015_v1.txt']' returned non-zero exit status 124.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10p_native_s0_20261015_v2",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_native_s0_20261015_v2/aws_b10p_native_s0_20261015_v2.txt']' returned non-zero exit status 124.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10p_lstm_s0_20261015_v2",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_lstm_s0_20261015_v2/aws_b10p_lstm_s0_20261015_v2.txt']' returned non-zero exit status 124.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10p_transformer_smoke_20261015_v2",
+      "error": "experiments/market/b10p_fit.py",
+      "result_records": [
+        {
+          "file": "experiments/results/market/aws_b10p_transformer_smoke_20261015_v2.json",
+          "status": "completed"
+        }
+      ],
+      "disposition": "Completed result retained; publication/admission incident, no automatic refit."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10p_transformer_s0_20261015_v2",
+      "error": "experiments/market/b10p_fit.py",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10p_transformer_s0_20261015_v3",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_transformer_s0_20261015_v3/aws_b10p_transformer_s0_20261015_v3.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 3,
+      "job": "aws_b10p_stream_native_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '2', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_stream_native_s0_20261015_v1/aws_b10p_stream_native_s0_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b10p_stream_native_s1_20261015_v1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_stream_native_s1_20261015_v1/aws_b10p_stream_native_s1_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10p_stream_lstm_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b10_price/aws_b10p_stream_lstm_s0_20261015_v1/aws_b10p_stream_lstm_s0_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_r1_scaling_64m_20261015_v1",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_scaling_64m_20261015_v1/aws_r1_scaling_64m_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 2,
+      "job": "aws_native_deep_d8_32m_20261013_s6_v1",
+      "error": "Command '['taskset', '-c', '1', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_native_deep_d8_32m_20261013_s6_v1/aws_native_deep_d8_32m_20261013_s6_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1/aws_depth_ladder_d16_residual_reads_1m_s7_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 1,
+      "job": "aws_r1_deep_keyed_L8_1M_s0_20261015_v1",
+      "error": "Command '['taskset', '-c', '0', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_deep_keyed_L8_1M_s0_20261015_v1/aws_r1_deep_keyed_L8_1M_s0_20261015_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptr_20261015_v1_s1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s1/aws_b4x_github_ptr_20261015_v1_s1.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptrlc_20261015_v1_s1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s1/aws_b4x_github_ptrlc_20261015_v1_s1.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 2,
+      "job": "aws_b4x_wiki_test_20261015_v1",
+      "error": "experiments/tpp/b4x_score.py",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptr_20261015_v1_s2",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s2/aws_b4x_github_ptr_20261015_v1_s2.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptrlc_20261015_v1_s2",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s2/aws_b4x_github_ptrlc_20261015_v1_s2.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptr_20261015_v1_s3",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptr_20261015_v1_s3/aws_b4x_github_ptr_20261015_v1_s3.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_ptrlc_20261015_v1_s3",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s3/aws_b4x_github_ptrlc_20261015_v1_s3.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_g_hier_frontier_preflight_20261015_v1",
+      "error": "Command '['taskset', '-c', '5', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/hierarchy/aws_g_hier_frontier_preflight_20261015_v1/aws_g_hier_frontier_preflight_20261015_v1.txt']' returned non-zero exit status 2.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 2,
+      "job": "aws_b4x_so_test_20261015_v1",
+      "error": "experiments/tpp/b4x_score.py",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_r1_queryable_native_gate_20261016_v1",
+      "error": "Command '['taskset', '-c', '4', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_queryable_native_gate_20261016_v1/aws_r1_queryable_native_gate_20261016_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_r1_native_live_learning_audit_20261016_v1",
+      "error": "'source_sha256'",
+      "result_records": [
+        {
+          "file": "experiments/results/diagnostics/aws_r1_native_live_learning_audit_20261016_v1.json",
+          "status": "completed"
+        }
+      ],
+      "disposition": "Completed result retained; publication/admission incident, no automatic refit."
+    },
+    {
+      "slot": 5,
+      "job": "aws_r1_producer_replay_native_gate_20261016_v1",
+      "error": "'source_sha256'",
+      "result_records": [
+        {
+          "file": "experiments/results/diagnostics/aws_r1_producer_replay_native_gate_20261016_v1.json",
+          "status": "completed"
+        }
+      ],
+      "disposition": "Completed result retained; publication/admission incident, no automatic refit."
+    },
+    {
+      "slot": 4,
+      "job": "aws_r1_queryable_native_4m_s0_20261016_v1",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_queryable_native_4m_s0_20261016_v1/aws_r1_queryable_native_4m_s0_20261016_v1.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_r1_native_producer_credit_4m_s0_20261016_v1",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_native_producer_credit_4m_s0_20261016_v1/aws_r1_native_producer_credit_4m_s0_20261016_v1.txt']' returned non-zero exit status 1.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_r1_document_boundary_native_gate_20261016_v1",
+      "error": "'source_sha256'",
+      "result_records": [
+        {
+          "file": "experiments/results/diagnostics/aws_r1_document_boundary_native_gate_20261016_v1.json",
+          "status": "completed"
+        }
+      ],
+      "disposition": "Completed result retained; publication/admission incident, no automatic refit."
+    },
+    {
+      "slot": 4,
+      "job": "aws_r1_native_producer_credit_4m_s0_20261016_v2",
+      "error": "Command '['taskset', '-c', '3', 'bash', 'experiments/queue/run_safe_aws6.sh', 'experiments/queue/r1/aws_r1_native_producer_credit_4m_s0_20261016_v2/aws_r1_native_producer_credit_4m_s0_20261016_v2.txt']' returned non-zero exit status 15.",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_r1_coupled_query_credit_gate_20261016_v1",
+      "error": "'source_sha256'",
+      "result_records": [
+        {
+          "file": "experiments/results/diagnostics/aws_r1_coupled_query_credit_gate_20261016_v1.json",
+          "status": "completed"
+        }
+      ],
+      "disposition": "Completed result retained; publication/admission incident, no automatic refit."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10_guided_online_s0_20261014_v1",
+      "error": "Missing predecessor: experiments/results/market/aws_b10_guided_online_smoke_20261014_v1.json",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 4,
+      "job": "aws_b10_guided_online_s0_20261014_v2",
+      "error": "Missing predecessor: experiments/results/market/aws_b10_guided_online_smoke_20261014_v2.json",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 5,
+      "job": "aws_b10p_transformer_s0_20261015_v1",
+      "error": "Missing predecessor: experiments/results/market/aws_b10p_transformer_smoke_20261015_v1.json",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    },
+    {
+      "slot": 6,
+      "job": "aws_b4x_github_test_20261015_v1",
+      "error": "Missing predecessor: experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s1.json",
+      "result_records": [],
+      "disposition": "Historical failed or superseded admission retained; do not retry outside current product priorities."
+    }
+  ],
+  "publication_recovery": [
+    {
+      "job": "aws_b4x_github_ptrlc_20261015_v1_s4",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s4/aws_b4x_github_ptrlc_20261015_v1_s4.txt",
+        "experiments/queue/logs/aws_b4x_github_ptrlc_20261015_v1_s4.log",
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261015_v1_s4/runner_aws_b4x_github_ptrlc_20261015_v1_s4.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261015_v1_s4.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_g_hier_native_composition_20261015_v1_data",
+      "files": [
+        "experiments/queue/hierarchy/aws_g_hier_native_composition_20261015_v1_data/aws_g_hier_native_composition_20261015_v1_data.txt",
+        "experiments/queue/logs/aws_g_hier_native_composition_20261015_v1_data.log",
+        "experiments/queue/hierarchy/aws_g_hier_native_composition_20261015_v1_data/runner_aws_g_hier_native_composition_20261015_v1_data.out",
+        "experiments/results/hierarchy/aws_g_hier_native_composition_20261015_v1_data.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptr_20261016_v3_s1",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s1/aws_b4x_github_ptr_20261016_v3_s1.txt",
+        "experiments/queue/logs/aws_b4x_github_ptr_20261016_v3_s1.log",
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s1/runner_aws_b4x_github_ptr_20261016_v3_s1.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s1.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_so_ptr_20261015_v1_s4",
+      "files": [
+        "experiments/queue/r1/aws_b4x_so_ptr_20261015_v1_s4/aws_b4x_so_ptr_20261015_v1_s4.txt",
+        "experiments/queue/logs/aws_b4x_so_ptr_20261015_v1_s4.log",
+        "experiments/queue/r1/aws_b4x_so_ptr_20261015_v1_s4/runner_aws_b4x_so_ptr_20261015_v1_s4.out",
+        "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s4.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptr_20261016_v3_s2",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s2/aws_b4x_github_ptr_20261016_v3_s2.txt",
+        "experiments/queue/logs/aws_b4x_github_ptr_20261016_v3_s2.log",
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s2/runner_aws_b4x_github_ptr_20261016_v3_s2.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s2.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptrlc_20261016_v3_s1",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s1/aws_b4x_github_ptrlc_20261016_v3_s1.txt",
+        "experiments/queue/logs/aws_b4x_github_ptrlc_20261016_v3_s1.log",
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s1/runner_aws_b4x_github_ptrlc_20261016_v3_s1.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s1.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptr_20261016_v3_s3",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s3/aws_b4x_github_ptr_20261016_v3_s3.txt",
+        "experiments/queue/logs/aws_b4x_github_ptr_20261016_v3_s3.log",
+        "experiments/queue/b4/aws_b4x_github_ptr_20261016_v3_s3/runner_aws_b4x_github_ptr_20261016_v3_s3.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s3.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptrlc_20261016_v3_s2",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s2/aws_b4x_github_ptrlc_20261016_v3_s2.txt",
+        "experiments/queue/logs/aws_b4x_github_ptrlc_20261016_v3_s2.log",
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s2/runner_aws_b4x_github_ptrlc_20261016_v3_s2.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s2.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_ptrlc_20261016_v3_s3",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s3/aws_b4x_github_ptrlc_20261016_v3_s3.txt",
+        "experiments/queue/logs/aws_b4x_github_ptrlc_20261016_v3_s3.log",
+        "experiments/queue/b4/aws_b4x_github_ptrlc_20261016_v3_s3/runner_aws_b4x_github_ptrlc_20261016_v3_s3.out",
+        "experiments/results/tpp_b4/aws_b4x_github_ptrlc_20261016_v3_s3.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_github_test_20261016_v3",
+      "files": [
+        "experiments/queue/b4/aws_b4x_github_test_20261016_v3/aws_b4x_github_test_20261016_v3.txt",
+        "experiments/queue/logs/aws_b4x_github_test_20261016_v3.log",
+        "experiments/queue/b4/aws_b4x_github_test_20261016_v3/runner_aws_b4x_github_test_20261016_v3.out",
+        "experiments/results/tpp_b4/aws_b4x_github_test_20261016_v3.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_so_marks_20261015_v1_s4",
+      "files": [
+        "experiments/queue/r1/aws_b4x_so_marks_20261015_v1_s4/aws_b4x_so_marks_20261015_v1_s4.txt",
+        "experiments/queue/logs/aws_b4x_so_marks_20261015_v1_s4.log",
+        "experiments/queue/r1/aws_b4x_so_marks_20261015_v1_s4/runner_aws_b4x_so_marks_20261015_v1_s4.out",
+        "experiments/results/tpp_b4/aws_b4x_so_marks_20261015_v1_s4.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_g_hier_spatial32_20261015_v1_contracts",
+      "files": [
+        "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts/aws_g_hier_spatial32_20261015_v1_contracts.txt",
+        "experiments/queue/logs/aws_g_hier_spatial32_20261015_v1_contracts.log",
+        "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts/runner_aws_g_hier_spatial32_20261015_v1_contracts.out",
+        "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_contracts.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_b4x_so_test_20261016_v2",
+      "files": [
+        "experiments/queue/b4/aws_b4x_so_test_20261016_v2/aws_b4x_so_test_20261016_v2.txt",
+        "experiments/queue/logs/aws_b4x_so_test_20261016_v2.log",
+        "experiments/queue/b4/aws_b4x_so_test_20261016_v2/runner_aws_b4x_so_test_20261016_v2.out",
+        "experiments/results/tpp_b4/aws_b4x_so_test_20261016_v2.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_g_hier_spatial32_20261015_v1_prepare",
+      "files": [
+        "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare/aws_g_hier_spatial32_20261015_v1_prepare.txt",
+        "experiments/queue/logs/aws_g_hier_spatial32_20261015_v1_prepare.log",
+        "experiments/queue/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare/runner_aws_g_hier_spatial32_20261015_v1_prepare.out",
+        "experiments/results/hierarchy/aws_g_hier_spatial32_20261015_v1_prepare.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_r1_depthdata_L4_16m_gate_20261016_v1",
+      "files": [
+        "experiments/queue/r1/aws_r1_depthdata_L4_16m_gate_20261016_v1/aws_r1_depthdata_L4_16m_gate_20261016_v1.txt",
+        "experiments/queue/logs/aws_r1_depthdata_L4_16m_gate_20261016_v1.log",
+        "experiments/queue/r1/aws_r1_depthdata_L4_16m_gate_20261016_v1/runner_aws_r1_depthdata_L4_16m_gate_20261016_v1.out",
+        "experiments/results/diagnostics/aws_r1_depthdata_L4_16m_gate_20261016_v1.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    },
+    {
+      "job": "aws_r1_depthdata_L16_16m_gate_20261016_v1",
+      "files": [
+        "experiments/queue/r1/aws_r1_depthdata_L16_16m_gate_20261016_v1/aws_r1_depthdata_L16_16m_gate_20261016_v1.txt",
+        "experiments/queue/logs/aws_r1_depthdata_L16_16m_gate_20261016_v1.log",
+        "experiments/queue/r1/aws_r1_depthdata_L16_16m_gate_20261016_v1/runner_aws_r1_depthdata_L16_16m_gate_20261016_v1.out",
+        "experiments/results/diagnostics/aws_r1_depthdata_L16_16m_gate_20261016_v1.json"
+      ],
+      "disposition": "Preserve existing files in the reconciled publication batch; missing outputs are not recreated as evidence."
+    }
+  ]
+}

@@ -37,7 +37,10 @@
     "experiments/results/token_language/aws_r1_native_local_stream_64k_s0_20261016_v1.json": "e01e79044b6351bc3687c1cb62a9537f7be42107bf03c8bf0c586d1c7744ad06",
     "experiments/results/diagnostics/aws_r1_native_live_learning_audit_20261016_v1.json": "71a470017a1e7a3fa55896a09dfc48ba3a82073a99a7a891098ef0c11de99c34",
     "experiments/results/diagnostics/aws_r1_producer_replay_native_gate_20261016_v1.json": "47046f9dc51e71f62f418fd12f5259819cca7d8a9c2b883d6989d5b0f4304a24",
-    "experiments/results/diagnostics/aws_r1_native_producer_credit_handoff_20261016_v1.json": "5d66b6db0d21813f6fcf9a1548dfac59a78da1d9ec7231e3e60a1a310cce0378"
+    "experiments/results/diagnostics/aws_r1_native_producer_credit_handoff_20261016_v1.json": "5d66b6db0d21813f6fcf9a1548dfac59a78da1d9ec7231e3e60a1a310cce0378",
+    "experiments/results/diagnostics/aws_r1_document_boundary_native_gate_20261016_v1.json": "542399e5298c35bab395dae676f4464652211f3c08e9ed1285a81177b41e336c",
+    "experiments/results/diagnostics/aws_r1_coupled_query_credit_gate_20261016_v1.json": "b20ff55fabc122675786a023c633e4ab60ae2991219ed92005531d7cc952857f",
+    "experiments/results/diagnostics/aws_r1_native_document_handoff_20261016_v1.json": "e9a9336c9662469e91a36d89a98e92b8014e7be1ecb0326e82cda5b3d7776fca"
   },
   "queryable_lower_memory_integration": {
     "status": "gate_passed",
@@ -90,7 +93,7 @@
     "scope": "One fixed native8layer chronological development acquisition,no recurrentBPTT,densecarrier,ablation or publicTEST.Full receiver/indexedepisodic/inbox state persists across32targetoptimizerboundaries;own-writeeligibilityconditional and changing-parameterhistoryapproximate. GlobalAdamW/clipping still synchronous. TRAINpre-update loss uses a class map fitted on4MTRAINtokens and is not untouched online evidence. Fixedfinalselection1024targets and flagship8192targets/1024windows;no comparable-data/compute victory inferred against larger saved hybrids. Full arithmetic/special-function/traffic accounting pending."
   },
   "producer_credit_repair": {
-    "status": "integrated_running",
+    "status": "integrated_superseded_by_document_relevance",
     "run": "aws_r1_native_producer_credit_4m_s0_20261016_v2",
     "handoff_cursor": 73728,
     "new_parameters": 0,
@@ -109,5 +112,15 @@
       "max_rss_kb": 1998228
     },
     "scope": "Forward-preserving local producer-credit extension;conditional fixed-parameter gradient checked against independent local oracle. Adds delayed credit into joint composer/mix,last input-write path;own-write eligibility separate. Historical changed-parameter maps approximate,no recursive producer replay or predictive-win claim. Active continuation retains sourceweights/Adam/state/RNG/cursor;bounded unsaved handoff tail charged separately."
+  },
+  "document_relevance": {
+    "status": "integrated_running",
+    "run": "aws_r1_native_document_credit_4m_s0_20261016_v1",
+    "new_parameters": 2,
+    "scope": "Repeat and continuation cross-document log-rate biases, initialized at zero; old memory retained. Normalization, derivative and exact checkpoint recovery gates pass. No predictive improvement claim."
+  },
+  "coupled_query_credit": {
+    "status": "gate_passed_not_admitted_to_continuation",
+    "scope": "Joint without-replacement alternative-pair teacher fixes invalid duplicated alternatives. Conditional linearized gradient and factual-path parity contracts pass; prioritize Curie ordered program before another native learner migration. Buggy pending v1 logging corrected in draft and v1 queue withdrawn."
   }
 }

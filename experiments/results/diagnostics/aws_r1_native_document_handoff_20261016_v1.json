@@ -1,0 +1,15 @@
+{
+  "status": "checkpoint_handoff",
+  "battle": "R1",
+  "source_job": "aws_r1_native_producer_credit_4m_s0_20261016_v2",
+  "replacement_job": "aws_r1_native_document_credit_4m_s0_20261016_v1",
+  "checkpoint_sha256": "69c485eeabe931e316b396b8b8767f4a3da97aaff653e66666fb9f25a2b9e09c",
+  "cursor": 86016,
+  "native_events": 86016,
+  "source_wall_s": 1957.6961781210266,
+  "source_audit_targets": 64,
+  "discarded_uncheckpointed_target_upper_bound": 4096,
+  "wait_for_new_checkpoint_s": 371.9991543292999,
+  "reason": "New savedcheckpoint observed before stopping source trainer;preserve acquiredproducercredit learner and restore causal document-relevance input with twozero-init biases. Numericalcontracts and realcheckpointrecovery passed;no quality/ablation verdict.",
+  "trainer_pid": 219837
+}

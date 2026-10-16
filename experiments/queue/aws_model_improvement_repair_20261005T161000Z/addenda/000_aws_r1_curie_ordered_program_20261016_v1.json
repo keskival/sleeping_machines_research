@@ -1,0 +1,156 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Ordered in PRODUCT_ORDERS: race prediction, residual-memory depth, capacity beyond activity and causal messages. Full per-arm declarations in queues; stationary fixed-weight development, shuffled lanes and lane-bounded memory, temporal-memory carrier and BPTT explicitly retained. These are race-model development runs, not the fully native event-local flagship. No external model training, TEST, or hardware latency claim. Preserve active jobs; six distinct cores, 8GiB reserve, watchdogs.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_r1_cerl_16M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_16M_s0_20261016_v1/aws_r1_cerl_16M_s0_20261016_v1.txt",
+        "queue_sha256": "29e8c3846c06205a7639b92a7046f1a79af4be7a5bd3820c90cb714ae27dfe28",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_16M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_cerl_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_r1_rmr_dense_K2_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_dense_K2_4M_s0_20261016_v1/aws_r1_rmr_dense_K2_4M_s0_20261016_v1.txt",
+        "queue_sha256": "10e1b56b1d65a60d2a1eac8d75a8b672851aca0ba44f7e72c77457f2b0cc3d84",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_dense_K2_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_rmr_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_rmr_dense_K8_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_dense_K8_4M_s0_20261016_v1/aws_r1_rmr_dense_K8_4M_s0_20261016_v1.txt",
+        "queue_sha256": "0152c0241d97efb332e6efd9176d35cd9501bde6c038145c4906d8916bde5c54",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_dense_K8_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_rmr_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_r1_cerl_pk65536_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_pk65536_4M_s0_20261016_v1/aws_r1_cerl_pk65536_4M_s0_20261016_v1.txt",
+        "queue_sha256": "9065ac872fa05c2d1acd6185c3684e2a91eb45e10576391ea2502658848133bd",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_pk65536_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_cerl_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_cerl_msg_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_msg_4M_s0_20261016_v1/aws_r1_cerl_msg_4M_s0_20261016_v1.txt",
+        "queue_sha256": "1a6e01724a1d1f5cf31136653cf0381e3e63d1d3d2a1291c96a75fa89fcf2aa1",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_msg_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_cerl_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "2": [
+      {
+        "name": "aws_r1_cerl_pk262144_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_pk262144_4M_s0_20261016_v1/aws_r1_cerl_pk262144_4M_s0_20261016_v1.txt",
+        "queue_sha256": "d3854aa0803ab857212f9d940349d9616d5f041e5997a5af10bddb55e4e82195",
+        "source_sha256": {
+          "experiments/hierarchy/curie_race_admission_gate.py": "5643b493a9b17a2b37ab2aedaeabe86e81e06c41394b453c031f034db330995d",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_rmr.py": "8e9b9be7e8c991b17c7692805af1a965122d403bf2e10f57b2e99db6d51e3d09",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_pk262144_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_curie_cerl_admission_20261016_v1.json",
+            "stage": "current Curie numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

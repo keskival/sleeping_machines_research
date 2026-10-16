@@ -1,1506 +1,1566 @@
 {
- "purpose": "Each headline number in investor and report documents bound to completed result files. scripts/verify_investor_evidence.py recomputes every value, checks it at the displayed precision and checks the displayed text occurs in each listed document.",
- "claims": [
-  {
-   "id": "b10_october_native",
-   "display": "8.0785",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_october_lstm",
-   "display": "8.1027",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_october_lstm_s0_20261015_v1.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_october_transformer_cached",
-   "display": "8.1792",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_october_transformer_reencoded",
-   "display": "8.1764",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_october_transformer_reencoded_s0_20261015_v1.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_august64k_native",
-   "display": "5.1759",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_online_64k_native_s0_20261015_v3.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_august64k_lstm",
-   "display": "5.1967",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_august64k_transformer_reencoded",
-   "display": "5.2797",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10_online_64k_transformer_s0_20261015_v3.json",
-    "path": [
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "b10_october_arithmetic_ratio_cached",
-   "display": "14.7",
-   "decimals": 1,
-   "value": {
-    "ratio": [
-     {
-      "file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json",
-      "path": [
-       "ledger",
-       "arithmetic"
+  "purpose": "Each headline number in investor and report documents bound to completed result files. scripts/verify_investor_evidence.py recomputes every value, checks it at the displayed precision and checks the displayed text occurs in each listed document.",
+  "claims": [
+    {
+      "id": "b10_october_native",
+      "display": "8.0785",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json",
-      "path": [
-       "ledger",
-       "arithmetic"
+    },
+    {
+      "id": "b10_october_lstm",
+      "display": "8.1027",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_october_lstm_s0_20261015_v1.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "language_teacher_old_nll",
-   "display": "6.62066",
-   "decimals": 5,
-   "value": {
-    "file": "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.json",
-    "path": [
-     "curve",
-     -1,
-     "dev_nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md"
-   ]
-  },
-  {
-   "id": "language_teacher_new_nll",
-   "display": "6.52787",
-   "decimals": 5,
-   "value": {
-    "file": "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json",
-    "path": [
-     "curve",
-     -1,
-     "dev_nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md"
-   ]
-  },
-  {
-   "id": "keyed_1m_three_seed_mean",
-   "display": "6.009",
-   "decimals": 3,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s0_20261007T1800Z.json",
-      "path": [
-       "score_65528",
-       "nll"
+    },
+    {
+      "id": "b10_october_transformer_cached",
+      "display": "8.1792",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s1_20261007T2055Z.json",
-      "path": [
-       "score_65528",
-       "nll"
+    },
+    {
+      "id": "b10_october_transformer_reencoded",
+      "display": "8.1764",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_october_transformer_reencoded_s0_20261015_v1.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s2_20261007T2055Z.json",
-      "path": [
-       "score_65528",
-       "nll"
+    },
+    {
+      "id": "b10_august64k_native",
+      "display": "5.1759",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_online_64k_native_s0_20261015_v3.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "keyed_4m_two_seed_mean",
-   "display": "5.510",
-   "decimals": 3,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s0_20261008T1140Z.json",
-      "path": [
-       "score_65528",
-       "nll"
+    },
+    {
+      "id": "b10_august64k_lstm",
+      "display": "5.1967",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_online_64k_lstm_s0_20261015_v3.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.json",
-      "path": [
-       "score_65528",
-       "nll"
+    },
+    {
+      "id": "b10_august64k_transformer_reencoded",
+      "display": "5.2797",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10_online_64k_transformer_s0_20261015_v3.json",
+        "path": [
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "keyed_4m_flagship_protocol_s1",
-   "display": "5.601",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json",
-    "path": [
-     "rows",
-     5,
-     "flagship_protocol_nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "README.md"
-   ]
-  },
-  {
-   "id": "keyed_4m_flagship_protocol_s0",
-   "display": "5.624",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json",
-    "path": [
-     "rows",
-     4,
-     "flagship_protocol_nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "README.md"
-   ]
-  },
-  {
-   "id": "p24_flagship_best",
-   "display": "5.978",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.json",
-    "path": [
-     "scored",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "README.md"
-   ]
-  },
-  {
-   "id": "tgbn_trade_three_seed_mean",
-   "display": "0.868",
-   "decimals": 3,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s0_20261009T1210Z.json",
-      "path": [
-       "test_ndcg"
+    },
+    {
+      "id": "b10_october_arithmetic_ratio_cached",
+      "display": "14.7",
+      "decimals": 1,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/market/aws_b10_october_transformer_cached_s0_20261015_v1.json",
+            "path": [
+              "ledger",
+              "arithmetic"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_october_native_s0_20261015_v1.json",
+            "path": [
+              "ledger",
+              "arithmetic"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s1_20261009T1210Z.json",
-      "path": [
-       "test_ndcg"
+    },
+    {
+      "id": "language_teacher_old_nll",
+      "display": "6.62066",
+      "decimals": 5,
+      "value": {
+        "file": "experiments/results/token_language/aws_integrated_fresh_scaling_8m_pool4_20261012_s6_v1.json",
+        "path": [
+          "curve",
+          -1,
+          "dev_nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md"
       ]
-     },
-     {
-      "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s2_20261009T1210Z.json",
-      "path": [
-       "test_ndcg"
+    },
+    {
+      "id": "language_teacher_new_nll",
+      "display": "6.52787",
+      "decimals": 5,
+      "value": {
+        "file": "experiments/results/token_language/aws_bernoulli_teacher_8m_20261013_s6_v2.json",
+        "path": [
+          "curve",
+          -1,
+          "dev_nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "tgbl_wiki_three_seed_mean",
-   "display": "0.835",
-   "decimals": 3,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s0_20261009T1340Z.json",
-      "path": [
-       "test_mrr"
+    },
+    {
+      "id": "keyed_1m_three_seed_mean",
+      "display": "6.009",
+      "decimals": 3,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s0_20261007T1800Z.json",
+            "path": [
+              "score_65528",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s1_20261007T2055Z.json",
+            "path": [
+              "score_65528",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/token_language/curie_r1g2_keyed1_1M_s2_20261007T2055Z.json",
+            "path": [
+              "score_65528",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s1_20261009T1340Z.json",
-      "path": [
-       "test_mrr"
+    },
+    {
+      "id": "keyed_4m_two_seed_mean",
+      "display": "5.510",
+      "decimals": 3,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s0_20261008T1140Z.json",
+            "path": [
+              "score_65528",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/token_language/curie_r1g2_keyed1_4M_s1_20261008T1840Z.json",
+            "path": [
+              "score_65528",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z.json",
-      "path": [
-       "test_mrr"
+    },
+    {
+      "id": "keyed_4m_flagship_protocol_s1",
+      "display": "5.601",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json",
+        "path": [
+          "rows",
+          5,
+          "flagship_protocol_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "README.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "episodic_memory_2m",
-   "display": "5.634",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_episodic_memory_2m_episodic_20261015_v1.json",
-    "path": [
-     "scored",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md",
-    "README.md"
-   ]
-  },
-  {
-   "id": "episodic_native_readout",
-   "display": "5.973",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_episodic_memory_2m_episodic_20261015_v1.json",
-    "path": [
-     "native_readout_scored",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md"
-   ]
-  },
-  {
-   "id": "episodic_history_value_64",
-   "display": "0.227",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_history_reliance_episodic_2m_20261015_v1.json",
-    "path": [
-     "history_value",
-     "64"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "price_native_fixed",
-   "display": "29.5089",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10p_native_s0_20261015_v3.json",
-    "path": [
-     "best",
-     "return_nll_sum"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "price_lstm_fixed",
-   "display": "29.6516",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10p_lstm_s0_20261015_v3.json",
-    "path": [
-     "best",
-     "return_nll_sum"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "price_native_online",
-   "display": "30.6203",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10p_online3_native_aug25_20261015_v1.json",
-    "path": [
-     "return_nll_sum"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "price_linear_online",
-   "display": "30.5936",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10p_online3_linear_t_aug25_20261015_v1.json",
-    "path": [
-     "return_nll_sum"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "price_linear_fixed",
-   "display": "29.6998",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/market/aws_b10p_references_20261015_v2.json",
-    "path": [
-     "references",
-     "linear_features",
-     "return_nll_sum"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "market_acquisition_mean_native",
-   "display": "6.8842",
-   "decimals": 4,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "keyed_4m_flagship_protocol_s0",
+      "display": "5.624",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_cross_member_language_protocol_20261015_v1.json",
+        "path": [
+          "rows",
+          4,
+          "flagship_protocol_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "README.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_native_s1_20261014_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "p24_flagship_best",
+      "display": "5.978",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_memory_policy_corpus_eos_2m_20261015_v1.json",
+        "path": [
+          "scored",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "README.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_native_s2_20261015_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "tgbn_trade_three_seed_mean",
+      "display": "0.868",
+      "decimals": 3,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s0_20261009T1210Z.json",
+            "path": [
+              "test_ndcg"
+            ]
+          },
+          {
+            "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s1_20261009T1210Z.json",
+            "path": [
+              "test_ndcg"
+            ]
+          },
+          {
+            "file": "experiments/results/tgb/curie_b5_trade_affinity_sealed_s2_20261009T1210Z.json",
+            "path": [
+              "test_ndcg"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "market_acquisition_mean_lstm",
-   "display": "6.8996",
-   "decimals": 4,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/market/aws_b10_stable_lstm_s0_20261014_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "tgbl_wiki_three_seed_mean",
+      "display": "0.835",
+      "decimals": 3,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s0_20261009T1340Z.json",
+            "path": [
+              "test_mrr"
+            ]
+          },
+          {
+            "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s1_20261009T1340Z.json",
+            "path": [
+              "test_mrr"
+            ]
+          },
+          {
+            "file": "experiments/results/tgb/curie_b5_wiki_sealed_v4_id0_s2_20261009T1340Z.json",
+            "path": [
+              "test_mrr"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_lstm_s1_20261015_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "episodic_memory_2m",
+      "display": "5.634",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_episodic_memory_2m_episodic_20261015_v1.json",
+        "path": [
+          "scored",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md",
+        "README.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_lstm_s2_20261015_v2.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "episodic_native_readout",
+      "display": "5.973",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_episodic_memory_2m_episodic_20261015_v1.json",
+        "path": [
+          "native_readout_scored",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "market_acquisition_mean_transformer",
-   "display": "6.9686",
-   "decimals": 4,
-   "value": {
-    "mean": [
-     {
-      "file": "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "episodic_history_value_64",
+      "display": "0.227",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_history_reliance_episodic_2m_20261015_v1.json",
+        "path": [
+          "history_value",
+          "64"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "report/I_SCIENCE.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_transformer_s1_20261015_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "price_native_fixed",
+      "display": "29.5089",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_native_s0_20261015_v3.json",
+        "path": [
+          "best",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "file": "experiments/results/market/aws_b10_stable_transformer_s2_20261015_v1.json",
-      "path": [
-       "final_dev",
-       "nll"
+    },
+    {
+      "id": "price_lstm_fixed",
+      "display": "29.6516",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_lstm_s0_20261015_v3.json",
+        "path": [
+          "best",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "r1_keyed_depth_2_1m",
-   "display": "5.9572",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "r1_keyed_depth_4_1m",
-   "display": "5.8987",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "hierarchy_numerical_contracts",
-   "display": "76",
-   "decimals": 0,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "hierarchical_memory",
-     "passed_contracts"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "race_stack_d2_reads_long_history",
-   "display": "6.472",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
-    "path": [
-     "rows",
-     "d2_residual_reads",
-     "long_history_nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "race_stack_d16_residual_long_history",
-   "display": "6.690",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
-    "path": [
-     "rows",
-     "d16_residual",
-     "long_history_nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "keyed_word_initial_history_beyond_64",
-   "display": "0.023",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
-    "path": [
-     "keyed_context_value_by_role",
-     "64",
-     "word_initial"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "keyed_word_initial_target_fraction_pct",
-   "display": "77.8",
-   "decimals": 1,
-   "value": {
-    "ratio": [
-     {
-      "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
-      "path": [
-       "models",
-       "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
-       "word_initial",
-       "fraction"
+    },
+    {
+      "id": "price_native_online",
+      "display": "30.6203",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_online3_native_aug25_20261015_v1.json",
+        "path": [
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "constant": 0.01
-     }
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "plan_b_keyed_L4_1M",
-   "display": "5.899",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "plan_b_keyed_L2_1M",
-   "display": "5.957",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "plan_b_keyed_L8_1M",
-   "display": "5.874",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_keyed_depth_8_1m",
-   "display": "5.8741",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "native_hierarchy_calibrated_fit_nll",
-   "display": "1.9258",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/hierarchy/aws_g_hier_native_frozen_readout_20261015_v1.json",
-    "path": [
-     "rows",
-     1,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "composition_messages_before",
-   "display": "349",
-   "decimals": 0,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "coalesced_views",
-     "baseline",
-     "deliveries"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "composition_messages_after",
-   "display": "125",
-   "decimals": 0,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "coalesced_views",
-     "coalesced",
-     "deliveries"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "frame_nuisance_before",
-   "display": "0.4162",
-   "decimals": 4,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "observed_frame",
-     "combined_nuisance_before"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "frame_nuisance_after",
-   "display": "0.00316",
-   "decimals": 5,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "observed_frame",
-     "combined_nuisance_after"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "keyed_language_depth16",
-   "display": "5.8879",
-   "decimals": 4,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "language_depth",
-     "completed_extensions",
-     0,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "async_hierarchy_b2l3",
-   "display": "5.9392",
-   "decimals": 4,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "language_depth",
-     "completed_extensions",
-     1,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "async_hierarchy_b4l4",
-   "display": "5.8911",
-   "decimals": 4,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "language_depth",
-     "completed_extensions",
-     2,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "native_role_continued_dev",
-   "display": "0.68661",
-   "decimals": 5,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "current_native_comparison",
-     "rows",
-     "continued",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "native_role_carried_dev",
-   "display": "0.71641",
-   "decimals": 5,
-   "value": {
-    "file": "investment/hierarchy_development_evidence.json",
-    "path": [
-     "composition_engineering",
-     "current_native_comparison",
-     "rows",
-     "carried",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_wikipedia_developed_total",
-   "display": "-258.76",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "wikipedia",
-     "total"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_wikipedia_developed_se",
-   "display": "37.73",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "wikipedia",
-     "se"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_wikipedia_developed_target",
-   "display": "-122.62",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "wikipedia",
-     "target"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_wikipedia_developed_margin",
-   "display": "136.14",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "wikipedia",
-     "margin"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "hierarchy_calibrated_geometry_gain",
-   "display": "34.6",
-   "decimals": 1,
-   "value": {
-    "ratio": [
-     {
-      "file": "investment/b4_developed_evidence.json",
-      "path": [
-       "hierarchy",
-       "root_geometry_error_reduction"
+    },
+    {
+      "id": "price_linear_online",
+      "display": "30.5936",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_online3_linear_t_aug25_20261015_v1.json",
+        "path": [
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "constant": 0.01
-     }
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L8_4M_flagship",
-   "display": "5.841",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L2_4M_flagship",
-   "display": "5.865",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L8_4M_prequential",
-   "display": "5.809",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
-    "path": [
-     "prequential_last_quarter"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L2_4M_prequential",
-   "display": "5.836",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
-    "path": [
-     "prequential_last_quarter"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_part_whole_v2_4M_flagship",
-   "display": "5.859",
-   "decimals": 3,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_part_whole_4M_s0_20261015_v2.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L8_4M_flagship_4dp",
-   "display": "5.8414",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "r1_one_pass_L2_4M_flagship_4dp",
-   "display": "5.8648",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md"
-   ]
-  },
-  {
-   "id": "b4_developed_github_total",
-   "display": "-284.47",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "github",
-     "total"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_developed_github_se",
-   "display": "54.29",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "github",
-     "se"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_developed_github_margin",
-   "display": "11.57",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "github",
-     "margin"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_developed_stackoverflow_total",
-   "display": "12.00",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "stackoverflow",
-     "total"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "b4_developed_stackoverflow_se",
-   "display": "0.65",
-   "decimals": 2,
-   "value": {
-    "file": "investment/b4_developed_evidence.json",
-    "path": [
-     "stackoverflow",
-     "se"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "bound_hierarchy_contracts",
-   "display": "16",
-   "decimals": 0,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "native_bindings",
-     "contract_tests"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "bound_hierarchy_native_stages",
-   "display": "32",
-   "decimals": 0,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "native_bindings",
-     "native_stages"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "bound_fresh_L2",
-   "display": "5.8648",
-   "decimals": 4,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "fresh_data_depth",
-     "rows",
-     0,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "bound_fresh_L8",
-   "display": "5.8414",
-   "decimals": 4,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "fresh_data_depth",
-     "rows",
-     1,
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "owned_support_fraction",
-   "display": "25",
-   "decimals": 0,
-   "value": {
-    "ratio": [
-     {
-      "file": "investment/bound_hierarchy_evidence.json",
-      "path": [
-       "ownership_engineering",
-       "fragmented_fraction_dev"
+    },
+    {
+      "id": "price_linear_fixed",
+      "display": "29.6998",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/market/aws_b10p_references_20261015_v2.json",
+        "path": [
+          "references",
+          "linear_features",
+          "return_nll_sum"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "constant": 0.01
-     }
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "owned_complete_parts",
-   "display": "8",
-   "decimals": 0,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "ownership_engineering",
-     "complete_part_memories"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "owned_contract_tests",
-   "display": "19",
-   "decimals": 0,
-   "value": {
-    "file": "investment/bound_hierarchy_evidence.json",
-    "path": [
-     "ownership_engineering",
-     "contract_tests"
-    ]
-   },
-   "documents": [
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "current_public_headline_wins",
-   "display": "13",
-   "decimals": 0,
-   "value": {
-    "file": "investment/public_benchmark_headlines.json",
-    "path": [
-     "wins"
-    ]
-   },
-   "documents": [
-    "README.md",
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md",
-    "investment/PITCH_DECK.json",
-    "investment/brief/evidence_brief.tex",
-    "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
-   ]
-  },
-  {
-   "id": "current_public_headline_ahead",
-   "display": "53",
-   "decimals": 0,
-   "value": {
-    "file": "investment/public_benchmark_headlines.json",
-    "path": [
-     "ahead"
-    ]
-   },
-   "documents": [
-    "README.md",
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md",
-    "investment/PITCH_DECK.json",
-    "investment/brief/evidence_brief.tex",
-    "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
-   ]
-  },
-  {
-   "id": "current_public_headline_runs",
-   "display": "61",
-   "decimals": 0,
-   "value": {
-    "file": "investment/public_benchmark_headlines.json",
-    "path": [
-     "runs"
-    ]
-   },
-   "documents": [
-    "README.md",
-    "report/I_SCIENCE.md",
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md",
-    "investment/PITCH_DECK.json",
-    "investment/brief/evidence_brief.tex",
-    "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
-   ]
-  },
-  {
-   "id": "root_swap_sensitivity",
-   "display": "51.62",
-   "decimals": 2,
-   "value": {
-    "ratio": [
-     {
-      "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
-      "path": [
-       "rows",
-       1,
-       "mean_root_feature_distance"
+    },
+    {
+      "id": "market_acquisition_mean_native",
+      "display": "6.8842",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s1_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_native_s2_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
-      "path": [
-       "rows",
-       0,
-       "mean_root_feature_distance"
+    },
+    {
+      "id": "market_acquisition_mean_lstm",
+      "display": "6.8996",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s1_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_lstm_s2_20261015_v2.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "logit_swap_sensitivity",
-   "display": "27.73",
-   "decimals": 2,
-   "value": {
-    "ratio": [
-     {
-      "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
-      "path": [
-       "rows",
-       1,
-       "mean_absolute_logit_contrast"
+    },
+    {
+      "id": "market_acquisition_mean_transformer",
+      "display": "6.9686",
+      "decimals": 4,
+      "value": {
+        "mean": [
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s0_20261014_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s1_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          },
+          {
+            "file": "experiments/results/market/aws_b10_stable_transformer_s2_20261015_v1.json",
+            "path": [
+              "final_dev",
+              "nll"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     },
-     {
-      "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
-      "path": [
-       "rows",
-       0,
-       "mean_absolute_logit_contrast"
+    },
+    {
+      "id": "r1_keyed_depth_2_1m",
+      "display": "5.9572",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
       ]
-     }
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "report/I_SCIENCE.md"
-   ]
-  },
-  {
-   "id": "hybrid16M_L4_flagship",
-   "display": "5.2699",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/aws_r1_depthdata_L4_16m_s0_20261016_v1.json",
-    "path": [
-     "flagship_protocol",
-     "nll"
-    ]
-   },
-   "documents": [
-    "README.md",
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "report/I_SCIENCE.md",
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "cerl4M_flagship",
-   "display": "5.4665",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json",
-    "path": [
-     "flagship",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md",
-    "report/I_SCIENCE.md",
-    "investment/brief/evidence_brief.tex"
-   ]
-  },
-  {
-   "id": "cerl4M_score65528",
-   "display": "5.3094",
-   "decimals": 4,
-   "value": {
-    "file": "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json",
-    "path": [
-     "score_65528",
-     "nll"
-    ]
-   },
-   "documents": [
-    "investment/PITCH.md",
-    "investment/INVESTMENT_CASE.md",
-    "investment/INVESTOR_PROOF_PLAN.md",
-    "report/I_SCIENCE.md",
-    "investment/brief/evidence_brief.tex"
-   ]
-  }
- ]
+    },
+    {
+      "id": "r1_keyed_depth_4_1m",
+      "display": "5.8987",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "hierarchy_numerical_contracts",
+      "display": "76",
+      "decimals": 0,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "hierarchical_memory",
+          "passed_contracts"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "race_stack_d2_reads_long_history",
+      "display": "6.472",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
+        "path": [
+          "rows",
+          "d2_residual_reads",
+          "long_history_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "race_stack_d16_residual_long_history",
+      "display": "6.690",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_depth_ladder_1m_decision_20261015_v1.json",
+        "path": [
+          "rows",
+          "d16_residual",
+          "long_history_nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "keyed_word_initial_history_beyond_64",
+      "display": "0.023",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
+        "path": [
+          "keyed_context_value_by_role",
+          "64",
+          "word_initial"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "keyed_word_initial_target_fraction_pct",
+      "display": "77.8",
+      "decimals": 1,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/diagnostics/curie_part_whole_structure_20261015_v1.json",
+            "path": [
+              "models",
+              "curie_r1g2_keyed1_4M_s0_20261008T1140Z",
+              "word_initial",
+              "fraction"
+            ]
+          },
+          {
+            "constant": 0.01
+          }
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "plan_b_keyed_L4_1M",
+      "display": "5.899",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L4_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "plan_b_keyed_L2_1M",
+      "display": "5.957",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L2_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "plan_b_keyed_L8_1M",
+      "display": "5.874",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_keyed_depth_8_1m",
+      "display": "5.8741",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_deep_keyed_L8_1M_s0_20261015_v3.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "native_hierarchy_calibrated_fit_nll",
+      "display": "1.9258",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/hierarchy/aws_g_hier_native_frozen_readout_20261015_v1.json",
+        "path": [
+          "rows",
+          1,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "composition_messages_before",
+      "display": "349",
+      "decimals": 0,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "coalesced_views",
+          "baseline",
+          "deliveries"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "composition_messages_after",
+      "display": "125",
+      "decimals": 0,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "coalesced_views",
+          "coalesced",
+          "deliveries"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "frame_nuisance_before",
+      "display": "0.4162",
+      "decimals": 4,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "observed_frame",
+          "combined_nuisance_before"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "frame_nuisance_after",
+      "display": "0.00316",
+      "decimals": 5,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "observed_frame",
+          "combined_nuisance_after"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "keyed_language_depth16",
+      "display": "5.8879",
+      "decimals": 4,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "language_depth",
+          "completed_extensions",
+          0,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "async_hierarchy_b2l3",
+      "display": "5.9392",
+      "decimals": 4,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "language_depth",
+          "completed_extensions",
+          1,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "async_hierarchy_b4l4",
+      "display": "5.8911",
+      "decimals": 4,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "language_depth",
+          "completed_extensions",
+          2,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "native_role_continued_dev",
+      "display": "0.68661",
+      "decimals": 5,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "current_native_comparison",
+          "rows",
+          "continued",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "native_role_carried_dev",
+      "display": "0.71641",
+      "decimals": 5,
+      "value": {
+        "file": "investment/hierarchy_development_evidence.json",
+        "path": [
+          "composition_engineering",
+          "current_native_comparison",
+          "rows",
+          "carried",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_wikipedia_developed_total",
+      "display": "-258.76",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "wikipedia",
+          "total"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_wikipedia_developed_se",
+      "display": "37.73",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "wikipedia",
+          "se"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_wikipedia_developed_target",
+      "display": "-122.62",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "wikipedia",
+          "target"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_wikipedia_developed_margin",
+      "display": "136.14",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "wikipedia",
+          "margin"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "hierarchy_calibrated_geometry_gain",
+      "display": "34.6",
+      "decimals": 1,
+      "value": {
+        "ratio": [
+          {
+            "file": "investment/b4_developed_evidence.json",
+            "path": [
+              "hierarchy",
+              "root_geometry_error_reduction"
+            ]
+          },
+          {
+            "constant": 0.01
+          }
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L8_4M_flagship",
+      "display": "5.841",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L2_4M_flagship",
+      "display": "5.865",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L8_4M_prequential",
+      "display": "5.809",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
+        "path": [
+          "prequential_last_quarter"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L2_4M_prequential",
+      "display": "5.836",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
+        "path": [
+          "prequential_last_quarter"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_part_whole_v2_4M_flagship",
+      "display": "5.859",
+      "decimals": 3,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_part_whole_4M_s0_20261015_v2.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L8_4M_flagship_4dp",
+      "display": "5.8414",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "r1_one_pass_L2_4M_flagship_4dp",
+      "display": "5.8648",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_deep_keyed_stream_L2_4M_s0_20261015_v1.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "b4_developed_github_total",
+      "display": "-284.47",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "github",
+          "total"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_developed_github_se",
+      "display": "54.29",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "github",
+          "se"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_developed_github_margin",
+      "display": "11.57",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "github",
+          "margin"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_developed_stackoverflow_total",
+      "display": "12.00",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "stackoverflow",
+          "total"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "b4_developed_stackoverflow_se",
+      "display": "0.65",
+      "decimals": 2,
+      "value": {
+        "file": "investment/b4_developed_evidence.json",
+        "path": [
+          "stackoverflow",
+          "se"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "bound_hierarchy_contracts",
+      "display": "16",
+      "decimals": 0,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "native_bindings",
+          "contract_tests"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "bound_hierarchy_native_stages",
+      "display": "32",
+      "decimals": 0,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "native_bindings",
+          "native_stages"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "bound_fresh_L2",
+      "display": "5.8648",
+      "decimals": 4,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "fresh_data_depth",
+          "rows",
+          0,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "bound_fresh_L8",
+      "display": "5.8414",
+      "decimals": 4,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "fresh_data_depth",
+          "rows",
+          1,
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "owned_support_fraction",
+      "display": "25",
+      "decimals": 0,
+      "value": {
+        "ratio": [
+          {
+            "file": "investment/bound_hierarchy_evidence.json",
+            "path": [
+              "ownership_engineering",
+              "fragmented_fraction_dev"
+            ]
+          },
+          {
+            "constant": 0.01
+          }
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "owned_complete_parts",
+      "display": "8",
+      "decimals": 0,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "ownership_engineering",
+          "complete_part_memories"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "owned_contract_tests",
+      "display": "19",
+      "decimals": 0,
+      "value": {
+        "file": "investment/bound_hierarchy_evidence.json",
+        "path": [
+          "ownership_engineering",
+          "contract_tests"
+        ]
+      },
+      "documents": [
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "current_public_headline_wins",
+      "display": "13",
+      "decimals": 0,
+      "value": {
+        "file": "investment/public_benchmark_headlines.json",
+        "path": [
+          "wins"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md",
+        "investment/PITCH_DECK.json",
+        "investment/brief/evidence_brief.tex",
+        "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
+      ]
+    },
+    {
+      "id": "current_public_headline_ahead",
+      "display": "53",
+      "decimals": 0,
+      "value": {
+        "file": "investment/public_benchmark_headlines.json",
+        "path": [
+          "ahead"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md",
+        "investment/PITCH_DECK.json",
+        "investment/brief/evidence_brief.tex",
+        "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
+      ]
+    },
+    {
+      "id": "current_public_headline_runs",
+      "display": "61",
+      "decimals": 0,
+      "value": {
+        "file": "investment/public_benchmark_headlines.json",
+        "path": [
+          "runs"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md",
+        "investment/PITCH_DECK.json",
+        "investment/brief/evidence_brief.tex",
+        "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
+      ]
+    },
+    {
+      "id": "root_swap_sensitivity",
+      "display": "51.62",
+      "decimals": 2,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              1,
+              "mean_root_feature_distance"
+            ]
+          },
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              0,
+              "mean_root_feature_distance"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "logit_swap_sensitivity",
+      "display": "27.73",
+      "decimals": 2,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              1,
+              "mean_absolute_logit_contrast"
+            ]
+          },
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              0,
+              "mean_absolute_logit_contrast"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "hybrid16M_L4_flagship",
+      "display": "5.2699",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_depthdata_L4_16m_s0_20261016_v1.json",
+        "path": [
+          "flagship_protocol",
+          "nll"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "report/I_SCIENCE.md",
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "cerl4M_flagship",
+      "display": "5.4665",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json",
+        "path": [
+          "flagship",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md",
+        "report/I_SCIENCE.md",
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "cerl4M_score65528",
+      "display": "5.3094",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json",
+        "path": [
+          "score_65528",
+          "nll"
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md",
+        "report/I_SCIENCE.md",
+        "investment/brief/evidence_brief.tex"
+      ]
+    },
+    {
+      "id": "native64K_initial_selection",
+      "display": "7.9307",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_native_local_stream_64k_s0_20261016_v1.json",
+        "path": [
+          "initial_selection",
+          "nll"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "REPORT.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "native64K_final_selection",
+      "display": "6.9981",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_native_local_stream_64k_s0_20261016_v1.json",
+        "path": [
+          "final_selection",
+          "nll"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "REPORT.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    },
+    {
+      "id": "native64K_flagship",
+      "display": "7.0473",
+      "decimals": 4,
+      "value": {
+        "file": "experiments/results/token_language/aws_r1_native_local_stream_64k_s0_20261016_v1.json",
+        "path": [
+          "flagship",
+          "nll"
+        ]
+      },
+      "documents": [
+        "README.md",
+        "REPORT.md",
+        "report/I_SCIENCE.md",
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "investment/INVESTOR_PROOF_PLAN.md"
+      ]
+    }
+  ]
 }

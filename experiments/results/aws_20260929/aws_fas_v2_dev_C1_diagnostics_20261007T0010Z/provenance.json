@@ -1,0 +1,28 @@
+{
+  "run_tag": "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z",
+  "script": "experiments/fas/readout_diagnostics.py",
+  "arguments": [
+    "--result",
+    "experiments/results/aws_20260929/aws_fas_v2_dev_C1_20261006T1715Z/aws_fas_v2_dev_C1_20261006T1715Z.json",
+    "--runs",
+    "300",
+    "--lanes",
+    "32",
+    "--tag",
+    "aws_fas_v2_dev_C1_diagnostics_20261007T0010Z"
+  ],
+  "output_redirected": true,
+  "source_sha256": "f08a690f8ef74f379f323fbf517e442f2a3dcb1b608064724a31f14539855f59",
+  "git_commit": "543a19d839d53ddbcbb21c443b9922a20ece7bf6",
+  "limits": {
+    "MEM_CAP_KB": "12000000",
+    "MEM_CAP_RSS_KB": "4500000",
+    "MIN_AVAIL_MB": "8192",
+    "JOB_TIMEOUT_S": "3600"
+  },
+  "start_utc": "2026-10-07T10:43:47Z",
+  "status": "failed",
+  "error": "Traceback (most recent call last):\n  File \"/workspace/experiments/aws_benchmark.py\", line 58, in main\n    exec(compile(tree, str(script), 'exec'), {'__name__': '__main__', '__file__': str(script)})\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/experiments/fas/readout_diagnostics.py\", line 127, in <module>\n    main()\n    ~~~~^^\n  File \"/workspace/experiments/fas/readout_diagnostics.py\", line 52, in main\n    out = OUT / f'{a.tag}.json'\n          ~~~~^~~~~~~~~~~~~~~~~\nTypeError: unsupported operand type(s) for /: 'str' and 'str'\n",
+  "wall_s": 0.759,
+  "peak_rss_kb": 305640
+}

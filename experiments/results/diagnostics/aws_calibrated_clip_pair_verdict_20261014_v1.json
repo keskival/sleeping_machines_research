@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "policy": "global",
+      "nll": 6.231192537876666,
+      "parent": "aws_integrated_receiver_d8_8m_20261014_s6_v1",
+      "added_updates": 4096,
+      "added_targets": 2097088,
+      "total_actor_targets": 10485440,
+      "inherited_training_s": 28533.59827275062,
+      "incremental_training_including_smoke_s": 6130.568854892626,
+      "calibration_s": 0.0,
+      "evaluation_scoring_s": 6.8550573631655425,
+      "incremental_process_and_scoring_proxy_s": 6194.098633561283,
+      "whole_fit_and_auxiliary_proxy_s": 34727.6969063119,
+      "calibration_factual_targets": 0,
+      "max_rss_kb": 762344
+    },
+    {
+      "policy": "calibrated",
+      "nll": 6.226238129328493,
+      "parent": "aws_integrated_receiver_d8_8m_20261014_s6_v1",
+      "added_updates": 4096,
+      "added_targets": 2097088,
+      "total_actor_targets": 10485440,
+      "inherited_training_s": 28533.59827275062,
+      "incremental_training_including_smoke_s": 6103.141651446931,
+      "calibration_s": 47.75944306398742,
+      "evaluation_scoring_s": 6.681120978202671,
+      "incremental_process_and_scoring_proxy_s": 6219.594308836153,
+      "whole_fit_and_auxiliary_proxy_s": 34753.19258158677,
+      "calibration_factual_targets": 16384,
+      "max_rss_kb": 731092
+    }
+  ],
+  "protocol": {
+    "targets": 8192,
+    "target_start": 25165825,
+    "target_end_inclusive": 25174016,
+    "window": 1024,
+    "lanes": 8,
+    "eos_state_reset": false
+  },
+  "nll_gain": 0.004954408548172751,
+  "incremental_work_ratio": 1.0041161235529454,
+  "decision": "Quality retained within0.01; locality engineering point, no competitivequalitywin. Measure useful async execution before more fitting",
+  "input_sha256": {
+    "experiments/results/token_language/aws_calibrated_clip_pair_global_20261014_s6_v1_2m.json": "a31f8faeed888c9c0741c4434034592de7b128b4f9e5b2b5f06643e532d183bf",
+    "experiments/results/token_language/aws_calibrated_clip_pair_global_20261014_s6_v1_smoke.json": "39e9bfaa172f5a4cac55261e2be9d8656a8c9d7fea8d0aea51d47f416862b9c3",
+    "experiments/results/diagnostics/aws_calibrated_clip_pair_global_20261014_s6_v1_2m_quality.json": "9ed80e6f5a176cfb2cd0d2bfec9b9dfe7d9aeb06401b1c5e7b71e16044c64784",
+    "experiments/results/token_language/aws_calibrated_clip_pair_calibrated_20261014_s6_v1_2m.json": "896628f3e2a50e991317e556cdd9870c79d1739d5b2f4067bdd7a58858381104",
+    "experiments/results/token_language/aws_calibrated_clip_pair_calibrated_20261014_s6_v1_smoke.json": "550fc5caa6b25d15b78ce438bdd7ba7ac045508d020c60ba5b4df4c68857a843",
+    "experiments/results/diagnostics/aws_calibrated_clip_pair_calibrated_20261014_s6_v1_2m_quality.json": "240c8ef71ef9a77a3cf8e6586ef0173be536746ef7be68e3a9ddf9385a079c7d"
+  },
+  "source_sha256": {
+    "experiments/analyze_calibrated_clip_pair.py": "e7f167ad4668842fcdfcbbdc1f0138c088abfe0d9bc78ac9595f21088e1484fa"
+  },
+  "scope": "One paired2Mcontinuation/seed6 from identical acquired8MbankD8learner, same actual data/order/teaching. Calibrated policy also uses16kTRAINcalibration exposures; work charged once. Process/scoring proxy excludes unspecified transfer/publication time, uses recorded diagnostics rather than a full profiler, and is not FLOPs/energy. Norm retention alone is not quality evidence; no publicbenchmark or hardwareclaim."
+}

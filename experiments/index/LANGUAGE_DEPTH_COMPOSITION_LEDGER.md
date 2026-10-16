@@ -85,3 +85,10 @@ Update this ledger whenever a language depth/composition result completes.
 6. **Concept capacity at constant work** (product-key bank 4k–262k; ordered on AWS, not yet run).
 7. **Native sparse state inside units** (cause excitations; AWS receiver core) in place of the temporal-memory vector.
 8. **Carried memory across lanes** in training and scoring.
+
+## AWS reconciliation, 16 October
+
+- Completed older D16/8M race-core development: best DEV NLL 6.817296 (`aws_native_deep_d16_8m_20261013_s6_v1`); receiver-local clipping D8/8M: 6.910948 (`aws_local_clip_receiver_d8_8m_20261014_s6_v1`). These earlier protocols differ from CERL's flagship protocol; do not rank across them. They provide no reason to repeat the same depth construction.
+- Calibrated/global clipping comparison after 2M additional targets: 6.226238 versus 6.231193 on the paired 8,192-target protocol, incremental work ratio 1.0041. This is a small locality-engineering point, not the language quality breakthrough.
+- Current-source CERL/RMR admission gates pass on AWS. Ordered race prediction, residual-memory K2/K8, product-key capacity and messages take priority over further local-learner extensions. Current source-bound runs finish unchanged.
+- [Cross-host synthesis and winning path](../theory/CURIE_SYNTHESIS_AND_WINNING_PATH_20261016.md).

@@ -142,15 +142,13 @@ This construction combines familiar vector operations with temporal computation 
 - [R3: Architecture, numerical contracts and report](../report/sleeping_machines_status.pdf) — Private technical report: whole-family definition, landscape, composition and scoped evidence. Modern matched controls, trained sparse parity and measured hardware energy remain open.
 
 
-## 13. Better language prediction, less complete training time.
+## 13. Race-based language prediction beats the dense hybrid.
 
-Native leads both market references across three acquired seeds. Addressed memory leads language development; useful depth and online replication are next.
+Same 4M fresh GPT-2/FineWeb tokens, order and schedule; one development seed.
 
-Source-bound completed evidence, same acquisition/prior/updates/evaluation. At8M execution and teaching improvements combine. FactualBP/Adam and model-wide clipping remain charged. Receiver-local banks and delayed-credit replay are verified components, not measured clockless hardware efficiency or a fitted long-horizon critic. Current integration status is reported separately; public validation sealed. Current16October: the completed16M four-layer dense hybrid diagnostic scores5.2699NLL on8192GPT2FineWebDEV targets/1024windows(one seed),the fully native deep model's target. The8layer4.19Mparameter native receiver-race prototype passes local eligibility and packed event/gradient contracts plus a32target optimizer gate;no recurrentBPTT,zeroSSM/attention/MLP carrier. No native predictive win yet. Sources:depthdata_l4_evidence.json and local_native_language_evidence.json.
+The winning CERL member uses two temporal-memory carrier layers and BPTT; it is not the completely native deep event-local learner. The separate eight-layer fully native learner completes 64K targets at 7.0473 flagship NLL and continues with persistent queried memory and local producer credit. Compare each model only under its declared data and evaluation protocol.
 
-- [SLL: Completed integrated sparse-teaching language development](language_learning_evidence.json) — Same8.39Mtargets/GPT2FineWeb/seed6/DEV; measured quality and completeCPUtime versus earlier own full-teaching model. No scaled Transformer or ASIC claim.
-
-- [R1HYBRID: Completed16M hybrid diagnostic](depthdata_l4_evidence.json) — One-seed FineWeb development,not a native-model or public leaderboard win.
+- [R1CERL: Completed causal race language development result, 16 October 2026](../experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json) — Same 4M-token data/order/schedule and development protocol, one seed; two temporal-memory carrier layers and one cause-race level. Estimated arithmetic, not hardware measurements.
 
 - [R1NATIVE: Fully native deep local-learning implementation](local_native_language_evidence.json) — Conditional eligibility,native event/gradient parity and32targetoptimizer gate;no predictive quality claim.
 

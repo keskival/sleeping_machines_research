@@ -1,0 +1,10 @@
+..                                                                       [100%]
+=============================== warnings summary ===============================
+tests/test_document_boundary_causes.py::test_nonzero_document_law_normalizes_and_gradient_matches_finite_difference
+  /workspace/tests/test_document_boundary_causes.py:38: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+    assert abs(float((plus-minus)/2e-5-expected[j]))<1e-8
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 1 warning in 0.65s
+{"gate": "PASS", "checkpoint_cursor": 77824, "wall_s": 23.949166384059936, "max_rss_kb": 2003176}

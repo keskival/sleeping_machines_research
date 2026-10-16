@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "producer_replay_native_gate",
+  "gate": "PASS",
+  "checkpoint_sha256": "b82621cc31f995643e94689eeb05058e5339aa421d387c843d54b6137796192a",
+  "checkpoint_cursor": 69632,
+  "migration": {
+    "new_parameters": 0,
+    "parameter_objects_preserved": true,
+    "old_publications": "Preserved;no invented producer inputs. New publications carry bounded local producer records.",
+    "credit": "Historical reads now teach the local composer/mix and last input-write path;original own-write eligibility still supplies native write-parameter credit. No recursive replay through earlier child producers."
+  },
+  "first": {
+    "nll": 6.751624584197998,
+    "preclip_norm": 1.8337219953536987,
+    "replay_reads": 344
+  },
+  "second": {
+    "nll": 6.8514814376831055,
+    "preclip_norm": 1.645267128944397,
+    "replay_reads": 792
+  },
+  "exact_serialized_resume": true,
+  "storage": {
+    "occupied_receivers": 512,
+    "receiver_state_and_eligibility_bytes": 2260992,
+    "temporal_graph_entries": 0,
+    "scope": "Numerical native receiver eligibility plus immutable publication inputs/keys/traces and transitive bound parts. Trace bytes may alias current receiver traces;Python metadata,current graphs and credit packets additional. Per-layer root rings bounded;transitive lineage is not constant memory. Additional bounded local producer inputs/frozen write coefficients;current replay graphs/packets are paid. No whole-history replay.",
+    "bound_publications": 381,
+    "bound_edges": 600,
+    "publication_tensor_bytes": 307848,
+    "retained_publication_trace_bytes": 6729984,
+    "producer_records": 338,
+    "producer_tensor_bytes": 2068608
+  },
+  "wall_s": 23.43890177900903,
+  "max_rss_kb": 1998228,
+  "scope": "Two32targetacquiredTRAINupdates plus discarded32targetresumeaudit;running checkpoint untouched. No DEV/TEST,ablationorquality claim. Forward unchanged by local producer tangent;fixed-input/route/time local derivative exact under fixed parameters,changedcomposer/mix historical maps approximate. Own-write credit separate,optimizer unchanged."
+}

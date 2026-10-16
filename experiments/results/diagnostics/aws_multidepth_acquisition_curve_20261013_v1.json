@@ -1,0 +1,71 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "rows": [
+    {
+      "size": "512k",
+      "models": {
+        "bernoulli_teacher": {
+          "targets": 524272,
+          "nll": 7.188260665594362,
+          "training_s": 470.53089881362393
+        },
+        "multidepth_readout": {
+          "targets": 524272,
+          "nll": 7.203313730277267,
+          "training_s": 523.215395746287
+        }
+      },
+      "paired_gain": -0.015053064682904349
+    },
+    {
+      "size": "2m",
+      "models": {
+        "bernoulli_teacher": {
+          "targets": 2097088,
+          "nll": 7.018168490540748,
+          "training_s": 1945.3606735407375
+        },
+        "multidepth_readout": {
+          "targets": 2097088,
+          "nll": 7.0583301020603555,
+          "training_s": 2164.581348179141
+        }
+      },
+      "paired_gain": -0.04016161151960773
+    },
+    {
+      "size": "8m",
+      "models": {
+        "bernoulli_teacher": {
+          "targets": 8388352,
+          "nll": 6.527870447495404,
+          "training_s": 7734.249354515225
+        },
+        "multidepth_readout": {
+          "targets": 8388352,
+          "nll": 6.521633372587316,
+          "training_s": 8657.82008446171
+        }
+      },
+      "paired_gain": 0.006237074908088225
+    }
+  ],
+  "slopes": [
+    {
+      "interval": "512k->2m",
+      "nll_reduction_per_data_doubling": {
+        "bernoulli_teacher": 0.08504608752680731,
+        "multidepth_readout": 0.07249181410845562
+      }
+    },
+    {
+      "interval": "2m->8m",
+      "nll_reduction_per_data_doubling": {
+        "bernoulli_teacher": 0.2451490215226717,
+        "multidepth_readout": 0.2683483647365197
+      }
+    }
+  ],
+  "scope": "Single seed, same fixed recipe and private DEV; fresh independent fits at three acquisition budgets. Empirical finite differences, not an asymptotic scaling law, external win, iso-FLOP result or hardware efficiency measurement."
+}
