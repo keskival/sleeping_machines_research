@@ -146,7 +146,7 @@ This construction combines familiar vector operations with temporal computation 
 
 Same 4M fresh GPT-2/FineWeb tokens, order and schedule; one development seed.
 
-The winning CERL member uses two temporal-memory carrier layers and BPTT; it is not the completely native deep event-local learner. The separate eight-layer fully native learner completes 64K targets at 7.0473 flagship NLL and continues with persistent queried memory and local producer credit. Compare each model only under its declared data and evaluation protocol.
+The winning CERL member uses two temporal-memory carrier layers and BPTT; it is not the completely native deep event-local learner. The separate eight-layer fully native learner completes 64K targets at 7.0473 flagship NLL and continues with persistent queried memory and local producer credit. Compare each model only under its declared data and evaluation protocol. The two-page composition demonstration explains events as scheduling and persistent memories as content. Actual-child delayed credit is implemented with no new parameters; its numerical and acquired-learner recovery gate is queued. The next investment proof is better held-out prediction and relations from deeper refinement at disclosed work, not a claimed scaling result. Companion: sleeping_machines_composition_demonstration.pdf.
 
 - [R1CERL: Completed causal race language development result, 16 October 2026](../experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json) — Same 4M-token data/order/schedule and development protocol, one seed; two temporal-memory carrier layers and one cause-race level. Estimated arithmetic, not hardware measurements.
 

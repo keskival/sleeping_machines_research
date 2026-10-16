@@ -1,0 +1,73 @@
+{
+  "status": "completed",
+  "packet_kind": "completed-evidence-and-current-demonstration-plan",
+  "battle": "R1",
+  "date": "2026-10-16",
+  "prediction": {
+    "race_nll": 5.466545760631561,
+    "dense_nll": 5.841435983777046,
+    "gain_nats": 0.3748902231454849,
+    "targets": 8192,
+    "train_tokens": 4194304,
+    "seeds": 1
+  },
+  "error_strata": {
+    "seen_earlier_in_window": {
+      "share": 0.5101318359375,
+      "cerl": 3.1588990688323975,
+      "dense": 3.7482528686523438
+    },
+    "novel_in_window": {
+      "share": 0.4898681640625,
+      "cerl": 7.869649410247803,
+      "dense": 8.021204948425293
+    }
+  },
+  "cause_strata": {
+    "background": {
+      "share": 0.19873046875,
+      "cerl": 6.403276443481445,
+      "dense": 6.456751823425293
+    },
+    "concept": {
+      "share": 0.618896484375,
+      "cerl": 5.717440605163574,
+      "dense": 5.875097274780273
+    },
+    "repeat": {
+      "share": 0.0994873046875,
+      "cerl": 4.10237979888916,
+      "dense": 4.937647819519043
+    },
+    "continue": {
+      "share": 0.0828857421875,
+      "cerl": 2.9846038818359375,
+      "dense": 5.199594020843506
+    }
+  },
+  "native_training_flops_per_target": 7744777.035294117,
+  "composition_credit": {
+    "implementation": "implemented",
+    "numerical_gate": "queued",
+    "max_child_edges_per_root": 6,
+    "max_child_edges_per_path": 2,
+    "new_parameters": 0
+  },
+  "next_proofs": [
+    "Deeper models improve same-protocol held-out prediction, including novel tokens and relations.",
+    "More stored capacity delivers useful quality while full selected activity and discovery/learning work are reported.",
+    "Actual-child credit passes oracle, factual parity, work cap and acquired optimizer/recovery tests.",
+    "Independent event rates reduce measured work or traffic while retaining quality."
+  ],
+  "scope": "Completed race-language development win: one seed, same4M-token data/order/schedule and flagship protocol;different model sizes. Winner retains two temporal-memory carrier layers/BPTT. Fully native deep local-learning and residual-memory scaling remain separately labelled development. No public language leaderboard, hardware energy/latency or scaling-supremacy claim.",
+  "input_sha256": {
+    "scripts/build_composition_investor_demo.py": "40e6f5b962cfe77131bc9cd7bef7bf0edb51ce6cbfa0d3208bd9a7bf02449a0b",
+    "experiments/results/token_language/curie_r1_cerl_4M_s0_20261016_v1.json": "55546d723f2c305b386814cf489c74421bdc3431505262ca40399e7b143eb359",
+    "experiments/results/token_language/curie_r1_deep_keyed_stream_L8_4M_s0_20261015_v1.json": "0016b25439db27f4439bae03fadd181e6c7c06a08c5c8436076dbee6e9a357e2",
+    "experiments/results/diagnostics/curie_cerl_vs_dense_4M_error_analysis_20261016_v1.json": "e996fe832cfc231e8fec06cdec255368dfb7aa6fe4018d0fee1543e05fd69498",
+    "experiments/theory/COMPOSITION_LEARNING_CONTRACT.md": "f805d4c83d4204897368a210de7775613709abc5b92958e64e4ac37055e4954b",
+    "sleeping_machines/compositional_producer_credit.py": "9007d0fd4d7e7586800d082fbe303bf7b3937d29d01239ea48f021376bf1d421",
+    "tests/test_compositional_producer_credit.py": "b2b134ff566bbd847a8b5832333b6f3ac87b3368fb4cf79ecffcc5cf3dfe31e7",
+    "experiments/queue/aws_model_improvement_repair_20261005T161000Z/addenda/000_aws_r1_000_composition_learning_contract_20261016_v1.json": "194d3b633b2388f5a9589629a1a36acda687da1dabc72f8a2acda42e689a2dcf"
+  }
+}

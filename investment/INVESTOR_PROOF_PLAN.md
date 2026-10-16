@@ -11,6 +11,21 @@ explains the upside; it does not replace those proofs. The €3M raise and €10
 stretch case remain as described in [the valuation rationale](VALUATION_RATIONALE.md).
 This is an execution plan, not a prediction of investor acceptance.
 
+**Demonstrating compositional scaling.** The completed causal race language result establishes a useful prediction mechanism: **5.4665 versus 5.8414** development NLL on the same 4M-token recipe. The next construction lets higher stages query several persistent lower memories, learn joint refinements, and send delayed task credit back to the actual memory producers. Bounded child-credit replay is implemented; its gradient, prediction-parity, work-cap and acquired-learner recovery gate is queued. The investment milestone is better held-out prediction and reusable relations from deeper refinement at disclosed learning work, followed by useful capacity with measured activity, discovery and traffic. These are the next proofs, not completed scaling results. [Two-page demonstration](sleeping_machines_composition_demonstration.pdf); [source-bound evidence](composition_demonstration_evidence.json).
+
+## Composition demonstration: investment gates
+
+| Proof | Evidence or pass criterion | Current state |
+|---|---|---|
+| Race prediction works in language | 5.4665 versus 5.8414 flagship DEV NLL on the same 4M-token recipe; one seed | Completed development win |
+| Residual memory makes depth useful | Improve on the saved 4M race-model target of 5.4665 under the same flagship protocol; report each depth's full learning work | Depth fits running; no final scores |
+| Native compositions receive task credit | Independent conditional-gradient agreement, factual prediction/RNG parity, bounded replay and exact acquired-learner recovery | Implemented; numerical gate queued |
+| Fully native deep prediction competes | Beat the saved 4M dense-hybrid target of 5.8414 using the native event-local learner, with all inherited and added acquisition charged | In development; current completed native point uses only 64K targets |
+| Capacity exceeds selected activity usefully | Larger banks improve completed prediction while scored keys, selected values, alternatives, learning work, state and traffic are disclosed | Capacity fits running/queued |
+| Timing creates deployment value | Measure quality and actual work/traffic under independent event rates; hardware latency/energy requires hardware measurements or an explicit model | Next deployment proof |
+
+The carrier-backed race-memory track and fully native event-local track have separate verdicts. Development choices use declared development data; public TEST protocols remain sealed. A successful selected construction should receive a fixed-configuration confirmation before stronger reproducibility claims. The schematic is an explanation of the target architecture, not an observed semantic trace.
+
 ## Representational hierarchy: current progress and next gate
 
 **Progress toward deeper reusable representations.** Keyed language development loss improves **5.9572→5.8987→5.8741nats/token** at2/4/8layers on the65528target slice and1.05M-token corpus,one seed and different total work. These depth results come from the dense keyed hybrid, now a labelled diagnostic control (founder direction 16 October: build our own models); in one pass over 4M fresh tokens it favors eight over two layers (**5.8414 versus 5.8648**), and 16M fresh tokens take it to **5.2183** at eight layers (5.2699 at four). The native causal-race member is measured against these numbers. The earlier native FIT probe gives **1.9258NLL** after readout calibration on the same12FIT prefixes (learnability evidence). Native local grounding improves calibrated root geometry by **34.6%**,while whole-label transfer still selects the acquired actor. The new **8level/32stage** construction keeps exact role-bearing child-memory versions accessible as lower memories evolve;its acquired actor outputs,schedules and parameter gradients match bit-for-bit. A native race head pools the two actual root parts with live credit;**16numerical contracts** pass. These are demonstrated representation/access mechanisms;stable semantic identity and relation transfer are the next learning test. [Bound evidence](bound_hierarchy_evidence.json).
