@@ -1,0 +1,134 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Latest PRODUCT_ORDERS: RMR2 firing and standing slots after current fits; fresh same-protocol4Mdevelopment, temporal carrier/BPTT and lane reset explicitly retained. Soft expected writes in training; hard firing does not imply sparse dispatch. All discovery, correction, learning and storage charged; one-thread3MKiB RSS/12MKiB VMS watchdogs. Numerical gate precedes each RMR2fit. Preserve current source-bound loaded code and results; no TEST or dense training.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "2": [
+      {
+        "name": "aws_r1_cerl_pk262144_4M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_pk262144_4M_s0_20261016_v2/aws_r1_cerl_pk262144_4M_s0_20261016_v2.txt",
+        "queue_sha256": "708ebc793b4dd5d7587c19409c0312bed8b46cf3cb41c88be2ca38fdfe938597",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_pk262144_4M_s0_20261016_v2.json",
+        "requires": [],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_r1_cerl_msg_4M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_cerl_msg_4M_s0_20261016_v2/aws_r1_cerl_msg_4M_s0_20261016_v2.txt",
+        "queue_sha256": "00571a15a9c04517060aaded778a717c5062b59fbd31a789d85bceeea390ba9c",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_cerl_msg_4M_s0_20261016_v2.json",
+        "requires": [],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v1_gate",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1_gate/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1_gate.txt",
+        "queue_sha256": "3e2f288a9fcfdd45e7908456fb5dd4bbfdb724218755e6c832b91463553c0826",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/hierarchy/rmr2_admission_gate.py": "c5c6e3e65d6817663d6a08b033f4b4b917a2dbd65b453e85d64bafe389dfe2a7"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1_gate.json",
+        "requires": [],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1.txt",
+        "queue_sha256": "de69c88a7768651519e43a8411ffcaef2a9d82e3d8bca5df8e11e4195fdc4e84",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/hierarchy/rmr2_admission_gate.py": "c5c6e3e65d6817663d6a08b033f4b4b917a2dbd65b453e85d64bafe389dfe2a7"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr2_act0_K4_4M_s0_20261016_v1_gate.json",
+            "stage": "RMR2 numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_rmr2_act01_K4_4M_s0_20261016_v1_gate",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1_gate/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1_gate.txt",
+        "queue_sha256": "83279a7110fe919293b887dd524f823e94444f149202cd0c7808548d41a5a1dc",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/hierarchy/rmr2_admission_gate.py": "c5c6e3e65d6817663d6a08b033f4b4b917a2dbd65b453e85d64bafe389dfe2a7"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1_gate.json",
+        "requires": [],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      },
+      {
+        "name": "aws_r1_rmr2_act01_K4_4M_s0_20261016_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1.txt",
+        "queue_sha256": "e3e13764940aa88d7a5641a7406046641741543b65a6d475a5405ed30e1b6142",
+        "source_sha256": {
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+          "experiments/hierarchy/rmr2_admission_gate.py": "c5c6e3e65d6817663d6a08b033f4b4b917a2dbd65b453e85d64bafe389dfe2a7"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr2_act01_K4_4M_s0_20261016_v1_gate.json",
+            "stage": "RMR2 numerical admission"
+          }
+        ],
+        "timeout_s": 100000,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
