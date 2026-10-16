@@ -31,6 +31,9 @@ def load_runs(out_dir, name):
     for p in sorted(out_dir.glob(f'{name}_*_s0.json')):
         r = json.loads(p.read_text())
         if r.get('status') != 'completed': continue
+        if 'dev_w1024' not in r and 'score_65528' in r:                                         # native CERL GPU runs: the 65,528-target slice is the development loss
+            r['dev_w1024'] = r['score_65528']['nll']; r['select_w1024'] = r['select']['nll']; r['flagship_w1024'] = r['flagship']['nll']; r.setdefault('variant', f"cerl_u{r['units']}")
+            r.setdefault('mean_mfu', None); r.setdefault('shape', dict(d=r['args']['d'], units=r['units'])); r.setdefault('lr', r['args']['lr']); r['args'].setdefault('layers', r['args'].get('layers'))
         diag = out_dir/f"{r['tag']}.diag.jsonl"; r['diag'] = [json.loads(l) for l in diag.open()] if diag.exists() else []
         pub = out_dir/f"{r['tag']}_public.json"; r['public'] = json.loads(pub.read_text())['public_w1024']['nll'] if pub.exists() else None
         runs.append(r)
@@ -77,10 +80,11 @@ def diagnose(r):
         ur = {k: v['update_ratio'] for k, v in last['modules'].items()}; med = float(np.median(list(ur.values()))) if ur else 0
         outl = [k for k, v in ur.items() if med and (v > 10*med or v < med/10)]
         if outl: flags.append(f'update/weight ratio outliers: {outl}')
-    if r['spikes']: flags.append(f"{len(r['spikes'])} loss spikes")
-    if r['nonfinite']: flags.append(f"{len(r['nonfinite'])} non-finite steps")
-    if r['clipped_frac'] > 0.5: flags.append(f"clipped {r['clipped_frac']:.2f} of steps")
-    m = r['milestones'][-1]; out['history'] = m.get('history'); out['roles'] = {k: v['nll'] for k, v in m.get('roles', {}).items()}
+    if r.get('spikes'): flags.append(f"{len(r['spikes'])} loss spikes")
+    if r.get('nonfinite'): flags.append(f"{len(r['nonfinite'])} non-finite steps")
+    if r.get('clipped_frac', 0) > 0.5: flags.append(f"clipped {r['clipped_frac']:.2f} of steps")
+    m = r['milestones'][-1] if r.get('milestones') else {}; out['history'] = m.get('history'); out['roles'] = {k: v['nll'] for k, v in m.get('roles', {}).items()}
+    if 'select' in r and isinstance(r['select'], dict) and 'native' in r['select']: out['native_share'] = r['select']['native']
     out['mfu'] = r.get('mean_mfu'); out['flags'] = flags
     return out
 

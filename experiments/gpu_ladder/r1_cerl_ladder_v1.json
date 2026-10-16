@@ -1,0 +1,16 @@
+{
+ "name": "hz_r1_cerl_ladder_v1",
+ "battle": "R1",
+ "decision": "Native compute frontier and capacity scaling of the causal event race member (theory 169) from 1e16 to 1e18 training FLOPs: does loss fall along width and along the dormant concept bank at near-constant active work, with which exponents, and where does it sit against the published modded-NanoGPT curves (sealed public protocol, scored once per budget optimum)?",
+ "driver": "experiments/r1_cerl_gpu.py",
+ "common": {"lane": 1024, "batch": 32, "layers": 2, "dk": 64, "topk": 4, "explore": 2, "product-keys": 1, "classes": 256, "lr": 2e-3, "evals": 16, "seed": 0},
+ "budgets": [1e16, 1e17, 1e18],
+ "arms": [{"d": 128, "modes": 64, "units": 4096}, {"d": 128, "modes": 64, "units": 65536}, {"d": 256, "modes": 128, "units": 4096}, {"d": 256, "modes": 128, "units": 65536},
+          {"d": 256, "modes": 128, "units": 1048576}, {"d": 512, "modes": 256, "units": 65536}, {"d": 512, "modes": 256, "units": 1048576}],
+ "worker": {"min_avail_mb": 16384, "rss_cap_kb": 64000000, "vmem_cap_kb": "unlimited", "cgroup_reserve_mb": 2048, "timeout_s_per_1e16": 7200},
+ "declaration": ["Stationarity/online: fixed-weight language protocol on a stationary corpus; one pass over fresh lanes (pre-update loss is held out). Online adaptation is scored on PTB/WikiText-2.",
+  "Fighter rationale: the native causal event race member: every token emitted by a race among candidate causes (episodic repeat/continue pointers, race-woken dormant concepts via product-key wake, two-level background word race), exactly normalised competing risks; contracts curie_cerl_contracts_20261016_v8.",
+  "State/history: temporal-memory state over each 1024-token lane (labelled: not yet AWS's completely native receiver core); episodic causes over all earlier events of the lane.",
+  "Retained: race of clocks over causes, sparse addressed episodic memory, separate keys/values, age clocks, capacity beyond activity, counterfactual credit to unchosen units. Not included: multi-level causes, local receiver credit (AWS native core).",
+  "Restrictions: none for symmetry; bf16 matmuls, fp32 normalisers. Resources: measured FLOPs/target and tokens/s in-run; exact resume and SIGTERM checkpoints."]
+}

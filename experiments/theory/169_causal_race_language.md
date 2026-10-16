@@ -124,3 +124,26 @@ in `r1_native_stream_scorer.py`).
 3. **Error analysis** by token role and history bucket (word-initial content words are where the dense member gains; the
    concept causes must carry those).
 4. The GPU ladder runs the native member. Dense variants appear only as labelled controls.
+
+## 7. Development log
+
+**16 Oct, first integrated checks (Curie, FineWeb, 4×256-token lanes, identical lanes, order and LR schedule as the dense
+diagnostic).**
+- *Sample efficiency.* Prequential loss after 300 updates is 6.58 against 7.46 (dense L2) and 7.42 (dense L8) at the same
+  update. The race causes give explicit copying, induction and topic proposals from the first updates.
+- *Native share* (posterior responsibility on unseen training lanes): concepts 67%, background 17%, continue 14%, repeat
+  1.6%. The race causes reduce loss by 0.40 nats over the background route alone.
+- *Long history is used.* The same validation tokens score 7.19 in 2048-token lanes against 7.30 in 256-token lanes.
+- *Repair 1, train/eval consistency.* Exploration units first entered the training mixture but not the evaluation one. They
+  now receive counterfactual credit only: "would I have raised p(y) against the race held fixed?". The predictive race is
+  identical in training and evaluation.
+- *Repair 2, bounded episodic hazard.* The power-law age kernel is initialised with slope 1.5, so it is integrable and the
+  total pointer pressure stays bounded as history grows.
+- *Execution.*
+  - One word-law pass covers all causes: 1.51 s/update instead of 2.46.
+  - Row-local uint8 match lengths: an 8,192-token lane peaks at 549 MB.
+  - The product-key two-stage wake is exact; 65,536 units cost only 14% more time per update than 4,096.
+- *Cause messages* (§3 state update) are implemented and pass contracts. At 300 updates there is no gain yet (6.60 vs 6.58)
+  at 1.55× cost; the paired 4M run decides.
+- Pending: the 4M one-pass fit against the dense diagnostic (5.8414 flagship); the capacity ladder (4k–262k units at
+  constant active work); PTB round 1.
