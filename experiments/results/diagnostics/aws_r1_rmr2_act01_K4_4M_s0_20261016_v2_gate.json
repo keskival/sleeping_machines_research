@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "RMR2 stable decay admission",
+  "gate": "PASS",
+  "legacy_nonfinite_reproduced": true,
+  "long_window": 8192,
+  "oracle_max_errors": [
+    4.76837158203125e-07,
+    2.384185791015625e-07,
+    4.76837158203125e-07,
+    3.5762786865234375e-07
+  ],
+  "decay_finite_difference_error": 0.0007909052073955536,
+  "upstream_contracts": {
+    "zero_gates_equal_cerl": 0.0,
+    "normalisation_sum": 1.000000022958231,
+    "causal_prefix_max_diff": 0.0,
+    "row_chunk_max_diff": 4.76837158203125e-07,
+    "hard_fire_differs_finite": true,
+    "hard_fire_causal_prefix": 0.0,
+    "status": "passed"
+  },
+  "elapsed_s": 0.5146745508536696,
+  "max_rss_kb": 325044,
+  "source_sha256": {
+    "experiments/hierarchy/rmr2_stable_decay_gate.py": "397445497f7d9e48823411d591ac85d4129346f5d3ef8c3a0cc1f3a8ac471c35",
+    "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+    "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+    "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+    "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+    "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  }
+}
