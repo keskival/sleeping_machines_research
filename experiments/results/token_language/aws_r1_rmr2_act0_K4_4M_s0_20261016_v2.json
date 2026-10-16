@@ -1,0 +1,254 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "RMR2 standing-memory race model, causal stable decay, one pass",
+ "tag": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v2",
+ "args": {
+  "mode": "train",
+  "tag": "aws_r1_rmr2_act0_K4_4M_s0_20261016_v2",
+  "seed": 0,
+  "d": 128,
+  "modes": 64,
+  "layers": 2,
+  "dk": 64,
+  "units": 1024,
+  "topk": 4,
+  "explore": 2,
+  "classes": 256,
+  "levels": 4,
+  "read_dk": 64,
+  "top_m": 4,
+  "chunk": 64,
+  "read_topk": 0,
+  "rezero": 1,
+  "train_tokens": 4194304,
+  "lane": 256,
+  "batch": 4,
+  "lr": 0.003,
+  "wd": 0.01,
+  "row_chunk": 512,
+  "checkpoint_every": 256,
+  "max_steps": 0,
+  "log_every": 100,
+  "standing": 256,
+  "standing_m": 2,
+  "act_cost": 0.0,
+  "hard_fire_eval": 0
+ },
+ "parameters": 7530976,
+ "steps": 4096,
+ "presentations": 4177920,
+ "train_wall_s": 5644.831597566605,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 1024,
+   "tokens": 1048576,
+   "select": {
+    "nll": 6.217209197744603,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.642152314542501,
+     "resp_bg": 0.26041779226273604,
+     "resp_concept": 0.5665740665679858,
+     "resp_repeat": 0.042807451443192535,
+     "resp_continue": 0.13020068821353947,
+     "level2_fire_rate": 0.8110702410340309,
+     "level2_new_norm": 0.9596168324351311,
+     "level2_standing_norm": 0.4132439196109772,
+     "level3_fire_rate": 0.8331621587276459,
+     "level3_new_norm": 2.2342770099639893,
+     "level3_standing_norm": 0.8474112153053284,
+     "level4_fire_rate": 0.529634565114975,
+     "level4_new_norm": 0.1024475246667862,
+     "level4_standing_norm": 0.7959905192255974,
+     "native_gain": 0.4249431167978974
+    }
+   },
+   "prequential_segment": 6.509521163068712,
+   "elapsed_s": 1420
+  },
+  {
+   "step": 2048,
+   "tokens": 2097152,
+   "select": {
+    "nll": 5.875205676847979,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.3250027643102635,
+     "resp_bg": 0.2885713260256857,
+     "resp_concept": 0.5151938228186859,
+     "resp_repeat": 0.0775031961644415,
+     "resp_continue": 0.11873165802719844,
+     "level2_fire_rate": 0.7998086512088776,
+     "level2_new_norm": 0.7121438533067703,
+     "level2_standing_norm": 0.07763113360852003,
+     "level3_fire_rate": 0.7838780879974365,
+     "level3_new_norm": 1.3406145870685577,
+     "level3_standing_norm": 1.374326914548874,
+     "level4_fire_rate": 0.4627298153936863,
+     "level4_new_norm": 0.023980345344170928,
+     "level4_standing_norm": 0.7411708757281303,
+     "native_gain": 0.44979708746228475
+    }
+   },
+   "prequential_segment": 5.821240219753236,
+   "elapsed_s": 2829
+  },
+  {
+   "step": 3072,
+   "tokens": 3145728,
+   "select": {
+    "nll": 5.699226726015778,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.143213558732794,
+     "resp_bg": 0.24082736220915082,
+     "resp_concept": 0.5545620079128173,
+     "resp_repeat": 0.10203824655535487,
+     "resp_continue": 0.10257238599380299,
+     "level2_fire_rate": 0.8201047778129578,
+     "level2_new_norm": 1.2250158339738846,
+     "level2_standing_norm": 0.4726812168955803,
+     "level3_fire_rate": 0.8335495740175247,
+     "level3_new_norm": 1.4777101874351501,
+     "level3_standing_norm": 1.6703109741210938,
+     "level4_fire_rate": 0.5148305371403694,
+     "level4_new_norm": 0.022876740666106343,
+     "level4_standing_norm": 0.7856893688440323,
+     "native_gain": 0.443986832717016
+    }
+   },
+   "prequential_segment": 5.569854246452451,
+   "elapsed_s": 4237
+  },
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select": {
+    "nll": 5.656326003230719,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.098101284920907,
+     "resp_bg": 0.22209729793020644,
+     "resp_concept": 0.5709481989363373,
+     "resp_repeat": 0.10276480190980039,
+     "resp_continue": 0.10418970110581875,
+     "level2_fire_rate": 0.8406432345509529,
+     "level2_new_norm": 1.4153939485549927,
+     "level2_standing_norm": 0.5560443103313446,
+     "level3_fire_rate": 0.8331442549824715,
+     "level3_new_norm": 1.721365049481392,
+     "level3_standing_norm": 1.6766602098941803,
+     "level4_fire_rate": 0.5665847063064575,
+     "level4_new_norm": 0.050891551189124584,
+     "level4_standing_norm": 0.8809188455343246,
+     "native_gain": 0.4417752816901883
+    }
+   },
+   "prequential_segment": 5.454581230413169,
+   "elapsed_s": 5644
+  }
+ ],
+ "train_flops_per_target": 25023769.03529412,
+ "train_flops": 104547305127936.0,
+ "prequential_by_eighth": [
+  6.847610870376229,
+  6.171431455761194,
+  5.895812646485865,
+  5.746667793020606,
+  5.623641033656895,
+  5.516067459248006,
+  5.462938088923693,
+  5.446224371902645
+ ],
+ "prequential_last_quarter": 5.454581230413169,
+ "select": {
+  "nll": 5.656326003230719,
+  "targets": 16376,
+  "native": {
+   "bg_only_nll": 6.098101284920907,
+   "resp_bg": 0.22209729793020644,
+   "resp_concept": 0.5709481989363373,
+   "resp_repeat": 0.10276480190980039,
+   "resp_continue": 0.10418970110581875,
+   "level2_fire_rate": 0.8406432345509529,
+   "level2_new_norm": 1.4153939485549927,
+   "level2_standing_norm": 0.5560443103313446,
+   "level3_fire_rate": 0.8331442549824715,
+   "level3_new_norm": 1.721365049481392,
+   "level3_standing_norm": 1.6766602098941803,
+   "level4_fire_rate": 0.5665847063064575,
+   "level4_new_norm": 0.050891551189124584,
+   "level4_standing_norm": 0.8809188455343246,
+   "native_gain": 0.4417752816901883
+  }
+ },
+ "score_65528": {
+  "nll": 5.29158609246119,
+  "targets": 65528,
+  "native": {
+   "bg_only_nll": 5.855154907306084,
+   "resp_bg": 0.18965176060866734,
+   "resp_concept": 0.5031979464471137,
+   "resp_repeat": 0.14027003583534342,
+   "resp_continue": 0.16688025652763755,
+   "level2_fire_rate": 0.8541734889149666,
+   "level2_new_norm": 1.5290254354476929,
+   "level2_standing_norm": 0.569454200565815,
+   "level3_fire_rate": 0.831142395734787,
+   "level3_new_norm": 1.746380791068077,
+   "level3_standing_norm": 1.6707260608673096,
+   "level4_fire_rate": 0.609378769993782,
+   "level4_new_norm": 0.052193671464920044,
+   "level4_standing_norm": 0.9277429357171059,
+   "native_gain": 0.5635688148448939
+  }
+ },
+ "flagship": {
+  "nll": 5.456640362739563,
+  "targets": 8192,
+  "native": {
+   "bg_only_nll": 5.896168649196625,
+   "resp_bg": 0.22767415083944798,
+   "resp_concept": 0.5903745777904987,
+   "resp_repeat": 0.08606088277883828,
+   "resp_continue": 0.09589038835838437,
+   "level2_fire_rate": 0.8507232293486595,
+   "level2_new_norm": 1.6013893336057663,
+   "level2_standing_norm": 0.5711870566010475,
+   "level3_fire_rate": 0.8003048673272133,
+   "level3_new_norm": 1.823095977306366,
+   "level3_standing_norm": 1.618035912513733,
+   "level4_fire_rate": 0.5830231755971909,
+   "level4_new_norm": 0.04894311726093292,
+   "level4_standing_norm": 0.8748815506696701,
+   "native_gain": 0.43952828645706177
+  }
+ },
+ "work_level1_per_target": {
+  "state_macs": 214656,
+  "episodic_candidates": 510,
+  "episodic_macs": 65408,
+  "unit_scores": 1024,
+  "unit_macs": 73728,
+  "concepts_woken": 4,
+  "proposal_rows": 2249.8565573770493,
+  "proposal_macs": 287981.6393442623
+ },
+ "reference": {
+  "cerl_4M": "curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)",
+  "diagnostic_planB_L8_4M_flagship": 5.8414
+ },
+ "max_rss_kb": 2803672,
+ "source_sha256": {
+  "experiments/r1_rmr2_stable_stream.py": "1044d3230178d74cbfd40f8a7cac8b19c880e918c6733a3367947f801e230cb1",
+  "experiments/r1_rmr2_stable.py": "90f1ff4faee6e1e40bd2ea1e4882b64723b3d80dc2a7054d9e3630e037cc0717",
+  "experiments/r1_rmr2.py": "c0d4919fba1e27877aa236157cd1e379bfed8fea0db7809ecf090eb827854f74",
+  "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+  "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_rmr2_act0_K4_4M_s0_20261016_v2.pt"
+}
