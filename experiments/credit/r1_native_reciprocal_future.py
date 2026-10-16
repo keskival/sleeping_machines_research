@@ -175,7 +175,7 @@ def main():
                     summary = directions[depth] @ record.residual
                     quote, credit_state, packets = critic.quote(
                         record.key_view, record.residual, summary, depth/7, .001,
-                        credit_state, cg, ca)
+                        credit_state, cg, ca, timestamp=state['bindings'].entries[key].available)
                     all_quotes.append(quote); all_packets.extend(packets)
                 quotes = torch.stack(all_quotes).flatten()
                 selected, probability = critic.choose(quotes, policy_rng)

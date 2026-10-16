@@ -7,16 +7,16 @@ It is an action-value learner, not an exact full-history gradient oracle.
 import math
 import torch
 from torch import nn
-from .local_deep_race import LocalDeepRace
-from .packed_local_deep_race import PackedLocalDeepRace
+from .queryable_local_deep_race import QueryableLocalDeepRace
+from .sampled_compositional_credit import SampledCompositionalCredit
 
 
 class NativeFutureUpdateCredit(nn.Module):
     def __init__(self, width, depth=8, heads=4, pool=4):
         super().__init__()
         self.width = width
-        self.context = nn.Linear(3*width+2, width)
-        self.core = PackedLocalDeepRace(LocalDeepRace(width, depth, heads, pool))
+        self.context = nn.Linear(3*width+3, width)
+        self.core = SampledCompositionalCredit(QueryableLocalDeepRace(width, depth, heads, pool))
         self.action = nn.Linear(2, width, bias=False)
         self.value = nn.Linear(width, 1)
 
@@ -24,11 +24,17 @@ class NativeFutureUpdateCredit(nn.Module):
         return self.core.new_state()
 
     def quote(self, published, producer_input, gradient_summary, address, step_rms,
-              state, generator, alternative_generator):
+              state, generator, alternative_generator, *, timestamp=None):
         if any(x.shape != (self.width,) for x in [published, producer_input, gradient_summary]):
             raise ValueError('state-interface vectors required, not coordinate averages')
+        stamp=float(state['events']) if timestamp is None else float(timestamp)
+        clocks=state.setdefault('interface_observation_times',{})
+        elapsed=stamp-clocks.get(address,stamp)
+        if not math.isfinite(stamp) or elapsed<0:
+            raise ValueError('causal interface observation time required')
+        clocks[address]=stamp
         context = torch.cat([published.detach(), producer_input.detach(), gradient_summary.detach(),
-                             published.new_tensor([address, math.log1p(step_rms)])])
+                             published.new_tensor([address, math.log1p(step_rms), math.log1p(elapsed)])])
         views, state, packets, _ = self.core.consume(self.context(context), state, generator,
                                                     alternative_generator, learn=True)
         # Direct readout from every native credit depth; no recurrent BPTT.

@@ -61,9 +61,11 @@ numerical memory and every RNG exactly.
 ## Make the backward learner native and future-directed
 
 `NativeFutureUpdateCredit` is a separate eight-layer persistent native race
-machine with receiver-local eligibility. It consumes the actual published state,
+machine with receiver-local eligibility, versioned lower-memory queries and full
+recorded-depth sampled producer credit. It consumes the actual published state,
 producer input, effect of a proposed update at that interface, and its address
-and magnitude. It does not reduce parameter coordinates to one coarse mean.
+and magnitude. Per-interface elapsed observation time is retained explicitly.
+It does not reduce parameter coordinates to one coarse mean.
 It quotes action advantages through a shared nonlinear readout; no-op is exactly
 zero. The credit machine's own state persists across decisions.
 
