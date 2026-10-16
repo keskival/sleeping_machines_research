@@ -8,6 +8,19 @@ import torch
 from torch.nn import functional as F
 
 
+def shared_target_word_law(head,states,target):
+    """Exact existing two-level law without padded/repeated word-row reads.
+
+    All local depths score the same revealed target. Share its actual class's
+    word rows across depths/causes; zero probability padding is never computed.
+    """
+    c=head.class_of[int(target)];words=head.class_words[c];words=words[words>=0]
+    classes=F.log_softmax(states@head.class_emb.T+head.class_bias,-1)[...,c]
+    logits=states@head.embed.weight[words].T+head.word_bias[words]
+    slot=(words==int(target)).nonzero().item()
+    return classes+F.log_softmax(logits,-1)[...,slot]
+
+
 def indexed_cause_nll(head,views,target,candidates,*,explore=False,selected=None):
     """All depths are a batch of local predictors; no recurrence or carrier.
 
@@ -32,8 +45,7 @@ def indexed_cause_nll(head,views,target,candidates,*,explore=False,selected=None
     s_background=head.bg(h)
     rates=torch.cat((s_background,s_unit,repeat,continuation),-1)
     H=torch.cat((h[:,None],h[:,None]+head.unit_out[selected]),1)
-    targets=torch.full((depth,),int(target),dtype=torch.long,device=h.device)
-    lp=head.two_level(H,targets)
+    lp=shared_target_word_law(head,H,target)
     neg=torch.full_like(repeat,float('-inf'))
     hit_repeat=candidates['tokens']==int(target);hit_cont=candidates['successors']==int(target)
     parts=torch.cat((s_background+lp[:,:1],s_unit+lp[:,1:],
@@ -44,7 +56,7 @@ def indexed_cause_nll(head,views,target,candidates,*,explore=False,selected=None
         ex=torch.randint(0,head.U,(depth,head.explore),device=h.device);hd=h.detach()
         s_ex=head.unit_score(head.q_unit(hd),ex)
         s_ex=s_ex.masked_fill((ex[:,:,None]==selected[:,None]).any(-1),float('-inf'))
-        lp_ex=head.two_level(hd[:,None]+head.unit_out[ex],targets)
+        lp_ex=shared_target_word_law(head,hd[:,None]+head.unit_out[ex],target)
         aux=(torch.logsumexp(torch.cat((rates.detach(),s_ex),-1),-1)
              -torch.logsumexp(torch.cat((parts.detach(),s_ex+lp_ex),-1),-1)).mean()
     with torch.no_grad():
