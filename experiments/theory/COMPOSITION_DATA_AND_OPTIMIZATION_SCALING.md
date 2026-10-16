@@ -31,3 +31,8 @@ All current pair reads/products,teacher reads,native candidate/counterfactual wo
 ## Relation to published evidence
 
 More data/model training improves compute-optimal language models over wide regimes:[Hoffmann et al.2022](https://arxiv.org/abs/2203.15556). That is evidence to test scaling,not a guarantee for this held-out-combination task. Grokking is delayed generalization on small algorithmic datasets;[Power et al.2022](https://arxiv.org/abs/2201.02177) found weight decay especially effective and showed very long optimization horizons. The original[Transformer](https://arxiv.org/abs/1706.03762) used dropout/label smoothing,and[GPT-3](https://arxiv.org/abs/2005.14165) used weight decay. These findings reject a blanket no-regularization premise. Here we hold existing regularization fixed to resolve the data/training decision economically.
+
+
+## Completed endpoint
+
+**Completed fixed-architecture composition scaling.** After2048additional paired updates over2048unique TRAIN scenes,original-protocol whole-object DEV NLL1.053453→0.693481,accuracy50.00%;saved acquired reference0.686609. Final fresh DEV NLL0.695857,accuracy50.00%. The saved acquired actor retains the better original-protocol whole-object result. Broader TRAIN128 readout DEV NLL0.703057 is a separately fitted endpoint. Same64TRAIN abstract arrangements,32new event/metric-layout tapes,two full pair epochs,unchanged model/Adam/loss/regularization,one development seed;TEST excluded,no ablation/control fitting. Source:`investment/composition_scale_evidence.json`.
