@@ -1,0 +1,72 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "grounding_completed_diagnosis",
+  "rows": {
+    "joint": {
+      "nll": 0.7321584224700928,
+      "calibrated_root_geometry_mse": 0.026253289672008944,
+      "calibrated_root_geometry_skill": 0.495568855434237,
+      "adam_geometry_skill_by_level": [
+        0.9919807924306951,
+        0.8678801932808409,
+        0.7745741312187618,
+        0.7065070943892595,
+        0.4182765828285816,
+        0.564404657767628,
+        0.14460402161094377,
+        -0.12565145566811742
+      ],
+      "decoder_max_gradient": 3.094746681142624e-15
+    },
+    "continued": {
+      "nll": 0.7839027047157288,
+      "calibrated_root_geometry_mse": 0.03987018663654412,
+      "calibrated_root_geometry_skill": 0.23393357059684805,
+      "adam_geometry_skill_by_level": [
+        -3.846566431224346,
+        -9.456245458619026,
+        -19.169128188175787,
+        -19.677429381436706,
+        -22.778150447032655,
+        -10.943376949250592,
+        -14.668726587835664,
+        -14.398595104158181
+      ],
+      "decoder_max_gradient": 3.094746681142624e-15
+    },
+    "decoder_only": {
+      "nll": 0.6866090297698975,
+      "calibrated_root_geometry_mse": 0.04012151162681446,
+      "calibrated_root_geometry_skill": 0.22910460805219535,
+      "adam_geometry_skill_by_level": [
+        0.4886982012540102,
+        0.004134805371054928,
+        0.049715888986483714,
+        -0.11063574146537802,
+        -0.00747969991990316,
+        0.03303111562009753,
+        -0.022013541865456565,
+        -2.9092772174882153
+      ],
+      "decoder_max_gradient": 3.0531133177191805e-15
+    }
+  },
+  "joint_calibrated_geometry_gain_over_frozen": 0.013868221954805516,
+  "decision": "Joint learning improves calibrated root geometry but not class transfer;repair relation-specific learning before scaling.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_grounding_variance_20261016_v1.json": "6bbfd80ca1ebed5f31cf1a15efda2611ce045a3f58c38d522cb0ed2a7dbacded",
+    "experiments/results/hierarchy/aws_g_hier_grounded_joint_20261016_v1.json": "af575ab9c90fc6f1922807a02f6957351c3e5b98e176a639699b27e030fe4dd2",
+    "experiments/results/hierarchy/aws_g_hier_grounded_joint_20261016_v1_features.npz": "a9e46adf3c89520a3b9841879bd523593a0212eedc9d796b59cd25cf052a59f0",
+    "experiments/results/hierarchy/aws_g_hier_grounded_continued_20261016_v1.json": "9100a0b6ca545af3a8d69f3830a8a734e545c5f0e3275df2fd03281dcf319d27",
+    "experiments/results/hierarchy/aws_g_hier_grounded_continued_20261016_v1_features.npz": "e440bce14aa345fe7c0fcb02dc2de8fc40dc9ed910fec7b06070c67818b805dd",
+    "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1.json": "19c38fe6728ff41249b711dc092b2630c421fe6fe2e4a008ae58fd9760a1a0e3",
+    "experiments/results/hierarchy/aws_g_hier_grounded_decoder_only_20261016_v1_features.npz": "bffc2a39eeebd4bdd9f9f7fd98710c3b6af14fd548a2a1a81e03cdaa1723c9dd"
+  },
+  "source_sha256": {
+    "experiments/hierarchy/grounding_completed_diagnosis.py": "23c05847288d6260b1b6b799233a34dcb9da30040ae818d21ffca17acf8c1205",
+    "experiments/hierarchy/grounding_decoder_calibration.py": "7f63279a0c56d54c75e7c632ef1b53f30603bc6059161dcbfaa160ce46ee5327"
+  },
+  "process_wall_s": 0.3521058310288936,
+  "scope": "Fixed ridge0.01 existing linear geometry heads on saved TRAIN features;DEV scoring,one native seed,no new actor acquisition or TEST access. Geometry skill is not semantic transfer."
+}
