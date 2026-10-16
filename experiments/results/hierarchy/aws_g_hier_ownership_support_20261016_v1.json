@@ -1,0 +1,147 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "ownership_support_audit",
+  "threshold": 10.723805294763608,
+  "training_cut_range": [
+    10.723805294763608,
+    10.723805294763608
+  ],
+  "rows": {
+    "train": {
+      "scenes": 128,
+      "component_count_histogram": {
+        "8": 128
+      },
+      "total_components": 1024,
+      "never_pure_complete_components": 256,
+      "never_pure_complete_fraction": 0.25,
+      "first_pure_level_histogram": {
+        "3": 512,
+        "4": 256
+      },
+      "by_level": [
+        {
+          "components": 1024,
+          "fragmented": 1024,
+          "mixed_cells": 0,
+          "cells": 4096
+        },
+        {
+          "components": 1024,
+          "fragmented": 1024,
+          "mixed_cells": 0,
+          "cells": 4096
+        },
+        {
+          "components": 1024,
+          "fragmented": 1024,
+          "mixed_cells": 0,
+          "cells": 3072
+        },
+        {
+          "components": 1024,
+          "fragmented": 512,
+          "mixed_cells": 0,
+          "cells": 1536
+        },
+        {
+          "components": 1024,
+          "fragmented": 256,
+          "mixed_cells": 0,
+          "cells": 1280
+        },
+        {
+          "components": 1024,
+          "fragmented": 256,
+          "mixed_cells": 512,
+          "cells": 768
+        },
+        {
+          "components": 1024,
+          "fragmented": 0,
+          "mixed_cells": 256,
+          "cells": 256
+        },
+        {
+          "components": 1024,
+          "fragmented": 0,
+          "mixed_cells": 128,
+          "cells": 128
+        }
+      ]
+    },
+    "dev": {
+      "scenes": 64,
+      "component_count_histogram": {
+        "8": 64
+      },
+      "total_components": 512,
+      "never_pure_complete_components": 128,
+      "never_pure_complete_fraction": 0.25,
+      "first_pure_level_histogram": {
+        "3": 256,
+        "4": 128
+      },
+      "by_level": [
+        {
+          "components": 512,
+          "fragmented": 512,
+          "mixed_cells": 0,
+          "cells": 2048
+        },
+        {
+          "components": 512,
+          "fragmented": 512,
+          "mixed_cells": 0,
+          "cells": 2048
+        },
+        {
+          "components": 512,
+          "fragmented": 512,
+          "mixed_cells": 0,
+          "cells": 1536
+        },
+        {
+          "components": 512,
+          "fragmented": 256,
+          "mixed_cells": 0,
+          "cells": 768
+        },
+        {
+          "components": 512,
+          "fragmented": 128,
+          "mixed_cells": 0,
+          "cells": 640
+        },
+        {
+          "components": 512,
+          "fragmented": 128,
+          "mixed_cells": 256,
+          "cells": 384
+        },
+        {
+          "components": 512,
+          "fragmented": 0,
+          "mixed_cells": 128,
+          "cells": 128
+        },
+        {
+          "components": 512,
+          "fragmented": 0,
+          "mixed_cells": 64,
+          "cells": 64
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "experiments/hierarchy/ownership_support_audit.py": "430a92fab3387b0e534b41db6044e08aac8d4f81c8d8ebf74858f7814c59dd87",
+    "experiments/hierarchy/part_combination_task.py": "dde7c498a383daef0c6dd34c630e2157f0b4aca3d7981beb4c09c9d588b80540"
+  },
+  "pair_distance_evaluations": 95232,
+  "process_wall_s": 0.25818886887282133,
+  "max_rss_kb": 245660,
+  "scope": "Anonymous32pixel scenes,TRAIN spatial MST largest adjacent edge-ratio cut and median threshold,DEV structural evaluation. No latent part identity,arrangement bits,class labels or TEST used. Components are observed spatial groups,not proven semantic objects;static fixture diagnostic only.",
+  "decision": "If observed groups never acquire pure complete native supports,repair support/ownership before another unchanged semantic fit;versioned part access is necessary but does not fix fragmented ownership by itself."
+}
