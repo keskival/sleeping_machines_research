@@ -147,3 +147,61 @@ diagnostic).**
   at 1.55× cost; the paired 4M run decides.
 - Pending: the 4M one-pass fit against the dense diagnostic (5.8414 flagship); the capacity ladder (4k–262k units at
   constant active work); PTB round 1.
+
+
+## 8. Compositional depth: a hierarchy of races over compressed cause streams (CERL-H)
+
+16 October 2026, founder direction: "We need depth and compositional hierarchy there. This has been the main hurdle";
+"Work towards compositional scaling. We need to win through that"; "don't make our models dense to do that".
+
+**Why earlier depth failed, in one line each.**
+- The serial race core passed only the winner's value up a chain, so credit vanished with depth.
+- The dense residual stack composed, but it was not our model.
+- Observed part-whole levels (word/clause/sentence boundaries) added 0.006 nats: they predicted tokens again from coarser
+  summaries.
+- The synthetic G-HIER binder recognises parts perfectly but binds wholes at chance.
+
+**Construction.**
+1. *Level 1* is the token race (§3).
+2. *Attribution.* Its posterior names the cause of every observed token: a concept unit, the background route, a repeat or
+   a continuation. This is an observation of structure, taken without gradient.
+3. *Compression.* The attributed-cause stream is compressed in time: a level-2 event occurs only when the cause changes. A
+   copied phrase or a persistent concept is one event.
+4. *Level 2* is the same race over that stream:
+   - its episodic pointers repeat and continue *patterns of causes*, which is induction over structure rather than over
+     surface tokens (a paraphrase with the same concept sequence matches);
+   - its dormant concepts propose which lower causes come next.
+5. *Higher levels recurse* on their own attributions. Each level is sparser in time and sees further back at the same cost.
+   Depth is the number of explanation levels; time compression makes deep context cheap.
+
+**Top-down composition (sparse).** At token row t, level 2 holds the event that contains the cause of x_t and predicts the
+next lower cause, as a stay/switch hazard over candidates:
+- stay with the current cause: log sigmoid(g_t), with g_t = a + b log1p(age of the event), a duration clock;
+- switch to cause c: log(1 − sigmoid(g_t)) + log p2(c).
+
+The prior is evaluated only for candidate causes: level-1 key-woken units, a few units woken top-down by level 2's
+strongest continuation pointers, and the three route types. λ × prior enters the level-1 race log-rates, so the token law
+stays exactly normalised. Top-down-woken units pass a learned gate.
+
+**Learning is local per level.** Level 1 learns from tokens (and through the one-hop top-down path). Level 2 learns to
+predict the next attributed cause. No gradient travels a long chain through depth.
+
+**What is not added.** No attention, no full-alphabet distribution, no dense layer between levels. Higher levels compute
+only at their events.
+
+**Contracts** (`experiments/r1_cerl_h.py --mode contract`):
+- exact normalisation (1 + 3e-8);
+- causality through attribution, compression and top-down (perturbing token p changes no earlier probability beyond
+  rounding, 5e-7);
+- row chunking;
+- at λ = 0 the hierarchy equals level 1 (5e-7).
+
+**What compositional scaling means here, and how it is tested.**
+- (i) Loss improves with each added level at nearly constant active work, because higher levels run at compressed event
+  rates.
+- (ii) The gain from depth grows with data. The dense diagnostic already shows this (4→8 layers: 0.052 at 16M against a
+  2→8 gain of 0.023 at 4M); the native levels must show it too.
+- (iii) Structure-level induction appears: level-2 continuation responsibility rises, and the loss falls most on targets
+  inside recurring cause patterns.
+
+First test: CERL-H with 2 levels against level-1 CERL on identical data, schedule and seed at 4M; then 3 levels, and 16M.

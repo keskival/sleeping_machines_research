@@ -122,8 +122,11 @@ class CERL(nn.Module):
         pos = (words == y[:, None]).float().argmax(-1)                                                 # target's slot in its class
         return lc.gather(-1, c[:, None, None].expand(-1, H.shape[1], 1)).squeeze(-1) + lw.gather(-1, pos[:, None, None].expand(-1, H.shape[1], 1)).squeeze(-1)
 
-    def race(self, x, y, h, r0, r1, explore):
-        """The race at query rows [r0, r1) given states h: per-target NLL, the competing-risk parts and the woken set."""
+    def race(self, x, y, h, r0, r1, explore, td=None):
+        """The race at query rows [r0, r1) given states h: per-target NLL, the competing-risk parts and the woken set.
+        td (optional, from a higher cause level; r1_cerl_h.py): extra top-down-woken units 'sel_extra' [B, R, k] and additive
+        log-rate bonuses 'unit_bonus' (callable on the woken ids), 'b_bg', 'b_rep', 'b_cont' [B, R, 1]. Bonuses enter the race
+        normaliser and the parts alike, so the law stays exactly normalised."""
         B, L = x.shape; R = r1 - r0; hq = h[:, r0:r1]
         dv = x.device; t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float()
         ml = match_lengths(x, r0, r1)                                                                # [B, R, r1]
@@ -133,6 +136,11 @@ class CERL(nn.Module):
         S_cont = S_cont.masked_fill(~(j < t), float('-inf'))
         sel, s_sel = self.wake(self.q_unit(hq))                                                      # woken units: the predictive race (train = eval)
         s_bg = self.bg(hq)                                                                           # [B, R, 1]
+        if td is not None:
+            if td.get('sel_extra') is not None:                                                      # top-down waking: units the level above expects
+                ex_ = td['sel_extra']; s_ex_ = self.unit_score(self.q_unit(hq), ex_).masked_fill((ex_[..., :, None] == sel[..., None, :]).any(-1), float('-inf'))
+                sel, s_sel = torch.cat([sel, ex_], -1), torch.cat([s_sel, s_ex_], -1)
+            s_sel = s_sel + td['unit_bonus'](sel); s_bg = s_bg + td['b_bg']; S_rep = S_rep + td['b_rep']; S_cont = S_cont + td['b_cont']
         logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
         yq = y[:, r0:r1]; H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2)      # [B, R, 1+K, d]
         if explore:
@@ -157,6 +165,22 @@ class CERL(nn.Module):
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
         return nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont
+
+    def cand_logp(self, x, h, r0, r1, cands):
+        """Sparse evaluation of the race law at rows [r0, r1) for candidate symbols cands [B, R, M]: log p(c) without forming the
+        distribution over the alphabet (used by a higher cause level to bias the level below; r1_cerl_h.py)."""
+        B, L = x.shape; R = r1 - r0; hq = h[:, r0:r1]; dv = x.device
+        t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float(); ml = match_lengths(x, r0, r1)
+        S_rep = ((self.q_rep(hq) @ self.k_rep(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_rep - F.softplus(self.age_rep)*torch.log1p(age)).masked_fill(~(j <= t), float('-inf'))
+        S_cont = ((self.q_cont(hq) @ self.k_cont(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_cont - F.softplus(self.age_cont)*torch.log1p(age)
+                  + self.span*torch.log1p(ml.float())).masked_fill(~(j < t), float('-inf'))
+        sel, s_sel = self.wake(self.q_unit(hq)); s_bg = self.bg(hq); logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
+        H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2).reshape(B*R, -1, self.d); M = cands.shape[-1]
+        lp = torch.stack([self.two_level(H, cands[..., m].reshape(-1)).view(B, R, -1) for m in range(M)], 2)        # [B, R, M, 1+K]
+        xj = x[:, :r1]; nxt = torch.cat([x[:, 1:r1], x[:, -1:]], 1)                                      # last j masked (j < t)
+        hr = xj[:, None, None, :] == cands[..., None]; hc = nxt[:, None, None, :] == cands[..., None]; neg = float('-inf')
+        parts = torch.cat([s_bg[:, :, None] + lp[..., :1], s_sel[:, :, None] + lp[..., 1:], torch.where(hr, S_rep[:, :, None], neg), torch.where(hc, S_cont[:, :, None], neg)], -1)
+        return torch.logsumexp(parts, -1) - logZ[..., None]
 
     def messages(self, x, y, chunk=512):
         """Cause messages (theory 169 section 3): once token t+1 is observed, the posterior attribution of its cause sends that
