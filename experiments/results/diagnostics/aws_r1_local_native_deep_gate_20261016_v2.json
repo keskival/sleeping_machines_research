@@ -1,0 +1,158 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "local_native_deep_language_gate",
+  "gate": "PASS",
+  "targets": 32,
+  "depth": 8,
+  "parameters": 4190387,
+  "report": {
+    "nll": 7.251118183135986,
+    "background_only_nll": 7.258195400238037,
+    "native_cause_gain": 0.007077127695083618,
+    "depth_responsibility": [
+      0.12488159537315369,
+      0.1249404102563858,
+      0.1250113546848297,
+      0.12505678832530975,
+      0.12502627074718475,
+      0.12503841519355774,
+      0.12504196166992188,
+      0.12500321865081787
+    ],
+    "cause_reports_by_depth": [
+      {
+        "bg_only_nll": 7.25921630859375,
+        "resp_bg": 0.23960837721824646,
+        "resp_concept": 0.7420489192008972,
+        "resp_repeat": 0.01038101315498352,
+        "resp_continue": 0.00796174444258213,
+        "win_bg": 0.2413443773984909
+      },
+      {
+        "bg_only_nll": 7.258748531341553,
+        "resp_bg": 0.23932763934135437,
+        "resp_concept": 0.7423360347747803,
+        "resp_repeat": 0.010389657691121101,
+        "resp_continue": 0.00794669147580862,
+        "win_bg": 0.24106436967849731
+      },
+      {
+        "bg_only_nll": 7.258235454559326,
+        "resp_bg": 0.23929163813591003,
+        "resp_concept": 0.7423340082168579,
+        "resp_repeat": 0.01044170930981636,
+        "resp_continue": 0.007932593114674091,
+        "win_bg": 0.24106591939926147
+      },
+      {
+        "bg_only_nll": 7.257735252380371,
+        "resp_bg": 0.23927661776542664,
+        "resp_concept": 0.7424547672271729,
+        "resp_repeat": 0.01037693116813898,
+        "resp_continue": 0.00789160281419754,
+        "win_bg": 0.2409932017326355
+      },
+      {
+        "bg_only_nll": 7.2579345703125,
+        "resp_bg": 0.2391054332256317,
+        "resp_concept": 0.7426749467849731,
+        "resp_repeat": 0.010384080931544304,
+        "resp_continue": 0.007835542783141136,
+        "win_bg": 0.24080762267112732
+      },
+      {
+        "bg_only_nll": 7.257781982421875,
+        "resp_bg": 0.23935948312282562,
+        "resp_concept": 0.7424522638320923,
+        "resp_repeat": 0.010394252836704254,
+        "resp_continue": 0.007793961092829704,
+        "win_bg": 0.2410501092672348
+      },
+      {
+        "bg_only_nll": 7.257833003997803,
+        "resp_bg": 0.2390480786561966,
+        "resp_concept": 0.7427182793617249,
+        "resp_repeat": 0.010445201769471169,
+        "resp_continue": 0.007788458839058876,
+        "win_bg": 0.24076996743679047
+      },
+      {
+        "bg_only_nll": 7.258096694946289,
+        "resp_bg": 0.2391091287136078,
+        "resp_concept": 0.742684543132782,
+        "resp_repeat": 0.010435344651341438,
+        "resp_continue": 0.007770972326397896,
+        "win_bg": 0.24080631136894226
+      }
+    ],
+    "work_per_depth_at_history": {
+      "state_macs": 0,
+      "episodic_candidates": 64,
+      "episodic_macs": 10240,
+      "unit_scores": 128,
+      "unit_macs": 4112,
+      "concepts_woken": 4,
+      "proposal_rows": 2249.8565573770493,
+      "proposal_macs": 143990.81967213115
+    },
+    "native_counts": {
+      "events": 32,
+      "candidate_scores": 16384,
+      "selected_updates": 1024,
+      "alternative_values": 1024,
+      "credit_projections": 0
+    },
+    "persistent_storage": {
+      "occupied_receivers": 458,
+      "receiver_state_and_eligibility_bytes": 2022528,
+      "temporal_graph_entries": 0,
+      "scope": "Persistent numerical receiver state plus own-write traces;current event graphs,credit packets,parameters and metadata separate."
+    },
+    "native_forward_s": 1.221894133137539,
+    "cause_head_forward_s": 0.055668595945462584,
+    "learning_scope": "Receiver-local own-write traces,local routing surrogate,layer-local message boundaries. No recurrent BPTT. Current-event and bounded episodic-write graphs retained within this credit batch. Changing-parameter history and cross-producer full gradients are not exact."
+  },
+  "layer_gradient_norms": [
+    0.010840233362732528,
+    0.0004304431525388823,
+    0.0004102012280311567,
+    0.0004556225350174642,
+    0.0003985124057277553,
+    0.0004166840102120933,
+    0.0004357313608424531,
+    0.00047767672944687683
+  ],
+  "optimizer_step_s": 3.284569381037727,
+  "seconds_per_target": 0.10264279315742897,
+  "timing": {
+    "forward_s": 1.2778551820665598,
+    "backward_s": 1.5515885700006038,
+    "local_credit_s": 0.11342075909487903,
+    "optimizer_s": 0.26502455584704876
+  },
+  "max_rss_kb": 758848,
+  "whole_wall_s": 4.020375987049192,
+  "source_sha256": {
+    "experiments/hierarchy/local_native_language_gate.py": "de64487410c1b674080b8331d0aac984864c8c1b542295bfb68b2e687501ec7c",
+    "experiments/r1_cerl.py": "2b00b3a33d477a8d76a123a0fd371d908f9cb395f245acf98a0a4ee143975fef",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_local_native_deep.py": "4a8bf5678ab3639190a792cbea3678fde178ed8d137e7f09cd6c582973e6b36c",
+    "sleeping_machines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sleeping_machines/event_memory.py": "98156038fa51e7be7626a0d249bf33243f56734a71190c8b225fb34983c6ef57",
+    "sleeping_machines/event_state.py": "6c5d077a5b15a120686eb07d21aac580357cc7b9379601c0ca7e7328215833db",
+    "sleeping_machines/local_deep_race.py": "a4f4f02b60a0bc30b706619d49e26665bc03064120ac150530f208b313fae672",
+    "sleeping_machines/native_receiver_eligibility.py": "0180fe378fcf50a6622567e6203b336e7bf9650689207dfa75bd1c19d2c4d941",
+    "sleeping_machines/parallel_stream_language.py": "7237331f34b4b7802fe98896511a301480a17ebb647297dd47df94246d6ae5ce",
+    "sleeping_machines/rotating_memory.py": "d5b0308a9a28593310673683638fa9f4162aceba94ce79ca58db87e4ba5323b4",
+    "sleeping_machines/sparse_race_language.py": "ca0b90e64fd8b3395cb91f257cb743cd778da0bda86f1f2b66835b2ad970438a",
+    "sleeping_machines/sparse_training.py": "f259279d2a2af58defe1717a20b7d4fd6639b11095513a323ed8e1b42c3e036f",
+    "sleeping_machines/stream_language.py": "4409ab0d7e96a5c0c0f40420bf814e94ec7a79bbd008253e91a70e7f3f8de708"
+  },
+  "data": {
+    "file": "data/fineweb_gpt2/fineweb_train_000001.bin",
+    "class_count_prefix_tokens": 4194304,
+    "scored_prefix_sha256": "376181b4c2486dcd0926d6c0b6726a454433735f0c9307403bde41a113f562e3"
+  },
+  "scope": "One32targetTRAIN optimizer gate only;realGPT2FineWeb,8native layers,zeroSSM/attention/MLP backbone layers,own-writeeligibility and sampled local counterfactualroutecredit.No recurrentBPTT,no DEV/TEST or quality/efficiency claim.Current episodic pointers cover this supplied credit lane;cross-batch indexed history and asynchronous optimizer/versioning remain acquisition gaps."
+}
