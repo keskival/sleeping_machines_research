@@ -1,0 +1,60 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": "Product-ordered 16M residual-memory depth fits, identical models with zero-write storage removed. Saved dense references only; fixed-weight development protocol and existing restrictions retained.",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "6": [
+      {
+        "name": "aws_r1_rmr_compact_K4_16M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_compact_K4_16M_s0_20261016_v2/aws_r1_rmr_compact_K4_16M_s0_20261016_v2.txt",
+        "queue_sha256": "3086c8b9a5b06062039657fe5c8bc9ab1cb99acb1f2670baf734785d1da2c0f7",
+        "source_sha256": {
+          "experiments/r1_rmr_compact_train.py": "cbc364a28a02f3b6bdd5438c11237dcfe2fb683bd0f7f7139699bb0e57533a55",
+          "experiments/r1_rmr_compact.py": "733cba89a919ab6d03917edd966bc1fc7ef1fa3b99a2976c1b6d11613d9546c3",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_compact_K4_16M_s0_20261016_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr_compact_gate_20261016_v1.json",
+            "stage": "compact residual-memory numerical gate"
+          }
+        ],
+        "timeout_s": 86400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_rmr_compact_K8_16M_s0_20261016_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_compact_K8_16M_s0_20261016_v2/aws_r1_rmr_compact_K8_16M_s0_20261016_v2.txt",
+        "queue_sha256": "57b2dc157f2da01434a2db316c54c85ac3d35c94ce669880c0fd2008e7d03b49",
+        "source_sha256": {
+          "experiments/r1_rmr_compact_train.py": "cbc364a28a02f3b6bdd5438c11237dcfe2fb683bd0f7f7139699bb0e57533a55",
+          "experiments/r1_rmr_compact.py": "733cba89a919ab6d03917edd966bc1fc7ef1fa3b99a2976c1b6d11613d9546c3",
+          "experiments/r1_rmr.py": "8d65525c9bfdbf0f156ab834194cb745ccc6154cb22f6560e65883cdc1056ce6",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_compact_K8_16M_s0_20261016_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_rmr_compact_gate_20261016_v1.json",
+            "stage": "compact residual-memory numerical gate"
+          }
+        ],
+        "timeout_s": 86400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
