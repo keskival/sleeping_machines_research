@@ -1,0 +1,144 @@
+{
+ "name": "hz_r1_ladder_v1",
+ "battle": "R1",
+ "decision": "Does the native family's loss-versus-training-compute frontier keep improving with a stable or rising exponent from 1e16 to 1e18 FLOPs, does depth keep paying as compute grows, and where do the flagship and the memory-only member (cheapest on event hardware) diverge? Selected compute-optimal arms are scored once on the sealed public protocol and placed against the published modded-NanoGPT curves.",
+ "driver": "experiments/r1_gpu_ladder.py",
+ "common": {
+  "lane": 1024,
+  "batch": 64,
+  "accum": 1,
+  "wd": 0.1,
+  "warmup": 0.02,
+  "final-lr-frac": 0.1,
+  "seed": 0,
+  "evals": 24,
+  "diags": 12,
+  "compile": 1
+ },
+ "variants": [
+  "flagship",
+  "memory_only"
+ ],
+ "budgets": [
+  1e+16,
+  3e+16,
+  1e+17,
+  3e+17,
+  1e+18
+ ],
+ "shapes": [
+  [
+   128,
+   4
+  ],
+  [
+   128,
+   8
+  ],
+  [
+   256,
+   4
+  ],
+  [
+   256,
+   8
+  ],
+  [
+   256,
+   16
+  ],
+  [
+   384,
+   8
+  ],
+  [
+   384,
+   16
+  ],
+  [
+   512,
+   8
+  ],
+  [
+   512,
+   16
+  ],
+  [
+   768,
+   12
+  ],
+  [
+   768,
+   16
+  ],
+  [
+   1024,
+   16
+  ]
+ ],
+ "tokens_per_param": [
+  5,
+  200
+ ],
+ "max_per_budget": 5,
+ "lr_sweep": {
+  "budget": 1e+16,
+  "variant": "flagship",
+  "shapes": [
+   [
+    256,
+    8
+   ],
+   [
+    512,
+    8
+   ]
+  ],
+  "multipliers": [
+   0.5,
+   1.0,
+   2.0
+  ]
+ },
+ "depth_probe": {
+  "budget": 1e+17,
+  "d": 512,
+  "layers": [
+   4,
+   8,
+   16,
+   24
+  ],
+  "variants": [
+   "flagship",
+   "memory_only"
+  ]
+ },
+ "extra_variants": {
+  "no_bonus": {
+   "budgets": [
+    1e+16,
+    1e+17
+   ]
+  }
+ },
+ "public_scoring": "after the ladder: one sealed public-protocol score per variant and budget for the compute-optimal arm only (--mode public)",
+ "worker": {
+  "note": "GPU worker guards for run_safe.sh: CUDA reserves far more virtual address space than it uses, so the virtual cap is unlimited; the whole-job RSS watchdog, host MemAvailable floor and exact checkpoints stay. Set rss_cap_kb to >= 3x the largest RSS seen in the plan phase.",
+  "min_avail_mb": 16384,
+  "rss_cap_kb": 64000000,
+  "vmem_cap_kb": "unlimited",
+  "cgroup_reserve_mb": 2048,
+  "timeout_factor": 2.0,
+  "timeout_extra_s": 3600
+ },
+ "declaration": [
+  "Stationarity/online: fixed-weight language protocol on a stationary corpus; one pass over fresh lanes, so each update's pre-update loss is a held-out prequential loss. Online weight adaptation is not part of this compute-frontier comparison (the published curves are fixed-weight); it is scored separately on PTB/WikiText-2.",
+  "Fighter rationale: plan-B deep keyed temporal-memory member, the composition where depth pays on CPU (one pass 4M: L8 5.8414 vs L2 5.8648, gap growing with data); executed by exact GPU kernels (contract: loss and every gradient equal DeepKeyedLM to 3e-6, curie_gpu_ladder_contract_20261016_v1). memory_only drops the per-layer reads (O(1) state per step, the cheapest member on event hardware) to test whether persistent memory alone carries the scaling.",
+  "State/history: persistent temporal memory and keyed reads over each 1024-token lane with full backprop over the lane; evaluation in 1024-token windows (the public protocol's windows).",
+  "Retained: decaying/rotating temporal memory, sparse token-slot keyed writes (output bonus), separate keys/values, race-attention reads per layer (flagship). Not included: hard routes and counterfactual route credit (full-backprop member), asynchronous event timing (unit steps on token streams).",
+  "Restrictions: none imposed for symmetry; bf16 matmuls with fp32 memory kernel, attention and loss (execution precision).",
+  "Resources: measured FLOPs/token and tokens/s per shape in the plan phase; one training process on the GPU; exact resume every --checkpoint-every steps and on SIGTERM.",
+  "Decision: see 'decision' in experiments/gpu_ladder/r1_gpu_ladder_v1.json."
+ ]
+}

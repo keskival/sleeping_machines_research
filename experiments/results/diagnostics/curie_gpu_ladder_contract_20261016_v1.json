@@ -1,0 +1,32 @@
+{
+ "battle": "R1",
+ "tag": "curie_gpu_ladder_contract_20261016_v1",
+ "lane300_chunk64": {
+  "loss_ref": 10.844850260416667,
+  "loss_fast": 10.844849446614583,
+  "loss_abs_diff": 8.138020833333334e-07,
+  "grad_max_rel_diff": 2.9622945021401392e-06
+ },
+ "lane257_chunk32": {
+  "loss_ref": 10.845307940175097,
+  "loss_fast": 10.845307940175097,
+  "loss_abs_diff": 0.0,
+  "grad_max_rel_diff": 2.3358691123576136e-06
+ },
+ "memory_only": {
+  "loss": 10.819973945617676,
+  "finite": true,
+  "frozen_with_grad": []
+ },
+ "no_bonus": {
+  "loss": 10.834128379821777,
+  "finite": true,
+  "frozen_with_grad": []
+ },
+ "read_only": {
+  "loss": 10.834925651550293,
+  "finite": true,
+  "frozen_with_grad": []
+ },
+ "status": "passed"
+}

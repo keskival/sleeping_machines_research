@@ -2,6 +2,7 @@
 
 Scale toward competitive quality and complete resource efficiency. Choose infrastructure for the intended larger model/data workload; today's small model is not a ceiling. These runbooks prepare execution, not new experiment admissions or cloud purchases.
 
+0. [GPU scaling ladder (R1)](GPU_SCALING_LADDER.md): rented single-GPU worker, flagship and memory-only variants from 1e16 to 1e18 FLOPs with scaling diagnostics (needs a purchase order).
 1. [Model and data scaling](MODEL_AND_DATA.md): select the decision-changing larger configuration, estimate resources, gate the implementation and register the acquisition.
 2. [Capacity and provisioning](CAPACITY.md): compare API-managed offers by measured useful throughput/cost and provision a matching worker.
 3. [Execution and recovery](EXECUTION.md): immutable queues, watchdogs, complete checkpoints, evidence publication and safe shutdown.

@@ -78,7 +78,10 @@ column; the frozen arm with the static column.
    at budgets we can reach; without it every claim stays an efficiency point against a pinned record.
 4. **Scale to overlap the published curve (needs provisioning).** A GPU or large-CPU worker to take the strongest native
    member to 1e16–1e17 FLOPs (0.4–4B tokens), where the record's logged points live; then the comparison is against the
-   published 124M curve directly at matched compute.
+   published 124M curve directly at matched compute. Prepared 16 October: exact GPU driver (`experiments/r1_gpu_ladder.py`;
+   loss and every gradient equal DeepKeyedLM to 3e-6), ladder spec of flagship and memory-only members over 1e16–1e18 FLOPs
+   with IsoFLOP arms, depth probe and per-layer scaling diagnostics, and a Hetzner GEX131 runbook
+   ([runbooks/GPU_SCALING_LADDER.md](runbooks/GPU_SCALING_LADDER.md)); about 40–80 GPU-hours, awaiting a purchase order.
 
 Decision rule: supremacy is claimed only when steps 1 and 3 (or 1 and 4) give two frontiers on one protocol with ours
 below across at least one decade of compute and the gap not shrinking; otherwise report the measured gap and its trend.
