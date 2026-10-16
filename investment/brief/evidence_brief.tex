@@ -515,13 +515,13 @@ requirement: the basis for clockless hardware, where independent units run at th
 (\href{https://iis-people.ee.ethz.ch/~kgf/acacia/acacia.html}{ETH Z\"urich};
 \href{https://www.imm.dtu.dk/courses/02204/}{DTU}). No chip speed or energy gain is claimed yet.
 
-\textbf{Depth that earns its work.} A keyed language member improves development loss from
+\textbf{Depth that earns its work.} A dense keyed hybrid, now a labelled diagnostic control (founder direction: build our own models), improves development loss from
 \textbf{5.9572 to 5.8987 to 5.8741} at two, four and eight layers on the same 65,528-target slice and
 1.05M-token corpus (one seed; five/six/six epochs, different total work). Completed 16-layer loss is
 5.8879; two asynchronous hierarchy variants score 5.9392 and 5.8911. Eight layers remain selected.
 This protocol differs from the 8,192-token table above. In one pass over 4M fresh tokens, eight layers also beat two: \textbf{5.8414 versus 5.8648} on that flagship development protocol (equal updates, different parameters/work).
 
-\textbf{Completed 16M hybrid diagnostic.} Four layers: \textbf{5.2699} flagship DEV NLL (8,192 targets, 1,024-token windows; one pass, one seed). This is the native model's accuracy target, not a native win. Source: \path{investment/depthdata_l4_evidence.json}.
+\textbf{Completed 16M hybrid diagnostic.} Eight layers \textbf{5.2183}, four layers \textbf{5.2699} flagship DEV NLL (8,192 targets, 1,024-token windows; one pass over 16M fresh tokens, one seed). The four-to-eight-layer gain (0.052) is twice the two-to-eight-layer gain at 4M tokens, so depth pays more as data grows. These dense-hybrid numbers are the native model's accuracy targets, not native wins. Sources: \path{investment/depthdata_l4_evidence.json}, \path{experiments/results/token_language/curie_r1_deep_keyed_stream_L8_16M_s0_20261016_v1.json}.
 
 \textbf{Memories compose, then emit.} On one 32-event fixture, native views reduce messages
 \textbf{349 to 125} and candidate scores \textbf{11,168 to 4,000}; timer work rises from 2 to 188 scores.
@@ -536,7 +536,7 @@ versions it bound, so later lower-memory changes do not rewrite an existing whol
 parameters. An auxiliary native race learner pools both root parts with live lower-memory credit. \textbf{16 numerical checks}
 pass. This is an implemented information path; stable semantic identities and relation transfer are the next test.
 
-{\small \textbf{Fixed-architecture composition scaling.} Ownership repair:25\% support defect,8complete parts,19checks. After2048additional paired updates,original-protocol DEV NLL0.6935 versus acquired0.6866;fresh DEV0.6959. Original/fresh accuracy50.0\%/50.0\%. Same64TRAIN arrangements,32new geometry/time tapes,unchanged model and regularization,no TEST or ablation arms. Source:\texttt{investment/composition\_scale\_evidence.json}.}
+{\small \textbf{Composition test: more training did not teach whole-object structure.} A repair of how pixels are grouped into parts fixed a defect affecting 25\% of groups (all eight parts now complete; 19 checks pass). On the synthetic task, the native hierarchy must tell apart objects built from the same parts in different arrangements. It recognises every part (512 of 512) but still classifies whole objects at chance after 32 times more training: 50\% accuracy and NLL 0.693, the value of a coin flip, on held-out and fresh scenes. It does not fit the training arrangements either (53\%), so the limit is how parts are bound into wholes, not data or training length; the next construction targets that binding step. Source: \texttt{investment/composition\_scale\_evidence.json}.}
 
 \begin{center}
 \begin{tikzpicture}[font=\small,>=Stealth,box/.style={draw=line,rounded corners=3pt,fill=soft,align=center,minimum height=7mm}]
