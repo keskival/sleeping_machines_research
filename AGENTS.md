@@ -25,6 +25,9 @@ Our purpose is to win: build the strongest model family and achieve material, re
 
 # Build our own models: no drift into Transformers or SSMs (user direction, 16 October 2026)
 
+- Latest founder priority: first beat the saved dense hybrid diagnostic with a completely native deep model. Use our own asynchronous/event-local learning components as the primary training route; keep persistent numerical memory separate from credit storage. Do not silently call an SSM-backed cause head completely native or call local conditional eligibility exact whole-network credit. Existing source-bound runs finish unchanged.
+
+
 - User: "We really don't want to make our model a Transformer or an SSM model piece by piece, death by a thousand cuts or
   ablations." "We aren't even building our own models anymore!" The language flagship had drifted into a generic SSM +
   attention + MLP hybrid (`r1_deep_keyed_lm.py`, plan-B), without the causal race inductive bias that won the event domains.
