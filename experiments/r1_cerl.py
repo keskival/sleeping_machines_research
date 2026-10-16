@@ -122,7 +122,7 @@ class CERL(nn.Module):
     def lane_nll(self, x, y, rows=None, stats=False):
         """Per-target NLL [B, R] for query rows `rows` of lanes x [B, L] (inputs) with targets y [B, L]."""
         B, L = x.shape; h = self.states(x); r0, r1 = (0, L) if rows is None else rows; R = r1 - r0; hq = h[:, r0:r1]
-        t = torch.arange(r0, r1)[:, None]; j = torch.arange(r1)[None, :]; age = (t - j).clamp_min(0).float()
+        dv = x.device; t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float()
         ml = match_lengths(x[:, :r1])[:, r0:r1]                                                      # [B, R, r1]
         S_rep = (self.q_rep(hq) @ self.k_rep(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_rep - F.softplus(self.age_rep)*torch.log1p(age)
         S_rep = S_rep.masked_fill(~(j <= t), float('-inf'))
@@ -137,7 +137,7 @@ class CERL(nn.Module):
             # Paid counterfactual alternatives: random dormant units ask "would including me have raised p(y)?" against the
             # actual race held fixed (detached). Credit reaches only their keys, biases, vectors and the unit query map; they
             # never enter the predictive mixture, so training and evaluation predict with the same race.
-            ex = torch.randint(0, self.U, (B, R, self.explore)); hd = hq.detach()
+            ex = torch.randint(0, self.U, (B, R, self.explore), device=dv); hd = hq.detach()
             s_ex = self.unit_score(self.q_unit(hd), ex)
             s_ex = s_ex.masked_fill((ex[..., :, None] == sel[..., None, :]).any(-1), float('-inf'))
             H = torch.cat([H, hd[:, :, None] + self.unit_out[ex]], 2)                                  # one word-law pass for all causes
