@@ -98,3 +98,100 @@ provisional wholes to the prediction and trains each level on its own future hor
   in contrast to the race stack's deep stages (≤0.001).
 - **P6d.** The level-matched targets raise P6b's long-history value relative to the same hierarchy trained on next-token
   loss alone.
+
+## 5. Why higher-level concepts are hard to learn, and what the concept hierarchy changes
+
+A document-level variable z (topic, entities in play, register) changes each token's prediction only slightly but
+touches every token: its per-token information I(x_t; z | local context) is small while the document total is large. Its
+learning signal is a sum of many small per-token gradients. It is learnable only if (i) evidence and credit span the
+document, (ii) some target concentrates the slow signal, and (iii) a representation persists and is shared across
+documents. Measured (`results/diagnostics/curie_document_concept_curve_20261015_v1.json`; 32 validation documents of at
+least 1024 tokens, word-initial targets at document positions 256-1024, NLL with history cut to 64 tokens minus full):
+keyed 1M **−0.032**, keyed 4M **+0.040**, plan-B L2 one pass 4M **+0.069**. Document-context use grows with data and with
+per-layer addressed reads, and is still small.
+
+**Receptive fields grow with cadence.** A level ticks once per completed whole; a memory mode with horizon N level
+events reaches N × span tokens. Observed spans: word 1.1, clause 8.9, sentence 14.4, line 44, document 688 tokens
+(val; 411 in the training sample). An addressed store of C wholes per level covers C × span tokens. Work: the token level
+pays per token; level k pays per level-k event (11%, 7%, 2.3%, 0.15% of tokens above the word level); its memory is a
+linear scan over its events and its reads score wholes, not tokens. Context therefore scales at near-linear cost, with
+the token-level read the only quadratic term (to be made local for long contexts).
+
+**Credit can scale the same way (multi-rate truncated credit).** By the credit-horizon theory a state is taught to
+retain only what its gradient window reaches. Counting each level's truncation in its own events, a 16-event window
+reaches ~230 tokens at the sentence level and ~700 at the line level. Stream long documents in chunks with state
+carried, cut lower levels' gradients at each chunk and keep upper levels' graphs across many chunks (they hold few
+activations): training context then scales with the hierarchy, not only inference context.
+
+**Concept hierarchy** (`experiments/r1_concept_hierarchy_lm.py`): five observed levels (word, clause, sentence, line,
+document; the document level's provisional whole is a running ordered summary of the current document), level-matched
+future targets over 4/16/32/64/256 tokens, sparse concept memories on the sentence, line and document levels (race over
+1024 learned slots, top 8, null route; documents about the same thing pool evidence into shared slots), trained on
+1024-token lanes.
+
+## 6. Race attention over the part-whole tree
+
+Each completed whole knows its span, and its parts are the lower-level wholes inside it: the data's part-whole tree is
+explicit. A read descends it coarse to fine. Nodes at each level: the completed wholes so far and the in-progress whole
+(keyed by its provisional state), which parents the completed parts inside it; leaves are tokens. Weight of a node =
+weight of its parent × softmax among its siblings (top level: softmax with a null route), so the weights form a
+distribution over every earlier token reached through its wholes (contract: token mass + null mass = 1). Level reads and
+the token read enter the prediction through zero-initialised maps.
+
+What it gives: (a) long reach at a cost of about top-k × branching × levels per query once pruned (dense and exact on
+1024-token lanes now); (b) verbatim detail retrieved through a gist: the whole is the key, its parts the values; (c) a
+learning signal for concepts: read-time credit reaches each whole's key according to whether descending into it helped,
+so a sentence or paragraph is trained to be an index of its contents, the signal next-token loss gives slow variables
+only weakly. Coarse-to-fine retrieval has precedents (hierarchical attention, summary trees for retrieval, kNN memories);
+the native embodiment here is the observed tree, races at every level with credit, in-progress wholes and per-level
+clocks.
+
+**Predictions (one pass over the same 4M fresh tokens, 1024-token lanes; `curie_concept_decision_20261015_v1`).**
+- **P7a.** The concept hierarchy with the tree read beats its plan-B L2 base on the flagship protocol and the
+  last-quarter prequential loss.
+- **P7b.** Its document-context value (word-initial, positions 256-1024) exceeds the base's and the no-tree hierarchy's.
+- **P7c.** The tree read is responsible: with tree < without tree on the flagship protocol.
+
+## 7. Long context: test and training design
+
+**Data.** FineWeb has the long documents a receptive-field test needs (validation shard: median document 402 tokens,
+mean 695; 23,377 documents of ≥1,024 tokens hold 53% of tokens, 1,968 of ≥4,096 hold 17%, 594 of ≥8,192 hold 9%, 143 of
+≥16,384 hold 4%; the training shard is the same within a few percent).
+
+**Length test (no training).** The current models accept any lane length with bounded inference memory.
+`analysis/document_concept_curve.py --length 8192 --cut-stride 16` scores documents of ≥8,192 tokens from their start and
+reports, per position bucket up to 8,192, the word-initial NLL and the document-context value (history cut to 64 tokens
+minus full, at sampled positions). Prediction **P8a**: models whose upper levels tick on wholes generalise beyond their
+training lane (document-context value stays positive and the NLL keeps falling past 1,024 tokens), where token-clock
+models trained on 256-token lanes do not.
+
+**Training design (streaming with multi-rate credit).** Stream each document in chunks of 256 tokens with every state
+carried: plan-B temporal memories (complex state), token-level keyed reads over a local window, each level's
+in-progress span integrator (a linear recurrence with reset), level memory scan state, the stores of completed wholes
+(keys, values, spans) and the tree nodes built from them. Exact gradients over a window of G chunks come from chunk-level
+recomputation (store each chunk's input and incoming state, recompute it in backward): memory is one chunk's activations
+plus the carried states, compute about twice the forward. Multi-rate credit then detaches each level's carry at its own
+period: token-level carries every chunk, word and clause every 2, sentence 4, line 8, document 16 chunks, i.e. credit
+horizons of 256 to 4,096 tokens counted in each level's own events. Contracts before use: carried streaming equals the
+lane-parallel model on the same tokens (state carry exact), chunk recomputation equals full backpropagation over G
+chunks, and each detach period cuts exactly the paths it names. Prediction **P8b**: at equal fresh tokens, multi-rate
+training on 4,096-token windows raises document-context value at positions 1,024-4,096 above 1,024-lane training.
+
+## 8. Result: P6 (`results/diagnostics/curie_part_whole_decision_20261015_v2.json`)
+
+One pass over the same 4M fresh tokens, same seed and schedule, flagship protocol unless noted:
+
+| | Plan-B L2 base | Part-whole hierarchy |
+|---|---|---|
+| Flagship NLL | 5.8648 | **5.8594** |
+| Last-quarter prequential | 5.8362 | **5.8143** |
+| 65,528-target slice | **5.7088** | 5.7112 |
+| Word-initial NLL | 6.2988 | **6.2902** |
+| History beyond 64 tokens, word-initial | 0.007 | **0.023** |
+
+P6a, P6b and P6c pass under the preregistered rules; the quality margins are small (single seed), the 65,528 slice
+slightly favours the base, and the mechanism evidence is the strong part: every level carries unique value on
+word-initial targets when its readout input is mean-replaced (word 0.049, clause 0.013, sentence 0.010 nats; the race
+stack's deep stages ≤0.001), and the next-word choice uses 3.3x more history beyond 64 tokens. The levels learn used,
+slow structure; the next steps put them on the deep stack (plan-B L8) and give them long lanes, document levels, concept
+memories and the tree read (P7). P6d (future targets) follows in chain v13.

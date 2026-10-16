@@ -1,0 +1,73 @@
+{
+ "status": "completed",
+ "battle": "B4",
+ "attempt": "developed",
+ "dataset": "stack_overflow_filtered",
+ "chosen_variant": "aws_b4x_so_ptr_20261015_v1",
+ "selection": "lowest five-split mean validation total; TEST unused",
+ "val_means": {
+  "aws_b4x_so_ptr_20261015_v1": 11.472982544155839,
+  "aws_b4x_so_marks_20261015_v1": 11.80718334520326
+ },
+ "test_splits": [
+  {
+   "L_T": -95.69206456414756,
+   "L_M": 106.06478261848947,
+   "total": 10.372718054341922,
+   "sequences": 1593
+  },
+  {
+   "L_T": -89.00218139630047,
+   "L_M": 101.60059624447138,
+   "total": 12.5984148481709,
+   "sequences": 1593
+  },
+  {
+   "L_T": -89.51480649985125,
+   "L_M": 103.49448638682487,
+   "total": 13.979679886973639,
+   "sequences": 1593
+  },
+  {
+   "L_T": -93.83699427401923,
+   "L_M": 104.64747870219016,
+   "total": 10.81048442817093,
+   "sequences": 1593
+  },
+  {
+   "L_T": -92.40293957252103,
+   "L_M": 104.61963230725306,
+   "total": 12.216692734732014,
+   "sequences": 1593
+  }
+ ],
+ "test_mean": {
+  "L_T": -92.0897972613679,
+  "L_M": 104.08539525184578,
+  "total": 11.995597990477881
+ },
+ "test_total_se": 0.6475756891875425,
+ "composite_target": 11.9,
+ "beats_composite_target": false,
+ "best_single_published": 12.1,
+ "beats_best_single": true,
+ "checkpoints_sha256": {
+  "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s0.pt": "1ffcca5487cd1a028449f3587051e771b37641da60ced46d9cff7aaa48ba28c9",
+  "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s1.pt": "89ec4bf114e5d574509a4eb4adea45bc1184a41868fbe73de71e9cc707225258",
+  "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s2.pt": "8091d7a6c577598be428fdaae3ca6519a1f0e8dc08c9993eb058af069b55a1b0",
+  "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s3.pt": "318a7605142ab5e36f0024bf417f48b8f7865f6d81e2e66b45da872faf851664",
+  "experiments/results/tpp_b4/aws_b4x_so_ptr_20261015_v1_s4.pt": "55e7882f3e7102f9f4927c8c17a97030e81a0b117d0da356a5f2b7ac8eed215d"
+ },
+ "source_sha256": {
+  "experiments/tpp/b4x_score_stack_frozen_20261016.py": "fc04ebedd579e94bd872a375a0b5c48d1930865f911378e1e518368f884147a6",
+  "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+  "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+  "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+  "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+  "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+  "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+  "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+  "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+ },
+ "utc": "2026-10-16T05:48:46Z"
+}

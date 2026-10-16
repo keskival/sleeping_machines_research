@@ -1,3 +1,7 @@
+**B4 Stack Overflow developed result,16October:** developed attempt below composite target;recorded-data five-split totalNLL11.995598±0.647576SE versus composite11.90. Variant selected by all-five-split DEV mean;TEST once. Source:`experiments/results/tpp_b4/aws_b4x_so_test_20261016_v2.json`. No further fitting automatically admitted.
+
+**B4 Github developed result,16October:** WIN: five-split recorded-data totalNLL-284.465765±54.288843SE versus composite-272.90;best single published model-269.70. Selectedptr by all-five-split validation mean;TEST once. Native pointer histories retained;completed old splits reused and only memory-failed fits replaced. Source:`experiments/results/tpp_b4/aws_b4x_github_test_20261016_v3.json`. No further fitting automatically admitted.
+
 # Current developed B4 evidence and continuation
 
 **Wikipedia WIN:** recorded-data total NLL-258.760894±37.733361SE versus the

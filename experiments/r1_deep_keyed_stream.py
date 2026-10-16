@@ -9,11 +9,12 @@ comparison measures prediction gained per token, the quantity depth is supposed 
 Model: DeepKeyedLM from r1_deep_keyed_lm.py unchanged (pre-norm residual blocks with depth-scaled init, exact parallel
 temporal memory, per-layer keyed race read, output keyed token-slot bonus). Data: fineweb_train_000001 lanes of 256 tokens
 from offset 0 (the same tokens as the keyed 1M/4M runs), visited once in a seeded permutation; AdamW with a one-cycle
-schedule over the single pass. Exact resume: model, optimizer, schedule, RNG and the loss log every --checkpoint-every
+schedule over the single pass. --compile-blocks 1 trains through torch.compile'd blocks (same parameters, loss agreement
+9.5e-7 and 1.57x per update at L8: curie_plan_b_compile_benchmark_20261015_v1); evaluation always runs the eager blocks. Exact resume: model, optimizer, schedule, RNG and the loss log every --checkpoint-every
 updates. Scoring: selection slice at each quarter, then the 65,528-target slice and the flagship 8192-target/1024-window
 protocol (both disjoint from training and from the selection slice).
 """
-import argparse, hashlib, json, math, os, resource, sys, time
+import argparse, hashlib, json, math, os, resource, sys, time, types
 from pathlib import Path
 import numpy as np
 import torch
@@ -24,6 +25,15 @@ from r1_token_keyed_lm import load, evaluate as evaluate_keyed, lane_nll, V  # n
 from r1_deep_keyed_lm import DeepKeyedLM  # noqa: E402
 
 FLAGSHIP_START, FLAGSHIP_TARGETS, FLAGSHIP_WINDOW = 25165824, 8192, 1024
+EXECUTION_ONLY = ('max_steps', 'compile_blocks')
+
+
+def compiled_states(self, x):
+    """DeepKeyedLM.states through the compiled blocks while training; eager blocks otherwise (scoring shapes vary)."""
+    if not self.training: return DeepKeyedLM.states(self, x)
+    e = self.embed(x); h = e
+    for b in self.train_blocks: h = b(h, e)
+    return self.out_norm(h), e
 
 
 def flagship(model, val):
@@ -41,24 +51,29 @@ def main():
     ap.add_argument('--modes', type=int, default=32); ap.add_argument('--layers', type=int, default=2); ap.add_argument('--heads', type=int, default=4); ap.add_argument('--dk', type=int, default=16)
     ap.add_argument('--dropout', type=float, default=0.1); ap.add_argument('--lr', type=float, default=3e-3); ap.add_argument('--wd', type=float, default=0.01)
     ap.add_argument('--batch', type=int, default=4); ap.add_argument('--checkpoint-blocks', type=int, default=0); ap.add_argument('--checkpoint-every', type=int, default=256)
+    ap.add_argument('--compile-blocks', type=int, default=0, help='train through torch.compile\'d blocks (execution only; not part of the resume identity)')
     ap.add_argument('--max-steps', type=int, default=0, help='smoke only: stop after this many updates (no scoring)')
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
     train_all = load(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane)
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     model = DeepKeyedLM(a.d, a.modes, a.layers, a.heads, a.dk, a.dropout); model.checkpoint_blocks = bool(a.checkpoint_blocks); params = sum(p.numel() for p in model.parameters())
+    if a.compile_blocks:
+        assert not a.checkpoint_blocks, 'compiled blocks run without activation checkpointing'
+        model.train_blocks = [torch.compile(b, dynamic=False) for b in model.blocks]   # plain list: shares parameters, state_dict unchanged
+        model.states = types.MethodType(compiled_states, model)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert not out.exists()
     step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0
     if state_path.exists():
         s = torch.load(state_path, weights_only=False); model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); sched.load_state_dict(s['sched'])
         torch.set_rng_state(s['torch_rng']); step, losses, milestones, wall, resumes = s['step'], s['losses'], s['milestones'], s['wall'], s['resumes'] + 1
-        assert s['args'] == {k: v for k, v in vars(a).items() if k != 'max_steps'}, 'resume with different settings'
+        assert s['args'] == {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}, 'resume with different settings'
         print(json.dumps(dict(resumed_at_step=step)), flush=True)
     began = time.time() - wall
     def save():
         tmp = state_path.with_suffix('.tmp'); torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), sched=sched.state_dict(), torch_rng=torch.get_rng_state(), step=step,
-                   losses=losses, milestones=milestones, wall=time.time() - began, resumes=resumes, args={k: v for k, v in vars(a).items() if k != 'max_steps'}), tmp); os.replace(tmp, state_path)
+                   losses=losses, milestones=milestones, wall=time.time() - began, resumes=resumes, args={k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}), tmp); os.replace(tmp, state_path)
     while step < total:
         model.train(); x = torch.from_numpy(train[np.sort(order[step*a.batch:(step + 1)*a.batch])].astype(np.int64)); h, e = model.states(x[:, :-1])
         lg = model.logits(h, e, x[:, :-1], list(range(a.lane - 1))); loss = F.cross_entropy(lg.reshape(-1, V), x[:, 1:].reshape(-1))

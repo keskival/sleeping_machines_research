@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "checks": {
+    "init_equals_base": true,
+    "interface_identity_at_init": true,
+    "linear_part_path": true,
+    "codebook_recurrence": true,
+    "causal": true,
+    "credit": true
+  },
+  "measurements": {
+    "window_offset": 5000640,
+    "interface_identity_max_error": 1.1920928955078125e-07,
+    "events_per_level": [
+      231,
+      31,
+      19,
+      5
+    ],
+    "whole_linearity_error": 5.329070518200751e-15,
+    "codebook_recurrence_error": 0.0,
+    "prefix_max_change_float64": 0.0,
+    "suffix_max_change_float64": 0.673364660818192,
+    "parameters_without_gradient": [],
+    "recursive_levels_used": 4
+  },
+  "source_sha256": {
+    "experiments/type_closed_contracts.py": "19022fe7bd05ee5dbf1ce56db7823806c9100b3bf42249b286928cef68878737",
+    "experiments/r1_type_closed_lm.py": "62fc7c8a7c4cc4d02917dc3a12137e44f484db7834ca50787ab6b4dc4c6fcaef",
+    "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+    "experiments/r1_part_whole_lm.py": "228377e4fae22c5aa3f381e95559a30c3ef246404ba9311384ef7d0e2f13dd53"
+  },
+  "max_rss_kb": 899488,
+  "process_wall_s": 5.287045394012239
+}

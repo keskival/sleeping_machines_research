@@ -6756,6 +6756,8 @@ Evidence: aws_direct_audit_policy_20261011_s0, aws_direct_audit_policy_20261011_
 
 ## Appendix. B4 repaired learning and mark-memory development
 
+**B4 Github developed result,16October:** WIN: five-split recorded-data totalNLL-284.465765±54.288843SE versus composite-272.90;best single published model-269.70. Selectedptr by all-five-split validation mean;TEST once. Native pointer histories retained;completed old splits reused and only memory-failed fits replaced. Source:`experiments/results/tpp_b4/aws_b4x_github_test_20261016_v3.json`. No further fitting automatically admitted.
+
 **B4 Wikipedia developed WIN,16October:** recorded-data totalNLL−258.760894±37.733361SE versus the stronger composite−122.62;all5official splits beat that target. Pointer selected by aggregate5-split validation,TEST once. Sources/model checkpoints match;causality and mark-normalization contracts pass. Github memory repair passes at1072656KiB without history truncation;only6failed fits are restored on slots5/6,with exact pass recovery and automatic validation-selection/TEST publication. Stack Overflow finishes its admitted split4 fits,then frozen once-only scoring. [Current evidence](tpp/B4_DEVELOPED_CURRENT.md);[remaining programme](BENCHMARK_CONTINUATION.md).
 
 The log-domain clock repair completes 75 TRAIN passes with zero skipped updates, versus 60 skips in the saved guarded run. Selected DEV total loss improves by 2.607 nats per sequence. The original guarded run skipped a padded batch containing most TRAIN events.

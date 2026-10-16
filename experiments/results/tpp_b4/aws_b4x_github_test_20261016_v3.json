@@ -1,0 +1,76 @@
+{
+ "status": "completed",
+ "battle": "B4",
+ "attempt": "developed",
+ "dataset": "github_filtered",
+ "chosen_variant": "ptr",
+ "selection": "lowest five-split mean validation total; TEST unused",
+ "val_means": {
+  "ptr": -539.0722169214653,
+  "ptrlc": -526.3594410317183,
+  "marks": -535.5325156373408
+ },
+ "selection_manifest": "experiments/queue/b4/aws_b4x_github_test_20261016_v3/selection.json",
+ "selection_manifest_sha256": "e4934da0ecbfd25207529c0e149f86875d1893bca5a6204b72922d90d34b582f",
+ "test_splits": [
+  {
+   "L_T": -481.2934909925864,
+   "L_M": 126.55018391514821,
+   "total": -354.74330707743815,
+   "sequences": 36
+  },
+  {
+   "L_T": -609.9386981332395,
+   "L_M": 159.07764534254392,
+   "total": -450.86105279069557,
+   "sequences": 36
+  },
+  {
+   "L_T": -200.30745917170438,
+   "L_M": 60.363721757877265,
+   "total": -139.9437374138271,
+   "sequences": 36
+  },
+  {
+   "L_T": -313.691105603872,
+   "L_M": 99.65995613046215,
+   "total": -214.03114947340987,
+   "sequences": 36
+  },
+  {
+   "L_T": -371.45145103821545,
+   "L_M": 108.7018718169625,
+   "total": -262.74957922125293,
+   "sequences": 36
+  }
+ ],
+ "test_mean": {
+  "L_T": -395.33644098792354,
+  "L_M": 110.8706757925988,
+  "total": -284.4657651953247
+ },
+ "test_total_se": 54.28884276081441,
+ "composite_target": -272.9,
+ "beats_composite_target": true,
+ "best_single_published": -269.7,
+ "beats_best_single": true,
+ "checkpoints_sha256": {
+  "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s0.pt": "1a8129ce1602666ca545ecb96cf3beb0830a41606a0d66dff3cb2e498930d197",
+  "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s1.pt": "6bab6420a4eefcc81ed763b44423287bee7659be9433583b22e0cc25501539b4",
+  "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s2.pt": "e14d7b9fbf3cf9ed2d3dad695b3dec62c19fe71f219a21812c554871db49ca0c",
+  "experiments/results/tpp_b4/aws_b4x_github_ptr_20261016_v3_s3.pt": "00f79fe953a45ca72f1c41e082cbc9e76cfb965e4f213a6096e76b4be3b1a76c",
+  "experiments/results/tpp_b4/aws_b4x_github_ptr_20261015_v1_s4.pt": "a9000e91eb5bf143966ae5e1ee774757ddc27715b7c4e4b81b46df3efd0c02d5"
+ },
+ "source_sha256": {
+  "experiments/tpp/b4x_manifest_score.py": "27f64aaa32b6b6ad9edb96a3e790830f1abd7a1f14312d7abd813c3efb4889b6",
+  "experiments/tpp/race_tpp_b4x.py": "0784278be3d5caa9012c49ce71359676a003563149584cad68c5a12c77eeede3",
+  "experiments/tpp/race_tpp_pointer.py": "e232f1d6c505f48097a6fe54098d89237a5758781914f7f57bb649f6f29fc659",
+  "experiments/tpp/race_tpp_b4d.py": "c109276818d741741f5ecb10cd04109c50f6ee4c1b3fdd06036356562e8f2a16",
+  "experiments/tpp/race_tpp_b4g.py": "1404a929158a7e29ef2901237eb8d94b9fc2a478216b700ab406cbee968dedb1",
+  "experiments/tpp/race_tpp_logspread_marks.py": "8d1de724b81171996e3f8443dc55df77fdb87741f8af3ca1077ca4ba38418e8f",
+  "experiments/tpp/race_tpp_logspread.py": "8e75f54f90133ec41f10d8085c6eea037218d55d30ccc61fd45fc7a1088988ef",
+  "experiments/tpp/race_tpp_v20.py": "80cc510b32ca62f37856508f925a66eb4205c12a22eb8948278804df93562694",
+  "experiments/tpp/race_tpp_v19.py": "9d1acd91cc2668aa70e41a73ee0fd2710d8c9fbab941e0bea1321aaa08a026b8"
+ },
+ "utc": "2026-10-16T05:20:14Z"
+}
