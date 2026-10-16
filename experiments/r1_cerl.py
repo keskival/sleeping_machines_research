@@ -64,7 +64,7 @@ def match_lengths(x, r0, r1, cap=8):
 
 
 class CERL(nn.Module):
-    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False):
+    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False, cause_messages=False):
         super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore, self.p_drop = V, d, dk, units, topk, explore, dropout
         self.register_buffer('class_of', torch.as_tensor(class_of)); self.register_buffer('class_words', torch.as_tensor(class_words)); C = class_words.shape[0]
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02); self.word_bias = nn.Parameter(torch.zeros(V))
@@ -82,15 +82,17 @@ class CERL(nn.Module):
             self.bias1, self.bias2 = nn.Parameter(torch.zeros(n)), nn.Parameter(torch.zeros(n))
         else:
             self.unit_key = nn.Parameter(torch.randn(units, dk)/math.sqrt(dk)); self.unit_bias = nn.Parameter(torch.zeros(units))
-        self.unit_out = nn.Parameter(torch.zeros(units, d))
+        self.unit_out = nn.Parameter(torch.zeros(units, d)); self.cause_msgs = cause_messages
+        if cause_messages:
+            self.v_ep = nn.Linear(d, d); nn.init.zeros_(self.v_ep.weight); nn.init.zeros_(self.v_ep.bias); self.unit_val = nn.Parameter(torch.zeros(units, d))
         self.q_rep, self.k_rep, self.q_cont, self.k_cont = (nn.Linear(d, dk) for _ in range(4))
         self.b_rep, self.b_cont = nn.Parameter(torch.tensor(-2.0)), nn.Parameter(torch.tensor(-2.0))
         a0 = math.log(math.expm1(age_slope))   # power-law excitation kernel age^-slope: integrable for slope > 1, so total episodic hazard stays bounded as history grows
         self.age_rep, self.age_cont = nn.Parameter(torch.tensor(a0)), nn.Parameter(torch.tensor(a0)); self.span = nn.Parameter(torch.tensor(1.0))
 
-    def states(self, x):
+    def states(self, x, msg=None):
         dr = lambda z: F.dropout(z, self.p_drop, self.training) if self.p_drop else z          # small-corpus regularisation (0 on FineWeb)
-        h = dr(self.embed(x))
+        h = dr(self.embed(x) + (msg if msg is not None else 0))
         for n1, tm, to, n2, mlp in zip(self.n1, self.tm, self.tm_out, self.n2, self.mlp):
             h = h + dr(to(tm(n1(h)))); h = h + dr(mlp(n2(h)))
         return dr(self.out_norm(h))
@@ -120,9 +122,9 @@ class CERL(nn.Module):
         pos = (words == y[:, None]).float().argmax(-1)                                                 # target's slot in its class
         return lc.gather(-1, c[:, None, None].expand(-1, H.shape[1], 1)).squeeze(-1) + lw.gather(-1, pos[:, None, None].expand(-1, H.shape[1], 1)).squeeze(-1)
 
-    def lane_nll(self, x, y, rows=None, stats=False):
-        """Per-target NLL [B, R] for query rows `rows` of lanes x [B, L] (inputs) with targets y [B, L]."""
-        B, L = x.shape; h = self.states(x); r0, r1 = (0, L) if rows is None else rows; R = r1 - r0; hq = h[:, r0:r1]
+    def race(self, x, y, h, r0, r1, explore):
+        """The race at query rows [r0, r1) given states h: per-target NLL, the competing-risk parts and the woken set."""
+        B, L = x.shape; R = r1 - r0; hq = h[:, r0:r1]
         dv = x.device; t = torch.arange(r0, r1, device=dv)[:, None]; j = torch.arange(r1, device=dv)[None, :]; age = (t - j).clamp_min(0).float()
         ml = match_lengths(x, r0, r1)                                                                # [B, R, r1]
         S_rep = (self.q_rep(hq) @ self.k_rep(h[:, :r1]).transpose(1, 2))/math.sqrt(self.dk) + self.b_rep - F.softplus(self.age_rep)*torch.log1p(age)
@@ -133,7 +135,6 @@ class CERL(nn.Module):
         s_bg = self.bg(hq)                                                                           # [B, R, 1]
         logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
         yq = y[:, r0:r1]; H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2)      # [B, R, 1+K, d]
-        explore = self.training and self.explore > 0
         if explore:
             # Paid counterfactual alternatives: random dormant units ask "would including me have raised p(y)?" against the
             # actual race held fixed (detached). Credit reaches only their keys, biases, vectors and the unit query map; they
@@ -155,6 +156,29 @@ class CERL(nn.Module):
         if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
+        return nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont
+
+    def messages(self, x, y, chunk=512):
+        """Cause messages (theory 169 section 3): once token t+1 is observed, the posterior attribution of its cause sends that
+        cause's content into memory at position t+1: m_t = sum_j post_j v(h_j) over episodic causes (repeat and continue both
+        attribute to event j) + sum_u post_u val_u over woken concepts. Pass-1 states form the attribution (weights detached:
+        an observation of who caused the event); values carry gradient. Causal: m_t depends on tokens <= t+1 and enters the
+        state at input position t+1, which predicts t+2."""
+        B, L = x.shape; h1 = self.states(x); out = []
+        for r0 in range(0, L, chunk):
+            r1 = min(r0 + chunk, L)
+            with torch.no_grad():
+                _, parts, s_sel, sel, *_ = self.race(x, y, h1.detach(), r0, r1, False); post = torch.softmax(parts, -1); K = s_sel.shape[-1]
+            w_ep = post[..., 1 + K:1 + K + r1] + post[..., 1 + K + r1:]
+            out.append(w_ep @ self.v_ep(h1[:, :r1]) + (post[..., 1:1 + K, None]*self.unit_val[sel]).sum(-2))
+        m = torch.cat(out, 1); return torch.cat([torch.zeros_like(m[:, :1]), m[:, :-1]], 1)
+
+    def lane_nll(self, x, y, rows=None, stats=False, msg=None):
+        """Per-target NLL [B, R] for query rows `rows` of lanes x [B, L] (inputs) with targets y [B, L]."""
+        B, L = x.shape
+        if self.cause_msgs and msg is None: msg = self.messages(x, y)
+        h = self.states(x, msg); r0, r1 = (0, L) if rows is None else rows
+        nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont = self.race(x, y, h, r0, r1, self.training and self.explore > 0)
         if getattr(self, 'record_winner', False):                                                    # analysis: posterior-winning cause type per target (0 bg, 1 concept, 2 repeat, 3 continue)
             with torch.no_grad():
                 post = torch.softmax(parts, -1); K_ = s_sel.shape[-1]
@@ -189,8 +213,9 @@ def lanes_nll(model, block, row_chunk, stats=False):
     with torch.no_grad():
         for i in range(len(block)):
             w = torch.from_numpy(block[i:i + 1].astype(np.int64)); x, y = w[:, :-1], w[:, 1:]; L = x.shape[1]
+            msg = model.messages(x, y) if model.cause_msgs else None                                  # cause messages once per lane, shared by its row chunks
             for r0 in range(0, L, row_chunk):
-                out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats)
+                out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats, msg=msg)
                 nll, st = out if stats else (out, None); tot += nll.sum().item(); n += nll.numel()
                 if st:
                     for k, v in st.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
@@ -252,7 +277,7 @@ def words_main(a, src):
     from r1_ptb_native import read_corpus, CORPORA
     ids, vocab, eos = read_corpus(a.corpus); V = CORPORA[a.corpus]['vocab']; out_dir = ROOT/'experiments/results/word_language'; out_dir.mkdir(exist_ok=True)
     counts = np.bincount(ids['train'], minlength=V).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(V, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, dropout=a.dropout, product_keys=bool(getattr(a, 'product_keys', 0))); params = sum(p.numel() for p in model.parameters())
+    model = CERL(V, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, dropout=a.dropout, product_keys=bool(getattr(a, 'product_keys', 0)), cause_messages=bool(getattr(a, 'cause_messages', 0))); params = sum(p.numel() for p in model.parameters())
     if a.mode == 'score':
         rec = json.loads((out_dir/f'{a.run}.json').read_text()); model.load_state_dict(torch.load(ROOT/rec['checkpoint'])); path = out_dir/f'{a.tag}.json'; assert not path.exists()
         split = ids[a.split]; res = dict(battle='R1', tag=a.tag, run=a.run, corpus=a.corpus, split=a.split, targets=len(split), parameters=params, ctx=a.ctx, stride=a.stride)
@@ -307,10 +332,10 @@ def words_main(a, src):
     print('RESULT', json.dumps({k: result[k] for k in ('best_valid_ppl', 'best_epoch', 'parameters', 'native_valid4096')}), flush=True)
 
 
-def contracts():
+def contracts(cause_messages=False):
     """Exact normalisation, causality, row chunking and exploration-free evaluation on a small synthetic model."""
     torch.manual_seed(0); V = 61; counts = np.random.default_rng(0).integers(0, 50, V).astype(float); cls, words = word_classes(counts, 6, s_max=16)
-    m = CERL(V, cls, words, d=32, modes=8, layers=2, dk=16, units=32, topk=3, explore=2); m.eval(); res = {}
+    m = CERL(V, cls, words, d=32, modes=8, layers=2, dk=16, units=32, topk=3, explore=2, cause_messages=cause_messages); m.eval(); res = {}
     with torch.no_grad():
         for p in m.parameters(): p.add_(torch.randn_like(p)*0.05)
         x = torch.randint(0, 8, (1, 40))                                                             # small alphabet: many repeats/continuations
@@ -344,7 +369,7 @@ def main():
     ap = argparse.ArgumentParser(); A = ap.add_argument
     A('--mode', choices=('train', 'contract', 'score'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
-    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0)
+    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0); A('--cause-messages', type=int, default=0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--dropout', type=float, default=0.0); A('--epochs', type=int, default=30); A('--ctx', type=int, default=512); A('--stride', type=int, default=128)
     A('--run', default=''); A('--split', default='valid'); A('--select-from', default=''); A('--online-stride', type=int, default=32); A('--grid-targets', type=int, default=8192)
@@ -352,7 +377,8 @@ def main():
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
     src = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl.py', 'experiments/r1_deep_keyed_lm.py')}
     if a.mode == 'contract':
-        res = dict(battle='R1', tag=a.tag, **contracts(), source_sha256=src); print(json.dumps(res))
+        base, msgs = contracts(), contracts(cause_messages=True)
+        res = dict(battle='R1', tag=a.tag, **base, cause_messages=msgs, status_all='passed' if base['status'] == msgs['status'] == 'passed' else 'failed', source_sha256=src); print(json.dumps(res))
         if a.tag:
             with (ROOT/f'experiments/results/diagnostics/{a.tag}.json').open('x') as f: json.dump(res, f, indent=1); f.write('\n')
         return
@@ -360,7 +386,7 @@ def main():
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     counts = np.bincount(train.reshape(-1), minlength=50257).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys)); params = sum(p.numel() for p in model.parameters())
+    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
