@@ -23,6 +23,8 @@ forward+backward matmul FLOPs per training token × presentations (`curie_plan_b
 | GPT-2 124M record (published) | 800M (6N + 6·L·T·d) | step 125, 65.5M tokens: 5.2e16 | public 5.9598 |
 | same | | step 250, 131M tokens: 1.05e17 | public 5.0586 |
 
+**Published frontier at matched tokens** (`results/public_reference/published_record_curves_20261016_v1.json`): the current track-1 record (#89, July 2026) logs public validation 4.489 at 32.8M training tokens, 4.145 at 70.8M, 3.737 at 136M and 3.278 at 366M. Our strongest one-pass member scores 5.841 at 4M tokens (development slice) and the 16M L8 run is near 5.6 prequential at 6M: **at matched tokens we trail the modern record by more than one nat**. The gap is capacity (about 124M parameters and ~1e9 FLOPs/token against 3.8M and 2.6e7) plus two years of recipe engineering (Muon, multi-token prediction, hashed bigram embeddings, staged batch and context schedules). Closing it at matched tokens needs 10–30x wider native members; at our CPU throughput that is about ten days per 33M tokens, so the FineWeb record frontier is a hardware-bound target (user: no new hardware yet).
+
 Depth is cheap in arithmetic: L2 → L8 adds 23% FLOPs per token (21.1M → 25.8M; the 50,257-way output dominates) for
 −0.023 nats per fresh token at 4M, a gap that widens with data (theory note 5, P5c/P5d).
 
@@ -34,6 +36,33 @@ Depth is cheap in arithmetic: L2 → L8 adds 23% FLOPs per token (21.1M → 25.8
    points are update-limited warm-up checkpoints. A small Transformer would be far stronger at our budgets. Beating the
    record's early checkpoints is a scoped efficiency point against a pinned published run, not a family verdict.
 
+## CPU-feasible published leaderboards (primary now; user: train our own models against published benchmarks)
+
+Word-level Penn Treebank (929k training tokens, 10k vocabulary) and WikiText-2 (2.09M training tokens, 33k vocabulary)
+carry long published tables of models trained only on their training split, with leaders at about 24–33M parameters and
+a recognised online-adaptation category (dynamic evaluation: weights adapt on already-scored test text). Our keyed
+token-slot read is a learned cache pointer, our temporal memory persists across the article, and causal online weight
+adaptation is a primary capability (AGENTS.md); these are the mechanisms behind the best published results there
+(continuous cache pointer, dynamic evaluation), but integrated and trained end to end. Budgets fit CPU: one PTB epoch at
+~1k tokens/s is ~15 minutes, so hundreds of epochs fit AWS slots in parallel. Published references are verified from
+the papers before the battle opens; only training-split models enter the main table, pretrained models (GPT-2
+zero-shot) are a separate column.
+
+Verified targets (Melis et al., ICLR 2020, Table 1; local copy `results/public_reference/melis2020_mogrifier_iclr.pdf`),
+test perplexity, static / with dynamic evaluation:
+
+| Dataset | Model | Params | Static test | Dyneval test |
+| --- | --- | --- | --- | --- |
+| PTB | Mogrifier (d2, MC) | 24M | 50.1 | 44.8 |
+| PTB | AWD-LSTM (d3, MoS15) | 22M | 54.4 | 47.7 |
+| PTB | Transformer-XL | 24M | 54.5 | — |
+| WikiText-2 | Mogrifier (d2, MoS2, MC) | 35M | 55.1 | 38.6 |
+| WikiText-2 | FRAGE (d3, MoS15) | 35M | 58.0 | 39.1 |
+| WikiText-2 | AWD-LSTM (d3, MoS15) | 35M | 61.2 | 40.7 |
+
+Our online-adaptation arm (weights adapt only on already-scored text, AGENTS.md) is compared with the dynamic-evaluation
+column; the frozen arm with the static column.
+
 ## Program (in order)
 
 1. **Our scaling laws, now (Curie + AWS, authorized).** One-pass plan-B ladder over data (4M/16M/64M), depth (2/4/8/16)
@@ -43,8 +72,8 @@ Depth is cheap in arithmetic: L2 → L8 adds 23% FLOPs per token (21.1M → 25.8
 2. **First exact public-protocol point (one sealed scoring).** Score the development-selected strongest member on the
    public protocol: an efficiency point against the record (compute to reach the record's 65.5M-token loss), reported
    with the scope above.
-3. **Matched-protocol Transformer reference ladder (needs user authorization; the 6 October rule bars new Transformer
-   training).** Small decoder-only Transformers at d 64–256, 2–8 layers, on the same shards, tokenizer, one-pass schedule
+3. **Matched-protocol Transformer reference ladder (authorized 16 October as a bounded secondary cross-check; published
+   benchmarks come first).** Small decoder-only Transformers at d 64–256, 2–8 layers, on the same shards, tokenizer, one-pass schedule
    and public protocol, at the same budgets 1e14–3e15 FLOPs. This is the only route to a family-level frontier comparison
    at budgets we can reach; without it every claim stays an efficiency point against a pinned record.
 4. **Scale to overlap the published curve (needs provisioning).** A GPU or large-CPU worker to take the strongest native

@@ -96,6 +96,16 @@ The existing shared-host memory reserves protect those hosts and remain in force
   layers. Tuning is limited to the protocol's grid on validation only, with three seeds for the selected
   configuration, through run_safe on AWS gym slots. No other external architectures are included.
 
+- Exception (user direction, 16 October 2026): bounded matched-protocol Transformer reference ladder for the R1 scaling
+  comparison (experiments/SCALING_SUPREMACY_PROTOCOL.md, step 3). Scope: small decoder-only Transformers, d 64–256, 2–8
+  layers, trained one pass on the same FineWeb GPT-2 shards, tokenizer and token budgets as the native plan-B ladder
+  (1e14–3e15 training FLOPs), scored on the same development slices and, once per selected model, the sealed public
+  protocol. Tuning: learning rate {1e-3, 3e-3} on development data at the smallest budget, then fixed. Driver
+  `experiments/r1_reference_transformer_stream.py` through run_safe only. No other external architectures; no new
+  hardware (user, same date). Priority (user, same date): train our own models against published benchmarks first
+  (the pinned modded-NanoGPT record curves on the exact public protocol) so large Transformers are never retrained; the
+  small ladder is a secondary cross-check run only when a published curve leaves a budget uncovered.
+
 # Current state only; git is the history (user direction, 9 October 2026)
 
 - Documents (README, report parts, REPORT.md and its PDF, investor and EIC materials, papers) state the current results
