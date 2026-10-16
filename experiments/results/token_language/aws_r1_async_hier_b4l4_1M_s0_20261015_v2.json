@@ -1,0 +1,252 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "depth plan C v2: event-sparse asynchronous concept hierarchy",
+ "tag": "aws_r1_async_hier_b4l4_1M_s0_20261015_v2",
+ "args": {
+  "tag": "aws_r1_async_hier_b4l4_1M_s0_20261015_v2",
+  "seed": 0,
+  "train_tokens": 1048576,
+  "lane": 256,
+  "d": 64,
+  "modes": 32,
+  "base": 4,
+  "levels": 4,
+  "heads": 4,
+  "dk": 16,
+  "dropout": 0.1,
+  "concepts": 32,
+  "rate": 0.02,
+  "w_hazard": 0.1,
+  "w_concept": 0.1,
+  "w_rate": 1.0,
+  "w_ds": 0.3,
+  "lr": 0.003,
+  "wd": 0.01,
+  "batch": 4,
+  "epochs": 20,
+  "patience": 2,
+  "max_wall_s": 28800.0,
+  "max_steps": 0,
+  "score": 1,
+  "checkpoint_blocks": 1
+ },
+ "parameters": 3897561,
+ "best_epoch": 3,
+ "epochs_run": 6,
+ "steps": 5765,
+ "wall_s": 28823.275035381317,
+ "history": [
+  {
+   "epoch": 0,
+   "train_nll": 7.557521261274815,
+   "select_nll": 6.7616452513873195,
+   "levels": [
+    {
+     "rate": 0.018627450980392157,
+     "events": 4.75,
+     "fetches": 4.79,
+     "concepts_used": 11
+    },
+    {
+     "rate": 0.15789473684210525,
+     "events": 0.75,
+     "fetches": 4.0,
+     "concepts_used": 3
+    },
+    {
+     "rate": 0.3333333333333333,
+     "events": 0.25,
+     "fetches": 4.0,
+     "concepts_used": 1
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    }
+   ],
+   "epoch_s": 5327
+  },
+  {
+   "epoch": 1,
+   "train_nll": 6.101148427929729,
+   "select_nll": 6.347927501624424,
+   "levels": [
+    {
+     "rate": 0.012745098039215686,
+     "events": 3.25,
+     "fetches": 4.31,
+     "concepts_used": 6
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    },
+    {
+     "rate": 0.0,
+     "events": 0.0,
+     "fetches": 0.0,
+     "concepts_used": 0
+    }
+   ],
+   "epoch_s": 5149
+  },
+  {
+   "epoch": 2,
+   "train_nll": 5.633890506345779,
+   "select_nll": 6.233704388520167,
+   "levels": [
+    {
+     "rate": 0.016666666666666666,
+     "events": 4.25,
+     "fetches": 4.12,
+     "concepts_used": 12
+    },
+    {
+     "rate": 1.0,
+     "events": 4.25,
+     "fetches": 4.0,
+     "concepts_used": 10
+    },
+    {
+     "rate": 0.9411764705882353,
+     "events": 4.0,
+     "fetches": 4.25,
+     "concepts_used": 7
+    },
+    {
+     "rate": 1.0,
+     "events": 4.0,
+     "fetches": 4.56,
+     "concepts_used": 6
+    }
+   ],
+   "epoch_s": 5109
+  },
+  {
+   "epoch": 3,
+   "train_nll": 5.332417699508369,
+   "select_nll": 6.215036873940904,
+   "levels": [
+    {
+     "rate": 0.00980392156862745,
+     "events": 2.5,
+     "fetches": 4.3,
+     "concepts_used": 7
+    },
+    {
+     "rate": 0.2,
+     "events": 0.5,
+     "fetches": 4.0,
+     "concepts_used": 2
+    },
+    {
+     "rate": 1.0,
+     "events": 0.5,
+     "fetches": 4.0,
+     "concepts_used": 2
+    },
+    {
+     "rate": 0.5,
+     "events": 0.25,
+     "fetches": 4.0,
+     "concepts_used": 1
+    }
+   ],
+   "epoch_s": 5058
+  },
+  {
+   "epoch": 4,
+   "train_nll": 5.098966060671955,
+   "select_nll": 6.239512567934782,
+   "levels": [
+    {
+     "rate": 0.020588235294117647,
+     "events": 5.25,
+     "fetches": 4.1,
+     "concepts_used": 9
+    },
+    {
+     "rate": 0.047619047619047616,
+     "events": 0.25,
+     "fetches": 4.0,
+     "concepts_used": 1
+    },
+    {
+     "rate": 1.0,
+     "events": 0.25,
+     "fetches": 4.0,
+     "concepts_used": 1
+    },
+    {
+     "rate": 1.0,
+     "events": 0.25,
+     "fetches": 4.0,
+     "concepts_used": 1
+    }
+   ],
+   "epoch_s": 5031
+  },
+  {
+   "epoch": 5,
+   "train_nll": 4.8881793096084,
+   "select_nll": 6.379640453433664,
+   "levels": [
+    {
+     "rate": 0.0058823529411764705,
+     "events": 1.5,
+     "fetches": 4.17,
+     "concepts_used": 5
+    },
+    {
+     "rate": 1.0,
+     "events": 1.5,
+     "fetches": 4.0,
+     "concepts_used": 3
+    },
+    {
+     "rate": 0.3333333333333333,
+     "events": 0.5,
+     "fetches": 4.0,
+     "concepts_used": 1
+    },
+    {
+     "rate": 1.0,
+     "events": 0.5,
+     "fetches": 4.0,
+     "concepts_used": 1
+    }
+   ],
+   "epoch_s": 3149
+  }
+ ],
+ "select": {
+  "nll": 6.215036873940904,
+  "targets": 16376
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_async_hier_b4l4_1M_s0_20261015_v2.pt",
+ "reference": {
+  "keyed_L2_1M_score_65528": 6.019141,
+  "keyed_L2_4M_score_65528": 5.521061
+ },
+ "score_65528": {
+  "nll": 5.891115794265071,
+  "targets": 65528
+ },
+ "source_sha256": {
+  "experiments/r1_async_hierarchy_lm.py": "a7d1872fd17839c47976619c21c98b06d50ae33f26925a7a869a0abb17330518",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+  "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+  "experiments/tpp/race_tpp_v5.py": "73d2f95e11c2ebc78b1ee95340ab34584eac8d48d434353921a0cd82503b39a1"
+ }
+}
