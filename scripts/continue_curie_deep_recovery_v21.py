@@ -17,7 +17,7 @@ def main():
     except Exception as error: print(json.dumps({'depth_16m': v16.L8_16, 'failed': repr(error)}), flush=True)
     try:
         run_or_await(CERL4, 21600)
-        market.publish([f'experiments/results/token_language/{CERL4}.json', 'experiments/results/diagnostics/curie_cerl_contracts_20261016_v1.json'],
+        market.publish([f'experiments/results/token_language/{CERL4}.json', 'experiments/results/diagnostics/curie_cerl_contracts_20261016_v2.json'],
                        'R1 native causal event race member: first 4M one-pass development fit (native share, active work, dense diagnostic comparison)')
     except Exception as error: print(json.dumps({'cerl_4m': 'failed', 'error': repr(error)}), flush=True)
     try:

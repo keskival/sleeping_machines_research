@@ -110,24 +110,26 @@ class CERL(nn.Module):
         s_bg = self.bg(hq)                                                                           # [B, R, 1]
         logZ = torch.logsumexp(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)
         yq = y[:, r0:r1]; H = torch.cat([hq[:, :, None], hq[:, :, None] + self.unit_out[sel]], 2)      # [B, R, 1+K, d]
-        Hf, yf = H.reshape(B*R, -1, self.d), yq.reshape(-1); n_ = Hf.shape[0]            # word laws in row chunks under checkpointing: [rows, class words, d] never all at once
-        lp = torch.cat([torch.utils.checkpoint.checkpoint(self.two_level, Hf[i:i + 128], yf[i:i + 128], use_reentrant=False) if torch.is_grad_enabled() else self.two_level(Hf[i:i + 128], yf[i:i + 128])
-                        for i in range(0, n_, 128)]).view(B, R, -1)
-        xj = x[:, :r1]; nxt = torch.cat([x[:, 1:r1], yq[:, -1:] if r1 == L else x[:, r1:r1 + 1]], 1)  # x_{j+1}; the last j has no successor among inputs (masked by j < t)
-        hit_rep = xj[:, None, :] == yq[:, :, None]; hit_cont = nxt[:, None, :] == yq[:, :, None]
-        neg = torch.full_like(S_rep, float('-inf'))
-        parts = torch.cat([s_bg + lp[..., :1], s_sel + lp[..., 1:], torch.where(hit_rep, S_rep, neg), torch.where(hit_cont, S_cont, neg)], -1)
-        nll = logZ - torch.logsumexp(parts, -1)
-        self.aux = None
-        if self.training and self.explore:
+        explore = self.training and self.explore > 0
+        if explore:
             # Paid counterfactual alternatives: random dormant units ask "would including me have raised p(y)?" against the
             # actual race held fixed (detached). Credit reaches only their keys, biases, vectors and the unit query map; they
             # never enter the predictive mixture, so training and evaluation predict with the same race.
             ex = torch.randint(0, self.U, (B, R, self.explore)); hd = hq.detach()
             s_ex = (self.q_unit(hd)[:, :, None, :]*self.unit_key[ex]).sum(-1) + self.unit_bias[ex]
             s_ex = s_ex.masked_fill((ex[..., :, None] == sel[..., None, :]).any(-1), float('-inf'))
-            Hx = (hd[:, :, None] + self.unit_out[ex]).reshape(B*R, -1, self.d)
-            lp_ex = torch.cat([torch.utils.checkpoint.checkpoint(self.two_level, Hx[i:i + 128], yf[i:i + 128], use_reentrant=False) for i in range(0, n_, 128)]).view(B, R, -1)
+            H = torch.cat([H, hd[:, :, None] + self.unit_out[ex]], 2)                                  # one word-law pass for all causes
+        Hf, yf = H.reshape(B*R, -1, self.d), yq.reshape(-1); n_ = Hf.shape[0]            # word laws in row chunks under checkpointing: [rows, class words, d] never all at once
+        lp = torch.cat([torch.utils.checkpoint.checkpoint(self.two_level, Hf[i:i + 256], yf[i:i + 256], use_reentrant=False) if torch.is_grad_enabled() else self.two_level(Hf[i:i + 256], yf[i:i + 256])
+                        for i in range(0, n_, 256)]).view(B, R, -1)
+        K = s_sel.shape[-1]; lp_ex = lp[..., 1 + K:]; lp = lp[..., :1 + K]
+        xj = x[:, :r1]; nxt = torch.cat([x[:, 1:r1], yq[:, -1:] if r1 == L else x[:, r1:r1 + 1]], 1)  # x_{j+1}; the last j has no successor among inputs (masked by j < t)
+        hit_rep = xj[:, None, :] == yq[:, :, None]; hit_cont = nxt[:, None, :] == yq[:, :, None]
+        neg = torch.full_like(S_rep, float('-inf'))
+        parts = torch.cat([s_bg + lp[..., :1], s_sel + lp[..., 1:], torch.where(hit_rep, S_rep, neg), torch.where(hit_cont, S_cont, neg)], -1)
+        nll = logZ - torch.logsumexp(parts, -1)
+        self.aux = None
+        if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
         if not stats: return nll
