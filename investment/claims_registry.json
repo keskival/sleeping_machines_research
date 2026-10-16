@@ -1384,6 +1384,66 @@
         "investment/brief/evidence_brief.tex",
         "investment/EIC_ACCELERATOR/SHORT_PROPOSAL_DRAFT.md"
       ]
+    },
+    {
+      "id": "root_swap_sensitivity",
+      "display": "51.62",
+      "decimals": 2,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              1,
+              "mean_root_feature_distance"
+            ]
+          },
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              0,
+              "mean_root_feature_distance"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "report/I_SCIENCE.md"
+      ]
+    },
+    {
+      "id": "logit_swap_sensitivity",
+      "display": "27.73",
+      "decimals": 2,
+      "value": {
+        "ratio": [
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              1,
+              "mean_absolute_logit_contrast"
+            ]
+          },
+          {
+            "file": "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json",
+            "path": [
+              "rows",
+              0,
+              "mean_absolute_logit_contrast"
+            ]
+          }
+        ]
+      },
+      "documents": [
+        "investment/PITCH.md",
+        "investment/INVESTMENT_CASE.md",
+        "report/I_SCIENCE.md"
+      ]
     }
   ]
 }

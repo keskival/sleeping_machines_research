@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "stage": "binding_race_gate",
+  "gate": "PASS",
+  "work": {
+    "parents": 5,
+    "informative_parents": 5,
+    "bound_reads": 17,
+    "child_views": 12,
+    "candidate_clocks": 15,
+    "scope": "All latest published parents and pair-swap alternatives;local teacher only. Full actor/learning arithmetic remains separately chargeable."
+  },
+  "actor_gradient_norms": {
+    "input": 7.99321542252217e-06,
+    "level_0": 6.200182286626344e-05,
+    "level_1": 0.000204542386322204,
+    "level_2": 7.963262916620855e-05,
+    "level_3": 5.005165633527306e-06,
+    "level_4": 4.738832786352539e-06,
+    "level_5": 0.0001990176822636055,
+    "level_6": 0.003914076687722724,
+    "level_7": 0.008912153720368297
+  },
+  "actor_output_unchanged": true,
+  "teacher_parameters": 1056,
+  "wall_s": 4.146015621023253,
+  "max_rss_kb": 720256,
+  "scope": "One original TRAIN scene and frozen512update actor;actual issued-version binding teacher backward,no optimizer step,DEV,TEST,ablation or predictive quality claim. Teacher-only gradient gate is not an acquisition.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_binding_race_gate_20261016_v1.json": "7a33f72229782a272e98d61748f1a43d5b7487c206c2d45d79f22581af5140c3"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "status": "completed_milestone",
+  "battle": "G-HIER",
+  "additional_updates": 512,
+  "parameters": 298666,
+  "milestones": [
+    {
+      "additional_updates": 128,
+      "unique_training_examples": 256,
+      "parent_used_shape_correct": 512,
+      "parent_used_shape_count": 512,
+      "parent_used_shape_accuracy": 1.0,
+      "legacy_train_nll": 0.6931102132460023,
+      "legacy_dev_nll": 0.6931642771420907,
+      "legacy_dev_accuracy": 0.484375,
+      "joint_train_nll": 0.6954326629638672,
+      "joint_dev_nll": 0.6954306364059448,
+      "broad_train_nll": 0.6731009700115111,
+      "broad_dev_nll": 0.6933304652713812
+    },
+    {
+      "additional_updates": 512,
+      "unique_training_examples": 1024,
+      "parent_used_shape_correct": 512,
+      "parent_used_shape_count": 512,
+      "parent_used_shape_accuracy": 1.0,
+      "legacy_train_nll": 0.6651460725045896,
+      "legacy_dev_nll": 0.8039951128968179,
+      "legacy_dev_accuracy": 0.3125,
+      "joint_train_nll": 0.6955751180648804,
+      "joint_dev_nll": 0.6946618556976318,
+      "broad_train_nll": 0.6435052482156658,
+      "broad_dev_nll": 0.6945168651593855
+    }
+  ],
+  "initial_shape_dev_accuracy": 0.53125,
+  "scope": "Completed128/512update evaluations within an active2048update acquisition. Same actor,known8shape vocabulary,64reused DEV scenes/512actual parent-used views,common clock tape. Primary legacy and broader TRAIN head are separate. No TEST,ablation or public benchmark claim. Full final-stage fitting work follows at completion;no intermediate efficiency claim.",
+  "decision": "Perfect readability of8known part shapes in actual parent-used DEV views is acquired. Whole-object relation learning remains the task;fixed2048update run continues unchanged and formal credit audit proceeds on saved TRAIN snapshots.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_composition_scale_20261016_v1_m512.json": "f4ad4b02e2e9e861db4fb8ad4b1cdddfc541c2ed583d99feee446fc1c36458f7"
+  }
+}

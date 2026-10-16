@@ -33,7 +33,12 @@ def publish(r):
     a=s.index('\n\n');s=s[:a]+'\n\n'+paragraph+s[a:]
    write(name,s)
   name='REPORT.md';write(name,(ROOT/name).read_text()+'\n\n### Completed fixed-architecture composition data/training scaling\n\n'+paragraph+'\n\nMilestone128/512/2048 metrics,unique exposure,raw actor and calibrated-head scores,fresh final DEV,source/input/checkpoint bindings and all counted work are in the completed result. Data broadening preserves all original structural holdouts;new tapes do not expand the finite topology set.\n')
-  name='report/I_SCIENCE.md';s=(ROOT/name).read_text();a=s.index('\n## 5.');write(name,s[:a]+'\n\n'+paragraph+'\n'+s[a:])
+  name='report/I_SCIENCE.md';s=(ROOT/name).read_text();marker='**Composition scaling now tests data and optimization adequacy.**'
+  if marker in s:
+   a=s.index(marker);b=s.index('\n\n',a);s=s[:a]+paragraph+s[b:]
+  else:
+   a=s.index('\n## 5.');s=s[:a]+'\n\n'+paragraph+'\n'+s[a:]
+  write(name,s)
   name='experiments/theory/COMPOSITION_DATA_AND_OPTIMIZATION_SCALING.md';write(name,(ROOT/name).read_text()+'\n\n## Completed endpoint\n\n'+paragraph+'\n')
   name='investment/brief/evidence_brief.tex';s=(ROOT/name).read_text();a=s.index('{\\small \\textbf{Identity-preserving composition.}');b=s.index('\\begin{center}',a)
   text=f"{{\\small \\textbf{{Fixed-architecture composition scaling.}} Ownership repair:25\\% support defect,8complete parts,19checks. After2048additional paired updates,original-protocol DEV NLL{nll:.4f} versus acquired{reference:.4f};fresh DEV{fresh['nll']:.4f}. Original/fresh accuracy{100*legacy['accuracy']:.1f}\\%/{100*fresh['accuracy']:.1f}\\%. Same64TRAIN arrangements,32new geometry/time tapes,unchanged model and regularization,no TEST or ablation arms. Source:\\texttt{{investment/composition\\_scale\\_evidence.json}}.}}\n\n"

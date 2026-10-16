@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "battle": "G-HIER",
+  "rows": [
+    {
+      "additional_updates": 128,
+      "pairs": 8,
+      "root_feature_distance": 0.03030583845980557,
+      "absolute_logit_contrast": 0.004862567409873009,
+      "mean_label_aligned_pair_margin": 0.0012287255376577377,
+      "correct_pair_rankings": 5,
+      "head_weight_contrast_norm": 0.8340814709663391,
+      "readout_cancellation_ratio": 0.06774484069771218,
+      "top_relation_credit_norm": 0.010299824351547807,
+      "top_relation_credit_retained_ratio": 0.06830555986255446
+    },
+    {
+      "additional_updates": 512,
+      "pairs": 8,
+      "root_feature_distance": 1.56450489098457,
+      "absolute_logit_contrast": 0.13485916331410408,
+      "mean_label_aligned_pair_margin": -0.013158503919839859,
+      "correct_pair_rankings": 4,
+      "head_weight_contrast_norm": 0.6392124891281128,
+      "readout_cancellation_ratio": 0.1799668679979658,
+      "top_relation_credit_norm": 0.04436385652682224,
+      "top_relation_credit_retained_ratio": 0.6478683177757473
+    }
+  ],
+  "root_swap_sensitivity_ratio": 51.62387746042936,
+  "logit_swap_sensitivity_ratio": 27.7341478167037,
+  "scalar_chain_rule_max_abs_error": 2.384185791015625e-07,
+  "scope": "Frozen128/512update snapshots,eight original TRAIN pairs/common race tape113,actual joint head and native counterfactual teacher.No DEV/TEST,no ablation,no optimizer update or fit.Credit VJPs include the implemented local routing surrogate,not exact expected-loss Jacobians;readout VJPs are exact. Paired cancellation and sensitivity are local evidence,not causal proof of a unique failure.",
+  "decision": "Lower-readable information and upper sensitivity are distinct from task-aligned joint composition. The audited upper path is not completely insensitive and its relation credit is not wholly cancelled. Pair directions remain inconsistently aligned with labels;no unique causal attribution or architecture change follows.",
+  "input_sha256": {
+    "experiments/results/hierarchy/aws_g_hier_composition_credit_audit_20261016_v1.json": "4213958dc66f51e083a865bdde59094456ef307cb57a2d34fb4cdf876988aeb4"
+  }
+}

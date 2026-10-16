@@ -603,3 +603,6 @@ Native multi-memory composition (15 October):
 formalizes one native read round and generated readout, faithful stochastic
 train/eval semantics, float64 scheduling and input-association learning criteria.
 48 contracts and real FIT gate pass;64-update native learning is running.
+
+
+Task-facing composition credit(16October): [formal analysis and completed frozen audit](theory/COMPOSITION_TASK_CREDIT_GEOMETRY.md) separates local readability,upper sensitivity and correct joint relations. A local binding-race teacher preserves the complete native actor;five contracts and one actual TRAIN gradient/resource gate pass. No extra acquisition before the unchanged2048update decision.
