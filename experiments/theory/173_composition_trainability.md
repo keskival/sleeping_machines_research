@@ -339,3 +339,30 @@ Implemented 17 October (founder: be guided by the results and fix the weaknesses
   the information of the one below).
 - Queued: the hierarchy grid (K = 1, 2, 4 at 1k-64k trees) and the fixed CERL pair at 4M/16M on Curie; the grown K4 16M arm
   and the fixed CERL 64M slope point on AWS.
+
+## 15. Inductive bias and scaling (17 October, founder)
+
+Founder: model classes that scale well tend to lose to models that scale badly on small datasets (n-grams vs neural LMs, LSTMs
+vs Transformers, CNNs vs ViTs below JFT scale). The exception is a bias that only speeds learning and fades with data (ConvNets
+match ViTs at JFT-4B scale, Smith et al. 2023): a soft bias costs nothing at scale, a hard constraint flattens the curve.
+
+Our own runs show the pattern inside the model (one seed, FineWeb DEV, selection slice):
+
+| | CERL 4M | CERL 16M | K4 4M | K4 old-slot 16M |
+| --- | --- | --- | --- | --- |
+| native gain (race causes over background only) | 0.437 | 0.405 | 0.433 | 0.386 |
+| background responsibility | 0.24 | 0.32 | 0.24 | 0.36 |
+| background-only NLL | 6.107 | 5.688 | 6.108 | 5.577 |
+
+The generic background route carried most of the 4M → 16M improvement (0.42 of 0.39 nats for CERL); the race causes are a
+near-constant 0.4-nat offset whose share does not grow. Rules from here:
+1. Small-data wins are not scaling evidence. Scaling claims need fitted curves over at least three data sizes on the compute
+   axis; matched-compute wins are reported for their budget only.
+2. Every result is read for per-cause share against data: a mechanism whose share shrinks with data is a small-data prior; a
+   mechanism meant to scale must take a growing share.
+3. The concept bank is the parametric memory that should grow with data (capacity beyond activity). Pass condition for the
+   fixed CERL pair (curie_r1_cerl_fix_{4M,16M}): units_used and the concept share both rise from 4M to 16M. If not, the bank
+   is a hard constraint and is redesigned before any 64M run.
+4. Size must scale with data in frontier comparisons: in this family through concept units or slots at near-constant active
+   work (product keys), and depth through growth (section 14). Fixed-size 4M → 16M comparisons understate any family whose
+   capacity is held small.

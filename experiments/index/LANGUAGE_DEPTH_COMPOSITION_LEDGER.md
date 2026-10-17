@@ -108,6 +108,11 @@ Update this ledger whenever a language depth/composition result completes.
   depth, grown depth with ReZero insertion, 64M K4/K8, fixed-capacity 16M arm.
 - Implemented 17 Oct: capacity usage in every milestone, `--grow`, `rhm_depth.py` (Bayes ladder B = 2.60/2.03/1.71/1.55/1.47). Queued: hierarchy grid and fixed CERL 4M/16M (Curie v34); grown K4 16M and fixed CERL 64M (AWS).
 
+## H9. Inductive bias and scaling (theory 173 §15), 17 October
+- 4M → 16M: race causes' gain over background 0.437 → 0.405 (CERL), 0.433 → 0.386 (K4); background responsibility 0.24 → 0.32 / 0.36;
+  the background route carried most of the improvement. The structured causes are a small-data offset, not yet a slope advantage.
+- Pass condition for the fixed CERL pair: units_used and concept share rise with data. Scaling claims need three data sizes.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).
