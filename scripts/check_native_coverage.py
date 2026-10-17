@@ -39,7 +39,7 @@ DECLARED_GAPS = [
     'forward-trained credit and future-oriented credit (theory 164, REVEALED_FUTURE_CREDIT, NATIVE_RECIPROCAL_FUTURE_INTEGRATION): training is exact backprop within the lane',
     'event-local asynchronous learning as the training route (AGENTS.md 16 Oct): parameters update synchronously from the whole-lane gradient',
     'homeostatic thresholds as prices (THEORY P5) for concept load: an auxiliary balance loss is used',
-    'causal online weight adaptation in FineWeb scoring (fixed-weight scoring plus one-pass prequential loss)',
+    'causal online weight adaptation in FineWeb scoring: implemented for carried runs (online column, contracts v22); not yet a training-time route',
 ]
 
 

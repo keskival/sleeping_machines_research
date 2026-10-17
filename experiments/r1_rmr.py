@@ -805,6 +805,19 @@ def contracts():
         det = torch.autograd.grad(tot, list(mx.parameters()), allow_unused=True)
         res[f'carry_credit_H{H}_cross_lane_part'] = max(float(((r_ if r_ is not None else 0) - (d_ if d_ is not None else 0)).abs().max()) if (r_ is not None or d_ is not None) else 0.0 for r_, d_ in zip(ref, det))
     ok_e = ok_e and res['carry_credit_H1_equals_bptt'] < 1e-5 and res['carry_credit_H2_equals_bptt'] < 1e-5 and res['carry_credit_H1_cross_lane_part'] > 0
+    # online adaptation with persistent memory: causal (a later token changes no earlier score), the first segment equals frozen carried scoring,
+    # later segments adapt; weights are restored
+    torch.manual_seed(0); mo2 = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_read_topk=4), events=True, **dict(NAT, write_explore=0, read_explore=0)); mo2.eval()
+    for t_ in mo2.base.tm: t_.CHUNK = 8
+    blk = np.random.default_rng(3).integers(0, 8, (2, 49)); msz = [torch.ones_like(p_) for p_ in mo2.parameters()]; w0 = [p_.detach().clone() for p_ in mo2.parameters()]
+    r1_, o1_ = online_carried(mo2, blk, 16, msz, 1e-2, 0.01, sub=16, adjacent=True); blk2 = blk.copy(); blk2[1, 40] = (blk2[1, 40] + 1) % 8
+    r2_, o2_ = online_carried(mo2, blk2, 16, msz, 1e-2, 0.01, sub=16, adjacent=True)
+    q_ = 48 + 39 - 1                                                                               # scored targets before the changed input (row 0: 48; row 1: 39 after its unscored first)
+    res['online_causal_prefix_max_diff'] = float((o1_[:q_] - o2_[:q_]).abs().max())
+    with torch.no_grad(): fz = mo2.lane_nll(torch.from_numpy(blk[:1, :16]), torch.from_numpy(blk[:1, 1:17]))[0]
+    res['online_first_segment_equals_frozen'] = float((o1_[:16] - fz).abs().max()); _, o0_ = online_carried(mo2, blk, 16, msz, 0.0, 0.0, sub=16, adjacent=True)
+    res['online_adapts'] = float((o1_ - o0_).abs().max()); res['online_weights_restored'] = max(float((p_ - w_).abs().max()) for p_, w_ in zip(mo2.parameters(), w0))
+    ok_e = ok_e and res['online_causal_prefix_max_diff'] < 1e-5 and res['online_first_segment_equals_frozen'] < 1e-5 and res['online_adapts'] > 0 and res['online_weights_restored'] == 0
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
     ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
@@ -813,6 +826,42 @@ def contracts():
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
     ok = ok and res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
+
+
+def online_carried(model, block, keep, ms, lr, decay, sub=512, adjacent=False):
+    """Causal online adaptation with persistent memory (AGENTS.md: online learning on non-stationary streams; dynamic evaluation, Krause et
+    al.): the lanes are one stream scored in segments of `sub` tokens with carried memory; after each segment is scored, one RMS-normalised
+    step on it with decay toward the trained weights (ms: the optimizer's second moments). Every prediction uses weights adapted only on
+    earlier segments and memory written only by earlier tokens; weights are restored afterwards."""
+    model.eval(); ps = list(model.parameters()); th0 = [p_.detach().clone() for p_ in ps]; rms = []
+    for m_ in ms:
+        r = m_.sqrt(); nz = r[r > 0]; rms.append(r.clamp_min(0.5*nz.mean().item() if nz.numel() else 1e-3) + 1e-8)
+    mr = torch.cat([r.flatten() for r in rms]).mean(); dec = [(decay*r/mr).clamp(max=1.0) for r in rms]; pf = None; tot = n = 0.0; out = []
+    for i in range(len(block)):
+        row = block[i] if not (adjacent and i) else np.concatenate([block[i - 1][-1:], block[i]]); first = 1 if (adjacent and i) else 0
+        for s0 in range(0, len(row) - 1, sub):
+            w = torch.from_numpy(row[s0:s0 + sub + 1][None].astype(np.int64)); x, y = w[:, :-1], w[:, 1:]
+            nll = model.lane_nll(x, y, prefix=pf); sc = nll[:, first:] if s0 == 0 else nll; first_ = 0
+            tot += float(sc.sum()); n += sc.numel(); out.append(sc.detach()); model.zero_grad(); sc.mean().backward(); pf = model.carry_out(keep)
+            with torch.no_grad():
+                for p_, r, d_, t0 in zip(ps, rms, dec, th0):
+                    if p_.grad is not None: p_.add_(-lr*p_.grad/r + d_*(t0 - p_))
+    with torch.no_grad():
+        for p_, t0 in zip(ps, th0): p_.copy_(t0)
+    model.zero_grad(); return dict(nll=tot/n, targets=int(n), lr=lr, decay=decay, segment=sub, carry_keep=keep), torch.cat([o_.reshape(-1) for o_ in out])
+
+
+def online_protocols(model, val, keep, opt):
+    """Online column (separately labelled from the fixed-weight scores): lr and decay chosen on the selection slice only, then applied to the
+    65,528-target slice and the flagship windows."""
+    ms = [opt.state[p_]['exp_avg_sq'] if p_ in opt.state and 'exp_avg_sq' in opt.state[p_] else torch.zeros_like(p_) for p_ in model.parameters()]
+    sel = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048); sc = np.asarray(val[20971520:20971520 + 8*8192]).reshape(8, 8192)
+    fl = np.stack([np.asarray(val[p:p + 1025]) for p in range(25165824, 25165824 + 8192, 1024)])
+    grid = [dict(lr=lr, decay=dc, nll=online_carried(model, sel, keep, ms, lr, dc, adjacent=True)[0]['nll']) for lr in (1e-4, 3e-4, 1e-3) for dc in (0.0, 0.01)]
+    b = min(grid, key=lambda r: r['nll'] if math.isfinite(r['nll']) else math.inf)
+    return dict(online=dict(scope='causal online adaptation with persistent memory; lr/decay chosen on the selection slice', grid=grid,
+                            select=online_carried(model, sel, keep, ms, b['lr'], b['decay'], adjacent=True)[0], score_65528=online_carried(model, sc, keep, ms, b['lr'], b['decay'], adjacent=True)[0],
+                            flagship=online_carried(model, fl, keep, ms, b['lr'], b['decay'])[0]))
 
 
 def carried_protocols(model, val, row_chunk, keep):
@@ -918,7 +967,7 @@ def main():
     result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
-                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, **({'local_clip': dict(caps=clipper.caps, calibration_updates=clipper.calib, quantile=clipper.q, budget=clipper.budget)} if clipper is not None else {}), active_work=active, **({'grow': grow_rec} if grow_rec else {}),
+                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), **(online_protocols(model, val, a.carry, opt) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, **({'local_clip': dict(caps=clipper.caps, calibration_updates=clipper.calib, quantile=clipper.q, budget=clipper.budget)} if clipper is not None else {}), active_work=active, **({'grow': grow_rec} if grow_rec else {}),
                   reference=dict(cerl_4M='curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)', diagnostic_planB_L8_4M_flagship=5.8414), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); result['checkpoint'] = f'experiments/results/token_language/{a.tag}.pt'
     out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()
