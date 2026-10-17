@@ -99,6 +99,9 @@ Update this ledger whenever a language depth/composition result completes.
 ## H7. Sparse native member (theory 173 §10), 17 October
 - Sparse level reads with read probes; product-key slot level 1 with sparse reads (256 key scores per token instead of 8,192; event-driven execution 12 state rows per token instead of 4,100, measured). AWS: `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` after the full-native arm; e2e smoke v3 and a GPU-driver CPU smoke gate it.
 
+## H7b. Shared old-slot decay at 16M (17 October)
+- K4 with one learned decay rate per level: 65,528 slice 5.0128 (no decay 5.0874, CERL 5.0282), flagship 5.0381 (no decay 4.9901), selection 5.2597 (5.1906). Fixes long lanes, costs short context; ahead of CERL on all three protocols. Repair: per-correction clocks (theory 174 P8) in the native flagship.
+
 ## H8. Depth versus data (theory 173 §14), 17 October
 - Founder: useful depth grows roughly with the logarithm of the data (each level is one more layer of hierarchical
   decomposition), and depth needs both trainability and enough data per level. Both families gain more from depth at

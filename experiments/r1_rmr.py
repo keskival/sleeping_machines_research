@@ -83,7 +83,7 @@ class CorrectionLevel(nn.Module):
         """This level's old-slot write lists: one with the shared rate, or with clocks one list per clock (its writes weighted by the
         clock choice, its own rate), so the contracted memory algebra applies unchanged."""
         if not self.clocks: return [(dold, idx, w, self.beta(), norm)]
-        b = self.log_clock.exp(); return [(dold, idx, w*clk[..., k:k + 1], b[k], norm) for k in range(self.clocks)]
+        return [(dold, idx, w, ('clk', self.log_clock.exp(), clk), norm)]                           # one list; its age weight mixes the K clocks per write (exact for one-hot choices)
 
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
     def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False, read_explore=0, index_regions=0, index_read=0, index_pk=False, index_balance=0.0, events=False, clocks=0):
@@ -137,7 +137,25 @@ class RMR(nn.Module):
         slot can accumulate stays bounded (about 1/beta writes) at any lane length."""
         lag = (t_rows[:, None] - torch.arange(T, device=t_rows.device)[None, :]).to(dtype)
         mk = (lag >= 0).to(dtype)
+        if isinstance(beta, tuple):                                                                # per-correction clocks: ('clk', rates [K], choice [B, T, K]) -> [B, R, T] (one-hot choice: exact)
+            E = torch.exp(-beta[1].to(dtype)[:, None, None]*lag.clamp_min(0)[None])                 # [K, R, T]
+            return mk[None]*torch.einsum('btk,krt->brt', beta[2].to(dtype), E)
         return mk if beta is None else mk*torch.exp(-beta*lag.clamp_min(0))
+
+    @staticmethod
+    def aw4(aw):
+        """An age weight [R, T] or [B, R, T] broadcast against [B, R, T, m]."""
+        return aw[None, :, :, None] if aw.dim() == 2 else aw[:, :, :, None]
+
+    @staticmethod
+    def expand_clocks(writes):
+        """Clock write lists as one list per clock (scalar rate each), for the factorised chunk-start accumulation in slot_values."""
+        out = []
+        for wr_ in writes:
+            if len(wr_) > 3 and isinstance(wr_[3], tuple):
+                _, rates, clk = wr_[3]; out += [(wr_[0], wr_[1], wr_[2]*clk[..., k:k + 1], rates[k]) + tuple(wr_[4:]) for k in range(clk.shape[-1])]
+            else: out.append(wr_)
+        return out
 
     @staticmethod
     def corr_scores(qv, writes, t_rows, kmap):
@@ -145,13 +163,17 @@ class RMR(nn.Module):
         slot addresses, w [B,T,m] magnitudes); memory O(R T m), never [T, T]. Accumulated in fp32 under autocast: a popular slot
         sums thousands of writes, beyond bf16's 8-bit mantissa."""
         with torch.autocast(qv.device.type, enabled=False):
-            return RMR._corr_scores(qv.float(), [tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else t_ for t_ in wr_) for wr_ in writes], t_rows, kmap)
+            return RMR._corr_scores(qv.float(), [RMR.f32(wr_) for wr_ in writes], t_rows, kmap)
+
+    @staticmethod
+    def f32(wr_):
+        return tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else (RMR.f32(t_) if isinstance(t_, tuple) else t_) for t_ in wr_)
 
     @staticmethod
     def slot_mass(idx, w, aw):
         """Accumulated write mass M[t, s] = sum_{tau, i: idx = s} aw[t, tau] w[tau, i]  ->  [B, R, T] (for evidence-weighted old corrections)."""
         B, T, m = idx.shape; R = aw.shape[0]
-        return torch.zeros(B, R, T, device=w.device, dtype=w.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), (aw[None, :, :, None]*w[:, None]).reshape(B, R, T*m))
+        return torch.zeros(B, R, T, device=w.device, dtype=w.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), (RMR.aw4(aw)*w[:, None]).reshape(B, R, T*m))
 
     @staticmethod
     def _corr_scores(qv, writes, t_rows, kmap):
@@ -161,7 +183,7 @@ class RMR(nn.Module):
             B, T, m = idx.shape; R = qv.shape[1]
             if dold.dim() == 4:                                                                    # per-target corrections dold [B, T, m, d]: one projection per written (tau, i)
                 proj = (qv @ kmap(dold.reshape(B, T*m, -1)).transpose(1, 2)).reshape(B, R, T, m)
-                src = (proj*RMR.age_weight(T, t_rows, beta, proj.dtype)[None, :, :, None]*w[:, None]).reshape(B, R, T*m)
+                src = (proj*RMR.aw4(RMR.age_weight(T, t_rows, beta, proj.dtype))*w[:, None]).reshape(B, R, T*m)
             else:
                 proj = qv @ kmap(dold).transpose(1, 2)                                             # [B, R, T(tau)]
                 proj = proj*RMR.age_weight(T, t_rows, beta, proj.dtype)
@@ -174,7 +196,7 @@ class RMR(nn.Module):
     def corr_values(a, writes, t_rows):
         """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d] with sparse writes (gather of the read weights at the written slots); fp32."""
         with torch.autocast(a.device.type, enabled=False):
-            return RMR._corr_values(a.float(), [tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else t_ for t_ in wr_) for wr_ in writes], t_rows)
+            return RMR._corr_values(a.float(), [RMR.f32(wr_) for wr_ in writes], t_rows)
 
     @staticmethod
     def _corr_values(a, writes, t_rows):
@@ -185,7 +207,7 @@ class RMR(nn.Module):
             ae = a/(1 + RMR.slot_mass(idx, w, RMR.age_weight(T, t_rows, beta, a.dtype))) if nrm else a
             c = ae.gather(2, idx.reshape(B, 1, T*m).expand(-1, R, -1)).reshape(B, R, T, m)*w[:, None]   # [B, R, T(tau), m]
             if dold.dim() == 4:
-                out = out + (c*RMR.age_weight(T, t_rows, beta, c.dtype)[None, :, :, None]).reshape(B, R, T*m) @ dold.reshape(B, T*m, -1)
+                out = out + (c*RMR.aw4(RMR.age_weight(T, t_rows, beta, c.dtype))).reshape(B, R, T*m) @ dold.reshape(B, T*m, -1)
             else:
                 out = out + (c.sum(-1)*RMR.age_weight(T, t_rows, beta, c.dtype)) @ dold
         return out
@@ -324,7 +346,7 @@ class RMR(nn.Module):
         B, R, m = idx.shape; T, d = base_prime.shape[1:]; c0 = int(rows[0]); dv = idx.device; dt = base_prime.dtype
         v = base_prime.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, d)).reshape(B, R, m, d)
         tt = (rows - c0).to(dt)
-        for wr_ in wr:
+        for wr_ in RMR.expand_clocks(wr):
             dold, widx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None; nrm = len(wr_) > 4 and wr_[4]; m2 = widx.shape[-1]
             D = dold if dold.dim() == 4 else dold[:, :, None, :].expand(-1, -1, m2, -1)              # [B, T, m', d]
             corr = 0.0; mass = 0.0; dec = 1.0 if beta is None else torch.exp(-beta*tt)[None, :, None]
