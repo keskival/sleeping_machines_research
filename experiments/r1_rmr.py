@@ -69,7 +69,13 @@ class RMR(nn.Module):
     @staticmethod
     def corr_scores(qv, writes, t_rows, kmap):
         """sum_j sum_{tau<=t} (qv_t . kmap(dold^j_tau)) W^j[tau, s]  ->  [B, R, T]. Writes are sparse: (dold [B,T,d], idx [B,T,m]
-        slot addresses, w [B,T,m] magnitudes); memory O(R T m), never [T, T]."""
+        slot addresses, w [B,T,m] magnitudes); memory O(R T m), never [T, T]. Accumulated in fp32 under autocast: a popular slot
+        sums thousands of writes, beyond bf16's 8-bit mantissa."""
+        with torch.autocast(qv.device.type, enabled=False):
+            return RMR._corr_scores(qv.float(), [tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else t_ for t_ in wr_) for wr_ in writes], t_rows, kmap)
+
+    @staticmethod
+    def _corr_scores(qv, writes, t_rows, kmap):
         out = 0.0
         for wr_ in writes:
             dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None
@@ -86,7 +92,12 @@ class RMR(nn.Module):
 
     @staticmethod
     def corr_values(a, writes, t_rows):
-        """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d] with sparse writes (gather of the read weights at the written slots)."""
+        """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d] with sparse writes (gather of the read weights at the written slots); fp32."""
+        with torch.autocast(a.device.type, enabled=False):
+            return RMR._corr_values(a.float(), [tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else t_ for t_ in wr_) for wr_ in writes], t_rows)
+
+    @staticmethod
+    def _corr_values(a, writes, t_rows):
         out = 0.0
         for wr_ in writes:
             dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None

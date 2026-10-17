@@ -85,6 +85,7 @@ Update this ledger whenever a language depth/composition result completes.
 - Weight decay is now applied to matrices only (`--wd-groups 1`); concept symmetry breaking and load balance (`--unit-init 0.02 --balance 0.01`); per-target old-slot corrections (`--old-per-target 1`); 1,024-token training lanes. Contracts `curie_review_fix_contracts_20261017_v1`, `curie_rmr_contracts_20261017_v5`.
 - AWS 16M arms on K4 residdecay: fixes; fixes + 1,024-token lanes; fixes + per-target corrections. Each compares against Curie's unfixed K4 residdecay run.
 - The 4M capacity verdicts (65k/262k banks) are confounded by bank collapse; see DEAD_ENDS.md §3.
+- Formal trainability conditions for composing good learners (C1 credit path, C2 sufficient interface, C3 identity at init, C4 each level reads something new, C5 conditioning, C6 alignment of local credit, C7 hard choices, C8 time, C9 stability): [theory 173](../theory/173_composition_trainability.md). Fixed with it: an RMR-2 crash (dense writes), straight-through firing `--fire-st`, fp32 old-slot algebra under bf16. Open: counterfactual write exploration, carried memory across lanes, product-key balance, native level 1.
 
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
