@@ -1,0 +1,3 @@
+# Battle R1 analysis job (no training). Decision: where the native depth gain at 16M lands (token role, history length, copyable vs novel, winning cause): old-slot residual memory K4 vs single-level CERL. Drives the next depth/composition repair.
+# Resources: two checkpoints scored on 8 flagship windows and 8 x 8,192-token lanes; RMR scoring peaks ~0.6 GB, CERL ~0.55 GB; ~20-30 min.
+curie_rmr16M_vs_cerl16M_error_analysis_20261017_v1 analysis/cerl_error_analysis.py --tag curie_rmr16M_vs_cerl16M_error_analysis_20261017_v1 --cerl curie_r1_rmr_resid_K4_16M_s0_20261016_v1 --dense aws_r1_cerl_16M_s0_20261016_v1

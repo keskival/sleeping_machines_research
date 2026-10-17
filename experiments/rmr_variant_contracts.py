@@ -3,7 +3,7 @@ import r1_rmr as R
 from r1_cerl import word_classes
 torch.manual_seed(0); V=61; cls,words=word_classes(np.random.default_rng(0).integers(0,50,V).astype(float),6,s_max=16)
 cerl=dict(d=32,modes=8,layers=1,dk=16,units=32,topk=3,explore=0)
-for name,kw in (('dense_stack',dict(top_m=0,read_topk=0)),('sparse',dict(top_m=3,read_topk=4))):
+for name,kw in (('dense_stack',dict(top_m=0,read_topk=0)),('sparse',dict(top_m=3,read_topk=4)),('old_decay',dict(top_m=3,read_topk=0,old_decay=0.05))):
     m=R.RMR(V,cls,words,cerl,levels=3,dk=16,chunk=8,**kw); m.eval()
     with torch.no_grad():
         x=torch.randint(0,8,(1,40)); y=torch.cat([x[:,1:],torch.randint(0,8,(1,1))],1)

@@ -31,9 +31,14 @@ STAGE = 'native residual-memory race model (RMR-1, theory 172), one pass'
 
 
 class CorrectionLevel(nn.Module):
+    def beta(self):
+        return F.softplus(self.log_beta) if self.old_decay > 0 else None
+
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
-    def __init__(self, d, dk, top_m, read_topk=0, rezero=True):
+    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0):
         super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero
+        self.old_decay = old_decay
+        if old_decay > 0: self.log_beta = nn.Parameter(torch.tensor(math.log(math.expm1(old_decay))))   # learned decay rate of old-slot corrections
         self.nq, self.nr = nn.LayerNorm(d), nn.LayerNorm(d); self.q = nn.Linear(d, dk); self.k = nn.Linear(d, dk, bias=False)
         self.log_rate = nn.Parameter(torch.tensor(0.0)); self.g = nn.Sequential(nn.Linear(2*d, 2*d), nn.GELU(), nn.Linear(2*d, 2*d))
         if rezero:                                                                                 # ReZero (Bachlechner et al. 2020): scalar gates at 0, branch at normal init, so gradients flow at step 0
@@ -45,20 +50,29 @@ class CorrectionLevel(nn.Module):
 class RMR(nn.Module):
     cause_msgs = False
 
-    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True):
+    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0):
         super().__init__(); self.base = CERL(V, cls, words, **cerl); d = cerl['d']; self.d = d; self.chunk = chunk
-        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero) for _ in range(levels - 1)); self.aux = None; self._px = None
+        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay) for _ in range(levels - 1)); self.aux = None; self._px = None
 
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
+    @staticmethod
+    def age_weight(T, t_rows, beta, dtype):
+        """Causal mask tau <= t, times exp(-beta (t - tau)) when the writing level decays its old-slot corrections: the total a
+        slot can accumulate stays bounded (about 1/beta writes) at any lane length."""
+        lag = (t_rows[:, None] - torch.arange(T, device=t_rows.device)[None, :]).to(dtype)
+        mk = (lag >= 0).to(dtype)
+        return mk if beta is None else mk*torch.exp(-beta*lag.clamp_min(0))
+
     @staticmethod
     def corr_scores(qv, writes, t_rows, kmap):
         """sum_j sum_{tau<=t} (qv_t . kmap(dold^j_tau)) W^j[tau, s]  ->  [B, R, T]. Writes are sparse: (dold [B,T,d], idx [B,T,m]
         slot addresses, w [B,T,m] magnitudes); memory O(R T m), never [T, T]."""
         out = 0.0
-        for dold, idx, w in writes:
+        for wr_ in writes:
+            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None
             B, T, m = idx.shape; R = qv.shape[1]
             proj = qv @ kmap(dold).transpose(1, 2)                                                 # [B, R, T(tau)]
-            proj = proj*(torch.arange(T, device=qv.device)[None, :] <= t_rows[:, None]).to(proj.dtype)
+            proj = proj*RMR.age_weight(T, t_rows, beta, proj.dtype)
             src = (proj[..., None]*w[:, None]).reshape(B, R, T*m)
             out = out + torch.zeros(B, R, T, device=qv.device, dtype=proj.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), src)
         return out
@@ -67,10 +81,11 @@ class RMR(nn.Module):
     def corr_values(a, writes, t_rows):
         """sum_s a_ts sum_{tau<=t} W[tau, s] dold_tau  ->  [B, R, d] with sparse writes (gather of the read weights at the written slots)."""
         out = 0.0
-        for dold, idx, w in writes:
+        for wr_ in writes:
+            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None
             B, T, m = idx.shape; R = a.shape[1]
             c = (a.gather(2, idx.reshape(B, 1, T*m).expand(-1, R, -1)).reshape(B, R, T, m)*w[:, None]).sum(-1)   # [B, R, T(tau)]
-            c = c*(torch.arange(T, device=a.device)[None, :] <= t_rows[:, None]).to(c.dtype)
+            c = c*RMR.age_weight(T, t_rows, beta, c.dtype)
             out = out + c @ dold
         return out
 
@@ -85,7 +100,7 @@ class RMR(nn.Module):
                 prev = (torch.arange(T, device=dv) < c0).to(A.dtype)                               # own corrections visible from earlier chunks only
                 base_prime = new_total + own_new*prev[None, :, None]                               # slot values from new-slot corrections
                 cur = new_total[:, c0:c1]                                                          # current slot under M^(<k) (own write at t not yet made)
-                wr = writes + ([(own_dold*prev[None, :, None], own_idx, own_w)] if lev.top_m else [])
+                wr = writes + ([(own_dold*prev[None, :, None], own_idx, own_w, lev.beta())] if lev.top_m else [])
                 u = lev.nq(cur); q = lev.q(u)                                                      # [B, R, dk]
                 S = (q @ lev.k(base_prime).transpose(1, 2) + self.corr_scores(q, wr, rows, lev.k))/math.sqrt(lev.dk)
                 dist = (rows[:, None] - torch.arange(T, device=dv)[None, :]).to(A.dtype)
@@ -100,7 +115,7 @@ class RMR(nn.Module):
                     ao = a.masked_fill(dist <= 0, 0.0); top = ao.topk(min(lev.top_m, T), -1)
                     own_idx = own_idx.index_copy(1, rows, top.indices); own_w = own_w.index_copy(1, rows, top.values)
                 own_new = own_new.index_copy(1, rows, dnew); own_dold = own_dold.index_copy(1, rows, dold)
-            new_total = new_total + own_new; writes = writes + ([(own_dold, own_idx, own_w)] if lev.top_m else [])
+            new_total = new_total + own_new; writes = writes + ([(own_dold, own_idx, own_w, lev.beta())] if lev.top_m else [])
             stats.append(dict(new_norm=float(own_new.detach().norm(dim=-1).mean()), old_norm=float(own_dold.detach().norm(dim=-1).mean())))
         return new_total, writes, stats
 
@@ -150,7 +165,10 @@ def contracts():
     Vst = torch.stack([torch.einsum('bts,btd->bsd', W[:, :t + 1], dold[:, :t + 1]) for t in range(T_)], 1)
     res['algebra_scores_max_diff'] = float((RMR.corr_scores(q_, [(dold, idx, w_)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vst)).abs().max())
     res['algebra_values_max_diff'] = float((RMR.corr_values(a_, [(dold, idx, w_)], rows_) - torch.einsum('bts,btsd->btd', a_, Vst)).abs().max())
-    ok = res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
+    beta = torch.tensor(0.3); Vd = torch.stack([torch.einsum('bts,btd->bsd', W[:, :t + 1]*torch.exp(-beta*(t - torch.arange(t + 1)))[None, :, None], dold[:, :t + 1]) for t in range(T_)], 1)
+    res['algebra_decay_max_diff'] = max(float((RMR.corr_scores(q_, [(dold, idx, w_, beta)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vd)).abs().max()),
+                                        float((RMR.corr_values(a_, [(dold, idx, w_, beta)], rows_) - torch.einsum('bts,btsd->btd', a_, Vd)).abs().max()))
+    ok = res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
 
 
@@ -159,7 +177,7 @@ def main():
     A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
-    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1)
+    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -173,7 +191,7 @@ def main():
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     cls, words = word_classes(np.bincount(train.reshape(-1), minlength=50257).astype(float), a.classes)
     cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore)
-    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero)); params = sum(p.numel() for p in model.parameters())
+    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()

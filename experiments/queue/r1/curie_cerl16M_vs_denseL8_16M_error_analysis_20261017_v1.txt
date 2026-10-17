@@ -1,0 +1,3 @@
+# Battle R1 analysis job (no training). Decision: where the native race beats the dense hybrid at 16M (is novel-in-window content still level, as at 4M?). Drives the next depth/composition repair.
+# Resources: two checkpoints scored on 8 flagship windows and 8 x 8,192-token lanes; RMR scoring peaks ~0.6 GB, CERL ~0.55 GB; ~20-30 min.
+curie_cerl16M_vs_denseL8_16M_error_analysis_20261017_v1 analysis/cerl_error_analysis.py --tag curie_cerl16M_vs_denseL8_16M_error_analysis_20261017_v1 --cerl aws_r1_cerl_16M_s0_20261016_v1 --dense curie_r1_deep_keyed_stream_L8_16M_s0_20261016_v1
