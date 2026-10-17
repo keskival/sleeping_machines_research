@@ -151,3 +151,29 @@ runs intact; extract their completed evidence. Do not launch another reciprocal
 policy trial by merely changing a temperature or exploration rate. This review
 has identified structural credit and coordinate issues that require an actual
 repair and an integrated correctness gate first.
+
+## Integrated concurrent review and formal corrections
+
+Curie's concurrently merged second review has implemented grouped weight decay,
+nonidentical concept initialization and balance, longer/carrying training lanes,
+per-target old-slot corrections, separate write-address races and zero-forward
+write probes. These are implemented capabilities with numerical contracts;
+new prediction gains from their combination remain to be measured. They do not
+repair the native direct-input or moving-coordinate critic findings above.
+
+The new per-target writer reads old refinements under `no_grad()` in
+`RMR.slot_values`. This omits a first-order input derivative through those
+refinements; calling it only a second-order path is incorrect. Credit through
+other read paths survives. Test a bounded input VJP before treating this as
+complete writer/producer composition credit. Do not remove the memory-saving
+stop blindly on long lanes.
+
+Theory173 also needed scope corrections. Depth can compute a useful hierarchy
+from exactly the same raw observations: two bilinear levels compute
+(x1*x2)*(x3*x4), whereas one bilinear level has degree at most two. This is a
+formal counterexample to requiring each level to read new information. New
+information is neither necessary nor sufficient for a useful descent direction.
+Likewise, failed argmax-attribution composition does not imply races cannot
+compose through useful values, posterior features or generated events. These
+claims are corrected in173; identity initialization and Jacobian conditioning
+remain design tools, not a universal convergence theorem.

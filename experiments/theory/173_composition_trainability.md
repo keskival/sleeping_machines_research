@@ -18,20 +18,24 @@ So composition needs things that isolated learning never tests:
 - **C1, credit path.** Every level above k must pass an informative input Jacobian J_j (or an unbiased estimate of it)
   down to k. A component can learn perfectly through ∂/∂θ and still block composition: hard selection, `detach`, or a
   discrete or attributed output with no gradient. With no credit path, level k learns only from its own local loss (C6).
-- **C2, sufficient interface.** z_k must carry what the levels above need. By the data-processing inequality,
-  I(z_K; y) ≤ I(z_k; y), so information dropped at k is lost to every level above. A winner-only value, an argmax
+- **C2, sufficient interface.** z_k must carry what the levels above need. For a strict Markov chain with no skip path, additional memory or new observation, the data-processing inequality gives
+  I(z_K; y) ≤ I(z_k; y). Information lost from every available path cannot be recovered by the upper computation;
+  with memory and skip paths the interface includes those paths, not only one vector. A winner-only value, an argmax
   attribution or a single summary vector are lossy interfaces.
 - **C3, identity at initialisation (the base case).** If F(θ_0) equals the best shallow model, the composed loss starts at
   the shallow loss and gradient descent can only improve it to first order. Residual form: z_k = z_{k-1} + α_k g_k(z_{k-1}),
-  with α_k = 0.
+  with α_k = 0. This is a safe initialization statement, not a guarantee that a finite optimizer step improves loss.
 - **C4, descent direction for each new level (the inductive step).** With α_{k+1} = 0,
   ∂L/∂α_{k+1} = ⟨∇_{z_k} L, g_{k+1}(z_k)⟩. Level k+1 lowers the loss if and only if its correction can correlate with
   −∇_{z_k} L. That requires (a) ∇_{z_k} L to exist and be informative (C1 at the readout) and (b) g_{k+1} to compute, from
-  what it reads, a function aligned with that gradient. If g_{k+1} reads only what level k already used, it can at best
-  re-express the same function. Depth pays only when each level **reads something new**: refined memory, an earlier slot
-  under updated keys, or a longer horizon.
-- **C5, conditioning over depth.** ‖J_K ⋯ J_{k+1}‖ must stay near 1. The residual identity gives J = I + O(α); normalised
-  reads keep each level's input scale fixed while the levels below change.
+  what it reads, a function aligned with that gradient. If g_{k+1} reads only what level k already used, it can still
+  transform the same available information into a function computationally inaccessible to a shallower restricted component.
+  New memory access is one way depth pays, not a necessary condition. For example, two bilinear levels compute
+  (x1*x2)*(x3*x4), while one bilinear level over the same four inputs has degree at most two and cannot represent that
+  quartic function. No extra observations are required. Hierarchical representation transformation is itself a depth axis.
+- **C5, conditioning over depth.** The product J_K ⋯ J_{k+1} must preserve an informative, usable signal on task-relevant directions.
+  Requiring every norm or singular value to stay near 1 is stronger than necessary. The residual identity gives
+  J = I + O(α); normalized reads help control scale but do not guarantee conditioning.
 - **C6, alignment when credit is local.** A level trained on its own loss ℓ_k produces a sufficient statistic for ℓ_k's
   target, not for the target of the levels above. Local learning composes only when ℓ_k's optimum is useful upstream
   (the greedy layerwise condition, which generally fails). Otherwise producers need top-down credit: a delayed or
@@ -49,8 +53,9 @@ So composition needs things that isolated learning never tests:
   bounded.
 
 **Induction (the founder's "proof by induction").** C3 is the base case: the composed model equals a component that learns
-well. C4 is the inductive step: each added level starts as the identity and has a first-order descent direction whenever
-it can read new information. C1, C5 and C9 keep credit and stability valid as K grows. The induction fails exactly where one
+well. C4 is the proposed inductive step: an added level can improve the loss when its correction has useful correlation
+with the negative task gradient. New information alone does not guarantee that correlation, and is not required.
+This is a conditional trainability argument, not a proof of supremacy across arbitrary depths or tasks. C1, C5 and C9 keep credit and stability valid as K grows. The induction fails exactly where one
 of these fails. Every registered depth dead end fails one of them (§3).
 
 ## 2. The race as a component
@@ -63,10 +68,12 @@ r_c = π_c p_c(y) / Σ_c' π_c' p_c'(y).
   Jacobians. So the race passes C1 for its *continuous* inputs, conditional on the selected candidate set (the woken units).
 - The candidate set (top-k wake) learns through exploration units (counterfactual credit to random dormant units, C7b), and
   through the balance term since 17 October.
-- **What the race outputs** is a likelihood and a posterior over causes, not a representation. So races cannot be composed
-  by feeding one race's output into the next (CERL-H). They compose through **shared memory**: each level edits the
-  memory every race reads (172). The race stays at the readout, where its exact credit is a strength. Within the levels,
-  the read is the race's mean field.
+- **Choose a useful race output interface.** The current cause readout returns a likelihood and posterior over causes;
+  the CERL-H argmax attribution stream was unstable and omitted lower-producer credit. That failed construction does
+  not imply races cannot compose. Delivered values, posterior feature vectors, persistent memory and generated marked
+  events can all be interfaces if they preserve useful information and have an adequate learning rule. RMR's tested
+  composition uses **shared memory** edited by each level. Within its dense reads, a mean-field value replaces an
+  explicitly sampled delivery; that execution choice and its work must remain labelled.
 - **Race and softmax.** First arrival among independent exponential clocks with rates e^{s_c} is won by c with probability
   softmax(s)_c. A level's soft read Σ_s a_ts v_s is the expected value delivered by a race over slots. Formally this is a
   softmax attention read with a log-distance clock. What makes a level ours rather than an attention layer:
@@ -84,7 +91,7 @@ r_c = π_c p_c(y) / Σ_c' π_c' p_c'(y).
 | Dead end (DEAD_ENDS.md) | Failed condition |
 | --- | --- |
 | Serial winner chain | C2 (winner-only interface), C7 (route credit vanishes with depth), C5 (gradients about 1e-5) |
-| Race stages stacked without memory | C2, C4 (no new read) |
+| Race stages stacked without memory | C2, C4 (the tested interface did not yield useful new corrections) |
 | CERL-H over attribution events | C1 (level-1 states are detached and attributed under `no_grad`: zero credit from level 2 to level 1), C2 (argmax attribution), C4 (79% change rate: nothing slower to read) |
 | Detached lower messages in the local learner | C1, then C6 (no producer credit) |
 | Ungated old-slot corrections | C3, C9 |
@@ -132,7 +139,7 @@ r_c = π_c p_c(y) / Σ_c' π_c' p_c'(y).
 | C7 write addresses | Separate write-address race (`--write-race 1`, own keys over refined slots), and counterfactual write probes (`--write-explore E`). A probe has magnitude p − sg(p): zero in the forward pass, so training and evaluation predict the same, and its gradient is ⟨∂L/∂slot, probe correction⟩, the first-order value of writing there. Credit reaches only the address race. | Probes leave the forward pass unchanged (0.0) and add credit to the write keys |
 | C8 persistent memory | `--carry W`: the level-1 temporal state continues across lanes; the previous W slots with every level's corrections stay readable, refinable and pointer-addressable; credit stays within the lane. Training rows walk contiguous streams; final scoring reports reset and carried lanes. | Carried lane 2 equals rows L..2L of one long lane (9.5e-7); row chunks with a prefix (4.8e-7) |
 | C7 capacity | Load balance per half-bank for product keys (2√U scores) | NLL unchanged; term ≥ balance; credit reaches the half-keys |
-| Writers saw unrefined slots | Address keys and per-target corrections now read refined slot values (old corrections included), as the read does. The old-correction part of a target's value carries no second-order credit (saves autograd memory). | Contracts v7 |
+| Writers saw unrefined slots | Address keys and per-target corrections now read refined slot values (old corrections included), as the read does. The old-correction input is stop-gradient: its forward value is used but its first-order producer-input VJP is omitted (saves autograd memory). | Contracts v7 |
 
 Second-round review findings, all fixed:
 - `ParallelTemporalMemory` built its kernel on the CPU, so the GPU driver would have failed on CUDA.
@@ -160,3 +167,16 @@ Disclosed protocol notes:
 3. C7 capacity: a product-key balance term (balance each half-bank) for the 65k–262k capacity ladder at 16M.
 4. Level 1 native: event-local states in place of the linear recurrence, against CERL at 16M.
 5. The 16M arms already queued: review fixes; plus 1,024-token lanes; plus per-target corrections (DEAD_ENDS §1–2).
+
+## Review qualification: writer input credit
+
+`RMR.slot_values` currently evaluates the old-correction contribution under `torch.no_grad()`.
+Its value informs per-target writing, but the derivative through that contribution is omitted.
+This is a stopped **first-order producer-input path**, not generally a second-order derivative:
+for a writer f_theta(v_phi), the missing term is J_f times d(v_phi)/d(phi). Other read paths still
+train old corrections. The memory-saving approximation must be stated as such and tested before
+calling all refined writer-input credit complete. Retaining this graph can be expensive; a bounded
+version-bound VJP is an alternative to silently equating stopped credit with the full derivative.
+
+The independent [17 October architecture review](ARCHITECTURE_REVIEW_20261017.md) gives three
+passed numerical failure witnesses and the completed negative reciprocal-policy result.
