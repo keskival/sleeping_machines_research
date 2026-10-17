@@ -1,0 +1,4 @@
+# Battle R1 (Curie order to AWS slots, 17 Oct 21:15 UTC). Attribution of the synthetic-hierarchy depth result (curie_rhm_depth_K124_20261017_v1: native member, resolved depth K1/K2/K4 = 0.41/0.92/1.07 at 4,096 trees, 0.45/1.02/... at 16,384).
+# Stationarity/online: stationary synthetic source; fixed optimisation budget; held-out trees. Resources: < 1 GB RSS, about 1.5 h each.
+# Decision: does the conditioning credit path make depth trainable? The same native member with upper levels reading lower memory detached (the CERL-H and detached-local-learner failure cause; contracts v29: conditioning credit exactly 0). If the depth gain disappears, that repair is what makes composition trainable.
+aws_rhm_depth_cutcond_20261017_v1 experiments/rhm_depth.py --tag aws_rhm_depth_cutcond_20261017_v1 --Ks 1,2,4 --Ns 4096,16384 --cut-conditioning 1

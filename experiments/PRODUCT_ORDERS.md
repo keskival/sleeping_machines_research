@@ -1,3 +1,8 @@
+**Update 17 Oct 21:20 UTC (Curie; founder: add more of our advantages into the mix, not only ablations).** AWS, after the native seed replicates and alongside the single-addition arms:
+- `aws_r1_rmr_nativemax_K4_16M_s0_20261017_v1` (gate first): the fully loaded native member, with every implemented quality advantage at once (16,384 product-key slots, 512 carried slots, price read races, TD critic, guided write probes). This is the synergy point the ablations cannot show.
+- `aws_r1_rmr_nativeev_slots16k_K4_16M_s0_20261017_v1`: 4x persistent slot capacity alone.
+- `aws_rhm_depth_cutcond_20261017_v1` and `aws_rhm_depth_dense_20261017_v1`: hierarchy attribution, with the conditioning credit path cut (contracts v29) and with the dense-read member.
+
 **Update 17 Oct 20:45 UTC (Curie).** Two theory 175 repairs are implemented and contracted (v27): threshold (price) read races (`--read-price 8`: routing with fixed points, where fixed top-k churns) and a TD critic over persistent memory (`--carry-critic 1`: future credit for writes with no extra lane graph). AWS: `aws_r1_rmr_nativeev_price_K4_16M_s0_20261017_v1`, `aws_r1_rmr_nativeev_critic_K4_16M_s0_20261017_v1` and `aws_r1_rmr_nativeev_guided_K4_16M_s0_20261017_v1` (credit-guided write probes, contracts v28) after the native seed replicates.
 
 **Update 17 Oct 20:20 UTC (Curie; founder: queue now what will light the remaining gaps).** AWS R1 priority for free slots, after the five admitted native pipelines:

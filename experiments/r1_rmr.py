@@ -176,6 +176,10 @@ class RMR(nn.Module):
             return RMR._corr_scores(qv.float(), [RMR.f32(wr_) for wr_ in writes], t_rows, kmap)
 
     @staticmethod
+    def detach_wr(wr_):
+        return tuple(t_.detach() if torch.is_tensor(t_) else (RMR.detach_wr(t_) if isinstance(t_, tuple) else t_) for t_ in wr_)
+
+    @staticmethod
     def f32(wr_):
         return tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else (RMR.f32(t_) if isinstance(t_, tuple) else t_) for t_ in wr_)
 
@@ -252,13 +256,15 @@ class RMR(nn.Module):
                 own_new[:, :P] = pn; own_idx[:, :P, :k_] = pi; own_w[:, :P, :k_] = pw
                 if lev.per_target: own_dold[:, :P, :k_] = pd
                 else: own_dold[:, :P] = pd
+            nt_in = new_total.detach() if self.cut_conditioning else new_total
+            wr_in = [RMR.detach_wr(w_) for w_ in writes] if self.cut_conditioning else writes
             for c0 in range(P, T, self.chunk):
                 c1 = min(c0 + self.chunk, T); rows = torch.arange(c0, c1, device=dv)
                 prev = (torch.arange(T, device=dv) < c0).to(A.dtype)                               # own corrections visible from earlier chunks only
-                base_prime = new_total + own_new*prev[None, :, None]                               # slot values from new-slot corrections
-                cur = new_total[:, c0:c1]                                                          # current slot under M^(<k) (own write at t not yet made)
+                base_prime = nt_in + own_new*prev[None, :, None]                               # slot values from new-slot corrections
+                cur = nt_in[:, c0:c1]                                                          # current slot under M^(<k) (own write at t not yet made)
                 pv = prev.view(1, T, *([1]*(own_dold.dim() - 2)))
-                wr = writes + (lev.writes_of(own_dold*pv, own_idx, own_w, own_clk, self.old_norm) if lev.top_m else [])
+                wr = wr_in + (lev.writes_of(own_dold*pv, own_idx, own_w, own_clk, self.old_norm) if lev.top_m else [])
                 u = lev.nq(cur)
                 if use_ev:
                     p1, p2 = lp[:, c0:c1], p2_all[:, c0:c1]
@@ -467,7 +473,7 @@ class RMR(nn.Module):
                 st['readout_copy_coverage'] = float((cov & has).sum()/has.sum().clamp_min(1))
         return nll, st
 
-    _ptrain = None; _ppf = None; _pna = None
+    _ptrain = None; _ppf = None; _pna = None; cut_conditioning = False                             # diagnostic only: upper levels read lower memory detached (the CERL-H failure cause)
 
 
 def carry_rows(c, rs):
@@ -815,6 +821,8 @@ def contracts():
     lc = mc.lane_nll(x.clone(), y).mean(); (on1, od1), (on2, od2) = mc._lev_own[0][:2], mc._lev_own[1][:2]
     gc = torch.autograd.grad(on2.sum() + od2.sum(), [on1, od1], retain_graph=True); gt_ = torch.autograd.grad(lc, [on1])[0]
     mc.levels[1].alpha_new.data.zero_(); mc.levels[1].alpha_old.data.zero_(); mc._px = None; gd_ = torch.autograd.grad(mc.lane_nll(x.clone(), y).mean(), [mc._lev_own[0][0]])[0]
+    mc.cut_conditioning = True; mc._px = None; lcc = mc.lane_nll(x.clone(), y).mean(); (on1c, od1c), (on2c, od2c) = mc._lev_own[0][:2], mc._lev_own[1][:2]
+    gcc = torch.autograd.grad(on2c.sum() + od2c.sum(), [on1c, od1c], allow_unused=True); res['cut_conditioning_credit'] = max(float(g_.abs().max()) if g_ is not None else 0.0 for g_ in gcc); mc.cut_conditioning = False; mc._px = None
     res['conditioning_credit_new_slot'] = float(gc[0].abs().max()); res['conditioning_credit_old_slot'] = float(gc[1].abs().max()); res['conditioning_credit_share'] = float((gt_ - gd_).norm()/gt_.norm())
     # event channel (theory 173 section 17): zero at init equals the member without events; exact law, causal, carry exact with fire;
     # event bonuses credit the lower level's read race; composed pointers reach further than single pointers
@@ -999,7 +1007,7 @@ def contracts():
     ok_e = ok_e and res['guided_probes_forward_unchanged'] < 1e-6 and res['guided_probe_credit_to_write_keys'] > 0 and res['guided_probes_causal']
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
-    ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
+    ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['cut_conditioning_credit'] == 0.0 and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
     ok_s = ok_g and res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
     ok = ok_k and ok_i and ok_r and ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
