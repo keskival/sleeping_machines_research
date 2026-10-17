@@ -1,3 +1,5 @@
+[Architecture review, 17 October](theory/ARCHITECTURE_REVIEW_20261017.md) identifies missing direct lower-message producer credit, possible sign reversal of linearized routing credit, and moving-feature inconsistency in the reciprocal critic. Three numerical witnesses pass; the completed reciprocal trial still loses, so no promotion.
+
 [Next native composition decision](theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md) recovers the completed native continuation, repairs the persistent TRAIN-to-DEV tape transition and tests full-depth producer credit without refitting completed work. The 5.0433 residual-memory result is carrier-backed composition evidence, not a fully event-local win.
 
 [Native reciprocal future integration](theory/NATIVE_RECIPROCAL_FUTURE_INTEGRATION.md) connects deferred episodic producer teaching to a native eight-layer future-value credit machine. Controlled continuations train addressed update selection; numerical/acquired gates precede a prospective complete-native comparison. Existing source-bound jobs continue unchanged.
