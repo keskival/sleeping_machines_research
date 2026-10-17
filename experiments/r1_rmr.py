@@ -86,7 +86,7 @@ class CorrectionLevel(nn.Module):
         return [(dold, idx, w, ('clk', self.log_clock.exp(), clk), norm)]                           # one list; its age weight mixes the K clocks per write (exact for one-hot choices)
 
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
-    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False, read_explore=0, index_regions=0, index_read=0, index_pk=False, index_balance=0.0, events=False, clocks=0, write_norm=False):
+    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False, read_explore=0, index_regions=0, index_read=0, index_pk=False, index_balance=0.0, events=False, clocks=0, write_norm=False, read_price=0.0):
         super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero; self.events = events
         self.clocks = clocks if top_m > 0 else 0
         if self.clocks:                                                                            # per-correction clocks: each write step races over K learned decay rates (log-spaced 1/16 .. 1/8192 at init)
@@ -95,7 +95,9 @@ class CorrectionLevel(nn.Module):
         if events:                                                                                 # event channel (theory 173 section 17): the lower level's pointer and the composed pointer as race candidates,
             self.ev_b = nn.Parameter(torch.zeros(2)); self.ev_t = nn.Linear(3, d); nn.init.zeros_(self.ev_t.weight); nn.init.zeros_(self.ev_t.bias)   # their timing into the query; all zero at init (C3)
         self.index_C, self.index_b = index_regions, index_read                                     # indexed history discovery (theory 173 section 11): slots filed into C regions, reads race over regions first
-        self.read_explore = read_explore if (read_topk or index_regions) else 0
+        self.read_explore = read_explore if (read_topk or index_regions or read_price) else 0
+        self.read_price = read_price                                                               # threshold (price) read race (theory 175 section 4): read every slot whose full-race log-probability clears -lambda;
+        if read_price: self.register_buffer('log_price', torch.tensor(math.log(read_price) + 1.0))   # lambda is the dual variable of a target read count, nudged toward it after each training forward (P5)
         if index_regions: self.index = RegionIndex(index_regions, dk, index_pk, index_balance)
         self.old_decay, self.per_target = old_decay, per_target and top_m > 0
         self.write_race, self.write_explore = write_race and top_m > 0, write_explore if top_m > 0 else 0
@@ -122,13 +124,18 @@ class CorrectionLevel(nn.Module):
 class RMR(nn.Module):
     cause_msgs = False
 
-    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0, fire=False, act_cost=0.0, old_norm=False, read_explore=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=False, index_balance=0.0, events=False, old_clocks=0, write_norm=False):
+    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0, fire=False, act_cost=0.0, old_norm=False, read_explore=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=False, index_balance=0.0, events=False, old_clocks=0, write_norm=False, read_price=0.0, carry_critic=False):
         super().__init__(); self.base = CERL(V, cls, words, **cerl)
         assert not (old_clocks and old_norm), 'per-correction clocks normalise per clock list; use one of --old-clocks / --old-norm'; d = cerl['d']; self.d = d; self.chunk = chunk; self.act_cost = act_cost; self.old_norm = old_norm
         self.ro_C, self.ro_b, self.ro_tok = readout_index, readout_read, readout_tok
         if readout_index: self.ro_index = RegionIndex(readout_index, cerl['dk'], index_pk, index_balance)
-        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire, read_explore, index_regions, index_read, index_pk, index_balance, events, old_clocks, write_norm) for _ in range(levels - 1)); self.aux = None; self._px = None
+        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire, read_explore, index_regions, index_read, index_pk, index_balance, events, old_clocks, write_norm, read_price) for _ in range(levels - 1)); self.aux = None; self._px = None
         self.events = events and levels > 1
+        self.carry_critic = carry_critic
+        if carry_critic:                                                                           # TD critic over persistent memory (theory 175 T3): predicts the next lane's cotangent on carried slots
+            self.critic = nn.ModuleDict(dict(A=nn.Linear(d, d), on=nn.ModuleList(nn.Linear(d, d) for _ in range(levels - 1)), st=nn.ModuleList(nn.Linear(d, d) for _ in range(cerl.get('layers', 2)))))
+            for mod in self.critic.modules():
+                if isinstance(mod, nn.Linear): nn.init.zeros_(mod.weight); nn.init.zeros_(mod.bias)   # zero at init: the member equals the one without a critic (C3)
         if self.events: self.ro_ev = nn.Parameter(torch.zeros(2))                                   # the top level's pointer and composed pointer enter the readout's repeat/continue race (zero at init)
         self.n_active = levels - 1                                                                 # depth growth (theory 173 section 14): correction levels in use; a level enters at its ReZero gate 0
 
@@ -270,12 +277,18 @@ class RMR(nn.Module):
                     cand = cand | (dist == 0)                                                      # the current slot is always readable
                     S = S_full.masked_fill(~cand, float('-inf')); cand_frac.append(float(((cand & (dist >= 0)).sum(-1).float()/(rows[None, :] + 1).float()).mean()))
                 S_full = S if S_full is None else S_full
+                if lev.read_price:                                                                 # price race: fixed points exist (KKT of L + price x support), where fixed top-k churns
+                    lp_ = S - torch.logsumexp(S, -1, keepdim=True); keep = (lp_ >= -lev.log_price) | (S >= S.max(-1, keepdim=True).values)
+                    n_inc = keep.sum(-1).float().mean().detach(); cadd('read_included', n_inc)
+                    if self.training:
+                        with torch.no_grad(): lev.log_price.sub_(0.01*(n_inc - lev.read_price)/lev.read_price).clamp_(0.0, 20.0)
+                    S = S.masked_fill(~keep, float('-inf'))
                 if lev.read_topk and lev.read_topk < T:                                            # sparse read: race over the top-k slots only (0 = dense softmax over all past slots)
                     kth = S.topk(min(lev.read_topk, T), -1).values[..., -1:]; S = S.masked_fill(S < kth, float('-inf'))
-                if use_ev and (lev.read_topk or lev.index_C): S = torch.where(evm, S_full + evb if lev.index_C else S_full, S)   # event pointers are always candidates
+                if use_ev and (lev.read_topk or lev.index_C or lev.read_price): S = torch.where(evm, S_full + evb if lev.index_C else S_full, S)   # event pointers are always candidates
                 a = torch.softmax(S, -1)                                                           # read race over slots s <= t
                 with torch.no_grad():
-                    if (lev.read_topk and lev.read_topk < T) or lev.index_C: cadd('read_excluded_mass', (1 - torch.exp(torch.logsumexp(S, -1) - torch.logsumexp(S_full, -1))).mean())
+                    if (lev.read_topk and lev.read_topk < T) or lev.index_C or lev.read_price: cadd('read_excluded_mass', (1 - torch.exp(torch.logsumexp(S, -1) - torch.logsumexp(S_full, -1))).mean())
                     cadd('read_nonmax_mass', (1 - a.max(-1).values).mean())
                 win = a.detach().argmax(-1); own_ptr = own_ptr.index_copy(1, rows, win); own_pw = own_pw.index_copy(1, rows, a.gather(-1, win[..., None]).squeeze(-1))   # this level's event
                 if lev.read_explore and self.training:                                             # read probes (theory 173 C7): E unread slots s <= t with zero-forward weight p - sg(p),
@@ -465,14 +478,28 @@ def carry_cat(parts):
     return type(c)(carry_cat(list(z)) for z in zip(*parts))
 
 
+def critic_pairs(model, c):
+    """(critic map, carried tensor) pairs the TD critic covers: level-1 slots A, each level's new-slot corrections, slot-memory states."""
+    out = [(model.critic['A'], c['A'])] + [(model.critic['on'][li], lv[0]) for li, lv in enumerate(c['levels']) if li < len(model.critic['on'])]
+    out += [(model.critic['st'][i], st_[0]) for i, st_ in enumerate(c['tm']) if i < len(model.critic['st']) and torch.is_tensor(st_[0]) and st_[0].dim() == 3 and st_[0].shape[-1] == model.d]
+    return out
+
+
 def train_step(model, x, y, carry, keep, micro):
     """One update's forward/backward in `micro` row groups with gradient accumulation (same update; activation memory / micro).
     Exact when no batch statistic enters the objective (load-balance and region-filing statistics are per microbatch)."""
     B = x.shape[0]; loss = 0.0; parts = []
     for rs in np.array_split(np.arange(B), max(1, min(micro, B))):
-        rs = torch.from_numpy(rs); nll = model.lane_nll(x[rs], y[rs], prefix=None if carry is None else carry_rows(carry, rs))
-        l_ = nll.mean(); ((l_ + (model.aux.mean() if model.aux is not None else 0.0))*len(rs)/B).backward(); loss += l_.item()*len(rs)/B
-        if keep: parts.append(model.carry_out(keep))
+        rs = torch.from_numpy(rs); pf = None if carry is None else carry_rows(carry, rs); cr = getattr(model, 'carry_critic', False) and keep
+        if cr and pf is not None: pf = carry_leaves(pf)                                            # cotangents on the carried-in memory: the TD targets of the critic
+        nll = model.lane_nll(x[rs], y[rs], prefix=pf); l_ = nll.mean(); obj = l_ + (model.aux.mean() if model.aux is not None else 0.0); f = len(rs)/B
+        live = model.carry_out(keep, live=True) if cr else None
+        if cr: obj = obj + sum((C_(t_).detach()*t_).sum() for C_, t_ in critic_pairs(model, live))  # predicted future credit for this lane's writes, now
+        (obj*f).backward(); loss += l_.item()*f
+        if cr and pf is not None:                                                                  # TD(0) with exact transport: the measured cotangent (this lane's credit plus the critic's prediction
+            cl = sum(((C_(t_.detach()) - t_.grad/f)**2).mean() for C_, t_ in critic_pairs(model, pf) if t_.grad is not None)   # for the next lane, carried back exactly through this lane) trains the critic
+            if torch.is_tensor(cl): cl.backward()
+        if keep: parts.append(carry_leaves(live) if cr else model.carry_out(keep))
     return loss, (carry_cat(parts) if keep else None)
 
 
@@ -921,6 +948,39 @@ def contracts():
     mwn.train(); res['write_norm_train_equals_eval'] = 0.0
     ok_e = ok_e and abs(res['write_norm_normalisation_sum'] - 1) < 1e-4 and res['write_norm_causal_prefix_max_diff'] < 1e-5 and res['write_norm_carry_equals_long_lane'] < 1e-4 and all(0 <= v_ <= 1 for v_ in certs.values()) \
         and {'cert_read_excluded_mass', 'cert_write_excluded_mass', 'cert_fire_uncertain_mass', 'cert_clock_nonmax_mass'} <= set(certs)
+    # price read races: exact law, causal, carry exact; the price moves only in training; included counts respect the cap
+    torch.manual_seed(0); mpr = RMR(V, cls, words, cerl, read_price=3.0, events=True, **dict(NAT, old_decay=0.05)); mpr.eval()
+    with torch.no_grad():
+        for p_ in mpr.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        fpr = mpr.lane_nll(x.clone(), y); res['price_normalisation_sum'] = sum(math.exp(-mpr.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        res['price_causal_prefix_max_diff'] = float((mpr.lane_nll(x2, y2)[0, :p - 1] - fpr[0, :p - 1]).abs().max())
+        full2 = mpr.lane_nll(xa, ya); l1 = mpr.lane_nll(xa[:, :40], ya[:, :40]); pf = mpr.carry_out(40); l2 = mpr.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
+        res['price_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
+        mpr.lane_nll(xa, ya); res['price_read_included'] = [s_.get('cert_read_included') for s_ in mpr._mem[2]]
+        lp0 = mpr.levels[0].log_price.clone()
+    mpr.train(); mpr.lane_nll(x.clone(), y); res['price_moves_in_training'] = float((mpr.levels[0].log_price - lp0).abs())
+    ok_e = ok_e and abs(res['price_normalisation_sum'] - 1) < 1e-4 and res['price_causal_prefix_max_diff'] < 1e-5 and res['price_carry_equals_long_lane'] < 1e-4 and res['price_moves_in_training'] > 0 \
+        and all(v_ is not None and 1 <= v_ <= 6 for v_ in res['price_read_included'])
+    # TD critic over persistent memory: zero at init equals no critic (losses and member gradients); the critic is trained by the measured
+    # cotangent on the carried-in memory; a nonzero critic gives this lane's writes extra (predicted future) credit
+    CC = dict(levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True)
+    torch.manual_seed(0); mca = RMR(V, cls, words, cerl, carry_critic=True, **CC); mcb = RMR(V, cls, words, cerl, **CC)
+    with torch.no_grad():
+        for n_, p_ in mca.named_parameters():
+            if not n_.startswith('critic'): p_.add_(torch.randn_like(p_)*0.1)
+    mcb.load_state_dict({k: v for k, v in mca.state_dict().items() if not k.startswith('critic')}); mca.train(); mcb.train()
+    xb = torch.randint(0, 8, (2, 61)); outs = []
+    for mm_ in (mca, mcb):
+        torch.manual_seed(3); mm_.zero_grad(); _, c_ = train_step(mm_, xb[:, :20], xb[:, 1:21], None, 16, 1); mm_.zero_grad(); l_, _ = train_step(mm_, xb[:, 20:40], xb[:, 21:41], c_, 16, 1)
+        outs.append((l_, {n_: p_.grad.clone() for n_, p_ in mm_.named_parameters() if p_.grad is not None and not n_.startswith('critic')}))
+    res['critic_zero_equals_none_loss'] = abs(outs[0][0] - outs[1][0]); res['critic_zero_equals_none_grads'] = max(float((outs[0][1][k] - outs[1][1][k]).abs().max()) for k in outs[1][1])
+    res['critic_trained_by_cotangent'] = max(float(p_.grad.abs().max()) for n_, p_ in mca.named_parameters() if n_.startswith('critic') and p_.grad is not None)
+    with torch.no_grad():
+        for n_, p_ in mca.named_parameters():
+            if n_.startswith('critic') and n_.endswith('weight'): p_.normal_(0, 0.5)
+    torch.manual_seed(3); mca.zero_grad(); _, c_ = train_step(mca, xb[:, :20], xb[:, 1:21], None, 16, 1); mca.zero_grad(); train_step(mca, xb[:, 20:40], xb[:, 21:41], c_, 16, 1)
+    res['critic_future_credit_to_writers'] = float((mca.levels[0].g[2].weight.grad - mcb.levels[0].g[2].weight.grad).abs().max())
+    ok_e = ok_e and res['critic_zero_equals_none_loss'] < 1e-9 and res['critic_zero_equals_none_grads'] < 1e-7 and res['critic_trained_by_cotangent'] > 0 and res['critic_future_credit_to_writers'] > 0
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
     ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
@@ -981,7 +1041,7 @@ def main():
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
     A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--index-regions', type=int, default=0); A('--index-read', type=int, default=0); A('--readout-index', type=int, default=0); A('--readout-read', type=int, default=0); A('--readout-tok', type=int, default=32); A('--index-pk', type=int, default=0); A('--index-balance', type=float, default=0.0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
-    A('--write-norm', type=int, default=0, help='normalised write race: strength x softmax over addresses (a full route-tree limit, theory 175 section 8)'); A('--old-clocks', type=int, default=0, help='per-correction clocks: each write step races over K learned decay rates (replaces the shared --old-decay rate)'); A('--carry-credit', type=int, default=0, help='credit across lane boundaries: lanes of future credit for persistent memory (CarryCredit; updates lag by this many lanes)'); A('--micro', type=int, default=1, help='execution: microbatches per update (gradient accumulation; activation memory / micro)'); A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
+    A('--read-price', type=float, default=0.0, help='threshold (price) read race with this target read count (theory 175 section 4; --read-topk caps it)'); A('--carry-critic', type=int, default=0, help='TD critic over persistent memory (theory 175 T3)'); A('--write-norm', type=int, default=0, help='normalised write race: strength x softmax over addresses (a full route-tree limit, theory 175 section 8)'); A('--old-clocks', type=int, default=0, help='per-correction clocks: each write step races over K learned decay rates (replaces the shared --old-decay rate)'); A('--carry-credit', type=int, default=0, help='credit across lane boundaries: lanes of future credit for persistent memory (CarryCredit; updates lag by this many lanes)'); A('--micro', type=int, default=1, help='execution: microbatches per update (gradient accumulation; activation memory / micro)'); A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -998,7 +1058,7 @@ def main():
         n_lanes = (a.train_tokens - 1)//(a.lane - 1)                                               # stream (non-overlapping rows drop each lane's last token from the inputs)
         train = np.asarray(train_all[:n_lanes*(a.lane - 1) + 1]).astype(np.int64)[np.arange(n_lanes)[:, None]*(a.lane - 1) + np.arange(a.lane)[None, :]]
     cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore, slot_read_topk=a.slot_read_topk, slot_pk=bool(a.slot_pk))
-    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm), read_explore=a.read_explore, index_regions=a.index_regions, index_read=a.index_read, readout_index=a.readout_index, readout_read=a.readout_read, readout_tok=a.readout_tok, index_pk=bool(a.index_pk), index_balance=a.index_balance, events=bool(a.events), old_clocks=a.old_clocks, write_norm=bool(a.write_norm)); params = sum(p.numel() for p in model.parameters())
+    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm), read_explore=a.read_explore, index_regions=a.index_regions, index_read=a.index_read, readout_index=a.readout_index, readout_read=a.readout_read, readout_tok=a.readout_tok, index_pk=bool(a.index_pk), index_balance=a.index_balance, events=bool(a.events), old_clocks=a.old_clocks, write_norm=bool(a.write_norm), read_price=a.read_price, carry_critic=bool(a.carry_critic)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     if a.carry:                                                                                    # persistent memory: batch row b walks its own contiguous stream of lanes (one pass, every lane once)
         per = n_lanes//a.batch; total = per; quarter = math.ceil(total/4)
@@ -1008,6 +1068,7 @@ def main():
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0; carry = None
     clipper = LocalClip(model) if a.clip == 'local' else None
     assert not a.carry_credit or (a.carry and a.micro == 1), '--carry-credit needs --carry and --micro 1'
+    assert not (a.carry_critic and (a.carry_credit or not a.carry)), '--carry-critic needs --carry and replaces --carry-credit'
     cc = CarryCredit(model, a.carry_credit) if a.carry_credit else None
     if state_path.exists():
         s = torch.load(state_path, weights_only=False); assert same_run(s['args'], ident)

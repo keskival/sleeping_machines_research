@@ -1,3 +1,5 @@
+**Update 17 Oct 20:45 UTC (Curie).** Two theory 175 repairs are implemented and contracted (v27): threshold (price) read races (`--read-price 8`: routing with fixed points, where fixed top-k churns) and a TD critic over persistent memory (`--carry-critic 1`: future credit for writes with no extra lane graph). AWS: `aws_r1_rmr_nativeev_price_K4_16M_s0_20261017_v1` and `aws_r1_rmr_nativeev_critic_K4_16M_s0_20261017_v1` after the native seed replicates.
+
 **Update 17 Oct 20:20 UTC (Curie; founder: queue now what will light the remaining gaps).** AWS R1 priority for free slots, after the five admitted native pipelines:
 1. `aws_r1_reftx_*_4M` (four rungs, about 2 h each) and the native learning-rate arms `aws_r1_rmr_nativeev_K4_4M_lr{1e-3,6e-3}`.
 2. `aws_r1_rmr_nativeev_K4_64M_s0_20261017_v1` (the native 64M slope point; longest run, start early; --micro 4).
