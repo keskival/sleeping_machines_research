@@ -120,6 +120,26 @@ Update this ledger whenever a language depth/composition result completes.
   the background route carried most of the improvement. The structured causes are a small-data offset, not yet a slope advantage.
 - Pass condition for the fixed CERL pair: units_used and concept share rise with data. Scaling claims need three data sizes.
 
+## H10. Pre-registered outcomes of the native round (17 October, written before the results)
+Founder: if none of the current experiments shows a decisive advantage, will they teach enough to continue? The answer for each
+outcome is fixed here, before the results arrive.
+
+| result | if it holds | if it fails |
+| --- | --- | --- |
+| native 16M (s0, s1) vs K4 diagnostic 4.9901 | native becomes the scaling member | read certificates, event/firing rates, concept and clock usage; repair the bundle the ablations name |
+| seed spread s0 vs s1 | sets the threshold below which no ablation difference counts | — |
+| leave-one-bundle-out (6) | bundles whose removal costs more than the seed spread are carrying | a bundle whose removal helps is broken inside the member: repair it at its cause (DEAD_ENDS rule: no verdict from isolated tests) |
+| native slope 4M → 16M vs dense 0.60 and CERL 0.40 per 4x | steeper than CERL: run native 64M even if 16M loses | flat: capacity and depth growth are the levers (CERL-fix pair, grown arm) |
+| native learning rate (1e-3, 3e-3, 6e-3 at 4M) | best rate fixed for 16M/64M | a loss at the default rate is not an architecture verdict |
+| Transformer ladder 4M (four rungs) | native ahead at matched training FLOPs: first external win at our budget | behind: compare slopes (Transformer 16M rungs) before any verdict |
+| synthetic hierarchy K = 1/2/4, 1k-64k trees | depth trainable; resolved depth grows with samples | K > 1 never ahead: depth credit is broken, repair before more depth at scale |
+| route-tree certificates | small excluded / uncertain mass: trained model near the full route tree | large: the hard model is far from the tree; threshold races and dual-race credit (theory 175) are next |
+| cross-lane credit pair | carried and online scores improve: persistent memory needs credit | no change: memory is not yet used across lanes; check concept/slot usage |
+
+Not covered by the current runs (needed whatever happens): native 64M (queue if the slope is steeper than CERL's);
+Transformer 16M rungs (after the 4M rate selection); threshold races, dual-race write credit and a TD critic (theory 175 §6,
+not implemented); more seeds wherever a decision rests on a difference near the seed spread.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).
