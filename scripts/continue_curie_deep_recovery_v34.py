@@ -20,6 +20,10 @@ def main():
     try:
         run_or_await(DECAY, 64800); market.publish([f'experiments/results/token_language/{DECAY}.json'], 'R1 native depth at 16M: 4-level residual memory with decaying old-slot refinement (long-lane repair)')
     except Exception as error: print(json.dumps({DECAY: 'failed', 'error': repr(error)}), flush=True)
+    after_decay()
+
+
+def after_decay():
     try:
         out = ROOT/f'experiments/results/diagnostics/{RHM}.json'
         if not out.exists(): stable_host(); original.run(RHM, 6*3600)
