@@ -199,7 +199,7 @@ class RMR(nn.Module):
         if prefix is not None: P = prefix['A'].shape[1]; A = torch.cat([prefix['A'], A], 1)
         B, T, d = A.shape; dv = A.device; new_total = A; writes = []; stats = []; self._lev_own = []; acts = []
         prev_corr = torch.zeros(B, T, device=dv, dtype=A.dtype); prev_fire = torch.ones(B, T, device=dv, dtype=A.dtype)   # level 1 fires on every event
-        prev_ev = None; self._ev = []; self._clk = []                                                              # (pointer [B, T], its race weight [B, T]) of the level below; level 1 emits no pointer events
+        prev_ev = None; self._ev = []; self._clk = []; self._phis = []                                                              # (pointer [B, T], its race weight [B, T]) of the level below; level 1 emits no pointer events
         for li, lev in enumerate(self.levels[:self.n_active]):                                    # levels beyond n_active have not entered yet: no compute, no writes, no credit
             E = lev.write_explore if self.training else 0; m_ = max(1, lev.top_m) + E; own_new = torch.zeros_like(A); own_dold = A.new_zeros(B, T, m_, d) if lev.per_target else torch.zeros_like(A)
             own_idx = torch.zeros(B, T, m_, dtype=torch.long, device=dv); own_w = torch.zeros(B, T, m_, device=dv); own_phi = torch.ones(B, T, device=dv, dtype=A.dtype)
@@ -294,7 +294,7 @@ class RMR(nn.Module):
                     dnew = phi[..., None]*dnew; dold = phi.view(*phi.shape, *([1]*(dold.dim() - 2)))*dold; own_phi = own_phi.index_copy(1, rows, phi); acts.append(ph)
                 own_new = own_new.index_copy(1, rows, dnew); own_dold = own_dold.index_copy(1, rows, dold)
             new_total = new_total + own_new; writes = writes + (lev.writes_of(own_dold, own_idx, own_w, own_clk, self.old_norm) if lev.top_m else []); self._clk.append(own_clk)
-            prev_corr = own_new.norm(dim=-1); prev_fire = own_phi
+            prev_corr = own_new.norm(dim=-1); prev_fire = own_phi; self._phis.append(own_phi.detach())
             if lev.fire:                                                                           # a silent level emits no event: its pointer holds from its last firing step (event-driven state)
                 tt = torch.arange(T, device=dv).expand(B, T); fired = own_phi.detach() > 0.5; fired[:, :max(P, 1)] = True
                 last = torch.where(fired, tt, torch.zeros_like(tt)).cummax(1).values; own_ptr = own_ptr.gather(1, last); own_pw = own_pw.gather(1, last)
@@ -861,6 +861,18 @@ def contracts():
     res['clocks_credit_to_selector'] = float(mkc.levels[0].clock_sel.weight.grad.abs().max()); res['clocks_credit_to_rates'] = float(mkc.levels[0].log_clock.grad.abs().max())
     ok_e = ok_e and res['clocks_equal_rates_equal_shared'] < 1e-5 and abs(res['clocks_normalisation_sum'] - 1) < 1e-4 and res['clocks_causal_prefix_max_diff'] < 1e-5 and res['clocks_train_equals_eval'] < 1e-5 \
         and res['clocks_carry_equals_long_lane'] < 1e-4 and res['clocks_credit_to_selector'] > 0 and res['clocks_credit_to_rates'] > 0
+    # silence (theory 174 P2): a level that never fires and has zero gates receives no gradient at all (absorbing); with a nonzero gate its firing
+    # decision is credited at silent steps (straight-through value of firing), so it can revive
+    torch.manual_seed(0); ms_ = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, write_race=True, fire=True); ms_.train()
+    with torch.no_grad():
+        for p_ in ms_.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        for l_ in ms_.levels: l_.fire_lin.weight.zero_(); l_.fire_lin.bias.fill_(-10.0); l_.alpha_new.zero_(); l_.alpha_old.zero_()
+    ms_.zero_grad(); ms_.lane_nll(x.clone(), y).mean().backward()
+    res['silence_zero_gate_absorbing'] = max(float(p_.grad.abs().max()) if p_.grad is not None else 0.0 for p_ in ms_.levels[1].parameters())
+    with torch.no_grad():
+        for l_ in ms_.levels: l_.alpha_new.fill_(0.5); l_.alpha_old.fill_(0.5)
+    ms_.zero_grad(); ms_.lane_nll(x.clone(), y).mean().backward(); res['silence_revival_credit'] = float(ms_.levels[1].fire_lin.weight.grad.abs().max())
+    ok_e = ok_e and res['silence_zero_gate_absorbing'] == 0.0 and res['silence_revival_credit'] > 0
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
     ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']

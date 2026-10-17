@@ -109,12 +109,18 @@ def contracts():
 
 def evaluate(model, H, test, T, ref):
     """Per-leaf model NLL on test trees, grouped by composition depth, against Bayes and marginal."""
-    model.eval(); n = H.n; seq = lanes(H, test); per = T*(n + 1); out = np.zeros_like(ref['bayes'])
+    model.eval(); n = H.n; seq = lanes(H, test); per = T*(n + 1); out = np.zeros_like(ref['bayes']); fires = None
     with torch.no_grad():
         for i in range(0, test.shape[0]//T):
             w = torch.from_numpy(np.concatenate([seq[i*per:(i + 1)*per], [H.v]]).astype(np.int64))[None]; nll = model.lane_nll(w[:, :-1], w[:, 1:])[0].numpy()
             out[i*T:(i + 1)*T] = nll.reshape(T, n + 1)[:, :n]                                    # target j (n + 1) + t is leaf t of tree j (the BOS target closes the previous tree)
-    model.train(); return dict(leaf_nll=float(out.mean()), resolved_depth=resolved_depth(float(out.mean()), ref['ladder']))
+            ph = [p_[0].numpy().reshape(T, n + 1)[:, 1:] for p_ in getattr(model, '_phis', [])]   # firing after reading leaf t (input position j (n + 1) + 1 + t)
+            fires = ph if fires is None else [f_ + p_ for f_, p_ in zip(fires, ph)]
+    res = dict(leaf_nll=float(out.mean()), resolved_depth=resolved_depth(float(out.mean()), ref['ladder']))
+    if fires and any(l_.fire for l_ in model.levels):                                             # rate matching (theory 174 P4): firing by the size of the block the last leaf completed
+        comp = [max([k for k in range(H.L + 1) if (t + 1) % H.s**k == 0]) for t in range(n)]; nb = test.shape[0]//T
+        res['fire_by_completed_level'] = {str(j + 2): {str(c): float(f_.sum(0)[[t for t in range(n) if comp[t] == c]].mean()/(nb*T)) for c in sorted(set(comp))} for j, f_ in enumerate(fires)}
+    model.train(); return res
 
 
 def resolved_depth(loss, B):

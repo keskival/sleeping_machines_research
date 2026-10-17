@@ -423,3 +423,8 @@ The native member now also carries the large concept bank (65,536 units, product
 - Exact microbatching with carried memory (`--micro`) so the native member fits any memory cap.
 Still declared gaps: forward-trained credit functions (theory 164) and event-local learning as the training route; AWS owns
 porting its credit learners onto the native member as paired arms.
+
+## 20. Asynchronous modules
+
+Trainability of asynchronous modules in compositions (piecewise exactness, revivable silence, rate-invariant credit through
+held events, rate matching, depth-independent credit along composed pointers, bounded delay, per-value lifetimes): theory 174.
