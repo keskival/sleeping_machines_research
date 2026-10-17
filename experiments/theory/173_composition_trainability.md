@@ -125,7 +125,34 @@ r_c = π_c p_c(y) / Σ_c' π_c' p_c'(y).
 
 **AWS local learner.** C1/C6 failure (detached lower messages); AWS's producer-credit repair is running.
 
-## 5. Next tests (each removes one open condition)
+## 5. Second round, 17 October: the open conditions worked
+
+| Open item (§4) | Implemented | Contract |
+| --- | --- | --- |
+| C7 write addresses | Separate write-address race (`--write-race 1`, own keys over refined slots), and counterfactual write probes (`--write-explore E`). A probe has magnitude p − sg(p): zero in the forward pass, so training and evaluation predict the same, and its gradient is ⟨∂L/∂slot, probe correction⟩, the first-order value of writing there. Credit reaches only the address race. | Probes leave the forward pass unchanged (0.0) and add credit to the write keys |
+| C8 persistent memory | `--carry W`: the level-1 temporal state continues across lanes; the previous W slots with every level's corrections stay readable, refinable and pointer-addressable; credit stays within the lane. Training rows walk contiguous streams; final scoring reports reset and carried lanes. | Carried lane 2 equals rows L..2L of one long lane (9.5e-7); row chunks with a prefix (4.8e-7) |
+| C7 capacity | Load balance per half-bank for product keys (2√U scores) | NLL unchanged; term ≥ balance; credit reaches the half-keys |
+| Writers saw unrefined slots | Address keys and per-target corrections now read refined slot values (old corrections included), as the read does. The old-correction part of a target's value carries no second-order credit (saves autograd memory). | Contracts v7 |
+
+Second-round review findings, all fixed:
+- `ParallelTemporalMemory` built its kernel on the CPU, so the GPU driver would have failed on CUDA.
+- RMR-2 had no prefix interface; it now refuses carry explicitly.
+- Resume identity broke on new flags, which would have failed the PTB resume and AWS's running RMR resumes after a sync. Flags at behaviour-preserving defaults are now accepted.
+- The FLOP count ignored the carried prefix.
+- Write probes on read weights would bend reads toward write targets (separate keys and values); probes now require the write race.
+
+Disclosed protocol notes:
+- Carried scoring on the selection and 65,528 slices has a one-token gap at lane boundaries: the last token of a lane is only a target. Flagship windows are contiguous.
+- `--carry` changes the training data order.
+
+## 6. Next tests
+1. The 16M arms on AWS: fixes; plus 1,024-token lanes; plus per-target corrections; the integrated member (everything above, `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1`, after its RSS gate).
+2. Carry for RMR-2 (firing clocks and standing slots), then the integrated member with RMR-2 at 16M.
+3. Native level 1: event-local states in place of the linear recurrence, against CERL at 16M.
+4. The capacity ladder (65k–262k product keys with balance) at 16M.
+
+## 7. Earlier list (superseded by §5–6)
+
 
 1. C7 writes: counterfactual write exploration. A few random older slots per step receive a detached trial correction,
    credited by the change in the readout likelihood (the same estimator as exploration units).

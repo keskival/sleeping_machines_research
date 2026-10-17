@@ -4,7 +4,7 @@
 1. Defaults are the original runs: groups=False is one group over all parameters; unit_init=0 and balance=0 build the same
    parameters from the same seed and give identical NLL and auxiliary loss.
 2. groups=True partitions the parameters exactly once; decayed tensors are all >= 2-D and none is a dormant-capacity table.
-3. The load-balance term is the Switch form balance*U*sum(f*P): it is >= balance with equality when routing is uniform, and it
+3. The load-balance term (flat bank; product keys: per half-bank, 2 sqrt(U) scores) is the Switch form balance*U*sum(f*P): it is >= balance with equality when routing is uniform, and it
    only adds to the auxiliary objective (the NLL, i.e. the predictive race, is unchanged).
 """
 import json, sys, hashlib
@@ -37,7 +37,14 @@ def main():
     d_ = build(1, unit_init=0.02, balance=0.0); d_.train(); torch.manual_seed(5); nd = d_.lane_nll(xi, yi); ad = d_.aux
     bal = float((ac - ad).mean()); out['balance'] = dict(nll_unchanged=float((nc - nd).abs().max()), term=bal, at_least_balance=bal >= 0.1 - 1e-6)
     out['unit_out_symmetry_broken'] = float(c.base.unit_out.std()) > 0
-    ok = same and out['defaults_identical']['nll_diff'] == 0 and out['defaults_identical']['aux_diff'] == 0 and out['default_one_group'] and out['groups_partition'] \
+    torch.manual_seed(2); counts = np.random.default_rng(0).integers(1, 1000, 512).astype(float); cls, words = C.word_classes(counts, 16)
+    pk = [C.CERL(512, cls, words, 32, 8, 1, 16, 64, 4, 0, product_keys=True, balance=bb) for bb in (0.1, 0.0)]; pk[1].load_state_dict(pk[0].state_dict())
+    for m_ in pk: m_.train()
+    n1, n0 = pk[0].lane_nll(xi, yi), pk[1].lane_nll(xi, yi); a1, a0 = pk[0].aux, pk[1].aux
+    tpk = float((a1 if a0 is None else a1 - a0).mean()); out['pk_balance'] = dict(nll_unchanged=float((n1 - n0).abs().max()), term=tpk, at_least_balance=tpk >= 0.1 - 1e-6)
+    a1.mean().backward(); out['pk_balance']['credit_to_half_keys'] = float(pk[0].key1.grad.abs().max()) > 0
+    ok_pk = out['pk_balance']['nll_unchanged'] < 1e-6 and out['pk_balance']['at_least_balance'] and out['pk_balance']['credit_to_half_keys']
+    ok = ok_pk and same and out['defaults_identical']['nll_diff'] == 0 and out['defaults_identical']['aux_diff'] == 0 and out['default_one_group'] and out['groups_partition'] \
         and out['decayed_all_matrices_not_dormant'] and out['balance']['nll_unchanged'] < 1e-6 and out['balance']['at_least_balance'] and out['unit_out_symmetry_broken']
     out['status'] = 'passed' if ok else 'failed'
     out['source_sha256'] = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl.py', 'experiments/r1_rmr.py', 'experiments/review_fix_contracts.py')}

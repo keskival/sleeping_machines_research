@@ -53,6 +53,15 @@ def param_groups(model, wd, groups=False):
     return [dict(params=dec, weight_decay=wd), dict(params=nod, weight_decay=0.0)]
 
 
+# flags added after a run started, at their default (= the run's actual behaviour); resumes stay exact
+LATER_FLAG_DEFAULTS = dict(wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0)
+
+
+def same_run(saved, ident):
+    """Resume identity: equal settings, where flags absent from the saved run must be at their (behaviour-preserving) defaults."""
+    return {k: v for k, v in ident.items() if k in saved} == saved and all(k in LATER_FLAG_DEFAULTS and LATER_FLAG_DEFAULTS[k] == v for k, v in ident.items() if k not in saved)
+
+
 def word_classes(counts, n_classes, s_max=S_MAX, trim=False):
     """Frequency-mass word classes: words by descending training count; a class closes at 1/n_classes of the mass or at
     s_max words. Returns class_of [V] and class_words [C, s_max] (-1 padded)."""
@@ -103,12 +112,13 @@ class CERL(nn.Module):
         a0 = math.log(math.expm1(age_slope))   # power-law excitation kernel age^-slope: integrable for slope > 1, so total episodic hazard stays bounded as history grows
         self.age_rep, self.age_cont = nn.Parameter(torch.tensor(a0)), nn.Parameter(torch.tensor(a0)); self.span = nn.Parameter(torch.tensor(1.0))
 
-    def states(self, x, msg=None):
+    def states(self, x, msg=None, tm_state=None):
+        """tm_state: per-layer temporal-memory states carried from the previous lane (None = fresh); final states in self.tm_state."""
         dr = lambda z: F.dropout(z, self.p_drop, self.training) if self.p_drop else z          # small-corpus regularisation (0 on FineWeb)
         h = dr(self.embed(x) + (msg if msg is not None else 0))
-        for n1, tm, to, n2, mlp in zip(self.n1, self.tm, self.tm_out, self.n2, self.mlp):
-            h = h + dr(to(tm(n1(h)))); h = h + dr(mlp(n2(h)))
-        return dr(self.out_norm(h))
+        for i, (n1, tm, to, n2, mlp) in enumerate(zip(self.n1, self.tm, self.tm_out, self.n2, self.mlp)):
+            h = h + dr(to(tm(n1(h), None if tm_state is None else tm_state[i]))); h = h + dr(mlp(n2(h)))
+        self.tm_state = [t.last_state for t in self.tm]; return dr(self.out_norm(h))
 
     def unit_score(self, q, idx):
         """Race log-rates of units idx [..., k] for queries q [..., dk]."""
@@ -176,10 +186,16 @@ class CERL(nn.Module):
         parts = torch.cat([s_bg + lp[..., :1], s_sel + lp[..., 1:], torch.where(hit_rep, S_rep, neg), torch.where(hit_cont, S_cont, neg)], -1)
         nll = logZ - torch.logsumexp(parts, -1)
         self.aux = None
-        if self.training and self.balance > 0 and not self.pk:                                      # load balance (Switch-style): fraction woken x mean wake probability, so dormant units get used
-            P = torch.softmax(self.q_unit(hq) @ self.unit_key.T + self.unit_bias, -1).reshape(-1, self.U).mean(0)
-            f = torch.zeros(self.U, device=dv).scatter_add(0, sel[..., :self.topk].reshape(-1), torch.ones(sel[..., :self.topk].numel(), device=dv))/sel[..., :self.topk].numel()
-            self.aux = (self.balance*self.U*(f*P).sum())*torch.ones_like(nll)
+        if self.training and self.balance > 0:                                                      # load balance (Switch-style): fraction woken x mean wake probability, so dormant units get used
+            s0 = sel[..., :self.topk].reshape(-1); one = torch.ones(s0.numel(), device=dv); q_ = self.q_unit(hq)
+            if not self.pk:
+                P = torch.softmax(q_ @ self.unit_key.T + self.unit_bias, -1).reshape(-1, self.U).mean(0)
+                f = torch.zeros(self.U, device=dv).scatter_add(0, s0, one)/s0.numel(); bal = self.U*(f*P).sum()
+            else:                                                                                   # product keys: balance each half-bank (2 sqrt(U) scores, never U)
+                h2, n = self.dk//2, self.n_half; bal = 0.0
+                for qh, key, bias, half in ((q_[..., :h2], self.key1, self.bias1, s0//n), (q_[..., h2:], self.key2, self.bias2, s0 % n)):
+                    P = torch.softmax(qh @ key.T + bias, -1).reshape(-1, n).mean(0); f = torch.zeros(n, device=dv).scatter_add(0, half, one)/s0.numel(); bal = bal + 0.5*n*(f*P).sum()
+            self.aux = (self.balance*bal)*torch.ones_like(nll)
         if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
             ex_aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
@@ -346,7 +362,7 @@ def words_main(a, src):
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s_: min(1.0, (s_ + 1)/warm)*0.5*(1 + math.cos(math.pi*min(1.0, s_/total))))
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; epoch, step, best, best_epoch, hist, wall = 0, 0, math.inf, -1, [], 0.0; rng = np.random.default_rng(a.seed)
     if state_path.exists():
-        s_ = torch.load(state_path, weights_only=False); assert s_['args'] == ident
+        s_ = torch.load(state_path, weights_only=False); assert same_run(s_['args'], ident)
         model.load_state_dict(s_['model']); opt.load_state_dict(s_['opt']); sched.load_state_dict(s_['sched']); torch.set_rng_state(s_['torch_rng']); rng.bit_generator.state = s_['np_rng']
         epoch, step, best, best_epoch, hist, wall = s_['epoch'], s_['step'], s_['best'], s_['best_epoch'], s_['hist'], s_['wall']
     t_start = time.time() - wall
@@ -436,7 +452,7 @@ def main():
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0
     if state_path.exists():
-        s = torch.load(state_path, weights_only=False); assert s['args'] == ident, 'resume with different settings'
+        s = torch.load(state_path, weights_only=False); assert same_run(s['args'], ident), 'resume with different settings'
         model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); sched.load_state_dict(s['sched']); torch.set_rng_state(s['torch_rng'])
         step, losses, milestones, wall, resumes = s['step'], s['losses'], s['milestones'], s['wall'], s['resumes'] + 1; print(json.dumps(dict(resumed_at_step=step)), flush=True)
     began = time.time() - wall

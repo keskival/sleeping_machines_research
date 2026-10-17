@@ -53,8 +53,9 @@ class RMR2(R.RMR):
             out = out + coef @ ds
         return out
 
-    def build_memory(self, x):
-        A = self.base.states(x); B, T, d = A.shape; dv = A.device; new_total = A; writes = []; st_writes = []; stats = []; act_terms = []
+    def build_memory(self, x, prefix=None):
+        assert prefix is None, 'RMR-2 has no carried memory yet (r1_rmr --carry is RMR-1)'
+        self._P = 0; A = self.base.states(x); B, T, d = A.shape; dv = A.device; new_total = A; writes = []; st_writes = []; stats = []; act_terms = []
         prev_corr = torch.zeros(B, T, device=dv); prev_fire = torch.ones(B, T, device=dv)              # level 1 fires on every token
         for lev in self.levels:
             own_new = torch.zeros_like(A); own_dold = torch.zeros_like(A); m_ = max(1, lev.top_m)

@@ -14,7 +14,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiments'), str(ROOT/'experiments/tpp')]
-from r1_cerl import CERL, word_classes, lanes_nll, work_per_target, param_groups  # noqa: E402
+from r1_cerl import CERL, word_classes, lanes_nll, work_per_target, param_groups, same_run  # noqa: E402
 from r1_gpu_ladder import Lanes  # noqa: E402
 
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk', 'out_dir', 'data_dir')
@@ -29,7 +29,7 @@ def main():
     A('--evals', type=int, default=16); A('--log-every', type=int, default=50); A('--checkpoint-every', type=int, default=500); A('--max-steps', type=int, default=0); A('--row-chunk', type=int, default=512)
     A('--data-dir', default=str(ROOT/'data/fineweb_gpt2')); A('--out-dir', default=str(ROOT/'experiments/results/gpu_ladder'))
     A('--model', choices=('cerl', 'rmr'), default='cerl'); A('--levels', type=int, default=4); A('--top-m', type=int, default=4); A('--old-decay', type=float, default=0.01); A('--read-dk', type=int, default=64); A('--read-topk', type=int, default=0)
-    A('--old-per-target', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
+    A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
     a = ap.parse_args(); torch.manual_seed(a.seed); dev = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     if dev.type == 'cpu': torch.set_num_threads(1)
     else: torch.backends.cuda.matmul.allow_tf32 = True
@@ -43,7 +43,7 @@ def main():
     if a.model == 'rmr':                                                                          # residual-memory depth (theory 172) over the CERL readout
         from r1_rmr import RMR
         model = RMR(50257, cls, words, dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance),
-                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay, old_per_target=bool(a.old_per_target)).to(dev)
+                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore).to(dev)
     else:
         model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance).to(dev)
     params = sum(p.numel() for p in model.parameters())
@@ -61,7 +61,7 @@ def main():
     fl_l = np.stack([np.asarray(val[p:p + 1025]) for p in range(25165824, 25165824 + 8192, 1024)])
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; st = dict(step=0, losses=[], evals=[], milestones=[], wall=0.0, resumes=0)
     if state_path.exists():
-        s = torch.load(state_path, map_location=dev, weights_only=False); assert s['ident'] == ident
+        s = torch.load(state_path, map_location=dev, weights_only=False); assert same_run(s['ident'], ident)
         model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); torch.set_rng_state(s['rng']); st = s['st']; st['resumes'] += 1
         if dev.type == 'cuda' and s.get('cuda_rng') is not None: torch.cuda.set_rng_state(s['cuda_rng'])
     stop = {'f': False}; signal.signal(signal.SIGTERM, lambda *_: stop.update(f=True))

@@ -87,6 +87,9 @@ Update this ledger whenever a language depth/composition result completes.
 - The 4M capacity verdicts (65k/262k banks) are confounded by bank collapse; see DEAD_ENDS.md §3.
 - Formal trainability conditions for composing good learners (C1 credit path, C2 sufficient interface, C3 identity at init, C4 each level reads something new, C5 conditioning, C6 alignment of local credit, C7 hard choices, C8 time, C9 stability): [theory 173](../theory/173_composition_trainability.md). Fixed with it: an RMR-2 crash (dense writes), straight-through firing `--fire-st`, fp32 old-slot algebra under bf16. Open: counterfactual write exploration, carried memory across lanes, product-key balance, native level 1.
 
+## H4. Integrated member (theory 173 §5), 17 October
+- Write-address race with counterfactual write probes, persistent memory across lanes (`--carry`), product-key balance, refined slot values for writers; contracts `curie_rmr_contracts_20261017_v8`. AWS: `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1` (gate first) against the unfixed K4 residdecay run and the three single-fix arms.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).
