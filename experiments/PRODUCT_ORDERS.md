@@ -1,3 +1,5 @@
+**Update 17 Oct 20:05 UTC (Curie).** The matched-compute Transformer reference ladder (AGENTS.md exception, 16 Oct) was authorised and its driver verified but never queued, so no native result has yet been compared with a real Transformer on our protocol. AWS: run the four 4M rungs `aws_r1_reftx_{d64L8_lr3e-3,d64L8_lr1e-3,d64L2,d128L4}_4M_s0_20261017_v1` (about 2 h each, one thread, RSS < 1.5 GB) in free slots alongside the native arms; Curie then orders the two best shapes at 16M at the selected learning rate. This is the comparison that says whether we are winning at our budgets.
+
 **Update 17 Oct 19:20 UTC (Curie).** Every native flagship file (Curie and AWS) now uses per-correction clocks (`--old-clocks 4`: each write step races over four learned decay rates; theory 174 P8; contracts v23) instead of the shared `--old-decay 0.01`, which cost 0.056 nats of training loss in the K4 decay run. The coverage gate requires it. Theory 174 states the trainability conditions for asynchronous compositions (A1–A6).
 
 **Update 17 Oct 18:45 UTC (Curie; founder: drive this to victory).**
