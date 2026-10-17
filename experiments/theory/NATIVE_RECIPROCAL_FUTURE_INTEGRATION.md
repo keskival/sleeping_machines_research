@@ -1,3 +1,29 @@
+## Current result and calibrated repair — 17 October 2026
+
+The completed v6 prospective trial loses: NLL 4.822277 versus 4.808329
+for ordinary native learning and 4.821158 for immediate-greedy updates over
+1,152 chronological TRAIN targets. Action-value MSE is 0.014223 versus
+0.000710 for predicting zero. Random initial values had a much larger scale
+than the measured action effects, yet the policy assigned them high confidence.
+
+The new calibrated construction retains the acquired eight-layer native credit
+core and its persistent state, but replaces the random response with a neutral,
+action-scaled regularized least-squares response. A signed feature captures
+first-order response; an absolute-sign feature captures effects shared by both
+step directions. A separate uniform audit policy covers all nonzero actions.
+The service policy minimizes estimated future cost plus an uncertainty penalty;
+no-op has exactly zero cost and uncertainty. This penalty is a heuristic under
+changing representations, not a statistical coverage guarantee.
+
+Reuse the best saved ordinary actor at cursor 283800 with its Adam moments,
+numerical memory and RNGs. Reset only the changed credit optimizer/readout.
+Two acquired integration episodes precede 64 prospective episodes of four
+support plus 32 future targets, with continuously adapting ordinary and
+immediate-greedy native references. Score before adapting, commit the issued
+trajectory regardless of audit outcome, and checkpoint all actors and RNGs.
+Numerical gates and the future comparison are conditional jobs in slot 3;
+no prediction benefit is reported before their completed results.
+
 # Native reciprocal learning with measured future targets
 
 16 October 2026, R1. Founder requests integration and repair of the earlier

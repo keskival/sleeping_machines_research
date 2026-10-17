@@ -1,0 +1,18 @@
+{
+  "scope": "One seed; one pass over 16M FineWeb GPT-2 tokens; development evaluation, no public TEST. Current-slot residual-memory composition; old-slot rewrites disabled. Full learning arithmetic and hardware benefit not audited.",
+  "results": [
+    {
+      "result": "experiments/results/token_language/aws_r1_rmr_compact_K4_16M_s0_20261016_v2.json",
+      "sha256": "4e86c775579002471748f86a6a97c8942083be5105cf90d7360a51b3f760ca9e",
+      "flagship_nll": 5.043257534503937,
+      "long_slice_nll": 5.024371274180384
+    },
+    {
+      "result": "experiments/results/token_language/aws_r1_cerl_16M_s0_20261016_v1.json",
+      "sha256": "bb952ce7a6095daf38950a1965579b1f0ad5acaabff01324185f1995d2b880af",
+      "flagship_nll": 5.063391894102097,
+      "long_slice_nll": 5.028150534021478
+    }
+  ],
+  "flagship_gain": 0.02013435959815979
+}
