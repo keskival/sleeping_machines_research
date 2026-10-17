@@ -1,0 +1,88 @@
+{
+  "status": "completed",
+  "battle": "R1",
+  "stage": "live writer-input integrated resource gate",
+  "gate": "PASS",
+  "source_sha256": {
+    "experiments/credit/rmr_writer_resource_gate.py": "b6e0299a8bb22d7c7f7c63de3961a90a2d5703436472cb3ab4fbafb45aac36d6",
+    "experiments/r1_rmr_writer_input_credit.py": "62fd39d815cf14cfd610e22ec45eaf12a5538dbee524464e1163a1aaf073ba98",
+    "experiments/r1_rmr.py": "d01b066da77562217c722ad86ebe144beb54978fcc725fb83e50807705412281",
+    "experiments/r1_cerl.py": "da8f4e69a93c7558cef75db305d40f2162a435f9be25cf4cdf087ca1bbcc1577",
+    "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+    "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+  },
+  "measurements": [
+    {
+      "step": 8,
+      "of": 16384,
+      "prequential_last": 7.7865002155303955,
+      "levels": [
+        {
+          "new_norm": 0.0009279483929276466,
+          "old_norm": 0.0029553703498095274
+        },
+        {
+          "new_norm": 0.0016090276185423136,
+          "old_norm": 0.0004989698063582182
+        },
+        {
+          "new_norm": 7.826658111298457e-05,
+          "old_norm": 0.003840204095467925
+        }
+      ],
+      "elapsed_s": 33
+    },
+    {
+      "step": 16,
+      "of": 16384,
+      "prequential_last": 7.8555490374565125,
+      "levels": [
+        {
+          "new_norm": 0.003287777304649353,
+          "old_norm": 0.005786139518022537
+        },
+        {
+          "new_norm": 0.0040737418457865715,
+          "old_norm": 0.002435399452224374
+        },
+        {
+          "new_norm": 0.0011481401743367314,
+          "old_norm": 0.007860224694013596
+        }
+      ],
+      "elapsed_s": 67
+    },
+    {
+      "smoke_steps": 16,
+      "s_per_step": 4.215284138917923,
+      "max_rss_kb": 2746720,
+      "parameters": 7514774
+    },
+    {
+      "smoke_select_2lanes": {
+        "nll": 8.189069679905044,
+        "targets": 4094,
+        "native": {
+          "bg_only_nll": 8.2859714808089,
+          "resp_bg": 0.25031274405699794,
+          "resp_concept": 0.6832466346639857,
+          "resp_repeat": 0.03011350164305497,
+          "resp_continue": 0.03632712965757456,
+          "level2_new_norm": 0.003687799791805446,
+          "level2_old_norm": 0.0061506289057433605,
+          "level3_new_norm": 0.004484984558075666,
+          "level3_old_norm": 0.0028184157563373446,
+          "level4_new_norm": 0.0013496365281753242,
+          "level4_old_norm": 0.008485549129545689,
+          "native_gain": 0.09690180090385603
+        }
+      }
+    }
+  ],
+  "updates": 16,
+  "actual_train_targets": 16320,
+  "elapsed_s": 78.54351146891713,
+  "max_rss_kb": 2746720,
+  "checkpoint": "experiments/results/token_language/aws_r1_writer_input_resource_20261017_v2.resume.pt",
+  "scope": "Integrated per-target writer, write-address probes, carried memory and full first-order input VJP. Bounded 16-update resource/correctness gate only; no quality or long-history scalability claim. Extra autograd work is paid."
+}
