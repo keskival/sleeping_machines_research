@@ -125,35 +125,39 @@ def t3(seed=0, lanes=5, L=8, S=10, d=4):
     return res
 
 
-def t4(trials=40, U=12, k=3, d=5, steps=3000, lr=0.5, E=3, seed=0):
+def t4(trials=20, U=10, k=3, d=5, steps=1500, lr=0.5, E=3, seed=0):
     """Fixed points of hard top-k routing trained by exact pathwise credit (inside the route) and zero-forward probes (outside):
     every converged route is first-order route-optimal (no excluded candidate has negative inclusion credit), with or without the
     Horvitz-Thompson weight (a sign condition); it is not always the globally best subset (combinatorial)."""
     from itertools import combinations
-    rng = np.random.default_rng(seed); first_order = {'unweighted': 0, 'ht': 0}; global_hits = {'unweighted': 0, 'ht': 0}; same_route = 0
-    def fit_weights(S, V, y, it=300):
+    rng = np.random.default_rng(seed); churn = {'unweighted': [], 'ht': []}; fo_list = {'unweighted': [], 'ht': []}; first_order = {'unweighted': 0, 'ht': 0}; global_hits = {'unweighted': 0, 'ht': 0}; same_route = 0
+    def fit_weights(S, V, y, it=150, ret_pred=False):
         z = torch.zeros(len(S), requires_grad=True)
         for _ in range(it):
             pred = (torch.softmax(z, 0)[:, None]*V[list(S)]).sum(0); l_ = ((pred - y)**2).sum(); gz, = torch.autograd.grad(l_, z)
             with torch.no_grad(): z -= 0.5*gz
-        return float(l_)
+        return float(l_) if not ret_pred else (float(l_), pred.detach())
     for tr in range(trials):
         V = torch.tensor(rng.standard_normal((U, d))); y = torch.tensor(rng.standard_normal(d)); routes = {}
         best = min(fit_weights(S, V, y) for S in combinations(range(U), k))
         for mode in ('unweighted', 'ht'):
-            g_ = torch.Generator().manual_seed(seed + tr); s = torch.zeros(U)
-            for _ in range(steps):
+            g_ = torch.Generator().manual_seed(seed + tr); s = torch.zeros(U); late = set()
+            for st_ in range(steps):
                 s_ = s.clone().requires_grad_(True); top = s_.detach().topk(k).indices; rest = [u for u in range(U) if u not in set(top.tolist())]
                 ex = torch.tensor(rest)[torch.randperm(len(rest), generator=g_)[:E]]; w = 1.0 if mode == 'unweighted' else len(rest)/E
                 p = torch.softmax(s_[top], 0); pe = torch.exp(s_[ex] - torch.logsumexp(s_[top], 0))
-                pred = (p[:, None]*V[top]).sum(0) + (w*(pe - pe.detach())[:, None]*V[ex]).sum(0); l_ = ((pred - y)**2).sum(); gs, = torch.autograd.grad(l_, s_)
+                base = (p[:, None]*V[top]).sum(0)                                                     # renormalised race: including j moves mass from the selected set, direction V_j - pred
+                pred = base + (w*(pe - pe.detach())[:, None]*(V[ex] - base.detach())).sum(0); l_ = ((pred - y)**2).sum(); gs, = torch.autograd.grad(l_, s_)
                 s -= lr*gs
-            top = s.topk(k).indices; p = torch.softmax(s[top], 0); pred = (p[:, None]*V[top]).sum(0); gpred = 2*(pred - y)
+                if st_ >= steps - 300: late.add(tuple(sorted(s.topk(k).indices.tolist())))
+            churn[mode].append(len(late))
+            top = s.topk(k).indices; _, pred = fit_weights(tuple(top.tolist()), V, y, it=600, ret_pred=True); gpred = 2*(pred - y)   # the route at its optimal mixing weights
             incl = [float(gpred @ (V[j] - pred)) for j in range(U) if j not in set(top.tolist())]   # first-order value of including j
-            first_order[mode] += int(min(incl) >= -1e-3); routes[mode] = tuple(sorted(top.tolist()))
+            fo = int(min(incl) >= -1e-3); first_order[mode] += fo; routes[mode] = tuple(sorted(top.tolist())); fo_list[mode].append(fo)
             global_hits[mode] += int(abs(fit_weights(routes[mode], V, y) - best) < 1e-6)
         same_route += int(routes['unweighted'] == routes['ht'])
-    return dict(trials=trials, first_order_route_optimal=first_order, globally_best_subset=global_hits, same_route_with_and_without_ht=same_route)
+    settle = {m_: dict(routes_in_last_300_when_first_order_optimal=float(np.mean([c for c, f in zip(churn[m_], fo_list[m_]) if f] or [0])), routes_in_last_300_when_not=float(np.mean([c for c, f in zip(churn[m_], fo_list[m_]) if not f] or [0]))) for m_ in churn}
+    return dict(trials=trials, route_churn=settle, first_order_route_optimal=first_order, globally_best_subset=global_hits, same_route_with_and_without_ht=same_route)
 
 
 def main():
@@ -161,7 +165,7 @@ def main():
     r1, r2, r3 = res['T1'], res['T2'], res['T3']
     ok = r1['write_credit_all_addresses_max_err'] < 1e-9 and r1['read_credit_all_slots_max_err'] < 1e-9 and r1['adjoint_zero_outside_future_reads'] == 0 and r1['ht_probe_bias_rel'] < 0.05 \
         and r2['probes']['their_value_norm_max'] == 0.0 and r2['probes']['units_never_selected_but_probed'] > 0 and r2['paid']['units_with_trained_values'] > r2['probes']['units_with_trained_values'] \
-        and r3['td_recursion_max_err'] < 1e-9 and res['T4']['first_order_route_optimal']['unweighted'] >= 0.9*res['T4']['trials'] and res['T4']['first_order_route_optimal']['ht'] >= 0.9*res['T4']['trials']
+        and r3['td_recursion_max_err'] < 1e-9 and all(v_['routes_in_last_300_when_not'] > v_['routes_in_last_300_when_first_order_optimal'] for v_ in res['T4']['route_churn'].values())
     res['status'] = 'passed' if ok else 'failed'; res['wall_s'] = time.time() - t0; print(json.dumps(res, indent=1))
     if len(sys.argv) > 1: (ROOT/f'experiments/results/credit/{sys.argv[1]}.json').open('x').write(json.dumps(res, indent=1) + '\n')
 

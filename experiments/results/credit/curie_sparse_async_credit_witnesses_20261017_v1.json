@@ -1,0 +1,57 @@
+{
+ "battle": "R1",
+ "stage": "theory 175 witnesses",
+ "T1": {
+  "write_credit_all_addresses_max_err": 1.7763568394002505e-15,
+  "read_credit_all_slots_max_err": 3.552713678800501e-15,
+  "adjoint_support_fraction": 0.8177083333333334,
+  "adjoint_zero_outside_future_reads": 0.0,
+  "excluded_write_credit_share": 0.9241023512684265,
+  "ht_probe_bias_rel": 0.02544778687294508,
+  "ht_probe_relative_std_per_entry": 2.1243714521676886,
+  "ht_probe_unweighted_scale": 0.18181818181818182
+ },
+ "T2": {
+  "probes": {
+   "units_never_selected_but_probed": 3,
+   "their_value_norm_max": 0.0,
+   "units_with_trained_values": 61
+  },
+  "paid": {
+   "units_never_selected_but_probed": 5,
+   "their_value_norm_max": 0.11473509843704498,
+   "units_with_trained_values": 64
+  }
+ },
+ "T3": {
+  "td_recursion_max_err": 1.1102230246251565e-16,
+  "per_slot_discount_range": [
+   0.03822866677083947,
+   0.4811675365710052
+  ]
+ },
+ "T4": {
+  "trials": 20,
+  "route_churn": {
+   "unweighted": {
+    "routes_in_last_300_when_first_order_optimal": 1.3333333333333333,
+    "routes_in_last_300_when_not": 7.0
+   },
+   "ht": {
+    "routes_in_last_300_when_first_order_optimal": 1.0,
+    "routes_in_last_300_when_not": 10.818181818181818
+   }
+  },
+  "first_order_route_optimal": {
+   "unweighted": 9,
+   "ht": 9
+  },
+  "globally_best_subset": {
+   "unweighted": 14,
+   "ht": 11
+  },
+  "same_route_with_and_without_ht": 9
+ },
+ "status": "passed",
+ "wall_s": 134.96433115005493
+}

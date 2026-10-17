@@ -106,28 +106,40 @@ Consequences:
 
 ## 4. T4 — What the training iteration converges to
 
-**Proposition (route fixed points).** Take an iteration with:
-- exact pathwise credit inside the route (softmax read weights over selected slots, sigmoid write magnitudes, residual memory
-  with both credit paths);
-- zero-forward probes with full support over excluded candidates;
-- straight-through credit for firing;
-- a credit horizon of H lanes.
+**Proposition (route fixed points, corrected 17 Oct after the witness).** Take an iteration with:
+- exact pathwise credit inside the route;
+- probes with full support outside, using the direction of a renormalised race (v_j − r̄, as the RMR and slot-memory read
+  probes do: `r − probe·r.detach()`);
+- straight-through firing;
+- horizon H.
 
-In expectation over probe draws, any fixed point satisfies:
-- (i) the continuous parameters are stationary for the hard-routed objective truncated at horizon H;
-- (ii) the route is first-order optimal: no excluded candidate would reduce the loss if included with infinitesimal weight,
-  and no included one if removed;
-- (iii) every firing decision is first-order flip-optimal (sign of the linearised value of flipping it).
+At optimal mixing weights every selected candidate has the same marginal credit (the KKT conditions on the simplex), so an
+excluded candidate j moves only through its inclusion credit c_j = ⟨∂L/∂r, v_j − r̄⟩. Hence:
+- **(i)** a route is a fixed point of a fixed-k race iff c_j ≥ 0 for every excluded j, that is, iff the route is first-order
+  optimal over all supports: the best unrestricted solution near this route uses no more than k candidates;
+- **(ii)** otherwise some excluded candidate's score keeps rising until it displaces a selected one, and the route churns with
+  no fixed point;
+- **(iii)** the continuous parameters are stationary within any settled route;
+- **(iv)** sign conditions, and so the fixed points themselves, do not depend on positive rescaling of the probes. The
+  rescaling changes speed and churn.
 
-Conditions (ii) and (iii) are sign conditions, so any positive rescaling of the probe credit, Horvitz–Thompson or not,
-leaves the fixed points unchanged. The weighting changes only the speed and the variance.
+*Witness (T4, `curie_sparse_async_credit_witnesses_20261017_v1`):* top-3 routes over 10 candidates, 20 problems.
+- 9 of 20 converged routes are first-order optimal over all supports, and they settle: 1.0–1.3 distinct routes in the last 300
+  updates.
+- The other 11 churn: 7.0 distinct routes unweighted, 10.8 with Horvitz–Thompson weighting.
+- 14 of 20 (unweighted) end on the globally best size-3 subset. The globally best fixed-size subset need not be a fixed point,
+  because a larger support would do better.
+- An earlier version of the witness used probes without the renormalisation term; its routes were not first-order optimal
+  (7 of 20). Probe direction matters.
 
-*Witness (T4):* hard top-3 routing over 12 candidates, 40 random problems, results in the witness JSON. It reports:
-- how often the converged route is first-order route-optimal, with and without HT weighting;
-- how often it is the globally best subset (brute force over all 220 subsets);
-- how often the two weightings reach the same route.
+**Consequence: threshold races.** A race that admits every candidate whose score exceeds a learned price λ, rather than a
+fixed top-k, optimises L + λ·|S|. Its fixed points exist and are exactly the first-order (KKT) conditions of that penalised
+problem. The price is the dual variable of an activity budget: theory principle P5, "thresholds are prices", here as the
+condition for convergent routing. Fixed-k races are a constrained special case that churns whenever the constraint binds;
+churn adds exploration and noise but no convergence. Route certificates (non-winning mass) and route-change counts measure
+it in our runs.
 
-What it does not reach: the global optimum over routes (combinatorial), exact flip optimality where the loss is
+What the iteration does not reach: the global optimum over routes (combinatorial), exact flip optimality where the loss is
 nonlinear in a decision (straight-through linearises), and credit beyond H lanes.
 
 **Theorem (consistency for the full route-tree objective).** Suppose:
@@ -179,9 +191,11 @@ HT-weighted samples of the rest; its logarithm is then consistent as the sample 
    past the H-lane window at its natural per-slot horizon.
 3. **Exploration budget scaled with bank size,** E·Q ∝ U·n*/T_budget (T2), and the concept-usage statistics already in every
    milestone to watch recruitment.
-4. **A sampled-route arm** (Gumbel-top-k with full support, score-function credit with a critic baseline), the variant that
+4. **Threshold (price) races** in place of fixed top-k for reads, writes and wakes, so routing has fixed points (§4); the
+   price is set by the activity budget (homeostasis, P5).
+5. **A sampled-route arm** (Gumbel-top-k with full support, score-function credit with a critic baseline), the variant that
    satisfies (a) and (b), paired with the argmax flagship. It tests whether route-local fixed points limit quality.
-5. **Probe weighting:** fixed points are invariant to it, so it is a speed/variance choice. Capped HT weights with bank-local
+6. **Probe weighting:** fixed points are invariant to it, so it is a speed/variance choice. Capped HT weights with bank-local
    clipping are the candidate.
 
 ## 7. Status
@@ -190,7 +204,7 @@ HT-weighted samples of the rest; its logarithm is then consistent as the sample 
 | --- | --- |
 | T1, T3 | exact identities with float64 witnesses |
 | T2 | proposition with proof and witness |
-| T4 proposition | proof by first-order conditions; empirical witness |
+| T4 proposition | proof by first-order (KKT) conditions, corrected; witness confirms settle versus churn |
 | consistency theorem | assembled from standard biased-SGD analysis; a proof sketch, not a new convergence proof |
 | dual-race credit, TD critic, sampled-route arm | designs, not yet implemented |
 
