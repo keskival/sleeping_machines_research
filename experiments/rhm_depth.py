@@ -129,7 +129,11 @@ def run(H, K, n_train, a, test, ref, seed):
     rng = np.random.default_rng(seed + 1); torch.manual_seed(seed); train = H.sample(n_train, rng); T = a.trees_per_lane; V = H.v + 1
     counts = np.bincount(np.concatenate([train.reshape(-1), np.full(n_train, H.v)]), minlength=V).astype(float); cls, words = word_classes(counts, a.classes, s_max=V)
     cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=4, explore=2, unit_init=0.02, balance=0.01)
-    model = RMR(V, cls, words, cerl, levels=K, dk=a.dk, top_m=a.top_m, chunk=a.chunk, old_decay=0.01 if a.old_decay else 0.0, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race))
+    nat = dict(read_topk=8, read_explore=2, write_explore=2, fire=True, events=True) if a.native else {}   # the native member: sparse reads with probes, async firing, composing event spine, slot level 1
+    if a.native: cerl.update(level1='slots', slots=256, slot_m=4, slot_explore=2, slot_pk=True, slot_read_topk=8)
+    model = RMR(V, cls, words, cerl, levels=K, dk=a.dk, top_m=a.top_m, chunk=a.chunk, old_decay=0.01 if a.old_decay else 0.0, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), **nat)
+    if a.native:
+        for t_ in model.base.tm: t_.CHUNK = min(t_.CHUNK, 64)
     opt = torch.optim.AdamW(param_groups(model, 0.01, True), lr=a.lr, weight_decay=0.01); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=a.steps, pct_start=0.05)
     per = T*(H.n + 1); t0 = time.time(); losses = []
     for step in range(a.steps):                                                                   # epochs over the fixed training trees, a fresh order each pass
@@ -152,7 +156,7 @@ def main():
     A('--Ks', default='1,2,4'); A('--Ns', default='1024,4096,16384,65536'); A('--steps', type=int, default=3000); A('--batch', type=int, default=8); A('--trees-per-lane', type=int, default=8)
     A('--d', type=int, default=64); A('--modes', type=int, default=16); A('--layers', type=int, default=1); A('--dk', type=int, default=32); A('--units', type=int, default=128); A('--classes', type=int, default=3)
     A('--top-m', type=int, default=2); A('--chunk', type=int, default=32); A('--old-decay', type=int, default=0); A('--old-per-target', type=int, default=1); A('--write-race', type=int, default=1)
-    A('--lr', type=float, default=3e-3); A('--n-test', type=int, default=2048)
+    A('--native', type=int, default=1); A('--lr', type=float, default=3e-3); A('--n-test', type=int, default=2048)
     a = ap.parse_args(); torch.set_num_threads(1)
     src = {n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/rhm_depth.py', 'experiments/r1_rmr.py', 'experiments/r1_cerl.py', 'experiments/r1_deep_keyed_lm.py')}
     if a.mode == 'contract':

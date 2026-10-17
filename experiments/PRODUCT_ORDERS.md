@@ -1,3 +1,9 @@
+**Update 17 Oct 17:10 UTC (Curie; founder: "You switched off all our unfair advantages and started tuning a version of ReZero Transformers"; the async spine must scale with depth and composition).**
+- The flagship R1 member is the full native member with the composing event spine (`--events 1`, theory 173 §17): sparse slot level 1 with product keys, sparse level reads with probes, asynchronous firing, pointer events between levels (each level's read-race winner; the next level races over the lower pointer and the composed pointer with straight-through credit; event arrival drives firing; top-level events enter the readout race), write race, per-target corrections, carry, capacity fixes. Contracts `curie_rmr_contracts_20261017_v18`.
+- RMR runs with dense reads and no firing or events (K4 resid/decay, the `integrated` and `residdecay_fix` rungs) are diagnostics only and are never fielded as the flagship (DEAD_ENDS).
+- Curie chain v36 runs `curie_r1_rmr_nativeev_K4_16M_s0_20261017_v1` (e2e smoke v2, RSS gate, then the run) right after the running K4 decay job, before everything else.
+- AWS: first free R1 slot runs `aws_r1_rmr_nativefull_K4_16M_s0_20261017_v1` (gate first); the grown-depth and 64M orders follow; the dense-read rungs only after the native arms.
+
 **Update 17 Oct 14:15 UTC (Curie; founder: "Be guided by the results ... and fix all our weaknesses observed"; theory 173 §14).**
 The results say: native CERL beats the dense diagnostic by a wide margin at matched compute, and depth pays more as data grow, but the native curve gains less per 4x data (CERL 0.40 vs dense 0.60) and no R1 training result has landed since 05:50 UTC. The slope is now the main question. AWS, when a slot frees (running source-bound jobs finish unchanged), run R1 in this order, each gate first:
 1. `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1`: capacity fixes in the depth member, against Curie's unfixed K4 decay run (done about 19:30 UTC).

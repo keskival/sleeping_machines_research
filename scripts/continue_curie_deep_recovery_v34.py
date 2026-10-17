@@ -34,7 +34,7 @@ def after_decay():
         try:
             run_or_await(tag, timeout); market.publish([f'experiments/results/token_language/{tag}.json'], f'R1 CERL with the capacity fixes ({tag.split("_")[4]}): usable capacity and the data slope')
         except Exception as error: print(json.dumps({tag: 'failed', 'error': repr(error)}), flush=True)
-    v33.main_after_decay()
+    v33.main_after_sparse()
 
 
 if __name__ == '__main__':

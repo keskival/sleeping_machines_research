@@ -378,3 +378,18 @@ init (upper ReZero gates 0) and opens with the gates, as in ReZero Transformers;
 from earlier chunks only (training parallelism). Contract (curie_rmr_contracts_20261017_v17): the derivative of level 3's
 corrections with respect to level 2's new- and old-slot corrections is nonzero, and gating level 3 off changes the gradient on
 level 2's corrections (share 12% at the contract's random parameters). CERL-H and the detached local learner (DEAD_ENDS) lacked this path.
+
+## 17. The event spine composes with depth (17 October, founder)
+
+Founder: levels must exchange both memories and events; the async spine must also scale with depth and composition, or it
+degrades until it is removed. Memory composes by addition. Events are pointers in time, so they compose by following
+pointers: level k at t points to slot s (its read-race winner when it fires); level k's event at s points to ptr_k(s). Level
+k+1 races over its own candidates plus ptr_k(t) and the composed pointer ptr_k(ptr_k(t)), so its own pointer can realise a
+two-hop chain; K levels reach chains of length about 2^(K-1), and the depth needed grows with the logarithm of the chain.
+Implementation (`--events 1`, r1_rmr.py): learned bonuses on the two pointed slots (always candidates under sparse reads),
+their ages and the event arrival (the lower attribution moved) in the query, event arrival as a firing input (a silent level
+holds its last pointer: event-driven state), the top level's pointer and composed pointer in the readout's repeat/continue
+race. Credit: straight-through weights (forward 1) carry the upper use of an event back into the lower read race. Zero at init
+equals the member without events (C3). Contracts v18: identity 0.0, normalisation 1 +- 1e-7, causal, train = eval, carry exact,
+nonzero event credit to the lower read keys, composed reach >= pointer reach. Reported per level: event rate, pointer reach,
+composed reach. Durability target (CERL-H dead end): event rate falling with level.

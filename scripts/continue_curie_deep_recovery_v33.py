@@ -42,6 +42,11 @@ def main_after_decay():
             market.publish([f'experiments/results/token_language/{SPARSE}.json', f'experiments/results/token_language/{E2E}.json'], 'R1 sparse native member at 16M (all native mechanisms)')
         else: print(json.dumps({SPARSE: 'skipped', 'reason': f'gate RSS {rss} KB above {RSS_MAX_KB}'}), flush=True)
     except Exception as error: print(json.dumps({SPARSE: 'failed', 'error': repr(error)}), flush=True)
+    main_after_sparse()
+
+
+def main_after_sparse():
+    """PTB resume + validation scoring, then the dense 16M L2 diagnostic."""
     try:
         if not word_done(v22.FIT): stable_host(); original.run(v22.FIT, 21600)
         if not word_done(v22.FIT): raise RuntimeError('PTB fit resume ended without a completed result')
