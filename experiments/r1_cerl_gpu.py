@@ -29,7 +29,7 @@ def main():
     A('--evals', type=int, default=16); A('--log-every', type=int, default=50); A('--checkpoint-every', type=int, default=500); A('--max-steps', type=int, default=0); A('--row-chunk', type=int, default=512)
     A('--data-dir', default=str(ROOT/'data/fineweb_gpt2')); A('--out-dir', default=str(ROOT/'experiments/results/gpu_ladder'))
     A('--model', choices=('cerl', 'rmr'), default='cerl'); A('--levels', type=int, default=4); A('--top-m', type=int, default=4); A('--old-decay', type=float, default=0.01); A('--read-dk', type=int, default=64); A('--read-topk', type=int, default=0)
-    A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
+    A('--old-per-target', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
     a = ap.parse_args(); torch.manual_seed(a.seed); dev = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     if dev.type == 'cpu': torch.set_num_threads(1)
     else: torch.backends.cuda.matmul.allow_tf32 = True
@@ -43,7 +43,7 @@ def main():
     if a.model == 'rmr':                                                                          # residual-memory depth (theory 172) over the CERL readout
         from r1_rmr import RMR
         model = RMR(50257, cls, words, dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance),
-                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay).to(dev)
+                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay, old_per_target=bool(a.old_per_target)).to(dev)
     else:
         model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance).to(dev)
     params = sum(p.numel() for p in model.parameters())

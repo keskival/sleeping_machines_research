@@ -52,6 +52,9 @@ Our purpose is to win: build the strongest model family and achieve material, re
   pile): `experiments.csv` lists every result file (date, family, battle, status, tag, headline metrics) and the curated
   question ledgers (e.g. `LANGUAGE_DEPTH_COMPOSITION_LEDGER.md`) record what was tried, what it showed and what remains open.
   Rerun `scripts/build_experiment_index.py` after publishing results and update the relevant ledger.
+- Read `experiments/index/DEAD_ENDS.md` before designing or queueing any model change (founder, 17 Oct 2026: mark what cannot
+  work so future agents do not go down those paths). Do not rerun a DEAD construction or cite a CONFOUNDED result; reopen an
+  entry only by removing its stated cause. Add an entry whenever a construction fails for a structural reason.
 - Before launching training, inspect the existing queue, result files, report,
   host memory, running jobs, and GPU occupancy. Reuse an existing benchmark
   configuration when possible; prioritize the deferred large Transformer

@@ -4,9 +4,11 @@
 1. AdamW weight decay on every tensor. Decoupled decay over a 16M run pulls the power-law age slope from 1.5 toward 1.29 (the non-integrable side), triples the old-slot decay rate, shrinks ReZero gates and biases, and erodes the dormant concept tables. Fixed: `--wd-groups 1` decays matrices only.
 2. Concept-bank collapse: 124 of 1,024 units used. Zero-initialised unit vectors make every unit the same word law, so keys get no differential credit, and nothing balances traffic. Fixed: `--unit-init 0.02` and `--balance 0.01` (Switch term, auxiliary objective only).
 3. Training lanes are 256 tokens, but scoring uses 1,024 and 8,192. This is the root cause of the long-lane regression. Test: `--lane 1024 --batch 1` (1.8x time per token, 2.0 GB).
-4. Open: one δold vector is written to all m read slots (per-target corrections would let a level refine each old slot differently).
+4. Fixed: one δold vector was written to all m read slots. `--old-per-target 1` now gives each refined slot its own correction (contracts v5).
 5. Open: the AWS local learner's depth mixture detaches lower messages, so producers get no credit, and it runs at about 29 tokens/s. Its producer-credit repair is running.
-6. CERL-H: level-2 attribution changes 79% of the time, so it is not durable. Superseded by RMR.
+6. CERL-H: level-2 attribution changes 79% of the time, so it is not durable. Marked DEAD as built; superseded by RMR.
+
+Dead ends and broken constructions are registered in `experiments/index/DEAD_ENDS.md` (AGENTS.md: read it before designing). The third AWS arm is `aws_r1_rmr_residdecay_pertargetfix_K4_16M_s0_20261017_v1`.
 
 Contract `curie_review_fix_contracts_20261017_v1`: defaults reproduce the earlier runs bit for bit. AWS queues: `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1` and `aws_r1_rmr_residdecay_lane1024fix_K4_16M_s0_20261017_v1`, each against Curie's unfixed K4 residdecay run.
 

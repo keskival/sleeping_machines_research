@@ -125,7 +125,8 @@ if __name__ == '__main__':
     ap.add_argument('--act-cost', type=float, default=0.0); ap.add_argument('--hard-fire-eval', type=int, default=0); extra, rest = ap.parse_known_args()
     orig = R.RMR
     class Bound(RMR2):
-        def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True):
+        def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False):
+            assert old_decay == 0 and not old_per_target, 'RMR-2 implements neither old-slot decay nor per-target corrections'
             super().__init__(V, cls, words, cerl, levels, dk, top_m, chunk, read_topk, extra.standing, extra.standing_m, extra.act_cost, bool(extra.hard_fire_eval))
     R.RMR = Bound; R.STAGE = f'native residual-memory race model with firing clocks and standing slots (RMR-2, theory 172 sections 9-10; standing {extra.standing}, act_cost {extra.act_cost}), one pass'; sys.argv = [sys.argv[0]] + rest
     R.main()

@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""R1 compositional hierarchy of causal event races (CERL-H; theory/169 section 8).
+"""DEAD END as built (experiments/index/DEAD_ENDS.md): level-1 attribution events are not durable (79% change rate, rho ~0.8),
+so the upper race sees no slower or more abstract stream. Do not scale; depth goes through residual memory (r1_rmr.py).
+
+R1 compositional hierarchy of causal event races (CERL-H; theory/169 section 8).
 
 Level 1 is the causal event race over tokens (r1_cerl.CERL). Its posterior attributes every observed token to one cause:
 a woken concept unit u, the background route, an episodic repeat or an episodic continuation. The stream of attributed
