@@ -55,7 +55,7 @@ def param_groups(model, wd, groups=False):
 
 
 # flags added after a run started, at their default (= the run's actual behaviour); resumes stay exact
-LATER_FLAG_DEFAULTS = dict(wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0)
+LATER_FLAG_DEFAULTS = dict(wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0)
 
 
 def same_run(saved, ident):

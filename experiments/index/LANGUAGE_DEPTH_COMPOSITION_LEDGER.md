@@ -93,6 +93,9 @@ Update this ledger whenever a language depth/composition result completes.
 ## H5. Native level 1 (theory 173 §8), 17 October
 - Sparse addressed slots (4,096; 4 written per token; learned clocks; bounded race read; write probes) replace the linear recurrence: `--level1 slots`. AWS: `aws_r1_rmr_nativeL1_K4_16M_s0_20261017_v1` against the integrated arm (identical except level 1), and `aws_r1_rmr_residdecay_pk65536fix_K4_16M_s0_20261017_v1` (capacity with a usable bank). The e2e smoke `aws_r1_rmr_native_e2e_smoke_20261017_v1` gates both.
 
+## H6. Full native member (theory 173 §9), 17 October
+- Firing clocks with carry inside RMR-1, full writer-input credit, `--old-norm` held, GPU driver carry/slots/firing. AWS: `aws_r1_rmr_nativefull_K4_16M_s0_20261017_v1` after the native-L1 arm; the e2e smoke v2 gates all native arms.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).

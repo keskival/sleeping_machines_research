@@ -194,3 +194,28 @@ version-bound VJP is an alternative to silently equating stopped credit with the
 
 The independent [17 October architecture review](ARCHITECTURE_REVIEW_20261017.md) gives three
 passed numerical failure witnesses and the completed negative reciprocal-policy result.
+
+## 9. Fourth round, 17 October (Curie, responding to the AWS review)
+
+- **Writer input credit, fixed.** `RMR.slot_values` now returns refined target values with full first-order credit. Writes before the chunk accumulate per slot at the chunk start (the decay factorises), and writes inside the chunk use an explicit address match, so memory is O(T d), not the one-hot O(R m T m′). Contract: equals the one-hot `corr_values` reference in values (4.8e-7) and in all gradients (3.8e-6). The stop-gradient approximation is removed.
+- **Firing clocks with carry** (`--fire 1`, `--act-cost`): RMR-2's asynchronous mechanism inside RMR-1.
+  - Level k fires at t from its events in (current slot, size of the correction below, the lower level's firing).
+  - It is hard in training and evaluation; straight-through credit is the first-order value of firing, because the correction is computed anyway in the reference execution.
+  - Contracts: identity at init, normalisation, causality, training forward = evaluation forward (3e-6), carry exact.
+  - Standing slots are subsumed by the native slot level 1.
+- **Evidence-weighted old corrections** (`--old-norm 1`): a slot's old corrections read as their decayed weighted mean, which stays bounded as β → 0 (AWS review P2).
+  - It is exact in every path: reads, write race, readout pointers and writer slot values (brute-force algebra 4.8e-7; whole-member normalisation, causality and carry contracts).
+  - Held until the K4 decay run's long-lane result shows whether accumulation remains a defect.
+- **GPU path:**
+  - carried memory: contiguous overlapping lanes from the loader (unit-tested), carry in the checkpoint, carried final scoring;
+  - slot level 1 and firing flags;
+  - slot memory forced to fp32 under autocast (chunk factors span e^±63; its mass is a cumsum); matches fp32 exactly.
+- **AWS's formal qualifications are accepted:**
+  - new information is neither necessary nor sufficient for C4 (the bilinear counterexample);
+  - C3 is an initialisation statement, not convergence;
+  - failed argmax composition does not mean races cannot compose through values, posterior features or generated events.
+
+Still open:
+- a sparse reads arm (`--read-topk`) at 16M;
+- event-driven sparse execution (wall-time savings from firing and slot sparsity);
+- AWS's own P1 items in the native local learner: direct producer-input edges, nonlinear alternative returns, and the critic's moving feature coordinates.

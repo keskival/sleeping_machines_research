@@ -154,11 +154,12 @@ class FastDeepKeyedLM(nn.Module):
 # ---------------------------------------------------------------- data
 class Lanes:
     """The first n lanes of `lane` tokens across fineweb_train_*.bin shards (name order, each shard from offset 0)."""
-    def __init__(self, data_dir, lane, n):
-        self.lane, self.shards, self.index = lane, [], []
+    def __init__(self, data_dir, lane, n, stride=None):
+        """stride < lane gives overlapping lanes (stride = lane - 1: consecutive lanes form one contiguous input stream, for carried memory)."""
+        self.lane, self.shards, self.index = lane, [], []; self.stride = stride or lane
         for p in sorted(glob.glob(str(Path(data_dir)/'fineweb_train_*.bin'))):
             hdr = np.fromfile(p, dtype=np.int32, count=256); assert hdr[0] == 20240520, p
-            mm = np.memmap(p, dtype=np.uint16, mode='r', offset=1024, shape=(int(hdr[2]),)); k = len(mm)//lane
+            mm = np.memmap(p, dtype=np.uint16, mode='r', offset=1024, shape=(int(hdr[2]),)); k = (len(mm) - lane)//self.stride + 1
             self.shards.append(mm); self.index.append(k)
             if sum(self.index) >= n: break
         self.cum = np.cumsum([0] + self.index); assert self.cum[-1] >= n, f'need {n} lanes, shards hold {self.cum[-1]}: download more shards'
@@ -167,7 +168,7 @@ class Lanes:
     def get(self, ids):
         out = np.empty((len(ids), self.lane), dtype=np.int64)
         for r, i in enumerate(ids):
-            s = int(np.searchsorted(self.cum, i, side='right') - 1); o = (int(i) - int(self.cum[s]))*self.lane; out[r] = self.shards[s][o:o + self.lane]
+            s = int(np.searchsorted(self.cum, i, side='right') - 1); o = (int(i) - int(self.cum[s]))*self.stride; out[r] = self.shards[s][o:o + self.lane]
         return out
 
 

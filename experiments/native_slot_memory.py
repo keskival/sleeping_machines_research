@@ -53,6 +53,9 @@ class SlotMemory(nn.Module):
         return w
 
     def forward(self, u, state0=None):
+        if torch.is_autocast_enabled(u.device.type):                                             # fp32 under autocast: chunk factors span e^{+-63} and the mass is a long cumsum
+            with torch.autocast(u.device.type, enabled=False):
+                return self.forward(u.float(), None if state0 is None else tuple(t_.float() for t_ in state0))
         B, L, d = u.shape; S = self.S; dv = u.device
         w = self.writes(u); v = self.val(u)
         a = torch.softmax(torch.cat([(self.rq(u) @ self.rkey.T)/math.sqrt(self.dk), self.null.expand(B, L, 1)], -1), -1)[..., :S]

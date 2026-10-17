@@ -35,11 +35,14 @@ class CorrectionLevel(nn.Module):
         return F.softplus(self.log_beta) if self.old_decay > 0 else None
 
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
-    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0):
+    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False):
         super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero
         self.old_decay, self.per_target = old_decay, per_target and top_m > 0
         self.write_race, self.write_explore = write_race and top_m > 0, write_explore if top_m > 0 else 0
         assert not (self.write_explore and not self.write_race), 'write probes credit an address score: use --write-race 1 (probes on read weights would bend reads toward write targets)'
+        self.fire = fire
+        if fire:                                                                                   # firing clock (RMR-2, now with carry): the level acts at t only when its clock fires
+            self.fire_lin = nn.Linear(d + 2, 1); nn.init.zeros_(self.fire_lin.weight); nn.init.constant_(self.fire_lin.bias, 2.0)
         if self.write_race:                                                                        # separate write-address race (own keys): where to refine is not where to read
             self.qw, self.kw = nn.Linear(d, dk), nn.Linear(d, dk, bias=False)
         if self.per_target:                                                                        # per-target old-slot corrections: delta_old(tau, i) also reads the value of the slot it refines
@@ -57,9 +60,9 @@ class CorrectionLevel(nn.Module):
 class RMR(nn.Module):
     cause_msgs = False
 
-    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0):
-        super().__init__(); self.base = CERL(V, cls, words, **cerl); d = cerl['d']; self.d = d; self.chunk = chunk
-        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore) for _ in range(levels - 1)); self.aux = None; self._px = None
+    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0, fire=False, act_cost=0.0, old_norm=False):
+        super().__init__(); self.base = CERL(V, cls, words, **cerl); d = cerl['d']; self.d = d; self.chunk = chunk; self.act_cost = act_cost; self.old_norm = old_norm
+        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire) for _ in range(levels - 1)); self.aux = None; self._px = None
 
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
     @staticmethod
@@ -79,10 +82,16 @@ class RMR(nn.Module):
             return RMR._corr_scores(qv.float(), [tuple(t_.float() if torch.is_tensor(t_) and t_.is_floating_point() else t_ for t_ in wr_) for wr_ in writes], t_rows, kmap)
 
     @staticmethod
+    def slot_mass(idx, w, aw):
+        """Accumulated write mass M[t, s] = sum_{tau, i: idx = s} aw[t, tau] w[tau, i]  ->  [B, R, T] (for evidence-weighted old corrections)."""
+        B, T, m = idx.shape; R = aw.shape[0]
+        return torch.zeros(B, R, T, device=w.device, dtype=w.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), (aw[None, :, :, None]*w[:, None]).reshape(B, R, T*m))
+
+    @staticmethod
     def _corr_scores(qv, writes, t_rows, kmap):
         out = 0.0
         for wr_ in writes:
-            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None
+            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None; nrm = len(wr_) > 4 and wr_[4]
             B, T, m = idx.shape; R = qv.shape[1]
             if dold.dim() == 4:                                                                    # per-target corrections dold [B, T, m, d]: one projection per written (tau, i)
                 proj = (qv @ kmap(dold.reshape(B, T*m, -1)).transpose(1, 2)).reshape(B, R, T, m)
@@ -91,7 +100,8 @@ class RMR(nn.Module):
                 proj = qv @ kmap(dold).transpose(1, 2)                                             # [B, R, T(tau)]
                 proj = proj*RMR.age_weight(T, t_rows, beta, proj.dtype)
                 src = (proj[..., None]*w[:, None]).reshape(B, R, T*m)
-            out = out + torch.zeros(B, R, T, device=qv.device, dtype=proj.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), src)
+            e = torch.zeros(B, R, T, device=qv.device, dtype=proj.dtype).scatter_add(2, idx.reshape(B, 1, T*m).expand(-1, R, -1), src)
+            out = out + (e/(1 + RMR.slot_mass(idx, w, RMR.age_weight(T, t_rows, beta, proj.dtype))) if nrm else e)   # --old-norm: a slot's old corrections read as their weighted mean
         return out
 
     @staticmethod
@@ -104,9 +114,10 @@ class RMR(nn.Module):
     def _corr_values(a, writes, t_rows):
         out = 0.0
         for wr_ in writes:
-            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None
+            dold, idx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None; nrm = len(wr_) > 4 and wr_[4]
             B, T, m = idx.shape; R = a.shape[1]
-            c = a.gather(2, idx.reshape(B, 1, T*m).expand(-1, R, -1)).reshape(B, R, T, m)*w[:, None]   # [B, R, T(tau), m]
+            ae = a/(1 + RMR.slot_mass(idx, w, RMR.age_weight(T, t_rows, beta, a.dtype))) if nrm else a
+            c = ae.gather(2, idx.reshape(B, 1, T*m).expand(-1, R, -1)).reshape(B, R, T, m)*w[:, None]   # [B, R, T(tau), m]
             if dold.dim() == 4:
                 out = out + (c*RMR.age_weight(T, t_rows, beta, c.dtype)[None, :, :, None]).reshape(B, R, T*m) @ dold.reshape(B, T*m, -1)
             else:
@@ -120,10 +131,11 @@ class RMR(nn.Module):
         addressable slots. Positions [0, P) are the prefix, [P, T) this lane; only this lane's rows are computed."""
         A = self.base.states(x, tm_state=None if prefix is None else prefix['tm']); P = 0
         if prefix is not None: P = prefix['A'].shape[1]; A = torch.cat([prefix['A'], A], 1)
-        B, T, d = A.shape; dv = A.device; new_total = A; writes = []; stats = []; self._lev_own = []
+        B, T, d = A.shape; dv = A.device; new_total = A; writes = []; stats = []; self._lev_own = []; acts = []
+        prev_corr = torch.zeros(B, T, device=dv, dtype=A.dtype); prev_fire = torch.ones(B, T, device=dv, dtype=A.dtype)   # level 1 fires on every event
         for li, lev in enumerate(self.levels):
             E = lev.write_explore if self.training else 0; m_ = max(1, lev.top_m) + E; own_new = torch.zeros_like(A); own_dold = A.new_zeros(B, T, m_, d) if lev.per_target else torch.zeros_like(A)
-            own_idx = torch.zeros(B, T, m_, dtype=torch.long, device=dv); own_w = torch.zeros(B, T, m_, device=dv)
+            own_idx = torch.zeros(B, T, m_, dtype=torch.long, device=dv); own_w = torch.zeros(B, T, m_, device=dv); own_phi = torch.ones(B, T, device=dv, dtype=A.dtype)
             if P:
                 pn, pd, pi, pw = prefix['levels'][li]; k_ = pi.shape[-1]
                 own_new[:, :P] = pn; own_idx[:, :P, :k_] = pi; own_w[:, :P, :k_] = pw
@@ -135,7 +147,7 @@ class RMR(nn.Module):
                 base_prime = new_total + own_new*prev[None, :, None]                               # slot values from new-slot corrections
                 cur = new_total[:, c0:c1]                                                          # current slot under M^(<k) (own write at t not yet made)
                 pv = prev.view(1, T, *([1]*(own_dold.dim() - 2)))
-                wr = writes + ([(own_dold*pv, own_idx, own_w, lev.beta())] if lev.top_m else [])
+                wr = writes + ([(own_dold*pv, own_idx, own_w, lev.beta(), self.old_norm)] if lev.top_m else [])
                 u = lev.nq(cur); q = lev.q(u)                                                      # [B, R, dk]
                 S = (q @ lev.k(base_prime).transpose(1, 2) + self.corr_scores(q, wr, rows, lev.k))/math.sqrt(lev.dk)
                 dist = (rows[:, None] - torch.arange(T, device=dv)[None, :]).to(A.dtype)
@@ -168,22 +180,50 @@ class RMR(nn.Module):
                         if idx_sel.shape[-1] < m_: dold = F.pad(dold, (0, 0, 0, m_ - idx_sel.shape[-1]))
                 if lev.rezero: dnew, dold = lev.alpha_new*dnew, lev.alpha_old*torch.tanh(dold)       # old-slot corrections bounded: they refine keys other readers rely on
                 elif lev.per_target: dold = torch.tanh(dold)
+                if lev.fire:                                                                       # events in (current slot, size of the correction below, its firing) -> fire or stay silent
+                    ph = torch.sigmoid(lev.fire_lin(torch.cat([u, prev_corr[:, c0:c1, None], prev_fire[:, c0:c1, None]], -1))).squeeze(-1)
+                    hard = (ph > 0.5).to(ph.dtype); phi = hard + ph - ph.detach() if self.training else hard   # hard in training and evaluation; straight-through credit = value of firing
+                    dnew = phi[..., None]*dnew; dold = phi.view(*phi.shape, *([1]*(dold.dim() - 2)))*dold; own_phi = own_phi.index_copy(1, rows, phi); acts.append(ph)
                 own_new = own_new.index_copy(1, rows, dnew); own_dold = own_dold.index_copy(1, rows, dold)
-            new_total = new_total + own_new; writes = writes + ([(own_dold, own_idx, own_w, lev.beta())] if lev.top_m else [])
-            stats.append(dict(new_norm=float(own_new[:, P:].detach().norm(dim=-1).mean()), old_norm=float(own_dold[:, P:].detach().norm(dim=-1).mean())))
+            new_total = new_total + own_new; writes = writes + ([(own_dold, own_idx, own_w, lev.beta(), self.old_norm)] if lev.top_m else [])
+            prev_corr = own_new.norm(dim=-1); prev_fire = own_phi
+            stats.append(dict(new_norm=float(own_new[:, P:].detach().norm(dim=-1).mean()), old_norm=float(own_dold[:, P:].detach().norm(dim=-1).mean()),
+                              **({'fire_rate': float(own_phi[:, P:].detach().mean())} if lev.fire else {})))
             self._lev_own.append((own_new, own_dold, own_idx, own_w))
-        self._A, self._P = A, P
+        self._A, self._P = A, P; self._act = torch.cat([a_.reshape(-1) for a_ in acts]).mean() if acts else None
         return new_total, writes, stats
 
     def slot_values(self, base_prime, wr, idx, rows):
-        """Refined values V_s(t) of slots idx [B, R, m] at rows t: base' plus all old-slot corrections visible at t (one-hot reads
-        through corr_values, so the algebra is the contracted one)."""
+        """Refined values V_s(t) of slots idx [B, R, m] at rows t (one chunk, rows contiguous): base' plus every old-slot correction
+        visible at t, with full credit (AWS review 17 Oct: the earlier no_grad form dropped a first-order writer-input path).
+        Exact and cheap: writes before the chunk are accumulated per slot at the chunk start (decay factorises:
+        e^{-b(t - tau)} = e^{-b(t - c0)} e^{-b(c0 - tau)}; O(T d) per write list), writes inside the chunk by an explicit
+        [R, m] x [R, m'] address match (tau <= t)."""
+        B, R, m = idx.shape; T, d = base_prime.shape[1:]; c0 = int(rows[0]); dv = idx.device; dt = base_prime.dtype
+        v = base_prime.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, d)).reshape(B, R, m, d)
+        tt = (rows - c0).to(dt)
+        for wr_ in wr:
+            dold, widx, w = wr_[:3]; beta = wr_[3] if len(wr_) > 3 else None; nrm = len(wr_) > 4 and wr_[4]; m2 = widx.shape[-1]
+            D = dold if dold.dim() == 4 else dold[:, :, None, :].expand(-1, -1, m2, -1)              # [B, T, m', d]
+            corr = 0.0; mass = 0.0; dec = 1.0 if beta is None else torch.exp(-beta*tt)[None, :, None]
+            if c0 > 0:                                                                             # writes at tau < c0, accumulated per slot at c0
+                f = w[:, :c0] if beta is None else w[:, :c0]*torch.exp(-beta*(c0 - torch.arange(c0, device=dv).to(dt)))[None, :, None]
+                acc = torch.zeros(B, T, d, device=dv, dtype=dt).scatter_add(1, widx[:, :c0].reshape(B, -1, 1).expand(-1, -1, d), (f[..., None]*D[:, :c0]).reshape(B, -1, d))
+                corr = acc.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, d)).reshape(B, R, m, d)*(dec[..., None] if beta is not None else 1.0)
+                if nrm: mass = torch.zeros(B, T, device=dv, dtype=dt).scatter_add(1, widx[:, :c0].reshape(B, -1), f.reshape(B, -1)).gather(1, idx.reshape(B, -1)).reshape(B, R, m)*dec
+            hit = (idx[:, :, :, None, None] == widx[:, None, None, c0:c0 + R, :]).to(dt)          # [B, R(t), m, R(tau), m']
+            lag = tt[:, None] - tt[None, :]; k = (lag >= 0).to(dt) if beta is None else (lag >= 0).to(dt)*torch.exp(-beta*lag.clamp_min(0))
+            coef = hit*k[None, :, None, :, None]*w[:, None, None, c0:c0 + R, :]
+            corr = corr + torch.einsum('btmun,bund->btmd', coef, D[:, c0:c0 + R])
+            v = v + (corr/(1 + mass + coef.sum((-1, -2)))[..., None] if nrm else corr)
+        return v
+
+    def slot_values_onehot(self, base_prime, wr, idx, rows):
+        """Reference: the same values through the contracted corr_values algebra (one-hot reads; O(R m T m') memory)."""
         B, R, m = idx.shape; T = base_prime.shape[1]
         oh = torch.zeros(B, R*m, T, device=idx.device, dtype=base_prime.dtype).scatter_(2, idx.reshape(B, R*m, 1), 1.0)
-        with torch.no_grad():                                                                      # the old-correction part informs the writer without a second-order credit path
-            corr = self.corr_values(oh, wr, rows.repeat_interleave(m)).to(base_prime.dtype)          # (saves O(R m T m) autograd storage per chunk); base' keeps full credit
-        v = base_prime.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, base_prime.shape[-1])) + corr
-        return v.reshape(B, R, m, -1)
+        corr = self.corr_values(oh, wr, rows.repeat_interleave(m)).to(base_prime.dtype)
+        return (base_prime.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, base_prime.shape[-1])) + corr).reshape(B, R, m, -1)
 
     def carry_out(self, keep):
         """Persistent memory for the next lane: the last `keep` slots (all levels' corrections, detached; credit stays within a
@@ -208,6 +248,8 @@ class RMR(nn.Module):
                   S_cont_add=self.corr_scores(m.q_cont(hq), wr, t_rows, lambda z: z @ m.k_cont.weight.T)[:, :, :r1]/math.sqrt(m.dk)) if writes else None
         nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont = m.race(x, y, new_total, r0, r1, self.training and m.explore > 0, td=td)
         self.aux = m.aux
+        if self.training and self.act_cost and self._act is not None:                               # activity cost: firing must pay for itself (hard-firing work is what is counted)
+            self.aux = (self.aux if self.aux is not None else 0.0) + self.act_cost*self._act
         if not stats: return nll
         with torch.no_grad():
             post = torch.softmax(parts, -1); K = s_sel.shape[-1]
@@ -224,14 +266,14 @@ def lanes_nll_carry(model, block, row_chunk, keep, stats=False, adjacent=False):
     carried memory (last `keep` slots and the level-1 temporal state). Same targets as lanes_nll; more history. adjacent=True:
     lanes are back-to-back rows of the stream (lane i's last token is only a target), so that token is fed as one extra
     unscored input to keep the carried input stream contiguous; overlapping windows (flagship) need nothing."""
-    model.eval(); tot = n = 0.0; acc = {}; pf = None
-    with torch.no_grad():
+    model.eval(); tot = n = 0.0; acc = {}; pf = None; dev = next(model.parameters()).device
+    with torch.no_grad(), torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'):
         for i in range(len(block)):
             row = block[i] if not (adjacent and i) else np.concatenate([block[i - 1][-1:], block[i]]); s0 = 1 if (adjacent and i) else 0
-            w = torch.from_numpy(row[None].astype(np.int64)); x, y = w[:, :-1], w[:, 1:]; L = x.shape[1]
+            w = torch.from_numpy(row[None].astype(np.int64)).to(dev); x, y = w[:, :-1], w[:, 1:]; L = x.shape[1]
             for r0 in range(s0, L, row_chunk):
                 out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats, prefix=pf); nll, st = (out if stats else (out, {}))
-                tot += nll.sum().item(); n += nll.numel()
+                tot += nll.float().sum().item(); n += nll.numel()
                 for k, v in st.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
             pf = model.carry_out(keep)
     r = dict(nll=tot/n, targets=int(n), carry_keep=keep)
@@ -272,6 +314,10 @@ def contracts():
     Vp = torch.stack([torch.zeros(B_, T_, d_).scatter_add(1, idx[:, :t + 1].reshape(B_, -1, 1).expand(-1, -1, d_), (w_[:, :t + 1, :, None]*dpt[:, :t + 1]*torch.exp(-beta*(t - torch.arange(t + 1)))[None, :, None, None]).reshape(B_, -1, d_)) for t in range(T_)], 1)
     res['algebra_per_target_max_diff'] = max(float((RMR.corr_scores(q_, [(dpt, idx, w_, beta)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vp)).abs().max()),
                                              float((RMR.corr_values(a_, [(dpt, idx, w_, beta)], rows_) - torch.einsum('bts,btsd->btd', a_, Vp)).abs().max()))
+    Mp = torch.stack([torch.zeros(B_, T_).scatter_add(1, idx[:, :t + 1].reshape(B_, -1), (w_[:, :t + 1]*torch.exp(-beta*(t - torch.arange(t + 1)))[None, :, None]).reshape(B_, -1)) for t in range(T_)], 1)   # [B, t, s]
+    Vn = Vp/(1 + Mp[..., None])
+    res['algebra_norm_max_diff'] = max(float((RMR.corr_scores(q_, [(dpt, idx, w_, beta, True)], rows_, lambda z: z @ Km.T) - torch.einsum('btk,kd,btsd->bts', q_, Km, Vn)).abs().max()),
+                                       float((RMR.corr_values(a_, [(dpt, idx, w_, beta, True)], rows_) - torch.einsum('bts,btsd->btd', a_, Vn)).abs().max()))
     torch.manual_seed(0); mp = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True); mp.eval()
     with torch.no_grad():
         res['per_target_zero_corrections_equal_cerl'] = float((mp.lane_nll(x.clone(), y) - mp.base.lane_nll(x, y)).abs().max())
@@ -312,6 +358,40 @@ def contracts():
         res['carry_window_finite'] = bool(torch.isfinite(l3).all())
         z = torch.randint(0, 8, (1, 82)); full_z = mw.lane_nll(z[:, :-1], z[:, 1:])[0]               # adjacent-lane protocol: carried scoring == one stream on the same targets
         res['carry_adjacent_protocol'] = abs(lanes_nll_carry(mw, z[0].numpy().reshape(2, 41), 16, 64, adjacent=True)['nll'] - float(torch.cat([full_z[:40], full_z[41:]]).mean()))
+    # writer slot values: chunk-start accumulation + in-chunk match == one-hot corr_values algebra, values and full gradients
+    g2 = torch.Generator().manual_seed(7); Bv, Tv, dv_, mv = 2, 24, 6, 3
+    bp = torch.randn(Bv, Tv, dv_, generator=g2, requires_grad=True); dpt2 = torch.randn(Bv, Tv, mv, dv_, generator=g2, requires_grad=True); dsh = torch.randn(Bv, Tv, dv_, generator=g2, requires_grad=True)
+    wi = torch.randint(0, Tv, (Bv, Tv, mv), generator=g2); ww = torch.rand(Bv, Tv, mv, generator=g2, requires_grad=True); bt = torch.tensor(0.2, requires_grad=True)
+    rr = torch.arange(16, 24); tidx = torch.randint(0, Tv, (Bv, 8, 2), generator=g2); res['writer_values_fast_equals_onehot'] = res['writer_grads_fast_equals_onehot'] = 0.0
+    for nrm in (False, True):
+        wrs = [(dpt2, wi, ww, bt, nrm), (dsh, wi.flip(1), ww, None, nrm)]
+        fa, fb = mw.slot_values(bp, wrs, tidx, rr), mw.slot_values_onehot(bp, wrs, tidx, rr)
+        ga = torch.autograd.grad(fa.sum(), (bp, dpt2, dsh, ww, bt)); gb = torch.autograd.grad(fb.sum(), (bp, dpt2, dsh, ww, bt))
+        res['writer_values_fast_equals_onehot'] = max(res['writer_values_fast_equals_onehot'], float((fa - fb).abs().max()))
+        res['writer_grads_fast_equals_onehot'] = max(res['writer_grads_fast_equals_onehot'], max(float((x_ - y_).abs().max()) for x_, y_ in zip(ga, gb)))
+    ok_v = res['algebra_norm_max_diff'] < 1e-4 and res['writer_values_fast_equals_onehot'] < 1e-5 and res['writer_grads_fast_equals_onehot'] < 1e-4
+    # firing clocks: zero corrections = CERL; normalised; causal; training forward (straight-through) == hard evaluation; carry exact
+    torch.manual_seed(0); mf = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, write_explore=0, fire=True); mf.eval()
+    with torch.no_grad():
+        res['fire_zero_corrections_equal_cerl'] = float((mf.lane_nll(x.clone(), y) - mf.base.lane_nll(x, y)).abs().max())
+        for p_ in mf.parameters(): p_.add_(torch.randn_like(p_)*0.3)
+        ff = mf.lane_nll(x.clone(), y); res['fire_normalisation_sum'] = sum(math.exp(-mf.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        res['fire_causal_prefix_max_diff'] = float((mf.lane_nll(x2, y2)[0, :p - 1] - ff[0, :p - 1]).abs().max())
+        mf.train(); fft = mf.lane_nll(x.clone(), y); mf.eval(); res['fire_train_equals_eval'] = float((fft - ff).abs().max())
+        res['fire_rates'] = [s_['fire_rate'] for s_ in mf._mem[2]]
+        full2 = mf.lane_nll(xa, ya); l1 = mf.lane_nll(xa[:, :40], ya[:, :40]); pf = mf.carry_out(40); l2 = mf.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
+        res['fire_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
+    ok_f = res['fire_zero_corrections_equal_cerl'] < 1e-5 and abs(res['fire_normalisation_sum'] - 1) < 1e-4 and res['fire_causal_prefix_max_diff'] < 1e-5 and res['fire_train_equals_eval'] < 1e-5 \
+        and res['fire_carry_equals_long_lane'] < 1e-4 and 0 < min(res['fire_rates']) <= max(res['fire_rates']) <= 1
+    # evidence-weighted old corrections through the whole member: exact law, causal, carry
+    torch.manual_seed(0); mn = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, old_norm=True); mn.eval()
+    with torch.no_grad():
+        for p_ in mn.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        fn = mn.lane_nll(x.clone(), y); res['norm_normalisation_sum'] = sum(math.exp(-mn.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        res['norm_causal_prefix_max_diff'] = float((mn.lane_nll(x2, y2)[0, :p - 1] - fn[0, :p - 1]).abs().max())
+        full2 = mn.lane_nll(xa, ya); l1 = mn.lane_nll(xa[:, :40], ya[:, :40]); pf = mn.carry_out(40); l2 = mn.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
+        res['norm_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
+    ok_n = abs(res['norm_normalisation_sum'] - 1) < 1e-4 and res['norm_causal_prefix_max_diff'] < 1e-5 and res['norm_carry_equals_long_lane'] < 1e-4
     # native level 1 (sparse addressed slots): exact law and persistent memory through the whole member
     torch.manual_seed(0); ms = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3), levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, write_explore=2); ms.eval()
     for t_ in ms.base.tm: t_.CHUNK = 8
@@ -323,7 +403,7 @@ def contracts():
         full2 = ms.lane_nll(xa, ya); l1 = ms.lane_nll(xa[:, :40], ya[:, :40]); pf = ms.carry_out(40); l2 = ms.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
         res['slots_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
     ok_s = res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
-    ok = ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
+    ok = ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
     ok = ok and res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
@@ -342,7 +422,7 @@ def main():
     A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
-    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
+    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -359,7 +439,7 @@ def main():
         n_lanes = (a.train_tokens - 1)//(a.lane - 1)                                               # stream (non-overlapping rows drop each lane's last token from the inputs)
         train = np.asarray(train_all[:n_lanes*(a.lane - 1) + 1]).astype(np.int64)[np.arange(n_lanes)[:, None]*(a.lane - 1) + np.arange(a.lane)[None, :]]
     cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore)
-    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore); params = sum(p.numel() for p in model.parameters())
+    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     if a.carry:                                                                                    # persistent memory: batch row b walks its own contiguous stream of lanes (one pass, every lane once)
         per = n_lanes//a.batch; total = per; quarter = math.ceil(total/4)
