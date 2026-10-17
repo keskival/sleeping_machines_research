@@ -1,0 +1,149 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v2/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v2.txt",
+        "queue_sha256": "b091f480bcb4469ac20b52bfd7c26f70eeb694c285937ce4f2a15249593033c1",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "c67495372178d72ba91436e7db150254b04f793afd399521a0ff52f8d1cec885",
+          "experiments/r1_cerl.py": "195646ee342ac9dee924d1286ca3b5b226bca527bc813e0e96a697043afa70e5",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v2/candidate.txt": "b68acaa990342baeaa0c1336b5d3c424c8cc8d65d1c943017a0dc5bb6dfdf144"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v15.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {}
+          }
+        ],
+        "timeout_s": 259200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "2": [
+      {
+        "name": "aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v2/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v2.txt",
+        "queue_sha256": "be7a734fa4e692437a48321422fa43fd335fd3e9baeca300c80e5cc30328eeb1",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "c67495372178d72ba91436e7db150254b04f793afd399521a0ff52f8d1cec885",
+          "experiments/r1_cerl.py": "195646ee342ac9dee924d1286ca3b5b226bca527bc813e0e96a697043afa70e5",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v2/candidate.txt": "2560c1bacd294222e3474203ac88c5783c8b6941d4744fdb4ae3221b0d033fde"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v15.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {}
+          }
+        ],
+        "timeout_s": 259200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "3": [
+      {
+        "name": "aws_r1_rmr_nativeev_K4_4M_s0_20261017_awsfill_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_nativeev_K4_4M_s0_20261017_awsfill_v2/aws_r1_rmr_nativeev_K4_4M_s0_20261017_awsfill_v2.txt",
+        "queue_sha256": "13c6874cd2acf089f208a280946f79d36ddce67dc0132c18f642c371cdedf598",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "c67495372178d72ba91436e7db150254b04f793afd399521a0ff52f8d1cec885",
+          "experiments/r1_cerl.py": "195646ee342ac9dee924d1286ca3b5b226bca527bc813e0e96a697043afa70e5",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_nativeev_K4_4M_s0_20261017_awsfill_v2/candidate.txt": "43c209b15f3a7addfb7e3574bbf1ee641b397d25ed667dc0770e4bfd87a45502"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_nativeev_K4_4M_s0_20261017_awsfill_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v15.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {}
+          }
+        ],
+        "timeout_s": 259200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_gpu_driver_cpu_e2e_smoke_20261017_awsfill_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_gpu_driver_cpu_e2e_smoke_20261017_awsfill_v2/aws_r1_gpu_driver_cpu_e2e_smoke_20261017_awsfill_v2.txt",
+        "queue_sha256": "3869207f30a3ae63dc8804af13ba2fe6f0084f3d4a5f4787230d7ba68aed2356",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "c67495372178d72ba91436e7db150254b04f793afd399521a0ff52f8d1cec885",
+          "experiments/r1_cerl.py": "195646ee342ac9dee924d1286ca3b5b226bca527bc813e0e96a697043afa70e5",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_gpu_driver_cpu_e2e_smoke_20261017_awsfill_v2/candidate.txt": "9e46bab5b89368e204e85fbed494f4f5bb4619ac5bbb9c292edde83447068087",
+          "experiments/r1_cerl_gpu.py": "467e42fddaf614e7f2bce3c195369711c035ea274421494e3481f7bb18296b68",
+          "experiments/credit/cpu_driver_smoke.py": "1002d7de598294a4e09e8d87eace107338af43782cd07ccc80ee6621520d1262"
+        },
+        "result": "experiments/results/gpu_ladder/aws_r1_gpu_driver_cpu_e2e_smoke_20261017_awsfill_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v15.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {}
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "6": [
+      {
+        "name": "aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v2/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v2.txt",
+        "queue_sha256": "bd9ff461f819cbb33265370bbe92c3c5e75ee6cfdbfe5e5af0f65639da6b5201",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "c67495372178d72ba91436e7db150254b04f793afd399521a0ff52f8d1cec885",
+          "experiments/r1_cerl.py": "195646ee342ac9dee924d1286ca3b5b226bca527bc813e0e96a697043afa70e5",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v2/candidate.txt": "6bcc9b73e0c19526d9528a13b02ecd1c41550893902d3b640398f14f551bd6f1"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v15.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {}
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
