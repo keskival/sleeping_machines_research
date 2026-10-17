@@ -62,6 +62,11 @@ Update this ledger whenever a language depth/composition result completes.
 - AWS fully native 8-layer local learner (receiver races, local eligibility, no recurrent backbone), 64k tokens: flag 7.047
   (`aws_r1_native_local_stream_64k_s0_20261016_v1`), about 29 tokens/s.
 
+## H1. Residual memory (theory 172), 16–17 October
+- 4M one pass, flag: K=2 5.4679, K=4 dense 5.4623, K=8 5.4712 vs CERL 5.4665 (no gain at 4M; 65k concept bank 5.4716, cause messages 5.4754).
+- 16M one pass, flag: CERL 5.0634; K=4 dense stack 5.0433; **K=4 with old-slot refinement 4.9901** (selection 5.1906 vs 5.2826, prequential 5.0426 vs 5.1204) but 65,528 slice 5.0874 vs 5.0282 (8,192-token lanes: old corrections accumulate over 32x training history). Dense hybrid L16 5.2034.
+- **Showed:** native depth pays once data suffices, and refining old memories is the strongest depth mechanism; corrections need a length-bounded algebra (learned decay, under test).
+
 ## H2. What the level-1 cause stream is (measurement, 16 October)
 - `curie_cause_stream_typing_cerl4M_20261016_v1`: causes change on 79% of tokens (median duration 1; families and span
   identity do not help). Concept units are syntactic slots (function words, auxiliaries, sentence starters, subword
