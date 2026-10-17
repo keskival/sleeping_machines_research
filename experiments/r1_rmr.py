@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiment
 from native_slot_memory import pk_topk  # noqa: E402
 from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, lanes_nll_usage, record_unit_usage, LocalClip, fineweb_protocols, work_per_target, param_groups, same_run  # noqa: E402
 
-EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk')
+EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk', 'micro')
 STAGE = 'native residual-memory race model (RMR-1, theory 172), one pass'
 
 
@@ -392,6 +392,32 @@ class RMR(nn.Module):
     _ptrain = None; _ppf = None; _pna = None
 
 
+def carry_rows(c, rs):
+    """Rows rs of a carried-memory structure (every tensor is batch-first)."""
+    if torch.is_tensor(c): return c[rs]
+    if isinstance(c, dict): return {k: carry_rows(v, rs) for k, v in c.items()}
+    return type(c)(carry_rows(v, rs) for v in c)
+
+
+def carry_cat(parts):
+    """Concatenate microbatch carries along the batch."""
+    c = parts[0]
+    if torch.is_tensor(c): return torch.cat(parts, 0)
+    if isinstance(c, dict): return {k: carry_cat([p_[k] for p_ in parts]) for k in c}
+    return type(c)(carry_cat(list(z)) for z in zip(*parts))
+
+
+def train_step(model, x, y, carry, keep, micro):
+    """One update's forward/backward in `micro` row groups with gradient accumulation (same update; activation memory / micro).
+    Exact when no batch statistic enters the objective (load-balance and region-filing statistics are per microbatch)."""
+    B = x.shape[0]; loss = 0.0; parts = []
+    for rs in np.array_split(np.arange(B), max(1, min(micro, B))):
+        rs = torch.from_numpy(rs); nll = model.lane_nll(x[rs], y[rs], prefix=None if carry is None else carry_rows(carry, rs))
+        l_ = nll.mean(); ((l_ + (model.aux.mean() if model.aux is not None else 0.0))*len(rs)/B).backward(); loss += l_.item()*len(rs)/B
+        if keep: parts.append(model.carry_out(keep))
+    return loss, (carry_cat(parts) if keep else None)
+
+
 def member_work(model, history, fire_rates=None, carry=0):
     """Active work per target of the whole member in event-driven execution (AGENTS.md: candidates scored, units woken, state rows
     moved, beside the loss). Modelled from the architecture at `history` visible slots (plus `carry` carried slots); firing rates
@@ -693,6 +719,15 @@ def contracts():
             a_ = torch.cat([g0[n].reshape(-1) for n in names]); b_ = torch.cat([g1[n].reshape(-1) for n in names])
             if a_.norm() > 0: cosd = max(cosd, float(1 - (a_ @ b_)/(a_.norm()*b_.norm())))
     res['local_clip_direction_preserved'] = cosd; res['local_clip_banks'] = len(lc_.banks)
+    torch.manual_seed(0); mm = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_read_topk=4), events=True, **dict(NAT, write_explore=0, read_explore=0)); mm.train()
+    for t_ in mm.base.tm: t_.CHUNK = 8
+    xb4 = torch.randint(0, 8, (4, 41)); pfm = None; out_m = []
+    for mic in (1, 2):
+        torch.manual_seed(5); mm.zero_grad(); l0_, c0_ = train_step(mm, xb4[:, :20], xb4[:, 1:21], None, 16, mic); l1_, c1_ = train_step(mm, xb4[:, 20:40], xb4[:, 21:41], c0_, 16, mic)
+        out_m.append((l0_ + l1_, [p_.grad.clone() if p_.grad is not None else None for p_ in mm.parameters()], c1_['A']))
+    res['micro_loss_diff'] = abs(out_m[0][0] - out_m[1][0]); res['micro_grad_diff'] = max(float((g1 - g2).abs().max()) for g1, g2 in zip(out_m[0][1], out_m[1][1]) if g1 is not None)
+    res['micro_carry_diff'] = float((out_m[0][2] - out_m[1][2]).abs().max())
+    ok_e = ok_e and res['micro_loss_diff'] < 1e-5 and res['micro_grad_diff'] < 1e-5 and res['micro_carry_diff'] < 1e-5
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
     ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
@@ -717,7 +752,7 @@ def main():
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
     A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--index-regions', type=int, default=0); A('--index-read', type=int, default=0); A('--readout-index', type=int, default=0); A('--readout-read', type=int, default=0); A('--readout-tok', type=int, default=32); A('--index-pk', type=int, default=0); A('--index-balance', type=float, default=0.0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
-    A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
+    A('--micro', type=int, default=1, help='execution: microbatches per update (gradient accumulation; activation memory / micro)'); A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -759,9 +794,8 @@ def main():
     while step < total:
         model.n_active = n_active_at(step)
         ids = order[step*a.batch:(step + 1)*a.batch]; model.train(); w = torch.from_numpy(train[ids if a.carry else np.sort(ids)]); x, y = w[:, :-1], w[:, 1:]
-        nll = model.lane_nll(x, y, prefix=carry); loss = nll.mean(); obj = loss + (model.aux.mean() if model.aux is not None else 0.0)
-        opt.zero_grad(); obj.backward(); (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step(); step += 1; losses.append(loss.item())
-        if a.carry: carry = model.carry_out(a.carry)
+        opt.zero_grad(); loss, carry = train_step(model, x, y, carry, a.carry, a.micro)
+        (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step(); step += 1; losses.append(loss)
         if step % a.log_every == 0:
             print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), levels=model._mem[2], elapsed_s=round(time.time() - began))), flush=True)
         if step % quarter == 0 or step == total:

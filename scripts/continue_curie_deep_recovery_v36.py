@@ -16,8 +16,8 @@ E2E, GATE, NATIVE = 'curie_r1_rmr_native_e2e_smoke_20261017_v2', 'curie_r1_rmr_n
 RSS_MAX_KB = 2_400_000
 
 
-def gate():
-    m = re.findall(r'\{"smoke_steps".*\}', (ROOT/f'experiments/queue/logs/{GATE}.log').read_text()); assert m, 'gate printed no smoke line'
+def gate(name=GATE):
+    m = re.findall(r'\{"smoke_steps".*\}', (ROOT/f'experiments/queue/logs/{name}.log').read_text()); assert m, 'gate printed no smoke line'
     g = json.loads(m[-1]); return g['max_rss_kb'], g['s_per_step']
 
 
@@ -30,14 +30,19 @@ def main():
     except Exception as error: print(json.dumps({DECAY: 'failed', 'error': repr(error)}), flush=True)
     try:
         import subprocess                                                                          # native coverage gate: a flagship run with any native mechanism off is refused
-        subprocess.run(['.venv-docker/bin/python', 'scripts/check_native_coverage.py'] + [f'experiments/queue/r1/{t}.txt' for t in (E2E, GATE, NATIVE)], cwd=ROOT, check=True)
+        subprocess.run(['.venv-docker/bin/python', 'scripts/check_native_coverage.py'] + [f'experiments/queue/r1/{t}.txt' for t in (E2E, GATE, NATIVE, NATIVE + '_m2', NATIVE + '_m4')], cwd=ROOT, check=True)
         if not completed(E2E): stable_host(); original.run(E2E, 3600)
         assert completed(E2E), 'native e2e smoke did not complete'
-        stable_host(); original.run(GATE, 3600); rss, sps = gate(); print(json.dumps(dict(gate=GATE, max_rss_kb=rss, s_per_step=sps)), flush=True)
+        for sfx in ('', '_m2', '_m4'):                                                             # microbatching (exact, contract v20) when the full batch does not fit Curie
+            try: stable_host(); original.run(GATE + sfx, 3600); rss, sps = gate(GATE + sfx)
+            except Exception as error: rss, sps = float('inf'), None; print(json.dumps({GATE + sfx: 'failed', 'error': repr(error)}), flush=True)   # stopped by run_safe: try more microbatches
+            print(json.dumps(dict(gate=GATE + sfx, max_rss_kb=rss, s_per_step=sps)), flush=True)
+            if rss < RSS_MAX_KB: break
         if rss < RSS_MAX_KB:
-            run_or_await(NATIVE, int(16384*sps*1.4 + 4*3600))
+            if not completed(NATIVE): stable_host(); original.run(NATIVE + sfx, int(16384*sps*1.4 + 4*3600))
+            if not completed(NATIVE): raise RuntimeError('native run ended without a completed result')
             market.publish([f'experiments/results/token_language/{NATIVE}.json', f'experiments/results/token_language/{E2E}.json'], 'R1 full native member at 16M with the composing event spine (all native mechanisms)')
-        else: print(json.dumps({NATIVE: 'skipped', 'reason': f'gate RSS {rss} KB above {RSS_MAX_KB}'}), flush=True)
+        else: print(json.dumps({NATIVE: 'skipped', 'reason': f'gate RSS {rss} KB above {RSS_MAX_KB} even with 4 microbatches'}), flush=True)
     except Exception as error: print(json.dumps({NATIVE: 'failed', 'error': repr(error)}), flush=True)
     v34.after_decay()
 
