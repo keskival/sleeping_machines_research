@@ -1,0 +1,225 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "native residual-memory race model (RMR-1, theory 172), one pass",
+ "tag": "curie_r1_rmr_dense_K4_4M_s0_20261016_v1",
+ "args": {
+  "mode": "train",
+  "tag": "curie_r1_rmr_dense_K4_4M_s0_20261016_v1",
+  "seed": 0,
+  "d": 128,
+  "modes": 64,
+  "layers": 2,
+  "dk": 64,
+  "units": 1024,
+  "topk": 4,
+  "explore": 2,
+  "classes": 256,
+  "levels": 4,
+  "read_dk": 64,
+  "top_m": 0,
+  "chunk": 64,
+  "read_topk": 0,
+  "rezero": 1,
+  "train_tokens": 4194304,
+  "lane": 256,
+  "batch": 4,
+  "lr": 0.003,
+  "wd": 0.01,
+  "row_chunk": 512,
+  "checkpoint_every": 256,
+  "max_steps": 0,
+  "log_every": 100
+ },
+ "parameters": 7415252,
+ "steps": 4096,
+ "presentations": 4177920,
+ "train_wall_s": 6958.017585992813,
+ "resumes": 1,
+ "milestones": [
+  {
+   "step": 1024,
+   "tokens": 1048576,
+   "select": {
+    "nll": 6.204760008692217,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.625183307897421,
+     "resp_bg": 0.25118865142064556,
+     "resp_concept": 0.5682898923940319,
+     "resp_repeat": 0.04686513258386303,
+     "resp_continue": 0.13365632592066648,
+     "level2_new_norm": 2.668832302093506,
+     "level2_old_norm": 0.0,
+     "level3_new_norm": 0.6098522916436195,
+     "level3_old_norm": 0.0,
+     "level4_new_norm": 0.3373586982488632,
+     "level4_old_norm": 0.0,
+     "native_gain": 0.42042329920520416
+    }
+   },
+   "prequential_segment": 6.499216250143945,
+   "elapsed_s": 1715
+  },
+  {
+   "step": 2048,
+   "tokens": 2097152,
+   "select": {
+    "nll": 5.883243532837689,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.324302104839069,
+     "resp_bg": 0.2908476378111707,
+     "resp_concept": 0.50482184000397,
+     "resp_repeat": 0.08376026222037364,
+     "resp_continue": 0.12057025763003723,
+     "level2_new_norm": 1.3537435084581375,
+     "level2_old_norm": 0.0,
+     "level3_new_norm": 0.7561086043715477,
+     "level3_old_norm": 0.0,
+     "level4_new_norm": 0.5526830479502678,
+     "level4_old_norm": 0.0,
+     "native_gain": 0.44105857200138043
+    }
+   },
+   "prequential_segment": 5.817015648353845,
+   "elapsed_s": 3465
+  },
+  {
+   "step": 3072,
+   "tokens": 3145728,
+   "select": {
+    "nll": 5.7156724804019605,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.148610563178032,
+     "resp_bg": 0.25313312452674114,
+     "resp_concept": 0.5352509619789148,
+     "resp_repeat": 0.10588214741805937,
+     "resp_continue": 0.10573376852447558,
+     "level2_new_norm": 1.3797785490751266,
+     "level2_old_norm": 0.0,
+     "level3_new_norm": 0.9160358756780624,
+     "level3_old_norm": 0.0,
+     "level4_new_norm": 0.9366957098245621,
+     "level4_old_norm": 0.0,
+     "native_gain": 0.4329380827760714
+    }
+   },
+   "prequential_segment": 5.575683823786676,
+   "elapsed_s": 5207
+  },
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select": {
+    "nll": 5.674628618815263,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.107931027834044,
+     "resp_bg": 0.2388621959070942,
+     "resp_concept": 0.5454058959774407,
+     "resp_repeat": 0.1099123476236025,
+     "resp_continue": 0.10581956246825008,
+     "level2_new_norm": 1.4205013513565063,
+     "level2_old_norm": 0.0,
+     "level3_new_norm": 0.9182320386171341,
+     "level3_old_norm": 0.0,
+     "level4_new_norm": 1.1230766475200653,
+     "level4_old_norm": 0.0,
+     "native_gain": 0.4333024090187809
+    }
+   },
+   "prequential_segment": 5.464306325651705,
+   "elapsed_s": 6957
+  }
+ ],
+ "train_flops_per_target": 11722633.035294117,
+ "train_flops": 48976223010816.0,
+ "prequential_by_eighth": [
+  6.834238765761256,
+  6.164193734526634,
+  5.889402147382498,
+  5.744629149325192,
+  5.627078762277961,
+  5.524288885295391,
+  5.472216985188425,
+  5.456395666114986
+ ],
+ "prequential_last_quarter": 5.464306325651705,
+ "select": {
+  "nll": 5.674628618815263,
+  "targets": 16376,
+  "native": {
+   "bg_only_nll": 6.107931027834044,
+   "resp_bg": 0.2388621959070942,
+   "resp_concept": 0.5454058959774407,
+   "resp_repeat": 0.1099123476236025,
+   "resp_continue": 0.10581956246825008,
+   "level2_new_norm": 1.4205013513565063,
+   "level2_old_norm": 0.0,
+   "level3_new_norm": 0.9182320386171341,
+   "level3_old_norm": 0.0,
+   "level4_new_norm": 1.1230766475200653,
+   "level4_old_norm": 0.0,
+   "native_gain": 0.4333024090187809
+  }
+ },
+ "score_65528": {
+  "nll": 5.316396533256776,
+  "targets": 65528,
+  "native": {
+   "bg_only_nll": 5.875674978598994,
+   "resp_bg": 0.1946009983824928,
+   "resp_concept": 0.4800475762595101,
+   "resp_repeat": 0.15610667461868885,
+   "resp_continue": 0.1692447490222,
+   "level2_new_norm": 1.4292108416557312,
+   "level2_old_norm": 0.0,
+   "level3_new_norm": 0.934163399040699,
+   "level3_old_norm": 0.0,
+   "level4_new_norm": 1.0636505782604218,
+   "level4_old_norm": 0.0,
+   "native_gain": 0.5592784453422182
+  }
+ },
+ "flagship": {
+  "nll": 5.462251573801041,
+  "targets": 8192,
+  "native": {
+   "bg_only_nll": 5.903477519750595,
+   "resp_bg": 0.24410705640912056,
+   "resp_concept": 0.5641623996198177,
+   "resp_repeat": 0.09475029213353992,
+   "resp_continue": 0.09698024718090892,
+   "level2_new_norm": 1.4337975531816483,
+   "level2_old_norm": 0.0,
+   "level3_new_norm": 1.0022289007902145,
+   "level3_old_norm": 0.0,
+   "level4_new_norm": 1.1434490531682968,
+   "level4_old_norm": 0.0,
+   "native_gain": 0.44122594594955444
+  }
+ },
+ "work_level1_per_target": {
+  "state_macs": 214656,
+  "episodic_candidates": 510,
+  "episodic_macs": 65408,
+  "unit_scores": 1024,
+  "unit_macs": 73728,
+  "concepts_woken": 4,
+  "proposal_rows": 2249.8565573770493,
+  "proposal_macs": 287981.6393442623
+ },
+ "reference": {
+  "cerl_4M": "curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)",
+  "diagnostic_planB_L8_4M_flagship": 5.8414
+ },
+ "max_rss_kb": 767920,
+ "source_sha256": {
+  "experiments/r1_rmr.py": "cae314e7562c6c800a6602e28988b2ebd94186c2ba13f6cb46926a27b1d7855d",
+  "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043"
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_rmr_dense_K4_4M_s0_20261016_v1.pt"
+}
