@@ -1,0 +1,9 @@
+...                                                                      [100%]
+=============================== warnings summary ===============================
+tests/test_architecture_review_witnesses.py::test_nonlinear_alternative_can_reverse_linearized_route_credit
+  /workspace/tests/test_architecture_review_witnesses.py:19: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+    assert float(tangent)<0<float(actual) and float(exact)>0
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+3 passed, 1 warning in 0.78s
