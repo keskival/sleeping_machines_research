@@ -28,9 +28,10 @@ def main():
         if not completed(DECAY): raise RuntimeError(f'{DECAY} ended without a completed result')
         market.publish([f'experiments/results/token_language/{DECAY}.json'], 'R1 native depth at 16M: 4-level residual memory with decaying old-slot refinement (long-lane repair)')
     except Exception as error: print(json.dumps({DECAY: 'failed', 'error': repr(error)}), flush=True)
+    rss, sfx, sps = float('inf'), '', None
     try:
         import subprocess                                                                          # native coverage gate: a flagship run with any native mechanism off is refused
-        subprocess.run(['.venv-docker/bin/python', 'scripts/check_native_coverage.py'] + [f'experiments/queue/r1/{t}.txt' for t in (E2E, GATE, NATIVE, NATIVE + '_m2', NATIVE + '_m4')], cwd=ROOT, check=True)
+        subprocess.run(['.venv-docker/bin/python', 'scripts/check_native_coverage.py'] + [f'experiments/queue/r1/{t}.txt' for t in (E2E, GATE, NATIVE, NATIVE + '_m2', NATIVE + '_m4', 'curie_r1_rmr_nativeev_K4_4M_s0_20261017_v1', 'curie_r1_rmr_nativeev_K4_4M_s0_20261017_v1_m2', 'curie_r1_rmr_nativeev_K4_4M_s0_20261017_v1_m4')], cwd=ROOT, check=True)
         if not completed(E2E): stable_host(); original.run(E2E, 3600)
         assert completed(E2E), 'native e2e smoke did not complete'
         for sfx in ('', '_m2', '_m4'):                                                             # microbatching (exact, contract v20) when the full batch does not fit Curie
@@ -44,6 +45,11 @@ def main():
             market.publish([f'experiments/results/token_language/{NATIVE}.json', f'experiments/results/token_language/{E2E}.json'], 'R1 full native member at 16M with the composing event spine (all native mechanisms)')
         else: print(json.dumps({NATIVE: 'skipped', 'reason': f'gate RSS {rss} KB above {RSS_MAX_KB} even with 4 microbatches'}), flush=True)
     except Exception as error: print(json.dumps({NATIVE: 'failed', 'error': repr(error)}), flush=True)
+    try:                                                                                           # the flagship's 4M point (slope 4M -> 16M), same execution as the 16M run
+        N4 = 'curie_r1_rmr_nativeev_K4_4M_s0_20261017_v1'
+        if rss < RSS_MAX_KB and not completed(N4): stable_host(); original.run(N4 + sfx, int(4096*sps*1.4 + 3*3600))
+        if completed(N4): market.publish([f'experiments/results/token_language/{N4}.json'], 'R1 full native member at 4M: the flagship slope point')
+    except Exception as error: print(json.dumps({'native4M': 'failed', 'error': repr(error)}), flush=True)
     v34.after_decay()
 
 
