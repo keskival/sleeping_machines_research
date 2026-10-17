@@ -294,7 +294,7 @@ class LocalClip:
         self.calib, self.q, self.budget, self.rec, self.caps = calib, q, budget, {b: [] for b in self.banks}, None
 
     def __call__(self, model):
-        norms = {b: torch.sqrt(sum((p.grad.float()**2).sum() for p in ps if p.grad is not None) + 0.0) for b, ps in self.banks.items()}
+        norms = {b: torch.sqrt(sum(((p.grad.float()**2).sum() for p in ps if p.grad is not None), ps[0].new_zeros((), dtype=torch.float32))) for b, ps in self.banks.items()}
         if self.caps is None:
             for b, v in norms.items(): self.rec[b].append(float(v))
             if len(next(iter(self.rec.values()))) >= self.calib:
@@ -344,9 +344,9 @@ def lanes_nll(model, block, row_chunk, stats=False):
                 out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats, msg=msg)
                 nll, st = out if stats else (out, None); tot += nll.sum().item(); n += nll.numel()
                 if st:
-                    for k, v in st.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
+                    for k, v in st.items(): acc[k] = acc.get(k, 0.0) + np.asarray(v)*nll.numel()
     model.train(); res = dict(nll=tot/n, targets=int(n))
-    if acc: res['native'] = {k: v/n for k, v in acc.items()}; res['native']['native_gain'] = res['native']['bg_only_nll'] - res['nll']
+    if acc: res['native'] = {k: (v/n).tolist() for k, v in acc.items()}; res['native']['native_gain'] = res['native']['bg_only_nll'] - res['nll']
     return res
 
 

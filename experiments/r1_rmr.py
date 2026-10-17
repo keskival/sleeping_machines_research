@@ -573,10 +573,10 @@ def lanes_nll_carry(model, block, row_chunk, keep, stats=False, adjacent=False):
             for r0 in range(s0, L, row_chunk):
                 out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats, prefix=pf); nll, st = (out if stats else (out, {}))
                 tot += nll.float().sum().item(); n += nll.numel()
-                for k, v in st.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
+                for k, v in st.items(): acc[k] = acc.get(k, 0.0) + np.asarray(v)*nll.numel()
             pf = model.carry_out(keep)
     r = dict(nll=tot/n, targets=int(n), carry_keep=keep)
-    if stats: r['native'] = {k: v/n for k, v in acc.items()}
+    if stats: r['native'] = {k: (v/n).tolist() for k, v in acc.items()}
     return r
 
 

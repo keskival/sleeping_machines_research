@@ -1,0 +1,73 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "1": [
+      {
+        "name": "aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v1/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v1.txt",
+        "queue_sha256": "55f341c49883585333a7ae5847d070522b1c4430da320eea227673d1d89d688e",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "de8bcd6b0c74484fb435a4b5269667719ae687933ca8770c593e52041d378675",
+          "experiments/r1_cerl.py": "f81d59f3a81052c1a79fd4e3cd861924adeb53e0089a67a323995e1794c27bd1",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v1/candidate.txt": "d1d3b3f8bdc24f984eb0ad6c858ccfd78db6de75b095ffbcd14650f878818ff8"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_nativeev_K4_16M_s1_20261017_awsfill_v1.json",
+        "requires": [],
+        "timeout_s": 259200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "2": [
+      {
+        "name": "aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v1/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v1.txt",
+        "queue_sha256": "09e8ba76ea524c738d1b21b51f9c19251b22081e388d80c6d060dd63763c4386",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "de8bcd6b0c74484fb435a4b5269667719ae687933ca8770c593e52041d378675",
+          "experiments/r1_cerl.py": "f81d59f3a81052c1a79fd4e3cd861924adeb53e0089a67a323995e1794c27bd1",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v1/candidate.txt": "986000933268c80d6167a9680349c14df7c8a18773af51019f9691b33d17044a"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_awsfill_v1.json",
+        "requires": [],
+        "timeout_s": 259200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ],
+    "5": [
+      {
+        "name": "aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v1/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v1.txt",
+        "queue_sha256": "4063996b138da1fc1dcfc7275a2544ee37426568a9afc036779dc9aa24b8d7ee",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "de8bcd6b0c74484fb435a4b5269667719ae687933ca8770c593e52041d378675",
+          "experiments/r1_cerl.py": "f81d59f3a81052c1a79fd4e3cd861924adeb53e0089a67a323995e1794c27bd1",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/native_slot_memory.py": "2ac0739160ba09a63d44ab6aea789b2964ac795877eeb78d3898b070cf954d1c",
+          "experiments/credit/native_gated_fit.py": "641f820188a213d78c03008c699ea6b2bbd3670589ade2d12bf0c4dc2bed4e13",
+          "scripts/check_native_coverage.py": "79c2ee1de8d75fd4c1e0ebbd2b4e80edb4c585c25a3a41eed6327339c7356176",
+          "experiments/queue/r1/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v1/candidate.txt": "aae4928e819ae26abed899558d779fd91e92439813006e39141389636578837c"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_native_e2e_cc_smoke_20261017_awsfill_v1.json",
+        "requires": [],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
