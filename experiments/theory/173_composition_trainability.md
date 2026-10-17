@@ -158,7 +158,21 @@ Disclosed protocol notes:
 3. Native level 1: event-local states in place of the linear recurrence, against CERL at 16M.
 4. The capacity ladder (65k–262k product keys with balance) at 16M.
 
-## 7. Earlier list (superseded by §5–6)
+## 8. Third round, 17 October: native level 1
+
+- **Native level 1** (`native_slot_memory.py`, `--level1 slots`) replaces the dense complex-diagonal recurrence. It has persistent addressed slots; each event writes its value into the top-m slots chosen by a write race; each slot decays at its own learned rate (1 to 1,000 tokens); reads are a race over slots with separate read keys and an abstain option, returning each slot's evidence-weighted mean; counterfactual write probes are included.
+  - Execution is exact and chunked: the decay factorises within a chunk, and the slot state is carried between chunks and lanes.
+  - Contracts: chunked equals the explicit sum (1.5e-8); causal; carry equals one long lane (7e-9); probes leave the forward pass unchanged and credit the write keys; read bounded at 2,000 tokens; the whole RMR member with slots is exact and normalised, and carry equals one long lane (9.5e-7).
+  - It also subsumes RMR-2's standing slots (pooling into persistent decaying slots) at level 1.
+  - Cost (fwd+bwd, 4 × 255 tokens, d 128): recurrence 0.76 s per layer; 1,024 slots 0.11 s; 4,096 slots 0.51 s. 4 of S slots are updated per token.
+- **Fixes:** carried lanes keep a contiguous input stream (overlapping training lanes; scoring feeds the skipped token as an unscored input); measured inference work of the whole member is reported.
+- **Dead end:** a raw-sum slot read (unbounded with length, C8).
+- **Still open:**
+  - GPU driver: no carry and no slot level 1 in its data path yet (CPU drivers have both).
+  - RMR-2 firing clocks: no carry.
+  - Level-1 slot execution is dense; event-driven execution would touch only m slots per write.
+
+## 7. Earlier list (superseded by §5–6, §8)
 
 
 1. C7 writes: counterfactual write exploration. A few random older slots per step receive a detached trial correction,

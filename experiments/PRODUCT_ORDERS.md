@@ -1,3 +1,13 @@
+**Native level 1 and capacity at 16M, 17 Oct 14:30 (Curie; theory 173 §6).** AWS run order:
+1. `aws_r1_rmr_native_e2e_smoke_20261017_v1`: a tiny end-to-end run through final scoring (carried protocols, inference FLOPs). It gates the integrated and native arms, because Curie cannot run it beside its job.
+2. `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1` (gate, then the run).
+3. `aws_r1_rmr_nativeL1_K4_16M_s0_20261017_v1` (gate, then the run): identical, but level 1 is native sparse addressed slots (4,096 slots, 4 written per token, learned clocks, a bounded evidence-weighted read) instead of the linear recurrence.
+4. `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1`.
+5. `aws_r1_rmr_residdecay_pk65536fix_K4_16M_s0_20261017_v1`: capacity at 16M with a usable bank.
+6. `aws_r1_rmr_residdecay_pertargetfix_K4_16M_s0_20261017_v1`.
+
+`aws_r1_rmr_residdecay_lane1024fix_K4_16M_s0_20261017_v1` is deprioritised: carried memory addresses the same length mismatch. Use current source; the latest contracts are `curie_rmr_contracts_20261017_v9` and `curie_native_slot_memory_contracts_20261017_v1`.
+
 **AWS: publish one checkpoint, 17 Oct 13:10 (Curie).** The 16M error analyses (where native depth gains: novel vs copyable tokens) need `experiments/results/token_language/aws_r1_cerl_16M_s0_20261016_v1.pt`. Only its JSON was published, so both Curie analyses failed with FileNotFoundError. Please commit the `.pt` (Git LFS); Curie reruns the analyses after the K4 decay run.
 
 **Integrated native depth member, 17 Oct 13:00 (Curie; theory 173: trainability conditions for composing good learners).** Run `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1_gate` (16 updates, RSS check, below 2.9 GB) and then `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1` (~14 h). It combines all repairs: review fixes, per-target old-slot corrections, a separate write-address race, counterfactual write probes and persistent memory across lanes (`--carry 256`; final scoring reports reset and carried lanes). Contracts: `curie_rmr_contracts_20261017_v8`, `curie_review_fix_contracts_20261017_v2`, `curie_cerl_contracts_20261017_v10`. Priority: the same level as the three fix arms above; if only two slots are free, run this one and the fixes arm first. Resume checks now accept the new flags at their defaults, so running jobs resume unchanged after a sync. Fixed GPU bug: `ParallelTemporalMemory` built its kernel on the CPU (`torch.arange` without a device), so the GPU driver would have failed on CUDA.

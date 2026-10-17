@@ -194,7 +194,7 @@ class RMR(nn.Module):
         for lev, (on, od, oi, ow) in zip(self.levels, self._lev_own):
             k_ = max(1, lev.top_m); idx = oi[:, s0:, :k_] - s0; ok = idx >= 0
             levels.append((on[:, s0:].detach(), (od[:, s0:, :k_] if od.dim() == 4 else od[:, s0:]).detach(), idx.clamp_min(0), (ow[:, s0:, :k_]*ok).detach()))
-        return dict(A=self._A[:, s0:].detach(), levels=levels, tm=[(a_.detach(), b_.detach()) for a_, b_ in self.base.tm_state], x=self._xcat[:, s0:], y=self._ycat[:, s0:])
+        return dict(A=self._A[:, s0:].detach(), levels=levels, tm=[tuple(t_.detach() for t_ in st_) for st_ in self.base.tm_state], x=self._xcat[:, s0:], y=self._ycat[:, s0:])
 
     def lane_nll(self, x, y, rows=None, stats=False, msg=None, prefix=None):
         if self._px is not x or self._ptrain is not self.training or self._ppf is not prefix:
@@ -219,14 +219,17 @@ class RMR(nn.Module):
     _ptrain = None; _ppf = None
 
 
-def lanes_nll_carry(model, block, row_chunk, keep, stats=False):
+def lanes_nll_carry(model, block, row_chunk, keep, stats=False, adjacent=False):
     """Mean NLL over consecutive lanes [N, L+1] of one stream with persistent memory: each lane starts from the previous lane's
-    carried memory (last `keep` slots and the level-1 temporal state). Same targets as lanes_nll; more history."""
+    carried memory (last `keep` slots and the level-1 temporal state). Same targets as lanes_nll; more history. adjacent=True:
+    lanes are back-to-back rows of the stream (lane i's last token is only a target), so that token is fed as one extra
+    unscored input to keep the carried input stream contiguous; overlapping windows (flagship) need nothing."""
     model.eval(); tot = n = 0.0; acc = {}; pf = None
     with torch.no_grad():
         for i in range(len(block)):
-            w = torch.from_numpy(block[i:i + 1].astype(np.int64)); x, y = w[:, :-1], w[:, 1:]; L = x.shape[1]
-            for r0 in range(0, L, row_chunk):
+            row = block[i] if not (adjacent and i) else np.concatenate([block[i - 1][-1:], block[i]]); s0 = 1 if (adjacent and i) else 0
+            w = torch.from_numpy(row[None].astype(np.int64)); x, y = w[:, :-1], w[:, 1:]; L = x.shape[1]
+            for r0 in range(s0, L, row_chunk):
                 out = model.lane_nll(x, y, (r0, min(r0 + row_chunk, L)), stats=stats, prefix=pf); nll, st = (out if stats else (out, {}))
                 tot += nll.sum().item(); n += nll.numel()
                 for k, v in st.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
@@ -307,7 +310,20 @@ def contracts():
         res['carry_row_chunk_max_diff'] = float((l2c - l2).abs().max())
         pf2 = mw.carry_out(16); xb = torch.randint(0, 8, (2, 41)); l3 = mw.lane_nll(xb[:, :-1], xb[:, 1:], prefix=pf2)
         res['carry_window_finite'] = bool(torch.isfinite(l3).all())
-    ok = ok_w and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
+        z = torch.randint(0, 8, (1, 82)); full_z = mw.lane_nll(z[:, :-1], z[:, 1:])[0]               # adjacent-lane protocol: carried scoring == one stream on the same targets
+        res['carry_adjacent_protocol'] = abs(lanes_nll_carry(mw, z[0].numpy().reshape(2, 41), 16, 64, adjacent=True)['nll'] - float(torch.cat([full_z[:40], full_z[41:]]).mean()))
+    # native level 1 (sparse addressed slots): exact law and persistent memory through the whole member
+    torch.manual_seed(0); ms = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3), levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, write_explore=2); ms.eval()
+    for t_ in ms.base.tm: t_.CHUNK = 8
+    with torch.no_grad():
+        res['slots_zero_corrections_equal_cerl'] = float((ms.lane_nll(x.clone(), y) - ms.base.lane_nll(x, y)).abs().max())
+        for p_ in ms.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        res['slots_normalisation_sum'] = sum(math.exp(-ms.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        fs = ms.lane_nll(x.clone(), y); res['slots_causal_prefix_max_diff'] = float((ms.lane_nll(x2, y2)[0, :p - 1] - fs[0, :p - 1]).abs().max())
+        full2 = ms.lane_nll(xa, ya); l1 = ms.lane_nll(xa[:, :40], ya[:, :40]); pf = ms.carry_out(40); l2 = ms.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
+        res['slots_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
+    ok_s = res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
+    ok = ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
     ok = ok and res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
@@ -317,7 +333,8 @@ def carried_protocols(model, val, row_chunk, keep):
     """The three FineWeb protocols scored with persistent memory across their consecutive lanes (same targets)."""
     sel = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048); sc = np.asarray(val[20971520:20971520 + 8*8192]).reshape(8, 8192)
     fl = np.stack([np.asarray(val[p:p + 1025]) for p in range(25165824, 25165824 + 8192, 1024)])
-    return dict(carried=dict(select=lanes_nll_carry(model, sel, row_chunk, keep, True), score_65528=lanes_nll_carry(model, sc, row_chunk, keep, True), flagship=lanes_nll_carry(model, fl, row_chunk, keep, True)))
+    return dict(carried=dict(select=lanes_nll_carry(model, sel, row_chunk, keep, True, adjacent=True), score_65528=lanes_nll_carry(model, sc, row_chunk, keep, True, adjacent=True),
+                             flagship=lanes_nll_carry(model, fl, row_chunk, keep, True)))
 
 
 def main():
@@ -325,7 +342,7 @@ def main():
     A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
-    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
+    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -338,7 +355,10 @@ def main():
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     cls, words = word_classes(np.bincount(train.reshape(-1), minlength=50257).astype(float), a.classes)
-    cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, unit_init=a.unit_init, balance=a.balance)
+    if a.carry:                                                                                    # carried lanes overlap by one token, so the inputs of consecutive lanes are one contiguous
+        n_lanes = (a.train_tokens - 1)//(a.lane - 1)                                               # stream (non-overlapping rows drop each lane's last token from the inputs)
+        train = np.asarray(train_all[:n_lanes*(a.lane - 1) + 1]).astype(np.int64)[np.arange(n_lanes)[:, None]*(a.lane - 1) + np.arange(a.lane)[None, :]]
+    cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore)
     model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     if a.carry:                                                                                    # persistent memory: batch row b walks its own contiguous stream of lanes (one pass, every lane once)
@@ -364,7 +384,7 @@ def main():
         if step % a.log_every == 0:
             print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), levels=model._mem[2], elapsed_s=round(time.time() - began))), flush=True)
         if step % quarter == 0 or step == total:
-            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll(model, sel_l, a.row_chunk, stats=True), **({'select_carried': lanes_nll_carry(model, sel_l, a.row_chunk, a.carry)} if a.carry else {}), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
+            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll(model, sel_l, a.row_chunk, stats=True), **({'select_carried': lanes_nll_carry(model, sel_l, a.row_chunk, a.carry, adjacent=True)} if a.carry else {}), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
             print(json.dumps(milestones[-1]), flush=True)
         if step % a.checkpoint_every == 0 or step == total: save()
         if a.max_steps and step >= a.max_steps:
@@ -377,10 +397,13 @@ def main():
     with FlopCounterMode(display=False) as fc:
         model.train(); w = torch.from_numpy(train[1:2]); model.lane_nll(w[:, :-1], w[:, 1:], prefix=pf_).mean().backward()
     model.zero_grad(); fpt = fc.get_total_flops()/(a.lane - 1); seg = max(1, total//8)
+    fl0 = np.asarray(val[25165824:25165824 + 1025]).astype(np.int64)[None]; xf, yf = torch.from_numpy(fl0[:, :-1]), torch.from_numpy(fl0[:, 1:]); model.eval()
+    with torch.no_grad(), FlopCounterMode(display=False) as fci: model.lane_nll(xf, yf)              # measured inference work of the whole member (level 1, every level, readout) per target at history up to 1,023
+    inference = dict(flops_per_target_window_1024=fci.get_total_flops()/1024, scope='measured, eval mode, one flagship window, reset lane (dense reference execution)')
     result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
-                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255),
+                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference,
                   reference=dict(cerl_4M='curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)', diagnostic_planB_L8_4M_flagship=5.8414), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); result['checkpoint'] = f'experiments/results/token_language/{a.tag}.pt'
     out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()
