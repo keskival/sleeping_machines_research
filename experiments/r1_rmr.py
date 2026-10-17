@@ -269,6 +269,35 @@ class RMR(nn.Module):
     _ptrain = None; _ppf = None
 
 
+def member_work(model, history, fire_rates=None, carry=0):
+    """Active work per target of the whole member in event-driven execution (AGENTS.md: candidates scored, units woken, state rows
+    moved, beside the loss). Modelled from the architecture at `history` visible slots (plus `carry` carried slots); firing rates
+    measured on data when given (a silent level skips everything but its clock). Units: multiply-adds (MACs) and counts."""
+    b = model.base; d = b.d; H = history + 1 + carry; out = dict(scope='modelled event-driven work per target; fire rates measured' if fire_rates else 'modelled event-driven work per target', history=history, carried=carry)
+    lin = lambda mod: sum(p.numel() for n, p in mod.named_parameters() if n.endswith('weight') and p.dim() == 2)   # dense local maps: MACs = weights
+    l1 = []
+    for t_, to, mlp in zip(b.tm, b.tm_out, b.mlp):
+        if getattr(b, 'level1', 'tm') == 'slots':
+            keys = 4*t_.n if t_.pk else 2*t_.S; rd = t_.read_topk or t_.S
+            l1.append(dict(kind='slots', slots=t_.S, key_scores=keys, rows_written=t_.m, rows_read=rd, macs=keys*t_.dk//(2 if t_.pk else 1) + (t_.m + rd)*d + lin(t_) + lin(to) + lin(mlp)))
+        else:
+            l1.append(dict(kind='temporal-memory recurrence (dense)', state_size=2*t_.n, macs=lin(t_) + lin(to) + lin(mlp) + 4*t_.n))
+    out['level1'] = l1; levels = []
+    for k, lev in enumerate(model.levels):
+        f = 1.0 if not (lev.fire and fire_rates) else fire_rates[k]
+        n_old = sum(max(1, l_.top_m) for l_ in model.levels[:k + 1] if l_.top_m)                 # old-write streams visible to this level (lower levels + own)
+        read_keys = H; corr = H*n_old*lev.dk; vals = lev.read_topk or H
+        w_keys = H if lev.write_race else 0; local = lin(lev) - (lin(lev.fire_lin) if lev.fire else 0)
+        macs = read_keys*lev.dk + corr + vals*d + w_keys*lev.dk + local + (lev.top_m*d*d if lev.per_target else 0)
+        levels.append(dict(fire_rate=f, read_keys_scored=read_keys, values_delivered=vals, old_slot_writes=lev.top_m, write_race_keys=w_keys,
+                           macs_if_fired=macs, macs=f*macs + (lin(lev.fire_lin) if lev.fire else 0)))
+    out['levels'] = levels; out['readout'] = work_per_target(b, H - 1)
+    ro = out['readout']; ro_macs = ro['episodic_macs'] + ro['unit_macs'] + ro['proposal_macs']
+    out['total_macs'] = sum(x['macs'] for x in l1) + sum(x['macs'] for x in levels) + ro_macs
+    out['state_rows_moved'] = sum(x.get('rows_written', 0) + x.get('rows_read', 0) for x in l1) + sum(x['fire_rate']*(x['old_slot_writes'] + 1 + x['values_delivered']) for x in levels)
+    return out
+
+
 def lanes_nll_carry(model, block, row_chunk, keep, stats=False, adjacent=False):
     """Mean NLL over consecutive lanes [N, L+1] of one stream with persistent memory: each lane starts from the previous lane's
     carried memory (last `keep` slots and the level-1 temporal state). Same targets as lanes_nll; more history. adjacent=True:
@@ -409,7 +438,10 @@ def contracts():
         for p_ in mq.parameters(): p_.add_(torch.randn_like(p_)*0.1)
         fq = mq.lane_nll(x.clone(), y); res['slot_pk_normalisation_sum'] = sum(math.exp(-mq.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
         res['slot_pk_causal_prefix_max_diff'] = float((mq.lane_nll(x2, y2)[0, :p - 1] - fq[0, :p - 1]).abs().max())
-    ok_r = abs(res['slot_pk_normalisation_sum'] - 1) < 1e-4 and res['slot_pk_causal_prefix_max_diff'] < 1e-5 and abs(res['sparse_read_normalisation_sum'] - 1) < 1e-4 and res['sparse_read_causal_prefix_max_diff'] < 1e-5 and res['read_probes_forward_unchanged'] < 1e-5 and res['read_probe_credit_to_level_keys'] > 0
+    mq.eval()
+    with torch.no_grad(): mq.lane_nll(x.clone(), y)
+    wk = member_work(mq, 39, [s_.get('fire_rate') for s_ in mq._mem[2]]); res['member_work_total_macs'] = wk['total_macs']; res['member_work_state_rows'] = wk['state_rows_moved']
+    ok_r = wk['total_macs'] > 0 and wk['levels'][0]['values_delivered'] == 5 and wk['level1'][0]['key_scores'] == 16 and abs(res['slot_pk_normalisation_sum'] - 1) < 1e-4 and res['slot_pk_causal_prefix_max_diff'] < 1e-5 and abs(res['sparse_read_normalisation_sum'] - 1) < 1e-4 and res['sparse_read_causal_prefix_max_diff'] < 1e-5 and res['read_probes_forward_unchanged'] < 1e-5 and res['read_probe_credit_to_level_keys'] > 0
     # evidence-weighted old corrections through the whole member: exact law, causal, carry
     torch.manual_seed(0); mn = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, old_norm=True); mn.eval()
     with torch.no_grad():
@@ -507,10 +539,12 @@ def main():
     fl0 = np.asarray(val[25165824:25165824 + 1025]).astype(np.int64)[None]; xf, yf = torch.from_numpy(fl0[:, :-1]), torch.from_numpy(fl0[:, 1:]); model.eval()
     with torch.no_grad(), FlopCounterMode(display=False) as fci: model.lane_nll(xf, yf)              # measured inference work of the whole member (level 1, every level, readout) per target at history up to 1,023
     inference = dict(flops_per_target_window_1024=fci.get_total_flops()/1024, scope='measured, eval mode, one flagship window, reset lane (dense reference execution)')
+    fire_rates = [st_.get('fire_rate') for st_ in model._mem[2]] if any(l_.fire for l_ in model.levels) else None   # measured on that flagship window
+    active = member_work(model, 1023, fire_rates, a.carry)
     result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
-                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference,
+                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, active_work=active,
                   reference=dict(cerl_4M='curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)', diagnostic_planB_L8_4M_flagship=5.8414), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); result['checkpoint'] = f'experiments/results/token_language/{a.tag}.pt'
     out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()

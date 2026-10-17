@@ -234,3 +234,31 @@ Still open:
 - event-driven execution of the depth levels (their reads over all T slots are dense scoring; product keys over slots would need learned slot keys);
 - sparse training execution;
 - AWS's P1 items in its local learner.
+
+## 11. Sixth round, 17 October: where the remaining dense work is
+
+**Active work per target** is now reported in every RMR and GPU-driver result (`member_work`). It is modelled event-driven work at history H, with firing rates measured on a flagship window, and broken down into key scores, values delivered, state rows written and read, and MACs.
+
+Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried slots where carry is used (one model instance each, untrained, fire rate 1):
+
+| Member | MMACs per target | State rows moved | Level-1 key scores / rows read | Level read keys / values | Readout episodic candidates |
+| --- | ---: | ---: | --- | --- | ---: |
+| K4 residdecay (reference) | 3.40 | 3,087 | dense recurrence | 1,024 / 1,024 | 2,046 |
+| Integrated | 4.51 | 3,855 | dense recurrence | 1,280 / 1,280 | 2,558 |
+| Native L1, 4,096 slots, dense read | 6.63 | 12,055 | 8,192 / 4,096 | 1,280 / 1,280 | 2,558 |
+| Sparse native | 4.06 | 87 | 256 / 8 | 1,280 / 16 | 2,558 |
+
+**Finding.** Sparse native cuts state traffic 44× against the integrated member, but MACs barely move. What remains is **discovery over history**: every level read scores every past slot (H keys, plus the old-correction algebra), and the readout's episodic race scores 2H pointer candidates. That O(H)-per-token scan is the attention-like cost left in the member, and it grows with context.
+
+**Design for the next step: indexed history discovery** (not implemented; it needs evidence that the sparse arm holds quality first).
+- Each memory slot is filed, when written, into one of C regions by a race of its key against C region keys (product keys: 2√C scores). The filing is hard; region keys move with training, VQ-style.
+- A read races over regions first (2√C scores), then over the slots in its top-b regions (about H·b/C candidates), using exact slot scores including corrections. The two-stage score is S_ts + log π_q(region(s)), so region keys get credit from the query side.
+- Probe regions (zero-forward) give credit to regions not read.
+- The same index can serve the readout's episodic race, with the normaliser taken over the causally chosen candidate set, so the law stays normalised. The risk is losing copy sources outside the candidate set; the contract must measure copy-hit coverage.
+- Prior art for clustered attention (e.g. routing attention, Roy et al. 2021) is cited. What is ours: memory filed by races at write time, with refinement, decay and probes.
+- Contracts needed: normalisation over the candidate set; causality (regions assigned at write time from data at or before t); exactness when b = C; coverage of copy hits; work per token O(√C + H·b/C).
+
+**Review findings this round:**
+1. Results lacked the active-work breakdown AGENTS.md requires; fixed.
+2. The AWS queue holds 8 16M arms plus 2 smokes, about two days of slot time, and no arm has started. The per-target and 1,024-lane arms are attributable inside the ladder (fixes → integrated) and are deprioritised, so the decisive ladder reads out sooner.
+3. No new mechanism is admitted until the ladder reports. Mechanisms added without results would now be busywork.

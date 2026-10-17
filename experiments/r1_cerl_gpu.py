@@ -85,6 +85,15 @@ def main():
                     nll, stt = model.lane_nll(x, y, (r0, min(r0 + a.row_chunk, L)), stats=True, msg=msg); tot += nll.float().sum().item(); n += nll.numel()
                     for k, v in stt.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
         model.train(); r = dict(nll=tot/n, targets=int(n), native={k: v/n for k, v in acc.items()}); r['native']['native_gain'] = r['native']['bg_only_nll'] - r['nll']; return r
+    def active_work():                                                                              # modelled event-driven work per target (fire rates measured on one flagship window)
+        if a.model != 'rmr': return None
+        from r1_rmr import member_work
+        model.eval()
+        with torch.no_grad(), torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'):
+            w = torch.from_numpy(fl_l[:1].astype(np.int64)).to(dev); model.lane_nll(w[:, :-1], w[:, 1:])
+        fr = [st_.get('fire_rate') for st_ in model._mem[2]] if any(l_.fire for l_ in model.levels) else None; model.train()
+        return member_work(model, 1023, fr, a.carry)
+
     def carried():                                                                                  # persistent memory across each protocol's consecutive lanes (same targets)
         if not a.carry: return None
         from r1_rmr import lanes_nll_carry
@@ -113,7 +122,7 @@ def main():
     res = dict(status='completed', battle='R1', stage='native causal event race member (theory 169), GPU one pass', tag=a.tag, args=vars(a), parameters=params, units=a.units, train_flops_per_target=fpt,
                train_tokens=steps*tps, train_flops=fpt*steps*tps, steps=steps, train_wall_s=st['wall'], resumes=st['resumes'], evals=st['evals'], milestones=st['milestones'],
                prequential_by_eighth=[float(np.mean(st['losses'][i:i + n8])) for i in range(0, steps, n8)], select=ev(sel_l), score_65528=st['milestones'][-1]['score_65528'], flagship=ev(fl_l), carried=carried(),
-               work_per_target_at_history_1023=work_per_target(model.base if a.model == 'rmr' else model, 1023), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
+               work_per_target_at_history_1023=work_per_target(model.base if a.model == 'rmr' else model, 1023), active_work=active_work(), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
                source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl_gpu.py', 'experiments/r1_cerl.py', 'experiments/r1_rmr.py', 'experiments/r1_deep_keyed_lm.py')})
     out.write_text(json.dumps(res, indent=1) + '\n'); state_path.unlink()
     print('RESULT', json.dumps({k: res[k] for k in ('select', 'score_65528', 'flagship', 'train_flops', 'parameters')}), flush=True)
