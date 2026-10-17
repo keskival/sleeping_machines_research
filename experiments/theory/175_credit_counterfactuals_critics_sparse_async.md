@@ -268,3 +268,17 @@ by the coverage gate.
 
 With the horizon term, these give a computable bound on how far each run is from the full route-tree model at any time. A run
 whose certificates stay large is optimising a model far from the full tree. That is a measured diagnosis, not a guess.
+
+## 9. Implemented, 17 October evening
+
+- Threshold (price) read races `--read-price k` (§4): every slot whose full-race log-probability clears −λ is read, the winner
+  always, capped by `--read-topk`; λ is a buffer steered toward k reads after each training forward. Contracts v27.
+- TD critic over persistent memory `--carry-critic 1` (T3): per-tensor linear critics (level-1 slots, each level's new-slot
+  corrections, slot-memory states) predict the next lane's cotangent. The surrogate ⟨sg(C(M_out)), M_out⟩ credits this lane's
+  writes now. The measured cotangent on the carried-in memory (this lane's own credit plus the prediction for the next lane,
+  carried back exactly) is the TD(0) target. No extra lane graph and no lag; zero at init equals the member without a critic.
+  Contracts v27.
+- Credit-guided write probes `--write-guided 1` (T1): half sampled from the writer's read race over unselected older slots,
+  half uniform; zero-forward and causal. Contracts v28. The exact dual-race field (all addresses, a post-backward pass over
+  future read weights) remains the full form.
+Paired AWS arms on the native member: price, critic, guided.
