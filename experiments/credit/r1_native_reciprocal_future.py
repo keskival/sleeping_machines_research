@@ -33,6 +33,7 @@ from sleeping_machines.sampled_compositional_credit import enable_sampled_compos
 from sleeping_machines.deferred_episodic_writer_credit import enable_deferred_episodic_credit
 from sleeping_machines.native_future_update_credit import NativeFutureUpdateCredit, addressed_mix_action
 from tests.test_native_query_migration import identical
+WORK = {}
 
 
 def sha(path):
@@ -74,6 +75,8 @@ def dump(path, model, opt, state, g, a, cursor):
 
 
 def update(model, opt, state, g, a, data, cursor, targets=4):
+    before = {k:v for k,v in state.items() if isinstance(v,int)}
+    bank_before = {k:getattr(state['cause_bank'],k) for k in ['keys_examined','index_entries_examined','delivered','writes']}
     tokens = torch.from_numpy(np.asarray(data[cursor:cursor+targets+1]).astype(np.int64))
     model.train(); opt.zero_grad(set_to_none=True)
     nll, obj, _, packets, _ = model.stream_nll(tokens[:-1], tokens[1:], state, g, a)
@@ -81,7 +84,17 @@ def update(model, opt, state, g, a, data, cursor, targets=4):
     obj.backward(); model.deliver_credit(packets, state)
     mix_gradient = model.core.mix.grad.detach().clone()
     norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
+    WORK['optimizer_coordinates_visited'] = WORK.get('optimizer_coordinates_visited',0)+sum(p.numel() for p in model.parameters() if p.grad is not None)
     opt.step()
+    WORK['actor_target_presentations'] = WORK.get('actor_target_presentations',0)+targets
+    for k,v in state.items():
+        if isinstance(v,int):
+            if '_max_' in k or k.endswith('_max'):
+                WORK['maximum_'+k]=max(WORK.get('maximum_'+k,0),v)
+            else:
+                WORK[k]=WORK.get(k,0)+v-before.get(k,0)
+    for k,v in bank_before.items():
+        WORK['index_'+k]=WORK.get('index_'+k,0)+getattr(state['cause_bank'],k)-v
     return nll.detach().double().tolist(), mix_gradient, float(norm)
 
 
@@ -148,8 +161,10 @@ def main():
         with tempfile.TemporaryDirectory(prefix='reciprocal-native-', dir=ROOT/'.git') as folder:
             anchor = Path(folder)/'before_action.pt'; issued = Path(folder)/'issued.pt'
             baseline = Path(folder)/'continuous_baseline.pt'
+            immediate = Path(folder)/'immediate_policy.pt'
             if continuation:
                 dump(baseline, model, opt, state, g, a, cursor)
+                dump(immediate, model, opt, state, g, a, cursor)
             if continuation and progress.exists():
                 resumed = torch.load(progress, map_location='cpu', weights_only=False)
                 assert resumed['source_sha256']==loaded_sources and resumed['parent_sha256']==digest
@@ -159,6 +174,7 @@ def main():
                 critic.load_state_dict(resumed['critic']); meta.load_state_dict(resumed['meta'])
                 credit_state=resumed['credit_state']; cg.set_state(resumed['cg']); ca.set_state(resumed['ca'])
                 policy_rng.set_state(resumed['policy_rng']); torch.save(resumed['baseline'],baseline)
+                torch.save(resumed['immediate'],immediate); WORK.update(resumed['work'])
                 past_runtime=resumed['recorded_process_s'];past_peak=resumed['max_rss_kb']
                 del resumed
             for episode in range(len(rows), episodes):
@@ -201,6 +217,8 @@ def main():
                                  (saved['model'],saved['optimizer'],saved['state'],saved['g'],saved['alt'],saved['rng']))
                 del saved
                 reference_losses = advance(model, opt, state, g, a, data, cursor, horizon)
+                if sign == 0:
+                    assert actual_losses == reference_losses, 'no-op intervention changed continuation forecasts'
                 assert quotes.detach().tolist() == predictions, 'future audit changed an issued quote'
                 advantage = (sum(actual_losses)-sum(reference_losses))/horizon
                 teaching = critic.learn_revealed(quotes[selected], advantage, all_packets, credit_state, meta)
@@ -223,6 +241,18 @@ def main():
                     rows[-1]['continuous_baseline_losses'] = baseline_losses
                     rows[-1]['continuous_baseline_nll'] = sum(baseline_losses)/(horizon+4)
                     del model, opt, state, g, a; gc.collect()
+                    saved = torch.load(immediate, map_location='cpu', weights_only=False)
+                    assert saved['cursor']==cursor-4
+                    model, opt, state, g, a = actor(saved); del saved
+                    immediate_support, local_gradient, _ = update(model,opt,state,g,a,data,cursor-4,targets=4)
+                    greedy_depth=int(local_gradient.flatten(1).square().sum(1).argmax())
+                    greedy_action=addressed_mix_action(model,{'core.mix':local_gradient},greedy_depth)
+                    with torch.no_grad():model.core.mix[greedy_depth].sub_(greedy_action)
+                    immediate_future=advance(model,opt,state,g,a,data,cursor,horizon)
+                    dump(immediate,model,opt,state,g,a,cursor+horizon)
+                    rows[-1]['immediate_policy_losses']=immediate_support+immediate_future
+                    rows[-1]['immediate_policy_depth']=greedy_depth
+                    del model,opt,state,g,a;gc.collect()
                 # Never select the audit's better endpoint retrospectively.
                 saved = torch.load(issued, map_location='cpu', weights_only=False)
                 model, opt, state, g, a = actor(saved); cursor = saved['cursor']; del saved
@@ -232,6 +262,7 @@ def main():
                     actor_state=dict(model=model.state_dict(),optimizer=opt.state_dict(),state=state,
                                      g=g.get_state(),alt=a.get_state(),rng=torch.get_rng_state(),cursor=cursor)
                     bundle=dict(actor=actor_state,baseline=torch.load(baseline,map_location='cpu',weights_only=False),
+                                immediate=torch.load(immediate,map_location='cpu',weights_only=False),work=dict(WORK),
                                 critic=critic.state_dict(),meta=meta.state_dict(),credit_state=credit_state,
                                 cg=cg.get_state(),ca=ca.get_state(),policy_rng=policy_rng.get_state(),
                                 rows=rows,start_cursor=start_cursor,parent_sha256=digest,source_sha256=loaded_sources,
@@ -247,6 +278,9 @@ def main():
                     assert sha(baseline_final)==sha(baseline)
                 else:
                     shutil.copyfile(baseline,baseline_final)
+                immediate_final=ROOT/f'experiments/results/credit/{args.tag}.immediate.pt'
+                if immediate_final.exists():assert sha(immediate_final)==sha(immediate)
+                else:shutil.copyfile(immediate,immediate_final)
         if not continuation:
             assert rows[0]['parameter_change_norm'] > 0
         assert all(r['issued_writer_replays'] > 0 for r in rows)
@@ -254,8 +288,13 @@ def main():
                       parent_sha256=digest, parent_cursor=start_cursor, source_migration=migration,
                       actual_train_targets=episodes*(horizon+4), additional_counterfactual_targets=episodes*horizon,
                       additional_continuous_baseline_targets=episodes*(horizon+4) if continuation else 0,
+                      additional_immediate_policy_targets=episodes*(horizon+4) if continuation else 0,
                       forward_depth=8, credit_depth=8,
                       credit_parameters=sum(p.numel() for p in critic.parameters()),
+                      native_credit_work_counts={k:v for k,v in credit_state.items() if isinstance(v,int)},
+                      native_credit_storage=critic.core.storage(credit_state),
+                      native_actor_storage=model.core.storage(state),
+                      native_episodic_storage=state['cause_bank'].storage(),
                       actor_parameters=sum(p.numel() for p in model.parameters()),
                       final_cursor=cursor,
                       scope='Two chronological TRAIN integration episodes, not a predictive win. Actor retains ordinary AdamW, numerical memory, indexed causes, temporal races, joint queries, full-depth sampled producer credit and deferred episodic writer credit. Credit machine is an eight-layer native persistent race model. Actions are one addressed mix-block step with both signs and no-op; other interventions remain outside this gate. Actual finite future branches include subsequent actor state and ordinary learning. No future labels enter issued action selection, no hindsight rollback, TEST, dense control or hardware/work win. Conditional eligibility and changing-parameter replay remain approximate; action-value training is not an exact whole-history meta-gradient.')
@@ -263,15 +302,21 @@ def main():
             result.pop('gate',None)
             issued_losses=[v for row in rows for v in row['support_losses']+row['issued_losses']]
             baseline_losses=[v for row in rows for v in row['continuous_baseline_losses']]
-            result.update(scope='One acquired parent, one chronological TRAIN seed and 32 prospective episodes. Two complete native learning pipelines share initial parameters, Adam and numerical state. The candidate adds a native future-valued update policy and paid controlled audits; the reference continues its own ordinary causal learning and persistent state. Positive prequential gain favors the reciprocal learner. No TEST, public benchmark, iso-compute, hardware or arbitrary-action/full-history-exact claim. Actual action consequences train the critic after outcomes; the issued branch is never replaced retrospectively.',
+            immediate_losses=[v for row in rows for v in row['immediate_policy_losses']]
+            result.update(scope='One acquired parent, one chronological TRAIN seed and 32 prospective episodes. Three complete native learning pipelines share initial parameters, Adam and numerical state. The candidate adds a native future-valued update policy and paid controlled audits. References retain ordinary causal learning and persistent state; the second also takes an immediate-loss-greedy step in the same action family. Positive prequential gain favors the reciprocal learner. No TEST, public benchmark, iso-compute, hardware or arbitrary-action/full-history-exact claim. Actual action consequences train the critic after outcomes; the issued branch is never replaced retrospectively.',
                           baseline_checkpoint=str(baseline_final.relative_to(ROOT)),baseline_checkpoint_sha256=sha(baseline_final),
+                          immediate_policy_checkpoint=str(immediate_final.relative_to(ROOT)),immediate_policy_checkpoint_sha256=sha(immediate_final),
                           prequential_nll=sum(issued_losses)/len(issued_losses),
                           continuous_baseline_nll=sum(baseline_losses)/len(baseline_losses),
                           prequential_nll_gain=(sum(baseline_losses)-sum(issued_losses))/len(issued_losses),
+                          immediate_policy_nll=sum(immediate_losses)/len(immediate_losses),
+                          prequential_nll_gain_vs_immediate=(sum(immediate_losses)-sum(issued_losses))/len(issued_losses),
                           mean_audited_action_advantage=sum(row['target_advantage'] for row in rows)/episodes,
                           critic_mean_squared_error=sum(row['squared_error'] for row in rows)/episodes,
                           zero_predictor_mean_squared_error=sum(row['target_advantage']**2 for row in rows)/episodes)
     result.update(source_sha256=loaded_sources,
+                  native_actor_work_counts=dict(WORK),
+                  work_scope='All actual actor calls including counterfactual and reference branches; native/index operation counters and dense optimizer coordinates visited, not a complete arithmetic/special-function/traffic count.',
                   elapsed_s=past_runtime+time.monotonic()-started,
                   process_scope='Recorded intervals including audit, actor and credit learning; unsaved interruption tails excluded. No process-cost win claimed.',
                   max_rss_kb=max(past_peak,resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
