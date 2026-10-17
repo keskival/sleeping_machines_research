@@ -283,3 +283,45 @@ Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried 
 - **Filing collapse:** balanced filing (`--index-balance γ`). Per-region filing biases are nudged toward uniform load after each training forward (auxiliary-loss-free balancing, as in DeepSeek-V3). They are buffers (checkpointed), fixed in evaluation, and filing stays causal. Contract: biases move only in training; law exact, causal, carry exact.
 - **Resume identity:** `--product-keys` (added to the RMR command line in round 3) was missing from the behaviour-preserving defaults, so the running K4 (Curie) and K8 (AWS) runs could not have resumed under current source. Fixed and verified against the live checkpoints (K4 decay and PTB).
 - **No results yet:** Curie runs the sparse native member itself after the K4 decay run (chain v33: e2e smoke → RSS/time gate → run → PTB resume). AWS skips that rung.
+
+## 14. Depth and data: the two halves of the slope (17 October, founder)
+
+Founder: the slope gap is about depth, and depth is two things: (a) effective learning over compositional depth, and
+(b) adding depth as data grows, because useful depth tracks roughly the logarithm of the data: each level represents
+one more layer of hierarchical decomposition, and a level is only learnable once the data contain enough instances of
+its parts. The random hierarchy model (Cagnetta, Petrini, Wyart et al.) gives this form: resolving L levels of a
+hierarchy with branching m needs a sample count that grows like m^L, so the resolvable depth with D samples grows like
+log D / log m, and loss falls stepwise as each further level becomes resolvable.
+
+What our runs already say (one seed, FineWeb development, one pass):
+
+| data | dense depth gain | native depth gain |
+| --- | --- | --- |
+| 4M | L2 → L8: 0.024 (5.865 → 5.841) | K = 2/4/8 vs CERL: within 0.01 |
+| 16M | L4 → L8 → L16: 0.052, 0.015 (5.270, 5.218, 5.203) | K = 4 old-slot vs CERL: 0.073 |
+
+Both families gain more from depth as data grow, and both saturate early at a fixed data size, which is (b). Depth
+alone does not explain the whole slope gap at 4–16M: the shallow dense model gains 0.595 per 4× data (L2 at 4M 5.865
+→ L4 at 16M 5.270) against CERL's 0.403, and the best-depth envelopes are 0.638 (dense) vs about 0.47 (native). The
+remaining candidate is usable capacity: CERL has more parameters (7.0M vs 3.8M) but used 124 of 1,024 concept units
+(zero init, no balance, weight decay on dormant tables, fixed since). A model that cannot put new statistics into new
+capacity flattens with data whatever its depth.
+
+Consequences:
+1. Compare scaling by envelopes: for each data size, the best depth of each family. A fixed-depth curve against
+   another fixed-depth curve mixes slope with depth mismatch.
+2. Test (a) apart from data on a synthetic hierarchy with known depth L: does a K-level member reach the m^L sample
+   scale, and does removing level k remove one hierarchy level? This separates credit failure (C1–C9) from data
+   sufficiency, which language at 4–16M cannot do.
+3. Grow depth with data. A new level enters at its ReZero gate 0, so insertion is exactly function-preserving (C3):
+   one run can add a level each time the data multiply by a fixed factor, and is compared with fixed-K runs at the
+   endpoints.
+4. Make depth cheap through timescale. If level k fires at the rate of its hierarchical events, about m^-k per token,
+   active work for K levels is a geometric sum bounded independently of K, while a dense stack pays every layer on every
+   token. This needs durable upper-level events (the CERL-H dead end: causes changed on 79% of tokens) and measured
+   firing rates per level (`--fire`, untested in training).
+5. The capacity lever is tested by the fixed 16M capacity arm (`--wd-groups 1 --unit-init 0.02 --balance 0.01`):
+   the slope from 4M to 16M must move toward the dense slope if usable capacity is the cause.
+
+Predictions to falsify: K = 8 does not beat K = 4 at 16M by more than about 0.02 but does at 64M; the fixed-capacity
+arm steepens the 4M → 16M slope; a grown-depth run matches fixed K = 4 at 16M with less training work.

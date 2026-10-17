@@ -99,6 +99,14 @@ Update this ledger whenever a language depth/composition result completes.
 ## H7. Sparse native member (theory 173 §10), 17 October
 - Sparse level reads with read probes; product-key slot level 1 with sparse reads (256 key scores per token instead of 8,192; event-driven execution 12 state rows per token instead of 4,100, measured). AWS: `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` after the full-native arm; e2e smoke v3 and a GPU-driver CPU smoke gate it.
 
+## H8. Depth versus data (theory 173 §14), 17 October
+- Founder: useful depth grows roughly with the logarithm of the data (each level is one more layer of hierarchical
+  decomposition), and depth needs both trainability and enough data per level. Both families gain more from depth at
+  16M than at 4M (dense L4 → L16 0.067, native K4 0.073; at 4M 0.024 and < 0.01).
+- Depth does not explain the whole slope gap: shallow dense gains 0.595 per 4× data vs CERL 0.403. Open candidate:
+  usable capacity (CERL used 124 of 1,024 concept units). Tests: envelope comparison, synthetic hierarchy with known
+  depth, grown depth with ReZero insertion, 64M K4/K8, fixed-capacity 16M arm.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).
