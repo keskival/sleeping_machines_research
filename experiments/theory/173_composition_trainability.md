@@ -219,3 +219,18 @@ Still open:
 - a sparse reads arm (`--read-topk`) at 16M;
 - event-driven sparse execution (wall-time savings from firing and slot sparsity);
 - AWS's own P1 items in the native local learner: direct producer-input edges, nonlinear alternative returns, and the critic's moving feature coordinates.
+
+## 10. Fifth round, 17 October: sparse reads and sublinear discovery
+
+- **Sparse level reads with read probes** (`--read-topk k --read-explore E`). A level's read is a hard race among the top-k slots. In training, E unread slots s ≤ t get a zero-forward weight p − sg(p), with p = exp(score − logZ_topk), and the read becomes r − (Σ probes)·sg(r). The gradient with respect to p is v_s − r: the first-order value of adding s to the mixture. Without probes a top-k read never credits unread slots (C7). Contracts: eval law exact and causal; probes leave the training forward unchanged and credit the level's keys.
+- **Slot level 1: sparse reads with probes** (`--slot-read-topk k`) and **product-key addressing** (`--slot-pk 1`). The write and read races find their exact top-k over n² slots from 2n half-key scores, so 4,096 slots cost 256 key scores per token instead of 8,192. Contract: exact top-k (1.8e-7).
+- **Event-driven execution** (`SlotMemory.event_forward`, inference). Per token it writes only the m chosen slots, with lazy exact decay from each slot's last write, and delivers only the read slots. It equals the chunked execution (3e-8, also with product keys). Measured at 4,096 slots, 4 written, 8 read: 12 state rows touched per token, against 4,100 with a dense read. Training still uses the dense chunked reference (CPU wall time 0.53 s versus 0.67 s per layer step).
+- **Review findings this round:**
+  - Dense slot-key scoring contradicted capacity beyond activity (fixed by product keys).
+  - Top-k reads without probes gave no credit to unread slots (fixed).
+  - Neither e2e smoke exercised the sparse paths, and the GPU driver had not run end to end. The AWS e2e smoke v3 and a GPU-driver CPU smoke cover both.
+
+Still open:
+- event-driven execution of the depth levels (their reads over all T slots are dense scoring; product keys over slots would need learned slot keys);
+- sparse training execution;
+- AWS's P1 items in its local learner.

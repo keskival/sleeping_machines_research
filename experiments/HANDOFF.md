@@ -2,6 +2,13 @@
 
 **Current winning path, 17 October 2026.** Curie's old-slot K4 refinement improves flagship DEV to4.9901 versus CERL5.0634 and dense L16 5.2034 at16M; its long-lane score5.0874 regresses versus5.0282. Current product-ordered learned-decay K8 fit aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1 is admitted and running in AWS slot5, using source-matched Curie v3 algebra contracts. Carrier-backed temporal state, dense reads, stationary fixed-weight development scoring and lane resets are explicit; no fully event-local or online win claimed. In parallel, slot2 has recovered the completed native joint-credit arm without refitting and is finishing its online tape; then the full-depth child-credit arm trains from the identical parent. Two real-native tape-transition tests pass. Slot3's calibrated reciprocal trial and slot4's native document learner continue unchanged. The transition gate's result omitted source_sha256, causing post-run publication validation to report an error; the tests passed and the conditional recovery job launched correctly. See theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md. Latest investor validation:88/88 claims pass, no headline or prose failures. Remote main merged; conflicting previous generated artifacts remain preserved in autostash98d983256 while current remote publications are retained.
 
+**Fifth review round, 17 October 16:30 (Curie).** Added:
+- sparse level reads with read probes;
+- product-key slot addressing and sparse slot reads;
+- event-driven slot execution with measured state traffic (12 rows per token instead of 4,100 at 4,096 slots).
+
+AWS order: e2e v3 → integrated → native L1 → full native → sparse native → fixes → 65k capacity → per-target, plus the GPU-driver CPU smoke in any slot. Curie: the K4 decay run is at update 2,600 (chain v32), then the PTB resume.
+
 **Fourth review round, 17 October 15:30 (Curie).** Responding to AWS's architecture review (theory/ARCHITECTURE_REVIEW_20261017.md):
 - per-target writers now get full first-order input credit (exact, O(T d));
 - firing clocks run inside RMR-1 with carry (`--fire`);

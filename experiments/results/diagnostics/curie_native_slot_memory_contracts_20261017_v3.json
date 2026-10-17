@@ -1,0 +1,41 @@
+{
+ "chunked_equals_explicit": 1.4901161193847656e-08,
+ "causal_prefix_max_diff": 0.0,
+ "carry_equals_long_lane": 7.450580596923828e-09,
+ "write_density": 0.1875,
+ "expected_density": 0.1875,
+ "long_lane_read_bounded": 0.05905600264668465,
+ "event_driven_equals_chunked": 1.4901161193847656e-08,
+ "event_traffic_dense_read": {
+  "state_rows_touched_per_token": 19.0,
+  "dense_chunked_rows_per_token": 16,
+  "key_scores_per_token": 32,
+  "slots": 16,
+  "written": 3,
+  "read": 16
+ },
+ "sparse_read_event_equals_chunked": 2.9802322387695312e-08,
+ "event_traffic_sparse_read": {
+  "state_rows_touched_per_token": 7.0,
+  "dense_chunked_rows_per_token": 16,
+  "key_scores_per_token": 32,
+  "slots": 16,
+  "written": 3,
+  "read": 4
+ },
+ "pk_topk_exact": 1.7881393432617188e-07,
+ "pk_event_equals_chunked": 2.9802322387695312e-08,
+ "event_traffic_pk": {
+  "state_rows_touched_per_token": 7.0,
+  "dense_chunked_rows_per_token": 16,
+  "key_scores_per_token": 16,
+  "slots": 16,
+  "written": 3,
+  "read": 4
+ },
+ "read_probes_forward_unchanged": 0.0,
+ "read_probe_credit_to_read_keys": 0.08752705156803131,
+ "probes_forward_unchanged": 0.0,
+ "probe_credit_to_write_keys": 0.21646641194820404,
+ "status": "passed"
+}

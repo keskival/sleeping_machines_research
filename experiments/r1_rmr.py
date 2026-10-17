@@ -35,8 +35,8 @@ class CorrectionLevel(nn.Module):
         return F.softplus(self.log_beta) if self.old_decay > 0 else None
 
     """One residual-memory level: race read over slots, zero-initialised correction write (new slot + read slots)."""
-    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False):
-        super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero
+    def __init__(self, d, dk, top_m, read_topk=0, rezero=True, old_decay=0.0, per_target=False, write_race=False, write_explore=0, fire=False, read_explore=0):
+        super().__init__(); self.dk, self.top_m, self.read_topk, self.rezero = dk, top_m, read_topk, rezero; self.read_explore = read_explore if read_topk else 0
         self.old_decay, self.per_target = old_decay, per_target and top_m > 0
         self.write_race, self.write_explore = write_race and top_m > 0, write_explore if top_m > 0 else 0
         assert not (self.write_explore and not self.write_race), 'write probes credit an address score: use --write-race 1 (probes on read weights would bend reads toward write targets)'
@@ -60,9 +60,9 @@ class CorrectionLevel(nn.Module):
 class RMR(nn.Module):
     cause_msgs = False
 
-    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0, fire=False, act_cost=0.0, old_norm=False):
+    def __init__(self, V, cls, words, cerl, levels=2, dk=64, top_m=4, chunk=64, read_topk=0, rezero=True, old_decay=0.0, old_per_target=False, write_race=False, write_explore=0, fire=False, act_cost=0.0, old_norm=False, read_explore=0):
         super().__init__(); self.base = CERL(V, cls, words, **cerl); d = cerl['d']; self.d = d; self.chunk = chunk; self.act_cost = act_cost; self.old_norm = old_norm
-        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire) for _ in range(levels - 1)); self.aux = None; self._px = None
+        self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire, read_explore) for _ in range(levels - 1)); self.aux = None; self._px = None
 
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
     @staticmethod
@@ -152,10 +152,18 @@ class RMR(nn.Module):
                 S = (q @ lev.k(base_prime).transpose(1, 2) + self.corr_scores(q, wr, rows, lev.k))/math.sqrt(lev.dk)
                 dist = (rows[:, None] - torch.arange(T, device=dv)[None, :]).to(A.dtype)
                 S = (S - F.softplus(lev.log_rate)*torch.log1p(dist.clamp_min(0))).masked_fill(dist < 0, float('-inf'))
+                S_full = S; probe = None
                 if lev.read_topk and lev.read_topk < T:                                            # sparse read: race over the top-k slots only (0 = dense softmax over all past slots)
                     kth = S.topk(min(lev.read_topk, T), -1).values[..., -1:]; S = S.masked_fill(S < kth, float('-inf'))
                 a = torch.softmax(S, -1)                                                           # read race over slots s <= t
+                if lev.read_explore and self.training:                                             # read probes (theory 173 C7): E unread slots s <= t with zero-forward weight p - sg(p),
+                    lz = torch.logsumexp(S, -1, keepdim=True)                                      # p = exp(score - logZ_topk); d/dp = value_s - read: would reading s help?
+                    ex = (torch.rand(B, c1 - c0, lev.read_explore, device=dv)*(rows + 1)[None, :, None].to(A.dtype)).long()
+                    valid = torch.isinf(S.gather(-1, ex)) & torch.isfinite(S_full.gather(-1, ex))
+                    pr = torch.exp(S_full.gather(-1, ex) - lz).masked_fill(~valid, 0.0); qp = pr - pr.detach()
+                    a = a.scatter_add(-1, ex, qp); probe = qp.sum(-1)
                 r = a @ base_prime + self.corr_values(a, wr, rows)
+                if probe is not None: r = r - probe[..., None]*r.detach()
                 dnew, dold = lev.g(torch.cat([u, lev.nr(r)], -1)).chunk(2, -1)
                 if lev.top_m:                                                                      # write corrections into top-m older slots (0 = dense-layer-style stack: current slot only)
                     older = dist > 0
@@ -383,6 +391,25 @@ def contracts():
         res['fire_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
     ok_f = res['fire_zero_corrections_equal_cerl'] < 1e-5 and abs(res['fire_normalisation_sum'] - 1) < 1e-4 and res['fire_causal_prefix_max_diff'] < 1e-5 and res['fire_train_equals_eval'] < 1e-5 \
         and res['fire_carry_equals_long_lane'] < 1e-4 and 0 < min(res['fire_rates']) <= max(res['fire_rates']) <= 1
+    # sparse reads with read probes (levels and slot level 1): eval law exact and causal; probes change no training forward value, add credit to read keys
+    torch.manual_seed(0); mr = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_explore=2, slot_read_topk=4), levels=3, dk=16, top_m=3, chunk=8, read_topk=5, old_decay=0.05, old_per_target=True, write_race=True, read_explore=2); mr.eval()
+    for t_ in mr.base.tm: t_.CHUNK = 8
+    with torch.no_grad():
+        for p_ in mr.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        fr = mr.lane_nll(x.clone(), y); res['sparse_read_normalisation_sum'] = sum(math.exp(-mr.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        res['sparse_read_causal_prefix_max_diff'] = float((mr.lane_nll(x2, y2)[0, :p - 1] - fr[0, :p - 1]).abs().max())
+    m0r = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_explore=0, slot_read_topk=4), levels=3, dk=16, top_m=3, chunk=8, read_topk=5, old_decay=0.05, old_per_target=True, write_race=True, read_explore=0)
+    m0r.load_state_dict(mr.state_dict())
+    for t_ in m0r.base.tm: t_.CHUNK = 8
+    mr.train(); m0r.train(); le = mr.lane_nll(x.clone(), y); l0 = m0r.lane_nll(x.clone(), y); res['read_probes_forward_unchanged'] = float((le - l0).abs().max())
+    le.mean().backward(); l0.mean().backward(); res['read_probe_credit_to_level_keys'] = float((mr.levels[0].k.weight.grad - m0r.levels[0].k.weight.grad).abs().max())
+    torch.manual_seed(0); mq = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_explore=2, slot_read_topk=4, slot_pk=True), levels=3, dk=16, top_m=3, chunk=8, read_topk=5, write_race=True, read_explore=2); mq.eval()
+    for t_ in mq.base.tm: t_.CHUNK = 8
+    with torch.no_grad():
+        for p_ in mq.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        fq = mq.lane_nll(x.clone(), y); res['slot_pk_normalisation_sum'] = sum(math.exp(-mq.lane_nll(x.clone(), torch.cat([y[:, :25], torch.tensor([[v]]), y[:, 26:]], 1))[0, 25].item()) for v in range(V))
+        res['slot_pk_causal_prefix_max_diff'] = float((mq.lane_nll(x2, y2)[0, :p - 1] - fq[0, :p - 1]).abs().max())
+    ok_r = abs(res['slot_pk_normalisation_sum'] - 1) < 1e-4 and res['slot_pk_causal_prefix_max_diff'] < 1e-5 and abs(res['sparse_read_normalisation_sum'] - 1) < 1e-4 and res['sparse_read_causal_prefix_max_diff'] < 1e-5 and res['read_probes_forward_unchanged'] < 1e-5 and res['read_probe_credit_to_level_keys'] > 0
     # evidence-weighted old corrections through the whole member: exact law, causal, carry
     torch.manual_seed(0); mn = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True, old_norm=True); mn.eval()
     with torch.no_grad():
@@ -403,7 +430,7 @@ def contracts():
         full2 = ms.lane_nll(xa, ya); l1 = ms.lane_nll(xa[:, :40], ya[:, :40]); pf = ms.carry_out(40); l2 = ms.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
         res['slots_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
     ok_s = res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
-    ok = ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
+    ok = ok_r and ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
     ok = ok and res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
     res['status'] = 'passed' if ok else 'failed'; return res
@@ -422,7 +449,7 @@ def main():
     A('--mode', choices=('train', 'contract'), default='train'); A('--tag', default=''); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
-    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
+    A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -438,8 +465,8 @@ def main():
     if a.carry:                                                                                    # carried lanes overlap by one token, so the inputs of consecutive lanes are one contiguous
         n_lanes = (a.train_tokens - 1)//(a.lane - 1)                                               # stream (non-overlapping rows drop each lane's last token from the inputs)
         train = np.asarray(train_all[:n_lanes*(a.lane - 1) + 1]).astype(np.int64)[np.arange(n_lanes)[:, None]*(a.lane - 1) + np.arange(a.lane)[None, :]]
-    cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore)
-    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm)); params = sum(p.numel() for p in model.parameters())
+    cerl = dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore, slot_read_topk=a.slot_read_topk, slot_pk=bool(a.slot_pk))
+    model = RMR(50257, cls, words, cerl, levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=a.chunk, read_topk=a.read_topk, rezero=bool(a.rezero), old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm), read_explore=a.read_explore); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     if a.carry:                                                                                    # persistent memory: batch row b walks its own contiguous stream of lanes (one pass, every lane once)
         per = n_lanes//a.batch; total = per; quarter = math.ceil(total/4)
