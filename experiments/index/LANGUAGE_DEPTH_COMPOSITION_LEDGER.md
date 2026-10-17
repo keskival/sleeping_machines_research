@@ -102,6 +102,10 @@ Update this ledger whenever a language depth/composition result completes.
 ## H7b. Shared old-slot decay at 16M (17 October)
 - K4 with one learned decay rate per level: 65,528 slice 5.0128 (no decay 5.0874, CERL 5.0282), flagship 5.0381 (no decay 4.9901), selection 5.2597 (5.1906). Fixes long lanes, costs short context; ahead of CERL on all three protocols. Repair: per-correction clocks (theory 174 P8) in the native flagship.
 
+## H7c. K8 at 16M (AWS, 17 October)
+- `aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1`: selection 5.2589, 65,528 slice 5.0143, flagship 5.0385, identical to K4 with the same shared decay (5.2597 / 5.0128 / 5.0381) at 2.1x training work (32.7M vs 15.5M FLOPs/target). Confirms the theory 173 §14 prediction "K = 8 does not beat K = 4 by more than about 0.02 at 16M": useful depth is data-limited at 16M.
+- Synthetic hierarchy (`curie_rhm_depth_K124_20261017_v1`, running): K = 2 resolves depth 0.92 against K = 1 0.41 at 4,096 trees (leaf NLL 2.076 vs 2.369), after losing at 1,024 trees (0.27 vs 0.38): the depth crossover falls between 1k and 4k trees, where the hierarchy's sample scale m^L v = 4,096 predicts it.
+
 ## H8. Depth versus data (theory 173 §14), 17 October
 - Founder: useful depth grows roughly with the logarithm of the data (each level is one more layer of hierarchical
   decomposition), and depth needs both trainability and enough data per level. Both families gain more from depth at
