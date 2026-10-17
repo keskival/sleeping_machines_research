@@ -24,7 +24,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);args=p.parse_args();torch.set_num_threads(1);start=time.monotonic()
     evidence_path=ROOT/'experiments/results/diagnostics/aws_r1_calibrated_reciprocal_continue_20261017_v1.json'
     evidence=json.loads(evidence_path.read_text());path=ROOT/evidence['ordinary_checkpoint'];assert sha(path)==evidence['ordinary_checkpoint_sha256']
-    sources=base.runtime_sources();sources[str(Path(__file__).relative_to(ROOT))]=sha(Path(__file__))
+    sources=base.runtime_sources();sources[str(Path(__file__).relative_to(ROOT))]=sha(Path(__file__));sources['experiments/native_slot_memory.py']=sha(ROOT/'experiments/native_slot_memory.py')
     # Exact native-head law check against the source used by the acquired trial.
     historical=subprocess.check_output(['git','show','75ca8099d:experiments/r1_cerl.py']);assert hashlib.sha256(historical).hexdigest()==evidence['source_sha256']['experiments/r1_cerl.py']
     legacy=types.ModuleType('legacy_r1_cerl_review');legacy.__file__=str(ROOT/'experiments/r1_cerl.py');exec(compile(historical,legacy.__file__,'exec'),legacy.__dict__)

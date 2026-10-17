@@ -125,8 +125,11 @@ class SlotMemory(nn.Module):
                 g = torch.exp(-r[rs]*(t - last[b, rs])); out.append((a[b, t, rs, None]*g[:, None]*st[b, rs]/(self.EPS + g*ms[b, rs])[:, None]).sum(0))
                 touched += len(ws) + len(rs)
         reads = torch.stack(out).view(L, B, d).transpose(0, 1)
+        # Materialize lazy timestamps once per lane for canonical persistent carry.
+        decay = torch.exp(-r[None, :]*(L - 1 - last))
+        self.last_state = ((st*decay[..., None]).detach(), (ms*decay).detach())
         keys = 4*self.n if self.pk else 2*S                                                        # key scores per token (write race + read race)
-        return reads, dict(state_rows_touched_per_token=touched/(B*L), dense_chunked_rows_per_token=S, key_scores_per_token=keys, slots=S, written=self.m, read=self.read_topk or S)
+        return reads, dict(state_rows_touched_per_token=touched/(B*L), carry_materialization_rows_per_lane=B*S, dense_chunked_rows_per_token=S, key_scores_per_token=keys, slots=S, written=self.m, read=self.read_topk or S)
 
 
 def contracts():

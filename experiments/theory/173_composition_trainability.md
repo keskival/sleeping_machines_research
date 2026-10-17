@@ -184,8 +184,8 @@ Disclosed protocol notes:
 
 ## Review qualification: writer input credit
 
-`RMR.slot_values` currently evaluates the old-correction contribution under `torch.no_grad()`.
-Its value informs per-target writing, but the derivative through that contribution is omitted.
+The earlier `RMR.slot_values` evaluated the old-correction contribution under `torch.no_grad()`; the current driver repairs it with exact accumulated-slot credit.
+The stopped version informed per-target writing but omitted its derivative; the current slot accumulator retains that first-order VJP.
 This is a stopped **first-order producer-input path**, not generally a second-order derivative:
 for a writer f_theta(v_phi), the missing term is J_f times d(v_phi)/d(phi). Other read paths still
 train old corrections. The memory-saving approximation must be stated as such and tested before

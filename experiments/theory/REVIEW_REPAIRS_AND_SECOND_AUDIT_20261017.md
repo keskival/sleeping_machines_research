@@ -70,12 +70,12 @@ schema, not merely tensor values.
 
 ## Completed evidence
 
-- `aws_r1_review_repairs_20261017_v8`: 14 numerical contracts PASS, 2.967s
-  complete process,381544KiB peakRSS. Finite-DAG expectations, nonlinear query
+- `aws_r1_review_repairs_20261017_v12`: 16 numerical contracts PASS, 3.139s
+  complete process,382960KiB peakRSS. Finite-DAG expectations, nonlinear query
   categorical gradient, factual parity, GC, native episodic integration,
   optimizer moments, epoch behavior and checkpoint recomputation are covered.
-- `aws_r1_review_acquired_20261017_v2`: acquired-model PASS,109.127s,
-  2465184KiB peakRSS; exact legacy head/factual forecasts and full
+- `aws_r1_review_acquired_20261017_v3`: acquired-model PASS,110.862s,
+  2463768KiB peakRSS; exact legacy head/factual forecasts and full
   actor/Adam/state/RNG recovery including fresh construction. Eight actual
   TRAIN targets and eight discarded recovery targets; eight nonlinear audits.
 - `aws_r1_writer_input_resource_20261017_v2`: PASS,78.544s,
@@ -120,3 +120,22 @@ Next promotion decision: use the repaired acquired native checkpoint for a
 bounded, source-bound predictive continuation with complete online/state/work
 admission. Consult the current higher-priority product orders before allocating
 new fitting work. Existing competitive jobs are not superseded by these gates.
+
+## Post-integration review
+
+Curie's production RMR writer now computes the full first-order input VJP with
+an O(Td) accumulated adjoint. The fifteenth contract compares both values and
+gradients with the explicit writer reference, including per-target writes. Use
+this production path; the checkpointed implementation remains a resource-tested
+reference rather than the preferred scaling construction.
+
+Sparse slot `event_forward` returned correct one-call reads but did not export
+its final persistent state. It now materializes lazy timestamps into the same
+canonical `last_state` as chunked execution. This costs B*S row materializations
+once per lane, reported separately from per-token sparse read/write traffic.
+Gate v12 checks split-lane reads and final state against uninterrupted chunked
+execution for both ordinary and product-key addressing. This is a persistence
+repair; dense key/history discovery and expected-versus-realized firing work
+remain explicitly accounted implementation boundaries.
+
+RMR result provenance now includes `native_slot_memory.py`; previously the loaded-source packet omitted that dependency. Earlier raw packets are preserved with that limitation.

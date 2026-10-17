@@ -103,8 +103,10 @@ def test_writer_input_value_is_unchanged_and_first_order_path_is_live():
     base=torch.randn(1,4,8,dtype=torch.float64,requires_grad=True);write=torch.randn(1,4,8,dtype=torch.float64,requires_grad=True)
     idx=torch.tensor([[[0],[0],[1],[2]]]);weight=torch.ones(1,4,1,dtype=torch.float64)
     selected=torch.tensor([[[0],[1]]]);rows=torch.tensor([2,3]);writes=[(write,idx,weight)]
-    stopped=RMR.slot_values(object.__new__(RMR),base,writes,selected,rows)
-    # object.__new__ instance has inherited static corr_values; no model state needed.
+    reads=base.new_zeros(1,2,4).scatter_(2,selected.reshape(1,2,1),1.)
+    with torch.no_grad():old=RMR.corr_values(reads,writes,rows).to(base.dtype)
+    stopped=(base.gather(1,selected.reshape(1,2,1).expand(-1,-1,8))+old).reshape(1,2,1,8)
+    # Explicit old stopped reference; production RMR now also restores this VJP.
     live=WriterInputCreditRMR.slot_values(object.__new__(WriterInputCreditRMR),base,writes,selected,rows)
     assert torch.equal(stopped,live)
     assert torch.autograd.grad(stopped.sum(),write,allow_unused=True)[0] is None
@@ -191,3 +193,33 @@ def test_fixed_feature_critic_restores_into_a_fresh_constructor():
     rg=torch.Generator().set_state(gs);ra=torch.Generator().set_state(als);actual=step(rebuilt,state,rg,ra)
     assert torch.equal(actual[0],expected[0]) and actual[1]==expected[1]
     assert identical(final,(rebuilt.state_dict(),state,rg.get_state(),ra.get_state()))
+
+
+def test_production_accumulated_writer_values_and_gradients_match_reference():
+    torch.manual_seed(17404)
+    for per_target in [False,True]:
+        base=torch.randn(1,8,8,requires_grad=True)
+        write=torch.randn((1,8,2,8) if per_target else (1,8,8),requires_grad=True)
+        idx=torch.randint(0,8,(1,8,2));weight=torch.rand(1,8,2,requires_grad=True);beta=torch.tensor(.1,requires_grad=True)
+        chosen=torch.randint(0,8,(1,4,2));rows=torch.arange(4,8);args=(base,[(write,idx,weight,beta)],chosen,rows)
+        reference=WriterInputCreditRMR.slot_values(object.__new__(WriterInputCreditRMR),*args)
+        expected=torch.autograd.grad(reference.square().sum(),(base,write,weight,beta))
+        fast=RMR.slot_values(object.__new__(RMR),*args)
+        actual=torch.autograd.grad(fast.square().sum(),(base,write,weight,beta))
+        torch.testing.assert_close(fast,reference,rtol=2e-6,atol=2e-6)
+        for x,y in zip(actual,expected):torch.testing.assert_close(x,y,rtol=5e-6,atol=5e-6)
+
+
+def test_event_slot_memory_exports_exact_persistent_carry():
+    from experiments.native_slot_memory import SlotMemory
+    torch.manual_seed(17405)
+    for product in [False, True]:
+        m=SlotMemory(8,16,3,8,explore=2,read_topk=4,product_keys=product).eval()
+        u=torch.randn(2,35,8)
+        with torch.no_grad():
+            expected=m(u); final=tuple(x.clone() for x in m.last_state)
+            first,traffic=m.event_forward(u[:,:13]);carry=m.last_state
+            second,_=m.event_forward(u[:,13:],carry)
+            torch.testing.assert_close(torch.cat([first,second],1),expected,rtol=1e-5,atol=1e-6)
+            for x,y in zip(m.last_state,final):torch.testing.assert_close(x,y,rtol=1e-5,atol=1e-6)
+            assert traffic['carry_materialization_rows_per_lane']==32
