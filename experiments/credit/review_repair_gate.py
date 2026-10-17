@@ -6,7 +6,7 @@ import torch,pytest
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);p.add_argument('--tests',nargs='+',default=['tests/test_review_repairs.py']);a=p.parse_args();torch.set_num_threads(1);start=time.monotonic()
-    names=[str(p.relative_to(ROOT)) for p in (ROOT/'sleeping_machines').glob('*.py')]+a.tests+['experiments/credit/review_repair_gate.py','experiments/r1_rmr_writer_input_credit.py','experiments/r1_rmr.py','experiments/r1_cerl.py','experiments/native_slot_memory.py','experiments/r1_deep_keyed_lm.py','experiments/r1_local_native_deep.py']
+    names=[str(p.relative_to(ROOT)) for p in (ROOT/'sleeping_machines').glob('*.py')]+a.tests+['experiments/credit/review_repair_gate.py','tests/rmr_writer_reference.py','experiments/r1_rmr.py','experiments/r1_cerl.py','experiments/native_slot_memory.py','experiments/r1_deep_keyed_lm.py','experiments/r1_local_native_deep.py']
     hashes={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in names}
     assert pytest.main(['-q',*a.tests])==0
     out=ROOT/f'experiments/results/diagnostics/{a.tag}.json'

@@ -1,4 +1,4 @@
-"""Real integrated RMR resource gate with live first-order writer-input credit.
+"""Production integrated RMR resource gate with exact accumulated writer-input credit.
 
 Uses the already product-ordered 16-update integration workload. No long fit
 is admitted by this gate, and stopped/source-bound trainers stay unchanged.
@@ -8,7 +8,6 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'experiments')]
 import torch
 import experiments.r1_rmr as driver
-from experiments.r1_rmr_writer_input_credit import CheckpointedWriterInputCreditRMR
 
 class Tee:
     def __init__(self,output):self.output=output;self.record=io.StringIO()
@@ -17,11 +16,11 @@ class Tee:
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);args=p.parse_args();torch.set_num_threads(1);started=time.monotonic()
-    names=['experiments/credit/rmr_writer_resource_gate.py','experiments/r1_rmr_writer_input_credit.py','experiments/r1_rmr.py','experiments/r1_cerl.py','experiments/r1_deep_keyed_lm.py','experiments/r1_token_keyed_lm.py']
+    names=['experiments/credit/rmr_writer_resource_gate.py','experiments/native_slot_memory.py','experiments/r1_rmr.py','experiments/r1_cerl.py','experiments/r1_deep_keyed_lm.py','experiments/r1_token_keyed_lm.py']
     hashes={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in names}
     original_clip=torch.nn.utils.clip_grad_norm_
     def finite_clip(*a,**kw):kw['error_if_nonfinite']=True;return original_clip(*a,**kw)
-    torch.nn.utils.clip_grad_norm_=finite_clip;driver.RMR=CheckpointedWriterInputCreditRMR
+    torch.nn.utils.clip_grad_norm_=finite_clip
     sys.argv=[driver.__file__,'--tag',args.tag,'--levels','4','--top-m','4','--read-topk','0','--old-decay','0.01','--train-tokens','16777216','--seed','0','--wd-groups','1','--unit-init','0.02','--balance','0.01','--old-per-target','1','--write-race','1','--write-explore','2','--carry','256','--max-steps','16','--checkpoint-every','16','--log-every','8']
     tee=Tee(sys.stdout);old_stdout=sys.stdout;sys.stdout=tee
     try:driver.main()

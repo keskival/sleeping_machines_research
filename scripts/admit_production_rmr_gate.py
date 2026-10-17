@@ -1,0 +1,15 @@
+"""Admit the ordered integrated RMR resource gate, using production code only."""
+import hashlib,json,os
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];PLAN=ROOT/'experiments/queue/aws_model_improvement_repair_20261005T161000Z'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    assert os.uname().nodename=='ip-172-31-47-132'
+    tag='aws_r1_rmr_production_integrated_gate_20261017_v1'
+    result='experiments/results/token_language/aws_r1_rmr_native_e2e_smoke_20261017_v3.json';assert json.loads((ROOT/result).read_text())['status']=='completed'
+    purpose=dict(battle='R1',stationarity='Stationary fixed-weight development language protocol; 16 causal pre-update training updates only.',fighter='Product-ordered integrated RMR using production exact O(Td) writer VJP, per-target refinements, separate write races, two write probes, semantic matrix decay, symmetry-breaking concept initialization and balance.',online='Causal one-pass training; final official benchmark protocol remains separate. No online comparison claim.',state_history='Contiguous batch streams, carry256 numerical state across lane boundaries; within-lane credit. No new dense controls.',retained='Temporal computation, race readout, sparse value delivery, persistent refined history, separate keys/values, counterfactual concept/address credit. Carrier-backed level1 and dense historical discovery explicitly retained in this attribution rung; sparse native rung runs on Curie.',restrictions='Ordered 16-update resource gate. Levels4 width128 lane256 batch4 and history unchanged. Fixed-weight final evaluation is a separate scoped protocol.',accounting='Full production training with finite-gradient checks, checkpoint, per-target work and peak RSS. Six-slot CPU1 thread,3MKiB cap,12MKiB VMS,8GiB host reserve; gate requires peakRSS<2.9MKiB.',decision='Does the ordered production integrated model fit the six-slot envelope, permitting its16M fit?')
+    q=ROOT/f'experiments/queue/r1/{tag}/{tag}.txt';q.parent.mkdir(parents=True,exist_ok=True);q.write_text('# '+json.dumps(purpose)+'\n'+f'{tag} experiments/credit/rmr_writer_resource_gate.py --tag {tag}\n')
+    names=['experiments/credit/rmr_writer_resource_gate.py','experiments/native_slot_memory.py','experiments/r1_rmr.py','experiments/r1_cerl.py','experiments/r1_deep_keyed_lm.py','experiments/r1_token_keyed_lm.py']
+    job=dict(name=tag,kind='r1',queue=str(q.relative_to(ROOT)),queue_sha256=sha(q),source_sha256={n:sha(ROOT/n) for n in names},result=f'experiments/results/diagnostics/{tag}.json',requires=[dict(result=result,stage=json.loads((ROOT/result).read_text())['stage'],source_sha256={})],timeout_s=7200,rss_kb=3000000,vms_kb=12000000)
+    path=PLAN/'addenda/000_aws_r1_rmr_production_integrated_gate_20261017_v1.json';packet=dict(host=os.uname().nodename,battle='R1',purpose=purpose,parent_manifest_sha256=sha(PLAN/'manifest.json'),slots={'3':[job]});assert not path.exists();tmp=path.with_suffix('.writing');tmp.write_text(json.dumps(packet,indent=2)+'\n');tmp.replace(path);print(path)
+if __name__=='__main__':main()

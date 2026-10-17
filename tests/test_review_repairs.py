@@ -6,7 +6,7 @@ from sleeping_machines.sampled_compositional_credit import SampledCompositionalC
 from sleeping_machines.direct_input_producer_credit import DirectInputProducerCredit
 from sleeping_machines.stable_native_future_credit import StableNativeFutureCredit
 from sleeping_machines.producer_replay_native_race import local_write
-from experiments.r1_rmr_writer_input_credit import WriterInputCreditRMR
+from tests.rmr_writer_reference import WriterInputCreditRMR
 from experiments.r1_rmr import RMR
 from tests.test_native_query_migration import identical
 
@@ -154,7 +154,7 @@ def test_factual_direct_message_and_current_write_input_vjp_matches_finite_diffe
 
 
 def test_checkpointed_writer_vjp_matches_live_first_order_gradient():
-    from experiments.r1_rmr_writer_input_credit import CheckpointedWriterInputCreditRMR
+    from tests.rmr_writer_reference import CheckpointedWriterInputCreditRMR
     torch.manual_seed(17402)
     base=torch.randn(1,5,8,requires_grad=True);write=torch.randn(1,5,2,8,requires_grad=True)
     idx=torch.tensor([[[0,0],[0,1],[1,0],[2,1],[3,2]]]);weight=torch.rand(1,5,2,requires_grad=True);beta=torch.tensor(.1,requires_grad=True)

@@ -1,7 +1,6 @@
-"""Explicit full first-order writer-input derivative, separate from old runs.
+"""Explicit one-hot writer VJP references for numerical tests only.
 
-Sparse write algebra is unchanged; extra autograd storage must pass a resource
- gate before long-history use. No claim of constant learning memory.
+Production training uses RMR.slot_values; these helpers are not candidates.
 """
 from experiments.r1_rmr import RMR
 

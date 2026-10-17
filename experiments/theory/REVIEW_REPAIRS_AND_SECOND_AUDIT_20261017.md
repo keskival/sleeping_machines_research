@@ -139,3 +139,14 @@ repair; dense key/history discovery and expected-versus-realized firing work
 remain explicitly accounted implementation boundaries.
 
 RMR result provenance now includes `native_slot_memory.py`; previously the loaded-source packet omitted that dependency. Earlier raw packets are preserved with that limitation.
+
+## Curie follow-through
+
+The duplicate experimental writer model and its admission script are retired.
+Explicit one-hot/checkpoint algebra survives only in tests/rmr_writer_reference.py
+as a numerical oracle, not a training candidate. The real resource gate now uses
+production RMR directly. Native e2e v3 completed final scoring with peak RSS
+1455940KiB; carried diagnostic NLL8.34138 versus reset8.37077 on8192 targets.
+This tiny fit is an integration result, not a competitive score. The production
+integrated16-update gate is admitted in slot3; the sparse16M rung runs on Curie,
+and AWS does not duplicate it. Curie's product-key resume-default fix is merged.
