@@ -598,9 +598,19 @@ def contracts():
         mg.n_active = 1; l2a = mg.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf); res['grow_enter_after_carry_exact'] = float((l2g - l2a).abs().max())
     mg.train(); mg.n_active = 1; mg.lane_nll(x.clone(), y).mean().backward()
     res['grow_inactive_level_no_credit'] = all(p_.grad is None for p_ in mg.levels[1].parameters()); res['grow_active_level_credit'] = any(p_.grad is not None and float(p_.grad.abs().max()) > 0 for p_ in mg.levels[0].parameters())
+    # conditioning credit (as in a residual Transformer, where layer l gets gradient through the identity path and through every later
+    # layer that reads it): an upper level's corrections depend on the lower level's new-slot and old-slot corrections, and gating the
+    # upper level off changes the gradient on the lower level's corrections (CERL-H and the detached local learner lacked this path)
+    torch.manual_seed(0); mc = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True); mc.train()
+    with torch.no_grad():
+        for p_ in mc.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+    lc = mc.lane_nll(x.clone(), y).mean(); (on1, od1), (on2, od2) = mc._lev_own[0][:2], mc._lev_own[1][:2]
+    gc = torch.autograd.grad(on2.sum() + od2.sum(), [on1, od1], retain_graph=True); gt_ = torch.autograd.grad(lc, [on1])[0]
+    mc.levels[1].alpha_new.data.zero_(); mc.levels[1].alpha_old.data.zero_(); mc._px = None; gd_ = torch.autograd.grad(mc.lane_nll(x.clone(), y).mean(), [mc._lev_own[0][0]])[0]
+    res['conditioning_credit_new_slot'] = float(gc[0].abs().max()); res['conditioning_credit_old_slot'] = float(gc[1].abs().max()); res['conditioning_credit_share'] = float((gt_ - gd_).norm()/gt_.norm())
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
-    ok_g = res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
+    ok_g = res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
     ok_s = ok_g and res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
     ok = ok_k and ok_i and ok_r and ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0

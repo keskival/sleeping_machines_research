@@ -366,3 +366,15 @@ near-constant 0.4-nat offset whose share does not grow. Rules from here:
 4. Size must scale with data in frontier comparisons: in this family through concept units or slots at near-constant active
    work (product keys), and depth through growth (section 14). Fixed-size 4M → 16M comparisons understate any family whose
    capacity is held small.
+
+## 16. Both credit paths in residual memory (17 October, founder question)
+
+As in a residual Transformer (x_{l+1} = x_l + f_l(x_l), so dL/dx_l = dL/dx_{l+1}(I + df_l/dx_l)), a level's corrections get credit
+by two paths: directly, because the readout reads the total memory, and through every upper level that reads them as
+conditioning data (its query is the current slot under the running total; its read race scores and reads slots that include
+lower new-slot corrections; lower old-slot corrections change the keys and values it reads). Nothing on these paths is detached
+(only zero-forward probes, straight-through firing, statistics and the carried prefix). The conditioning path is closed at
+init (upper ReZero gates 0) and opens with the gates, as in ReZero Transformers; within one level, own corrections are visible
+from earlier chunks only (training parallelism). Contract (curie_rmr_contracts_20261017_v17): the derivative of level 3's
+corrections with respect to level 2's new- and old-slot corrections is nonzero, and gating level 3 off changes the gradient on
+level 2's corrections (share 12% at the contract's random parameters). CERL-H and the detached local learner (DEAD_ENDS) lacked this path.
