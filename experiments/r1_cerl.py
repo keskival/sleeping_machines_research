@@ -36,6 +36,7 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiments'), str(ROOT/'experiments/tpp')]
 from r1_deep_keyed_lm import ParallelTemporalMemory  # noqa: E402
+from native_slot_memory import SlotMemory  # noqa: E402
 
 S_MAX = 512
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'mode', 'row_chunk', 'log_every', 'run', 'split', 'select_from', 'online_stride', 'grid_targets', 'row_chunk_unused')
@@ -46,7 +47,7 @@ def param_groups(model, wd, groups=False):
     norms, learned clock rates and slopes, ReZero gates; decoupled decay pulls softplus-parameterised rates toward 0.69) and
     none on dormant-capacity tables (concept keys/vectors: decaying them erodes capacity that is meant to wait unused)."""
     if not groups: return [dict(params=list(model.parameters()), weight_decay=wd)]
-    dormant = ('unit_key', 'unit_out', 'unit_val', 'key1', 'key2')
+    dormant = ('unit_key', 'unit_out', 'unit_val', 'key1', 'key2', 'wkey', 'rkey', 'wkey1', 'wkey2', 'rkey1', 'rkey2')
     dec, nod = [], []
     for n, p in model.named_parameters():
         (nod if p.dim() < 2 or n.split('.')[-1] in dormant else dec).append(p)
@@ -54,7 +55,7 @@ def param_groups(model, wd, groups=False):
 
 
 # flags added after a run started, at their default (= the run's actual behaviour); resumes stay exact
-LATER_FLAG_DEFAULTS = dict(wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0)
+LATER_FLAG_DEFAULTS = dict(wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0, read_explore=0, slot_read_topk=0, slot_pk=0)
 
 
 def same_run(saved, ident):
@@ -86,15 +87,19 @@ def match_lengths(x, r0, r1, cap=8):
 
 
 class CERL(nn.Module):
-    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False, cause_messages=False, unit_init=0.0, balance=0.0):
+    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False, cause_messages=False, unit_init=0.0, balance=0.0, level1='tm', slots=1024, slot_m=4, slot_explore=0, slot_read_topk=0, slot_pk=False):
         super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore, self.p_drop = V, d, dk, units, topk, explore, dropout
         self.register_buffer('class_of', torch.as_tensor(class_of)); self.register_buffer('class_words', torch.as_tensor(class_words)); C = class_words.shape[0]
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02); self.word_bias = nn.Parameter(torch.zeros(V))
         self.class_emb = nn.Parameter(torch.randn(C, d)*0.02); self.class_bias = nn.Parameter(torch.zeros(C))
-        self.n1 = nn.ModuleList(nn.LayerNorm(d) for _ in range(layers)); self.tm = nn.ModuleList(ParallelTemporalMemory(d, modes) for _ in range(layers))
-        self.tm_out = nn.ModuleList(nn.Linear(2*modes, d) for _ in range(layers)); self.n2 = nn.ModuleList(nn.LayerNorm(d) for _ in range(layers))
+        self.n1 = nn.ModuleList(nn.LayerNorm(d) for _ in range(layers)); self.level1 = level1
+        if level1 == 'slots':                                                                        # native level 1: sparse addressed slots, learned clocks, race read (native_slot_memory.py)
+            self.tm = nn.ModuleList(SlotMemory(d, slots, slot_m, dk, slot_explore, slot_read_topk, slot_pk) for _ in range(layers)); self.tm_out = nn.ModuleList(nn.Linear(d, d) for _ in range(layers))
+        else:                                                                                        # dense complex-diagonal linear recurrence (labelled: not native)
+            self.tm = nn.ModuleList(ParallelTemporalMemory(d, modes) for _ in range(layers)); self.tm_out = nn.ModuleList(nn.Linear(2*modes, d) for _ in range(layers))
+        self.n2 = nn.ModuleList(nn.LayerNorm(d) for _ in range(layers))
         self.mlp = nn.ModuleList(nn.Sequential(nn.Linear(d, 2*d), nn.GELU(), nn.Linear(2*d, d)) for _ in range(layers)); self.out_norm = nn.LayerNorm(d)
-        for t in self.tm: t.CHUNK = tm_chunk
+        for t in self.tm: t.CHUNK = min(tm_chunk, 64) if level1 == 'slots' else tm_chunk
         # race clocks
         self.bg = nn.Linear(d, 1); nn.init.zeros_(self.bg.weight); nn.init.constant_(self.bg.bias, 2.0)
         self.q_unit = nn.Linear(d, dk); self.pk = product_keys
@@ -256,8 +261,9 @@ def work_per_target(m, history):
     """Active multiply-adds per target for likelihood scoring (dense state maps, race scores over `history` candidates,
     all U unit keys, the background and k concept two-level laws at mean class size)."""
     d, dk, C = m.d, m.dk, m.class_words.shape[0]; s_mean = float((m.class_words >= 0).sum())/C
-    state = sum(p.numel() for n, p in m.named_parameters() if n.startswith(('tm', 'tm_out', 'mlp')))
-    return dict(state_macs=state, episodic_candidates=2*history, episodic_macs=4*d*dk + 2*history*dk, unit_scores=(2*m.n_half if m.pk else m.U), unit_macs=d*dk + (2*m.n_half*dk//2 + m.topk**2 if m.pk else m.U*dk), concepts_woken=m.topk,
+    state = sum(p.numel() for n, p in m.named_parameters() if n.startswith(('tm', 'tm_out', 'mlp')))   # dense reference execution (slots: every slot key scored, every slot read)
+    slots = dict(level1='slots', slots_per_layer=m.tm[0].S, slots_written_per_event=m.tm[0].m) if getattr(m, 'level1', 'tm') == 'slots' else dict(level1='temporal-memory recurrence')
+    return dict(state_macs=state, **slots, episodic_candidates=2*history, episodic_macs=4*d*dk + 2*history*dk, unit_scores=(2*m.n_half if m.pk else m.U), unit_macs=d*dk + (2*m.n_half*dk//2 + m.topk**2 if m.pk else m.U*dk), concepts_woken=m.topk,
                 proposal_rows=(1 + m.topk)*(C + s_mean), proposal_macs=(1 + m.topk)*(C + s_mean)*d)
 
 
@@ -429,7 +435,7 @@ def main():
     ap = argparse.ArgumentParser(); A = ap.add_argument
     A('--mode', choices=('train', 'contract', 'score'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
-    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0); A('--cause-messages', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
+    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0); A('--cause-messages', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--dropout', type=float, default=0.0); A('--epochs', type=int, default=30); A('--ctx', type=int, default=512); A('--stride', type=int, default=128)
     A('--run', default=''); A('--split', default='valid'); A('--select-from', default=''); A('--online-stride', type=int, default=32); A('--grid-targets', type=int, default=8192)
@@ -446,7 +452,7 @@ def main():
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     counts = np.bincount(train.reshape(-1), minlength=50257).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance); params = sum(p.numel() for p in model.parameters())
+    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore, slot_read_topk=a.slot_read_topk, slot_pk=bool(a.slot_pk)); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
     opt = torch.optim.AdamW(param_groups(model, a.wd, bool(a.wd_groups)), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()

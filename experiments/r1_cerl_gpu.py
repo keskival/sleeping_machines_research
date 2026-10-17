@@ -29,7 +29,7 @@ def main():
     A('--evals', type=int, default=16); A('--log-every', type=int, default=50); A('--checkpoint-every', type=int, default=500); A('--max-steps', type=int, default=0); A('--row-chunk', type=int, default=512)
     A('--data-dir', default=str(ROOT/'data/fineweb_gpt2')); A('--out-dir', default=str(ROOT/'experiments/results/gpu_ladder'))
     A('--model', choices=('cerl', 'rmr'), default='cerl'); A('--levels', type=int, default=4); A('--top-m', type=int, default=4); A('--old-decay', type=float, default=0.01); A('--read-dk', type=int, default=64); A('--read-topk', type=int, default=0)
-    A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
+    A('--old-per-target', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-race', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)   # review fixes (17 Oct): no decay on scalars/dormant tables, concept symmetry breaking, load balance
     a = ap.parse_args(); torch.manual_seed(a.seed); dev = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     if dev.type == 'cpu': torch.set_num_threads(1)
     else: torch.backends.cuda.matmul.allow_tf32 = True
@@ -42,33 +42,38 @@ def main():
     cls, words = word_classes(counts, a.classes)
     if a.model == 'rmr':                                                                          # residual-memory depth (theory 172) over the CERL readout
         from r1_rmr import RMR
-        model = RMR(50257, cls, words, dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance),
-                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore).to(dev)
+        model = RMR(50257, cls, words, dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore, slot_read_topk=a.slot_read_topk, slot_pk=bool(a.slot_pk)),
+                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay, old_per_target=bool(a.old_per_target), write_race=bool(a.write_race), write_explore=a.write_explore, fire=bool(a.fire), act_cost=a.act_cost, old_norm=bool(a.old_norm), read_explore=a.read_explore).to(dev)
     else:
-        model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance).to(dev)
+        model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance, level1=a.level1, slots=a.slots, slot_m=a.slot_m, slot_explore=a.slot_explore, slot_read_topk=a.slot_read_topk, slot_pk=bool(a.slot_pk)).to(dev)
     params = sum(p.numel() for p in model.parameters())
     from torch.utils.flop_counter import FlopCounterMode
     x0 = torch.randint(0, 50257, (1, a.lane + 1), device=dev)
+    pf0 = None
+    if a.carry:                                                                                    # count a carried lane (prefix slots read, refined and pointed at)
+        assert a.model == 'rmr', 'carried memory is implemented for the residual-memory member'
+        with torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'): model.lane_nll(x0[:, :-1], x0[:, 1:]); pf0 = model.carry_out(a.carry)
     with FlopCounterMode(display=False) as fc, torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'):
-        model.lane_nll(x0[:, :-1], x0[:, 1:]).mean().backward()
+        model.lane_nll(x0[:, :-1], x0[:, 1:], prefix=pf0).mean().backward() if a.carry else model.lane_nll(x0[:, :-1], x0[:, 1:]).mean().backward()
     model.zero_grad(set_to_none=True); fpt = fc.get_total_flops()/a.lane
     train_tokens = a.train_tokens or int(a.budget_flops/fpt); tps = a.batch*a.lane; steps = max(1, train_tokens//tps); n_lanes = steps*a.batch
-    data = Lanes(a.data_dir, a.lane + 1, n_lanes); order = np.random.default_rng(a.seed).permutation(n_lanes); warm = max(1, int(a.warmup*steps))
+    data = Lanes(a.data_dir, a.lane + 1, n_lanes, stride=a.lane if a.carry else None); order = np.random.default_rng(a.seed).permutation(n_lanes); warm = max(1, int(a.warmup*steps))
+    if a.carry: order = (np.arange(a.batch)[None, :]*steps + np.arange(steps)[:, None]).reshape(-1)   # batch row b walks its own contiguous stream; lanes overlap by one token
     opt = torch.optim.AdamW(param_groups(model, a.wd, bool(a.wd_groups)), lr=a.lr, weight_decay=a.wd, fused=dev.type == 'cuda')
     lr_at = lambda s: a.lr*min(1.0, (s + 1)/warm)*(0.1 + 0.9*0.5*(1 + math.cos(math.pi*min(1.0, max(0, s - warm)/max(1, steps - warm)))))
     evals = sorted(set(int(round(steps**(i/(a.evals - 1)))) for i in range(a.evals)) | {steps}); miles = {max(1, steps//4), max(1, steps//2), steps}
     sel_l = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048); sc_l = np.asarray(val[20971520:20971520 + 8*8192]).reshape(8, 8192)
     fl_l = np.stack([np.asarray(val[p:p + 1025]) for p in range(25165824, 25165824 + 8192, 1024)])
-    ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; st = dict(step=0, losses=[], evals=[], milestones=[], wall=0.0, resumes=0)
+    ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; st = dict(step=0, losses=[], evals=[], milestones=[], wall=0.0, resumes=0); carry = {'pf': None}
     if state_path.exists():
         s = torch.load(state_path, map_location=dev, weights_only=False); assert same_run(s['ident'], ident)
-        model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); torch.set_rng_state(s['rng']); st = s['st']; st['resumes'] += 1
+        model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); torch.set_rng_state(s['rng']); st = s['st']; st['resumes'] += 1; carry['pf'] = s.get('carry')
         if dev.type == 'cuda' and s.get('cuda_rng') is not None: torch.cuda.set_rng_state(s['cuda_rng'])
     stop = {'f': False}; signal.signal(signal.SIGTERM, lambda *_: stop.update(f=True))
 
     def save():
         tmp = state_path.with_suffix('.tmp'); torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), rng=torch.get_rng_state(), cuda_rng=torch.cuda.get_rng_state() if dev.type == 'cuda' else None,
-                                                            st=st, ident=ident), tmp); os.replace(tmp, state_path)
+                                                            st=st, ident=ident, carry=carry['pf']), tmp); os.replace(tmp, state_path)
 
     def ev(block):                                                                                  # lanes_nll runs on CPU tensors: score on device through a thin wrapper
         model.eval(); tot = n = 0.0; acc = {}
@@ -80,14 +85,28 @@ def main():
                     nll, stt = model.lane_nll(x, y, (r0, min(r0 + a.row_chunk, L)), stats=True, msg=msg); tot += nll.float().sum().item(); n += nll.numel()
                     for k, v in stt.items(): acc[k] = acc.get(k, 0.0) + v*nll.numel()
         model.train(); r = dict(nll=tot/n, targets=int(n), native={k: v/n for k, v in acc.items()}); r['native']['native_gain'] = r['native']['bg_only_nll'] - r['nll']; return r
+    def active_work():                                                                              # modelled event-driven work per target (fire rates measured on one flagship window)
+        if a.model != 'rmr': return None
+        from r1_rmr import member_work
+        model.eval()
+        with torch.no_grad(), torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'):
+            w = torch.from_numpy(fl_l[:1].astype(np.int64)).to(dev); model.lane_nll(w[:, :-1], w[:, 1:])
+        fr = [st_.get('fire_rate') for st_ in model._mem[2]] if any(l_.fire for l_ in model.levels) else None; model.train()
+        return member_work(model, 1023, fr, a.carry)
+
+    def carried():                                                                                  # persistent memory across each protocol's consecutive lanes (same targets)
+        if not a.carry: return None
+        from r1_rmr import lanes_nll_carry
+        r = dict(select=lanes_nll_carry(model, sel_l, a.row_chunk, a.carry, adjacent=True), score_65528=lanes_nll_carry(model, sc_l, a.row_chunk, a.carry, adjacent=True),
+                 flagship=lanes_nll_carry(model, fl_l, a.row_chunk, a.carry)); model.train(); return r
     began = time.time() - st['wall']; t_log = time.time()
     while st['step'] < steps and not stop['f']:
         s = st['step']
         for g in opt.param_groups: g['lr'] = lr_at(s)
-        ids = order[s*a.batch:(s + 1)*a.batch]; w = torch.from_numpy(data.get(np.sort(ids))).to(dev, non_blocking=True); x, y = w[:, :-1], w[:, 1:]
+        ids = order[s*a.batch:(s + 1)*a.batch]; w = torch.from_numpy(data.get(ids if a.carry else np.sort(ids))).to(dev, non_blocking=True); x, y = w[:, :-1], w[:, 1:]
         with torch.autocast(dev.type, dtype=torch.bfloat16, enabled=dev.type == 'cuda'):
-            nll = model.lane_nll(x, y); loss = nll.float().mean(); obj = loss + (model.aux.float().mean() if model.aux is not None else 0.0)
-        opt.zero_grad(set_to_none=True); obj.backward(); gn = nn.utils.clip_grad_norm_(model.parameters(), 1.0).item(); opt.step(); st['step'] += 1; s1 = st['step']; st['losses'].append(loss.item())
+            nll = model.lane_nll(x, y, prefix=carry['pf']) if a.carry else model.lane_nll(x, y); loss = nll.float().mean(); obj = loss + (model.aux.float().mean() if model.aux is not None else 0.0)
+        opt.zero_grad(set_to_none=True); obj.backward(); gn = nn.utils.clip_grad_norm_(model.parameters(), 1.0).item(); opt.step(); st['step'] += 1; carry['pf'] = model.carry_out(a.carry) if a.carry else None; s1 = st['step']; st['losses'].append(loss.item())
         if s1 % a.log_every == 0:
             dt = time.time() - t_log; t_log = time.time()
             print(json.dumps(dict(step=s1, of=steps, loss=float(np.mean(st['losses'][-a.log_every:])), grad_norm=gn, tokens_per_s=a.log_every*tps/dt, elapsed_s=round(time.time() - began),
@@ -102,8 +121,8 @@ def main():
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); n8 = max(1, steps//8)
     res = dict(status='completed', battle='R1', stage='native causal event race member (theory 169), GPU one pass', tag=a.tag, args=vars(a), parameters=params, units=a.units, train_flops_per_target=fpt,
                train_tokens=steps*tps, train_flops=fpt*steps*tps, steps=steps, train_wall_s=st['wall'], resumes=st['resumes'], evals=st['evals'], milestones=st['milestones'],
-               prequential_by_eighth=[float(np.mean(st['losses'][i:i + n8])) for i in range(0, steps, n8)], select=ev(sel_l), score_65528=st['milestones'][-1]['score_65528'], flagship=ev(fl_l),
-               work_per_target_at_history_1023=work_per_target(model.base if a.model == 'rmr' else model, 1023), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
+               prequential_by_eighth=[float(np.mean(st['losses'][i:i + n8])) for i in range(0, steps, n8)], select=ev(sel_l), score_65528=st['milestones'][-1]['score_65528'], flagship=ev(fl_l), carried=carried(),
+               work_per_target_at_history_1023=work_per_target(model.base if a.model == 'rmr' else model, 1023), active_work=active_work(), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
                source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl_gpu.py', 'experiments/r1_cerl.py', 'experiments/r1_rmr.py', 'experiments/r1_deep_keyed_lm.py')})
     out.write_text(json.dumps(res, indent=1) + '\n'); state_path.unlink()
     print('RESULT', json.dumps({k: res[k] for k in ('select', 'score_65528', 'flagship', 'train_flops', 'parameters')}), flush=True)

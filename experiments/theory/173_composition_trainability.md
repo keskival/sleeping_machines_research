@@ -158,7 +158,21 @@ Disclosed protocol notes:
 3. Native level 1: event-local states in place of the linear recurrence, against CERL at 16M.
 4. The capacity ladder (65k–262k product keys with balance) at 16M.
 
-## 7. Earlier list (superseded by §5–6)
+## 8. Third round, 17 October: native level 1
+
+- **Native level 1** (`native_slot_memory.py`, `--level1 slots`) replaces the dense complex-diagonal recurrence. It has persistent addressed slots; each event writes its value into the top-m slots chosen by a write race; each slot decays at its own learned rate (1 to 1,000 tokens); reads are a race over slots with separate read keys and an abstain option, returning each slot's evidence-weighted mean; counterfactual write probes are included.
+  - Execution is exact and chunked: the decay factorises within a chunk, and the slot state is carried between chunks and lanes.
+  - Contracts: chunked equals the explicit sum (1.5e-8); causal; carry equals one long lane (7e-9); probes leave the forward pass unchanged and credit the write keys; read bounded at 2,000 tokens; the whole RMR member with slots is exact and normalised, and carry equals one long lane (9.5e-7).
+  - It also subsumes RMR-2's standing slots (pooling into persistent decaying slots) at level 1.
+  - Cost (fwd+bwd, 4 × 255 tokens, d 128): recurrence 0.76 s per layer; 1,024 slots 0.11 s; 4,096 slots 0.51 s. 4 of S slots are updated per token.
+- **Fixes:** carried lanes keep a contiguous input stream (overlapping training lanes; scoring feeds the skipped token as an unscored input); measured inference work of the whole member is reported.
+- **Dead end:** a raw-sum slot read (unbounded with length, C8).
+- **Still open:**
+  - GPU driver: no carry and no slot level 1 in its data path yet (CPU drivers have both).
+  - RMR-2 firing clocks: no carry.
+  - Level-1 slot execution is dense; event-driven execution would touch only m slots per write.
+
+## 7. Earlier list (superseded by §5–6, §8)
 
 
 1. C7 writes: counterfactual write exploration. A few random older slots per step receive a detached trial correction,
@@ -180,3 +194,71 @@ version-bound VJP is an alternative to silently equating stopped credit with the
 
 The independent [17 October architecture review](ARCHITECTURE_REVIEW_20261017.md) gives three
 passed numerical failure witnesses and the completed negative reciprocal-policy result.
+
+## 9. Fourth round, 17 October (Curie, responding to the AWS review)
+
+- **Writer input credit, fixed.** `RMR.slot_values` now returns refined target values with full first-order credit. Writes before the chunk accumulate per slot at the chunk start (the decay factorises), and writes inside the chunk use an explicit address match, so memory is O(T d), not the one-hot O(R m T m′). Contract: equals the one-hot `corr_values` reference in values (4.8e-7) and in all gradients (3.8e-6). The stop-gradient approximation is removed.
+- **Firing clocks with carry** (`--fire 1`, `--act-cost`): RMR-2's asynchronous mechanism inside RMR-1.
+  - Level k fires at t from its events in (current slot, size of the correction below, the lower level's firing).
+  - It is hard in training and evaluation; straight-through credit is the first-order value of firing, because the correction is computed anyway in the reference execution.
+  - Contracts: identity at init, normalisation, causality, training forward = evaluation forward (3e-6), carry exact.
+  - Standing slots are subsumed by the native slot level 1.
+- **Evidence-weighted old corrections** (`--old-norm 1`): a slot's old corrections read as their decayed weighted mean, which stays bounded as β → 0 (AWS review P2).
+  - It is exact in every path: reads, write race, readout pointers and writer slot values (brute-force algebra 4.8e-7; whole-member normalisation, causality and carry contracts).
+  - Held until the K4 decay run's long-lane result shows whether accumulation remains a defect.
+- **GPU path:**
+  - carried memory: contiguous overlapping lanes from the loader (unit-tested), carry in the checkpoint, carried final scoring;
+  - slot level 1 and firing flags;
+  - slot memory forced to fp32 under autocast (chunk factors span e^±63; its mass is a cumsum); matches fp32 exactly.
+- **AWS's formal qualifications are accepted:**
+  - new information is neither necessary nor sufficient for C4 (the bilinear counterexample);
+  - C3 is an initialisation statement, not convergence;
+  - failed argmax composition does not mean races cannot compose through values, posterior features or generated events.
+
+Still open:
+- a sparse reads arm (`--read-topk`) at 16M;
+- event-driven sparse execution (wall-time savings from firing and slot sparsity);
+- AWS's own P1 items in the native local learner: direct producer-input edges, nonlinear alternative returns, and the critic's moving feature coordinates.
+
+## 10. Fifth round, 17 October: sparse reads and sublinear discovery
+
+- **Sparse level reads with read probes** (`--read-topk k --read-explore E`). A level's read is a hard race among the top-k slots. In training, E unread slots s ≤ t get a zero-forward weight p − sg(p), with p = exp(score − logZ_topk), and the read becomes r − (Σ probes)·sg(r). The gradient with respect to p is v_s − r: the first-order value of adding s to the mixture. Without probes a top-k read never credits unread slots (C7). Contracts: eval law exact and causal; probes leave the training forward unchanged and credit the level's keys.
+- **Slot level 1: sparse reads with probes** (`--slot-read-topk k`) and **product-key addressing** (`--slot-pk 1`). The write and read races find their exact top-k over n² slots from 2n half-key scores, so 4,096 slots cost 256 key scores per token instead of 8,192. Contract: exact top-k (1.8e-7).
+- **Event-driven execution** (`SlotMemory.event_forward`, inference). Per token it writes only the m chosen slots, with lazy exact decay from each slot's last write, and delivers only the read slots. It equals the chunked execution (3e-8, also with product keys). Measured at 4,096 slots, 4 written, 8 read: 12 state rows touched per token, against 4,100 with a dense read. Training still uses the dense chunked reference (CPU wall time 0.53 s versus 0.67 s per layer step).
+- **Review findings this round:**
+  - Dense slot-key scoring contradicted capacity beyond activity (fixed by product keys).
+  - Top-k reads without probes gave no credit to unread slots (fixed).
+  - Neither e2e smoke exercised the sparse paths, and the GPU driver had not run end to end. The AWS e2e smoke v3 and a GPU-driver CPU smoke cover both.
+
+Still open:
+- event-driven execution of the depth levels (their reads over all T slots are dense scoring; product keys over slots would need learned slot keys);
+- sparse training execution;
+- AWS's P1 items in its local learner.
+
+## 11. Sixth round, 17 October: where the remaining dense work is
+
+**Active work per target** is now reported in every RMR and GPU-driver result (`member_work`). It is modelled event-driven work at history H, with firing rates measured on a flagship window, and broken down into key scores, values delivered, state rows written and read, and MACs.
+
+Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried slots where carry is used (one model instance each, untrained, fire rate 1):
+
+| Member | MMACs per target | State rows moved | Level-1 key scores / rows read | Level read keys / values | Readout episodic candidates |
+| --- | ---: | ---: | --- | --- | ---: |
+| K4 residdecay (reference) | 3.40 | 3,087 | dense recurrence | 1,024 / 1,024 | 2,046 |
+| Integrated | 4.51 | 3,855 | dense recurrence | 1,280 / 1,280 | 2,558 |
+| Native L1, 4,096 slots, dense read | 6.63 | 12,055 | 8,192 / 4,096 | 1,280 / 1,280 | 2,558 |
+| Sparse native | 4.06 | 87 | 256 / 8 | 1,280 / 16 | 2,558 |
+
+**Finding.** Sparse native cuts state traffic 44× against the integrated member, but MACs barely move. What remains is **discovery over history**: every level read scores every past slot (H keys, plus the old-correction algebra), and the readout's episodic race scores 2H pointer candidates. That O(H)-per-token scan is the attention-like cost left in the member, and it grows with context.
+
+**Design for the next step: indexed history discovery** (not implemented; it needs evidence that the sparse arm holds quality first).
+- Each memory slot is filed, when written, into one of C regions by a race of its key against C region keys (product keys: 2√C scores). The filing is hard; region keys move with training, VQ-style.
+- A read races over regions first (2√C scores), then over the slots in its top-b regions (about H·b/C candidates), using exact slot scores including corrections. The two-stage score is S_ts + log π_q(region(s)), so region keys get credit from the query side.
+- Probe regions (zero-forward) give credit to regions not read.
+- The same index can serve the readout's episodic race, with the normaliser taken over the causally chosen candidate set, so the law stays normalised. The risk is losing copy sources outside the candidate set; the contract must measure copy-hit coverage.
+- Prior art for clustered attention (e.g. routing attention, Roy et al. 2021) is cited. What is ours: memory filed by races at write time, with refinement, decay and probes.
+- Contracts needed: normalisation over the candidate set; causality (regions assigned at write time from data at or before t); exactness when b = C; coverage of copy hits; work per token O(√C + H·b/C).
+
+**Review findings this round:**
+1. Results lacked the active-work breakdown AGENTS.md requires; fixed.
+2. The AWS queue holds 8 16M arms plus 2 smokes, about two days of slot time, and no arm has started. The per-target and 1,024-lane arms are attributable inside the ladder (fixes → integrated) and are deprioritised, so the decisive ladder reads out sooner.
+3. No new mechanism is admitted until the ladder reports. Mechanisms added without results would now be busywork.

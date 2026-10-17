@@ -46,12 +46,13 @@ def main():
         cls, words = C.word_classes(np.bincount(np.asarray(tr[:g['train_tokens']//g['lane']*g['lane']]), minlength=50257).astype(float), g['classes'])
         if 'residual-memory' in rc.get('stage', ''):                                              # RMR (theory 172): CERL readout over a residual memory; winners recorded by the base race
             import r1_rmr as RM
-            cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'])
-            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0), old_per_target=bool(g.get('old_per_target', 0)))
+            cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'], product_keys=bool(g.get('product_keys', 0)),
+                        level1=g.get('level1', 'tm'), slots=g.get('slots', 1024), slot_m=g.get('slot_m', 4), slot_read_topk=g.get('slot_read_topk', 0), slot_pk=bool(g.get('slot_pk', 0)))
+            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0), old_per_target=bool(g.get('old_per_target', 0)), write_race=bool(g.get('write_race', 0)), fire=bool(g.get('fire', 0)), old_norm=bool(g.get('old_norm', 0)))
             m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.base.record_winner = True
             m.__class__.last_winner = property(lambda self: self.base.last_winner)
         else:
-            m = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)))
+            m = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)), level1=g.get('level1', 'tm'), slots=g.get('slots', 1024), slot_m=g.get('slot_m', 4))
             m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.record_winner = True
         return m
     cm = load_native(a.cerl)

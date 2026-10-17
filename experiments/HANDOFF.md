@@ -4,6 +4,25 @@
 
 **Current winning path, 17 October 2026.** Curie's old-slot K4 refinement improves flagship DEV to4.9901 versus CERL5.0634 and dense L16 5.2034 at16M; its long-lane score5.0874 regresses versus5.0282. Current product-ordered learned-decay K8 fit aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1 is admitted and running in AWS slot5, using source-matched Curie v3 algebra contracts. Carrier-backed temporal state, dense reads, stationary fixed-weight development scoring and lane resets are explicit; no fully event-local or online win claimed. In parallel, slot2 has recovered the completed native joint-credit arm without refitting and is finishing its online tape; then the full-depth child-credit arm trains from the identical parent. Two real-native tape-transition tests pass. Slot3's calibrated reciprocal trial and slot4's native document learner continue unchanged. The transition gate's result omitted source_sha256, causing post-run publication validation to report an error; the tests passed and the conditional recovery job launched correctly. See theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md. Latest investor validation:88/88 claims pass, no headline or prose failures. Remote main merged; conflicting previous generated artifacts remain preserved in autostash98d983256 while current remote publications are retained.
 
+**Sixth review round, 17 October 17:15 (Curie).** `member_work` (active event-driven work per target) is in every RMR and GPU-driver result. Sparse native cuts state traffic 44×, but O(H) history discovery (level reads, episodic pointers) still dominates MACs; the indexed-discovery design is in theory 173 §11 and waits on the sparse arm's quality. The per-target and 1,024-lane arms are withdrawn. No new mechanisms until the AWS ladder reports.
+
+**Fifth review round, 17 October 16:30 (Curie).** Added:
+- sparse level reads with read probes;
+- product-key slot addressing and sparse slot reads;
+- event-driven slot execution with measured state traffic (12 rows per token instead of 4,100 at 4,096 slots).
+
+AWS order: e2e v3 → integrated → native L1 → full native → sparse native → fixes → 65k capacity → per-target, plus the GPU-driver CPU smoke in any slot. Curie: the K4 decay run is at update 2,600 (chain v32), then the PTB resume.
+
+**Fourth review round, 17 October 15:30 (Curie).** Responding to AWS's architecture review (theory/ARCHITECTURE_REVIEW_20261017.md):
+- per-target writers now get full first-order input credit (exact, O(T d));
+- firing clocks run inside RMR-1 with carry (`--fire`);
+- `--old-norm` (bounded old corrections) is ready but held until the K4 decay result;
+- the GPU driver supports carry, slots and firing; slot memory runs in fp32 under autocast.
+
+AWS order: e2e smoke v2 → integrated → native L1 → full native (firing) → fixes → 65k capacity → per-target.
+
+**Native level 1 and third review round, 17 October 14:30 (Curie).** `experiments/native_slot_memory.py` (`--level1 slots`): sparse addressed persistent slots replace the dense recurrence (theory 173 §8; contracts pass; 7× faster per layer at 1,024 slots). Round-3 fixes: bounded slot reads, contiguous carried lanes, measured inference work. AWS run order is in PRODUCT_ORDERS (e2e smoke → integrated → native L1 → fixes → 65k capacity → per-target). Curie: the K4 decay run is in progress (chain v32), then the PTB resume. Open: GPU driver carry/slots, RMR-2 carry, the CERL 16M checkpoint from AWS for the error analyses.
+
 **Integrated native depth member and second review round, 17 October 13:00 (Curie).** [Theory 173](theory/173_composition_trainability.md) states the trainability conditions for composing good learners (C1–C9) and works the open ones in `r1_rmr.py`: a write-address race with counterfactual write probes, persistent memory across lanes (`--carry`), product-key balance, and refined slot values for writers. Second-round fixes: the GPU device bug in the temporal memory, resume identity tolerant of new default flags, RMR-2 carry guard, FLOP count of carried lanes. AWS order: `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1` (gate first). Curie incident: run_safe stopped the PTB fit at 10:04 (MemAvailable 7,748 MB) during a side smoke with a misused guard variable. Chain v32 resumes PTB exactly from its epoch-6 checkpoint after the error analyses and the K4 decay run.
 
 **Flagship review, 17 October 11:00 (Curie; founder request).** Defects found in the native drivers (r1_cerl, r1_rmr, r1_cerl_gpu, r1_cerl_h) and their status:
