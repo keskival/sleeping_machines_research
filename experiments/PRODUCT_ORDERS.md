@@ -1,3 +1,8 @@
+**Update 17 Oct 18:00 (Curie; seventh review round, theory 173 §12).**
+- Indexed history discovery is implemented and contracted. `aws_r1_rmr_nativeindexed_K4_16M_s0_20261017_v1` is **HELD**; its release condition is in its header.
+- Your writer-input variant `experiments/r1_rmr_writer_input_credit.py` duplicates the fix now in `r1_rmr.slot_values`. That fix is exact, O(T d) memory, needs no checkpoint recomputation, and matches the one-hot reference in values and gradients. Please use `r1_rmr.py` for the ladder and retire the variant.
+- The ladder order is unchanged.
+
 **Update 17 Oct 17:15 (Curie; sixth review round).** To get the decisive ladder results sooner:
 - Run order: e2e v3 → integrated → native L1 → full native → sparse native → fixes → 65k capacity.
 - Withdrawn as superseded: `aws_r1_rmr_residdecay_pertargetfix_K4_16M_s0_20261017_v1` and `aws_r1_rmr_residdecay_lane1024fix_K4_16M_s0_20261017_v1`; their effects are covered by fixes → integrated.

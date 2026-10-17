@@ -262,3 +262,17 @@ Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried 
 1. Results lacked the active-work breakdown AGENTS.md requires; fixed.
 2. The AWS queue holds 8 16M arms plus 2 smokes, about two days of slot time, and no arm has started. The per-target and 1,024-lane arms are attributable inside the ladder (fixes → integrated) and are deprioritised, so the decisive ladder reads out sooner.
 3. No new mechanism is admitted until the ladder reports. Mechanisms added without results would now be busywork.
+
+## 12. Seventh round, 17 October: indexed history discovery implemented (held)
+
+- **Level reads and write races** (`--index-regions C --index-read b`). Each slot is filed, from the level's input memory (causal), into the region its key wins (hard, VQ-style). The read race and the write-address race score C regions first and then only the slots in their top-b regions, with score S + log π(region). The current slot is always readable. Read probes reach unread regions through log π, which credits region keys. Stats: candidate fraction, largest region share, filing entropy.
+- **Readout pointers** (`--readout-index C --readout-read b --readout-tok K`). The same two-stage race goes through the CERL hook (S_rep_add / S_cont_add carry log π and −∞ outside the candidates), so the law stays exactly normalised over the causal candidate set. An exact token-identity lookup always makes continuation pointers from the K most recent earlier occurrences of the current token candidates, so induction copies stay reachable. Stat: readout copy coverage, the share of targets with an earlier copy source that keep one among the candidates.
+- **Contracts** (v14): normalised; causal; carry equals one long lane; reading all regions recovers full coverage (1.0); region keys credited. At initialisation with 2 of 4 regions, coverage is 0.55 on random 8-token data.
+- **Modelled work** (sparse native, d 128, K 4, C 64, b 4): 4.06 → 1.74 MMACs per target at history 1,023, and 18.7 → 2.65 at 8,191.
+- **Review findings this round:**
+  - indexed reads left the write race dense (fixed);
+  - copy coverage is the quality risk (token-identity lookup plus a coverage stat; the arm's pass criterion is coverage ≥ 0.95);
+  - a fixed C only flattens the slope; sublinear work needs C ∝ √H;
+  - filing can collapse onto few regions (stats reported; a filing balance is added only if observed);
+  - AWS's separate writer-input variant (`r1_rmr_writer_input_credit.py`, checkpoint recomputation, 2.75 GB at its gate) duplicates the exact O(T d) fix in `r1_rmr.slot_values` and can retire.
+- **Arm** `aws_r1_rmr_nativeindexed_K4_16M_s0_20261017_v1`: held until the sparse arm holds quality.
