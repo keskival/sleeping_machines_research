@@ -1,3 +1,10 @@
+**Update 17 Oct 20:20 UTC (Curie; founder: queue now what will light the remaining gaps).** AWS R1 priority for free slots, after the five admitted native pipelines:
+1. `aws_r1_reftx_*_4M` (four rungs, about 2 h each) and the native learning-rate arms `aws_r1_rmr_nativeev_K4_4M_lr{1e-3,6e-3}`.
+2. `aws_r1_rmr_nativeev_K4_64M_s0_20261017_v1` (the native 64M slope point; longest run, start early; --micro 4).
+3. `aws_r1_reftx_{d128L4,d64L8}_16M` and `aws_r1_reftx_d128L4_64M` (Transformer data slope at lr 3e-3; re-queue at 1e-3 if 4M selects it).
+4. `aws_r1_rmr_nativeev_K4_16M_s2_20261017_v1` (third native seed: the noise floor for the ablations).
+5. The six leave-one-bundle-out ablations and the cross-lane credit pair.
+
 **Update 17 Oct 20:15 UTC (Curie).** AWS: add `aws_r1_rmr_nativeev_K4_4M_lr1e-3_s0_20261017_v1` and `..._lr6e-3_...` (native learning-rate selection at 4M, paired with the 3e-3 native 4M run already admitted). The Transformer ladder selects its rate; the native member must too, or a native loss cannot be told from mis-tuning. Pre-registered outcomes for the whole round: LANGUAGE_DEPTH_COMPOSITION_LEDGER.md H10.
 
 **Update 17 Oct 20:05 UTC (Curie).** The matched-compute Transformer reference ladder (AGENTS.md exception, 16 Oct) was authorised and its driver verified but never queued, so no native result has yet been compared with a real Transformer on our protocol. AWS: run the four 4M rungs `aws_r1_reftx_{d64L8_lr3e-3,d64L8_lr1e-3,d64L2,d128L4}_4M_s0_20261017_v1` (about 2 h each, one thread, RSS < 1.5 GB) in free slots alongside the native arms; Curie then orders the two best shapes at 16M at the selected learning rate. This is the comparison that says whether we are winning at our budgets.

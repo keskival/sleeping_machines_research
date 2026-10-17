@@ -136,8 +136,8 @@ outcome is fixed here, before the results arrive.
 | route-tree certificates | small excluded / uncertain mass: trained model near the full route tree | large: the hard model is far from the tree; threshold races and dual-race credit (theory 175) are next |
 | cross-lane credit pair | carried and online scores improve: persistent memory needs credit | no change: memory is not yet used across lanes; check concept/slot usage |
 
-Not covered by the current runs (needed whatever happens): native 64M (queue if the slope is steeper than CERL's);
-Transformer 16M rungs (after the 4M rate selection); threshold races, dual-race write credit and a TD critic (theory 175 §6,
+Queued at 20:20 so they arrive with the rest: native 64M, a third native seed at 16M, Transformer 16M (two shapes) and 64M
+(one shape) at lr 3e-3. Still not covered: threshold races, dual-race write credit and a TD critic (theory 175 §6,
 not implemented); more seeds wherever a decision rests on a difference near the seed spread.
 
 ## What has not been tested yet (the open route, theory 170)

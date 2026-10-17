@@ -1,0 +1,4 @@
+# Battle R1 (Curie order to AWS slots, 17 Oct 20:20 UTC). AGENTS.md exception (16 Oct): matched-protocol Transformer reference ladder, one pass over the same FineWeb shards and token budgets. 16M/64M rungs queued at lr 3e-3 ahead of the 4M rate selection to save days; if 4M selects 1e-3, these are re-queued at 1e-3 and the 3e-3 results are reported as the unselected rate.
+# Decision: Transformer data slope (4M -> 16M -> 64M) at matched training FLOPs against the native member and CERL: whether our lead at small budgets holds, grows or closes with data.
+# Stationarity/online: fixed-weight one-pass protocol, 1,024-token context, batch 1 x 1024. Resources: one thread, RSS < 1.5 GB; exact resume.
+aws_r1_reftx_d64L8_16M_s0_20261017_v1 experiments/r1_reference_transformer_stream.py --tag aws_r1_reftx_d64L8_16M_s0_20261017_v1 --d 64 --layers 8 --heads 4 --lr 3e-3 --train-tokens 16777216 --seed 0
