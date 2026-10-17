@@ -39,27 +39,34 @@ def dense_rows(m, w):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--tag', required=True); ap.add_argument('--cerl', required=True); ap.add_argument('--dense', required=True)
     ap.add_argument('--vocab', default=str(ROOT/'data/gpt2/encoder.json')); a = ap.parse_args(); torch.set_num_threads(1)
-    rc = json.loads((ROOT/f'experiments/results/token_language/{a.cerl}.json').read_text()); g = rc['args']
-    tr = C.load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); n = g['train_tokens']//g['lane']*g['lane']
-    cls, words = C.word_classes(np.bincount(np.asarray(tr[:n]), minlength=50257).astype(float), g['classes'])
-    if 'residual-memory' in rc.get('stage', ''):                                                  # RMR (theory 172): CERL readout over a residual memory; winners recorded by the base race
-        import r1_rmr as RM
-        cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'])
-        cm = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)))
-        cm.load_state_dict(torch.load(ROOT/rc['checkpoint'])); cm.eval(); cm.base.record_winner = True; cm.record_winner = True
-        cm.__class__.last_winner = property(lambda self: self.base.last_winner)
-    else:
-        cm = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)))
-        cm.load_state_dict(torch.load(ROOT/rc['checkpoint'])); cm.eval(); cm.record_winner = True
+    def load_native(run):
+        """CERL or RMR checkpoint with the word classes of its own training prefix."""
+        rc = json.loads((ROOT/f'experiments/results/token_language/{run}.json').read_text()); g = rc['args']
+        tr = C.load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); n = min(g['train_tokens']//g['lane']*g['lane'], 4194304*4)
+        cls, words = C.word_classes(np.bincount(np.asarray(tr[:g['train_tokens']//g['lane']*g['lane']]), minlength=50257).astype(float), g['classes'])
+        if 'residual-memory' in rc.get('stage', ''):                                              # RMR (theory 172): CERL readout over a residual memory; winners recorded by the base race
+            import r1_rmr as RM
+            cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'])
+            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0))
+            m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.base.record_winner = True
+            m.__class__.last_winner = property(lambda self: self.base.last_winner)
+        else:
+            m = C.CERL(50257, cls, words, g['d'], g['modes'], g['layers'], g['dk'], g['units'], g['topk'], g['explore'], age_slope=g.get('age_slope', 1.5), product_keys=bool(g.get('product_keys', 0)))
+            m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.record_winner = True
+        return m
+    cm = load_native(a.cerl)
     rd = json.loads((ROOT/f'experiments/results/token_language/{a.dense}.json').read_text()); gd = rd['args']
-    dm = DeepKeyedLM(gd['d'], gd['modes'], gd['layers'], gd['heads'], gd['dk'], gd['dropout']); dm.load_state_dict(torch.load(ROOT/rd['checkpoint'])); dm.eval()
+    if 'native' in rd.get('stage', '') or 'residual-memory' in rd.get('stage', ''):                # native reference: compare two native members
+        dnat = load_native(a.dense); dense_rows_fn = lambda w: cerl_rows(dnat, w)[0]
+    else:
+        dm = DeepKeyedLM(gd['d'], gd['modes'], gd['layers'], gd['heads'], gd['dk'], gd['dropout']); dm.load_state_dict(torch.load(ROOT/rd['checkpoint'])); dm.eval(); dense_rows_fn = lambda w: dense_rows(dm, w)
     kind = vocab_roles(a.vocab); val = C.load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin'); out = dict(battle='R1', tag=a.tag, cerl=a.cerl, dense=a.dense)
     slices = dict(flagship=[np.asarray(val[p:p + 1025]) for p in range(25165824, 25165824 + 8192, 1024)], score_65528=[np.asarray(val[p:p + 8192]) for p in range(20971520, 20971520 + 8*8192, 8192)])
     with torch.no_grad():
         for name, lanes in slices.items():
             cn, ck, dn, role, pos, seen = [], [], [], [], [], []
             for w in lanes:
-                c_, k_ = cerl_rows(cm, w); cn.append(c_); ck.append(k_); dn.append(dense_rows(dm, w))
+                c_, k_ = cerl_rows(cm, w); cn.append(c_); ck.append(k_); dn.append(dense_rows_fn(w))
                 x, y = w[:-1], w[1:]; r = kind[y].copy(); r[(r == 1) & (kind[x] == 3)] = 0; role.append(r); pos.append(np.arange(len(y)))
                 first = {}; s_ = np.zeros(len(y), bool)
                 for i, tok in enumerate(w):
