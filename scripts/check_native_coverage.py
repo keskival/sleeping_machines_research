@@ -18,6 +18,7 @@ NATIVE = [  # (mechanism, flag, test on the flag's value)
     ('composing event spine between levels', '--events', lambda v: v == '1'),
     ('write-address race', '--write-race', lambda v: v == '1'),
     ('write probes (counterfactual write credit)', '--write-explore', lambda v: int(v) > 0),
+    ('normalised write race (full route-tree limit)', '--write-norm', lambda v: v == '1'),
     ('per-target old-slot corrections', '--old-per-target', lambda v: v == '1'),
     ('per-correction clocks (learnable lifetime per stored value)', '--old-clocks', lambda v: int(v) > 0),
     ('persistent memory across lanes', '--carry', lambda v: int(v) > 0),
@@ -32,7 +33,7 @@ BUNDLES = {  # synergistic mechanisms are attributed together: an ablation remov
     'async_spine': ['asynchronous firing levels', 'composing event spine between levels'],
     'persistence': ['persistent memory across lanes'],
     'capacity': ['large concept bank with product-key wake (capacity beyond activity)', 'concept symmetry breaking', 'concept load balance'],
-    'writes': ['write-address race', 'write probes (counterfactual write credit)', 'per-target old-slot corrections'],
+    'writes': ['write-address race', 'write probes (counterfactual write credit)', 'normalised write race (full route-tree limit)', 'per-target old-slot corrections'],
     'local_learning': ['calibrated bank-local clipping'],
 }
 DECLARED_GAPS = [

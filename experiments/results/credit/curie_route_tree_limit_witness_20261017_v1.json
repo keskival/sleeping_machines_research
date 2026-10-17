@@ -1,0 +1,108 @@
+{
+ "sweep_k": [
+  {
+   "m": 1,
+   "k": 1,
+   "excluded_mass": 31.061952307563427,
+   "loss_gap": 3.3940745391336344,
+   "grad_values_gap": 3.984743237686953,
+   "grad_scores_gap": 1.549063444716828,
+   "loss_gap_per_mass": 0.1092679077453607,
+   "grad_values_gap_per_mass": 0.1282837343329733
+  },
+  {
+   "m": 2,
+   "k": 2,
+   "excluded_mass": 20.171523793312303,
+   "loss_gap": 1.147149417666095,
+   "grad_values_gap": 2.0767752422808683,
+   "grad_scores_gap": 1.4736636246882329,
+   "loss_gap_per_mass": 0.056869745162555475,
+   "grad_values_gap_per_mass": 0.10295579370009743
+  },
+  {
+   "m": 4,
+   "k": 4,
+   "excluded_mass": 10.251775462104456,
+   "loss_gap": 0.5053607720395226,
+   "grad_values_gap": 0.7778996917742761,
+   "grad_scores_gap": 0.7231672754872263,
+   "loss_gap_per_mass": 0.049294951289908906,
+   "grad_values_gap_per_mass": 0.07587950932497219
+  },
+  {
+   "m": 8,
+   "k": 8,
+   "excluded_mass": 2.7834572144319165,
+   "loss_gap": 0.005316759413788619,
+   "grad_values_gap": 0.19972891754132951,
+   "grad_scores_gap": 0.20049792521214127,
+   "loss_gap_per_mass": 0.00191012794672101,
+   "grad_values_gap_per_mass": 0.07175569881432244
+  },
+  {
+   "m": 12,
+   "k": 12,
+   "excluded_mass": 0.5627999910898235,
+   "loss_gap": 0.026842259940291102,
+   "grad_values_gap": 0.06760266540470009,
+   "grad_scores_gap": 0.060607495181272085,
+   "loss_gap_per_mass": 0.04769413710954919,
+   "grad_values_gap_per_mass": 0.12011845500173547
+  },
+  {
+   "m": 16,
+   "k": 16,
+   "excluded_mass": 0.0,
+   "loss_gap": 0.0,
+   "grad_values_gap": 0.0,
+   "grad_scores_gap": 0.0,
+   "loss_gap_per_mass": null,
+   "grad_values_gap_per_mass": null
+  }
+ ],
+ "sweep_temperature": [
+  {
+   "temperature": 1.0,
+   "excluded_mass": 10.251775462104456,
+   "loss_gap": 0.5053607720395226,
+   "grad_values_gap": 0.7778996917742761,
+   "loss_gap_per_mass": 0.049294951289908906
+  },
+  {
+   "temperature": 0.5,
+   "excluded_mass": 2.0614989183973744,
+   "loss_gap": 0.20658200157199258,
+   "grad_values_gap": 0.27095286268580526,
+   "loss_gap_per_mass": 0.10020960948773674
+  },
+  {
+   "temperature": 0.25,
+   "excluded_mass": 0.16816432641234214,
+   "loss_gap": 0.053337076482615375,
+   "grad_values_gap": 0.04336851958819655,
+   "loss_gap_per_mass": 0.317172361228575
+  },
+  {
+   "temperature": 0.1,
+   "excluded_mass": 0.0005811316772120767,
+   "loss_gap": 9.198453127057249e-05,
+   "grad_values_gap": 0.0004924372257135654,
+   "loss_gap_per_mass": 0.15828517851902243
+  },
+  {
+   "temperature": 0.05,
+   "excluded_mass": 1.637030596635114e-07,
+   "loss_gap": 5.086124854614127e-10,
+   "grad_values_gap": 2.274308237260772e-07,
+   "loss_gap_per_mass": 0.0031069210710346906
+  }
+ ],
+ "exact_at_full_races": {
+  "loss_gap": 0.0,
+  "grad_values_gap": 0.0,
+  "grad_scores_gap": 0.0
+ },
+ "max_loss_gap_per_excluded_mass": 0.317172361228575,
+ "status": "passed"
+}
