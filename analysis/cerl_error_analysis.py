@@ -47,7 +47,7 @@ def main():
         if 'residual-memory' in rc.get('stage', ''):                                              # RMR (theory 172): CERL readout over a residual memory; winners recorded by the base race
             import r1_rmr as RM
             cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'])
-            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0))
+            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0), old_per_target=bool(g.get('old_per_target', 0)))
             m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.base.record_winner = True
             m.__class__.last_winner = property(lambda self: self.base.last_winner)
         else:

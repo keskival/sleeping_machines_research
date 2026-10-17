@@ -9,6 +9,8 @@ within a row group:
 
 Update this ledger whenever a language depth/composition result completes.
 
+**Dead ends and broken constructions are registered in [DEAD_ENDS.md](DEAD_ENDS.md); read it first.**
+
 ## A. Sparse race core with hard routes and counterfactual credit (P24), 5–6 October
 - Token race core, data growth 64k → 256k → 1M tokens: dev 8.03 → 7.74 → 7.25 (`curie_data_growth_tokens_*_p24_*`). Credit
   window 64 vs 16: 8.21 vs 8.03 at 64k. Private banks and gather variants are level (8.02–8.08 at 64k).
@@ -78,6 +80,15 @@ Update this ledger whenever a language depth/composition result completes.
 - Parts recognised 512/512; whole objects at chance (50%, NLL 0.693) even after 32× more training, and training
   arrangements are not fitted either (`investment/composition_scale_evidence.json`).
 - **Showed:** binding parts into wholes is the unsolved step. More data or training does not fix it.
+
+## H3. Flagship review fixes, 17 October
+- Weight decay is now applied to matrices only (`--wd-groups 1`); concept symmetry breaking and load balance (`--unit-init 0.02 --balance 0.01`); per-target old-slot corrections (`--old-per-target 1`); 1,024-token training lanes. Contracts `curie_review_fix_contracts_20261017_v1`, `curie_rmr_contracts_20261017_v5`.
+- AWS 16M arms on K4 residdecay: fixes; fixes + 1,024-token lanes; fixes + per-target corrections. Each compares against Curie's unfixed K4 residdecay run.
+- The 4M capacity verdicts (65k/262k banks) are confounded by bank collapse; see DEAD_ENDS.md §3.
+- Formal trainability conditions for composing good learners (C1 credit path, C2 sufficient interface, C3 identity at init, C4 each level reads something new, C5 conditioning, C6 alignment of local credit, C7 hard choices, C8 time, C9 stability): [theory 173](../theory/173_composition_trainability.md). Fixed with it: an RMR-2 crash (dense writes), straight-through firing `--fire-st`, fp32 old-slot algebra under bf16. Open: counterfactual write exploration, carried memory across lanes, product-key balance, native level 1.
+
+## H4. Integrated member (theory 173 §5), 17 October
+- Write-address race with counterfactual write probes, persistent memory across lanes (`--carry`), product-key balance, refined slot values for writers; contracts `curie_rmr_contracts_20261017_v8`. AWS: `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1` (gate first) against the unfixed K4 residdecay run and the three single-fix arms.
 
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.

@@ -34,20 +34,21 @@ class ParallelTemporalMemory(nn.Module):
 
     CHUNK = 256
 
-    def forward(self, u):
-        """Exact causal kernel computed in chunks of CHUNK steps with the complex state carried across chunk boundaries."""
+    def forward(self, u, state0=None):
+        """Exact causal kernel computed in chunks of CHUNK steps with the complex state carried across chunk boundaries.
+        state0 = (sr, si) continues a previous segment (persistent memory across lanes); the final state is left in last_state."""
         B, L, _ = u.shape; g = torch.sigmoid(self.gate(u)); w = self.write(u); wr, wi = w[..., :self.n]*g, w[..., self.n:]*g
         rate, freq = self.log_rate.exp(), self.freq; C = min(self.CHUNK, L)
-        k = torch.arange(C, dtype=u.dtype); lag = k[:, None] - k[None, :]; causal = (lag >= 0).to(u.dtype); lagc = lag.clamp_min(0).unsqueeze(-1)
+        k = torch.arange(C, dtype=u.dtype, device=u.device); lag = k[:, None] - k[None, :]; causal = (lag >= 0).to(u.dtype); lagc = lag.clamp_min(0).unsqueeze(-1)
         mag = torch.exp(-rate*lagc)*causal.unsqueeze(-1); ang = freq*lagc; kr, ki = mag*torch.cos(ang), mag*torch.sin(ang)   # [C, C, n]
         steps = (k + 1).unsqueeze(-1); cr, ci = torch.exp(-rate*steps)*torch.cos(freq*steps), torch.exp(-rate*steps)*torch.sin(freq*steps)  # c^(i+1)
-        sr = u.new_zeros(B, self.n); si = u.new_zeros(B, self.n); outs = []
+        sr, si = (u.new_zeros(B, self.n), u.new_zeros(B, self.n)) if state0 is None else state0; outs = []
         for c0 in range(0, L, C):
             ar, ai = wr[:, c0:c0 + C], wi[:, c0:c0 + C]; n_ = ar.shape[1]; Kr, Ki = kr[:n_, :n_], ki[:n_, :n_]
             zr = torch.einsum('ijn,bjn->bin', Kr, ar) - torch.einsum('ijn,bjn->bin', Ki, ai); zi = torch.einsum('ijn,bjn->bin', Kr, ai) + torch.einsum('ijn,bjn->bin', Ki, ar)
             zr = zr + cr[:n_]*sr.unsqueeze(1) - ci[:n_]*si.unsqueeze(1); zi = zi + cr[:n_]*si.unsqueeze(1) + ci[:n_]*sr.unsqueeze(1)
             outs.append(torch.cat([zr, zi], -1)); sr, si = zr[:, -1], zi[:, -1]
-        return torch.cat(outs, 1)
+        self.last_state = (sr, si); return torch.cat(outs, 1)
 
 
 class KeyedRead(nn.Module):
