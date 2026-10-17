@@ -1,5 +1,15 @@
 **Current winning path, 17 October 2026.** Curie's old-slot K4 refinement improves flagship DEV to4.9901 versus CERL5.0634 and dense L16 5.2034 at16M; its long-lane score5.0874 regresses versus5.0282. Current product-ordered learned-decay K8 fit aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1 is admitted and running in AWS slot5, using source-matched Curie v3 algebra contracts. Carrier-backed temporal state, dense reads, stationary fixed-weight development scoring and lane resets are explicit; no fully event-local or online win claimed. In parallel, slot2 has recovered the completed native joint-credit arm without refitting and is finishing its online tape; then the full-depth child-credit arm trains from the identical parent. Two real-native tape-transition tests pass. Slot3's calibrated reciprocal trial and slot4's native document learner continue unchanged. The transition gate's result omitted source_sha256, causing post-run publication validation to report an error; the tests passed and the conditional recovery job launched correctly. See theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md. Latest investor validation:88/88 claims pass, no headline or prose failures. Remote main merged; conflicting previous generated artifacts remain preserved in autostash98d983256 while current remote publications are retained.
 
+**Flagship review, 17 October 11:00 (Curie; founder request).** Defects found in the native drivers (r1_cerl, r1_rmr, r1_cerl_gpu, r1_cerl_h) and their status:
+1. AdamW weight decay on every tensor. Decoupled decay over a 16M run pulls the power-law age slope from 1.5 toward 1.29 (the non-integrable side), triples the old-slot decay rate, shrinks ReZero gates and biases, and erodes the dormant concept tables. Fixed: `--wd-groups 1` decays matrices only.
+2. Concept-bank collapse: 124 of 1,024 units used. Zero-initialised unit vectors make every unit the same word law, so keys get no differential credit, and nothing balances traffic. Fixed: `--unit-init 0.02` and `--balance 0.01` (Switch term, auxiliary objective only).
+3. Training lanes are 256 tokens, but scoring uses 1,024 and 8,192. This is the root cause of the long-lane regression. Test: `--lane 1024 --batch 1` (1.8x time per token, 2.0 GB).
+4. Open: one δold vector is written to all m read slots (per-target corrections would let a level refine each old slot differently).
+5. Open: the AWS local learner's depth mixture detaches lower messages, so producers get no credit, and it runs at about 29 tokens/s. Its producer-credit repair is running.
+6. CERL-H: level-2 attribution changes 79% of the time, so it is not durable. Superseded by RMR.
+
+Contract `curie_review_fix_contracts_20261017_v1`: defaults reproduce the earlier runs bit for bit. AWS queues: `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1` and `aws_r1_rmr_residdecay_lane1024fix_K4_16M_s0_20261017_v1`, each against Curie's unfixed K4 residdecay run.
+
 **R1 native depth pays at 16M —17 October 08:00 (Curie).** Same 16M fresh tokens, one pass, one seed:
 
 | | flagship | 65,528 slice | selection | prequential | train FLOPs/target |

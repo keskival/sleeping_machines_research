@@ -41,6 +41,18 @@ S_MAX = 512
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'mode', 'row_chunk', 'log_every', 'run', 'split', 'select_from', 'online_stride', 'grid_targets', 'row_chunk_unused')
 
 
+def param_groups(model, wd, groups=False):
+    """AdamW groups. groups=False: decay everything (the original runs). groups=True: no decay on scalars/vectors (biases,
+    norms, learned clock rates and slopes, ReZero gates; decoupled decay pulls softplus-parameterised rates toward 0.69) and
+    none on dormant-capacity tables (concept keys/vectors: decaying them erodes capacity that is meant to wait unused)."""
+    if not groups: return [dict(params=list(model.parameters()), weight_decay=wd)]
+    dormant = ('unit_key', 'unit_out', 'unit_val', 'key1', 'key2')
+    dec, nod = [], []
+    for n, p in model.named_parameters():
+        (nod if p.dim() < 2 or n.split('.')[-1] in dormant else dec).append(p)
+    return [dict(params=dec, weight_decay=wd), dict(params=nod, weight_decay=0.0)]
+
+
 def word_classes(counts, n_classes, s_max=S_MAX, trim=False):
     """Frequency-mass word classes: words by descending training count; a class closes at 1/n_classes of the mass or at
     s_max words. Returns class_of [V] and class_words [C, s_max] (-1 padded)."""
@@ -65,7 +77,7 @@ def match_lengths(x, r0, r1, cap=8):
 
 
 class CERL(nn.Module):
-    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False, cause_messages=False):
+    def __init__(self, V, class_of, class_words, d=128, modes=64, layers=2, dk=64, units=1024, topk=4, explore=2, tm_chunk=64, age_slope=1.5, dropout=0.0, product_keys=False, cause_messages=False, unit_init=0.0, balance=0.0):
         super().__init__(); self.V, self.d, self.dk, self.U, self.topk, self.explore, self.p_drop = V, d, dk, units, topk, explore, dropout
         self.register_buffer('class_of', torch.as_tensor(class_of)); self.register_buffer('class_words', torch.as_tensor(class_words)); C = class_words.shape[0]
         self.embed = nn.Embedding(V, d); nn.init.normal_(self.embed.weight, std=0.02); self.word_bias = nn.Parameter(torch.zeros(V))
@@ -83,7 +95,7 @@ class CERL(nn.Module):
             self.bias1, self.bias2 = nn.Parameter(torch.zeros(n)), nn.Parameter(torch.zeros(n))
         else:
             self.unit_key = nn.Parameter(torch.randn(units, dk)/math.sqrt(dk)); self.unit_bias = nn.Parameter(torch.zeros(units))
-        self.unit_out = nn.Parameter(torch.zeros(units, d)); self.cause_msgs = cause_messages
+        self.unit_out = nn.Parameter(torch.randn(units, d)*unit_init if unit_init > 0 else torch.zeros(units, d)); self.cause_msgs = cause_messages; self.balance = balance   # unit_init > 0 breaks the symmetry of identical concept laws
         if cause_messages:
             self.v_ep = nn.Linear(d, d); nn.init.zeros_(self.v_ep.weight); nn.init.zeros_(self.v_ep.bias); self.unit_val = nn.Parameter(torch.zeros(units, d))
         self.q_rep, self.k_rep, self.q_cont, self.k_cont = (nn.Linear(d, dk) for _ in range(4))
@@ -164,9 +176,14 @@ class CERL(nn.Module):
         parts = torch.cat([s_bg + lp[..., :1], s_sel + lp[..., 1:], torch.where(hit_rep, S_rep, neg), torch.where(hit_cont, S_cont, neg)], -1)
         nll = logZ - torch.logsumexp(parts, -1)
         self.aux = None
+        if self.training and self.balance > 0 and not self.pk:                                      # load balance (Switch-style): fraction woken x mean wake probability, so dormant units get used
+            P = torch.softmax(self.q_unit(hq) @ self.unit_key.T + self.unit_bias, -1).reshape(-1, self.U).mean(0)
+            f = torch.zeros(self.U, device=dv).scatter_add(0, sel[..., :self.topk].reshape(-1), torch.ones(sel[..., :self.topk].numel(), device=dv))/sel[..., :self.topk].numel()
+            self.aux = (self.balance*self.U*(f*P).sum())*torch.ones_like(nll)
         if explore:
             race = torch.cat([s_bg, s_sel, S_rep, S_cont], -1).detach()
-            self.aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
+            ex_aux = torch.logsumexp(torch.cat([race, s_ex], -1), -1) - torch.logsumexp(torch.cat([parts.detach(), s_ex + lp_ex], -1), -1)
+            self.aux = ex_aux if self.aux is None else self.aux + ex_aux
         return nll, parts, s_sel, sel, lp, s_bg, S_rep, S_cont
 
     def cand_logp(self, x, h, r0, r1, cands):
@@ -396,7 +413,7 @@ def main():
     ap = argparse.ArgumentParser(); A = ap.add_argument
     A('--mode', choices=('train', 'contract', 'score'), default='train'); A('--tag', default=''); A('--corpus', default='fineweb'); A('--seed', type=int, default=0)
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
-    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0); A('--cause-messages', type=int, default=0)
+    A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256); A('--age-slope', type=float, default=1.5); A('--product-keys', type=int, default=0); A('--cause-messages', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--dropout', type=float, default=0.0); A('--epochs', type=int, default=30); A('--ctx', type=int, default=512); A('--stride', type=int, default=128)
     A('--run', default=''); A('--split', default='valid'); A('--select-from', default=''); A('--online-stride', type=int, default=32); A('--grid-targets', type=int, default=8192)
@@ -413,9 +430,9 @@ def main():
     train_all = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_train_000001.bin'); val = load_fineweb(ROOT/'data/fineweb_gpt2/fineweb_val_000000.bin')
     n_lanes = a.train_tokens//a.lane; train = np.asarray(train_all[:n_lanes*a.lane]).reshape(n_lanes, a.lane).astype(np.int64)
     counts = np.bincount(train.reshape(-1), minlength=50257).astype(float); cls, words = word_classes(counts, a.classes)
-    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages)); params = sum(p.numel() for p in model.parameters())
+    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, age_slope=a.age_slope, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages), unit_init=a.unit_init, balance=a.balance); params = sum(p.numel() for p in model.parameters())
     order = np.random.default_rng(a.seed).permutation(n_lanes); total = math.ceil(n_lanes/a.batch); quarter = math.ceil(total/4)
-    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
+    opt = torch.optim.AdamW(param_groups(model, a.wd, bool(a.wd_groups)), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0
     if state_path.exists():
