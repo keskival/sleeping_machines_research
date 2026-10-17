@@ -40,6 +40,7 @@ Our purpose is to win: build the strongest model family and achieve material, re
 - When a native mechanism fails, repair it at its cause (credit variance, retrieval, clock calibration, composition). Do not
   swap in the conventional component that happens to work. Any proposed substitution needs the written analysis of the
   architectural-continuity rules below before code, and the founder's approval when it removes a core mechanism.
+- Every R1 flagship queue file declares `# Role: flagship` and must pass `scripts/check_native_coverage.py` before admission (founder, 17 Oct: "You switched off all our unfair advantages and started tuning a version of ReZero Transformers"). A native mechanism is never added as a default-off flag on a dense baseline and then compared one at a time against it; the full native member is the baseline, and designed-but-unintegrated learning mechanisms are listed as declared gaps until integrated.
 - Report each member's native share (loss reduction delivered by race causes over the background route) and active work
   per token (candidates scored, units woken, messages, state bytes moved) beside its loss. A result without them is not a
   flagship result.

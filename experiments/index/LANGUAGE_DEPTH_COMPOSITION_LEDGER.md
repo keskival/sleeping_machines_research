@@ -99,6 +99,23 @@ Update this ledger whenever a language depth/composition result completes.
 ## H7. Sparse native member (theory 173 §10), 17 October
 - Sparse level reads with read probes; product-key slot level 1 with sparse reads (256 key scores per token instead of 8,192; event-driven execution 12 state rows per token instead of 4,100, measured). AWS: `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` after the full-native arm; e2e smoke v3 and a GPU-driver CPU smoke gate it.
 
+## H7b. Shared old-slot decay at 16M (17 October)
+- K4 with one learned decay rate per level: 65,528 slice 5.0128 (no decay 5.0874, CERL 5.0282), flagship 5.0381 (no decay 4.9901), selection 5.2597 (5.1906). Fixes long lanes, costs short context; ahead of CERL on all three protocols. Repair: per-correction clocks (theory 174 P8) in the native flagship.
+
+## H8. Depth versus data (theory 173 §14), 17 October
+- Founder: useful depth grows roughly with the logarithm of the data (each level is one more layer of hierarchical
+  decomposition), and depth needs both trainability and enough data per level. Both families gain more from depth at
+  16M than at 4M (dense L4 → L16 0.067, native K4 0.073; at 4M 0.024 and < 0.01).
+- Depth does not explain the whole slope gap: shallow dense gains 0.595 per 4× data vs CERL 0.403. Open candidate:
+  usable capacity (CERL used 124 of 1,024 concept units). Tests: envelope comparison, synthetic hierarchy with known
+  depth, grown depth with ReZero insertion, 64M K4/K8, fixed-capacity 16M arm.
+- Implemented 17 Oct: capacity usage in every milestone, `--grow`, `rhm_depth.py` (Bayes ladder B = 2.60/2.03/1.71/1.55/1.47). Queued: hierarchy grid and fixed CERL 4M/16M (Curie v34); grown K4 16M and fixed CERL 64M (AWS).
+
+## H9. Inductive bias and scaling (theory 173 §15), 17 October
+- 4M → 16M: race causes' gain over background 0.437 → 0.405 (CERL), 0.433 → 0.386 (K4); background responsibility 0.24 → 0.32 / 0.36;
+  the background route carried most of the improvement. The structured causes are a small-data offset, not yet a slope advantage.
+- Pass condition for the fixed CERL pair: units_used and concept share rise with data. Scaling claims need three data sizes.
+
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.
    CERL-H v1 does this, but with non-durable cause identities (ρ ≈ 0.8).

@@ -283,3 +283,148 @@ Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried 
 - **Filing collapse:** balanced filing (`--index-balance γ`). Per-region filing biases are nudged toward uniform load after each training forward (auxiliary-loss-free balancing, as in DeepSeek-V3). They are buffers (checkpointed), fixed in evaluation, and filing stays causal. Contract: biases move only in training; law exact, causal, carry exact.
 - **Resume identity:** `--product-keys` (added to the RMR command line in round 3) was missing from the behaviour-preserving defaults, so the running K4 (Curie) and K8 (AWS) runs could not have resumed under current source. Fixed and verified against the live checkpoints (K4 decay and PTB).
 - **No results yet:** Curie runs the sparse native member itself after the K4 decay run (chain v33: e2e smoke → RSS/time gate → run → PTB resume). AWS skips that rung.
+
+## 14. Depth and data: the two halves of the slope (17 October, founder)
+
+Founder: the slope gap is about depth, and depth is two things: (a) effective learning over compositional depth, and
+(b) adding depth as data grows, because useful depth tracks roughly the logarithm of the data: each level represents
+one more layer of hierarchical decomposition, and a level is only learnable once the data contain enough instances of
+its parts. The random hierarchy model (Cagnetta, Petrini, Wyart et al.) gives this form: resolving L levels of a
+hierarchy with branching m needs a sample count that grows like m^L, so the resolvable depth with D samples grows like
+log D / log m, and loss falls stepwise as each further level becomes resolvable.
+
+What our runs already say (one seed, FineWeb development, one pass):
+
+| data | dense depth gain | native depth gain |
+| --- | --- | --- |
+| 4M | L2 → L8: 0.024 (5.865 → 5.841) | K = 2/4/8 vs CERL: within 0.01 |
+| 16M | L4 → L8 → L16: 0.052, 0.015 (5.270, 5.218, 5.203) | K = 4 old-slot vs CERL: 0.073 |
+
+Both families gain more from depth as data grow, and both saturate early at a fixed data size, which is (b). Depth
+alone does not explain the whole slope gap at 4–16M: the shallow dense model gains 0.595 per 4× data (L2 at 4M 5.865
+→ L4 at 16M 5.270) against CERL's 0.403, and the best-depth envelopes are 0.638 (dense) vs about 0.47 (native). The
+remaining candidate is usable capacity: CERL has more parameters (7.0M vs 3.8M) but used 124 of 1,024 concept units
+(zero init, no balance, weight decay on dormant tables, fixed since). A model that cannot put new statistics into new
+capacity flattens with data whatever its depth.
+
+Consequences:
+1. Compare scaling by envelopes: for each data size, the best depth of each family. A fixed-depth curve against
+   another fixed-depth curve mixes slope with depth mismatch.
+2. Test (a) apart from data on a synthetic hierarchy with known depth L: does a K-level member reach the m^L sample
+   scale, and does removing level k remove one hierarchy level? This separates credit failure (C1–C9) from data
+   sufficiency, which language at 4–16M cannot do.
+3. Grow depth with data. A new level enters at its ReZero gate 0, so insertion is exactly function-preserving (C3):
+   one run can add a level each time the data multiply by a fixed factor, and is compared with fixed-K runs at the
+   endpoints.
+4. Make depth cheap through timescale. If level k fires at the rate of its hierarchical events, about m^-k per token,
+   active work for K levels is a geometric sum bounded independently of K, while a dense stack pays every layer on every
+   token. This needs durable upper-level events (the CERL-H dead end: causes changed on 79% of tokens) and measured
+   firing rates per level (`--fire`, untested in training).
+5. The capacity lever is tested by the fixed 16M capacity arm (`--wd-groups 1 --unit-init 0.02 --balance 0.01`):
+   the slope from 4M to 16M must move toward the dense slope if usable capacity is the cause.
+
+Predictions to falsify: K = 8 does not beat K = 4 at 16M by more than about 0.02 but does at 64M; the fixed-capacity
+arm steepens the 4M → 16M slope; a grown-depth run matches fixed K = 4 at 16M with less training work.
+
+Implemented 17 October (founder: be guided by the results and fix the weaknesses observed):
+- Usable capacity is measured in every CERL/RMR milestone (`capacity`: concept units with at least a tenth of the uniform
+  responsibility share, unit perplexity, share of the busiest 1%). The responsibilities add up to the concept cause's share
+  (contract, 1e-8).
+- Depth growth `--grow f2,...,fK` in `r1_rmr.py`: level k enters at data fraction f_k at ReZero gate 0. Insertion is exact
+  (contract 0.0, including a level entering after a carried prefix); levels not yet in use receive no credit and cost
+  nothing; training FLOPs are counted at the depth in use at each step.
+- `experiments/rhm_depth.py`: the synthetic-hierarchy test of consequence 2, with the exact block-truncated Bayes ladder
+  B_0..B_L (equal to brute-force enumeration to 2e-16) and the resolved composition depth of each model and of each
+  level knockout. Hierarchy v 16, m 4, s 2, L 4: B = 2.60, 2.03, 1.71, 1.55, 1.47 nats per leaf (each level adds about half
+  the information of the one below).
+- Queued: the hierarchy grid (K = 1, 2, 4 at 1k-64k trees) and the fixed CERL pair at 4M/16M on Curie; the grown K4 16M arm
+  and the fixed CERL 64M slope point on AWS.
+
+## 15. Inductive bias and scaling (17 October, founder)
+
+Founder: model classes that scale well tend to lose to models that scale badly on small datasets (n-grams vs neural LMs, LSTMs
+vs Transformers, CNNs vs ViTs below JFT scale). The exception is a bias that only speeds learning and fades with data (ConvNets
+match ViTs at JFT-4B scale, Smith et al. 2023): a soft bias costs nothing at scale, a hard constraint flattens the curve.
+
+Our own runs show the pattern inside the model (one seed, FineWeb DEV, selection slice):
+
+| | CERL 4M | CERL 16M | K4 4M | K4 old-slot 16M |
+| --- | --- | --- | --- | --- |
+| native gain (race causes over background only) | 0.437 | 0.405 | 0.433 | 0.386 |
+| background responsibility | 0.24 | 0.32 | 0.24 | 0.36 |
+| background-only NLL | 6.107 | 5.688 | 6.108 | 5.577 |
+
+The generic background route carried most of the 4M → 16M improvement (0.42 of 0.39 nats for CERL); the race causes are a
+near-constant 0.4-nat offset whose share does not grow. Rules from here:
+1. Small-data wins are not scaling evidence. Scaling claims need fitted curves over at least three data sizes on the compute
+   axis; matched-compute wins are reported for their budget only.
+2. Every result is read for per-cause share against data: a mechanism whose share shrinks with data is a small-data prior; a
+   mechanism meant to scale must take a growing share.
+3. The concept bank is the parametric memory that should grow with data (capacity beyond activity). Pass condition for the
+   fixed CERL pair (curie_r1_cerl_fix_{4M,16M}): units_used and the concept share both rise from 4M to 16M. If not, the bank
+   is a hard constraint and is redesigned before any 64M run.
+4. Size must scale with data in frontier comparisons: in this family through concept units or slots at near-constant active
+   work (product keys), and depth through growth (section 14). Fixed-size 4M → 16M comparisons understate any family whose
+   capacity is held small.
+
+## 16. Both credit paths in residual memory (17 October, founder question)
+
+As in a residual Transformer (x_{l+1} = x_l + f_l(x_l), so dL/dx_l = dL/dx_{l+1}(I + df_l/dx_l)), a level's corrections get credit
+by two paths: directly, because the readout reads the total memory, and through every upper level that reads them as
+conditioning data (its query is the current slot under the running total; its read race scores and reads slots that include
+lower new-slot corrections; lower old-slot corrections change the keys and values it reads). Nothing on these paths is detached
+(only zero-forward probes, straight-through firing, statistics and the carried prefix). The conditioning path is closed at
+init (upper ReZero gates 0) and opens with the gates, as in ReZero Transformers; within one level, own corrections are visible
+from earlier chunks only (training parallelism). Contract (curie_rmr_contracts_20261017_v17): the derivative of level 3's
+corrections with respect to level 2's new- and old-slot corrections is nonzero, and gating level 3 off changes the gradient on
+level 2's corrections (share 12% at the contract's random parameters). CERL-H and the detached local learner (DEAD_ENDS) lacked this path.
+
+## 17. The event spine composes with depth (17 October, founder)
+
+Founder: levels must exchange both memories and events; the async spine must also scale with depth and composition, or it
+degrades until it is removed. Memory composes by addition. Events are pointers in time, so they compose by following
+pointers: level k at t points to slot s (its read-race winner when it fires); level k's event at s points to ptr_k(s). Level
+k+1 races over its own candidates plus ptr_k(t) and the composed pointer ptr_k(ptr_k(t)), so its own pointer can realise a
+two-hop chain; K levels reach chains of length about 2^(K-1), and the depth needed grows with the logarithm of the chain.
+Implementation (`--events 1`, r1_rmr.py): learned bonuses on the two pointed slots (always candidates under sparse reads),
+their ages and the event arrival (the lower attribution moved) in the query, event arrival as a firing input (a silent level
+holds its last pointer: event-driven state), the top level's pointer and composed pointer in the readout's repeat/continue
+race. Credit: straight-through weights (forward 1) carry the upper use of an event back into the lower read race. Zero at init
+equals the member without events (C3). Contracts v18: identity 0.0, normalisation 1 +- 1e-7, causal, train = eval, carry exact,
+nonzero event credit to the lower read keys, composed reach >= pointer reach. Reported per level: event rate, pointer reach,
+composed reach. Durability target (CERL-H dead end): event rate falling with level.
+
+## 18. Synergy and attribution (17 October, founder)
+
+Founder: some features are synergistic with others, so they may not work in isolation. Designed pairs: sparse reads need probes
+(unread slots get no credit); firing needs events (nothing to trigger on) and events need firing (token-rate events carry nothing,
+the CERL-H failure); slot level 1 needs carry (slots reset every lane cannot pay); carry needs cross-lane credit (declared gap); a
+large concept bank needs symmetry breaking and balance (the 4M product-key banks collapsed); event pointers make sparse reads reach
+far slots cheaply. A mechanism added alone to the dense-read stack can show nothing even when the construction needs it.
+
+Method from here: (1) the headline comparison is the full native member against the diagnostic dense-read stack (K4 old-slot
+4.9901, K4 decay); (2) attribution removes one whole bundle from the full native member (sparse addressing, async spine,
+persistence, capacity, writes, local learning; `# Role: ablation <bundle>`, checked by scripts/check_native_coverage.py so that
+exactly that bundle is off); (3) a seed replicate of the full member sets which differences are real; (4) no mechanism is declared
+dead from an isolated test on the diagnostic stack, or from a 16M leave-one-out alone (synergy can depend on data scale, section 15).
+The native member now also carries the large concept bank (65,536 units, product-key wake), which it lacked.
+
+## 19. Learning-side integrations (17 October, founder audit)
+
+- Cross-lane credit for persistent memory (`--carry-credit H`, `CarryCredit` in r1_rmr.py; theory 160, future-oriented credit):
+  each lane runs on a parameter snapshot, so optimizer steps do not invalidate its graph; a lane's graph is kept for H later
+  lanes, whose cotangents on their carried prefix are pushed back through its carried outputs (and on to older lanes). A lane's
+  update (its own loss plus its effect on the next H lanes) is applied when it leaves the window, lagging by H lanes. Exact:
+  with fixed parameters the summed credit equals backprop through H + 1 concatenated carried lanes (1e-7, H = 1 and 2); the
+  cross-lane part is large (max 0.14 / 0.32 per parameter at random parameters). Paired arm on AWS.
+- Calibrated bank-local radial clipping (`--clip local`): the adopted policy, now in the flagship.
+- Online column for carried runs: causal online adaptation with persistent memory in final scoring (one RMS-normalised step
+  per scored 512-token segment, decay toward the trained weights, lr/decay chosen on the selection slice only).
+- Exact microbatching with carried memory (`--micro`) so the native member fits any memory cap.
+Still declared gaps: forward-trained credit functions (theory 164) and event-local learning as the training route; AWS owns
+porting its credit learners onto the native member as paired arms.
+
+## 20. Asynchronous modules
+
+Trainability of asynchronous modules in compositions (piecewise exactness, revivable silence, rate-invariant credit through
+held events, rate matching, depth-independent credit along composed pointers, bounded delay, per-value lifetimes): theory 174.

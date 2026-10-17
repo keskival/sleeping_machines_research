@@ -28,6 +28,11 @@ def main():
     try:
         run_or_await(DECAY, 64800); market.publish([f'experiments/results/token_language/{DECAY}.json'], 'R1 native depth at 16M: 4-level residual memory with decaying old-slot refinement (long-lane repair)')
     except Exception as error: print(json.dumps({DECAY: 'failed', 'error': repr(error)}), flush=True)
+    main_after_decay()
+
+
+def main_after_decay():
+    """The sparse native member, the PTB resume and the L2 diagnostic (also run by chain v34 after its new steps)."""
     try:
         if not completed(E2E): stable_host(); original.run(E2E, 3600)
         assert completed(E2E), 'e2e smoke did not complete'
@@ -37,6 +42,11 @@ def main():
             market.publish([f'experiments/results/token_language/{SPARSE}.json', f'experiments/results/token_language/{E2E}.json'], 'R1 sparse native member at 16M (all native mechanisms)')
         else: print(json.dumps({SPARSE: 'skipped', 'reason': f'gate RSS {rss} KB above {RSS_MAX_KB}'}), flush=True)
     except Exception as error: print(json.dumps({SPARSE: 'failed', 'error': repr(error)}), flush=True)
+    main_after_sparse()
+
+
+def main_after_sparse():
+    """PTB resume + validation scoring, then the dense 16M L2 diagnostic."""
     try:
         if not word_done(v22.FIT): stable_host(); original.run(v22.FIT, 21600)
         if not word_done(v22.FIT): raise RuntimeError('PTB fit resume ended without a completed result')

@@ -1,0 +1,236 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "native causal event race member (theory 169), one pass",
+ "tag": "curie_r1_cerl_usage_smoke_20261017_v1",
+ "args": {
+  "mode": "train",
+  "tag": "curie_r1_cerl_usage_smoke_20261017_v1",
+  "corpus": "fineweb",
+  "seed": 0,
+  "d": 32,
+  "modes": 8,
+  "layers": 2,
+  "dk": 16,
+  "units": 64,
+  "topk": 4,
+  "explore": 2,
+  "classes": 16,
+  "age_slope": 1.5,
+  "product_keys": 0,
+  "cause_messages": 0,
+  "wd_groups": 1,
+  "unit_init": 0.02,
+  "balance": 0.01,
+  "level1": "tm",
+  "slots": 1024,
+  "slot_m": 4,
+  "slot_explore": 0,
+  "slot_read_topk": 0,
+  "slot_pk": 0,
+  "train_tokens": 16384,
+  "lane": 128,
+  "batch": 4,
+  "lr": 0.003,
+  "wd": 0.01,
+  "row_chunk": 512,
+  "dropout": 0.0,
+  "epochs": 30,
+  "ctx": 512,
+  "stride": 128,
+  "run": "",
+  "split": "valid",
+  "select_from": "",
+  "online_stride": 32,
+  "grid_targets": 8192,
+  "checkpoint_every": 256,
+  "max_steps": 0,
+  "log_every": 4
+ },
+ "parameters": 1679069,
+ "steps": 32,
+ "presentations": 16256,
+ "train_wall_s": 26.235612154006958,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 8,
+   "tokens": 4096,
+   "select": {
+    "nll": 8.440230018753626,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.879405017125064,
+     "resp_bg": 0.31641530391860717,
+     "resp_concept": 0.39907172124634505,
+     "resp_repeat": 0.08746498131293769,
+     "resp_continue": 0.19704799131323317,
+     "win_bg": 0.3447873159081952,
+     "native_gain": 0.43917499837143836
+    },
+    "capacity": {
+     "units": 64,
+     "concept_mass_per_target": 0.399071724204417,
+     "units_used": 26,
+     "unit_perplexity": 15.838873917977747,
+     "top1pct_share": 0.16938515743119195
+    }
+   },
+   "prequential_segment": 8.783315658569336,
+   "elapsed_s": 6
+  },
+  {
+   "step": 16,
+   "tokens": 8192,
+   "select": {
+    "nll": 8.142840737183034,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.449344066159576,
+     "resp_bg": 0.27026993328360566,
+     "resp_concept": 0.5450374043433329,
+     "resp_repeat": 0.0281971597772876,
+     "resp_continue": 0.1564954970101132,
+     "win_bg": 0.2928771480470241,
+     "native_gain": 0.3065033289765413
+    },
+    "capacity": {
+     "units": 64,
+     "concept_mass_per_target": 0.5450374092272493,
+     "units_used": 10,
+     "unit_perplexity": 5.762009475304697,
+     "top1pct_share": 0.28875776404725256
+    }
+   },
+   "prequential_segment": 8.070451855659485,
+   "elapsed_s": 13
+  },
+  {
+   "step": 24,
+   "tokens": 12288,
+   "select": {
+    "nll": 8.019865631416593,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.325984657218413,
+     "resp_bg": 0.2859573582697771,
+     "resp_concept": 0.5233912586794578,
+     "resp_repeat": 0.01347480483310371,
+     "resp_continue": 0.17717657612320936,
+     "win_bg": 0.29731008914923984,
+     "native_gain": 0.30611902580182004
+    },
+    "capacity": {
+     "units": 64,
+     "concept_mass_per_target": 0.5233912625153803,
+     "units_used": 11,
+     "unit_perplexity": 6.480224236656797,
+     "top1pct_share": 0.24137898846300698
+    }
+   },
+   "prequential_segment": 7.516773700714111,
+   "elapsed_s": 20
+  },
+  {
+   "step": 32,
+   "tokens": 16384,
+   "select": {
+    "nll": 8.006280583175265,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.311192549230066,
+     "resp_bg": 0.28779225126018043,
+     "resp_concept": 0.5210927326485157,
+     "resp_repeat": 0.011876252935560076,
+     "resp_continue": 0.17923875144784282,
+     "win_bg": 0.29709107516871236,
+     "native_gain": 0.3049119660548012
+    },
+    "capacity": {
+     "units": 64,
+     "concept_mass_per_target": 0.5210927431106971,
+     "units_used": 11,
+     "unit_perplexity": 6.6237550927498985,
+     "top1pct_share": 0.24388110512685512
+    }
+   },
+   "prequential_segment": 7.4815661907196045,
+   "elapsed_s": 26
+  }
+ ],
+ "train_flops_per_target": 1239361.5118110236,
+ "train_flops": 20147060736.0,
+ "prequential_by_eighth": [
+  9.014009237289429,
+  8.552622079849243,
+  8.308547735214233,
+  7.832355976104736,
+  7.5457377433776855,
+  7.487809658050537,
+  7.415727496147156,
+  7.547404885292053
+ ],
+ "prequential_last_quarter": 7.4815661907196045,
+ "select": {
+  "nll": 8.006280583175265,
+  "targets": 16376,
+  "native": {
+   "bg_only_nll": 8.311192549230066,
+   "resp_bg": 0.28779225126018043,
+   "resp_concept": 0.5210927326485157,
+   "resp_repeat": 0.011876252935560076,
+   "resp_continue": 0.17923875144784282,
+   "win_bg": 0.29709107516871236,
+   "native_gain": 0.3049119660548012
+  }
+ },
+ "score_65528": {
+  "nll": 7.715652549649577,
+  "targets": 65528,
+  "native": {
+   "bg_only_nll": 8.170728868689238,
+   "resp_bg": 0.26694025631988094,
+   "resp_concept": 0.48414677187314675,
+   "resp_repeat": 0.014595284161036587,
+   "resp_continue": 0.23431768943547127,
+   "win_bg": 0.2956153799351857,
+   "native_gain": 0.4550763190396614
+  }
+ },
+ "flagship": {
+  "nll": 7.876979053020477,
+  "targets": 8192,
+  "native": {
+   "bg_only_nll": 8.236551582813263,
+   "resp_bg": 0.28504578210413456,
+   "resp_concept": 0.5172886047512293,
+   "resp_repeat": 0.012351606274023652,
+   "resp_continue": 0.18531402107328176,
+   "win_bg": 0.2980405818670988,
+   "native_gain": 0.35957252979278564
+  }
+ },
+ "work_per_target_at_history_255": {
+  "state_macs": 11088,
+  "level1": "temporal-memory recurrence",
+  "episodic_candidates": 510,
+  "episodic_macs": 10208,
+  "unit_scores": 64,
+  "unit_macs": 1536,
+  "concepts_woken": 4,
+  "proposal_rows": 2973.578431372549,
+  "proposal_macs": 95154.50980392157
+ },
+ "classes": 102,
+ "reference": {
+  "diagnostic_planB_L8_4M_flagship": 5.8414,
+  "diagnostic_planB_L2_4M_flagship": 5.8648,
+  "diagnostic_planB_L8_train_flops_per_target": 25847808.0
+ },
+ "max_rss_kb": 615188,
+ "source_sha256": {
+  "experiments/r1_cerl.py": "5afef4f40d4bd6cae6e04047a43bd19872fdc6a3bc547e474100c5d1e88ad04c",
+  "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22"
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_cerl_usage_smoke_20261017_v1.pt"
+}

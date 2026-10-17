@@ -1,0 +1,35 @@
+{
+ "battle": "R1",
+ "tag": "curie_cerl_contracts_20261017_v14",
+ "normalisation_sum": 0.9999999893588103,
+ "causal_prefix_max_diff": 0.0,
+ "row_chunk_max_diff": 4.76837158203125e-07,
+ "repeat_eval_identical": true,
+ "product_key_topk_max_diff": 9.5367431640625e-07,
+ "window_targets": 200,
+ "window_prefix_max_diff": 0.0,
+ "online_prefix_max_diff": 0.0,
+ "online_first_segment_equals_frozen": 0.0,
+ "online_adapts": 3.4718680381774902,
+ "weights_restored": true,
+ "status": "passed",
+ "cause_messages": {
+  "normalisation_sum": 1.0000000287002937,
+  "causal_prefix_max_diff": 0.0,
+  "row_chunk_max_diff": 4.76837158203125e-07,
+  "repeat_eval_identical": true,
+  "product_key_topk_max_diff": 4.76837158203125e-07,
+  "window_targets": 200,
+  "window_prefix_max_diff": 0.0,
+  "online_prefix_max_diff": 0.0,
+  "online_first_segment_equals_frozen": 0.0,
+  "online_adapts": 2.8309006690979004,
+  "weights_restored": true,
+  "status": "passed"
+ },
+ "status_all": "passed",
+ "source_sha256": {
+  "experiments/r1_cerl.py": "5afef4f40d4bd6cae6e04047a43bd19872fdc6a3bc547e474100c5d1e88ad04c",
+  "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22"
+ }
+}

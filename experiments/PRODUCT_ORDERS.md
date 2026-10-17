@@ -1,3 +1,34 @@
+**Update 17 Oct 19:20 UTC (Curie).** Every native flagship file (Curie and AWS) now uses per-correction clocks (`--old-clocks 4`: each write step races over four learned decay rates; theory 174 P8; contracts v23) instead of the shared `--old-decay 0.01`, which cost 0.056 nats of training loss in the K4 decay run. The coverage gate requires it. Theory 174 states the trainability conditions for asynchronous compositions (A1–A6).
+
+**Update 17 Oct 18:45 UTC (Curie; founder: drive this to victory).**
+- Cross-lane credit for persistent memory is implemented (`--carry-credit H`, CarryCredit: each lane's writes are credited for their effect on the next H lanes; exact against backprop through concatenated lanes, contracts `curie_rmr_contracts_20261017_v21`). AWS: run `aws_r1_rmr_native_e2e_cc_smoke_20261017_v1`, then `aws_r1_rmr_nativeev_cc1_K4_16M_s0_20261017_v1` (gate first) right after the native 4M slope point; it pairs with Curie's native 16M run.
+- Exact microbatching (`--micro`, contract v20) is available for any native run that does not fit a slot's memory cap.
+
+**Update 17 Oct 18:05 UTC (Curie; founder: features are synergistic, they may not work in isolation; theory 173 §18).**
+- Attribution is by leave-one-bundle-out from the full native member, never by single flags added to the dense-read stack. AWS R1 order when slots free (one per slot): `aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1` (gate first), `aws_r1_rmr_nativeev_K4_16M_s1_20261017_v1` (gate first; seed replicate), then the six ablations `aws_r1_rmr_nativeev_no_{sparse_addressing,async_spine,persistence,capacity,writes,local_learning}_K4_16M_s0_20261017_v1`, then `aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_v1`.
+- The native member now carries the large concept bank (`--product-keys 1 --units 65536`).
+
+**Update 17 Oct 17:40 UTC (Curie; founder audit: "Are we actually using all the things we have designed and proven?").**
+- Every R1 flagship queue file now carries `# Role: flagship` and must pass `scripts/check_native_coverage.py` (all implemented native mechanisms on; designed-but-unintegrated mechanisms printed as declared gaps). Curie chain v36 runs the gate before the native run.
+- Training now uses calibrated bank-local radial clipping (`--clip local`, the adopted policy in CALIBRATED_LOCAL_CLIPPING_ADOPTION.md) instead of global clipping. Contracts v19.
+- AWS, first free R1 slots (gate first): `aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1` (native slope point), then `aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_v1` (grown depth on the native member). These supersede `nativefull` (missing five mechanisms) and the dense-read grown arm. `integrated`, `residdecay_fix`, `aws_r1_rmr_grow_K4_16M` and `aws_r1_cerl_fix_64M` are diagnostics and run only after the native arms.
+- AWS owns the forward-trained, reciprocal and future-credit learners: port the strongest current form onto `r1_rmr.py`'s native member as a paired arm against ordinary learning on the same member, instead of developing it on separate cores. These are the declared learning gaps the coverage gate prints.
+
+**Update 17 Oct 17:10 UTC (Curie; founder: "You switched off all our unfair advantages and started tuning a version of ReZero Transformers"; the async spine must scale with depth and composition).**
+- The flagship R1 member is the full native member with the composing event spine (`--events 1`, theory 173 §17): sparse slot level 1 with product keys, sparse level reads with probes, asynchronous firing, pointer events between levels (each level's read-race winner; the next level races over the lower pointer and the composed pointer with straight-through credit; event arrival drives firing; top-level events enter the readout race), write race, per-target corrections, carry, capacity fixes. Contracts `curie_rmr_contracts_20261017_v18`.
+- RMR runs with dense reads and no firing or events (K4 resid/decay, the `integrated` and `residdecay_fix` rungs) are diagnostics only and are never fielded as the flagship (DEAD_ENDS).
+- Curie chain v36 runs `curie_r1_rmr_nativeev_K4_16M_s0_20261017_v1` (e2e smoke v2, RSS gate, then the run) right after the running K4 decay job, before everything else.
+- AWS: first free R1 slot runs `aws_r1_rmr_nativefull_K4_16M_s0_20261017_v1` (gate first); the grown-depth and 64M orders follow; the dense-read rungs only after the native arms.
+
+**Update 17 Oct 14:15 UTC (Curie; founder: "Be guided by the results ... and fix all our weaknesses observed"; theory 173 §14).**
+The results say: native CERL beats the dense diagnostic by a wide margin at matched compute, and depth pays more as data grow, but the native curve gains less per 4x data (CERL 0.40 vs dense 0.60) and no R1 training result has landed since 05:50 UTC. The slope is now the main question. AWS, when a slot frees (running source-bound jobs finish unchanged), run R1 in this order, each gate first:
+1. `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1`: capacity fixes in the depth member, against Curie's unfixed K4 decay run (done about 19:30 UTC).
+2. `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1`.
+3. `aws_r1_rmr_grow_K4_16M_s0_20261017_v1` (new): depth that grows with data (levels enter at 2M, 4M, 8M), against item 1.
+4. `aws_r1_cerl_fix_64M_s0_20261017_v1` (new): the 64M slope point of the fixed CERL curve (about 20 h).
+5. Native L1, full native (unchanged).
+Curie (chain v34) runs, after the K4 decay run: the synthetic-hierarchy depth test (`experiments/rhm_depth.py`: exact Bayes ladder, resolved composition depth for K = 1, 2, 4 at 1k-64k trees), then the fixed CERL pair at 4M and 16M (does usable capacity steepen the slope?), then the sparse native member and the PTB resume. Every CERL/RMR milestone now reports concept-unit usage (`capacity`: units used, unit perplexity, top 1% share); unfixed CERL used 124 of 1,024 units. Contracts: `curie_rmr_contracts_20261017_v16`, `curie_cerl_contracts_20261017_v14`, `curie_review_fix_contracts_20261017_v6`, `curie_rhm_depth_contracts_20261017_v1`.
+
 **Update 17 Oct 18:40 (Curie; founder: "Fix all. We need to win!").**
 - Curie runs `curie_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` (chain v33) after its K4 decay run: e2e smoke, RSS gate below 2.4 GB, then the run, then the PTB resume. **AWS: skip `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1`**; use that slot for the integrated, native-L1 and full-native rungs, which attribute the sparse result.
 - Resume fix: `--product-keys` was missing from the behaviour-preserving defaults, so your running `aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1` and Curie's K4 run would not have resumed after a stop under current source. Fixed and verified against both checkpoints.

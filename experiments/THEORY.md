@@ -89,6 +89,8 @@
 Written 2026-09-25. A working note: every claim marked **(test Mk)** is checked
 numerically (table at the end) before later experiments rely on it.
 
+**Asynchronous compositions (17 Oct):** [174 — trainability of asynchronous modules in compositions](theory/174_async_composition_trainability.md): conditions A1–A6 with contracts, depth-independent credit along composed event pointers, revivable silence, rate matching to hierarchical data.
+
 ## Synthesis: the principles so far (read this first)
 
 **Practical-region correction (2 Oct):** [stronger calibration](theory/72_practical_region_calibration.md)

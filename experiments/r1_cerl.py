@@ -55,7 +55,7 @@ def param_groups(model, wd, groups=False):
 
 
 # flags added after a run started, at their default (= the run's actual behaviour); resumes stay exact
-LATER_FLAG_DEFAULTS = dict(product_keys=0, wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0, read_explore=0, slot_read_topk=0, slot_pk=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=0, index_balance=0.0)
+LATER_FLAG_DEFAULTS = dict(product_keys=0, wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0, read_explore=0, slot_read_topk=0, slot_pk=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=0, index_balance=0.0, grow='', events=0, clip='global', carry_credit=0, old_clocks=0, write_norm=0)
 
 
 def same_run(saved, ident):
@@ -254,6 +254,7 @@ class CERL(nn.Module):
             st = dict(bg_only_nll=(-lp[..., 0]).mean().item(), resp_bg=post[..., 0].mean().item(), resp_concept=post[..., 1:1 + K].sum(-1).mean().item(),
                       resp_repeat=post[..., 1 + K:1 + K + r1].sum(-1).mean().item(), resp_continue=post[..., 1 + K + r1:].sum(-1).mean().item(),
                       win_bg=torch.softmax(torch.cat([s_bg, s_sel, S_rep, S_cont], -1), -1)[..., 0].mean().item())
+            record_unit_usage(self, post, sel, K)
         return nll, st
 
 
@@ -271,6 +272,65 @@ def work_per_target(m, history):
 def load_fineweb(path):
     h = np.fromfile(path, dtype=np.int32, count=256); assert h[0] == 20240520
     return np.memmap(path, dtype=np.uint16, mode='r', offset=1024)
+
+
+def bank_of(name):
+    """Learning bank of a parameter: each correction level, each level-1 layer's maps, the concept bank, the race heads, the embeddings."""
+    q = name.split('.'); q = q[1:] if q[0] == 'base' else q
+    if q[0] in ('tm', 'tm_out', 'mlp', 'n1', 'n2', 'levels'): return '.'.join(q[:2])
+    if q[0] in ('unit_key', 'unit_bias', 'unit_out', 'key1', 'key2', 'bias1', 'bias2', 'q_unit', 'unit_val'): return 'concepts'
+    if q[0] in ('q_rep', 'k_rep', 'q_cont', 'k_cont', 'b_rep', 'b_cont', 'age_rep', 'age_cont', 'span', 'bg'): return 'episodic_race'
+    return q[0]
+
+
+class LocalClip:
+    """Calibrated bank-local radial clipping (experiments/CALIBRATED_LOCAL_CLIPPING_ADOPTION.md; founder, 14 Oct: local alternatives to global
+    operations, preserving vector direction). The first `calib` updates use global clipping at 1 while recording each bank's gradient
+    norm; the caps are then frozen at budget x the q-quantile of each bank's norms, and every bank is scaled by min(1, cap/norm) on its
+    own: no model-wide reduction during training, direction preserved within each bank. Caps and records are checkpointed."""
+    def __init__(self, model, calib=64, q=0.9, budget=1.25):
+        self.banks = {}
+        for n, p in model.named_parameters(): self.banks.setdefault(bank_of(n), []).append(p)
+        self.calib, self.q, self.budget, self.rec, self.caps = calib, q, budget, {b: [] for b in self.banks}, None
+
+    def __call__(self, model):
+        norms = {b: torch.sqrt(sum((p.grad.float()**2).sum() for p in ps if p.grad is not None) + 0.0) for b, ps in self.banks.items()}
+        if self.caps is None:
+            for b, v in norms.items(): self.rec[b].append(float(v))
+            if len(next(iter(self.rec.values()))) >= self.calib:
+                self.caps = {b: self.budget*float(np.quantile(r, self.q)) if max(r) > 0 else 1.0 for b, r in self.rec.items()}
+            return nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        for b, ps in self.banks.items():
+            f = min(1.0, self.caps[b]/(float(norms[b]) + 1e-6))
+            if f < 1.0:
+                for p in ps:
+                    if p.grad is not None: p.grad.mul_(f)
+        return None
+
+    def state(self): return dict(rec=self.rec, caps=self.caps)
+
+    def load(self, st): self.rec, self.caps = st['rec'], st['caps']
+
+
+def record_unit_usage(base, post, sel, K):
+    """Usable capacity (theory 173 section 14): accumulate each concept unit's posterior responsibility while unit_resp is set."""
+    if getattr(base, 'unit_resp', None) is not None: base.unit_resp.index_add_(0, sel[..., :K].reshape(-1), post[..., 1:1 + K].reshape(-1).to(base.unit_resp.dtype))
+
+
+def unit_usage(resp):
+    """How much of the concept bank carries prediction: units with at least a tenth of the uniform share, the perplexity of the
+    responsibility distribution (U if every unit is used equally) and the share of the busiest 1% of units."""
+    U = resp.numel(); tot = float(resp.sum()); share = resp/max(tot, 1e-30); nz = share[share > 0]
+    return dict(units=U, concept_mass_per_target=None, units_used=int((share > 0.1/U).sum()), unit_perplexity=float(torch.exp(-(nz*nz.log()).sum())),
+                top1pct_share=float(share.topk(max(1, U//100)).values.sum()))
+
+
+def lanes_nll_usage(model, block, row_chunk, fn=None):
+    """lanes_nll with stats plus the concept bank's usage on the same targets (`capacity`)."""
+    base = getattr(model, 'base', model); base.unit_resp = torch.zeros(base.unit_out.shape[0], dtype=torch.float64, device=base.unit_out.device)
+    try: r = (fn or lanes_nll)(model, block, row_chunk, stats=True)
+    finally: resp, base.unit_resp = base.unit_resp, None
+    r['capacity'] = unit_usage(resp.cpu()); r['capacity']['concept_mass_per_target'] = float(resp.sum())/r['targets']; return r
 
 
 def lanes_nll(model, block, row_chunk, stats=False):
@@ -473,7 +533,7 @@ def main():
         if step % a.log_every == 0: print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), elapsed_s=round(time.time() - began))), flush=True)
         if step % quarter == 0 or step == total:
             sel = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048)
-            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll(model, sel, a.row_chunk, stats=True), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
+            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll_usage(model, sel, a.row_chunk), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
             print(json.dumps(milestones[-1]), flush=True)
         if step % a.checkpoint_every == 0 or step == total: save()
         if a.max_steps and step >= a.max_steps:
