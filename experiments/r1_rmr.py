@@ -25,7 +25,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiments'), str(ROOT/'experiments/tpp')]
 from native_slot_memory import pk_topk  # noqa: E402
-from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, lanes_nll_usage, record_unit_usage, fineweb_protocols, work_per_target, param_groups, same_run  # noqa: E402
+from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, lanes_nll_usage, record_unit_usage, LocalClip, fineweb_protocols, work_per_target, param_groups, same_run  # noqa: E402
 
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk')
 STAGE = 'native residual-memory race model (RMR-1, theory 172), one pass'
@@ -679,9 +679,23 @@ def contracts():
     me.lane_nll(x.clone(), y).mean().backward(); res['events_credit_to_lower_read_keys'] = float((ge - me.levels[0].k.weight.grad).abs().max())
     ok_e = res['events_zero_equal_no_events'] < 1e-6 and abs(res['events_normalisation_sum'] - 1) < 1e-4 and res['events_causal_prefix_max_diff'] < 1e-5 and res['events_train_equals_eval'] < 1e-5 \
         and res['events_carry_equals_long_lane'] < 1e-4 and res['events_credit_to_lower_read_keys'] > 0 and all(c_ >= r_ - 1e-9 for r_, c_ in res['events_reach'])
+    # calibrated bank-local clipping: banks partition the parameters; after calibration each bank is scaled on its own (direction preserved
+    # inside every bank, no cross-bank dependence: scaling one bank's gradient leaves the others' clipped gradients unchanged)
+    torch.manual_seed(0); mlc = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, write_race=True); lc_ = LocalClip(mlc, calib=2)
+    res['local_clip_banks_partition'] = sum(len(v) for v in lc_.banks.values()) == len(list(mlc.parameters())); mlc.train()
+    for _ in range(2): mlc.zero_grad(); mlc.lane_nll(x.clone(), y).mean().backward(); lc_(mlc)
+    lc_.caps = {b: 1e-3 for b in lc_.caps}; mlc.zero_grad(); mlc.lane_nll(x.clone(), y).mean().backward()
+    g0 = {n: p.grad.clone() for n, p in mlc.named_parameters() if p.grad is not None}; lc_(mlc); g1 = {n: p.grad.clone() for n, p in mlc.named_parameters() if p.grad is not None}
+    cosd = 0.0
+    for b, ps in lc_.banks.items():
+        names = [n for n, p in mlc.named_parameters() if any(p is q for q in ps) and n in g0]
+        if names:
+            a_ = torch.cat([g0[n].reshape(-1) for n in names]); b_ = torch.cat([g1[n].reshape(-1) for n in names])
+            if a_.norm() > 0: cosd = max(cosd, float(1 - (a_ @ b_)/(a_.norm()*b_.norm())))
+    res['local_clip_direction_preserved'] = cosd; res['local_clip_banks'] = len(lc_.banks)
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
-    ok_g = ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
+    ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
     ok_s = ok_g and res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
     ok = ok_k and ok_i and ok_r and ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
@@ -703,7 +717,7 @@ def main():
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
     A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--index-regions', type=int, default=0); A('--index-read', type=int, default=0); A('--readout-index', type=int, default=0); A('--readout-read', type=int, default=0); A('--readout-tok', type=int, default=32); A('--index-pk', type=int, default=0); A('--index-balance', type=float, default=0.0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
-    A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
+    A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -728,14 +742,16 @@ def main():
     opt = torch.optim.AdamW(param_groups(model, a.wd, bool(a.wd_groups)), lr=a.lr, weight_decay=a.wd); sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=total, pct_start=0.05)
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0; carry = None
+    clipper = LocalClip(model) if a.clip == 'local' else None
     if state_path.exists():
         s = torch.load(state_path, weights_only=False); assert same_run(s['args'], ident)
         model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); sched.load_state_dict(s['sched']); torch.set_rng_state(s['torch_rng'])
         step, losses, milestones, wall, resumes = s['step'], s['losses'], s['milestones'], s['wall'], s['resumes'] + 1; carry = s.get('carry')
+        if clipper is not None: clipper.load(s['clip'])
     began = time.time() - wall
     def save():
         tmp = state_path.with_suffix('.tmp'); torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), sched=sched.state_dict(), torch_rng=torch.get_rng_state(), step=step, losses=losses,
-                   milestones=milestones, wall=time.time() - began, resumes=resumes, args=ident, carry=carry), tmp); os.replace(tmp, state_path)
+                   milestones=milestones, wall=time.time() - began, resumes=resumes, args=ident, carry=carry, **({'clip': clipper.state()} if clipper is not None else {})), tmp); os.replace(tmp, state_path)
     sel_l = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048)
     grow = [float(f) for f in a.grow.split(',')] if a.grow else []
     assert not grow or (len(grow) == a.levels - 1 and grow == sorted(grow) and 0 <= grow[0] and grow[-1] < 1), '--grow needs one nondecreasing fraction in [0, 1) per correction level'
@@ -744,7 +760,7 @@ def main():
         model.n_active = n_active_at(step)
         ids = order[step*a.batch:(step + 1)*a.batch]; model.train(); w = torch.from_numpy(train[ids if a.carry else np.sort(ids)]); x, y = w[:, :-1], w[:, 1:]
         nll = model.lane_nll(x, y, prefix=carry); loss = nll.mean(); obj = loss + (model.aux.mean() if model.aux is not None else 0.0)
-        opt.zero_grad(); obj.backward(); nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sched.step(); step += 1; losses.append(loss.item())
+        opt.zero_grad(); obj.backward(); (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step(); step += 1; losses.append(loss.item())
         if a.carry: carry = model.carry_out(a.carry)
         if step % a.log_every == 0:
             print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), levels=model._mem[2], elapsed_s=round(time.time() - began))), flush=True)
@@ -782,7 +798,7 @@ def main():
     result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
-                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, active_work=active, **({'grow': grow_rec} if grow_rec else {}),
+                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, **({'local_clip': dict(caps=clipper.caps, calibration_updates=clipper.calib, quantile=clipper.q, budget=clipper.budget)} if clipper is not None else {}), active_work=active, **({'grow': grow_rec} if grow_rec else {}),
                   reference=dict(cerl_4M='curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)', diagnostic_planB_L8_4M_flagship=5.8414), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); result['checkpoint'] = f'experiments/results/token_language/{a.tag}.pt'
     out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()

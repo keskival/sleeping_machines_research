@@ -29,6 +29,8 @@ def main():
         market.publish([f'experiments/results/token_language/{DECAY}.json'], 'R1 native depth at 16M: 4-level residual memory with decaying old-slot refinement (long-lane repair)')
     except Exception as error: print(json.dumps({DECAY: 'failed', 'error': repr(error)}), flush=True)
     try:
+        import subprocess                                                                          # native coverage gate: a flagship run with any native mechanism off is refused
+        subprocess.run(['.venv-docker/bin/python', 'scripts/check_native_coverage.py'] + [f'experiments/queue/r1/{t}.txt' for t in (E2E, GATE, NATIVE)], cwd=ROOT, check=True)
         if not completed(E2E): stable_host(); original.run(E2E, 3600)
         assert completed(E2E), 'native e2e smoke did not complete'
         stable_host(); original.run(GATE, 3600); rss, sps = gate(); print(json.dumps(dict(gate=GATE, max_rss_kb=rss, s_per_step=sps)), flush=True)

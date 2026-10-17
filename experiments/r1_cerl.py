@@ -55,7 +55,7 @@ def param_groups(model, wd, groups=False):
 
 
 # flags added after a run started, at their default (= the run's actual behaviour); resumes stay exact
-LATER_FLAG_DEFAULTS = dict(product_keys=0, wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0, read_explore=0, slot_read_topk=0, slot_pk=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=0, index_balance=0.0, grow='', events=0)
+LATER_FLAG_DEFAULTS = dict(product_keys=0, wd_groups=0, unit_init=0.0, balance=0.0, old_per_target=0, write_race=0, write_explore=0, carry=0, level1='tm', slots=1024, slot_m=4, slot_explore=0, fire=0, act_cost=0.0, old_norm=0, read_explore=0, slot_read_topk=0, slot_pk=0, index_regions=0, index_read=0, readout_index=0, readout_read=0, readout_tok=32, index_pk=0, index_balance=0.0, grow='', events=0, clip='global')
 
 
 def same_run(saved, ident):
@@ -272,6 +272,44 @@ def work_per_target(m, history):
 def load_fineweb(path):
     h = np.fromfile(path, dtype=np.int32, count=256); assert h[0] == 20240520
     return np.memmap(path, dtype=np.uint16, mode='r', offset=1024)
+
+
+def bank_of(name):
+    """Learning bank of a parameter: each correction level, each level-1 layer's maps, the concept bank, the race heads, the embeddings."""
+    q = name.split('.'); q = q[1:] if q[0] == 'base' else q
+    if q[0] in ('tm', 'tm_out', 'mlp', 'n1', 'n2', 'levels'): return '.'.join(q[:2])
+    if q[0] in ('unit_key', 'unit_bias', 'unit_out', 'key1', 'key2', 'bias1', 'bias2', 'q_unit', 'unit_val'): return 'concepts'
+    if q[0] in ('q_rep', 'k_rep', 'q_cont', 'k_cont', 'b_rep', 'b_cont', 'age_rep', 'age_cont', 'span', 'bg'): return 'episodic_race'
+    return q[0]
+
+
+class LocalClip:
+    """Calibrated bank-local radial clipping (experiments/CALIBRATED_LOCAL_CLIPPING_ADOPTION.md; founder, 14 Oct: local alternatives to global
+    operations, preserving vector direction). The first `calib` updates use global clipping at 1 while recording each bank's gradient
+    norm; the caps are then frozen at budget x the q-quantile of each bank's norms, and every bank is scaled by min(1, cap/norm) on its
+    own: no model-wide reduction during training, direction preserved within each bank. Caps and records are checkpointed."""
+    def __init__(self, model, calib=64, q=0.9, budget=1.25):
+        self.banks = {}
+        for n, p in model.named_parameters(): self.banks.setdefault(bank_of(n), []).append(p)
+        self.calib, self.q, self.budget, self.rec, self.caps = calib, q, budget, {b: [] for b in self.banks}, None
+
+    def __call__(self, model):
+        norms = {b: torch.sqrt(sum((p.grad.float()**2).sum() for p in ps if p.grad is not None) + 0.0) for b, ps in self.banks.items()}
+        if self.caps is None:
+            for b, v in norms.items(): self.rec[b].append(float(v))
+            if len(next(iter(self.rec.values()))) >= self.calib:
+                self.caps = {b: self.budget*float(np.quantile(r, self.q)) if max(r) > 0 else 1.0 for b, r in self.rec.items()}
+            return nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        for b, ps in self.banks.items():
+            f = min(1.0, self.caps[b]/(float(norms[b]) + 1e-6))
+            if f < 1.0:
+                for p in ps:
+                    if p.grad is not None: p.grad.mul_(f)
+        return None
+
+    def state(self): return dict(rec=self.rec, caps=self.caps)
+
+    def load(self, st): self.rec, self.caps = st['rec'], st['caps']
 
 
 def record_unit_usage(base, post, sel, K):

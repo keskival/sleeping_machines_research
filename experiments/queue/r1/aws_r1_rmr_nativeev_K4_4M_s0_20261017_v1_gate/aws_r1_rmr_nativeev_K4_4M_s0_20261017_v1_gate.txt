@@ -1,0 +1,7 @@
+# Role: flagship
+# Battle R1 (Curie order to AWS slots, 17 Oct 17:40 UTC; founder: field every advantage; the async spine must scale with depth and composition).
+# Decision: the 4M point of the native member's data curve (Curie runs 16M); with 64M later it gives the native slope against CERL 0.40 and dense 0.60 nats per 4x data.
+# Member: the full native member (scripts/check_native_coverage.py PASS): slot level 1 with product keys, sparse reads with probes, asynchronous firing, composing event spine, write race with probes, per-target corrections, carry, capacity fixes, calibrated bank-local clipping. Declared gaps (designed, not yet integrated): cross-lane credit for persistent memory, forward-trained/future credit, event-local learning route, homeostatic concept prices, online adaptation in scoring.
+# Stationarity/online: fixed-weight protocol; one pass; reset and carried scoring; active work, firing/event rates, concept usage reported.
+# Contracts: curie_rmr_contracts_20261017_v19. Resources: Curie gate measures s/update and RSS for the 16M run; admit below 2,900,000 KB.
+aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1_gate experiments/r1_rmr.py --tag aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1_gate --levels 4 --top-m 4 --old-decay 0.01 --seed 0 --wd-groups 1 --unit-init 0.02 --balance 0.01 --old-per-target 1 --write-race 1 --write-explore 2 --carry 256 --read-topk 16 --read-explore 2 --level1 slots --slots 4096 --slot-m 4 --slot-explore 2 --slot-pk 1 --slot-read-topk 8 --fire 1 --events 1 --clip local --train-tokens 4194304 --max-steps 16 --log-every 8
