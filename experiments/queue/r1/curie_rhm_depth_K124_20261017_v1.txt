@@ -1,0 +1,8 @@
+# Battle R1 (Curie, 17 Oct; founder: depth is effective learning over compositional depth, and useful depth grows with log data; theory 173 section 14).
+# Decision: is composition through residual memory trainable? On a random hierarchy with known depth (v 16, m 4, s 2, L 4; exact Bayes ladder B_0..B_4 = 2.60, 2.03, 1.71, 1.55, 1.47 nats per leaf), does K = 2 or 4 resolve deeper composition than K = 1 (the CERL race alone), and does the resolved depth grow with the sample count (1k, 4k, 16k, 64k trees)? Knockouts of each correction level show which depth it carries. If K > 1 does not resolve more depth at any sample count, depth credit (C1-C9) is the bottleneck and gets repaired before more 16M depth runs; if it does, depth needs data and the 64M ladder is the test.
+# Stationarity/online: stationary synthetic source; fixed optimisation budget (3,000 updates of 8 lanes x 8 trees) per run so the sample count is the only data variable; held-out test trees.
+# Fighter: the integrated residual-memory member (per-target corrections, write-address race, review fixes) at small width; K = 1 is the same race readout with no correction levels.
+# Retained: race readout with exact credit, concept capacity, episodic pointers, temporal clocks, additive residual memory, write-address race. Not included: carry (trees are independent), firing clocks, slot level 1.
+# Contracts: curie_rhm_depth_contracts_20261017_v1 (Bayes equals brute-force enumeration to 2e-16; ladder ends equal the marginal and full Bayes), curie_rmr_contracts_20261017_v16.
+# Resources: smoke 0.5 s/update at K = 4 (d 64); about 3 h for the 12 runs; RSS < 0.5 GB.
+curie_rhm_depth_K124_20261017_v1 experiments/rhm_depth.py --tag curie_rhm_depth_K124_20261017_v1

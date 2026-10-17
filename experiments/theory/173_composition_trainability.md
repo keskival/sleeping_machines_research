@@ -325,3 +325,17 @@ Consequences:
 
 Predictions to falsify: K = 8 does not beat K = 4 at 16M by more than about 0.02 but does at 64M; the fixed-capacity
 arm steepens the 4M → 16M slope; a grown-depth run matches fixed K = 4 at 16M with less training work.
+
+Implemented 17 October (founder: be guided by the results and fix the weaknesses observed):
+- Usable capacity is measured in every CERL/RMR milestone (`capacity`: concept units with at least a tenth of the uniform
+  responsibility share, unit perplexity, share of the busiest 1%). The responsibilities add up to the concept cause's share
+  (contract, 1e-8).
+- Depth growth `--grow f2,...,fK` in `r1_rmr.py`: level k enters at data fraction f_k at ReZero gate 0. Insertion is exact
+  (contract 0.0, including a level entering after a carried prefix); levels not yet in use receive no credit and cost
+  nothing; training FLOPs are counted at the depth in use at each step.
+- `experiments/rhm_depth.py`: the synthetic-hierarchy test of consequence 2, with the exact block-truncated Bayes ladder
+  B_0..B_L (equal to brute-force enumeration to 2e-16) and the resolved composition depth of each model and of each
+  level knockout. Hierarchy v 16, m 4, s 2, L 4: B = 2.60, 2.03, 1.71, 1.55, 1.47 nats per leaf (each level adds about half
+  the information of the one below).
+- Queued: the hierarchy grid (K = 1, 2, 4 at 1k-64k trees) and the fixed CERL pair at 4M/16M on Curie; the grown K4 16M arm
+  and the fixed CERL 64M slope point on AWS.

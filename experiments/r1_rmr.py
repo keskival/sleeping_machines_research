@@ -25,7 +25,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 ROOT = Path(__file__).resolve().parents[1]; sys.path[:0] = [str(ROOT/'experiments'), str(ROOT/'experiments/tpp')]
 from native_slot_memory import pk_topk  # noqa: E402
-from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, fineweb_protocols, work_per_target, param_groups, same_run  # noqa: E402
+from r1_cerl import CERL, word_classes, load_fineweb, lanes_nll, lanes_nll_usage, record_unit_usage, fineweb_protocols, work_per_target, param_groups, same_run  # noqa: E402
 
 EXECUTION_ONLY = ('max_steps', 'checkpoint_every', 'log_every', 'row_chunk')
 STAGE = 'native residual-memory race model (RMR-1, theory 172), one pass'
@@ -113,6 +113,7 @@ class RMR(nn.Module):
         self.ro_C, self.ro_b, self.ro_tok = readout_index, readout_read, readout_tok
         if readout_index: self.ro_index = RegionIndex(readout_index, cerl['dk'], index_pk, index_balance)
         self.levels = nn.ModuleList(CorrectionLevel(d, dk, top_m, read_topk, rezero, old_decay, old_per_target, write_race, write_explore, fire, read_explore, index_regions, index_read, index_pk, index_balance) for _ in range(levels - 1)); self.aux = None; self._px = None
+        self.n_active = levels - 1                                                                 # depth growth (theory 173 section 14): correction levels in use; a level enters at its ReZero gate 0
 
     # ---- memory algebra: a slot value at time t = base' (A + new-slot corrections) + sum over old-slot corrections written at tau <= t
     @staticmethod
@@ -183,13 +184,13 @@ class RMR(nn.Module):
         if prefix is not None: P = prefix['A'].shape[1]; A = torch.cat([prefix['A'], A], 1)
         B, T, d = A.shape; dv = A.device; new_total = A; writes = []; stats = []; self._lev_own = []; acts = []
         prev_corr = torch.zeros(B, T, device=dv, dtype=A.dtype); prev_fire = torch.ones(B, T, device=dv, dtype=A.dtype)   # level 1 fires on every event
-        for li, lev in enumerate(self.levels):
+        for li, lev in enumerate(self.levels[:self.n_active]):                                    # levels beyond n_active have not entered yet: no compute, no writes, no credit
             E = lev.write_explore if self.training else 0; m_ = max(1, lev.top_m) + E; own_new = torch.zeros_like(A); own_dold = A.new_zeros(B, T, m_, d) if lev.per_target else torch.zeros_like(A)
             own_idx = torch.zeros(B, T, m_, dtype=torch.long, device=dv); own_w = torch.zeros(B, T, m_, device=dv); own_phi = torch.ones(B, T, device=dv, dtype=A.dtype)
             if lev.index_C:                                                                        # filing: slot s goes to the region its key wins, from the level's input memory (causal: data <= s)
                 region_of = lev.index.file(lev.k(new_total))                                       # [B, T]; hard filing, region keys move VQ-style; stale under later refinement (labelled)
                 cand_frac = []
-            if P:
+            if P and li < len(prefix['levels']):                                               # a level that entered after the prefix was carried has written nothing there
                 pn, pd, pi, pw = prefix['levels'][li]; k_ = pi.shape[-1]
                 own_new[:, :P] = pn; own_idx[:, :P, :k_] = pi; own_w[:, :P, :k_] = pw
                 if lev.per_target: own_dold[:, :P, :k_] = pd
@@ -311,8 +312,8 @@ class RMR(nn.Module):
         return dict(A=self._A[:, s0:].detach(), levels=levels, tm=[tuple(t_.detach() for t_ in st_) for st_ in self.base.tm_state], x=self._xcat[:, s0:], y=self._ycat[:, s0:])
 
     def lane_nll(self, x, y, rows=None, stats=False, msg=None, prefix=None):
-        if self._px is not x or self._ptrain is not self.training or self._ppf is not prefix:
-            self._mem = self.build_memory(x, prefix); self._px = x; self._ptrain = self.training; self._ppf = prefix
+        if self._px is not x or self._ptrain is not self.training or self._ppf is not prefix or self._pna != self.n_active:
+            self._mem = self.build_memory(x, prefix); self._px = x; self._ptrain = self.training; self._ppf = prefix; self._pna = self.n_active
             self._xcat = x if prefix is None else torch.cat([prefix['x'], x], 1); self._ycat = y if prefix is None else torch.cat([prefix['y'], y], 1)
         P = self._P; L0 = x.shape[1]; r0, r1 = (0, L0) if rows is None else rows; r0, r1 = r0 + P, r1 + P; x, y = self._xcat, self._ycat
         new_total, writes, lst = self._mem; B, L = x.shape; m = self.base
@@ -341,6 +342,7 @@ class RMR(nn.Module):
             st = dict(bg_only_nll=(-lp[..., 0]).mean().item(), resp_bg=post[..., 0].mean().item(), resp_concept=post[..., 1:1 + K].sum(-1).mean().item(),
                       resp_repeat=post[..., 1 + K:1 + K + r1].sum(-1).mean().item(), resp_continue=post[..., 1 + K + r1:].sum(-1).mean().item(),
                       **{f'level{i + 2}_{k}': v for i, s_ in enumerate(lst) for k, v in s_.items()})
+            record_unit_usage(m, post, sel, K)
             if ro_cand is not None:                                                                # copy coverage: targets with an earlier copy source that keep one among the candidates
                 yq = y[:, r0:r1]; before = jj[None, None, :] <= t_rows[None, :, None]
                 src = (x[:, None, :r1] == yq[:, :, None]) & before                                 # repeat sources: x_j = y_t
@@ -350,7 +352,7 @@ class RMR(nn.Module):
                 st['readout_copy_coverage'] = float((cov & has).sum()/has.sum().clamp_min(1))
         return nll, st
 
-    _ptrain = None; _ppf = None
+    _ptrain = None; _ppf = None; _pna = None
 
 
 def member_work(model, history, fire_rates=None, carry=0):
@@ -584,7 +586,22 @@ def contracts():
         fs = ms.lane_nll(x.clone(), y); res['slots_causal_prefix_max_diff'] = float((ms.lane_nll(x2, y2)[0, :p - 1] - fs[0, :p - 1]).abs().max())
         full2 = ms.lane_nll(xa, ya); l1 = ms.lane_nll(xa[:, :40], ya[:, :40]); pf = ms.carry_out(40); l2 = ms.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
         res['slots_carry_equals_long_lane'] = max(float((l1 - full2[:, :40]).abs().max()), float((l2 - full2[:, 40:]).abs().max()))
-    ok_s = res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
+    # depth growth: a level that enters at its ReZero gate 0 leaves the law unchanged (insertion is exact, C3); levels not yet in use
+    # receive no credit; n_active = 0 is CERL; growth composes with persistent memory (a level entering after the prefix was carried)
+    torch.manual_seed(0); mg = RMR(V, cls, words, cerl, levels=3, dk=16, top_m=3, chunk=8, old_decay=0.05, old_per_target=True, write_race=True); mg.eval()
+    with torch.no_grad():
+        for p_ in mg.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+        mg.levels[1].alpha_new.zero_(); mg.levels[1].alpha_old.zero_()
+        mg.n_active = 1; g1 = mg.lane_nll(x.clone(), y); mg.n_active = 2; g2 = mg.lane_nll(x.clone(), y); res['grow_insertion_exact'] = float((g1 - g2).abs().max())
+        mg.n_active = 0; res['grow_zero_levels_equal_cerl'] = float((mg.lane_nll(x.clone(), y) - mg.base.lane_nll(x, y)).abs().max())
+        mg.n_active = 1; l1 = mg.lane_nll(xa[:, :40], ya[:, :40]); pf = mg.carry_out(40); mg.n_active = 2; l2g = mg.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf)
+        mg.n_active = 1; l2a = mg.lane_nll(xa[:, 40:], ya[:, 40:], prefix=pf); res['grow_enter_after_carry_exact'] = float((l2g - l2a).abs().max())
+    mg.train(); mg.n_active = 1; mg.lane_nll(x.clone(), y).mean().backward()
+    res['grow_inactive_level_no_credit'] = all(p_.grad is None for p_ in mg.levels[1].parameters()); res['grow_active_level_credit'] = any(p_.grad is not None and float(p_.grad.abs().max()) > 0 for p_ in mg.levels[0].parameters())
+    mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
+    res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
+    ok_g = res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
+    ok_s = ok_g and res['slots_zero_corrections_equal_cerl'] < 1e-5 and abs(res['slots_normalisation_sum'] - 1) < 1e-4 and res['slots_causal_prefix_max_diff'] < 1e-5 and res['slots_carry_equals_long_lane'] < 1e-4
     ok = ok_k and ok_i and ok_r and ok_n and ok_f and ok_v and ok_s and ok_w and res['carry_adjacent_protocol'] < 1e-5 and res['carry_equals_long_lane'] < 1e-4 and res['carry_row_chunk_max_diff'] < 1e-4 and res['carry_window_finite'] and res['algebra_per_target_max_diff'] < 1e-4 and res['per_target_zero_corrections_equal_cerl'] < 1e-5 and abs(res['per_target_normalisation_sum'] - 1) < 1e-4 \
         and res['per_target_causal_prefix_max_diff'] < 1e-5 and res['per_target_row_chunk_max_diff'] < 1e-4 and res['per_target_corrections_change_law'] > 0
     ok = ok and res['algebra_decay_max_diff'] < 1e-4 and res['algebra_scores_max_diff'] < 1e-4 and res['algebra_values_max_diff'] < 1e-4 and res['zero_corrections_equal_cerl'] < 1e-5 and abs(res['normalisation_sum'] - 1) < 1e-4 and res['causal_prefix_max_diff'] < 1e-5 and res['row_chunk_max_diff'] < 1e-4 and res['corrections_change_law'] > 0
@@ -605,6 +622,7 @@ def main():
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
     A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--index-regions', type=int, default=0); A('--index-read', type=int, default=0); A('--readout-index', type=int, default=0); A('--readout-read', type=int, default=0); A('--readout-tok', type=int, default=32); A('--index-pk', type=int, default=0); A('--index-balance', type=float, default=0.0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
+    A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -638,7 +656,11 @@ def main():
         tmp = state_path.with_suffix('.tmp'); torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), sched=sched.state_dict(), torch_rng=torch.get_rng_state(), step=step, losses=losses,
                    milestones=milestones, wall=time.time() - began, resumes=resumes, args=ident, carry=carry), tmp); os.replace(tmp, state_path)
     sel_l = np.asarray(val[10485760:10485760 + 8*2048]).reshape(8, 2048)
+    grow = [float(f) for f in a.grow.split(',')] if a.grow else []
+    assert not grow or (len(grow) == a.levels - 1 and grow == sorted(grow) and 0 <= grow[0] and grow[-1] < 1), '--grow needs one nondecreasing fraction in [0, 1) per correction level'
+    n_active_at = lambda s_: sum(s_ >= f*total for f in grow) if grow else a.levels - 1
     while step < total:
+        model.n_active = n_active_at(step)
         ids = order[step*a.batch:(step + 1)*a.batch]; model.train(); w = torch.from_numpy(train[ids if a.carry else np.sort(ids)]); x, y = w[:, :-1], w[:, 1:]
         nll = model.lane_nll(x, y, prefix=carry); loss = nll.mean(); obj = loss + (model.aux.mean() if model.aux is not None else 0.0)
         opt.zero_grad(); obj.backward(); nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step(); sched.step(); step += 1; losses.append(loss.item())
@@ -646,19 +668,31 @@ def main():
         if step % a.log_every == 0:
             print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), levels=model._mem[2], elapsed_s=round(time.time() - began))), flush=True)
         if step % quarter == 0 or step == total:
-            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll(model, sel_l, a.row_chunk, stats=True), **({'select_carried': lanes_nll_carry(model, sel_l, a.row_chunk, a.carry, adjacent=True)} if a.carry else {}), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
+            milestones.append(dict(step=step, tokens=step*a.batch*a.lane, select=lanes_nll_usage(model, sel_l, a.row_chunk), **({'select_carried': lanes_nll_carry(model, sel_l, a.row_chunk, a.carry, adjacent=True)} if a.carry else {}), prequential_segment=float(np.mean(losses[-quarter:])), elapsed_s=round(time.time() - began)))
             print(json.dumps(milestones[-1]), flush=True)
         if step % a.checkpoint_every == 0 or step == total: save()
         if a.max_steps and step >= a.max_steps:
             print(json.dumps(dict(smoke_steps=step, s_per_step=(time.time() - began)/step, max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, parameters=params)), flush=True)
             print(json.dumps(dict(smoke_select_2lanes=lanes_nll(model, sel_l[:2], a.row_chunk, stats=True))), flush=True); return
+    model.n_active = a.levels - 1                                                              # final work and scoring at full depth
     from torch.utils.flop_counter import FlopCounterMode
     pf_ = None
     if a.carry:                                                                                    # count a carried lane: the prefix slots are read, refined and pointed at
         model.train(); w0 = torch.from_numpy(train[:1]); model.lane_nll(w0[:, :-1], w0[:, 1:]); pf_ = model.carry_out(a.carry)
     with FlopCounterMode(display=False) as fc:
         model.train(); w = torch.from_numpy(train[1:2]); model.lane_nll(w[:, :-1], w[:, 1:], prefix=pf_).mean().backward()
-    model.zero_grad(); fpt = fc.get_total_flops()/(a.lane - 1); seg = max(1, total//8)
+    model.zero_grad(); fpt = fc.get_total_flops()/(a.lane - 1); seg = max(1, total//8); grow_rec = None
+    if grow:                                                                                       # grown depth: training work counted at the depth in use at each step
+        steps_k = {}
+        for s_ in range(total): steps_k[n_active_at(s_)] = steps_k.get(n_active_at(s_), 0) + 1
+        fpt_k = {}
+        for k_ in steps_k:
+            model.n_active = k_
+            with FlopCounterMode(display=False) as fck:
+                model.train(); model.lane_nll(w[:, :-1], w[:, 1:], prefix=pf_).mean().backward()
+            model.zero_grad(); fpt_k[k_] = fck.get_total_flops()/(a.lane - 1)
+        model.n_active = a.levels - 1; fpt = sum(fpt_k[k_]*n_ for k_, n_ in steps_k.items())/total
+        grow_rec = dict(fractions=grow, steps_at_depth={str(k_ + 1): n_ for k_, n_ in sorted(steps_k.items())}, train_flops_per_target_at_depth={str(k_ + 1): v for k_, v in sorted(fpt_k.items())})
     fl0 = np.asarray(val[25165824:25165824 + 1025]).astype(np.int64)[None]; xf, yf = torch.from_numpy(fl0[:, :-1]), torch.from_numpy(fl0[:, 1:]); model.eval()
     with torch.no_grad(), FlopCounterMode(display=False) as fci: model.lane_nll(xf, yf)              # measured inference work of the whole member (level 1, every level, readout) per target at history up to 1,023
     inference = dict(flops_per_target_window_1024=fci.get_total_flops()/1024, scope='measured, eval mode, one flagship window, reset lane (dense reference execution)')
@@ -667,7 +701,7 @@ def main():
     result = dict(status='completed', battle='R1', stage=STAGE, tag=a.tag, args=vars(a), parameters=params, steps=step,
                   presentations=step*a.batch*(a.lane - 1), train_wall_s=time.time() - began, resumes=resumes, milestones=milestones, train_flops_per_target=fpt, train_flops=fpt*step*a.batch*(a.lane - 1),
                   prequential_by_eighth=[float(np.mean(losses[i:i + seg])) for i in range(0, len(losses), seg)], prequential_last_quarter=float(np.mean(losses[-quarter:])),
-                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, active_work=active,
+                  **fineweb_protocols(model, val, a.row_chunk), **(carried_protocols(model, val, a.row_chunk, a.carry) if a.carry else {}), work_level1_per_target=work_per_target(model.base, 255), inference_work=inference, active_work=active, **({'grow': grow_rec} if grow_rec else {}),
                   reference=dict(cerl_4M='curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)', diagnostic_planB_L8_4M_flagship=5.8414), max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, source_sha256=src)
     torch.save(model.state_dict(), out_dir/f'{a.tag}.pt'); result['checkpoint'] = f'experiments/results/token_language/{a.tag}.pt'
     out.write_text(json.dumps(result, indent=1) + '\n'); state_path.unlink()

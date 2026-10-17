@@ -60,5 +60,6 @@ Status labels:
 | --- | --- | --- | --- |
 | CONFOUNDED | Capacity beyond activity at 4M: product-key banks of 65,536 / 262,144 units, flag 5.4716 / 5.4715 vs 5.4665 (`aws_r1_cerl_pk*_4M_*`) | Bank collapse (zero-init vectors, no balance), weight decay on dormant tables, data-limited 4M | The capacity ladder at 16M with `--wd-groups 1 --unit-init 0.02 --balance 0.01` |
 | CONFOUNDED | Every 16 and 17 October native run (CERL, RMR, RMR-2): magnitude of the concept cause and of learned clocks | Same two defects | Report results as measured; repeat mechanism attributions on the fixed runs |
+| CONFOUNDED | Scaling slope of fixed-depth CERL against fixed-depth dense L8 (0.40 vs 0.62 nats per 4x data; Curie, 17 Oct) | Fixed depths at both data sizes mix the slope with depth mismatch, and CERL carried the capacity defects (124 of 1,024 units used) | Best-depth envelopes per data size, the fixed CERL pair (4M, 16M) and the 64M point (theory 173 section 14) |
 | QUARANTINED | Target-dependent E63/E79 mixtures | Target leakage | `experiments/archive/invalid_protocol/` (AGENTS.md) |
 | ORACLE | FIFO de-interleaving and the v2 timing probe on FAS | Use hidden training identities | Oracle diagnostics only (AGENTS.md) |

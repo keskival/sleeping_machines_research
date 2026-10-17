@@ -106,6 +106,7 @@ Update this ledger whenever a language depth/composition result completes.
 - Depth does not explain the whole slope gap: shallow dense gains 0.595 per 4× data vs CERL 0.403. Open candidate:
   usable capacity (CERL used 124 of 1,024 concept units). Tests: envelope comparison, synthetic hierarchy with known
   depth, grown depth with ReZero insertion, 64M K4/K8, fixed-capacity 16M arm.
+- Implemented 17 Oct: capacity usage in every milestone, `--grow`, `rhm_depth.py` (Bayes ladder B = 2.60/2.03/1.71/1.55/1.47). Queued: hierarchy grid and fixed CERL 4M/16M (Curie v34); grown K4 16M and fixed CERL 64M (AWS).
 
 ## What has not been tested yet (the open route, theory 170)
 1. **A typed event interface between units.** Units exchange attributed-cause and surprise *events*, never dense vectors.

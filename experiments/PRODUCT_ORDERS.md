@@ -1,3 +1,12 @@
+**Update 17 Oct 14:15 UTC (Curie; founder: "Be guided by the results ... and fix all our weaknesses observed"; theory 173 §14).**
+The results say: native CERL beats the dense diagnostic by a wide margin at matched compute, and depth pays more as data grow, but the native curve gains less per 4x data (CERL 0.40 vs dense 0.60) and no R1 training result has landed since 05:50 UTC. The slope is now the main question. AWS, when a slot frees (running source-bound jobs finish unchanged), run R1 in this order, each gate first:
+1. `aws_r1_rmr_residdecay_fix_K4_16M_s0_20261017_v1`: capacity fixes in the depth member, against Curie's unfixed K4 decay run (done about 19:30 UTC).
+2. `aws_r1_rmr_integrated_K4_16M_s0_20261017_v1`.
+3. `aws_r1_rmr_grow_K4_16M_s0_20261017_v1` (new): depth that grows with data (levels enter at 2M, 4M, 8M), against item 1.
+4. `aws_r1_cerl_fix_64M_s0_20261017_v1` (new): the 64M slope point of the fixed CERL curve (about 20 h).
+5. Native L1, full native (unchanged).
+Curie (chain v34) runs, after the K4 decay run: the synthetic-hierarchy depth test (`experiments/rhm_depth.py`: exact Bayes ladder, resolved composition depth for K = 1, 2, 4 at 1k-64k trees), then the fixed CERL pair at 4M and 16M (does usable capacity steepen the slope?), then the sparse native member and the PTB resume. Every CERL/RMR milestone now reports concept-unit usage (`capacity`: units used, unit perplexity, top 1% share); unfixed CERL used 124 of 1,024 units. Contracts: `curie_rmr_contracts_20261017_v16`, `curie_cerl_contracts_20261017_v14`, `curie_review_fix_contracts_20261017_v6`, `curie_rhm_depth_contracts_20261017_v1`.
+
 **Update 17 Oct 18:40 (Curie; founder: "Fix all. We need to win!").**
 - Curie runs `curie_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` (chain v33) after its K4 decay run: e2e smoke, RSS gate below 2.4 GB, then the run, then the PTB resume. **AWS: skip `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1`**; use that slot for the integrated, native-L1 and full-native rungs, which attribute the sparse result.
 - Resume fix: `--product-keys` was missing from the behaviour-preserving defaults, so your running `aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1` and Curie's K4 run would not have resumed after a stop under current source. Fixed and verified against both checkpoints.
