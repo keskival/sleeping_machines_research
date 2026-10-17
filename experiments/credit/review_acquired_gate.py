@@ -1,5 +1,5 @@
 """Acquired eight-layer native repair integration and exact recovery gate."""
-import argparse,copy,hashlib,io,json,resource,subprocess,sys,time,types
+import argparse,copy,gc,hashlib,io,json,resource,subprocess,sys,time,types
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'experiments'),str(ROOT/'experiments/credit')]
 import numpy as np
@@ -13,6 +13,13 @@ from tests.test_native_query_migration import identical
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def bundle(model,opt,state,g,a,cursor):
     return dict(model=model.state_dict(),optimizer=opt.state_dict(),state=state,g=g.get_state(),alt=a.get_state(),rng=torch.get_rng_state(),cursor=cursor)
+def restore_reviewed_actor(saved,parent):
+    model,opt,state,g,a=base.actor(parent)
+    enable_reviewed_learning(model,state);regroup_native_optimizer(model,opt,.01)
+    model.load_state_dict(saved['model']);opt.load_state_dict(saved['optimizer'])
+    state=saved['state'];g.set_state(saved['g']);a.set_state(saved['alt']);torch.set_rng_state(saved['rng'])
+    return model,opt,state,g,a
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--tag',required=True);args=p.parse_args();torch.set_num_threads(1);start=time.monotonic()
     evidence_path=ROOT/'experiments/results/diagnostics/aws_r1_calibrated_reciprocal_continue_20261017_v1.json'
@@ -54,10 +61,22 @@ def main():
     endpoint=copy.deepcopy(bundle(model,opt,state,g,a,cursor+4))
     saved.seek(0);saved_state=torch.load(saved,weights_only=False);model.load_state_dict(saved_state['model']);opt.load_state_dict(saved_state['optimizer']);state=saved_state['state'];g.set_state(saved_state['g']);a.set_state(saved_state['alt']);torch.set_rng_state(saved_state['rng'])
     actual=base.update(model,opt,state,g,a,data,cursor,targets=4)[0]
-    assert actual==expected and identical(endpoint,bundle(model,opt,state,g,a,cursor+4));cursor+=4
+    assert actual==expected and identical(endpoint,bundle(model,opt,state,g,a,cursor+4))
+    # A fresh constructor must restore the regrouped optimizer and installed
+    # methods, not merely reload tensors into the already repaired instance.
+    expected_endpoint=io.BytesIO();torch.save(endpoint,expected_endpoint)
+    del model,opt,state,g,a,endpoint,saved_state;gc.collect()
+    saved.seek(0);saved_state=torch.load(saved,weights_only=False)
+    parent=torch.load(path,map_location='cpu',weights_only=False)
+    model,opt,state,g,a=restore_reviewed_actor(saved_state,parent)
+    del saved_state,parent;gc.collect()
+    rebuilt=base.update(model,opt,state,g,a,data,cursor,targets=4)[0]
+    expected_endpoint.seek(0)
+    assert rebuilt==expected and identical(torch.load(expected_endpoint,weights_only=False),bundle(model,opt,state,g,a,cursor+4));cursor+=4
+    del expected_endpoint,saved;gc.collect()
     assert state['direct_producer_replays']>0 and state['nonlinear_route_audits']>0 and state['episodic_writer_replays']>0
     checkpoint=ROOT/f'experiments/results/credit/{args.tag}.pt';checkpoint.parent.mkdir(parents=True,exist_ok=True)
     torch.save(dict(schema='reviewed_native_v1',parent_checkpoint=str(path.relative_to(ROOT)),parent_sha256=sha(path),**bundle(model,opt,state,g,a,cursor)),checkpoint)
-    result=dict(status='completed',battle='R1',stage='reviewed acquired native learner gate',gate='PASS',source_sha256=sources,parent_result=str(evidence_path.relative_to(ROOT)),parent_checkpoint_sha256=sha(path),parent_cursor=cursor-8,final_cursor=cursor,actual_targets=8,discarded_recovery_targets=4,legacy_head_law_equal=True,acquired_forecast_equal=True,exact_model_adam_state_rng_recovery=True,receipt=receipt,optimizer_policy=groups,training_losses=first+actual,checkpoint=str(checkpoint.relative_to(ROOT)),checkpoint_sha256=sha(checkpoint),direct_replays=state['direct_producer_replays'],nonlinear_audits=state['nonlinear_route_audits'],episodic_writer_replays=state['episodic_writer_replays'],elapsed_s=time.monotonic()-start,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,scope='Acquired eight-layer native integration and finite updates, not a prediction or hardware win. Nonlinear route suffix is one actual event. All snapshots/replays paid; earlier source-bound jobs unchanged.')
+    result=dict(status='completed',battle='R1',stage='reviewed acquired native learner gate',gate='PASS',source_sha256=sources,parent_result=str(evidence_path.relative_to(ROOT)),parent_checkpoint_sha256=sha(path),parent_cursor=cursor-8,final_cursor=cursor,actual_targets=8,discarded_recovery_targets=8,fresh_constructor_recovery=True,legacy_head_law_equal=True,acquired_forecast_equal=True,exact_model_adam_state_rng_recovery=True,receipt=receipt,optimizer_policy=groups,training_losses=first+actual,checkpoint=str(checkpoint.relative_to(ROOT)),checkpoint_sha256=sha(checkpoint),direct_replays=state['direct_producer_replays'],nonlinear_audits=state['nonlinear_route_audits'],episodic_writer_replays=state['episodic_writer_replays'],elapsed_s=time.monotonic()-start,max_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,scope='Acquired eight-layer native integration and finite updates, not a prediction or hardware win. Nonlinear route suffix is one actual event. All snapshots/replays paid; earlier source-bound jobs unchanged.')
     (ROOT/f'experiments/results/diagnostics/{args.tag}.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 if __name__=='__main__':main()

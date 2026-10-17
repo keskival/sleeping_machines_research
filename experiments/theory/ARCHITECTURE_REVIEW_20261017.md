@@ -1,3 +1,5 @@
+Current repair status: [implemented repairs and second audit](REVIEW_REPAIRS_AND_SECOND_AUDIT_20261017.md). The findings below refer to the earlier source-bound learners; repaired variants are separate and gated, with no predictive win inferred.
+
 # Architecture and learning review — 17 October 2026
 
 Battle R1. Review of the actual integrated native actor, historical producer

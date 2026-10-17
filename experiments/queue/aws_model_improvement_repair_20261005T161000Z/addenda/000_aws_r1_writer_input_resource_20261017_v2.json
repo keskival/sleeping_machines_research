@@ -1,0 +1,47 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": {
+    "battle": "R1",
+    "stationarity": "Product-ordered integrated native-depth numerical/resource gate on TRAIN only; no DEV quality selection or TEST.",
+    "fighter": "Four-level carrier-backed residual memory with per-target old-slot writing, separate address race/probes, grouped decay, concept initialization/balance and carried memory; repaired full first-order old-correction writer-input derivative.",
+    "online": "Original chronological carried lane workload. All forecasts scored before batch updates. This is not the separate event-local/native online competitive comparison.",
+    "state_history": "Same carry256 and256-token lanes as the ordered integrated gate; no history shortening. Save exact16-update checkpoint; active jobs unaffected.",
+    "retained": "Native cause races, addressed state, clocks, dormant capacity and counterfactual exploration; dense reads and temporal carrier explicitly retained. New full writer VJP increases learning memory.",
+    "restrictions": "16updates of the already ordered integrated gate; no long fit is automatically admitted. Require finite gradients, exact prior numerical contracts andRSS below2.9MKiB before scaling.",
+    "accounting": "Existing idle slot3,one thread,3MKiB RSS/12MKiB VMS,8GiB available reserve,7200s timeout. Record training/evaluation work, elapsed time and peakRSS; no hardware claim.",
+    "decision": "Full writer-input graph exceeded the3MKiB envelope in v1. Does exact non-reentrant checkpoint recomputation retain its VJP while fitting the same16-update integrated workload? No reduced model/history or long fit."
+  },
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_r1_writer_input_resource_20261017_v2",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_writer_input_resource_20261017_v2/aws_r1_writer_input_resource_20261017_v2.txt",
+        "queue_sha256": "8dbe01bb495764f552aa0c62de3b01db40d7b06f53f47b7d3c0ba0eb3f3f5c57",
+        "source_sha256": {
+          "experiments/credit/rmr_writer_resource_gate.py": "b6e0299a8bb22d7c7f7c63de3961a90a2d5703436472cb3ab4fbafb45aac36d6",
+          "experiments/r1_rmr_writer_input_credit.py": "62fd39d815cf14cfd610e22ec45eaf12a5538dbee524464e1163a1aaf073ba98",
+          "experiments/r1_rmr.py": "d01b066da77562217c722ad86ebe144beb54978fcc725fb83e50807705412281",
+          "experiments/r1_cerl.py": "da8f4e69a93c7558cef75db305d40f2162a435f9be25cf4cdf087ca1bbcc1577",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_writer_input_resource_20261017_v2.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v6.json",
+            "stage": "review repair integrated numerical gate",
+            "source_sha256": {
+              "experiments/r1_rmr_writer_input_credit.py": "62fd39d815cf14cfd610e22ec45eaf12a5538dbee524464e1163a1aaf073ba98"
+            }
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}

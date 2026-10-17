@@ -1,3 +1,5 @@
+[Implemented repairs and second audit](theory/REVIEW_REPAIRS_AND_SECOND_AUDIT_20261017.md) closes direct/current-write input VJPs, integrates actual nonlinear query outcomes, stabilizes critic feature epochs and restores writer input credit with exact checkpoint recomputation. Acquired-model/fresh-constructor recovery and real integrated resource gates pass; prediction promotion remains separate.
+
 [Architecture review, 17 October](theory/ARCHITECTURE_REVIEW_20261017.md) identifies missing direct lower-message producer credit, possible sign reversal of linearized routing credit, and moving-feature inconsistency in the reciprocal critic. Three numerical witnesses pass; the completed reciprocal trial still loses, so no promotion.
 
 [Next native composition decision](theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md) recovers the completed native continuation, repairs the persistent TRAIN-to-DEV tape transition and tests full-depth producer credit without refitting completed work. The 5.0433 residual-memory result is carrier-backed composition evidence, not a fully event-local win.

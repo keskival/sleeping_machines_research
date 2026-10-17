@@ -34,9 +34,9 @@ class StableNativeFutureCredit(CalibratedNativeFutureCredit):
         self._feature_versions=None;self.begin_decision()
 
     def quote(self,*args,actual_action_norm=None,**kwargs):
+        if actual_action_norm is not None and (not math.isfinite(actual_action_norm) or actual_action_norm<0):raise ValueError('finite nonnegative actual action norm required')
         quote,state,packets=super().quote(*args,**kwargs)
         if actual_action_norm is not None:
-            if not math.isfinite(actual_action_norm) or actual_action_norm<0:raise ValueError('finite nonnegative actual action norm required')
             step=args[4] if len(args)>4 else kwargs['step_rms']
             factor=actual_action_norm/(step*self.width)
             self.features[-1]=self.features[-1]*factor

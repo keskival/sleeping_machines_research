@@ -170,3 +170,24 @@ def test_zero_effect_interventions_have_zero_values_and_prefer_noop():
     q,_,_=m.quote(*(torch.randn(8) for _ in range(3)),.5,.001,s,torch.Generator().manual_seed(1),torch.Generator().manual_seed(2),actual_action_norm=0.)
     assert torch.equal(q,torch.zeros_like(q)) and not torch.cat(m.features).any()
     assert m.choose_service(q)==(1,0.)
+
+
+def test_invalid_actual_action_norm_does_not_mutate_critic_state():
+    m=StableNativeFutureCredit(8,depth=2,heads=2,pool=2);state=m.new_state();before=copy.deepcopy(state)
+    with pytest.raises(ValueError):m.quote(*(torch.randn(8) for _ in range(3)),.5,.001,state,torch.Generator().manual_seed(1),torch.Generator().manual_seed(2),actual_action_norm=-1.)
+    assert identical(state,before) and not m.features
+
+
+def test_fixed_feature_critic_restores_into_a_fresh_constructor():
+    torch.manual_seed(17403);m=StableNativeFutureCredit(8,depth=3,heads=2,pool=3,forgetting=.99)
+    s=m.new_state();g=torch.Generator().manual_seed(81);a=torch.Generator().manual_seed(82);vectors=[torch.randn(8) for _ in range(3)]
+    def step(model,state,generator,alternative):
+        model.begin_decision();q,_,packets=model.quote(*vectors,.5,.001,state,generator,alternative)
+        return q.detach(),model.learn_audit(q,0,-.002,packets,state)
+    step(m,s,g,a);saved=io.BytesIO();torch.save((m.state_dict(),s,g.get_state(),a.get_state()),saved)
+    expected=step(m,s,g,a);final=copy.deepcopy((m.state_dict(),s,g.get_state(),a.get_state()))
+    saved.seek(0);weights,state,gs,als=torch.load(saved,weights_only=False)
+    rebuilt=StableNativeFutureCredit(8,depth=3,heads=2,pool=3,forgetting=1.);rebuilt.load_state_dict(weights)
+    rg=torch.Generator().set_state(gs);ra=torch.Generator().set_state(als);actual=step(rebuilt,state,rg,ra)
+    assert torch.equal(actual[0],expected[0]) and actual[1]==expected[1]
+    assert identical(final,(rebuilt.state_dict(),state,rg.get_state(),ra.get_state()))
