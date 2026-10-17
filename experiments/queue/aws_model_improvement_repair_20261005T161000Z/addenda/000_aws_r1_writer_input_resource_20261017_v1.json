@@ -1,0 +1,44 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": {
+    "battle": "R1",
+    "stationarity": "Product-ordered integrated native-depth numerical/resource gate on TRAIN only; no DEV quality selection or TEST.",
+    "fighter": "Four-level carrier-backed residual memory with per-target old-slot writing, separate address race/probes, grouped decay, concept initialization/balance and carried memory; repaired full first-order old-correction writer-input derivative.",
+    "online": "Original chronological carried lane workload. All forecasts scored before batch updates. This is not the separate event-local/native online competitive comparison.",
+    "state_history": "Same carry256 and256-token lanes as the ordered integrated gate; no history shortening. Save exact16-update checkpoint; active jobs unaffected.",
+    "retained": "Native cause races, addressed state, clocks, dormant capacity and counterfactual exploration; dense reads and temporal carrier explicitly retained. New full writer VJP increases learning memory.",
+    "restrictions": "16updates of the already ordered integrated gate; no long fit is automatically admitted. Require finite gradients, exact prior numerical contracts andRSS below2.9MKiB before scaling.",
+    "accounting": "Existing idle slot3,one thread,3MKiB RSS/12MKiB VMS,8GiB available reserve,7200s timeout. Record training/evaluation work, elapsed time and peakRSS; no hardware claim.",
+    "decision": "Is the restored first-order writer-input path viable in the real integrated workload, or does it need a bounded replay/reserved lower concurrency before any long fit?"
+  },
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "3": [
+      {
+        "name": "aws_r1_writer_input_resource_20261017_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_writer_input_resource_20261017_v1/aws_r1_writer_input_resource_20261017_v1.txt",
+        "queue_sha256": "388ec4b6c88144747fd73cde411a8cd5e15663c012625ab7d56f68b73c118015",
+        "source_sha256": {
+          "experiments/credit/rmr_writer_resource_gate.py": "bb7a948c45a3a92eb321add1b272a4df0ca9368777f9743e34c25a44bd1b5c55",
+          "experiments/r1_rmr_writer_input_credit.py": "9c3762a57fabef032b6b2d7ac2ee1e30c0a54066e6e9fc2660b7a1206c523353",
+          "experiments/r1_rmr.py": "d01b066da77562217c722ad86ebe144beb54978fcc725fb83e50807705412281",
+          "experiments/r1_cerl.py": "da8f4e69a93c7558cef75db305d40f2162a435f9be25cf4cdf087ca1bbcc1577",
+          "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f"
+        },
+        "result": "experiments/results/diagnostics/aws_r1_writer_input_resource_20261017_v1.json",
+        "requires": [
+          {
+            "result": "experiments/results/diagnostics/aws_r1_review_repairs_20261017_v4.json",
+            "stage": "review repair integrated numerical gate"
+          }
+        ],
+        "timeout_s": 7200,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
