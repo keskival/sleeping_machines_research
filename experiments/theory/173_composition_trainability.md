@@ -408,3 +408,18 @@ persistence, capacity, writes, local learning; `# Role: ablation <bundle>`, chec
 exactly that bundle is off); (3) a seed replicate of the full member sets which differences are real; (4) no mechanism is declared
 dead from an isolated test on the diagnostic stack, or from a 16M leave-one-out alone (synergy can depend on data scale, section 15).
 The native member now also carries the large concept bank (65,536 units, product-key wake), which it lacked.
+
+## 19. Learning-side integrations (17 October, founder audit)
+
+- Cross-lane credit for persistent memory (`--carry-credit H`, `CarryCredit` in r1_rmr.py; theory 160, future-oriented credit):
+  each lane runs on a parameter snapshot, so optimizer steps do not invalidate its graph; a lane's graph is kept for H later
+  lanes, whose cotangents on their carried prefix are pushed back through its carried outputs (and on to older lanes). A lane's
+  update (its own loss plus its effect on the next H lanes) is applied when it leaves the window, lagging by H lanes. Exact:
+  with fixed parameters the summed credit equals backprop through H + 1 concatenated carried lanes (1e-7, H = 1 and 2); the
+  cross-lane part is large (max 0.14 / 0.32 per parameter at random parameters). Paired arm on AWS.
+- Calibrated bank-local radial clipping (`--clip local`): the adopted policy, now in the flagship.
+- Online column for carried runs: causal online adaptation with persistent memory in final scoring (one RMS-normalised step
+  per scored 512-token segment, decay toward the trained weights, lr/decay chosen on the selection slice only).
+- Exact microbatching with carried memory (`--micro`) so the native member fits any memory cap.
+Still declared gaps: forward-trained credit functions (theory 164) and event-local learning as the training route; AWS owns
+porting its credit learners onto the native member as paired arms.
