@@ -1,3 +1,5 @@
+[Next native composition decision](theory/NATIVE_COMPOSITION_NEXT_DECISION_20261017.md) recovers the completed native continuation, repairs the persistent TRAIN-to-DEV tape transition and tests full-depth producer credit without refitting completed work. The 5.0433 residual-memory result is carrier-backed composition evidence, not a fully event-local win.
+
 [Native reciprocal future integration](theory/NATIVE_RECIPROCAL_FUTURE_INTEGRATION.md) connects deferred episodic producer teaching to a native eight-layer future-value credit machine. Controlled continuations train addressed update selection; numerical/acquired gates precede a prospective complete-native comparison. Existing source-bound jobs continue unchanged.
 
 [Zero old-write execution](theory/RMR_ZERO_WRITE_EXECUTION.md) removes identically zero quadratic state from the current-slot residual-memory variant, with full-objective derivative parity and completed-checkpoint evaluation recovery gated before use. It changes execution, not the predictive architecture.
