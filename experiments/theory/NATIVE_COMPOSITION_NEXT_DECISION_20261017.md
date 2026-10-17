@@ -11,6 +11,28 @@ construction, not a fully event-local deep-learning win. Enlarging the concept
 bank to 262144 units at 4M gives 5.471524 versus the saved 5.466546 base:
 capacity alone is not the next decisive intervention.
 
+Curie's completed old-slot K4 endpoint strengthens the refinement hypothesis:
+flagship 4.9901, selection 5.1906 and prequential 5.0426 versus CERL 5.0634,
+5.2826 and 5.1204. Its long-lane slice regresses to 5.0874 versus 5.0282.
+These endpoints must stay together: accumulation across a much longer lane is
+a specific stability defect, not grounds to erase the flagship improvement.
+
+The current product order selects learned decay of old-slot corrections.
+A correction written at tau contributes exp(-beta*(t-tau)) at read time t.
+For bounded per-step writes c, accumulated magnitude is bounded by
+c/(1-exp(-beta)) when beta stays positive, rather than growing linearly with
+history. This controls the accumulated-write factor; it does not guarantee
+whole-model stability or that the learned beta stays usefully bounded away
+from zero. The source-bound Curie v3 gate validates the implemented decayed
+memory algebra against brute force (maximum error 1.43e-6).
+
+The already ordered eight-level/16M repair is now admitted in AWS slot 5,
+with the existing fully native credit comparison in slot 2. Curie runs K4.
+Report both standard and long-lane scores. Preserve native race mechanisms;
+label the temporal carrier and dense memory reads accurately. This makes
+supported prediction gains useful immediately while the event-local learner
+acquires the same compositional capability.
+
 ## Selected avenue
 
 Make useful multi-memory composition learn through its actual producers.

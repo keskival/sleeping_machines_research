@@ -1,0 +1,43 @@
+{
+  "host": "ip-172-31-47-132",
+  "battle": "R1",
+  "purpose": {
+    "battle": "R1",
+    "stationarity": "Stationary one-pass 16M FineWeb GPT-2 development protocol. This fixed-weight checkpoint score is separate from non-stationary online evaluation.",
+    "fighter": "Product-ordered eight-level residual memory with learned decay of old-slot corrections; the demonstrated four-level old-slot construction achieved4.9901 flagship versus5.0634 CERL and5.2034 dense L16, but regressed on longer lanes. Curie independently runs the K4 repair.",
+    "online": "Training adapts causally on scored lane batches. Official development scoring freezes weights. Not an online learning win; the persistent event-local learner is evaluated separately.",
+    "state_history": "Original256-token training lanes and prescribed1024/8192-token frozen evaluation history. No shortened evaluation. Temporal state resets per existing stationary lane protocol; carried cross-lane memory is not implemented in this driver.",
+    "retained": "Native cause races, addressed episodic pointers, separate keys/values, dormant concepts, counterfactual exploration and current/old-slot residual memory. Carrier-backed temporal state; dense cross-slot reads. Independent asynchronous event stack, sparse read discovery, standing-slot pooling and cross-lane persistence are missing and explicitly not claimed.",
+    "restrictions": "Depth8,old-slot top_m4,read_topk0,learned old_decay initialized0.01,16Mtokens,seed0 from product order. Same data and canonical scoring as saved references,unequal parameters/work. No new dense comparator fit or parameter sweep.",
+    "accounting": "Existing AWS gym slot5,one thread,3MKiB RSS/12MKiB VMS,8GiB MemAvailable reserve,RSSwatchdog,24h timeout,checkpoint every256updates. Current sparse-address old-write algebra avoids dense T-by-T write storage. Driver FLOPs are operator estimates,not complete arithmetic/special-function/traffic or hardware measurements.",
+    "decision": "Does learned decay repair long-history correction accumulation while eight levels improve flagship and selection accuracy at16M? Report all endpoints,including the65528target long-lane slice,without promoting only the favorable window. Reuse saved dense and native comparisons.",
+    "gate": {
+      "result": "experiments/results/diagnostics/curie_rmr_contracts_20261017_v3.json",
+      "sha256": "b022a239a8661dd0057a57e68da6205ed8dace83a0048a9ee69736a8bc22ecd7",
+      "loaded_sources_match": true
+    }
+  },
+  "parent_manifest_sha256": "49a32f006dbb40b34e42bb4fe695abd862b98e1e80ad21e968f37ec8f479df55",
+  "slots": {
+    "5": [
+      {
+        "name": "aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1",
+        "kind": "r1",
+        "queue": "experiments/queue/r1/aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1/aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1.txt",
+        "queue_sha256": "848ffe70a0c9ce12e979c1cf4378ffa64c6c4383993c9ad845d366e20f4e7a83",
+        "source_sha256": {
+          "experiments/r1_rmr.py": "216efc3557c75c544561ff30216e0473230bd67e79a9485911d21b05d8b0857f",
+          "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+          "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043",
+          "experiments/r1_token_keyed_lm.py": "cf63d43c05724a03d6a15ce46dca7ac0b8b5528a38e778dfc84559a52832547f",
+          "experiments/results/diagnostics/curie_rmr_contracts_20261017_v3.json": "b022a239a8661dd0057a57e68da6205ed8dace83a0048a9ee69736a8bc22ecd7"
+        },
+        "result": "experiments/results/token_language/aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1.json",
+        "requires": [],
+        "timeout_s": 86400,
+        "rss_kb": 3000000,
+        "vms_kb": 12000000
+      }
+    ]
+  }
+}
