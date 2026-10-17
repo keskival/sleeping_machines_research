@@ -329,10 +329,11 @@ class RMR(nn.Module):
         corr = self.corr_values(oh, wr, rows.repeat_interleave(m)).to(base_prime.dtype)
         return (base_prime.gather(1, idx.reshape(B, -1, 1).expand(-1, -1, base_prime.shape[-1])) + corr).reshape(B, R, m, -1)
 
-    def carry_out(self, keep):
+    def carry_out(self, keep, live=False):
         """Persistent memory for the next lane: the last `keep` slots (all levels' corrections, detached; credit stays within a
         lane) and the level-1 temporal-memory state. Old-slot writes that addressed dropped slots are dropped; probe entries
-        (zero magnitude) are not carried."""
+        (zero magnitude) are not carried. live=True keeps the graph (cross-lane credit, --carry-credit)."""
+        D = (lambda t_: t_) if live else (lambda t_: t_.detach())
         T = self._A.shape[1]; K = min(keep, T); s0 = T - K                     # any keep is causal; chunk-aligned lanes reproduce one long lane exactly (contract)
         levels = []
         for li_, (lev, (on, od, oi, ow)) in enumerate(zip(self.levels, self._lev_own)):
@@ -340,9 +341,9 @@ class RMR(nn.Module):
             ev_ = ()
             if self.events and li_ < len(self._ev):
                 pt_, pw_ = self._ev[li_]; pt_ = pt_[:, s0:] - s0; self_ = torch.arange(K, device=pt_.device).expand_as(pt_); okp = pt_ >= 0
-                ev_ = (torch.where(okp, pt_, self_), torch.where(okp, pw_[:, s0:], torch.ones_like(pw_[:, s0:])).detach())
-            levels.append((on[:, s0:].detach(), (od[:, s0:, :k_] if od.dim() == 4 else od[:, s0:]).detach(), idx.clamp_min(0), (ow[:, s0:, :k_]*ok).detach()) + ev_)
-        return dict(A=self._A[:, s0:].detach(), levels=levels, tm=[tuple(t_.detach() for t_ in st_) for st_ in self.base.tm_state], x=self._xcat[:, s0:], y=self._ycat[:, s0:])
+                ev_ = (torch.where(okp, pt_, self_), torch.where(okp, pw_[:, s0:], torch.ones_like(pw_[:, s0:])))
+            levels.append((D(on[:, s0:]), D(od[:, s0:, :k_] if od.dim() == 4 else od[:, s0:]), idx.clamp_min(0), D(ow[:, s0:, :k_]*ok)) + tuple(D(e_) if e_.is_floating_point() else e_ for e_ in ev_))
+        return dict(A=D(self._A[:, s0:]), levels=levels, tm=[tuple(D(t_) for t_ in st_) for st_ in self.base.tm_state], x=self._xcat[:, s0:], y=self._ycat[:, s0:])
 
     def lane_nll(self, x, y, rows=None, stats=False, msg=None, prefix=None):
         if self._px is not x or self._ptrain is not self.training or self._ppf is not prefix or self._pna != self.n_active:
@@ -416,6 +417,59 @@ def train_step(model, x, y, carry, keep, micro):
         l_ = nll.mean(); ((l_ + (model.aux.mean() if model.aux is not None else 0.0))*len(rs)/B).backward(); loss += l_.item()*len(rs)/B
         if keep: parts.append(model.carry_out(keep))
     return loss, (carry_cat(parts) if keep else None)
+
+
+def carry_floats(c):
+    """The differentiable (floating) tensors of a carried-memory structure, in a fixed order."""
+    if torch.is_tensor(c): return [c] if c.is_floating_point() else []
+    if isinstance(c, dict): return [t_ for k in sorted(c) for t_ in carry_floats(c[k])]
+    return [t_ for v in c for t_ in carry_floats(v)]
+
+
+def carry_leaves(c):
+    """A copy of a carried structure whose floating tensors are fresh leaves that require grad (their gradient is the cotangent on the carry)."""
+    if torch.is_tensor(c): return c.detach().requires_grad_(True) if c.is_floating_point() else c
+    if isinstance(c, dict): return {k: carry_leaves(v) for k, v in c.items()}
+    return type(c)(carry_leaves(v) for v in c)
+
+
+class CarryCredit:
+    """Credit across lane boundaries for persistent memory (theory 160: the adjoint of the memory is the memory run backward; founder: future-
+    oriented credit, persistent state separate from the credit window). Each lane runs on a snapshot of the parameters, so optimizer steps do
+    not invalidate its graph. A lane's graph is kept for H later lanes: each later lane's cotangent on its carried prefix (lambda) is pushed back
+    through the kept lanes' carried outputs, adding to their parameter credit and continuing to the next older lane. A lane's update (its own
+    loss plus its effect on the next H lanes) is applied when it leaves the window: updates lag by H lanes. With fixed parameters the summed
+    credit equals backprop through H + 1 concatenated lanes exactly (contract)."""
+    def __init__(self, model, H):
+        self.model, self.H, self.pending = model, H, []                                           # pending: [names, snapshot params, accumulated grads, carry_live, prefix leaves]
+
+    def step(self, x, y, carry, keep):
+        from torch.nn.utils.stateless import _reparametrize_module
+        m = self.model; names = [n for n, _ in m.named_parameters()]; snap = {n: p_.detach().clone().requires_grad_(True) for n, p_ in m.named_parameters()}
+        pf = None if carry is None else carry_leaves(carry); leaves = [] if pf is None else carry_floats(pf)
+        with _reparametrize_module(m, snap):
+            nll = m.lane_nll(x, y, prefix=pf); l_ = nll.mean(); obj = l_ + (m.aux.mean() if m.aux is not None else 0.0); live = m.carry_out(keep, live=True)
+        ps = [snap[n] for n in names]; g = torch.autograd.grad(obj, ps + leaves, allow_unused=True, retain_graph=True)
+        acc = [gi if gi is not None else torch.zeros_like(pi) for gi, pi in zip(g[:len(ps)], ps)]; lam = list(g[len(ps):])
+        for old in reversed(self.pending):                                                        # newest kept lane first: push lambda back through its carried outputs
+            if all(l_i is None for l_i in lam): break
+            outs = [(o_, l_i) for o_, l_i in zip(carry_floats(old[3]), lam) if l_i is not None and o_.requires_grad]
+            if not outs: break
+            gg = torch.autograd.grad([o_ for o_, _ in outs], old[1] + old[4], grad_outputs=[l_i for _, l_i in outs], allow_unused=True, retain_graph=True)
+            for k, gk in enumerate(gg[:len(old[1])]):
+                if gk is not None: old[2][k] += gk
+            lam = list(gg[len(old[1]):])
+        self.pending.append([names, ps, acc, live, leaves])
+        done = self.pending.pop(0) if len(self.pending) > self.H else None
+        return float(l_), (carry_leaves(live) if keep else None), done
+
+    def flush(self):
+        out, self.pending = self.pending, []; return out
+
+    @staticmethod
+    def apply(model, done):
+        """Write a finished lane's accumulated credit into .grad (its snapshot parameters are in model.named_parameters() order)."""
+        for p_, g_ in zip(model.parameters(), done[2]): p_.grad = g_.clone()
 
 
 def member_work(model, history, fire_rates=None, carry=0):
@@ -728,6 +782,29 @@ def contracts():
     res['micro_loss_diff'] = abs(out_m[0][0] - out_m[1][0]); res['micro_grad_diff'] = max(float((g1 - g2).abs().max()) for g1, g2 in zip(out_m[0][1], out_m[1][1]) if g1 is not None)
     res['micro_carry_diff'] = float((out_m[0][2] - out_m[1][2]).abs().max())
     ok_e = ok_e and res['micro_loss_diff'] < 1e-5 and res['micro_grad_diff'] < 1e-5 and res['micro_carry_diff'] < 1e-5
+    # cross-lane credit: with fixed parameters the summed credit of CarryCredit(H) equals backprop through H + 1 concatenated carried lanes
+    torch.manual_seed(0); mx = RMR(V, cls, words, dict(cerl, level1='slots', slots=16, slot_m=3, slot_read_topk=4), events=True, **dict(NAT, write_explore=0, read_explore=0)); mx.eval()
+    for t_ in mx.base.tm: t_.CHUNK = 8
+    with torch.no_grad():
+        for p_ in mx.parameters(): p_.add_(torch.randn_like(p_)*0.1)
+    xs = torch.randint(0, 8, (2, 61)); lanes_ = [(xs[:, i*20:(i + 1)*20], xs[:, i*20 + 1:(i + 1)*20 + 1]) for i in range(3)]
+    for H, nl in ((1, 2), (2, 3)):
+        mx.zero_grad(); pf = None; tot = 0.0
+        for xl, yl in lanes_[:nl]:
+            tot = tot + mx.lane_nll(xl, yl, prefix=pf).mean(); pf = mx.carry_out(16, live=True)
+        ref = torch.autograd.grad(tot, list(mx.parameters()), allow_unused=True)
+        ccx = CarryCredit(mx, H); car = None; got = None
+        for xl, yl in lanes_[:nl]:
+            _, car, dn = ccx.step(xl, yl, car, 16)
+            if dn is not None: got = [g_ for g_ in dn[2]] if got is None else [a_ + b_ for a_, b_ in zip(got, dn[2])]
+        for dn in ccx.flush(): got = [g_ for g_ in dn[2]] if got is None else [a_ + b_ for a_, b_ in zip(got, dn[2])]
+        res[f'carry_credit_H{H}_equals_bptt'] = max(float(((r_ if r_ is not None else torch.zeros_like(g_)) - g_).abs().max()) for r_, g_ in zip(ref, got))
+        mx.zero_grad(); pf = None; tot = 0.0
+        for xl, yl in lanes_[:nl]:
+            tot = tot + mx.lane_nll(xl, yl, prefix=pf).mean(); pf = mx.carry_out(16)
+        det = torch.autograd.grad(tot, list(mx.parameters()), allow_unused=True)
+        res[f'carry_credit_H{H}_cross_lane_part'] = max(float(((r_ if r_ is not None else 0) - (d_ if d_ is not None else 0)).abs().max()) if (r_ is not None or d_ is not None) else 0.0 for r_, d_ in zip(ref, det))
+    ok_e = ok_e and res['carry_credit_H1_equals_bptt'] < 1e-5 and res['carry_credit_H2_equals_bptt'] < 1e-5 and res['carry_credit_H1_cross_lane_part'] > 0
     mg.eval(); mg.n_active = 2; ru = lanes_nll_usage(mg, xx.numpy()[:, :41], 16)                 # usable capacity: unit responsibilities add up to the concept cause's share
     res['capacity_units_used'] = ru['capacity']['units_used']; res['capacity_mass_matches_resp_concept'] = abs(ru['capacity']['concept_mass_per_target'] - ru['native']['resp_concept'])
     ok_g = res['local_clip_banks_partition'] and res['local_clip_direction_preserved'] < 1e-5 and ok_e and res['conditioning_credit_new_slot'] > 0 and res['conditioning_credit_old_slot'] > 0 and res['conditioning_credit_share'] > 0 and res['capacity_units_used'] > 0 and res['capacity_mass_matches_resp_concept'] < 1e-6 and res['grow_insertion_exact'] < 1e-6 and res['grow_zero_levels_equal_cerl'] < 1e-5 and res['grow_enter_after_carry_exact'] < 1e-6 and res['grow_inactive_level_no_credit'] and res['grow_active_level_credit']
@@ -752,7 +829,7 @@ def main():
     A('--d', type=int, default=128); A('--modes', type=int, default=64); A('--layers', type=int, default=2); A('--dk', type=int, default=64)
     A('--units', type=int, default=1024); A('--topk', type=int, default=4); A('--explore', type=int, default=2); A('--classes', type=int, default=256)
     A('--levels', type=int, default=2); A('--read-dk', type=int, default=64); A('--top-m', type=int, default=4); A('--chunk', type=int, default=64); A('--read-topk', type=int, default=0); A('--rezero', type=int, default=1); A('--old-decay', type=float, default=0.0); A('--old-per-target', type=int, default=0); A('--write-race', type=int, default=0); A('--carry', type=int, default=0); A('--fire', type=int, default=0); A('--read-explore', type=int, default=0); A('--index-regions', type=int, default=0); A('--index-read', type=int, default=0); A('--readout-index', type=int, default=0); A('--readout-read', type=int, default=0); A('--readout-tok', type=int, default=32); A('--index-pk', type=int, default=0); A('--index-balance', type=float, default=0.0); A('--slot-read-topk', type=int, default=0); A('--slot-pk', type=int, default=0); A('--old-norm', type=int, default=0); A('--act-cost', type=float, default=0.0); A('--level1', choices=('tm', 'slots'), default='tm'); A('--product-keys', type=int, default=0); A('--slots', type=int, default=1024); A('--slot-m', type=int, default=4); A('--slot-explore', type=int, default=0); A('--write-explore', type=int, default=0); A('--wd-groups', type=int, default=0); A('--unit-init', type=float, default=0.0); A('--balance', type=float, default=0.0)
-    A('--micro', type=int, default=1, help='execution: microbatches per update (gradient accumulation; activation memory / micro)'); A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
+    A('--carry-credit', type=int, default=0, help='credit across lane boundaries: lanes of future credit for persistent memory (CarryCredit; updates lag by this many lanes)'); A('--micro', type=int, default=1, help='execution: microbatches per update (gradient accumulation; activation memory / micro)'); A('--clip', choices=('global', 'local'), default='global', help='local: calibrated bank-local radial clipping (CALIBRATED_LOCAL_CLIPPING_ADOPTION.md)'); A('--events', type=int, default=0, help='event channel between levels (theory 173 section 17): pointer events, composed pointers, event-driven firing, events into the readout race'); A('--grow', default='', help='depth growth: comma-separated data fractions at which correction levels 2..K enter (one per level, nondecreasing); empty = all from the start')
     A('--train-tokens', type=int, default=4194304); A('--lane', type=int, default=256); A('--batch', type=int, default=4); A('--lr', type=float, default=3e-3); A('--wd', type=float, default=0.01)
     A('--row-chunk', type=int, default=512); A('--checkpoint-every', type=int, default=256); A('--max-steps', type=int, default=0); A('--log-every', type=int, default=100)
     a = ap.parse_args(); torch.set_num_threads(1); torch.manual_seed(a.seed)
@@ -778,6 +855,8 @@ def main():
     out_dir = ROOT/'experiments/results/token_language'; out = out_dir/f'{a.tag}.json'; state_path = out_dir/f'{a.tag}.resume.pt'; assert a.tag and not out.exists()
     ident = {k: v for k, v in vars(a).items() if k not in EXECUTION_ONLY}; step, losses, milestones, wall, resumes = 0, [], [], 0.0, 0; carry = None
     clipper = LocalClip(model) if a.clip == 'local' else None
+    assert not a.carry_credit or (a.carry and a.micro == 1), '--carry-credit needs --carry and --micro 1'
+    cc = CarryCredit(model, a.carry_credit) if a.carry_credit else None
     if state_path.exists():
         s = torch.load(state_path, weights_only=False); assert same_run(s['args'], ident)
         model.load_state_dict(s['model']); opt.load_state_dict(s['opt']); sched.load_state_dict(s['sched']); torch.set_rng_state(s['torch_rng'])
@@ -794,8 +873,15 @@ def main():
     while step < total:
         model.n_active = n_active_at(step)
         ids = order[step*a.batch:(step + 1)*a.batch]; model.train(); w = torch.from_numpy(train[ids if a.carry else np.sort(ids)]); x, y = w[:, :-1], w[:, 1:]
-        opt.zero_grad(); loss, carry = train_step(model, x, y, carry, a.carry, a.micro)
-        (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step(); step += 1; losses.append(loss)
+        if cc is not None:                                                                         # cross-lane credit: the update applied now is the lane leaving the credit window
+            loss, carry, done = cc.step(x, y, carry, a.carry)
+            if done is not None: opt.zero_grad(); CarryCredit.apply(model, done); (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step()
+        else:
+            opt.zero_grad(); loss, carry = train_step(model, x, y, carry, a.carry, a.micro)
+            (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step()
+        step += 1; losses.append(loss)
+        if cc is not None and step == total:                                                       # the last H lanes have no later lanes: apply them with the credit they have
+            for done in cc.flush(): opt.zero_grad(); CarryCredit.apply(model, done); (clipper(model) if clipper is not None else nn.utils.clip_grad_norm_(model.parameters(), 1.0)); opt.step(); sched.step()
         if step % a.log_every == 0:
             print(json.dumps(dict(step=step, of=total, prequential_last=float(np.mean(losses[-a.log_every:])), levels=model._mem[2], elapsed_s=round(time.time() - began))), flush=True)
         if step % quarter == 0 or step == total:

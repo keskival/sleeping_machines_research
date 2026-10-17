@@ -35,7 +35,7 @@ BUNDLES = {  # synergistic mechanisms are attributed together: an ablation remov
     'local_learning': ['calibrated bank-local clipping'],
 }
 DECLARED_GAPS = [
-    'credit across lane boundaries for persistent memory (forward eligibility traces / reciprocal adjoint, theory 160): carried state is detached',
+    'credit across lane boundaries for persistent memory (theory 160): implemented as --carry-credit (CarryCredit, exact, contracts v21); paired arm aws_r1_rmr_nativeev_cc1 pending, required for the flagship once it reports',
     'forward-trained credit and future-oriented credit (theory 164, REVEALED_FUTURE_CREDIT, NATIVE_RECIPROCAL_FUTURE_INTEGRATION): training is exact backprop within the lane',
     'event-local asynchronous learning as the training route (AGENTS.md 16 Oct): parameters update synchronously from the whole-lane gradient',
     'homeostatic thresholds as prices (THEORY P5) for concept load: an auxiliary balance loss is used',

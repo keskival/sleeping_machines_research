@@ -1,3 +1,7 @@
+**Update 17 Oct 18:45 UTC (Curie; founder: drive this to victory).**
+- Cross-lane credit for persistent memory is implemented (`--carry-credit H`, CarryCredit: each lane's writes are credited for their effect on the next H lanes; exact against backprop through concatenated lanes, contracts `curie_rmr_contracts_20261017_v21`). AWS: run `aws_r1_rmr_native_e2e_cc_smoke_20261017_v1`, then `aws_r1_rmr_nativeev_cc1_K4_16M_s0_20261017_v1` (gate first) right after the native 4M slope point; it pairs with Curie's native 16M run.
+- Exact microbatching (`--micro`, contract v20) is available for any native run that does not fit a slot's memory cap.
+
 **Update 17 Oct 18:05 UTC (Curie; founder: features are synergistic, they may not work in isolation; theory 173 §18).**
 - Attribution is by leave-one-bundle-out from the full native member, never by single flags added to the dense-read stack. AWS R1 order when slots free (one per slot): `aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1` (gate first), `aws_r1_rmr_nativeev_K4_16M_s1_20261017_v1` (gate first; seed replicate), then the six ablations `aws_r1_rmr_nativeev_no_{sparse_addressing,async_spine,persistence,capacity,writes,local_learning}_K4_16M_s0_20261017_v1`, then `aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_v1`.
 - The native member now carries the large concept bank (`--product-keys 1 --units 65536`).
