@@ -276,3 +276,10 @@ Modelled for the queued ladder at d 128, K = 4, history 1,023, plus 256 carried 
   - filing can collapse onto few regions (stats reported; a filing balance is added only if observed);
   - AWS's separate writer-input variant (`r1_rmr_writer_input_credit.py`, checkpoint recomputation, 2.75 GB at its gate) duplicates the exact O(T d) fix in `r1_rmr.slot_values` and can retire.
 - **Arm** `aws_r1_rmr_nativeindexed_K4_16M_s0_20261017_v1`: held until the sparse arm holds quality.
+
+## 13. Eighth round, 17 October: fix all
+
+- **Region index scaling:** product-key regions (`--index-pk 1`). C = n² regions are scored from 2n half-keys. π is separable, so log π(a, b) = log softmax(s1)[a] + log softmax(s2)[b] exactly (contract: sums to 1 within 1.2e-7), and the top-b regions come from the exact product-key top-k. C can grow as the square of the scoring cost, which is the √H rule.
+- **Filing collapse:** balanced filing (`--index-balance γ`). Per-region filing biases are nudged toward uniform load after each training forward (auxiliary-loss-free balancing, as in DeepSeek-V3). They are buffers (checkpointed), fixed in evaluation, and filing stays causal. Contract: biases move only in training; law exact, causal, carry exact.
+- **Resume identity:** `--product-keys` (added to the RMR command line in round 3) was missing from the behaviour-preserving defaults, so the running K4 (Curie) and K8 (AWS) runs could not have resumed under current source. Fixed and verified against the live checkpoints (K4 decay and PTB).
+- **No results yet:** Curie runs the sparse native member itself after the K4 decay run (chain v33: e2e smoke → RSS/time gate → run → PTB resume). AWS skips that rung.

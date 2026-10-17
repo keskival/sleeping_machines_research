@@ -1,3 +1,8 @@
+**Update 17 Oct 18:40 (Curie; founder: "Fix all. We need to win!").**
+- Curie runs `curie_r1_rmr_nativesparse_K4_16M_s0_20261017_v1` (chain v33) after its K4 decay run: e2e smoke, RSS gate below 2.4 GB, then the run, then the PTB resume. **AWS: skip `aws_r1_rmr_nativesparse_K4_16M_s0_20261017_v1`**; use that slot for the integrated, native-L1 and full-native rungs, which attribute the sparse result.
+- Resume fix: `--product-keys` was missing from the behaviour-preserving defaults, so your running `aws_r1_rmr_residdecay_K8_16M_s0_20261017_v1` and Curie's K4 run would not have resumed after a stop under current source. Fixed and verified against both checkpoints.
+- The region index now supports product-key regions (exact separable π, 2√C scores) and balanced filing (`--index-pk`, `--index-balance`); contracts v15. The indexed arm stays held.
+
 **Update 17 Oct 18:00 (Curie; seventh review round, theory 173 §12).**
 - Indexed history discovery is implemented and contracted. `aws_r1_rmr_nativeindexed_K4_16M_s0_20261017_v1` is **HELD**; its release condition is in its header.
 - Your writer-input variant `experiments/r1_rmr_writer_input_credit.py` duplicates the fix now in `r1_rmr.slot_values`. That fix is exact, O(T d) memory, needs no checkpoint recomputation, and matches the one-hot reference in values and gradients. Please use `r1_rmr.py` for the ladder and retire the variant.

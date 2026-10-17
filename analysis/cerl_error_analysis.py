@@ -48,7 +48,8 @@ def main():
             import r1_rmr as RM
             cerl = dict(d=g['d'], modes=g['modes'], layers=g['layers'], dk=g['dk'], units=g['units'], topk=g['topk'], explore=g['explore'], product_keys=bool(g.get('product_keys', 0)),
                         level1=g.get('level1', 'tm'), slots=g.get('slots', 1024), slot_m=g.get('slot_m', 4), slot_read_topk=g.get('slot_read_topk', 0), slot_pk=bool(g.get('slot_pk', 0)))
-            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0), old_per_target=bool(g.get('old_per_target', 0)), write_race=bool(g.get('write_race', 0)), fire=bool(g.get('fire', 0)), old_norm=bool(g.get('old_norm', 0)))
+            m = RM.RMR(50257, cls, words, cerl, levels=g['levels'], dk=g['read_dk'], top_m=g['top_m'], chunk=g['chunk'], read_topk=g.get('read_topk', 0), rezero=bool(g.get('rezero', 1)), old_decay=g.get('old_decay', 0.0), old_per_target=bool(g.get('old_per_target', 0)), write_race=bool(g.get('write_race', 0)), fire=bool(g.get('fire', 0)), old_norm=bool(g.get('old_norm', 0)), read_explore=g.get('read_explore', 0), index_regions=g.get('index_regions', 0), index_read=g.get('index_read', 0),
+                        readout_index=g.get('readout_index', 0), readout_read=g.get('readout_read', 0), readout_tok=g.get('readout_tok', 32), index_pk=bool(g.get('index_pk', 0)), index_balance=g.get('index_balance', 0.0))
             m.load_state_dict(torch.load(ROOT/rc['checkpoint'])); m.eval(); m.base.record_winner = True
             m.__class__.last_winner = property(lambda self: self.base.last_winner)
         else:
