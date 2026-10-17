@@ -19,6 +19,7 @@ NATIVE = [  # (mechanism, flag, test on the flag's value)
     ('write-address race', '--write-race', lambda v: v == '1'),
     ('write probes (counterfactual write credit)', '--write-explore', lambda v: int(v) > 0),
     ('per-target old-slot corrections', '--old-per-target', lambda v: v == '1'),
+    ('per-correction clocks (learnable lifetime per stored value)', '--old-clocks', lambda v: int(v) > 0),
     ('persistent memory across lanes', '--carry', lambda v: int(v) > 0),
     ('matrix-only weight decay (clocks and dormant capacity kept)', '--wd-groups', lambda v: v == '1'),
     ('large concept bank with product-key wake (capacity beyond activity)', '--product-keys', lambda v: v == '1'),

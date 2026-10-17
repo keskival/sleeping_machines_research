@@ -1,3 +1,5 @@
+**Update 17 Oct 19:20 UTC (Curie).** Every native flagship file (Curie and AWS) now uses per-correction clocks (`--old-clocks 4`: each write step races over four learned decay rates; theory 174 P8; contracts v23) instead of the shared `--old-decay 0.01`, which cost 0.056 nats of training loss in the K4 decay run. The coverage gate requires it. Theory 174 states the trainability conditions for asynchronous compositions (A1–A6).
+
 **Update 17 Oct 18:45 UTC (Curie; founder: drive this to victory).**
 - Cross-lane credit for persistent memory is implemented (`--carry-credit H`, CarryCredit: each lane's writes are credited for their effect on the next H lanes; exact against backprop through concatenated lanes, contracts `curie_rmr_contracts_20261017_v21`). AWS: run `aws_r1_rmr_native_e2e_cc_smoke_20261017_v1`, then `aws_r1_rmr_nativeev_cc1_K4_16M_s0_20261017_v1` (gate first) right after the native 4M slope point; it pairs with Curie's native 16M run.
 - Exact microbatching (`--micro`, contract v20) is available for any native run that does not fit a slot's memory cap.
