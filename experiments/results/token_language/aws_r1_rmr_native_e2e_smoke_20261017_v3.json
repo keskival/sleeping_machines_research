@@ -1,0 +1,385 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "native residual-memory race model (RMR-1, theory 172), one pass",
+ "tag": "aws_r1_rmr_native_e2e_smoke_20261017_v3",
+ "args": {
+  "mode": "train",
+  "tag": "aws_r1_rmr_native_e2e_smoke_20261017_v3",
+  "seed": 0,
+  "d": 32,
+  "modes": 8,
+  "layers": 2,
+  "dk": 16,
+  "units": 64,
+  "topk": 4,
+  "explore": 2,
+  "classes": 32,
+  "levels": 3,
+  "read_dk": 16,
+  "top_m": 4,
+  "chunk": 64,
+  "read_topk": 8,
+  "rezero": 1,
+  "old_decay": 0.01,
+  "old_per_target": 1,
+  "write_race": 1,
+  "carry": 256,
+  "fire": 1,
+  "read_explore": 2,
+  "slot_read_topk": 8,
+  "slot_pk": 1,
+  "old_norm": 0,
+  "act_cost": 0.0,
+  "level1": "slots",
+  "product_keys": 0,
+  "slots": 256,
+  "slot_m": 4,
+  "slot_explore": 2,
+  "write_explore": 2,
+  "wd_groups": 1,
+  "unit_init": 0.02,
+  "balance": 0.01,
+  "train_tokens": 8192,
+  "lane": 256,
+  "batch": 4,
+  "lr": 0.003,
+  "wd": 0.01,
+  "row_chunk": 512,
+  "checkpoint_every": 256,
+  "max_steps": 0,
+  "log_every": 4
+ },
+ "parameters": 1707712,
+ "steps": 8,
+ "presentations": 8160,
+ "train_wall_s": 103.43204355239868,
+ "resumes": 0,
+ "milestones": [
+  {
+   "step": 2,
+   "tokens": 2048,
+   "select": {
+    "nll": 8.733311461656921,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 9.062802640472789,
+     "resp_bg": 0.39003684449418613,
+     "resp_concept": 0.41736699312990855,
+     "resp_repeat": 0.07846022180418526,
+     "resp_continue": 0.11413592929006874,
+     "level2_new_norm": 0.007776670332532376,
+     "level2_old_norm": 0.01781453867442906,
+     "level2_fire_rate": 1.0,
+     "level3_new_norm": 0.0033548082574270666,
+     "level3_old_norm": 0.009050869848579168,
+     "level3_fire_rate": 1.0,
+     "native_gain": 0.32949117881586787
+    }
+   },
+   "select_carried": {
+    "nll": 8.723217016088713,
+    "targets": 16376,
+    "carry_keep": 256
+   },
+   "prequential_segment": 8.583431720733643,
+   "elapsed_s": 28
+  },
+  {
+   "step": 4,
+   "tokens": 4096,
+   "select": {
+    "nll": 8.558157976278165,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.93690893553383,
+     "resp_bg": 0.37483153987947065,
+     "resp_concept": 0.39920810024055203,
+     "resp_repeat": 0.07280147632808731,
+     "resp_continue": 0.15315888716480283,
+     "level2_new_norm": 0.017381154000759125,
+     "level2_old_norm": 0.029120142804458737,
+     "level2_fire_rate": 1.0,
+     "level3_new_norm": 0.007961168885231018,
+     "level3_old_norm": 0.016089706448838115,
+     "level3_fire_rate": 1.0,
+     "native_gain": 0.37875095925566526
+    }
+   },
+   "select_carried": {
+    "nll": 8.544502202394128,
+    "targets": 16376,
+    "carry_keep": 256
+   },
+   "prequential_segment": 8.408183574676514,
+   "elapsed_s": 53
+  },
+  {
+   "step": 6,
+   "tokens": 6144,
+   "select": {
+    "nll": 8.478042162740062,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.878876812119104,
+     "resp_bg": 0.36174497674581013,
+     "resp_concept": 0.39239593270418116,
+     "resp_repeat": 0.06772413397681934,
+     "resp_continue": 0.17813495110445596,
+     "level2_new_norm": 0.023555221501737833,
+     "level2_old_norm": 0.03274515504017472,
+     "level2_fire_rate": 1.0,
+     "level3_new_norm": 0.010979305719956756,
+     "level3_old_norm": 0.020029649371281266,
+     "level3_fire_rate": 1.0,
+     "native_gain": 0.4008346493790427
+    }
+   },
+   "select_carried": {
+    "nll": 8.46199707269785,
+    "targets": 16376,
+    "carry_keep": 256
+   },
+   "prequential_segment": 8.19758129119873,
+   "elapsed_s": 77
+  },
+  {
+   "step": 8,
+   "tokens": 8192,
+   "select": {
+    "nll": 8.469972849940461,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 8.873078316319088,
+     "resp_bg": 0.3602585603164998,
+     "resp_concept": 0.3915204830343949,
+     "resp_repeat": 0.06704613434207231,
+     "resp_continue": 0.1811748237003771,
+     "level2_new_norm": 0.024260852253064513,
+     "level2_old_norm": 0.03315888438373804,
+     "level2_fire_rate": 1.0,
+     "level3_new_norm": 0.01132089993916452,
+     "level3_old_norm": 0.020447904709726572,
+     "level3_fire_rate": 1.0,
+     "native_gain": 0.40310546637862643
+    }
+   },
+   "select_carried": {
+    "nll": 8.45365550195408,
+    "targets": 16376,
+    "carry_keep": 256
+   },
+   "prequential_segment": 8.071999073028564,
+   "elapsed_s": 102
+  }
+ ],
+ "train_flops_per_target": 9230718.650980392,
+ "train_flops": 75322664192.0,
+ "prequential_by_eighth": [
+  8.65330696105957,
+  8.513556480407715,
+  8.460769653320312,
+  8.355597496032715,
+  8.134028434753418,
+  8.261134147644043,
+  8.13225269317627,
+  8.01174545288086
+ ],
+ "prequential_last_quarter": 8.071999073028564,
+ "select": {
+  "nll": 8.469972849940461,
+  "targets": 16376,
+  "native": {
+   "bg_only_nll": 8.873078316319088,
+   "resp_bg": 0.3602585603164998,
+   "resp_concept": 0.3915204830343949,
+   "resp_repeat": 0.06704613434207231,
+   "resp_continue": 0.1811748237003771,
+   "level2_new_norm": 0.024260852253064513,
+   "level2_old_norm": 0.03315888438373804,
+   "level2_fire_rate": 1.0,
+   "level3_new_norm": 0.01132089993916452,
+   "level3_old_norm": 0.020447904709726572,
+   "level3_fire_rate": 1.0,
+   "native_gain": 0.40310546637862643
+  }
+ },
+ "score_65528": {
+  "nll": 8.205585567757057,
+  "targets": 65528,
+  "native": {
+   "bg_only_nll": 8.767681757254909,
+   "resp_bg": 0.32912285946752545,
+   "resp_concept": 0.35812810804417916,
+   "resp_repeat": 0.08101334509068761,
+   "resp_continue": 0.23173569260589655,
+   "level2_new_norm": 0.024278233759105206,
+   "level2_old_norm": 0.03313282551243901,
+   "level2_fire_rate": 1.0,
+   "level3_new_norm": 0.011325033847242594,
+   "level3_old_norm": 0.02044307137839496,
+   "level3_fire_rate": 1.0,
+   "native_gain": 0.5620961894978524
+  }
+ },
+ "flagship": {
+  "nll": 8.370769023895264,
+  "targets": 8192,
+  "native": {
+   "bg_only_nll": 8.8263840675354,
+   "resp_bg": 0.35614172741770744,
+   "resp_concept": 0.38646234199404716,
+   "resp_repeat": 0.06936179846525192,
+   "resp_continue": 0.18803413398563862,
+   "level2_new_norm": 0.024247729685157537,
+   "level2_old_norm": 0.03314763214439154,
+   "level2_fire_rate": 1.0,
+   "level3_new_norm": 0.011313762632198632,
+   "level3_old_norm": 0.020396218169480562,
+   "level3_fire_rate": 1.0,
+   "native_gain": 0.4556150436401367
+  }
+ },
+ "carried": {
+  "select": {
+   "nll": 8.45365550195408,
+   "targets": 16376,
+   "carry_keep": 256,
+   "native": {
+    "bg_only_nll": 8.873271631274388,
+    "resp_bg": 0.3555294428499344,
+    "resp_concept": 0.3863971188362337,
+    "resp_repeat": 0.06931815478877033,
+    "resp_continue": 0.18875527979544912,
+    "level2_new_norm": 0.02426843298599124,
+    "level2_old_norm": 0.03316796524450183,
+    "level2_fire_rate": 1.0,
+    "level3_new_norm": 0.011329012922942638,
+    "level3_old_norm": 0.020412710728123784,
+    "level3_fire_rate": 1.0
+   }
+  },
+  "score_65528": {
+   "nll": 8.200739193044146,
+   "targets": 65528,
+   "carry_keep": 256,
+   "native": {
+    "bg_only_nll": 8.767748224532964,
+    "resp_bg": 0.32773193423609537,
+    "resp_concept": 0.35667075531175396,
+    "resp_repeat": 0.08167601790164994,
+    "resp_continue": 0.23392129642110054,
+    "level2_new_norm": 0.02428386709652841,
+    "level2_old_norm": 0.03306603338569403,
+    "level2_fire_rate": 1.0,
+    "level3_new_norm": 0.011327647138386965,
+    "level3_old_norm": 0.020371798193082213,
+    "level3_fire_rate": 1.0
+   }
+  },
+  "flagship": {
+   "nll": 8.341377913951874,
+   "targets": 8192,
+   "carry_keep": 256,
+   "native": {
+    "bg_only_nll": 8.826738595962524,
+    "resp_bg": 0.34729214012622833,
+    "resp_concept": 0.37667417898774147,
+    "resp_repeat": 0.07379075675271451,
+    "resp_continue": 0.2022429220378399,
+    "level2_new_norm": 0.024262589868158102,
+    "level2_old_norm": 0.03314235853031278,
+    "level2_fire_rate": 1.0,
+    "level3_new_norm": 0.011320224264636636,
+    "level3_old_norm": 0.020344725344330072,
+    "level3_fire_rate": 1.0
+   }
+  }
+ },
+ "work_level1_per_target": {
+  "state_macs": 16324,
+  "level1": "slots",
+  "slots_per_layer": 256,
+  "slots_written_per_event": 4,
+  "episodic_candidates": 510,
+  "episodic_macs": 10208,
+  "unit_scores": 64,
+  "unit_macs": 1536,
+  "concepts_woken": 4,
+  "proposal_rows": 2954.6601941747576,
+  "proposal_macs": 94549.12621359224
+ },
+ "inference_work": {
+  "flops_per_target_window_1024": 3526152.0,
+  "scope": "measured, eval mode, one flagship window, reset lane (dense reference execution)"
+ },
+ "active_work": {
+  "scope": "modelled event-driven work per target; fire rates measured",
+  "history": 1023,
+  "carried": 256,
+  "level1": [
+   {
+    "kind": "slots",
+    "slots": 256,
+    "key_scores": 64,
+    "rows_written": 4,
+    "rows_read": 8,
+    "macs": 8096
+   },
+   {
+    "kind": "slots",
+    "slots": 256,
+    "key_scores": 64,
+    "rows_written": 4,
+    "rows_read": 8,
+    "macs": 8096
+   }
+  ],
+  "levels": [
+   {
+    "fire_rate": 1.0,
+    "read_keys_scored": 1280,
+    "values_delivered": 8,
+    "old_slot_writes": 4,
+    "write_race_keys": 1280,
+    "macs_if_fired": 138496,
+    "macs": 138530.0
+   },
+   {
+    "fire_rate": 1.0,
+    "read_keys_scored": 1280,
+    "values_delivered": 8,
+    "old_slot_writes": 4,
+    "write_race_keys": 1280,
+    "macs_if_fired": 220416,
+    "macs": 220450.0
+   }
+  ],
+  "readout": {
+   "state_macs": 16324,
+   "level1": "slots",
+   "slots_per_layer": 256,
+   "slots_written_per_event": 4,
+   "episodic_candidates": 2558,
+   "episodic_macs": 42976,
+   "unit_scores": 64,
+   "unit_macs": 1536,
+   "concepts_woken": 4,
+   "proposal_rows": 2954.6601941747576,
+   "proposal_macs": 94549.12621359224
+  },
+  "total_macs": 514233.12621359224,
+  "state_rows_moved": 50.0
+ },
+ "reference": {
+  "cerl_4M": "curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)",
+  "diagnostic_planB_L8_4M_flagship": 5.8414
+ },
+ "max_rss_kb": 1455940,
+ "source_sha256": {
+  "experiments/r1_rmr.py": "15f037c36e26b3986fd3818338ff3b26cee9f55b941aa3c39de002d0cbd767a2",
+  "experiments/r1_cerl.py": "33de456532109fd063cb95be170465c6c7778553634d07966ffc7072128807e8",
+  "experiments/r1_deep_keyed_lm.py": "2c5e050a3aa24639a46c7ded6b1a3fc31803d73a3771c0d7fc155858fbdddd22"
+ },
+ "checkpoint": "experiments/results/token_language/aws_r1_rmr_native_e2e_smoke_20261017_v3.pt"
+}
