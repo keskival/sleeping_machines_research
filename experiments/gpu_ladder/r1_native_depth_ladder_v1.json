@@ -1,0 +1,82 @@
+{
+ "name": "hz_r1_native_depth_ladder_v1",
+ "battle": "R1",
+ "decision": "Native compute frontier with depth: the causal event race readout with residual-memory depth (old-slot refinement with learned decay; theory 172) against the single-level race, over width d 256/512, depth K 1/4/8 and budgets 1e16/1e17/1e18 training FLOPs; at 16M tokens on CPU, K=4 old-slot refinement scored 4.9901 vs 5.0634 (K=1) vs 5.2034 (dense L16). Selected arms are scored once on the sealed public protocol against the published modded-NanoGPT curves.",
+ "driver": "experiments/r1_cerl_gpu.py",
+ "common": {
+  "lane": 1024,
+  "batch": 32,
+  "layers": 2,
+  "dk": 64,
+  "topk": 4,
+  "explore": 2,
+  "product-keys": 1,
+  "classes": 256,
+  "lr": 0.002,
+  "evals": 16,
+  "seed": 0
+ },
+ "budgets": [
+  1e+16,
+  1e+17,
+  1e+18
+ ],
+ "arms": [
+  {
+   "name": "race_K1",
+   "d": 256,
+   "modes": 128,
+   "units": 65536,
+   "args": "--model cerl"
+  },
+  {
+   "name": "rmr_K4",
+   "d": 256,
+   "modes": 128,
+   "units": 65536,
+   "args": "--model rmr --levels 4 --top-m 4 --old-decay 0.01"
+  },
+  {
+   "name": "rmr_K8",
+   "d": 256,
+   "modes": 128,
+   "units": 65536,
+   "args": "--model rmr --levels 8 --top-m 4 --old-decay 0.01"
+  },
+  {
+   "name": "race_K1",
+   "d": 512,
+   "modes": 256,
+   "units": 65536,
+   "args": "--model cerl"
+  },
+  {
+   "name": "rmr_K4",
+   "d": 512,
+   "modes": 256,
+   "units": 65536,
+   "args": "--model rmr --levels 4 --top-m 4 --old-decay 0.01"
+  },
+  {
+   "name": "rmr_K8",
+   "d": 512,
+   "modes": 256,
+   "units": 65536,
+   "args": "--model rmr --levels 8 --top-m 4 --old-decay 0.01"
+  }
+ ],
+ "worker": {
+  "min_avail_mb": 16384,
+  "rss_cap_kb": 64000000,
+  "vmem_cap_kb": "unlimited",
+  "cgroup_reserve_mb": 2048,
+  "timeout_s_per_1e16": 7200
+ },
+ "declaration": [
+  "Stationarity/online: fixed-weight language protocol on a stationary corpus; one pass over fresh lanes (pre-update loss is held out). Online adaptation is scored on PTB/WikiText-2.",
+  "Fighter rationale: the native race readout (beat the dense hybrid at 4M and 16M) with residual-memory depth: zero-initialised ReZero-gated corrections into one additive memory, old-slot refinement with learned decay (contracts curie_rmr_contracts_20261017_v3); depth K and width d are the ladder axes.",
+  "State/history: temporal-memory state over each 1024-token lane (labelled: not yet AWS's completely native receiver core); episodic causes over all earlier events of the lane.",
+  "Retained: race of clocks over causes, sparse addressed episodic memory, separate keys/values, age clocks, capacity beyond activity, counterfactual credit to unchosen units. Not included: multi-level causes, local receiver credit (AWS native core).",
+  "Restrictions: none for symmetry; bf16 matmuls, fp32 normalisers. Resources: measured FLOPs/target and tokens/s in-run; exact resume and SIGTERM checkpoints."
+ ]
+}

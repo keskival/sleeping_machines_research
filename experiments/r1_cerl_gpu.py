@@ -28,6 +28,7 @@ def main():
     A('--train-tokens', type=int, default=0); A('--budget-flops', type=float, default=0.0); A('--lr', type=float, default=2e-3); A('--wd', type=float, default=0.01); A('--warmup', type=float, default=0.02)
     A('--evals', type=int, default=16); A('--log-every', type=int, default=50); A('--checkpoint-every', type=int, default=500); A('--max-steps', type=int, default=0); A('--row-chunk', type=int, default=512)
     A('--data-dir', default=str(ROOT/'data/fineweb_gpt2')); A('--out-dir', default=str(ROOT/'experiments/results/gpu_ladder'))
+    A('--model', choices=('cerl', 'rmr'), default='cerl'); A('--levels', type=int, default=4); A('--top-m', type=int, default=4); A('--old-decay', type=float, default=0.01); A('--read-dk', type=int, default=64); A('--read-topk', type=int, default=0)
     a = ap.parse_args(); torch.manual_seed(a.seed); dev = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     if dev.type == 'cpu': torch.set_num_threads(1)
     else: torch.backends.cuda.matmul.allow_tf32 = True
@@ -38,7 +39,12 @@ def main():
     counts = np.zeros(50257); step_ = 10_000_000
     for i in range(0, min(len(first), 100_000_000), step_): counts += np.bincount(first[i:i + step_], minlength=50257)
     cls, words = word_classes(counts, a.classes)
-    model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages)).to(dev)
+    if a.model == 'rmr':                                                                          # residual-memory depth (theory 172) over the CERL readout
+        from r1_rmr import RMR
+        model = RMR(50257, cls, words, dict(d=a.d, modes=a.modes, layers=a.layers, dk=a.dk, units=a.units, topk=a.topk, explore=a.explore, product_keys=bool(a.product_keys)),
+                    levels=a.levels, dk=a.read_dk, top_m=a.top_m, chunk=64, read_topk=a.read_topk, rezero=True, old_decay=a.old_decay).to(dev)
+    else:
+        model = CERL(50257, cls, words, a.d, a.modes, a.layers, a.dk, a.units, a.topk, a.explore, product_keys=bool(a.product_keys), cause_messages=bool(a.cause_messages)).to(dev)
     params = sum(p.numel() for p in model.parameters())
     from torch.utils.flop_counter import FlopCounterMode
     x0 = torch.randint(0, 50257, (1, a.lane + 1), device=dev)
@@ -96,8 +102,8 @@ def main():
     res = dict(status='completed', battle='R1', stage='native causal event race member (theory 169), GPU one pass', tag=a.tag, args=vars(a), parameters=params, units=a.units, train_flops_per_target=fpt,
                train_tokens=steps*tps, train_flops=fpt*steps*tps, steps=steps, train_wall_s=st['wall'], resumes=st['resumes'], evals=st['evals'], milestones=st['milestones'],
                prequential_by_eighth=[float(np.mean(st['losses'][i:i + n8])) for i in range(0, steps, n8)], select=ev(sel_l), score_65528=st['milestones'][-1]['score_65528'], flagship=ev(fl_l),
-               work_per_target_at_history_1023=work_per_target(model, 1023), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
-               source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl_gpu.py', 'experiments/r1_cerl.py', 'experiments/r1_deep_keyed_lm.py')})
+               work_per_target_at_history_1023=work_per_target(model.base if a.model == 'rmr' else model, 1023), device=str(dev), gpu=torch.cuda.get_device_name(0) if dev.type == 'cuda' else None,
+               source_sha256={n: hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in ('experiments/r1_cerl_gpu.py', 'experiments/r1_cerl.py', 'experiments/r1_rmr.py', 'experiments/r1_deep_keyed_lm.py')})
     out.write_text(json.dumps(res, indent=1) + '\n'); state_path.unlink()
     print('RESULT', json.dumps({k: res[k] for k in ('select', 'score_65528', 'flagship', 'train_flops', 'parameters')}), flush=True)
 

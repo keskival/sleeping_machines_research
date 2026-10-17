@@ -11,7 +11,7 @@ def arms(spec):
     out = []
     for b in spec['budgets']:
         for arm in spec['arms']:
-            tag = f"{spec['name']}_d{arm['d']}_u{arm['units']}_c{b:.0e}".replace('+', '') + '_s0'
+            tag = f"{spec['name']}_{arm.get('name', 'cerl')}_d{arm['d']}_u{arm['units']}_c{b:.0e}".replace('+', '') + '_s0'
             out.append(dict(tag=tag, budget=b, **arm))
     return out
 
@@ -24,7 +24,7 @@ def main():
         if k % n != i or stop['f']: continue
         res = Path(a.out_dir)/f"{arm['tag']}.json"
         if res.exists() and json.loads(res.read_text()).get('status') == 'completed': continue
-        args = [f"--{key} {val}" for key, val in spec['common'].items()] + [f"--d {arm['d']}", f"--modes {arm['modes']}", f"--units {arm['units']}", f"--budget-flops {arm['budget']:g}", f"--out-dir {a.out_dir}"]
+        args = [f"--{key} {val}" for key, val in spec['common'].items()] + [f"--d {arm['d']}", f"--modes {arm['modes']}", f"--units {arm['units']}", f"--budget-flops {arm['budget']:g}", f"--out-dir {a.out_dir}"] + ([arm['args']] if arm.get('args') else [])
         qdir = ROOT/'experiments/queue/r1'/arm['tag']; qdir.mkdir(parents=True, exist_ok=True); q = qdir/f"{arm['tag']}.txt"
         if not q.exists():
             q.write_text(f"# Battle {spec['battle']}, native CERL GPU ladder {spec['name']} (budget {arm['budget']:.0e} FLOPs, d{arm['d']}, {arm['units']} concept units). Decision: {spec['decision']}\n"
