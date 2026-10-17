@@ -1,0 +1,225 @@
+{
+ "status": "completed",
+ "battle": "R1",
+ "stage": "native residual-memory race model (RMR-1, theory 172), one pass",
+ "tag": "curie_r1_rmr_resid_K4_16M_s0_20261016_v1",
+ "args": {
+  "mode": "train",
+  "tag": "curie_r1_rmr_resid_K4_16M_s0_20261016_v1",
+  "seed": 0,
+  "d": 128,
+  "modes": 64,
+  "layers": 2,
+  "dk": 64,
+  "units": 1024,
+  "topk": 4,
+  "explore": 2,
+  "classes": 256,
+  "levels": 4,
+  "read_dk": 64,
+  "top_m": 4,
+  "chunk": 64,
+  "read_topk": 0,
+  "rezero": 1,
+  "train_tokens": 16777216,
+  "lane": 256,
+  "batch": 4,
+  "lr": 0.003,
+  "wd": 0.01,
+  "row_chunk": 512,
+  "checkpoint_every": 256,
+  "max_steps": 0,
+  "log_every": 100
+ },
+ "parameters": 7415123,
+ "steps": 16384,
+ "presentations": 16711680,
+ "train_wall_s": 26921.00033545494,
+ "resumes": 1,
+ "milestones": [
+  {
+   "step": 4096,
+   "tokens": 4194304,
+   "select": {
+    "nll": 5.665038167993558,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 6.058571646984578,
+     "resp_bg": 0.420963974874312,
+     "resp_concept": 0.3750184974694578,
+     "resp_repeat": 0.08576079330151845,
+     "resp_continue": 0.11825674122839103,
+     "level2_new_norm": 0.6524745747447014,
+     "level2_old_norm": 1.3789428919553757,
+     "level3_new_norm": 1.1770713329315186,
+     "level3_old_norm": 1.2761564701795578,
+     "level4_new_norm": 0.6317880898714066,
+     "level4_old_norm": 0.5506051406264305,
+     "native_gain": 0.39353347899101987
+    }
+   },
+   "prequential_segment": 5.946191519149579,
+   "elapsed_s": 6645
+  },
+  {
+   "step": 8192,
+   "tokens": 8388608,
+   "select": {
+    "nll": 5.405091852692202,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 5.785774243768972,
+     "resp_bg": 0.4203983376309472,
+     "resp_concept": 0.3741972016659258,
+     "resp_repeat": 0.10153099120029034,
+     "resp_continue": 0.10387347416263429,
+     "level2_new_norm": 0.8460794538259506,
+     "level2_old_norm": 2.3718347549438477,
+     "level3_new_norm": 1.6571874916553497,
+     "level3_old_norm": 1.2127775400877,
+     "level4_new_norm": 1.0492153987288475,
+     "level4_old_norm": 0.5909229218959808,
+     "native_gain": 0.38068239107677027
+    }
+   },
+   "prequential_segment": 5.347188797546551,
+   "elapsed_s": 13339
+  },
+  {
+   "step": 12288,
+   "tokens": 12582912,
+   "select": {
+    "nll": 5.247763525175944,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 5.621422638617088,
+     "resp_bg": 0.3744944823067772,
+     "resp_concept": 0.41134725059198357,
+     "resp_repeat": 0.11160322617007848,
+     "resp_continue": 0.10255503371261464,
+     "level2_new_norm": 1.130320131778717,
+     "level2_old_norm": 3.2097522914409637,
+     "level3_new_norm": 1.994711920619011,
+     "level3_old_norm": 1.4084787219762802,
+     "level4_new_norm": 1.5368318408727646,
+     "level4_old_norm": 0.777539998292923,
+     "native_gain": 0.37365911344114444
+    }
+   },
+   "prequential_segment": 5.14593770657666,
+   "elapsed_s": 20086
+  },
+  {
+   "step": 16384,
+   "tokens": 16777216,
+   "select": {
+    "nll": 5.190565965556493,
+    "targets": 16376,
+    "native": {
+     "bg_only_nll": 5.576693748752256,
+     "resp_bg": 0.36219966632523765,
+     "resp_concept": 0.42754683744218736,
+     "resp_repeat": 0.11299838155278737,
+     "resp_continue": 0.09725510710591026,
+     "level2_new_norm": 1.1646160781383514,
+     "level2_old_norm": 3.3540335297584534,
+     "level3_new_norm": 2.1817715167999268,
+     "level3_old_norm": 1.5151368379592896,
+     "level4_new_norm": 1.7211907804012299,
+     "level4_old_norm": 0.7871992141008377,
+     "native_gain": 0.38612778319576346
+    }
+   },
+   "prequential_segment": 5.0426455503329635,
+   "elapsed_s": 26920
+  }
+ ],
+ "train_flops_per_target": 15540105.035294117,
+ "train_flops": 259701262516224.0,
+ "prequential_by_eighth": [
+  6.286452769069001,
+  5.605930269230157,
+  5.415124646155164,
+  5.279252948937938,
+  5.190025688149035,
+  5.101849725004286,
+  5.058009591768496,
+  5.027281508897431
+ ],
+ "prequential_last_quarter": 5.0426455503329635,
+ "select": {
+  "nll": 5.190565965556493,
+  "targets": 16376,
+  "native": {
+   "bg_only_nll": 5.576693748752256,
+   "resp_bg": 0.36219966632523765,
+   "resp_concept": 0.42754683744218736,
+   "resp_repeat": 0.11299838155278737,
+   "resp_continue": 0.09725510710591026,
+   "level2_new_norm": 1.1646160781383514,
+   "level2_old_norm": 3.3540335297584534,
+   "level3_new_norm": 2.1817715167999268,
+   "level3_old_norm": 1.5151368379592896,
+   "level4_new_norm": 1.7211907804012299,
+   "level4_old_norm": 0.7871992141008377,
+   "native_gain": 0.38612778319576346
+  }
+ },
+ "score_65528": {
+  "nll": 5.087398049828771,
+  "targets": 65528,
+  "native": {
+   "bg_only_nll": 5.379987206778935,
+   "resp_bg": 0.28900339371138056,
+   "resp_concept": 0.36580211478962577,
+   "resp_repeat": 0.16749931230209655,
+   "resp_continue": 0.17769517794596182,
+   "level2_new_norm": 1.216576799750328,
+   "level2_old_norm": 3.382187396287918,
+   "level3_new_norm": 2.1643737256526947,
+   "level3_old_norm": 1.5083414018154144,
+   "level4_new_norm": 1.739314004778862,
+   "level4_old_norm": 0.7902975007891655,
+   "native_gain": 0.2925891569501644
+  }
+ },
+ "flagship": {
+  "nll": 4.990141779184341,
+  "targets": 8192,
+  "native": {
+   "bg_only_nll": 5.3940683007240295,
+   "resp_bg": 0.36837502755224705,
+   "resp_concept": 0.44590772688388824,
+   "resp_repeat": 0.09869956411421299,
+   "resp_continue": 0.08701769006438553,
+   "level2_new_norm": 1.1974534094333649,
+   "level2_old_norm": 3.4012171030044556,
+   "level3_new_norm": 2.3351256251335144,
+   "level3_old_norm": 1.521925374865532,
+   "level4_new_norm": 1.7827830612659454,
+   "level4_old_norm": 0.7939245328307152,
+   "native_gain": 0.4039265215396881
+  }
+ },
+ "work_level1_per_target": {
+  "state_macs": 214656,
+  "episodic_candidates": 510,
+  "episodic_macs": 65408,
+  "unit_scores": 1024,
+  "unit_macs": 73728,
+  "concepts_woken": 4,
+  "proposal_rows": 2249.0946502057614,
+  "proposal_macs": 287884.11522633745
+ },
+ "reference": {
+  "cerl_4M": "curie_r1_cerl_4M_s0_20261016_v1 (flagship 5.4665)",
+  "diagnostic_planB_L8_4M_flagship": 5.8414
+ },
+ "max_rss_kb": 1183892,
+ "source_sha256": {
+  "experiments/r1_rmr.py": "cae314e7562c6c800a6602e28988b2ebd94186c2ba13f6cb46926a27b1d7855d",
+  "experiments/r1_cerl.py": "a8d9d68c84a110b4e26e43a8162af290415d6efe21c5ddf370d0303c9713e6f2",
+  "experiments/r1_deep_keyed_lm.py": "f5dff01f850c741d97156747dbf25c935977b1d86e83d5c398ce31d2c37d2043"
+ },
+ "checkpoint": "experiments/results/token_language/curie_r1_rmr_resid_K4_16M_s0_20261016_v1.pt"
+}
