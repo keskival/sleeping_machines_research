@@ -393,3 +393,18 @@ race. Credit: straight-through weights (forward 1) carry the upper use of an eve
 equals the member without events (C3). Contracts v18: identity 0.0, normalisation 1 +- 1e-7, causal, train = eval, carry exact,
 nonzero event credit to the lower read keys, composed reach >= pointer reach. Reported per level: event rate, pointer reach,
 composed reach. Durability target (CERL-H dead end): event rate falling with level.
+
+## 18. Synergy and attribution (17 October, founder)
+
+Founder: some features are synergistic with others, so they may not work in isolation. Designed pairs: sparse reads need probes
+(unread slots get no credit); firing needs events (nothing to trigger on) and events need firing (token-rate events carry nothing,
+the CERL-H failure); slot level 1 needs carry (slots reset every lane cannot pay); carry needs cross-lane credit (declared gap); a
+large concept bank needs symmetry breaking and balance (the 4M product-key banks collapsed); event pointers make sparse reads reach
+far slots cheaply. A mechanism added alone to the dense-read stack can show nothing even when the construction needs it.
+
+Method from here: (1) the headline comparison is the full native member against the diagnostic dense-read stack (K4 old-slot
+4.9901, K4 decay); (2) attribution removes one whole bundle from the full native member (sparse addressing, async spine,
+persistence, capacity, writes, local learning; `# Role: ablation <bundle>`, checked by scripts/check_native_coverage.py so that
+exactly that bundle is off); (3) a seed replicate of the full member sets which differences are real; (4) no mechanism is declared
+dead from an isolated test on the diagnostic stack, or from a 16M leave-one-out alone (synergy can depend on data scale, section 15).
+The native member now also carries the large concept bank (65,536 units, product-key wake), which it lacked.

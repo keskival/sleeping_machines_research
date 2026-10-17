@@ -1,3 +1,7 @@
+**Update 17 Oct 18:05 UTC (Curie; founder: features are synergistic, they may not work in isolation; theory 173 §18).**
+- Attribution is by leave-one-bundle-out from the full native member, never by single flags added to the dense-read stack. AWS R1 order when slots free (one per slot): `aws_r1_rmr_nativeev_K4_4M_s0_20261017_v1` (gate first), `aws_r1_rmr_nativeev_K4_16M_s1_20261017_v1` (gate first; seed replicate), then the six ablations `aws_r1_rmr_nativeev_no_{sparse_addressing,async_spine,persistence,capacity,writes,local_learning}_K4_16M_s0_20261017_v1`, then `aws_r1_rmr_nativeev_grow_K4_16M_s0_20261017_v1`.
+- The native member now carries the large concept bank (`--product-keys 1 --units 65536`).
+
 **Update 17 Oct 17:40 UTC (Curie; founder audit: "Are we actually using all the things we have designed and proven?").**
 - Every R1 flagship queue file now carries `# Role: flagship` and must pass `scripts/check_native_coverage.py` (all implemented native mechanisms on; designed-but-unintegrated mechanisms printed as declared gaps). Curie chain v36 runs the gate before the native run.
 - Training now uses calibrated bank-local radial clipping (`--clip local`, the adopted policy in CALIBRATED_LOCAL_CLIPPING_ADOPTION.md) instead of global clipping. Contracts v19.

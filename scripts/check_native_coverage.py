@@ -21,10 +21,19 @@ NATIVE = [  # (mechanism, flag, test on the flag's value)
     ('per-target old-slot corrections', '--old-per-target', lambda v: v == '1'),
     ('persistent memory across lanes', '--carry', lambda v: int(v) > 0),
     ('matrix-only weight decay (clocks and dormant capacity kept)', '--wd-groups', lambda v: v == '1'),
+    ('large concept bank with product-key wake (capacity beyond activity)', '--product-keys', lambda v: v == '1'),
     ('concept symmetry breaking', '--unit-init', lambda v: float(v) > 0),
     ('concept load balance', '--balance', lambda v: float(v) > 0),
     ('calibrated bank-local clipping', '--clip', lambda v: v == 'local'),
 ]
+BUNDLES = {  # synergistic mechanisms are attributed together: an ablation removes one whole bundle from the full native member
+    'sparse_addressing': ['sparse addressed slot level 1', 'product-key slot addressing (capacity beyond activity)', 'sparse level reads', 'read probes (counterfactual read credit)', 'slot probes (counterfactual slot credit)'],
+    'async_spine': ['asynchronous firing levels', 'composing event spine between levels'],
+    'persistence': ['persistent memory across lanes'],
+    'capacity': ['large concept bank with product-key wake (capacity beyond activity)', 'concept symmetry breaking', 'concept load balance'],
+    'writes': ['write-address race', 'write probes (counterfactual write credit)', 'per-target old-slot corrections'],
+    'local_learning': ['calibrated bank-local clipping'],
+}
 DECLARED_GAPS = [
     'credit across lane boundaries for persistent memory (forward eligibility traces / reciprocal adjoint, theory 160): carried state is detached',
     'forward-trained credit and future-oriented credit (theory 164, REVEALED_FUTURE_CREDIT, NATIVE_RECIPROCAL_FUTURE_INTEGRATION): training is exact backprop within the lane',
@@ -46,7 +55,11 @@ def check(path):
 def main():
     bad = False
     for path in sys.argv[1:]:
-        role, missing = check(path); status = 'PASS' if not missing else ('FAIL' if role == 'flagship' else 'DIAGNOSTIC')
+        role, missing = check(path); text = open(path).read(); ab = re.search(r'^# Role: ablation (\w+)', text, re.M)
+        if ab:                                                                                     # an ablation misses exactly its bundle
+            role = f'ablation {ab.group(1)}'; want = set(BUNDLES[ab.group(1)]); status = 'PASS' if set(missing) == want else 'FAIL'
+            missing = sorted(set(missing) ^ want)
+        else: status = 'PASS' if not missing else ('FAIL' if role == 'flagship' else 'DIAGNOSTIC')
         bad |= status == 'FAIL'
         print(f'{status} [{role}] {path}' + ''.join(f'\n    missing: {m}' for m in missing))
     print('declared gaps (designed, not yet integrated in the R1 driver):' + ''.join(f'\n    - {g}' for g in DECLARED_GAPS))

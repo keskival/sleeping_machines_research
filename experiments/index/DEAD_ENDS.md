@@ -7,6 +7,8 @@ Theory 173 states the conditions (C1–C9) that a composition of good learners n
 the construction as built, not on the model family; AGENTS.md: a restricted variant is evidence about that variant. Reopen an
 entry only by removing its stated cause, and write down which cause you removed.
 
+Rule (founder, 17 Oct: features are synergistic): a verdict on a native mechanism comes only from removing it (or its bundle) from the full native member; a mechanism tested alone on the diagnostic dense-read stack, or showing no loss in a single 16M leave-one-out, is not DEAD (theory 173 section 18).
+
 Status labels:
 - **DEAD**: fails for a structural reason; do not rerun or scale it.
 - **BROKEN-FIXED**: an implementation defect, now repaired behind a flag; never run the defective form again.
